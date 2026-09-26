@@ -2377,7 +2377,11 @@ const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   submittedPreparationHits: null, submittedMinimapBounds: null,
   submittedFrame: null, submittedSunbeamHands: new Map(),
   requestSerial: 0, lastSoundRequestSerial: 0,
-  acquisitionCanvas: null };
+  acquisitionCanvas: null, startToken: null };
+// One title-scoped renderer owner can be transferred into the main runtime
+// after Play has established a game session and both canvas handoffs finish.
+const webgpuTitlePrewarm = { current: null, generation: 0, playIntent: 0,
+  expectedSessionChanges: 0 };
 const sunbeamLive = { renderer: null, pending: null, generation: 0,
   nextRetryAt: 0, poseReceipts: new Map(), drawnIds: new Set(),
   submitted: new Map(), frameId: 0, pendingSounds: new Map(),
@@ -2613,6 +2617,155 @@ function playTitleCommandArrival() {
   return true;
 }
 
+const WEBGPU_TITLE_PREWARM_DEADLINE_MS = 30_000;
+function markWebGPUTitlePrewarm(name, detail = {}) {
+  try { performance.mark(`dva-webgpu-title-prewarm:${name}`, { detail }); }
+  catch (_) { /* Diagnostics must not affect startup. */ }
+}
+function disposeWebGPUTitlePrewarm(entry, reason = 'cancelled') {
+  if (!entry || entry.transferred || entry.state === 'cancelled') return false;
+  entry.state = reason;
+  entry.failure ||= new Error(`WebGPU title prewarm ${reason}`);
+  entry.rejectCancellation?.(entry.failure);
+  entry.rejectCancellation = null;
+  if (entry.deadlineTimer !== null) window.clearTimeout(entry.deadlineTimer);
+  entry.deadlineTimer = null;
+  try { entry.markerOwner?.destroy?.(); } catch (_) {}
+  entry.markerOwner = null;
+  try { entry.textOwner?.destroy?.(); } catch (_) {}
+  entry.textOwner = null;
+  // A consumed lease belongs to the runtime. dispose() is deliberately a
+  // no-op after consume, preserving the runtime's destruction responsibility.
+  try { entry.rendererLease?.dispose?.(); } catch (_) {}
+  if (webgpuTitlePrewarm.current === entry) {
+    webgpuTitlePrewarm.current = null;
+    webgpuTitlePrewarm.generation += 1;
+  }
+  return true;
+}
+
+function startWebGPUTitlePrewarm() {
+  if (state.screen !== 'title' || document.hidden) return null;
+  const current = webgpuTitlePrewarm.current;
+  if (current && ['pending', 'ready'].includes(current.state)) return current;
+  const entry = { generation: ++webgpuTitlePrewarm.generation,
+    pageSessionGeneration: state.roomSessionGeneration,
+    selectedMapId: normalizeMatchmakingMapId(els.mapSelect?.value),
+    state: 'pending', promise: null, renderer: null, device: null,
+    rendererLease: null, textOwner: null, markerOwner: null,
+    transferred: false, deadlineTimer: null, underlyingPending: true,
+    expectedPlayIntent: 0, rejectCancellation: null };
+  webgpuTitlePrewarm.current = entry;
+  markWebGPUTitlePrewarm('start', { generation: entry.generation,
+    mapId: entry.selectedMapId });
+  const currentEntry = () => webgpuTitlePrewarm.current === entry &&
+    webgpuTitlePrewarm.generation === entry.generation &&
+    !entry.transferred && !entry.invalidated && !document.hidden;
+  const destroyLocal = () => {
+    try { entry.markerOwner?.destroy?.(); } catch (_) {}
+    entry.markerOwner = null;
+    try { entry.textOwner?.destroy?.(); } catch (_) {}
+    entry.textOwner = null;
+    if (entry.rendererLease) entry.rendererLease.dispose();
+    else try { entry.renderer?.destroy?.(); } catch (_) {}
+    entry.renderer = null;
+  };
+  const work = (async () => {
+    const rendererApi = window.DvaWebGPURenderer;
+    const runtimeApi = window.DvaWebGPUMainRuntime;
+    if (!rendererApi?.create || !runtimeApi?.createRendererLease)
+      throw new Error('WebGPU title prewarm APIs unavailable');
+    const renderer = await rendererApi.create({ onFailure(error) {
+      if (currentEntry()) disposeWebGPUTitlePrewarm(entry, 'failed');
+      if (entry.transferred) setWebGPUMainFailure(error);
+    } });
+    if (!currentEntry()) {
+      try { renderer?.destroy?.(); } catch (_) {}
+      return;
+    }
+    if (renderer?.state !== 'ready' || !renderer.device)
+      throw renderer?.failure || new Error('Title prewarm renderer is not ready');
+    entry.renderer = renderer;
+    entry.device = renderer.device;
+    entry.rendererLease = runtimeApi.createRendererLease(renderer);
+    markWebGPUTitlePrewarm('device-ready', { generation: entry.generation,
+      deviceCount: 1 });
+    Promise.resolve(renderer.device.lost).then(info => {
+      if (currentEntry()) disposeWebGPUTitlePrewarm(entry, 'failed');
+      if (entry.transferred && info?.reason !== 'destroyed')
+        setWebGPUMainFailure(new Error(`Title prewarm device lost: ${info?.message || info?.reason || 'unknown'}`));
+    }).catch(() => {});
+    const textApi = window.DvaWebGPUMainTextResources;
+    const markerApi = window.DvaWebGPUHeadMarkerMaterials;
+    if (!textApi?.create || !markerApi?.create)
+      throw new Error('WebGPU title prewarm resource APIs unavailable');
+    const textOwner = await textApi.create({ device: entry.device });
+    if (!currentEntry() || textOwner?.device !== entry.device) {
+      textOwner?.destroy?.();
+      if (!currentEntry()) return;
+      throw new Error('Title prewarm text owner device differs');
+    }
+    entry.textOwner = textOwner;
+    entry.markerOwner = markerApi.create({ device: entry.device });
+    if (entry.markerOwner?.device !== entry.device ||
+        typeof entry.markerOwner.prepare !== 'function')
+      throw new Error('Title prewarm marker owner device differs');
+    if (!currentEntry()) return;
+    entry.state = 'ready';
+    markWebGPUTitlePrewarm('owners-ready', { generation: entry.generation,
+      deviceCount: 1 });
+  })();
+  const deadline = new Promise((_, reject) => {
+    entry.deadlineTimer = window.setTimeout(() => {
+      if (!currentEntry()) return;
+      entry.state = 'failed';
+      entry.invalidated = true;
+      entry.underlyingPending = true;
+      entry.failure = new Error(`WebGPU title prewarm timed out after ${WEBGPU_TITLE_PREWARM_DEADLINE_MS}ms`);
+      destroyLocal();
+      reject(entry.failure);
+    }, WEBGPU_TITLE_PREWARM_DEADLINE_MS);
+  });
+  const cancellation = new Promise((_, reject) => { entry.rejectCancellation = reject; });
+  entry.promise = Promise.race([work, deadline, cancellation]).then(() => {
+    if (entry.deadlineTimer !== null) window.clearTimeout(entry.deadlineTimer);
+    entry.deadlineTimer = null;
+    if (entry.state === 'pending' && currentEntry()) entry.state = 'ready';
+    if (entry.state !== 'ready') throw entry.failure || new Error(`WebGPU title prewarm ${entry.state}`);
+    return entry;
+  }, error => {
+    if (entry.deadlineTimer !== null) window.clearTimeout(entry.deadlineTimer);
+    entry.deadlineTimer = null;
+    if (entry.state === 'pending') entry.state = 'failed';
+    entry.failure = entry.failure || error;
+    // work has its own generation checks and retires resources that resolve
+    // after the deadline or a title/session cancellation.
+    throw entry.failure;
+  });
+  entry.promise.catch(() => {});
+  work.then(() => { entry.underlyingPending = false; }, error => {
+    entry.underlyingPending = false;
+    if (currentEntry()) {
+      entry.failure = error;
+      entry.state = 'failed';
+      destroyLocal();
+    }
+  });
+  return entry;
+}
+
+function cancelWebGPUTitlePrewarmForRoute(nextScreen, previousScreen) {
+  const entry = webgpuTitlePrewarm.current;
+  if (!entry || nextScreen === 'game') return;
+  if (nextScreen === 'title' && previousScreen === 'title') return;
+  disposeWebGPUTitlePrewarm(entry, 'cancelled');
+}
+
+function invalidateWebGPUTitlePrewarm(reason = 'cancelled') {
+  const entry = webgpuTitlePrewarm.current;
+  if (entry) disposeWebGPUTitlePrewarm(entry, reason);
+}
+
 function init() {
   // Title navigation must be usable even if later game-only control setup fails.
   bindTitleNavigationEvents();
@@ -2632,6 +2785,8 @@ function init() {
   syncGameAudioButtons();
   updateSoloProgressUi();
   setScreen("title");
+  // This work is deliberately detached from title readiness and controls.
+  startWebGPUTitlePrewarm();
   bindEvents();
   requestStartupFullscreen();
   initializeTacticsPanel();
@@ -3337,6 +3492,7 @@ function setScreen(screen) {
   if (screen !== "game") stopAllEnvironmentSounds();
   const next = ["title", "tactics", "game"].includes(screen) ? screen : "title";
   const previous = state.screen;
+  cancelWebGPUTitlePrewarmForRoute(next, previous);
   if (previous !== next) clearTitleCommandTransition();
   // PREPARATION_ROSTER_V726: a screen transition never carries an old room's entrance state.
   if (previous !== next) state.preparationRosterEntries.clear();
@@ -3377,6 +3533,7 @@ function setScreen(screen) {
   els.tacticsPanel.hidden = next !== "tactics";
   els.leaveRoomButton.hidden = next === "title";
   if (next === "title") playTitleCommandArrival();
+  if (next === 'title' && previous !== 'title') startWebGPUTitlePrewarm();
   if (els.tacticsBackButton) {
     const returnsToGame = next === "tactics" && state.tacticsReturnScreen === "game" && Boolean(state.data);
     const label = returnsToGame ? "ゲームへ戻る" : "タイトルへ戻る";
@@ -7072,6 +7229,19 @@ function cancelCommonActionGestures({ onlyUnavailable = false } = {}) {
 function bindTitleNavigationEvents() {
   els.titlePlayButton.addEventListener("click", () => {
     if (els.titlePlayButton.disabled) return;
+    const prewarm = webgpuTitlePrewarm.current;
+    const prewarmState = prewarm?.state || 'unavailable';
+    if (document.body?.dataset) {
+      document.body.dataset.webgpuTitlePrewarmAtPlay = prewarmState;
+      document.body.dataset.webgpuTitlePrewarmDeviceCountAtPlay =
+        prewarm?.renderer?.device && prewarm?.device === prewarm.renderer.device ? '1' : '0';
+    }
+    markWebGPUTitlePrewarm('play-click', { state: prewarmState,
+      deviceCount: prewarm?.renderer?.device ? 1 : 0 });
+    if (prewarm && ['pending', 'ready'].includes(prewarm.state)) {
+      prewarm.expectedPlayIntent = ++webgpuTitlePrewarm.playIntent;
+      webgpuTitlePrewarm.expectedSessionChanges = 1;
+    }
     loadGameplayTextures();
     deactivateOfflineMode();
     state.realtime?.disconnect();
@@ -7267,9 +7437,12 @@ function bindEvents() {
   els.mapNextButton?.addEventListener("click", () => cyclePreparationSelect(els.mapSelect, 1));
   els.mapSelect.addEventListener("change", () => {
     const mapId = normalizeMatchmakingMapId(els.mapSelect.value);
+    if (webgpuTitlePrewarm.current?.selectedMapId !== mapId)
+      invalidateWebGPUTitlePrewarm('cancelled');
     els.mapSelect.value = mapId;
     clientStorage.setItem(storage.map, mapId);
     preloadSelectedRequiredMap(mapId);
+    if (state.screen === 'title') startWebGPUTitlePrewarm();
     renderPreparationSettingSummary(state.data);
     void syncOperatorSelectionSettings("map");
   });
@@ -11084,6 +11257,14 @@ function setCurrentRoomSession(roomId, playerId) {
   const nextRoomId = String(roomId || "");
   const nextPlayerId = String(playerId || "");
   if (state.roomId !== nextRoomId || state.playerId !== nextPlayerId) {
+    const prewarm = webgpuTitlePrewarm.current;
+    const expectedPlaySession = prewarm && prewarm.expectedPlayIntent &&
+      webgpuTitlePrewarm.expectedSessionChanges > 0 &&
+      prewarm.selectedMapId === normalizeMatchmakingMapId(els.mapSelect?.value);
+    if (prewarm && !expectedPlaySession)
+      invalidateWebGPUTitlePrewarm('cancelled');
+    else if (expectedPlaySession)
+      webgpuTitlePrewarm.expectedSessionChanges -= 1;
     state.roomSessionGeneration += 1;
     setPreparationEditingField("");
     state.preparationRosterEntries.clear();
@@ -17981,6 +18162,7 @@ function flushLiveSunbeamSounds(submittedHands = null, frameId = 0) {
 
 function suspendWebGPUMainAppDriver({ destroy = false } = {}) {
   if (!WEBGPU_MAIN_OWNER) return;
+  if (webgpuMainApp.startToken) webgpuMainApp.startToken.cancelled = true;
   webgpuMainApp.generation += 1;
   webgpuMainApp.lastSoundRequestSerial = webgpuMainApp.requestSerial;
   webgpuMainApp.submittedHits = null;
@@ -18161,13 +18343,14 @@ function webgpuMainReadyImage(data) {
     image.naturalHeight === map.height ? image : null;
 }
 
-async function startWebGPUMainAppDriver(data, image) {
+async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled: false }) {
   const generation = webgpuMainApp.generation;
   const map = data.map;
   const roomId = state.roomId;
   const sessionGeneration = state.roomSessionGeneration;
   const mainCanvas = els.webgpuMainCanvas;
-  const sameSession = () => generation === webgpuMainApp.generation &&
+  const sameSession = () => !startupToken.cancelled &&
+    generation === webgpuMainApp.generation &&
     state.screen === 'game' && !document.hidden &&
     state.roomId === roomId && state.roomSessionGeneration === sessionGeneration &&
     state.data?.map?.id === map.id;
@@ -18181,9 +18364,31 @@ async function startWebGPUMainAppDriver(data, image) {
   setWebGPUMainPendingDiagnostic('startup:acquisition-handoff');
   const acquisitionCanvas = await window.DvaWebGPUAcquisitionOverlay.handoffToMainRenderer();
   if (!sameSession()) return null;
+  let prewarmEntry = webgpuTitlePrewarm.current;
+  if (prewarmEntry && prewarmEntry.selectedMapId !== map.id) {
+    invalidateWebGPUTitlePrewarm('cancelled');
+    prewarmEntry = null;
+  }
+  if (prewarmEntry?.state === 'pending') {
+    setWebGPUMainPendingDiagnostic('startup:title-prewarm-wait');
+    try { await prewarmEntry.promise; }
+    catch (error) {
+      if (prewarmEntry.state === 'cancelled' || !sameSession()) return null;
+      if (prewarmEntry.underlyingPending)
+        throw new Error(`Title prewarm is still pending after its deadline: ${error.message}`);
+      // A settled creation failure is safe to retry through the ordinary
+      // runtime path. A live request is never duplicated.
+    }
+    if (!sameSession()) return null;
+  }
+  if (prewarmEntry?.state === 'failed' && prewarmEntry.underlyingPending)
+    throw prewarmEntry.failure || new Error('Title prewarm still owns a pending device request');
+  if (prewarmEntry?.state !== 'ready') prewarmEntry = null;
   setWebGPUMainPendingDiagnostic('startup:driver-creation');
   const driver = await createDormantWebGPUMainAppDriver({ mainCanvas,
     expandedCanvas, acquisitionCanvas, map, image,
+    ...(prewarmEntry ? { prewarmEntry } : {}),
+    isCurrent: sameSession,
     onProgress(stage) { setWebGPUMainPendingDiagnostic(`startup:${stage}`); },
     onFailure(error) {
       setWebGPUMainFailure(error);
@@ -18199,14 +18404,20 @@ async function startWebGPUMainAppDriver(data, image) {
 }
 
 function startWebGPUMainAppDriverWithDeadline(data, image, timeoutMs = 45000) {
+  const startupToken = { cancelled: false };
+  webgpuMainApp.startToken = startupToken;
   let timer;
   const deadline = new Promise((_, reject) => {
-    timer = window.setTimeout(() => reject(new Error(
-      `WebGPU startup timed out at ${document.body?.dataset?.webgpuMainPending || 'unknown'}`)),
-    timeoutMs);
+    timer = window.setTimeout(() => {
+      startupToken.cancelled = true;
+      reject(new Error(`WebGPU startup timed out at ${document.body?.dataset?.webgpuMainPending || 'unknown'}`));
+    }, timeoutMs);
   });
-  return Promise.race([startWebGPUMainAppDriver(data, image), deadline])
-    .finally(() => window.clearTimeout(timer));
+  return Promise.race([startWebGPUMainAppDriver(data, image, startupToken), deadline])
+    .finally(() => {
+      window.clearTimeout(timer);
+      if (webgpuMainApp.startToken === startupToken) webgpuMainApp.startToken = null;
+    });
 }
 
 function pumpWebGPUMainAppDriver() {
@@ -18446,9 +18657,15 @@ function pumpWebGPUMainAppDriver() {
 
 if (WEBGPU_MAIN_OWNER) {
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) suspendWebGPUMainAppDriver();
+    if (document.hidden) {
+      invalidateWebGPUTitlePrewarm('cancelled');
+      suspendWebGPUMainAppDriver();
+    }
   });
-  window.addEventListener("pagehide", () => suspendWebGPUMainAppDriver({ destroy: true }));
+  window.addEventListener("pagehide", () => {
+    invalidateWebGPUTitlePrewarm('cancelled');
+    suspendWebGPUMainAppDriver({ destroy: true });
+  });
 }
 
 function drawLoop(timestamp = 0, engineDelta = 0) {
@@ -27865,14 +28082,23 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   acquisitionCanvas, map, image, textAtlas, atlasMetrics, gpu,
   headMarkerMaterials, killAssets = {}, markerDomFallbackReady = false,
   bloomEncoder, residualRevision, modules, rendererApi,
-  textResourceOptions = {}, onFailure, onProgress } = {}) {
+  textResourceOptions = {}, prewarmEntry = null, isCurrent = () => true,
+  onFailure, onProgress } = {}) {
   const runtimeApi = window.DvaWebGPUMainRuntime;
   const registryApi = window.DvaWebGPUMainPassRegistry;
   const sceneApi = window.DvaWebGPUMainScene;
   const textOwnerApi = window.DvaWebGPUMainTextResources;
   const markerOwnerApi = window.DvaWebGPUHeadMarkerMaterials;
-  const ownsText = textAtlas === undefined && atlasMetrics === undefined;
-  const ownsMarkers = headMarkerMaterials === undefined;
+  const incomingPrewarm = prewarmEntry?.state === 'ready' &&
+    prewarmEntry.rendererLease?.state === 'ready' &&
+    prewarmEntry.device === prewarmEntry.rendererLease.device ? prewarmEntry : null;
+  if (incomingPrewarm) {
+    textAtlas = incomingPrewarm.textOwner?.textAtlas;
+    atlasMetrics = incomingPrewarm.textOwner?.atlasMetrics;
+    headMarkerMaterials = incomingPrewarm.markerOwner;
+  }
+  const ownsText = !incomingPrewarm && textAtlas === undefined && atlasMetrics === undefined;
+  const ownsMarkers = !incomingPrewarm && headMarkerMaterials === undefined;
   if (!runtimeApi?.create || !registryApi?.create || !sceneApi?.create ||
       mainCanvas !== els.webgpuMainCanvas || expandedCanvas !== els.expandedMapCanvas ||
       !mainCanvas?.getContext || !expandedCanvas?.getContext ||
@@ -27892,7 +28118,10 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     throw new TypeError('Dormant WebGPU main driver needs three owned canvases, map image, atlas, marker resources and failure hook');
   const target = 'main', expandedTarget = 'main-expanded-map';
   const acquisitionTarget = 'main-acquisition-overlay';
-  let runtime, registry, scene, textOwner, markerOwner, destroyed = false;
+  let runtime, registry, scene, textOwner = incomingPrewarm?.textOwner || null,
+    markerOwner = incomingPrewarm?.markerOwner || null, destroyed = false;
+  const rendererLease = incomingPrewarm?.rendererLease || null;
+  const expectedDevice = incomingPrewarm?.device || null;
   let retirement = null;
   let lifecycleGeneration = 0;
   let lastMedicalSfxFrameAt = null;
@@ -27903,6 +28132,10 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     notified = true;
     try { onFailure(error); } catch (_) { /* Preserve the original failure. */ }
   };
+  const requireCurrent = () => {
+    if (typeof isCurrent !== 'function' || !isCurrent())
+      throw new Error('Dormant WebGPU main startup became stale before ownership publication');
+  };
   const destroy = () => {
     if (destroyed) return retirement || Promise.resolve();
     destroyed = true;
@@ -27912,31 +28145,61 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       try { scene?.destroy(); } finally {
         try { await registry?.destroy(); } finally {
           try { markerOwner?.destroy(); } finally {
-            try { textOwner?.destroy(); } finally { runtime?.destroy(); }
+          try { textOwner?.destroy(); } finally {
+            try { runtime?.destroy(); } finally {
+              if (!runtime && rendererLease?.state === 'ready') rendererLease.dispose();
+            }
+          }
           }
         }
       }
     })().catch(notify);
     return retirement;
   };
+  if (incomingPrewarm) {
+    // The driver now owns every object, including an unconsumed lease if its
+    // first await fails. Clearing the title references is one synchronous
+    // ownership transfer before runtime construction begins.
+    incomingPrewarm.transferred = true;
+    incomingPrewarm.state = 'transferred';
+    if (incomingPrewarm.deadlineTimer !== null)
+      window.clearTimeout(incomingPrewarm.deadlineTimer);
+    incomingPrewarm.deadlineTimer = null;
+    incomingPrewarm.textOwner = null;
+    incomingPrewarm.markerOwner = null;
+    if (webgpuTitlePrewarm.current === incomingPrewarm) {
+      webgpuTitlePrewarm.current = null;
+      webgpuTitlePrewarm.generation += 1;
+    }
+  }
   try {
     onProgress?.('gpu-runtime');
     runtime = await runtimeApi.create({ canvas: mainCanvas, target, gpu,
-      ...(rendererApi ? { rendererApi } : {}), onFailure: notify });
+      ...(rendererLease ? { rendererLease, expectedDevice } : {}),
+      ...(!rendererLease && rendererApi ? { rendererApi } : {}),
+      onFailure(error) { notify(error); void destroy(); } });
+    requireCurrent();
     if (runtime.state !== 'ready' || typeof runtime.requestFrame !== 'function' ||
         !runtime.renderer?.device ||
         runtime.device !== runtime.renderer.device)
       throw new Error('Dormant WebGPU main runtime did not own one ready device');
-    if (ownsText) {
+    if (textOwner) {
+      if (textOwner.device !== runtime.device)
+        throw new Error('Prewarmed text owner device differs after renderer transfer');
+    } else if (ownsText) {
       onProgress?.('text-resources');
       textOwner = await textOwnerApi.create({ ...textResourceOptions,
         device: runtime.device });
+      requireCurrent();
       if (textOwner?.device !== runtime.device)
         throw new Error('Dormant WebGPU text resource owner device differs');
       textAtlas = textOwner.textAtlas;
       atlasMetrics = textOwner.atlasMetrics;
     }
-    if (ownsMarkers) {
+    if (markerOwner) {
+      if (markerOwner.device !== runtime.device)
+        throw new Error('Prewarmed marker owner device differs after renderer transfer');
+    } else if (ownsMarkers) {
       onProgress?.('marker-materials');
       markerOwner = markerOwnerApi.create({ device: runtime.device });
       if (markerOwner?.device !== runtime.device ||
@@ -27954,6 +28217,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       acquisitionCanvas, acquisitionTarget,
       onProgress(stage) { onProgress?.(`pass-registry:${stage}`); },
       ...(modules ? { modules } : {}) });
+    requireCurrent();
     if (registry.device !== runtime.device ||
         registry.passes.expandedMap?.canvas !== expandedCanvas ||
         registry.passes.expandedMap?.target !== expandedTarget ||
@@ -27982,11 +28246,13 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
             Number(state.audio.master?.gain?.value) > 0 &&
             !isSensoryBlocked(state.data)
         } });
+      requireCurrent();
       configuredSunbeamAudioContext = context;
     }
     onProgress?.('scene');
     scene = sceneApi.create({ renderer: runtime.renderer,
       passes: registry.passes });
+    requireCurrent();
     if (scene.device !== runtime.device)
       throw new Error('Dormant WebGPU main scene device differs');
   } catch (error) {
@@ -31414,7 +31680,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v27", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v28", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.

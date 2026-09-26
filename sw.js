@@ -5,8 +5,8 @@
 // v520 adds independent Natural Recovery resources and its persistent marker,
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
-const RUNTIME_RELEASE = "webgpu-pure-slices-v89";
-const CACHE_NAME = "dva-static-webgpu-pure-slices-v89";
+const RUNTIME_RELEASE = "webgpu-pure-slices-v90";
+const CACHE_NAME = "dva-static-webgpu-pure-slices-v90";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 const STATIC_ASSETS = [
   "/assets/generated/webgpu-text/atlas.json",
@@ -429,6 +429,7 @@ const STATIC_ASSETS = [
   "/webgpu-heal-astra-prototype.js",
   "/webgpu-heal-astra-sfx.js",
   "/webgpu-sunbeam-e.js",
+  "/webgpu-sunbeam-pro-v2-adapter.js",
   "/webgpu-fighter-energy-e.js",
   "/webgpu-sunbeam-sol-sfx.js",
   "/webgpu-sunbeam-live-overlay.js",
@@ -896,6 +897,7 @@ const BOOT_CRITICAL_ASSETS = new Set([
   "/webgpu-heal-astra-prototype.js",
   "/webgpu-heal-astra-sfx.js",
   "/webgpu-sunbeam-e.js",
+  "/webgpu-sunbeam-pro-v2-adapter.js",
   "/webgpu-fighter-energy-e.js",
   "/webgpu-sunbeam-sol-sfx.js",
   "/webgpu-sunbeam-live-overlay.js",

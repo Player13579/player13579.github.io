@@ -7,11 +7,43 @@
   const schedulerDefault = root.DvaWebGPUMainFrameScheduler || (typeof require === 'function' ? require('./webgpu-main-frame-scheduler.js') : null);
   const DEFAULT_CLEAR = Object.freeze([0, 0, 0, 1]);
 
+  // A prewarmed renderer has one explicit transfer boundary. Before claim,
+  // dispose() is responsible for cancellation; after claim, the runtime owns
+  // destruction. The renderer remains visible for identity checks by callers.
+  function createRendererLease(renderer) {
+    if (!renderer || renderer.state !== 'ready' || !renderer.device) {
+      throw new Error('A ready WebGPU renderer with a device is required');
+    }
+    const device = renderer.device;
+    let state = 'ready';
+    return Object.freeze({
+      renderer,
+      device,
+      get state() { return state; },
+      consume(expectedDevice = device) {
+        if (state !== 'ready') throw new Error(`WebGPU renderer lease is ${state}`);
+        if (renderer.state !== 'ready' || !renderer.device || renderer.device !== device ||
+            expectedDevice !== device) {
+          throw renderer.failure || new Error('WebGPU renderer lease device mismatch or renderer unavailable');
+        }
+        state = 'consumed';
+        return renderer;
+      },
+      dispose() {
+        if (state !== 'ready') return false;
+        state = 'disposed';
+        try { renderer.destroy(); } catch (_) { /* Cancellation must remain idempotent. */ }
+        return true;
+      }
+    });
+  }
+
   async function create(options = {}) {
     const { canvas, target = 'main', rendererApi = rendererDefault,
-      viewportApi = viewportDefault, schedulerApi = schedulerDefault, gpu } = options;
+      viewportApi = viewportDefault, schedulerApi = schedulerDefault, gpu,
+      rendererLease = null } = options;
     if (!canvas || typeof canvas.getContext !== 'function' ||
-        !rendererApi?.create || !viewportApi?.createStableGate || !schedulerApi?.create) {
+        (!rendererLease && !rendererApi?.create) || !viewportApi?.createStableGate || !schedulerApi?.create) {
       throw new TypeError('Main WebGPU canvas and renderer/viewport/scheduler APIs required');
     }
     const gate = viewportApi.createStableGate();
@@ -34,11 +66,19 @@
       try { options.onFailure?.(failure); } catch (_) { /* Preserve the GPU failure. */ }
     }
     try {
-      renderer = await rendererApi.create({ gpu, onFailure: fail,
-        powerPreference: options.powerPreference, deviceDescriptor: options.deviceDescriptor,
-        format: options.format, maxDraws: options.maxDraws });
+      if (rendererLease) {
+        if (typeof rendererLease.consume !== 'function' || rendererLease.state !== 'ready') {
+          throw new Error('Main WebGPU renderer lease is unavailable or already consumed');
+        }
+        // Claim immediately before target registration. No canvas context is
+        // touched while a lease is merely prepared or cancelled.
+        renderer = rendererLease.consume(options.expectedDevice);
+      } else {
+        renderer = await rendererApi.create({ gpu, onFailure: fail,
+          powerPreference: options.powerPreference, deviceDescriptor: options.deviceDescriptor,
+          format: options.format, maxDraws: options.maxDraws });
+      }
       if (disposed || renderer.state !== 'ready') {
-        try { renderer.destroy(); } catch (_) {}
         throw failure || renderer.failure || new Error('Main WebGPU renderer unavailable');
       }
       // A valid initial backing is required for configuration. The stable gate
@@ -161,7 +201,7 @@
       destroy: cleanup
     });
   }
-  const api = Object.freeze({ create });
+  const api = Object.freeze({ create, createRendererLease });
   root.DvaWebGPUMainRuntime = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);
