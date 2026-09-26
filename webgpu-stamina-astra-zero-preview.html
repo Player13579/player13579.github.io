@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101820">
+<link rel="icon" href="data:,">
+<title>スタミナ回復 E · Astra 独立設計プレビュー</title>
+<script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embed');</script>
+<style>
+:root{color-scheme:dark;font:15px/1.5 system-ui,sans-serif;background:#101820;color:#edf1ed}*{box-sizing:border-box}body{margin:0}main{width:min(1000px,100%);margin:auto;padding:18px 12px 32px}h1{font-size:clamp(21px,4vw,30px);margin:0 0 4px}.note{color:#bbc7c5;margin:0 0 14px;font-size:13px}.stage{width:100%;aspect-ratio:900/520;border:1px solid #39484a;background:#182127;overflow:hidden}canvas{display:block;width:100%;height:100%}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}.controls button,.controls select{background:#26363b;color:#f0eee8;border:1px solid #647271;border-radius:5px;padding:7px 10px}.controls label{display:inline-flex;align-items:center;gap:5px;font-size:13px}.controls input{accent-color:#f08d6b}#status{min-height:1.5em;color:#c9d6d3;font-size:13px;margin:8px 0 0}.legend{display:flex;flex-wrap:wrap;gap:12px;color:#bbc7c5;font-size:12px;margin-top:7px}.swatch{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px}.sw1{background:#f08d6b}.sw2{background:#fff1d8}.sw3{background:#b95143}
+html.embed,html.embed body{width:100%;height:100%;overflow:hidden}html.embed main{width:100%;height:100%;margin:0;padding:0}html.embed h1,html.embed .note,html.embed .legend,html.embed .controls,html.embed #status{display:none}html.embed .stage{width:100%;height:100%;aspect-ratio:auto;border:0}html.embed canvas{width:100%;height:100%}
+</style></head>
+<body><main>
+<h1>スタミナ回復 E</h1>
+<p class="note">独立設計の実装プレビュー · WebGPU描画 · H64 / H100実寸切替 · 未受入候補</p>
+<div class="stage"><canvas id="preview" aria-label="スタミナ回復エフェクトのWebGPUプレビュー"></canvas></div>
+<div class="legend"><span><i class="swatch sw1"></i>折れた面</span><span><i class="swatch sw2"></i>移動する折り返し</span><span><i class="swatch sw3"></i>向こう側の面</span></div>
+<div class="controls">
+<button id="restart">最初から再生</button><button id="pause">一時停止</button>
+<label>身長 <select id="height"><option value="64">H64</option><option value="100" selected>H100</option></select></label>
+<label>再生倍率 <select id="rate"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+<label><input id="acc2" type="checkbox">移動ACC2</label><label><input id="reduced" type="checkbox">reduced motion</label>
+<label><input id="glow" type="checkbox" checked>局所glow</label>
+<label><input id="l1" type="checkbox" checked>L1</label><label><input id="l2" type="checkbox" checked>L2</label><label><input id="l3" type="checkbox" checked>L3</label>
+<button id="sound">SFXを再生（verifyでは無音）</button>
+</div><p id="status" role="status">WebGPUを初期化しています…</p>
+<script src="webgpu-stamina-astra-zero-preview.js?v=stamina-zero-20260927-1"></script>
+</main></body></html>

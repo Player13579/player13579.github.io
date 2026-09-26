@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  // Gallery entries are limited to the three completed Astra designs.
+  // Keep every replayable Astra-designed version visible, including unaccepted trials.
   const entries = [{
     id: 'heal-astra-prototype',
     title: 'ヒール · Astra版',
@@ -17,6 +17,10 @@
     id: 'luck-astra-clean-v4', title: '幸運 · Astra v4',
     detail: '独立制作した最新版。ユーザー評価は良好。聴感と本編接続は未受入。',
     status: 'ユーザー評価良好・本編未採用', source: 'webgpu-luck-astra-v4.js', page: 'luck-astra-v4-preview.html'
+  }, {
+    id: 'stamina-astra-zero-v1', title: 'スタミナ回復 · Astraゼロ設計 v1',
+    detail: '実WebGPUで全寿命の連続再生を確認。実寸の形と聴感の品質は未受入。本編接続は未受入。',
+    status: '試作・品質未受入・本編未採用', source: 'webgpu-stamina-astra-zero-preview.js', page: 'webgpu-stamina-astra-zero-preview.html'
   }];
   const params = new URLSearchParams(location.search);
   let selectedIndex = 0;
