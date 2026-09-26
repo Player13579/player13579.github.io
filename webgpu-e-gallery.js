@@ -27,7 +27,10 @@
     { id: 'stamina-astra', title: 'スタミナ回復', versions: [version('stamina-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-stamina-astra-zero-preview.html', 'webgpu-stamina-astra-zero-preview.js', '試作・品質未達・本編未採用', '実WebGPUで全寿命の連続再生を確認。実寸の形と聴感が品質基準に未達。')] },
     { id: 'mana-astra', title: 'マナ獲得', versions: [version('mana-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '実WebGPUの自動ループを確認。滑らかさ、実寸の形と聴感が品質基準に未達。')] },
     { id: 'emp-astra', title: 'EMP', versions: [version('emp-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-emp-astra-zero-preview.html', 'webgpu-emp-astra-zero-preview.js', '試作・品質未達・本編未採用', '充填・放出・共振・相殺・蓄積を実WebGPUで再生。実寸の形と聴感が品質基準に未達。', 'effect-H64')] },
-    { id: 'barrier-astra', title: 'バリア', versions: [version('barrier-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-barrier-astra-zero-preview.html', 'webgpu-barrier-astra-zero-preview.js', '試作・品質未達・本編未採用', '成立・持続・吸収・耐久破壊・バスト解除を実WebGPUで再生。実寸の形と聴感が品質基準に未達。')] }
+    { id: 'barrier-astra', title: 'バリア', versions: [
+      version('barrier-astra-zero-v2', 'Astraゼロ設計 v2', 'webgpu-barrier-astra-zero-v2-preview.html', 'webgpu-barrier-astra-zero-v2-preview.js', '試作・品質未達・本編未採用', '包囲面の成立・吸収・耐久破壊・バスト解除を実WebGPUで再生。俳優表示と全寿命は確認済みだが、4枝の形状差と面の強さが品質基準に未達。'),
+      version('barrier-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-barrier-astra-zero-preview.html', 'webgpu-barrier-astra-zero-preview.js', '試作・品質未達・本編未採用', '成立・持続・吸収・耐久破壊・バスト解除を実WebGPUで再生。実寸の形と聴感が品質基準に未達。')
+    ] }
   ].map(group => Object.freeze({ ...group, versions: Object.freeze(group.versions) }));
   const params = new URLSearchParams(location.search);
   let selectedIndex = 0;
