@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#12171c"><title>スタミナ獲得 E · Astra ゼロ設計 v2</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#12171c;color:#edf0e9;font:15px/1.5 system-ui,sans-serif}main{max-width:1040px;margin:24px auto;padding:0 20px}h1{font-size:23px;font-weight:550;margin:0 0 4px}.note{margin:0 0 14px;color:#aeb9b8;font-size:13px}.stage{height:min(68vh,620px);min-height:390px;border:1px solid #394249;background:#181e23}canvas{display:block;width:100%;height:100%}.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 0}.controls button{background:#263238;color:#f1f0e8;border:1px solid #657171;border-radius:5px;padding:7px 12px}#status{font-size:13px;color:#bdc9c5;min-height:1.5em}.legend{font-size:12px;color:#aeb9b8}.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin:0 5px 0 12px;background:#d7e85e}.dot:first-child{margin-left:0;background:#93a83d}.dot:last-of-type{background:#fff7cb}.verify{color:#c8e39b}
+html.embed,html.embed body{width:100%;height:100%;overflow:hidden}html.embed main{width:100%;height:100%;max-width:none;margin:0;padding:0}html.embed h1,html.embed .note,html.embed .controls,html.embed .legend{display:none}html.embed .stage{width:100%;height:100%;min-height:0;border:0}html.embed canvas{width:100%;height:100%}
+</style></head><body><main>
+<h1>スタミナ獲得 E · Astra ゼロ設計 v2</h1>
+<p class="note">H64 actor · WebGPU procedural preview · loop playback · prototype, visual quality not accepted</p>
+<div class="stage"><canvas id="preview" aria-label="胴へ流れ込み全身へ広がるスタミナ獲得エフェクト"></canvas></div>
+<div class="controls"><button id="sound">SFXを有効化（通常再生）</button><button id="pause">一時停止</button><span id="status">WebGPU初期化中…</span></div>
+<div class="legend"><i class="dot"></i>体側の厚い流入襞 <i class="dot"></i>身体に沿う充填前線 <i class="dot"></i>局所発光</div>
+<script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embed');</script><script src="webgpu-stamina-astra-zero-v2-preview.js"></script></main></body></html>

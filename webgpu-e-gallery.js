@@ -24,7 +24,10 @@
       version('luck-astra-clean-v3', 'Astra v3', 'luck-astra-v3-preview.html', 'webgpu-luck-astra-v3.js', '却下・再生可能・本編未採用', '独立設計の旧版。翼の見え方により却下。品質と本編接続は未受入.'),
       version('luck-astra-clean-v2', 'Astra v2', 'luck-astra-v2-preview.html', 'webgpu-luck-astra-v2.js', '却下・再生可能・本編未採用', '独立設計の旧版。翼の見え方により却下。品質と本編接続は未受入.')
     ] },
-    { id: 'stamina-astra', title: 'スタミナ回復', versions: [version('stamina-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-stamina-astra-zero-preview.html', 'webgpu-stamina-astra-zero-preview.js', '試作・品質未達・本編未採用', '実WebGPUで全寿命の連続再生を確認。実寸の形と聴感が品質基準に未達。')] },
+    { id: 'stamina-astra', title: 'スタミナ回復', versions: [
+      version('stamina-astra-zero-v2', 'Astraゼロ設計 v2', 'webgpu-stamina-astra-zero-v2-preview.html', 'webgpu-stamina-astra-zero-v2-preview.js', '試作・品質未達・本編未採用', '左右の流入面から全身への充填を狙った新案。WebGPU再生は確認済みだが、H64で面・受け渡し・前線が十分に読めず品質未達。'),
+      version('stamina-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-stamina-astra-zero-preview.html', 'webgpu-stamina-astra-zero-preview.js', '試作・品質未達・本編未採用', '実WebGPUで全寿命の連続再生を確認。実寸の形と聴感が品質基準に未達。')
+    ] },
     { id: 'mana-astra', title: 'マナ獲得', versions: [version('mana-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '実WebGPUの自動ループを確認。滑らかさ、実寸の形と聴感が品質基準に未達。')] },
     { id: 'emp-astra', title: 'EMP', versions: [version('emp-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-emp-astra-zero-preview.html', 'webgpu-emp-astra-zero-preview.js', '試作・品質未達・本編未採用', '充填・放出・共振・相殺・蓄積を実WebGPUで再生。実寸の形と聴感が品質基準に未達。', 'effect-H64')] },
     { id: 'barrier-astra', title: 'バリア', versions: [
