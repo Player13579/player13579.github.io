@@ -30679,6 +30679,77 @@ const version = "overheal-body-v913";
 }
 
 const criticalMapImageLoads = new WeakMap();
+const criticalFacilityImageLoads = new WeakMap();
+
+function loadCriticalFacilityTexture(image, source) {
+  const existing = criticalFacilityImageLoads.get(image);
+  if (existing?.source === source && existing.status !== "cancelled") return;
+  image.fetchPriority = "high";
+  let retries = 0;
+  let retryTimer = null;
+  let watchdog = null;
+  const load = { source, status: "loading" };
+  const clearTimer = (timer) => {
+    if (timer !== null) window.clearTimeout(timer);
+  };
+  const clearWatchdog = () => {
+    if (watchdog !== null) window.clearTimeout(watchdog);
+    watchdog = null;
+  };
+  const detach = () => {
+    image.removeEventListener("load", onLoad);
+    image.removeEventListener("error", onError);
+  };
+  const fail = () => {
+    if (load.status !== "loading") return;
+    load.status = "failed";
+    clearWatchdog();
+    clearTimer(retryTimer);
+    retryTimer = null;
+    detach();
+    setWebGPUMainFailure(new Error(`Required facility task material could not be loaded: ${source}`));
+  };
+  const retry = () => {
+    if (load.status !== "loading") return;
+    clearWatchdog();
+    if (image.complete && image.naturalWidth > 0) {
+      load.status = "loaded";
+      detach();
+      return;
+    }
+    if (retryTimer !== null) return;
+    if (retries >= 3) {
+      fail();
+      return;
+    }
+    retries += 1;
+    retryTimer = window.setTimeout(() => {
+      retryTimer = null;
+      start();
+    }, [300, 900, 2000][retries - 1]);
+  };
+  const onLoad = () => {
+    if (load.status !== "loading") return;
+    if (image.naturalWidth > 0) {
+      clearWatchdog();
+      load.status = "loaded";
+      detach();
+    } else retry();
+  };
+  const onError = () => { if (load.status === "loading") retry(); };
+  const start = () => {
+    if (load.status !== "loading") return;
+    const separator = source.includes("?") ? "&" : "?";
+    image.src = retries ? `${source}${separator}facilityRetry=${retries}` : source;
+    watchdog = window.setTimeout(() => {
+      if (!(image.complete && image.naturalWidth > 0)) retry();
+    }, 15000);
+  };
+  criticalFacilityImageLoads.set(image, load);
+  image.addEventListener("load", onLoad);
+  image.addEventListener("error", onError);
+  start();
+}
 
 function loadCriticalMapTexture(image, source) {
   const existing = criticalMapImageLoads.get(image);
@@ -30779,8 +30850,17 @@ function loadGameplayTextures() {
   for (const [entry, source] of textures.pendingSources || []) {
     if (criticalMaps.has(entry)) loadCriticalMapTexture(entry, source);
   }
+  // These two bounded task-station materials are required for the facility
+  // scene and must begin before the large optional gameplay asset queue.
+  const criticalFacility = new Set([
+    textures.taskUploadDigital,
+    textures.taskDownloadDigital
+  ]);
   for (const [entry, source] of textures.pendingSources || []) {
-    if (!criticalMaps.has(entry)) entry.src = source;
+    if (criticalFacility.has(entry)) loadCriticalFacilityTexture(entry, source);
+  }
+  for (const [entry, source] of textures.pendingSources || []) {
+    if (!criticalMaps.has(entry) && !criticalFacility.has(entry)) entry.src = source;
   }
 }
 
@@ -31598,7 +31678,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v31", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v32", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
