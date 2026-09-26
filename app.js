@@ -2378,6 +2378,7 @@ const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   submittedFrame: null, submittedSunbeamHands: new Map(),
   requestSerial: 0, lastSoundRequestSerial: 0,
   acquisitionCanvas: null, startToken: null };
+const webgpuStartupTiming = { nextAttemptId: 0, current: null };
 // One title-scoped renderer owner can be transferred into the main runtime
 // after Play has established a game session and both canvas handoffs finish.
 const webgpuTitlePrewarm = { current: null, generation: 0, playIntent: 0,
@@ -18348,6 +18349,14 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
   const map = data.map;
   const roomId = state.roomId;
   const sessionGeneration = state.roomSessionGeneration;
+  let startupTiming = null;
+  if (WEBGPU_MAIN_VERIFY_ROUTE) {
+    const attemptId = ++webgpuStartupTiming.nextAttemptId;
+    startupTiming = { attemptId, mapId: String(map.id),
+      roomSessionGeneration: sessionGeneration, marks: [], frozen: false };
+    webgpuStartupTiming.current = startupTiming;
+    window.__dvaStartupPassTiming = startupTiming;
+  }
   const mainCanvas = els.webgpuMainCanvas;
   const sameSession = () => !startupToken.cancelled &&
     generation === webgpuMainApp.generation &&
@@ -18390,6 +18399,16 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
     ...(prewarmEntry ? { prewarmEntry } : {}),
     isCurrent: sameSession,
     onProgress(stage) { setWebGPUMainPendingDiagnostic(`startup:${stage}`); },
+    ...(startupTiming ? { onTiming(mark) {
+      if (startupTiming.frozen || webgpuStartupTiming.current !== startupTiming ||
+          startupTiming.marks.length >= 32 || !mark ||
+          typeof mark.name !== 'string' || !Number.isFinite(mark.atMs) ||
+          (mark.durationMs !== undefined &&
+            (!Number.isFinite(mark.durationMs) || mark.durationMs < 0))) return;
+      startupTiming.marks.push(Object.freeze({ name: mark.name,
+        atMs: mark.atMs,
+        ...(mark.durationMs === undefined ? {} : { durationMs: mark.durationMs }) }));
+    } } : {}),
     onFailure(error) {
       setWebGPUMainFailure(error);
     } });
@@ -18595,6 +18614,8 @@ function pumpWebGPUMainAppDriver() {
       rect: Object.freeze({ left: rect.left, top: rect.top,
         width: rect.width, height: rect.height }) });
     webgpuMainApp.visible = true;
+    if (webgpuStartupTiming.current && !webgpuStartupTiming.current.frozen)
+      webgpuStartupTiming.current.frozen = true;
     mainCanvas.style.pointerEvents = "auto";
     els.canvas.style.pointerEvents = WEBGPU_MAIN_OWNER ? "none" : "auto";
     if (webgpuMainApp.driver.commitSunbeamVisibleFrame(
@@ -27996,7 +28017,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   headMarkerMaterials, killAssets = {}, markerDomFallbackReady = false,
   bloomEncoder, residualRevision, modules, rendererApi,
   textResourceOptions = {}, prewarmEntry = null, isCurrent = () => true,
-  onFailure, onProgress } = {}) {
+  onFailure, onProgress, onTiming } = {}) {
   const runtimeApi = window.DvaWebGPUMainRuntime;
   const registryApi = window.DvaWebGPUMainPassRegistry;
   const sceneApi = window.DvaWebGPUMainScene;
@@ -28129,6 +28150,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       map, image, textAtlas, atlasMetrics, expandedCanvas, expandedTarget,
       acquisitionCanvas, acquisitionTarget,
       onProgress(stage) { onProgress?.(`pass-registry:${stage}`); },
+      ...(typeof onTiming === 'function' ? { onTiming } : {}),
       ...(modules ? { modules } : {}) });
     requireCurrent();
     if (registry.device !== runtime.device ||
@@ -31576,7 +31598,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v30", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v31", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.

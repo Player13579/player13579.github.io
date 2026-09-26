@@ -128,7 +128,7 @@
   async function create({ renderer, map, image, patches, textAtlas, atlasMetrics,
     expandedCanvas = null, expandedTarget = 'main-expanded-map',
     acquisitionCanvas = null, acquisitionTarget = 'main-acquisition-overlay',
-    modules = defaults, onProgress = () => {} } = {}) {
+    modules = defaults, onProgress = () => {}, onTiming = () => {} } = {}) {
     if (!renderer || renderer.state !== 'ready' || !renderer.device ||
         typeof renderer.format !== 'string' || !renderer.format ||
         typeof renderer.createGravityHazardPasses !== 'function')
@@ -176,9 +176,24 @@
     if (absent.length) throw new Error(`Missing main pass modules: ${absent.join(', ')}`);
     if (typeof onProgress !== 'function')
       throw new TypeError('Main pass registry progress callback must be a function');
+    if (typeof onTiming !== 'function')
+      throw new TypeError('Main pass registry timing callback must be a function');
     const owned = [], readiness = [], pendingReadiness = new Set(), passes = Object.create(null);
     let awaitingReadiness = false;
     const progress = stage => onProgress(stage);
+    const timingClock = root.performance && typeof root.performance.now === 'function'
+      ? () => root.performance.now() : null;
+    const timing = (name, startedAt = null) => {
+      if (!timingClock) return null;
+      const atMs = timingClock();
+      if (!Number.isFinite(atMs)) return null;
+      const durationMs = startedAt === null ? null : Math.max(0, atMs - startedAt);
+      if (durationMs !== null && !Number.isFinite(durationMs)) return null;
+      const mark = Object.freeze({ name, atMs,
+        ...(durationMs === null ? {} : { durationMs }) });
+      try { onTiming(mark); } catch (_) { /* Diagnostics cannot affect pass creation. */ }
+      return atMs;
+    };
     const progressReadiness = () => progress(`ready:${[...pendingReadiness].join('+') || 'none'}`);
     const add = (name, value, method) => {
       if (!value || typeof value[method] !== 'function' ||
@@ -225,8 +240,25 @@
       add('shapes', modules.shapes.create({ device: renderer.device,
         format: renderer.format }), 'enqueue');
       progress('field');
-      add('map', await modules.field.create({ owner: renderer, map, image,
-        patches }), 'enqueue');
+      const fieldStartedAt = timing('field.invoke');
+      let fieldPromise;
+      try {
+        fieldPromise = modules.field.create({ owner: renderer, map, image, patches });
+      } catch (error) {
+        timing('field.rejected', fieldStartedAt);
+        throw error;
+      }
+      timing('field.returned-promise', fieldStartedAt);
+      let fieldPass;
+      try {
+        fieldPass = await fieldPromise;
+        timing('field.resolved', fieldStartedAt);
+      } catch (error) {
+        timing('field.rejected', fieldStartedAt);
+        throw error;
+      }
+      add('map', fieldPass, 'enqueue');
+      const preSunbeamConstructorsStartedAt = timing('pre-sunbeam-constructors.begin');
       progress('passes');
       add('environmentE', modules.environmentE.create({ device: renderer.device,
         format: renderer.format }), 'record');
@@ -299,8 +331,26 @@
           } } : {}),
           record: pass.record, ready: pass.ready, destroy: pass.destroy }), 'record');
       }
+      timing('pre-sunbeam-constructors.end', preSunbeamConstructorsStartedAt);
       progress('sunbeam');
-      const sunbeam = await modules.sunbeamE.create({ renderer });
+      const sunbeamStartedAt = timing('sunbeam.invoke');
+      let sunbeamPromise;
+      try {
+        sunbeamPromise = modules.sunbeamE.create({ renderer });
+      } catch (error) {
+        timing('sunbeam.threw', sunbeamStartedAt);
+        throw error;
+      }
+      timing('sunbeam.returned', sunbeamStartedAt);
+      let sunbeam;
+      try {
+        sunbeam = await sunbeamPromise;
+        timing('sunbeam.resolved', sunbeamStartedAt);
+      } catch (error) {
+        timing('sunbeam.rejected', sunbeamStartedAt);
+        throw error;
+      }
+      const postSunbeamConstructorsStartedAt = timing('post-sunbeam-constructors.begin');
       progress('passes-after-sunbeam');
       add('sunbeamE', sunbeam, 'record');
       add('fighterEnergyE', modules.fighterEnergyE.create(), 'record');
@@ -493,11 +543,20 @@
       // create() is already asynchronous (the field pass is asynchronous),
       // so complete optional GPU pipeline compilation before publishing the
       // registry to a caller that can record the first frame.
+      timing('post-sunbeam-constructors.end', postSunbeamConstructorsStartedAt);
       awaitingReadiness = true;
       progressReadiness();
-      await Promise.all(readiness);
+      const readinessStartedAt = timing('readiness.await.begin');
+      try {
+        await Promise.all(readiness);
+      } catch (error) {
+        timing('readiness.await.rejected', readinessStartedAt);
+        throw error;
+      }
+      timing('readiness.await.end', readinessStartedAt);
       awaitingReadiness = false;
       progress('complete');
+      timing('registry.ready');
       let destroyed = false;
       const status = coverage(modules.scene, passes);
       return Object.freeze({
