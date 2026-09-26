@@ -13,7 +13,10 @@
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1) =>
     Object.freeze({ id, title, page, source, status, detail, anchor, zoom });
   const entries = [
-    { id: 'heal-astra', title: 'ヒール', versions: [version('heal-astra-prototype', 'Astra版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '品質合格・採用済み', '採用済みのヒール。WebGPUで自動ループ再生します。', 'actor-H64', 0.7937)] },
+    { id: 'heal-astra', title: 'ヒール', versions: [
+      version('heal-astra-prototype', 'Astra版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '品質合格・採用済み', '採用済みのヒール。WebGPUで自動ループ再生します。', 'actor-H64', 0.7937),
+      version('heal-webgpu-20260924', '旧版（9月24日）', 'heal-webgpu-preview.html', 'webgpu-heal-e.js', '旧版・品質不採用・本編未採用', 'Astra版より前のヒール。比較用にWebGPUで再生できます。現行ヒールには使用しません。', 'actor-H64', 0.7937)
+    ] },
     { id: 'sunbeam-astra', title: 'サンビーム', versions: [
       version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', '品質合格・採用済み・本編接続待ち', '手元から伝播し対象へ届く最新版。Eとして採用済み。本編の実イベント接続は未完了。', 'effect-H64'),
       version('sunbeam-astra-clean-v2', 'Astra v2', 'sunbeam-astra-clean-v2-preview.html', 'webgpu-sunbeam-astra-clean-v2.js', '試作・品質未受入・本編未採用', '独立設計の旧版。再生可能。品質と本編接続は未受入.', 'effect-H64'),

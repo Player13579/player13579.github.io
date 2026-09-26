@@ -2,6 +2,7 @@
   'use strict';
   const params = new URLSearchParams(location.search);
   const verify = params.has('verify');
+  if (params.has('embed')) document.body.classList.add('embed');
   const canvas = document.getElementById('heal');
   const status = document.getElementById('status');
   const WIDTH = 980, HEIGHT = 620, DURATION = 12000;
@@ -22,7 +23,7 @@
   const fixedPhase = verify && params.has('phase')
     ? Math.max(0, Math.min(DURATION - 1, Number(params.get('phase')) * 1000)) : null;
   const requestedZoom = Number(params.get('zoom'));
-  const zoom = verify && fixedPhase !== null && params.has('zoom') &&
+  const zoom = (params.has('embed') || (verify && fixedPhase !== null)) && params.has('zoom') &&
     Number.isFinite(requestedZoom) && requestedZoom >= 0.5 && requestedZoom <= 3
     ? requestedZoom : GAMEPLAY_ZOOM;
   const reducedMotion = params.get('reduced') === '1';
