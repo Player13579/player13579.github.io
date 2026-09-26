@@ -30,7 +30,7 @@ function upload(list){if(!list.length)return false;device.queue.writeBuffer(mesh
 function render(age){if(!device)return;resize();const w=canvas.width,h=canvas.height,H=64,cx=w*.5,foot=h*.63,bodyCenter=foot-H*.5;const sample=verticesAt(branch.value,age);if(!sample)return;const f=sample.s.phase;params.set([w,h,cx,bodyCenter,H,age,f.bandCenter,debugActorMode==='texture'?-2:debugActor?-1:f.light]);device.queue.writeBuffer(uniform,0,params);
  const encoder=device.createCommandEncoder({label:'Barrier v2 submitted lifecycle frame'}),view=context.getCurrentTexture().createView();const pass=encoder.beginRenderPass({colorAttachments:[{view,clearValue:{r:.025,g:.040,b:.055,a:1},loadOp:'clear',storeOp:'store'}]});pass.setBindGroup(0,meshBind);
  if(!debugActor&&upload(sample.back)){pass.setPipeline(meshPipeline);pass.setVertexBuffer(0,meshBuffer);pass.draw(sample.back.length/7);}
- pass.setPipeline(actorPipeline);pass.setBindGroup(0,actorBind);pass.draw(6);
+ if(debugActor){pass.setPipeline(actorPipeline);pass.setBindGroup(0,actorBind);pass.draw(6);}
  if(!debugActor&&upload(sample.front)){pass.setPipeline(meshPipeline);pass.setBindGroup(0,meshBind);pass.setVertexBuffer(0,meshBuffer);pass.draw(sample.front.length/7);}pass.end();device.queue.submit([encoder.finish()]);frame++;
  drawReceipt={kind:'submitted-frame',frame,branch:sample.s.branch,ageMs:age,actorHeight:64,devicePixelRatio:1,visibleAreaRatio:null,viewSize:[w,h],triangleCount:(sample.back.length+sample.front.length)/21};const ev=window.__barrierV2;Object.assign(ev,{frame,branch:sample.s.branch,ageMs:age,drawReceipt,phases:sample.s.phase,layers:{W1:true,W2:true,W3:true,O1:true},soundLocked:verify,audioEvents});
 }
