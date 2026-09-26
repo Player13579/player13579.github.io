@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101820"><link rel="icon" href="data:,">
+<title>EMP E · Astra独立設計プレビュー</title>
+<style>
+:root{color-scheme:dark;font:15px/1.5 system-ui,sans-serif;background:#101820;color:#edf1ed}*{box-sizing:border-box}body{margin:0}main{width:min(1000px,100%);margin:auto;padding:18px 12px 32px}h1{font-size:clamp(21px,4vw,30px);margin:0 0 4px}.note{color:#bbc7c5;margin:0 0 14px;font-size:13px}.stage{width:100%;aspect-ratio:900/520;border:1px solid #39484a;background:#182127;overflow:hidden}canvas{display:block;width:100%;height:100%}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}.controls button,.controls select{background:#26363b;color:#f0eee8;border:1px solid #647271;border-radius:5px;padding:7px 10px}.controls label{display:inline-flex;align-items:center;gap:5px;font-size:13px}.controls input{accent-color:#79b9ad}#status{min-height:1.5em;color:#c9d6d3;font-size:13px;margin:8px 0 0}.legend{display:flex;flex-wrap:wrap;gap:12px;color:#bbc7c5;font-size:12px;margin-top:7px}.swatch{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px}.sw1{background:#77c2b5}.sw2{background:#fff5e6}.sw3{background:#4a8da0}html.embed,html.embed body{width:100%;height:100%;margin:0;overflow:hidden}html.embed body{background:#101820}html.embed main{width:100%;height:100%;margin:0;padding:0}html.embed main>*:not(.stage){display:none!important}html.embed .stage{width:100vw;height:100dvh;min-height:100vh;aspect-ratio:auto;border:0;background:#101820}
+</style><script>if(new URLSearchParams(location.search).has("embed"))document.documentElement.classList.add("embed");</script></head><body><main>
+<h1>EMP E</h1><p class="note">Astra独立設計の隔離プレビュー · WebGPU · 合格・本編接続は未実施</p>
+<div class="stage"><canvas id="preview" aria-label="EMP EのWebGPUプレビュー"></canvas></div>
+<div class="legend"><span><i class="swatch sw1"></i>偏極面</span><span><i class="swatch sw2"></i>内部の厚み</span><span><i class="swatch sw3"></i>phase差</span></div>
+<div class="controls">
+<button id="restart">最初から再生</button><button id="pause">一時停止</button>
+<label>branch <select id="branch"><option value="charge">charge</option><option value="release">single release</option><option value="resonance">resonance（局所断面）</option><option value="cancel">cancel（局所断面）</option><option value="storage">storage lock（preview）</option></select></label>
+<label>phase <select id="polarity"><option value="1">positive</option><option value="-1">negative</option></select></label>
+<label>axis <select id="axis"><option value="0">0°</option><option value="45">45°</option><option value="90">90°</option><option value="135">135°</option></select></label>
+<label>H <select id="height"><option value="64">64 CSS px</option><option value="100">100 CSS px</option></select></label>
+<label>age <input id="time" type="range" min="0" max="1000" value="0" step="1"><output id="timeValue">0.000</output></label>
+<label>rate <select id="rate"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+<label><input id="acc2" type="checkbox">移動ACC2</label><label><input id="reduced" type="checkbox">reduced motion</label>
+<label><input id="glow" type="checkbox" checked>局所glow</label>
+<label><input id="l1" type="checkbox" checked>L1</label><label><input id="l2" type="checkbox" checked>L2</label><label><input id="l3" type="checkbox" checked>L3</label>
+<button id="sound">SFXプレビューを有効化（verifyでは無音）</button>
+</div><p id="status" role="status">WebGPUを初期化しています…</p>
+<script src="webgpu-emp-astra-zero-preview.js?v=emp-astra-zero-20260927-1"></script>
+</main></body></html>
+

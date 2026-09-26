@@ -25,6 +25,10 @@
     id: 'mana-astra-zero-v1', title: 'マナ獲得 · Astraゼロ設計 v1',
     detail: '実WebGPUの自動ループを確認。再生の滑らかさ、実寸の形と聴感の品質は未受入。本編接続は未受入。',
     status: '試作・品質未受入・本編未採用', source: 'webgpu-mana-astra-zero-preview.js', page: 'webgpu-mana-astra-zero-preview.html'
+  }, {
+    id: 'emp-astra-zero-v1', title: 'EMP · Astraゼロ設計 v1',
+    detail: '充填・放出・共振・相殺・蓄積の実WebGPU再生を確認。実寸の形と聴感の品質は未受入。本編接続は未受入。',
+    status: '試作・品質未受入・本編未採用', source: 'webgpu-emp-astra-zero-preview.js', page: 'webgpu-emp-astra-zero-preview.html'
   }];
   const params = new URLSearchParams(location.search);
   let selectedIndex = 0;
