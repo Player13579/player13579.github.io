@@ -26058,25 +26058,6 @@ function naturalRecoveryMarkerGlow(activeState, player) {
     : NATURAL_RECOVERY_MARKER_GLOW;
 }
 
-function drawAromaNaturalRecoveryMarkerEffect(markerX, markerY, time, activeState) {
-  if (!activeState?.naturalRecovery || !activeState?.aroma || ctx.globalAlpha <= 0) return false;
-  const image=state.textures.aromaScentTransport;
-  if (!image?.complete || image.naturalWidth!==400 || image.naturalHeight!==640) return false;
-  const phase=prefersReducedMotion()?8:(((time*.36)%1+1)%1)*24;
-  const first=Math.floor(phase),blend=phase-first;
-  // Static actual material stays anchored beside the shared recovery marker.
-  // Baked overlays carry internal upward transport and soft local bending.
-  const width=17.5,height=28,x=markerX+8-width/2,y=markerY-3-height/2;
-  const paintScentCell=(index,weight)=>{
-    const sx=(index%5)*80,sy=Math.floor(index/5)*128;
-    ctx.globalAlpha=alpha*weight;
-    ctx.drawImage(image,sx,sy,80,128,x,y,width,height);
-  };
-  ctx.save();ctx.globalCompositeOperation='lighter';const alpha=ctx.globalAlpha;
-  paintScentCell(0,1);paintScentCell(first+1,1-blend);if(blend>0)paintScentCell((first+1)%24+1,blend);
-  ctx.restore();return true;
-}
-
 function drawFloraInvisibleGeneratedEffect(effect, progress) {
   if (!floraInvisibleSelfVisibility(effect, state.data)) return false;
   const key = "flora-invisible-ate-v527";
@@ -26099,42 +26080,6 @@ function drawFloraInvisibleGeneratedEffect(effect, progress) {
   });
   ctx.restore();
   return true;
-}
-
-function drawBurningStatusMarkerMaterial(sprite, markerX, markerY, size, time, phaseOffset = 0) {
-  if (ctx.globalAlpha <= 0) return true;
-  const image = state.textures.fireMaterialTransport;
-  if (!image?.complete || image.naturalWidth !== 2304 || image.naturalHeight !== 2304) {
-    // Preserve the existing decoded fire marker while its transport atlas loads.
-    drawBenefitMaterialPart(sprite, size, 0, 0, 1, 1, markerX, markerY);
-    return true;
-  }
-  const phase = prefersReducedMotion() ? 8 : (((time * .72 + phaseOffset) % 1 + 1) % 1) * 32;
-  const first = Math.floor(phase), blend = phase - first;
-  ctx.save();
-  const alpha = ctx.globalAlpha;
-  const paint = (index, weight) => {
-    if (weight <= 0) return;
-    ctx.globalAlpha = alpha * weight;
-    ctx.drawImage(image, (index % 6) * 384, Math.floor(index / 6) * 384, 384, 384,
-      markerX - size / 2, markerY - size / 2, size, size);
-  };
-  // The authored roots stay fixed; only material-local flame density and upper
-  // bending travel through the existing 32-phase atlas, including its seam.
-  paint(0, 1);
-  paint(first + 1, (1 - blend) * .9);
-  if (blend > 0) paint((first + 1) % 32 + 1, blend * .9);
-  ctx.restore();
-  return true;
-}
-
-
-function drawPoisonStatusMarkerMaterial(sprite, x, y, size, time, phase) {
-  if(ctx.globalAlpha<=0||!sprite?.complete||sprite.naturalWidth!==1024||sprite.naturalHeight!==640)return false;
-  const index=prefersReducedMotion()?32:Math.floor((((time/3.2+phase)%1+1)%1)*32)%32;
-  // Exactly one warped membrane, sampled in atlas source-pixel coordinates.
-  // The receiving marker's size/alpha/anchor and actor clock remain unchanged.
-  ctx.save();ctx.drawImage(sprite,(index%8)*128,Math.floor(index/8)*128,128,128,x-size/2,y-size/2,size,size);ctx.restore();return true;
 }
 
 // Authored poses use a fixed cell-local origin; undeclared identities and directions retain their established renderer.
@@ -31631,7 +31576,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v29", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v30", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
