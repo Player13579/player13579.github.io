@@ -25065,66 +25065,6 @@ function selectedAttackTargetWebGPUScene(data) {
   return target ? renderedPlayer(target) : null;
 }
 
-function drawLuminousFeathers(player) {
-  if (!player.luminousActive || !player.alive || player.ejected) return;
-  const time = actorVisualTime(player, state.data) / 1000;
-  const source = state.textures.luminousMeetingEffect;
-  const sprite = source ? transparentSpriteSource(source, "luminous-field-effect-v311", 22) : null;
-  if (!sprite) return;
-  ctx.save();
-  ctx.globalCompositeOperation = "lighter";
-  for (let layer = 0; layer < 2; layer += 1) {
-    ctx.save();
-  ctx.translate(0, characterBodyVisualY(-42));
-    ctx.globalAlpha = 0.76 - layer * 0.28;
-    const size = 150 * (0.92 + layer * 0.14);
-    drawAnimatedTextureCentered(sprite, 0, 0, size, size, {
-      mode: "flow-up",
-      time,
-      phase: layer * 0.55,
-      intensity: 0.88,
-      baseAlpha: 0.13
-    });
-    ctx.restore();
-  }
-  ctx.restore();
-}
-
-function drawPersistentIdeaState(player, data, ascensionProgress) {
-  const selfState = player.id === data.selfId ? data.self : player;
-  const goodActive = Boolean(selfState.goodActive);
-  const effectIndex = ascensionProgress > 0
-    ? 9
-    : goodActive
-      ? 8
-      : selfState.ideaStage > 0
-        ? selfState.ideaFirstAspect === "beauty" ? 7 : 6
-        : -1;
-  if (effectIndex < 0) return;
-  const source = state.textures.philosophyEffectTextures?.[effectIndex];
-  const sprite = source ? transparentSpriteSource(source, `persistent-idea-${effectIndex}`, 24) : null;
-  if (!sprite) return;
-  const time = actorVisualTime(player, state.data) / 1000;
-  const size = ascensionProgress > 0 ? 154 + ascensionProgress * 92 : goodActive ? 116 : 86;
-  ctx.save();
-  ctx.globalCompositeOperation = "lighter";
-  for (let layer = 0; layer < 2; layer += 1) {
-    ctx.save();
-    ctx.translate(0, characterBodyVisualY(-28 - ascensionProgress * 38));
-    ctx.globalAlpha = (ascensionProgress > 0 ? 0.84 : 0.46) - layer * 0.18;
-    const layerSize = size * (0.9 + layer * 0.16);
-    drawAnimatedTextureCentered(sprite, 0, 0, layerSize, layerSize, {
-      mode: effectIndex === 9 ? "flow-up" : "energy",
-      time,
-      phase: layer * 0.49,
-      intensity: ascensionProgress > 0 ? 1 : 0.82,
-      baseAlpha: 0.14
-    });
-    ctx.restore();
-  }
-  ctx.restore();
-}
-
 function displayActorTimeScale(player, data = state.data) {
   const self = player?.id === data?.selfId ? data?.self : null;
   const value = Number(self?.actorTimeScale ?? player?.actorTimeScale);
@@ -25768,26 +25708,6 @@ function durableCombatTexture(key) {
   return image?.complete && image.naturalWidth === 1254 && image.naturalHeight === 1254 ? image : null;
 }
 
-function drawDurableBustState(player, data, behind = false) {
-  if (data?.phase !== 'playing' || !combatVisualActor(player.id) || Number(player.bustUntil) <= estimatedServerNow(data)) return;
-  const image = durableCombatTexture('bustCharge');
-  if (!image || ctx.globalAlpha <= 0) return;
-  const reduced = prefersReducedMotion();
-  const phase = reduced ? .65 : actorVisualTime(player, data) / 1000 * 1.5;
-  const isBehind = Math.sin(phase) < 0;
-  if (isBehind !== behind) return;
-  const envelope = reduced ? 1 : .88 + .12 * Math.cos(phase * 2);
-  ctx.save();
-  ctx.translate(characterBodyVisualX(Math.cos(phase) * 20),
-    characterBodyVisualY(-7 + Math.sin(phase) * 8));
-  ctx.rotate(reduced ? -.2 : -.2 + Math.sin(phase) * .15);
-  ctx.globalAlpha *= envelope * (behind ? .62 : .95);
-  ctx.globalCompositeOperation = 'lighter';
-  // Preserve the source aspect ratio and actual alpha; no keying or tinting.
-  ctx.drawImage(image, 0, 310, 1254, 620, -36, -18, 72, 35.6);
-  ctx.restore();
-}
-
 function drawTimedBustEvent(effect, progress) {
   if (!['timed-bust-start', 'timed-bust-break'].includes(effect.variant)) return false;
   if (!(progress >= 0 && progress < 1) || ctx.globalAlpha <= 0) return true;
@@ -25854,27 +25774,6 @@ function drawBodyDamageReactionSprite(player, data, ghost, action) {
   ctx.drawImage(image, frame.x, frame.y, frame.width, frame.height,
     -origin.x * layout.scale, -origin.y * layout.scale, frame.width * layout.scale, frame.height * layout.scale);
   ctx.restore(); drawNameplate(player, false, -78); return true;
-}
-
-function drawHackerRootState(player) {
-  if (!player.hackerRootActive || !player.alive || player.ejected) return;
-  const prepared = transparentSpriteSource(state.textures.hackerRootMatrix, "hacker-root-matrix-v497", 18);
-  const sprite = prepared ? normalizedSpriteFrame(prepared, "hacker-root-matrix-v497", 1, 1, 0, 0) : null;
-  if (!sprite) return;
-  const time = actorVisualTime(player, state.data) / 1000;
-  ctx.save();
-  ctx.globalCompositeOperation = "lighter";
-  ctx.globalAlpha *= 0.72 + Math.sin(time * 5.2) * 0.06;
-  ctx.translate(0, characterBodyVisualY(-3));
-  drawAnimatedTextureCentered(sprite, 0, 0, 170, 170, {
-    mode: "data-down",
-    time,
-    phase: (player.id?.length || 0) * 0.13,
-    intensity: 0.92,
-    baseAlpha: 0.13,
-    opacityBoost: 2.8
-  });
-  ctx.restore();
 }
 
 const PERSISTENT_STATUS_ATE_PROFILES = Object.freeze({
@@ -26028,76 +25927,6 @@ function drawPoisonStatusMarkerMaterial(sprite, x, y, size, time, phase) {
   // The receiving marker's size/alpha/anchor and actor clock remain unchanged.
   ctx.save();ctx.drawImage(sprite,(index%8)*128,Math.floor(index/8)*128,128,128,x-size/2,y-size/2,size,size);ctx.restore();return true;
 }
-
-function drawPersistentStatusAteLayers(player, data) {
-  if (!player.alive || player.ejected) return;
-  const activeState = persistentStatusAteState(player, data);
-  // Head markers are UI. They follow the character position but their bob and
-  // texture phase are deliberately on the shared display clock, never the
-  // recipient's accelerate/decelerate clock.
-  const time = Math.floor(((state.frameNow || performance.now()) / 1000) * 60) / 60;
-  const now = state.frameNow || performance.now();
-  const previousSlot = state.headMarkerSlots.get(player.id) || null;
-  const presentation = selectHeadMarkerPresentation(
-    player,
-    data,
-    headMarkerEffectsForPlayer(player, data),
-    now,
-    previousSlot
-  );
-  rememberHeadMarkerPresentation(player.id, presentation, now);
-  const candidates = (presentation.nonCredits || []).filter((candidate) => (
-    candidate.type === "persistent-status" && activeState[candidate.category]
-  ));
-  for (const candidate of candidates) {
-    const category = candidate.category;
-    const profile = PERSISTENT_STATUS_ATE_PROFILES[category];
-    if (!profile) continue;
-    const naturalRecoveryGlow = category === "naturalRecovery"
-      ? naturalRecoveryMarkerGlow(activeState, player)
-      : null;
-    const source = state.textures[profile.texture];
-    const prepared = category === "poison" ? source : transparentSpriteSource(source, `persistent-status-${category}`, 18);
-    const sprite = category === "poison" ? (source?.complete && source.naturalWidth === 1024 && source.naturalHeight === 640 ? source : null) : prepared ? normalizedSpriteFrame(prepared, `persistent-status-${category}`, 1, 1, 0, 0) : null;
-    if (!sprite) continue;
-    const markerEffect = candidate.sourceEffect || {
-      id: candidate.instanceKey,
-      type: "persistent-status",
-      category,
-      playerId: player.id,
-      persistent: true
-    };
-    const placement = nonCreditHeadMarkerPlacement(markerEffect, presentation);
-    if (!placement.candidate) continue;
-    const marker = headMarkerSlot(placement.baseIndex, placement.total, placement.startRow);
-    const markerX = marker.x;
-    const markerY = marker.y + (prefersReducedMotion() ? 0 : Math.sin(time * 2.4 + profile.phase * Math.PI * 2) * 1.1);
-    const explanation = STATUS_MARKER_EXPLANATIONS[category] || ["適用中の効果", "この効果が現在適用されています。"];
-    ctx.save();
-    ctx.globalCompositeOperation = "lighter";
-    ctx.globalAlpha *= profile.alpha;
-    registerMarkerHitTarget(`status:${player.id}:${category}`, markerX, markerY, profile.size * 0.62, explanation[0], explanation[1]);
-    if (category === "burning") {
-      drawBurningStatusMarkerMaterial(sprite, markerX, markerY, profile.size, time, profile.phase);
-    } else if (category === "poison") {
-      drawPoisonStatusMarkerMaterial(sprite, markerX, markerY, profile.size, prefersReducedMotion() ? 0 : time, profile.phase);
-    } else {
-    drawAnimatedTextureCentered(sprite, markerX, markerY, profile.size, profile.size, {
-      mode: profile.mode,
-      time,
-      phase: profile.phase,
-      intensity: naturalRecoveryGlow?.intensity ?? 0.9,
-      baseAlpha: naturalRecoveryGlow?.baseAlpha ?? 0.15,
-      opacityBoost: naturalRecoveryGlow?.opacityBoost ?? 3.2
-    });
-    }
-    if (category === "naturalRecovery") {
-      drawAromaNaturalRecoveryMarkerEffect(markerX, markerY, time, activeState);
-    }
-    ctx.restore();
-  }
-}
-
 
 // Authored poses use a fixed cell-local origin; undeclared identities and directions retain their established renderer.
 function authoredCharacterIdentity(player,data){return player?.isBot?"male-bot":displayedSkinId(player,data);}
