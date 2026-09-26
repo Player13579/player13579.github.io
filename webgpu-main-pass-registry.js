@@ -128,7 +128,7 @@
   async function create({ renderer, map, image, patches, textAtlas, atlasMetrics,
     expandedCanvas = null, expandedTarget = 'main-expanded-map',
     acquisitionCanvas = null, acquisitionTarget = 'main-acquisition-overlay',
-    modules = defaults } = {}) {
+    modules = defaults, onProgress = () => {} } = {}) {
     if (!renderer || renderer.state !== 'ready' || !renderer.device ||
         typeof renderer.format !== 'string' || !renderer.format ||
         typeof renderer.createGravityHazardPasses !== 'function')
@@ -174,7 +174,12 @@
     if (!Array.isArray(modules?.scene?.ORDER) ||
         !Array.isArray(modules.scene.REQUIRED)) absent.unshift('scene');
     if (absent.length) throw new Error(`Missing main pass modules: ${absent.join(', ')}`);
-    const owned = [], readiness = [], passes = Object.create(null);
+    if (typeof onProgress !== 'function')
+      throw new TypeError('Main pass registry progress callback must be a function');
+    const owned = [], readiness = [], pendingReadiness = new Set(), passes = Object.create(null);
+    let awaitingReadiness = false;
+    const progress = stage => onProgress(stage);
+    const progressReadiness = () => progress(`ready:${[...pendingReadiness].join('+') || 'none'}`);
     const add = (name, value, method) => {
       if (!value || typeof value[method] !== 'function' ||
           typeof value.destroy !== 'function' ||
@@ -191,6 +196,14 @@
         if (ready && typeof ready.then === 'function') {
           const promise = Promise.resolve(ready);
           promise.catch(() => {});
+          pendingReadiness.add(name);
+          promise.then(() => {
+            pendingReadiness.delete(name);
+            if (awaitingReadiness) progressReadiness();
+          }, () => {
+            pendingReadiness.delete(name);
+            if (awaitingReadiness) progressReadiness();
+          });
           readiness.push(promise);
         }
       } catch (error) {
@@ -211,6 +224,7 @@
     let roomPatches = patches;
     if (roomPatches === undefined && map?.id === 'station' &&
         typeof root.Image === 'function' && root.document) {
+      progress('optional-room-image');
       const loaded = await loadOptionalRoomPatchImage(
         'assets/generated/cafeteria-review-source-v2.png');
       if (loaded) {
@@ -225,8 +239,10 @@
       // context or obtains a second adapter. The authored field is async.
       add('shapes', modules.shapes.create({ device: renderer.device,
         format: renderer.format }), 'enqueue');
+      progress('field');
       add('map', await modules.field.create({ owner: renderer, map, image,
         patches: roomPatches }), 'enqueue');
+      progress('passes');
       add('environmentE', modules.environmentE.create({ device: renderer.device,
         format: renderer.format }), 'record');
       if (needsCorridorA01E)
@@ -298,7 +314,9 @@
           } } : {}),
           record: pass.record, ready: pass.ready, destroy: pass.destroy }), 'record');
       }
+      progress('sunbeam');
       const sunbeam = await modules.sunbeamE.create({ renderer });
+      progress('passes-after-sunbeam');
       add('sunbeamE', sunbeam, 'record');
       add('fighterEnergyE', modules.fighterEnergyE.create(), 'record');
       const hoverSprint = modules.hoverSprintE.create();
@@ -398,32 +416,44 @@
       borrow('lighting', Object.freeze({ device: renderer.device,
         record() { return Object.freeze({ drawn: false, reason: 'Canvas lighting is no-op' }); } }));
       let acquisitionFailure = '';
-      const acquisition = await modules.acquisition.create(null,
-        { frameOwner: renderer, timeoutMs: 30000,
-          onFailure(reason) { acquisitionFailure = String(reason || ''); } });
-      if (!acquisition || acquisition.state !== 'ready' ||
-          typeof acquisition.enqueue !== 'function' ||
-          typeof acquisition.destroy !== 'function') {
-        try { acquisition?.destroy?.(); } catch (_) { /* Keep validation error. */ }
-        throw new TypeError(`Invalid shared-frame acquisition pass${acquisitionFailure ? `: ${acquisitionFailure}` : ''}`);
-      }
       let acquisitionHandle = null;
       if (acquisitionCanvas) {
-        try {
-          acquisitionHandle = renderer.registerTarget(acquisitionTarget, acquisitionCanvas, {
-            width: Math.max(1, acquisitionCanvas.width || 1),
-            height: Math.max(1, acquisitionCanvas.height || 1),
-            logicalWidth: 1, logicalHeight: 1, alphaMode: 'premultiplied'
-          });
-        } catch (error) { acquisition.destroy(); throw error; }
+        acquisitionHandle = renderer.registerTarget(acquisitionTarget, acquisitionCanvas, {
+          width: Math.max(1, acquisitionCanvas.width || 1),
+          height: Math.max(1, acquisitionCanvas.height || 1),
+          logicalWidth: 1, logicalHeight: 1, alphaMode: 'premultiplied'
+        });
       }
       const preparedAcquisition = new WeakSet();
-      let acquisitionDestroyed = false;
+      let acquisitionDestroyed = false, acquisition = null;
+      // The overlay has no pixels in an ordinary field frame. Compile its
+      // pipeline on the shared device without holding the first map/player
+      // submission. An active acquisition is admitted only after it is ready.
+      progress('acquisition-background');
+      const acquisitionPending = Promise.resolve().then(() =>
+        modules.acquisition.create(null, { frameOwner: renderer, timeoutMs: 30000,
+          onFailure(reason) { acquisitionFailure = String(reason || ''); } }))
+        .then(value => {
+          if (!value || value.state !== 'ready' ||
+              typeof value.enqueue !== 'function' ||
+              typeof value.destroy !== 'function') {
+            value?.destroy?.();
+            acquisitionFailure ||= 'invalid shared-frame acquisition pass';
+            return;
+          }
+          if (acquisitionDestroyed) value.destroy();
+          else acquisition = value;
+        }, error => { acquisitionFailure = error?.message || String(error); });
       add('acquisition', Object.freeze({ device: renderer.device,
         target: acquisitionHandle ? acquisitionTarget : null,
+        whenReady: acquisitionPending,
+        get state() { return acquisitionDestroyed ? 'destroyed' :
+          acquisition?.state === 'ready' ? 'ready' :
+            acquisitionFailure ? 'failed' : 'initializing'; },
+        get failure() { return acquisitionFailure; },
         prepare({ viewport, drawFrame } = {}) {
-          if (acquisitionDestroyed || renderer.state !== 'ready')
-            throw new Error('Shared acquisition pass unavailable');
+          if (acquisitionDestroyed || renderer.state !== 'ready' || acquisition?.state !== 'ready')
+            throw new Error(`Shared acquisition pass unavailable: ${acquisitionFailure || 'initializing'}`);
           if (!acquisitionHandle) throw new Error('Acquisition overlay canvas is required');
           if (viewport?.kind !== 'acquisition' ||
               ![viewport.width, viewport.height].every(value => Number.isFinite(value) && value > 0) ||
@@ -440,7 +470,7 @@
           return plan;
         },
         record({ frame, target, viewport, drawFrame, preparedPlan } = {}) {
-          if (acquisitionDestroyed || acquisition.state !== 'ready' || renderer.state !== 'ready')
+          if (acquisitionDestroyed || acquisition?.state !== 'ready' || renderer.state !== 'ready')
             throw new Error('Shared acquisition pass unavailable');
           if (acquisitionHandle) {
             if (!preparedAcquisition.has(preparedPlan) || target !== acquisitionTarget ||
@@ -466,18 +496,23 @@
           return true;
         },
         destroy() {
-          if (acquisitionDestroyed) return;
+          if (acquisitionDestroyed) return acquisitionPending;
           acquisitionDestroyed = true;
           let error;
-          try { acquisition.destroy(); } catch (caught) { error = caught; }
+          try { acquisition?.destroy(); } catch (caught) { error = caught; }
           try { acquisitionHandle?.unregister(); } catch (caught) { error ||= caught; }
           if (error) throw error;
+          return acquisitionPending;
         }
       }), 'record');
       // create() is already asynchronous (the field pass is asynchronous),
       // so complete optional GPU pipeline compilation before publishing the
       // registry to a caller that can record the first frame.
+      awaitingReadiness = true;
+      progressReadiness();
       await Promise.all(readiness);
+      awaitingReadiness = false;
+      progress('complete');
       let destroyed = false;
       const status = coverage(modules.scene, passes);
       return Object.freeze({
@@ -514,14 +549,14 @@
         }
       });
     } catch (error) {
+      const pending = [];
       for (let i = owned.length - 1; i >= 0; i--) {
         try {
           const result = owned[i].destroy();
-          if (result && typeof result.then === 'function')
-            result.catch(failure => root.console?.error?.(
-              'Main WebGPU construction cleanup failed', failure));
+          if (result && typeof result.then === 'function') pending.push(result);
         } catch (_) { /* Keep construction error. */ }
       }
+      if (pending.length) await Promise.allSettled(pending);
       throw error;
     }
   }

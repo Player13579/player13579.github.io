@@ -17985,6 +17985,7 @@ function suspendWebGPUMainAppDriver({ destroy = false } = {}) {
   webgpuMainApp.submittedFrame = null;
   webgpuMainApp.submittedSunbeamHands.clear();
   webgpuMainApp.visible = false;
+  if (document.body?.dataset) delete document.body.dataset.webgpuMainCompleteness;
   if (document.documentElement?.dataset)
     document.documentElement.dataset.fieldRenderer = "webgpu-pending";
   if (els.webgpuMainCanvas) els.webgpuMainCanvas.style.opacity = "0";
@@ -18327,6 +18328,14 @@ function pumpWebGPUMainAppDriver() {
       return;
     }
     clearWebGPUMainPendingDiagnostic();
+    if (document.body?.dataset) {
+      const incomplete = Array.isArray(receipt.deferredAcquisitionIds) &&
+        receipt.deferredAcquisitionIds.length > 0;
+      document.body.dataset.webgpuMainCompleteness = incomplete ? 'base' : 'complete';
+      if (incomplete) document.body.dataset.webgpuMainIncomplete =
+        receipt.deferredAcquisitionIds.map(id =>
+          `acquisition:pipeline-not-ready:event=${String(id).slice(0, 48)}`).join(',').slice(0, 1600);
+    }
     if (!Array.isArray(receipt.markerHitTargets))
       throw new Error("WebGPU main submitted without pointer marker hits");
     if (!Array.isArray(receipt.preparationHitTargets) ||
@@ -27939,6 +27948,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     registry = await registryApi.create({ renderer: runtime.renderer,
       map, image, textAtlas, atlasMetrics, expandedCanvas, expandedTarget,
       acquisitionCanvas, acquisitionTarget,
+      onProgress(stage) { onProgress?.(`pass-registry:${stage}`); },
       ...(modules ? { modules } : {}) });
     if (registry.device !== runtime.device ||
         registry.passes.expandedMap?.canvas !== expandedCanvas ||
@@ -28041,6 +28051,16 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
               throw new Error('Dormant WebGPU main prepare crossed a device or target');
             const captured = captureWebGPUMainAppWorldCandidate(data,
               viewport, providers);
+            const deferredAcquisitionIds =
+              captured.stages.acquisition && registry.passes.acquisition.state !== 'ready'
+                ? captured.conditional.acquisition.effects.map(effect => String(effect.id)) : [];
+            if (deferredAcquisitionIds.length) {
+              if (deferredAcquisitionIds.some(id => !id) ||
+                  new Set(deferredAcquisitionIds).size !== deferredAcquisitionIds.length)
+                throw new Error('Deferred WebGPU acquisition needs distinct source IDs');
+              delete captured.stages.acquisition;
+            }
+            captured.deferredAcquisitionIds = Object.freeze(deferredAcquisitionIds);
             if (captured.blocked || captured.remainingStages.some(name =>
               sceneApi.REQUIRED.includes(name))) {
               if (document.body?.dataset)
@@ -28109,6 +28129,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
             }
             return { ...result,
               acquisitionSoundVisualReceipts: Object.freeze(acquisitionSoundVisualReceipts),
+              deferredAcquisitionIds: prepared.candidate.deferredAcquisitionIds,
               acquisitionActive: Boolean(prepared.candidate.stages.acquisition) };
           } });
         if (scheduled.status === 'error') throw scheduled.error;
@@ -28142,6 +28163,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
         }
         return Object.freeze({ ...outcome, markerHitTargets: submittedHits,
           preparationHitTargets, minimapBounds,
+          deferredAcquisitionIds: outcome.recordResult.deferredAcquisitionIds,
           acquisitionActive: Boolean(outcome.recordResult.acquisitionActive) });
       } catch (error) {
         notify(error);
