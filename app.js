@@ -2626,6 +2626,9 @@ function init() {
   // Retire a persisted second-map choice before preparation or matchmaking can
   // read it again after a reload.
   clientStorage.setItem(storage.map, restoredMapId);
+  // Fetch and decode only the map the title currently selects. The immutable
+  // image can then be reused by the eventual match startup.
+  preloadSelectedRequiredMap(restoredMapId);
   syncGameAudioButtons();
   updateSoloProgressUi();
   setScreen("title");
@@ -7266,6 +7269,7 @@ function bindEvents() {
     const mapId = normalizeMatchmakingMapId(els.mapSelect.value);
     els.mapSelect.value = mapId;
     clientStorage.setItem(storage.map, mapId);
+    preloadSelectedRequiredMap(mapId);
     renderPreparationSettingSummary(state.data);
     void syncOperatorSelectionSettings("map");
   });
@@ -30490,20 +30494,56 @@ const version = "overheal-body-v913";
   };
 }
 
+const criticalMapImageLoads = new WeakMap();
+
 function loadCriticalMapTexture(image, source) {
+  const existing = criticalMapImageLoads.get(image);
+  if (existing?.source === source && existing.status !== "cancelled") return existing.cancel;
+  existing?.cancel();
   image.fetchPriority = "high";
   let retries = 0;
   let retryTimer = null;
   let watchdog = null;
+  const load = { source, status: "loading", cancel: null };
+  const clearTimer = (timer) => {
+    if (timer !== null) window.clearTimeout(timer);
+  };
   const clearWatchdog = () => {
     if (watchdog !== null) window.clearTimeout(watchdog);
     watchdog = null;
   };
+  const onLoad = () => {
+    if (load.status !== "loading") return;
+    if (image.naturalWidth > 0) {
+      clearWatchdog();
+      load.status = "loaded";
+    } else retry();
+  };
+  const onError = () => {
+    if (load.status === "loading") retry();
+  };
+  load.cancel = () => {
+    if (load.status !== "loading") return;
+    load.status = "cancelled";
+    clearWatchdog();
+    clearTimer(retryTimer);
+    retryTimer = null;
+    image.removeEventListener("load", onLoad);
+    image.removeEventListener("error", onError);
+    // Setting src to the empty string aborts a stale in-flight request. A
+    // later selection change can create a fresh load with the normal retries.
+    image.removeAttribute("src");
+  };
+  criticalMapImageLoads.set(image, load);
   const retry = () => {
+    if (load.status !== "loading") return;
     clearWatchdog();
     if (image.complete && image.naturalWidth > 0) return;
     if (retryTimer !== null) return;
     if (retries >= 3) {
+      load.status = "failed";
+      image.removeEventListener("load", onLoad);
+      image.removeEventListener("error", onError);
       setWebGPUMainFailure(new Error("Required map image could not be loaded after retries"));
       return;
     }
@@ -30514,24 +30554,43 @@ function loadCriticalMapTexture(image, source) {
     }, [300, 900, 2000][retries - 1]);
   };
   const start = () => {
+    if (load.status !== "loading") return;
     const separator = source.includes("?") ? "&" : "?";
     image.src = retries ? `${source}${separator}mapRetry=${retries}` : source;
     watchdog = window.setTimeout(() => {
       if (!(image.complete && image.naturalWidth > 0)) retry();
     }, 15000);
   };
-  image.addEventListener("load", () => {
-    if (image.naturalWidth > 0) clearWatchdog();
-    else retry();
-  });
-  image.addEventListener("error", retry);
+  image.addEventListener("load", onLoad);
+  image.addEventListener("error", onError);
   start();
+  return load.cancel;
+}
+
+let selectedMapPreload = null;
+function preloadSelectedRequiredMap(value = els.mapSelect?.value) {
+  const textures = state.textures;
+  if (!textures) return;
+  const mapId = normalizeMatchmakingMapId(value);
+  if (selectedMapPreload?.mapId === mapId) return;
+  // A changed selection invalidates only the outstanding fetch/retry for the
+  // old map. Completed immutable images remain cached for reuse.
+  selectedMapPreload?.cancel?.();
+  const image = textures.fullMapComposites?.[mapId];
+  const source = (textures.pendingSources || []).find(([entry]) => entry === image)?.[1];
+  if (!image || !source) {
+    selectedMapPreload = { mapId, cancel: null };
+    return;
+  }
+  const cancel = loadCriticalMapTexture(image, source);
+  selectedMapPreload = { mapId, cancel };
 }
 
 function loadGameplayTextures() {
   const textures = state.textures;
   if (!textures || textures.gameplayLoaded) return;
   textures.gameplayLoaded = true;
+  preloadSelectedRequiredMap(els.mapSelect?.value);
   const criticalMaps = new Set(Object.values(textures.fullMapComposites || {}));
   for (const [entry, source] of textures.pendingSources || []) {
     if (criticalMaps.has(entry)) loadCriticalMapTexture(entry, source);
