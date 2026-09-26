@@ -25985,27 +25985,6 @@ function authoritativeDamageReaction(player, data = state.data) {
   return { kind: 'damage', motionId: 'body-damage-recoil', progress: clamp(1 - remaining / duration, 0, 1), dx: Number(player.damageReactionDx) || 0, dy: Number(player.damageReactionDy) || 0 };
 }
 
-function drawBodyDamageReactionSprite(player, data, ghost, action) {
-  if (ghost || action?.kind !== 'damage') return false;
-  const identity = authoredCharacterIdentity(player, data);
-  const direction = authoredDirection(player, motionFor(player, data));
-  const base = AUTHORED_CHARACTER_MOTION_MANIFEST.identities?.[identity]?.[direction];
-  const entry = authoredModeEntry(base, 'walk');
-  const image = authoredModeImage(state.textures.authoredCharacterMotion?.[identity]?.[direction], 'walk');
-  if (!entry || !authoredEntryReady(entry, image)) return false;
-  resetAuthoredWalkLifecycle(player);
-  const frame = entry.idle, layout = entry.layout, origin = layout.sourceOrigin;
-  const response = prefersReducedMotion() ? .25 : Math.sin(Math.PI * Math.pow(clamp(action.progress, 0, 1), .6));
-  ctx.save(); ctx.translate(layout.ground.x, layout.ground.y);
-  // Collision/24px displacement is authoritative. This is only a planted
-  // recoil and recovery around the feet, never a second positional knockback.
-  ctx.rotate(-action.dx * .12 * response);
-  ctx.translate(0, Math.abs(action.dy) * 2.2 * response);
-  ctx.drawImage(image, frame.x, frame.y, frame.width, frame.height,
-    -origin.x * layout.scale, -origin.y * layout.scale, frame.width * layout.scale, frame.height * layout.scale);
-  ctx.restore(); drawNameplate(player, false, -78); return true;
-}
-
 const PERSISTENT_STATUS_ATE_PROFILES = Object.freeze({
   naturalRecovery: Object.freeze({ texture: "naturalRecoveryEffect", mode: "ripple", size: 31, alpha: 0.94, phase: 0.04 }),
   acceleration: Object.freeze({ texture: "accelerationPhaseEffect", mode: "flow-up", size: 32, alpha: 0.94, phase: 0.08 }),
@@ -26183,17 +26162,6 @@ function authoredEntryReady(entry, image) {
   return entry.cycle.every(frame => authoredFrameGeometryValid(frame, image) && Number.isFinite(frame.duration) && frame.duration > 0);
 }
 function resetAuthoredWalkLifecycle(player){const animation=state.walkAnimations.get(player.id);if(!animation)return;animation.frame=0;animation.moving=false;animation.x=player.x;animation.y=player.y;animation.lastDisplacedAt=null;animation.stepBucket=-1;animation.frameOwner=Number.isFinite(state.frameNow)&&state.frameNow>0?{frame:state.frameNow,generation:state.roomSessionGeneration,data:state.data}:null;}
-function drawAuthoredCharacterMotion(player,data,ghost){
-  const identity=authoredCharacterIdentity(player,data),configured=AUTHORED_CHARACTER_MOTION_MANIFEST.identities?.[identity],motion=motionFor(player,data),direction=authoredDirection(player,motion),baseEntry=configured?.[direction],movementMode=walkMotionMode(player);let entry=authoredModeEntry(baseEntry,movementMode),image=authoredModeImage(state.textures.authoredCharacterMotion?.[identity]?.[direction],movementMode);
-  if(!entry||!image||!image.complete||!(image.naturalWidth>0)||!authoredEntryReady(entry,image))return false;
-  const hs=isHoverSprintWalkingSuppressed(player,data),inert=ghost||hs||!player.alive;if(inert||ctx.globalAlpha<=0)resetAuthoredWalkLifecycle(player);if(ctx.globalAlpha<=0)return true;
-  const requestedMoving=!inert&&Boolean(motion.moving);if(!requestedMoving)resetAuthoredWalkLifecycle(player);let gaitFrame=0,moving=false;
-  if(requestedMoving){gaitFrame=walkAnimationFrame(player,motion,movementMode,authoredStrideDistance(entry,movementMode));const animation=state.walkAnimations.get(player.id);moving=Number.isFinite(animation?.lastDisplacedAt)&&(state.frameNow||performance.now())-animation.lastDisplacedAt<=100;}
-  if(!moving&&movementMode==="dash"){const idleEntry=authoredModeEntry(baseEntry,"walk"),idleImage=authoredModeImage(state.textures.authoredCharacterMotion?.[identity]?.[direction],"walk");if(!idleEntry||!idleImage||!idleImage.complete||!(idleImage.naturalWidth>0)||!authoredEntryReady(idleEntry,idleImage))return false;entry=idleEntry;image=idleImage;}
-  const frame=authoredFrameFor(entry,gaitFrame,moving,movementMode,entry.phaseMapping),body=entry.bodyMotion==="authored"?{lift:0,sway:0,lean:0}:walkBodyMotion(movementMode,direction,gaitFrame,moving),layout=entry.layout||{},sourceOrigin=layout.sourceOrigin||{},ground=layout.ground||{},scale=Number(layout.scale);
-  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality=IMAGE_SMOOTHING_QUALITY;ctx.save();ctx.translate(ground.x,ground.y);ctx.rotate(body.lean);ctx.translate(body.sway,-body.lift);ctx.drawImage(image,frame.x,frame.y,frame.width,frame.height,-sourceOrigin.x*scale,-sourceOrigin.y*scale,frame.width*scale,frame.height*scale);ctx.restore();drawNameplate(player,ghost,-78);ctx.restore();return true;
-}
-
 // Dormant until the ordered WebGPU world pass owns the surrounding player TE.
 // Call with a real snapshot player and the same camera/zoom used by drawWorld.
 function buildWebGPUSunbeamActionCommand(player, data, view, action) {
@@ -29684,23 +29652,6 @@ function drawOperatorWalkSprite(player, data, ghost) {
   return true;
 }
 
-function drawOperatorSprite(player, data, ghost) {
-  const atlas = state.textures.operators;
-  if (!atlas.complete || !atlas.naturalWidth) return false;
-
-  const halfWidth = atlas.naturalWidth / 2;
-  const sx = 0;
-  const sy = 0;
-  const sw = halfWidth;
-  const sh = atlas.naturalHeight;
-  const dw = 68;
-  const dh = 92;
-
-  ctx.drawImage(atlas, sx, sy, sw, sh, -dw / 2, -62, dw, dh);
-  drawNameplate(player, ghost, -76);
-  return true;
-}
-
 function drawNameplate(player, ghost, y) {
   ctx.save();
   registerPreparationPlayerCanvasTargets(player, y, 0, { bodyScaleActive: true, skinOnly: true });
@@ -31680,7 +31631,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v28", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=webgpu-main-bootstrap-v29", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.

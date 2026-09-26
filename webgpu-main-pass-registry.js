@@ -219,21 +219,6 @@
         throw new TypeError(`Invalid shared-device WebGPU ${name} module`);
       passes[name] = value;
     };
-    // This room source is optional until its authored original passes review.
-    // A missing file leaves the accepted full-map texture untouched.
-    let roomPatches = patches;
-    if (roomPatches === undefined && map?.id === 'station' &&
-        typeof root.Image === 'function' && root.document) {
-      progress('optional-room-image');
-      const loaded = await loadOptionalRoomPatchImage(
-        'assets/generated/cafeteria-review-source-v2.png');
-      if (loaded) {
-        const room = root.DvaWebGPURoomOverlay?.CAFETERIA;
-        if (!room) throw new Error('Cafeteria WebGPU room overlay module unavailable');
-        roomPatches = [{ id: 'cafeteria-review-v2', x: room.x, y: room.y,
-          w: room.w, h: room.h, room, image: loaded }];
-      }
-    }
     try {
       // Every constructor is given the same renderer/device; none opens a new
       // context or obtains a second adapter. The authored field is async.
@@ -241,7 +226,7 @@
         format: renderer.format }), 'enqueue');
       progress('field');
       add('map', await modules.field.create({ owner: renderer, map, image,
-        patches: roomPatches }), 'enqueue');
+        patches }), 'enqueue');
       progress('passes');
       add('environmentE', modules.environmentE.create({ device: renderer.device,
         format: renderer.format }), 'record');
