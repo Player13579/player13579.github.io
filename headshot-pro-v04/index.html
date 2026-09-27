@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DVA 接触 E v4 — H64 + H32 / dark + light</title><link rel="stylesheet" href="./preview/style.css"></head>
+<body><main>
+<header><div><p class="eyebrow">DVA · HEADSHOT CONTACT · E / 04</p><h1>接触核から、5つの反応へ。</h1><p>単独fixture / ゲーム・ギャラリー未接続。H64は描画バッファ64px・CSS等倍。死亡・弾道・損傷を表しません。</p></div><span class="version">v4 · CONTACT DISCRIMINATION PREVIEW</span></header>
+<div id="capability" class="notice" role="status">WebGPUを初期化しています。まだ画素は未検査です。</div>
+<section class="live-bar" aria-label="自動再生状態"><strong id="state" role="status" aria-live="polite">初期化中 · active 0/10</strong><span id="clock-status">検査時計の準備中</span><button id="loop" aria-pressed="true">自動再発行 ON</button><button id="restart">10種を再開</button></section>
+<p class="caption timing-note">ページを開くと自動再生します。各variantの寿命終了後に新しいidで再発行。暗・明は同じイベント・同じ時相で、発音も一度だけです。低速環境では最大16.667ms/提出の検査時計で寿命飛びを防ぎます（実時間のfps測定とは別）。</p>
+<section class="matrix-pair" aria-label="H64 dark light 並列比較">
+<section class="matrix-panel"><div class="section-heading"><h2>DARK <b>H64 / 1×</b></h2><span>上 HIP · 下 AIM</span></div><div class="scroll-native"><div class="canvas-wrap dark"><canvas id="native" width="640" height="256" aria-label="暗背景の10種自動ループ WebGPU"></canvas><div id="labels-dark" class="tile-labels"></div></div></div></section>
+<section class="matrix-panel"><div class="section-heading"><h2>LIGHT <b>H64 / 1×</b></h2><span>上 HIP · 下 AIM</span></div><div class="scroll-native"><div class="canvas-wrap light"><canvas id="native-light" width="640" height="256" aria-label="明背景の10種自動ループ WebGPU"></canvas><div id="labels-light" class="tile-labels"></div></div></div></section>
+</section>
+<p class="caption">各セルの色付きEは高さ64pxの投影枠に表示。ラベル・時刻・進行バーは検査UIでありEの描画には含みません。端点では包絡が0になります。active数だけを目視合格と扱いません。</p>
+<section class="matrix-pair" aria-label="H32 dark light 並列比較">
+<section class="matrix-panel"><div class="section-heading"><h2>DARK <b>H32 / 1×</b></h2><span>別の32px投影・CSS縮小なし</span></div><div class="scroll-native"><div class="canvas-wrap dark"><canvas id="native32" width="640" height="256" aria-label="暗背景・32px投影の10種自動ループ WebGPU"></canvas><div id="labels-dark32" class="tile-labels"></div></div></div></section>
+<section class="matrix-panel"><div class="section-heading"><h2>LIGHT <b>H32 / 1×</b></h2><span>H64と同じID・同じ時相</span></div><div class="scroll-native"><div class="canvas-wrap light"><canvas id="native32-light" width="640" height="256" aria-label="明背景・32px投影の10種自動ループ WebGPU"></canvas><div id="labels-light32" class="tile-labels"></div></div></div></section>
+</section>
+<section class="control-panel mechanism-key"><h2>形と時間の識別点</h2><p class="caption">全種で同じ銅色・同じ局所発光。粒子数や武器別の色分けは使いません。核はevent x/yから移動しません。下記は実弾/人体の測定ではなく、今回のEの反応設計です。</p>
+<table><thead><tr><th>武器</th><th>HIP / 偏圧の反応</th><th>AIM / 集中した反応</th></tr></thead><tbody>
+<tr><th>handgun</th><td>横に広い偏圧座、片肩から戻る / 300ms</td><td>厚い集中座、両肩が同時に戻る / 335ms</td></tr>
+<tr><th>smg</th><td>開いた三葉が順に着座 / 230ms</td><td>狭い三角配置の同時収束 / 270ms</td></tr>
+<tr><th>assault</th><td>四肩のうち上側が先行 / 360ms</td><td>四肩の対向する圧縮 / 415ms</td></tr>
+<tr><th>sniper</th><td>上下の返り面が不均等に開く / 470ms</td><td>狭い腰を上下対称の返り面が挟む / 540ms</td></tr>
+<tr><th>taser</th><td>ずれた二顎が閉じて保持 / 440ms</td><td>対向する二顎が同時に閉じて保持 / 520ms</td></tr>
+</tbody></table></section>
+<section class="detail-layout">
+<div class="control-panel"><div class="section-heading"><h2>再生・観測</h2><span id="audio-status">音声は操作後に有効。遅延再生なし。</span></div>
+<div class="controls"><label>武器<select id="weapon"><option>handgun</option><option>smg</option><option selected>assault</option><option>sniper</option><option>taser</option></select></label><label>モード<select id="mode"><option value="hip">HIP / 腰撃ち</option><option value="aim" selected>AIM / エイム</option></select></label><button id="once">選択を1回</button><button id="audio">音声を有効化</button><label>音量<input id="volume" type="range" min="0" max="1" step=".01" value=".72"></label></div>
+<div class="controls"><label>演出速度<select id="rate"><option value="0">検査一時停止</option><option value=".25">0.25×</option><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label><label><input id="reduced" type="checkbox">Reduced motion</label><label><input id="light-bg" type="checkbox">拡大欄も明背景</label><label>層<select id="layers"><option value="15">全層</option><option value="1">有色主形のみ</option><option value="2">接触発光源のみ</option><option value="6">発光源＋受光面</option><option value="10">発光源＋局所にじみ</option><option value="12">源OFF（受光/にじみもOFF）</option></select></label></div>
+<div class="section-heading"><h2>選択variant</h2><output id="focus-state">未提出</output></div><div class="phase-bar"><i id="phase-fill"></i></div>
+<details><summary>このページの時計とカウント</summary><p class="caption">描画準備・非表示・検査ボタン実行中は検査時計を進めません。最大Δを超える待ち時間は破棄し、その回数を記録します。本番RateClock・arrivalTTL・wallLifetimeは変更しません。「提出」はqueue完了、「有色包絡」は数式の正値で、画素差・目視の合格ではありません。検査一時停止はページ専用です。</p></details>
+</div>
+<div class="hero-panel"><div class="section-heading"><h2>選択の拡大 <b>4×</b></h2><span id="hero-name">aim:assault</span></div><div class="hero-scroll"><canvas id="hero" width="384" height="384" aria-label="選択variantの同時刻拡大"></canvas></div></div>
+</section>
+<section class="two-columns">
+<div class="control-panel"><h2>権威・権限の故障注入</h2><p class="caption">このページ専用receipt台帳。実サーバーの認証ではありません。</p><div class="controls"><label><input id="hidden" type="checkbox">不可視</label><label><input id="occluded" type="checkbox">遮蔽帯</label><label><input id="target-dead" type="checkbox">対象の生死変化</label><label><input id="shooter-dead" type="checkbox">射手の生死変化</label></div><div class="controls"><button id="duplicate">同id再送</button><button id="forged">偽イベント</button><button id="stale">期限切れ</button><button id="room">部屋切替</button><button id="respawn">対象世代切替</button><button id="stress">16件同時</button></div><pre id="log" aria-live="polite">自動ループを準備しています。</pre></div>
+<div class="control-panel"><h2>全寿命の実機証拠</h2><p class="caption">「ライブ1提出」は次の自動フレームの両canvasをreadback。「全寿命」は10種×61時点×H64/H32×dark/lightの合成・本体単独を取得してPNG時系列シートとJSONにします。離散時刻の検査と実際の自動ループ観察は分離します。</p><div class="controls"><button id="capture-live">ライブ1提出を保存</button><button id="lifetimes">10種の全寿命を記録</button><button id="validate">旧数値検査も実行</button><button id="report" disabled>検査JSONを保存</button></div><output id="capture-progress" role="status">証拠取得: 未実施</output><pre id="validation-result">v4のGPU画素・連続目視・音声聴感: not_run
+同梱記録はREADME / docs/ACCEPTANCE.mdを参照</pre></div>
+</section>
+<section class="control-panel"><h2>接触専用SFX</h2><p class="caption">接触専用の手続き音源・10 WAVはv2から変更していません。選択variantだけを自動発音し、dark/light/拡大で二重発音しません。音声有効化はブラウザーの操作要件に従います。聴感・ゲーム銃声mixの合格は別途評価してください。</p><div id="auditions" class="auditions"></div></section>
+<footer>本編・ギャラリー未接続 / 旧Sol・Astra、既存ヘッドショット素材、別チャットの射撃Eを参照しません。<br>README / docs/CHANGELOG-v4.md / docs/ACCEPTANCE.md / evidence/ を参照。WebGPU失敗時にCanvas代替Eや静止ピークを合格証として表示しません。</footer>
+</main><script type="module" src="./preview/app.mjs"></script></body></html>

@@ -30,7 +30,7 @@
     'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
     'mana-pro-r02', 'mana-pro-r01',
     'emp-pro-r02', 'emp-pro-r01', 'emp-pro-p0',
-    'attendance-pro-r01', 'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
+    'attendance-pro-r01', 'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v04', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
   ]);
   const entries = [
     { id: 'heal-astra', title: 'ヒール', versions: [
@@ -57,7 +57,8 @@
       version('shoot-pro-r01', 'GPT Pro r0.1', 'shoot-pro-r01/index.html', 'shoot-pro-r01/src/renderer.js', 'GPT Pro旧版・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '原本のWGSL予約語だけを意味不変に改名した互換版。5武器の暗明自動ループを実WebGPUで確認しましたが、品質と音は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'headshot-pro', title: 'ヘッドショット接触（GPT Pro）', versions: [
-      version('headshot-pro-v03', 'GPT Pro v3', 'headshot-pro-v03/index.html', 'headshot-pro-v03/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器×HIP/AIMのH64/H32自動巡回を実WebGPUで確認。同じ武器のHIP/AIMがH32では似るため、Proにv4改稿を依頼中です。', 'effect-H64', 1, true),
+      version('headshot-pro-v04', 'GPT Pro v4', 'headshot-pro-v04/embed.html', 'headshot-pro-v04/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器×HIP/AIMをH64/H32・暗明の4面で自動ループ。全10種の実GPU提出と描画を確認しました。原寸での全時相の見分けやすさと音は未受入です。', 'effect-H64', 1, true),
+      version('headshot-pro-v03', 'GPT Pro v3', 'headshot-pro-v03/index.html', 'headshot-pro-v03/src/renderer.mjs', 'GPT Pro旧版・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器×HIP/AIMのH64/H32自動巡回を実WebGPUで確認。同じ武器のHIP/AIMがH32では似る旧版で、品質未受入です。', 'effect-H64', 1, true),
       version('headshot-pro-v02', 'GPT Pro v2', 'headshot-pro-v02/index.html', 'headshot-pro-v02/src/renderer.mjs', 'GPT Pro旧版・実GPU再生可能・品質不合格・SFX聴感未確認・本編未採用', '10種の接触形がほぼ同じ橙の斜線に見えるため品質不合格。比較用にH64/H32、暗明を自動ループ再生します。', 'effect-H64', 1, true),
       version('headshot-pro-v01', 'GPT Pro v1', 'headshot-pro-v01/index.html', 'headshot-pro-v01/src/renderer.mjs', 'GPT Pro旧版・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器×HIP/AIMのH64を実WebGPUで並列自動ループ再生。全10種の描画を確認しましたが、視覚品質と音は未受入です。', 'effect-H64', 1, true)
     ] },
@@ -110,7 +111,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v35');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v36');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

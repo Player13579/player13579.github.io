@@ -1,0 +1,25 @@
+/* Adapter-only presentation. The Pro source DOM, modules and WebGPU backing sizes stay intact. */
+html, body { width: 980px !important; height: 592px !important; overflow: hidden !important; }
+body > main {
+  display: grid !important;
+  width: 980px !important;
+  max-width: none !important;
+  height: 592px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  grid-template-columns: 480px 480px !important;
+  grid-template-rows: 288px 288px !important;
+  gap: 8px 8px !important;
+  align-content: center !important;
+  justify-content: center !important;
+}
+body > main > :not(.matrix-pair) { display: none !important; }
+body > main > .matrix-pair { display: contents !important; }
+.matrix-panel { width: 480px !important; min-width: 0 !important; max-width: 480px !important; height: 288px !important; }
+.matrix-panel > .section-heading { height: 22px !important; margin: 0 0 4px !important; }
+.matrix-panel > .section-heading h2 { font-size: 11px !important; }
+.matrix-panel > .section-heading span { font-size: 10px !important; }
+.scroll-native { width: 480px !important; height: 256px !important; overflow: hidden !important; }
+.canvas-wrap { width: 480px !important; height: 192px !important; }
+.canvas-wrap canvas { width: 480px !important; height: 192px !important; }
+.tile-labels { width: 640px !important; height: 256px !important; transform: scale(.75); transform-origin: top left; }
