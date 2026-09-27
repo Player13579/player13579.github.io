@@ -15,42 +15,43 @@
     'mana-pro': { magnification: 2.0, focusX: 490, focusY: 310 },
     'emp-pro': { magnification: 2.0, focusX: 490, focusY: 310 }
   });
-  const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1) =>
-    Object.freeze({ id, title, page, source, status, detail, anchor, zoom });
+  const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1, replayable = false) =>
+    Object.freeze({ id, title, page, source, status, detail, anchor, zoom, replayable });
   const entries = [
     { id: 'heal-astra', title: 'ヒール', versions: [
       version('heal-astra-prototype', 'Astra版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', 'ユーザー品質採用・発光と主形を確認済み', '採用済みヒール。追加のキラキラと強発光時のフレアは別版の改稿候補です。連続再生の全寿命と聴感は未受入です。', 'actor-H64', 0.7937),
-      version('heal-webgpu-20260924', '旧版（9月24日）', 'heal-webgpu-preview.html', 'webgpu-heal-e.js', '旧版・品質不採用・本編未採用', 'Astra版より前のヒール。比較用にWebGPUで再生できます。現行ヒールには使用しません。', 'actor-H64', 0.7937)
+      version('heal-webgpu-20260924', '旧版（9月24日）', 'heal-webgpu-preview.html', 'webgpu-heal-e.js', '旧版・品質不採用・本編未採用', 'Astra版より前のヒール。比較用にWebGPUで再生できます。現行ヒールには使用しません。', 'actor-H64', 0.7937, true)
     ] },
     { id: 'sunbeam-astra', title: 'サンビーム', versions: [
       version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', 'ユーザー品質採用・本編実イベント未接続', '手元から伝播する三つの光路を持つ採用版。掌光源のレンズフレア強化は別版の改稿候補です。本編の実イベント接続は未完了。', 'effect-H64'),
-      version('sunbeam-pro-file-draft', 'GPT Pro旧完成稿', 'sunbeam-pro-older/file-v1.html', 'sunbeam-pro-older/sunbeam-pro-file-v1.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', 'ファイルプレビューから回収した旧完成稿。独立したWebGPU自動ループで再生可能。版番号は原稿にないため付けていません。', 'effect-H64'),
-      version('sunbeam-pro-live-v1', 'GPT Pro初稿', 'sunbeam-pro-older/live-gpu-v1.html', 'sunbeam-pro-older/sunbeam-pro-live-gpu-v1.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', '最初のPro原稿。片手・両手の実GPU再生記録があり、比較用に自動ループします。', 'effect-H64'),
-      version('sunbeam-pro-v2', 'GPT Pro v2', 'sunbeam-v2-gallery.html', 'webgpu-sunbeam-pro-v2.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', '旧Pro v2をWebGPUで比較再生します。品質とSFXの受入、本編採用は未了です。', 'effect-H64'),
+      version('sunbeam-pro-file-draft', 'GPT Pro旧完成稿', 'sunbeam-pro-older/file-v1.html', 'sunbeam-pro-older/sunbeam-pro-file-v1.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', 'ファイルプレビューから回収した旧完成稿。独立したWebGPU自動ループで再生可能。版番号は原稿にないため付けていません。', 'effect-H64', 1, true),
+      version('sunbeam-pro-live-v1', 'GPT Pro初稿', 'sunbeam-pro-older/live-gpu-v1.html', 'sunbeam-pro-older/sunbeam-pro-live-gpu-v1.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', '最初のPro原稿。片手・両手の実GPU再生記録があり、比較用に自動ループします。', 'effect-H64', 1, true),
+      version('sunbeam-pro-v2', 'GPT Pro v2', 'sunbeam-v2-gallery.html', 'webgpu-sunbeam-pro-v2.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', '旧Pro v2をWebGPUで比較再生します。品質とSFXの受入、本編採用は未了です。', 'effect-H64', 1, true),
     ] },
     { id: 'luck-astra', title: '幸運', versions: [
       version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', 'ユーザー品質採用・本編未接続', '採用済み幸運v4。幸運の因果の見え方について追加改稿の余地はあります。本編には未接続です。'),
-      version('luck-pro-r02', 'GPT Pro r0.2', 'luck-pro-replay/luck-pro-r02.html', 'luck-pro-replay/luck-e-revision.mjs', 'GPT Pro改稿・実GPU再生可能・品質未受入・本編未採用', '改稿版は実GPUで再生可能。旧r0.1より広い青金色の形が見えるが、視覚品質とSFXは未受入です。'),
-      version('luck-pro-r01', 'GPT Pro r0.1', 'luck-pro-replay/luck-pro-r01.html', 'luck-pro-replay/luck-e.mjs', 'GPT Pro旧版・実GPU再生可能・品質不合格・本編未採用', '旧Pro初稿は細い金色の線だけに見えるため品質不合格。比較用に再生します。'),
+      version('luck-pro-r02', 'GPT Pro r0.2', 'luck-pro-replay/luck-pro-r02.html', 'luck-pro-replay/luck-e-revision.mjs', 'GPT Pro改稿・実GPU再生可能・品質未受入・本編未採用', '改稿版は実GPUで再生可能。旧r0.1より広い青金色の形が見えるが、視覚品質とSFXは未受入です。', 'actor-H64', 1, true),
+      version('luck-pro-r01', 'GPT Pro r0.1', 'luck-pro-replay/luck-pro-r01.html', 'luck-pro-replay/luck-e.mjs', 'GPT Pro旧版・実GPU再生可能・品質不合格・本編未採用', '旧Pro初稿は細い金色の線だけに見えるため品質不合格。比較用に再生します。', 'actor-H64', 1, true),
     ] },
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
-      version('barrier-pro-r04', 'GPT Pro r0.4', 'barrier-pro-r04/index.html', 'barrier-pro-r04/preview.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', 'GPT Proによる新しい巻膜案。実GPUの限定確認で表示可能。明背景では淡く、カフ状に見える懸念があります。全寿命の視覚品質と音は未受入です。', 'effect-H64'),
-      version('barrier-pro-r03', 'GPT Pro r0.3', 'barrier-pro-r03/preview.html', 'barrier-pro-r03/barrier-pro-renderer.mjs', '造形評価高・発光調整待ち・本編未採用', 'GPT Pro独立改稿。4事象は実WebGPUで再生可能。ユーザーは造形品質を高く評価し、発光の不足を指摘。主形を保ちながら発光を調整中で、本編への採用は未決定。', 'effect-H64'),
-      version('barrier-pro-r02', 'GPT Pro r0.2', 'barrier-pro-r02/preview.html', 'barrier-pro-r02/barrier-pro-renderer.mjs', '比較試作・品質不合格・本編未採用', 'ChatGPT Proによる独立設計。実WebGPUでは主形が小さな不透明の球状に見え、保護空域と吸収の作用差が読めないため改稿中。', 'effect-H64'),
-      version('barrier-pro-r01', 'GPT Pro r0.1', 'barrier-pro-r01/preview.html', 'barrier-pro-r01/barrier-pro.wgsl', '比較試作・品質不合格・本編未採用', 'GPT Pro独立初稿。実WebGPU再生はできるが、原寸では細く暗い支持線だけが読め、保護空域は不十分。', 'effect-H64')
+      version('barrier-pro-r04', 'GPT Pro r0.4', 'barrier-pro-r04/index.html', 'barrier-pro-r04/preview.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', 'GPT Proによる新しい巻膜案。実GPUの限定確認で表示可能。明背景では淡く、カフ状に見える懸念があります。全寿命の視覚品質と音は未受入です。', 'effect-H64', 1, true),
+      version('barrier-pro-r03', 'GPT Pro r0.3', 'barrier-pro-r03/preview.html', 'barrier-pro-r03/barrier-pro-renderer.mjs', '造形評価高・発光調整待ち・本編未採用', 'GPT Pro独立改稿。4事象は実WebGPUで再生可能。ユーザーは造形品質を高く評価し、発光の不足を指摘。主形を保ちながら発光を調整中で、本編への採用は未決定。', 'effect-H64', 1, true),
+      version('barrier-pro-r02', 'GPT Pro r0.2', 'barrier-pro-r02/preview.html', 'barrier-pro-r02/barrier-pro-renderer.mjs', '比較試作・品質不合格・本編未採用', 'ChatGPT Proによる独立設計。実WebGPUでは主形が小さな不透明の球状に見え、保護空域と吸収の作用差が読めないため改稿中。', 'effect-H64', 1, true),
+      version('barrier-pro-r01', 'GPT Pro r0.1', 'barrier-pro-r01/preview.html', 'barrier-pro-r01/barrier-pro.wgsl', '比較試作・品質不合格・本編未採用', 'GPT Pro独立初稿。実WebGPU再生はできるが、原寸では細く暗い支持線だけが読め、保護空域は不十分。', 'effect-H64', 1, true)
     ] },
     { id: 'stamina-pro', title: 'スタミナ回復（GPT Pro）', versions: [
-      version('stamina-pro-r01', 'GPT Pro r0.1', 'stamina-pro-r01-preview.html', 'stamina-pro-r01/renderer.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体へ充填されるスタミナ回復案。限定的な実WebGPU再生は確認済み。原寸の全寿命、聴感、ゲーム本編での発動は未受入です。', 'effect-H64')
+      version('stamina-pro-r01', 'GPT Pro r0.1', 'stamina-pro-r01-preview.html', 'stamina-pro-r01/renderer.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体へ充填されるスタミナ回復案。限定的な実WebGPU再生は確認済み。原寸の全寿命、聴感、ゲーム本編での発動は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'mana-pro', title: 'マナ獲得（GPT Pro）', versions: [
-      version('mana-pro-r01', 'GPT Pro r0.1', 'webgpu-mana-pro-r01/index.html', 'webgpu-mana-pro-r01/preview/replay.js', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体の周囲から胸郭へ収束するマナ獲得案。提出物の実WebGPU再生は確認済み。ギャラリー表示、全寿命、聴感とゲーム本編の接続は別途検証中です。', 'effect-H64')
+      version('mana-pro-r01', 'GPT Pro r0.1', 'webgpu-mana-pro-r01/index.html', 'webgpu-mana-pro-r01/preview/replay.js', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体の周囲から胸郭へ収束するマナ獲得案。提出物の実WebGPU再生は確認済み。ギャラリー表示、全寿命、聴感とゲーム本編の接続は別途検証中です。', 'effect-H64', 1, true)
     ] },
     { id: 'emp-pro', title: 'EMP（GPT Pro）', versions: [
-      version('emp-pro-r01', 'GPT Pro r0.1', 'emp-pro-r01/r01/index.html', 'emp-pro-r01/r01/src/emp-e.js', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', 'GPT Pro独立設計 r0.1。確認記録は通常転送と共鳴の一部状態に限られます。視覚品質・全分岐・全寿命・性能・SFX聴感は未受入です。', 'effect-H64'),
-      version('emp-pro-p0', 'GPT Pro P0', 'emp-pro-r01/p0/index.html', 'emp-pro-r01/p0/src/emp-e.js', 'GPT Pro制作・P0ブロックアウト・再生可能・最終品質ではない・本編未採用', 'r0.1制作途中の凍結ブロックアウトです。原形を維持した比較再生用で、最終品質を示しません。GPU確認は限定状態のみ。', 'effect-H64')
+      version('emp-pro-r01', 'GPT Pro r0.1', 'emp-pro-r01/r01/index.html', 'emp-pro-r01/r01/src/emp-e.js', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', 'GPT Pro独立設計 r0.1。確認記録は通常転送と共鳴の一部状態に限られます。視覚品質・全分岐・全寿命・性能・SFX聴感は未受入です。', 'effect-H64', 1, true),
+      version('emp-pro-p0', 'GPT Pro P0', 'emp-pro-r01/p0/index.html', 'emp-pro-r01/p0/src/emp-e.js', 'GPT Pro制作・P0ブロックアウト・再生可能・最終品質ではない・本編未採用', 'r0.1制作途中の凍結ブロックアウトです。原形を維持した比較再生用で、最終品質を示しません。GPU確認は限定状態のみ。', 'effect-H64', 1, true)
     ] }
   ].map(group => ({ ...group, versions: group.versions.filter(v =>
-    v.status.includes('ユーザー品質採用') || v.status.includes('ユーザー審査待ち')) }))
+    v.status.includes('ユーザー品質採用') || v.status.includes('ユーザー審査待ち') ||
+    (v.replayable && (v.status.includes('GPT Pro') || v.title.includes('GPT Pro') || v.id === 'heal-webgpu-20260924'))) }))
     .filter(group => group.versions.length > 0)
     .map(group => Object.freeze({ ...group, versions: Object.freeze(group.versions) }));
   const params = new URLSearchParams(location.search);
@@ -74,7 +75,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'review-ready-20260927-v23');
+    preview.searchParams.set('galleryRelease', 'replayable-pro-20260928-v24');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
