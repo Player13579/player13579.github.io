@@ -93,7 +93,16 @@
     }
 
     async function draw({ sample, rect, dpr = 1, camera, prepare, record,
-      clearColor = DEFAULT_CLEAR, recordClears = false, isCurrent = () => true } = {}) {
+      clearColor = DEFAULT_CLEAR, recordClears = false, isCurrent = () => true,
+      onTiming } = {}) {
+      const timing = typeof onTiming === 'function' ? (name, startedAt = null) => {
+        try {
+          const atMs = root.performance?.now?.();
+          if (!Number.isFinite(atMs)) return;
+          onTiming(name, startedAt === null ? null : atMs - startedAt);
+        } catch (_) { /* Verification diagnostics cannot change rendering. */ }
+      } : null;
+      timing?.('runtimeFrameEntry');
       if (disposed) throw failure || new Error('Main WebGPU runtime destroyed');
       if (typeof isCurrent !== 'function') throw new TypeError('WebGPU isCurrent must be a function');
       if (prepare !== undefined && typeof prepare !== 'function') throw new TypeError('WebGPU prepare must be a function');
@@ -110,7 +119,10 @@
       let prepared;
       let drawError = null;
       try {
+        const prepareStartedAt = timing ? root.performance.now() : null;
+        timing?.('prepareBegin');
         prepared = await prepare?.({ viewport, device: renderer.device, renderer, target });
+        timing?.('prepareEnd', prepareStartedAt);
         if (drawGeneration !== generation || disposed || gate.suspended || !isCurrent()) {
           return Object.freeze({ drawn: false, reason: 'superseded' });
         }
@@ -135,10 +147,13 @@
             Object.freeze(facade);
           }
           const recordingFrame = recordClears ? facade : frame;
+          const recordStartedAt = timing ? root.performance.now() : null;
+          timing?.('recordBegin');
           const result = record?.({ frame: recordingFrame, target, viewport, renderer, prepared });
           if (result && typeof result.then === 'function') {
             throw new TypeError('WebGPU frame recording must be synchronous');
           }
+          timing?.('recordEnd', recordStartedAt);
           if (recordClears && !sceneCleared) {
             throw new Error('Scene record must clear the main target before submission');
           }
@@ -148,10 +163,15 @@
             frame.discard();
             return Object.freeze({ drawn: false, reason: 'superseded' });
           }
+          const submitStartedAt = timing ? root.performance.now() : null;
+          timing?.('queueSubmitBegin');
           const passes = frame.submit();
+          timing?.('queueSubmitReceipt', submitStartedAt);
           // Interaction targets belong to the submitted frame. Never expose a
           // record result from a discarded or superseded preparation.
-          return Object.freeze({ drawn: true, passes, viewport, recordResult: result });
+          const receipt = Object.freeze({ drawn: true, passes, viewport, recordResult: result });
+          timing?.('runtimeReceipt');
+          return receipt;
         } catch (error) {
           try { frame.discard(); } catch (_) {}
           throw error;

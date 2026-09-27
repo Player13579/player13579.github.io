@@ -2378,7 +2378,37 @@ const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   submittedFrame: null, submittedSunbeamHands: new Map(),
   requestSerial: 0, lastSoundRequestSerial: 0,
   acquisitionCanvas: null, startToken: null };
-const webgpuStartupTiming = { nextAttemptId: 0, current: null, playClickedAtMs: null };
+const webgpuStartupTiming = { nextAttemptId: 0, current: null, playClickedAtMs: null,
+  firstPumpAfterPlayAtMs: null };
+function markWebGPUStartupStage(name, durationMs = null) {
+  if (!WEBGPU_MAIN_VERIFY_ROUTE) return;
+  const trace = webgpuStartupTiming.current;
+  if (!trace || trace.frozen || !/^[a-z][A-Za-z0-9.:-]{0,47}$/.test(name)) return;
+  if (!Object.prototype.hasOwnProperty.call(trace.stageTimes, name) &&
+      Object.keys(trace.stageTimes).length >= 32) return;
+  const atMs = performance.now();
+  if (!Number.isFinite(atMs)) return;
+  const previous = trace.stageTimes[name];
+  trace.stageTimes[name] = Object.freeze({
+    firstAtMs: previous?.firstAtMs ?? atMs,
+    lastAtMs: atMs,
+    count: (previous?.count || 0) + 1,
+    ...(Number.isFinite(durationMs) && durationMs >= 0 ?
+      { durationMs } : {}) });
+}
+function recordWebGPUStartupIncompleteFrame(reason) {
+  if (!WEBGPU_MAIN_VERIFY_ROUTE) return;
+  const trace = webgpuStartupTiming.current;
+  if (!trace || trace.frozen) return;
+  const raw = String(reason || 'unknown');
+  const reasons = trace.incompleteFrameReasons;
+  let name = /^[a-z][a-z0-9-]{0,47}$/.test(raw) ? raw : 'other';
+  if (!Object.prototype.hasOwnProperty.call(reasons, name) &&
+      Object.keys(reasons).length >= 11) name = 'other';
+  reasons[name] = (reasons[name] || 0) + 1;
+  trace.lastIncompleteFrame = Object.freeze({ reason: name,
+    atMs: performance.now(), count: reasons[name] });
+}
 // One title-scoped renderer owner can be transferred into the main runtime
 // after Play has established a game session and both canvas handoffs finish.
 const webgpuTitlePrewarm = { current: null, generation: 0, playIntent: 0,
@@ -7230,8 +7260,10 @@ function cancelCommonActionGestures({ onlyUnavailable = false } = {}) {
 function bindTitleNavigationEvents() {
   els.titlePlayButton.addEventListener("click", () => {
     if (els.titlePlayButton.disabled) return;
-    if (WEBGPU_MAIN_VERIFY_ROUTE)
+    if (WEBGPU_MAIN_VERIFY_ROUTE) {
       webgpuStartupTiming.playClickedAtMs = performance.now();
+      webgpuStartupTiming.firstPumpAfterPlayAtMs = null;
+    }
     const prewarm = webgpuTitlePrewarm.current;
     const prewarmState = prewarm?.state || 'unavailable';
     if (document.body?.dataset) {
@@ -18354,10 +18386,17 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
   let startupTiming = null;
   if (WEBGPU_MAIN_VERIFY_ROUTE) {
     const attemptId = ++webgpuStartupTiming.nextAttemptId;
+    const stageTimes = Object.create(null);
+    if (Number.isFinite(webgpuStartupTiming.firstPumpAfterPlayAtMs))
+      stageTimes.rafPumpEntry = Object.freeze({
+        firstAtMs: webgpuStartupTiming.firstPumpAfterPlayAtMs,
+        lastAtMs: webgpuStartupTiming.firstPumpAfterPlayAtMs, count: 1 });
     startupTiming = { attemptId, mapId: String(map.id),
       roomSessionGeneration: sessionGeneration,
       playClickedAtMs: webgpuStartupTiming.playClickedAtMs,
-      driverStartedAtMs: performance.now(), marks: [], frozen: false };
+      driverStartedAtMs: performance.now(), marks: [], stageTimes,
+      incompleteFrameReasons: Object.create(null), lastIncompleteFrame: null,
+      frozen: false };
     webgpuStartupTiming.current = startupTiming;
     window.__dvaStartupPassTiming = startupTiming;
   }
@@ -18373,9 +18412,17 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
   // The old renderers may still have a creation or draw in flight. They must
   // retire before the shared device registers either target.
   setWebGPUMainPendingDiagnostic('startup:expanded-map-handoff');
+  markWebGPUStartupStage('expandedHandoffBegin');
+  const expandedHandoffStartedAt = WEBGPU_MAIN_VERIFY_ROUTE ? performance.now() : null;
   const expandedCanvas = await window.DvaWebGPUExpandedMapOwnership.handoffToMainRenderer();
+  markWebGPUStartupStage('expandedHandoffEnd', Number.isFinite(expandedHandoffStartedAt)
+    ? Math.max(0, performance.now() - expandedHandoffStartedAt) : null);
   setWebGPUMainPendingDiagnostic('startup:acquisition-handoff');
+  markWebGPUStartupStage('acquisitionHandoffBegin');
+  const acquisitionHandoffStartedAt = WEBGPU_MAIN_VERIFY_ROUTE ? performance.now() : null;
   const acquisitionCanvas = await window.DvaWebGPUAcquisitionOverlay.handoffToMainRenderer();
+  markWebGPUStartupStage('acquisitionHandoffEnd', Number.isFinite(acquisitionHandoffStartedAt)
+    ? Math.max(0, performance.now() - acquisitionHandoffStartedAt) : null);
   if (!sameSession()) return null;
   let prewarmEntry = webgpuTitlePrewarm.current;
   if (prewarmEntry && prewarmEntry.selectedMapId !== map.id) {
@@ -18384,6 +18431,8 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
   }
   if (prewarmEntry?.state === 'pending') {
     setWebGPUMainPendingDiagnostic('startup:title-prewarm-wait');
+    markWebGPUStartupStage('titlePrewarmWaitBegin');
+    const prewarmWaitStartedAt = WEBGPU_MAIN_VERIFY_ROUTE ? performance.now() : null;
     try { await prewarmEntry.promise; }
     catch (error) {
       if (prewarmEntry.state === 'cancelled' || !sameSession()) return null;
@@ -18392,12 +18441,16 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
       // A settled creation failure is safe to retry through the ordinary
       // runtime path. A live request is never duplicated.
     }
+    markWebGPUStartupStage('titlePrewarmWaitEnd', Number.isFinite(prewarmWaitStartedAt)
+      ? Math.max(0, performance.now() - prewarmWaitStartedAt) : null);
     if (!sameSession()) return null;
   }
   if (prewarmEntry?.state === 'failed' && prewarmEntry.underlyingPending)
     throw prewarmEntry.failure || new Error('Title prewarm still owns a pending device request');
   if (prewarmEntry?.state !== 'ready') prewarmEntry = null;
   setWebGPUMainPendingDiagnostic('startup:driver-creation');
+  markWebGPUStartupStage('driverCreationBegin');
+  const driverCreationStartedAt = WEBGPU_MAIN_VERIFY_ROUTE ? performance.now() : null;
   const driver = await createDormantWebGPUMainAppDriver({ mainCanvas,
     expandedCanvas, acquisitionCanvas, map, image,
     ...(prewarmEntry ? { prewarmEntry } : {}),
@@ -18416,11 +18469,14 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
     onFailure(error) {
       setWebGPUMainFailure(error);
     } });
+  markWebGPUStartupStage('driverCreationEnd', Number.isFinite(driverCreationStartedAt)
+    ? Math.max(0, performance.now() - driverCreationStartedAt) : null);
   if (!sameSession()) {
     await driver.destroy();
     return null;
   }
   webgpuMainApp.driver = driver;
+  markWebGPUStartupStage('driverPublished');
   webgpuMainApp.mapId = map.id;
   webgpuMainApp.acquisitionCanvas = acquisitionCanvas;
   return driver;
@@ -18444,6 +18500,12 @@ function startWebGPUMainAppDriverWithDeadline(data, image, timeoutMs = 45000) {
 }
 
 function pumpWebGPUMainAppDriver() {
+  if (WEBGPU_MAIN_VERIFY_ROUTE && !Number.isFinite(
+      webgpuStartupTiming.firstPumpAfterPlayAtMs) &&
+      Number.isFinite(webgpuStartupTiming.playClickedAtMs) &&
+      state.screen === 'game')
+    webgpuStartupTiming.firstPumpAfterPlayAtMs = performance.now();
+  markWebGPUStartupStage('rafPumpEntry');
   if (!WEBGPU_MAIN_OWNER) return;
   if (webgpuMainApp.failed) {
     setWebGPUMainPendingDiagnostic('failed');
@@ -18535,10 +18597,15 @@ function pumpWebGPUMainAppDriver() {
   const mapId = data.map.id;
   const camera = { ...cameraFor(data, 980, 620, worldZoomFor(data)),
     zoom: worldZoomFor(data) };
+  markWebGPUStartupStage('driverDrawEntry');
   void webgpuMainApp.driver.draw({ data, sample, rect, camera,
-    dpr }).then(receipt => {
+    dpr, ...(WEBGPU_MAIN_VERIFY_ROUTE ? { onTiming: (name, durationMs) => {
+      markWebGPUStartupStage(name, durationMs);
+    } } : {}) }).then(receipt => {
+    markWebGPUStartupStage('appReceipt');
     if (!receipt?.drawn) {
       const reason = String(receipt?.reason || 'not-submitted');
+      recordWebGPUStartupIncompleteFrame(reason);
       setWebGPUMainPendingDiagnostic(`frame:${reason}`);
       return;
     }
@@ -18618,17 +18685,21 @@ function pumpWebGPUMainAppDriver() {
       rect: Object.freeze({ left: rect.left, top: rect.top,
         width: rect.width, height: rect.height }) });
     webgpuMainApp.visible = true;
-    if (webgpuStartupTiming.current && !webgpuStartupTiming.current.frozen) {
+    if (WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current &&
+        !webgpuStartupTiming.current.frozen) {
       const trace = webgpuStartupTiming.current;
+      markWebGPUStartupStage('canvasOpacityVisible');
       trace.firstVisibleAtMs = performance.now();
       trace.playToFirstVisibleMs = Number.isFinite(trace.playClickedAtMs)
         ? Math.max(0, trace.firstVisibleAtMs - trace.playClickedAtMs) : null;
       trace.driverToFirstVisibleMs = Math.max(0,
         trace.firstVisibleAtMs - trace.driverStartedAtMs);
-      trace.frozen = true;
     }
     mainCanvas.style.pointerEvents = "auto";
     els.canvas.style.pointerEvents = WEBGPU_MAIN_OWNER ? "none" : "auto";
+    if (WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current &&
+        !webgpuStartupTiming.current.frozen)
+      webgpuStartupTiming.current.frozen = true;
     if (webgpuMainApp.driver.commitSunbeamVisibleFrame(
       receipt.recordResult.sunbeamFrameToken,
       () => state.screen === 'game' && !document.hidden &&
@@ -18683,6 +18754,9 @@ function pumpWebGPUMainAppDriver() {
     if (document.documentElement?.dataset)
       document.documentElement.dataset.fieldRenderer = "webgpu";
   }).catch(error => {
+    recordWebGPUStartupIncompleteFrame(error?.code === 'DVA_WEBGPU_INCOMPLETE_SCENE'
+      ? 'incomplete-scene' : error?.code === 'DVA_WEBGPU_STALE_SCENE'
+        ? 'stale-scene' : 'frame-error');
     setWebGPUMainFailure(error);
   });
 }
@@ -27908,7 +27982,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     get state() { return destroyed ? 'destroyed' : runtime.state; },
     get device() { return runtime.device; },
     async draw({ data = state.data, sample, rect, dpr = 1, camera,
-      shapeProviders = {} } = {}) {
+      shapeProviders = {}, onTiming } = {}) {
       const requestGeneration = lifecycleGeneration;
       if (destroyed || runtime.state !== 'ready')
         return Object.freeze({ drawn: false, reason: destroyed ? 'destroyed' : runtime.state });
@@ -27958,13 +28032,18 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
           configuredSunbeamAudioContext = context;
         }
         const scheduled = await runtime.requestFrame({ sample, rect, dpr, camera,
+          ...(typeof onTiming === 'function' ? { onTiming } : {}),
           recordClears: true,
           prepare: async ({ viewport, device, renderer, target: frameTarget }) => {
             if (device !== registry.device || renderer !== runtime.renderer ||
                 frameTarget !== target)
               throw new Error('Dormant WebGPU main prepare crossed a device or target');
+            markWebGPUStartupStage('sceneCaptureBegin');
+            const captureStartedAt = WEBGPU_MAIN_VERIFY_ROUTE ? performance.now() : null;
             const captured = captureWebGPUMainAppWorldCandidate(data,
               viewport, providers);
+            markWebGPUStartupStage('sceneCaptureEnd', Number.isFinite(captureStartedAt)
+              ? Math.max(0, performance.now() - captureStartedAt) : null);
             const deferredAcquisitionIds =
               captured.stages.acquisition && registry.passes.acquisition.state !== 'ready'
                 ? captured.conditional.acquisition.effects.map(effect => String(effect.id)) : [];
@@ -27990,6 +28069,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
                 generation: captured.headMarkers.generation })
               : headMarkerMaterials;
             captured.assertCurrent();
+            markWebGPUStartupStage('candidatePrepareBegin');
+            const candidatePrepareStartedAt = WEBGPU_MAIN_VERIFY_ROUTE
+              ? performance.now() : null;
             const candidate = await prepareWebGPUMainAppWorldCandidate(
               captured, registry.passes, textAtlas, {
                 headMarkerDevice: device,
@@ -27997,6 +28079,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
                 markerDomFallbackReady, bloomEncoder, residualRevision,
                 expandedCanvas, expandedTarget,
                 acquisitionCanvas, acquisitionTarget });
+            markWebGPUStartupStage('candidatePrepareEnd',
+              Number.isFinite(candidatePrepareStartedAt)
+                ? Math.max(0, performance.now() - candidatePrepareStartedAt) : null);
             captured.assertCurrent();
             if (candidate.viewport !== viewport ||
                 candidate.camera.x !== camera.x ||
