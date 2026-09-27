@@ -21,7 +21,7 @@
       version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', '品質合格・採用済み・本編接続待ち', '独立制作した最新版。Eとして採用済み。本編の実イベント接続は未完了。'),
     ] },
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
-      version('barrier-pro-r03', 'GPT Pro r0.3', 'barrier-pro-r03/preview.html', 'barrier-pro-r03/barrier-pro-renderer.mjs', '比較試作・品質不合格・本編未採用', 'GPT Pro独立改稿。4事象は実WebGPUで再生可能だが、原寸で小さく暗く、拡大しても硬い青い門状で透過面・局所発光・枝ごとの作用が不足するため改稿中。', 'effect-H64'),
+      version('barrier-pro-r03', 'GPT Pro r0.3', 'barrier-pro-r03/preview.html', 'barrier-pro-r03/barrier-pro-renderer.mjs', '造形評価高・発光調整待ち・本編未採用', 'GPT Pro独立改稿。4事象は実WebGPUで再生可能。ユーザーは造形品質を高く評価し、発光の不足を指摘。主形を保ちながら発光を調整中で、本編への採用は未決定。', 'effect-H64'),
       version('barrier-pro-r02', 'GPT Pro r0.2', 'barrier-pro-r02/preview.html', 'barrier-pro-r02/barrier-pro-renderer.mjs', '比較試作・品質不合格・本編未採用', 'ChatGPT Proによる独立設計。実WebGPUでは主形が小さな不透明の球状に見え、保護空域と吸収の作用差が読めないため改稿中。', 'effect-H64'),
       version('barrier-pro-r01', 'GPT Pro r0.1', 'barrier-pro-r01/preview.html', 'barrier-pro-r01/barrier-pro.wgsl', '比較試作・品質不合格・本編未採用', 'GPT Pro独立初稿。実WebGPU再生はできるが、原寸では細く暗い支持線だけが読め、保護空域は不十分。', 'effect-H64')
     ] }
