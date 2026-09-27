@@ -11,14 +11,14 @@
     Object.freeze({ id, title, page, source, status, detail, anchor, zoom });
   const entries = [
     { id: 'heal-astra', title: 'ヒール', versions: [
-      version('heal-astra-prototype', 'Astra版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '品質合格・採用済み', '採用済みのヒール。WebGPUで自動ループ再生します。', 'actor-H64', 0.7937),
+      version('heal-astra-prototype', 'Astra版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', 'ユーザー採用・発光と主形は確認済み・新基準のフレア評価待ち', 'H64の主形と局所発光は確認済み。強発光時のフレア採否、連続再生の全寿命と聴感は未受入です。', 'actor-H64', 0.7937),
       version('heal-webgpu-20260924', '旧版（9月24日）', 'heal-webgpu-preview.html', 'webgpu-heal-e.js', '旧版・品質不採用・本編未採用', 'Astra版より前のヒール。比較用にWebGPUで再生できます。現行ヒールには使用しません。', 'actor-H64', 0.7937)
     ] },
     { id: 'sunbeam-astra', title: 'サンビーム', versions: [
-      version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', '品質合格・採用済み・本編接続待ち', '手元から伝播し対象へ届く最新版。Eとして採用済み。本編の実イベント接続は未完了。', 'effect-H64'),
+      version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', 'ユーザー採用・手元のレンズフレア改稿待ち', '手元から伝播する三つの光路は保持。強い掌光源に連動するレンズフレアを追加する改稿は未実施。本編の実イベント接続も未完了。', 'effect-H64'),
     ] },
     { id: 'luck-astra', title: '幸運', versions: [
-      version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', '品質合格・採用済み・本編接続待ち', '独立制作した最新版。Eとして採用済み。本編の実イベント接続は未完了。'),
+      version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', 'ユーザー採用履歴あり・現行品質基準は未達', '制作時のH64では分身・転移のように見え、幸運の因果が読みにくいと判定。本編には未接続。採用履歴を残し、GPT Proによる改稿対象とします。'),
     ] },
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
       version('barrier-pro-r03', 'GPT Pro r0.3', 'barrier-pro-r03/preview.html', 'barrier-pro-r03/barrier-pro-renderer.mjs', '造形評価高・発光調整待ち・本編未採用', 'GPT Pro独立改稿。4事象は実WebGPUで再生可能。ユーザーは造形品質を高く評価し、発光の不足を指摘。主形を保ちながら発光を調整中で、本編への採用は未決定。', 'effect-H64'),
