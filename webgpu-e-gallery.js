@@ -6,6 +6,7 @@
     'sunbeam-astra': { magnification: 1.18, focusX: 490, focusY: 310 },
     'sunbeam-pro-live-v1': { magnification: 1.2, focusX: 490, focusY: 310 },
     'sunbeam-pro-file-draft': { magnification: 1.2, focusX: 490, focusY: 310 },
+    'sunbeam-pro-v2': { magnification: 1.2, focusX: 490, focusY: 310 },
     'luck-astra': { magnification: 3.5, focusX: 490, focusY: 195 },
     'luck-pro-r01': { magnification: 1.5, focusX: 490, focusY: 310 },
     'luck-pro-r02': { magnification: 1.5, focusX: 490, focusY: 310 },
@@ -25,6 +26,7 @@
       version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', 'ユーザー品質採用・本編実イベント未接続', '手元から伝播する三つの光路を持つ採用版。掌光源のレンズフレア強化は別版の改稿候補です。本編の実イベント接続は未完了。', 'effect-H64'),
       version('sunbeam-pro-file-draft', 'GPT Pro旧完成稿', 'sunbeam-pro-older/file-v1.html', 'sunbeam-pro-older/sunbeam-pro-file-v1.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', 'ファイルプレビューから回収した旧完成稿。独立したWebGPU自動ループで再生可能。版番号は原稿にないため付けていません。', 'effect-H64'),
       version('sunbeam-pro-live-v1', 'GPT Pro初稿', 'sunbeam-pro-older/live-gpu-v1.html', 'sunbeam-pro-older/sunbeam-pro-live-gpu-v1.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', '最初のPro原稿。片手・両手の実GPU再生記録があり、比較用に自動ループします。', 'effect-H64'),
+      version('sunbeam-pro-v2', 'GPT Pro v2', 'sunbeam-v2-gallery.html', 'webgpu-sunbeam-pro-v2.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', '旧Pro v2をWebGPUで比較再生します。品質とSFXの受入、本編採用は未了です。', 'effect-H64'),
     ] },
     { id: 'luck-astra', title: '幸運', versions: [
       version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', 'ユーザー品質採用・本編未接続', '採用済み幸運v4。幸運の因果の見え方について追加改稿の余地はあります。本編には未接続です。'),
@@ -69,7 +71,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-effects-20260927-v20');
+    preview.searchParams.set('galleryRelease', 'pro-effects-20260927-v21');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

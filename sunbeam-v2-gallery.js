@@ -1,4 +1,5 @@
 import { create, plan, testInput } from './webgpu-sunbeam-pro-v2.mjs';
+import { applyPreviewActorClock, previewActorAge } from './sunbeam-v2-gallery-clock.mjs';
 
 (() => {
   'use strict';
@@ -32,7 +33,7 @@ import { create, plan, testInput } from './webgpu-sunbeam-pro-v2.mjs';
 
   function phaseAt(now) {
     // 1.2 seconds of actor time per loop at fixed ACC2 preview speed.
-    return ((now - state.origin) * 2) % 1200;
+    return previewActorAge(now, state.origin);
   }
 
   function audioConfig() {
@@ -56,13 +57,9 @@ import { create, plan, testInput } from './webgpu-sunbeam-pro-v2.mjs';
   }
 
   function makeInput(now, viewport, age) {
-    const input = testInput(age, true);
-    const loopIndex = Math.floor((now - state.origin) * 2 / 1200);
+    const input = applyPreviewActorClock(testInput(age, true), age);
+    const loopIndex = Math.max(0, Math.floor((now - state.origin) * 2 / 1200));
     input.eventId = `sunbeam-gallery-v2:${loopIndex}`;
-    input.actorNowMs = age;
-    input.startActorMs = 0;
-    input.actorRate = 2;
-    input.characterElapsedMs = Math.min(age, 820);
     input.viewport = { widthCss: viewport.cssWidth, heightCss: viewport.cssHeight, dpr: viewport.dpr };
     input.camera = { zoom: 1.65, cssPxPerWorld: 1 };
     input.rays = (input.twoPalms ? [280, 314] : [297]).map(y => ({
@@ -100,6 +97,7 @@ import { create, plan, testInput } from './webgpu-sunbeam-pro-v2.mjs';
         .then(() => { if (!verification) state.effect.sfx?.accept(receipt); })
         .catch(showError);
       state.snapshot = { ready: true, frame: state.frame, ageMs: age, actorRate: 2,
+        loopIndex: Math.max(0, Math.floor((now - state.origin) * 2 / 1200)),
         viewport: { width: viewport.width, height: viewport.height, dpr: viewport.dpr },
         source: 'sunbeam-e-v2', verificationMuted: verification };
       state.raf = requestAnimationFrame(draw);
