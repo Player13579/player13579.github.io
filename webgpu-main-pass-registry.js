@@ -240,9 +240,9 @@
       add('shapes', modules.shapes.create({ device: renderer.device,
         format: renderer.format }), 'enqueue');
       progress('field');
-      // Start both shader/field builds on the same renderer before yielding.
-      // Convert each outcome to a fulfilled observer immediately so either
-      // rejection is handled while the other build is still in flight.
+      // Start field, Sunbeam, stamina, mana, and Heal on the same renderer
+      // before yielding. Observe field/Sunbeam outcomes immediately so either
+      // rejection is handled while all five builds are still in flight.
       const startRequiredPass = (name, create) => {
         const startedAt = timing(`${name}.invoke`);
         let creation;
@@ -266,6 +266,28 @@
       progress('sunbeam');
       const sunbeamCreation = startRequiredPass('sunbeam', () =>
         modules.sunbeamE.create({ renderer }));
+      // These independent E pipelines use the same renderer and can compile
+      // while the field and Sunbeam passes initialize. Keep them registry-owned
+      // immediately so every later failure follows the normal rollback path.
+      const earlyPassFailures = [];
+      const startEarlyOwnedPass = (name, create, method = 'record', adapt = value => value) => {
+        try { add(name, adapt(create()), method); }
+        catch (error) { earlyPassFailures.push(error); }
+      };
+      startEarlyOwnedPass('staminaBenefitE', () =>
+        modules.staminaBenefitE.create({ renderer, frameOwner: renderer }));
+      startEarlyOwnedPass('manaBenefitE', () =>
+        modules.manaBenefitE.create({ renderer, frameOwner: renderer }));
+      startEarlyOwnedPass('healE', () => {
+        const pass = modules.healE.create({ renderer, frameOwner: renderer });
+        const liveHealIds = new Set();
+        return Object.freeze({ device: renderer.device,
+          reconcile(ids) {
+            const next = new Set(ids);
+            for (const id of liveHealIds) if (!next.has(id)) pass.release(id);
+            liveHealIds.clear(); for (const id of next) liveHealIds.add(id);
+          }, record: pass.record, ready: pass.ready, destroy: pass.destroy });
+      });
       const [fieldResult, sunbeamResult] = await Promise.all([
         fieldCreation, sunbeamCreation]);
       if (fieldResult.status === 'rejected' || sunbeamResult.status === 'rejected') {
@@ -290,6 +312,7 @@
         }
         throw error;
       }
+      if (earlyPassFailures.length) throw earlyPassFailures[0];
       const preSunbeamConstructorsStartedAt = timing('pre-sunbeam-constructors.begin');
       progress('passes');
       add('environmentE', modules.environmentE.create({ device: renderer.device,
@@ -343,8 +366,6 @@
         device: renderer.device }), 'record');
       borrow('grenadeImpacts', modules.grenadeImpacts);
       add('bodyBenefits', modules.bodyBenefits.create({ renderer }), 'record');
-      add('staminaBenefitE', modules.staminaBenefitE.create({ renderer, frameOwner: renderer }), 'record');
-      add('manaBenefitE', modules.manaBenefitE.create({ renderer, frameOwner: renderer }), 'record');
       add('bodyBenefitExtra', modules.bodyBenefitExtra.create({ frameOwner: renderer }), 'record');
       add('statusTempo', modules.statusTempo.create({ frameOwner: renderer }), 'record');
       for (const name of ['barrierE', 'bustE', 'dodgeE', 'renkiE', 'ideaE']) {
@@ -352,15 +373,9 @@
         add(name, Object.freeze({ device: renderer.device,
           record: pass.record, ready: pass.ready, destroy: pass.destroy }), 'record');
       }
-      for (const name of ['alchemyE', 'hackerRootE', 'hackerStatusRecoveryE', 'floraE', 'healE']) {
+      for (const name of ['alchemyE', 'hackerRootE', 'hackerStatusRecoveryE', 'floraE']) {
         const pass = modules[name].create({ renderer, frameOwner: renderer });
-        const liveHealIds = new Set();
         add(name, Object.freeze({ device: renderer.device,
-          ...(name === 'healE' ? { reconcile(ids) {
-            const next = new Set(ids);
-            for (const id of liveHealIds) if (!next.has(id)) pass.release(id);
-            liveHealIds.clear(); for (const id of next) liveHealIds.add(id);
-          } } : {}),
           record: pass.record, ready: pass.ready, destroy: pass.destroy }), 'record');
       }
       timing('pre-sunbeam-constructors.end', preSunbeamConstructorsStartedAt);
