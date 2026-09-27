@@ -36,13 +36,13 @@
       version('heal-webgpu-20260924', '旧版（9月24日）', 'heal-webgpu-preview.html', 'webgpu-heal-e.js', '旧版・品質不採用・本編未採用', 'Astra版より前のヒール。比較用にWebGPUで再生できます。現行ヒールには使用しません。', 'actor-H64', 0.7937, true)
     ] },
     { id: 'sunbeam-astra', title: 'サンビーム', versions: [
-      version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', 'ユーザー品質採用・本編実イベント未接続', '手元から伝播する三つの光路を持つ採用版。掌光源のレンズフレア強化は別版の改稿候補です。本編の実イベント接続は未完了。', 'effect-H64'),
+      version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', 'ユーザー品質採用・本編ソース接続済み・公開版未反映', '手元から伝播する三つの光路を持つ採用版。作業中の本編ソースでは実イベントからWebGPU描画・SFXへ接続済みで、公開ゲーム版には未反映です。実画面・実音声は今回未確認。掌光源のレンズフレア強化は別版の改稿候補です。', 'effect-H64'),
       version('sunbeam-pro-file-draft', 'GPT Pro旧完成稿', 'sunbeam-pro-older/file-v1.html', 'sunbeam-pro-older/sunbeam-pro-file-v1.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', 'ファイルプレビューから回収した旧完成稿。独立したWebGPU自動ループで再生可能。版番号は原稿にないため付けていません。', 'effect-H64', 1, true),
       version('sunbeam-pro-live-v1', 'GPT Pro初稿', 'sunbeam-pro-older/live-gpu-v1.html', 'sunbeam-pro-older/sunbeam-pro-live-gpu-v1.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', '最初のPro原稿。片手・両手の実GPU再生記録があり、比較用に自動ループします。', 'effect-H64', 1, true),
       version('sunbeam-pro-v2', 'GPT Pro v2', 'sunbeam-v2-gallery.html', 'webgpu-sunbeam-pro-v2.mjs', 'GPT Pro旧版・実GPU再生可能・品質未受入・本編未採用', '旧Pro v2をWebGPUで比較再生します。品質とSFXの受入、本編採用は未了です。', 'effect-H64', 1, true),
     ] },
     { id: 'luck-astra', title: '幸運', versions: [
-      version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', 'ユーザー品質採用・本編未接続', '採用済み幸運v4。幸運の因果の見え方について追加改稿の余地はあります。本編には未接続です。'),
+      version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', 'ユーザー品質採用・本編ソース接続済み・公開版未反映', '採用済み幸運v4。作業中の本編ソースでは実イベントからWebGPU描画・SFXへ接続済みで、公開ゲーム版には未反映です。実画面・実音声は今回未確認。幸運の因果表現は別版の改稿候補です。'),
       version('luck-pro-r02', 'GPT Pro r0.2', 'luck-pro-replay/luck-pro-r02.html', 'luck-pro-replay/luck-e-revision.mjs', 'GPT Pro改稿・実GPU再生可能・品質未受入・本編未採用', '改稿版は実GPUで再生可能。旧r0.1より広い青金色の形が見えるが、視覚品質とSFXは未受入です。', 'actor-H64', 1, true),
       version('luck-pro-r01', 'GPT Pro r0.1', 'luck-pro-replay/luck-pro-r01.html', 'luck-pro-replay/luck-e.mjs', 'GPT Pro旧版・実GPU再生可能・品質不合格・本編未採用', '旧Pro初稿は細い金色の線だけに見えるため品質不合格。比較用に再生します。', 'actor-H64', 1, true),
     ] },
