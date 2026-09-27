@@ -24013,9 +24013,9 @@ function markerTargetAt(point) {
     .sort((a, b) => Math.hypot(point.x - a.x, point.y - a.y) - Math.hypot(point.x - b.x, point.y - b.y))[0];
 }
 
-// This records input ownership without changing the active Canvas hit test.
+// Capture the same presentation surface used by the committed WebGPU viewport.
 function markerExplanationPointerSample(event, point) {
-  const rect = els.canvas.getBoundingClientRect();
+  const rect = els.webgpuMainCanvas.getBoundingClientRect();
   if (!point || ![event?.clientX, event?.clientY, rect.left, rect.top,
       rect.width, rect.height].every(Number.isFinite) ||
       rect.width <= 0 || rect.height <= 0) return null;
@@ -24060,7 +24060,7 @@ function markerPointerOwnedByWebGPU(sample, point, explanation, viewport) {
       !viewport.rect || ![point.x, point.y].every(Number.isFinite) ||
       sample.point?.x !== point.x || sample.point?.y !== point.y)
     return false;
-  const rect = els.canvas.getBoundingClientRect();
+  const rect = els.webgpuMainCanvas.getBoundingClientRect();
   for (const key of ['left', 'top', 'width', 'height']) {
     if (!Number.isFinite(sample.rect?.[key]) ||
         sample.rect[key] !== viewport.rect[key] ||
