@@ -128,13 +128,14 @@
       return surfaces.get(key);
     }
 
-    function beginFrame(label = 'DVA WebGPU frame') {
+    function beginFrame(label = 'DVA WebGPU frame', diagnostics = false) {
       ready();
       if (frameOpen) throw new Error('A WebGPU renderer frame is already open');
       const coreFrame = core.beginFrame(label);
       frameOpen = true;
       const cleared = new Set();
       const batches = [];
+      const primitiveStats = diagnostics ? { commands: 0 } : null;
       let segment = null;
       let stage = 'field';
       let closed = false;
@@ -149,7 +150,7 @@
         coreFrame.add({ target: current.target, label: current.label,
           encode(pass) { current.batch.encode(pass); } });
       }
-      function record(target, kind, item) {
+      function recordPrimitive(target, kind, item) {
         active();
         const handle = targets.get(target);
         if (!handle) throw new Error('Unknown WebGPU presentation target');
@@ -163,6 +164,13 @@
         segment.batch[kind](item);
         return frame;
       }
+      const record = diagnostics
+        ? (target, kind, item) => {
+          recordPrimitive(target, kind, item);
+          primitiveStats.commands += 1;
+          return frame;
+        }
+        : recordPrimitive;
       function cleanup() {
         if (closed) return;
         for (const batch of batches) batch.destroy();
@@ -222,6 +230,10 @@
         },
         rect(target, item) { return record(target, 'rect', item); },
         sprite(target, item) { return record(target, 'sprite', item); },
+        diagnostics() {
+          return primitiveStats ? Object.freeze({ primitiveBatchCount: batches.length,
+            primitiveCommandCount: primitiveStats.commands }) : null;
+        },
         // Ends the current primitive pass. The compositor reads a sampleable
         // scene target and replaces another target; later primitive passes load it.
         composite({ backdrop, target, operations = [] } = {}) {

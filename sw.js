@@ -6,7 +6,7 @@
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
 const RUNTIME_RELEASE = "webgpu-pure-slices-v94";
-const CACHE_NAME = "dva-static-webgpu-pure-slices-v94";
+const CACHE_NAME = "dva-static-bounded-images-v1";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 const STATIC_ASSETS = [
   "/assets/generated/webgpu-text/atlas.json",

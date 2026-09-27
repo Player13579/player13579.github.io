@@ -6,6 +6,38 @@
   const viewportDefault = root.DvaWebGPUViewport || (typeof require === 'function' ? require('./webgpu-viewport.js') : null);
   const schedulerDefault = root.DvaWebGPUMainFrameScheduler || (typeof require === 'function' ? require('./webgpu-main-frame-scheduler.js') : null);
   const DEFAULT_CLEAR = Object.freeze([0, 0, 0, 1]);
+  // Opt in with ?verify&webgpuFrameCost=1. Read samples in the browser through
+  // window.__DVA_WEBGPU_FRAME_COST__.samples(); tests may set the named hook.
+  const FRAME_COST_GLOBAL = '__DVA_WEBGPU_FRAME_COST__';
+  const FRAME_COST_TEST_HOOK = '__DVA_WEBGPU_FRAME_COST_TEST_HOOK__';
+
+  function frameCostRequested() {
+    if (root[FRAME_COST_TEST_HOOK] === true) return true;
+    try {
+      const params = new URLSearchParams(root.location?.search || '');
+      return params.has('verify') && params.get('webgpuFrameCost') === '1';
+    } catch (_) { return false; }
+  }
+
+  function createFrameCostBuffer(capacity = 180) {
+    if (!Number.isInteger(capacity) || capacity < 1) throw new RangeError('Frame cost capacity must be a positive integer');
+    const slots = new Array(capacity);
+    let next = 0, length = 0, sequence = 0;
+    return Object.freeze({
+      push(sample) {
+        slots[next] = Object.freeze({ ...sample, sequence: ++sequence });
+        next = (next + 1) % capacity;
+        length = Math.min(capacity, length + 1);
+      },
+      snapshot() {
+        const result = [];
+        const start = (next - length + capacity) % capacity;
+        for (let index = 0; index < length; index++) result.push(slots[(start + index) % capacity]);
+        return Object.freeze(result);
+      },
+      clear() { next = 0; length = 0; sequence = 0; slots.fill(undefined); }
+    });
+  }
 
   // A prewarmed renderer has one explicit transfer boundary. Before claim,
   // dispose() is responsible for cancellation; after claim, the runtime owns
@@ -49,6 +81,13 @@
     const gate = viewportApi.createStableGate();
     let renderer = null, handle = null, disposed = false, failure = null;
     let generation = 0, scheduler = null, hiddenSuspension = false;
+    const frameCostBuffer = frameCostRequested() ? createFrameCostBuffer() : null;
+    let frameCostApi = null;
+    if (frameCostBuffer) {
+      frameCostApi = Object.freeze({ enabled: true, capacity: 180,
+        samples: () => frameCostBuffer.snapshot(), clear: () => frameCostBuffer.clear() });
+      root[FRAME_COST_GLOBAL] = frameCostApi;
+    }
 
     function cleanup() {
       if (disposed) return;
@@ -58,6 +97,9 @@
       gate.suspend();
       try { handle?.unregister(); } catch (_) { /* A failed device may have removed targets. */ }
       try { renderer?.destroy(); } catch (_) { /* Preserve the original failure. */ }
+      if (frameCostApi && root[FRAME_COST_GLOBAL] === frameCostApi) {
+        try { delete root[FRAME_COST_GLOBAL]; } catch (_) { root[FRAME_COST_GLOBAL] = undefined; }
+      }
     }
     function fail(error) {
       if (disposed) return;
@@ -92,14 +134,22 @@
       throw error;
     }
 
-    async function draw({ sample, rect, dpr = 1, camera, prepare, record,
+    async function draw({ sample, rect, dpr = 1, camera, phase = null, prepare, record,
       clearColor = DEFAULT_CLEAR, recordClears = false, isCurrent = () => true,
       onTiming } = {}) {
-      const timing = typeof onTiming === 'function' ? (name, startedAt = null) => {
+      const collectFrameCost = Boolean(frameCostBuffer && phase === 'playing');
+      const frameCosts = collectFrameCost ? {} : null;
+      const timing = (typeof onTiming === 'function' || collectFrameCost) ? (name, startedAt = null) => {
         try {
           const atMs = root.performance?.now?.();
           if (!Number.isFinite(atMs)) return;
-          onTiming(name, startedAt === null ? null : atMs - startedAt);
+          const durationMs = startedAt === null ? null : atMs - startedAt;
+          if (collectFrameCost) {
+            if (name === 'prepareEnd') frameCosts.prepareMs = durationMs;
+            else if (name === 'recordEnd') frameCosts.recordMs = durationMs;
+            else if (name === 'queueSubmitReceipt') frameCosts.submitMs = durationMs;
+          }
+          if (typeof onTiming === 'function') onTiming(name, durationMs);
         } catch (_) { /* Verification diagnostics cannot change rendering. */ }
       } : null;
       timing?.('runtimeFrameEntry');
@@ -128,7 +178,9 @@
         }
         handle.resize(viewport.pixelWidth, viewport.pixelHeight,
           { width: viewport.width, height: viewport.height });
-        const frame = renderer.beginFrame('DVA main');
+        const frame = collectFrameCost
+          ? renderer.beginFrame('DVA main', true)
+          : renderer.beginFrame('DVA main');
         try {
           if (!recordClears) frame.clear(target, clearColor);
           let sceneCleared = false;
@@ -165,8 +217,11 @@
           }
           const submitStartedAt = timing ? root.performance.now() : null;
           timing?.('queueSubmitBegin');
+          const primitiveStats = collectFrameCost ? frame.diagnostics?.() : null;
           const passes = frame.submit();
           timing?.('queueSubmitReceipt', submitStartedAt);
+          if (collectFrameCost) frameCostBuffer.push({ phase, ...frameCosts,
+            ...primitiveStats, passes, atMs: root.performance.now() });
           // Interaction targets belong to the submitted frame. Never expose a
           // record result from a discarded or superseded preparation.
           const receipt = Object.freeze({ drawn: true, passes, viewport, recordResult: result });
@@ -221,7 +276,7 @@
       destroy: cleanup
     });
   }
-  const api = Object.freeze({ create, createRendererLease });
+  const api = Object.freeze({ create, createRendererLease, createFrameCostBuffer });
   root.DvaWebGPUMainRuntime = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);
