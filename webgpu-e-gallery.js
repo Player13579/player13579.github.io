@@ -13,6 +13,7 @@
     'barrier-pro': { magnification: 3.0, focusX: 490, focusY: 310 },
     'stamina-pro': { magnification: 4.0, focusX: 490, focusY: 496 },
     'mana-pro': { magnification: 2.0, focusX: 490, focusY: 310 },
+    'mana-pro-r02': { magnification: 2.0, focusX: 627, focusY: 336 },
     'emp-pro': { magnification: 2.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1, replayable = false) =>
@@ -43,6 +44,7 @@
       version('stamina-pro-r01', 'GPT Pro r0.1', 'stamina-pro-r01-preview.html', 'stamina-pro-r01/renderer.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体へ充填されるスタミナ回復案。限定的な実WebGPU再生は確認済み。原寸の全寿命、聴感、ゲーム本編での発動は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'mana-pro', title: 'マナ獲得（GPT Pro）', versions: [
+      version('mana-pro-r02', 'GPT Pro r0.2', 'webgpu-mana-pro-r02/index.html', 'webgpu-mana-pro-r02/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '新しい容積受容案。実ChromeのWebGPUでコンパイルと描画を確認。ギャラリーではH64単発を自動再生します。全寿命の視覚品質と音、実ゲームでの接続は未受入です。', 'effect-H64', 1, true),
       version('mana-pro-r01', 'GPT Pro r0.1', 'webgpu-mana-pro-r01/index.html', 'webgpu-mana-pro-r01/preview/replay.js', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体の周囲から胸郭へ収束するマナ獲得案。提出物の実WebGPU再生は確認済み。ギャラリー表示、全寿命、聴感とゲーム本編の接続は別途検証中です。', 'effect-H64', 1, true)
     ] },
     { id: 'emp-pro', title: 'EMP（GPT Pro）', versions: [
@@ -75,7 +77,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'replayable-pro-20260928-v24');
+    preview.searchParams.set('galleryRelease', 'replayable-pro-20260928-v25');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

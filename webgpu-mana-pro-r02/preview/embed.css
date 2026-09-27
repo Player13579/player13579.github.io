@@ -1,0 +1,10 @@
+/* Codex gallery wrapper: one Pro H64 WebGPU view fills the 980 × 620 iframe. */
+html:has(body.embed), body.embed { width: 100%; height: 100%; overflow: hidden; }
+body.embed .shell { width: 980px; height: 620px; max-width: none; padding: 0; margin: 0; }
+body.embed .shell > :not(#views):not(#error) { display: none; }
+body.embed #views { display: block; width: 980px; height: 620px; }
+body.embed .tile { width: 980px; height: 620px; border: 0; border-radius: 0; }
+body.embed .tile header, body.embed .tile .caption { display: none; }
+body.embed .tile canvas { width: 980px; height: 620px; }
+body.embed #error:not([hidden]) { position: absolute; inset: 0; margin: 0; z-index: 2; }
+body.verify #sound, body.verify #volume { display: none; }
