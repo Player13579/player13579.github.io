@@ -2400,6 +2400,10 @@ const webgpuFramePanelRuntimeSamples = WEBGPU_FRAME_PANEL_ENABLED ? [] : null;
 let webgpuFramePanelPendingRuntimeSample = null;
 function recordWebGPUFramePanelTiming(name, durationMs, atMs = performance.now()) {
   if (!webgpuFramePanelRuntimeSamples || !Number.isFinite(durationMs) || durationMs < 0) return;
+  if (document.hidden || state.screen !== "game" || state.data?.phase !== "playing") {
+    webgpuFramePanelPendingRuntimeSample = null;
+    return;
+  }
   if (name === "prepareEnd") webgpuFramePanelPendingRuntimeSample = { prepareMs: durationMs };
   else if (name === "recordEnd" && webgpuFramePanelPendingRuntimeSample)
     webgpuFramePanelPendingRuntimeSample.recordMs = durationMs;
@@ -2421,7 +2425,8 @@ function webgpuFramePanelReport(now = performance.now()) {
   const gaps = samples.map(sample => sample.gapMs);
   const timings = webgpuFramePanelRuntimeSamples?.filter(sample => sample.atMs >= now - 15000) || [];
   const runtime = window.__DVA_WEBGPU_FRAME_COST__?.samples?.() || [];
-  const recentRuntime = runtime.filter(sample => sample.phase === "playing" && Number.isFinite(sample.atMs));
+  const recentRuntime = runtime.filter(sample => sample.phase === "playing" &&
+    Number.isFinite(sample.atMs) && sample.atMs >= now - 15000);
   const p95 = key => webgpuFramePanelPercentile(timings.map(sample => sample[key]), .95);
   const lastRuntime = recentRuntime[recentRuntime.length - 1] || {};
   return {

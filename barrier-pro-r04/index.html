@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>バリアE · 弧抱膜 r0.4</title>
+  <style>
+    :root { color-scheme: dark; font: 14px/1.45 system-ui, sans-serif; background: #0c1118; color: #dce7eb; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; margin: 0; }
+    body { display: grid; place-items: center; }
+    main { width: min(100vw, 980px); }
+    header { min-height: 44px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    h1 { margin: 0; font-size: 15px; font-weight: 600; }
+    #state { color: #a7cbd2; font-variant-numeric: tabular-nums; }
+    .quality { color: #ffc577; font-size: 12px; }
+    button { color: inherit; background: #22333e; border: 1px solid #52707c; border-radius: 4px; padding: 5px 9px; cursor: pointer; }
+    button:disabled { opacity: .55; cursor: default; }
+    .frame { width: min(100vw, 980px); aspect-ratio: 49 / 31; background: #080d12; }
+    canvas { display: block; width: 100%; height: 100%; }
+    body.embed main { width: min(100vw, 980px); }
+    body.embed header { display: none; }
+    body.embed .frame { width: min(100vw, 980px); }
+    body.embed .quality { display: none; }
+    @media (max-width: 520px) { header { align-items: flex-start; flex-wrap: wrap; } .quality { flex-basis: 100%; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>バリアE · 弧抱膜 r0.4</h1>
+      <span id="state" aria-live="polite">WebGPUを初期化中</span>
+      <button id="sound" type="button">現在の事象音を再生</button>
+      <span class="quality">比較プレビュー · 品質未受入 · 実装候補</span>
+    </header>
+    <div class="frame"><canvas id="view" width="980" height="620" aria-label="WebGPU barrier effect preview"></canvas></div>
+  </main>
+  <script type="module" src="./preview.mjs"></script>
+</body>
+</html>
