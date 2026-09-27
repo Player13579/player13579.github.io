@@ -1,0 +1,107 @@
+{
+  "asset": "Stamina E / CORELOAD / 収束・充填・蓄勢",
+  "revision": "0.3.0",
+  "recordedAt": "2026-09-27T18:12:36.993659+00:00",
+  "scope": "Independent deliverable. No quality adoption or game integration approval.",
+  "prior_evidence": {
+    "source": "User report in this chat",
+    "revision": "r0.2",
+    "reported_conditions": "Chrome actual WebGPU, full lifetime, H64, dark/light backgrounds",
+    "technical_finding": "WGSL identifier meta caused initialization failure; user test copy replacing it with attributes compiled and created its pipeline.",
+    "creative_findings": [
+      "p=0.035–0.4 looked like thin red ribbons",
+      "p=0.6–0.9 left flat red torso regions; arrival/stored-capacity meaning and luminance modulation did not read at H64"
+    ],
+    "independently_reproduced_here": false,
+    "not_evidence_for_r03_success": true
+  },
+  "creative_provenance": {
+    "older_ZIP_contents_opened": false,
+    "old_Sol_Astra_design_code_textures_or_sound_used": false,
+    "r03_sources": "New design based on the explicit game contract, B Foundation, and the user-reported r0.2 failure facts. External sources are API specifications only."
+  },
+  "StructuralInspection": {
+    "status": "pass",
+    "local_static_check_count": 611,
+    "failed_count": 0,
+    "evidence": "verification/static-report.json",
+    "scope": "Local static B-instance, host/WGSL descriptor, file and numeric audio checks. Not official B validation, full WGSL type checking, real pipeline execution, render quality or listening."
+  },
+  "AutomatedTests": {
+    "status": "pass",
+    "tests": 82,
+    "passed": 82,
+    "failed": 0,
+    "evidence": "verification/node-tests.txt",
+    "scope": "Node numeric, event, DSP, mocked worklet and lexical/descriptor tests; not actual AudioWorklet playback or GPU rendering."
+  },
+  "WGSLStatic": {
+    "status": "pass",
+    "shaders": [
+      "scene.wgsl",
+      "blur.wgsl",
+      "composite.wgsl"
+    ],
+    "checked": [
+      "Reserved-word identifiers including the meta regression",
+      "Delimiter/struct declarations",
+      "Host-bind-group declaration correspondence",
+      "Entry point names and render target layout",
+      "64-byte host-shareable records and capacities"
+    ],
+    "limitations": "Not a complete WGSL parser/type checker. Successful actual pipeline creation is not established."
+  },
+  "AudioReferences": {
+    "status": "generated_and_numerically_checked",
+    "files": 6,
+    "evidence": "verification/audio-analysis.json",
+    "actual_listening": "not_run",
+    "scope": "Same DSP kernel, 48 kHz stereo PCM. Numeric onset/termination/bounds checks are not listening."
+  },
+  "ActualExecution": {
+    "browser_attempt": "attempted_but_navigation_blocked",
+    "evidence": "verification/browser-attempt.json",
+    "blocking_error": "net::ERR_BLOCKED_BY_ADMINISTRATOR",
+    "WGSL_actual_compilation": "not_run",
+    "createRenderPipelineAsync": "not_run",
+    "actual_GPU_render": "not_run",
+    "performance_measurement": "not_run",
+    "browser_UI_execution": "not_run",
+    "actual_AudioWorklet_playback": "not_run",
+    "full_lifetime_H64_dark_light_quality": "not_run",
+    "actual_listening": "not_run",
+    "CPU_proxy_image_used": false,
+    "policy_bypass_attempted": false
+  },
+  "RenderObservation": {
+    "status": "not_run",
+    "evidence_refs": []
+  },
+  "OutcomeEvaluation": {
+    "intent_alignment": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "artistic_effect": {
+      "status": "not_run",
+      "evidence_refs": []
+    }
+  },
+  "ComparativeEvaluation": {
+    "status": "not_run",
+    "result": "No quality superiority versus r0.2 or any other effect is claimed."
+  },
+  "FinalStatus": {
+    "specification_status": "Warning",
+    "render_status": "NotRun",
+    "quality_adoption": "not_approved",
+    "game_integration": "not_approved"
+  },
+  "Integrity": {
+    "payload_manifest": "HASHES.sha256",
+    "algorithm": "SHA-256",
+    "manifest_self_excluded": "Prevents circular hash; final ZIP hash is supplied in the delivery message.",
+    "readonly_command": "node tools/hash.mjs --check"
+  },
+  "review_template": "verification/REVIEW_TEMPLATE.json"
+}

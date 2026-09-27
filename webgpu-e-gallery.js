@@ -12,6 +12,7 @@
     'luck-pro-r02': { magnification: 1.5, focusX: 490, focusY: 310 },
     'barrier-pro': { magnification: 3.0, focusX: 490, focusY: 310 },
     'stamina-pro': { magnification: 4.0, focusX: 490, focusY: 496 },
+    'stamina-pro-r03': { magnification: 1.0, focusX: 490, focusY: 310 },
     'mana-pro': { magnification: 2.0, focusX: 490, focusY: 310 },
     'mana-pro-r02': { magnification: 2.0, focusX: 627, focusY: 336 },
     'emp-pro': { magnification: 2.0, focusX: 490, focusY: 310 }
@@ -41,6 +42,7 @@
       version('barrier-pro-r01', 'GPT Pro r0.1', 'barrier-pro-r01/preview.html', 'barrier-pro-r01/barrier-pro.wgsl', '比較試作・品質不合格・本編未採用', 'GPT Pro独立初稿。実WebGPU再生はできるが、原寸では細く暗い支持線だけが読め、保護空域は不十分。', 'effect-H64', 1, true)
     ] },
     { id: 'stamina-pro', title: 'スタミナ回復（GPT Pro）', versions: [
+      version('stamina-pro-r03', 'GPT Pro r0.3', 'webgpu-stamina-pro-r03/index.html', 'webgpu-stamina-pro-r03/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'H64の収束・充填・蓄勢案。実Chrome WebGPUでコンパイル・描画と一部位相を確認。全寿命の視覚品質、SFX聴感、実ゲーム接続は未受入です。', 'effect-H64', 1, true),
       version('stamina-pro-r01', 'GPT Pro r0.1', 'stamina-pro-r01-preview.html', 'stamina-pro-r01/renderer.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体へ充填されるスタミナ回復案。限定的な実WebGPU再生は確認済み。原寸の全寿命、聴感、ゲーム本編での発動は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'mana-pro', title: 'マナ獲得（GPT Pro）', versions: [

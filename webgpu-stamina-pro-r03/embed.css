@@ -1,0 +1,11 @@
+/* Codex gallery wrapper: preserve the Pro renderer's 256 × 176 raster in one WebGPU view. */
+html:has(body.embed), body.embed { width: 100%; height: 100%; overflow: hidden; }
+body.embed main { width: 980px; height: 620px; max-width: none; margin: 0; padding: 0; }
+body.embed main > :not(.views):not(#error) { display: none; }
+body.embed .views { display: block; width: 980px; height: 620px; }
+body.embed .views article { display: none; }
+body.embed .views article:first-child { display: block; width: 980px; height: 620px; padding: 0; border: 0; border-radius: 0; background: #121a27; }
+body.embed .views article:first-child > :not(canvas) { display: none; }
+body.embed .views canvas { width: 901.818px; height: 620px; max-width: none; margin: 0 auto; }
+body.embed #error:not([hidden]) { position: absolute; inset: 0; z-index: 2; margin: 0; padding: 24px; background: #121a27; color: #ffc0b9; }
+body.verify #audio { display: none; }

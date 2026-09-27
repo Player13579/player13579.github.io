@@ -1,0 +1,85 @@
+{
+  "asset": "CORELOAD r0.3",
+  "reviewer": null,
+  "reviewedAt": null,
+  "originalZIP_SHA256": null,
+  "testedCopy_manifest_result": "not_run",
+  "testedCopy_changes": [],
+  "environment": {
+    "browserVersion": null,
+    "OS": null,
+    "adapterInfo": null,
+    "hardwareAdapterConfirmed": null,
+    "devicePixelRatio": null,
+    "browserZoom": null,
+    "canvasRasterAndCSS": null,
+    "audioDevice": null,
+    "audioLevel": null
+  },
+  "technical": {
+    "WGSLCompilation": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "pipelineCreation": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "actualGPUFrames": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "AudioWorkletOutput": {
+      "status": "not_run",
+      "evidence_refs": []
+    }
+  },
+  "fullLifetimeReview": {
+    "status": "not_run",
+    "required_conditions": [
+      "H64 native / dark and light",
+      "normal and 2x actor time",
+      "900 and 1500 actor-ms",
+      "character on/off",
+      "foreground arm on/off",
+      "same event repeated every frame",
+      "two independent events 180 actor-ms apart",
+      "two nearby recipients",
+      "death / exit / invisible / rewind / cancel",
+      "start / arrival / tightening / hold / fade"
+    ],
+    "observations": [],
+    "evidence_refs": [],
+    "single_frame_is_not_full_lifetime": true
+  },
+  "listening": {
+    "status": "not_run",
+    "conditions": [
+      "single gain / start and tail",
+      "900/1500 duration at 1x/2x actor",
+      "duplicate once only",
+      "two distinct events retain separate voices",
+      "pause/resume without fresh onset",
+      "cancel with bounded release",
+      "late audio unlock does not replay past starts"
+    ],
+    "observations": [],
+    "evidence_refs": []
+  },
+  "OutcomeEvaluation": {
+    "intent_alignment": {
+      "status": "not_run",
+      "rationale": null,
+      "evidence_refs": []
+    },
+    "artistic_effect": {
+      "status": "not_run",
+      "strengths": null,
+      "limitations": null,
+      "evidence_refs": []
+    }
+  },
+  "quality_adoption": "not_approved",
+  "game_integration": "not_approved",
+  "instructions": "Record only the observations actually performed on the identified tested copy. Do not turn queue completion, a single frame, numeric tests or static compliance into whole-lifetime quality approval. Approval fields require explicit user authorization."
+}
