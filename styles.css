@@ -2160,6 +2160,28 @@ html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-error] 
   -webkit-touch-callout: none;
 }
 
+.webgpu-frame-cost-panel {
+  position: absolute;
+  z-index: 44;
+  top: 8px;
+  right: 8px;
+  width: min(340px, calc(100% - 16px));
+  padding: 7px 9px;
+  border: 1px solid rgba(125, 211, 252, .65);
+  border-radius: 8px;
+  background: rgba(9, 18, 29, .84);
+  color: #e0f2fe;
+  font: 11px/1.35 ui-monospace, SFMono-Regular, Consolas, monospace;
+  pointer-events: auto;
+  contain: content;
+}
+
+.webgpu-frame-cost-panel[hidden] { display: none; }
+.webgpu-frame-cost-panel strong { display: block; font-size: 11px; }
+.webgpu-frame-cost-panel pre { margin: 3px 0 5px; white-space: pre-wrap; font: inherit; }
+.webgpu-frame-cost-panel button { min-height: 28px; padding: 3px 8px; font: inherit; }
+.webgpu-frame-cost-panel [role="status"] { margin-left: 6px; }
+
 .kill-camera-overlay {
   position: absolute;
   z-index: 52;

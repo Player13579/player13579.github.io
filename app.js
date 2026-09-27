@@ -2371,6 +2371,98 @@ const acquisitionGpuOverlay = { canvas: null, renderer: null, pending: false,
 // as a diagnostic selector only; it no longer gates renderer ownership.
 const WEBGPU_MAIN_OWNER = true;
 const WEBGPU_MAIN_VERIFY_ROUTE = IS_VERIFICATION_MODE && URL_PARAMETERS.get("webgpuMain") === "1";
+// WEBGPU_FRAME_COST_PANEL_V1_START
+const WEBGPU_FRAME_PANEL_ENABLED = IS_VERIFICATION_MODE && URL_PARAMETERS.get("webgpuFrameCost") === "1";
+function createWebGPUFramePanelModel(capacity = 900) {
+  const samples = [];
+  let previousAtMs = null;
+  return Object.freeze({
+    sample(atMs, playing, hidden) {
+      if (!playing || hidden || !Number.isFinite(atMs)) {
+        previousAtMs = null;
+        return null;
+      }
+      const gapMs = previousAtMs == null ? null : Math.max(0, atMs - previousAtMs);
+      previousAtMs = atMs;
+      if (gapMs !== null) {
+        samples.push(Object.freeze({ atMs: Number(atMs.toFixed(2)), gapMs: Number(gapMs.toFixed(2)) }));
+        if (samples.length > capacity) samples.splice(0, samples.length - capacity);
+      }
+      return gapMs;
+    },
+    snapshot(sinceAtMs = -Infinity) { return samples.filter(sample => sample.atMs >= sinceAtMs); },
+    clear() { samples.length = 0; previousAtMs = null; }
+  });
+}
+const webgpuFramePanelModel = WEBGPU_FRAME_PANEL_ENABLED ? createWebGPUFramePanelModel() : null;
+let webgpuFramePanelLastPaintAt = 0;
+const webgpuFramePanelRuntimeSamples = WEBGPU_FRAME_PANEL_ENABLED ? [] : null;
+let webgpuFramePanelPendingRuntimeSample = null;
+function recordWebGPUFramePanelTiming(name, durationMs, atMs = performance.now()) {
+  if (!webgpuFramePanelRuntimeSamples || !Number.isFinite(durationMs) || durationMs < 0) return;
+  if (name === "prepareEnd") webgpuFramePanelPendingRuntimeSample = { prepareMs: durationMs };
+  else if (name === "recordEnd" && webgpuFramePanelPendingRuntimeSample)
+    webgpuFramePanelPendingRuntimeSample.recordMs = durationMs;
+  else if (name === "queueSubmitReceipt" && webgpuFramePanelPendingRuntimeSample) {
+    webgpuFramePanelRuntimeSamples.push(Object.freeze({ ...webgpuFramePanelPendingRuntimeSample,
+      submitMs: durationMs, atMs: Number(atMs.toFixed(2)) }));
+    if (webgpuFramePanelRuntimeSamples.length > 900)
+      webgpuFramePanelRuntimeSamples.splice(0, webgpuFramePanelRuntimeSamples.length - 900);
+    webgpuFramePanelPendingRuntimeSample = null;
+  }
+}
+function webgpuFramePanelPercentile(values, percentile) {
+  const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
+  if (!sorted.length) return null;
+  return Number(sorted[Math.min(sorted.length - 1, Math.ceil(sorted.length * percentile) - 1)].toFixed(2));
+}
+function webgpuFramePanelReport(now = performance.now()) {
+  const samples = webgpuFramePanelModel?.snapshot(now - 15000) || [];
+  const gaps = samples.map(sample => sample.gapMs);
+  const timings = webgpuFramePanelRuntimeSamples?.filter(sample => sample.atMs >= now - 15000) || [];
+  const runtime = window.__DVA_WEBGPU_FRAME_COST__?.samples?.() || [];
+  const recentRuntime = runtime.filter(sample => sample.phase === "playing" && Number.isFinite(sample.atMs));
+  const p95 = key => webgpuFramePanelPercentile(timings.map(sample => sample[key]), .95);
+  const lastRuntime = recentRuntime[recentRuntime.length - 1] || {};
+  return {
+    capturedAtMs: Number(now.toFixed(2)), windowMs: 15000,
+    raf: { samples, count: gaps.length, p50Ms: webgpuFramePanelPercentile(gaps, .5),
+      p95Ms: webgpuFramePanelPercentile(gaps, .95), maxMs: gaps.length ? Math.max(...gaps) : null,
+      gapsOver33_34Ms: gaps.filter(gap => gap > 33.34).length },
+    webgpu: { sampleCount: timings.length, prepareP95Ms: p95("prepareMs"),
+      recordP95Ms: p95("recordMs"), submitP95Ms: p95("submitMs"),
+      primitiveBatchCount: Number.isFinite(lastRuntime.primitiveBatchCount) ? lastRuntime.primitiveBatchCount : null,
+      primitiveCommandCount: Number.isFinite(lastRuntime.primitiveCommandCount) ? lastRuntime.primitiveCommandCount : null }
+  };
+}
+function paintWebGPUFramePanel(now = performance.now()) {
+  if (!WEBGPU_FRAME_PANEL_ENABLED) return;
+  const panel = document.querySelector("#webgpuFrameCostPanel");
+  const output = document.querySelector("#webgpuFrameCostSummary");
+  if (!panel || !output) return;
+  const playing = state.screen === "game" && state.data?.phase === "playing";
+  panel.hidden = !playing;
+  if (!playing || document.hidden || now - webgpuFramePanelLastPaintAt < 500) return;
+  webgpuFramePanelLastPaintAt = now;
+  const report = webgpuFramePanelReport(now);
+  const fmt = value => value == null ? "—" : `${value}ms`;
+  output.textContent = `RAF p50/p95/max ${fmt(report.raf.p50Ms)} / ${fmt(report.raf.p95Ms)} / ${fmt(report.raf.maxMs)} · >33.34ms ${report.raf.gapsOver33_34Ms}\nWebGPU CPU p95 準備/記録/提出 ${fmt(report.webgpu.prepareP95Ms)} / ${fmt(report.webgpu.recordP95Ms)} / ${fmt(report.webgpu.submitP95Ms)} · primitive ${report.webgpu.primitiveBatchCount ?? "—"}/${report.webgpu.primitiveCommandCount ?? "—"}`;
+}
+if (WEBGPU_FRAME_PANEL_ENABLED) {
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) webgpuFramePanelModel?.sample(performance.now(), false, true);
+  });
+  document.querySelector("#webgpuFrameCostCopy")?.addEventListener("click", async () => {
+    const status = document.querySelector("#webgpuFrameCostCopyStatus");
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(webgpuFramePanelReport(), null, 2));
+      if (status) status.textContent = "診断JSONをコピーしました";
+    } catch {
+      if (status) status.textContent = "コピーできませんでした";
+    }
+  });
+}
+// WEBGPU_FRAME_COST_PANEL_V1_END
 const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   generation: 0, visible: false, submittedHits: null, failed: false,
   presentationPendingAt: null, presentationPendingKey: '', presentationTimer: null,
@@ -18844,8 +18936,9 @@ function pumpWebGPUMainAppDriver() {
       webgpuStartupTiming.current.firstRetryTiming.completedAtMs == null)
     webgpuStartupTiming.current.firstRetryTiming.completedAtMs = performance.now();
   void webgpuMainApp.driver.draw({ data, sample, rect, camera,
-    dpr, ...(WEBGPU_MAIN_VERIFY_ROUTE || !webgpuMainApp.visible ? { onTiming: (name, durationMs) => {
+    dpr, ...(WEBGPU_FRAME_PANEL_ENABLED || WEBGPU_MAIN_VERIFY_ROUTE || !webgpuMainApp.visible ? { onTiming: (name, durationMs) => {
       markWebGPUStartupStage(name, durationMs);
+      recordWebGPUFramePanelTiming(name, durationMs);
     } } : {}) }).then(receipt => {
     markWebGPUStartupStage('appReceipt');
     // Failure/cancellation owns the pending message too. A late scheduler
@@ -19042,6 +19135,11 @@ if (WEBGPU_MAIN_OWNER) {
 function drawLoop(timestamp = 0, engineDelta = 0) {
   recordWebGPUFirstRetryEvent('raf', null, timestamp);
   state.frameNow = timestamp || performance.now();
+  if (typeof webgpuFramePanelModel !== "undefined" && webgpuFramePanelModel) {
+    webgpuFramePanelModel.sample(state.frameNow,
+      state.screen === "game" && state.data?.phase === "playing", document.hidden);
+    paintWebGPUFramePanel(state.frameNow);
+  }
   sunbeamLive.submitted.clear();
   sunbeamLive.drawnIds.clear();
   state.frameDelta = engineDelta || (state.lastFrameAt ? Math.min(100, state.frameNow - state.lastFrameAt) : 16.67);

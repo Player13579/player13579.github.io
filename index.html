@@ -14,7 +14,7 @@
     <meta property="og:image" content="assets/site-thumbnail-v497.png">
     <link rel="preload" as="image" href="assets/title-hero-v466.png?v=core-icons-restart-v707" fetchpriority="high">
     <style>html,body,.start-screen{background:#17283d}</style>
-  <link rel="stylesheet" href="styles.css?v=webgpu-input-surface-v2&amp;startup=safari-first-frame-v1">
+  <link rel="stylesheet" href="styles.css?v=webgpu-input-surface-v2&amp;startup=safari-first-frame-v1&amp;frame-panel=webgpu-cost-v1">
   </head>
   <body>
     <section id="startScreen" class="start-screen" data-ui-region="home-screen" aria-label="ホーム画面">
@@ -294,6 +294,12 @@
           </section>
           <canvas id="gameCanvas" width="980" height="620" tabindex="-1" aria-hidden="true"></canvas>
           <canvas id="webgpuMainCanvas" class="webgpu-main-canvas" width="980" height="620" tabindex="-1" role="img" aria-label="ゲームマップ" aria-describedby="gameCanvasStatusSummary"></canvas>
+          <aside id="webgpuFrameCostPanel" class="webgpu-frame-cost-panel" aria-label="WebGPUフレーム診断" hidden>
+            <strong>15秒フレーム診断</strong>
+            <pre id="webgpuFrameCostSummary">計測中…</pre>
+            <button id="webgpuFrameCostCopy" type="button">JSONをコピー</button>
+            <span id="webgpuFrameCostCopyStatus" role="status" aria-live="polite"></span>
+          </aside>
           <div id="webgpuMainFailure" class="webgpu-main-failure" role="alert">
             <p>描画を開始できませんでした。再読み込みして、もう一度プレイしてください。</p>
             <p id="webgpuMainFailureSummary" class="webgpu-main-failure-summary"></p>
@@ -762,6 +768,6 @@
     <script src="grenade-impact-sfx.js?v=webgpu-main-bootstrap-v31"></script>
     <script src="object-space-collision.js?v=webgpu-main-bootstrap-v5"></script>
     <script src="webgpu-game-input-surface.js?v=webgpu-only-input-v2"></script>
-    <script src="app.js?v=webgpu-pure-slices-v94&amp;patch=first-frame-phase-marks-v1&amp;startup=safari-first-frame-v1&amp;sfx=gunner-visible-receipt-v1&amp;retry=unstable-layout-timer-v1&amp;atlas=prewarm-v1&amp;frame=actor-snapshot-race-v1&amp;sprite=title-walk-v1&amp;images=bounded-v1&amp;diag=playing-frame-cost-v1"></script>
+    <script src="app.js?v=webgpu-pure-slices-v94&amp;patch=first-frame-phase-marks-v1&amp;startup=safari-first-frame-v1&amp;sfx=gunner-visible-receipt-v1&amp;retry=unstable-layout-timer-v1&amp;atlas=prewarm-v1&amp;frame=actor-snapshot-race-v1&amp;sprite=title-walk-v1&amp;images=bounded-v1&amp;diag=playing-frame-cost-panel-v1"></script>
 </body>
 </html>
