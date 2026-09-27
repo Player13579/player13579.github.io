@@ -311,8 +311,9 @@
             throw new TypeError(`Magic mana benefit ${id} needs one live body event`);
         } else if (event?.type === 'bodyBenefitExtra' || event?.type === 'statusTempo') {
           const extra = event.type === 'bodyBenefitExtra';
-          const pass = extra ? passes.bodyBenefitExtra : passes.statusTempo;
           const effect = event.input?.effect, planned = event.input?.planned;
+          const pass = extra && effect?.type === 'gain-luckBoost'
+            ? passes.luckAstraV4 : extra ? passes.bodyBenefitExtra : passes.statusTempo;
           if (typeof pass?.record !== 'function' ||
               String(effect?.id ?? '') !== id || planned?.effectId !== id ||
               !(extra
@@ -564,6 +565,7 @@
       const markerHitTargets = [];
       const preparationHitTargets = [];
       const phenomenonSoundVisualReceipts = [];
+      const luckSoundVisualReceipts = [];
       const staminaBenefitSoundReceipts = [];
       const manaBenefitSoundReceipts = [];
       const environmentSoundReceipts = [];
@@ -992,12 +994,25 @@
               y: event.input.effect.actorWorld.y
             }));
           } else if (event.type === 'bodyBenefitExtra' || event.type === 'statusTempo') {
-            const pass = event.type === 'bodyBenefitExtra' ? 'bodyBenefitExtra' : 'statusTempo';
+            const isLuckV4 = event.type === 'bodyBenefitExtra' &&
+              event.input.effect.type === 'gain-luckBoost';
+            const pass = event.type === 'bodyBenefitExtra'
+              ? isLuckV4 ? 'luckAstraV4' : 'bodyBenefitExtra' : 'statusTempo';
             const outcome = need(pass, 'record').record({ frame, target, viewport,
               planned: event.input.planned });
             if (outcome?.effectId !== event.effectId || outcome.drawn !== true)
               throw new Error(`Magic ${pass} ${event.effectId} was not drawn`);
-            if (event.input.effect.type === 'gain-acceleration') {
+            if (isLuckV4) {
+              const effect = event.input.effect;
+              const roomId = String(stages.magicEffects?.roomId ??
+                stages.magicEffects?.data?.roomId ?? '');
+              if (!roomId || !String(effect.playerId ?? '') ||
+                  !Number.isFinite(event.input.planned.progress))
+                throw new TypeError(`Magic Luck Astra v4 ${event.effectId} has invalid sound receipt`);
+              luckSoundVisualReceipts.push(Object.freeze({ roomId,
+                effectId: String(effect.id), kind: 'luckBenefit',
+                playerId: String(effect.playerId), progress: event.input.planned.progress }));
+            } else if (event.input.effect.type === 'gain-acceleration') {
               const effect = event.input.effect;
               const roomId = stages.magicEffects?.roomId ??
                 stages.magicEffects?.data?.roomId ?? '';
@@ -1131,6 +1146,7 @@
         preparationHitTargets: Object.freeze(preparationHitTargets.slice()),
         minimapBounds: Object.freeze({ ...stages.minimap.scene.bounds }),
         phenomenonSoundVisualReceipts: Object.freeze(phenomenonSoundVisualReceipts.slice()),
+        luckSoundVisualReceipts: Object.freeze(luckSoundVisualReceipts.slice()),
         staminaBenefitSoundReceipts: Object.freeze(staminaBenefitSoundReceipts.slice()),
         manaBenefitSoundReceipts: Object.freeze(manaBenefitSoundReceipts.slice()),
         environmentSoundReceipts: Object.freeze(environmentSoundReceipts.slice()),

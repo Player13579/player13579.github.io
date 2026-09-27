@@ -5,7 +5,7 @@
 // v520 adds independent Natural Recovery resources and its persistent marker,
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
-const RUNTIME_RELEASE = "webgpu-pure-slices-v95";
+const RUNTIME_RELEASE = "webgpu-pure-slices-v97-sunbeam-v3-luck-v4";
 const CACHE_NAME = "dva-static-marker-webgpu-surface-v1";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 const STATIC_ASSETS = [
@@ -416,6 +416,8 @@ const STATIC_ASSETS = [
   "/webgpu-mana-benefit-sfx.js",
   "/webgpu-game-input-surface.js",
   "/webgpu-body-benefit-extra.js",
+  "/webgpu-luck-astra-v4-game.js",
+  "/webgpu-luck-astra-v4-game-sfx.js",
   "/webgpu-status-tempo-e.js",
   "/webgpu-barrier-e.js",
   "/webgpu-bust-e.js",
@@ -429,9 +431,9 @@ const STATIC_ASSETS = [
   "/webgpu-heal-astra-prototype.js",
   "/webgpu-heal-astra-sfx.js",
   "/webgpu-sunbeam-e.js",
-  "/webgpu-sunbeam-pro-v2-adapter.js",
+  "/webgpu-sunbeam-astra-clean-v3.js",
+  "/webgpu-sunbeam-astra-v3-game.js",
   "/webgpu-fighter-energy-e.js",
-  "/webgpu-sunbeam-sol-sfx.js",
   "/webgpu-sunbeam-live-overlay.js",
   "/webgpu-sunbeam-e-sfx.js",
   "/webgpu-sunbeam-cue-adapter.js",
@@ -884,6 +886,8 @@ const BOOT_CRITICAL_ASSETS = new Set([
   "/webgpu-mana-benefit-sfx.js",
   "/webgpu-game-input-surface.js",
   "/webgpu-body-benefit-extra.js",
+  "/webgpu-luck-astra-v4-game.js",
+  "/webgpu-luck-astra-v4-game-sfx.js",
   "/webgpu-status-tempo-e.js",
   "/webgpu-barrier-e.js",
   "/webgpu-bust-e.js",
@@ -897,9 +901,9 @@ const BOOT_CRITICAL_ASSETS = new Set([
   "/webgpu-heal-astra-prototype.js",
   "/webgpu-heal-astra-sfx.js",
   "/webgpu-sunbeam-e.js",
-  "/webgpu-sunbeam-pro-v2-adapter.js",
+  "/webgpu-sunbeam-astra-clean-v3.js",
+  "/webgpu-sunbeam-astra-v3-game.js",
   "/webgpu-fighter-energy-e.js",
-  "/webgpu-sunbeam-sol-sfx.js",
   "/webgpu-sunbeam-live-overlay.js",
   "/webgpu-sunbeam-e-sfx.js",
   "/webgpu-sunbeam-cue-adapter.js",
