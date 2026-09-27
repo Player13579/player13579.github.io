@@ -30,7 +30,7 @@
     'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
     'mana-pro-r02', 'mana-pro-r01',
     'emp-pro-r02', 'emp-pro-r01', 'emp-pro-p0',
-    'attendance-pro-r01', 'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v04', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
+    'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v04', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
   ]);
   const entries = [
     { id: 'heal-astra', title: 'ヒール', versions: [
@@ -47,9 +47,6 @@
       version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', 'ユーザー品質採用・本編ソース接続済み・公開版未反映', '採用済み幸運v4。作業中の本編ソースでは実イベントからWebGPU描画・SFXへ接続済みで、公開ゲーム版には未反映です。実画面・実音声は今回未確認。幸運の因果表現は別版の改稿候補です。'),
       version('luck-pro-r02', 'GPT Pro r0.2', 'luck-pro-replay/luck-pro-r02.html', 'luck-pro-replay/luck-e-revision.mjs', 'GPT Pro改稿・実GPU再生可能・品質未受入・本編未採用', '改稿版は実GPUで再生可能。旧r0.1より広い青金色の形が見えるが、視覚品質とSFXは未受入です。', 'actor-H64', 1, true),
       version('luck-pro-r01', 'GPT Pro r0.1', 'luck-pro-replay/luck-pro-r01.html', 'luck-pro-replay/luck-e.mjs', 'GPT Pro旧版・実GPU再生可能・品質不合格・本編未採用', '旧Pro初稿は細い金色の線だけに見えるため品質不合格。比較用に再生します。', 'actor-H64', 1, true),
-    ] },
-    { id: 'attendance-pro', title: '参加・召喚（GPT Pro）', versions: [
-      version('attendance-pro-r01', 'GPT Pro r0.1', 'attendance-pro-r01/index.html', 'attendance-pro-r01/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '単独プレビューでWebGPU自動ループを確認。通常参加と偽参加の演出同一性が未解決のため、本編には接続していません。', 'effect-H64', 1, true)
     ] },
     { id: 'shoot-pro', title: '射撃（GPT Pro）', versions: [
       version('shoot-pro-r03', 'GPT Pro r0.3', 'shoot-pro-r03/index.html', 'shoot-pro-r03/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器の自動巡回と暗明を実WebGPUで確認。SMG初動の主形、全寿命とSFXの品質確認が残ります。白飛び自体は棄却理由にしません。', 'effect-H64', 1, true),
@@ -111,7 +108,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v37');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v38');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
