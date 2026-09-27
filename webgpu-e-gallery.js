@@ -9,6 +9,9 @@
     'mana-astra': { magnification: 3.4, focusX: 490, focusY: 355 },
     'emp-astra': { magnification: 2.2, focusX: 490, focusY: 310 },
     'barrier-astra': { magnification: 3.7, focusX: 490, focusY: 355 },
+    'barrier-astra-r5r2': { magnification: 4.4, focusX: 490, focusY: 310 },
+    'barrier-astra-r5r1': { magnification: 4.4, focusX: 490, focusY: 310 },
+    'barrier-astra-r5': { magnification: 4.4, focusX: 490, focusY: 310 },
     'barrier-pro': { magnification: 3.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1) =>
@@ -35,6 +38,9 @@
     { id: 'mana-astra', title: 'マナ獲得', versions: [version('mana-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '実WebGPUの自動ループを確認。滑らかさ、実寸の形と聴感が品質基準に未達。')] },
     { id: 'emp-astra', title: 'EMP', versions: [version('emp-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-emp-astra-zero-preview.html', 'webgpu-emp-astra-zero-preview.js', '試作・品質未達・本編未採用', '充填・放出・共振・相殺・蓄積を実WebGPUで再生。実寸の形と聴感が品質基準に未達。', 'effect-H64')] },
     { id: 'barrier-astra', title: 'バリア', versions: [
+      version('barrier-astra-r5r2', 'Astra r5r2', 'webgpu-barrier-astra-v5-r2-gallery-preview.html', 'webgpu-barrier-astra-v5-gallery-runtime.js', '試作・品質不合格・本編未採用', '空域を狙った再設計。実WebGPU原寸では青い球状に見え、保護面と空域が読めないため不合格。', 'effect-H64'),
+      version('barrier-astra-r5r1', 'Astra r5r1', 'webgpu-barrier-astra-v5-r1-gallery-preview.html', 'webgpu-barrier-astra-v5-gallery-runtime.js', '試作・品質不合格・本編未採用', '非対称包囲場の試作。原寸では固体の三日月容器に見え、吸収動作も弱いため不合格。', 'effect-H64'),
+      version('barrier-astra-r5', 'Astra r5', 'webgpu-barrier-astra-v5-r0-gallery-preview.html', 'webgpu-barrier-astra-v5-gallery-runtime.js', '試作・品質不合格・本編未採用', '透過包囲場の試作。合成修正後も矩形チューブ状に見え、保護場として不合格。', 'effect-H64'),
       version('barrier-astra-review-fixes', 'Astra r4 review-fixes', 'webgpu-barrier-astra-zero-v4reviewfix-preview.html', 'webgpu-barrier-astra-zero-v4reviewfix-preview.js', '試作・品質不合格・本編未採用', '破壊時の奥膜遅延とreduced motionを修正。原寸での面と因果は改善したが兜状の輪郭と実速度のフレーム欠落が残り、完成品質には不合格。', 'effect-H64'),
       version('barrier-astra-optics1', 'Astra r4 optics1', 'webgpu-barrier-astra-zero-v4optics1-preview.html', 'webgpu-barrier-astra-zero-v4optics1-preview.js', '試作・品質未受入・本編未採用', 'r4の局所発光・透過改稿。4事象を実WebGPUで再生。原寸の可読性、全寿命、聴感は未受入。', 'effect-H64'),
       version('barrier-astra-r4', 'Astra r4', 'webgpu-barrier-astra-zero-v3r4-preview.html', 'webgpu-barrier-astra-zero-v3r4-preview.js', '試作・品質未受入・本編未採用', 'r4形状・層の4事象を実WebGPUで再生。初期画面で暗く形が読めず品質未受入。', 'effect-H64'),
