@@ -1,0 +1,53 @@
+{
+  "package": "Luck Pro replay candidates",
+  "created": "2026-09-27",
+  "scope": "Isolated WebGPU-only replay adapters and clean looping gallery preview routes. No gallery catalog/game integration or quality acceptance.",
+  "routes": {
+    "originalDiagnostic": "luck-gpu-harness.html?candidate=legacy",
+    "revisionDiagnostic": "luck-gpu-harness.html?candidate=revision",
+    "originalGalleryPreview": "luck-pro-r01.html?embed=1&verify=<token>",
+    "revisionGalleryPreview": "luck-pro-r02.html?embed=1&verify=<token>"
+  },
+  "source": [
+    {
+      "id": "luck-pro-r01",
+      "version": "luck-e/2026.09.25-1",
+      "file": "luck-e.mjs",
+      "sourcePath": "outputs/request-20260925/e-pro-rebuild/luck-e.mjs",
+      "sha256": "1bffc09b0281e365ab1686495212e7b11b152c1ca1fd892e07f583031fce55f5",
+      "bytes": 139251,
+      "technicalReplay": "Historical diagnostic harness run recorded in outputs/request-20260925/e-pro-rebuild/luck-benefit-pro-branch-v2.md; clean looping route also observed on real external Chrome WebGPU 2026-09-27 (embed=1&verify=luck-pro-r01-20260927), document status=playing, hidden error node, no console warnings/errors.",
+      "quality": "failed; observed as a thin green/gold Y-shaped line, below the requested quality",
+      "integration": "not integrated; no game or gallery approval"
+    },
+    {
+      "id": "luck-pro-r02",
+      "version": "luck-e/2026.09.25-2",
+      "file": "luck-e-revision.mjs",
+      "sourcePath": "outputs/request-20260925/e-pro-rebuild/luck-e-revision.mjs",
+      "replayCopy": "outputs/request-20260927/luck-pro-revision-replay/luck-e-revision.mjs",
+      "sha256": "bb2ed5dd4840d72dea05cf3b1f2a26f544b3add09fab0b960a9df74a45619c29",
+      "bytes": 164536,
+      "technicalReplay": "The exact module's clean looping route was observed on real external Chrome WebGPU 2026-09-27 (embed=1&verify=luck-pro-r02-20260927), document status=playing, hidden error node, no console warnings/errors. Its CPU/static/mock self-tests also pass 39/39.",
+      "quality": "Not accepted; screenshot shows a small cyan/gold looping effect on dark field. Technical render observation is not quality approval.",
+      "integration": "not integrated; no game or gallery approval"
+    }
+  ],
+  "harness": {
+    "file": "luck-gpu-harness.html",
+    "sourcePath": "outputs/request-20260925/e-pro-rebuild/luck-gpu-harness.html",
+    "replayCopy": "outputs/request-20260927/luck-pro-revision-replay/luck-gpu-harness.html",
+    "sha256": "bbc5cb876e41782e44300a582bc4e7e9bb7b3e3d34935c0c803560ef801baa17",
+    "bytes": 9345,
+    "rendering": "WebGPU only; 44x54 px neutral actor fixture, actual event planner/pass; CPU texture readback is used only for a pixel-change measurement, never to render a Canvas 2D image.",
+    "audio": "none"
+  },
+  "galleryPreview": {
+    "runtime": "gallery-loop.mjs",
+    "originalRoute": "luck-pro-r01.html",
+    "revisionRoute": "luck-pro-r02.html",
+    "display": "980x620 WebGPU canvas, auto-looping donation-rational event, empty dark field; no controls or diagnostics during successful playback",
+    "audio": "none; verify routes were opened with the verify query parameter",
+    "rendering": "WebGPU only; no Canvas 2D or GPU-to-2D readback"
+  }
+}

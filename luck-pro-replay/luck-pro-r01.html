@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Luck Pro r0.1</title>
+<style>
+  html,body { margin:0; width:100%; height:100%; overflow:hidden; background:#07090a }
+  body { display:grid; place-items:center }
+  canvas { display:block; width:980px; height:620px; max-width:100vw; max-height:100vh; }
+  [data-error] { display:none; position:fixed; inset:auto 1rem 1rem; color:#ffb4a9; font:14px system-ui,sans-serif }
+  [data-error]:not([hidden]) { display:block }
+</style>
+<canvas width="980" height="620" aria-label="Luck effect preview"></canvas>
+<div data-error hidden></div>
+<script type="module">
+  import * as module from './luck-e.mjs';
+  import { mountLuckLoop } from './gallery-loop.mjs';
+  // Audio is deliberately absent; ?verify= forces the project-wide silent verification mode.
+  await mountLuckLoop({ module, label: 'Luck Pro r0.1' });
+</script>
+</html>
