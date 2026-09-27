@@ -4,8 +4,6 @@
 (function (root) {
   'use strict';
 
-  const NO_TIMING = () => {};
-
   const defaults = Object.freeze({
     scene: root.DvaWebGPUMainScene || (typeof require === 'function' ? require('./webgpu-main-scene.js') : null),
     field: root.DvaWebGPUFieldPass || (typeof require === 'function' ? require('./webgpu-field-pass.js') : null),
@@ -55,8 +53,7 @@
     hackerStatusRecoveryE: root.DvaWebGPUHackerStatusRecoveryE || (typeof require === 'function' ? require('./webgpu-hacker-status-recovery-e.js') : null),
     floraE: root.DvaWebGPUFloraE || (typeof require === 'function' ? require('./webgpu-flora-e.js') : null),
     healE: root.DvaHealAstraE || (typeof require === 'function' ? require('./webgpu-heal-astra-prototype.js') : null),
-    sunbeamE: root.DvaSunbeamAstraV3GameAdapter || (typeof require === 'function' ? require('./webgpu-sunbeam-astra-v3-game.js') : null),
-    luckAstraV4: root.DvaWebGPULuckAstraV4Game || (typeof require === 'function' ? require('./webgpu-luck-astra-v4-game.js') : null),
+    sunbeamE: root.DvaSunbeamProV2Adapter || (typeof require === 'function' ? require('./webgpu-sunbeam-pro-v2-adapter.js') : null),
     fighterEnergyE: root.DvaWebGPUFighterEnergyE || (typeof require === 'function' ? require('./webgpu-fighter-energy-e.js') : null),
     hoverSprintE: root.DvaWebGPUHoverSprintE || (typeof require === 'function' ? require('./webgpu-hover-sprint-e.js') : null),
     gravityFieldE: root.DvaWebGPUGravityFieldE || (typeof require === 'function' ? require('./webgpu-gravity-field-e.js') : null),
@@ -131,7 +128,7 @@
   async function create({ renderer, map, image, patches, textAtlas, atlasMetrics,
     expandedCanvas = null, expandedTarget = 'main-expanded-map',
     acquisitionCanvas = null, acquisitionTarget = 'main-acquisition-overlay',
-    modules = defaults, onProgress = () => {}, onTiming = NO_TIMING } = {}) {
+    modules = defaults, onProgress = () => {}, onTiming = () => {} } = {}) {
     if (!renderer || renderer.state !== 'ready' || !renderer.device ||
         typeof renderer.format !== 'string' || !renderer.format ||
         typeof renderer.createGravityHazardPasses !== 'function')
@@ -167,7 +164,7 @@
       preparationSummons: 'create', players: 'createTextureCache',
       playerNameplates: 'create', headMarkers: 'create',
       gunnerAim: 'create', killCamera: 'create', hitEffects: 'record',
-      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', ...(modules === defaults || modules.luckAstraV4 ? { luckAstraV4: 'create' } : {}), statusTempo: 'create', barrierE: 'create', bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
+      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusTempo: 'create', barrierE: 'create', bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
       attackTargets: 'record', taskIndicators: 'create', hud: 'create',
       minimap: 'create', modeBanner: 'create', killBloom: 'create',
       killAnimation: 'create', sensory: 'enqueue', markerExplanation: 'create',
@@ -197,10 +194,6 @@
       try { onTiming(mark); } catch (_) { /* Diagnostics cannot affect pass creation. */ }
       return atMs;
     };
-    // Detailed constructor and readiness marks are collected only when the
-    // caller explicitly supplies the verify diagnostics callback.
-    const detailedTiming = (name, startedAt = null) =>
-      onTiming === NO_TIMING ? null : timing(name, startedAt);
     const progressReadiness = () => progress(`ready:${[...pendingReadiness].join('+') || 'none'}`);
     const add = (name, value, method) => {
       if (!value || typeof value[method] !== 'function' ||
@@ -251,23 +244,20 @@
       // before yielding. Observe field/Sunbeam outcomes immediately so either
       // rejection is handled while all five builds are still in flight.
       const startRequiredPass = (name, create) => {
-        const startedAt = detailedTiming(`${name}.invoke`);
+        const startedAt = timing(`${name}.invoke`);
         let creation;
         try {
           creation = create();
         } catch (error) {
           timing(`${name}.rejected`, startedAt);
-          detailedTiming(`${name}.settled`, startedAt);
           return Promise.resolve({ status: 'rejected', reason: error });
         }
         timing(`${name}.returned`, startedAt);
         return Promise.resolve(creation).then(value => {
           timing(`${name}.resolved`, startedAt);
-          detailedTiming(`${name}.settled`, startedAt);
           return { status: 'fulfilled', value };
         }, reason => {
           timing(`${name}.rejected`, startedAt);
-          detailedTiming(`${name}.settled`, startedAt);
           return { status: 'rejected', reason };
         });
       };
@@ -281,14 +271,8 @@
       // immediately so every later failure follows the normal rollback path.
       const earlyPassFailures = [];
       const startEarlyOwnedPass = (name, create, method = 'record', adapt = value => value) => {
-        const startedAt = detailedTiming(`${name}.invoke`);
         try { add(name, adapt(create()), method); }
-        catch (error) {
-          detailedTiming(`${name}.settled`, startedAt);
-          earlyPassFailures.push(error);
-          return;
-        }
-        detailedTiming(`${name}.settled`, startedAt);
+        catch (error) { earlyPassFailures.push(error); }
       };
       startEarlyOwnedPass('staminaBenefitE', () =>
         modules.staminaBenefitE.create({ renderer, frameOwner: renderer }));
@@ -383,8 +367,6 @@
       borrow('grenadeImpacts', modules.grenadeImpacts);
       add('bodyBenefits', modules.bodyBenefits.create({ renderer }), 'record');
       add('bodyBenefitExtra', modules.bodyBenefitExtra.create({ frameOwner: renderer }), 'record');
-      if (modules.luckAstraV4)
-        add('luckAstraV4', modules.luckAstraV4.create({ frameOwner: renderer }), 'record');
       add('statusTempo', modules.statusTempo.create({ frameOwner: renderer }), 'record');
       for (const name of ['barrierE', 'bustE', 'dodgeE', 'renkiE', 'ideaE']) {
         const pass = modules[name].create();
@@ -593,16 +575,13 @@
       awaitingReadiness = true;
       progressReadiness();
       const readinessStartedAt = timing('readiness.await.begin');
-      detailedTiming('readiness.wait.begin');
       try {
         await Promise.all(readiness);
       } catch (error) {
         timing('readiness.await.rejected', readinessStartedAt);
-        detailedTiming('readiness.wait.rejected', readinessStartedAt);
         throw error;
       }
       timing('readiness.await.end', readinessStartedAt);
-      detailedTiming('readiness.wait.end', readinessStartedAt);
       awaitingReadiness = false;
       progress('complete');
       timing('registry.ready');

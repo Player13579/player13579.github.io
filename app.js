@@ -386,14 +386,13 @@ const syncSoloMissionHudCssHeight = (rect) => {
   const height = Number(rect?.height);
   if (Number.isFinite(Number(rect?.bottom))) soloMissionHudCssBottom = Number(rect.bottom);
 };
-const mainCanvasViewportRect = () => els.webgpuMainCanvas?.getBoundingClientRect?.() || null;
-syncFieldCanvasCssSize(mainCanvasViewportRect());
+syncFieldCanvasCssSize(els.canvas.getBoundingClientRect());
 syncSoloMissionHudCssHeight(els.soloMissionHud.getBoundingClientRect());
 if ("ResizeObserver" in window) {
   const fieldCanvasSizeObserver = new ResizeObserver((entries) => {
-    syncFieldCanvasCssSize(mainCanvasViewportRect());
+    syncFieldCanvasCssSize(els.canvas.getBoundingClientRect());
   });
-  fieldCanvasSizeObserver.observe(els.webgpuMainCanvas);
+  fieldCanvasSizeObserver.observe(els.canvas);
   const soloMissionHudSizeObserver = new ResizeObserver((entries) => {
     syncSoloMissionHudCssHeight(els.soloMissionHud.getBoundingClientRect());
   });
@@ -408,7 +407,7 @@ if ("ResizeObserver" in window) {
   gameplayViewportRootSizeObserver.observe(document.documentElement);
 } else {
   window.addEventListener("resize", () => {
-    syncFieldCanvasCssSize(mainCanvasViewportRect());
+    syncFieldCanvasCssSize(els.canvas.getBoundingClientRect());
     syncSoloMissionHudCssHeight(els.soloMissionHud.getBoundingClientRect());
   });
 }
@@ -2599,8 +2598,9 @@ const webgpuTitlePrewarm = { current: null, generation: 0, playIntent: 0,
   expectedSessionChanges: 0 };
 const sunbeamLive = { renderer: null, pending: null, generation: 0,
   nextRetryAt: 0, poseReceipts: new Map(), drawnIds: new Set(),
-  submitted: new Map(), frameId: 0 };
-const SUNBEAM_V3_CONSUMED_CAUSES = new Set();
+  submitted: new Map(), frameId: 0, pendingSounds: new Map(),
+  soundPlayers: new Map(), playedCauses: new Set() };
+const SUNBEAM_V2_CONSUMED_CAUSES = new Set();
 document.body.dataset.webgpuMainOwner = "1";
 if (els.canvas) els.canvas.style.opacity = "0";
 if (els.webgpuMainCanvas) els.webgpuMainCanvas.style.opacity = "0";
@@ -12447,7 +12447,7 @@ function phenomenonSoundMix(player, data) {
 function phenomenonSoundAvailable() {
   const context = state.audio.context, master = state.audio.master;
   return state.screen === "game" && !state.audio.muted &&
-    state.audio.unlocked && !isSensoryBlocked() && context?.state === "running" && master &&
+    !isSensoryBlocked() && context?.state === "running" && master &&
     Number(master.gain?.value) > 0;
 }
 const staminaBenefitLive = { roomId: '', generation: -1, players: new Map(), played: new Set() };
@@ -12540,82 +12540,6 @@ function commitManaBenefitSoundFrame(data, receipts) {
         live.players.set(id, { player, playerId: String(actor.id) });
       } else player.destroy();
     } catch (_) { /* Audio may still be locked by the browser. */ }
-  }
-}
-const luckAstraV4SoundLive = { roomId: '', generation: -1, player: null,
-  context: null, master: null, played: new Set(), active: new Map() };
-function syncLuckAstraV4SoundSession(data) {
-  const live = luckAstraV4SoundLive;
-  const roomId = String(data?.roomId || ''), generation = state.roomSessionGeneration;
-  if (!roomId || !Number.isSafeInteger(generation) || generation < 0) {
-    live.player?.stop();
-    return false;
-  }
-  if (live.roomId !== roomId || live.generation !== generation) {
-    live.player?.destroy(); live.player = null; live.played.clear(); live.active.clear();
-    live.context = null; live.master = null;
-    live.roomId = roomId; live.generation = generation;
-  }
-  if (live.player && (live.context !== state.audio.context ||
-      live.master !== state.audio.master)) {
-    live.player.destroy(); live.player = null; live.active.clear();
-    live.context = null; live.master = null;
-  }
-  if (!live.player && state.audio.context?.state === 'running' && state.audio.master &&
-      window.DvaWebGPULuckAstraV4GameSfx?.createPlayer) {
-    try { live.player = window.DvaWebGPULuckAstraV4GameSfx.createPlayer({
-      context: state.audio.context, master: state.audio.master, verify: IS_VERIFICATION_MODE });
-      live.context = state.audio.context; live.master = state.audio.master; }
-    catch (_) { return false; }
-  }
-  live.player?.enterSession(roomId, generation);
-  return Boolean(live.player);
-}
-function commitLuckAstraV4SoundFrame(data, receipts, committedFrame) {
-  const live = luckAstraV4SoundLive;
-  if (!syncLuckAstraV4SoundSession(data)) return;
-  const roomId = String(data?.roomId || ''), generation = state.roomSessionGeneration;
-  const effects = (state.magicEffects || []).filter(effect => effect?.type === 'gain-luckBoost' &&
-    effect.effectKind === 'luckBoost');
-  const byId = new Map(effects.map(effect => [String(effect.id), effect]));
-  for (const [causeId, owner] of live.active) {
-    const effect = byId.get(causeId);
-    const actor = effect && data?.players?.find(player => String(player.id) === String(effect.playerId));
-    if (!effect || !actor?.alive || actor.ejected || actor.inVent || actor.invisible ||
-        state.roomId !== roomId || state.roomSessionGeneration !== generation ||
-        data !== state.data || !['playing', 'meeting'].includes(data.phase)) {
-      live.player?.cancel({ causeId, roomId, roomGeneration: generation });
-      live.active.delete(causeId);
-    }
-  }
-  if (!Array.isArray(receipts) || !live.player || !phenomenonSoundAvailable() ||
-      IS_VERIFICATION_MODE || document.hidden || state.audio.muted || isSensoryBlocked(data) ||
-      data !== state.data || !webgpuMainSubmittedFrameCurrent() ||
-      committedFrame !== webgpuMainApp.submittedFrame ||
-      committedFrame?.roomId !== roomId || committedFrame?.sessionGeneration !== generation) {
-    if (state.audio.muted || document.hidden || IS_VERIFICATION_MODE) {
-      live.player?.stop();
-      if (state.audio.muted || document.hidden)
-        for (const effect of effects)
-          live.player?.cancel({ causeId: String(effect.id), roomId,
-            roomGeneration: generation });
-    }
-    return;
-  }
-  for (const receipt of receipts) {
-    const causeId = String(receipt?.effectId ?? '');
-    const effect = byId.get(causeId);
-    const actor = effect && data.players?.find(player => String(player.id) === String(effect.playerId));
-    if (!causeId || receipt?.kind !== 'luckBenefit' || receipt.roomId !== roomId ||
-        String(receipt.playerId) !== String(effect?.playerId) || !actor?.alive || actor.ejected ||
-        actor.inVent || actor.invisible || live.played.has(causeId) ||
-        !Number.isFinite(receipt.progress) || receipt.progress < 0 || receipt.progress >= 1) continue;
-    const accepted = live.player.start({ causeId, roomId, roomGeneration: generation,
-      progress: receipt.progress, frameSubmitted: true, frameVisible: true,
-      muted: state.audio.muted || isSensoryBlocked(data), verify: IS_VERIFICATION_MODE });
-    if (accepted) {
-      live.played.add(causeId); live.active.set(causeId, { playerId: String(actor.id) });
-    }
   }
 }
 function advancePhenomenonSound(effectId, kind, progress, player) {
@@ -13068,24 +12992,11 @@ function floraInvisibleSelfVisibility(effect, data) {
 }
 
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden) { WEBGPU_E_CUES.player?.stopAll(); stopHealESfx();
-    luckAstraV4SoundLive.player?.stop();
-    for (const effect of state.magicEffects || [])
-      if (effect?.type === 'gain-luckBoost' && effect.effectKind === 'luckBoost')
-        luckAstraV4SoundLive.player?.cancel({ causeId: String(effect.id),
-          roomId: luckAstraV4SoundLive.roomId,
-          roomGeneration: luckAstraV4SoundLive.generation }); }
+  if (document.hidden) { WEBGPU_E_CUES.player?.stopAll(); stopHealESfx(); }
 });
-window.addEventListener('pagehide', () => { WEBGPU_E_CUES.player?.stopAll(); stopHealESfx();
-  luckAstraV4SoundLive.player?.stop();
-  for (const effect of state.magicEffects || [])
-    if (effect?.type === 'gain-luckBoost' && effect.effectKind === 'luckBoost')
-      luckAstraV4SoundLive.player?.cancel({ causeId: String(effect.id),
-        roomId: luckAstraV4SoundLive.roomId,
-        roomGeneration: luckAstraV4SoundLive.generation }); });
+window.addEventListener('pagehide', () => { WEBGPU_E_CUES.player?.stopAll(); stopHealESfx(); });
 
 function detectMagicEffects(previous, next) {
-  syncLuckAstraV4SoundSession(next);
   if (HEAL_E_SFX_ACTIVE && (HEAL_E_SFX_ACTIVE.roomId !== String(next.roomId) ||
       HEAL_E_SFX_ACTIVE.generation !== state.roomSessionGeneration ||
       !healESfxSource(next, HEAL_E_SFX_ACTIVE.effectId))) stopHealESfx();
@@ -13247,7 +13158,6 @@ function detectMagicEffects(previous, next) {
 
 function magicEffectDuration(type) {
   if (type === "gunner-passive-aim") return 900;
-  if (type === "flora-sunbeam") return Math.round((window.SunbeamAstraCleanV3?.DURATION || 2.15) * 1000);
   if (type === "flora") return 12000;
   if (type === "grenade-frag-impact") return 900;
   if (type === "grenade-stun-impact") return 720;
@@ -13504,7 +13414,7 @@ function detectWorldSounds(previous, next) {
       }
       continue;
     }
-    // Sunbeam audio belongs to the accepted v3 E's submitted, visible GPU
+    // Sunbeam audio now belongs to the Pro v2 E's submitted, visible GPU
     // receipt. Server cues are consumed here, but must not start a second SFX.
     if (kind === 'sunbeam') continue;
     playSound(kind, soundOptions);
@@ -16686,7 +16596,7 @@ function scheduleGameplayViewportReflow(settle = false) {
       setTabletOpen(state.tabletOpen, { persist: false, focus: false });
       scheduleTabletBranchLayout();
       scheduleActiveEffectsLayout(() => {
-        syncFieldCanvasCssSize(mainCanvasViewportRect());
+        syncFieldCanvasCssSize(els.canvas.getBoundingClientRect());
         syncSoloMissionHudCssHeight(els.soloMissionHud.getBoundingClientRect());
         const after = gameplayViewportGeometryKey();
         if (after !== before && gameplayViewportReflowPasses < GAMEPLAY_VIEWPORT_REFLOW_MAX_PASSES - 1) {
@@ -18329,6 +18239,10 @@ function suspendLiveSunbeamOverlay({ destroy = false } = {}) {
     els.webgpuMainCanvas.style.opacity = '0';
   if (destroy) {
     sunbeamLive.generation += 1;
+    sunbeamLive.pendingSounds.clear();
+      for (const entry of sunbeamLive.soundPlayers?.values() || []) entry.player.destroy();
+      sunbeamLive.soundPlayers?.clear();
+      sunbeamLive.playedCauses?.clear();
     sunbeamLive.renderer?.destroy();
     sunbeamLive.renderer = null;
     sunbeamLive.pending = null;
@@ -18425,6 +18339,74 @@ function pumpLiveSunbeamOverlay(data, camera, zoom) {
   }
 }
 
+function flushLiveSunbeamSounds(submittedHands = null, frameId = 0) {
+  if (!sunbeamLive.pendingSounds.size) return;
+  const data = state.data;
+  if (state.screen !== 'game' || document.hidden || !data ||
+      state.audio.muted || isSensoryBlocked(data) ||
+      !state.audio.unlocked || state.audio.context?.state !== 'running' ||
+      !(Number(state.audio.master?.gain?.value) > 0)) {
+    sunbeamLive.pendingSounds.clear();
+    return;
+  }
+  const nowMs = state.frameNow || performance.now();
+  const lateMs = 180;
+  const mainFrameVisible = WEBGPU_MAIN_OWNER &&
+    Array.isArray(submittedHands) && Number.isSafeInteger(frameId) && frameId >= 0 &&
+    webgpuMainSubmittedFrameCurrent();
+  for (const [soundId, receipt] of sunbeamLive.pendingSounds) {
+    if (nowMs - receipt.receivedAt > lateMs ||
+        receipt.roomId !== String(data.roomId || '') ||
+        receipt.roomGeneration !== state.roomSessionGeneration) {
+      sunbeamLive.pendingSounds.delete(soundId);
+      continue;
+    }
+    const hand = mainFrameVisible && submittedHands.find(item =>
+      item?.effectId === receipt.effectId &&
+      String(item.playerId) === String(receipt.sound.ownerId) &&
+      Array.isArray(item.hands) &&
+      item.hands.length >= 1 && item.hands.length <= 2 &&
+      item.hands.every(point => Number.isFinite(point.x) && Number.isFinite(point.y)));
+    if (WEBGPU_MAIN_OWNER && !hand) continue;
+    sunbeamLive.pendingSounds.delete(soundId);
+    if (receipt.roomId !== String(data.roomId || '') ||
+        receipt.roomGeneration !== state.roomSessionGeneration) continue;
+    const effect = state.magicEffects.find(item =>
+      String(item.id) === receipt.effectId &&
+      item.sunbeamCausalId === receipt.sound.sunbeamCausalId);
+    if (!effect || String(effect.playerId) !== String(receipt.sound.ownerId)) continue;
+    const causeId = String(effect.sunbeamCausalId || '');
+    const causeKey = `${receipt.roomId}:${receipt.roomGeneration}:${causeId}`;
+    if (!mainFrameVisible || !causeId || sunbeamLive.playedCauses.has(causeKey) ||
+        IS_VERIFICATION_MODE || !window.DvaSunbeamSolSfx?.createPlayer) continue;
+    const actorElapsed = sunbeamActorVisualElapsed(effect, data);
+    if (!Number.isFinite(actorElapsed) || actorElapsed >= effect.duration) continue;
+    const actor = data.players?.find(player =>
+      String(player.id) === String(effect.playerId));
+    if (!actor) continue;
+    try {
+      const player = window.DvaSunbeamSolSfx.createPlayer({
+        context: state.audio.context, destination: state.audio.master });
+      player.enterRoom(receipt.roomId, receipt.roomGeneration);
+      const started = player.start({ eventId: String(effect.id), causeId,
+        roomId: receipt.roomId, roomGeneration: receipt.roomGeneration,
+        phaseSeconds: actorElapsed / 1000,
+        actorRate: displayETimeScale(actor, data),
+        volume: clamp(receipt.soundOptions.volume, 0, 1),
+        frameSubmitted: true, visible: true,
+        muted: state.audio.muted || document.hidden || isSensoryBlocked(data) });
+      if (started) {
+        sunbeamLive.playedCauses.add(causeKey);
+        while (sunbeamLive.playedCauses.size > 256)
+          sunbeamLive.playedCauses.delete(sunbeamLive.playedCauses.values().next().value);
+        sunbeamLive.soundPlayers.set(causeKey, { player,
+          effectId: String(effect.id), roomId: receipt.roomId,
+          roomGeneration: receipt.roomGeneration });
+      } else player.destroy();
+    } catch (_) { /* A failed new cue must not duplicate the server sound. */ }
+  }
+}
+
 function suspendWebGPUMainAppDriver({ destroy = false } = {}) {
   if (!WEBGPU_MAIN_OWNER) return;
   clearWebGPUMainUnstableLayoutRetry();
@@ -18445,9 +18427,13 @@ function suspendWebGPUMainAppDriver({ destroy = false } = {}) {
   if (els.canvas) els.canvas.style.pointerEvents = WEBGPU_MAIN_OWNER ? "none" : "auto";
   if (els.canvas) els.canvas.style.opacity = "0";
   if (webgpuMainApp.acquisitionCanvas) webgpuMainApp.acquisitionCanvas.style.display = "none";
+  sunbeamLive.pendingSounds.clear();
   FIRE_E_SOUND_RECEIPTS.pending.clear();
   sunbeamLive.submitted.clear();
   sunbeamLive.poseReceipts.clear();
+  for (const entry of sunbeamLive.soundPlayers?.values() || []) entry.player.destroy();
+  sunbeamLive.soundPlayers?.clear();
+  sunbeamLive.playedCauses?.clear();
   stopAllPhenomenonSounds();
   stopAllEnvironmentSounds();
   if (destroy) {
@@ -18821,8 +18807,8 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
     } });
   markWebGPUStartupStage('driverCreationEnd', Number.isFinite(driverCreationStartedAt)
     ? Math.max(0, performance.now() - driverCreationStartedAt) : null);
-  if (!driver || !sameSession()) {
-    await driver?.destroy();
+  if (!sameSession()) {
+    await driver.destroy();
     return null;
   }
   webgpuMainApp.driver = driver;
@@ -19016,8 +19002,6 @@ function pumpWebGPUMainAppDriver() {
       throw new Error('WebGPU main submitted without preparation pointer geometry');
     if (!Array.isArray(receipt.recordResult?.phenomenonSoundVisualReceipts))
       throw new Error("WebGPU main submitted without phenomenon sound receipts");
-    if (!Array.isArray(receipt.recordResult?.luckSoundVisualReceipts))
-      throw new Error('WebGPU main submitted without Luck v4 sound receipts');
     if (!Array.isArray(receipt.recordResult?.staminaBenefitSoundReceipts))
       throw new Error('WebGPU main submitted without stamina benefit sound receipts');
     if (!Array.isArray(receipt.recordResult?.manaBenefitSoundReceipts))
@@ -19028,7 +19012,7 @@ function pumpWebGPUMainAppDriver() {
       throw new Error('WebGPU main submitted without Sunbeam hand receipts');
     if (!Number.isSafeInteger(receipt.recordResult?.sunbeamFrameToken) ||
         receipt.recordResult.sunbeamFrameToken <= 0)
-      throw new Error('WebGPU main submitted without Sunbeam v3 frame token');
+      throw new Error('WebGPU main submitted without Sunbeam v2 frame token');
     if (!Array.isArray(receipt.recordResult?.fireActivationReceipts))
       throw new Error('WebGPU main submitted without Fire activation receipts');
     if (!Array.isArray(receipt.recordResult?.acquisitionSoundVisualReceipts))
@@ -19082,8 +19066,7 @@ function pumpWebGPUMainAppDriver() {
         state.roomSessionGeneration === sessionGeneration &&
         state.data?.roomId === snapshotRoomId &&
         webgpuMainSubmittedFrameCurrent()) !== true)
-      throw new Error('Sunbeam v3 visible-frame receipt was not admitted');
-    webgpuMainApp.driver.refreshSunbeamAudioGates();
+      throw new Error('Sunbeam v2 visible-frame receipt was not admitted');
     // A same-session poll can supersede the captured data while GPU materials
     // prepare. Present that coherent frame, then let the next frame own sound
     // receipts against the fresh authoritative snapshot.
@@ -19091,6 +19074,20 @@ function pumpWebGPUMainAppDriver() {
     advanceActorOwnedECues(data);
     const activeSunbeams = new Set((state.magicEffects || [])
       .filter(effect => effect.type === 'flora-sunbeam').map(effect => String(effect.id)));
+    for (const [causeKey, entry] of sunbeamLive.soundPlayers || []) {
+      const effect = state.magicEffects.find(item => String(item.id) === entry.effectId);
+      const owner = effect && data.players?.find(player =>
+        String(player.id) === String(effect.playerId));
+      if (entry.roomId === String(data.roomId || '') &&
+          entry.roomGeneration === state.roomSessionGeneration &&
+          activeSunbeams.has(entry.effectId) && owner?.alive && !owner.ejected &&
+          !owner.inVent && (!owner.invisible || String(owner.id) === String(data.selfId))) {
+        entry.player.setActorRate(displayETimeScale(owner, data));
+        continue;
+      }
+      entry.player.destroy();
+      sunbeamLive.soundPlayers.delete(causeKey);
+    }
     for (const id of webgpuMainApp.submittedSunbeamHands.keys())
       if (!activeSunbeams.has(id)) webgpuMainApp.submittedSunbeamHands.delete(id);
     for (const hand of receipt.recordResult.sunbeamHandReceipts) {
@@ -19100,6 +19097,7 @@ function pumpWebGPUMainAppDriver() {
       webgpuMainApp.submittedSunbeamHands.set(hand.effectId, hand);
     }
     webgpuMainApp.lastSoundRequestSerial = requestSerial;
+    flushLiveSunbeamSounds(receipt.recordResult.sunbeamHandReceipts, requestSerial);
     commitSubmittedFireESounds(data, receipt.recordResult.fireActivationReceipts);
     commitStaminaBenefitSoundFrame(data, receipt.recordResult.staminaBenefitSoundReceipts);
     commitManaBenefitSoundFrame(data, receipt.recordResult.manaBenefitSoundReceipts);
@@ -19107,8 +19105,6 @@ function pumpWebGPUMainAppDriver() {
     commitVisibleVisualSoundFrame(data,
       receipt.recordResult.phenomenonSoundVisualReceipts,
       receipt.recordResult.environmentSoundReceipts, true);
-    commitLuckAstraV4SoundFrame(data, receipt.recordResult.luckSoundVisualReceipts,
-      webgpuMainApp.submittedFrame);
     for (const acquisitionReceipt of receipt.recordResult.acquisitionSoundVisualReceipts)
       admitSubmittedAcquisitionCue(data, acquisitionReceipt);
     for (const openingReceipt of receipt.recordResult.mysteryOpeningSoundReceipts)
@@ -20742,7 +20738,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           reason: 'sunbeam-same-frame-or-submitted-hand-unavailable' });
         continue;
       }
-      if (!window.DvaSunbeamAstraV3GameAdapter?.create ||
+      if (!window.DvaSunbeamProV2Adapter?.create ||
           typeof effect.sunbeamCausalId !== 'string' || !effect.sunbeamCausalId ||
           ![effect.targetX, effect.targetY, effect.x, effect.y,
             effect.startedAt, effect.duration].every(Number.isFinite) ||
@@ -20752,7 +20748,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           reason: 'sunbeam-server-path-or-pass-unavailable' });
         continue;
       }
-          events.push({ type: 'sunbeamE', effectId: effect.id,
+      events.push({ type: 'sunbeamE', effectId: effect.id,
         input: { effect, playerId: String(actor.id),
           activeAction: Boolean(actionActive),
           submittedHands: actionActive ? null : submitted.hands,
@@ -21551,25 +21547,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       events.push({ type: "bodyBenefit", effectId: effect.id, input });
       continue;
     }
-    if (type === 'gain-luckBoost') {
-      const pass = window.DvaWebGPULuckAstraV4Game;
-      const player = gainEffectPlayer(effect);
-      if (!player || !player.alive || player.ejected || player.inVent || player.invisible) {
-        omitted.push({ effectId: effect.id, reason: 'luck-v4-beneficiary-not-visible' });
-        continue;
-      }
-      const planned = pass?.plan?.({ effect, player, now, phase: data.phase,
-        camera, zoom, viewport, reducedMotion });
-      if (!planned) {
-        unsupported.push({ index, type, id: effect.id,
-          reason: 'luck-v4-pass-or-source-invalid' });
-        continue;
-      }
-      events.push({ type: 'bodyBenefitExtra', effectId: String(effect.id),
-        input: { effect, planned } });
-      continue;
-    }
-    if (['gain-statusRecovery', 'gain-cooldownReduction'].includes(type)) {
+    if (['gain-luckBoost', 'gain-statusRecovery', 'gain-cooldownReduction'].includes(type)) {
       const kind = type.slice('gain-'.length);
       const pass = window.DvaWebGPUBodyBenefitExtra;
       const profile = pass?.PROFILES?.[kind];
@@ -27060,7 +27038,7 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, providers = {})
   const sourceIds = effects.map(effect => String(effect?.id ?? ''));
   const overlay = providers.acquisitionCanvas || null;
   const overlayRect = overlay?.getBoundingClientRect?.();
-  const canvasRect = mainCanvasViewportRect();
+  const canvasRect = els.canvas?.getBoundingClientRect?.();
   const overlayStyle = overlay?.style;
   const overlayReady = Boolean(overlay?.isConnected && overlay?.dataset?.acquisitionGpuOverlay === '1' &&
     overlayStyle?.pointerEvents === 'none' && Number(overlayStyle?.zIndex) === 71 &&
@@ -27471,14 +27449,14 @@ function assertWebGPUAcquisitionCandidateGeometry(candidate, acquisition) {
   if (acquisition?.effects?.length &&
       (!acquisition.canvas?.isConnected ||
        !rectMatches(acquisition.canvas, acquisition.overlayRect) ||
-       !rectMatches(els.webgpuMainCanvas, acquisition.canvasRect)))
+       !rectMatches(els.canvas, acquisition.canvasRect)))
     throw Object.assign(new Error('WebGPU acquisition overlay or source DOM geometry changed'),
       { code: 'DVA_WEBGPU_STALE_SCENE' });
   if (candidate?.acquisitionHudPlan &&
       (candidate.acquisitionHudPlan !== candidate.stages.hud?.preparedPlan ||
        !candidate.acquisitionResolved ||
        !rectMatches(acquisition.canvas, candidate.acquisitionResolved.overlayRect) ||
-        !rectMatches(els.webgpuMainCanvas, candidate.acquisitionResolved.canvasRect) ||
+       !rectMatches(els.canvas, candidate.acquisitionResolved.canvasRect) ||
        JSON.stringify(candidate.acquisitionResolved.hudRects) !==
          JSON.stringify(candidate.acquisitionHudPlan.acquisitionHudRects) ||
        (candidate.acquisitionResolved.drawFrame &&
@@ -28125,21 +28103,6 @@ function headMarkerMaterialKeysForWebGPUCandidate(candidate, textures) {
   return [...keys];
 }
 
-function sunbeamV3AudioOwnerGate(meta) {
-  const data = state.data;
-  if (!data || data.phase !== 'playing' ||
-      String(data.roomId || '') !== String(meta.roomId || '')) return false;
-  const owner = data.players?.find(player => String(player.id) === String(meta.ownerId));
-  if (!owner?.alive || owner.ejected || owner.inVent ||
-      (owner.invisible && String(owner.id) !== String(data.selfId))) return false;
-  return Boolean(state.magicEffects?.some(effect =>
-    effect.type === 'flora-sunbeam' &&
-    effect.sunbeamCausalId === meta.eventId &&
-    String(effect.playerId) === String(meta.ownerId) &&
-    Number.isFinite(sunbeamActorVisualElapsed(effect, data)) &&
-    sunbeamActorVisualElapsed(effect, data) < effect.duration));
-}
-
 async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   acquisitionCanvas, map, image, textAtlas, atlasMetrics, gpu,
   headMarkerMaterials, killAssets = {}, markerDomFallbackReady = false,
@@ -28186,20 +28149,17 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   const expectedDevice = incomingPrewarm?.device || null;
   let retirement = null;
   let lifecycleGeneration = 0;
-  let sunbeamAdapterGeneration = 0;
-  let sunbeamRoomSessionGeneration = state.roomSessionGeneration;
   let lastMedicalSfxFrameAt = null;
   let configuredSunbeamAudioContext = null;
   let notified = false;
   const notify = error => {
-    if (notified || !isCurrent()) return;
+    if (notified) return;
     notified = true;
     try { onFailure(error); } catch (_) { /* Preserve the original failure. */ }
   };
   const requireCurrent = () => {
     if (typeof isCurrent !== 'function' || !isCurrent())
-      throw Object.assign(new Error('Dormant WebGPU main startup became stale before ownership publication'),
-        { code: 'DVA_WEBGPU_STARTUP_STALE' });
+      throw new Error('Dormant WebGPU main startup became stale before ownership publication');
   };
   const destroy = () => {
     if (destroyed) return retirement || Promise.resolve();
@@ -28293,15 +28253,20 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
         registry.passes.acquisition?.target !== acquisitionTarget)
       throw new Error('Dormant WebGPU main registry target or device owner differs');
     registry.assertFullFrameReady();
-    registry.passes.sunbeamE.setGeneration(++sunbeamAdapterGeneration);
     if (state.audio.context && !IS_VERIFICATION_MODE) {
       const context = state.audio.context;
       await registry.passes.sunbeamE.configureAudio({ context,
         destination: state.audio.master,
-        consumedIds: SUNBEAM_V3_CONSUMED_CAUSES,
+        consumedIds: SUNBEAM_V2_CONSUMED_CAUSES,
         volume: 0.8,
         gates: {
-          owner: sunbeamV3AudioOwnerGate,
+          owner: meta => Boolean(state.data?.players?.some(player =>
+            String(player.id) === String(meta.ownerId) && player.alive &&
+            !player.ejected && !player.inVent) &&
+            state.magicEffects?.some(effect =>
+              effect.type === 'flora-sunbeam' &&
+              effect.sunbeamCausalId === meta.eventId &&
+              String(effect.playerId) === String(meta.ownerId))),
           room: meta => String(meta.roomId) === String(state.data?.roomId || ''),
           verify: () => !IS_VERIFICATION_MODE,
           unlock: () => state.screen === 'game' && !document.hidden &&
@@ -28320,12 +28285,8 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     if (scene.device !== runtime.device)
       throw new Error('Dormant WebGPU main scene device differs');
   } catch (error) {
-    // Visibility or session changes retire this startup. Its asynchronous GPU
-    // setup can finish later, but that completion is not a renderer failure.
-    const stale = error?.code === 'DVA_WEBGPU_STARTUP_STALE' || !isCurrent();
-    if (!stale) notify(error);
+    notify(error);
     await destroy();
-    if (stale) return null;
     throw error;
   }
   return Object.freeze({
@@ -28357,19 +28318,20 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       const providers = { ...shapeProviders, expandedCanvas,
         acquisitionCanvas };
       try {
-        if (sunbeamRoomSessionGeneration !== state.roomSessionGeneration) {
-          registry.passes.sunbeamE.setGeneration(++sunbeamAdapterGeneration);
-          sunbeamRoomSessionGeneration = state.roomSessionGeneration;
-        }
         if (!IS_VERIFICATION_MODE && state.audio.context &&
             state.audio.context !== configuredSunbeamAudioContext) {
           const context = state.audio.context;
           await registry.passes.sunbeamE.configureAudio({ context,
             destination: state.audio.master,
-            consumedIds: SUNBEAM_V3_CONSUMED_CAUSES,
+            consumedIds: SUNBEAM_V2_CONSUMED_CAUSES,
             volume: 0.8,
             gates: {
-              owner: sunbeamV3AudioOwnerGate,
+              owner: meta => Boolean(state.data?.players?.some(player =>
+                String(player.id) === String(meta.ownerId) && player.alive &&
+                !player.ejected && !player.inVent) &&
+                state.magicEffects?.some(effect => effect.type === 'flora-sunbeam' &&
+                  effect.sunbeamCausalId === meta.eventId &&
+                  String(effect.playerId) === String(meta.ownerId))),
               room: meta => String(meta.roomId) === String(state.data?.roomId || ''),
               verify: () => !IS_VERIFICATION_MODE,
               unlock: () => state.screen === 'game' && !document.hidden &&
@@ -28523,7 +28485,6 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       lifecycleGeneration += 1;
       lastMedicalSfxFrameAt = null;
       registry.passes.sunbeamE.stopAudio();
-      registry.passes.sunbeamE.setGeneration(++sunbeamAdapterGeneration);
       runtime.suspend();
     },
     resume() { return runtime.resume(); },
@@ -31921,8 +31882,7 @@ function showMarkerExplanationDom(explanation, anchorX, anchorY, width, height) 
     body.textContent = explanation.detail;
     panel.replaceChildren(title, body);
   }
-  const canvasRect = mainCanvasViewportRect();
-  if (!canvasRect) { clearAcquisitionOverlay(); return; }
+  const canvasRect = els.canvas.getBoundingClientRect();
   const x = canvasRect.left + anchorX * canvasRect.width / Math.max(1, width);
   const y = canvasRect.top + anchorY * canvasRect.height / Math.max(1, height);
   positionInventoryItemDetail({ getBoundingClientRect: () => ({ left: x, right: x, top: y, height: 0 }) }, panel);
@@ -32114,8 +32074,7 @@ function drawAcquisitionPhotonStream(data, camera, worldZoom, now = state.frameN
     (effect.type === 'mystery-box' || effect.type === 'transfer-in') &&
     (effect.type !== 'mystery-box' || effect.playerId === data.selfId) &&
     acquisitionPhotonWindow(effect, now) !== null);
-  const canvasRect = mainCanvasViewportRect();
-  if (!canvasRect) return;
+  const canvasRect = els.canvas.getBoundingClientRect();
   if (!effects.length || !canvasRect.width || !canvasRect.height) { clearAcquisitionOverlay(); return; }
   const gpu = acquisitionGpuRenderer();
   const overlay = acquisitionGpuOverlay.canvas;
