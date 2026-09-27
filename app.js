@@ -12738,6 +12738,7 @@ function admitSubmittedGunnerAimCue(data, receipt) {
   const source = (state.magicEffects || []).find(effect =>
     String(effect.id) === String(receipt?.effectId));
   const nowMs = state.frameNow || performance.now();
+  const visibleAtMs = receipt?.visibleAtMs;
   const actor = data?.players?.find(player => String(player.id) === String(source?.playerId));
   if (data !== state.data || state.screen !== 'game' || data?.phase !== 'playing' ||
       !source || source.type !== 'gunner-passive-aim' ||
@@ -12749,14 +12750,21 @@ function admitSubmittedGunnerAimCue(data, receipt) {
       (actor.invisible && actor.id !== data.selfId) ||
       (actor.id === data.selfId && !data.self?.gunnerAimOwned) ||
       !Number.isFinite(receipt.progress) || receipt.progress < 0 ||
-      receipt.progress >= 1 || !syncWebGPUECueSession(data)) return null;
+      receipt.progress >= 1 || !Number.isFinite(visibleAtMs) ||
+      visibleAtMs < source.startedAt || visibleAtMs >= source.startedAt + 900 ||
+      Math.abs(receipt.progress - (visibleAtMs - source.startedAt) / 900) > 1e-6 ||
+      !syncWebGPUECueSession(data)) return null;
   const audible = !document.hidden && !state.audio.muted &&
     state.audio.unlocked && !isSensoryBlocked(data) &&
     state.audio.context?.state === 'running' &&
     Number(state.audio.master?.gain?.value) > 0;
   const cue = WEBGPU_E_CUES.events.admit({ kind: 'gunnerAimAcquire',
     roomId: String(data.roomId || ''), roomGeneration: state.roomSessionGeneration,
-    eventId: String(source.id), eventAtMs: nowMs, nowMs,
+    eventId: String(source.id), eventAtMs: nowMs,
+    // The GPU frame captured a 900ms visual interval earlier than this
+    // receipt may reach the main thread. Validate the sound against that
+    // submitted visual time while starting playback on the actual receipt.
+    nowMs: visibleAtMs,
     startedAtMs: source.startedAt, effectType: source.type,
     variant: source.variant, sourceId: String(source.playerId),
     targetId: String(source.targetId) }, { audible });
@@ -20287,7 +20295,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         continue;
       }
       events.push({ type: 'gunnerAimAcquisition', effectId: String(effect.id),
-        input: { effect, planned } });
+        input: { effect, planned, visibleAtMs: now } });
       continue;
     }
     if (type === 'hover-sprint-active') {

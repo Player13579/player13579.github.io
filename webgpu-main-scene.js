@@ -816,11 +816,19 @@
             prepared.addLease(outcome);
             if (outcome?.drawn !== true || outcome.effectId !== event.effectId)
               throw new Error(`Magic Gunner aim ${event.effectId} was not drawn`);
+            const visibleAtMs = event.input.visibleAtMs;
+            const startedAt = event.input.effect.startedAt;
+            if (!Number.isFinite(visibleAtMs) ||
+                visibleAtMs < startedAt || visibleAtMs >= startedAt + 900 ||
+                Math.abs(event.input.planned.progress -
+                  (visibleAtMs - startedAt) / 900) > 1e-6)
+              throw new Error(`Magic Gunner aim ${event.effectId} visual time differs from its plan`);
             gunnerAimSoundReceipts.push(Object.freeze({
               effectId: event.effectId, playerId: event.input.effect.playerId,
               targetId: event.input.effect.targetId,
               variant: event.input.effect.variant,
               startedAt: event.input.effect.startedAt,
+              visibleAtMs,
               progress: event.input.planned.progress }));
           } else if (event.type === 'headMarker') {
             const planned=event.input.planned;
