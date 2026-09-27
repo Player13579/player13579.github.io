@@ -2911,6 +2911,7 @@ function init() {
   // Fetch and decode only the map the title currently selects. The immutable
   // image can then be reused by the eventual match startup.
   preloadSelectedRequiredMap(restoredMapId);
+  preloadSelectedAuthoredWalkSprites(els.skinSelect.value);
   syncGameAudioButtons();
   updateSoloProgressUi();
   setScreen("title");
@@ -7566,6 +7567,7 @@ function bindEvents() {
   els.tacticsMuteButton?.addEventListener("click", toggleGameMuted);
   els.gameMuteButton?.addEventListener("click", toggleGameMuted);
   els.skinSelect.addEventListener("change", () => {
+    preloadSelectedAuthoredWalkSprites(els.skinSelect.value);
     renderPreparationSettingSummary(state.data);
     void syncOperatorSelectionSettings("skin");
   });
@@ -30841,9 +30843,33 @@ function preloadSelectedRequiredMap(value = els.mapSelect?.value) {
   selectedMapPreload = { mapId, cancel };
 }
 
+// Keep the title's first character sheets ahead of the large optional texture
+// set. Image identity is shared with the normal renderer and URL lookup uses
+// pendingSources so this never creates duplicate requests.
+function preloadSelectedAuthoredWalkSprites(value = els.skinSelect?.value) {
+  const textures = state.textures;
+  if (!textures) return;
+  const humanIdentity = renderSkinAssetId(value);
+  const prioritized = new Set();
+  for (const identity of [humanIdentity, "male-bot"]) {
+    const directions = textures.authoredCharacterMotion?.[identity];
+    for (const direction of ["front", "left", "right", "back"]) {
+      const image = directions?.[direction]?.walk;
+      if (!image || prioritized.has(image) || image.complete && image.naturalWidth > 0) continue;
+      const source = (textures.pendingSources || []).find(([entry]) => entry === image)?.[1];
+      if (!source || image.src) continue;
+      prioritized.add(image);
+      image.fetchPriority = "high";
+      image.src = source;
+    }
+  }
+}
+
 function loadGameplayTextures() {
   const textures = state.textures;
-  if (!textures || textures.gameplayLoaded) return;
+  if (!textures) return;
+  preloadSelectedAuthoredWalkSprites();
+  if (textures.gameplayLoaded) return;
   textures.gameplayLoaded = true;
   preloadSelectedRequiredMap(els.mapSelect?.value);
   const criticalMaps = new Set(Object.values(textures.fullMapComposites || {}));
@@ -30860,7 +30886,8 @@ function loadGameplayTextures() {
     if (criticalFacility.has(entry)) loadCriticalFacilityTexture(entry, source);
   }
   for (const [entry, source] of textures.pendingSources || []) {
-    if (!criticalMaps.has(entry) && !criticalFacility.has(entry)) entry.src = source;
+    if (!criticalMaps.has(entry) && !criticalFacility.has(entry) &&
+        (!entry.src || entry.complete && entry.naturalWidth === 0)) entry.src = source;
   }
 }
 
