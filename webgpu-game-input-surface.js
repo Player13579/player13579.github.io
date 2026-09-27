@@ -4,9 +4,8 @@
   const capturedPointers = new Map();
   const terminalPointerEvents = new Set(["pointerup", "pointercancel", "lostpointercapture"]);
 
-  function resolveSurface({ webgpuCanvas, legacyCanvas, webgpuFrameCurrent, webgpuOwner }) {
-    if (webgpuFrameCurrent) return webgpuCanvas || null;
-    return webgpuOwner ? null : legacyCanvas || null;
+  function resolveSurface({ webgpuCanvas, webgpuFrameCurrent, webgpuOwner }) {
+    return webgpuOwner && webgpuFrameCurrent ? webgpuCanvas || null : null;
   }
 
   function bindSurfaceEvents({ surfaces, resolveActiveSurface, handlers }) {

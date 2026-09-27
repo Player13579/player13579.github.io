@@ -14,7 +14,7 @@
     <meta property="og:image" content="assets/site-thumbnail-v497.png">
     <link rel="preload" as="image" href="assets/title-hero-v466.png?v=core-icons-restart-v707" fetchpriority="high">
     <style>html,body,.start-screen{background:#17283d}</style>
-  <link rel="stylesheet" href="styles.css?v=webgpu-input-surface-v2&amp;startup=first-visible-deadline-v1">
+  <link rel="stylesheet" href="styles.css?v=webgpu-input-surface-v2&amp;startup=safari-first-frame-v1">
   </head>
   <body>
     <section id="startScreen" class="start-screen" data-ui-region="home-screen" aria-label="ホーム画面">
@@ -296,7 +296,14 @@
           <canvas id="webgpuMainCanvas" class="webgpu-main-canvas" width="980" height="620" tabindex="-1" role="img" aria-label="ゲームマップ" aria-describedby="gameCanvasStatusSummary"></canvas>
           <div id="webgpuMainFailure" class="webgpu-main-failure" role="alert">
             <p>描画を開始できませんでした。再読み込みして、もう一度プレイしてください。</p>
+            <p id="webgpuMainFailureSummary" class="webgpu-main-failure-summary"></p>
             <button id="webgpuMainRetryButton" type="button">再読み込み</button>
+            <button id="webgpuMainCopyDiagnosticButton" type="button">診断情報をコピー</button>
+            <details class="webgpu-main-failure-details">
+              <summary>診断情報を表示</summary>
+              <textarea id="webgpuMainFailureDiagnostic" readonly rows="5" aria-label="描画エラーの診断情報" spellcheck="false"></textarea>
+            </details>
+            <p id="webgpuMainDiagnosticCopyStatus" role="status"></p>
           </div>
           <div id="operatorSelectionSettings" class="preparation-inline-settings" aria-label="名前の直接入力" hidden>
             <div data-preparation-editor="name" hidden><label for="nameInput" class="visually-hidden">名前</label><input id="nameInput" maxlength="16" autocomplete="nickname" placeholder="プレイヤー" aria-describedby="namePolicy"><small id="namePolicy" class="visually-hidden">名前は出撃準備中に変更できます。</small><small id="soloNameGuidance" class="visually-hidden" aria-live="polite" hidden>名前を入力したら、本のアイコンから「戦術いろは」へ戻り、訓練の「開始」を押してください。</small></div>
@@ -754,7 +761,7 @@
     <script src="webgpu-e-cue-player.js?v=webgpu-main-bootstrap-v33"></script>
     <script src="grenade-impact-sfx.js?v=webgpu-main-bootstrap-v31"></script>
     <script src="object-space-collision.js?v=webgpu-main-bootstrap-v5"></script>
-    <script src="webgpu-game-input-surface.js?v=webgpu-input-surface-v1"></script>
-    <script src="app.js?v=webgpu-pure-slices-v94&amp;patch=first-frame-phase-marks-v1&amp;startup=first-visible-deadline-v1"></script>
+    <script src="webgpu-game-input-surface.js?v=webgpu-only-input-v2"></script>
+    <script src="app.js?v=webgpu-pure-slices-v94&amp;patch=first-frame-phase-marks-v1&amp;startup=safari-first-frame-v1"></script>
 </body>
 </html>

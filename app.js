@@ -2381,6 +2381,11 @@ const webgpuMainApp = { driver: null, startPending: null, mapId: null,
 const webgpuStartupTiming = { nextAttemptId: 0, current: null, playClickedAtMs: null,
   firstPumpAfterPlayAtMs: null };
 function markWebGPUStartupStage(name, durationMs = null) {
+  // Ordinary Safari sessions need the last substantive frame phase too. RAF
+  // bookkeeping must not overwrite a preparation operation still in flight.
+  if (!webgpuMainApp.failed && !webgpuMainApp.visible &&
+      /^(sceneCapture|candidatePrepare|runtimeFrame|prepare|record|queueSubmit|runtimeReceipt)/.test(name))
+    webgpuMainApp.lastFrameStage = name;
   if (!WEBGPU_MAIN_VERIFY_ROUTE) return;
   const trace = webgpuStartupTiming.current;
   if (!trace || trace.frozen || !/^[a-z][A-Za-z0-9.:-]{0,47}$/.test(name)) return;
@@ -7261,6 +7266,8 @@ function bindTitleNavigationEvents() {
   document.getElementById('webgpuMainRetryButton')?.addEventListener('click', () => {
     if (webgpuMainApp.failed) window.location.reload();
   });
+  document.getElementById('webgpuMainCopyDiagnosticButton')?.addEventListener('click',
+    copyWebGPUMainFailureDiagnostic);
   els.titlePlayButton.addEventListener("click", () => {
     if (els.titlePlayButton.disabled) return;
     if (WEBGPU_MAIN_VERIFY_ROUTE) {
@@ -18287,11 +18294,81 @@ function webgpuMainIncompleteReason(captured, requiredStages) {
 function setWebGPUMainFailure(error) {
   if (webgpuMainApp.failed) return;
   const message = error?.message || String(error);
+  // Preserve the original gate and source gap before suspension erases them.
+  // Diagnostic UI failure must never interrupt renderer cancellation.
+  try {
+    const detail = captureWebGPUMainFailureDiagnostic(message);
+    const text = JSON.stringify(detail, null, 2);
+    document.body.dataset.webgpuMainFailureDetail = JSON.stringify(detail);
+    const summary = document.getElementById?.('webgpuMainFailureSummary');
+    if (summary) summary.textContent = `停止箇所: ${detail.pending}${
+      detail.frameStage ? ` / ${detail.frameStage}` : ''}\n${detail.error.slice(0, 240)}`;
+    const output = document.getElementById?.('webgpuMainFailureDiagnostic');
+    if (output) output.value = text;
+  } catch (_) { /* Rendering failure handling must remain available. */ }
   stopWebGPUMainPresentationWatchdog();
   webgpuMainApp.failed = true;
   document.body.dataset.webgpuMainError = message;
   setWebGPUMainPendingDiagnostic('failed');
   suspendWebGPUMainAppDriver({ destroy: true });
+}
+
+function captureWebGPUMainFailureDiagnostic(message) {
+  const numeric = value => Number.isFinite(value) ? value : null;
+  const rectOf = canvas => {
+    const rect = canvas?.getBoundingClientRect?.();
+    return rect ? Object.fromEntries(['left', 'top', 'width', 'height']
+      .map(key => [key, numeric(rect[key])])) : null;
+  };
+  const rootSize = independentGameplayViewportRootSize();
+  const pendingAt = webgpuMainApp.presentationPendingAt;
+  const image = state.textures?.fullMapComposites?.[state.data?.map?.id];
+  return {
+    schema: 'dva-webgpu-startup-failure-v1',
+    error: String(message).slice(0, 1600),
+    pending: String(document.body?.dataset?.webgpuMainPending || 'unknown').slice(0, 96),
+    incomplete: String(document.body?.dataset?.webgpuMainIncomplete || '').slice(0, 1600),
+    frameStage: webgpuMainApp.lastFrameStage || null,
+    elapsedMs: Number.isFinite(pendingAt) ? Math.max(0, Math.round(performance.now() - pendingAt)) : null,
+    driver: webgpuMainApp.driver?.state || null,
+    phase: state.data?.phase || null,
+    gpuAvailable: Boolean(window.navigator?.gpu),
+    secureContext: window.isSecureContext === true,
+    browser: String(window.navigator?.userAgent || '').slice(0, 300),
+    viewport: { width: numeric(window.innerWidth), height: numeric(window.innerHeight),
+      visualWidth: numeric(window.visualViewport?.width), visualHeight: numeric(window.visualViewport?.height),
+      scale: numeric(window.visualViewport?.scale), rootWidth: numeric(rootSize.width),
+      rootHeight: numeric(rootSize.height), dpr: numeric(window.devicePixelRatio),
+      hidden: Boolean(document.hidden), editableFocus: Boolean(document.activeElement?.matches?.(
+        'input, textarea, select, [contenteditable="true"]')) },
+    canvases: { main: rectOf(els.webgpuMainCanvas), reference: rectOf(els.canvas) },
+    mapImage: { complete: Boolean(image?.complete), width: numeric(image?.naturalWidth),
+      height: numeric(image?.naturalHeight), expectedWidth: numeric(state.data?.map?.width),
+      expectedHeight: numeric(state.data?.map?.height) },
+    builds: Array.from(document.scripts || []).map(script => script.getAttribute('src') || '')
+      .filter(src => /(?:^|\/)(?:app|webgpu-main-runtime|webgpu-main-pass-registry|webgpu-viewport)\.js\?/.test(src))
+      .slice(0, 4).map(src => src.slice(0, 240))
+  };
+}
+
+async function copyWebGPUMainFailureDiagnostic() {
+  const output = document.getElementById('webgpuMainFailureDiagnostic');
+  const status = document.getElementById('webgpuMainDiagnosticCopyStatus');
+  if (!output?.value || !webgpuMainApp.failed) return;
+  try {
+    if (typeof window.navigator?.clipboard?.writeText !== 'function')
+      throw new Error('Clipboard API unavailable');
+    await window.navigator.clipboard.writeText(output.value);
+    if (status) status.textContent = '診断情報をコピーしました。';
+  } catch (_) {
+    // Safari may deny clipboard writes. Expose selectable plain text without
+    // requiring devtools, downloads, external transmission, or another reload.
+    const details = output.closest('details');
+    if (details) details.open = true;
+    output.focus(); output.select();
+    output.setSelectionRange(0, output.value.length);
+    if (status) status.textContent = '診断情報を選択しました。長押ししてコピーしてください。';
+  }
 }
 
 function stopWebGPUMainPresentationWatchdog() {
@@ -18434,6 +18511,7 @@ function webgpuMainReadyImage(data) {
 }
 
 async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled: false }) {
+  webgpuMainApp.lastFrameStage = null;
   const generation = webgpuMainApp.generation;
   const map = data.map;
   const roomId = state.roomId;
@@ -18624,10 +18702,11 @@ function pumpWebGPUMainAppDriver() {
   const bounds = mainCanvas.getBoundingClientRect();
   const rect = Object.freeze({ left: bounds.left, top: bounds.top,
     width: bounds.width, height: bounds.height });
-  const canvasRect = els.canvas.getBoundingClientRect();
-  if (![rect.width, rect.height].every(value => Number.isFinite(value) && value > 0) ||
-      ["left", "top", "width", "height"].some(key =>
-        Math.abs(rect[key] - canvasRect[key]) > 1)) {
+  // The WebGPU canvas is the presentation target and input surface. Safari can
+  // round the hidden sizing canvas and this absolute canvas differently; that
+  // unrelated comparison must not prevent the first WebGPU frame forever.
+  if (![rect.left, rect.top, rect.width, rect.height].every(Number.isFinite) ||
+      rect.width <= 0 || rect.height <= 0) {
     setWebGPUMainPendingDiagnostic('waiting:target-geometry');
     suspendWebGPUMainAppDriver();
     return;
@@ -18645,7 +18724,7 @@ function pumpWebGPUMainAppDriver() {
     zoom: worldZoomFor(data) };
   markWebGPUStartupStage('driverDrawEntry');
   void webgpuMainApp.driver.draw({ data, sample, rect, camera,
-    dpr, ...(WEBGPU_MAIN_VERIFY_ROUTE ? { onTiming: (name, durationMs) => {
+    dpr, ...(WEBGPU_MAIN_VERIFY_ROUTE || !webgpuMainApp.visible ? { onTiming: (name, durationMs) => {
       markWebGPUStartupStage(name, durationMs);
     } } : {}) }).then(receipt => {
     markWebGPUStartupStage('appReceipt');
@@ -18658,7 +18737,11 @@ function pumpWebGPUMainAppDriver() {
       setWebGPUMainPendingDiagnostic(`frame:${reason}`);
       return;
     }
-    if (!receipt?.drawn || data !== state.data ||
+    // A poll may publish a newer snapshot while this WebGPU frame prepares.
+    // The recorded scene is still a coherent frame for the same room/phase/map;
+    // the next queued request will render the newer snapshot. Requiring object
+    // identity here can starve the first visible frame on slower devices.
+    if (!receipt?.drawn ||
         generation !== webgpuMainApp.generation ||
         state.screen !== "game" || document.hidden ||
         roomId !== state.roomId ||
@@ -18761,6 +18844,10 @@ function pumpWebGPUMainAppDriver() {
         state.data?.roomId === snapshotRoomId &&
         webgpuMainSubmittedFrameCurrent()) !== true)
       throw new Error('Sunbeam v2 visible-frame receipt was not admitted');
+    // A same-session poll can supersede the captured data while GPU materials
+    // prepare. Present that coherent frame, then let the next frame own sound
+    // receipts against the fresh authoritative snapshot.
+    if (data === state.data) {
     advanceActorOwnedECues(data);
     const activeSunbeams = new Set((state.magicEffects || [])
       .filter(effect => effect.type === 'flora-sunbeam').map(effect => String(effect.id)));
@@ -18801,6 +18888,7 @@ function pumpWebGPUMainAppDriver() {
       admitSubmittedMysteryOpeningCue(data, openingReceipt);
     for (const aimReceipt of receipt.recordResult.gunnerAimSoundReceipts)
       admitSubmittedGunnerAimCue(data, aimReceipt);
+    }
     if (document.documentElement?.dataset)
       document.documentElement.dataset.fieldRenderer = "webgpu";
   }).catch(error => {
@@ -21954,16 +22042,6 @@ function syncGravityLevitationEffects(previous, next) {
   }
 }
 
-function drawGravityLevitationSupportFold(y, width, lift, alpha) {
-  ctx.beginPath();
-  ctx.moveTo(-width / 2, y);
-  ctx.bezierCurveTo(-width * .22, y - lift, width * .22, y - lift, width / 2, y);
-  ctx.strokeStyle = `rgba(126,216,255,${alpha})`;
-  ctx.lineWidth = 3.2;
-  ctx.stroke();
-}
-
-
 function drawInstantItemAcquisitionEffect(effect, progress, sprite, defaultSize) {
   const fade = 1 - objectEffectEase(clamp((progress - 0.68) / 0.32, 0, 1));
   const targetX = Number(effect.x) || 0;
@@ -22434,20 +22512,6 @@ const ALCHEMY_VARIANT_CELLS = {
   reason: 11
 };
 
-function drawMysteryBoxRevealEffect(effect, progress, now) {
-  if (!mysteryBoxMaterialReady() || !Number.isFinite(effect.x) || !Number.isFinite(effect.y)) return;
-  const p = clamp(progress, 0, 1), elapsed = p * 2600, reduced = prefersReducedMotion();
-  if (p >= 1) return;
-  const opening = reduced ? 1 : objectEffectEase(clamp((elapsed - 80) / 660, 0, 1));
-  const gather = objectEffectEase(clamp((elapsed - 180) / 760, 0, 1));
-  const release = objectEffectEase(clamp((elapsed - 980) / 900, 0, 1));
-  const fade = 1 - objectEffectEase(clamp((elapsed - 2200) / 400, 0, 1));
-  const emission = reduced ? .24 : opening * (.15 + .72 * gather) * (1 - .88 * release);
-  ctx.save();
-  try { ctx.globalAlpha *= fade; drawMysteryBoxMaterials(effect.x, effect.y, opening, emission); }
-  finally { ctx.restore(); }
-}
-
 function drawPhilosophyAtlasEffect(effect, index, progress, rawSize) {
   const sprite = transparentSpriteSource(
     state.textures.philosophyEffectTextures?.[index],
@@ -22488,46 +22552,6 @@ function drawFighterDodgeCounterEffect(effect, progress) {
   ctx.translate(Number(effect.x) || 0, Number(effect.y) || 0); ctx.rotate(angle - .12 + (reduced ? .12 : p * .24));
   drawAnimatedTextureBottom(sprite, reach * .22, reach * .22, reach, reach * .42, {mode:"beam", progress: reduced ? .5 : p, intensity:1, baseAlpha:.16});
   ctx.restore(); return true;
-}
-
-// Grenades own their landing texture and timing. The server emits exactly one
-// finite event after the reusable throw-flight action; it never follows the
-// thrower, and it is not inferred from a generic item impact.
-function drawGrenadeImpactEffect(effect, progress) {
-  const frag = effect.type === "grenade-frag-impact";
-  const stun = effect.type === "grenade-stun-impact";
-  if (!frag && !stun) return false;
-  const image = frag ? state.textures.grenadeFragImpact : state.textures.grenadeStunImpact;
-  if (!image?.complete || !(image.naturalWidth > 0) || !(image.naturalHeight > 0)) return true;
-  const p = clamp(Number(progress) || 0, 0, 1);
-  const reduced = prefersReducedMotion();
-  const strike = objectEffectEase(clamp(p / (frag ? .075 : .055), 0, 1));
-  const expansion = objectEffectEase(clamp((p - (frag ? .025 : .01)) / (frag ? .54 : .42), 0, 1));
-  const fade = 1 - objectEffectEase(clamp((p - (frag ? .61 : .48)) / (frag ? .39 : .52), 0, 1));
-  const radius = Math.max(frag ? 132 : 145, Number(effect.radius) || 0);
-  const size = radius * (frag ? 2.42 : 2.08) * (frag ? .56 + expansion * .56 : .46 + expansion * .62);
-  const flash = reduced ? .68 : (1 - strike) * .72 + Math.sin(Math.min(1, p / .17) * Math.PI) * .24;
-  const alpha = Math.max(0, fade) * (.58 + strike * .42);
-  if (alpha <= .001 || size <= 0) return true;
-  ctx.save();
-  try {
-    ctx.translate(Number(effect.x) || 0, Number(effect.y) || 0);
-    ctx.globalCompositeOperation = "lighter";
-    ctx.globalAlpha *= alpha;
-    ctx.shadowColor = frag ? "rgba(255, 118, 32, .96)" : "rgba(255, 226, 170, .98)";
-    ctx.shadowBlur = radius * (frag ? .34 : .28) * (strike + .2);
-    // Frag anchors its hot ground gas at (.5, .70); stun anchors the flash at
-    // (.5, .5). Both flash, expand, and fade exactly once.
-    if (flash > .001) {
-      ctx.globalAlpha *= flash;
-      ctx.drawImage(image, -size / 2, frag ? -size * .70 : -size / 2, size, size);
-      ctx.globalAlpha /= flash;
-    }
-    ctx.drawImage(image, -size / 2, frag ? -size * .70 : -size / 2, size, size);
-  } finally {
-    ctx.restore();
-  }
-  return true;
 }
 
 function drawHeartTeleportEffect(effect, progress) {
@@ -26861,8 +26885,11 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
     const currentViewportSignature = [viewport?.kind, viewport?.width,
       viewport?.height, viewport?.pixelWidth, viewport?.pixelHeight,
       ...(viewport?.worldToLogical || [])];
-    if (state.data !== owner.data ||
-        state.data?.roomId !== owner.snapshotRoomId ||
+    // Ordinary state polls replace state.data even when the render session has
+    // not changed. Keep the captured frame valid across those replacements;
+    // effect, marker, viewport and session checks below still reject changes
+    // that invalidate its prepared geometry or ownership.
+    if (state.data?.roomId !== owner.snapshotRoomId ||
         state.data?.phase !== owner.phase ||
         state.data?.map?.id !== owner.data?.map?.id ||
         state.roomSessionGeneration !== owner.generation ||

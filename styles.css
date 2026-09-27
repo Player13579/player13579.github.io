@@ -2102,8 +2102,9 @@ html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-error] 
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 24px;
+  gap: 10px;
+  padding: 16px;
+  overflow: auto;
   background: #17283d;
   color: #e8f6ff;
   text-align: center;
@@ -2118,6 +2119,29 @@ html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-error] 
 .webgpu-main-failure button {
   min-height: 44px;
   padding: 10px 24px;
+}
+
+.webgpu-main-failure-summary {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.webgpu-main-failure-details {
+  width: min(100%, 36em);
+  font-size: 12px;
+}
+
+.webgpu-main-failure-details textarea {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  min-height: 80px;
+  max-height: 160px;
+  font: 12px/1.4 ui-monospace, monospace;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 /* The WebGPU presentation surface shares the board's logical dimensions.
