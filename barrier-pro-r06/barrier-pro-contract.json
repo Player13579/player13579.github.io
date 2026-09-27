@@ -1,0 +1,62 @@
+{
+  "version": "barrier-pro-r0.6",
+  "mode": "Image/WebGPU VFX+SFX design package",
+  "B_foundation": {
+    "PH_OBS_separation": {
+      "PH": [
+        "digital defensive field geometry",
+        "event-state deformation",
+        "local emission sources anchored to field nodes and impact locus"
+      ],
+      "OBS": [
+        "premultiplied-alpha composite",
+        "source-bound local halo / lens response",
+        "background composite"
+      ]
+    },
+    "intensityBudget": {
+      "shell_transmission_alpha_max": 0.96,
+      "airspace_center_alpha_target_H64": "<= 0.26 at create/absorb center",
+      "source_bound_halo_only": true,
+      "global_darkening_forbidden": true
+    },
+    "samplingContract": {
+      "H64_required": true,
+      "H100_required": true,
+      "backgrounds": [
+        "dark",
+        "light"
+      ],
+      "time_basis": "linear, no ease-in/out",
+      "real_gpu_acceptance": "not_run",
+      "real_audio_acceptance": "not_run"
+    }
+  },
+  "vfx": {
+    "primary_shape": "dual-plane digital field with front frame, rear frame, corner connectors, clear protected airspace",
+    "macro": "tall chamfered field volume around receiver",
+    "meso": "front and rear rails plus corner connectors",
+    "micro": "node emitters, rail highlights, event-specific cut lines or impact locus",
+    "events": {
+      "create": "assembly sweep closes same field structure",
+      "absorb": "same field dents inward at impact point while local source intensifies",
+      "fracture": "same field tears diagonally and shears apart",
+      "bust": "same field deauthorizes and splits outward, central links shut down"
+    }
+  },
+  "compositing": {
+    "working_color": "linear",
+    "storage": "rgba16float barrier offscreen target",
+    "alpha": "premultiplied",
+    "order": [
+      "barrier pass",
+      "composite over solid background"
+    ]
+  },
+  "sfx": {
+    "create": "rising digital deployment",
+    "absorb": "impact chirp with short noise ring",
+    "fracture": "sharp break with crackle",
+    "bust": "power-down split release"
+  }
+}

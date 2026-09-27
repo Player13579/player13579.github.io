@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Headshot Contact E v2 — comparison preview</title>
+  <link rel="stylesheet" href="./embed.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Headshot Contact E <span>Pro v2 / 旧比較版</span></h1>
+      <p>品質不合格：10種の主形がほぼ同じ斜線。技術再生の比較用。</p>
+    </header>
+    <div id="status" role="status" aria-live="polite">WebGPUを準備中</div>
+    <div class="matrices" aria-label="10種のWebGPU自動ループ比較">
+      <section class="panel dark">
+        <h2>H64 <span>DARK · 原寸</span></h2>
+        <div class="columns" aria-hidden="true"><span>HANDGUN</span><span>SMG</span><span>ASSAULT</span><span>SNIPER</span><span>TASER</span></div>
+        <canvas id="h64-dark" width="320" height="128" aria-label="H64暗背景、上HIP下AIMの10種"></canvas>
+        <div class="modes" aria-hidden="true"><span>HIP</span><span>AIM</span></div>
+      </section>
+      <section class="panel light">
+        <h2>H64 <span>LIGHT · 原寸</span></h2>
+        <div class="columns" aria-hidden="true"><span>HANDGUN</span><span>SMG</span><span>ASSAULT</span><span>SNIPER</span><span>TASER</span></div>
+        <canvas id="h64-light" width="320" height="128" aria-label="H64明背景、上HIP下AIMの10種"></canvas>
+        <div class="modes" aria-hidden="true"><span>HIP</span><span>AIM</span></div>
+      </section>
+      <section class="panel dark">
+        <h2>H32 <span>DARK · 32px直接投影</span></h2>
+        <div class="columns" aria-hidden="true"><span>HANDGUN</span><span>SMG</span><span>ASSAULT</span><span>SNIPER</span><span>TASER</span></div>
+        <canvas id="h32-dark" width="320" height="128" aria-label="H32暗背景、上HIP下AIMの10種"></canvas>
+        <div class="modes" aria-hidden="true"><span>HIP</span><span>AIM</span></div>
+      </section>
+      <section class="panel light">
+        <h2>H32 <span>LIGHT · 32px直接投影</span></h2>
+        <div class="columns" aria-hidden="true"><span>HANDGUN</span><span>SMG</span><span>ASSAULT</span><span>SNIPER</span><span>TASER</span></div>
+        <canvas id="h32-light" width="320" height="128" aria-label="H32明背景、上HIP下AIMの10種"></canvas>
+        <div class="modes" aria-hidden="true"><span>HIP</span><span>AIM</span></div>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="./embed.mjs"></script>
+</body>
+</html>
