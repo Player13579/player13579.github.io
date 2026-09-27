@@ -2745,6 +2745,8 @@ function disposeWebGPUTitlePrewarm(entry, reason = 'cancelled') {
   entry.failure ||= new Error(`WebGPU title prewarm ${reason}`);
   entry.rejectCancellation?.(entry.failure);
   entry.rejectCancellation = null;
+  try { entry.manifestAbortController?.abort(); } catch (_) {}
+  entry.manifestAbortController = null;
   if (entry.deadlineTimer !== null) window.clearTimeout(entry.deadlineTimer);
   entry.deadlineTimer = null;
   try { entry.markerOwner?.destroy?.(); } catch (_) {}
@@ -2771,7 +2773,8 @@ function startWebGPUTitlePrewarm() {
     state: 'pending', promise: null, renderer: null, device: null,
     rendererLease: null, textOwner: null, markerOwner: null,
     transferred: false, deadlineTimer: null, underlyingPending: true,
-    expectedPlayIntent: 0, rejectCancellation: null };
+    expectedPlayIntent: 0, rejectCancellation: null,
+    manifestAbortController: null, manifestRequest: null };
   webgpuTitlePrewarm.current = entry;
   markWebGPUTitlePrewarm('start', { generation: entry.generation,
     mapId: entry.selectedMapId });
@@ -2779,6 +2782,8 @@ function startWebGPUTitlePrewarm() {
     webgpuTitlePrewarm.generation === entry.generation &&
     !entry.transferred && !entry.invalidated && !document.hidden;
   const destroyLocal = () => {
+    try { entry.manifestAbortController?.abort(); } catch (_) {}
+    entry.manifestAbortController = null;
     try { entry.markerOwner?.destroy?.(); } catch (_) {}
     entry.markerOwner = null;
     try { entry.textOwner?.destroy?.(); } catch (_) {}
@@ -2790,8 +2795,18 @@ function startWebGPUTitlePrewarm() {
   const work = (async () => {
     const rendererApi = window.DvaWebGPURenderer;
     const runtimeApi = window.DvaWebGPUMainRuntime;
-    if (!rendererApi?.create || !runtimeApi?.createRendererLease)
+    const textApi = window.DvaWebGPUMainTextResources;
+    const markerApi = window.DvaWebGPUHeadMarkerMaterials;
+    if (!rendererApi?.create || !runtimeApi?.createRendererLease ||
+        !textApi?.create || !markerApi?.create)
       throw new Error('WebGPU title prewarm APIs unavailable');
+    // Start the exact manifest request consumed by text owner creation before
+    // renderer creation begins. The owner still uploads glyph pages lazily.
+    entry.manifestAbortController = typeof window.AbortController === 'function'
+      ? new window.AbortController() : null;
+    entry.manifestRequest = typeof textApi.preloadManifest === 'function'
+      ? textApi.preloadManifest({ signal: entry.manifestAbortController?.signal })
+      : null;
     const renderer = await rendererApi.create({ onFailure(error) {
       if (currentEntry()) disposeWebGPUTitlePrewarm(entry, 'failed');
       if (entry.transferred) setWebGPUMainFailure(error);
@@ -2812,11 +2827,8 @@ function startWebGPUTitlePrewarm() {
       if (entry.transferred && info?.reason !== 'destroyed')
         setWebGPUMainFailure(new Error(`Title prewarm device lost: ${info?.message || info?.reason || 'unknown'}`));
     }).catch(() => {});
-    const textApi = window.DvaWebGPUMainTextResources;
-    const markerApi = window.DvaWebGPUHeadMarkerMaterials;
-    if (!textApi?.create || !markerApi?.create)
-      throw new Error('WebGPU title prewarm resource APIs unavailable');
-    const textOwner = await textApi.create({ device: entry.device });
+    const textOwner = await textApi.create({ device: entry.device,
+      manifestRequest: entry.manifestRequest });
     if (!currentEntry() || textOwner?.device !== entry.device) {
       textOwner?.destroy?.();
       if (!currentEntry()) return;
@@ -18058,9 +18070,10 @@ function gunnerAimWebGPUScene(data = state.data) {
     now: state.frameNow || performance.now() };
 }
 
-// Canvas and the WebGPU candidate share one actor interpolation owner per RAF
-// frame. A second capture or draw of that frame must not integrate movement
-// twice; a replacement data snapshot in the same frame is rejected instead.
+// Frame bookkeeping and the WebGPU candidate share one actor interpolation
+// owner per RAF. A poll can replace the data snapshot while async GPU work is
+// pending; that candidate must wait for the next RAF, without integrating
+// movement twice or bringing down the renderer.
 let renderActorFrameOwner = null;
 function ensureRenderPlayersAdvanced(data) {
   const frame = state.frameNow;
@@ -18071,7 +18084,8 @@ function ensureRenderPlayersAdvanced(data) {
   if (owner && owner.generation === state.roomSessionGeneration &&
       owner.roomId === state.roomId && owner.frame === frame) {
     if (owner.data !== data)
-      throw new Error('Actor render frame changed data inside one frame');
+      throw Object.assign(new Error('Actor render frame changed data inside one frame'),
+        { code: 'DVA_WEBGPU_STALE_SCENE' });
     return false;
   }
   if (owner && owner.generation === state.roomSessionGeneration &&
