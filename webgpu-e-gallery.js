@@ -50,7 +50,7 @@
       version('emp-pro-p0', 'GPT Pro P0', 'emp-pro-r01/p0/index.html', 'emp-pro-r01/p0/src/emp-e.js', 'GPT Pro制作・P0ブロックアウト・再生可能・最終品質ではない・本編未採用', 'r0.1制作途中の凍結ブロックアウトです。原形を維持した比較再生用で、最終品質を示しません。GPU確認は限定状態のみ。', 'effect-H64')
     ] }
   ].map(group => ({ ...group, versions: group.versions.filter(v =>
-    v.status.includes('ユーザー品質採用') || v.status.includes('審査待ち')) }))
+    v.status.includes('ユーザー品質採用') || v.status.includes('ユーザー審査待ち')) }))
     .filter(group => group.versions.length > 0)
     .map(group => Object.freeze({ ...group, versions: Object.freeze(group.versions) }));
   const params = new URLSearchParams(location.search);
@@ -74,7 +74,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'review-ready-20260927-v22');
+    preview.searchParams.set('galleryRelease', 'review-ready-20260927-v23');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
