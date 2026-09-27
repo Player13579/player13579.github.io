@@ -16,13 +16,9 @@
     ] },
     { id: 'sunbeam-astra', title: 'サンビーム', versions: [
       version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', '品質合格・採用済み・本編接続待ち', '手元から伝播し対象へ届く最新版。Eとして採用済み。本編の実イベント接続は未完了。', 'effect-H64'),
-      version('sunbeam-astra-clean-v2', 'Astra v2', 'sunbeam-astra-clean-v2-preview.html', 'webgpu-sunbeam-astra-clean-v2.js', '試作・品質未受入・本編未採用', '独立設計の旧版。再生可能。品質と本編接続は未受入.', 'effect-H64'),
-      version('sunbeam-astra-clean-v1', 'Astra v1', 'sunbeam-astra-clean-v1-preview.html', 'webgpu-sunbeam-astra-clean-v1.js', '試作・品質未受入・本編未採用', '独立設計の初版。再生可能。品質と本編接続は未受入.', 'effect-H64')
     ] },
     { id: 'luck-astra', title: '幸運', versions: [
       version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', '品質合格・採用済み・本編接続待ち', '独立制作した最新版。Eとして採用済み。本編の実イベント接続は未完了。'),
-      version('luck-astra-clean-v3', 'Astra v3', 'luck-astra-v3-preview.html', 'webgpu-luck-astra-v3.js', '却下・再生可能・本編未採用', '独立設計の旧版。翼の見え方により却下。品質と本編接続は未受入.'),
-      version('luck-astra-clean-v2', 'Astra v2', 'luck-astra-v2-preview.html', 'webgpu-luck-astra-v2.js', '却下・再生可能・本編未採用', '独立設計の旧版。翼の見え方により却下。品質と本編接続は未受入.')
     ] },
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
       version('barrier-pro-r03', 'GPT Pro r0.3', 'barrier-pro-r03/preview.html', 'barrier-pro-r03/barrier-pro-renderer.mjs', '比較試作・品質不合格・本編未採用', 'GPT Pro独立改稿。4事象は実WebGPUで再生可能だが、原寸で小さく暗く、拡大しても硬い青い門状で透過面・局所発光・枝ごとの作用が不足するため改稿中。', 'effect-H64'),
