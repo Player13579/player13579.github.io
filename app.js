@@ -2378,7 +2378,7 @@ const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   submittedFrame: null, submittedSunbeamHands: new Map(),
   requestSerial: 0, lastSoundRequestSerial: 0,
   acquisitionCanvas: null, startToken: null };
-const webgpuStartupTiming = { nextAttemptId: 0, current: null };
+const webgpuStartupTiming = { nextAttemptId: 0, current: null, playClickedAtMs: null };
 // One title-scoped renderer owner can be transferred into the main runtime
 // after Play has established a game session and both canvas handoffs finish.
 const webgpuTitlePrewarm = { current: null, generation: 0, playIntent: 0,
@@ -7230,6 +7230,8 @@ function cancelCommonActionGestures({ onlyUnavailable = false } = {}) {
 function bindTitleNavigationEvents() {
   els.titlePlayButton.addEventListener("click", () => {
     if (els.titlePlayButton.disabled) return;
+    if (WEBGPU_MAIN_VERIFY_ROUTE)
+      webgpuStartupTiming.playClickedAtMs = performance.now();
     const prewarm = webgpuTitlePrewarm.current;
     const prewarmState = prewarm?.state || 'unavailable';
     if (document.body?.dataset) {
@@ -18353,7 +18355,9 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
   if (WEBGPU_MAIN_VERIFY_ROUTE) {
     const attemptId = ++webgpuStartupTiming.nextAttemptId;
     startupTiming = { attemptId, mapId: String(map.id),
-      roomSessionGeneration: sessionGeneration, marks: [], frozen: false };
+      roomSessionGeneration: sessionGeneration,
+      playClickedAtMs: webgpuStartupTiming.playClickedAtMs,
+      driverStartedAtMs: performance.now(), marks: [], frozen: false };
     webgpuStartupTiming.current = startupTiming;
     window.__dvaStartupPassTiming = startupTiming;
   }
@@ -18614,8 +18618,15 @@ function pumpWebGPUMainAppDriver() {
       rect: Object.freeze({ left: rect.left, top: rect.top,
         width: rect.width, height: rect.height }) });
     webgpuMainApp.visible = true;
-    if (webgpuStartupTiming.current && !webgpuStartupTiming.current.frozen)
-      webgpuStartupTiming.current.frozen = true;
+    if (webgpuStartupTiming.current && !webgpuStartupTiming.current.frozen) {
+      const trace = webgpuStartupTiming.current;
+      trace.firstVisibleAtMs = performance.now();
+      trace.playToFirstVisibleMs = Number.isFinite(trace.playClickedAtMs)
+        ? Math.max(0, trace.firstVisibleAtMs - trace.playClickedAtMs) : null;
+      trace.driverToFirstVisibleMs = Math.max(0,
+        trace.firstVisibleAtMs - trace.driverStartedAtMs);
+      trace.frozen = true;
+    }
     mainCanvas.style.pointerEvents = "auto";
     els.canvas.style.pointerEvents = WEBGPU_MAIN_OWNER ? "none" : "auto";
     if (webgpuMainApp.driver.commitSunbeamVisibleFrame(
@@ -23866,95 +23877,6 @@ function markerExplanationWebGPUScene(explanation, liveTarget, timestamp) {
   return { title: explanation.title, detail: explanation.detail,
     x: liveTarget?.x ?? explanation.x, y: liveTarget?.y ?? explanation.y,
     now: timestamp, startedAt: explanation.startedAt };
-}
-
-function drawMarkerExplanation(width, height) {
-  const explanation = state.markerExplanation;
-  if (!explanation) return;
-  const timestamp = performance.now();
-  // While contact remains, movement may switch markers. Once released, retain
-  // this snapshot so the explanation can be read without a live hit target.
-  if (explanation.pointerId !== null) refreshMarkerExplanationTarget(explanation.pointerId);
-  if (state.markerExplanation !== explanation) return;
-  // Bookkeeping no longer depends on hidden Canvas draws; keep the legacy
-  // hit cache empty so this renderer can never become an input fallback.
-  if (WEBGPU_MAIN_OWNER && !webgpuMainApp.visible) state.markerHitTargets.length = 0;
-  const activeHits = webgpuMainApp.visible
-    ? (webgpuMainSubmittedFrameCurrent() ? webgpuMainApp.submittedHits : null)
-    : state.markerHitTargets;
-  const liveTarget = activeHits?.find((entry) => entry.key === explanation.key);
-  if (!liveTarget && explanation.pointerId !== null) { clearMarkerExplanation(); return; }
-  const scene = markerExplanationWebGPUScene(explanation, liveTarget, timestamp);
-  const anchorX = scene.x;
-  const anchorY = scene.y;
-  const elapsed = scene.now - scene.startedAt;
-  const reveal = objectEffectEase(Math.min(1, elapsed / 130));
-  const alpha = reveal;
-  // Wrap by measured glyph width, retaining every character of the explanation.
-  const bubbleWidth = Math.max(1, Math.min(420, width - 20));
-  const textWidth = Math.max(1, bubbleWidth - 28);
-  const wrap = (text, font) => {
-    ctx.font = font;
-    const lines = [];
-    let line = "";
-    for (const character of String(text)) {
-      if (character === "\n") { lines.push(line); line = ""; continue; }
-      if (line && ctx.measureText(line + character).width > textWidth) {
-        lines.push(line); line = "";
-      }
-      line += character;
-    }
-    lines.push(line);
-    return lines;
-  };
-  const titleSize = 14, detailSize = 11;
-  const titleLines = wrap(explanation.title, `800 ${titleSize}px Segoe UI, sans-serif`);
-  const detailLines = wrap(explanation.detail, `600 ${detailSize}px Segoe UI, sans-serif`);
-  const titleLineHeight = titleSize * 1.3, lineHeight = detailSize * 1.4;
-  const bubbleHeight = 28 + titleLines.length * titleLineHeight + detailLines.length * lineHeight;
-  if (bubbleHeight > height - 20 || bubbleWidth < 218) {
-    showMarkerExplanationDom(explanation, anchorX, anchorY, width, height);
-    return;
-  }
-  clearMarkerExplanationDom();
-  const above = anchorY >= bubbleHeight + 38;
-  const bubbleX = clamp(anchorX - bubbleWidth / 2, 10, width - bubbleWidth - 10);
-  const bubbleY = clamp(above ? anchorY - bubbleHeight - 24 : anchorY + 24, 10, height - bubbleHeight - 10);
-  const pointerX = clamp(anchorX, bubbleX + 18, bubbleX + bubbleWidth - 18);
-  const pointerY = above ? bubbleY + bubbleHeight : bubbleY;
-
-  ctx.save();
-  ctx.globalAlpha = alpha;
-  // Fade without moving the clamped UI box beyond the canvas edge.
-  const background = ctx.createLinearGradient(bubbleX, bubbleY, bubbleX + bubbleWidth, bubbleY + bubbleHeight);
-  background.addColorStop(0, "rgba(8,26,40,0.48)");
-  background.addColorStop(1, "rgba(20,39,55,0.40)");
-  ctx.shadowColor = "rgba(34,211,238,0.42)";
-  ctx.shadowBlur = 18;
-  ctx.fillStyle = background;
-  ctx.strokeStyle = "rgba(125,211,252,0.92)";
-  ctx.lineWidth = 2;
-  roundRect(bubbleX, bubbleY, bubbleWidth, bubbleHeight, 8, true, true);
-  ctx.shadowBlur = 0;
-  ctx.beginPath();
-  ctx.moveTo(pointerX - 8, pointerY);
-  ctx.lineTo(anchorX, anchorY);
-  ctx.lineTo(pointerX + 8, pointerY);
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
-  ctx.textAlign = "left";
-  ctx.textBaseline = "middle";
-  ctx.font = `800 ${titleSize}px Segoe UI, sans-serif`;
-  ctx.fillStyle = "#f8fafc";
-  ctx.shadowColor = "rgba(0,0,0,.9)";
-  ctx.shadowBlur = 3;
-  titleLines.forEach((line, index) => ctx.fillText(line, bubbleX + 14, bubbleY + 10 + titleLineHeight * (index + .5), textWidth));
-  ctx.font = `600 ${detailSize}px Segoe UI, sans-serif`;
-  ctx.fillStyle = "#f1f5f9";
-  const detailTop = bubbleY + 18 + titleLines.length * titleLineHeight;
-  detailLines.forEach((line, index) => ctx.fillText(line, bubbleX + 14, detailTop + lineHeight * (index + .5), textWidth));
-  ctx.restore();
 }
 
 function gainEffectPlayer(effect) {

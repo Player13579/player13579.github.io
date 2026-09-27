@@ -240,24 +240,56 @@
       add('shapes', modules.shapes.create({ device: renderer.device,
         format: renderer.format }), 'enqueue');
       progress('field');
-      const fieldStartedAt = timing('field.invoke');
-      let fieldPromise;
+      // Start both shader/field builds on the same renderer before yielding.
+      // Convert each outcome to a fulfilled observer immediately so either
+      // rejection is handled while the other build is still in flight.
+      const startRequiredPass = (name, create) => {
+        const startedAt = timing(`${name}.invoke`);
+        let creation;
+        try {
+          creation = create();
+        } catch (error) {
+          timing(`${name}.rejected`, startedAt);
+          return Promise.resolve({ status: 'rejected', reason: error });
+        }
+        timing(`${name}.returned`, startedAt);
+        return Promise.resolve(creation).then(value => {
+          timing(`${name}.resolved`, startedAt);
+          return { status: 'fulfilled', value };
+        }, reason => {
+          timing(`${name}.rejected`, startedAt);
+          return { status: 'rejected', reason };
+        });
+      };
+      const fieldCreation = startRequiredPass('field', () =>
+        modules.field.create({ owner: renderer, map, image, patches }));
+      progress('sunbeam');
+      const sunbeamCreation = startRequiredPass('sunbeam', () =>
+        modules.sunbeamE.create({ renderer }));
+      const [fieldResult, sunbeamResult] = await Promise.all([
+        fieldCreation, sunbeamCreation]);
+      if (fieldResult.status === 'rejected' || sunbeamResult.status === 'rejected') {
+        // If the peer succeeded, it has not been published or adopted yet.
+        // Retire it here and preserve the original creation error.
+        const successful = [fieldResult, sunbeamResult]
+          .filter(result => result.status === 'fulfilled').map(result => result.value);
+        await Promise.allSettled(successful.map(value => Promise.resolve()
+          .then(() => value?.destroy?.())));
+        throw fieldResult.status === 'rejected' ? fieldResult.reason : sunbeamResult.reason;
+      }
+      const fieldPass = fieldResult.value;
+      const sunbeam = sunbeamResult.value;
       try {
-        fieldPromise = modules.field.create({ owner: renderer, map, image, patches });
+        add('map', fieldPass, 'enqueue');
+        add('sunbeamE', sunbeam, 'record');
       } catch (error) {
-        timing('field.rejected', fieldStartedAt);
+        // add() retires the pass whose registration failed. If map failed
+        // first, Sunbeam has not been handed to the registry yet.
+        if (!passes.map && !owned.includes(sunbeam)) {
+          try { await sunbeam?.destroy?.(); } catch (_) { /* Preserve registration error. */ }
+        }
         throw error;
       }
-      timing('field.returned-promise', fieldStartedAt);
-      let fieldPass;
-      try {
-        fieldPass = await fieldPromise;
-        timing('field.resolved', fieldStartedAt);
-      } catch (error) {
-        timing('field.rejected', fieldStartedAt);
-        throw error;
-      }
-      add('map', fieldPass, 'enqueue');
       const preSunbeamConstructorsStartedAt = timing('pre-sunbeam-constructors.begin');
       progress('passes');
       add('environmentE', modules.environmentE.create({ device: renderer.device,
@@ -332,27 +364,8 @@
           record: pass.record, ready: pass.ready, destroy: pass.destroy }), 'record');
       }
       timing('pre-sunbeam-constructors.end', preSunbeamConstructorsStartedAt);
-      progress('sunbeam');
-      const sunbeamStartedAt = timing('sunbeam.invoke');
-      let sunbeamPromise;
-      try {
-        sunbeamPromise = modules.sunbeamE.create({ renderer });
-      } catch (error) {
-        timing('sunbeam.threw', sunbeamStartedAt);
-        throw error;
-      }
-      timing('sunbeam.returned', sunbeamStartedAt);
-      let sunbeam;
-      try {
-        sunbeam = await sunbeamPromise;
-        timing('sunbeam.resolved', sunbeamStartedAt);
-      } catch (error) {
-        timing('sunbeam.rejected', sunbeamStartedAt);
-        throw error;
-      }
       const postSunbeamConstructorsStartedAt = timing('post-sunbeam-constructors.begin');
       progress('passes-after-sunbeam');
-      add('sunbeamE', sunbeam, 'record');
       add('fighterEnergyE', modules.fighterEnergyE.create(), 'record');
       const hoverSprint = modules.hoverSprintE.create();
       add('hoverSprintE', Object.freeze({ device: renderer.device,
