@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barrier Pro r0.1 — WebGPU preview</title>
+<style>*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#10141c}#stage{position:relative;width:980px;height:620px;overflow:hidden;background:#10141c}canvas{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:256px;height:192px;display:block;image-rendering:pixelated}.runtime{display:none!important}</style></head>
+<body><main id="stage"><canvas id="gpu" width="256" height="192" aria-label="Barrier Pro r0.1 WebGPU effect"></canvas>
+<div class="runtime" aria-hidden="true">
+<select id="branch"><option>create</option><option>absorb</option><option>fracture</option><option>bust</option></select><select id="height"><option value="64" selected>H64</option></select><select id="bg"><option value="0" selected>Dark</option></select><select id="yaw"><option value="0" selected>0</option></select><input id="core" type="checkbox" checked><input id="time" type="range" value="120"><output id="timeText">120ms</output><button id="play"></button><button id="sound"></button><button id="last"></button><button id="after"></button><button id="read"></button><pre id="status"></pre>
+</div></main>
+<script type="module" src="./barrier-pro-gallery.mjs"></script><script type="module" src="./barrier-pro-r01-preview.mjs"></script>
+</body></html>
