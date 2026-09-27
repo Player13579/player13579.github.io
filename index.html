@@ -14,7 +14,7 @@
     <meta property="og:image" content="assets/site-thumbnail-v497.png">
     <link rel="preload" as="image" href="assets/title-hero-v466.png?v=core-icons-restart-v707" fetchpriority="high">
     <style>html,body,.start-screen{background:#17283d}</style>
-  <link rel="stylesheet" href="styles.css?v=webgpu-input-surface-v2">
+  <link rel="stylesheet" href="styles.css?v=webgpu-input-surface-v2&amp;startup=first-visible-deadline-v1">
   </head>
   <body>
     <section id="startScreen" class="start-screen" data-ui-region="home-screen" aria-label="ホーム画面">
@@ -294,6 +294,10 @@
           </section>
           <canvas id="gameCanvas" width="980" height="620" tabindex="-1" aria-hidden="true"></canvas>
           <canvas id="webgpuMainCanvas" class="webgpu-main-canvas" width="980" height="620" tabindex="-1" role="img" aria-label="ゲームマップ" aria-describedby="gameCanvasStatusSummary"></canvas>
+          <div id="webgpuMainFailure" class="webgpu-main-failure" role="alert">
+            <p>描画を開始できませんでした。再読み込みして、もう一度プレイしてください。</p>
+            <button id="webgpuMainRetryButton" type="button">再読み込み</button>
+          </div>
           <div id="operatorSelectionSettings" class="preparation-inline-settings" aria-label="名前の直接入力" hidden>
             <div data-preparation-editor="name" hidden><label for="nameInput" class="visually-hidden">名前</label><input id="nameInput" maxlength="16" autocomplete="nickname" placeholder="プレイヤー" aria-describedby="namePolicy"><small id="namePolicy" class="visually-hidden">名前は出撃準備中に変更できます。</small><small id="soloNameGuidance" class="visually-hidden" aria-live="polite" hidden>名前を入力したら、本のアイコンから「戦術いろは」へ戻り、訓練の「開始」を押してください。</small></div>
             <select id="skinSelect" hidden aria-hidden="true" tabindex="-1"><option value="hood">フィリア</option><option value="blue-dress">ソフィア</option></select>
@@ -751,6 +755,6 @@
     <script src="grenade-impact-sfx.js?v=webgpu-main-bootstrap-v31"></script>
     <script src="object-space-collision.js?v=webgpu-main-bootstrap-v5"></script>
     <script src="webgpu-game-input-surface.js?v=webgpu-input-surface-v1"></script>
-    <script src="app.js?v=webgpu-pure-slices-v94&amp;patch=first-frame-phase-marks-v1"></script>
+    <script src="app.js?v=webgpu-pure-slices-v94&amp;patch=first-frame-phase-marks-v1&amp;startup=first-visible-deadline-v1"></script>
 </body>
 </html>

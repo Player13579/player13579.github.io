@@ -2087,7 +2087,37 @@ html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-owner="
 }
 
 html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-error] .board-wrap::after {
-  content: "WebGPU描画を開始できませんでした";
+  content: none;
+}
+
+.webgpu-main-failure {
+  display: none;
+}
+
+html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-error] .webgpu-main-failure {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: #17283d;
+  color: #e8f6ff;
+  text-align: center;
+  font: 600 clamp(13px, 2.1cqw, 20px)/1.6 system-ui, sans-serif;
+}
+
+.webgpu-main-failure p {
+  margin: 0;
+  max-width: 32em;
+}
+
+.webgpu-main-failure button {
+  min-height: 44px;
+  padding: 10px 24px;
 }
 
 /* The WebGPU presentation surface shares the board's logical dimensions.

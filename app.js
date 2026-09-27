@@ -2373,7 +2373,7 @@ const WEBGPU_MAIN_OWNER = true;
 const WEBGPU_MAIN_VERIFY_ROUTE = IS_VERIFICATION_MODE && URL_PARAMETERS.get("webgpuMain") === "1";
 const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   generation: 0, visible: false, submittedHits: null, failed: false,
-  preDriverPendingAt: 0,
+  presentationPendingAt: null, presentationPendingKey: '', presentationTimer: null,
   submittedPreparationHits: null, submittedMinimapBounds: null,
   submittedFrame: null, submittedSunbeamHands: new Map(),
   requestSerial: 0, lastSoundRequestSerial: 0,
@@ -7258,6 +7258,9 @@ function cancelCommonActionGestures({ onlyUnavailable = false } = {}) {
 }
 
 function bindTitleNavigationEvents() {
+  document.getElementById('webgpuMainRetryButton')?.addEventListener('click', () => {
+    if (webgpuMainApp.failed) window.location.reload();
+  });
   els.titlePlayButton.addEventListener("click", () => {
     if (els.titlePlayButton.disabled) return;
     if (WEBGPU_MAIN_VERIFY_ROUTE) {
@@ -18282,11 +18285,63 @@ function webgpuMainIncompleteReason(captured, requiredStages) {
 }
 
 function setWebGPUMainFailure(error) {
+  if (webgpuMainApp.failed) return;
   const message = error?.message || String(error);
+  stopWebGPUMainPresentationWatchdog();
   webgpuMainApp.failed = true;
   document.body.dataset.webgpuMainError = message;
   setWebGPUMainPendingDiagnostic('failed');
   suspendWebGPUMainAppDriver({ destroy: true });
+}
+
+function stopWebGPUMainPresentationWatchdog() {
+  if (webgpuMainApp.presentationTimer != null)
+    window.clearTimeout(webgpuMainApp.presentationTimer);
+  webgpuMainApp.presentationTimer = null;
+  webgpuMainApp.presentationPendingAt = null;
+  webgpuMainApp.presentationPendingKey = '';
+}
+
+function checkWebGPUMainPresentationDeadline() {
+  if (webgpuMainApp.failed || state.screen !== 'game' || document.hidden ||
+      webgpuMainApp.visible) {
+    stopWebGPUMainPresentationWatchdog();
+    return !webgpuMainApp.failed;
+  }
+  const now = performance.now();
+  const key = JSON.stringify([state.roomId, state.roomSessionGeneration,
+    state.data?.map?.id]);
+  if (webgpuMainApp.presentationPendingAt == null ||
+      webgpuMainApp.presentationPendingKey !== key) {
+    webgpuMainApp.presentationPendingAt = now;
+    webgpuMainApp.presentationPendingKey = key;
+  }
+  // One deadline spans map/viewport waits, creation, and the first accepted
+  // visible frame. Publishing a driver or alternating retry reasons is not
+  // presentation progress and must not renew this deadline.
+  if (now - webgpuMainApp.presentationPendingAt >= 75000) {
+    const pending = document.body?.dataset?.webgpuMainPending || 'unknown';
+    const incomplete = document.body?.dataset?.webgpuMainIncomplete || '';
+    const rootSize = independentGameplayViewportRootSize();
+    document.body.dataset.webgpuMainFailureDetail = JSON.stringify({
+      pending, incomplete, elapsedMs: Math.round(now - webgpuMainApp.presentationPendingAt),
+      viewport: { width: window.innerWidth, height: window.innerHeight,
+        visualWidth: window.visualViewport?.width, visualHeight: window.visualViewport?.height,
+        scale: window.visualViewport?.scale, rootWidth: rootSize.width,
+        rootHeight: rootSize.height },
+      driver: webgpuMainApp.driver?.state || null });
+    setWebGPUMainFailure(new Error(`WebGPU presentation timed out at ${pending}${
+      incomplete ? ` (${incomplete})` : ''}`));
+    return false;
+  }
+  // Independent of RAF and draw promises: a stalled frame preparation cannot
+  // strand the loading UI. Hidden time and a different room get a fresh budget.
+  if (webgpuMainApp.presentationTimer == null)
+    webgpuMainApp.presentationTimer = window.setTimeout(() => {
+      webgpuMainApp.presentationTimer = null;
+      checkWebGPUMainPresentationDeadline();
+    }, 1000);
+  return true;
 }
 
 function webgpuMainSubmittedFrameCurrent() {
@@ -18515,22 +18570,13 @@ function pumpWebGPUMainAppDriver() {
   const sample = visibleGameplayViewportSample();
   const image = webgpuMainReadyImage(data);
   if (state.screen !== "game") {
-    webgpuMainApp.preDriverPendingAt = 0;
+    stopWebGPUMainPresentationWatchdog();
     setWebGPUMainPendingDiagnostic('waiting:game-screen');
     if (webgpuMainApp.visible || webgpuMainApp.driver)
       suspendWebGPUMainAppDriver();
     return;
   }
-  if (document.hidden) webgpuMainApp.preDriverPendingAt = 0;
-  else if (!webgpuMainApp.driver && !webgpuMainApp.startPending) {
-    const now = performance.now();
-    if (!webgpuMainApp.preDriverPendingAt) webgpuMainApp.preDriverPendingAt = now;
-    else if (now - webgpuMainApp.preDriverPendingAt >= 75000) {
-      setWebGPUMainFailure(new Error(`WebGPU waiting timed out at ${
-        document.body?.dataset?.webgpuMainPending || 'unknown'}`));
-      return;
-    }
-  } else webgpuMainApp.preDriverPendingAt = 0;
+  if (!checkWebGPUMainPresentationDeadline()) return;
   if (!sample) {
     setWebGPUMainPendingDiagnostic('waiting:viewport-sample');
     if (webgpuMainApp.visible || webgpuMainApp.driver)
@@ -18603,6 +18649,9 @@ function pumpWebGPUMainAppDriver() {
       markWebGPUStartupStage(name, durationMs);
     } } : {}) }).then(receipt => {
     markWebGPUStartupStage('appReceipt');
+    // Failure/cancellation owns the pending message too. A late scheduler
+    // result must not replace the terminal diagnosis or expose old pixels.
+    if (webgpuMainApp.failed || generation !== webgpuMainApp.generation) return;
     if (!receipt?.drawn) {
       const reason = String(receipt?.reason || 'not-submitted');
       recordWebGPUStartupIncompleteFrame(reason);
@@ -18685,6 +18734,7 @@ function pumpWebGPUMainAppDriver() {
       rect: Object.freeze({ left: rect.left, top: rect.top,
         width: rect.width, height: rect.height }) });
     webgpuMainApp.visible = true;
+    stopWebGPUMainPresentationWatchdog();
     if (WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current &&
         !webgpuStartupTiming.current.frozen) {
       const trace = webgpuStartupTiming.current;
@@ -18764,11 +18814,13 @@ function pumpWebGPUMainAppDriver() {
 if (WEBGPU_MAIN_OWNER) {
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
+      stopWebGPUMainPresentationWatchdog();
       invalidateWebGPUTitlePrewarm('cancelled');
       suspendWebGPUMainAppDriver();
     }
   });
   window.addEventListener("pagehide", () => {
+    stopWebGPUMainPresentationWatchdog();
     invalidateWebGPUTitlePrewarm('cancelled');
     suspendWebGPUMainAppDriver({ destroy: true });
   });
@@ -27857,6 +27909,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     if (destroyed) return retirement || Promise.resolve();
     destroyed = true;
     lifecycleGeneration += 1;
+    // Registry retirement can await shader/asset promises. Invalidate the
+    // submission lease synchronously, before waiting for any GPU cleanup.
+    runtime?.suspend();
     registry?.passes?.sunbeamE?.stopAudio?.();
     retirement = (async () => {
       try { scene?.destroy(); } finally {
