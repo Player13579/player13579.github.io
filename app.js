@@ -2377,7 +2377,8 @@ const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   submittedPreparationHits: null, submittedMinimapBounds: null,
   submittedFrame: null, submittedSunbeamHands: new Map(),
   requestSerial: 0, lastSoundRequestSerial: 0,
-  acquisitionCanvas: null, startToken: null };
+  acquisitionCanvas: null, startToken: null,
+  unstableLayoutRetryTimer: null, unstableLayoutRetryGeneration: -1 };
 const webgpuStartupTiming = { nextAttemptId: 0, current: null, playClickedAtMs: null,
   firstPumpAfterPlayAtMs: null };
 function markWebGPUStartupStage(name, durationMs = null) {
@@ -2413,6 +2414,86 @@ function recordWebGPUStartupIncompleteFrame(reason) {
   reasons[name] = (reasons[name] || 0) + 1;
   trace.lastIncompleteFrame = Object.freeze({ reason: name,
     atMs: performance.now(), count: reasons[name] });
+  if (name === 'unstable-layout' && !trace.firstRetryTiming) {
+    trace.firstRetryTiming = { startedAtMs: performance.now(), events: [],
+      overflow: 0, completedAtMs: null };
+  }
+}
+function recordWebGPUFirstRetryEvent(kind, reason = null, timestamp = null) {
+  if (!WEBGPU_MAIN_VERIFY_ROUTE) return null;
+  const trace = webgpuStartupTiming.current;
+  const retry = trace?.firstRetryTiming;
+  if (!retry || retry.completedAtMs != null) return null;
+  const observedAtMs = performance.now();
+  const atMs = kind === 'raf' ? observedAtMs
+    : Number.isFinite(timestamp) ? timestamp : observedAtMs;
+  const sample = visibleGameplayViewportSample();
+  const entry = Object.freeze({ kind, ...(reason ? { reason } : {}), atMs,
+    ...(kind === 'raf' && Number.isFinite(timestamp)
+      ? { rafTimestampMs: timestamp } : {}),
+    hidden: Boolean(document.hidden),
+    viewport: sample ? Object.freeze(Object.fromEntries(['width', 'height',
+      'visualWidth', 'visualHeight', 'rootWidth', 'rootHeight']
+      .map(key => [key, sample[key]]))) : null,
+    screen: state.screen, fieldFrameState:
+      document.documentElement?.dataset?.fieldFrameState ?? null,
+    roomId: state.roomId ?? null,
+    roomSessionGeneration: state.roomSessionGeneration ?? null });
+  if (retry.events.length < 180) retry.events.push(entry);
+  else retry.overflow++;
+  return atMs;
+}
+const WEBGPU_MAIN_UNSTABLE_RETRY_DELAY_MS = 16;
+const WEBGPU_MAIN_RETRY_VIEWPORT_KEYS = Object.freeze(['width', 'height',
+  'visualWidth', 'visualHeight', 'rootWidth', 'rootHeight',
+  'visualViewportScale', 'editableViewportFocus', 'visualInsetReady']);
+function clearWebGPUMainUnstableLayoutRetry() {
+  const pending = webgpuMainApp.unstableLayoutRetryTimer;
+  if (!pending) return false;
+  window.clearTimeout(pending.timerId);
+  webgpuMainApp.unstableLayoutRetryTimer = null;
+  return true;
+}
+function scheduleWebGPUMainUnstableLayoutRetry({ generation, requestSerial,
+  roomId, sessionGeneration, phase, snapshotRoomId, mapId, sample,
+  connectionMode, dpr } = {}) {
+  if (!WEBGPU_MAIN_OWNER || webgpuMainApp.failed || webgpuMainApp.visible ||
+      webgpuMainApp.unstableLayoutRetryTimer ||
+      webgpuMainApp.unstableLayoutRetryGeneration === generation ||
+      !sample || document.hidden || state.screen !== 'game' ||
+      generation !== webgpuMainApp.generation ||
+      requestSerial !== webgpuMainApp.requestSerial || roomId !== state.roomId ||
+      sessionGeneration !== state.roomSessionGeneration ||
+      phase !== state.data?.phase || snapshotRoomId !== state.data?.roomId ||
+      mapId !== state.data?.map?.id ||
+      connectionMode !== (document.documentElement?.dataset?.connectionMode || '') ||
+      dpr !== (window.devicePixelRatio || 1)) return false;
+  const pending = { generation, requestSerial, roomId, sessionGeneration,
+    phase, snapshotRoomId, mapId, sample, connectionMode, dpr, timerId: 0 };
+  webgpuMainApp.unstableLayoutRetryGeneration = generation;
+  webgpuMainApp.unstableLayoutRetryTimer = pending;
+  pending.timerId = window.setTimeout(() => {
+    if (webgpuMainApp.unstableLayoutRetryTimer !== pending) return;
+    webgpuMainApp.unstableLayoutRetryTimer = null;
+    const currentSample = visibleGameplayViewportSample();
+    if (!WEBGPU_MAIN_OWNER || webgpuMainApp.failed || webgpuMainApp.visible ||
+        document.hidden || state.screen !== 'game' ||
+        pending.generation !== webgpuMainApp.generation ||
+        pending.requestSerial !== webgpuMainApp.requestSerial ||
+        pending.roomId !== state.roomId ||
+        pending.sessionGeneration !== state.roomSessionGeneration ||
+        pending.phase !== state.data?.phase ||
+        pending.snapshotRoomId !== state.data?.roomId ||
+        pending.mapId !== state.data?.map?.id ||
+        pending.connectionMode !==
+          (document.documentElement?.dataset?.connectionMode || '') ||
+        pending.dpr !== (window.devicePixelRatio || 1) || !currentSample ||
+        WEBGPU_MAIN_RETRY_VIEWPORT_KEYS.some(key =>
+          pending.sample[key] !== currentSample[key])) return;
+    recordWebGPUFirstRetryEvent('timer-pump');
+    pumpWebGPUMainAppDriver();
+  }, WEBGPU_MAIN_UNSTABLE_RETRY_DELAY_MS);
+  return true;
 }
 // One title-scoped renderer owner can be transferred into the main runtime
 // after Play has established a game session and both canvas handoffs finish.
@@ -18215,6 +18296,7 @@ function flushLiveSunbeamSounds(submittedHands = null, frameId = 0) {
 
 function suspendWebGPUMainAppDriver({ destroy = false } = {}) {
   if (!WEBGPU_MAIN_OWNER) return;
+  clearWebGPUMainUnstableLayoutRetry();
   if (webgpuMainApp.startToken) webgpuMainApp.startToken.cancelled = true;
   webgpuMainApp.generation += 1;
   webgpuMainApp.lastSoundRequestSerial = webgpuMainApp.requestSerial;
@@ -18647,9 +18729,10 @@ function pumpWebGPUMainAppDriver() {
       state.screen === 'game')
     webgpuStartupTiming.firstPumpAfterPlayAtMs = performance.now();
   markWebGPUStartupStage('rafPumpEntry');
-  if (!WEBGPU_MAIN_OWNER) return;
+  if (!WEBGPU_MAIN_OWNER) { recordWebGPUFirstRetryEvent('pump-exit', 'not-owner'); return; }
   if (webgpuMainApp.failed) {
     setWebGPUMainPendingDiagnostic('failed');
+    recordWebGPUFirstRetryEvent('pump-exit', 'failed');
     return;
   }
   const data = state.data;
@@ -18660,13 +18743,15 @@ function pumpWebGPUMainAppDriver() {
     setWebGPUMainPendingDiagnostic('waiting:game-screen');
     if (webgpuMainApp.visible || webgpuMainApp.driver)
       suspendWebGPUMainAppDriver();
+    recordWebGPUFirstRetryEvent('pump-exit', 'game-screen');
     return;
   }
-  if (!checkWebGPUMainPresentationDeadline()) return;
+  if (!checkWebGPUMainPresentationDeadline()) { recordWebGPUFirstRetryEvent('pump-exit', 'presentation-deadline'); return; }
   if (!sample) {
     setWebGPUMainPendingDiagnostic('waiting:viewport-sample');
     if (webgpuMainApp.visible || webgpuMainApp.driver)
       suspendWebGPUMainAppDriver();
+    recordWebGPUFirstRetryEvent('pump-exit', 'viewport-sample');
     return;
   }
   if (!image) {
@@ -18676,6 +18761,7 @@ function pumpWebGPUMainAppDriver() {
         (candidate.naturalWidth !== map.width ||
          candidate.naturalHeight !== map.height)) {
       setWebGPUMainFailure(new Error("Required map image dimensions do not match the active map"));
+      recordWebGPUFirstRetryEvent('pump-exit', 'map-image-dimensions-invalid');
       return;
     }
     setWebGPUMainPendingDiagnostic(!map ? 'waiting:map-data' : !candidate
@@ -18683,12 +18769,15 @@ function pumpWebGPUMainAppDriver() {
         : 'waiting:map-image-dimensions');
     if (webgpuMainApp.visible || webgpuMainApp.driver)
       suspendWebGPUMainAppDriver();
+    recordWebGPUFirstRetryEvent('pump-exit', !map ? 'map-data' : !candidate
+      ? 'map-image' : !candidate.complete ? 'map-image-load' : 'map-image-dimensions');
     return;
   }
   if (!window.DvaWebGPUViewport?.validSample?.(sample)) {
     setWebGPUMainPendingDiagnostic('waiting:stable-viewport');
     if (webgpuMainApp.visible || webgpuMainApp.driver)
       suspendWebGPUMainAppDriver();
+    recordWebGPUFirstRetryEvent('pump-exit', 'stable-viewport');
     return;
   }
   if (webgpuMainApp.driver && webgpuMainApp.mapId !== data.map.id)
@@ -18703,6 +18792,7 @@ function pumpWebGPUMainAppDriver() {
           setWebGPUMainFailure(error);
         }).finally(() => { webgpuMainApp.startPending = null; });
     }
+    recordWebGPUFirstRetryEvent('pump-exit', 'startup-pending');
     return;
   }
   webgpuMainApp.driver.resume();
@@ -18717,6 +18807,7 @@ function pumpWebGPUMainAppDriver() {
       rect.width <= 0 || rect.height <= 0) {
     setWebGPUMainPendingDiagnostic('waiting:target-geometry');
     suspendWebGPUMainAppDriver();
+    recordWebGPUFirstRetryEvent('pump-exit', 'target-geometry');
     return;
   }
   const generation = webgpuMainApp.generation;
@@ -18731,6 +18822,11 @@ function pumpWebGPUMainAppDriver() {
   const camera = { ...cameraFor(data, 980, 620, worldZoomFor(data)),
     zoom: worldZoomFor(data) };
   markWebGPUStartupStage('driverDrawEntry');
+  clearWebGPUMainUnstableLayoutRetry();
+  recordWebGPUFirstRetryEvent('draw-request');
+  if (WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current?.firstRetryTiming &&
+      webgpuStartupTiming.current.firstRetryTiming.completedAtMs == null)
+    webgpuStartupTiming.current.firstRetryTiming.completedAtMs = performance.now();
   void webgpuMainApp.driver.draw({ data, sample, rect, camera,
     dpr, ...(WEBGPU_MAIN_VERIFY_ROUTE || !webgpuMainApp.visible ? { onTiming: (name, durationMs) => {
       markWebGPUStartupStage(name, durationMs);
@@ -18743,6 +18839,10 @@ function pumpWebGPUMainAppDriver() {
       const reason = String(receipt?.reason || 'not-submitted');
       recordWebGPUStartupIncompleteFrame(reason);
       setWebGPUMainPendingDiagnostic(`frame:${reason}`);
+      if (reason === 'unstable-layout')
+        scheduleWebGPUMainUnstableLayoutRetry({ generation, requestSerial,
+          roomId, sessionGeneration, phase, snapshotRoomId, mapId,
+          sample, connectionMode, dpr });
       return;
     }
     // A poll may publish a newer snapshot while this WebGPU frame prepares.
@@ -18824,6 +18924,7 @@ function pumpWebGPUMainAppDriver() {
         .map(key => [key, sample[key]]))),
       rect: Object.freeze({ left: rect.left, top: rect.top,
         width: rect.width, height: rect.height }) });
+    clearWebGPUMainUnstableLayoutRetry();
     webgpuMainApp.visible = true;
     stopWebGPUMainPresentationWatchdog();
     if (WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current &&
@@ -18923,6 +19024,7 @@ if (WEBGPU_MAIN_OWNER) {
 }
 
 function drawLoop(timestamp = 0, engineDelta = 0) {
+  recordWebGPUFirstRetryEvent('raf', null, timestamp);
   state.frameNow = timestamp || performance.now();
   sunbeamLive.submitted.clear();
   sunbeamLive.drawnIds.clear();
