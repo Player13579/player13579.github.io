@@ -34,6 +34,12 @@
     { id: 'mana-astra', title: 'マナ獲得', versions: [version('mana-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '実WebGPUの自動ループを確認。滑らかさ、実寸の形と聴感が品質基準に未達。')] },
     { id: 'emp-astra', title: 'EMP', versions: [version('emp-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-emp-astra-zero-preview.html', 'webgpu-emp-astra-zero-preview.js', '試作・品質未達・本編未採用', '充填・放出・共振・相殺・蓄積を実WebGPUで再生。実寸の形と聴感が品質基準に未達。', 'effect-H64')] },
     { id: 'barrier-astra', title: 'バリア', versions: [
+      version('barrier-astra-review-fixes', 'Astra r4 review-fixes', 'webgpu-barrier-astra-zero-v4reviewfix-preview.html', 'webgpu-barrier-astra-zero-v4reviewfix-preview.js', '改稿試作・品質未受入・本編未採用', 'r4 optics1の4事象を実WebGPUで再生。破壊時の奥膜の遅延破断とreduced motionを含む改稿候補。全寿命・実寸・聴感の最終受入前。', 'effect-H64'),
+      version('barrier-astra-optics1', 'Astra r4 optics1', 'webgpu-barrier-astra-zero-v4optics1-preview.html', 'webgpu-barrier-astra-zero-v4optics1-preview.js', '試作・品質未受入・本編未採用', 'r4の局所発光・透過改稿。4事象を実WebGPUで再生。原寸の可読性、全寿命、聴感は未受入。', 'effect-H64'),
+      version('barrier-astra-r4', 'Astra r4', 'webgpu-barrier-astra-zero-v3r4-preview.html', 'webgpu-barrier-astra-zero-v3r4-preview.js', '試作・品質未受入・本編未採用', 'r4形状・層の4事象を実WebGPUで再生。初期画面で暗く形が読めず品質未受入。', 'effect-H64'),
+      version('barrier-astra-r3', 'Astra r3', 'webgpu-barrier-astra-zero-v3r3-preview.html', 'webgpu-barrier-astra-zero-v3r3-preview.js', '試作・品質未受入・本編未採用', 'r3の支持配置を含む4事象を実WebGPUで再生。平坦な高不透明面と暗い接続部が残り品質未受入。', 'effect-H64'),
+      version('barrier-astra-r2', 'Astra r2', 'webgpu-barrier-astra-zero-v3r2-preview.html', 'webgpu-barrier-astra-zero-v3r2-preview.js', '試作・品質未受入・本編未採用', 'r2の4事象を実WebGPUで再生。独立改稿履歴として保持し、品質・本編接続は未受入。', 'effect-H64'),
+      version('barrier-astra-r1', 'Astra r1', 'webgpu-barrier-astra-zero-v3-preview.html', 'webgpu-barrier-astra-zero-v3-preview.js', '試作・品質未受入・本編未採用', '独立設計r1の4事象を実WebGPUで連続再生。初稿の履歴で、品質・本編接続は未受入。', 'effect-H64'),
       version('barrier-astra-zero-v2', 'Astraゼロ設計 v2', 'webgpu-barrier-astra-zero-v2-preview.html', 'webgpu-barrier-astra-zero-v2-preview.js', '試作・品質未達・本編未採用', '包囲面の成立・吸収・耐久破壊・バスト解除を実WebGPUで再生。比較画面ではキャラを表示しません。広い白飛びと4枝の形状差が品質基準に未達。', 'effect-H64'),
       version('barrier-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-barrier-astra-zero-preview.html', 'webgpu-barrier-astra-zero-preview.js', '試作・品質未達・本編未採用', '成立・持続・吸収・耐久破壊・バスト解除を実WebGPUで再生。実寸の形と聴感が品質基準に未達。')
     ] }
