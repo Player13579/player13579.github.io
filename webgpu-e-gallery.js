@@ -52,7 +52,7 @@
       version('attendance-pro-r01', 'GPT Pro r0.1', 'attendance-pro-r01/index.html', 'attendance-pro-r01/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '単独プレビューでWebGPU自動ループを確認。通常参加と偽参加の演出同一性が未解決のため、本編には接続していません。', 'effect-H64', 1, true)
     ] },
     { id: 'shoot-pro', title: '射撃（GPT Pro）', versions: [
-      version('shoot-pro-r03', 'GPT Pro r0.3', 'shoot-pro-r03/index.html', 'shoot-pro-r03/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器の自動巡回と暗明を実WebGPUで確認。明背景SMGの初期発光とスナイパーの白潰れが品質保留点です。', 'effect-H64', 1, true),
+      version('shoot-pro-r03', 'GPT Pro r0.3', 'shoot-pro-r03/index.html', 'shoot-pro-r03/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器の自動巡回と暗明を実WebGPUで確認。SMG初動の主形、全寿命とSFXの品質確認が残ります。白飛び自体は棄却理由にしません。', 'effect-H64', 1, true),
       version('shoot-pro-r02', 'GPT Pro r0.2', 'shoot-pro-r02/index.html', 'shoot-pro-r02/src/renderer.js', 'GPT Pro旧版・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器と暗明を自動ループする旧版。単独WebGPU活動中画素を確認しましたが、品質と音は未受入です。', 'effect-H64', 1, true),
       version('shoot-pro-r01', 'GPT Pro r0.1', 'shoot-pro-r01/index.html', 'shoot-pro-r01/src/renderer.js', 'GPT Pro旧版・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '原本のWGSL予約語だけを意味不変に改名した互換版。5武器の暗明自動ループを実WebGPUで確認しましたが、品質と音は未受入です。', 'effect-H64', 1, true)
     ] },
@@ -63,7 +63,7 @@
       version('headshot-pro-v01', 'GPT Pro v1', 'headshot-pro-v01/index.html', 'headshot-pro-v01/src/renderer.mjs', 'GPT Pro旧版・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器×HIP/AIMのH64を実WebGPUで並列自動ループ再生。全10種の描画を確認しましたが、視覚品質と音は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
-      version('barrier-pro-r06', 'GPT Pro r0.6', 'barrier-pro-r06/embed.html', 'barrier-pro-r06/barrier-pro-renderer.mjs', 'GPT Pro旧版・技術互換adapterで実GPU再生可能・品質不合格・SFX聴感未確認・本編未採用', '原本の合成テクスチャ型不一致をadapterで修復して四事象を自動再生。明背景の面が白く広く潰れるため品質不合格です。', 'effect-H64', 1, true),
+      version('barrier-pro-r06', 'GPT Pro r0.6', 'barrier-pro-r06/embed.html', 'barrier-pro-r06/barrier-pro-renderer.mjs', 'GPT Pro旧版・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '原本の合成テクスチャ型不一致をadapterで修復して四事象を自動再生。白飛びは棄却理由にせず、四事象の造形・作用とSFXの品質確認を残します。', 'effect-H64', 1, true),
       version('barrier-pro-r05', 'GPT Pro r0.5', 'barrier-pro-r05/embed.html', 'barrier-pro-r05/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質不合格・SFX聴感未確認・本編未採用', '吸収中のH64保護空域が小さな不透明のカップ状へ潰れるため品質不合格。既存設計の自動ループWebGPU比較版で、本編には接続していません。', 'effect-H64', 1, true),
       version('barrier-pro-r04', 'GPT Pro r0.4', 'barrier-pro-r04/index.html', 'barrier-pro-r04/preview.mjs', 'GPT Pro制作・実GPU再生可能・品質未達・SFX聴感未確認・本編未採用', 'GPT Proによる巻膜案。明背景では淡く、カフ状に見える懸念があります。全寿命の視覚品質と音は未受入です。', 'effect-H64', 1, true),
       version('barrier-pro-r03', 'GPT Pro r0.3', 'barrier-pro-r03/preview.html', 'barrier-pro-r03/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質未達・本編未採用', 'GPT Pro独立改稿。4事象を実WebGPUで再生できます。以前の造形高評価は撤回され、保護面と発光の品質は未達です。', 'effect-H64', 1, true),
@@ -111,7 +111,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v36');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v37');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
