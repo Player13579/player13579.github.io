@@ -51,6 +51,7 @@
       version('barrier-astra-zero-v1', 'Astraゼロ設計 v1', 'webgpu-barrier-astra-zero-preview.html', 'webgpu-barrier-astra-zero-preview.js', '試作・品質未達・本編未採用', '成立・持続・吸収・耐久破壊・バスト解除を実WebGPUで再生。実寸の形と聴感が品質基準に未達。')
     ] },
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
+      version('barrier-pro-r03', 'GPT Pro r0.3', 'barrier-pro-r03/preview.html', 'barrier-pro-r03/barrier-pro-renderer.mjs', '比較試作・品質未受入・本編未採用', 'GPT Pro独立改稿。4事象は実WebGPUで再生可能。原寸とギャラリー表示の造形・前後面・SFX聴感は品質未受入。', 'effect-H64'),
       version('barrier-pro-r02', 'GPT Pro r0.2', 'barrier-pro-r02/preview.html', 'barrier-pro-r02/barrier-pro-renderer.mjs', '比較試作・品質不合格・本編未採用', 'ChatGPT Proによる独立設計。実WebGPUでは主形が小さな不透明の球状に見え、保護空域と吸収の作用差が読めないため改稿中。', 'effect-H64'),
       version('barrier-pro-r01', 'GPT Pro r0.1', 'barrier-pro-r01/preview.html', 'barrier-pro-r01/barrier-pro.wgsl', '比較試作・品質不合格・本編未採用', 'GPT Pro独立初稿。実WebGPU再生はできるが、原寸では細く暗い支持線だけが読め、保護空域は不十分。', 'effect-H64')
     ] }
