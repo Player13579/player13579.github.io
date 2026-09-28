@@ -170,11 +170,22 @@
     if (/未採用|却下|撤回/.test(item.status || '')) return 'not-adopted';
     return 'unknown';
   }
+  function adoptionStatusLabel(item) {
+    if (adoptedVersionIds.has(item.id)) return '採用済み';
+    if (/旧採用版/.test(item.status || '')) return '旧採用版';
+    if (/未採用|却下|撤回/.test(item.status || '')) return '未採用';
+    return '採用状態不明';
+  }
   function visibleVersionIndices(group) {
+    const hasCurrentAdoption = group.versions.some(item => adoptedVersionIds.has(item.id));
+    if (currentCategory === 'effect') {
+      if (currentAdoptionFilter === 'adopted') return hasCurrentAdoption ? group.versions.map((item, i) => item.replayable ? i : -1).filter(i => i >= 0) : [];
+      return hasCurrentAdoption ? [] : group.versions.map((_, i) => i);
+    }
     return group.versions.map((item, i) => ({item, i})).filter(({item}) => currentAdoptionFilter === 'adopted' ? adoptionState(item) === 'adopted' : adoptionState(item) !== 'adopted').map(x => x.i);
   }
   function setHeadline() {
-    document.getElementById('list-heading').textContent = `${currentAdoptionFilter === 'adopted' ? '採用済み' : '未採用'}の${currentCategory === 'effect' ? 'エフェクト' : currentCategory === 'motion' ? 'モーション' : 'マップ'}一覧`;
+    document.getElementById('list-heading').textContent = `${currentAdoptionFilter === 'adopted' ? '採用済み' : '未採用'}の${currentCategory === 'effect' ? 'エフェクト' : 'マップ'}一覧`;
   }
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
@@ -212,7 +223,7 @@
     versionSelect.replaceChildren(...shownVersions.map((originalIndex, i) => {
       const v = group.versions[originalIndex]; const option = document.createElement('option'); option.value = String(i);
       const state = adoptionState(v);
-      option.textContent = `${v.title} — ${state === 'unknown' ? '採用状態不明' : state === 'adopted' ? '採用済み' : '未採用'}`; return option;
+      option.textContent = `${v.title} — ${adoptionStatusLabel(v)} · ${v.status}`; return option;
     }));
     versionSelect.value = String(Math.max(0, shownVersions.indexOf(selectedVersionIndex)));
     versionSelect.disabled = shownVersions.length < 2;
@@ -252,28 +263,14 @@
         creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : 'gpt-6-astra',
         creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : 'GPT-6-Astra',
         qualityStatus: /不合格|不達|未達/.test(item.status) ? 'fail' : /保留|未受入/.test(item.status) ? 'pending' : 'candidate',
-        userAdoptionStatus: adoptionState(item),
+        userAdoptionStatus: adoptionState(item), adoptionStatusLabel: adoptionStatusLabel(item),
         gameIntegrationStatus: /本編接続済み/.test(item.status) ? 'verified' : /本編未接続|本編未採用/.test(item.status) ? 'not-integrated' : 'unverified',
         previewKind: 'webgpu', technicalReplayStatus: item.replayable ? 'listed-existing-replay-contract' : 'unavailable'
       }))) }));
-  window.__webgpuEGallery = Object.freeze({ presentation: PRESENTATION, categories: Object.freeze(['motion','map','effect']),
+  window.__webgpuEGallery = Object.freeze({ presentation: PRESENTATION, categories: Object.freeze(['map','effect']),
     entries: Object.freeze(exposedEntries) });
-  const imageGroups = [
-    { id:'sophia-taser-reload', category:'motion', title:'Sophia · Taser reload', quality:'pending', adoption:'unknown', integration:'unverified', reason:'v860候補名。scoped source/runtime acceptanceはあるがreal-screen verificationはsuspended。ユーザー採用は不明。', versions:[
-      {id:'sophia-taser-reload-v860-candidate-front',title:'v860 candidate · front',src:'assets/sophia-taser-reload-front-v860-candidate.png',hash:'3f095e192acc77d1344af09cbdb6903f03537cef44f2aa93c2fe7d14c1daec8b'},
-      {id:'sophia-taser-reload-v860-candidate-back',title:'v860 candidate · back',src:'assets/sophia-taser-reload-back-v860-candidate.png',hash:'19cc211b7387c08b57aa1dbb39706f41c24f06941d9a2342a8af610bf092583e'},
-      {id:'sophia-taser-reload-v860-candidate-left',title:'v860 candidate · left',src:'assets/sophia-taser-reload-left-v860-candidate.png',hash:'3cc0b133e66aa7aa64676420599ed9abcf4d05607da79612d33cbc596d256ad9'},
-      {id:'sophia-taser-reload-v860-candidate-right',title:'v860 candidate · right',src:'assets/sophia-taser-reload-right-v860-candidate.png',hash:'2d020aed7edbbc19f6c6af699c43c8af6971645ef3e6a08cd60ce819e63863e2'}]},
-    { id:'sophia-side-dash-astra', category:'motion', title:'Sophia · Side dash · GPT-6-Astra', quality:'version-specific', adoption:'not_adopted', integration:'not_integrated', reason:'Astra原画。ゲームサイズ表示・サイクル再生・登録位置は未検証。各版の品質判定と採用状態を版ごとに表示します。', versions:[
-      {id:'sophia-side-dash-astra-right-r01',title:'right-r01',src:'assets/sophia-side-dash-right-r01-original.png',hash:'a0bd516867b6c19608e46efd2e9f35f31943edce50a23038d8d697f53fbcda0a',qualityStatus:'rejected',adoption:'not_adopted',note:'後ろ側の青いオーバースカートの白い段が複数見える。最初の3コマは腕の振りが不十分に交互化。'},
-      {id:'sophia-side-dash-astra-right-r02-contact',title:'right-r02-contact',src:'assets/sophia-side-dash-right-r02-contact-original.png',hash:'526192cc3e8732d4e2dc91494dfa60b957b64e1dc6fcc92d3a00e6446ca67c25',qualityStatus:'candidate_pending_acceptance',adoption:'not_adopted',note:'左右の接地方向と足2本、腕のシルエットは確認済み。接地途中の半歩のみで、完全サイクルや描画移動は未受入。'},
-      {id:'sophia-side-dash-astra-left-r01-contact',title:'left-r01-contact',src:'assets/sophia-side-dash-left-r01-contact-original.png',hash:'e0a9ba2a036cd693cc5a5ee1a09e184a9bdca2cb361d9cf581f625441a9e65e0',qualityStatus:'candidate_pending_acceptance',adoption:'not_adopted',note:'左向き・足2本・腕のシルエットは確認済み。接地途中の半歩のみで、完全サイクルや描画移動は未受入。'},
-      {id:'sophia-side-dash-astra-right-r02-passing',title:'right-r02-passing',src:'assets/sophia-side-dash-right-r02-passing-original.png',hash:'9e58be87334f27e9f0fcb2d266b67aece351e14283ca8e31bcec3ed07895f35b',qualityStatus:'rejected',adoption:'not_adopted',note:'足の間隔が広く、依頼されたコンパクトな通過姿勢が成立していない。プレビューで見えた背景光はalpha=0のRGB値が原因の可能性があり、合成QA未了。'}]},
-    { id:'cafeteria-astra', category:'map', title:'Cafeteria · Astra prototype', quality:'revision_required / prototype_unaccepted', adoption:'not-adopted', integration:'not-integrated', reason:'r2で遠近と椅子間隔は改善。椅子とテーブルの間隔は基準64px未満。原本は1305×1206 RGBで930×860 RGBAとは異なる。', versions:[
-      {id:'cafeteria-astra-r2',title:'Astra r2 · prototype',src:'assets/cafeteria-astra-r2.original.png',hash:'748256cd57d5861ad781b52a05f6a66ce81e04e7d391457f45f11901d6cf3a9d'},
-      {id:'cafeteria-astra-r1',title:'Astra r1 · prototype',src:'assets/cafeteria-astra-r1.original.png',hash:'e67db7bc568c750ac1bb5d6700d12444f203d10acb708c4b222cb22240663640'}]}
-  ];
-  function selectImage(group, versionIndex) {
+  const imageGroups = [];
+    function selectImage(group, versionIndex) {
     const item=group.versions[versionIndex];
     stage.querySelector('iframe')?.remove(); stage.querySelector('img')?.remove();
     if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll); previewStatusPoll=null;
