@@ -51,6 +51,13 @@ test('gallery does not observe a status bridge value and keeps its status update
     ResizeObserver: class { observe() {} disconnect() {} }
   });
 
+  assert.deepEqual(
+    Array.from(window.__webgpuEGallery.entries, group => group.versions[0].id),
+    ['heal-astra-prototype', 'sunbeam-astra-clean-v3', 'luck-astra-clean-v4', 'barrier-pro-r07'],
+    'only user-adopted E versions are listed'
+  );
+  assert.ok(window.__webgpuEGallery.entries.every(group => group.versions.length === 1));
+
   const iframe = document.getElementById('stage').children.find(child => child.tagName === 'iframe');
   assert.ok(iframe, 'default preview iframe is mounted');
   iframe.contentDocument = childDocument;

@@ -1,8 +1,0 @@
-<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'"><title>Facility Use E v1.0.0 — 技術再生fixture</title><link rel="stylesheet" href="./gallery.css"></head>
-<body><main>
-<header><p class="eyebrow">CHATGPT PRO SOURCE / WEBGPU REPLAY</p><h1>施設使用E <small>v1.0.0</small></h1><p>提出された3つのWebGPU表現を順番に自動再生します。ここで使う効果kindは技術再生用の仮値です。実ゲームの3施設はすべてスタミナ効果ですが、この試作は実イベントへまだ接続していません。品質合格・本編採用の判定も含みません。</p></header>
-<section class="controls" aria-label="再生状態"><p id="mode">WebGPUを初期化しています</p><button id="enableAudio" hidden>クリックして通常SFXを有効化</button><label><input id="auto" type="checkbox" checked> 自動ループ</label><label><input id="mute" type="checkbox"> mute</label><label>通常SFX音量 <input id="volume" type="range" min="0" max="1" value="0.55" step="0.01"></label></section>
-<canvas id="view" width="1000" height="600" aria-label="施設使用EのネイティブWebGPU技術再生"></canvas>
-<p id="stats">実GPU描画の初期化を待っています。</p><section><h2>再生記録</h2><pre id="log" aria-live="polite"></pre></section>
-</main><script type="module" src="./gallery.mjs"></script></body></html>

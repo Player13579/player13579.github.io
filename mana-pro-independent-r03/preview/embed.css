@@ -1,9 +1,0 @@
-html.embed,html.embed body{width:100%;height:100%;margin:0;overflow:hidden}
-html.embed main{display:grid;grid-template-rows:minmax(0,1fr) auto;width:100%;height:100%;max-width:none;margin:0;padding:0}
-html.embed header,html.embed .controls,html.embed #technical,html.embed footer{display:none}
-html.embed .viewer{display:grid;grid-template-rows:minmax(0,1fr) auto;min-height:0;border:0;border-radius:0}
-html.embed .viewer-head{display:none}
-html.embed .canvas-scroll{min-height:0;height:100%;align-items:center;overflow:hidden}
-html.embed canvas{width:min(100vw,980px);height:auto;max-height:100%;object-fit:contain}
-html.embed .viewer-foot{min-height:30px;padding:4px 12px}
-html.embed #soundStatus{display:none}

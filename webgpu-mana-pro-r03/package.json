@@ -1,8 +1,0 @@
-{
-  "name": "dva-mana-acquire-e", "version": "0.3.0", "private": true,
-  "type": "module", "description": "Mana acquisition E r0.3: body-owned intake shroud, absorption reservoir and settled afterglow; procedural WebGPU and actor-time SFX.",
-  "engines": {"node": ">=20"},
-  "exports": {".": "./src/index.js", "./sampler": "./src/sampler.js"},
-  "scripts": {"start": "node tools/serve.mjs", "test": "node --test tests/*.test.mjs", "validate:design": "node tools/validate-design.mjs", "audio:export": "node tools/export-audio.mjs", "reference": "node tools/export-samples.mjs && python tools/reference.py", "manifest": "node tools/manifest.mjs", "verify": "node tools/manifest.mjs --verify", "check": "npm test && npm run validate:design && npm run verify"},
-  "license": "UNLICENSED"
-}
