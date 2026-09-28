@@ -14,6 +14,8 @@ const allowlist = JSON.parse(fs.readFileSync(path.join(packageRoot, 'allowlist-a
 const frozenHandoff = JSON.parse(fs.readFileSync(path.join(pagesRoot, 'astra-status-cleanse-v1', 'handoff-r17-r21-frozen.json'), 'utf8'));
 const statusHandoff22 = JSON.parse(fs.readFileSync(path.join(pagesRoot, 'astra-status-cleanse-v1', 'handoff-r22-r26.json'), 'utf8'));
 const statusHandoff27 = JSON.parse(fs.readFileSync(path.join(pagesRoot, 'astra-status-cleanse-v1', 'handoff-r27-r29.json'), 'utf8'));
+const statusHandoffs30To37 = Array.from({ length: 8 }, (_, offset) =>
+  JSON.parse(fs.readFileSync(path.join(pagesRoot, 'astra-status-cleanse-v1', `handoff-r${30 + offset}.json`), 'utf8')));
 const source = fs.readFileSync(path.join(root, 'webgpu-e-gallery.js'), 'utf8');
 const html = fs.readFileSync(path.join(root, 'webgpu-e-gallery.html'), 'utf8');
 for (const filename of ['webgpu-e-gallery.js', 'webgpu-e-gallery.html']) {
@@ -203,7 +205,16 @@ const verifiedReplay = new URL(statusIframe.src);
 assert.equal(verifiedReplay.searchParams.get('verify'), '1', 'gallery verification mode propagates to replay');
 assert.equal(verifiedReplay.searchParams.get('embed'), '1');
 assert.equal(verifiedReplay.searchParams.get('h'), '64');
-assert.equal(verifiedReplay.searchParams.get('galleryRelease'), 'astra-history-20260929-v82');
+assert.equal(verifiedReplay.searchParams.get('galleryRelease'), 'astra-history-20260929-v83');
+assert(verifiedReplay.pathname.endsWith('/astra-status-cleanse-v1/versions/r37/index.html'));
+const statusVersionSelector = verifyElements.get('version-select');
+statusVersionSelector.value = '7';
+statusVersionSelector.onchange();
+const verifiedStatusR30Replay = new URL(verifyElements.get('stage').querySelector('iframe').src);
+assert(verifiedStatusR30Replay.pathname.endsWith('/astra-status-cleanse-v1/versions/r30/index.html'),
+  'status recovery selector switches from newest r37 to r30');
+assert.equal(verifiedStatusR30Replay.searchParams.get('verify'), '1', 'verify remains active while switching status versions');
+assert.equal(verifiedStatusR30Replay.searchParams.get('h'), '64');
 const luckCatalogButton = verifyElements.get('catalog').children.find(button => button.dataset.id === 'luck-astra');
 luckCatalogButton.listeners.click();
 const verifiedLuckZeroIframe = verifyElements.get('stage').querySelector('iframe');
@@ -250,14 +261,15 @@ assert.match(sunbeamLatest.detail, /以前の視覚採用判断は保留.*本編
 const sunbeamGroup = window.__webgpuEGallery.entries.find(item => item.id === 'sunbeam-astra');
 const sunbeamSourceRoot = path.join(pagesRoot, 'astra-sunbeam-lens-ghost-v1');
 const sunbeamFrozen = JSON.parse(fs.readFileSync(path.join(sunbeamSourceRoot, 'frozen-versions.json'), 'utf8'));
-assert.equal(sunbeamFrozen.versions.length, 5);
+const sunbeamFrozenR1ToR5 = sunbeamFrozen.versions.filter(item => ['r1', 'r2', 'r3', 'r4', 'r5'].includes(item.version));
+assert.equal(sunbeamFrozenR1ToR5.length, 5);
 assert.deepEqual(Array.from(sunbeamGroup.versions.slice(0, 8), item => item.id), [
   'sunbeam-lens-ghost-r5', 'sunbeam-lens-ghost-r4', 'sunbeam-lens-ghost-r3',
   'sunbeam-lens-ghost-r2', 'sunbeam-lens-ghost-r1',
   'sunbeam-astra-clean-v3', 'sunbeam-astra-clean-v2', 'sunbeam-astra-clean-v1'
 ], 'Sunbeam lens-ghost versions appear newest first while preserving v1-v3 history');
 let sunbeamAllowlistCount = 0;
-for (const frozenVersion of sunbeamFrozen.versions) {
+for (const frozenVersion of sunbeamFrozenR1ToR5) {
   const revision = frozenVersion.version;
   const sourceVersionRoot = frozenVersion.root === '.'
     ? sunbeamSourceRoot : path.join(sunbeamSourceRoot, 'revisions', revision);
@@ -380,12 +392,13 @@ assert.match(adoptedLuck.detail, /キラキラ改修中・新版未採用/);
 const adoptedCooldown = window.__webgpuEGallery.entries.find(item => item.id === 'cooldown-astra').versions.find(item => item.id === 'astra-cooldown-benefit-r0.5');
 assert.match(adoptedCooldown.status, /ユーザー採用済み/);
 assert.match(adoptedCooldown.detail, /キラキラ改修中・新版未採用/);
-assert.match(html, /astra-history-20260929-v82/);
+assert.match(html, /astra-history-20260929-v83/);
 
 const entry = window.__webgpuEGallery.entries.find(item => item.id === 'status-cleanse-astra');
 assert(entry, 'status-recovery Astra gallery entry exists');
-const statusRecords = manifest.versions.concat(frozenHandoff.versions.map(item => item.version), statusHandoff22.versions, statusHandoff27.versions);
-assert.equal(entry.versions.length, 29, 'all twenty-nine reproducible versions are listed');
+const statusRecords = manifest.versions.concat(frozenHandoff.versions.map(item => item.version), statusHandoff22.versions, statusHandoff27.versions,
+  statusHandoffs30To37.map(item => item.version));
+assert.equal(entry.versions.length, 37, 'all thirty-seven reproducible versions are listed');
 assert.deepEqual(Array.from(entry.versions, item => item.id), statusRecords.slice().reverse().map(item => item.id),
   'versions are ordered newest first and match source status records');
 for (const record of statusHandoff22.versions.concat(statusHandoff27.versions)) {
@@ -420,6 +433,56 @@ for (const record of statusHandoff22.versions.concat(statusHandoff27.versions)) 
         expected, `${record.id}/${relative} SHA-256 matches its frozen source`);
     }
   }
+}
+for (const handoff of statusHandoffs30To37) {
+  const record = handoff.version;
+  const revision = record.id.match(/r(\d+)$/)[1];
+  const version = entry.versions.find(item => item.id === record.id);
+  assert.equal(record.technicalStatus, 'webgpu-replay-verified');
+  assert.equal(record.qualityStatus, 'rejected');
+  assert.equal(record.creatorDisplayName, 'GPT-6-Astra');
+  assert.equal(record.userAdopted, false);
+  assert.equal(record.gameIntegrated, false);
+  assert.equal(record.auditoryReview, 'not_run');
+  assert.equal(record.verifiedAutoLoops, 3);
+  assert.equal(record.requiredFiles.length, 6);
+  assert.equal(handoff.publishFiles.length, 7, `${record.id} publishes six runtime dependencies and its version record`);
+  assert.match(version.status, /品質不合格.*本編未採用/);
+  assert.match(version.detail, /作者: GPT-6-Astra.*凍結記録.*WebGPU技術再生pass.*3 loop/);
+  const rejectionSummary = {
+    r30: '小さな肩U/リボン', r31: '手/足jet', r32: '肩横の小さな丸い光',
+    r33: '弱い短い外部光線', r34: '初期受領が弱く', r35: '汎用的な全身白光',
+    r36: 'ぼけた横発光帯', r37: '小さな光る石/ダイヤ装飾'
+  }[`r${revision}`];
+  assert(rejectionSummary && version.detail.includes(rejectionSummary), `${record.id} shows its version-specific rejection reason`);
+  assert.match(version.detail, /SFX聴感未実施.*ユーザー未採用.*本編未接続/);
+  for (const file of handoff.publishFiles) {
+    const expected = file.sha256;
+    assert(expected, `${record.id}/${file.path} has frozen SHA-256`);
+    assert.equal(file.bytes, fs.statSync(path.join(pagesRoot, 'astra-status-cleanse-v1', file.path)).size,
+      `${record.id}/${file.path} frozen size matches source`);
+    for (const base of [
+      path.join(pagesRoot, 'astra-status-cleanse-v1'),
+      path.join(pagesPublicRoot, 'astra-status-cleanse-v1'),
+      packageRoot
+    ]) {
+      const target = path.join(base, file.path);
+      assert(fs.existsSync(target), `${record.id}/${file.path} exists in source and both public mirrors`);
+      assert.equal(fs.statSync(target).size, file.bytes, `${record.id}/${file.path} byte count matches freeze`);
+      assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(target)).digest('hex'),
+        expected, `${record.id}/${file.path} SHA matches frozen handoff`);
+    }
+  }
+  const pageUrl = new URL(version.page, 'https://example.test/webgpu-e-gallery.html');
+  assert(pageUrl.pathname.endsWith(`/astra-status-cleanse-v1/versions/r${revision}/index.html`));
+  assert.equal(pageUrl.searchParams.get('h'), '64');
+  assert.equal(pageUrl.searchParams.get('embed'), '1');
+  assert.equal(pageUrl.searchParams.has('verify'), false, `${record.id} normal replay is not forced silent`);
+  assert.equal(pageUrl.searchParams.has('autoplay'), false, `${record.id} uses preview auto-loop`);
+  const preview = fs.readFileSync(path.join(pagesRoot, 'astra-status-cleanse-v1', `versions/r${revision}/preview.mjs`), 'utf8');
+  assert.match(preview, /query\.has\('verify'\)/);
+  assert.match(preview, /height:h\*devicePixelRatio/);
+  assert.match(preview, /raf=requestAnimationFrame\(draw\)/);
 }
 assert.match(entry.versions.find(item => item.id === 'status-cleanse-astra-r07').detail, /全身発光部分のみ良好.*品質不合格理由/);
 const stamina = window.__webgpuEGallery.entries.find(item => item.id === 'stamina-astra');
@@ -660,5 +723,5 @@ assert.equal(cooldownAdopted.gameAdopted, false, 'visual selection does not mark
 assert.match(cooldownGroup.versions.find(item => item.id === cooldownAdopted.id).detail, /視覚版の選択.*本編への接続と発動は検証中/);
 assert.match(cooldownGroup.versions.find(item => item.id === cooldownAdopted.id).detail, /キラキラ改修中・新版未採用/);
 const release = source.match(/galleryRelease', '(astra-history-20260929-v\d+)'/);
-assert(release && release[1] === 'astra-history-20260929-v82' && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
+assert(release && release[1] === 'astra-history-20260929-v83' && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
 console.log(`PASS: ${healGroup.versions.length} Heal, ${luckGroup.versions.length} Luck, ${entry.versions.length} status-recovery, ${cooldownGroup.versions.length} Cooldown, ${manaGroup.versions.length} Mana, ${staminaGroup.versions.slice(0, 8).length} Stamina versions; package SHA manifests verified`);
