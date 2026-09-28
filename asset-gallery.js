@@ -264,6 +264,11 @@
       {id:'sophia-taser-reload-v860-candidate-back',title:'v860 candidate · back',src:'assets/sophia-taser-reload-back-v860-candidate.png',hash:'19cc211b7387c08b57aa1dbb39706f41c24f06941d9a2342a8af610bf092583e'},
       {id:'sophia-taser-reload-v860-candidate-left',title:'v860 candidate · left',src:'assets/sophia-taser-reload-left-v860-candidate.png',hash:'3cc0b133e66aa7aa64676420599ed9abcf4d05607da79612d33cbc596d256ad9'},
       {id:'sophia-taser-reload-v860-candidate-right',title:'v860 candidate · right',src:'assets/sophia-taser-reload-right-v860-candidate.png',hash:'2d020aed7edbbc19f6c6af699c43c8af6971645ef3e6a08cd60ce819e63863e2'}]},
+    { id:'sophia-side-dash-astra', category:'motion', title:'Sophia · Side dash · GPT-6-Astra', quality:'version-specific', adoption:'not_adopted', integration:'not_integrated', reason:'Astra原画。ゲームサイズ表示・サイクル再生・登録位置は未検証。各版の品質判定と採用状態を版ごとに表示します。', versions:[
+      {id:'sophia-side-dash-astra-right-r01',title:'right-r01',src:'assets/sophia-side-dash-right-r01-original.png',hash:'a0bd516867b6c19608e46efd2e9f35f31943edce50a23038d8d697f53fbcda0a',qualityStatus:'rejected',adoption:'not_adopted',note:'後ろ側の青いオーバースカートの白い段が複数見える。最初の3コマは腕の振りが不十分に交互化。'},
+      {id:'sophia-side-dash-astra-right-r02-contact',title:'right-r02-contact',src:'assets/sophia-side-dash-right-r02-contact-original.png',hash:'526192cc3e8732d4e2dc91494dfa60b957b64e1dc6fcc92d3a00e6446ca67c25',qualityStatus:'candidate_pending_acceptance',adoption:'not_adopted',note:'左右の接地方向と足2本、腕のシルエットは確認済み。接地途中の半歩のみで、完全サイクルや描画移動は未受入。'},
+      {id:'sophia-side-dash-astra-left-r01-contact',title:'left-r01-contact',src:'assets/sophia-side-dash-left-r01-contact-original.png',hash:'e0a9ba2a036cd693cc5a5ee1a09e184a9bdca2cb361d9cf581f625441a9e65e0',qualityStatus:'candidate_pending_acceptance',adoption:'not_adopted',note:'左向き・足2本・腕のシルエットは確認済み。接地途中の半歩のみで、完全サイクルや描画移動は未受入。'},
+      {id:'sophia-side-dash-astra-right-r02-passing',title:'right-r02-passing',src:'assets/sophia-side-dash-right-r02-passing-original.png',hash:'9e58be87334f27e9f0fcb2d266b67aece351e14283ca8e31bcec3ed07895f35b',qualityStatus:'rejected',adoption:'not_adopted',note:'足の間隔が広く、依頼されたコンパクトな通過姿勢が成立していない。プレビューで見えた背景光はalpha=0のRGB値が原因の可能性があり、合成QA未了。'}]},
     { id:'cafeteria-astra', category:'map', title:'Cafeteria · Astra prototype', quality:'revision_required / prototype_unaccepted', adoption:'not-adopted', integration:'not-integrated', reason:'r2で遠近と椅子間隔は改善。椅子とテーブルの間隔は基準64px未満。原本は1305×1206 RGBで930×860 RGBAとは異なる。', versions:[
       {id:'cafeteria-astra-r2',title:'Astra r2 · prototype',src:'assets/cafeteria-astra-r2.original.png',hash:'748256cd57d5861ad781b52a05f6a66ce81e04e7d391457f45f11901d6cf3a9d'},
       {id:'cafeteria-astra-r1',title:'Astra r1 · prototype',src:'assets/cafeteria-astra-r1.original.png',hash:'e67db7bc568c750ac1bb5d6700d12444f203d10acb708c4b222cb22240663640'}]}
@@ -275,12 +280,14 @@
     notice.hidden=true; const img=document.createElement('img'); img.alt=group.title+' '+item.title; img.src=item.src; img.dataset.sha256=item.hash;
     img.addEventListener('error',()=>{notice.textContent='画像原本を読み込めませんでした';notice.hidden=false;}); stage.append(img);
     document.getElementById('selected-title').textContent=group.title+' · '+item.title;
-    document.getElementById('selected-description').textContent='作者: GPT-6-Astra。品質: '+group.quality+'。ユーザー採用: '+group.adoption+'。本編接続: '+group.integration+'。'+group.reason+' 原本SHA-256: '+item.hash;
-    document.getElementById('selected-status').textContent=group.quality+' · '+group.adoption+' · '+group.integration;
+    const quality=item.qualityStatus||group.quality;
+    const adoption=item.adoption==='unknown'?'unknown':item.adoption==='not_adopted'?'not_adopted':item.adoption==='adopted'?'adopted':group.adoption;
+    document.getElementById('selected-description').textContent='作者: GPT-6-Astra。版: '+item.id+'。品質状態: '+quality+'。採用状態: '+(adoption==='unknown'?'unknown':adoption)+'。本編接続: '+group.integration+'。'+(item.note||group.reason)+' 原本SHA-256: '+item.hash;
+    document.getElementById('selected-status').textContent=quality+' · '+(adoption==='unknown'?'採用状態不明':adoption==='not_adopted'?'未採用':'採用済み')+' · '+group.integration;
     document.getElementById('selected-source').textContent='保存原本画像 · '+item.src;
     const link=document.getElementById('selected-link');link.href=item.src;link.textContent='原本画像を見る ↗';
     const visible=group.versions.map((v,i)=>({v,i})).filter(({v})=>currentAdoptionFilter==='adopted'?v.adoption==='adopted':v.adoption!=='adopted');
-    versionSelect.replaceChildren(...visible.map(({v,i},n)=>{const o=document.createElement('option');o.value=String(n);o.textContent=v.title+' — '+(v.adoption==='unknown'?'採用状態不明':v.adoption==='adopted'?'採用済み':'未採用');o.dataset.versionId=v.id;return o;}));
+    versionSelect.replaceChildren(...visible.map(({v,i},n)=>{const o=document.createElement('option');o.value=String(n);o.textContent=v.title+' — '+(v.adoption==='unknown'?'採用状態不明':v.adoption==='adopted'?'採用済み':'未採用')+(v.qualityStatus?' · '+v.qualityStatus:'');o.dataset.versionId=v.id;return o;}));
     versionSelect.value=String(Math.max(0,visible.findIndex(x=>x.i===versionIndex)));versionSelect.disabled=visible.length<2;
     versionSelect.onchange=()=>selectImage(group,visible[Number(versionSelect.value)].i);
     buttons.forEach(b=>b.setAttribute('aria-current',b.dataset.id===group.id?'true':'false'));
@@ -301,7 +308,7 @@
       const preferred=remembered?.groupId===group.id?indices.find(i=>group.versions[i].id===remembered.versionId):undefined;
       const first=preferred??indices.find(i=>group.versions[i].id===group.defaultVersionId)??indices[0];
       const item=group.versions[first];const title=document.createElement('strong');title.textContent=group.title+' · '+item.title;
-      const status=document.createElement('span');status.textContent=currentCategory==='effect'?`${adoptionState(item)==='unknown'?'採用状態不明':adoptionState(item)==='adopted'?'採用済み':'未採用'} · ${item.status}`:`${item.adoption==='unknown'?'採用状態不明':'未採用'} · ${group.quality}`;
+      const status=document.createElement('span');status.textContent=currentCategory==='effect'?`${adoptionState(item)==='unknown'?'採用状態不明':adoptionState(item)==='adopted'?'採用済み':'未採用'} · ${item.status}`:`${item.adoption==='unknown'?'採用状態不明':item.adoption==='adopted'?'採用済み':'未採用'} · ${item.qualityStatus||group.quality}`;
       b.append(title,status);b.addEventListener('click',()=>currentCategory==='effect'?select(entries.indexOf(group),first):selectImage(group,first));catalog.append(b);buttons.push(b);
     }
     const remembered=selections.get(`${currentCategory}:${currentAdoptionFilter}`);
