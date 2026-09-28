@@ -26694,6 +26694,48 @@ const WEBGPU_MANA_FOCUS_SHEETS = Object.freeze({
   'male-bot': Object.freeze({ width: 1536, height: 1024, version: 'v465',
     frames: Object.freeze([[109,76,343,862],[590,117,368,821],[1082,99,357,839]]) })
 });
+function buildWebGPUAuthoredNinjutsuFocusActionCommand(player, data, view, action) {
+  const id = String(action?.sourceEffectId ?? '');
+  const owner = state.characterActions?.get(player?.id);
+  const effect = state.magicEffects?.find(entry => String(entry?.id ?? '') === id &&
+    entry.type === 'action-ninjutsu-focus' && String(entry.playerId ?? '') === String(player?.id ?? ''));
+  const elapsed = eEffectNow(effect, data, state.frameNow || performance.now()) - Number(effect?.startedAt);
+  if (!window.DvaWebGPUPlayerSprite?.createCommand || data?.phase !== 'playing' ||
+      !player?.alive || player.ejected || player.inVent ||
+      (player.invisible && player.id !== data.selfId) || action?.kind !== 'focus' ||
+      action.motionId !== 'action-ninjutsu-focus' || !id || !effect ||
+      owner?.kind !== 'focus' || owner.motionId !== action.motionId ||
+      String(owner.sourceEffectId ?? '') !== id || owner.startedAt !== action.startedAt ||
+      owner.startedAt !== effect.startedAt || String(owner.variant ?? '') !== String(action.variant ?? '') ||
+      String(effect.variant ?? '') !== String(action.variant ?? '') ||
+      !Number.isFinite(effect.duration) || effect.duration <= 0 ||
+      !Number.isFinite(elapsed) || elapsed < 0 || elapsed >= effect.duration ||
+      !Number.isFinite(action.progress) || action.progress < 0 || action.progress >= 1) return null;
+  const identity = authoredCharacterIdentity(player, data);
+  const profile = AUTHORED_NINJUTSU_FOCUS_PROFILES[identity];
+  if (!profile?.accepted || profile.actionKind !== 'focus' || profile.motionId !== action.motionId) return null;
+  const direction = authoredNinjutsuFocusDirection(player, data);
+  if (!AUTHORED_NINJUTSU_FOCUS_DIRECTIONS.includes(direction)) return null;
+  const poseKey = authoredNinjutsuFocusFrame(profile, action.progress);
+  const pose = profile.directions[direction]?.[poseKey];
+  const image = state.textures?.authoredNinjutsuFocusMotions?.[identity]?.[direction]?.[poseKey];
+  if (!authoredNinjutsuFocusPoseReady(pose, image)) return null;
+  const { ascensionRise } = characterAscensionPresentation(player, data);
+  const command = window.DvaWebGPUPlayerSprite.createCommand({
+    player: { ...player, y: player.y - ascensionRise }, identity, direction,
+    mode: 'action-ninjutsu-focus',
+    entry: { assetPath: pose.assetPath,
+      layout: { sourceOrigin: { x: pose.origin.x, y: pose.origin.y },
+        ground: { x: pose.ground.x, y: pose.ground.y }, scale: pose.scale } },
+    image, frame: pose.sourceRect, body: { lift: 0, sway: 0, lean: 0 },
+    camera: view.camera, zoom: view.zoom,
+    alpha: player.id === data.selfId && data.self?.floraInvisibleActive ? .32 : 1,
+    arrival: Object.prototype.hasOwnProperty.call(view, 'arrival') ? view.arrival : null,
+    arrivalAnchor: player, order: view.order ?? 0 });
+  return command && Object.freeze({ ...command, sourceEffectId: id,
+    poseKey: `ninjutsu-focus-${poseKey}`, name: playerIdentityLabel(player).slice(0, 14) });
+}
+
 function buildWebGPUManaFocusActionCommand(player, data, view, action) {
   const api = window.DvaWebGPUPlayerSprite;
   const owner = state.characterActions.get(player?.id);
@@ -27024,6 +27066,8 @@ function buildWebGPUAuthoredPlayerSpriteCommand(sourcePlayer, data, view) {
     return buildWebGPUHandgunReloadActionCommand(player, data, view, action);
   if (action?.kind === 'throw')
     return buildWebGPUThrowActionCommand(player, data, view, action);
+  if (action?.kind === 'focus' && action.motionId === 'action-ninjutsu-focus')
+    return buildWebGPUAuthoredNinjutsuFocusActionCommand(player, data, view, action);
   if (action?.kind === 'focus' && action.motionId === 'action-mana')
     return buildWebGPUManaFocusActionCommand(player, data, view, action);
   if (action?.kind === 'focus' && action.motionId === 'gunner-passive-aim')
@@ -27200,6 +27244,9 @@ function captureWebGPUMainAppPlayerScene(data = state.data, viewport, camera, zo
         { camera, zoom, order: 0, arrival: null }, action));
     if (action?.kind === 'throw')
       return Boolean(buildWebGPUThrowActionCommand(player, data,
+        { camera, zoom, order: 0, arrival: null }, action));
+    if (action?.kind === 'focus' && action.motionId === 'action-ninjutsu-focus')
+      return Boolean(buildWebGPUAuthoredNinjutsuFocusActionCommand(player, data,
         { camera, zoom, order: 0, arrival: null }, action));
     if (action?.kind === 'focus' && action.motionId === 'action-mana')
       return Boolean(buildWebGPUManaFocusActionCommand(player, data,
