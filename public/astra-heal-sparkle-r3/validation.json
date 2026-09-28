@@ -1,0 +1,60 @@
+{
+  "status": "technical-pass-visual-candidate",
+  "version": "heal-astra-sparkle-r3",
+  "angle": {
+    "degrees": -64,
+    "distinctAngleCount": 1,
+    "testedLifetimeSamples": 1200,
+    "reducedMotionAndScales": [
+      0.2,
+      1,
+      4
+    ],
+    "status": "PASS"
+  },
+  "h64Review": {
+    "dark": "Uniform oblique crosses visible along external source; main flow/actor readable",
+    "light": "Crosses readable outside source; overlap with white source locally weakens distinction",
+    "sourceGlow": "34 A/B comparisons, no RGB channel dimmed",
+    "offComparison": "34 baseline PNGs byte-equal to frozen adopted-original captures",
+    "terminal": "12s candidate and original PNG byte-equal",
+    "visualAssessment": "candidate, not adopted"
+  },
+  "gpu": {
+    "route": "owned headless installed Chrome / actual WebGPU / verify query",
+    "compileErrors": 0,
+    "pageErrors": 0,
+    "gpuErrors": 0,
+    "screens": 69,
+    "videoFrames": {
+      "dark": 688,
+      "light": 687
+    },
+    "videoSeconds": {
+      "dark": 12.2619,
+      "light": 12.2513
+    }
+  },
+  "audio": {
+    "signal": "12sec48k stereo; combined peak .188495 / RMS .030067; source unchanged",
+    "offlineAudioContext": "start, duplicate reject, invalid phase, late start, dispose PASS",
+    "peakAtVolume09": 0.16964584589004517,
+    "listening": "not_run"
+  },
+  "immutable": {
+    "adoptedBaselineFiles": 8,
+    "frozenR1R2Files": 224,
+    "mismatches": 0
+  },
+  "cleanup": "All owned Chrome/server closed in finally; both processes exit0. GPU slot handed to Status owner.",
+  "limits": [
+    "audio listening not_run",
+    "game integration and multiplayer load not_run",
+    "user adoption not granted"
+  ],
+  "primaryVisualReview": {
+    "status": "accepted-as-visual-quality-candidate",
+    "evidence": "Primary reviewed dark/light full-life contact sheets; green main flow and actor opening preserved; same-oriented crossing rays visible on transport and reception",
+    "remaining": "Light-background source overlaps locally weak; user adoption/game integration separate"
+  }
+}

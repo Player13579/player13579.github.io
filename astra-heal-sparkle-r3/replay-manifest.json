@@ -1,0 +1,59 @@
+{
+  "id": "heal-astra-sparkle-r3",
+  "title": "Heal Astra sparkle r3 / 光条角度統一",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "quality": "candidate",
+  "qualityReason": "全点/全位相でHeal基準角−64°。H64暗明で読める十字光条、元主形/発光保持、OFF元版一致。明背景の主光流に重なる一部点は局所差が弱い。音実聴未実施、本編未接続、ユーザー未採用。",
+  "entry": "index.html",
+  "autoplay": true,
+  "loopSeconds": 12,
+  "defaultActorHeightPixels": 64,
+  "verification": "index.html?verify=1",
+  "baselineComparison": "index.html?verify=1&baseline=1",
+  "fixedPhase": "index.html?verify=1&phase=.74&background=light",
+  "audio": "gesture gated; verify permanently silent",
+  "angleContract": {
+    "longRayDegrees": -64,
+    "crossRayDegrees": 26,
+    "space": "+x right, +y down",
+    "scope": "Every source and receiver glint, every phase, all scales and reduced motion",
+    "angleDistributionCount": 1
+  },
+  "adoptedOriginal": {
+    "preserved": true,
+    "module": "baseline/webgpu-heal-astra-prototype.js",
+    "author": "GPT-6-Astra",
+    "qualityHistory": "Original main shape and glow adopted; original full-life listening acceptance was not established by source audit. Revision does not inherit adoption.",
+    "sha256": {
+      "heal-astra-preview.html": "5613590455b8ff75e3d2dd8f9ddd874ddaff6fcda21bbf140acc85171714fdcb",
+      "heal-astra-preview.js": "1262720f4692d705cf1e52956888dd4a06fcb402edba494a64effb7c3f756574",
+      "webgpu-compositing.js": "8d794c8d48f5acfdca75f61e8a09c730e9b3a0ad8f979c93a8186987d5592c6b",
+      "webgpu-frame-core.js": "274a0152c248a51630ffc6b7f28e70a5c34aff0596f70f6ec9c5257a3f9aeb6d",
+      "webgpu-heal-astra-prototype.js": "8b233385b52d50d074d22b9ea5c7790b3bafde1ef62050b46d5e63a60c6606d6",
+      "webgpu-heal-astra-sfx.js": "3bd9c9b8d120488060bc1126bc2127a0d0f0a543578a29a63e38d84a55037808",
+      "webgpu-primitives.js": "6b69ee8cc68101feb1dcef3162a135deaa6c56e3873d6af5e6540ed3ad751980",
+      "webgpu-renderer.js": "cbbd3a3c5af9f4a970e5336c9037d5d76fd34673c7ee06e497b100cd2650a98b"
+    }
+  },
+  "modelWorkShare": [
+    {
+      "displayName": "GPT-6-Astra",
+      "percent": 100,
+      "work": "r3 Heal-wide angle design, shader geometry, original preservation and H64/GPU/signal evidence"
+    }
+  ],
+  "priorTrials": [
+    {
+      "id": "heal-astra-sparkle-r1",
+      "immutable": true,
+      "authorship": "Historical r1 GPT-6-Astra 95%, GPT-6-Luna 5%"
+    },
+    {
+      "id": "heal-astra-sparkle-r2",
+      "immutable": true,
+      "authorship": "Historical r2 GPT-6-Astra 100%",
+      "meaning": "Prior per-anchor tangent/reception angle comparison; superseded by single effect-wide angle instruction"
+    }
+  ]
+}
