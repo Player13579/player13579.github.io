@@ -2478,6 +2478,9 @@ const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   unstableLayoutRetryTimer: null, unstableLayoutRetryGeneration: -1 };
 const webgpuStartupTiming = { nextAttemptId: 0, current: null, playClickedAtMs: null,
   firstPumpAfterPlayAtMs: null };
+if (WEBGPU_MAIN_VERIFY_ROUTE)
+  window.__dvaStartupRetryTrace = () =>
+    webgpuMainApp.driver?.retryTraceSnapshot?.() ?? null;
 function markWebGPUStartupStage(name, durationMs = null) {
   // Ordinary Safari sessions need the last substantive frame phase too. RAF
   // bookkeeping must not overwrite a preparation operation still in flight.
@@ -2498,6 +2501,18 @@ function markWebGPUStartupStage(name, durationMs = null) {
     count: (previous?.count || 0) + 1,
     ...(Number.isFinite(durationMs) && durationMs >= 0 ?
       { durationMs } : {}) });
+}
+function recordWebGPUStartupRequest(trace, appRequestSerial, kind, detail = {}) {
+  if (!WEBGPU_MAIN_VERIFY_ROUTE || !trace || trace !== webgpuStartupTiming.current ||
+      trace.frozen || !Number.isSafeInteger(appRequestSerial)) return;
+  const atMs = performance.now();
+  if (!Number.isFinite(atMs)) return;
+  if (trace.requestEvents.length === 180) {
+    trace.requestEvents.shift();
+    trace.requestEventsDropped++;
+  }
+  trace.requestEvents.push(Object.freeze({ attemptId: trace.attemptId,
+    appRequestSerial, kind, atMs, ...detail }));
 }
 function recordWebGPUStartupIncompleteFrame(reason) {
   if (!WEBGPU_MAIN_VERIFY_ROUTE) return;
@@ -18732,7 +18747,7 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
       playClickedAtMs: webgpuStartupTiming.playClickedAtMs,
       driverStartedAtMs: performance.now(), marks: [], stageTimes,
       incompleteFrameReasons: Object.create(null), lastIncompleteFrame: null,
-      frozen: false };
+      requestEvents: [], requestEventsDropped: 0, frozen: false };
     webgpuStartupTiming.current = startupTiming;
     window.__dvaStartupPassTiming = startupTiming;
   }
@@ -18925,6 +18940,8 @@ function pumpWebGPUMainAppDriver() {
   }
   const generation = webgpuMainApp.generation;
   const requestSerial = ++webgpuMainApp.requestSerial;
+  const startupRequestTrace = WEBGPU_MAIN_VERIFY_ROUTE ? webgpuStartupTiming.current : null;
+  recordWebGPUStartupRequest(startupRequestTrace, requestSerial, 'app-request');
   const connectionMode = document.documentElement?.dataset?.connectionMode || "";
   const dpr = window.devicePixelRatio || 1;
   const roomId = state.roomId;
@@ -18941,16 +18958,30 @@ function pumpWebGPUMainAppDriver() {
       webgpuStartupTiming.current.firstRetryTiming.completedAtMs == null)
     webgpuStartupTiming.current.firstRetryTiming.completedAtMs = performance.now();
   void webgpuMainApp.driver.draw({ data, sample, rect, camera,
+    ...(startupRequestTrace ? { diagnosticCorrelation: {
+      appRequestSerial: requestSerial,
+      startupAttemptId: startupRequestTrace.attemptId } } : {}),
     dpr, ...(WEBGPU_FRAME_PANEL_ENABLED || WEBGPU_MAIN_VERIFY_ROUTE || !webgpuMainApp.visible ? { onTiming: (name, durationMs) => {
       markWebGPUStartupStage(name, durationMs);
       recordWebGPUFramePanelTiming(name, durationMs);
     } } : {}) }).then(receipt => {
     markWebGPUStartupStage('appReceipt');
+    recordWebGPUStartupRequest(startupRequestTrace, requestSerial, 'app-receipt', {
+      requestId: receipt?.diagnosticRequestId ?? null,
+      drawn: Boolean(receipt?.drawn), reason: receipt?.reason ?? null,
+      source: receipt?.diagnosticSource ?? null });
     // Failure/cancellation owns the pending message too. A late scheduler
     // result must not replace the terminal diagnosis or expose old pixels.
-    if (webgpuMainApp.failed || generation !== webgpuMainApp.generation) return;
+    if (webgpuMainApp.failed || generation !== webgpuMainApp.generation) {
+      recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
+        'visible-rejected', { reason: webgpuMainApp.failed ? 'app-failed' : 'app-generation' });
+      return;
+    }
     if (!receipt?.drawn) {
       const reason = String(receipt?.reason || 'not-submitted');
+      recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
+        'visible-rejected', { requestId: receipt?.diagnosticRequestId ?? null,
+          reason, source: receipt?.diagnosticSource ?? null });
       recordWebGPUStartupIncompleteFrame(reason);
       setWebGPUMainPendingDiagnostic(`frame:${reason}`);
       if (reason === 'unstable-layout')
@@ -18973,6 +19004,9 @@ function pumpWebGPUMainAppDriver() {
         connectionMode !== (document.documentElement?.dataset?.connectionMode || "") ||
         requestSerial < webgpuMainApp.lastSoundRequestSerial) {
       setWebGPUMainPendingDiagnostic('frame:submission-stale');
+      recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
+        'visible-rejected', { requestId: receipt.diagnosticRequestId ?? null,
+          reason: 'submission-stale' });
       return;
     }
     const visibleRect = mainCanvas.getBoundingClientRect();
@@ -18984,6 +19018,9 @@ function pumpWebGPUMainAppDriver() {
           !Number.isFinite(visibleRect[key]) ||
           Math.abs(visibleRect[key] - rect[key]) > 1)) {
       setWebGPUMainPendingDiagnostic('frame:visible-geometry-stale');
+      recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
+        'visible-rejected', { requestId: receipt.diagnosticRequestId ?? null,
+          reason: 'visible-geometry-stale' });
       return;
     }
     clearWebGPUMainPendingDiagnostic();
@@ -19021,7 +19058,12 @@ function pumpWebGPUMainAppDriver() {
       throw new Error('WebGPU main submitted without mystery opening sound receipts');
     if (!Array.isArray(receipt.recordResult?.gunnerAimSoundReceipts))
       throw new Error('WebGPU main submitted without Gunner aim sound receipts');
-    if (!mainCanvas.isConnected || mainCanvas.style.display === "none") return;
+    if (!mainCanvas.isConnected || mainCanvas.style.display === "none") {
+      recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
+        'visible-rejected', { requestId: receipt.diagnosticRequestId ?? null,
+          reason: 'canvas-not-presented' });
+      return;
+    }
     mainCanvas.style.opacity = "1";
     els.canvas.style.opacity = "0";
     webgpuMainApp.acquisitionCanvas.style.display = receipt.acquisitionActive ? "block" : "none";
@@ -19040,6 +19082,8 @@ function pumpWebGPUMainAppDriver() {
         width: rect.width, height: rect.height }) });
     clearWebGPUMainUnstableLayoutRetry();
     webgpuMainApp.visible = true;
+    recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
+      'visible-admitted', { requestId: receipt.diagnosticRequestId ?? null });
     stopWebGPUMainPresentationWatchdog();
     if (WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current &&
         !webgpuStartupTiming.current.frozen) {
@@ -19050,6 +19094,7 @@ function pumpWebGPUMainAppDriver() {
         ? Math.max(0, trace.firstVisibleAtMs - trace.playClickedAtMs) : null;
       trace.driverToFirstVisibleMs = Math.max(0,
         trace.firstVisibleAtMs - trace.driverStartedAtMs);
+      trace.retryTrace = webgpuMainApp.driver?.retryTraceSnapshot?.() ?? null;
     }
     mainCanvas.style.pointerEvents = "auto";
     els.canvas.style.pointerEvents = WEBGPU_MAIN_OWNER ? "none" : "auto";
@@ -20483,7 +20528,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         else claim = pass.claimPoisonEffect({ effect, scene, camera, zoom, viewport });
       } catch (_) { failure = 'hazard-poison-claim-exception'; }
       if (!failure && !claim) failure = 'hazard-poison-claim-missing';
-      if (!failure && claim.visible) {
+      if (!failure && claim?.visible) {
         try {
           const commands = pass.plan({ scene, camera, zoom, viewport });
           if (!Array.isArray(commands) || !commands.some(command =>
@@ -20496,7 +20541,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           reason: failure, poisonEvidence });
       } else {
         omitted.push({ effectId: effect.id, fieldId: claim.fieldId,
-          reason: claim.visible ? 'authoritative-poison-field-owns-webgpu-visual' :
+          reason: claim?.visible ? 'authoritative-poison-field-owns-webgpu-visual' :
             'authoritative-poison-field-outside-viewport' });
       }
       continue;
@@ -28203,6 +28248,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   try {
     onProgress?.('gpu-runtime');
     runtime = await runtimeApi.create({ canvas: mainCanvas, target, gpu,
+      retryDiagnostics: WEBGPU_MAIN_VERIFY_ROUTE,
       ...(rendererLease ? { rendererLease, expectedDevice } : {}),
       ...(!rendererLease && rendererApi ? { rendererApi } : {}),
       onFailure(error) { notify(error); void destroy(); } });
@@ -28292,8 +28338,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   return Object.freeze({
     get state() { return destroyed ? 'destroyed' : runtime.state; },
     get device() { return runtime.device; },
+    retryTraceSnapshot() { return runtime.retryTraceSnapshot?.() ?? null; },
     async draw({ data = state.data, sample, rect, dpr = 1, camera,
-      shapeProviders = {}, onTiming } = {}) {
+      shapeProviders = {}, onTiming, diagnosticCorrelation = null } = {}) {
       const requestGeneration = lifecycleGeneration;
       if (destroyed || runtime.state !== 'ready')
         return Object.freeze({ drawn: false, reason: destroyed ? 'destroyed' : runtime.state });
@@ -28343,6 +28390,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
           configuredSunbeamAudioContext = context;
         }
         const scheduled = await runtime.requestFrame({ sample, rect, dpr, camera, phase: data.phase,
+          ...(diagnosticCorrelation ? { diagnosticCorrelation } : {}),
           ...(typeof onTiming === 'function' ? { onTiming } : {}),
           recordClears: true,
           prepare: async ({ viewport, device, renderer, target: frameTarget }) => {
@@ -28444,7 +28492,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
           } });
         if (scheduled.status === 'error') throw scheduled.error;
         if (scheduled.status !== 'completed')
-          return Object.freeze({ drawn: false, reason: scheduled.status });
+          return Object.freeze({ drawn: false, reason: scheduled.status,
+            ...(diagnosticCorrelation ? { diagnosticRequestId: scheduled.diagnosticRequestId ?? null,
+              diagnosticSource: scheduled.status === 'superseded' ? 'pending-replacement' : 'scheduler-lifecycle' } : {}) });
         const outcome = scheduled.value;
         if (!outcome || typeof outcome.drawn !== 'boolean')
           throw new Error('Dormant WebGPU main scheduler returned an invalid frame result');
@@ -28453,8 +28503,11 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
         // later submission replaces them; only lifecycle invalidation retires
         // this receipt.
         if (requestGeneration !== lifecycleGeneration || destroyed)
-          return Object.freeze({ drawn: false, reason: destroyed ? 'destroyed' : 'superseded' });
-        if (!outcome.drawn) return outcome;
+          return Object.freeze({ drawn: false, reason: destroyed ? 'destroyed' : 'superseded',
+            ...(diagnosticCorrelation ? { diagnosticRequestId: scheduled.diagnosticRequestId ?? null,
+              diagnosticSource: 'driver-lifecycle' } : {}) });
+        if (!outcome.drawn) return diagnosticCorrelation ?
+          Object.freeze({ ...outcome, diagnosticRequestId: scheduled.diagnosticRequestId ?? null }) : outcome;
         const submittedHits = outcome.recordResult?.markerHitTargets;
         if (!Array.isArray(submittedHits))
           throw new Error('Dormant WebGPU main submitted without marker hit targets');
@@ -28472,6 +28525,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
           lastMedicalSfxFrameAt = now;
         }
         return Object.freeze({ ...outcome, markerHitTargets: submittedHits,
+          ...(diagnosticCorrelation ? { diagnosticRequestId: scheduled.diagnosticRequestId ?? null } : {}),
           preparationHitTargets, minimapBounds,
           deferredAcquisitionIds: outcome.recordResult.deferredAcquisitionIds,
           acquisitionActive: Boolean(outcome.recordResult.acquisitionActive) });

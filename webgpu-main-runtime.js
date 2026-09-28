@@ -11,6 +11,74 @@
   const FRAME_COST_GLOBAL = '__DVA_WEBGPU_FRAME_COST__';
   const FRAME_COST_TEST_HOOK = '__DVA_WEBGPU_FRAME_COST_TEST_HOOK__';
 
+  function createRetryTraceBuffer(capacity = 180) {
+    if (!Number.isInteger(capacity) || capacity < 1 || capacity > 180)
+      throw new RangeError('Retry trace capacity must be an integer from 1 to 180');
+    const slots = new Array(capacity);
+    let next = 0, length = 0, total = 0;
+    const sourceCounts = { pendingReplaced: 0, schedulerSuperseded: 0,
+      runtimeSuperseded: 0, suspended: 0, destroyed: 0,
+      staleScene: 0, incompleteScene: 0, unstableLayout: 0,
+      completed: 0, error: 0 };
+    const active = [];
+    const ACTIVE_SUMMARY_CAPACITY = 8;
+    return Object.freeze({
+      push(event) {
+        try {
+          const atMs = root.performance?.now?.() ?? null;
+          slots[next] = Object.freeze({ ...event, atMs });
+          next = (next + 1) % capacity;
+          length = Math.min(capacity, length + 1);
+          total++;
+          if (event.kind === 'active-begin') {
+            if (active.length === ACTIVE_SUMMARY_CAPACITY) active.shift();
+            active.push({ requestId: event.requestId, beganAtMs: atMs,
+              pendingReplacements: 0, status: null, reason: null, endedAtMs: null });
+          } else if (event.kind === 'pending-replaced') {
+            sourceCounts.pendingReplaced++;
+            const owner = active.find(item => item.requestId === event.activeId);
+            if (owner) owner.pendingReplacements++;
+          } else if (event.kind === 'settle') {
+            if (event.status === 'superseded') sourceCounts.schedulerSuperseded++;
+            else if (event.status === 'suspended') sourceCounts.suspended++;
+            else if (event.status === 'destroyed') sourceCounts.destroyed++;
+            else if (event.status === 'error') sourceCounts.error++;
+            else if (event.status === 'completed') {
+              sourceCounts.completed++;
+              if (event.reason === 'superseded') sourceCounts.runtimeSuperseded++;
+              else if (event.reason === 'stale-scene') sourceCounts.staleScene++;
+              else if (event.reason === 'incomplete-scene') sourceCounts.incompleteScene++;
+              else if (event.reason === 'unstable-layout') sourceCounts.unstableLayout++;
+            }
+            const owner = active.find(item => item.requestId === event.requestId);
+            if (owner) { owner.status = event.status; owner.reason = event.reason; }
+          } else if (event.kind === 'active-end') {
+            const owner = active.find(item => item.requestId === event.requestId);
+            if (owner) owner.endedAtMs = atMs;
+          }
+        } catch (_) { /* Diagnostics cannot change frame ownership. */ }
+      },
+      snapshot() {
+        const events = [];
+        const start = (next - length + capacity) % capacity;
+        for (let index = 0; index < length; index++)
+          events.push(slots[(start + index) % capacity]);
+        return Object.freeze({ capacity, total, dropped: total - length,
+          sourceCounts: Object.freeze({ ...sourceCounts }),
+          active: Object.freeze(active.map(item => Object.freeze({ ...item }))),
+          events: Object.freeze(events) });
+      }
+    });
+  }
+
+  function retryTraceRequested(options) {
+    if (options.retryDiagnostics !== true) return false;
+    try {
+      const params = new URLSearchParams(root.location?.search || '');
+      return params.has('verify') && params.get('webgpuMain') === '1';
+    } catch (_) { return false; }
+  }
+
   function frameCostRequested() {
     if (root[FRAME_COST_TEST_HOOK] === true) return true;
     try {
@@ -81,6 +149,9 @@
     const gate = viewportApi.createStableGate();
     let renderer = null, handle = null, disposed = false, failure = null;
     let generation = 0, scheduler = null, hiddenSuspension = false;
+    let diagnosticDispatch = null, diagnosticRequestId = null;
+    const retryTraceBuffer = retryTraceRequested(options)
+      ? createRetryTraceBuffer(options.retryDiagnosticsCapacity ?? 180) : null;
     const frameCostBuffer = frameCostRequested() ? createFrameCostBuffer() : null;
     let frameCostApi = null;
     if (frameCostBuffer) {
@@ -136,14 +207,17 @@
 
     async function draw({ sample, rect, dpr = 1, camera, phase = null, prepare, record,
       clearColor = DEFAULT_CLEAR, recordClears = false, isCurrent = () => true,
-      onTiming } = {}) {
+      onTiming, diagnosticRequestId = null } = {}) {
       const collectFrameCost = Boolean(frameCostBuffer && phase === 'playing');
       const frameCosts = collectFrameCost ? {} : null;
-      const timing = (typeof onTiming === 'function' || collectFrameCost) ? (name, startedAt = null) => {
+      const timing = (typeof onTiming === 'function' || collectFrameCost || retryTraceBuffer) ? (name, startedAt = null) => {
         try {
           const atMs = root.performance?.now?.();
           if (!Number.isFinite(atMs)) return;
           const durationMs = startedAt === null ? null : atMs - startedAt;
+          if (retryTraceBuffer && Number.isSafeInteger(diagnosticRequestId))
+            retryTraceBuffer.push({ kind: 'runtime-stage', requestId: diagnosticRequestId,
+              stage: name, durationMs });
           if (collectFrameCost) {
             if (name === 'prepareEnd') frameCosts.prepareMs = durationMs;
             else if (name === 'recordEnd') frameCosts.recordMs = durationMs;
@@ -253,10 +327,20 @@
         }
       }
     }
-    scheduler = schedulerApi.create({ draw: (scene, lease) => draw({ ...scene, isCurrent: lease.isCurrent }) });
+    scheduler = schedulerApi.create({ draw: (scene, lease) => draw(retryTraceBuffer
+      ? { ...scene, isCurrent: lease.isCurrent, diagnosticRequestId: lease.requestId }
+      : { ...scene, isCurrent: lease.isCurrent }),
+      ...(retryTraceBuffer ? { onDiagnostic: event => {
+        if (event.kind === 'request' && diagnosticDispatch) {
+          diagnosticRequestId = event.requestId;
+          retryTraceBuffer.push({ ...event, appRequestSerial: diagnosticDispatch.appRequestSerial,
+            startupAttemptId: diagnosticDispatch.startupAttemptId });
+        } else retryTraceBuffer.push(event);
+      } } : {}) });
     return Object.freeze({
       get state() { return failure || renderer.state === 'failed' ? 'failed' : disposed ? 'destroyed' : 'ready'; },
       get failure() { return failure || renderer.failure || null; },
+      retryTraceSnapshot() { return retryTraceBuffer?.snapshot() || null; },
       get viewport() { return gate.snapshot; },
       get device() { if (disposed) throw failure || new Error('Main WebGPU runtime destroyed'); return renderer.device; },
       get renderer() { if (disposed) throw failure || new Error('Main WebGPU runtime destroyed'); return renderer; },
@@ -268,7 +352,15 @@
           scheduler.resume();
           hiddenSuspension = false;
         }
-        return scheduler.request(scene, { hidden });
+        if (!retryTraceBuffer || hidden) return scheduler.request(scene, { hidden });
+        diagnosticDispatch = scene?.diagnosticCorrelation || null;
+        diagnosticRequestId = null;
+        try {
+          const result = scheduler.request(scene, { hidden });
+          const requestId = diagnosticRequestId;
+          return Number.isSafeInteger(requestId) ? result.then(outcome =>
+            Object.freeze({ ...outcome, diagnosticRequestId: requestId })) : result;
+        } finally { diagnosticDispatch = null; diagnosticRequestId = null; }
       },
       get scheduler() { return scheduler; },
       suspend() { if (!disposed) { hiddenSuspension = false; scheduler.suspend(); generation += 1; gate.suspend(); } },

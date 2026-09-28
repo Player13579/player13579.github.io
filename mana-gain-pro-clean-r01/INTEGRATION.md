@@ -1,0 +1,53 @@
+# ゲーム接続の責務分離
+
+## この候補が提供するもの
+
+`ManaGainRuntime` は、既にゲーム側で確定した増加の通知だけを受けます。ゲームstate、マナ値、移動速度、ACC2の有効化、ネットワーク送信のどれも行いません。可視性はホストの確定した値を読みます。未指定のbooleanは安全側へ不受理とします。
+
+## 正規化イベント
+
+必須fieldはid、playerId、ownerPlayerId、roomId、sessionId、type、effectKind、confirmed、discrete、naturalRegen、source、manaBefore、manaAfter、expiresAtです。MysteryならmysteryKindも必要です。variantがある場合は実際のvariantを省略せず渡してください。
+
+idは1件の実際の増加に対応する一意なIDです。playerIdは受け手、ownerPlayerIdは発動者所有のE時計を選ぶIDです。typeはgain-mana、effectKindはmana、confirmed/discreteはtrue、naturalRegenはfalse。sourceはmap-objectまたはMystery、後者のmysteryKindはmana-surgeです。
+
+manaAfter > manaBeforeでないものは不受理です。要求量が正でも、上限到達により実差分が0なら不受理です。variantがdesire-recovery/renki/renki-tenfoldなら、他の条件が成立しても不受理です。新しいunknown sourceはallowlistに追加しない限り表示されません。
+
+expiresAtは `now()` と同じ単調な実時間軸の秒です。owner-effective秒ではありません。サーバー絶対時刻をそのまま渡さず、ホストが権威的な失効状態と時差を正規化してください。受理時だけでなく各frame・GPU確認後にも失効を再検査します。
+
+## 受け手と所有者
+
+`resolvePlayer(playerId)` は現在のworld足元位置、同じroom/session、alive、present、inVent、invisible、visibleToViewer、opacity、onScreenを返します。`onScreen` は中心点だけで判断せず、ゲームの正式な可視判定結果を使ってください。相手が死者・退場・ベント・透明・別sessionならEを破棄します。
+
+`resolveOwner(ownerPlayerId)` は実際の所有者のroom/sessionとACC2状態を返します。acc2.stateがactiveかつmovementEffectiveがtrueの間だけ2倍です。待機・予約・activeだが実効falseは1倍です。プレイヤー全体のグローバル速度や閲覧者の速度は渡しません。
+
+`project(currentWorld, player)` はcanvasの実raster pixel座標とpx/wu尺度、visibleを返します。ソースeventに記録された古い位置を使いません。通知から描画までに移動した場合も、源・輸送・受領・光は同じ現在の足元位置へ追従します。
+
+manaReceiveRegionを省略すると、足元相対(0,-65)wu・半径20×26wuです。実キャラで異なる場合、ホストが正規化した領域を供給できます。ただし全E枠内での検査が必要です。Eが勝手にキャラの姿勢・サイズ・床を生成することはありません。
+
+## 呼び出し順序
+
+ユーザー操作に応じてOneShotAudio.unlockを呼びます。再生通知から自動resumeしません。SharedMediaClockは稼働中のAudioContext時計と非稼働時のperformance時計を連続な単調時計として提供します。Runtimeとすべての期限をこの基準に正規化してください。
+
+確定済み通知はRuntime.acceptへ一度だけ渡します。通知が再受信されてもledgerが同じIDを再生しません。別playerIdで同じIDを送った場合も別イベントにはせずid-recipient-conflictになります。
+
+描画更新はゲームの状態更新・可視判定の**後**に行います。Runtime.snapshotを取得し、Renderer.renderへ渡します。その際 `isCurrent` にRuntime.frameAllowedを結んで、非同期前後の古いsnapshotを表示許可として再利用しないでください。evidenceはneedsEvidenceがある初回だけtrueで十分です。Rendererの結果をRuntime.acknowledgeFrameへ渡します。ここで初めて一回の発音機会が確定します。
+
+実効ACC2の切替イベントでは `setOwnerAcc2(ownerId, state, timestamp)` を呼びます。timestampは共通now()軸です。前の区間を古いrateで積分し、以後を新しいrateにするため位置は連続です。snapshotでもownerの現在値を検出できますが、ポーリングだけなら切替の精度は描画tick間隔に制限されます。厳密な切替境界にはホストのtimestamp通知を使用してください。
+
+非表示、死亡、退場、ベント、透明化の通知時には `invalidate()` を同期的に呼び、次の描画で空のEを反映してください。ルームまたはsession変更時は `resetScope(newRoomId,newSessionId)`。GPU失敗ではRuntimeを破棄または該当イベントを取消します。古いGPU fenceやonendedはtoken/generation/sourceオブジェクトで新scopeから隔離されます。
+
+## 既存ゲームの描画passへ入れる場合
+
+同梱Renderer.renderはプレビュー用の背景を描きます。これをそのままゲーム画面に上書きしないでください。既存ゲームに入れる際は、Renderer.prepare / recordの効果passを既存WebGPU rendererへ接続し、ゲーム側の色空間、attachment、depth、前後順、queryの所有を揃えます。この接続はこのパッケージでは実施していません。
+
+主形はpremultiplied linear source-over、局所光はlinear additiveでalphaを書き換えません。既定のcanvasはopaqueで、sRGB viewFormatを明示します。透明CSS canvasでRGB>alphaの加算光をそのまま合成できると仮定せず、ゲームの不透明scene attachmentまたは適切なlinear光バッファへ接続してください。画像テクスチャ資産は不要です。
+
+`sourceBoundLights` は同じ源/受領位置・寿命・輝度に結び付くlightデータを返します。既存ゲームの材質照明へ渡すための境界であり、現時点ではnative light systemへ配線していません。プレビュー上の局所増光を実ゲームのキャラ材質が照明された証拠にしてはいけません。
+
+実際のキャラへの前後・遮蔽、足元中心の定義、遠近やカメラ変換、壁越しの漏れはホスト描画との統合テストが必要です。汎用プレースホルダー人形で成功を偽装しない方針のため、候補プレビューにはそれらの実証はありません。
+
+## 遅延と不可逆な提示の限界
+
+GPUの正のocclusion sampleとqueue完了は、色が画面へ実際にscanoutされた時刻を返しません。SFXは確認時点のowner位相をoffsetとして一度だけ開始し、遅れた分をphase=0から再演しません。GPUが極端に遅く、durationを過ぎて確認されたイベントは音を抑制します。
+
+入力後のprivacy変更を、既に提示されたGPUフレームから遡って消すことはできません。提出直前に最終可視性を確定するホスト責務、提出前フィルタ、fence後の取消し、次の空描画、音の即時停止を組み合わせます。OS提示・DAC出力までの遅延ゼロは主張しません。

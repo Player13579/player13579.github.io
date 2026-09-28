@@ -24,6 +24,7 @@
     'mana-pro-r02': { magnification: 2.0, focusX: 627, focusY: 336 },
     'mana-pro-r03': { magnification: 2.2, focusX: 627, focusY: 310 },
     'mana-pro-r04': { magnification: 1.5, focusX: 490, focusY: 310 },
+    'mana-pro-clean-r01': { magnification: 6.0, focusX: 490, focusY: 310 },
     'rational-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'ninjutsu-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'facility-bookshelf-pro-r01': { magnification: 2.0, focusX: 490, focusY: 310 },
@@ -45,7 +46,7 @@
     'luck-pro-r02', 'luck-pro-r01',
     'barrier-pro-r09', 'barrier-pro-r08', 'barrier-pro-r07', 'barrier-pro-r06', 'barrier-pro-r05', 'barrier-pro-r04', 'barrier-pro-r03', 'barrier-pro-r02', 'barrier-pro-r01',
     'stamina-pro-r05', 'stamina-pro-r04', 'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
-    'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
+    'mana-pro-clean-r01', 'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
     'rational-pro-r01', 'ninjutsu-pro-r01',
     'facility-bookshelf-pro-r01', 'facility-reading-lamp-pro-r01', 'facility-security-console-pro-r01',
     'item-pickup-pro-r01', 'taser-pro-r01', 'item-use-pro-r01', 'facility-next3-pro-r01', 'heart-teleport-pro-r01',
@@ -83,7 +84,7 @@
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
       version('barrier-pro-r09', 'GPT Pro r0.9', 'barrier-pro-r09/embed.html', 'barrier-pro-r09/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', 'create・absorb・fracture・bustの暗明8面をH64自動ループで確認。原本の造形と音源を保持した技術再生版です。視覚品質と聴感は版別審査中で、本編には接続していません。', 'effect-H64', 1, true),
       version('barrier-pro-r08', 'GPT Pro r0.8', 'barrier-pro-r08/embed.html', 'barrier-pro-r08/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質未達・SFX聴感未確認・本編未採用', 'H64の暗明でcreate・absorb・fracture・bustをChrome実WebGPU再生。立体感は増したが、実寸では輪郭がぼやけ、4事象の作用差が弱く、明背景のbustは形が読みにくい。視覚評価60/100、SFXは未評価。本編接続は未受入です。', 'effect-H64', 1, true),
-      version('barrier-pro-r07', 'GPT Pro r0.7', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・造形品質未達・SFX聴感未確認・本編未採用', '4事象のH64自動ループとGPUエラー0を確認。防護場が平面的な八角輪郭に見え、吸収・破断・解除の作用差が弱いため、Proにr0.8を改稿依頼しました。', 'effect-H64', 1, true),
+      version('barrier-pro-r07', 'GPT Pro r0.7', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', 'ユーザー品質採用・本編接続作業中・SFX聴感未確認', '2026-09-28のユーザー指示でr0.7を採用。4事象のH64自動ループとGPUエラー0は確認済み。以前の品質未達評価は採用指示で更新しました。本編への版固有接続とSFX聴感はまだ検証中です。', 'effect-H64', 1, true),
       version('barrier-pro-r06', 'GPT Pro r0.6', 'barrier-pro-r06/embed.html', 'barrier-pro-r06/barrier-pro-renderer.mjs', 'GPT Pro旧版・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '原本の合成テクスチャ型不一致をadapterで修復して四事象を自動再生。白飛びは棄却理由にせず、四事象の造形・作用とSFXの品質確認を残します。', 'effect-H64', 1, true),
       version('barrier-pro-r05', 'GPT Pro r0.5', 'barrier-pro-r05/embed.html', 'barrier-pro-r05/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質不合格・SFX聴感未確認・本編未採用', '吸収中のH64保護空域が小さな不透明のカップ状へ潰れるため品質不合格。既存設計の自動ループWebGPU比較版で、本編には接続していません。', 'effect-H64', 1, true),
       version('barrier-pro-r04', 'GPT Pro r0.4', 'barrier-pro-r04/index.html', 'barrier-pro-r04/preview.mjs', 'GPT Pro制作・実GPU再生可能・品質未受入・SFX聴感未確認・本編未採用', 'GPT Proによる巻膜案。過去にカフ状に見えるとの報告があります。背景の明暗や淡さを不合格理由にせず、形態と全寿命の視覚品質を独立に再審査中です。SFX聴感も未受入です。', 'effect-H64', 1, true),
@@ -99,6 +100,7 @@
       version('stamina-pro-r01', 'GPT Pro r0.1', 'stamina-pro-r01-preview.html', 'stamina-pro-r01/renderer.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体へ充填されるスタミナ回復案。限定的な実WebGPU再生は確認済み。原寸の全寿命、聴感、ゲーム本編での発動は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'mana-pro', title: 'マナ獲得（GPT Pro）', versions: [
+      version('mana-pro-clean-r01', 'GPT Pro 独立新稿 r0.1', 'mana-gain-pro-clean-r01/gallery.html', 'mana-gain-pro-clean-r01/src/renderer.js', 'GPT Pro制作・実GPU再生可能・H64視覚品質未達・SFX聴感未確認・本編未採用', '独立新稿をWebGPUで自動ループ再生。原寸H64では主形が小さな菱形状に留まり、身体への到着・蓄積が読めないため創作改稿を要します。発光とGPU描画は確認済み。聴感と本編接続は未受入です。', 'effect-H64', 1, true),
       version('mana-pro-r04', 'GPT Pro r0.4', 'webgpu-mana-pro-r04/embed.html', 'webgpu-mana-pro-r04/src/gpu.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '外部供給帯から身体境界の変換を経て体内へ充填する改稿。暗明H64でWebGPU描画を確認。全寿命の視覚品質とSFX聴感、本編接続は未受入です。', 'effect-H64', 1, true),
       version('mana-pro-r03', 'GPT Pro r0.3', 'webgpu-mana-pro-r03/index.html', 'webgpu-mana-pro-r03/src/renderer.js', 'GPT Pro制作・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'Pro原本のWGSL三項演算子を同義のselectへ最小修正し、H64単発を実WebGPUで再生。身体への獲得表現の全寿命品質と聴感は未受入です。', 'effect-H64', 1, true),
       version('mana-pro-r02', 'GPT Pro r0.2', 'webgpu-mana-pro-r02/index.html', 'webgpu-mana-pro-r02/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '新しい容積受容案。実ChromeのWebGPUでコンパイルと描画を確認。ギャラリーではH64単発を自動再生します。全寿命の視覚品質と音、実ゲームでの接続は未受入です。', 'effect-H64', 1, true),
@@ -167,7 +169,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v50');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v51');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
