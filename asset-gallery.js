@@ -274,10 +274,10 @@
     entries: Object.freeze(exposedEntries) });
   const imageGroups = [
     {id:'cafeteria-gpt-pro',category:'map',title:'カフェテリア · GPT Pro',creatorDisplayName:'GPT Pro',quality:'rejected-geometry',adoption:'not-adopted',integration:'not-integrated',reason:'ChatGPT Proの画像生成候補。4版すべて未採用・ゲーム未統合。North/West opening geometryが不合格。Bコード/生成記録: outputs/request-20260929/map-resume/generation-manifest.json。',versions:[
-      {id:'cafeteria-pro-candidate-01',title:'GPT Pro candidate 01',src:'assets/cafeteria-pro-candidate-01.png',hash:'eaf56895b2d8bfda638ffe12a7ef3f5d812070b1b4d655afca4538c7f7b8f57',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'西側の開口幅不足（約143 logical units / 要求190）。歴史候補として保持。'},
-      {id:'cafeteria-pro-candidate-02',title:'GPT Pro candidate 02',src:'assets/cafeteria-pro-candidate-02.png',hash:'83987386bb00cc712b10380c25c011f7311ee300307ab35a99153d074886f7f0',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北・西の両開口が内側endcap間の幅と中心条件に不合格。歴史候補として保持。'},
+      {id:'cafeteria-pro-candidate-04',title:'GPT Pro candidate 04',src:'assets/cafeteria-pro-candidate-04.png',hash:'ef0abe403f5f490613c2d0964675d3be40f096dce6dc51f500ee9ba53d2bf92c',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北・西両開口の目視推定が契約に不合格。独立したpixel-segmented QAではない。最後の保存候補。'},
       {id:'cafeteria-pro-candidate-03',title:'GPT Pro candidate 03',src:'assets/cafeteria-pro-candidate-03.png',hash:'5f4db0fa28657bde8572b50e7cdb092acd8e3713efea318d61c7a1c1d375bb83',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'開口幅/中心の目視推定が契約に不合格。独立したpixel-calibrated QAではない。歴史候補として保持。'},
-      {id:'cafeteria-pro-candidate-04',title:'GPT Pro candidate 04',src:'assets/cafeteria-pro-candidate-04.png',hash:'ef0abe403f5f490613c2d0964675d3be40f096dce6dc51f500ee9ba53d2bf92c',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北・西両開口の目視推定が契約に不合格。独立したpixel-segmented QAではない。最後の保存候補。'}]}
+      {id:'cafeteria-pro-candidate-02',title:'GPT Pro candidate 02',src:'assets/cafeteria-pro-candidate-02.png',hash:'83987386bb00cc712b10380c25c011f7311ee300307ab35a99153d074886f7f0',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北・西の両開口が内側endcap間の幅と中心条件に不合格。歴史候補として保持。'},
+      {id:'cafeteria-pro-candidate-01',title:'GPT Pro candidate 01',src:'assets/cafeteria-pro-candidate-01.png',hash:'eaf56895b2d8bfda638ffe12a7ef3f5d812070b1b4d655afca4538c7f7b8f57',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'西側の開口幅不足（約143 logical units / 要求190）。歴史候補として保持。'}]}
   ];
     function selectImage(group, versionIndex) {
     const item=group.versions[versionIndex];
