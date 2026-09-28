@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r24",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.24",
+  "version": "astra-status-cleanse-r0.24",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "Astra自己不合格: 可視面積は改善したが、太い発光リボン/帯が身体を回る形に留まり、正の回復作用としての固有構造が不足。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r24/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r24/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r24.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "8e960a8b36e7601ddae0729abeda2ed8b5b9f4e7f5d1b931c088c19ea92f2ffe",
+    "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+    "cleanse.mjs": "751de8e9878e941dbef028018a89f27d09c4688eafad7874147e8844ddd15dfe",
+    "field-r24.mjs": "eba2e1917729e69a9696f065c731878f4105a9cf4ea52067103f237189d2833a",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 351,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r24/evidence/",
+  "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+}

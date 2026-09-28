@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r25",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.25",
+  "version": "astra-status-cleanse-r0.25",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "Astra自己不合格: 背面光が胴で隠れ、上端だけが頭の左右の角/触角に見える。上端の長い停止も装飾感を強める。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r25/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r25/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r25.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "bf944cc6b74e4770b998b53e495d4fed29d142de94b0276a367d5d86ddd44b2e",
+    "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+    "cleanse.mjs": "5dcfaf80e5fa12e8726883133102b2a0b46431f511457976023e867d7723a953",
+    "field-r25.mjs": "543aefea23e05bed26071a3b80ddb55901c8f742c09efb2bbb4c2d4779dda2a3",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 333,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r25/evidence/",
+  "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+}

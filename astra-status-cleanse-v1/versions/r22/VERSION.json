@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r22",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.22",
+  "version": "astra-status-cleanse-r0.22",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "Astra自己不合格: 腕の応答面が葉/羽、足元が足ひれに見え、回復作用よりアクセサリー出現を連想させる。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r22/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r22/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r22.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "d60ffb06d911807facf1c114006ebf0041ca622ce9cad23501589af7fd36b289",
+    "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+    "cleanse.mjs": "e4be074b11d55438df94629a6fb56daab96f96665f59031e91e1d12998ea0192",
+    "field-r22.mjs": "13436b085202929402d6114946b65d6c0987860fb300e4dc615afcd602dc7f91",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 340,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r22/evidence/",
+  "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+}
