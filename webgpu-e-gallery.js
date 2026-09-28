@@ -8,8 +8,8 @@
     'barrier-astra': { magnification: 2.3, focusX: 510, focusY: 370 },
     // These H64 replay packages occupy a small part of their 980x620 source
     // canvas. Enlarge the gallery view only; each preview still renders H64.
-    'mana-astra': { magnification: 4.25, focusX: 490, focusY: 310 },
-    'stamina-astra': { magnification: 4.25, focusX: 490, focusY: 310 },
+    'mana-astra': { magnification: 4.25, focusX: 245, focusY: 310 },
+    'stamina-astra': { magnification: 4.25, focusX: 518, focusY: 343 },
     'status-cleanse-astra': { magnification: 4.25, focusX: 490, focusY: 310 },
     'barrier-pro-r07': { magnification: 1.0, focusX: 490, focusY: 310 }
   });
@@ -123,7 +123,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v68');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v69');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

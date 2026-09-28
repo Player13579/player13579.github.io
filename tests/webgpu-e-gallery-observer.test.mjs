@@ -29,3 +29,16 @@ test('Pages gallery publishes replayable Astra history newest first with version
   assert.ok(gallerySource.indexOf("version('sunbeam-astra-clean-v3'") < gallerySource.indexOf("version('sunbeam-astra-clean-v2'"), 'latest Sunbeam appears first');
   assert.ok(gallerySource.indexOf("version('luck-astra-clean-v4'") < gallerySource.indexOf("version('luck-astra-clean-v3'"), 'latest Luck appears first');
 });
+
+test('H64 Mana, Stamina, and Status views focus their actual actor regions', () => {
+  for (const [group, focusX, focusY] of [
+    ['mana-astra', 245, 310], // one panel of the side-by-side dark/light preview
+    ['stamina-astra', 518, 343], // embedded panel's authoritative support point
+    ['status-cleanse-astra', 490, 310]
+  ]) {
+    const view = gallerySource.match(new RegExp(`'${group}': \\{ magnification: [\\d.]+, focusX: ([\\d.]+), focusY: ([\\d.]+) \\}`));
+    assert(view, `${group} has an explicit gallery transform`);
+    assert.equal(Number(view[1]), focusX, `${group} focusX matches its renderer layout`);
+    assert.equal(Number(view[2]), focusY, `${group} focusY matches its renderer layout`);
+  }
+});
