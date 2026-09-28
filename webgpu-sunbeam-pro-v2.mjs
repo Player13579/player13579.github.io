@@ -706,8 +706,7 @@ export async function create({ device, format, audio } = {}) {
   });
 
   function record(frame, plans) {
-    requireValue(owner.live && pending.size < MAX_PENDING_FRAMES,
-      'renderer disposed, device lost, or too many unacknowledged frames');
+    requireValue(owner.live, 'renderer disposed or device lost');
     requireValue(frame && Number.isSafeInteger(frame.id) && frame.id > lastRecordedFrame &&
       frame.encoder && frame.colorView, 'frame id must increase; encoder and colorView are required');
     finite(frame.sampledAtMs, 'frame.sampledAtMs', 0, performance.now() + 4);
@@ -723,6 +722,20 @@ export async function create({ device, format, audio } = {}) {
       requireValue(!causeIds.has(candidate.eventId), 'duplicate cause ID in one frame');
       causeIds.add(candidate.eventId);
     }
+    // Empty preparation frames have no Sunbeam GPU work or buffer. Keep their
+    // receipt contract, but do not retain them in the bounded GPU-work queue.
+    if (!plans.length) {
+      const receipt = Object.freeze({ frameId: frame.id });
+      RECEIPTS.set(receipt, {
+        owner, id: frame.id, encoder: frame.encoder, sampledAtMs: frame.sampledAtMs,
+        plans: [], buffer: null, validation: Promise.resolve(null), phase: 'recorded',
+        work: null
+      });
+      lastRecordedFrame = frame.id;
+      return receipt;
+    }
+    requireValue(pending.size < MAX_PENDING_FRAMES,
+      'too many unacknowledged frames');
     const draws = plans.filter(candidate => candidate.drawable);
     let buffer = null;
     pushErrorScopes(device);
@@ -782,8 +795,9 @@ export async function create({ device, format, audio } = {}) {
   }
 
   async function submitted(receipt, proof) {
-    const state = pending.get(receipt);
-    requireValue(owner.live && state?.phase === 'recorded' && state.id > lastSubmittedFrame,
+    const state = pending.get(receipt) ?? RECEIPTS.get(receipt);
+    requireValue(owner.live && state?.owner === owner && state.phase === 'recorded' &&
+      state.id > lastSubmittedFrame,
       'unrecorded, reused, disposed or out-of-order receipt');
     requireValue(proof?.frameId === state.id && proof.encoder === state.encoder &&
       typeof proof.validation?.then === 'function' && typeof proof.done?.then === 'function',
@@ -814,8 +828,9 @@ export async function create({ device, format, audio } = {}) {
   }
 
   function abandon(receipt) {
-    const state = pending.get(receipt);
-    requireValue(state?.phase === 'recorded', 'only an unsubmitted record may be abandoned');
+    const state = pending.get(receipt) ?? RECEIPTS.get(receipt);
+    requireValue(state?.owner === owner && state.phase === 'recorded',
+      'only an unsubmitted record may be abandoned');
     state.buffer?.destroy();
     state.buffer = null;
     pending.delete(receipt);

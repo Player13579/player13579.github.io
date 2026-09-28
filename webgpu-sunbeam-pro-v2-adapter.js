@@ -5,7 +5,7 @@
   async function create({ renderer, source, audio } = {}) {
     if (!renderer?.device || !renderer?.format)
       throw new TypeError('Sunbeam v2 needs the shared renderer');
-    const module = source || await import('./webgpu-sunbeam-pro-v2.mjs');
+    const module = source || await import('./webgpu-sunbeam-pro-v2.mjs?fix=empty-frame-backpressure-v1');
     if (typeof module?.plan !== 'function' || typeof module?.create !== 'function')
       throw new TypeError('Sunbeam v2 source is unavailable');
     let engine = await module.create({ device: renderer.device, format: renderer.format,
