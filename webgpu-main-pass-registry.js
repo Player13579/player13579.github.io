@@ -44,6 +44,7 @@
     bodyBenefitExtra: root.DvaWebGPUBodyBenefitExtra || (typeof require === 'function' ? require('./webgpu-body-benefit-extra.js') : null),
     statusTempo: root.DvaWebGPUStatusTempoE || (typeof require === 'function' ? require('./webgpu-status-tempo-e.js') : null),
     barrierE: root.DvaWebGPUBarrierE || (typeof require === 'function' ? require('./webgpu-barrier-e.js') : null),
+    barrierProR07Game: root.DvaWebGPUBarrierProR07Game || (typeof require === 'function' ? require('./webgpu-barrier-pro-r07-game.js') : null),
     bustE: root.DvaWebGPUBustE || (typeof require === 'function' ? require('./webgpu-bust-e.js') : null),
     dodgeE: root.DvaWebGPUDodgeE || (typeof require === 'function' ? require('./webgpu-dodge-e.js') : null),
     renkiE: root.DvaWebGPURenkiE || (typeof require === 'function' ? require('./webgpu-renki-e.js') : null),
@@ -164,7 +165,7 @@
       preparationSummons: 'create', players: 'createTextureCache',
       playerNameplates: 'create', headMarkers: 'create',
       gunnerAim: 'create', killCamera: 'create', hitEffects: 'record',
-      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusTempo: 'create', barrierE: 'create', bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
+      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusTempo: 'create', barrierE: 'create', ...(modules === defaults || modules.barrierProR07Game ? { barrierProR07Game: 'create' } : {}), bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
       attackTargets: 'record', taskIndicators: 'create', hud: 'create',
       minimap: 'create', modeBanner: 'create', killBloom: 'create',
       killAnimation: 'create', sensory: 'enqueue', markerExplanation: 'create',
@@ -266,6 +267,10 @@
       progress('sunbeam');
       const sunbeamCreation = startRequiredPass('sunbeam', () =>
         modules.sunbeamE.create({ renderer }));
+      const barrierR07Creation = modules.barrierProR07Game
+        ? startRequiredPass('barrierR07', () => modules.barrierProR07Game.create({
+          device: renderer.device, format: renderer.format }))
+        : Promise.resolve({ status: 'fulfilled', value: null });
       // These independent E pipelines use the same renderer and can compile
       // while the field and Sunbeam passes initialize. Keep them registry-owned
       // immediately so every later failure follows the normal rollback path.
@@ -288,27 +293,35 @@
             liveHealIds.clear(); for (const id of next) liveHealIds.add(id);
           }, record: pass.record, ready: pass.ready, destroy: pass.destroy });
       });
-      const [fieldResult, sunbeamResult] = await Promise.all([
-        fieldCreation, sunbeamCreation]);
-      if (fieldResult.status === 'rejected' || sunbeamResult.status === 'rejected') {
+      const [fieldResult, sunbeamResult, barrierR07Result] = await Promise.all([
+        fieldCreation, sunbeamCreation, barrierR07Creation]);
+      if (fieldResult.status === 'rejected' || sunbeamResult.status === 'rejected' ||
+          barrierR07Result.status === 'rejected') {
         // If the peer succeeded, it has not been published or adopted yet.
         // Retire it here and preserve the original creation error.
-        const successful = [fieldResult, sunbeamResult]
+        const successful = [fieldResult, sunbeamResult, barrierR07Result]
           .filter(result => result.status === 'fulfilled').map(result => result.value);
         await Promise.allSettled(successful.map(value => Promise.resolve()
           .then(() => value?.destroy?.())));
-        throw fieldResult.status === 'rejected' ? fieldResult.reason : sunbeamResult.reason;
+        throw fieldResult.status === 'rejected' ? fieldResult.reason :
+          sunbeamResult.status === 'rejected' ? sunbeamResult.reason : barrierR07Result.reason;
       }
       const fieldPass = fieldResult.value;
       const sunbeam = sunbeamResult.value;
+      const barrierR07 = barrierR07Result.value;
       try {
         add('map', fieldPass, 'enqueue');
         add('sunbeamE', sunbeam, 'record');
+        if (barrierR07) add('barrierProR07Game', Object.freeze({ device: renderer.device,
+          record: barrierR07.record, destroy: barrierR07.destroy }), 'record');
       } catch (error) {
         // add() retires the pass whose registration failed. If map failed
         // first, Sunbeam has not been handed to the registry yet.
         if (!passes.map && !owned.includes(sunbeam)) {
           try { await sunbeam?.destroy?.(); } catch (_) { /* Preserve registration error. */ }
+        }
+        if (barrierR07 && !passes.barrierProR07Game) {
+          try { await barrierR07.destroy(); } catch (_) { /* Preserve registration error. */ }
         }
         throw error;
       }

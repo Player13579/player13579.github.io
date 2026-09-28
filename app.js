@@ -1424,6 +1424,52 @@ let HEAL_E_SFX_PLAYER = null;
 let HEAL_E_SFX_CONTEXT = null;
 let HEAL_E_SFX_ACTIVE = null;
 let healESfxSequence = 0;
+let BARRIER_R07_SFX_PLAYER = null;
+let BARRIER_R07_SFX_CONTEXT = null;
+
+function commitBarrierR07SoundFrame(data, receipts) {
+  if (!Array.isArray(receipts) || !receipts.length ||
+      !window.DvaWebGPUBarrierProR07Sfx?.createPlayer ||
+      !window.DvaWebGPUBarrierE?.resolveEvent ||
+      state.screen !== 'game' || document.hidden || IS_VERIFICATION_MODE ||
+      state.audio.muted || !state.audio.unlocked || isSensoryBlocked(data) ||
+      state.audio.context?.state !== 'running' ||
+      !(state.audio.master?.gain?.value > 0)) return;
+  if (BARRIER_R07_SFX_CONTEXT !== state.audio.context) {
+    BARRIER_R07_SFX_PLAYER?.destroy();
+    BARRIER_R07_SFX_CONTEXT = state.audio.context;
+    BARRIER_R07_SFX_PLAYER = window.DvaWebGPUBarrierProR07Sfx.createPlayer({
+      context: state.audio.context, destination: state.audio.master });
+  }
+  const roomId = String(data?.roomId || '');
+  const roomGeneration = state.roomSessionGeneration;
+  const sourceFor = receipt => (state.magicEffects || []).find(effect =>
+    String(effect?.id) === String(receipt?.effectId) &&
+    window.DvaWebGPUBarrierE.resolveEvent(effect)?.variant === receipt?.variant);
+  const selected = receipts.filter(receipt =>
+    receipt?.roomId === roomId && String(receipt?.ownerId || '') &&
+    Number.isFinite(receipt.progress) && receipt.progress >= 0 && receipt.progress < 1 &&
+    sourceFor(receipt));
+  if (!selected.length) return;
+  for (const receipt of selected) {
+    BARRIER_R07_SFX_PLAYER.play([{ roomId, roomGeneration,
+      eventId: String(receipt.effectId), event: receipt.variant }], {
+      verify: IS_VERIFICATION_MODE, muted: state.audio.muted,
+      isCurrent: () => {
+        const source = sourceFor(receipt);
+        const elapsed = source && eEffectNow(source, state.data, performance.now()) - source.startedAt;
+        return state.roomId === roomId && state.roomSessionGeneration === roomGeneration &&
+          state.screen === 'game' && !document.hidden && !state.audio.muted &&
+          state.audio.context === BARRIER_R07_SFX_CONTEXT &&
+          state.audio.context?.state === 'running' && !isSensoryBlocked(state.data) &&
+          elapsed >= 0 && elapsed <
+            (receipt.variant === 'create' || receipt.variant === 'absorb' ? 650 : 480);
+      } }).catch(error => {
+        document.body.dataset.barrierR07SfxError = String(error?.message || error).slice(0, 180);
+      });
+  }
+}
+
 
 function stopHealESfx() {
   HEAL_E_SFX_PLAYER?.stop();
@@ -19043,6 +19089,8 @@ function pumpWebGPUMainAppDriver() {
       throw new Error('WebGPU main submitted without stamina benefit sound receipts');
     if (!Array.isArray(receipt.recordResult?.manaBenefitSoundReceipts))
       throw new Error('WebGPU main submitted without mana benefit sound receipts');
+    if (!Array.isArray(receipt.recordResult?.barrierSoundVisualReceipts))
+      throw new Error('WebGPU main submitted without Barrier r0.7 sound receipts');
     if (!Array.isArray(receipt.recordResult?.environmentSoundReceipts))
       throw new Error("WebGPU main submitted without environment sound receipts");
     if (!Array.isArray(receipt.recordResult?.sunbeamHandReceipts))
@@ -19147,6 +19195,7 @@ function pumpWebGPUMainAppDriver() {
     commitStaminaBenefitSoundFrame(data, receipt.recordResult.staminaBenefitSoundReceipts);
     commitManaBenefitSoundFrame(data, receipt.recordResult.manaBenefitSoundReceipts);
     commitHealESfxVisualFrame(data, receipt.recordResult.healSoundVisualReceipts);
+    commitBarrierR07SoundFrame(data, receipt.recordResult.barrierSoundVisualReceipts);
     commitVisibleVisualSoundFrame(data,
       receipt.recordResult.phenomenonSoundVisualReceipts,
       receipt.recordResult.environmentSoundReceipts, true);

@@ -570,11 +570,13 @@
       const mysteryOpeningSoundReceipts = [];
       const gunnerAimSoundReceipts = [];
       const healSoundVisualReceipts = [];
+      const barrierSoundVisualReceipts = [];
       const fireActivationReceipts = [];
       const healEvents = (stages.magicEffects?.events || []).filter(event => event.type === 'healE');
       const healRecorded = new Set();
       passes.healE?.reconcile?.(healEvents.map(event => String(event.effectId)));
       const sunbeamHands = new Map();
+      const barrierSpriteQuads = new Map();
       let sunbeamFrameToken = null;
       const run = (name, callback) => {
         const input = stages[name];
@@ -705,6 +707,27 @@
         frame.stage('world:players:sprite');
         const markerViewport = Object.freeze({ ...viewport, generation: input.markerGeneration });
         commands.forEach((command, index) => {
+          const sprite = command?.sprite;
+          const transform = sprite?.transform;
+          if (Array.isArray(transform) && transform.length === 6 &&
+              transform.every(Number.isFinite) &&
+              [sprite.x, sprite.y, sprite.w, sprite.h].every(Number.isFinite) &&
+              sprite.w > 0 && sprite.h > 0) {
+            const [a, b, c, d, tx, ty] = transform;
+            const corners = [[sprite.x, sprite.y], [sprite.x + sprite.w, sprite.y],
+              [sprite.x, sprite.y + sprite.h], [sprite.x + sprite.w, sprite.y + sprite.h]]
+              .map(([x, y]) => ({ x: a * x + c * y + tx, y: b * x + d * y + ty }));
+            const top = Math.min(...corners.map(point => point.y));
+            const bottom = Math.max(...corners.map(point => point.y));
+            const left = Math.min(...corners.map(point => point.x));
+            const right = Math.max(...corners.map(point => point.x));
+            const playerId = String(command.playerId || '');
+            if (barrierSpriteQuads.has(playerId))
+              throw new Error(`Barrier r0.7 owner ${playerId} has duplicate submitted sprites`);
+            barrierSpriteQuads.set(playerId, Object.freeze({
+              center: Object.freeze({ x: (left + right) / 2, y: (top + bottom) / 2 }),
+              receiverHeightPx: bottom - top }));
+          }
           const ownerHeals = healEvents.filter(event =>
             event.input.planned.ownerId === String(command.playerId));
           const recordHealSide = side => {
@@ -1009,7 +1032,27 @@
                 progress: event.input.planned.progress
               }));
             }
-          } else if (['barrierE', 'bustE', 'dodgeE', 'renkiE', 'ideaE'].includes(event.type)) {
+          } else if (event.type === 'barrierE') {
+            const outcome = need('barrierE', 'record').record({ frame, target, viewport,
+              ...event.input });
+            const planned = outcome?.events?.[0];
+            const quad = barrierSpriteQuads.get(String(planned?.ownerId || ''));
+            if (outcome?.drawn !== 1 || outcome.events?.length !== 1 ||
+                String(planned?.id) !== String(event.effectId) || !quad ||
+                !(quad.receiverHeightPx > 0))
+              throw new Error(`Barrier r0.7 ${event.effectId} lacks its submitted owner sprite`);
+            const rendered = need('barrierProR07Game', 'record').record({ frame, target, viewport,
+              events: [{ id: planned.id, event: planned.variant, tMs: planned.tMs,
+                center: quad.center, receiverHeightPx: quad.receiverHeightPx }] });
+            if (rendered?.drawn !== 1 || rendered.eventIds?.[0] !== planned.id)
+              throw new Error(`Barrier r0.7 ${event.effectId} was not drawn once`);
+            const roomId = String(stages.magicEffects?.roomId ??
+              stages.magicEffects?.data?.roomId ?? '');
+            if (!roomId) throw new Error(`Barrier r0.7 ${event.effectId} lacks room identity`);
+            barrierSoundVisualReceipts.push(Object.freeze({ roomId,
+              effectId: planned.id, ownerId: planned.ownerId,
+              variant: planned.variant, progress: planned.progress }));
+          } else if (['bustE', 'dodgeE', 'renkiE', 'ideaE'].includes(event.type)) {
             const outcome = need(event.type, 'record').record({ frame, target, viewport,
               ...event.input });
             const entries = outcome?.events || outcome?.effects;
@@ -1137,6 +1180,7 @@
         mysteryOpeningSoundReceipts: Object.freeze(mysteryOpeningSoundReceipts.slice()),
         gunnerAimSoundReceipts: Object.freeze(gunnerAimSoundReceipts.slice()),
         healSoundVisualReceipts: Object.freeze(healSoundVisualReceipts.slice()),
+        barrierSoundVisualReceipts: Object.freeze(barrierSoundVisualReceipts.slice()),
         fireActivationReceipts: Object.freeze(fireActivationReceipts.slice()),
         sunbeamHandReceipts: Object.freeze([...sunbeamHands.values()]),
         sunbeamFrameToken });
