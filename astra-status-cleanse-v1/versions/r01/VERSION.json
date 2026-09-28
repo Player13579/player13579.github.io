@@ -1,0 +1,39 @@
+{
+  "id": "status-cleanse-astra-r01",
+  "eventId": "gain-statusRecovery",
+  "effectKind": "statusRecovery",
+  "label": "状態異常回復 Astra r0.1",
+  "version": "astra-status-cleanse-r0.1",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "主形が小さな杯に見える。ray-marchの帯状alias。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r01/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r01/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": false,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "sfx.mjs"
+  ],
+  "sourceSha256": {
+    "index.html": "373952afde84f6d03d92b3c8e25c9a8cae13799fd2c007ad5c1759cc24660e8f",
+    "preview.mjs": "66376aa0cae5335cc0dc5dd3ba32943eeebd2883254a7517060349a05cb89591",
+    "cleanse.mjs": "42166270bcd4e92f5a83f69244ea2acf9b5e37fab01b2465badf0389fa7ac96c",
+    "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692"
+  },
+  "evidence": {
+    "gpu": "versions/r01/evidence/gpu.json",
+    "focused": "versions/r01/evidence/focused-tests.json",
+    "pixels": "versions/r01/evidence/pixels.json",
+    "darkLifetime": "versions/r01/evidence/lifetime-h64-dark.png",
+    "lightLifetime": "versions/r01/evidence/lifetime-h64-light.png"
+  },
+  "gpuSubmissions": 414,
+  "verifiedAutoLoops": 3
+}

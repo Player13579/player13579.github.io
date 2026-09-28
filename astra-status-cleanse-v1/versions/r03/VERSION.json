@@ -1,0 +1,39 @@
+{
+  "id": "status-cleanse-astra-r03",
+  "eventId": "gain-statusRecovery",
+  "effectKind": "statusRecovery",
+  "label": "状態異常回復 Astra r0.3",
+  "version": "astra-status-cleanse-r0.3",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "孤立リボンで身体の状態回復が伝わらない。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r03/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r03/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": false,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "sfx.mjs"
+  ],
+  "sourceSha256": {
+    "index.html": "a38421575767a862fb2da81961f7f2f434dcd6005984806cb671b6322090e18b",
+    "preview.mjs": "4e49371b17598dff824a01a2a56bdf6dea2b705046c1e1c016ddb2afd44094df",
+    "cleanse.mjs": "4b875d0ba13229b26e1132bd1867f39674206bedad2ab9e388e1ae8af12759da",
+    "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692"
+  },
+  "evidence": {
+    "gpu": "versions/r03/evidence/gpu.json",
+    "focused": "versions/r03/evidence/focused-tests.json",
+    "pixels": "versions/r03/evidence/pixels.json",
+    "darkLifetime": "versions/r03/evidence/lifetime-h64-dark.png",
+    "lightLifetime": "versions/r03/evidence/lifetime-h64-light.png"
+  },
+  "gpuSubmissions": 338,
+  "verifiedAutoLoops": 3
+}

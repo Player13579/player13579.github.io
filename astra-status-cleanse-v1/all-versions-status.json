@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 1,
+  "eventId": "gain-statusRecovery",
+  "versions": [
+    {
+      "id": "status-cleanse-astra-r01",
+      "eventId": "gain-statusRecovery",
+      "effectKind": "statusRecovery",
+      "label": "状態異常回復 Astra r0.1",
+      "version": "astra-status-cleanse-r0.1",
+      "creatorModel": "gpt-6-astra",
+      "creatorDisplayName": "GPT-6-Astra",
+      "technicalStatus": "webgpu-replay-verified",
+      "qualityStatus": "rejected",
+      "qualityReason": "主形が小さな杯に見える。ray-marchの帯状alias。",
+      "userAdopted": false,
+      "gameIntegrated": false,
+      "publishedByWorker": false,
+      "preview": "versions/r01/index.html?embed=1&verify=1&h=240",
+      "nativeSizePreview": "versions/r01/index.html?embed=1&verify=1&h=64",
+      "usesActorFixture": false,
+      "requiredFiles": [
+        "index.html",
+        "preview.mjs",
+        "cleanse.mjs",
+        "sfx.mjs"
+      ],
+      "sourceSha256": {
+        "index.html": "373952afde84f6d03d92b3c8e25c9a8cae13799fd2c007ad5c1759cc24660e8f",
+        "preview.mjs": "66376aa0cae5335cc0dc5dd3ba32943eeebd2883254a7517060349a05cb89591",
+        "cleanse.mjs": "42166270bcd4e92f5a83f69244ea2acf9b5e37fab01b2465badf0389fa7ac96c",
+        "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692"
+      },
+      "evidence": {
+        "gpu": "versions/r01/evidence/gpu.json",
+        "focused": "versions/r01/evidence/focused-tests.json",
+        "pixels": "versions/r01/evidence/pixels.json",
+        "darkLifetime": "versions/r01/evidence/lifetime-h64-dark.png",
+        "lightLifetime": "versions/r01/evidence/lifetime-h64-light.png"
+      },
+      "gpuSubmissions": 414,
+      "verifiedAutoLoops": 3
+    },
+    {
+      "id": "status-cleanse-astra-r02",
+      "eventId": "gain-statusRecovery",
+      "effectKind": "statusRecovery",
+      "label": "状態異常回復 Astra r0.2",
+      "version": "astra-status-cleanse-r0.2",
+      "creatorModel": "gpt-6-astra",
+      "creatorDisplayName": "GPT-6-Astra",
+      "technicalStatus": "webgpu-replay-verified",
+      "qualityStatus": "rejected",
+      "qualityReason": "aliasは除去したが、光る花器の主形。",
+      "userAdopted": false,
+      "gameIntegrated": false,
+      "publishedByWorker": false,
+      "preview": "versions/r02/index.html?embed=1&verify=1&h=240",
+      "nativeSizePreview": "versions/r02/index.html?embed=1&verify=1&h=64",
+      "usesActorFixture": false,
+      "requiredFiles": [
+        "index.html",
+        "preview.mjs",
+        "cleanse.mjs",
+        "sfx.mjs"
+      ],
+      "sourceSha256": {
+        "index.html": "116ce57fe4c97e35990a1c926f632a5b63fda65da89693de72cf78ef5420209f",
+        "preview.mjs": "d3a82d992f263579515923532be0d254dfea9e212ac02dfe6580bb1c9b369773",
+        "cleanse.mjs": "c2a8686144d086db4393dfa6d983e8d95096f56b62b592ca93e8c94400445054",
+        "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692"
+      },
+      "evidence": {
+        "gpu": "versions/r02/evidence/gpu.json",
+        "focused": "versions/r02/evidence/focused-tests.json",
+        "pixels": "versions/r02/evidence/pixels.json",
+        "darkLifetime": "versions/r02/evidence/lifetime-h64-dark.png",
+        "lightLifetime": "versions/r02/evidence/lifetime-h64-light.png"
+      },
+      "gpuSubmissions": 406,
+      "verifiedAutoLoops": 3
+    },
+    {
+      "id": "status-cleanse-astra-r03",
+      "eventId": "gain-statusRecovery",
+      "effectKind": "statusRecovery",
+      "label": "状態異常回復 Astra r0.3",
+      "version": "astra-status-cleanse-r0.3",
+      "creatorModel": "gpt-6-astra",
+      "creatorDisplayName": "GPT-6-Astra",
+      "technicalStatus": "webgpu-replay-verified",
+      "qualityStatus": "rejected",
+      "qualityReason": "孤立リボンで身体の状態回復が伝わらない。",
+      "userAdopted": false,
+      "gameIntegrated": false,
+      "publishedByWorker": false,
+      "preview": "versions/r03/index.html?embed=1&verify=1&h=240",
+      "nativeSizePreview": "versions/r03/index.html?embed=1&verify=1&h=64",
+      "usesActorFixture": false,
+      "requiredFiles": [
+        "index.html",
+        "preview.mjs",
+        "cleanse.mjs",
+        "sfx.mjs"
+      ],
+      "sourceSha256": {
+        "index.html": "a38421575767a862fb2da81961f7f2f434dcd6005984806cb671b6322090e18b",
+        "preview.mjs": "4e49371b17598dff824a01a2a56bdf6dea2b705046c1e1c016ddb2afd44094df",
+        "cleanse.mjs": "4b875d0ba13229b26e1132bd1867f39674206bedad2ab9e388e1ae8af12759da",
+        "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692"
+      },
+      "evidence": {
+        "gpu": "versions/r03/evidence/gpu.json",
+        "focused": "versions/r03/evidence/focused-tests.json",
+        "pixels": "versions/r03/evidence/pixels.json",
+        "darkLifetime": "versions/r03/evidence/lifetime-h64-dark.png",
+        "lightLifetime": "versions/r03/evidence/lifetime-h64-light.png"
+      },
+      "gpuSubmissions": 338,
+      "verifiedAutoLoops": 3
+    },
+    {
+      "id": "status-cleanse-astra-r04",
+      "eventId": "gain-statusRecovery",
+      "effectKind": "statusRecovery",
+      "label": "状態異常回復 Astra r0.4",
+      "version": "astra-status-cleanse-r0.4",
+      "creatorModel": "gpt-6-astra",
+      "creatorDisplayName": "GPT-6-Astra",
+      "technicalStatus": "webgpu-replay-verified",
+      "qualityStatus": "rejected",
+      "qualityReason": "孤立リボンの同じ品質欠陥。旧haloと根拠のない基部反応は削除。",
+      "userAdopted": false,
+      "gameIntegrated": false,
+      "publishedByWorker": false,
+      "preview": "versions/r04/index.html?embed=1&verify=1&h=240",
+      "nativeSizePreview": "versions/r04/index.html?embed=1&verify=1&h=64",
+      "usesActorFixture": false,
+      "requiredFiles": [
+        "index.html",
+        "preview.mjs",
+        "cleanse.mjs",
+        "sfx.mjs"
+      ],
+      "sourceSha256": {
+        "index.html": "34562ff8867b939c1b55fe8c0ed590b53992d67f19b6363928d96fa073b05e7e",
+        "preview.mjs": "0be94807d836b98fe7bf8b9fce002e30394c65e4545f92e634b43bbe91baf5f2",
+        "cleanse.mjs": "10983d5d68c1996350a5b98ef94be3e80bf30de5fd01ecd17ee7052dbe3fa630",
+        "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692"
+      },
+      "evidence": {
+        "gpu": "versions/r04/evidence/gpu.json",
+        "focused": "versions/r04/evidence/focused-tests.json",
+        "pixels": "versions/r04/evidence/pixels.json",
+        "darkLifetime": "versions/r04/evidence/lifetime-h64-dark.png",
+        "lightLifetime": "versions/r04/evidence/lifetime-h64-light.png"
+      },
+      "gpuSubmissions": 391,
+      "verifiedAutoLoops": 3
+    },
+    {
+      "id": "status-cleanse-astra-r05",
+      "eventId": "gain-statusRecovery",
+      "effectKind": "statusRecovery",
+      "label": "状態異常回復 Astra r0.5",
+      "version": "astra-status-cleanse-r0.5",
+      "creatorModel": "gpt-6-astra",
+      "creatorDisplayName": "GPT-6-Astra",
+      "technicalStatus": "webgpu-replay-verified",
+      "qualityStatus": "rejected",
+      "qualityReason": "白い浄化帯が顔を横切りH64で横棒に見える。",
+      "userAdopted": false,
+      "gameIntegrated": false,
+      "publishedByWorker": false,
+      "preview": "versions/r05/index.html?embed=1&verify=1&h=240",
+      "nativeSizePreview": "versions/r05/index.html?embed=1&verify=1&h=64",
+      "usesActorFixture": true,
+      "requiredFiles": [
+        "index.html",
+        "preview.mjs",
+        "cleanse.mjs",
+        "sfx.mjs",
+        "actor.webp",
+        "field.mjs"
+      ],
+      "sourceSha256": {
+        "index.html": "6048553e6bc4d776a452475a5b32fc142daf2e64378d83cc7be1484b6574de20",
+        "preview.mjs": "075c3e419543303add5d9894395ddb2b7ef8c2f4677e38249271703a1ba5e047",
+        "cleanse.mjs": "f9f2ef6992ef934ca22a9cb4e1396faf8fff152577780d42afa92a0e982ba002",
+        "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692",
+        "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+        "field.mjs": "c2fe5870bdaee81c1088bcef0b5804b2312c78077dae4050be90506dc13fce13"
+      },
+      "evidence": {
+        "gpu": "versions/r05/evidence/gpu.json",
+        "focused": "versions/r05/evidence/focused-tests.json",
+        "pixels": "versions/r05/evidence/pixels.json",
+        "darkLifetime": "versions/r05/evidence/lifetime-h64-dark.png",
+        "lightLifetime": "versions/r05/evidence/lifetime-h64-light.png"
+      },
+      "gpuSubmissions": 317,
+      "verifiedAutoLoops": 3
+    },
+    {
+      "id": "status-cleanse-astra-r06",
+      "eventId": "gain-statusRecovery",
+      "effectKind": "statusRecovery",
+      "label": "状態異常回復 Astra r0.6",
+      "version": "astra-status-cleanse-r0.6",
+      "creatorModel": "gpt-6-astra",
+      "creatorDisplayName": "GPT-6-Astra",
+      "technicalStatus": "webgpu-replay-verified",
+      "qualityStatus": "rejected",
+      "qualityReason": "顔保護は改善したが、背後の容器・浴槽に見える。",
+      "userAdopted": false,
+      "gameIntegrated": false,
+      "publishedByWorker": false,
+      "preview": "versions/r06/index.html?embed=1&verify=1&h=240",
+      "nativeSizePreview": "versions/r06/index.html?embed=1&verify=1&h=64",
+      "usesActorFixture": true,
+      "requiredFiles": [
+        "index.html",
+        "preview.mjs",
+        "cleanse.mjs",
+        "sfx.mjs",
+        "actor.webp",
+        "field.mjs"
+      ],
+      "sourceSha256": {
+        "index.html": "85714e87b1f586bb4b07ab58bb7445d15fe52c87bd0d470dda06e14b7f6bf5ee",
+        "preview.mjs": "12c267556812983d1fedb93abb6ed7bd2cd47d6239dbf2d6d8ce1dc8ead36d8f",
+        "cleanse.mjs": "07cac591075f8f938e88682724a50efcf12831f530c8585fad26de37d971b85c",
+        "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+        "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+        "field.mjs": "f19b11470687054661b68a28b5064ecec9f9040195766a7b3f8c337406b1fef1"
+      },
+      "evidence": {
+        "gpu": "versions/r06/evidence/gpu.json",
+        "focused": "versions/r06/evidence/focused-tests.json",
+        "pixels": "versions/r06/evidence/pixels.json",
+        "darkLifetime": "versions/r06/evidence/lifetime-h64-dark.png",
+        "lightLifetime": "versions/r06/evidence/lifetime-h64-light.png"
+      },
+      "gpuSubmissions": 285,
+      "verifiedAutoLoops": 3
+    },
+    {
+      "id": "status-cleanse-astra-r07",
+      "eventId": "gain-statusRecovery",
+      "effectKind": "statusRecovery",
+      "label": "状態異常回復 Astra r0.7",
+      "version": "astra-status-cleanse-r0.7",
+      "creatorModel": "gpt-6-astra",
+      "creatorDisplayName": "GPT-6-Astra",
+      "technicalStatus": "webgpu-replay-verified",
+      "qualityStatus": "rejected",
+      "qualityReason": "H64では紫→緑の衣装色替えに見え、付着が剥がれる形/動きがほぼ見えない。",
+      "userAdopted": false,
+      "gameIntegrated": false,
+      "publishedByWorker": false,
+      "preview": "versions/r07/index.html?embed=1&verify=1&h=240",
+      "nativeSizePreview": "versions/r07/index.html?embed=1&verify=1&h=64",
+      "usesActorFixture": true,
+      "requiredFiles": [
+        "index.html",
+        "preview.mjs",
+        "cleanse.mjs",
+        "sfx.mjs",
+        "actor.webp",
+        "field-r07.mjs"
+      ],
+      "sourceSha256": {
+        "index.html": "ae2f030a5e7790ad16518897dda83fed9ae72e639854f1673297040e76a830bd",
+        "preview.mjs": "d54922df322171c3c0c735a18d93ae61811ed191b342ea4cd38e52f3ff98e65a",
+        "cleanse.mjs": "2e74d6f2a498f36db7a9d1256c2f756555121a16909bd44a1039b07996d786b2",
+        "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+        "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+        "field-r07.mjs": "e29bbd84f97e20a2ddc18f04e49796c02cb10bcbaa362e39f6e755633bb6049d"
+      },
+      "evidence": {
+        "gpu": "versions/r07/evidence/gpu.json",
+        "focused": "versions/r07/evidence/focused-tests.json",
+        "pixels": "versions/r07/evidence/pixels.json",
+        "darkLifetime": "versions/r07/evidence/lifetime-h64-dark.png",
+        "lightLifetime": "versions/r07/evidence/lifetime-h64-light.png"
+      },
+      "gpuSubmissions": 393,
+      "verifiedAutoLoops": 3
+    },
+    {
+      "id": "status-cleanse-astra-r08",
+      "eventId": "gain-statusRecovery",
+      "label": "状態異常回復 Astra r0.8",
+      "version": "astra-status-cleanse-r0.8",
+      "creatorModel": "gpt-6-astra",
+      "creatorDisplayName": "GPT-6-Astra",
+      "technicalStatus": "webgpu-replay-verified",
+      "qualityStatus": "rejected",
+      "qualityReason": "剥離片が突然現れる布切れに見え、元の被覆との連続性が弱い。清浄側は局所すぎてH64でほぼ読めない。",
+      "userAdopted": false,
+      "gameIntegrated": false,
+      "publishedByWorker": false,
+      "preview": "versions/r08/index.html?embed=1&verify=1&h=240",
+      "nativeSizePreview": "versions/r08/index.html?embed=1&verify=1&h=64",
+      "usesActorFixture": true,
+      "requiredFiles": [
+        "index.html",
+        "preview.mjs",
+        "cleanse.mjs",
+        "field-r08.mjs",
+        "sfx.mjs",
+        "actor.webp"
+      ],
+      "sourceSha256": {
+        "index.html": "b01e2aab492961ca0e89df24481fe340e7c93083a4d27d84821fcdc31c20f24d",
+        "preview.mjs": "78b6d777ce1172405029df5bad65c86aede722a66ec971e213b78bbeb6abc0e7",
+        "cleanse.mjs": "6003024bb1f65e7f92599cb799c8ada668dde7a8017dab18c53de2b69718df53",
+        "field-r08.mjs": "7456548f09659b747dd3600cf1b7f4abfdf0779fd264d0baed8f43afcad8863f",
+        "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+        "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+      },
+      "gpuSubmissions": 272,
+      "verifiedAutoLoops": 3,
+      "evidenceBase": "versions/r08/evidence/",
+      "fixtureNotice": "紫の付着は状態解除の比較用fixture。実ゲームの毒/炎/状態異常の発火ではない。"
+    },
+    {
+      "id": "status-cleanse-astra-r09",
+      "eventId": "gain-statusRecovery",
+      "label": "状態異常回復 Astra r0.9",
+      "version": "astra-status-cleanse-r0.9",
+      "creatorModel": "gpt-6-astra",
+      "creatorDisplayName": "GPT-6-Astra",
+      "technicalStatus": "webgpu-replay-verified",
+      "qualityStatus": "rejected",
+      "qualityReason": "H64で異常の剥離と清浄な受け手への変化がほぼ読めず、小さな袖光または普通の紫マントに見える。",
+      "userAdopted": false,
+      "gameIntegrated": false,
+      "publishedByWorker": false,
+      "preview": "versions/r09/index.html?embed=1&verify=1&h=240",
+      "nativeSizePreview": "versions/r09/index.html?embed=1&verify=1&h=64",
+      "usesActorFixture": true,
+      "requiredFiles": [
+        "index.html",
+        "preview.mjs",
+        "cleanse.mjs",
+        "field-r09.mjs",
+        "sfx.mjs",
+        "actor.webp"
+      ],
+      "sourceSha256": {
+        "index.html": "5229922f51d45c0b53b24b495dce2f3d298ca5d7528904fb7ebb16a662afcc15",
+        "preview.mjs": "72761df09b55f96ac47abededf313479a33ccde2ae9004a92d15c26fc4dde67a",
+        "cleanse.mjs": "96c97884914bb49d85bf03d7a674f9244788fb70c442c8596ead293926966d9d",
+        "field-r09.mjs": "f609f6f388a8ccd2e4993f5d58e6150adc16a932e8f8d32484d02f02a4319c0b",
+        "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+        "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+      },
+      "gpuSubmissions": 272,
+      "verifiedAutoLoops": 3,
+      "evidenceBase": "versions/r09/evidence/",
+      "fixtureNotice": "紫の付着は状態解除の比較用fixture。実ゲームの毒/炎/状態異常の発火ではない。"
+    }
+  ],
+  "note": "r01-r07 original manifest/allowlist/ZIP remains frozen. All versions remain unadopted. Current quality states are version-specific."
+}

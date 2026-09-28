@@ -1,0 +1,39 @@
+{
+  "id": "status-cleanse-astra-r02",
+  "eventId": "gain-statusRecovery",
+  "effectKind": "statusRecovery",
+  "label": "状態異常回復 Astra r0.2",
+  "version": "astra-status-cleanse-r0.2",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "aliasは除去したが、光る花器の主形。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r02/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r02/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": false,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "sfx.mjs"
+  ],
+  "sourceSha256": {
+    "index.html": "116ce57fe4c97e35990a1c926f632a5b63fda65da89693de72cf78ef5420209f",
+    "preview.mjs": "d3a82d992f263579515923532be0d254dfea9e212ac02dfe6580bb1c9b369773",
+    "cleanse.mjs": "c2a8686144d086db4393dfa6d983e8d95096f56b62b592ca93e8c94400445054",
+    "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692"
+  },
+  "evidence": {
+    "gpu": "versions/r02/evidence/gpu.json",
+    "focused": "versions/r02/evidence/focused-tests.json",
+    "pixels": "versions/r02/evidence/pixels.json",
+    "darkLifetime": "versions/r02/evidence/lifetime-h64-dark.png",
+    "lightLifetime": "versions/r02/evidence/lifetime-h64-light.png"
+  },
+  "gpuSubmissions": 406,
+  "verifiedAutoLoops": 3
+}

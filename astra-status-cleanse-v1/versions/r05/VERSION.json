@@ -1,0 +1,43 @@
+{
+  "id": "status-cleanse-astra-r05",
+  "eventId": "gain-statusRecovery",
+  "effectKind": "statusRecovery",
+  "label": "状態異常回復 Astra r0.5",
+  "version": "astra-status-cleanse-r0.5",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "白い浄化帯が顔を横切りH64で横棒に見える。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r05/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r05/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "sfx.mjs",
+    "actor.webp",
+    "field.mjs"
+  ],
+  "sourceSha256": {
+    "index.html": "6048553e6bc4d776a452475a5b32fc142daf2e64378d83cc7be1484b6574de20",
+    "preview.mjs": "075c3e419543303add5d9894395ddb2b7ef8c2f4677e38249271703a1ba5e047",
+    "cleanse.mjs": "f9f2ef6992ef934ca22a9cb4e1396faf8fff152577780d42afa92a0e982ba002",
+    "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+    "field.mjs": "c2fe5870bdaee81c1088bcef0b5804b2312c78077dae4050be90506dc13fce13"
+  },
+  "evidence": {
+    "gpu": "versions/r05/evidence/gpu.json",
+    "focused": "versions/r05/evidence/focused-tests.json",
+    "pixels": "versions/r05/evidence/pixels.json",
+    "darkLifetime": "versions/r05/evidence/lifetime-h64-dark.png",
+    "lightLifetime": "versions/r05/evidence/lifetime-h64-light.png"
+  },
+  "gpuSubmissions": 317,
+  "verifiedAutoLoops": 3
+}

@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r08",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.8",
+  "version": "astra-status-cleanse-r0.8",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "剥離片が突然現れる布切れに見え、元の被覆との連続性が弱い。清浄側は局所すぎてH64でほぼ読めない。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r08/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r08/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r08.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "b01e2aab492961ca0e89df24481fe340e7c93083a4d27d84821fcdc31c20f24d",
+    "preview.mjs": "78b6d777ce1172405029df5bad65c86aede722a66ec971e213b78bbeb6abc0e7",
+    "cleanse.mjs": "6003024bb1f65e7f92599cb799c8ada668dde7a8017dab18c53de2b69718df53",
+    "field-r08.mjs": "7456548f09659b747dd3600cf1b7f4abfdf0779fd264d0baed8f43afcad8863f",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 272,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r08/evidence/",
+  "fixtureNotice": "紫の付着は状態解除の比較用fixture。実ゲームの毒/炎/状態異常の発火ではない。"
+}

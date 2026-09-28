@@ -1,0 +1,43 @@
+{
+  "id": "status-cleanse-astra-r06",
+  "eventId": "gain-statusRecovery",
+  "effectKind": "statusRecovery",
+  "label": "状態異常回復 Astra r0.6",
+  "version": "astra-status-cleanse-r0.6",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "顔保護は改善したが、背後の容器・浴槽に見える。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r06/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r06/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "sfx.mjs",
+    "actor.webp",
+    "field.mjs"
+  ],
+  "sourceSha256": {
+    "index.html": "85714e87b1f586bb4b07ab58bb7445d15fe52c87bd0d470dda06e14b7f6bf5ee",
+    "preview.mjs": "12c267556812983d1fedb93abb6ed7bd2cd47d6239dbf2d6d8ce1dc8ead36d8f",
+    "cleanse.mjs": "07cac591075f8f938e88682724a50efcf12831f530c8585fad26de37d971b85c",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+    "field.mjs": "f19b11470687054661b68a28b5064ecec9f9040195766a7b3f8c337406b1fef1"
+  },
+  "evidence": {
+    "gpu": "versions/r06/evidence/gpu.json",
+    "focused": "versions/r06/evidence/focused-tests.json",
+    "pixels": "versions/r06/evidence/pixels.json",
+    "darkLifetime": "versions/r06/evidence/lifetime-h64-dark.png",
+    "lightLifetime": "versions/r06/evidence/lifetime-h64-light.png"
+  },
+  "gpuSubmissions": 285,
+  "verifiedAutoLoops": 3
+}

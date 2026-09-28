@@ -1,0 +1,39 @@
+{
+  "id": "status-cleanse-astra-r04",
+  "eventId": "gain-statusRecovery",
+  "effectKind": "statusRecovery",
+  "label": "状態異常回復 Astra r0.4",
+  "version": "astra-status-cleanse-r0.4",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "孤立リボンの同じ品質欠陥。旧haloと根拠のない基部反応は削除。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r04/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r04/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": false,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "sfx.mjs"
+  ],
+  "sourceSha256": {
+    "index.html": "34562ff8867b939c1b55fe8c0ed590b53992d67f19b6363928d96fa073b05e7e",
+    "preview.mjs": "0be94807d836b98fe7bf8b9fce002e30394c65e4545f92e634b43bbe91baf5f2",
+    "cleanse.mjs": "10983d5d68c1996350a5b98ef94be3e80bf30de5fd01ecd17ee7052dbe3fa630",
+    "sfx.mjs": "b537849cb1f281ca41d3f8b3b9bb6ade2ab5e24e46668621890bcef895150692"
+  },
+  "evidence": {
+    "gpu": "versions/r04/evidence/gpu.json",
+    "focused": "versions/r04/evidence/focused-tests.json",
+    "pixels": "versions/r04/evidence/pixels.json",
+    "darkLifetime": "versions/r04/evidence/lifetime-h64-dark.png",
+    "lightLifetime": "versions/r04/evidence/lifetime-h64-light.png"
+  },
+  "gpuSubmissions": 391,
+  "verifiedAutoLoops": 3
+}

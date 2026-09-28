@@ -1,0 +1,43 @@
+{
+  "id": "status-cleanse-astra-r07",
+  "eventId": "gain-statusRecovery",
+  "effectKind": "statusRecovery",
+  "label": "状態異常回復 Astra r0.7",
+  "version": "astra-status-cleanse-r0.7",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "H64では紫→緑の衣装色替えに見え、付着が剥がれる形/動きがほぼ見えない。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r07/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r07/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "sfx.mjs",
+    "actor.webp",
+    "field-r07.mjs"
+  ],
+  "sourceSha256": {
+    "index.html": "ae2f030a5e7790ad16518897dda83fed9ae72e639854f1673297040e76a830bd",
+    "preview.mjs": "d54922df322171c3c0c735a18d93ae61811ed191b342ea4cd38e52f3ff98e65a",
+    "cleanse.mjs": "2e74d6f2a498f36db7a9d1256c2f756555121a16909bd44a1039b07996d786b2",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+    "field-r07.mjs": "e29bbd84f97e20a2ddc18f04e49796c02cb10bcbaa362e39f6e755633bb6049d"
+  },
+  "evidence": {
+    "gpu": "versions/r07/evidence/gpu.json",
+    "focused": "versions/r07/evidence/focused-tests.json",
+    "pixels": "versions/r07/evidence/pixels.json",
+    "darkLifetime": "versions/r07/evidence/lifetime-h64-dark.png",
+    "lightLifetime": "versions/r07/evidence/lifetime-h64-light.png"
+  },
+  "gpuSubmissions": 393,
+  "verifiedAutoLoops": 3
+}
