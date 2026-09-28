@@ -64,7 +64,7 @@
       version('headshot-pro-v01', 'GPT Pro v1', 'headshot-pro-v01/index.html', 'headshot-pro-v01/src/renderer.mjs', 'GPT Pro旧版・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器×HIP/AIMのH64を実WebGPUで並列自動ループ再生。全10種の描画を確認しましたが、視覚品質と音は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
-      version('barrier-pro-r08', 'GPT Pro r0.8', 'barrier-pro-r08/embed.html', 'barrier-pro-r08/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質未審査・SFX聴感未確認・本編未採用', 'Proによる立体防護場の改稿。暗明のcreate・absorb・fracture・bustをChrome実WebGPUで自動ループ確認。全寿命の原寸造形と実聴、本編接続は未受入です。', 'effect-H64', 1, true),
+      version('barrier-pro-r08', 'GPT Pro r0.8', 'barrier-pro-r08/embed.html', 'barrier-pro-r08/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質未達・SFX聴感未確認・本編未採用', 'H64の暗明でcreate・absorb・fracture・bustをChrome実WebGPU再生。立体感は増したが、実寸では輪郭がぼやけ、4事象の作用差が弱く、明背景のbustは形が読みにくい。視覚評価60/100、SFXは未評価。本編接続は未受入です。', 'effect-H64', 1, true),
       version('barrier-pro-r07', 'GPT Pro r0.7', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・造形品質未達・SFX聴感未確認・本編未採用', '4事象のH64自動ループとGPUエラー0を確認。防護場が平面的な八角輪郭に見え、吸収・破断・解除の作用差が弱いため、Proにr0.8を改稿依頼しました。', 'effect-H64', 1, true),
       version('barrier-pro-r06', 'GPT Pro r0.6', 'barrier-pro-r06/embed.html', 'barrier-pro-r06/barrier-pro-renderer.mjs', 'GPT Pro旧版・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '原本の合成テクスチャ型不一致をadapterで修復して四事象を自動再生。白飛びは棄却理由にせず、四事象の造形・作用とSFXの品質確認を残します。', 'effect-H64', 1, true),
       version('barrier-pro-r05', 'GPT Pro r0.5', 'barrier-pro-r05/embed.html', 'barrier-pro-r05/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質不合格・SFX聴感未確認・本編未採用', '吸収中のH64保護空域が小さな不透明のカップ状へ潰れるため品質不合格。既存設計の自動ループWebGPU比較版で、本編には接続していません。', 'effect-H64', 1, true),
@@ -116,7 +116,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v42');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v43');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
