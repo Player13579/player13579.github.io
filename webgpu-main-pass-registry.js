@@ -42,7 +42,6 @@
     staminaBenefitE: root.DvaStaminaBenefitE || (typeof require === 'function' ? require('./webgpu-stamina-benefit-e.js') : null),
     manaBenefitE: root.DvaManaBenefitE || (typeof require === 'function' ? require('./webgpu-mana-benefit-e.js') : null),
     bodyBenefitExtra: root.DvaWebGPUBodyBenefitExtra || (typeof require === 'function' ? require('./webgpu-body-benefit-extra.js') : null),
-    statusRecoveryR29: root.DvaStatusRecoveryR29Game || (typeof require === 'function' ? require('./webgpu-status-recovery-r29-game.js') : null),
     statusTempo: root.DvaWebGPUStatusTempoE || (typeof require === 'function' ? require('./webgpu-status-tempo-e.js') : null),
     barrierE: root.DvaWebGPUBarrierE || (typeof require === 'function' ? require('./webgpu-barrier-e.js') : null),
     barrierProR07Game: root.DvaWebGPUBarrierProR07Game || (typeof require === 'function' ? require('./webgpu-barrier-pro-r07-game.js') : null),
@@ -89,7 +88,7 @@
     'hud', 'minimap', 'modeBanner', 'lighting', 'killAnimation', 'sensory',
     'markerExplanation', 'acquisition']);
   const MAGIC_EVENT_TYPES = Object.freeze(['shapes', 'gunnerAimAcquisition', 'gravityImpact', 'grenadeImpact',
-    'bodyBenefit', 'staminaBenefitE', 'manaBenefitE', 'bodyBenefitExtra', 'statusRecoveryR29', 'statusTempo', 'barrierE', 'bustE', 'dodgeE', 'renkiE', 'ideaE', 'alchemyE', 'hackerRootE', 'hackerStatusRecoveryE', 'floraE', 'healE', 'sunbeamE', 'fighterEnergyE', 'gravityFieldE', 'rigidItemImpactE', 'bottleShardsE', 'archiveCabinetE', 'fireActivation', 'empEffect', 'specialAmmoEffect', 'commonActionBodyE', 'medicalObjectE',
+    'bodyBenefit', 'staminaBenefitE', 'manaBenefitE', 'bodyBenefitExtra', 'statusTempo', 'barrierE', 'bustE', 'dodgeE', 'renkiE', 'ideaE', 'alchemyE', 'hackerRootE', 'hackerStatusRecoveryE', 'floraE', 'healE', 'sunbeamE', 'fighterEnergyE', 'gravityFieldE', 'rigidItemImpactE', 'bottleShardsE', 'archiveCabinetE', 'fireActivation', 'empEffect', 'specialAmmoEffect', 'commonActionBodyE', 'medicalObjectE',
     'medicalCabinetE', 'medicalFootbathUseE', 'medicalUploadConsoleE', 'corridorA01E', 'corridorObjectUseE', 'roomObjectUseE', 'reactorRoomObjectsE', 'powerRoomObjectsE',
     'taskCompletion', 'headMarker', 'mysteryBoxRevealE']);
   const own = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
@@ -168,7 +167,7 @@
       preparationSummons: 'create', players: 'createTextureCache',
       playerNameplates: 'create', headMarkers: 'create',
       gunnerAim: 'create', killCamera: 'create', hitEffects: 'record',
-      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusRecoveryR29: 'create', statusTempo: 'create', barrierE: 'create', ...(modules === defaults || modules.barrierProR07Game ? { barrierProR07Game: 'create' } : {}), bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', healSparkleE: 'create', healSparkleGameAdapter: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
+      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusTempo: 'create', barrierE: 'create', ...(modules === defaults || modules.barrierProR07Game ? { barrierProR07Game: 'create' } : {}), bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', healSparkleE: 'create', healSparkleGameAdapter: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
       attackTargets: 'record', taskIndicators: 'create', hud: 'create',
       minimap: 'create', modeBanner: 'create', killBloom: 'create',
       killAnimation: 'create', sensory: 'enqueue', markerExplanation: 'create',
@@ -377,7 +376,6 @@
       borrow('grenadeImpacts', modules.grenadeImpacts);
       add('bodyBenefits', modules.bodyBenefits.create({ renderer }), 'record');
       add('bodyBenefitExtra', modules.bodyBenefitExtra.create({ frameOwner: renderer }), 'record');
-      add('statusRecoveryR29', modules.statusRecoveryR29.create({ frameOwner: renderer }), 'record');
       add('statusTempo', modules.statusTempo.create({ frameOwner: renderer }), 'record');
       for (const name of ['barrierE', 'bustE', 'dodgeE', 'renkiE', 'ideaE']) {
         const pass = modules[name].create();

@@ -6,7 +6,7 @@
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
 const RUNTIME_RELEASE = "fire-e-causal-v918";
-const CACHE_NAME = "dva-astra-status-r29-game-v1";
+const CACHE_NAME = "dva-static-marker-webgpu-surface-v2";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 const STATIC_ASSETS = [
   "/assets/generated/webgpu-text/atlas.json",
@@ -416,8 +416,6 @@ const STATIC_ASSETS = [
   "/webgpu-mana-benefit-sfx.js",
   "/webgpu-game-input-surface.js",
   "/webgpu-body-benefit-extra.js",
-  "/webgpu-status-recovery-r29-game.js",
-  "/webgpu-status-recovery-r29-sfx.js",
   "/webgpu-status-tempo-e.js",
   "/webgpu-barrier-e.js",
   "/webgpu-bust-e.js",
@@ -887,8 +885,6 @@ const BOOT_CRITICAL_ASSETS = new Set([
   "/webgpu-mana-benefit-sfx.js",
   "/webgpu-game-input-surface.js",
   "/webgpu-body-benefit-extra.js",
-  "/webgpu-status-recovery-r29-game.js",
-  "/webgpu-status-recovery-r29-sfx.js",
   "/webgpu-status-tempo-e.js",
   "/webgpu-barrier-e.js",
   "/webgpu-bust-e.js",
