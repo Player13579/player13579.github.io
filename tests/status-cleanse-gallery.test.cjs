@@ -14,6 +14,20 @@ const allowlist = JSON.parse(fs.readFileSync(path.join(packageRoot, 'allowlist-a
 const source = fs.readFileSync(path.join(root, 'webgpu-e-gallery.js'), 'utf8');
 const html = fs.readFileSync(path.join(root, 'webgpu-e-gallery.html'), 'utf8');
 
+for (const group of ['mana-astra', 'stamina-astra', 'status-cleanse-astra']) {
+  const match = source.match(new RegExp(`'${group}': \\{ magnification: ([\\d.]+), focusX: ([\\d.]+), focusY: ([\\d.]+) \\}`));
+  assert(match, `${group} has a gallery-only magnification and focus`);
+  assert(Number(match[1]) >= 4, `${group} uses enough gallery zoom to restore H64-sized artwork`);
+  assert(Number(match[2]) >= 0 && Number(match[2]) <= 980, `${group} focusX remains in the source canvas`);
+  assert(Number(match[3]) >= 0 && Number(match[3]) <= 620, `${group} focusY remains in the source canvas`);
+}
+for (const [id, magnification] of [['heal-astra-prototype', '4'],
+  ['sunbeam-astra-clean-v3', '1.18'], ['luck-astra-clean-v4', '3.5'],
+  ['barrier-astra', '2.3'], ['barrier-pro-r07', '1.0']]) {
+  assert.match(source, new RegExp(`'${id}': \\{ magnification: ${magnification.replace('.', '\\.')},`),
+    `${id} keeps its existing gallery magnification`);
+}
+
 class Element {
   constructor() { this.children = []; this.dataset = {}; this.style = {}; }
   append(...children) { this.children.push(...children); }

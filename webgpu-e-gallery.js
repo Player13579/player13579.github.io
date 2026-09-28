@@ -6,6 +6,11 @@
     'sunbeam-astra-clean-v3': { magnification: 1.18, focusX: 490, focusY: 310 },
     'luck-astra-clean-v4': { magnification: 3.5, focusX: 490, focusY: 195 },
     'barrier-astra': { magnification: 2.3, focusX: 510, focusY: 370 },
+    // These H64 replay packages occupy a small part of their 980x620 source
+    // canvas. Enlarge the gallery view only; each preview still renders H64.
+    'mana-astra': { magnification: 4.25, focusX: 490, focusY: 310 },
+    'stamina-astra': { magnification: 4.25, focusX: 490, focusY: 310 },
+    'status-cleanse-astra': { magnification: 4.25, focusX: 490, focusY: 310 },
     'barrier-pro-r07': { magnification: 1.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1) =>
@@ -118,7 +123,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v67');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v68');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
