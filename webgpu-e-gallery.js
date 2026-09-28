@@ -19,6 +19,7 @@
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const entries = Object.freeze([
     Object.freeze({ id: 'heal-astra', title: 'ヒール', versions: Object.freeze([
+      version('heal-astra-sparkle-r2', 'Astra sparkle r2', 'public/astra-heal-sparkle-r2/index.html', 'public/astra-heal-sparkle-r2/heal-sparkle.js', '視覚品質候補・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。回復リボン接線と受領方向に沿った角度。品質理由: H64暗明で題材に沿う交差光条・元主形・発光保持を確認。34 A/B画像で減光チャンネル0。明背景の白い主光流と重なる点は局所差が小さい。実聴未実施、本編未接続、ユーザー未採用。', 'actor-H64'),
       version('heal-astra-sparkle-r1', 'Astra sparkle r1', 'public/astra-heal-sparkle-r1/index.html', 'public/astra-heal-sparkle-r1/heal-sparkle.js', '品質審査候補・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。H64暗/明レビューでは初期回復と維持中のsparkleを確認。明背景の一部でコントラスト低下あり。聴感と本編統合は未検証。採用済み原版の採用判断は継承しません。', 'actor-H64'),
       version('heal-astra-sparkle-draft-b', 'Astra sparkle draft B', 'public/astra-heal-sparkle-r1/draft-b/index.html', 'public/astra-heal-sparkle-r1/draft-b/heal-sparkle.js', '品質不合格・旧試作・未採用', '作者: GPT-6-Astra。履歴品質理由: Receiver moved into torso; maintenance sparkle still too small. 後続r1に置換。', 'actor-H64'),
       version('heal-astra-sparkle-draft-a', 'Astra sparkle draft A', 'public/astra-heal-sparkle-r1/draft-a/index.html', 'public/astra-heal-sparkle-r1/draft-a/heal-sparkle.js', '品質不合格・旧試作・未採用', '作者: GPT-6-Astra。履歴品質理由: Maintenance sparkle too weak; one receiver anchor near face. 後続r1に置換。', 'actor-H64'),
@@ -30,6 +31,8 @@
       version('sunbeam-astra-clean-v1', 'Astra v1', 'sunbeam-astra-clean-v1-preview.html', 'webgpu-sunbeam-astra-clean-v1.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64')
     ]) }),
     Object.freeze({ id: 'luck-astra', title: '幸運', versions: Object.freeze([
+      version('luck-astra-v4-sparkle-r02', 'Astra v4 sparkle r02', 'public/astra-luck-v4-sparkle-v1/versions/r02/index.html?embed=1&height=64', 'public/astra-luck-v4-sparkle-v1/versions/r02/webgpu-luck-v4-sparkle-r02.js', '局所視覚候補・既採用版の履歴改修・未採用・本編未接続', '作者: GPT-6-Astra。採用済みv4への履歴改修。H64で受益者へ向かう軌道に沿う斜め光条を確認。品質理由: Primary confirmed topic-directed diagonal glints passing from selected state to recipient readable on dark/light H64 while original main phenomenon is preserved. 聴感not_run・本編未接続。ゼロ設計の新幸運版を制作中で、r02は採用候補本命ではありません。', 'actor-H64'),
+      version('luck-astra-v4-sparkle-r01', 'Astra v4 sparkle r01', 'public/astra-luck-v4-sparkle-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-luck-v4-sparkle-v1/versions/r01/webgpu-luck-v4-sparkle-r01.js', '品質不合格・既採用版の履歴改修・未採用・本編未接続', '作者: GPT-6-Astra。採用済みv4への履歴改修。品質理由: Chosen-side sparkle not readable at H64 dark .50; late foot points too weak as glints. 聴感not_run・本編未接続。ゼロ設計の新幸運版を制作中。', 'actor-H64'),
       version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', '品質合格・採用済み', '採用済み幸運v4。キラキラ改修中・新版未採用。'),
       version('luck-astra-clean-v3', 'Astra v3', 'luck-astra-v3-preview.html', 'webgpu-luck-astra-v3.js', '却下・品質未達・本編未採用', '履歴上WebGPU再生可能。翼の見た目が品質基準に届かず却下。'),
       version('luck-astra-clean-v2', 'Astra v2', 'luck-astra-v2-preview.html', 'webgpu-luck-astra-v2.js', '却下・品質未達・本編未採用', '履歴上WebGPU再生可能。翼の見た目が品質基準に届かず却下。'),
@@ -158,7 +161,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v75');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v76');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
