@@ -27,11 +27,15 @@
       version('heal-astra-prototype', 'Astra採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', 'ユーザー品質採用・発光と主形を確認済み', '採用済みヒール原版。キラキラ改修中・新版未採用。連続再生の全寿命と聴感は未受入です。', 'actor-H64', 0.7937)
     ]) }),
     Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', versions: Object.freeze([
-      version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', '品質合格・採用済み', '手元から伝播する三つの光路を持つ採用版。', 'effect-H64'),
+      version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', '品質保留・再改修中・ユーザー採用保留・本編未採用', '以前の視覚採用判断は保留され、品質改修中です。再審査が終わるまでユーザー採用と本編接続は承認されていません。', 'effect-H64'),
       version('sunbeam-astra-clean-v2', 'Astra v2', 'sunbeam-astra-clean-v2-preview.html', 'webgpu-sunbeam-astra-clean-v2.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64'),
       version('sunbeam-astra-clean-v1', 'Astra v1', 'sunbeam-astra-clean-v1-preview.html', 'webgpu-sunbeam-astra-clean-v1.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64')
     ]) }),
     Object.freeze({ id: 'luck-astra', title: '幸運', versions: Object.freeze([
+      version('luck-astra-zero-r04', 'Astra ゼロ設計 r04', 'public/astra-luck-zero-v1/versions/r04/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r04/luck-zero-r04.js', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: 白い矢印→金のX/翼・受益分離・quad境界切れ。背景屈折は未実装。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
+      version('luck-astra-zero-r03', 'Astra ゼロ設計 r03', 'public/astra-luck-zero-v1/versions/r03/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r03/luck-zero-r03.js', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: 平面クローバー印・縦消去・後半の緑色替え。角度統一等の部分改善は不合格を覆さない。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
+      version('luck-astra-zero-r02', 'Astra ゼロ設計 r02', 'public/astra-luck-zero-v1/versions/r02/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r02/luck-zero-r02.js', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: 3本の棒・顔横断・黄色い装甲・受益側光条埋没。GPU頂点変形で技術性能は改善したが、視覚不合格。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
+      version('luck-astra-zero-r01', 'Astra ゼロ設計 r01', 'public/astra-luck-zero-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r01/luck-zero-r01.js', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: 三日月記号化・到来時の点化・受益分離・フレーム不安定。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
       version('luck-astra-v4-sparkle-r02', 'Astra v4 sparkle r02', 'public/astra-luck-v4-sparkle-v1/versions/r02/index.html?embed=1&height=64', 'public/astra-luck-v4-sparkle-v1/versions/r02/webgpu-luck-v4-sparkle-r02.js', '比較用旧稿・角度統一条件未対応・未採用・本編未接続', '作者: GPT-6-Astra。採用済みv4への履歴改修で、胴/受益者の位置ごとに光条の向きを変える旧稿。最新の角度統一条件には未対応。元記録の局所視覚候補: Primary confirmed topic-directed diagonal glints passing from selected state to recipient readable on dark/light H64 while original main phenomenon is preserved. 聴感not_run・本編未接続。ゼロ設計の新幸運版を制作中。', 'actor-H64'),
       version('luck-astra-v4-sparkle-r01', 'Astra v4 sparkle r01', 'public/astra-luck-v4-sparkle-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-luck-v4-sparkle-v1/versions/r01/webgpu-luck-v4-sparkle-r01.js', '品質不合格・既採用版の履歴改修・未採用・本編未接続', '作者: GPT-6-Astra。採用済みv4への履歴改修。品質理由: Chosen-side sparkle not readable at H64 dark .50; late foot points too weak as glints. 聴感not_run・本編未接続。ゼロ設計の新幸運版を制作中。', 'actor-H64'),
       version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', '品質合格・採用済み', '採用済み幸運v4。キラキラ改修中・新版未採用。'),
@@ -170,7 +174,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v78');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v79');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
