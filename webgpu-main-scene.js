@@ -26,6 +26,13 @@
   const REQUIRED_SET = new Set(REQUIRED);
   const EMP_TYPES = new Set(['emp', 'emp-charge', 'emp-resonance',
     'emp-cancel', 'emp-storage-lock']);
+  const EMP_SOUND_VARIANTS = Object.freeze({
+    emp: Object.freeze(['positive', 'negative']),
+    'emp-charge': Object.freeze(['positive', 'negative']),
+    'emp-resonance': Object.freeze(['positive', 'negative']),
+    'emp-cancel': Object.freeze(['opposite']),
+    'emp-storage-lock': Object.freeze(['storage'])
+  });
   const SPECIAL_AMMO_TYPES = new Set(['action-special-ammo-load',
     'action-special-ammo-shot', 'action-special-ammo-impact']);
   const METHOD = Object.freeze({
@@ -564,6 +571,7 @@
       const markerHitTargets = [];
       const preparationHitTargets = [];
       const phenomenonSoundVisualReceipts = [];
+      const empSoundVisualReceipts = [];
       const staminaBenefitSoundReceipts = [];
       const manaBenefitSoundReceipts = [];
       const environmentSoundReceipts = [];
@@ -869,6 +877,20 @@
             if (outcome?.effectId !== event.effectId ||
                 outcome.type !== event.input.effect.type || outcome.drawn !== true)
               throw new Error(`Magic EMP ${event.effectId} was not fully claimed and drawn`);
+            const effect = event.input.effect;
+            if (typeof effect?.id === 'string' && effect.id &&
+                EMP_SOUND_VARIANTS[effect.type]?.includes(effect.variant) &&
+                typeof effect.empCausalId === 'string' && effect.empCausalId &&
+                effect.playerId != null && String(effect.playerId) &&
+                [effect.x, effect.y, effect.startedAt,
+                  event.input.visibleAtMs].every(Number.isFinite)) {
+              empSoundVisualReceipts.push(Object.freeze({
+                effectId: effect.id, type: effect.type, variant: effect.variant,
+                empCausalId: effect.empCausalId, playerId: String(effect.playerId),
+                x: effect.x, y: effect.y, startedAt: effect.startedAt,
+                visibleAtMs: event.input.visibleAtMs
+              }));
+            }
           } else if (event.type === 'specialAmmoEffect') {
             const outcome = need('specialAmmoEffect', 'record').record({ frame, target,
               viewport, planned: event.input.planned });
@@ -1174,6 +1196,7 @@
         preparationHitTargets: Object.freeze(preparationHitTargets.slice()),
         minimapBounds: Object.freeze({ ...stages.minimap.scene.bounds }),
         phenomenonSoundVisualReceipts: Object.freeze(phenomenonSoundVisualReceipts.slice()),
+        empSoundVisualReceipts: Object.freeze(empSoundVisualReceipts.slice()),
         staminaBenefitSoundReceipts: Object.freeze(staminaBenefitSoundReceipts.slice()),
         manaBenefitSoundReceipts: Object.freeze(manaBenefitSoundReceipts.slice()),
         environmentSoundReceipts: Object.freeze(environmentSoundReceipts.slice()),

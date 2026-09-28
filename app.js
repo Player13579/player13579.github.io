@@ -49,6 +49,9 @@ const API_BASE_URL = String(globalThis.DVA_API_BASE_URL || "").trim().replace(/\
 const URL_PARAMETERS = new URLSearchParams(location.search);
 const PLATFORM_OVERRIDE = URL_PARAMETERS.get("platform");
 const IS_VERIFICATION_MODE = URL_PARAMETERS.has("verify");
+const EMP_ASTRA_V18_SFX_MODULE = IS_VERIFICATION_MODE ? Promise.resolve(null) :
+  import('./astra-emp-v1/versions/v1.8/sfx.mjs?adapter=webgpu-emp-pcm-r1')
+    .catch(() => null);
 const VERIFY_REDUCED_MOTION = IS_VERIFICATION_MODE && URL_PARAMETERS.get("reducedMotion") === "1";
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
@@ -1416,8 +1419,9 @@ const PHENOMENON_SOUND_RECEIPTS = { roomId: "", ids: new Set(), order: [], owner
 // Grenade impact receipts live for the entire room session. A finite visual
 // may expire while its server event ID remains in later snapshots.
 const GRENADE_IMPACT_SOUND_RECEIPTS = { roomId: "", generation: 0, ids: new Map() };
-const WEBGPU_E_CUES = { roomKey: '', player: null, events: null,
-  combat: null, defense: null, actorOwners: new Map() };
+const WEBGPU_E_CUES = { roomKey: '', player: null, empPcm: null,
+  events: null, combat: null, defense: null, actorOwners: new Map(),
+  empActorOwners: new Map() };
 const WORLD_EVENT_SOUND_IDS = { roomKey: '', ids: new Set(), order: [] };
 const FIRE_E_SOUND_RECEIPTS = { roomKey: '', pending: new Map(), played: new Set() };
 let HEAL_E_SFX_PLAYER = null;
@@ -12912,9 +12916,15 @@ function syncWebGPUECueSession(data) {
   if (!roomId || !Number.isInteger(generation) ||
       !['playing', 'meeting'].includes(data?.phase)) {
     owner.player?.stopAll();
+    owner.empPcm?.stopAll();
+    owner.empActorOwners.clear();
     return false;
   }
-  if (isSensoryBlocked(data)) owner.player?.stopAll();
+  if (isSensoryBlocked(data)) {
+    owner.player?.stopAll();
+    owner.empPcm?.stopAll();
+    owner.empActorOwners.clear();
+  }
   const key = `${roomId}:${generation}`;
   if (!owner.player) {
     const modules = [window.DvaWebGPEEventSfx,
@@ -12931,11 +12941,28 @@ function syncWebGPUECueSession(data) {
       isVerify: () => false
     });
   }
+  if (!owner.empPcm &&
+      typeof window.DvaWebGPUCombatESfx?.createEmpPCMPlayer === 'function') {
+    owner.empPcm = window.DvaWebGPUCombatESfx.createEmpPCMPlayer({
+      getContext: () => state.audio.context,
+      getMaster: () => state.audio.master,
+      isMuted: () => state.audio.muted || document.hidden ||
+        !state.audio.unlocked || isSensoryBlocked(),
+      isVerify: () => IS_VERIFICATION_MODE
+    });
+    const empPlayer = owner.empPcm;
+    EMP_ASTRA_V18_SFX_MODULE.then(module => {
+      if (module?.synthesize && WEBGPU_E_CUES.empPcm === empPlayer)
+        empPlayer.setSynthesizer(module.synthesize);
+    });
+  }
   if (owner.roomKey !== key) {
     owner.roomKey = key;
     owner.actorOwners.clear();
-    for (const ledger of [owner.events, owner.combat, owner.defense, owner.player])
-      ledger.enterRoom(roomId, generation);
+    owner.empActorOwners.clear();
+    for (const ledger of [owner.events, owner.combat, owner.defense,
+      owner.player, owner.empPcm])
+      ledger?.enterRoom(roomId, generation);
   }
   return true;
 }
@@ -12966,14 +12993,8 @@ function admitWebGPUECue(effect, data, receivedAt, volumeOverride = null) {
     nowMs: receivedAt, type: String(effect.type || ''),
     variant: String(effect.variant || '') };
   let cue = null;
-  if (window.DvaWebGPUCombatESfx.EMP[base.type]) {
-    // The world-sound route alone may claim an EMP. A magic effect by itself
-    // cannot silence the existing sound or infer its causal counterpart.
-    if (typeof effect.empCausalId !== 'string' || !effect.empCausalId ||
-        !Number.isFinite(volumeOverride) ||
-        !window.DvaWebGPUCombatESfx.EMP[base.type][base.variant]) return null;
-    cue = owner.combat.admit(base, { reducedMotion: prefersReducedMotion() });
-  } else if (base.type.startsWith('action-special-ammo-')) {
+  if (window.DvaWebGPUCombatESfx.EMP[base.type]) return null;
+  if (base.type.startsWith('action-special-ammo-')) {
     if (!['action-special-ammo-load', 'action-special-ammo-shot',
       'action-special-ammo-impact'].includes(base.type)) return null;
     if (!(base.type === 'action-special-ammo-impact'
@@ -13153,16 +13174,73 @@ function admitSubmittedGunnerAimCue(data, receipt) {
   return trackActorOwnedECue(cue, source, actor, data, played);
 }
 
-function pairedEmpMagicEffect(sound, data) {
-  const causalId = sound?.empCausalId;
-  if (sound?.type !== 'emp' || typeof causalId !== 'string' || !causalId)
-    return null;
-  const matches = (data?.magicEffects || []).filter(effect =>
-    typeof effect?.id === 'string' && effect.id &&
-    effect.empCausalId === causalId &&
-    ['emp', 'emp-resonance', 'emp-cancel'].includes(effect.type) &&
-    window.DvaWebGPUCombatESfx?.EMP?.[effect.type]?.[effect.variant]);
-  return matches.length === 1 ? matches[0] : null;
+function advanceEmpPcmOwners(data) {
+  const owner = WEBGPU_E_CUES;
+  if (!owner.empPcm) return;
+  const audible = !IS_VERIFICATION_MODE && state.screen === 'game' &&
+    !document.hidden && !state.audio.muted && state.audio.unlocked &&
+    !isSensoryBlocked(data) && state.audio.context?.state === 'running' &&
+    Number(state.audio.master?.gain?.value) > 0;
+  if (!audible) {
+    owner.empPcm.stopAll();
+    owner.empActorOwners.clear();
+    return;
+  }
+  for (const [eventId, entry] of owner.empActorOwners) {
+    const actor = data.players?.find(player => String(player.id) === entry.playerId);
+    const effect = (state.magicEffects || []).find(item =>
+      String(item.id) === entry.effectId);
+    if (entry.roomId !== String(data.roomId || '') ||
+        entry.generation !== state.roomSessionGeneration ||
+        !effect || !actor?.alive || actor.ejected || actor.inVent ||
+        (actor.invisible && String(actor.id) !== String(data.selfId))) {
+      owner.empPcm.stopEvent(eventId);
+      owner.empActorOwners.delete(eventId);
+      continue;
+    }
+    if (!owner.empPcm.setEventRate(eventId, displayETimeScale(actor, data)))
+      owner.empActorOwners.delete(eventId);
+  }
+}
+
+function commitSubmittedEmpSoundFrame(data, receipts) {
+  if (!Array.isArray(receipts) || data !== state.data || state.screen !== 'game' ||
+      !['playing', 'meeting'].includes(data?.phase) || !webgpuMainApp.visible ||
+      !webgpuMainSubmittedFrameCurrent() || !syncWebGPUECueSession(data)) return;
+  const player = WEBGPU_E_CUES.empPcm;
+  if (!player) return;
+  const nowMs = performance.now();
+  for (const receipt of receipts) {
+    const source = (state.magicEffects || []).find(effect =>
+      String(effect.id) === String(receipt?.effectId));
+    const actor = data.players?.find(entry =>
+      String(entry.id) === String(receipt?.playerId));
+    const variants = window.DvaWebGPUCombatESfx?.EMP?.[receipt?.type];
+    if (!source || String(source.id) !== String(receipt.effectId) ||
+        source.type !== receipt.type || source.variant !== receipt.variant ||
+        source.empCausalId !== receipt.empCausalId ||
+        String(source.playerId || '') !== String(receipt.playerId || '') ||
+        source.x !== receipt.x || source.y !== receipt.y ||
+        source.startedAt !== receipt.startedAt ||
+        typeof receipt.empCausalId !== 'string' || !receipt.empCausalId ||
+        !variants?.[receipt.variant] || !Number.isFinite(receipt.visibleAtMs)) continue;
+    const audible = !IS_VERIFICATION_MODE && !document.hidden &&
+      !state.audio.muted && state.audio.unlocked && !isSensoryBlocked(data) &&
+      state.audio.context?.state === 'running' &&
+      Number(state.audio.master?.gain?.value) > 0;
+    const event = { eventId: String(receipt.effectId), type: receipt.type,
+      variant: receipt.variant, roomId: String(data.roomId),
+      roomGeneration: state.roomSessionGeneration,
+      eventAtMs: receipt.visibleAtMs };
+    const played = player.play(event, { nowMs, muted: !audible,
+      verify: IS_VERIFICATION_MODE,
+      volume: clamp(webgpuECueVolume(source, data), 0, .75),
+      rate: actor ? displayETimeScale(actor, data) : 1 });
+    if (played?.status === 'scheduled')
+      WEBGPU_E_CUES.empActorOwners.set(event.eventId, {
+        effectId: String(receipt.effectId), playerId: String(receipt.playerId),
+        roomId: String(data.roomId), generation: state.roomSessionGeneration });
+  }
 }
 
 function floraInvisibleSelfVisibility(effect, data) {
@@ -13178,9 +13256,19 @@ function floraInvisibleSelfVisibility(effect, data) {
 }
 
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden) { WEBGPU_E_CUES.player?.stopAll(); stopHealESfx(); }
+  if (document.hidden) {
+    WEBGPU_E_CUES.player?.stopAll();
+    WEBGPU_E_CUES.empPcm?.stopAll();
+    WEBGPU_E_CUES.empActorOwners.clear();
+    stopHealESfx();
+  }
 });
-window.addEventListener('pagehide', () => { WEBGPU_E_CUES.player?.stopAll(); stopHealESfx(); });
+window.addEventListener('pagehide', () => {
+  WEBGPU_E_CUES.player?.stopAll();
+  WEBGPU_E_CUES.empPcm?.stopAll();
+  WEBGPU_E_CUES.empActorOwners.clear();
+  stopHealESfx();
+});
 
 function detectMagicEffects(previous, next) {
   if (HEAL_E_SFX_ACTIVE && (HEAL_E_SFX_ACTIVE.roomId !== String(next.roomId) ||
@@ -13518,16 +13606,9 @@ function detectWorldSounds(previous, next) {
     if (distance > maxDistance) continue;
     const volume = clamp(1 - distance / maxDistance, 0, 1) * clamp(Number(sound.volume) || 1, 0, 1.25);
     if (volume <= 0.01) continue;
-    const pairedEmp = pairedEmpMagicEffect(sound, next);
-    if (pairedEmp && syncWebGPUECueSession(next)) {
-      let receipt, cueFailed = false;
-      try { receipt = admitWebGPUECue(pairedEmp, next,
-        state.frameNow || performance.now(), volume); }
-      catch (_) { cueFailed = true; }
-      if (!cueFailed && receipt?.status !== 'failed' &&
-          (receipt?.status === 'scheduled' || receipt?.status === 'suppressed' ||
-            WEBGPU_E_CUES.combat.has(pairedEmp.id))) continue;
-    }
+    // EMP audio is owned by the exact effect drawn in a visible WebGPU
+    // submission. Never play the earlier server world-sound receipt here.
+    if (sound.type === 'emp') continue;
     const kind = {
       gunshot: "gunshot",
       emp: "emp",
@@ -19236,6 +19317,8 @@ function pumpWebGPUMainAppDriver() {
       throw new Error('WebGPU main submitted without mystery opening sound receipts');
     if (!Array.isArray(receipt.recordResult?.gunnerAimSoundReceipts))
       throw new Error('WebGPU main submitted without Gunner aim sound receipts');
+    if (!Array.isArray(receipt.recordResult?.empSoundVisualReceipts))
+      throw new Error('WebGPU main submitted without EMP v1.8 sound receipts');
     if (!mainCanvas.isConnected || mainCanvas.style.display === "none") {
       recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
         'visible-rejected', { requestId: receipt.diagnosticRequestId ?? null,
@@ -19295,6 +19378,7 @@ function pumpWebGPUMainAppDriver() {
     // receipts against the fresh authoritative snapshot.
     if (data === state.data) {
     advanceActorOwnedECues(data);
+    advanceEmpPcmOwners(data);
     const activeSunbeams = new Set((state.magicEffects || [])
       .filter(effect => effect.type === 'flora-sunbeam').map(effect => String(effect.id)));
     for (const [causeKey, entry] of sunbeamLive.soundPlayers || []) {
@@ -19326,6 +19410,7 @@ function pumpWebGPUMainAppDriver() {
     commitManaBenefitSoundFrame(data, receipt.recordResult.manaBenefitSoundReceipts);
     commitHealESfxVisualFrame(data, receipt.recordResult.healSoundVisualReceipts);
     commitBarrierR07SoundFrame(data, receipt.recordResult.barrierSoundVisualReceipts);
+    commitSubmittedEmpSoundFrame(data, receipt.recordResult.empSoundVisualReceipts);
     commitVisibleVisualSoundFrame(data,
       receipt.recordResult.phenomenonSoundVisualReceipts,
       receipt.recordResult.environmentSoundReceipts, true);
@@ -19445,6 +19530,11 @@ function prepareMagicEffectsForMainFrame(data, now) {
     return;
   }
   state.magicEffects = state.magicEffects.filter((effect) => {
+    if (isWallClockEmpLifetime(effect)) {
+      if (!Number.isFinite(effect.startedAt) || !Number.isFinite(effect.duration) ||
+          effect.duration <= 0) return true;
+      return now < effect.startedAt || now - effect.startedAt < effect.duration;
+    }
     if (isBodyAccelerationGainEffect(effect)) {
       const actorElapsed = accelerationBodyActorElapsed(effect, data);
       return actorElapsed == null ? now - effect.startedAt < effect.duration :
@@ -20565,6 +20655,12 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       unsupported, expiredEffectIds: effects.map(effect => effect?.id), ready: true };
   const active = effects.filter(effect => {
     const now = eEffectNow(effect, data, wallNow);
+    if (isWallClockEmpLifetime(effect)) {
+      if (![effect.startedAt, effect.duration].every(Number.isFinite) ||
+          effect.duration <= 0) return true;
+      return wallNow < effect.startedAt ||
+        wallNow - effect.startedAt < effect.duration;
+    }
     if (effect?.type === 'fighter-slash') {
       if (![effect.x, effect.y, effect.targetX, effect.targetY,
         effect.startedAt, effect.duration].every(Number.isFinite) || effect.duration <= 0)
@@ -21247,7 +21343,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       }
       empCoverage.visibleEmp.push({ effectId: sourceEffectId, effectType: type });
       events.push({ type: 'empEffect', effectId: sourceEffectId,
-        input: { sourceEffectId, effect, storageActor } });
+        input: { sourceEffectId, effect, storageActor, visibleAtMs: now } });
       continue;
     }
     if (type === 'emp' || type.startsWith('emp-')) {
@@ -25679,6 +25775,10 @@ function eEffectNow(effect, data = state.data, wallNow = state.frameNow || perfo
   return effect.startedAt + Math.max(0, eVisualTime(owner, data) - effect.eClockStartedAt);
 }
 
+function isWallClockEmpLifetime(effect) {
+  return effect?.type === 'emp-charge' || effect?.type === 'emp-storage-lock';
+}
+
 function syncActorVisualClocks(data = state.data) {
   const present = new Set((data?.players || []).map((player) => player?.id).filter(Boolean));
   for (const id of state.actorVisualClocks.keys()) {
@@ -27912,7 +28012,10 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
           !state.magicEffects.includes(effect) ||
           String(effect?.id) !== sourceId || effect.type !== claim.effectType)
         throw new Error(`WebGPU world candidate EMP source coverage changed: ${sourceId}`);
-      const planned = window.DvaWebGPUEmpEffect?.plan?.({ effect,
+      const planned = window.DvaWebGPUEmpEffect?.plan?.({
+        effect: isWallClockEmpLifetime(effect)
+          ? { ...effect, wallMs: Math.max(0, magicInput.now - effect.startedAt) }
+          : effect,
         now: eEffectNow(effect, state.data, magicInput.now), phase: magicInput.phase,
         camera: candidate.camera, zoom: candidate.zoom,
         viewport: candidate.viewport,

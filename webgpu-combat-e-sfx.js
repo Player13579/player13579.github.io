@@ -172,7 +172,141 @@
     });
   }
 
-  const api = Object.freeze({ EMP, AMMO, LAYERS, createLedger });
+  // Astra EMP v1.8 PCM adapter. The caller supplies that revision's
+  // `synthesize` export after a preload; this classic-script module therefore
+  // stays synchronous and does not make the first event wait on import().
+  // It only uses the game's already-unlocked context and master gain.
+  function createEmpPCMPlayer({ getContext, getMaster, isMuted = () => false,
+    isVerify = () => false, maxVolume = 0.22, maxLateMs = 180,
+    maxEntries = 2048, retentionMs = 30000 } = {}) {
+    if (typeof getContext !== 'function' || typeof getMaster !== 'function')
+      throw new TypeError('EMP PCM player requires existing context/master getters');
+    if (!finite(maxVolume) || maxVolume < 0 || maxVolume > 0.35 ||
+        !finite(maxLateMs) || maxLateMs < 0 || !Number.isInteger(maxEntries) ||
+        maxEntries < 16 || !finite(retentionMs) || retentionMs < maxLateMs)
+      throw new TypeError('Invalid EMP PCM player limits');
+    let synthesize = null, roomKey = '', watermark = 0;
+    let monitoredContext = null, contextStateHandler = null;
+    const consumed = new Map(), voices = new Map();
+    function prune(nowMs) {
+      watermark = Math.max(watermark, nowMs);
+      for (const [id, expiresAt] of consumed)
+        if (expiresAt <= nowMs) consumed.delete(id);
+    }
+    function stopVoice(id, fade = true) {
+      const voice = voices.get(id);
+      if (!voice) return false;
+      voices.delete(id);
+      try {
+        const now = voice.context.currentTime;
+        if (fade) {
+          voice.gain.gain.cancelScheduledValues(now);
+          voice.gain.gain.setValueAtTime(voice.gain.gain.value, now);
+          voice.gain.gain.linearRampToValueAtTime(0, now + .018);
+          voice.source.stop(now + .020);
+        } else voice.source.stop(now);
+      } catch (_) {}
+      try { voice.source.disconnect(); } catch (_) {}
+      try { voice.gain.disconnect(); } catch (_) {}
+      return true;
+    }
+    function stopAll() { for (const id of [...voices.keys()]) stopVoice(id); }
+    function monitorContext(context) {
+      if (monitoredContext === context || typeof context.addEventListener !== 'function') return;
+      if (monitoredContext && contextStateHandler)
+        monitoredContext.removeEventListener?.('statechange', contextStateHandler);
+      monitoredContext = context;
+      contextStateHandler = () => { if (context.state !== 'running') stopAll(); };
+      context.addEventListener('statechange', contextStateHandler);
+    }
+    function enterRoom(roomId, roomGeneration) {
+      if (typeof roomId !== 'string' || !roomId ||
+          !Number.isInteger(roomGeneration) || roomGeneration < 0)
+        throw new TypeError('EMP PCM player needs room ID and generation');
+      const next = `${roomId}:${roomGeneration}`;
+      if (next !== roomKey) {
+        stopAll(); consumed.clear(); watermark = 0; roomKey = next;
+      }
+    }
+    function setSynthesizer(fn) {
+      if (typeof fn !== 'function') throw new TypeError('EMP PCM synthesizer must be a function');
+      synthesize = fn;
+      return true;
+    }
+    function play(event, { nowMs, volume = 1, rate = 1, muted = false,
+      verify = false } = {}) {
+      if (!event || typeof event.eventId !== 'string' || !event.eventId ||
+          !Object.hasOwn(EMP, event.type) || !EMP[event.type][event.variant] ||
+          typeof event.roomId !== 'string' || !event.roomId ||
+          !Number.isInteger(event.roomGeneration) || event.roomGeneration < 0 ||
+          !finite(event.eventAtMs) || event.eventAtMs < 0 || !finite(nowMs) || nowMs < 0 ||
+          !finite(volume) || volume < 0 || !finite(rate) || rate < 0 || rate > 12)
+        throw new TypeError('EMP PCM event requires a supported event, identity, timing, volume and rate');
+      enterRoom(event.roomId, event.roomGeneration);
+      prune(nowMs);
+      if (consumed.has(event.eventId)) return receipt(event, 'suppressed', 'duplicate');
+      if (watermark - event.eventAtMs > retentionMs)
+        return receipt(event, 'suppressed', 'expired-replay');
+      if (consumed.size >= maxEntries) return receipt(event, 'suppressed', 'receipt-capacity');
+      consumed.set(event.eventId, Math.max(nowMs, event.eventAtMs + maxLateMs) + retentionMs);
+      const elapsedMs = Math.max(0, nowMs - event.eventAtMs);
+      if (verify || isVerify()) return receipt(event, 'suppressed', 'verification');
+      if (muted || isMuted() || volume <= 0 || maxVolume <= 0)
+        return receipt(event, 'suppressed', 'muted');
+      if (elapsedMs > maxLateMs) return receipt(event, 'suppressed', 'late');
+      const context = getContext(), master = getMaster();
+      if (!synthesize || !context || !master || context.state !== 'running' ||
+          !(Number(master.gain?.value) > 0))
+        return receipt(event, 'suppressed', synthesize ? 'audio-unavailable' : 'not-ready');
+      try {
+        monitorContext(context);
+        const pcm = synthesize(event.type, context.sampleRate,
+          event.variant === 'negative');
+        if (!(pcm instanceof Float32Array) || pcm.length < 1 ||
+            pcm.length > Math.ceil(context.sampleRate * 2))
+          throw new TypeError('EMP PCM synthesizer returned an invalid finite buffer');
+        const buffer = context.createBuffer(1, pcm.length, context.sampleRate);
+        buffer.copyToChannel(pcm, 0);
+        const source = context.createBufferSource(), gain = context.createGain();
+        source.buffer = buffer;
+        source.playbackRate.setValueAtTime(rate, context.currentTime);
+        gain.gain.value = Math.min(1, volume) * maxVolume;
+        source.connect(gain); gain.connect(master);
+        const voice = { source, gain, context };
+        voices.set(event.eventId, voice);
+        source.onended = () => {
+          if (voices.get(event.eventId) === voice) voices.delete(event.eventId);
+          try { source.disconnect(); } catch (_) {}
+          try { gain.disconnect(); } catch (_) {}
+        };
+        const offset = elapsedMs * rate / 1000;
+        if (offset >= buffer.duration) {
+          stopVoice(event.eventId, false);
+          return receipt(event, 'suppressed', 'expired');
+        }
+        source.start(context.currentTime, offset);
+        return receipt(event, 'scheduled', '');
+      } catch (error) {
+        stopVoice(event.eventId, false);
+        return receipt(event, 'failed', String(error?.message || error));
+      }
+    }
+    function receipt(event, status, reason) {
+      return Object.freeze({ eventId: event.eventId, roomId: event.roomId,
+        roomGeneration: event.roomGeneration, status, reason });
+    }
+    function setEventRate(eventId, rate) {
+      const voice = voices.get(eventId);
+      if (!voice || !finite(rate) || rate < 0 || rate > 12) return false;
+      voice.source.playbackRate.setValueAtTime(rate, voice.context.currentTime);
+      return true;
+    }
+    return Object.freeze({ play, enterRoom, setSynthesizer, setEventRate,
+      stopEvent: id => stopVoice(id), stopAll, has: id => consumed.has(id),
+      size: () => consumed.size, active: () => voices.size });
+  }
+
+  const api = Object.freeze({ EMP, AMMO, LAYERS, createLedger, createEmpPCMPlayer });
   root.DvaWebGPUCombatESfx = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);
