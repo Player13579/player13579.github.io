@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r12",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.12",
+  "version": "astra-status-cleanse-r0.12",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "主担当H64全寿命レビュー：付着から身体離脱の因果は改善したが、均一幅の紫ロープがX字に乗って抜ける形。面・材質・接着破断・回復後作用が品質未達。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r12/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r12/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r12.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "8eab4a684761e01ba7998fb367f6bcae2c88beb7c11df9f60dab0a86d7d888fa",
+    "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+    "cleanse.mjs": "fdff61b8029ad2b7a341a2f4cb5bb037ca997d70023e4f0d87d7a33dce64d92d",
+    "field-r12.mjs": "d92338edccbd239aa231a1fbf6108507e7663fcc9d5d53e64bef834f4420fa27",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 440,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r12/evidence/",
+  "fixtureNotice": "紫の付着は状態解除の比較用fixture。実ゲームの毒/炎/状態異常の発火ではない。"
+}

@@ -8,8 +8,8 @@ const pagesRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..
 const gallerySource = fs.readFileSync(path.join(pagesRoot, 'webgpu-e-gallery.js'), 'utf8');
 
 test('Pages gallery publishes replayable Astra history newest first with version-specific quality states', () => {
-  const astraGroups = [...gallerySource.matchAll(/Object\.freeze\(\{ id: '(?:heal|sunbeam|luck|mana|stamina|emp|barrier)-astra[^']*', title: '[^']+', versions: Object\.freeze\(\[([\s\S]*?)\]\) \}\)/g)];
-  assert.equal(astraGroups.length, 7, 'all seven Astra effect groups are present');
+  const astraGroups = [...gallerySource.matchAll(/Object\.freeze\(\{ id: '[^']+-astra[^']*', title: '[^']+', versions: Object\.freeze\(\[([\s\S]*?)\]\) \}\)/g)];
+  assert.equal(astraGroups.length, 9, 'all nine Astra effect groups are present');
   const astraVersions = [...gallerySource.matchAll(/version\('([^']+)', '[^']+', '([^']+)', '([^']+)', '([^']+)'/g)];
   assert.ok(astraVersions.length >= 30, 'older Astra versions remain in the selectable catalog');
   const ids = astraVersions.map(([, id]) => id);

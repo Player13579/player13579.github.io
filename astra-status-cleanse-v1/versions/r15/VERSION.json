@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r15",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.15",
+  "version": "astra-status-cleanse-r0.15",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "自己H64明暗レビュー：初期異常は小さな柄ずれに留まり、解除前線が直交する白線/箱状に読める。局所屈折と収束方向の意味が品質未達。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r15/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r15/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r15.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "b1a7f0f4fc23fe703d7ed1eec3f51384fecfa7ca11a6031e897e02f57e9fc093",
+    "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+    "cleanse.mjs": "678f7369c54ac6fe02fc7302a7a81939719cf8279bf0046cdfcba41b6c94a72e",
+    "field-r15.mjs": "b63b00d3c6d7988dcc2da4fa86c6d601d31a2d0f0742c8565d513338b8526613",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 276,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r15/evidence/",
+  "fixtureNotice": "身体上の局所屈折は状態解除の比較用fixture。実ゲームの毒/炎/状態異常の発火ではない。"
+}

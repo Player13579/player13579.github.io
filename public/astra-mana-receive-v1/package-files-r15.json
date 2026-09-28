@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "astra-mana-receive-v1-r15-addendum",
+  "entry": "versions/r15/index.html",
+  "files": [
+    "versions/r15/index.html",
+    "versions/r15/preview.mjs",
+    "versions/r15/renderer.mjs",
+    "versions/r15/events.mjs",
+    "versions/r15/sound.mjs",
+    "versions/r15/mana.wgsl",
+    "versions/r15/post.wgsl",
+    "versions/r15/assets/player-walk-60.webp",
+    "versions/r15/assets/player-walk-60-webgpu-metadata-v1.json",
+    "replay-manifest-r15.json",
+    "package-files-r15.json"
+  ],
+  "quality": "rejected",
+  "gameAdopted": false,
+  "exclude": [
+    ".b-source",
+    "evidence",
+    "test-r15.mjs",
+    "verify-r15.cjs",
+    "r15-design.md",
+    "r15-work.md"
+  ],
+  "qualityReason": "r15 H64 t0.74/0.96 looks like a cyan selection outline, not mana transfer/received volume"
+}

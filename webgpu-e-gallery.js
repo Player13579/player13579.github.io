@@ -11,6 +11,7 @@
     'mana-astra': { magnification: 4.25, focusX: 245, focusY: 310 },
     'stamina-astra': { magnification: 4.25, focusX: 518, focusY: 343 },
     'status-cleanse-astra': { magnification: 4.25, focusX: 490, focusY: 310 },
+    'cooldown-astra': { magnification: 1.0, focusX: 490, focusY: 310 },
     'barrier-pro-r07': { magnification: 1.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1) =>
@@ -32,6 +33,12 @@
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
     Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+      version('mana-astra-r15', 'Astra r15', 'public/astra-mana-receive-v1/versions/r15/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r15/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。r15 H64 t0.74/0.96 looks like a cyan selection outline, not mana transfer/received volume', 'actor-H64'),
+      version('mana-astra-r14', 'Astra r14', 'public/astra-mana-receive-v1/versions/r14/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r14/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当後続改稿指示: 受領後半が小さな腹部発光へ戻り、全身のreceived-state changeが未達。', 'actor-H64'),
+      version('mana-astra-r13', 'Astra r13', 'public/astra-mana-receive-v1/versions/r13/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r13/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64 t0.74不合格: 青緑/紫の翼または外套に見え、マナが到着し蓄積する構造として読めない。', 'actor-H64'),
+      version('mana-astra-r12', 'Astra r12', 'public/astra-mana-receive-v1/versions/r12/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r12/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当/自己評価不合格: 入力体積から全身開口へ変形したが、後半がC字の輪/殻に見え、蓄積の非円周構造にならない。', 'actor-H64'),
+      version('mana-astra-r11', 'Astra r11', 'public/astra-mana-receive-v1/versions/r11/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r11/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64不合格: 0.53/0.74/0.96sの三日月壁・紫量・空洞・時間差が小さな水色腹部楕円へ潰れ、身体への蓄積が読めない。', 'actor-H64'),
+      version('mana-astra-r10', 'Astra r10', 'public/astra-mana-receive-v1/versions/r10/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r10/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64不合格: 0.53sは小さな錠剤光片、0.74sは衣装のほぼ一様な青緑着色。受け手内部の蓄積構造が読めない。', 'actor-H64'),
       version('mana-astra-r9', 'Astra r9', 'public/astra-mana-receive-v1/versions/r9/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r9/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: 手から左下へ投射する扇形beamに見え、受領方向が逆。0.30/0.53/0.74sの身体変化も弱い。', 'actor-H64'),
       version('mana-astra-r8', 'Astra r8', 'public/astra-mana-receive-v1/versions/r8/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r8/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: 翼を消した結果、源の球とアクターが分離。0.74sの接続が消え、主形/因果がr7より弱まる。', 'actor-H64'),
       version('mana-astra-r7', 'Astra r7', 'public/astra-mana-receive-v1/versions/r7/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r7/renderer.mjs', '品質審査中・本編未採用', '作者: GPT-6-Astra。審査中: 実衣装との遮蔽/発光は改善したが、外の布/翼が支配的。受領の因果を要改善。', 'actor-H64'),
@@ -64,7 +71,7 @@
       version('stamina-astra-zero-v1', 'Astra zero v1', 'webgpu-stamina-astra-zero-preview.html', 'webgpu-stamina-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU全寿命連続再生済み。形状とSFXが品質未達。')
     ]) }),
     Object.freeze({ id: 'emp-astra', title: 'EMP', versions: Object.freeze([
-      version('emp-astra-v1.8', 'Astra v1.8', 'astra-emp-v1/versions/v1.8/index.html', 'astra-emp-v1/versions/v1.8/emp.mjs', 'ユーザー採用済み・本編接続中（実装未完了）', 'ユーザー採用版。ゲームへの接続作業中で、実装完了や実機発動・聴感の受入とは別です。', 'effect-H64'),
+      version('emp-astra-v1.8', 'Astra v1.8', 'astra-emp-v1/versions/v1.8/index.html', 'astra-emp-v1/versions/v1.8/emp.mjs', 'ユーザー採用済み・本編接続済み・実発動/聴感未確認', 'ユーザー採用版。ゲームへの接続は完了し、実機での発動と聴感の受入は未確認です。', 'effect-H64'),
       version('emp-astra-v1.7', 'Astra v1.7', 'astra-emp-v1/versions/v1.7/index.html', 'astra-emp-v1/versions/v1.7/emp.mjs', '品質不合格・本編未採用', 'Astra v1.7。品質不合格で本編未採用です。', 'effect-H64'),
       version('emp-astra-v1.6', 'Astra v1.6', 'astra-emp-v1/versions/v1.6/index.html', 'astra-emp-v1/versions/v1.6/emp.mjs', '品質不合格・本編未採用', 'Astra v1.6。品質不合格で本編未採用です。', 'effect-H64'),
       version('emp-astra-v1.5', 'Astra v1.5', 'astra-emp-v1/versions/v1.5/index.html', 'astra-emp-v1/versions/v1.5/emp.mjs', '品質不合格・本編未採用', 'Astra v1.5。品質不合格で本編未採用です。', 'effect-H64'),
@@ -74,6 +81,13 @@
       version('emp-astra-zero-v1', 'Astra zero v1', 'webgpu-emp-astra-zero-preview.html', 'webgpu-emp-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPUでチャージ、放電、共鳴、キャンセル、保管ロックを再生済み。')
     ]) }),
     Object.freeze({ id: 'status-cleanse-astra', title: '状態異常回復 · Astra履歴', versions: Object.freeze([
+      version('status-cleanse-astra-r16', 'Astra r0.16', 'astra-status-cleanse-v1/versions/r16/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r16/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。自己H64明暗レビュー：ぼかした影/薄い霧のfadeに見え、体積がほどける奥行きと清浄光の力が不足。身体反応もベージュの照明色へ寄り、正常復帰の意味が品質未達。', 'actor-H64'),
+      version('status-cleanse-astra-r15', 'Astra r0.15', 'astra-status-cleanse-v1/versions/r15/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r15/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。自己H64明暗レビュー：初期異常は小さな柄ずれに留まり、解除前線が直交する白線/箱状に読める。局所屈折と収束方向の意味が品質未達。', 'actor-H64'),
+      version('status-cleanse-astra-r14', 'Astra r0.14', 'astra-status-cleanse-v1/versions/r14/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r14/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64全寿命レビュー：角は出たが、胸前の紫Xベルトが外れるだけ。状態異常と回復の独自現象・発光の力が成立していない。服/ロープ/ベルト状拘束の系列を放棄し新設計待ち。', 'actor-H64'),
+      version('status-cleanse-astra-r13', 'Astra r0.13', 'astra-status-cleanse-v1/versions/r13/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r13/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。自己H64明暗レビュー：可変幅の板が暗い丸い節の連なりに潰れ、厚み/破断面の機能が読めない。r12の材質可読性を改善できず品質未達。', 'actor-H64'),
+      version('status-cleanse-astra-r12', 'Astra r0.12', 'astra-status-cleanse-v1/versions/r12/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r12/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64全寿命レビュー：付着から身体離脱の因果は改善したが、均一幅の紫ロープがX字に乗って抜ける形。面・材質・接着破断・回復後作用が品質未達。', 'actor-H64'),
+      version('status-cleanse-astra-r11', 'Astra r0.11', 'astra-status-cleanse-v1/versions/r11/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r11/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。自己H64レビュー：不規則な付着面に変えたが、破れた外套の印象が残り、状態回復の意味が弱い。', 'actor-H64'),
+      version('status-cleanse-astra-r10', 'Astra r0.10', 'astra-status-cleanse-v1/versions/r10/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r10/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64全寿命レビュー：初期は普通の紫衣装/マント、剥離は左右へ開くマントと緑の衣装照明に読める。状態回復固有の造形として品質未達。', 'actor-H64'),
       version('status-cleanse-astra-r09', 'Astra r0.9', 'astra-status-cleanse-v1/versions/r09/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r09/cleanse.mjs', '品質不合格・本編未採用', 'H64原寸で付着の剥離と受け手の変化が読み取れず、品質不合格。', 'actor-H64'),
       version('status-cleanse-astra-r08', 'Astra r0.8', 'astra-status-cleanse-v1/versions/r08/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r08/cleanse.mjs', '品質不合格・本編未採用', '剥離片が突然現れる布切れに見え、元の被覆との連続性が弱い。清浄側は局所的すぎてH64でほぼ読めない。', 'actor-H64'),
       version('status-cleanse-astra-r07', 'Astra r0.7', 'astra-status-cleanse-v1/versions/r07/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r07/cleanse.mjs', '品質不合格・本編未採用', 'H64では紫から緑への衣装色替えに見え、付着が剥がれる形や動きがほぼ見えない。', 'actor-H64'),
@@ -83,6 +97,15 @@
       version('status-cleanse-astra-r03', 'Astra r0.3', 'astra-status-cleanse-v1/versions/r03/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r03/cleanse.mjs', '品質不合格・本編未採用', '孤立したリボンでは身体の状態回復が伝わらない。', 'actor-H64'),
       version('status-cleanse-astra-r02', 'Astra r0.2', 'astra-status-cleanse-v1/versions/r02/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r02/cleanse.mjs', '品質不合格・本編未採用', 'aliasは除去されたが、主形が光る花器に見える。', 'actor-H64'),
       version('status-cleanse-astra-r01', 'Astra r0.1', 'astra-status-cleanse-v1/versions/r01/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r01/cleanse.mjs', '品質不合格・本編未採用', '主形が小さな杯に見え、ray-marchに帯状aliasがある。', 'actor-H64')
+    ]) }),
+    Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮 · Astra履歴', versions: Object.freeze([
+      version('astra-cooldown-benefit-r0.7', 'Astra r0.7', 'public/astra-cooldown-benefit-v1/versions/r07/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r07/effect.mjs', '品質審査中・本編未採用', '作者: GPT-6-Astra。主担当へH64/H160証拠を提出済み。品質判定待ちで、本編未採用です。', 'actor-H64'),
+      version('astra-cooldown-benefit-r0.6', 'Astra r0.6', 'public/astra-cooldown-benefit-v1/versions/r06/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r06/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。奥行きの層間隔が残り最後の一層へ収束しない。局所反射の左側が肩より顔寄り。', 'actor-H64'),
+      version('astra-cooldown-benefit-r0.5', 'Astra r0.5', 'public/astra-cooldown-benefit-v1/versions/r05/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r05/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。圧縮→消失→受益者応答の順序は成立。主形が琥珀の箱型容器、終端が一様な全身mint着色に見え、固有性と空間的E品質が未達。', 'actor-H64'),
+      version('astra-cooldown-benefit-r0.4', 'Astra r0.4', 'public/astra-cooldown-benefit-v1/versions/r04/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r04/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。立体前後差はあるが琥珀リボンの通過に見える。H160のray-step縞、意味と最終状態の弱さ。', 'actor-H64'),
+      version('astra-cooldown-benefit-r0.3', 'Astra r0.3', 'public/astra-cooldown-benefit-v1/versions/r03/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r03/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。琥珀→mintの量変化は前進だが平面的な砂時計アイコンに見え、空間的Eの水準に達しない。', 'actor-H64'),
+      version('astra-cooldown-benefit-r0.2', 'Astra r0.2', 'public/astra-cooldown-benefit-v1/versions/r02/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r02/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。身体前を三本の弧が通過するように見え、待機の短縮と受益者の変化が読めない。', 'actor-H64'),
+      version('astra-cooldown-benefit-r0.1', 'Astra r0.1', 'public/astra-cooldown-benefit-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r01/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。三面が汎用的な同心輪へ融合。SFX圧縮時刻も不一致。', 'actor-H64')
     ]) }),
     Object.freeze({ id: 'barrier-astra', title: 'バリア · Astra履歴', versions: Object.freeze([
       version('barrier-astra-r5r2', 'Astra r5 r2', 'webgpu-barrier-astra-v5-r2-gallery-preview.html', 'webgpu-barrier-astra-v5-gallery-runtime.js', '品質不合格・本編未採用', 'アーカイブ試作。青い球状に見えるとして不合格。'),
@@ -123,7 +146,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v69');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v71');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

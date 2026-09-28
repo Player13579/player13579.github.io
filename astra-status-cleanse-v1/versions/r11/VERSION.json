@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r11",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.11",
+  "version": "astra-status-cleanse-r0.11",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "自己H64レビュー：不規則な付着面に変えたが、破れた外套の印象が残り、状態回復の意味が弱い。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r11/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r11/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r11.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "9b09bd798a2dfc5b374ac0dc1a232d56b6267c2d62cda8caaccf3544a6d9f329",
+    "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+    "cleanse.mjs": "bfa38bfc1b0e4b635a4a60a03eb31248b5c95e5c0aa668efda2521cef1a39371",
+    "field-r11.mjs": "c487d5e71a1717e6a5243acab59c5cf2006d152567987cf17397e20e0410432a",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 620,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r11/evidence/",
+  "fixtureNotice": "紫の付着は状態解除の比較用fixture。実ゲームの毒/炎/状態異常の発火ではない。"
+}

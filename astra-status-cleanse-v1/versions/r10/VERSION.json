@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r10",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.10",
+  "version": "astra-status-cleanse-r0.10",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "主担当H64全寿命レビュー：初期は普通の紫衣装/マント、剥離は左右へ開くマントと緑の衣装照明に読める。状態回復固有の造形として品質未達。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r10/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r10/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r10.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "189a20b8c3c1d1b16f180c307a2c2c473a186ec6bf1bed5df55b16bcf94607e2",
+    "preview.mjs": "7823b91dab55e09bbeade509257fc57fbcce7c9e84054b70792ddbd5b73bb9f4",
+    "cleanse.mjs": "0e9f72cf0021899759dc25b73669479ad81a63d2f59481442140c2431bf34bbf",
+    "field-r10.mjs": "7d12f4d48d375ab654c797a6bb7302badaa2a8fc38946bdb65bb1214598f75f5",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 536,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r10/evidence/",
+  "fixtureNotice": "紫の付着は状態解除の比較用fixture。実ゲームの毒/炎/状態異常の発火ではない。"
+}

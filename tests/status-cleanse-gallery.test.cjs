@@ -50,7 +50,7 @@ vm.runInNewContext(source, {
 
 const entry = window.__webgpuEGallery.entries.find(item => item.id === 'status-cleanse-astra');
 assert(entry, 'status-recovery Astra gallery entry exists');
-assert.equal(entry.versions.length, 9, 'all nine reproducible versions are listed');
+assert.equal(entry.versions.length, 16, 'all sixteen reproducible versions are listed');
 assert.deepEqual(Array.from(entry.versions, item => item.id), manifest.versions.slice().reverse().map(item => item.id),
   'versions are ordered newest first and match the source manifest');
 const stamina = window.__webgpuEGallery.entries.find(item => item.id === 'stamina-astra');
@@ -59,17 +59,19 @@ assert.match(stamina.versions.find(item => item.id === 'stamina-astra-clean-v3')
 assert.match(stamina.versions.find(item => item.id === 'stamina-astra-clean-v2').status, /品質未受入.*本編未採用/);
 assert.match(stamina.versions.find(item => item.id === 'stamina-astra-clean-v2').detail, /独立識別評価は未実施/);
 const empLatest = window.__webgpuEGallery.entries.find(item => item.id === 'emp-astra').versions[0];
-assert.match(empLatest.status, /ユーザー採用済み.*本編接続中.*実装未完了/);
-assert.match(empLatest.detail, /接続作業中.*実装完了.*受入とは別/);
+assert.match(empLatest.status, /ユーザー採用済み.*本編接続済み.*実発動\/聴感未確認/);
+assert.match(empLatest.detail, /接続は完了.*発動と聴感.*未確認/);
 const empVersions = window.__webgpuEGallery.entries.find(item => item.id === 'emp-astra').versions;
 assert(empVersions.slice(1, 7).every(item => /品質不合格/.test(item.status) && /本編未採用/.test(item.status)),
   'EMP v1.2-v1.7 keep their former rejected/unadopted status');
 
 const manaReplay = JSON.parse(fs.readFileSync(path.join(pagesPublicRoot, 'astra-mana-receive-v1', 'replay-manifest.json'), 'utf8'));
 const manaGroup = window.__webgpuEGallery.entries.find(item => item.id === 'mana-astra');
-assert.deepEqual(Array.from(manaGroup.versions.slice(0, 9), item => item.id),
+assert.deepEqual(Array.from(manaGroup.versions.slice(0, 6), item => item.id),
+  Array.from({ length: 6 }, (_, index) => `mana-astra-r${15 - index}`), 'Mana r10-r15 addenda are newest first');
+assert.deepEqual(Array.from(manaGroup.versions.slice(6, 15), item => item.id),
   Array.from({ length: 9 }, (_, index) => `mana-astra-r${9 - index}`), 'Mana replay versions r9–r1 are newest first');
-assert.deepEqual(Array.from(manaGroup.versions.slice(9), item => item.id),
+assert.deepEqual(Array.from(manaGroup.versions.slice(15), item => item.id),
   ['mana-astra-v5-pilot', 'mana-astra-clean-v4-pilot', 'mana-astra-clean-v3', 'mana-astra-clean-v2', 'mana-astra-clean-v1', 'mana-astra-zero-v1'],
   'existing Mana Astra versions remain after the new replay series');
 const staminaVersions = JSON.parse(fs.readFileSync(path.join(pagesPublicRoot, 'astra-stamina-gain-v1', 'VERSIONS.json'), 'utf8'));
@@ -85,7 +87,7 @@ for (const [effect, records, group] of [
   ['astra-stamina-gain-v1', staminaVersions.versions, staminaGroup]
 ]) {
   const byRevision = new Map(records.map(record => [record.revision, record]));
-  const replayVersions = effect === 'astra-mana-receive-v1' ? group.versions.slice(0, 9) : group.versions.slice(0, 8);
+  const replayVersions = effect === 'astra-mana-receive-v1' ? group.versions.slice(6, 15) : group.versions.slice(0, 8);
   for (const version of replayVersions) {
     const revision = version.id.match(/-r(\d+)$/)[1];
     const record = byRevision.get(`r${revision}`);
@@ -117,6 +119,41 @@ for (const [effect, records, group] of [
     assert(fs.existsSync(path.join(pagesRoot, ...sourcePath.split('/'))), `${effect} r${revision} source exists`);
   }
 }
+for (const n of [10, 11, 12, 13, 14, 15]) {
+  const revision = `r${n}`;
+  const id = `mana-astra-${revision}`;
+  const version = manaGroup.versions.find(item => item.id === id);
+  const sourceBase = path.join(pagesRoot, 'astra-mana-receive-v1');
+  const metadata = JSON.parse(fs.readFileSync(path.join(sourceBase, `replay-manifest-${revision}.json`), 'utf8')).entries[0];
+  const packageList = JSON.parse(fs.readFileSync(path.join(sourceBase, `package-files-${revision}.json`), 'utf8'));
+  assert(version, `${id} is listed`);
+  assert.equal(metadata.id, `astra-mana-receive-v1-${revision}`);
+  assert.equal(packageList.quality, metadata.quality);
+  assert.equal(packageList.gameAdopted, false);
+  assert.equal(metadata.gameAdopted, false);
+  assert.match(version.detail, new RegExp(metadata.author));
+  assert(version.detail.includes(metadata.qualityReason), `${id} displays its recorded review reason`);
+  if (metadata.quality === 'review-pending') assert.match(version.status, /品質審査中.*本編未採用/);
+  else assert.match(version.status, /品質不合格.*本編未採用/);
+  const url = new URL(version.page, 'https://example.test/webgpu-e-gallery.html');
+  assert.equal(url.searchParams.get('embed'), '1');
+  assert.equal(url.searchParams.get('scale'), '1');
+  assert.equal(url.searchParams.has('verify'), false, `${id} normal replay does not force mute`);
+  const pageRelative = decodeURIComponent(version.page).split(/[?#]/, 1)[0].replace(/^public\//, '');
+  assert(fs.existsSync(path.join(root, ...pageRelative.split('/'))), `${id} root public page exists`);
+  const mirrors = [path.join(pagesPublicRoot, 'astra-mana-receive-v1'), path.join(root, 'astra-mana-receive-v1')];
+  for (const relative of packageList.files) {
+    const sourceFile = path.join(sourceBase, relative);
+    assert(fs.existsSync(sourceFile), `${id} allowlisted source exists: ${relative}`);
+    const expected = require('node:crypto').createHash('sha256').update(fs.readFileSync(sourceFile)).digest('hex');
+    for (const mirror of mirrors) {
+      const mirrorFile = path.join(mirror, relative);
+      assert(fs.existsSync(mirrorFile), `${id} is packaged in public mirror: ${relative}`);
+      assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(mirrorFile)).digest('hex'), expected,
+        `${id} public mirror matches its package source for ${relative}`);
+    }
+  }
+}
 for (const version of entry.versions) {
   assert.match(version.status, /品質不合格/);
   assert.match(version.status, /本編未採用/);
@@ -135,6 +172,11 @@ for (const version of entry.versions) {
 }
 for (const relative of allowlist.publishFiles) {
   assert(fs.existsSync(path.join(packageRoot, relative)), `allowlisted file exists: ${relative}`);
+  const pageCopy = path.join(pagesPublicRoot, 'astra-status-cleanse-v1', relative);
+  assert(fs.existsSync(pageCopy), `allowlisted file exists in Pages public mirror: ${relative}`);
+  assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(packageRoot, relative))).digest('hex'),
+    require('node:crypto').createHash('sha256').update(fs.readFileSync(pageCopy)).digest('hex'),
+    `Pages mirror matches root public for ${relative}`);
 }
 for (const version of manifest.versions) {
   for (const [relative, expectedHash] of Object.entries(version.sourceSha256)) {
@@ -146,6 +188,42 @@ for (const version of manifest.versions) {
 assert.deepEqual(Array.from(window.__webgpuEGallery.entries.find(item => item.id === 'emp-astra').versions, item => item.id),
   ['emp-astra-v1.8', 'emp-astra-v1.7', 'emp-astra-v1.6', 'emp-astra-v1.5', 'emp-astra-v1.4', 'emp-astra-v1.3', 'emp-astra-v1.2', 'emp-astra-zero-v1'],
   'existing EMP gallery versions remain intact');
+const cooldownGroup = window.__webgpuEGallery.entries.find(item => item.id === 'cooldown-astra');
+assert(cooldownGroup, 'Cooldown Astra replay group exists');
+const cooldownRoot = path.join(root, 'astra-cooldown-benefit-v1');
+const cooldownPagesRoot = path.join(pagesPublicRoot, 'astra-cooldown-benefit-v1');
+const cooldownManifest = JSON.parse(fs.readFileSync(path.join(cooldownRoot, 'versions.json'), 'utf8'));
+assert.equal(cooldownGroup.versions.length, 7, 'all seven technically replayable Cooldown versions are listed');
+assert.deepEqual(Array.from(cooldownGroup.versions, item => item.id),
+  cooldownManifest.versions.slice().reverse().map(item => item.id), 'Cooldown revisions are newest first');
+for (const version of cooldownGroup.versions) {
+  const metadata = cooldownManifest.versions.find(item => item.id === version.id);
+  const revision = `r0${version.id.match(/r0\.(\d+)$/)[1]}`;
+  assert(metadata, `${version.id} has authoritative metadata`);
+  assert.equal(metadata.gameAdopted, false, `${version.id} remains unadopted`);
+  assert.match(version.detail, /作者: GPT-6-Astra/);
+  assert(version.detail.includes(metadata.reason ?? '主担当へH64/H160証拠を提出済み'), `${version.id} displays its quality reason or pending-review provenance`);
+  if (metadata.quality === 'pending_review') assert.match(version.status, /品質審査中.*本編未採用/);
+  else assert.match(version.status, /品質不合格.*本編未採用/);
+  const url = new URL(version.page, 'https://example.test/webgpu-e-gallery.html');
+  assert(url.pathname.endsWith(`/public/astra-cooldown-benefit-v1/versions/${revision}/index.html`));
+  assert(fs.existsSync(path.join(cooldownRoot, 'versions', revision, 'index.html')), `${version.id} gallery page exists`);
+  assert.equal(url.searchParams.get('embed'), '1');
+  assert.equal(url.searchParams.get('height'), '64');
+  assert.equal(url.searchParams.has('verify'), false, `${version.id} normal replay does not force mute`);
+  for (const mirror of [cooldownRoot, cooldownPagesRoot]) {
+    for (const filename of ['index.html', 'preview.mjs', 'effect.mjs', 'sophia-front-five-v753.png'])
+      assert(fs.existsSync(path.join(mirror, 'versions', revision, filename)), `${version.id} has ${filename}`);
+    const shaderFile = `shader-${revision}.mjs`;
+    if (Number(revision.slice(1)) >= 3)
+      assert(fs.existsSync(path.join(mirror, 'versions', revision, shaderFile)), `${version.id} has its shader module`);
+  }
+  for (const rel of ['index.html', 'preview.mjs', 'effect.mjs', 'sophia-front-five-v753.png']) {
+    assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(cooldownRoot, 'versions', revision, rel))).digest('hex'),
+      require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(cooldownPagesRoot, 'versions', revision, rel))).digest('hex'),
+      `${version.id} Pages mirror matches root public for ${rel}`);
+  }
+}
 const release = source.match(/galleryRelease', '(astra-history-20260928-v\d+)'/);
 assert(release && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
-console.log(`PASS: ${entry.versions.length} status-recovery, ${manaGroup.versions.slice(0, 9).length} Mana, ${staminaGroup.versions.slice(0, 8).length} Stamina replay versions; ${allowlist.publishFiles.length} status package files present`);
+console.log(`PASS: ${entry.versions.length} status-recovery, ${cooldownGroup.versions.length} Cooldown, ${manaGroup.versions.length} Mana, ${staminaGroup.versions.slice(0, 8).length} Stamina replay versions; ${allowlist.publishFiles.length} status package files present`);
