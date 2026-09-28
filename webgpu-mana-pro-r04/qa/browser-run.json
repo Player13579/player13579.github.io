@@ -1,0 +1,33 @@
+{
+  "release": "r0.4",
+  "scope": "Unmodified shipped WGSL; mock positive events and calibration body only",
+  "navigation": "not_run",
+  "original_WGSL_compilation": "not_run",
+  "draw_submission": "not_run",
+  "hardware_render_quality": "not_run",
+  "full_lifetime_human_review": "not_run",
+  "auditory_review": "not_run",
+  "AudioWorklet": "not_run",
+  "live_DVA": "not_run",
+  "production_approved": false,
+  "cases": [],
+  "errors": [
+    "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:4184/\nCall log:\n  - navigating to \"http://127.0.0.1:4184/\", waiting until \"networkidle\"\n"
+  ],
+  "input_shaders": [
+    {
+      "file": "shaders/mana.wgsl",
+      "sha256": "3a5f6dc55d9daab839793bb74cd26ec0f15198961b4266a2c52c158dadbccb4e"
+    },
+    {
+      "file": "shaders/post.wgsl",
+      "sha256": "ff129947e92956dd47486f4b9f21cb9b79fc24f4d9681a7fe7d986176a7c5e7c"
+    },
+    {
+      "file": "preview/fixture.wgsl",
+      "sha256": "c1dbaa71243766122f9f5a34f7a8226039ff03ac3423bc6f909e0db326186991"
+    }
+  ],
+  "browser_version": "144.0.7559.96",
+  "stop_reason": "Test stopped at the available capability boundary; no browser/GPU policy changed"
+}

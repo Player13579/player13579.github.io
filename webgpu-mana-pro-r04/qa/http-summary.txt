@@ -1,0 +1,319 @@
+{
+  "release": "r0.4",
+  "scope": "HTTP bytes and local links only; GPU/app execution not performed",
+  "passed": 49,
+  "failed": 0,
+  "checks": [
+    {
+      "id": "server-start",
+      "status": "pass",
+      "evidence": "Mana E r0.4 · http://localhost:4189\nLoopback only. No telemetry or game connection.\n"
+    },
+    {
+      "id": "index.html:delivery",
+      "status": "pass",
+      "evidence": {
+        "status": 200,
+        "mime": "text/html; charset=utf-8"
+      }
+    },
+    {
+      "id": "index.html:exact-bytes",
+      "status": "pass",
+      "evidence": {
+        "sha256": "9c59c5f4e6c6aa25763f63aa9833f24514dd5c789112ef07157df551c5bccdce",
+        "bytes": 4641
+      }
+    },
+    {
+      "id": "gallery.html:delivery",
+      "status": "pass",
+      "evidence": {
+        "status": 200,
+        "mime": "text/html; charset=utf-8"
+      }
+    },
+    {
+      "id": "gallery.html:exact-bytes",
+      "status": "pass",
+      "evidence": {
+        "sha256": "b34781e642a9ddfbbe85072d18ad8f99e447943460a536fe8de990419e770eb9",
+        "bytes": 4927
+      }
+    },
+    {
+      "id": "src/index.js:delivery",
+      "status": "pass",
+      "evidence": {
+        "status": 200,
+        "mime": "text/javascript; charset=utf-8"
+      }
+    },
+    {
+      "id": "src/index.js:exact-bytes",
+      "status": "pass",
+      "evidence": {
+        "sha256": "f33e2c18036721f963ea07bd4af199e840776dbad46ebef7ca50e276671c0d7e",
+        "bytes": 460
+      }
+    },
+    {
+      "id": "src/audio-worklet.js:delivery",
+      "status": "pass",
+      "evidence": {
+        "status": 200,
+        "mime": "text/javascript; charset=utf-8"
+      }
+    },
+    {
+      "id": "src/audio-worklet.js:exact-bytes",
+      "status": "pass",
+      "evidence": {
+        "sha256": "a8bb1703d0351b9dfefb8a8e972a018bbd9a0b343aa8e704cac109180c831e91",
+        "bytes": 913
+      }
+    },
+    {
+      "id": "shaders/mana.wgsl:delivery",
+      "status": "pass",
+      "evidence": {
+        "status": 200,
+        "mime": "text/plain; charset=utf-8"
+      }
+    },
+    {
+      "id": "shaders/mana.wgsl:exact-bytes",
+      "status": "pass",
+      "evidence": {
+        "sha256": "3a5f6dc55d9daab839793bb74cd26ec0f15198961b4266a2c52c158dadbccb4e",
+        "bytes": 2961
+      }
+    },
+    {
+      "id": "shaders/post.wgsl:delivery",
+      "status": "pass",
+      "evidence": {
+        "status": 200,
+        "mime": "text/plain; charset=utf-8"
+      }
+    },
+    {
+      "id": "shaders/post.wgsl:exact-bytes",
+      "status": "pass",
+      "evidence": {
+        "sha256": "ff129947e92956dd47486f4b9f21cb9b79fc24f4d9681a7fe7d986176a7c5e7c",
+        "bytes": 2329
+      }
+    },
+    {
+      "id": "preview/fixture.wgsl:delivery",
+      "status": "pass",
+      "evidence": {
+        "status": 200,
+        "mime": "text/plain; charset=utf-8"
+      }
+    },
+    {
+      "id": "preview/fixture.wgsl:exact-bytes",
+      "status": "pass",
+      "evidence": {
+        "sha256": "c1dbaa71243766122f9f5a34f7a8226039ff03ac3423bc6f909e0db326186991",
+        "bytes": 1894
+      }
+    },
+    {
+      "id": "audio/mana-r04-burst-2x.wav:delivery",
+      "status": "pass",
+      "evidence": {
+        "status": 200,
+        "mime": "audio/wav"
+      }
+    },
+    {
+      "id": "audio/mana-r04-burst-2x.wav:exact-bytes",
+      "status": "pass",
+      "evidence": {
+        "sha256": "51ca7e78cd7b7a48bf2012a5665aee024f5d4976f01d9fdab0e35f1b71aae3d6",
+        "bytes": 217004
+      }
+    },
+    {
+      "id": "docs/B-Expression-2.json:delivery",
+      "status": "pass",
+      "evidence": {
+        "status": 200,
+        "mime": "application/json"
+      }
+    },
+    {
+      "id": "docs/B-Expression-2.json:exact-bytes",
+      "status": "pass",
+      "evidence": {
+        "sha256": "71a0a1318a4e1e0556e14d6310b83471a3c97b62499fe56c8b22d0c492e35134",
+        "bytes": 144595
+      }
+    },
+    {
+      "id": "GET /does-not-exist",
+      "status": "pass",
+      "evidence": {
+        "expected": 404,
+        "observed": 404
+      }
+    },
+    {
+      "id": "GET /%2e%2e%2foutside",
+      "status": "pass",
+      "evidence": {
+        "expected": 403,
+        "observed": 403
+      }
+    },
+    {
+      "id": "POST /",
+      "status": "pass",
+      "evidence": {
+        "expected": 405,
+        "observed": 405
+      }
+    },
+    {
+      "id": "HEAD /",
+      "status": "pass",
+      "evidence": {
+        "expected": 200,
+        "observed": 200
+      }
+    },
+    {
+      "id": "index.html -> preview/style.css",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "index.html -> gallery.html",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "index.html -> docs/API.md",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "index.html -> docs/DESIGN.md",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "index.html -> docs/EXTENSIONS.md",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "index.html -> docs/QUALITY.md",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "index.html -> docs/TESTING.md",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "index.html -> preview/main.js",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> preview/style.css",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> index.html",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> evidence/H64-matrix-CPU.png",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> evidence/H64-matrix-CPU.png",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> evidence/full-life-dark-CPU.png",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> evidence/full-life-dark-CPU.png",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> evidence/full-life-light-CPU.png",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> evidence/full-life-light-CPU.png",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> audio/mana-r04-single-1x.wav",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> audio/mana-r04-single-2x.wav",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> audio/mana-r04-burst-1x.wav",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> audio/mana-r04-burst-2x.wav",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> docs/QUALITY.md",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> docs/TESTING.md",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> docs/EXTENSIONS.md",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> docs/B-Expression-2.json",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> qa/acceptance.json",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    },
+    {
+      "id": "gallery.html -> qa/audio-metrics.json",
+      "status": "pass",
+      "evidence": "Referenced packaged file exists"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "dva-mana-gain-r04",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Body-owned mana intake: external flux, boundary conversion and silhouette-constrained charge. Independent WebGPU + SFX.",
+  "engines": {"node": ">=20"},
+  "exports": {".": "./src/index.js", "./sampler": "./src/sampler.js"},
+  "scripts": {
+    "start": "node tools/server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "lint": "node tools/static-check.mjs",
+    "design": "node tools/check-design.mjs",
+    "audio": "node tools/export-audio.mjs",
+    "samples": "node tools/export-samples.mjs",
+    "manifest": "node tools/hash.mjs --write",
+    "verify": "node tools/hash.mjs",
+    "check": "npm test && npm run lint && npm run design && npm run verify"
+  }
+}

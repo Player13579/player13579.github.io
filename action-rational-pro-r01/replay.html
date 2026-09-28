@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rational Free Pro r0.1 · 技術再生</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080b10}body{display:grid;place-items:center}canvas{display:block;width:min(980px,100vw);height:min(620px,100vh);object-fit:contain}[data-error]{position:fixed;inset:auto 1rem 1rem;color:#ffb4a9;background:#211919;padding:.75rem;font:14px system-ui,sans-serif}
+</style>
+<canvas width="980" height="620" aria-label="支払い拘束の解除 · WebGPU technical replay"></canvas>
+<div data-error hidden></div>
+<script type="module">
+import { ERenderer } from './src/gpu.mjs';
+import { sampleEffect } from './src/sampler.mjs';
+import { ActorClock } from './src/actor-clock.mjs';
+import { ActorAudio } from './src/audio.mjs';
+import { mountRationalLoop } from './gallery-loop.mjs';
+await mountRationalLoop({ ERenderer, sampleEffect, ActorClock, ActorAudio });
+</script>
+</html>

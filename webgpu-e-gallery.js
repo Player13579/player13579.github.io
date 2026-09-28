@@ -21,6 +21,9 @@
     'mana-pro': { magnification: 2.0, focusX: 490, focusY: 310 },
     'mana-pro-r02': { magnification: 2.0, focusX: 627, focusY: 336 },
     'mana-pro-r03': { magnification: 2.2, focusX: 627, focusY: 310 },
+    'mana-pro-r04': { magnification: 1.5, focusX: 490, focusY: 310 },
+    'rational-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
+    'ninjutsu-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'emp-pro': { magnification: 2.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1, replayable = false) =>
@@ -31,7 +34,8 @@
     'luck-pro-r02', 'luck-pro-r01',
     'barrier-pro-r08', 'barrier-pro-r07', 'barrier-pro-r06', 'barrier-pro-r05', 'barrier-pro-r04', 'barrier-pro-r03', 'barrier-pro-r02', 'barrier-pro-r01',
     'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
-    'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
+    'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
+    'rational-pro-r01', 'ninjutsu-pro-r01',
     'emp-pro-r03', 'emp-pro-r02', 'emp-pro-r01', 'emp-pro-p0',
     'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v05', 'headshot-pro-v04', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
   ]);
@@ -79,9 +83,16 @@
       version('stamina-pro-r01', 'GPT Pro r0.1', 'stamina-pro-r01-preview.html', 'stamina-pro-r01/renderer.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体へ充填されるスタミナ回復案。限定的な実WebGPU再生は確認済み。原寸の全寿命、聴感、ゲーム本編での発動は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'mana-pro', title: 'マナ獲得（GPT Pro）', versions: [
+      version('mana-pro-r04', 'GPT Pro r0.4', 'webgpu-mana-pro-r04/embed.html', 'webgpu-mana-pro-r04/src/gpu.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '外部供給帯から身体境界の変換を経て体内へ充填する改稿。暗明H64でWebGPU描画を確認。全寿命の視覚品質とSFX聴感、本編接続は未受入です。', 'effect-H64', 1, true),
       version('mana-pro-r03', 'GPT Pro r0.3', 'webgpu-mana-pro-r03/index.html', 'webgpu-mana-pro-r03/src/renderer.js', 'GPT Pro制作・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'Pro原本のWGSL三項演算子を同義のselectへ最小修正し、H64単発を実WebGPUで再生。身体への獲得表現の全寿命品質と聴感は未受入です。', 'effect-H64', 1, true),
       version('mana-pro-r02', 'GPT Pro r0.2', 'webgpu-mana-pro-r02/index.html', 'webgpu-mana-pro-r02/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '新しい容積受容案。実ChromeのWebGPUでコンパイルと描画を確認。ギャラリーではH64単発を自動再生します。全寿命の視覚品質と音、実ゲームでの接続は未受入です。', 'effect-H64', 1, true),
       version('mana-pro-r01', 'GPT Pro r0.1', 'webgpu-mana-pro-r01/index.html', 'webgpu-mana-pro-r01/preview/replay.js', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体の周囲から胸郭へ収束するマナ獲得案。提出物の実WebGPU再生は確認済み。ギャラリー表示、全寿命、聴感とゲーム本編の接続は別途検証中です。', 'effect-H64', 1, true)
+    ] },
+    { id: 'rational-pro', title: '理性の錬気（GPT Pro）', versions: [
+      version('rational-pro-r01', 'GPT Pro r0.1', 'action-rational-pro-r01/replay.html', 'action-rational-pro-r01/src/gpu.mjs', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '銅金色の場が中心の水平通路を開く独立設計。暗明H64のWebGPU再生を確認しました。原寸の全寿命とSFX品質、本編接続は未受入です。', 'effect-H64', 1, true)
+    ] },
+    { id: 'ninjutsu-pro', title: '忍術の錬気（GPT Pro）', versions: [
+      version('ninjutsu-pro-r01', 'GPT Pro r0.1', 'action-ninjutsu-pro-r01/gallery-preview.html', 'action-ninjutsu-pro-r01/src/gpu.mjs', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '濃紺と紫の内向き曲線による独立設計。暗明H64のWebGPU再生を確認しました。原寸の全寿命とSFX品質、本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'emp-pro', title: 'EMP（GPT Pro）', versions: [
       version('emp-pro-r03', 'GPT Pro r0.3', 'webgpu-emp-pro-r03/index.html', 'webgpu-emp-pro-r03/src/emp-e.js', 'GPT Pro制作・5枝実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'Pro改稿のチャージ・放出・共鳴・相殺・ロックを自動巡回。Chromeで少なくとも共鳴の主形を実GPU確認。全枝の全寿命・原寸品質・実聴・本編接続は未受入です。', 'effect-H64', 1, true),
@@ -116,7 +127,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v43');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v44');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
@@ -178,3 +189,4 @@
       latest: group.versions[0].id, versions: group.versions }))) });
   select(0);
 })();
+

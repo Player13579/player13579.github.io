@@ -1,0 +1,2641 @@
+{
+  "FoundationOperationTemplate": {
+    "OutputContract": {
+      "schema_version": "B-Expression-2",
+      "mode": "Video",
+      "operation": "render_requested"
+    },
+    "TemplateConsolidation": {
+      "per_chapter_template_count": 1,
+      "template_position": "chapter_end",
+      "inter_template_duplication_forbidden": true,
+      "cross_chapter_reference_preferred": true
+    },
+    "RuleContract": {
+      "fields": [
+        "rule_id",
+        "owner",
+        "priority",
+        "applies_when",
+        "requirement",
+        "exception_to",
+        "validation_id"
+      ],
+      "same_priority_resolution": "explicit_exception_or_compatible_union",
+      "unresolved_conflict_result": "spec_conflict",
+      "requirement_source": "User-supplied 基底 2026-09-11 / 拡張 2026-09-23. Rules referenced, not rewritten as new normative rules."
+    },
+    "GlobalInterpretation": {
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "full_PH_structure_required_for_all_visibilities": true,
+      "WindCapsule_required": true
+    },
+    "UniversalNoLabelOnly": {
+      "label_only_declaration_forbidden": true,
+      "indirect_evidence_for_implicit_latent": true
+    },
+    "Acceptance": {
+      "each_chapter_has_exactly_one_template": true,
+      "independent_template_groups_absent": true,
+      "unique_rule_ids_and_resolvable_references": true,
+      "same_priority_conflicts_resolved_explicitly": true
+    }
+  },
+  "InferenceExpansionPolicy": {
+    "DeclaredIntent": {
+      "character_count": 1,
+      "character_attributes": {
+        "beneficiary": {
+          "role": "existing recipient of authoritative positive mana gain",
+          "appearance": "existing host character; preview is a non-person H64 calibration proxy; no age/sex/personality preset assigned"
+        }
+      },
+      "main_action": "権威確定した正のマナ増加を身体外の供給→境界通過→身体内充填→定着→低明度余韻として示す。資源を再加算しない。",
+      "main_objects": "One existing beneficiary per render slot; two lobes are internal states of one mana phenomenon, not two physical objects or two events.",
+      "background": "Existing game background preserved. Preview compares two display clear colors; effect receives no background input.",
+      "style": "2D anime-compatible game VFX, large colored planes and local luminous crests, no image textures",
+      "text_logo_policy": "No text/logos inside E. Diagnostic labels are outside the effect viewport."
+    },
+    "ExpressionIntent": {
+      "source": "user_declared",
+      "purpose": "H64でマナの外部供給・境界通過・身体の受容/充填・終端を識別させる",
+      "must_communicate": [
+        "Source stays outside the receiver until conversion.",
+        "Interior occupied area increases with received quantity.",
+        "Local emission is stronger than its colored material body.",
+        "Low-luminance afterglow remains body-owned, not a detached oval."
+      ],
+      "preserve_ambiguity": [],
+      "allowed_omission": [],
+      "allowed_exaggeration": [],
+      "protected_relations": [
+        "beneficiaryPlayerId owns position and visibility",
+        "actorPlayerId owns phase and rate",
+        "positive committed gain only",
+        "one cause one sound",
+        "existing front/back occlusion",
+        "no background-adaptive gain or morphology",
+        "stored game resource is not lost when the E disappears"
+      ]
+    },
+    "SelectionLifecycle": {
+      "stages": [
+        "candidate",
+        "accepted",
+        "registered_world",
+        "registered_observation"
+      ],
+      "candidate_catalog_in_final_code": false,
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "adoption_checks": [
+        "DeclaredIntent_consistency",
+        "contribution",
+        "readability",
+        "activation_condition"
+      ]
+    },
+    "inferred_support_elements": {
+      "default_permission": "denied",
+      "explicit_user_permission_required": true,
+      "allowed_domains": [],
+      "allowed_scope": "No independent new objects used. Requested VFX/SFX are newly designed; lobes and receiver response are attribute_resolved.",
+      "support_declared_elements_without_overriding_them": true,
+      "latent_visualization_object_not_required": true
+    },
+    "Acceptance": {
+      "declared_intent_preserved": true,
+      "inference_without_explicit_user_permission_absent": true,
+      "candidate_accepted_registered_distinguished": true,
+      "unselected_candidates_absent_from_final": true
+    }
+  },
+  "PlatonicGoodTemplate": {
+    "Good": {
+      "evidence": "Committed gain is not re-applied; world carrier is clipped outside the existing body and visual charge uses the same received amount."
+    },
+    "Truth": {
+      "coordinate_continuity": "game coordinates converted to right-handed world; common orthographic transform for field and body",
+      "physical_causality": "Declared fantasy bookkeeping, not a scientific claim about real mana or heat",
+      "state_transition_readability": "Finite supply converts at boundary; stored state remains 1 after visible output fades"
+    },
+    "Beauty": {
+      "boundary_readability": "A bright 1.6 game-px transfer edge on a darker 3.4px support stroke at nonzero flux",
+      "gaze_circulation": "Exterior lobe to boundary to torso; second path from torso upper edge to later lobe; no mandatory closed loop",
+      "structural_separation": "Separate source surface, emitted radiance, body-clipped charge and source-bound bloom"
+    },
+    "BeautyStructuring": {
+      "axes": [
+        "ratio_proportion",
+        "balance_symmetry",
+        "contrast",
+        "rhythm_repetition",
+        "whitespace_density",
+        "hierarchy_gaze_flow",
+        "material_response",
+        "temporal_phase"
+      ],
+      "standard_minimum_axes_per_PH": 2,
+      "standard_minimum_evidence_per_applied_axis": 2,
+      "intent_adjustment_ref": "InferenceExpansionPolicy.ExpressionIntent"
+    },
+    "Acceptance": {
+      "each_PH_connected_to_at_least_two_GTB_layers": true,
+      "single_formula_does_not_dominate_beauty": true
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "Independent body boundary, external transport, local conversion and stored state; not a split by scientific discipline or particle count.",
+      "shared_condition_policy": "actor time, coordinate transform and sampling are shared, but flux and stored state have different temporal responses.",
+      "no_discipline_based_split": true
+    },
+    "SharedConditions": {},
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "Existing beneficiary and receiving silhouette",
+        "origin": "declared",
+        "anchor": "body",
+        "visibility": "visible",
+        "local_state_difference": "Receiving torso boundary differs from face, arms and background; pose and transform are host-owned.",
+        "partition_reason": "Existing body has its own geometric boundary, visibility and support state."
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "External finite mana flux",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "Two asynchronous broad lobes carry a finite normalized amount; leading crest and colored body are distinct.",
+        "partition_reason": "External carrier has independent transport history and exterior termination at PH1."
+      },
+      "PH3": {
+        "id": "PH3",
+        "name": "Boundary conversion interface",
+        "origin": "attribute_resolved",
+        "anchor": "body",
+        "visibility": "visible",
+        "local_state_difference": "Flux is nonzero only while the packet crosses PH1; the interface emits and lights the receiving surface.",
+        "partition_reason": "Boundary conversion has a distinct location and derivative response, not the transport or stored amount."
+      },
+      "PH4": {
+        "id": "PH4",
+        "name": "Body-conformal acquired state",
+        "origin": "attribute_resolved",
+        "anchor": "body",
+        "visibility": "visible",
+        "local_state_difference": "Filled area grows monotonically as source is consumed; presentation dims later without draining stored mana.",
+        "partition_reason": "Stored state and visible afterglow have histories independent of ongoing supply."
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "Existing beneficiary and receiving silhouette",
+          "origin": "declared",
+          "anchor": "body",
+          "visibility": "visible",
+          "local_state_difference": "Receiving torso boundary differs from face, arms and background; pose and transform are host-owned.",
+          "partition_reason": "Existing body has its own geometric boundary, visibility and support state."
+        },
+        "DeepStructure": {
+          "Core": "Receiving contour provides the extremal boundary at two inlet heights.",
+          "Structure": "One convex receiving torso polygon, arbitrary host rigid pose; field and silhouette use the same transform.",
+          "Surface": "Host-visible surface remains matte, with localized conversion illumination rather than a uniform rim."
+        },
+        "PhysicalModel": {
+          "model_kind": "rigid_or_articulated",
+          "system_boundary": "Existing beneficiary root, receiving torso polygon, visibility flags and host support; no new platform or human character is introduced.",
+          "state_variables": "x,y in game px; angleRad in radians; heightPx; convex torsoPolygon; alive/present/inVent/invisible.",
+          "inputs": "Existing host transform and support; PH3 local-light response. No gameplay force is inferred.",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "Existing body remains the same body; E does not create or remove its material."
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "Host provides pose/support. Preview calibration body uses prescribed static support at root/feet; E exerts no mechanical impulse."
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "Ordinary body illumination is a fixed display calibration; additional declared mana-state emission is supplied by PH3, not heat extracted from the body."
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "No body electric-charge change is specified."
+            }
+          },
+          "constitutive_response": "Prescribed host shape; the effect uses bounded local surface color/radiance and never stretches the limbs.",
+          "initial_condition": "Preview body static, torso empty of displayed mana response; actual host may move or use a different supplied convex receiver.",
+          "boundary_conditions": "Root/pose prescribed by host; the receiving polygon is an optical/conversion boundary, not an invented hollow organ.",
+          "approximation_scope": "Qualitative stylized model. No measured mana material parameters or real fluid simulation. Runtime uses polygon clipping, actor-time algebra and local-light approximations; this is not physical validation."
+        },
+        "ScaleRegime": {
+          "characteristic_length": "H64 = 64 game px; 0.025 m/game px is a coordinate calibration assumption, not a measured game body height.",
+          "characteristic_time": "Pose held per host frame; E does not author a recovery time or force a standing pose in the actual game.",
+          "dominant_balance": "Host support and prescribed transform dominate; E momentum coupling is absent by design.",
+          "dimensionless_reasoning": "Receiver size / H64 controls world geometry; force-based similarity numbers not applicable to prescribed diagnostic geometry.",
+          "detail_cutoff": "Broad fields and >=1.35px front at native H64; antialiasing and HDR filtering are design/implementation choices. See SamplingContract. Readability on a specific screen is not established without observation."
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No temperature/combustion/phase-change effect is specified. Colored emission is not a thermometer; no thermal damage or steam is added."
+              ],
+              "evidence_or_constraint": "PH1: No temperature/combustion/phase-change effect is specified. Colored emission is not a thermometer; no thermal damage or steam is added. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "Mana is a declared field, not a material fluid. Calm air does not create drag/wakes; no Reynolds number is asserted."
+              ],
+              "evidence_or_constraint": "PH1: Mana is a declared field, not a material fluid. Calm air does not create drag/wakes; no Reynolds number is asserted. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "Opaque/transparent colored geometry and emitted radiance are stored separately; shape exists without bloom.",
+                "Existing occlusion order determines visibility; local crest and body response differ in luminance and support."
+              ],
+              "evidence_or_constraint": "PH1.Evidence direct boundaries and state changes; no lens flare or physical rainbow."
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "Host silhouette is not deformed by this E; it supplies the receiving geometry.",
+                "Preview body is a matte static calibration proxy; neither skin sheen nor cloth folds are invented."
+              ],
+              "evidence_or_constraint": "PH1 geometry, pose and visibility remain host-owned; local mana response follows that geometry."
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No plasma, current or electric charge is specified. The game field is not an experimentally verified electromagnetic mechanism."
+              ],
+              "evidence_or_constraint": "PH1: No plasma, current or electric charge is specified. The game field is not an experimentally verified electromagnetic mechanism. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No real viscoelastic material is selected. Changing width is transport/consumption, not decorative spring wobble."
+              ],
+              "evidence_or_constraint": "PH1: No real viscoelastic material is selected. Changing width is transport/consumption, not decorative spring wobble. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No coherence, interference, rainbow or diffraction condition is selected. Spectral hues are authoring inputs, not a thin-film claim."
+              ],
+              "evidence_or_constraint": "PH1: No coherence, interference, rainbow or diffraction condition is selected. Spectral hues are authoring inputs, not a thin-film claim. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "Mana conversion is not wetting, adsorption, a liquid film or contamination. No contact-angle geometry is fabricated."
+              ],
+              "evidence_or_constraint": "PH1: Mana conversion is not wetting, adsorption, a liquid film or contamination. No contact-angle geometry is fabricated. Refer to receiving/transport conditions in PhysicalModel."
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "Torso/limb silhouette remains visible outside the local effect.",
+            "Surface color changes inside the same receiving contour, not inside a floating emblem."
+          ],
+          "indirect_evidence": "World links and event ledger constrain the interpretation; no diagnostic marker is added inside the effect.",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "Dark supported boundaries, narrow local crests, and the unchanged host silhouette; inspect at H64 on light and dark backgrounds.",
+          "perceptual_failure_risk": "Unrelated equipment or UI overlay; distinguish via shared host motion, silhouette clipping and boundary-linked timing.",
+          "cue_roles": [
+            {
+              "cue": "Torso/limb silhouette remains visible outside the local effect.",
+              "supports": "The specific boundary/transport/received-state relation described in DeepStructure.",
+              "reliability_and_overlap": "Depends on display scale, occlusion and phase; cues share geometric causes and are not claimed statistically independent."
+            },
+            {
+              "cue": "Surface color changes inside the same receiving contour, not inside a floating emblem.",
+              "supports": "The specific boundary/transport/received-state relation described in DeepStructure.",
+              "reliability_and_overlap": "Depends on display scale, occlusion and phase; cues share geometric causes and are not claimed statistically independent."
+            }
+          ],
+          "confusable_alternative": "Unrelated equipment or UI overlay; distinguish via shared host motion, silhouette clipping and boundary-linked timing.",
+          "disambiguating_evidence": "Continuous temporal sequence and source-to-boundary area bookkeeping, not a single still frame; true H64 GPU readability remains untested here.",
+          "viewing_conditions": "Assume browser zoom 100%, H64=64 CSS px; inspect 1x/2x/3x and both clear colors. No universal monitor or viewing distance is assumed."
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "Same host transform; rear source is behind body, near source and conversion are in front before foreground.",
+          "normal_field_coherence": "Stylized broad normals/facets follow local mesh coordinates; no arbitrary isolated highlight normal.",
+          "curvature_behavior": "Transport curve is smooth but cross-section is a pointed, asymmetric sheet; body fill follows polygon edges.",
+          "silhouette_logic": "One convex receiving torso polygon, arbitrary host rigid pose; field and silhouette use the same transform.",
+          "contact_relation": "Root/pose prescribed by host; the receiving polygon is an optical/conversion boundary, not an invented hollow organ.",
+          "spatial_relation": "Bound to one beneficiary; draw one owner slot in scene order. No head marker or world-location-only ownership."
+        },
+        "StateDynamics": {
+          "state_space_extent": "x,y in game px; angleRad in radians; heightPx; convex torsoPolygon; alive/present/inVent/invisible.",
+          "transition_path_character": "equilibrium-maintained",
+          "local_stability_type": "stable",
+          "convergence_behavior": "Host pose/support are maintained; every frame supplies current geometry.",
+          "damping_profile": "No generic decorative wobble. Source/flux/coverage/emission have separate bounded scalar responses in sampler.",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "No E-driven pose recovery; disappear immediately at lifecycle invalidation.",
+          "transition_failure_risk": "Independent easing could make charge precede transfer or turn fade into resource loss; runtime invariants and manual GPU review are required.",
+          "driving_input": "Existing host transform and support; PH3 local-light response. No gameplay force is inferred.",
+          "response_timescale": "Pose held per host frame; E does not author a recovery time or force a standing pose in the actual game.",
+          "phase_relation": "Body transform and all effect geometry are sampled in the same host frame.",
+          "stability_condition": "Positive committed cause, valid host clock and receiving body. Invalid lifecycle input removes the effect, not the gained resource."
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Optics -> PH2.Optics: Existing receiving polygon supplies the two inlet endpoints and clips carrier triangles outside its boundary. No intact external object is drawn inside the torso.",
+            "PH1.Optics -> PH4.Optics: The host torso polygon and transform constrain the acquired-state surface and afterglow edge. The charge cannot become a free-standing ellipse or badge."
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "Change beneficiary position or orientation, keep cause age and quantity fixed.",
+            "predicted_response": "All source endpoints, contact and fill geometry follow the same transform, without changing phase.",
+            "competing_explanation": "Unrelated equipment or UI overlay; distinguish via shared host motion, silhouette clipping and boundary-linked timing.",
+            "uncertainty": "This is a declared design mechanism. Unit tests verify numeric bookkeeping, not human recognition, real material physics, GPU execution or sound quality.",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "Existing receiving polygon supplies the two inlet endpoints and clips carrier triangles outside its boundary.",
+              "consequence": "No intact external object is drawn inside the torso."
+            },
+            {
+              "source": "PH3",
+              "target": "PH1",
+              "mechanism": "Localized conversion emits a finite illumination term on the existing receiving surface.",
+              "consequence": "The surface changes before final settlement without adding a new receiver or flame."
+            },
+            {
+              "source": "PH1",
+              "target": "PH4",
+              "mechanism": "The host torso polygon and transform constrain the acquired-state surface and afterglow edge.",
+              "consequence": "The charge cannot become a free-standing ellipse or badge."
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH1",
+              "basis": "Raster coverage and radiance depend on the existing world geometry/state."
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "Torso/limb silhouette remains visible outside the local effect.",
+            "Surface color changes inside the same receiving contour, not inside a floating emblem."
+          ],
+          "indirect": [
+            "Event ownership and boundary constraints are recorded, not shown as extra glyphs."
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "occlusion",
+            "gradient",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH2",
+              "change": "No intact external object is drawn inside the torso."
+            },
+            {
+              "target": "PH4",
+              "change": "The charge cannot become a free-standing ellipse or badge."
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH1.StateDynamics",
+          "retained_cues": [
+            "Torso/limb silhouette remains visible outside the local effect.",
+            "Surface color changes inside the same receiving contour, not inside a floating emblem."
+          ],
+          "simplification": "Prioritize broad source/receiver state and a finite conversion front. Do not add microtexture/particles to meet evidence counts.",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: selected axes fit explicit H64 readability intent",
+          "axes": {
+            "material_response": [
+              "Fixed matte calibration body remains distinguishable from emitted flux.",
+              "Body-local illumination is bounded to the receiving surface."
+            ],
+            "contrast": [
+              "Head and limbs remain outside the fill.",
+              "Dark boundary support contrasts with local conversion emission."
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "Preserves committed gain ownership and actual source/receiver relation.",
+          "Truth": "All source endpoints, contact and fill geometry follow the same transform, without changing phase.",
+          "Beauty": [
+            "Torso/limb silhouette remains visible outside the local effect.",
+            "Surface color changes inside the same receiving contour, not inside a floating emblem."
+          ]
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_response",
+          "observation_operation_registered_as_PH",
+          "before_after_only",
+          "detached_ellipse_badge",
+          "decorative_particles_as_cause_replacement"
+        ]
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "External finite mana flux",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "Two asynchronous broad lobes carry a finite normalized amount; leading crest and colored body are distinct.",
+          "partition_reason": "External carrier has independent transport history and exterior termination at PH1."
+        },
+        "DeepStructure": {
+          "Core": "Highest source radiance is a narrow crest inside a broad colored lobe, not a white blob.",
+          "Structure": "Two unequal, asynchronous quadratic transport paths outside PH1; each packet has a tapered, non-elliptic section.",
+          "Surface": "Lobe triangles are clipped OUTSIDE PH1; consumed tip disappears at the conversion boundary."
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "Committed positive-gain source field within R82; PH1 receiving silhouette terminates each incoming path.",
+          "state_variables": "Normalized packet head/tail, received fraction and remaining fraction; two lobe weights 0.62/0.38. No material density in kg/m3 is asserted.",
+          "inputs": "Positive committed cause and actor age; inlet endpoints from PH1. No added orb, weapon, glyph or independent particle object.",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "Declared mana field is not material mass. Normalized quantity Q is tracked separately from kilograms."
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "No physical impulse or material inertia is imposed on the receiver; field transport is a declared game mechanism."
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "Authoring budget supplied by committed mana event; normalized external+stored amount equals one. Emission is a finite display response, not a measured joule conversion. Visual decay does not delete stored game mana."
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "Mana gain is not electric charge; no fictitious electric current is added."
+            }
+          },
+          "constitutive_response": "Finite field packet advects along a curved path; a smooth density CDF determines consumed quantity at its leading boundary.",
+          "initial_condition": "No field before event. First lobe appears outside lower-left receiver; later lobe appears outside upper-right receiver, not a head marker.",
+          "boundary_conditions": "External vertices are geometrically subtracted by the receiving polygon; no surviving carrier is drawn inside the body.",
+          "approximation_scope": "Qualitative stylized model. No measured mana material parameters or real fluid simulation. Runtime uses polygon clipping, actor-time algebra and local-light approximations; this is not physical validation."
+        },
+        "ScaleRegime": {
+          "characteristic_length": "Reference radius 82 game px = 2.05 m under coordinate-only calibration. Broad widths 10.5 and 8 game px at default radius.",
+          "characteristic_time": "Normalized onset and transport windows in src/sampler.js LOBES; same common actor timeline as the receiver.",
+          "dominant_balance": "Declared transport and finite quantity budget, not gravity-driven material flow; phase is controlled by actor time.",
+          "dimensionless_reasoning": "Path fraction and head travel / packet length determine conversion; Re/We are inapplicable because no real fluid is specified.",
+          "detail_cutoff": "Broad fields and >=1.35px front at native H64; antialiasing and HDR filtering are design/implementation choices. See SamplingContract. Readability on a specific screen is not established without observation."
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No temperature/combustion/phase-change effect is specified. Colored emission is not a thermometer; no thermal damage or steam is added."
+              ],
+              "evidence_or_constraint": "PH2: No temperature/combustion/phase-change effect is specified. Colored emission is not a thermometer; no thermal damage or steam is added. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "Mana is a declared field, not a material fluid. Calm air does not create drag/wakes; no Reynolds number is asserted."
+              ],
+              "evidence_or_constraint": "PH2: Mana is a declared field, not a material fluid. Calm air does not create drag/wakes; no Reynolds number is asserted. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "Opaque/transparent colored geometry and emitted radiance are stored separately; shape exists without bloom.",
+                "Existing occlusion order determines visibility; local crest and body response differ in luminance and support."
+              ],
+              "evidence_or_constraint": "PH2.Evidence direct boundaries and state changes; no lens flare or physical rainbow."
+            },
+            "Materials": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No solid packet or inserted object is created. Field geometry is a state representation, not elasticity or a material mass."
+              ],
+              "evidence_or_constraint": "PH2: No solid packet or inserted object is created. Field geometry is a state representation, not elasticity or a material mass. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No plasma, current or electric charge is specified. The game field is not an experimentally verified electromagnetic mechanism."
+              ],
+              "evidence_or_constraint": "PH2: No plasma, current or electric charge is specified. The game field is not an experimentally verified electromagnetic mechanism. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No real viscoelastic material is selected. Changing width is transport/consumption, not decorative spring wobble."
+              ],
+              "evidence_or_constraint": "PH2: No real viscoelastic material is selected. Changing width is transport/consumption, not decorative spring wobble. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No coherence, interference, rainbow or diffraction condition is selected. Spectral hues are authoring inputs, not a thin-film claim."
+              ],
+              "evidence_or_constraint": "PH2: No coherence, interference, rainbow or diffraction condition is selected. Spectral hues are authoring inputs, not a thin-film claim. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "Mana conversion is not wetting, adsorption, a liquid film or contamination. No contact-angle geometry is fabricated."
+              ],
+              "evidence_or_constraint": "PH2: Mana conversion is not wetting, adsorption, a liquid film or contamination. No contact-angle geometry is fabricated. Refer to receiving/transport conditions in PhysicalModel."
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "A luminous crest travels with a broad colored exterior body.",
+            "The exterior tail shortens at the same time that PH4 occupied area increases."
+          ],
+          "indirect_evidence": "World links and event ledger constrain the interpretation; no diagnostic marker is added inside the effect.",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "Dark supported boundaries, narrow local crests, and the unchanged host silhouette; inspect at H64 on light and dark backgrounds.",
+          "perceptual_failure_risk": "A blade or detached projectile; test the short material lifetime, consumed tip and absence of an intact object crossing the torso.",
+          "cue_roles": [
+            {
+              "cue": "A luminous crest travels with a broad colored exterior body.",
+              "supports": "The specific boundary/transport/received-state relation described in DeepStructure.",
+              "reliability_and_overlap": "Depends on display scale, occlusion and phase; cues share geometric causes and are not claimed statistically independent."
+            },
+            {
+              "cue": "The exterior tail shortens at the same time that PH4 occupied area increases.",
+              "supports": "The specific boundary/transport/received-state relation described in DeepStructure.",
+              "reliability_and_overlap": "Depends on display scale, occlusion and phase; cues share geometric causes and are not claimed statistically independent."
+            }
+          ],
+          "confusable_alternative": "A blade or detached projectile; test the short material lifetime, consumed tip and absence of an intact object crossing the torso.",
+          "disambiguating_evidence": "Continuous temporal sequence and source-to-boundary area bookkeeping, not a single still frame; true H64 GPU readability remains untested here.",
+          "viewing_conditions": "Assume browser zoom 100%, H64=64 CSS px; inspect 1x/2x/3x and both clear colors. No universal monitor or viewing distance is assumed."
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "Same host transform; rear source is behind body, near source and conversion are in front before foreground.",
+          "normal_field_coherence": "Stylized broad normals/facets follow local mesh coordinates; no arbitrary isolated highlight normal.",
+          "curvature_behavior": "Transport curve is smooth but cross-section is a pointed, asymmetric sheet; body fill follows polygon edges.",
+          "silhouette_logic": "Two unequal, asynchronous quadratic transport paths outside PH1; each packet has a tapered, non-elliptic section.",
+          "contact_relation": "External vertices are geometrically subtracted by the receiving polygon; no surviving carrier is drawn inside the body.",
+          "spatial_relation": "Bound to one beneficiary; draw one owner slot in scene order. No head marker or world-location-only ownership."
+        },
+        "StateDynamics": {
+          "state_space_extent": "Normalized packet head/tail, received fraction and remaining fraction; two lobe weights 0.62/0.38. No material density in kg/m3 is asserted.",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "Finite source forms, travels inward, is progressively consumed; no periodic loop in the event itself.",
+          "damping_profile": "No generic decorative wobble. Source/flux/coverage/emission have separate bounded scalar responses in sampler.",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "No rebound or spring; after consumption the external carrier stays absent.",
+          "transition_failure_risk": "Independent easing could make charge precede transfer or turn fade into resource loss; runtime invariants and manual GPU review are required.",
+          "driving_input": "Positive committed cause and actor age; inlet endpoints from PH1. No added orb, weapon, glyph or independent particle object.",
+          "response_timescale": "Normalized onset and transport windows in src/sampler.js LOBES; same common actor timeline as the receiver.",
+          "phase_relation": "First lobe leads second; both remain on the same actor clock, not two different wall-time clocks.",
+          "stability_condition": "Positive committed cause, valid host clock and receiving body. Invalid lifecycle input removes the effect, not the gained resource."
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Optics -> PH3.Optics: Packet head/tail crossing the boundary yields normalized flux from the cumulative density derivative. Contact emission starts only at nonzero transfer."
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "Hold geometry and pose fixed; change packet progress so the leading edge has not reached the inlet.",
+            "predicted_response": "Boundary emission and body fill remain zero until nonzero crossing occurs.",
+            "competing_explanation": "A blade or detached projectile; test the short material lifetime, consumed tip and absence of an intact object crossing the torso.",
+            "uncertainty": "This is a declared design mechanism. Unit tests verify numeric bookkeeping, not human recognition, real material physics, GPU execution or sound quality.",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "Existing receiving polygon supplies the two inlet endpoints and clips carrier triangles outside its boundary.",
+              "consequence": "No intact external object is drawn inside the torso."
+            },
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "Packet head/tail crossing the boundary yields normalized flux from the cumulative density derivative.",
+              "consequence": "Contact emission starts only at nonzero transfer."
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH2",
+              "basis": "Raster coverage and radiance depend on the existing world geometry/state."
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "A luminous crest travels with a broad colored exterior body.",
+            "The exterior tail shortens at the same time that PH4 occupied area increases."
+          ],
+          "indirect": [
+            "Event ownership and boundary constraints are recorded, not shown as extra glyphs."
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "occlusion",
+            "gradient",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH3",
+              "change": "Contact emission starts only at nonzero transfer."
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH2.StateDynamics",
+          "retained_cues": [
+            "A luminous crest travels with a broad colored exterior body.",
+            "The exterior tail shortens at the same time that PH4 occupied area increases."
+          ],
+          "simplification": "Prioritize broad source/receiver state and a finite conversion front. Do not add microtexture/particles to meet evidence counts.",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: selected axes fit explicit H64 readability intent",
+          "axes": {
+            "hierarchy_gaze_flow": [
+              "Broad colored exterior carrier leads toward its inlet.",
+              "A later second lobe offers an independent path without symmetric artificial limbs."
+            ],
+            "temporal_phase": [
+              "Finite exterior stock decreases as charge rises.",
+              "Asynchronous sources overlap without starting additional SFX voices."
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "Preserves committed gain ownership and actual source/receiver relation.",
+          "Truth": "Boundary emission and body fill remain zero until nonzero crossing occurs.",
+          "Beauty": [
+            "A luminous crest travels with a broad colored exterior body.",
+            "The exterior tail shortens at the same time that PH4 occupied area increases."
+          ]
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_response",
+          "observation_operation_registered_as_PH",
+          "before_after_only",
+          "detached_ellipse_badge",
+          "decorative_particles_as_cause_replacement"
+        ]
+      },
+      "PH3": {
+        "identity": {
+          "id": "PH3",
+          "name": "Boundary conversion interface",
+          "origin": "attribute_resolved",
+          "anchor": "body",
+          "visibility": "visible",
+          "local_state_difference": "Flux is nonzero only while the packet crosses PH1; the interface emits and lights the receiving surface.",
+          "partition_reason": "Boundary conversion has a distinct location and derivative response, not the transport or stored amount."
+        },
+        "DeepStructure": {
+          "Core": "Nonzero packet-crossing derivative maximizes local conversion radiance.",
+          "Structure": "Short inlet-bound stroke follows the existing torso boundary; dark support and narrow emitting core are distinct.",
+          "Surface": "No conversion exists before flux; body-surface light is bounded to the receiver and does not create background artifacts."
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "Two short patches on PH1, positioned by horizontal intersections of the supplied convex polygon.",
+          "state_variables": "Local normalized flux, narrow core width, dark support width and bounded surface illumination.",
+          "inputs": "PH2 packet crossing derivative and PH1 polygon; per-cause actor time.",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "Declared mana field is not material mass. Normalized quantity Q is tracked separately from kilograms."
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "No physical impulse or material inertia is imposed on the receiver; field transport is a declared game mechanism."
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "Authoring budget supplied by committed mana event; normalized external+stored amount equals one. Emission is a finite display response, not a measured joule conversion. Visual decay does not delete stored game mana."
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "Mana gain is not electric charge; no fictitious electric current is added."
+            }
+          },
+          "constitutive_response": "Flux drives boundary light and passes integrated amount to PH4. Optical response has no fictitious mechanical inertia.",
+          "initial_condition": "Zero transfer before packet reaches boundary.",
+          "boundary_conditions": "Emission remains attached to the receiver; front/back visibility follows host layering and foreground occlusion.",
+          "approximation_scope": "Qualitative stylized model. No measured mana material parameters or real fluid simulation. Runtime uses polygon clipping, actor-time algebra and local-light approximations; this is not physical validation."
+        },
+        "ScaleRegime": {
+          "characteristic_length": "At H64: core 1.6 game px, support 3.4px and local length 6.3px; actual display filtering must be reviewed.",
+          "characteristic_time": "Conversion exists only in the derivative interval of each lobe; no arbitrary independent flash schedule.",
+          "dominant_balance": "Integrated flux increases stored amount; world response and optical diffusion are separate channels.",
+          "dimensionless_reasoning": "Flux normalized to lobe progress; no physical thermal/dielectric timescale inferred from a stylized flash.",
+          "detail_cutoff": "Broad fields and >=1.35px front at native H64; antialiasing and HDR filtering are design/implementation choices. See SamplingContract. Readability on a specific screen is not established without observation."
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No temperature/combustion/phase-change effect is specified. Colored emission is not a thermometer; no thermal damage or steam is added."
+              ],
+              "evidence_or_constraint": "PH3: No temperature/combustion/phase-change effect is specified. Colored emission is not a thermometer; no thermal damage or steam is added. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "Mana is a declared field, not a material fluid. Calm air does not create drag/wakes; no Reynolds number is asserted."
+              ],
+              "evidence_or_constraint": "PH3: Mana is a declared field, not a material fluid. Calm air does not create drag/wakes; no Reynolds number is asserted. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "Opaque/transparent colored geometry and emitted radiance are stored separately; shape exists without bloom.",
+                "Existing occlusion order determines visibility; local crest and body response differ in luminance and support."
+              ],
+              "evidence_or_constraint": "PH3.Evidence direct boundaries and state changes; no lens flare or physical rainbow."
+            },
+            "Materials": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No solid packet or inserted object is created. Field geometry is a state representation, not elasticity or a material mass."
+              ],
+              "evidence_or_constraint": "PH3: No solid packet or inserted object is created. Field geometry is a state representation, not elasticity or a material mass. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No plasma, current or electric charge is specified. The game field is not an experimentally verified electromagnetic mechanism."
+              ],
+              "evidence_or_constraint": "PH3: No plasma, current or electric charge is specified. The game field is not an experimentally verified electromagnetic mechanism. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No real viscoelastic material is selected. Changing width is transport/consumption, not decorative spring wobble."
+              ],
+              "evidence_or_constraint": "PH3: No real viscoelastic material is selected. Changing width is transport/consumption, not decorative spring wobble. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No coherence, interference, rainbow or diffraction condition is selected. Spectral hues are authoring inputs, not a thin-film claim."
+              ],
+              "evidence_or_constraint": "PH3: No coherence, interference, rainbow or diffraction condition is selected. Spectral hues are authoring inputs, not a thin-film claim. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "Mana conversion is not wetting, adsorption, a liquid film or contamination. No contact-angle geometry is fabricated."
+              ],
+              "evidence_or_constraint": "PH3: Mana conversion is not wetting, adsorption, a liquid film or contamination. No contact-angle geometry is fabricated. Refer to receiving/transport conditions in PhysicalModel."
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "A short bright contact sits at the same silhouette where exterior geometry terminates.",
+            "The interior advancing front is visible only after positive integrated transfer."
+          ],
+          "indirect_evidence": "World links and event ledger constrain the interpretation; no diagnostic marker is added inside the effect.",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "Dark supported boundaries, narrow local crests, and the unchanged host silhouette; inspect at H64 on light and dark backgrounds.",
+          "perceptual_failure_risk": "A decorative spark unrelated to the gain; absence at zero flux and synchronized fill discriminate it in continuous playback.",
+          "cue_roles": [
+            {
+              "cue": "A short bright contact sits at the same silhouette where exterior geometry terminates.",
+              "supports": "The specific boundary/transport/received-state relation described in DeepStructure.",
+              "reliability_and_overlap": "Depends on display scale, occlusion and phase; cues share geometric causes and are not claimed statistically independent."
+            },
+            {
+              "cue": "The interior advancing front is visible only after positive integrated transfer.",
+              "supports": "The specific boundary/transport/received-state relation described in DeepStructure.",
+              "reliability_and_overlap": "Depends on display scale, occlusion and phase; cues share geometric causes and are not claimed statistically independent."
+            }
+          ],
+          "confusable_alternative": "A decorative spark unrelated to the gain; absence at zero flux and synchronized fill discriminate it in continuous playback.",
+          "disambiguating_evidence": "Continuous temporal sequence and source-to-boundary area bookkeeping, not a single still frame; true H64 GPU readability remains untested here.",
+          "viewing_conditions": "Assume browser zoom 100%, H64=64 CSS px; inspect 1x/2x/3x and both clear colors. No universal monitor or viewing distance is assumed."
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "Same host transform; rear source is behind body, near source and conversion are in front before foreground.",
+          "normal_field_coherence": "Stylized broad normals/facets follow local mesh coordinates; no arbitrary isolated highlight normal.",
+          "curvature_behavior": "Transport curve is smooth but cross-section is a pointed, asymmetric sheet; body fill follows polygon edges.",
+          "silhouette_logic": "Short inlet-bound stroke follows the existing torso boundary; dark support and narrow emitting core are distinct.",
+          "contact_relation": "Emission remains attached to the receiver; front/back visibility follows host layering and foreground occlusion.",
+          "spatial_relation": "Bound to one beneficiary; draw one owner slot in scene order. No head marker or world-location-only ownership."
+        },
+        "StateDynamics": {
+          "state_space_extent": "Local normalized flux, narrow core width, dark support width and bounded surface illumination.",
+          "transition_path_character": "intermittent",
+          "local_stability_type": "stable",
+          "convergence_behavior": "Flux rises and falls once for each internal lobe; interface switches off after supply ends.",
+          "damping_profile": "No generic decorative wobble. Source/flux/coverage/emission have separate bounded scalar responses in sampler.",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "Return to non-emitting boundary when flux is zero; no ringing halo or reaction debris.",
+          "transition_failure_risk": "Independent easing could make charge precede transfer or turn fade into resource loss; runtime invariants and manual GPU review are required.",
+          "driving_input": "PH2 packet crossing derivative and PH1 polygon; per-cause actor time.",
+          "response_timescale": "Conversion exists only in the derivative interval of each lobe; no arbitrary independent flash schedule.",
+          "phase_relation": "Boundary light uses current PH2 derivative, while PH4 integrates its history.",
+          "stability_condition": "Positive committed cause, valid host clock and receiving body. Invalid lifecycle input removes the effect, not the gained resource."
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH3.Optics -> PH4.Optics: Integrated incoming fractions, weighted 0.62 and 0.38, are passed directly to the body-area solver. Visible occupied fraction matches received amount, within numerical tolerance.",
+            "PH3.Optics -> PH1.Optics: Localized conversion emits a finite illumination term on the existing receiving surface. The surface changes before final settlement without adding a new receiver or flame."
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "Set transfer flux to zero while holding the receiver pose and stored state unchanged.",
+            "predicted_response": "Contact light disappears while already acquired body charge remains; no new sound begins.",
+            "competing_explanation": "A decorative spark unrelated to the gain; absence at zero flux and synchronized fill discriminate it in continuous playback.",
+            "uncertainty": "This is a declared design mechanism. Unit tests verify numeric bookkeeping, not human recognition, real material physics, GPU execution or sound quality.",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "Packet head/tail crossing the boundary yields normalized flux from the cumulative density derivative.",
+              "consequence": "Contact emission starts only at nonzero transfer."
+            },
+            {
+              "source": "PH3",
+              "target": "PH4",
+              "mechanism": "Integrated incoming fractions, weighted 0.62 and 0.38, are passed directly to the body-area solver.",
+              "consequence": "Visible occupied fraction matches received amount, within numerical tolerance."
+            },
+            {
+              "source": "PH3",
+              "target": "PH1",
+              "mechanism": "Localized conversion emits a finite illumination term on the existing receiving surface.",
+              "consequence": "The surface changes before final settlement without adding a new receiver or flame."
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH3",
+              "basis": "Raster coverage and radiance depend on the existing world geometry/state."
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "A short bright contact sits at the same silhouette where exterior geometry terminates.",
+            "The interior advancing front is visible only after positive integrated transfer."
+          ],
+          "indirect": [
+            "Event ownership and boundary constraints are recorded, not shown as extra glyphs."
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "occlusion",
+            "gradient",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH4",
+              "change": "Visible occupied fraction matches received amount, within numerical tolerance."
+            },
+            {
+              "target": "PH1",
+              "change": "The surface changes before final settlement without adding a new receiver or flame."
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH3.StateDynamics",
+          "retained_cues": [
+            "A short bright contact sits at the same silhouette where exterior geometry terminates.",
+            "The interior advancing front is visible only after positive integrated transfer."
+          ],
+          "simplification": "Prioritize broad source/receiver state and a finite conversion front. Do not add microtexture/particles to meet evidence counts.",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: selected axes fit explicit H64 readability intent",
+          "axes": {
+            "contrast": [
+              "Narrow high-radiance core remains supported by a darker boundary.",
+              "Body-local illumination is weaker and wider than the core."
+            ],
+            "temporal_phase": [
+              "Interface peaks during actual crossing.",
+              "Stored charge persists after interface brightness has ended."
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "Preserves committed gain ownership and actual source/receiver relation.",
+          "Truth": "Contact light disappears while already acquired body charge remains; no new sound begins.",
+          "Beauty": [
+            "A short bright contact sits at the same silhouette where exterior geometry terminates.",
+            "The interior advancing front is visible only after positive integrated transfer."
+          ]
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_response",
+          "observation_operation_registered_as_PH",
+          "before_after_only",
+          "detached_ellipse_badge",
+          "decorative_particles_as_cause_replacement"
+        ]
+      },
+      "PH4": {
+        "identity": {
+          "id": "PH4",
+          "name": "Body-conformal acquired state",
+          "origin": "attribute_resolved",
+          "anchor": "body",
+          "visibility": "visible",
+          "local_state_difference": "Filled area grows monotonically as source is consumed; presentation dims later without draining stored mana.",
+          "partition_reason": "Stored state and visible afterglow have histories independent of ongoing supply."
+        },
+        "DeepStructure": {
+          "Core": "Received amount controls the occupied torso area, not the radius of an interior icon.",
+          "Structure": "Area-constrained oblique fill front, continuous torso surface and one broad second facet; no repeated micro-bars.",
+          "Surface": "Afterglow follows the same existing contour; emission and coverage decrease separately while stored state stays acquired."
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "Exactly the supplied receiving polygon of PH1, transformed with beneficiary pose.",
+          "state_variables": "Qstored in [0,1], filled area, shared flux, display fade and emission. Qstored remains one at the end of an ordinary completed event.",
+          "inputs": "Integrated PH3 transfer; PH1 mask and pose. Game resource was already incremented by authority before E started.",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "Declared mana field is not material mass. Normalized quantity Q is tracked separately from kilograms."
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "No physical impulse or material inertia is imposed on the receiver; field transport is a declared game mechanism."
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "Authoring budget supplied by committed mana event; normalized external+stored amount equals one. Emission is a finite display response, not a measured joule conversion. Visual decay does not delete stored game mana."
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "Mana gain is not electric charge; no fictitious electric current is added."
+            }
+          },
+          "constitutive_response": "Half-plane threshold solved by area bisection; occupied-area fraction matches received fraction. Presentation fades independently of resource state.",
+          "initial_condition": "Zero displayed fill before crossing; no preset ellipse or reservoir asset.",
+          "boundary_conditions": "All fill and facet vertices remain inside the receiver. No acquired-state geometry survives invalidation or lifetime expiry.",
+          "approximation_scope": "Qualitative stylized model. No measured mana material parameters or real fluid simulation. Runtime uses polygon clipping, actor-time algebra and local-light approximations; this is not physical validation."
+        },
+        "ScaleRegime": {
+          "characteristic_length": "Body-scale region supplied by host; no smaller-than-pixel symbol is the sole proof of acquisition.",
+          "characteristic_time": "Filling follows integrated transfer, settlement holds after source depletion; low-luminance terminal occupies the final actor-time interval.",
+          "dominant_balance": "Qexternal+Qstored=1 after source definition; optical afterglow is not a decrement to Qstored or the actual game mana value.",
+          "dimensionless_reasoning": "Filled area / supplied torso area = normalized acquired amount; this is a design convention, not a physiological volume claim.",
+          "detail_cutoff": "Broad fields and >=1.35px front at native H64; antialiasing and HDR filtering are design/implementation choices. See SamplingContract. Readability on a specific screen is not established without observation."
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No temperature/combustion/phase-change effect is specified. Colored emission is not a thermometer; no thermal damage or steam is added."
+              ],
+              "evidence_or_constraint": "PH4: No temperature/combustion/phase-change effect is specified. Colored emission is not a thermometer; no thermal damage or steam is added. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "Mana is a declared field, not a material fluid. Calm air does not create drag/wakes; no Reynolds number is asserted."
+              ],
+              "evidence_or_constraint": "PH4: Mana is a declared field, not a material fluid. Calm air does not create drag/wakes; no Reynolds number is asserted. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "Opaque/transparent colored geometry and emitted radiance are stored separately; shape exists without bloom.",
+                "Existing occlusion order determines visibility; local crest and body response differ in luminance and support."
+              ],
+              "evidence_or_constraint": "PH4.Evidence direct boundaries and state changes; no lens flare or physical rainbow."
+            },
+            "Materials": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No solid packet or inserted object is created. Field geometry is a state representation, not elasticity or a material mass."
+              ],
+              "evidence_or_constraint": "PH4: No solid packet or inserted object is created. Field geometry is a state representation, not elasticity or a material mass. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No plasma, current or electric charge is specified. The game field is not an experimentally verified electromagnetic mechanism."
+              ],
+              "evidence_or_constraint": "PH4: No plasma, current or electric charge is specified. The game field is not an experimentally verified electromagnetic mechanism. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No real viscoelastic material is selected. Changing width is transport/consumption, not decorative spring wobble."
+              ],
+              "evidence_or_constraint": "PH4: No real viscoelastic material is selected. Changing width is transport/consumption, not decorative spring wobble. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "No coherence, interference, rainbow or diffraction condition is selected. Spectral hues are authoring inputs, not a thin-film claim."
+              ],
+              "evidence_or_constraint": "PH4: No coherence, interference, rainbow or diffraction condition is selected. Spectral hues are authoring inputs, not a thin-film claim. Refer to receiving/transport conditions in PhysicalModel."
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "Mana conversion is not wetting, adsorption, a liquid film or contamination. No contact-angle geometry is fabricated."
+              ],
+              "evidence_or_constraint": "PH4: Mana conversion is not wetting, adsorption, a liquid film or contamination. No contact-angle geometry is fabricated. Refer to receiving/transport conditions in PhysicalModel."
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "An oblique front grows across the existing body surface as exterior supply is consumed.",
+            "Fully acquired state stays on the body while emission diminishes without an independent flat object."
+          ],
+          "indirect_evidence": "World links and event ledger constrain the interpretation; no diagnostic marker is added inside the effect.",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "Dark supported boundaries, narrow local crests, and the unchanged host silhouette; inspect at H64 on light and dark backgrounds.",
+          "perceptual_failure_risk": "A garment recolor or battery UI; continuous boundary-to-area transfer and retained underlying silhouette are the distinguishing cues.",
+          "cue_roles": [
+            {
+              "cue": "An oblique front grows across the existing body surface as exterior supply is consumed.",
+              "supports": "The specific boundary/transport/received-state relation described in DeepStructure.",
+              "reliability_and_overlap": "Depends on display scale, occlusion and phase; cues share geometric causes and are not claimed statistically independent."
+            },
+            {
+              "cue": "Fully acquired state stays on the body while emission diminishes without an independent flat object.",
+              "supports": "The specific boundary/transport/received-state relation described in DeepStructure.",
+              "reliability_and_overlap": "Depends on display scale, occlusion and phase; cues share geometric causes and are not claimed statistically independent."
+            }
+          ],
+          "confusable_alternative": "A garment recolor or battery UI; continuous boundary-to-area transfer and retained underlying silhouette are the distinguishing cues.",
+          "disambiguating_evidence": "Continuous temporal sequence and source-to-boundary area bookkeeping, not a single still frame; true H64 GPU readability remains untested here.",
+          "viewing_conditions": "Assume browser zoom 100%, H64=64 CSS px; inspect 1x/2x/3x and both clear colors. No universal monitor or viewing distance is assumed."
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "Same host transform; rear source is behind body, near source and conversion are in front before foreground.",
+          "normal_field_coherence": "Stylized broad normals/facets follow local mesh coordinates; no arbitrary isolated highlight normal.",
+          "curvature_behavior": "Transport curve is smooth but cross-section is a pointed, asymmetric sheet; body fill follows polygon edges.",
+          "silhouette_logic": "Area-constrained oblique fill front, continuous torso surface and one broad second facet; no repeated micro-bars.",
+          "contact_relation": "All fill and facet vertices remain inside the receiver. No acquired-state geometry survives invalidation or lifetime expiry.",
+          "spatial_relation": "Bound to one beneficiary; draw one owner slot in scene order. No head marker or world-location-only ownership."
+        },
+        "StateDynamics": {
+          "state_space_extent": "Qstored in [0,1], filled area, shared flux, display fade and emission. Qstored remains one at the end of an ordinary completed event.",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "Monotonic acquisition to a held state; optical intensity then decays independently.",
+          "damping_profile": "No generic decorative wobble. Source/flux/coverage/emission have separate bounded scalar responses in sampler.",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "The display returns to baseline, but the underlying mana remains gained; no reverse drain animation.",
+          "transition_failure_risk": "Independent easing could make charge precede transfer or turn fade into resource loss; runtime invariants and manual GPU review are required.",
+          "driving_input": "Integrated PH3 transfer; PH1 mask and pose. Game resource was already incremented by authority before E started.",
+          "response_timescale": "Filling follows integrated transfer, settlement holds after source depletion; low-luminance terminal occupies the final actor-time interval.",
+          "phase_relation": "Integrates PH3 without extra clock or arbitrary phase reset; follows the same beneficiary transform.",
+          "stability_condition": "Positive committed cause, valid host clock and receiving body. Invalid lifecycle input removes the effect, not the gained resource."
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH4.Optics -> PH4.Optics: stored amount constrains emitted surface response within the same PH; no invented inter-PH feedback."
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "Freeze incoming amount after partial acquisition while keeping the body geometry fixed.",
+            "predicted_response": "The occupied area stops growing; it does not fill merely because wall time passes.",
+            "competing_explanation": "A garment recolor or battery UI; continuous boundary-to-area transfer and retained underlying silhouette are the distinguishing cues.",
+            "uncertainty": "This is a declared design mechanism. Unit tests verify numeric bookkeeping, not human recognition, real material physics, GPU execution or sound quality.",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH3",
+              "target": "PH4",
+              "mechanism": "Integrated incoming fractions, weighted 0.62 and 0.38, are passed directly to the body-area solver.",
+              "consequence": "Visible occupied fraction matches received amount, within numerical tolerance."
+            },
+            {
+              "source": "PH1",
+              "target": "PH4",
+              "mechanism": "The host torso polygon and transform constrain the acquired-state surface and afterglow edge.",
+              "consequence": "The charge cannot become a free-standing ellipse or badge."
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH4",
+              "basis": "Raster coverage and radiance depend on the existing world geometry/state."
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "An oblique front grows across the existing body surface as exterior supply is consumed.",
+            "Fully acquired state stays on the body while emission diminishes without an independent flat object."
+          ],
+          "indirect": [
+            "Event ownership and boundary constraints are recorded, not shown as extra glyphs."
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "occlusion",
+            "gradient",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH4.StateDynamics",
+          "retained_cues": [
+            "An oblique front grows across the existing body surface as exterior supply is consumed.",
+            "Fully acquired state stays on the body while emission diminishes without an independent flat object."
+          ],
+          "simplification": "Prioritize broad source/receiver state and a finite conversion front. Do not add microtexture/particles to meet evidence counts.",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: selected axes fit explicit H64 readability intent",
+          "axes": {
+            "material_response": [
+              "Existing receiver silhouette determines the charge extent.",
+              "Underlying body remains a body, not an inset disk."
+            ],
+            "temporal_phase": [
+              "Area increases only with received quantity.",
+              "Low-luminance fade reduces emitted light without undoing the committed resource."
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "Preserves committed gain ownership and actual source/receiver relation.",
+          "Truth": "The occupied area stops growing; it does not fill merely because wall time passes.",
+          "Beauty": [
+            "An oblique front grows across the existing body surface as exterior supply is consumed.",
+            "Fully acquired state stays on the body while emission diminishes without an independent flat object."
+          ]
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_response",
+          "observation_operation_registered_as_PH",
+          "before_after_only",
+          "detached_ellipse_badge",
+          "decorative_particles_as_cause_replacement"
+        ]
+      }
+    },
+    "Acceptance": {
+      "all_PH_have_required_full_structure": true,
+      "visible_implicit_latent_have_same_field_set": true,
+      "OBS_not_in_PH_registry": true,
+      "PIA_resolved_as_identification_lifecycle": true
+    }
+  },
+  "PEMTemplate": {
+    "Mode": {
+      "phenomenon_equality": true,
+      "focus_phenomenon": "none"
+    },
+    "CausalMesh": {
+      "physical_mesh_required": true,
+      "gaze_target_policy": "standard",
+      "adjustment_reason": "not_applicable: two nonidentical temporal attention paths are useful",
+      "gaze_path_A": "PH2 near lower-left exterior → PH3 inlet → PH4 advancing fill",
+      "gaze_path_B": "PH4 upper receiving edge → PH2 delayed upper-right lobe → PH3 conversion",
+      "local_extrema_connected_to_gaze_paths": true
+    },
+    "AttentionControl": {
+      "attention_focus": "hierarchical",
+      "single_requires_explicit_request": true
+    },
+    "Acceptance": {
+      "no_unexplained_isolation": true,
+      "gaze_paths_match_selected_policy_and_explicit_intent": true,
+      "local_peak_returns_to_mesh": true
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "PH1–PH4 are body/world phenomena; clear backgrounds and bloom are observation operations."
+    },
+    "Units": {
+      "length": "m",
+      "time": "s",
+      "temperature": "K",
+      "pressure": "Pa",
+      "angle": "rad"
+    },
+    "WorldCoordinates": {
+      "handedness": "right_handed",
+      "X": "right_positive",
+      "Y": "up_positive",
+      "Z": "backward_positive",
+      "camera_forward": "negative_Z",
+      "origin": "beneficiary_root"
+    },
+    "CameraCoordinates": {
+      "X": "right_positive",
+      "Y": "up_positive",
+      "forward": "negative_Z",
+      "projection": "orthographic",
+      "FOV_or_scale": "0.025 m/game-px coordinate calibration; view.scale CSS px/game px; no perspective distortion is introduced."
+    },
+    "ScreenCoordinates": {
+      "domain": "[0,1]x[0,1]",
+      "x": "0_left_to_1_right",
+      "y": "0_top_to_1_bottom"
+    },
+    "TransformChain": {
+      "order": [
+        "world",
+        "camera",
+        "screen"
+      ],
+      "world_to_camera": "world=(game_x*0.025,-game_y*0.025,z); local host rotation/translation precedes camera translation; near layer z=+0.04m, body z=0, far layer z=-0.04m are order conventions.",
+      "camera_to_screen": "CSS=(game-camera)*scale+origin; buffer=CSS*DPR; clip=(2*px/width-1,1-2*py/height). Same chain for body and all E geometry."
+    },
+    "ContactCoordinates": {
+      "contact_patch": "two short inlet intervals on supplied torsoPolygon",
+      "contact_normal": "local polygon edge normal; carrier terminates at interface",
+      "support_relation": "support",
+      "no_penetration": true
+    },
+    "VectorField": {
+      "dominant_vector": {
+        "direction": "curved lower-left exterior → lower torso inlet",
+        "magnitude": "d(head)/d(actor time), normalized to chosen path",
+        "falloff": "finite packet tail and density CDF, no infinite beam",
+        "fluctuation": "none; deterministic transport"
+      },
+      "secondary_vector": {
+        "direction": "upper-right exterior → upper torso inlet",
+        "magnitude": "later normalized transport with smaller quantity share",
+        "falloff": "same finite-packet rule at a different phase and width",
+        "fluctuation": "none"
+      }
+    },
+    "Gravity": {
+      "condition": "normal",
+      "vector": [
+        0,
+        -9.81,
+        0
+      ],
+      "strength": "m/s^2 default design condition, not a force applied to the nonmaterial mana carrier",
+      "affected_responses": "Host body support only; field paths follow the declared mana mechanism.",
+      "evidence": [
+        "Existing body pose remains supported by host.",
+        "No fabricated falling particles or cloth motion."
+      ]
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "air",
+      "medium_properties": {
+        "density": "ordinary nonzero ambient air, unmeasured; no flow response calculated",
+        "viscosity": "finite ambient value, unmeasured; no material fluid simulation"
+      },
+      "Field": {
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "speed": "0 m/s",
+        "gust": "none",
+        "shear": "none",
+        "turbulence": "none"
+      },
+      "ApplicableResponses": {
+        "body": "no wind displacement; host pose preserved",
+        "cloth": "not_applicable: no authored clothing motion",
+        "hair": "not_applicable: calibration body has no hair",
+        "loose_elements": "not_applicable: none added",
+        "environment": "calm; no dust or wave evidence manufactured"
+      },
+      "non_applicable_responses_explicit": true
+    },
+    "Acceptance": {
+      "world_camera_screen_transform_defined": true,
+      "screen_axis_convention_defined": true,
+      "Gravity_present": true,
+      "WindCapsule_present": true,
+      "medium_state_present": true,
+      "no_inapplicable_wind_evidence_required": true
+    }
+  },
+  "OctaDomainTemplate": {
+    "Domains": {
+      "Thermo": {
+        "responsibility": "Per-PH Thermo applicability, role, items and evidence are fully expanded in PhenomenonBlock."
+      },
+      "Fluid": {
+        "responsibility": "Per-PH Fluid applicability, role, items and evidence are fully expanded in PhenomenonBlock."
+      },
+      "Optics": {
+        "responsibility": "Per-PH Optics applicability, role, items and evidence are fully expanded in PhenomenonBlock."
+      },
+      "Materials": {
+        "responsibility": "Per-PH Materials applicability, role, items and evidence are fully expanded in PhenomenonBlock."
+      },
+      "Electromagnetics": {
+        "responsibility": "Per-PH Electromagnetics applicability, role, items and evidence are fully expanded in PhenomenonBlock."
+      },
+      "Rheology": {
+        "responsibility": "Per-PH Rheology applicability, role, items and evidence are fully expanded in PhenomenonBlock."
+      },
+      "WaveOptics": {
+        "responsibility": "Per-PH WaveOptics applicability, role, items and evidence are fully expanded in PhenomenonBlock."
+      },
+      "SurfaceScience": {
+        "responsibility": "Per-PH SurfaceScience applicability, role, items and evidence are fully expanded in PhenomenonBlock."
+      }
+    },
+    "Acceptance": {
+      "all_8_domains_present": true,
+      "role_classification_present": true,
+      "latent_does_not_require_direct_visualization": true,
+      "non_applicable_domains_retained_with_reason_and_latent_role": true
+    }
+  },
+  "AnimeStudiesTemplate": {
+    "applicability": "2D anime-compatible layout and temporal staging; Video design, not a claim of image generation.",
+    "KeyframeSnapshot": {
+      "phase": "action_peak",
+      "state_t_minus_1_evidence": "At early inspection times, exterior source exists and body fill is zero.",
+      "state_t_evidence": "At 450 actor-ms, first inlet crosses and torso area begins growing while the other lobe is external.",
+      "state_t_plus_1_evidence": "After source depletion, acquired body state is held and later fades; actual GPU viewing not_run."
+    },
+    "Layout": {
+      "staging": "Source → existing boundary → receiver; no text marker in the effect.",
+      "projection_consistency_ref": "CoordinateGravityWindTemplate",
+      "whitespace_role": "Open exterior gap permits inward transport to be distinguished from an object fixed in the torso."
+    },
+    "PoseActing_or_SceneActing": {
+      "character_ref": "BeautifulPoseCapsule",
+      "object_balance": "Host calibration pose is static, actual pose remains host-owned.",
+      "contact_logic": "Conversion localized to receiver, not to a head marker or floor decal."
+    },
+    "MotionReadability": {
+      "motion_blur_smear_speed_line_policy": "explicit_user_request_only",
+      "primary_causality_replacement_by_motion_effects": false
+    },
+    "CompositeIntegration": {
+      "observation_ref": "ObservationIntegrationTemplate",
+      "contact_shadow_used_for_integration": "not_applicable: no new floor contact/light projection is authored by E"
+    },
+    "Acceptance": {
+      "previous_and_next_time_or_explicit_ambiguity_accounted_for": true,
+      "projection_consistent": true,
+      "posteffects_do_not_replace_primary_causality": true
+    }
+  },
+  "ObservationIntegrationTemplate": {
+    "ObservationRegistry": {
+      "OBS1": {
+        "operation_type": "edge",
+        "input_references": [
+          "PH1",
+          "PH2",
+          "PH3",
+          "PH4"
+        ],
+        "target_mask": "Current owner mesh and receiving polygon; no sampled image material",
+        "stage": "world_render_observation",
+        "composite_method": "other",
+        "intensity": "Finite material coverage; HDR radiance separate. See IntensityBudget.",
+        "protected_regions": [
+          "existing silhouette",
+          "face/head",
+          "other owner slots",
+          "foreground after effect"
+        ],
+        "output_consequence": "Triangle mesh becomes premultiplied colored surface plus separate additive radiance, with transverse fwidth antialiasing.",
+        "dependencies": [
+          "PH1",
+          "PH2",
+          "PH3",
+          "PH4"
+        ],
+        "sampling_consequence": "64-byte vertex ABI; float16 linear targets; screen-space derivatives are shader instructions, not claimed executed here."
+      },
+      "OBS2": {
+        "operation_type": "posteffect",
+        "input_references": [
+          "OBS1"
+        ],
+        "target_mask": "Only existing emitted-radiance target, separately per far/near layer",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": "Bloom coefficient 0.42; 9-tap separable filter at 0.60 game-px step. No global source dimming.",
+        "protected_regions": [
+          "foreground occlusion",
+          "head not a source",
+          "background outside finite diffusion support",
+          "source dark core and broad material boundary"
+        ],
+        "output_consequence": "A small source-bound optical spread supports already present luminous crests; it never creates the incoming path or fill region.",
+        "dependencies": [
+          "OBS1"
+        ],
+        "sampling_consequence": "Filtering uses explicit linear GPUSampler, clamp, LOD0; blur step is scaled with view and DPR."
+      },
+      "OBS3": {
+        "operation_type": "tone",
+        "input_references": [
+          "OBS1",
+          "OBS2",
+          "display_condition"
+        ],
+        "target_mask": "One final linear-HDR preview scene; identity color transform below max RGB=0.82, highlight-only shoulder above",
+        "stage": "display",
+        "composite_method": "replace_with_constraint",
+        "intensity": "Peak mapping preserves RGB ratios and uses 0.82 knee; not a background-color branch. Host may use its existing scene presentation instead.",
+        "protected_regions": [
+          "unclipped midtones",
+          "color ratios",
+          "all geometry and lifecycle relations"
+        ],
+        "output_consequence": "Bright HDR sources fit display range without flattening all field intensity. sRGB encoding occurs once into an unorm canvas.",
+        "dependencies": [
+          "OBS1",
+          "OBS2",
+          "display_condition"
+        ],
+        "sampling_consequence": "Read linear float16 target at LOD0; no added grain, scanlines, temporal resampling or automatic exposure."
+      },
+      "OBS4": {
+        "operation_type": "other",
+        "input_references": [
+          "PH2",
+          "PH3",
+          "PH4",
+          "display_condition"
+        ],
+        "target_mask": "One stereo game feedback voice per committed cause, not a physical air-pressure PH",
+        "stage": "display",
+        "composite_method": "other",
+        "intensity": "Finite PCM plus bounded mix; master gain defaults 0.66. This is not an acoustic dB measurement.",
+        "protected_regions": [
+          "one cause one voice",
+          "no late replay of locked causes",
+          "actor-time synchronization"
+        ],
+        "output_consequence": "Inharmonic onset settles into a narrower harmonic body as the same received fraction grows; low terminal envelope reaches zero.",
+        "dependencies": [
+          "PH2",
+          "PH3",
+          "PH4",
+          "display_condition"
+        ],
+        "sampling_consequence": "48kHz authoring PCM; AudioWorklet interpolates actor-position samples. 2x doubles speed and pitch; render-quantum and device latency remain implementation conditions."
+      }
+    },
+    "SamplingContract": {
+      "output_resolution": "Preview canvases use measured CSS size × min(devicePixelRatio,2); H64 remains exactly 64 CSS px at scale=1. Hardware execution not_run in this environment.",
+      "intended_display_scale": "Browser zoom100%, H64 native and scale2/3 inspection; actual monitor distance and color response not measured.",
+      "spatial_detail_policy": "Prioritize widths 8–10.5px, transfer core1.6px and body fill area; no micrograin or single subpixel cue. Very small tips can vanish intentionally near consumption but cannot be sole causal evidence.",
+      "temporal_sampling": "Video/real-time: browser RAF cadence, not guaranteed60fps. Actor age from host, rate not multiplied twice. No motion blur/time-integrated trails. SFX maps same actor age; paused phase emits silence and preserves position.",
+      "filter_and_resample_policy": "Implemented 9-tap separable radiance diffusion + linear LOD0 final sampler. fwidth shader edge treatment; CPU reference uses a separate approximation, not proof of actual GPU reconstruction."
+    },
+    "ImageIntegration": {
+      "ToneColor": [
+        "OBS3"
+      ],
+      "LightIntegration": [
+        "OBS1",
+        "OBS2"
+      ],
+      "ShadowDensity": "No global darkening effect; local material recesses belong to PH2 and are rasterized by OBS1.",
+      "DepthAir": "No invented haze; occlusion order far source/body/near response/foreground.",
+      "EdgeLine": [
+        "OBS1"
+      ],
+      "TextureOutput": "No external image textures or noise; vertex geometry only."
+    },
+    "LensFlareField": {
+      "registry_id": "none",
+      "artifact_type": "optical_observation_artifact",
+      "world_anchor": "none",
+      "SourceMapping": {
+        "source_state": "none",
+        "source_id": "none",
+        "source_screen_position": "none",
+        "source_luminance_rank": "none"
+      },
+      "ResponseVisibility": {
+        "level": "none",
+        "reason": "No physical lens flare selected; bloom is OBS2 and is not relabelled lens flare."
+      }
+    },
+    "IntensityBudget": {
+      "global_observation_budget": "Local emitted crests may exceed display white; main surfaces remain colored with dark recess. No per-background or per-concurrent-cause gain normalization.",
+      "para": "disabled",
+      "flare_gradient": "disabled",
+      "glow": "OBS2 coefficient0.42 with finite local support",
+      "diffusion": "OBS2 only",
+      "grain": "disabled",
+      "chromatic_aberration": "disabled",
+      "protected_region_priority": "highest",
+      "intentional_departures": []
+    },
+    "CompositeValidation": {
+      "contour_preserved": "not_tested",
+      "highlight_clipping": "not_tested",
+      "shadow_crushing": "not_tested",
+      "chroma_displacement": "not_tested",
+      "fine_detail_retention": "not_tested",
+      "protected_background_preserved": "not_tested"
+    },
+    "Acceptance": {
+      "OBS_separate_from_PH": true,
+      "physical_lensflare_source_binding_preserved": true,
+      "display_artifact_does_not_fake_physical_source": true,
+      "intensity_budget_is_single_source_of_truth": true,
+      "sampling_conditions_and_actual_execution_distinguished": true
+    }
+  },
+  "ExtremumDesignColorTemplate": {
+    "PEV": {
+      "candidate_state_set": [
+        "K1: continuous finite supply crossing into area-constrained body charge"
+      ],
+      "selected_physics_extremum": "K1",
+      "reason": "Source-depletion and receiver-growth use one normalized quantity; chosen states preserve the gain relation, not all mechanisms at once."
+    },
+    "AES": {
+      "selected_from_PEV_only": true,
+      "visual_circulation": "External crests lead inward to contact and acquired surface.",
+      "asymmetric_balance": "Unequal source widths, weights and onset phases; no symmetric insect-like appendage construction.",
+      "tension_release": "Exterior travel resolves to a held body state and then low-luminance optical fade.",
+      "body_environment_consonance": "Host pose/occlusion retained, backgrounds not used as effect input.",
+      "selected_aesthetic_extremum": "K1"
+    },
+    "DesignScience": {
+      "VisualHierarchy": "Exterior luminous crest and boundary peak → broad colored field → body-conformal acquired state → weak local bloom",
+      "DensityPlan": "Finite broad lobes, no particle spray; body region takes over as source is consumed.",
+      "ShapeOrder": "Asymmetric tapered transport, oblique fill front, existing torso boundary; no golden-ratio mandate or expanding circle.",
+      "OrnamentFunction": "No independent ornament. Dark recess, crest and facet explain quantity/transport and surface response."
+    },
+    "CCM": {
+      "Palette": {
+        "base": "linear blue [0.018,0.15,0.62] external carrier",
+        "secondary": "linear violet [0.12,0.045,0.58] later lobe",
+        "accent": "linear cyan-blue emission [0.18,0.74,1.0] and local conversion [0.40,0.77,1.0]",
+        "neutral": "deep blue recess [0.003,0.010,0.030] and unchanged neutral proxy"
+      },
+      "ColorDynamics": {
+        "temp": "cool",
+        "value_range": "colored material < local HDR radiance; display shoulder only above knee",
+        "saturation": "colored main planes and crests, no rainbow or global palette wash"
+      },
+      "Lighting": {
+        "key_K": "not_applicable: nonthermal declared mana emission has no black-body temperature",
+        "fill_tint": "local conversion blue; dark/light clear colors unchanged by effect parameters"
+      },
+      "BackgroundBinding": {
+        "bg_dominant": "external host; preview dark/light calibration fields in display space only",
+        "bg_accent": "none"
+      },
+      "PerceptualControl": {
+        "attention_focus": "hierarchical",
+        "figure_ground_stability": "medium",
+        "arousal_level": "mid",
+        "perceptual_noise_tolerance": "low"
+      }
+    },
+    "Acceptance": {
+      "PEV_applied_before_AES_when_world_candidates_exist": true,
+      "AES_does_not_override_world_validity": true,
+      "legacy_FDS_resolved_to_DesignScience": true,
+      "CCM_fields_fixed": true
+    }
+  },
+  "ReflectionClosureTemplate": {
+    "Applicability": {
+      "applies_when": [
+        "reflection",
+        "highlight",
+        "sheen",
+        "gloss",
+        "wetness",
+        "metallic_response",
+        "skin_highlight",
+        "cloth_sheen"
+      ],
+      "otherwise": "latent_optics_condition"
+    },
+    "ReflectionClosureBlock": {},
+    "non_applicability_reason": "No readable specular/reflection mechanism selected. Calibration body has flat matte shading; colored acquired surface is direct declared mana-state emission. PH1 Optics keeps the local diffuse response as a bounded approximation. No numerical microfacet BRDF or Fresnel simulation is claimed.",
+    "Acceptance": {
+      "reflection_integrated_into_PH_mesh": true,
+      "lensflare_registered_as_OBS_not_reflection": true
+    }
+  },
+  "PhenomenonProfileTemplate": {
+    "ApplicabilityGuide": {
+      "selections": []
+    },
+    "ProfilePolicy": {
+      "secondary_boost_only": true,
+      "full_PH_structure_still_required": true,
+      "only_selected_profiles_in_design": true
+    },
+    "Profiles": {},
+    "Acceptance": {
+      "profile_does_not_replace_PH_schema": true,
+      "reactive_profile_only_when_applicable": true
+    }
+  },
+  "TermsTemplate": {
+    "PH": "world-internal phenomenon",
+    "OBS": "observation/display operation",
+    "PIA": "PH identification lifecycle",
+    "PEM": "Phenomenon Equality Mode",
+    "PEV": "Physics Extremum Visualization",
+    "AES": "Aesthetic Extremum Selection",
+    "CCM": "Color Catalog Module",
+    "FDS": "legacy alias -> DesignScience + AES Form Design Selection",
+    "DeclaredIntent": "explicit user intent preservation",
+    "ValidationResults": "actual inspection results separated from demands",
+    "Acceptance": {
+      "undefined_legacy_terms_absent": true
+    }
+  },
+  "ExtensionActivationTable": {
+    "entries": {
+      "VFX": {
+        "trigger": "explicit",
+        "reason": "Requested mana phenomenon with external source, boundary conversion and body state.",
+        "explicit_or_inferred": "explicit",
+        "dependencies": [
+          "FoundationOperationTemplate",
+          "InferenceExpansionPolicy"
+        ],
+        "output_blocks": [
+          "VFX"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "PostEffects": {
+        "trigger": "explicit",
+        "reason": "Requested necessary observation effects; source-bound bloom and final HDR shoulder selected.",
+        "explicit_or_inferred": "explicit",
+        "dependencies": [
+          "FoundationOperationTemplate",
+          "InferenceExpansionPolicy"
+        ],
+        "output_blocks": [
+          "PostEffects"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "LDM": {
+        "trigger": "explicit",
+        "reason": "Explicit VFX and PostEffects; strong source and low-luminance terminal require separate envelopes.",
+        "explicit_or_inferred": "explicit",
+        "dependencies": [
+          "FoundationOperationTemplate",
+          "InferenceExpansionPolicy"
+        ],
+        "output_blocks": [
+          "LuminanceDynamicsModule"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "BeautifulPoseCapsule": {
+        "trigger": "attribute_resolved",
+        "reason": "Existing body/receiving geometry needs pose/coordinate correspondence; calibration is static, actual host pose is not rewritten.",
+        "explicit_or_inferred": "attribute_resolved",
+        "dependencies": [
+          "FoundationOperationTemplate",
+          "InferenceExpansionPolicy"
+        ],
+        "output_blocks": [
+          "BeautifulPoseCapsule"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "GradientAnchorPolicy": {
+        "trigger": "attribute_resolved",
+        "reason": "Local colored-crest and filled-surface variation belongs to world VFX, not arbitrary background color.",
+        "explicit_or_inferred": "attribute_resolved",
+        "dependencies": [
+          "FoundationOperationTemplate",
+          "InferenceExpansionPolicy"
+        ],
+        "output_blocks": [
+          "GradientAnchorPolicy"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "VideoGenerationPolicy": {
+        "trigger": "explicit",
+        "reason": "Full-lifetime continuous actor-time playback plus cause-owned SFX is requested.",
+        "explicit_or_inferred": "explicit",
+        "dependencies": [
+          "FoundationOperationTemplate",
+          "InferenceExpansionPolicy"
+        ],
+        "output_blocks": [
+          "VideoGenerationPolicy"
+        ],
+        "disabled_behavior": "omit"
+      }
+    },
+    "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+    "output_contract_ref": "FoundationOperationTemplate.OutputContract",
+    "Acceptance": {
+      "one_activation_source_of_truth": true,
+      "disabled_modules_omitted": true
+    }
+  },
+  "BeautifulPoseCapsule": {
+    "characters": {
+      "beneficiary": {
+        "trigger": "character_body_exists",
+        "PosePhase": "STATIC",
+        "PoseType": "standing",
+        "Common": {
+          "intent": "Preview calibration body is static; game host supplies its own pose and receiving polygon.",
+          "primary_axis": "head→torso→root for calibration only",
+          "gaze_or_orientation": "front-facing diagnostic proxy with no authored personality or gaze emotion",
+          "contact_points": [
+            "prescribed root/feet support boundary, not a newly rendered floor object"
+          ],
+          "COM_or_support_center": "held within prescribed calibration support; actual host balance is not simulated by this E",
+          "reaction_or_propulsion": "host support balances ordinary gravity; mana exerts no mechanical impulse",
+          "limb_or_appendage_roles": "existing arms/legs retained as occluders, not E-driven motion",
+          "recovery": "no E-driven movement or invented recovery",
+          "PH_mechanics_refs": {
+            "PhysicalModel": "PH1.PhysicalModel",
+            "ScaleRegime": "PH1.ScaleRegime",
+            "StateDynamics": "PH1.StateDynamics"
+          },
+          "static_dynamic_mechanics": {
+            "mode": "static_balance",
+            "static_balance_or_support": "prescribed calibration support; real host pose retained",
+            "momentum_propulsion_or_contact_change": "not_applicable for static calibration"
+          },
+          "perceptual_readability_ref": {
+            "PerceptualReadability": "PH1.PerceptualReadability",
+            "joint_and_contact_cues": [
+              "head/arm/torso separation preserved",
+              "receiving interval follows torso boundary"
+            ]
+          }
+        },
+        "Acceptance": {
+          "pose_type_specific_mechanics_complete": true,
+          "standing_defaults_not_forced_on_other_types": true,
+          "contact_COM_force_axis_roles_recovery_present": true
+        }
+      }
+    }
+  },
+  "VFX": {
+    "trigger": "explicit",
+    "world_registration": "PhenomenonSystemTemplate.PhenomenonRegistry",
+    "observation_registration": "ObservationIntegrationTemplate.ObservationRegistry",
+    "design_intent": {
+      "subject_and_action": "Committed positive mana gain, beneficiary-owned supply/transfer/charge",
+      "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+      "primary_read": "External supply is consumed at body boundary while body area becomes acquired state.",
+      "layering_basis": "Transport, crest, conversion, stored state and optical support have different functions and temporal evidence; no fixed minimum decorative layer set."
+    },
+    "layers": [
+      {
+        "layer_id": "L1",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "Broad external colored carrier; no inserted object. Required realization of the requested source/receiver phenomenon, not independent decoration."
+        },
+        "PH_refs": [
+          "PH2"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "Broad external colored carrier; no inserted object.",
+        "spatial_structure": {
+          "anchor_and_transform": "CoordinateGravityWindTemplate, beneficiary root",
+          "extent_orientation_depth": "Back/front scene order. World source/receiver use game px; OBS has no invented world thickness.",
+          "macro": "Broad external colored carrier; no inserted object. Preserve exterior gap, receiving boundary and body silhouette.",
+          "meso": "Two asynchronous path lobes; one broad oblique fill front and one broad surface facet. No repeated microstripes.",
+          "micro": "No particle/noise microstructure; transverse AA only. Essential evidence remains at H64.",
+          "edge_and_occlusion": "Back carrier before body; near contact/fill after body; foreground after the complete effect. Each owner has a separate renderer slot."
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "Declared field geometry with separate material coverage and emitted radiance",
+          "emission_opacity_density": "Normalized quantity, material coverage and radiance are different variables; no white-glow replacement of geometry.",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCM; no background-adaptive input",
+          "model_refs": [
+            "PH2.PhysicalModel"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "Same committed cause and actor age; no independent wall clock or looping event",
+          "distribution_and_correlation": "No particle population. Lobe weights0.62/0.38 and distinct phase windows are finite-field internal structure.",
+          "onset_peak_decay": "Supply forms and crosses; boundary follows derivative; fill integrates; afterglow has separate intensity/coverage decline.",
+          "state_and_sampling_refs": [
+            "PH2.StateDynamics",
+            "ObservationIntegrationTemplate.SamplingContract"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "Premultiplied base + additive radiance in linear float16. Body clipped to supplied convex receiver; foreground stays after effect.",
+          "protected_cues": "Cause count, body ownership, external-to-internal relation, visible colored body and localized peak",
+          "failure_to_avoid": "Elliptic insert, detached badge, blade-only misreading, white blob, or optical blur replacing source geometry."
+        }
+      },
+      {
+        "layer_id": "L2",
+        "role": "internal_structure",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "Localized luminous crest and dark recess on the same carrier, not a second object. Required realization of the requested source/receiver phenomenon, not independent decoration."
+        },
+        "PH_refs": [
+          "PH2"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "Localized luminous crest and dark recess on the same carrier, not a second object.",
+        "spatial_structure": {
+          "anchor_and_transform": "CoordinateGravityWindTemplate, beneficiary root",
+          "extent_orientation_depth": "Back/front scene order. World source/receiver use game px; OBS has no invented world thickness.",
+          "macro": "Localized luminous crest and dark recess on the same carrier, not a second object. Preserve exterior gap, receiving boundary and body silhouette.",
+          "meso": "Two asynchronous path lobes; one broad oblique fill front and one broad surface facet. No repeated microstripes.",
+          "micro": "No particle/noise microstructure; transverse AA only. Essential evidence remains at H64.",
+          "edge_and_occlusion": "Back carrier before body; near contact/fill after body; foreground after the complete effect. Each owner has a separate renderer slot."
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "Declared field geometry with separate material coverage and emitted radiance",
+          "emission_opacity_density": "Normalized quantity, material coverage and radiance are different variables; no white-glow replacement of geometry.",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCM; no background-adaptive input",
+          "model_refs": [
+            "PH2.PhysicalModel"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "Same committed cause and actor age; no independent wall clock or looping event",
+          "distribution_and_correlation": "No particle population. Lobe weights0.62/0.38 and distinct phase windows are finite-field internal structure.",
+          "onset_peak_decay": "Supply forms and crosses; boundary follows derivative; fill integrates; afterglow has separate intensity/coverage decline.",
+          "state_and_sampling_refs": [
+            "PH2.StateDynamics",
+            "ObservationIntegrationTemplate.SamplingContract"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "Premultiplied base + additive radiance in linear float16. Body clipped to supplied convex receiver; foreground stays after effect.",
+          "protected_cues": "Cause count, body ownership, external-to-internal relation, visible colored body and localized peak",
+          "failure_to_avoid": "Elliptic insert, detached badge, blade-only misreading, white blob, or optical blur replacing source geometry."
+        }
+      },
+      {
+        "layer_id": "L3",
+        "role": "boundary",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "Flux-bound transfer edge on the actual receiver. Required realization of the requested source/receiver phenomenon, not independent decoration."
+        },
+        "PH_refs": [
+          "PH3"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "Flux-bound transfer edge on the actual receiver.",
+        "spatial_structure": {
+          "anchor_and_transform": "CoordinateGravityWindTemplate, beneficiary root",
+          "extent_orientation_depth": "Back/front scene order. World source/receiver use game px; OBS has no invented world thickness.",
+          "macro": "Flux-bound transfer edge on the actual receiver. Preserve exterior gap, receiving boundary and body silhouette.",
+          "meso": "Two asynchronous path lobes; one broad oblique fill front and one broad surface facet. No repeated microstripes.",
+          "micro": "No particle/noise microstructure; transverse AA only. Essential evidence remains at H64.",
+          "edge_and_occlusion": "Back carrier before body; near contact/fill after body; foreground after the complete effect. Each owner has a separate renderer slot."
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "Declared field geometry with separate material coverage and emitted radiance",
+          "emission_opacity_density": "Normalized quantity, material coverage and radiance are different variables; no white-glow replacement of geometry.",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCM; no background-adaptive input",
+          "model_refs": [
+            "PH3.PhysicalModel"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "Same committed cause and actor age; no independent wall clock or looping event",
+          "distribution_and_correlation": "No particle population. Lobe weights0.62/0.38 and distinct phase windows are finite-field internal structure.",
+          "onset_peak_decay": "Supply forms and crosses; boundary follows derivative; fill integrates; afterglow has separate intensity/coverage decline.",
+          "state_and_sampling_refs": [
+            "PH3.StateDynamics",
+            "ObservationIntegrationTemplate.SamplingContract"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "Premultiplied base + additive radiance in linear float16. Body clipped to supplied convex receiver; foreground stays after effect.",
+          "protected_cues": "Cause count, body ownership, external-to-internal relation, visible colored body and localized peak",
+          "failure_to_avoid": "Elliptic insert, detached badge, blade-only misreading, white blob, or optical blur replacing source geometry."
+        }
+      },
+      {
+        "layer_id": "L4",
+        "role": "environment_response",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "Body-conformal fill and local surface response; stored area rises as exterior disappears. Required realization of the requested source/receiver phenomenon, not independent decoration."
+        },
+        "PH_refs": [
+          "PH1",
+          "PH4"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "Body-conformal fill and local surface response; stored area rises as exterior disappears.",
+        "spatial_structure": {
+          "anchor_and_transform": "CoordinateGravityWindTemplate, beneficiary root",
+          "extent_orientation_depth": "Back/front scene order. World source/receiver use game px; OBS has no invented world thickness.",
+          "macro": "Body-conformal fill and local surface response; stored area rises as exterior disappears. Preserve exterior gap, receiving boundary and body silhouette.",
+          "meso": "Two asynchronous path lobes; one broad oblique fill front and one broad surface facet. No repeated microstripes.",
+          "micro": "No particle/noise microstructure; transverse AA only. Essential evidence remains at H64.",
+          "edge_and_occlusion": "Back carrier before body; near contact/fill after body; foreground after the complete effect. Each owner has a separate renderer slot."
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "Declared field geometry with separate material coverage and emitted radiance",
+          "emission_opacity_density": "Normalized quantity, material coverage and radiance are different variables; no white-glow replacement of geometry.",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCM; no background-adaptive input",
+          "model_refs": [
+            "PH1.PhysicalModel",
+            "PH4.PhysicalModel"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "Same committed cause and actor age; no independent wall clock or looping event",
+          "distribution_and_correlation": "No particle population. Lobe weights0.62/0.38 and distinct phase windows are finite-field internal structure.",
+          "onset_peak_decay": "Supply forms and crosses; boundary follows derivative; fill integrates; afterglow has separate intensity/coverage decline.",
+          "state_and_sampling_refs": [
+            "PH1.StateDynamics",
+            "PH4.StateDynamics",
+            "ObservationIntegrationTemplate.SamplingContract"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "Premultiplied base + additive radiance in linear float16. Body clipped to supplied convex receiver; foreground stays after effect.",
+          "protected_cues": "Cause count, body ownership, external-to-internal relation, visible colored body and localized peak",
+          "failure_to_avoid": "Elliptic insert, detached badge, blade-only misreading, white blob, or optical blur replacing source geometry."
+        }
+      },
+      {
+        "layer_id": "L5",
+        "role": "observation_support",
+        "domain": "observation",
+        "selection": {
+          "basis": "explicit",
+          "scope_and_reason": "Finite source-bound bloom and single preview presentation shoulder. Required realization of the requested source/receiver phenomenon, not independent decoration."
+        },
+        "PH_refs": [],
+        "OBS_refs": [
+          "OBS2",
+          "OBS3"
+        ],
+        "function_and_visible_result": "Finite source-bound bloom and single preview presentation shoulder.",
+        "spatial_structure": {
+          "anchor_and_transform": "Registered source target in screen pixels",
+          "extent_orientation_depth": "Back/front scene order. World source/receiver use game px; OBS has no invented world thickness.",
+          "macro": "Finite source-bound bloom and single preview presentation shoulder. Preserve exterior gap, receiving boundary and body silhouette.",
+          "meso": "Two asynchronous path lobes; one broad oblique fill front and one broad surface facet. No repeated microstripes.",
+          "micro": "No particle/noise microstructure; transverse AA only. Essential evidence remains at H64.",
+          "edge_and_occlusion": "Back carrier before body; near contact/fill after body; foreground after the complete effect. Each owner has a separate renderer slot."
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "Source-bound texture filtering and fixed HDR display mapping",
+          "emission_opacity_density": "Normalized quantity, material coverage and radiance are different variables; no white-glow replacement of geometry.",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCM; no background-adaptive input",
+          "model_refs": [
+            "OBS2",
+            "OBS3"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "Same committed cause and actor age; no independent wall clock or looping event",
+          "distribution_and_correlation": "No particle population. Lobe weights0.62/0.38 and distinct phase windows are finite-field internal structure.",
+          "onset_peak_decay": "Supply forms and crosses; boundary follows derivative; fill integrates; afterglow has separate intensity/coverage decline.",
+          "state_and_sampling_refs": [
+            "ObservationIntegrationTemplate.SamplingContract"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "Premultiplied base + additive radiance in linear float16. Body clipped to supplied convex receiver; foreground stays after effect.",
+          "protected_cues": "Cause count, body ownership, external-to-internal relation, visible colored body and localized peak",
+          "failure_to_avoid": "Elliptic insert, detached badge, blade-only misreading, white blob, or optical blur replacing source geometry."
+        }
+      }
+    ],
+    "interlayer_links": [
+      {
+        "source_layer": "L1",
+        "target_layer": "L3",
+        "relation_type": "physical_influence",
+        "mechanism_and_consequence": "Source crossing yields conversion flux.",
+        "foundation_binding": "PH2 -> PH3 physical_influence"
+      },
+      {
+        "source_layer": "L3",
+        "target_layer": "L4",
+        "relation_type": "physical_influence",
+        "mechanism_and_consequence": "Integrated transfer increases acquired area; local light reaches the receiver.",
+        "foundation_binding": "PH3 -> PH4 and PH3 -> PH1 physical_influence"
+      },
+      {
+        "source_layer": "L5",
+        "target_layer": "L2",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "Optical spread reads actual emitted crest; input evaluated first.",
+        "foundation_binding": "OBS2 -> OBS1 observation_dependency"
+      },
+      {
+        "source_layer": "L2",
+        "target_layer": "L1",
+        "relation_type": "visual_relation",
+        "mechanism_and_consequence": "High narrow crest contrasts with broad colored body and dark recess.",
+        "foundation_binding": "PH2.DeepStructure and CCM, not an extra physical feedback loop"
+      }
+    ],
+    "causal_path": {
+      "input": "Authoritative positive gain, once per cause",
+      "carrier_PH": "PH2",
+      "receiver": "PH1 through PH3, stored response PH4",
+      "ScaleRegime_ref": "PH2.ScaleRegime",
+      "StateDynamics_ref": "PH2.StateDynamics",
+      "ReactivePhaseChange_ref": "not_applicable: mana conversion is not combustion/chemical reaction/material phase change"
+    },
+    "orchestration": {
+      "common_time_basis": "VideoGenerationPolicy.timeline in actor seconds, scaled to duration; no exposure blur",
+      "layer_phase_relations": "Asynchronous sources feed derivative contact and integrated charge; receiver holds after input ends.",
+      "environment_response": "Only existing recipient surface is lit; no floor decal, smoke, debris or other receiver added.",
+      "visual_hierarchy": "Local crest/contact > broad colored supply > body state > small source-bound diffusion.",
+      "bullet_time": "not_applicable: not requested"
+    },
+    "output_integration": {
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+      "LDM_ref": "LuminanceDynamicsModule",
+      "composite_order": "OBS1 → OBS2 → OBS3; OBS4 shares actor phase but is a separate audio graph",
+      "color_alpha_contract": "linear rgba16float material premultiplied alpha, separate additive emitted radiance; one sRGB encode in unorm presentation",
+      "scale_adaptation": "View scales geometry and filter footprint, not source quantity; no background-dependent alternate shape."
+    },
+    "validation_plan": {
+      "layer_checks": "Watch source outside, contact only at flux, charge area increase and retained state during optical fade.",
+      "composite_checks": "Far/body/near/foreground order, dark recess, local peaks, finite bloom support and mask ownership.",
+      "temporal_checks": "Single/near3, rate1/2, 1500/900, pause/resume, dim terminal, exact expiry and all invalidations.",
+      "actual_results_ref": "GlobalAcceptanceTemplate.ValidationResults"
+    },
+    "Acceptance": {
+      "world_VFX_registered_as_PH": true,
+      "observation_only_effects_not_misregistered_as_VFX_PH": true,
+      "layer_roles_scales_and_relations_explicit": true,
+      "layer_count_does_not_force_new_content_or_PH_partition": true,
+      "material_motion_environment_and_composite_consistent": true,
+      "shared_intensity_and_sampling_contracts_preserved": true,
+      "structural_requirements_not_reported_as_render_evidence": true
+    }
+  },
+  "PostEffects": {
+    "trigger": {
+      "ordinary_posteffects": true,
+      "beta_targets": []
+    },
+    "selection": {
+      "mode": "exact_selected_operations",
+      "scope_resolution": "explicit_scope_first",
+      "exact_selected_operations": [
+        "source_bound_local_bloom",
+        "fixed_preview_HDR_shoulder"
+      ]
+    },
+    "autonomous_activation": {
+      "physical_causality_input_required": false,
+      "registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract"
+    },
+    "SPCA": {
+      "applies_if": "world_internal_PH_local_peak_selected",
+      "evidence_types_standard_two_of": [
+        "gradient",
+        "decay",
+        "occlusion"
+      ],
+      "explicit_intent_adjustment": "not_applicable: no omission or exaggeration requested",
+      "PostEffects_alone_does_not_require_new_PH": true
+    },
+    "global_posteffects": {
+      "applies": true,
+      "exact_OBS_operations": [
+        "fixed_preview_HDR_shoulder"
+      ],
+      "OBS_refs": [
+        "OBS3"
+      ]
+    },
+    "local_posteffects": {
+      "applies": true,
+      "targets": [
+        "PH2",
+        "PH3",
+        "PH4"
+      ],
+      "exact_OBS_operations": [
+        "source_bound_local_bloom"
+      ],
+      "OBS_refs": [
+        "OBS2"
+      ]
+    },
+    "operation_contract": {
+      "required_fields": [
+        "input_references",
+        "target_mask",
+        "stage",
+        "composite_method",
+        "intensity",
+        "protected_regions",
+        "sampling_consequence"
+      ],
+      "sampling_consequence": "Actual GPU descriptors are authored; execution remains not_run without browser pipeline. No new texture/noise/temporal modulation is inferred."
+    },
+    "Acceptance": {
+      "exact_selected_operation_does_not_infer_layers": true,
+      "global_local_scope_unambiguous": true,
+      "legacy_five_domain_reference_absent": true
+    }
+  },
+  "LuminanceDynamicsModule": {
+    "trigger": {
+      "explicit_VFX": true,
+      "explicit_PostEffects": true,
+      "inferred_requires_luminance_dynamics": false
+    },
+    "omitted_if_not_enabled": true,
+    "target_metrics": {
+      "target_size": "H64 body, R82 field envelope",
+      "camera_distance": "fixed orthographic calibration; no perspective distance inferred",
+      "screen_occupancy": "depends on viewport; exact geometry uses game px rather than a guessed screen-area percentage",
+      "readability_priority": "high"
+    },
+    "Image": {
+      "spatial_envelope": "not_applicable: diagnostic stills sample the same Video timeline",
+      "local_contrast_budget": "ObservationIntegrationTemplate.IntensityBudget"
+    },
+    "Video": {
+      "temporal_envelope": "Source radiance with packet crest, boundary flux derivative, integrated body charge, final independent emission/coverage decline.",
+      "micro_variation": "none: no randomized flicker requested",
+      "anti_flicker": "No artificial pulse train or subpixel grain. Check native cadence and finite source widths; do not use per-background gain switching."
+    },
+    "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+    "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+    "sampling_consequence": "Filter radius scales with view and DPR, not intensity; no independently retimed audio or shader clock.",
+    "AlphaBackground": {
+      "enabled": false,
+      "required_background_if_enabled": "#000000"
+    },
+    "alpha_ref": "LuminanceDynamicsModule.AlphaBackground",
+    "ActivationExclusions": {
+      "non_emissive_particles_only": "no_auto_activation",
+      "grain_only": "no_auto_activation"
+    },
+    "Acceptance": {
+      "mode_specific_envelope": true,
+      "numeric_defaults_subordinate_to_target_metrics": true,
+      "no_unwanted_global_luma_lift": true
+    }
+  },
+  "GradientAnchorPolicy": {
+    "trigger": "attribute_resolved",
+    "gradient_type": "world_VFX_gradient",
+    "anchor": "PH2",
+    "registration": {
+      "world_surface_gradient": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "world_VFX_gradient": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_gradient": "ObservationIntegrationTemplate.ObservationRegistry"
+    },
+    "o9_ref": "not_applicable: no prism processing selected",
+    "Acceptance": {
+      "physical_and_observation_gradients_distinguished": true,
+      "unanchored_world_gradient_absent": true
+    }
+  },
+  "VideoGenerationPolicy": {
+    "Mode": "Video",
+    "Duration": {
+      "source": "user_declared",
+      "seconds": 1.5
+    },
+    "Style": "2D anime-compatible procedural game VFX",
+    "dataclass_forbidden": true,
+    "timeline": {
+      "unit": "seconds",
+      "clock": "actor-time; 900ms is a normalized duration variant, not a second clock",
+      "tracks": {
+        "PH": [
+          {
+            "id": "PH1",
+            "start": 0,
+            "end": 1.5,
+            "state_before": "Preview body static, torso empty of displayed mana response; actual host may move or use a different supplied convex receiver.",
+            "state_during": "Host pose/support are maintained; every frame supplies current geometry.",
+            "state_after": "No E-driven pose recovery; disappear immediately at lifecycle invalidation."
+          },
+          {
+            "id": "PH2",
+            "start": 0,
+            "end": 1.5,
+            "state_before": "No field before event. First lobe appears outside lower-left receiver; later lobe appears outside upper-right receiver, not a head marker.",
+            "state_during": "Finite source forms, travels inward, is progressively consumed; no periodic loop in the event itself.",
+            "state_after": "No rebound or spring; after consumption the external carrier stays absent."
+          },
+          {
+            "id": "PH3",
+            "start": 0,
+            "end": 1.5,
+            "state_before": "Zero transfer before packet reaches boundary.",
+            "state_during": "Flux rises and falls once for each internal lobe; interface switches off after supply ends.",
+            "state_after": "Return to non-emitting boundary when flux is zero; no ringing halo or reaction debris."
+          },
+          {
+            "id": "PH4",
+            "start": 0,
+            "end": 1.5,
+            "state_before": "Zero displayed fill before crossing; no preset ellipse or reservoir asset.",
+            "state_during": "Monotonic acquisition to a held state; optical intensity then decays independently.",
+            "state_after": "The display returns to baseline, but the underlying mana remains gained; no reverse drain animation."
+          }
+        ],
+        "OBS": [
+          {
+            "id": "OBS1",
+            "start": 0,
+            "end": 1.5,
+            "state_before": "No E response.",
+            "state_during": "Triangle mesh becomes premultiplied colored surface plus separate additive radiance, with transverse fwidth antialiasing.",
+            "state_after": "No visual/audio E; underlying game mana stays acquired."
+          },
+          {
+            "id": "OBS2",
+            "start": 0,
+            "end": 1.5,
+            "state_before": "No E response.",
+            "state_during": "A small source-bound optical spread supports already present luminous crests; it never creates the incoming path or fill region.",
+            "state_after": "No visual/audio E; underlying game mana stays acquired."
+          },
+          {
+            "id": "OBS3",
+            "start": 0,
+            "end": 1.5,
+            "state_before": "No E response.",
+            "state_during": "Bright HDR sources fit display range without flattening all field intensity. sRGB encoding occurs once into an unorm canvas.",
+            "state_after": "No visual/audio E; underlying game mana stays acquired."
+          },
+          {
+            "id": "OBS4",
+            "start": 0,
+            "end": 1.5,
+            "state_before": "No E response.",
+            "state_during": "Inharmonic onset settles into a narrower harmonic body as the same received fraction grows; low terminal envelope reaches zero.",
+            "state_after": "No visual/audio E; underlying game mana stays acquired."
+          }
+        ],
+        "camera": [
+          {
+            "start": 0,
+            "end": 1.5,
+            "transform": "fixed preview orthographic transform; host camera preserved in integration",
+            "state_before": "fixed",
+            "state_during": "fixed",
+            "state_after": "fixed"
+          }
+        ],
+        "audio": [
+          {
+            "id": "one-cause-one-voice",
+            "start": 0,
+            "end": 1.5,
+            "role": "non-diegetic game feedback mapped to the same actor phase",
+            "state_before": "silence",
+            "state_during": "inharmonic onset, conversion lift, harmonic/stereo convergence, finite release",
+            "state_after": "silence; no retrigger for expired duplicate"
+          }
+        ],
+        "dialogue": []
+      }
+    },
+    "ContinuityLedger": {
+      "characters": "one existing beneficiary per slot, no additions",
+      "costumes": "host-owned; no preset or replacement",
+      "light_sources": "PH2/PH3 state-bound emission, no new light object",
+      "objects": "no independent object added",
+      "contacts": "inlets recomputed from same host torso polygon each frame"
+    },
+    "ResponseAndSamplingChecks": {
+      "PH_response_timescale_refs": [
+        "PH1.StateDynamics.response_timescale",
+        "PH2.StateDynamics.response_timescale",
+        "PH3.StateDynamics.response_timescale",
+        "PH4.StateDynamics.response_timescale"
+      ],
+      "temporal_sampling_ref": "ObservationIntegrationTemplate.SamplingContract.temporal_sampling",
+      "OBS_sampling_consequence_refs": [
+        "OBS1.sampling_consequence",
+        "OBS2.sampling_consequence",
+        "OBS3.sampling_consequence",
+        "OBS4.sampling_consequence"
+      ],
+      "frame_cadence_and_exposure": "RAF cadence not guaranteed; no exposure blur. One actor-position sampler drives all outputs.",
+      "observation_windows_fit_timeline": true,
+      "longer_physical_response_state_at_video_end": "Actual gained mana remains in host store; E presentation only is removed."
+    },
+    "Acceptance": {
+      "single_duration_source_of_truth": true,
+      "all_tracks_within_duration": true,
+      "response_timescale_and_OBS_sampling_checked_against_timeline": true,
+      "character_costume_light_object_contact_continuity_checked": true
+    }
+  },
+  "GlobalAcceptanceTemplate": {
+    "Requirements": {
+      "PhenomenonRegistry_required": true,
+      "full_PH_structure_required": true,
+      "all_8_domains_required": true,
+      "ObservationRegistry_required_when_OBS_exist": true,
+      "WindCapsule_required": true,
+      "Gravity_required": true,
+      "world_camera_screen_transform_required": true
+    },
+    "ValidationResults": {
+      "StructuralInspection": {
+        "status": "pass",
+        "checks": {
+          "required_blocks": "Local field inspection: qa/design-checks.json",
+          "rule_contracts": "Source rules referenced; no claim of official validator coverage.",
+          "PH_OBS_separation": "Registry endpoints and dependency DAG checked.",
+          "OctaDomain": "8 fields, reasons, roles and primary item count checked.",
+          "scientific_fields": "Full model/scale/dynamics/cue/causal fields present; not a physics proof.",
+          "coordinate_gravity_wind": "Coordinate chain, calm air and ordinary host gravity conditions retained.",
+          "template_consolidation": "Single keyed instance for each selected module."
+        }
+      },
+      "SemanticReconciliation": {
+        "status": "warning",
+        "checks": {
+          "DeclaredIntent_preserved": "Event/ownership/time/positive gain/expiry contract retained, no independent objects selected. Numeric invariants covered by tests.",
+          "trigger_resolution": "Only listed six extension modules selected; source-gradient and pose resolutions are explicit.",
+          "exception_resolution": "No same-priority exception invoked. Physical mechanisms not applicable to a declared field are explicitly retained as not_applicable.",
+          "source_binding": "Local bloom reads registered emitted-radiance target, never a fake light source.",
+          "scope_and_dependencies": "OBS DAG and owner-specific back/front order authored; actual host layering still needs integration review.",
+          "scientific_consistency": "Declared fantasy quantity bookkeeping and prescribed body geometry, not real mana physics. Qualitative model with uncertainties; field count cannot prove validity."
+        }
+      },
+      "RenderObservation": {
+        "status": "not_run",
+        "evidence_source": "none",
+        "checks": {
+          "visual_causality": "not_run",
+          "contour_preservation": "not_run",
+          "clipping_crushing": "not_run",
+          "chroma_detail": "not_run",
+          "contact_projection": "not_run",
+          "temporal_continuity": "not_run",
+          "cue_discrimination_and_sampling": "not_run"
+        }
+      }
+    },
+    "OutcomeEvaluation": {
+      "intent_alignment": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "rationale": "No actual GPU/H64 human readability observation in this environment."
+      },
+      "artistic_effect": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "evaluator_basis": "not_run",
+        "strengths": "not_run",
+        "limitations": "CPU diagnostics are not GPU quality acceptance."
+      }
+    },
+    "ComparativeEvaluation": {
+      "status": "not_run",
+      "question": "Does r0.4 remove inserted-oval misreading on real H64 playback?",
+      "changed_factor": "New external supply/boundary/area-state morphology, timing and optical implementation",
+      "controlled_conditions": "Contract retained. No old visual/code was opened or rendered for controlled comparison. Hardware and observer conditions are not controlled here.",
+      "scene_set": "Planned single/near3, H64/2x/3x, light/dark, rate1/2, duration1500/900, occlusion",
+      "repetitions_and_order": "No blinded/randomized GPU comparison performed.",
+      "criteria": "Source→boundary→stored-state readability, low tail, event/audio fidelity, no original-WGSL adaptation required.",
+      "evidence": "none",
+      "result_and_limitations": "User supplied a limited r0.3 observation; it is not a complete controlled comparison or r0.4 acceptance."
+    },
+    "FinalStatus": {
+      "specification_status": "Warning",
+      "render_status": "NotRun",
+      "failure_reasons": [],
+      "production_connection_approved": false
+    }
+  },
+  "ImplementationBinding": {
+    "release": "r0.4",
+    "files": {
+      "authority": "src/events.js",
+      "time_geometry": "src/sampler.js",
+      "gpu": "src/gpu.js",
+      "original_WGSL": [
+        "shaders/mana.wgsl",
+        "shaders/post.wgsl"
+      ],
+      "preview_only": [
+        "preview/fixture.js",
+        "preview/fixture.wgsl",
+        "preview/controller.js",
+        "preview/main.js"
+      ],
+      "SFX": [
+        "src/sfx.js",
+        "src/voice-engine.js",
+        "src/audio-worklet.js",
+        "src/audio.js"
+      ]
+    },
+    "numeric_master": "src/contract.js; VideoGenerationPolicy.Duration is the design serialization of the same contract. Minimum lifetime is 900 actor-ms.",
+    "ABI": "64-byte vertex stride with five attributes; View uniform32, Post uniform32, preview fixture uniform48.",
+    "provenance": "Fresh r0.4 directory and implementation, no old ZIP/source/image opened as creation input. Allowed inputs: supplied contract, B documents and the user-described limited r0.3 failure observation.",
+    "runtime_verification_policy": "Static lint is not a WGSL compiler. Runtime loads unmodified original WGSL, awaits compilation info and async pipelines; failures stop without silently rewriting shaders."
+  }
+}

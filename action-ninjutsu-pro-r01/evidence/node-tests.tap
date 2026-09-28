@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: 正規ID・playerIdの型・座標・時刻と未知の上流fieldを保持
+ok 1 - 正規ID・playerIdの型・座標・時刻と未知の上流fieldを保持
+  ---
+  duration_ms: 1.640867
+  type: 'test'
+  ...
+# Subtest: 不正イベントを勝手に修復・正規化しない
+ok 2 - 不正イベントを勝手に修復・正規化しない
+  ---
+  duration_ms: 0.281762
+  type: 'test'
+  ...
+# Subtest: 1200 actor-msの半開区間。未来も終了後も描かない
+ok 3 - 1200 actor-msの半開区間。未来も終了後も描かない
+  ---
+  duration_ms: 0.46123
+  type: 'test'
+  ...
+# Subtest: targetIdが空でも有効IDでも全寿命の画素入力が同一
+ok 4 - targetIdが空でも有効IDでも全寿命の画素入力が同一
+  ---
+  duration_ms: 30.506461
+  type: 'test'
+  ...
+# Subtest: 回復量・MP残量・4秒期限がEの形・寿命に介入しない
+ok 5 - 回復量・MP残量・4秒期限がEの形・寿命に介入しない
+  ---
+  duration_ms: 0.302323
+  type: 'test'
+  ...
+# Subtest: 同原因再送は全寿命後でも一件。同IDの内容差は拒否
+ok 6 - 同原因再送は全寿命後でも一件。同IDの内容差は拒否
+  ---
+  duration_ms: 0.810146
+  type: 'test'
+  ...
+# Subtest: 900 ms遅着は900 ms相へ。寿命を受信時から再起動しない
+ok 7 - 900 ms遅着は900 ms相へ。寿命を受信時から再起動しない
+  ---
+  duration_ms: 0.239071
+  type: 'test'
+  ...
+# Subtest: 未来イベントの同時枠を予約。境界時刻で終了と開始が重複しない
+ok 8 - 未来イベントの同時枠を予約。境界時刻で終了と開始が重複しない
+  ---
+  duration_ms: 0.266481
+  type: 'test'
+  ...
+# Subtest: actor速度変更・停止で時刻連続。二つのplayer時計を分離
+ok 9 - actor速度変更・停止で時刻連続。二つのplayer時計を分離
+  ---
+  duration_ms: 0.416055
+  type: 'test'
+  ...
+# Subtest: playerIdの数値1と文字列1を混同しない
+ok 10 - playerIdの数値1と文字列1を混同しない
+  ---
+  duration_ms: 0.316218
+  type: 'test'
+  ...
+# Subtest: 遅いGPU提出では待機後に最新時刻を読む
+ok 11 - 遅いGPU提出では待機後に最新時刻を読む
+  ---
+  duration_ms: 0.709655
+  type: 'test'
+  ...
+# Subtest: GPU待機中に寿命が尽きたEを0 msで復活させない
+ok 12 - GPU待機中に寿命が尽きたEを0 msで復活させない
+  ---
+  duration_ms: 0.14421
+  type: 'test'
+  ...
+# Subtest: EPlayerは各playerの時計をサンプルし、原因を音声へ一回だけ送る
+ok 13 - EPlayerは各playerの時計をサンプルし、原因を音声へ一回だけ送る
+  ---
+  duration_ms: 0.584313
+  type: 'test'
+  ...
+# Subtest: 二つの主時間構造は同一曲線の色替えではない
+ok 14 - 二つの主時間構造は同一曲線の色替えではない
+  ---
+  duration_ms: 1.032189
+  type: 'test'
+  ...
+# Subtest: 全寿命のsource位置・field値は有限でradius内
+ok 15 - 全寿命のsource位置・field値は有限でradius内
+  ---
+  duration_ms: 13.01083
+  type: 'test'
+  ...
+# Subtest: reduced motionは寿命・IDを保ち、指定した変位だけを変更
+ok 16 - reduced motionは寿命・IDを保ち、指定した変位だけを変更
+  ---
+  duration_ms: 0.146323
+  type: 'test'
+  ...
+# Subtest: 音声カーソルはactor基準でseek・停止・再開、1200で終端
+ok 17 - 音声カーソルはactor基準でseek・停止・再開、1200で終端
+  ---
+  duration_ms: 0.158769
+  type: 'test'
+  ...
+# Subtest: 一原因一声。終了済み原因も再発音しない
+ok 18 - 一原因一声。終了済み原因も再発音しない
+  ---
+  duration_ms: 21.548987
+  type: 'test'
+  ...
+# Subtest: PCMは両E固有・決定的・stereo 48k/1.2秒・無クリップ
+ok 19 - PCMは両E固有・決定的・stereo 48k/1.2秒・無クリップ
+  ---
+  duration_ms: 82.470657
+  type: 'test'
+  ...
+# Subtest: WGSLの符号付き二乗をpowへ渡さず、明示的なx*xで評価
+ok 20 - WGSLの符号付き二乗をpowへ渡さず、明示的なx*xで評価
+  ---
+  duration_ms: 15.266174
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 235.669802

@@ -1,0 +1,61 @@
+{
+  "package_version": "0.1.0",
+  "quality_state": "prototype_cpu_checked_actual_gpu_and_listening_unreviewed",
+  "main_game_integration": "not_performed",
+  "source_revision": "provenance/source-revision.json",
+  "executed": {
+    "Node_contracts": {
+      "status": "pass",
+      "tests": 20,
+      "passed": 20,
+      "failed": 0,
+      "source": "evidence/node-tests.tap"
+    },
+    "local_B_structure": {
+      "status": "pass",
+      "checks": 127,
+      "canonical_validator": "not_run",
+      "source": "evidence/local-structure.json"
+    },
+    "CPU_reference_pixels": {
+      "status": "pass",
+      "sampled_frames": 104,
+      "records_including_ablation": 106,
+      "spacing_actor_ms": 100,
+      "conditions": "2 E × actorH64/E全包絡H64 × 明暗 × 0..1200の13時点。キー時点の資料と3原因重複も同梱。",
+      "source": "evidence/cpu-pixel-tests-all-all.json",
+      "not_equivalent_to": "WGSLコンパイル、実GPU画素、60Hz全フレーム品質、実GPU時刻"
+    },
+    "PCM_analysis": {
+      "status": "pass",
+      "files": 2,
+      "source": "evidence/sfx-analysis.json"
+    }
+  },
+  "not_run": {
+    "canonical_B_validator": "未取得・未実行。ローカル構造監査とは別。",
+    "WGSL_compile": "実GPUへ到達していないため未実施。",
+    "actual_GPU_pixels": "Chromiumのページ読込がERR_BLOCKED_BY_ADMINISTRATOR。",
+    "GPU_presentation_and_AV_latency": "既提出frameの実提示時刻、音声機器latencyは未測定。",
+    "human_listening": "ヘッドホン／スピーカーによる聴き分け・クリック・同時発生聴感は未実施。",
+    "main_game_adapter": "本編ソースfield・receiver mask・ゲーム権威イベントの呼出し接続は未実施。"
+  },
+  "attempt_record": "evidence/gpu-attempt.json",
+  "CPU_reference_visual_review": {
+    "status": "reviewed_CPU_reference_only",
+    "evidence": [
+      "evidence/cpu-reference/action-rational-free-actorH64-light-lifetime.png",
+      "evidence/cpu-reference/action-ninjutsu-focus-envelopeH64-light-lifetime.png",
+      "evidence/cpu-reference/action-rational-free-actorH64-dark-lifetime.png",
+      "evidence/cpu-reference/action-ninjutsu-focus-actorH64-dark-lifetime.png"
+    ],
+    "observations": "角形が開いて止まる状態と、曲面が内向きに張る状態をCPU参照で区別できる。明背景でも彩色主形は残る。",
+    "limits": "縮小条件では局所芯・表面の情報が減る。抽象形だけから支払い免除／準備開始の意味が一意に読めるとは断定しない。実actor・実GPUでの誤認検査が必要。"
+  },
+  "fixes_during_build": [
+    "音声終端の浮動小数丸め比較を1e-9 actor-msで保護。",
+    "WGSLで負値を取り得る二乗をpowではなくsq(x)=x*xへ置換。字句回帰検査を追加。",
+    "reduced motionを自動適用せず、明示UI操作だけの設定へ限定。"
+  ],
+  "release_decision": "試作として保存・ギャラリー掲載。完成品質・実GPU合格・実聴合格は未承認。"
+}

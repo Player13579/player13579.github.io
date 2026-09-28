@@ -1,0 +1,24 @@
+{
+  "source_commit": "8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1",
+  "canonical_B_repository": "player13579/B",
+  "base_blob": "4e10a53310be5b9d0aa3a6c881cf4f39d6590bd4",
+  "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834",
+  "base_version": "Template Consolidated Edition / 表現意図・科学的適用・検証統合改訂 2026-09-11",
+  "extension_version": "多層VFX・魔法構成章改訂 2026-09-23／Eコード分岐追記 2026-09-24",
+  "verification": "GitHub connectorでcommit、tree、両blobとヘッダーを取得。制作要件の本文は会話に提示された全文を正本に使用。リポジトリ本文全体とのbyte単位照合と正本検証器の実行は未実施。",
+  "game_repository": "player13579/player13579.github.io",
+  "game_source_commit_metadata_only": "6b51af2a0cadc19a94904003cdb8f40d58110494",
+  "game_app_blob_metadata_only": "9cad552a65cf43cad1b0723ac813d4d744343878",
+  "game_contract_status": "提示されたユーザー契約を使用。本体app.jsはconnectorのサイズ制限で取得失敗。正規イベントの実際のfield名・本編呼出し箇所は未照合。",
+  "creative_inputs": ["今回のユーザー指定の二つの現象", "会話で提示されたB Foundationの設計規則"],
+  "excluded_inputs": ["旧Sol案", "旧Astra案", "旧Codex案", "既存Eの造形・shader・SFX・画像素材"],
+  "metadata_exposure": "リポジトリtreeでファイル名が返ったが、既存Eの内容・画像・音は取得せず創作入力に使用していない。",
+  "network_writes": "none",
+  "main_game_integration": "not_performed",
+  "references": [
+    "https://github.com/player13579/B/blob/8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1/基底.md",
+    "https://github.com/player13579/B/blob/8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1/拡張.md",
+    "https://www.w3.org/TR/2026/CRD-WGSL-20260921/",
+    "https://webaudio.github.io/web-audio-api/"
+  ]
+}

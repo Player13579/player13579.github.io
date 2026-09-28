@@ -1,0 +1,280 @@
+{
+  "release": "r0.4",
+  "scope": "Local source syntax, lexical WGSL, entry point and ABI sanity lint only",
+  "WGSL_compiler": "not_run",
+  "GPU_execution": "not_run",
+  "passed": 50,
+  "failed": 0,
+  "shaders": [
+    {
+      "file": "preview/fixture.wgsl",
+      "bytes": 1894,
+      "sha256": "c1dbaa71243766122f9f5a34f7a8226039ff03ac3423bc6f909e0db326186991",
+      "compiler": "not_run"
+    },
+    {
+      "file": "shaders/mana.wgsl",
+      "bytes": 2961,
+      "sha256": "3a5f6dc55d9daab839793bb74cd26ec0f15198961b4266a2c52c158dadbccb4e",
+      "compiler": "not_run"
+    },
+    {
+      "file": "shaders/post.wgsl",
+      "bytes": 2329,
+      "sha256": "ff129947e92956dd47486f4b9f21cb9b79fc24f4d9681a7fe7d986176a7c5e7c",
+      "compiler": "not_run"
+    }
+  ],
+  "checks": [
+    {
+      "id": "examples/host-integration.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "preview/controller.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "preview/fixture.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "preview/fixture.wgsl:no-ternary",
+      "status": "pass",
+      "detail": "Original source contains no question-mark conditional. No source rewrite performed."
+    },
+    {
+      "id": "preview/fixture.wgsl:no-GLSL",
+      "status": "pass",
+      "detail": "WGSL attributes/types used; no GLSL declaration syntax."
+    },
+    {
+      "id": "preview/fixture.wgsl:reserved-words",
+      "status": "pass",
+      "detail": "W3C reserved-word list checked lexically"
+    },
+    {
+      "id": "preview/fixture.wgsl:delimiters",
+      "status": "pass",
+      "detail": "Balanced (), [] and {}. Type checking/uniformity/driver compilation are NOT performed by this lint."
+    },
+    {
+      "id": "preview/fixture.wgsl:entrypoints",
+      "status": "pass",
+      "detail": "Expected entry points exist"
+    },
+    {
+      "id": "preview/main.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "shaders/mana.wgsl:no-ternary",
+      "status": "pass",
+      "detail": "Original source contains no question-mark conditional. No source rewrite performed."
+    },
+    {
+      "id": "shaders/mana.wgsl:no-GLSL",
+      "status": "pass",
+      "detail": "WGSL attributes/types used; no GLSL declaration syntax."
+    },
+    {
+      "id": "shaders/mana.wgsl:reserved-words",
+      "status": "pass",
+      "detail": "W3C reserved-word list checked lexically"
+    },
+    {
+      "id": "shaders/mana.wgsl:delimiters",
+      "status": "pass",
+      "detail": "Balanced (), [] and {}. Type checking/uniformity/driver compilation are NOT performed by this lint."
+    },
+    {
+      "id": "shaders/mana.wgsl:entrypoints",
+      "status": "pass",
+      "detail": "Expected entry points exist"
+    },
+    {
+      "id": "shaders/post.wgsl:no-ternary",
+      "status": "pass",
+      "detail": "Original source contains no question-mark conditional. No source rewrite performed."
+    },
+    {
+      "id": "shaders/post.wgsl:no-GLSL",
+      "status": "pass",
+      "detail": "WGSL attributes/types used; no GLSL declaration syntax."
+    },
+    {
+      "id": "shaders/post.wgsl:reserved-words",
+      "status": "pass",
+      "detail": "W3C reserved-word list checked lexically"
+    },
+    {
+      "id": "shaders/post.wgsl:delimiters",
+      "status": "pass",
+      "detail": "Balanced (), [] and {}. Type checking/uniformity/driver compilation are NOT performed by this lint."
+    },
+    {
+      "id": "shaders/post.wgsl:entrypoints",
+      "status": "pass",
+      "detail": "Expected entry points exist"
+    },
+    {
+      "id": "src/audio-worklet.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "src/audio.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "src/contract.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "src/events.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "src/gpu.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "src/index.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "src/math.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "src/sampler.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "src/sfx.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "src/voice-engine.js:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tests/audio.test.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tests/events.test.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tests/gpu-descriptors.test.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tests/preview.test.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tests/sampler.test.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tools/check-design.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tools/check-regeneration.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tools/export-audio.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tools/export-samples.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tools/hash.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tools/http-check.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tools/server.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "tools/static-check.mjs:JS-parse",
+      "status": "pass",
+      "detail": "Node parse only"
+    },
+    {
+      "id": "mesh-MRT",
+      "status": "pass",
+      "detail": "Separate surface/radiance output"
+    },
+    {
+      "id": "src/sampler.js:isolation",
+      "status": "pass",
+      "detail": "No background/random/wall-clock sampling or preview import in public entry."
+    },
+    {
+      "id": "src/index.js:isolation",
+      "status": "pass",
+      "detail": "No background/random/wall-clock sampling or preview import in public entry."
+    },
+    {
+      "id": "src/events.js:no-image-assets",
+      "status": "pass",
+      "detail": "No external image texture path"
+    },
+    {
+      "id": "src/sampler.js:no-image-assets",
+      "status": "pass",
+      "detail": "No external image texture path"
+    },
+    {
+      "id": "src/gpu.js:no-image-assets",
+      "status": "pass",
+      "detail": "No external image texture path"
+    },
+    {
+      "id": "src/sfx.js:no-image-assets",
+      "status": "pass",
+      "detail": "No external image texture path"
+    },
+    {
+      "id": "src/voice-engine.js:no-image-assets",
+      "status": "pass",
+      "detail": "No external image texture path"
+    }
+  ]
+}
