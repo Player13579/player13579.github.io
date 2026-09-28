@@ -32,6 +32,7 @@
       version('sunbeam-astra-clean-v1', 'Astra v1', 'sunbeam-astra-clean-v1-preview.html', 'webgpu-sunbeam-astra-clean-v1.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64')
     ]) }),
     Object.freeze({ id: 'luck-astra', title: '幸運', versions: Object.freeze([
+      version('luck-astra-zero-r06', 'Astra ゼロ設計 r06', 'public/astra-luck-zero-v1/versions/r06/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r06/luck-zero-r06.js', '品質不合格・性能不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: Star-OFF H64は肩外の淡い橙2斑点に留まり、受益者投影への集中は背面alphaに隠れて弱い霞と小さな照明になる。2像から良好な受益状態への変化が視認できず、Star-ONでも改善しない。性能不合格: RAF間隔P95 53.9ms、最大161.7ms（原因未特定）。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
       version('luck-astra-zero-r05', 'Astra ゼロ設計 r05', 'public/astra-luck-zero-v1/versions/r05/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r05/luck-zero-r05.js', '品質不合格・性能不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: sparkle OFFでも浅い黄色の不規則な床リングが全体を占め、.14–.82で形成と受益者応答が分離せず、袖/脚への反射も弱い。光条はこの主因を補えない。性能も不合格: RAF間隔P95 53.2ms、最大162.1ms（原因未特定）。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
       version('luck-astra-zero-r04', 'Astra ゼロ設計 r04', 'public/astra-luck-zero-v1/versions/r04/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r04/luck-zero-r04.js', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: 白い矢印→金のX/翼・受益分離・quad境界切れ。背景屈折は未実装。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
       version('luck-astra-zero-r03', 'Astra ゼロ設計 r03', 'public/astra-luck-zero-v1/versions/r03/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r03/luck-zero-r03.js', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: 平面クローバー印・縦消去・後半の緑色替え。角度統一等の部分改善は不合格を覆さない。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
@@ -175,7 +176,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v80');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v81');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

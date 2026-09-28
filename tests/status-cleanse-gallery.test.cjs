@@ -97,16 +97,24 @@ assert.match(luckR02Implementation, /direction=vec2f\(0\.,6\.\)-center/);
 assert.match(luckR02Implementation, /if\(owner==3u\).*direction=limb\[id-6u\]/,
   'Luck r02 uses distinct orientation rules by sparkle owner and limb');
 const luckZeroSourceRoot = path.join(pagesRoot, 'astra-luck-zero-v1');
-const luckZeroPublication = JSON.parse(fs.readFileSync(path.join(luckZeroSourceRoot, 'PUBLICATION-r01-r05-v2.json'), 'utf8'));
+const luckZeroPublication = JSON.parse(fs.readFileSync(path.join(luckZeroSourceRoot, 'PUBLICATION-r01-r06.json'), 'utf8'));
 const luckZeroR05Quality = JSON.parse(fs.readFileSync(path.join(luckZeroSourceRoot, 'versions/r05/QUALITY-r05.json'), 'utf8'));
-assert.equal(luckZeroPublication.runtimeExactAllowlist.length, 20, 'Luck zero publication contains exactly four files for each frozen revision');
-assert.deepEqual(luckZeroPublication.entries.map(item => item.revision), ['r01', 'r02', 'r03', 'r04', 'r05']);
+const luckZeroR06Quality = JSON.parse(fs.readFileSync(path.join(luckZeroSourceRoot, 'versions/r06/QUALITY-r06.json'), 'utf8'));
+assert.equal(luckZeroPublication.runtimeExactAllowlist.length, 24, 'Luck zero publication contains exactly four files for each frozen revision');
+assert.deepEqual(luckZeroPublication.entries.map(item => item.revision), ['r01', 'r02', 'r03', 'r04', 'r05', 'r06']);
 assert(luckZeroPublication.entries.every(item => item.qualityStatus === 'rejected' && item.adopted === false && item.gameIntegrated === false));
 const luckZeroR05Record = luckZeroPublication.entries.find(item => item.revision === 'r05');
 assert.equal(luckZeroR05Record.technicalStatus, 'real_webgpu_standalone_replay_pass');
 assert.equal(luckZeroR05Record.performanceStatus, 'rejected_continuity');
 assert.equal(luckZeroR05Record.auditoryReview, 'not_run');
 assert.equal(luckZeroR05Quality.quality, 'rejected');
+const luckZeroR06Record = luckZeroPublication.entries.find(item => item.revision === 'r06');
+assert.equal(luckZeroR06Record.technicalStatus, 'real_webgpu_standalone_replay_pass');
+assert.equal(luckZeroR06Record.performanceStatus, 'rejected_continuity');
+assert.equal(luckZeroR06Record.auditoryReview, 'not_run');
+assert.equal(luckZeroR06Quality.quality, 'rejected');
+assert.equal(luckZeroR06Quality.adopted, false);
+assert.equal(luckZeroR06Quality.gameIntegrated, false);
 for (const file of luckZeroPublication.runtimeExactAllowlist) {
   for (const base of [luckZeroSourceRoot, path.join(pagesPublicRoot, 'astra-luck-zero-v1'), path.join(root, 'astra-luck-zero-v1')]) {
     const target = path.join(base, file.relativePath);
@@ -118,7 +126,7 @@ for (const file of luckZeroPublication.runtimeExactAllowlist) {
 }
 assert(!fs.existsSync(path.join(pagesPublicRoot, 'astra-luck-zero-v1', 'index.html')),
   'Luck zero publication excludes the mutable root alias');
-for (const version of ['r01', 'r02', 'r03', 'r04', 'r05']) {
+for (const version of ['r01', 'r02', 'r03', 'r04', 'r05', 'r06']) {
   const implementation = fs.readFileSync(path.join(luckZeroSourceRoot, 'versions', version, `luck-zero-${version}.js`), 'utf8');
   assert.match(implementation, /function loop\(t\)/, `${version} includes automatic animation loop`);
   assert.match(implementation, /cycle=Math\.floor\(/, `${version} repeats its cycle automatically`);
@@ -195,14 +203,14 @@ const verifiedReplay = new URL(statusIframe.src);
 assert.equal(verifiedReplay.searchParams.get('verify'), '1', 'gallery verification mode propagates to replay');
 assert.equal(verifiedReplay.searchParams.get('embed'), '1');
 assert.equal(verifiedReplay.searchParams.get('h'), '64');
-assert.equal(verifiedReplay.searchParams.get('galleryRelease'), 'astra-history-20260928-v80');
+assert.equal(verifiedReplay.searchParams.get('galleryRelease'), 'astra-history-20260928-v81');
 const luckCatalogButton = verifyElements.get('catalog').children.find(button => button.dataset.id === 'luck-astra');
 luckCatalogButton.listeners.click();
 const verifiedLuckZeroIframe = verifyElements.get('stage').querySelector('iframe');
 assert(verifiedLuckZeroIframe, 'Luck zero gallery selection creates a replay iframe');
 assert.equal(verifiedLuckZeroIframe.allow, 'autoplay', 'Luck zero iframe permits automatic replay audio under browser policy');
 const verifiedLuckZeroReplay = new URL(verifiedLuckZeroIframe.src);
-assert(verifiedLuckZeroReplay.pathname.endsWith('/public/astra-luck-zero-v1/versions/r05/index.html'));
+assert(verifiedLuckZeroReplay.pathname.endsWith('/public/astra-luck-zero-v1/versions/r06/index.html'));
 assert.equal(verifiedLuckZeroReplay.searchParams.get('verify'), '1', 'gallery verification mode propagates to Luck zero');
 assert.equal(verifiedLuckZeroReplay.searchParams.get('embed'), '1');
 assert.equal(verifiedLuckZeroReplay.searchParams.get('height'), '64');
@@ -239,8 +247,8 @@ const sunbeamLatest = window.__webgpuEGallery.entries.find(item => item.id === '
 assert.match(sunbeamLatest.status, /品質保留.*再改修中.*ユーザー採用保留.*本編未採用/,
   'Sunbeam v3 adoption remains on hold during the requested quality revision');
 assert.match(sunbeamLatest.detail, /以前の視覚採用判断は保留.*本編接続は承認されていません/);
-assert.deepEqual(Array.from(luckGroup.versions.slice(0, 8), item => item.id), [
-  'luck-astra-zero-r05', 'luck-astra-zero-r04', 'luck-astra-zero-r03', 'luck-astra-zero-r02', 'luck-astra-zero-r01',
+assert.deepEqual(Array.from(luckGroup.versions.slice(0, 9), item => item.id), [
+  'luck-astra-zero-r06', 'luck-astra-zero-r05', 'luck-astra-zero-r04', 'luck-astra-zero-r03', 'luck-astra-zero-r02', 'luck-astra-zero-r01',
   'luck-astra-v4-sparkle-r02', 'luck-astra-v4-sparkle-r01', 'luck-astra-clean-v4'
 ], 'Luck zero revisions are newest first while preserving prior history and adopted original');
 for (const record of luckZeroPublication.entries.slice().reverse()) {
@@ -252,6 +260,12 @@ for (const record of luckZeroPublication.entries.slice().reverse()) {
     assert.match(version.detail, /形成と受益者応答が分離せず.*袖\/脚への反射も弱い.*光条はこの主因を補えない/);
     assert.equal(Number(luckZeroR05Quality.technical.performance.p95Ms.toFixed(1)), 53.2);
     assert.equal(Number(luckZeroR05Quality.technical.performance.maxMs.toFixed(1)), 162.1);
+  } else if (record.revision === 'r06') {
+    assert.match(version.status, /品質不合格・性能不合格・未採用・本編未接続/);
+    assert.match(version.detail, /Star-OFF H64は肩外の淡い橙2斑点.*RAF間隔P95 53\.9ms、最大161\.7ms（原因未特定）/);
+    assert.match(version.detail, /背面alphaに隠れて弱い霞.*2像から良好な受益状態への変化が視認できず/);
+    assert.equal(Number(luckZeroR06Quality.technical.performance.p95Ms.toFixed(1)), 53.9);
+    assert.equal(Number(luckZeroR06Quality.technical.performance.maxMs.toFixed(1)), 161.7);
   } else {
     assert.match(version.status, /品質不合格・未採用・本編未接続/);
     assert(version.detail.includes(record.qualityReason), `${record.revision} displays exact frozen rejection reason`);
@@ -266,11 +280,11 @@ for (const record of luckZeroPublication.entries.slice().reverse()) {
   assert.equal(pageUrl.searchParams.has('verify'), false, `${record.revision} normal replay does not force verification mute`);
   assert.equal(pageUrl.searchParams.has('autoplay'), false, `${record.revision} uses its automatic replay loop`);
 }
-assert.deepEqual(Array.from(luckGroup.versions.slice(5, 8), item => item.id), [
+assert.deepEqual(Array.from(luckGroup.versions.slice(6, 9), item => item.id), [
   'luck-astra-v4-sparkle-r02', 'luck-astra-v4-sparkle-r01', 'luck-astra-clean-v4'
 ], 'Luck sparkle revisions are newest first and retain the adopted original');
 const luckStatus = JSON.parse(fs.readFileSync(path.join(luckSourceRoot, 'VERSION-STATUS.json'), 'utf8'));
-for (const [index, revision] of [['r02', 5], ['r01', 6]]) {
+for (const [index, revision] of [['r02', 6], ['r01', 7]]) {
   const metadata = luckStatus[index];
   const version = luckGroup.versions[revision];
   assert.equal(metadata.userAdopted, false);
@@ -293,7 +307,7 @@ assert.match(adoptedLuck.detail, /キラキラ改修中・新版未採用/);
 const adoptedCooldown = window.__webgpuEGallery.entries.find(item => item.id === 'cooldown-astra').versions.find(item => item.id === 'astra-cooldown-benefit-r0.5');
 assert.match(adoptedCooldown.status, /ユーザー採用済み/);
 assert.match(adoptedCooldown.detail, /キラキラ改修中・新版未採用/);
-assert.match(html, /astra-history-20260928-v80/);
+assert.match(html, /astra-history-20260928-v81/);
 
 const entry = window.__webgpuEGallery.entries.find(item => item.id === 'status-cleanse-astra');
 assert(entry, 'status-recovery Astra gallery entry exists');
@@ -573,5 +587,5 @@ assert.equal(cooldownAdopted.gameAdopted, false, 'visual selection does not mark
 assert.match(cooldownGroup.versions.find(item => item.id === cooldownAdopted.id).detail, /視覚版の選択.*本編への接続と発動は検証中/);
 assert.match(cooldownGroup.versions.find(item => item.id === cooldownAdopted.id).detail, /キラキラ改修中・新版未採用/);
 const release = source.match(/galleryRelease', '(astra-history-20260928-v\d+)'/);
-assert(release && release[1] === 'astra-history-20260928-v80' && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
+assert(release && release[1] === 'astra-history-20260928-v81' && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
 console.log(`PASS: ${healGroup.versions.length} Heal, ${luckGroup.versions.length} Luck, ${entry.versions.length} status-recovery, ${cooldownGroup.versions.length} Cooldown, ${manaGroup.versions.length} Mana, ${staminaGroup.versions.slice(0, 8).length} Stamina versions; package SHA manifests verified`);
