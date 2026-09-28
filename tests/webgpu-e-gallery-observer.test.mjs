@@ -20,6 +20,11 @@ test('Pages gallery publishes replayable Astra history newest first with version
     assert.match(status, /品質|採用|未審査|未受入|不合格|未達|却下/, `${id} has an explicit quality state`);
   }
   assert.match(gallerySource, /barrier-pro-r07/);
+  const empIds = [...gallerySource.matchAll(/version\('(emp-astra-v[0-9.]+)'/g)].map(([, id]) => id);
+  assert.deepEqual(empIds, ['emp-astra-v1.8', 'emp-astra-v1.7', 'emp-astra-v1.6', 'emp-astra-v1.5', 'emp-astra-v1.4', 'emp-astra-v1.3', 'emp-astra-v1.2']);
+  assert.match(gallerySource, /品質審査中・本編未採用/);
+  assert.equal((gallerySource.match(/復元再生/g) || []).length, 3, 'v1.2-v1.4 reconstruction is disclosed');
+  assert.match(gallerySource, /emp-astra-zero-v1/, 'older zero version remains listed');
   assert.doesNotMatch(gallerySource, /barrier-pro-r0[1-6]|barrier-pro-r08|barrier-pro-r09/);
   assert.ok(gallerySource.indexOf("version('sunbeam-astra-clean-v3'") < gallerySource.indexOf("version('sunbeam-astra-clean-v2'"), 'latest Sunbeam appears first');
   assert.ok(gallerySource.indexOf("version('luck-astra-clean-v4'") < gallerySource.indexOf("version('luck-astra-clean-v3'"), 'latest Luck appears first');
