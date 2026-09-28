@@ -2419,69 +2419,171 @@ const WEBGPU_MAIN_OWNER = true;
 const WEBGPU_MAIN_VERIFY_ROUTE = IS_VERIFICATION_MODE && URL_PARAMETERS.get("webgpuMain") === "1";
 // WEBGPU_FRAME_COST_PANEL_V1_START
 const WEBGPU_FRAME_PANEL_ENABLED = IS_VERIFICATION_MODE && URL_PARAMETERS.get("webgpuFrameCost") === "1";
-function createWebGPUFramePanelModel(capacity = 900) {
+// Verification-only retention: 30 seconds through 160 RAF callbacks per second.
+const WEBGPU_FRAME_PANEL_CAPACITY = 4800;
+function createWebGPUFramePanelModel(capacity = WEBGPU_FRAME_PANEL_CAPACITY) {
   const samples = [];
   let previousAtMs = null;
+  let frameId = 0;
+  let currentFrame = null;
+  let dropped = 0;
   return Object.freeze({
     sample(atMs, playing, hidden) {
       if (!playing || hidden || !Number.isFinite(atMs)) {
         previousAtMs = null;
+        currentFrame = null;
         return null;
       }
+      const currentFrameId = ++frameId;
       const gapMs = previousAtMs == null ? null : Math.max(0, atMs - previousAtMs);
       previousAtMs = atMs;
-      if (gapMs !== null) {
-        samples.push(Object.freeze({ atMs: Number(atMs.toFixed(2)), gapMs: Number(gapMs.toFixed(2)) }));
-        if (samples.length > capacity) samples.splice(0, samples.length - capacity);
+      currentFrame = Object.freeze({ frameId: currentFrameId,
+        atMs: Number(atMs.toFixed(3)), gapMs: gapMs === null ? null : Number(gapMs.toFixed(3)) });
+      samples.push(currentFrame);
+      if (samples.length > capacity) {
+        dropped += samples.length - capacity;
+        samples.splice(0, samples.length - capacity);
       }
       return gapMs;
     },
+    get frameId() { return frameId || null; },
+    current() { return currentFrame; },
     snapshot(sinceAtMs = -Infinity) { return samples.filter(sample => sample.atMs >= sinceAtMs); },
-    clear() { samples.length = 0; previousAtMs = null; }
+    retention() { return Object.freeze({ count: samples.length, dropped,
+      firstAtMs: samples[0]?.atMs ?? null, lastAtMs: samples[samples.length - 1]?.atMs ?? null }); },
+    clear() { samples.length = 0; previousAtMs = null; currentFrame = null; dropped = 0; }
   });
 }
 const webgpuFramePanelModel = WEBGPU_FRAME_PANEL_ENABLED ? createWebGPUFramePanelModel() : null;
 let webgpuFramePanelLastPaintAt = 0;
 const webgpuFramePanelRuntimeSamples = WEBGPU_FRAME_PANEL_ENABLED ? [] : null;
-let webgpuFramePanelPendingRuntimeSample = null;
-function recordWebGPUFramePanelTiming(name, durationMs, atMs = performance.now()) {
+const webgpuFramePanelCaptureSamples = WEBGPU_FRAME_PANEL_ENABLED ? [] : null;
+const webgpuFramePanelEvents = WEBGPU_FRAME_PANEL_ENABLED ? [] : null;
+const webgpuFramePanelPendingRuntimeSamples = WEBGPU_FRAME_PANEL_ENABLED ? new Map() : null;
+let webgpuFramePanelLastViewportKey = null;
+function recordWebGPUFramePanelEvent(kind, detail = {}) {
+  if (!webgpuFramePanelEvents) return;
+  webgpuFramePanelEvents.push(Object.freeze({ kind, atMs: Number(performance.now().toFixed(3)),
+    frameId: webgpuFramePanelModel?.current()?.frameId ?? null,
+    hidden: Boolean(document.hidden), ...detail }));
+  if (webgpuFramePanelEvents.length > 300) webgpuFramePanelEvents.splice(0, webgpuFramePanelEvents.length - 300);
+}
+function recordWebGPUFramePanelTiming(name, durationMs, atMs = performance.now(), frame = null) {
   if (!webgpuFramePanelRuntimeSamples || !Number.isFinite(durationMs) || durationMs < 0) return;
+  const frameId = frame?.frameId;
+  if (!Number.isSafeInteger(frameId)) return;
   if (document.hidden || state.screen !== "game" || state.data?.phase !== "playing") {
-    webgpuFramePanelPendingRuntimeSample = null;
+    webgpuFramePanelPendingRuntimeSamples.delete(frameId);
     return;
   }
-  if (name === "prepareEnd") webgpuFramePanelPendingRuntimeSample = { prepareMs: durationMs };
-  else if (name === "recordEnd" && webgpuFramePanelPendingRuntimeSample)
-    webgpuFramePanelPendingRuntimeSample.recordMs = durationMs;
-  else if (name === "queueSubmitReceipt" && webgpuFramePanelPendingRuntimeSample) {
-    webgpuFramePanelRuntimeSamples.push(Object.freeze({ ...webgpuFramePanelPendingRuntimeSample,
-      submitMs: durationMs, atMs: Number(atMs.toFixed(2)) }));
-    if (webgpuFramePanelRuntimeSamples.length > 900)
-      webgpuFramePanelRuntimeSamples.splice(0, webgpuFramePanelRuntimeSamples.length - 900);
-    webgpuFramePanelPendingRuntimeSample = null;
+  let pending = webgpuFramePanelPendingRuntimeSamples.get(frameId);
+  if (name === "prepareEnd") {
+    if (webgpuFramePanelPendingRuntimeSamples.size >= 900)
+      webgpuFramePanelPendingRuntimeSamples.delete(webgpuFramePanelPendingRuntimeSamples.keys().next().value);
+    pending = { ...frame, prepareMs: durationMs, prepareAtMs: Number(atMs.toFixed(3)) };
+    webgpuFramePanelPendingRuntimeSamples.set(frameId, pending);
+  } else if (name === "recordEnd" && pending) pending.recordMs = durationMs;
+  else if (name === "queueSubmitReceipt" && pending) {
+    webgpuFramePanelRuntimeSamples.push(Object.freeze({ ...pending,
+      submitMs: durationMs, submitReceiptAtMs: Number(atMs.toFixed(3)),
+      rafToSubmitReceiptMs: Math.max(0, atMs - pending.rafAtMs),
+      submitMetric: "CPU submit phase through queue.submit receipt; not GPU execution time" }));
+    if (webgpuFramePanelRuntimeSamples.length > WEBGPU_FRAME_PANEL_CAPACITY)
+      webgpuFramePanelRuntimeSamples.splice(0, webgpuFramePanelRuntimeSamples.length - WEBGPU_FRAME_PANEL_CAPACITY);
+    webgpuFramePanelPendingRuntimeSamples.delete(frameId);
   }
+}
+function recordWebGPUFramePanelViewport(frame, viewport) {
+  if (!WEBGPU_FRAME_PANEL_ENABLED || !frame || !viewport) return;
+  frame.viewport = Object.freeze({ rect: viewport.rect ? { ...viewport.rect } : null,
+    backing: { width: viewport.pixelWidth, height: viewport.pixelHeight }, effectiveDpr: viewport.dpr });
+  const value = frame.viewport;
+  const key = JSON.stringify([value.rect?.left, value.rect?.top, value.rect?.width,
+    value.rect?.height, value.backing.width, value.backing.height, value.effectiveDpr]);
+  if (key !== webgpuFramePanelLastViewportKey) {
+    webgpuFramePanelLastViewportKey = key;
+    recordWebGPUFramePanelEvent("viewport-observed", { frameId: frame.frameId,
+      rect: value.rect, backing: value.backing, effectiveDpr: value.effectiveDpr });
+  }
+}
+function recordWebGPUFramePanelCapture(frame, durationMs, atMs = performance.now()) {
+  if (!webgpuFramePanelCaptureSamples || !Number.isFinite(durationMs) || durationMs < 0 ||
+      !Number.isFinite(atMs) || !Number.isSafeInteger(frame?.frameId)) return;
+  webgpuFramePanelCaptureSamples.push(Object.freeze({ ...frame,
+    durationMs: Number(durationMs.toFixed(3)), captureAtMs: Number(atMs.toFixed(3)) }));
+  if (webgpuFramePanelCaptureSamples.length > WEBGPU_FRAME_PANEL_CAPACITY)
+    webgpuFramePanelCaptureSamples.splice(0, webgpuFramePanelCaptureSamples.length - WEBGPU_FRAME_PANEL_CAPACITY);
 }
 function webgpuFramePanelPercentile(values, percentile) {
   const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
   if (!sorted.length) return null;
   return Number(sorted[Math.min(sorted.length - 1, Math.ceil(sorted.length * percentile) - 1)].toFixed(2));
 }
-function webgpuFramePanelReport(now = performance.now()) {
-  const samples = webgpuFramePanelModel?.snapshot(now - 15000) || [];
-  const gaps = samples.map(sample => sample.gapMs);
-  const timings = webgpuFramePanelRuntimeSamples?.filter(sample => sample.atMs >= now - 15000) || [];
+function webgpuFramePanelReport(now = performance.now(), windowMs = 15000) {
+  if (windowMs !== 15000 && windowMs !== 30000)
+    throw new RangeError("WebGPU frame report window must be 15000 or 30000 ms");
+  const sinceAtMs = now - windowMs;
+  const samples = webgpuFramePanelModel?.snapshot(sinceAtMs) || [];
+  const gaps = samples.map(sample => sample.gapMs).filter(Number.isFinite);
+  const timings = webgpuFramePanelRuntimeSamples?.filter(sample => sample.submitReceiptAtMs >= sinceAtMs) || [];
+  const captures = webgpuFramePanelCaptureSamples?.filter(sample => sample.captureAtMs >= sinceAtMs) || [];
+  const allEvents = webgpuFramePanelEvents || [];
+  const recentEvents = allEvents.filter(event => event.atMs >= sinceAtMs);
+  const latestViewportEvent = [...allEvents].reverse().find(event => event.kind === "viewport-observed");
+  if (latestViewportEvent && !recentEvents.includes(latestViewportEvent)) recentEvents.push(latestViewportEvent);
+  recentEvents.sort((a, b) => a.atMs - b.atMs);
   const runtime = window.__DVA_WEBGPU_FRAME_COST__?.samples?.() || [];
   const recentRuntime = runtime.filter(sample => sample.phase === "playing" &&
-    Number.isFinite(sample.atMs) && sample.atMs >= now - 15000);
+    Number.isFinite(sample.atMs) && sample.atMs >= sinceAtMs);
   const p95 = key => webgpuFramePanelPercentile(timings.map(sample => sample[key]), .95);
   const lastRuntime = recentRuntime[recentRuntime.length - 1] || {};
+  const gpuTiming = window.__DVA_WEBGPU_FRAME_COST__?.gpuTiming?.() || { status: "unavailable", samples: [] };
+  const recentGpu = gpuTiming.samples.filter(sample => Number.isFinite(sample.atMs) && sample.atMs >= sinceAtMs);
+  const range = (rows, key, retained = rows, capacity = null) => ({
+    count: rows.length, retainedCount: retained.length,
+    firstAtMs: rows.length ? rows[0][key] : null,
+    lastAtMs: rows.length ? rows[rows.length - 1][key] : null,
+    retainedFirstAtMs: retained.length ? retained[0][key] : null,
+    capacity,
+    truncatedBeforeWindowStart: capacity !== null && retained.length >= capacity &&
+      retained[0][key] > sinceAtMs
+  });
+  const rafRetention = webgpuFramePanelModel?.retention() ||
+    { count: 0, dropped: 0, firstAtMs: null, lastAtMs: null };
   return {
-    capturedAtMs: Number(now.toFixed(2)), windowMs: 15000,
-    raf: { samples, count: gaps.length, p50Ms: webgpuFramePanelPercentile(gaps, .5),
+    capturedAtMs: Number(now.toFixed(2)), windowMs, sinceAtMs: Number(sinceAtMs.toFixed(2)),
+    sampleRanges: {
+      raf: { ...range(samples, "atMs"), retainedCount: rafRetention.count,
+        capacity: WEBGPU_FRAME_PANEL_CAPACITY,
+        droppedAtCapacity: rafRetention.dropped,
+        retainedFirstAtMs: rafRetention.firstAtMs,
+        coversWindowStart: rafRetention.firstAtMs !== null && rafRetention.firstAtMs <= sinceAtMs,
+        truncatedBeforeWindowStart: rafRetention.dropped > 0 &&
+          rafRetention.firstAtMs > sinceAtMs },
+      submittedCpu: range(timings, "submitReceiptAtMs",
+        webgpuFramePanelRuntimeSamples || [], WEBGPU_FRAME_PANEL_CAPACITY),
+      captureCpu: range(captures, "captureAtMs",
+        webgpuFramePanelCaptureSamples || [], WEBGPU_FRAME_PANEL_CAPACITY),
+      runtime: range(recentRuntime, "atMs", runtime,
+        window.__DVA_WEBGPU_FRAME_COST__?.capacity ?? null),
+      gpu: range(recentGpu, "atMs", gpuTiming.samples,
+        window.__DVA_WEBGPU_FRAME_COST__?.capacity ?? null),
+      events: range(recentEvents, "atMs", allEvents, 300)
+    },
+    raf: { samples, sampleCount: samples.length, count: gaps.length, p50Ms: webgpuFramePanelPercentile(gaps, .5),
       p95Ms: webgpuFramePanelPercentile(gaps, .95), maxMs: gaps.length ? Math.max(...gaps) : null,
       gapsOver33_34Ms: gaps.filter(gap => gap > 33.34).length },
     webgpu: { sampleCount: timings.length, prepareP95Ms: p95("prepareMs"),
       recordP95Ms: p95("recordMs"), submitP95Ms: p95("submitMs"),
+      captureSampleCount: captures.length,
+      captureCpuP50Ms: webgpuFramePanelPercentile(captures.map(sample => sample.durationMs), .5),
+      captureCpuP95Ms: webgpuFramePanelPercentile(captures.map(sample => sample.durationMs), .95),
+      captureCpuSamples: captures,
+      frameSamples: webgpuFramePanelRuntimeSamples?.filter(sample => sample.rafAtMs >= sinceAtMs) || [],
+      events: recentEvents,
+      gpuTiming: { status: gpuTiming.status, sampleCount: recentGpu.length,
+        p50Ms: webgpuFramePanelPercentile(recentGpu.map(sample => sample.gpuMs), .5),
+        p95Ms: webgpuFramePanelPercentile(recentGpu.map(sample => sample.gpuMs), .95), samples: recentGpu },
       primitiveBatchCount: Number.isFinite(lastRuntime.primitiveBatchCount) ? lastRuntime.primitiveBatchCount : null,
       primitiveCommandCount: Number.isFinite(lastRuntime.primitiveCommandCount) ? lastRuntime.primitiveCommandCount : null }
   };
@@ -2497,12 +2599,34 @@ function paintWebGPUFramePanel(now = performance.now()) {
   webgpuFramePanelLastPaintAt = now;
   const report = webgpuFramePanelReport(now);
   const fmt = value => value == null ? "—" : `${value}ms`;
-  output.textContent = `RAF p50/p95/max ${fmt(report.raf.p50Ms)} / ${fmt(report.raf.p95Ms)} / ${fmt(report.raf.maxMs)} · >33.34ms ${report.raf.gapsOver33_34Ms}\nWebGPU CPU p95 準備/記録/提出 ${fmt(report.webgpu.prepareP95Ms)} / ${fmt(report.webgpu.recordP95Ms)} / ${fmt(report.webgpu.submitP95Ms)} · primitive ${report.webgpu.primitiveBatchCount ?? "—"}/${report.webgpu.primitiveCommandCount ?? "—"}`;
+  const gpuStatus = report.webgpu.gpuTiming.status === "supported"
+    ? `GPU p95 ${fmt(report.webgpu.gpuTiming.p95Ms)} (${report.webgpu.gpuTiming.sampleCount}) · verify計測負荷あり`
+    : `GPU unavailable (${report.webgpu.gpuTiming.status})`;
+  output.textContent = `RAF p50/p95/max ${fmt(report.raf.p50Ms)} / ${fmt(report.raf.p95Ms)} / ${fmt(report.raf.maxMs)} · >33.34ms ${report.raf.gapsOver33_34Ms}\nWebGPU CPU p95 capture/準備/記録/提出 ${fmt(report.webgpu.captureCpuP95Ms)} / ${fmt(report.webgpu.prepareP95Ms)} / ${fmt(report.webgpu.recordP95Ms)} / ${fmt(report.webgpu.submitP95Ms)} · primitive ${report.webgpu.primitiveBatchCount ?? "—"}/${report.webgpu.primitiveCommandCount ?? "—"}\n${gpuStatus}`;
 }
 if (WEBGPU_FRAME_PANEL_ENABLED) {
+  window.__DVA_WEBGPU_FRAME_PANEL__ = Object.freeze({ enabled: true,
+    report: (windowMs = 15000) => webgpuFramePanelReport(performance.now(), windowMs),
+    clear() {
+      webgpuFramePanelModel?.clear();
+      webgpuFramePanelRuntimeSamples.length = 0;
+      webgpuFramePanelCaptureSamples.length = 0;
+      webgpuFramePanelEvents.length = 0;
+      webgpuFramePanelPendingRuntimeSamples.clear();
+      webgpuFramePanelLastViewportKey = null;
+    } });
   document.addEventListener("visibilitychange", () => {
+    recordWebGPUFramePanelEvent("visibilitychange");
     if (document.hidden) webgpuFramePanelModel?.sample(performance.now(), false, true);
   });
+  window.addEventListener("resize", () => recordWebGPUFramePanelEvent("window-resize",
+    { dpr: window.devicePixelRatio || 1 }), { passive: true });
+  window.visualViewport?.addEventListener("resize", () => recordWebGPUFramePanelEvent("visual-viewport-resize",
+    { width: window.visualViewport.width, height: window.visualViewport.height,
+      scale: window.visualViewport.scale }), { passive: true });
+  window.visualViewport?.addEventListener("scroll", () => recordWebGPUFramePanelEvent("visual-viewport-scroll",
+    { offsetLeft: window.visualViewport.offsetLeft, offsetTop: window.visualViewport.offsetTop,
+      scale: window.visualViewport.scale }), { passive: true });
   document.querySelector("#webgpuFrameCostCopy")?.addEventListener("click", async () => {
     const status = document.querySelector("#webgpuFrameCostCopyStatus");
     try {
@@ -2968,7 +3092,8 @@ function startWebGPUTitlePrewarm() {
     const renderer = await rendererApi.create({ onFailure(error) {
       if (currentEntry()) disposeWebGPUTitlePrewarm(entry, 'failed');
       if (entry.transferred) setWebGPUMainFailure(error);
-    } });
+    }, gpuTiming: WEBGPU_FRAME_PANEL_ENABLED,
+    onGpuTiming(sample) { window.__DVA_WEBGPU_FRAME_COST__?.recordGpuTiming?.(sample); } });
     if (!currentEntry()) {
       try { renderer?.destroy?.(); } catch (_) {}
       return;
@@ -18990,6 +19115,9 @@ function pumpWebGPUMainAppDriver() {
   recordWebGPUStartupRequest(startupRequestTrace, requestSerial, 'app-request');
   const connectionMode = document.documentElement?.dataset?.connectionMode || "";
   const dpr = window.devicePixelRatio || 1;
+  const rafFrame = WEBGPU_FRAME_PANEL_ENABLED ? webgpuFramePanelModel?.current() : null;
+  const frameDiagnostic = rafFrame ? { frameId: rafFrame.frameId,
+    rafAtMs: rafFrame.atMs, rafGapMs: rafFrame.gapMs, hidden: Boolean(document.hidden), viewport: null } : null;
   const roomId = state.roomId;
   const sessionGeneration = state.roomSessionGeneration;
   const phase = data.phase;
@@ -19007,9 +19135,11 @@ function pumpWebGPUMainAppDriver() {
     ...(startupRequestTrace ? { diagnosticCorrelation: {
       appRequestSerial: requestSerial,
       startupAttemptId: startupRequestTrace.attemptId } } : {}),
-    dpr, ...(WEBGPU_FRAME_PANEL_ENABLED || WEBGPU_MAIN_VERIFY_ROUTE || !webgpuMainApp.visible ? { onTiming: (name, durationMs) => {
+    dpr, ...(frameDiagnostic ? { frameDiagnostic } : {}),
+    ...(WEBGPU_FRAME_PANEL_ENABLED || WEBGPU_MAIN_VERIFY_ROUTE || !webgpuMainApp.visible ? { onTiming: (name, durationMs) => {
       markWebGPUStartupStage(name, durationMs);
-      recordWebGPUFramePanelTiming(name, durationMs);
+      if (WEBGPU_FRAME_PANEL_ENABLED)
+        recordWebGPUFramePanelTiming(name, durationMs, performance.now(), frameDiagnostic);
     } } : {}) }).then(receipt => {
     markWebGPUStartupStage('appReceipt');
     recordWebGPUStartupRequest(startupRequestTrace, requestSerial, 'app-receipt', {
@@ -28389,7 +28519,8 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     get device() { return runtime.device; },
     retryTraceSnapshot() { return runtime.retryTraceSnapshot?.() ?? null; },
     async draw({ data = state.data, sample, rect, dpr = 1, camera,
-      shapeProviders = {}, onTiming, diagnosticCorrelation = null } = {}) {
+      shapeProviders = {}, onTiming, frameDiagnostic = null,
+      diagnosticCorrelation = null } = {}) {
       const requestGeneration = lifecycleGeneration;
       if (destroyed || runtime.state !== 'ready')
         return Object.freeze({ drawn: false, reason: destroyed ? 'destroyed' : runtime.state });
@@ -28443,13 +28574,19 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
           ...(typeof onTiming === 'function' ? { onTiming } : {}),
           recordClears: true,
           prepare: async ({ viewport, device, renderer, target: frameTarget }) => {
+            if (WEBGPU_FRAME_PANEL_ENABLED)
+              recordWebGPUFramePanelViewport(frameDiagnostic, viewport);
             if (device !== registry.device || renderer !== runtime.renderer ||
                 frameTarget !== target)
               throw new Error('Dormant WebGPU main prepare crossed a device or target');
             markWebGPUStartupStage('sceneCaptureBegin');
-            const captureStartedAt = WEBGPU_MAIN_VERIFY_ROUTE ? performance.now() : null;
+            const captureStartedAt = WEBGPU_FRAME_PANEL_ENABLED || WEBGPU_MAIN_VERIFY_ROUTE
+              ? performance.now() : null;
             const captured = captureWebGPUMainAppWorldCandidate(data,
               viewport, providers);
+            if (WEBGPU_FRAME_PANEL_ENABLED && Number.isFinite(captureStartedAt))
+              recordWebGPUFramePanelCapture(frameDiagnostic,
+                Math.max(0, performance.now() - captureStartedAt), performance.now());
             markWebGPUStartupStage('sceneCaptureEnd', Number.isFinite(captureStartedAt)
               ? Math.max(0, performance.now() - captureStartedAt) : null);
             const deferredAcquisitionIds =

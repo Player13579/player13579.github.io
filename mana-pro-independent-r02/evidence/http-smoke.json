@@ -1,0 +1,48 @@
+{
+  "status": "pass",
+  "scope": "ローカルHTTPの配信検査のみ。ブラウザーのnavigation、JS、GPU、音の検証ではない。",
+  "records": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 5674,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/preview/main.mjs",
+      "status": 200,
+      "bytes": 8662,
+      "content_type": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/src/renderer.mjs",
+      "status": 200,
+      "bytes": 12543,
+      "content_type": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/shaders/mana.wgsl",
+      "status": 200,
+      "bytes": 9572,
+      "content_type": "text/plain; charset=utf-8"
+    },
+    {
+      "path": "/sfx/mana-receive-original.wav",
+      "status": 200,
+      "bytes": 153644,
+      "content_type": "audio/wav"
+    },
+    {
+      "path": "/tests/verify.html",
+      "status": 200,
+      "bytes": 916,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/tests/gpu-tests.mjs",
+      "status": 200,
+      "bytes": 6843,
+      "content_type": "text/javascript; charset=utf-8"
+    }
+  ]
+}

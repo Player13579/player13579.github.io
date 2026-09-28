@@ -32,6 +32,8 @@
       gpu: options.gpu,
       powerPreference: options.powerPreference,
       deviceDescriptor: options.deviceDescriptor,
+      gpuTiming: options.gpuTiming,
+      onGpuTiming: options.onGpuTiming,
       format: options.format,
       onFailure(error) {
         abandonFrame?.();
@@ -268,11 +270,11 @@
           cleared.add(target);
           return frame;
         },
-        submit() {
+        submit(gpuTiming = false) {
           active();
           try {
             flush();
-            return coreFrame.submit();
+            return coreFrame.submit(gpuTiming);
           } catch (error) {
             try { coreFrame.discard(); } catch (_) {}
             throw error;
@@ -339,6 +341,7 @@
       get failure() { return core.failure; },
       get device() { return core.device; },
       get format() { return core.format; },
+      get gpuTimingStatus() { return core.gpuTimingStatus; },
       registerTarget,
       registerTextureTarget,
       beginFrame,

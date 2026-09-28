@@ -13,7 +13,20 @@
     if (!gpu) throw new Error('WebGPU unavailable');
     const adapter = await gpu.requestAdapter({ powerPreference: options.powerPreference || 'high-performance' });
     if (!adapter) throw new Error('WebGPU adapter unavailable');
-    const device = await adapter.requestDevice(options.deviceDescriptor || {});
+    const descriptor = options.deviceDescriptor || {};
+    const wantsGpuTiming = options.gpuTiming === true;
+    const timestampSupported = Boolean(wantsGpuTiming && adapter.features?.has?.('timestamp-query'));
+    let device;
+    let gpuTimingStatus = wantsGpuTiming ? (timestampSupported ? 'initializing' : 'unavailable:timestamp-query') : 'disabled';
+    if (timestampSupported) {
+      try {
+        device = await adapter.requestDevice({ ...descriptor,
+          requiredFeatures: [...new Set([...(descriptor.requiredFeatures || []), 'timestamp-query'])] });
+      } catch (_) {
+        gpuTimingStatus = 'unavailable:device-feature-request';
+      }
+    }
+    if (!device) device = await adapter.requestDevice(descriptor);
     const format = options.format || gpu.getPreferredCanvasFormat();
     const targets = new Map();
     const resources = new Set();
@@ -21,6 +34,25 @@
     let activeFrame = null;
     let failure = null;
     let nextFrameId = 0;
+    const timingSlots = [];
+    let timingQueries = null;
+    if (gpuTimingStatus === 'initializing') {
+      try {
+        timingQueries = device.createQuerySet({ type: 'timestamp', count: 8, label: 'DVA verify GPU frame timestamps' });
+        for (let i = 0; i < 4; i++) {
+          const resolve = device.createBuffer({ size: 16, usage: root.GPUBufferUsage.QUERY_RESOLVE | root.GPUBufferUsage.COPY_SRC });
+          const readback = device.createBuffer({ size: 16, usage: root.GPUBufferUsage.MAP_READ | root.GPUBufferUsage.COPY_DST });
+          timingSlots.push({ index: i, resolve, readback, busy: false });
+        }
+        gpuTimingStatus = 'supported';
+      } catch (_) {
+        try { timingQueries?.destroy(); } catch (_) {}
+        for (const slot of timingSlots) { try { slot.resolve.destroy(); slot.readback.destroy(); } catch (_) {} }
+        timingSlots.length = 0;
+        timingQueries = null;
+        gpuTimingStatus = 'unavailable:resource-creation';
+      }
+    }
 
     function requireReady() {
       if (state !== 'ready') throw failure || new Error('WebGPU frame owner destroyed');
@@ -40,6 +72,10 @@
         try { resource.destroy(); } catch (_) {}
       }
       resources.clear();
+      try { timingQueries?.destroy(); } catch (_) {}
+      for (const slot of timingSlots) { try { slot.resolve.destroy(); slot.readback.destroy(); } catch (_) {} }
+      timingSlots.length = 0;
+      if (wantsGpuTiming) gpuTimingStatus = 'unavailable:renderer-destroyed';
       try { device.removeEventListener?.('uncapturederror', onUncapturedError); } catch (_) {}
       try { device.destroy(); } catch (_) {}
       if (report) {
@@ -189,7 +225,7 @@
         activeFrame = null;
         abandon();
       };
-      frame.submit = function () {
+      frame.submit = function (measureGpuTime = false) {
         requireActive();
         activeFrame = null;
         if (!commands.length) return 0;
@@ -235,6 +271,15 @@
               scopeCount += 1;
             }
           }
+          const hasGpuWork = commands.length > 0;
+          const timingSlot = hasGpuWork && measureGpuTime && gpuTimingStatus === 'supported'
+            ? timingSlots.find(slot => !slot.busy) : null;
+          const timedFrameId = frameId;
+          if (timingSlot) {
+            const start = encoder.beginComputePass({ label: 'DVA verify GPU timing start',
+              timestampWrites: { querySet: timingQueries, beginningOfPassWriteIndex: timingSlot.index * 2 } });
+            start.end();
+          }
           for (const command of commands) {
             if (command.kind === 'encoder') {
               if (command.reads.some(id => !painted.has(id))) {
@@ -277,8 +322,31 @@
             }
             painted.add(command.target);
           }
+          if (timingSlot) {
+            timingSlot.busy = true;
+            const end = encoder.beginComputePass({ label: 'DVA verify GPU timing end',
+              timestampWrites: { querySet: timingQueries, endOfPassWriteIndex: timingSlot.index * 2 + 1 } });
+            end.end();
+            encoder.resolveQuerySet(timingQueries, timingSlot.index * 2, 2, timingSlot.resolve, 0);
+            encoder.copyBufferToBuffer(timingSlot.resolve, 0, timingSlot.readback, 0, 16);
+          }
           device.queue.submit([encoder.finish()]);
           submitted = true;
+          if (timingSlot) {
+            timingSlot.readback.mapAsync(root.GPUMapMode.READ).then(() => {
+              if (state !== 'ready' || timingSlots[timingSlot.index] !== timingSlot) return;
+              const ticks = new BigUint64Array(timingSlot.readback.getMappedRange());
+              const gpuMs = Number(ticks[1] - ticks[0]) / 1e6;
+              timingSlot.readback.unmap();
+              timingSlot.busy = false;
+              if (Number.isFinite(gpuMs) && gpuMs >= 0) {
+                try { options.onGpuTiming?.(Object.freeze({ frameId: timedFrameId, gpuMs })); } catch (_) {}
+              }
+            }).catch(() => {
+              timingSlot.busy = false;
+              if (state === 'ready') gpuTimingStatus = 'unavailable:readback';
+            });
+          }
           if (observers.length) {
             const checks = [];
             let validation, done;
@@ -325,6 +393,7 @@
       get failure() { return failure; },
       get device() { requireReady(); return device; },
       get format() { return format; },
+      get gpuTimingStatus() { return gpuTimingStatus; },
       registerTarget,
       registerTextureTarget,
       beginFrame,

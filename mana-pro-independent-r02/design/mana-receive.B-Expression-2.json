@@ -1,0 +1,2229 @@
+{
+  "FoundationOperationTemplate": {
+    "OutputContract": {
+      "schema_version": "B-Expression-2",
+      "mode": "Image",
+      "operation": "design_only"
+    },
+    "TemplateConsolidation": {
+      "per_chapter_template_count": 1,
+      "template_position": "chapter_end",
+      "inter_template_duplication_forbidden": true,
+      "cross_chapter_reference_preferred": true
+    },
+    "RuleContract": {
+      "fields": [
+        "rule_id",
+        "owner",
+        "priority",
+        "applies_when",
+        "requirement",
+        "exception_to",
+        "validation_id"
+      ],
+      "same_priority_resolution": "explicit_exception_or_compatible_union",
+      "unresolved_conflict_result": "spec_conflict"
+    },
+    "GlobalInterpretation": {
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "full_PH_structure_required_for_all_visibilities": true,
+      "WindCapsule_required": true
+    },
+    "UniversalNoLabelOnly": {
+      "label_only_declaration_forbidden": true,
+      "indirect_evidence_for_implicit_latent": true
+    },
+    "Acceptance": {
+      "each_chapter_has_exactly_one_template": true,
+      "independent_template_groups_absent": true,
+      "unique_rule_ids_and_resolvable_references": true,
+      "same_priority_conflicts_resolved_explicitly": true
+    }
+  },
+  "InferenceExpansionPolicy": {
+    "DeclaredIntent": {
+      "character_count": 0,
+      "character_attributes": {},
+      "main_action": "一件の確定済み正の離散マナ増加を表示。足元の源→輸送→腹部位置への受領量の蓄積→収束・消失。H64の暗明両背景・全寿命で連続した因果を読む。ゲーム状態には書き込まない。",
+      "main_objects": "独立E一件につき供給・輸送・受領の同一原因系。新規アイテム・人形・粒子群を描かない。外部受け手playerIdはホスト入力であり、新しい人物の生成ではない。",
+      "background": "指定された暗/明の診断表示。世界内の床・壁と偽らない。ゲーム/公開サイトを編集しない。",
+      "style": "2Dアニメ調の面・境界・時相として具体化。WebGPU解析形状の実行コードであり画像生成ではない。",
+      "text_logo_policy": "E内部の文字・ロゴ・説明矢印なし。HTML上の検査UIはE外。位相案内は既定で非表示。"
+    },
+    "ExpressionIntent": {
+      "source": "user_declared",
+      "purpose": "通常の正の離散マナ獲得を、一つの源から身体位置への受領と蓄積としてH64原寸で読む。",
+      "must_communicate": [
+        "源が足元に実在する表示領域を持つ",
+        "源から到着先まで輸送の連続性がある",
+        "到着に応じて受領面が増え、輸送完了後も蓄積を保持する",
+        "同じ受領中心へ収束し、終端で消える"
+      ],
+      "preserve_ambiguity": [],
+      "allowed_omission": [
+        "プレビューのキャラ描画は不要。代用人形を作らずホストの足元/腹部位置へ束縛する。"
+      ],
+      "allowed_exaggeration": [
+        "白飛びは一律禁止ではない。H64の主形・有色面・三段階の区別を保持する局所核に限定。"
+      ],
+      "protected_relations": [
+        "正の実確定増分一件/一意event id/受け手playerId",
+        "現在足元に追従しx±66,y−127〜+13 world units",
+        "移動ACC2実効中だけ2×、他は1×、途中切替連続",
+        "初回の成功可視WebGPUフレームと同じIDへ一回だけ発音",
+        "ミュート/verify/AudioContext非runningは音だけを抑制し、正規の検査表示を消さない。",
+        "不可視/失効/不適格受け手/別contextは音と視覚を抑制する。",
+        "ゲームと公開サイトは不変更"
+      ]
+    },
+    "SelectionLifecycle": {
+      "stages": [
+        "candidate",
+        "accepted",
+        "registered_world",
+        "registered_observation"
+      ],
+      "candidate_catalog_in_final_code": false,
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "adoption_checks": [
+        "DeclaredIntent_consistency",
+        "contribution",
+        "readability",
+        "activation_condition"
+      ]
+    },
+    "inferred_support_elements": {
+      "default_permission": "denied",
+      "explicit_user_permission_required": true,
+      "allowed_domains": [],
+      "allowed_scope": "なし。E内部形態・時間位相・配色・source-bound観測応答は明示された設計裁量とattribute_resolvedに分類する。",
+      "support_declared_elements_without_overriding_them": true,
+      "latent_visualization_object_not_required": true
+    },
+    "Acceptance": {
+      "declared_intent_preserved": true,
+      "inference_without_explicit_user_permission_absent": true,
+      "candidate_accepted_registered_distinguished": true,
+      "unselected_candidates_absent_from_final": true
+    }
+  },
+  "PlatonicGoodTemplate": {
+    "Good": {
+      "evidence": "同じevent idのS→T→Rを単一の所有者時計・現在足元座標に結ぶ。H64原寸での読解成功は未観察。"
+    },
+    "Truth": {
+      "coordinate_continuity": "現在足元から同一投影で全PHを配置。",
+      "physical_causality": "S→T→Rという宣言場の有限状態遷移。",
+      "state_transition_readability": "縮小する源、到着する輸送体積、成長/保持/収束する受領体積。"
+    },
+    "Beauty": {
+      "boundary_readability": "色のある面と核を分離し、H64の輪郭を保持する設計。",
+      "gaze_circulation": "源から連続輸送面を追って受領面で停止。補助経路は有色の外縁から内側の充填境界へ戻る。",
+      "structural_separation": "源/輸送/蓄積の範囲・時相を別々にする。"
+    },
+    "BeautyStructuring": {
+      "axes": [
+        "contrast",
+        "temporal_phase"
+      ],
+      "standard_minimum_axes_per_PH": 2,
+      "standard_minimum_evidence_per_applied_axis": 2,
+      "intent_adjustment_ref": "InferenceExpansionPolicy.ExpressionIntent"
+    },
+    "Acceptance": {
+      "each_PH_connected_to_at_least_two_GTB_layers": true,
+      "single_formula_does_not_dominate_beauty": true
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "供給残量、前端/後端を持つ輸送、累積受領はそれぞれ独立した状態・境界・時間応答を持つ。同じ量の一原因系の分配として三PHにする。",
+      "shared_condition_policy": "同一event id/所有者時計/現在足元/IntensityBudget/PHASE/GEOMETRYを共有し、局所の形・密度・時相は別に保持。",
+      "no_discipline_based_split": true
+    },
+    "SharedConditions": {},
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "足元の有限供給面",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "現在足元の相対(0,−5)wu、最大86×26wuの充実した面。Sの減少で幅・高さ・濃度が減る。",
+        "partition_reason": "供給残量Sとその境界・放射が独立に減る。輸送の入力となるためPHを分ける。"
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "前端と後端を持つ連続輸送面",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "相対(−24,−6)wuから(−13,−55)wuへ曲がる一つの太い面。pathの16分割は距離評価であり粒子群の描画ではない。",
+        "partition_reason": "供給域から受領域まで連続した経路と輸送量Tを持ち、前端/後端が異なる時相で進む。"
+      },
+      "PH3": {
+        "id": "PH3",
+        "name": "腹部位置で充填される受領面",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "受け手足元から相対(0,−61)wuを中心とする非物質の受領領域。底部は相対中心から+18wu、Rとともに高さ8→44wu、半幅22→34wu。",
+        "partition_reason": "到着後だけ増える累積量Rと充填境界、輸送終了後の保持・収束を独立に持つ。"
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "足元の有限供給面",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "現在足元の相対(0,−5)wu、最大86×26wuの充実した面。Sの減少で幅・高さ・濃度が減る。",
+          "partition_reason": "供給残量Sとその境界・放射が独立に減る。輸送の入力となるためPHを分ける。"
+        },
+        "DeepStructure": {
+          "Core": "輸送出口側の局所放射。sourceFieldのcoreはsource半径へ相対束縛し、追加光源ではない。",
+          "Structure": "閉じた横長の供給面。source半径はsqrt(S)に従い、出口側が幅23〜28wuの輸送面へ重なる。",
+          "Surface": "暗い有色外縁と内部放射を別に計算。空の円環や細い接触線に置換しない。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "現在足元の相対(0,−5)wu、最大86×26wuの充実した面。Sの減少で幅・高さ・濃度が減る。 入出力はPH1/PH2/PH3と確定通知・受け手位置境界に閉じる。",
+          "state_variables": "S=1−smoothstep(0.08,0.62,u)、半径rx/ry [wu]、density=.50+1.35S、不透明度coverage×(1−exp(−3density))、局所放射 [設計上の相対量]。",
+          "inputs": "既に正の実増分が確定した通知と受け手の現在足元座標。表示量1を初期境界条件として割り当てるがゲームマナは増やさない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "非物質の宣言表示場でありkgの物質を生成/消滅させない。S+T+R=1は表示量の割当モデル。ゲームmanaは変えない。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "場の前端/境界の移送で、粒子質量・重力弾道・架空の反力は導入しない。ホスト身体の力学を上書きしない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "宣言場の有限入力と輸送/受領/放射/表示終端を繋ぐ設計上の収支。Jや実在エネルギー保存を実測したとは言わない。発光・opacity・densityを別量として実装。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電荷や電流の作用を宣言しておらず、視覚発光から帯電を逆推定しない。"
+            }
+          },
+          "constitutive_response": "暗い有色外縁と内部放射を別に計算。空の円環や細い接触線に置換しない。 光学的応答を遅延する物体運動と取り違えない。",
+          "initial_condition": "u=0から可視の供給面を持つ。初回の可視GPU receiptまでuを進めない。",
+          "boundary_conditions": "x±66/y−127〜+13wuの有限包絡、相対(−24,−6)wuの輸送出発域、受け手位置へ追従。新しい床の接触を与えない。",
+          "approximation_scope": "固定の正射影2D見えを解析断面とセル調色面で実装。数値は表示設計の仮定。3D全視点の体積解法、物質の実験、実人体表面の受光検証ではない。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "86×26wu = 設計換算1.075×0.325m。H64では最大約43×13CSSpx。",
+          "characteristic_time": "排出区間u=0.08〜0.62。実時間は1.6所有者秒に対する割合であり別durationではない。",
+          "dominant_balance": "有限表示量の受け渡しと境界/観測条件が支配。粒子の慣性、空気粘性、表面張力をこの形状へ追加しない。",
+          "dimensionless_reasoning": "S/T/R、front/tail/uは無次元の表示状態。Re/Weは実流体を採用しないためnot_applicable。",
+          "detail_cutoff": "H64で約0.65CSSpxのcoverage遷移。16分割の中軸は描画線ではなく太い面の距離計算。実GPUの縮小/AA結果は未検証。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "発熱・温度変化・燃焼を指定しておらず、色から温度を与えない。"
+              ],
+              "evidence_or_constraint": "PH1の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "airは静穏だが場は実流体ではない。Navier–Stokesや抗力/浮力を捏造しない。"
+              ],
+              "evidence_or_constraint": "PH1の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "輸送出口側の局所放射。sourceFieldのcoreはsource半径へ相対束縛し、追加光源ではない。",
+                "color / opacity / emissionを分け、局所放射の位置とlightFieldの有限入射分布を接続する。"
+              ],
+              "evidence_or_constraint": "有色面と高輝度部を区別。OBSなしでも供給面全体、出口側の高輝度部、源と輸送の接続。輪郭やRGB面をOBSへ肩代わりしない。"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "閉じた横長の供給面。source半径はsqrt(S)に従い、出口側が幅23〜28wuの輸送面へ重なる。",
+                "宣言場の状態密度を不透明度へ反映し、coverageと放射量を同じ値で代用しない。"
+              ],
+              "evidence_or_constraint": "暗い有色外縁と内部放射を別に計算。空の円環や細い接触線に置換しない。 実在材質物性を測定したという意味ではない。"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "荷電・導電・磁場を使わず、発光の実験的電磁機構は特定しない。"
+              ],
+              "evidence_or_constraint": "PH1の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "粘性/粘弾性物質をモデル化しておらず、収束を材質のクリープと偽らない。"
+              ],
+              "evidence_or_constraint": "PH1の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "干渉/回折/コヒーレンスの波動条件を採用しない。"
+              ],
+              "evidence_or_constraint": "PH1の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "濡れ・毛管・汚れ・吸着界面を作らない。"
+              ],
+              "evidence_or_constraint": "PH1の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "H64で面を持つ横長の源と出口側の局所明部",
+            "排出中に源の面積が減る一方でPH2の占有域が延びる"
+          ],
+          "indirect_evidence": "相手PHの量/境界変化と同じ所有者時相で整合する。",
+          "figure_ground_separation": "high",
+          "edge_legibility": "暗い有色外縁と内部放射を別に計算。空の円環や細い接触線に置換しない。",
+          "perceptual_failure_risk": "源が小さい点・細い接触線・外付けglowにしか見えないこと。CPU面積の閾値だけで不合格が解消したとは言わない。",
+          "cue_roles": [
+            {
+              "cue": "H64で面を持つ横長の源と出口側の局所明部",
+              "supports": "足元の有限供給面の面積・所在",
+              "reliability_and_overlap": "明暗両背景での色とcoverageに依存。輪郭と面積は完全に独立の証拠ではない。"
+            },
+            {
+              "cue": "排出中に源の面積が減る一方でPH2の占有域が延びる",
+              "supports": "単一原因系の段階と引渡し",
+              "reliability_and_overlap": "全寿命観察と先行/後続PHが必要。静止画単独で因果機構を確定できない。"
+            }
+          ],
+          "confusable_alternative": "源が小さい点・細い接触線・外付けglowにしか見えないこと。CPU面積の閾値だけで不合格が解消したとは言わない。",
+          "disambiguating_evidence": "供給面全体、出口側の高輝度部、源と輸送の接続。輪郭やRGB面をOBSへ肩代わりしない。 実GPUでその解釈が成立したかはnot_run。",
+          "viewing_conditions": "ブラウザー倍率100%、キャラクター基準128wu→64CSSpx、dark/light各128×112CSSpx、片方ずつも観察。DPR1と高DPRは別条件。実身体なしのため人体材質への受領は判別範囲外。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "正射影の画面面に投影した有限な宣言場。",
+          "normal_field_coherence": "3D法線を測定しておらず、解析断面の厚み/境界に基づく色の秩序を保つ。",
+          "curvature_behavior": "閉じた横長の供給面。source半径はsqrt(S)に従い、出口側が幅23〜28wuの輸送面へ重なる。",
+          "silhouette_logic": "供給面全体、出口側の高輝度部、源と輸送の接続。輪郭やRGB面をOBSへ肩代わりしない。",
+          "contact_relation": "x±66/y−127〜+13wuの有限包絡、相対(−24,−6)wuの輸送出発域、受け手位置へ追従。新しい床の接触を与えない。",
+          "spatial_relation": "全PHが同じ現在足元とworld→camera→screen変換を使う。相対距離をseedやACC2で変えない。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "S=1−smoothstep(0.08,0.62,u)、半径rx/ry [wu]、density=.50+1.35S、不透明度coverage×(1−exp(−3density))、局所放射 [設計上の相対量]。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "有限な一回の排出で終了。入力を勝手に再充填せず、別IDにだけ別Eを生成。",
+          "damping_profile": "別の物理減衰器はなく、PHASEに定義した有限包絡を使用。uの区分積分をリセットしない。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "有限な一回の排出で終了。入力を勝手に再充填せず、別IDにだけ別Eを生成。",
+          "transition_failure_risk": "前端/後端/充填の順序逆転、途中切替時の位相飛び、未受領の先行発光。",
+          "driving_input": "既に正の実増分が確定した通知と受け手の現在足元座標。表示量1を初期境界条件として割り当てるがゲームマナは増やさない。",
+          "response_timescale": "排出区間u=0.08〜0.62。実時間は1.6所有者秒に対する割合であり別durationではない。",
+          "phase_relation": "PH2の前端はu=0.02から源に重なって立ち上がり、排出はu=0.08から始まる。u=0.62にS=0となり後端の回収を開始。",
+          "stability_condition": "確定通知/現在受け手/可視性/有効期限/セッションが成立し、同じ所有者時計を共有する範囲。条件消失時は音とEを破棄し再開しない。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Materials -> PH1.Optics: 境界・密度・局所状態がopacityと放射の可視差へ反映する。",
+            "PH1.Materials -> PH2.Materials: 確定済み通知を表す有限表示量をSからTへ移送する。源の排出と連続面の前端進行を共通uに束縛。 源の面積と量が減り、源と接続した太い面が腹部のinletへ延びる。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "sourceDrainEndだけを遅らせる比較なら、他の時間・形態を保持した場合に源が長く残ると予測する。r0.1の原因を断定するものではない。",
+            "predicted_response": "供給面全体、出口側の高輝度部、源と輸送の接続。輪郭やRGB面をOBSへ肩代わりしない。",
+            "competing_explanation": "背景色、DPR、表示倍率、時間サンプリング、他Eによる遮蔽でも読解が変わる。r0.1の原因は未特定。",
+            "uncertainty": "採用した形・時間は設計仮説。CPU解析場と関数テストはWGSL実行、実H64の認識、実身体合成を証明しない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "確定済み通知を表す有限表示量をSからTへ移送する。源の排出と連続面の前端進行を共通uに束縛。",
+              "consequence": "源の面積と量が減り、源と接続した太い面が腹部のinletへ延びる。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH1",
+              "basis": "現在の放射源の位置・範囲・強度にのみ依存する狭い観測拡散。"
+            },
+            {
+              "source": "OBS2",
+              "target": "PH1",
+              "basis": "同じPHの色面・opacity・放射を表示変換する。"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "H64で面を持つ横長の源と出口側の局所明部",
+            "排出中に源の面積が減る一方でPH2の占有域が延びる"
+          ],
+          "indirect": [
+            "相手PHへの量/境界の引渡しが同じuに接続する。"
+          ],
+          "candidates": [
+            "gradient",
+            "boundary",
+            "deformation",
+            "attenuation",
+            "silhouette",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH2",
+              "change": "源の面積と量が減り、源と接続した太い面が腹部のinletへ延びる。"
+            },
+            {
+              "target": "PH1",
+              "change": "同じキャリアの放射・可視境界が、その量と位相へ従属する。画面変換はOBS側に登録し、別PHへの力学作用とは扱わない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH1.StateDynamics",
+          "retained_cues": [
+            "H64で面を持つ横長の源と出口側の局所明部",
+            "排出中に源の面積が減る一方でPH2の占有域が延びる"
+          ],
+          "simplification": "供給面全体、出口側の高輝度部、源と輸送の接続。輪郭やRGB面をOBSへ肩代わりしない。",
+          "omission_scope": [],
+          "exaggeration_scope": [
+            "小さい放射極値の白飛びは主形と有色面を保つ範囲のみ。"
+          ],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable:既存の面・境界・時相で二軸を扱う。",
+          "axes": {
+            "ratio_proportion": [
+              "横長86×26wuの面積で足元を示す",
+              "供給面の出口と幅23〜28wuの輸送面の重なりを残す"
+            ],
+            "temporal_phase": [
+              "Sと面積の単調減少",
+              "排出終了と輸送後端の出発の一致"
+            ]
+          },
+          "GTB_connections": {
+            "Good": "同一の確定通知の因果と所有者を保持。",
+            "Truth": "座標・S/T/R・境界・時間を整合させ、未測定の物理を実証と偽らない。",
+            "Beauty": "供給面全体、出口側の高輝度部、源と輸送の接続。輪郭やRGB面をOBSへ肩代わりしない。"
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "中央の小さな定常物だけに見える",
+          "source_transport_receiverの可視接続の欠落",
+          "glowによる主形代用",
+          "粒子/ノイズ/細線による水増し",
+          "未受領なのに蓄積する",
+          "CPU検査をGPU画素/聴感合格と呼ぶ"
+        ]
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "前端と後端を持つ連続輸送面",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "相対(−24,−6)wuから(−13,−55)wuへ曲がる一つの太い面。pathの16分割は距離評価であり粒子群の描画ではない。",
+          "partition_reason": "供給域から受領域まで連続した経路と輸送量Tを持ち、前端/後端が異なる時相で進む。"
+        },
+        "DeepStructure": {
+          "Core": "源と繋がった前端が受領域へ到着する条件。前端の明度crestは経路の内部で移動する。",
+          "Structure": "x(v)=lerp(−24,−13,v)−22sin(πv)、y(v)=lerp(−6,−55,v)、半幅11.5+2.5sin(πv)wu。全長に有色の面を持つ。",
+          "Surface": "半幅とcoverageの差で内外を分け、前端/後端に有限な厚みを残す。低明度区間でも不透明度に隙間を開けない。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "相対(−24,−6)wuから(−13,−55)wuへ曲がる一つの太い面。pathの16分割は距離評価であり粒子群の描画ではない。 入出力はPH1/PH2/PH3と確定通知・受け手位置境界に閉じる。",
+          "state_variables": "T=max(0,1−S−R)、front=smoothstep(0.02,0.30,u)、tail=smoothstep(0.62,0.76,u)、density=.90+.65T。色・opacity・放射は別変数。",
+          "inputs": "PH1の排出とPH3の受領。Tは有限表示量の差分であり移動する物質粒子やゲームマナの計算ではない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "非物質の宣言表示場でありkgの物質を生成/消滅させない。S+T+R=1は表示量の割当モデル。ゲームmanaは変えない。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "場の前端/境界の移送で、粒子質量・重力弾道・架空の反力は導入しない。ホスト身体の力学を上書きしない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "宣言場の有限入力と輸送/受領/放射/表示終端を繋ぐ設計上の収支。Jや実在エネルギー保存を実測したとは言わない。発光・opacity・densityを別量として実装。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電荷や電流の作用を宣言しておらず、視覚発光から帯電を逆推定しない。"
+            }
+          },
+          "constitutive_response": "半幅とcoverageの差で内外を分け、前端/後端に有限な厚みを残す。低明度区間でも不透明度に隙間を開けない。 光学的応答を遅延する物体運動と取り違えない。",
+          "initial_condition": "u=0では源の中に未展開。u=0.02から前端が出発し、到着後もsourceとreceiverを繋ぐ面として残る。",
+          "boundary_conditions": "frontとtailの間の連続領域。源が空になる前に後端を先行させない。receiver inletに重ね、遠方飛来源や未指定衝突を作らない。",
+          "approximation_scope": "固定の正射影2D見えを解析断面とセル調色面で実装。数値は表示設計の仮定。3D全視点の体積解法、物質の実験、実人体表面の受光検証ではない。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "半幅11.5〜14wu、H64の全幅は約11.5〜14CSSpx。縦方向の端点差49wu、曲線長とは区別する。",
+          "characteristic_time": "前端0.02〜0.30、持続/受領0.30〜0.62、後端0.62〜0.76。全て同じ所有者u。",
+          "dominant_balance": "有限表示量の受け渡しと境界/観測条件が支配。粒子の慣性、空気粘性、表面張力をこの形状へ追加しない。",
+          "dimensionless_reasoning": "S/T/R、front/tail/uは無次元の表示状態。Re/Weは実流体を採用しないためnot_applicable。",
+          "detail_cutoff": "H64で約0.65CSSpxのcoverage遷移。16分割の中軸は描画線ではなく太い面の距離計算。実GPUの縮小/AA結果は未検証。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "発熱・温度変化・燃焼を指定しておらず、色から温度を与えない。"
+              ],
+              "evidence_or_constraint": "PH2の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "airは静穏だが場は実流体ではない。Navier–Stokesや抗力/浮力を捏造しない。"
+              ],
+              "evidence_or_constraint": "PH2の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "源と繋がった前端が受領域へ到着する条件。前端の明度crestは経路の内部で移動する。",
+                "color / opacity / emissionを分け、局所放射の位置とlightFieldの有限入射分布を接続する。"
+              ],
+              "evidence_or_constraint": "有色面と高輝度部を区別。OBSなしでも幅を持つ本体、前端・後端、源と受領の接続。curveの補助線や矢印は描かない。"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "x(v)=lerp(−24,−13,v)−22sin(πv)、y(v)=lerp(−6,−55,v)、半幅11.5+2.5sin(πv)wu。全長に有色の面を持つ。",
+                "宣言場の状態密度を不透明度へ反映し、coverageと放射量を同じ値で代用しない。"
+              ],
+              "evidence_or_constraint": "半幅とcoverageの差で内外を分け、前端/後端に有限な厚みを残す。低明度区間でも不透明度に隙間を開けない。 実在材質物性を測定したという意味ではない。"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "荷電・導電・磁場を使わず、発光の実験的電磁機構は特定しない。"
+              ],
+              "evidence_or_constraint": "PH2の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "粘性/粘弾性物質をモデル化しておらず、収束を材質のクリープと偽らない。"
+              ],
+              "evidence_or_constraint": "PH2の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "干渉/回折/コヒーレンスの波動条件を採用しない。"
+              ],
+              "evidence_or_constraint": "PH2の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "濡れ・毛管・汚れ・吸着界面を作らない。"
+              ],
+              "evidence_or_constraint": "PH2の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "源から受領域まで分断しない太い有色面",
+            "前端の進行と、受領が進んだ後の後端回収は別の動き"
+          ],
+          "indirect_evidence": "相手PHの量/境界変化と同じ所有者時相で整合する。",
+          "figure_ground_separation": "high",
+          "edge_legibility": "半幅とcoverageの差で内外を分け、前端/後端に有限な厚みを残す。低明度区間でも不透明度に隙間を開けない。",
+          "perceptual_failure_risk": "細線・上昇粒子・別々の浮遊体に見え、接続を追えないこと。光だけを残す対照では主形検査を通さない。",
+          "cue_roles": [
+            {
+              "cue": "源から受領域まで分断しない太い有色面",
+              "supports": "前端と後端を持つ連続輸送面の面積・所在",
+              "reliability_and_overlap": "明暗両背景での色とcoverageに依存。輪郭と面積は完全に独立の証拠ではない。"
+            },
+            {
+              "cue": "前端の進行と、受領が進んだ後の後端回収は別の動き",
+              "supports": "単一原因系の段階と引渡し",
+              "reliability_and_overlap": "全寿命観察と先行/後続PHが必要。静止画単独で因果機構を確定できない。"
+            }
+          ],
+          "confusable_alternative": "細線・上昇粒子・別々の浮遊体に見え、接続を追えないこと。光だけを残す対照では主形検査を通さない。",
+          "disambiguating_evidence": "幅を持つ本体、前端・後端、源と受領の接続。curveの補助線や矢印は描かない。 実GPUでその解釈が成立したかはnot_run。",
+          "viewing_conditions": "ブラウザー倍率100%、キャラクター基準128wu→64CSSpx、dark/light各128×112CSSpx、片方ずつも観察。DPR1と高DPRは別条件。実身体なしのため人体材質への受領は判別範囲外。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "正射影の画面面に投影した有限な宣言場。",
+          "normal_field_coherence": "3D法線を測定しておらず、解析断面の厚み/境界に基づく色の秩序を保つ。",
+          "curvature_behavior": "x(v)=lerp(−24,−13,v)−22sin(πv)、y(v)=lerp(−6,−55,v)、半幅11.5+2.5sin(πv)wu。全長に有色の面を持つ。",
+          "silhouette_logic": "幅を持つ本体、前端・後端、源と受領の接続。curveの補助線や矢印は描かない。",
+          "contact_relation": "frontとtailの間の連続領域。源が空になる前に後端を先行させない。receiver inletに重ね、遠方飛来源や未指定衝突を作らない。",
+          "spatial_relation": "全PHが同じ現在足元とworld→camera→screen変換を使う。相対距離をseedやACC2で変えない。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "T=max(0,1−S−R)、front=smoothstep(0.02,0.30,u)、tail=smoothstep(0.62,0.76,u)、density=.90+.65T。色・opacity・放射は別変数。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "u=0.76で供給と輸送が終わり、履歴はPH3の保持状態へ移る。勝手なループや残像を作らない。",
+          "damping_profile": "別の物理減衰器はなく、PHASEに定義した有限包絡を使用。uの区分積分をリセットしない。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "u=0.76で供給と輸送が終わり、履歴はPH3の保持状態へ移る。勝手なループや残像を作らない。",
+          "transition_failure_risk": "前端/後端/充填の順序逆転、途中切替時の位相飛び、未受領の先行発光。",
+          "driving_input": "PH1の排出とPH3の受領。Tは有限表示量の差分であり移動する物質粒子やゲームマナの計算ではない。",
+          "response_timescale": "前端0.02〜0.30、持続/受領0.30〜0.62、後端0.62〜0.76。全て同じ所有者u。",
+          "phase_relation": "前端到着u=0.30でPH3の受領を開始。u=0.62から後端が進み、Rが満たされるu=0.76で消える。",
+          "stability_condition": "確定通知/現在受け手/可視性/有効期限/セッションが成立し、同じ所有者時計を共有する範囲。条件消失時は音とEを破棄し再開しない。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Materials -> PH2.Optics: 境界・密度・局所状態がopacityと放射の可視差へ反映する。",
+            "PH1.Materials -> PH2.Materials: 確定済み通知を表す有限表示量をSからTへ移送する。源の排出と連続面の前端進行を共通uに束縛。 源の面積と量が減り、源と接続した太い面が腹部のinletへ延びる。",
+            "PH2.Materials -> PH3.Materials: 前端が受領域へ到着したu=0.30からTをRへ移す。源が空になるu=0.62以降は輸送の後端を受領側へ回収。 受領面の上端・幅・濃度がRに従って増加し、u=0.76の輸送終了後もu=0.84まで保持する。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "PH2を検査上のみ除いたとき、源と受領の直接接続が失われると予測する。shape-only CPU対照と実GPU観察を区別する。",
+            "predicted_response": "幅を持つ本体、前端・後端、源と受領の接続。curveの補助線や矢印は描かない。",
+            "competing_explanation": "背景色、DPR、表示倍率、時間サンプリング、他Eによる遮蔽でも読解が変わる。r0.1の原因は未特定。",
+            "uncertainty": "採用した形・時間は設計仮説。CPU解析場と関数テストはWGSL実行、実H64の認識、実身体合成を証明しない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "確定済み通知を表す有限表示量をSからTへ移送する。源の排出と連続面の前端進行を共通uに束縛。",
+              "consequence": "源の面積と量が減り、源と接続した太い面が腹部のinletへ延びる。"
+            },
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "前端が受領域へ到着したu=0.30からTをRへ移す。源が空になるu=0.62以降は輸送の後端を受領側へ回収。",
+              "consequence": "受領面の上端・幅・濃度がRに従って増加し、u=0.76の輸送終了後もu=0.84まで保持する。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH2",
+              "basis": "現在の放射源の位置・範囲・強度にのみ依存する狭い観測拡散。"
+            },
+            {
+              "source": "OBS2",
+              "target": "PH2",
+              "basis": "同じPHの色面・opacity・放射を表示変換する。"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "源から受領域まで分断しない太い有色面",
+            "前端の進行と、受領が進んだ後の後端回収は別の動き"
+          ],
+          "indirect": [
+            "相手PHへの量/境界の引渡しが同じuに接続する。"
+          ],
+          "candidates": [
+            "gradient",
+            "boundary",
+            "deformation",
+            "attenuation",
+            "silhouette",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH3",
+              "change": "受領面の上端・幅・濃度がRに従って増加し、u=0.76の輸送終了後もu=0.84まで保持する。"
+            },
+            {
+              "target": "PH2",
+              "change": "同じキャリアの放射・可視境界が、その量と位相へ従属する。画面変換はOBS側に登録し、別PHへの力学作用とは扱わない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH2.StateDynamics",
+          "retained_cues": [
+            "源から受領域まで分断しない太い有色面",
+            "前端の進行と、受領が進んだ後の後端回収は別の動き"
+          ],
+          "simplification": "幅を持つ本体、前端・後端、源と受領の接続。curveの補助線や矢印は描かない。",
+          "omission_scope": [],
+          "exaggeration_scope": [
+            "小さい放射極値の白飛びは主形と有色面を保つ範囲のみ。"
+          ],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable:既存の面・境界・時相で二軸を扱う。",
+          "axes": {
+            "contrast": [
+              "暗い有色外縁と明るい内部の厚み差",
+              "内部の広いcrestと低明度の連続本体の差"
+            ],
+            "temporal_phase": [
+              "前端は源からreceiverへ進む",
+              "後端は供給終了後に同じ経路を畳む"
+            ]
+          },
+          "GTB_connections": {
+            "Good": "同一の確定通知の因果と所有者を保持。",
+            "Truth": "座標・S/T/R・境界・時間を整合させ、未測定の物理を実証と偽らない。",
+            "Beauty": "幅を持つ本体、前端・後端、源と受領の接続。curveの補助線や矢印は描かない。"
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "中央の小さな定常物だけに見える",
+          "source_transport_receiverの可視接続の欠落",
+          "glowによる主形代用",
+          "粒子/ノイズ/細線による水増し",
+          "未受領なのに蓄積する",
+          "CPU検査をGPU画素/聴感合格と呼ぶ"
+        ]
+      },
+      "PH3": {
+        "identity": {
+          "id": "PH3",
+          "name": "腹部位置で充填される受領面",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "受け手足元から相対(0,−61)wuを中心とする非物質の受領領域。底部は相対中心から+18wu、Rとともに高さ8→44wu、半幅22→34wu。",
+          "partition_reason": "到着後だけ増える累積量Rと充填境界、輸送終了後の保持・収束を独立に持つ。"
+        },
+        "DeepStructure": {
+          "Core": "到着した量が面積とdensityに変わる受領境界。独立した中央の宝石/容器を作らない。",
+          "Structure": "丸みを持つ側境界・曲がった底部・上昇する充填上端の交差。未到着時に空容器の外形を先行させない。",
+          "Surface": "有色の厚い受領面に上端近傍の広い明度帯を置く。上端だけの細線や均一な塗りglowに置換しない。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "受け手足元から相対(0,−61)wuを中心とする非物質の受領領域。底部は相対中心から+18wu、Rとともに高さ8→44wu、半幅22→34wu。 入出力はPH1/PH2/PH3と確定通知・受け手位置境界に閉じる。",
+          "state_variables": "R=smoothstep(0.30,0.76,u)、受領面width/height、density=.75+1.30R、squeeze=1−.88smoothstep(0.84,1,u)、fade=1−smoothstep(0.90,1,u)。",
+          "inputs": "PH2の前端到着と輸送量。位置は受け手の現在足元へ追従し、イベント受信時の古い位置へ残さない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "非物質の宣言表示場でありkgの物質を生成/消滅させない。S+T+R=1は表示量の割当モデル。ゲームmanaは変えない。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "場の前端/境界の移送で、粒子質量・重力弾道・架空の反力は導入しない。ホスト身体の力学を上書きしない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "宣言場の有限入力と輸送/受領/放射/表示終端を繋ぐ設計上の収支。Jや実在エネルギー保存を実測したとは言わない。発光・opacity・densityを別量として実装。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電荷や電流の作用を宣言しておらず、視覚発光から帯電を逆推定しない。"
+            }
+          },
+          "constitutive_response": "有色の厚い受領面に上端近傍の広い明度帯を置く。上端だけの細線や均一な塗りglowに置換しない。 光学的応答を遅延する物体運動と取り違えない。",
+          "initial_condition": "R=0で不可視。u=0.30以前に蓄積面を作らず、到着後に底部から上へ形成する。",
+          "boundary_conditions": "身体の代用品ではなく腹部位置の受領表示面。実身体材質/深度との合成はホストの別工程で未接続。BOUNDS内。",
+          "approximation_scope": "固定の正射影2D見えを解析断面とセル調色面で実装。数値は表示設計の仮定。3D全視点の体積解法、物質の実験、実人体表面の受光検証ではない。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "満量で約68×44wu = 設計換算0.85×0.55m、H64で約34×22CSSpx。実人体寸法の測定ではない。",
+          "characteristic_time": "充填0.30〜0.76、保持0.76〜0.84、収束0.84〜1。供給/輸送より後まで残る。",
+          "dominant_balance": "有限表示量の受け渡しと境界/観測条件が支配。粒子の慣性、空気粘性、表面張力をこの形状へ追加しない。",
+          "dimensionless_reasoning": "S/T/R、front/tail/uは無次元の表示状態。Re/Weは実流体を採用しないためnot_applicable。",
+          "detail_cutoff": "H64で約0.65CSSpxのcoverage遷移。16分割の中軸は描画線ではなく太い面の距離計算。実GPUの縮小/AA結果は未検証。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "発熱・温度変化・燃焼を指定しておらず、色から温度を与えない。"
+              ],
+              "evidence_or_constraint": "PH3の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "airは静穏だが場は実流体ではない。Navier–Stokesや抗力/浮力を捏造しない。"
+              ],
+              "evidence_or_constraint": "PH3の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "到着した量が面積とdensityに変わる受領境界。独立した中央の宝石/容器を作らない。",
+                "color / opacity / emissionを分け、局所放射の位置とlightFieldの有限入射分布を接続する。"
+              ],
+              "evidence_or_constraint": "有色面と高輝度部を区別。OBSなしでも底部から上へ増える充填面と残量。中央の小さな発光体だけを主形にしない。"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "丸みを持つ側境界・曲がった底部・上昇する充填上端の交差。未到着時に空容器の外形を先行させない。",
+                "宣言場の状態密度を不透明度へ反映し、coverageと放射量を同じ値で代用しない。"
+              ],
+              "evidence_or_constraint": "有色の厚い受領面に上端近傍の広い明度帯を置く。上端だけの細線や均一な塗りglowに置換しない。 実在材質物性を測定したという意味ではない。"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "荷電・導電・磁場を使わず、発光の実験的電磁機構は特定しない。"
+              ],
+              "evidence_or_constraint": "PH3の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "粘性/粘弾性物質をモデル化しておらず、収束を材質のクリープと偽らない。"
+              ],
+              "evidence_or_constraint": "PH3の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "干渉/回折/コヒーレンスの波動条件を採用しない。"
+              ],
+              "evidence_or_constraint": "PH3の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "濡れ・毛管・汚れ・吸着界面を作らない。"
+              ],
+              "evidence_or_constraint": "PH3の宣言場モデルと静穏な媒体条件に従う。既存PHへ該当しない作用を追加しない。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "到着とともに受領面の上端と幅が増える",
+            "輸送終了後の面積保持と同一中心への収束"
+          ],
+          "indirect_evidence": "相手PHの量/境界変化と同じ所有者時相で整合する。",
+          "figure_ground_separation": "high",
+          "edge_legibility": "有色の厚い受領面に上端近傍の広い明度帯を置く。上端だけの細線や均一な塗りglowに置換しない。",
+          "perceptual_failure_risk": "中央の小さな定常物に見えること、充填前後が区別不能なこと、終端に広いglowだけ残ること。",
+          "cue_roles": [
+            {
+              "cue": "到着とともに受領面の上端と幅が増える",
+              "supports": "腹部位置で充填される受領面の面積・所在",
+              "reliability_and_overlap": "明暗両背景での色とcoverageに依存。輪郭と面積は完全に独立の証拠ではない。"
+            },
+            {
+              "cue": "輸送終了後の面積保持と同一中心への収束",
+              "supports": "単一原因系の段階と引渡し",
+              "reliability_and_overlap": "全寿命観察と先行/後続PHが必要。静止画単独で因果機構を確定できない。"
+            }
+          ],
+          "confusable_alternative": "中央の小さな定常物に見えること、充填前後が区別不能なこと、終端に広いglowだけ残ること。",
+          "disambiguating_evidence": "底部から上へ増える充填面と残量。中央の小さな発光体だけを主形にしない。 実GPUでその解釈が成立したかはnot_run。",
+          "viewing_conditions": "ブラウザー倍率100%、キャラクター基準128wu→64CSSpx、dark/light各128×112CSSpx、片方ずつも観察。DPR1と高DPRは別条件。実身体なしのため人体材質への受領は判別範囲外。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "正射影の画面面に投影した有限な宣言場。",
+          "normal_field_coherence": "3D法線を測定しておらず、解析断面の厚み/境界に基づく色の秩序を保つ。",
+          "curvature_behavior": "丸みを持つ側境界・曲がった底部・上昇する充填上端の交差。未到着時に空容器の外形を先行させない。",
+          "silhouette_logic": "底部から上へ増える充填面と残量。中央の小さな発光体だけを主形にしない。",
+          "contact_relation": "身体の代用品ではなく腹部位置の受領表示面。実身体材質/深度との合成はホストの別工程で未接続。BOUNDS内。",
+          "spatial_relation": "全PHが同じ現在足元とworld→camera→screen変換を使う。相対距離をseedやACC2で変えない。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "R=smoothstep(0.30,0.76,u)、受領面width/height、density=.75+1.30R、squeeze=1−.88smoothstep(0.84,1,u)、fade=1−smoothstep(0.90,1,u)。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "追加獲得や再点火ではなく、既存受領状態が有限の表示寿命を終える。u=1は完全なゼロ。",
+          "damping_profile": "別の物理減衰器はなく、PHASEに定義した有限包絡を使用。uの区分積分をリセットしない。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "追加獲得や再点火ではなく、既存受領状態が有限の表示寿命を終える。u=1は完全なゼロ。",
+          "transition_failure_risk": "前端/後端/充填の順序逆転、途中切替時の位相飛び、未受領の先行発光。",
+          "driving_input": "PH2の前端到着と輸送量。位置は受け手の現在足元へ追従し、イベント受信時の古い位置へ残さない。",
+          "response_timescale": "充填0.30〜0.76、保持0.76〜0.84、収束0.84〜1。供給/輸送より後まで残る。",
+          "phase_relation": "PH2と接続する0.30〜0.76でR増加。後端が消えた後も保持し、0.84以降は縮む。受光範囲/強度もsqueezeに従う。",
+          "stability_condition": "確定通知/現在受け手/可視性/有効期限/セッションが成立し、同じ所有者時計を共有する範囲。条件消失時は音とEを破棄し再開しない。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH3.Materials -> PH3.Optics: 境界・密度・局所状態がopacityと放射の可視差へ反映する。",
+            "PH2.Materials -> PH3.Materials: 前端が受領域へ到着したu=0.30からTをRへ移す。源が空になるu=0.62以降は輸送の後端を受領側へ回収。 受領面の上端・幅・濃度がRに従って増加し、u=0.76の輸送終了後もu=0.84まで保持する。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "検査上だけRを固定すれば、色面の高さ・幅・densityの増加が失われると予測する。固定中央物は負対照であり採用描画ではない。",
+            "predicted_response": "底部から上へ増える充填面と残量。中央の小さな発光体だけを主形にしない。",
+            "competing_explanation": "背景色、DPR、表示倍率、時間サンプリング、他Eによる遮蔽でも読解が変わる。r0.1の原因は未特定。",
+            "uncertainty": "採用した形・時間は設計仮説。CPU解析場と関数テストはWGSL実行、実H64の認識、実身体合成を証明しない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "前端が受領域へ到着したu=0.30からTをRへ移す。源が空になるu=0.62以降は輸送の後端を受領側へ回収。",
+              "consequence": "受領面の上端・幅・濃度がRに従って増加し、u=0.76の輸送終了後もu=0.84まで保持する。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH3",
+              "basis": "現在の放射源の位置・範囲・強度にのみ依存する狭い観測拡散。"
+            },
+            {
+              "source": "OBS2",
+              "target": "PH3",
+              "basis": "同じPHの色面・opacity・放射を表示変換する。"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "到着とともに受領面の上端と幅が増える",
+            "輸送終了後の面積保持と同一中心への収束"
+          ],
+          "indirect": [
+            "相手PHへの量/境界の引渡しが同じuに接続する。"
+          ],
+          "candidates": [
+            "gradient",
+            "boundary",
+            "deformation",
+            "attenuation",
+            "silhouette",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH3",
+              "change": "同じキャリアの放射・可視境界が、その量と位相へ従属する。画面変換はOBS側に登録し、別PHへの力学作用とは扱わない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH3.StateDynamics",
+          "retained_cues": [
+            "到着とともに受領面の上端と幅が増える",
+            "輸送終了後の面積保持と同一中心への収束"
+          ],
+          "simplification": "底部から上へ増える充填面と残量。中央の小さな発光体だけを主形にしない。",
+          "omission_scope": [],
+          "exaggeration_scope": [
+            "小さい放射極値の白飛びは主形と有色面を保つ範囲のみ。"
+          ],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable:既存の面・境界・時相で二軸を扱う。",
+          "axes": {
+            "ratio_proportion": [
+              "高さ8→44wuと半幅22→34wuで面積に受領量を表す",
+              "底部位置とinletの重なりを残して上端だけを上げる"
+            ],
+            "temporal_phase": [
+              "輸送中の受領面積の単調増加",
+              "輸送後の保持と受領中心への収束"
+            ]
+          },
+          "GTB_connections": {
+            "Good": "同一の確定通知の因果と所有者を保持。",
+            "Truth": "座標・S/T/R・境界・時間を整合させ、未測定の物理を実証と偽らない。",
+            "Beauty": "底部から上へ増える充填面と残量。中央の小さな発光体だけを主形にしない。"
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "中央の小さな定常物だけに見える",
+          "source_transport_receiverの可視接続の欠落",
+          "glowによる主形代用",
+          "粒子/ノイズ/細線による水増し",
+          "未受領なのに蓄積する",
+          "CPU検査をGPU画素/聴感合格と呼ぶ"
+        ]
+      }
+    },
+    "Acceptance": {
+      "all_PH_have_required_full_structure": true,
+      "visible_implicit_latent_have_same_field_set": true,
+      "OBS_not_in_PH_registry": true,
+      "PIA_resolved_as_identification_lifecycle": true
+    }
+  },
+  "PEMTemplate": {
+    "Mode": {
+      "phenomenon_equality": true,
+      "focus_phenomenon": "none"
+    },
+    "CausalMesh": {
+      "physical_mesh_required": true,
+      "gaze_target_policy": "standard",
+      "adjustment_reason": "not_applicable:2つの既存の視認経路が明示意図と両立。",
+      "gaze_path_A": "PH1の横長面→PH2の連続する太い面→PH3の上がる充填境界。",
+      "gaze_path_B": "PH1の外縁からPH2の内側コントラストを追い、PH3の下端/上端の差と保持面へ戻る。物理帰還と呼ばない。",
+      "local_extrema_connected_to_gaze_paths": true
+    },
+    "AttentionControl": {
+      "attention_focus": "hierarchical",
+      "single_requires_explicit_request": true
+    },
+    "Acceptance": {
+      "no_unexplained_isolation": true,
+      "gaze_paths_match_selected_policy_and_explicit_intent": true,
+      "local_peak_returns_to_mesh": true
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "3つの世界内キャリアPHを宣言している。背景panelは表示比較条件であり新しい世界物体ではない。"
+    },
+    "Units": {
+      "length": "m",
+      "time": "s",
+      "temperature": "K",
+      "pressure": "Pa",
+      "angle": "rad"
+    },
+    "WorldCoordinates": {
+      "handedness": "right_handed",
+      "X": "right_positive",
+      "Y": "up_positive",
+      "Z": "backward_positive",
+      "camera_forward": "negative_Z",
+      "origin": "declared_anchor_origin:受け手の現在足元"
+    },
+    "CameraCoordinates": {
+      "X": "right_positive",
+      "Y": "up_positive",
+      "forward": "negative_Z",
+      "projection": "orthographic",
+      "FOV_or_scale": "H64で40CSSpx/m、各128×112CSSpx panelの縦範囲2.8m相当。1wu=1/80mは設計換算。"
+    },
+    "ScreenCoordinates": {
+      "domain": "[0,1]x[0,1]",
+      "x": "0_left_to_1_right",
+      "y": "0_top_to_1_bottom"
+    },
+    "TransformChain": {
+      "order": [
+        "world",
+        "camera",
+        "screen"
+      ],
+      "world_to_camera": "B X=(gameX−playerX)/80, B Y=−(gameY−playerY)/80, Z=0。カメラ回転なし。",
+      "camera_to_screen": "H64 panel内x=(64+40X)/128、y=(92−40Y)/112。shaderではこれをphysical pxへ換算し同一scaleを各PHに使用。"
+    },
+    "ContactCoordinates": {
+      "contact_patch": "実床・人形は描かない。Eは現在foot centerへ追従し、inlet(−13,−55)wuが腹部受領面内に入る。",
+      "contact_normal": "not_applicable:物質衝突をモデル化していない。",
+      "support_relation": "not_applicable",
+      "no_penetration": true
+    },
+    "VectorField": {
+      "dominant_vector": {
+        "direction": "routePoint(v)の接線。B Y上への輸送。",
+        "magnitude": "front/tailの共通uの進行で決まる設計速度。実測値ではない。",
+        "falloff": "供給終了後に後端が回収される。",
+        "fluctuation": "経路のランダム変位なし。reducedMotionは必須の輸送を除去しない。"
+      },
+      "secondary_vector": {
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "magnitude": 0,
+        "falloff": "none",
+        "fluctuation": "none"
+      }
+    },
+    "Gravity": {
+      "condition": "normal",
+      "vector": [
+        0,
+        -1,
+        0
+      ],
+      "strength": "通常重力の向きを記述。非質量carrierへ機械的加速度を適用しない。",
+      "affected_responses": "not_applicable:bodyや床の運動をこのEは再計算しない。",
+      "evidence": "Eの固定原点と受領位置は現在のbody位置入力を追跡。重力の大きさはこのEの画像から識別不能。"
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "air",
+      "medium_properties": {
+        "density": "not_simulated:媒体場はcalm。非質量carrierの表示に密度値を使わない。",
+        "viscosity": "not_simulated:実流体輸送は選んでいない。"
+      },
+      "Field": {
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "speed": "0 m/s",
+        "gust": "none",
+        "shear": "none",
+        "turbulence": "none"
+      },
+      "ApplicableResponses": {
+        "body": "not_applicable:body物理はホスト所有。",
+        "cloth": "not_applicable:衣服を生成しない。",
+        "hair": "not_applicable:髪を生成しない。",
+        "loose_elements": "not_applicable:粒子や破片を追加しない。",
+        "environment": "静穏。風VFXや空気の揺れを足さない。"
+      },
+      "non_applicable_responses_explicit": true
+    },
+    "Acceptance": {
+      "world_camera_screen_transform_defined": true,
+      "screen_axis_convention_defined": true,
+      "Gravity_present": true,
+      "WindCapsule_present": true,
+      "medium_state_present": true,
+      "no_inapplicable_wind_evidence_required": true
+    }
+  },
+  "OctaDomainTemplate": {
+    "Domains": {
+      "Thermo": {
+        "responsibility": "各PH.OctaDomain.Domainsの適用可否・役割・具体的応答を正本とする。"
+      },
+      "Fluid": {
+        "responsibility": "各PH.OctaDomain.Domainsの適用可否・役割・具体的応答を正本とする。"
+      },
+      "Optics": {
+        "responsibility": "各PH.OctaDomain.Domainsの適用可否・役割・具体的応答を正本とする。"
+      },
+      "Materials": {
+        "responsibility": "各PH.OctaDomain.Domainsの適用可否・役割・具体的応答を正本とする。"
+      },
+      "Electromagnetics": {
+        "responsibility": "各PH.OctaDomain.Domainsの適用可否・役割・具体的応答を正本とする。"
+      },
+      "Rheology": {
+        "responsibility": "各PH.OctaDomain.Domainsの適用可否・役割・具体的応答を正本とする。"
+      },
+      "WaveOptics": {
+        "responsibility": "各PH.OctaDomain.Domainsの適用可否・役割・具体的応答を正本とする。"
+      },
+      "SurfaceScience": {
+        "responsibility": "各PH.OctaDomain.Domainsの適用可否・役割・具体的応答を正本とする。"
+      }
+    },
+    "Acceptance": {
+      "all_8_domains_present": true,
+      "role_classification_present": true,
+      "latent_does_not_require_direct_visualization": true,
+      "non_applicable_domains_retained_with_reason_and_latent_role": true
+    }
+  },
+  "AnimeStudiesTemplate": {
+    "KeyframeSnapshot": {
+      "phase": "action_peak",
+      "state_t_minus_1_evidence": "u=0.47より前では供給面が大きく、受領面が低い。",
+      "state_t_evidence": "u=0.47で三領域が連続し、源の減少と腹部への充填が同時に見える設計。",
+      "state_t_plus_1_evidence": "後に源が空になり、輸送後端が畳まれたあとも受領面が保持される。"
+    },
+    "Layout": {
+      "staging": "H64の中央を小物ひとつで占めず、足元→左に厚みを持つ経路→腹部の充填面に広がる。頭上・外側は余白。",
+      "projection_consistency_ref": "CoordinateGravityWindTemplate",
+      "whitespace_role": "広い上昇粒子雲で余白を埋めず、受領位置を区別する。"
+    },
+    "PoseActing_or_SceneActing": {
+      "character_ref": "not_applicable:ギャラリーはキャラクター身体を描かない。ホスト身体の姿勢はこのEで変更しない。",
+      "object_balance": "有限carrierの供給/輸送/受領を共通時刻へ束縛。",
+      "contact_logic": "foot/receiver相対アンカーのみ。床反力・衝突の捏造なし。"
+    },
+    "MotionReadability": {
+      "motion_blur_smear_speed_line_policy": "explicit_user_request_only",
+      "primary_causality_replacement_by_motion_effects": false
+    },
+    "CompositeIntegration": {
+      "observation_ref": "ObservationIntegrationTemplate",
+      "contact_shadow_used_for_integration": "not_applicable:床接触や投影影を追加しない。"
+    },
+    "Acceptance": {
+      "previous_and_next_time_or_explicit_ambiguity_accounted_for": true,
+      "projection_consistent": true,
+      "posteffects_do_not_replace_primary_causality": true
+    }
+  },
+  "ObservationIntegrationTemplate": {
+    "ObservationRegistry": {
+      "OBS1": {
+        "operation_type": "posteffect",
+        "input_references": [
+          "PH1",
+          "PH2",
+          "PH3"
+        ],
+        "target_mask": "PH1/PH2/PH3の現在の有限放射分布。受領の収束時は光の範囲をsqueezeで、強度をsqueeze²で減らす。",
+        "stage": "post_composite",
+        "composite_method": "alpha_blend",
+        "intensity": "min(0.10,peak*0.38)*(1−coverage*0.86)。主形内の観測拡散を抑え、放射の範囲へ束縛する。",
+        "protected_regions": [
+          "有色の主形",
+          "源/輸送/受領の外縁",
+          "BOUNDS外",
+          "存在しない人物や未指定背景を描画しない"
+        ],
+        "output_consequence": "強い源の外側だけに低強度のにじみを作り、形の占有域と発光量を分ける。",
+        "dependencies": [
+          "PH1",
+          "PH2",
+          "PH3"
+        ],
+        "sampling_consequence": "H64の主形より幅広い低周波成分。細い光条・粒子・点滅を含めない。Imageのframe cadenceはnot_applicable。E時間の入力位相はPHと同一。"
+      },
+      "OBS2": {
+        "operation_type": "tone",
+        "input_references": [
+          "OBS1",
+          "PH1",
+          "PH2",
+          "PH3",
+          "display_condition"
+        ],
+        "target_mask": "選択したdark/light panel全体。PHの位置と形は変えない。",
+        "stage": "display",
+        "composite_method": "replace_with_constraint",
+        "intensity": "linearで合成した値をsRGBへ変換。白飛びは小さい発光核に限り許容し、有色の主形を残す。",
+        "protected_regions": [
+          "色のある本体",
+          "有限なマスク境界",
+          "診断背景の全体色",
+          "透明出力のpremultiplied alpha"
+        ],
+        "output_consequence": "診断背景へ既存Eの局所入射光を表示し、色/coverage/放射の合成後に表示変換する。暗/明背景で同じEを比較する。",
+        "dependencies": [
+          "OBS1",
+          "PH1",
+          "PH2",
+          "PH3",
+          "display_condition"
+        ],
+        "sampling_consequence": "scene textureをtextureLoadで同一画素位置へ転送。画像テクスチャ素材は不使用。GPU readback以外を画素実証に数えない。"
+      }
+    },
+    "SamplingContract": {
+      "output_resolution": "H64の主プレビューは256×112 CSS pxに暗/明の128×112 panelを並べる。backingはCSS×DPR。GPU検査はDPR1、256×112で実行するコードを同梱。",
+      "intended_display_scale": "基準高128 world unitsを64 CSS pxとして評価。H128/3倍は補助で、H64合格の根拠にしない。",
+      "spatial_detail_policy": "源最大43×13CSSpx、輸送全幅約11.5〜14CSSpx、満量受領約34×22CSSpx。解析coverageはmax(0.5,0.65/scale)wu。数値は設計値、実GPU可読性は未観察。",
+      "temporal_sampling": "Image設計にframe cadenceはnot_applicable。E実装はrequestAnimationFrameの実時刻を区分積分し、露光積分・残像を追加しない。端末の実cadence/表示遅延は未測定。",
+      "filter_and_resample_policy": "WGSLの解析coverage、同解像度textureLoadでのpresentのみ。CPU参照PNGは検査資料でランタイムは読み込まない。GPU処理の実行はnot_run。"
+    },
+    "ImageIntegration": {
+      "ToneColor": [
+        "OBS2"
+      ],
+      "LightIntegration": [
+        "OBS1",
+        "OBS2"
+      ],
+      "ShadowDensity": [],
+      "DepthAir": [],
+      "EdgeLine": [],
+      "TextureOutput": []
+    },
+    "LensFlareField": {
+      "registry_id": "none",
+      "artifact_type": "optical_observation_artifact",
+      "world_anchor": "none",
+      "SourceMapping": {
+        "source_state": "none",
+        "source_id": "none",
+        "source_screen_position": "not_applicable",
+        "source_luminance_rank": "none"
+      },
+      "ResponseVisibility": {
+        "level": "none",
+        "reason": "理想的な正射影ゲーム描画で、実レンズ/コーティング/絞り光路を指定していない。選択したsource-bound応答はOBS1の表示上の局所拡散だけ。"
+      },
+      "LensModel": {
+        "flare_mode": "latent",
+        "coating_strength": "not_applicable",
+        "aperture_state": "not_applicable",
+        "anamorphic": false
+      },
+      "SpatialBinding": {
+        "image_center_relation": "not_applicable",
+        "optical_axis_offset": "none",
+        "chain_axis": "none"
+      },
+      "Responses": {
+        "Ghost": "disabled",
+        "Veil": "disabled",
+        "Streak": "disabled",
+        "Spectral": "disabled"
+      }
+    },
+    "IntensityBudget": {
+      "global_observation_budget": "OBS1は最大alpha0.10、source-boundな有限近傍のみ。OBS2はlinear合成→sRGB表示。粒子・flare・grainの別予算なし。",
+      "para": "not_selected",
+      "flare_gradient": "not_selected",
+      "glow": "low:OBS1のみ",
+      "diffusion": "OBS1のsource-boundな周辺拡散に限る。glowと同一の操作/予算であり、別の全体柔化を重ねない。",
+      "grain": "not_selected",
+      "chromatic_aberration": "not_selected",
+      "protected_region_priority": "highest",
+      "intentional_departures": [
+        {
+          "OBS_ref": "OBS2",
+          "scope": "主形を保つ小さな発光核のみ",
+          "intent_basis": "ユーザーは白飛びを一律禁止せず実寸での主形保持を優先。",
+          "preserved_relations": "本体の有色面、幅、源/輸送/受領の区別、BOUNDSを保持。"
+        }
+      ]
+    },
+    "CompositeValidation": {
+      "contour_preserved": "not_tested",
+      "highlight_clipping": "not_tested",
+      "shadow_crushing": "not_tested",
+      "chroma_displacement": "not_tested",
+      "fine_detail_retention": "not_tested",
+      "protected_background_preserved": "not_tested"
+    },
+    "Acceptance": {
+      "OBS_separate_from_PH": true,
+      "physical_lensflare_source_binding_preserved": true,
+      "display_artifact_does_not_fake_physical_source": true,
+      "intensity_budget_is_single_source_of_truth": true,
+      "sampling_conditions_and_actual_execution_distinguished": true
+    }
+  },
+  "ExtremumDesignColorTemplate": {
+    "PEV": {
+      "candidate_state_set": [
+        "handoff_047:採用済み。源、連続経路、受領面の充填が同じuで成立。"
+      ],
+      "selected_physics_extremum": "handoff_047",
+      "reason": "三段階を一原因系として保つ採用状態。r0.1の原因分析やA/Bの優越実証ではない。"
+    },
+    "AES": {
+      "selected_from_PEV_only": true,
+      "visual_circulation": "源→連続した経路→受領面の充填境界へ進み、保持状態で止まる。",
+      "asymmetric_balance": "太い経路を左側へ配し、受領面を腹部中心へ広げる。細い装飾線を足さない。",
+      "tension_release": "移動する体積から腹部の保持状態へ、最後は内側に収束。",
+      "body_environment_consonance": "足元/腹部への同一束縛。実spriteによる検査は未実施。",
+      "selected_aesthetic_extremum": "handoff_047"
+    },
+    "DesignScience": {
+      "VisualHierarchy": "有色の主形→核→有限の近傍光。",
+      "DensityPlan": "源/輸送/受領の面に密度を集め、外側は余白。",
+      "ShapeOrder": "横長の供給面、太く曲がる連続輸送面、上へ満ちる受領面。丸い中央物の定常発光へ統一しない。",
+      "OrnamentFunction": "独立した装飾を追加しない。色面と核は状態の読解に使う。"
+    },
+    "CCM": {
+      "Palette": {
+        "base": "青緑の厚い輸送本体",
+        "secondary": "深い青緑の受領面とミントの充填上端",
+        "accent": "足元の琥珀色と出口側の淡金の放射",
+        "neutral": "暗/明の診断背景と有色の低明度外縁"
+      },
+      "ColorDynamics": {
+        "temp": "mixed",
+        "value_range": "暗い外縁、有色の中間面、小さい高輝度核。",
+        "saturation": "本体の彩度を残し、全面白化しない。"
+      },
+      "Lighting": {
+        "key_K": "not_applicable:非黒体の宣言場発光。実色温度を捏造しない。",
+        "fill_tint": "各sourceの色と距離で有限減衰。"
+      },
+      "BackgroundBinding": {
+        "bg_dominant": "linear RGB dark=[0.006,0.010,0.016], light=[0.76,0.80,0.78]",
+        "bg_accent": "既存E source由来の局所光のみ。"
+      },
+      "PerceptualControl": {
+        "attention_focus": "hierarchical",
+        "figure_ground_stability": "high",
+        "arousal_level": "mid",
+        "perceptual_noise_tolerance": "low"
+      }
+    },
+    "Acceptance": {
+      "PEV_applied_before_AES_when_world_candidates_exist": true,
+      "AES_does_not_override_world_validity": true,
+      "legacy_FDS_resolved_to_DesignScience": true,
+      "CCM_fields_fixed": true
+    }
+  },
+  "ReflectionClosureTemplate": {
+    "Applicability": {
+      "applies_when": [
+        "reflection",
+        "highlight",
+        "sheen",
+        "gloss",
+        "wetness",
+        "metallic_response",
+        "skin_highlight",
+        "cloth_sheen"
+      ],
+      "otherwise": "latent_optics_condition",
+      "instance_reason": "高輝度部は宣言場の自己発光であり反射ハイライトではない。鏡面・濡れ・皮膚・布を描かない。"
+    },
+    "ReflectionClosureBlock": {},
+    "not_applicable_reason": "読み取れる反射応答を選ばない。周辺光の診断表示を実レンズ/鏡面反射として偽装しない。",
+    "Acceptance": {
+      "reflection_integrated_into_PH_mesh": true,
+      "lensflare_registered_as_OBS_not_reflection": true
+    }
+  },
+  "PhenomenonProfileTemplate": {
+    "ApplicabilityGuide": {
+      "selections": []
+    },
+    "ProfilePolicy": {
+      "secondary_boost_only": true,
+      "full_PH_structure_still_required": true,
+      "only_selected_profiles_in_design": true
+    },
+    "Profiles": {},
+    "Acceptance": {
+      "profile_does_not_replace_PH_schema": true,
+      "reactive_profile_only_when_applicable": true
+    }
+  },
+  "TermsTemplate": {
+    "PH": "world-internal phenomenon",
+    "OBS": "observation/display operation",
+    "PIA": "PH identification lifecycle",
+    "PEM": "Phenomenon Equality Mode",
+    "PEV": "Physics Extremum Visualization",
+    "AES": "Aesthetic Extremum Selection",
+    "CCM": "Color Catalog Module",
+    "FDS": "legacy alias -> DesignScience + AES Form Design Selection",
+    "DeclaredIntent": "explicit user intent preservation",
+    "ValidationResults": "actual validation outcomes separated from requirements",
+    "Acceptance": {
+      "undefined_legacy_terms_absent": true
+    }
+  },
+  "ExtensionActivationTable": {
+    "entries": {
+      "VFX": {
+        "trigger": "attribute_resolved",
+        "dependencies": [
+          "PhenomenonSystemTemplate",
+          "ObservationIntegrationTemplate"
+        ],
+        "output_blocks": [
+          "VFX"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "ECodeImplementation": {
+        "trigger": "executable_runtime_E_code_explicit",
+        "dependencies": [
+          "VFX",
+          "ObservationIntegrationTemplate"
+        ],
+        "output_blocks": [
+          "ECodeImplementation"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "PostEffects": {
+        "trigger": "attribute_resolved",
+        "dependencies": [
+          "ObservationIntegrationTemplate"
+        ],
+        "output_blocks": [
+          "PostEffects"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "LDM": {
+        "trigger": "nonexplicit_target_requires_luminance_dynamics_true",
+        "dependencies": [
+          "VFX",
+          "PostEffects"
+        ],
+        "output_blocks": [
+          "LuminanceDynamicsModule"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "GradientAnchorPolicy": {
+        "trigger": "hue_gradient_attribute_resolved",
+        "dependencies": [
+          "PhenomenonSystemTemplate"
+        ],
+        "output_blocks": [
+          "GradientAnchorPolicy"
+        ],
+        "disabled_behavior": "omit"
+      }
+    },
+    "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+    "output_contract_ref": "FoundationOperationTemplate.OutputContract",
+    "Acceptance": {
+      "one_activation_source_of_truth": true,
+      "disabled_modules_omitted": true
+    }
+  },
+  "VFX": {
+    "trigger": "attribute_resolved",
+    "world_registration": "PhenomenonSystemTemplate.PhenomenonRegistry",
+    "observation_registration": "ObservationIntegrationTemplate.ObservationRegistry",
+    "design_intent": {
+      "subject_and_action": "一件の確定済み正の離散マナ増加を表示。足元の源→輸送→腹部位置への受領量の蓄積→収束・消失。H64の暗明両背景・全寿命で連続した因果を読む。ゲーム状態には書き込まない。",
+      "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+      "primary_read": "H64で横長の源→連続した太い面→底から上へ増える受領面。",
+      "layering_basis": "供給/輸送/受領の状態差、同じPHからの入射光、観測拡散と表示変換を区別する。部品数のための追加はしない。"
+    },
+    "layers": [
+      {
+        "layer_id": "L1",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "指定された源→輸送→受領Eの実現を詳述。新しい物体・発生原因・装飾目的を作らない。"
+        },
+        "PH_refs": [
+          "PH1"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "足元の源が存在し、排出とともに面積が減る。",
+        "spatial_structure": {
+          "anchor_and_transform": "現在足元world→正射影screen、H64=0.5CSSpx/wu。",
+          "extent_orientation_depth": "現在足元の相対(0,−5)wu、最大86×26wuの充実した面。Sの減少で幅・高さ・濃度が減る。",
+          "macro": "現在足元の相対(0,−5)wu、最大86×26wuの充実した面。Sの減少で幅・高さ・濃度が減る。",
+          "meso": "足元の源が存在し、排出とともに面積が減る。 内部色と境界coverageを分ける。",
+          "micro": "髪幅の細線・粒子・ノイズは不採用。面の輪郭を適切に標本化。",
+          "edge_and_occlusion": "源→輸送→受領のover順を共有。暗い有色の外縁を残す。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "宣言場の面/密度/放射と解析的距離。",
+          "emission_opacity_density": "各PHのdensityがopacityへ、局所core/crest/lipが放射へ別々に作用。",
+          "color_and_light_response": "CCMの琥珀source、青緑transport、ミントreceiveを状態へアンカー。",
+          "model_refs": [
+            "PH1.PhysicalModel"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "src/contract.mjsのPHASEとOwnerClockの積分。足元の源が存在し、排出とともに面積が減る。",
+          "distribution_and_correlation": "粒子集合は不使用。同時発生・速度・寿命の独立乱数を足さない。",
+          "onset_peak_decay": "PH1は0.62で排出終了、PH2は0.76で輸送終了、PH3は0.84まで保持して1で消失。観測応答は現在のPHに従属。",
+          "state_and_sampling_refs": [
+            "PH1.StateDynamics"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "shaders/mana.wgsl:sourceField。RGB/opacityはlinear合成、最後にsRGBへ。",
+          "protected_cues": "源・経路・受領面・event id・包絡・充填の順序。",
+          "failure_to_avoid": "小さな中央物だけの表示、細線化、glowのみの末尾、PH/OBSの二重生成。"
+        }
+      },
+      {
+        "layer_id": "L2",
+        "role": "transport",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "指定された源→輸送→受領Eの実現を詳述。新しい物体・発生原因・装飾目的を作らない。"
+        },
+        "PH_refs": [
+          "PH2"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "源から受領へ太い連続面を渡し、前端と後端の動きを分ける。",
+        "spatial_structure": {
+          "anchor_and_transform": "現在足元world→正射影screen、H64=0.5CSSpx/wu。",
+          "extent_orientation_depth": "相対(−24,−6)wuから(−13,−55)wuへ曲がる一つの太い面。pathの16分割は距離評価であり粒子群の描画ではない。",
+          "macro": "相対(−24,−6)wuから(−13,−55)wuへ曲がる一つの太い面。pathの16分割は距離評価であり粒子群の描画ではない。",
+          "meso": "源から受領へ太い連続面を渡し、前端と後端の動きを分ける。 内部色と境界coverageを分ける。",
+          "micro": "髪幅の細線・粒子・ノイズは不採用。面の輪郭を適切に標本化。",
+          "edge_and_occlusion": "源→輸送→受領のover順を共有。暗い有色の外縁を残す。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "宣言場の面/密度/放射と解析的距離。",
+          "emission_opacity_density": "各PHのdensityがopacityへ、局所core/crest/lipが放射へ別々に作用。",
+          "color_and_light_response": "CCMの琥珀source、青緑transport、ミントreceiveを状態へアンカー。",
+          "model_refs": [
+            "PH2.PhysicalModel"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "src/contract.mjsのPHASEとOwnerClockの積分。源から受領へ太い連続面を渡し、前端と後端の動きを分ける。",
+          "distribution_and_correlation": "粒子集合は不使用。同時発生・速度・寿命の独立乱数を足さない。",
+          "onset_peak_decay": "PH1は0.62で排出終了、PH2は0.76で輸送終了、PH3は0.84まで保持して1で消失。観測応答は現在のPHに従属。",
+          "state_and_sampling_refs": [
+            "PH2.StateDynamics"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "shaders/mana.wgsl:transportField。RGB/opacityはlinear合成、最後にsRGBへ。",
+          "protected_cues": "源・経路・受領面・event id・包絡・充填の順序。",
+          "failure_to_avoid": "小さな中央物だけの表示、細線化、glowのみの末尾、PH/OBSの二重生成。"
+        }
+      },
+      {
+        "layer_id": "L3",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "指定された源→輸送→受領Eの実現を詳述。新しい物体・発生原因・装飾目的を作らない。"
+        },
+        "PH_refs": [
+          "PH3"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "到着に応じて受領面の高さ・幅が増え、保持したあと収束する。",
+        "spatial_structure": {
+          "anchor_and_transform": "現在足元world→正射影screen、H64=0.5CSSpx/wu。",
+          "extent_orientation_depth": "受け手足元から相対(0,−61)wuを中心とする非物質の受領領域。底部は相対中心から+18wu、Rとともに高さ8→44wu、半幅22→34wu。",
+          "macro": "受け手足元から相対(0,−61)wuを中心とする非物質の受領領域。底部は相対中心から+18wu、Rとともに高さ8→44wu、半幅22→34wu。",
+          "meso": "到着に応じて受領面の高さ・幅が増え、保持したあと収束する。 内部色と境界coverageを分ける。",
+          "micro": "髪幅の細線・粒子・ノイズは不採用。面の輪郭を適切に標本化。",
+          "edge_and_occlusion": "源→輸送→受領のover順を共有。暗い有色の外縁を残す。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "宣言場の面/密度/放射と解析的距離。",
+          "emission_opacity_density": "各PHのdensityがopacityへ、局所core/crest/lipが放射へ別々に作用。",
+          "color_and_light_response": "CCMの琥珀source、青緑transport、ミントreceiveを状態へアンカー。",
+          "model_refs": [
+            "PH3.PhysicalModel"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "src/contract.mjsのPHASEとOwnerClockの積分。到着に応じて受領面の高さ・幅が増え、保持したあと収束する。",
+          "distribution_and_correlation": "粒子集合は不使用。同時発生・速度・寿命の独立乱数を足さない。",
+          "onset_peak_decay": "PH1は0.62で排出終了、PH2は0.76で輸送終了、PH3は0.84まで保持して1で消失。観測応答は現在のPHに従属。",
+          "state_and_sampling_refs": [
+            "PH3.StateDynamics"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "shaders/mana.wgsl:receiveField。RGB/opacityはlinear合成、最後にsRGBへ。",
+          "protected_cues": "源・経路・受領面・event id・包絡・充填の順序。",
+          "failure_to_avoid": "小さな中央物だけの表示、細線化、glowのみの末尾、PH/OBSの二重生成。"
+        }
+      },
+      {
+        "layer_id": "L4",
+        "role": "environment_response",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "指定された源→輸送→受領Eの実現を詳述。新しい物体・発生原因・装飾目的を作らない。"
+        },
+        "PH_refs": [
+          "PH1",
+          "PH2",
+          "PH3"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "源/輸送/受領の現在位置から有限な周辺入射光を出す。実材質への適用はホスト責務。",
+        "spatial_structure": {
+          "anchor_and_transform": "現在足元world→正射影screen、H64=0.5CSSpx/wu。",
+          "extent_orientation_depth": "現在足元の相対(0,−5)wu、最大86×26wuの充実した面。Sの減少で幅・高さ・濃度が減る。 / 相対(−24,−6)wuから(−13,−55)wuへ曲がる一つの太い面。pathの16分割は距離評価であり粒子群の描画ではない。 / 受け手足元から相対(0,−61)wuを中心とする非物質の受領領域。底部は相対中心から+18wu、Rとともに高さ8→44wu、半幅22→34wu。",
+          "macro": "現在足元の相対(0,−5)wu、最大86×26wuの充実した面。Sの減少で幅・高さ・濃度が減る。 / 相対(−24,−6)wuから(−13,−55)wuへ曲がる一つの太い面。pathの16分割は距離評価であり粒子群の描画ではない。 / 受け手足元から相対(0,−61)wuを中心とする非物質の受領領域。底部は相対中心から+18wu、Rとともに高さ8→44wu、半幅22→34wu。",
+          "meso": "源/輸送/受領の現在位置から有限な周辺入射光を出す。実材質への適用はホスト責務。 内部色と境界coverageを分ける。",
+          "micro": "髪幅の細線・粒子・ノイズは不採用。面の輪郭を適切に標本化。",
+          "edge_and_occlusion": "源→輸送→受領のover順を共有。暗い有色の外縁を残す。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "宣言場の面/密度/放射と解析的距離。",
+          "emission_opacity_density": "各PHのdensityがopacityへ、局所core/crest/lipが放射へ別々に作用。",
+          "color_and_light_response": "CCMの琥珀source、青緑transport、ミントreceiveを状態へアンカー。",
+          "model_refs": [
+            "PH1.PhysicalModel",
+            "PH2.PhysicalModel",
+            "PH3.PhysicalModel"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "src/contract.mjsのPHASEとOwnerClockの積分。源/輸送/受領の現在位置から有限な周辺入射光を出す。実材質への適用はホスト責務。",
+          "distribution_and_correlation": "粒子集合は不使用。同時発生・速度・寿命の独立乱数を足さない。",
+          "onset_peak_decay": "PH1は0.62で排出終了、PH2は0.76で輸送終了、PH3は0.84まで保持して1で消失。観測応答は現在のPHに従属。",
+          "state_and_sampling_refs": [
+            "PH1.StateDynamics",
+            "PH2.StateDynamics",
+            "PH3.StateDynamics"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "shaders/mana.wgsl:lightField。RGB/opacityはlinear合成、最後にsRGBへ。",
+          "protected_cues": "源・経路・受領面・event id・包絡・充填の順序。",
+          "failure_to_avoid": "小さな中央物だけの表示、細線化、glowのみの末尾、PH/OBSの二重生成。"
+        }
+      },
+      {
+        "layer_id": "L5",
+        "role": "observation_support",
+        "domain": "observation",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "指定された源→輸送→受領Eの実現を詳述。新しい物体・発生原因・装飾目的を作らない。"
+        },
+        "PH_refs": [],
+        "OBS_refs": [
+          "OBS1"
+        ],
+        "function_and_visible_result": "選んだ源に限る弱い観測拡散。これを外しても主形は残る。",
+        "spatial_structure": {
+          "anchor_and_transform": "screenマスク。世界の厚みや接触を与えない。",
+          "extent_orientation_depth": "ObservationRegistryの対象マスクと合成順に従う。",
+          "macro": "ObservationRegistryの対象マスクと合成順に従う。",
+          "meso": "選んだ源に限る弱い観測拡散。これを外しても主形は残る。 内部色と境界coverageを分ける。",
+          "micro": "髪幅の細線・粒子・ノイズは不採用。面の輪郭を適切に標本化。",
+          "edge_and_occlusion": "入力PHの主形内を保護し、OBS依存順を循環させない。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "指定した観測表示操作のみ。",
+          "emission_opacity_density": "非物質。入力放射/coverageを合成へ使い、物体密度を割り当てない。",
+          "color_and_light_response": "CCMの琥珀source、青緑transport、ミントreceiveを状態へアンカー。",
+          "model_refs": [
+            "OBS1"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "src/contract.mjsのPHASEとOwnerClockの積分。選んだ源に限る弱い観測拡散。これを外しても主形は残る。",
+          "distribution_and_correlation": "粒子集合は不使用。同時発生・速度・寿命の独立乱数を足さない。",
+          "onset_peak_decay": "PH1は0.62で排出終了、PH2は0.76で輸送終了、PH3は0.84まで保持して1で消失。観測応答は現在のPHに従属。",
+          "state_and_sampling_refs": [
+            "ObservationIntegrationTemplate.SamplingContract"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "shaders/mana.wgsl:observe。RGB/opacityはlinear合成、最後にsRGBへ。",
+          "protected_cues": "源・経路・受領面・event id・包絡・充填の順序。",
+          "failure_to_avoid": "小さな中央物だけの表示、細線化、glowのみの末尾、PH/OBSの二重生成。"
+        }
+      },
+      {
+        "layer_id": "L6",
+        "role": "observation_support",
+        "domain": "observation",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "指定された源→輸送→受領Eの実現を詳述。新しい物体・発生原因・装飾目的を作らない。"
+        },
+        "PH_refs": [],
+        "OBS_refs": [
+          "OBS2"
+        ],
+        "function_and_visible_result": "linear合成・sRGB変換・premultiplied alphaを保持して表示。",
+        "spatial_structure": {
+          "anchor_and_transform": "screenマスク。世界の厚みや接触を与えない。",
+          "extent_orientation_depth": "ObservationRegistryの対象マスクと合成順に従う。",
+          "macro": "ObservationRegistryの対象マスクと合成順に従う。",
+          "meso": "linear合成・sRGB変換・premultiplied alphaを保持して表示。 内部色と境界coverageを分ける。",
+          "micro": "髪幅の細線・粒子・ノイズは不採用。面の輪郭を適切に標本化。",
+          "edge_and_occlusion": "入力PHの主形内を保護し、OBS依存順を循環させない。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "指定した観測表示操作のみ。",
+          "emission_opacity_density": "非物質。入力放射/coverageを合成へ使い、物体密度を割り当てない。",
+          "color_and_light_response": "CCMの琥珀source、青緑transport、ミントreceiveを状態へアンカー。",
+          "model_refs": [
+            "OBS2"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "src/contract.mjsのPHASEとOwnerClockの積分。linear合成・sRGB変換・premultiplied alphaを保持して表示。",
+          "distribution_and_correlation": "粒子集合は不使用。同時発生・速度・寿命の独立乱数を足さない。",
+          "onset_peak_decay": "PH1は0.62で排出終了、PH2は0.76で輸送終了、PH3は0.84まで保持して1で消失。観測応答は現在のPHに従属。",
+          "state_and_sampling_refs": [
+            "ObservationIntegrationTemplate.SamplingContract"
+          ]
+        },
+        "integration": {
+          "composite_and_mask": "shaders/mana.wgsl:fragmentMain。RGB/opacityはlinear合成、最後にsRGBへ。",
+          "protected_cues": "源・経路・受領面・event id・包絡・充填の順序。",
+          "failure_to_avoid": "小さな中央物だけの表示、細線化、glowのみの末尾、PH/OBSの二重生成。"
+        }
+      }
+    ],
+    "interlayer_links": [
+      {
+        "source_layer": "L1",
+        "target_layer": "L2",
+        "relation_type": "physical_influence",
+        "mechanism_and_consequence": "確定済み通知を表す有限表示量をSからTへ移送する。源の排出と連続面の前端進行を共通uに束縛。源の面積と量が減り、源と接続した太い面が腹部のinletへ延びる。",
+        "foundation_binding": "PH1.CausalityLinks.physical_influence:PH1→PH2"
+      },
+      {
+        "source_layer": "L2",
+        "target_layer": "L3",
+        "relation_type": "physical_influence",
+        "mechanism_and_consequence": "前端が受領域へ到着したu=0.30からTをRへ移す。源が空になるu=0.62以降は輸送の後端を受領側へ回収。受領面の上端・幅・濃度がRに従って増加し、u=0.76の輸送終了後もu=0.84まで保持する。",
+        "foundation_binding": "PH2.CausalityLinks.physical_influence:PH2→PH3"
+      },
+      {
+        "source_layer": "L5",
+        "target_layer": "L1",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "現在の放射位置・強さ・範囲へ依存するOBS1。入力を先に評価する。",
+        "foundation_binding": "OBS1.dependencies:PH1"
+      },
+      {
+        "source_layer": "L5",
+        "target_layer": "L2",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "現在の放射位置・強さ・範囲へ依存するOBS1。入力を先に評価する。",
+        "foundation_binding": "OBS1.dependencies:PH2"
+      },
+      {
+        "source_layer": "L5",
+        "target_layer": "L3",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "現在の放射位置・強さ・範囲へ依存するOBS1。入力を先に評価する。",
+        "foundation_binding": "OBS1.dependencies:PH3"
+      },
+      {
+        "source_layer": "L6",
+        "target_layer": "L5",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "OBS1を合成した後でsRGB表示へ変換。",
+        "foundation_binding": "OBS2.dependencies:OBS1"
+      }
+    ],
+    "causal_path": {
+      "input": "確定した通常の正の離散gain-mana event",
+      "carrier_PH": "PH2",
+      "receiver": "PH3：既存playerIdの腹部相対位置へ束縛するEの受領域。実身体を新規描画しない。",
+      "ScaleRegime_ref": "PH2.ScaleRegime",
+      "StateDynamics_ref": "PH2.StateDynamics",
+      "ReactivePhaseChange_ref": "not_applicable:実反応/相変化を選ばない。"
+    },
+    "orchestration": {
+      "common_time_basis": "代表Image設計u=0.47、実Eは1.6 owner secondsの正規化u。rAF cadenceは表示環境依存。別Video尺を作らない。",
+      "layer_phase_relations": "前端0.02→0.30、受領0.30→0.76、供給終了0.62、後端0.62→0.76、保持0.76→0.84、収束0.84→1。",
+      "environment_response": "sampleLightAtWorld/lightFieldで既存sourceから有限近傍への入射光を与える。ホスト材質への適用は別統合。",
+      "visual_hierarchy": "琥珀の供給面、左側を繋ぐ青緑の太い経路、上へ広がる受領面の順。光だけを最初の読みの根拠にしない。",
+      "bullet_time": "not_applicable:指定なし。ACC2はゲーム所有者時間の契約でありbullet time演出ではない。"
+    },
+    "output_integration": {
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+      "LDM_ref": "LuminanceDynamicsModule",
+      "composite_order": "PH1/PH2/PH3の内部over→OBS1→OBS2→canvas。",
+      "color_alpha_contract": "linear RGBで合成、出力はsRGB符号化したpremultiplied alpha。画像素材やCanvas 2Dは不要。",
+      "scale_adaptation": "同じGEOMETRYを全表示へ使う。H64を拡大画像の評価で代替しない。CPU geometryは検査専用。"
+    },
+    "validation_plan": {
+      "layer_checks": "源と受領の異なる領域/面積・輸送到着・時間順序を実寸で検査。",
+      "composite_checks": "dark/light、OBS無効比較、BOUNDS外、event witness token、有限な局所光。",
+      "temporal_checks": "全寿命101サンプルのGPU検査コードと所有者時計の単体テスト。実聴感は別途。",
+      "actual_results_ref": "GlobalAcceptanceTemplate.ValidationResults"
+    },
+    "Acceptance": {
+      "world_VFX_registered_as_PH": true,
+      "observation_only_effects_not_misregistered_as_VFX_PH": true,
+      "layer_roles_scales_and_relations_explicit": true,
+      "layer_count_does_not_force_new_content_or_PH_partition": true,
+      "material_motion_environment_and_composite_consistent": true,
+      "shared_intensity_and_sampling_contracts_preserved": true,
+      "structural_requirements_not_reported_as_render_evidence": true
+    }
+  },
+  "PostEffects": {
+    "trigger": {
+      "ordinary_posteffects": false,
+      "beta_targets": []
+    },
+    "selection": {
+      "mode": "exact_selected_operations",
+      "scope_resolution": "attribute_resolved_target_and_scope",
+      "exact_selected_operations": [
+        "source_bound_local_diffusion"
+      ]
+    },
+    "autonomous_activation": {
+      "physical_causality_input_required": false,
+      "registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract"
+    },
+    "SPCA": {
+      "applies_if": "world_internal_PH_local_peak_selected",
+      "evidence_types_standard_two_of": [
+        "gradient",
+        "decay",
+        "occlusion"
+      ],
+      "explicit_intent_adjustment": "not_applicable:本体の輪郭と内部差を保持。",
+      "PostEffects_alone_does_not_require_new_PH": true
+    },
+    "global_posteffects": {
+      "applies": false,
+      "exact_OBS_operations": [],
+      "OBS_refs": []
+    },
+    "local_posteffects": {
+      "applies": true,
+      "targets": [
+        "PH1",
+        "PH2",
+        "PH3"
+      ],
+      "exact_OBS_operations": [
+        "source_bound_local_diffusion"
+      ],
+      "OBS_refs": [
+        "OBS1"
+      ]
+    },
+    "operation_contract": {
+      "required_fields": [
+        "input_references",
+        "target_mask",
+        "stage",
+        "composite_method",
+        "intensity",
+        "protected_regions",
+        "sampling_consequence"
+      ],
+      "sampling_consequence": "H64の有色面に従属。微細信号/時間積分効果を追加しない。"
+    },
+    "Acceptance": {
+      "exact_selected_operation_does_not_infer_layers": true,
+      "global_local_scope_unambiguous": true,
+      "legacy_five_domain_reference_absent": true
+    }
+  },
+  "LuminanceDynamicsModule": {
+    "trigger": {
+      "explicit_VFX": false,
+      "explicit_PostEffects": false,
+      "inferred_requires_luminance_dynamics": true
+    },
+    "omitted_if_not_enabled": true,
+    "target_metrics": {
+      "target_size": "指定BOUNDS内の有色体積",
+      "camera_distance": "orthographic:尺度で評価",
+      "screen_occupancy": "設計最大寸法:源43×13 CSS px、輸送幅11.5〜14 CSS px、受領約34×22 CSS px（H64換算）。実GPUの占有率はnot_run。",
+      "readability_priority": "high"
+    },
+    "Image": {
+      "spatial_envelope": "source/transport/receiveの局所放射を別に配置。receive収束でlight半径をsqueeze、振幅をsqueeze²へ連動する。",
+      "local_contrast_budget": "OBS1最大alpha0.10、主形内はさらに抑制。sourceの小さい白飛び以外は有色面を保持。"
+    },
+    "Video": {
+      "temporal_envelope": "not_applicable:Video生成ではない。Eの所有者時計とPHASEに放射/消失/SFXを共有する。",
+      "micro_variation": "not_applicable:Video未起動。Eの選択済み材質変動はreducedMotionでゼロにでき、因果経路は変えない。",
+      "anti_flicker": "意図しないちらつきの検査をGPUテストに残す。実端末観察はnot_run。"
+    },
+    "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+    "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+    "sampling_consequence": "主形は有色面。アーティファクトを数で増やさない。",
+    "AlphaBackground": {
+      "enabled": false,
+      "required_background_if_enabled": "#000000"
+    },
+    "alpha_ref": "LuminanceDynamicsModule.AlphaBackground",
+    "ActivationExclusions": {
+      "non_emissive_particles_only": "no_auto_activation",
+      "grain_only": "no_auto_activation"
+    },
+    "Acceptance": {
+      "mode_specific_envelope": true,
+      "numeric_defaults_subordinate_to_target_metrics": true,
+      "no_unwanted_global_luma_lift": true,
+      "screen_processing_stays_in_observation_layer": true,
+      "screen_signal_appearance_integrated_into_VFX_layers": true,
+      "source_mask_stage_composite_and_sampling_defined": true,
+      "unselected_operations_not_inferred": true,
+      "physical_mechanism_not_asserted_without_source": true
+    }
+  },
+  "GradientAnchorPolicy": {
+    "trigger": "hue_gradient_attribute_resolved",
+    "gradient_type": "world_VFX_gradient",
+    "anchor": "PH2",
+    "registration": {
+      "world_surface_gradient": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "world_VFX_gradient": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_gradient": "ObservationIntegrationTemplate.ObservationRegistry"
+    },
+    "selected_anchors": [
+      {
+        "PH_ref": "PH1",
+        "states": "濃い琥珀外縁→金色本体→淡金核",
+        "basis": "濃度と局所放射を分離する。"
+      },
+      {
+        "PH_ref": "PH2",
+        "states": "濃青緑外縁→青緑本体→ミント核",
+        "basis": "厚い輸送体積の内部と進行側を識別する。"
+      },
+      {
+        "PH_ref": "PH3",
+        "states": "濃青緑外縁→青緑本体→ミントの充填上端",
+        "basis": "受領面の充実と局所輝度を分ける。"
+      }
+    ],
+    "Acceptance": {
+      "physical_and_observation_gradients_distinguished": true,
+      "unanchored_world_gradient_absent": true
+    },
+    "applications": [
+      {
+        "anchor": "PH1",
+        "roles": "sourceの琥珀本体・淡金出口・有色外縁。位置と放射はsourceFieldへ。"
+      },
+      {
+        "anchor": "PH2",
+        "roles": "青緑の厚い面・内側crest・暗い外縁。経路vと厚みに束縛。"
+      },
+      {
+        "anchor": "PH3",
+        "roles": "深い青緑の本体とミントの充填上端。R、nx、nyへ束縛。"
+      }
+    ]
+  },
+  "ECodeImplementation": {
+    "trigger": "executable_runtime_E_code_explicit",
+    "output_kind": "executable_effect_source_not_image_generation",
+    "source_revision": {
+      "commit": "8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1",
+      "base_blob": "4e10a53310be5b9d0aa3a6c881cf4f39d6590bd4",
+      "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834"
+    },
+    "target_runtime": "WebGPU + Web Audio API",
+    "source_and_time_contract": {
+      "event_identity": "[roomId,sessionId,id]。playerIdを受け手かつこのEの時計所有者として保持。",
+      "origin": "受け手の現在world足元中心。腹部表示中心は(0,−61)wu、inletは(−13,−55)wu。",
+      "duration_authority": "src/contract.mjs:EFFECT_DURATION_SECONDS",
+      "serialized_duration_seconds": 1.6,
+      "time": "最初の成功可視WebGPUフレームでage=0。rateは移動かつACC2実効activeだけ2、他は1。",
+      "bounds": {
+        "minX": -66,
+        "maxX": 66,
+        "minY": -127,
+        "maxY": 13
+      },
+      "SFX": "同じevent id/epochの可視receiptから一回限りのBufferSource。loop=false。phase/rate契約共有。",
+      "asset": "sfx/mana-receive-original.wav（r0.2位相へ同期して再生成）"
+    },
+    "world_PH_refs": [
+      "PH1",
+      "PH2",
+      "PH3"
+    ],
+    "observation_OBS_refs": [
+      "OBS1",
+      "OBS2"
+    ],
+    "implementation_artifacts": [
+      "src/engine.mjs",
+      "src/clock.mjs",
+      "src/controller.mjs",
+      "src/renderer.mjs",
+      "shaders/mana.wgsl",
+      "shaders/present.wgsl",
+      "src/audio.mjs",
+      "src/sfx-synth.mjs",
+      "src/geometry.mjs"
+    ],
+    "applicable_rule_evidence": "design/rule-implementation-map.json",
+    "validation": {
+      "syntax_and_shader": "not_run",
+      "actual_GPU_pixels_and_timing": "not_run",
+      "game_event_and_SFX": "not_run"
+    },
+    "validation_detail": "JavaScript構文31ファイル、Node113件、CPU解析場161位相・17代理検査はpass。shaderコンパイル・実画素・聴感・実ゲーム接続はnot_run。ChromiumのnavigationがERR_BLOCKED_BY_ADMINISTRATORでGPU以前に停止。",
+    "Acceptance": {
+      "baseline_and_selected_extensions_preserved": true,
+      "image_generation_not_implied": true,
+      "runtime_code_and_visual_acceptance_distinguished": true
+    },
+    "ancestry": "r0.1 ZIP SHA-256 dd4ee08b38619e787a591dd0393368b3cce44ddb383919822c5fef5f01194fe3。イベント/時計/音管理を継承し造形・位相を再設計。",
+    "test_only_artifacts": [
+      "src/geometry.mjs",
+      "tools/reference-utils.mjs",
+      "tools/check-causal-field.mjs",
+      "tools/build-cpu-reference.mjs"
+    ]
+  },
+  "GlobalAcceptanceTemplate": {
+    "Requirements": {
+      "PhenomenonRegistry_required": true,
+      "full_PH_structure_required": true,
+      "all_8_domains_required": true,
+      "ObservationRegistry_required_when_OBS_exist": true,
+      "WindCapsule_required": true,
+      "Gravity_required": true,
+      "world_camera_screen_transform_required": true
+    },
+    "ValidationResults": {
+      "StructuralInspection": {
+        "status": "pass",
+        "checks": {
+          "required_blocks": "同梱インスタンスのローカル構造・参照・実装symbolの543項目がpass。evidence/design-structure.json。正本B公式検証器の結果ではない。",
+          "rule_contracts": "design/rule-implementation-map.jsonの各正本rule_id、実装path/symbol、観測対象、検査記録を追跡。",
+          "PH_OBS_separation": "PH1〜3とOBS1〜2を別registryに保持。",
+          "OctaDomain": "全PHの8領域、役割、不適用理由を保持。",
+          "scientific_fields": "全PHのPhysicalModel/ScaleRegime/StateDynamics/PerceptualReadability/CausalAssessmentと8領域の存在をローカル検査。内容の科学的実証やGPUの画素成立を保証しない。",
+          "coordinate_gravity_wind": "座標・重力・WindCapsuleを保持。",
+          "template_consolidation": "同梱インスタンスの構造を検査。正本全文のバイト一致と章末テンプレート数は今回未再検査。"
+        }
+      },
+      "SemanticReconciliation": {
+        "status": "warning",
+        "checks": {
+          "DeclaredIntent_preserved": "確定イベント、H64、暗明、三段階、時間/SFX/不可視抑制、非導入を設計とソースへ保持。意味の成功は実画像未観察。",
+          "trigger_resolution": "E/VFX/source-bound PostEffects/LDM/gradientのみ。Magic/preset/keyword/人物/Video生成は起動しない。",
+          "exception_resolution": "既存身体はホスト所有で描画しない。プレビューに代用人形は不要という明示指示に従う。",
+          "source_binding": "PHからOBSへ一方向依存。",
+          "scope_and_dependencies": "イベント/所有者/room/sessionの境界と明示された抑制条件を実装。",
+          "scientific_consistency": "非物質の有限表示量モデルであり実科学の実証ではない。CPUの状態/面積/接続検査とGPU・聴感を分ける。"
+        }
+      },
+      "RenderObservation": {
+        "status": "not_run",
+        "evidence_source": "none",
+        "checks": {
+          "visual_causality": "not_run",
+          "contour_preservation": "not_run",
+          "clipping_crushing": "not_run",
+          "chroma_detail": "not_run",
+          "contact_projection": "not_run",
+          "temporal_continuity": "not_run",
+          "cue_discrimination_and_sampling": "not_run"
+        }
+      }
+    },
+    "OutcomeEvaluation": {
+      "intent_alignment": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "rationale": "r0.2の実WebGPU像を観察していない。CPU参照像はこの判定を代替しない。"
+      },
+      "artistic_effect": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "evaluator_basis": "not_run",
+        "strengths": "not_run",
+        "limitations": "H64暗明全寿命の実観察、実身体合成、聴感が未実施。"
+      }
+    },
+    "ComparativeEvaluation": {
+      "status": "not_run",
+      "question": "r0.2で三段階がH64原寸の暗明両背景・全寿命として読めるか。",
+      "changed_factor": "主形・経路・充填境界・位相の再設計。r0.1の特定パラメータを原因と断定しない。",
+      "controlled_conditions": "E寿命1.6 owner s、H64換算、イベント/抑制/ACC2/SFXゲートは維持。実デバイス比較は未実施。",
+      "scene_set": "暗/明、1×/2×/途中切替、単件/近接複数、案内なしの全寿命。",
+      "repetitions_and_order": "実比較未実施。",
+      "criteria": "源の存在・連続輸送・到着に対応する蓄積・保持・収束、全てをH64の各背景で観察。",
+      "evidence": "ユーザーのr0.1観測報告はevidence/user-r01-observation.json。r0.2比較画像はなし。",
+      "result_and_limitations": "r0.1の技術再生成功と読解不合格はユーザー報告。r0.2優越/品質合格は主張しない。"
+    },
+    "FinalStatus": {
+      "specification_status": "Warning",
+      "render_status": "NotRun",
+      "failure_reasons": []
+    }
+  }
+}

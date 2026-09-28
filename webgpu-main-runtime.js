@@ -10,6 +10,8 @@
   // window.__DVA_WEBGPU_FRAME_COST__.samples(); tests may set the named hook.
   const FRAME_COST_GLOBAL = '__DVA_WEBGPU_FRAME_COST__';
   const FRAME_COST_TEST_HOOK = '__DVA_WEBGPU_FRAME_COST_TEST_HOOK__';
+  // Verification-only retention: 30 seconds through 160 submitted frames per second.
+  const FRAME_COST_CAPACITY = 4800;
 
   function createRetryTraceBuffer(capacity = 180) {
     if (!Number.isInteger(capacity) || capacity < 1 || capacity > 180)
@@ -87,7 +89,7 @@
     } catch (_) { return false; }
   }
 
-  function createFrameCostBuffer(capacity = 180) {
+  function createFrameCostBuffer(capacity = FRAME_COST_CAPACITY) {
     if (!Number.isInteger(capacity) || capacity < 1) throw new RangeError('Frame cost capacity must be a positive integer');
     const slots = new Array(capacity);
     let next = 0, length = 0, sequence = 0;
@@ -155,8 +157,16 @@
     const frameCostBuffer = frameCostRequested() ? createFrameCostBuffer() : null;
     let frameCostApi = null;
     if (frameCostBuffer) {
-      frameCostApi = Object.freeze({ enabled: true, capacity: 180,
-        samples: () => frameCostBuffer.snapshot(), clear: () => frameCostBuffer.clear() });
+      const gpuSamples = [];
+      frameCostApi = Object.freeze({ enabled: true, capacity: FRAME_COST_CAPACITY,
+        samples: () => frameCostBuffer.snapshot(), clear: () => { frameCostBuffer.clear(); gpuSamples.length = 0; },
+        gpuTiming: () => Object.freeze({ status: renderer?.gpuTimingStatus || 'initializing',
+          samples: Object.freeze(gpuSamples.slice()) }),
+        recordGpuTiming: sample => { if (sample && Number.isFinite(sample.gpuMs)) {
+          gpuSamples.push(Object.freeze({ ...sample, atMs: root.performance?.now?.() ?? null }));
+          if (gpuSamples.length > FRAME_COST_CAPACITY)
+            gpuSamples.splice(0, gpuSamples.length - FRAME_COST_CAPACITY);
+        } } });
       root[FRAME_COST_GLOBAL] = frameCostApi;
     }
 
@@ -188,6 +198,8 @@
         renderer = rendererLease.consume(options.expectedDevice);
       } else {
         renderer = await rendererApi.create({ gpu, onFailure: fail,
+          gpuTiming: Boolean(frameCostBuffer),
+          onGpuTiming: sample => frameCostApi?.recordGpuTiming(sample),
           powerPreference: options.powerPreference, deviceDescriptor: options.deviceDescriptor,
           format: options.format, maxDraws: options.maxDraws });
       }
@@ -292,7 +304,7 @@
           const submitStartedAt = timing ? root.performance.now() : null;
           timing?.('queueSubmitBegin');
           const primitiveStats = collectFrameCost ? frame.diagnostics?.() : null;
-          const passes = frame.submit();
+          const passes = frame.submit(collectFrameCost);
           timing?.('queueSubmitReceipt', submitStartedAt);
           if (collectFrameCost) frameCostBuffer.push({ phase, ...frameCosts,
             ...primitiveStats, passes, atMs: root.performance.now() });
@@ -341,6 +353,7 @@
       get state() { return failure || renderer.state === 'failed' ? 'failed' : disposed ? 'destroyed' : 'ready'; },
       get failure() { return failure || renderer.failure || null; },
       retryTraceSnapshot() { return retryTraceBuffer?.snapshot() || null; },
+      get gpuTimingStatus() { return renderer.gpuTimingStatus || 'unavailable'; },
       get viewport() { return gate.snapshot; },
       get device() { if (disposed) throw failure || new Error('Main WebGPU runtime destroyed'); return renderer.device; },
       get renderer() { if (disposed) throw failure || new Error('Main WebGPU runtime destroyed'); return renderer; },
