@@ -19073,8 +19073,8 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
     } });
   markWebGPUStartupStage('driverCreationEnd', Number.isFinite(driverCreationStartedAt)
     ? Math.max(0, performance.now() - driverCreationStartedAt) : null);
-  if (!sameSession()) {
-    await driver.destroy();
+  if (!driver || !sameSession()) {
+    await driver?.destroy();
     return null;
   }
   webgpuMainApp.driver = driver;
@@ -28507,7 +28507,8 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   };
   const requireCurrent = () => {
     if (typeof isCurrent !== 'function' || !isCurrent())
-      throw new Error('Dormant WebGPU main startup became stale before ownership publication');
+      throw Object.assign(new Error('Dormant WebGPU main startup became stale before ownership publication'),
+        { code: 'DVA_WEBGPU_STARTUP_CANCELLED' });
   };
   const destroy = () => {
     if (destroyed) return retirement || Promise.resolve();
@@ -28554,7 +28555,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       retryDiagnostics: WEBGPU_MAIN_VERIFY_ROUTE,
       ...(rendererLease ? { rendererLease, expectedDevice } : {}),
       ...(!rendererLease && rendererApi ? { rendererApi } : {}),
-      onFailure(error) { notify(error); void destroy(); } });
+      onFailure(error) { if (isCurrent()) notify(error); void destroy(); } });
     requireCurrent();
     if (runtime.state !== 'ready' || typeof runtime.requestFrame !== 'function' ||
         !runtime.renderer?.device ||
@@ -28634,8 +28635,14 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     if (scene.device !== runtime.device)
       throw new Error('Dormant WebGPU main scene device differs');
   } catch (error) {
-    notify(error);
+    // Screen, room, or visibility changes revoke this attempt while GPU and
+    // shader promises are in flight. The next RAF owns the retry; cancellation
+    // is not a renderer failure and must not latch the failure overlay.
+    const cancelled = error?.code === 'DVA_WEBGPU_STARTUP_CANCELLED' ||
+      typeof isCurrent === 'function' && !isCurrent();
+    if (!cancelled) notify(error);
     await destroy();
+    if (cancelled) return null;
     throw error;
   }
   return Object.freeze({
