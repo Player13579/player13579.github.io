@@ -1,0 +1,2601 @@
+{
+  "FoundationOperationTemplate": {
+    "OutputContract": {
+      "schema_version": "B-Expression-2",
+      "mode": "Video",
+      "operation": "design_only"
+    },
+    "TemplateConsolidation": {
+      "per_chapter_template_count": 1,
+      "template_position": "chapter_end",
+      "inter_template_duplication_forbidden": true,
+      "cross_chapter_reference_preferred": true
+    },
+    "RuleContract": {
+      "fields": [
+        "rule_id",
+        "owner",
+        "priority",
+        "applies_when",
+        "requirement",
+        "exception_to",
+        "validation_id"
+      ],
+      "same_priority_resolution": "explicit_exception_or_compatible_union",
+      "unresolved_conflict_result": "spec_conflict"
+    },
+    "GlobalInterpretation": {
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "full_PH_structure_required_for_all_visibilities": true,
+      "WindCapsule_required": true
+    },
+    "UniversalNoLabelOnly": {
+      "label_only_declaration_forbidden": true,
+      "indirect_evidence_for_implicit_latent": true
+    },
+    "Acceptance": {
+      "unique_rule_ids_and_resolvable_references": true,
+      "same_priority_conflicts_resolved_explicitly": true
+    }
+  },
+  "InferenceExpansionPolicy": {
+    "DeclaredIntent": {
+      "character_count": 0,
+      "character_attributes": {},
+      "main_action": "確定した通常の正の離散的マナ増加1件に対応する源→途切れない輸送→腹部受領量の蓄積→収束/消失。",
+      "main_objects": [
+        {
+          "object": "mana-effect",
+          "count": "1 per unique eligible event id"
+        }
+      ],
+      "background": "H64原寸の暗/明試験背景。人物の仮原画は描かない。",
+      "style": "2Dアニメ調の有色場を手続き的WebGPUで実装。",
+      "text_logo_policy": "E本体に文字・ロゴ・説明・数字を描かない。プレビュー操作UIはEの外側。",
+      "recipient_binding": "既存playerIdの現在world位置、足元中心。身体は外部の配置条件であり新たな人物原画ではない。",
+      "exclusions": [
+        "0/負/上限で無変化",
+        "自然回復",
+        "同一ID再受信",
+        "desire-recovery/renki/renki-tenfold",
+        "死者/退場/ベント/透明/別セッション/失効/画面外"
+      ]
+    },
+    "ExpressionIntent": {
+      "source": "user_declared",
+      "purpose": "説明なしに源・輸送・受領と受領側の変化をH64暗明の全寿命で見分けられるE候補を制作する。",
+      "must_communicate": [
+        "足元にある源",
+        "源から腹部へ途切れない輸送",
+        "到着に応じて増える受領量",
+        "収束と全体の消失"
+      ],
+      "preserve_ambiguity": [],
+      "allowed_omission": [],
+      "allowed_exaggeration": [],
+      "protected_relations": [
+        "正の確定イベントと一意のevent id",
+        "同じ受け手playerId/現在位置",
+        "実効移動ACC2中だけ2倍、途中切替で位相連続",
+        "可視GPUフレームと同じevent idの一回限りSFX",
+        "ゲーム/公開サイト/マナ状態を変更しない"
+      ]
+    },
+    "SelectionLifecycle": {
+      "stages": [
+        "candidate",
+        "accepted",
+        "registered_world",
+        "registered_observation"
+      ],
+      "candidate_catalog_in_final_code": false,
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "adoption_checks": [
+        "DeclaredIntent_consistency",
+        "contribution",
+        "readability",
+        "activation_condition"
+      ]
+    },
+    "inferred_support_elements": {
+      "default_permission": "denied",
+      "explicit_user_permission_required": true,
+      "allowed_domains": [],
+      "allowed_scope": "独立の物体・キャラクターは追加しない。既存Eの内部形態と時間相の設計許可を属性具体化として使う。",
+      "support_declared_elements_without_overriding_them": true,
+      "latent_visualization_object_not_required": true
+    },
+    "Acceptance": {
+      "declared_intent_preserved": true,
+      "inference_without_explicit_user_permission_absent": true,
+      "candidate_accepted_registered_distinguished": true,
+      "unselected_candidates_absent_from_final": true
+    }
+  },
+  "PlatonicGoodTemplate": {
+    "Good": {
+      "evidence": "一つの因果と一つのID/時計。技術成否を知覚成功へ転記しない。"
+    },
+    "Truth": {
+      "coordinate_continuity": "world→camera→screenの同じ変換。",
+      "physical_causality": "表示用量の収支と遅れを保持。現実の化学/力学ではなく宣言場。",
+      "state_transition_readability": "前端、受領面積、満量保持、同時終了。"
+    },
+    "Beauty": {
+      "boundary_readability": "太い有色面と低放射の外縁。",
+      "gaze_circulation": "源→搬送→受領、受領の空き/充填境界→源の残量という2系統。",
+      "structural_separation": "源/搬送/受領の輪郭と内部状態を区別。"
+    },
+    "BeautyStructuring": {
+      "axes": [
+        "ratio_proportion",
+        "balance_symmetry",
+        "contrast",
+        "rhythm_repetition",
+        "whitespace_density",
+        "hierarchy_gaze_flow",
+        "material_response",
+        "temporal_phase"
+      ],
+      "standard_minimum_axes_per_PH": 2,
+      "standard_minimum_evidence_per_applied_axis": 2,
+      "intent_adjustment_ref": "InferenceExpansionPolicy.ExpressionIntent"
+    },
+    "Acceptance": {
+      "each_PH_connected_to_at_least_two_GTB_layers": true,
+      "single_formula_does_not_dominate_beauty": true
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "供給状態、輸送遅れ、受領積分、背景受光という独立した状態/境界で4 PH。学問名や部品数によって増やさない。",
+      "shared_condition_policy": "全PHは同じイベントと所有者時計を使い、ローカルな遅れ/色/境界は保持。",
+      "no_discipline_based_split": true
+    },
+    "SharedConditions": {},
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "足元の広い供給場",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "visible",
+        "local_state_difference": "足元の固定包絡内で、表示用の供給量と内側の発光面が減る。支持形は終端まで残す。",
+        "partition_reason": "有限な供給量と足元境界を持つ入力側。"
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "切れない厚い搬送面",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "visible",
+        "local_state_difference": "支持された有色の連続体内を、入力に遅れた密度前端が足元から受領域へ進む。",
+        "partition_reason": "供給から受領までの有限な輸送遅れと断面を持つ中間域。"
+      },
+      "PH3": {
+        "id": "PH3",
+        "name": "腹部に束縛する受領領域と蓄積",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "visible",
+        "local_state_difference": "広い受領形を初めから保ち、到着に応じて内側の充填面が下から上へ広がる。満量後は内部放射を集め、全Eと同時終了。",
+        "partition_reason": "到達量の積分と、源/搬送とは異なる容量境界を持つ受け手側。"
+      },
+      "PH4": {
+        "id": "PH4",
+        "name": "暗明の試験背景と局所受光",
+        "origin": "declared",
+        "anchor": "background",
+        "visibility": "visible",
+        "local_state_difference": "暗/明の平坦な既存試験背景が、PH1〜PH3の位置・量に従う局所光を受ける。外側は不変。",
+        "partition_reason": "供給/輸送/蓄積とは異なる、非発光の受光面の境界。"
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "足元の広い供給場",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "visible",
+          "local_state_difference": "足元の固定包絡内で、表示用の供給量と内側の発光面が減る。支持形は終端まで残す。",
+          "partition_reason": "有限な供給量と足元境界を持つ入力側。"
+        },
+        "DeepStructure": {
+          "Core": "足元中心から搬送面へ開く接合域。明るい芯と有色の供給面を分ける。",
+          "Structure": "幅106wuの折面状供給域。中央の搬送面との境界は実際に重なり、独立した小楕円を置かない。",
+          "Surface": "外周は低放射の青い帯、内面は供給量に依存する明部。新規の地面/接触影は作らない。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "有限な供給量と足元境界を持つ入力側。 x±66,y−127〜+13wu、既存受け手の現在位置に束縛。",
+          "state_variables": "足元の固定包絡内で、表示用の供給量と内側の発光面が減る。支持形は終端まで残す。 phaseは0..1、表示量は無次元、放射は設計上の相対値。",
+          "inputs": [
+            "確定したgain-manaイベントによる有限の宣言場入力、現在の受け手位置、所有者時計。"
+          ],
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "マナEは表示場であり実体物質の質量を定義しない。表示量source+transit+received=1を別の拘束として保持。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "ゲームの身体や物体に力を加えない。場の移動は処理時刻に依存する宣言機構であり、質点弾道ではない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "表示場の入力/放射/受光を有限なイベント包絡へ結ぶ。PH4では入射・反射・未反射分を区別するが、ジュールの実測や完全な放射輸送解は主張しない。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "独立した電荷状態や電流がない。電磁的実証を偽装しない。"
+            }
+          },
+          "constitutive_response": "幅106wuの折面状供給域。中央の搬送面との境界は実際に重なり、独立した小楕円を置かない。 外周は低放射の青い帯、内面は供給量に依存する明部。新規の地面/接触影は作らない。",
+          "initial_condition": "最初の成功した可視フレームをphase=0として開始。源/搬送/空の受領形を同時に保持。",
+          "boundary_conditions": "隠蔽/死者/退場/ベント/透明/画面外/失効/セッション不一致で全出力を破棄。人物/地面の仮原画は生成しない。",
+          "approximation_scope": "マナ場の定性的な宣言機構。数値は新設計の値であり実測物性や旧版不合格原因ではない。ゲームの実イベント接続はnot_run。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "幅106wu=53px(H64)。換算1wu=0.01mは設計仮定。",
+          "characteristic_time": "1.6所有者秒。供給関数の立上りはphase 0.055、終了は0.625。",
+          "dominant_balance": "形の最小可読幅と供給/輸送遅れ/受領積分を比較。光学応答に機械的慣性を与えない。",
+          "dimensionless_reasoning": "空気流や表面張力を支配機構にしていないためRe/Weはnot_applicable。輸送遅れ/総尺=0.18を表示設計比として使う。",
+          "detail_cutoff": "主な断面はH64で13px以上。外縁はおよそ1〜3px。微細な帯を消しても3区画と接合を保つ。SamplingContractへ接続。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "温度/燃焼/相変化は宣言されていない。光色を温度・物性の実測値に変換しない。"
+              ],
+              "evidence_or_constraint": "PH1: 外周は低放射の青い帯、内面は供給量に依存する明部。新規の地面/接触影は作らない。 これを不適用領域の根拠とする。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "空気は静穏。非現実の表示場を空気流や粒子上昇へ置き換えず、輸送は宣言場の遅れとして扱う。"
+              ],
+              "evidence_or_constraint": "PH1: 外周は低放射の青い帯、内面は供給量に依存する明部。新規の地面/接触影は作らない。 これを不適用領域の根拠とする。"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "源の内側にある局所発光芯を直接描く。",
+                "残量に応じた明部面積と青い非均一な外縁を分ける。"
+              ],
+              "evidence_or_constraint": "足元の源と周辺受光PH4、観測散乱OBS1の入力になる。"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "有限なsource量と、終端まで保つ支持場の形を別状態にする。",
+                "折面状の外周/内面/輸送接合を区別する。"
+              ],
+              "evidence_or_constraint": "source=1-emit。実体物質の質量や器を追加しない。 同じPHのOpticsが、この局所状態を放射/反射の差へ写す。"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "電荷や電流の独立状態はない。マナ色を電磁計測と偽らず、発光は宣言場/Opticsへ結ぶ。"
+              ],
+              "evidence_or_constraint": "PH1: 外周は低放射の青い帯、内面は供給量に依存する明部。新規の地面/接触影は作らない。 これを不適用領域の根拠とする。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "粘弾性/降伏を持つ実物材料は追加していない。位相遅れを粘性測定と呼ばない。"
+              ],
+              "evidence_or_constraint": "PH1: 外周は低放射の青い帯、内面は供給量に依存する明部。新規の地面/接触影は作らない。 これを不適用領域の根拠とする。"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "干渉・回折・薄膜・コヒーレンスの条件を選んでいない。虹色の波動装飾を作らない。"
+              ],
+              "evidence_or_constraint": "PH1: 外周は低放射の青い帯、内面は供給量に依存する明部。新規の地面/接触影は作らない。 これを不適用領域の根拠とする。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "濡れ・付着・汚れ・接触角は選んでいない。局所境界は既存の場/受光面の範囲で閉じる。"
+              ],
+              "evidence_or_constraint": "PH1: 外周は低放射の青い帯、内面は供給量に依存する明部。新規の地面/接触影は作らない。 これを不適用領域の根拠とする。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "幅を持つ青い供給面と明るい内面の差",
+            "減る内側の明部と、残る足元の支持形"
+          ],
+          "indirect_evidence": [
+            "他PHとの同じ時刻での応答差。"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "足元に残る広い源と中央の上向き接合",
+          "perceptual_failure_risk": "床に置いた小物/単独の発光装飾と読まれる可能性。",
+          "cue_roles": [
+            {
+              "cue": "幅を持つ青い供給面と明るい内面の差",
+              "supports": "足元に残る広い源と中央の上向き接合",
+              "reliability_and_overlap": "H64原寸の暗明・全寿命を想定。共通の色/境界から得られるため統計的独立とはみなさない。"
+            },
+            {
+              "cue": "減る内側の明部と、残る足元の支持形",
+              "supports": "足元に残る広い源と中央の上向き接合",
+              "reliability_and_overlap": "H64原寸の暗明・全寿命を想定。共通の色/境界から得られるため統計的独立とはみなさない。"
+            }
+          ],
+          "confusable_alternative": "床に置いた小物/単独の発光装飾",
+          "disambiguating_evidence": "搬送面との面積を持つ接合と、内部の減少を同じ時間で示す。知覚として成功したかは未観察。",
+          "viewing_conditions": "Chrome/WebGPU、100%表示、128wu→64 CSS pxを試験仮定とする。DPR/OS拡大率は記録する。別環境の可読性は未確定。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "2.5Dの正面に向いた場。PH4だけは背後の平面。",
+          "normal_field_coherence": "内部/境界の形に従う局所放射差。鏡面法線を偽造しない。",
+          "curvature_behavior": "多角形の輪郭と有限幅の内面。位相で接続幅をゼロにしない。",
+          "silhouette_logic": "幅106wuの折面状供給域。中央の搬送面との境界は実際に重なり、独立した小楕円を置かない。",
+          "contact_relation": "PH1とPH2、PH2とPH3は面積を持って重なる。身体への実接触形状はホスト未検証。",
+          "spatial_relation": "源が足元、受領が腹部設計オフセット、搬送が両者の間。PH4はその背後。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "足元の固定包絡内で、表示用の供給量と内側の発光面が減る。支持形は終端まで残す。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "受領積分が満量へ収束し、内部放射を収束させた後、phase=1で全支持形と観測層を同時に終了。",
+          "damping_profile": "光路応答は即時、終端前の放射変化は選択した包絡のみ。架空の揺れは加えない。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "同じイベントの再起動はない。終端後はゼロに保持する。",
+          "transition_failure_risk": "源/搬送だけ早期に消えて受領体が単独図形になること。",
+          "driving_input": "PH1.PhysicalModel.inputs",
+          "response_timescale": "1.6所有者秒。供給関数の立上りはphase 0.055、終了は0.625。",
+          "phase_relation": "全PHはOwnerClock.phaseを共有。PH2の位置遅れとPH3の受領積分だけが異なる。",
+          "stability_condition": "phase<1では接続形を保ち、終了/抑制時は全出力を破棄。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Materials -> PH2.Materials: 有限の表示用供給量emit(p)を連続した搬送媒体へ入力する。 源の内面が減り、媒体の下から上へ前端が進む。",
+            "PH1.Optics -> PH4.Optics: 既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。 発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。",
+            "PH1.Materials -> PH1.Optics: 同一PHの境界/局所状態を色と放射、または基礎反射率へ対応させる。別PH間の架空の帰還ではない。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "受領遅れだけを変更し、人数・源位置・搬送断面・総尺・配色を保持する設計上の比較。実比較は未実施。",
+            "predicted_response": "到着境界/受領面積の開始が同じ方向へ動く。背景応答は源状態に追従する。",
+            "competing_explanation": "観測された読みにくさは背景対比、面積、形状語彙、タイミング等でも変わり得る。旧版の原因を特定パラメータと断定しない。",
+            "uncertainty": "新設計の画素出力と知覚は実GPU未観察。定性的な場の機構であり実世界の因果識別ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "有限の表示用供給量emit(p)を連続した搬送媒体へ入力する。",
+              "consequence": "源の内面が減り、媒体の下から上へ前端が進む。"
+            },
+            {
+              "source": "PH1",
+              "target": "PH4",
+              "mechanism": "既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。",
+              "consequence": "発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH1",
+              "basis": "既存発光域と同じ位置・包絡・時間状態を入力にする短距離散乱近似。"
+            },
+            {
+              "source": "OBS2",
+              "target": "PH1",
+              "basis": "最終tone/表示変換の入力となる有色本体または既存背景。"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "幅を持つ青い供給面と明るい内面の差",
+            "減る内側の明部と、残る足元の支持形"
+          ],
+          "indirect": [
+            "既存PHの応答との時間/位置整合。"
+          ],
+          "candidates": [
+            "boundary",
+            "density_layering",
+            "gradient",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH2",
+              "change": "源の内面が減り、媒体の下から上へ前端が進む。"
+            },
+            {
+              "target": "PH4",
+              "change": "発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH1.StateDynamics",
+          "retained_cues": [
+            "幅を持つ青い供給面と明るい内面の差",
+            "減る内側の明部と、残る足元の支持形"
+          ],
+          "simplification": "H64で消える微細ノイズを加えず、3区画の面積/接合/受領面を優先。外形を小さな点へ縮退させない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存形と局所応答で2軸を構成。",
+          "axes": {
+            "contrast": [
+              "濃い青の外縁と明るい供給面",
+              "周辺背景と有色本体の差"
+            ],
+            "ratio_proportion": [
+              "53px幅の供給形に対する中央搬送幅",
+              "供給域と腹部受領域を上下に離して接合面でつなぐ"
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "一つの確定した獲得と受け手の関係を保つ。",
+          "Truth": "同じ座標・所有者時計で供給/輸送/受領を閉じる。",
+          "Beauty": "足元に残る広い源と中央の上向き接合"
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_glow",
+          "disconnected_small_shapes",
+          "technical_test_claimed_as_quality",
+          "unsupported_causal_diagnosis"
+        ]
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "切れない厚い搬送面",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "visible",
+          "local_state_difference": "支持された有色の連続体内を、入力に遅れた密度前端が足元から受領域へ進む。",
+          "partition_reason": "供給から受領までの有限な輸送遅れと断面を持つ中間域。"
+        },
+        "DeepStructure": {
+          "Core": "源との接合から受領下端まで、背景が割り込まない搬送断面。",
+          "Structure": "幅26〜36wuの台形断面を保つ。密度前端と内部の幅広い位相帯は連続媒体の属性であり粒子列ではない。",
+          "Surface": "外面は暗めの青、内面は充填後のシアン。送出が終わっても支持面を切断しない。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "供給から受領までの有限な輸送遅れと断面を持つ中間域。 x±66,y−127〜+13wu、既存受け手の現在位置に束縛。",
+          "state_variables": "支持された有色の連続体内を、入力に遅れた密度前端が足元から受領域へ進む。 phaseは0..1、表示量は無次元、放射は設計上の相対値。",
+          "inputs": [
+            "PH1 -> PH2: 有限の表示用供給量emit(p)を連続した搬送媒体へ入力する。"
+          ],
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "マナEは表示場であり実体物質の質量を定義しない。表示量source+transit+received=1を別の拘束として保持。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "ゲームの身体や物体に力を加えない。場の移動は処理時刻に依存する宣言機構であり、質点弾道ではない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "表示場の入力/放射/受光を有限なイベント包絡へ結ぶ。PH4では入射・反射・未反射分を区別するが、ジュールの実測や完全な放射輸送解は主張しない。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "独立した電荷状態や電流がない。電磁的実証を偽装しない。"
+            }
+          },
+          "constitutive_response": "幅26〜36wuの台形断面を保つ。密度前端と内部の幅広い位相帯は連続媒体の属性であり粒子列ではない。 外面は暗めの青、内面は充填後のシアン。送出が終わっても支持面を切断しない。",
+          "initial_condition": "最初の成功した可視フレームをphase=0として開始。源/搬送/空の受領形を同時に保持。",
+          "boundary_conditions": "隠蔽/死者/退場/ベント/透明/画面外/失効/セッション不一致で全出力を破棄。人物/地面の仮原画は生成しない。",
+          "approximation_scope": "マナ場の定性的な宣言機構。数値は新設計の値であり実測物性や旧版不合格原因ではない。ゲームの実イベント接続はnot_run。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "断面幅26〜36wu=13〜18px(H64)。源/受領との重なりがある。",
+          "characteristic_time": "transitDelay=0.18 phase=0.288所有者秒。局所遅れは搬送座標に比例。",
+          "dominant_balance": "形の最小可読幅と供給/輸送遅れ/受領積分を比較。光学応答に機械的慣性を与えない。",
+          "dimensionless_reasoning": "空気流や表面張力を支配機構にしていないためRe/Weはnot_applicable。輸送遅れ/総尺=0.18を表示設計比として使う。",
+          "detail_cutoff": "主な断面はH64で13px以上。外縁はおよそ1〜3px。微細な帯を消しても3区画と接合を保つ。SamplingContractへ接続。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "温度/燃焼/相変化は宣言されていない。光色を温度・物性の実測値に変換しない。"
+              ],
+              "evidence_or_constraint": "PH2: 外面は暗めの青、内面は充填後のシアン。送出が終わっても支持面を切断しない。 これを不適用領域の根拠とする。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "空気は静穏。非現実の表示場を空気流や粒子上昇へ置き換えず、輸送は宣言場の遅れとして扱う。"
+              ],
+              "evidence_or_constraint": "PH2: 外面は暗めの青、内面は充填後のシアン。送出が終わっても支持面を切断しない。 これを不適用領域の根拠とする。"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "暗い未充填断面と明るい前端を分ける。",
+                "局所座標の遅れに従って内面の密度/放射が進む。"
+              ],
+              "evidence_or_constraint": "連続した支持体は暗明両背景で残る設計。"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "断面幅を持つ支持体を全寿命で保持する。",
+                "phase遅れによる輸送中の量と固有の内面応答を持つ。"
+              ],
+              "evidence_or_constraint": "emitted-received>=0。細線/粒子群/後付け残像で代替しない。 同じPHのOpticsが、この局所状態を放射/反射の差へ写す。"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "電荷や電流の独立状態はない。マナ色を電磁計測と偽らず、発光は宣言場/Opticsへ結ぶ。"
+              ],
+              "evidence_or_constraint": "PH2: 外面は暗めの青、内面は充填後のシアン。送出が終わっても支持面を切断しない。 これを不適用領域の根拠とする。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "粘弾性/降伏を持つ実物材料は追加していない。位相遅れを粘性測定と呼ばない。"
+              ],
+              "evidence_or_constraint": "PH2: 外面は暗めの青、内面は充填後のシアン。送出が終わっても支持面を切断しない。 これを不適用領域の根拠とする。"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "干渉・回折・薄膜・コヒーレンスの条件を選んでいない。虹色の波動装飾を作らない。"
+              ],
+              "evidence_or_constraint": "PH2: 外面は暗めの青、内面は充填後のシアン。送出が終わっても支持面を切断しない。 これを不適用領域の根拠とする。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "濡れ・付着・汚れ・接触角は選んでいない。局所境界は既存の場/受光面の範囲で閉じる。"
+              ],
+              "evidence_or_constraint": "PH2: 外面は暗めの青、内面は充填後のシアン。送出が終わっても支持面を切断しない。 これを不適用領域の根拠とする。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "先端より前にある暗い搬送体と、通過後の明るい内面",
+            "下端から上端へ順番に進む密度前端"
+          ],
+          "indirect_evidence": [
+            "他PHとの同じ時刻での応答差。"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "源と受領をつなぐ太い有色媒体、上へ移る内側の前端",
+          "perceptual_failure_risk": "支柱/一本の単純な線/静止した装飾と読まれる可能性。",
+          "cue_roles": [
+            {
+              "cue": "先端より前にある暗い搬送体と、通過後の明るい内面",
+              "supports": "源と受領をつなぐ太い有色媒体、上へ移る内側の前端",
+              "reliability_and_overlap": "H64原寸の暗明・全寿命を想定。共通の色/境界から得られるため統計的独立とはみなさない。"
+            },
+            {
+              "cue": "下端から上端へ順番に進む密度前端",
+              "supports": "源と受領をつなぐ太い有色媒体、上へ移る内側の前端",
+              "reliability_and_overlap": "H64原寸の暗明・全寿命を想定。共通の色/境界から得られるため統計的独立とはみなさない。"
+            }
+          ],
+          "confusable_alternative": "支柱/一本の単純な線/静止した装飾",
+          "disambiguating_evidence": "暗い既存断面内を移動する明部、供給の減少、受領への遅れを同時に観察する。静止画だけでは輸送と断定しない。",
+          "viewing_conditions": "Chrome/WebGPU、100%表示、128wu→64 CSS pxを試験仮定とする。DPR/OS拡大率は記録する。別環境の可読性は未確定。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "2.5Dの正面に向いた場。PH4だけは背後の平面。",
+          "normal_field_coherence": "内部/境界の形に従う局所放射差。鏡面法線を偽造しない。",
+          "curvature_behavior": "多角形の輪郭と有限幅の内面。位相で接続幅をゼロにしない。",
+          "silhouette_logic": "幅26〜36wuの台形断面を保つ。密度前端と内部の幅広い位相帯は連続媒体の属性であり粒子列ではない。",
+          "contact_relation": "PH1とPH2、PH2とPH3は面積を持って重なる。身体への実接触形状はホスト未検証。",
+          "spatial_relation": "源が足元、受領が腹部設計オフセット、搬送が両者の間。PH4はその背後。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "支持された有色の連続体内を、入力に遅れた密度前端が足元から受領域へ進む。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "受領積分が満量へ収束し、内部放射を収束させた後、phase=1で全支持形と観測層を同時に終了。",
+          "damping_profile": "光路応答は即時、終端前の放射変化は選択した包絡のみ。架空の揺れは加えない。",
+          "oscillation_pattern": "bounded",
+          "equilibrium_recovery": "同じイベントの再起動はない。終端後はゼロに保持する。",
+          "transition_failure_risk": "源/搬送だけ早期に消えて受領体が単独図形になること。",
+          "driving_input": "PH2.PhysicalModel.inputs",
+          "response_timescale": "transitDelay=0.18 phase=0.288所有者秒。局所遅れは搬送座標に比例。",
+          "phase_relation": "全PHはOwnerClock.phaseを共有。PH2の位置遅れとPH3の受領積分だけが異なる。",
+          "stability_condition": "phase<1では接続形を保ち、終了/抑制時は全出力を破棄。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Materials -> PH2.Materials: 有限の表示用供給量emit(p)を連続した搬送媒体へ入力する。 源の内面が減り、媒体の下から上へ前端が進む。",
+            "PH2.Materials -> PH3.Materials: 輸送座標による遅れ0.18 phaseの末端値を受領積分へ入力する。 到着より前に受領量は増えず、到着後は下から上へ受領面積が増す。",
+            "PH2.Optics -> PH4.Optics: 既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。 発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。",
+            "PH2.Materials -> PH2.Optics: 同一PHの境界/局所状態を色と放射、または基礎反射率へ対応させる。別PH間の架空の帰還ではない。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "受領遅れだけを変更し、人数・源位置・搬送断面・総尺・配色を保持する設計上の比較。実比較は未実施。",
+            "predicted_response": "到着境界/受領面積の開始が同じ方向へ動く。背景応答は源状態に追従する。",
+            "competing_explanation": "観測された読みにくさは背景対比、面積、形状語彙、タイミング等でも変わり得る。旧版の原因を特定パラメータと断定しない。",
+            "uncertainty": "新設計の画素出力と知覚は実GPU未観察。定性的な場の機構であり実世界の因果識別ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "有限の表示用供給量emit(p)を連続した搬送媒体へ入力する。",
+              "consequence": "源の内面が減り、媒体の下から上へ前端が進む。"
+            },
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "輸送座標による遅れ0.18 phaseの末端値を受領積分へ入力する。",
+              "consequence": "到着より前に受領量は増えず、到着後は下から上へ受領面積が増す。"
+            },
+            {
+              "source": "PH2",
+              "target": "PH4",
+              "mechanism": "既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。",
+              "consequence": "発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH2",
+              "basis": "既存発光域と同じ位置・包絡・時間状態を入力にする短距離散乱近似。"
+            },
+            {
+              "source": "OBS2",
+              "target": "PH2",
+              "basis": "最終tone/表示変換の入力となる有色本体または既存背景。"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "先端より前にある暗い搬送体と、通過後の明るい内面",
+            "下端から上端へ順番に進む密度前端"
+          ],
+          "indirect": [
+            "既存PHの応答との時間/位置整合。"
+          ],
+          "candidates": [
+            "boundary",
+            "density_layering",
+            "gradient",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH3",
+              "change": "到着より前に受領量は増えず、到着後は下から上へ受領面積が増す。"
+            },
+            {
+              "target": "PH4",
+              "change": "発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH2.StateDynamics",
+          "retained_cues": [
+            "先端より前にある暗い搬送体と、通過後の明るい内面",
+            "下端から上端へ順番に進む密度前端"
+          ],
+          "simplification": "H64で消える微細ノイズを加えず、3区画の面積/接合/受領面を優先。外形を小さな点へ縮退させない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存形と局所応答で2軸を構成。",
+          "axes": {
+            "rhythm_repetition": [
+              "媒体内の位相帯は主断面を欠損させない",
+              "供給位置から受領位置へ一方向の遅れ"
+            ],
+            "contrast": [
+              "前端の明度差",
+              "太い内面と外側の暗い帯の差"
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "一つの確定した獲得と受け手の関係を保つ。",
+          "Truth": "同じ座標・所有者時計で供給/輸送/受領を閉じる。",
+          "Beauty": "源と受領をつなぐ太い有色媒体、上へ移る内側の前端"
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_glow",
+          "disconnected_small_shapes",
+          "technical_test_claimed_as_quality",
+          "unsupported_causal_diagnosis"
+        ]
+      },
+      "PH3": {
+        "identity": {
+          "id": "PH3",
+          "name": "腹部に束縛する受領領域と蓄積",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "visible",
+          "local_state_difference": "広い受領形を初めから保ち、到着に応じて内側の充填面が下から上へ広がる。満量後は内部放射を集め、全Eと同時終了。",
+          "partition_reason": "到達量の積分と、源/搬送とは異なる容量境界を持つ受け手側。"
+        },
+        "DeepStructure": {
+          "Core": "搬送面が受領下端に重なる入口と、そこから増える内部面積。",
+          "Structure": "上幅94wu、下端へ絞る大きな受領断面。空き領域、境界、受領済み体積を色と面積で分ける。人物の仮原画/実体容器ではない。",
+          "Surface": "濃い紫の空き域と外壁、明るい到着境界、内側の紫〜シアンの蓄積層。既存場の状態差のみ。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "到達量の積分と、源/搬送とは異なる容量境界を持つ受け手側。 x±66,y−127〜+13wu、既存受け手の現在位置に束縛。",
+          "state_variables": "広い受領形を初めから保ち、到着に応じて内側の充填面が下から上へ広がる。満量後は内部放射を集め、全Eと同時終了。 phaseは0..1、表示量は無次元、放射は設計上の相対値。",
+          "inputs": [
+            "PH2 -> PH3: 輸送座標による遅れ0.18 phaseの末端値を受領積分へ入力する。"
+          ],
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "マナEは表示場であり実体物質の質量を定義しない。表示量source+transit+received=1を別の拘束として保持。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "ゲームの身体や物体に力を加えない。場の移動は処理時刻に依存する宣言機構であり、質点弾道ではない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "表示場の入力/放射/受光を有限なイベント包絡へ結ぶ。PH4では入射・反射・未反射分を区別するが、ジュールの実測や完全な放射輸送解は主張しない。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "独立した電荷状態や電流がない。電磁的実証を偽装しない。"
+            }
+          },
+          "constitutive_response": "上幅94wu、下端へ絞る大きな受領断面。空き領域、境界、受領済み体積を色と面積で分ける。人物の仮原画/実体容器ではない。 濃い紫の空き域と外壁、明るい到着境界、内側の紫〜シアンの蓄積層。既存場の状態差のみ。",
+          "initial_condition": "最初の成功した可視フレームをphase=0として開始。源/搬送/空の受領形を同時に保持。",
+          "boundary_conditions": "隠蔽/死者/退場/ベント/透明/画面外/失効/セッション不一致で全出力を破棄。人物/地面の仮原画は生成しない。",
+          "approximation_scope": "マナ場の定性的な宣言機構。数値は新設計の値であり実測物性や旧版不合格原因ではない。ゲームの実イベント接続はnot_run。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "幅94wu=47px、高さ56wu=28px(H64)。中心は腹部位置の設計オフセット。実キャラとの一致はホスト確認が必要。",
+          "characteristic_time": "receive(p)=emit(p-0.18)。0.235以前は受領量ゼロ、0.805で満量。0.83〜0.96は内部放射の収束。",
+          "dominant_balance": "形の最小可読幅と供給/輸送遅れ/受領積分を比較。光学応答に機械的慣性を与えない。",
+          "dimensionless_reasoning": "空気流や表面張力を支配機構にしていないためRe/Weはnot_applicable。輸送遅れ/総尺=0.18を表示設計比として使う。",
+          "detail_cutoff": "主な断面はH64で13px以上。外縁はおよそ1〜3px。微細な帯を消しても3区画と接合を保つ。SamplingContractへ接続。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "温度/燃焼/相変化は宣言されていない。光色を温度・物性の実測値に変換しない。"
+              ],
+              "evidence_or_constraint": "PH3: 濃い紫の空き域と外壁、明るい到着境界、内側の紫〜シアンの蓄積層。既存場の状態差のみ。 これを不適用領域の根拠とする。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "空気は静穏。非現実の表示場を空気流や粒子上昇へ置き換えず、輸送は宣言場の遅れとして扱う。"
+              ],
+              "evidence_or_constraint": "PH3: 濃い紫の空き域と外壁、明るい到着境界、内側の紫〜シアンの蓄積層。既存場の状態差のみ。 これを不適用領域の根拠とする。"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "受領境界の明度を古い受領済み層と分ける。",
+                "終端前の内部放射を中心へ集めても容量境界は縮小しない。"
+              ],
+              "evidence_or_constraint": "PH2の到着と連続し、OBS1の入力も同じreceived量に従う。"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "受領量の積分を面積に翻訳する。",
+                "未充填/充填/満量/放射収束を同じ既存領域内で区別する。"
+              ],
+              "evidence_or_constraint": "receive=emit(p-delay)。ゲームのマナを操作しない。 同じPHのOpticsが、この局所状態を放射/反射の差へ写す。"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "電荷や電流の独立状態はない。マナ色を電磁計測と偽らず、発光は宣言場/Opticsへ結ぶ。"
+              ],
+              "evidence_or_constraint": "PH3: 濃い紫の空き域と外壁、明るい到着境界、内側の紫〜シアンの蓄積層。既存場の状態差のみ。 これを不適用領域の根拠とする。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "粘弾性/降伏を持つ実物材料は追加していない。位相遅れを粘性測定と呼ばない。"
+              ],
+              "evidence_or_constraint": "PH3: 濃い紫の空き域と外壁、明るい到着境界、内側の紫〜シアンの蓄積層。既存場の状態差のみ。 これを不適用領域の根拠とする。"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "干渉・回折・薄膜・コヒーレンスの条件を選んでいない。虹色の波動装飾を作らない。"
+              ],
+              "evidence_or_constraint": "PH3: 濃い紫の空き域と外壁、明るい到着境界、内側の紫〜シアンの蓄積層。既存場の状態差のみ。 これを不適用領域の根拠とする。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "濡れ・付着・汚れ・接触角は選んでいない。局所境界は既存の場/受光面の範囲で閉じる。"
+              ],
+              "evidence_or_constraint": "PH3: 濃い紫の空き域と外壁、明るい到着境界、内側の紫〜シアンの蓄積層。既存場の状態差のみ。 これを不適用領域の根拠とする。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "到着後に上へ移る充填境界と増える有色面積",
+            "満量を保持した内部に集まる局所放射、外形と接合は残る"
+          ],
+          "indirect_evidence": [
+            "他PHとの同じ時刻での応答差。"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "固定された受領容量の内側に、到着に続いて増える面",
+          "perceptual_failure_risk": "単独のカプセル/小さな固体アイコン/空間に置かれた器と読まれる可能性。",
+          "cue_roles": [
+            {
+              "cue": "到着後に上へ移る充填境界と増える有色面積",
+              "supports": "固定された受領容量の内側に、到着に続いて増える面",
+              "reliability_and_overlap": "H64原寸の暗明・全寿命を想定。共通の色/境界から得られるため統計的独立とはみなさない。"
+            },
+            {
+              "cue": "満量を保持した内部に集まる局所放射、外形と接合は残る",
+              "supports": "固定された受領容量の内側に、到着に続いて増える面",
+              "reliability_and_overlap": "H64原寸の暗明・全寿命を想定。共通の色/境界から得られるため統計的独立とはみなさない。"
+            }
+          ],
+          "confusable_alternative": "単独のカプセル/小さな固体アイコン/空間に置かれた器",
+          "disambiguating_evidence": "上流と切れずに接する下端、遅れて始まる面積変化、満量後も同じ位置に残る場を全寿命で比較する。無説明で受領と読めるかは未検証。",
+          "viewing_conditions": "Chrome/WebGPU、100%表示、128wu→64 CSS pxを試験仮定とする。DPR/OS拡大率は記録する。別環境の可読性は未確定。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "2.5Dの正面に向いた場。PH4だけは背後の平面。",
+          "normal_field_coherence": "内部/境界の形に従う局所放射差。鏡面法線を偽造しない。",
+          "curvature_behavior": "多角形の輪郭と有限幅の内面。位相で接続幅をゼロにしない。",
+          "silhouette_logic": "上幅94wu、下端へ絞る大きな受領断面。空き領域、境界、受領済み体積を色と面積で分ける。人物の仮原画/実体容器ではない。",
+          "contact_relation": "PH1とPH2、PH2とPH3は面積を持って重なる。身体への実接触形状はホスト未検証。",
+          "spatial_relation": "源が足元、受領が腹部設計オフセット、搬送が両者の間。PH4はその背後。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "広い受領形を初めから保ち、到着に応じて内側の充填面が下から上へ広がる。満量後は内部放射を集め、全Eと同時終了。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "受領積分が満量へ収束し、内部放射を収束させた後、phase=1で全支持形と観測層を同時に終了。",
+          "damping_profile": "光路応答は即時、終端前の放射変化は選択した包絡のみ。架空の揺れは加えない。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "同じイベントの再起動はない。終端後はゼロに保持する。",
+          "transition_failure_risk": "源/搬送だけ早期に消えて受領体が単独図形になること。",
+          "driving_input": "PH3.PhysicalModel.inputs",
+          "response_timescale": "receive(p)=emit(p-0.18)。0.235以前は受領量ゼロ、0.805で満量。0.83〜0.96は内部放射の収束。",
+          "phase_relation": "全PHはOwnerClock.phaseを共有。PH2の位置遅れとPH3の受領積分だけが異なる。",
+          "stability_condition": "phase<1では接続形を保ち、終了/抑制時は全出力を破棄。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Materials -> PH3.Materials: 輸送座標による遅れ0.18 phaseの末端値を受領積分へ入力する。 到着より前に受領量は増えず、到着後は下から上へ受領面積が増す。",
+            "PH3.Optics -> PH4.Optics: 既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。 発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。",
+            "PH3.Materials -> PH3.Optics: 同一PHの境界/局所状態を色と放射、または基礎反射率へ対応させる。別PH間の架空の帰還ではない。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "受領遅れだけを変更し、人数・源位置・搬送断面・総尺・配色を保持する設計上の比較。実比較は未実施。",
+            "predicted_response": "到着境界/受領面積の開始が同じ方向へ動く。背景応答は源状態に追従する。",
+            "competing_explanation": "観測された読みにくさは背景対比、面積、形状語彙、タイミング等でも変わり得る。旧版の原因を特定パラメータと断定しない。",
+            "uncertainty": "新設計の画素出力と知覚は実GPU未観察。定性的な場の機構であり実世界の因果識別ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "輸送座標による遅れ0.18 phaseの末端値を受領積分へ入力する。",
+              "consequence": "到着より前に受領量は増えず、到着後は下から上へ受領面積が増す。"
+            },
+            {
+              "source": "PH3",
+              "target": "PH4",
+              "mechanism": "既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。",
+              "consequence": "発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH3",
+              "basis": "既存発光域と同じ位置・包絡・時間状態を入力にする短距離散乱近似。"
+            },
+            {
+              "source": "OBS2",
+              "target": "PH3",
+              "basis": "最終tone/表示変換の入力となる有色本体または既存背景。"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "到着後に上へ移る充填境界と増える有色面積",
+            "満量を保持した内部に集まる局所放射、外形と接合は残る"
+          ],
+          "indirect": [
+            "既存PHの応答との時間/位置整合。"
+          ],
+          "candidates": [
+            "boundary",
+            "density_layering",
+            "gradient",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH4",
+              "change": "発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH3.StateDynamics",
+          "retained_cues": [
+            "到着後に上へ移る充填境界と増える有色面積",
+            "満量を保持した内部に集まる局所放射、外形と接合は残る"
+          ],
+          "simplification": "H64で消える微細ノイズを加えず、3区画の面積/接合/受領面を優先。外形を小さな点へ縮退させない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存形と局所応答で2軸を構成。",
+          "axes": {
+            "whitespace_density": [
+              "受領前の広い空き域",
+              "受領後の面積増加と縮小しない容量境界"
+            ],
+            "material_response": [
+              "到着境界と古い蓄積層の色差",
+              "満量後の内部集光と残る有色外形"
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "一つの確定した獲得と受け手の関係を保つ。",
+          "Truth": "同じ座標・所有者時計で供給/輸送/受領を閉じる。",
+          "Beauty": "固定された受領容量の内側に、到着に続いて増える面"
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_glow",
+          "disconnected_small_shapes",
+          "technical_test_claimed_as_quality",
+          "unsupported_causal_diagnosis"
+        ]
+      },
+      "PH4": {
+        "identity": {
+          "id": "PH4",
+          "name": "暗明の試験背景と局所受光",
+          "origin": "declared",
+          "anchor": "background",
+          "visibility": "visible",
+          "local_state_difference": "暗/明の平坦な既存試験背景が、PH1〜PH3の位置・量に従う局所光を受ける。外側は不変。",
+          "partition_reason": "供給/輸送/蓄積とは異なる、非発光の受光面の境界。"
+        },
+        "DeepStructure": {
+          "Core": "既存の発光域に近い背景だけが色付きの光を受ける。",
+          "Structure": "正面の平坦な試験面。光はSDF距離に従い短距離で減衰し、世界包絡端でゼロになる。",
+          "Surface": "一定の拡散反射率を持つ簡略面。鏡像、金属、濡れ、汚れ、模様、床や人形を追加しない。"
+        },
+        "PhysicalModel": {
+          "model_kind": "optical_transport",
+          "system_boundary": "画面全域の既存暗/明の平坦な受光面。Eが変える局所照度だけを受け手足元からx±66,y−127〜+13wuに制限する。",
+          "state_variables": "暗/明の平坦な既存試験背景が、PH1〜PH3の位置・量に従う局所光を受ける。外側は不変。 phaseは0..1、表示量は無次元、放射は設計上の相対値。",
+          "inputs": [
+            "PH1 -> PH4: 既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。",
+            "PH2 -> PH4: 既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。",
+            "PH3 -> PH4: 既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。"
+          ],
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "光輸送として扱う既存受光面。独立した物体の質量・支持力学は本モデルの対象外。表示マナ量の収支にPH4を含めない。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "ゲームの身体や物体に力を加えない。場の移動は処理時刻に依存する宣言機構であり、質点弾道ではない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "PH1〜PH3からの有限の入力と背景の拡散応答。未反射分は簡略モデルの吸収・未追跡輸送へ分配する境界条件であり、エネルギー消失や測光一致を主張しない。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "独立した電荷状態や電流がない。電磁的実証を偽装しない。"
+            }
+          },
+          "constitutive_response": "正面の平坦な試験面。光はSDF距離に従い短距離で減衰し、世界包絡端でゼロになる。 一定の拡散反射率を持つ簡略面。鏡像、金属、濡れ、汚れ、模様、床や人形を追加しない。",
+          "initial_condition": "選択した暗/明の平坦な受光面。",
+          "boundary_conditions": "隠蔽/死者/退場/ベント/透明/画面外/失効/セッション不一致で全出力を破棄。人物/地面の仮原画は生成しない。",
+          "approximation_scope": "マナ場の定性的な宣言機構。数値は新設計の値であり実測物性や旧版不合格原因ではない。ゲームの実イベント接続はnot_run。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "画面上の局所受光はおよそ3〜4pxの主要幅。空間端はx±66,y−127〜+13wu。",
+          "characteristic_time": "幾何光学の即時応答として同じ基準時点を使う。機械的遅れを与えない。",
+          "dominant_balance": "形の最小可読幅と供給/輸送遅れ/受領積分を比較。光学応答に機械的慣性を与えない。",
+          "dimensionless_reasoning": "空気流や表面張力を支配機構にしていないためRe/Weはnot_applicable。輸送遅れ/総尺=0.18を表示設計比として使う。",
+          "detail_cutoff": "SDF減衰幅5.5〜7.4wuはH64で約2.75〜3.7px。PHの13px搬送断面を背景光の幅へ流用しない。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "温度/燃焼/相変化は宣言されていない。光色を温度・物性の実測値に変換しない。"
+              ],
+              "evidence_or_constraint": "PH4: 一定の拡散反射率を持つ簡略面。鏡像、金属、濡れ、汚れ、模様、床や人形を追加しない。 これを不適用領域の根拠とする。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "空気は静穏。非現実の表示場を空気流や粒子上昇へ置き換えず、輸送は宣言場の遅れとして扱う。"
+              ],
+              "evidence_or_constraint": "PH4: 一定の拡散反射率を持つ簡略面。鏡像、金属、濡れ、汚れ、模様、床や人形を追加しない。 これを不適用領域の根拠とする。"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "暗/明それぞれの基礎反射色に局所照度を掛ける。",
+                "遮蔽される領域は有色本体のcoverageで置き換わる。"
+              ],
+              "evidence_or_constraint": "bg*(1+min(irradiance,.45))。これは定性的な近距離照明近似で測光ではない。"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "一様な拡散背景を保持し、材料の変化ではなく入射の位置差だけを出す。"
+              ],
+              "evidence_or_constraint": "背景色はPALETTE.dark/light。未宣言の床や模様を置かない。 同じPHのOpticsが、この局所状態を放射/反射の差へ写す。"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "電荷や電流の独立状態はない。マナ色を電磁計測と偽らず、発光は宣言場/Opticsへ結ぶ。"
+              ],
+              "evidence_or_constraint": "PH4: 一定の拡散反射率を持つ簡略面。鏡像、金属、濡れ、汚れ、模様、床や人形を追加しない。 これを不適用領域の根拠とする。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "粘弾性/降伏を持つ実物材料は追加していない。位相遅れを粘性測定と呼ばない。"
+              ],
+              "evidence_or_constraint": "PH4: 一定の拡散反射率を持つ簡略面。鏡像、金属、濡れ、汚れ、模様、床や人形を追加しない。 これを不適用領域の根拠とする。"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "干渉・回折・薄膜・コヒーレンスの条件を選んでいない。虹色の波動装飾を作らない。"
+              ],
+              "evidence_or_constraint": "PH4: 一定の拡散反射率を持つ簡略面。鏡像、金属、濡れ、汚れ、模様、床や人形を追加しない。 これを不適用領域の根拠とする。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "濡れ・付着・汚れ・接触角は選んでいない。局所境界は既存の場/受光面の範囲で閉じる。"
+              ],
+              "evidence_or_constraint": "PH4: 一定の拡散反射率を持つ簡略面。鏡像、金属、濡れ、汚れ、模様、床や人形を追加しない。 これを不適用領域の根拠とする。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "光源近傍と離れた背景の局所差",
+            "同じ源でも暗/明の基礎反射率で異なる受光量"
+          ],
+          "indirect_evidence": [
+            "他PHとの同じ時刻での応答差。"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "本体の外に届く色付きの局所光と残る元背景",
+          "perceptual_failure_risk": "全面の色フィルター/世界内光と混同したbloomと読まれる可能性。",
+          "cue_roles": [
+            {
+              "cue": "光源近傍と離れた背景の局所差",
+              "supports": "本体の外に届く色付きの局所光と残る元背景",
+              "reliability_and_overlap": "H64原寸の暗明・全寿命を想定。共通の色/境界から得られるため統計的独立とはみなさない。"
+            },
+            {
+              "cue": "同じ源でも暗/明の基礎反射率で異なる受光量",
+              "supports": "本体の外に届く色付きの局所光と残る元背景",
+              "reliability_and_overlap": "H64原寸の暗明・全寿命を想定。共通の色/境界から得られるため統計的独立とはみなさない。"
+            }
+          ],
+          "confusable_alternative": "全面の色フィルター/世界内光と混同したbloom",
+          "disambiguating_evidence": "背景受光(bit8)とOBS拡散(bit16)を単独で検査可能。一定反射率への世界内入力と表示散乱を別式にしている。",
+          "viewing_conditions": "Chrome/WebGPU、100%表示、128wu→64 CSS pxを試験仮定とする。DPR/OS拡大率は記録する。別環境の可読性は未確定。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "カメラに正対する既存の平坦な試験背景、Eより背後。",
+          "normal_field_coherence": "平面の法線を一定にする。SDFの減衰は受光範囲であり背景法線の変化ではない。",
+          "curvature_behavior": "not_applicable: 曲面を追加せず平面を保つ。",
+          "silhouette_logic": "画面全域に背景を保持し、光の変化だけが局所に限られる。",
+          "contact_relation": "PH1〜3の光を受けるが機械的接触なし。",
+          "spatial_relation": "源が足元、受領が腹部設計オフセット、搬送が両者の間。PH4はその背後。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "暗/明の平坦な既存試験背景が、PH1〜PH3の位置・量に従う局所光を受ける。外側は不変。",
+          "transition_path_character": "equilibrium-maintained",
+          "local_stability_type": "stable",
+          "convergence_behavior": "入力放射へ同じフレームで追従し、E終了後は元の背景値へ戻る。",
+          "damping_profile": "光路応答は即時、終端前の放射変化は選択した包絡のみ。架空の揺れは加えない。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "E以前から存在する背景は消さず、増分照度だけを0にする。",
+          "transition_failure_risk": "源/搬送だけ早期に消えて受領体が単独図形になること。",
+          "driving_input": "PH4.PhysicalModel.inputs",
+          "response_timescale": "幾何光学の即時応答として同じ基準時点を使う。機械的遅れを与えない。",
+          "phase_relation": "同じframeの放射へ即時的に追従。輸送0.18 phaseの追加遅れを背景に与えない。",
+          "stability_condition": "基礎反射色を固定、入力照度の増分は有限上限内。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Optics -> PH4.Optics: 既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。 発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。",
+            "PH2.Optics -> PH4.Optics: 既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。 発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。",
+            "PH3.Optics -> PH4.Optics: 既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。 発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。",
+            "PH4.Materials -> PH4.Optics: 同一PHの境界/局所状態を色と放射、または基礎反射率へ対応させる。別PH間の架空の帰還ではない。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "受領遅れだけを変更し、人数・源位置・搬送断面・総尺・配色を保持する設計上の比較。実比較は未実施。",
+            "predicted_response": "到着境界/受領面積の開始が同じ方向へ動く。背景応答は源状態に追従する。",
+            "competing_explanation": "観測された読みにくさは背景対比、面積、形状語彙、タイミング等でも変わり得る。旧版の原因を特定パラメータと断定しない。",
+            "uncertainty": "新設計の画素出力と知覚は実GPU未観察。定性的な場の機構であり実世界の因果識別ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH4",
+              "mechanism": "既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。",
+              "consequence": "発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。"
+            },
+            {
+              "source": "PH2",
+              "target": "PH4",
+              "mechanism": "既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。",
+              "consequence": "発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。"
+            },
+            {
+              "source": "PH3",
+              "target": "PH4",
+              "mechanism": "既存発光体の位置と状態に束縛された局所放射が一定反射率の試験背景へ入る。",
+              "consequence": "発光体近傍だけの反射色/明度が変わり、SDF距離と包絡端で減衰する。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS2",
+              "target": "PH4",
+              "basis": "最終tone/表示変換の入力となる有色本体または既存背景。"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "光源近傍と離れた背景の局所差",
+            "同じ源でも暗/明の基礎反射率で異なる受光量"
+          ],
+          "indirect": [
+            "既存PHの応答との時間/位置整合。"
+          ],
+          "candidates": [
+            "boundary",
+            "density_layering",
+            "gradient",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "context",
+          "world_state_ref": "PH4.StateDynamics",
+          "retained_cues": [
+            "光源近傍と離れた背景の局所差",
+            "同じ源でも暗/明の基礎反射率で異なる受光量"
+          ],
+          "simplification": "H64で消える微細ノイズを加えず、3区画の面積/接合/受領面を優先。外形を小さな点へ縮退させない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存形と局所応答で2軸を構成。",
+          "axes": {
+            "contrast": [
+              "受光域と離れた背景の差",
+              "暗背景と明背景の応答差"
+            ],
+            "whitespace_density": [
+              "包絡外を変えない余白",
+              "源/搬送/受領ごとに異なる局所光の位置"
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "一つの確定した獲得と受け手の関係を保つ。",
+          "Truth": "同じ座標・所有者時計で供給/輸送/受領を閉じる。",
+          "Beauty": "本体の外に届く色付きの局所光と残る元背景"
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_glow",
+          "disconnected_small_shapes",
+          "technical_test_claimed_as_quality",
+          "unsupported_causal_diagnosis"
+        ]
+      }
+    },
+    "Acceptance": {
+      "all_PH_have_required_full_structure": true,
+      "visible_implicit_latent_have_same_field_set": true,
+      "OBS_not_in_PH_registry": true,
+      "PIA_resolved_as_identification_lifecycle": true
+    }
+  },
+  "PEMTemplate": {
+    "Mode": {
+      "phenomenon_equality": true,
+      "focus_phenomenon": "none"
+    },
+    "CausalMesh": {
+      "physical_mesh_required": true,
+      "gaze_target_policy": "standard",
+      "adjustment_reason": "not_applicable",
+      "gaze_path_A": "PH1源の内面→PH2の前端→PH3受領境界。",
+      "gaze_path_B": "PH3の空き/充填面→PH4の局所光→PH1の残る支持形。",
+      "local_extrema_connected_to_gaze_paths": true
+    },
+    "AttentionControl": {
+      "attention_focus": "hierarchical",
+      "single_requires_explicit_request": true
+    },
+    "Acceptance": {
+      "no_unexplained_isolation": true,
+      "gaze_paths_match_selected_policy_and_explicit_intent": true,
+      "local_peak_returns_to_mesh": true
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "PH1〜PH4の既存世界内状態を表示する。display-only例外は使わない。"
+    },
+    "Units": {
+      "length": "m",
+      "time": "s",
+      "temperature": "K_or_not_applicable",
+      "pressure": "Pa_or_not_applicable",
+      "angle": "rad"
+    },
+    "WorldCoordinates": {
+      "handedness": "right_handed",
+      "X": "right_positive",
+      "Y": "up_positive",
+      "Z": "backward_positive",
+      "camera_forward": "negative_Z",
+      "origin": "現在の受け手の足元。game座標との差分を使う。"
+    },
+    "CameraCoordinates": {
+      "X": "right_positive",
+      "Y": "up_positive",
+      "forward": "negative_Z",
+      "projection": "orthographic",
+      "FOV_or_scale": "1wu=0.01mは設計仮定。H64では1wu=.5px。"
+    },
+    "ScreenCoordinates": {
+      "domain": "[0,1]x[0,1]",
+      "x": "0_left_to_1_right",
+      "y": "0_top_to_1_bottom"
+    },
+    "TransformChain": {
+      "order": [
+        "world",
+        "camera",
+        "screen"
+      ],
+      "world_to_camera": "B world=(0.01*game_dx,-0.01*game_dy,z)。cameraは正面、backgroundは背後。",
+      "camera_to_screen": "px=centerX+(game_x-camera_x)*scale、py=footY+(game_y-camera_y)*scale。viewport寸法で正規化。"
+    },
+    "ContactCoordinates": {
+      "contact_patch": "PH1/PH2とPH2/PH3の重なる面。実体床接触はnot_applicable。",
+      "contact_normal": "平面内の搬送軸。実身体への面法線は未取得。",
+      "support_relation": "not_applicable: 身体/床の支持ではなく表示場の拘束。",
+      "no_penetration": true
+    },
+    "VectorField": {
+      "dominant_vector": {
+        "direction": "game (0,-1)、B world(0,+1,0)",
+        "magnitude": "phase遅れ0.18に対応する前端移動。",
+        "falloff": "包絡端へ0",
+        "fluctuation": "内部の有界密度帯のみ。低減モーションでは帯変動を除去。"
+      },
+      "secondary_vector": {
+        "direction": "周辺への光輸送",
+        "magnitude": "局所相対放射",
+        "falloff": "SDF距離7.4wu/5.5wuの減衰と境界クリップ",
+        "fluctuation": "同じsource/received値へ従属"
+      }
+    },
+    "Gravity": {
+      "condition": "normal",
+      "vector": [
+        0,
+        -1,
+        0
+      ],
+      "strength": "通常重力。数値加速度の実測ではない。",
+      "affected_responses": "宣言場は拘束により上向き輸送。質点落下/粒子/衣服は選んでいない。",
+      "evidence": "上向きの輸送軸と足元に維持する供給域。実体落下の証拠を無理に追加しない。"
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "air",
+      "medium_properties": {
+        "density": "通常空気の定性条件、未測定",
+        "viscosity": "未測定。空力応答は本Eで不適用"
+      },
+      "Field": {
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "speed": "0 m/s（静穏な設計条件）",
+        "gust": "none",
+        "shear": "none",
+        "turbulence": "none"
+      },
+      "ApplicableResponses": {
+        "body": "not_applicable: 人物原画なし",
+        "cloth": "not_applicable: 衣服なし",
+        "hair": "not_applicable: 髪なし",
+        "loose_elements": "not_applicable: 遊離物なし",
+        "environment": "平坦な背景に不要な揺れを入れない"
+      },
+      "non_applicable_responses_explicit": true
+    },
+    "Acceptance": {
+      "world_camera_screen_transform_defined": true,
+      "screen_axis_convention_defined": true,
+      "Gravity_present": true,
+      "WindCapsule_present": true,
+      "medium_state_present": true,
+      "no_inapplicable_wind_evidence_required": true
+    }
+  },
+  "OctaDomainTemplate": {
+    "domain_fields": [
+      "Thermo",
+      "Fluid",
+      "Optics",
+      "Materials",
+      "Electromagnetics",
+      "Rheology",
+      "WaveOptics",
+      "SurfaceScience"
+    ],
+    "application_location": "各PH.OctaDomain.Domains",
+    "Acceptance": {
+      "all_8_domains_present": true,
+      "role_classification_present": true,
+      "latent_does_not_require_direct_visualization": true,
+      "non_applicable_domains_retained_with_reason_and_latent_role": true
+    }
+  },
+  "AnimeStudiesTemplate": {
+    "applicability": "連続Eでは構図/前後時間の互換適用。画像生成は実行しない。",
+    "KeyframeSnapshot": {
+      "phase": "action_peak",
+      "state_t_minus_1_evidence": "源の内面と、搬送の進む前端。",
+      "state_t_evidence": "受領境界と増えた面積。",
+      "state_t_plus_1_evidence": "満量の保持、内部放射の収束、全体終了。"
+    },
+    "Layout": {
+      "staging": "足元→中央の搬送→腹部設計位置の受領形。",
+      "projection_consistency_ref": "CoordinateGravityWindTemplate",
+      "whitespace_role": "3区画を含む一つの形と、変えない外部余白。"
+    },
+    "PoseActing_or_SceneActing": {
+      "character_ref": "not_applicable: 身体を描かない。",
+      "object_balance": "場の軸と接合を固定。",
+      "contact_logic": "源/搬送/受領間の支持形だけを保持。"
+    },
+    "MotionReadability": {
+      "motion_blur_smear_speed_line_policy": "explicit_user_request_only",
+      "primary_causality_replacement_by_motion_effects": false
+    },
+    "CompositeIntegration": {
+      "observation_ref": "ObservationIntegrationTemplate",
+      "contact_shadow_used_for_integration": "not_applicable: 実体の床接触を宣言していない。"
+    },
+    "Acceptance": {
+      "previous_and_next_time_or_explicit_ambiguity_accounted_for": true,
+      "projection_consistent": true,
+      "posteffects_do_not_replace_primary_causality": true
+    }
+  },
+  "ObservationIntegrationTemplate": {
+    "ObservationRegistry": {
+      "OBS1": {
+        "operation_type": "posteffect",
+        "input_references": [
+          "PH1",
+          "PH2",
+          "PH3"
+        ],
+        "target_mask": "PH1〜PH3のSDF近傍を生成し、後続の有色本体coverageで保護するscreen mask。包絡外は0。",
+        "stage": "pre_composite",
+        "composite_method": "add",
+        "intensity": "ObservationIntegrationTemplate.IntensityBudgetの単一上限、linear RGB各.075以下。",
+        "protected_regions": [
+          "包絡外",
+          "有色本体の輪郭/接合",
+          "受領面積の境界"
+        ],
+        "output_consequence": "保護する本体の下へ合成する局所拡散近似。実レンズ散乱の厳密解ではなく、主形を残す再合成の設計。",
+        "dependencies": [
+          "PH1",
+          "PH2",
+          "PH3"
+        ],
+        "sampling_consequence": "3〜4pxの近傍幅。別の時間変動/残像なし。縮小で消えても本体が残る。",
+        "selection_basis": "attribute_resolved: 既存発光と選択した表示応答の具体化。実レンズ測定ではない。"
+      },
+      "OBS2": {
+        "operation_type": "tone",
+        "input_references": [
+          "PH1",
+          "PH2",
+          "PH3",
+          "PH4",
+          "OBS1",
+          "display_condition"
+        ],
+        "target_mask": "同じフレームの線形合成結果。",
+        "stage": "display",
+        "composite_method": "replace_with_constraint",
+        "intensity": "c/(1+.16c)とsRGB変換。観測上限はIntensityBudgetを参照。",
+        "protected_regions": [
+          "源/輸送/受領の有色差",
+          "包絡外の同じ暗/明背景"
+        ],
+        "output_consequence": "linear合成を表示色へ変換。RGBごとのclipは起こり得るが、主形を白い一塊にする設定ではない。",
+        "dependencies": [
+          "PH1",
+          "PH2",
+          "PH3",
+          "PH4",
+          "OBS1",
+          "display_condition"
+        ],
+        "sampling_consequence": "同解像度1:1のtextureLoad。未指定のノイズ・ブラー・時間積分はない。"
+      }
+    },
+    "SamplingContract": {
+      "output_resolution": "プレビューは480×208 GPU画素。H64基準は128wu→64 CSS px、DPR1相当の明示バッファ。検査は240×160。",
+      "intended_display_scale": "H64原寸、ブラウザー100%。2x/4xはデバッグであり原寸合格の代用にしない。",
+      "spatial_detail_policy": "搬送断面13〜18pxと47px幅の受領面を主証拠にする。微細な帯や外周1pxを唯一の証拠にしない。",
+      "temporal_sampling": "requestAnimationFrameの実cadence。フレーム率は保証しない。露光積分/残像なし。時間は1.6所有者秒を1x/2xで区分積分。",
+      "filter_and_resample_policy": "SDFの有限幅境界でアンチエイリアス近似。WebGPU出力をtextureLoadで1:1表示。OS/DPRや表示再標本化は環境記録が必要。"
+    },
+    "ImageIntegration": {
+      "ToneColor": "OBS2",
+      "LightIntegration": "PH1/PH2/PH3→PH4とOBS1を分離。",
+      "ShadowDensity": "not_applicable: 追加の影なし",
+      "DepthAir": "not_applicable: 空気遠近/霧なし",
+      "EdgeLine": "PHの境界/内面を直接描く。追加の線画処理なし。",
+      "TextureOutput": "主断面内の密度帯のみ。grain/noiseの追加なし。"
+    },
+    "LensFlareField": {
+      "registry_id": "none",
+      "artifact_type": "optical_observation_artifact",
+      "world_anchor": "none",
+      "SourceMapping": {
+        "source_state": "none",
+        "source_id": "none",
+        "source_screen_position": "not_applicable",
+        "source_luminance_rank": "not_applicable"
+      },
+      "ResponseVisibility": {
+        "level": "none",
+        "reason": "物理レンズゴーストは選択しない。短距離拡散は別のOBS1。"
+      },
+      "LensModel": {
+        "flare_mode": "latent",
+        "coating_strength": "not_applicable",
+        "aperture_state": "not_applicable",
+        "anamorphic": false
+      },
+      "SpatialBinding": {
+        "image_center_relation": "not_applicable",
+        "optical_axis_offset": "none",
+        "chain_axis": "none"
+      },
+      "Responses": {
+        "Ghost": "none",
+        "Veil": "none",
+        "Streak": "none",
+        "Spectral": "none"
+      }
+    },
+    "IntensityBudget": {
+      "global_observation_budget": "OBS1はsource由来の局所項、合成上限はlinear RGB各.075。OBS2は線形合成→表示。主形のcoverageはPHから独立に得る。",
+      "para": "not_selected",
+      "flare_gradient": "not_selected",
+      "glow": "low / OBS1のみ",
+      "diffusion": "not_selected",
+      "grain": "not_selected",
+      "chromatic_aberration": "not_selected",
+      "protected_region_priority": "highest",
+      "intentional_departures": []
+    },
+    "CompositeValidation": {
+      "contour_preserved": "not_tested",
+      "highlight_clipping": "not_tested",
+      "shadow_crushing": "not_tested",
+      "chroma_displacement": "not_tested",
+      "fine_detail_retention": "not_tested",
+      "protected_background_preserved": "not_tested"
+    },
+    "Acceptance": {
+      "OBS_separate_from_PH": true,
+      "physical_lensflare_source_binding_preserved": true,
+      "display_artifact_does_not_fake_physical_source": true,
+      "intensity_budget_is_single_source_of_truth": true,
+      "sampling_conditions_and_actual_execution_distinguished": true
+    }
+  },
+  "ExtremumDesignColorTemplate": {
+    "PEV": {
+      "candidate_state_set": [
+        "S1: 一つの採用状態系列。全区画の支持形を保ち、源量/遅れ/受領面積だけが動く。"
+      ],
+      "selected_physics_extremum": "S1",
+      "reason": "源/輸送を消して受領だけを残す時間相を作らない。"
+    },
+    "AES": {
+      "selected_from_PEV_only": true,
+      "visual_circulation": "源→搬送→受領と、受領境界→源残量の2系統。",
+      "asymmetric_balance": "not_applicable: 固定された中央軸と左右の明瞭な断面を採用。",
+      "tension_release": "空き領域が満ち、内部放射が収束して全体終了。",
+      "body_environment_consonance": "人物なし。現在の受け手位置と背景受光への結合で保持。",
+      "selected_aesthetic_extremum": "S1"
+    },
+    "DesignScience": {
+      "VisualHierarchy": "供給面/搬送面/受領面を同時に残す。受領変化が後半の主要証拠。",
+      "DensityPlan": "容量の空き→充填。外部余白を保持。",
+      "ShapeOrder": "広い源・太い中間域・大きな受領域の上下関係。",
+      "OrnamentFunction": "独立の装飾を追加しない。境界・密度帯・内面は機構と読みを担う。"
+    },
+    "CCM": {
+      "Palette": {
+        "base": "供給のコバルト",
+        "secondary": "搬送のシアン",
+        "accent": "受領した層の紫と新しい到着境界の明るいシアン",
+        "neutral": "暗/明の平坦な背景、低放射の外面"
+      },
+      "ColorDynamics": {
+        "temp": "cool",
+        "value_range": "有色の低放射帯〜局所発光芯。全域白色にしない。",
+        "saturation": "主形を保つ局所彩度。等間隔の虹色帯ではない。"
+      },
+      "Lighting": {
+        "key_K": "not_applicable: 宣言場の非熱放射、温度を色から推定しない",
+        "fill_tint": "各PHに束縛された受光色"
+      },
+      "BackgroundBinding": {
+        "bg_dominant": "PALETTE.dark/light",
+        "bg_accent": "既存源の短距離の受光のみ"
+      },
+      "PerceptualControl": {
+        "attention_focus": "hierarchical",
+        "figure_ground_stability": "high",
+        "arousal_level": "mid",
+        "perceptual_noise_tolerance": "low"
+      }
+    },
+    "Acceptance": {
+      "PEV_applied_before_AES_when_world_candidates_exist": true,
+      "AES_does_not_override_world_validity": true,
+      "legacy_FDS_resolved_to_DesignScience": true,
+      "CCM_fields_fixed": true
+    }
+  },
+  "ReflectionClosureTemplate": {
+    "Applicability": {
+      "applies_when": [
+        "readable_specular_reflection",
+        "highlight",
+        "sheen"
+      ],
+      "otherwise": "latent_optics_condition",
+      "reason": "PH1〜3の明部は反射像ではなく放射。PH4は正面の定性的拡散受光で、可読な鏡面lobeを選ばない。"
+    },
+    "ReflectionClosureBlock": {},
+    "non_applicable_reason": "鏡面・艶・濡れ・金属・皮膚/布ハイライトを使用しない。Microfacetの実装/測定を偽装せず、PH4.PhysicalModelに拡散輸送の近似と限界を記す。",
+    "Acceptance": {
+      "reflection_integrated_into_PH_mesh": true,
+      "lensflare_registered_as_OBS_not_reflection": true
+    }
+  },
+  "PhenomenonProfileTemplate": {
+    "ApplicabilityGuide": {
+      "selections": []
+    },
+    "ProfilePolicy": {
+      "secondary_boost_only": true,
+      "full_PH_structure_still_required": true,
+      "only_selected_profiles_in_design": true
+    },
+    "Profiles": {},
+    "non_applicable_reason": "水/火/風/布/金属/皮膚/濡れ/反応などの追加機構を選んでいない。マナ場はPHのdeclared_fantasyで閉じる。",
+    "Acceptance": {
+      "profile_does_not_replace_PH_schema": true,
+      "reactive_profile_only_when_applicable": true
+    }
+  },
+  "TermsTemplate": {
+    "PH": "世界内状態と境界",
+    "OBS": "観測/表示変換",
+    "PIA": "PHの識別・分割・登録の手順",
+    "PEM": "Phenomenon Equality Mode",
+    "PEV": "Physics Extremum Visualization",
+    "AES": "Aesthetic Extremum Selection",
+    "CCM": "Color Catalog Module",
+    "FDS": "legacy alias -> DesignScience + AES",
+    "DeclaredIntent": "このユーザーの明示拘束",
+    "ValidationResults": "要求値と区別した実際の検査結果",
+    "Acceptance": {
+      "undefined_legacy_terms_absent": true
+    }
+  },
+  "VFX": {
+    "trigger": "attribute_resolved",
+    "world_registration": "PhenomenonSystemTemplate.PhenomenonRegistry",
+    "observation_registration": "ObservationIntegrationTemplate.ObservationRegistry",
+    "design_intent": {
+      "subject_and_action": "確定した通常の正の離散的マナ増加1件に対応する源→途切れない輸送→腹部受領量の蓄積→収束/消失。",
+      "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+      "primary_read": "源・搬送・受領が同じ一つのEに属し、受領側の内部面積が増す。",
+      "layering_basis": "供給、輸送、容量境界、受領内容、受光、観測変換を分ける。独立の人物/物体や魔法presetを追加しない。"
+    },
+    "layers": [
+      {
+        "layer_id": "L1",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "明示されたE/発光応答の内部具体化。供給の内面/外面と残量を足元に保つ。"
+        },
+        "PH_refs": [
+          "PH1"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "供給の内面/外面と残量を足元に保つ。",
+        "spatial_structure": {
+          "anchor_and_transform": "CoordinateGravityWindTemplate、現在足元アンカー。",
+          "extent_orientation_depth": "幅106wu=53px(H64)。換算1wu=0.01mは設計仮定。",
+          "macro": "供給の内面/外面と残量を足元に保つ。",
+          "meso": "既存の内面/外面/接合を保つ。",
+          "micro": "主形を支える最小幅。独立ノイズを加えない。",
+          "edge_and_occlusion": "PH2→PH1→PH3の順に面積を持つ接合。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "PH1.PhysicalModel",
+          "emission_opacity_density": "放射・coverage・量を異なる変数で計算。",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCMに束縛。",
+          "model_refs": "PH1.OctaDomain"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じOwnerClock.phaseから各層の局所入力を評価。",
+          "distribution_and_correlation": "not_applicable: 粒子集団を選んでいない。",
+          "onset_peak_decay": "供給/輸送/受領/満量/同時終了。観測は入力の状態を参照。",
+          "state_and_sampling_refs": "PH1.StateDynamics"
+        },
+        "integration": {
+          "composite_and_mask": "既存面のcoverageによる正面の合成。",
+          "protected_cues": "供給の内面/外面と残量を足元に保つ。",
+          "failure_to_avoid": "局所図形の孤立、全面glow、受領面積の不明瞭化。"
+        }
+      },
+      {
+        "layer_id": "L2",
+        "role": "transport",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "明示されたE/発光応答の内部具体化。連続する太い断面と、源から移る内部前端。"
+        },
+        "PH_refs": [
+          "PH2"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "連続する太い断面と、源から移る内部前端。",
+        "spatial_structure": {
+          "anchor_and_transform": "CoordinateGravityWindTemplate、現在足元アンカー。",
+          "extent_orientation_depth": "断面幅26〜36wu=13〜18px(H64)。源/受領との重なりがある。",
+          "macro": "連続する太い断面と、源から移る内部前端。",
+          "meso": "既存の内面/外面/接合を保つ。",
+          "micro": "主形を支える最小幅。独立ノイズを加えない。",
+          "edge_and_occlusion": "PH2→PH1→PH3の順に面積を持つ接合。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "PH2.PhysicalModel",
+          "emission_opacity_density": "放射・coverage・量を異なる変数で計算。",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCMに束縛。",
+          "model_refs": "PH2.OctaDomain"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じOwnerClock.phaseから各層の局所入力を評価。",
+          "distribution_and_correlation": "not_applicable: 粒子集団を選んでいない。",
+          "onset_peak_decay": "供給/輸送/受領/満量/同時終了。観測は入力の状態を参照。",
+          "state_and_sampling_refs": "PH2.StateDynamics"
+        },
+        "integration": {
+          "composite_and_mask": "既存面のcoverageによる正面の合成。",
+          "protected_cues": "連続する太い断面と、源から移る内部前端。",
+          "failure_to_avoid": "局所図形の孤立、全面glow、受領面積の不明瞭化。"
+        }
+      },
+      {
+        "layer_id": "L3",
+        "role": "boundary",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "明示されたE/発光応答の内部具体化。大きな空き容量の境界を初期から終端まで保持。"
+        },
+        "PH_refs": [
+          "PH3"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "大きな空き容量の境界を初期から終端まで保持。",
+        "spatial_structure": {
+          "anchor_and_transform": "CoordinateGravityWindTemplate、現在足元アンカー。",
+          "extent_orientation_depth": "幅94wu=47px、高さ56wu=28px(H64)。中心は腹部位置の設計オフセット。実キャラとの一致はホスト確認が必要。",
+          "macro": "大きな空き容量の境界を初期から終端まで保持。",
+          "meso": "既存の内面/外面/接合を保つ。",
+          "micro": "主形を支える最小幅。独立ノイズを加えない。",
+          "edge_and_occlusion": "PH2→PH1→PH3の順に面積を持つ接合。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "PH3.PhysicalModel",
+          "emission_opacity_density": "放射・coverage・量を異なる変数で計算。",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCMに束縛。",
+          "model_refs": "PH3.OctaDomain"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じOwnerClock.phaseから各層の局所入力を評価。",
+          "distribution_and_correlation": "not_applicable: 粒子集団を選んでいない。",
+          "onset_peak_decay": "供給/輸送/受領/満量/同時終了。観測は入力の状態を参照。",
+          "state_and_sampling_refs": "PH3.StateDynamics"
+        },
+        "integration": {
+          "composite_and_mask": "既存面のcoverageによる正面の合成。",
+          "protected_cues": "大きな空き容量の境界を初期から終端まで保持。",
+          "failure_to_avoid": "局所図形の孤立、全面glow、受領面積の不明瞭化。"
+        }
+      },
+      {
+        "layer_id": "L4",
+        "role": "internal_structure",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "明示されたE/発光応答の内部具体化。受領量に従う充填面と、満量後の内部放射収束。"
+        },
+        "PH_refs": [
+          "PH3"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "受領量に従う充填面と、満量後の内部放射収束。",
+        "spatial_structure": {
+          "anchor_and_transform": "CoordinateGravityWindTemplate、現在足元アンカー。",
+          "extent_orientation_depth": "幅94wu=47px、高さ56wu=28px(H64)。中心は腹部位置の設計オフセット。実キャラとの一致はホスト確認が必要。",
+          "macro": "受領量に従う充填面と、満量後の内部放射収束。",
+          "meso": "既存の内面/外面/接合を保つ。",
+          "micro": "主形を支える最小幅。独立ノイズを加えない。",
+          "edge_and_occlusion": "PH2→PH1→PH3の順に面積を持つ接合。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "PH3.PhysicalModel",
+          "emission_opacity_density": "放射・coverage・量を異なる変数で計算。",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCMに束縛。",
+          "model_refs": "PH3.OctaDomain"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じOwnerClock.phaseから各層の局所入力を評価。",
+          "distribution_and_correlation": "not_applicable: 粒子集団を選んでいない。",
+          "onset_peak_decay": "供給/輸送/受領/満量/同時終了。観測は入力の状態を参照。",
+          "state_and_sampling_refs": "PH3.StateDynamics"
+        },
+        "integration": {
+          "composite_and_mask": "既存面のcoverageによる正面の合成。",
+          "protected_cues": "受領量に従う充填面と、満量後の内部放射収束。",
+          "failure_to_avoid": "局所図形の孤立、全面glow、受領面積の不明瞭化。"
+        }
+      },
+      {
+        "layer_id": "L5",
+        "role": "environment_response",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "明示されたE/発光応答の内部具体化。既存背景の材料色へ入射に応じた局所受光。"
+        },
+        "PH_refs": [
+          "PH4"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "既存背景の材料色へ入射に応じた局所受光。",
+        "spatial_structure": {
+          "anchor_and_transform": "CoordinateGravityWindTemplate、現在足元アンカー。",
+          "extent_orientation_depth": "画面上の局所受光はおよそ3〜4pxの主要幅。空間端はx±66,y−127〜+13wu。",
+          "macro": "既存背景の材料色へ入射に応じた局所受光。",
+          "meso": "既存面上の3つの局所受光範囲。体積・容器・接触部を追加しない。",
+          "micro": "主形を支える最小幅。独立ノイズを加えない。",
+          "edge_and_occlusion": "E本体より背後。coverageにより遮蔽されるが背景そのものは連続。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "PH4.PhysicalModel",
+          "emission_opacity_density": "非発光の拡散背景。自己発光/粒子密度はnot_applicable。基礎反射色と入力照度を分ける。",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCMに束縛。",
+          "model_refs": "PH4.OctaDomain"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じOwnerClock.phaseから各層の局所入力を評価。",
+          "distribution_and_correlation": "not_applicable: 粒子集団を選んでいない。",
+          "onset_peak_decay": "供給/輸送/受領/満量/同時終了。観測は入力の状態を参照。",
+          "state_and_sampling_refs": "PH4.StateDynamics"
+        },
+        "integration": {
+          "composite_and_mask": "既存面のcoverageによる正面の合成。",
+          "protected_cues": "既存背景の材料色へ入射に応じた局所受光。",
+          "failure_to_avoid": "局所図形の孤立、全面glow、受領面積の不明瞭化。"
+        }
+      },
+      {
+        "layer_id": "L6",
+        "role": "observation_support",
+        "domain": "observation",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "明示されたE/発光応答の内部具体化。源に束縛された拡散と表示変換。"
+        },
+        "PH_refs": [],
+        "OBS_refs": [
+          "OBS1",
+          "OBS2"
+        ],
+        "function_and_visible_result": "源に束縛された拡散と表示変換。",
+        "spatial_structure": {
+          "anchor_and_transform": "既存OBSのscreen mask。",
+          "extent_orientation_depth": "screen上の局所近傍。架空の厚みなし。",
+          "macro": "源に束縛された拡散と表示変換。",
+          "meso": "既存入力の包絡のみ。",
+          "micro": "主形を支える最小幅。独立ノイズを加えない。",
+          "edge_and_occlusion": "有色輪郭をOBSで作らない。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "OBS1/OBS2の指定操作",
+          "emission_opacity_density": "世界内密度を持たない。",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCMに束縛。",
+          "model_refs": "ObservationIntegrationTemplate.ObservationRegistry"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じOwnerClock.phaseから各層の局所入力を評価。",
+          "distribution_and_correlation": "not_applicable: 粒子集団を選んでいない。",
+          "onset_peak_decay": "供給/輸送/受領/満量/同時終了。観測は入力の状態を参照。",
+          "state_and_sampling_refs": "ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "ObservationRegistryのstage/maskに従う。",
+          "protected_cues": "源に束縛された拡散と表示変換。",
+          "failure_to_avoid": "局所図形の孤立、全面glow、受領面積の不明瞭化。"
+        }
+      }
+    ],
+    "interlayer_links": [
+      {
+        "source_layer": "L1",
+        "target_layer": "L2",
+        "relation_type": "physical_influence",
+        "mechanism_and_consequence": "源の量を搬送へ入力。",
+        "foundation_binding": "PH1→PH2"
+      },
+      {
+        "source_layer": "L2",
+        "target_layer": "L4",
+        "relation_type": "physical_influence",
+        "mechanism_and_consequence": "末端到着を受領量へ積分。",
+        "foundation_binding": "PH2→PH3"
+      },
+      {
+        "source_layer": "L3",
+        "target_layer": "L4",
+        "relation_type": "visual_relation",
+        "mechanism_and_consequence": "同じ受領領域の容量境界と内部面積を分離。",
+        "foundation_binding": "PH3.VisualProjection"
+      },
+      {
+        "source_layer": "L1",
+        "target_layer": "L5",
+        "relation_type": "physical_influence",
+        "mechanism_and_consequence": "源から背景への局所入射。",
+        "foundation_binding": "PH1→PH4"
+      },
+      {
+        "source_layer": "L6",
+        "target_layer": "L1",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "拡散が既存発光源を参照。",
+        "foundation_binding": "OBS1→PH1"
+      },
+      {
+        "source_layer": "L6",
+        "target_layer": "L2",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "拡散が既存搬送面を参照。",
+        "foundation_binding": "OBS1→PH2"
+      },
+      {
+        "source_layer": "L6",
+        "target_layer": "L4",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "拡散が既存受領体を参照。",
+        "foundation_binding": "OBS1→PH3"
+      }
+    ],
+    "causal_path": {
+      "input": "確定済み正の離散マナ増加とplayerId/event id",
+      "carrier_PH": "PH2",
+      "receiver": "PH3、現在の受け手位置への外部束縛",
+      "ScaleRegime_ref": "PH2.ScaleRegime",
+      "StateDynamics_ref": "PH2.StateDynamics",
+      "ReactivePhaseChange_ref": "not_applicable: 化学反応/相変化なし"
+    },
+    "orchestration": {
+      "common_time_basis": "VideoGenerationPolicy.timeline。Eの唯一の実効総尺はsrc/contract.mjs DURATION。",
+      "layer_phase_relations": "源の送出→0.18 phaseの輸送遅れ→受領積分。受光は即時、全支持形は終端同時。",
+      "environment_response": "PH4の局所色/明度のみ。",
+      "visual_hierarchy": "面の幅と受領面積を主証拠にする。光量や層数で品質を代用しない。",
+      "bullet_time": "not_applicable: 未指定"
+    },
+    "output_integration": {
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+      "LDM_ref": "LuminanceDynamicsModule",
+      "composite_order": "PH4の背景受光にOBS1局所項を加える→PH2→PH1→PH3をstraight color/coverageでover→OBS2 tone/sRGB。OBS1は本体保護の再合成前に適用。",
+      "color_alpha_contract": "線形RGBでstraight color+coverageを明示的にover合成し、最終フレームはopaque。二重alphaなし。",
+      "scale_adaptation": "標準H64。2x/4xは検査だけ。外形・接合・受領面を維持し、内部密度帯を唯一の証拠にしない。"
+    },
+    "validation_plan": {
+      "layer_checks": "源/搬送/受領/背景光/OBSの個別表示と本体のみの接続。",
+      "composite_checks": "暗明双方の輪郭、接合、色差、局所輝度、包絡外。",
+      "temporal_checks": "全寿命、途中ACC2切替、複数IDと終了/抑制。",
+      "actual_results_ref": "GlobalAcceptanceTemplate.ValidationResults"
+    },
+    "Acceptance": {
+      "world_VFX_registered_as_PH": true,
+      "observation_only_effects_not_misregistered_as_VFX_PH": true,
+      "layer_roles_scales_and_relations_explicit": true,
+      "layer_count_does_not_force_new_content_or_PH_partition": true,
+      "material_motion_environment_and_composite_consistent": true,
+      "shared_intensity_and_sampling_contracts_preserved": true,
+      "structural_requirements_not_reported_as_render_evidence": true
+    }
+  },
+  "PostEffects": {
+    "trigger": {
+      "ordinary_posteffects": false,
+      "beta_targets": []
+    },
+    "selection": {
+      "mode": "exact_selected_operations",
+      "scope_resolution": "attribute_resolved_target_and_scope",
+      "exact_selected_operations": [
+        "OBS1: 既存発光域に束縛された短距離拡散"
+      ]
+    },
+    "autonomous_activation": {
+      "physical_causality_input_required": false,
+      "registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract"
+    },
+    "SPCA": {
+      "applies_if": "world_internal_PH_local_peak_selected",
+      "evidence_types_standard_two_of": [
+        "gradient",
+        "decay",
+        "occlusion"
+      ],
+      "explicit_intent_adjustment": "not_applicable",
+      "PostEffects_alone_does_not_require_new_PH": true
+    },
+    "global_posteffects": {
+      "applies": false,
+      "exact_OBS_operations": [],
+      "OBS_refs": []
+    },
+    "local_posteffects": {
+      "applies": true,
+      "targets": [
+        "PH1",
+        "PH2",
+        "PH3"
+      ],
+      "exact_OBS_operations": [
+        "短距離のsource-bound散乱近似"
+      ],
+      "OBS_refs": [
+        "OBS1"
+      ]
+    },
+    "operation_contract": {
+      "required_fields": [
+        "input_references",
+        "target_mask",
+        "stage",
+        "composite_method",
+        "intensity",
+        "protected_regions",
+        "sampling_consequence"
+      ],
+      "sampling_consequence": "既存SamplingContractに従い、H64で消えても主形を保持。"
+    },
+    "Acceptance": {
+      "exact_selected_operation_does_not_infer_layers": true,
+      "global_local_scope_unambiguous": true,
+      "legacy_five_domain_reference_absent": true
+    }
+  },
+  "LuminanceDynamicsModule": {
+    "trigger": {
+      "explicit_VFX": false,
+      "explicit_PostEffects": false,
+      "inferred_requires_luminance_dynamics": true
+    },
+    "omitted_if_not_enabled": true,
+    "target_metrics": {
+      "target_size": "H64原寸",
+      "camera_distance": "正面正射の設計距離",
+      "screen_occupancy": "主形は幅53px、高さ約60px。",
+      "readability_priority": "high"
+    },
+    "Video": {
+      "temporal_envelope": "所有者時計、源/輸送/受領の状態に従属した有限包絡。",
+      "micro_variation": "内部密度帯は主効果の具体化。低減モーションでは帯だけ静止化し、因果前端/受領変化は保持。",
+      "anti_flicker": "ノイズ/追加点滅を採用しない。フレーム遅延やOS表示のちらつきは実GPU未検証。"
+    },
+    "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+    "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+    "sampling_consequence": "同じrAFのphaseとGPU解像度。SFXのplaybackRateも同じ所有者速度。",
+    "AlphaBackground": {
+      "enabled": false,
+      "required_background_if_enabled": "#000000"
+    },
+    "alpha_ref": "LuminanceDynamicsModule.AlphaBackground",
+    "ActivationExclusions": {
+      "non_emissive_particles_only": "no_auto_activation",
+      "grain_only": "no_auto_activation"
+    },
+    "Acceptance": {
+      "mode_specific_envelope": true,
+      "numeric_defaults_subordinate_to_target_metrics": true,
+      "no_unwanted_global_luma_lift": true,
+      "screen_processing_stays_in_observation_layer": true,
+      "unselected_operations_not_inferred": true
+    }
+  },
+  "GradientAnchorPolicy": {
+    "trigger": "hue_gradient_attribute_resolved",
+    "gradient_type": "world_VFX_gradient",
+    "anchor": [
+      "PH1",
+      "PH2",
+      "PH3"
+    ],
+    "registration": {
+      "world_VFX_gradient": "PhenomenonSystemTemplate.PhenomenonRegistry"
+    },
+    "color_anchors": [
+      {
+        "PH": "PH1",
+        "color": "コバルト",
+        "role": "供給状態の面と芯"
+      },
+      {
+        "PH": "PH2",
+        "color": "シアン",
+        "role": "連続した搬送内面と前端"
+      },
+      {
+        "PH": "PH3",
+        "color": "紫/明るいシアン",
+        "role": "受領済みの層と新しい到着境界"
+      }
+    ],
+    "transition_logic": "源/輸送/受領の異なる入力・状態に色を束縛。等間隔の虹色や実在温度の断定ではない。",
+    "Acceptance": {
+      "physical_and_observation_gradients_distinguished": true,
+      "unanchored_world_gradient_absent": true
+    }
+  },
+  "VideoGenerationPolicy": {
+    "Mode": "Video",
+    "Duration": {
+      "source": "user_declared",
+      "seconds": 1.6,
+      "basis": "継承されたr0.x所有者時計契約。実行時正本はsrc/contract.mjs DURATION。"
+    },
+    "Style": "2Dアニメ調の有色場を手続き的WebGPUで実装。",
+    "dataclass_forbidden": true,
+    "timeline": {
+      "unit": "seconds",
+      "time_basis": "owner-effective seconds = ∫ actualRate dt。待機/予約/OFF=1、moving&&effective active ACC2=2。",
+      "tracks": {
+        "PH": [
+          {
+            "id": "PH1",
+            "start": 0,
+            "end": 1.6,
+            "state_before": "場なし",
+            "state_during": "足元の固定包絡内で、表示用の供給量と内側の発光面が減る。支持形は終端まで残す。",
+            "state_after": "全Eの場/光をゼロ、元背景へ戻す"
+          },
+          {
+            "id": "PH2",
+            "start": 0,
+            "end": 1.6,
+            "state_before": "場なし",
+            "state_during": "支持された有色の連続体内を、入力に遅れた密度前端が足元から受領域へ進む。",
+            "state_after": "全Eの場/光をゼロ、元背景へ戻す"
+          },
+          {
+            "id": "PH3",
+            "start": 0,
+            "end": 1.6,
+            "state_before": "場なし",
+            "state_during": "広い受領形を初めから保ち、到着に応じて内側の充填面が下から上へ広がる。満量後は内部放射を集め、全Eと同時終了。",
+            "state_after": "全Eの場/光をゼロ、元背景へ戻す"
+          },
+          {
+            "id": "PH4",
+            "start": 0,
+            "end": 1.6,
+            "state_before": "E以前から存在する暗/明の背景。",
+            "state_during": "暗/明の平坦な既存試験背景が、PH1〜PH3の位置・量に従う局所光を受ける。外側は不変。",
+            "state_after": "局所受光の増分だけが消え、元背景が残る。"
+          }
+        ],
+        "OBS": [
+          {
+            "id": "OBS1",
+            "start": 0,
+            "end": 1.6,
+            "state_before": "入力なし",
+            "state_during": "同じ入力PHの状態へ従う",
+            "state_after": "E由来の出力なし"
+          },
+          {
+            "id": "OBS2",
+            "start": 0,
+            "end": 1.6,
+            "state_before": "入力なし",
+            "state_during": "同じ入力PHの状態へ従う",
+            "state_after": "E由来の出力なし"
+          }
+        ],
+        "camera": [
+          {
+            "start": 0,
+            "end": 1.6,
+            "transform": "現在受け手world位置とhost cameraを毎フレーム読む。",
+            "state_before": "同じホスト座標",
+            "state_during": "正面の同じ投影",
+            "state_after": "Eカメラの追加変更なし"
+          }
+        ],
+        "audio": [
+          {
+            "id": "SFX1",
+            "start": 0,
+            "end": 1.6,
+            "role": "同じevent idで一回限りの表示フィードバック音。世界内の追加物体音源ではない。",
+            "state_before": "無音",
+            "state_during": "可視GPU receiptと可聴条件成立時だけstart一度、速度は所有者ACC2へ追従。",
+            "state_after": "無音。失効/非表示/セッションで破棄。"
+          }
+        ],
+        "dialogue": []
+      }
+    },
+    "ContinuityLedger": {
+      "characters": "プレビュー原画0。外部playerIdはEの配置/可視性入力。",
+      "costumes": "none",
+      "light_sources": "PH1/PH2/PH3を同じeventで追跡",
+      "objects": "1 effect per eligible unique event、PHは内部の状態分割。",
+      "contacts": "PH1/PH2、PH2/PH3の同じ接合面を維持。"
+    },
+    "ResponseAndSamplingChecks": {
+      "PH_response_timescale_refs": [
+        "PH1.StateDynamics.response_timescale",
+        "PH2.StateDynamics.response_timescale",
+        "PH3.StateDynamics.response_timescale",
+        "PH4.StateDynamics.response_timescale"
+      ],
+      "temporal_sampling_ref": "ObservationIntegrationTemplate.SamplingContract.temporal_sampling",
+      "OBS_sampling_consequence_refs": [
+        "OBS1.sampling_consequence",
+        "OBS2.sampling_consequence"
+      ],
+      "frame_cadence_and_exposure": "rAF実cadence、露光積分なし。終了は次の表示フレーム単位。",
+      "observation_windows_fit_timeline": true,
+      "longer_physical_response_state_at_video_end": "not_applicable: E以外のゲームのマナ状態は変化させない。"
+    },
+    "Acceptance": {
+      "single_duration_source_of_truth": true,
+      "all_tracks_within_duration": true,
+      "response_timescale_and_OBS_sampling_checked_against_timeline": true,
+      "character_costume_light_object_contact_continuity_checked": true
+    }
+  },
+  "ECodeImplementation": {
+    "trigger": "executable_runtime_E_code_explicit",
+    "output_kind": "executable_effect_source_not_image_generation",
+    "source_revision": {
+      "commit": "8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1",
+      "base_blob": "4e10a53310be5b9d0aa3a6c881cf4f39d6590bd4",
+      "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834",
+      "basis": "継承ターンで取得された正本識別子と、この会話に提示された基底/拡張本文。今回の実装でリモートを編集しない。"
+    },
+    "target_runtime": "WebGPU/WGSL + Web Audio、ローカルのES modules",
+    "source_and_time_contract": "eventKey=[roomId,sessionId,id]。playerId所有のOwnerClock、成功可視フレームで開始。H64の現在足元アンカー。",
+    "world_PH_refs": [
+      "PH1",
+      "PH2",
+      "PH3",
+      "PH4"
+    ],
+    "observation_OBS_refs": [
+      "OBS1",
+      "OBS2"
+    ],
+    "implementation_artifacts": [
+      "src/index.mjs",
+      "src/runtime.mjs",
+      "src/owner-clock.mjs",
+      "src/shape-data.mjs",
+      "src/field.mjs",
+      "src/renderer.mjs",
+      "shaders/mana.wgsl",
+      "src/audio.mjs",
+      "src/sfx-synth.mjs"
+    ],
+    "applicable_rule_evidence": "design/rule-implementation-map.json",
+    "validation": {
+      "syntax_and_shader": "not_run",
+      "syntax_detail": "JavaScript 32ファイルのnode --checkはpass。GPU shaderはnot_runのため、syntax_and_shader全体をpassにはしない。",
+      "actual_GPU_pixels_and_timing": "not_run",
+      "game_event_and_SFX": "not_run"
+    },
+    "Acceptance": {
+      "baseline_and_selected_extensions_preserved": true,
+      "image_generation_not_implied": true,
+      "runtime_code_and_visual_acceptance_distinguished": true
+    }
+  },
+  "ExtensionActivationTable": {
+    "entries": {
+      "VFX": {
+        "trigger": "既存Eの内部形態のattribute_resolved",
+        "explicit_or_inferred": "attribute_resolved",
+        "dependencies": [
+          "基底.md"
+        ],
+        "output_blocks": [
+          "VFX"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "ECodeImplementation": {
+        "trigger": "実行可能WebGPU Eの明示依頼",
+        "explicit_or_inferred": "explicit",
+        "dependencies": [
+          "基底.md"
+        ],
+        "output_blocks": [
+          "ECodeImplementation"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "PostEffects": {
+        "trigger": "既存発光に束縛するOBS1のattribute_resolved",
+        "explicit_or_inferred": "attribute_resolved",
+        "dependencies": [
+          "基底.md"
+        ],
+        "output_blocks": [
+          "PostEffects"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "LDM": {
+        "trigger": "非明示選択の発光場でrequires_luminance_dynamics=true",
+        "explicit_or_inferred": "attribute_resolved",
+        "dependencies": [
+          "基底.md"
+        ],
+        "output_blocks": [
+          "LuminanceDynamicsModule"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "VideoGenerationPolicy": {
+        "trigger": "連続EのB設計mode=Video、生成実行はしない",
+        "explicit_or_inferred": "explicit",
+        "dependencies": [
+          "基底.md"
+        ],
+        "output_blocks": [
+          "VideoGenerationPolicy"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "GradientAnchorPolicy": {
+        "trigger": "場の源/輸送/受領に対応する色相域のattribute_resolved",
+        "explicit_or_inferred": "attribute_resolved",
+        "dependencies": [
+          "基底.md"
+        ],
+        "output_blocks": [
+          "GradientAnchorPolicy"
+        ],
+        "disabled_behavior": "omit"
+      }
+    },
+    "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+    "output_contract_ref": "FoundationOperationTemplate.OutputContract",
+    "Acceptance": {
+      "one_activation_source_of_truth": true,
+      "disabled_modules_omitted": true
+    }
+  },
+  "GlobalAcceptanceTemplate": {
+    "Requirements": {
+      "PhenomenonRegistry_required": true,
+      "full_PH_structure_required": true,
+      "all_8_domains_required": true,
+      "ObservationRegistry_required_when_OBS_exist": true,
+      "WindCapsule_required": true,
+      "Gravity_required": true,
+      "world_camera_screen_transform_required": true
+    },
+    "ValidationResults": {
+      "StructuralInspection": {
+        "status": "pass",
+        "evidence_ref": "evidence/design-structure.json",
+        "checks": {
+          "required_blocks": "ローカルの完全field保持検査。",
+          "rule_contracts": "103件のrule_id/実装anchorを確認。",
+          "PH_OBS_separation": "4 PH/2 OBS、型別リンクと非循環OBS依存を検査。",
+          "OctaDomain": "全4 PHの8領域/役割/不適用理由を検査。",
+          "scientific_fields": "PhysicalModel/ScaleRegime/StateDynamics/知覚/不確実性fieldの存在を検査。科学的真偽の実証ではない。",
+          "coordinate_gravity_wind": "同じworld-camera-screenと静穏媒体/Gravity。",
+          "template_consolidation": "インスタンスはmapping正規形。公式validatorの実行ではない。"
+        }
+      },
+      "SemanticReconciliation": {
+        "status": "warning",
+        "checks": {
+          "DeclaredIntent_preserved": "源/連続輸送/面積蓄積を設計。旧版原因の断定なし。",
+          "trigger_resolution": "人物/魔法preset/登録キーワードを自動起動しない。",
+          "exception_resolution": "display-only例外を使わない。",
+          "source_binding": "PHとOBS、同じID/時計を参照。",
+          "scope_and_dependencies": "全体予算は一つ、OBS依存は非循環。",
+          "scientific_consistency": "定性的な宣言場。収支は表示量であり実物理の実証ではない。実受け手との配置は未検証。"
+        }
+      },
+      "RenderObservation": {
+        "status": "not_run",
+        "evidence_source": "none",
+        "checks": {
+          "visual_causality": "not_run",
+          "contour_preservation": "not_run",
+          "clipping_crushing": "not_run",
+          "chroma_detail": "not_run",
+          "contact_projection": "not_run",
+          "temporal_continuity": "not_run",
+          "cue_discrimination_and_sampling": "not_run"
+        }
+      }
+    },
+    "OutcomeEvaluation": {
+      "intent_alignment": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "rationale": "r0.3の実GPU/無説明全寿命を観察していない。CPUの形状接続で代用しない。"
+      },
+      "artistic_effect": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "evaluator_basis": "暗明H64全寿命の無説明読解を人が確認する。",
+        "strengths": "not_run",
+        "limitations": "not_run"
+      }
+    },
+    "ComparativeEvaluation": {
+      "status": "not_run",
+      "question": "r0.3で源/輸送/受領変化が説明なしに読めるか。",
+      "changed_factor": "造形/時間応答/内面/合成を新設計。旧版の特定パラメータ原因とはしない。",
+      "controlled_conditions": "同じH64暗明、所有者時計/イベント/SFX契約。実デバイス比較は未実施。",
+      "scene_set": "暗/明、全寿命、等速/実効ACC2/途中切替/複数ID。",
+      "repetitions_and_order": "実比較未実施。後の人手検査では背景/再生順の影響も記録。",
+      "criteria": "無説明で3区画と受領側の変化が見分けられる。",
+      "evidence": "none",
+      "result_and_limitations": "技術合格は品質合格や改善実証ではない。"
+    },
+    "FinalStatus": {
+      "specification_status": "Warning",
+      "render_status": "NotRun",
+      "failure_reasons": []
+    }
+  }
+}

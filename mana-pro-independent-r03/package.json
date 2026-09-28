@@ -1,0 +1,19 @@
+{
+  "name": "dva-mana-receive-independent",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "独立Mana r0.3 / WebGPUギャラリー候補。ゲーム状態を変更しない。",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "test": "node tools/run-tests.mjs",
+    "check": "node tools/check-source.mjs && node tools/check-design.mjs",
+    "check:field": "node tools/check-field.mjs",
+    "build:sfx": "node tools/build-sfx.mjs",
+    "build:manifest": "node tools/build-manifest.mjs",
+    "verify:hashes": "node tools/verify-hashes.mjs"
+  }
+}

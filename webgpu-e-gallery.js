@@ -27,6 +27,7 @@
     'mana-pro-clean-r01': { magnification: 6.0, focusX: 490, focusY: 310 },
     'mana-pro-independent-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'mana-pro-independent-r02': { magnification: 3.0, focusX: 490, focusY: 448 },
+    'mana-pro-independent-r03': { magnification: 3.0, focusX: 490, focusY: 310 },
     'rational-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'ninjutsu-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'facility-bookshelf-pro-r01': { magnification: 2.0, focusX: 490, focusY: 310 },
@@ -51,7 +52,7 @@
     'luck-pro-r02', 'luck-pro-r01',
     'barrier-pro-r09', 'barrier-pro-r08', 'barrier-pro-r07', 'barrier-pro-r06', 'barrier-pro-r05', 'barrier-pro-r04', 'barrier-pro-r03', 'barrier-pro-r02', 'barrier-pro-r01',
     'stamina-pro-r05', 'stamina-pro-r04', 'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
-    'mana-pro-independent-r02', 'mana-pro-independent-r01', 'mana-pro-clean-r01', 'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
+    'mana-pro-independent-r03', 'mana-pro-independent-r02', 'mana-pro-independent-r01', 'mana-pro-clean-r01', 'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
     'rational-pro-r01', 'ninjutsu-pro-r01',
     'facility-bookshelf-pro-r01', 'facility-reading-lamp-pro-r01', 'facility-security-console-pro-r01',
     'facility-reactor-gauge-pro-r01', 'facility-recycling-unit-pro-r01',
@@ -106,6 +107,7 @@
       version('stamina-pro-r01', 'GPT Pro r0.1', 'stamina-pro-r01-preview.html', 'stamina-pro-r01/renderer.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体へ充填されるスタミナ回復案。限定的な実WebGPU再生は確認済み。原寸の全寿命、聴感、ゲーム本編での発動は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'mana-pro', title: 'マナ獲得（GPT Pro）', versions: [
+      version('mana-pro-independent-r03', 'GPT Pro 独立受領稿 r0.3', 'mana-pro-independent-r03/index.html', 'mana-pro-independent-r03/src/renderer.mjs', 'GPT Pro制作・実GPU技術再生可能・H64品質不合格・SFX聴感未確認・本編未採用', '原本を保持し、公開用派生コピーではWGSL予約語だけを意味不変に改名。暗明H64の実WebGPU再生は成立したが、小皿と杯を短い柱でつないだ静的形に見え、源から腹部への輸送・蓄積が読めないため改稿中。', 'effect-H64', 1, true),
       version('mana-pro-independent-r02', 'GPT Pro 独立受領稿 r0.2', 'mana-pro-independent-r02/index.html', 'mana-pro-independent-r02/src/renderer.mjs', 'GPT Pro制作・実GPU技術再生可能・H64品質不合格（原因未確定）・SFX聴感未確認・本編未採用', '独立したマナ受領のr0.2。実GPU技術再生可能。H64品質は不合格ですが、原因は未確定です。聴感と本編接続は未確認・未採用です。', 'effect-H64', 1, true),
       version('mana-pro-independent-r01', 'GPT Pro 独立受領稿 r0.1', 'mana-pro-independent-r01/index.html', 'mana-pro-independent-r01/src/renderer.mjs', 'GPT Pro制作・実GPU技術再生可能・品質未達・SFX聴感未受入・本編未採用', '独立したマナ受領・蓄積案。正の獲得通知から実WebGPUの自動ループを行います。原寸H64の実画面では主形が小さな六角発光体に留まり、受領から腹部への蓄積が読めず改稿が必要です。聴感・本編接続も未受入です。', 'effect-H64', 1, true),
       version('mana-pro-clean-r01', 'GPT Pro 独立新稿 r0.1', 'mana-gain-pro-clean-r01/gallery.html', 'mana-gain-pro-clean-r01/src/renderer.js', 'GPT Pro制作・実GPU再生可能・H64視覚品質未達・SFX聴感未確認・本編未採用', '独立新稿をWebGPUで自動ループ再生。原寸H64では主形が小さな菱形状に留まり、身体への到着・蓄積が読めないため創作改稿を要します。発光とGPU描画は確認済み。聴感と本編接続は未受入です。', 'effect-H64', 1, true),
@@ -189,7 +191,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v56');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v57');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

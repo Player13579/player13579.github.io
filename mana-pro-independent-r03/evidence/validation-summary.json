@@ -1,0 +1,56 @@
+{
+  "version": "0.3.0",
+  "purpose": "ギャラリー候補。技術検査と無説明読解は別。",
+  "nodeTests": {
+    "status": "pass",
+    "tests": 136,
+    "pass": 136,
+    "fail": 0,
+    "evidence": "evidence/node-tests.tap"
+  },
+  "JavaScriptSyntax": {
+    "status": "pass",
+    "files": 32,
+    "evidence": "evidence/source-check.json"
+  },
+  "localBStructure": {
+    "status": "pass",
+    "checks": 646,
+    "mappedRules": 103,
+    "canonicalValidator": false,
+    "evidence": "evidence/design-structure.json"
+  },
+  "CPUField": {
+    "status": "pass",
+    "phaseSamples": 161,
+    "evidence": "evidence/cpu-field.json",
+    "qualitySubstitute": false
+  },
+  "SFXNumerical": {
+    "status": "pass",
+    "evidence": "evidence/sfx-numeric.json",
+    "listeningSubstitute": false
+  },
+  "HTTP": {
+    "status": "pass",
+    "routes": 10,
+    "evidence": "evidence/http-smoke.json"
+  },
+  "WebGPU": {
+    "shaderCompilation": "not_run",
+    "actualPixels": "not_run",
+    "motionAndTiming": "not_run",
+    "attemptEvidence": "evidence/browser-attempt.json",
+    "reason": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8783/tests/verify.html\nCall log:\n  - navigating to \"http://127.0.0.1:8783/tests/verify.html\", waiting until \"networkidle\"\n"
+  },
+  "humanObservation": {
+    "H64DarkWholeLifetime": "not_run",
+    "H64LightWholeLifetime": "not_run",
+    "listening": "not_run",
+    "audioVisualSynchronization": "not_run",
+    "qualityAccepted": false
+  },
+  "gameIntegration": "not_run",
+  "gameOrPublicSiteEdits": false,
+  "overall": "gallery_candidate_not_quality_accepted"
+}
