@@ -206,7 +206,14 @@ for (const version of cooldownGroup.versions) {
   assert.equal(metadata.gameAdopted, false, `${version.id} remains unadopted`);
   assert.match(version.detail, /作者: GPT-6-Astra/);
   assert(version.detail.includes(metadata.reason ?? '主担当へH64/H160証拠を提出済み'), `${version.id} displays its quality reason or pending-review provenance`);
-  if (metadata.quality === 'pending_review') assert.match(version.status, /品質審査中.*本編未採用/);
+  if (metadata.userAdopted) {
+    assert.match(version.status, /ユーザー採用済み.*本編接続は検証中/);
+    assert.equal(metadata.adoptionScope, 'visual-version-selection');
+    assert.equal(metadata.integrationStatus, 'verification-pending');
+    assert.equal(metadata.quality, 'accepted');
+    assert.equal(metadata.previousQualityReview.quality, 'rejected');
+    assert.equal(metadata.previousQualityReview.reason, metadata.reason, 'the earlier rejection remains in the version history');
+  } else if (metadata.quality === 'pending_review') assert.match(version.status, /品質審査中.*本編未採用/);
   else assert.match(version.status, /品質不合格.*本編未採用/);
   const url = new URL(version.page, 'https://example.test/webgpu-e-gallery.html');
   assert(url.pathname.endsWith(`/public/astra-cooldown-benefit-v1/versions/${revision}/index.html`));
@@ -227,6 +234,10 @@ for (const version of cooldownGroup.versions) {
       `${version.id} Pages mirror matches root public for ${rel}`);
   }
 }
+const cooldownAdopted = cooldownManifest.versions.find(item => item.id === 'astra-cooldown-benefit-r0.5');
+assert.equal(cooldownAdopted.userAdopted, true, 'Cooldown r0.5 is the user-selected visual version');
+assert.equal(cooldownAdopted.gameAdopted, false, 'visual selection does not mark game integration complete');
+assert.match(cooldownGroup.versions.find(item => item.id === cooldownAdopted.id).detail, /視覚版の選択.*本編への接続と発動は検証中/);
 const release = source.match(/galleryRelease', '(astra-history-20260928-v\d+)'/);
 assert(release && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
 console.log(`PASS: ${entry.versions.length} status-recovery, ${cooldownGroup.versions.length} Cooldown, ${manaGroup.versions.length} Mana, ${staminaGroup.versions.slice(0, 8).length} Stamina replay versions; ${allowlist.publishFiles.length} status package files present`);
