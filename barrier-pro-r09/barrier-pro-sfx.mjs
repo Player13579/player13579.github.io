@@ -66,23 +66,63 @@ export function encodeWav({ sampleRate, data }) {
 
 export function createSfxBank() {
   let ctx = null;
+  let ensurePromise = null;
+  let disposePromise = null;
+  let disposed = false;
   const buffers = new Map();
+  const sources = new Set();
   async function ensure() {
-    if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
-    for (const event of Object.keys(SFX_META)) {
-      if (buffers.has(event)) continue;
-      const { data, sampleRate } = synthEvent(event, ctx.sampleRate);
-      const buf = ctx.createBuffer(1, data.length, sampleRate);
-      buf.copyToChannel(data, 0);
-      buffers.set(event, buf);
-    }
-    if (ctx.state !== 'running') await ctx.resume();
+    if (disposed) return false;
+    if (ensurePromise) return ensurePromise;
+    ensurePromise = (async () => {
+      const context = ctx ??= new (window.AudioContext || window.webkitAudioContext)();
+      for (const event of Object.keys(SFX_META)) {
+        if (buffers.has(event)) continue;
+        const { data, sampleRate } = synthEvent(event, context.sampleRate);
+        const buf = context.createBuffer(1, data.length, sampleRate);
+        buf.copyToChannel(data, 0);
+        buffers.set(event, buf);
+      }
+      if (context.state !== 'running') await context.resume();
+      return !disposed && ctx === context && context.state === 'running';
+    })();
+    try { return await ensurePromise; }
+    finally { ensurePromise = null; }
+  }
+  function releaseSource(source, stop) {
+    sources.delete(source);
+    source.onended = null;
+    if (stop) { try { source.stop(); } catch { /* It may have ended before pagehide. */ } }
+    try { source.disconnect(); } catch { /* Disconnect is best effort after stop. */ }
   }
   function play(event) {
+    if (disposed || !ctx || ctx.state !== 'running') return false;
+    const buffer = buffers.get(event);
+    if (!buffer) return false;
     const source = ctx.createBufferSource();
-    source.buffer = buffers.get(event);
-    source.connect(ctx.destination);
-    source.start();
+    source.buffer = buffer;
+    source.onended = () => releaseSource(source, false);
+    sources.add(source);
+    try {
+      source.connect(ctx.destination);
+      source.start();
+      return true;
+    } catch (error) {
+      releaseSource(source, true);
+      throw error;
+    }
   }
-  return { ensure, play };
+  function dispose() {
+    if (disposePromise) return disposePromise;
+    disposed = true;
+    const context = ctx;
+    ctx = null;
+    buffers.clear();
+    for (const source of [...sources]) releaseSource(source, true);
+    disposePromise = context && context.state !== 'closed'
+      ? Promise.resolve().then(() => context.close())
+      : Promise.resolve();
+    return disposePromise;
+  }
+  return { ensure, play, dispose };
 }

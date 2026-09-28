@@ -15,7 +15,9 @@ const cycleMs = Object.fromEntries(events.map(event => [event, EVENTS[event].dur
 const seenCycles = Object.create(null);
 function unlockFromGesture() {
   if (!audio || audioReady) return;
-  audio.ensure().then(() => { audioReady = true; state.audioEnabled = true; }).catch(error => state.errors.push(String(error)));
+  audio.ensure().then(ready => {
+    if (ready) { audioReady = true; state.audioEnabled = true; }
+  }).catch(error => state.errors.push(String(error)));
 }
 if (!verifyMode) {
   addEventListener('pointerdown', unlockFromGesture, { passive: true });
@@ -56,4 +58,8 @@ try {
   origin = performance.now();
   raf = requestAnimationFrame(frame);
 } catch (error) { fail(error); }
-addEventListener('pagehide', () => { if (raf) cancelAnimationFrame(raf); for (const panel of renderers) panel.renderer.device.destroy(); }, { once: true });
+addEventListener('pagehide', () => {
+  if (raf) cancelAnimationFrame(raf);
+  for (const panel of renderers) panel.renderer.device.destroy();
+  void audio?.dispose().catch(error => state.errors.push(String(error)));
+}, { once: true });
