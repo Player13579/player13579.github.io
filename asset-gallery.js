@@ -74,7 +74,8 @@
       version('mana-astra-clean-v1', 'Astra clean v1', 'mana-astra-clean-v1-preview.html', 'webgpu-mana-astra-clean-v1.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
-    Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([      version('stamina-astra-clean-v3', 'Astra clean v3', 'stamina-astra-clean-v3-preview.html', 'webgpu-stamina-astra-clean-v3.js', '品質不採用・本編未採用', 'H64で扇形の光片から胸腹の発光ベストへ変わるが、スタミナ補給として読めず品質不採用。'),
+    Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([      version('stamina-astra-r01-replay', 'Astra r01 · iframe再生修正', 'stamina-astra-r01/index.html?embed=1&height=64', 'stamina-astra-r01/stamina.mjs', '品質未判定・未採用・ゲーム未接続・iframe実再生確認済み', 'スタミナAstra r01。品質判定/ユーザー採用/ゲーム接続は未確認。ローカルChrome iframeで自動ループ30 GPU frames・errors 0を確認。埋め込み投影CSSと初期化成功表示の修正を含む。'),
+      version('stamina-astra-clean-v3', 'Astra clean v3', 'stamina-astra-clean-v3-preview.html', 'webgpu-stamina-astra-clean-v3.js', '品質不採用・本編未採用', 'H64で扇形の光片から胸腹の発光ベストへ変わるが、スタミナ補給として読めず品質不採用。'),
       version('stamina-astra-clean-v2', 'Astra clean v2', 'stamina-astra-clean-v2-preview.html', 'webgpu-stamina-astra-clean-v2.js', '品質未受入・本編未採用', 'H64形状の自主レビュー記録あり。スタミナとしての独立識別評価は未実施で、最終品質は未受入。'),
       version('stamina-astra-clean-v1', 'Astra clean v1', 'stamina-astra-clean-v1-preview.html', 'webgpu-stamina-astra-clean-v1.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
       version('stamina-astra-zero-v2', 'Astra zero v2', 'webgpu-stamina-astra-zero-v2-preview.html', 'webgpu-stamina-astra-zero-v2-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU再生済み。H64シルエットと移送前面が読みにくい。'),
@@ -167,13 +168,15 @@
   function adoptionState(item) {
     if (item.adoption) return item.adoption;
     if (adoptedVersionIds.has(item.id)) return 'adopted';
+    if (/旧採用版|ユーザー採用済み|品質採用/.test(item.status || '')) return 'previously-adopted';
     if (/未採用|却下|撤回/.test(item.status || '')) return 'not-adopted';
     return 'unknown';
   }
   function adoptionStatusLabel(item) {
-    if (adoptedVersionIds.has(item.id)) return '採用済み';
-    if (/旧採用版/.test(item.status || '')) return '旧採用版';
-    if (/未採用|却下|撤回/.test(item.status || '')) return '未採用';
+    const state = adoptionState(item);
+    if (state === 'adopted') return '採用済み';
+    if (state === 'previously-adopted') return '旧採用版（現行採用対象外）';
+    if (state === 'not-adopted') return '未採用';
     return '採用状態不明';
   }
   function visibleVersionIndices(group) {
@@ -269,7 +272,13 @@
       }))) }));
   window.__webgpuEGallery = Object.freeze({ presentation: PRESENTATION, categories: Object.freeze(['map','effect']),
     entries: Object.freeze(exposedEntries) });
-  const imageGroups = [];
+  const imageGroups = [
+    {id:'cafeteria-gpt-pro',category:'map',title:'カフェテリア · GPT Pro',creatorDisplayName:'GPT Pro',quality:'rejected-geometry',adoption:'not-adopted',integration:'not-integrated',reason:'ChatGPT Proの画像生成候補。4版すべて未採用・ゲーム未統合。North/West opening geometryが不合格。Bコード/生成記録: outputs/request-20260929/map-resume/generation-manifest.json。',versions:[
+      {id:'cafeteria-pro-candidate-01',title:'GPT Pro candidate 01',src:'assets/cafeteria-pro-candidate-01.png',hash:'eaf56895b2d8bfda638ffe12a7ef3f5d812070b1b4d655afca4538c7f7b8f57',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'西側の開口幅不足（約143 logical units / 要求190）。歴史候補として保持。'},
+      {id:'cafeteria-pro-candidate-02',title:'GPT Pro candidate 02',src:'assets/cafeteria-pro-candidate-02.png',hash:'83987386bb00cc712b10380c25c011f7311ee300307ab35a99153d074886f7f0',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北・西の両開口が内側endcap間の幅と中心条件に不合格。歴史候補として保持。'},
+      {id:'cafeteria-pro-candidate-03',title:'GPT Pro candidate 03',src:'assets/cafeteria-pro-candidate-03.png',hash:'5f4db0fa28657bde8572b50e7cdb092acd8e3713efea318d61c7a1c1d375bb83',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'開口幅/中心の目視推定が契約に不合格。独立したpixel-calibrated QAではない。歴史候補として保持。'},
+      {id:'cafeteria-pro-candidate-04',title:'GPT Pro candidate 04',src:'assets/cafeteria-pro-candidate-04.png',hash:'ef0abe403f5f490613c2d0964675d3be40f096dce6dc51f500ee9ba53d2bf92c',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北・西両開口の目視推定が契約に不合格。独立したpixel-segmented QAではない。最後の保存候補。'}]}
+  ];
     function selectImage(group, versionIndex) {
     const item=group.versions[versionIndex];
     stage.querySelector('iframe')?.remove(); stage.querySelector('img')?.remove();
@@ -278,13 +287,13 @@
     img.addEventListener('error',()=>{notice.textContent='画像原本を読み込めませんでした';notice.hidden=false;}); stage.append(img);
     document.getElementById('selected-title').textContent=group.title+' · '+item.title;
     const quality=item.qualityStatus||group.quality;
-    const adoption=item.adoption==='unknown'?'unknown':item.adoption==='not_adopted'?'not_adopted':item.adoption==='adopted'?'adopted':group.adoption;
-    document.getElementById('selected-description').textContent='作者: GPT-6-Astra。版: '+item.id+'。品質状態: '+quality+'。採用状態: '+(adoption==='unknown'?'unknown':adoption)+'。本編接続: '+group.integration+'。'+(item.note||group.reason)+' 原本SHA-256: '+item.hash;
-    document.getElementById('selected-status').textContent=quality+' · '+(adoption==='unknown'?'採用状態不明':adoption==='not_adopted'?'未採用':'採用済み')+' · '+group.integration;
+    const adoption=adoptionState(item);
+    document.getElementById('selected-description').textContent='作者: '+(group.creatorDisplayName||'GPT-6-Astra')+'。版: '+item.id+'。品質状態: '+quality+'。採用状態: '+(adoption==='unknown'?'unknown':adoption)+'。本編接続: '+group.integration+'。'+(item.note||group.reason)+' 原本SHA-256: '+item.hash;
+    document.getElementById('selected-status').textContent=quality+' · '+adoptionStatusLabel(item)+' · '+group.integration;
     document.getElementById('selected-source').textContent='保存原本画像 · '+item.src;
     const link=document.getElementById('selected-link');link.href=item.src;link.textContent='原本画像を見る ↗';
     const visible=group.versions.map((v,i)=>({v,i})).filter(({v})=>currentAdoptionFilter==='adopted'?v.adoption==='adopted':v.adoption!=='adopted');
-    versionSelect.replaceChildren(...visible.map(({v,i},n)=>{const o=document.createElement('option');o.value=String(n);o.textContent=v.title+' — '+(v.adoption==='unknown'?'採用状態不明':v.adoption==='adopted'?'採用済み':'未採用')+(v.qualityStatus?' · '+v.qualityStatus:'');o.dataset.versionId=v.id;return o;}));
+    versionSelect.replaceChildren(...visible.map(({v,i},n)=>{const o=document.createElement('option');o.value=String(n);o.textContent=v.title+' — '+adoptionStatusLabel(v)+(v.qualityStatus?' · '+v.qualityStatus:'');o.dataset.versionId=v.id;return o;}));
     versionSelect.value=String(Math.max(0,visible.findIndex(x=>x.i===versionIndex)));versionSelect.disabled=visible.length<2;
     versionSelect.onchange=()=>selectImage(group,visible[Number(versionSelect.value)].i);
     buttons.forEach(b=>b.setAttribute('aria-current',b.dataset.id===group.id?'true':'false'));
@@ -293,19 +302,26 @@
   }
   function renderSelection() {
     setHeadline();
+    document.getElementById('effect-scale-contract').hidden = currentCategory !== 'effect';
     categoryTabs.forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.category===currentCategory)));
     adoptionTabs.forEach(tab=>tab.setAttribute('aria-pressed',String(tab.dataset.filter===currentAdoptionFilter)));
     layout.hidden=false;emptyCategory.hidden=true;catalog.replaceChildren();buttons=[];
     const groups=currentCategory==='effect'?entries:imageGroups.filter(g=>g.category===currentCategory);
     const matching=groups.map(group=>({group,indices:visibleVersionIndices(group)})).filter(row=>row.indices.length);
-    if(!matching.length){layout.hidden=true;emptyCategory.hidden=false;emptyCategory.textContent=`${document.getElementById('list-heading').textContent}はありません。`;document.getElementById('entry-counter').textContent='0 件';return;}
+    if(!matching.length){
+      layout.hidden=true;emptyCategory.hidden=false;emptyCategory.textContent=`${document.getElementById('list-heading').textContent}はありません。`;
+      stage.querySelector('iframe')?.remove();stage.querySelector('img')?.remove();
+      if(previewStatusPoll!==null)window.clearInterval(previewStatusPoll);previewStatusPoll=null;
+      fitObserver?.disconnect();fitObserver=null;versionSelect.replaceChildren();versionSelect.disabled=true;
+      document.getElementById('entry-counter').textContent='0 件';return;
+    }
     for(const {group,indices} of matching){
       const b=document.createElement('button');b.type='button';b.className='item';b.dataset.id=group.id;
       const remembered=selections.get(`${currentCategory}:${currentAdoptionFilter}`);
       const preferred=remembered?.groupId===group.id?indices.find(i=>group.versions[i].id===remembered.versionId):undefined;
       const first=preferred??indices.find(i=>group.versions[i].id===group.defaultVersionId)??indices[0];
       const item=group.versions[first];const title=document.createElement('strong');title.textContent=group.title+' · '+item.title;
-      const status=document.createElement('span');status.textContent=currentCategory==='effect'?`${adoptionState(item)==='unknown'?'採用状態不明':adoptionState(item)==='adopted'?'採用済み':'未採用'} · ${item.status}`:`${item.adoption==='unknown'?'採用状態不明':item.adoption==='adopted'?'採用済み':'未採用'} · ${item.qualityStatus||group.quality}`;
+      const status=document.createElement('span');status.textContent=currentCategory==='effect'?`${adoptionStatusLabel(item)} · ${item.status}`:`${adoptionStatusLabel(item)} · ${item.qualityStatus||group.quality}`;
       b.append(title,status);b.addEventListener('click',()=>currentCategory==='effect'?select(entries.indexOf(group),first):selectImage(group,first));catalog.append(b);buttons.push(b);
     }
     const remembered=selections.get(`${currentCategory}:${currentAdoptionFilter}`);
