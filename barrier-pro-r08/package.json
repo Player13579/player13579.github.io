@@ -1,0 +1,13 @@
+{
+  "name": "barrier-pro-r0.8",
+  "version": "0.8.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "contract": "node tools/build-contract.mjs",
+    "inspect": "node tools/cpu-self-inspection.mjs && python3 tools/mark-not-run.py",
+    "test": "node barrier-pro-tests.mjs && node barrier-pro-validate.mjs",
+    "hash": "node tools/build-manifest.mjs",
+    "wav": "node tools/generate-sfx-wavs.mjs"
+  }
+}

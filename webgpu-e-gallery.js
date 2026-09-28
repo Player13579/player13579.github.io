@@ -14,6 +14,7 @@
     'barrier-pro-r05': { magnification: 1.8, focusX: 490, focusY: 310 },
     'barrier-pro-r06': { magnification: 1.0, focusX: 490, focusY: 310 },
     'barrier-pro-r07': { magnification: 1.0, focusX: 490, focusY: 310 },
+    'barrier-pro-r08': { magnification: 1.0, focusX: 490, focusY: 310 },
     'stamina-pro': { magnification: 4.0, focusX: 490, focusY: 496 },
     'stamina-pro-r03': { magnification: 1.0, focusX: 490, focusY: 310 },
     'stamina-pro-r02': { magnification: 2.3, focusX: 490, focusY: 310 },
@@ -28,7 +29,7 @@
   const replayedProVersions = new Set([
     'sunbeam-pro-file-draft', 'sunbeam-pro-live-v1', 'sunbeam-pro-v2',
     'luck-pro-r02', 'luck-pro-r01',
-    'barrier-pro-r07', 'barrier-pro-r06', 'barrier-pro-r05', 'barrier-pro-r04', 'barrier-pro-r03', 'barrier-pro-r02', 'barrier-pro-r01',
+    'barrier-pro-r08', 'barrier-pro-r07', 'barrier-pro-r06', 'barrier-pro-r05', 'barrier-pro-r04', 'barrier-pro-r03', 'barrier-pro-r02', 'barrier-pro-r01',
     'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
     'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
     'emp-pro-r03', 'emp-pro-r02', 'emp-pro-r01', 'emp-pro-p0',
@@ -63,7 +64,8 @@
       version('headshot-pro-v01', 'GPT Pro v1', 'headshot-pro-v01/index.html', 'headshot-pro-v01/src/renderer.mjs', 'GPT Pro旧版・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器×HIP/AIMのH64を実WebGPUで並列自動ループ再生。全10種の描画を確認しましたが、視覚品質と音は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
-      version('barrier-pro-r07', 'GPT Pro r0.7', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・造形品質未達・SFX聴感未確認・本編未採用', '4事象のH64自動ループとGPUエラー0を確認。防護場が平面的な八角輪郭に見え、吸収・破断・解除の作用差が弱いため、Proにr0.8を改稿依頼中です。', 'effect-H64', 1, true),
+      version('barrier-pro-r08', 'GPT Pro r0.8', 'barrier-pro-r08/embed.html', 'barrier-pro-r08/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質未審査・SFX聴感未確認・本編未採用', 'Proによる立体防護場の改稿。暗明のcreate・absorb・fracture・bustをChrome実WebGPUで自動ループ確認。全寿命の原寸造形と実聴、本編接続は未受入です。', 'effect-H64', 1, true),
+      version('barrier-pro-r07', 'GPT Pro r0.7', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・造形品質未達・SFX聴感未確認・本編未採用', '4事象のH64自動ループとGPUエラー0を確認。防護場が平面的な八角輪郭に見え、吸収・破断・解除の作用差が弱いため、Proにr0.8を改稿依頼しました。', 'effect-H64', 1, true),
       version('barrier-pro-r06', 'GPT Pro r0.6', 'barrier-pro-r06/embed.html', 'barrier-pro-r06/barrier-pro-renderer.mjs', 'GPT Pro旧版・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '原本の合成テクスチャ型不一致をadapterで修復して四事象を自動再生。白飛びは棄却理由にせず、四事象の造形・作用とSFXの品質確認を残します。', 'effect-H64', 1, true),
       version('barrier-pro-r05', 'GPT Pro r0.5', 'barrier-pro-r05/embed.html', 'barrier-pro-r05/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質不合格・SFX聴感未確認・本編未採用', '吸収中のH64保護空域が小さな不透明のカップ状へ潰れるため品質不合格。既存設計の自動ループWebGPU比較版で、本編には接続していません。', 'effect-H64', 1, true),
       version('barrier-pro-r04', 'GPT Pro r0.4', 'barrier-pro-r04/index.html', 'barrier-pro-r04/preview.mjs', 'GPT Pro制作・実GPU再生可能・品質未受入・SFX聴感未確認・本編未採用', 'GPT Proによる巻膜案。過去にカフ状に見えるとの報告があります。背景の明暗や淡さを不合格理由にせず、形態と全寿命の視覚品質を独立に再審査中です。SFX聴感も未受入です。', 'effect-H64', 1, true),
@@ -114,7 +116,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v41');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v42');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
