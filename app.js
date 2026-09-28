@@ -1427,7 +1427,6 @@ const FIRE_E_SOUND_RECEIPTS = { roomKey: '', pending: new Map(), played: new Set
 let HEAL_E_SFX_PLAYER = null;
 let HEAL_E_SFX_CONTEXT = null;
 let HEAL_E_SFX_ACTIVE = null;
-let healESfxSequence = 0;
 let BARRIER_R07_SFX_PLAYER = null;
 let BARRIER_R07_SFX_CONTEXT = null;
 
@@ -1496,7 +1495,7 @@ function commitHealESfxVisualFrame(data, receipts) {
   if (state.screen !== 'game' || document.hidden || state.audio.muted ||
       isSensoryBlocked(data) || !state.audio.unlocked ||
       state.audio.context?.state !== 'running' || !(state.audio.master?.gain?.value > 0) ||
-      !window.DvaHealAstraSfx?.createPlayer) { stopHealESfx(); return; }
+      !window.DvaHealSparkleSfx?.createPlayer) { stopHealESfx(); return; }
   const receipt = [...(receipts || [])].reverse().find(item => String(item.playerId) === String(data.selfId));
   const source = receipt && healESfxSource(data, receipt.effectId);
   if (!source) { stopHealESfx(); return; }
@@ -1510,14 +1509,14 @@ function commitHealESfxVisualFrame(data, receipts) {
   if (HEAL_E_SFX_CONTEXT !== state.audio.context) {
     HEAL_E_SFX_PLAYER?.destroy();
     HEAL_E_SFX_CONTEXT = state.audio.context;
-    HEAL_E_SFX_PLAYER = window.DvaHealAstraSfx.createPlayer({
+    HEAL_E_SFX_PLAYER = window.DvaHealSparkleSfx.createPlayer({
       context: HEAL_E_SFX_CONTEXT, destination: state.audio.master, syncActorClock: true });
   }
   // Resume after hiding/muting joins the current phase rather than replaying onset.
   // First-use synthesis can take time; read wall time after it, not before it.
   const currentSource = healESfxSource(data, receipt.effectId, performance.now());
   if (!currentSource) { stopHealESfx(); return; }
-  if (HEAL_E_SFX_PLAYER.start({ eventId: `${key}:${++healESfxSequence}`,
+  if (HEAL_E_SFX_PLAYER.start({ eventId: key, loop: true,
       phaseSeconds: currentSource.phaseSeconds, actorElapsedSeconds: receipt.actorSeconds,
       actorRate, volume: 1 }))
     HEAL_E_SFX_ACTIVE = { key, effectId: receipt.effectId, roomId: String(data.roomId),

@@ -54,6 +54,8 @@
     hackerStatusRecoveryE: root.DvaWebGPUHackerStatusRecoveryE || (typeof require === 'function' ? require('./webgpu-hacker-status-recovery-e.js') : null),
     floraE: root.DvaWebGPUFloraE || (typeof require === 'function' ? require('./webgpu-flora-e.js') : null),
     healE: root.DvaHealAstraE || (typeof require === 'function' ? require('./webgpu-heal-astra-prototype.js') : null),
+    healSparkleE: root.DvaHealSparkle || (typeof require === 'function' ? require('./webgpu-heal-sparkle-r1.js') : null),
+    healSparkleGameAdapter: root.DvaHealSparkleGameAdapter || (typeof require === 'function' ? require('./webgpu-heal-astra-sparkle-r1-game-adapter.js') : null),
     sunbeamE: root.DvaSunbeamAstraV3GameAdapter || (typeof require === 'function' ? require('./webgpu-sunbeam-astra-v3-game.js') : null),
     fighterEnergyE: root.DvaWebGPUFighterEnergyE || (typeof require === 'function' ? require('./webgpu-fighter-energy-e.js') : null),
     hoverSprintE: root.DvaWebGPUHoverSprintE || (typeof require === 'function' ? require('./webgpu-hover-sprint-e.js') : null),
@@ -165,7 +167,7 @@
       preparationSummons: 'create', players: 'createTextureCache',
       playerNameplates: 'create', headMarkers: 'create',
       gunnerAim: 'create', killCamera: 'create', hitEffects: 'record',
-      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusTempo: 'create', barrierE: 'create', ...(modules === defaults || modules.barrierProR07Game ? { barrierProR07Game: 'create' } : {}), bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
+      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusTempo: 'create', barrierE: 'create', ...(modules === defaults || modules.barrierProR07Game ? { barrierProR07Game: 'create' } : {}), bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', healSparkleE: 'create', healSparkleGameAdapter: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
       attackTargets: 'record', taskIndicators: 'create', hud: 'create',
       minimap: 'create', modeBanner: 'create', killBloom: 'create',
       killAnimation: 'create', sensory: 'enqueue', markerExplanation: 'create',
@@ -284,14 +286,8 @@
       startEarlyOwnedPass('manaBenefitE', () =>
         modules.manaBenefitE.create({ renderer, frameOwner: renderer }));
       startEarlyOwnedPass('healE', () => {
-        const pass = modules.healE.create({ renderer, frameOwner: renderer });
-        const liveHealIds = new Set();
-        return Object.freeze({ device: renderer.device,
-          reconcile(ids) {
-            const next = new Set(ids);
-            for (const id of liveHealIds) if (!next.has(id)) pass.release(id);
-            liveHealIds.clear(); for (const id of next) liveHealIds.add(id);
-          }, record: pass.record, ready: pass.ready, destroy: pass.destroy });
+        return modules.healSparkleGameAdapter.create({ renderer,
+          baseModule: modules.healE, sparkleModule: modules.healSparkleE });
       });
       const [fieldResult, sunbeamResult, barrierR07Result] = await Promise.all([
         fieldCreation, sunbeamCreation, barrierR07Creation]);
