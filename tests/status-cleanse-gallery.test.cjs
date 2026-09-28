@@ -203,7 +203,7 @@ const verifiedReplay = new URL(statusIframe.src);
 assert.equal(verifiedReplay.searchParams.get('verify'), '1', 'gallery verification mode propagates to replay');
 assert.equal(verifiedReplay.searchParams.get('embed'), '1');
 assert.equal(verifiedReplay.searchParams.get('h'), '64');
-assert.equal(verifiedReplay.searchParams.get('galleryRelease'), 'astra-history-20260928-v81');
+assert.equal(verifiedReplay.searchParams.get('galleryRelease'), 'astra-history-20260929-v82');
 const luckCatalogButton = verifyElements.get('catalog').children.find(button => button.dataset.id === 'luck-astra');
 luckCatalogButton.listeners.click();
 const verifiedLuckZeroIframe = verifyElements.get('stage').querySelector('iframe');
@@ -243,10 +243,83 @@ const adoptedHeal = healGroup.versions.find(item => item.id === 'heal-astra-prot
 assert.match(adoptedHeal.status, /ユーザー品質採用/);
 assert.match(adoptedHeal.detail, /キラキラ改修中・新版未採用/);
 const luckGroup = window.__webgpuEGallery.entries.find(item => item.id === 'luck-astra');
-const sunbeamLatest = window.__webgpuEGallery.entries.find(item => item.id === 'sunbeam-astra').versions[0];
+const sunbeamLatest = window.__webgpuEGallery.entries.find(item => item.id === 'sunbeam-astra').versions.find(item => item.id === 'sunbeam-astra-clean-v3');
 assert.match(sunbeamLatest.status, /品質保留.*再改修中.*ユーザー採用保留.*本編未採用/,
   'Sunbeam v3 adoption remains on hold during the requested quality revision');
 assert.match(sunbeamLatest.detail, /以前の視覚採用判断は保留.*本編接続は承認されていません/);
+const sunbeamGroup = window.__webgpuEGallery.entries.find(item => item.id === 'sunbeam-astra');
+const sunbeamSourceRoot = path.join(pagesRoot, 'astra-sunbeam-lens-ghost-v1');
+const sunbeamFrozen = JSON.parse(fs.readFileSync(path.join(sunbeamSourceRoot, 'frozen-versions.json'), 'utf8'));
+assert.equal(sunbeamFrozen.versions.length, 5);
+assert.deepEqual(Array.from(sunbeamGroup.versions.slice(0, 8), item => item.id), [
+  'sunbeam-lens-ghost-r5', 'sunbeam-lens-ghost-r4', 'sunbeam-lens-ghost-r3',
+  'sunbeam-lens-ghost-r2', 'sunbeam-lens-ghost-r1',
+  'sunbeam-astra-clean-v3', 'sunbeam-astra-clean-v2', 'sunbeam-astra-clean-v1'
+], 'Sunbeam lens-ghost versions appear newest first while preserving v1-v3 history');
+let sunbeamAllowlistCount = 0;
+for (const frozenVersion of sunbeamFrozen.versions) {
+  const revision = frozenVersion.version;
+  const sourceVersionRoot = frozenVersion.root === '.'
+    ? sunbeamSourceRoot : path.join(sunbeamSourceRoot, 'revisions', revision);
+  const replayManifest = JSON.parse(fs.readFileSync(path.join(sunbeamSourceRoot, frozenVersion.manifest), 'utf8'));
+  assert.equal(replayManifest.version, `sunbeam-lens-ghost-${revision}`);
+  assert.equal(replayManifest.author.design, 'gpt-6-astra');
+  assert.equal(replayManifest.author.implementation, 'gpt-6-astra');
+  assert.equal(replayManifest.status.technicalReplay, 'pass');
+  assert.equal(replayManifest.status.quality, 'rejected');
+  assert.equal(replayManifest.status.adoption, 'revoked_not_adopted');
+  assert.equal(replayManifest.status.audibleSfxQuality, 'not_run');
+  assert.equal(replayManifest.status.mainGameIntegration, 'not_run');
+  assert.equal(replayManifest.status.cadence, 'outliers_not_fully_accepted');
+  assert.equal(replayManifest.checks.verifyLocked, true);
+  assert.equal(frozenVersion.runtimeAllowlist.length, 4);
+  assert.equal(replayManifest.runtimeAllowlist.length, 4);
+  assert.deepEqual(frozenVersion.runtimeAllowlist, replayManifest.runtimeAllowlist);
+  sunbeamAllowlistCount += frozenVersion.runtimeAllowlist.length;
+  for (const file of frozenVersion.runtimeAllowlist) {
+    for (const base of [
+      sourceVersionRoot,
+      path.join(pagesPublicRoot, 'astra-sunbeam-lens-ghost-v1', 'versions', revision),
+      path.join(root, 'astra-sunbeam-lens-ghost-v1', 'versions', revision)
+    ]) {
+      const target = path.join(base, file.file);
+      assert(fs.existsSync(target), `${revision}/${file.file} exists in source and both public mirrors`);
+      assert.equal(fs.statSync(target).size, file.bytes, `${revision}/${file.file} bytes match freeze`);
+      assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(target)).digest('hex'),
+        file.sha256, `${revision}/${file.file} SHA matches freeze`);
+    }
+  }
+  const listing = sunbeamGroup.versions.find(item => item.id === `sunbeam-lens-ghost-${revision}`);
+  assert.match(listing.status, /品質不合格.*ユーザー未採用.*本編未接続/);
+  assert.match(listing.detail, /作者: GPT-6-Astra.*凍結sourceで実WebGPU再生pass/);
+  assert.match(listing.detail, /SFX聴感未実施.*ユーザー未採用.*本編未接続/);
+  const pageUrl = new URL(listing.page, 'https://example.test/webgpu-e-gallery.html');
+  assert(pageUrl.pathname.endsWith(`/public/astra-sunbeam-lens-ghost-v1/versions/${revision}/index.html`));
+  assert.equal(pageUrl.searchParams.get('embed'), '1');
+  assert.equal(pageUrl.searchParams.get('height'), '64');
+  assert.equal(pageUrl.searchParams.has('verify'), false, `${revision} normal gallery replay does not force silence`);
+  const preview = fs.readFileSync(path.join(sourceVersionRoot, 'preview.js'), 'utf8');
+  assert.match(preview, /verify=params\.has\('verify'\)/);
+  assert.match(preview, /if\(fixed===null\).*raf=requestAnimationFrame\(step\)/);
+}
+assert.equal(sunbeamAllowlistCount, 20, 'Sunbeam lens-ghost publishes only the frozen 20 runtime assets');
+const switchedSunbeam = verifyElements.get('catalog').children.find(button => button.dataset.id === 'sunbeam-astra');
+switchedSunbeam.listeners.click();
+const verifiedSunbeamIframe = verifyElements.get('stage').querySelector('iframe');
+assert.equal(verifiedSunbeamIframe.allow, 'autoplay');
+assert.match(verifiedSunbeamIframe.title, /自動再生/);
+const verifiedSunbeamReplay = new URL(verifiedSunbeamIframe.src);
+assert(verifiedSunbeamReplay.pathname.endsWith('/public/astra-sunbeam-lens-ghost-v1/versions/r5/index.html'));
+assert.equal(verifiedSunbeamReplay.searchParams.get('verify'), '1');
+assert.equal(verifiedSunbeamReplay.searchParams.get('embed'), '1');
+assert.equal(verifiedSunbeamReplay.searchParams.get('height'), '64');
+const sunbeamVersionSelector = verifyElements.get('version-select');
+sunbeamVersionSelector.value = '4';
+sunbeamVersionSelector.onchange();
+const switchedSunbeamReplay = new URL(verifyElements.get('stage').querySelector('iframe').src);
+assert(switchedSunbeamReplay.pathname.endsWith('/public/astra-sunbeam-lens-ghost-v1/versions/r1/index.html'),
+  'version selector switches from latest r5 to r1');
+assert.equal(switchedSunbeamReplay.searchParams.get('verify'), '1', 'verify remains active during version switching');
 assert.deepEqual(Array.from(luckGroup.versions.slice(0, 9), item => item.id), [
   'luck-astra-zero-r06', 'luck-astra-zero-r05', 'luck-astra-zero-r04', 'luck-astra-zero-r03', 'luck-astra-zero-r02', 'luck-astra-zero-r01',
   'luck-astra-v4-sparkle-r02', 'luck-astra-v4-sparkle-r01', 'luck-astra-clean-v4'
@@ -307,7 +380,7 @@ assert.match(adoptedLuck.detail, /キラキラ改修中・新版未採用/);
 const adoptedCooldown = window.__webgpuEGallery.entries.find(item => item.id === 'cooldown-astra').versions.find(item => item.id === 'astra-cooldown-benefit-r0.5');
 assert.match(adoptedCooldown.status, /ユーザー採用済み/);
 assert.match(adoptedCooldown.detail, /キラキラ改修中・新版未採用/);
-assert.match(html, /astra-history-20260928-v81/);
+assert.match(html, /astra-history-20260929-v82/);
 
 const entry = window.__webgpuEGallery.entries.find(item => item.id === 'status-cleanse-astra');
 assert(entry, 'status-recovery Astra gallery entry exists');
@@ -586,6 +659,6 @@ assert.equal(cooldownAdopted.userAdopted, true, 'Cooldown r0.5 is the user-selec
 assert.equal(cooldownAdopted.gameAdopted, false, 'visual selection does not mark game integration complete');
 assert.match(cooldownGroup.versions.find(item => item.id === cooldownAdopted.id).detail, /視覚版の選択.*本編への接続と発動は検証中/);
 assert.match(cooldownGroup.versions.find(item => item.id === cooldownAdopted.id).detail, /キラキラ改修中・新版未採用/);
-const release = source.match(/galleryRelease', '(astra-history-20260928-v\d+)'/);
-assert(release && release[1] === 'astra-history-20260928-v81' && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
+const release = source.match(/galleryRelease', '(astra-history-20260929-v\d+)'/);
+assert(release && release[1] === 'astra-history-20260929-v82' && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
 console.log(`PASS: ${healGroup.versions.length} Heal, ${luckGroup.versions.length} Luck, ${entry.versions.length} status-recovery, ${cooldownGroup.versions.length} Cooldown, ${manaGroup.versions.length} Mana, ${staminaGroup.versions.slice(0, 8).length} Stamina versions; package SHA manifests verified`);

@@ -1,0 +1,64 @@
+{
+  "schema": "dva-frozen-e-runtime-v1",
+  "version": "sunbeam-lens-ghost-r1",
+  "entrypoint": "index.html?verify=1&embed=1",
+  "author": {
+    "design": "gpt-6-astra",
+    "implementation": "gpt-6-astra",
+    "inheritedVisualSources": "none before r1; own frozen prior revision within this branch thereafter"
+  },
+  "canonicalB": {
+    "commit": "8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1",
+    "baseBlob": "4e10a53310be5b9d0aa3a6c881cf4f39d6590bd4",
+    "extensionBlob": "0eda016558e426ff4142d850d26200b40fafd834"
+  },
+  "status": {
+    "technicalReplay": "pass",
+    "quality": "rejected",
+    "adoption": "revoked_not_adopted",
+    "audibleSfxQuality": "not_run",
+    "mainGameIntegration": "not_run",
+    "cadence": "outliers_not_fully_accepted"
+  },
+  "runtimeAllowlist": [
+    {
+      "file": "index.html",
+      "sha256": "28803dd0204486a0a1b3f58050fcb5119263a0cf575a895e0f4d41cee13966f9",
+      "bytes": 961
+    },
+    {
+      "file": "preview.js",
+      "sha256": "53239be4017275c97190c3ce0538ccb5e5a5c95cbde88d04b4d57e3e5efd938f",
+      "bytes": 2293
+    },
+    {
+      "file": "sunbeam.js",
+      "sha256": "03a7310975c6aa4cbc8b4f6e4bf45644a93cdcb86d9c4fb8a4a6fca3e0f2b43f",
+      "bytes": 7098
+    },
+    {
+      "file": "sfx.js",
+      "sha256": "cc56cb5a67acf40b0c8705340620e044a572531b026caf9b67c60416f3487f9e",
+      "bytes": 1635
+    }
+  ],
+  "evidence": {
+    "originalSourceFreeze": "evidence/exact-source-freeze.json",
+    "gpu": "evidence/gpu-results.json",
+    "quality": "evidence/quality-review.md",
+    "darkLifetime": "evidence/contact-dark.png",
+    "lightLifetime": "evidence/contact-light.png",
+    "darkContinuous": "evidence/continuous-dark.webm",
+    "lightContinuous": "evidence/continuous-light.webm",
+    "sfxWav": "evidence/sunbeam-v1.wav",
+    "edge": null
+  },
+  "checks": {
+    "gpuRows": 60,
+    "gpuErrors": [],
+    "shaderAndGpu": true,
+    "verifyLocked": true,
+    "sfxFinite": true
+  },
+  "publicationBoundary": "Publish only runtimeAllowlist; do not publish b-authority, helper scripts, or Git data. Gallery listing does not adopt this version."
+}

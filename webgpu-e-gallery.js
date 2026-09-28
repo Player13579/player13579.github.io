@@ -27,6 +27,11 @@
       version('heal-astra-prototype', 'Astra採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', 'ユーザー品質採用・発光と主形を確認済み', '採用済みヒール原版。キラキラ改修中・新版未採用。連続再生の全寿命と聴感は未受入です。', 'actor-H64', 0.7937)
     ]) }),
     Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', versions: Object.freeze([
+      version('sunbeam-lens-ghost-r5', 'Astra lens-ghost r5', 'public/astra-sunbeam-lens-ghost-v1/versions/r5/index.html?embed=1&height=64', 'public/astra-sunbeam-lens-ghost-v1/versions/r5/sunbeam.js', '品質不合格・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。凍結sourceで実WebGPU再生pass。品質理由: ghostはぼけた丸い粒子列に見え、主beamも細い白線＋橙縁に留まる。光学像と光束の厚みが未達で改稿。連続再生は外れ値を含み、完全な滑らかさは未受入。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
+      version('sunbeam-lens-ghost-r4', 'Astra lens-ghost r4', 'public/astra-sunbeam-lens-ghost-v1/versions/r4/index.html?embed=1&height=64', 'public/astra-sunbeam-lens-ghost-v1/versions/r4/sunbeam.js', '品質不合格・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。凍結sourceで実WebGPU再生pass。品質理由: 虹色Cが光源/beamから孤立した記号に見え、横長veilも第二の光束に読める。時間構造には改善があったが全体品質未達。連続再生は外れ値を含み、完全な滑らかさは未受入。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
+      version('sunbeam-lens-ghost-r3', 'Astra lens-ghost r3', 'public/astra-sunbeam-lens-ghost-v1/versions/r3/index.html?embed=1&height=64', 'public/astra-sunbeam-lens-ghost-v1/versions/r3/sunbeam.js', '品質不合格・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。凍結sourceで実WebGPU再生pass。品質理由: 時点を変えても主形がほぼ同じで、時間状態が読み分けにくい。虹Cと焦点外円が孤立し、source peakと同期したveilも不足。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
+      version('sunbeam-lens-ghost-r2', 'Astra lens-ghost r2', 'public/astra-sunbeam-lens-ghost-v1/versions/r2/index.html?embed=1&height=64', 'public/astra-sunbeam-lens-ghost-v1/versions/r2/sunbeam.js', '品質不合格・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。凍結sourceで実WebGPU再生pass。品質理由: 虹色円弧が独立した括弧の列に見え、主beamは細線状で体積と作用の厚みが弱い。連続再生は外れ値を含み、SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
+      version('sunbeam-lens-ghost-r1', 'Astra lens-ghost r1', 'public/astra-sunbeam-lens-ghost-v1/versions/r1/index.html?embed=1&height=64', 'public/astra-sunbeam-lens-ghost-v1/versions/r1/sunbeam.js', '品質不合格・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。凍結sourceで実WebGPU再生pass。品質理由: 六つの類似輪郭が独立した図形の羅列に見え、結像系全体の応答が成立していない。連続再生の最大gapは暗108.2ms/明124.6msで原因未確定。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', '品質保留・再改修中・ユーザー採用保留・本編未採用', '以前の視覚採用判断は保留され、品質改修中です。再審査が終わるまでユーザー採用と本編接続は承認されていません。', 'effect-H64'),
       version('sunbeam-astra-clean-v2', 'Astra v2', 'sunbeam-astra-clean-v2-preview.html', 'webgpu-sunbeam-astra-clean-v2.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64'),
       version('sunbeam-astra-clean-v1', 'Astra v1', 'sunbeam-astra-clean-v1-preview.html', 'webgpu-sunbeam-astra-clean-v1.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64')
@@ -176,7 +181,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v81');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260929-v82');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
