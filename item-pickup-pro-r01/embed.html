@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>アイテム獲得 E · GPT Pro r0.1</title>
+  <style>
+    * { box-sizing: border-box }
+    html, body { width: 980px; height: 620px; margin: 0; overflow: hidden; background: transparent; color: #d7e5ec; font: 12px/1.35 system-ui, sans-serif }
+    main { position: relative; width: 980px; height: 620px }
+    section { position: absolute; top: 50%; width: 128px; height: 64px; transform: translateY(-50%); }
+    section.dark { left: calc(50% - 64px) }
+    section.light { left: calc(50% + 86px) }
+    h2 { position: absolute; left: 0; top: -17px; margin: 0; font-size: 10px; font-weight: 500 }
+    section.light h2 { color: #25313a }
+    .surface { width: 128px; height: 64px }
+    canvas { display: block; width: 128px; height: 64px }
+    #status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0 }
+  </style>
+</head>
+<body>
+  <main aria-label="アイテム獲得エフェクトのH64暗明WebGPU再生">
+    <section class="dark"><h2>DARK · H64</h2><div class="surface"><canvas id="dark" width="128" height="64" aria-label="暗面 WebGPU エフェクト"></canvas></div></section>
+    <section class="light"><h2>LIGHT · H64</h2><div class="surface"><canvas id="light" width="128" height="64" aria-label="明面 WebGPU エフェクト"></canvas></div></section>
+    <p id="status" role="status">WebGPUを初期化しています</p>
+  </main>
+  <script type="module" src="./embed.mjs"></script>
+</body>
+</html>
