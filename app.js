@@ -20265,6 +20265,8 @@ function hitEffectsWebGPUScene() {
 function hazardFieldsWebGPUScene(data) {
   return {
     hazardFields: Array.isArray(data?.hazardFields) ? data.hazardFields : [],
+    hazardFieldRetirements: Array.isArray(data?.hazardFieldRetirements)
+      ? data.hazardFieldRetirements : [],
     serverNow: estimatedServerNow(data),
     textures: {
       fireMaterialTransport: state.textures?.fireMaterialTransport,
@@ -20826,7 +20828,9 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       const atlasState = !atlas ? 'missing' :
         atlas.complete && atlas.naturalWidth === 2304 && atlas.naturalHeight === 2048
           ? 'ready' : `unready-${number(atlas.naturalWidth)}x${number(atlas.naturalHeight)}`;
-      const poisonEvidence = `at=${number(effect.at)};xy=${number(effect.x)}/${number(effect.y)}` +
+      const poisonEvidence = `fid=${String(effect.hazardFieldId || '').slice(0, 24)}` +
+        `;end=${number(effect.hazardFieldEndsAt)};at=${number(effect.at)}` +
+        `;xy=${number(effect.x)}/${number(effect.y)}` +
         `;r=${number(effect.radius)};t=${number(scene.serverNow)};active=${activeFields.length}` +
         `;atlas=${atlasState};fields=${candidates.map(({ field }) =>
           `${String(field.id || '').slice(0, 24)}/${String(field.sourceId || '').slice(0, 24)}` +
@@ -20839,7 +20843,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         else claim = pass.claimPoisonEffect({ effect, scene, camera, zoom, viewport });
       } catch (_) { failure = 'hazard-poison-claim-exception'; }
       if (!failure && !claim) failure = 'hazard-poison-claim-missing';
-      if (!failure && claim?.visible) {
+      if (!failure && claim?.visible && !claim.omittedReason) {
         try {
           const commands = pass.plan({ scene, camera, zoom, viewport });
           if (!Array.isArray(commands) || !commands.some(command =>
@@ -20852,8 +20856,9 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           reason: failure, poisonEvidence });
       } else {
         omitted.push({ effectId: effect.id, fieldId: claim.fieldId,
-          reason: claim?.visible ? 'authoritative-poison-field-owns-webgpu-visual' :
-            'authoritative-poison-field-outside-viewport' });
+          reason: claim.omittedReason || (claim.visible
+            ? 'authoritative-poison-field-owns-webgpu-visual' :
+              'authoritative-poison-field-outside-viewport') });
       }
       continue;
     }

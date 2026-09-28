@@ -4816,7 +4816,7 @@ function renameSelectingPlayerName(rawName, profileId, legacyProfileId = "") {
 // preparation deadline. Only geometry-owned state is rebuilt for the new map.
 function rebuildPreparationMapState(room) {
   const map = getMap(room);
-  for (const key of ["bodies", "hitEffects", "magicEffects", "hazardFields", "thrownItems", "groundItems", "activeEmps", "gravityZones", "alchemyObjects", "mysteryBoxes", "sounds", "doorLog"]) room[key] = [];
+  for (const key of ["bodies", "hitEffects", "magicEffects", "hazardFields", "hazardFieldRetirements", "thrownItems", "groundItems", "activeEmps", "gravityZones", "alchemyObjects", "mysteryBoxes", "sounds", "doorLog"]) room[key] = [];
   room.utilityViews.clear();
   for (const player of room.players.values()) {
     const doneCount = (player.taskList || []).filter((task) => task.done).length;
@@ -5431,6 +5431,7 @@ function createRoom(id) {
     gravityZones: [],
     alchemyObjects: [],
     hazardFields: [],
+    hazardFieldRetirements: [],
     thrownItems: [],
     groundItems: [],
     mysteryBoxes: [],
@@ -5712,6 +5713,11 @@ function pushMagicEffect(room, type, source, options = {}) {
     ...(typeof options.objectCausalId === "string" && options.objectCausalId
       ? { objectCausalId: options.objectCausalId }
       : {}),
+    ...(type === "hazard-poison" ? {
+      hazardFieldId: String(options.hazardFieldId || ""),
+      hazardFieldCreatedAt: Number(options.hazardFieldCreatedAt),
+      hazardFieldEndsAt: Number(options.hazardFieldEndsAt)
+    } : {}),
     ...(type === "flora-sunbeam" && typeof options.sunbeamCausalId === "string" && options.sunbeamCausalId
       ? { sunbeamCausalId: options.sunbeamCausalId }
       : {}),
@@ -6786,6 +6792,7 @@ function startGame(room) {
   room.hitEffects = [];
   room.magicEffects = [];
   room.hazardFields = [];
+  room.hazardFieldRetirements = [];
   room.thrownItems = [];
   room.groundItems = [];
   room.chat = [];
@@ -13951,11 +13958,21 @@ function addHazardField(room, source, kind, x, y, radius, strength = 1, duration
     endsAt: now() + Math.max(1_000, Number(durationMs) || HAZARD_FIELD_DURATION_MS)
   };
   room.hazardFields.push(field);
+  // Keep a bounded server receipt when the 32-field cap retires a still-live field.
+  const evicted = room.hazardFields.slice(0, -32);
+  if (evicted.length) {
+    room.hazardFieldRetirements = [ ...(room.hazardFieldRetirements || []),
+      ...evicted.map(entry => ({ id: entry.id, reason: "evicted", retiredAt: now() }))
+    ].slice(-96);
+  }
   room.hazardFields = room.hazardFields.slice(-32);
   pushMagicEffect(room, kind === "poison" ? "hazard-poison" : kind === "water" ? "hazard-water" : "hazard-fire", field, {
     radius: field.radius,
     playerId: source?.id || "",
-    variant: String(field.strength)
+    variant: String(field.strength),
+    hazardFieldId: field.id,
+    hazardFieldCreatedAt: field.createdAt,
+    hazardFieldEndsAt: field.endsAt
   });
   return field;
 }
@@ -18527,6 +18544,7 @@ function serialize(room, viewer, options = {}) {
     hitEffects: room.hitEffects,
     magicEffects: magicEffectsForViewer(room, viewer, timestamp),
     hazardFields: (room.hazardFields || []).map((field) => ({ ...field })),
+    hazardFieldRetirements: (room.hazardFieldRetirements || []).map((entry) => ({ ...entry })),
     groundItems: (room.groundItems || []).map((groundItem) => ({
       id: groundItem.id,
       itemId: groundItem.itemId,
@@ -20454,6 +20472,7 @@ async function handleApi(req, res) {
       room.hitEffects = [];
       room.magicEffects = [];
       room.hazardFields = [];
+      room.hazardFieldRetirements = [];
       room.thrownItems = [];
       room.groundItems = [];
       room.chat = [];

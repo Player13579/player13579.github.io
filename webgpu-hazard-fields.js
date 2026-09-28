@@ -21,25 +21,50 @@
       field.createdAt <= serverNow && serverNow < field.endsAt;
   }
 
-  // The server emits a separate magic ID immediately after creating the field.
-  // Claim only the unique field with the same source, center, radius and strength.
+  // The magic receipt names its authoritative field. A later field from the
+  // same source cannot inherit an earlier receipt, even at the same center.
   function claimPoisonEffect({ effect, scene, camera, zoom, viewport } = {}) {
     if (effect?.type !== 'hazard-poison' || !scene || !Array.isArray(scene.hazardFields) ||
         !finite(scene.serverNow) || !camera || !viewport ||
         ![camera.x, camera.y, zoom, viewport.width, viewport.height].every(finite) ||
         zoom <= 0 || viewport.width <= 0 || viewport.height <= 0 ||
         !String(effect.id || '') || !String(effect.playerId || '') ||
-        ![effect.x, effect.y, effect.radius, effect.at, effect.startedAt, effect.duration]
+        typeof effect.hazardFieldId !== 'string' || !effect.hazardFieldId ||
+        ![effect.x, effect.y, effect.radius, effect.at, effect.startedAt, effect.duration,
+          effect.hazardFieldCreatedAt, effect.hazardFieldEndsAt]
           .every(finite) || effect.radius <= 0 || effect.duration <= 0 ||
+        effect.hazardFieldCreatedAt >= effect.hazardFieldEndsAt ||
+        effect.at < effect.hazardFieldCreatedAt ||
+        effect.at >= effect.hazardFieldEndsAt ||
+        effect.at - effect.hazardFieldCreatedAt > 1000 ||
         !finite(Number(effect.variant)) || Number(effect.variant) < .25)
       return null;
-    const fields = scene.hazardFields.filter(field => activePoisonField(field, scene.serverNow) &&
-      field.sourceId === String(effect.playerId) && field.x === effect.x &&
-      field.y === effect.y && field.radius === effect.radius &&
-      field.strength === Number(effect.variant) && effect.at >= field.createdAt &&
-      effect.at - field.createdAt <= 1000);
-    if (fields.length !== 1) return null;
-    const field = fields[0], width = field.radius * 2.25 * zoom;
+    const fields = scene.hazardFields.filter(field => field?.id === effect.hazardFieldId);
+    if (fields.length > 1) return null;
+    const field = fields[0];
+    if (!field) {
+      // Expiry follows the receipt's server-authored end time. Capacity
+      // eviction needs a separate server-authored retirement receipt.
+      if (scene.serverNow >= effect.hazardFieldEndsAt)
+        return Object.freeze({ fieldId: effect.hazardFieldId,
+          omittedReason: 'authoritative-poison-field-expired' });
+      const retired = Array.isArray(scene.hazardFieldRetirements) &&
+        scene.hazardFieldRetirements.some(entry => entry?.id === effect.hazardFieldId &&
+          entry.reason === 'evicted' && finite(entry.retiredAt) &&
+          entry.retiredAt >= effect.hazardFieldCreatedAt && entry.retiredAt <= scene.serverNow);
+      return retired ? Object.freeze({ fieldId: effect.hazardFieldId,
+        omittedReason: 'authoritative-poison-field-evicted' }) : null;
+    }
+    if (field.kind !== 'poison' || field.sourceId !== String(effect.playerId) ||
+        field.x !== effect.x || field.y !== effect.y || field.radius !== effect.radius ||
+        field.strength !== Number(effect.variant) ||
+        field.createdAt !== effect.hazardFieldCreatedAt ||
+        field.endsAt !== effect.hazardFieldEndsAt) return null;
+    if (scene.serverNow >= field.endsAt)
+      return Object.freeze({ fieldId: field.id,
+        omittedReason: 'authoritative-poison-field-expired' });
+    if (!activePoisonField(field, scene.serverNow)) return null;
+    const width = field.radius * 2.25 * zoom;
     const height = width * 256 / 384;
     const x = (field.x - camera.x) * zoom, y = (field.y - camera.y) * zoom;
     return Object.freeze({ fieldId: field.id, visible: x + width / 2 > 0 &&
