@@ -31,6 +31,7 @@
     'facility-security-console-pro-r01': { magnification: 2.0, focusX: 490, focusY: 310 },
     'item-pickup-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'taser-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
+    'item-use-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'emp-pro': { magnification: 2.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1, replayable = false) =>
@@ -44,7 +45,7 @@
     'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
     'rational-pro-r01', 'ninjutsu-pro-r01',
     'facility-bookshelf-pro-r01', 'facility-reading-lamp-pro-r01', 'facility-security-console-pro-r01',
-    'item-pickup-pro-r01', 'taser-pro-r01',
+    'item-pickup-pro-r01', 'taser-pro-r01', 'item-use-pro-r01',
     'emp-pro-r03', 'emp-pro-r02', 'emp-pro-r01', 'emp-pro-p0',
     'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v05', 'headshot-pro-v04', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
   ]);
@@ -120,6 +121,9 @@
     { id: 'taser-pro', title: 'テーザー接触（GPT Pro）', versions: [
       version('taser-pro-r01', 'GPT Pro r0.9 preview', 'taser-pro-r01/embed.html', 'taser-pro-r01/src/renderer.js', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', 'テーザーの減速付与接触を表す独立設計。Intel非fallback WebGPUで暗明H64の活動画素、ループ更新、シェーダーエラー0件を確認。全寿命の品質と実聴、本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
+    { id: 'item-use-pro', title: 'アイテム使用（GPT Pro）', versions: [
+      version('item-use-pro-r01', 'GPT Pro r0.1', 'item-use-pro-r01/r01/index.html', 'item-use-pro-r01/r01/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', 'ミネラルウォーター、海水、解毒薬の使用成立を分けた独立設計。暗明H64の6例で実WebGPU画素を確認。視覚品質、実聴、BODY動作との共存、本編接続は未受入です。', 'effect-H64', 1, true)
+    ] },
     { id: 'emp-pro', title: 'EMP（GPT Pro）', versions: [
       version('emp-pro-r03', 'GPT Pro r0.3', 'webgpu-emp-pro-r03/index.html', 'webgpu-emp-pro-r03/src/emp-e.js', 'GPT Pro制作・5枝実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'Pro改稿のチャージ・放出・共鳴・相殺・ロックを自動巡回。Chromeで少なくとも共鳴の主形を実GPU確認。全枝の全寿命・原寸品質・実聴・本編接続は未受入です。', 'effect-H64', 1, true),
       version('emp-pro-r02', 'GPT Pro r0.2', 'webgpu-emp-pro-r02/index.html', 'webgpu-emp-pro-r02/src/emp-e.js', 'GPT Pro制作・5枝再生可能・実GPU一部確認・品質保留・SFX聴感未確認・本編未採用', 'チャージ、通常放出、共鳴、相殺、ストレージロックをH64で自動巡回します。実Chromeでは放出・共鳴・相殺の一部状態を描画確認済み。全5枝の全寿命と視覚品質、実聴、実ゲームは未受入です。', 'effect-H64', 1, true),
@@ -153,7 +157,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v47');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v48');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
