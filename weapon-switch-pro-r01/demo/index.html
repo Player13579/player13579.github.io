@@ -1,0 +1,22 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gunner Switch E · Independent WebGPU Study</title><link rel="stylesheet" href="./style.css"></head>
+<body><main>
+<header><p class="eyebrow">B FOUNDATION / INDEPENDENT IMPLEMENTATION / 1.0.0</p><h1>折光転位<span>Gunner · weapon switch E</span></h1><p class="intro">射撃ではなく、選択状態が切り替わる一瞬。輪郭、媒体の遅れ、光源に結び付く弱いレンズ応答を分離したローカル検証台です。</p></header>
+<section class="controls" aria-label="検証条件">
+<button id="init">WebGPUを初期化</button><button id="one" disabled>選択variantを1回</button><button id="all" disabled>5variantを同時に</button><button id="rapid" disabled>80ms間隔で10回</button>
+<label>Variant <select id="variant"><option>handgun</option><option>smg</option><option>assault</option><option>sniper</option><option>taser</option></select></label>
+<label>方向 <select id="direction"><option>north</option><option>east</option><option>south</option><option>west</option></select></label>
+<label>Actor <select id="actor"><option>human</option><option>bot</option></select></label>
+<label>背景 <select id="theme"><option value="dark">dark</option><option value="light">light</option></select></label>
+<label><input id="reduced" type="checkbox">reduced motion</label><label><input id="verify" type="checkbox" checked>verify（完全無音）</label>
+<label><input id="mute" type="checkbox">mute</label><label>音量 <input id="volume" type="range" min="0" max="1" step="0.05" value="0.55"></label><button id="unlock">音を有効化</button>
+<label><input id="philia" type="checkbox">Philia route</label><label><input id="same" type="checkbox">同武器再選択</label>
+<label>BODY倍率 <select id="speed"><option>1</option><option>0.5</option><option>2</option></select></label>
+</section>
+<section class="stage" id="stage" aria-label="H64 native WebGPU preview"><div class="ruler" aria-hidden="true">H64</div><canvas id="gpu" aria-label="WebGPUのみで描画するE"></canvas><div class="empty-note" id="empty">ネイティブWebGPUが必要です。代替レンダラは使用しません。</div></section>
+<section class="strip"><p>H64 = この画面の64 CSS px。身体は描かず、寸法定規だけを表示します。方向・人間/Botは契約検査用で、Eの向きやsource位置を捏造しません。</p><div id="labels" class="labels"><span>handgun · 巻き襞</span><span>smg · プリーツ</span><span>assault · 折板</span><span>sniper · 二葉</span><span>taser · 折返し</span></div></section>
+<section class="inspection"><h2>時間断面 / 無音の解析表示</h2><label><input id="inspect" type="checkbox">時間断面を固定表示</label><label>受信後 <input id="time" type="range" min="0" max="1200" value="200" step="1"><output id="timeValue">200 ms</output></label><p>これはpreview専用です。productionの1200ms時計を停止・延長しません。固定表示ではSFXを発火しません。</p></section>
+<section class="privacy"><h2>残留・音の所有を検査</h2><button id="hidden">非表示にして破棄</button><button id="vent">ventにして破棄</button><button id="ejected">ejectedにして破棄</button><button id="room">room変更</button><button id="restore">可視状態へ戻す</button><button id="duplicate">同じreceipt IDを再送</button><p>復帰しても破棄済みEは復活しません。新しいIDだけが新しい現象を作ります。</p></section>
+<section class="report"><h2>実行記録</h2><output id="status" role="status">未初期化 / 音声無効 / GPU観察未実施</output><pre id="log" aria-label="構造検査ログ"></pre></section>
+<footer>ゲーム・公開サイト・ギャラリーから独立。画像、Canvas2D、生成texture、GPU readback、音声素材は使っていません。</footer>
+</main><script type="module" src="./main.mjs"></script></body></html>
