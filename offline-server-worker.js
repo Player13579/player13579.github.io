@@ -12830,7 +12830,7 @@ function useMapObject(room, player, objectId) {
     const manaBefore = Number(player.mana) || 0;
     const manaAfter = setMana(room, player, manaBefore + 1, object.label);
     positiveManaDelta = manaAfter > manaBefore;
-    setImmediateFeedback(player, object.label, "HP +1・スタミナ +120・マナ +1");
+    setImmediateFeedback(player, object.label, `HP +1・スタミナ +120${positiveManaDelta ? "・マナ +1" : ""}`);
   } else if (object.effectKind === "mineralWater") {
     replenishStamina(player, timestamp, true, 1, room);
     grantStamina(room, player, Math.max(1, Number(object.effectAmount) || 100), object.label, timestamp);
