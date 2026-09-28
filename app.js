@@ -19281,13 +19281,20 @@ function pumpWebGPUMainAppDriver() {
       return;
     }
     clearWebGPUMainPendingDiagnostic();
+    const deferredAcquisitionIds = Array.isArray(receipt.deferredAcquisitionIds)
+      ? receipt.deferredAcquisitionIds : [];
+    const deferredVisibleIds = Array.isArray(receipt.deferredVisibleIds)
+      ? receipt.deferredVisibleIds : [];
     if (document.body?.dataset) {
-      const incomplete = Array.isArray(receipt.deferredAcquisitionIds) &&
-        receipt.deferredAcquisitionIds.length > 0;
+      const incomplete = deferredAcquisitionIds.length > 0 || deferredVisibleIds.length > 0;
       document.body.dataset.webgpuMainCompleteness = incomplete ? 'base' : 'complete';
-      if (incomplete) document.body.dataset.webgpuMainIncomplete =
-        receipt.deferredAcquisitionIds.map(id =>
-          `acquisition:pipeline-not-ready:event=${String(id).slice(0, 48)}`).join(',').slice(0, 1600);
+      if (incomplete) document.body.dataset.webgpuMainIncomplete = [
+        ...deferredAcquisitionIds.map(id =>
+          `acquisition:pipeline-not-ready:event=${String(id).slice(0, 48)}`),
+        ...deferredVisibleIds.map(id =>
+          `magicEffects:visible-e-pending:event=${String(id).slice(0, 48)}`)
+      ].join(',').slice(0, 1600);
+      else delete document.body.dataset.webgpuMainIncomplete;
     }
     if (!Array.isArray(receipt.markerHitTargets))
       throw new Error("WebGPU main submitted without pointer marker hits");
@@ -20626,6 +20633,36 @@ function webgpuItemThrowCommands(effect, now, camera, zoom, viewport, reducedMot
   ];
 }
 
+function isCanonicalWithdrawnSunbeamReceipt(effect, data, now) {
+  const owner = data?.players?.find(player =>
+    String(player?.id ?? '') === String(effect?.playerId ?? ''));
+  const action = owner && state.characterActions.get(String(owner.id));
+  return Boolean(effect?.type === 'flora-sunbeam' &&
+    typeof effect.id === 'string' && effect.id.startsWith('magic_') &&
+    typeof effect.playerId === 'string' && effect.playerId.length > 0 &&
+    ['refraction:piercing', 'scattering:piercing', 'diffraction:piercing']
+      .includes(effect.variant) && effect.radius === 104 && effect.duration === 1200 &&
+    typeof effect.sunbeamCausalId === 'string' && /^sunbeam:.+/.test(effect.sunbeamCausalId) &&
+    [effect.x, effect.y, effect.targetX, effect.targetY,
+      effect.startedAt, effect.duration].every(Number.isFinite) &&
+    [effect.x, effect.y, effect.targetX, effect.targetY].every(Number.isInteger) &&
+    Math.hypot(effect.targetX - effect.x, effect.targetY - effect.y) >= 1e-3 &&
+    owner?.alive && !owner.ejected && !owner.inVent && data.phase === 'playing' &&
+    (!owner.invisible || String(owner.id) === String(data.selfId)) &&
+    action?.kind === 'cast' && action.motionId === 'flora-sunbeam' &&
+    String(action.sourceEffectId ?? '') === String(effect.id) &&
+    now >= effect.startedAt && now < effect.startedAt + effect.duration);
+}
+
+function stopWithdrawnSunbeamPresentation() {
+  sunbeamLive.pendingSounds?.clear();
+  for (const entry of sunbeamLive.soundPlayers?.values() || []) entry.player.destroy();
+  sunbeamLive.soundPlayers?.clear();
+  sunbeamLive.playedCauses?.clear();
+  suspendLiveSunbeamOverlay({ destroy: true });
+  webgpuMainApp?.driver?.stopSunbeamSounds?.();
+}
+
 function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera, zoom,
   shapeProviders = {}, markerSelection = null) {
   if (!data || viewport?.kind !== "main" || !Array.isArray(viewport.worldToLogical) ||
@@ -20641,7 +20678,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
     throw new TypeError("Late magic shape ports must be keyed by effect type");
   const now = state.frameNow || performance.now();
   const wallNow = now;
-  const events = [], unsupported = [], omitted = [];
+  const events = [], unsupported = [], omitted = [], deferredVisible = [];
   const markerCoverage = { visibleRetained: [] };
   const empCoverage = { visibleEmp: [] };
   const specialAmmoCoverage = { visibleSpecialAmmo: [] };
@@ -20649,7 +20686,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
   if (!["playing", "meeting"].includes(data.phase))
     return { stage: { camera, zoom, now, roomId: String(data.roomId || ''), phase: data.phase,
       viewerId: String(data.selfId || ''),
-      reducedMotion: prefersReducedMotion(), sourceEffectIds: [], events, omitted,
+      reducedMotion: prefersReducedMotion(), sourceEffectIds: [], events, omitted, deferredVisible,
       markerCoverage, empCoverage, specialAmmoCoverage,
       markerGeneration: markerSelection?.generation ?? null },
       unsupported, expiredEffectIds: effects.map(effect => effect?.id), ready: true };
@@ -21034,8 +21071,6 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
     if (type === 'flora-sunbeam') {
       const source = data.players?.find(player => String(player.id) === String(effect.playerId));
       const actor = source && renderedPlayer(source);
-      const actorElapsed = sunbeamActorVisualElapsed(effect, data);
-      const elapsed = actorElapsed == null ? now - effect.startedAt : actorElapsed;
       if (!actor || !actor.alive || actor.ejected || actor.inVent ||
           (actor.invisible && String(actor.id) !== String(data.selfId)) ||
           data.phase !== 'playing') {
@@ -21046,35 +21081,14 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         omitted.push({ effectId: effect.id, reason: 'sunbeam-not-started' });
         continue;
       }
-      const owner = state.characterActions.get(actor.id);
-      const actionElapsed = owner && sunbeamActorVisualElapsed(owner, data);
-      const actionActive = owner?.kind === 'cast' &&
-        owner.motionId === 'flora-sunbeam' &&
-        String(owner.sourceEffectId ?? '') === String(effect.id) &&
-        Number.isFinite(actionElapsed) && actionElapsed < owner.duration;
-      const submitted = webgpuMainApp.submittedSunbeamHands.get(String(effect.id));
-      if (!actionActive && (!submitted || submitted.playerId !== String(actor.id))) {
+      if (isCanonicalWithdrawnSunbeamReceipt(effect, data, now)) {
+        stopWithdrawnSunbeamPresentation();
+        deferredVisible.push({ effectId: effect.id,
+          reason: 'sunbeam-adoption-withdrawn' });
+      } else {
         unsupported.push({ index, type, id: effect.id,
-          reason: 'sunbeam-same-frame-or-submitted-hand-unavailable' });
-        continue;
+          reason: 'withdrawn-sunbeam-source-is-not-canonical' });
       }
-      if (!window.DvaSunbeamAstraV3GameAdapter?.create ||
-          typeof effect.sunbeamCausalId !== 'string' || !effect.sunbeamCausalId ||
-          ![effect.targetX, effect.targetY, effect.x, effect.y,
-            effect.startedAt, effect.duration].every(Number.isFinite) ||
-          effect.duration <= 0 ||
-          Math.hypot(effect.targetX - effect.x, effect.targetY - effect.y) < 1e-3) {
-        unsupported.push({ index, type, id: effect.id,
-          reason: 'sunbeam-server-path-or-pass-unavailable' });
-        continue;
-      }
-      events.push({ type: 'sunbeamE', effectId: effect.id,
-        input: { effect, playerId: String(actor.id),
-          activeAction: Boolean(actionActive),
-          submittedHands: actionActive ? null : submitted.hands,
-          elapsed, actorRate: displayETimeScale(actor, data),
-          characterElapsedMs: Number.isFinite(actionElapsed) ? actionElapsed : elapsed,
-          camera, zoom, now, reducedMotion } });
       continue;
     }
     if (['alchemy-excalibur', 'alchemy-railgun', 'alchemy-particle-cannon',
@@ -21987,7 +22001,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
   }
   return { stage: { camera, zoom, now, roomId: String(data.roomId || ''), phase: data.phase,
     viewerId: String(data.selfId || ''),
-    reducedMotion, sourceEffectIds, events, omitted,
+    reducedMotion, sourceEffectIds, events, omitted, deferredVisible,
     markerCoverage, empCoverage, specialAmmoCoverage,
     markerGeneration: markerSelection?.generation ?? null }, unsupported,
     expiredEffectIds, ready: unsupported.length === 0 };
@@ -27130,6 +27144,13 @@ function hoverSprintWebGPUPlayerStage(data, candidates, viewport, camera, zoom) 
 }
 
 function captureWebGPUMainAppPlayerScene(data = state.data, viewport, camera, zoom) {
+  const sunbeamNow = state.frameNow || performance.now();
+  for (const effect of Array.isArray(state.magicEffects) ? state.magicEffects : []) {
+    if (data && effect?.type === 'flora-sunbeam' &&
+        isCanonicalWithdrawnSunbeamReceipt(effect, data,
+          eEffectNow(effect, data, sunbeamNow)))
+      stopWithdrawnSunbeamPresentation();
+  }
   if (!data || !Array.isArray(data.players) || viewport?.kind !== 'main' ||
       !Array.isArray(viewport.worldToLogical) ||
       !Number.isFinite(viewport.width) || viewport.width <= 0 ||
@@ -27552,6 +27573,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const sourceIds = late.stage.sourceEffectIds.map(String);
   const claimedIds = [...late.stage.events.map(event => event.effectId),
     ...late.stage.omitted.map(omission => omission.effectId),
+    ...late.stage.deferredVisible.map(receipt => receipt.effectId),
     ...late.unsupported.map(item => item.id)].map(String);
   const eventPositions = late.stage.events.map(event => sourceIds.indexOf(String(event.effectId)));
   const magicGaps = late.unsupported.map(item => {
@@ -28774,9 +28796,12 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
                   roomGeneration: state.roomSessionGeneration }));
               }
             }
-            return { ...result,
+      return { ...result,
               acquisitionSoundVisualReceipts: Object.freeze(acquisitionSoundVisualReceipts),
               deferredAcquisitionIds: prepared.candidate.deferredAcquisitionIds,
+        deferredVisibleIds: Object.freeze(
+          prepared.candidate.stages.magicEffects.deferredVisible.map(receipt =>
+            String(receipt.effectId))),
               acquisitionActive: Boolean(prepared.candidate.stages.acquisition) };
           } });
         if (scheduled.status === 'error') throw scheduled.error;
@@ -28815,8 +28840,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
         }
         return Object.freeze({ ...outcome, markerHitTargets: submittedHits,
           ...(diagnosticCorrelation ? { diagnosticRequestId: scheduled.diagnosticRequestId ?? null } : {}),
-          preparationHitTargets, minimapBounds,
+        preparationHitTargets, minimapBounds,
           deferredAcquisitionIds: outcome.recordResult.deferredAcquisitionIds,
+        deferredVisibleIds: outcome.recordResult.deferredVisibleIds,
           acquisitionActive: Boolean(outcome.recordResult.acquisitionActive) });
       } catch (error) {
         notify(error);

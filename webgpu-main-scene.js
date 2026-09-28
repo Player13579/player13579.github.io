@@ -153,6 +153,21 @@
       }
       const owned = new Set();
       let previousPosition = -1;
+      const deferredVisible = own(magic, 'deferredVisible') ? magic.deferredVisible : [];
+      if (!Array.isArray(deferredVisible))
+        throw new TypeError('Main scene magicEffects deferredVisible must be an array');
+      for (const receipt of deferredVisible) {
+        const id = String(receipt?.effectId ?? '');
+        const keys = receipt && typeof receipt === 'object' && !Array.isArray(receipt)
+          ? Object.keys(receipt).sort() : [];
+        if (keys.length !== 2 || keys[0] !== 'effectId' || keys[1] !== 'reason' ||
+            !positions.has(id) || owned.has(id) ||
+            !['no-complete-webgpu-effect-port', 'sunbeam-adoption-withdrawn']
+              .includes(receipt.reason) ||
+            retained.has(id) || visibleEmp.has(id) || visibleSpecialAmmo.has(id))
+          throw new Error(`Invalid deferred visible magic ownership: ${id}`);
+        owned.add(id);
+      }
       for (const omission of magic.omitted) {
         const id = String(omission?.effectId ?? '');
         if (!positions.has(id) || owned.has(id)) throw new Error(`Duplicate or unknown magic omission: ${id}`);
