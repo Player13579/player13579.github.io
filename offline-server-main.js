@@ -3519,7 +3519,7 @@ const ADVANCED_STATION_MAP = Object.freeze({
   };
 
   return Object.freeze({
-    version: "fire-e-causal-v917",
+    version: "fire-e-causal-v918",
     onlineProtocolVersion: "dva-online-protocol-v1",
     cooldownMsPerCredit: COOLDOWN_MS_PER_CREDIT,
     creditIncome,
@@ -21523,7 +21523,6 @@ function runBotAttackerDeception(room, bot, map, actualTarget, timestamp = now()
     stopBotForInteraction(bot, timestamp);
     if (!Number(bot.botDeceptionPresenceSince)) {
       bot.botDeceptionPresenceSince = timestamp;
-      pushMagicEffect(room, "action-task", bot, { radius: 82, playerId: bot.id, variant: "attendance" });
     }
     if (timestamp - Number(bot.botDeceptionPresenceSince) >= BOT_ATTACKER_FAKE_TASK_PRESENCE_MS) {
       beginBotAttackerDecoy(room, bot, actualTarget, timestamp);
@@ -22810,7 +22809,7 @@ function offlineApiRequest(pathname, body = {}) {
   });
 }
 globalThis.DVAOfflineMainThread = Object.freeze({
-  version: "fire-e-causal-v917",
+  version: "fire-e-causal-v918",
   request(pathname, body = {}) {
     return offlineApiRequest(String(pathname || "/"), body || {});
   }
