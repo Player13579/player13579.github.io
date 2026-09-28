@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8"><title>r0.29 WGSL verification</title>
+<pre id="result">pending</pre>
+<script src="../webgpu-status-recovery-r29-game.js"></script>
+<script>
+if(!new URLSearchParams(location.search).has('verify'))throw Error('verify query required');
+(async()=>{
+ const result=document.querySelector('#result');
+ try{
+  const adapter=await navigator.gpu?.requestAdapter();
+  if(!adapter)throw Error('No WebGPU adapter');
+  const device=await adapter.requestDevice();
+  const module=device.createShaderModule({code:DvaStatusRecoveryR29Game.shader});
+  const info=await module.getCompilationInfo();
+  const errors=info.messages.filter(m=>m.type==='error');
+  if(errors.length)throw Error(errors.map(m=>m.message).join('; '));
+  device.createRenderPipeline({layout:'auto',vertex:{module,entryPoint:'vs'},
+   fragment:{module,entryPoint:'fs',targets:[{format:navigator.gpu.getPreferredCanvasFormat()}]},
+   primitive:{topology:'triangle-list'}});
+  result.textContent='PASS';
+  device.destroy();
+ }catch(e){result.textContent='FAIL: '+e.message;}
+})();
+</script>

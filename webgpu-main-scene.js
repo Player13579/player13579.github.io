@@ -331,6 +331,14 @@
                 input?.camera?.y, input?.zoom].every(Number.isFinite) ||
               input.zoom <= 0 || !String(effect.causeId ?? ''))
             throw new TypeError(`Magic mana benefit ${id} needs one live body event`);
+        } else if (event?.type === 'statusRecoveryR29') {
+          const effect=event.input?.effect,planned=event.input?.planned;
+          if(typeof passes.statusRecoveryR29?.record!=='function' ||
+              effect?.type!=='gain-statusRecovery' || effect.effectKind!=='statusRecovery' ||
+              String(effect.id??'')!==id || planned?.id!==id ||
+              String(planned.ownerId)!==String(effect.playerId) ||
+              !Number.isFinite(planned.phase) || planned.phase<0 || planned.phase>=1)
+            throw new TypeError(`Magic status recovery ${id} needs one Astra r0.29 plan`);
         } else if (event?.type === 'bodyBenefitExtra' || event?.type === 'statusTempo') {
           const extra = event.type === 'bodyBenefitExtra';
           const pass = extra ? passes.bodyBenefitExtra : passes.statusTempo;
@@ -597,6 +605,9 @@
       const fireActivationReceipts = [];
       const healEvents = (stages.magicEffects?.events || []).filter(event => event.type === 'healE');
       const healRecorded = new Set();
+      const recoveryEvents=(stages.magicEffects?.events||[]).filter(event=>event.type==='statusRecoveryR29');
+      const recoveryRecorded=new Set();
+      const statusRecoverySoundReceipts=[];
       passes.healE?.reconcile?.(healEvents.map(event => String(event.effectId)));
       const sunbeamHands = new Map();
       const barrierSpriteQuads = new Map();
@@ -753,6 +764,24 @@
           }
           const ownerHeals = healEvents.filter(event =>
             event.input.planned.ownerId === String(command.playerId));
+          const ownerRecoveries=recoveryEvents.filter(event=>
+            event.input.planned.ownerId===String(command.playerId));
+          const recordRecovery=side=>{
+            for(const event of ownerRecoveries){
+              const outcome=need('statusRecoveryR29','record').record({frame,target,viewport,
+                planned:event.input.planned,command,texture:cache.textureFor(command),side});
+              if(outcome?.drawn!==true || outcome.id!==event.effectId || outcome.side!==side)
+                throw new Error(`Astra r0.29 ${event.effectId} ${side} was not drawn`);
+              if(side==='front'){
+                if(recoveryRecorded.has(event.effectId))throw new Error('Duplicate r0.29 actor sprite');
+                recoveryRecorded.add(event.effectId);
+                statusRecoverySoundReceipts.push(Object.freeze({submitted:true,visible:true,
+                  effectKind:'statusRecovery',version:'astra-status-cleanse-r0.29',
+                  causeId:event.effectId,ownerId:outcome.ownerId,frameToken:outcome.frameToken,
+                  elapsedMs:outcome.elapsedMs,durationMs:outcome.durationMs}));
+              }
+            }
+          };
           const recordHealSide = side => {
             for (const event of ownerHeals) {
               const outcome = need('healE', 'record').record({ frame, target,
@@ -763,7 +792,9 @@
             }
           };
           recordHealSide('back');
+          recordRecovery('back');
           cache.record(frame, target, command);
+          recordRecovery('front');
           recordHealSide('front');
           for (const event of ownerHeals) {
             if (healRecorded.has(String(event.effectId)))
@@ -1122,6 +1153,9 @@
           } else if (event.type === 'healE') {
             if (!healRecorded.has(String(event.effectId)))
               throw new Error(`Magic Heal ${event.effectId} lacks its same-frame actor and both sides`);
+          } else if (event.type === 'statusRecoveryR29') {
+            if (!recoveryRecorded.has(String(event.effectId)))
+              throw new Error(`Magic r0.29 ${event.effectId} lacks its same-frame actor and both sides`);
           } else if (['alchemyE', 'hackerRootE', 'hackerStatusRecoveryE', 'floraE'].includes(event.type)) {
             const outcome = need(event.type, 'record').record({ frame, target, viewport,
               ...(event.type === 'alchemyE' ? { scene: event.input.scene,
@@ -1211,6 +1245,7 @@
         preparationHitTargets: Object.freeze(preparationHitTargets.slice()),
         minimapBounds: Object.freeze({ ...stages.minimap.scene.bounds }),
         phenomenonSoundVisualReceipts: Object.freeze(phenomenonSoundVisualReceipts.slice()),
+        statusRecoverySoundReceipts: Object.freeze(statusRecoverySoundReceipts.slice()),
         empSoundVisualReceipts: Object.freeze(empSoundVisualReceipts.slice()),
         staminaBenefitSoundReceipts: Object.freeze(staminaBenefitSoundReceipts.slice()),
         manaBenefitSoundReceipts: Object.freeze(manaBenefitSoundReceipts.slice()),

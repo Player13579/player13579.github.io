@@ -1416,6 +1416,9 @@ const PHENOMENON_SOUND_STAGES = Object.freeze({
 // The server retains at most 48 magic effects. Keep an ID through that entire
 // receipt window, including a snapshot where the ID temporarily disappears.
 const PHENOMENON_SOUND_RECEIPTS = { roomId: "", ids: new Set(), order: [], owners: new Map(), frame: 0 };
+let statusRecoveryR29Sound = null;
+let statusRecoveryR29Session = '';
+const statusRecoveryR29Submitted = { session: '', ids: new Set() };
 // Grenade impact receipts live for the entire room session. A finite visual
 // may expire while its server event ID remains in later snapshots.
 const GRENADE_IMPACT_SOUND_RECEIPTS = { roomId: "", generation: 0, ids: new Map() };
@@ -12581,6 +12584,9 @@ function stopPhenomenonSoundOwner(owner) {
   PHENOMENON_SOUND_RECEIPTS.owners.delete(owner.key);
 }
 function stopAllPhenomenonSounds() {
+  statusRecoveryR29Sound?.stop();
+  statusRecoveryR29Sound = null;
+  statusRecoveryR29Session = '';
   stopHealESfx();
   for (const entry of staminaBenefitLive.players.values()) entry.player.destroy();
   staminaBenefitLive.players.clear();
@@ -12806,6 +12812,44 @@ function commitVisibleVisualSoundFrame(data, phenomenonReceipts, environmentRece
   try { commitEnvironmentSoundVisualFrame(data, environmentReceipts, submittedEnvironment); }
   catch (error) { firstError ||= error; }
   if (firstError) throw firstError;
+}
+function commitStatusRecoveryR29SoundFrame(data, receipts) {
+  if (!Array.isArray(receipts) || data !== state.data) return;
+  const roomId=String(data.roomId||'');
+  const sessionId=`${roomId}:${state.roomSessionGeneration}`;
+  if (!roomId) return;
+  if (statusRecoveryR29Submitted.session!==sessionId) {
+    statusRecoveryR29Submitted.session=sessionId;
+    statusRecoveryR29Submitted.ids.clear();
+  }
+  for(const receipt of receipts){
+    if(receipt?.version!=='astra-status-cleanse-r0.29' || !receipt.causeId ||
+        !state.magicEffects.some(effect=>effect.id===receipt.causeId &&
+          effect.type==='gain-statusRecovery' && effect.effectKind==='statusRecovery' &&
+          String(effect.playerId)===receipt.ownerId))continue;
+    const owner=data.players?.find(player=>String(player.id)===receipt.ownerId);
+    if(!owner?.alive || owner.ejected || owner.inVent || owner.invisible)continue;
+    const key=`${receipt.causeId}:${receipt.ownerId}`;
+    if(statusRecoveryR29Submitted.ids.has(key))continue;
+    statusRecoveryR29Submitted.ids.add(key);
+    if(statusRecoveryR29Submitted.ids.size>256)
+      statusRecoveryR29Submitted.ids.delete(statusRecoveryR29Submitted.ids.values().next().value);
+    if(state.screen!=='game' || document.hidden || IS_VERIFICATION_MODE ||
+        state.audio.muted || !state.audio.unlocked || isSensoryBlocked(data) ||
+        state.audio.context?.state!=='running' || !state.audio.master ||
+        !(state.audio.master.gain?.value>0) ||
+        !window.DvaStatusRecoveryR29Sfx?.CleanseSound)continue;
+    const mix=phenomenonSoundMix(owner,data);
+    if(!mix)continue;
+    if(statusRecoveryR29Session!==sessionId || !statusRecoveryR29Sound){
+      statusRecoveryR29Sound?.stop();
+      statusRecoveryR29Sound=new window.DvaStatusRecoveryR29Sfx.CleanseSound({
+        context:state.audio.context,destination:state.audio.master,sessionId,
+        verify:IS_VERIFICATION_MODE});
+      statusRecoveryR29Session=sessionId;
+    }
+    statusRecoveryR29Sound.start({...receipt,sessionId},mix);
+  }
 }
 function sweepPhenomenonSounds() {
   const cache = PHENOMENON_SOUND_RECEIPTS;
@@ -13260,6 +13304,7 @@ document.addEventListener('visibilitychange', () => {
     WEBGPU_E_CUES.empPcm?.stopAll();
     WEBGPU_E_CUES.empActorOwners.clear();
     stopHealESfx();
+    statusRecoveryR29Sound?.stop();
   }
 });
 window.addEventListener('pagehide', () => {
@@ -13267,6 +13312,7 @@ window.addEventListener('pagehide', () => {
   WEBGPU_E_CUES.empPcm?.stopAll();
   WEBGPU_E_CUES.empActorOwners.clear();
   stopHealESfx();
+  statusRecoveryR29Sound?.stop();
 });
 
 function detectMagicEffects(previous, next) {
@@ -13322,7 +13368,8 @@ function detectMagicEffects(previous, next) {
     if (effect.type === "emp-charge" && settledEmpIds.has(effect.empPulseId)) continue;
     const receivedAt = state.frameNow || performance.now();
     const durableCombatEvent = /^(durability-|timed-bust-)/.test(String(effect.variant || "")) && ["action-stand", "action-push", "preparation-barrier-hit"].includes(effect.type);
-    const duration = durableCombatEvent && Number(effect.durationMs) > 0 ? Number(effect.durationMs) : Math.max(magicEffectDuration(effect.type), Number(effect.durationMs) || 0);
+    const duration = durableCombatEvent && Number(effect.durationMs) > 0 ? Number(effect.durationMs) : Math.max(magicEffectDuration(effect.type), Number(effect.durationMs) || 0,
+      effect.type === 'gain-statusRecovery' ? 1740 : 0);
     // Network delay must not consume a visual effect before the client can draw it.
     const startedAt = receivedAt;
     const visualClockActor = (next.players || []).find((player) => player.id === effect.playerId);
@@ -19302,6 +19349,8 @@ function pumpWebGPUMainAppDriver() {
       throw new Error('WebGPU main submitted without preparation pointer geometry');
     if (!Array.isArray(receipt.recordResult?.phenomenonSoundVisualReceipts))
       throw new Error("WebGPU main submitted without phenomenon sound receipts");
+    if (!Array.isArray(receipt.recordResult?.statusRecoverySoundReceipts))
+      throw new Error('WebGPU main submitted without r0.29 sound receipts');
     if (!Array.isArray(receipt.recordResult?.staminaBenefitSoundReceipts))
       throw new Error('WebGPU main submitted without stamina benefit sound receipts');
     if (!Array.isArray(receipt.recordResult?.manaBenefitSoundReceipts))
@@ -19416,6 +19465,7 @@ function pumpWebGPUMainAppDriver() {
     commitManaBenefitSoundFrame(data, receipt.recordResult.manaBenefitSoundReceipts);
     commitHealESfxVisualFrame(data, receipt.recordResult.healSoundVisualReceipts);
     commitBarrierR07SoundFrame(data, receipt.recordResult.barrierSoundVisualReceipts);
+    commitStatusRecoveryR29SoundFrame(data,receipt.recordResult.statusRecoverySoundReceipts);
     commitSubmittedEmpSoundFrame(data, receipt.recordResult.empSoundVisualReceipts);
     commitVisibleVisualSoundFrame(data,
       receipt.recordResult.phenomenonSoundVisualReceipts,
@@ -21880,7 +21930,25 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       events.push({ type: "bodyBenefit", effectId: effect.id, input });
       continue;
     }
-    if (['gain-luckBoost', 'gain-statusRecovery', 'gain-cooldownReduction'].includes(type)) {
+    if (type === 'gain-statusRecovery') {
+      const player=gainEffectPlayer(effect);
+      const pass=window.DvaStatusRecoveryR29Game;
+      if(!player || !player.alive || player.ejected || player.inVent || player.invisible){
+        omitted.push({effectId:effect.id,reason:'status-r29-owner-not-visible'});continue;
+      }
+      if(now<effect.startedAt || now-effect.startedAt>=1740){
+        omitted.push({effectId:effect.id,reason:'status-r29-outside-lifetime'});continue;
+      }
+      if(bodyBenefitExtraOutsideViewport(effect,player,camera,zoom,viewport,
+          {radiusX:80,radiusY:100,anchorY:52})){
+        omitted.push({effectId:effect.id,reason:'status-r29-outside-viewport'});continue;
+      }
+      const planned=pass?.plan?.({effect,player,now,phase:data.phase,viewport});
+      if(!planned){unsupported.push({index,type,id:effect.id,reason:'status-r29-plan-unavailable'});continue;}
+      events.push({type:'statusRecoveryR29',effectId:effect.id,input:{effect,planned}});
+      continue;
+    }
+    if (['gain-luckBoost', 'gain-cooldownReduction'].includes(type)) {
       const kind = type.slice('gain-'.length);
       const pass = window.DvaWebGPUBodyBenefitExtra;
       const profile = pass?.PROFILES?.[kind];
