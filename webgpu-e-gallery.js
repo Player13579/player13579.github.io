@@ -32,6 +32,8 @@
     'item-pickup-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'taser-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'item-use-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
+    'stamina-pro-r05': { magnification: 1.0, focusX: 490, focusY: 310 },
+    'facility-next3-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'emp-pro': { magnification: 2.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1, replayable = false) =>
@@ -41,11 +43,11 @@
     'sunbeam-pro-file-draft', 'sunbeam-pro-live-v1', 'sunbeam-pro-v2',
     'luck-pro-r02', 'luck-pro-r01',
     'barrier-pro-r09', 'barrier-pro-r08', 'barrier-pro-r07', 'barrier-pro-r06', 'barrier-pro-r05', 'barrier-pro-r04', 'barrier-pro-r03', 'barrier-pro-r02', 'barrier-pro-r01',
-    'stamina-pro-r04', 'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
+    'stamina-pro-r05', 'stamina-pro-r04', 'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
     'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
     'rational-pro-r01', 'ninjutsu-pro-r01',
     'facility-bookshelf-pro-r01', 'facility-reading-lamp-pro-r01', 'facility-security-console-pro-r01',
-    'item-pickup-pro-r01', 'taser-pro-r01', 'item-use-pro-r01',
+    'item-pickup-pro-r01', 'taser-pro-r01', 'item-use-pro-r01', 'facility-next3-pro-r01',
     'emp-pro-r03', 'emp-pro-r02', 'emp-pro-r01', 'emp-pro-p0',
     'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v05', 'headshot-pro-v04', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
   ]);
@@ -89,6 +91,7 @@
       version('barrier-pro-r01', 'GPT Pro r0.1', 'barrier-pro-r01/preview.html', 'barrier-pro-r01/barrier-pro.wgsl', '比較試作・品質不合格・本編未採用', 'GPT Pro独立初稿。実WebGPU再生はできるが、原寸では細く暗い支持線だけが読め、保護空域は不十分。', 'effect-H64', 1, true)
     ] },
     { id: 'stamina-pro', title: 'スタミナ回復（GPT Pro）', versions: [
+      version('stamina-pro-r05', 'GPT Pro r0.5', 'stamina-pro-r05/index.html', 'stamina-pro-r05/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', '身体へ内向きに充填する独立改稿。予約語の意味不変な互換改名とイベント時代の照合を行い、暗明H64で実WebGPUの動く発光を確認。原寸の造形・全寿命・実聴と本編接続は未受入です。', 'effect-H64', 1, true),
       version('stamina-pro-r04', 'GPT Pro r0.4', 'webgpu-stamina-pro-r04/embed.html', 'webgpu-stamina-pro-r04/src/renderer.js', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', '暗明H64で収束から身体への充填までを実WebGPU自動ループで確認。構文・shader・音声一回性は検証済み。視覚品質と聴感の版別審査、本編接続は未了です。', 'effect-H64', 1, true),
       version('stamina-pro-r03', 'GPT Pro r0.3', 'webgpu-stamina-pro-r03/index.html', 'webgpu-stamina-pro-r03/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'H64の収束・充填・蓄勢案。実Chrome WebGPUでコンパイル・描画と一部位相を確認。全寿命の視覚品質、SFX聴感、実ゲーム接続は未受入です。', 'effect-H64', 1, true),
       version('stamina-pro-r02', 'GPT Pro r0.2', 'webgpu-stamina-pro-r02/index.html', 'webgpu-stamina-pro-r02/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質不合格・SFX聴感未確認・本編未採用', '原寸では主形が細い帯と小さな平面に見えるため品質不採用。4画面の検査UIから一つのH64描画面だけをギャラリーへ埋め込み、自動ループします。', 'effect-H64', 1, true),
@@ -124,6 +127,9 @@
     { id: 'item-use-pro', title: 'アイテム使用（GPT Pro）', versions: [
       version('item-use-pro-r01', 'GPT Pro r0.1', 'item-use-pro-r01/r01/index.html', 'item-use-pro-r01/r01/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', 'ミネラルウォーター、海水、解毒薬の使用成立を分けた独立設計。暗明H64の6例で実WebGPU画素を確認。視覚品質、実聴、BODY動作との共存、本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
+    { id: 'facility-next3-pro', title: '施設の新規3種（GPT Pro）', versions: [
+      version('facility-next3-pro-r01', 'GPT Pro r0.1', 'facility-next3-pro-r01/index.html', 'facility-next3-pro-r01/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', 'カメラ三脚、投影装置、読書灯を暗明6面で自動再生。Chromeの実WebGPU描画と82件の原本テストを確認。原寸の造形・全寿命・実聴と本編接続は未受入です。', 'effect-H64', 1, true)
+    ] },
     { id: 'emp-pro', title: 'EMP（GPT Pro）', versions: [
       version('emp-pro-r03', 'GPT Pro r0.3', 'webgpu-emp-pro-r03/index.html', 'webgpu-emp-pro-r03/src/emp-e.js', 'GPT Pro制作・5枝実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'Pro改稿のチャージ・放出・共鳴・相殺・ロックを自動巡回。Chromeで少なくとも共鳴の主形を実GPU確認。全枝の全寿命・原寸品質・実聴・本編接続は未受入です。', 'effect-H64', 1, true),
       version('emp-pro-r02', 'GPT Pro r0.2', 'webgpu-emp-pro-r02/index.html', 'webgpu-emp-pro-r02/src/emp-e.js', 'GPT Pro制作・5枝再生可能・実GPU一部確認・品質保留・SFX聴感未確認・本編未採用', 'チャージ、通常放出、共鳴、相殺、ストレージロックをH64で自動巡回します。実Chromeでは放出・共鳴・相殺の一部状態を描画確認済み。全5枝の全寿命と視覚品質、実聴、実ゲームは未受入です。', 'effect-H64', 1, true),
@@ -157,7 +163,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v48');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v49');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
