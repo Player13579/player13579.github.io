@@ -1,0 +1,2548 @@
+{
+  "source_revision": {
+    "commit": "8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1",
+    "base_blob": "4e10a53310be5b9d0aa3a6c881cf4f39d6590bd4",
+    "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834"
+  },
+  "interpretation": "要求→存在する関数/field→観測可能な帰結→限定検査の対応。対応表だけでは描画合格としない。",
+  "applicable_rules": [
+    {
+      "rule_id": "InferenceExpansionPolicy.InferenceExpansionPolicy",
+      "owner": "InferenceExpansionPolicy",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "補完は許可範囲だけ。身体、武器、射線、別の光源を加えない。",
+      "exception_to": [],
+      "validation_id": "InferenceExpansionPolicy.InferenceExpansionPolicy.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "InferenceExpansionPolicy"
+        }
+      ],
+      "runtime_observable_consequence": "設計の意味照合。委任された接触E以外を加えず固定契約を保持。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "InferenceExpansionPolicy.AttributeAndActionResolutionRule",
+      "owner": "InferenceExpansionPolicy",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "主面の内部・境界・色・応答を既存接触Eの実現として具体化。",
+      "exception_to": [],
+      "validation_id": "InferenceExpansionPolicy.AttributeAndActionResolutionRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "InferenceExpansionPolicy"
+        }
+      ],
+      "runtime_observable_consequence": "設計の意味照合。委任された接触E以外を加えず固定契約を保持。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "InferenceExpansionPolicy.DeclaredIntentRule",
+      "owner": "InferenceExpansionPolicy",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "成立条件、対象、位置、寿命、文字なしを保持。",
+      "exception_to": [],
+      "validation_id": "InferenceExpansionPolicy.DeclaredIntentRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "InferenceExpansionPolicy"
+        }
+      ],
+      "runtime_observable_consequence": "設計の意味照合。委任された接触E以外を加えず固定契約を保持。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "InferenceExpansionPolicy.ExpressionIntentRule",
+      "owner": "InferenceExpansionPolicy",
+      "priority": "PLATONIC_GOOD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "H64での成立可読性とprivacy、slowとの区別を優先。",
+      "exception_to": [],
+      "validation_id": "InferenceExpansionPolicy.ExpressionIntentRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "InferenceExpansionPolicy"
+        }
+      ],
+      "runtime_observable_consequence": "設計の意味照合。委任された接触E以外を加えず固定契約を保持。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.FoundationOperationRule",
+      "owner": "FoundationOperationTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "基底を前提に日本語の設計とPH/OBSを記述。",
+      "exception_to": [],
+      "validation_id": "FoundationOperationTemplate.FoundationOperationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "OutputContract"
+        }
+      ],
+      "runtime_observable_consequence": "E runtimeとBのVideo/design_onlyを分離。画像生成していない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.RuleContractRule",
+      "owner": "FoundationOperationTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "正本要件から実装と検証先へ一意IDで追跡。",
+      "exception_to": [],
+      "validation_id": "FoundationOperationTemplate.RuleContractRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "OutputContract"
+        }
+      ],
+      "runtime_observable_consequence": "E runtimeとBのVideo/design_onlyを分離。画像生成していない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.PriorityRule",
+      "owner": "FoundationOperationTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "固定契約を美学や検証数合わせのため変更しない。",
+      "exception_to": [],
+      "validation_id": "FoundationOperationTemplate.PriorityRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "OutputContract"
+        }
+      ],
+      "runtime_observable_consequence": "E runtimeとBのVideo/design_onlyを分離。画像生成していない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.ConflictResolutionRule",
+      "owner": "FoundationOperationTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "適用条件と非適用理由を先に解決。",
+      "exception_to": [],
+      "validation_id": "FoundationOperationTemplate.ConflictResolutionRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "OutputContract"
+        }
+      ],
+      "runtime_observable_consequence": "E runtimeとBのVideo/design_onlyを分離。画像生成していない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.UniversalNoLabelOnlyRule",
+      "owner": "FoundationOperationTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "機構・対象・帰結・回避失敗を記す。",
+      "exception_to": [],
+      "validation_id": "FoundationOperationTemplate.UniversalNoLabelOnlyRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "OutputContract"
+        }
+      ],
+      "runtime_observable_consequence": "E runtimeとBのVideo/design_onlyを分離。画像生成していない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.OutputAndReferenceResolutionRule",
+      "owner": "FoundationOperationTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "B-Expression-2のJSONと別成果物E、registryの実IDを使う。",
+      "exception_to": [],
+      "validation_id": "FoundationOperationTemplate.OutputAndReferenceResolutionRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "OutputContract"
+        }
+      ],
+      "runtime_observable_consequence": "E runtimeとBのVideo/design_onlyを分離。画像生成していない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PlatonicGoodTemplate.PlatonicGoodFoundation",
+      "owner": "PlatonicGoodTemplate",
+      "priority": "PLATONIC_GOOD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "固定意図、局所原因、知覚秩序を同時に成立させる。",
+      "exception_to": [],
+      "validation_id": "PlatonicGoodTemplate.PlatonicGoodFoundation.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い面、先細り接触、対象受光、保護余白をH64画像で確認。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PlatonicGoodTemplate.BeautyStructuringRule",
+      "owner": "PlatonicGoodTemplate",
+      "priority": "PLATONIC_GOOD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "各PHにcontrast/temporal_phaseの2軸と別の証拠。",
+      "exception_to": [],
+      "validation_id": "PlatonicGoodTemplate.BeautyStructuringRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い面、先細り接触、対象受光、保護余白をH64画像で確認。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PlatonicGoodTemplate.NoSingleBeautyStructureDominance",
+      "owner": "PlatonicGoodTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "比率の万能則ではなく面・接触・背景の可読性を使う。",
+      "exception_to": [],
+      "validation_id": "PlatonicGoodTemplate.NoSingleBeautyStructureDominance.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い面、先細り接触、対象受光、保護余白をH64画像で確認。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PlatonicGoodTemplate.GTBImplementationMapping",
+      "owner": "PlatonicGoodTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "各PHをGood/Truth/Beautyの複数層へ結び付ける。",
+      "exception_to": [],
+      "validation_id": "PlatonicGoodTemplate.GTBImplementationMapping.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い面、先細り接触、対象受光、保護余白をH64画像で確認。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.UniversalPhenomenonRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "全PHに同一必須構造と8領域を保持。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.UniversalPhenomenonRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.PIA",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "選択・分割・登録・link分類を分離。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.PIA.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.VisibilityDefinition",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "visibleなPH1とPH2に複数cueを記す。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.VisibilityDefinition.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.LinkTypeRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "physical/observation/gazeを区別しOBS循環を禁止。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.LinkTypeRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.DeepStructureRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "Core・Structure・Surfaceを場と受光に具体化。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.DeepStructureRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.StateTransformerRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "before/afterだけでなく収束と有限の残留減衰を持つ。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.StateTransformerRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.VisualCausalityRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "連続接触面、境界、受光差、時間差で原因を読む。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.VisualCausalityRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.UniversalMaterialResponseRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "外縁・内面・接点のcoverage/放射差を入力に対応。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.UniversalMaterialResponseRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.HubPhenomenonRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "対象のmaskを受光・遮蔽のハブとし架空の受け手を追加しない。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.HubPhenomenonRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.PhysicalModelClosureRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "有限境界、相対放射供給、派生受光を閉じる。非該当収支に理由。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.PhysicalModelClosureRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.ScaleAndSimilarityRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "H64校正と1.2秒、形状比と画素限界を区別。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.ScaleAndSimilarityRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.DynamicResponseAndStabilityRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "主殻・内部帯・接触の別包絡、reduced時の固定形態。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.DynamicResponseAndStabilityRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.PerceptualEvidenceDiscriminationRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "shield/buffとの混同と実ゲーム観察の不足を明示。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.PerceptualEvidenceDiscriminationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.CausalAssessmentAndUncertaintyRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "PSF-off/reduced比較の予測と証拠を記す。一般的因果識別と偽らない。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.CausalAssessmentAndUncertaintyRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.CommonPHFailurePatterns",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "uniform glow、before-afterのみ、因果と観測の混同を避ける。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.CommonPHFailurePatterns.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.PartitionAndSharedConditionsRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "PHは2単位、層・学問名で水増ししない。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.PartitionAndSharedConditionsRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.VisualProjectionRule",
+      "owner": "PhenomenonSystemTemplate",
+      "priority": "PLATONIC_GOOD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "状態と残すcueを分け、身体属性の未指定を維持。",
+      "exception_to": [],
+      "validation_id": "PhenomenonSystemTemplate.VisualProjectionRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonBlock"
+        }
+      ],
+      "runtime_observable_consequence": "PH1場とPH2表面受光を分割。数値は相対的なゲーム表現であり現実の電流・熱を実証しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PEMTemplate.PhenomenonEqualityMode",
+      "owner": "PEMTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "focus_phenomenon=none、主役は保持し孤立効果を避ける。",
+      "exception_to": [],
+      "validation_id": "PEMTemplate.PhenomenonEqualityMode.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "jawDistance"
+        }
+      ],
+      "runtime_observable_consequence": "外殻から接触帯へ連続する面で孤立輪を避ける。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PEMTemplate.AttentionRuleWithCCM",
+      "owner": "PEMTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "接触への読みと外殻への読みを色・形態で分離。",
+      "exception_to": [],
+      "validation_id": "PEMTemplate.AttentionRuleWithCCM.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "jawDistance"
+        }
+      ],
+      "runtime_observable_consequence": "外殻から接触帯へ連続する面で孤立輪を避ける。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.CoordinateSystemDefinition",
+      "owner": "CoordinateGravityWindTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "world右手系とscreen y下向きの変換を明記。",
+      "exception_to": [],
+      "validation_id": "CoordinateGravityWindTemplate.CoordinateSystemDefinition.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/common.wgsl",
+          "symbol": "instanceVertex"
+        }
+      ],
+      "runtime_observable_consequence": "同一の局所→screen投影とtargetMask。床・飛翔・風粒子はない。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.RelationPriorityRule",
+      "owner": "CoordinateGravityWindTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "対象への接触、前後、内部/外側を優先。",
+      "exception_to": [],
+      "validation_id": "CoordinateGravityWindTemplate.RelationPriorityRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/common.wgsl",
+          "symbol": "instanceVertex"
+        }
+      ],
+      "runtime_observable_consequence": "同一の局所→screen投影とtargetMask。床・飛翔・風粒子はない。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.GlobalVectorFieldRule",
+      "owner": "CoordinateGravityWindTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "内向き収束とzero secondary fieldを根拠付きで定義。",
+      "exception_to": [],
+      "validation_id": "CoordinateGravityWindTemplate.GlobalVectorFieldRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/common.wgsl",
+          "symbol": "instanceVertex"
+        }
+      ],
+      "runtime_observable_consequence": "同一の局所→screen投影とtargetMask。床・飛翔・風粒子はない。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.StateTransitionRule",
+      "owner": "CoordinateGravityWindTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "driver、収束、減衰、履歴を同一時間で評価。",
+      "exception_to": [],
+      "validation_id": "CoordinateGravityWindTemplate.StateTransitionRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/common.wgsl",
+          "symbol": "instanceVertex"
+        }
+      ],
+      "runtime_observable_consequence": "同一の局所→screen投影とtargetMask。床・飛翔・風粒子はない。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.GravityConditionDefinition",
+      "owner": "CoordinateGravityWindTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "Gravityを保持し、非物質Eに偽の落下を作らない。",
+      "exception_to": [],
+      "validation_id": "CoordinateGravityWindTemplate.GravityConditionDefinition.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/common.wgsl",
+          "symbol": "instanceVertex"
+        }
+      ],
+      "runtime_observable_consequence": "同一の局所→screen投影とtargetMask。床・飛翔・風粒子はない。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.WindCapsuleOperationRule",
+      "owner": "CoordinateGravityWindTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "静穏airと非適用応答を明記し風VFXを追加しない。",
+      "exception_to": [],
+      "validation_id": "CoordinateGravityWindTemplate.WindCapsuleOperationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/common.wgsl",
+          "symbol": "instanceVertex"
+        }
+      ],
+      "runtime_observable_consequence": "同一の局所→screen投影とtargetMask。床・飛翔・風粒子はない。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.VisibleTranslationRule",
+      "owner": "CoordinateGravityWindTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "半径の収束と連続する接触境界で数値を可視化。",
+      "exception_to": [],
+      "validation_id": "CoordinateGravityWindTemplate.VisibleTranslationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/common.wgsl",
+          "symbol": "instanceVertex"
+        }
+      ],
+      "runtime_observable_consequence": "同一の局所→screen投影とtargetMask。床・飛翔・風粒子はない。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "OctaDomainTemplate.OctaDomainDefinition",
+      "owner": "OctaDomainTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "ThermoからSurfaceScienceまで8領域を省略しない。",
+      "exception_to": [],
+      "validation_id": "OctaDomainTemplate.OctaDomainDefinition.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "OctaDomain"
+        }
+      ],
+      "runtime_observable_consequence": "各PHが8領域を保持。不適用はlatentと理由を持つ。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.AnimeLayoutRule",
+      "owner": "AnimeStudiesTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "対象と接触場、余白、前後を同じ構図で統合。",
+      "exception_to": [],
+      "validation_id": "AnimeStudiesTemplate.AnimeLayoutRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactTime"
+        }
+      ],
+      "runtime_observable_consequence": "面の時間差、上下の抜け、PSFなしの主形状を維持。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.SilhouetteDesignRule",
+      "owner": "AnimeStudiesTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "Eの有限輪郭と対象の保護領域を区別。",
+      "exception_to": [],
+      "validation_id": "AnimeStudiesTemplate.SilhouetteDesignRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactTime"
+        }
+      ],
+      "runtime_observable_consequence": "面の時間差、上下の抜け、PSFなしの主形状を維持。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.AnticipationAftermathRule",
+      "owner": "AnimeStudiesTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "宣言済みEの接触残留だけを示し射撃準備を創作しない。",
+      "exception_to": [],
+      "validation_id": "AnimeStudiesTemplate.AnticipationAftermathRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactTime"
+        }
+      ],
+      "runtime_observable_consequence": "面の時間差、上下の抜け、PSFなしの主形状を維持。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.LimitedAnimationStillnessRule",
+      "owner": "AnimeStudiesTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "短い保持相を密度不足や常時点滅に置き換えない。",
+      "exception_to": [],
+      "validation_id": "AnimeStudiesTemplate.LimitedAnimationStillnessRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactTime"
+        }
+      ],
+      "runtime_observable_consequence": "面の時間差、上下の抜け、PSFなしの主形状を維持。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.SakugaDensityRule",
+      "owner": "AnimeStudiesTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "線数や粒子数より接触部の情報集中を選ぶ。",
+      "exception_to": [],
+      "validation_id": "AnimeStudiesTemplate.SakugaDensityRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactTime"
+        }
+      ],
+      "runtime_observable_consequence": "面の時間差、上下の抜け、PSFなしの主形状を維持。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.AnimeCompositeRule",
+      "owner": "AnimeStudiesTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "存在するmask・放射・境界だけで統合。接地影なし。",
+      "exception_to": [],
+      "validation_id": "AnimeStudiesTemplate.AnimeCompositeRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactTime"
+        }
+      ],
+      "runtime_observable_consequence": "面の時間差、上下の抜け、PSFなしの主形状を維持。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.ImageOriented12PrinciplesSubset",
+      "owner": "AnimeStudiesTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "staging、solid form、overlap、timingをEへ適用。cartoon変形なし。",
+      "exception_to": [],
+      "validation_id": "AnimeStudiesTemplate.ImageOriented12PrinciplesSubset.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactTime"
+        }
+      ],
+      "runtime_observable_consequence": "面の時間差、上下の抜け、PSFなしの主形状を維持。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.ObservationRegistrySeparationRule",
+      "owner": "ObservationIntegrationTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "OBS1/2/3はPHと別登録。",
+      "exception_to": [],
+      "validation_id": "ObservationIntegrationTemplate.ObservationRegistrySeparationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/composite.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "OBS1 source PSF→OBS2局所shoulder。背景・遮蔽・保護maskを維持。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.OperationClasses",
+      "owner": "ObservationIntegrationTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "ToneColor/LightIntegrationだけ採用し未選択操作を追加しない。",
+      "exception_to": [],
+      "validation_id": "ObservationIntegrationTemplate.OperationClasses.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/composite.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "OBS1 source PSF→OBS2局所shoulder。背景・遮蔽・保護maskを維持。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.PostEffectsCommonRule",
+      "owner": "ObservationIntegrationTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "形状はPH、PSFはsource依存の観測補助。",
+      "exception_to": [],
+      "validation_id": "ObservationIntegrationTemplate.PostEffectsCommonRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/composite.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "OBS1 source PSF→OBS2局所shoulder。背景・遮蔽・保護maskを維持。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.ObservationIntensityBudgetRule",
+      "owner": "ObservationIntegrationTemplate",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "PSF係数などは共有予算へ一本化。",
+      "exception_to": [],
+      "validation_id": "ObservationIntegrationTemplate.ObservationIntensityBudgetRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/composite.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "OBS1 source PSF→OBS2局所shoulder。背景・遮蔽・保護maskを維持。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.CompositeValidationRule",
+      "owner": "ObservationIntegrationTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "輪郭、白飛び、黒潰れ、色、細部、背景を検査。",
+      "exception_to": [],
+      "validation_id": "ObservationIntegrationTemplate.CompositeValidationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/composite.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "OBS1 source PSF→OBS2局所shoulder。背景・遮蔽・保護maskを維持。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.SamplingAndReconstructionRule",
+      "owner": "ObservationIntegrationTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "H64とDPR、有限PSF、可変cadence、readback提示を区別。",
+      "exception_to": [],
+      "validation_id": "ObservationIntegrationTemplate.SamplingAndReconstructionRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/composite.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "OBS1 source PSF→OBS2局所shoulder。背景・遮蔽・保護maskを維持。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.StrictTermDefinitions",
+      "owner": "ObservationIntegrationTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "glowをLensFlareや世界内粒子と呼ばない。",
+      "exception_to": [],
+      "validation_id": "ObservationIntegrationTemplate.StrictTermDefinitions.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/composite.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "OBS1 source PSF→OBS2局所shoulder。背景・遮蔽・保護maskを維持。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.PEVRule",
+      "owner": "ExtremumDesignColorTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "成立済み対象接触という状態の範囲で選択。",
+      "exception_to": [],
+      "validation_id": "ExtremumDesignColorTemplate.PEVRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "carrierColor"
+        }
+      ],
+      "runtime_observable_consequence": "局所内外距離と接点の役割へ色を束縛。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.AESRule",
+      "owner": "ExtremumDesignColorTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "接触関係を壊さず面積、抜け、色を選ぶ。",
+      "exception_to": [],
+      "validation_id": "ExtremumDesignColorTemplate.AESRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "carrierColor"
+        }
+      ],
+      "runtime_observable_consequence": "局所内外距離と接点の役割へ色を束縛。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.DesignScienceRule",
+      "owner": "ExtremumDesignColorTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "階層、密度、図地、面の順序を具体化。",
+      "exception_to": [],
+      "validation_id": "ExtremumDesignColorTemplate.DesignScienceRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "carrierColor"
+        }
+      ],
+      "runtime_observable_consequence": "局所内外距離と接点の役割へ色を束縛。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.CCMScope",
+      "owner": "ExtremumDesignColorTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "cyan/violet/ivory/neutralを固定し背景は変更しない。",
+      "exception_to": [],
+      "validation_id": "ExtremumDesignColorTemplate.CCMScope.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "carrierColor"
+        }
+      ],
+      "runtime_observable_consequence": "局所内外距離と接点の役割へ色を束縛。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.AESEvaluationAxes",
+      "owner": "ExtremumDesignColorTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "対称性を壊すより有限形状・接触・時間を優先。",
+      "exception_to": [],
+      "validation_id": "ExtremumDesignColorTemplate.AESEvaluationAxes.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "carrierColor"
+        }
+      ],
+      "runtime_observable_consequence": "局所内外距離と接点の役割へ色を束縛。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.ColorScienceInAES",
+      "owner": "ExtremumDesignColorTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "3色を独立スパイクや均等虹色帯にしない。",
+      "exception_to": [],
+      "validation_id": "ExtremumDesignColorTemplate.ColorScienceInAES.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "carrierColor"
+        }
+      ],
+      "runtime_observable_consequence": "局所内外距離と接点の役割へ色を束縛。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.ArtisticBeautyDefinitions",
+      "owner": "ExtremumDesignColorTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "構造適合を芸術性の得点へ変換しない。",
+      "exception_to": [],
+      "validation_id": "ExtremumDesignColorTemplate.ArtisticBeautyDefinitions.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "carrierColor"
+        }
+      ],
+      "runtime_observable_consequence": "局所内外距離と接点の役割へ色を束縛。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ReflectionClosureTemplate.ReflectionVsLensFlareSeparation",
+      "owner": "ReflectionClosureTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "宣言放射・派生受光とOBSを混同しない。",
+      "exception_to": [],
+      "validation_id": "ReflectionClosureTemplate.ReflectionVsLensFlareSeparation.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "ReflectionClosureTemplate"
+        }
+      ],
+      "runtime_observable_consequence": "鏡面材質・可読鏡像は不採用。空mappingと非適用理由。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PhenomenonProfileTemplate.ProfileApplicabilityGuideRule",
+      "owner": "PhenomenonProfileTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "既存PHの実機構に合うprofileだけ選ぶ。今回はcatalog展開なし。",
+      "exception_to": [],
+      "validation_id": "PhenomenonProfileTemplate.ProfileApplicabilityGuideRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "PhenomenonProfileTemplate"
+        }
+      ],
+      "runtime_observable_consequence": "水・炎・実皮膚・金属・反応profileはこのEでは採用しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "TermsTemplate.Terms",
+      "owner": "TermsTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "定義済み用語に限定しlegacy FDSを独立追加しない。",
+      "exception_to": [],
+      "validation_id": "TermsTemplate.Terms.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "TermsTemplate"
+        }
+      ],
+      "runtime_observable_consequence": "ID、PH/OBS、要求値と検査値を分離。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "GlobalAcceptanceTemplate.GlobalAcceptanceCriteria",
+      "owner": "GlobalAcceptanceTemplate",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "構造・意味・renderの3層に分ける。",
+      "exception_to": [],
+      "validation_id": "GlobalAcceptanceTemplate.GlobalAcceptanceCriteria.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "tools/verify_browser.py",
+          "symbol": "pixel_observation"
+        }
+      ],
+      "runtime_observable_consequence": "構造、意味、software WebGPU画素、物理GPU、聴感を別statusで報告。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "GlobalAcceptanceTemplate.ComparativeEvaluationRule",
+      "owner": "GlobalAcceptanceTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "PSF/reduced比較と旧E・一般画質比較を区別。",
+      "exception_to": [],
+      "validation_id": "GlobalAcceptanceTemplate.ComparativeEvaluationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "tools/verify_browser.py",
+          "symbol": "pixel_observation"
+        }
+      ],
+      "runtime_observable_consequence": "構造、意味、software WebGPU画素、物理GPU、聴感を別statusで報告。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "GlobalAcceptanceTemplate.PassWarningFailEvaluation",
+      "owner": "GlobalAcceptanceTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "未実機の品質をPassとしない。",
+      "exception_to": [],
+      "validation_id": "GlobalAcceptanceTemplate.PassWarningFailEvaluation.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "tools/verify_browser.py",
+          "symbol": "pixel_observation"
+        }
+      ],
+      "runtime_observable_consequence": "構造、意味、software WebGPU画素、物理GPU、聴感を別statusで報告。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "GlobalAcceptanceTemplate.IntentAndArtisticOutcomeRule",
+      "owner": "GlobalAcceptanceTemplate",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "実画像の観察に限り評価し、slow意味識別はuncertain。",
+      "exception_to": [],
+      "validation_id": "GlobalAcceptanceTemplate.IntentAndArtisticOutcomeRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "tools/verify_browser.py",
+          "symbol": "pixel_observation"
+        }
+      ],
+      "runtime_observable_consequence": "構造、意味、software WebGPU画素、物理GPU、聴感を別statusで報告。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ExtensionActivationTable.ExtensionActivationRule",
+      "owner": "ExtensionActivationTable",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "VFX、E、PostEffects、LDM、Gradient、Videoを限定起動。",
+      "exception_to": [],
+      "validation_id": "ExtensionActivationTable.ExtensionActivationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "ExtensionActivationTable"
+        }
+      ],
+      "runtime_observable_consequence": "制作指示の明示triggerだけを解決。仕様中の語を自動起動しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ExtensionActivationTable.ExpressionIntegrationRule",
+      "owner": "ExtensionActivationTable",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "基底の意図・PH/OBS・予算・modeを上書きしない。",
+      "exception_to": [],
+      "validation_id": "ExtensionActivationTable.ExpressionIntegrationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "design/B-design.json",
+          "symbol": "ExtensionActivationTable"
+        }
+      ],
+      "runtime_observable_consequence": "制作指示の明示triggerだけを解決。仕様中の語を自動起動しない。",
+      "verification": {
+        "method": "design_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "design/B-design.json",
+          "evidence/design-validation.json"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "VFX.VFXActivationRule",
+      "owner": "VFX",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "明示VFXに適用、PH完全構造を代替しない。",
+      "exception_to": [],
+      "validation_id": "VFX.VFXActivationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い主面・内部帯・接触受光とOBSを機能と時間で分離。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "VFX.MultilayerArchitectureRule",
+      "owner": "VFX",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "world3層/observation2層、layerとPHは一対一ではない。",
+      "exception_to": [],
+      "validation_id": "VFX.MultilayerArchitectureRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い主面・内部帯・接触受光とOBSを機能と時間で分離。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "VFX.SpatialMorphologyRule",
+      "owner": "VFX",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "macro抜け・meso厚み・micro稜線に各役割。",
+      "exception_to": [],
+      "validation_id": "VFX.SpatialMorphologyRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い主面・内部帯・接触受光とOBSを機能と時間で分離。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "VFX.MaterialOpticalResponseRule",
+      "owner": "VFX",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "coverage/放射を別MRT、材質名だけで終わらない。",
+      "exception_to": [],
+      "validation_id": "VFX.MaterialOpticalResponseRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い主面・内部帯・接触受光とOBSを機能と時間で分離。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "VFX.TransportTemporalRule",
+      "owner": "VFX",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "飛翔なし、有限接触包絡、層ごとに別位相。",
+      "exception_to": [],
+      "validation_id": "VFX.TransportTemporalRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い主面・内部帯・接触受光とOBSを機能と時間で分離。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "VFX.EnvironmentCompositionRule",
+      "owner": "VFX",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "入力→場→既存対象局所受光。無関係な破片や床はない。",
+      "exception_to": [],
+      "validation_id": "VFX.EnvironmentCompositionRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い主面・内部帯・接触受光とOBSを機能と時間で分離。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "VFX.CompositingReadabilityRule",
+      "owner": "VFX",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "linear/premultipliedとsource additiveを分け、遮蔽を保持。",
+      "exception_to": [],
+      "validation_id": "VFX.CompositingReadabilityRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "contactFragment"
+        }
+      ],
+      "runtime_observable_consequence": "厚い主面・内部帯・接触受光とOBSを機能と時間で分離。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "ECodeImplementation.ExecutableECodeBranchRule",
+      "owner": "ECodeImplementation",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "Eは画像生成ではなくruntime source。source_revisionとrule対応、未実行検査を記録。",
+      "exception_to": [],
+      "validation_id": "ECodeImplementation.ExecutableECodeBranchRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/renderer.js",
+          "symbol": "ContactRenderer"
+        }
+      ],
+      "runtime_observable_consequence": "実行ソース・shader・プレビュー・証拠を同梱。実GPU受け入れ未実施を残す。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PostEffects.PostEffectsAutonomousActivationRule",
+      "owner": "PostEffects",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "明示委任された自然な表示応答から正確に2操作だけ採用。",
+      "exception_to": [],
+      "validation_id": "PostEffects.PostEffectsAutonomousActivationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/blur.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "高輝度sourceだけを有限PSFへ。target/sourceのない装飾やghostはなし。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PostEffects.SPCARule",
+      "owner": "PostEffects",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "局所ピークに勾配・減衰・遮蔽の証拠を使う。",
+      "exception_to": [],
+      "validation_id": "PostEffects.SPCARule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/blur.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "高輝度sourceだけを有限PSFへ。target/sourceのない装飾やghostはなし。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "PostEffects.GlobalLocalRule",
+      "owner": "PostEffects",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "明示対象へのlocal。globalな露出変更はしない。",
+      "exception_to": [],
+      "validation_id": "PostEffects.GlobalLocalRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/blur.wgsl",
+          "symbol": "fragment"
+        }
+      ],
+      "runtime_observable_consequence": "高輝度sourceだけを有限PSFへ。target/sourceのない装飾やghostはなし。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "LuminanceDynamicsModule.LDMActivationRule",
+      "owner": "LuminanceDynamicsModule",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "明示VFX/PostEffectsが起動根拠。",
+      "exception_to": [],
+      "validation_id": "LuminanceDynamicsModule.LDMActivationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "envelope"
+        }
+      ],
+      "runtime_observable_consequence": "現在ageの有限包絡とreduced motion。strobeやランダム点滅なし。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "LuminanceDynamicsModule.LDMModeRule",
+      "owner": "LuminanceDynamicsModule",
+      "priority": "HARD_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "Videoの異なる包絡を共有sampling/intensityへ結ぶ。",
+      "exception_to": [],
+      "validation_id": "LuminanceDynamicsModule.LDMModeRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "envelope"
+        }
+      ],
+      "runtime_observable_consequence": "現在ageの有限包絡とreduced motion。strobeやランダム点滅なし。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "GradientAnchorPolicy.GradientAnchorRule",
+      "owner": "GradientAnchorPolicy",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "world VFXの色域をPHへ束縛、虹色加工と混同しない。",
+      "exception_to": [],
+      "validation_id": "GradientAnchorPolicy.GradientAnchorRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/shaders/contact.wgsl",
+          "symbol": "shellLight"
+        }
+      ],
+      "runtime_observable_consequence": "外面violet→内面cyan、接点ivory→裾cyanの位置根拠。",
+      "verification": {
+        "method": "visual_review",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/preview-panels.png",
+          "evidence/phases/0160.png",
+          "evidence/phases/no-bloom-0160.png"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "VideoGenerationPolicy.VideoDurationRule",
+      "owner": "VideoGenerationPolicy",
+      "priority": "ABSOLUTE_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "ユーザー明示1.2秒、独立した6/60秒状態と区別。",
+      "exception_to": [],
+      "validation_id": "VideoGenerationPolicy.VideoDurationRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/contract.js",
+          "symbol": "LIFE_MS"
+        }
+      ],
+      "runtime_observable_consequence": "現在時刻で1200msを終端判定。slowの状態書込みなし。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "VideoGenerationPolicy.CommonTimelineRule",
+      "owner": "VideoGenerationPolicy",
+      "priority": "FOUNDATION_LOCK",
+      "applies_when": "この接触Eの対象範囲で適用。詳細条件はB正本およびB-design.jsonの同名block。",
+      "requirement": "場・受光・OBS・SFXは同じイベント起点。camera固定、dialogueなし。",
+      "exception_to": [],
+      "validation_id": "VideoGenerationPolicy.CommonTimelineRule.acceptance",
+      "requirement_source": "会話で継承した基底/拡張の当該規則本文。ここは追跡用要約。",
+      "implementation": [
+        {
+          "path": "src/contract.js",
+          "symbol": "LIFE_MS"
+        }
+      ],
+      "runtime_observable_consequence": "現在時刻で1200msを終端判定。slowの状態書込みなし。",
+      "verification": {
+        "method": "source_and_browser",
+        "status": "limited_review",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/unit-tests.tap"
+        ],
+        "limitation": "当該実装/fixtureの範囲だけ。正本の全世界/全GPU/実ゲーム/人の知覚に対する包括的Passではない。"
+      }
+    },
+    {
+      "rule_id": "UserGameContract.SuccessOnly",
+      "owner": "UserGameContract",
+      "priority": "user_explicit",
+      "applies_when": "action-taser単独E",
+      "requirement": "通常テーザーでliving targetにslowAppliedされた時だけ。",
+      "exception_to": [],
+      "validation_id": "UserGameContract.SuccessOnly.acceptance",
+      "requirement_source": "この依頼の固定ゲーム契約。",
+      "implementation": [
+        {
+          "path": "src/contract.js",
+          "symbol": "fixtureShouldEmit"
+        }
+      ],
+      "runtime_observable_consequence": "通常テーザーでliving targetにslowAppliedされた時だけ。",
+      "verification": {
+        "method": "unit_and_browser",
+        "status": "tested_in_fixture",
+        "evidence_refs": [
+          "tests/contract.test.mjs",
+          "evidence/browser-validation.json"
+        ],
+        "limitation": "実ゲームproducerや実シーンとの接続・比較は未実施。"
+      }
+    },
+    {
+      "rule_id": "UserGameContract.NoShotJoin",
+      "owner": "UserGameContract",
+      "priority": "user_explicit",
+      "applies_when": "action-taser単独E",
+      "requirement": "action-shoot、shot ID、銃口、弾道を読まずホワイトリストで保存。",
+      "exception_to": [],
+      "validation_id": "UserGameContract.NoShotJoin.acceptance",
+      "requirement_source": "この依頼の固定ゲーム契約。",
+      "implementation": [
+        {
+          "path": "src/contract.js",
+          "symbol": "normalizeSuccessEvent"
+        }
+      ],
+      "runtime_observable_consequence": "action-shoot、shot ID、銃口、弾道を読まずホワイトリストで保存。",
+      "verification": {
+        "method": "unit_and_browser",
+        "status": "tested_in_fixture",
+        "evidence_refs": [
+          "tests/contract.test.mjs",
+          "evidence/browser-validation.json"
+        ],
+        "limitation": "実ゲームproducerや実シーンとの接続・比較は未実施。"
+      }
+    },
+    {
+      "rule_id": "UserGameContract.OwnIDOnce",
+      "owner": "UserGameContract",
+      "priority": "user_explicit",
+      "applies_when": "action-taser単独E",
+      "requirement": "同じ自身IDをセッション中に再発音しない。",
+      "exception_to": [],
+      "validation_id": "UserGameContract.OwnIDOnce.acceptance",
+      "requirement_source": "この依頼の固定ゲーム契約。",
+      "implementation": [
+        {
+          "path": "src/sound.js",
+          "symbol": "playOnce"
+        }
+      ],
+      "runtime_observable_consequence": "同じ自身IDをセッション中に再発音しない。",
+      "verification": {
+        "method": "unit_and_browser",
+        "status": "tested_in_fixture",
+        "evidence_refs": [
+          "tests/sound.test.mjs",
+          "evidence/browser-validation.json"
+        ],
+        "limitation": "実ゲームproducerや実シーンとの接続・比較は未実施。"
+      }
+    },
+    {
+      "rule_id": "UserGameContract.PrivacyBeforePosition",
+      "owner": "UserGameContract",
+      "priority": "user_explicit",
+      "applies_when": "action-taser単独E",
+      "requirement": "resolverの許可前にx/yを読み出さない。",
+      "exception_to": [],
+      "validation_id": "UserGameContract.PrivacyBeforePosition.acceptance",
+      "requirement_source": "この依頼の固定ゲーム契約。",
+      "implementation": [
+        {
+          "path": "src/contract.js",
+          "symbol": "ingest"
+        }
+      ],
+      "runtime_observable_consequence": "resolverの許可前にx/yを読み出さない。",
+      "verification": {
+        "method": "unit_and_browser",
+        "status": "tested_in_fixture",
+        "evidence_refs": [
+          "tests/contract.test.mjs",
+          "evidence/browser-validation.json"
+        ],
+        "limitation": "実ゲームproducerや実シーンとの接続・比較は未実施。"
+      }
+    },
+    {
+      "rule_id": "UserGameContract.Revocation",
+      "owner": "UserGameContract",
+      "priority": "user_explicit",
+      "applies_when": "action-taser単独E",
+      "requirement": "非公開/死亡/expiredではactiveと音を削除。",
+      "exception_to": [],
+      "validation_id": "UserGameContract.Revocation.acceptance",
+      "requirement_source": "この依頼の固定ゲーム契約。",
+      "implementation": [
+        {
+          "path": "src/contract.js",
+          "symbol": "tick"
+        }
+      ],
+      "runtime_observable_consequence": "非公開/死亡/expiredではactiveと音を削除。",
+      "verification": {
+        "method": "unit_and_browser",
+        "status": "tested_in_fixture",
+        "evidence_refs": [
+          "tests/contract.test.mjs",
+          "evidence/browser-validation.json"
+        ],
+        "limitation": "実ゲームproducerや実シーンとの接続・比較は未実施。"
+      }
+    },
+    {
+      "rule_id": "UserGameContract.VisualLifetime",
+      "owner": "UserGameContract",
+      "priority": "user_explicit",
+      "applies_when": "action-taser単独E",
+      "requirement": "1200msでEだけ終了、slowの6/60秒には関与しない。",
+      "exception_to": [],
+      "validation_id": "UserGameContract.VisualLifetime.acceptance",
+      "requirement_source": "この依頼の固定ゲーム契約。",
+      "implementation": [
+        {
+          "path": "src/contract.js",
+          "symbol": "LIFE_MS"
+        }
+      ],
+      "runtime_observable_consequence": "1200msでEだけ終了、slowの6/60秒には関与しない。",
+      "verification": {
+        "method": "unit_and_browser",
+        "status": "tested_in_fixture",
+        "evidence_refs": [
+          "tests/contract.test.mjs",
+          "evidence/browser-validation.json"
+        ],
+        "limitation": "実ゲームproducerや実シーンとの接続・比較は未実施。"
+      }
+    },
+    {
+      "rule_id": "UserGameContract.VerifyAndGesture",
+      "owner": "UserGameContract",
+      "priority": "user_explicit",
+      "applies_when": "action-taser単独E",
+      "requirement": "verifyはcontextなし、操作前のイベントは無音消費。",
+      "exception_to": [],
+      "validation_id": "UserGameContract.VerifyAndGesture.acceptance",
+      "requirement_source": "この依頼の固定ゲーム契約。",
+      "implementation": [
+        {
+          "path": "src/sound.js",
+          "symbol": "unlockFromGesture"
+        }
+      ],
+      "runtime_observable_consequence": "verifyはcontextなし、操作前のイベントは無音消費。",
+      "verification": {
+        "method": "unit_and_browser",
+        "status": "tested_in_fixture",
+        "evidence_refs": [
+          "tests/sound.test.mjs",
+          "evidence/browser-validation.json"
+        ],
+        "limitation": "実ゲームproducerや実シーンとの接続・比較は未実施。"
+      }
+    },
+    {
+      "rule_id": "UserGameContract.Backpressure",
+      "owner": "UserGameContract",
+      "priority": "user_explicit",
+      "applies_when": "action-taser単独E",
+      "requirement": "最大2submission、最大128表示instance、32論理event。",
+      "exception_to": [],
+      "validation_id": "UserGameContract.Backpressure.acceptance",
+      "requirement_source": "この依頼の固定ゲーム契約。",
+      "implementation": [
+        {
+          "path": "src/renderer.js",
+          "symbol": "inFlight"
+        }
+      ],
+      "runtime_observable_consequence": "最大2submission、最大128表示instance、32論理event。",
+      "verification": {
+        "method": "unit_and_browser",
+        "status": "tested_in_fixture",
+        "evidence_refs": [
+          "evidence/browser-validation.json",
+          "evidence/browser-validation.json"
+        ],
+        "limitation": "実ゲームproducerや実シーンとの接続・比較は未実施。"
+      }
+    }
+  ],
+  "non_applicable_examples": [
+    {
+      "rules": [
+        "CharacterPolicy.*",
+        "BeautifulPoseCapsule.*"
+      ],
+      "reason": "Eに身体・人物属性を出力しない。living targetは外部。診断maskは非人物。ゲームの身体仕様を捏造しない。"
+    },
+    {
+      "rules": [
+        "MagicArchitecture.*",
+        "KeywordExpansion.*"
+      ],
+      "reason": "制作指示の魔法やv/f/o/s keywordの明示選択なし。magic IDはopaque識別子。"
+    },
+    {
+      "rules": [
+        "ObservationIntegrationTemplate.LensFlareSourceBindingRule",
+        "ReflectionClosureTemplate.MicrofacetFieldMinimumSet"
+      ],
+      "reason": "物理LensFlare・specular/reflection材質は不採用。表示PSFと宣言発光に限定。"
+    },
+    {
+      "rules": [
+        "CoordinateGravityWindTemplate.FloorHubRule",
+        "CoordinateGravityWindTemplate.BodyFloorCameraConsistency",
+        "CoordinateGravityWindTemplate.ProjectionSafetyRule"
+      ],
+      "reason": "床と身体姿勢、俯瞰・煽りを新造しない。外部対象maskと固定orthographicの接触Eのみ。"
+    },
+    {
+      "rules": [
+        "PhenomenonProfileTemplate.ReactionAndPhaseKineticsRule",
+        "VideoGenerationPolicy.DialogueRule"
+      ],
+      "reason": "実化学・相変化・セリフ・BGMの指定なし。"
+    },
+    {
+      "rules": [
+        "VFX.ScreenSignalSurfaceRule"
+      ],
+      "reason": "scanline・画素化・encoding glitch等は不採用。PSFはsource-bound表示応答。"
+    }
+  ],
+  "canonical_B_validator": "not_run",
+  "physical_GPU_acceptance": "not_run",
+  "source_listing_test": "tools/validate_design.pyでパスとsymbol存在を検査。"
+}

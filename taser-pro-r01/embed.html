@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Action Taser · Contact Latch r0.9</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b1019}
+body{display:grid;place-items:center}
+main{width:min(100vw,1100px);aspect-ratio:2/1;position:relative;background:#111b27}
+canvas{display:block;width:100%;height:100%;aspect-ratio:2/1}
+#failure{display:none;position:absolute;inset:0;padding:18px;color:#ffe1c4;background:#34271e;font:14px/1.5 system-ui,sans-serif;white-space:pre-wrap}
+#failure.show{display:block}
+</style>
+</head>
+<body><main><canvas id="effect" width="1024" height="512" aria-label="Action Taser contact latch effect, automatic loop"></canvas><output id="failure"></output></main><script type="module" src="embed.mjs"></script></body>
+</html>

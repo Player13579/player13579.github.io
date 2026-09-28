@@ -1,0 +1,45 @@
+{
+  "specification_source": "この会話でユーザーが提示した基底.mdと拡張.mdを正本として適用。",
+  "canonical_repository": "player13579/B",
+  "branch_at_read": "Codex-honoo",
+  "source_revision": {
+    "commit": "8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1",
+    "base_blob": "4e10a53310be5b9d0aa3a6c881cf4f39d6590bd4",
+    "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834"
+  },
+  "checks_performed": [
+    "接続済みGitHubからcommit metadata、root treeのblob ID、両ファイル先頭を取得",
+    "版名が会話の提示版名と一致することを確認"
+  ],
+  "checks_not_performed": [
+    "リポジトリーの両仕様全文と会話全文のbyte-for-byte照合",
+    "Bリポジトリーの同梱検証器の実行"
+  ],
+  "read_scope": [
+    "B commit metadata",
+    "B root tree metadata",
+    "基底.md 1–12行",
+    "拡張.md 1–9行"
+  ],
+  "existing_E_source_or_art_read": false,
+  "DVA_game_repository_read": false,
+  "game_contract_source": "ユーザーがこの依頼で固定した契約。type/idというキー名だけは単独実装の正規化envelopeでありDVAのwire schemaを検証したものではない。",
+  "runtime_API_references": [
+    {
+      "title": "W3C WebGPU",
+      "url": "https://www.w3.org/TR/webgpu/",
+      "purpose": "buffer、texture、pipeline、queue、readbackのAPI契約。造形参照ではない。"
+    },
+    {
+      "title": "W3C Web Audio API",
+      "url": "https://www.w3.org/TR/webaudio/",
+      "purpose": "AudioContext、AudioBufferSourceNode、gain、analyserのAPI契約。音色は独自合成。"
+    },
+    {
+      "title": "Chrome WebGPU browser testing",
+      "url": "https://developer.chrome.com/blog/supercharge-web-ai-testing",
+      "purpose": "ソフトウェアadapterと実GPUの区別、テスト環境の説明。"
+    }
+  ],
+  "revision_freeze_basis": "上記正本metadataを実装開始前に固定。E実装はこのZIP内のSHA256SUMSで別管理。"
+}
