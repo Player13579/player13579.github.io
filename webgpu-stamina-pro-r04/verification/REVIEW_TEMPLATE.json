@@ -1,0 +1,32 @@
+{
+  "revision": "0.4.0",
+  "reviewer": "",
+  "environment": {
+    "browser": "Chrome",
+    "gpu": "",
+    "os": "",
+    "dpr": "",
+    "zoom": "100%"
+  },
+  "cases": [
+    "H64 dark/light, 1500ms full lifetime continuous loop",
+    "H64 dark/light, 900ms full lifetime continuous loop",
+    "normal actor / 2x actor",
+    "front/behind occlusion",
+    "single / two close independent gains",
+    "natural end / explicit cancel"
+  ],
+  "questions": [
+    "Does one connected outer reserve read before transfer?",
+    "Does outer reserve visibly decrease while body fill increases?",
+    "Does chest/abdomen/waist read as stored capacity, not flat light?",
+    "Does the phase relation of delivery, fill, hold, and fade read at H64?",
+    "Does the SFX sound like one cause-one voice?"
+  ],
+  "result": {
+    "render_observation": "",
+    "listening": "",
+    "quality_adoption": "not_approved",
+    "game_integration": "not_approved"
+  }
+}

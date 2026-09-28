@@ -1,0 +1,40 @@
+{
+  "version": "barrier-pro-r0.9",
+  "status": {
+    "real_gpu": "not_run",
+    "real_audio": "not_run",
+    "quality": "not_run"
+  },
+  "preserved_contract": {
+    "authority_durability": true,
+    "actor_time_linear": true,
+    "events": [
+      "create",
+      "absorb",
+      "fracture",
+      "bust"
+    ]
+  },
+  "PH": [
+    "digital protective field volume",
+    "front brackets",
+    "rear brackets",
+    "depth beams",
+    "side ribbons",
+    "event-specific state transforms"
+  ],
+  "OBS": [
+    "opacity/coverage separated from radiance",
+    "source-bound local halo only",
+    "no background-specific weakening",
+    "no global darkening workaround"
+  ],
+  "extensions": [
+    "PH/OBS separation",
+    "VFX multi-layer rules",
+    "LDM",
+    "IntensityBudget",
+    "SamplingContract"
+  ],
+  "acceptance_note": "Numeric and compile success do not imply visual acceptance."
+}

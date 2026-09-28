@@ -15,8 +15,10 @@
     'barrier-pro-r06': { magnification: 1.0, focusX: 490, focusY: 310 },
     'barrier-pro-r07': { magnification: 1.0, focusX: 490, focusY: 310 },
     'barrier-pro-r08': { magnification: 1.0, focusX: 490, focusY: 310 },
+    'barrier-pro-r09': { magnification: 1.0, focusX: 490, focusY: 310 },
     'stamina-pro': { magnification: 4.0, focusX: 490, focusY: 496 },
     'stamina-pro-r03': { magnification: 1.0, focusX: 490, focusY: 310 },
+    'stamina-pro-r04': { magnification: 1.0, focusX: 490, focusY: 310 },
     'stamina-pro-r02': { magnification: 2.3, focusX: 490, focusY: 310 },
     'mana-pro': { magnification: 2.0, focusX: 490, focusY: 310 },
     'mana-pro-r02': { magnification: 2.0, focusX: 627, focusY: 336 },
@@ -24,6 +26,9 @@
     'mana-pro-r04': { magnification: 1.5, focusX: 490, focusY: 310 },
     'rational-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'ninjutsu-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
+    'facility-bookshelf-pro-r01': { magnification: 2.0, focusX: 490, focusY: 310 },
+    'facility-reading-lamp-pro-r01': { magnification: 2.0, focusX: 490, focusY: 310 },
+    'facility-security-console-pro-r01': { magnification: 2.0, focusX: 490, focusY: 310 },
     'emp-pro': { magnification: 2.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1, replayable = false) =>
@@ -32,10 +37,11 @@
   const replayedProVersions = new Set([
     'sunbeam-pro-file-draft', 'sunbeam-pro-live-v1', 'sunbeam-pro-v2',
     'luck-pro-r02', 'luck-pro-r01',
-    'barrier-pro-r08', 'barrier-pro-r07', 'barrier-pro-r06', 'barrier-pro-r05', 'barrier-pro-r04', 'barrier-pro-r03', 'barrier-pro-r02', 'barrier-pro-r01',
-    'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
+    'barrier-pro-r09', 'barrier-pro-r08', 'barrier-pro-r07', 'barrier-pro-r06', 'barrier-pro-r05', 'barrier-pro-r04', 'barrier-pro-r03', 'barrier-pro-r02', 'barrier-pro-r01',
+    'stamina-pro-r04', 'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
     'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
     'rational-pro-r01', 'ninjutsu-pro-r01',
+    'facility-bookshelf-pro-r01', 'facility-reading-lamp-pro-r01', 'facility-security-console-pro-r01',
     'emp-pro-r03', 'emp-pro-r02', 'emp-pro-r01', 'emp-pro-p0',
     'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v05', 'headshot-pro-v04', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
   ]);
@@ -68,6 +74,7 @@
       version('headshot-pro-v01', 'GPT Pro v1', 'headshot-pro-v01/index.html', 'headshot-pro-v01/src/renderer.mjs', 'GPT Pro旧版・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '5武器×HIP/AIMのH64を実WebGPUで並列自動ループ再生。全10種の描画を確認しましたが、視覚品質と音は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'barrier-pro', title: 'バリア（GPT Pro比較）', versions: [
+      version('barrier-pro-r09', 'GPT Pro r0.9', 'barrier-pro-r09/embed.html', 'barrier-pro-r09/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', 'create・absorb・fracture・bustの暗明8面をH64自動ループで確認。原本の造形と音源を保持した技術再生版です。視覚品質と聴感は版別審査中で、本編には接続していません。', 'effect-H64', 1, true),
       version('barrier-pro-r08', 'GPT Pro r0.8', 'barrier-pro-r08/embed.html', 'barrier-pro-r08/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質未達・SFX聴感未確認・本編未採用', 'H64の暗明でcreate・absorb・fracture・bustをChrome実WebGPU再生。立体感は増したが、実寸では輪郭がぼやけ、4事象の作用差が弱く、明背景のbustは形が読みにくい。視覚評価60/100、SFXは未評価。本編接続は未受入です。', 'effect-H64', 1, true),
       version('barrier-pro-r07', 'GPT Pro r0.7', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', 'GPT Pro制作・実GPU再生可能・造形品質未達・SFX聴感未確認・本編未採用', '4事象のH64自動ループとGPUエラー0を確認。防護場が平面的な八角輪郭に見え、吸収・破断・解除の作用差が弱いため、Proにr0.8を改稿依頼しました。', 'effect-H64', 1, true),
       version('barrier-pro-r06', 'GPT Pro r0.6', 'barrier-pro-r06/embed.html', 'barrier-pro-r06/barrier-pro-renderer.mjs', 'GPT Pro旧版・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '原本の合成テクスチャ型不一致をadapterで修復して四事象を自動再生。白飛びは棄却理由にせず、四事象の造形・作用とSFXの品質確認を残します。', 'effect-H64', 1, true),
@@ -78,6 +85,7 @@
       version('barrier-pro-r01', 'GPT Pro r0.1', 'barrier-pro-r01/preview.html', 'barrier-pro-r01/barrier-pro.wgsl', '比較試作・品質不合格・本編未採用', 'GPT Pro独立初稿。実WebGPU再生はできるが、原寸では細く暗い支持線だけが読め、保護空域は不十分。', 'effect-H64', 1, true)
     ] },
     { id: 'stamina-pro', title: 'スタミナ回復（GPT Pro）', versions: [
+      version('stamina-pro-r04', 'GPT Pro r0.4', 'webgpu-stamina-pro-r04/embed.html', 'webgpu-stamina-pro-r04/src/renderer.js', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', '暗明H64で収束から身体への充填までを実WebGPU自動ループで確認。構文・shader・音声一回性は検証済み。視覚品質と聴感の版別審査、本編接続は未了です。', 'effect-H64', 1, true),
       version('stamina-pro-r03', 'GPT Pro r0.3', 'webgpu-stamina-pro-r03/index.html', 'webgpu-stamina-pro-r03/src/renderer.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'H64の収束・充填・蓄勢案。実Chrome WebGPUでコンパイル・描画と一部位相を確認。全寿命の視覚品質、SFX聴感、実ゲーム接続は未受入です。', 'effect-H64', 1, true),
       version('stamina-pro-r02', 'GPT Pro r0.2', 'webgpu-stamina-pro-r02/index.html', 'webgpu-stamina-pro-r02/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・品質不合格・SFX聴感未確認・本編未採用', '原寸では主形が細い帯と小さな平面に見えるため品質不採用。4画面の検査UIから一つのH64描画面だけをギャラリーへ埋め込み、自動ループします。', 'effect-H64', 1, true),
       version('stamina-pro-r01', 'GPT Pro r0.1', 'stamina-pro-r01-preview.html', 'stamina-pro-r01/renderer.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体へ充填されるスタミナ回復案。限定的な実WebGPU再生は確認済み。原寸の全寿命、聴感、ゲーム本編での発動は未受入です。', 'effect-H64', 1, true)
@@ -93,6 +101,15 @@
     ] },
     { id: 'ninjutsu-pro', title: '忍術の錬気（GPT Pro）', versions: [
       version('ninjutsu-pro-r01', 'GPT Pro r0.1', 'action-ninjutsu-pro-r01/gallery-preview.html', 'action-ninjutsu-pro-r01/src/gpu.mjs', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '濃紺と紫の内向き曲線による独立設計。暗明H64のWebGPU再生を確認しました。原寸の全寿命とSFX品質、本編接続は未受入です。', 'effect-H64', 1, true)
+    ] },
+    { id: 'facility-bookshelf-pro', title: '資料棚（GPT Pro）', versions: [
+      version('facility-bookshelf-pro-r01', 'GPT Pro r0.1', 'facility-pro-r01/embed.html?effect=bookshelf', 'facility-pro-r01/package/src/effects/bookshelf/index.js', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', '研究施設の資料棚E。暗明2面のWebGPU自動ループを確認。造形・音の品質と本編接続は未受入です。', 'effect-H64', 1, true)
+    ] },
+    { id: 'facility-reading-lamp-pro', title: '読書灯（GPT Pro）', versions: [
+      version('facility-reading-lamp-pro-r01', 'GPT Pro r0.1', 'facility-pro-r01/embed.html?effect=reading-lamp', 'facility-pro-r01/package/src/effects/reading-lamp/index.js', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', '研究施設の読書灯E。暗明2面のWebGPU自動ループを確認。造形・音の品質と本編接続は未受入です。', 'effect-H64', 1, true)
+    ] },
+    { id: 'facility-security-console-pro', title: '警備コンソール（GPT Pro）', versions: [
+      version('facility-security-console-pro-r01', 'GPT Pro r0.1', 'facility-pro-r01/embed.html?effect=security-console', 'facility-pro-r01/package/src/effects/security-console/index.js', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', '研究施設の警備コンソールE。暗明2面のWebGPU自動ループを確認。造形・音の品質と本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'emp-pro', title: 'EMP（GPT Pro）', versions: [
       version('emp-pro-r03', 'GPT Pro r0.3', 'webgpu-emp-pro-r03/index.html', 'webgpu-emp-pro-r03/src/emp-e.js', 'GPT Pro制作・5枝実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'Pro改稿のチャージ・放出・共鳴・相殺・ロックを自動巡回。Chromeで少なくとも共鳴の主形を実GPU確認。全枝の全寿命・原寸品質・実聴・本編接続は未受入です。', 'effect-H64', 1, true),
@@ -127,7 +144,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v44');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v45');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

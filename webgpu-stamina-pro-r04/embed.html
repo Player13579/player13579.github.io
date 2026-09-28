@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Stamina r0.4 · H64 WebGPU replay</title>
+  <link rel="stylesheet" href="embed.css">
+</head>
+<body>
+  <main>
+    <header><strong>スタミナ獲得 E r0.4</strong><span>品質採否保留 · 本編接続未承認</span></header>
+    <p id="status" role="status">WebGPU 初期化中…</p>
+    <section aria-label="H64 WebGPU dark and light replay">
+      <article><h2>H64 · 暗背景</h2><canvas id="dark" aria-label="H64 dark background WebGPU replay"></canvas></article>
+      <article><h2>H64 · 明背景</h2><canvas id="light" aria-label="H64 light background WebGPU replay"></canvas></article>
+    </section>
+    <output id="error" hidden></output>
+  </main>
+  <script type="module" src="embed.js"></script>
+</body>
+</html>

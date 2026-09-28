@@ -1,0 +1,506 @@
+
+> stamina-e-confluence-r04@0.4.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: audio reference 900ms actor1x finite / bounded / silent tail
+ok 1 - audio reference 900ms actor1x finite / bounded / silent tail
+  ---
+  duration_ms: 46.695987
+  type: 'test'
+  ...
+# Subtest: audio reference 900ms actor2x finite / bounded / silent tail
+ok 2 - audio reference 900ms actor2x finite / bounded / silent tail
+  ---
+  duration_ms: 17.309475
+  type: 'test'
+  ...
+# Subtest: audio reference 1500ms actor1x finite / bounded / silent tail
+ok 3 - audio reference 1500ms actor1x finite / bounded / silent tail
+  ---
+  duration_ms: 17.989917
+  type: 'test'
+  ...
+# Subtest: audio reference 1500ms actor2x finite / bounded / silent tail
+ok 4 - audio reference 1500ms actor2x finite / bounded / silent tail
+  ---
+  duration_ms: 8.668874
+  type: 'test'
+  ...
+# Subtest: reference duration follows actor rate, not oscillator frequency
+ok 5 - reference duration follows actor rate, not oscillator frequency
+  ---
+  duration_ms: 22.117123
+  type: 'test'
+  ...
+# Subtest: same seed and clock produce deterministic PCM
+ok 6 - same seed and clock produce deterministic PCM
+  ---
+  duration_ms: 17.232169
+  type: 'test'
+  ...
+# Subtest: changing the event seed changes noise, not total duration
+ok 7 - changing the event seed changes noise, not total duration
+  ---
+  duration_ms: 16.23607
+  type: 'test'
+  ...
+# Subtest: two close independent gains remain two synthesized voices
+ok 8 - two close independent gains remain two synthesized voices
+  ---
+  duration_ms: 28.11425
+  type: 'test'
+  ...
+# Subtest: explicit cancellation releases without an end burst
+ok 9 - explicit cancellation releases without an end burst
+  ---
+  duration_ms: 20.847625
+  type: 'test'
+  ...
+# Subtest: oscillator phase persists across blocks
+ok 10 - oscillator phase persists across blocks
+  ---
+  duration_ms: 0.927745
+  type: 'test'
+  ...
+# Subtest: pause renders silence after bounded8ms fade without resetting oscillator
+ok 11 - pause renders silence after bounded8ms fade without resetting oscillator
+  ---
+  duration_ms: 1.419535
+  type: 'test'
+  ...
+# Subtest: positive authoritative discrete gain accepted with 1500ms / radius82
+ok 12 - positive authoritative discrete gain accepted with 1500ms / radius82
+  ---
+  duration_ms: 1.089948
+  type: 'test'
+  ...
+# Subtest: invalid gain 0 rejected
+ok 13 - invalid gain 0 rejected
+  ---
+  duration_ms: 0.211598
+  type: 'test'
+  ...
+# Subtest: invalid gain -1 rejected
+ok 14 - invalid gain -1 rejected
+  ---
+  duration_ms: 0.103115
+  type: 'test'
+  ...
+# Subtest: invalid gain NaN rejected
+ok 15 - invalid gain NaN rejected
+  ---
+  duration_ms: 0.077396
+  type: 'test'
+  ...
+# Subtest: invalid gain Infinity rejected
+ok 16 - invalid gain Infinity rejected
+  ---
+  duration_ms: 0.121553
+  type: 'test'
+  ...
+# Subtest: invalid gain 10 rejected
+ok 17 - invalid gain 10 rejected
+  ---
+  duration_ms: 0.108042
+  type: 'test'
+  ...
+# Subtest: authority flag cannot default to true
+ok 18 - authority flag cannot default to true
+  ---
+  duration_ms: 0.084577
+  type: 'test'
+  ...
+# Subtest: natural ticks do not produce this effect
+ok 19 - natural ticks do not produce this effect
+  ---
+  duration_ms: 0.956148
+  type: 'test'
+  ...
+# Subtest: minimum duration clamps positive short requests to900
+ok 20 - minimum duration clamps positive short requests to900
+  ---
+  duration_ms: 0.315244
+  type: 'test'
+  ...
+# Subtest: duration conflict rejected
+ok 21 - duration conflict rejected
+  ---
+  duration_ms: 0.29256
+  type: 'test'
+  ...
+# Subtest: invalid duration 0 rejected
+ok 22 - invalid duration 0 rejected
+  ---
+  duration_ms: 0.165268
+  type: 'test'
+  ...
+# Subtest: invalid duration -1 rejected
+ok 23 - invalid duration -1 rejected
+  ---
+  duration_ms: 0.056976
+  type: 'test'
+  ...
+# Subtest: invalid duration NaN rejected
+ok 24 - invalid duration NaN rejected
+  ---
+  duration_ms: 0.041532
+  type: 'test'
+  ...
+# Subtest: invalid duration Infinity rejected
+ok 25 - invalid duration Infinity rejected
+  ---
+  duration_ms: 0.034512
+  type: 'test'
+  ...
+# Subtest: 300 repeated deliveries start exactly once
+ok 26 - 300 repeated deliveries start exactly once
+  ---
+  duration_ms: 1.307145
+  type: 'test'
+  ...
+# Subtest: no event before its actor start timestamp
+ok 27 - no event before its actor start timestamp
+  ---
+  duration_ms: 0.187763
+  type: 'test'
+  ...
+# Subtest: end time is exclusive and no resurrection after repeat
+ok 28 - end time is exclusive and no resurrection after repeat
+  ---
+  duration_ms: 0.179079
+  type: 'test'
+  ...
+# Subtest: death ends and does not resurrect
+ok 29 - death ends and does not resurrect
+  ---
+  duration_ms: 0.155934
+  type: 'test'
+  ...
+# Subtest: exited ends and does not resurrect
+ok 30 - exited ends and does not resurrect
+  ---
+  duration_ms: 0.115634
+  type: 'test'
+  ...
+# Subtest: invisible ends and does not resurrect
+ok 31 - invisible ends and does not resurrect
+  ---
+  duration_ms: 0.073059
+  type: 'test'
+  ...
+# Subtest: clock rewind terminates instead of replaying previous states
+ok 32 - clock rewind terminates instead of replaying previous states
+  ---
+  duration_ms: 0.530938
+  type: 'test'
+  ...
+# Subtest: omitted actor flags preserve previous state
+ok 33 - omitted actor flags preserve previous state
+  ---
+  duration_ms: 0.099349
+  type: 'test'
+  ...
+# Subtest: actor pause retains one event and same phase without new starts
+ok 34 - actor pause retains one event and same phase without new starts
+  ---
+  duration_ms: 0.290336
+  type: 'test'
+  ...
+# Subtest: two independent close gains keep separate phases and lifetimes
+ok 35 - two independent close gains keep separate phases and lifetimes
+  ---
+  duration_ms: 0.585049
+  type: 'test'
+  ...
+# Subtest: second event lane remains stable after first expires
+ok 36 - second event lane remains stable after first expires
+  ---
+  duration_ms: 0.121893
+  type: 'test'
+  ...
+# Subtest: same event id on different beneficiaries is not conflated
+ok 37 - same event id on different beneficiaries is not conflated
+  ---
+  duration_ms: 0.100811
+  type: 'test'
+  ...
+# Subtest: fallback de-duplicates same cause; simultaneous independent gains need unique IDs
+ok 38 - fallback de-duplicates same cause; simultaneous independent gains need unique IDs
+  ---
+  duration_ms: 0.113891
+  type: 'test'
+  ...
+# Subtest: long clock jump skips stale effect without onset
+ok 39 - long clock jump skips stale effect without onset
+  ---
+  duration_ms: 0.080791
+  type: 'test'
+  ...
+# Subtest: bounded capacity fails explicitly instead of silent acceptance
+ok 40 - bounded capacity fails explicitly instead of silent acceptance
+  ---
+  duration_ms: 0.375404
+  type: 'test'
+  ...
+# Subtest: explicit reset closes voices before discarding session ledger
+ok 41 - explicit reset closes voices before discarding session ledger
+  ---
+  duration_ms: 0.165849
+  type: 'test'
+  ...
+# Subtest: source variations do not change normalized duration/radius
+ok 42 - source variations do not change normalized duration/radius
+  ---
+  duration_ms: 0.095444
+  type: 'test'
+  ...
+# Subtest: WGSL static scene: reserved identifiers / bindings / entrypoints
+ok 43 - WGSL static scene: reserved identifiers / bindings / entrypoints
+  ---
+  duration_ms: 10.454629
+  type: 'test'
+  ...
+# Subtest: WGSL static blur: reserved identifiers / bindings / entrypoints
+ok 44 - WGSL static blur: reserved identifiers / bindings / entrypoints
+  ---
+  duration_ms: 5.765358
+  type: 'test'
+  ...
+# Subtest: WGSL static composite: reserved identifiers / bindings / entrypoints
+ok 45 - WGSL static composite: reserved identifiers / bindings / entrypoints
+  ---
+  duration_ms: 1.167997
+  type: 'test'
+  ...
+# Subtest: the reported meta regression is rejected
+ok 46 - the reported meta regression is rejected
+  ---
+  duration_ms: 0.294864
+  type: 'test'
+  ...
+# Subtest: attributes replacement is not itself a reserved identifier
+ok 47 - attributes replacement is not itself a reserved identifier
+  ---
+  duration_ms: 0.169024
+  type: 'test'
+  ...
+# Subtest: all reserved words are rejected as identifiers
+ok 48 - all reserved words are rejected as identifiers
+  ---
+  duration_ms: 0.981125
+  type: 'test'
+  ...
+# Subtest: nested comments cannot trigger false reserved-word findings
+ok 49 - nested comments cannot trigger false reserved-word findings
+  ---
+  duration_ms: 0.317918
+  type: 'test'
+  ...
+# Subtest: double underscore identifier rejected
+ok 50 - double underscore identifier rejected
+  ---
+  duration_ms: 0.100652
+  type: 'test'
+  ...
+# Subtest: binding mismatch is a static pipeline contract failure
+ok 51 - binding mismatch is a static pipeline contract failure
+  ---
+  duration_ms: 6.938121
+  type: 'test'
+  ...
+# Subtest: pipeline uses only core rgba16float sampled attachments, sampleCount1
+ok 52 - pipeline uses only core rgba16float sampled attachments, sampleCount1
+  ---
+  duration_ms: 0.45194
+  type: 'test'
+  ...
+# Subtest: CPU volume records are 4vec4, exactly64 byte strides
+ok 53 - CPU volume records are 4vec4, exactly64 byte strides
+  ---
+  duration_ms: 1.277771
+  type: 'test'
+  ...
+# Subtest: body records and render capacity are exact
+ok 54 - body records and render capacity are exact
+  ---
+  duration_ms: 0.460392
+  type: 'test'
+  ...
+# Subtest: shape remains H64 at neutral fixture origin
+ok 55 - shape remains H64 at neutral fixture origin
+  ---
+  duration_ms: 0.129064
+  type: 'test'
+  ...
+# Subtest: foreground arm is analytically in front of the stored chamber
+ok 56 - foreground arm is analytically in front of the stored chamber
+  ---
+  duration_ms: 0.087221
+  type: 'test'
+  ...
+# Subtest: mesh hiding does not alter event or charge sampler
+ok 57 - mesh hiding does not alter event or charge sampler
+  ---
+  duration_ms: 0.056135
+  type: 'test'
+  ...
+# Subtest: renderer must await compiler diagnostics and asynchronous pipeline creation
+ok 58 - renderer must await compiler diagnostics and asynchronous pipeline creation
+  ---
+  duration_ms: 1.956662
+  type: 'test'
+  ...
+# Subtest: WGSL contains no input texture in world shape pass
+ok 59 - WGSL contains no input texture in world shape pass
+  ---
+  duration_ms: 1.525884
+  type: 'test'
+  ...
+# Subtest: finite state at 10001 full-life samples
+ok 60 - finite state at 10001 full-life samples
+  ---
+  duration_ms: 19.999508
+  type: 'test'
+  ...
+# Subtest: finite normalized supply conservation and monotonic arrival
+ok 61 - finite normalized supply conservation and monotonic arrival
+  ---
+  duration_ms: 7.255078
+  type: 'test'
+  ...
+# Subtest: all three weights sum to one
+ok 62 - all three weights sum to one
+  ---
+  duration_ms: 0.160792
+  type: 'test'
+  ...
+# Subtest: analytic arrival derivative agrees with finite difference
+ok 63 - analytic arrival derivative agrees with finite difference
+  ---
+  duration_ms: 0.163997
+  type: 'test'
+  ...
+# Subtest: same actor phase at normal/double rate produces equal states
+ok 64 - same actor phase at normal/double rate produces equal states
+  ---
+  duration_ms: 7.122148
+  type: 'test'
+  ...
+# Subtest: duration affects phase, not the shape at equal phase
+ok 65 - duration affects phase, not the shape at equal phase
+  ---
+  duration_ms: 1.980578
+  type: 'test'
+  ...
+# Subtest: no volume at exact start or expiry, including out of range
+ok 66 - no volume at exact start or expiry, including out of range
+  ---
+  duration_ms: 0.22636
+  type: 'test'
+  ...
+# Subtest: early phase shows one connected reservoir plus delivery, not a lone ribbon
+ok 67 - early phase shows one connected reservoir plus delivery, not a lone ribbon
+  ---
+  duration_ms: 0.155233
+  type: 'test'
+  ...
+# Subtest: late phase has rounded internal chambers with depth, plus a core column
+ok 68 - late phase has rounded internal chambers with depth, plus a core column
+  ---
+  duration_ms: 0.428625
+  type: 'test'
+  ...
+# Subtest: hold geometry is exactly stationary from .76 to .90 except visibility
+ok 69 - hold geometry is exactly stationary from .76 to .90 except visibility
+  ---
+  duration_ms: 0.422856
+  type: 'test'
+  ...
+# Subtest: fade leaves normalized stored charge at1 (no SP consumption)
+ok 70 - fade leaves normalized stored charge at1 (no SP consumption)
+  ---
+  duration_ms: 0.198769
+  type: 'test'
+  ...
+# Subtest: reservoir depletes while internal fill rises under the same Q(t)
+ok 71 - reservoir depletes while internal fill rises under the same Q(t)
+  ---
+  duration_ms: 0.133721
+  type: 'test'
+  ...
+# Subtest: local radiance responds to arrival flux, not global repeating pulse
+ok 72 - local radiance responds to arrival flux, not global repeating pulse
+  ---
+  duration_ms: 0.612772
+  type: 'test'
+  ...
+# Subtest: actor motion translates all geometry exactly
+ok 73 - actor motion translates all geometry exactly
+  ---
+  duration_ms: 0.183486
+  type: 'test'
+  ...
+# Subtest: radius changes gameplay footprint but does not enlarge the recipient
+ok 74 - radius changes gameplay footprint but does not enlarge the recipient
+  ---
+  duration_ms: 0.119449
+  type: 'test'
+  ...
+# Subtest: close independent events do not share fill value
+ok 75 - close independent events do not share fill value
+  ---
+  duration_ms: 0.134262
+  type: 'test'
+  ...
+# Subtest: all packed numeric values remain finite over 2000 samplings
+ok 76 - all packed numeric values remain finite over 2000 samplings
+  ---
+  duration_ms: 26.611196
+  type: 'test'
+  ...
+# Subtest: audio onset exists only in initial finite phase, no repeated resets
+ok 77 - audio onset exists only in initial finite phase, no repeated resets
+  ---
+  duration_ms: 0.315144
+  type: 'test'
+  ...
+# Subtest: negative/nonfinite phase rejected or safely non-visible
+ok 78 - negative/nonfinite phase rejected or safely non-visible
+  ---
+  duration_ms: 0.29271
+  type: 'test'
+  ...
+# Subtest: worklet starts once even with repeated start and update messages
+ok 79 - worklet starts once even with repeated start and update messages
+  ---
+  duration_ms: 22.564195
+  type: 'test'
+  ...
+# Subtest: worklet preserves two distinct voice identities
+ok 80 - worklet preserves two distinct voice identities
+  ---
+  duration_ms: 1.231251
+  type: 'test'
+  ...
+# Subtest: worklet cancel drains and cannot be restarted by the same ID
+ok 81 - worklet cancel drains and cannot be restarted by the same ID
+  ---
+  duration_ms: 2.243223
+  type: 'test'
+  ...
+# Subtest: missing frame updates do not leave indefinite audible tone
+ok 82 - missing frame updates do not leave indefinite audible tone
+  ---
+  duration_ms: 18.363089
+  type: 'test'
+  ...
+1..82
+# tests 82
+# suites 0
+# pass 82
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 259.243116

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barrier Pro r0.9 — WebGPU replay</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#07111b;color:#d8eef6;font:13px/1.4 system-ui,sans-serif}
+main{width:min(100%,1440px);margin:auto;padding:8px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+section{min-width:0;border:1px solid rgba(127,220,255,.2);border-radius:9px;background:#05101a;overflow:hidden}
+section.light{background:#e9eef0;color:#27313a}h2{margin:0;padding:5px 8px;font-size:12px;font-weight:500}.surface{display:grid;place-items:center;padding:4px}
+canvas{display:block;width:min(100%,320px);height:190px}#error{position:fixed;left:8px;bottom:8px;max-width:90vw;color:#ffb9b9;background:#2c1720;padding:8px;white-space:pre-wrap}#error:empty{display:none}
+@media(max-width:850px){main{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:420px){main{grid-template-columns:1fr}}
+</style></head><body><main id="gallery"></main><div id="error" role="alert"></div><script type="module" src="./embed.mjs"></script></body></html>
