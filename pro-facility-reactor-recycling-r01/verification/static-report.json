@@ -1,0 +1,162 @@
+{
+  "method": "パッケージ固有の静的/数値検査。B正本同梱validator、GPU shader compiler、画素評価、聴感ではない。",
+  "executedAt": "2026-09-28T07:24:24.314Z",
+  "node": "v22.16.0",
+  "javascript_syntax": {
+    "status": "pass",
+    "files": [
+      {
+        "file": "preview/main.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "scripts/hashes.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "scripts/serve.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "scripts/structure-check.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/effects/reactor/sound.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/effects/reactor/state.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/effects/recycling/sound.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/effects/recycling/state.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/gpu/renderer.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/index.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/runtime/audio.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/runtime/contracts.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/runtime/controller.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/runtime/ledger.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "src/runtime/projection.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "tests/audio.test.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "tests/helpers.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "tests/motion.test.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "tests/receipt.test.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      },
+      {
+        "file": "tests/structure.test.mjs",
+        "status": "pass",
+        "diagnostic": ""
+      }
+    ]
+  },
+  "public_declarations": {
+    "status": "pass",
+    "diagnostic": ""
+  },
+  "node_tests": {
+    "status": "pass",
+    "tests": 102,
+    "pass": 102,
+    "fail": 0,
+    "evidence": "verification/node-tests.tap"
+  },
+  "B_structure": {
+    "A": {
+      "status": "pass",
+      "errors": []
+    },
+    "B": {
+      "status": "pass",
+      "errors": []
+    }
+  },
+  "PCM_numeric": {
+    "status": "pass",
+    "evidence": "verification/audio-numerics.json",
+    "hearing": "not_run"
+  },
+  "WGSL_static": {
+    "status": "pass",
+    "scope": "entrypoints/ABI/別形状/時間窓/括弧の静的確認のみ。コンパイラではない。"
+  },
+  "shader_compile": "not_run",
+  "actual_GPU_pixels_and_timing": "not_run",
+  "hearing": "not_run",
+  "game_event_and_SFX": "not_run",
+  "browser": {
+    "browser_storage": "not_run",
+    "verify_audio_contexts": "not_run",
+    "shader_compile": "not_run",
+    "actual_GPU_pixels_and_timing": "not_run",
+    "hearing": "not_run",
+    "game_event_and_SFX": "not_run",
+    "execution_error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8094/preview/index.html?verify=1\nCall log:\n  - navigating to \"http://127.0.0.1:8094/preview/index.html?verify=1\", waiting until \"load\"\n",
+    "browser_navigation": "failed"
+  },
+  "quality_acceptance": "not_run",
+  "visual_superiority": "not_established",
+  "summary_status": "static_pass_render_not_run"
+}

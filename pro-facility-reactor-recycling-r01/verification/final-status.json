@@ -1,0 +1,86 @@
+{
+  "delivery_kind": "executable_native_WebGPU_source_package_not_image_generation",
+  "targets": [
+    {
+      "key": "A",
+      "objectId": "v302-reactor-reactorGauge-1",
+      "type": "reactorGauge",
+      "effectKind": "luckBoost",
+      "declared_effect": {
+        "amount": 0.15,
+        "durationMs": 20000
+      },
+      "worldOrigin": {
+        "x": 3699,
+        "y": 388
+      },
+      "cooldownMs": 38000,
+      "visualLifetimeMs": 2200
+    },
+    {
+      "key": "B",
+      "objectId": "v302-fabrication-recyclingUnit-2",
+      "type": "recyclingUnit",
+      "effectKind": "credits",
+      "declared_effect": {
+        "amount": 3,
+        "durationMs": 0
+      },
+      "worldOrigin": {
+        "x": 4315,
+        "y": 2102
+      },
+      "cooldownMs": 34000,
+      "visualLifetimeMs": 2200
+    }
+  ],
+  "code_origin": "今回新規作成。既存Eの造形・色・音・時間関数・ソースを参照・流用していない。",
+  "source_delivery_status": "complete_source",
+  "B_rule_mapping": {
+    "rules": 123,
+    "applicable": 83,
+    "not_applicable": 40
+  },
+  "javascript_syntax": "pass",
+  "public_declarations": "pass",
+  "logic_structure_audio_numeric_tests": {
+    "status": "pass",
+    "tests": 102,
+    "pass": 102,
+    "fail": 0,
+    "evidence": "verification/node-tests.tap"
+  },
+  "B_structure": {
+    "A": {
+      "status": "pass",
+      "errors": []
+    },
+    "B": {
+      "status": "pass",
+      "errors": []
+    }
+  },
+  "semantic_reconciliation": "warning",
+  "shader_compile": "not_run",
+  "actual_GPU_pixels_and_timing": "not_run",
+  "H64_dark_light_lifetime_actor_speed_pixel_review": "not_run",
+  "hearing": "not_run",
+  "browser_IndexedDB_real_transactions": "not_run",
+  "game_event_and_SFX_integration": "not_run",
+  "quality_acceptance": "not_run",
+  "browser_navigation": "failed_ERR_BLOCKED_BY_ADMINISTRATOR",
+  "external_edits": {
+    "game": false,
+    "public_site": false,
+    "gallery": false,
+    "repository_writes": false
+  },
+  "limitations": [
+    "102件passは静的・ロジック・PCM数値検査であり、H64画素・聴感合格ではない。",
+    "実ゲームのwire形式・既存generic subscriberとの結線はホスト契約として提供し、接続済みとはしない。",
+    "認証はホストの検証済みtransport callbackに依存する。成功フラグの自己申告は証明にならない。",
+    "永続claimと実際の可視/可聴出力は同一transactionにできないため、クラッシュを含む一律exactly-once出力は保証しない。",
+    "B正本のcommit/blobは確認したが、会話本文とリポジトリ全文のbyte一致検査はnot_run。会話で受領した本文を設計正本とする。"
+  ],
+  "hash_contract": "MANIFEST.jsonは全payload SHA-256/bytesを収録。SHA256SUMSはpayloadとMANIFEST.jsonを検証。ZIP自身のSHA-256は納品メッセージへ記載。"
+}

@@ -1,0 +1,596 @@
+TAP version 13
+# Subtest: verify creates no nodes, buffers or sound
+ok 1 - verify creates no nodes, buffers or sound
+  ---
+  duration_ms: 1.701387
+  type: 'test'
+  ...
+# Subtest: one source, one start even for duplicate
+ok 2 - one source, one start even for duplicate
+  ---
+  duration_ms: 88.598199
+  type: 'test'
+  ...
+# Subtest: delayed cue begins at age offset, never from zero
+ok 3 - delayed cue begins at age offset, never from zero
+  ---
+  duration_ms: 22.807058
+  type: 'test'
+  ...
+# Subtest: muted and suspended consume without resume replay
+ok 4 - muted and suspended consume without resume replay
+  ---
+  duration_ms: 17.998929
+  type: 'test'
+  ...
+# Subtest: audio duration exhausted is silent even inside visual lifetime
+ok 5 - audio duration exhausted is silent even inside visual lifetime
+  ---
+  duration_ms: 33.823414
+  type: 'test'
+  ...
+# Subtest: PCM finite and bounded A/8000 (not hearing)
+ok 6 - PCM finite and bounded A/8000 (not hearing)
+  ---
+  duration_ms: 6.490281
+  type: 'test'
+  ...
+# Subtest: PCM finite and bounded B/8000 (not hearing)
+ok 7 - PCM finite and bounded B/8000 (not hearing)
+  ---
+  duration_ms: 4.455216
+  type: 'test'
+  ...
+# Subtest: PCM finite and bounded A/44100 (not hearing)
+ok 8 - PCM finite and bounded A/44100 (not hearing)
+  ---
+  duration_ms: 14.327098
+  type: 'test'
+  ...
+# Subtest: PCM finite and bounded B/44100 (not hearing)
+ok 9 - PCM finite and bounded B/44100 (not hearing)
+  ---
+  duration_ms: 10.121039
+  type: 'test'
+  ...
+# Subtest: PCM finite and bounded A/48000 (not hearing)
+ok 10 - PCM finite and bounded A/48000 (not hearing)
+  ---
+  duration_ms: 11.943875
+  type: 'test'
+  ...
+# Subtest: PCM finite and bounded B/48000 (not hearing)
+ok 11 - PCM finite and bounded B/48000 (not hearing)
+  ---
+  duration_ms: 10.157291
+  type: 'test'
+  ...
+# Subtest: PCM finite and bounded A/96000 (not hearing)
+ok 12 - PCM finite and bounded A/96000 (not hearing)
+  ---
+  duration_ms: 17.569192
+  type: 'test'
+  ...
+# Subtest: PCM finite and bounded B/96000 (not hearing)
+ok 13 - PCM finite and bounded B/96000 (not hearing)
+  ---
+  duration_ms: 15.389859
+  type: 'test'
+  ...
+# Subtest: A and B independently constructed signals
+ok 14 - A and B independently constructed signals
+  ---
+  duration_ms: 17.74603
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed1/normal (not pixels)
+ok 15 - logic matrix A/dark/speed1/normal (not pixels)
+  ---
+  duration_ms: 3.885698
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed1/duplicate (not pixels)
+ok 16 - logic matrix A/dark/speed1/duplicate (not pixels)
+  ---
+  duration_ms: 1.713382
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed1/delayed (not pixels)
+ok 17 - logic matrix A/dark/speed1/delayed (not pixels)
+  ---
+  duration_ms: 0.516022
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed1/expired (not pixels)
+ok 18 - logic matrix A/dark/speed1/expired (not pixels)
+  ---
+  duration_ms: 0.179356
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed1/offscreen (not pixels)
+ok 19 - logic matrix A/dark/speed1/offscreen (not pixels)
+  ---
+  duration_ms: 0.497928
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed1/missing (not pixels)
+ok 20 - logic matrix A/dark/speed1/missing (not pixels)
+  ---
+  duration_ms: 2.564535
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed2/normal (not pixels)
+ok 21 - logic matrix A/dark/speed2/normal (not pixels)
+  ---
+  duration_ms: 0.700543
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed2/duplicate (not pixels)
+ok 22 - logic matrix A/dark/speed2/duplicate (not pixels)
+  ---
+  duration_ms: 5.37821
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed2/delayed (not pixels)
+ok 23 - logic matrix A/dark/speed2/delayed (not pixels)
+  ---
+  duration_ms: 0.553272
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed2/expired (not pixels)
+ok 24 - logic matrix A/dark/speed2/expired (not pixels)
+  ---
+  duration_ms: 1.799056
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed2/offscreen (not pixels)
+ok 25 - logic matrix A/dark/speed2/offscreen (not pixels)
+  ---
+  duration_ms: 0.620452
+  type: 'test'
+  ...
+# Subtest: logic matrix A/dark/speed2/missing (not pixels)
+ok 26 - logic matrix A/dark/speed2/missing (not pixels)
+  ---
+  duration_ms: 0.520004
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed1/normal (not pixels)
+ok 27 - logic matrix A/light/speed1/normal (not pixels)
+  ---
+  duration_ms: 0.608517
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed1/duplicate (not pixels)
+ok 28 - logic matrix A/light/speed1/duplicate (not pixels)
+  ---
+  duration_ms: 1.578432
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed1/delayed (not pixels)
+ok 29 - logic matrix A/light/speed1/delayed (not pixels)
+  ---
+  duration_ms: 0.250971
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed1/expired (not pixels)
+ok 30 - logic matrix A/light/speed1/expired (not pixels)
+  ---
+  duration_ms: 0.126435
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed1/offscreen (not pixels)
+ok 31 - logic matrix A/light/speed1/offscreen (not pixels)
+  ---
+  duration_ms: 0.448655
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed1/missing (not pixels)
+ok 32 - logic matrix A/light/speed1/missing (not pixels)
+  ---
+  duration_ms: 0.341904
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed2/normal (not pixels)
+ok 33 - logic matrix A/light/speed2/normal (not pixels)
+  ---
+  duration_ms: 3.116594
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed2/duplicate (not pixels)
+ok 34 - logic matrix A/light/speed2/duplicate (not pixels)
+  ---
+  duration_ms: 2.295931
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed2/delayed (not pixels)
+ok 35 - logic matrix A/light/speed2/delayed (not pixels)
+  ---
+  duration_ms: 0.656837
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed2/expired (not pixels)
+ok 36 - logic matrix A/light/speed2/expired (not pixels)
+  ---
+  duration_ms: 0.183075
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed2/offscreen (not pixels)
+ok 37 - logic matrix A/light/speed2/offscreen (not pixels)
+  ---
+  duration_ms: 0.342737
+  type: 'test'
+  ...
+# Subtest: logic matrix A/light/speed2/missing (not pixels)
+ok 38 - logic matrix A/light/speed2/missing (not pixels)
+  ---
+  duration_ms: 0.25989
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed1/normal (not pixels)
+ok 39 - logic matrix B/dark/speed1/normal (not pixels)
+  ---
+  duration_ms: 1.618778
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed1/duplicate (not pixels)
+ok 40 - logic matrix B/dark/speed1/duplicate (not pixels)
+  ---
+  duration_ms: 0.807413
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed1/delayed (not pixels)
+ok 41 - logic matrix B/dark/speed1/delayed (not pixels)
+  ---
+  duration_ms: 0.774153
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed1/expired (not pixels)
+ok 42 - logic matrix B/dark/speed1/expired (not pixels)
+  ---
+  duration_ms: 0.475566
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed1/offscreen (not pixels)
+ok 43 - logic matrix B/dark/speed1/offscreen (not pixels)
+  ---
+  duration_ms: 1.177858
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed1/missing (not pixels)
+ok 44 - logic matrix B/dark/speed1/missing (not pixels)
+  ---
+  duration_ms: 0.651675
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed2/normal (not pixels)
+ok 45 - logic matrix B/dark/speed2/normal (not pixels)
+  ---
+  duration_ms: 1.228452
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed2/duplicate (not pixels)
+ok 46 - logic matrix B/dark/speed2/duplicate (not pixels)
+  ---
+  duration_ms: 0.660629
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed2/delayed (not pixels)
+ok 47 - logic matrix B/dark/speed2/delayed (not pixels)
+  ---
+  duration_ms: 0.236512
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed2/expired (not pixels)
+ok 48 - logic matrix B/dark/speed2/expired (not pixels)
+  ---
+  duration_ms: 0.938374
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed2/offscreen (not pixels)
+ok 49 - logic matrix B/dark/speed2/offscreen (not pixels)
+  ---
+  duration_ms: 0.552089
+  type: 'test'
+  ...
+# Subtest: logic matrix B/dark/speed2/missing (not pixels)
+ok 50 - logic matrix B/dark/speed2/missing (not pixels)
+  ---
+  duration_ms: 0.424176
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed1/normal (not pixels)
+ok 51 - logic matrix B/light/speed1/normal (not pixels)
+  ---
+  duration_ms: 2.376811
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed1/duplicate (not pixels)
+ok 52 - logic matrix B/light/speed1/duplicate (not pixels)
+  ---
+  duration_ms: 0.587189
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed1/delayed (not pixels)
+ok 53 - logic matrix B/light/speed1/delayed (not pixels)
+  ---
+  duration_ms: 0.203035
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed1/expired (not pixels)
+ok 54 - logic matrix B/light/speed1/expired (not pixels)
+  ---
+  duration_ms: 0.098723
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed1/offscreen (not pixels)
+ok 55 - logic matrix B/light/speed1/offscreen (not pixels)
+  ---
+  duration_ms: 1.283989
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed1/missing (not pixels)
+ok 56 - logic matrix B/light/speed1/missing (not pixels)
+  ---
+  duration_ms: 0.408423
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed2/normal (not pixels)
+ok 57 - logic matrix B/light/speed2/normal (not pixels)
+  ---
+  duration_ms: 0.397174
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed2/duplicate (not pixels)
+ok 58 - logic matrix B/light/speed2/duplicate (not pixels)
+  ---
+  duration_ms: 0.500929
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed2/delayed (not pixels)
+ok 59 - logic matrix B/light/speed2/delayed (not pixels)
+  ---
+  duration_ms: 0.222638
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed2/expired (not pixels)
+ok 60 - logic matrix B/light/speed2/expired (not pixels)
+  ---
+  duration_ms: 0.090438
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed2/offscreen (not pixels)
+ok 61 - logic matrix B/light/speed2/offscreen (not pixels)
+  ---
+  duration_ms: 0.347631
+  type: 'test'
+  ...
+# Subtest: logic matrix B/light/speed2/missing (not pixels)
+ok 62 - logic matrix B/light/speed2/missing (not pixels)
+  ---
+  duration_ms: 5.941004
+  type: 'test'
+  ...
+# Subtest: different phase/state topologies, including exact end
+not ok 63 - different phase/state topologies, including exact end
+  ---
+  duration_ms: 1.572942
+  type: 'test'
+  location: '/mnt/data/dva-facility-e/tests/motion.test.mjs:22:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 1.0000000000000013
+    - 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 1.0000000000000013
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/dva-facility-e/tests/motion.test.mjs:24:9)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: camera re-entry keeps age instead of replaying
+ok 64 - camera re-entry keeps age instead of replaying
+  ---
+  duration_ms: 0.348349
+  type: 'test'
+  ...
+# Subtest: a far offscreen event never suppresses visible event
+ok 65 - a far offscreen event never suppresses visible event
+  ---
+  duration_ms: 0.095778
+  type: 'test'
+  ...
+# Subtest: reduced motion minimizes transverse motion but retains causal transport
+ok 66 - reduced motion minimizes transverse motion but retains causal transport
+  ---
+  duration_ms: 0.066584
+  type: 'test'
+  ...
+# Subtest: A: exact target one dedicated route
+ok 67 - A: exact target one dedicated route
+  ---
+  duration_ms: 2.690338
+  type: 'test'
+  ...
+# Subtest: B: exact target one dedicated route
+ok 68 - B: exact target one dedicated route
+  ---
+  duration_ms: 0.395908
+  type: 'test'
+  ...
+# Subtest: reject invalid status:failed
+ok 69 - reject invalid status:failed
+  ---
+  duration_ms: 0.560672
+  type: 'test'
+  ...
+# Subtest: reject invalid objectId:
+ok 70 - reject invalid objectId:
+  ---
+  duration_ms: 0.25584
+  type: 'test'
+  ...
+# Subtest: reject invalid type:wrong
+ok 71 - reject invalid type:wrong
+  ---
+  duration_ms: 0.343091
+  type: 'test'
+  ...
+# Subtest: reject invalid effectKind:wrong
+ok 72 - reject invalid effectKind:wrong
+  ---
+  duration_ms: 1.269698
+  type: 'test'
+  ...
+# Subtest: reject invalid playerId:absent
+ok 73 - reject invalid playerId:absent
+  ---
+  duration_ms: 0.346276
+  type: 'test'
+  ...
+# Subtest: reject invalid objectCausalId:
+ok 74 - reject invalid objectCausalId:
+  ---
+  duration_ms: 0.238315
+  type: 'test'
+  ...
+# Subtest: reject invalid capturedTime:NaN
+ok 75 - reject invalid capturedTime:NaN
+  ---
+  duration_ms: 0.506217
+  type: 'test'
+  ...
+# Subtest: reject invalid capturedTime:123
+ok 76 - reject invalid capturedTime:123
+  ---
+  duration_ms: 0.52617
+  type: 'test'
+  ...
+# Subtest: reject invalid worldOrigin:[object Object]
+ok 77 - reject invalid worldOrigin:[object Object]
+  ---
+  duration_ms: 0.25918
+  type: 'test'
+  ...
+# Subtest: reject invalid worldOrigin:[object Object]
+ok 78 - reject invalid worldOrigin:[object Object]
+  ---
+  duration_ms: 0.150543
+  type: 'test'
+  ...
+# Subtest: untrusted success flag rejected
+ok 79 - untrusted success flag rejected
+  ---
+  duration_ms: 0.207553
+  type: 'test'
+  ...
+# Subtest: 100 concurrent duplicates reserve once
+ok 80 - 100 concurrent duplicates reserve once
+  ---
+  duration_ms: 3.31512
+  type: 'test'
+  ...
+# Subtest: same cause cannot mutate player, timestamp or object to replay
+ok 81 - same cause cannot mutate player, timestamp or object to replay
+  ---
+  duration_ms: 1.070062
+  type: 'test'
+  ...
+# Subtest: controller replacement shares persistent claim (model)
+ok 82 - controller replacement shares persistent claim (model)
+  ---
+  duration_ms: 0.236688
+  type: 'test'
+  ...
+# Subtest: render, camera and redraw never re-fire
+ok 83 - render, camera and redraw never re-fire
+  ---
+  duration_ms: 1.592767
+  type: 'test'
+  ...
+# Subtest: delayed receipt joins capturedTime phase
+ok 84 - delayed receipt joins capturedTime phase
+  ---
+  duration_ms: 0.242233
+  type: 'test'
+  ...
+# Subtest: expired event is consumed, no visual and no generic
+ok 85 - expired event is consumed, no visual and no generic
+  ---
+  duration_ms: 0.558239
+  type: 'test'
+  ...
+# Subtest: future +51ms rejected; +30ms waits without extra trigger
+ok 86 - future +51ms rejected; +30ms waits without extra trigger
+  ---
+  duration_ms: 0.361737
+  type: 'test'
+  ...
+# Subtest: unbounded clock fails closed
+ok 87 - unbounded clock fails closed
+  ---
+  duration_ms: 0.227131
+  type: 'test'
+  ...
+# Subtest: frame clock cannot rewind live phase
+ok 88 - frame clock cannot rewind live phase
+  ---
+  duration_ms: 0.195806
+  type: 'test'
+  ...
+# Subtest: missing anchor is not replaced with source; does not defer lifetime
+ok 89 - missing anchor is not replaced with source; does not defer lifetime
+  ---
+  duration_ms: 0.320833
+  type: 'test'
+  ...
+# Subtest: ledger quota failure cannot leak sound or visuals
+ok 90 - ledger quota failure cannot leak sound or visuals
+  ---
+  duration_ms: 0.855168
+  type: 'test'
+  ...
+# Subtest: unknown valid facility uses exactly one generic route
+ok 91 - unknown valid facility uses exactly one generic route
+  ---
+  duration_ms: 0.365523
+  type: 'test'
+  ...
+# Subtest: atomic presentation replacement does not modify benefit handler
+ok 92 - atomic presentation replacement does not modify benefit handler
+  ---
+  duration_ms: 0.289577
+  type: 'test'
+  ...
+# Subtest: cause keys are not delimiter-collision prone
+ok 93 - cause keys are not delimiter-collision prone
+  ---
+  duration_ms: 0.099816
+  type: 'test'
+  ...
+# Subtest: benefit/cooldown metadata independent of visual lifetime
+ok 94 - benefit/cooldown metadata independent of visual lifetime
+  ---
+  duration_ms: 0.111586
+  type: 'test'
+  ...
+1..94
+# tests 94
+# suites 0
+# pass 93
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 373.149954
