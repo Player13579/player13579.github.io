@@ -109,8 +109,8 @@
     { id: 'rational-pro', title: '理性の錬気（GPT Pro）', versions: [
       version('rational-pro-r01', 'GPT Pro r0.1', 'action-rational-pro-r01/replay.html', 'action-rational-pro-r01/src/gpu.mjs', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '銅金色の場が中心の水平通路を開く独立設計。暗明H64のWebGPU再生を確認しました。原寸の全寿命とSFX品質、本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
-    { id: 'ninjutsu-pro', title: '忍術の錬気（GPT Pro）', versions: [
-      version('ninjutsu-pro-r01', 'GPT Pro r0.1', 'action-ninjutsu-pro-r01/gallery-preview.html', 'action-ninjutsu-pro-r01/src/gpu.mjs', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '濃紺と紫の内向き曲線による独立設計。暗明H64のWebGPU再生を確認しました。原寸の全寿命とSFX品質、本編接続は未受入です。', 'effect-H64', 1, true)
+    { id: 'ninjutsu-pro', title: '忍殺準備（GPT Pro）', versions: [
+      version('ninjutsu-pro-r01', 'GPT Pro r0.1', 'action-ninjutsu-pro-r01/gallery-preview.html', 'action-ninjutsu-pro-r01/src/gpu.mjs', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '忍殺準備の開始を表す独立設計。濃紺と紫の内向き曲線で張力を示します。錬気ではありません。暗明H64のWebGPU再生を確認済み。原寸の全寿命とSFX品質、本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'heart-teleport-pro', title: '心臓転移（GPT Pro）', versions: [
       version('heart-teleport-pro-r01', 'GPT Pro r0.1', 'heart-teleport-pro-r01/index.html', 'heart-teleport-pro-r01/source/src/gpu.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', '発動者側だけに表示する心臓転移E。暗明H64の実WebGPUフレームで描画を確認。着地点の座標や方向を表現せず、造形・音の品質と本編接続は未受入です。', 'effect-H64', 1, true)
@@ -169,7 +169,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v51');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v52');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
@@ -228,6 +228,7 @@
   }
   window.__webgpuEGallery = Object.freeze({ presentation: PRESENTATION,
     entries: Object.freeze(entries.map(group => Object.freeze({ id: group.id,
+      title: group.title,
       latest: group.versions[0].id, versions: group.versions }))) });
   select(0);
 })();
