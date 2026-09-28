@@ -2,6 +2,27 @@
 // setting are the Pro r0.6 preview's own; verification playback has no audio.
 import {createBarrierRenderer} from './barrier-pro-renderer.mjs';
 import {EVENTS} from './barrier-pro-model.mjs';
+import {createSfxBank} from './barrier-pro-sfx.mjs';
+import {createReplayAudioGate} from './embed-audio.mjs?v=gallery-audio-v41';
+
+const verifyMode=new URLSearchParams(location.search).has('verify');
+const audioErrors=[];
+const audioGate=createReplayAudioGate({verifyMode,sfx:createSfxBank(),
+  onError:error=>audioErrors.push(String(error?.stack||error))});
+const audioControl=document.getElementById('audio-control');
+const audioButton=document.getElementById('enable-audio');
+const audioStatus=document.getElementById('audio-status');
+if(!verifyMode){
+  audioControl.hidden=false;
+  audioButton.addEventListener('click',async()=>{
+    audioButton.disabled=true;
+    const enabled=await audioGate.unlock();
+    audioStatus.textContent=enabled
+      ?'音を有効化しました。次の事象から再生します。'
+      :'音を有効化できませんでした。もう一度お試しください。';
+    if(!enabled)audioButton.disabled=false;
+  });
+}
 
 const panels=[
   {id:'dark64',background:'dark',H:64},
@@ -38,6 +59,9 @@ function frame(now){
         throw new Error(panel.renderer.diagnostics.join('\n'));
     }
     state.branch=branch;state.ageMs=ageMs;state.drawCount++;
+    audioGate.enter(branch);
+    state.audioEnabled=audioGate.enabled;
+    if(audioErrors.length)state.audioErrors=audioErrors.slice();
     if(!state.ready){state.ready=true;document.body.dataset.previewStatus='ready';}
     raf=requestAnimationFrame(frame);
   }catch(error){fail(error);}

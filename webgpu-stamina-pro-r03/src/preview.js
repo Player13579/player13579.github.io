@@ -132,7 +132,20 @@ $('pause').onclick=()=>{
 $('phase').oninput=()=>{state.manual=Number($('phase').value);state.paused=true;audio.stopAll();$('scrubText').textContent=`p=${state.manual.toFixed(3)} / 無音`; $('pause').textContent='再開';};
 $('auto').onclick=()=>{state.paused=false;beginCycle();};
 $('audioClock').onchange=()=>{audio.stopAll();state.audioClock=Number($('audioClock').value);$('audioStats').textContent='次の新しいgainから選択時計で発音。過去分の一括再生なし。';};
-$('audio').onclick=async()=>{if(verifyMode||embedMode)return;try{if(audio.enabled){await audio.disable();$('audio').textContent='音を有効化';}else{const result=await audio.enable();$('audio').textContent='音を止める';$('audioStats').textContent=JSON.stringify({...result,nextNewGainOnly:true,listening:'not_run'},null,2);}}catch(error){$('audioStats').textContent=`音声初期化失敗: ${error.message}`;}};
+async function togglePreviewAudio() {
+  if(verifyMode)return;
+  try {
+    if(audio.enabled){await audio.disable();$('audio').textContent='音を有効化';}
+    else {const result=await audio.enable();$('audio').textContent='音を止める';$('audioStats').textContent=JSON.stringify({...result,nextNewGainOnly:true,listening:'not_run'},null,2);}
+    if(embedMode)$('dark1').title=audio.enabled?'クリックで音声を停止':'クリックで音声を有効化（次の新しい回復Eから）';
+  } catch(error) {$('audioStats').textContent=`音声初期化失敗: ${error.message}`;}
+}
+$('audio').onclick=togglePreviewAudio;
+if(embedMode){
+  const canvas=$('dark1');
+  canvas.title='クリックで音声を有効化（次の新しい回復Eから）';
+  canvas.addEventListener('click',togglePreviewAudio);
+}
 for(const button of document.querySelectorAll('[data-kill]')) button.onclick=()=>{
   state.paused=true;state.manual=null;audio.stopAll();
   for(const m of managers){for(const actor of [...m.ledger.actors.values()]){

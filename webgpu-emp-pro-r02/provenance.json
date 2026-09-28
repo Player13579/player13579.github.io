@@ -27,8 +27,9 @@
   ],
   "technicalAdaptations": {
     "index.html": "Loads embed CSS and points gallery links to the host E gallery.",
-    "preview/main.js": "In embed mode, shows the original WebGPU stage, cycles the five authored branches, skips diagnostic Canvas 2D markers, and hides inspection controls. A verify query forces zero audio volume and disables unlocking.",
-    "preview/embed.css": "Fits the WebGPU stage into the gallery's 980x620 iframe, retaining a branch label and visible runtime error."
+    "preview/main.js": "In embed mode, shows the original WebGPU stage, cycles the five authored branches, skips diagnostic Canvas 2D markers, and hides inspection controls. A normal embed unlocks audio only after a canvas pointer or keyboard gesture and restarts the current branch; a verify query forces zero audio volume and disables unlock.",
+    "preview/audio-control.js": "Centralizes the user-gesture audio gate; verification mode cannot create or resume audio.",
+    "preview/embed.css": "Fits the WebGPU stage into the gallery's 980x620 iframe, retaining a branch label, visible runtime error, and a pointer cue only when user-gesture audio can be enabled."
   },
   "quality": "hold; sampled WebGPU branches only, full-lifetime visual and SFX review unaccepted"
 }

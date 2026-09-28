@@ -1,0 +1,3700 @@
+{
+  "FoundationOperationTemplate": {
+    "OutputContract": {
+      "schema_version": "B-Expression-2",
+      "mode": "Video",
+      "operation": "render_requested"
+    },
+    "RuntimeInterpretation": "r0.3の独立リアルタイムWebGPU資産。Bのmode=Videoは連続時間設計への写像であり、実GPU確認済み・動画書出し済みを意味しない。単独previewの正準観測窓は10 actor秒。",
+    "TemplateConsolidation": {
+      "per_chapter_template_count": 1,
+      "template_position": "chapter_end",
+      "inter_template_duplication_forbidden": true,
+      "cross_chapter_reference_preferred": true
+    },
+    "RuleContract": {
+      "fields": [
+        "rule_id",
+        "owner",
+        "priority",
+        "applies_when",
+        "requirement",
+        "exception_to",
+        "validation_id"
+      ],
+      "same_priority_resolution": "explicit_exception_or_compatible_union",
+      "unresolved_conflict_result": "spec_conflict"
+    },
+    "GlobalInterpretation": {
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "full_PH_structure_required_for_all_visibilities": true,
+      "WindCapsule_required": true
+    },
+    "UniversalNoLabelOnly": {
+      "label_only_declaration_forbidden": true,
+      "indirect_evidence_for_implicit_latent": true
+    },
+    "Acceptance": {
+      "each_chapter_has_exactly_one_template": true,
+      "independent_template_groups_absent": true,
+      "unique_rule_ids_and_resolvable_references": true,
+      "same_priority_conflicts_resolved_explicitly": true
+    }
+  },
+  "InferenceExpansionPolicy": {
+    "DeclaredIntent": {
+      "character_count": "ゲーム側の既存発動者・対象を参照。VFX APIは身体を追加しない。previewの3つのH64形状は外部body coverageを代用する検査マスクで、人物の創作ではない。",
+      "character_attributes": {},
+      "main_action": "共通アクション系EのデジタルEMP。チャージ、通常放出、同位相共鳴、逆位相相殺、対象ストレージロックの5枝を原因・保持・主作用・有限終端・消去で読む。",
+      "main_objects": "既存の5枝の情報場、既存発動者/対象/中点、枝に束縛したSFX。イベント数はホスト入力のみ。専用画像テクスチャ0。",
+      "background": "ホスト背景不変。API既定は透明。明暗背景・H64定規・任意距離ガイドは別のpreview表示条件。",
+      "style": "ユーザー明示のデジタルE。離散チャネル、有限転送区間、共有接続、補対消去、書込禁止が主形・内部・境界・時間を変える。格子/走査線/粒子/bloomの後付けをデジタル性の主因にしない。",
+      "text_logo_policy": "世界内文字・ロゴ・数字・アイコンを生成しない。検査UIのみ別canvas/HTMLに文字。"
+    },
+    "ExpressionIntent": {
+      "source": "user_declared",
+      "purpose": "H64原寸でデジタル情報場の5つの異なる原因と帰結を主形・時間から認識する。r0.1を品質改稿するが、P0や未観察条件を完成/検証済みと扱わない。",
+      "must_communicate": [
+        "チャージ1200msは準備閾値で、権威解決までは準備形を保持する。",
+        "通常放出は有限長占有域の前端と後端が発動点から対象へ移る。",
+        "共鳴は同位相結果による中点の新たな共有接続状態。通常2発の重ね合わせではない。",
+        "相殺は対向列を順に消す前線と空の終状態。共鳴の色違い/拡縮版ではない。",
+        "ロックは対象に追従する書込禁止場。権威期限・延長・解除に従い、再ラッチ/再起音しない。",
+        "白い稜線と暗い切欠き、前後遮蔽をH64で残す。",
+        "SFXは起因イベント毎に1voice。延長と解決は既存voiceの更新。"
+      ],
+      "preserve_ambiguity": [
+        "未提示のサーバー枝選択・ペア競合・cause/ownerの内部意味を推測しない。"
+      ],
+      "allowed_omission": [],
+      "allowed_exaggeration": [],
+      "protected_relations": [
+        "phase/pair/cause/owner/authoritative deadlineは不変snapshot。期限変更は明示延長commandにだけ別履歴として追加。",
+        "判定域・ダメージ・実storage状態を見た目から決めない。サーバー枝を再分類しない。",
+        "charge 1200ms、normal range260px、lock標準7000ms、cooldown18000ms、pair<=1200ms/520px、midpoint、共鳴kill110px/body260px、paired visual1600msは提供契約の記録。",
+        "権威解決後は到達済み主形を固定して撤去だけを進める。後から転送到着や主作用ピークを新規発生させない。",
+        "旧Sol/Astraの形・色・層・時間・音・コードを創作入力としない。",
+        "P0はバイト不変の凍結ブロックアウト。確認履歴はP0共鳴0.70 actor秒のみ。r0.1は通常転送/共鳴の限定状態。"
+      ]
+    },
+    "SelectionLifecycle": {
+      "stages": [
+        "candidate",
+        "accepted",
+        "registered_world",
+        "registered_observation"
+      ],
+      "candidate_catalog_in_final_code": false,
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "adoption_checks": [
+        "DeclaredIntent_consistency",
+        "contribution",
+        "readability",
+        "activation_condition"
+      ]
+    },
+    "inferred_support_elements": {
+      "default_permission": "denied",
+      "explicit_user_permission_required": true,
+      "allowed_domains": [],
+      "allowed_scope": "既存効果の属性具体化のみ。新しい人物・背景物体・装飾を追加しない。",
+      "support_declared_elements_without_overriding_them": true,
+      "latent_visualization_object_not_required": true
+    },
+    "Acceptance": {
+      "declared_intent_preserved": true,
+      "inference_without_explicit_user_permission_absent": true,
+      "candidate_accepted_registered_distinguished": true,
+      "unselected_candidates_absent_from_final": true
+    }
+  },
+  "PlatonicGoodTemplate": {
+    "Good": {
+      "evidence": "世界内情報場、権威データ、表示変換を分離。形の独自性より原因/対象/終端の同一性を先に保つ。"
+    },
+    "Truth": {
+      "coordinate_continuity": "game px→B設計m→camera→screenの同一換算。H64=64 CSS px at zoom1。",
+      "physical_causality": "ゲームが宣言した非現実情報場の内部整合。Maxwell方程式・生体障害・実測EM波の主張をしない。",
+      "state_transition_readability": "src/information-state.jsの離散的チャネルとsrc/sampler.jsの共通actor時刻。解決後は状態時刻を固定し、terminalQだけ進む。"
+    },
+    "Beauty": {
+      "boundary_readability": "稜線1.25–2.7game pxを中心に、面幅5–20pxと暗い空隙を分離。表示条件に依存する設計目安。",
+      "gaze_circulation": "発動点→転送→対象を主経路、入力二点→共有/消去中点を副経路。静止保持中は視線停止を許す。",
+      "structural_separation": "主形は実メッシュ、内部は奥行きの異なる曲がり/欠き、OBS拡散は狭域のみ。"
+    },
+    "BeautyStructuring": {
+      "axes": [
+        "ratio_proportion",
+        "balance_symmetry",
+        "contrast",
+        "rhythm_repetition",
+        "whitespace_density",
+        "hierarchy_gaze_flow",
+        "material_response",
+        "temporal_phase"
+      ],
+      "standard_minimum_axes_per_PH": 2,
+      "standard_minimum_evidence_per_applied_axis": 2,
+      "intent_adjustment_ref": "InferenceExpansionPolicy.ExpressionIntent"
+    },
+    "Acceptance": {
+      "each_PH_connected_to_at_least_two_GTB_layers": true,
+      "single_formula_does_not_dominate_beauty": true
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "5枝は独立した権威入力・時間構造・対象境界を持つためPH1–5。PH6は既存ゲーム境界、PH7は入力イベントに束縛された世界内サウンド署名。層数からPHを増やさない。",
+      "shared_condition_policy": "同じactor clock、同じH64換算。各枝の保持・寿命・解決/期限は個別。本文は参照展開済みで$refなし。",
+      "no_discipline_based_split": true
+    },
+    "SharedConditions": {},
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "チャージ / 情報捕獲と準備ラッチ",
+        "origin": "declared",
+        "anchor": "body",
+        "visibility": "visible",
+        "local_state_difference": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+        "partition_reason": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。"
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "通常放出 / 有限長の情報転送",
+        "origin": "declared",
+        "anchor": "body",
+        "visibility": "visible",
+        "local_state_difference": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+        "partition_reason": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。"
+      },
+      "PH3": {
+        "id": "PH3",
+        "name": "ストレージロック / 対象局所の書込禁止",
+        "origin": "declared",
+        "anchor": "body",
+        "visibility": "visible",
+        "local_state_difference": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+        "partition_reason": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。"
+      },
+      "PH4": {
+        "id": "PH4",
+        "name": "同位相共鳴 / 共有接続場への再編成",
+        "origin": "declared",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+        "partition_reason": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。"
+      },
+      "PH5": {
+        "id": "PH5",
+        "name": "逆位相相殺 / 補対情報の順次消去",
+        "origin": "declared",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+        "partition_reason": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。"
+      },
+      "PH6": {
+        "id": "PH6",
+        "name": "外部ゲームの発動者・対象・権威境界",
+        "origin": "declared",
+        "anchor": "body",
+        "visibility": "latent",
+        "local_state_difference": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。",
+        "partition_reason": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。"
+      },
+      "PH7": {
+        "id": "PH7",
+        "name": "起因イベントに束縛したサウンド署名",
+        "origin": "declared",
+        "anchor": "air",
+        "visibility": "implicit",
+        "local_state_difference": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。",
+        "partition_reason": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。"
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "チャージ / 情報捕獲と準備ラッチ",
+          "origin": "declared",
+          "anchor": "body",
+          "visibility": "visible",
+          "local_state_difference": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+          "partition_reason": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。"
+        },
+        "DeepStructure": {
+          "Core": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+          "Structure": "capture_and_latch: src/information-state.jsが幾何の列・前端/後端・共有路・消去順を決める。",
+          "Surface": "正面稜・側面・裏面のcoverageを分離。全体blurで形を作らず欠損と位相の差を残す。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。 対象外のHP、inventory、cooldownは境界外。",
+          "state_variables": "actor-ms、権威deadline-ms、枝状態、位置game px、仮想厚みgame px、coverage0–1、相対radiance。単位換算はCoordinateGravityWindTemplate。",
+          "inputs": "PH6のホスト起因入力。src/geometry.js: chargeがサンプル化し、外部位相/ペアの再解決はしない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "energy": {
+              "status": "not_applicable",
+              "balance_or_reason": "実ジュールの量を主張しない。ゲームイベント供給→有限な放射/署名→終端または明示保持の情報収支だけをモデル化する。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            }
+          },
+          "constitutive_response": "capture_and_latch: 主形の接続/占有/欠損が情報状態に対応する。実材料の構成則ではない。",
+          "initial_condition": "明示開始時刻以前は存在しない。PH6は外部入力境界のみ。",
+          "boundary_conditions": "source/target/midpointはそれぞれ供給snapshot。charge/lockの追従だけ別添付座標で更新。放出/ペア位置を再計算しない。",
+          "approximation_scope": "提供されたゲーム上の非現実機構の設計モデル。サーバー原本は未提示、ゲーム実装との適合/実GPU/実聴は未検証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "H64=64 game pxを1設計mとする任意換算。主面5–30game px、主線約1.25–2.7game px。射程/ダメージ半径を主形の大きさに代用しない。",
+          "characteristic_time": "準備1.2s、任意の権威保持、解決後0.24s。保持時間を固定寿命と混同しない。",
+          "dominant_balance": "情報場の指定拘束/権威終端が主、OBS拡散は従。自然の慣性/粘性による支配ではない。",
+          "dimensionless_reasoning": "幾何幅/H64、可視遷移時間/寿命の比だけを使う。Re/Weは流体を解いていないためnot_applicable。",
+          "detail_cutoff": "High/Lowとも主形・列数・欠損順は維持。Highのみ共鳴補助裏稜。SamplingContractのDPR/MSAAと実H64の可読限界は実機未確認。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "温度・燃焼・熱変形を入力にしていない。白い芯から温度を推定しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "packetや列の移動は情報場の指定経路。空気移流・抗力・粒子流ではない。"
+              ],
+              "evidence_or_constraint": "CoordinateGravityWindTemplate.WindCapsuleのzero field"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "主形のcoverageと明部radianceを別値にし、暗い閉塞部を加算発光にしない。",
+                "法線/面奥行きに従う面応答と、指定した細稜の局所放射を分ける。"
+              ],
+              "evidence_or_constraint": "['左右バンクの空隙が列ごとの時差で閉じる', '白い短稜と暗い奥面が前後に重なる']"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "表面/体積は宣言情報場の厚みと境界を示す仮想interface。金属やガラスの実測物性の主張ではない。"
+              ],
+              "evidence_or_constraint": "GeometryConstraintの分離した正面・裏面・厚みと暗い切欠き"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "EMPという名称だけから実在の電磁放射・電荷量・Maxwell解を強制しない。phase値はサーバー契約の不透明データ。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "格子/列の開閉は情報状態に従う。粘弾性・クリープ・濡れの遅延ではない。"
+              ],
+              "evidence_or_constraint": "StateDynamicsのゲーム状態遷移"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "同/逆位相はゲームの枝名。光干渉・薄膜・虹色回折を実装していない。"
+              ],
+              "evidence_or_constraint": "PH4/PH5はホストが選んだ枝を描き、物理波動の証明にしない。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "接触角・濡れ・汚れ・付着の媒体は存在しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "左右バンクの空隙が列ごとの時差で閉じる",
+            "白い短稜と暗い奥面が前後に重なる"
+          ],
+          "indirect_evidence": [
+            "PH1の可視拘束: 左右バンクの空隙が列ごとの時差で閉じる"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "目標値:白稜/暗面/空隙を独立に残す。実像未観察。",
+          "perceptual_failure_risk": "小表示で明部が結合、明背景で白稜消失、遮蔽で接点消失、時刻跳躍で原因相が抜ける。音の似通いも未聴取。",
+          "cue_roles": [
+            {
+              "cue": "左右バンクの空隙が列ごとの時差で閉じる",
+              "supports": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            },
+            {
+              "cue": "白い短稜と暗い奥面が前後に重なる",
+              "supports": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            }
+          ],
+          "confusable_alternative": "単なる円状点滅や放出済みの効果",
+          "disambiguating_evidence": "['左右バンクの空隙が列ごとの時差で閉じる', '白い短稜と暗い奥面が前後に重なる'] 単一静止画像だけでは因果や寿命の完了を確定しない。",
+          "viewing_conditions": "ブラウザ倍率100%、zoom1 H64=64CSSpx、zoom2=128CSSpx。暗/明背景とHigh4x/Low1x MSAA、rate1/2、3遮蔽条件を実機で観察する計画。今回実GPU/実聴not_run。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "可視場は2.5Dの表裏と側面。外部maskは供給depthのみ。音は位置付けだけ。",
+          "normal_field_coherence": "各triangleのcross積から法線。仮想面応答であって現実反射モデルを偽らない。",
+          "curvature_behavior": "階段状の曲がり、折返し、切欠きが主体。不要な放射円環を作らない。",
+          "silhouette_logic": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+          "contact_relation": "ホストのbody coverageと遮蔽。床・燃焼・破壊接触を追加しない。",
+          "spatial_relation": "source≠target≠midpointを保持。d=0はゼロ長経路を省き局所終端を描く。仮想深度はhitbox非関連。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+          "transition_path_character": "equilibrium-maintained",
+          "local_stability_type": "stable",
+          "convergence_behavior": "準備1.2s、任意の権威保持、解決後0.24s。保持時間を固定寿命と混同しない。",
+          "damping_profile": "自然減衰の実測モデルではない。情報場の列退役とcosmetic envelopeで終端を有限化。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "準備/lockは明示権威まで状態保持。通常/共鳴/相殺は有限なゼロ状態へ。",
+          "transition_failure_risk": "準備完了を自動放出と誤る、deadlineをリセットする、解決後に未到達の主作用を進行させる、expiredフィールドが復活する。",
+          "driving_input": "PhysicalModel.inputs。src/events.jsでimmutable bindingとupdatesを分離。",
+          "response_timescale": "準備1.2s、任意の権威保持、解決後0.24s。保持時間を固定寿命と混同しない。",
+          "phase_relation": "同じactor-msで全枝/OBS/AudioWorkletを参照。解決以降はstateAgeMs固定、terminalQのみ変化。",
+          "stability_condition": "保持は継続入力/未解決という宣言条件。有限枝は0<=age<lifetime、終端後はsampleEvent=null。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Materials -> PH1.Optics: 仮想情報interfaceの厚み・開口・分節がcoverageと放射境界を局所的に変える。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "ホストのcause/owner/phase/pair/対象は保持し、表示zoom/背景または明示resolve時刻だけを検査上変える。",
+            "predicted_response": "scale以外の枝種は変化せず、resolve後の既存状態だけが有限終端へ。背景変更は場の状態や命中を変えない。",
+            "competing_explanation": "単なるalpha変化・スケール変化でも似て見える可能性。状態列の占有/欠損・経路の前端後端を区別して観察する。",
+            "uncertainty": "ゲームサーバー原本、実GPUのsampling、実際の視聴環境と音量を確認できていない。機構は宣言モデル、コード数値試験は芸術的効果の証拠ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH6",
+              "target": "PH1",
+              "mechanism": "既存ゲームがcapture_and_latchの起因イベント・位置・権威時刻を供給する。",
+              "consequence": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。"
+            },
+            {
+              "source": "PH1",
+              "target": "PH7",
+              "mechanism": "capture_and_latchの起因イベントを同じcause/owner/pairに束縛する。",
+              "consequence": "一つの署名voiceだけが開始し、権威終了は同じvoiceの有限終端へ移す。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH1",
+              "basis": "このPHの世界内境界を同じ投影・遮蔽でラスタライズ"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "左右バンクの空隙が列ごとの時差で閉じる",
+            "白い短稜と暗い奥面が前後に重なる"
+          ],
+          "indirect": [
+            "PH1の可視拘束: 左右バンクの空隙が列ごとの時差で閉じる"
+          ],
+          "selected_types": [
+            "boundary",
+            "occlusion",
+            "phase_difference",
+            "deformation"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH7",
+              "change": "同じ起因イベントと時間拘束による一度の音声署名。追加の発光体/粒子/環境破壊は生成しない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH1.StateDynamics",
+          "retained_cues": [
+            "左右バンクの空隙が列ごとの時差で閉じる",
+            "白い短稜と暗い奥面が前後に重なる"
+          ],
+          "simplification": "既存構造をH64で読むため面分節と主稜に密度を集中。ノイズを後付けしない。非可視PHを画面用に物体化しない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存主形/間接応答から2軸を選択。",
+          "axes": {
+            "contrast": [
+              "左右バンクの空隙が列ごとの時差で閉じる",
+              "白い短稜と暗い奥面が前後に重なる"
+            ],
+            "temporal_phase": [
+              "外周バンク→内側ラッチ",
+              "停止した準備形→権威解決時の列別撤去"
+            ]
+          }
+        },
+        "GTB_connections": [
+          "Good: 権威/位置/因果の非矛盾",
+          "Truth: actor時刻と幾何状態の連続",
+          "Beauty: 白稜と暗い空隙・有限な遷移の分離"
+        ],
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "digital_decorations_without_information_state",
+          "uniform_scale_or_fade_only",
+          "post_resolution_new_peak",
+          "authority_deadline_rewrite",
+          "duplicate_audio_on_resolve",
+          "quality_claim_without_render_or_listening"
+        ]
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "通常放出 / 有限長の情報転送",
+          "origin": "declared",
+          "anchor": "body",
+          "visibility": "visible",
+          "local_state_difference": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+          "partition_reason": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。"
+        },
+        "DeepStructure": {
+          "Core": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+          "Structure": "directed_finite_transfer: src/information-state.jsが幾何の列・前端/後端・共有路・消去順を決める。",
+          "Surface": "正面稜・側面・裏面のcoverageを分離。全体blurで形を作らず欠損と位相の差を残す。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。 対象外のHP、inventory、cooldownは境界外。",
+          "state_variables": "actor-ms、権威deadline-ms、枝状態、位置game px、仮想厚みgame px、coverage0–1、相対radiance。単位換算はCoordinateGravityWindTemplate。",
+          "inputs": "PH6のホスト起因入力。src/geometry.js: normalがサンプル化し、外部位相/ペアの再解決はしない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "energy": {
+              "status": "not_applicable",
+              "balance_or_reason": "実ジュールの量を主張しない。ゲームイベント供給→有限な放射/署名→終端または明示保持の情報収支だけをモデル化する。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            }
+          },
+          "constitutive_response": "directed_finite_transfer: 主形の接続/占有/欠損が情報状態に対応する。実材料の構成則ではない。",
+          "initial_condition": "明示開始時刻以前は存在しない。PH6は外部入力境界のみ。",
+          "boundary_conditions": "source/target/midpointはそれぞれ供給snapshot。charge/lockの追従だけ別添付座標で更新。放出/ペア位置を再計算しない。",
+          "approximation_scope": "提供されたゲーム上の非現実機構の設計モデル。サーバー原本は未提示、ゲーム実装との適合/実GPU/実聴は未検証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "H64=64 game pxを1設計mとする任意換算。主面5–30game px、主線約1.25–2.7game px。射程/ダメージ半径を主形の大きさに代用しない。",
+          "characteristic_time": "全可視寿命0.520s、設計到達0.180s。早期権威解決のtailは最大0.160sかつ元寿命を越えない。到達時刻はゲーム命中判定を変更しない。",
+          "dominant_balance": "情報場の指定拘束/権威終端が主、OBS拡散は従。自然の慣性/粘性による支配ではない。",
+          "dimensionless_reasoning": "幾何幅/H64、可視遷移時間/寿命の比だけを使う。Re/Weは流体を解いていないためnot_applicable。",
+          "detail_cutoff": "High/Lowとも主形・列数・欠損順は維持。Highのみ共鳴補助裏稜。SamplingContractのDPR/MSAAと実H64の可読限界は実機未確認。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "温度・燃焼・熱変形を入力にしていない。白い芯から温度を推定しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "packetや列の移動は情報場の指定経路。空気移流・抗力・粒子流ではない。"
+              ],
+              "evidence_or_constraint": "CoordinateGravityWindTemplate.WindCapsuleのzero field"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "主形のcoverageと明部radianceを別値にし、暗い閉塞部を加算発光にしない。",
+                "法線/面奥行きに従う面応答と、指定した細稜の局所放射を分ける。"
+              ],
+              "evidence_or_constraint": "['発動点が空になった後も対象手前に有限長packet列が残る', '三つの折れた経路と対象終端が離れて見える']"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "表面/体積は宣言情報場の厚みと境界を示す仮想interface。金属やガラスの実測物性の主張ではない。"
+              ],
+              "evidence_or_constraint": "GeometryConstraintの分離した正面・裏面・厚みと暗い切欠き"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "EMPという名称だけから実在の電磁放射・電荷量・Maxwell解を強制しない。phase値はサーバー契約の不透明データ。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "格子/列の開閉は情報状態に従う。粘弾性・クリープ・濡れの遅延ではない。"
+              ],
+              "evidence_or_constraint": "StateDynamicsのゲーム状態遷移"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "同/逆位相はゲームの枝名。光干渉・薄膜・虹色回折を実装していない。"
+              ],
+              "evidence_or_constraint": "PH4/PH5はホストが選んだ枝を描き、物理波動の証明にしない。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "接触角・濡れ・汚れ・付着の媒体は存在しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "発動点が空になった後も対象手前に有限長packet列が残る",
+            "三つの折れた経路と対象終端が離れて見える"
+          ],
+          "indirect_evidence": [
+            "PH2の可視拘束: 発動点が空になった後も対象手前に有限長packet列が残る"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "目標値:白稜/暗面/空隙を独立に残す。実像未観察。",
+          "perceptual_failure_risk": "小表示で明部が結合、明背景で白稜消失、遮蔽で接点消失、時刻跳躍で原因相が抜ける。音の似通いも未聴取。",
+          "cue_roles": [
+            {
+              "cue": "発動点が空になった後も対象手前に有限長packet列が残る",
+              "supports": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            },
+            {
+              "cue": "三つの折れた経路と対象終端が離れて見える",
+              "supports": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            }
+          ],
+          "confusable_alternative": "全画面フラッシュ/固定の線の拡縮",
+          "disambiguating_evidence": "['発動点が空になった後も対象手前に有限長packet列が残る', '三つの折れた経路と対象終端が離れて見える'] 単一静止画像だけでは因果や寿命の完了を確定しない。",
+          "viewing_conditions": "ブラウザ倍率100%、zoom1 H64=64CSSpx、zoom2=128CSSpx。暗/明背景とHigh4x/Low1x MSAA、rate1/2、3遮蔽条件を実機で観察する計画。今回実GPU/実聴not_run。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "可視場は2.5Dの表裏と側面。外部maskは供給depthのみ。音は位置付けだけ。",
+          "normal_field_coherence": "各triangleのcross積から法線。仮想面応答であって現実反射モデルを偽らない。",
+          "curvature_behavior": "階段状の曲がり、折返し、切欠きが主体。不要な放射円環を作らない。",
+          "silhouette_logic": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+          "contact_relation": "ホストのbody coverageと遮蔽。床・燃焼・破壊接触を追加しない。",
+          "spatial_relation": "source≠target≠midpointを保持。d=0はゼロ長経路を省き局所終端を描く。仮想深度はhitbox非関連。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "全可視寿命0.520s、設計到達0.180s。早期権威解決のtailは最大0.160sかつ元寿命を越えない。到達時刻はゲーム命中判定を変更しない。",
+          "damping_profile": "自然減衰の実測モデルではない。情報場の列退役とcosmetic envelopeで終端を有限化。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "準備/lockは明示権威まで状態保持。通常/共鳴/相殺は有限なゼロ状態へ。",
+          "transition_failure_risk": "準備完了を自動放出と誤る、deadlineをリセットする、解決後に未到達の主作用を進行させる、expiredフィールドが復活する。",
+          "driving_input": "PhysicalModel.inputs。src/events.jsでimmutable bindingとupdatesを分離。",
+          "response_timescale": "全可視寿命0.520s、設計到達0.180s。早期権威解決のtailは最大0.160sかつ元寿命を越えない。到達時刻はゲーム命中判定を変更しない。",
+          "phase_relation": "同じactor-msで全枝/OBS/AudioWorkletを参照。解決以降はstateAgeMs固定、terminalQのみ変化。",
+          "stability_condition": "保持は継続入力/未解決という宣言条件。有限枝は0<=age<lifetime、終端後はsampleEvent=null。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Materials -> PH2.Optics: 仮想情報interfaceの厚み・開口・分節がcoverageと放射境界を局所的に変える。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "ホストのcause/owner/phase/pair/対象は保持し、表示zoom/背景または明示resolve時刻だけを検査上変える。",
+            "predicted_response": "scale以外の枝種は変化せず、resolve後の既存状態だけが有限終端へ。背景変更は場の状態や命中を変えない。",
+            "competing_explanation": "単なるalpha変化・スケール変化でも似て見える可能性。状態列の占有/欠損・経路の前端後端を区別して観察する。",
+            "uncertainty": "ゲームサーバー原本、実GPUのsampling、実際の視聴環境と音量を確認できていない。機構は宣言モデル、コード数値試験は芸術的効果の証拠ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH6",
+              "target": "PH2",
+              "mechanism": "既存ゲームがdirected_finite_transferの起因イベント・位置・権威時刻を供給する。",
+              "consequence": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。"
+            },
+            {
+              "source": "PH2",
+              "target": "PH7",
+              "mechanism": "directed_finite_transferの起因イベントを同じcause/owner/pairに束縛する。",
+              "consequence": "一つの署名voiceだけが開始し、権威終了は同じvoiceの有限終端へ移す。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH2",
+              "basis": "このPHの世界内境界を同じ投影・遮蔽でラスタライズ"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "発動点が空になった後も対象手前に有限長packet列が残る",
+            "三つの折れた経路と対象終端が離れて見える"
+          ],
+          "indirect": [
+            "PH2の可視拘束: 発動点が空になった後も対象手前に有限長packet列が残る"
+          ],
+          "selected_types": [
+            "boundary",
+            "occlusion",
+            "phase_difference",
+            "deformation"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH7",
+              "change": "同じ起因イベントと時間拘束による一度の音声署名。追加の発光体/粒子/環境破壊は生成しない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH2.StateDynamics",
+          "retained_cues": [
+            "発動点が空になった後も対象手前に有限長packet列が残る",
+            "三つの折れた経路と対象終端が離れて見える"
+          ],
+          "simplification": "既存構造をH64で読むため面分節と主稜に密度を集中。ノイズを後付けしない。非可視PHを画面用に物体化しない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存主形/間接応答から2軸を選択。",
+          "axes": {
+            "contrast": [
+              "発動点が空になった後も対象手前に有限長packet列が残る",
+              "三つの折れた経路と対象終端が離れて見える"
+            ],
+            "temporal_phase": [
+              "転送列の後端→前端",
+              "前端→対象終端"
+            ]
+          }
+        },
+        "GTB_connections": [
+          "Good: 権威/位置/因果の非矛盾",
+          "Truth: actor時刻と幾何状態の連続",
+          "Beauty: 白稜と暗い空隙・有限な遷移の分離"
+        ],
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "digital_decorations_without_information_state",
+          "uniform_scale_or_fade_only",
+          "post_resolution_new_peak",
+          "authority_deadline_rewrite",
+          "duplicate_audio_on_resolve",
+          "quality_claim_without_render_or_listening"
+        ]
+      },
+      "PH3": {
+        "identity": {
+          "id": "PH3",
+          "name": "ストレージロック / 対象局所の書込禁止",
+          "origin": "declared",
+          "anchor": "body",
+          "visibility": "visible",
+          "local_state_difference": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+          "partition_reason": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。"
+        },
+        "DeepStructure": {
+          "Core": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+          "Structure": "write_gate_interlock: src/information-state.jsが幾何の列・前端/後端・共有路・消去順を決める。",
+          "Surface": "正面稜・側面・裏面のcoverageを分離。全体blurで形を作らず欠損と位相の差を残す。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。 対象外のHP、inventory、cooldownは境界外。",
+          "state_variables": "actor-ms、権威deadline-ms、枝状態、位置game px、仮想厚みgame px、coverage0–1、相対radiance。単位換算はCoordinateGravityWindTemplate。",
+          "inputs": "PH6のホスト起因入力。src/geometry.js: suppressionがサンプル化し、外部位相/ペアの再解決はしない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "energy": {
+              "status": "not_applicable",
+              "balance_or_reason": "実ジュールの量を主張しない。ゲームイベント供給→有限な放射/署名→終端または明示保持の情報収支だけをモデル化する。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            }
+          },
+          "constitutive_response": "write_gate_interlock: 主形の接続/占有/欠損が情報状態に対応する。実材料の構成則ではない。",
+          "initial_condition": "明示開始時刻以前は存在しない。PH6は外部入力境界のみ。",
+          "boundary_conditions": "source/target/midpointはそれぞれ供給snapshot。charge/lockの追従だけ別添付座標で更新。放出/ペア位置を再計算しない。",
+          "approximation_scope": "提供されたゲーム上の非現実機構の設計モデル。サーバー原本は未提示、ゲーム実装との適合/実GPU/実聴は未検証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "H64=64 game pxを1設計mとする任意換算。主面5–30game px、主線約1.25–2.7game px。射程/ダメージ半径を主形の大きさに代用しない。",
+          "characteristic_time": "権威期限（標準契約7sだがAPIに推測既定なし）、延長履歴、終了後0.280s cosmetic tail。",
+          "dominant_balance": "情報場の指定拘束/権威終端が主、OBS拡散は従。自然の慣性/粘性による支配ではない。",
+          "dimensionless_reasoning": "幾何幅/H64、可視遷移時間/寿命の比だけを使う。Re/Weは流体を解いていないためnot_applicable。",
+          "detail_cutoff": "High/Lowとも主形・列数・欠損順は維持。Highのみ共鳴補助裏稜。SamplingContractのDPR/MSAAと実H64の可読限界は実機未確認。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "温度・燃焼・熱変形を入力にしていない。白い芯から温度を推定しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "packetや列の移動は情報場の指定経路。空気移流・抗力・粒子流ではない。"
+              ],
+              "evidence_or_constraint": "CoordinateGravityWindTemplate.WindCapsuleのzero field"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "主形のcoverageと明部radianceを別値にし、暗い閉塞部を加算発光にしない。",
+                "法線/面奥行きに従う面応答と、指定した細稜の局所放射を分ける。"
+              ],
+              "evidence_or_constraint": "['背面棚がH64遮蔽マスクの後ろへ隠れる', '対象の両側に離れた書込ゲートが静止し解除時に別順序で外れる']"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "表面/体積は宣言情報場の厚みと境界を示す仮想interface。金属やガラスの実測物性の主張ではない。"
+              ],
+              "evidence_or_constraint": "GeometryConstraintの分離した正面・裏面・厚みと暗い切欠き"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "EMPという名称だけから実在の電磁放射・電荷量・Maxwell解を強制しない。phase値はサーバー契約の不透明データ。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "格子/列の開閉は情報状態に従う。粘弾性・クリープ・濡れの遅延ではない。"
+              ],
+              "evidence_or_constraint": "StateDynamicsのゲーム状態遷移"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "同/逆位相はゲームの枝名。光干渉・薄膜・虹色回折を実装していない。"
+              ],
+              "evidence_or_constraint": "PH4/PH5はホストが選んだ枝を描き、物理波動の証明にしない。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "接触角・濡れ・汚れ・付着の媒体は存在しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "背面棚がH64遮蔽マスクの後ろへ隠れる",
+            "対象の両側に離れた書込ゲートが静止し解除時に別順序で外れる"
+          ],
+          "indirect_evidence": [
+            "PH3の可視拘束: 背面棚がH64遮蔽マスクの後ろへ隠れる"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "目標値:白稜/暗面/空隙を独立に残す。実像未観察。",
+          "perceptual_failure_risk": "小表示で明部が結合、明背景で白稜消失、遮蔽で接点消失、時刻跳躍で原因相が抜ける。音の似通いも未聴取。",
+          "cue_roles": [
+            {
+              "cue": "背面棚がH64遮蔽マスクの後ろへ隠れる",
+              "supports": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            },
+            {
+              "cue": "対象の両側に離れた書込ゲートが静止し解除時に別順序で外れる",
+              "supports": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            }
+          ],
+          "confusable_alternative": "人体の衣装・hitbox・クールダウンUI",
+          "disambiguating_evidence": "['背面棚がH64遮蔽マスクの後ろへ隠れる', '対象の両側に離れた書込ゲートが静止し解除時に別順序で外れる'] 単一静止画像だけでは因果や寿命の完了を確定しない。",
+          "viewing_conditions": "ブラウザ倍率100%、zoom1 H64=64CSSpx、zoom2=128CSSpx。暗/明背景とHigh4x/Low1x MSAA、rate1/2、3遮蔽条件を実機で観察する計画。今回実GPU/実聴not_run。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "可視場は2.5Dの表裏と側面。外部maskは供給depthのみ。音は位置付けだけ。",
+          "normal_field_coherence": "各triangleのcross積から法線。仮想面応答であって現実反射モデルを偽らない。",
+          "curvature_behavior": "階段状の曲がり、折返し、切欠きが主体。不要な放射円環を作らない。",
+          "silhouette_logic": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+          "contact_relation": "ホストのbody coverageと遮蔽。床・燃焼・破壊接触を追加しない。",
+          "spatial_relation": "source≠target≠midpointを保持。d=0はゼロ長経路を省き局所終端を描く。仮想深度はhitbox非関連。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+          "transition_path_character": "equilibrium-maintained",
+          "local_stability_type": "stable",
+          "convergence_behavior": "権威期限（標準契約7sだがAPIに推測既定なし）、延長履歴、終了後0.280s cosmetic tail。",
+          "damping_profile": "自然減衰の実測モデルではない。情報場の列退役とcosmetic envelopeで終端を有限化。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "準備/lockは明示権威まで状態保持。通常/共鳴/相殺は有限なゼロ状態へ。",
+          "transition_failure_risk": "準備完了を自動放出と誤る、deadlineをリセットする、解決後に未到達の主作用を進行させる、expiredフィールドが復活する。",
+          "driving_input": "PhysicalModel.inputs。src/events.jsでimmutable bindingとupdatesを分離。",
+          "response_timescale": "権威期限（標準契約7sだがAPIに推測既定なし）、延長履歴、終了後0.280s cosmetic tail。",
+          "phase_relation": "同じactor-msで全枝/OBS/AudioWorkletを参照。解決以降はstateAgeMs固定、terminalQのみ変化。",
+          "stability_condition": "保持は継続入力/未解決という宣言条件。有限枝は0<=age<lifetime、終端後はsampleEvent=null。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH3.Materials -> PH3.Optics: 仮想情報interfaceの厚み・開口・分節がcoverageと放射境界を局所的に変える。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "ホストのcause/owner/phase/pair/対象は保持し、表示zoom/背景または明示resolve時刻だけを検査上変える。",
+            "predicted_response": "scale以外の枝種は変化せず、resolve後の既存状態だけが有限終端へ。背景変更は場の状態や命中を変えない。",
+            "competing_explanation": "単なるalpha変化・スケール変化でも似て見える可能性。状態列の占有/欠損・経路の前端後端を区別して観察する。",
+            "uncertainty": "ゲームサーバー原本、実GPUのsampling、実際の視聴環境と音量を確認できていない。機構は宣言モデル、コード数値試験は芸術的効果の証拠ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH6",
+              "target": "PH3",
+              "mechanism": "既存ゲームがwrite_gate_interlockの起因イベント・位置・権威時刻を供給する。",
+              "consequence": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。"
+            },
+            {
+              "source": "PH3",
+              "target": "PH7",
+              "mechanism": "write_gate_interlockの起因イベントを同じcause/owner/pairに束縛する。",
+              "consequence": "一つの署名voiceだけが開始し、権威終了は同じvoiceの有限終端へ移す。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH3",
+              "basis": "このPHの世界内境界を同じ投影・遮蔽でラスタライズ"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "背面棚がH64遮蔽マスクの後ろへ隠れる",
+            "対象の両側に離れた書込ゲートが静止し解除時に別順序で外れる"
+          ],
+          "indirect": [
+            "PH3の可視拘束: 背面棚がH64遮蔽マスクの後ろへ隠れる"
+          ],
+          "selected_types": [
+            "boundary",
+            "occlusion",
+            "phase_difference",
+            "deformation"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH7",
+              "change": "同じ起因イベントと時間拘束による一度の音声署名。追加の発光体/粒子/環境破壊は生成しない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH3.StateDynamics",
+          "retained_cues": [
+            "背面棚がH64遮蔽マスクの後ろへ隠れる",
+            "対象の両側に離れた書込ゲートが静止し解除時に別順序で外れる"
+          ],
+          "simplification": "既存構造をH64で読むため面分節と主稜に密度を集中。ノイズを後付けしない。非可視PHを画面用に物体化しない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存主形/間接応答から2軸を選択。",
+          "axes": {
+            "contrast": [
+              "背面棚がH64遮蔽マスクの後ろへ隠れる",
+              "対象の両側に離れた書込ゲートが静止し解除時に別順序で外れる"
+            ],
+            "temporal_phase": [
+              "側部ゲート→背面連結",
+              "静止ゲート→解除した空隙"
+            ]
+          }
+        },
+        "GTB_connections": [
+          "Good: 権威/位置/因果の非矛盾",
+          "Truth: actor時刻と幾何状態の連続",
+          "Beauty: 白稜と暗い空隙・有限な遷移の分離"
+        ],
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "digital_decorations_without_information_state",
+          "uniform_scale_or_fade_only",
+          "post_resolution_new_peak",
+          "authority_deadline_rewrite",
+          "duplicate_audio_on_resolve",
+          "quality_claim_without_render_or_listening"
+        ]
+      },
+      "PH4": {
+        "identity": {
+          "id": "PH4",
+          "name": "同位相共鳴 / 共有接続場への再編成",
+          "origin": "declared",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+          "partition_reason": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。"
+        },
+        "DeepStructure": {
+          "Core": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+          "Structure": "coherent_topology_rewrite: src/information-state.jsが幾何の列・前端/後端・共有路・消去順を決める。",
+          "Surface": "正面稜・側面・裏面のcoverageを分離。全体blurで形を作らず欠損と位相の差を残す。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。 対象外のHP、inventory、cooldownは境界外。",
+          "state_variables": "actor-ms、権威deadline-ms、枝状態、位置game px、仮想厚みgame px、coverage0–1、相対radiance。単位換算はCoordinateGravityWindTemplate。",
+          "inputs": "PH6のホスト起因入力。src/geometry.js: resonanceがサンプル化し、外部位相/ペアの再解決はしない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "energy": {
+              "status": "not_applicable",
+              "balance_or_reason": "実ジュールの量を主張しない。ゲームイベント供給→有限な放射/署名→終端または明示保持の情報収支だけをモデル化する。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            }
+          },
+          "constitutive_response": "coherent_topology_rewrite: 主形の接続/占有/欠損が情報状態に対応する。実材料の構成則ではない。",
+          "initial_condition": "明示開始時刻以前は存在しない。PH6は外部入力境界のみ。",
+          "boundary_conditions": "source/target/midpointはそれぞれ供給snapshot。charge/lockの追従だけ別添付座標で更新。放出/ペア位置を再計算しない。",
+          "approximation_scope": "提供されたゲーム上の非現実機構の設計モデル。サーバー原本は未提示、ゲーム実装との適合/実GPU/実聴は未検証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "H64=64 game pxを1設計mとする任意換算。主面5–30game px、主線約1.25–2.7game px。射程/ダメージ半径を主形の大きさに代用しない。",
+          "characteristic_time": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "dominant_balance": "情報場の指定拘束/権威終端が主、OBS拡散は従。自然の慣性/粘性による支配ではない。",
+          "dimensionless_reasoning": "幾何幅/H64、可視遷移時間/寿命の比だけを使う。Re/Weは流体を解いていないためnot_applicable。",
+          "detail_cutoff": "High/Lowとも主形・列数・欠損順は維持。Highのみ共鳴補助裏稜。SamplingContractのDPR/MSAAと実H64の可読限界は実機未確認。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "温度・燃焼・熱変形を入力にしていない。白い芯から温度を推定しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "packetや列の移動は情報場の指定経路。空気移流・抗力・粒子流ではない。"
+              ],
+              "evidence_or_constraint": "CoordinateGravityWindTemplate.WindCapsuleのzero field"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "主形のcoverageと明部radianceを別値にし、暗い閉塞部を加算発光にしない。",
+                "法線/面奥行きに従う面応答と、指定した細稜の局所放射を分ける。"
+              ],
+              "evidence_or_constraint": "['二入力の先端が中点に入り、その後別の6接続路が開く', '暗い二分芯を三段の折返しbridgeが接続し白い稜を分離']"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "表面/体積は宣言情報場の厚みと境界を示す仮想interface。金属やガラスの実測物性の主張ではない。"
+              ],
+              "evidence_or_constraint": "GeometryConstraintの分離した正面・裏面・厚みと暗い切欠き"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "EMPという名称だけから実在の電磁放射・電荷量・Maxwell解を強制しない。phase値はサーバー契約の不透明データ。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "格子/列の開閉は情報状態に従う。粘弾性・クリープ・濡れの遅延ではない。"
+              ],
+              "evidence_or_constraint": "StateDynamicsのゲーム状態遷移"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "同/逆位相はゲームの枝名。光干渉・薄膜・虹色回折を実装していない。"
+              ],
+              "evidence_or_constraint": "PH4/PH5はホストが選んだ枝を描き、物理波動の証明にしない。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "接触角・濡れ・汚れ・付着の媒体は存在しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "二入力の先端が中点に入り、その後別の6接続路が開く",
+            "暗い二分芯を三段の折返しbridgeが接続し白い稜を分離"
+          ],
+          "indirect_evidence": [
+            "PH4の可視拘束: 二入力の先端が中点に入り、その後別の6接続路が開く"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "目標値:白稜/暗面/空隙を独立に残す。実像未観察。",
+          "perceptual_failure_risk": "小表示で明部が結合、明背景で白稜消失、遮蔽で接点消失、時刻跳躍で原因相が抜ける。音の似通いも未聴取。",
+          "cue_roles": [
+            {
+              "cue": "二入力の先端が中点に入り、その後別の6接続路が開く",
+              "supports": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            },
+            {
+              "cue": "暗い二分芯を三段の折返しbridgeが接続し白い稜を分離",
+              "supports": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            }
+          ],
+          "confusable_alternative": "通常放出2つの単純加算",
+          "disambiguating_evidence": "['二入力の先端が中点に入り、その後別の6接続路が開く', '暗い二分芯を三段の折返しbridgeが接続し白い稜を分離'] 単一静止画像だけでは因果や寿命の完了を確定しない。",
+          "viewing_conditions": "ブラウザ倍率100%、zoom1 H64=64CSSpx、zoom2=128CSSpx。暗/明背景とHigh4x/Low1x MSAA、rate1/2、3遮蔽条件を実機で観察する計画。今回実GPU/実聴not_run。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "可視場は2.5Dの表裏と側面。外部maskは供給depthのみ。音は位置付けだけ。",
+          "normal_field_coherence": "各triangleのcross積から法線。仮想面応答であって現実反射モデルを偽らない。",
+          "curvature_behavior": "階段状の曲がり、折返し、切欠きが主体。不要な放射円環を作らない。",
+          "silhouette_logic": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+          "contact_relation": "ホストのbody coverageと遮蔽。床・燃焼・破壊接触を追加しない。",
+          "spatial_relation": "source≠target≠midpointを保持。d=0はゼロ長経路を省き局所終端を描く。仮想深度はhitbox非関連。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "damping_profile": "自然減衰の実測モデルではない。情報場の列退役とcosmetic envelopeで終端を有限化。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "準備/lockは明示権威まで状態保持。通常/共鳴/相殺は有限なゼロ状態へ。",
+          "transition_failure_risk": "準備完了を自動放出と誤る、deadlineをリセットする、解決後に未到達の主作用を進行させる、expiredフィールドが復活する。",
+          "driving_input": "PhysicalModel.inputs。src/events.jsでimmutable bindingとupdatesを分離。",
+          "response_timescale": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "phase_relation": "同じactor-msで全枝/OBS/AudioWorkletを参照。解決以降はstateAgeMs固定、terminalQのみ変化。",
+          "stability_condition": "保持は継続入力/未解決という宣言条件。有限枝は0<=age<lifetime、終端後はsampleEvent=null。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH4.Materials -> PH4.Optics: 仮想情報interfaceの厚み・開口・分節がcoverageと放射境界を局所的に変える。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "ホストのcause/owner/phase/pair/対象は保持し、表示zoom/背景または明示resolve時刻だけを検査上変える。",
+            "predicted_response": "scale以外の枝種は変化せず、resolve後の既存状態だけが有限終端へ。背景変更は場の状態や命中を変えない。",
+            "competing_explanation": "単なるalpha変化・スケール変化でも似て見える可能性。状態列の占有/欠損・経路の前端後端を区別して観察する。",
+            "uncertainty": "ゲームサーバー原本、実GPUのsampling、実際の視聴環境と音量を確認できていない。機構は宣言モデル、コード数値試験は芸術的効果の証拠ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH6",
+              "target": "PH4",
+              "mechanism": "既存ゲームがcoherent_topology_rewriteの起因イベント・位置・権威時刻を供給する。",
+              "consequence": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。"
+            },
+            {
+              "source": "PH4",
+              "target": "PH7",
+              "mechanism": "coherent_topology_rewriteの起因イベントを同じcause/owner/pairに束縛する。",
+              "consequence": "一つの署名voiceだけが開始し、権威終了は同じvoiceの有限終端へ移す。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH4",
+              "basis": "このPHの世界内境界を同じ投影・遮蔽でラスタライズ"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "二入力の先端が中点に入り、その後別の6接続路が開く",
+            "暗い二分芯を三段の折返しbridgeが接続し白い稜を分離"
+          ],
+          "indirect": [
+            "PH4の可視拘束: 二入力の先端が中点に入り、その後別の6接続路が開く"
+          ],
+          "selected_types": [
+            "boundary",
+            "occlusion",
+            "phase_difference",
+            "deformation"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH7",
+              "change": "同じ起因イベントと時間拘束による一度の音声署名。追加の発光体/粒子/環境破壊は生成しない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH4.StateDynamics",
+          "retained_cues": [
+            "二入力の先端が中点に入り、その後別の6接続路が開く",
+            "暗い二分芯を三段の折返しbridgeが接続し白い稜を分離"
+          ],
+          "simplification": "既存構造をH64で読むため面分節と主稜に密度を集中。ノイズを後付けしない。非可視PHを画面用に物体化しない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存主形/間接応答から2軸を選択。",
+          "axes": {
+            "contrast": [
+              "二入力の先端が中点に入り、その後別の6接続路が開く",
+              "暗い二分芯を三段の折返しbridgeが接続し白い稜を分離"
+            ],
+            "temporal_phase": [
+              "二入力→共有芯",
+              "共有bridge→6接続路の個別退役"
+            ]
+          }
+        },
+        "GTB_connections": [
+          "Good: 権威/位置/因果の非矛盾",
+          "Truth: actor時刻と幾何状態の連続",
+          "Beauty: 白稜と暗い空隙・有限な遷移の分離"
+        ],
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "digital_decorations_without_information_state",
+          "uniform_scale_or_fade_only",
+          "post_resolution_new_peak",
+          "authority_deadline_rewrite",
+          "duplicate_audio_on_resolve",
+          "quality_claim_without_render_or_listening"
+        ]
+      },
+      "PH5": {
+        "identity": {
+          "id": "PH5",
+          "name": "逆位相相殺 / 補対情報の順次消去",
+          "origin": "declared",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+          "partition_reason": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。"
+        },
+        "DeepStructure": {
+          "Core": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+          "Structure": "complementary_pair_erasure: src/information-state.jsが幾何の列・前端/後端・共有路・消去順を決める。",
+          "Surface": "正面稜・側面・裏面のcoverageを分離。全体blurで形を作らず欠損と位相の差を残す。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。 対象外のHP、inventory、cooldownは境界外。",
+          "state_variables": "actor-ms、権威deadline-ms、枝状態、位置game px、仮想厚みgame px、coverage0–1、相対radiance。単位換算はCoordinateGravityWindTemplate。",
+          "inputs": "PH6のホスト起因入力。src/geometry.js: cancellationがサンプル化し、外部位相/ペアの再解決はしない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "energy": {
+              "status": "not_applicable",
+              "balance_or_reason": "実ジュールの量を主張しない。ゲームイベント供給→有限な放射/署名→終端または明示保持の情報収支だけをモデル化する。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            }
+          },
+          "constitutive_response": "complementary_pair_erasure: 主形の接続/占有/欠損が情報状態に対応する。実材料の構成則ではない。",
+          "initial_condition": "明示開始時刻以前は存在しない。PH6は外部入力境界のみ。",
+          "boundary_conditions": "source/target/midpointはそれぞれ供給snapshot。charge/lockの追従だけ別添付座標で更新。放出/ペア位置を再計算しない。",
+          "approximation_scope": "提供されたゲーム上の非現実機構の設計モデル。サーバー原本は未提示、ゲーム実装との適合/実GPU/実聴は未検証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "H64=64 game pxを1設計mとする任意換算。主面5–30game px、主線約1.25–2.7game px。射程/ダメージ半径を主形の大きさに代用しない。",
+          "characteristic_time": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "dominant_balance": "情報場の指定拘束/権威終端が主、OBS拡散は従。自然の慣性/粘性による支配ではない。",
+          "dimensionless_reasoning": "幾何幅/H64、可視遷移時間/寿命の比だけを使う。Re/Weは流体を解いていないためnot_applicable。",
+          "detail_cutoff": "High/Lowとも主形・列数・欠損順は維持。Highのみ共鳴補助裏稜。SamplingContractのDPR/MSAAと実H64の可読限界は実機未確認。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "温度・燃焼・熱変形を入力にしていない。白い芯から温度を推定しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "packetや列の移動は情報場の指定経路。空気移流・抗力・粒子流ではない。"
+              ],
+              "evidence_or_constraint": "CoordinateGravityWindTemplate.WindCapsuleのzero field"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "主形のcoverageと明部radianceを別値にし、暗い閉塞部を加算発光にしない。",
+                "法線/面奥行きに従う面応答と、指定した細稜の局所放射を分ける。"
+              ],
+              "evidence_or_constraint": "['対向するhook断面が横移動して相互に入り込む', '消去前線の通過後に上段だけが無くなり下段が残る']"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "表面/体積は宣言情報場の厚みと境界を示す仮想interface。金属やガラスの実測物性の主張ではない。"
+              ],
+              "evidence_or_constraint": "GeometryConstraintの分離した正面・裏面・厚みと暗い切欠き"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "EMPという名称だけから実在の電磁放射・電荷量・Maxwell解を強制しない。phase値はサーバー契約の不透明データ。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "格子/列の開閉は情報状態に従う。粘弾性・クリープ・濡れの遅延ではない。"
+              ],
+              "evidence_or_constraint": "StateDynamicsのゲーム状態遷移"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "同/逆位相はゲームの枝名。光干渉・薄膜・虹色回折を実装していない。"
+              ],
+              "evidence_or_constraint": "PH4/PH5はホストが選んだ枝を描き、物理波動の証明にしない。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "接触角・濡れ・汚れ・付着の媒体は存在しない。"
+              ],
+              "evidence_or_constraint": "ゲームの宣言情報場であり、実在物質の物性・実EM波・熱源を追加しない。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "対向するhook断面が横移動して相互に入り込む",
+            "消去前線の通過後に上段だけが無くなり下段が残る"
+          ],
+          "indirect_evidence": [
+            "PH5の可視拘束: 対向するhook断面が横移動して相互に入り込む"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "目標値:白稜/暗面/空隙を独立に残す。実像未観察。",
+          "perceptual_failure_risk": "小表示で明部が結合、明背景で白稜消失、遮蔽で接点消失、時刻跳躍で原因相が抜ける。音の似通いも未聴取。",
+          "cue_roles": [
+            {
+              "cue": "対向するhook断面が横移動して相互に入り込む",
+              "supports": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            },
+            {
+              "cue": "消去前線の通過後に上段だけが無くなり下段が残る",
+              "supports": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            }
+          ],
+          "confusable_alternative": "共鳴と同じ外向き爆発または全体フェード",
+          "disambiguating_evidence": "['対向するhook断面が横移動して相互に入り込む', '消去前線の通過後に上段だけが無くなり下段が残る'] 単一静止画像だけでは因果や寿命の完了を確定しない。",
+          "viewing_conditions": "ブラウザ倍率100%、zoom1 H64=64CSSpx、zoom2=128CSSpx。暗/明背景とHigh4x/Low1x MSAA、rate1/2、3遮蔽条件を実機で観察する計画。今回実GPU/実聴not_run。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "可視場は2.5Dの表裏と側面。外部maskは供給depthのみ。音は位置付けだけ。",
+          "normal_field_coherence": "各triangleのcross積から法線。仮想面応答であって現実反射モデルを偽らない。",
+          "curvature_behavior": "階段状の曲がり、折返し、切欠きが主体。不要な放射円環を作らない。",
+          "silhouette_logic": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+          "contact_relation": "ホストのbody coverageと遮蔽。床・燃焼・破壊接触を追加しない。",
+          "spatial_relation": "source≠target≠midpointを保持。d=0はゼロ長経路を省き局所終端を描く。仮想深度はhitbox非関連。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "damping_profile": "自然減衰の実測モデルではない。情報場の列退役とcosmetic envelopeで終端を有限化。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "準備/lockは明示権威まで状態保持。通常/共鳴/相殺は有限なゼロ状態へ。",
+          "transition_failure_risk": "準備完了を自動放出と誤る、deadlineをリセットする、解決後に未到達の主作用を進行させる、expiredフィールドが復活する。",
+          "driving_input": "PhysicalModel.inputs。src/events.jsでimmutable bindingとupdatesを分離。",
+          "response_timescale": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "phase_relation": "同じactor-msで全枝/OBS/AudioWorkletを参照。解決以降はstateAgeMs固定、terminalQのみ変化。",
+          "stability_condition": "保持は継続入力/未解決という宣言条件。有限枝は0<=age<lifetime、終端後はsampleEvent=null。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH5.Materials -> PH5.Optics: 仮想情報interfaceの厚み・開口・分節がcoverageと放射境界を局所的に変える。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "ホストのcause/owner/phase/pair/対象は保持し、表示zoom/背景または明示resolve時刻だけを検査上変える。",
+            "predicted_response": "scale以外の枝種は変化せず、resolve後の既存状態だけが有限終端へ。背景変更は場の状態や命中を変えない。",
+            "competing_explanation": "単なるalpha変化・スケール変化でも似て見える可能性。状態列の占有/欠損・経路の前端後端を区別して観察する。",
+            "uncertainty": "ゲームサーバー原本、実GPUのsampling、実際の視聴環境と音量を確認できていない。機構は宣言モデル、コード数値試験は芸術的効果の証拠ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH6",
+              "target": "PH5",
+              "mechanism": "既存ゲームがcomplementary_pair_erasureの起因イベント・位置・権威時刻を供給する。",
+              "consequence": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。"
+            },
+            {
+              "source": "PH5",
+              "target": "PH7",
+              "mechanism": "complementary_pair_erasureの起因イベントを同じcause/owner/pairに束縛する。",
+              "consequence": "一つの署名voiceだけが開始し、権威終了は同じvoiceの有限終端へ移す。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH5",
+              "basis": "このPHの世界内境界を同じ投影・遮蔽でラスタライズ"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "対向するhook断面が横移動して相互に入り込む",
+            "消去前線の通過後に上段だけが無くなり下段が残る"
+          ],
+          "indirect": [
+            "PH5の可視拘束: 対向するhook断面が横移動して相互に入り込む"
+          ],
+          "selected_types": [
+            "boundary",
+            "occlusion",
+            "phase_difference",
+            "deformation"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH7",
+              "change": "同じ起因イベントと時間拘束による一度の音声署名。追加の発光体/粒子/環境破壊は生成しない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH5.StateDynamics",
+          "retained_cues": [
+            "対向するhook断面が横移動して相互に入り込む",
+            "消去前線の通過後に上段だけが無くなり下段が残る"
+          ],
+          "simplification": "既存構造をH64で読むため面分節と主稜に密度を集中。ノイズを後付けしない。非可視PHを画面用に物体化しない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存主形/間接応答から2軸を選択。",
+          "axes": {
+            "contrast": [
+              "対向するhook断面が横移動して相互に入り込む",
+              "消去前線の通過後に上段だけが無くなり下段が残る"
+            ],
+            "temporal_phase": [
+              "二入力→相互侵入部",
+              "残存列→消去済みの空間"
+            ]
+          }
+        },
+        "GTB_connections": [
+          "Good: 権威/位置/因果の非矛盾",
+          "Truth: actor時刻と幾何状態の連続",
+          "Beauty: 白稜と暗い空隙・有限な遷移の分離"
+        ],
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "digital_decorations_without_information_state",
+          "uniform_scale_or_fade_only",
+          "post_resolution_new_peak",
+          "authority_deadline_rewrite",
+          "duplicate_audio_on_resolve",
+          "quality_claim_without_render_or_listening"
+        ]
+      },
+      "PH6": {
+        "identity": {
+          "id": "PH6",
+          "name": "外部ゲームの発動者・対象・権威境界",
+          "origin": "declared",
+          "anchor": "body",
+          "visibility": "latent",
+          "local_state_difference": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。",
+          "partition_reason": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。"
+        },
+        "DeepStructure": {
+          "Core": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。",
+          "Structure": "external_authority_constraint: ['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する']",
+          "Surface": "入力または観測の境界を維持し、直接描画のための物体・発光・粒子を追加しない。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。 対象外のHP、inventory、cooldownは境界外。",
+          "state_variables": "actor-ms、権威deadline-ms、枝状態、位置game px、仮想厚みgame px、coverage0–1、相対radiance。単位換算はCoordinateGravityWindTemplate。",
+          "inputs": "PH6のホスト起因入力。src/events.js + src/emp-e.jsがサンプル化し、外部位相/ペアの再解決はしない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "energy": {
+              "status": "not_applicable",
+              "balance_or_reason": "実ジュールの量を主張しない。ゲームイベント供給→有限な放射/署名→終端または明示保持の情報収支だけをモデル化する。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            }
+          },
+          "constitutive_response": "external_authority_constraint: 主形の接続/占有/欠損が情報状態に対応する。実材料の構成則ではない。",
+          "initial_condition": "明示開始時刻以前は存在しない。PH6は外部入力境界のみ。",
+          "boundary_conditions": "source/target/midpointはそれぞれ供給snapshot。charge/lockの追従だけ別添付座標で更新。放出/ペア位置を再計算しない。",
+          "approximation_scope": "提供されたゲーム上の非現実機構の設計モデル。サーバー原本は未提示、ゲーム実装との適合/実GPU/実聴は未検証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "H64=64 game pxを1設計mとする任意換算。主面5–30game px、主線約1.25–2.7game px。射程/ダメージ半径を主形の大きさに代用しない。",
+          "characteristic_time": "共通actor clockの入力。rate0/1/2による世界時刻。ゲームの権威期間の正本はホスト。",
+          "dominant_balance": "情報場の指定拘束/権威終端が主、OBS拡散は従。自然の慣性/粘性による支配ではない。",
+          "dimensionless_reasoning": "幾何幅/H64、可視遷移時間/寿命の比だけを使う。Re/Weは流体を解いていないためnot_applicable。",
+          "detail_cutoff": "High/Lowとも主形・列数・欠損順は維持。Highのみ共鳴補助裏稜。SamplingContractのDPR/MSAAと実H64の可読限界は実機未確認。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH6は既存ゲームの境界入力だけで、人体/材質を資産内で再設計しない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する']"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH6は既存ゲームの境界入力だけで、人体/材質を資産内で再設計しない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する']"
+            },
+            "Optics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH6は既存ゲームの境界入力だけで、人体/材質を資産内で再設計しない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する']"
+            },
+            "Materials": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH6は既存ゲームの境界入力だけで、人体/材質を資産内で再設計しない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する']"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH6は既存ゲームの境界入力だけで、人体/材質を資産内で再設計しない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する']"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH6は既存ゲームの境界入力だけで、人体/材質を資産内で再設計しない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する']"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH6は既存ゲームの境界入力だけで、人体/材質を資産内で再設計しない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する']"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH6は既存ゲームの境界入力だけで、人体/材質を資産内で再設計しない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する']"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "not_applicable: 直接画像描画を要求しない。",
+          "indirect_evidence": [
+            "PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり",
+            "OBS1のdepth遮蔽はホストcoverageを参照する"
+          ],
+          "figure_ground_separation": "not_applicable",
+          "edge_legibility": "目標値:白稜/暗面/空隙を独立に残す。実像未観察。",
+          "perceptual_failure_risk": "小表示で明部が結合、明背景で白稜消失、遮蔽で接点消失、時刻跳躍で原因相が抜ける。音の似通いも未聴取。",
+          "cue_roles": [
+            {
+              "cue": "PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり",
+              "supports": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            },
+            {
+              "cue": "OBS1のdepth遮蔽はホストcoverageを参照する",
+              "supports": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            }
+          ],
+          "confusable_alternative": "プレビュー代用maskを実キャラの検証と誤認",
+          "disambiguating_evidence": "['PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり', 'OBS1のdepth遮蔽はホストcoverageを参照する'] 単一静止画像だけでは因果や寿命の完了を確定しない。",
+          "viewing_conditions": "ブラウザ倍率100%、zoom1 H64=64CSSpx、zoom2=128CSSpx。暗/明背景とHigh4x/Low1x MSAA、rate1/2、3遮蔽条件を実機で観察する計画。今回実GPU/実聴not_run。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "可視場は2.5Dの表裏と側面。外部maskは供給depthのみ。音は位置付けだけ。",
+          "normal_field_coherence": "各triangleのcross積から法線。仮想面応答であって現実反射モデルを偽らない。",
+          "curvature_behavior": "階段状の曲がり、折返し、切欠きが主体。不要な放射円環を作らない。",
+          "silhouette_logic": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。",
+          "contact_relation": "ホストのbody coverageと遮蔽。床・燃焼・破壊接触を追加しない。",
+          "spatial_relation": "source≠target≠midpointを保持。d=0はゼロ長経路を省き局所終端を描く。仮想深度はhitbox非関連。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "ホストの既存actor位置・対象snapshot・midpoint・権威時刻・不透明coverageの境界入力。資産が人物の姿勢やHPを決めない。",
+          "transition_path_character": "equilibrium-maintained",
+          "local_stability_type": "stable",
+          "convergence_behavior": "共通actor clockの入力。rate0/1/2による世界時刻。ゲームの権威期間の正本はホスト。",
+          "damping_profile": "自然減衰の実測モデルではない。情報場の列退役とcosmetic envelopeで終端を有限化。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "準備/lockは明示権威まで状態保持。通常/共鳴/相殺は有限なゼロ状態へ。",
+          "transition_failure_risk": "準備完了を自動放出と誤る、deadlineをリセットする、解決後に未到達の主作用を進行させる、expiredフィールドが復活する。",
+          "driving_input": "PhysicalModel.inputs。src/events.jsでimmutable bindingとupdatesを分離。",
+          "response_timescale": "共通actor clockの入力。rate0/1/2による世界時刻。ゲームの権威期間の正本はホスト。",
+          "phase_relation": "同じactor-msで全枝/OBS/AudioWorkletを参照。解決以降はstateAgeMs固定、terminalQのみ変化。",
+          "stability_condition": "保持は継続入力/未解決という宣言条件。有限枝は0<=age<lifetime、終端後はsampleEvent=null。"
+        },
+        "Couplings": {
+          "DominantCouplings": [],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "ホストのcause/owner/phase/pair/対象は保持し、表示zoom/背景または明示resolve時刻だけを検査上変える。",
+            "predicted_response": "scale以外の枝種は変化せず、resolve後の既存状態だけが有限終端へ。背景変更は場の状態や命中を変えない。",
+            "competing_explanation": "単なるalpha変化・スケール変化でも似て見える可能性。状態列の占有/欠損・経路の前端後端を区別して観察する。",
+            "uncertainty": "ゲームサーバー原本、実GPUのsampling、実際の視聴環境と音量を確認できていない。機構は宣言モデル、コード数値試験は芸術的効果の証拠ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH6",
+              "basis": "外部coverageの遮蔽依存"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [],
+          "indirect": [
+            "PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり",
+            "OBS1のdepth遮蔽はホストcoverageを参照する"
+          ],
+          "selected_types": [
+            "constraint",
+            "history"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH1",
+              "change": "同じ起因イベントと時間拘束による保持または終端の間接対応。"
+            }
+          ],
+          "latent_reference_target": "PH1"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH6.StateDynamics",
+          "retained_cues": [
+            "PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり",
+            "OBS1のdepth遮蔽はホストcoverageを参照する"
+          ],
+          "simplification": "既存構造をH64で読むため面分節と主稜に密度を集中。ノイズを後付けしない。非可視PHを画面用に物体化しない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存主形/間接応答から2軸を選択。",
+          "axes": {
+            "contrast": [
+              "PH1/PH3の追従とPH2/PH4/PH5の発生snapshot固定が外部境界の手掛かり",
+              "OBS1のdepth遮蔽はホストcoverageを参照する"
+            ],
+            "temporal_phase": [
+              "PH1/PH3追従→PH2/PH4/PH5不変snapshot",
+              "不透明coverage→既存effectの前後分離"
+            ]
+          }
+        },
+        "GTB_connections": [
+          "Good: 権威/位置/因果の非矛盾",
+          "Truth: actor時刻と幾何状態の連続",
+          "Beauty: 白稜と暗い空隙・有限な遷移の分離"
+        ],
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "digital_decorations_without_information_state",
+          "uniform_scale_or_fade_only",
+          "post_resolution_new_peak",
+          "authority_deadline_rewrite",
+          "duplicate_audio_on_resolve",
+          "quality_claim_without_render_or_listening"
+        ]
+      },
+      "PH7": {
+        "identity": {
+          "id": "PH7",
+          "name": "起因イベントに束縛したサウンド署名",
+          "origin": "declared",
+          "anchor": "air",
+          "visibility": "implicit",
+          "local_state_difference": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。",
+          "partition_reason": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。"
+        },
+        "DeepStructure": {
+          "Core": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。",
+          "Structure": "event_bound_audio_signature: ['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音']",
+          "Surface": "入力または観測の境界を維持し、直接描画のための物体・発光・粒子を追加しない。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。 対象外のHP、inventory、cooldownは境界外。",
+          "state_variables": "actor-ms、権威deadline-ms、枝状態、位置game px、仮想厚みgame px、coverage0–1、相対radiance。単位換算はCoordinateGravityWindTemplate。",
+          "inputs": "PH6のホスト起因入力。src/synthesis.js + src/audio-dsp.jsがサンプル化し、外部位相/ペアの再解決はしない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            },
+            "energy": {
+              "status": "not_applicable",
+              "balance_or_reason": "実ジュールの量を主張しない。ゲームイベント供給→有限な放射/署名→終端または明示保持の情報収支だけをモデル化する。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "入力境界/ゲーム情報場に独立した物質質量・実運動量・実電荷を与えない。ホストの状態は読み取りだけ。"
+            }
+          },
+          "constitutive_response": "event_bound_audio_signature: 主形の接続/占有/欠損が情報状態に対応する。実材料の構成則ではない。",
+          "initial_condition": "明示開始時刻以前は存在しない。PH6は外部入力境界のみ。",
+          "boundary_conditions": "source/target/midpointはそれぞれ供給snapshot。charge/lockの追従だけ別添付座標で更新。放出/ペア位置を再計算しない。",
+          "approximation_scope": "提供されたゲーム上の非現実機構の設計モデル。サーバー原本は未提示、ゲーム実装との適合/実GPU/実聴は未検証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "H64=64 game pxを1設計mとする任意換算。主面5–30game px、主線約1.25–2.7game px。射程/ダメージ半径を主形の大きさに代用しない。",
+          "characteristic_time": "各枝body長は1.2/.52/1.6/1.6/.8s。charge/lockはbody末尾の保持区間を同じvoiceで反復し権威終了にtailへ移る。",
+          "dominant_balance": "情報場の指定拘束/権威終端が主、OBS拡散は従。自然の慣性/粘性による支配ではない。",
+          "dimensionless_reasoning": "幾何幅/H64、可視遷移時間/寿命の比だけを使う。Re/Weは流体を解いていないためnot_applicable。",
+          "detail_cutoff": "High/Lowとも主形・列数・欠損順は維持。Highのみ共鳴補助裏稜。SamplingContractのDPR/MSAAと実H64の可読限界は実機未確認。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH7は宣言されたゲームの音声署名。実流体中の圧力・熱・光の伝搬をシミュレートしない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音']"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH7は宣言されたゲームの音声署名。実流体中の圧力・熱・光の伝搬をシミュレートしない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音']"
+            },
+            "Optics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH7は宣言されたゲームの音声署名。実流体中の圧力・熱・光の伝搬をシミュレートしない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音']"
+            },
+            "Materials": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH7は宣言されたゲームの音声署名。実流体中の圧力・熱・光の伝搬をシミュレートしない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音']"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH7は宣言されたゲームの音声署名。実流体中の圧力・熱・光の伝搬をシミュレートしない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音']"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH7は宣言されたゲームの音声署名。実流体中の圧力・熱・光の伝搬をシミュレートしない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音']"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH7は宣言されたゲームの音声署名。実流体中の圧力・熱・光の伝搬をシミュレートしない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音']"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "PH7は宣言されたゲームの音声署名。実流体中の圧力・熱・光の伝搬をシミュレートしない。 この領域の独立応答は追加しない。"
+              ],
+              "evidence_or_constraint": "['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音']"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "not_applicable: 直接画像描画を要求しない。",
+          "indirect_evidence": [
+            "PH1–5の原因イベントと一回の署名の同期",
+            "権威解決/期限による同じvoiceの終端とOBS3の距離消音"
+          ],
+          "figure_ground_separation": "not_applicable",
+          "edge_legibility": "目標値:白稜/暗面/空隙を独立に残す。実像未観察。",
+          "perceptual_failure_risk": "小表示で明部が結合、明背景で白稜消失、遮蔽で接点消失、時刻跳躍で原因相が抜ける。音の似通いも未聴取。",
+          "cue_roles": [
+            {
+              "cue": "PH1–5の原因イベントと一回の署名の同期",
+              "supports": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            },
+            {
+              "cue": "権威解決/期限による同じvoiceの終端とOBS3の距離消音",
+              "supports": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。",
+              "reliability_and_overlap": "輪郭・遮蔽・明度は共通入力に依存するため独立統計証拠ではない。縮小/遮蔽/時間欠落により信頼性が低下。"
+            }
+          ],
+          "confusable_alternative": "2倍速の音高変化を別枝と思う、解決時codaを二度目の起音と誤認",
+          "disambiguating_evidence": "['PH1–5の原因イベントと一回の署名の同期', '権威解決/期限による同じvoiceの終端とOBS3の距離消音'] 単一静止画像だけでは因果や寿命の完了を確定しない。",
+          "viewing_conditions": "ブラウザ倍率100%、zoom1 H64=64CSSpx、zoom2=128CSSpx。暗/明背景とHigh4x/Low1x MSAA、rate1/2、3遮蔽条件を実機で観察する計画。今回実GPU/実聴not_run。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "可視場は2.5Dの表裏と側面。外部maskは供給depthのみ。音は位置付けだけ。",
+          "normal_field_coherence": "各triangleのcross積から法線。仮想面応答であって現実反射モデルを偽らない。",
+          "curvature_behavior": "階段状の曲がり、折返し、切欠きが主体。不要な放射円環を作らない。",
+          "silhouette_logic": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。",
+          "contact_relation": "ホストのbody coverageと遮蔽。床・燃焼・破壊接触を追加しない。",
+          "spatial_relation": "source≠target≠midpointを保持。d=0はゼロ長経路を省き局所終端を描く。仮想深度はhitbox非関連。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "5枝毎のPCM起音・時間変化・保持/終端。音源はsource/target/midpointに束縛し、距離減衰はOBS3。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "各枝body長は1.2/.52/1.6/1.6/.8s。charge/lockはbody末尾の保持区間を同じvoiceで反復し権威終了にtailへ移る。",
+          "damping_profile": "自然減衰の実測モデルではない。情報場の列退役とcosmetic envelopeで終端を有限化。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "準備/lockは明示権威まで状態保持。通常/共鳴/相殺は有限なゼロ状態へ。",
+          "transition_failure_risk": "準備完了を自動放出と誤る、deadlineをリセットする、解決後に未到達の主作用を進行させる、expiredフィールドが復活する。",
+          "driving_input": "PhysicalModel.inputs。src/events.jsでimmutable bindingとupdatesを分離。",
+          "response_timescale": "各枝body長は1.2/.52/1.6/1.6/.8s。charge/lockはbody末尾の保持区間を同じvoiceで反復し権威終了にtailへ移る。",
+          "phase_relation": "同じactor-msで全枝/OBS/AudioWorkletを参照。解決以降はstateAgeMs固定、terminalQのみ変化。",
+          "stability_condition": "保持は継続入力/未解決という宣言条件。有限枝は0<=age<lifetime、終端後はsampleEvent=null。"
+        },
+        "Couplings": {
+          "DominantCouplings": [],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "ホストのcause/owner/phase/pair/対象は保持し、表示zoom/背景または明示resolve時刻だけを検査上変える。",
+            "predicted_response": "scale以外の枝種は変化せず、resolve後の既存状態だけが有限終端へ。背景変更は場の状態や命中を変えない。",
+            "competing_explanation": "単なるalpha変化・スケール変化でも似て見える可能性。状態列の占有/欠損・経路の前端後端を区別して観察する。",
+            "uncertainty": "ゲームサーバー原本、実GPUのsampling、実際の視聴環境と音量を確認できていない。機構は宣言モデル、コード数値試験は芸術的効果の証拠ではない。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [
+            {
+              "source": "OBS3",
+              "target": "PH7",
+              "basis": "枝固有PCM署名のactor-time再標本化と距離減衰"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [],
+          "indirect": [
+            "PH1–5の原因イベントと一回の署名の同期",
+            "権威解決/期限による同じvoiceの終端とOBS3の距離消音"
+          ],
+          "selected_types": [
+            "constraint",
+            "history"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH1",
+              "change": "同じ起因イベントと時間拘束による保持または終端の間接対応。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH7.StateDynamics",
+          "retained_cues": [
+            "PH1–5の原因イベントと一回の署名の同期",
+            "権威解決/期限による同じvoiceの終端とOBS3の距離消音"
+          ],
+          "simplification": "既存構造をH64で読むため面分節と主稜に密度を集中。ノイズを後付けしない。非可視PHを画面用に物体化しない。",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存主形/間接応答から2軸を選択。",
+          "axes": {
+            "contrast": [
+              "PH1–5の原因イベントと一回の署名の同期",
+              "権威解決/期限による同じvoiceの終端とOBS3の距離消音"
+            ],
+            "temporal_phase": [
+              "原因イベント→一つの音声署名",
+              "権威終端→同じvoiceの有限coda"
+            ]
+          }
+        },
+        "GTB_connections": [
+          "Good: 権威/位置/因果の非矛盾",
+          "Truth: actor時刻と幾何状態の連続",
+          "Beauty: 白稜と暗い空隙・有限な遷移の分離"
+        ],
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "digital_decorations_without_information_state",
+          "uniform_scale_or_fade_only",
+          "post_resolution_new_peak",
+          "authority_deadline_rewrite",
+          "duplicate_audio_on_resolve",
+          "quality_claim_without_render_or_listening"
+        ]
+      }
+    },
+    "Acceptance": {
+      "all_PH_have_required_full_structure": true,
+      "visible_implicit_latent_have_same_field_set": true,
+      "OBS_not_in_PH_registry": true,
+      "PIA_resolved_as_identification_lifecycle": true
+    }
+  },
+  "PEMTemplate": {
+    "Mode": {
+      "phenomenon_equality": true,
+      "focus_phenomenon": "none"
+    },
+    "CausalMesh": {
+      "physical_mesh_required": true,
+      "gaze_target_policy": "standard",
+      "adjustment_reason": "not_applicable",
+      "gaze_path_A": "PH1 source readiness→PH2 moving finite interval→PH3 target lock",
+      "gaze_path_B": "source endpoints→PH4 shared junction OR PH5 consumed boundary; no circular gaze mandatory",
+      "local_extrema_connected_to_gaze_paths": true
+    },
+    "AttentionControl": {
+      "attention_focus": "hierarchical",
+      "single_requires_explicit_request": true
+    },
+    "Acceptance": {
+      "no_unexplained_isolation": true,
+      "gaze_paths_match_selected_policy_and_explicit_intent": true,
+      "local_peak_returns_to_mesh": true
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "ゲーム内情報場PH1–5。previewの表示背景だけを世界と取り違えない。"
+    },
+    "Units": {
+      "length": "m",
+      "time": "s",
+      "temperature": "K_or_declared",
+      "pressure": "Pa_or_declared",
+      "angle": "rad"
+    },
+    "WorldCoordinates": {
+      "handedness": "right_handed",
+      "X": "right_positive",
+      "Y": "up_positive",
+      "Z": "backward_positive",
+      "camera_forward": "negative_Z",
+      "origin": "scene_origin"
+    },
+    "GameMapping": {
+      "design_assumption": "1 H64 = 64 game px = 1 design m. 実測のm対応ではない。",
+      "world_from_game": "X=game.x/64,Y=-game.y/64,Z=virtualDepth/64",
+      "gpu_geometry_storage": "game pxを保存し投影uniformのscaleで変換。B設計mとの換算は一対一。",
+      "gameplay_separation": "virtualDepth/zoomは距離判定に使用しない。"
+    },
+    "CameraCoordinates": {
+      "X": "right_positive",
+      "Y": "up_positive",
+      "forward": "negative_Z",
+      "projection": "orthographic",
+      "FOV_or_scale": "zoom1: 1CSSpx per gamepx。canvas中心がsetView.center。zoom2:2CSSpx per gamepx。"
+    },
+    "ScreenCoordinates": {
+      "domain": "[0,1]x[0,1]",
+      "x": "0_left_to_1_right",
+      "y": "0_top_to_1_bottom"
+    },
+    "TransformChain": {
+      "order": [
+        "world",
+        "camera",
+        "screen"
+      ],
+      "world_to_camera": "orthographic camera looking -Z; translate supplied game center, preserve field depth.",
+      "camera_to_screen": "clipX=2*(game.x-center.x)*zoom*DPR/deviceWidth, clipY=-2*(game.y-center.y)*zoom*DPR/deviceHeight; screen x=(clipX+1)/2,y=(1-clipY)/2。depth=clamp(.5-z/2048,.001,.999)。"
+    },
+    "ContactCoordinates": {
+      "contact_patch": "none: virtual field; host coverage is an occlusion boundary, not a new ground contact",
+      "contact_normal": "not_applicable: no support floor authored",
+      "support_relation": "not_applicable",
+      "no_penetration": true
+    },
+    "VectorField": {
+      "dominant_vector": {
+        "direction": "source→supplied target or two source snapshots→supplied midpoint",
+        "magnitude": "normal fraction advances 1/.18 per actor-second; distances use supplied positions, not a hit query",
+        "falloff": "finite occupied path interval; core after ingress is branch-specific",
+        "fluctuation": "none"
+      },
+      "secondary_vector": {
+        "direction": "cancellation row-order front / lock row withdrawal",
+        "magnitude": "information-state.js selected per-row transition",
+        "falloff": "remaining sections terminate to zero",
+        "fluctuation": "none"
+      }
+    },
+    "Gravity": {
+      "condition": "normal",
+      "vector": [
+        0,
+        -1,
+        0
+      ],
+      "strength": "host world orientation convention only; no invented acceleration value",
+      "affected_responses": "PH1–5 informational fields remain host-anchored; PH6 body mechanics are host-owned; PH7 is game sonification not ballistic matter",
+      "evidence": [
+        "vertical H64 axis follows the same projection",
+        "no detached fragments or falling paths invented to visualize gravity"
+      ]
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "other",
+      "medium_properties": {
+        "density": "not_applicable: declared game information field, not an air/fluid density",
+        "viscosity": "not_applicable: no fluid material"
+      },
+      "Field": {
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "speed": "0 m/s; no ambient transport",
+        "gust": "none",
+        "shear": "none",
+        "turbulence": "none"
+      },
+      "ApplicableResponses": {
+        "body": "not_applicable: no aerodynamic response is authored; existing game bodies are host-owned",
+        "cloth": "not_applicable: no aerodynamic response is authored; existing game bodies are host-owned",
+        "hair": "not_applicable: no aerodynamic response is authored; existing game bodies are host-owned",
+        "loose_elements": "not_applicable: no aerodynamic response is authored; existing game bodies are host-owned",
+        "environment": "not_applicable: no aerodynamic response is authored; existing game bodies are host-owned"
+      },
+      "non_applicable_responses_explicit": true
+    },
+    "Acceptance": {
+      "world_camera_screen_transform_defined": true,
+      "screen_axis_convention_defined": true,
+      "Gravity_present": true,
+      "WindCapsule_present": true,
+      "medium_state_present": true,
+      "no_inapplicable_wind_evidence_required": true
+    }
+  },
+  "OctaDomainTemplate": {
+    "Domains": {
+      "Thermo": {
+        "definition_reference": "ユーザー基底.md 05. OctaDomain",
+        "instance_location": "PhenomenonSystemTemplate.PhenomenonBlock.*.OctaDomain.Domains.Thermo"
+      },
+      "Fluid": {
+        "definition_reference": "ユーザー基底.md 05. OctaDomain",
+        "instance_location": "PhenomenonSystemTemplate.PhenomenonBlock.*.OctaDomain.Domains.Fluid"
+      },
+      "Optics": {
+        "definition_reference": "ユーザー基底.md 05. OctaDomain",
+        "instance_location": "PhenomenonSystemTemplate.PhenomenonBlock.*.OctaDomain.Domains.Optics"
+      },
+      "Materials": {
+        "definition_reference": "ユーザー基底.md 05. OctaDomain",
+        "instance_location": "PhenomenonSystemTemplate.PhenomenonBlock.*.OctaDomain.Domains.Materials"
+      },
+      "Electromagnetics": {
+        "definition_reference": "ユーザー基底.md 05. OctaDomain",
+        "instance_location": "PhenomenonSystemTemplate.PhenomenonBlock.*.OctaDomain.Domains.Electromagnetics"
+      },
+      "Rheology": {
+        "definition_reference": "ユーザー基底.md 05. OctaDomain",
+        "instance_location": "PhenomenonSystemTemplate.PhenomenonBlock.*.OctaDomain.Domains.Rheology"
+      },
+      "WaveOptics": {
+        "definition_reference": "ユーザー基底.md 05. OctaDomain",
+        "instance_location": "PhenomenonSystemTemplate.PhenomenonBlock.*.OctaDomain.Domains.WaveOptics"
+      },
+      "SurfaceScience": {
+        "definition_reference": "ユーザー基底.md 05. OctaDomain",
+        "instance_location": "PhenomenonSystemTemplate.PhenomenonBlock.*.OctaDomain.Domains.SurfaceScience"
+      }
+    },
+    "Acceptance": {
+      "all_8_domains_present": true,
+      "role_classification_present": true,
+      "latent_does_not_require_direct_visualization": true,
+      "non_applicable_domains_retained_with_reason_and_latent_role": true
+    }
+  },
+  "AnimeStudiesTemplate": {
+    "Applicability": {
+      "active": false,
+      "reason": "明示デジタルゲームVFX/Video。人体演技や2Dアニメ作画の追加はしない。配置・状態可読性だけ互換適用。"
+    },
+    "KeyframeSnapshot": {
+      "phase": "environmental_peak",
+      "state_t_minus_1_evidence": "same branch prior information state, not unregistered effects",
+      "state_t_evidence": "sampler state at shared actorMs",
+      "state_t_plus_1_evidence": "terminal/recovery follows supplied authority; no automatic gameplay result"
+    },
+    "Layout": {
+      "staging": "起点・中点・対象の順序とH64での図地分離",
+      "projection_consistency_ref": "CoordinateGravityWindTemplate",
+      "whitespace_role": "暗い裂け目と主枝間の抜けで全体を白い面へ潰さない"
+    },
+    "PoseActing_or_SceneActing": {
+      "character_ref": "not_applicable: effect-only asset; H64 silhouettes are diagnostic host-coverage masks, not authored living characters",
+      "object_balance": "declared field anchors",
+      "contact_logic": "depth mask only, no support floor"
+    },
+    "MotionReadability": {
+      "motion_blur_smear_speed_line_policy": "explicit_user_request_only",
+      "primary_causality_replacement_by_motion_effects": false
+    },
+    "CompositeIntegration": {
+      "observation_ref": "ObservationIntegrationTemplate",
+      "contact_shadow_used_for_integration": "not_applicable: 本資産に床接触なし"
+    },
+    "Acceptance": {
+      "previous_and_next_time_or_explicit_ambiguity_accounted_for": true,
+      "projection_consistent": true,
+      "posteffects_do_not_replace_primary_causality": true
+    }
+  },
+  "ObservationIntegrationTemplate": {
+    "ObservationRegistry": {
+      "OBS1": {
+        "operation_type": "other",
+        "input_references": [
+          "PH1",
+          "PH2",
+          "PH3",
+          "PH4",
+          "PH5",
+          "PH6"
+        ],
+        "target_mask": "field mesh coverage + explicit host occlusion mask, not diagnostic marker canvas",
+        "stage": "world_render_observation",
+        "composite_method": "alpha_blend",
+        "intensity": "rgba16float linear radiance; premultiplied alpha; face emission .15–.85, white ridges up to4.2, relative design values",
+        "protected_regions": [
+          "dark openings",
+          "source/target/midpoint positions",
+          "host-depth occlusion"
+        ],
+        "output_consequence": "actual vertex/face depth; opaque mask writes depth24plus, transparent triangles sorted back-to-front",
+        "dependencies": [
+          "PH1",
+          "PH2",
+          "PH3",
+          "PH4",
+          "PH5",
+          "PH6"
+        ],
+        "sampling_consequence": "High sampleCount4, Low1; resolved HDR sampled with filtering linearClamp, no mip levels; native code path untested on GPU."
+      },
+      "OBS2": {
+        "operation_type": "posteffect",
+        "input_references": [
+          "OBS1",
+          "display_condition"
+        ],
+        "target_mask": "local HDR ridge neighborhoods only; no UI as input",
+        "stage": "post_composite",
+        "composite_method": "replace_with_constraint",
+        "intensity": "threshold1.15, eight taps at1.5CSSpx/cardinal and3CSSpx/diagonal; diffusion weight.085; exposure1.04. IntensityBudget is authoritative.",
+        "protected_regions": [
+          "dark gaps",
+          "blank background",
+          "host depth boundary",
+          "field identity"
+        ],
+        "output_consequence": "shoulder limits broad clipping; preserves high-white narrow ridges; local bloom does not construct packets, lattices, silhouettes or missing topology",
+        "dependencies": [
+          "OBS1",
+          "display_condition"
+        ],
+        "sampling_consequence": "source rgba16float resolved non-multisampled texture + filtering sampler: linear min/mag, nearest mip, clamp-to-edge, LOD0. Surface output is display-mapped premultiplied alpha. Shader/Pipeline compilation is not_run."
+      },
+      "OBS3": {
+        "operation_type": "other",
+        "input_references": [
+          "PH7",
+          "display_condition"
+        ],
+        "target_mask": "stereo output only",
+        "stage": "display",
+        "composite_method": "other",
+        "intensity": "master.6, per-voice distance gain, final tanh*.88; visual budget not repurposed into acoustics",
+        "protected_regions": [
+          "outside-audibility silence",
+          "pause/stale clock",
+          "duplicate causes",
+          "resolved finite ends"
+        ],
+        "output_consequence": "one voice per kind/cause/owner/pair, origin from host event; resolve/extend edit same voice. Compact distance2200/2600/1800 gamepx per given contract.",
+        "dependencies": [
+          "PH7",
+          "display_condition"
+        ],
+        "sampling_consequence": "PCM synthesized at actual AudioContext.sampleRate (reference WAV48000Hz). Actor-time interpolation: rate2 doubles traversal/pitch. Optional actual AudioWorklet tests are not_run; JS harness alone is not listening."
+      },
+      "OBS4": {
+        "operation_type": "display_artifact",
+        "input_references": [
+          "PH6",
+          "display_condition"
+        ],
+        "target_mask": "preview UI canvas/HTML and optional body-coverage proxy geometry visualization",
+        "stage": "display",
+        "composite_method": "alpha_blend",
+        "intensity": "diagnostic only; absent from external host API output unless host explicitly supplies shapes/background",
+        "protected_regions": [
+          "gameplay HP/storage/pair/phase",
+          "VFX causal color and geometry"
+        ],
+        "output_consequence": "H64 ruler, arbitrary host-coverage proxy, optional 110/260 UI guides, timeline and quality records; no hit tests",
+        "dependencies": [
+          "PH6",
+          "display_condition"
+        ],
+        "sampling_consequence": "H64 scale CSS64 or128 pixels at browser100%. Proxy coverage uses same transform/depth; it does not validate real character art or pose. Dark/light are display conditions, not new world light sources."
+      }
+    },
+    "SamplingContract": {
+      "output_resolution": "actual canvas CSS rect × min(devicePixelRatio,2), rounded; no claimed fixed output size.",
+      "intended_display_scale": "zoom1 H64=64CSSpx, zoom2=128CSSpx, browser zoom100%; viewing distance unspecified.",
+      "spatial_detail_policy": "preserve 3 normal paths/finite occupancy, 6 resonance routes/shared bridges, 7 cancellation row pairs, 4 lock rows. Minimum primary ridge approx1.25gamepx. No noise texture/scanline/particle cloud.",
+      "temporal_sampling": "Continuous interactive Video mapping, shared actorMs. requestAnimationFrame cadence is device-dependent, not claimed60fps. No camera exposure accumulation. Audio reference48000Hz; runtime context rate is read. Large actor steps are logged and cannot certify complete lifetime coverage.",
+      "filter_and_resample_policy": "High 4xMSAA resolve, Low1x; explicit sampler/layout; no WebGL/CPU fallback reported as WebGPU. Intended processing is implemented, but actual WGSL/sampler/GPU execution is not_run."
+    },
+    "ImageIntegration": {
+      "ToneColor": [
+        "OBS2"
+      ],
+      "LightIntegration": [
+        "OBS1",
+        "OBS2"
+      ],
+      "ShadowDensity": "OBS1 actual coverage, no new cast-shadow physics",
+      "DepthAir": "OBS1 depth only; no fog or medium scattering",
+      "EdgeLine": [
+        "OBS1"
+      ],
+      "TextureOutput": "no dedicated image texture; render-target textures are not art assets"
+    },
+    "LensFlareField": {
+      "registry_id": "none",
+      "artifact_type": "optical_observation_artifact",
+      "world_anchor": "none",
+      "SourceMapping": {
+        "source_state": "none",
+        "source_id": "none",
+        "source_screen_position": "not_applicable",
+        "source_luminance_rank": "none"
+      },
+      "ResponseVisibility": {
+        "level": "none",
+        "reason": "LensFlare not selected; field emission alone is not permission for flare ghosts"
+      },
+      "LensModel": {
+        "flare_mode": "latent",
+        "coating_strength": "not_applicable",
+        "aperture_state": "not_applicable",
+        "anamorphic": false
+      },
+      "SpatialBinding": {
+        "image_center_relation": "none",
+        "optical_axis_offset": "none",
+        "chain_axis": "none"
+      },
+      "Responses": {
+        "Ghost": "disabled",
+        "Veil": "disabled",
+        "Streak": "disabled",
+        "Spectral": "disabled"
+      }
+    },
+    "IntensityBudget": {
+      "global_observation_budget": "OBS2 local bloom.085, threshold1.15, exposure1.04; primary shape is OBS1 geometry. No frame-wide luma lift or dark-mask filter.",
+      "para": "not_selected",
+      "flare_gradient": "not_selected",
+      "glow": "low, local eight-tap only",
+      "diffusion": "same OBS2 narrow spread, no duplicated effect",
+      "grain": "not_selected",
+      "chromatic_aberration": "not_selected",
+      "protected_region_priority": "highest",
+      "intentional_departures": []
+    },
+    "CompositeValidation": {
+      "contour_preserved": "not_tested",
+      "highlight_clipping": "not_tested",
+      "shadow_crushing": "not_tested",
+      "chroma_displacement": "not_tested",
+      "fine_detail_retention": "not_tested",
+      "protected_background_preserved": "not_tested"
+    },
+    "Acceptance": {
+      "OBS_separate_from_PH": true,
+      "physical_lensflare_source_binding_preserved": true,
+      "display_artifact_does_not_fake_physical_source": true,
+      "intensity_budget_is_single_source_of_truth": true,
+      "sampling_conditions_and_actual_execution_distinguished": true
+    }
+  },
+  "ExtremumDesignColorTemplate": {
+    "PEV": {
+      "candidate_state_set": [
+        "selected_r02_information_field: cause-specific topology with authoritative finite removal"
+      ],
+      "selected_physics_extremum": "selected_r02_information_field",
+      "reason": "保持・到達・共有・消去・解除が既存の情報状態で読める完成意図の候補。未採用候補は出力しない。"
+    },
+    "AES": {
+      "selected_from_PEV_only": true,
+      "visual_circulation": "source→target、two inputs→midpoint、lockの静止を分ける",
+      "asymmetric_balance": "列退役と経路奥行きにのみ局所差。無意味な乱数非対称を追加しない。",
+      "tension_release": "チャージを保持、共鳴を再編成、相殺を消費、ロックを解除に割当てる。",
+      "body_environment_consonance": "既存body depthを遮蔽inputとして使用、人体美術はホスト所有。",
+      "selected_aesthetic_extremum": "selected_r02_information_field"
+    },
+    "DesignScience": {
+      "VisualHierarchy": "white narrow ridges→cyan/blue field faces→dark cutouts→optional diagnostic proxy→separate UI",
+      "DensityPlan": "H64で主形は5–30px面、内部は少数の構造的bridgeと列。microノイズ0。",
+      "ShapeOrder": "分節・屈曲・噛合い・欠損を原因別に変更し、均一な円環や一枚板にしない。",
+      "OrnamentFunction": "装飾単独層なし。白稜は境界、暗面は通路/欠損、色差は補対側の識別。"
+    },
+    "CCM": {
+      "Palette": {
+        "base": "cyan [.055,.69,.90]",
+        "secondary": "blue [.06,.32,.66], mint [.17,.93,.66]",
+        "accent": "cancellation opposed side amber [1,.37,.075]; narrow white [.86,.985,1]",
+        "neutral": "dark [.011,.028,.049]; preview display backgrounds dark/light"
+      },
+      "ColorDynamics": {
+        "temp": "mixed",
+        "value_range": "dark stable gaps with localized white ridges; no global white disc",
+        "saturation": "field faces colored, ridge white only in thin bands"
+      },
+      "Lighting": {
+        "key_K": "not_applicable: declared digital field response, no physical CCT assigned",
+        "fill_tint": "same branch face response; no added lamp"
+      },
+      "BackgroundBinding": {
+        "bg_dominant": "transparent host; preview [.032,.056,.081] or [.855,.890,.915] only",
+        "bg_accent": "none"
+      },
+      "PerceptualControl": {
+        "attention_focus": "hierarchical",
+        "figure_ground_stability": "high",
+        "arousal_level": "high",
+        "perceptual_noise_tolerance": "low"
+      }
+    },
+    "Acceptance": {
+      "PEV_applied_before_AES_when_world_candidates_exist": true,
+      "AES_does_not_override_world_validity": true,
+      "legacy_FDS_resolved_to_DesignScience": true,
+      "CCM_fields_fixed": true
+    }
+  },
+  "ReflectionClosureTemplate": {
+    "Applicability": {
+      "applies_when": [
+        "reflection",
+        "highlight",
+        "sheen",
+        "gloss",
+        "wetness",
+        "metallic_response",
+        "skin_highlight",
+        "cloth_sheen"
+      ],
+      "otherwise": "latent_optics_condition"
+    },
+    "ReflectionClosureBlock": {},
+    "non_applicability_reason": "狭い白稜は宣言情報場の放射。実在金属/皮膚/布/濡れの反射を設計していない。facet shadingは仮想interface境界応答で、反射source-bindingを偽装しない。",
+    "Acceptance": {
+      "reflection_integrated_into_PH_mesh": true,
+      "lensflare_registered_as_OBS_not_reflection": true
+    }
+  },
+  "PhenomenonProfileTemplate": {
+    "ApplicabilityGuide": {
+      "selections": []
+    },
+    "ProfilePolicy": {
+      "secondary_boost_only": true,
+      "full_PH_structure_still_required": true,
+      "only_selected_profiles_in_design": true
+    },
+    "Profiles": {},
+    "non_applicability_reason": "水/火/風/布/金属/皮膚/濡れ/実反応は選択していない。デジタルという名からMetal/波動干渉を自動選択しない。",
+    "Acceptance": {
+      "profile_does_not_replace_PH_schema": true,
+      "reactive_profile_only_when_applicable": true
+    }
+  },
+  "TermsTemplate": {
+    "PH": "world-internal declared game phenomenon",
+    "OBS": "observation/display operation",
+    "PIA": "PH identification lifecycle",
+    "PEM": "Phenomenon Equality Mode",
+    "PEV": "Physics Extremum Visualization; here declared game-state choice",
+    "AES": "Aesthetic Extremum Selection",
+    "CCM": "Color Catalog Module",
+    "FDS": "legacy alias -> DesignScience + AES Form Design Selection",
+    "DeclaredIntent": "explicit user intent preservation",
+    "ValidationResults": "actual validation outcomes separated from requirements",
+    "Acceptance": {
+      "undefined_legacy_terms_absent": true
+    }
+  },
+  "ExtensionActivationTable": {
+    "entries": {
+      "VFX": {
+        "trigger": "explicit: 5 branches of digital information-field VFX",
+        "dependencies": [
+          "PhenomenonSystemTemplate",
+          "ObservationIntegrationTemplate"
+        ],
+        "output_blocks": [
+          "VFX"
+        ]
+      },
+      "PostEffects": {
+        "trigger": "attribute_resolved: local ridge spread and display shoulder only",
+        "dependencies": [
+          "ObservationIntegrationTemplate"
+        ],
+        "output_blocks": [
+          "PostEffects"
+        ]
+      },
+      "LDM": {
+        "trigger": "explicit_VFX",
+        "dependencies": [
+          "VFX"
+        ],
+        "output_blocks": [
+          "LuminanceDynamicsModule"
+        ]
+      },
+      "VideoGenerationPolicy": {
+        "trigger": "Mode=Video for continuous interactive effect and canonical preview window",
+        "dependencies": [
+          "DeclaredIntent",
+          "CoordinateGravityWindTemplate"
+        ],
+        "output_blocks": [
+          "VideoGenerationPolicy"
+        ]
+      }
+    },
+    "disabled_module_reasons": {
+      "KeywordExpansion": "登録略号/リムライト/presetを今回明示していない。デジタルEをキーワードpresetとみなさない。",
+      "CharacterPolicy": "本資産は人物造形を設計しない。previewはhost body coverageの診断maskで、性別/年齢/人物役割を追加しない。",
+      "BeautifulPoseCapsule": "人間/キャラクターの姿勢を生成する資産ではない。外部body mechanics/animationはホスト所有、検査形状はOBS4の代用品。実キャラ遮蔽の意味照合は接続後に別途必要。",
+      "GradientAnchorPolicy": "色は面/補対側の離散割当て。色相グラデーションを選択していない。"
+    },
+    "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+    "output_contract_ref": "FoundationOperationTemplate.OutputContract",
+    "Acceptance": {
+      "one_activation_source_of_truth": true,
+      "disabled_modules_omitted": true
+    }
+  },
+  "VFX": {
+    "trigger": "explicit",
+    "world_registration": "PhenomenonSystemTemplate.PhenomenonRegistry",
+    "observation_registration": "ObservationIntegrationTemplate.ObservationRegistry",
+    "design_intent": {
+      "subject_and_action": "5枝のデジタル情報場をcauseに応じた接続/占有/消去/禁止の構造として描く。",
+      "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+      "primary_read": "shared information model controls primary meshes, not decoration or bloom",
+      "layering_basis": "各PHの境界・内部・輸送を機能別に詳述。追加の物体/粒子を層数目的で作らない。"
+    },
+    "layers": [
+      {
+        "layer_id": "PH1_structure",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH1"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。 情報場の接続/占有/欠損が主形。",
+        "spatial_structure": {
+          "anchor_and_transform": "body; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH1.PhysicalModel; PH1.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "capture_and_latch in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "準備1.2s、任意の権威保持、解決後0.24s。保持時間を固定寿命と混同しない。",
+          "state_and_sampling_refs": "PH1.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "左右バンクの空隙が列ごとの時差で閉じる",
+            "白い短稜と暗い奥面が前後に重なる"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "PH1_boundary",
+        "role": "boundary",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH1"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。 白い端線と暗い下層/切欠きがinterfaceを分離。",
+        "spatial_structure": {
+          "anchor_and_transform": "body; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH1.PhysicalModel; PH1.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "capture_and_latch in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "準備1.2s、任意の権威保持、解決後0.24s。保持時間を固定寿命と混同しない。",
+          "state_and_sampling_refs": "PH1.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "左右バンクの空隙が列ごとの時差で閉じる",
+            "白い短稜と暗い奥面が前後に重なる"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "PH2_structure",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH2"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。 情報場の接続/占有/欠損が主形。",
+        "spatial_structure": {
+          "anchor_and_transform": "body; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH2.PhysicalModel; PH2.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "directed_finite_transfer in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "全可視寿命0.520s、設計到達0.180s。早期権威解決のtailは最大0.160sかつ元寿命を越えない。到達時刻はゲーム命中判定を変更しない。",
+          "state_and_sampling_refs": "PH2.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "発動点が空になった後も対象手前に有限長packet列が残る",
+            "三つの折れた経路と対象終端が離れて見える"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "PH2_boundary",
+        "role": "boundary",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH2"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。 白い端線と暗い下層/切欠きがinterfaceを分離。",
+        "spatial_structure": {
+          "anchor_and_transform": "body; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH2.PhysicalModel; PH2.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "directed_finite_transfer in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "全可視寿命0.520s、設計到達0.180s。早期権威解決のtailは最大0.160sかつ元寿命を越えない。到達時刻はゲーム命中判定を変更しない。",
+          "state_and_sampling_refs": "PH2.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "発動点が空になった後も対象手前に有限長packet列が残る",
+            "三つの折れた経路と対象終端が離れて見える"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "PH3_structure",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH3"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。 情報場の接続/占有/欠損が主形。",
+        "spatial_structure": {
+          "anchor_and_transform": "body; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH3.PhysicalModel; PH3.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "write_gate_interlock in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "権威期限（標準契約7sだがAPIに推測既定なし）、延長履歴、終了後0.280s cosmetic tail。",
+          "state_and_sampling_refs": "PH3.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "背面棚がH64遮蔽マスクの後ろへ隠れる",
+            "対象の両側に離れた書込ゲートが静止し解除時に別順序で外れる"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "PH3_boundary",
+        "role": "boundary",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH3"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。 白い端線と暗い下層/切欠きがinterfaceを分離。",
+        "spatial_structure": {
+          "anchor_and_transform": "body; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH3.PhysicalModel; PH3.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "write_gate_interlock in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "権威期限（標準契約7sだがAPIに推測既定なし）、延長履歴、終了後0.280s cosmetic tail。",
+          "state_and_sampling_refs": "PH3.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "背面棚がH64遮蔽マスクの後ろへ隠れる",
+            "対象の両側に離れた書込ゲートが静止し解除時に別順序で外れる"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "PH4_structure",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH4"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。 情報場の接続/占有/欠損が主形。",
+        "spatial_structure": {
+          "anchor_and_transform": "air; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH4.PhysicalModel; PH4.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "coherent_topology_rewrite in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "state_and_sampling_refs": "PH4.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "二入力の先端が中点に入り、その後別の6接続路が開く",
+            "暗い二分芯を三段の折返しbridgeが接続し白い稜を分離"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "PH4_boundary",
+        "role": "boundary",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH4"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。 白い端線と暗い下層/切欠きがinterfaceを分離。",
+        "spatial_structure": {
+          "anchor_and_transform": "air; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH4.PhysicalModel; PH4.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "coherent_topology_rewrite in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "state_and_sampling_refs": "PH4.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "二入力の先端が中点に入り、その後別の6接続路が開く",
+            "暗い二分芯を三段の折返しbridgeが接続し白い稜を分離"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "PH5_structure",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH5"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。 情報場の接続/占有/欠損が主形。",
+        "spatial_structure": {
+          "anchor_and_transform": "air; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH5.PhysicalModel; PH5.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "complementary_pair_erasure in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "state_and_sampling_refs": "PH5.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "対向するhook断面が横移動して相互に入り込む",
+            "消去前線の通過後に上段だけが無くなり下段が残る"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "PH5_boundary",
+        "role": "boundary",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。の既存内部/境界具体化。新しい独立出来事ではない。"
+        },
+        "PH_refs": [
+          "PH5"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。 白い端線と暗い下層/切欠きがinterfaceを分離。",
+        "spatial_structure": {
+          "anchor_and_transform": "air; CoordinateGravityWindTemplate.TransformChain",
+          "extent_orientation_depth": "source/target/midpoint既存座標から仮想深度±約30gamepx。判定半径と無関係。",
+          "macro": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+          "meso": "列・折れ路・bridge・切欠きの厚い面と空隙。単一平面/均一scale変化ではない。",
+          "micro": "細かなランダムノイズはなし。Highの補助裏稜だけ追加。",
+          "edge_and_occlusion": "dark backside/sidewall/bright narrow edgeを異なる深度へ。供給coverageと同じdepth test。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared game information-field interface; no physical metal or texture",
+          "emission_opacity_density": "face coverage .7–1、edge relative emission up to4.2。densityは粒子密度ではなく幾何の占有率。",
+          "color_and_light_response": "CCMのcyan/blue/mint、相殺補対側amber、white狭稜。法線応答で面を分ける。",
+          "model_refs": "PH5.PhysicalModel; PH5.OctaDomain.Domains.Optics"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "complementary_pair_erasure in src/information-state.js; shader noise/time wobble does not drive state",
+          "distribution_and_correlation": "列数と位相差は機構に必要な少数。粒子population not_applicable。",
+          "onset_peak_decay": "1.600s。早期解決後最大0.230s、元寿命を越えない。",
+          "state_and_sampling_refs": "PH5.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "OBS1 premultiplied back-to-front triangles, opaque host depth first; OBS2 after MSAA resolve",
+          "protected_cues": [
+            "対向するhook断面が横移動して相互に入り込む",
+            "消去前線の通過後に上段だけが無くなり下段が残る"
+          ],
+          "failure_to_avoid": "同じ格子/scanline/bloomを後乗せするだけで5枝の主形が同じになること。"
+        }
+      },
+      {
+        "layer_id": "display_ridges",
+        "role": "observation_support",
+        "domain": "observation",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "既存PH1–5の白稜出力統合のみ"
+        },
+        "PH_refs": [],
+        "OBS_refs": [
+          "OBS2"
+        ],
+        "function_and_visible_result": "薄い稜線近傍だけの拡散とdisplay shoulder。情報場の主形を作らない。",
+        "spatial_structure": {
+          "anchor_and_transform": "screen pixels from OBS1",
+          "extent_orientation_depth": "screen-only: no world thickness/contact",
+          "macro": "full frame pass but effective energy restricted to existing ridge coverage",
+          "meso": "eight sample offsets within small neighborhoods",
+          "micro": "no grain/dither/noise",
+          "edge_and_occlusion": "keep dark gaps and transparent regions; inspect bloom leakage on hardware"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "OBS2 local display mapping",
+          "emission_opacity_density": "no world emission/density; uses HDR color and coverage from OBS1",
+          "color_and_light_response": "8tap local spread + shoulder + output gamma; no hue split",
+          "model_refs": "OBS2 contract"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "same actor frame as input, no independent visual lifetime",
+          "distribution_and_correlation": "pixel neighborhood only; no particle set",
+          "onset_peak_decay": "follows input state; no temporal feedback texture or afterimage",
+          "state_and_sampling_refs": "ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "post-composite; eight explicit textureSampleLevel at LOD0",
+          "protected_cues": [
+            "white ridge",
+            "dark notch",
+            "finite trail endpoint",
+            "host coverage"
+          ],
+          "failure_to_avoid": "white mass, transparent-edge halo, replacement of missing topology"
+        }
+      }
+    ],
+    "interlayer_links": [
+      {
+        "source_layer": "PH1_boundary",
+        "target_layer": "PH1_structure",
+        "relation_type": "visual_relation",
+        "mechanism_and_consequence": "同じPHのinterfaceと主形を強弱/奥行きで分離。独立した物理PH間の相互作用ではない。",
+        "foundation_binding": "PH1.DeepStructure"
+      },
+      {
+        "source_layer": "PH2_boundary",
+        "target_layer": "PH2_structure",
+        "relation_type": "visual_relation",
+        "mechanism_and_consequence": "同じPHのinterfaceと主形を強弱/奥行きで分離。独立した物理PH間の相互作用ではない。",
+        "foundation_binding": "PH2.DeepStructure"
+      },
+      {
+        "source_layer": "PH3_boundary",
+        "target_layer": "PH3_structure",
+        "relation_type": "visual_relation",
+        "mechanism_and_consequence": "同じPHのinterfaceと主形を強弱/奥行きで分離。独立した物理PH間の相互作用ではない。",
+        "foundation_binding": "PH3.DeepStructure"
+      },
+      {
+        "source_layer": "PH4_boundary",
+        "target_layer": "PH4_structure",
+        "relation_type": "visual_relation",
+        "mechanism_and_consequence": "同じPHのinterfaceと主形を強弱/奥行きで分離。独立した物理PH間の相互作用ではない。",
+        "foundation_binding": "PH4.DeepStructure"
+      },
+      {
+        "source_layer": "PH5_boundary",
+        "target_layer": "PH5_structure",
+        "relation_type": "visual_relation",
+        "mechanism_and_consequence": "同じPHのinterfaceと主形を強弱/奥行きで分離。独立した物理PH間の相互作用ではない。",
+        "foundation_binding": "PH5.DeepStructure"
+      },
+      {
+        "source_layer": "display_ridges",
+        "target_layer": "PH1_boundary",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "OBS2はOBS1を介してこの境界放射を入力する。入力側を先に評価する。",
+        "foundation_binding": "OBS2.dependencies -> OBS1 -> PH1"
+      },
+      {
+        "source_layer": "display_ridges",
+        "target_layer": "PH2_boundary",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "OBS2はOBS1を介してこの境界放射を入力する。入力側を先に評価する。",
+        "foundation_binding": "OBS2.dependencies -> OBS1 -> PH2"
+      },
+      {
+        "source_layer": "display_ridges",
+        "target_layer": "PH3_boundary",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "OBS2はOBS1を介してこの境界放射を入力する。入力側を先に評価する。",
+        "foundation_binding": "OBS2.dependencies -> OBS1 -> PH3"
+      },
+      {
+        "source_layer": "display_ridges",
+        "target_layer": "PH4_boundary",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "OBS2はOBS1を介してこの境界放射を入力する。入力側を先に評価する。",
+        "foundation_binding": "OBS2.dependencies -> OBS1 -> PH4"
+      },
+      {
+        "source_layer": "display_ridges",
+        "target_layer": "PH5_boundary",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "OBS2はOBS1を介してこの境界放射を入力する。入力側を先に評価する。",
+        "foundation_binding": "OBS2.dependencies -> OBS1 -> PH5"
+      }
+    ],
+    "causal_path": {
+      "input": "PH6 host-owned authority event and supplied position",
+      "carrier_PH": "PH1",
+      "receiver": "PH7 causal signature; PH2–5 are independently supplied branches, not autonomously spawned by PH1",
+      "ScaleRegime_ref": "PH1.ScaleRegime",
+      "StateDynamics_ref": "PH1.StateDynamics",
+      "ReactivePhaseChange_ref": "not_applicable: no chemical reaction, dissolution or phase-change material selected"
+    },
+    "orchestration": {
+      "common_time_basis": "VideoGenerationPolicy.timeline actor-seconds; API actor-ms conversion only",
+      "layer_phase_relations": "per informationState row/route fractions; freeze stateAgeMs at terminal, then retract/remove.",
+      "environment_response": "PH6 supplied host depth coverage. No smoke/debris/scorch/ground/splash.",
+      "visual_hierarchy": "shape occupancy first, internal slots next, narrow white crests next, OBS2 last",
+      "bullet_time": "not_applicable: not requested"
+    },
+    "output_integration": {
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+      "LDM_ref": "LuminanceDynamicsModule",
+      "composite_order": "host-depth + OBS1 meshes → MSAA resolve → OBS2; OBS3 audio separate; OBS4 markers separately",
+      "color_alpha_contract": "linear rgba16float, premultiplied coverage; blend one/one-minus-src-alpha; display mapped premultiplied canvas. Implementation exists, hardware validation not_run.",
+      "scale_adaptation": "zoom changes observation only. Low retains core counts and causality, reduces auxiliary resonance rods and MSAA."
+    },
+    "validation_plan": {
+      "layer_checks": "各層のfinite meshと情報状態をNodeで検査、H64の可読性は実GPUで別に観察。",
+      "composite_checks": "white ridge/dark notch、前後遮蔽、明暗背景、8tap境界漏れを実機で検査。",
+      "temporal_checks": "5枝+順序+重なり+延長+権威解決+d0+連続通知、各開始→保持/主作用→終端→消去。",
+      "actual_results_ref": "GlobalAcceptanceTemplate.ValidationResults"
+    },
+    "Acceptance": {
+      "world_VFX_registered_as_PH": true,
+      "observation_only_effects_not_misregistered_as_VFX_PH": true,
+      "layer_roles_scales_and_relations_explicit": true,
+      "layer_count_does_not_force_new_content_or_PH_partition": true,
+      "material_motion_environment_and_composite_consistent": true,
+      "shared_intensity_and_sampling_contracts_preserved": true,
+      "structural_requirements_not_reported_as_render_evidence": true
+    }
+  },
+  "PostEffects": {
+    "trigger": {
+      "ordinary_posteffects": false,
+      "beta_targets": []
+    },
+    "selection": {
+      "mode": "exact_selected_operations",
+      "scope_resolution": "attribute_resolved_target_and_scope",
+      "exact_selected_operations": [
+        {
+          "operation": "local_HDR_ridge_diffusion_and_display_shoulder",
+          "OBS_ref": "OBS2",
+          "basis": "attribute_resolved",
+          "target": "existing PH1–5 visible coverage only"
+        }
+      ]
+    },
+    "autonomous_activation": {
+      "physical_causality_input_required": false,
+      "registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract"
+    },
+    "SPCA": {
+      "applies_if": "world_internal_PH_local_peak_selected",
+      "evidence_types_standard_two_of": [
+        "gradient",
+        "decay",
+        "occlusion"
+      ],
+      "explicit_intent_adjustment": "not_applicable",
+      "PostEffects_alone_does_not_require_new_PH": true
+    },
+    "global_posteffects": {
+      "applies": false,
+      "exact_OBS_operations": [],
+      "OBS_refs": []
+    },
+    "local_posteffects": {
+      "applies": true,
+      "targets": [
+        "PH1",
+        "PH2",
+        "PH3",
+        "PH4",
+        "PH5"
+      ],
+      "exact_OBS_operations": [
+        "local_HDR_ridge_diffusion_and_display_shoulder"
+      ],
+      "OBS_refs": [
+        "OBS2"
+      ]
+    },
+    "operation_contract": {
+      "required_fields": [
+        "input_references",
+        "target_mask",
+        "stage",
+        "composite_method",
+        "intensity",
+        "protected_regions",
+        "sampling_consequence"
+      ],
+      "sampling_consequence": "SamplingContractを共有。固定frame cadenceや未実装AAを主張しない。"
+    },
+    "Acceptance": {
+      "exact_selected_operation_does_not_infer_layers": true,
+      "global_local_scope_unambiguous": true,
+      "legacy_five_domain_reference_absent": true
+    }
+  },
+  "LuminanceDynamicsModule": {
+    "trigger": {
+      "explicit_VFX": true,
+      "explicit_PostEffects": false,
+      "inferred_requires_luminance_dynamics": false
+    },
+    "omitted_if_not_enabled": true,
+    "target_metrics": {
+      "target_size": "H64-referenced 5–30px main faces; only narrow high-radiance edges",
+      "camera_distance": "orthographic; no perspective distance applied",
+      "screen_occupancy": "computed from actual canvas/geometry, not a fixed fraction",
+      "readability_priority": "high"
+    },
+    "Video": {
+      "temporal_envelope": "charge/lock held intensity constant after latch; normal finite moving occupied interval; resonance per-route retirement; cancellation ordered row consumption. Terminal envelope only removes already reached state.",
+      "micro_variation": "none: no requested random flicker or sparkle",
+      "anti_flicker": "no intentional periodic flashing. Frame gaps/cadence are logged; intended rapid branch transitions are not silently weakened."
+    },
+    "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+    "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+    "sampling_consequence": "Continuous interactive Video mapping, shared actorMs. requestAnimationFrame cadence is device-dependent, not claimed60fps. No camera exposure accumulation. Audio reference48000Hz; runtime context rate is read. Large actor steps are logged and cannot certify complete lifetime coverage.",
+    "AlphaBackground": {
+      "enabled": false,
+      "required_background_if_enabled": "#000000"
+    },
+    "alpha_ref": "LuminanceDynamicsModule.AlphaBackground",
+    "ActivationExclusions": {
+      "non_emissive_particles_only": "no_auto_activation",
+      "grain_only": "no_auto_activation"
+    },
+    "Acceptance": {
+      "mode_specific_envelope": true,
+      "numeric_defaults_subordinate_to_target_metrics": true,
+      "no_unwanted_global_luma_lift": true
+    }
+  },
+  "VideoGenerationPolicy": {
+    "Mode": "Video",
+    "Duration": {
+      "source": "default",
+      "seconds": 10
+    },
+    "Style": "ユーザー明示のデジタルE。離散チャネル、有限転送区間、共有接続、補対消去、書込禁止が主形・内部・境界・時間を変える。格子/走査線/粒子/bloomの後付けをデジタル性の主因にしない。",
+    "dataclass_forbidden": true,
+    "timeline": {
+      "unit": "seconds",
+      "tracks": {
+        "PH": [
+          {
+            "id": "PH1",
+            "start": 0,
+            "end": 1.64,
+            "state_before": "inactive or existing host condition",
+            "state_during": "first capture then resolve at1.4",
+            "state_after": "empty except ongoing external host boundary"
+          },
+          {
+            "id": "PH2",
+            "start": 1.4,
+            "end": 1.92,
+            "state_before": "inactive or existing host condition",
+            "state_during": "finite normal release",
+            "state_after": "empty except ongoing external host boundary"
+          },
+          {
+            "id": "PH3",
+            "start": 1.58,
+            "end": 9.58,
+            "state_before": "inactive or existing host condition",
+            "state_during": "lock deadline8.58 extended at4.9 to9.3; cosmetic tail to9.58",
+            "state_after": "empty except ongoing external host boundary"
+          },
+          {
+            "id": "PH1",
+            "start": 2.1,
+            "end": 3.74,
+            "state_before": "inactive or existing host condition",
+            "state_during": "two preview charges for coherent result, resolve3.5",
+            "state_after": "empty except ongoing external host boundary"
+          },
+          {
+            "id": "PH4",
+            "start": 3.5,
+            "end": 5.1,
+            "state_before": "inactive or existing host condition",
+            "state_during": "coherent junction→empty",
+            "state_after": "empty except ongoing external host boundary"
+          },
+          {
+            "id": "PH1",
+            "start": 5,
+            "end": 6.64,
+            "state_before": "inactive or existing host condition",
+            "state_during": "two preview charges for complementary result, resolve6.4",
+            "state_after": "empty except ongoing external host boundary"
+          },
+          {
+            "id": "PH5",
+            "start": 6.4,
+            "end": 8,
+            "state_before": "inactive or existing host condition",
+            "state_during": "complementary erasure→empty",
+            "state_after": "empty except ongoing external host boundary"
+          },
+          {
+            "id": "PH6",
+            "start": 0,
+            "end": 10,
+            "state_before": "inactive or existing host condition",
+            "state_during": "host boundary and moving attachments",
+            "state_after": "empty except ongoing external host boundary"
+          },
+          {
+            "id": "PH7",
+            "start": 0,
+            "end": 9.58,
+            "state_before": "inactive or existing host condition",
+            "state_during": "one voice for each supplied cause; no new voice for extends/resolves",
+            "state_after": "empty except ongoing external host boundary"
+          }
+        ],
+        "OBS": [
+          {
+            "id": "OBS1",
+            "start": 0,
+            "end": 10,
+            "state_before": "no frame",
+            "state_during": "observe same actor-ms; separate marker/audio dependencies",
+            "state_after": "last blank field; next loop resets only preview epoch"
+          },
+          {
+            "id": "OBS2",
+            "start": 0,
+            "end": 10,
+            "state_before": "no frame",
+            "state_during": "observe same actor-ms; separate marker/audio dependencies",
+            "state_after": "last blank field; next loop resets only preview epoch"
+          },
+          {
+            "id": "OBS3",
+            "start": 0,
+            "end": 10,
+            "state_before": "no frame",
+            "state_during": "observe same actor-ms; separate marker/audio dependencies",
+            "state_after": "last blank field; next loop resets only preview epoch"
+          },
+          {
+            "id": "OBS4",
+            "start": 0,
+            "end": 10,
+            "state_before": "no frame",
+            "state_during": "observe same actor-ms; separate marker/audio dependencies",
+            "state_after": "last blank field; next loop resets only preview epoch"
+          }
+        ],
+        "camera": [
+          {
+            "start": 0,
+            "end": 10,
+            "transform": "CoordinateGravityWindTemplate.TransformChain; canonical zoom1",
+            "state_before": "fixed center",
+            "state_during": "no camera motion/blur",
+            "state_after": "same"
+          }
+        ],
+        "audio": [
+          {
+            "id": "PH7 via OBS3",
+            "start": 0,
+            "end": 9.58,
+            "role": "one causal voice per supplied event, preview audio enabled by user gesture",
+            "state_before": "silence",
+            "state_during": "attack / hold / end follows each branch",
+            "state_after": "silence"
+          }
+        ],
+        "dialogue": []
+      }
+    },
+    "ContinuityLedger": {
+      "characters": "host IDs actor-a,actor-b,target; proxy coverage is a diagnostic substitute only",
+      "costumes": "not authored",
+      "light_sources": "PH1–5 declared field response only, no extra light objects",
+      "objects": "registered event identities; no new objects on resolve/extend",
+      "contacts": "host depth test only; no ground/impact claim"
+    },
+    "ResponseAndSamplingChecks": {
+      "PH_response_timescale_refs": [
+        "PH1.StateDynamics.response_timescale",
+        "PH2.StateDynamics.response_timescale",
+        "PH3.StateDynamics.response_timescale",
+        "PH4.StateDynamics.response_timescale",
+        "PH5.StateDynamics.response_timescale",
+        "PH6.StateDynamics.response_timescale",
+        "PH7.StateDynamics.response_timescale"
+      ],
+      "temporal_sampling_ref": "ObservationIntegrationTemplate.SamplingContract.temporal_sampling",
+      "OBS_sampling_consequence_refs": [
+        "OBS1.sampling_consequence",
+        "OBS2.sampling_consequence",
+        "OBS3.sampling_consequence",
+        "OBS4.sampling_consequence"
+      ],
+      "frame_cadence_and_exposure": "actual RAF variable; no simulated camera exposure; AudioWorklet context sampleRate. 0.12s stale-clock gate is audio safety, not a new actor clock.",
+      "observation_windows_fit_timeline": true,
+      "longer_physical_response_state_at_video_end": "external charge/lock may continue beyond any inspection window; canonical all scenario supplies terminal events, no arbitrary expiry added to host API."
+    },
+    "Acceptance": {
+      "single_duration_source_of_truth": true,
+      "all_tracks_within_duration": true,
+      "response_timescale_and_OBS_sampling_checked_against_timeline": true,
+      "character_costume_light_object_contact_continuity_checked": true
+    }
+  },
+  "GlobalAcceptanceTemplate": {
+    "Requirements": {
+      "PhenomenonRegistry_required": true,
+      "full_PH_structure_required": true,
+      "all_8_domains_required": true,
+      "ObservationRegistry_required_when_OBS_exist": true,
+      "WindCapsule_required": true,
+      "Gravity_required": true,
+      "world_camera_screen_transform_required": true
+    },
+    "ValidationResults": {
+      "StructuralInspection": {
+        "status": "pass",
+        "checks": {
+          "required_blocks": "605 structural checks: quality/structural-tests.json",
+          "rule_contracts": "Source rule IDs retained in docs/RULE-TRACE.md; original supplied validator not available. Local checker does not claim equivalence.",
+          "PH_OBS_separation": "registry membership, references and OBS DAG checked",
+          "OctaDomain": "all seven PHs, all eight domains retained",
+          "scientific_fields": "PhysicalModel, ScaleRegime, dynamics, perceptual cues, CausalAssessment and sampling fields checked for presence; physical proof not performed",
+          "coordinate_gravity_wind": "blocks and medium state present",
+          "template_consolidation": "one top-level instance per selected template; no schema placeholder IDs"
+        }
+      },
+      "SemanticReconciliation": {
+        "status": "warning",
+        "checks": {
+          "DeclaredIntent_preserved": "5 branches / authority immutability / digital primary structure encoded. source server code not provided; no integration approval.",
+          "trigger_resolution": "Only VFX/PostEffects/LDM/Video selected with explicit reasons. No keyword/preset/gradient/body artwork generated.",
+          "exception_resolution": "no new override of authority, branch, range or damage. diagnostic host-coverage is not new world-body artwork.",
+          "source_binding": "source/target/supplied midpoint immutable; paired input not reclassified even if inconsistent; host must resolve it.",
+          "scope_and_dependencies": "PH and OBS separate, OBS directed acyclic dependencies. preview excluded from external API.",
+          "scientific_consistency": "declared game-information model; no claim of real electromagnetics or measured optical/audio realism. Code tests are not perceptual evidence."
+        }
+      },
+      "RenderObservation": {
+        "status": "not_run",
+        "evidence_source": "none; quality/browser-run/report.json records ERR_BLOCKED_BY_ADMINISTRATOR before app execution",
+        "checks": {
+          "visual_causality": "not_run",
+          "contour_preservation": "not_run",
+          "clipping_crushing": "not_run",
+          "chroma_detail": "not_run",
+          "contact_projection": "not_run",
+          "temporal_continuity": "not_run",
+          "cue_discrimination_and_sampling": "not_run"
+        }
+      }
+    },
+    "OutcomeEvaluation": {
+      "intent_alignment": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "rationale": "no current r0.3 actual GPU image/video observation"
+      },
+      "artistic_effect": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "evaluator_basis": "not_run: hardware image and actual listening unavailable",
+        "strengths": "not_run",
+        "limitations": "No hardware/H64/full-lifetime/light-dark/real-character/audio artistic approval."
+      }
+    },
+    "ComparativeEvaluation": {
+      "status": "not_run",
+      "question": "Does r0.3 improve five-branch digital causality versus r0.1?",
+      "changed_factor": "primary morphology, held states, authority tails, information sampler, sound lifecycle",
+      "controlled_conditions": "no matched rendered comparison performed",
+      "scene_set": "13 independent inspection scenarios planned",
+      "repetitions_and_order": "not_run; built-in forward/reverse/overlap and full condition tour available",
+      "criteria": "shape/time recognition, protected authority, H64, full lifetime, actual sound differentiation",
+      "evidence": "none",
+      "result_and_limitations": "No empirical superiority claim. P0 is frozen and not a finished comparison baseline."
+    },
+    "FinalStatus": {
+      "specification_status": "Warning",
+      "render_status": "NotRun",
+      "failure_reasons": []
+    }
+  },
+  "ImplementationBindings": {
+    "version": "r0.3",
+    "api": "src/emp-e.js",
+    "authority_store": "src/events.js",
+    "actor_sampler": "src/sampler.js",
+    "information_field": "src/information-state.js",
+    "primary_geometry": "src/geometry.js",
+    "webgpu": "src/renderer.js",
+    "wgsl": [
+      "shaders/mesh.wgsl",
+      "shaders/composite.wgsl"
+    ],
+    "sound": [
+      "src/synthesis.js",
+      "src/audio-dsp.js",
+      "src/audio-worklet.js"
+    ],
+    "preview": "preview/main.js",
+    "no_dedicated_image_textures": true,
+    "no_Sol_Astra_creative_reference": true,
+    "readiness_is_not_resolution": true,
+    "game_integration_approved": false
+  }
+}

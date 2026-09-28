@@ -28,6 +28,14 @@ test('verification mode cannot unlock or unmute the preview sound', () => {
   assert.match(script, /if\(verifyMode\)\{audio\.setVolume\(0\);audio\.setMuted\(true\);\}/);
   assert.match(script, /#sound'\)\.onclick=async\(\)=>\{if\(verifyMode\)return;/);
   assert.match(script, /#volume'\)\.oninput=e=>\{if\(!verifyMode\)audio\.setVolume/);
+  assert.match(css, /body\.verify #sound, body\.verify #volume\s*\{\s*display:\s*none;/);
+});
+
+test('normal gallery embed exposes the existing user-gesture SFX unlock control', () => {
+  assert.match(script, /if\(embedMode&&!verifyMode\)\{/);
+  assert.match(script, /audioControl\.append\(\$\('#sound'\),\$\('#audio-status'\)\);tile\.append\(audioControl\);/);
+  assert.match(script, /await audio\.unlock\(\);\$\('#sound'\)\.textContent='消音';/);
+  assert.match(css, /body\.embed \.embed-audio-control #sound\s*\{[^}]*font-size:\s*11px;/);
 });
 
 test('unmodified Pro runtime and shader files match the preserved manifest', async () => {

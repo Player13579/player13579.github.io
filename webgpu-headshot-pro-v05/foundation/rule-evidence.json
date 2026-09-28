@@ -1,0 +1,1644 @@
+{
+  "scope": "適用規則の正本参照→実装→帰結→検査の対応。原本規則の本文は再定義しない。",
+  "rules": [
+    {
+      "rule_id": "InferenceExpansionPolicy.InferenceExpansionPolicy",
+      "canonical_contract_ref": "基底.md#InferenceExpansionPolicy.InferenceExpansionPolicy",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"InferenceExpansionPolicy\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一Eへの訂正と未宣言対象の禁止を世界/表示の具体化へ束縛する。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "InferenceExpansionPolicy.AttributeAndActionResolutionRule",
+      "canonical_contract_ref": "基底.md#InferenceExpansionPolicy.AttributeAndActionResolutionRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"InferenceExpansionPolicy\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一Eへの訂正と未宣言対象の禁止を世界/表示の具体化へ束縛する。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "InferenceExpansionPolicy.DeclaredIntentRule",
+      "canonical_contract_ref": "基底.md#InferenceExpansionPolicy.DeclaredIntentRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"InferenceExpansionPolicy\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一Eへの訂正と未宣言対象の禁止を世界/表示の具体化へ束縛する。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "InferenceExpansionPolicy.ExpressionIntentRule",
+      "canonical_contract_ref": "基底.md#InferenceExpansionPolicy.ExpressionIntentRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"InferenceExpansionPolicy\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一Eへの訂正と未宣言対象の禁止を世界/表示の具体化へ束縛する。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.FoundationOperationRule",
+      "canonical_contract_ref": "基底.md#FoundationOperationTemplate.FoundationOperationRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"FoundationOperationTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "B設計とEソースを区別。代表Imageはdesign_onlyで生成モデルを呼ばない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.RuleContractRule",
+      "canonical_contract_ref": "基底.md#FoundationOperationTemplate.RuleContractRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"FoundationOperationTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "B設計とEソースを区別。代表Imageはdesign_onlyで生成モデルを呼ばない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.PriorityRule",
+      "canonical_contract_ref": "基底.md#FoundationOperationTemplate.PriorityRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"FoundationOperationTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "B設計とEソースを区別。代表Imageはdesign_onlyで生成モデルを呼ばない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.ConflictResolutionRule",
+      "canonical_contract_ref": "基底.md#FoundationOperationTemplate.ConflictResolutionRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"FoundationOperationTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "B設計とEソースを区別。代表Imageはdesign_onlyで生成モデルを呼ばない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.UniversalNoLabelOnlyRule",
+      "canonical_contract_ref": "基底.md#FoundationOperationTemplate.UniversalNoLabelOnlyRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"FoundationOperationTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "B設計とEソースを区別。代表Imageはdesign_onlyで生成モデルを呼ばない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "FoundationOperationTemplate.OutputAndReferenceResolutionRule",
+      "canonical_contract_ref": "基底.md#FoundationOperationTemplate.OutputAndReferenceResolutionRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"FoundationOperationTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "B設計とEソースを区別。代表Imageはdesign_onlyで生成モデルを呼ばない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PlatonicGoodTemplate.PlatonicGoodFoundation",
+      "canonical_contract_ref": "基底.md#PlatonicGoodTemplate.PlatonicGoodFoundation",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PlatonicGoodTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "起点・曲率・位相・既存受光を結び、美を数値的非同一や部品数へ変換しない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PlatonicGoodTemplate.BeautyStructuringRule",
+      "canonical_contract_ref": "基底.md#PlatonicGoodTemplate.BeautyStructuringRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PlatonicGoodTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "起点・曲率・位相・既存受光を結び、美を数値的非同一や部品数へ変換しない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PlatonicGoodTemplate.NoSingleBeautyStructureDominance",
+      "canonical_contract_ref": "基底.md#PlatonicGoodTemplate.NoSingleBeautyStructureDominance",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PlatonicGoodTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "起点・曲率・位相・既存受光を結び、美を数値的非同一や部品数へ変換しない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PlatonicGoodTemplate.GTBImplementationMapping",
+      "canonical_contract_ref": "基底.md#PlatonicGoodTemplate.GTBImplementationMapping",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PlatonicGoodTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "起点・曲率・位相・既存受光を結び、美を数値的非同一や部品数へ変換しない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.UniversalPhenomenonRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.UniversalPhenomenonRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.PIA",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.PIA",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.VisibilityDefinition",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.VisibilityDefinition",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.LinkTypeRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.LinkTypeRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.DeepStructureRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.DeepStructureRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.StateTransformerRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.StateTransformerRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.VisualCausalityRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.VisualCausalityRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.UniversalMaterialResponseRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.UniversalMaterialResponseRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.HubPhenomenonRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.HubPhenomenonRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.PhysicalModelClosureRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.PhysicalModelClosureRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.ScaleAndSimilarityRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.ScaleAndSimilarityRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.DynamicResponseAndStabilityRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.DynamicResponseAndStabilityRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.PerceptualEvidenceDiscriminationRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.PerceptualEvidenceDiscriminationRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.CausalAssessmentAndUncertaintyRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.CausalAssessmentAndUncertaintyRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.CommonPHFailurePatterns",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.CommonPHFailurePatterns",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.PartitionAndSharedConditionsRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.PartitionAndSharedConditionsRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonSystemTemplate.VisualProjectionRule",
+      "canonical_contract_ref": "基底.md#PhenomenonSystemTemplate.VisualProjectionRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonSystemTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1の単一場とPH2の既存面を完全構造で持ち、物理を実弾/生体の実証と偽らない。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PEMTemplate.PhenomenonEqualityMode",
+      "canonical_contract_ref": "基底.md#PEMTemplate.PhenomenonEqualityMode",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PEMTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "孤立した装飾を足さず、核と既存面に根拠を持つ読み順を保つ。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PEMTemplate.AttentionRuleWithCCM",
+      "canonical_contract_ref": "基底.md#PEMTemplate.AttentionRuleWithCCM",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PEMTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "孤立した装飾を足さず、核と既存面に根拠を持つ読み順を保つ。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.CoordinateSystemDefinition",
+      "canonical_contract_ref": "基底.md#CoordinateGravityWindTemplate.CoordinateSystemDefinition",
+      "source_locations": [
+        {
+          "path": "src/renderer.mjs",
+          "marker": "export function projectContact"
+        }
+      ],
+      "runtime_or_design_consequence": "固定GU接触をホスト座標へ写す。重力/風で未宣言の身体や粒子を動かさない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.RelationPriorityRule",
+      "canonical_contract_ref": "基底.md#CoordinateGravityWindTemplate.RelationPriorityRule",
+      "source_locations": [
+        {
+          "path": "src/renderer.mjs",
+          "marker": "export function projectContact"
+        }
+      ],
+      "runtime_or_design_consequence": "固定GU接触をホスト座標へ写す。重力/風で未宣言の身体や粒子を動かさない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.GlobalVectorFieldRule",
+      "canonical_contract_ref": "基底.md#CoordinateGravityWindTemplate.GlobalVectorFieldRule",
+      "source_locations": [
+        {
+          "path": "src/renderer.mjs",
+          "marker": "export function projectContact"
+        }
+      ],
+      "runtime_or_design_consequence": "固定GU接触をホスト座標へ写す。重力/風で未宣言の身体や粒子を動かさない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.StateTransitionRule",
+      "canonical_contract_ref": "基底.md#CoordinateGravityWindTemplate.StateTransitionRule",
+      "source_locations": [
+        {
+          "path": "src/renderer.mjs",
+          "marker": "export function projectContact"
+        }
+      ],
+      "runtime_or_design_consequence": "固定GU接触をホスト座標へ写す。重力/風で未宣言の身体や粒子を動かさない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.GravityConditionDefinition",
+      "canonical_contract_ref": "基底.md#CoordinateGravityWindTemplate.GravityConditionDefinition",
+      "source_locations": [
+        {
+          "path": "src/renderer.mjs",
+          "marker": "export function projectContact"
+        }
+      ],
+      "runtime_or_design_consequence": "固定GU接触をホスト座標へ写す。重力/風で未宣言の身体や粒子を動かさない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.WindCapsuleOperationRule",
+      "canonical_contract_ref": "基底.md#CoordinateGravityWindTemplate.WindCapsuleOperationRule",
+      "source_locations": [
+        {
+          "path": "src/renderer.mjs",
+          "marker": "export function projectContact"
+        }
+      ],
+      "runtime_or_design_consequence": "固定GU接触をホスト座標へ写す。重力/風で未宣言の身体や粒子を動かさない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.NaturalVarianceRule",
+      "canonical_contract_ref": "基底.md#CoordinateGravityWindTemplate.NaturalVarianceRule",
+      "source_locations": [
+        {
+          "path": "src/renderer.mjs",
+          "marker": "export function projectContact"
+        }
+      ],
+      "runtime_or_design_consequence": "固定GU接触をホスト座標へ写す。重力/風で未宣言の身体や粒子を動かさない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "CoordinateGravityWindTemplate.VisibleTranslationRule",
+      "canonical_contract_ref": "基底.md#CoordinateGravityWindTemplate.VisibleTranslationRule",
+      "source_locations": [
+        {
+          "path": "src/renderer.mjs",
+          "marker": "export function projectContact"
+        }
+      ],
+      "runtime_or_design_consequence": "固定GU接触をホスト座標へ写す。重力/風で未宣言の身体や粒子を動かさない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "OctaDomainTemplate.OctaDomainDefinition",
+      "canonical_contract_ref": "基底.md#OctaDomainTemplate.OctaDomainDefinition",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"OctaDomainTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH1/PH2とも8領域を維持し、非該当機構は理由付きで無効にする。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.ImageOrientedAnimeStudiesLayer",
+      "canonical_contract_ref": "基底.md#AnimeStudiesTemplate.ImageOrientedAnimeStudiesLayer",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "export function sampleContact"
+        }
+      ],
+      "runtime_or_design_consequence": "核の先行→連続膜→内側の返り襞→消散。reducedでは形態を静止させる。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.AnimeLayoutRule",
+      "canonical_contract_ref": "基底.md#AnimeStudiesTemplate.AnimeLayoutRule",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "export function sampleContact"
+        }
+      ],
+      "runtime_or_design_consequence": "核の先行→連続膜→内側の返り襞→消散。reducedでは形態を静止させる。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.KeyframeSnapshotRule",
+      "canonical_contract_ref": "基底.md#AnimeStudiesTemplate.KeyframeSnapshotRule",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "export function sampleContact"
+        }
+      ],
+      "runtime_or_design_consequence": "核の先行→連続膜→内側の返り襞→消散。reducedでは形態を静止させる。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.SilhouetteDesignRule",
+      "canonical_contract_ref": "基底.md#AnimeStudiesTemplate.SilhouetteDesignRule",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "export function sampleContact"
+        }
+      ],
+      "runtime_or_design_consequence": "核の先行→連続膜→内側の返り襞→消散。reducedでは形態を静止させる。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.AnticipationAftermathRule",
+      "canonical_contract_ref": "基底.md#AnimeStudiesTemplate.AnticipationAftermathRule",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "export function sampleContact"
+        }
+      ],
+      "runtime_or_design_consequence": "核の先行→連続膜→内側の返り襞→消散。reducedでは形態を静止させる。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.LimitedAnimationStillnessRule",
+      "canonical_contract_ref": "基底.md#AnimeStudiesTemplate.LimitedAnimationStillnessRule",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "export function sampleContact"
+        }
+      ],
+      "runtime_or_design_consequence": "核の先行→連続膜→内側の返り襞→消散。reducedでは形態を静止させる。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.SakugaDensityRule",
+      "canonical_contract_ref": "基底.md#AnimeStudiesTemplate.SakugaDensityRule",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "export function sampleContact"
+        }
+      ],
+      "runtime_or_design_consequence": "核の先行→連続膜→内側の返り襞→消散。reducedでは形態を静止させる。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.AnimeCompositeRule",
+      "canonical_contract_ref": "基底.md#AnimeStudiesTemplate.AnimeCompositeRule",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "export function sampleContact"
+        }
+      ],
+      "runtime_or_design_consequence": "核の先行→連続膜→内側の返り襞→消散。reducedでは形態を静止させる。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "AnimeStudiesTemplate.ImageOriented12PrinciplesSubset",
+      "canonical_contract_ref": "基底.md#AnimeStudiesTemplate.ImageOriented12PrinciplesSubset",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "export function sampleContact"
+        }
+      ],
+      "runtime_or_design_consequence": "核の先行→連続膜→内側の返り襞→消散。reducedでは形態を静止させる。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.ObservationRegistrySeparationRule",
+      "canonical_contract_ref": "基底.md#ObservationIntegrationTemplate.ObservationRegistrySeparationRule",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "fn fs_comp"
+        }
+      ],
+      "runtime_or_design_consequence": "源/受光/PSF/表示を分離。SDR飽和を回避する減光・上限を設けず現在maskで限定。",
+      "verification_method": "preview/evidence.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.OperationClasses",
+      "canonical_contract_ref": "基底.md#ObservationIntegrationTemplate.OperationClasses",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "fn fs_comp"
+        }
+      ],
+      "runtime_or_design_consequence": "源/受光/PSF/表示を分離。SDR飽和を回避する減光・上限を設けず現在maskで限定。",
+      "verification_method": "preview/evidence.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.PostEffectsCommonRule",
+      "canonical_contract_ref": "基底.md#ObservationIntegrationTemplate.PostEffectsCommonRule",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "fn fs_comp"
+        }
+      ],
+      "runtime_or_design_consequence": "源/受光/PSF/表示を分離。SDR飽和を回避する減光・上限を設けず現在maskで限定。",
+      "verification_method": "preview/evidence.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.ObservationIntensityBudgetRule",
+      "canonical_contract_ref": "基底.md#ObservationIntegrationTemplate.ObservationIntensityBudgetRule",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "fn fs_comp"
+        }
+      ],
+      "runtime_or_design_consequence": "源/受光/PSF/表示を分離。SDR飽和を回避する減光・上限を設けず現在maskで限定。",
+      "verification_method": "preview/evidence.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.CompositeValidationRule",
+      "canonical_contract_ref": "基底.md#ObservationIntegrationTemplate.CompositeValidationRule",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "fn fs_comp"
+        }
+      ],
+      "runtime_or_design_consequence": "源/受光/PSF/表示を分離。SDR飽和を回避する減光・上限を設けず現在maskで限定。",
+      "verification_method": "preview/evidence.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.SamplingAndReconstructionRule",
+      "canonical_contract_ref": "基底.md#ObservationIntegrationTemplate.SamplingAndReconstructionRule",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "fn fs_comp"
+        }
+      ],
+      "runtime_or_design_consequence": "源/受光/PSF/表示を分離。SDR飽和を回避する減光・上限を設けず現在maskで限定。",
+      "verification_method": "preview/evidence.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ObservationIntegrationTemplate.StrictTermDefinitions",
+      "canonical_contract_ref": "基底.md#ObservationIntegrationTemplate.StrictTermDefinitions",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "fn fs_comp"
+        }
+      ],
+      "runtime_or_design_consequence": "源/受光/PSF/表示を分離。SDR飽和を回避する減光・上限を設けず現在maskで限定。",
+      "verification_method": "preview/evidence.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.PEVRule",
+      "canonical_contract_ref": "基底.md#ExtremumDesignColorTemplate.PEVRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtremumDesignColorTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一の採用状態から有色面と強い源を構成。旧造形の比較を創作入力にしない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.AESRule",
+      "canonical_contract_ref": "基底.md#ExtremumDesignColorTemplate.AESRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtremumDesignColorTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一の採用状態から有色面と強い源を構成。旧造形の比較を創作入力にしない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.DesignScienceRule",
+      "canonical_contract_ref": "基底.md#ExtremumDesignColorTemplate.DesignScienceRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtremumDesignColorTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一の採用状態から有色面と強い源を構成。旧造形の比較を創作入力にしない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.FDSCompatibilityDefinition",
+      "canonical_contract_ref": "基底.md#ExtremumDesignColorTemplate.FDSCompatibilityDefinition",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtremumDesignColorTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一の採用状態から有色面と強い源を構成。旧造形の比較を創作入力にしない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.CCMScope",
+      "canonical_contract_ref": "基底.md#ExtremumDesignColorTemplate.CCMScope",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtremumDesignColorTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一の採用状態から有色面と強い源を構成。旧造形の比較を創作入力にしない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.AESEvaluationAxes",
+      "canonical_contract_ref": "基底.md#ExtremumDesignColorTemplate.AESEvaluationAxes",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtremumDesignColorTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一の採用状態から有色面と強い源を構成。旧造形の比較を創作入力にしない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.ColorScienceInAES",
+      "canonical_contract_ref": "基底.md#ExtremumDesignColorTemplate.ColorScienceInAES",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtremumDesignColorTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一の採用状態から有色面と強い源を構成。旧造形の比較を創作入力にしない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtremumDesignColorTemplate.ArtisticBeautyDefinitions",
+      "canonical_contract_ref": "基底.md#ExtremumDesignColorTemplate.ArtisticBeautyDefinitions",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtremumDesignColorTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "単一の採用状態から有色面と強い源を構成。旧造形の比較を創作入力にしない。",
+      "verification_method": "docs/DESIGN.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ReflectionClosureTemplate.ReflectionVsLensFlareSeparation",
+      "canonical_contract_ref": "基底.md#ReflectionClosureTemplate.ReflectionVsLensFlareSeparation",
+      "source_locations": [
+        {
+          "path": "src/visibility.mjs",
+          "marker": "export function surfaceResponse"
+        }
+      ],
+      "runtime_or_design_consequence": "既存可視面の拡散近似だけ。法線/反射率/光路がなければ0。物性を捏造しない。",
+      "verification_method": "tests/preview.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ReflectionClosureTemplate.ReflectionClosureRule",
+      "canonical_contract_ref": "基底.md#ReflectionClosureTemplate.ReflectionClosureRule",
+      "source_locations": [
+        {
+          "path": "src/visibility.mjs",
+          "marker": "export function surfaceResponse"
+        }
+      ],
+      "runtime_or_design_consequence": "既存可視面の拡散近似だけ。法線/反射率/光路がなければ0。物性を捏造しない。",
+      "verification_method": "tests/preview.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ReflectionClosureTemplate.MicrofacetFieldMinimumSet",
+      "canonical_contract_ref": "基底.md#ReflectionClosureTemplate.MicrofacetFieldMinimumSet",
+      "source_locations": [
+        {
+          "path": "src/visibility.mjs",
+          "marker": "export function surfaceResponse"
+        }
+      ],
+      "runtime_or_design_consequence": "既存可視面の拡散近似だけ。法線/反射率/光路がなければ0。物性を捏造しない。",
+      "verification_method": "tests/preview.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ReflectionClosureTemplate.ReflectionLinkRule",
+      "canonical_contract_ref": "基底.md#ReflectionClosureTemplate.ReflectionLinkRule",
+      "source_locations": [
+        {
+          "path": "src/visibility.mjs",
+          "marker": "export function surfaceResponse"
+        }
+      ],
+      "runtime_or_design_consequence": "既存可視面の拡散近似だけ。法線/反射率/光路がなければ0。物性を捏造しない。",
+      "verification_method": "tests/preview.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PhenomenonProfileTemplate.ProfileApplicabilityGuideRule",
+      "canonical_contract_ref": "基底.md#PhenomenonProfileTemplate.ProfileApplicabilityGuideRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"PhenomenonProfileTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "非適用の燃焼/水/皮膚/金属profileを強制しない。",
+      "verification_method": "docs/INACTIVE_MODULES.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "TermsTemplate.Terms",
+      "canonical_contract_ref": "基底.md#TermsTemplate.Terms",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"TermsTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "PH/OBS、world/観測、仕様構造/結果を区別する。",
+      "verification_method": "scripts/check.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "GlobalAcceptanceTemplate.GlobalAcceptanceCriteria",
+      "canonical_contract_ref": "基底.md#GlobalAcceptanceTemplate.GlobalAcceptanceCriteria",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"GlobalAcceptanceTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "静的・意味・実観察を分離。実GPU/聴感未実行をnot_run、総合Warningに保つ。",
+      "verification_method": "docs/ACCEPTANCE.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "GlobalAcceptanceTemplate.ComparativeEvaluationRule",
+      "canonical_contract_ref": "基底.md#GlobalAcceptanceTemplate.ComparativeEvaluationRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"GlobalAcceptanceTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "静的・意味・実観察を分離。実GPU/聴感未実行をnot_run、総合Warningに保つ。",
+      "verification_method": "docs/ACCEPTANCE.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "GlobalAcceptanceTemplate.PassWarningFailEvaluation",
+      "canonical_contract_ref": "基底.md#GlobalAcceptanceTemplate.PassWarningFailEvaluation",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"GlobalAcceptanceTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "静的・意味・実観察を分離。実GPU/聴感未実行をnot_run、総合Warningに保つ。",
+      "verification_method": "docs/ACCEPTANCE.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "GlobalAcceptanceTemplate.IntentAndArtisticOutcomeRule",
+      "canonical_contract_ref": "基底.md#GlobalAcceptanceTemplate.IntentAndArtisticOutcomeRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"GlobalAcceptanceTemplate\""
+        }
+      ],
+      "runtime_or_design_consequence": "静的・意味・実観察を分離。実GPU/聴感未実行をnot_run、総合Warningに保つ。",
+      "verification_method": "docs/ACCEPTANCE.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtensionActivationTable.ExtensionActivationRule",
+      "canonical_contract_ref": "拡張.md#ExtensionActivationTable.ExtensionActivationRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtensionActivationTable\""
+        }
+      ],
+      "runtime_or_design_consequence": "VFX/ECode/LDMと源PSFだけを起動し、魔法/Video/人物の拡張を補完しない。",
+      "verification_method": "docs/INACTIVE_MODULES.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ExtensionActivationTable.ExpressionIntegrationRule",
+      "canonical_contract_ref": "拡張.md#ExtensionActivationTable.ExpressionIntegrationRule",
+      "source_locations": [
+        {
+          "path": "design/b-design.json",
+          "marker": "\"ExtensionActivationTable\""
+        }
+      ],
+      "runtime_or_design_consequence": "VFX/ECode/LDMと源PSFだけを起動し、魔法/Video/人物の拡張を補完しない。",
+      "verification_method": "docs/INACTIVE_MODULES.md",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "VFX.VFXActivationRule",
+      "canonical_contract_ref": "拡張.md#VFX.VFXActivationRule",
+      "source_locations": [
+        {
+          "path": "shaders/contact.wgsl",
+          "marker": "fn fs_form"
+        }
+      ],
+      "runtime_or_design_consequence": "一つの連続膜の内外構造・既存受光・source-bound PSFを分け、層数で内容を追加しない。",
+      "verification_method": "design/b-design.json",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "VFX.MultilayerArchitectureRule",
+      "canonical_contract_ref": "拡張.md#VFX.MultilayerArchitectureRule",
+      "source_locations": [
+        {
+          "path": "shaders/contact.wgsl",
+          "marker": "fn fs_form"
+        }
+      ],
+      "runtime_or_design_consequence": "一つの連続膜の内外構造・既存受光・source-bound PSFを分け、層数で内容を追加しない。",
+      "verification_method": "design/b-design.json",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "VFX.SpatialMorphologyRule",
+      "canonical_contract_ref": "拡張.md#VFX.SpatialMorphologyRule",
+      "source_locations": [
+        {
+          "path": "shaders/contact.wgsl",
+          "marker": "fn fs_form"
+        }
+      ],
+      "runtime_or_design_consequence": "一つの連続膜の内外構造・既存受光・source-bound PSFを分け、層数で内容を追加しない。",
+      "verification_method": "design/b-design.json",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "VFX.MaterialOpticalResponseRule",
+      "canonical_contract_ref": "拡張.md#VFX.MaterialOpticalResponseRule",
+      "source_locations": [
+        {
+          "path": "shaders/contact.wgsl",
+          "marker": "fn fs_form"
+        }
+      ],
+      "runtime_or_design_consequence": "一つの連続膜の内外構造・既存受光・source-bound PSFを分け、層数で内容を追加しない。",
+      "verification_method": "design/b-design.json",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "VFX.TransportTemporalRule",
+      "canonical_contract_ref": "拡張.md#VFX.TransportTemporalRule",
+      "source_locations": [
+        {
+          "path": "shaders/contact.wgsl",
+          "marker": "fn fs_form"
+        }
+      ],
+      "runtime_or_design_consequence": "一つの連続膜の内外構造・既存受光・source-bound PSFを分け、層数で内容を追加しない。",
+      "verification_method": "design/b-design.json",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "VFX.EnvironmentCompositionRule",
+      "canonical_contract_ref": "拡張.md#VFX.EnvironmentCompositionRule",
+      "source_locations": [
+        {
+          "path": "shaders/contact.wgsl",
+          "marker": "fn fs_form"
+        }
+      ],
+      "runtime_or_design_consequence": "一つの連続膜の内外構造・既存受光・source-bound PSFを分け、層数で内容を追加しない。",
+      "verification_method": "design/b-design.json",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "VFX.CompositingReadabilityRule",
+      "canonical_contract_ref": "拡張.md#VFX.CompositingReadabilityRule",
+      "source_locations": [
+        {
+          "path": "shaders/contact.wgsl",
+          "marker": "fn fs_form"
+        }
+      ],
+      "runtime_or_design_consequence": "一つの連続膜の内外構造・既存受光・source-bound PSFを分け、層数で内容を追加しない。",
+      "verification_method": "design/b-design.json",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "ECodeImplementation.ExecutableECodeBranchRule",
+      "canonical_contract_ref": "拡張.md#ECodeImplementation.ExecutableECodeBranchRule",
+      "source_locations": [
+        {
+          "path": "src/renderer.mjs",
+          "marker": "export class ContactRenderer"
+        }
+      ],
+      "runtime_or_design_consequence": "実行ソース/preview/テストの成果物を提供。実コンパイルと画素/聴感は別に記録する。",
+      "verification_method": "scripts/browser-check.py",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PostEffects.PostEffectsAutonomousActivationRule",
+      "canonical_contract_ref": "拡張.md#PostEffects.PostEffectsAutonomousActivationRule",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "rgb+=bloom*.62"
+        }
+      ],
+      "runtime_or_design_consequence": "既存放射mapからのみ局所PSF。global装飾や新しい光源を作らない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PostEffects.SPCARule",
+      "canonical_contract_ref": "拡張.md#PostEffects.SPCARule",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "rgb+=bloom*.62"
+        }
+      ],
+      "runtime_or_design_consequence": "既存放射mapからのみ局所PSF。global装飾や新しい光源を作らない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "PostEffects.GlobalLocalRule",
+      "canonical_contract_ref": "拡張.md#PostEffects.GlobalLocalRule",
+      "source_locations": [
+        {
+          "path": "shaders/composite.wgsl",
+          "marker": "rgb+=bloom*.62"
+        }
+      ],
+      "runtime_or_design_consequence": "既存放射mapからのみ局所PSF。global装飾や新しい光源を作らない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "LuminanceDynamicsModule.LDMActivationRule",
+      "canonical_contract_ref": "拡張.md#LuminanceDynamicsModule.LDMActivationRule",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "const source=32"
+        }
+      ],
+      "runtime_or_design_consequence": "明示VFXとして一回の輝度包絡を起動。reducedでも減光しない。白飛びを圧縮しない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    },
+    {
+      "rule_id": "LuminanceDynamicsModule.LDMModeRule",
+      "canonical_contract_ref": "拡張.md#LuminanceDynamicsModule.LDMModeRule",
+      "source_locations": [
+        {
+          "path": "src/envelope.mjs",
+          "marker": "const source=32"
+        }
+      ],
+      "runtime_or_design_consequence": "明示VFXとして一回の輝度包絡を起動。reducedでも減光しない。白飛びを圧縮しない。",
+      "verification_method": "tests/creative.test.mjs",
+      "result": {
+        "source_link_check": "pass",
+        "semantic_review": "設計意図とソースの照合。完全な形式証明ではない。",
+        "runtime_pixels": "not_run",
+        "listening": "not_run"
+      }
+    }
+  ],
+  "inactive_reference": "docs/INACTIVE_MODULES.md"
+}

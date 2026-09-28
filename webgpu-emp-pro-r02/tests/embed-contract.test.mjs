@@ -26,10 +26,14 @@ test('embed tours exactly the five authored branches on the WebGPU stage', () =>
   assert.match(html, /id="error-panel"/);
 });
 
-test('verification mode keeps EMP audio at zero and blocks unlock', () => {
+test('verification mode keeps EMP audio at zero and blocks unlock', async () => {
   assert.match(script, /if\(verifyMode\)fx\.setVolume\(0\)/);
   assert.match(script, /#volume'\)\.oninput=e=>\{if\(!verifyMode\)fx\?\.setVolume/);
-  assert.match(script, /#audio'\)\.onclick=async\(\)=>\{if\(!fx\|\|verifyMode\|\|embedMode\)return;/);
+  assert.match(script, /document\.body\.classList\.toggle\('audio-gesture-ready',embedMode&&!verifyMode\)/);
+  assert.match(script, /unlockAudioFromGesture\(fx,verifyMode\)/);
+  assert.match(script, /#audio'\)\.onclick=async\(\)=>\{if\(embedMode\)return;await enablePreviewAudio\(\);\}/);
+  assert.match(script, /addEventListener\('pointerup',enablePreviewAudio\)/);
+  assert.match(await read('preview/audio-control.js'), /if \(!fx \|\| verifyMode\) return false;/);
 });
 
 test('copied Pro runtime files match the preserved release checksums', async () => {

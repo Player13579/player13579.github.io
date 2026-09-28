@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja" data-prototype="true"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark light">
+<title>EMP E r0.1 P0 · Phase Cleave / 位相裂晶</title><link rel="stylesheet" href="./preview/style.css"></head>
+<body>
+<header class="mast"><a class="wordmark" href="./">DVA<span>/</span>FIELD SYSTEMS</a><div class="build">INDEPENDENT STUDY <b>r0.1</b></div><a class="doc-link" href="../../README.md" target="_blank">README ↗</a></header>
+<main>
+<section class="intro"><div><div class="eyebrow">ELECTROMAGNETIC INTERDICTION / WEBGPU + PROCEDURAL AUDIO</div><h1>EMP <i>E</i><span>位相裂晶</span></h1><p class="lede">圧縮。伝導。位相の転換。<span>Phase Cleave — a split-lattice field.</span></p></div><div class="quality"><span class="dot"></span><b id="quality-label">r0.1 / 実行版</b><small id="quality-note">実機承認待ち · 詳細は品質記録</small></div></section>
+<section class="workspace">
+<aside class="rail">
+<div class="section-num">01 <span>PHENOMENA</span></div>
+<nav class="branches" aria-label="効果分岐">
+<button data-branch="charge"><span>01</span>チャージ<small>CAPTURE / 1200 ms</small></button>
+<button data-branch="normal"><span>02</span>通常放電<small>DIRECTED TRANSFER</small></button>
+<button data-branch="suppression"><span>03</span>使用封鎖<small>TARGET / 7000 ms</small></button>
+<button data-branch="resonance" class="active"><span>04</span>同位相・共鳴<small>TOPOLOGY INVERSION</small></button>
+<button data-branch="cancellation"><span>05</span>逆位相・相殺<small>COUNTERPHASE NULL</small></button>
+<button data-branch="continuous"><span>06</span>連続イベント<small>OVERLAP / STRESS</small></button>
+</nav>
+<div class="description"><h2 id="branch-title">共鳴 / Resonance</h2><p id="branch-description">二つの発生点の中点で、閉じた格子が六方向へ反転。白い稜線、暗い裂け目、奥行きのある櫛状内部が独立した主形をつくる。</p></div>
+<div class="contract-mini"><div><span>PAIR WINDOW</span><b>≤ 1200 <small>ms</small></b></div><div><span>PAIR DISTANCE</span><b>≤ 520 <small>px</small></b></div><div><span>KILL / DAMAGE</span><b>110 / 260 <small>px</small></b></div></div>
+</aside>
+<div class="viewer-stack">
+<div class="toolbar"><div class="seg" aria-label="表示倍率"><button data-zoom="1" class="active">H64 実寸</button><button data-zoom="2">2× 拡大</button></div><div class="seg"><button data-bg="dark" class="active">暗背景</button><button data-bg="light">明背景</button></div><div class="seg"><button data-rate="1" class="active">1× 速度</button><button data-rate="2">2× 速度</button></div><button id="audio" class="audio-btn">音声を有効化</button></div>
+<div class="stage" id="stage"><canvas id="diagnostics" aria-label="独立した計測UI"></canvas><canvas id="vfx" aria-label="WebGPU EMP E"></canvas>
+<div class="stage-top"><span id="scene-tag">SAME PHASE / MIDPOINT EVENT</span><span id="gpu-state">INITIALIZING GPU…</span></div>
+<div class="ruler"><span>H64</span><i></i><span id="ruler-label">64 game px = 64 CSS px</span></div>
+<div id="error" role="alert" hidden></div><div class="stage-bottom"><span id="phase-label">ASSEMBLY</span><span id="frame-info">—</span></div>
+</div>
+<div class="transport"><button id="play" aria-label="再生または停止">Ⅱ</button><button id="restart" title="再生を最初から">↺</button><span class="time" id="time">0.00 s</span><input id="scrub" type="range" min="0" max="10000" step="1" value="0" aria-label="Actor timeline"><span class="duration" id="duration">10.00 s</span><label><input type="checkbox" id="autocycle">分岐巡回</label></div>
+<div class="bottom-controls"><label><input id="ranges" type="checkbox">命中範囲UI</label><label><input id="occluder" type="checkbox">遮蔽テスト</label><label><input id="markers" type="checkbox" checked>発生点・対象・H64</label><label class="volume">音量<input id="volume" type="range" min="0" max="1" step=".01" value=".65"></label><label class="distance">音の距離<input id="listen-distance" type="range" min="0" max="2800" step="50" value="0"><output id="distance-label">0 px</output></label></div>
+<p class="viewer-note">AUTO LOOP · 計測UIは効果に含まれません。範囲判定はgame px、表示倍率は描画だけに作用。音声はボタン操作後に有効になります。</p>
+</div>
+</section>
+<section class="timeline-section"><div class="section-num">02 <span>ACTOR-TIME / EVENT CONTRACT</span></div><div id="timeline-phases" class="timeline-phases"></div><p class="timeline-copy">発動者でチャージ → 発動者から放電 → 命中対象に封鎖。共鳴・相殺は発動者間の中点。ゲームの体力・封鎖・クールタイムは外部ゲームが確定します。</p></section>
+<section class="gallery"><div class="gallery-heading"><div class="section-num">03 <span>PLAYABLE GALLERY</span></div><p>完成前のチェックポイントも、品質状態を明示して保持。</p></div><div class="gallery-grid">
+<a class="gallery-card" href="./index.html"><span class="g-number">P0</span><div><h3>立体ブロックアウト</h3><p>少数の構造稜線。最終品質ではありません。</p></div><b class="badge warning">PROTOTYPE / 再生可能 ↗</b></a>
+<a class="gallery-card final-card" href="../../?branch=resonance"><span class="g-number">E</span><div><h3>r0.1 · 位相裂晶</h3><p>多層主形・枝別SFX・actor-time接続。</p></div><b class="badge">CURRENT / 実機承認待ち ↗</b></a>
+</div></section>
+<footer><span>ZERO IMAGE TEXTURES · ORIGINAL MESH + WGSL + SYNTHESIS</span><div><a href="../../docs/API.md" target="_blank">外部API</a><a href="../../docs/TESTING.md" target="_blank">実機確認</a><a href="../../quality/report.json" target="_blank">検証記録</a><a href="../../design/B-Expression-2.json" target="_blank">B設計</a></div></footer>
+</main><script type="module" src="./preview/main.js"></script>
+</body></html>

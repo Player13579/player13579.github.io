@@ -1,4 +1,4 @@
-import { HeadshotContactSystem, HeadshotRenderer, RateClock } from './src/index.mjs';
+import { HeadshotContactSystem, HeadshotRenderer, RateClock, ContactAudio } from './src/index.mjs';
 import { DISPLAY_VARIANTS, FixtureHost, fixtureScene } from './preview/fixture-host.mjs';
 
 const canvas = document.getElementById('native');
@@ -9,11 +9,38 @@ window.__headshotGalleryV1 = preview;
 
 const clock = new RateClock({ sourceNow: () => performance.now() });
 const host = new FixtureHost(clock);
+const verifyMode = new URLSearchParams(location.search).has('verify');
+let contactAudio = null;
+const soundProxy = { play: request => contactAudio?.play(request), stop: id => contactAudio?.stop(id),
+  setRate: rate => contactAudio?.setRate(rate), resetSession: () => contactAudio?.resetSession() };
 const system = new HeadshotContactSystem({ clock,
   verifyCanonical: host.verifyCanonical,
   getPermission: host.getPermission,
+  sound: verifyMode ? null : soundProxy,
   roomId: host.roomId,
   epoch: host.epoch });
+const soundButton = document.createElement('button');
+soundButton.type = 'button'; soundButton.textContent = '音声を有効化';
+soundButton.setAttribute('aria-label', 'ヘッドショット効果音を有効化');
+soundButton.style.cssText = 'position:fixed;z-index:5;top:10px;right:10px;padding:7px 10px;color:#eef2f8;background:#253144;border:1px solid #50627a;border-radius:4px;font:12px system-ui;cursor:pointer';
+soundButton.hidden = verifyMode;
+document.body.append(soundButton);
+soundButton.addEventListener('click', async () => {
+  if (verifyMode) return;
+  try {
+    if (!contactAudio) {
+      const Audio = window.AudioContext ?? window.webkitAudioContext;
+      if (!Audio) throw new Error('AudioContext unavailable');
+      const context = new Audio();
+      await context.resume();
+      contactAudio = new ContactAudio(context, { volume: 0.72 });
+      window.__headshotGalleryV1.audioContext = context;
+    } else {
+      await window.__headshotGalleryV1.audioContext.resume();
+    }
+    soundButton.textContent = '音声有効';
+  } catch (error) { soundButton.textContent = `音声不可: ${error.message}`; }
+});
 let renderer = null;
 let running = true;
 let inFlight = false;
@@ -79,6 +106,8 @@ document.addEventListener('visibilitychange', () => {
 window.addEventListener('pagehide', () => {
   running = false;
   system.dispose();
+  contactAudio?.dispose();
+  void window.__headshotGalleryV1.audioContext?.close();
   renderer?.dispose();
 });
 boot().catch(stop);

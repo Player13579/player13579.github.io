@@ -23,6 +23,9 @@
     const status = document.getElementById('status');
     const sourceUrl = new URL('./index.html', location.href);
     sourceUrl.searchParams.set('embed', '1');
+    if (new URLSearchParams(location.search).has('galleryRelease')) {
+      sourceUrl.searchParams.set('galleryRelease', new URLSearchParams(location.search).get('galleryRelease'));
+    }
     if (new URLSearchParams(location.search).has('verify')) sourceUrl.searchParams.set('verify', '1');
     frame.src = sourceUrl.href;
     window.__headshotEmbed = {

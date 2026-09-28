@@ -1,0 +1,45 @@
+{
+  "version": "r0.3",
+  "scope": "common action E digital design as expressly requested; EMP implementation only, other E actions not invented",
+  "operations": [
+    {
+      "PH": "PH1",
+      "branch": "capture_and_latch",
+      "cause_and_consequence": "発動者に追従。0–1200msに列を捕獲して閉じ、準備形を権威期限/解決まで保持。",
+      "implementation": "src/geometry.js: charge"
+    },
+    {
+      "PH": "PH2",
+      "branch": "directed_finite_transfer",
+      "cause_and_consequence": "発動点snapshotから供給済みtargetへ、前端と後端を持つ有限転送区間が進み、終端が対象位置で閉じる。",
+      "implementation": "src/geometry.js: normal"
+    },
+    {
+      "PH": "PH3",
+      "branch": "write_gate_interlock",
+      "cause_and_consequence": "targetId位置に追従。権威期限まで安定保持。延長は期限履歴だけ、終端は列別解錠。",
+      "implementation": "src/geometry.js: suppression"
+    },
+    {
+      "PH": "PH4",
+      "branch": "coherent_topology_rewrite",
+      "cause_and_consequence": "既存2発動点から権威中点に集まり、共有脊柱と非共面の6接続路へ再編成。通常波形を2個置くものではない。",
+      "implementation": "src/geometry.js: resonance"
+    },
+    {
+      "PH": "PH5",
+      "branch": "complementary_pair_erasure",
+      "cause_and_consequence": "権威中点で左右の補対列が噛み合い、上段から順に消費される。出力路を増設せず空の境界へ閉じる。",
+      "implementation": "src/geometry.js: cancellation"
+    }
+  ],
+  "forbidden_substitutions": [
+    "grid overlay as sole digital meaning",
+    "scanlines as primary form",
+    "particle count as quality",
+    "global bloom as energy",
+    "uniform scale/fade as release or cancellation"
+  ],
+  "binding": "informationState(sample) -> primary geometry; preserves authority event unchanged",
+  "quality_status": "not_run: real GPU/H64 and listening"
+}

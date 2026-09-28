@@ -1,0 +1,22 @@
+{
+  "creator": "ChatGPT Pro",
+  "release": "EMP E r0.3 Phase Interlock",
+  "source": "outputs/request-20260928/pro-emp-r03/extracted/EMP-E_r0.3",
+  "archive": "outputs/request-20260928/pro-emp-r03/EMP-E_r0.3_Phase-Interlock.zip",
+  "archiveSha256": "fee55eadaba5adfea1cb8d38e8ad12858fe6f4eb35120be1be16399275548886",
+  "copiedUnchanged": [
+    "src/audio-worklet.js", "src/audio-dsp.js", "src/contract.js", "src/audio.js",
+    "src/emp-e.d.ts", "src/synthesis.js", "src/sampler.js", "src/renderer.js",
+    "src/information-state.js", "src/geometry.js", "src/events.js", "src/emp-e.js",
+    "shaders/mesh.wgsl", "shaders/composite.wgsl", "preview/style.css",
+    "preview/scenarios.js", "preview/fixtures.js", "docs/API.md", "docs/TESTING.md",
+    "quality/report.json"
+  ],
+  "technicalAdaptations": {
+    "index.html": "Loads gallery embed CSS and links back to the host E gallery.",
+    "preview/main.js": "Uses the r0.2 gallery embed adapter over r0.3's runtime. Embed mode tours exactly the five authored branches, suppresses diagnostic canvas drawing, and starts with audio locked. Ordinary audio is unlocked only by a canvas pointer or keyboard gesture and restarts the branch tour. A verify query forces zero volume and blocks unlock.",
+    "preview/audio-control.js": "Centralizes explicit gesture audio gating; verification mode cannot create or resume audio.",
+    "preview/embed.css": "Fits the original WebGPU stage into the gallery iframe and keeps runtime errors visible."
+  },
+  "quality": "implementation awaiting actual GPU and listening; game connection not approved"
+}

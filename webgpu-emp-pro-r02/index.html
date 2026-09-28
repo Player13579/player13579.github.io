@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark light"><title>EMP E r0.2 — Phase Interlock / Quality Lab</title><link rel="stylesheet" href="./preview/style.css"><link rel="stylesheet" href="./preview/embed.css"></head>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark light"><title>EMP E r0.2 — Phase Interlock / Quality Lab</title><link rel="stylesheet" href="./preview/style.css"><link rel="stylesheet" href="./preview/embed.css?v=gallery-v40-20260928"></head>
 <body>
 <header><div class="brand"><span class="brandmark">E</span><div><p class="eyebrow">DVA / EFFECT STUDY · r0.2</p><h1>EMP E <span>Phase Interlock</span></h1></div></div><div class="release"><strong>QUALITY REVISION</strong><small>本編接続未承認 · P0は凍結試作</small></div></header>
 <main>
@@ -7,7 +7,7 @@
 <div class="workspace">
 <section class="viewport-section">
  <div class="viewport-title"><div><span class="eyebrow">LIVE ACTOR-TIME</span><h2 id="scene-label">全5枝 / 原因 → 結果 → 消去</h2></div><span class="chip" id="scale-chip">H64 = 64 CSS px</span></div>
- <div class="stage" id="stage"><canvas id="vfx" aria-label="WebGPU EMP VFX"></canvas><canvas id="ui" aria-label="Separate diagnostic markers"></canvas><div id="error-panel" hidden><strong>描画を開始できません</strong><pre id="error-text"></pre><p>localhostで起動し、WebGPU対応ブラウザ・GPU設定を確認してください。代替画像を合格証拠として表示しません。</p></div><div class="stage-corner">PROCEDURAL SOLIDS / NO IMAGE TEXTURES</div></div>
+ <div class="stage" id="stage"><canvas id="vfx" aria-label="WebGPU EMP VFX。埋め込み再生ではクリックまたはEnterで音声を有効化し、枝を再開始します。verifyモードは常に無音です。"></canvas><canvas id="ui" aria-label="Separate diagnostic markers"></canvas><div id="error-panel" hidden><strong>描画を開始できません</strong><pre id="error-text"></pre><p>localhostで起動し、WebGPU対応ブラウザ・GPU設定を確認してください。代替画像を合格証拠として表示しません。</p></div><div class="stage-corner">PROCEDURAL SOLIDS / NO IMAGE TEXTURES</div></div>
  <div class="transport"><button id="play">一時停止</button><button id="restart">再開始</button><input id="scrub" type="range" min="0" max="10000" step="1" value="0" aria-label="Actor timeline"><output id="clock">0.000 / 10.000 s</output></div>
  <div class="timeline-tools"><div id="phase-jumps"><button data-jump="start">開始</button><button data-jump="middle">中間・保持</button><button data-jump="terminal">終端</button><button data-jump="cleared">消去後</button></div><label><input id="loop" type="checkbox" checked>ループ</label><label><input id="tour" type="checkbox">分岐を巡回</label></div>
  <p id="field-state" class="help">情報場状態 / ready</p><div class="state-strip" id="states"><span>イベント待機</span></div>
@@ -22,4 +22,4 @@
 </aside>
 </div>
 <footer><span>r0.2 / 完成意図の実装・品質承認待ち</span><nav><a href="./docs/API.md">API</a><a href="./docs/TESTING.md">実機手順</a><a href="./quality/report.json">提出時の検査記録</a><a href="../webgpu-e-gallery.html">P0凍結ギャラリー</a></nav></footer>
-</main><script type="module" src="./preview/main.js"></script></body></html>
+</main><script type="module" src="./preview/main.js?v=gallery-v40-20260928"></script></body></html>

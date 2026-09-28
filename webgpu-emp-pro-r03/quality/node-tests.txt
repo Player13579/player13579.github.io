@@ -1,0 +1,482 @@
+
+> dva-emp-e-phase-interlock@0.3.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: charge: deterministic finite PCM, bounded amplitude, finite tail
+ok 1 - charge: deterministic finite PCM, bounded amplitude, finite tail
+  ---
+  duration_ms: 73.279291
+  type: 'test'
+  ...
+# Subtest: normal: deterministic finite PCM, bounded amplitude, finite tail
+ok 2 - normal: deterministic finite PCM, bounded amplitude, finite tail
+  ---
+  duration_ms: 24.158727
+  type: 'test'
+  ...
+# Subtest: resonance: deterministic finite PCM, bounded amplitude, finite tail
+ok 3 - resonance: deterministic finite PCM, bounded amplitude, finite tail
+  ---
+  duration_ms: 70.546706
+  type: 'test'
+  ...
+# Subtest: cancellation: deterministic finite PCM, bounded amplitude, finite tail
+ok 4 - cancellation: deterministic finite PCM, bounded amplitude, finite tail
+  ---
+  duration_ms: 69.746901
+  type: 'test'
+  ...
+# Subtest: suppression: deterministic finite PCM, bounded amplitude, finite tail
+ok 5 - suppression: deterministic finite PCM, bounded amplitude, finite tail
+  ---
+  duration_ms: 22.163264
+  type: 'test'
+  ...
+# Subtest: five branch waveforms have different digital content (not perceptual proof)
+ok 6 - five branch waveforms have different digital content (not perceptual proof)
+  ---
+  duration_ms: 57.718767
+  type: 'test'
+  ...
+# Subtest: charge/lock SFX sustain while pending; resolved voice is finite
+ok 7 - charge/lock SFX sustain while pending; resolved voice is finite
+  ---
+  duration_ms: 15.97627
+  type: 'test'
+  ...
+# Subtest: VoiceEngine starts once and never adds a voice for duplicate or resolve
+ok 8 - VoiceEngine starts once and never adds a voice for duplicate or resolve
+  ---
+  duration_ms: 12.497684
+  type: 'test'
+  ...
+# Subtest: lock extensions do not produce another attack or voice
+ok 9 - lock extensions do not produce another attack or voice
+  ---
+  duration_ms: 6.505282
+  type: 'test'
+  ...
+# Subtest: sound bus cause key deduplicates different transport IDs without conflating branches
+ok 10 - sound bus cause key deduplicates different transport IDs without conflating branches
+  ---
+  duration_ms: 0.696126
+  type: 'test'
+  ...
+# Subtest: muted/preunlock events do not backfill sound on unlock
+ok 11 - muted/preunlock events do not backfill sound on unlock
+  ---
+  duration_ms: 0.170296
+  type: 'test'
+  ...
+# Subtest: distance outside range produces exact silence, d0 and multiple voices finite
+ok 12 - distance outside range produces exact silence, d0 and multiple voices finite
+  ---
+  duration_ms: 4.66671
+  type: 'test'
+  ...
+# Subtest: charge: finite full-lifetime geometry, d=nonzero, high+low
+ok 13 - charge: finite full-lifetime geometry, d=nonzero, high+low
+  ---
+  duration_ms: 282.263192
+  type: 'test'
+  ...
+# Subtest: charge: finite full-lifetime geometry, d=0, high+low
+ok 14 - charge: finite full-lifetime geometry, d=0, high+low
+  ---
+  duration_ms: 171.055556
+  type: 'test'
+  ...
+# Subtest: normal: finite full-lifetime geometry, d=nonzero, high+low
+ok 15 - normal: finite full-lifetime geometry, d=nonzero, high+low
+  ---
+  duration_ms: 195.510657
+  type: 'test'
+  ...
+# Subtest: normal: finite full-lifetime geometry, d=0, high+low
+ok 16 - normal: finite full-lifetime geometry, d=0, high+low
+  ---
+  duration_ms: 75.907048
+  type: 'test'
+  ...
+# Subtest: resonance: finite full-lifetime geometry, d=nonzero, high+low
+ok 17 - resonance: finite full-lifetime geometry, d=nonzero, high+low
+  ---
+  duration_ms: 377.1587
+  type: 'test'
+  ...
+# Subtest: resonance: finite full-lifetime geometry, d=0, high+low
+ok 18 - resonance: finite full-lifetime geometry, d=0, high+low
+  ---
+  duration_ms: 380.630441
+  type: 'test'
+  ...
+# Subtest: cancellation: finite full-lifetime geometry, d=nonzero, high+low
+ok 19 - cancellation: finite full-lifetime geometry, d=nonzero, high+low
+  ---
+  duration_ms: 371.668298
+  type: 'test'
+  ...
+# Subtest: cancellation: finite full-lifetime geometry, d=0, high+low
+ok 20 - cancellation: finite full-lifetime geometry, d=0, high+low
+  ---
+  duration_ms: 353.5992
+  type: 'test'
+  ...
+# Subtest: suppression: finite full-lifetime geometry, d=nonzero, high+low
+ok 21 - suppression: finite full-lifetime geometry, d=nonzero, high+low
+  ---
+  duration_ms: 182.456157
+  type: 'test'
+  ...
+# Subtest: suppression: finite full-lifetime geometry, d=0, high+low
+ok 22 - suppression: finite full-lifetime geometry, d=0, high+low
+  ---
+  duration_ms: 190.2861
+  type: 'test'
+  ...
+# Subtest: normal moving packet changes occupied region and vertex count, not only uniform scale
+ok 23 - normal moving packet changes occupied region and vertex count, not only uniform scale
+  ---
+  duration_ms: 5.100442
+  type: 'test'
+  ...
+# Subtest: cancellation consumes rows rather than uniformly scaling fixed topology
+ok 24 - cancellation consumes rows rather than uniformly scaling fixed topology
+  ---
+  duration_ms: 6.035897
+  type: 'test'
+  ...
+# Subtest: charge geometry is steady during readiness wait
+ok 25 - charge geometry is steady during readiness wait
+  ---
+  duration_ms: 2.892014
+  type: 'test'
+  ...
+# Subtest: extension holds identical lock geometry at equal attachment, no latch restart
+ok 26 - extension holds identical lock geometry at equal attachment, no latch restart
+  ---
+  duration_ms: 2.453877
+  type: 'test'
+  ...
+# Subtest: H64 proxy is exactly 64 game px tall, with both depth sides available
+ok 27 - H64 proxy is exactly 64 game px tall, with both depth sides available
+  ---
+  duration_ms: 0.603006
+  type: 'test'
+  ...
+# Subtest: scenario all: ordered commands, no accidental failure, all visuals eventually clear
+ok 28 - scenario all: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 141.364459
+  type: 'test'
+  ...
+# Subtest: scenario charge: ordered commands, no accidental failure, all visuals eventually clear
+ok 29 - scenario charge: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 12.612286
+  type: 'test'
+  ...
+# Subtest: scenario normal: ordered commands, no accidental failure, all visuals eventually clear
+ok 30 - scenario normal: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 11.620867
+  type: 'test'
+  ...
+# Subtest: scenario resonance: ordered commands, no accidental failure, all visuals eventually clear
+ok 31 - scenario resonance: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 36.487051
+  type: 'test'
+  ...
+# Subtest: scenario cancellation: ordered commands, no accidental failure, all visuals eventually clear
+ok 32 - scenario cancellation: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 36.542786
+  type: 'test'
+  ...
+# Subtest: scenario suppression: ordered commands, no accidental failure, all visuals eventually clear
+ok 33 - scenario suppression: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 44.694079
+  type: 'test'
+  ...
+# Subtest: scenario lock-resolved: ordered commands, no accidental failure, all visuals eventually clear
+ok 34 - scenario lock-resolved: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 17.12182
+  type: 'test'
+  ...
+# Subtest: scenario normal-resolved: ordered commands, no accidental failure, all visuals eventually clear
+ok 35 - scenario normal-resolved: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 10.148405
+  type: 'test'
+  ...
+# Subtest: scenario charge-expired: ordered commands, no accidental failure, all visuals eventually clear
+ok 36 - scenario charge-expired: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 4.435433
+  type: 'test'
+  ...
+# Subtest: scenario order-forward: ordered commands, no accidental failure, all visuals eventually clear
+ok 37 - scenario order-forward: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 71.090973
+  type: 'test'
+  ...
+# Subtest: scenario order-reverse: ordered commands, no accidental failure, all visuals eventually clear
+ok 38 - scenario order-reverse: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 73.370408
+  type: 'test'
+  ...
+# Subtest: scenario overlap: ordered commands, no accidental failure, all visuals eventually clear
+ok 39 - scenario overlap: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 43.479685
+  type: 'test'
+  ...
+# Subtest: scenario d0: ordered commands, no accidental failure, all visuals eventually clear
+ok 40 - scenario d0: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 88.33616
+  type: 'test'
+  ...
+# Subtest: scenario continuous: ordered commands, no accidental failure, all visuals eventually clear
+ok 41 - scenario continuous: ordered commands, no accidental failure, all visuals eventually clear
+  ---
+  duration_ms: 99.083594
+  type: 'test'
+  ...
+# Subtest: no draw call requires a nonzero pair/source distance
+ok 42 - no draw call requires a nonzero pair/source distance
+  ---
+  duration_ms: 6.55681
+  type: 'test'
+  ...
+# Subtest: five field operations have distinct mechanisms and never own gameplay state
+ok 43 - five field operations have distinct mechanisms and never own gameplay state
+  ---
+  duration_ms: 2.693096
+  type: 'test'
+  ...
+# Subtest: resolution freezes outgoing progress and cannot produce a late target commit
+ok 44 - resolution freezes outgoing progress and cannot produce a late target commit
+  ---
+  duration_ms: 0.703927
+  type: 'test'
+  ...
+# Subtest: early pair resolve never advances to a later unfolding peak
+ok 45 - early pair resolve never advances to a later unfolding peak
+  ---
+  duration_ms: 0.615906
+  type: 'test'
+  ...
+# Subtest: capture rows commit separately, then remain latched without automatic release
+ok 46 - capture rows commit separately, then remain latched without automatic release
+  ---
+  duration_ms: 1.131009
+  type: 'test'
+  ...
+# Subtest: finite transfer has a moving front AND trailing empty interval
+ok 47 - finite transfer has a moving front AND trailing empty interval
+  ---
+  duration_ms: 0.284678
+  type: 'test'
+  ...
+# Subtest: complementary erasure is row ordered, not a uniform opacity function
+ok 48 - complementary erasure is row ordered, not a uniform opacity function
+  ---
+  duration_ms: 0.216806
+  type: 'test'
+  ...
+# Subtest: authoritative lock extension keeps identity and gate, ending closes only cosmetic tail
+ok 49 - authoritative lock extension keeps identity and gate, ending closes only cosmetic tail
+  ---
+  duration_ms: 1.176467
+  type: 'test'
+  ...
+# Subtest: numeric game contract retained unchanged
+ok 50 - numeric game contract retained unchanged
+  ---
+  duration_ms: 1.305051
+  type: 'test'
+  ...
+# Subtest: charge remains ready-held well after 1200; never releases autonomously
+ok 51 - charge remains ready-held well after 1200; never releases autonomously
+  ---
+  duration_ms: 0.890237
+  type: 'test'
+  ...
+# Subtest: authoritative charge resolution -> finite 240ms tail -> null
+ok 52 - authoritative charge resolution -> finite 240ms tail -> null
+  ---
+  duration_ms: 0.498268
+  type: 'test'
+  ...
+# Subtest: deadline is not readiness and is never overwritten
+ok 53 - deadline is not readiness and is never overwritten
+  ---
+  duration_ms: 0.218398
+  type: 'test'
+  ...
+# Subtest: normal visual lifetime is half-open 0..520, arbitrary supplied targets not reclassified
+ok 54 - normal visual lifetime is half-open 0..520, arbitrary supplied targets not reclassified
+  ---
+  duration_ms: 0.278428
+  type: 'test'
+  ...
+# Subtest: pair phase is opaque; branch is explicitly supplied, not re-decided
+ok 55 - pair phase is opaque; branch is explicitly supplied, not re-decided
+  ---
+  duration_ms: 0.21972
+  type: 'test'
+  ...
+# Subtest: both pair branches remove exactly at 1600ms unless explicitly resolved earlier
+ok 56 - both pair branches remove exactly at 1600ms unless explicitly resolved earlier
+  ---
+  duration_ms: 0.427843
+  type: 'test'
+  ...
+# Subtest: lock keeps full phase until supplied end; extension never restarts latch
+ok 57 - lock keeps full phase until supplied end; extension never restarts latch
+  ---
+  duration_ms: 0.38633
+  type: 'test'
+  ...
+# Subtest: missing lock deadline rejects rather than assuming server expiry
+ok 58 - missing lock deadline rejects rather than assuming server expiry
+  ---
+  duration_ms: 0.503216
+  type: 'test'
+  ...
+# Subtest: extension retains history for deterministic earlier samples
+ok 59 - extension retains history for deterministic earlier samples
+  ---
+  duration_ms: 0.434342
+  type: 'test'
+  ...
+# Subtest: duplicate emit/resolve/extension is idempotent; conflicts are not merged
+ok 60 - duplicate emit/resolve/extension is idempotent; conflicts are not merged
+  ---
+  duration_ms: 0.251938
+  type: 'test'
+  ...
+# Subtest: authority identity echo mismatch rejects without mutation
+ok 61 - authority identity echo mismatch rejects without mutation
+  ---
+  duration_ms: 0.120461
+  type: 'test'
+  ...
+# Subtest: lock stale, short, post-expiry and post-resolution extension rejected
+ok 62 - lock stale, short, post-expiry and post-resolution extension rejected
+  ---
+  duration_ms: 0.182585
+  type: 'test'
+  ...
+# Subtest: mutable caller cannot change stored cause/owner/phase/pair/expiry
+ok 63 - mutable caller cannot change stored cause/owner/phase/pair/expiry
+  ---
+  duration_ms: 0.240331
+  type: 'test'
+  ...
+# Subtest: non-JSON authority data is rejected rather than normalized to null
+ok 64 - non-JSON authority data is rejected rather than normalized to null
+  ---
+  duration_ms: 0.168613
+  type: 'test'
+  ...
+# Subtest: attachments move without mutating snapshots; release/pair immutable positions
+ok 65 - attachments move without mutating snapshots; release/pair immutable positions
+  ---
+  duration_ms: 0.431348
+  type: 'test'
+  ...
+# Subtest: resolve before start and unknown event are explicit failures
+ok 66 - resolve before start and unknown event are explicit failures
+  ---
+  duration_ms: 0.108864
+  type: 'test'
+  ...
+# Subtest: capacity never evicts a pending charge or active lock
+ok 67 - capacity never evicts a pending charge or active lock
+  ---
+  duration_ms: 0.183266
+  type: 'test'
+  ...
+# Subtest: actor time at 1x and 2x gives equal samples for equal actor-ms
+ok 68 - actor time at 1x and 2x gives equal samples for equal actor-ms
+  ---
+  duration_ms: 0.310357
+  type: 'test'
+  ...
+# Subtest: d0 gain finite, ranges compact and monotone
+ok 69 - d0 gain finite, ranges compact and monotone
+  ---
+  duration_ms: 0.346601
+  type: 'test'
+  ...
+# Subtest: invalid command payload is transactional and cannot consume commandId
+ok 70 - invalid command payload is transactional and cannot consume commandId
+  ---
+  duration_ms: 0.157517
+  type: 'test'
+  ...
+# Subtest: post sampler and texture descriptor agree statically; actual GPU compilation is not tested
+ok 71 - post sampler and texture descriptor agree statically; actual GPU compilation is not tested
+  ---
+  duration_ms: 0.886181
+  type: 'test'
+  ...
+# Subtest: uniform byte contracts and vertex stride locations are explicitly aligned
+ok 72 - uniform byte contracts and vertex stride locations are explicitly aligned
+  ---
+  duration_ms: 0.773092
+  type: 'test'
+  ...
+# Subtest: MSAA is resolved before filtering and alpha is premultiplied
+ok 73 - MSAA is resolved before filtering and alpha is premultiplied
+  ---
+  duration_ms: 0.170997
+  type: 'test'
+  ...
+# Subtest: information state is upstream of mesh; shader does not add a grid, scanline or noise mask
+ok 74 - information state is upstream of mesh; shader does not add a grid, scanline or noise mask
+  ---
+  duration_ms: 0.319601
+  type: 'test'
+  ...
+# Subtest: external import graph excludes preview, archive and P0; no server branch selection helpers
+ok 75 - external import graph excludes preview, archive and P0; no server branch selection helpers
+  ---
+  duration_ms: 0.70605
+  type: 'test'
+  ...
+# Subtest: current UI and exports never promise hardware or listening approval
+ok 76 - current UI and exports never promise hardware or listening approval
+  ---
+  duration_ms: 0.19975
+  type: 'test'
+  ...
+# Subtest: AudioWorklet source is executable in a JS harness, not a real device/listening test
+ok 77 - AudioWorklet source is executable in a JS harness, not a real device/listening test
+  ---
+  duration_ms: 51.715204
+  type: 'test'
+  ...
+# Subtest: stale actor clock gates sound rather than running indefinitely
+ok 78 - stale actor clock gates sound rather than running indefinitely
+  ---
+  duration_ms: 27.456656
+  type: 'test'
+  ...
+1..78
+# tests 78
+# suites 0
+# pass 78
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3376.449176

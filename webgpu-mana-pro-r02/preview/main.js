@@ -62,7 +62,7 @@ $('#duration').onchange=e=>{state.durationMs=+e.target.value;$('#scrub').max=gro
 $('#occlusion').onchange=e=>{state.occluded=e.target.checked;};
 $('#scrub').oninput=e=>{if(!state.manual){state.manual=true;state.playing=false;state.groupActive=false;system.setSession(`scrub:${Date.now()}`);clock.rate=0;}state.manualMs=+e.target.value;};
 $('#volume').oninput=e=>{if(!verifyMode)audio.setVolume(+e.target.value);};
-$('#sound').onclick=async()=>{if(verifyMode)return;try{if(!audio.node){await audio.unlock();$('#sound').textContent='消音';$('#audio-status').textContent='音有効。以後の新規原因から1回ずつ。';}else{audio.setMuted(!audio.muted);$('#sound').textContent=audio.muted?'消音解除':'消音';}}catch(e){$('#audio-status').textContent=`音未実行: ${e.message}`;diagnostic({type:'audio-unlock',message:String(e)});}};
+$('#sound').onclick=async()=>{if(verifyMode)return;try{if(!audio.node){await audio.unlock();$('#sound').textContent='消音';$('#audio-status').textContent='音有効。以後の新規原因から1回ずつ。';}else{audio.setMuted(!audio.muted);$('#sound').textContent=audio.muted?'消音解除':'消音';$('#audio-status').textContent=audio.muted?'消音中。':'音有効。以後の新規原因から1回ずつ。';}}catch(e){$('#audio-status').textContent=`音未実行: ${e.message}`;diagnostic({type:'audio-unlock',message:String(e)});}};
 function remove(reason){state.manual=false;state.bodyBlocked=true;state.loopEnabled=false;
  if(reason==='session')system.setSession(`session-change:${Date.now()}`);
  else{if(reason==='dead')body.alive=false;if(reason==='departed')body.present=false;if(reason==='vent')body.inVent=true;if(reason==='invisible')body.invisible=true;system.invalidateBeneficiary('beneficiary',reason);}
@@ -74,6 +74,10 @@ const previewConfigurations=embedMode?[{light:false,scale:1}]:
   [false,true].flatMap(light=>[1,2,3].map(scale=>({light,scale})));
 for(const {light,scale} of previewConfigurations){
   const tile=document.createElement('article');tile.className='tile'+(light?' light':'');tile.innerHTML=`<header><b>${scale}× · H${64*scale}</b><span>${light?'明背景':'暗背景'} / 同一shader</span></header><canvas id="h64-${scale}-${light?'light':'dark'}" aria-label="H64 ${scale}倍 ${light?'明':'暗'}背景"></canvas><div class="caption">${scale===1?'実寸：1 game px = 1 CSS px':'再描画による拡大。画像の拡大ではありません。'}</div>`;$('#views').append(tile);
+  if(embedMode&&!verifyMode){
+    const audioControl=document.createElement('div');audioControl.className='embed-audio-control';audioControl.setAttribute('aria-label','効果音の再生設定');
+    audioControl.append($('#sound'),$('#audio-status'));tile.append(audioControl);
+  }
 }
 let last=performance.now();function tick(now){
   const dt=Math.max(0,now-last);last=now;clock.rate=state.playing&&!state.manual?state.rate:0;

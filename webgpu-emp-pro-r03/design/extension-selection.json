@@ -1,0 +1,54 @@
+{
+  "entries": {
+    "VFX": {
+      "trigger": "explicit: 5 branches of digital information-field VFX",
+      "dependencies": [
+        "PhenomenonSystemTemplate",
+        "ObservationIntegrationTemplate"
+      ],
+      "output_blocks": [
+        "VFX"
+      ]
+    },
+    "PostEffects": {
+      "trigger": "attribute_resolved: local ridge spread and display shoulder only",
+      "dependencies": [
+        "ObservationIntegrationTemplate"
+      ],
+      "output_blocks": [
+        "PostEffects"
+      ]
+    },
+    "LDM": {
+      "trigger": "explicit_VFX",
+      "dependencies": [
+        "VFX"
+      ],
+      "output_blocks": [
+        "LuminanceDynamicsModule"
+      ]
+    },
+    "VideoGenerationPolicy": {
+      "trigger": "Mode=Video for continuous interactive effect and canonical preview window",
+      "dependencies": [
+        "DeclaredIntent",
+        "CoordinateGravityWindTemplate"
+      ],
+      "output_blocks": [
+        "VideoGenerationPolicy"
+      ]
+    }
+  },
+  "disabled_module_reasons": {
+    "KeywordExpansion": "登録略号/リムライト/presetを今回明示していない。デジタルEをキーワードpresetとみなさない。",
+    "CharacterPolicy": "本資産は人物造形を設計しない。previewはhost body coverageの診断maskで、性別/年齢/人物役割を追加しない。",
+    "BeautifulPoseCapsule": "人間/キャラクターの姿勢を生成する資産ではない。外部body mechanics/animationはホスト所有、検査形状はOBS4の代用品。実キャラ遮蔽の意味照合は接続後に別途必要。",
+    "GradientAnchorPolicy": "色は面/補対側の離散割当て。色相グラデーションを選択していない。"
+  },
+  "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+  "output_contract_ref": "FoundationOperationTemplate.OutputContract",
+  "Acceptance": {
+    "one_activation_source_of_truth": true,
+    "disabled_modules_omitted": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "sampleRate": 48000,
+  "note": "Design-time PCM reference renders, not proof of listening or browser playback",
+  "sounds": {
+    "charge": {
+      "bodySeconds": 1.2,
+      "tailSeconds": 0.24,
+      "loop": [
+        0.8,
+        1.2
+      ],
+      "description": "quantized pickup -> rising comb -> steady two-pole hold; brief folding coda on resolution",
+      "referenceDuration": 2.6399999999999997,
+      "authorityDeadlineForAuditionMs": 2400
+    },
+    "normal": {
+      "bodySeconds": 0.52,
+      "tailSeconds": 0.16,
+      "loop": null,
+      "description": "dry source snap -> moving three-band sweep -> receiver clasp at .18 -> cut conduction",
+      "referenceDuration": 0.52,
+      "authorityDeadlineForAuditionMs": null
+    },
+    "resonance": {
+      "bodySeconds": 1.6,
+      "tailSeconds": 0.23,
+      "loop": null,
+      "description": "bifurcated low attack -> interlocked six-tone rise -> fracture cascade -> low finite tail",
+      "referenceDuration": 1.6,
+      "authorityDeadlineForAuditionMs": null
+    },
+    "cancellation": {
+      "bodySeconds": 1.6,
+      "tailSeconds": 0.23,
+      "loop": null,
+      "description": "opposed falling/rising chirps -> narrow convergent band -> sequential spectral deletion -> suction closure",
+      "referenceDuration": 1.6,
+      "authorityDeadlineForAuditionMs": null
+    },
+    "suppression": {
+      "bodySeconds": 0.8,
+      "tailSeconds": 0.28,
+      "loop": [
+        0.4,
+        0.8
+      ],
+      "description": "short latch -> quiet stable memory-cell hum -> split descending unlatch; extension adds no attack",
+      "referenceDuration": 3.08,
+      "authorityDeadlineForAuditionMs": 2800
+    }
+  }
+}

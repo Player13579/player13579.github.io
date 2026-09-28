@@ -1,0 +1,1797 @@
+{
+  "InferenceExpansionPolicy": {
+    "DeclaredIntent": {
+      "character_count": "Eが新規生成する人物は0。playerId/targetIdは既存世界への参照でありゲーム人数を変更しない。",
+      "character_attributes": {
+        "playerId": "射手。外見・年齢・生死を変更しない。",
+        "targetId": "既存の命中対象。種族/年齢/身体/HPの生成をしない。"
+      },
+      "main_action": "正規headshot抽選済み・キル確定前の固定頭部接触を一度だけ提示。",
+      "main_objects": "単一共通の接触E一件/正規id。最大同時件数16は実在する複数イベントの容量であり生成個数のノルマではない。",
+      "background": "ゲーム背景はホストから受領。プレビューの暗明と受光検査面はテストfixtureでゲーム設定に加えない。",
+      "style": "原寸ゲーム向けの2Dアニメ的な時相を持つWebGPU手続き面/放射。",
+      "text_logo_policy": "Eの画素内は文字/ロゴ無し。ページのUIラベルは検査表示。"
+    },
+    "ExpressionIntent": {
+      "source": "user_declared",
+      "purpose": "原寸で頭部接触の起点と一度の局所作用が伝わる共通E。10種類の識別は撤回。",
+      "must_communicate": [
+        "固定接触点の急速な放射が先行し、幅ある連続膜が展開、内側の襞と共に局所消散する。",
+        "weapon/hip/aimは入力整合確認だけで、外形/色/寿命/音を変更しない。"
+      ],
+      "preserve_ambiguity": [
+        "入射方向、ダメージ量、キル/破壊/スタッガー結果をEから確定しない。"
+      ],
+      "allowed_omission": [],
+      "allowed_exaggeration": [
+        "接触Eの強い放射とSDR飽和を許容。白飛び回避目的の減光・上限正規化を設けない。対象の状態は変更しない。"
+      ],
+      "protected_relations": [
+        "正規idと一回発音",
+        "固定x/yと対象世代",
+        "可視許可/遮蔽と描画全層/音の整合",
+        "既存ゲームのHP・死亡・行動を変更しない"
+      ]
+    },
+    "SelectionLifecycle": {
+      "stages": [
+        "candidate",
+        "accepted",
+        "registered_world",
+        "registered_observation"
+      ],
+      "candidate_catalog_in_final_code": false,
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "adoption_checks": [
+        "DeclaredIntent_consistency",
+        "contribution",
+        "readability",
+        "activation_condition"
+      ]
+    },
+    "inferred_support_elements": {
+      "default_permission": "denied",
+      "explicit_user_permission_required": true,
+      "allowed_domains": [],
+      "allowed_scope": "未宣言の対象・弾道・死体・粒子を追加しない。圧縮膜内の曲率・色・動きは既存Eのattribute_resolved。",
+      "support_declared_elements_without_overriding_them": true,
+      "latent_visualization_object_not_required": true
+    },
+    "Acceptance": {
+      "declared_intent_preserved": true,
+      "inference_without_explicit_user_permission_absent": true,
+      "candidate_accepted_registered_distinguished": true,
+      "unselected_candidates_absent_from_final": true
+    }
+  },
+  "FoundationOperationTemplate": {
+    "OutputContract": {
+      "schema_version": "B-Expression-2",
+      "mode": "Image",
+      "operation": "design_only"
+    },
+    "SerializationScope": "B設計はu=.24の代表瞬間とStateDynamicsにより記述。成果はEソースであり画像/映像生成モデルは実行しない。Eの実時間軸はECodeImplementationへ別途束縛。",
+    "TemplateConsolidation": {
+      "per_chapter_template_count": 1,
+      "template_position": "chapter_end",
+      "inter_template_duplication_forbidden": true,
+      "cross_chapter_reference_preferred": true
+    },
+    "RuleContract": {
+      "fields": [
+        "rule_id",
+        "owner",
+        "priority",
+        "applies_when",
+        "requirement",
+        "exception_to",
+        "validation_id"
+      ],
+      "same_priority_resolution": "explicit_exception_or_compatible_union",
+      "unresolved_conflict_result": "spec_conflict"
+    },
+    "GlobalInterpretation": {
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "full_PH_structure_required_for_all_visibilities": true,
+      "WindCapsule_required": true
+    },
+    "UniversalNoLabelOnly": {
+      "label_only_declaration_forbidden": true,
+      "indirect_evidence_for_implicit_latent": true
+    },
+    "Acceptance": {
+      "each_chapter_has_exactly_one_template": true,
+      "independent_template_groups_absent": true,
+      "unique_rule_ids_and_resolvable_references": true,
+      "same_priority_conflicts_resolved_explicitly": true
+    }
+  },
+  "PlatonicGoodTemplate": {
+    "Good": {
+      "evidence": "正規イベントと現在権限からのみ起動し、同じ接触を別の武器Eへ分裂させない。"
+    },
+    "Truth": {
+      "coordinate_continuity": "固定x/y→ホストのworldToScreen→共通軸→原寸画素。",
+      "physical_causality": "PH1の有限放射からPH2の既存面だけの受光を計算。実弾エネルギー/生体損傷のモデルとはしない。",
+      "state_transition_readability": "核の先行、膜の展開、襞の遅れ、終端0。"
+    },
+    "Beauty": {
+      "boundary_readability": "白い核・青い連続面・曲率に沿った陰部を空間的に分離する。",
+      "gaze_circulation": "PH1核→襞→PH2受光→核の読み順。静止画の視線と物理フィードバックは別。",
+      "structural_separation": "放射/coverage/既存面応答/PSFを独立したbuffer/入力で扱う。"
+    },
+    "BeautyStructuring": {
+      "axes": [
+        "ratio_proportion",
+        "balance_symmetry",
+        "contrast",
+        "rhythm_repetition",
+        "whitespace_density",
+        "hierarchy_gaze_flow",
+        "material_response",
+        "temporal_phase"
+      ],
+      "standard_minimum_axes_per_PH": 2,
+      "standard_minimum_evidence_per_applied_axis": 2,
+      "intent_adjustment_ref": "InferenceExpansionPolicy.ExpressionIntent"
+    },
+    "Acceptance": {
+      "each_PH_connected_to_at_least_two_GTB_layers": true,
+      "single_formula_does_not_dominate_beauty": true
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "独立したE状態PH1と、既存受け手の派生応答PH2だけに分割。",
+      "shared_condition_policy": "event/clock/maskを共用し、受け手の法線と可視境界の局所差を消さない。",
+      "no_discipline_based_split": true
+    },
+    "SharedConditions": {},
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "接触核・圧縮膜・返り襞",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "visible",
+        "local_state_difference": "接触中心の放射が先行し、連続境界の曲率と内部の襞が遅れて展開する一つの局所場。",
+        "partition_reason": "同じ接触の一つの有限状態・境界・寿命を共有する。核と膜を部品数で別PHにしない。"
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "既存可視面の受光",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "implicit",
+        "local_state_difference": "既存のsurface応答と光路が存在する場所だけ明度が変化する。未提供なら0。",
+        "partition_reason": "PH1とは別の受け手条件・遮蔽・法線・反射係数により定まる派生応答。"
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "接触核・圧縮膜・返り襞",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "visible",
+          "local_state_difference": "接触中心の放射が先行し、連続境界の曲率と内部の襞が遅れて展開する一つの局所場。",
+          "partition_reason": "同じ接触の一つの有限状態・境界・寿命を共有する。核と膜を部品数で別PHにしない。"
+        },
+        "DeepStructure": {
+          "Core": "event x/yに固定した高輝度の局所極大。放射立上り後、膜の展開が進む。",
+          "Structure": "一枚の連続境界。六つの角方向基底は曲率差であり六物体ではない。内部の襞は同じ境界の局所密度差。",
+          "Surface": "外縁のAA/coverageと内側の折返し差。独立粒子・傷・残滓を残さず局所的に消散。"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "正規接触を中心としたradius150の有限領域。実長はホストのm/GU変換へ従う。",
+          "state_variables": "u[0..1]、body coverage、source相対linear放射、spread、fold、pressure。",
+          "inputs": "正規action-gunner-headshotと共通atMs/rate履歴。variantは入力検証以外に使わない。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "非物質の宣言場/派生光応答であり、頭部の質量や飛散物を作らない。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "相手の姿勢・速度・反撃を更新しない。反動・スタッガー力はホストからもEからも生成しない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "PH1は有限な設計入力放射A(t)を放射map/受光輸送へ割り当て、時間終端で入力を0にする。数値は相対linear光量でW/Jの実測や実弾収支ではない。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "静電・導電・電荷移動のモデルは宣言されず、武器名から追加しない。"
+            }
+          },
+          "constitutive_response": "src/envelope.mjsの一回の包絡がsrc/form.mjsの連続面を変え、shaders/contact.wgslでcoverageと放射を別に出す。",
+          "initial_condition": "入場前とu=0で0、u=1で0。",
+          "boundary_conditions": "中心x/yは固定。域外・不可視・世代違い・保護域は描画と音から除く。",
+          "approximation_scope": "ゲームの接触を視覚化する宣言場。実弾・組織・温度・ダメージの科学的推定ではない。値は新しい表現上の仮定。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "radius=150 GU。世界mへはホストの宣言するlambda[m/GU]で写像し、150mと解釈しない。",
+          "characteristic_time": "0.560 sの表現寿命。核は約0.018sまでに立上り、膜は約0.157sで広がる。",
+          "dominant_balance": "Eの表現包絡/投影/標本化が支配し、慣性や粘性の実比較は適用しない。",
+          "dimensionless_reasoning": "u=age/560ms と r/radius を使う。Re/We等の物性が無い値を算出しない。",
+          "detail_cutoff": "H32/H64で核・幅ある面と曲率差を主証拠にし、サブピクセルの輝点/粒子を品質条件にしない。SamplingContract参照。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "熱変形や温度/燃焼を表現しない。PH1は宣言された非現実の描画放射場で、PH2も熱収支を推定しない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "流体媒体の輸送を必要としない。WindCapsuleは静穏条件であり、膜の展開はゲームEの場の状態変化で、空気流とは主張しない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "coverageと放射を分け、核の入力から場所ごとの輝度差を生む。",
+                "遮蔽/受光面/終端を同じ座標と時刻へ接続する。"
+              ],
+              "evidence_or_constraint": "Evidenceの核/膜の差とPH1→PH2の同期受光。OBSのPSFを世界の形状代わりにしない。"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "PH1の有色面は厚み/coverageと曲率による局所応答を持つ。実際の頭部物質ではない。"
+              ],
+              "evidence_or_constraint": "PH1では曲率とcoverage、PH2では同じ入力に対する既存面の法線/拡散係数差。物性の実測値は主張しない。"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "導電・帯電・感電を生成しない。taser入力でも同じEであり、ショック弾/スタン機構は追加しない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "頭部や物質の粘弾性/降伏を計算しない。襞の遅れは宣言されたEの包絡であり、組織変形の測定ではない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "コヒーレンス・波長・薄膜干渉を仮定しない。画面PSFはOBS2であり世界の干渉PHではない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "濡れ・傷・被覆残留・付着を追加しない。接触位置はイベントの拘束で、濡れ境界/接着を意味しない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "中央に留まる高輝度核と、先行した立ち上がり",
+            "不等な曲率を持つ有色連続膜、内側の幅ある襞と有限の消散"
+          ],
+          "indirect_evidence": [
+            "PH2の受光が核に同期して変わる。受け手不在時はこの間接証拠は要求しない。"
+          ],
+          "figure_ground_separation": "high",
+          "edge_legibility": "青い面の境界と接触核を原寸に投影。白飛びは許容し、未許可領域への漏れだけを禁止。",
+          "perceptual_failure_risk": "小さな表示で普通の発光球や輪と誤読する可能性。実GPU/目視はnot_runなので解消を断定しない。",
+          "cue_roles": [
+            {
+              "cue": "中央に留まる高輝度核と、先行した立ち上がり",
+              "supports": "局所の接触起点/受光",
+              "reliability_and_overlap": "光源と反射は同じ入力に依存し、独立証拠とは数えない。"
+            },
+            {
+              "cue": "不等な曲率を持つ有色連続膜、内側の幅ある襞と有限の消散",
+              "supports": "主形と周辺応答の差",
+              "reliability_and_overlap": "縮小と遮蔽に依存する。H32/H64・暗明を別の条件として観察する。"
+            }
+          ],
+          "confusable_alternative": "独立した発光オーブ/均一リング/スタン記号と誤認すること。",
+          "disambiguating_evidence": "入力位置が走らず、核の立上りから一回だけ連続膜が展開し残留しない。被弾姿勢・ダメージ・状態異常は追加しない。",
+          "viewing_conditions": "プレビューはCSS100%、canvas原寸H32/H64、暗明別。観察距離/実ディスプレイ特性は未確定。全環境可読性を主張しない。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "+X右,+Y上のworld面をaxisX/axisYでscreenへ写す。",
+          "normal_field_coherence": "膜内の方向と曲率に基づくshade。受光は実際に提供された面法線のみ。",
+          "curvature_behavior": "不等な滑らかな隆起と幅ある襞。単一の円/輪/均一管ではない。",
+          "silhouette_logic": "核と面が連続し、領域外に独立物体を出さない。",
+          "contact_relation": "固定接触点。人体侵入・刺傷・押し込みを表すものではない。",
+          "spatial_relation": "PH2は既存の受け手としてPH1より後方。受光→有色膜のover→放射→PSF→表示の順。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "u=0..1、境界と放射の一回の発生→終了。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "各区間単調に起動/展開/消散し、u=1で0。周期振動/ループは世界に付けない。",
+          "damping_profile": "有限寿命の相対放射減衰。白飛びを避ける減光ではなく接触の自然な終了。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "画面は元のホストsceneに戻る。頭部に反動/回復動作を作らない。",
+          "transition_failure_risk": "低cadenceで起点が飛ぶ、期限切れを冒頭から再生する、OBSだけ残ること。",
+          "driving_input": "PhysicalModel.inputsに対応する正規id/clockとPH1放射。",
+          "response_timescale": "PH1=560ms、PH2=同時光学応答。",
+          "phase_relation": "核→展開→襞→消散。受光/PSFには独立の機械的遅れを付けない。",
+          "stability_condition": "単調時計・有効権限・同じ対象世代内。破れたら再開せず終了。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Optics -> PH2.Optics: 同時刻放射と既存法線・反射率による局所受光。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "event/geometryを固定し、源レイヤまたは既存surface係数を0にする。検査操作は本編へ作用しない。",
+            "predicted_response": "源0で受光/PSFが消え、surface0では受光だけが消える。",
+            "competing_explanation": "元のsceneの明部、表示飽和、maskの欠落が同様の見えを生む可能性。",
+            "uncertainty": "GPU色精度・ディスプレイ・頭部素材は未検証。定性的設計の因果仮説である。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "接触放射源の有限の光が既存の可視受光面へ届き、法線と拡散反射率に応じて返る。",
+              "consequence": "source包絡と同時に、許可された面だけの局所明度が変わる。新しい床/対象を追加しない。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH1",
+              "basis": "有色本体・放射のlinear値を表示へ写像する。"
+            },
+            {
+              "source": "OBS1",
+              "target": "PH2",
+              "basis": "既存面受光を表示へ合成する。"
+            },
+            {
+              "source": "OBS1",
+              "target": "OBS2",
+              "basis": "源に束縛されたPSFを含む最終表示。"
+            },
+            {
+              "source": "OBS2",
+              "target": "PH1",
+              "basis": "世界放射mapだけをPSFの入力にし、背景輝度から独立効果を作らない。"
+            },
+            {
+              "source": "OBS3",
+              "target": "PH1",
+              "basis": "同じ正規接触idと経過時刻で一度だけ接触音を表現する。"
+            }
+          ],
+          "gaze_path": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "reason": "核から近傍面へ光の広がりを読む。"
+            },
+            {
+              "source": "PH2",
+              "target": "PH1",
+              "reason": "局所受光の由来を固定核へ戻って読む。"
+            }
+          ]
+        },
+        "Evidence": {
+          "direct": [
+            "中央に留まる高輝度核と、先行した立ち上がり",
+            "不等な曲率を持つ有色連続膜、内側の幅ある襞と有限の消散"
+          ],
+          "indirect": [
+            "PH2の受光が核に同期して変わる。受け手不在時はこの間接証拠は要求しない。"
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "normal_field",
+            "phase_difference",
+            "occlusion",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH2",
+              "change": "既存面の受光差がPH1の有限放射へ接続する。受け手不在なら追加しない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH1.StateDynamics",
+          "retained_cues": [
+            "中央に留まる高輝度核と、先行した立ち上がり",
+            "不等な曲率を持つ有色連続膜、内側の幅ある襞と有限の消散",
+            "PH2の受光が核に同期して変わる。受け手不在時はこの間接証拠は要求しない。"
+          ],
+          "simplification": "核・連続面・広い襞を優先。極微粒子や文字は描画しない。",
+          "omission_scope": [],
+          "exaggeration_scope": [
+            "PH1放射による局所SDR飽和をそのまま保持。対象の身体状態は変えない。"
+          ],
+          "ambiguity_scope": [
+            "キル・損傷・スタッガー・入射弾道は確定しない。"
+          ],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存の境界/応答だけから証拠を選ぶ。",
+          "axes": {
+            "contrast": [
+              "高輝度核と有色膜の明度差",
+              "幅ある内側の陰部と曲率の隆起差"
+            ],
+            "temporal_phase": [
+              "核の先行と膜の遅れ",
+              "既存面受光の同時性と膜の後半消散"
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "権限/接触と状態無改変を維持。",
+          "Truth": "単一時刻と投影に結び、科学的実測とは分ける。",
+          "Beauty": "構造を作る境界/曲率/位相を保ち、部品数を美の点数にしない。"
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "observation_operation_registered_as_PH",
+          "unverified_quality_claim",
+          "hit_location_drift",
+          "target_state_mutation",
+          "same_id_replay"
+        ]
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "既存可視面の受光",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "implicit",
+          "local_state_difference": "既存のsurface応答と光路が存在する場所だけ明度が変化する。未提供なら0。",
+          "partition_reason": "PH1とは別の受け手条件・遮蔽・法線・反射係数により定まる派生応答。"
+        },
+        "DeepStructure": {
+          "Core": "PH1が照らす既存可視面。法線・拡散係数・光路許可が積で応答を拘束する。",
+          "Structure": "ホストから受領した既存面の法線と可視maskを保持し、描画面の形状を変更しない。",
+          "Surface": "既存の遮蔽境界/保護域で光が止まり、境界の内外で応答が異なる。"
+        },
+        "PhysicalModel": {
+          "model_kind": "derived_world_response",
+          "system_boundary": "現在frameの既存surfaceの許可領域だけ。未提供surfaceは不在として扱う。",
+          "state_variables": "法線、toSource方向、0..1拡散反射係数、光路clear、mask。",
+          "inputs": "PH1のsource包絡と現在ホストsurface。",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "非物質の宣言場/派生光応答であり、頭部の質量や飛散物を作らない。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "相手の姿勢・速度・反撃を更新しない。反動・スタッガー力はホストからもEからも生成しない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "PH1から到達する光のみ、0..1のホスト拡散反射率と法線係数を掛ける。遮蔽光路の入力は0。未反射分はモデル外の吸収/他方向への散乱として残す。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "静電・導電・電荷移動のモデルは宣言されず、武器名から追加しない。"
+            }
+          },
+          "constitutive_response": "surfaceResponseでLambert型係数を作り、PH1の同時点放射に距離減衰・有限支持を掛ける。",
+          "initial_condition": "PH1の入力が無い時は追加受光0。",
+          "boundary_conditions": "固定の光源位置、既存面法線、可視光路。床/人体/接点を作らない。",
+          "approximation_scope": "ゲームの接触を視覚化する宣言場。実弾・組織・温度・ダメージの科学的推定ではない。値は新しい表現上の仮定。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "radius=150 GU。世界mへはホストの宣言するlambda[m/GU]で写像し、150mと解釈しない。",
+          "characteristic_time": "光学応答はPH1と同じ観測tick。機械的な遅れを与えない。",
+          "dominant_balance": "可視性と入射係数/拡散反射が支配。材料加熱・力学を補わない。",
+          "dimensionless_reasoning": "u=age/560ms と r/radius を使う。Re/We等の物性が無い値を算出しない。",
+          "detail_cutoff": "H32/H64で核・幅ある面と曲率差を主証拠にし、サブピクセルの輝点/粒子を品質条件にしない。SamplingContract参照。"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "熱変形や温度/燃焼を表現しない。PH1は宣言された非現実の描画放射場で、PH2も熱収支を推定しない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "流体媒体の輸送を必要としない。WindCapsuleは静穏条件であり、膜の展開はゲームEの場の状態変化で、空気流とは主張しない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "coverageと放射を分け、核の入力から場所ごとの輝度差を生む。",
+                "遮蔽/受光面/終端を同じ座標と時刻へ接続する。"
+              ],
+              "evidence_or_constraint": "Evidenceの核/膜の差とPH1→PH2の同期受光。OBSのPSFを世界の形状代わりにしない。"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "既存surfaceの拡散反射率/法線をホストから読み、同じ照射に対する局所差だけを残す。"
+              ],
+              "evidence_or_constraint": "PH1では曲率とcoverage、PH2では同じ入力に対する既存面の法線/拡散係数差。物性の実測値は主張しない。"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "導電・帯電・感電を生成しない。taser入力でも同じEであり、ショック弾/スタン機構は追加しない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "頭部や物質の粘弾性/降伏を計算しない。襞の遅れは宣言されたEの包絡であり、組織変形の測定ではない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "コヒーレンス・波長・薄膜干渉を仮定しない。画面PSFはOBS2であり世界の干渉PHではない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "濡れ・傷・被覆残留・付着を追加しない。接触位置はイベントの拘束で、濡れ境界/接着を意味しない。"
+              ],
+              "evidence_or_constraint": "該当する物質過程が存在せず、PH1/PH2と静穏媒体の定性的光路だけで閉じる。"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "not_applicable: 本体は既存ホスト面でありEが再生成しない。",
+          "indirect_evidence": [
+            "PH1の明度に応じた既存面だけの局所照度差",
+            "遮蔽/反射率が違う面では同じ入力でも応答が異なる"
+          ],
+          "figure_ground_separation": "medium",
+          "edge_legibility": "青い面の境界と接触核を原寸に投影。白飛びは許容し、未許可領域への漏れだけを禁止。",
+          "perceptual_failure_risk": "小さな表示で普通の発光球や輪と誤読する可能性。実GPU/目視はnot_runなので解消を断定しない。",
+          "cue_roles": [
+            {
+              "cue": "PH1の明度に応じた既存面だけの局所照度差",
+              "supports": "局所の接触起点/受光",
+              "reliability_and_overlap": "光源と反射は同じ入力に依存し、独立証拠とは数えない。"
+            },
+            {
+              "cue": "遮蔽/反射率が違う面では同じ入力でも応答が異なる",
+              "supports": "主形と周辺応答の差",
+              "reliability_and_overlap": "縮小と遮蔽に依存する。H32/H64・暗明を別の条件として観察する。"
+            }
+          ],
+          "confusable_alternative": "独立した発光オーブ/均一リング/スタン記号と誤認すること。",
+          "disambiguating_evidence": "入力位置が走らず、核の立上りから一回だけ連続膜が展開し残留しない。被弾姿勢・ダメージ・状態異常は追加しない。",
+          "viewing_conditions": "プレビューはCSS100%、canvas原寸H32/H64、暗明別。観察距離/実ディスプレイ特性は未確定。全環境可読性を主張しない。"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "+X右,+Y上のworld面をaxisX/axisYでscreenへ写す。",
+          "normal_field_coherence": "膜内の方向と曲率に基づくshade。受光は実際に提供された面法線のみ。",
+          "curvature_behavior": "不等な滑らかな隆起と幅ある襞。単一の円/輪/均一管ではない。",
+          "silhouette_logic": "核と面が連続し、領域外に独立物体を出さない。",
+          "contact_relation": "固定接触点。人体侵入・刺傷・押し込みを表すものではない。",
+          "spatial_relation": "PH2は既存の受け手としてPH1より後方。受光→有色膜のover→放射→PSF→表示の順。"
+        },
+        "StateDynamics": {
+          "state_space_extent": "入力PH1とホスト可視面の組合せで受光値が即時変化。",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "各区間単調に起動/展開/消散し、u=1で0。周期振動/ループは世界に付けない。",
+          "damping_profile": "有限寿命の相対放射減衰。白飛びを避ける減光ではなく接触の自然な終了。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "画面は元のホストsceneに戻る。頭部に反動/回復動作を作らない。",
+          "transition_failure_risk": "低cadenceで起点が飛ぶ、期限切れを冒頭から再生する、OBSだけ残ること。",
+          "driving_input": "PhysicalModel.inputsに対応する正規id/clockとPH1放射。",
+          "response_timescale": "PH1=560ms、PH2=同時光学応答。",
+          "phase_relation": "核→展開→襞→消散。受光/PSFには独立の機械的遅れを付けない。",
+          "stability_condition": "単調時計・有効権限・同じ対象世代内。破れたら再開せず終了。"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Optics -> PH2.Optics: 同時刻放射と既存法線・反射率による局所受光。"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "event/geometryを固定し、源レイヤまたは既存surface係数を0にする。検査操作は本編へ作用しない。",
+            "predicted_response": "源0で受光/PSFが消え、surface0では受光だけが消える。",
+            "competing_explanation": "元のsceneの明部、表示飽和、maskの欠落が同様の見えを生む可能性。",
+            "uncertainty": "GPU色精度・ディスプレイ・頭部素材は未検証。定性的設計の因果仮説である。",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "接触放射源の有限の光が既存の可視受光面へ届き、法線と拡散反射率に応じて返る。",
+              "consequence": "source包絡と同時に、許可された面だけの局所明度が変わる。新しい床/対象を追加しない。"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH2",
+              "basis": "既存面受光を表示へ合成する。"
+            }
+          ],
+          "gaze_path": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "reason": "核から近傍面へ光の広がりを読む。"
+            },
+            {
+              "source": "PH2",
+              "target": "PH1",
+              "reason": "局所受光の由来を固定核へ戻って読む。"
+            }
+          ]
+        },
+        "Evidence": {
+          "direct": [],
+          "indirect": [
+            "PH1の明度に応じた既存面だけの局所照度差",
+            "遮蔽/反射率が違う面では同じ入力でも応答が異なる"
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "normal_field",
+            "phase_difference",
+            "occlusion",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH1",
+              "change": "既存面の受光差がPH1の有限放射へ接続する。受け手不在なら追加しない。"
+            }
+          ],
+          "latent_reference_target": "PH1"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH2.StateDynamics",
+          "retained_cues": [
+            "PH1の明度に応じた既存面だけの局所照度差",
+            "遮蔽/反射率が違う面では同じ入力でも応答が異なる"
+          ],
+          "simplification": "核・連続面・広い襞を優先。極微粒子や文字は描画しない。",
+          "omission_scope": [],
+          "exaggeration_scope": [
+            "PH1放射による局所SDR飽和をそのまま保持。対象の身体状態は変えない。"
+          ],
+          "ambiguity_scope": [
+            "キル・損傷・スタッガー・入射弾道は確定しない。"
+          ],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: 既存の境界/応答だけから証拠を選ぶ。",
+          "axes": {
+            "contrast": [
+              "高輝度核と有色膜の明度差",
+              "幅ある内側の陰部と曲率の隆起差"
+            ],
+            "temporal_phase": [
+              "核の先行と膜の遅れ",
+              "既存面受光の同時性と膜の後半消散"
+            ]
+          }
+        },
+        "GTBConnections": {
+          "Good": "権限/接触と状態無改変を維持。",
+          "Truth": "単一時刻と投影に結び、科学的実測とは分ける。",
+          "Beauty": "構造を作る境界/曲率/位相を保ち、部品数を美の点数にしない。"
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "observation_operation_registered_as_PH",
+          "unverified_quality_claim",
+          "hit_location_drift",
+          "target_state_mutation",
+          "same_id_replay"
+        ]
+      }
+    },
+    "Acceptance": {
+      "all_PH_have_required_full_structure": true,
+      "visible_implicit_latent_have_same_field_set": true,
+      "OBS_not_in_PH_registry": true,
+      "PIA_resolved_as_identification_lifecycle": true
+    }
+  },
+  "PEMTemplate": {
+    "Mode": {
+      "phenomenon_equality": true,
+      "focus_phenomenon": "none"
+    },
+    "CausalMesh": {
+      "physical_mesh_required": true,
+      "gaze_target_policy": "standard",
+      "adjustment_reason": "not_applicable: 既存面がない場合はPH1の初期/境界だけで閉じる。",
+      "gaze_path_A": "PH1核→PH1膜→PH2受光",
+      "gaze_path_B": "PH1の幅ある陰部→曲率の明部→核",
+      "local_extrema_connected_to_gaze_paths": true
+    },
+    "AttentionControl": {
+      "attention_focus": "hierarchical",
+      "single_requires_explicit_request": true
+    },
+    "Acceptance": {
+      "no_unexplained_isolation": true,
+      "gaze_paths_match_selected_policy_and_explicit_intent": true,
+      "local_peak_returns_to_mesh": true
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "接触位置に束縛したPH1と既存面のPH2が存在。"
+    },
+    "Units": {
+      "length": "m",
+      "time": "s",
+      "temperature": "K",
+      "pressure": "Pa",
+      "angle": "rad"
+    },
+    "WorldCoordinates": {
+      "handedness": "right_handed",
+      "X": "right_positive",
+      "Y": "up_positive",
+      "Z": "backward_positive",
+      "camera_forward": "negative_Z",
+      "origin": "declared_anchor_origin: event contact",
+      "game_unit_bridge": "event x/y/radiusはGU。m/GUはホスト入力の換算lambdaでありEは150mを仮定しない。"
+    },
+    "CameraCoordinates": {
+      "X": "right_positive",
+      "Y": "up_positive",
+      "forward": "negative_Z",
+      "projection": "orthographic",
+      "FOV_or_scale": "プレビューH32: radius150GU→16px、H64:→32px。ゲームのprojectContactはホスト投影を使う。"
+    },
+    "ScreenCoordinates": {
+      "domain": "[0,1]x[0,1]",
+      "x": "0_left_to_1_right",
+      "y": "0_top_to_1_bottom"
+    },
+    "TransformChain": {
+      "order": [
+        "world",
+        "camera",
+        "screen"
+      ],
+      "world_to_camera": "固定接触x/yを原点に正規化し、現在のホストworldToScreenへ渡す。",
+      "camera_to_screen": "center+axisX*localX+axisY*localY。UVのyは符号反転。"
+    },
+    "ContactCoordinates": {
+      "contact_patch": "正規eventの接触位置のみ。頭部の変形面を構築しない。",
+      "contact_normal": "ホストsurfaceがある場合のみ法線を入力。Eの形態から推定しない。",
+      "support_relation": "not_applicable",
+      "no_penetration": true
+    },
+    "VectorField": {
+      "dominant_vector": {
+        "direction": "接触から局所的に外向き",
+        "magnitude": "spread(t)の描画場。実在の運動量ではない。",
+        "falloff": "radius以内",
+        "fluctuation": "none: 同一接触をランダム化しない。"
+      },
+      "secondary_vector": {
+        "direction": "内側の曲率に沿う折返し",
+        "magnitude": "fold(t)",
+        "falloff": "同じ連続膜の内側だけ",
+        "fluctuation": "none"
+      }
+    },
+    "Gravity": {
+      "condition": "normal",
+      "vector": [
+        0,
+        -1,
+        0
+      ],
+      "strength": "ホストの重力を変えない。非物質のEに弾道や落下を付けない。",
+      "affected_responses": "not_applicable: 人体/物体の運動を生成しない。",
+      "evidence": "PH1の固定接触とPH2の既存面位置を保つ。落下粒子を可視化用に追加しない。"
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "air",
+      "medium_properties": {
+        "density": "未測定。プレビューは静穏な空気を設計上想定するが、光路以外へ使わない。",
+        "viscosity": "未測定、機構非適用。"
+      },
+      "Field": {
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "speed": 0,
+        "gust": "none",
+        "shear": "none",
+        "turbulence": "none"
+      },
+      "ApplicableResponses": {
+        "body": "not_applicable: 身体を生成/駆動しない。",
+        "cloth": "not_applicable: 布なし。",
+        "hair": "not_applicable: 髪なし。",
+        "loose_elements": "not_applicable: 飛散物なし。",
+        "environment": "静穏想定。源/受光と視認mask以外に媒体応答を追加しない。"
+      },
+      "non_applicable_responses_explicit": true
+    },
+    "Acceptance": {
+      "world_camera_screen_transform_defined": true,
+      "screen_axis_convention_defined": true,
+      "Gravity_present": true,
+      "WindCapsule_present": true,
+      "medium_state_present": true,
+      "no_inapplicable_wind_evidence_required": true
+    }
+  },
+  "OctaDomainTemplate": {
+    "Domains": {
+      "Thermo": {
+        "application_ref": "PhenomenonSystemTemplate.PhenomenonBlockの各PH.OctaDomain.Domains.Thermo",
+        "purpose": "全PHが独立して適用可否・role・局所応答/非該当理由を保持する。"
+      },
+      "Fluid": {
+        "application_ref": "PhenomenonSystemTemplate.PhenomenonBlockの各PH.OctaDomain.Domains.Fluid",
+        "purpose": "全PHが独立して適用可否・role・局所応答/非該当理由を保持する。"
+      },
+      "Optics": {
+        "application_ref": "PhenomenonSystemTemplate.PhenomenonBlockの各PH.OctaDomain.Domains.Optics",
+        "purpose": "全PHが独立して適用可否・role・局所応答/非該当理由を保持する。"
+      },
+      "Materials": {
+        "application_ref": "PhenomenonSystemTemplate.PhenomenonBlockの各PH.OctaDomain.Domains.Materials",
+        "purpose": "全PHが独立して適用可否・role・局所応答/非該当理由を保持する。"
+      },
+      "Electromagnetics": {
+        "application_ref": "PhenomenonSystemTemplate.PhenomenonBlockの各PH.OctaDomain.Domains.Electromagnetics",
+        "purpose": "全PHが独立して適用可否・role・局所応答/非該当理由を保持する。"
+      },
+      "Rheology": {
+        "application_ref": "PhenomenonSystemTemplate.PhenomenonBlockの各PH.OctaDomain.Domains.Rheology",
+        "purpose": "全PHが独立して適用可否・role・局所応答/非該当理由を保持する。"
+      },
+      "WaveOptics": {
+        "application_ref": "PhenomenonSystemTemplate.PhenomenonBlockの各PH.OctaDomain.Domains.WaveOptics",
+        "purpose": "全PHが独立して適用可否・role・局所応答/非該当理由を保持する。"
+      },
+      "SurfaceScience": {
+        "application_ref": "PhenomenonSystemTemplate.PhenomenonBlockの各PH.OctaDomain.Domains.SurfaceScience",
+        "purpose": "全PHが独立して適用可否・role・局所応答/非該当理由を保持する。"
+      }
+    },
+    "Acceptance": {
+      "all_8_domains_present": true,
+      "role_classification_present": true,
+      "latent_does_not_require_direct_visualization": true,
+      "non_applicable_domains_retained_with_reason_and_latent_role": true
+    }
+  },
+  "AnimeStudiesTemplate": {
+    "KeyframeSnapshot": {
+      "phase": "action_peak",
+      "state_t_minus_1_evidence": "u=.24の代表設計点より前に、固定核が先に光る。",
+      "state_t_evidence": "幅ある有色膜が展開し、核と曲率差が同居する。",
+      "state_t_plus_1_evidence": "内側の襞が遅れて進み、域外へ飛散せず消散する。"
+    },
+    "Layout": {
+      "staging": "原寸H32/H64と拡大を別観測として同じeventを投影。",
+      "projection_consistency_ref": "CoordinateGravityWindTemplate",
+      "whitespace_role": "局所放射域の外は元のsceneを残し、移動弾道や無関係な演出を足さない。"
+    },
+    "PoseActing_or_SceneActing": {
+      "character_ref": "not_applicable: Eの出力には身体が無い。",
+      "object_balance": "非物質場が固定接触と有限入力で成立。",
+      "contact_logic": "既存targetの状態を変えず正規接触位置だけを使う。"
+    },
+    "MotionReadability": {
+      "motion_blur_smear_speed_line_policy": "explicit_user_request_only",
+      "primary_causality_replacement_by_motion_effects": false
+    },
+    "CompositeIntegration": {
+      "observation_ref": "ObservationIntegrationTemplate",
+      "contact_shadow_used_for_integration": "not_applicable: 既存面受光だけ。接地床/影を新しく作らない。"
+    },
+    "Acceptance": {
+      "previous_and_next_time_or_explicit_ambiguity_accounted_for": true,
+      "projection_consistent": true,
+      "posteffects_do_not_replace_primary_causality": true
+    }
+  },
+  "ObservationIntegrationTemplate": {
+    "ObservationRegistry": {
+      "OBS1": {
+        "operation_type": "tone",
+        "input_references": [
+          "PH1",
+          "PH2",
+          "OBS2",
+          "display_condition"
+        ],
+        "target_mask": "各eventの現在可視域。域外はsceneと同値。",
+        "stage": "display",
+        "composite_method": "other: 既存受光を加え、premultiplied膜over、放射/PSF加算、sRGB符号化。",
+        "intensity": "露光1。HDRの加算値にtone compression・輝度上限・白飛び回避gainを掛けない。",
+        "protected_regions": [
+          "不可視/世代違いの対象",
+          "ホスト保護mask",
+          "E領域外"
+        ],
+        "output_consequence": "強い源はSDR UNORMで白く飽和する。意図した飽和を保持。",
+        "dependencies": [
+          "PH1",
+          "PH2",
+          "OBS2",
+          "display_condition"
+        ],
+        "sampling_consequence": "linear rgba16floatから直接出力。nativeH32/H64は別投影で、CSS縮小したH64をH32とはしない。"
+      },
+      "OBS2": {
+        "operation_type": "posteffect",
+        "input_references": [
+          "PH1",
+          "optical_condition"
+        ],
+        "target_mask": "PH1の放射mapと現在の宛先可視mask。背景から新しいフレアを作らない。",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": "12点の局所PSF、係数.62。物理レンズの実測PSFではなく選択した表示応答。追加後の上限正規化なし。",
+        "protected_regions": [
+          "宛先/source/midpointの不許可域",
+          "ホスト保護mask"
+        ],
+        "output_consequence": "強い核の周囲へsource-boundのにじみを加える。主形の輪郭自体はPH1から作る。",
+        "dependencies": [
+          "PH1",
+          "optical_condition"
+        ],
+        "sampling_consequence": "半float放射map128²を手動bilinearで再構成しuv半径.032/外側約2倍のtapを使用。画面光条/粒子を作らない。"
+      },
+      "OBS3": {
+        "operation_type": "other",
+        "input_references": [
+          "PH1",
+          "display_condition"
+        ],
+        "target_mask": "権限を満たす同idの一回限り発音。audio出力でscreen maskではない。",
+        "stage": "world_render_observation",
+        "composite_method": "other: mono PCM→pan→contact専用gain→音声destination",
+        "intensity": "音声voiceGain.22/masterGain.48、最大8voice。視覚の発光制限とは無関係。",
+        "protected_regions": [
+          "不可視対象に対応する音",
+          "過期限/重複/部屋・世代違いの音"
+        ],
+        "output_consequence": "210msの新しい接触クリック/胴/拡散尾。銃声を含めず、source再生成やunlock待ちキューを作らない。",
+        "dependencies": [
+          "PH1",
+          "display_condition"
+        ],
+        "sampling_consequence": "mono48000Hz標準、16000..192000Hzを許容。rate履歴に対し同じBufferSourceのplaybackRateを変更。pause時はDCを出さない。聴感はnot_run。"
+      }
+    },
+    "SamplingContract": {
+      "output_resolution": "実装: 原寸canvas64×64/32×32、拡大320×320。世界パスの各map128×128/個体。実GPU起動結果は別記録。",
+      "intended_display_scale": "CSS100%のH64/H32。実画面DPR/距離は利用環境依存で保証しない。",
+      "spatial_detail_policy": "核・一つの連続膜・幅ある襞を主証拠。128mapのAAと原寸再構成を共有し、小粒子の消失を品質条件にしない。",
+      "temporal_sampling": "B Imageのframe cadenceはnot_applicable。Eソースはホストtickの単一ageを使う。露光時間積分/モーションブラーは未選択。プレビューは最大16.667ms/提出の検査時計で、実時間性能ではない。",
+      "filter_and_resample_policy": "実装済みのanalytic AA+手動bilinear+源PSF。出力後の処理やGPU実行を記述だけで完了したと扱わない。"
+    },
+    "ImageIntegration": {
+      "ToneColor": [
+        "OBS1"
+      ],
+      "LightIntegration": [
+        "OBS1",
+        "OBS2"
+      ],
+      "ShadowDensity": "not_applicable: 世界影を追加しない。",
+      "DepthAir": "not_applicable: 霧/煙/空気遠近を追加しない。",
+      "EdgeLine": "OBS1/PH1のanalytic境界だけ。",
+      "TextureOutput": "膜の曲率/襞。grain/既存textureなし。"
+    },
+    "LensFlareField": {
+      "registry_id": "none",
+      "artifact_type": "optical_observation_artifact",
+      "world_anchor": "none",
+      "SourceMapping": {
+        "source_state": "attribute_resolved",
+        "source_id": "PH1",
+        "source_screen_position": "projectContact(event).center",
+        "source_luminance_rank": "局所最大"
+      },
+      "ResponseVisibility": {
+        "level": "none",
+        "reason": "多枚レンズや開口の機構は選択していない。強いsourceの表示PSFはOBS2でありレンズghostとは主張しない。"
+      },
+      "LensModel": {
+        "flare_mode": "latent",
+        "coating_strength": "high",
+        "aperture_state": "open",
+        "anamorphic": false,
+        "applicability": "not_applicable: 実レンズの数値仕様を意味しない保持フィールド。"
+      },
+      "SpatialBinding": {
+        "image_center_relation": "not_applicable: lens応答を描かない。",
+        "optical_axis_offset": "none",
+        "chain_axis": "none"
+      },
+      "Responses": {
+        "Ghost": "none",
+        "Veil": "none",
+        "Streak": "none",
+        "Spectral": "none"
+      }
+    },
+    "IntensityBudget": {
+      "global_observation_budget": "単一の空間/権限/選択操作の契約。白飛び回避の輝度上限・全体減光・auto-exposure・tone shoulderは設けない。",
+      "para": "none",
+      "flare_gradient": "none",
+      "glow": "OBS2の選択PSF。sourceを減光せず線形加算。",
+      "diffusion": "OBS2以外はnone",
+      "grain": "none",
+      "chromatic_aberration": "none",
+      "protected_region_priority": "highest",
+      "intentional_departures": [
+        {
+          "OBS_ref": "OBS1",
+          "scope": "PH1/PH2/OBS2の現在許可された局所領域",
+          "intent_basis": "最新指示: 白飛びは気にせず、回避のための減光・発光制限をしない。",
+          "preserved_relations": "正規位置/id/可視権限、非致死、域外scene無改変。"
+        },
+        {
+          "OBS_ref": "OBS2",
+          "scope": "source-boundの局所PSF支持域",
+          "intent_basis": "強い発光の観測応答を保持。合成後の飽和を回避しない。",
+          "preserved_relations": "源と現在maskへ束縛。架空の光源を作らない。"
+        }
+      ]
+    },
+    "CompositeValidation": {
+      "contour_preserved": "not_tested",
+      "highlight_clipping": "not_tested",
+      "shadow_crushing": "not_tested",
+      "chroma_displacement": "not_tested",
+      "fine_detail_retention": "not_tested",
+      "protected_background_preserved": "not_tested"
+    },
+    "Acceptance": {
+      "OBS_separate_from_PH": true,
+      "physical_lensflare_source_binding_preserved": true,
+      "display_artifact_does_not_fake_physical_source": true,
+      "intensity_budget_is_single_source_of_truth": true,
+      "sampling_conditions_and_actual_execution_distinguished": true
+    }
+  },
+  "ExtremumDesignColorTemplate": {
+    "PEV": {
+      "candidate_state_set": [
+        "S1: u=.24の正規接触、核が先行し膜が展開中。採用状態のみ記録。"
+      ],
+      "selected_physics_extremum": "S1",
+      "reason": "キルや入射線を捏造せず起点と一回の作用の順序を読む。"
+    },
+    "AES": {
+      "selected_from_PEV_only": true,
+      "visual_circulation": "核→内側の襞→境界の曲率差→既存受光",
+      "asymmetric_balance": "膜の曲率の不等な広がりを単一接触の局所差として使う。",
+      "tension_release": "急速核と遅い展開・消散を分ける。",
+      "body_environment_consonance": "not_applicable: 身体形状はホスト所有。既存面の光応答だけ接続。",
+      "selected_aesthetic_extremum": "S1"
+    },
+    "DesignScience": {
+      "VisualHierarchy": "核、幅ある有色膜、既存面の受光、source-bound PSFの順で依存させる。",
+      "DensityPlan": "原寸で消える微粒子でなく、ひと続きの面の密度差。",
+      "ShapeOrder": "非一様曲率/内側の折返し。対比は反射や表示の理由へ結ぶ。",
+      "OrnamentFunction": "独立装飾なし。全て同じ現象の形態と応答。"
+    },
+    "CCM": {
+      "Palette": {
+        "base": "新規の青い有色膜、linear[.018,.165,.60]",
+        "secondary": "同じ面の曲率/陰部と折返し応答",
+        "accent": "核の白〜青白い強放射。SDR飽和を許容。",
+        "neutral": "ホストscene。テスト暗明/受光面だけ別用意。"
+      },
+      "ColorDynamics": {
+        "temp": "cool",
+        "value_range": "linear HDR。上限正規化なし。SDR格納で飽和。",
+        "saturation": "有色面は法線/coverageで応答し、飽和核は白を許容。"
+      },
+      "Lighting": {
+        "key_K": "not_applicable: RGB宣言場であり実温度/黒体色温度を捏造しない。",
+        "fill_tint": "新規fill光源なし。"
+      },
+      "BackgroundBinding": {
+        "bg_dominant": "ホスト背景を保持。プレビュー暗明を独立検査。",
+        "bg_accent": "追加なし。"
+      },
+      "PerceptualControl": {
+        "attention_focus": "hierarchical",
+        "figure_ground_stability": "medium",
+        "arousal_level": "high",
+        "perceptual_noise_tolerance": "low"
+      }
+    },
+    "Acceptance": {
+      "PEV_applied_before_AES_when_world_candidates_exist": true,
+      "AES_does_not_override_world_validity": true,
+      "legacy_FDS_resolved_to_DesignScience": true,
+      "CCM_fields_fixed": true
+    }
+  },
+  "ReflectionClosureTemplate": {
+    "Applicability": {
+      "applies_when": [
+        "reflection"
+      ],
+      "otherwise": "latent_optics_condition"
+    },
+    "ReflectionClosureBlock": {
+      "PH2": {
+        "reflection_PH": "PH2",
+        "surface_type": "other",
+        "MicrofacetField": {
+          "view_dependence": "選択モデルはLambert拡散極限であり鏡面像/視線依存lobeを生成しない。法線と入射はホスト入力。",
+          "fresnel": "実界面F0は未提供。鏡面項を追加しない拡散近似として定性的に保持。",
+          "microfacet": "微面roughnessを未測定のまま数値化しない。拡散surface係数へ縮約し、geometry遮蔽は現在maskへ委譲。",
+          "surface_state_modulation": "既存surface.present/visible/lightPathClear/diffuseReflectanceだけ。濡れ/汚染を作らない。",
+          "energy_consistency": "到達光に0..1反射係数と入射cosを掛ける。残りはモデル外吸収/別方向。観測PSFとは分離。",
+          "occlusion_consistency": true
+        },
+        "ReflectionLinks": {
+          "physical_influence_out": "PH1→PH2の一方向受光。PH2はOBS1へ観測依存で接続し、新しい世界受け手を要求しない。",
+          "physical_feedback_in": "not_applicable: 受光が核の放射を変える帰還は存在しない。"
+        },
+        "Evidence": [
+          "入射法線による局所差",
+          "現在遮蔽境界での受光消失"
+        ]
+      }
+    },
+    "Acceptance": {
+      "reflection_integrated_into_PH_mesh": true,
+      "lensflare_registered_as_OBS_not_reflection": true
+    }
+  },
+  "PhenomenonProfileTemplate": {
+    "ApplicabilityGuide": {
+      "selections": []
+    },
+    "ProfilePolicy": {
+      "secondary_boost_only": true,
+      "full_PH_structure_still_required": true,
+      "only_selected_profiles_in_design": true
+    },
+    "Profiles": {},
+    "Nonapplicability": "実燃焼/液体/布/金属/皮膚/濡れ/相変化をEが追加しないため、profile一式の強制適用はしない。既存面受光はPH2で閉じる。",
+    "Acceptance": {
+      "profile_does_not_replace_PH_schema": true,
+      "reactive_profile_only_when_applicable": true
+    }
+  },
+  "TermsTemplate": {
+    "PH": "世界内の描画場/既存面の派生応答",
+    "OBS": "表示/音声の観測変換",
+    "PIA": "基底の候補/具体化/登録の過程。独立機構にしない。",
+    "PEM": "Phenomenon Equality Mode",
+    "PEV": "Physics Extremum Visualization",
+    "AES": "Aesthetic Extremum Selection",
+    "CCM": "Color Catalog Module",
+    "FDS": "legacy alias -> DesignScience + AES",
+    "DeclaredIntent": "最新v5訂正を保持",
+    "ValidationResults": "要求trueと実検査結果を分離",
+    "Acceptance": {
+      "undefined_legacy_terms_absent": true
+    }
+  },
+  "ExtensionActivationTable": {
+    "entries": {
+      "VFX": {
+        "trigger": "explicit",
+        "dependencies": [
+          "PhenomenonSystemTemplate",
+          "ObservationIntegrationTemplate"
+        ],
+        "output_blocks": [
+          "VFX"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "PostEffects": {
+        "trigger": "attribute_resolved: 強い既存源の局所PSF",
+        "dependencies": [
+          "ObservationIntegrationTemplate"
+        ],
+        "output_blocks": [
+          "PostEffects"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "LDM": {
+        "trigger": "explicit_VFX",
+        "dependencies": [
+          "VFX"
+        ],
+        "output_blocks": [
+          "LuminanceDynamicsModule"
+        ],
+        "disabled_behavior": "omit"
+      },
+      "ECodeImplementation": {
+        "trigger": "executable_runtime_E_code_explicit",
+        "dependencies": [
+          "VFX",
+          "ObservationIntegrationTemplate"
+        ],
+        "output_blocks": [
+          "ECodeImplementation"
+        ],
+        "disabled_behavior": "omit"
+      }
+    },
+    "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+    "output_contract_ref": "FoundationOperationTemplate.OutputContract",
+    "Acceptance": {
+      "one_activation_source_of_truth": true,
+      "disabled_modules_omitted": true
+    }
+  },
+  "VFX": {
+    "trigger": "explicit",
+    "world_registration": "PhenomenonSystemTemplate.PhenomenonRegistry",
+    "observation_registration": "ObservationIntegrationTemplate.ObservationRegistry",
+    "design_intent": {
+      "subject_and_action": "単一の頭部接触E。キル前の正規接触だけ。",
+      "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+      "primary_read": "起点の急な放射から幅ある膜へ一度だけ作用が広がる。",
+      "layering_basis": "同じPH1内の主形/内側差、独立したPH2受光、OBS2を分離するための4層。数合わせではない。"
+    },
+    "layers": [
+      {
+        "layer_id": "L1",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "固定接触核と有色の連続圧縮膜。単一接触の実現/観測を具体化する。"
+        },
+        "PH_refs": [
+          "PH1"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "同じ境界のradius/曲率/coverageが主形を作る。",
+        "spatial_structure": {
+          "anchor_and_transform": "world接触→projectContact→screen",
+          "extent_orientation_depth": "radius150GUの局所支持。域外sceneを変更しない。",
+          "macro": "固定接触核と有色の連続圧縮膜",
+          "meso": "同じ境界のradius/曲率/coverageが主形を作る。",
+          "micro": "原寸のAA/曲率解像だけ。微粒子・grain・noiseは未選択。",
+          "edge_and_occlusion": "現在権限と受光→膜→放射→PSFの順。世界の前後と処理順を区別。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "固定接触核と有色の連続圧縮膜",
+          "emission_opacity_density": "coverage/放射強度/曲率・密度差を別変数で扱う。PSFはそれらの変換だけ。",
+          "color_and_light_response": "CCMの青い面と白青の核。白飛びを回避する減光をしない。",
+          "model_refs": "src/form.mjs + shaders/contact.wgsl"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じ正規eventのclock-age。独立した射撃イベントや入射方向推定なし。",
+          "distribution_and_correlation": "not_applicable: 粒子集合ではない。連続場の不等曲率。",
+          "onset_peak_decay": "source核が約18msまでに立上り、膜のspreadは約157msへ遅れる。",
+          "state_and_sampling_refs": "PH1.StateDynamics / ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "可視位置だけ。world層はMRT、観測層はOBS2でsource依存順。",
+          "protected_cues": "固定接触核、単一E、対象無改変、視認/世代、背景。",
+          "failure_to_avoid": "OBSで主形を作る、世界とOBSを混在、10種の形に分岐、未検証画素を合格にする。"
+        }
+      },
+      {
+        "layer_id": "L2",
+        "role": "internal_structure",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "連続膜の内側の返り襞と局所発光。単一接触の実現/観測を具体化する。"
+        },
+        "PH_refs": [
+          "PH1"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "方向場と曲率の重なる内側だけ局所差があり、一律の円周発光や粒子を使わない。",
+        "spatial_structure": {
+          "anchor_and_transform": "world接触→projectContact→screen",
+          "extent_orientation_depth": "radius150GUの局所支持。域外sceneを変更しない。",
+          "macro": "連続膜の内側の返り襞と局所発光",
+          "meso": "方向場と曲率の重なる内側だけ局所差があり、一律の円周発光や粒子を使わない。",
+          "micro": "原寸のAA/曲率解像だけ。微粒子・grain・noiseは未選択。",
+          "edge_and_occlusion": "現在権限と受光→膜→放射→PSFの順。世界の前後と処理順を区別。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "連続膜の内側の返り襞と局所発光",
+          "emission_opacity_density": "coverage/放射強度/曲率・密度差を別変数で扱う。PSFはそれらの変換だけ。",
+          "color_and_light_response": "CCMの青い面と白青の核。白飛びを回避する減光をしない。",
+          "model_refs": "shaders/contact.wgsl"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じ正規eventのclock-age。独立した射撃イベントや入射方向推定なし。",
+          "distribution_and_correlation": "not_applicable: 粒子集合ではない。連続場の不等曲率。",
+          "onset_peak_decay": "foldは56msから308msへ進む。sourceは同じ時間基準の放射。",
+          "state_and_sampling_refs": "PH1.StateDynamics / ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "可視位置だけ。world層はMRT、観測層はOBS2でsource依存順。",
+          "protected_cues": "固定接触核、単一E、対象無改変、視認/世代、背景。",
+          "failure_to_avoid": "OBSで主形を作る、世界とOBSを混在、10種の形に分岐、未検証画素を合格にする。"
+        }
+      },
+      {
+        "layer_id": "L3",
+        "role": "environment_response",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "既存可視面だけへの受光。単一接触の実現/観測を具体化する。"
+        },
+        "PH_refs": [
+          "PH2"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "既存normal/反射率/光路が無ければ0。受光→有色面overの順で後方関係を守る。",
+        "spatial_structure": {
+          "anchor_and_transform": "world接触→projectContact→screen",
+          "extent_orientation_depth": "radius150GUの局所支持。域外sceneを変更しない。",
+          "macro": "既存可視面だけへの受光",
+          "meso": "既存normal/反射率/光路が無ければ0。受光→有色面overの順で後方関係を守る。",
+          "micro": "原寸のAA/曲率解像だけ。微粒子・grain・noiseは未選択。",
+          "edge_and_occlusion": "現在権限と受光→膜→放射→PSFの順。世界の前後と処理順を区別。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "既存可視面だけへの受光",
+          "emission_opacity_density": "coverage/放射強度/曲率・密度差を別変数で扱う。PSFはそれらの変換だけ。",
+          "color_and_light_response": "CCMの青い面と白青の核。白飛びを回避する減光をしない。",
+          "model_refs": "src/visibility.mjs + shaders/contact.wgsl"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じ正規eventのclock-age。独立した射撃イベントや入射方向推定なし。",
+          "distribution_and_correlation": "not_applicable: 粒子集合ではない。連続場の不等曲率。",
+          "onset_peak_decay": "PH1入力と同tick。架空の機械的遅れを付けない。",
+          "state_and_sampling_refs": "PH1.StateDynamics / ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "可視位置だけ。world層はMRT、観測層はOBS2でsource依存順。",
+          "protected_cues": "固定接触核、単一E、対象無改変、視認/世代、背景。",
+          "failure_to_avoid": "OBSで主形を作る、世界とOBSを混在、10種の形に分岐、未検証画素を合格にする。"
+        }
+      },
+      {
+        "layer_id": "L4",
+        "role": "observation_support",
+        "domain": "observation",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "高輝度源に束縛された局所PSF。単一接触の実現/観測を具体化する。"
+        },
+        "PH_refs": [],
+        "OBS_refs": [
+          "OBS2"
+        ],
+        "function_and_visible_result": "放射mapの畳み込み。源/宛先/途中のmaskを参照し背景から発生させない。",
+        "spatial_structure": {
+          "anchor_and_transform": "PH1入力のscreen UVとsemantic mask",
+          "extent_orientation_depth": "screen上の局所PSFであり架空の厚み/接触を持たない。",
+          "macro": "高輝度源に束縛された局所PSF",
+          "meso": "放射mapの畳み込み。源/宛先/途中のmaskを参照し背景から発生させない。",
+          "micro": "原寸のAA/曲率解像だけ。微粒子・grain・noiseは未選択。",
+          "edge_and_occlusion": "現在権限と受光→膜→放射→PSFの順。世界の前後と処理順を区別。"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "高輝度源に束縛された局所PSF",
+          "emission_opacity_density": "coverage/放射強度/曲率・密度差を別変数で扱う。PSFはそれらの変換だけ。",
+          "color_and_light_response": "CCMの青い面と白青の核。白飛びを回避する減光をしない。",
+          "model_refs": "shaders/composite.wgsl"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "同じ正規eventのclock-age。独立した射撃イベントや入射方向推定なし。",
+          "distribution_and_correlation": "not_applicable: 粒子集合ではない。連続場の不等曲率。",
+          "onset_peak_decay": "PH1の現在放射だけを参照。独自の残像/ちらつきなし。",
+          "state_and_sampling_refs": "PH1.StateDynamics / ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "可視位置だけ。world層はMRT、観測層はOBS2でsource依存順。",
+          "protected_cues": "固定接触核、単一E、対象無改変、視認/世代、背景。",
+          "failure_to_avoid": "OBSで主形を作る、世界とOBSを混在、10種の形に分岐、未検証画素を合格にする。"
+        }
+      }
+    ],
+    "interlayer_links": [
+      {
+        "source_layer": "L1",
+        "target_layer": "L2",
+        "relation_type": "visual_relation",
+        "mechanism_and_consequence": "同じPH1の内外構造であり、別PHの架空の物理因果を作らない。",
+        "foundation_binding": "PH1.DeepStructure / StateDynamics"
+      },
+      {
+        "source_layer": "L1",
+        "target_layer": "L3",
+        "relation_type": "physical_influence",
+        "mechanism_and_consequence": "接触放射源の有限の光が既存の可視受光面へ届き、法線と拡散反射率に応じて返る。",
+        "foundation_binding": "PH1.CausalityLinks.physical_influence"
+      },
+      {
+        "source_layer": "L4",
+        "target_layer": "L1",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "PSFが源の放射mapを入力として読む。",
+        "foundation_binding": "OBS2.dependencies"
+      }
+    ],
+    "causal_path": {
+      "input": "正規headshot event/atMsとホストclock、固定接触境界",
+      "carrier_PH": "PH1",
+      "receiver": "PH2の既存可視面。不在なら有限域からの放射として閉じる。",
+      "ScaleRegime_ref": "PH1.ScaleRegime",
+      "StateDynamics_ref": "PH1.StateDynamics",
+      "ReactivePhaseChange_ref": "not_applicable: 反応/相変化は宣言されていない。"
+    },
+    "orchestration": {
+      "common_time_basis": "Eのage=非加速atMsからrate履歴を積分。B代表瞬間u=.24。",
+      "layer_phase_relations": "核先行、膜/襞遅延、受光/PSF即時。",
+      "environment_response": "既存面で法線/反射率/遮蔽差に応答。",
+      "visual_hierarchy": "高輝度核、有色膜、曲率/内部密度差、局所受光。",
+      "bullet_time": "not_applicable: 要求なし。速度変更はホスト時計の技術契約。"
+    },
+    "output_integration": {
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+      "LDM_ref": "LuminanceDynamicsModule",
+      "composite_order": "PH2受光→PH1膜over→PH1放射+OBS2→OBS1。OBS3音は同id/ageに並列。",
+      "color_alpha_contract": "linear rgba16float、膜はpremultiplied、放射は加算、sceneはsRGB符号のrgba8unorm。SDR飽和を逆補正しない。",
+      "scale_adaptation": "原寸投影に応じたAA。単一形と核の位置を保持、CSS縮小をH32検査に代用しない。"
+    },
+    "validation_plan": {
+      "layer_checks": "源0で受光/PSFが0、surfaceなしで受光0、膜単独でも形を持つ。",
+      "composite_checks": "宛先maskと既存面順序、intentional_departures内の飽和、域外無改変。",
+      "temporal_checks": "0/1端点0、同時点、560ms有限、reduced位置静止、一回音。",
+      "actual_results_ref": "GlobalAcceptanceTemplate.ValidationResults"
+    },
+    "Acceptance": {
+      "world_VFX_registered_as_PH": true,
+      "observation_only_effects_not_misregistered_as_VFX_PH": true,
+      "layer_roles_scales_and_relations_explicit": true,
+      "layer_count_does_not_force_new_content_or_PH_partition": true,
+      "material_motion_environment_and_composite_consistent": true,
+      "shared_intensity_and_sampling_contracts_preserved": true,
+      "structural_requirements_not_reported_as_render_evidence": true
+    }
+  },
+  "PostEffects": {
+    "trigger": {
+      "ordinary_posteffects": false,
+      "beta_targets": []
+    },
+    "selection": {
+      "mode": "exact_selected_operations",
+      "scope_resolution": "attribute_resolved_target_and_scope",
+      "exact_selected_operations": [
+        "OBS2: source-bound local PSF"
+      ]
+    },
+    "autonomous_activation": {
+      "physical_causality_input_required": false,
+      "registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract"
+    },
+    "SPCA": {
+      "applies_if": "world_internal_PH_local_peak_selected",
+      "evidence_types_standard_two_of": [
+        "gradient",
+        "decay",
+        "occlusion"
+      ],
+      "explicit_intent_adjustment": "PH1.VisualProjection / 飽和許可は強度上限撤廃の根拠。",
+      "PostEffects_alone_does_not_require_new_PH": true
+    },
+    "global_posteffects": {
+      "applies": false,
+      "exact_OBS_operations": [],
+      "OBS_refs": []
+    },
+    "local_posteffects": {
+      "applies": true,
+      "targets": [
+        "PH1"
+      ],
+      "exact_OBS_operations": [
+        "source-bound local PSF"
+      ],
+      "OBS_refs": [
+        "OBS2"
+      ]
+    },
+    "operation_contract": {
+      "required_fields": [
+        "input_references",
+        "target_mask",
+        "stage",
+        "composite_method",
+        "intensity",
+        "protected_regions",
+        "sampling_consequence"
+      ],
+      "sampling_consequence": "128²放射mapとnativeH32/H64、独立の時間変動なし。"
+    },
+    "Acceptance": {
+      "exact_selected_operation_does_not_infer_layers": true,
+      "global_local_scope_unambiguous": true,
+      "legacy_five_domain_reference_absent": true
+    }
+  },
+  "LuminanceDynamicsModule": {
+    "trigger": {
+      "explicit_VFX": true,
+      "explicit_PostEffects": false,
+      "inferred_requires_luminance_dynamics": false
+    },
+    "omitted_if_not_enabled": true,
+    "target_metrics": {
+      "target_size": "radius150GU、原寸32/64pxの観測域",
+      "camera_distance": "orthographicのためFOV距離ではなく投影軸を使う。",
+      "screen_occupancy": "場の半径/形態に依存する局所域。実GPU画素率はnot_run。",
+      "readability_priority": "high"
+    },
+    "Image": {
+      "spatial_envelope": "固定核の局所放射と膜内側の密度差。周囲に新しい発光物を作らない。",
+      "local_contrast_budget": "共通IntensityBudgetの意図したSDR飽和を保持し、白飛び回避上限を設けない。"
+    },
+    "Video": {
+      "temporal_envelope": "not_applicable: Video生成ではない。E runtimeは下記契約。",
+      "micro_variation": "none: 不要な点滅を追加しない。",
+      "anti_flicker": "意図しない時間ジャンプを避け、核の一回の急峻な放射を保持。"
+    },
+    "runtime_E_envelope": {
+      "source": "src/envelope.mjs: sampleContact",
+      "durationMs": 560,
+      "source_peak_parameter": 32,
+      "body_fade_start_u": 0.64,
+      "reduced_motion": "spread=.82/fold=.58/pressure=.75で静止。光量は通常と同じ。",
+      "semantics": "32は放射の設計入力値であり合成全体のclip上限ではない。自然な有限寿命は減光制限とは区別する。"
+    },
+    "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+    "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+    "sampling_consequence": "rate履歴を共通ageへ積分。host frameが疎な場合の観察限界は別に記録。露光積分なし。",
+    "AlphaBackground": {
+      "enabled": false,
+      "required_background_if_enabled": "#000000"
+    },
+    "alpha_ref": "LuminanceDynamicsModule.AlphaBackground",
+    "ActivationExclusions": {
+      "non_emissive_particles_only": "no_auto_activation",
+      "grain_only": "no_auto_activation"
+    },
+    "Acceptance": {
+      "mode_specific_envelope": true,
+      "numeric_defaults_subordinate_to_target_metrics": true,
+      "no_unwanted_global_luma_lift": true,
+      "screen_processing_stays_in_observation_layer": true,
+      "source_mask_stage_composite_and_sampling_defined": true,
+      "unselected_operations_not_inferred": true,
+      "physical_mechanism_not_asserted_without_source": true
+    }
+  },
+  "ECodeImplementation": {
+    "trigger": "executable_runtime_E_code_explicit",
+    "output_kind": "executable_effect_source_not_image_generation",
+    "source_revision": {
+      "commit": "8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1",
+      "base_blob": "4e10a53310be5b9d0aa3a6c881cf4f39d6590bd4",
+      "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834",
+      "provenance_ref": "foundation/SOURCE_LOCK.json"
+    },
+    "target_runtime": "WebGPU + Web Audio / browser ES modules",
+    "source_and_time_contract": "event_id/targetId/playerId/固定x,y/radius150/atMsを検証し、同じ非加速時計のrate履歴からageを積分。次のidへ因果を偽結合しない。",
+    "world_PH_refs": [
+      "PH1",
+      "PH2"
+    ],
+    "observation_OBS_refs": [
+      "OBS1",
+      "OBS2",
+      "OBS3"
+    ],
+    "implementation_artifacts": [
+      "src/system.mjs",
+      "src/clock.mjs",
+      "src/contract.mjs",
+      "src/envelope.mjs",
+      "src/form.mjs",
+      "src/renderer.mjs",
+      "src/visibility.mjs",
+      "src/sfx.mjs",
+      "shaders/contact.wgsl",
+      "shaders/composite.wgsl"
+    ],
+    "applicable_rule_evidence": "foundation/rule-evidence.json",
+    "validation": {
+      "syntax_and_shader": "not_run",
+      "actual_GPU_pixels_and_timing": "not_run",
+      "game_event_and_SFX": "not_run",
+      "separated_JS_syntax": "実行結果はevidence/structural-check.json。JS構文だけからshaderをpassにしない。"
+    },
+    "Acceptance": {
+      "baseline_and_selected_extensions_preserved": true,
+      "image_generation_not_implied": true,
+      "runtime_code_and_visual_acceptance_distinguished": true
+    }
+  },
+  "GlobalAcceptanceTemplate": {
+    "Requirements": {
+      "PhenomenonRegistry_required": true,
+      "full_PH_structure_required": true,
+      "all_8_domains_required": true,
+      "ObservationRegistry_required_when_OBS_exist": true,
+      "WindCapsule_required": true,
+      "Gravity_required": true,
+      "world_camera_screen_transform_required": true
+    },
+    "ValidationResults": {
+      "StructuralInspection": {
+        "status": "pass",
+        "checks": {
+          "required_blocks": "evidence/structural-check.json",
+          "rule_contracts": "正本参照はrule-evidence.json、対応markerの存在のみ検査。",
+          "PH_OBS_separation": "registry/依存方向を検査。",
+          "OctaDomain": "全PHの8領域と非適用理由。",
+          "scientific_fields": "構造存在だけを検査。実物理の実証ではない。",
+          "coordinate_gravity_wind": "保持ブロックと投影契約を確認。",
+          "template_consolidation": "独立二重テンプレートなし。"
+        }
+      },
+      "SemanticReconciliation": {
+        "status": "warning",
+        "checks": {
+          "DeclaredIntent_preserved": "10種識別撤回・強放射/飽和許可・非致死・技術契約を設計と実装へ反映。",
+          "trigger_resolution": "VFX/LDM/ECode/選択PSFだけを起動。魔法/preset/人物/Videoを自動起動しない。",
+          "exception_resolution": "白飛び回避の旧条件は撤回、基底のintentional_departuresへ限定登録。",
+          "source_binding": "sourceはPH1、受光PH2、PSF OBS2、音OBS3を分離。",
+          "scope_and_dependencies": "非循環OBS、単一clock、現在mask、ホスト所有状態を変更しない。",
+          "scientific_consistency": "定性的な宣言場とLambert近似。実弾物理/温度/損傷や実画像品質は未実証。"
+        }
+      },
+      "RenderObservation": {
+        "status": "not_run",
+        "evidence_source": "none",
+        "checks": {
+          "visual_causality": "not_run",
+          "contour_preservation": "not_run",
+          "clipping_crushing": "not_run",
+          "chroma_detail": "not_run",
+          "contact_projection": "not_run",
+          "temporal_continuity": "not_run",
+          "cue_discrimination_and_sampling": "not_run"
+        }
+      }
+    },
+    "OutcomeEvaluation": {
+      "intent_alignment": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "rationale": "v5の実WebGPU画素を観察できていないため。"
+      },
+      "artistic_effect": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "evaluator_basis": "not_run",
+        "strengths": "not_run",
+        "limitations": "内部CPU近似を実GPU受入に使わない。"
+      }
+    },
+    "ComparativeEvaluation": {
+      "status": "not_run",
+      "question": "not_applicable: 10種の視覚識別条件は撤回。旧造形との比較を新案入力にしない。",
+      "changed_factor": "単一新規E",
+      "controlled_conditions": "Nodeの入力等価検査は技術確認であり芸術性比較ではない。",
+      "scene_set": "暗明H32/H64を将来の実機で観察する。",
+      "repetitions_and_order": "not_applicable",
+      "criteria": "固定接触起点、一回の作用、既存状態無改変、原寸可読性、音の一回性。",
+      "evidence": "none",
+      "result_and_limitations": "未観察の視覚/聴感を合格にしない。"
+    },
+    "FinalStatus": {
+      "specification_status": "Warning",
+      "render_status": "NotRun",
+      "failure_reasons": []
+    }
+  }
+}

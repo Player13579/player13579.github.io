@@ -5,14 +5,15 @@ import {runBrowserValidation} from './validation.mjs';
 import {submitViews} from './presenter.mjs';
 import {captureLifetimeEvidence,pixelMetrics,sha256} from './lifetime-validation.mjs';
 import {createStoredZip,downloadBytes,canvasPNG,toBase64} from './evidence-export.mjs';
-const $=id=>document.getElementById(id),motionQuery=matchMedia('(prefers-reduced-motion: reduce)');
+const $=id=>document.getElementById(id),motionQuery=matchMedia('(prefers-reduced-motion: reduce)'),params=new URLSearchParams(location.search);
+const verifyMode=params.has('verify'),embedMode=params.get('embed')==='1';
 const time=new PresentationTime(),clock=new RateClock({sourceNow:time.now}),host=new FixtureHost(clock);
 let audio=null,native=null,light=null,hero=null,smallDark=null,smallLight=null,lastPacket=null,validating=false,report=null,sceneKey='',maskKey='',cachedMask=null;
 let ready=false,fatal=null,inFlight=Promise.resolve(),lastUI=-Infinity,stressUntil=0,stressRestore=true;
 let pendingCaptures=[];
 const selected=()=>`${$('mode').value}:${$('weapon').value}`;
 const soundProxy={play(info){if(info.event.variant===selected())return audio?.play(info);},stop(id){audio?.stop(id);},setRate(r){audio?.setRate(r);},resetSession(){audio?.resetSession();}};
-const system=new HeadshotContactSystem({clock,verifyCanonical:host.verifyCanonical,getPermission:host.getPermission,sound:soundProxy,roomId:host.roomId,epoch:host.epoch,reducedMotion:motionQuery.matches});
+const system=new HeadshotContactSystem({clock,verifyCanonical:host.verifyCanonical,getPermission:host.getPermission,sound:verifyMode?null:soundProxy,roomId:host.roomId,epoch:host.epoch,reducedMotion:motionQuery.matches});
 const loop=new PreviewLoopController({time,clock,host,system,variants:DISPLAY_VARIANTS});
 $('reduced').checked=motionQuery.matches;
 function log(message){$('log').textContent=String(message)+'\n'+$('log').textContent.split('\n').slice(0,9).join('\n');}
@@ -27,13 +28,16 @@ for(const background of ['dark','light','dark32','light32']){
     const bar=document.createElement('span');bar.className='tile-bar';const fill=document.createElement('i');bar.append(fill);tile.append(label,status,bar);$(`labels-${background}`).append(tile);list.push({tile,status,fill,variant});
   }tiles.set(background,list);
 }
-for(const variant of VARIANTS){const row=document.createElement('div');row.className='audition';const text=document.createElement('span');text.textContent=variant;const player=document.createElement('audio');player.controls=true;player.preload='none';player.src=`./sfx/${variant.replace(':','-')}.wav`;player.volume=.35;row.append(text,player);$('auditions').append(row);}
+for(const variant of VARIANTS){const row=document.createElement('div');row.className='audition';const text=document.createElement('span');text.textContent=variant;const player=document.createElement('audio');player.controls=!verifyMode;player.preload='none';player.src=`./sfx/${variant.replace(':','-')}.wav`;player.volume=verifyMode?0:.35;player.muted=verifyMode;row.append(text,player);$('auditions').append(row);}
 $('once').onclick=()=>issue().catch(log);
 function updateLoopButton(){$('loop').textContent=`自動再発行 ${loop.running?'ON':'OFF'}`;$('loop').setAttribute('aria-pressed',String(loop.running));}
 $('loop').onclick=()=>{loop.setRunning(!loop.running);updateLoopButton();};
 $('restart').onclick=()=>{host.hidden=false;host.occluded=false;host.present=true;$('hidden').checked=false;$('occluded').checked=false;clock.setRate(1);$('rate').value='1';stressUntil=0;loop.restart();loop.setRunning(true);updateLoopButton();log('新しい正規fixture IDで10種を再開。旧IDは再使用しません。');};
-$('audio').onclick=async()=>{try{if(!audio){const C=window.AudioContext??window.webkitAudioContext;const context=new C();await context.resume();audio=new ContactAudio(context);audio.setVolume(Number($('volume').value));window.__fixtureAudioContext=context;}else await window.__fixtureAudioContext.resume();$('audio-status').textContent='音声 ON / 選択variantのみ / 新規idから';}catch(e){log(`音声: ${e.message}`);}};
-$('volume').oninput=()=>audio?.setVolume(Number($('volume').value));
+$('audio').onclick=()=>enableSoundFromGesture();
+if(verifyMode){$('audio').hidden=true;$('volume').disabled=true;$('audio-status').textContent='verify · audio muted';}
+$('volume').oninput=()=>{if(!verifyMode)audio?.setVolume(Number($('volume').value));};
+async function enableSoundFromGesture(){if(verifyMode)return false;try{if(!audio){const C=window.AudioContext??window.webkitAudioContext;if(!C)throw new Error('AudioContext unavailable');const context=new C();await context.resume();audio=new ContactAudio(context);audio.setVolume(Number($('volume').value));window.__fixtureAudioContext=context;}else await window.__fixtureAudioContext.resume();$('audio-status').textContent='音声 ON / 選択variantのみ / 新規idから';return true;}catch(e){$('audio-status').textContent=`音声を開始できません: ${e.message}`;log(`音声: ${e.message}`);return false;}}
+if(embedMode&&!verifyMode){const embedAudio=document.createElement('button');embedAudio.type='button';embedAudio.textContent='音声を有効化';embedAudio.setAttribute('aria-label','ヘッドショット効果音を有効化');embedAudio.style.cssText='position:fixed;z-index:10;top:8px;right:8px;padding:7px 10px;color:#eef2f8;background:#253144;border:1px solid #50627a;border-radius:4px;font:12px system-ui;cursor:pointer';embedAudio.addEventListener('click',async()=>{if(await enableSoundFromGesture())embedAudio.textContent='音声有効';});document.body.append(embedAudio);}
 $('rate').onchange=()=>{clock.setRate(Number($('rate').value));audio?.setRate(clock.rate);time.resetWall();};
 $('reduced').onchange=()=>system.setReducedMotion($('reduced').checked);
 motionQuery.addEventListener('change',e=>{$('reduced').checked=e.matches;system.setReducedMotion(e.matches);});
@@ -119,6 +123,7 @@ $('lifetimes').onclick=async()=>{try{const result=await lifetimeEvidence();repor
 $('validate').onclick=async()=>{try{report=await exclusive(()=>runBrowserValidation(native.device,native.diagnostics));$('validation-result').textContent=JSON.stringify(report,null,2);$('report').disabled=false;}catch(e){log(e.message);}};
 $('report').onclick=()=>{if(report)downloadBytes(new TextEncoder().encode(JSON.stringify(report,null,2)),'DVA-v4-local-validation.json','application/json');};
 document.addEventListener('visibilitychange',()=>{loop.setSuspended(document.hidden);if(document.hidden){for(const r of pendingCaptures.splice(0)){clearTimeout(r.timer);r.reject(new Error('document hidden'));}}});
+window.addEventListener('pagehide',()=>{audio?.dispose();void window.__fixtureAudioContext?.close();system.dispose();},{once:true});
 window.__headshotPreview={system,host,clock,time,loop,issue,batch,get ready(){return ready;},get error(){return fatal;},get renderer(){return native;},get lightRenderer(){return light;},get smallDarkRenderer(){return smallDark;},get smallLightRenderer(){return smallLight;},
   get snapshot(){return loop.snapshot();},captureLive:captureNextPresentedFrame,
   async captureLiveExport(){const r=await captureNextPresentedFrame();return {report:r.report,files:encodeFiles(r.files)};},

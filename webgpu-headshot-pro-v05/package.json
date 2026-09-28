@@ -1,0 +1,19 @@
+{
+  "name": "dva-headshot-contact-e-v5",
+  "version": "5.0.0",
+  "private": true,
+  "type": "module",
+  "description": "単一の共通接触現象 / independent WebGPU + one-shot SFX",
+  "exports": {".": "./src/index.mjs"},
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "build:sfx": "node scripts/build-sfx.mjs",
+    "evidence:cpu": "node scripts/cpu-evidence.mjs",
+    "test:browser": "python3 scripts/browser-check.py",
+    "verify:manifest": "node scripts/manifest.mjs --verify"
+  },
+  "engines": {"node": ">=20"}
+}

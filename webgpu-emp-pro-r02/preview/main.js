@@ -2,11 +2,13 @@ import {EMPEffects,ActorClock,CONTRACT} from '../src/emp-e.js';
 import {sampleStore} from '../src/sampler.js';
 import {SCENARIOS,MATRIX_BRANCHES,dispatch,actorsAt,expectedAudio} from './scenarios.js';
 import {actorOccluders} from './fixtures.js';
+import {unlockAudioFromGesture} from './audio-control.js';
 const $=s=>document.querySelector(s),clock=new ActorClock();
 // Codex gallery adaptation: tour only the five authored branches in embed mode.
 const params=new URLSearchParams(location.search),embedMode=params.get('embed')==='1',verifyMode=params.has('verify');
 const embedBranches=['charge','normal','resonance','cancellation','suppression'];
 document.body.classList.toggle('embed',embedMode);
+document.body.classList.toggle('audio-gesture-ready',embedMode&&!verifyMode);
 const state={scene:'all',playing:true,zoom:1,background:'dark',quality:'high',occlusion:'mixed',loop:true,tour:embedMode,markers:!embedMode,ranges:false,cursor:0,cycles:0,records:[],matrix:null,trace:null};
 let fx=null,last=performance.now(),error=null,inspectionThrottle=0;
 for(const[key,s]of Object.entries(SCENARIOS))$('#scenario').add(new Option(s.label,key));
@@ -56,7 +58,10 @@ function updateListener(){if(!fx)return;const offset=+$('#distance').value;let o
  fx.setListener({x:origin.x,y:origin.y+offset});$('#distance-readout').textContent=`${offset} px / ${$('#listener-anchor').value==='source'?'active source':'world origin'} offset`;
 }
 $('#volume').oninput=e=>{if(!verifyMode)fx?.setVolume(+e.target.value);};$('#distance').oninput=updateListener;$('#listener-anchor').onchange=updateListener;
-$('#audio').onclick=async()=>{if(!fx||verifyMode||embedMode)return;try{await fx.enableAudio();$('#audio').textContent='音声有効 / 再開始して聴取';rewind(0);play();}catch(e){$('#audio-counts').textContent=`Audio not_run: ${e.message}`;}};
+let audioUnlocking=false,previewAudioEnabled=false;
+async function enablePreviewAudio(){if(previewAudioEnabled||audioUnlocking||!fx||verifyMode)return;audioUnlocking=true;try{if(!await unlockAudioFromGesture(fx,verifyMode))return;previewAudioEnabled=true;$('#audio').textContent='音声有効 / 再開始して聴取';$('#vfx').title='音声有効 / 再開始して聴取';rewind(0);play();}catch(e){$('#audio-counts').textContent=`Audio not_run: ${e.message}`;if(embedMode)$('#vfx').title=`Audio not_run: ${e.message}`;}finally{audioUnlocking=false;}}
+$('#audio').onclick=async()=>{if(embedMode)return;await enablePreviewAudio();};
+if(embedMode&&!verifyMode){$('#vfx').tabIndex=0;$('#vfx').title='Click or press Enter/Space to enable sound and restart this branch tour';$('#vfx').addEventListener('pointerup',enablePreviewAudio);$('#vfx').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')enablePreviewAudio();});}
 $('#matrix').onclick=()=>{const conditions=[];for(const s of MATRIX_BRANCHES)for(const bg of['dark','light'])for(const q of['high','low'])for(const r of[1,2])for(const z of[1,2])for(const occlusion of['mixed','front','back'])conditions.push({scene:s,background:bg,quality:q,rate:r,zoom:z,occlusion});state.matrix={conditions,index:0};$('#matrix').disabled=true;$('#stop-matrix').disabled=false;matrixNext();};
 $('#stop-matrix').onclick=()=>{state.matrix=null;pause();$('#matrix').disabled=false;$('#stop-matrix').disabled=true;$('#matrix-status').textContent='途中中止。完了条件だけを記録。';};
 function report(){return{version:'r0.2',recordedAt:new Date().toISOString(),userAgent:navigator.userAgent,hardwareRenderAcceptance:'not_assigned',artisticQuality:'not_run',listening:{status:$('#review-listened').checked?'manual_record_entered':'not_run',notes:$('#review-notes').value},state:{...state,matrix:state.matrix?{index:state.matrix.index}:null},runtime:fx?.snapshot()??null,error};}

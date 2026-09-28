@@ -1,4 +1,4 @@
-import {HeadshotContactSystem,HeadshotRenderer,RateClock} from './src/index.mjs';
+import {HeadshotContactSystem,HeadshotRenderer,RateClock,ContactAudio} from './src/index.mjs';
 import {FixtureHost,DISPLAY_VARIANTS,fixtureScene} from './preview/fixture-host.mjs';
 import {PresentationTime,PreviewLoopController} from './preview/loop-controller.mjs';
 
@@ -6,8 +6,17 @@ const status=document.getElementById('status');
 const time=new PresentationTime();
 const clock=new RateClock({sourceNow:time.now});
 const host=new FixtureHost(clock);
-const system=new HeadshotContactSystem({clock,verifyCanonical:host.verifyCanonical,getPermission:host.getPermission,roomId:host.roomId,epoch:host.epoch});
+const verifyMode=new URLSearchParams(location.search).has('verify');
+let contactAudio=null,audioContext=null;
+const soundProxy={play:request=>contactAudio?.play(request),stop:id=>contactAudio?.stop(id),setRate:rate=>contactAudio?.setRate(rate),resetSession:()=>contactAudio?.resetSession()};
+const system=new HeadshotContactSystem({clock,verifyCanonical:host.verifyCanonical,getPermission:host.getPermission,sound:verifyMode?null:soundProxy,roomId:host.roomId,epoch:host.epoch});
+const soundButton=document.createElement('button');
+soundButton.type='button';soundButton.textContent='音声を有効化';soundButton.setAttribute('aria-label','ヘッドショット効果音を有効化');
+soundButton.style.cssText='position:fixed;z-index:5;top:10px;right:10px;padding:7px 10px;color:#eef1f5;background:#253144;border:1px solid #50627a;border-radius:4px;font:12px system-ui;cursor:pointer';
+soundButton.hidden=verifyMode;document.body.append(soundButton);
+soundButton.addEventListener('click',async()=>{if(verifyMode)return;try{if(!contactAudio){const Audio=window.AudioContext??window.webkitAudioContext;if(!Audio)throw new Error('AudioContext unavailable');audioContext=new Audio();await audioContext.resume();contactAudio=new ContactAudio(audioContext,{volume:.72});}else await audioContext.resume();soundButton.textContent='音声有効';}catch(error){soundButton.textContent=`音声不可: ${error.message}`;}});
 const loop=new PreviewLoopController({time,clock,host,system,variants:DISPLAY_VARIANTS});
+window.addEventListener('pagehide',()=>{system.dispose();contactAudio?.dispose();void audioContext?.close();},{once:true});
 const views=[];
 let ready=false,error=null,stopped=false,inFlight=false;
 
@@ -69,4 +78,4 @@ document.addEventListener('visibilitychange',()=>{
   loop.setSuspended(document.hidden);
   if(!document.hidden&&!stopped)requestAnimationFrame(tick);
 });
-window.__headshotGallery={get ready(){return ready},get error(){return error},get snapshot(){return loop.snapshot()},get adapter(){return views[0]?.renderer.diagnostics.adapterInfo??null},get diagnostics(){return views.map(view=>({id:view.id,size:view.size,shaderMessages:view.renderer.diagnostics.shaderMessages,uncapturedErrors:view.renderer.diagnostics.uncapturedErrors,deviceLost:view.renderer.diagnostics.deviceLost}))}};
+window.__headshotGallery={get ready(){return ready},get error(){return error},get snapshot(){return loop.snapshot()},get adapter(){return views[0]?.renderer.diagnostics.adapterInfo??null},get diagnostics(){return views.map(view=>({id:view.id,size:view.size,shaderMessages:view.renderer.diagnostics.shaderMessages,uncapturedErrors:view.renderer.diagnostics.uncapturedErrors,deviceLost:view.renderer.diagnostics.deviceLost}))},get audio(){return {unlocked:contactAudio!==null,state:audioContext?.state??'not_created',verifyMuted:verifyMode}}};

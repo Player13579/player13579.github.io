@@ -1,0 +1,724 @@
+TAP version 13
+# Subtest: 新規単一PCMは有限・端点0・非clip 16000Hz
+ok 1 - 新規単一PCMは有限・端点0・非clip 16000Hz
+  ---
+  duration_ms: 13.237389
+  type: 'test'
+  ...
+# Subtest: 新規単一PCMは有限・端点0・非clip 44100Hz
+ok 2 - 新規単一PCMは有限・端点0・非clip 44100Hz
+  ---
+  duration_ms: 15.020243
+  type: 'test'
+  ...
+# Subtest: 新規単一PCMは有限・端点0・非clip 48000Hz
+ok 3 - 新規単一PCMは有限・端点0・非clip 48000Hz
+  ---
+  duration_ms: 12.270032
+  type: 'test'
+  ...
+# Subtest: 新規単一PCMは有限・端点0・非clip 96000Hz
+ok 4 - 新規単一PCMは有限・端点0・非clip 96000Hz
+  ---
+  duration_ms: 11.800569
+  type: 'test'
+  ...
+# Subtest: WAVは実PCM 16-bit mono
+ok 5 - WAVは実PCM 16-bit mono
+  ---
+  duration_ms: 3.826664
+  type: 'test'
+  ...
+# Subtest: invalid PCM/sampleRateを拒否
+ok 6 - invalid PCM/sampleRateを拒否
+  ---
+  duration_ms: 0.277951
+  type: 'test'
+  ...
+# Subtest: 同IDのBufferSourceは一つ
+ok 7 - 同IDのBufferSourceは一つ
+  ---
+  duration_ms: 3.178201
+  type: 'test'
+  ...
+# Subtest: 遅い到着はoffset。新しい音を先頭から作り直さない
+ok 8 - 遅い到着はoffset。新しい音を先頭から作り直さない
+  ---
+  duration_ms: 2.759005
+  type: 'test'
+  ...
+# Subtest: unlock待ち再生キューなし
+ok 9 - unlock待ち再生キューなし
+  ---
+  duration_ms: 2.688358
+  type: 'test'
+  ...
+# Subtest: 無音状態で消費したIDも同sessionに予約
+ok 10 - 無音状態で消費したIDも同sessionに予約
+  ---
+  duration_ms: 0.357943
+  type: 'test'
+  ...
+# Subtest: pauseでDC出力を避け、復帰は同source
+ok 11 - pauseでDC出力を避け、復帰は同source
+  ---
+  duration_ms: 2.444228
+  type: 'test'
+  ...
+# Subtest: 非可視/部屋変更は音を即時消す
+ok 12 - 非可視/部屋変更は音を即時消す
+  ---
+  duration_ms: 2.628287
+  type: 'test'
+  ...
+# Subtest: 最大8voiceを超えたIDは後で再生しない
+ok 13 - 最大8voiceを超えたIDは後で再生しない
+  ---
+  duration_ms: 2.787508
+  type: 'test'
+  ...
+# Subtest: onendedは接続と参照を解放
+ok 14 - onendedは接続と参照を解放
+  ---
+  duration_ms: 2.328863
+  type: 'test'
+  ...
+# Subtest: 音rate非数・範囲外と時刻なしを拒否
+ok 15 - 音rate非数・範囲外と時刻なしを拒否
+  ---
+  duration_ms: 2.486762
+  type: 'test'
+  ...
+# Subtest: 余計なキル/損傷/共有因果hintを取り込まず固定snapshot化
+ok 16 - 余計なキル/損傷/共有因果hintを取り込まず固定snapshot化
+  ---
+  duration_ms: 1.452544
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: hip:handgun
+ok 17 - 入力だけ10variantを受理: hip:handgun
+  ---
+  duration_ms: 3.282829
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: aim:handgun
+ok 18 - 入力だけ10variantを受理: aim:handgun
+  ---
+  duration_ms: 0.184249
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: hip:smg
+ok 19 - 入力だけ10variantを受理: hip:smg
+  ---
+  duration_ms: 0.25719
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: aim:smg
+ok 20 - 入力だけ10variantを受理: aim:smg
+  ---
+  duration_ms: 0.143518
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: hip:assault
+ok 21 - 入力だけ10variantを受理: hip:assault
+  ---
+  duration_ms: 0.274807
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: aim:assault
+ok 22 - 入力だけ10variantを受理: aim:assault
+  ---
+  duration_ms: 0.139512
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: hip:sniper
+ok 23 - 入力だけ10variantを受理: hip:sniper
+  ---
+  duration_ms: 0.155937
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: aim:sniper
+ok 24 - 入力だけ10variantを受理: aim:sniper
+  ---
+  duration_ms: 0.289369
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: hip:taser
+ok 25 - 入力だけ10variantを受理: hip:taser
+  ---
+  duration_ms: 0.500419
+  type: 'test'
+  ...
+# Subtest: 入力だけ10variantを受理: aim:taser
+ok 26 - 入力だけ10variantを受理: aim:taser
+  ---
+  duration_ms: 0.216899
+  type: 'test'
+  ...
+# Subtest: 不正type=action-shootを拒否
+ok 27 - 不正type=action-shootを拒否
+  ---
+  duration_ms: 0.212512
+  type: 'test'
+  ...
+# Subtest: 不正type=action-hitを拒否
+ok 28 - 不正type=action-hitを拒否
+  ---
+  duration_ms: 0.059711
+  type: 'test'
+  ...
+# Subtest: 不正radius=149を拒否
+ok 29 - 不正radius=149を拒否
+  ---
+  duration_ms: 0.050336
+  type: 'test'
+  ...
+# Subtest: 不正id=を拒否
+ok 30 - 不正id=を拒否
+  ---
+  duration_ms: 0.69256
+  type: 'test'
+  ...
+# Subtest: 不正id=bad\\nを拒否
+ok 31 - 不正id=bad\\nを拒否
+  ---
+  duration_ms: 0.048082
+  type: 'test'
+  ...
+# Subtest: 不正playerId=nullを拒否
+ok 32 - 不正playerId=nullを拒否
+  ---
+  duration_ms: 0.069746
+  type: 'test'
+  ...
+# Subtest: 不正targetId=を拒否
+ok 33 - 不正targetId=を拒否
+  ---
+  duration_ms: 0.042734
+  type: 'test'
+  ...
+# Subtest: 不正x=NaNを拒否
+ok 34 - 不正x=NaNを拒否
+  ---
+  duration_ms: 0.057227
+  type: 'test'
+  ...
+# Subtest: 不正y=Infinityを拒否
+ok 35 - 不正y=Infinityを拒否
+  ---
+  duration_ms: 0.098419
+  type: 'test'
+  ...
+# Subtest: 不正atMs=undefinedを拒否
+ok 36 - 不正atMs=undefinedを拒否
+  ---
+  duration_ms: 0.050116
+  type: 'test'
+  ...
+# Subtest: 不正variant=aim:rocketを拒否
+ok 37 - 不正variant=aim:rocketを拒否
+  ---
+  duration_ms: 0.041222
+  type: 'test'
+  ...
+# Subtest: 不正variant=handgunを拒否
+ok 38 - 不正variant=handgunを拒否
+  ---
+  duration_ms: 0.035113
+  type: 'test'
+  ...
+# Subtest: 不正x=10000000000を拒否
+ok 39 - 不正x=10000000000を拒否
+  ---
+  duration_ms: 0.034482
+  type: 'test'
+  ...
+# Subtest: trusted:trueだけでは正規配送にならない
+ok 40 - trusted:trueだけでは正規配送にならない
+  ---
+  duration_ms: 0.163108
+  type: 'test'
+  ...
+# Subtest: 権威callback失敗を拒否
+ok 41 - 権威callback失敗を拒否
+  ---
+  duration_ms: 0.149527
+  type: 'test'
+  ...
+# Subtest: 重複はVFX/SFXとも同ID一回
+ok 42 - 重複はVFX/SFXとも同ID一回
+  ---
+  duration_ms: 0.204941
+  type: 'test'
+  ...
+# Subtest: 同じIDでpayload変更を拒否
+ok 43 - 同じIDでpayload変更を拒否
+  ---
+  duration_ms: 0.179392
+  type: 'test'
+  ...
+# Subtest: 不可視の正規IDも消費、可視復帰で再送しない
+ok 44 - 不可視の正規IDも消費、可視復帰で再送しない
+  ---
+  duration_ms: 0.142997
+  type: 'test'
+  ...
+# Subtest: 不可視化は既存の絵と音を終了、旧IDを再開しない
+ok 45 - 不可視化は既存の絵と音を終了、旧IDを再開しない
+  ---
+  duration_ms: 0.247826
+  type: 'test'
+  ...
+# Subtest: targetIdの別世代へ接触を移さない
+ok 46 - targetIdの別世代へ接触を移さない
+  ---
+  duration_ms: 0.126362
+  type: 'test'
+  ...
+# Subtest: 対象消失を終了し、射手/対象の生死hintだけでは挙動を書換えない
+ok 47 - 対象消失を終了し、射手/対象の生死hintだけでは挙動を書換えない
+  ---
+  duration_ms: 0.107012
+  type: 'test'
+  ...
+# Subtest: 固定x/y・radiusを経過後も保持
+ok 48 - 固定x/y・radiusを経過後も保持
+  ---
+  duration_ms: 0.15156
+  type: 'test'
+  ...
+# Subtest: 部屋変更は旧音/描画/receiptを拒否
+ok 49 - 部屋変更は旧音/描画/receiptを拒否
+  ---
+  duration_ms: 0.186262
+  type: 'test'
+  ...
+# Subtest: 部屋epochは再入室でも単調増加
+ok 50 - 部屋epochは再入室でも単調増加
+  ---
+  duration_ms: 0.102185
+  type: 'test'
+  ...
+# Subtest: 遅い権威promiseは部屋変更後に採用しない
+ok 51 - 遅い権威promiseは部屋変更後に採用しない
+  ---
+  duration_ms: 0.159742
+  type: 'test'
+  ...
+# Subtest: 同じpacketの並行verifyを一つに制限
+ok 52 - 同じpacketの並行verifyを一つに制限
+  ---
+  duration_ms: 0.119601
+  type: 'test'
+  ...
+# Subtest: 期限切れ到着を冒頭へ巻戻さない
+ok 53 - 期限切れ到着を冒頭へ巻戻さない
+  ---
+  duration_ms: 0.081544
+  type: 'test'
+  ...
+# Subtest: 未来eventは消費して拒否
+ok 54 - 未来eventは消費して拒否
+  ---
+  duration_ms: 0.086781
+  type: 'test'
+  ...
+# Subtest: 許容8ms以内の未来でも発生前に発音/描画しない
+ok 55 - 許容8ms以内の未来でも発生前に発音/描画しない
+  ---
+  duration_ms: 0.13177
+  type: 'test'
+  ...
+# Subtest: 到着遅延の時相を保持、遅いSFXは鳴らさない
+ok 56 - 到着遅延の時相を保持、遅いSFXは鳴らさない
+  ---
+  duration_ms: 0.110688
+  type: 'test'
+  ...
+# Subtest: 加速/減速は同じ履歴を積分
+ok 57 - 加速/減速は同じ履歴を積分
+  ---
+  duration_ms: 0.221617
+  type: 'test'
+  ...
+# Subtest: 速度4倍で寿命を終えた到着は再生しない
+ok 58 - 速度4倍で寿命を終えた到着は再生しない
+  ---
+  duration_ms: 0.139893
+  type: 'test'
+  ...
+# Subtest: pauseでも絶対寿命上限を超えない
+ok 59 - pauseでも絶対寿命上限を超えない
+  ---
+  duration_ms: 0.109637
+  type: 'test'
+  ...
+# Subtest: reducedの切替で同じIDを作り直さない
+ok 60 - reducedの切替で同じIDを作り直さない
+  ---
+  duration_ms: 0.139021
+  type: 'test'
+  ...
+# Subtest: 取消し後の同じIDは再送不可
+ok 61 - 取消し後の同じIDは再送不可
+  ---
+  duration_ms: 0.135806
+  type: 'test'
+  ...
+# Subtest: 容量超過した正規IDも後で爆発再生しない
+ok 62 - 容量超過した正規IDも後で爆発再生しない
+  ---
+  duration_ms: 0.298904
+  type: 'test'
+  ...
+# Subtest: clock巻戻りをfail closed
+ok 63 - clock巻戻りをfail closed
+  ---
+  duration_ms: 0.235807
+  type: 'test'
+  ...
+# Subtest: 履歴より前の発生rateを創作しない
+ok 64 - 履歴より前の発生rateを創作しない
+  ---
+  duration_ms: 0.150358
+  type: 'test'
+  ...
+# Subtest: 同一時刻の発射とは照合しない。別IDは別接触
+ok 65 - 同一時刻の発射とは照合しない。別IDは別接触
+  ---
+  duration_ms: 0.184711
+  type: 'test'
+  ...
+# Subtest: diagnosticsは隠れたid/target/座標を含まない
+ok 66 - diagnosticsは隠れたid/target/座標を含まない
+  ---
+  duration_ms: 0.256318
+  type: 'test'
+  ...
+# Subtest: 音声例外は再試行しない
+ok 67 - 音声例外は再試行しない
+  ---
+  duration_ms: 0.299384
+  type: 'test'
+  ...
+# Subtest: dispose後の遅い結果/描画/受理は無作用
+ok 68 - dispose後の遅い結果/描画/受理は無作用
+  ---
+  duration_ms: 0.199884
+  type: 'test'
+  ...
+# Subtest: RateClockは不正初期値・速度・履歴を拒否
+ok 69 - RateClockは不正初期値・速度・履歴を拒否
+  ---
+  duration_ms: 0.225172
+  type: 'test'
+  ...
+# Subtest: 全入力のGPU状態が完全同一 u=0.03
+ok 70 - 全入力のGPU状態が完全同一 u=0.03
+  ---
+  duration_ms: 4.742364
+  type: 'test'
+  ...
+# Subtest: 全入力のGPU状態が完全同一 u=0.075
+ok 71 - 全入力のGPU状態が完全同一 u=0.075
+  ---
+  duration_ms: 0.47433
+  type: 'test'
+  ...
+# Subtest: 全入力のGPU状態が完全同一 u=0.2
+ok 72 - 全入力のGPU状態が完全同一 u=0.2
+  ---
+  duration_ms: 0.522432
+  type: 'test'
+  ...
+# Subtest: 全入力のGPU状態が完全同一 u=0.5
+ok 73 - 全入力のGPU状態が完全同一 u=0.5
+  ---
+  duration_ms: 0.304912
+  type: 'test'
+  ...
+# Subtest: 全入力のGPU状態が完全同一 u=0.7
+ok 74 - 全入力のGPU状態が完全同一 u=0.7
+  ---
+  duration_ms: 0.789257
+  type: 'test'
+  ...
+# Subtest: 全入力のGPU状態が完全同一 u=0.9
+ok 75 - 全入力のGPU状態が完全同一 u=0.9
+  ---
+  duration_ms: 0.271452
+  type: 'test'
+  ...
+# Subtest: 全寿命の有限状態・終端・固定源 normal
+ok 76 - 全寿命の有限状態・終端・固定源 normal
+  ---
+  duration_ms: 3.874056
+  type: 'test'
+  ...
+# Subtest: 全寿命の有限状態・終端・固定源 reduced
+ok 77 - 全寿命の有限状態・終端・固定源 reduced
+  ---
+  duration_ms: 2.506001
+  type: 'test'
+  ...
+# Subtest: 白飛び回避のためsourceを1以内に正規化しない
+ok 78 - 白飛び回避のためsourceを1以内に正規化しない
+  ---
+  duration_ms: 0.280706
+  type: 'test'
+  ...
+# Subtest: reducedは動きを止めても発光を減光しない
+ok 79 - reducedは動きを止めても発光を減光しない
+  ---
+  duration_ms: 0.320917
+  type: 'test'
+  ...
+# Subtest: 核の放射が周辺膜の展開に先行する
+ok 80 - 核の放射が周辺膜の展開に先行する
+  ---
+  duration_ms: 0.44191
+  type: 'test'
+  ...
+# Subtest: 原寸の連続膜・中心の有限面積 H32 u=0.2
+ok 81 - 原寸の連続膜・中心の有限面積 H32 u=0.2
+  ---
+  duration_ms: 23.484913
+  type: 'test'
+  ...
+# Subtest: 原寸の連続膜・中心の有限面積 H32 u=0.5
+ok 82 - 原寸の連続膜・中心の有限面積 H32 u=0.5
+  ---
+  duration_ms: 10.747052
+  type: 'test'
+  ...
+# Subtest: 原寸の連続膜・中心の有限面積 H32 u=0.7
+ok 83 - 原寸の連続膜・中心の有限面積 H32 u=0.7
+  ---
+  duration_ms: 11.922495
+  type: 'test'
+  ...
+# Subtest: 原寸の連続膜・中心の有限面積 H64 u=0.2
+ok 84 - 原寸の連続膜・中心の有限面積 H64 u=0.2
+  ---
+  duration_ms: 13.446497
+  type: 'test'
+  ...
+# Subtest: 原寸の連続膜・中心の有限面積 H64 u=0.5
+ok 85 - 原寸の連続膜・中心の有限面積 H64 u=0.5
+  ---
+  duration_ms: 16.029094
+  type: 'test'
+  ...
+# Subtest: 原寸の連続膜・中心の有限面積 H64 u=0.7
+ok 86 - 原寸の連続膜・中心の有限面積 H64 u=0.7
+  ---
+  duration_ms: 19.459758
+  type: 'test'
+  ...
+# Subtest: reducedの幾何coverageは寿命中不変、包絡のみ変化
+ok 87 - reducedの幾何coverageは寿命中不変、包絡のみ変化
+  ---
+  duration_ms: 4.251008
+  type: 'test'
+  ...
+# Subtest: FORM bufferは一つの境界・固定値、乱数やweapon値なし
+ok 88 - FORM bufferは一つの境界・固定値、乱数やweapon値なし
+  ---
+  duration_ms: 0.268508
+  type: 'test'
+  ...
+# Subtest: 固定world接触位置からのみ投影
+ok 89 - 固定world接触位置からのみ投影
+  ---
+  duration_ms: 0.243199
+  type: 'test'
+  ...
+# Subtest: 投影の逆行列往復
+ok 90 - 投影の逆行列往復
+  ---
+  duration_ms: 0.11264
+  type: 'test'
+  ...
+# Subtest: 退化/無限projectionを拒否
+ok 91 - 退化/無限projectionを拒否
+  ---
+  duration_ms: 0.23104
+  type: 'test'
+  ...
+# Subtest: 新規形態/シェーダ/音にvariant分岐がない（静的検査）
+ok 92 - 新規形態/シェーダ/音にvariant分岐がない（静的検査）
+  ---
+  duration_ms: 14.506624
+  type: 'test'
+  ...
+# Subtest: 観測shaderは源に依存し、白飛び圧縮/全体gain capを持たない（静的）
+ok 93 - 観測shaderは源に依存し、白飛び圧縮/全体gain capを持たない（静的）
+  ---
+  duration_ms: 0.741966
+  type: 'test'
+  ...
+# Subtest: 成果物は単一音素材で旧10種類を持たない
+ok 94 - 成果物は単一音素材で旧10種類を持たない
+  ---
+  duration_ms: 1.752638
+  type: 'test'
+  ...
+# Subtest: Bの源と既存受光は2PH、表示/PSF/音をOBSへ分離
+ok 95 - Bの源と既存受光は2PH、表示/PSF/音をOBSへ分離
+  ---
+  duration_ms: 1.81262
+  type: 'test'
+  ...
+# Subtest: 出典参照は技術4ファイルに限定、旧造形/SFXパス無し
+ok 96 - 出典参照は技術4ファイルに限定、旧造形/SFXパス無し
+  ---
+  duration_ms: 0.321858
+  type: 'test'
+  ...
+# Subtest: 新規WAVは出典manifestの実バイトと一致
+ok 97 - 新規WAVは出典manifestの実バイトと一致
+  ---
+  duration_ms: 0.651878
+  type: 'test'
+  ...
+# Subtest: white clipping条件は現在の意図に対応、HDR合成capなし
+ok 98 - white clipping条件は現在の意図に対応、HDR合成capなし
+  ---
+  duration_ms: 2.10953
+  type: 'test'
+  ...
+# Subtest: 未観察を構造passで置換しない
+ok 99 - 未観察を構造passで置換しない
+  ---
+  duration_ms: 1.004023
+  type: 'test'
+  ...
+# Subtest: 受光はpresent=falseで0
+ok 100 - 受光はpresent=falseで0
+  ---
+  duration_ms: 0.796909
+  type: 'test'
+  ...
+# Subtest: 受光はvisible=falseで0
+ok 101 - 受光はvisible=falseで0
+  ---
+  duration_ms: 0.083656
+  type: 'test'
+  ...
+# Subtest: 受光はlightPathClear=falseで0
+ok 102 - 受光はlightPathClear=falseで0
+  ---
+  duration_ms: 0.09209
+  type: 'test'
+  ...
+# Subtest: 既存面無し/背面/法線欠落へ光を作らない
+ok 103 - 既存面無し/背面/法線欠落へ光を作らない
+  ---
+  duration_ms: 0.137589
+  type: 'test'
+  ...
+# Subtest: 法線と反射率の既存面応答を区別
+ok 104 - 法線と反射率の既存面応答を区別
+  ---
+  duration_ms: 0.137058
+  type: 'test'
+  ...
+# Subtest: マスク全層の可視と保護域は厳密なbooleanのみ
+ok 105 - マスク全層の可視と保護域は厳密なbooleanのみ
+  ---
+  duration_ms: 6.927618
+  type: 'test'
+  ...
+# Subtest: mask callback例外は不許可、欠落はthrow
+ok 106 - mask callback例外は不許可、欠落はthrow
+  ---
+  duration_ms: 40.675709
+  type: 'test'
+  ...
+# Subtest: H64/H32・暗明sceneは指定サイズの実RGBA
+ok 107 - H64/H32・暗明sceneは指定サイズの実RGBA
+  ---
+  duration_ms: 2.854009
+  type: 'test'
+  ...
+# Subtest: 初回Wall待ちで寿命を飛ばさない
+ok 108 - 初回Wall待ちで寿命を飛ばさない
+  ---
+  duration_ms: 0.319845
+  type: 'test'
+  ...
+# Subtest: 遅いframeを記録して最大16.667msに制限
+ok 109 - 遅いframeを記録して最大16.667msに制限
+  ---
+  duration_ms: 0.404934
+  type: 'test'
+  ...
+# Subtest: pause復帰で追い付きループを作らない
+ok 110 - pause復帰で追い付きループを作らない
+  ---
+  duration_ms: 0.149066
+  type: 'test'
+  ...
+# Subtest: 自動単一E scheduler 8ms step
+ok 111 - 自動単一E scheduler 8ms step
+  ---
+  duration_ms: 2.115339
+  type: 'test'
+  ...
+# Subtest: 自動単一E scheduler 16.667ms step
+ok 112 - 自動単一E scheduler 16.667ms step
+  ---
+  duration_ms: 1.090234
+  type: 'test'
+  ...
+# Subtest: 自動単一E scheduler 200ms step
+ok 113 - 自動単一E scheduler 200ms step
+  ---
+  duration_ms: 0.749818
+  type: 'test'
+  ...
+# Subtest: 一つのframeを4観測へ投影しても同一id/音
+ok 114 - 一つのframeを4観測へ投影しても同一id/音
+  ---
+  duration_ms: 0.371203
+  type: 'test'
+  ...
+# Subtest: HTMLは単一E原寸4面と自動ループを備える（静的）
+ok 115 - HTMLは単一E原寸4面と自動ループを備える（静的）
+  ---
+  duration_ms: 9.014443
+  type: 'test'
+  ...
+# Subtest: 全寿命検査は0/1を含む61時点
+ok 116 - 全寿命検査は0/1を含む61時点
+  ---
+  duration_ms: 0.155485
+  type: 'test'
+  ...
+# Subtest: idle画素は接触成功としない。白飛び数は不合格条件でない
+ok 117 - idle画素は接触成功としない。白飛び数は不合格条件でない
+  ---
+  duration_ms: 0.644838
+  type: 'test'
+  ...
+# Subtest: ZIPは標準CRCと実バイトを持つ
+ok 118 - ZIPは標準CRCと実バイトを持つ
+  ---
+  duration_ms: 0.318003
+  type: 'test'
+  ...
+# Subtest: ZIPの危険なpath/重複を拒否
+ok 119 - ZIPの危険なpath/重複を拒否
+  ---
+  duration_ms: 0.126191
+  type: 'test'
+  ...
+1..119
+# tests 119
+# suites 0
+# pass 119
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 265.831505

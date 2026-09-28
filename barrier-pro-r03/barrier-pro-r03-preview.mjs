@@ -1,17 +1,26 @@
 import {createBarrierRenderer} from './barrier-pro-renderer.mjs';
-import {DURATIONS_MS,BRANCHES} from './barrier-pro-sampler.mjs';
+import {DURATIONS_MS,BRANCHES,playSFX} from './barrier-pro-sampler.mjs';
 
 const canvas=document.getElementById('view');
 const query=new URLSearchParams(location.search);
+const audioButton=document.getElementById('enable-audio');
 const branches=['create','absorb','fracture','bust'];
 const totalMs=branches.reduce((sum,branch)=>sum+DURATIONS_MS[branch],0);
 const state={version:'barrier-pro-r0.3',ready:false,verify:query.has('verify'),audioEnabled:false,qualityApproval:false,qualityStatus:'not_accepted',branch:null,ageMs:0,visitedBranches:[],drawCount:0,errors:[],metadata:null,settings:null};
 window.barrierProR03Preview=state;
-let renderer=null,cycleOrigin=0,raf=0,pinnedFrame=null;
+let renderer=null,cycleOrigin=0,raf=0,pinnedFrame=null,audio=null,voice=null,lastAudioBranch=null;
+audioButton.hidden=state.verify;
+audioButton.addEventListener('click',async()=>{
+ if(state.verify)return;
+ audioButton.disabled=true;
+ try{audio??=new AudioContext();await audio.resume();state.audioEnabled=audio.state==='running';audioButton.textContent=state.audioEnabled?'音を有効化しました':'音を有効化できません';if(!state.audioEnabled)audioButton.disabled=false;}
+ catch(error){state.errors.push(String(error?.stack??error));audioButton.disabled=false;}
+});
 function options(branch,ageMs){return {branch,ageMs,hPx:64,background:0,coreEnabled:true,bandMask:31,diagnostic:0,
  authoritativeActive:branch==='create'||branch==='absorb'};}
 function draw(branch,ageMs){
   state.branch=branch;state.ageMs=ageMs;
+  if(!state.verify&&state.audioEnabled&&audio?.state==='running'&&branch!==lastAudioBranch){voice?.cancel();voice=playSFX(audio,branch);lastAudioBranch=branch;}
   if(!state.visitedBranches.includes(branch))state.visitedBranches.push(branch);
   state.settings=renderer.draw(options(branch,ageMs));
   state.drawCount++;

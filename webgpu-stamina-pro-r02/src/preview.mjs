@@ -3,6 +3,8 @@ import {GainStaminaSystem} from './events.mjs';
 import {createGPU,StaminaRenderer} from './renderer.mjs';
 import {StaminaAudio} from './audio.mjs';
 const $=id=>document.getElementById(id),audio=new StaminaAudio();
+const embedMode=new URLSearchParams(location.search).get('embed')==='1';
+const verifyMode=new URLSearchParams(location.search).has('verify');
 const model={gpu:null,renderers:new Map(),tracks:[],loop:0,wall:0,paused:false,scrubbing:false,manualP:0,extra:0,last:performance.now(),history:[],gallery:[],gpuError:null};
 const phases={intake_onset:'入域の起こり',intake:'外から身体へ',deposit:'到達・充填',settled:'蓄勢・静かな保持',release:'消灯',ended:'終端',pending:'開始前'};
 let resolveReady;const ready=new Promise(r=>resolveReady=r);
@@ -94,7 +96,16 @@ for(const b of document.querySelectorAll('[data-stop]'))b.onclick=()=>{
 $('restore').onclick=()=>{for(const t of model.tracks)for(const a of t.actors){a.alive=true;a.present=true;a.visible=true;}log('actorを可視・生存に戻した。終了したeventは復活しない。');};
 $('epoch').onclick=()=>{for(const t of model.tracks){t.system.resetEpoch();t.actors[0].timeMs=0;}audio.resetEpoch();beginCycle();log('明示操作でscene epochをリセット。旧eventを再送しない新しいscene用。');};
 $('scrub').oninput=()=>{model.scrubbing=true;model.manualP=Number($('scrub').value)/1000;$('scrubval').textContent=`p = ${model.manualP.toFixed(3)}`;audio.cancel();};
-$('audio').onclick=async()=>{try{if(audio.enabled){await audio.mute();$('audio').textContent='音を有効化';}else{await audio.enable();$('audio').textContent='音を停止';beginCycle();log('AudioWorkletを有効化。新しいgainから試聴。表示パネル数ではなくevent数で発音。');}}catch(e){audio.error=String(e);log(`音声を起動できません: ${e.message}`);}};
+async function togglePreviewAudio(){
+ if(verifyMode)return;
+ try{
+  if(audio.enabled){await audio.mute();$('audio').textContent='音を有効化';}
+  else{await audio.enable();$('audio').textContent='音を停止';beginCycle();log('AudioWorkletを有効化。新しいgainから試聴。表示パネル数ではなくevent数で発音。');}
+  if(embedMode)$('normal-dark').title=audio.enabled?'クリックで音声を停止':'クリックで音声を有効化（次の新しい回復Eから）';
+ }catch(e){audio.error=String(e);log(`音声を起動できません: ${e.message}`);}
+}
+$('audio').onclick=togglePreviewAudio;
+if(embedMode){const canvas=$('normal-dark');canvas.title='クリックで音声を有効化（次の新しい回復Eから）';canvas.addEventListener('click',togglePreviewAudio);}
 $('audioTrack').onchange=()=>{audio.cancel();beginCycle();log('試聴時相を変更し、新しいgainを発行。旧voiceを再起動しない。');};
 function runtimeReport(){return {package:'stamina-e-reserve',version:C.version,qualityAdopted:false,productionConnectionApproved:false,
  environment:{userAgent:navigator.userAgent,devicePixelRatio:devicePixelRatio,secureContext:isSecureContext},gpu:model.gpu?.metadata??null,

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barrier Pro r0.7 — gallery replay</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07111b;color:#d8eef6;font:13px/1.4 system-ui,sans-serif}
+#top{position:absolute;inset:0 0 auto;height:36px;z-index:2;display:flex;align-items:center;gap:8px;padding:0 10px;background:#0a1721;border-bottom:1px solid rgba(127,220,255,.16);white-space:nowrap;overflow:hidden}
+#top button{border:1px solid rgba(127,220,255,.45);border-radius:5px;background:#102635;color:#d8eef6;padding:4px 10px;font:inherit;cursor:pointer}
+#status{color:#afc8d2;overflow:hidden;text-overflow:ellipsis}main{position:absolute;inset:36px 0 0;width:100%;height:calc(100% - 36px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:6px;padding:6px}
+section{min-width:0;min-height:0;display:grid;grid-template-rows:20px minmax(0,1fr);border:1px solid rgba(127,220,255,.2);border-radius:8px;background:#05101a;overflow:hidden}
+section.light{background:#e9eef0;color:#27313a}h2{margin:0;padding:2px 8px;font-size:12px;font-weight:500;white-space:nowrap}
+.surface{min-height:0;display:grid;place-items:center;overflow:hidden}canvas{display:block;width:177px;height:114px;max-width:100%;max-height:100%}
+#error{position:fixed;right:8px;bottom:8px;max-width:900px;color:#ffb9b9;background:#2c1720;padding:10px;white-space:pre-wrap;z-index:3}
+#error:empty{display:none}
+</style></head><body>
+<div id="top"><button id="enable-audio" type="button" hidden>Enable SFX</button><span id="status">Initializing WebGPU…</span></div>
+<main>
+<section><h2>Create / H64 / dark</h2><div class="surface"><canvas id="create-dark" aria-label="Barrier create event, H64 dark background"></canvas></div></section>
+<section class="light"><h2>Create / H64 / light</h2><div class="surface"><canvas id="create-light" aria-label="Barrier create event, H64 light background"></canvas></div></section>
+<section><h2>Absorb / H64 / dark</h2><div class="surface"><canvas id="absorb-dark" aria-label="Barrier absorb event, H64 dark background"></canvas></div></section>
+<section class="light"><h2>Absorb / H64 / light</h2><div class="surface"><canvas id="absorb-light" aria-label="Barrier absorb event, H64 light background"></canvas></div></section>
+<section><h2>Fracture / H64 / dark</h2><div class="surface"><canvas id="fracture-dark" aria-label="Barrier fracture event, H64 dark background"></canvas></div></section>
+<section class="light"><h2>Fracture / H64 / light</h2><div class="surface"><canvas id="fracture-light" aria-label="Barrier fracture event, H64 light background"></canvas></div></section>
+<section><h2>Bust / H64 / dark</h2><div class="surface"><canvas id="bust-dark" aria-label="Barrier bust event, H64 dark background"></canvas></div></section>
+<section class="light"><h2>Bust / H64 / light</h2><div class="surface"><canvas id="bust-light" aria-label="Barrier bust event, H64 light background"></canvas></div></section>
+</main><div id="error" role="alert"></div><script type="module" src="./embed.mjs?adapter=r07-loop-metrics1"></script></body></html>

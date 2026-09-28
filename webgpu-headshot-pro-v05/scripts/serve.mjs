@@ -1,0 +1,5 @@
+import http from 'node:http';import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),port=Number(process.env.PORT??8795);
+const types={'.mjs':'text/javascript','.js':'text/javascript','.html':'text/html','.css':'text/css','.json':'application/json','.wgsl':'text/plain','.wav':'audio/wav','.png':'image/png','.md':'text/plain'};
+const server=http.createServer((req,res)=>{let file;try{const u=new URL(req.url,'http://localhost');file=path.resolve(root,'.'+decodeURIComponent(u.pathname));if(u.pathname==='/')file=path.join(root,'index.html');if(!file.startsWith(root+path.sep)||!fs.statSync(file).isFile())throw new Error('not found');}catch{res.writeHead(404);res.end('Not found');return;}res.writeHead(200,{'Content-Type':types[path.extname(file)]??'application/octet-stream','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});fs.createReadStream(file).pipe(res);});
+server.listen(port,'127.0.0.1',()=>console.log(`v5 preview: http://127.0.0.1:${port}/`));

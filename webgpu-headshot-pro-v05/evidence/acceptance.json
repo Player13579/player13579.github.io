@@ -1,0 +1,210 @@
+{
+  "schema": "DVA-E-v5-acceptance",
+  "version": "5.0.0",
+  "recorded_at": "2026-09-27T23:34:20.970869+00:00",
+  "overall": "Warning",
+  "renderStatus": "NotRun",
+  "singleVisualAndSFX": true,
+  "tenStyleDiscrimination": "revoked_by_user",
+  "gameIntegration": false,
+  "galleryIntegration": false,
+  "executed": {
+    "Node": {
+      "status": "pass",
+      "total": 119,
+      "passed": 119,
+      "failed": 0,
+      "evidence": "evidence/node-tests.tap",
+      "scope": "Nodeの実行。GPUとAudioNodeは実機ではなくモックを含む。"
+    },
+    "structural": {
+      "status": "pass",
+      "total": 677,
+      "passed": 677,
+      "failed": 0,
+      "evidence": "evidence/structural-check.json",
+      "scope": "パッケージ専用静的構造/参照存在/JS構文。原本validator・GPU・芸術性は検査しない。"
+    },
+    "CPU_lifetime": {
+      "status": "pass",
+      "states": 242,
+      "samples_per_mode": 121,
+      "modes": [
+        "normal",
+        "reduced_motion"
+      ],
+      "evidence": "evidence/cpu-trace.json",
+      "scope": "ホスト数値/共有境界のみ。shader/材質/PSF/実GPU/聴感ではない。"
+    },
+    "canonical_input_commonality": {
+      "status": "pass",
+      "cases": 30,
+      "variants": 10,
+      "phases": [
+        0.2,
+        0.5,
+        0.7
+      ],
+      "evidence": "evidence/cpu-trace.json",
+      "scope": "同じ時相のGPU渡し状態が一致。実GPU画素の一致を実測したものではない。"
+    },
+    "preview_scheduler": {
+      "status": "pass",
+      "scenarios": [
+        {
+          "dt": 8,
+          "steps": 300,
+          "cycles": 5,
+          "positive": 295,
+          "early": 50,
+          "late": 40,
+          "clampedSteps": 0,
+          "discardedWallMs": 0,
+          "status": "pass"
+        },
+        {
+          "dt": 16.666666666666668,
+          "steps": 300,
+          "cycles": 9,
+          "positive": 291,
+          "early": 45,
+          "late": 40,
+          "clampedSteps": 0,
+          "discardedWallMs": 0,
+          "status": "pass"
+        },
+        {
+          "dt": 250,
+          "steps": 300,
+          "cycles": 9,
+          "positive": 291,
+          "early": 45,
+          "late": 40,
+          "clampedSteps": 299,
+          "discardedWallMs": 69766.66666666685,
+          "status": "pass"
+        }
+      ],
+      "evidence": "evidence/cpu-trace.json",
+      "scope": "Nodeのみ。実ブラウザー連続再生ではない。"
+    },
+    "new_single_WAV": {
+      "status": "pass",
+      "file": "sfx/contact-common.wav",
+      "sha256": "b7c3df756a014df92becfb18fc2b93249b9ad1cc275d070d80f6b8b7925794ee",
+      "sampleRate": 48000,
+      "durationMs": 210,
+      "channels": 1,
+      "bits": 16,
+      "metrics": {
+        "frames": 10080,
+        "finite": true,
+        "peak": 0.5879362225532532,
+        "rms": 0.05738524633026747,
+        "mean": -5.647462901200581e-05,
+        "clipSamples": 0,
+        "maxAdjacentDelta": 0.3253446575254202,
+        "first": 0,
+        "last": 0
+      },
+      "evidence": "sfx/manifest.json",
+      "scope": "新規PCM生成と数値検査。聴感ではない。"
+    }
+  },
+  "not_run": {
+    "WGSL_actual_compilation": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "GPU_submission_and_readback": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "H64_H32_dark_light_lifetime_pixels": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "continuous_browser_playback": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "OfflineAudioContext": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "audio_device_output": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "listening": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "game_gunshot_mix": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "intent_alignment": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "artistic_effect": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "canonical_B_validator": {
+      "status": "not_run",
+      "evidence_refs": []
+    },
+    "production_event_integration": {
+      "status": "not_run",
+      "evidence_refs": []
+    }
+  },
+  "browser_attempt": {
+    "status": "not_run",
+    "reason": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8795/\nCall log:\n  - navigating to \"http://127.0.0.1:8795/\", waiting until \"domcontentloaded\"\n",
+    "browser": "144.0.7559.96",
+    "evidence": "evidence/browser-check.json"
+  },
+  "preserved_archives": [
+    {
+      "file": "DVA_headshot_contact_E_v1.zip",
+      "sha256_before": "bca6c64504d49a3a944f9f7942b4b2479aaf50de71a48917bb4fdf45de839ea1",
+      "sha256_after": "bca6c64504d49a3a944f9f7942b4b2479aaf50de71a48917bb4fdf45de839ea1",
+      "unchanged": true
+    },
+    {
+      "file": "DVA_headshot_contact_E_v2.zip",
+      "sha256_before": "45161855e1a183fe35ff16c84a78d78a3febc7ac8fa3d2859e1f213e64e3b7b1",
+      "sha256_after": "45161855e1a183fe35ff16c84a78d78a3febc7ac8fa3d2859e1f213e64e3b7b1",
+      "unchanged": true
+    },
+    {
+      "file": "DVA_headshot_contact_E_v3.zip",
+      "sha256_before": "c702ee9461924b17725fe31768a4a19963799974314d0c5d7edc07e1a3606a46",
+      "sha256_after": "c702ee9461924b17725fe31768a4a19963799974314d0c5d7edc07e1a3606a46",
+      "unchanged": true
+    },
+    {
+      "file": "DVA_headshot_contact_E_v4.zip",
+      "sha256_before": "8b2b8b3e311c74c7b2a278b724939445a4c8321d5434befffe1e3988fdf6d84b",
+      "sha256_after": "8b2b8b3e311c74c7b2a278b724939445a4c8321d5434befffe1e3988fdf6d84b",
+      "unchanged": true
+    }
+  ],
+  "acceptance_basis": {
+    "primary_read": "固定接触点の核→同じ点を起点とする圧縮膜→内側の返り襞と有限終了。",
+    "same_event": "canonical action-gunner-headshotのみ。一つの視覚と一つの音。weapon/modeから造形・時間・音色を分岐しない。",
+    "intentional_departures": "局所HDR放射とその表示応答のSDR白飛びを許可。白飛び回避用の減光・合成輝度上限なし。",
+    "protection": "現在の視認権限・遮蔽・保護領域は維持。死亡/出血/破壊/スタッガーや反撃停止を追加しない。"
+  },
+  "limitations": [
+    "旧版の実機passをv5のshader/画素/音のpassへ転記していない。",
+    "実行したCPU幾何と包絡の検査から、原寸の意図伝達・芸術性の合格を主張しない。",
+    "内部CPU近似図は設計検討のみ。実GPUのPNGや動画として同梱していない。",
+    "プレビューのfixture台帳は本番認証ではない。ゲームとの接続は未実施。",
+    "B正本commit/blob識別子は継承出典であり、今回原本全文のバイトを取得/再ハッシュしたとは主張しない。",
+    "聴感、実画面の白飛びと起点の読み、低速提出時のAV同期は未観察。"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "version": "r0.1",
+  "artifact": "EMP E / 位相裂晶 / Phase Cleave",
+  "recorded_utc": "2026-09-27T04:05:41.485049+00:00",
+  "release_state": "implementation_packaged_runtime_approval_pending",
+  "overall": "Warning",
+  "render_status": "NotRun",
+  "provenance": {
+    "prior_EMP_E_or_Sol_Astra_Codex_work_accessed": false,
+    "external_art_images_or_code_reused": false,
+    "image_textures": 0,
+    "technical_API_reference_only": "docs/PROVENANCE.md"
+  },
+  "tests": {
+    "node_contract_geometry_synthesis_worklet_mock": {
+      "status": "pass",
+      "passed": 29,
+      "failed": 0,
+      "evidence": "quality/node-tests.txt",
+      "scope": "Node unit tests and mock AudioWorklet host. Not real browser playback or human listening."
+    },
+    "B_local_structural_inspection": {
+      "status": "pass",
+      "checks": 581,
+      "failed": 0,
+      "evidence": "quality/structural-tests.json",
+      "scope": "Local structural validator, not an unavailable original B validator. No physical or visual proof."
+    },
+    "javascript_parse": {
+      "status": "pass",
+      "command": "node --check on all delivered .js/.mjs files",
+      "scope": "Syntax only; browser globals and WGSL not executed."
+    },
+    "HTML_CSS_layout": {
+      "status": "pass",
+      "evidence": "quality/layout-check.json",
+      "scope": "Chromium set_content in about:blank; 1440px and390px widths, no horizontal document overflow. VFX engine not loaded."
+    },
+    "WGSL_compile": {
+      "status": "not_run",
+      "reason": "Local browser navigation blocked by managed environment URL policy."
+    },
+    "WebGPU_render": {
+      "status": "not_run",
+      "reason": "No actual WebGPU canvas frame produced in this environment."
+    },
+    "GPU_performance": {
+      "status": "not_run"
+    },
+    "H64_dark_light_zoom_speed_48_conditions": {
+      "status": "not_run",
+      "plan": "quality/manual-checklist.json; tests/browser-smoke.py"
+    },
+    "SFX_perceptual_listening": {
+      "status": "not_run",
+      "reason": "PCM numeric properties tested; no loudspeaker/headphone audition performed."
+    },
+    "SFX_browser_actor_sync": {
+      "status": "not_run",
+      "reason": "Actual browser timing/AudioWorklet delivery and device latency not measured."
+    },
+    "Codex_game_integration": {
+      "status": "not_run",
+      "reason": "External game source not provided or accessed; effect API and helper contract only."
+    },
+    "local_asset_resolution": {
+      "status": "pass",
+      "checked": 55,
+      "evidence": "quality/asset-check.json",
+      "scope": "Local module, shader and HTML references; browser execution not included."
+    },
+    "HTTP_serving": {
+      "status": "pass",
+      "checked": 14,
+      "evidence": "quality/http-check.json",
+      "scope": "Node localhost status and MIME responses only."
+    }
+  },
+  "design_proxy_review": {
+    "status": "reviewed_non_acceptance_proxy",
+    "method": "CPU barycentric raster of newly authored geometry.js output; actual WGSL/postprocess not used. Not loaded as a texture by application.",
+    "observations": "Different topology for charge, directed transfer, target latch, six-cleft resonance and inward cancellation; dark central openings retained in the inspected proxy.",
+    "limits": "Not a WebGPU render, not temporal playback, not sampling or artistic outcome acceptance. No superiority claim."
+  },
+  "browser_attempt": {
+    "status": "blocked_before_app_execution",
+    "browser": "Chromium144.0.7559.96 Debian",
+    "result": "net::ERR_BLOCKED_BY_ADMINISTRATOR on localhost, file, and data navigation",
+    "policy_modified": false,
+    "isolated_test_browser_install": "Failed: DNS EAI_AGAIN while fetching Playwright Chromium",
+    "gpu_adapter": "not_acquired"
+  },
+  "known_limits": [
+    "No arbitrary host depth texture ingestion; supplied rectangle occluders only.",
+    "Triangle sorted transparency; not OIT; intersecting layers need real GPU review.",
+    "No MSAA; subpixel secondary lines may alias.",
+    "256 retained events / 64 audio voices; capacity behavior documented.",
+    "rate changes pitch as well as duration; no pitch-preserving stretch.",
+    "Source PCM has a two-stage6.5kHz soft low-pass; resampling is linear, not an ideal bandlimited converter.",
+    "Individual actor clocks must be converted to a common clock by host.",
+    "Pair selection among3+ emissions and gameplay state mutations remain host-owned."
+  ],
+  "acceptance_policy": "Only completed checks have pass. Actual render, perceptual intent and artistic outcome remain not_run."
+}

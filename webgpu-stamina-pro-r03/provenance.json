@@ -24,7 +24,7 @@
   ],
   "technicalAdaptations": {
     "index.html": "Loads the gallery embed stylesheet and exposes runtime errors to the host gallery.",
-    "src/preview.js": "In embed mode, renders the authored single-cause H64 loop on one dark-background WebGPU panel; in verify mode, audio unlocking is disabled.",
+    "src/preview.js": "In embed mode, renders the authored single-cause H64 loop on one dark-background WebGPU panel and permits audio only after a canvas click; verify mode stays silent.",
     "embed.css": "Shows one original-raster WebGPU view in the gallery's 980×620 iframe without changing its aspect ratio."
   },
   "quality": "hold; sampled GPU states only, full-lifetime visual and SFX review unaccepted; no game integration"
