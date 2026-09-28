@@ -81,6 +81,11 @@
       version('emp-astra-zero-v1', 'Astra zero v1', 'webgpu-emp-astra-zero-preview.html', 'webgpu-emp-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPUでチャージ、放電、共鳴、キャンセル、保管ロックを再生済み。')
     ]) }),
     Object.freeze({ id: 'status-cleanse-astra', title: '状態異常回復 · Astra履歴', versions: Object.freeze([
+      version('status-cleanse-astra-r21', 'Astra r0.21', 'astra-status-cleanse-v1/versions/r21/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r21/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。Astra自己不合格: 接触/伝達順序は見えるが、矩形投光面と衣装の水平色替えに退化し、身体の正の回復応答の形が成立しない。', 'actor-H64'),
+      version('status-cleanse-astra-r20', 'Astra r0.20', 'astra-status-cleanse-v1/versions/r20/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r20/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64レビュー: 負の描写と白塊は改善したが、2光片から均一な全身glowへの切替であり、正の回復の因果が抽象的・汎用的。', 'actor-H64'),
+      version('status-cleanse-astra-r19', 'Astra r0.19', 'astra-status-cleanse-v1/versions/r19/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r19/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64レビュー: 明背景の到来が白い塊、ピークが均一で回復の主題として品質未達。', 'actor-H64'),
+      version('status-cleanse-astra-r18', 'Astra r0.18', 'astra-status-cleanse-v1/versions/r18/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r18/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。H64で到来光の端から不要な白線が伸び、全身発光ピークもr17より弱い。Astra自己不合格。', 'actor-H64'),
+      version('status-cleanse-astra-r17', 'Astra r0.17', 'astra-status-cleanse-v1/versions/r17/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r17/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64レビュー: 全身発光は改善したが、点列導入・均一な輪郭/白塗りと不可視glintに留まり、回復の主作用として品質未達。', 'actor-H64'),
       version('status-cleanse-astra-r16', 'Astra r0.16', 'astra-status-cleanse-v1/versions/r16/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r16/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。自己H64明暗レビュー：ぼかした影/薄い霧のfadeに見え、体積がほどける奥行きと清浄光の力が不足。身体反応もベージュの照明色へ寄り、正常復帰の意味が品質未達。', 'actor-H64'),
       version('status-cleanse-astra-r15', 'Astra r0.15', 'astra-status-cleanse-v1/versions/r15/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r15/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。自己H64明暗レビュー：初期異常は小さな柄ずれに留まり、解除前線が直交する白線/箱状に読める。局所屈折と収束方向の意味が品質未達。', 'actor-H64'),
       version('status-cleanse-astra-r14', 'Astra r0.14', 'astra-status-cleanse-v1/versions/r14/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r14/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64全寿命レビュー：角は出たが、胸前の紫Xベルトが外れるだけ。状態異常と回復の独自現象・発光の力が成立していない。服/ロープ/ベルト状拘束の系列を放棄し新設計待ち。', 'actor-H64'),
@@ -90,7 +95,7 @@
       version('status-cleanse-astra-r10', 'Astra r0.10', 'astra-status-cleanse-v1/versions/r10/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r10/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64全寿命レビュー：初期は普通の紫衣装/マント、剥離は左右へ開くマントと緑の衣装照明に読める。状態回復固有の造形として品質未達。', 'actor-H64'),
       version('status-cleanse-astra-r09', 'Astra r0.9', 'astra-status-cleanse-v1/versions/r09/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r09/cleanse.mjs', '品質不合格・本編未採用', 'H64原寸で付着の剥離と受け手の変化が読み取れず、品質不合格。', 'actor-H64'),
       version('status-cleanse-astra-r08', 'Astra r0.8', 'astra-status-cleanse-v1/versions/r08/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r08/cleanse.mjs', '品質不合格・本編未採用', '剥離片が突然現れる布切れに見え、元の被覆との連続性が弱い。清浄側は局所的すぎてH64でほぼ読めない。', 'actor-H64'),
-      version('status-cleanse-astra-r07', 'Astra r0.7', 'astra-status-cleanse-v1/versions/r07/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r07/cleanse.mjs', '品質不合格・本編未採用', 'H64では紫から緑への衣装色替えに見え、付着が剥がれる形や動きがほぼ見えない。', 'actor-H64'),
+      version('status-cleanse-astra-r07', 'Astra r0.7', 'astra-status-cleanse-v1/versions/r07/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r07/cleanse.mjs', '品質不合格・本編未採用', 'ユーザー評価では全身発光部分のみ良好。品質不合格理由（記録）: H64では紫から緑への衣装色替えに見え、付着が剥がれる形や動きがほぼ見えない。', 'actor-H64'),
       version('status-cleanse-astra-r06', 'Astra r0.6', 'astra-status-cleanse-v1/versions/r06/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r06/cleanse.mjs', '品質不合格・本編未採用', '顔の保護は改善したが、背後の形が容器や浴槽に見える。', 'actor-H64'),
       version('status-cleanse-astra-r05', 'Astra r0.5', 'astra-status-cleanse-v1/versions/r05/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r05/cleanse.mjs', '品質不合格・本編未採用', '白い浄化帯が顔を横切り、H64で横棒に見える。', 'actor-H64'),
       version('status-cleanse-astra-r04', 'Astra r0.4', 'astra-status-cleanse-v1/versions/r04/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r04/cleanse.mjs', '品質不合格・本編未採用', '孤立したリボンの品質欠陥が残る。', 'actor-H64'),
@@ -146,7 +151,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v71');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v72');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

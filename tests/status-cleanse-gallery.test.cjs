@@ -11,6 +11,7 @@ const pagesPublicRoot = path.join(pagesRoot, 'public');
 const packageRoot = path.join(root, 'astra-status-cleanse-v1');
 const manifest = JSON.parse(fs.readFileSync(path.join(packageRoot, 'all-versions-status.json'), 'utf8'));
 const allowlist = JSON.parse(fs.readFileSync(path.join(packageRoot, 'allowlist-all.json'), 'utf8'));
+const frozenHandoff = JSON.parse(fs.readFileSync(path.join(pagesRoot, 'astra-status-cleanse-v1', 'handoff-r17-r21-frozen.json'), 'utf8'));
 const source = fs.readFileSync(path.join(root, 'webgpu-e-gallery.js'), 'utf8');
 const html = fs.readFileSync(path.join(root, 'webgpu-e-gallery.html'), 'utf8');
 
@@ -50,9 +51,11 @@ vm.runInNewContext(source, {
 
 const entry = window.__webgpuEGallery.entries.find(item => item.id === 'status-cleanse-astra');
 assert(entry, 'status-recovery Astra gallery entry exists');
-assert.equal(entry.versions.length, 16, 'all sixteen reproducible versions are listed');
-assert.deepEqual(Array.from(entry.versions, item => item.id), manifest.versions.slice().reverse().map(item => item.id),
-  'versions are ordered newest first and match the source manifest');
+const statusRecords = manifest.versions.concat(frozenHandoff.versions.map(item => item.version));
+assert.equal(entry.versions.length, 21, 'all twenty-one reproducible versions are listed');
+assert.deepEqual(Array.from(entry.versions, item => item.id), statusRecords.slice().reverse().map(item => item.id),
+  'versions are ordered newest first and match source status records');
+assert.match(entry.versions.find(item => item.id === 'status-cleanse-astra-r07').detail, /全身発光部分のみ良好.*品質不合格理由/);
 const stamina = window.__webgpuEGallery.entries.find(item => item.id === 'stamina-astra');
 assert.match(stamina.versions.find(item => item.id === 'stamina-astra-clean-v3').status, /品質不採用.*本編未採用/);
 assert.match(stamina.versions.find(item => item.id === 'stamina-astra-clean-v3').detail, /扇形.*発光ベスト.*品質不採用/);
@@ -157,7 +160,7 @@ for (const n of [10, 11, 12, 13, 14, 15]) {
 for (const version of entry.versions) {
   assert.match(version.status, /品質不合格/);
   assert.match(version.status, /本編未採用/);
-  const catalog = manifest.versions.find(item => item.id === version.id);
+  const catalog = statusRecords.find(item => item.id === version.id);
   assert.equal(catalog.qualityStatus, 'rejected', `${version.id} has the current quality decision`);
   assert.equal(catalog.userAdopted, false);
   assert.equal(catalog.gameIntegrated, false);
@@ -178,7 +181,7 @@ for (const relative of allowlist.publishFiles) {
     require('node:crypto').createHash('sha256').update(fs.readFileSync(pageCopy)).digest('hex'),
     `Pages mirror matches root public for ${relative}`);
 }
-for (const version of manifest.versions) {
+for (const version of statusRecords) {
   for (const [relative, expectedHash] of Object.entries(version.sourceSha256)) {
     const file = path.join(packageRoot, 'versions', version.id.slice(-3), relative);
     const actualHash = require('node:crypto').createHash('sha256').update(fs.readFileSync(file)).digest('hex');

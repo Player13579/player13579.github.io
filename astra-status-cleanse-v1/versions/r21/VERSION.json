@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r21",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.21",
+  "version": "astra-status-cleanse-r0.21",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "Astra自己不合格: 接触/伝達順序は見えるが、矩形投光面と衣装の水平色替えに退化し、身体の正の回復応答の形が成立しない。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r21/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r21/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r21.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "0e8529a21290fb3050c5523c63e6bca120fabd0107856adce42b18b6a9293d9d",
+    "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+    "cleanse.mjs": "54bbd58b429733828f58c6a22892fe65adb022b2f6d60b4bae80fea260a4ce5a",
+    "field-r21.mjs": "2b3873af4f508c49bdf048ea077bd23dc5fd1b623f8c2877209d49ce2d8dec66",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 341,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r21/evidence/",
+  "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+}

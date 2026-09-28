@@ -1,0 +1,433 @@
+{
+  "scope": "Frozen r17-r21 standalone publication candidates",
+  "frozen": true,
+  "qualityStatus": "rejected",
+  "versions": [
+    {
+      "version": {
+        "id": "status-cleanse-astra-r17",
+        "eventId": "gain-statusRecovery",
+        "label": "状態異常回復 Astra r0.17",
+        "version": "astra-status-cleanse-r0.17",
+        "creatorModel": "gpt-6-astra",
+        "creatorDisplayName": "GPT-6-Astra",
+        "technicalStatus": "webgpu-replay-verified",
+        "qualityStatus": "rejected",
+        "qualityReason": "主担当H64レビュー: 全身発光は改善したが、点列導入・均一な輪郭/白塗りと不可視glintに留まり、回復の主作用として品質未達。",
+        "userAdopted": false,
+        "gameIntegrated": false,
+        "publishedByWorker": false,
+        "preview": "versions/r17/index.html?embed=1&verify=1&h=240",
+        "nativeSizePreview": "versions/r17/index.html?embed=1&verify=1&h=64",
+        "usesActorFixture": true,
+        "requiredFiles": [
+          "index.html",
+          "preview.mjs",
+          "cleanse.mjs",
+          "field-r17.mjs",
+          "sfx.mjs",
+          "actor.webp"
+        ],
+        "sourceSha256": {
+          "index.html": "a984ce1211ea9ce94b1ef0e90e2ae105781975d8d801d5ecabd1f74dae82ae2b",
+          "preview.mjs": "1879a47fb889b5dd1903a08041fe563960564f2415e771795ac6b3a29980df1f",
+          "cleanse.mjs": "9009fab4abadf0cff4edb178681ece8fc151439dbe35cf8a20080e2b63cb0068",
+          "field-r17.mjs": "fd8894e798c10ebae19bf1606cea36b8a39307bdfc7797330b844e15ae64604c",
+          "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+        },
+        "gpuSubmissions": 538,
+        "verifiedAutoLoops": 3,
+        "evidenceBase": "versions/r17/evidence/",
+        "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。",
+        "keywordExpansionAudit": "B-AUDIT-r17.md; registered presets not selected; custom sparse glints trial rejected as ineffective at H64",
+        "sparseGlintQuality": "not_effective; trial preserved for reproducibility"
+      },
+      "allowlist": [
+        {
+          "path": "versions/r17/index.html",
+          "sha256": "a984ce1211ea9ce94b1ef0e90e2ae105781975d8d801d5ecabd1f74dae82ae2b",
+          "bytes": 1718
+        },
+        {
+          "path": "versions/r17/preview.mjs",
+          "sha256": "1879a47fb889b5dd1903a08041fe563960564f2415e771795ac6b3a29980df1f",
+          "bytes": 3166
+        },
+        {
+          "path": "versions/r17/cleanse.mjs",
+          "sha256": "9009fab4abadf0cff4edb178681ece8fc151439dbe35cf8a20080e2b63cb0068",
+          "bytes": 4677
+        },
+        {
+          "path": "versions/r17/field-r17.mjs",
+          "sha256": "fd8894e798c10ebae19bf1606cea36b8a39307bdfc7797330b844e15ae64604c",
+          "bytes": 4193
+        },
+        {
+          "path": "versions/r17/sfx.mjs",
+          "sha256": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "bytes": 2772
+        },
+        {
+          "path": "versions/r17/actor.webp",
+          "sha256": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+          "bytes": 2187944
+        },
+        {
+          "path": "versions/r17/VERSION.json",
+          "sha256": "28a47bfbcaaf96141dbc6afbaee6bf9ad20ee7a31c16400341a32e40293eb095",
+          "bytes": 1914
+        }
+      ],
+      "handoff": "handoff-r17.json",
+      "package": {
+        "path": "astra-status-cleanse-r17-replay-package.zip",
+        "sha256": "1a26af559b193537346ca1e5f8c781e12aaa16d0102dc1f4ec4c4aa42dcb69b7"
+      }
+    },
+    {
+      "version": {
+        "id": "status-cleanse-astra-r18",
+        "eventId": "gain-statusRecovery",
+        "label": "状態異常回復 Astra r0.18",
+        "version": "astra-status-cleanse-r0.18",
+        "creatorModel": "gpt-6-astra",
+        "creatorDisplayName": "GPT-6-Astra",
+        "technicalStatus": "webgpu-replay-verified",
+        "qualityStatus": "rejected",
+        "qualityReason": "H64で到来光の端から不要な白線が伸び、全身発光ピークもr17より弱い。Astra自己不合格。",
+        "userAdopted": false,
+        "gameIntegrated": false,
+        "publishedByWorker": false,
+        "preview": "versions/r18/index.html?embed=1&verify=1&h=240",
+        "nativeSizePreview": "versions/r18/index.html?embed=1&verify=1&h=64",
+        "usesActorFixture": true,
+        "requiredFiles": [
+          "index.html",
+          "preview.mjs",
+          "cleanse.mjs",
+          "field-r18.mjs",
+          "sfx.mjs",
+          "actor.webp"
+        ],
+        "sourceSha256": {
+          "index.html": "f57ff31bd396b62fe7802dfe35be81c7d00c923f2e73f9bcdb85feff2e1ba4f1",
+          "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+          "cleanse.mjs": "789b58e527126ee83c1afd6d8c556c4d682edb14068f5f895fa09c7ba1211c5d",
+          "field-r18.mjs": "0e524151ca772b9a63a2c858c026de4d8cb1c43778e50f98ecaf5bfbf027463c",
+          "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+        },
+        "gpuSubmissions": 290,
+        "verifiedAutoLoops": 3,
+        "evidenceBase": "versions/r18/evidence/",
+        "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+      },
+      "allowlist": [
+        {
+          "path": "versions/r18/index.html",
+          "sha256": "f57ff31bd396b62fe7802dfe35be81c7d00c923f2e73f9bcdb85feff2e1ba4f1",
+          "bytes": 1718
+        },
+        {
+          "path": "versions/r18/preview.mjs",
+          "sha256": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+          "bytes": 3127
+        },
+        {
+          "path": "versions/r18/cleanse.mjs",
+          "sha256": "789b58e527126ee83c1afd6d8c556c4d682edb14068f5f895fa09c7ba1211c5d",
+          "bytes": 4646
+        },
+        {
+          "path": "versions/r18/field-r18.mjs",
+          "sha256": "0e524151ca772b9a63a2c858c026de4d8cb1c43778e50f98ecaf5bfbf027463c",
+          "bytes": 4202
+        },
+        {
+          "path": "versions/r18/sfx.mjs",
+          "sha256": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "bytes": 2772
+        },
+        {
+          "path": "versions/r18/actor.webp",
+          "sha256": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+          "bytes": 2187944
+        },
+        {
+          "path": "versions/r18/VERSION.json",
+          "sha256": "ad3766ddaebd84693009a05620156ea579fce6b933ed5a505a864704a44d4919",
+          "bytes": 1643
+        }
+      ],
+      "handoff": "handoff-r18.json",
+      "package": {
+        "path": "astra-status-cleanse-r18-replay-package.zip",
+        "sha256": "200195f893805138596ff3b8966602fe2e2dd692d87d34507b025bb6152f893e"
+      }
+    },
+    {
+      "version": {
+        "id": "status-cleanse-astra-r19",
+        "eventId": "gain-statusRecovery",
+        "label": "状態異常回復 Astra r0.19",
+        "version": "astra-status-cleanse-r0.19",
+        "creatorModel": "gpt-6-astra",
+        "creatorDisplayName": "GPT-6-Astra",
+        "technicalStatus": "webgpu-replay-verified",
+        "qualityStatus": "rejected",
+        "qualityReason": "主担当H64レビュー: 明背景の到来が白い塊、ピークが均一で回復の主題として品質未達。",
+        "userAdopted": false,
+        "gameIntegrated": false,
+        "publishedByWorker": false,
+        "preview": "versions/r19/index.html?embed=1&verify=1&h=240",
+        "nativeSizePreview": "versions/r19/index.html?embed=1&verify=1&h=64",
+        "usesActorFixture": true,
+        "requiredFiles": [
+          "index.html",
+          "preview.mjs",
+          "cleanse.mjs",
+          "field-r19.mjs",
+          "sfx.mjs",
+          "actor.webp"
+        ],
+        "sourceSha256": {
+          "index.html": "3a4e9d7ca6b383e6d9911d12174bba639326ec312ad6fc5b5b83325663233e86",
+          "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+          "cleanse.mjs": "13ee4fe93027bc7d38d930905147cfd11b2c7fbded5835d62f50bd21b54b7663",
+          "field-r19.mjs": "82ebe5673f610832ba3cd35040c0a86a468d4b9a403f7a0332d080f32db08cf5",
+          "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+        },
+        "gpuSubmissions": 288,
+        "verifiedAutoLoops": 3,
+        "evidenceBase": "versions/r19/evidence/",
+        "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+      },
+      "allowlist": [
+        {
+          "path": "versions/r19/index.html",
+          "sha256": "3a4e9d7ca6b383e6d9911d12174bba639326ec312ad6fc5b5b83325663233e86",
+          "bytes": 1718
+        },
+        {
+          "path": "versions/r19/preview.mjs",
+          "sha256": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+          "bytes": 3127
+        },
+        {
+          "path": "versions/r19/cleanse.mjs",
+          "sha256": "13ee4fe93027bc7d38d930905147cfd11b2c7fbded5835d62f50bd21b54b7663",
+          "bytes": 4646
+        },
+        {
+          "path": "versions/r19/field-r19.mjs",
+          "sha256": "82ebe5673f610832ba3cd35040c0a86a468d4b9a403f7a0332d080f32db08cf5",
+          "bytes": 4287
+        },
+        {
+          "path": "versions/r19/sfx.mjs",
+          "sha256": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "bytes": 2772
+        },
+        {
+          "path": "versions/r19/actor.webp",
+          "sha256": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+          "bytes": 2187944
+        },
+        {
+          "path": "versions/r19/VERSION.json",
+          "sha256": "1da101d828fb42236c8e772e492ec7af563ff1fa2f8f75c2593982b1014e4765",
+          "bytes": 1643
+        }
+      ],
+      "handoff": "handoff-r19.json",
+      "package": {
+        "path": "astra-status-cleanse-r19-replay-package.zip",
+        "sha256": "c6326666c372c16718bfe5a85ef425c6797d8128f1bea1f9f0ff8935869ad23e"
+      }
+    },
+    {
+      "version": {
+        "id": "status-cleanse-astra-r20",
+        "eventId": "gain-statusRecovery",
+        "label": "状態異常回復 Astra r0.20",
+        "version": "astra-status-cleanse-r0.20",
+        "creatorModel": "gpt-6-astra",
+        "creatorDisplayName": "GPT-6-Astra",
+        "technicalStatus": "webgpu-replay-verified",
+        "qualityStatus": "rejected",
+        "qualityReason": "主担当H64レビュー: 負の描写と白塊は改善したが、2光片から均一な全身glowへの切替であり、正の回復の因果が抽象的・汎用的。",
+        "userAdopted": false,
+        "gameIntegrated": false,
+        "publishedByWorker": false,
+        "preview": "versions/r20/index.html?embed=1&verify=1&h=240",
+        "nativeSizePreview": "versions/r20/index.html?embed=1&verify=1&h=64",
+        "usesActorFixture": true,
+        "requiredFiles": [
+          "index.html",
+          "preview.mjs",
+          "cleanse.mjs",
+          "field-r20.mjs",
+          "sfx.mjs",
+          "actor.webp"
+        ],
+        "sourceSha256": {
+          "index.html": "75b83a1d767712ae52a6736a948873b1f79ec5e9309aa6191dc037115c2746b6",
+          "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+          "cleanse.mjs": "2113d4d72bade0bf7c4cbbaf4cf03a7c9efa4a33879476e8a928b5a37b02539a",
+          "field-r20.mjs": "ae58e1cc0bc9f436c1eaf88ff2ae9650241365d5cf9cce92d7063dffbc9823e3",
+          "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+        },
+        "gpuSubmissions": 283,
+        "verifiedAutoLoops": 3,
+        "evidenceBase": "versions/r20/evidence/",
+        "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+      },
+      "allowlist": [
+        {
+          "path": "versions/r20/index.html",
+          "sha256": "75b83a1d767712ae52a6736a948873b1f79ec5e9309aa6191dc037115c2746b6",
+          "bytes": 1718
+        },
+        {
+          "path": "versions/r20/preview.mjs",
+          "sha256": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+          "bytes": 3127
+        },
+        {
+          "path": "versions/r20/cleanse.mjs",
+          "sha256": "2113d4d72bade0bf7c4cbbaf4cf03a7c9efa4a33879476e8a928b5a37b02539a",
+          "bytes": 4646
+        },
+        {
+          "path": "versions/r20/field-r20.mjs",
+          "sha256": "ae58e1cc0bc9f436c1eaf88ff2ae9650241365d5cf9cce92d7063dffbc9823e3",
+          "bytes": 4595
+        },
+        {
+          "path": "versions/r20/sfx.mjs",
+          "sha256": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "bytes": 2772
+        },
+        {
+          "path": "versions/r20/actor.webp",
+          "sha256": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+          "bytes": 2187944
+        },
+        {
+          "path": "versions/r20/VERSION.json",
+          "sha256": "0bf729743d8fbc932c59688a0ad15ee923c2ee946d0fa0ecb2cf1b1a8920ccef",
+          "bytes": 1696
+        }
+      ],
+      "handoff": "handoff-r20.json",
+      "package": {
+        "path": "astra-status-cleanse-r20-replay-package.zip",
+        "sha256": "38e3404922c02d8904d7df643bf061bdd52e4bb3868c63a0c31cec7e096badd0"
+      }
+    },
+    {
+      "version": {
+        "id": "status-cleanse-astra-r21",
+        "eventId": "gain-statusRecovery",
+        "label": "状態異常回復 Astra r0.21",
+        "version": "astra-status-cleanse-r0.21",
+        "creatorModel": "gpt-6-astra",
+        "creatorDisplayName": "GPT-6-Astra",
+        "technicalStatus": "webgpu-replay-verified",
+        "qualityStatus": "rejected",
+        "qualityReason": "Astra自己不合格: 接触/伝達順序は見えるが、矩形投光面と衣装の水平色替えに退化し、身体の正の回復応答の形が成立しない。",
+        "userAdopted": false,
+        "gameIntegrated": false,
+        "publishedByWorker": false,
+        "preview": "versions/r21/index.html?embed=1&verify=1&h=240",
+        "nativeSizePreview": "versions/r21/index.html?embed=1&verify=1&h=64",
+        "usesActorFixture": true,
+        "requiredFiles": [
+          "index.html",
+          "preview.mjs",
+          "cleanse.mjs",
+          "field-r21.mjs",
+          "sfx.mjs",
+          "actor.webp"
+        ],
+        "sourceSha256": {
+          "index.html": "0e8529a21290fb3050c5523c63e6bca120fabd0107856adce42b18b6a9293d9d",
+          "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+          "cleanse.mjs": "54bbd58b429733828f58c6a22892fe65adb022b2f6d60b4bae80fea260a4ce5a",
+          "field-r21.mjs": "2b3873af4f508c49bdf048ea077bd23dc5fd1b623f8c2877209d49ce2d8dec66",
+          "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+        },
+        "gpuSubmissions": 341,
+        "verifiedAutoLoops": 3,
+        "evidenceBase": "versions/r21/evidence/",
+        "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+      },
+      "allowlist": [
+        {
+          "path": "versions/r21/index.html",
+          "sha256": "0e8529a21290fb3050c5523c63e6bca120fabd0107856adce42b18b6a9293d9d",
+          "bytes": 1718
+        },
+        {
+          "path": "versions/r21/preview.mjs",
+          "sha256": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+          "bytes": 3127
+        },
+        {
+          "path": "versions/r21/cleanse.mjs",
+          "sha256": "54bbd58b429733828f58c6a22892fe65adb022b2f6d60b4bae80fea260a4ce5a",
+          "bytes": 4646
+        },
+        {
+          "path": "versions/r21/field-r21.mjs",
+          "sha256": "2b3873af4f508c49bdf048ea077bd23dc5fd1b623f8c2877209d49ce2d8dec66",
+          "bytes": 3986
+        },
+        {
+          "path": "versions/r21/sfx.mjs",
+          "sha256": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+          "bytes": 2772
+        },
+        {
+          "path": "versions/r21/actor.webp",
+          "sha256": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed",
+          "bytes": 2187944
+        },
+        {
+          "path": "versions/r21/VERSION.json",
+          "sha256": "8190765618d0cae8a0bb5f9174b7815149c73019db40d6211c85955382830962",
+          "bytes": 1694
+        }
+      ],
+      "handoff": "handoff-r21.json",
+      "package": {
+        "path": "astra-status-cleanse-r21-replay-package.zip",
+        "sha256": "93c36db875d73b387010883d6b4abd16d10467f90ee32facd8a785ad64beec50"
+      }
+    }
+  ],
+  "runtimeMetadataDoNotModify": true,
+  "notGameAdopted": true,
+  "notPublishedByWorker": true,
+  "allVersionsAggregateUnchanged": true,
+  "temporaryResources": "owned browser/server closed",
+  "limits": [
+    "No actual gallery iframe test",
+    "No game event integration",
+    "No auditory listening review",
+    "No isolated GPU performance benchmark"
+  ],
+  "modelWorkShare": [
+    {
+      "model": "gpt-6-astra",
+      "displayName": "GPT-6-Astra",
+      "share": 100,
+      "contribution": "Original E revisions, B audit, standalone validation and preservation"
+    }
+  ]
+}

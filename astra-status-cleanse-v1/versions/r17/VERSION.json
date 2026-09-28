@@ -1,0 +1,39 @@
+{
+  "id": "status-cleanse-astra-r17",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.17",
+  "version": "astra-status-cleanse-r0.17",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "主担当H64レビュー: 全身発光は改善したが、点列導入・均一な輪郭/白塗りと不可視glintに留まり、回復の主作用として品質未達。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r17/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r17/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r17.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "a984ce1211ea9ce94b1ef0e90e2ae105781975d8d801d5ecabd1f74dae82ae2b",
+    "preview.mjs": "1879a47fb889b5dd1903a08041fe563960564f2415e771795ac6b3a29980df1f",
+    "cleanse.mjs": "9009fab4abadf0cff4edb178681ece8fc151439dbe35cf8a20080e2b63cb0068",
+    "field-r17.mjs": "fd8894e798c10ebae19bf1606cea36b8a39307bdfc7797330b844e15ae64604c",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 538,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r17/evidence/",
+  "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。",
+  "keywordExpansionAudit": "B-AUDIT-r17.md; registered presets not selected; custom sparse glints trial rejected as ineffective at H64",
+  "sparseGlintQuality": "not_effective; trial preserved for reproducibility"
+}

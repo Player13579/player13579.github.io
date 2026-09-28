@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r18",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.18",
+  "version": "astra-status-cleanse-r0.18",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "H64で到来光の端から不要な白線が伸び、全身発光ピークもr17より弱い。Astra自己不合格。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r18/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r18/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r18.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "f57ff31bd396b62fe7802dfe35be81c7d00c923f2e73f9bcdb85feff2e1ba4f1",
+    "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+    "cleanse.mjs": "789b58e527126ee83c1afd6d8c556c4d682edb14068f5f895fa09c7ba1211c5d",
+    "field-r18.mjs": "0e524151ca772b9a63a2c858c026de4d8cb1c43778e50f98ecaf5bfbf027463c",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 290,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r18/evidence/",
+  "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+}

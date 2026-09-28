@@ -1,0 +1,37 @@
+{
+  "id": "status-cleanse-astra-r20",
+  "eventId": "gain-statusRecovery",
+  "label": "状態異常回復 Astra r0.20",
+  "version": "astra-status-cleanse-r0.20",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "technicalStatus": "webgpu-replay-verified",
+  "qualityStatus": "rejected",
+  "qualityReason": "主担当H64レビュー: 負の描写と白塊は改善したが、2光片から均一な全身glowへの切替であり、正の回復の因果が抽象的・汎用的。",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "preview": "versions/r20/index.html?embed=1&verify=1&h=240",
+  "nativeSizePreview": "versions/r20/index.html?embed=1&verify=1&h=64",
+  "usesActorFixture": true,
+  "requiredFiles": [
+    "index.html",
+    "preview.mjs",
+    "cleanse.mjs",
+    "field-r20.mjs",
+    "sfx.mjs",
+    "actor.webp"
+  ],
+  "sourceSha256": {
+    "index.html": "75b83a1d767712ae52a6736a948873b1f79ec5e9309aa6191dc037115c2746b6",
+    "preview.mjs": "39248792ef12a672554f657eda0b5ec631e92ad3a9ba6710d8f174134de07d2f",
+    "cleanse.mjs": "2113d4d72bade0bf7c4cbbaf4cf03a7c9efa4a33879476e8a928b5a37b02539a",
+    "field-r20.mjs": "ae58e1cc0bc9f436c1eaf88ff2ae9650241365d5cf9cce92d7063dffbc9823e3",
+    "sfx.mjs": "aa4abfff52aba5f54789de28ecc12eed9e5dd40f1fe7d44b2f309269cdb7028c",
+    "actor.webp": "beb2d2afb7337f559ef146b540b3c6b6b7ff4784d36a359f49f8cf689da0deed"
+  },
+  "gpuSubmissions": 283,
+  "verifiedAutoLoops": 3,
+  "evidenceBase": "versions/r20/evidence/",
+  "fixtureNotice": "正常な原画への肯定的な回復光だけ。負の状態・霧・汚れ・拘束・除去を描かない。"
+}
