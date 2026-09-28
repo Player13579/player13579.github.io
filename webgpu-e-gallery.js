@@ -27,6 +27,15 @@
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
     Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+      version('mana-astra-r9', 'Astra r9', 'public/astra-mana-receive-v1/versions/r9/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r9/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: 手から左下へ投射する扇形beamに見え、受領方向が逆。0.30/0.53/0.74sの身体変化も弱い。', 'actor-H64'),
+      version('mana-astra-r8', 'Astra r8', 'public/astra-mana-receive-v1/versions/r8/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r8/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: 翼を消した結果、源の球とアクターが分離。0.74sの接続が消え、主形/因果がr7より弱まる。', 'actor-H64'),
+      version('mana-astra-r7', 'Astra r7', 'public/astra-mana-receive-v1/versions/r7/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r7/renderer.mjs', '品質審査中・本編未採用', '作者: GPT-6-Astra。審査中: 実衣装との遮蔽/発光は改善したが、外の布/翼が支配的。受領の因果を要改善。', 'actor-H64'),
+      version('mana-astra-r6', 'Astra r6', 'public/astra-mana-receive-v1/versions/r6/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r6/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: 青い筆跡と腹の白楕円。単純mannequinでは肌/衣装の相互作用を判定できない。', 'actor-H64'),
+      version('mana-astra-r5', 'Astra r5', 'public/astra-mana-receive-v1/versions/r5/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r5/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: 太いチューブが数字6/疑問符に見え、腰の閉ループが支配的。色/輝度も単調。', 'actor-H64'),
+      version('mana-astra-r4', 'Astra r4', 'public/astra-mana-receive-v1/versions/r4/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r4/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。自己不採用: 開いた曲線を使っても、左右の合成輪郭が大きなU字を作る。', 'actor-H64'),
+      version('mana-astra-r3', 'Astra r3', 'public/astra-mana-receive-v1/versions/r3/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r3/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。自己不採用: 透過性は改善したが、閉じた縁が腰の輪と肩のストラップに見える。', 'actor-H64'),
+      version('mana-astra-r2', 'Astra r2', 'public/astra-mana-receive-v1/versions/r2/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r2/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: 青い膨らんだ塊が人物を覆い、供給/輸送/受領が同質に見える。', 'actor-H64'),
+      version('mana-astra-r1', 'Astra r1', 'public/astra-mana-receive-v1/versions/r1/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r1/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: H64の輸送が細い線、後半が小さな点。受領の状態が弱い。', 'actor-H64'),
       version('mana-astra-v5-pilot', 'Astra v5 pilot', 'webgpu-mana-astra-v5-pilot.html', 'webgpu-mana-astra-v5-pilot.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
       version('mana-astra-clean-v4-pilot', 'Astra clean v4 pilot', 'mana-astra-clean-v4-pilot.html', 'webgpu-mana-astra-clean-v4-pilot.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
       version('mana-astra-clean-v3', 'Astra clean v3', 'mana-astra-clean-v3-preview.html', 'webgpu-mana-astra-clean-v3.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
@@ -35,6 +44,14 @@
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
     Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([
+      version('stamina-astra-r8', 'Astra r8', 'public/astra-stamina-gain-v1/versions/r8/index.html?embed=1&height=64', 'public/astra-stamina-gain-v1/versions/r8/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。追加の脚の誤読は解消し、maleで体幹から支持点への方向は読めるが、身体照明と床の一点光に留まり、独立したEの主形/多層現象が不足。次稿は実脚に従属する少数の広い外部運動応答が必要。', 'actor-H64'),
+      version('stamina-astra-r7', 'Astra r7', 'public/astra-stamina-gain-v1/versions/r7/index.html?embed=1&height=64', 'public/astra-stamina-gain-v1/versions/r7/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。対称括弧は消えたが、身体を回る一本のオレンジ帯に見え、スタミナ回復固有の意味と層が弱い。帯の微修正を停止。', 'actor-H64'),
+      version('stamina-astra-r6', 'Astra r6', 'public/astra-stamina-gain-v1/versions/r6/index.html?embed=1&height=64', 'public/astra-stamina-gain-v1/versions/r6/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。H64で左右対称の大きなオレンジ括弧に見える。体幹から下肢への作用線と非対称の蓄積/解放が必要。', 'actor-H64'),
+      version('stamina-astra-r5', 'Astra r5', 'public/astra-stamina-gain-v1/versions/r5/index.html?embed=1&height=64', 'public/astra-stamina-gain-v1/versions/r5/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。r4との差と移動する局所ピークがH64ではほぼ見えず、現構造の微修正で完成に達しない。次稿は造形と時間設計をゼロから再設計。', 'actor-H64'),
+      version('stamina-astra-r4', 'Astra r4', 'public/astra-stamina-gain-v1/versions/r4/index.html?embed=1&height=64', 'public/astra-stamina-gain-v1/versions/r4/renderer.mjs', '品質未達・審査中・本編未採用', '作者: GPT-6-Astra。元の身体色は保持。H64で部位別・速度差が判別しづらく、完成品質は保留。', 'actor-H64'),
+      version('stamina-astra-r3', 'Astra r3', 'public/astra-stamina-gain-v1/versions/r3/index.html?embed=1&height=64', 'public/astra-stamina-gain-v1/versions/r3/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。供給→腰接触→衣服照明は読めるが、単純な黄楕円と均一な黄変で全身への流れが不足。', 'actor-H64'),
+      version('stamina-astra-r2', 'Astra r2', 'public/astra-stamina-gain-v1/versions/r2/index.html?embed=1&height=64', 'public/astra-stamina-gain-v1/versions/r2/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。広げた受信場も三叉の発光アイコンに見え、身体への蓄積が読めない。', 'actor-H64'),
+      version('stamina-astra-r1', 'Astra r1', 'public/astra-stamina-gain-v1/versions/r1/index.html?embed=1&height=64', 'public/astra-stamina-gain-v1/versions/r1/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。H64では小さな鉤と3本の細線。供給と身体蓄積が読めない。', 'actor-H64'),
       version('stamina-astra-clean-v3', 'Astra clean v3', 'stamina-astra-clean-v3-preview.html', 'webgpu-stamina-astra-clean-v3.js', '品質不採用・本編未採用', 'H64で扇形の光片から胸腹の発光ベストへ変わるが、スタミナ補給として読めず品質不採用。'),
       version('stamina-astra-clean-v2', 'Astra clean v2', 'stamina-astra-clean-v2-preview.html', 'webgpu-stamina-astra-clean-v2.js', '品質未受入・本編未採用', 'H64形状の自主レビュー記録あり。スタミナとしての独立識別評価は未実施で、最終品質は未受入。'),
       version('stamina-astra-clean-v1', 'Astra clean v1', 'stamina-astra-clean-v1-preview.html', 'webgpu-stamina-astra-clean-v1.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
@@ -101,7 +118,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v64');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v67');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
