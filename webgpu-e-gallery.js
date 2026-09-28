@@ -25,6 +25,7 @@
     'mana-pro-r03': { magnification: 2.2, focusX: 627, focusY: 310 },
     'mana-pro-r04': { magnification: 1.5, focusX: 490, focusY: 310 },
     'mana-pro-clean-r01': { magnification: 6.0, focusX: 490, focusY: 310 },
+    'mana-pro-independent-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'rational-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'ninjutsu-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'facility-bookshelf-pro-r01': { magnification: 2.0, focusX: 490, focusY: 310 },
@@ -46,10 +47,10 @@
     'luck-pro-r02', 'luck-pro-r01',
     'barrier-pro-r09', 'barrier-pro-r08', 'barrier-pro-r07', 'barrier-pro-r06', 'barrier-pro-r05', 'barrier-pro-r04', 'barrier-pro-r03', 'barrier-pro-r02', 'barrier-pro-r01',
     'stamina-pro-r05', 'stamina-pro-r04', 'stamina-pro-r03', 'stamina-pro-r02', 'stamina-pro-r01',
-    'mana-pro-clean-r01', 'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
+    'mana-pro-independent-r01', 'mana-pro-clean-r01', 'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
     'rational-pro-r01', 'ninjutsu-pro-r01',
     'facility-bookshelf-pro-r01', 'facility-reading-lamp-pro-r01', 'facility-security-console-pro-r01',
-    'item-pickup-pro-r01', 'taser-pro-r01', 'item-use-pro-r01', 'facility-next3-pro-r01', 'heart-teleport-pro-r01',
+    'item-pickup-pro-r01', 'taser-pro-r01', 'item-use-pro-r01', 'facility-next3-pro-new-r01', 'facility-next3-pro-r01', 'heart-teleport-pro-r01',
     'emp-pro-r03', 'emp-pro-r02', 'emp-pro-r01', 'emp-pro-p0',
     'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v05', 'headshot-pro-v04', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
   ]);
@@ -100,6 +101,7 @@
       version('stamina-pro-r01', 'GPT Pro r0.1', 'stamina-pro-r01-preview.html', 'stamina-pro-r01/renderer.mjs', 'GPT Pro制作・再生可能・品質未受入・SFX聴感未確認・本編未採用', '身体へ充填されるスタミナ回復案。限定的な実WebGPU再生は確認済み。原寸の全寿命、聴感、ゲーム本編での発動は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'mana-pro', title: 'マナ獲得（GPT Pro）', versions: [
+      version('mana-pro-independent-r01', 'GPT Pro 独立受領稿 r0.1', 'mana-pro-independent-r01/index.html', 'mana-pro-independent-r01/src/renderer.mjs', 'GPT Pro制作・実GPU技術再生可能・品質未達・SFX聴感未受入・本編未採用', '独立したマナ受領・蓄積案。正の獲得通知から実WebGPUの自動ループを行います。原寸H64の実画面では主形が小さな六角発光体に留まり、受領から腹部への蓄積が読めず改稿が必要です。聴感・本編接続も未受入です。', 'effect-H64', 1, true),
       version('mana-pro-clean-r01', 'GPT Pro 独立新稿 r0.1', 'mana-gain-pro-clean-r01/gallery.html', 'mana-gain-pro-clean-r01/src/renderer.js', 'GPT Pro制作・実GPU再生可能・H64視覚品質未達・SFX聴感未確認・本編未採用', '独立新稿をWebGPUで自動ループ再生。原寸H64では主形が小さな菱形状に留まり、身体への到着・蓄積が読めないため創作改稿を要します。発光とGPU描画は確認済み。聴感と本編接続は未受入です。', 'effect-H64', 1, true),
       version('mana-pro-r04', 'GPT Pro r0.4', 'webgpu-mana-pro-r04/embed.html', 'webgpu-mana-pro-r04/src/gpu.js', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '外部供給帯から身体境界の変換を経て体内へ充填する改稿。暗明H64でWebGPU描画を確認。全寿命の視覚品質とSFX聴感、本編接続は未受入です。', 'effect-H64', 1, true),
       version('mana-pro-r03', 'GPT Pro r0.3', 'webgpu-mana-pro-r03/index.html', 'webgpu-mana-pro-r03/src/renderer.js', 'GPT Pro制作・技術互換adapterで実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', 'Pro原本のWGSL三項演算子を同義のselectへ最小修正し、H64単発を実WebGPUで再生。身体への獲得表現の全寿命品質と聴感は未受入です。', 'effect-H64', 1, true),
@@ -134,6 +136,7 @@
       version('item-use-pro-r01', 'GPT Pro r0.1', 'item-use-pro-r01/r01/index.html', 'item-use-pro-r01/r01/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', 'ミネラルウォーター、海水、解毒薬の使用成立を分けた独立設計。暗明H64の6例で実WebGPU画素を確認。視覚品質、実聴、BODY動作との共存、本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'facility-next3-pro', title: '施設の新規3種（GPT Pro）', versions: [
+      version('facility-next3-pro-new-r01', 'GPT Pro 新規3種 r0.1', 'facility-next3-pro-new-r01/index.html', 'facility-next3-pro-new-r01/src/index.mjs', 'GPT Pro制作・実GPU技術再生可能・候補・品質未審査・SFX聴感未確認・本編未採用', '施設使用の3つの合成fixtureをWebGPUで自動再生します。fixtureのevent kindは技術再生用TEST_ONLY値で、サーバーのeffectKindや実ゲームのイベント対応を表しません。視覚品質・聴感・本編接続は未受入です。', 'actor-H64', 1, true),
       version('facility-next3-pro-r01', 'GPT Pro r0.1', 'facility-next3-pro-r01/index.html', 'facility-next3-pro-r01/src/renderer.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', 'カメラ三脚、投影装置、読書灯を暗明6面で自動再生。Chromeの実WebGPU描画と82件の原本テストを確認。原寸の造形・全寿命・実聴と本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
     { id: 'emp-pro', title: 'EMP（GPT Pro）', versions: [
@@ -169,7 +172,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v52');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v53');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

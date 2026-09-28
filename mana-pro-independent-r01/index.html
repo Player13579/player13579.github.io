@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mana Receive / Independent WebGPU Gallery</title><link rel="stylesheet" href="preview/style.css"></head>
+<body><main>
+<header><div class="eyebrow">DEFENDERS vs ATTACKERS / INDEPENDENT E STUDY 01</div><h1>マナの受領と蓄積</h1><p class="lead">足元の源から、厚みのある有色体を腹部へ。受領した量が充実し、内側へ収束する。</p><span class="badge">ギャラリー候補・ゲーム未導入</span></header>
+<section class="stage-section"><div class="section-top"><h2>実寸の全寿命</h2><span id="scaleLabel">H64 / 0.5 CSS px per world unit</span></div>
+<div class="stage-shell"><div class="panel-labels"><span>DARK</span><span>LIGHT</span></div><canvas id="stage" width="256" height="112" aria-label="暗い背景と明るい背景で同じマナ獲得Eを表示。キャラクターは描かない。"></canvas></div>
+<p class="caption">足元中心が原点。腹部の受領中心は (0, −61)。人形・画像素材・Canvas 2D は使用しません。</p>
+<div id="status" role="status">WebGPUを初期化しています。</div>
+<div class="primary-controls"><button id="play" disabled>正の獲得 +4 を再生</button><button id="overlap" disabled>近接する3件</button><label><input id="repeat" type="checkbox" checked> 全寿命を繰り返す</label><label>表示 <select id="scale"><option value="1">H64 実寸</option><option value="2">H128</option><option value="3">3倍検査</option></select></label></div>
+<div class="phasebar"><span id="phaseName">未再生</span><span id="phaseValue">0.000 / 1.600 owner s</span></div><div class="track"><div id="progress"></div></div>
+</section>
+<section class="control-grid">
+<div class="card"><h2>所有者時計とSFX</h2><label>移動ACC2 <select id="acc2"><option value="off">OFF</option><option value="waiting">待機</option><option value="reserved">予約</option><option value="active">実際に有効</option></select></label><label><input type="checkbox" id="moving" checked> 所有者が移動中</label><p id="rateLabel">進行率 1×</p><button id="enableAudio" disabled>音を有効化して次の獲得から試聴</button><label><input id="mute" type="checkbox" checked> ミュート</label><label><input id="verify" type="checkbox"> verify（必ず無音）</label><label><input id="reduced" type="checkbox"> reduced motion（横への蛇行のみ抑制）</label><p class="small">1件の可視フレーム確認につき1回。音だけの再生、常時ループ、遅れてからの補発音はしません。2×はピッチも上がる速度変更です。</p></div>
+<div class="card"><h2>抑制・再受信の検査</h2><label>受け手 <select id="recipientState"><option value="visible">生存・可視</option><option value="dead">死亡</option><option value="departed">退場</option><option value="vented">ベント</option><option value="invisible">透明</option><option value="offscreen">画面外</option></select></label><button id="duplicate" disabled>同じevent idを再受信</button><button id="zero" disabled>上限等による増分0</button><button id="renki" disabled>対象外のrenki</button><button id="session" disabled>ルーム・セッション切替</button><p class="small">ここで発生させるのは模擬の確定通知です。実際のゲームへの接続もマナ付与も行いません。</p></div>
+</section>
+<section class="card"><h2>静止位相の検査（無音）</h2><div class="scrub"><input id="scrub" type="range" min="0" max="1000" value="0" step="1" aria-label="静止位相"><output id="scrubValue">0.0%</output><button id="resume" disabled>通常プレビューへ戻る</button></div><p class="small">スクラブに入ると進行中のイベントと音を破棄します。静止位相を再生イベントとして登録しません。</p></section>
+<section class="card"><h2>検証の位置づけ</h2><p>同梱のNodeテストはイベント境界・時計・発音契約と数値信号を扱います。納品時のGPUコンパイル、実画素、聴感、ゲーム統合は <strong>not_run</strong>。このページが動いたことだけで品質合格とはしません。</p><p><a href="tests/verify.html">この端末でWebGPUのコンパイル・実画素検査を実行</a> · <a href="docs/ACCEPTANCE.md">受入基準</a> · <a href="docs/DESIGN.md">設計と制約</a></p></section>
+<details><summary>イベント台帳（直近）</summary><pre id="log"></pre></details>
+<footer>WebGPU + procedural geometry + original synthesized one-shot audio. No image generation. No existing Mana E source or artwork reused.</footer>
+</main><script type="module" src="preview/main.mjs"></script></body></html>
