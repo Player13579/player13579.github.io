@@ -174,6 +174,8 @@
   const notice = document.getElementById('notice');
   const versionSelect = document.getElementById('version-select');
   let fitObserver = null;
+  let previewStatusObserver = null;
+  let previewStatusPoll = null;
   const buttons = entries.map((entry, index) => {
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'item'; button.dataset.id = entry.id;
@@ -227,6 +229,9 @@
     const preview = makePreview(item); sourceLink.href = preview.href;
     sourceLink.textContent = '元のWebGPUプレビューを見る ↗';
     buttons.forEach((button, i) => button.setAttribute('aria-current', i === selectedIndex ? 'true' : 'false'));
+    previewStatusObserver?.disconnect(); previewStatusObserver = null;
+    if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll);
+    previewStatusPoll = null;
     stage.querySelector('iframe')?.remove(); notice.hidden = false;
     if (!navigator.gpu) { notice.textContent = 'このブラウザーでは WebGPU を使用できません。'; return; }
     notice.textContent = 'WebGPU プレビューを読み込んでいます…';
@@ -239,10 +244,21 @@
         const error = child.getElementById('error');
         const updateNotice = () => { const message = error?.textContent?.trim(); notice.textContent = message || ''; notice.hidden = !message; };
         updateNotice();
-        if (error?.nodeType === 1) {
-          try { new child.defaultView.MutationObserver(updateNotice).observe(error, { childList: true, characterData: true, subtree: true }); }
-          catch { /* Some browser bridges expose a status object instead of a live Node. */ }
+        const childWindow = child.defaultView;
+        const isChildNode = !!childWindow?.Node && error instanceof childWindow.Node;
+        let observing = false;
+        if (isChildNode && typeof childWindow.MutationObserver === 'function') {
+          try {
+            previewStatusObserver = new childWindow.MutationObserver(updateNotice);
+            previewStatusObserver.observe(error, { childList: true, characterData: true, subtree: true });
+            observing = true;
+          } catch {
+            previewStatusObserver?.disconnect(); previewStatusObserver = null;
+          }
         }
+        // Some preview hosts expose a status-shaped bridge value instead of a DOM Node.
+        // Poll that status so its messages still reach the gallery without unsafe observe().
+        if (!observing) previewStatusPoll = window.setInterval(updateNotice, 250);
       } catch (error) { notice.textContent = error.message; notice.hidden = false; }
     });
     iframe.addEventListener('error', () => { notice.textContent = 'プレビューを読み込めませんでした'; notice.hidden = false; });
