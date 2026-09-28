@@ -90,7 +90,7 @@ assert.match(adoptedLuck.detail, /キラキラ改修中・新版未採用/);
 const adoptedCooldown = window.__webgpuEGallery.entries.find(item => item.id === 'cooldown-astra').versions.find(item => item.id === 'astra-cooldown-benefit-r0.5');
 assert.match(adoptedCooldown.status, /ユーザー採用済み/);
 assert.match(adoptedCooldown.detail, /キラキラ改修中・新版未採用/);
-assert.match(html, /astra-history-20260928-v74/);
+assert.match(html, /astra-history-20260928-v75/);
 
 const entry = window.__webgpuEGallery.entries.find(item => item.id === 'status-cleanse-astra');
 assert(entry, 'status-recovery Astra gallery entry exists');
@@ -239,10 +239,53 @@ assert(cooldownGroup, 'Cooldown Astra replay group exists');
 const cooldownRoot = path.join(root, 'astra-cooldown-benefit-v1');
 const cooldownPagesRoot = path.join(pagesPublicRoot, 'astra-cooldown-benefit-v1');
 const cooldownManifest = JSON.parse(fs.readFileSync(path.join(cooldownRoot, 'versions.json'), 'utf8'));
-assert.equal(cooldownGroup.versions.length, 7, 'all seven technically replayable Cooldown versions are listed');
-assert.deepEqual(Array.from(cooldownGroup.versions, item => item.id),
+const sparkleSourceRoot = path.join(pagesRoot, 'astra-cooldown-benefit-r05-sparkle-v1');
+const sparklePagesRoot = path.join(pagesPublicRoot, 'astra-cooldown-benefit-r05-sparkle-v1');
+const sparklePackageRoot = path.join(root, 'astra-cooldown-benefit-r05-sparkle-v1');
+const sparkleAllowlist = JSON.parse(fs.readFileSync(path.join(sparkleSourceRoot, 'allowlist-r01-r04.json'), 'utf8'));
+assert.equal(sparkleAllowlist.files.length, 44, 'only the frozen r01-r04 package paths are published');
+for (const file of sparkleAllowlist.files) {
+  const sourcePath = path.join(sparkleSourceRoot, file.path);
+  assert(fs.existsSync(sourcePath), `frozen Cooldown sparkle source ${file.path} exists`);
+  assert.equal(fs.statSync(sourcePath).size, file.bytes, `frozen Cooldown sparkle source ${file.path} byte size matches`);
+  assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(sourcePath)).digest('hex'),
+    file.sha256, `frozen Cooldown sparkle source ${file.path} SHA-256 matches`);
+  for (const mirror of [sparklePagesRoot, sparklePackageRoot]) {
+    const publicPath = path.join(mirror, file.path);
+    assert(fs.existsSync(publicPath), `Cooldown sparkle mirror contains ${file.path}`);
+    assert.equal(fs.statSync(publicPath).size, file.bytes, `Cooldown sparkle mirror ${file.path} size matches`);
+    assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(publicPath)).digest('hex'),
+      file.sha256, `Cooldown sparkle mirror ${file.path} SHA-256 matches`);
+  }
+}
+const sparkleVersions = ['r04', 'r03', 'r02', 'r01'].map(revision => JSON.parse(
+  fs.readFileSync(path.join(sparklePagesRoot, 'versions', revision, 'VERSION.json'), 'utf8')));
+assert.equal(cooldownGroup.versions.length, 11, 'four sparkle replays plus all seven original Cooldown versions remain listed');
+assert.deepEqual(Array.from(cooldownGroup.versions.slice(0, 4), item => item.id),
+  sparkleVersions.map(item => item.id), 'Cooldown sparkle revisions are newest first');
+const sparkleStatus = { 'review-pending': /品質審査候補.*ユーザー未採用.*本編未接続/,
+  'quality-hold': /品質保留.*未採用.*本編未接続/, rejected: /品質不合格.*未採用.*本編未接続/ };
+for (let index = 0; index < sparkleVersions.length; index++) {
+  const metadata = sparkleVersions[index];
+  const version = cooldownGroup.versions[index];
+  const revision = `r0${metadata.version.match(/r0\.(\d+)$/)[1]}`;
+  assert.equal(version.id, metadata.id);
+  assert.match(version.status, sparkleStatus[metadata.qualityStatus], `${version.id} reflects its frozen quality status`);
+  assert(version.detail.includes(metadata.qualityReason), `${version.id} preserves its exact review reason`);
+  assert.equal(metadata.userAdopted, false, `${version.id} is not user adopted`);
+  assert.equal(metadata.gameIntegrated, false, `${version.id} is not game integrated`);
+  assert.equal(metadata.parentUserAdopted, true, `${version.id} preserves the adopted parent provenance`);
+  const url = new URL(version.page, 'https://example.test/webgpu-e-gallery.html');
+  assert(url.pathname.endsWith(`/public/astra-cooldown-benefit-r05-sparkle-v1/versions/${revision}/index.html`));
+  assert.equal(url.searchParams.get('embed'), '1');
+  assert.equal(url.searchParams.get('height'), '64');
+  assert.equal(url.searchParams.has('verify'), false, `${version.id} normal replay does not force mute`);
+  const expectedEffectHash = sparkleAllowlist.files.find(file => file.path === `versions/${revision}/effect.mjs`).sha256;
+  assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(sparklePagesRoot, 'versions', revision, 'effect.mjs'))).digest('hex'), expectedEffectHash);
+}
+assert.deepEqual(Array.from(cooldownGroup.versions.slice(4), item => item.id),
   cooldownManifest.versions.slice().reverse().map(item => item.id), 'Cooldown revisions are newest first');
-for (const version of cooldownGroup.versions) {
+for (const version of cooldownGroup.versions.slice(4)) {
   const metadata = cooldownManifest.versions.find(item => item.id === version.id);
   const revision = `r0${version.id.match(/r0\.(\d+)$/)[1]}`;
   assert(metadata, `${version.id} has authoritative metadata`);
@@ -281,6 +324,7 @@ const cooldownAdopted = cooldownManifest.versions.find(item => item.id === 'astr
 assert.equal(cooldownAdopted.userAdopted, true, 'Cooldown r0.5 is the user-selected visual version');
 assert.equal(cooldownAdopted.gameAdopted, false, 'visual selection does not mark game integration complete');
 assert.match(cooldownGroup.versions.find(item => item.id === cooldownAdopted.id).detail, /視覚版の選択.*本編への接続と発動は検証中/);
+assert.match(cooldownGroup.versions.find(item => item.id === cooldownAdopted.id).detail, /キラキラ改修中・新版未採用/);
 const release = source.match(/galleryRelease', '(astra-history-20260928-v\d+)'/);
-assert(release && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
-console.log(`PASS: ${entry.versions.length} status-recovery, ${cooldownGroup.versions.length} Cooldown, ${manaGroup.versions.length} Mana, ${staminaGroup.versions.slice(0, 8).length} Stamina replay versions; ${allowlist.publishFiles.length} status package files present`);
+assert(release && release[1] === 'astra-history-20260928-v75' && html.includes(`webgpu-e-gallery.js?v=${release[1]}`), 'HTML references the matching catalog cache key');
+console.log(`PASS: ${entry.versions.length} status-recovery, ${cooldownGroup.versions.length} Cooldown, ${manaGroup.versions.length} Mana, ${staminaGroup.versions.slice(0, 8).length} Stamina replay versions; ${allowlist.publishFiles.length} status package files and ${sparkleAllowlist.files.length} Cooldown sparkle files verified`);

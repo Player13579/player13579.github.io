@@ -1,0 +1,80 @@
+{
+  "id": "cooldown-benefit-astra-r05-sparkle-r04",
+  "version": "astra-cooldown-benefit-r0.5-sparkle-r0.4",
+  "eventId": "gain-cooldownReduction",
+  "creatorModel": "gpt-6-astra",
+  "creatorDisplayName": "GPT-6-Astra",
+  "parentVersion": "astra-cooldown-benefit-r0.5",
+  "parentUserAdopted": true,
+  "parentSource": {
+    "sourceDirectory": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\.codex-runtime\\pages-telemetry-release\\public\\astra-cooldown-benefit-v1\\versions\\r05",
+    "adoptedVersion": "astra-cooldown-benefit-r0.5",
+    "authorship": "GPT-6-Astra",
+    "files": [
+      {
+        "path": "effect.mjs",
+        "sha256": "889d3506cb14558f3f62c58c2318fc806829e58637a9a16288847526572c29b2",
+        "bytes": 2894
+      },
+      {
+        "path": "index.html",
+        "sha256": "6704afcc6f0b1f864e9b05347c19eb6d678ead9d0e1b7ec87fdba3b25ab38b99",
+        "bytes": 1589
+      },
+      {
+        "path": "preview.mjs",
+        "sha256": "2e8dfd77487c4ef449da563ebd70c8217e9d7760cb7290ccdb529e282d04503d",
+        "bytes": 5444
+      },
+      {
+        "path": "shader-r05.mjs",
+        "sha256": "7f60acb8ee8c74e34cc535c8df0d53539b2849b2f8c78a25578f9c1f108ad58f",
+        "bytes": 4222
+      },
+      {
+        "path": "sophia-front-five-v753.png",
+        "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+        "bytes": 243081
+      }
+    ],
+    "sourceUnchangedRequired": true
+  },
+  "qualityStatus": "review-pending",
+  "qualityReason": "Primary H64 full-life review: compression corners -> feet -> both body sides are readable while original geometry/emission is preserved. Frozen visual-quality candidate; user adoption and auditory review pending.",
+  "technicalStatus": "webgpu-replay-verified",
+  "userAdopted": false,
+  "gameIntegrated": false,
+  "publishedByWorker": false,
+  "requiredFiles": [
+    "effect.mjs",
+    "shader-sparkle-r04.mjs",
+    "preview.mjs",
+    "index.html",
+    "sophia-front-five-v753.png",
+    "original-r05/effect.mjs",
+    "original-r05/index.html",
+    "original-r05/preview.mjs",
+    "original-r05/shader-r05.mjs",
+    "original-r05/sophia-front-five-v753.png"
+  ],
+  "sourceSha256": {
+    "effect.mjs": "3338b3a2ce8574c635121234ff82aa099cb9e8c7080b77d16914a62dfaf5c4e6",
+    "shader-sparkle-r04.mjs": "369e076862285656327fc6dd7cc18f3ab3ffb38e411a09bfae86c13e10eff0c7",
+    "preview.mjs": "adb6cae7f7107a8abd4e86d7cf765914c888594f380d2b1ebad56288ae4b7188",
+    "index.html": "a002eff27cff4ee4bc9d5c742c5bf882d6977c3b21a674e7a91ceb240681aa4e",
+    "sophia-front-five-v753.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "original-r05/effect.mjs": "889d3506cb14558f3f62c58c2318fc806829e58637a9a16288847526572c29b2",
+    "original-r05/index.html": "6704afcc6f0b1f864e9b05347c19eb6d678ead9d0e1b7ec87fdba3b25ab38b99",
+    "original-r05/preview.mjs": "2e8dfd77487c4ef449da563ebd70c8217e9d7760cb7290ccdb529e282d04503d",
+    "original-r05/shader-r05.mjs": "7f60acb8ee8c74e34cc535c8df0d53539b2849b2f8c78a25578f9c1f108ad58f",
+    "original-r05/sophia-front-five-v753.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "gpuSubmissions": 350,
+  "loops": 3,
+  "originalOffPixelMatches": 34,
+  "preview": "versions/r04/index.html?verify=1&embed=1&height=64",
+  "evidence": "versions/r04/evidence/",
+  "auditoryReview": "not_run",
+  "actualGalleryIframeVerification": "not_run",
+  "gpuPerformance": "not_measured"
+}

@@ -107,6 +107,10 @@
       version('status-cleanse-astra-r01', 'Astra r0.1', 'astra-status-cleanse-v1/versions/r01/index.html?embed=1&h=64', 'astra-status-cleanse-v1/versions/r01/cleanse.mjs', '品質不合格・本編未採用', '主形が小さな杯に見え、ray-marchに帯状aliasがある。', 'actor-H64')
     ]) }),
     Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮 · Astra履歴', versions: Object.freeze([
+      version('cooldown-benefit-astra-r05-sparkle-r04', 'Astra r0.5 sparkle r0.4', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r04/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r04/effect.mjs', '品質審査候補・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。主担当H64全寿命レビュー候補: 圧縮角→足元→身体両側の順が読め、原版形状/発光を維持。品質理由: Primary H64 full-life review: compression corners -> feet -> both body sides are readable while original geometry/emission is preserved. Frozen visual-quality candidate; user adoption and auditory review pending.', 'actor-H64'),
+      version('cooldown-benefit-astra-r05-sparkle-r03', 'Astra r0.5 sparkle r0.3', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r03/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r03/effect.mjs', '品質保留・未採用・本編未接続', '作者: GPT-6-Astra。品質理由: Primary review: prism-corner sparkles visible, beneficiary sparkles too weak at H64 in phase .715-.845; not adopted.', 'actor-H64'),
+      version('cooldown-benefit-astra-r05-sparkle-r02', 'Astra r0.5 sparkle r0.2', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r02/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r02/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra。品質理由: 受益者光条の幅は増えたが、中心が身体内にあり、H64で十字の核と腕を独立して判読しにくい。', 'actor-H64'),
+      version('cooldown-benefit-astra-r05-sparkle-r01', 'Astra r0.5 sparkle r0.1', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r01/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra。品質理由: 圧縮角の光条は見えるが、受益者側の光条が元の強発光の内側に収まり、H64でキラキラの形を十分に読めない。', 'actor-H64'),
       version('astra-cooldown-benefit-r0.7', 'Astra r0.7', 'public/astra-cooldown-benefit-v1/versions/r07/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r07/effect.mjs', '品質審査中・本編未採用', '作者: GPT-6-Astra。主担当へH64/H160証拠を提出済み。品質判定待ちで、本編未採用です。', 'actor-H64'),
       version('astra-cooldown-benefit-r0.6', 'Astra r0.6', 'public/astra-cooldown-benefit-v1/versions/r06/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r06/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。奥行きの層間隔が残り最後の一層へ収束しない。局所反射の左側が肩より顔寄り。', 'actor-H64'),
       version('astra-cooldown-benefit-r0.5', 'Astra r0.5', 'public/astra-cooldown-benefit-v1/versions/r05/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r05/effect.mjs', 'ユーザー採用済み・本編接続は検証中', '作者: GPT-6-Astra。ユーザー採用は視覚版の選択。旧H64全寿命レビュー: 圧縮→消失→受益者応答の順序は成立。主形が琥珀の箱型容器、終端が一様な全身mint着色に見え、固有性と空間的E品質が未達。本編への接続と発動は検証中。キラキラ改修中・新版未採用。', 'actor-H64'),
@@ -154,7 +158,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v74');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v75');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
