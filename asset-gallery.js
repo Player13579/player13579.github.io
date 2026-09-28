@@ -8,7 +8,7 @@
     // These H64 replay packages occupy a small part of their 980x620 source
     // canvas. Enlarge the gallery view only; each preview still renders H64.
     'mana-astra': { magnification: 4.25, focusX: 245, focusY: 310 },
-    'stamina-astra': { magnification: 4.25, focusX: 518, focusY: 343 },
+    'stamina-astra': { magnification: 4.25, focusX: 490, focusY: 480 },
     'status-cleanse-astra': { magnification: 4.25, focusX: 490, focusY: 310 },
     'cooldown-astra': { magnification: 1.0, focusX: 490, focusY: 310 },
     'barrier-pro-r07': { magnification: 1.0, focusX: 490, focusY: 310 }
