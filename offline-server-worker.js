@@ -5790,7 +5790,7 @@ function acquireGoldAsCredits(room, player, source = "gold-acquisition") {
   return grantCredits(room, player, GOLD_INSTANT_CREDITS, source);
 }
 
-function pushMapObjectGainAtes(room, player, effectKind, recoveredHealth = null) {
+function pushMapObjectGainAtes(room, player, effectKind, recoveredHealth = null, positiveManaDelta = false) {
   const categories = {
     stamina: ["stamina"], credits: ["credits"], mana: ["mana"],
     acceleration: ["acceleration"], luckBoost: ["luckBoost"], overheal: ["overheal"],
@@ -5804,6 +5804,7 @@ function pushMapObjectGainAtes(room, player, effectKind, recoveredHealth = null)
   }[effectKind] || [];
   categories.forEach((category, index) => {
     if (category === "overheal" && !(recoveredHealth > 0)) return;
+    if (category === "mana" && positiveManaDelta !== true) return;
     pushGainAte(room, player, category, {
       variant: `object:${effectKind}:${index}`,
       durationMs: 1450 + index * 120
@@ -12781,6 +12782,7 @@ function useMapObject(room, player, objectId) {
   }
 
   let recoveredHealth = null;
+  let positiveManaDelta = false;
   if (object.effectKind === "stamina") {
     replenishStamina(player, timestamp, true, 1, room);
     grantStamina(room, player, Math.max(1, Number(object.effectAmount) || 0), object.label, timestamp);
@@ -12825,7 +12827,9 @@ function useMapObject(room, player, objectId) {
     healBodyHits(player, 1);
     replenishStamina(player, timestamp, true, 1, room);
     grantStamina(room, player, 120, object.label, timestamp);
-    setMana(room, player, (Number(player.mana) || 0) + 1, object.label);
+    const manaBefore = Number(player.mana) || 0;
+    const manaAfter = setMana(room, player, manaBefore + 1, object.label);
+    positiveManaDelta = manaAfter > manaBefore;
     setImmediateFeedback(player, object.label, "HP +1・スタミナ +120・マナ +1");
   } else if (object.effectKind === "mineralWater") {
     replenishStamina(player, timestamp, true, 1, room);
@@ -12844,7 +12848,9 @@ function useMapObject(room, player, objectId) {
   } else if (object.effectKind === "heal") {
     healBodyHits(player, object.effectAmount);
   } else if (object.effectKind === "mana") {
-    setMana(room, player, (Number(player.mana) || 0) + Math.max(1, Number(object.effectAmount) || 1), object.label);
+    const manaBefore = Number(player.mana) || 0;
+    const manaAfter = setMana(room, player, manaBefore + Math.max(1, Number(object.effectAmount) || 1), object.label);
+    positiveManaDelta = manaAfter > manaBefore;
   } else {
     throw new ApiError(400, "このオブジェクトは接触時に自動で作動します。");
   }
@@ -12861,7 +12867,7 @@ function useMapObject(room, player, objectId) {
     effectKind: object.effectKind,
     objectCausalId
   });
-  pushMapObjectGainAtes(room, player, object.effectKind, recoveredHealth);
+  pushMapObjectGainAtes(room, player, object.effectKind, recoveredHealth, positiveManaDelta);
   const medicalUseSound = {
     "v302-medical-diagnosticBed-1": "medicalBedUse",
     "v302-medical-medicalCabinet-2": "medicalCabinetUse",
