@@ -5,20 +5,57 @@
     'heal-astra-prototype': { magnification: 4, focusX: 490, focusY: 310 },
     'sunbeam-astra-clean-v3': { magnification: 1.18, focusX: 490, focusY: 310 },
     'luck-astra-clean-v4': { magnification: 3.5, focusX: 490, focusY: 195 },
+    'barrier-astra': { magnification: 2.3, focusX: 510, focusY: 370 },
     'barrier-pro-r07': { magnification: 1.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1) =>
-    Object.freeze({ id, title, page, source, status, detail, anchor, zoom });
-  // Only user-adopted E versions remain in the public gallery.
+    Object.freeze({ id, title, page, source, status, detail, anchor, zoom, replayable: true });
+  // List technically replayable Astra versions, including trials that did not pass quality review.
   const entries = Object.freeze([
     Object.freeze({ id: 'heal-astra', title: 'ヒール', versions: Object.freeze([
       version('heal-astra-prototype', 'Astra版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', 'ユーザー品質採用・発光と主形を確認済み', '採用済みヒール。連続再生の全寿命と聴感は未受入です。', 'actor-H64', 0.7937)
     ]) }),
     Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', versions: Object.freeze([
-      version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', 'ユーザー品質採用・本編ソース接続済み', '手元から伝播する三つの光路を持つ採用版。実イベントのWebGPU描画とSFXの公開受入は未了です。', 'effect-H64')
+      version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', '品質合格・採用済み', '手元から伝播する三つの光路を持つ採用版。', 'effect-H64'),
+      version('sunbeam-astra-clean-v2', 'Astra v2', 'sunbeam-astra-clean-v2-preview.html', 'webgpu-sunbeam-astra-clean-v2.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64'),
+      version('sunbeam-astra-clean-v1', 'Astra v1', 'sunbeam-astra-clean-v1-preview.html', 'webgpu-sunbeam-astra-clean-v1.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64')
     ]) }),
     Object.freeze({ id: 'luck-astra', title: '幸運', versions: Object.freeze([
-      version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', 'ユーザー品質採用・本編ソース接続済み', '採用済み幸運v4。実イベントのWebGPU描画とSFXの公開受入は未了です。')
+      version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', '品質合格・採用済み', '採用済み幸運v4.'),
+      version('luck-astra-clean-v3', 'Astra v3', 'luck-astra-v3-preview.html', 'webgpu-luck-astra-v3.js', '却下・品質未達・本編未採用', '履歴上WebGPU再生可能。翼の見た目が品質基準に届かず却下。'),
+      version('luck-astra-clean-v2', 'Astra v2', 'luck-astra-v2-preview.html', 'webgpu-luck-astra-v2.js', '却下・品質未達・本編未採用', '履歴上WebGPU再生可能。翼の見た目が品質基準に届かず却下。'),
+      version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
+    ]) }),
+    Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+      version('mana-astra-v5-pilot', 'Astra v5 pilot', 'webgpu-mana-astra-v5-pilot.html', 'webgpu-mana-astra-v5-pilot.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
+      version('mana-astra-clean-v4-pilot', 'Astra clean v4 pilot', 'mana-astra-clean-v4-pilot.html', 'webgpu-mana-astra-clean-v4-pilot.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
+      version('mana-astra-clean-v3', 'Astra clean v3', 'mana-astra-clean-v3-preview.html', 'webgpu-mana-astra-clean-v3.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
+      version('mana-astra-clean-v2', 'Astra clean v2', 'mana-astra-clean-v2-preview.html', 'webgpu-mana-astra-clean-v2.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
+      version('mana-astra-clean-v1', 'Astra clean v1', 'mana-astra-clean-v1-preview.html', 'webgpu-mana-astra-clean-v1.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
+      version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
+    ]) }),
+    Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([
+      version('stamina-astra-clean-v3', 'Astra clean v3', 'stamina-astra-clean-v3-preview.html', 'webgpu-stamina-astra-clean-v3.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
+      version('stamina-astra-clean-v2', 'Astra clean v2', 'stamina-astra-clean-v2-preview.html', 'webgpu-stamina-astra-clean-v2.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
+      version('stamina-astra-clean-v1', 'Astra clean v1', 'stamina-astra-clean-v1-preview.html', 'webgpu-stamina-astra-clean-v1.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
+      version('stamina-astra-zero-v2', 'Astra zero v2', 'webgpu-stamina-astra-zero-v2-preview.html', 'webgpu-stamina-astra-zero-v2-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU再生済み。H64シルエットと移送前面が読みにくい。'),
+      version('stamina-astra-zero-v1', 'Astra zero v1', 'webgpu-stamina-astra-zero-preview.html', 'webgpu-stamina-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU全寿命連続再生済み。形状とSFXが品質未達。')
+    ]) }),
+    Object.freeze({ id: 'emp-astra', title: 'EMP', versions: Object.freeze([
+      version('emp-astra-zero-v1', 'Astra zero v1', 'webgpu-emp-astra-zero-preview.html', 'webgpu-emp-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPUでチャージ、放電、共鳴、キャンセル、保管ロックを再生済み。')
+    ]) }),
+    Object.freeze({ id: 'barrier-astra', title: 'バリア · Astra履歴', versions: Object.freeze([
+      version('barrier-astra-r5r2', 'Astra r5 r2', 'webgpu-barrier-astra-v5-r2-gallery-preview.html', 'webgpu-barrier-astra-v5-gallery-runtime.js', '品質不合格・本編未採用', 'アーカイブ試作。青い球状に見えるとして不合格。'),
+      version('barrier-astra-r5r1', 'Astra r5 r1', 'webgpu-barrier-astra-v5-r1-gallery-preview.html', 'webgpu-barrier-astra-v5-gallery-runtime.js', '品質不合格・本編未採用', 'アーカイブ試作。固い三日月状のカップに見えるとして不合格。'),
+      version('barrier-astra-r5', 'Astra r5 r0', 'webgpu-barrier-astra-v5-r0-gallery-preview.html', 'webgpu-barrier-astra-v5-gallery-runtime.js', '品質不合格・本編未採用', 'アーカイブ試作。矩形の筒に見えるとして不合格。'),
+      version('barrier-astra-review-fixes', 'Astra v4 review fixes', 'webgpu-barrier-astra-zero-v4reviewfix-preview.html', 'webgpu-barrier-astra-zero-v4reviewfix-preview.js', '品質不合格・本編未採用', 'アーカイブ試作。'),
+      version('barrier-astra-optics1', 'Astra v4 optics 1', 'webgpu-barrier-astra-zero-v4optics1-preview.html', 'webgpu-barrier-astra-zero-v4optics1-preview.js', '品質未受入・本編未採用', 'アーカイブ試作。'),
+      version('barrier-astra-r4', 'Astra r4', 'webgpu-barrier-astra-zero-v3r4-preview.html', 'webgpu-barrier-astra-zero-v3r4-preview.js', '品質未受入・本編未採用', 'アーカイブ試作。'),
+      version('barrier-astra-r3', 'Astra r3', 'webgpu-barrier-astra-zero-v3r3-preview.html', 'webgpu-barrier-astra-zero-v3r3-preview.js', '品質未受入・本編未採用', 'アーカイブ試作。'),
+      version('barrier-astra-r2', 'Astra r2', 'webgpu-barrier-astra-zero-v3r2-preview.html', 'webgpu-barrier-astra-zero-v3r2-preview.js', '品質未受入・本編未採用', 'アーカイブ試作。'),
+      version('barrier-astra-r1', 'Astra r1', 'webgpu-barrier-astra-zero-v3-preview.html', 'webgpu-barrier-astra-zero-v3-preview.js', '品質未受入・本編未採用', 'アーカイブ試作。'),
+      version('barrier-astra-zero-v2', 'Astra zero v2', 'webgpu-barrier-astra-zero-v2-preview.html', 'webgpu-barrier-astra-zero-v2-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU再生可能。'),
+      version('barrier-astra-zero-v1', 'Astra zero v1', 'webgpu-barrier-astra-zero-preview.html', 'webgpu-barrier-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU再生可能。')
     ]) }),
     Object.freeze({ id: 'barrier-pro', title: 'バリア', versions: Object.freeze([
       version('barrier-pro-r07', 'GPT Pro r0.7', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', 'ユーザー品質採用・本編接続済み・SFX聴感未確認', 'ユーザーが版指定で採用したr0.7。制作元の帰属は保持します。実ゲーム発動と聴感の受入は未了です。', 'effect-H64')
@@ -32,7 +69,6 @@
   const notice = document.getElementById('notice');
   const versionSelect = document.getElementById('version-select');
   let fitObserver = null;
-  let previewStatusObserver = null;
   let previewStatusPoll = null;
   const buttons = entries.map((entry, index) => {
     const button = document.createElement('button');
@@ -47,7 +83,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'adopted-only-20260928-v58');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v60');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
@@ -60,6 +96,7 @@
     const scale = fit * view.magnification;
     iframe.style.left = `${stage.clientWidth / 2 - view.focusX * scale}px`;
     iframe.style.top = `${stage.clientHeight / 2 - view.focusY * scale}px`;
+    iframe.style.transformOrigin = 'top left';
     iframe.style.transform = `scale(${scale})`;
     iframe.dataset.fitScale = String(fit);
     iframe.dataset.displayScale = String(scale);
@@ -87,7 +124,6 @@
     const preview = makePreview(item); sourceLink.href = preview.href;
     sourceLink.textContent = '元のWebGPUプレビューを見る ↗';
     buttons.forEach((button, i) => button.setAttribute('aria-current', i === selectedIndex ? 'true' : 'false'));
-    previewStatusObserver?.disconnect(); previewStatusObserver = null;
     if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll);
     previewStatusPoll = null;
     stage.querySelector('iframe')?.remove(); notice.hidden = false;
@@ -102,21 +138,9 @@
         const error = child.getElementById('error');
         const updateNotice = () => { const message = error?.textContent?.trim(); notice.textContent = message || ''; notice.hidden = !message; };
         updateNotice();
-        const childWindow = child.defaultView;
-        const isChildNode = !!childWindow?.Node && error instanceof childWindow.Node;
-        let observing = false;
-        if (isChildNode && typeof childWindow.MutationObserver === 'function') {
-          try {
-            previewStatusObserver = new childWindow.MutationObserver(updateNotice);
-            previewStatusObserver.observe(error, { childList: true, characterData: true, subtree: true });
-            observing = true;
-          } catch {
-            previewStatusObserver?.disconnect(); previewStatusObserver = null;
-          }
-        }
-        // Some preview hosts expose a status-shaped bridge value instead of a DOM Node.
-        // Poll that status so its messages still reach the gallery without unsafe observe().
-        if (!observing) previewStatusPoll = window.setInterval(updateNotice, 250);
+        // Preview hosts differ in how they expose status; polling avoids cross-frame
+        // Node identity failures during rapid version switching.
+        previewStatusPoll = window.setInterval(updateNotice, 250);
       } catch (error) { notice.textContent = error.message; notice.hidden = false; }
     });
     iframe.addEventListener('error', () => { notice.textContent = 'プレビューを読み込めませんでした'; notice.hidden = false; });
