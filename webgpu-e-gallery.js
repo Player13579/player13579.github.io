@@ -19,7 +19,10 @@
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const entries = Object.freeze([
     Object.freeze({ id: 'heal-astra', title: 'ヒール', versions: Object.freeze([
-      version('heal-astra-prototype', 'Astra版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', 'ユーザー品質採用・発光と主形を確認済み', '採用済みヒール。連続再生の全寿命と聴感は未受入です。', 'actor-H64', 0.7937)
+      version('heal-astra-sparkle-r1', 'Astra sparkle r1', 'public/astra-heal-sparkle-r1/index.html', 'public/astra-heal-sparkle-r1/heal-sparkle.js', '品質審査候補・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。H64暗/明レビューでは初期回復と維持中のsparkleを確認。明背景の一部でコントラスト低下あり。聴感と本編統合は未検証。採用済み原版の採用判断は継承しません。', 'actor-H64'),
+      version('heal-astra-sparkle-draft-b', 'Astra sparkle draft B', 'public/astra-heal-sparkle-r1/draft-b/index.html', 'public/astra-heal-sparkle-r1/draft-b/heal-sparkle.js', '品質不合格・旧試作・未採用', '作者: GPT-6-Astra。履歴品質理由: Receiver moved into torso; maintenance sparkle still too small. 後続r1に置換。', 'actor-H64'),
+      version('heal-astra-sparkle-draft-a', 'Astra sparkle draft A', 'public/astra-heal-sparkle-r1/draft-a/index.html', 'public/astra-heal-sparkle-r1/draft-a/heal-sparkle.js', '品質不合格・旧試作・未採用', '作者: GPT-6-Astra。履歴品質理由: Maintenance sparkle too weak; one receiver anchor near face. 後続r1に置換。', 'actor-H64'),
+      version('heal-astra-prototype', 'Astra採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', 'ユーザー品質採用・発光と主形を確認済み', '採用済みヒール原版。キラキラ改修中・新版未採用。連続再生の全寿命と聴感は未受入です。', 'actor-H64', 0.7937)
     ]) }),
     Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', versions: Object.freeze([
       version('sunbeam-astra-clean-v3', 'Astra v3', 'sunbeam-astra-clean-v3-preview.html', 'webgpu-sunbeam-astra-clean-v3.js', '品質合格・採用済み', '手元から伝播する三つの光路を持つ採用版。', 'effect-H64'),
@@ -27,7 +30,7 @@
       version('sunbeam-astra-clean-v1', 'Astra v1', 'sunbeam-astra-clean-v1-preview.html', 'webgpu-sunbeam-astra-clean-v1.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64')
     ]) }),
     Object.freeze({ id: 'luck-astra', title: '幸運', versions: Object.freeze([
-      version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', '品質合格・採用済み', '採用済み幸運v4.'),
+      version('luck-astra-clean-v4', 'Astra v4', 'luck-astra-v4-preview.html', 'webgpu-luck-astra-v4.js', '品質合格・採用済み', '採用済み幸運v4。キラキラ改修中・新版未採用。'),
       version('luck-astra-clean-v3', 'Astra v3', 'luck-astra-v3-preview.html', 'webgpu-luck-astra-v3.js', '却下・品質未達・本編未採用', '履歴上WebGPU再生可能。翼の見た目が品質基準に届かず却下。'),
       version('luck-astra-clean-v2', 'Astra v2', 'luck-astra-v2-preview.html', 'webgpu-luck-astra-v2.js', '却下・品質未達・本編未採用', '履歴上WebGPU再生可能。翼の見た目が品質基準に届かず却下。'),
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
@@ -106,7 +109,7 @@
     Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮 · Astra履歴', versions: Object.freeze([
       version('astra-cooldown-benefit-r0.7', 'Astra r0.7', 'public/astra-cooldown-benefit-v1/versions/r07/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r07/effect.mjs', '品質審査中・本編未採用', '作者: GPT-6-Astra。主担当へH64/H160証拠を提出済み。品質判定待ちで、本編未採用です。', 'actor-H64'),
       version('astra-cooldown-benefit-r0.6', 'Astra r0.6', 'public/astra-cooldown-benefit-v1/versions/r06/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r06/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。奥行きの層間隔が残り最後の一層へ収束しない。局所反射の左側が肩より顔寄り。', 'actor-H64'),
-      version('astra-cooldown-benefit-r0.5', 'Astra r0.5', 'public/astra-cooldown-benefit-v1/versions/r05/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r05/effect.mjs', 'ユーザー採用済み・本編接続は検証中', '作者: GPT-6-Astra。ユーザー採用は視覚版の選択。旧H64全寿命レビュー: 圧縮→消失→受益者応答の順序は成立。主形が琥珀の箱型容器、終端が一様な全身mint着色に見え、固有性と空間的E品質が未達。本編への接続と発動は検証中。', 'actor-H64'),
+      version('astra-cooldown-benefit-r0.5', 'Astra r0.5', 'public/astra-cooldown-benefit-v1/versions/r05/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r05/effect.mjs', 'ユーザー採用済み・本編接続は検証中', '作者: GPT-6-Astra。ユーザー採用は視覚版の選択。旧H64全寿命レビュー: 圧縮→消失→受益者応答の順序は成立。主形が琥珀の箱型容器、終端が一様な全身mint着色に見え、固有性と空間的E品質が未達。本編への接続と発動は検証中。キラキラ改修中・新版未採用。', 'actor-H64'),
       version('astra-cooldown-benefit-r0.4', 'Astra r0.4', 'public/astra-cooldown-benefit-v1/versions/r04/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r04/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。立体前後差はあるが琥珀リボンの通過に見える。H160のray-step縞、意味と最終状態の弱さ。', 'actor-H64'),
       version('astra-cooldown-benefit-r0.3', 'Astra r0.3', 'public/astra-cooldown-benefit-v1/versions/r03/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r03/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。琥珀→mintの量変化は前進だが平面的な砂時計アイコンに見え、空間的Eの水準に達しない。', 'actor-H64'),
       version('astra-cooldown-benefit-r0.2', 'Astra r0.2', 'public/astra-cooldown-benefit-v1/versions/r02/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r02/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。身体前を三本の弧が通過するように見え、待機の短縮と受益者の変化が読めない。', 'actor-H64'),
@@ -151,7 +154,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v73');
+    preview.searchParams.set('galleryRelease', 'astra-history-20260928-v74');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

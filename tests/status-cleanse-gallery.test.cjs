@@ -15,6 +15,23 @@ const frozenHandoff = JSON.parse(fs.readFileSync(path.join(pagesRoot, 'astra-sta
 const source = fs.readFileSync(path.join(root, 'webgpu-e-gallery.js'), 'utf8');
 const html = fs.readFileSync(path.join(root, 'webgpu-e-gallery.html'), 'utf8');
 
+const healPackageRoot = path.join(root, 'astra-heal-sparkle-r1');
+const healPagesPackageRoot = path.join(pagesPublicRoot, 'astra-heal-sparkle-r1');
+const healManifest = JSON.parse(fs.readFileSync(path.join(healPackageRoot, 'replay-manifest.json'), 'utf8'));
+const healAllowlist = JSON.parse(fs.readFileSync(path.join(pagesRoot, 'astra-heal-sparkle-r1', 'package-files.json'), 'utf8'));
+assert.equal(healManifest.id, 'heal-astra-sparkle-r1');
+assert.equal(healManifest.quality, 'candidate');
+assert.equal(healAllowlist.files.length, 27, 'only the frozen Heal package allowlist is published');
+for (const mirror of [healPackageRoot, healPagesPackageRoot]) {
+  for (const file of healAllowlist.files) {
+    const target = path.join(mirror, file.path);
+    assert(fs.existsSync(target), `Heal package file ${file.path} exists in both mirrors`);
+    assert.equal(fs.statSync(target).size, file.bytes, `Heal package file ${file.path} size matches freeze`);
+    assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(target)).digest('hex'),
+      file.sha256, `Heal package file ${file.path} hash matches freeze`);
+  }
+}
+
 for (const group of ['mana-astra', 'stamina-astra', 'status-cleanse-astra']) {
   const match = source.match(new RegExp(`'${group}': \\{ magnification: ([\\d.]+), focusX: ([\\d.]+), focusY: ([\\d.]+) \\}`));
   assert(match, `${group} has a gallery-only magnification and focus`);
@@ -48,6 +65,32 @@ vm.runInNewContext(source, {
   location: { search: '', href: 'https://example.test/webgpu-e-gallery.html' }, navigator: { gpu: false },
   ResizeObserver: class { observe() {} disconnect() {} }
 });
+
+const healGroup = window.__webgpuEGallery.entries.find(item => item.id === 'heal-astra');
+assert(healGroup, 'Heal Astra replay group exists');
+assert.deepEqual(Array.from(healGroup.versions, item => item.id), [
+  healManifest.id, ...healManifest.history.slice().reverse().map(item => item.id), 'heal-astra-prototype'
+], 'Heal sparkle revisions are newest first while retaining the adopted original');
+const healCandidate = healGroup.versions[0];
+assert.match(healCandidate.status, /品質審査候補.*未採用.*本編未接続/);
+assert.match(healCandidate.detail, /明背景.*コントラスト低下.*聴感と本編統合は未検証/);
+for (const historical of healManifest.history) {
+  const version = healGroup.versions.find(item => item.id === historical.id);
+  assert.match(version.status, /品質不合格.*旧試作.*未採用/);
+  assert(version.detail.includes(historical.qualityReason), `${historical.id} keeps its exact recorded review reason`);
+  const pageUrl = new URL(version.page, 'https://example.test/webgpu-e-gallery.html');
+  assert(pageUrl.pathname.endsWith(`/public/astra-heal-sparkle-r1/${historical.entry}`));
+  assert.equal(pageUrl.searchParams.has('verify'), false, `${historical.id} does not force verification mute`);
+}
+const adoptedHeal = healGroup.versions.find(item => item.id === 'heal-astra-prototype');
+assert.match(adoptedHeal.status, /ユーザー品質採用/);
+assert.match(adoptedHeal.detail, /キラキラ改修中・新版未採用/);
+const adoptedLuck = window.__webgpuEGallery.entries.find(item => item.id === 'luck-astra').versions[0];
+assert.match(adoptedLuck.detail, /キラキラ改修中・新版未採用/);
+const adoptedCooldown = window.__webgpuEGallery.entries.find(item => item.id === 'cooldown-astra').versions.find(item => item.id === 'astra-cooldown-benefit-r0.5');
+assert.match(adoptedCooldown.status, /ユーザー採用済み/);
+assert.match(adoptedCooldown.detail, /キラキラ改修中・新版未採用/);
+assert.match(html, /astra-history-20260928-v74/);
 
 const entry = window.__webgpuEGallery.entries.find(item => item.id === 'status-cleanse-astra');
 assert(entry, 'status-recovery Astra gallery entry exists');
