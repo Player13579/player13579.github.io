@@ -1,0 +1,14 @@
+{
+  "creative_authority": "この会話のユーザー提示B仕様・固定権威契約",
+  "B_repository": "https://github.com/player13579/B",
+  "B_commit": "8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1",
+  "read_evidence": ["B commit metadata", "B tree with base/extension blob hashes", "基底.md header at pinned commit", "DVA候補repository root directory metadata only"],
+  "excluded_content_reads": ["既存E implementation files", "Sol/Astra designs", "normal teleport E", "BODY pose shaping/code/audio"],
+  "technical_primary_references": [
+    {"title": "WebGPU specification", "url": "https://www.w3.org/TR/webgpu/", "used_for": "shader/pipeline、動的uniform、queue、明示destroyのAPI契約"},
+    {"title": "WebGPU Shading Language", "url": "https://www.w3.org/TR/WGSL/", "used_for": "WGSL module・型・関数・shader構造。特定VFX造形を参照したものではない。"},
+    {"title": "Web Audio API 1.1", "url": "https://www.w3.org/TR/webaudio/", "used_for": "AudioContext、AudioBufferSourceNode、AudioParam、graph解放"},
+    {"title": "Dawn bindings for NodeJS", "url": "https://dawn.googlesource.com/dawn/+/refs/heads/main/src/dawn/node/README.md", "used_for": "代替の検査経路の可用性調査。packageを取得できず未実行。"}
+  ],
+  "provenance_limit": "B正本の全文バイト再比較・DVA本編接続・実GPU実行を済ませたとは記録しない。"
+}

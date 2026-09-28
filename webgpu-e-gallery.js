@@ -34,6 +34,7 @@
     'item-use-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'stamina-pro-r05': { magnification: 1.0, focusX: 490, focusY: 310 },
     'facility-next3-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
+    'heart-teleport-pro-r01': { magnification: 1.0, focusX: 490, focusY: 310 },
     'emp-pro': { magnification: 2.0, focusX: 490, focusY: 310 }
   });
   const version = (id, title, page, source, status, detail, anchor = 'actor-H64', zoom = 1, replayable = false) =>
@@ -47,7 +48,7 @@
     'mana-pro-r04', 'mana-pro-r03', 'mana-pro-r02', 'mana-pro-r01',
     'rational-pro-r01', 'ninjutsu-pro-r01',
     'facility-bookshelf-pro-r01', 'facility-reading-lamp-pro-r01', 'facility-security-console-pro-r01',
-    'item-pickup-pro-r01', 'taser-pro-r01', 'item-use-pro-r01', 'facility-next3-pro-r01',
+    'item-pickup-pro-r01', 'taser-pro-r01', 'item-use-pro-r01', 'facility-next3-pro-r01', 'heart-teleport-pro-r01',
     'emp-pro-r03', 'emp-pro-r02', 'emp-pro-r01', 'emp-pro-p0',
     'shoot-pro-r03', 'shoot-pro-r02', 'shoot-pro-r01', 'headshot-pro-v05', 'headshot-pro-v04', 'headshot-pro-v03', 'headshot-pro-v02', 'headshot-pro-v01'
   ]);
@@ -109,6 +110,9 @@
     { id: 'ninjutsu-pro', title: '忍術の錬気（GPT Pro）', versions: [
       version('ninjutsu-pro-r01', 'GPT Pro r0.1', 'action-ninjutsu-pro-r01/gallery-preview.html', 'action-ninjutsu-pro-r01/src/gpu.mjs', 'GPT Pro制作・実GPU再生可能・品質保留・SFX聴感未確認・本編未採用', '濃紺と紫の内向き曲線による独立設計。暗明H64のWebGPU再生を確認しました。原寸の全寿命とSFX品質、本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
+    { id: 'heart-teleport-pro', title: '心臓転移（GPT Pro）', versions: [
+      version('heart-teleport-pro-r01', 'GPT Pro r0.1', 'heart-teleport-pro-r01/index.html', 'heart-teleport-pro-r01/source/src/gpu.mjs', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', '発動者側だけに表示する心臓転移E。暗明H64の実WebGPUフレームで描画を確認。着地点の座標や方向を表現せず、造形・音の品質と本編接続は未受入です。', 'effect-H64', 1, true)
+    ] },
     { id: 'facility-bookshelf-pro', title: '資料棚（GPT Pro）', versions: [
       version('facility-bookshelf-pro-r01', 'GPT Pro r0.1', 'facility-pro-r01/embed.html?effect=bookshelf', 'facility-pro-r01/package/src/effects/bookshelf/index.js', 'GPT Pro制作・実GPU再生可能・視覚品質審査中・SFX聴感未確認・本編未採用', '研究施設の資料棚E。暗明2面のWebGPU自動ループを確認。造形・音の品質と本編接続は未受入です。', 'effect-H64', 1, true)
     ] },
@@ -163,7 +167,7 @@
 
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v49');
+    preview.searchParams.set('galleryRelease', 'pro-replays-20260928-v50');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

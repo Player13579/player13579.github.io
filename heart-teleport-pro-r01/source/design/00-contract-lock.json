@@ -1,0 +1,36 @@
+{
+  "design_lock_version": "1.0",
+  "source_revision": {
+    "repository": "player13579/B",
+    "commit": "8ad8e9b07ab8dc8737dd9b4022a775bce61d16e1",
+    "base_blob": "4e10a53310be5b9d0aa3a6c881cf4f39d6590bd4",
+    "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834",
+    "basis": "創作正本はこの会話へ継承された基底2026-09-11・拡張2026-09-24。GitHubのcommit/treeと基底headerを確認。全文バイト同一性を再検証したとは主張しない。"
+  },
+  "creative_inputs": ["ユーザー指定の権威契約", "会話に提示されたB基底・拡張", "この成果物のために独立設計した形状・時間・合成・音色"],
+  "excluded_inputs": ["既存Eの造形・コード・音", "Sol/Astra案", "通常転移E", "BODY heart-transfer姿勢"],
+  "authority": {
+    "type": "action-heart-teleport", "radius": 64, "id": "ホストが正規と検証する単一の不透明ID",
+    "playerId": "caster.id", "viewerId": "caster.id", "variant": "target.role",
+    "anchor": "成功時のcaster.x/yを固定した位置", "private_delivery_only": true,
+    "required_target_fields": ["targetId", "targetX", "targetY"],
+    "meaning": "心臓転移成立のprivate receipt。対象の空間移動でもkill成功の証明でもない。",
+    "presentation_allowlist": ["id", "playerId", "casterX", "casterY", "firstReceivedAt", "deadline"],
+    "privacy": "対象座標・方向・端点・roleを描画、音声、定位、画面外判定、乱数に使わない。targetは検証後の投影オブジェクトに一切残さない。"
+  },
+  "lifetime": {"wall_clock_ms": 1800, "repeat_policy": "永続するホスト所有ledgerで同一IDを再起動しない。容量到達はfail-closed、古いIDを追い出さない。", "hidden_policy": "受付時に不可視なら消費して表示しない。表示後の抑止は残寿命を終端し、後から音だけ鳴らさない。"},
+  "form": {
+    "name": "内折れ脈室",
+    "PH1": "二葉から心尖へ続く張力膜。中央の切れ込みと前後の重なりを持つ閉じた小さな容積。人体・臓器の切断面ではない。",
+    "PH2": "膜内に束縛された脈芯。局所弁の閉鎖に従い一度だけ内向きに充填し、光源分布が膜の内面に応答を与える。",
+    "layers": ["L1: PH1の脈室主形", "L2: PH1の弁・境界", "L3: PH2の内向き脈芯", "L4: OBS1のsource-boundな小幅拡散", "L5: OBS2の露光肩とpremultiplied出力"],
+    "forbidden": ["対象へ延びる線・方向", "ポータル輪", "放射状爆発", "移動する人物", "BODY造形", "紋章・文字", "粒子の水増し", "画像・テクスチャ素材"]
+  },
+  "time": {"prepare": "0–460ms: 膜の二葉と内縁が成立する。receipt後の表示相であり先行UIの準備姿勢ではない。", "act": "460–980ms: 二葉がわずかに内折れし、白金の弁が一度だけ締まり内側の脈芯へ視線が移る。", "vanish": "980–1800ms: 中心の放射が先に減衰、外縁が遅れて薄くなり、1800msで厳密にゼロ。", "reduced_motion": "中心固定、輪郭の拡縮・弁の移動・局所輸送を止め、同じ相を緩やかな輝度差で伝える。"},
+  "observation": {"OBS1": "宣言光源PH2/PH1の放射形状に束縛した解析的PSF近似。実レンズゴーストとは呼ばない。幅はH64で約1.5px、全体持ち上げなし。", "OBS2": "線形光で露光肩を適用し、premultiplied alphaで出力。coverageと発光を分離する。", "budget": "複数原因でも光量を合成前に正規化。ハードなフラッシュ・全画面発光・白飛びで主形状を置換しない。"},
+  "audio": {"source": "独立合成mono PCMを一つのAudioBufferSourceNodeで一度だけ再生。", "timbre": "薄い張力膜の内向き共鳴。低い柔音から短い締まり、細い非調和残響へ。心拍・kill/death音・空間移動whooshを引用しない。", "routing": "private self、中央mono、Pannerなし。ユーザー操作でunlockする前のreceiptは発音権を消費して無音のまま。", "verify": "AudioContextも発音sourceも生成しない。"},
+  "active_extensions": ["VFX", "ECodeImplementation", "PostEffects", "LuminanceDynamicsModule", "GradientAnchorPolicy", "VideoGenerationPolicy（設計timelineのみ）"],
+  "inactive": {"MagicArchitecture": "magic IDは権威イベント識別子の説明であり、魔法/Magicプリセット指定ではない。", "CharacterPolicy": "Eの描画に人体なし。casterは既存ホストの外部アンカー。", "BeautifulPoseCapsule": "BODYは別所有、参照・描画しない。", "KeywordExpansion": "今回の制作指定に登録キーワード選択なし。"},
+  "refusal_conditions": ["未検証transport", "非正規ID", "type不一致", "radius不一致", "private/self/viewer/owner不一致", "room/session不一致", "caster座標不一致", "必須target field不正", "不可視・画面外・遮蔽・hidden document", "寿命切れ", "同一ID", "ledger容量満了", "GPU準備未完了・喪失", "dispose後"],
+  "verification_plan": {"contract": "Node実行の権威・拒否・ID・プライバシー・wall-clock・同時発生検査", "shader": "実ブラウザでWGSL compilation info/error scopes/queue提出。未実行はnot_run。", "pixels": "暗明H64で全寿命108標本、reduced motion、多原因、PSF無効比較。画素記録と機械メトリクスは美的評価と区別。", "audio": "PCM数値検査、Web Audio start数と解放を検査。実聴は別。", "game": "issuerとtransport adapterのfixtureは本編接続ではない。"}
+}

@@ -1,0 +1,12 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>action-heart-teleport — E specimen</title><link rel="stylesheet" href="demo/style.css"></head><body>
+<main><header><div class="eyebrow">B FOUNDATION / EXECUTABLE E · 01</div><h1>内折れ脈室</h1><p class="subtitle">action-heart-teleport <span>PRIVATE RECEIPT / 1800 ms</span></p><p>対象へ向かわず、発動者の位置だけで成立する転移の受領表現。</p></header>
+<div class="notice"><strong id="mode">検査用の模擬権威</strong><span> 本編接続ではありません。BODY姿勢・kill/death音・画像素材は含みません。</span></div>
+<section class="specimens" aria-label="実寸H64の暗明比較">
+<article><div class="card-top"><h2>暗背景</h2><span>H64 · 1×</span></div><div class="stage dark"><canvas id="dark" width="256" height="176" aria-label="暗背景・実寸64pxのエフェクト"></canvas><div class="dimension">64 px</div></div></article>
+<article><div class="card-top"><h2>明背景</h2><span>H64 · 1×</span></div><div class="stage light"><canvas id="light" width="256" height="176" aria-label="明背景・実寸64pxのエフェクト"></canvas><div class="dimension">64 px</div></div></article>
+</section>
+<section class="timeline"><div class="phase-labels"><span>準備 <small>0–460</small></span><span>作用 <small>460–980</small></span><span>消失 <small>980–1800 ms</small></span></div><div class="track"><div id="progress"></div></div><p id="phase">初期化中</p></section>
+<section class="controls"><button id="sound">音を有効化</button><button id="once">新しいreceiptを1回</button><button id="duplicate">同じIDを再送</button><button id="dispose" class="quiet">GPU / 音声を解放</button></section>
+<section class="options"><label><input id="loop" type="checkbox" checked> 全寿命自動ループ（毎回新ID）</label><label><input id="multi" type="checkbox"> 複数原因（3 ID）</label><label><input id="reduced" type="checkbox"> Reduced motion</label><label><input id="glow" type="checkbox" checked> 観測PSF</label><label><input id="invisible" type="checkbox"> 発動者不可視</label><label><input id="offscreen" type="checkbox"> 発動者画面外</label><label><input id="occluded" type="checkbox"> 遮蔽</label><label><input id="other" type="checkbox"> 他viewer</label></section>
+<pre id="stats" aria-live="polite">WebGPUを確認しています。</pre>
+<footer><p>準備相も正規receipt受信後の表現です。先行UIは起動源ではありません。<br>自動ループはプレビュー専用です。同じIDはループしません。音を有効にする前のイベントは後から鳴りません。</p><a href="?verify=1">verify無音モード</a> <a href="tests/browser.html">集中GPU検査</a></footer></main><script type="module" src="demo/app.mjs"></script></body></html>
