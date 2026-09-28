@@ -20962,7 +20962,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           reason: 'sunbeam-same-frame-or-submitted-hand-unavailable' });
         continue;
       }
-      if (!window.DvaSunbeamProV2Adapter?.create ||
+      if (!window.DvaSunbeamAstraV3GameAdapter?.create ||
           typeof effect.sunbeamCausalId !== 'string' || !effect.sunbeamCausalId ||
           ![effect.targetX, effect.targetY, effect.x, effect.y,
             effect.startedAt, effect.duration].every(Number.isFinite) ||

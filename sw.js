@@ -6,7 +6,7 @@
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
 const RUNTIME_RELEASE = "fire-e-causal-v918";
-const CACHE_NAME = "dva-static-marker-webgpu-surface-v1";
+const CACHE_NAME = "dva-static-marker-webgpu-surface-v2";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 const STATIC_ASSETS = [
   "/assets/generated/webgpu-text/atlas.json",
@@ -429,9 +429,10 @@ const STATIC_ASSETS = [
   "/webgpu-heal-astra-prototype.js",
   "/webgpu-heal-astra-sfx.js",
   "/webgpu-sunbeam-e.js",
-  "/webgpu-sunbeam-pro-v2-adapter.js",
-  "/webgpu-fighter-energy-e.js",
   "/webgpu-sunbeam-sol-sfx.js",
+  "/webgpu-sunbeam-astra-clean-v3.js",
+  "/webgpu-sunbeam-astra-v3-game.js",
+  "/webgpu-fighter-energy-e.js",
   "/webgpu-sunbeam-live-overlay.js",
   "/webgpu-sunbeam-e-sfx.js",
   "/webgpu-sunbeam-cue-adapter.js",
@@ -897,9 +898,10 @@ const BOOT_CRITICAL_ASSETS = new Set([
   "/webgpu-heal-astra-prototype.js",
   "/webgpu-heal-astra-sfx.js",
   "/webgpu-sunbeam-e.js",
-  "/webgpu-sunbeam-pro-v2-adapter.js",
-  "/webgpu-fighter-energy-e.js",
   "/webgpu-sunbeam-sol-sfx.js",
+  "/webgpu-sunbeam-astra-clean-v3.js",
+  "/webgpu-sunbeam-astra-v3-game.js",
+  "/webgpu-fighter-energy-e.js",
   "/webgpu-sunbeam-live-overlay.js",
   "/webgpu-sunbeam-e-sfx.js",
   "/webgpu-sunbeam-cue-adapter.js",

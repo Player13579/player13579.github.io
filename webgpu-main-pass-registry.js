@@ -54,7 +54,7 @@
     hackerStatusRecoveryE: root.DvaWebGPUHackerStatusRecoveryE || (typeof require === 'function' ? require('./webgpu-hacker-status-recovery-e.js') : null),
     floraE: root.DvaWebGPUFloraE || (typeof require === 'function' ? require('./webgpu-flora-e.js') : null),
     healE: root.DvaHealAstraE || (typeof require === 'function' ? require('./webgpu-heal-astra-prototype.js') : null),
-    sunbeamE: root.DvaSunbeamProV2Adapter || (typeof require === 'function' ? require('./webgpu-sunbeam-pro-v2-adapter.js') : null),
+    sunbeamE: root.DvaSunbeamAstraV3GameAdapter || (typeof require === 'function' ? require('./webgpu-sunbeam-astra-v3-game.js') : null),
     fighterEnergyE: root.DvaWebGPUFighterEnergyE || (typeof require === 'function' ? require('./webgpu-fighter-energy-e.js') : null),
     hoverSprintE: root.DvaWebGPUHoverSprintE || (typeof require === 'function' ? require('./webgpu-hover-sprint-e.js') : null),
     gravityFieldE: root.DvaWebGPUGravityFieldE || (typeof require === 'function' ? require('./webgpu-gravity-field-e.js') : null),
