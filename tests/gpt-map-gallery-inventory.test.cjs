@@ -49,7 +49,7 @@ for (const id of ['station-gpt-history', 'cafeteria-gpt-20260923', 'medical-gpt-
   assert.ok(gallery.includes("id:'" + id + "'"), id + ': gallery group');
 }
 const visibleGroupIds = new Set(imageGroups.map(group => group.id));
-for (const id of ['cafeteria-gpt-pro', 'cafeteria-floor-component', 'cafeteria-buffet-component']) {
+for (const id of ['cafeteria-gpt-pro', 'cafeteria-floor-component', 'cafeteria-buffet-component', 'station-gpt-history']) {
   assert.equal(visibleGroupIds.has(id), false, id + ': excluded from evaluated gallery inventory');
 }
 const cafeteriaGroup = imageGroups.find(group => group.id === 'cafeteria-gpt-20260923');
@@ -65,10 +65,9 @@ for (const oldVersion of cafeteriaGroup.versions.filter(version => version.id !=
 const medicalGroup = imageGroups.find(group => group.id === 'medical-gpt-history');
 assert(medicalGroup, 'medical prototype history remains listed');
 const denseMedical = medicalGroup.versions.find(version => version.id === 'medical-room-dense-attempt-01');
-assert(denseMedical, 'rejected dense medical original remains available as history');
-assert.equal(denseMedical.adoption, 'not-adopted');
-assert.equal(denseMedical.qualityStatus, 'rejected-overfurnished');
-assert.match(denseMedical.note, /今後高密度版は制作しない/);
+assert.equal(denseMedical, undefined, 'dense medical excluded from displayed gallery history');
+assert.equal(medicalGroup.versions.length, 3, 'normal medical prototype history remains listed');
+assert.match(gallery, /今後高密度版は制作しない/, 'withdrawn source provenance remains preserved');
 assert.match(gallery, /attempt 02-bの受入は一室プロトタイプに限り、ゲーム採用・本編統合を意味しない/);
 assert.match(gallery, /完成マップではなく、単一カフェテリア用の床材テクスチャ部品/);
 assert.match(gallery, /完成マップではなく単体設備の原画候補/);
