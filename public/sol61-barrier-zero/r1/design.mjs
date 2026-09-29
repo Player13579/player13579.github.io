@@ -1,0 +1,16 @@
+export const DESIGN = Object.freeze({
+ id:'sol61-barrier-zero-r1', author:'GPT-6.1-Sol', adoption:'unadopted',
+ ownership:'このr1配下だけ。旧Barrierの造形・shader・SFXを入力に使わない。本編・公開・採否は主担当。',
+ source:{repository:'player13579/B',branch:'Codex-honoo',commit:'37eb4bdfe59f0dc075f9b4333b7d6af76b784a88',base_blob:'8a908495ae1f9b7175e00384ab88c50e5c78bd43',extension_blob:'0eda016558e426ff4142d850d26200b40fafd834'},
+ meaning:{fact:'共通防御Barrier。alive/非ejected/耐久>0で有効。容量2。kill吸収cost1、body吸収cost damage。再付与cooldown20s。攻撃を吸収し耐久を消費。Protectのkill→body変換とは別。',read:'受け手の外側へ結合する透明なデジタル防護面。命中は提供された接触方向だけで面応答。耐久0は結合が解かれる。',unknown:'実入力にない命中位置・攻撃体・耐久割合・解除理由を作らない。',confusable:'装甲装備/回復/転送',discrimination:'身体から離れた閉じた防護境界、透過面、界面の局所吸収。身体を改造・移動・消去しない。'},
+ contract:{active:'authoritative Booleanのみ。永続タイマーを設けない。死亡/ejected/非表示で即座にEと所有音声を解除。',createMs:650,hitMs:650,breakMs:480,clock:'wall ms。耐久はsnapshot値のみ。演出時計から耐久を変更しない。',events:['durability-created','durability-hit','durability-broken'],dedup:'causeIdを一度だけ開始。snapshot/reconnectは定常面だけで発動音なし。',impact:'正規化target-relative hitUV提供時だけ局所波。欠けている場合は方向不明の面の短い受光応答で衝突位置を断定しない。'},
+ morphology:{macro:'H64の身体に対して、外境界W68/H90。8面の丸角防護体。中心に身体が見える広い透明域。面は身体外の余白と前面を連続して覆う。',meso:'奥面→身体→手前面。4つの広い縦facetと上下斜面。外縁に約1.4pxの芯、面を跨ぐ結合境界は約0.9px。細かい格子・破片・宝石は使わない。',micro:'原寸で読めない刻印/微小noiseは省く。',opening:'下端の投影は足の支持を見せる光学窓。中心前面は高透過の開口として扱い、ゲーム判定に穴を作らない。'},
+ phases:{create:'0–140ms:身体外の大きな面が正規の防護境界へ収束する。140–360ms:外境界と前面の結合が同時に成立。360–650ms:成立した面へ減衰。',hold:'耐久有効中は同じ主面が残る。一定供給を表す一定光量。恣意的呼吸点滅なし。',hit:'0–100ms接触点白芯。100–380ms界面に広い波が沿う。380–650ms元の面へ戻る。',break:'0–120ms結合境界が明るくなる。120–360ms面が身体から離れる方向に広がり、360–480ms完全に消える。破片なし。'},
+ optics:{alpha:'面coverageと透過alphaは分離。straight RGBのworld面はalphaを一度掛けて合成。emissionは別のsource量。',emission:'外縁・結合境界・実命中点に局所の白芯、青い本体と距離減衰受光。白ピークを抑制しない。',OBS:'OBS1は同じ境界sourceの近傍glow。OBS2は同じsourceの短い局所光条。source OFFで両方0。身体/顔の座標を変形しない。',budget:'原寸で芯→facet面→近傍glowが分かれる範囲。全画面輝度変更なし。背景に合わせた補正なし。'},
+ coordinates:{world:'右手系m、+X右 +Y上 +Z奥。身体foot原点。orthographic基準身体1.65m→64px。',screen:'x右/y下。H64原寸、同じ投影で奥面→原画→前面。',gravity:'normal、原画足支持。デジタル場は宣言されたtarget-relative境界へ拘束され落下しない。',WindCapsule:{medium_state:'air',Field:{direction:[0,0,0],speed:0,gust:'none',shear:'none',turbulence:'none'},response:'静穏。体/衣服/髪の原画を保つ。流体の実測物性を主張しない。'}},
+ SFX:{create:'0–650ms、二つの帯域が収束する短い合成共鳴→面結合140–360msの硬質な定着。長い持続音なし。',hit:'0–520ms、低い短い打音+面の高域共鳴。提供されたcauseだけ。',break:'0–480ms、結合音程が下降し拡散する有限解放音。',hook:'__gallerySfx({enabled})。verify queryは常に全音声0、hookでも解除不可。再生一巡につき各cause一回。'},
+ sampling:{nominal:'DPR1 H64。H48/H96も同じ形。最小主要facet可視幅5px以上、境界AA。',acceptance:'暗明H64全寿命、面/glow/光条OFF診断、実GPUcompile/submit、通常速度連続再生、次ループ、実SFX聴感、本番iframeを別判定。'},
+ extensions:{VFX:'explicit',ECodeImplementation:'explicit',LDM:'explicit VFX',PostEffects:'attribute_resolved source-bound glowと局所光条のみ',MagicArchitecture:'非起動:魔法/Magic指定なし',GradientAnchorPolicy:'非起動:青い発光色と中立白芯は色相gradientでない',KeywordExpansion:'明示v1–v6等なし。固定22.5degの局所光条は境界結合光の観測応答として個別選択'},
+ checks:['旧creative input非使用','game semantics保持','有限SFX/dedup/verify強制0','H64主面初中後','alpha/emission/OBS分離','iframe初回次loop','qualityとadoption分離'],
+ remaining:'GPU実画素/連続/聴感を観測後に受入。ゲーム統合と公開はこの担当範囲外。',
+});

@@ -2,6 +2,11 @@
   'use strict';
   const PRESENTATION = Object.freeze({ width: 980, height: 620, anchorHeight: 64 });
   const EFFECT_VIEW = Object.freeze({
+    'barrier-sol61-r1': { magnification: 4, focusX: 490, focusY: 310 },
+    'cooldown-sol61-r1': { magnification: 4, focusX: 490, focusY: 312 },
+    'cooldown-sol61-r2': { magnification: 4, focusX: 490, focusY: 312 },
+    'cooldown-sol61-r3': { magnification: 4, focusX: 490, focusY: 312 },
+    'stamina-sol61-r4': { magnification: 1.86, focusX: 490, focusY: 316.5 },
     'stamina-sol61-r3': { magnification: 1.86, focusX: 490, focusY: 316.5 },
     'mana-sol61-r1': { magnification: 4.2, focusX: 300, focusY: 95 },
     'status-recovery-sol61-r1': { magnification: 1.18, focusX: 490, focusY: 245 },
@@ -112,6 +117,7 @@
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
     Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([
+      version('stamina-sol61-r4', 'GPT-6.1-Sol r4', 'public/sol61-stamina-e/r4/index.html?embed=1', 'public/sol61-stamina-e/r4/design.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU暗明H64全寿命・3ループを確認。脚の形が装備や追加の肢に見えること、閉じた外形、一様な身体の着色が品質未達。原版の有限VFX/SFXを保持し次稿を制作中。聴感未受入。', 'effect-H64'),
       version('stamina-sol61-r3', 'GPT-6.1-Sol r3', 'public/sol61-stamina-e/r3/index.html?embed=1', 'public/sol61-stamina-e/r3/design.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU暗明H64全寿命と3ループを確認した再生可能な不合格版。風・リボンへの意味の曖昧さ、明背景での弱い分離、小さな星の可読性が未達。次稿を制作中。有限SFXあり、聴感未受入。', 'effect-H64'),
       version('stamina-sol61-r2', 'GPT-6.1-Sol r2', 'public/sol61-stamina-e/r2/index.html', 'public/sol61-stamina-e/r2/design.mjs', '品質不合格（自主レビュー）・ユーザー未採用・本編未接続', '作者: GPT-6.1-Sol。独立した粒や帯を除き、身体へつながる流れと手足の角度統一キラキラへ改修。実WebGPUコンパイル・提出・3ループ確認。主流が細く、白い服の発光に埋もれるため品質不合格。版固有SFXの同期経路あり、聴感未検証。改善履歴として掲載。', 'actor-H64'),
       version('stamina-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-stamina-e/r1/index.html', 'public/sol61-stamina-e/r1/design.mjs', '品質不合格（自主レビュー）・ユーザー未採用・本編未接続', '作者: GPT-6.1-Sol。旧Eの表現コードを入力にせず新規設計。WebGPUのコンパイル・提出・3ループと検証時無音を確認。身体や服の色が主形より目立ち、腕の発光が独立した装飾に見え、キラキラの可読性が不足するため品質不合格。版固有SFXを同期ループする経路あり、聴感未検証。改善中の旧稿として掲載。', 'actor-H64'),
@@ -176,7 +182,10 @@
       version('status-cleanse-astra-r02', 'Astra r0.2', 'public/astra-status-cleanse-v1/versions/r02/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r02/cleanse.mjs', '品質不合格・本編未採用', 'aliasは除去されたが、主形が光る花器に見える。', 'actor-H64'),
       version('status-cleanse-astra-r01', 'Astra r0.1', 'public/astra-status-cleanse-v1/versions/r01/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r01/cleanse.mjs', '品質不合格・本編未採用', '主形が小さな杯に見え、ray-marchに帯状aliasがある。', 'actor-H64')
     ]) }),
-    Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮 · Astra履歴', versions: Object.freeze([
+    Object.freeze({ id: 'cooldown-astra', title: '待機時間圧縮', defaultVersionId: 'cooldown-sol61-r3', versions: Object.freeze([
+      version('cooldown-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-cooldown-zero/r3/preview.html?embed=1', 'public/sol61-cooldown-zero/r3/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU全寿命・4ループを確認。初期が回復のU字の光、後半が胴体の帯に見えるため不合格。有限SFXあり、聴感未受入。次稿を制作中。', 'effect-H64'),
+      version('cooldown-sol61-r2', 'GPT-6.1-Sol zero r2', 'public/sol61-cooldown-zero/r2/preview.html?embed=1', 'public/sol61-cooldown-zero/r2/effect.mjs', '品質未達・未採用・本編未接続', '作者: GPT-6.1-Sol。再生可能な改稿履歴。分割した挟み込みの形と身体発光の意味が未達。原版の有限VFX/SFXを保持。', 'effect-H64'),
+      version('cooldown-sol61-r1', 'GPT-6.1-Sol zero r1', 'public/sol61-cooldown-zero/r1/preview.html?embed=1', 'public/sol61-cooldown-zero/r1/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。ゼロ設計の初稿。主形が梯子や柵に見えるため不合格。再生可能な履歴として原版の有限VFX/SFXを保持。', 'effect-H64'),
       version('cooldown-benefit-astra-r05-sparkle-r04', 'Astra r0.5 sparkle r0.4', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r04/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r04/effect.mjs', '品質審査候補・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。主担当H64全寿命レビュー候補: 圧縮角→足元→身体両側の順が読め、原版形状/発光を維持。品質理由: Primary H64 full-life review: compression corners -> feet -> both body sides are readable while original geometry/emission is preserved. Frozen visual-quality candidate; user adoption and auditory review pending.', 'actor-H64'),
       version('cooldown-benefit-astra-r05-sparkle-r03', 'Astra r0.5 sparkle r0.3', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r03/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r03/effect.mjs', '品質保留・未採用・本編未接続', '作者: GPT-6-Astra。品質理由: Primary review: prism-corner sparkles visible, beneficiary sparkles too weak at H64 in phase .715-.845; not adopted.', 'actor-H64'),
       version('cooldown-benefit-astra-r05-sparkle-r02', 'Astra r0.5 sparkle r0.2', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r02/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-r05-sparkle-v1/versions/r02/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra。品質理由: 受益者光条の幅は増えたが、中心が身体内にあり、H64で十字の核と腕を独立して判読しにくい。', 'actor-H64'),
@@ -190,6 +199,7 @@
       version('astra-cooldown-benefit-r0.1', 'Astra r0.1', 'public/astra-cooldown-benefit-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r01/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。三面が汎用的な同心輪へ融合。SFX圧縮時刻も不一致。', 'actor-H64')
     ]) }),
     Object.freeze({ id: 'barrier-pro', title: 'バリア', versions: Object.freeze([
+      version('barrier-sol61-r1', 'GPT-6.1-Sol zero r1', 'public/sol61-barrier-zero/r1/index.html?embed=1', 'public/sol61-barrier-zero/r1/runtime.mjs', '品質未達・未採用・本編未接続', '作者: GPT-6.1-Sol。旧GPT/Astra版の表現を使わずデジタルな耐久バリアを新規設計。実GPUコンパイル・3ループを確認。平面的な籠に見える形状が未達で次稿を制作中。生成・被弾・破壊の有限SFXあり、聴感未受入。', 'effect-H64'),
       version('barrier-pro-r07', 'GPT Pro r0.7（採用撤回）', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', '採用撤回・旧本編接続あり・SFX聴感未確認', '2026-09-30にユーザーが採用撤回。新規設計を制作中。原版と作者は保持し、旧本編接続の撤去・置換は別途進めます。', 'effect-H64')
     ]) })
   ]);
