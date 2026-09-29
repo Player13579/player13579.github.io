@@ -123,6 +123,7 @@
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
     Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([
+      version('stamina-sol61-r6', 'GPT-6.1-Sol r6', 'public/sol61-stamina-e/r6/index.html?embed=1&height=64', 'public/sol61-stamina-e/r6/design.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。新規有限活力閃光の技術WebGPU再生は確認済み。左胸の付属片と衣装発光が主形を支配し、活力発現の動作が伝わらないため品質不合格。有限固有SFXあり、聴感未検証。改稿中の比較履歴。', 'effect-H64'),
       version('stamina-sol61-r4', 'GPT-6.1-Sol r4', 'public/sol61-stamina-e/r4/index.html?embed=1', 'public/sol61-stamina-e/r4/design.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU暗明H64全寿命・3ループを確認。脚の形が装備や追加の肢に見えること、閉じた外形、一様な身体の着色が品質未達。原版の有限VFX/SFXを保持し次稿を制作中。聴感未受入。', 'effect-H64'),
       version('stamina-sol61-r3', 'GPT-6.1-Sol r3', 'public/sol61-stamina-e/r3/index.html?embed=1', 'public/sol61-stamina-e/r3/design.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU暗明H64全寿命と3ループを確認した再生可能な不合格版。風・リボンへの意味の曖昧さ、明背景での弱い分離、小さな星の可読性が未達。次稿を制作中。有限SFXあり、聴感未受入。', 'effect-H64'),
       version('stamina-sol61-r2', 'GPT-6.1-Sol r2', 'public/sol61-stamina-e/r2/index.html', 'public/sol61-stamina-e/r2/design.mjs', '品質不合格（自主レビュー）・ユーザー未採用・本編未接続', '作者: GPT-6.1-Sol。独立した粒や帯を除き、身体へつながる流れと手足の角度統一キラキラへ改修。実WebGPUコンパイル・提出・3ループ確認。主流が細く、白い服の発光に埋もれるため品質不合格。版固有SFXの同期経路あり、聴感未検証。改善履歴として掲載。', 'actor-H64'),
