@@ -2,11 +2,25 @@ const assert = require('node:assert/strict');
 const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 
 const repo = path.resolve(__dirname, '../../../../../../');
 const app = path.resolve(__dirname, '..');
 const gallery = fs.readFileSync(path.join(app, 'asset-gallery.js'), 'utf8');
 const assetDir = path.join(app, 'assets/gpt-map-history');
+function evaluateImageGroups(source) {
+  const start = source.indexOf('  const imageGroups = [');
+  assert(start >= 0, 'imageGroups declaration exists');
+  const filterStart = source.indexOf('  ].filter(group => ![', start);
+  assert(filterStart > start, 'imageGroups exclusion filter exists');
+  const filterEnd = source.indexOf(';', filterStart);
+  assert(filterEnd > filterStart, 'imageGroups expression ends');
+  const expression = source.slice(start, filterEnd + 1).replace('  const imageGroups = [', 'globalThis.__evaluatedImageGroups = [');
+  const context = vm.createContext({});
+  vm.runInContext(expression, context, { timeout: 1000, filename: 'asset-gallery-imageGroups-fixture.js' });
+  return context.__evaluatedImageGroups;
+}
+const imageGroups = evaluateImageGroups(gallery);
 const versions = [
   ['station-attempt-01', 'outputs/request-20260923/modern-station-map-design/attempt-01/original.png', 'station-attempt-01.png', 'd2a80b2ced722b5ba639b7e38640c1ddb0152c1cadf5c487bf7be31ff7f1d16e'],
   ['station-attempt-02', 'outputs/request-20260923/modern-station-map-design/attempt-02/original.png', 'station-attempt-02.png', '6e20da4be101dc4ed8852d72fb2be5f320a779573158ddb22d386286c0049b18'],
@@ -31,9 +45,30 @@ for (const [id, original, copy, expectedHash] of versions) {
   assert.ok(gallery.includes("src:'assets/gpt-map-history/" + copy + "'"), id + ': source asset');
   assert.ok(gallery.includes("creatorDisplayName:") && gallery.includes("id:'" + id + "'"), id + ': author metadata');
 }
-for (const id of ['station-gpt-history', 'cafeteria-gpt-20260923', 'medical-gpt-history', 'cafeteria-floor-component', 'cafeteria-buffet-component']) {
+for (const id of ['station-gpt-history', 'cafeteria-gpt-20260923', 'medical-gpt-history']) {
   assert.ok(gallery.includes("id:'" + id + "'"), id + ': gallery group');
 }
+const visibleGroupIds = new Set(imageGroups.map(group => group.id));
+for (const id of ['cafeteria-gpt-pro', 'cafeteria-floor-component', 'cafeteria-buffet-component']) {
+  assert.equal(visibleGroupIds.has(id), false, id + ': excluded from evaluated gallery inventory');
+}
+const cafeteriaGroup = imageGroups.find(group => group.id === 'cafeteria-gpt-20260923');
+assert(cafeteriaGroup, 'cafeteria prototype history remains listed');
+assert.equal(cafeteriaGroup.defaultVersionId, 'cafeteria-room-attempt-04');
+const cafeteriaAttempt04 = cafeteriaGroup.versions.find(version => version.id === 'cafeteria-room-attempt-04');
+assert.equal(cafeteriaAttempt04.adoption, 'adopted');
+assert.equal(cafeteriaAttempt04.qualityStatus, 'user-adopted-geometry-unresolved');
+assert.equal(cafeteriaGroup.versions.length, 4, 'older cafeteria prototypes remain in history');
+for (const oldVersion of cafeteriaGroup.versions.filter(version => version.id !== 'cafeteria-room-attempt-04')) {
+  assert.equal(oldVersion.adoption, 'not-adopted', oldVersion.id + ': retain its own adoption status');
+}
+const medicalGroup = imageGroups.find(group => group.id === 'medical-gpt-history');
+assert(medicalGroup, 'medical prototype history remains listed');
+const denseMedical = medicalGroup.versions.find(version => version.id === 'medical-room-dense-attempt-01');
+assert(denseMedical, 'rejected dense medical original remains available as history');
+assert.equal(denseMedical.adoption, 'not-adopted');
+assert.equal(denseMedical.qualityStatus, 'rejected-overfurnished');
+assert.match(denseMedical.note, /今後高密度版は制作しない/);
 assert.match(gallery, /attempt 02-bの受入は一室プロトタイプに限り、ゲーム採用・本編統合を意味しない/);
 assert.match(gallery, /完成マップではなく、単一カフェテリア用の床材テクスチャ部品/);
 assert.match(gallery, /完成マップではなく単体設備の原画候補/);
@@ -45,4 +80,4 @@ assert.ok(gallery.indexOf("id:'cafeteria-room-attempt-04'") < gallery.indexOf("i
 assert.ok(gallery.indexOf("id:'medical-room-attempt-02-b'") < gallery.indexOf("id:'medical-room-attempt-01'"), 'medical versions newest first');
 const ids = [...gallery.matchAll(/\bid:'([^']+)'/g)].map(match => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'gallery identifiers are unique');
-console.log('Validated ' + versions.length + ' saved originals, hashes, gallery listings and preserved cafeteria candidates.');
+console.log('Validated ' + versions.length + ' saved originals and hashes, evaluated gallery exclusions, adoption metadata and preserved prototype history.');

@@ -182,7 +182,7 @@
       version('astra-cooldown-benefit-r0.1', 'Astra r0.1', 'public/astra-cooldown-benefit-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r01/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。三面が汎用的な同心輪へ融合。SFX圧縮時刻も不一致。', 'actor-H64')
     ]) }),
     Object.freeze({ id: 'barrier-pro', title: 'バリア', versions: Object.freeze([
-      version('barrier-pro-r07', 'GPT Pro r0.7', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', 'ユーザー品質採用・本編接続済み・SFX聴感未確認', 'ユーザーが版指定で採用したr0.7。制作元の帰属は保持します。実ゲーム発動と聴感の受入は未了です。', 'effect-H64')
+      version('barrier-pro-r07', 'GPT Pro r0.7（採用撤回）', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', '採用撤回・旧本編接続あり・SFX聴感未確認', '2026-09-30にユーザーが採用撤回。新規設計を制作中。原版と作者は保持し、旧本編接続の撤去・置換は別途進めます。', 'effect-H64')
     ]) })
   ]);
   const params = new URLSearchParams(location.search);
@@ -231,7 +231,7 @@
   let currentCategory = 'effect';
   let currentAdoptionFilter = 'unadopted';
   const selections = new Map();
-  const adoptedVersionIds = new Set(['sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29','barrier-pro-r07']);
+  const adoptedVersionIds = new Set(['sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29']);
   const categoryTabs = [...document.querySelectorAll('[data-category]')];
   const layout = document.getElementById('gallery-layout');
   const emptyCategory = document.getElementById('empty-category');
@@ -361,15 +361,15 @@
       {id:'cafeteria-pro-candidate-01',title:'GPT Pro candidate 01',src:'assets/cafeteria-pro-candidate-01.png',hash:'eaf56895b2d8bfda638ffe12a7ef3f5d812070b1b4d655afca4538c7f7b8f57',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'西側の開口幅不足（約143 logical units / 要求190）。歴史候補として保持。'}]}
 ,
     {id:'medical-gpt-history',category:'map',title:'医療室 · GPT試作',creatorDisplayName:'ChatGPT (model unverified)',quality:'mixed',adoption:'not-adopted',integration:'not-integrated',reason:'全版が一室プロトタイプの原本。attempt 02-bの受入は一室プロトタイプに限り、ゲーム採用・本編統合を意味しない。',versions:[
-      {id:'medical-room-dense-attempt-01',title:'高密度試作 attempt 01',src:'assets/gpt-map-history/medical-dense-attempt-01.png',hash:'db22a3413315b6a10dba92d040eef80f396a86efe7b0c2a45c29b8d111c2cc26',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected-overfurnished',adoption:'not-adopted',note:'画像生成記録はChatGPT Create Image。ユーザーが過剰に家具を詰めた案として却下。履歴実験のみ。'},
+      {id:'medical-room-dense-attempt-01',title:'高密度試作 attempt 01（不採用）',src:'assets/gpt-map-history/medical-dense-attempt-01.png',hash:'db22a3413315b6a10dba92d040eef80f396a86efe7b0c2a45c29b8d111c2cc26',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected-overfurnished',adoption:'not-adopted',note:'2026-09-30の訂正で不採用を再確認。今後高密度版は制作しない。医療室は通常版としてゼロから新規制作する。旧原本と作者は履歴として保持。'},
       {id:'medical-room-attempt-02-b',title:'医療室 attempt 02-b',src:'assets/gpt-map-history/medical-attempt-02-b.png',hash:'eb778cc07b399fc1e6e372615b145ab337fd5afc47d59e41fe28c6bd01fb73c9',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-one-room-prototype',adoption:'not-adopted',note:'ChatGPT画像原本。目視配置検証PASSの一室プロトタイプ候補。ドア/既存compositor整合・衝突・実ゲーム検証が未完了。これはゲームマップ採用ではない。'},
       {id:'medical-room-attempt-02-a',title:'医療室 attempt 02-a',src:'assets/gpt-map-history/medical-attempt-02-a.png',hash:'34249c1f432a9ab8798b75524cee80c5f8dbdf2a0659ff9a8894a341ba4072a4',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'intermediate-unselected',adoption:'not-adopted',note:'2回目の生成で保存された途中候補。attempt 02-bに選択されず、採用・統合なし。'},
       {id:'medical-room-attempt-01',title:'医療室 attempt 01',src:'assets/gpt-map-history/medical-attempt-01.png',hash:'f192d79cacd886615ea438d40764719b17bb74f18749860876e0a0794b67bc2a',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected-position-contract',adoption:'not-adopted',note:'初回位置契約に不合格。新しい2回目候補へ置換。'}]},
     {id:'station-gpt-history',category:'map',title:'研究施設マップ · 初期全体図',creatorDisplayName:'ChatGPT (model unverified)',quality:'pending-review',adoption:'not-adopted',integration:'not-integrated',reason:'2026-09-23の初期全体図原本。レビュー記録では視覚受入が保留、navigation acceptance未実施。マップ採用・本編統合なし。',versions:[
       {id:'station-attempt-02',title:'全体図 attempt 02',src:'assets/gpt-map-history/station-attempt-02.png',hash:'6e20da4be101dc4ed8852d72fb2be5f320a779573158ddb22d386286c0049b18',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'pending-review',adoption:'not-adopted',note:'2026-09-23保存原本。技術メモは視覚受入保留、移動受入未実施。'},
       {id:'station-attempt-01',title:'全体図 attempt 01',src:'assets/gpt-map-history/station-attempt-01.png',hash:'d2a80b2ced722b5ba639b7e38640c1ddb0152c1cadf5c487bf7be31ff7f1d16e',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'pending-review',adoption:'not-adopted',note:'2026-09-23保存原本。技術メモは視覚受入保留、移動受入未実施。'}]},
-    {id:'cafeteria-gpt-20260923',category:'map',title:'カフェテリア · 2026-09-23試作',creatorDisplayName:'ChatGPT (model unverified)',quality:'rejected',adoption:'not-adopted',integration:'not-integrated',reason:'GPT画像生成による一室だけの原画。各版の却下理由は版ごとに記載。全て未採用・本編未統合。',versions:[
-      {id:'cafeteria-room-attempt-04',title:'一室試作 attempt 04',src:'assets/gpt-map-history/cafeteria-20260923-attempt-04.png',hash:'c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65',creatorDisplayName:'GPT Pro',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'ChatGPT Pro画像生成原本。North/West開口と設備配置が契約に合わず、ステーション縮尺レビュー不合格。'},
+    {id:'cafeteria-gpt-20260923',category:'map',title:'カフェテリア · 2026-09-23試作',creatorDisplayName:'ChatGPT (model unverified)',quality:'mixed',adoption:'not-adopted',defaultVersionId:'cafeteria-room-attempt-04',integration:'not-integrated',reason:'attempt 04を2026-09-30にユーザー採用。旧版の不採用履歴と幾何検証結果を保持。ゲーム統合は未完了。',versions:[
+      {id:'cafeteria-room-attempt-04',title:'一室試作 attempt 04（採用済み）',src:'assets/gpt-map-history/cafeteria-20260923-attempt-04.png',hash:'c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65',creatorDisplayName:'GPT Pro',qualityStatus:'user-adopted-geometry-unresolved',adoption:'adopted',note:'2026-09-30にユーザーが版指定で採用。原本・作者を保持。以前のNorth/West開口・配置検証の不合格は未解決であり、ゲーム統合完了を意味しない。'},
       {id:'cafeteria-room-attempt-03',title:'一室試作 attempt 03',src:'assets/gpt-map-history/cafeteria-20260923-attempt-03.png',hash:'a86a55567a3377c9df52955c2ca9cbceb23feffda7fce46209780677bf146c10',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北/西開口と室内構成は視覚確認されたが、設備 footprint・開口・南側歩行領域・回遊性のステーション縮尺レビュー不合格。'},
       {id:'cafeteria-room-attempt-02',title:'一室試作 attempt 02',src:'assets/gpt-map-history/cafeteria-20260923-attempt-02.png',hash:'9032820f1a241a45e8e6434cb31ab11936c7bdcd6235bd0ee20402e5e692f8f6',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected',adoption:'not-adopted',note:'改善版だが依頼していない南側出入口が含まれ、attempt 03に置換。'},
       {id:'cafeteria-room-attempt-01',title:'一室試作 attempt 01',src:'assets/gpt-map-history/cafeteria-20260923-attempt-01.png',hash:'4475795805cd3dcee358baf3fbccca452488579459179018ccad15eb5b3db5ec',creatorDisplayName:'GPT Pro',qualityStatus:'rejected',adoption:'not-adopted',note:'ChatGPT Pro生成。野菜自販機が不自然で椅子の隙間が狭いとのユーザー指摘。後続候補へ進み、採用・ゲーム統合なし。'}]},
@@ -377,7 +377,7 @@
       {id:'cafeteria-floor-attempt-02',title:'床材 attempt 02',src:'assets/gpt-map-history/cafeteria-floor-component.png',hash:'d205dea3669fe9b0a8f63b7cb0078c57a7c99d256853cc1cb2f8fd679e75f25c',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'一次担当が単一カフェテリアの床材素材として受入。シームレスな反復利用は未受入。部品受入であり、マップ採用ではない。'}]},
     {id:'cafeteria-buffet-component',category:'map',title:'カフェテリア・ビュッフェ · コンポーネント',creatorDisplayName:'ChatGPT (model unverified)',quality:'accepted-component-only',adoption:'not-adopted',integration:'not-integrated',reason:'完成マップではなく単体設備の原画候補。画像作者の基底モデルは未確認で、生成コードの正確なコード先行手順にも証跡不足。',versions:[
       {id:'cafeteria-buffet-attempt-01',title:'ビュッフェ attempt 01',src:'assets/gpt-map-history/cafeteria-buffet-component.png',hash:'da99b673cd36a45f055e7442ab1b11e7ebeb9bdaf40699d561055a82ec4623f0',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'Primary visual candidate acceptance only。コード全文の保存・厳密なコード再送証跡が不足。ゲーム未統合。'}]},
-  ];
+  ].filter(group => !['cafeteria-gpt-pro', 'cafeteria-floor-component', 'cafeteria-buffet-component'].includes(group.id));
     function selectImage(group, versionIndex) {
     const item=group.versions[versionIndex];
     const previousFrame = stage.querySelector('iframe');
@@ -442,5 +442,5 @@
   const adoptionTabs=[...document.querySelectorAll('[data-filter]')];
   adoptionTabs.forEach(tab=>tab.addEventListener('click',()=>{currentAdoptionFilter=tab.dataset.filter;renderSelection();}));
   categoryTabs.forEach(tab=>tab.addEventListener('click',()=>{currentCategory=tab.dataset.category;renderSelection();}));
-  for(const group of imageGroups)for(const version of group.versions)version.adoption=group.adoption;
+  for(const group of imageGroups)for(const version of group.versions)version.adoption ??= group.adoption;
   renderSelection();})();
