@@ -2,6 +2,8 @@
   'use strict';
   const PRESENTATION = Object.freeze({ width: 980, height: 620, anchorHeight: 64 });
   const EFFECT_VIEW = Object.freeze({
+    'item-pickup-sol61-r1': { magnification: 3.2, focusX: 144, focusY: 72 },
+    'stamina-sol61-r1': { magnification: 2.5, focusX: 490, focusY: 340 },
     'item-pickup-sol-r2': { magnification: 3.5, focusX: 128, focusY: 80 },
     'heal-astra-prototype': { magnification: 4, focusX: 490, focusY: 310 },
     'sunbeam-astra-clean-v3': { magnification: 1.18, focusX: 490, focusY: 310 },
@@ -32,6 +34,7 @@
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const entries = Object.freeze([
     Object.freeze({ id: 'item-pickup-sol', title: '接地アイテム取得', versions: Object.freeze([
+      version('item-pickup-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-item-pickup-e/r1/preview.html', 'public/sol61-item-pickup-e/r1/design.mjs', '新規設計・ユーザー未採用・本編未接続', '作者: GPT-6.1-Sol。旧版の視覚・音源コードを入力にせず、取得成功の仕様から新規設計。取得元から受領枠へ光が移動し、到着した枠の輪郭へ定着する。有限VFXとSFXが同期してループ再生。ユーザー採用と本編接続は別途確認。', 'effect-H64'),
       version('item-pickup-sol-r2', 'Sol r2', 'public/sol-item-pickup-e/sol-r2/preview.html', 'public/sol-item-pickup-e/sol-r2/item-pickup-e.js', '品質完成候補・ユーザー採用未確認・本編未接続', '作者: GPT-6-Sol。正規action-item-pickupイベントから新規設計。接地面の収束、連続した曲面移送、受領部の強い局所光をWebGPUで自動再生。暗明H64の全寿命とGPUエラー0、SFX数値を確認。聴感と実キャラ遮蔽・本編接続は未審査。ユーザー採用未確認。', 'effect-H64')
     ]) }),
     Object.freeze({ id: 'heal-astra', title: 'ヒール', defaultVersionId: 'heal-astra-sparkle-r1', versions: Object.freeze([
@@ -102,6 +105,7 @@
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
     Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([
+      version('stamina-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-stamina-e/r1/index.html', 'public/sol61-stamina-e/r1/design.mjs', '品質不合格（自主レビュー）・ユーザー未採用・本編未接続', '作者: GPT-6.1-Sol。旧Eの表現コードを入力にせず新規設計。WebGPUのコンパイル・提出・3ループと検証時無音を確認。身体や服の色が主形より目立ち、腕の発光が独立した装飾に見え、キラキラの可読性が不足するため品質不合格。版固有SFXを同期ループする経路あり、聴感未検証。改善中の旧稿として掲載。', 'actor-H64'),
       version("stamina-recovery-v2-r03", "Astra recovery r03", "public/astra-stamina-recovery-v2/stamina-r03/index.html?embed=1&height=64", "public/astra-stamina-recovery-v2/stamina-r03/stamina.mjs", "品質未受入・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。実WebGPU再生確認済み。静的品質の一部のみ確認、継続的な視覚/聴感受入未実施。ユーザー未採用、本編未接続。", 'effect-H64'),
       version("stamina-recovery-v2-r02", "Astra recovery r02", "public/astra-stamina-recovery-v2/stamina-r02/index.html?embed=1&height=64", "public/astra-stamina-recovery-v2/stamina-r02/stamina.mjs", "品質不合格・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。実WebGPU再生確認済み。品質不合格、ユーザー未採用、本編未接続。", 'effect-H64'),      version('stamina-astra-r01-replay', 'Astra r01 · iframe再生修正', 'stamina-astra-r01/index.html?embed=1&height=64', 'stamina-astra-r01/stamina.mjs', '品質未判定・未採用・ゲーム未接続・iframe実再生確認済み', 'スタミナAstra r01。品質判定/ユーザー採用/ゲーム接続は未確認。ローカルChrome iframeで自動ループ30 GPU frames・errors 0を確認。埋め込み投影CSSと初期化成功表示の修正を含む。'),
       version('stamina-astra-clean-v3', 'Astra clean v3', 'stamina-astra-clean-v3-preview.html', 'webgpu-stamina-astra-clean-v3.js', '品質不採用・本編未採用', 'H64で扇形の光片から胸腹の発光ベストへ変わるが、スタミナ補給として読めず品質不採用。'),
@@ -333,8 +337,8 @@
       latest: group.versions[0].id, defaultVersionId: group.defaultVersionId || group.versions[0].id,
       versions: Object.freeze(group.versions.map(item => Object.freeze({ ...item,
         category: 'effect',
-        creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra',
-        creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra',
+        creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : item.id.includes('-sol61-') ? 'gpt-6.1-sol' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra',
+        creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : item.id.includes('-sol61-') ? 'GPT-6.1-Sol' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra',
         qualityStatus: /不合格|不達|未達/.test(item.status) ? 'fail' : /保留|未受入/.test(item.status) ? 'pending' : 'candidate',
         userAdoptionStatus: adoptionState(item), adoptionStatusLabel: adoptionStatusLabel(item),
         gameIntegrationStatus: /本編接続済み/.test(item.status) ? 'verified' : /本編未接続|本編未採用/.test(item.status) ? 'not-integrated' : 'unverified',
