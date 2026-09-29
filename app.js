@@ -27564,7 +27564,7 @@ function captureWebGPUMainAppHeadMarkerScene(data, markerActors, camera, zoom,
 // WEBGPU_MAIN_APP_COMBINED_WORLD_SNAPSHOT_V1_START
 // A candidate only: later mandatory stages still have to be captured before
 // the shared renderer can accept this frame. Keep every input in source order.
-function captureWebGPUMainAppConditionalTail(data, camera, zoom, providers = {}) {
+function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, providers = {}) {
   const expandedCanvas = els.expandedMapCanvas;
   const expandedRect = state.expandedMapOpen
     ? expandedCanvas?.getBoundingClientRect() : null;
@@ -27592,13 +27592,16 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, providers = {})
   const sourceIds = effects.map(effect => String(effect?.id ?? ''));
   const overlay = providers.acquisitionCanvas || null;
   const overlayRect = overlay?.getBoundingClientRect?.();
-  const canvasRect = els.canvas?.getBoundingClientRect?.();
+  const canvasRect = mainViewport?.rect;
+  const canvasRectReady = Boolean(canvasRect &&
+    [canvasRect.left, canvasRect.top, canvasRect.width, canvasRect.height]
+      .every(Number.isFinite) && canvasRect.width > 0 && canvasRect.height > 0);
   const overlayStyle = overlay?.style;
   const overlayReady = Boolean(overlay?.isConnected && overlay?.dataset?.acquisitionGpuOverlay === '1' &&
     overlayStyle?.pointerEvents === 'none' && Number(overlayStyle?.zIndex) === 71 &&
     overlayRect?.width > 0 && overlayRect?.height > 0 &&
-    canvasRect?.width > 0 && canvasRect?.height > 0);
-  const viewport = overlayReady ? { ...acquisitionOverlayViewport(overlay),
+    canvasRectReady);
+  const overlayViewport = overlayReady ? { ...acquisitionOverlayViewport(overlay),
     kind: 'acquisition' } : null;
   const drawn = [];
   const requests = [];
@@ -27613,7 +27616,7 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, providers = {})
     const ox = Number.isFinite(effect.acquisitionOriginX) ? effect.acquisitionOriginX : Number(effect.x);
     const oy = Number.isFinite(effect.acquisitionOriginY) ? effect.acquisitionOriginY : Number(effect.y) - 30.3;
     const origin = acquisitionOverlayLocalPoint(
-      acquisitionWorldPoint(ox, oy, camera, zoom, canvasRect), viewport);
+      acquisitionWorldPoint(ox, oy, camera, zoom, canvasRect), overlayViewport);
     const destinations = [];
     let hudKeys = [];
     if (effect.playerId === data.selfId) {
@@ -27624,7 +27627,7 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, providers = {})
       hudKeys = acquisitionCanvasHudKeys(effect);
       if (normalDestination) {
         const rect = acquisitionVisibleRect(acquisitionDestinationElement(effect, data));
-        if (rect) destinations.push(acquisitionOverlayLocalRect(rect, viewport));
+        if (rect) destinations.push(acquisitionOverlayLocalRect(rect, overlayViewport));
       }
     } else {
       const recipient = data.players?.find(player => player.id === effect.playerId &&
@@ -27632,7 +27635,7 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, providers = {})
       if (recipient && Number.isFinite(recipient.x) && Number.isFinite(recipient.y)) {
         const position = renderedPlayer(recipient);
         const point = acquisitionOverlayLocalPoint(acquisitionWorldPoint(
-          position.x, position.y - 22, camera, zoom, canvasRect), viewport);
+          position.x, position.y - 22, camera, zoom, canvasRect), overlayViewport);
         destinations.push({ left: point.x - 7, top: point.y - 7,
           width: 14, height: 14, radius: 7, actor: true });
       }
@@ -27644,13 +27647,21 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, providers = {})
     requests.push({ effectId: String(effect.id), source: effect, elapsed, origin,
       destinations, hudKeys });
   }
-  const drawFrame = viewport ? { width: viewport.width, height: viewport.height,
-    pixelWidth: viewport.pixelWidth, pixelHeight: viewport.pixelHeight,
+  const drawFrame = overlayViewport ? { width: overlayViewport.width, height: overlayViewport.height,
+    pixelWidth: overlayViewport.pixelWidth, pixelHeight: overlayViewport.pixelHeight,
     effects: drawn.map(({ effectId, source, ...geometry }) => geometry) } : null;
   return { expandedMap, expandedBlocked, acquisition: {
-    viewport, canvas: overlay, drawFrame, source, effects, sourceIds, drawn,
+    viewport: overlayViewport, canvas: overlay, drawFrame, source, effects, sourceIds, drawn,
     requests, unsupported, canvasRect, overlayRect, now } };
 }
+function webgpuMainViewportSignature(viewport) {
+  const rect = viewport?.rect;
+  return [viewport?.kind, viewport?.width, viewport?.height,
+    viewport?.pixelWidth, viewport?.pixelHeight,
+    rect?.left, rect?.top, rect?.width, rect?.height,
+    ...(viewport?.worldToLogical || [])];
+}
+
 function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   shapeProviders = {}) {
   if (data !== state.data || data?.roomId !== state.data?.roomId ||
@@ -27662,12 +27673,9 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const owner = { data, generation: state.roomSessionGeneration,
     roomId: state.roomId, snapshotRoomId: data?.roomId, phase: data?.phase,
     screen: state.screen,
-    viewport, viewportSignature: [viewport?.kind, viewport?.width, viewport?.height,
-      viewport?.pixelWidth, viewport?.pixelHeight, ...(viewport?.worldToLogical || [])] };
+    viewport, viewportSignature: webgpuMainViewportSignature(viewport) };
   const assertCurrent = () => {
-    const currentViewportSignature = [viewport?.kind, viewport?.width,
-      viewport?.height, viewport?.pixelWidth, viewport?.pixelHeight,
-      ...(viewport?.worldToLogical || [])];
+    const currentViewportSignature = webgpuMainViewportSignature(viewport);
     // Ordinary state polls replace state.data even when the render session has
     // not changed. Keep the captured frame valid across those replacements;
     // effect, marker, viewport and session checks below still reject changes
@@ -27777,7 +27785,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
       .map(key => [key, effect[key]])) };
   });
   const conditional = captureWebGPUMainAppConditionalTail(data,
-    early.camera, early.zoom, shapeProviders);
+    early.camera, early.zoom, viewport, shapeProviders);
   assertCurrent();
   const sourceIds = late.stage.sourceEffectIds.map(String);
   const claimedIds = [...late.stage.events.map(event => event.effectId),
@@ -27814,7 +27822,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
     attackTargets: { scene: { selectedTarget:
       selectedAttackTargetWebGPUScene(data) || null }, ...common },
     taskIndicators: { data, ...common },
-    hud: { data, scene: hudWebGPUScene(data, viewport.width, viewport.height),
+    hud: { data, scene: hudWebGPUScene(data, viewport.width, viewport.height, viewport),
       ...common },
     minimap: { scene: minimapWebGPUScene(data, viewport.width), ...common },
     modeBanner: { scene: modeBannerWebGPUScene(data), ...common },
@@ -27854,7 +27862,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const assertTailCurrent = () => {
     assertCurrent();
     const freshConditional = captureWebGPUMainAppConditionalTail(data,
-      early.camera, early.zoom, shapeProviders);
+      early.camera, early.zoom, viewport, shapeProviders);
     assertWebGPUAcquisitionCandidateGeometry(candidate, conditional.acquisition);
     if (state.killEffects !== killSource || state.magicEffects !== headEffectSource ||
         !Array.isArray(state.magicEffects) ||
@@ -28002,16 +28010,16 @@ function assertWebGPUAcquisitionCandidateGeometry(candidate, acquisition) {
     ['left', 'top', 'width', 'height'].every(key =>
       element.getBoundingClientRect()[key] === expected?.[key]));
   if (acquisition?.effects?.length &&
-      (!acquisition.canvas?.isConnected ||
+      (!els.webgpuMainCanvas?.isConnected || !acquisition.canvas?.isConnected ||
        !rectMatches(acquisition.canvas, acquisition.overlayRect) ||
-       !rectMatches(els.canvas, acquisition.canvasRect)))
-    throw Object.assign(new Error('WebGPU acquisition overlay or source DOM geometry changed'),
+       !rectMatches(els.webgpuMainCanvas, acquisition.canvasRect)))
+    throw Object.assign(new Error('WebGPU acquisition overlay or main viewport geometry changed'),
       { code: 'DVA_WEBGPU_STALE_SCENE' });
   if (candidate?.acquisitionHudPlan &&
       (candidate.acquisitionHudPlan !== candidate.stages.hud?.preparedPlan ||
        !candidate.acquisitionResolved ||
        !rectMatches(acquisition.canvas, candidate.acquisitionResolved.overlayRect) ||
-       !rectMatches(els.canvas, candidate.acquisitionResolved.canvasRect) ||
+       !rectMatches(els.webgpuMainCanvas, candidate.acquisitionResolved.canvasRect) ||
        JSON.stringify(candidate.acquisitionResolved.hudRects) !==
          JSON.stringify(candidate.acquisitionHudPlan.acquisitionHudRects) ||
        (candidate.acquisitionResolved.drawFrame &&
@@ -30447,15 +30455,19 @@ function drawAnimatedTextureBottom(sprite, centerX, bottomY, maxWidth, maxHeight
 // Snapshot the values that the main WebGPU HUD cannot derive from game data.
 // Its hit rectangles must be copied back to state in the same committed frame
 // so acquisition photons still reach the glyph that was actually displayed.
-function hudWebGPUScene(data, w, h) {
+function hudWebGPUScene(data, w, h, viewport) {
+  const rect = viewport?.rect;
+  if (!rect || ![rect.left, rect.top, rect.width, rect.height].every(Number.isFinite) ||
+      rect.width <= 0 || rect.height <= 0)
+    throw new Error('WebGPU HUD needs a valid candidate viewport rectangle');
   const self = data?.self || {};
   return {
     now: estimatedServerNow(data),
     mana: displayedManaValue(self.mana),
     fighterAccess: hasDisplayedOperatorAccess(self, "fighter"),
-    canvasCssWidth: fieldCanvasCssWidth || w,
-    canvasCssHeight: fieldCanvasCssHeight || h,
-    soloMissionHudOverlapCss: Math.max(0, soloMissionHudCssBottom - fieldCanvasCssTop),
+    canvasCssWidth: rect.width,
+    canvasCssHeight: rect.height,
+    soloMissionHudOverlapCss: Math.max(0, soloMissionHudCssBottom - rect.top),
     tabletOpen: state.tabletOpen
   };
 }

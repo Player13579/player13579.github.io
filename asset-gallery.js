@@ -188,7 +188,7 @@
       version('status-cleanse-astra-r02', 'Astra r0.2', 'public/astra-status-cleanse-v1/versions/r02/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r02/cleanse.mjs', '品質不合格・本編未採用', 'aliasは除去されたが、主形が光る花器に見える。', 'actor-H64'),
       version('status-cleanse-astra-r01', 'Astra r0.1', 'public/astra-status-cleanse-v1/versions/r01/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r01/cleanse.mjs', '品質不合格・本編未採用', '主形が小さな杯に見え、ray-marchに帯状aliasがある。', 'actor-H64')
     ]) }),
-    Object.freeze({ id: 'cooldown-astra', title: '待機時間圧縮', defaultVersionId: 'cooldown-sol61-r3', versions: Object.freeze([
+    Object.freeze({ id: 'cooldown-astra', title: '待機時間圧縮', defaultVersionId: 'cooldown-sol61-r4', versions: Object.freeze([
       version('cooldown-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-cooldown-zero/r4/preview.html?embed=1', 'public/sol61-cooldown-zero/r4/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。真の3D経路と前後遮蔽を実装し実GPU4ループ確認。前腕付近の形が発光するばね・コイルに見えるため不合格。有限固有SFXあり、聴感未受入。再生可能な比較履歴。', 'effect-H64'),
       version('cooldown-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-cooldown-zero/r3/preview.html?embed=1', 'public/sol61-cooldown-zero/r3/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU全寿命・4ループを確認。初期が回復のU字の光、後半が胴体の帯に見えるため不合格。有限SFXあり、聴感未受入。次稿を制作中。', 'effect-H64'),
       version('cooldown-sol61-r2', 'GPT-6.1-Sol zero r2', 'public/sol61-cooldown-zero/r2/preview.html?embed=1', 'public/sol61-cooldown-zero/r2/effect.mjs', '品質未達・未採用・本編未接続', '作者: GPT-6.1-Sol。再生可能な改稿履歴。分割した挟み込みの形と身体発光の意味が未達。原版の有限VFX/SFXを保持。', 'effect-H64'),
