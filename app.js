@@ -2650,7 +2650,7 @@ const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   acquisitionCanvas: null, startToken: null,
   unstableLayoutRetryTimer: null, unstableLayoutRetryGeneration: -1 };
 const webgpuStartupTiming = { nextAttemptId: 0, current: null, playClickedAtMs: null,
-  firstPumpAfterPlayAtMs: null };
+  firstPumpAfterPlayAtMs: null, preDriver: null };
 if (WEBGPU_MAIN_VERIFY_ROUTE)
   window.__dvaStartupRetryTrace = () =>
     webgpuMainApp.driver?.retryTraceSnapshot?.() ?? null;
@@ -2674,6 +2674,32 @@ function markWebGPUStartupStage(name, durationMs = null) {
     count: (previous?.count || 0) + 1,
     ...(Number.isFinite(durationMs) && durationMs >= 0 ?
       { durationMs } : {}) });
+}
+function recordWebGPUPreDriverState(status) {
+  if (!WEBGPU_MAIN_VERIFY_ROUTE || !webgpuStartupTiming.preDriver ||
+      webgpuStartupTiming.current?.frozen || state.screen !== 'game') return;
+  const trace = webgpuStartupTiming.preDriver;
+  const atMs = performance.now();
+  trace.lastObservedAtMs = atMs;
+  trace.pumpCount++;
+  const root = independentGameplayViewportRootSize();
+  const viewport = Object.freeze({ width: window.innerWidth,
+    height: window.innerHeight,
+    visualWidth: window.visualViewport?.width ?? null,
+    visualHeight: window.visualViewport?.height ?? null,
+    visualScale: window.visualViewport?.scale ?? null,
+    rootWidth: root.width, rootHeight: root.height,
+    dpr: window.devicePixelRatio || 1 });
+  const key = JSON.stringify([status, ...Object.values(viewport)]);
+  if (trace.lastKey === key) return;
+  trace.lastKey = key;
+  trace.lastStatus = status;
+  if (trace.events.length >= 64) { trace.dropped++; return; }
+  trace.events.push(Object.freeze({ status, atMs,
+    roomId: state.roomId ?? null,
+    roomSessionGeneration: state.roomSessionGeneration ?? null,
+    mapId: state.data?.map?.id ?? null,
+    viewport }));
 }
 function recordWebGPUStartupRequest(trace, appRequestSerial, kind, detail = {}) {
   if (!WEBGPU_MAIN_VERIFY_ROUTE || !trace || trace !== webgpuStartupTiming.current ||
@@ -7653,6 +7679,13 @@ function bindTitleNavigationEvents() {
     if (WEBGPU_MAIN_VERIFY_ROUTE) {
       webgpuStartupTiming.playClickedAtMs = performance.now();
       webgpuStartupTiming.firstPumpAfterPlayAtMs = null;
+      webgpuStartupTiming.current = null;
+      webgpuStartupTiming.preDriver = { playClickedAtMs:
+        webgpuStartupTiming.playClickedAtMs, events: [], dropped: 0,
+        lastStatus: null, lastKey: null, lastObservedAtMs: null,
+        pumpCount: 0 };
+      window.__dvaStartupPreDriverTiming = webgpuStartupTiming.preDriver;
+      window.__dvaStartupPassTiming = webgpuStartupTiming.preDriver;
     }
     const prewarm = webgpuTitlePrewarm.current;
     const prewarmState = prewarm?.state || 'unavailable';
@@ -19022,6 +19055,7 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
     startupTiming = { attemptId, mapId: String(map.id),
       roomSessionGeneration: sessionGeneration,
       playClickedAtMs: webgpuStartupTiming.playClickedAtMs,
+      preDriver: webgpuStartupTiming.preDriver,
       driverStartedAtMs: performance.now(), marks: [], stageTimes,
       incompleteFrameReasons: Object.create(null), lastIncompleteFrame: null,
       requestEvents: [], requestEventsDropped: 0, frozen: false };
@@ -19143,6 +19177,13 @@ function pumpWebGPUMainAppDriver() {
   const data = state.data;
   const sample = visibleGameplayViewportSample();
   const image = webgpuMainReadyImage(data);
+  if (state.screen === 'game')
+    recordWebGPUPreDriverState(!sample ? 'waiting:viewport-sample'
+      : !image ? 'waiting:map-image'
+      : !window.DvaWebGPUViewport?.validSample?.(sample)
+        ? 'waiting:stable-viewport'
+        : webgpuMainApp.driver ? 'driver:ready'
+          : webgpuMainApp.startPending ? 'startup:pending' : 'startup:driver');
   if (state.screen !== "game") {
     stopWebGPUMainPresentationWatchdog();
     setWebGPUMainPendingDiagnostic('waiting:game-screen');

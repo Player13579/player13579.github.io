@@ -57,8 +57,10 @@
       version('sunbeam-astra-clean-v2', 'Astra v2', 'sunbeam-astra-clean-v2-preview.html', 'webgpu-sunbeam-astra-clean-v2.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64'),
       version('sunbeam-astra-clean-v1', 'Astra v1', 'sunbeam-astra-clean-v1-preview.html', 'webgpu-sunbeam-astra-clean-v1.js', '試作・品質未受入・本編未採用', '履歴上WebGPU再生可能。品質受入前の試作です。', 'effect-H64')
     ]) }),
+    Object.freeze({ id: 'credit-acquisition', title: 'クレジット獲得', defaultVersionId: 'luck-astra-zero-r09', versions: Object.freeze([
+      version('luck-astra-zero-r09', 'Astra r09（旧幸運9）', 'public/astra-luck-zero-v1/versions/r09/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r09/luck-zero-r09.js', 'クレジット獲得としてユーザー採用済み・本編接続中', '作者: GPT-6-Astra（設計・実装）。2026-09-30に旧幸運r09をクレジット獲得Eとして版指定で採用。原版の形・動き・固有SFXと作者を保持。実WebGPU独立再生は既確認。本編gain-credits接続・実発動・聴感は検証中。幸運題材としての旧品質不合格記録は履歴に残すが、今回のクレジット獲得としての採用指示を優先する。', 'actor-H64')
+    ]) }),
     Object.freeze({ id: 'luck-astra', title: '幸運', defaultVersionId: 'luck-astra-zero-r03', versions: Object.freeze([
-      version('luck-astra-zero-r09', 'Astra ゼロ設計 r09', 'public/astra-luck-zero-v1/versions/r09/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r09/luck-zero-r09.js', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra（設計・実装）。GPT-6-Lunaは採用済み受益者spriteの読み取りを監査。実WebGPU standalone再生pass、H64・3 cycle。品質理由: Star-OFFでも明るい金色のpod/banana状の物体に見え、接触後は主に衣装が金色へ変わる。体積と伝達がH64/H160で読めず、Star-ONも改善しない。記録理由: “H64 stars OFF main form reads as a luminous golden pod/banana object, not a favorable optical phenomenon.” “One closed volume removes the three persistent ribbons and is visibly consumed during contact, but the recipient response reads predominantly as broad golden garment recoloring.” 性能は記録runで連続性pass（RAF P95 18.2ms、最大18.5ms）。SFX聴感未実施、非採用、本編未接続。', 'actor-H64'),
       version('luck-astra-zero-r08', 'Astra ゼロ設計 r08', 'public/astra-luck-zero-v1/versions/r08/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r08/luck-zero-r08.js', '品質不合格・未採用・本編未接続', '作者: GPT-6-Astra（設計・実装）。GPT-6-Lunaは採用済み受益者spriteの読み取りを監査。実WebGPU standalone再生pass、H64・3 cycle。品質理由: H64 OFFで主形が太い発光crestでなく3枚の羽/リボンに見える。H160でも細い光帯が分離し、接触後に外形がほぼ変わらず、袖/足の小反射で受益伝達を示せない。Star-ONのglintも改善せず。記録理由: “H64 OFF main form reads as three feathers/ribbons rather than a thick luminous breaking crest.” “Three optical surfaces remain separated as thin bands, including at H160; geometric normal offsets do not create a readable continuous luminous volume.” 性能は記録runで連続性pass（RAF P95 18.3ms、最大18.5ms）。SFX聴感未実施、非採用、本編未接続。', 'actor-H64'),
       version('luck-astra-zero-r06', 'Astra ゼロ設計 r06', 'public/astra-luck-zero-v1/versions/r06/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r06/luck-zero-r06.js', '品質不合格・性能不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: Star-OFF H64は肩外の淡い橙2斑点に留まり、受益者投影への集中は背面alphaに隠れて弱い霞と小さな照明になる。2像から良好な受益状態への変化が視認できず、Star-ONでも改善しない。性能不合格: RAF間隔P95 53.9ms、最大161.7ms（原因未特定）。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
       version('luck-astra-zero-r05', 'Astra ゼロ設計 r05', 'public/astra-luck-zero-v1/versions/r05/index.html?embed=1&height=64', 'public/astra-luck-zero-v1/versions/r05/luck-zero-r05.js', '品質不合格・性能不合格・未採用・本編未接続', '作者: GPT-6-Astra。実GPU standalone再生確認済み。品質理由: sparkle OFFでも浅い黄色の不規則な床リングが全体を占め、.14–.82で形成と受益者応答が分離せず、袖/脚への反射も弱い。光条はこの主因を補えない。性能も不合格: RAF間隔P95 53.2ms、最大162.1ms（原因未特定）。聴感未実施、ユーザー未採用、本編未接続。', 'actor-H64'),
@@ -220,7 +222,7 @@
   let currentCategory = 'effect';
   let currentAdoptionFilter = 'unadopted';
   const selections = new Map();
-  const adoptedVersionIds = new Set(['heal-astra-sparkle-r1','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29','barrier-pro-r07']);
+  const adoptedVersionIds = new Set(['heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29','barrier-pro-r07']);
   const categoryTabs = [...document.querySelectorAll('[data-category]')];
   const layout = document.getElementById('gallery-layout');
   const emptyCategory = document.getElementById('empty-category');
