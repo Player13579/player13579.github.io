@@ -1,0 +1,30 @@
+export const DESIGN=Object.freeze({
+ id:'sol61-barrier-zero-r3',author:'GPT-6.1-Sol',adoption:'unadopted',
+ ownedOutput:'r3のみ。r1/r2と他担当・ゲーム・gallery・公開は変更しない。',
+ requirements:'定常でもdigital防護を読む、広い透明な空間hullと接合sourceに結ぶ離散的生成/命中/解除。白ピークを抑えて品質を回避しない。旧GPT/Astra creative未使用。',
+ source:{repository:'player13579/B',branch:'Codex-honoo',commit:'37eb4bdfe59f0dc075f9b4333b7d6af76b784a88',base_blob:'8a908495ae1f9b7175e00384ab88c50e5c78bd43',extension_blob:'0eda016558e426ff4142d850d26200b40fafd834',checked:'完全読了済み版。r2でauthenticated currentcommit再確認。r3開始時authenticated ls-remoteで同commitを再照合済み。'},
+ causalMeaning:{facts:'共通Barrierはalive/非ejected/耐久>0でactive。capacity2、kill cost1/body costdamage、付与cooldown20s。Protect kill→body変換とは別。',mustRead:'身体の外に厚い透明なdigital防護hullが実際の面として接続される。命中は壁にだけ面応答を与え、耐久0で壁の接続が解放される。',unknown:'実入力にない攻撃位置・耐久割合・解除理由は作らない。既知hitは明記されたpreviewfixtureだけ。',confusable:'cage/泡/装甲服/装飾gem/キャラクターを閉じ込めた容器',discrimination:'大きな平面が斜めの面へ接続する、手前と奥の面が異なる位置に投影される、bodyは奥だけ隠し、手前は透過。面の接合sourceが生成/命中/解除の離散状態に因果的に同期する。'},
+ morphology:{macro:'8側面と肩/底の傾斜面を持つ一つの透明なdigital hull。身体H64の外に幅のある正面・奥面・斜面が空洞を囲む。泡の連続法線や薄い線格子に頼らない。',meso:'外面と内面は別の実座標。広いbody区間の平面と肩/足元の面変化。yaw32/pitch12の実3D投影で正面・奥面はscreen上で左右にずれ、両面の重なりと側面が奥行きの主cue。',micro:'文字・細格子・粒子・gemなし。支持接合に短い白芯と青い面放射。頂点標本は視覚線を生成しない。',notCopied:'r1/r2の棄却原因は抽象判断材料。r3の多面体mesh/source式/離散phaseは新設計。技術的fixture/検証/後処理機構のみ自身の既存コードを再使用。'},
+ geometry:{crossSectionXZ:[[-.62,.60],[.62,.60],[.88,.32],[.88,-.32],[.62,-.60],[-.62,-.60],[-.88,-.32],[-.88,.32]],ringsYS:[[-1.13,.50],[-.87,.98],[.58,1],[.99,.77],[1.13,.35]],inner:'X/Zは0.91倍、Yは0.95倍。法線方向一定厚ではない。hullの内外境界と空洞は実3Dmeshで保持。',camera:'orthographic yaw32deg/pitch12deg。bodyはunchanged camera-facing original。',projection:'world m、既存body1.65m→64px。screen右+X/下+Y。全mesh頂点のcamera projection supportをCPU計算し、GPUで実bodyとの位置を観測。',mesh:'8側面×4縦区間、top/bottom cap。それぞれflat normalの広い面。外面240頂点/内面240頂点。'},
+ clocks:{owner:'wall ms。activeはserver所有。4600mspreviewloopはfixtureのみ。',createMs:650,hitMs:650,breakMs:480,active:'activeが続く限り接続面/支持sourceを定常保持。期限・耐久を演出側で減らさない。',dedup:'causeId一回。snapshotはstableだけ、create峰/SFXなし。'},
+ phases:{create:'8面が45msずつずれた同一causeの離散接続順序で足元から成立する。各面は200msで高さを伸ばし、成立境界のsourceが白いピークとなる。全体650msでstableへ。新しいtimer/game状態ではない。',active:'8側面と内外境界が保持される。実接合域に定常供給。恣意的呼吸/永続scanなし。',hit:'実座標があるfixtureのみ接触面に白芯、広い面応答と隣接面接合の短いrecovery。座標未知なら位置を指定しない短い支持応答。650msでstableへ。',break:'0–100msの接合応答、4組の大面が実空間で外へ開く。480msで面/源/OBSが0。破片なし。'},
+ optics:{carrier:'ゲーム防護の宣言場。実装は広いplane/chamferの有限hull、inner/outer boundary。実物理防御を主張しない。',face:'青い面coverage/透過alpha、flat normal/view応答。中央bodyと顔は高透過、広い斜面は厚い。主形は線だけでなく実面。',emission:'実面の接合/生成境界/命中界面から青い放射と局所白芯。支持点は面に接続し浮かない。白峰は保持。',OBS1:'同じmesh emission MRTをGPU blurして近傍へ合成。source OFF→OBS0。OBS OFFでも広い面/境界は残る。',alpha:'linear radianceとpremult coverage。body sRGB→linear。rgba16float scene/emission/blurとWebGPU合成のみ。',budget:'source位置を身体の中心でなく実接合/外面へ結び、面/白芯/glowの役割を分ける。白の抑制や背景別の品質回避なし。'},
+ SFX:{create:'650ms、面の45ms順序に接合音を同期し、低い防護体の共鳴へ整定。',hit:'520ms、短い界面打音→面共鳴。',break:'480ms、支持結合が下降して有限に解放。humなし。',ownership:'causeId一回、voice終了でdisconnect。__gallerySfx hook、verifyはcontext未作成でgain0。実聴感は別ゲート。'},
+ coordinates:{world:'右手系m +X右/+Y上/+Z手前。足原点、hull center0.9m、body原画不変。camera+Z観測。',Gravity:{condition:'normal',vector:[0,-9.81,0],body:'既存足支持を保持。',effect:'target-relative宣言場で、実材料落下/反力を創作しない。'},WindCapsule:{medium_state:'air',Field:{direction:[0,0,0],speed:0,gust:'none',shear:'none',turbulence:'none'},response:'静穏。原画髪/衣服へ運動を追加しない。'}},
+ extensions:{VFX:'explicit',ECodeImplementation:'explicit',LDM:'explicit VFX',PostEffects:'attribute_resolved mesh-source-bound bloomのみ',MagicArchitecture:'not_applicable:指定なし',KeywordExpansion:'not_applicable:指定なし',GradientAnchorPolicy:'not_applicable:blue本体/neutral白芯、色相gradientなし'},
+ acceptance:{H64:'dark/light同一shader DPR1、全寿命、source/OBS/faceOFF、front/back-only。顔/身体不変、広い面/奥行き/デジタル接続を観測。',performance:'実GPUcompile/submit、3loops、診断pauseを除く。',iframe:'初回/次loop、__gallerySfx hook、verifyGain0、embed診断非表示。',quality:'VFX/SFX/本編/公開/採用は別判定。'},
+ remainingIndependentDecisions:'多面体の定常面/接合がH64でdigital防護を読むか、空間hullか容器か、実SFX聴感。GPUはroot許可まで起動しない。'
+});
+export function fixtureState(ms){if(ms<0)return{stage:4,t:0,live:false,event:null};if(ms<650)return{stage:0,t:ms/1000,live:true,event:'create'};if(ms<1800)return{stage:1,t:(ms-650)/1000,live:true,event:null};if(ms<2450)return{stage:3,t:(ms-1800)/1000,live:true,event:'hit'};if(ms<3400)return{stage:1,t:(ms-2450)/1000,live:true,event:null};if(ms<3880)return{stage:2,t:(ms-3400)/1000,live:true,event:'break'};return{stage:4,t:0,live:false,event:null};}
+export function makeShellMesh(){
+ const out=[],rings=DESIGN.geometry.ringsYS,section=DESIGN.geometry.crossSectionXZ;
+ function point(i,j,inner){const [y,scale]=rings[j],[x,z]=section[(i+8)%8];return[x*scale*(inner?.91:1),y*(inner?.95:1),z*scale*(inner?.91:1)];}
+ function triangle(a,b,c,uvs,panel,inner){const e=b.map((v,i)=>v-a[i]),f=c.map((v,i)=>v-a[i]);let n=[e[1]*f[2]-e[2]*f[1],e[2]*f[0]-e[0]*f[2],e[0]*f[1]-e[1]*f[0]],len=Math.hypot(...n);n=n.map(v=>v/len);for(let i=0;i<3;i++)out.push(...[a,b,c][i],...n,...uvs[i],panel,inner);}
+ for(const inner of [0,1]){
+  for(let i=0;i<8;i++)for(let j=0;j<4;j++){const a=point(i,j,inner),b=point(i+1,j,inner),c=point(i+1,j+1,inner),d=point(i,j+1,inner);const v0=(rings[j][0]+1.13)/2.26,v1=(rings[j+1][0]+1.13)/2.26;triangle(a,b,c,[[0,v0],[1,v0],[1,v1]],i,inner);triangle(a,c,d,[[0,v0],[1,v1],[0,v1]],i,inner);}
+  for(const [j,up]of [[0,false],[4,true]])for(let i=0;i<8;i++){const center=[0,rings[j][0]*(inner?.95:1),0],a=point(i,j,inner),b=point(i+1,j,inner);triangle(center,up?a:b,up?b:a,[[.5,up?1:0],[0,up?1:0],[1,up?1:0]],i,inner);}
+ }
+ return{vertices:new Float32Array(out),surfaceVertexCount:240,totalVertexCount:480,strideFloats:10};
+}
+export function projectedSupport(){const mesh=makeShellMesh().vertices,cy=Math.cos(32*Math.PI/180),sy=Math.sin(32*Math.PI/180),cx=Math.cos(12*Math.PI/180),sx=Math.sin(12*Math.PI/180),xs=[],ys=[];for(let i=0;i<240*10;i+=10){xs.push((cy*mesh[i]+sy*mesh[i+2])*64/1.65);ys.push((cx*mesh[i+1]-sx*(-sy*mesh[i]+cy*mesh[i+2]))*64/1.65);}return{widthPx:Math.max(...xs)-Math.min(...xs),heightPx:Math.max(...ys)-Math.min(...ys)};}
+

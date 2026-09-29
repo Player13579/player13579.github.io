@@ -2,6 +2,11 @@
   'use strict';
   const PRESENTATION = Object.freeze({ width: 980, height: 620, anchorHeight: 64 });
   const EFFECT_VIEW = Object.freeze({
+    'barrier-sol61-r3': { magnification: 4, focusX: 490, focusY: 310 },
+    'mana-zero-sol61-r1': { magnification: 4, focusX: 490, focusY: 312 },
+    'barrier-sol61-r2': { magnification: 4, focusX: 490, focusY: 310 },
+    'barrier-sol61-r2-draft1': { magnification: 4, focusX: 490, focusY: 310 },
+    'cooldown-sol61-r4': { magnification: 4, focusX: 490, focusY: 312 },
     'barrier-sol61-r1': { magnification: 4, focusX: 490, focusY: 310 },
     'cooldown-sol61-r1': { magnification: 4, focusX: 490, focusY: 312 },
     'cooldown-sol61-r2': { magnification: 4, focusX: 490, focusY: 312 },
@@ -90,6 +95,7 @@
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
     Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+      version('mana-zero-sol61-r1', 'GPT-6.1-Sol zero r1', 'public/sol61-mana-zero/r1/preview.html?embed=1', 'public/sol61-mana-zero/r1/effect.mjs', 'ゼロ設計・品質不合格・未採用', '作者: GPT-6.1-Sol。旧供給粒・shader・音を使わず新規設計。実GPU全寿命・4ループを確認。新しい連続容積は衣装のパッチや鎧の内張りに見えるため不合格。有限固有SFXあり、聴感未受入。本編未接続、次稿を制作中。', 'effect-H64'),
       version('mana-sol61-r1', 'GPT-6.1-Sol r1（Astra r07改良）', 'public/sol61-mana-e/r1/index.html?embed=1&single=1', 'public/sol61-mana-e/r1/mana.wgsl', '品質未達・旧構造継承確認・未採用', '改修作者: GPT-6.1-Sol。親原版: GPT-6-Astra r07。以前の改善指示に沿った版。入力監査で供給粒・キラキラ・音の同一部分を確認し、実表示でも小さな塊と衣装発光に寄る弱点が残ったため改良系列を中止。新しいゼロ設計を制作中。再生可能な比較履歴として保持し、本編未接続、聴感未受入。', 'effect-H64'),
       version("mana-receive-v2-r07", "Astra receive r07", "public/astra-mana-receive-v2/mana-r07/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r07/renderer.mjs", "品質不合格（自主レビュー）・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。実WebGPU再生確認済み。自主レビュー不合格: サンプル画像の取得位相では粒子効果が見えず、終盤の受領光も小さい。ユーザー未採用、本編未接続。", 'effect-H64'),
       version("mana-receive-v2-r06", "Astra receive r06", "public/astra-mana-receive-v2/mana-r06/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r06/renderer.mjs", "品質不合格（自主レビュー）・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。修正で接触タイミングは改善したが、取り込み後半が小さな手元光に縮小し、ケイデンス/聴感も未受入。自主レビュー不合格、ユーザー未採用、本編未接続。", 'effect-H64'),
@@ -183,6 +189,7 @@
       version('status-cleanse-astra-r01', 'Astra r0.1', 'public/astra-status-cleanse-v1/versions/r01/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r01/cleanse.mjs', '品質不合格・本編未採用', '主形が小さな杯に見え、ray-marchに帯状aliasがある。', 'actor-H64')
     ]) }),
     Object.freeze({ id: 'cooldown-astra', title: '待機時間圧縮', defaultVersionId: 'cooldown-sol61-r3', versions: Object.freeze([
+      version('cooldown-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-cooldown-zero/r4/preview.html?embed=1', 'public/sol61-cooldown-zero/r4/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。真の3D経路と前後遮蔽を実装し実GPU4ループ確認。前腕付近の形が発光するばね・コイルに見えるため不合格。有限固有SFXあり、聴感未受入。再生可能な比較履歴。', 'effect-H64'),
       version('cooldown-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-cooldown-zero/r3/preview.html?embed=1', 'public/sol61-cooldown-zero/r3/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU全寿命・4ループを確認。初期が回復のU字の光、後半が胴体の帯に見えるため不合格。有限SFXあり、聴感未受入。次稿を制作中。', 'effect-H64'),
       version('cooldown-sol61-r2', 'GPT-6.1-Sol zero r2', 'public/sol61-cooldown-zero/r2/preview.html?embed=1', 'public/sol61-cooldown-zero/r2/effect.mjs', '品質未達・未採用・本編未接続', '作者: GPT-6.1-Sol。再生可能な改稿履歴。分割した挟み込みの形と身体発光の意味が未達。原版の有限VFX/SFXを保持。', 'effect-H64'),
       version('cooldown-sol61-r1', 'GPT-6.1-Sol zero r1', 'public/sol61-cooldown-zero/r1/preview.html?embed=1', 'public/sol61-cooldown-zero/r1/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。ゼロ設計の初稿。主形が梯子や柵に見えるため不合格。再生可能な履歴として原版の有限VFX/SFXを保持。', 'effect-H64'),
@@ -199,6 +206,9 @@
       version('astra-cooldown-benefit-r0.1', 'Astra r0.1', 'public/astra-cooldown-benefit-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r01/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。三面が汎用的な同心輪へ融合。SFX圧縮時刻も不一致。', 'actor-H64')
     ]) }),
     Object.freeze({ id: 'barrier-pro', title: 'バリア', versions: Object.freeze([
+      version('barrier-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-barrier-zero/r3/index.html?embed=1', 'public/sol61-barrier-zero/r3/runtime.mjs', '担当視覚審査済み・品質全体未受入・未採用', '作者: GPT-6.1-Sol。広い透明な多面体と接合源に連動する生成・命中・解除。実GPUH64全寿命・定常前後面・3ループを確認し、静止fixtureのデジタル防護を視覚確認。聴感・公開での品質・本編接続・ユーザー採用は別ゲートとして未了。有限固有SFXあり。', 'effect-H64'),
+      version('barrier-sol61-r2', 'GPT-6.1-Sol zero r2', 'public/sol61-barrier-zero/r2/index.html?embed=1', 'public/sol61-barrier-zero/r2/runtime.mjs', '品質確認未完了・未採用・本編未接続', '作者: GPT-6.1-Sol。広い曲面と内外面の実3D透明殻へ改稿。実GPUコンパイル・H64全寿命・前後面・3ループ確認。定常時のデジタルな固有性は懸念が残り、品質合格ではない。有限SFXあり、聴感未受入。', 'effect-H64'),
+      version('barrier-sol61-r2-draft1', 'GPT-6.1-Sol zero r2 初稿', 'public/sol61-barrier-zero/r2-draft1/index.html?embed=1', 'public/sol61-barrier-zero/r2-draft1/runtime.mjs', '旧初稿・品質未達・未採用', '作者: GPT-6.1-Sol。r2改稿前の実GPU再生可能な初稿。一般的な滑らかな泡に見え、固有性と面の役割が弱いため未達。原版の有限VFX/SFXを比較用に保持。', 'effect-H64'),
       version('barrier-sol61-r1', 'GPT-6.1-Sol zero r1', 'public/sol61-barrier-zero/r1/index.html?embed=1', 'public/sol61-barrier-zero/r1/runtime.mjs', '品質未達・未採用・本編未接続', '作者: GPT-6.1-Sol。旧GPT/Astra版の表現を使わずデジタルな耐久バリアを新規設計。実GPUコンパイル・3ループを確認。平面的な籠に見える形状が未達で次稿を制作中。生成・被弾・破壊の有限SFXあり、聴感未受入。', 'effect-H64'),
       version('barrier-pro-r07', 'GPT Pro r0.7（採用撤回）', 'barrier-pro-r07/embed.html', 'barrier-pro-r07/barrier-pro-renderer.mjs', '採用撤回・旧本編接続あり・SFX聴感未確認', '2026-09-30にユーザーが採用撤回。新規設計を制作中。原版と作者は保持し、旧本編接続の撤去・置換は別途進めます。', 'effect-H64')
     ]) })
@@ -379,6 +389,7 @@
       {id:'cafeteria-pro-candidate-01',title:'GPT Pro candidate 01',src:'assets/cafeteria-pro-candidate-01.png',hash:'eaf56895b2d8bfda638ffe12a7ef3f5d812070b1b4d655afca4538c7f7b8f57',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'西側の開口幅不足（約143 logical units / 要求190）。歴史候補として保持。'}]}
 ,
     {id:'medical-gpt-history',category:'map',title:'医療室 · GPT試作',creatorDisplayName:'ChatGPT (model unverified)',quality:'mixed',adoption:'not-adopted',integration:'not-integrated',reason:'全版が一室プロトタイプの原本。attempt 02-bの受入は一室プロトタイプに限り、ゲーム採用・本編統合を意味しない。',versions:[
+      {id:'medical-room-normal-20260930-r2',title:'通常版ゼロ試作 r2',src:'assets/gpt-map-history/medical-zero-normal-r2.png',hash:'e511e9fd0bf876ea159004c96bd3336d0260615a1a8929991f85a5080ddf9cd8',creatorDisplayName:'ChatGPT 6 Pro',qualityStatus:'geometry-unaccepted',adoption:'unknown',note:'同じ検査済みBコード、参照画像なしで新規生成。真上視点を改善し医療6設備・椅子1脚を維持。外周余白、ベッド幅、棚・手洗い・東開口の位置は数値契約と差があり実画素受入は未了。本編未接続。原本を保持し配置を計測中。'},
       {id:'medical-room-normal-20260930-r1',title:'通常版ゼロ試作 r1',src:'assets/gpt-map-history/medical-zero-normal-r1.png',hash:'e862dd2fd3d7c1b4555df3d4465d82b4ca24c4e593ea1f3aa9e73073844cdeca',creatorDisplayName:'ChatGPT 6 Pro',qualityStatus:'geometry-unaccepted',adoption:'unknown',note:'2026-09-30に一室単位で新規生成。観測モデル表示6 Pro、画像バックエンド版不明。医療6設備・椅子1脚、販売機なし。全体図や旧室画像の入力なし。Bコード構造検査合格だが、外周余白・斜俯瞰・設備位置の近似があり真上と配置契約の実画素受入は未了。参照画像なしで修正版を制作中。本編未接続。'},
       {id:'medical-room-dense-attempt-01',title:'高密度試作 attempt 01（不採用）',src:'assets/gpt-map-history/medical-dense-attempt-01.png',hash:'db22a3413315b6a10dba92d040eef80f396a86efe7b0c2a45c29b8d111c2cc26',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected-overfurnished',adoption:'not-adopted',note:'2026-09-30の訂正で不採用を再確認。今後高密度版は制作しない。医療室は通常版としてゼロから新規制作する。旧原本と作者は履歴として保持。'},
       {id:'medical-room-attempt-02-b',title:'医療室 attempt 02-b',src:'assets/gpt-map-history/medical-attempt-02-b.png',hash:'eb778cc07b399fc1e6e372615b145ab337fd5afc47d59e41fe28c6bd01fb73c9',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-one-room-prototype',adoption:'not-adopted',note:'ChatGPT画像原本。目視配置検証PASSの一室プロトタイプ候補。ドア/既存compositor整合・衝突・実ゲーム検証が未完了。これはゲームマップ採用ではない。'},
