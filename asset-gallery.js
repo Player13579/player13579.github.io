@@ -2,6 +2,7 @@
   'use strict';
   const PRESENTATION = Object.freeze({ width: 980, height: 620, anchorHeight: 64 });
   const EFFECT_VIEW = Object.freeze({
+    'item-pickup-sol-r2': { magnification: 3.5, focusX: 128, focusY: 80 },
     'heal-astra-prototype': { magnification: 4, focusX: 490, focusY: 310 },
     'sunbeam-astra-clean-v3': { magnification: 1.18, focusX: 490, focusY: 310 },
     'luck-astra-clean-v4': { magnification: 3.5, focusX: 490, focusY: 195 },
@@ -30,6 +31,9 @@
     Object.freeze({ id, title, page, source, status, detail, anchor, zoom, replayable: true });
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const entries = Object.freeze([
+    Object.freeze({ id: 'item-pickup-sol', title: '接地アイテム取得', versions: Object.freeze([
+      version('item-pickup-sol-r2', 'Sol r2', 'public/sol-item-pickup-e/sol-r2/preview.html', 'public/sol-item-pickup-e/sol-r2/item-pickup-e.js', '品質完成候補・ユーザー採用未確認・本編未接続', '作者: GPT-6-Sol。正規action-item-pickupイベントから新規設計。接地面の収束、連続した曲面移送、受領部の強い局所光をWebGPUで自動再生。暗明H64の全寿命とGPUエラー0、SFX数値を確認。聴感と実キャラ遮蔽・本編接続は未審査。ユーザー採用未確認。', 'effect-H64')
+    ]) }),
     Object.freeze({ id: 'heal-astra', title: 'ヒール', defaultVersionId: 'heal-astra-sparkle-r1', versions: Object.freeze([
       version('heal-astra-sparkle-r1', 'Astra sparkle r1', 'public/astra-heal-sparkle-r1/index.html', 'public/astra-heal-sparkle-r1/heal-sparkle.js', 'ユーザー採用済み・ゲームコード接続済み・公開起動確認済み', '作者: GPT-6-Astra。ユーザー指定でHeal sparkle r1を採用。既存の視覚審査候補記録は維持し、明背景の一部でコントラスト低下あり。聴感未実施、公開Play→準備画面のWebGPU起動確認済み。実発動・全寿命・SFX聴感は未確認。', 'actor-H64'),
       version('heal-astra-sparkle-r3', 'Astra sparkle r3', 'public/astra-heal-sparkle-r3/index.html', 'public/astra-heal-sparkle-r3/heal-sparkle.js', '視覚品質候補・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。光条角度は全点・全位相で統一（主光条−64°、交差光条+26°）。品質理由: 全点/全位相でHeal基準角−64°。H64暗明で読める十字光条、元主形/発光保持、OFF元版一致。明背景の主光流に重なる一部点は局所差が弱い。音実聴未実施、本編未接続、ユーザー未採用。', 'actor-H64'),
@@ -90,8 +94,6 @@
       version('mana-astra-r3', 'Astra r3', 'public/astra-mana-receive-v1/versions/r3/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r3/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。自己不採用: 透過性は改善したが、閉じた縁が腰の輪と肩のストラップに見える。', 'actor-H64'),
       version('mana-astra-r2', 'Astra r2', 'public/astra-mana-receive-v1/versions/r2/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r2/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: 青い膨らんだ塊が人物を覆い、供給/輸送/受領が同質に見える。', 'actor-H64'),
       version('mana-astra-r1', 'Astra r1', 'public/astra-mana-receive-v1/versions/r1/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r1/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当不採用: H64の輸送が細い線、後半が小さな点。受領の状態が弱い。', 'actor-H64'),
-      version('mana-astra-v5-pilot', 'Astra v5 pilot', 'webgpu-mana-astra-v5-pilot.html', 'webgpu-mana-astra-v5-pilot.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
-      version('mana-astra-clean-v4-pilot', 'Astra clean v4 pilot', 'mana-astra-clean-v4-pilot.html', 'webgpu-mana-astra-clean-v4-pilot.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
       version('mana-astra-clean-v3', 'Astra clean v3', 'mana-astra-clean-v3-preview.html', 'webgpu-mana-astra-clean-v3.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
       version('mana-astra-clean-v2', 'Astra clean v2', 'mana-astra-clean-v2-preview.html', 'webgpu-mana-astra-clean-v2.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
       version('mana-astra-clean-v1', 'Astra clean v1', 'mana-astra-clean-v1-preview.html', 'webgpu-mana-astra-clean-v1.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
@@ -173,6 +175,41 @@
     ]) })
   ]);
   const params = new URLSearchParams(location.search);
+  const verifyMode = params.has('verify');
+  const sfxBridge = window.createGallerySfxBridge?.({ verify: verifyMode });
+  const audioRow = document.getElementById('gallery-audio');
+  const audioButton = document.getElementById('gallery-audio-enable');
+  const audioStatus = document.getElementById('gallery-audio-status');
+  let activeAudioFrame = null;
+  let activeAudioItem = null;
+  let audioStarted = false;
+  if (verifyMode) audioRow.hidden = true;
+  function reflectAudio(result) {
+    if (verifyMode) return;
+    if (result?.state === 'active') {
+      audioStarted = true;
+      audioButton.textContent = '音声再生中';
+      audioButton.setAttribute('aria-pressed', 'true');
+      audioStatus.textContent = '表示中のEの固有SFXをループに合わせて再生します。';
+    } else if (result?.state === 'unsupported') {
+      audioStatus.textContent = 'この版の固有SFXは再生できません。';
+    } else if (result?.state === 'unavailable') {
+      audioStatus.textContent = 'プレビューの準備後に音声を開始します。';
+    }
+  }
+  function beginGalleryAudio() {
+    if (verifyMode || !sfxBridge || !activeAudioFrame || !activeAudioItem) return;
+    reflectAudio(sfxBridge.activateFromGesture(activeAudioFrame, activeAudioItem));
+  }
+  audioButton.addEventListener('click', beginGalleryAudio);
+  if (!verifyMode) {
+    document.addEventListener('pointerdown', event => {
+      if (!audioStarted && !audioButton.contains(event.target)) beginGalleryAudio();
+    }, { capture: true });
+    document.addEventListener('keydown', event => {
+      if (!audioStarted && (event.key === 'Enter' || event.key === ' ')) beginGalleryAudio();
+    }, { capture: true });
+  }
   let selectedIndex = 0;
   let selectedVersionIndex = 0;
   const catalog = document.getElementById('catalog');
@@ -217,7 +254,7 @@
   }
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'astra-history-20260929-v85');
+    preview.searchParams.set('galleryRelease', 'sol-item-pickup-20260930-r1');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
@@ -262,13 +299,19 @@
     buttons.forEach((button, i) => button.setAttribute('aria-current', i === selectedIndex ? 'true' : 'false'));
     if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll);
     previewStatusPoll = null;
-    stage.querySelector('iframe')?.remove(); notice.hidden = false;
+    const previousFrame = stage.querySelector('iframe');
+    if (previousFrame) sfxBridge?.detachFrame(previousFrame);
+    previousFrame?.remove();
+    activeAudioFrame = null; activeAudioItem = null;
+    notice.hidden = false;
     if (!navigator.gpu) { notice.textContent = 'このブラウザーでは WebGPU を使用できません。'; return; }
     notice.textContent = 'WebGPU プレビューを読み込んでいます…';
     const iframe = document.createElement('iframe'); iframe.title = `${group.title} ${item.title} WebGPU 自動再生`;
     iframe.allow = 'autoplay'; iframe.width = String(PRESENTATION.width); iframe.height = String(PRESENTATION.height);
     iframe.src = preview.href; fitPreview(iframe, item, group);
     iframe.addEventListener('load', () => {
+      activeAudioFrame = iframe; activeAudioItem = item;
+      reflectAudio(sfxBridge?.attachFrame(iframe, item));
       try {
         const child = iframe.contentDocument; if (!child) throw new Error('プレビューにアクセスできません');
         const error = child.getElementById('error');
@@ -288,8 +331,8 @@
       latest: group.versions[0].id, defaultVersionId: group.defaultVersionId || group.versions[0].id,
       versions: Object.freeze(group.versions.map(item => Object.freeze({ ...item,
         category: 'effect',
-        creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : 'gpt-6-astra',
-        creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : 'GPT-6-Astra',
+        creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra',
+        creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra',
         qualityStatus: /不合格|不達|未達/.test(item.status) ? 'fail' : /保留|未受入/.test(item.status) ? 'pending' : 'candidate',
         userAdoptionStatus: adoptionState(item), adoptionStatusLabel: adoptionStatusLabel(item),
         gameIntegrationStatus: /本編接続済み/.test(item.status) ? 'verified' : /本編未接続|本編未採用/.test(item.status) ? 'not-integrated' : 'unverified',
@@ -306,7 +349,10 @@
   ];
     function selectImage(group, versionIndex) {
     const item=group.versions[versionIndex];
-    stage.querySelector('iframe')?.remove(); stage.querySelector('img')?.remove();
+    const previousFrame = stage.querySelector('iframe');
+    if (previousFrame) sfxBridge?.detachFrame(previousFrame);
+    previousFrame?.remove(); stage.querySelector('img')?.remove();
+    activeAudioFrame = null; activeAudioItem = null;
     if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll); previewStatusPoll=null;
     notice.hidden=true; const img=document.createElement('img'); img.alt=group.title+' '+item.title; img.src=item.src; img.dataset.sha256=item.hash;
     img.addEventListener('error',()=>{notice.textContent='画像原本を読み込めませんでした';notice.hidden=false;}); stage.append(img);
@@ -327,6 +373,7 @@
   }
   function renderSelection() {
     setHeadline();
+    audioRow.hidden = verifyMode || currentCategory !== 'effect';
     document.getElementById('effect-scale-contract').hidden = currentCategory !== 'effect';
     categoryTabs.forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.category===currentCategory)));
     adoptionTabs.forEach(tab=>tab.setAttribute('aria-pressed',String(tab.dataset.filter===currentAdoptionFilter)));
@@ -335,7 +382,10 @@
     const matching=groups.map(group=>({group,indices:visibleVersionIndices(group)})).filter(row=>row.indices.length);
     if(!matching.length){
       layout.hidden=true;emptyCategory.hidden=false;emptyCategory.textContent=`${document.getElementById('list-heading').textContent}はありません。`;
-      stage.querySelector('iframe')?.remove();stage.querySelector('img')?.remove();
+      const previousFrame = stage.querySelector('iframe');
+      if (previousFrame) sfxBridge?.detachFrame(previousFrame);
+      previousFrame?.remove();stage.querySelector('img')?.remove();
+      activeAudioFrame = null; activeAudioItem = null;
       if(previewStatusPoll!==null)window.clearInterval(previewStatusPoll);previewStatusPoll=null;
       fitObserver?.disconnect();fitObserver=null;versionSelect.replaceChildren();versionSelect.disabled=true;
       document.getElementById('entry-counter').textContent='0 件';return;
