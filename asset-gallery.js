@@ -2,6 +2,10 @@
   'use strict';
   const PRESENTATION = Object.freeze({ width: 980, height: 620, anchorHeight: 64 });
   const EFFECT_VIEW = Object.freeze({
+    'stamina-sol61-r3': { magnification: 3.8, focusX: 240, focusY: 155 },
+    'mana-sol61-r1': { magnification: 4.2, focusX: 300, focusY: 95 },
+    'status-recovery-sol61-r1': { magnification: 4, focusX: 144, focusY: 72 },
+    'status-recovery-sol61-r1-draft1': { magnification: 4, focusX: 144, focusY: 72 },
     'item-pickup-sol61-r1': { magnification: 3.2, focusX: 144, focusY: 72 },
     'stamina-sol61-r1': { magnification: 2.5, focusX: 490, focusY: 340 },
     'stamina-sol61-r2': { magnification: 2.5, focusX: 490, focusY: 340 },
@@ -81,6 +85,7 @@
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
     Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+      version('mana-sol61-r1', 'GPT-6.1-Sol r1（Astra r07改良）', 'public/sol61-mana-e/r1/index.html?embed=1&single=1', 'public/sol61-mana-e/r1/mana.wgsl', '品質未受入・未採用・本編未接続', '改修作者: GPT-6.1-Sol。親原版: GPT-6-Astra r07。現行版の改善指定に従い掌の受け取りから身体へ定着する連続性を改修。実GPU再生と有限SFX数値を確認。競合負荷を含む測定であり、単独性能と聴感は未受入。', 'effect-H64'),
       version("mana-receive-v2-r07", "Astra receive r07", "public/astra-mana-receive-v2/mana-r07/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r07/renderer.mjs", "品質不合格（自主レビュー）・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。実WebGPU再生確認済み。自主レビュー不合格: サンプル画像の取得位相では粒子効果が見えず、終盤の受領光も小さい。ユーザー未採用、本編未接続。", 'effect-H64'),
       version("mana-receive-v2-r06", "Astra receive r06", "public/astra-mana-receive-v2/mana-r06/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r06/renderer.mjs", "品質不合格（自主レビュー）・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。修正で接触タイミングは改善したが、取り込み後半が小さな手元光に縮小し、ケイデンス/聴感も未受入。自主レビュー不合格、ユーザー未採用、本編未接続。", 'effect-H64'),
       version("mana-receive-v2-r05", "Astra receive r05", "public/astra-mana-receive-v2/mana-r05/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r05/renderer.mjs", "品質不合格・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。品質不合格、ユーザー未採用、本編未接続。", 'effect-H64'),
@@ -107,6 +112,7 @@
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
     Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([
+      version('stamina-sol61-r3', 'GPT-6.1-Sol r3', 'public/sol61-stamina-e/r3/index.html?embed=1', 'public/sol61-stamina-e/r3/design.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU暗明H64全寿命と3ループを確認した再生可能な不合格版。風・リボンへの意味の曖昧さ、明背景での弱い分離、小さな星の可読性が未達。次稿を制作中。有限SFXあり、聴感未受入。', 'effect-H64'),
       version('stamina-sol61-r2', 'GPT-6.1-Sol r2', 'public/sol61-stamina-e/r2/index.html', 'public/sol61-stamina-e/r2/design.mjs', '品質不合格（自主レビュー）・ユーザー未採用・本編未接続', '作者: GPT-6.1-Sol。独立した粒や帯を除き、身体へつながる流れと手足の角度統一キラキラへ改修。実WebGPUコンパイル・提出・3ループ確認。主流が細く、白い服の発光に埋もれるため品質不合格。版固有SFXの同期経路あり、聴感未検証。改善履歴として掲載。', 'actor-H64'),
       version('stamina-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-stamina-e/r1/index.html', 'public/sol61-stamina-e/r1/design.mjs', '品質不合格（自主レビュー）・ユーザー未採用・本編未接続', '作者: GPT-6.1-Sol。旧Eの表現コードを入力にせず新規設計。WebGPUのコンパイル・提出・3ループと検証時無音を確認。身体や服の色が主形より目立ち、腕の発光が独立した装飾に見え、キラキラの可読性が不足するため品質不合格。版固有SFXを同期ループする経路あり、聴感未検証。改善中の旧稿として掲載。', 'actor-H64'),
       version("stamina-recovery-v2-r03", "Astra recovery r03", "public/astra-stamina-recovery-v2/stamina-r03/index.html?embed=1&height=64", "public/astra-stamina-recovery-v2/stamina-r03/stamina.mjs", "品質未受入・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。実WebGPU再生確認済み。静的品質の一部のみ確認、継続的な視覚/聴感受入未実施。ユーザー未採用、本編未接続。", 'effect-H64'),
@@ -130,7 +136,9 @@
     Object.freeze({ id: 'recovery-astra', title: '回復', defaultVersionId: 'status-cleanse-astra-r29', versions: Object.freeze([
       version('status-cleanse-astra-r29', 'Astra r0.29（旧状態異常回復）', 'public/astra-status-cleanse-v1/versions/r29/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r29/cleanse.mjs', '回復Eとしてユーザー採用済み・本編接続待ち', '作者: GPT-6-Astra。ユーザーが採用済み状態異常回復r0.29を回復Eへ割り当て直した原版。表現・作者・旧来歴を保持する。新しい状態異常回復Eは別に青系で制作する。回復用途への本編接続・実発動・聴感は未確認。', 'actor-H64'),
     ]) }),
-    Object.freeze({ id: 'status-cleanse-astra', title: '状態異常回復 · 旧稿', versions: Object.freeze([
+    Object.freeze({ id: 'status-cleanse-astra', title: '状態異常回復', versions: Object.freeze([
+      version('status-recovery-sol61-r1', 'GPT-6.1-Sol blue r1', 'public/sol61-status-recovery-blue/r1/index.html?embed=1', 'public/sol61-status-recovery-blue/r1/design.mjs', '担当審査済み候補・未採用・本編未接続', '作者: GPT-6.1-Sol。旧状態異常回復r0.29を使わず青主体で独立設計。負の状態を描かず、身体輪郭の広面から腕・胸へ回復が定着する。実GPU暗明H64全寿命・3ループを確認。有限SFXあり、聴感と主担当・ユーザー審査は未了。', 'effect-H64'),
+      version('status-recovery-sol61-r1-draft1', 'GPT-6.1-Sol blue r1 初稿', 'public/sol61-status-recovery-blue/r1/history/attempt1/index.html?embed=1', 'public/sol61-status-recovery-blue/r1/history/attempt1/design.mjs', '旧試作・品質不合格・未採用', '作者: GPT-6.1-Sol。身体輪郭の連続性を改善する前の初稿。後続r1へ置換した再生可能な比較履歴。原本の有限VFX/SFXを保持。', 'effect-H64'),
       version('status-cleanse-astra-r37', 'Astra r0.37', 'public/astra-status-cleanse-v1/versions/r37/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r37/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。凍結記録: H64 Star-OFFで核が腕横の小さな光る石/ダイヤ装飾に見え、縮小しながら身体が光る。面の作用と回復伝達が読めず、pickup/equipment誤読条件に該当。WebGPU技術再生pass・3 loop・754 GPU submissions。SFX聴感未実施・性能未計測・ユーザー未採用・本編未接続。', 'actor-H64'),
       version('status-cleanse-astra-r36', 'Astra r0.36', 'public/astra-status-cleanse-v1/versions/r36/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r36/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。凍結記録: 始点・下降・受け渡しは改善し外部重心移動45.72pxを計測したが、主形はぼけた横発光帯から小さな光る台へ変わり、正の回復媒体として識別できない。WebGPU技術再生pass・3 loop・761 GPU submissions。SFX聴感未実施・性能未計測・ユーザー未採用・本編未接続。', 'actor-H64'),
       version('status-cleanse-astra-r35', 'Astra r0.35', 'public/astra-status-cleanse-v1/versions/r35/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r35/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。凍結記録: Star-OFFで胸からの放射は広がるが、中盤は汎用的な全身白光と太い輪郭haloとなり、終盤ピークも開始/進行/完了の差を作れない。Star-ONも救済せず。WebGPU技術再生pass・3 loop・2186 GPU submissions。SFX聴感未実施・性能未計測・ユーザー未採用・本編未接続。', 'actor-H64'),
