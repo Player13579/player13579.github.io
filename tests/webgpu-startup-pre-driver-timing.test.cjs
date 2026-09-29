@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const app = fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8');
-const start = app.indexOf('function recordWebGPUPreDriverState(');
+const start = app.indexOf('function createWebGPUStartupAttempt(');
 const end = app.indexOf('\nfunction recordWebGPUStartupRequest(', start);
 assert.ok(start >= 0 && end > start);
 
@@ -15,7 +15,11 @@ function harness() {
     lastKey: null, lastObservedAtMs: null, pumpCount: 0 };
   const context = {
     WEBGPU_MAIN_VERIFY_ROUTE: true,
-    webgpuStartupTiming: { preDriver: trace, current: null },
+    webgpuStartupTiming: { nextAttemptId: 0, firstPumpAfterPlayAtMs: null,
+      preDriver: trace, current: { preDriver: trace, playPending: false,
+        appGeneration: 4, roomId: 'room-a', roomSessionGeneration: 2,
+        mapId: 'station', frozen: false } },
+    webgpuMainApp: { generation: 4, driver: null },
     state: { screen: 'game', roomId: 'room-a', roomSessionGeneration: 2,
       data: { map: { id: 'station' } } },
     window: { innerWidth: 1024, innerHeight: 768, devicePixelRatio: 2,
@@ -53,13 +57,19 @@ test('stops after first visible frame and excludes non-game route', () => {
   assert.equal(h.trace.events.length, 0);
   h.context.state.screen = 'game';
   h.record('startup:pending');
-  h.context.webgpuStartupTiming.current = { frozen: true };
+  h.context.webgpuStartupTiming.current.frozen = true;
   h.record('driver:ready');
   assert.equal(h.trace.events.length, 1);
+  assert.equal(h.context.webgpuStartupTiming.current.preDriver, h.trace);
+  assert.equal(h.context.webgpuStartupTiming.current.frozen, true);
+  h.context.state.roomSessionGeneration = 3;
+  h.record('driver:ready');
+  assert.equal(h.context.webgpuStartupTiming.current.origin, 'auto-resume');
+  assert.equal(h.context.webgpuStartupTiming.current.preDriver.events.length, 1);
 });
 
 test('Play trace survives driver timing creation for full Play-to-frame attribution', () => {
-  assert.match(app, /window\.__dvaStartupPreDriverTiming = webgpuStartupTiming\.preDriver/);
-  assert.match(app, /startupTiming = \{ attemptId,[\s\S]*?preDriver: webgpuStartupTiming\.preDriver/);
+  assert.match(app, /function createWebGPUStartupAttempt\(origin, playClickedAtMs = null\)/);
+  assert.match(app, /window\.__dvaStartupPassTiming = trace/);
   assert.match(app, /recordWebGPUPreDriverState\(!sample \? 'waiting:viewport-sample'/);
 });

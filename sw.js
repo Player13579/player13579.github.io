@@ -6,7 +6,7 @@
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
 const RUNTIME_RELEASE = "fire-e-causal-v918";
-const CACHE_NAME = "dva-static-pre-driver-timing-v1";
+const CACHE_NAME = "dva-static-attempt-lifecycle-v1";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 const STATIC_ASSETS = [
   "/assets/generated/webgpu-text/atlas.json",
