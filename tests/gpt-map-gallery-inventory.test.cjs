@@ -66,7 +66,9 @@ const medicalGroup = imageGroups.find(group => group.id === 'medical-gpt-history
 assert(medicalGroup, 'medical prototype history remains listed');
 const denseMedical = medicalGroup.versions.find(version => version.id === 'medical-room-dense-attempt-01');
 assert.equal(denseMedical, undefined, 'dense medical excluded from displayed gallery history');
-assert.equal(medicalGroup.versions.length, 3, 'normal medical prototype history remains listed');
+assert.equal(medicalGroup.versions.length, 4, 'normal medical prototype history remains listed');
+assert.equal(medicalGroup.versions[0].id, 'medical-room-normal-20260930-r1', 'new normal candidate listed first');
+assert.equal(sha256(path.join(assetDir, 'medical-zero-normal-r1.png')), 'e862dd2fd3d7c1b4555df3d4465d82b4ca24c4e593ea1f3aa9e73073844cdeca');
 assert.match(gallery, /今後高密度版は制作しない/, 'withdrawn source provenance remains preserved');
 assert.match(gallery, /attempt 02-bの受入は一室プロトタイプに限り、ゲーム採用・本編統合を意味しない/);
 assert.match(gallery, /完成マップではなく、単一カフェテリア用の床材テクスチャ部品/);
