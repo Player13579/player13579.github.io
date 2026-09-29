@@ -19190,7 +19190,7 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
     onProgress(stage) { setWebGPUMainPendingDiagnostic(`startup:${stage}`); },
     ...(startupTiming ? { onTiming(mark) {
       if (startupTiming.frozen || webgpuStartupTiming.current !== startupTiming ||
-          startupTiming.marks.length >= 32 || !mark ||
+          startupTiming.marks.length >= 96 || !mark ||
           typeof mark.name !== 'string' || !Number.isFinite(mark.atMs) ||
           (mark.durationMs !== undefined &&
             (!Number.isFinite(mark.durationMs) || mark.durationMs < 0))) return;

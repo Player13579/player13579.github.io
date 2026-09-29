@@ -2,10 +2,10 @@
   'use strict';
   const PRESENTATION = Object.freeze({ width: 980, height: 620, anchorHeight: 64 });
   const EFFECT_VIEW = Object.freeze({
-    'stamina-sol61-r3': { magnification: 3.8, focusX: 240, focusY: 155 },
+    'stamina-sol61-r3': { magnification: 1.86, focusX: 490, focusY: 316.5 },
     'mana-sol61-r1': { magnification: 4.2, focusX: 300, focusY: 95 },
-    'status-recovery-sol61-r1': { magnification: 4, focusX: 144, focusY: 72 },
-    'status-recovery-sol61-r1-draft1': { magnification: 4, focusX: 144, focusY: 72 },
+    'status-recovery-sol61-r1': { magnification: 1.18, focusX: 490, focusY: 245 },
+    'status-recovery-sol61-r1-draft1': { magnification: 1.18, focusX: 490, focusY: 245 },
     'item-pickup-sol61-r1': { magnification: 3.2, focusX: 144, focusY: 72 },
     'stamina-sol61-r1': { magnification: 2.5, focusX: 490, focusY: 340 },
     'stamina-sol61-r2': { magnification: 2.5, focusX: 490, focusY: 340 },

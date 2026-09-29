@@ -79,67 +79,112 @@ struct VertexOut { @builtin(position) position:vec4f, @location(0) uv:vec2f };
     const resources = [];
     const own = resource => { resources.push(resource); return resource; };
     let destroyed = false;
+    const onTiming = typeof options.onTiming === 'function' ? options.onTiming : null;
+    let lastTiming = -Infinity;
+    const timingNow = () => {
+      const raw = root.performance && typeof root.performance.now === 'function'
+        ? root.performance.now() : Date.now();
+      const value = finite(raw) ? Math.max(raw, lastTiming) : (finite(lastTiming) ? lastTiming : 0);
+      lastTiming = value;
+      return value;
+    };
+    const emitTiming = event => { try { onTiming?.(Object.freeze(event)); } catch (_) {} };
+    const beginTiming = phaseName => {
+      const startTime = timingNow();
+      emitTiming({ name: `field.${phaseName}.begin`, atMs: startTime });
+      return { phaseName, startTime };
+    };
+    const endTiming = (token, error) => {
+      if (!token) return;
+      const endTime = timingNow();
+      emitTiming({ name: `field.${token.phaseName}.${error ? 'failed' : 'resolved'}`,
+        atMs: endTime, durationMs: Math.max(0, endTime - token.startTime) });
+    };
+    const measure = (phaseName, operation) => {
+      const token = beginTiming(phaseName);
+      try {
+        const result = operation();
+        if (result && typeof result.then === 'function') {
+          return Promise.resolve(result).then(value => { endTiming(token); return value; }, error => {
+            endTiming(token, error); throw error;
+          });
+        }
+        endTiming(token);
+        return result;
+      } catch (error) { endTiming(token, error); throw error; }
+    };
+    const totalTiming = beginTiming('total');
     try {
-      const patches = validatePatches(options.patches, map, device);
-      const module = device.createShaderModule({ label: 'DVA shared authored field shader', code: field.shader });
-      if (typeof module.getCompilationInfo === 'function') {
-        const info = await module.getCompilationInfo();
-        const errors = info.messages.filter(message => message.type === 'error');
-        if (errors.length) throw new Error(errors.map(message => message.message).join('; '));
-      }
-      const pipelineDescriptor = { layout: 'auto', vertex: { module, entryPoint: 'vs' },
-        fragment: { module, entryPoint: 'fs', targets: [{ format: owner.format }] },
-        primitive: { topology: 'triangle-list' } };
-      const pipeline = typeof device.createRenderPipelineAsync === 'function'
-        ? await device.createRenderPipelineAsync(pipelineDescriptor)
-        : device.createRenderPipeline(pipelineDescriptor);
-      if (owner.state !== 'ready') throw new Error('Shared WebGPU device lost during field setup');
-      const uniform = own(device.createBuffer({ size: 48, usage: 0x40 | 0x08 }));
-      const material = own(device.createTexture({ label: 'DVA authored field image',
-        size: [map.width, map.height], format: 'rgba8unorm',
-        usage: textureUsage.COPY_DST | textureUsage.TEXTURE_BINDING | textureUsage.RENDER_ATTACHMENT }));
-      const geometry = own(device.createTexture({ label: 'DVA authored field coverage',
-        size: [map.width, map.height], format: 'r8unorm', usage: 0x04 | 0x02 }));
-      device.queue.copyExternalImageToTexture({ source: image },
-        { texture: material, premultipliedAlpha: true, colorSpace: 'srgb' }, [map.width, map.height]);
-      if (patches.length) {
-        const patchModule = device.createShaderModule({ label: 'DVA authored field patch compositor', code: patchShader });
-        if (typeof patchModule.getCompilationInfo === 'function') {
-          const info = await patchModule.getCompilationInfo();
+      const patches = await measure('patch-validation', () => validatePatches(options.patches, map, device));
+      const module = await measure('field-shader-compilation', async () => {
+        const shaderModule = device.createShaderModule({ label: 'DVA shared authored field shader', code: field.shader });
+        if (typeof shaderModule.getCompilationInfo === 'function') {
+          const info = await shaderModule.getCompilationInfo();
           const errors = info.messages.filter(message => message.type === 'error');
           if (errors.length) throw new Error(errors.map(message => message.message).join('; '));
         }
-        const patchPipeline = typeof device.createRenderPipelineAsync === 'function'
-          ? await device.createRenderPipelineAsync({ layout: 'auto', vertex: { module: patchModule, entryPoint: 'vs' },
-            fragment: { module: patchModule, entryPoint: 'fs', targets: [{ format: 'rgba8unorm', blend: {
-              color: { srcFactor: 'one', dstFactor: 'one-minus-src-alpha', operation: 'add' },
-              alpha: { srcFactor: 'one', dstFactor: 'one-minus-src-alpha', operation: 'add' }
-            } }] }, primitive: { topology: 'triangle-list' } })
-          : device.createRenderPipeline({ layout: 'auto', vertex: { module: patchModule, entryPoint: 'vs' },
-            fragment: { module: patchModule, entryPoint: 'fs', targets: [{ format: 'rgba8unorm', blend: {
-              color: { srcFactor: 'one', dstFactor: 'one-minus-src-alpha', operation: 'add' },
-              alpha: { srcFactor: 'one', dstFactor: 'one-minus-src-alpha', operation: 'add' }
-            } }] }, primitive: { topology: 'triangle-list' } });
-        const patchSampler = device.createSampler({ minFilter: 'linear', magFilter: 'linear', addressModeU: 'clamp-to-edge', addressModeV: 'clamp-to-edge' });
-        let roomPipeline;
-        if (patches.some(patch => patch.room)) {
-          const roomModule = device.createShaderModule({ label: 'DVA polygon-clipped room overlay', code: roomOverlay.shader });
-          if (typeof roomModule.getCompilationInfo === 'function') {
-            const info = await roomModule.getCompilationInfo();
+        return shaderModule;
+      });
+      const pipelineDescriptor = { layout: 'auto', vertex: { module, entryPoint: 'vs' },
+        fragment: { module, entryPoint: 'fs', targets: [{ format: owner.format }] },
+        primitive: { topology: 'triangle-list' } };
+      const pipeline = await measure(typeof device.createRenderPipelineAsync === 'function'
+        ? 'field-pipeline-async' : 'field-pipeline-sync', () => typeof device.createRenderPipelineAsync === 'function'
+          ? device.createRenderPipelineAsync(pipelineDescriptor)
+          : device.createRenderPipeline(pipelineDescriptor));
+      if (owner.state !== 'ready') throw new Error('Shared WebGPU device lost during field setup');
+      const { uniform, material, geometry } = await measure('texture-allocation', () => ({
+        uniform: own(device.createBuffer({ size: 48, usage: 0x40 | 0x08 })),
+        material: own(device.createTexture({ label: 'DVA authored field image',
+          size: [map.width, map.height], format: 'rgba8unorm',
+          usage: textureUsage.COPY_DST | textureUsage.TEXTURE_BINDING | textureUsage.RENDER_ATTACHMENT })),
+        geometry: own(device.createTexture({ label: 'DVA authored field coverage',
+          size: [map.width, map.height], format: 'r8unorm', usage: 0x04 | 0x02 }))
+      }));
+      await measure('map-image-copy-enqueue', () => device.queue.copyExternalImageToTexture({ source: image },
+        { texture: material, premultipliedAlpha: true, colorSpace: 'srgb' }, [map.width, map.height]));
+      if (patches.length) {
+        const patchModule = await measure('patch-shader-compilation', async () => {
+          const value = device.createShaderModule({ label: 'DVA authored field patch compositor', code: patchShader });
+          if (typeof value.getCompilationInfo === 'function') {
+            const info = await value.getCompilationInfo();
             const errors = info.messages.filter(message => message.type === 'error');
             if (errors.length) throw new Error(errors.map(message => message.message).join('; '));
           }
+          return value;
+        });
+        const patchDescriptor = { layout: 'auto', vertex: { module: patchModule, entryPoint: 'vs' },
+            fragment: { module: patchModule, entryPoint: 'fs', targets: [{ format: 'rgba8unorm', blend: {
+              color: { srcFactor: 'one', dstFactor: 'one-minus-src-alpha', operation: 'add' },
+              alpha: { srcFactor: 'one', dstFactor: 'one-minus-src-alpha', operation: 'add' }
+            } }] }, primitive: { topology: 'triangle-list' } };
+        const patchPipeline = await measure(typeof device.createRenderPipelineAsync === 'function'
+          ? 'patch-pipeline-async' : 'patch-pipeline-sync', () => typeof device.createRenderPipelineAsync === 'function'
+            ? device.createRenderPipelineAsync(patchDescriptor) : device.createRenderPipeline(patchDescriptor));
+        const patchSampler = await measure('patch-bindings', () => device.createSampler({ minFilter: 'linear', magFilter: 'linear', addressModeU: 'clamp-to-edge', addressModeV: 'clamp-to-edge' }));
+        let roomPipeline;
+        if (patches.some(patch => patch.room)) {
+          const roomModule = await measure('room-shader-compilation', async () => {
+            const value = device.createShaderModule({ label: 'DVA polygon-clipped room overlay', code: roomOverlay.shader });
+            if (typeof value.getCompilationInfo === 'function') {
+              const info = await value.getCompilationInfo();
+              const errors = info.messages.filter(message => message.type === 'error');
+              if (errors.length) throw new Error(errors.map(message => message.message).join('; '));
+            }
+            return value;
+          });
           const roomDescriptor = { layout: 'auto',
             vertex: { module: roomModule, entryPoint: 'vs' },
             fragment: { module: roomModule, entryPoint: 'fs', targets: [{ format: 'rgba8unorm', blend: {
               color: { srcFactor: 'one', dstFactor: 'one-minus-src-alpha', operation: 'add' },
               alpha: { srcFactor: 'one', dstFactor: 'one-minus-src-alpha', operation: 'add' }
             } }] }, primitive: { topology: 'triangle-list' } };
-          roomPipeline = typeof device.createRenderPipelineAsync === 'function'
-            ? await device.createRenderPipelineAsync(roomDescriptor)
-            : device.createRenderPipeline(roomDescriptor);
+          roomPipeline = await measure(typeof device.createRenderPipelineAsync === 'function'
+            ? 'room-pipeline-async' : 'room-pipeline-sync', () => typeof device.createRenderPipelineAsync === 'function'
+              ? device.createRenderPipelineAsync(roomDescriptor) : device.createRenderPipeline(roomDescriptor));
         }
-        for (const patch of patches) {
+        await measure('patch-textures-copy-and-bindings-enqueue', async () => {
+          for (const patch of patches) {
           const texture = own(device.createTexture({ label: `DVA field patch ${patch.id}`, size: [patch.sw, patch.sh],
             format: 'rgba8unorm', usage: textureUsage.COPY_DST | textureUsage.TEXTURE_BINDING | textureUsage.RENDER_ATTACHMENT }));
           device.queue.copyExternalImageToTexture({ source: patch.image }, { texture, premultipliedAlpha: true, colorSpace: 'srgb' }, [patch.sw, patch.sh]);
@@ -155,9 +200,10 @@ struct VertexOut { @builtin(position) position:vec4f, @location(0) uv:vec2f };
           pass.setPipeline(pipelineForPatch); pass.setBindGroup(0, patchBind);
           pass.setViewport(patch.x, patch.y, patch.w, patch.h, 0, 1); pass.draw(3); pass.end();
           device.queue.submit([encoder.finish()]);
-        }
+          }
+        });
       }
-      const alpha = options.mask || field.createGeometryMask(map);
+      const alpha = options.mask || await measure('geometry-mask-cpu', () => field.createGeometryMask(map));
       if (!(alpha instanceof Uint8Array) || alpha.byteLength !== map.width * map.height) {
         throw new Error('Authored field coverage has invalid dimensions');
       }
@@ -168,16 +214,19 @@ struct VertexOut { @builtin(position) position:vec4f, @location(0) uv:vec2f };
           upload.set(alpha.subarray(y * map.width, (y + 1) * map.width), y * bytesPerRow);
         }
       }
-      device.queue.writeTexture({ texture: geometry }, upload, { bytesPerRow }, [map.width, map.height]);
-      const sampler = device.createSampler({ minFilter: 'linear', magFilter: 'linear',
-        addressModeU: 'clamp-to-edge', addressModeV: 'clamp-to-edge' });
-      const bind = device.createBindGroup({ layout: pipeline.getBindGroupLayout(0), entries: [
+      await measure('geometry-upload-enqueue', () => device.queue.writeTexture({ texture: geometry }, upload, { bytesPerRow }, [map.width, map.height]));
+      const { sampler, bind } = await measure('field-bindings', () => {
+        const sampler = device.createSampler({ minFilter: 'linear', magFilter: 'linear',
+          addressModeU: 'clamp-to-edge', addressModeV: 'clamp-to-edge' });
+        const bind = device.createBindGroup({ layout: pipeline.getBindGroupLayout(0), entries: [
         { binding: 0, resource: { buffer: uniform } },
         { binding: 1, resource: material.createView() },
         { binding: 2, resource: geometry.createView() },
         { binding: 3, resource: sampler }
-      ] });
-      return Object.freeze({
+        ] });
+        return { sampler, bind };
+      });
+      const pass = Object.freeze({
         enqueue(frame, { target, width, height, pixelWidth = width, pixelHeight = height,
           cameraX, cameraY, zoom } = {}) {
           if (destroyed || owner.state !== 'ready') throw new Error('Shared WebGPU field pass unavailable');
@@ -214,7 +263,10 @@ struct VertexOut { @builtin(position) position:vec4f, @location(0) uv:vec2f };
           resources.length = 0;
         }
       });
+      endTiming(totalTiming);
+      return pass;
     } catch (error) {
+      endTiming(totalTiming, error);
       for (const resource of resources) {
         try { resource.destroy(); } catch (_) {}
       }

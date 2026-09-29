@@ -265,7 +265,7 @@
         });
       };
       const fieldCreation = startRequiredPass('field', () =>
-        modules.field.create({ owner: renderer, map, image, patches }));
+        modules.field.create({ owner: renderer, map, image, patches, onTiming }));
       progress('sunbeam');
       const sunbeamCreation = startRequiredPass('sunbeam', () =>
         modules.sunbeamE.create({ renderer }));
