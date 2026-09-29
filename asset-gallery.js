@@ -46,8 +46,8 @@
       version('heal-astra-sparkle-draft-a', 'Astra sparkle draft A', 'public/astra-heal-sparkle-r1/draft-a/index.html', 'public/astra-heal-sparkle-r1/draft-a/heal-sparkle.js', '品質不合格・旧試作・未採用', '作者: GPT-6-Astra。履歴品質理由: Maintenance sparkle too weak; one receiver anchor near face. 後続r1に置換。', 'actor-H64'),
       version('heal-astra-prototype', 'Astra旧採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '旧採用版・r1へ更新', '以前の採用原版として来歴を保持。現行採用版はユーザー指定のsparkle r1。原版の採用履歴は変えず、現在の版選択とは区別しています。', 'actor-H64', 0.7937)
     ]) }),
-    Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', versions: Object.freeze([
-      version("sunbeam-lens-v2-r05", "Astra lens r05", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/effect.mjs", "品質未受入・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。r05はギャラリー同等iframeでWebGPU描画・自動ループ確認済み。候補段階で品質/聴感の受入なし。ユーザー未採用、本編未接続。", 'effect-H64'),
+    Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', defaultVersionId: 'sunbeam-lens-v2-r05', versions: Object.freeze([
+      version("sunbeam-lens-v2-r05", "Astra lens r05", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/effect.mjs", "ユーザー採用済み・本編接続待ち", "作者: GPT-6-Astra。ユーザーが現行最新版r05を採用。ギャラリー同等iframeでWebGPU描画・自動ループ確認済み。採用原版の表現・作者を保持し、本編の実発動・掌の発射元・レンズゴースト・SFX聴感は接続時に検証する。", 'effect-H64'),
       version("sunbeam-lens-v2-r04", "Astra lens r04", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r04/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r04/effect.mjs", "品質候補・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質候補に留まり、SFX聴感/ユーザー採用/本編接続は未受入。", 'effect-H64'),
       version("sunbeam-lens-v2-r03", "Astra lens r03", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r03/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r03/effect.mjs", "品質候補・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質候補に留まり、SFX聴感/ユーザー採用/本編接続は未受入。", 'effect-H64'),
       version("sunbeam-lens-v2-r02", "Astra lens r02", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r02/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r02/effect.mjs", "品質不合格・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質不合格の歴史版。ユーザー未採用、本編未接続。", 'effect-H64'),
@@ -228,7 +228,7 @@
   let currentCategory = 'effect';
   let currentAdoptionFilter = 'unadopted';
   const selections = new Map();
-  const adoptedVersionIds = new Set(['item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29','barrier-pro-r07']);
+  const adoptedVersionIds = new Set(['sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29','barrier-pro-r07']);
   const categoryTabs = [...document.querySelectorAll('[data-category]')];
   const layout = document.getElementById('gallery-layout');
   const emptyCategory = document.getElementById('empty-category');
@@ -349,6 +349,8 @@
   window.__webgpuEGallery = Object.freeze({ presentation: PRESENTATION, categories: Object.freeze(['map','effect']),
     entries: Object.freeze(exposedEntries) });
   const imageGroups = [
+    {id:'security-gpt-pro',category:'map',title:'警備室 · GPT Pro',creatorDisplayName:'GPT Pro',quality:'geometry-unverified',adoption:'not-adopted',integration:'not-integrated',reason:'既存ProブランチのBコードから生成した警備室の原本。食堂設備や椅子の反復を避けた独立候補。開口・アンカー・衝突・隣室接続の数値受入は未了。ゲームには未統合。',versions:[
+      {id:'security-pro-candidate-01',title:'GPT Pro candidate 01',src:'assets/gpt-map-history/security-candidate-01.png',hash:'a80e8e94427d721fb0cc0ada28a6d239406c4f9870f8c28d70e72556d89023d8',qualityStatus:'geometry-unverified',adoption:'not-adopted',note:'1305×1206 RGBAの生成原本。Bコードと生成記録: outputs/request-20260930/security-candidate。監視卓・機器ラック・保管庫を中心とする候補。実際の固体形状・開口の数値照合は未検証。'}]},
     {id:'cafeteria-gpt-pro',category:'map',title:'カフェテリア · GPT Pro',creatorDisplayName:'GPT Pro',quality:'rejected-geometry',adoption:'not-adopted',integration:'not-integrated',reason:'ChatGPT Proの画像生成候補。4版すべて未採用・ゲーム未統合。North/West opening geometryが不合格。Bコード/生成記録: outputs/request-20260929/map-resume/generation-manifest.json。',versions:[
       {id:'cafeteria-pro-candidate-04',title:'GPT Pro candidate 04',src:'assets/cafeteria-pro-candidate-04.png',hash:'ef0abe403f5f490613c2d0964675d3be40f096dce6dc51f500ee9ba53d2bf92c',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北・西両開口の目視推定が契約に不合格。独立したpixel-segmented QAではない。最後の保存候補。'},
       {id:'cafeteria-pro-candidate-03',title:'GPT Pro candidate 03',src:'assets/cafeteria-pro-candidate-03.png',hash:'5f4db0fa28657bde8572b50e7cdb092acd8e3713efea318d61c7a1c1d375bb83',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'開口幅/中心の目視推定が契約に不合格。独立したpixel-calibrated QAではない。歴史候補として保持。'},
