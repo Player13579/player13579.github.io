@@ -18893,24 +18893,50 @@ function checkWebGPUMainPresentationDeadline() {
 function webgpuMainSubmittedFrameCurrent() {
   const submitted = webgpuMainApp.submittedFrame;
   const canvas = els.webgpuMainCanvas;
-  if (!webgpuMainApp.visible || !submitted || !canvas?.isConnected ||
-      canvas.style.display === 'none' || canvas.style.opacity !== '1' ||
-      state.screen !== 'game' || document.hidden ||
-      submitted.roomId !== state.roomId ||
-      submitted.sessionGeneration !== state.roomSessionGeneration ||
-      submitted.phase !== state.data?.phase ||
-      submitted.snapshotRoomId !== state.data?.roomId ||
-      submitted.mapId !== state.data?.map?.id ||
-      submitted.connectionMode !==
-        (document.documentElement?.dataset?.connectionMode || '') ||
-      submitted.dpr !== (window.devicePixelRatio || 1)) return false;
+  if (!webgpuMainSubmittedFrameOwned(submitted, {
+      visible: webgpuMainApp.visible, connected: Boolean(canvas?.isConnected),
+      display: canvas?.style.display, screen: state.screen, hidden: document.hidden,
+      roomId: state.roomId, sessionGeneration: state.roomSessionGeneration,
+      phase: state.data?.phase, snapshotRoomId: state.data?.roomId,
+      mapId: state.data?.map?.id,
+      connectionMode: document.documentElement?.dataset?.connectionMode || '' }) ||
+      canvas.style.opacity !== '1') return false;
   const rect = canvas.getBoundingClientRect();
   const sample = visibleGameplayViewportSample();
-  return Boolean(sample) &&
-    ['width', 'height', 'visualWidth', 'visualHeight',
-      'rootWidth', 'rootHeight'].every(key => sample[key] === submitted.sample[key]) &&
-    ['left', 'top', 'width', 'height'].every(key =>
-      Number.isFinite(rect[key]) && Math.abs(rect[key] - submitted.rect[key]) <= 1);
+  return webgpuMainFrameViewportMatches(submitted, sample, rect,
+    window.devicePixelRatio || 1);
+}
+
+// Room/phase/map ownership decides whether an old image is still safe to
+// present. Viewport and DPR are a separate, temporary presentation boundary:
+// they invalidate pointer receipts until a matching replacement frame lands,
+// but must not blank pixels already submitted for this same game state.
+function webgpuMainSubmittedFrameOwned(submitted, current) {
+  return Boolean(submitted && current?.visible && current.connected &&
+    current.display !== 'none' && current.screen === 'game' && !current.hidden &&
+    submitted.roomId === current.roomId &&
+    submitted.sessionGeneration === current.sessionGeneration &&
+    submitted.phase === current.phase &&
+    submitted.snapshotRoomId === current.snapshotRoomId &&
+    submitted.mapId === current.mapId &&
+    submitted.connectionMode === current.connectionMode);
+}
+
+function webgpuMainFrameViewportMatches(submitted, sample, rect, dpr) {
+  if (!submitted || !sample || submitted.dpr !== dpr) return false;
+  const sampleTolerance = 1;
+  return ['width', 'height', 'visualWidth', 'visualHeight', 'rootWidth', 'rootHeight']
+    .every(key => Number.isFinite(sample[key]) && Number.isFinite(submitted.sample?.[key]) &&
+      Math.abs(sample[key] - submitted.sample[key]) <= sampleTolerance) &&
+    ['left', 'top', 'width', 'height'].every(key => Number.isFinite(rect?.[key]) &&
+      Number.isFinite(submitted.rect?.[key]) &&
+      Math.abs(rect[key] - submitted.rect[key]) <= 1);
+}
+
+function invalidateWebGPUMainSubmittedHits() {
+  webgpuMainApp.submittedHits = null;
+  webgpuMainApp.submittedPreparationHits = null;
+  webgpuMainApp.submittedMinimapBounds = null;
 }
 
 function activeGameInputSurface() {
@@ -19126,9 +19152,20 @@ function pumpWebGPUMainAppDriver() {
     return;
   }
   if (!checkWebGPUMainPresentationDeadline()) { recordWebGPUFirstRetryEvent('pump-exit', 'presentation-deadline'); return; }
+  const submitted = webgpuMainApp.submittedFrame;
+  if (webgpuMainApp.visible && !webgpuMainSubmittedFrameOwned(submitted, {
+      visible: true, connected: Boolean(els.webgpuMainCanvas?.isConnected),
+      display: els.webgpuMainCanvas?.style.display, screen: state.screen,
+      hidden: document.hidden, roomId: state.roomId,
+      sessionGeneration: state.roomSessionGeneration, phase: data?.phase,
+      snapshotRoomId: data?.roomId, mapId: data?.map?.id,
+      connectionMode: document.documentElement?.dataset?.connectionMode || '' }))
+    suspendWebGPUMainAppDriver();
+  else if (webgpuMainApp.visible && !webgpuMainSubmittedFrameCurrent())
+    invalidateWebGPUMainSubmittedHits();
   if (!sample) {
     setWebGPUMainPendingDiagnostic('waiting:viewport-sample');
-    if (webgpuMainApp.visible || webgpuMainApp.driver)
+    if (!webgpuMainApp.visible && webgpuMainApp.driver)
       suspendWebGPUMainAppDriver();
     recordWebGPUFirstRetryEvent('pump-exit', 'viewport-sample');
     return;
@@ -19154,15 +19191,13 @@ function pumpWebGPUMainAppDriver() {
   }
   if (!window.DvaWebGPUViewport?.validSample?.(sample)) {
     setWebGPUMainPendingDiagnostic('waiting:stable-viewport');
-    if (webgpuMainApp.visible || webgpuMainApp.driver)
+    if (!webgpuMainApp.visible && webgpuMainApp.driver)
       suspendWebGPUMainAppDriver();
     recordWebGPUFirstRetryEvent('pump-exit', 'stable-viewport');
     return;
   }
   if (webgpuMainApp.driver && webgpuMainApp.mapId !== data.map.id)
     suspendWebGPUMainAppDriver({ destroy: true });
-  if (webgpuMainApp.visible && !webgpuMainSubmittedFrameCurrent())
-    suspendWebGPUMainAppDriver();
   if (!webgpuMainApp.driver) {
     if (!webgpuMainApp.startPending) {
       setWebGPUMainPendingDiagnostic('startup:driver');
@@ -19185,7 +19220,8 @@ function pumpWebGPUMainAppDriver() {
   if (![rect.left, rect.top, rect.width, rect.height].every(Number.isFinite) ||
       rect.width <= 0 || rect.height <= 0) {
     setWebGPUMainPendingDiagnostic('waiting:target-geometry');
-    suspendWebGPUMainAppDriver();
+    if (webgpuMainApp.visible) invalidateWebGPUMainSubmittedHits();
+    else suspendWebGPUMainAppDriver();
     recordWebGPUFirstRetryEvent('pump-exit', 'target-geometry');
     return;
   }
@@ -19267,13 +19303,11 @@ function pumpWebGPUMainAppDriver() {
     }
     const visibleRect = mainCanvas.getBoundingClientRect();
     const visibleSample = visibleGameplayViewportSample();
-    if (!visibleSample ||
-        ['width', 'height', 'visualWidth', 'visualHeight',
-          'rootWidth', 'rootHeight'].some(key => sample[key] !== visibleSample[key]) ||
-        ['left', 'top', 'width', 'height'].some(key =>
-          !Number.isFinite(visibleRect[key]) ||
-          Math.abs(visibleRect[key] - rect[key]) > 1)) {
+    const preparedFrameGeometry = { sample, rect, dpr };
+    if (!webgpuMainFrameViewportMatches(preparedFrameGeometry, visibleSample,
+        visibleRect, window.devicePixelRatio || 1)) {
       setWebGPUMainPendingDiagnostic('frame:visible-geometry-stale');
+      if (webgpuMainApp.visible) invalidateWebGPUMainSubmittedHits();
       recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
         'visible-rejected', { requestId: receipt.diagnosticRequestId ?? null,
           reason: 'visible-geometry-stale' });
