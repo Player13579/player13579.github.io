@@ -9,6 +9,18 @@
     // canvas. Enlarge the gallery view only; each preview still renders H64.
     'mana-astra': { magnification: 4.25, focusX: 245, focusY: 310 },
     'stamina-astra-r01-replay': { magnification: 4.25, focusX: 490, focusY: 496 },
+    'stamina-recovery-v2-r02': { magnification: 4.25, focusX: 490, focusY: 496 },
+    'stamina-recovery-v2-r03': { magnification: 4.25, focusX: 490, focusY: 496 },
+    'sunbeam-lens-v2-r01': { magnification: 2.25, focusX: 480, focusY: 310 },
+    'sunbeam-lens-v2-r02': { magnification: 2.25, focusX: 480, focusY: 310 },
+    'sunbeam-lens-v2-r03': { magnification: 2.25, focusX: 480, focusY: 310 },
+    'sunbeam-lens-v2-r04': { magnification: 2.25, focusX: 480, focusY: 310 },
+    'sunbeam-lens-v2-r05': { magnification: 2.25, focusX: 480, focusY: 310 },
+    'mana-receive-v2-r03': { magnification: 3.0, focusX: 300, focusY: 321 },
+    'mana-receive-v2-r04': { magnification: 3.0, focusX: 300, focusY: 131 },
+    'mana-receive-v2-r05': { magnification: 3.0, focusX: 300, focusY: 131 },
+    'mana-receive-v2-r06': { magnification: 3.0, focusX: 300, focusY: 131 },
+    'mana-receive-v2-r07': { magnification: 3.0, focusX: 300, focusY: 131 },
     'stamina-astra': { magnification: 4.25, focusX: 518, focusY: 343 },
     'status-cleanse-astra': { magnification: 4.25, focusX: 490, focusY: 310 },
     'cooldown-astra': { magnification: 1.0, focusX: 490, focusY: 310 },
@@ -27,6 +39,11 @@
       version('heal-astra-prototype', 'Astra旧採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '旧採用版・r1へ更新', '以前の採用原版として来歴を保持。現行採用版はユーザー指定のsparkle r1。原版の採用履歴は変えず、現在の版選択とは区別しています。', 'actor-H64', 0.7937)
     ]) }),
     Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', versions: Object.freeze([
+      version("sunbeam-lens-v2-r05", "Astra lens r05", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/effect.mjs", "品質未受入・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。r05はギャラリー同等iframeでWebGPU描画・自動ループ確認済み。候補段階で品質/聴感の受入なし。ユーザー未採用、本編未接続。", 'effect-H64'),
+      version("sunbeam-lens-v2-r04", "Astra lens r04", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r04/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r04/effect.mjs", "品質候補・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質候補に留まり、SFX聴感/ユーザー採用/本編接続は未受入。", 'effect-H64'),
+      version("sunbeam-lens-v2-r03", "Astra lens r03", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r03/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r03/effect.mjs", "品質候補・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質候補に留まり、SFX聴感/ユーザー採用/本編接続は未受入。", 'effect-H64'),
+      version("sunbeam-lens-v2-r02", "Astra lens r02", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r02/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r02/effect.mjs", "品質不合格・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質不合格の歴史版。ユーザー未採用、本編未接続。", 'effect-H64'),
+      version("sunbeam-lens-v2-r01", "Astra lens r01", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r01/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r01/effect.mjs", "品質不合格・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質不合格の歴史版。ユーザー未採用、本編未接続。", 'effect-H64'),
       version('sunbeam-lens-ghost-r5', 'Astra lens-ghost r5', 'public/astra-sunbeam-lens-ghost-v1/versions/r5/index.html?embed=1&height=64', 'public/astra-sunbeam-lens-ghost-v1/versions/r5/sunbeam.js', '品質不合格・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。凍結sourceで実WebGPU再生pass。品質理由: ghostはぼけた丸い粒子列に見え、主beamも細い白線＋橙縁に留まる。光学像と光束の厚みが未達で改稿。連続再生は外れ値を含み、完全な滑らかさは未受入。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('sunbeam-lens-ghost-r4', 'Astra lens-ghost r4', 'public/astra-sunbeam-lens-ghost-v1/versions/r4/index.html?embed=1&height=64', 'public/astra-sunbeam-lens-ghost-v1/versions/r4/sunbeam.js', '品質不合格・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。凍結sourceで実WebGPU再生pass。品質理由: 虹色Cが光源/beamから孤立した記号に見え、横長veilも第二の光束に読める。時間構造には改善があったが全体品質未達。連続再生は外れ値を含み、完全な滑らかさは未受入。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('sunbeam-lens-ghost-r3', 'Astra lens-ghost r3', 'public/astra-sunbeam-lens-ghost-v1/versions/r3/index.html?embed=1&height=64', 'public/astra-sunbeam-lens-ghost-v1/versions/r3/sunbeam.js', '品質不合格・ユーザー未採用・本編未接続', '作者: GPT-6-Astra。凍結sourceで実WebGPU再生pass。品質理由: 時点を変えても主形がほぼ同じで、時間状態が読み分けにくい。虹Cと焦点外円が孤立し、source peakと同期したveilも不足。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
@@ -53,6 +70,11 @@
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
     Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+      version("mana-receive-v2-r07", "Astra receive r07", "public/astra-mana-receive-v2/mana-r07/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r07/renderer.mjs", "品質不合格（自主レビュー）・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。実WebGPU再生確認済み。自主レビュー不合格: サンプル画像の取得位相では粒子効果が見えず、終盤の受領光も小さい。ユーザー未採用、本編未接続。", 'effect-H64'),
+      version("mana-receive-v2-r06", "Astra receive r06", "public/astra-mana-receive-v2/mana-r06/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r06/renderer.mjs", "品質不合格（自主レビュー）・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。修正で接触タイミングは改善したが、取り込み後半が小さな手元光に縮小し、ケイデンス/聴感も未受入。自主レビュー不合格、ユーザー未採用、本編未接続。", 'effect-H64'),
+      version("mana-receive-v2-r05", "Astra receive r05", "public/astra-mana-receive-v2/mana-r05/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r05/renderer.mjs", "品質不合格・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。品質不合格、ユーザー未採用、本編未接続。", 'effect-H64'),
+      version("mana-receive-v2-r04", "Astra receive r04", "public/astra-mana-receive-v2/mana-r04/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r04/renderer.mjs", "品質未受入・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。局所的改善あり。最終品質未受入、ユーザー未採用、本編未接続。", 'effect-H64'),
+      version("mana-receive-v2-r03", "Astra receive r03", "public/astra-mana-receive-v2/mana-r03/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r03/renderer.mjs", "品質不合格・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。品質不合格（torso bibに見える）。ユーザー未採用、本編未接続.", 'effect-H64'),
       version('mana-astra-r15', 'Astra r15', 'public/astra-mana-receive-v1/versions/r15/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r15/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。r15 H64 t0.74/0.96 looks like a cyan selection outline, not mana transfer/received volume', 'actor-H64'),
       version('mana-astra-r14', 'Astra r14', 'public/astra-mana-receive-v1/versions/r14/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r14/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当後続改稿指示: 受領後半が小さな腹部発光へ戻り、全身のreceived-state changeが未達。', 'actor-H64'),
       version('mana-astra-r13', 'Astra r13', 'public/astra-mana-receive-v1/versions/r13/index.html?embed=1&scale=1', 'public/astra-mana-receive-v1/versions/r13/renderer.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。主担当H64 t0.74不合格: 青緑/紫の翼または外套に見え、マナが到着し蓄積する構造として読めない。', 'actor-H64'),
@@ -75,7 +97,9 @@
       version('mana-astra-clean-v1', 'Astra clean v1', 'mana-astra-clean-v1-preview.html', 'webgpu-mana-astra-clean-v1.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
-    Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([      version('stamina-astra-r01-replay', 'Astra r01 · iframe再生修正', 'stamina-astra-r01/index.html?embed=1&height=64', 'stamina-astra-r01/stamina.mjs', '品質未判定・未採用・ゲーム未接続・iframe実再生確認済み', 'スタミナAstra r01。品質判定/ユーザー採用/ゲーム接続は未確認。ローカルChrome iframeで自動ループ30 GPU frames・errors 0を確認。埋め込み投影CSSと初期化成功表示の修正を含む。'),
+    Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([
+      version("stamina-recovery-v2-r03", "Astra recovery r03", "public/astra-stamina-recovery-v2/stamina-r03/index.html?embed=1&height=64", "public/astra-stamina-recovery-v2/stamina-r03/stamina.mjs", "品質未受入・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。実WebGPU再生確認済み。静的品質の一部のみ確認、継続的な視覚/聴感受入未実施。ユーザー未採用、本編未接続。", 'effect-H64'),
+      version("stamina-recovery-v2-r02", "Astra recovery r02", "public/astra-stamina-recovery-v2/stamina-r02/index.html?embed=1&height=64", "public/astra-stamina-recovery-v2/stamina-r02/stamina.mjs", "品質不合格・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。実WebGPU再生確認済み。品質不合格、ユーザー未採用、本編未接続。", 'effect-H64'),      version('stamina-astra-r01-replay', 'Astra r01 · iframe再生修正', 'stamina-astra-r01/index.html?embed=1&height=64', 'stamina-astra-r01/stamina.mjs', '品質未判定・未採用・ゲーム未接続・iframe実再生確認済み', 'スタミナAstra r01。品質判定/ユーザー採用/ゲーム接続は未確認。ローカルChrome iframeで自動ループ30 GPU frames・errors 0を確認。埋め込み投影CSSと初期化成功表示の修正を含む。'),
       version('stamina-astra-clean-v3', 'Astra clean v3', 'stamina-astra-clean-v3-preview.html', 'webgpu-stamina-astra-clean-v3.js', '品質不採用・本編未採用', 'H64で扇形の光片から胸腹の発光ベストへ変わるが、スタミナ補給として読めず品質不採用。'),
       version('stamina-astra-clean-v2', 'Astra clean v2', 'stamina-astra-clean-v2-preview.html', 'webgpu-stamina-astra-clean-v2.js', '品質未受入・本編未採用', 'H64形状の自主レビュー記録あり。スタミナとしての独立識別評価は未実施で、最終品質は未受入。'),
       version('stamina-astra-clean-v1', 'Astra clean v1', 'stamina-astra-clean-v1-preview.html', 'webgpu-stamina-astra-clean-v1.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
