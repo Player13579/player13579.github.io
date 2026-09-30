@@ -1,0 +1,289 @@
+{
+  "schema": "dva-barrier-r10-faithful-runtime-package/v1",
+  "id": "barrier-sol61-r10-runtime-a1",
+  "artistSource": {
+    "path": "outputs/request-20260930/sol61-barrier-zero/r10/SOURCE-MANIFEST.json",
+    "sha256": "9d27adaa549073bea4da391631aa35458e7968251d4a9a005bb5db209ff97bb1",
+    "records": 23,
+    "originalSourceCount": 8,
+    "allCopiedSourceBytesExact": true
+  },
+  "entry": {
+    "path": "public/sol61-barrier-zero/r10/index.html",
+    "query": "?embed=1",
+    "verificationQuery": "?verify=barrier-r10-runtime-a1&embed=1",
+    "automatic": true
+  },
+  "authors": {
+    "creative": "GPT-6.1-Sol",
+    "runtime": "GPT-6-Luna"
+  },
+  "status": {
+    "technicalReplay": "native WebGPU compile/submit/lifecycle pass",
+    "visualQuality": "pending separate Root/Sol review; no quality acceptance claimed",
+    "adoption": "unadopted",
+    "listening": "not_run",
+    "gameIntegration": "not connected",
+    "cadence": "not measured"
+  },
+  "runtimeAdapter": {
+    "sha256": "52f02e073c1992a5371c8ac479c833c60f8eb6683fb72cafdeec7e1894fb95e4",
+    "clockSha256": "b5253841f90c5cdba3e0e6475f7a11b2943be18f106b4d3de7a5d57b0d278f27",
+    "abiBytes": 128,
+    "worldTargets": [
+      "rgba16float scene",
+      "rgba16float bright",
+      "rgba16float twoSourceSignal"
+    ],
+    "postTargets": [
+      "rgba16float horizontal",
+      "rgba16float vertical",
+      "bgra8unorm final"
+    ],
+    "requiredFeatures": [],
+    "sfx": {
+      "scoreSource": "r10 sfx-score.mjs exact frozen bytes; BarrierSfx scheduler copied unchanged from historical r9",
+      "audioBegins": "after successful submit; same cause id, age offset and rate",
+      "verification": "verify mode AudioContext/voices/starts/gain=0"
+    },
+    "diagnostic": {
+      "contourOff": "test-only separately compiled world pipeline; exact string substitution pulse contour term → zero; original r10 WGSL/import/hash unchanged; never selected in default runtime",
+      "noShaderFeatureGate": "none for rgba16float"
+    }
+  },
+  "native": {
+    "proof": "outputs/request-20260930/sol61-barrier-zero/r10/runtime-attempt-a1/evidence/NATIVE-GPU-PROOF.json",
+    "proofSha256": "40885ad25b142aefa0c6afa21f47fd750007433932ba4531a98ee29d1cbbfb72",
+    "result": "pass",
+    "canvas": {
+      "intrinsic": [
+        980,
+        620
+      ],
+      "css": {
+        "x": 194,
+        "y": 0,
+        "width": 980,
+        "height": 620
+      },
+      "dpr": 1
+    },
+    "adapter": {
+      "vendor": "intel",
+      "architecture": "gen-12lp",
+      "device": "",
+      "description": ""
+    },
+    "format": "bgra8unorm",
+    "worldTargetFormat": "rgba16float",
+    "cases": [
+      "stable-main-only",
+      "stable-dual-dark-light",
+      "known-hit-30ms-main-only",
+      "known-hit-30ms-dual-dark-light",
+      "known-hit-75ms-main-only",
+      "known-hit-75ms-dual-dark-light",
+      "known-hit-225ms-main-only",
+      "known-hit-225ms-dual-dark-light",
+      "known-hit-350ms-main-only",
+      "known-hit-350ms-dual-dark-light",
+      "known-hit-600ms-main-only",
+      "known-hit-600ms-dual-dark-light",
+      "create-0ms-main-only",
+      "create-140ms-main-only",
+      "create-420ms-main-only",
+      "break-0ms-main-only",
+      "break-80ms-main-only",
+      "break-220ms-main-only",
+      "break-360ms-main-only",
+      "off-main-only",
+      "source-off-known-hit-225ms",
+      "diagnostic-contour-off-known-hit-225ms",
+      "stable-after-transient"
+    ],
+    "lifecycle": {
+      "phaseHistory": [
+        {
+          "cycle": 0,
+          "name": "create",
+          "ageMs": 0,
+          "stage": 0,
+          "submitId": 50,
+          "elapsedEms": 0
+        },
+        {
+          "cycle": 0,
+          "name": "stable-after-create",
+          "ageMs": 9.5,
+          "stage": 1,
+          "submitId": 87,
+          "elapsedEms": 659.5
+        },
+        {
+          "cycle": 0,
+          "name": "known-hit",
+          "ageMs": 11.799999999999272,
+          "stage": 3,
+          "submitId": 106,
+          "elapsedEms": 1011.7999999999993
+        },
+        {
+          "cycle": 0,
+          "name": "stable-after-hit",
+          "ageMs": 0.8999999999996362,
+          "stage": 1,
+          "submitId": 142,
+          "elapsedEms": 1650.8999999999996
+        },
+        {
+          "cycle": 0,
+          "name": "break",
+          "ageMs": 3.100000000000364,
+          "stage": 2,
+          "submitId": 162,
+          "elapsedEms": 2003.1000000000004
+        },
+        {
+          "cycle": 0,
+          "name": "off",
+          "ageMs": 1.2000000000007276,
+          "stage": 4,
+          "submitId": 189,
+          "elapsedEms": 2481.2000000000007
+        },
+        {
+          "cycle": 1,
+          "name": "create",
+          "ageMs": 12.799999999999272,
+          "stage": 0,
+          "submitId": 202,
+          "elapsedEms": 2712.7999999999993
+        }
+      ],
+      "cycle0": [
+        "create",
+        "stable-after-create",
+        "known-hit",
+        "stable-after-hit",
+        "break",
+        "off"
+      ],
+      "cycle0Complete": true,
+      "wrappedToCycle1Create": true,
+      "frameCount": 153,
+      "lastError": null
+    },
+    "errors": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "serverErrors": []
+    },
+    "cleanup": {
+      "ownedPageClosed": true,
+      "browserClosed": true,
+      "chromeProcessExit": null,
+      "chromeProcessSignal": "SIGTERM",
+      "chromeProcessGone": true,
+      "tempProfileRemoved": true,
+      "serverStopped": true
+    }
+  },
+  "cpu": {
+    "proof": "outputs/request-20260930/sol61-barrier-zero/r10/runtime-attempt-a1/CPU-TEST-RESULT.json",
+    "proofSha256": "319565471a052a329532685ad875ead6942978fae55ee1da94aac9ec016b9a24",
+    "result": "pass",
+    "cases": [
+      "source copies exact against frozen manifest",
+      "128-byte artist ABI",
+      "wire event normalization/contact remains unknown when wire has no contact",
+      "absolute E age/rate contract",
+      "finite score bytes supplied from r10 score module",
+      "audio requires submitted=true",
+      "same event does not retrigger",
+      "rate-zero pause and same-receipt cursor resume",
+      "expiry stops cue and permanently consumes event id",
+      "verify creates zero audio contexts/voices/starts",
+      "normal __gallerySfx gesture bridge and mute/status methods",
+      "gallery loop submits before SFX synchronization",
+      "visibility pause/resume preserves E elapsed and finite receipt",
+      "runtime dispose closes audio and removes visibility listener"
+    ]
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2142,
+      "sha256": "d91eba89ce055906a756484702affa9211b804bf49bc1d4106cf9c02efd47a53",
+      "kind": "runtime-adapter"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 19584,
+      "sha256": "52f02e073c1992a5371c8ac479c833c60f8eb6683fb72cafdeec7e1894fb95e4",
+      "kind": "runtime-adapter"
+    },
+    {
+      "path": "gallery-clock-a1.mjs",
+      "bytes": 7330,
+      "sha256": "b5253841f90c5cdba3e0e6475f7a11b2943be18f106b4d3de7a5d57b0d278f27",
+      "kind": "runtime-adapter"
+    },
+    {
+      "path": "sfx-runtime.mjs",
+      "bytes": 6904,
+      "sha256": "c9d26aa8b1da32e9127719a40ca3d7341f7127196d3a792e1ec6a7e0cc4c0213",
+      "kind": "runtime-adapter"
+    },
+    {
+      "path": "artist.mjs",
+      "bytes": 247,
+      "sha256": "e2e8b7824675e3df20e21621acfc502e0558ed27ee6fe1d4e0dfdaad4bc34cdb",
+      "kind": "frozen-r10-source"
+    },
+    {
+      "path": "design.mjs",
+      "bytes": 7622,
+      "sha256": "eaf107eb581e351d31ac58712717544dfe8d35f9d1a512115410f98c2f4cedf8",
+      "kind": "frozen-r10-source"
+    },
+    {
+      "path": "world-shader.mjs",
+      "bytes": 9256,
+      "sha256": "cfd0fe93c17312383e113fb2449787e24b646948cfe97394851214ffbb2bcce5",
+      "kind": "frozen-r10-source"
+    },
+    {
+      "path": "post-shader.mjs",
+      "bytes": 3520,
+      "sha256": "37d8dbbbe1270a34a267adeb487fcbdec28911bdd303126c3b44780aeca0f40b",
+      "kind": "frozen-r10-source"
+    },
+    {
+      "path": "projection.mjs",
+      "bytes": 1943,
+      "sha256": "83ce955039630f5569890b3b17779112c2ca7a5e502d40385583396a50e5ee0b",
+      "kind": "frozen-r10-source"
+    },
+    {
+      "path": "sfx-score.mjs",
+      "bytes": 1490,
+      "sha256": "fcb274cf6f63e1ba6c47a293accb24503f7fbebeccbff140cb9cd53a7df07535",
+      "kind": "frozen-r10-source"
+    },
+    {
+      "path": "e-clock-contract.mjs",
+      "bytes": 2962,
+      "sha256": "af160f7a4a89c8731991acaafcfdda1d664f14ab052a539e5999c46a68592205",
+      "kind": "frozen-r10-source"
+    },
+    {
+      "path": "body.png",
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "kind": "frozen-r10-source"
+    }
+  ],
+  "deployableFileCount": 12,
+  "scope": "Automatic technical runtime entry for frozen r10 source. Does not claim visual acceptance, normal listening acceptance, gameplay connection, or user adoption; does not modify the r10 WGSL source."
+}
