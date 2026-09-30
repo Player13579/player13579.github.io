@@ -119,9 +119,9 @@
       version('luck-astra-clean-v2', 'Astra v2', 'luck-astra-v2-preview.html', 'webgpu-luck-astra-v2.js', '却下・品質未達・本編未採用', '履歴上WebGPU再生可能。翼の見た目が品質基準に届かず却下。'),
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
-    Object.freeze({ id: 'mana-astra', title: 'マナ', defaultVersionId: 'mana-zero-sol61-r7', versions: Object.freeze([
+    Object.freeze({ id: 'mana-astra', title: 'マナ', defaultVersionId: 'mana-zero-sol61-r6', versions: Object.freeze([
       version('mana-zero-sol61-r7', 'GPT-6.1-Sol zero r7', 'public/sol61-mana-zero/r7/preview.html?embed=1', 'public/sol61-mana-zero/r7/effect.mjs', '技術再生・ケイデンスpass・品質不合格・未採用・本編未接続・聴感未検証', '創作設計: GPT-6.1-Sol。忠実なruntime adapter・集中検査・実WebGPU再生: GPT-6-Luna。凍結されたSol設計とシェーダーを変更せず実装。Intel gen-12lp実GPUでシェーダーcompile・描画・4ループを確認、GPUエラー0。品質不合格: .50–.80sも胸の小さな帯が目立ち、身体へ届いて定着する受領の主現象が弱い。ユーザー未採用、本編未接続、SFX聴感未検証。', 'effect-H64'),
-      version('mana-zero-sol61-r6', 'GPT-6.1-Sol zero r6', 'public/sol61-mana-zero/r6/preview.html?embed=1', 'public/sol61-mana-zero/r6/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結済みH64で技術再生pass、品質fail。SFX聴感未受入、ユーザー未採用、本編未接続。', 'effect-H64'),
+      version('mana-zero-sol61-r6', 'GPT-6.1-Sol zero r6', 'public/sol61-mana-zero/r6/preview.html?embed=1', 'public/sol61-mana-zero/r6/effect.mjs', '2026-09-30ユーザー採用済み・過去の視覚品質不合格・技術再生pass・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結H64技術再生pass。過去の品質レビューでは不合格。2026-09-30にユーザーがr6を採用。採用状態を品質合格や本編接続と混同しない。SFX聴感未受入、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r5', 'GPT-6.1-Sol zero r5', 'public/sol61-mana-zero/r5/preview.html?embed=1', 'public/sol61-mana-zero/r5/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結済みH64で技術再生pass、品質fail。SFX聴感未受入、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-mana-zero/r4/preview.html?embed=1', 'public/sol61-mana-zero/r4/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結品質記録: H64暗明で縦stripe/衣装の帯に読め、受領固有の身体応答が不成立。技術再生はpass（実GPU compile/submission、全寿命4 cycle）。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-mana-zero/r3/preview.html?embed=1', 'public/sol61-mana-zero/r3/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴の技術再生pass・品質fail。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
@@ -153,9 +153,9 @@
       version('mana-astra-clean-v1', 'Astra clean v1', 'mana-astra-clean-v1-preview.html', 'webgpu-mana-astra-clean-v1.js', '品質未審査・本編未採用', '技術プレビュー。品質判定記録なし。'),
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
-    Object.freeze({ id: 'stamina-astra', title: 'スタミナ', defaultVersionId: 'stamina-sol61-r12', versions: Object.freeze([
+    Object.freeze({ id: 'stamina-astra', title: 'スタミナ', defaultVersionId: 'stamina-sol61-r11', versions: Object.freeze([
       version('stamina-sol61-r12', 'GPT-6.1-Sol r12', 'public/sol61-stamina-e/r12/index.html?embed=1', 'public/sol61-stamina-e/r12/runtime.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '創作/品質判断: GPT-6.1-Sol。忠実なWebGPU移植・公開パッケージ検査: GPT-6-Luna。修正済みH64原寸・暗明の全寿命で胸部の心臓様形状が主となり、活力回復の作用と必須光条が読めず品質不合格。GPU compile/submission pass。原画URLだけを同一byteの同梱PNGへ変更して実embed再生を確認。聴感・cadence・本編は未受入。', 'effect-H64'),
-      version('stamina-sol61-r11', 'GPT-6.1-Sol r11', 'public/sol61-stamina-e/r11/index.html?embed=1', 'public/sol61-stamina-e/r11/runtime.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '創作/品質判定: GPT-6.1-Sol。音声境界修正と集中検査: GPT-6-Luna。H64の全寿命では腕横の白い光片と衣装光が主となり、回復作用として読めないため品質不合格。実GPU compile/submission pass。captureとsubmission件数が一致せず滑らかさ未受入。SFX聴感未実施。r10の改稿でありゼロ設計ではない。', 'effect-H64'),
+      version('stamina-sol61-r11', 'GPT-6.1-Sol r11', 'public/sol61-stamina-e/r11/index.html?embed=1', 'public/sol61-stamina-e/r11/runtime.mjs', '技術再生pass・過去の視覚品質不合格・2026-09-30ユーザー採用済み・本編未接続・聴感未検証', '創作/品質判定: GPT-6.1-Sol。音声境界修正と集中検査: GPT-6-Luna。H64の全寿命では腕横の白い光片と衣装光が主となり、回復作用として読めないため過去レビューで品質不合格。2026-09-30にユーザーがr11を採用。採用状態を品質合格や本編接続と混同しない。実GPU compile/submission pass。captureとsubmission件数が一致せず滑らかさ未受入。SFX聴感未実施。r10の改稿でありゼロ設計ではない。', 'effect-H64'),
       version('stamina-sol61-r10', 'GPT-6.1-Sol r10', 'public/sol61-stamina-e/r10/index.html?embed=1', 'public/sol61-stamina-e/r10/runtime.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結manifestの技術再生pass。H64では弱い灰/茶色の衣装・身体の印に留まり、連続した配送/受領が読めないため品質不合格。ユーザー未採用、本編未接続、SFX聴感未実施。design.mjsは品質メタデータのみの差とsource manifestに記録されている。', 'effect-H64'),
       version('stamina-sol61-r9-frontfix', 'GPT-6.1-Sol r9 · front/rear契約修正', 'public/sol61-stamina-e/r9-front-contract-fix/index.html?embed=1', 'public/sol61-stamina-e/r9-front-contract-fix/runtime.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未受入', '設計作者: GPT-6.1-Sol。front/rear合成契約の実装: GPT-6-Luna。凍結ソースhashに束縛した実WebGPU H64 480×260再生を確認。main-only、obs-off、combined全寿命の技術検査pass。視覚品質は不合格（服まわりの光が目立つ）。verify音声gain=0のため聴感受入なし。ユーザー未採用、本編未接続。', 'effect-H64'),
       version('stamina-sol61-r8', 'GPT-6.1-Sol r8', 'public/sol61-stamina-e/r8/index.html?embed=1', 'public/sol61-stamina-e/r8/design.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結品質判定は不合格: packetは移動するが衣装発光/腕端の光片に分節し、活力による活動再開が主作用として読めない。技術再生pass。有限SFXのCPU契約pass、正常ブラウザーgestureと実聴は未実施。ユーザー未採用、本編未接続。', 'effect-H64'),
@@ -307,7 +307,7 @@
   let currentCategory = 'effect';
   let currentAdoptionFilter = 'unadopted';
   const selections = new Map();
-  const adoptedVersionIds = new Set(['status-recovery-sol61-r1','sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29']);
+  const adoptedVersionIds = new Set(['status-recovery-sol61-r1','sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29','stamina-sol61-r11','mana-zero-sol61-r6']);
   const categoryTabs = [...document.querySelectorAll('[data-category]')];
   const layout = document.getElementById('gallery-layout');
   const emptyCategory = document.getElementById('empty-category');
@@ -329,12 +329,13 @@
     return '採用状態不明';
   }
   function visibleVersionIndices(group) {
-    const hasCurrentAdoption = group.versions.some(item => adoptedVersionIds.has(item.id));
+    const hasCurrentAdoption = group.versions.some(item => adoptionState(item) === 'adopted');
     if (currentCategory === 'effect') {
-      if (currentAdoptionFilter === 'adopted') return hasCurrentAdoption ? group.versions.map((item, i) => item.replayable ? i : -1).filter(i => i >= 0) : [];
+      if (currentAdoptionFilter === 'adopted') return hasCurrentAdoption ? group.versions.map((item, i) => item.replayable ? i : -1).filter(i => i >= 0).sort((a, b) => Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted')) : [];
       return hasCurrentAdoption ? [] : group.versions.map((_, i) => i);
     }
-    return group.versions.map((item, i) => ({item, i})).filter(({item}) => currentAdoptionFilter === 'adopted' ? adoptionState(item) === 'adopted' : adoptionState(item) !== 'adopted').map(x => x.i);
+    const mapGroupAdopted = group.versions.some(item => adoptionState(item) === 'adopted');
+    return mapGroupAdopted === (currentAdoptionFilter === 'adopted') ? group.versions.map((_, i) => i).sort((a, b) => currentAdoptionFilter === 'adopted' ? Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted') : 0) : [];
   }
   function setHeadline() {
     document.getElementById('list-heading').textContent = `${currentAdoptionFilter === 'adopted' ? '採用済み' : '未採用'}の${currentCategory === 'effect' ? 'エフェクト' : 'マップ'}一覧`;
@@ -475,7 +476,7 @@
     document.getElementById('selected-status').textContent=quality+' · '+adoptionStatusLabel(item)+' · '+group.integration;
     document.getElementById('selected-source').textContent='保存原本画像 · '+item.src;
     const link=document.getElementById('selected-link');link.href=item.src;link.textContent='原本画像を見る ↗';
-    const visible=group.versions.map((v,i)=>({v,i})).filter(({v})=>currentAdoptionFilter==='adopted'?v.adoption==='adopted':v.adoption!=='adopted');
+    const visible=visibleVersionIndices(group).map(i=>({v:group.versions[i],i}));
     versionSelect.replaceChildren(...visible.map(({v,i},n)=>{const o=document.createElement('option');o.value=String(n);o.textContent=v.title+' — '+adoptionStatusLabel(v)+(v.qualityStatus?' · '+v.qualityStatus:'');o.dataset.versionId=v.id;return o;}));
     versionSelect.value=String(Math.max(0,visible.findIndex(x=>x.i===versionIndex)));versionSelect.disabled=visible.length<2;
     versionSelect.onchange=()=>selectImage(group,visible[Number(versionSelect.value)].i);
