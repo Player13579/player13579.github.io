@@ -2,6 +2,17 @@
   'use strict';
   const PRESENTATION = Object.freeze({ width: 980, height: 620, anchorHeight: 64 });
   const EFFECT_VIEW = Object.freeze({
+    // Each frozen Sol version is framed from its own iframe CSS canvas and H64 actor size.
+    // The target on-screen actor height is 240 CSS px; focus is each canvas' actual center
+    // mapped into the 980x620 gallery iframe (including Stamina r8's centered 480x260 canvas).
+    'stamina-sol61-r8': { magnification: 240 / (64 * (530 / 260)), focusX: 490, focusY: 310 },
+    'mana-zero-sol61-r4': { magnification: 240 / 64, focusX: 490, focusY: 310 },
+    'cooldown-sol61-shortening-zero': { magnification: 240 / 64, focusX: 490, focusY: 310 },
+    'stamina-sol61-r7': { magnification: 240 / (64 * (530 / 260)), focusX: 490, focusY: 310 },
+    'mana-zero-sol61-r3': { magnification: 240 / 64, focusX: 490, focusY: 310 },
+    'mana-zero-sol61-r2': { magnification: 240 / 64, focusX: 490, focusY: 310 },
+    'cooldown-sol61-r5-attempt-1': { magnification: 240 / 64, focusX: 490, focusY: 310 },
+    'cooldown-sol61-r5-attempt-2': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'stamina-sol61-r6': { magnification: 2.4, focusX: 480, focusY: 260 },
     'barrier-sol61-r3': { magnification: 4, focusX: 490, focusY: 310 },
     'mana-zero-sol61-r1': { magnification: 4, focusX: 490, focusY: 312 },
@@ -96,6 +107,9 @@
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
     Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+      version('mana-zero-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-mana-zero/r4/preview.html?embed=1', 'public/sol61-mana-zero/r4/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結品質記録: H64暗明で縦stripe/衣装の帯に読め、受領固有の身体応答が不成立。技術再生はpass（実GPU compile/submission、全寿命4 cycle）。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
+      version('mana-zero-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-mana-zero/r3/preview.html?embed=1', 'public/sol61-mana-zero/r3/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴の技術再生pass・品質fail。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
+      version('mana-zero-sol61-r2', 'GPT-6.1-Sol zero r2', 'public/sol61-mana-zero/r2/preview.html?embed=1', 'public/sol61-mana-zero/r2/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴の技術再生pass・品質fail。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
       version('mana-zero-sol61-r1', 'GPT-6.1-Sol zero r1', 'public/sol61-mana-zero/r1/preview.html?embed=1', 'public/sol61-mana-zero/r1/effect.mjs', 'ゼロ設計・品質不合格・未採用', '作者: GPT-6.1-Sol。旧供給粒・shader・音を使わず新規設計。実GPU全寿命・4ループを確認。新しい連続容積は衣装のパッチや鎧の内張りに見えるため不合格。有限固有SFXあり、聴感未受入。本編未接続、次稿を制作中。', 'effect-H64'),
       version('mana-sol61-r1', 'GPT-6.1-Sol r1（Astra r07改良）', 'public/sol61-mana-e/r1/index.html?embed=1&single=1', 'public/sol61-mana-e/r1/mana.wgsl', '品質未達・旧構造継承確認・未採用', '改修作者: GPT-6.1-Sol。親原版: GPT-6-Astra r07。以前の改善指示に沿った版。入力監査で供給粒・キラキラ・音の同一部分を確認し、実表示でも小さな塊と衣装発光に寄る弱点が残ったため改良系列を中止。新しいゼロ設計を制作中。再生可能な比較履歴として保持し、本編未接続、聴感未受入。', 'effect-H64'),
       version("mana-receive-v2-r07", "Astra receive r07", "public/astra-mana-receive-v2/mana-r07/index.html?embed=1&height=64&single=1", "public/astra-mana-receive-v2/mana-r07/renderer.mjs", "品質不合格（自主レビュー）・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。実WebGPU再生確認済み。自主レビュー不合格: サンプル画像の取得位相では粒子効果が見えず、終盤の受領光も小さい。ユーザー未採用、本編未接続。", 'effect-H64'),
@@ -124,6 +138,8 @@
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
     Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([
+      version('stamina-sol61-r8', 'GPT-6.1-Sol r8', 'public/sol61-stamina-e/r8/index.html?embed=1', 'public/sol61-stamina-e/r8/design.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結品質判定は不合格: packetは移動するが衣装発光/腕端の光片に分節し、活力による活動再開が主作用として読めない。技術再生pass。有限SFXのCPU契約pass、正常ブラウザーgestureと実聴は未実施。ユーザー未採用、本編未接続。', 'effect-H64'),
+      version('stamina-sol61-r7', 'GPT-6.1-Sol r7', 'public/sol61-stamina-e/r7/index.html?embed=1', 'public/sol61-stamina-e/r7/design.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴の技術再生pass・品質fail。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
       version('stamina-sol61-r6', 'GPT-6.1-Sol r6', 'public/sol61-stamina-e/r6/index.html?embed=1&height=64', 'public/sol61-stamina-e/r6/design.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。新規有限活力閃光の技術WebGPU再生は確認済み。左胸の付属片と衣装発光が主形を支配し、活力発現の動作が伝わらないため品質不合格。有限固有SFXあり、聴感未検証。改稿中の比較履歴。', 'effect-H64'),
       version('stamina-sol61-r4', 'GPT-6.1-Sol r4', 'public/sol61-stamina-e/r4/index.html?embed=1', 'public/sol61-stamina-e/r4/design.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU暗明H64全寿命・3ループを確認。脚の形が装備や追加の肢に見えること、閉じた外形、一様な身体の着色が品質未達。原版の有限VFX/SFXを保持し次稿を制作中。聴感未受入。', 'effect-H64'),
       version('stamina-sol61-r3', 'GPT-6.1-Sol r3', 'public/sol61-stamina-e/r3/index.html?embed=1', 'public/sol61-stamina-e/r3/design.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU暗明H64全寿命と3ループを確認した再生可能な不合格版。風・リボンへの意味の曖昧さ、明背景での弱い分離、小さな星の可読性が未達。次稿を制作中。有限SFXあり、聴感未受入。', 'effect-H64'),
@@ -150,8 +166,8 @@
     Object.freeze({ id: 'recovery-astra', title: '回復', defaultVersionId: 'status-cleanse-astra-r29', versions: Object.freeze([
       version('status-cleanse-astra-r29', 'Astra r0.29（旧状態異常回復）', 'public/astra-status-cleanse-v1/versions/r29/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r29/cleanse.mjs', '回復Eとしてユーザー採用済み・本編接続待ち', '作者: GPT-6-Astra。ユーザーが採用済み状態異常回復r0.29を回復Eへ割り当て直した原版。表現・作者・旧来歴を保持する。新しい状態異常回復Eは別に青系で制作する。回復用途への本編接続・実発動・聴感は未確認。', 'actor-H64'),
     ]) }),
-    Object.freeze({ id: 'status-cleanse-astra', title: '状態異常回復', versions: Object.freeze([
-      version('status-recovery-sol61-r1', 'GPT-6.1-Sol blue r1', 'public/sol61-status-recovery-blue/r1/index.html?embed=1', 'public/sol61-status-recovery-blue/r1/design.mjs', '担当審査済み候補・未採用・本編未接続', '作者: GPT-6.1-Sol。旧状態異常回復r0.29を使わず青主体で独立設計。負の状態を描かず、身体輪郭の広面から腕・胸へ回復が定着する。実GPU暗明H64全寿命・3ループを確認。有限SFXあり、聴感と主担当・ユーザー審査は未了。', 'effect-H64'),
+    Object.freeze({ id: 'status-cleanse-astra', title: '状態異常回復', defaultVersionId: 'status-recovery-sol61-r1', versions: Object.freeze([
+      version('status-recovery-sol61-r1', 'GPT-6.1-Sol blue r1', 'public/sol61-status-recovery-blue/r1/index.html?embed=1', 'public/sol61-status-recovery-blue/r1/design.mjs', 'ユーザー採用済み・本編接続待ち・聴感未検証', '作者: GPT-6.1-Sol。青系最新版r1をユーザー採用。旧状態異常回復r0.29は回復E用途のまま保持。負の状態を描かず、身体輪郭の広面から腕・胸へ回復が定着する。実GPU暗明H64全寿命・3ループの記録を保持。有限SFXあり、本編の状態異常解除への接続・実発動・聴感は未確認。', 'effect-H64'),
       version('status-recovery-sol61-r1-draft1', 'GPT-6.1-Sol blue r1 初稿', 'public/sol61-status-recovery-blue/r1/history/attempt1/index.html?embed=1', 'public/sol61-status-recovery-blue/r1/history/attempt1/design.mjs', '旧試作・品質不合格・未採用', '作者: GPT-6.1-Sol。身体輪郭の連続性を改善する前の初稿。後続r1へ置換した再生可能な比較履歴。原本の有限VFX/SFXを保持。', 'effect-H64'),
       version('status-cleanse-astra-r37', 'Astra r0.37', 'public/astra-status-cleanse-v1/versions/r37/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r37/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。凍結記録: H64 Star-OFFで核が腕横の小さな光る石/ダイヤ装飾に見え、縮小しながら身体が光る。面の作用と回復伝達が読めず、pickup/equipment誤読条件に該当。WebGPU技術再生pass・3 loop・754 GPU submissions。SFX聴感未実施・性能未計測・ユーザー未採用・本編未接続。', 'actor-H64'),
       version('status-cleanse-astra-r36', 'Astra r0.36', 'public/astra-status-cleanse-v1/versions/r36/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r36/cleanse.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。凍結記録: 始点・下降・受け渡しは改善し外部重心移動45.72pxを計測したが、主形はぼけた横発光帯から小さな光る台へ変わり、正の回復媒体として識別できない。WebGPU技術再生pass・3 loop・761 GPU submissions。SFX聴感未実施・性能未計測・ユーザー未採用・本編未接続。', 'actor-H64'),
@@ -190,7 +206,10 @@
       version('status-cleanse-astra-r02', 'Astra r0.2', 'public/astra-status-cleanse-v1/versions/r02/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r02/cleanse.mjs', '品質不合格・本編未採用', 'aliasは除去されたが、主形が光る花器に見える。', 'actor-H64'),
       version('status-cleanse-astra-r01', 'Astra r0.1', 'public/astra-status-cleanse-v1/versions/r01/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r01/cleanse.mjs', '品質不合格・本編未採用', '主形が小さな杯に見え、ray-marchに帯状aliasがある。', 'actor-H64')
     ]) }),
-    Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮', defaultVersionId: 'cooldown-sol61-r4', versions: Object.freeze([
+    Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮', defaultVersionId: 'cooldown-sol61-shortening-zero', versions: Object.freeze([
+      version('cooldown-sol61-shortening-zero', 'GPT-6.1-Sol r5 · 待機時間短縮ゼロ', 'public/sol61-cooldown-zero-r5/shortening-zero/index.html?embed=1', 'public/sol61-cooldown-zero-r5/shortening-zero/design.mjs', '視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。待機時間短縮の意図を保つゼロ設計。数値上の残り待機時間短縮は既存ゲーム処理と分離。GPU技術再生pass、視覚意図は不合格: H64で斜めの発光楕円/宝石に読め、短縮効果として伝わらない。実聴未実施、ユーザー未採用、本編未接続。旧「幾何学的圧縮」案が意図と不一致だった履歴を保持。', 'effect-H64'),
+      version('cooldown-sol61-r5-attempt-2', 'GPT-6.1-Sol r5 attempt 2', 'public/sol61-cooldown-zero-r5/versions/r5-attempt2/index.html?embed=1', 'public/sol61-cooldown-zero-r5/versions/r5-attempt2/design.mjs', '視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴のGPU compile/submission/複数loopはpass、視覚品質は不合格。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
+      version('cooldown-sol61-r5-attempt-1', 'GPT-6.1-Sol r5 attempt 1', 'public/sol61-cooldown-zero-r5/versions/r5-attempt1/index.html?embed=1', 'public/sol61-cooldown-zero-r5/versions/r5-attempt1/design.mjs', '視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴のGPU compile/submission/複数loopはpass、視覚品質は不合格。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
       version('cooldown-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-cooldown-zero/r4/preview.html?embed=1', 'public/sol61-cooldown-zero/r4/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。真の3D経路と前後遮蔽を実装し実GPU4ループ確認。前腕付近の形が発光するばね・コイルに見えるため不合格。有限固有SFXあり、聴感未受入。再生可能な比較履歴。', 'effect-H64'),
       version('cooldown-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-cooldown-zero/r3/preview.html?embed=1', 'public/sol61-cooldown-zero/r3/effect.mjs', '品質不合格・未採用・本編未接続', '作者: GPT-6.1-Sol。実GPU全寿命・4ループを確認。初期が回復のU字の光、後半が胴体の帯に見えるため不合格。有限SFXあり、聴感未受入。次稿を制作中。', 'effect-H64'),
       version('cooldown-sol61-r2', 'GPT-6.1-Sol zero r2', 'public/sol61-cooldown-zero/r2/preview.html?embed=1', 'public/sol61-cooldown-zero/r2/effect.mjs', '品質未達・未採用・本編未接続', '作者: GPT-6.1-Sol。再生可能な改稿履歴。分割した挟み込みの形と身体発光の意味が未達。原版の有限VFX/SFXを保持。', 'effect-H64'),
@@ -261,7 +280,7 @@
   let currentCategory = 'effect';
   let currentAdoptionFilter = 'unadopted';
   const selections = new Map();
-  const adoptedVersionIds = new Set(['sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29']);
+  const adoptedVersionIds = new Set(['status-recovery-sol61-r1','sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29']);
   const categoryTabs = [...document.querySelectorAll('[data-category]')];
   const layout = document.getElementById('gallery-layout');
   const emptyCategory = document.getElementById('empty-category');
@@ -409,7 +428,7 @@
       {id:'cafeteria-floor-attempt-02',title:'床材 attempt 02',src:'assets/gpt-map-history/cafeteria-floor-component.png',hash:'d205dea3669fe9b0a8f63b7cb0078c57a7c99d256853cc1cb2f8fd679e75f25c',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'一次担当が単一カフェテリアの床材素材として受入。シームレスな反復利用は未受入。部品受入であり、マップ採用ではない。'}]},
     {id:'cafeteria-buffet-component',category:'map',title:'カフェテリア・ビュッフェ · コンポーネント',creatorDisplayName:'ChatGPT (model unverified)',quality:'accepted-component-only',adoption:'not-adopted',integration:'not-integrated',reason:'完成マップではなく単体設備の原画候補。画像作者の基底モデルは未確認で、生成コードの正確なコード先行手順にも証跡不足。',versions:[
       {id:'cafeteria-buffet-attempt-01',title:'ビュッフェ attempt 01',src:'assets/gpt-map-history/cafeteria-buffet-component.png',hash:'da99b673cd36a45f055e7442ab1b11e7ebeb9bdaf40699d561055a82ec4623f0',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'Primary visual candidate acceptance only。コード全文の保存・厳密なコード再送証跡が不足。ゲーム未統合。'}]},
-  ].filter(group => !['cafeteria-gpt-pro', 'cafeteria-floor-component', 'cafeteria-buffet-component', 'station-gpt-history'].includes(group.id))
+  ].filter(group => !['cafeteria-gpt-pro', 'cafeteria-floor-component', 'cafeteria-buffet-component', 'station-gpt-history', 'security-gpt-pro', 'medical-gpt-history'].includes(group.id))
     .map(group => group.id === 'medical-gpt-history'
       ? { ...group, versions: group.versions.filter(item => item.id !== 'medical-room-dense-attempt-01') }
       : group);
