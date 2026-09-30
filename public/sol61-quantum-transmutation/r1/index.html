@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d16">
+  <title>Quantum Transmutation · GPT-6.1-Sol r1</title>
+  <style>
+    :root { color-scheme: dark; font: 14px/1.4 system-ui, sans-serif; background: #080d16; color: #dce7f4; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+    main { width: min(980px, calc(100vw - 32px)); display: grid; gap: 10px; }
+    canvas { display: block; width: 100%; aspect-ratio: 49 / 31; height: auto; background: #080d16; }
+    footer { display: flex; align-items: center; justify-content: space-between; min-height: 28px; color: #9cafc7; }
+    button { color: #e9f1fa; background: #233447; border: 1px solid #456078; border-radius: 5px; padding: 5px 10px; }
+    button[hidden] { display: none; }
+    body.verify { background: #080d16; }
+  </style>
+</head>
+<body>
+  <main aria-label="Quantum Transmutation WebGPU preview">
+    <canvas id="surface" width="980" height="620" aria-label="Quantum Transmutation effect preview"></canvas>
+    <footer><span id="status" role="status">Starting WebGPU…</span><button id="enable-sound" hidden>Enable sound</button></footer>
+  </main>
+  <script type="module" src="./gallery-runtime.mjs"></script>
+</body>
+</html>

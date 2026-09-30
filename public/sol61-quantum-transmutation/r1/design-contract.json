@@ -1,0 +1,1104 @@
+{
+  "output_kind": "executable_effect_design_mapping_not_image_prompt",
+  "source_revision": {
+    "repository": "player13579/B",
+    "branch": "Codex-honoo",
+    "commit": "37eb4bdfe59f0dc075f9b4333b7d6af76b784a88",
+    "base_blob": "8a908495ae1f9b7175e00384ab88c50e5c78bd43",
+    "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834",
+    "method": "authenticated git fetch origin Codex-honoo; git show origin/Codex-honoo:path"
+  },
+  "DeclaredIntent": {
+    "subject": "成功した量子錬成",
+    "input": "鉛または水銀1個とスタミナの権威消費",
+    "result": "100credits権威加算済み。Eで再確定しない",
+    "source": "operator rounded event x/y",
+    "lifetime": "3600ms local receipt clock",
+    "style": "デジタルな錬成場、強発光",
+    "text_logo_policy": "数値・文字・金貨・UI受領カードなし"
+  },
+  "ExtensionDecisions": {
+    "VFX": "explicit",
+    "ECodeImplementation": "explicit",
+    "PostEffects": "attribute_resolved exact OBS1/OBS2",
+    "LDM": "explicit VFX trigger",
+    "KeywordExpansion": {
+      "強発光": "閃光／複数の光芒。輪郭から光が溢れる。"
+    },
+    "MagicArchitecture": "not_applicable: exact keyword 魔法/Magic/MagicArchitecture is not selected",
+    "GradientAnchorPolicy": "not_applicable: phase colors occupy distinct PH domains, no hue gradient"
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "独立した入力境界、変換開口、結果占有の三状態。学問名で分割しない"
+    },
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "消費素材の源内再現",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "左27unitの鉛角形または水銀丸形が0.85–1.65sで消える",
+        "partition_reason": "入力素材の境界が場への吸収で縮小する独立状態"
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "分節化した錬成場",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "源(0,-32)で1.50sに局所放射が最大",
+        "partition_reason": "対向セルの開口と供給境界が収束する独立状態"
+      },
+      "PH3": {
+        "id": "PH3",
+        "name": "錬成結果の金色場",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "変換域から幅28→46、高さ38unitへ展開",
+        "partition_reason": "変換後に開口と厚みを持つ結果面が成立し収束する独立状態"
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "消費素材の源内再現",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "左27unitの鉛角形または水銀丸形が0.85–1.65sで消える",
+          "partition_reason": "入力素材の境界が場への吸収で縮小する独立状態"
+        },
+        "DeepStructure": {
+          "Core": "左27unitの鉛角形または水銀丸形が0.85–1.65sで消える",
+          "Structure": "22×30unit主塊、左から中心へ21unit以内の移動",
+          "Surface": "輪郭のcoverage0.92と斜めの反射方向差"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "源イベントx/y、radius150内、x±64/y[-96,+32]描画支持域",
+          "state_variables": "入力coverage、場の開口、結果占有、scene-linear radiance、age秒",
+          "inputs": "成功quantum-transmutation receipt、variant、固定源位置、local receipt clock",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "所持素材の権威消費は既に完了。Eの再現場で質量の保存や生成を断定しない"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "権威位置固定の表示場。オペ運動量を変えない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "成功receiptが有限放射の演出供給。寿命終端で供給0。joule測定や実核反応収支ではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "実電荷・電場はproducerにない"
+            }
+          },
+          "constitutive_response": "輪郭のcoverage0.92と斜めの反射方向差",
+          "initial_condition": "receipt前にはこの場を描かない",
+          "boundary_conditions": "発動時x/y固定、秘匿源は非描画、主域から有限支持域へ減衰",
+          "approximation_scope": "デジタルな量子錬成の芸術的実現。核物理・金属物性の実証ではない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "22×30unit主塊、左から中心へ21unit以内の移動",
+          "characteristic_time": "0–0.85s保持、0.85–1.65s吸収",
+          "dominant_balance": "指定時相の形態遷移が支配。実空気抗力・熱輸送は非適用",
+          "dimensionless_reasoning": "world支持域最大約115.4/radius150<1。主面/actorH64は46/64×38/64。実Re/Weは物性がないため非適用",
+          "detail_cutoff": "主面と開口はH64で10px以上。細かな実素材構造を描かない。AA=max(0.65,1/zoom)"
+        },
+        "OctaDomain": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "実温度・核反応熱はproducerにない。炎・煙・熱拡散を創作しない"
+            ],
+            "evidence_or_constraint": "PH1のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "権威位置固定の演出場で、実水銀の流体輸送・風は未提供"
+            ],
+            "evidence_or_constraint": "PH1のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "電荷や核反応モデルをゲームの量子名称だけから実証しない"
+            ],
+            "evidence_or_constraint": "PH1のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "場の形状遷移は時間関数。粘弾性・実応力を断定しない"
+            ],
+            "evidence_or_constraint": "PH1のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "世界内光波の干渉は未提供。OBSのPSFとは区別"
+            ],
+            "evidence_or_constraint": "PH1のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "実接触・付着・濡れ面は未提供。独立表面を追加しない"
+            ],
+            "evidence_or_constraint": "PH1のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "輪郭のcoverage0.92と斜めの反射方向差",
+              "emissionとcoverageを別量として合成し、世界形はOBSなしでも存在"
+            ],
+            "evidence_or_constraint": [
+              "鉛は角形、水銀は丸い縦長形",
+              "入力域の消失とPH2供給の同期"
+            ]
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "鉛角形／水銀丸形の材質判読手掛かり。実物性値は用いない"
+            ],
+            "evidence_or_constraint": "22×30unit主塊、左から中心へ21unit以内の移動"
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "鉛は角形、水銀は丸い縦長形",
+            "入力域の消失とPH2供給の同期"
+          ],
+          "indirect_evidence": "他PHへ引き継ぐ位相差を全寿命で照合",
+          "figure_ground_separation": "high",
+          "edge_legibility": "輪郭のcoverage0.92と斜めの反射方向差",
+          "perceptual_failure_risk": "入力素材を新規所持品生成と誤読",
+          "cue_roles": [
+            {
+              "cue": "鉛は角形、水銀は丸い縦長形",
+              "supports": "消費素材の源内再現",
+              "reliability_and_overlap": "H64、同一event/clock/source。独立統計証拠とは主張しない"
+            },
+            {
+              "cue": "入力域の消失とPH2供給の同期",
+              "supports": "消費素材の源内再現",
+              "reliability_and_overlap": "H64、同一event/clock/source。独立統計証拠とは主張しない"
+            }
+          ],
+          "confusable_alternative": "入力素材を新規所持品生成と誤読",
+          "disambiguating_evidence": "受領UIへ飛ばず源の場内で消える",
+          "viewing_conditions": "H64原寸、zoom/DPRの同じ投影、合成後の作用面積を別途実GPU観測"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "直交投影。源局所xy面、奥面は負空域から偏位して見える",
+          "normal_field_coherence": "入力反射方向差／結果面の境界差を固定し、毎frameランダム化しない",
+          "curvature_behavior": "lead角形、mercury縦長丸形",
+          "silhouette_logic": "22×30unit主塊、左から中心へ21unit以内の移動",
+          "contact_relation": "手や床との接触は供給されていないため捏造しない",
+          "spatial_relation": "PH1→PH2→PH3を同一発動源の有限場で結ぶ"
+        },
+        "StateDynamics": {
+          "state_space_extent": "左27unitの鉛角形または水銀丸形が0.85–1.65sで消える",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "0–0.85s保持、0.85–1.65s吸収",
+          "damping_profile": "段階ごとのsmoothstepと変換時discharge Gaussian、全体の無意味な呼吸なし",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "result場は寿命境界まで同主形で終了。資源状態はrendererで巻き戻さない",
+          "transition_failure_risk": "反復snapshotでclockをリセットしない。expiry同値で厳密終了",
+          "driving_input": "PhysicalModel.inputs",
+          "response_timescale": "0–0.85s保持、0.85–1.65s吸収",
+          "phase_relation": "PH1消失とPH2収束、PH2局所ピークとPH3成立を交差させる",
+          "stability_condition": "0<=age<3600msかつsourceVisible、局所座標固定"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Materials -> PH2.Optics:入力塊の消失を供給域と錬成場へ引き継ぐ",
+            "PH2.Optics -> PH3.Optics:変換ピークから金色結果場へ役割を渡す"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "同source/時相/投影でworld/glow/flare OFF、variant、sourceVisible、源位置を変える",
+            "predicted_response": "worldOFFで主形だけ消える。glow/flareOFFでも入力→変換→結果が残る。hiddenでは全部消える",
+            "competing_explanation": "OBSが主形を作って見せている、gold item取得と混同",
+            "uncertainty": "実GPU・合成後・聴感はnot_run。実核物理は検証対象外",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "消費素材の入力塊が錬成域内へ吸収される演出上の場結合",
+              "consequence": "入力塊縮小と供給域が重なる"
+            }
+          ],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "鉛は角形、水銀は丸い縦長形",
+            "入力域の消失とPH2供給の同期"
+          ],
+          "indirect": [
+            "隣接PHとの位相引継ぎ"
+          ],
+          "candidates": [
+            "boundary",
+            "phase_difference",
+            "attenuation",
+            "silhouette",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none; 他の背景・受け手を追加しない"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH1.StateDynamics",
+          "retained_cues": [
+            "鉛は角形、水銀は丸い縦長形",
+            "入力域の消失とPH2供給の同期"
+          ],
+          "simplification": "実物性microを省き、幅ある主域・開口・位相関係を保持",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [
+            "実核物理機構と不明な手位置は描画事実にしない"
+          ],
+          "intent_ref": "DeclaredIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "hierarchy_gaze_flow": [
+              "左27unitの鉛角形または水銀丸形が0.85–1.65sで消える",
+              "入力→変換→結果の引継ぎ"
+            ],
+            "temporal_phase": [
+              "0–0.85s保持、0.85–1.65s吸収",
+              "開始と終端の役割を分離"
+            ],
+            "whitespace_density": [
+              "22×30unit主塊、左から中心へ21unit以内の移動",
+              "開口を保持し細部密度で埋めない"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "入力素材を新規所持品生成と誤読",
+          "OBSだけの主形生成",
+          "細い線と汎用粒子だけの終盤",
+          "固定源からの滑り"
+        ],
+        "implementation": "fs: inputCenter/iq/lead/mercury/metal/metalShade"
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "分節化した錬成場",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "源(0,-32)で1.50sに局所放射が最大",
+          "partition_reason": "対向セルの開口と供給境界が収束する独立状態"
+        },
+        "DeepStructure": {
+          "Core": "源(0,-32)で1.50sに局所放射が最大",
+          "Structure": "三段の左右セル、40→18unit間隔、9unit太さ供給域",
+          "Surface": "内向きセル境界のcyan放射とcoverage0.65"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "源イベントx/y、radius150内、x±64/y[-96,+32]描画支持域",
+          "state_variables": "入力coverage、場の開口、結果占有、scene-linear radiance、age秒",
+          "inputs": "成功quantum-transmutation receipt、variant、固定源位置、local receipt clock",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "所持素材の権威消費は既に完了。Eの再現場で質量の保存や生成を断定しない"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "権威位置固定の表示場。オペ運動量を変えない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "成功receiptが有限放射の演出供給。寿命終端で供給0。joule測定や実核反応収支ではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "実電荷・電場はproducerにない"
+            }
+          },
+          "constitutive_response": "内向きセル境界のcyan放射とcoverage0.65",
+          "initial_condition": "receipt前にはこの場を描かない",
+          "boundary_conditions": "発動時x/y固定、秘匿源は非描画、主域から有限支持域へ減衰",
+          "approximation_scope": "デジタルな量子錬成の芸術的実現。核物理・金属物性の実証ではない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "三段の左右セル、40→18unit間隔、9unit太さ供給域",
+          "characteristic_time": "0–0.16s導入、0.32–0.64s供給、0.72–1.65s収束、2.25–2.9s終端",
+          "dominant_balance": "指定時相の形態遷移が支配。実空気抗力・熱輸送は非適用",
+          "dimensionless_reasoning": "world支持域最大約115.4/radius150<1。主面/actorH64は46/64×38/64。実Re/Weは物性がないため非適用",
+          "detail_cutoff": "主面と開口はH64で10px以上。細かな実素材構造を描かない。AA=max(0.65,1/zoom)"
+        },
+        "OctaDomain": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "実温度・核反応熱はproducerにない。炎・煙・熱拡散を創作しない"
+            ],
+            "evidence_or_constraint": "PH2のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "権威位置固定の演出場で、実水銀の流体輸送・風は未提供"
+            ],
+            "evidence_or_constraint": "PH2のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "電荷や核反応モデルをゲームの量子名称だけから実証しない"
+            ],
+            "evidence_or_constraint": "PH2のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "場の形状遷移は時間関数。粘弾性・実応力を断定しない"
+            ],
+            "evidence_or_constraint": "PH2のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "世界内光波の干渉は未提供。OBSのPSFとは区別"
+            ],
+            "evidence_or_constraint": "PH2のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "実接触・付着・濡れ面は未提供。独立表面を追加しない"
+            ],
+            "evidence_or_constraint": "PH2のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "内向きセル境界のcyan放射とcoverage0.65",
+              "emissionとcoverageを別量として合成し、世界形はOBSなしでも存在"
+            ],
+            "evidence_or_constraint": [
+              "対向セルの内面が閉じる",
+              "広い供給域が入力から開口へ届く"
+            ]
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "場の占有境界と内部開口の設計応答。実固体膜ではない"
+            ],
+            "evidence_or_constraint": "三段の左右セル、40→18unit間隔、9unit太さ供給域"
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "対向セルの内面が閉じる",
+            "広い供給域が入力から開口へ届く"
+          ],
+          "indirect_evidence": "他PHへ引き継ぐ位相差を全寿命で照合",
+          "figure_ground_separation": "high",
+          "edge_legibility": "内向きセル境界のcyan放射とcoverage0.65",
+          "perceptual_failure_risk": "薄い汎用輪または防護膜と誤読",
+          "cue_roles": [
+            {
+              "cue": "対向セルの内面が閉じる",
+              "supports": "分節化した錬成場",
+              "reliability_and_overlap": "H64、同一event/clock/source。独立統計証拠とは主張しない"
+            },
+            {
+              "cue": "広い供給域が入力から開口へ届く",
+              "supports": "分節化した錬成場",
+              "reliability_and_overlap": "H64、同一event/clock/source。独立統計証拠とは主張しない"
+            }
+          ],
+          "confusable_alternative": "薄い汎用輪または防護膜と誤読",
+          "disambiguating_evidence": "閉じた身体輪郭を作らず入力から結果への開いた横方向場",
+          "viewing_conditions": "H64原寸、zoom/DPRの同じ投影、合成後の作用面積を別途実GPU観測"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "直交投影。源局所xy面、奥面は負空域から偏位して見える",
+          "normal_field_coherence": "入力反射方向差／結果面の境界差を固定し、毎frameランダム化しない",
+          "curvature_behavior": "段状主域と幅ある開口",
+          "silhouette_logic": "三段の左右セル、40→18unit間隔、9unit太さ供給域",
+          "contact_relation": "手や床との接触は供給されていないため捏造しない",
+          "spatial_relation": "PH1→PH2→PH3を同一発動源の有限場で結ぶ"
+        },
+        "StateDynamics": {
+          "state_space_extent": "源(0,-32)で1.50sに局所放射が最大",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "0–0.16s導入、0.32–0.64s供給、0.72–1.65s収束、2.25–2.9s終端",
+          "damping_profile": "段階ごとのsmoothstepと変換時discharge Gaussian、全体の無意味な呼吸なし",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "result場は寿命境界まで同主形で終了。資源状態はrendererで巻き戻さない",
+          "transition_failure_risk": "反復snapshotでclockをリセットしない。expiry同値で厳密終了",
+          "driving_input": "PhysicalModel.inputs",
+          "response_timescale": "0–0.16s導入、0.32–0.64s供給、0.72–1.65s収束、2.25–2.9s終端",
+          "phase_relation": "PH1消失とPH2収束、PH2局所ピークとPH3成立を交差させる",
+          "stability_condition": "0<=age<3600msかつsourceVisible、局所座標固定"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Materials -> PH2.Optics:入力塊の消失を供給域と錬成場へ引き継ぐ",
+            "PH2.Optics -> PH3.Optics:変換ピークから金色結果場へ役割を渡す"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "同source/時相/投影でworld/glow/flare OFF、variant、sourceVisible、源位置を変える",
+            "predicted_response": "worldOFFで主形だけ消える。glow/flareOFFでも入力→変換→結果が残る。hiddenでは全部消える",
+            "competing_explanation": "OBSが主形を作って見せている、gold item取得と混同",
+            "uncertainty": "実GPU・合成後・聴感はnot_run。実核物理は検証対象外",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "消費素材の入力塊が錬成域内へ吸収される演出上の場結合",
+              "consequence": "入力塊縮小と供給域が重なる"
+            },
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "変換場の局所ピークで金色結果場が成立",
+              "consequence": "変換場が閉じ、結果面の占有が保持される"
+            }
+          ],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "対向セルの内面が閉じる",
+            "広い供給域が入力から開口へ届く"
+          ],
+          "indirect": [
+            "隣接PHとの位相引継ぎ"
+          ],
+          "candidates": [
+            "boundary",
+            "phase_difference",
+            "attenuation",
+            "silhouette",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none; 他の背景・受け手を追加しない"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH2.StateDynamics",
+          "retained_cues": [
+            "対向セルの内面が閉じる",
+            "広い供給域が入力から開口へ届く"
+          ],
+          "simplification": "実物性microを省き、幅ある主域・開口・位相関係を保持",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [
+            "実核物理機構と不明な手位置は描画事実にしない"
+          ],
+          "intent_ref": "DeclaredIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "hierarchy_gaze_flow": [
+              "源(0,-32)で1.50sに局所放射が最大",
+              "入力→変換→結果の引継ぎ"
+            ],
+            "temporal_phase": [
+              "0–0.16s導入、0.32–0.64s供給、0.72–1.65s収束、2.25–2.9s終端",
+              "開始と終端の役割を分離"
+            ],
+            "whitespace_density": [
+              "三段の左右セル、40→18unit間隔、9unit太さ供給域",
+              "開口を保持し細部密度で埋めない"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "薄い汎用輪または防護膜と誤読",
+          "OBSだけの主形生成",
+          "細い線と汎用粒子だけの終盤",
+          "固定源からの滑り"
+        ],
+        "implementation": "fs: jawGap/jaw/hot/feed/carrier/supply/source"
+      },
+      "PH3": {
+        "identity": {
+          "id": "PH3",
+          "name": "錬成結果の金色場",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "変換域から幅28→46、高さ38unitへ展開",
+          "partition_reason": "変換後に開口と厚みを持つ結果面が成立し収束する独立状態"
+        },
+        "DeepStructure": {
+          "Core": "変換域から幅28→46、高さ38unitへ展開",
+          "Structure": "10×20unit開口、右上段差、奥面4unit偏位",
+          "Surface": "金色面のcoverage0.8と発光縁、3.02–3.6s同形終端"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "源イベントx/y、radius150内、x±64/y[-96,+32]描画支持域",
+          "state_variables": "入力coverage、場の開口、結果占有、scene-linear radiance、age秒",
+          "inputs": "成功quantum-transmutation receipt、variant、固定源位置、local receipt clock",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "所持素材の権威消費は既に完了。Eの再現場で質量の保存や生成を断定しない"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "権威位置固定の表示場。オペ運動量を変えない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "成功receiptが有限放射の演出供給。寿命終端で供給0。joule測定や実核反応収支ではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "実電荷・電場はproducerにない"
+            }
+          },
+          "constitutive_response": "金色面のcoverage0.8と発光縁、3.02–3.6s同形終端",
+          "initial_condition": "receipt前にはこの場を描かない",
+          "boundary_conditions": "発動時x/y固定、秘匿源は非描画、主域から有限支持域へ減衰",
+          "approximation_scope": "デジタルな量子錬成の芸術的実現。核物理・金属物性の実証ではない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "10×20unit開口、右上段差、奥面4unit偏位",
+          "characteristic_time": "1.35–1.8s成立、1.38–2.05s展開、3.02–3.6s収束",
+          "dominant_balance": "指定時相の形態遷移が支配。実空気抗力・熱輸送は非適用",
+          "dimensionless_reasoning": "world支持域最大約115.4/radius150<1。主面/actorH64は46/64×38/64。実Re/Weは物性がないため非適用",
+          "detail_cutoff": "主面と開口はH64で10px以上。細かな実素材構造を描かない。AA=max(0.65,1/zoom)"
+        },
+        "OctaDomain": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "実温度・核反応熱はproducerにない。炎・煙・熱拡散を創作しない"
+            ],
+            "evidence_or_constraint": "PH3のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "権威位置固定の演出場で、実水銀の流体輸送・風は未提供"
+            ],
+            "evidence_or_constraint": "PH3のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "電荷や核反応モデルをゲームの量子名称だけから実証しない"
+            ],
+            "evidence_or_constraint": "PH3のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "場の形状遷移は時間関数。粘弾性・実応力を断定しない"
+            ],
+            "evidence_or_constraint": "PH3のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "世界内光波の干渉は未提供。OBSのPSFとは区別"
+            ],
+            "evidence_or_constraint": "PH3のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "実接触・付着・濡れ面は未提供。独立表面を追加しない"
+            ],
+            "evidence_or_constraint": "PH3のdeclared_fantasy境界、実物理の追加なし"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "金色面のcoverage0.8と発光縁、3.02–3.6s同形終端",
+              "emissionとcoverageを別量として合成し、世界形はOBSなしでも存在"
+            ],
+            "evidence_or_constraint": [
+              "同一源の結果面と開口が残る",
+              "奥面偏位と手前の発光境界"
+            ]
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "場の占有境界と内部開口の設計応答。実固体膜ではない"
+            ],
+            "evidence_or_constraint": "10×20unit開口、右上段差、奥面4unit偏位"
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "同一源の結果面と開口が残る",
+            "奥面偏位と手前の発光境界"
+          ],
+          "indirect_evidence": "他PHへ引き継ぐ位相差を全寿命で照合",
+          "figure_ground_separation": "high",
+          "edge_legibility": "金色面のcoverage0.8と発光縁、3.02–3.6s同形終端",
+          "perceptual_failure_risk": "gold itemや100credit数値加算の再確定と誤読",
+          "cue_roles": [
+            {
+              "cue": "同一源の結果面と開口が残る",
+              "supports": "錬成結果の金色場",
+              "reliability_and_overlap": "H64、同一event/clock/source。独立統計証拠とは主張しない"
+            },
+            {
+              "cue": "奥面偏位と手前の発光境界",
+              "supports": "錬成結果の金色場",
+              "reliability_and_overlap": "H64、同一event/clock/source。独立統計証拠とは主張しない"
+            }
+          ],
+          "confusable_alternative": "gold itemや100credit数値加算の再確定と誤読",
+          "disambiguating_evidence": "金貨・文字・UI到着なし、非inventory場として源内で終わる",
+          "viewing_conditions": "H64原寸、zoom/DPRの同じ投影、合成後の作用面積を別途実GPU観測"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "直交投影。源局所xy面、奥面は負空域から偏位して見える",
+          "normal_field_coherence": "入力反射方向差／結果面の境界差を固定し、毎frameランダム化しない",
+          "curvature_behavior": "段状主域と幅ある開口",
+          "silhouette_logic": "10×20unit開口、右上段差、奥面4unit偏位",
+          "contact_relation": "手や床との接触は供給されていないため捏造しない",
+          "spatial_relation": "PH1→PH2→PH3を同一発動源の有限場で結ぶ"
+        },
+        "StateDynamics": {
+          "state_space_extent": "変換域から幅28→46、高さ38unitへ展開",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "1.35–1.8s成立、1.38–2.05s展開、3.02–3.6s収束",
+          "damping_profile": "段階ごとのsmoothstepと変換時discharge Gaussian、全体の無意味な呼吸なし",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "result場は寿命境界まで同主形で終了。資源状態はrendererで巻き戻さない",
+          "transition_failure_risk": "反復snapshotでclockをリセットしない。expiry同値で厳密終了",
+          "driving_input": "PhysicalModel.inputs",
+          "response_timescale": "1.35–1.8s成立、1.38–2.05s展開、3.02–3.6s収束",
+          "phase_relation": "PH1消失とPH2収束、PH2局所ピークとPH3成立を交差させる",
+          "stability_condition": "0<=age<3600msかつsourceVisible、局所座標固定"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Materials -> PH2.Optics:入力塊の消失を供給域と錬成場へ引き継ぐ",
+            "PH2.Optics -> PH3.Optics:変換ピークから金色結果場へ役割を渡す"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "同source/時相/投影でworld/glow/flare OFF、variant、sourceVisible、源位置を変える",
+            "predicted_response": "worldOFFで主形だけ消える。glow/flareOFFでも入力→変換→結果が残る。hiddenでは全部消える",
+            "competing_explanation": "OBSが主形を作って見せている、gold item取得と混同",
+            "uncertainty": "実GPU・合成後・聴感はnot_run。実核物理は検証対象外",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "変換場の局所ピークで金色結果場が成立",
+              "consequence": "変換場が閉じ、結果面の占有が保持される"
+            }
+          ],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "同一源の結果面と開口が残る",
+            "奥面偏位と手前の発光境界"
+          ],
+          "indirect": [
+            "隣接PHとの位相引継ぎ"
+          ],
+          "candidates": [
+            "boundary",
+            "phase_difference",
+            "attenuation",
+            "silhouette",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none; 他の背景・受け手を追加しない"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH3.StateDynamics",
+          "retained_cues": [
+            "同一源の結果面と開口が残る",
+            "奥面偏位と手前の発光境界"
+          ],
+          "simplification": "実物性microを省き、幅ある主域・開口・位相関係を保持",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [
+            "実核物理機構と不明な手位置は描画事実にしない"
+          ],
+          "intent_ref": "DeclaredIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "hierarchy_gaze_flow": [
+              "変換域から幅28→46、高さ38unitへ展開",
+              "入力→変換→結果の引継ぎ"
+            ],
+            "temporal_phase": [
+              "1.35–1.8s成立、1.38–2.05s展開、3.02–3.6s収束",
+              "開始と終端の役割を分離"
+            ],
+            "whitespace_density": [
+              "10×20unit開口、右上段差、奥面4unit偏位",
+              "開口を保持し細部密度で埋めない"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "gold itemや100credit数値加算の再確定と誤読",
+          "OBSだけの主形生成",
+          "細い線と汎用粒子だけの終盤",
+          "固定源からの滑り"
+        ],
+        "implementation": "fs: unfold/goldQ/main/opening/stepNotch/gold/depth/rim"
+      }
+    }
+  },
+  "ObservationIntegrationTemplate": {
+    "ObservationRegistry": {
+      "OBS1": {
+        "operation_type": "posteffect",
+        "input_references": [
+          "PH2",
+          "PH3"
+        ],
+        "target_mask": "source local nearGlow/goldGlow within x±64/y[-96,+32]",
+        "stage": "world_render_observation",
+        "composite_method": "premultiplied radiance add",
+        "intensity": "nearGlow*0.12+discharge*0.8 and goldGlow0.27; shared IntensityBudget",
+        "protected_regions": [
+          "開口と素材識別"
+        ],
+        "output_consequence": "源の輪郭外へ光が溢れる。主形は作らない",
+        "dependencies": [
+          "PH2",
+          "PH3"
+        ],
+        "sampling_consequence": "近傍24×25/33×28unit PSF、no random micro、同clock"
+      },
+      "OBS2": {
+        "operation_type": "display_artifact",
+        "input_references": [
+          "PH2"
+        ],
+        "target_mask": "projected conversion source at event+(0,-32)",
+        "stage": "world_render_observation",
+        "composite_method": "premultiplied radiance add",
+        "intensity": "source discharge*0.8; shared IntensityBudget",
+        "protected_regions": [
+          "変換場の開いた空域"
+        ],
+        "output_consequence": "35deg一方向の交差光芒が1.5s源ピークに同期",
+        "dependencies": [
+          "PH2"
+        ],
+        "sampling_consequence": "幅1.7unitの光芒、指数減衰長27/18unit、実GPU原寸差分検証",
+        "opticalModel": "人の表示観測へのsource-bound PSF近似。physical camera lens flareではない",
+        "ghostDecision": "not_applicable; 実カメラのレンズ面/観測中心がなく、離れた副像を追加しない"
+      }
+    },
+    "IntensityBudget": {
+      "worldPeak": "source6, role-bound radiance",
+      "observationBudget": "OBS1 near PSF and OBS2 source-bound0.8 streak",
+      "intentional_departures": [
+        {
+          "scope": "local strong source and optical streak",
+          "intent_basis": "強発光",
+          "preserved_relations": "入力／変換／結果の主形と開口、背景依存減光なし"
+        }
+      ]
+    },
+    "SamplingContract": {
+      "output_resolution": "actual shared target viewport physicalpx",
+      "intended_display_scale": "actorH64=64world units assumption",
+      "spatial_detail_policy": "主面46×38、開口10×20、cell14×10.4unit。micro未追加",
+      "temporal_sampling": "runtime RAF cadence actual measurement not_run、0.22s source peak、3.6s event。Video生成ではない",
+      "filter_and_resample_policy": "analytic smoothstep AA max(0.65,1/zoom)"
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "world source-anchored fantasy transmutation field"
+    },
+    "Units": {
+      "length": "game world unit",
+      "time": "s",
+      "angle": "rad"
+    },
+    "WorldCoordinates": "ゲーム既存x右/y下の二次元world。B標準y上からprojected game conventionへ明示写像",
+    "CameraCoordinates": "world(event-camera)*zoom+viewport/2",
+    "ScreenCoordinates": "x右/y下、physicalpixels",
+    "TransformChain": [
+      "world",
+      "camera",
+      "screen"
+    ],
+    "Gravity": {
+      "condition": "localized_gravity",
+      "vector": "not_applicable:場は権威位置固定。実重力値未提供",
+      "affected_responses": "金属再現の表示場を落下させない"
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "other",
+      "medium_properties": {
+        "density": "not_applicable:描画場に実密度を仮定しない",
+        "viscosity": "not_applicable:同"
+      },
+      "Field": {
+        "direction": "zero",
+        "speed": 0,
+        "gust": "none",
+        "shear": "none",
+        "turbulence": "none"
+      },
+      "ApplicableResponses": {
+        "body": "not_applicable:身体を変えない",
+        "cloth": "not_applicable",
+        "hair": "not_applicable",
+        "loose_elements": "not_applicable:実粒子ではない",
+        "environment": "not_applicable:背景考慮禁止"
+      }
+    }
+  },
+  "PEMTemplate": {
+    "Mode": {
+      "phenomenon_equality": true,
+      "focus_phenomenon": "none"
+    },
+    "CausalMesh": {
+      "physical_mesh_required": true,
+      "gaze_path_A": "PH1入力→PH2変換→PH3結果",
+      "gaze_path_B": "PH2開口→PH3奥/前面→発動源の保持"
+    },
+    "AttentionControl": {
+      "attention_focus": "hierarchical"
+    }
+  },
+  "ECodeImplementation": {
+    "trigger": "executable_runtime_E_code_explicit",
+    "source_revision": {
+      "repository": "player13579/B",
+      "branch": "Codex-honoo",
+      "commit": "37eb4bdfe59f0dc075f9b4333b7d6af76b784a88",
+      "base_blob": "8a908495ae1f9b7175e00384ab88c50e5c78bd43",
+      "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834",
+      "method": "authenticated git fetch origin Codex-honoo; git show origin/Codex-honoo:path"
+    },
+    "target_runtime": "WebGPU shared device",
+    "implementation_artifacts": [
+      "artist.mjs",
+      "shader.mjs"
+    ],
+    "applicable_rule_evidence": [
+      {
+        "rule_id": "InferenceExpansionPolicy.AttributeAndActionResolutionRule",
+        "implementation": "artist.plan / shader.fs PH1-3",
+        "expected": "ゲーム素材消費と変換を有限源場で具体化。別の資源や受領UIを追加しない",
+        "test": "DESIGN.mdとproducer inventory 静的照合"
+      },
+      {
+        "rule_id": "PhenomenonSystemTemplate.DeepStructureRule",
+        "implementation": "fs lead/mercury, jawGap/carrier, goldQ/opening/depth",
+        "expected": "幅ある入力・開口・結果面、前後面と境界",
+        "test": "実GPU H64 world/glow/flare OFF初中後観測 not_run"
+      },
+      {
+        "rule_id": "PhenomenonSystemTemplate.PhysicalModelClosureRule",
+        "implementation": "design-contract.json PH1-3.PhysicalModel",
+        "expected": "declared_fantasy域と実物理非適用の理由",
+        "test": "静的設計照合。核物理の実証ではない"
+      },
+      {
+        "rule_id": "PhenomenonSystemTemplate.StateTransformerRule",
+        "implementation": "phases / shader.fs onset/conversion/result/end",
+        "expected": "主形が素材から場、結果へ役割を渡し、終端で閉じる",
+        "test": "proofs phase handoff pass; GPU連続再生 not_run"
+      },
+      {
+        "rule_id": "VFX.MultilayerArchitectureRule",
+        "implementation": "shader.fs PH1/PH2/PH3/OBS1/OBS2",
+        "expected": "異なる空域・境界・時相が役割を分担",
+        "test": "層OFFのH64比較 not_run"
+      },
+      {
+        "rule_id": "VFX.MaterialOpticalResponseRule",
+        "implementation": "material/coverage/emission/optics",
+        "expected": "金属再現と放射の合成を別量にする",
+        "test": "GPU画素 not_run"
+      },
+      {
+        "rule_id": "VFX.CompositingReadabilityRule",
+        "implementation": "createQuantumPass blend / fs radiance",
+        "expected": "premultiplied material一回、emission別、同shareddevice",
+        "test": "CPU fake-device pass; actual GPU not_run"
+      },
+      {
+        "rule_id": "ObservationIntegrationTemplate.ObservationRegistrySeparationRule",
+        "implementation": "OBS1/OBS2 and shader fs nearGlow/flareSignal",
+        "expected": "source-bound glow/flareは世界内変換場と別",
+        "test": "静的登録 pass; GPU OFF比較 not_run"
+      },
+      {
+        "rule_id": "ObservationIntegrationTemplate.SamplingAndReconstructionRule",
+        "implementation": "shader aa / plan bounds",
+        "expected": "H64主面46×38と開口10×20、縮尺AA",
+        "test": "CPU投影 pass;合成後可視面積 not_run"
+      },
+      {
+        "rule_id": "LuminanceDynamicsModule.LDMModeRule",
+        "implementation": "shader supply/discharge/result/end",
+        "expected": "導入→変換最大→結果保持→終了の強弱",
+        "test": "CPU時相 pass;GPU発光 not_run"
+      },
+      {
+        "rule_id": "CoordinateGravityWindTemplate.CoordinateSystemDefinition",
+        "implementation": "plan / shader vs",
+        "expected": "固定event源から同viewport投影。DPR一回",
+        "test": "CPU source/zoom/DPR/offscreen pass"
+      },
+      {
+        "rule_id": "ECodeImplementation.ExecutableECodeBranchRule",
+        "implementation": "artist.mjs + shader.mjs",
+        "expected": "実行可能WebGPU/SFX source。画像生成命令なし",
+        "test": "JS構文/CPU pass;実GPU/本編/SFX聴感 not_run"
+      },
+      {
+        "rule_id": "GlobalAcceptanceTemplate.IntentAndArtisticOutcomeRule",
+        "implementation": "proofs.json / DESIGN.md status",
+        "expected": "静的・CPU結果と実品質/本編受入を分ける",
+        "test": "not_runを受入に置換しない"
+      }
+    ],
+    "validation": {
+      "syntax_and_shader": "JS syntax pass; WGSL not_run",
+      "actual_GPU_pixels_and_timing": "not_run",
+      "game_event_and_SFX": "not_run"
+    }
+  },
+  "ValidationResults": {
+    "CPU": "proofs.json",
+    "StructuralInspection": "custom E-code mapping fields inspected; image-schema validator not applicable",
+    "SemanticReconciliation": "source/time/cost/event/variant B separation static reviewed",
+    "RenderObservation": "not_run",
+    "OutcomeEvaluation": "not_run",
+    "ComparativeEvaluation": "planned; world/glow/flare OFF at H64 same source/clock/code",
+    "FinalStatus": {
+      "specification_status": "Warning",
+      "render_status": "NotRun",
+      "adoption": "unadopted"
+    }
+  }
+}
