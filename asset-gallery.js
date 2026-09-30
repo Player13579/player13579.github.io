@@ -78,6 +78,7 @@
     'sunbeam-lens-v2-r03': { magnification: 2.25, focusX: 480, focusY: 310 },
     'sunbeam-lens-v2-r04': { magnification: 2.25, focusX: 480, focusY: 310 },
     'sunbeam-lens-v2-r05': { magnification: 2.25, focusX: 480, focusY: 310 },
+    'sunbeam-optical-sol61-r06': { magnification: 2.25, focusX: 480, focusY: 310 },
     'mana-receive-v2-r03': { magnification: 3.0, focusX: 300, focusY: 321 },
     'mana-receive-v2-r04': { magnification: 3.0, focusX: 300, focusY: 131 },
     'mana-receive-v2-r05': { magnification: 3.0, focusX: 300, focusY: 131 },
@@ -109,6 +110,7 @@
       version('heal-astra-prototype', 'Astra旧採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '旧採用版・r1へ更新', '以前の採用原版として来歴を保持。現行採用版はユーザー指定のsparkle r1。原版の採用履歴は変えず、現在の版選択とは区別しています。', 'actor-H64', 0.7937)
     ]) }),
     Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', defaultVersionId: 'sunbeam-lens-v2-r05', versions: Object.freeze([
+      version('sunbeam-optical-sol61-r06', 'GPT-6.1-Sol optical r06', 'public/sol61-sunbeam-optical-r06/index.html?embed=1&height=64', 'public/sol61-sunbeam-optical-r06/effect.mjs', '実WebGPU再生確認済み・改修候補・ユーザー未採用・本編未接続', '光学改稿: GPT-6.1-Sol。基盤: GPT-6-Astraの採用済みr05を保持。開いた虹色円弧と丸形・六角形ゴーストを同じ光源・観測光軸へ接続。暗背景の全寿命、明背景ピーク、源OFF・OBS OFF・位置変更を実GPU確認。通常SFX聴感と品質の最終受入は未実施。現行採用版r05は保持。', 'effect-H64', 1, {creator:'gpt-6.1-sol',creatorDisplayName:'GPT-6.1-Sol (optical revision); GPT-6-Astra (preserved base)',adoption:'not-adopted',qualityStatus:'candidate',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
       version("sunbeam-lens-v2-r05", "Astra lens r05", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/effect.mjs", "ユーザー採用済み・本編接続待ち", "作者: GPT-6-Astra。ユーザーが現行最新版r05を採用。ギャラリー同等iframeでWebGPU描画・自動ループ確認済み。採用原版の表現・作者を保持し、本編の実発動・掌の発射元・レンズゴースト・SFX聴感は接続時に検証する。", 'effect-H64'),
       version("sunbeam-lens-v2-r04", "Astra lens r04", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r04/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r04/effect.mjs", "品質候補・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質候補に留まり、SFX聴感/ユーザー採用/本編接続は未受入。", 'effect-H64'),
       version("sunbeam-lens-v2-r03", "Astra lens r03", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r03/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r03/effect.mjs", "品質候補・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質候補に留まり、SFX聴感/ユーザー採用/本編接続は未受入。", 'effect-H64'),
@@ -313,7 +315,33 @@
   let activeAudioFrame = null;
   let activeAudioItem = null;
   let audioStarted = false;
-  if (verifyMode) audioRow.hidden = true;
+  // GALLERY_AUDIO_POLICY_BEGIN
+  function galleryAudioPolicy(category, verificationMode, item) {
+    const explicitlyRequestedMapSfx = category === 'map' && item?.mapSfxPolicy === 'explicit-user-request';
+    const categoryAllowsSfx = category === 'effect' || explicitlyRequestedMapSfx;
+    return Object.freeze({
+      rowHidden: verificationMode,
+      buttonHidden: !categoryAllowsSfx,
+      bridgeAllowed: !verificationMode && categoryAllowsSfx,
+      autoUnlockAllowed: !verificationMode && category === 'effect',
+      status: category === 'map' && !explicitlyRequestedMapSfx
+        ? 'マップのSFXは明示的な要求がないため無効です。'
+        : ''
+    });
+  }
+  function shouldAutoUnlockGalleryAudio(category, verificationMode, target) {
+    if (verificationMode || category !== 'effect') return false;
+    return !target?.closest?.('[data-category="map"]');
+  }
+  // GALLERY_AUDIO_POLICY_END
+  function updateGalleryAudioControl(category, item) {
+    const policy = galleryAudioPolicy(category, verifyMode, item);
+    audioRow.hidden = policy.rowHidden;
+    audioButton.hidden = policy.buttonHidden;
+    if (policy.status) audioStatus.textContent = policy.status;
+    else if (category === 'effect' && !audioStarted) audioStatus.textContent = '最初の操作でEの効果音を有効にします。';
+    return policy;
+  }
   function reflectAudio(result) {
     if (verifyMode) return;
     if (result?.state === 'active') {
@@ -328,16 +356,19 @@
     }
   }
   function beginGalleryAudio() {
-    if (verifyMode || !sfxBridge || !activeAudioFrame || !activeAudioItem) return;
+    if (!galleryAudioPolicy(currentCategory, verifyMode, activeAudioItem).bridgeAllowed
+      || !sfxBridge || !activeAudioFrame || !activeAudioItem) return;
     reflectAudio(sfxBridge.activateFromGesture(activeAudioFrame, activeAudioItem));
   }
   audioButton.addEventListener('click', beginGalleryAudio);
   if (!verifyMode) {
     document.addEventListener('pointerdown', event => {
-      if (!audioStarted && !audioButton.contains(event.target)) beginGalleryAudio();
+      if (!audioStarted && shouldAutoUnlockGalleryAudio(currentCategory, verifyMode, event.target)
+        && !audioButton.contains(event.target)) beginGalleryAudio();
     }, { capture: true });
     document.addEventListener('keydown', event => {
-      if (!audioStarted && (event.key === 'Enter' || event.key === ' ')) beginGalleryAudio();
+      if (!audioStarted && (event.key === 'Enter' || event.key === ' ')
+        && shouldAutoUnlockGalleryAudio(currentCategory, verifyMode, event.target)) beginGalleryAudio();
     }, { capture: true });
   }
   let selectedIndex = 0;
@@ -436,6 +467,7 @@
     const group = entries[selectedIndex];
     selectedVersionIndex = Math.min(versionIndex, group.versions.length - 1);
     const item = group.versions[selectedVersionIndex];
+    updateGalleryAudioControl('effect', item);
     document.getElementById('selected-title').textContent = `${group.title} · ${item.title}`;
     document.getElementById('selected-description').textContent = item.detail;
     document.getElementById('selected-status').textContent = item.status;
@@ -619,15 +651,19 @@
     const webgpu = item.previewKind === 'webgpu';
     if (webgpu && (item.replayable !== true || !item.page)) throw new TypeError('Unplayable WebGPU maps are excluded from the gallery');
     disposeMapPreview(); stage.querySelector('img')?.remove();
-    notice.hidden=true; audioRow.hidden = verifyMode || !webgpu;
+    const audioPolicy = updateGalleryAudioControl('map', item);
+    notice.hidden=true;
     if (webgpu) {
       const preview = makeMapPreview(item);
       const iframe = document.createElement('iframe'); iframe.title = group.title+' '+item.title+' WebGPU room preview';
-      iframe.allow = 'autoplay'; iframe.src = preview.href; fitMapFrame(iframe);
+      if (audioPolicy.bridgeAllowed) iframe.allow = 'autoplay';
+      iframe.src = preview.href; fitMapFrame(iframe);
       iframe.addEventListener('load',()=>{
         if (iframe !== stage.querySelector('iframe')) return;
-        activeAudioFrame = iframe; activeAudioItem = item;
-        reflectAudio(sfxBridge?.attachFrame(iframe,item));
+        if (audioPolicy.bridgeAllowed) {
+          activeAudioFrame = iframe; activeAudioItem = item;
+          reflectAudio(sfxBridge?.attachFrame(iframe,item));
+        }
         try {
           const child = iframe.contentDocument; if (!child) throw new Error('プレビューにアクセスできません');
           const error = child.getElementById('error');
@@ -659,7 +695,7 @@
   }
   function renderSelection() {
     setHeadline();
-    audioRow.hidden = verifyMode || currentCategory !== 'effect';
+    updateGalleryAudioControl(currentCategory, null);
     document.getElementById('effect-scale-contract').hidden = currentCategory !== 'effect';
     categoryTabs.forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.category===currentCategory)));
     adoptionTabs.forEach(tab=>tab.setAttribute('aria-pressed',String(tab.dataset.filter===currentAdoptionFilter)));
