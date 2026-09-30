@@ -1,0 +1,150 @@
+{
+  "schema": "dva-e-reproducible-version-v1",
+  "version": "sol61-stamina-e-r12",
+  "author": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol",
+    "role": "creative design and effect quality judgment"
+  },
+  "runtimeImplementation": {
+    "model": "gpt-6-luna",
+    "displayName": "GPT-6-Luna",
+    "role": "faithful WebGPU runtime adapter, focused tests and gallery staging"
+  },
+  "entry": "index.html?embed=1",
+  "origin": {
+    "attemptPath": "outputs/request-20260930/sol61-stamina-e/r12/runtime-evidence/GPU-evidence/attempts/webgpu-05-h64-background-fixture",
+    "attemptManifestSha256": "16caa03975211321b9a308dd320ed1cc0d65307970d0142f68874c1fa40584fc",
+    "sourceQualityRecord": "outputs/request-20260930/sol61-stamina-e/r12/QUALITY.json",
+    "qualityRecordSha256": "2cbaf3e603ba6b6c8e70b7c284b4ea052b561c31e9bb4caf84ec28fdd603cb22"
+  },
+  "dependencies": {
+    "index.html": [
+      "index.mjs"
+    ],
+    "index.mjs": [
+      "runtime.mjs",
+      "assets/sophia-front-five-v753.png"
+    ],
+    "runtime.mjs": [
+      "phenomenon.mjs",
+      "acoustic.mjs",
+      "world.wgsl",
+      "observe.wgsl",
+      "assets/sophia-front-five-v753.png"
+    ],
+    "acoustic.mjs": [
+      "phenomenon.mjs"
+    ]
+  },
+  "packagingAdapter": {
+    "file": "index.mjs",
+    "change": "Pass the exact existing Sophia atlas as a package-relative assetUrl. This only replaces the attempt fixture’s four-level external asset URL; runtime renderer and creative design files are byte-identical to webgpu-05.",
+    "originalIndexSha256": "6f521048c25f77b3f8c177b4ee5e6dcdca66595d995e843b207bf3a93217bbab",
+    "packagedIndexSha256": "cb72d2da160717f2c67731d479ace2f5ba8ea9760942ae11394dd31362142674"
+  },
+  "status": {
+    "technicalReplay": "pass",
+    "cadence": "not_run",
+    "quality": "fail",
+    "adoption": "unadopted",
+    "gameIntegration": "not_run",
+    "listening": "not_run",
+    "published": false,
+    "evidence": {
+      "packageReplay": "outputs/stamina-r12-gallery-staging/packaged-embed.json",
+      "packageReplaySha256": "0ac24f2e6a643fd792fb9d991b082a21da8b3090832dae5e747c4001a05a937b",
+      "localEmbedRoute": "980x620 DPR1 WebGPU verify-mode iframe-equivalent"
+    }
+  },
+  "qualityEvidence": {
+    "visualQuality": "fail",
+    "reviewer": "GPT-6.1-Sol",
+    "date": "2026-09-30",
+    "sourceAttempt": "runtime-evidence/GPU-evidence/attempts/webgpu-05-h64-background-fixture"
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1222,
+      "sha256": "5f0bcc770fb2d8c98fede982c052f518444d21ceebb06b650bde3c8c0de7129c"
+    },
+    {
+      "path": "index.mjs",
+      "bytes": 1223,
+      "sha256": "cb72d2da160717f2c67731d479ace2f5ba8ea9760942ae11394dd31362142674"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 29907,
+      "sha256": "3e6cf13c3c421dfc4cf7cc15bf3fcb93e9f2b586dc79d822b42b9c62a25afcd9"
+    },
+    {
+      "path": "phenomenon.mjs",
+      "bytes": 4031,
+      "sha256": "3e7bb7f23aa7647f6d7742cf3f34f2662393184153d2041d825e9efb52a97582"
+    },
+    {
+      "path": "acoustic.mjs",
+      "bytes": 2126,
+      "sha256": "e00f1cbe78385bcf5f87ca9555df215f8631a6be1795567fead6b57477e1493b"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 3266,
+      "sha256": "e7574d934b41ba38af5f363f2391db8ea263d7a5c5591b9f1bfe0d75620ab265"
+    },
+    {
+      "path": "observe.wgsl",
+      "bytes": 1926,
+      "sha256": "63be78ab68cdd36fc55a4bd17f129d9754e67f9d9ddeef6669321601bb1ff342"
+    },
+    {
+      "path": "assets/sophia-front-five-v753.png",
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "index.html",
+      "bytes": 1222,
+      "sha256": "5f0bcc770fb2d8c98fede982c052f518444d21ceebb06b650bde3c8c0de7129c"
+    },
+    {
+      "path": "index.mjs",
+      "bytes": 1148,
+      "sha256": "6f521048c25f77b3f8c177b4ee5e6dcdca66595d995e843b207bf3a93217bbab"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 29907,
+      "sha256": "3e6cf13c3c421dfc4cf7cc15bf3fcb93e9f2b586dc79d822b42b9c62a25afcd9"
+    },
+    {
+      "path": "phenomenon.mjs",
+      "bytes": 4031,
+      "sha256": "3e7bb7f23aa7647f6d7742cf3f34f2662393184153d2041d825e9efb52a97582"
+    },
+    {
+      "path": "acoustic.mjs",
+      "bytes": 2126,
+      "sha256": "e00f1cbe78385bcf5f87ca9555df215f8631a6be1795567fead6b57477e1493b"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 3266,
+      "sha256": "e7574d934b41ba38af5f363f2391db8ea263d7a5c5591b9f1bfe0d75620ab265"
+    },
+    {
+      "path": "observe.wgsl",
+      "bytes": 1926,
+      "sha256": "63be78ab68cdd36fc55a4bd17f129d9754e67f9d9ddeef6669321601bb1ff342"
+    },
+    {
+      "path": "public/assets/generated/sophia-front-five-v753.png",
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    }
+  ]
+}

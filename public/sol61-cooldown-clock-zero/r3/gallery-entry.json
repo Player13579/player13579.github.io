@@ -1,0 +1,79 @@
+{
+  "id": "cooldown-clock-zero-r3",
+  "author": "GPT-6.1-Sol",
+  "adoption": "unadopted",
+  "quality": "technical replay pass; visual quality not accepted",
+  "gameIntegration": "not connected",
+  "entry": "public/sol61-cooldown-clock-zero/r3/index.html?embed=1",
+  "runtime": "public/sol61-cooldown-clock-zero/r3/main.mjs",
+  "replayManifest": "public/sol61-cooldown-clock-zero/r3/freeze-r3.json",
+  "view": {
+    "canvas": "full iframe",
+    "actorCenter": "canvas center",
+    "targetActorHeightCssPx": 240,
+    "magnification": 3.75,
+    "focusX": 490,
+    "focusY": 310
+  },
+  "audio": {
+    "normal": "RAF autoplay; one finite authored SFX per 3500 ms cycle after gallery user activation",
+    "galleryActivation": "window.__gallerySfx.activateFromGesture delegates to ClockAudio.enable(true)",
+    "verification": "verify query forces disabled audio and creates no AudioContext",
+    "listening": "not run"
+  },
+  "copiedFiles": [
+    {
+      "path": "design.mjs",
+      "sha256": "c2650b62722a1b1fa83f369a6ca2264544418b6e48cc8b0905af8c621b219b40"
+    },
+    {
+      "path": "shaders.mjs",
+      "sha256": "927e658ecee4103c4ad91aa20c756fa5d54d669abf6f51fa445f125051d7f114"
+    },
+    {
+      "path": "projection.mjs",
+      "sha256": "08084f2c34846f56f47c375975b260e7b60f11fd4cf1dea81dabfa3e20a991ab"
+    },
+    {
+      "path": "render-contract.json",
+      "sha256": "b2fc1f65085f158659b1a8ae8ff46d3e5e699fa2ea0e02b792ed38d614fb2432"
+    },
+    {
+      "path": "main.mjs",
+      "sha256": "cd1923afd433e4511ba334de587fbdec27cd0b977c555cd01c3b33ebb95e7486"
+    },
+    {
+      "path": "audio.mjs",
+      "sha256": "e02cbd4a5d7fb24705474a93685b1b1ab07b22ac68f1c8843110320deacaca53"
+    },
+    {
+      "path": "body.png",
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    },
+    {
+      "path": "clock-benefit.wav",
+      "sha256": "4b8f93b8996e9f715754f77162a12921c83c3e560ed80f2ad974dc681188f475"
+    },
+    {
+      "path": "index.html",
+      "sha256": "7168509bdcf18eeed501c89be05627819a38d2f8fb614fda1a16ffb684d74682"
+    },
+    {
+      "path": "embed-check.html",
+      "sha256": "aaf855559d476e551a78b3c816727a9c2ea1e551703724f5fd560e7ed8ef4c25"
+    },
+    {
+      "path": "gpu-check.mjs",
+      "sha256": "3423a3957fb5ce147d60b4d5d2e8cdc260872d0c39c53481e6b8c926853c388a"
+    },
+    {
+      "path": "REPORT.md",
+      "sha256": "e61394415af0ac83c63c87c25b85626a16192b98edc747026c9a8c8e2522c078"
+    },
+    {
+      "path": "evidence/verify-rendered-geometry.py",
+      "sha256": "b812b9e2a82a607dc005ec3d6d20b85884504ab55a63a9bcb59d3307614738ca"
+    }
+  ],
+  "replayManifestSha256": "3e2adbcdc73e8045608734d210a5c4bf57173e7f0659f6b53ee2c5d18df58312"
+}
