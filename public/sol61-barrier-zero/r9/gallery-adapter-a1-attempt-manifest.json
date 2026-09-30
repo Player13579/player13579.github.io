@@ -1,0 +1,492 @@
+{
+  "schema": "dva-barrier-r9-gallery-adapter-attempt/v1",
+  "id": "sol61-barrier-zero-r9-gallery-adapter-a1",
+  "entry": {
+    "path": "public/sol61-barrier-zero/r9/gallery-entry-a1.html",
+    "query": "?embed=1&verify=barrier-r9-gallery-a1&rate=1.5"
+  },
+  "verification": {
+    "path": "public/sol61-barrier-zero/r9/gallery-entry-a1.html",
+    "query": "?embed=1&verify=barrier-r9-gallery-a1&rate=1.5"
+  },
+  "authors": {
+    "creative": "GPT-6.1-Sol",
+    "runtime": "GPT-6-Luna"
+  },
+  "basePackage": {
+    "path": "public/sol61-barrier-zero/r9/",
+    "manifestSha256": "2515b3910217235dcac9605390e6ef4e81afef346fcc3a200371470e15bf0f99",
+    "manifestListedFiles": 61,
+    "allBaseFilesByteExact": true,
+    "originalEntryPreserved": true,
+    "originalGalleryAutoLoopClaimPreserved": true
+  },
+  "adapterFiles": [
+    {
+      "path": "public/sol61-barrier-zero/r9/gallery-entry-a1.html",
+      "bytes": 1835,
+      "sha256": "d08ef40d529000f5ef8d391e4da1d832c9573de8c3f6e7c3b04d8f4b595a93a6"
+    },
+    {
+      "path": "public/sol61-barrier-zero/r9/gallery-clock-a1.mjs",
+      "bytes": 7326,
+      "sha256": "68a054a97c7fff5ba5dfd57ac17eca261efada0ddb88712ff9f859e824884e94"
+    }
+  ],
+  "replay": {
+    "mode": "automatic loop; manual controls are not used",
+    "phases": [
+      {
+        "name": "create",
+        "stage": 0,
+        "durationMs": 650,
+        "sfx": "create"
+      },
+      {
+        "name": "stable-after-create",
+        "stage": 1,
+        "durationMs": 350
+      },
+      {
+        "name": "known-hit",
+        "stage": 3,
+        "durationMs": 650,
+        "sfx": "hit",
+        "contact": [
+          0.5,
+          0.15,
+          0.66
+        ]
+      },
+      {
+        "name": "stable-after-hit",
+        "stage": 1,
+        "durationMs": 350
+      },
+      {
+        "name": "break",
+        "stage": 2,
+        "durationMs": 480,
+        "sfx": "break"
+      },
+      {
+        "name": "off",
+        "stage": 4,
+        "durationMs": 220
+      }
+    ],
+    "cycleEms": 2700,
+    "rate": "validated query rate 0.5–2, default 1; applied once to cumulative E age and equally to authored SFX playback rate",
+    "sfxAdmission": "each cue is synced only after its matching successful GPU submission; current E age is recomputed after queue completion and expired cues are suppressed; cycle-scoped cause ids dedupe",
+    "visibility": "cumulative E age pauses while document is hidden; same runtime AudioContext suspends/resumes; requestAnimationFrame restarts on return",
+    "verify": "verify query blocks gesture unlock; AudioContext is not created; gain remains 0"
+  },
+  "validation": {
+    "cpu": "pass",
+    "native": "pass",
+    "nativeCycleComplete": true,
+    "wrappedToNextCycle": true,
+    "submitCount": 104,
+    "canvas": [
+      980,
+      620
+    ],
+    "canvasHasRenderedColor": true,
+    "gpuErrors": 0,
+    "consoleErrors": 0,
+    "failedRequests": 0,
+    "audioContextCount": 0,
+    "verifyGain": 0,
+    "cleanup": {
+      "ownedPageClosed": true,
+      "browserClosed": true,
+      "chromeProcessExit": null,
+      "chromeProcessSignal": "SIGTERM",
+      "chromeProcessGone": true,
+      "tempProfileRemoved": true,
+      "serverStopped": true
+    }
+  },
+  "status": {
+    "technical": "native WebGPU automatic-loop replay passed for the adapter attempt",
+    "visualQuality": "pending Root review; known cross contribution is weak and quality is not accepted",
+    "adoption": "not adopted",
+    "listening": "not run",
+    "gameIntegration": "not connected",
+    "cadence": "not measured"
+  },
+  "evidence": {
+    "cpu": "outputs/request-20260930/barrier-r9-gallery-adapter-a1/CPU-TEST-RESULT.json",
+    "native": "outputs/request-20260930/barrier-r9-gallery-adapter-a1/NATIVE-AUTOLOOP-PROOF.json",
+    "capture": "outputs/request-20260930/barrier-r9-gallery-adapter-a1/native-autoloop-canvas.png",
+    "baseClosureAudit": [
+      {
+        "path": "artist.mjs",
+        "bytes": 247,
+        "sha256": "e2e8b7824675e3df20e21621acfc502e0558ed27ee6fe1d4e0dfdaad4bc34cdb",
+        "byteExact": true
+      },
+      {
+        "path": "design.mjs",
+        "bytes": 7397,
+        "sha256": "0af3923f191991a850e12bd17dbfa0a8b0981cc2a2c86adce41029b2e30bfb01",
+        "byteExact": true
+      },
+      {
+        "path": "projection.mjs",
+        "bytes": 1943,
+        "sha256": "83ce955039630f5569890b3b17779112c2ca7a5e502d40385583396a50e5ee0b",
+        "byteExact": true
+      },
+      {
+        "path": "world-shader.mjs",
+        "bytes": 9193,
+        "sha256": "4244a531cc2dbe508b05e15a11ba49a7610558d5203f7cbff834e44aa42b3726",
+        "byteExact": true
+      },
+      {
+        "path": "post-shader.mjs",
+        "bytes": 3520,
+        "sha256": "37d8dbbbe1270a34a267adeb487fcbdec28911bdd303126c3b44780aeca0f40b",
+        "byteExact": true
+      },
+      {
+        "path": "sfx-score.mjs",
+        "bytes": 1490,
+        "sha256": "fcb274cf6f63e1ba6c47a293accb24503f7fbebeccbff140cb9cd53a7df07535",
+        "byteExact": true
+      },
+      {
+        "path": "b-contract.json",
+        "bytes": 59269,
+        "sha256": "ea17744b5238e3a557f8006b3a8a798204c780858dab8dc2a7ad6df4ed163268",
+        "byteExact": true
+      },
+      {
+        "path": "render-contract.json",
+        "bytes": 3453,
+        "sha256": "c8d55182b9fef8d380d456b861a1648fa7f4b593a4f5b49caf8234a0cf3e2187",
+        "byteExact": true
+      },
+      {
+        "path": "body.png",
+        "bytes": 243081,
+        "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+        "byteExact": true
+      },
+      {
+        "path": "barrier-create-r9.wav",
+        "bytes": 62444,
+        "sha256": "c0846aac6208e511de4f92ea5964cf45b49c6b91950d8c4b0dc11ee7dc932e71",
+        "byteExact": true
+      },
+      {
+        "path": "barrier-hit-r9.wav",
+        "bytes": 62444,
+        "sha256": "464a3eda8b6bf57e590525e7d85150c302c3514e84dc8498f2b024316a168d52",
+        "byteExact": true
+      },
+      {
+        "path": "barrier-break-r9.wav",
+        "bytes": 46124,
+        "sha256": "3e25165337fd946ca58f25dc56db2b9692705e9f44535a8232729f72438072ed",
+        "byteExact": true
+      },
+      {
+        "path": "inputs/基底.md",
+        "bytes": 126024,
+        "sha256": "e559ca8faf6f3635aea0bc49a4e551496429fce95c1432d051bd7e39f00395b1",
+        "byteExact": true
+      },
+      {
+        "path": "inputs/拡張.md",
+        "bytes": 76198,
+        "sha256": "b74001fab9dc7338a1dbde889db5a9175bac549979191694a293b76e14061ea5",
+        "byteExact": true
+      },
+      {
+        "path": "DESIGN.md",
+        "bytes": 6663,
+        "sha256": "9bf73389a2f8727db6cc87ec2b3af835965aabcb4fc790253b59f7280eae4b95",
+        "byteExact": true
+      },
+      {
+        "path": "RUNTIME-HANDOFF.md",
+        "bytes": 4626,
+        "sha256": "bf58175b13ba1be4b0dc6e82d446e2cd0c83dd4e3672e1595ca6ac3ede1197c9",
+        "byteExact": true
+      },
+      {
+        "path": "SOURCE-PROVENANCE.json",
+        "bytes": 2028,
+        "sha256": "590952763526e110e8ffc424b48c21acd3ba7f7f03ea808327c335a1e9549cc3",
+        "byteExact": true
+      },
+      {
+        "path": "cpu-check.mjs",
+        "bytes": 6029,
+        "sha256": "9ed902495ac37b696ff1d930a71d6a3fa67263cf3027bddc63c06c912481b942",
+        "byteExact": true
+      },
+      {
+        "path": "CPU-CHECK.json",
+        "bytes": 2064,
+        "sha256": "8d7e09f1ec67b1e307a54010bc6df11c1a021de81eae3ec6734d340bf50ea174",
+        "byteExact": true
+      },
+      {
+        "path": "schema-check.mjs",
+        "bytes": 3281,
+        "sha256": "d7fe370d13cdbb31232ddfb87d9492a5d30950f7cc51c132f8cb00fe32625768",
+        "byteExact": true
+      },
+      {
+        "path": "SCHEMA-CHECK.json",
+        "bytes": 650,
+        "sha256": "b728dcc908674338d677b18cf1e8dde33373ebd40168b9bf20ee50769ed10eb2",
+        "byteExact": true
+      },
+      {
+        "path": "build-shaders.mjs",
+        "bytes": 5367,
+        "sha256": "f6ac467cd58f7de0ba7b849cf96a2c9f56834a065e00dfcbb77a4a8651cdeec9",
+        "byteExact": true
+      },
+      {
+        "path": "build-contract.mjs",
+        "bytes": 19726,
+        "sha256": "63722527a81333db5647f7e53356a8d0f2c44e7f26756d4b30906220a0ec60f6",
+        "byteExact": true
+      },
+      {
+        "path": "pack-design.mjs",
+        "bytes": 5323,
+        "sha256": "10a98637d8f4ff62eac7eb888593db5132718cfd09990c97ddfa05ec8905ee1e",
+        "byteExact": true
+      },
+      {
+        "path": "design-manifest.json",
+        "bytes": 2947,
+        "sha256": "0ac9ed8e11509405033cd3ac1302a056a2f66da00f66ea59dc07a856fed6a127",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/b-expression-design.json",
+        "bytes": 102720,
+        "sha256": "9ad67ca5ba900d942b108412e90cf81ffab607766aadfcf7d3719bcb1ddefc98",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/BEFORE-AFTER.md",
+        "bytes": 2925,
+        "sha256": "92d41b88930471ea8a7d5a4dabd88a80b08e50a89396b34b7b05bb05be58b81f",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/build-full-contract.mjs",
+        "bytes": 33134,
+        "sha256": "7709134fed318ed6a45a7b197c41888c03ca9af519911d633c3b6283538af19a",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/CANONICAL-VALIDATION.json",
+        "bytes": 963,
+        "sha256": "2240b4e272a78e03eb46f02ddbfec1b6d4e61520f1ed43f1821286673cd83a31",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/canonical-validator.log",
+        "bytes": 69,
+        "sha256": "525e2879dd8e0fc85beb8e2cbed6936a6a8b11156af2c17d9b26faaf9e4a95a3",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/CLOCK-CHECK.json",
+        "bytes": 1298,
+        "sha256": "1e586a55c5e394d9d48a692a2f50d9487e46b05af9ab97d433f4d266477681aa",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/clock-check.mjs",
+        "bytes": 4223,
+        "sha256": "18006db08942700b30c89b4caee034b263f393e3f6d17c5ad38a33236aa119a4",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/e-clock-contract.mjs",
+        "bytes": 2962,
+        "sha256": "af160f7a4a89c8731991acaafcfdda1d664f14ab052a539e5999c46a68592205",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/finalize-evidence.py",
+        "bytes": 9869,
+        "sha256": "15d043d5fcc22ea436ef8c5490535773e0feddf15e1898cb9d2a670ecbbe162f",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/RULE-CODE-EVIDENCE.json",
+        "bytes": 11067,
+        "sha256": "d1034ff4d565aa1bf9fbcfd8953f3028f5a695892bec0f238a73065deffa6a3d",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/RUNTIME-HANDOFF-ADDENDUM.md",
+        "bytes": 5935,
+        "sha256": "8de41048e5e5d8a61c820ba60d6ec45222b49d5c8be53d20a3e237963a75f0ab",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/semantic-check.mjs",
+        "bytes": 2328,
+        "sha256": "ca8732208b62badee7278c37d58d28ee291adca01e12538f48a7c62841ca147d",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/SEMANTIC-CPU-CHECK.json",
+        "bytes": 547,
+        "sha256": "0f3976ce2df22d0569ff1102810eb6695bed84518fe3a2adcdd942f650e44363",
+        "byteExact": true
+      },
+      {
+        "path": "attempts/b-expression-contract-a1/attempt-manifest.json",
+        "bytes": 4087,
+        "sha256": "0785bfda858ceb2dd81850c050cd734d84315016e4010cdcaa5ba2dbc36000a6",
+        "byteExact": true
+      },
+      {
+        "path": "index.html",
+        "bytes": 5543,
+        "sha256": "95e43eca6ebde0757e3238c6170e961f0f935635792610f6a14c6421b5710ade",
+        "byteExact": true
+      },
+      {
+        "path": "runtime.mjs",
+        "bytes": 17678,
+        "sha256": "262590de6c8201b8711936ba1c06cac23181c99c63e9b8bedffc45107e92031d",
+        "byteExact": true
+      },
+      {
+        "path": "sfx-runtime.mjs",
+        "bytes": 6904,
+        "sha256": "c9d26aa8b1da32e9127719a40ca3d7341f7127196d3a792e1ec6a7e0cc4c0213",
+        "byteExact": true
+      },
+      {
+        "path": "RUNTIME-PACKAGE.json",
+        "bytes": 4248,
+        "sha256": "d8ec188489d5d63f2cf39026baee5ea4e3c08c3651aa6f01fb7fca5383aa3040",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-fixture-matrix.mjs",
+        "bytes": 3469,
+        "sha256": "6723f963b4abc05a1e94c7158bf89d024e7b425b2de4a87e6102e456a18c05af",
+        "byteExact": true
+      },
+      {
+        "path": "tests/runtime-port.test.mjs",
+        "bytes": 9926,
+        "sha256": "0265b28327efa766b26dc4cd38805b089c4e7705c316cdc413079b91ed7ed433",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-rgba16float-mrt-smoke.json",
+        "bytes": 1271,
+        "sha256": "4be5e607ad13a3184e8d7d5ee2f3005b15d43025f299e03c11d6ed053c1af15e",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-lifecycle-isolation-matrix.json",
+        "bytes": 2664,
+        "sha256": "ccfd690c4374d6cd230e192f2e6f3c422c6ac38832c5bd44a632d105326a1f15",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-host-clock-wire.json",
+        "bytes": 1766,
+        "sha256": "f5ede5718cac814452f9b0265e502862ca62b969045b02b87cd7adaf142831b2",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures.json",
+        "bytes": 4259,
+        "sha256": "c444a769b1a591ba023c6a9eeed835eaaab514fbdfabb1a8a2d65a3698fc3a9d",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-continuous-replay.json",
+        "bytes": 1180,
+        "sha256": "d67c1220f747e874b4a034b8040a71afd2f694f0a272ee861f913e009a7a43f2",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/create-140-dual.png",
+        "bytes": 29566,
+        "sha256": "8218757c3ae1d8cb99c2ddfc791510ca33253ec7a1b55809597df13717322a7c",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/create-420-dual.png",
+        "bytes": 43848,
+        "sha256": "d5491f74e18d543f49c6fbb66e5b3166f9f45b7e08d903d2bbf75ac6398a749e",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/stable-dual.png",
+        "bytes": 43827,
+        "sha256": "20823ba8aaeea61558d3385e80bf2be5868289eee079d2375b554cdd559caaf3",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/known-hit-225-dual.png",
+        "bytes": 44433,
+        "sha256": "698351151543fcd8cfd6ed4a5d9315bf31c9ba06467346b5ca4356e61293dfae",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/unknown-hit-225-dual.png",
+        "bytes": 44296,
+        "sha256": "2e057e6b78a16891715fb86b093655dc1085d20091c429d78ac1b3bd9b2f5a03",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/break-180-dual.png",
+        "bytes": 44235,
+        "sha256": "6f0796d094c7b3c63336331f8405460ccebc845b59fc4b253c7bf225753e36db",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/source-off-140-dual.png",
+        "bytes": 18591,
+        "sha256": "f068cd3ccdc9dd07b06f7834401f2c0508240ffb61ef38f0c9a0e4ec450550ab",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/near-off-140-dual.png",
+        "bytes": 27728,
+        "sha256": "0bad93a80a11512024c6ce0cad999a357c848224755d03527479baea773215ab",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/cross-off-140-dual.png",
+        "bytes": 29550,
+        "sha256": "06e89e475a75cf8a0c5c8b86f4e488a83952aaac1b3c1f4efa551c58c3412600",
+        "byteExact": true
+      },
+      {
+        "path": "runtime-evidence/native-pixel-captures/ghost-off-140-dual.png",
+        "bytes": 28343,
+        "sha256": "dc64e062f7a57f50f6e91e52cf320a9ccc8a6a65ae99d6dade7d11f5a04817ec",
+        "byteExact": true
+      },
+      {
+        "path": "SOURCE-PACKAGE-PROVENANCE.json",
+        "bytes": 7280,
+        "sha256": "d95a3c8f1498cc313121bed480530008df3b3bf11dcf0a41f831034a01240680",
+        "byteExact": true
+      }
+    ]
+  },
+  "scope": "Adds a separate automatic replay entry and clock/SFX wrapper. Does not change artist/runtime source, original package manifest, shared gallery registry, game integration, or adoption."
+}

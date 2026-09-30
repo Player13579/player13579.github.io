@@ -1,0 +1,36 @@
+{
+  "classification": "native GPU runtime fixture evidence only; visual quality, listening, game integration, and adoption remain pending",
+  "url": "http://127.0.0.1:8909/outputs/request-20260930/sol61-barrier-zero/r9/index.html?verify=barrier-r9-native&fresh=2",
+  "adapter": { "vendor": "intel", "architecture": "gen-12lp" },
+  "sha256": {
+    "runtime.mjs": "262590de6c8201b8711936ba1c06cac23181c99c63e9b8bedffc45107e92031d",
+    "sfx-runtime.mjs": "c9d26aa8b1da32e9127719a40ca3d7341f7127196d3a792e1ec6a7e0cc4c0213",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "canvas": { "width": 980, "height": 620, "actorHeight": 64 },
+  "result": { "fixtureCount": 49, "laterMatchingFrameConfirmed": 49, "fixturesWithGpuErrorsOrFaults": 0, "rgba16floatMrt": true, "uniformBytes": 128, "verificationAudioContexts": 0, "verificationAudioGain": 0, "capturedBy": "runtime-evidence/native-fixture-matrix.mjs browser-side harness" },
+  "lifecycles": {
+    "createAgeMsLive": [0, 35, 80, 140, 260, 420, 560, 649],
+    "createAgeMsExpired": 650,
+    "knownHitAgeMsLive": [0, 16, 30, 55, 75, 135, 225, 350, 480, 600, 649],
+    "knownHitAgeMsExpired": 650,
+    "unknownHitAgeMsLive": [55, 225],
+    "breakAgeMsLive": [0, 45, 80, 180, 220, 360, 450, 479],
+    "breakAgeMsExpired": 480,
+    "mainOnlyKnownHitAgeMsLive": [30, 75, 225, 350, 600],
+    "offFixture": "live=false; only the original actor body pass submitted"
+  },
+  "independence": {
+    "nearDisabledAtMs": [140, 420],
+    "crossDisabledAtMs": [140, 420],
+    "ghostDisabledAtMs": [140, 420],
+    "sourceShiftOnly": { "ageMs": 140, "sourceShift": [0.12, 0], "observerCenter": [0, 0] },
+    "observerCenterOnly": { "ageMs": 140, "sourceShift": [0, 0], "observerCenter": [0.12, 0] },
+    "opaqueSourceTile": { "ageMs": 140, "diagnosticOccluder": true, "occluderPasses": 1 },
+    "sourceOff": { "ageMs": 140, "source": false, "onlyActorBodyPassSubmitted": true }
+  },
+  "twoCellDarkLightSmoke": { "ageMs": 140, "dual": true, "cellScissors": [[195, 252, 100, 116], [685, 252, 100, 116]], "passes": { "rear": 2, "rearPoint": 1, "body": 1, "front": 2, "frontPoint": 1 } },
+  "gpuPipeline": { "canvasFormat": "bgra8unorm", "worldTargets": ["rgba16float", "rgba16float", "rgba16float"], "worldShaderMessages": [], "postShaderMessages": [], "uncapturedErrors": [], "gpuFault": null },
+  "formatValidationProbe": { "api": "device.createRenderPipelineAsync", "scope": "validation", "rgba16floatWithPremultipliedBlend": "created", "popErrorScope": null },
+  "limits": ["No visual readability or quality conclusion", "Listening not run", "Game integration not run", "Adoption pending"]
+}

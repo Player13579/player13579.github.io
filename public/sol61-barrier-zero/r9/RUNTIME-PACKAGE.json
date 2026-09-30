@@ -1,0 +1,64 @@
+{
+  "schema": "dva-e-runtime-package-v1",
+  "id": "sol61-barrier-zero-r9",
+  "entry": "index.html",
+  "canvas": { "width": 980, "height": 620, "actorHeight": 64, "dpr": 1 },
+  "verificationQuery": "verify=barrier-r9-native",
+  "sourceFreeze": {
+    "artistManifest": "design-manifest.json",
+    "artistManifestSha256": "0ac9ed8e11509405033cd3ac1302a056a2f66da00f66ea59dc07a856fed6a127",
+    "artistFileCount": 24,
+    "artistManifestRecheck": "all 24 declared file hashes matched; originals remain unchanged",
+    "bodyPngSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "runtimeClosure": {
+    "entryImports": ["runtime.mjs"],
+    "runtimeImports": ["artist.mjs", "projection.mjs", "world-shader.mjs", "post-shader.mjs", "sfx-runtime.mjs", "attempts/b-expression-contract-a1/e-clock-contract.mjs"],
+    "artistImports": ["design.mjs", "world-shader.mjs", "post-shader.mjs", "projection.mjs", "sfx-score.mjs"],
+    "runtimeFetchedAssets": ["body.png", "barrier-create-r9.wav", "barrier-hit-r9.wav", "barrier-break-r9.wav"],
+    "fullFrozenArtistClosure": "the 24 files listed in design-manifest.json, copied unchanged as one group"
+  },
+  "contracts": {
+    "frameAbi": { "bytes": 128, "order": ["viewport", "phase", "gates", "optics", "frameLayout", "contact", "camera", "bounds"] },
+    "mrt": ["rgba16float scene", "rgba16float bright", "rgba16float sourceSignal"],
+    "eventNormalization": "attempts/b-expression-contract-a1/e-clock-contract.mjs normalizeWireEvent; raw ids/owner fields preserved, receipt-local start assigned, wireDurationMs kept separate from artist transient duration",
+    "hostClock": "same helper module submittedClock; caller supplies canonical absolute effectNow and displayRate; no second age multiplication; VFX phase and the SFX offset argument use the same age",
+    "sfx": { "durationMs": { "create": 650, "hit": 650, "break": 480 }, "userGestureRequiredForOrdinaryPlayback": true, "verificationAudio": "permanently zero" }
+  },
+  "sha256": {
+    "index.html": "95e43eca6ebde0757e3238c6170e961f0f935635792610f6a14c6421b5710ade",
+    "runtime.mjs": "262590de6c8201b8711936ba1c06cac23181c99c63e9b8bedffc45107e92031d",
+    "sfx-runtime.mjs": "c9d26aa8b1da32e9127719a40ca3d7341f7127196d3a792e1ec6a7e0cc4c0213",
+    "clockAndWireContract": "af160f7a4a89c8731991acaafcfdda1d664f14ab052a539e5999c46a68592205",
+    "nativeFixtureHarness": "6723f963b4abc05a1e94c7158bf89d024e7b425b2de4a87e6102e456a18c05af",
+    "runtimePortTests": "0265b28327efa766b26dc4cd38805b089c4e7705c316cdc413079b91ed7ed433"
+  },
+  "validation": {
+    "cpuTests": "12/12 pass",
+    "nativeLifecycleMatrix": "49/49 later-matching GPU frame confirmations, zero captured errors/faults",
+    "nativePngCaptures": "10 H64 dual-cell full-canvas PNGs; evidence index contains per-image SHA-256 and pixel deltas",
+    "nativeHostClockWire": "normalized synthetic hit submitted at rates 1→2→0→2; shader phase exactly tracks absolute age; verify audio stays disabled",
+    "rgba16floatValidationProbe": "pipeline creation succeeded; validation error scope returned null",
+    "continuousReplay": "4.6-second state progression sampled create/stable/hit/stable/off; queue-wait fixture yielded five submissions and is not a cadence pass"
+  },
+  "status": {
+    "technicalRuntime": "passed native compile/pipeline/submit and bounded runtime evidence",
+    "creativeQuality": "pending root visual review; cross-off pixel delta is especially small",
+    "listening": "not_run",
+    "gameIntegration": "not_run",
+    "galleryAutoLoopIntegration": "not_run by this runtime owner",
+    "adoption": "unadopted"
+  },
+  "provenance": {
+    "artistSource": "GPT-6.1-Sol r9 frozen 24-file design",
+    "clockAndNormalizationContract": "b-expression-contract-a1 supplement; supersedes original fixed-rate wording for host runtime only",
+    "historicalVersions": "r8 and original r9 artist source remain preserved and unchanged"
+  },
+  "evidence": [
+    "runtime-evidence/native-rgba16float-mrt-smoke.json",
+    "runtime-evidence/native-lifecycle-isolation-matrix.json",
+    "runtime-evidence/native-host-clock-wire.json",
+    "runtime-evidence/native-pixel-captures.json",
+    "runtime-evidence/native-continuous-replay.json"
+  ]
+}

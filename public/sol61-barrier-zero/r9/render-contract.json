@@ -1,0 +1,156 @@
+{
+  "id": "sol61-barrier-zero-r9",
+  "entry": "artist.mjs",
+  "uniform": {
+    "bytes": 128,
+    "order": [
+      "viewport",
+      "phase",
+      "gates",
+      "optics",
+      "frameLayout",
+      "contact",
+      "camera",
+      "bounds"
+    ],
+    "contactW": "derived actual-contact hex id; source xyz unchanged"
+  },
+  "world": {
+    "module": "world-shader.mjs",
+    "group0Bindings": [
+      "uniform",
+      "actorTexture",
+      "actorSampler"
+    ],
+    "MRT": [
+      "rgba16float scene",
+      "rgba16float bright",
+      "rgba16float twoSourceSignal"
+    ],
+    "fieldVertices": 6,
+    "drawOrder": [
+      "background",
+      "rear field",
+      "rear point",
+      "body",
+      "front field",
+      "front point",
+      "optional opaque diagnostic",
+      "near horizontal per cell",
+      "near vertical per cell",
+      "finish"
+    ],
+    "quadSource": "projection.support",
+    "body": {
+      "source": "body.png",
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "atlas": [
+        768,
+        512
+      ],
+      "crop": [
+        62,
+        15,
+        136,
+        225
+      ],
+      "heightMetres": 1.65,
+      "nativeHeightPx": 64
+    },
+    "sceneAlpha": "premultiplied src1,dst1-srcAlpha",
+    "rayStepsPerHalf": 32,
+    "depthHalfMetres": 1.65
+  },
+  "post": {
+    "module": "post-shader.mjs",
+    "group0Bindings": [
+      "uniform",
+      "scene",
+      "bright",
+      "sourceSignal",
+      "filtered",
+      "linearSampler"
+    ],
+    "entryPoints": [
+      "horizontal",
+      "vertical",
+      "finish"
+    ],
+    "perCellBlurRequired": true,
+    "sourceVisibility": "actual alpha-occluded sourceSignal, not source metadata",
+    "support": "finite authored local near/cross/pupil"
+  },
+  "events": [
+    {
+      "type": "action-stand",
+      "cause": "durability-created",
+      "ownerField": "targetId",
+      "kind": "create",
+      "durationMs": 650
+    },
+    {
+      "type": "preparation-barrier-hit",
+      "cause": "durability-hit",
+      "ownerField": "playerId",
+      "kind": "hit",
+      "durationMs": 650
+    },
+    {
+      "type": "durability-broken",
+      "cause": "durability-broken",
+      "ownerField": "playerId",
+      "kind": "break",
+      "durationMs": 480
+    },
+    {
+      "type": "action-push",
+      "cause": "timed-bust-break",
+      "ownerField": "targetId",
+      "kind": "break",
+      "durationMs": 480
+    }
+  ],
+  "audio": {
+    "create": {
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 0.65,
+      "samples": 31200,
+      "peak": 0.029781121760606766,
+      "terminal": 0,
+      "listening": "not_run"
+    },
+    "hit": {
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 0.65,
+      "samples": 31200,
+      "peak": 0.03154792636632919,
+      "terminal": 0,
+      "listening": "not_run"
+    },
+    "break": {
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 0.48,
+      "samples": 23040,
+      "peak": 0.026704901829361916,
+      "terminal": 0,
+      "listening": "not_run"
+    }
+  },
+  "verification": {
+    "queryRequired": "verify",
+    "gain": 0,
+    "AudioContextCreated": false
+  },
+  "quality": {
+    "digitalHexPrimary": "pending nativeH64/continuous",
+    "contactAdjacency": "pending independent main-only",
+    "observer": "pending motion/occlusion/OFF",
+    "listening": "not_run",
+    "adoption": "unadopted",
+    "gameIntegration": "not_run",
+    "public": "not_run"
+  }
+}

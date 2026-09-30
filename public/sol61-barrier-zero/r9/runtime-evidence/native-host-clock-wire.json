@@ -1,0 +1,17 @@
+{
+  "classification": "native GPU submission of reviewed wire-normalization + canonical host clock contract; SFX remained forced off in verify mode, so audio transition evidence is the CPU unit-test file only",
+  "verificationQuery": "verify=barrier-r9-native&fresh=3",
+  "adapter": { "vendor": "intel", "architecture": "gen-12lp" },
+  "input": { "type": "preparation-barrier-hit", "variant": "durability-hit", "id": "native-hit-1", "playerId": "native-owner-1", "wireDurationMs": 900, "receiptLocalStartedAtMs": 2000 },
+  "normalized": { "type": "preparation-barrier-hit", "cause": "durability-hit", "eventId": "native-hit-1", "playerId": "native-owner-1", "startedAtMs": 2000, "kind": "hit", "wireDurationMs": 900, "contact": null, "artistDurationMs": 650 },
+  "steps": [
+    { "effectNow": 2055, "displayRate": 1, "ageMs": 55, "shaderPhaseSeconds": 0.055, "sharedAudioOffsetSeconds": 0.055, "submitId": 2, "live": true },
+    { "effectNow": 2080, "displayRate": 2, "ageMs": 80, "shaderPhaseSeconds": 0.08, "sharedAudioOffsetSeconds": 0.08, "submitId": 3, "live": true },
+    { "effectNow": 2080, "displayRate": 0, "ageMs": 80, "shaderPhaseSeconds": 0.08, "sharedAudioOffsetSeconds": 0.08, "submitId": 4, "live": true },
+    { "effectNow": 2080, "displayRate": 2, "ageMs": 80, "shaderPhaseSeconds": 0.08, "sharedAudioOffsetSeconds": 0.08, "submitId": 5, "live": true }
+  ],
+  "gpuErrors": [],
+  "gpuFault": null,
+  "verificationAudio": { "contextCount": 0, "gain": 0, "activeVoices": 0 },
+  "limits": ["Native visual age matched the canonical absolute age and never multiplied rate twice", "Rate changes preserve E age/cursor; actual AudioBuffer playback-rate transition remains proven by CPU mocks only", "No game host adapter or gameplay integration claimed"]
+}

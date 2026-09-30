@@ -1,0 +1,67 @@
+{
+  "status": "pass",
+  "tests": [
+    {
+      "name": "72 unique curved hex centers map back to own cell",
+      "status": "pass"
+    },
+    {
+      "name": "finite six-neighbor graph and symmetry",
+      "status": "pass"
+    },
+    {
+      "name": "WGSL axial shortest-distance equation matches bounded BFS for all5184 pairs",
+      "status": "pass"
+    },
+    {
+      "name": "create wave is nonuniform before global registration and all cells armed before650ms",
+      "status": "pass"
+    },
+    {
+      "name": "break wave removes all cells/foci by480ms without detached point tail",
+      "status": "pass"
+    },
+    {
+      "name": "known hit adjacent hop and inner geometry recovery by650ms",
+      "status": "pass"
+    },
+    {
+      "name": "all possible hit fronts finish before650ms",
+      "status": "pass"
+    },
+    {
+      "name": "unknown contact uses owned global receipt with no fabricated contact source",
+      "status": "pass"
+    },
+    {
+      "name": "whole-source off state is finite zero at representative surface and point",
+      "status": "pass"
+    },
+    {
+      "name": "known contact focus preserves actual point; observer C alone does not move source",
+      "status": "pass"
+    },
+    {
+      "name": "event exact cause/owner/finite wall-age/duration/dedupe boundaries",
+      "status": "pass"
+    },
+    {
+      "name": "dead/hidden/vent stops; zero-durability break allowed; snapshot stable",
+      "status": "pass"
+    },
+    {
+      "name": "128B uniform preserves exact cell id/phase/flags and conservative support",
+      "status": "pass"
+    },
+    {
+      "name": "finite mono48k scores exact lengths, finite peak<1 and terminal0",
+      "status": "pass"
+    }
+  ],
+  "scope": "Original CPU design math and contract only. No GPU/WGSL compile, pixels, full-life native playback, subjective audio, public or adoption.",
+  "limitations": [
+    "Hex cell/rim/inset readability at H64 unverified",
+    "Pole projection and rear/front overlap may compress cells",
+    "No quality verdict from topology or graph tests"
+  ]
+}

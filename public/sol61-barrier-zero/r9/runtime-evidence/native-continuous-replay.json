@@ -1,0 +1,21 @@
+{
+  "classification": "native WebGPU 4.6-second fixture replay; technical progression only, not quality or cadence acceptance",
+  "url": "http://127.0.0.1:8909/outputs/request-20260930/sol61-barrier-zero/r9/index.html?verify=barrier-r9-native&fresh=2",
+  "canvas": [980, 620],
+  "actorHeight": 64,
+  "adapter": { "vendor": "intel", "architecture": "gen-12lp" },
+  "cycleMs": 4600,
+  "confirmedSubmissions": 5,
+  "sampledTransitions": [
+    { "cycleMs": 82, "stage": "create", "ageMs": 82, "live": true },
+    { "cycleMs": 999, "stage": "stable", "ageMs": 349, "live": true },
+    { "cycleMs": 2010, "stage": "hit", "ageMs": 210, "live": true },
+    { "cycleMs": 3023, "stage": "stable", "ageMs": 573, "live": true },
+    { "cycleMs": 4036, "stage": "off", "ageMs": 0, "live": false }
+  ],
+  "gpuErrors": [],
+  "gpuFault": null,
+  "verificationAudio": { "contextCount": 0, "gain": 0, "activeVoices": 0 },
+  "recording": "Browser exposed its native MediaRecorder WebM blob link; no listening or playback test was performed.",
+  "limitation": "The fixture waits for queue completion per state update, so this five-sample run is not a framerate benchmark or smoothness acceptance."
+}

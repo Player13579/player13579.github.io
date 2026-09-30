@@ -1,0 +1,23 @@
+{
+  "classification": "actual native WebGPU canvas PNGs captured at 980x620, logical actor H64, verify=barrier-r9-native; metrics are image byte/pixel comparisons, not visual-quality acceptance",
+  "adapter": { "vendor": "intel", "architecture": "gen-12lp" },
+  "runtimeSourceSha256AtCapture": "6f5c6d897fc25310cc6e73341fdb9c3192cffd7b975150ec41f69798ef38ff08",
+  "finalRuntimeSourceSha256": "262590de6c8201b8711936ba1c06cac23181c99c63e9b8bedffc45107e92031d",
+  "provenanceNote": "PNG capture implementation preceded only the final binding of the already-reviewed submittedClock/normalizeWireEvent helper; artist shader, ABI, draw paths, target formats, texture and SFX runtime were unchanged. The 49-fixture matrix and native host-clock submissions were rerun on final runtime source.",
+  "mrt": "three rgba16float world targets; BGRA8 canvas output",
+  "captureMethod": "After fresh runtime.setCase, HTMLCanvasElement.toBlob(image/png), POSTed to a task-owned local receiver; each fixture confirmed a later matching GPU submission.",
+  "comparison": { "reference": "create-140-dual.png", "dimensions": [980, 620], "changedRgbChannelValues": "count of nonzero R/G/B difference channels over every pixel versus reference", "maxChannelDiff": "maximum absolute channel delta in 8-bit PNG samples" },
+  "captures": [
+    { "file": "native-pixel-captures/create-140-dual.png", "sha256": "8218757c3ae1d8cb99c2ddfc791510ca33253ec7a1b55809597df13717322a7c", "bytes": 29566, "ageMs": 140, "flags": "default", "changedRgbChannelValues": 0, "maxChannelDiff": 0 },
+    { "file": "native-pixel-captures/create-420-dual.png", "sha256": "d5491f74e18d543f49c6fbb66e5b3166f9f45b7e08d903d2bbf75ac6398a749e", "bytes": 43848, "ageMs": 420, "flags": "default", "changedRgbChannelValues": 46153, "maxChannelDiff": 202 },
+    { "file": "native-pixel-captures/stable-dual.png", "sha256": "20823ba8aaeea61558d3385e80bf2be5868289eee079d2375b554cdd559caaf3", "bytes": 43827, "ageMs": 0, "flags": "default", "changedRgbChannelValues": 46067, "maxChannelDiff": 195 },
+    { "file": "native-pixel-captures/known-hit-225-dual.png", "sha256": "698351151543fcd8cfd6ed4a5d9315bf31c9ba06467346b5ca4356e61293dfae", "bytes": 44433, "ageMs": 225, "flags": "default; known contact [0.50,0.15,0.66]", "changedRgbChannelValues": 46254, "maxChannelDiff": 195 },
+    { "file": "native-pixel-captures/unknown-hit-225-dual.png", "sha256": "2e057e6b78a16891715fb86b093655dc1085d20091c429d78ac1b3bd9b2f5a03", "bytes": 44296, "ageMs": 225, "flags": "default; unknown contact", "changedRgbChannelValues": 46053, "maxChannelDiff": 195 },
+    { "file": "native-pixel-captures/break-180-dual.png", "sha256": "6f0796d094c7b3c63336331f8405460ccebc845b59fc4b253c7bf225753e36db", "bytes": 44235, "ageMs": 180, "flags": "default; durability zero", "changedRgbChannelValues": 45895, "maxChannelDiff": 202 },
+    { "file": "native-pixel-captures/source-off-140-dual.png", "sha256": "f068cd3ccdc9dd07b06f7834401f2c0508240ffb61ef38f0c9a0e4ec450550ab", "bytes": 18591, "ageMs": 140, "flags": "source=false", "changedRgbChannelValues": 26356, "maxChannelDiff": 202 },
+    { "file": "native-pixel-captures/near-off-140-dual.png", "sha256": "0bad93a80a11512024c6ce0cad999a357c848224755d03527479baea773215ab", "bytes": 27728, "ageMs": 140, "flags": "near=false", "changedRgbChannelValues": 21247, "maxChannelDiff": 59 },
+    { "file": "native-pixel-captures/cross-off-140-dual.png", "sha256": "06e89e475a75cf8a0c5c8b86f4e488a83952aaac1b3c1f4efa551c58c3412600", "bytes": 29550, "ageMs": 140, "flags": "cross=false", "changedRgbChannelValues": 29, "maxChannelDiff": 20 },
+    { "file": "native-pixel-captures/ghost-off-140-dual.png", "sha256": "dc64e062f7a57f50f6e91e52cf320a9ccc8a6a65ae99d6dade7d11f5a04817ec", "bytes": 28343, "ageMs": 140, "flags": "ghost=false", "changedRgbChannelValues": 1459, "maxChannelDiff": 121 }
+  ],
+  "limits": ["Same fixture and default flags restored before every image", "Pixel differences only establish that output changes; they do not establish that the change is legible, necessary, or high quality", "Cross-off has only a 29-channel-value difference versus the capture; root should inspect the saved full-resolution images", "SFX listening not run", "Game integration/adoption not run"]
+}

@@ -1,0 +1,2089 @@
+{
+  "FoundationOperationTemplate": {
+    "OutputContract": {
+      "schema_version": "B-Expression-2",
+      "mode": "Image",
+      "operation": "design_only"
+    },
+    "TemplateConsolidation": {
+      "per_chapter_template_count": 1,
+      "template_position": "chapter_end",
+      "inter_template_duplication_forbidden": true,
+      "cross_chapter_reference_preferred": true
+    },
+    "RuleContract": {
+      "fields": [
+        "rule_id",
+        "owner",
+        "priority",
+        "applies_when",
+        "requirement",
+        "exception_to",
+        "validation_id"
+      ],
+      "same_priority_resolution": "explicit_exception_or_compatible_union",
+      "unresolved_conflict_result": "spec_conflict"
+    },
+    "GlobalInterpretation": {
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "full_PH_structure_required_for_all_visibilities": true,
+      "WindCapsule_required": true
+    },
+    "UniversalNoLabelOnly": {
+      "label_only_declaration_forbidden": true,
+      "indirect_evidence_for_implicit_latent": true
+    },
+    "Acceptance": {
+      "each_chapter_has_exactly_one_template": true,
+      "independent_template_groups_absent": true,
+      "unique_rule_ids_and_resolvable_references": true,
+      "same_priority_conflicts_resolved_explicitly": true
+    }
+  },
+  "InferenceExpansionPolicy": {
+    "DeclaredIntent": {
+      "character_count": 1,
+      "character_attributes": {
+        "sophia-fixture": "original exact body.png/crop/pose; no new demographics or preset selected"
+      },
+      "main_action": "共通アクション Barrier: 六角セルが集合して作るデジタル保護空域",
+      "main_objects": "72 curved hex coverage cells / one receiving owner / actual-contact adjacency receipt",
+      "background": "native dark/light verification; one fixed parameter set",
+      "style": "WebGPU procedural world phenomenon; existing original bitmap only",
+      "text_logo_policy": "no baked text/logo"
+    },
+    "ExpressionIntent": {
+      "source": "user_declared",
+      "purpose": "ユーザーの六角形が多数集まる模様を、デジタル防御の主構造として成立させる",
+      "must_communicate": [
+        "身体を囲む透明な保護空域",
+        "セルが順に登録され防御状態になる",
+        "接触セルから隣へreceiptが伝わる",
+        "同じセル集合が有限に解除される"
+      ],
+      "preserve_ambiguity": [],
+      "allowed_omission": [],
+      "allowed_exaggeration": [],
+      "protected_relations": [
+        "unchanged original body",
+        "actual contact/cause/owner/durability",
+        "strong owned white emission",
+        "PH world and optional OBS separated"
+      ]
+    },
+    "SelectionLifecycle": {
+      "stages": [
+        "candidate",
+        "accepted",
+        "registered_world",
+        "registered_observation"
+      ],
+      "candidate_catalog_in_final_code": false,
+      "world_registry": "PhenomenonSystemTemplate.PhenomenonRegistry",
+      "observation_registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "adoption_checks": [
+        "DeclaredIntent_consistency",
+        "contribution",
+        "readability",
+        "activation_condition"
+      ]
+    },
+    "inferred_support_elements": {
+      "default_permission": "denied",
+      "explicit_user_permission_required": true,
+      "allowed_domains": [],
+      "allowed_scope": "user_explicitly_authorized_targets_and_domains_only",
+      "support_declared_elements_without_overriding_them": true,
+      "latent_visualization_object_not_required": true
+    },
+    "Acceptance": {
+      "declared_intent_preserved": true,
+      "inference_without_explicit_user_permission_absent": true,
+      "candidate_accepted_registered_distinguished": true,
+      "unselected_candidates_absent_from_final": true
+    }
+  },
+  "PlatonicGoodTemplate": {
+    "Good": {
+      "evidence": "PH2 graph-connected hex protection and PH1 visible unchanged receiver serve user action; not a quality verdict"
+    },
+    "Truth": {
+      "coordinate_continuity": "view/fromView inverse and original atlas crop/H64; actual known contact unchanged",
+      "physical_causality": "PH2 emission→PH3 finite transport→PH1 one-pass diffuse response; no force/collider claim",
+      "state_transition_readability": "registration/adjacent inner-boundary/release are distinct source functions; actual native readability not_run"
+    },
+    "Beauty": {
+      "boundary_readability": "six-edge cells and inner-state boundary, native readability pending",
+      "gaze_circulation": "PH2 enclosure→PH1 receiver and PH1 local reflection→PH2 boundary",
+      "structural_separation": "hex world domains/body/transport separate from near/diffraction/pupil/display encoding OBS"
+    },
+    "BeautyStructuring": {
+      "axes": [
+        "ratio_proportion",
+        "balance_symmetry",
+        "contrast",
+        "rhythm_repetition",
+        "whitespace_density",
+        "hierarchy_gaze_flow",
+        "material_response",
+        "temporal_phase"
+      ],
+      "standard_minimum_axes_per_PH": 2,
+      "standard_minimum_evidence_per_applied_axis": 2,
+      "intent_adjustment_ref": "InferenceExpansionPolicy.ExpressionIntent"
+    },
+    "Acceptance": {
+      "each_PH_connected_to_at_least_two_GTB_layers": true,
+      "single_formula_does_not_dominate_beauty": true
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "Units": {
+      "length": "metres",
+      "time": "E seconds for animation/audio; server/wall seconds for gameplay, explicitly separate",
+      "temperature": "not_applicable: no thermal state",
+      "pressure": "not_applicable: no pressure/force",
+      "angle": "radians in code; declared camera16°yaw/7°pitch"
+    },
+    "WorldCoordinates": {
+      "handedness": "right_handed",
+      "X": "target-relative right",
+      "Y": "up",
+      "Z": "declared +Z front of target",
+      "camera_forward": "observer on positive cameraZ looks toward negative cameraZ; front half view.z>=0, rear<0",
+      "origin": "actual owner body quad center, not source event rounded point substituted for body"
+    },
+    "CameraCoordinates": {
+      "X": "right",
+      "Y": "up",
+      "forward": "negative cameraZ; world-shader view/fromView rotate target axes, true split at0",
+      "projection": "orthographic",
+      "FOV_or_scale": "64px per1.65m atDPR1"
+    },
+    "ScreenCoordinates": {
+      "domain": "[0,1]x[0,1]",
+      "x": "0_left_to_1_right",
+      "y": "0_top_to_1_bottom"
+    },
+    "TransformChain": {
+      "order": [
+        "world",
+        "camera",
+        "screen"
+      ],
+      "world_to_camera": "world-shader view and fromView inverse yaw16/pitch7",
+      "camera_to_screen": "cellCenter + vec2(view.x,-view.y)*H*dpr/1.65; clip screen to current viewport"
+    },
+    "ContactCoordinates": {
+      "contact_patch": "known actual target-relative xyz unchanged; closest normalized hex response cell is acknowledgment region, not a physical collision",
+      "contact_normal": "ellipsoid direction normalization only; real collision normal unprovided/not fabricated",
+      "support_relation": "original fixture quad/crop supported as input; no pose displacement by field",
+      "no_penetration": true
+    },
+    "VectorField": {
+      "dominant_vector": {
+        "direction": "six-neighbor shortest graph paths from registration/receipt/release seed",
+        "magnitude": "hop45E-ms or phase onset distance0..8, no force velocity",
+        "falloff": "cell registration/response smoothstep finite gates",
+        "fluctuation": "none; no automatic noise or breathing"
+      },
+      "secondary_vector": {
+        "direction": "finite optical rays source/field to receiver and observer",
+        "magnitude": "normalized emission4.2, white8/8/7.6, extinction1.35",
+        "falloff": "finite shell/hex coverage; cosine/distance receive; finite OBS kernels",
+        "fluctuation": "Gaussian owned source phase, not random flicker"
+      }
+    },
+    "Gravity": {
+      "condition": "normal",
+      "vector": [
+        0,
+        -9.81,
+        0
+      ],
+      "strength": "declared standard9.81m/s², not a dynamic simulation",
+      "affected_responses": "existing supported pose only; optical cell state not gravity-driven",
+      "evidence": "unchanged body crop/quad; no new body motion"
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "air",
+      "medium_properties": {
+        "density": "unmeasured/nonparticipating; no fluid solve",
+        "viscosity": "unmeasured/nonparticipating"
+      },
+      "Field": {
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "speed": 0,
+        "gust": "none",
+        "shear": "none",
+        "turbulence": "none"
+      },
+      "ApplicableResponses": {
+        "body": "none: original pose retained",
+        "cloth": "none: no new cloth displacement",
+        "hair": "none: original bitmap",
+        "loose_elements": "none: none introduced",
+        "environment": "none: no new environment flow"
+      },
+      "non_applicable_responses_explicit": true
+    },
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "PH1 receiver/PH2 digital field/PH3 optical transport are world internal; OBS separate"
+    },
+    "Acceptance": {
+      "world_camera_screen_transform_defined": true,
+      "screen_axis_convention_defined": true,
+      "Gravity_present": true,
+      "WindCapsule_present": true,
+      "medium_state_present": true,
+      "no_inapplicable_wind_evidence_required": true
+    }
+  },
+  "OctaDomainTemplate": {
+    "Acceptance": {
+      "all_8_domains_present": true,
+      "role_classification_present": true,
+      "latent_does_not_require_direct_visualization": true,
+      "non_applicable_domains_retained_with_reason_and_latent_role": true
+    }
+  },
+  "AnimeStudiesTemplate": {
+    "KeyframeSnapshot": {
+      "phase": "parameterized nativeImage design-only reference create140/420, stable, hit30/75/225/350, break80/220/450, off",
+      "state_t_minus_1_evidence": "source law before registration/adjacent hop/release boundary; image evidence not_run",
+      "state_t_evidence": "declared frame phase/Eclock values in render-contract; no rendered reference claimed",
+      "state_t_plus_1_evidence": "same cells advance/recover/unregister by source math; actual continuous observation not_run"
+    },
+    "Layout": {
+      "staging": "one actual receiving actor surrounded by curved hex field atH64; dual dark/light only controlled diagnostic",
+      "projection_consistency_ref": "CoordinateGravityWindTemplate",
+      "whitespace_role": "clear transparent field interior and gaps preserve owner silhouette; no extra world decoration"
+    },
+    "PoseActing_or_SceneActing": {
+      "character_ref": "PH1 original body.png unchanged",
+      "object_balance": "existing pose is fixture authority; no limb/COM changes",
+      "contact_logic": "actual hit point is emitted focus and normalized cell receipt, never moving body or fake projectile"
+    },
+    "MotionReadability": {
+      "motion_blur_smear_speed_line_policy": "explicit_user_request_only",
+      "primary_causality_replacement_by_motion_effects": false
+    },
+    "CompositeIntegration": {
+      "observation_ref": "ObservationIntegrationTemplate",
+      "contact_shadow_used_for_integration": "not_applicable: no new support surface; true body alpha occlusion integrates the field"
+    },
+    "Acceptance": {
+      "previous_and_next_time_or_explicit_ambiguity_accounted_for": true,
+      "projection_consistent": true,
+      "posteffects_do_not_replace_primary_causality": true
+    }
+  },
+  "ExtremumDesignColorTemplate": {
+    "PEV": {
+      "candidate_state_set": [
+        "PH2 graph registration",
+        "PH2 known-hit adjacent cell receipt",
+        "PH2 graph release"
+      ],
+      "selected_physics_extremum": "PH2 adjacent-cell information-state receipt, declared_fantasy not force extremum",
+      "reason": "actual user direction: many hex domains coherently form digital defense and propagate actual receipt"
+    },
+    "AES": {
+      "selected_from_PEV_only": true,
+      "visual_circulation": "hex rim/inset response→inside receiver→adjacent field boundary",
+      "asymmetric_balance": "known contact causes local response; no fabricated incoming direction",
+      "tension_release": "cell registration establishes domain, adjacent inset recovers, release removes same domains",
+      "body_environment_consonance": "same body alpha/source occlusion and finite source-rooted reception",
+      "selected_aesthetic_extremum": "readable native six-edge cell grouping and finite adjacent boundary motion"
+    },
+    "DesignScience": {
+      "VisualHierarchy": "collective hex protection/state primary; body receiver second; optional optics supporting",
+      "DensityPlan": "72 curved whole-field domains; central projected8–15px estimate, pole/rear overlap risk not observed",
+      "ShapeOrder": "macro enclosure, meso six-edge cell/inset, no micro particle carpet",
+      "OrnamentFunction": "none: no new decorative symbols; each cell is actual coverage/state"
+    },
+    "CCM": {
+      "Palette": {
+        "base": "PH2 cyan-blue linear[.18,.58,1.20]",
+        "secondary": "same quiet cell interior vs rim brightness states, no unrelated hue layer",
+        "accent": "PH3 owned white[8,8,7.6] focus",
+        "neutral": "PH1 original bitmap preserved"
+      },
+      "ColorDynamics": {
+        "temp": "declared cool digital radiance; no physical CCT from stylized color",
+        "value_range": "finite linear emission4.2 and white8; no global cap/background switching",
+        "saturation": "authored linear color/rim state, not automatic rainbow"
+      },
+      "Lighting": {
+        "key_K": "not_applicable to stylized source spectrum; no invented Kelvin",
+        "fill_tint": "PH3 finite local diffuse receive; no new ambient light"
+      },
+      "BackgroundBinding": {
+        "bg_dominant": "not applicable: user prohibits background-dependent E redesign; fixture dark/light only",
+        "bg_accent": "not selected: no background correction"
+      },
+      "PerceptualControl": {
+        "attention_focus": "hierarchical",
+        "figure_ground_stability": "transparent interior/original body; actual native pass pending",
+        "arousal_level": "finite action registration/receipt/release, no perpetual micro flicker",
+        "perceptual_noise_tolerance": "few broad cell structures, no particles; pole compression must be tested"
+      }
+    },
+    "Acceptance": {
+      "PEV_applied_before_AES_when_world_candidates_exist": true,
+      "AES_does_not_override_world_validity": true,
+      "legacy_FDS_resolved_to_DesignScience": true,
+      "CCM_fields_fixed": true
+    }
+  },
+  "ReflectionClosureTemplate": {
+    "Applicability": {
+      "applies_when": [
+        "reflection",
+        "highlight",
+        "sheen",
+        "gloss",
+        "wetness",
+        "metallic_response",
+        "skin_highlight",
+        "cloth_sheen"
+      ],
+      "otherwise": "latent_optics_condition"
+    },
+    "ReflectionClosureBlock": {
+      "PH1": {
+        "reflection_PH": "PH1",
+        "surface_type": "cloth_like fixed camera-facing spriteproxy",
+        "MicrofacetField": {
+          "view_dependence": "Lambertproxy normal from inversecamera; exactpreserved fixedatlasview not full3D BRDF",
+          "fresnel": "not_applicable to adopted diffuse-only receiver approximation; no virtual specularcoating",
+          "microfacet": "rough diffuse proxy, no NDF/roughnessmeasurementclaim; exactmicrofacets unresolved by bitmap",
+          "surface_state_modulation": "localirradiance fromsamecurvedfield/foci; no wet/coat/colorreplacement",
+          "energy_consistency": "six finite cell-area nodes, shell thickness.11, area proxy.65, cosine/(4pi(r²+.18)), finite focus term; normalized not watts",
+          "occlusion_consistency": true,
+          "occlusion_evidence": "source/bodyMRTtruealpha; bodyresponse inside originalalpha"
+        },
+        "ReflectionLinks": {
+          "physical_influence_out": "PH1 -> PH3: bodyFS reflected output to alpha-occluded radiance MRT",
+          "physical_feedback_in": "not_applicable: PH3 incoming irradiance is one-way input; no return illumination of PH2, no recursive light solve",
+          "incoming_irradiance": "PH3 -> PH1: received fixed diffuse proxy"
+        },
+        "Evidence": [
+          "world-shader received/bodyFS and original true alpha",
+          "CPU finite graph/source only; GPU/listening pending"
+        ]
+      }
+    },
+    "Acceptance": {
+      "reflection_integrated_into_PH_mesh": true,
+      "lensflare_registered_as_OBS_not_reflection": true
+    }
+  },
+  "TermsTemplate": {
+    "Acceptance": {
+      "undefined_legacy_terms_absent": true
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "body receiver / graph-connected hex protection field / optical transport are different states and boundaries; OBS is not PH",
+      "shared_condition_policy": "SC1 true target/camera/crop; SC2 canonical E age for animation and audio; authoritative durability separate",
+      "no_discipline_based_split": true
+    },
+    "SharedConditions": {
+      "SC1": {
+        "world": "owner-relative metres axes1.04/1.20/.80, original body1.65m",
+        "camera": "orthographic yaw16/pitch7",
+        "body": "body.png exact original alpha/crop/pose; H64"
+      },
+      "SC2": {
+        "age": "absolute eEffectNow(effect,data,wallNow) minus effect.startedAt",
+        "rate": "displayETimeScale submitted once to VFX/SFX; fixedACC2 means2; native fixturedefault1",
+        "gameplay": "authoritative server/snapshot durability/alive/visible/vent, unaffected by E rate"
+      }
+    },
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "original receiving body",
+        "origin": "declared",
+        "anchor": "actual owner",
+        "visibility": "visible",
+        "local_state_difference": "元body→局所受光→元body。形状や素材状態の変更なし",
+        "partition_reason": "distinct body/hex-state/transport system boundary"
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "graph-connected curved hex protection cells",
+        "origin": "declared",
+        "anchor": "actual owner",
+        "visibility": "visible",
+        "local_state_difference": "OFF→graph-sequential ARMED→positive durability ACTIVE→adjacent receipt→same graph unregisters",
+        "partition_reason": "distinct body/hex-state/transport system boundary"
+      },
+      "PH3": {
+        "id": "PH3",
+        "name": "hex-field source/body optical transport",
+        "origin": "declared",
+        "anchor": "actual owner",
+        "visibility": "visible",
+        "local_state_difference": "registered cell/source envelope→finite transport→body reception; end/hidden/dead/vent yields0",
+        "partition_reason": "distinct body/hex-state/transport system boundary"
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "original receiving body",
+          "origin": "declared",
+          "anchor": "actual owner",
+          "visibility": "visible",
+          "local_state_difference": "元body→局所受光→元body。形状や素材状態の変更なし",
+          "partition_reason": "distinct body/hex-state/transport system boundary"
+        },
+        "DeepStructure": {
+          "Core": "受益ownerの元画像alpha/姿勢を維持",
+          "Structure": "1.65m camera-facing quad / atlas768×512 crop[62,15,136,225]",
+          "Surface": "linear-decode元画像 + source-rooted diffuse receiving radiance inside true alpha"
+        },
+        "PhysicalModel": {
+          "model_kind": "rigid_or_articulated",
+          "system_boundary": "original sprite alpha; rear field→body→front field order",
+          "state_variables": "固定quad/UV/alpha、source距離/cosineによる受光radiance",
+          "inputs": "PH3入射radianceとauthoritative owner visibility",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "no declared mass simulation or created matter"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "digital state animation is not real collider/pressure/force law"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "finite declared radiance/extinction/source envelope; normalized artwork not measured watts/joules"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "no declared charge simulation or created matter"
+            }
+          },
+          "constitutive_response": "linear-decode元画像 + source-rooted diffuse receiving radiance inside true alpha",
+          "initial_condition": "existing body; inactive has no field. positive snapshot enters stable without fabricated create event",
+          "boundary_conditions": "original sprite alpha; rear field→body→front field order",
+          "approximation_scope": "stylized digital field and finite orthographic optical/image-material proxy; no measured physical barrier or lens validation"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "body1.65m/nativeH64",
+          "characteristic_time": "same event ageに代数的追従。独立残光なし (declared E-ms; at fixed2× the corresponding wall intervals halve, game deadline does not)",
+          "dominant_balance": "native H64 information-state topology and body-enclosing protective space over optional optics",
+          "dimensionless_reasoning": "hex metric/shell normalized; unit64px/1.65m; response hop45ms vs650ms finite lifetime",
+          "detail_cutoff": "readable broad hex cells only; perspective/pole compression must not become micro noise"
+        },
+        "OctaDomain": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "bodyVS/bodyFS/received"
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "bodyVS/bodyFS/received"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "linear-decode元画像 + source-rooted diffuse receiving radiance inside true alpha",
+              "source distance/cosine receiving radiance inside true alpha"
+            ],
+            "evidence_or_constraint": "bodyVS/bodyFS/received"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "PH1 fixed image color/alpha; PH2 declared cell emission/transmission coefficients, not measured solid film"
+            ],
+            "evidence_or_constraint": "bodyVS/bodyFS/received"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "bodyVS/bodyFS/received"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "bodyVS/bodyFS/received"
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "bodyVS/bodyFS/received"
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "bodyVS/bodyFS/received"
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "world-shader bodyVS/bodyFS: crop and true alpha; received: fixed receiver normal and six cell area nodes",
+          "indirect_evidence": "same cause/owner and shared E phase predict related receiving/field state; no inferred extra body/object",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "required: actual nativeH64 independent main-only and combined all-life",
+          "perceptual_failure_risk": "受光と前面合成をbody warpと誤認; alpha外発光; UV/crop変更",
+          "cue_roles": [
+            {
+              "cue": "元body輪郭/姿勢",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            },
+            {
+              "cue": "前後セルの遮蔽",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            },
+            {
+              "cue": "局所反射",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            }
+          ],
+          "confusable_alternative": "generic glowing membrane / flat electronic garnish / cage / separate world ring",
+          "disambiguating_evidence": "curved hex cell topology, graph registration and adjacent inset response, true owner/body occlusion",
+          "viewing_conditions": "nativeH64 DPR1 dark/light same fixed parameters; full-life and individual observer OFF"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "target-relative +Yup/+Zfront, yaw16 pitch7 orthographic",
+          "normal_field_coherence": "continuous ellipsoid parameterization supporting separated curved hex coverage domains",
+          "curvature_behavior": "fixed enclosing axes; inner hex state boundary contracts .22metric without body/ellipsoid displacement",
+          "silhouette_logic": "hex cells collectively enclose body with transparent interior; no cage/tier/opaque cup substitute",
+          "contact_relation": "actual point unchanged as focus; normalized nearest response cell is digital receipt mapping, not claimed geometric collision",
+          "spatial_relation": "rear cells/source→original body alpha→front cells/source→OBS"
+        },
+        "StateDynamics": {
+          "state_space_extent": "固定quad/UV/alpha、source距離/cosineによる受光radiance",
+          "transition_path_character": "intermittent",
+          "local_stability_type": "stable",
+          "convergence_behavior": "PH3入力0で追加受光0、元bitmap",
+          "damping_profile": "finite smoothstep/Gaussian gates; no independent oscillator/physical damping measurement",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "PH3入力0で追加受光0、元bitmap",
+          "transition_failure_risk": "受光と前面合成をbody warpと誤認; alpha外発光; UV/crop変更",
+          "driving_input": "PH3入射radianceとauthoritative owner visibility; presentation phase reads eEffectNow-startedAt, not server elapsed gameplay time",
+          "response_timescale": "same event ageに代数的追従。独立残光なし",
+          "phase_relation": "same submitted canonical E age and display rate for VFX/SFX; server durability unchanged",
+          "stability_condition": "finite valid inputs/live owner; positive durability maintains stable; exact event duration/owner/cause guards; off on hide/dead/vent; E age half-open [0,duration), future rejected; zero rate holds E age"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH3.Optics -> PH1.Optics: finite cosine/distance received radiance"
+          ],
+          "SecondaryCouplings": [
+            "PH1.Materials -> PH3.Optics: original bitmap alpha/color constrains reflected output"
+          ],
+          "CausalAssessment": {
+            "intervention": "receiver=falseだけ変更、phase/body/field/OBSを固定",
+            "predicted_response": "local reflected contribution消失、body silhouette/pose/PH2状態は不変",
+            "competing_explanation": "front layerやnearによりbodyが明るく見える場合がある",
+            "uncertainty": "CPU math tested narrowly; GPU pixels/H64/continuous/listening not yet observed; artistic hypotheses not accepted by contract",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH3",
+              "target": "PH1",
+              "mechanism": "received: six finite cell-area nodes and two owned foci, cosine/distance diffuse approximation",
+              "consequence": "local reflected output only inside original bitmap alpha"
+            },
+            {
+              "source": "PH1",
+              "target": "PH3",
+              "mechanism": "bodyFS alpha occludes rear and contributes one-pass receiver radiance to MRT",
+              "consequence": "same source visibility occlusion and body reflected output; no recursive feedback to field"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH1",
+              "basis": "body reflected output and true alpha occlusion included before filter"
+            },
+            {
+              "source": "OBS4",
+              "target": "PH1",
+              "basis": "final linear→sRGB display encoding of composed radiance and original body"
+            }
+          ],
+          "gaze_path": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "reason": "beneficiary silhouette returns gaze to surrounding active field"
+            }
+          ]
+        },
+        "Evidence": {
+          "direct": [
+            "world-shader bodyVS/bodyFS: crop and true alpha",
+            "received: fixed receiver normal and six cell area nodes"
+          ],
+          "indirect": [],
+          "candidates": [
+            "silhouette",
+            "occlusion",
+            "reflection_change"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH3",
+              "change": "body alphaがrear emission/sourceSignalを遮蔽。受光出力は一回のMRT合成"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH1.PhysicalModel / StateDynamics",
+          "retained_cues": [
+            "元body輪郭/姿勢",
+            "前後セルの遮蔽",
+            "局所反射"
+          ],
+          "simplification": "finite cell/ray transport and fixed sprite proxy; actual projections must validate intended cues",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: multiple existing structural evidence axes applied",
+          "axes": {
+            "ratio_proportion": [
+              "height1.65m/nativeH64を固定",
+              "136/225 crop比を元body quadへ保持"
+            ],
+            "material_response": [
+              "linear-decode bitmapへの有限diffuse受光",
+              "true alpha内に限定し衣服や顔のgeometryを変えない"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_response",
+          "observation_operation_registered_as_PH",
+          "latent_forced_visible_object",
+          "before_after_only",
+          "受光と前面合成をbody warpと誤認; alpha外発光; UV/crop変更"
+        ]
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "graph-connected curved hex protection cells",
+          "origin": "declared",
+          "anchor": "actual owner",
+          "visibility": "visible",
+          "local_state_difference": "OFF→graph-sequential ARMED→positive durability ACTIVE→adjacent receipt→same graph unregisters",
+          "partition_reason": "distinct body/hex-state/transport system boundary"
+        },
+        "DeepStructure": {
+          "Core": "デジタル防御状態をhex coverage集合として投影。実collider/force生成ではない",
+          "Structure": "6 staggered rows × 12 wrapped columns =72 parametric curved hex cells; six-neighbor graph; axes1.04/1.20/.80m",
+          "Surface": "each true hex cell has persistent outer boundary and transparent interior; registered cell inset state travels by graph distance"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "periodic azimuth; rows0..5 fixed end boundaries; normalized radial half.055; no infinite plane or new independent overlay",
+          "state_variables": "cell id/metric, registration[0,1], adjacency receipt[0,1], inset[0,.22] metric, thin shell coverage, stage/time/live",
+          "inputs": "actual positive durability/typed finite event and owner; actual contact mapped to nearest parametric response cell",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "no declared mass simulation or created matter"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "digital state animation is not real collider/pressure/force law"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "finite declared radiance/extinction/source envelope; normalized artwork not measured watts/joules"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "no declared charge simulation or created matter"
+            }
+          },
+          "constitutive_response": "each true hex cell has persistent outer boundary and transparent interior; registered cell inset state travels by graph distance",
+          "initial_condition": "existing body; inactive has no field. positive snapshot enters stable without fabricated create event",
+          "boundary_conditions": "periodic azimuth; rows0..5 fixed end boundaries; normalized radial half.055; no infinite plane or new independent overlay",
+          "approximation_scope": "stylized digital field and finite orthographic optical/image-material proxy; no measured physical barrier or lens validation"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "axes1.04/1.20/.80m; .055normalized shell; 6×12 cells",
+          "characteristic_time": "create650ms, each graph ring onset.50×distance/8 and rise.06s; hit hop.045s with.016rise/.055hold/.12fall; break480ms onset.36×distance/8 and.09fall (declared E-ms; at fixed2× the corresponding wall intervals halve, game deadline does not)",
+          "dominant_balance": "native H64 information-state topology and body-enclosing protective space over optional optics",
+          "dimensionless_reasoning": "hex metric/shell normalized; unit64px/1.65m; response hop45ms vs650ms finite lifetime",
+          "detail_cutoff": "readable broad hex cells only; perspective/pole compression must not become micro noise"
+        },
+        "OctaDomain": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "tileAt/registration/response/density"
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "tileAt/registration/response/density"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "each true hex cell has persistent outer boundary and transparent interior; registered cell inset state travels by graph distance",
+              "hex membership and normalized radial coverage gates local emission"
+            ],
+            "evidence_or_constraint": "tileAt/registration/response/density"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "PH1 fixed image color/alpha; PH2 declared cell emission/transmission coefficients, not measured solid film"
+            ],
+            "evidence_or_constraint": "tileAt/registration/response/density"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "tileAt/registration/response/density"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "tileAt/registration/response/density"
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "tileAt/registration/response/density"
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "tileAt/registration/response/density"
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "tileAt: actual curved six-edge hex domain, not screen grid; registration: graph distances from cell22/cell6; response: actual contact cell and six-neighbor graph distance; density inner hex .22 metric contraction during receipt",
+          "indirect_evidence": "same cause/owner and shared E phase predict related receiving/field state; no inferred extra body/object",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "required: actual nativeH64 independent main-only and combined all-life",
+          "perceptual_failure_risk": "hex density atH64 disappears into generic glowing membrane; tiny pole slivers; rear/front overlap muddies cell ownership; brightness-only receipt",
+          "cue_roles": [
+            {
+              "cue": "多数の読み取れる六角面が身体を囲む",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            },
+            {
+              "cue": "順次セル登録",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            },
+            {
+              "cue": "接触セル内の幾何inset変化と隣接波",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            },
+            {
+              "cue": "同一セル集合の解除",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            }
+          ],
+          "confusable_alternative": "generic glowing membrane / flat electronic garnish / cage / separate world ring",
+          "disambiguating_evidence": "curved hex cell topology, graph registration and adjacent inset response, true owner/body occlusion",
+          "viewing_conditions": "nativeH64 DPR1 dark/light same fixed parameters; full-life and individual observer OFF"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "target-relative +Yup/+Zfront, yaw16 pitch7 orthographic",
+          "normal_field_coherence": "continuous ellipsoid parameterization supporting separated curved hex coverage domains",
+          "curvature_behavior": "fixed enclosing axes; inner hex state boundary contracts .22metric without body/ellipsoid displacement",
+          "silhouette_logic": "hex cells collectively enclose body with transparent interior; no cage/tier/opaque cup substitute",
+          "contact_relation": "actual point unchanged as focus; normalized nearest response cell is digital receipt mapping, not claimed geometric collision",
+          "spatial_relation": "rear cells/source→original body alpha→front cells/source→OBS"
+        },
+        "StateDynamics": {
+          "state_space_extent": "cell id/metric, registration[0,1], adjacency receipt[0,1], inset[0,.22] metric, thin shell coverage, stage/time/live",
+          "transition_path_character": "equilibrium-maintained",
+          "local_stability_type": "stable",
+          "convergence_behavior": "all cells registered by.56s; hit inset0 before.65; break all cells0 by.45 and source power also0 by.48",
+          "damping_profile": "finite smoothstep/Gaussian gates; no independent oscillator/physical damping measurement",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "all cells registered by.56s; hit inset0 before.65; break all cells0 by.45 and source power also0 by.48",
+          "transition_failure_risk": "hex density atH64 disappears into generic glowing membrane; tiny pole slivers; rear/front overlap muddies cell ownership; brightness-only receipt",
+          "driving_input": "actual positive durability/typed finite event and owner; actual contact mapped to nearest parametric response cell; presentation phase reads eEffectNow-startedAt, not server elapsed gameplay time",
+          "response_timescale": "create650ms, each graph ring onset.50×distance/8 and rise.06s; hit hop.045s with.016rise/.055hold/.12fall; break480ms onset.36×distance/8 and.09fall",
+          "phase_relation": "same submitted canonical E age and display rate for VFX/SFX; server durability unchanged",
+          "stability_condition": "finite valid inputs/live owner; positive durability maintains stable; exact event duration/owner/cause guards; off on hide/dead/vent; E age half-open [0,duration), future rejected; zero rate holds E age"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Optics -> PH3.Optics: registered cell coverage produces finite cell/focus radiance"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "same known contact/ageでpoints/near/cross/ghost OFF; stableとhit0/30/75/180/350/600を比較",
+            "predicted_response": "main hex insetが接触セルから隣接へ順次変わる。outer collective enclosure/body remains; optional optics不要",
+            "competing_explanation": "white focus or global glow aloneがimpactを説明してしまう; partial activationが単なる飾りに見える",
+            "uncertainty": "CPU math tested narrowly; GPU pixels/H64/continuous/listening not yet observed; artistic hypotheses not accepted by contract",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "density: registered hex coverage and finite cell/source emission",
+              "consequence": "hex protection state produces local emitted radiance/sourceSignal"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH2",
+              "basis": "finite near reads alpha-composed cell radiance"
+            },
+            {
+              "source": "OBS4",
+              "target": "PH2",
+              "basis": "final linear→sRGB display encoding of composed radiance and original body"
+            }
+          ],
+          "gaze_path": [
+            {
+              "source": "PH2",
+              "target": "PH1",
+              "reason": "registered protective cell envelope leads to receiving inside body"
+            }
+          ]
+        },
+        "Evidence": {
+          "direct": [
+            "tileAt: actual curved six-edge hex domain, not screen grid",
+            "registration: graph distances from cell22/cell6",
+            "response: actual contact cell and six-neighbor graph distance",
+            "density inner hex .22 metric contraction during receipt"
+          ],
+          "indirect": [],
+          "candidates": [
+            "boundary",
+            "phase_difference",
+            "deformation",
+            "convergence"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH3",
+              "change": "registered cellだけがemitしsource envelopeもowning cellでgate。解除したセルにpoint tailを残さない"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH2.PhysicalModel / StateDynamics",
+          "retained_cues": [
+            "多数の読み取れる六角面が身体を囲む",
+            "順次セル登録",
+            "接触セル内の幾何inset変化と隣接波",
+            "同一セル集合の解除"
+          ],
+          "simplification": "finite cell/ray transport and fixed sprite proxy; actual projections must validate intended cues",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: multiple existing structural evidence axes applied",
+          "axes": {
+            "rhythm_repetition": [
+              "six-row staggered hex tessellation is the whole field topology",
+              "create/hit/break changes traverse the same neighbor graph, not unrelated blink pattern"
+            ],
+            "ratio_proportion": [
+              "72 total cells on body-enclosing axes1.04/1.20/.80, not72 fullscreen dots",
+              "native projected central cell size estimated8–15px; actual readability must be inspected"
+            ],
+            "temporal_phase": [
+              "registration rings onset0..500ms; same cells stable while durability positive",
+              "contact adjacent hops45ms; inset recovers before650ms; break ends480ms"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_response",
+          "observation_operation_registered_as_PH",
+          "latent_forced_visible_object",
+          "before_after_only",
+          "hex density atH64 disappears into generic glowing membrane; tiny pole slivers; rear/front overlap muddies cell ownership; brightness-only receipt"
+        ]
+      },
+      "PH3": {
+        "identity": {
+          "id": "PH3",
+          "name": "hex-field source/body optical transport",
+          "origin": "declared",
+          "anchor": "actual owner",
+          "visibility": "visible",
+          "local_state_difference": "registered cell/source envelope→finite transport→body reception; end/hidden/dead/vent yields0",
+          "partition_reason": "distinct body/hex-state/transport system boundary"
+        },
+        "DeepStructure": {
+          "Core": "PH2の発光状態と実遮蔽からsource/receiver radianceを導出",
+          "Structure": "32 finite ray steps per camera half over1.65m, rgba16float scene/bright/sourceSignal with common alpha",
+          "Surface": "cell radiance/extinction and finite focus0/1 white source; one-pass body reflection"
+        },
+        "PhysicalModel": {
+          "model_kind": "optical_transport",
+          "system_boundary": "same real camera coordinates split atz0; true body alpha between rear/front; same sourceSignal beforepost",
+          "state_variables": "source position/strength, finite linear RGB/extinction/T, irradiance, alpha-composed sourceSignal",
+          "inputs": "PH2 state; PH1 alpha/diffuse proxy; actual contact for known hit focus0; no new world lamp",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "no declared mass simulation or created matter"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "digital state animation is not real collider/pressure/force law"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "finite declared radiance/extinction/source envelope; normalized artwork not measured watts/joules"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "no declared charge simulation or created matter"
+            }
+          },
+          "constitutive_response": "cell radiance/extinction and finite focus0/1 white source; one-pass body reflection",
+          "initial_condition": "existing body; inactive has no field. positive snapshot enters stable without fabricated create event",
+          "boundary_conditions": "same real camera coordinates split atz0; true body alpha between rear/front; same sourceSignal beforepost",
+          "approximation_scope": "stylized digital field and finite orthographic optical/image-material proxy; no measured physical barrier or lens validation"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "finite source support and1.65m×32steps each half",
+          "characteristic_time": "source create peaks140/420ms widths45ms; break80/220ms widths30ms; hit55ms width40ms with finite phase gate (declared E-ms; at fixed2× the corresponding wall intervals halve, game deadline does not)",
+          "dominant_balance": "native H64 information-state topology and body-enclosing protective space over optional optics",
+          "dimensionless_reasoning": "hex metric/shell normalized; unit64px/1.65m; response hop45ms vs650ms finite lifetime",
+          "detail_cutoff": "readable broad hex cells only; perspective/pole compression must not become micro noise"
+        },
+        "OctaDomain": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "focus/layer/sourceSignal"
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "focus/layer/sourceSignal"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "cell radiance/extinction and finite focus0/1 white source; one-pass body reflection",
+              "finite Beer-Lambert T and alpha-occluded sourceSignal"
+            ],
+            "evidence_or_constraint": "focus/layer/sourceSignal"
+          },
+          "Materials": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "focus/layer/sourceSignal"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "focus/layer/sourceSignal"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "focus/layer/sourceSignal"
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "focus/layer/sourceSignal"
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No independent state in this domain; no fabricated heat/fluid/charge/plasma/body force"
+            ],
+            "evidence_or_constraint": "focus/layer/sourceSignal"
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "focus: source belongs to cell22/49; known hit uses actual point unchanged; layer: Beer-Lambert finite extinction with32samples/half; bodyFS: true alpha of source/body MRT",
+          "indirect_evidence": "same cause/owner and shared E phase predict related receiving/field state; no inferred extra body/object",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "required: actual nativeH64 independent main-only and combined all-life",
+          "perceptual_failure_risk": "unoccluded source metadata through body; detached ghost mistaken world source; known-hit sourceShift falsely treated as source move",
+          "cue_roles": [
+            {
+              "cue": "owned white source patch",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            },
+            {
+              "cue": "局所body受光",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            },
+            {
+              "cue": "true alpha/sourceSignal occlusion",
+              "supports": "specific protection cause/owner/state, not generic aura",
+              "reliability_and_overlap": "must hold jointly with transparent protective space and actual event/state; color/glow alone insufficient"
+            }
+          ],
+          "confusable_alternative": "generic glowing membrane / flat electronic garnish / cage / separate world ring",
+          "disambiguating_evidence": "curved hex cell topology, graph registration and adjacent inset response, true owner/body occlusion",
+          "viewing_conditions": "nativeH64 DPR1 dark/light same fixed parameters; full-life and individual observer OFF"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "target-relative +Yup/+Zfront, yaw16 pitch7 orthographic",
+          "normal_field_coherence": "continuous ellipsoid parameterization supporting separated curved hex coverage domains",
+          "curvature_behavior": "fixed enclosing axes; inner hex state boundary contracts .22metric without body/ellipsoid displacement",
+          "silhouette_logic": "hex cells collectively enclose body with transparent interior; no cage/tier/opaque cup substitute",
+          "contact_relation": "actual point unchanged as focus; normalized nearest response cell is digital receipt mapping, not claimed geometric collision",
+          "spatial_relation": "rear cells/source→original body alpha→front cells/source→OBS"
+        },
+        "StateDynamics": {
+          "state_space_extent": "source position/strength, finite linear RGB/extinction/T, irradiance, alpha-composed sourceSignal",
+          "transition_path_character": "intermittent",
+          "local_stability_type": "stable",
+          "convergence_behavior": "source Gaussian envelope gated by registered cells and finite phase; inactive gives0",
+          "damping_profile": "finite smoothstep/Gaussian gates; no independent oscillator/physical damping measurement",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "source Gaussian envelope gated by registered cells and finite phase; inactive gives0",
+          "transition_failure_risk": "unoccluded source metadata through body; detached ghost mistaken world source; known-hit sourceShift falsely treated as source move",
+          "driving_input": "PH2 state; PH1 alpha/diffuse proxy; actual contact for known hit focus0; no new world lamp; presentation phase reads eEffectNow-startedAt, not server elapsed gameplay time",
+          "response_timescale": "source create peaks140/420ms widths45ms; break80/220ms widths30ms; hit55ms width40ms with finite phase gate",
+          "phase_relation": "same submitted canonical E age and display rate for VFX/SFX; server durability unchanged",
+          "stability_condition": "finite valid inputs/live owner; positive durability maintains stable; exact event duration/owner/cause guards; off on hide/dead/vent; E age half-open [0,duration), future rejected; zero rate holds E age"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Optics -> PH3.Optics: cell coverage/source envelopes",
+            "PH3.Optics -> PH1.Optics: finite area/focus irradiance"
+          ],
+          "SecondaryCouplings": [
+            "PH1.Materials -> PH3.Optics: alpha occlusion and one-pass reflected output"
+          ],
+          "CausalAssessment": {
+            "intervention": "create140でsourceShiftだけ、observerCenterだけ、genuine opaque source tileだけを独立変更",
+            "predicted_response": "S動でghostG移動; C動のみはG2.6Cでworld unchanged; real opaque source stops its optical image",
+            "competing_explanation": "near blurやwhole-field OFFの差をlens dependency証明にしてしまう",
+            "uncertainty": "CPU math tested narrowly; GPU pixels/H64/continuous/listening not yet observed; artistic hypotheses not accepted by contract",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH2",
+              "target": "PH3",
+              "mechanism": "density: registered hex coverage and finite cell/source emission",
+              "consequence": "hex protection state produces local emitted radiance/sourceSignal"
+            },
+            {
+              "source": "PH3",
+              "target": "PH1",
+              "mechanism": "received: six finite cell-area nodes and two owned foci, cosine/distance diffuse approximation",
+              "consequence": "local reflected output only inside original bitmap alpha"
+            },
+            {
+              "source": "PH1",
+              "target": "PH3",
+              "mechanism": "bodyFS alpha occludes rear and contributes one-pass receiver radiance to MRT",
+              "consequence": "same source visibility occlusion and body reflected output; no recursive feedback to field"
+            }
+          ],
+          "observation_dependency": [
+            {
+              "source": "OBS1",
+              "target": "PH3",
+              "basis": "same finite radiance MRT"
+            },
+            {
+              "source": "OBS2",
+              "target": "PH3",
+              "basis": "visible sourceSignal at real source projection controls fixed-axis diffraction"
+            },
+            {
+              "source": "OBS3",
+              "target": "PH3",
+              "basis": "same visible sourceSignal and S/C determines finite non-annular pupil image"
+            },
+            {
+              "source": "OBS4",
+              "target": "PH3",
+              "basis": "final linear→sRGB display encoding of composed radiance and original body"
+            }
+          ],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "focus: source belongs to cell22/49; known hit uses actual point unchanged",
+            "layer: Beer-Lambert finite extinction with32samples/half",
+            "bodyFS: true alpha of source/body MRT"
+          ],
+          "indirect": [],
+          "candidates": [
+            "occlusion",
+            "attenuation",
+            "reflection_change",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH1",
+              "change": "local source-rooted diffuse reflection; no force/heat/durability/material simulation"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH3.PhysicalModel / StateDynamics",
+          "retained_cues": [
+            "owned white source patch",
+            "局所body受光",
+            "true alpha/sourceSignal occlusion"
+          ],
+          "simplification": "finite cell/ray transport and fixed sprite proxy; actual projections must validate intended cues",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable: multiple existing structural evidence axes applied",
+          "axes": {
+            "contrast": [
+              "white[8,8,7.6] peak retained, no brightness cap",
+              "rim and transparent cell interiors distinguish information state"
+            ],
+            "material_response": [
+              "finite extinction1.35 and emission4.2 per normalized metre",
+              "fixed diffuse receiving proxy; no measured BRDF/thermal accuracy claim"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "logical_causality_without_evidence",
+          "uniform_response",
+          "observation_operation_registered_as_PH",
+          "latent_forced_visible_object",
+          "before_after_only",
+          "unoccluded source metadata through body; detached ghost mistaken world source; known-hit sourceShift falsely treated as source move"
+        ]
+      }
+    },
+    "Acceptance": {
+      "all_PH_have_required_full_structure": true,
+      "visible_implicit_latent_have_same_field_set": true,
+      "OBS_not_in_PH_registry": true,
+      "PIA_resolved_as_identification_lifecycle": true
+    }
+  },
+  "ObservationIntegrationTemplate": {
+    "ObservationRegistry": {
+      "OBS1": {
+        "operation_type": "posteffect",
+        "input_references": [
+          "PH2",
+          "PH3",
+          "PH1"
+        ],
+        "target_mask": "actual body/field-occluded radiance near each source/localfield",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": "7DPRpx near/.34 same emitted MRT",
+        "protected_regions": [
+          "originalcharacter identity",
+          "contact/protective boundary"
+        ],
+        "output_consequence": "source-bound local lightspread, not global wash",
+        "dependencies": [
+          "PH2",
+          "PH3",
+          "PH1"
+        ],
+        "sampling_consequence": "2pass15tap separable finiteGPUfilter"
+      },
+      "OBS2": {
+        "operation_type": "lensflare",
+        "input_references": [
+          "PH3"
+        ],
+        "target_mask": "visible sourceSignal at realprojectedsource",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": "fixed-31.5degree10x6H64 apodized fouredge diffraction kernel",
+        "protected_regions": [
+          "primary protective volume",
+          "receiver"
+        ],
+        "output_consequence": "visible sourceandreceived cause sparkle; sameangle everywhere",
+        "dependencies": [
+          "PH3"
+        ],
+        "sampling_consequence": "analytic PSF approximation, finiteaperture; not exact Fraunhofer prediction"
+      },
+      "OBS3": {
+        "operation_type": "lensflare",
+        "input_references": [
+          "PH3"
+        ],
+        "target_mask": "one paraxial two-reflection pupil image percurrentvisible source",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": "one non-annular defocused pupil: axes8×6H64, max12px support, gain.065, spectral .72/.84/1.08",
+        "protected_regions": [
+          "body face",
+          "primaryfield cause"
+        ],
+        "output_consequence": "G=C-1.6(S-C), actual visible sourceSignal required; optional supporting optical image, never second world light",
+        "dependencies": [
+          "PH3"
+        ],
+        "sampling_consequence": "effective paraxial relay m=-1.6 / determinant1; filled Gaussian-apodized pupil, no closed annular ring. Stylized approximation, not measured glass"
+      },
+      "OBS4": {
+        "operation_type": "tone",
+        "input_references": [
+          "PH1",
+          "PH2",
+          "PH3",
+          "OBS1",
+          "OBS2",
+          "OBS3",
+          "display_condition"
+        ],
+        "target_mask": "full current viewport composed linear scene",
+        "stage": "display",
+        "composite_method": "replace_with_constraint",
+        "intensity": "manual sRGB transfer only; no tone-map/peak cap",
+        "protected_regions": [
+          "original body",
+          "hex topology",
+          "source white"
+        ],
+        "output_consequence": "linear HDR composite encoded to presentation surface",
+        "dependencies": [
+          "PH1",
+          "PH2",
+          "PH3",
+          "OBS1",
+          "OBS2",
+          "OBS3",
+          "display_condition"
+        ],
+        "sampling_consequence": "one final transfer at actual viewport resolution; no additional blur or resampling"
+      }
+    },
+    "SamplingContract": {
+      "output_resolution": "actualnativeviewport",
+      "intended_display_scale": "H64/DPR1 normalgallery980x620 and465x430, nevermagnifyactor",
+      "spatial_detail_policy": "72 curved hex domains, broad cell inset state, no particle carpet; inspect projection compression atnativeH64",
+      "temporal_sampling": "Image reference instant, no generation cadence/exposure blur; runtime normalized E age with rate1 and fixed2× continuously verified separately",
+      "filter_and_resample_policy": "rgba16float linearHDR; sourcebodyalpha priorOBS; only finalmanualsRGB"
+    },
+    "ImageIntegration": {
+      "ToneColor": "OBS4 linear→sRGB final encoding; no tone mapping or brightness cap",
+      "LightIntegration": "PH2/PH3 world transport plus OBS1/OBS2/OBS3 optional source-rooted response",
+      "ShadowDensity": "PH1 true alpha occlusion; genuine optional opaque diagnostic tile, no extra shadow scene",
+      "DepthAir": "not selected: no fog/depth air introduced",
+      "EdgeLine": "PH2 hex world coverage and inner state boundary; no observer-created main geometry",
+      "TextureOutput": "PH1 existing bitmap only; no new E raster; OBS4 final transfer"
+    },
+    "IntensityBudget": {
+      "global_observation_budget": "source/owner phase; primarycurvedfield no suppression",
+      "para": "not_applicable",
+      "flare_gradient": "actualsource radiance→camera aperture/ghost only",
+      "glow": "near7DPRpx .34",
+      "diffusion": "finite authoredkernels",
+      "grain": "none",
+      "chromatic_aberration": "no generaloverlay",
+      "protected_region_priority": "highest: primary hex information-state topology and original receiver",
+      "intentional_departures": [
+        {
+          "OBS_ref": "OBS4",
+          "scope": "owned high-radiance white source regions",
+          "intent_basis": "user permits strong white peaks; no clipping avoidance/dimming; display surface encoding unchanged",
+          "preserved_relations": "hex/body/cause topology and optional OBS remain source-bound; no background correction"
+        }
+      ]
+    },
+    "CompositeValidation": {
+      "contour_preserved": "not_tested",
+      "highlight_clipping": "not_tested",
+      "shadow_crushing": "not_tested",
+      "chroma_displacement": "not_tested",
+      "fine_detail_retention": "not_tested",
+      "protected_background_preserved": "not_applicable"
+    },
+    "Acceptance": {
+      "OBS_separate_from_PH": true,
+      "physical_lensflare_source_binding_preserved": true,
+      "display_artifact_does_not_fake_physical_source": true,
+      "intensity_budget_is_single_source_of_truth": true,
+      "sampling_conditions_and_actual_execution_distinguished": true
+    },
+    "LensFlareField": {
+      "registry_id": "OBS3",
+      "artifact_type": "optical_observation_artifact",
+      "world_anchor": "none",
+      "SourceMapping": {
+        "source_state": "attribute_resolved",
+        "source_id": "PH3",
+        "source_screen_position": "source0/1 world focus→view→cellCenter +[x,-y]*H/1.65; known hit0 actual contact",
+        "source_luminance_rank": "owned white focus peaks; visibleSource alpha-occluded signal required"
+      },
+      "ResponseVisibility": {
+        "level": "low",
+        "reason": "source signal and phase gate; true source/body occlusion; no image when source absent"
+      },
+      "LensModel": {
+        "flare_mode": "source_specific_custom",
+        "coating_strength": "medium: effective normalized .065 throughput, not measured physical glass",
+        "aperture_state": "mid: authored fixed-axis cross and defocused pupil approximation",
+        "anamorphic": false
+      },
+      "SpatialBinding": {
+        "image_center_relation": "G=C-1.6(S-C), C=cellCenter+observerCenter*H/64",
+        "optical_axis_offset": "source-dependent projected S-C",
+        "chain_axis": "one affine conjugate image per visible current focus, not a ghost train"
+      },
+      "Responses": {
+        "Ghost": "OBS3 filled Gaussian-apodized8×6H64 pupil,12px finite support",
+        "Veil": "not selected: preserves transparent protection/interior",
+        "Streak": "OBS2 fixed-31.5degree10×6H64 apodized diffraction at source",
+        "Spectral": "weak .72/.84/1.08 effective transmission bias only; no rainbow"
+      }
+    }
+  },
+  "PEMTemplate": {
+    "Mode": {
+      "phenomenon_equality": true,
+      "focus_phenomenon": "none"
+    },
+    "CausalMesh": {
+      "gaze_path_A": "PH2 registered curved hex boundary→PH1 inside beneficiary",
+      "gaze_path_B": "PH1 local receiving reflection→adjacent PH2 receipt/state boundary",
+      "gaze_target_policy": "standard",
+      "adjustment_reason": "not_applicable: two genuinely different field/body routes",
+      "physical_mesh_required": true,
+      "local_extrema_connected_to_gaze_paths": true
+    },
+    "AttentionControl": {
+      "attention_focus": "hierarchical",
+      "single_requires_explicit_request": true
+    },
+    "Acceptance": {
+      "no_unexplained_isolation": true,
+      "gaze_paths_match_selected_policy_and_explicit_intent": true,
+      "local_peak_returns_to_mesh": true
+    }
+  },
+  "PhenomenonProfileTemplate": {
+    "Profiles": {},
+    "ApplicabilityGuide": {
+      "selections": []
+    },
+    "Acceptance": {
+      "profile_does_not_replace_PH_schema": true,
+      "reactive_profile_only_when_applicable": true
+    },
+    "ProfilePolicy": {
+      "secondary_boost_only": true,
+      "full_PH_structure_still_required": true,
+      "only_selected_profiles_in_design": true
+    },
+    "applicability_rationale": "no simulated fluid, dynamic cloth, skin-state, metal or chemical/phase-change mechanism: PH1 is unchanged existing image receiver, PH2 declared digital state, PH3 optical transport. Preserve full domains and fixed diffuse reflection; do not invent body/cloth material motion just to force a profile"
+  },
+  "GlobalAcceptanceTemplate": {
+    "Requirements": {
+      "PhenomenonRegistry_required": true,
+      "full_PH_structure_required": true,
+      "all_8_domains_required": true,
+      "ObservationRegistry_required_when_OBS_exist": true,
+      "WindCapsule_required": true,
+      "Gravity_required": true,
+      "world_camera_screen_transform_required": true
+    },
+    "ValidationResults": {
+      "StructuralInspection": {
+        "status": "not_run",
+        "checks": {
+          "required_blocks": "not_run",
+          "rule_contracts": "not_run",
+          "PH_OBS_separation": "not_run",
+          "OctaDomain": "not_run",
+          "scientific_fields": "not_run",
+          "coordinate_gravity_wind": "not_run",
+          "template_consolidation": "not_run"
+        }
+      },
+      "SemanticReconciliation": {
+        "status": "not_run",
+        "checks": {
+          "DeclaredIntent_preserved": "not_run",
+          "trigger_resolution": "not_run",
+          "exception_resolution": "not_run",
+          "source_binding": "not_run",
+          "scope_and_dependencies": "not_run",
+          "scientific_consistency": "not_run"
+        }
+      },
+      "RenderObservation": {
+        "status": "not_run",
+        "evidence_source": "none",
+        "checks": {
+          "visual_causality": "not_run",
+          "contour_preservation": "not_run",
+          "clipping_crushing": "not_run",
+          "chroma_detail": "not_run",
+          "contact_projection": "not_run",
+          "temporal_continuity": "not_run",
+          "cue_discrimination_and_sampling": "not_run"
+        }
+      }
+    },
+    "FinalStatus": {
+      "render_status": "NotRun",
+      "specification_status": "Warning",
+      "failure_reasons": []
+    },
+    "ComparativeEvaluation": {
+      "status": "planned",
+      "question": "does primary hex/adjacency state read natively without optional observers, and does source-rooted optics improve it?",
+      "changed_factor": "individual near/cross/pupil OFF; independent source/observer move; opaque source occlusion; E rate1 vs2",
+      "controlled_conditions": "same r9 source/hash, actual H64 body quad/crop, DPR1, same phase/background/cause, reset each case",
+      "scene_set": "create/stable/known and unknown hit/break/off; dual dark/light",
+      "repetitions_and_order": "default reset then one intervention; full continuous run at each declared rate; order logged",
+      "criteria": "digital protective space + adjacent inset + real source/occlusion + clean finite stop",
+      "evidence": "planned native capture/clock/audio-submission logs, no observation yet",
+      "result_and_limitations": "not_run; CPU topology/structure checks do not certify image, cause or artistic quality"
+    },
+    "OutcomeEvaluation": {
+      "intent_alignment": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "rationale": "new user-directed hex topology authored; native output not yet seen"
+      },
+      "artistic_effect": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "evaluator_basis": "native continuous/H64 later Sol/root acceptance",
+        "strengths": "design hypothesis only: hex grouping and neighbor state have explicit code",
+        "limitations": "pole compression/overlap/readability/digital meaning and optical image are unverified"
+      }
+    }
+  },
+  "CharacterPolicy": {
+    "trigger": "human_character_exists",
+    "GeneralCharacter": {
+      "character_id": "sophia-fixture",
+      "declared_attributes": "existing exact body.png/crop/pose; no age/marital/role alteration or new demographic assertion",
+      "unspecified_attributes_not_filled_from_presets": true,
+      "male_expression_policy": "not_applicable: no new character specification"
+    },
+    "FemalePreset": {
+      "applies_if_explicitly_selected": true,
+      "selected": "none",
+      "expanded_text": {
+        "A": "聖女 / 20歳 / ライトノベル主人公 / 未婚（LN_SAINT適用）",
+        "B": "ゆるふわ系 / 16歳 / ライトノベル主人公 / 未婚 / 甘い雰囲気",
+        "C": "公爵令嬢 / 16歳 / ライトノベル主人公 / 未婚"
+      },
+      "output_selected_only": true
+    },
+    "LN_SAINT": {
+      "religious_symbol_auto_completion": "disabled"
+    },
+    "Acceptance": {
+      "general_attributes_preserved": true,
+      "preset_not_auto_selected": true,
+      "FemaleType_B_text_consistent": true
+    }
+  },
+  "BeautifulPoseCapsule": {
+    "trigger": "character_body_exists",
+    "PosePhase": "STATIC",
+    "PoseType": "standing",
+    "Common": {
+      "intent": "preserve original receiving pose while common-action digital defense acts around it",
+      "primary_axis": "original body quad vertical; no new anatomical estimate",
+      "gaze_or_orientation": "original bitmap orientation retained; camera yaw16/pitch7 for field only",
+      "contact_points": [
+        "original fixture support as provided; no measured limb contact added"
+      ],
+      "COM_or_support_center": "original support unchanged; center of mass not estimated from bitmap",
+      "reaction_or_propulsion": "none introduced; protection is declared optical field, not force or pose displacement",
+      "limb_or_appendage_roles": "original hands/arms/legs as input fixture, no new acting roles",
+      "recovery": "original pose before/during/after; no pose recovery animation authored",
+      "PH_mechanics_refs": {
+        "PhysicalModel": "PH1.PhysicalModel",
+        "ScaleRegime": "PH1.ScaleRegime",
+        "StateDynamics": "PH1.StateDynamics"
+      },
+      "static_dynamic_mechanics": {
+        "mode": "static_balance",
+        "static_balance_or_support": "existing image support; no new COM or force calculation",
+        "momentum_propulsion_or_contact_change": "not_applicable: no new body momentum/contact change"
+      },
+      "perceptual_readability_ref": {
+        "PerceptualReadability": "PH1.PerceptualReadability",
+        "joint_and_contact_cues": [
+          "unchanged crop/pose/alpha",
+          "field rear→body→front true occlusion"
+        ]
+      }
+    },
+    "StandingReferenceOnly": {
+      "applies_if": "standing_and_values_fit_action",
+      "support_leg_load": "not_applied: preserve input pose, no load measurement",
+      "primary_axis_camera_slant": "not_applied: preserve input pose, no anatomical slant measurement",
+      "action_axis_difference": "not_applied: no new action pose axis"
+    },
+    "Acceptance": {
+      "pose_type_specific_mechanics_complete": true,
+      "standing_defaults_not_forced_on_other_types": true,
+      "contact_COM_force_axis_roles_recovery_present": true
+    }
+  },
+  "VFX": {
+    "trigger": "explicit",
+    "world_registration": "PhenomenonSystemTemplate.PhenomenonRegistry",
+    "observation_registration": "ObservationIntegrationTemplate.ObservationRegistry",
+    "design_intent": {
+      "subject_and_action": "Barrier r9 user-directed many hex cells as digital protective field",
+      "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+      "primary_read": "body-enclosing transparent hex coverage/state; registration and adjacent receipt, not generic aura",
+      "layering_basis": "field state, original receiver/transport and source-bound observation have different boundaries/causes; no layer quota"
+    },
+    "layers": [
+      {
+        "layer_id": "W-Hex",
+        "role": "primary_form",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "existing user-declared hex common-action field/body or its selected source-bound observer realization"
+        },
+        "PH_refs": [
+          "PH2"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "curved hex coverage establishes and responds as one protection system",
+        "spatial_structure": {
+          "anchor_and_transform": "actual owner-relative world→authored view→native H64",
+          "extent_orientation_depth": "axes1.04/1.20/.80, shell.055; body1.65m; z0 front/rear split",
+          "macro": "transparent collective enclosure",
+          "meso": "persistent six-edge outer cell plus contracted inner-state hex",
+          "micro": "no extra particles/noise; actual native sampling must preserve primary cues",
+          "edge_and_occlusion": "true body alpha shared by scene/bright/sourceSignal before observers"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declared_fantasy parametric coverage with graph law",
+          "emission_opacity_density": "finite emission/extinction/alpha separately; observer additive or transfer only, no new physical source",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCM and same source spectrum/visibility",
+          "model_refs": "PH2.PhysicalModel"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "same cause/owner and normalized canonical E age; authoritative gameplay durability separate",
+          "distribution_and_correlation": "72-cell graph with known contact mapped to one response cell; no uncorrelated population",
+          "onset_peak_decay": "create650Ems, hit650Ems, break480Ems; positive durability stable",
+          "state_and_sampling_refs": "PH2.StateDynamics/PH3.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "premultiplied linear HDR MRT: rear→body→front; same alpha and finite support",
+          "protected_cues": "hex digital grouping/adjacent response, transparent protection space and original body",
+          "failure_to_avoid": "generic membrane/electronic overlay or separate optical object; missing per-cell passes; no brightness cap as fix"
+        }
+      },
+      {
+        "layer_id": "W-Transport",
+        "role": "environment_response",
+        "domain": "world",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "existing user-declared hex common-action field/body or its selected source-bound observer realization"
+        },
+        "PH_refs": [
+          "PH1",
+          "PH3"
+        ],
+        "OBS_refs": [],
+        "function_and_visible_result": "same actual cell/focus radiance reaches original body and is occluded",
+        "spatial_structure": {
+          "anchor_and_transform": "actual owner-relative world→authored view→native H64",
+          "extent_orientation_depth": "axes1.04/1.20/.80, shell.055; body1.65m; z0 front/rear split",
+          "macro": "original receiving body within field",
+          "meso": "six cell-area receiving nodes and true rear/front optical transport",
+          "micro": "no extra particles/noise; actual native sampling must preserve primary cues",
+          "edge_and_occlusion": "true body alpha shared by scene/bright/sourceSignal before observers"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "finite optical transport/image diffuse proxy",
+          "emission_opacity_density": "finite emission/extinction/alpha separately; observer additive or transfer only, no new physical source",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCM and same source spectrum/visibility",
+          "model_refs": "PH1.PhysicalModel,PH3.PhysicalModel"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "same cause/owner and normalized canonical E age; authoritative gameplay durability separate",
+          "distribution_and_correlation": "72-cell graph with known contact mapped to one response cell; no uncorrelated population",
+          "onset_peak_decay": "source peaks140/420,55,80/220Ems; same finite event gates",
+          "state_and_sampling_refs": "PH2.StateDynamics/PH3.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "premultiplied linear HDR MRT: rear→body→front; same alpha and finite support",
+          "protected_cues": "hex digital grouping/adjacent response, transparent protection space and original body",
+          "failure_to_avoid": "generic membrane/electronic overlay or separate optical object; missing per-cell passes; no brightness cap as fix"
+        }
+      },
+      {
+        "layer_id": "O-Response",
+        "role": "observation_support",
+        "domain": "observation",
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "existing user-declared hex common-action field/body or its selected source-bound observer realization"
+        },
+        "PH_refs": [],
+        "OBS_refs": [
+          "OBS1",
+          "OBS2",
+          "OBS3",
+          "OBS4"
+        ],
+        "function_and_visible_result": "source-bound local near/aperture/pupil and final display encoding",
+        "spatial_structure": {
+          "anchor_and_transform": "actual occluded source projection/current viewport",
+          "extent_orientation_depth": "finite near7px/cross10×6/pupil12px support or fullviewport transfer",
+          "macro": "primary unchanged when observer layers off",
+          "meso": "finite masks/source projection; no world geometry created",
+          "micro": "no extra particles/noise; actual native sampling must preserve primary cues",
+          "edge_and_occlusion": "true body alpha shared by scene/bright/sourceSignal before observers"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "camera/filter/display response, not PH",
+          "emission_opacity_density": "finite emission/extinction/alpha separately; observer additive or transfer only, no new physical source",
+          "color_and_light_response": "ExtremumDesignColorTemplate.CCM and same source spectrum/visibility",
+          "model_refs": "OBS1,OBS2,OBS3,OBS4"
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "same cause/owner and normalized canonical E age; authoritative gameplay durability separate",
+          "distribution_and_correlation": "actual sourceSignal/phase gates every observer response",
+          "onset_peak_decay": "all derive current sourceSignal/phase; encoding remains for original body when E off",
+          "state_and_sampling_refs": "PH2.StateDynamics/PH3.StateDynamics; ObservationIntegrationTemplate.SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "near independent per-cell filtering then source optical response and final sRGB",
+          "protected_cues": "hex digital grouping/adjacent response, transparent protection space and original body",
+          "failure_to_avoid": "generic membrane/electronic overlay or separate optical object; missing per-cell passes; no brightness cap as fix"
+        }
+      }
+    ],
+    "interlayer_links": [
+      {
+        "source_layer": "W-Hex",
+        "target_layer": "W-Transport",
+        "relation_type": "physical_influence",
+        "mechanism_and_consequence": "hex registration supplies finite field/source radiance to receiver transport",
+        "foundation_binding": "PH2→PH3 and PH3→PH1 physical links"
+      },
+      {
+        "source_layer": "O-Response",
+        "target_layer": "W-Transport",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "source visibility and composed radiance required for local observer response",
+        "foundation_binding": "OBS1/2/3→PH3 and OBS4 final transfer"
+      }
+    ],
+    "causal_path": {
+      "input": "typed actual receipt or positive actual durability snapshot, same owner/contact",
+      "carrier_PH": "PH2",
+      "receiver": "PH1 via PH3 optical transport",
+      "ScaleRegime_ref": "PH2.ScaleRegime",
+      "StateDynamics_ref": "PH2.StateDynamics",
+      "ReactivePhaseChange_ref": "not_applicable: no chemical/thermodynamic phase change"
+    },
+    "orchestration": {
+      "common_time_basis": "Image reference keyframe instant with zero deliberate exposure blur; runtime E clock contract separate",
+      "layer_phase_relations": "same submitted visual age/rate for all field/source/body/OBS/audio; stable durability stays authoritative",
+      "environment_response": "PH1 local diffuse receiving/alpha occlusion only; no added medium motion",
+      "visual_hierarchy": "hex state/protection then receiver then optional optical response",
+      "bullet_time": "not_applicable: no explicit bullet time; display E2 is user host scale, not gameplay slow motion"
+    },
+    "output_integration": {
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+      "LDM_ref": "LuminanceDynamicsModule",
+      "composite_order": "world alpha ownership→near→source diffraction/pupil→OBS4 final sRGB",
+      "color_alpha_contract": "linear rgba16float MRT premultiplied src1,dst1-srcAlpha; alpha0 emissive points; one final encode",
+      "scale_adaptation": "native H64 no magnification to claim pass; cell/pole compression pending actual evidence"
+    },
+    "validation_plan": {
+      "layer_checks": "main-only cell geometry/state vs body receiver/OBS OFF; actual vertex/instance/scissor checks",
+      "composite_checks": "true alpha/no false source through body; both near cells submitted; strong white allowed, no background correction",
+      "temporal_checks": "reference phases and separate full continuous runtime rate1/fixed2/0/resume tests",
+      "actual_results_ref": "GlobalAcceptanceTemplate.ValidationResults"
+    },
+    "Acceptance": {
+      "world_VFX_registered_as_PH": true,
+      "observation_only_effects_not_misregistered_as_VFX_PH": true,
+      "layer_roles_scales_and_relations_explicit": true,
+      "layer_count_does_not_force_new_content_or_PH_partition": true,
+      "material_motion_environment_and_composite_consistent": true,
+      "shared_intensity_and_sampling_contracts_preserved": true,
+      "structural_requirements_not_reported_as_render_evidence": true
+    }
+  },
+  "PostEffects": {
+    "trigger": {
+      "ordinary_posteffects": false,
+      "beta_targets": [
+        "PH2",
+        "PH3",
+        "PH1"
+      ]
+    },
+    "selection": {
+      "mode": "exact_selected_operations",
+      "scope_resolution": "attribute_resolved_target_and_scope",
+      "exact_selected_operations": [
+        "OBS1 finite local radiance near",
+        "OBS4 final sRGB display transform"
+      ]
+    },
+    "autonomous_activation": {
+      "physical_causality_input_required": false,
+      "registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract"
+    },
+    "SPCA": {
+      "applies_if": "world_internal_PH_local_peak_selected",
+      "evidence_types_standard_two_of": [
+        "decay",
+        "occlusion"
+      ],
+      "explicit_intent_adjustment": "not_applicable: PH VisualProjection retains all required cues",
+      "PostEffects_alone_does_not_require_new_PH": true
+    },
+    "global_posteffects": {
+      "applies": true,
+      "exact_OBS_operations": [
+        "OBS4 final sRGB transfer only"
+      ],
+      "OBS_refs": [
+        "OBS4"
+      ]
+    },
+    "local_posteffects": {
+      "applies": true,
+      "targets": [
+        "PH2",
+        "PH3",
+        "PH1"
+      ],
+      "exact_OBS_operations": [
+        "OBS1 source-bound radiance near"
+      ],
+      "OBS_refs": [
+        "OBS1"
+      ]
+    },
+    "operation_contract": {
+      "required_fields": [
+        "input_references",
+        "target_mask",
+        "stage",
+        "composite_method",
+        "intensity",
+        "protected_regions",
+        "sampling_consequence"
+      ],
+      "sampling_consequence": "native viewport/H64; Image cadence not_applicable, no blur exposure; runtime own continuous tests"
+    },
+    "Acceptance": {
+      "exact_selected_operation_does_not_infer_layers": true,
+      "screen_signal_appearance_integrated_into_VFX_layers": true,
+      "source_mask_stage_composite_and_sampling_defined": true,
+      "unselected_operations_not_inferred": true,
+      "physical_mechanism_not_asserted_without_source": true,
+      "global_local_scope_unambiguous": true,
+      "legacy_five_domain_reference_absent": true
+    }
+  },
+  "LuminanceDynamicsModule": {
+    "trigger": {
+      "explicit_VFX": true,
+      "explicit_PostEffects": false,
+      "inferred_requires_luminance_dynamics": false
+    },
+    "omitted_if_not_enabled": true,
+    "target_metrics": {
+      "target_size": "field axes around1.65m receiving body",
+      "camera_distance": "orthographic registered fixture",
+      "screen_occupancy": "field roughly84×100px estimate in980×620; measure actual visible state separately",
+      "readability_priority": "high"
+    },
+    "Image": {
+      "spatial_envelope": "registered hex domain rim/quiet interior/inset and finite owned focus coverage",
+      "local_contrast_budget": "ObservationIntegrationTemplate.IntensityBudget; cell-state structure primary, white8 retained"
+    },
+    "Video": {
+      "temporal_envelope": "not Video generation; runtime graph/source gates documented in PH StateDynamics and E-clock contract",
+      "micro_variation": "none: not declared or automatically authorized",
+      "anti_flicker": "preserve intended graph transitions; inspect native sampling/pole aliases instead of reducing source power"
+    },
+    "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+    "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+    "sampling_consequence": "Image reference instant no exposure smear; runtime continuous at submitted host E rate",
+    "AlphaBackground": {
+      "enabled": false,
+      "required_background_if_enabled": "#000000"
+    },
+    "alpha_ref": "LuminanceDynamicsModule.AlphaBackground",
+    "ActivationExclusions": {
+      "non_emissive_particles_only": "no_auto_activation",
+      "grain_only": "no_auto_activation"
+    },
+    "Acceptance": {
+      "mode_specific_envelope": true,
+      "numeric_defaults_subordinate_to_target_metrics": true,
+      "no_unwanted_global_luma_lift": true,
+      "screen_processing_stays_in_observation_layer": true,
+      "physical_mechanism_not_asserted_without_source": true,
+      "screen_signal_appearance_integrated_into_VFX_layers": true,
+      "source_mask_stage_composite_and_sampling_defined": true,
+      "unselected_operations_not_inferred": true
+    }
+  },
+  "ECodeImplementation": {
+    "trigger": "executable_runtime_E_code_explicit",
+    "output_kind": "executable_effect_source_not_image_generation",
+    "source_revision": {
+      "commit": "37eb4bdfe59f0dc075f9b4333b7d6af76b784a88",
+      "base_blob": "8a908495ae1f9b7175e00384ab88c50e5c78bd43",
+      "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834"
+    },
+    "target_runtime": "WebGPU only; existing player bitmap fixture; no new E image",
+    "source_and_time_contract": "same cause/player/world body + actual contact; submittedClock canonical eEffectNow-startedAt and displayETimeScale; server durability separate",
+    "world_PH_refs": [
+      "PH1",
+      "PH2",
+      "PH3"
+    ],
+    "observation_OBS_refs": [
+      "OBS1",
+      "OBS2",
+      "OBS3",
+      "OBS4"
+    ],
+    "implementation_artifacts": [
+      "../../artist.mjs",
+      "../../design.mjs",
+      "../../world-shader.mjs",
+      "../../post-shader.mjs",
+      "../../projection.mjs",
+      "../../sfx-score.mjs",
+      "e-clock-contract.mjs"
+    ],
+    "applicable_rule_evidence": "RULE-CODE-EVIDENCE.json: exact rule→authored source→observable consequence→evidence type/status; no generated-image request",
+    "validation": {
+      "syntax_and_shader": "not_run",
+      "actual_GPU_pixels_and_timing": "not_run",
+      "game_event_and_SFX": "not_run"
+    },
+    "Acceptance": {
+      "baseline_and_selected_extensions_preserved": true,
+      "image_generation_not_implied": true,
+      "runtime_code_and_visual_acceptance_distinguished": true
+    },
+    "WireNormalization": {
+      "serialized_id": "id→normalized eventId/dedup",
+      "discriminator": "reviewed type+variant→helper type+cause only",
+      "owner": "targetId created/timed-bust-break; playerId hit/durability-broken",
+      "break": "server preparation-barrier-hit/variant durability-broken→internal helper durability-broken",
+      "clock": "receipt-local startedAt→helper startedAtMs; subsequent canonical eEffectNow absolute timestamp",
+      "duration": "wire durationMs metadata separate from authored650/480ms",
+      "contact": "no wire contact asserted; actual contact evidence only, otherwise declared unknown cell22",
+      "no_serialized_claim": [
+        "causeId",
+        "eventId",
+        "startedAtMs"
+      ],
+      "implementation": "e-clock-contract.mjs normalizeWireEvent"
+    }
+  },
+  "ApplicabilityAudit": {
+    "selected": [
+      "VFX explicit",
+      "ECodeImplementation explicit",
+      "LDM due VFX",
+      "PostEffects only exact source near/display transfer",
+      "LensFlareField OBS2/3 effective aperture/pupil",
+      "CharacterPolicy and BeautifulPose original human fixture"
+    ],
+    "not_selected": {
+      "KeywordExpansion": "no registered v/f/o keywords supplied; no invented expansion",
+      "GradientAnchorPolicy": "no independent hue gradient; rim/interior are same source hue with state brightness, white source separate; no numeric color quota",
+      "MagicArchitecture": "no explicit Magic/MagicArchitecture keyword; action name Barrier does not enable magic preset",
+      "VideoGenerationPolicy": "code E request; serialized B design is Image/design_only frame family, not video generation",
+      "ReactivePhaseChange": "digital registration is not chemical/thermal phase change"
+    },
+    "rules_are_requirements_not_results": true
+  },
+  "HostClockContract": {
+    "clockCall": "eEffectNow(effect,data,wallNow)",
+    "returns": "absolute visual timestamp, not elapsed seconds",
+    "age": "eEffectNow - effect.startedAt",
+    "bodyOwnership": "canonical eClockStartedAt/eClockRoomId/player",
+    "accumulator": "eVisualTime(owner,data); frameDelta * displayETimeScale(owner,data)",
+    "rate": "same submitted displayETimeScale for VFX and SFX; fixed movement ACC2 yields2; otherwise canonical actor/display scale",
+    "native": "explicit simulated default rate1; host E2 must be separately verified",
+    "doNot": "multiply already computed age by rate again; alter server gameplay durability/deadlines; treat waveform rate1 reference as host fixed rate",
+    "zeroRate": "hold visual age; pause/disconnect audio preserving cursor; resume same cause offset, no new receipt"
+  }
+}

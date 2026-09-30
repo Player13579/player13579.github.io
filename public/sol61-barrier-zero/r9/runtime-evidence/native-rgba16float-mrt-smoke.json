@@ -1,0 +1,29 @@
+{
+  "classification": "native technical pipeline smoke only; not visual-quality, listening, game-integration, or adoption acceptance",
+  "supersededAttempt": "An earlier adapter gate requested the nonexistent GPUFeatureName float16-blendable. That gate was removed; this was a false gate, not a hardware failure.",
+  "verificationUrlQuery": "verify=barrier-r9-native&fresh=2",
+  "nativeWebGpu": {
+    "adapter": { "vendor": "intel", "architecture": "gen-12lp" },
+    "canvasFormat": "bgra8unorm",
+    "worldMrtFormat": "rgba16float",
+    "shaderModuleMessages": { "world": [], "post": [] },
+    "submitted": true,
+    "laterFrameConfirmed": true,
+    "gpuErrors": [],
+    "gpuFault": null
+  },
+  "fixture": {
+    "stage": "create",
+    "ageMs": 140,
+    "canvas": [980, 620],
+    "actorHeight": 64,
+    "dualDarkLight": true,
+    "uniformBytes": 128,
+    "submitId": 5,
+    "serial": 4,
+    "drawPasses": { "rear": 2, "rearPoint": 1, "body": 1, "front": 2, "frontPoint": 1 },
+    "cellScissors": [[195, 252, 100, 116], [685, 252, 100, 116]],
+    "audio": { "verification": true, "contextCount": 0, "activeVoices": 0, "gain": 0 }
+  },
+  "limits": ["No pixel readability or visual quality conclusion", "Listening not run", "Game integration not run", "Adoption pending"]
+}

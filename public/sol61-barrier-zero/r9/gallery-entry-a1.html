@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barrier · GPT-6.1-Sol r9</title>
+<style>
+html,body{margin:0;min-height:100%;background:#10151a;color:#e8edf1;font:14px system-ui,sans-serif}main{max-width:980px;margin:0 auto;padding:12px}h1{font-size:16px;font-weight:600;margin:0 0 8px}#status{margin:0 0 8px;color:#b8c5d0}canvas{display:block;width:980px;height:620px;max-width:100%;margin:auto;aspect-ratio:49/31;background:#10151a}.embed main{max-width:none;padding:0}.embed h1,.embed #status{display:none}
+</style></head><body><main><h1>Barrier · GPT-6.1-Sol r9</h1><p id="status">Starting automatic WebGPU replay…</p><canvas id="surface" width="980" height="620" data-logical-width="980" data-actor-height="64" aria-label="Barrier effect WebGPU surface"></canvas></main>
+<script type="module">
+import {createBarrierRuntime} from './runtime.mjs';
+import {createBarrierGalleryLoop,normalizeDisplayRate} from './gallery-clock-a1.mjs';
+const query=new URL(location.href).searchParams,verification=query.has('verify'),embedded=query.has('embed');
+if(embedded)document.body.classList.add('embed');
+const canvas=document.querySelector('#surface'),status=document.querySelector('#status');
+try{
+ const runtime=await createBarrierRuntime(canvas,{verification,embedded});
+ const loop=createBarrierGalleryLoop(runtime,{rate:normalizeDisplayRate(query.get('rate')),verify:verification});
+ window.__barrierR9Gallery=loop;
+ loop.start();
+ status.textContent=verification?'Verification replay · audio permanently zero':'Automatic replay · ordinary finite SFX waits for a user gesture';
+}catch(error){
+ status.textContent=`WebGPU startup failed: ${error.message}`;
+ window.__barrierR9GalleryFailure=String(error?.stack??error);
+}
+</script></body></html>

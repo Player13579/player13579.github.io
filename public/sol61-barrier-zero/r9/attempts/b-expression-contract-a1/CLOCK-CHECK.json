@@ -1,0 +1,39 @@
+{
+  "scope": "Executed contract CPU simulations of exact canonical absolute E-clock semantics; no actual app/GPU/audio execution",
+  "status": "pass",
+  "tests": [
+    {
+      "name": "native1: absolute effectNow minus startedAt, not relative timestamp",
+      "status": "pass"
+    },
+    {
+      "name": "host2: already accumulated E age is not multiplied again; shader/audio share55Ems",
+      "status": "pass"
+    },
+    {
+      "name": "half-open/future behavior and stable durable fallback",
+      "status": "pass"
+    },
+    {
+      "name": "2x transient expires at325wallms while gameplay durability unchanged",
+      "status": "pass"
+    },
+    {
+      "name": "rate changes consume only accumulated delta; zero rate holds cursor/audio suppressed",
+      "status": "pass"
+    },
+    {
+      "name": "zero-durability break proceeds on E clock, hide/death/vent stop both",
+      "status": "pass"
+    },
+    {
+      "name": "all immutable24 source files remain unchanged including waveform/visual code",
+      "status": "pass"
+    }
+  ],
+  "limits": [
+    "Caller must use actual canonical eEffectNow/displayETimeScale and source-cause dedup",
+    "Native default1 does not establish host2 runtime",
+    "AudioContext pause/resume/re-rate scheduling remains faithful adapter validation"
+  ]
+}
