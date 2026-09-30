@@ -1,0 +1,77 @@
+{
+  "id": "sol61-cafeteria-room-e-r2",
+  "original": {
+    "path": "assets/gpt-map-history/cafeteria-20260923-attempt-04.png",
+    "size": [
+      1305,
+      1206
+    ],
+    "sha256": "c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65",
+    "sample": "rgba8unorm linear sampler exactdecode inworld; no edit/warp"
+  },
+  "uniform": {
+    "bytes": 64,
+    "blocks": [
+      "viewportTime",
+      "gates",
+      "more",
+      "sourceSize"
+    ],
+    "producer": "design.mjs uniformFloats",
+    "time": "already accumulated room E seconds, same audio cursor/rate; no double scaling",
+    "rate": "native1; host fixedACC2override2 if applies, actual host accumulator integration pending"
+  },
+  "draws": {
+    "world": {
+      "vertices": 3,
+      "entry": "vertex/fragment",
+      "targets": [
+        "rgba16float scene",
+        "rgba16float radiance"
+      ],
+      "blend": "none",
+      "bindings": [
+        "0uniform",
+        "1originalTexture",
+        "2linearSampler"
+      ]
+    },
+    "post": {
+      "vertices": 3,
+      "entry": "vertex/finish",
+      "target": "bgra8unorm manualencode",
+      "bindings": [
+        "0uniform",
+        "1sceneTexture",
+        "2radianceTexture",
+        "3linearSampler"
+      ]
+    }
+  },
+  "fixtures": {
+    "full": [
+      930,
+      860
+    ],
+    "half": [
+      465,
+      430
+    ],
+    "critical_times_seconds": [
+      1.4,
+      3.2,
+      2.9,
+      5.9,
+      8.02,
+      8.35,
+      8.7,
+      10.6
+    ],
+    "full_loop_seconds": 12,
+    "separate_main_combined": true,
+    "fresh_independent_defaults": true
+  },
+  "native_quality": "not_run",
+  "listening": "not_run",
+  "adoption": "none"
+}

@@ -1,0 +1,182 @@
+{
+  "version": "sol61-rational-free-r1",
+  "author": {
+    "executionModel": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol",
+    "creativeSource": "ゼロ設計。旧候補の造形・音・コードを読まない。"
+  },
+  "event": {
+    "type": "action-rational-free",
+    "meaning": "有理化により成功した一つの能力のマナ消費が免除された",
+    "owner": "playerId",
+    "position": "authoritative event x/y retained; resolve projected actual actor foot anchor",
+    "radius": 145,
+    "serverDurationMs": 0,
+    "clientDurationMs": 1200,
+    "clock": "client receive presentation time",
+    "cooldownMs": 30000,
+    "noManaGain": true,
+    "noGameplayReevaluation": true
+  },
+  "output": {
+    "newRasterAssets": 0,
+    "worldShader": "world.wgsl",
+    "observationShader": "post.wgsl",
+    "artist": "artist.mjs",
+    "score": "artist.mjs:SFX_SCORE/synthesizeSfx",
+    "wav": "rational-free-r1.wav",
+    "uniformFloatCount": 48,
+    "uniformByteSize": 192,
+    "drawVertexCount": 6
+  },
+  "source": {
+    "b": {
+      "repo": "https://github.com/player13579/B",
+      "branch": "Codex-honoo",
+      "commit": "37eb4bdfe59f0dc075f9b4333b7d6af76b784a88",
+      "baseBlob": "8a908495ae1f9b7175e00384ab88c50e5c78bd43",
+      "extensionBlob": "0eda016558e426ff4142d850d26200b40fafd834",
+      "baseSha256": "00f0f8138bb8e557c89a3b3c500d0603a39d6516fcfc5626328f8af8dc3adde4",
+      "extensionSha256": "5f40e5838477c7f05b9a10cfb01c5371a3093686e2f2b0f01ab82a6160ca855a",
+      "read": "authenticated git fetch + git show remote exact revision; both specs read in chunks",
+      "imageSchemaValidation": "not_applicable: runtime E branch; no image-generation design"
+    },
+    "facts": {
+      "path": "outputs/request-20260930/rational-free-port-inventory/FACTS.json",
+      "sha256": "9d8ed9dd7435ced3a31f2ac99fa4fe16d2d2a2c91bc494d8a3be87c7640220fb",
+      "markdownSha256": "72862f5d51d4436e4142951fed2e53324412eaadaf38a3bcb6e23d74e78877bf"
+    },
+    "otherInputs": [
+      "codex-full-access/SKILL.md",
+      "dva-ate-maintainer/SKILL.md",
+      "dva-ate-maintainer/references/e-design-quality.md",
+      "b-foundation-loader/SKILL.md",
+      "parent assignment and current AGENTS.md"
+    ],
+    "historicalInputBoundary": "FACTS provides historical candidate status/clock summary only. No old E creative artifact inspected/copied. No actor fixture inspected yet."
+  },
+  "extensions": {
+    "VFX": "explicit",
+    "ECodeImplementation": "explicit",
+    "PostEffects": "attribute_resolved local source-bound display spread",
+    "LDM": "explicit VFX",
+    "GradientAnchorPolicy": "attribute_resolved PH1 blue-source to cyan-path gradient",
+    "MagicArchitecture": "not activated; explicit token absent",
+    "KeywordExpansion": "not activated; registered tokens absent",
+    "VideoGenerationPolicy": "not activated; executable runtime E, not generated Video",
+    "crossStreaks": "DVA benefit requirement; fixed screen horizontal22.5deg axes, not falsely v1 explicit"
+  },
+  "validation": {
+    "cpu": "14/14 pass; CPU-PROOF.json",
+    "jsSyntax": "pass node parser and executed import",
+    "wgslCompilation": "not_run",
+    "actualGpuPixels": "not_run",
+    "continuousTiming": "not_run",
+    "darkLightH64": "not_run",
+    "actorRegistration": "not_run",
+    "sfxListening": "not_run",
+    "galleryReplay": "not_run",
+    "gameEventConnection": "not_run",
+    "quality": "not_run",
+    "userAdopted": false,
+    "published": false
+  },
+  "approximations": [
+    "Analytic 2.5D ribbon/curved sheet, not measured 3D mechanics.",
+    "Local sprite-alpha emission response, not physical normal-based irradiation/reflection.",
+    "Analytic source-bound display spread, not physical lens ghosts or threshold-convolution bloom.",
+    "Own local face mask is a design projection assumption until actual actor registration is tested."
+  ],
+  "score": [
+    {
+      "onsetMs": 0,
+      "durationMs": 165,
+      "startHz": 740,
+      "endHz": 920,
+      "amplitude": 0.105,
+      "pan": 0.06,
+      "partials": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0.18
+        ],
+        [
+          3.7,
+          0.06
+        ]
+      ],
+      "role": "認識の立上り"
+    },
+    {
+      "onsetMs": 165,
+      "durationMs": 455,
+      "startHz": 920,
+      "endHz": 1380,
+      "amplitude": 0.072,
+      "pan": 0.16,
+      "partials": [
+        [
+          1,
+          1
+        ],
+        [
+          1.5,
+          0.23
+        ],
+        [
+          2.25,
+          0.1
+        ]
+      ],
+      "role": "開く通路"
+    },
+    {
+      "onsetMs": 485,
+      "durationMs": 515,
+      "startHz": 1380,
+      "endHz": 1320,
+      "amplitude": 0.075,
+      "pan": 0.06,
+      "partials": [
+        [
+          1,
+          1
+        ],
+        [
+          1.25,
+          0.22
+        ],
+        [
+          2,
+          0.075
+        ]
+      ],
+      "role": "免除成立の澄んだ定着"
+    },
+    {
+      "onsetMs": 850,
+      "durationMs": 350,
+      "startHz": 1320,
+      "endHz": 1100,
+      "amplitude": 0.029,
+      "pan": 0,
+      "partials": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0.12
+        ]
+      ],
+      "role": "身体側への有限収束"
+    }
+  ],
+  "immutablePolicy": "After this hash handoff, changes are separate attempts/versions with source SHA and adapter diff; do not overwrite r1 evidence.",
+  "handoff": "RUNTIME-HANDOFF.md; parent owns runtime/GPU/gallery/publication/integration/final creative acceptance and user adoption gate."
+}

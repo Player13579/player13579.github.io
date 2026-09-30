@@ -30,6 +30,8 @@
     'barrier-sol61-r8': { magnification: 1, focusX: 490, focusY: 310 },
     // Fidelity-fixed r8 keeps the complete native 49:31 field; do not zoom/crop.
     'barrier-sol61-r8-fidelityfix-a1': { magnification: 1, focusX: 490, focusY: 310 },
+    // H64 body anchor is at 75% canvas height; center the full actor/receipt bounds at 240px.
+    'sol61-rational-free-r1': { magnification: 240 / 64, focusX: 490, focusY: 433 },
     'cooldown-sol61-shortening-zero': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'stamina-sol61-r7': { magnification: 240 / (64 * (530 / 260)), focusX: 490, focusY: 310 },
     'mana-zero-sol61-r3': { magnification: 240 / 64, focusX: 490, focusY: 310 },
@@ -87,6 +89,9 @@
     Object.freeze({ id: 'item-pickup-sol', title: 'アイテム取得', defaultVersionId: 'item-pickup-sol61-r1', versions: Object.freeze([
       version('item-pickup-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-item-pickup-e/r1/preview.html', 'public/sol61-item-pickup-e/r1/design.mjs', 'アイテム取得全般としてユーザー採用済み・本編接続中', '作者: GPT-6.1-Sol。ユーザーがr1をアイテム取得全般の共通Eとして採用。接地取得・箱・戦利品・受け取り等の成功した取得に適用する。取得元から実際の受領枠へ光が移動し、枠の輪郭へ定着する。有限VFXとSFXが同期ループ。原版の作者と表現を保持し、本編全経路への接続・実発動・聴感は検証中。', 'effect-H64'),
       version('item-pickup-sol-r2', 'Sol r2', 'public/sol-item-pickup-e/sol-r2/preview.html', 'public/sol-item-pickup-e/sol-r2/item-pickup-e.js', '品質完成候補・ユーザー採用未確認・本編未接続', '作者: GPT-6-Sol。正規action-item-pickupイベントから新規設計。接地面の収束、連続した曲面移送、受領部の強い局所光をWebGPUで自動再生。暗明H64の全寿命とGPUエラー0、SFX数値を確認。聴感と実キャラ遮蔽・本編接続は未審査。ユーザー採用未確認。', 'effect-H64')
+    ]) }),
+    Object.freeze({ id:'rational-free-sol', title:'合理的なフリー', defaultVersionId:'sol61-rational-free-r1', integration:'not-integrated', reason:'技術再生可能なGPT-6.1-Sol設計のRational Free r1。品質審査・通常聴感・本編統合・ユーザー採用は未実施。', versions:Object.freeze([
+      version('sol61-rational-free-r1','GPT-6.1-Sol r1','public/sol61-rational-free/r1/index.html?embed=1','public/sol61-rational-free/r1/index.html','実WebGPU技術再生pass・視覚品質未審査・聴感未検証・本編未接続・未採用','作者: GPT-6.1-Sol。忠実なruntime・パッケージ実装: GPT-6-Luna。ユーザー採用なし。本編未接続、通常聴感未検査。元の12ファイルartist freezeはSHA-256一致。今回の正規Pages package内atlas実測SHA-256 cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8fを使用したverify付き実GPU検証でcanvas 980×620、H64 actor registration、78 frame submissions、3 receipt cycles、GPU fault・shader warnings・console errors 0、verify audio context/gain 0を確認。歴史GPU report内のatlas SHAは手入力と確認されたため履歴として保存し、現行byte検証には使わない。','actor-H64',1,{note:'正規Pages packageでの新規verify実GPU再生はpass。品質審査・通常聴感・本編統合・ユーザー採用は未実施。歴史GPU reportのatlas SHAは測定値ではなく、今回のpackage内atlas実測SHAは cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f。',originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorModelId:'gpt-6.1-sol+gpt-6-luna',creatorDisplayName:'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)',qualityStatus:'not_run',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20260930/rational-r1-gallery-package/native-gpu-replay.json',packageClosure:'outputs/request-20260930/rational-r1-gallery-package/package-closure.json'})
     ]) }),
     Object.freeze({ id: 'heal-astra', title: 'ヒール', defaultVersionId: 'heal-astra-sparkle-r1', versions: Object.freeze([
       version('heal-astra-sparkle-r1', 'Astra sparkle r1', 'public/astra-heal-sparkle-r1/index.html', 'public/astra-heal-sparkle-r1/heal-sparkle.js', 'ユーザー採用済み・ゲームコード接続済み・公開起動確認済み', '作者: GPT-6-Astra。ユーザー指定でHeal sparkle r1を採用。既存の視覚審査候補記録は維持し、明背景の一部でコントラスト低下あり。聴感未実施、公開Play→準備画面のWebGPU起動確認済み。実発動・全寿命・SFX聴感は未確認。', 'actor-H64'),
@@ -350,7 +355,8 @@
       return hasCurrentAdoption ? [] : group.versions.map((_, i) => i);
     }
     const mapGroupAdopted = group.versions.some(item => adoptionState(item) === 'adopted');
-    return mapGroupAdopted === (currentAdoptionFilter === 'adopted') ? group.versions.map((_, i) => i).sort((a, b) => currentAdoptionFilter === 'adopted' ? Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted') : 0) : [];
+    if (currentAdoptionFilter === 'adopted') return mapGroupAdopted ? group.versions.map((_, i) => i).sort((a, b) => Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted')) : [];
+    return group.versions.map((item, i) => adoptionState(item) === 'adopted' ? -1 : i).filter(i => i >= 0);
   }
   function setHeadline() {
     document.getElementById('list-heading').textContent = `${currentAdoptionFilter === 'adopted' ? '採用済み' : '未採用'}の${currentCategory === 'effect' ? 'エフェクト' : 'マップ'}一覧`;
@@ -429,17 +435,17 @@
     stage.append(iframe); fitObserver?.disconnect(); fitObserver = new ResizeObserver(() => fitPreview(iframe, item, group)); fitObserver.observe(stage);
   }
   const exposedEntries = entries.map(group => Object.freeze({ id: group.id,
-      title: group.title,
+      title: group.title, integration: group.integration, reason: group.reason,
       category: 'effect',
       latest: group.versions[0].id, defaultVersionId: group.defaultVersionId || group.versions[0].id,
       versions: Object.freeze(group.versions.map(item => Object.freeze({ ...item,
         category: 'effect',
-        creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : ['stamina-sol61-r9-frontfix','stamina-sol61-r13','mana-zero-sol61-r8','cooldown-clock-zero-r4','barrier-sol61-r8','barrier-sol61-r8-fidelityfix-a1'].includes(item.id) ? 'gpt-6.1-sol+gpt-6-luna' : item.id.startsWith('cooldown-clock-zero-r') ? 'gpt-6.1-sol' : item.id.includes('-sol61-') ? 'gpt-6.1-sol' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra',
-        creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : ['stamina-sol61-r9-frontfix','stamina-sol61-r13','mana-zero-sol61-r8','cooldown-clock-zero-r4','barrier-sol61-r8','barrier-sol61-r8-fidelityfix-a1'].includes(item.id) ? 'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)' : item.id.startsWith('cooldown-clock-zero-r') ? 'GPT-6.1-Sol' : item.id.includes('-sol61-') ? 'GPT-6.1-Sol' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra',
-        qualityStatus: /不合格|不達|未達/.test(item.status) ? 'fail' : /保留|未受入|品質未検証|品質未審査/.test(item.status) ? 'pending' : 'candidate',
+        creatorModelId: item.creatorModelId || (item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : ['stamina-sol61-r9-frontfix','stamina-sol61-r13','mana-zero-sol61-r8','cooldown-clock-zero-r4','barrier-sol61-r8','barrier-sol61-r8-fidelityfix-a1'].includes(item.id) ? 'gpt-6.1-sol+gpt-6-luna' : item.id.startsWith('cooldown-clock-zero-r') ? 'gpt-6.1-sol' : item.id.includes('-sol61-') ? 'gpt-6.1-sol' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra'),
+        creatorDisplayName: item.creatorDisplayName || (item.id === 'barrier-pro-r07' ? 'GPT Pro' : ['stamina-sol61-r9-frontfix','stamina-sol61-r13','mana-zero-sol61-r8','cooldown-clock-zero-r4','barrier-sol61-r8','barrier-sol61-r8-fidelityfix-a1'].includes(item.id) ? 'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)' : item.id.startsWith('cooldown-clock-zero-r') ? 'GPT-6.1-Sol' : item.id.includes('-sol61-') ? 'GPT-6.1-Sol' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra'),
+        qualityStatus: item.qualityStatus || (/不合格|不達|未達/.test(item.status) ? 'fail' : /保留|未受入|品質未検証|品質未審査/.test(item.status) ? 'pending' : 'candidate'),
         userAdoptionStatus: adoptionState(item), adoptionStatusLabel: adoptionStatusLabel(item),
         gameIntegrationStatus: /本編接続済み/.test(item.status) ? 'verified' : /本編未接続|本編未採用/.test(item.status) ? 'not-integrated' : 'unverified',
-        previewKind: 'webgpu', technicalReplayStatus: item.replayable ? 'listed-existing-replay-contract' : 'unavailable'
+        previewKind: 'webgpu', technicalReplayStatus: item.technicalReplayStatus || (item.replayable ? 'listed-existing-replay-contract' : 'unavailable')
       }))) }));
   window.__webgpuEGallery = Object.freeze({ presentation: PRESENTATION, categories: Object.freeze(['map','effect']),
     entries: Object.freeze(exposedEntries) });
@@ -464,6 +470,7 @@
       {id:'station-attempt-01',title:'全体図 attempt 01',src:'assets/gpt-map-history/station-attempt-01.png',hash:'d2a80b2ced722b5ba639b7e38640c1ddb0152c1cadf5c487bf7be31ff7f1d16e',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'pending-review',adoption:'not-adopted',note:'2026-09-23保存原本。技術メモは視覚受入保留、移動受入未実施。'}]},
     {id:'cafeteria-gpt-20260923',category:'map',title:'カフェテリア · 2026-09-23試作',creatorDisplayName:'ChatGPT (model unverified)',quality:'mixed',adoption:'adopted',defaultVersionId:'cafeteria-room-attempt-04',integration:'not-integrated',reason:'attempt 04を2026-09-30にユーザー採用。旧版の不採用履歴と幾何検証結果を保持。ゲーム統合は未完了。',versions:[
       {id:'cafeteria-room-attempt-04',title:'一室試作 attempt 04（採用済み）',src:'assets/gpt-map-history/cafeteria-20260923-attempt-04.png',hash:'c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65',creatorDisplayName:'GPT Pro',qualityStatus:'user-adopted-geometry-unresolved',adoption:'adopted',note:'2026-09-30にユーザーが版指定で採用。原本・作者を保持。以前のNorth/West開口・配置検証の不合格は未解決であり、ゲーム統合完了を意味しない。'},
+      {id:'cafeteria-room-e-gptpro-sol61-luna-r2',title:'attempt 04 + environment E r2',previewKind:'webgpu',replayable:true,page:'public/sol61-cafeteria-room-e/r2/index.html?embed=1',source:'public/sol61-cafeteria-room-e/r2/package-manifest.json',creatorDisplayName:'GPT Pro / GPT-6.1-Sol / GPT-6-Luna',originalCreatorDisplayName:'GPT Pro',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',originalMapSha256:'c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65',qualityStatus:'pending-review',adoption:'not-adopted',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20260930/sol61-cafeteria-room-e/r2-runtime/native-full.json',packageClosure:'public/sol61-cafeteria-room-e/r2/package-manifest.json',note:'Frozen r2 package manifest d5d2a0e2f5cb2bb93e12d49be6b5a0245d8e0dedf6924cc24ba92a6e6e7aac92。GPT Proの採用済みattempt 04原本上でGPT-6.1-Solが環境Eを設計、GPT-6-Lunaが忠実runtimeを実装。全/Half native WebGPU replay pass。視覚品質レビュー保留（steam/purge subtlety確認待ち）、通常聴感未検証、ゲーム未接続、E版は未採用。元原画・group default/adoptionは変更しない。'},
       {id:'cafeteria-room-e-gptpro-sol61-luna-r1',title:'attempt 04 + environment E r1',previewKind:'webgpu',replayable:true,page:'public/sol61-cafeteria-room-e/r1/index.html?embed=1',source:'public/sol61-cafeteria-room-e/r1/package-manifest.json',creatorDisplayName:'GPT Pro / GPT-6.1-Sol / GPT-6-Luna',originalCreatorDisplayName:'GPT Pro',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',originalMapSha256:'c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65',qualityStatus:'pending-review',adoption:'not-adopted',note:'技術再生pass。元のGPT Pro原画 attempt 04は採用済みだが、この新規E版は未採用。GPT-6.1-SolがEを設計しGPT-6-Lunaが忠実なruntimeを実装。視覚品質レビュー・聴感・本編接続は未実施。'},
       {id:'cafeteria-room-attempt-03',title:'一室試作 attempt 03',src:'assets/gpt-map-history/cafeteria-20260923-attempt-03.png',hash:'a86a55567a3377c9df52955c2ca9cbceb23feffda7fce46209780677bf146c10',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北/西開口と室内構成は視覚確認されたが、設備 footprint・開口・南側歩行領域・回遊性のステーション縮尺レビュー不合格。'},
       {id:'cafeteria-room-attempt-02',title:'一室試作 attempt 02',src:'assets/gpt-map-history/cafeteria-20260923-attempt-02.png',hash:'9032820f1a241a45e8e6434cb31ab11936c7bdcd6235bd0ee20402e5e692f8f6',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected',adoption:'not-adopted',note:'改善版だが依頼していない南側出入口が含まれ、attempt 03に置換。'},
@@ -472,7 +479,7 @@
       {id:'cafeteria-floor-attempt-02',title:'床材 attempt 02',src:'assets/gpt-map-history/cafeteria-floor-component.png',hash:'d205dea3669fe9b0a8f63b7cb0078c57a7c99d256853cc1cb2f8fd679e75f25c',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'一次担当が単一カフェテリアの床材素材として受入。シームレスな反復利用は未受入。部品受入であり、マップ採用ではない。'}]},
     {id:'cafeteria-buffet-component',category:'map',title:'カフェテリア・ビュッフェ · コンポーネント',creatorDisplayName:'ChatGPT (model unverified)',quality:'accepted-component-only',adoption:'not-adopted',integration:'not-integrated',reason:'完成マップではなく単体設備の原画候補。画像作者の基底モデルは未確認で、生成コードの正確なコード先行手順にも証跡不足。',versions:[
       {id:'cafeteria-buffet-attempt-01',title:'ビュッフェ attempt 01',src:'assets/gpt-map-history/cafeteria-buffet-component.png',hash:'da99b673cd36a45f055e7442ab1b11e7ebeb9bdaf40699d561055a82ec4623f0',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'Primary visual candidate acceptance only。コード全文の保存・厳密なコード再送証跡が不足。ゲーム未統合。'}]},
-  ].filter(group => !['cafeteria-gpt-pro', 'cafeteria-floor-component', 'cafeteria-buffet-component', 'station-gpt-history', 'security-gpt-pro', 'medical-gpt-history'].includes(group.id))
+  ].filter(group => !['cafeteria-gpt-pro', 'cafeteria-floor-component', 'cafeteria-buffet-component', 'station-gpt-history'].includes(group.id))
     .map(group => group.id === 'medical-gpt-history'
       ? { ...group, versions: group.versions.filter(item => item.id !== 'medical-room-dense-attempt-01') }
       : group);
@@ -504,7 +511,7 @@
   }
   window.addEventListener('pagehide', disposeMapPreview, { once: true });
   const exposedMapEntries = imageGroups.map(group => Object.freeze({
-    id: group.id, title: group.title, category: 'map', creatorDisplayName: group.creatorDisplayName,
+    id: group.id, title: group.title, category: 'map', defaultVersionId: group.defaultVersionId, creatorDisplayName: group.creatorDisplayName,
     qualityStatus: group.quality, userAdoptionStatus: group.adoption, gameIntegrationStatus: group.integration,
     reason: group.reason,
     versions: Object.freeze(group.versions.map(item => Object.freeze({ ...item,
@@ -515,10 +522,45 @@
       qualityStatus: item.qualityStatus || group.quality,
       userAdoptionStatus: adoptionState(item), gameIntegrationStatus: group.integration,
       previewKind: item.previewKind || 'image',
-      technicalReplayStatus: item.previewKind === 'webgpu' ? (item.replayable === true && item.page ? 'replayable' : 'unavailable') : 'saved-original'
+      technicalReplayStatus: item.previewKind === 'webgpu' ? (item.technicalReplayStatus || (item.replayable === true && item.page ? 'replayable' : 'unavailable')) : 'saved-original'
     })))
   }));
   window.__webgpuEGallery = Object.freeze({ ...window.__webgpuEGallery, mapEntries: Object.freeze(exposedMapEntries) });
+  function resolveInitialGalleryLink() {
+    const keys=['category','filter','asset','version'];
+    if(!keys.some(key=>params.has(key)))return Object.freeze({status:'default'});
+    const supplied=Object.fromEntries(keys.filter(key=>params.has(key)).map(key=>[key,params.get(key)]));
+    const fallback=()=>{currentCategory='effect';currentAdoptionFilter='unadopted';return Object.freeze({status:'fallback',reason:'invalid-or-ineligible'});};
+    let category=currentCategory,filter=currentAdoptionFilter;
+    if(params.has('category')){if(!['map','effect'].includes(supplied.category))return fallback();category=supplied.category;}
+    if(params.has('filter')){if(!['adopted','unadopted'].includes(supplied.filter))return fallback();filter=supplied.filter;}
+    const effects=entries;
+    const maps=imageGroups.filter(group=>group.category==='map');
+    let group=null;
+    if(params.has('asset')){
+      group=[...effects,...maps].find(candidate=>candidate.id===supplied.asset)||null;
+      if(!group)return fallback();
+      const actualCategory=effects.includes(group)?'effect':'map';
+      if(params.has('category')&&category!==actualCategory)return fallback();
+      if(!params.has('category'))category=actualCategory;
+    }
+    if(params.has('version')&&!group)return fallback();
+    currentCategory=category;currentAdoptionFilter=filter;
+    if(!group)return Object.freeze({status:'category-filter',category,filter});
+    const indices=visibleVersionIndices(group);
+    if(!indices.length)return fallback();
+    let versionIndex;
+    if(params.has('version')){
+      versionIndex=group.versions.findIndex(item=>item.id===supplied.version);
+      if(versionIndex<0||!indices.includes(versionIndex))return fallback();
+    }else{
+      versionIndex=indices.find(index=>group.versions[index].id===group.defaultVersionId)??indices[0];
+    }
+    selections.set(`${category}:${filter}`,{groupId:group.id,versionId:group.versions[versionIndex].id});
+    return Object.freeze({status:'selected',category,filter,asset:group.id,version:group.versions[versionIndex].id});
+  }
+  const initialDeepLink=resolveInitialGalleryLink();
+  window.__webgpuEGallery = Object.freeze({ ...window.__webgpuEGallery, initialDeepLink });
     function selectImage(group, versionIndex) {
     const item=group.versions[versionIndex];
     const webgpu = item.previewKind === 'webgpu';

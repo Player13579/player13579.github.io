@@ -1,0 +1,269 @@
+{
+  "version": "sol61-rational-free-r1",
+  "tests": [
+    {
+      "name": "success identity and producer metadata preserved",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "duplicate receipt never resets presentation clock",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "different receipt at same time and source remains independent",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "typed invalid inputs cannot fabricate a gain receipt",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "finite lifecycle and receive time independent of server delay",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "uniform mapping preserves registered H64 geometry and pass flags",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "all CPU field values finite across whole life and support region",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "primary field persists during all designed active stages, independently of stars/OBS",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "finite original stereo score fits exact visual lifetime",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "finite non-silent PCM without CPU clipping",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "same receipt sound once; exact remaining stop interval",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "verify owns zero audio with consumed start",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "suspended audio does not replay stale success after unlock",
+      "status": "pass",
+      "kind": "CPU-only"
+    },
+    {
+      "name": "expired sound cannot begin after the finite receipt",
+      "status": "pass",
+      "kind": "CPU-only"
+    }
+  ],
+  "passed": 14,
+  "failed": 0,
+  "slices": [
+    {
+      "ms": 96,
+      "peakMain": 1,
+      "samplesAbove005": 74,
+      "projectedMathBoundsH": [
+        0.09999999999999998,
+        -0.8224000000000001,
+        0.21999999999999997,
+        -0.6984000000000001
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 190,
+      "peakMain": 1,
+      "samplesAbove005": 262,
+      "projectedMathBoundsH": [
+        0.09999999999999998,
+        -0.8224000000000001,
+        0.35499999999999987,
+        -0.5124000000000001
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 192,
+      "peakMain": 1,
+      "samplesAbove005": 262,
+      "projectedMathBoundsH": [
+        0.09999999999999998,
+        -0.8224000000000001,
+        0.35499999999999987,
+        -0.5124000000000001
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 194,
+      "peakMain": 1,
+      "samplesAbove005": 273,
+      "projectedMathBoundsH": [
+        0.09999999999999998,
+        -0.8224000000000001,
+        0.35499999999999987,
+        -0.5000000000000001
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 360,
+      "peakMain": 1,
+      "samplesAbove005": 793,
+      "projectedMathBoundsH": [
+        0.08499999999999996,
+        -0.8224000000000001,
+        0.535,
+        -0.1776000000000001
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 502,
+      "peakMain": 1,
+      "samplesAbove005": 848,
+      "projectedMathBoundsH": [
+        0.06999999999999995,
+        -0.8224000000000001,
+        0.5649999999999998,
+        -0.15280000000000016
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 504,
+      "peakMain": 1,
+      "samplesAbove005": 848,
+      "projectedMathBoundsH": [
+        0.06999999999999995,
+        -0.8224000000000001,
+        0.5649999999999998,
+        -0.15280000000000016
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 506,
+      "peakMain": 1,
+      "samplesAbove005": 848,
+      "projectedMathBoundsH": [
+        0.06999999999999995,
+        -0.8224000000000001,
+        0.5649999999999998,
+        -0.15280000000000016
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 720,
+      "peakMain": 1,
+      "samplesAbove005": 848,
+      "projectedMathBoundsH": [
+        0.06999999999999995,
+        -0.8224000000000001,
+        0.5649999999999998,
+        -0.15280000000000016
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 982,
+      "peakMain": 1,
+      "samplesAbove005": 778,
+      "projectedMathBoundsH": [
+        0.06999999999999995,
+        -0.8224000000000001,
+        0.5199999999999999,
+        -0.15280000000000016
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 984,
+      "peakMain": 1,
+      "samplesAbove005": 775,
+      "projectedMathBoundsH": [
+        0.06999999999999995,
+        -0.8224000000000001,
+        0.505,
+        -0.15280000000000016
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 986,
+      "peakMain": 1,
+      "samplesAbove005": 776,
+      "projectedMathBoundsH": [
+        0.06999999999999995,
+        -0.8224000000000001,
+        0.505,
+        -0.15280000000000016
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 1080,
+      "peakMain": 0.9259259259259258,
+      "samplesAbove005": 744,
+      "projectedMathBoundsH": [
+        0.06999999999999995,
+        -0.8224000000000001,
+        0.4899999999999999,
+        -0.15280000000000016
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 1176,
+      "peakMain": 0.07407407407407429,
+      "samplesAbove005": 674,
+      "projectedMathBoundsH": [
+        0.08499999999999996,
+        -0.81,
+        0.475,
+        -0.1776000000000001
+      ],
+      "observation": "CPU-math-only-not-visible-area"
+    },
+    {
+      "ms": 1199,
+      "peakMain": 0.00014400612997256257,
+      "samplesAbove005": 0,
+      "projectedMathBoundsH": null,
+      "observation": "CPU-math-only-not-visible-area"
+    }
+  ],
+  "pcm": {
+    "sampleRate": 48000,
+    "channels": 2,
+    "count": 57600,
+    "peak": 0.09180615097284317,
+    "energy": 111.69216013888577,
+    "durationMs": 1200
+  },
+  "limitations": [
+    "CPU samples are unoccluded field math, not GPU pixels or visible area.",
+    "WGSL compilation and real draw count not run.",
+    "Dark/light H64, continuous RAF and actual actor registration not run.",
+    "Subjective SFX listening not run.",
+    "Gallery/game/adoption not run."
+  ]
+}

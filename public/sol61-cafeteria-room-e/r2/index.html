@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:,">
+  <title>食堂・環境E試作 r2</title>
+  <style>
+    :root{color-scheme:dark;background:#101820;color:#f2f3f4;font:13px/1.4 system-ui,sans-serif}
+    *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden}
+    #stage{display:block;width:100%;height:100%;object-fit:contain;background:#101820}
+    #status{position:fixed;inset:auto 8px 8px 8px;padding:4px 8px;border-radius:4px;background:#101820c9;color:#f2f3f4;font:12px ui-monospace,monospace;white-space:pre-wrap}
+    .embedded #status{display:none}
+  </style>
+</head>
+<body>
+  <canvas id="stage" aria-label="採用済み食堂画像上の環境E試作 r2"></canvas>
+  <output id="status" role="status">WebGPUを起動中</output>
+  <script type="module" src="./runtime.mjs"></script>
+</body>
+</html>
