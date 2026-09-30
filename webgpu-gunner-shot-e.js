@@ -37,8 +37,8 @@ fn segmentDistance(q:vec2f,a:vec2f,b:vec2f)->f32 {
 }
 fn bell(x:f32,w:f32)->f32{return exp(-x*x/max(w*w,.0001));}
 @fragment fn fs(@builtin(position) pos:vec4f)->@location(0) vec4f {
-  let pixel=pos.xy;let source=p.viewport.zw;let target=p.points.xy;
-  let direction=target-source;let distance=max(length(direction),.001);
+  let pixel=pos.xy;let source=p.viewport.zw;let impactPoint=p.points.xy;
+  let direction=impactPoint-source;let distance=max(length(direction),.001);
   let axis=direction/distance;let side=vec2f(-axis.y,axis.x);
   let t=clamp(p.points.z,0.0,1.0);let variant=p.points.w;
   let reduced=p.state.y>.5;let flight=select(clamp(t/.42,0.0,1.0),1.0,reduced);
@@ -55,11 +55,11 @@ fn bell(x:f32,w:f32)->f32{return exp(-x*x/max(w*w,.0001));}
     bell(abs(dot(pixel-source,side)),2.8)*bell(dot(pixel-source,axis)-10.0,17.0)*.44;
   let hitAge=t-.34;let hitOn=smoothstep(-.035,.025,hitAge);
   let impactRadius=select(12.0,21.0,variant==3.0);
-  let radial=length(pixel-target);
+  let radial=length(pixel-impactPoint);
   let impactRing=bell(radial-(impactRadius+clamp(hitAge,0.0,.32)*32.0),2.4)*hitOn;
   let sparks=bell(radial,4.2)*hitOn*.76;
-  let fork=select(0.0, bell(segmentDistance(pixel,target+side*3.0,target+side*25.0),2.0)+
-    bell(segmentDistance(pixel,target-side*3.0,target-side*21.0),2.0),variant>3.5);
+  let fork=select(0.0, bell(segmentDistance(pixel,impactPoint+side*3.0,impactPoint+side*25.0),2.0)+
+    bell(segmentDistance(pixel,impactPoint-side*3.0,impactPoint-side*21.0),2.0),variant>3.5);
   let palette=select(select(select(vec3f(1.0,.57,.18),vec3f(1.0,.32,.08),variant>0.5),
       vec3f(1.0,.7,.24),variant>1.5),
       select(vec3f(.72,.91,1.0),vec3f(.23,.87,1.0),variant>3.5),variant>2.5);
