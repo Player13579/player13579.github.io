@@ -1,0 +1,261 @@
+server.js useAlchemy
+function useAlchemy(room, player, rawConversion, targetId = "") {
+  if (room.phase !== "playing" || !hasHackerVibeCodingAccess(player)) {
+    throw new ApiError(403, "ハッカーではありません。");
+  }
+  if (!player.alive || player.ejected || player.inVent) throw new ApiError(403, "現在は生成できません。");
+  ensureAbilityAvailable(player);
+  const timestamp = now();
+  if ((Number(player.vibeCodingReadyAt) || 0) > timestamp) {
+    throw new ApiError(400, `バイブコーディング再実行待ちです（残り${Math.ceil((player.vibeCodingReadyAt - timestamp) / 1000)}秒）。`);
+  }
+  const conversion = canonicalAlchemyConversion(rawConversion);
+  const recipe = ALCHEMY_RECIPES[conversion];
+  if (!recipe) {
+    throw new ApiError(400, `生成先が不正です。画面を更新して再選択してください（${conversion || "未選択"}）。`);
+  }
+  const catalogProduct = DVA_ECONOMY.productForRecipe(conversion);
+  if (catalogProduct?.hackerAccess === "root" && !hackerRootEligible(player)) {
+    throw new ApiError(403, `${catalogProduct.label}はroot化中だけ生成できます。`);
+  }
+  if (conversion === "hack-hp-delete") recordBotVisibleHumanAttackStart(room, player, "hacker-hp-delete", timestamp);
+  const inventoryBefore = retainedItemSnapshot(player);
+  const actionCauseId = `vibe:${player.id}:${timestamp}:${conversion}`;
+  recipe.apply(room, player, targetId, actionCauseId);
+  if (conversion !== "hack-items-duplicate") emitItemAcquisitionReceipt(room, player, inventoryBefore, "generated", {
+    causeId: actionCauseId, variant: conversion
+  });
+  const committedGoldCredits = conversion === "gold" ? Number(player.credits) : null;
+  player.vibeCodingCooldownMs = vibeCodingCooldownMsFor(conversion);
+  const shortenedCooldownMs = Math.min(
+    player.vibeCodingCooldownMs,
+    Math.max(0, Number(player.manaGpuCooldownCreditMs) || 0)
+  );
+  player.manaGpuCooldownCreditMs = Math.max(0, Number(player.manaGpuCooldownCreditMs) - shortenedCooldownMs);
+  player.vibeCodingReadyAt = timestamp + player.vibeCodingCooldownMs - shortenedCooldownMs;
+  if (Number(player.mana) <= 0) {
+    // Gold has already been authoritatively acquired. The legacy desire-state
+    // resource normalization must never overwrite its 100C payout afterward.
+    // Other recipes retain their existing zero-mana credit debt behavior.
+    if (conversion !== "gold") player.credits = DESIRE_RESOURCE_DEBT;
+    player.stamina = DESIRE_RESOURCE_DEBT;
+  }
+  player.staminaUpdatedAt = now();
+  maintainNaturalRecovery(room, player, player.staminaUpdatedAt);
+  // Entering Desire during the shared resource reconciliation also normalizes
+  // credits. Gold's already committed instant payout must survive that step.
+  if (committedGoldCredits !== null) player.credits = committedGoldCredits;
+  pushMagicEffect(room, "action-vibe-coding", player, {
+    radius: 145,
+    playerId: player.id,
+    variant: conversion
+  });
+  pushEvent(room, `${player.name} がバイブコーディングで${recipe.label}を生成しました。短縮クールを${(shortenedCooldownMs / 1000).toFixed(1)}秒使用しました。`);
+  touch(room);
+}
+
+
+
+server.js pushMagicEffect fields
+function pushMagicEffect(room, type, source, options = {}) {
+  if (batchActivationEffectSuppressed(room, source, type, options)) return false;
+  if (type === "gain-cooldownReduction" && (
+    !isValidCooldownOutcomeV1(options.cooldownOutcomeV1) ||
+    options.cooldownOutcomeV1.recipientId !== String(options.playerId || source?.id || "") ||
+    options.cooldownOutcomeV1.transactionId !== String(options.transactionId || "")
+  )) return false;
+  room.magicEffects.push({
+    id: uid("magic_"),
+    type,
+    x: Math.round(source.x),
+    y: Math.round(source.y),
+    radius: Number(options.radius || 0),
+    targetX: Number.isFinite(options.targetX) ? Math.round(options.targetX) : null,
+    targetY: Number.isFinite(options.targetY) ? Math.round(options.targetY) : null,
+    playerId: String(options.playerId || source.id || ""),
+    targetId: String(options.targetId || ""),
+    objectId: String(options.objectId || ""),
+    viewerId: String(options.viewerId || ""),
+    variant: String(options.variant || ""),
+    mode: String(options.mode || ""),
+    effectKind: String(options.effectKind || ""),
+    completionKind: String(options.completionKind || ""),
+    ...(typeof options.objectCausalId === "string" && options.objectCausalId
+      ? { objectCausalId: options.objectCausalId }
+      : {}),
+    ...(typeof options.transactionId === "string" && options.transactionId
+      ? { transactionId: options.transactionId }
+      : {}),
+    ...(options.benefitOutcomeV1 ? { benefitOutcomeV1: options.benefitOutcomeV1 } : {}),
+    ...(type === "gain-cooldownReduction" && isValidCooldownOutcomeV1(options.cooldownOutcomeV1)
+      ? { cooldownOutcomeV1: options.cooldownOutcomeV1 }
+      : {}),
+    ...(type === "flora-sunbeam" && typeof options.sunbeamCausalId === "string" && options.sunbeamCausalId
+      ? { sunbeamCausalId: options.sunbeamCausalId }
+      : {}),
+    ...(type === "fire" && typeof options.fireCausalId === "string" && options.fireCausalId
+      ? { fireCausalId: options.fireCausalId }
+      : {}),
+    ...(type === "action-item-pickup" && options.itemAcquisitionReceipt
+      ? { itemAcquisitionReceipt: options.itemAcquisitionReceipt }
+      : {}),
+    ...(type === "gravity-storm" && typeof options.gravityStormCausalId === "string" && options.gravityStormCausalId
+      ? { gravityStormCausalId: options.gravityStormCausalId }
+      : {}),
+    markerCount: Math.max(1, Math.floor(Number(options.markerCount) || 1)),
+    durationMs: Math.max(0, Number(options.durationMs) || 0),
+    ...((type === "emp" || type.startsWith("emp-")) ? {
+      empPulseId: String(options.empPulseId || ""),
+      resolvedEmpPulseIds: (Array.isArray(options.resolvedEmpPulseIds) ? options.resolvedEmpPulseIds : []).filter((id) => typeof id === "string" && id).slice(0, 2),
+      empSourceAxis: Number.isFinite(options.empSourceAxis) ? options.empSourceAxis : 0,
+      ...(Number.isFinite(options.sourceHalfSpan) && options.sourceHalfSpan >= 0
+        ? { sourceHalfSpan: options.sourceHalfSpan }
+        : {}),
+      ...(typeof options.empCausalId === "string" && options.empCausalId
+        ? { empCausalId: options.empCausalId }
+        : {})
+    } : {}),
+    ...(type === "alchemy-excalibur" && options.directionWorld &&
+      Number.isFinite(options.directionWorld.x) && Number.isFinite(options.directionWorld.y) &&
+      options.pathEndWorld && Number.isFinite(options.pathEndWorld.x) && Number.isFinite(options.pathEndWorld.y)
+      ? {
+          directionWorld: { x: options.directionWorld.x, y: options.directionWorld.y },
+          pathEndWorld: { x: options.pathEndWorld.x, y: options.pathEndWorld.y }
+        }
+      : {}),
+    ...(type === "action-smartphone" && /^(?:donation-rational|donation-unjust)$/.test(String(options.variant || ""))
+      ? { donationResultDelta: Math.round((Number(options.donationResultDelta) || 0) * 100) / 100 }
+      : {}),
+    ...(["mystery-box", "transfer-in"].includes(type) ? {
+      acquisitionId: String(options.acquisitionId || ""),
+      acquisitionKind: String(options.acquisitionKind || ""),
+      acquisitionCredits: Math.max(0, Number(options.acquisitionCredits) || 0),
+      acquisitionOriginX: Number.isFinite(options.acquisitionOriginX) ? Math.round(options.acquisitionOriginX) : null,
+      acquisitionOriginY: Number.isFinite(options.acquisitionOriginY) ? Math.round(options.acquisitionOriginY) : null
+    } : {}),
+    at: now()
+  });
+
+
+server.js canonical membership
+const HACKER_EXTENSION_RECIPE_IDS = new Set([
+  "hack-credits-delete", "hack-credits-duplicate", "hack-items-delete",
+  "hack-items-duplicate", "hack-hp-delete", "hack-hp-duplicate", "hack-mana-delete",
+  "hack-mana-duplicate", "hack-status-recover", "revive"
+]);
+const ALCHEMY_RECIPES = Object.fromEntries([
+  ...DVA_ECONOMY.products.map((product) => {
+    const implementation = ALCHEMY_RECIPE_IMPLEMENTATIONS[product.hackerRecipeId];
+    if (!implementation) throw new Error(`Missing Hacker behavior for shared product: ${product.id}`);
+    return [product.hackerRecipeId, { ...implementation, label: product.label, productId: product.id }];
+  }),
+  ...[...HACKER_EXTENSION_RECIPE_IDS].map((id) => {
+    const implementation = ALCHEMY_RECIPE_IMPLEMENTATIONS[id];
+    if (!implementation) throw new Error(`Missing Hacker extension behavior: ${id}`);
+    return [id, implementation];
+  })
+]);
+
+const ALCHEMY_RECIPE_ALIASES = Object.freeze({
+  "instant-warp": "warp",
+  "fire-jutsu": "fire",
+  "vending-mineral-water": "mineral-water",
+  "vending-molotov": "molotov",
+  "vending-antidote": "antidote"
+});
+
+function canonicalAlchemyConversion(rawConversion) {
+  const requested = String(rawConversion || "stamina").trim().toLowerCase();
+  return ALCHEMY_RECIPE_ALIASES[requested] || requested;
+}
+
+
+
+app receipt clock normalization
+    const receivedAt = state.frameNow || performance.now();
+    const durableCombatEvent = /^(durability-|timed-bust-)/.test(String(effect.variant || "")) && ["action-stand", "action-push", "preparation-barrier-hit"].includes(effect.type);
+    const duration = durableCombatEvent && Number(effect.durationMs) > 0 ? Number(effect.durationMs) : Math.max(magicEffectDuration(effect.type), Number(effect.durationMs) || 0);
+    // Network delay must not consume a visual effect before the client can draw it.
+    const startedAt = receivedAt;
+    const visualClockActor = (next.players || []).find((player) => player.id === effect.playerId);
+    const eClockStartedAt = visualClockActor ? eVisualTime(visualClockActor, next) : null;
+    const actorClockStartedAt = effect.type === "flora-sunbeam" || effect.type === "flora" ||
+      isBodyAccelerationGainEffect(effect) ? eClockStartedAt : null;
+    const localEffect = {
+      ...effect,
+      startedAt,
+      duration,
+      ...(Number.isFinite(eClockStartedAt) ? {
+        eClockStartedAt, eClockRoomId: String(next.roomId || "")
+      } : {}),
+      ...(Number.isFinite(actorClockStartedAt) ? {
+        actorClockStartedAt,
+        actorClockRoomId: String(next.roomId || "")
+      } : {})
+    };
+
+
+app lifetime
+function magicEffectDuration(type) {
+  if (type === "gunner-passive-aim") return 900;
+  if (type === "flora-sunbeam") return Math.round((window.SunbeamAstraCleanV3?.DURATION || 2.15) * 1000);
+  if (type === "flora") return 12000;
+  if (type === "grenade-frag-impact") return 900;
+  if (type === "grenade-stun-impact") return 720;
+  if (type === "quantum-electric-discharge") return 1050;
+  if (type === "preparation-barrier-hit") return 650;
+  if (type === "action-heart-teleport") return 1800;
+  if (type === "idea-ascension") return 5200;
+  if (type === "mystery-reveal") return 2200;
+  if (type === "mystery-box") return 2600;
+  if (type === "fire") return 1500;
+  if (type === "emp-resonance" || type === "emp-cancel") return 1600;
+  if (type === "emp-storage-lock") return 7000;
+  if (type === "alchemy-railgun") return 900;
+  if (type === "alchemy-particle-cannon") return 900;
+  if (type === "alchemy-particle-beam") return 420;
+  if (type === "action-special-ammo-load") return 1450;
+  if (type === "action-special-ammo-shot") return 620;
+  if (type === "action-special-ammo-impact") return 1050;
+  if (type === "quantum-transmutation") return 3600;
+  if (type === "instant-iai-acquired") return 820;
+  if (type === "instant-stand-firm-acquired") return 1050;
+  if (type === "instant-push-acquired") return 900;
+  if (type.startsWith("instant-") && type.endsWith("-acquired")) return 980;
+  if (type.startsWith("object-")) return 2200;
+  if (type.startsWith("idea-")) return 1800;
+  return 1200;
+}
+
+
+
+app normalized E clocks
+function displayETimeScale(player, data = state.data) {
+  return movementAcc2FixedForE(player, data) ? 2 : displayActorTimeScale(player, data);
+}
+function eVisualTime(player, data = state.data) {
+  const id = String(player?.id || '');
+  const frame = Number(state.frameNow || performance.now()) || 0;
+  const current = state.eVisualClocks.get(id);
+  if (!current) {
+    const created = { time: frame, frame };
+    state.eVisualClocks.set(id, created);
+    return created.time;
+  }
+  if (current.frame !== frame) {
+    const elapsed = clamp(Number(state.frameDelta) || 0, 0, 100);
+    current.time += elapsed * displayETimeScale(player, data);
+    current.frame = frame;
+  }
+  return current.time;
+}
+function eEffectNow(effect, data = state.data, wallNow = state.frameNow || performance.now()) {
+  if (effect?.type === 'flora' || effect?.type === 'flora-sunbeam' ||
+      !Number.isFinite(effect?.eClockStartedAt) ||
+      String(effect.eClockRoomId || '') !== String(data?.roomId || '')) return wallNow;
+  const owner = (data?.players || []).find(player =>
+    String(player.id) === String(effect.playerId));
+  if (!owner || !Number.isFinite(effect.startedAt)) return wallNow;
+  return effect.startedAt + Math.max(0, eVisualTime(owner, data) - effect.eClockStartedAt);
+}
+

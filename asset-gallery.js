@@ -79,6 +79,8 @@
     'sunbeam-lens-v2-r04': { magnification: 2.25, focusX: 480, focusY: 310 },
     'sunbeam-lens-v2-r05': { magnification: 2.25, focusX: 480, focusY: 310 },
     'sunbeam-optical-sol61-r06': { magnification: 2.25, focusX: 480, focusY: 310 },
+    'sunbeam-optical-sol61-r07': { magnification: 2.25, focusX: 480, focusY: 310 },
+    'vibe-coding-sol61-r1': { magnification: 240 / 64, focusX: 490, focusY: 320.75 },
     'mana-receive-v2-r03': { magnification: 3.0, focusX: 300, focusY: 321 },
     'mana-receive-v2-r04': { magnification: 3.0, focusX: 300, focusY: 131 },
     'mana-receive-v2-r05': { magnification: 3.0, focusX: 300, focusY: 131 },
@@ -109,7 +111,11 @@
       version('heal-astra-sparkle-draft-a', 'Astra sparkle draft A', 'public/astra-heal-sparkle-r1/draft-a/index.html', 'public/astra-heal-sparkle-r1/draft-a/heal-sparkle.js', '品質不合格・旧試作・未採用', '作者: GPT-6-Astra。履歴品質理由: Maintenance sparkle too weak; one receiver anchor near face. 後続r1に置換。', 'actor-H64'),
       version('heal-astra-prototype', 'Astra旧採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '旧採用版・r1へ更新', '以前の採用原版として来歴を保持。現行採用版はユーザー指定のsparkle r1。原版の採用履歴は変えず、現在の版選択とは区別しています。', 'actor-H64', 0.7937)
     ]) }),
+    Object.freeze({ id: 'vibe-coding-sol61', title: 'バイブコーディング', defaultVersionId: 'vibe-coding-sol61-r1', versions: Object.freeze([
+      version('vibe-coding-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-vibe-coding/r1/index.html?embed=1', 'public/sol61-vibe-coding/r1/package-manifest.json', '実WebGPU再生確認済み・品質候補・採用未確認・本編未接続', '設計: GPT-6.1-Sol。凍結artist sourceを保持し、actor atlas転送先の必須用途フラグを修正。実GPUでキャラalpha4,837画素と同じイベントに属するE描画を確認。品質・通常SFX聴感・本編接続は未受入。', 'effect-H64', 1, {creator:'gpt-6.1-sol',creatorDisplayName:'GPT-6.1-Sol',adoption:'unknown',qualityStatus:'candidate',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
+    ]) }),
     Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', defaultVersionId: 'sunbeam-lens-v2-r05', versions: Object.freeze([
+      version('sunbeam-optical-sol61-r07', 'GPT-6.1-Sol optical r07', 'public/sol61-sunbeam-optical-r07/index.html?embed=1&height=64', 'public/sol61-sunbeam-optical-r07/effect.mjs', '実WebGPU再生確認済み・改修候補・ユーザー未採用・本編未接続', '光学改稿: GPT-6.1-Sol。基盤: GPT-6-Astraの採用済みr05を保持。薄いリング状ゴーストと画面内に見える部分を分離。全寿命11時点・源OFF・OBS OFF・光源/観測中心の変更を実GPU記録。通常SFX聴感と品質の最終受入は未実施。現行採用版r05は保持。', 'effect-H64', 1, {creator:'gpt-6.1-sol',creatorDisplayName:'GPT-6.1-Sol (optical revision); GPT-6-Astra (preserved base)',adoption:'not-adopted',qualityStatus:'candidate',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
       version('sunbeam-optical-sol61-r06', 'GPT-6.1-Sol optical r06', 'public/sol61-sunbeam-optical-r06/index.html?embed=1&height=64', 'public/sol61-sunbeam-optical-r06/effect.mjs', '実WebGPU再生確認済み・改修候補・ユーザー未採用・本編未接続', '光学改稿: GPT-6.1-Sol。基盤: GPT-6-Astraの採用済みr05を保持。開いた虹色円弧と丸形・六角形ゴーストを同じ光源・観測光軸へ接続。暗背景の全寿命、明背景ピーク、源OFF・OBS OFF・位置変更を実GPU確認。通常SFX聴感と品質の最終受入は未実施。現行採用版r05は保持。', 'effect-H64', 1, {creator:'gpt-6.1-sol',creatorDisplayName:'GPT-6.1-Sol (optical revision); GPT-6-Astra (preserved base)',adoption:'not-adopted',qualityStatus:'candidate',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
       version("sunbeam-lens-v2-r05", "Astra lens r05", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r05/effect.mjs", "ユーザー採用済み・本編接続待ち", "作者: GPT-6-Astra。ユーザーが現行最新版r05を採用。ギャラリー同等iframeでWebGPU描画・自動ループ確認済み。採用原版の表現・作者を保持し、本編の実発動・掌の発射元・レンズゴースト・SFX聴感は接続時に検証する。", 'effect-H64'),
       version("sunbeam-lens-v2-r04", "Astra lens r04", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r04/index.html?embed=1&height=64", "public/astra-sunbeam-lens-ghost-v2/sunbeam-r04/effect.mjs", "品質候補・ユーザー未採用・本編未接続", "作者: GPT-6-Astra。技術再生確認済み。品質候補に留まり、SFX聴感/ユーザー採用/本編接続は未受入。", 'effect-H64'),

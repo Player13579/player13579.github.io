@@ -1,0 +1,148 @@
+{
+  "id": "sol61-vibe-coding-r1",
+  "event": {
+    "type": "action-vibe-coding",
+    "radius": 145,
+    "variants": [
+      "mineral-water",
+      "seawater",
+      "antidote",
+      "molotov",
+      "frag-grenade",
+      "stun-grenade",
+      "vending-evade",
+      "vending-speed",
+      "warp",
+      "vending-mystery",
+      "fire",
+      "protect",
+      "heal",
+      "vending-mana",
+      "stamina",
+      "vending-railgun",
+      "vending-particle-cannon",
+      "vending-excalibur",
+      "vending-exile",
+      "vending-hack",
+      "vending-handgun",
+      "vending-smg",
+      "vending-assault",
+      "vending-sniper",
+      "vending-taser",
+      "mercury",
+      "lead",
+      "uranium",
+      "plutonium",
+      "orichalcum-sword",
+      "iai",
+      "vending-ice",
+      "vending-heated-water",
+      "gold",
+      "vending-rpg",
+      "vending-missile",
+      "hack-credits-delete",
+      "hack-credits-duplicate",
+      "hack-items-delete",
+      "hack-items-duplicate",
+      "hack-hp-delete",
+      "hack-hp-duplicate",
+      "hack-mana-delete",
+      "hack-mana-duplicate",
+      "hack-status-recover",
+      "revive"
+    ],
+    "canonicalAliasesSupported": false,
+    "source": "original event x/y projected through real camera; current owner only",
+    "producerStatus": "authoritative action receipt, not renderer recipe recomputation",
+    "rawDurationMs": 0,
+    "normalizedDurationEms": 1200
+  },
+  "ABI": {
+    "bytes": 128,
+    "vec4": [
+      "viewport",
+      "sourceAge",
+      "gates",
+      "observer",
+      "phase",
+      "bounds",
+      "owner",
+      "reserved"
+    ],
+    "worldFormats": [
+      "rgba16float",
+      "rgba16float",
+      "rgba16float"
+    ],
+    "lifetimeEms": 1200,
+    "visualEndEms": 1180
+  },
+  "renderer": {
+    "worldEntry": "quadVS",
+    "worldDraw": [
+      6,
+      1
+    ],
+    "observerEntry": "fullVS",
+    "observerDraw": [
+      3,
+      1
+    ],
+    "sharedDeviceOnly": true,
+    "ownQueueSubmit": false,
+    "ownContext": false,
+    "ownRAF": false,
+    "color": "E-only linearHDR material premult + emission alpha0; original base unchanged, single final encode",
+    "gates": "actual alpha/source visibility, no RGB brightness estimate",
+    "partial": "actual coverage plus scissor",
+    "strictUnsupported": "missing real source, body, coverage, clock, format or owner"
+  },
+  "ph": {
+    "PH1": "original actor/source surface",
+    "PH2": "generated connected fork structure"
+  },
+  "obs": {
+    "OBS1": "nearPSF source emission",
+    "OBS2": "chosen37degree diffraction source/camera/alpha/time",
+    "ghost": "not_selected_reason_readability"
+  },
+  "layers": [
+    "rearMain",
+    "actualActorHost",
+    "frontMain",
+    "sourceBodyReceiver",
+    "sparkle",
+    "observer"
+  ],
+  "timeline": {
+    "writeStartsEms": [
+      0,
+      160,
+      320
+    ],
+    "assemblyEndEms": 480,
+    "executeStartsEms": [
+      480,
+      620,
+      760
+    ],
+    "dismantle": [
+      900,
+      1180
+    ],
+    "zeroInterval": [
+      1180,
+      1200
+    ]
+  },
+  "status": {
+    "CPU": "pass_only",
+    "officialB": "structural_pass_only",
+    "WGSLCompile": "not_run",
+    "nativePixels": "not_run",
+    "continuous": "not_run",
+    "listening": "not_run",
+    "game": "not_run",
+    "adoption": "unknown_unadopted"
+  }
+}
