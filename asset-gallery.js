@@ -496,6 +496,11 @@
       }))) }));
   window.__webgpuEGallery = Object.freeze({ presentation: PRESENTATION, categories: Object.freeze(['map','effect']),
     entries: Object.freeze(exposedEntries) });
+  function isEligibleEnvironmentEMapVersion(item) {
+    return item.previewKind === 'webgpu'
+      && item.replayable === true
+      && item.environmentEStatus === 'technically-replayable';
+  }
   const imageGroups = [
     {"id":"security-server-gpt6sol-r01","category":"map","title":"サーバー室 + 環境E","creatorDisplayName":"GPT-6-Sol (original) + GPT-6.1-Sol (E design) + GPT-6-Luna (runtime)","quality":"pending-review","adoption":"adopted","defaultVersionId":"security-room-e-gpt6sol-luna-r04","integration":"not-integrated","geometryStatus":"pending","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","reason":"採用対象は原画と環境Eが同時再生されるr04セット。原画単体の採用ではありません。geometry/衝突/攻撃遮蔽・通常聴感・本編接続は未受入。","versions":[{"id":"security-room-e-gpt6sol-luna-r04","title":"サーバー室 原画＋環境E r04","previewKind":"webgpu","replayable":true,"page":"public/sol61-server-room-e/r04/index.html?embed=1","source":"public/sol61-server-room-e/r04/package-manifest.json","adoption":"adopted","qualityStatus":"pending-review","technicalReplayStatus":"pass","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","originalCreatorDisplayName":"GPT-6-Sol","designAuthorDisplayName":"GPT-6.1-Sol","runtimeAuthorDisplayName":"GPT-6-Luna","normalAudioListening":"not_run","note":"原画SHA b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64 を保持したWebGPU環境Eセット。実GPU埋込自動ループ・有限auth receipt確認済み、verify音0。原画OFF完全一致。品質と聴感・geometry・本編受入は別途未完了。"},{"id":"security-server-gpt6sol-r01-original","title":"セット原画の参照 · 単体採用ではありません","src":"assets/sol-map-history/security-room-r01-original.png","hash":"b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64","creatorDisplayName":"GPT-6-Sol","qualityStatus":"original-reference-only","adoption":"reference-only","role":"reference-only","standaloneAdoption":false,"geometryStatus":"pending","environmentEStatus":"reference-only","note":"r04採用セットに含まれる原画の参照。原画単体を現行採用版として扱いません。原本1340×1174 RGB、SHA-256一致。"}]},
     {id:'security-gpt-pro',category:'map',title:'警備室 · ChatGPT 5.6 Pro',creatorDisplayName:'ChatGPT 5.6 Pro',quality:'geometry-unverified',adoption:'not-adopted',integration:'not-integrated',reason:'既存ProブランチのBコードから生成した警備室の原本。食堂設備や椅子の反復を避けた独立候補。開口・アンカー・衝突・隣室接続の数値受入は未了。ゲームには未統合。',versions:[
@@ -529,9 +534,8 @@
       {id:'cafeteria-buffet-attempt-01',title:'ビュッフェ attempt 01',src:'assets/gpt-map-history/cafeteria-buffet-component.png',hash:'da99b673cd36a45f055e7442ab1b11e7ebeb9bdaf40699d561055a82ec4623f0',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'Primary visual candidate acceptance only。コード全文の保存・厳密なコード再送証跡が不足。ゲーム未統合。'}]},
     {"id":"medical-room-code-only-r3","category":"map","title":"救護室 · ChatGPT Pro r3","creatorDisplayName":"ChatGPT Pro (underlying image model unverified)","quality":"root-viewed-candidate","adoption":"not-adopted","integration":"not-integrated","geometryStatus":"unverified","environmentEStatus":"awaiting-texture-adoption","reason":"ChatGPT ProのBコード添付のみで生成した救護室の一室原画候補。rootが画像を確認済み。採用・geometry/衝突・本編接続は未検証。環境Eはテクスチャ採用後に着手するため未作成。","versions":[{"id":"medical-room-code-only-r3-original","title":"ChatGPT Pro r3 original","src":"assets/map2-first-aid-code-only-r3-20261001/medical-room-r3-original.png","hash":"949c6f5d1a5a176e4b9cec098fda7b19b774d1b0cc99fb44f02b18f2e9543bc0","creatorDisplayName":"ChatGPT Pro (underlying image model unverified)","qualityStatus":"root-viewed-candidate","adoption":"not-adopted","geometryStatus":"unverified","environmentEStatus":"awaiting-texture-adoption","note":"原本1161×1355、SHA-256一致。ChatGPT Proの別childで生成。入力はmedical-r2 B-design-code.pyの完成ファイル添付だけ（添付の再ダウンロードSHAが元コードSHAと一致）、本文は空、追加promptなし。技術world grid 288×336はマップ構造契約であり、原画解像度指定ではない。geometry・衝突・本編統合は未検証。Eはテクスチャ採用待ち。来歴: assets/map2-first-aid-code-only-r3-20261001/provenance.json"}]},
   ].filter(group => ['security-server-gpt6sol-r01','medical-room-code-only-r3'].includes(group.id))
-    .map(group => group.id === 'medical-gpt-history'
-      ? { ...group, versions: group.versions.filter(item => item.id !== 'medical-room-dense-attempt-01') }
-      : group);
+    .map(group => ({ ...group, versions: group.versions.filter(isEligibleEnvironmentEMapVersion) }))
+    .filter(group => group.versions.length > 0);
   function makeMapPreview(item) {
     if (item.previewKind !== 'webgpu' || item.replayable !== true || !item.page) throw new TypeError('WebGPU map preview requires a replayable page');
     const preview = new URL(item.page, location.href);
