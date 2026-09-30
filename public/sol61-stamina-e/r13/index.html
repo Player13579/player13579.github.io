@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>スタミナ補給 E r13</title>
+  <style>
+    :root { color-scheme: dark; font: 13px/1.35 system-ui,sans-serif; background:#101720; color:#f0f2f4; }
+    * { box-sizing:border-box; }
+    html,body { width:100%;height:100%;margin:0;overflow:hidden; }
+    #stage { width:100%;height:100%;display:block;background:#111923; }
+    #toolbar { position:fixed;z-index:2;inset:8px 8px auto 8px;max-height:36vh;overflow:auto;
+      display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:8px 10px;
+      border:1px solid #62717d;border-radius:8px;background:rgba(10,15,21,.9);box-shadow:0 2px 12px #0009; }
+    #toolbar label { display:inline-flex;align-items:center;gap:4px;white-space:nowrap; }
+    #toolbar button,#toolbar select { font:inherit;color:inherit;background:#253441;border:1px solid #7e8c98;border-radius:4px;padding:4px 7px; }
+    #phase { width:min(260px,30vw); }
+    #phase-readout { min-width:62px;font-variant-numeric:tabular-nums; }
+    #status { position:fixed;z-index:2;inset:auto 8px 8px 8px;padding:4px 8px;border-radius:4px;
+      color:#f4e8c9;background:rgba(10,15,21,.8);font:12px/1.35 ui-monospace,monospace;white-space:pre-wrap; }
+    #labels { pointer-events:none;position:fixed;inset:0;z-index:1; }
+    .panel-label { position:absolute;top:calc(50% + 52px);font:11px ui-monospace,monospace;color:#dbe6ed;
+      background:#172431bb;padding:2px 5px;border-radius:3px; }
+    #dark-label { left:calc(25% - 42px); }
+    #light-label { left:calc(75% - 45px);color:#17222b;background:#d9e0e6cc; }
+    .embedded #toolbar,.embedded #status,.embedded #labels { display:none; }
+    @media (prefers-reduced-motion: reduce) { #toolbar { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <canvas id="stage" aria-label="同一の正スタミナ受領Eを暗い面と明るい面の独立H64アンカーへ表示する診断runtime"></canvas>
+  <div id="labels" aria-hidden="true"><span id="dark-label" class="panel-label">dark · fixture A</span><span id="light-label" class="panel-label">light · fixture B</span></div>
+  <section id="toolbar" aria-label="スタミナE診断">
+    <label><input id="actor" type="checkbox" checked> 人物</label>
+    <label><input id="source" type="checkbox" checked> source</label>
+    <label><input id="coverage" type="checkbox" checked> coverage</label>
+    <label><input id="incident" type="checkbox" checked> body response</label>
+    <label><input id="front" type="checkbox" checked> front</label>
+    <label><input id="rear" type="checkbox" checked> rear</label>
+    <label><input id="points" type="checkbox" checked> arrival points</label>
+    <label><input id="near" type="checkbox" checked> near</label>
+    <label><input id="cross" type="checkbox" checked> cross</label>
+    <label><input id="ghost" type="checkbox" checked> lens image</label>
+    <label>duration <select id="duration"><option value="900">900 ms</option><option value="1500" selected>1500 ms</option><option value="2200">2200 ms</option></select></label>
+    <label for="phase">phase</label><input id="phase" type="range" min="0" max="1.001" step="0.001" value="0">
+    <output id="phase-readout">0 ms</output>
+    <button id="reset" type="button">reset fixtures</button>
+    <button id="main-only" type="button">main only</button>
+    <button id="combined" type="button">combined ON</button>
+    <button id="sound" type="button">enable r13 sound</button>
+  </section>
+  <output id="status" role="status">WebGPU initialising · preview only · no gameplay state</output>
+  <script type="module" src="./runtime.mjs"></script>
+</body>
+</html>

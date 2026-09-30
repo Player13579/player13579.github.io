@@ -1,0 +1,91 @@
+{
+  "id": "cooldown-clock-zero-r4",
+  "version": "r4",
+  "title": "待機時間短縮 Clock zero",
+  "category": "effect",
+  "creator": "GPT-6.1-Sol",
+  "implementationModel": "GPT-6-Luna",
+  "source": {
+    "path": "outputs/request-20260930/cooldown-clock-zero/r4",
+    "authoritativeManifest": "SOURCE-MANIFEST.json",
+    "authoritativeManifestSha256": "abfd57ca758a68d5fa14dfa1c1d4cf7e190bffb450c22e587af422f7b85ffcf4",
+    "runtimeFreeze": "outputs/request-20260930/cooldown-clock-zero/r4/evidence/freeze.json",
+    "artistSha256": "f1bbd7e947703352546c1abc152990d69ff1cb5d403c804675cf82ad8fc81580",
+    "runtimeSha256": "c91988605760e131fbacdaa4205f925a711aa0ed0432d67f5a385ff6cebe025d",
+    "runtimeSourcePath": "outputs/request-20260930/cooldown-clock-zero/r4/runtime.mjs"
+  },
+  "runtimeClosure": {
+    "exactCopies": {
+      "artist.mjs": "f1bbd7e947703352546c1abc152990d69ff1cb5d403c804675cf82ad8fc81580",
+      "world.wgsl": "1159289c6e4203bea1f3bc4d7049da8343879a151afc2d2335564efb37e3e6ae",
+      "observe.wgsl": "b69264302f3ccbf8b411586f7c7202c7ddaac186bc0073eb55c69aa671b0d323",
+      "sfx-runtime.mjs": "eb719fab55e346c123583b6818c16ce004be4870f2c9a97da34c64e01f3065e4",
+      "clock-r4.wav": "1d02c71d340fe51c637a9fec3b8eed7cc6f097d021013caa3b263e6e979ef601"
+    },
+    "urlAdaptedRuntime": {
+      "path": "runtime.mjs",
+      "sha256": "91bface245340d58dfc6be99776f0defed4bfb0be4710b2454997e470feb3b24",
+      "sourcePath": "outputs/request-20260930/cooldown-clock-zero/r4/runtime.mjs",
+      "sourceSha256": "c91988605760e131fbacdaa4205f925a711aa0ed0432d67f5a385ff6cebe025d",
+      "soleSubstitution": {
+        "from": "../../../../public/assets/generated/sophia-front-five-v753.png",
+        "to": "./sophia-front-five-v753.png"
+      }
+    },
+    "entry": "index.html",
+    "entrySha256": "f1ccc2c82c36553d16e2a92cf8378423074fc9eef29e43d2074f88eb479b3323",
+    "externalRuntimeAsset": {
+      "path": "public/assets/generated/sophia-front-five-v753.png",
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "crop": [62, 15, 136, 225]
+    },
+    "bundledFixture": {
+      "path": "sophia-front-five-v753.png",
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    },
+    "hostAdaptation": {
+      "scope": "runtime.mjs single URL literal only",
+      "sourceUrlSuffix": "../../../../public/assets/generated/sophia-front-five-v753.png",
+      "resolvedUrl": "./sophia-front-five-v753.png",
+      "reason": "release work tree provides the same source asset under assets/ instead of public/assets/",
+      "sourceRuntimeImmutable": true,
+      "artistByteIdentical": true
+    },
+    "embedQuery": "embed=1",
+    "embedCanvasCssPixels": [980, 620],
+    "embedDiagnostics": "hidden",
+    "previewFraming": {
+      "cssHeight": 64,
+      "devicePixelRatio": 1,
+      "actorCenter": "canvas center",
+      "actorQuad": [38.684444444444445, 64],
+      "scale": "1 CSS px per H64 unit",
+      "zoom": 1,
+      "fieldBoundsH64": [-30, -37, 67, 34],
+      "clockCenterH64": [43, -12]
+    }
+  },
+  "validation": {
+    "technicalStatus": "pass",
+    "evidence": "outputs/request-20260930/cooldown-clock-zero/r4/evidence/gpu.json",
+    "runtimeFreezeEvidence": "outputs/request-20260930/cooldown-clock-zero/r4/evidence/freeze.json",
+    "artistCopy": "byte-for-byte verified against frozen r4 outputs",
+    "runtimeAdaptation": "source runtime unchanged; deployed runtime verified as the recorded sole fixture URL substitution",
+    "boundsAndClockCheck": {
+      "status": "CPU_PASS_ONLY",
+      "bodyHeight": 64,
+      "bodyWidth": 38.684444444444445,
+      "minuteLength": 12,
+      "hourLength": 7.5,
+      "unwrappedAngularRatio": 12,
+      "clockwise": true,
+      "independentWaitingArc": true,
+      "GPUActorBound": "6-vertex 38.684x64 quad; original H64 crop retained"
+    },
+    "visualReview": "pending primary review",
+    "listening": "not_run",
+    "gameIntegration": "not_run",
+    "galleryReplay": "not_run",
+    "adoption": "unadopted"
+  }
+}

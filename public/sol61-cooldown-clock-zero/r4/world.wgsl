@@ -1,0 +1,25 @@
+// Clock r4 H64 artist正本。vertexCount=6のfield/body、MRT RGBA16float。
+struct Frame { viewport:vec4f, anchor:vec4f, clock:vec4f, features:vec4f, debug:vec4f }
+@group(0) @binding(0) var<uniform> f:Frame;
+@group(0) @binding(1) var original:texture_2d<f32>;
+@group(0) @binding(2) var samp:sampler;
+struct V { @builtin(position) position:vec4f, @location(0) local:vec2f, @location(1) uv:vec2f }
+struct Field { density:f32, emission:vec3f }
+struct Output { @location(0) colour:vec4f, @location(1) emission:vec4f }
+fn ramp(a:f32,b:f32,x:f32)->f32 {let q=clamp((x-a)/(b-a),0.,1.);return q*q*(3.-2.*q);}
+fn gauss(x:f32,w:f32)->f32{return exp(-pow(x/w,2.));}
+fn seg(p:vec2f,a:vec2f,b:vec2f)->f32{let ab=b-a;return length(p-a-clamp(dot(p-a,ab)/dot(ab,ab),0.,1.)*ab);}
+fn live()->bool{return f.clock.z>.5&&f.clock.w>.5&&f.clock.y>=.9&&f.clock.x>=0.&&f.clock.x<f.clock.y;}
+fn source(p:vec3f)->Field {var o:Field;o.density=0.;o.emission=vec3f(0.);if(!live()){return o;}let u=f.clock.x/f.clock.y;let end=1.-ramp(.84,1.,u);let advance=ramp(.12,.29,u);let minute=1.8*advance;let hour=2.61799387799+.15*advance;let waitingStart=.15+1.3*advance;let waitingLength=2.4-1.3*advance;let q=p.xy-vec2f(43.,-12.);let r=length(q);var angle=atan2(q.x,-q.y)-waitingStart;angle=angle-floor(angle/6.2831853)*6.2831853;let ring=gauss(r-16.5,.9);let arc=gauss(r-13.4,1.65)*select(0.,1.,angle<waitingLength);var needles=0.;var marks=0.;for(var i=0u;i<2u;i++){let a=select(minute,hour,i==1u);let length=select(12.,7.5,i==1u);needles+=gauss(seg(q,vec2f(0.),vec2f(sin(a),-cos(a))*length),1.1);}for(var i=0u;i<4u;i++){let a=f32(i)*1.5707963;let d=vec2f(sin(a),-cos(a));marks+=gauss(seg(q,d*14.3,d*17.4),.7);}let dial=(ring*.48+arc*.8+needles*1.15+marks*.3)*ramp(0.,.09,u)*end*gauss(p.z+2.,2.)*f.features.x;
+var a=vec2f(43.,-12.);var b=vec2f(7.4,7.4);var t=ramp(.30,.425,u);if(u>=.48){a=b;b=vec2f(0.,-4.);t=ramp(.48,.565,u);}if(u>=.585){a=vec2f(0.,-4.);b=vec2f(-12.5,6.7);t=ramp(.585,.67,u);}let center=mix(a,b,t);var axis=mix(normalize(vec2f(7.4,7.4)-vec2f(43.,-12.)),normalize(vec2f(0.,-4.)-vec2f(7.4,7.4)),ramp(.445,.495,u));axis=normalize(mix(axis,normalize(vec2f(-12.5,6.7)-vec2f(0.,-4.)),ramp(.57,.60,u)));let d=p.xy-center;let along=dot(d,axis);let across=dot(d,vec2f(-axis.y,axis.x));let packet=gauss(along+2.,7.5)*gauss(across,4.7)*gauss(p.z-2.5,3.5)*ramp(.295,.32,u)*(1.-ramp(.69,.75,u))*end*f.features.y;
+let receive=(gauss(length(p.xy-vec2f(7.4,7.4)),4.)*ramp(.425,.46,u)+gauss(length(p.xy-vec2f(0.,-4.)),5.7)*ramp(.53,.57,u)*.8+gauss(length(p.xy-vec2f(-12.5,6.7)),4.)*ramp(.625,.675,u))*end*gauss(p.z-1.,3.)*.4*f.features.z;
+var point=vec3f(0.);if(f.debug.y>.5){let centers=array<vec2f,3>(vec2f(43.,-12.),vec2f(7.4,7.4),vec2f(-12.5,6.7));let peaks=array<f32,3>(.325,.455,.66);let widths=array<f32,3>(.035,.037,.045);let onsets=array<f32,3>(.295,.425,.625);for(var i=0u;i<3u;i++){let enabled=select(f.features.z,f.features.x,i==0u);point+=vec3f(18.,16.,11.)*gauss(u-peaks[i],widths[i])*ramp(onsets[i],onsets[i]+.015,u)*end*gauss(length(p.xy-centers[i]),1.15)*gauss(p.z-3.,2.)*enabled;}}
+o.density=dial*.35+packet*.42+receive*.22;o.emission=vec3f(7.,3.4,.8)*dial+vec3f(11.,8.7,3.2)*packet+vec3f(4.2,2.8,.7)*receive+point;return o;}
+fn clip(local:vec2f)->vec4f{let p=f.anchor.xy+local*f.viewport.z/64.*vec2f(f.anchor.z,1.);return vec4f(p.x/f.viewport.x*2.-1.,1.-p.y/f.viewport.y*2.,.5,1.);}
+@vertex fn fieldVertex(@builtin(vertex_index)i:u32)->V {let q=array<vec2f,6>(vec2f(0.,0.),vec2f(1.,0.),vec2f(0.,1.),vec2f(0.,1.),vec2f(1.,0.),vec2f(1.,1.));var v:V;v.local=mix(vec2f(-30.,-37.),vec2f(67.,34.),q[i]);v.position=clip(v.local);v.uv=q[i];return v;}
+@vertex fn bodyVertex(@builtin(vertex_index)i:u32)->V {let q=array<vec2f,6>(vec2f(0.,0.),vec2f(1.,0.),vec2f(0.,1.),vec2f(0.,1.),vec2f(1.,0.),vec2f(1.,1.));var v:V;v.local=(q[i]-vec2f(.5))*vec2f(64.*136./225.,64.);v.position=clip(v.local);v.uv=q[i];return v;}
+fn empty()->Output{var o:Output;o.colour=vec4f(0.);o.emission=vec4f(0.);return o;}
+fn integrate(xy:vec2f,start:f32,end:f32)->Output {var light=vec3f(0.);var trans=1.;let step=(end-start)/16.;for(var i=0u;i<16u;i++){let s=source(vec3f(xy,start+(f32(i)+.5)*step));let cov=1.-exp(-s.density*abs(step)*.08);light+=s.emission*abs(step)*.10*trans;trans*=1.-cov;}var o:Output;o.colour=vec4f(light,1.-trans);o.emission=vec4f(light,1.-trans);return o;}
+@fragment fn rearFragment(v:V)->Output {if(f.debug.z<.5){return empty();}return integrate(v.local,0.,-8.);}
+@fragment fn frontFragment(v:V)->Output {if(f.debug.w<.5){return empty();}return integrate(v.local,8.,0.);}
+@fragment fn bodyFragment(v:V)->Output {if(f.debug.x<.5){return empty();}let tex=textureSample(original,samp,v.uv);let base=pow(max(tex.rgb,vec3f(0.)),vec3f(2.2));let taps=array<vec2f,4>(vec2f(-2.,0.),vec2f(2.,0.),vec2f(0.,-2.),vec2f(0.,2.));var incident=vec3f(0.);if(f.features.w>.5){for(var i=0u;i<4u;i++){incident+=source(vec3f(v.local+taps[i],1.)).emission*.018;}}var o:Output;o.colour=vec4f((base+base*incident)*tex.a,tex.a);o.emission=vec4f(base*incident*.15*tex.a,tex.a);return o;}

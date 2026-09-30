@@ -1,0 +1,167 @@
+{
+  "schema": "dva-e-reproducible-version-v1",
+  "version": "sol61-mana-zero-r8",
+  "sourceVersion": "sol61-mana-zero-r8",
+  "entry": "index.html?embed=1",
+  "verifyEntry": "embed-test.html?verify=1",
+  "author": {
+    "displayName": "GPT-6.1-Sol",
+    "role": "creative design and immutable artist source"
+  },
+  "implementation": {
+    "displayName": "GPT-6-Luna",
+    "role": "faithful WebGPU runtime adapter, tests, and technical replay"
+  },
+  "status": {
+    "technicalReplay": "pass",
+    "visualQuality": "pending/unreviewed",
+    "adoption": "unadopted; current Mana zero adopted version is r6",
+    "gameIntegration": "not_run",
+    "sfxListening": "not_run"
+  },
+  "dependencies": {
+    "index.html": [
+      "preview.mjs"
+    ],
+    "embed-test.html": [
+      "index.html"
+    ],
+    "preview.mjs": [
+      "artist-field.mjs",
+      "runtime.mjs",
+      "sfx.mjs"
+    ],
+    "runtime.mjs": [
+      "artist-field.mjs",
+      "inherited/r7-receipt-contract.mjs",
+      "sfx.mjs",
+      "assets/sophia-front-five-v753.png"
+    ],
+    "sfx.mjs": [
+      "inherited/r6-sfx.mjs"
+    ],
+    "artist-field.mjs": [],
+    "inherited/r7-receipt-contract.mjs": [],
+    "inherited/r6-sfx.mjs": [],
+    "assets/sophia-front-five-v753.png": []
+  },
+  "sourceManifest": {
+    "id": "sol61-mana-zero-r8-creative",
+    "files": [
+      {
+        "path": "DESIGN.md",
+        "sha256": "afe785c0a77266c821ea94bb49aeb9bfa3a6c8c4f6e9f132069ce3a622b00185"
+      },
+      {
+        "path": "artist-field.mjs",
+        "sha256": "7f17245754d5a8876b8fb2990884b6b8666ad18a7d2fb04e05e30504b025dc9f"
+      },
+      {
+        "path": "INPUTS.md",
+        "sha256": "f63451c43b2db6e241d09c62aa50a8363208c14d7a826a587b46b0aa027d3c93"
+      },
+      {
+        "path": "render-contract.json",
+        "sha256": "a5d5c55bd625c8266d458fab3256c0ebda6b7baea0ef272f5a638753a70686a7"
+      },
+      {
+        "path": "HANDOFF.md",
+        "sha256": "bf0df4bd17cf23208df7650fbcfd31607307741cdd9f6c01f23d099607e7a580"
+      }
+    ]
+  },
+  "technicalEvidence": {
+    "freezeManifestSha256": "7ca3d588237fb176dddee7204208133b9a4684c02468589bbd1745e4c747ff0f",
+    "sourceEvidencePath": "outputs/request-20260930/sol61-mana-zero/r1/versions/r8/runtime-evidence/freeze-manifest.json",
+    "captureCount": 88,
+    "adapter": {
+      "x": 0,
+      "y": 0,
+      "width": 980,
+      "height": 620,
+      "bottom": 620,
+      "innerHeight": 620,
+      "dpr": 1,
+      "buffer": [
+        980,
+        620
+      ]
+    },
+    "verifyAudio": {
+      "verify": true,
+      "gain": 0,
+      "contexts": 0,
+      "unlockResult": {
+        "result": false,
+        "state": {
+          "verify": true,
+          "gain": 0,
+          "contextState": "not-created",
+          "contexts": 0,
+          "played": 0,
+          "blocked": 11,
+          "voices": 0,
+          "pcmFrames": 81600,
+          "sampleRate": 48000
+        }
+      },
+      "actualListening": "not_run"
+    },
+    "cleanup": {
+      "serverPort": 57197,
+      "serverClosed": true,
+      "chromePid": 34892,
+      "chromeClosed": true,
+      "profile": "C:\\Users\\user\\AppData\\Local\\Temp\\codex-mana-r8-verify-YsNvMP",
+      "profileRemoved": true,
+      "debugPort": 57198
+    }
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 637,
+      "sha256": "5c3071a15793ef479513cc943ffd6a54c864252f07c689867a60cdc056981bef"
+    },
+    {
+      "path": "embed-test.html",
+      "bytes": 434,
+      "sha256": "6e56a79d17585bc81131446775a523b381914babaf4fe6182d46a080ee77f962"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 4259,
+      "sha256": "30791c368c34ce0fe41b5eb14f6e58c8bf595c5934ad0b9f850a5462c1b7fba4"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 19559,
+      "sha256": "c30345bc616aefeae3c7b37d059335d8324fe842b9ed0497f77bc3a3304435f4"
+    },
+    {
+      "path": "artist-field.mjs",
+      "bytes": 4737,
+      "sha256": "7f17245754d5a8876b8fb2990884b6b8666ad18a7d2fb04e05e30504b025dc9f"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 1854,
+      "sha256": "ec5ba7e9f7d25bc7413105d686adb170f85bcc74d8ac32e106fd6ce4333ffdbb"
+    },
+    {
+      "path": "assets/sophia-front-five-v753.png",
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    },
+    {
+      "path": "inherited/r7-receipt-contract.mjs",
+      "bytes": 3063,
+      "sha256": "4b3e4332ed62f47eca47aa5483256a835e801bec770665c35e894b3c73fc734e"
+    },
+    {
+      "path": "inherited/r6-sfx.mjs",
+      "bytes": 2350,
+      "sha256": "265bcf6705762999953d54214af38c952a050c9ef0f69e709e51f647370ecde6"
+    }
+  ]
+}

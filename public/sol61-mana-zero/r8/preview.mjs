@@ -1,0 +1,21 @@
+import {DESIGN} from './artist-field.mjs';
+import {createRenderer,DEFAULT_SETTINGS,fixtureSettings} from './runtime.mjs';
+import {createR8SoundGate} from './sfx.mjs';
+
+const query=new URLSearchParams(location.search),verify=query.has('verify'),embed=query.has('embed')||query.has('gallery');document.body.classList.toggle('embed',embed);
+const state=window.__manaR8={id:DESIGN.id,ready:false,verify,frames:0,submits:0,loops:0,rafIntervals:[],errors:[],gpuErrors:[],compilation:{},settings:{...DEFAULT_SETTINGS},lastSubmitted:null};
+const sound=createR8SoundGate({verify});window.__gallerySfx={activateFromGesture:()=>sound.activateFromGesture(),snapshot:()=>sound.snapshot()};let renderer=null,raf=0,previous=0,cycleStart=0,fixed=null,settings=fixtureSettings(),lastCycle=-1,sampleId=0;const cycleMs=2400;
+function registerDemo(cycle,elapsedMs=0){return renderer.acceptReceipt({kind:'gain-mana',id:`r8-demo-${cycle}`,sessionId:'mana-r8-preview',causeId:`r8-demo-${cycle}`,playerId:'preview-owner',sourceKind:'preview-demo',confirmed:true,actualDelta:1,elapsedMs,outcome:'committed'},'preview-owner')}
+window.__controls={
+ async sample(seconds,options={}){if(!renderer)throw Error('renderer not ready');sampleId++;const elapsedMs=Math.max(0,seconds*1000);settings=fixtureSettings(options);fixed=elapsedMs;registerDemo(`sample-${sampleId}`,elapsedMs);renderer.render(elapsedMs,{ownerId:'preview-owner',visible:true,...settings});await renderer.done();await new Promise(requestAnimationFrame);state.lastSubmitted=renderer.lastSubmitted;state.audio=sound.snapshot();return state},
+ resume(){fixed=null;settings=fixtureSettings();cycleStart=performance.now();previous=0;lastCycle=-1},
+ async receipt(event,ownerId){const r=renderer?.acceptReceipt(event,ownerId);if(r){fixed=event.elapsedMs;settings=fixtureSettings();renderer.render(event.elapsedMs,{ownerId,visible:true,...settings});await renderer.done();await new Promise(requestAnimationFrame)}return r},
+ async gpuCheckpoint(){const before=performance.now();await renderer?.done();return performance.now()-before},
+ async dispose(){cancelAnimationFrame(raf);renderer?.destroy();await sound.dispose()},
+ stats(){return{...state,diagnostics:renderer?.diagnostics??null,settings:{...settings},lastSubmitted:renderer?.lastSubmitted??null,audio:sound.snapshot(),canvas:(()=>{const c=document.querySelector('canvas'),r=c.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom,innerHeight, dpr:devicePixelRatio,buffer:[c.width,c.height]}})()}}
+};
+document.addEventListener('pointerdown',()=>sound.activateFromGesture(),{passive:true});window.addEventListener('message',e=>{if(['dva-gallery-sfx-activate','gallery-sfx-activate'].includes(e.data?.type))sound.activateFromGesture()});document.addEventListener('visibilitychange',()=>{if(document.hidden){renderer?.render(1700,{visible:false});sound.stop()}});
+try{
+ const canvas=document.querySelector('canvas'),rect=canvas.getBoundingClientRect(),dpr=devicePixelRatio||1;canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);renderer=await createRenderer(canvas,state,sound);const prep=performance.now();registerDemo('boot');renderer.render(0,{ownerId:'preview-owner',dpr,...settings});await renderer.done();state.prewarmMs=performance.now()-prep;cycleStart=performance.now();state.ready=true;
+ function frame(now){if(previous){state.rafIntervals.push(now-previous);if(state.rafIntervals.length>3000)state.rafIntervals.shift()}previous=now;const total=now-cycleStart,cycle=Math.floor(total/cycleMs),age=total%cycleMs;state.loops=cycle;if(fixed===null){if(age<1700){if(lastCycle!==cycle){registerDemo(cycle);lastCycle=cycle}settings=fixtureSettings();renderer.render(age,{ownerId:'preview-owner',visible:!document.hidden,dpr,...settings})}else{renderer.render(1700,{visible:false,dpr});sound.stop()}}else renderer.render(fixed,{ownerId:'preview-owner',dpr,...settings});state.frames++;state.submits=renderer.diagnostics.submits??0;state.lastSubmitted=renderer.lastSubmitted;state.audio=sound.snapshot();raf=requestAnimationFrame(frame)}raf=requestAnimationFrame(frame);
+}catch(error){state.errors.push(String(error?.stack??error));document.querySelector('#error').textContent=String(error?.message??error)}

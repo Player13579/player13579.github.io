@@ -1,0 +1,160 @@
+{
+  "id": "sol61-stamina-e-r13-public-runtime-package",
+  "version": "r13",
+  "authoring": {
+    "faithfulRuntimeImplementation": "GPT-6-Luna",
+    "creativeDesign": "GPT-6.1-Sol"
+  },
+  "status": {
+    "runtimeReplay": "frozen r13 technical replay package; only package fetch URL adapted for canonical Pages asset closure",
+    "cpu": "PASS",
+    "gpuTechnical": "PASS (per frozen source evidence)",
+    "visualQuality": "unreviewed",
+    "adoption": "unadopted; adopted Stamina r11 remains authoritative",
+    "listening": "not tested",
+    "gameIntegration": "not connected",
+    "publicGalleryRegistration": "not registered by this package task"
+  },
+  "source": {
+    "immutableSourceCount": 14,
+    "runtimeFreezeSha256": "4857ec8c7e9ab13484c89570d2d259d85708b10396ac71eef8e2be52da20cbb4",
+    "originalManifestSha256": "a04f9d3b4a31abfcd876353f916fc669734abe206c3c5231497c14e53355a4cd",
+    "immutableInputs": [
+      {
+        "path": "artist.mjs",
+        "sha256": "f9ccaf614341c37dbe076ef26ea0f698b264448b65279da17aa4ea78ffd9e806"
+      },
+      {
+        "path": "world.wgsl",
+        "sha256": "e7a4e313675665f8c8f01446c955b133e5cc484a22fb9e1acce41fbdfbcd0dee"
+      },
+      {
+        "path": "observe.wgsl",
+        "sha256": "17d7e6a6d2bc9b18f0f69b7306a57f51bdf7eb3e87d29e25d34591f4554842ce"
+      },
+      {
+        "path": "acoustic.mjs",
+        "sha256": "d632844c674228399db4e8fbc1d6d22df49e0c69a05258b6f43826a47e5dcf80"
+      },
+      {
+        "path": "contract.mjs",
+        "sha256": "a467f862e1b3824db29124ee374c8359979c47a6ca36176d1b9cf1011ce568cb"
+      },
+      {
+        "path": "b-contract.json",
+        "sha256": "842d6e212367a36963e70faacd7039168befc9bd9b143245c72f668cc9ff06b7"
+      },
+      {
+        "path": "cpu-design-check.mjs",
+        "sha256": "a5e28674aae2f0baadd3f87341b3d6b4df90dc6b967b7e0ef652de1c4fe88853"
+      },
+      {
+        "path": "cpu-evidence.json",
+        "sha256": "5120668e06d5f7394bb944e0915c9dfdacbcf3d8817f62f3bdd46dde40a5e60a"
+      },
+      {
+        "path": "stamina-r13.wav",
+        "sha256": "b97e139cd1a3a7ae041f755975f3509e91b1051383d3af607796ed745a7d07c3"
+      },
+      {
+        "path": "DESIGN.md",
+        "sha256": "b199e3c8f63d30db800f55dba308f3acd02ad207fc54d6cd7c3b58940e63ab64"
+      },
+      {
+        "path": "INPUTS.md",
+        "sha256": "4fbace022e379a3f54471266c5d24637342c79aa18495e3c5a417539a30bdbac"
+      },
+      {
+        "path": "render-contract.json",
+        "sha256": "e51348b353847a79108bc1d2af2c997f0f49dc0e79b9157a167c68cb62390c6f"
+      },
+      {
+        "path": "B-AUDIT.md",
+        "sha256": "0d1ca9aecce8adadc850a0deea1351318343c0e98011cd65b03c5d37d9d59fd1"
+      },
+      {
+        "path": "HANDOFF.md",
+        "sha256": "288f1922d7e55b2f332eded22ca2acbe5aa12a605a2e44a1af5d32cc5de33c35"
+      }
+    ],
+    "runtimeFreezePath": "outputs/request-20260930/sol61-stamina-e/r13/runtime-evidence/freeze-r13.json",
+    "originalManifestPath": "outputs/request-20260930/sol61-stamina-e/r13/SOURCE-MANIFEST.json"
+  },
+  "runtimeClosure": [
+    {
+      "path": "runtime.mjs",
+      "bytes": 40310,
+      "sha256": "480725d312ef270ea4710c7056c6aa631dbf1fd10a44b3a89c310df63efa9050",
+      "sourceSha256": "1cefdb99dd42c61f6cae4e4f449618e10b4b4147e020b9b23bdd49cbff1cfdae"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3792,
+      "sha256": "6e77f01d8b2851a52841877faac56b019191046c4bd60bff661612b6557361a5",
+      "sourceSha256": "6e77f01d8b2851a52841877faac56b019191046c4bd60bff661612b6557361a5"
+    },
+    {
+      "path": "embed-test.html",
+      "bytes": 986,
+      "sha256": "1733eff5e2f819051f1e466c1852b9c62e2d3f083febb799b8312d35d79d0281",
+      "sourceSha256": "1733eff5e2f819051f1e466c1852b9c62e2d3f083febb799b8312d35d79d0281"
+    },
+    {
+      "path": "artist.mjs",
+      "bytes": 4834,
+      "sha256": "f9ccaf614341c37dbe076ef26ea0f698b264448b65279da17aa4ea78ffd9e806",
+      "sourceSha256": "f9ccaf614341c37dbe076ef26ea0f698b264448b65279da17aa4ea78ffd9e806"
+    },
+    {
+      "path": "acoustic.mjs",
+      "bytes": 2195,
+      "sha256": "d632844c674228399db4e8fbc1d6d22df49e0c69a05258b6f43826a47e5dcf80",
+      "sourceSha256": "d632844c674228399db4e8fbc1d6d22df49e0c69a05258b6f43826a47e5dcf80"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 4432,
+      "sha256": "e7a4e313675665f8c8f01446c955b133e5cc484a22fb9e1acce41fbdfbcd0dee",
+      "sourceSha256": "e7a4e313675665f8c8f01446c955b133e5cc484a22fb9e1acce41fbdfbcd0dee"
+    },
+    {
+      "path": "observe.wgsl",
+      "bytes": 2833,
+      "sha256": "17d7e6a6d2bc9b18f0f69b7306a57f51bdf7eb3e87d29e25d34591f4554842ce",
+      "sourceSha256": "17d7e6a6d2bc9b18f0f69b7306a57f51bdf7eb3e87d29e25d34591f4554842ce"
+    },
+    {
+      "path": "runtime-evidence/runtime-core.mjs",
+      "bytes": 3992,
+      "sha256": "ed369f16ef16a3b4eb3c31700a1196800ad49782ad96a8f2b5e4f099e0695026",
+      "sourceSha256": "ed369f16ef16a3b4eb3c31700a1196800ad49782ad96a8f2b5e4f099e0695026"
+    }
+  ],
+  "externalRuntimeAsset": {
+    "path": "public/sol61-stamina-e/r13/body.png",
+    "bytes": 243081,
+    "reason": "original actor atlas used by runtime.mjs; referenced by exact existing relative URL",
+    "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "sourcePath": "assets/generated/sophia-front-five-v753.png",
+    "runtimeFetchUrl": "./body.png",
+    "pagesCanonicalFileExists": true,
+    "runtimeFetchTargetExists": true
+  },
+  "verification": {
+    "route": "?verify=stamina-r13",
+    "audio": "strict zero",
+    "evidencePath": "outputs/request-20260930/sol61-stamina-e/r13/runtime-evidence/gpu-acceptance.json",
+    "evidenceOnlyCopiedAsReference": false,
+    "cadence": "not run"
+  },
+  "sourceOfTruth": "The frozen r13 package is a historical, technically replayable unadopted version. It does not supersede adopted r11.",
+  "runtimeAdaptation": {
+    "scope": "single URL literal in production runtime.mjs",
+    "originalRuntimeSha256": "1cefdb99dd42c61f6cae4e4f449618e10b4b4147e020b9b23bdd49cbff1cfdae",
+    "adaptedRuntimeSha256": "480725d312ef270ea4710c7056c6aa631dbf1fd10a44b3a89c310df63efa9050",
+    "originalLiteral": "new URL('../../../../public/assets/generated/sophia-front-five-v753.png', import.meta.url)",
+    "replacementLiteral": "new URL('./body.png', import.meta.url)",
+    "reason": "authoritative Pages asset is packaged at repository root assets/generated; package-local body.png keeps source bytes exact and makes the runtime fetch valid",
+    "allOtherRuntimeDependenciesByteIdentical": true
+  }
+}
