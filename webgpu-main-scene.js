@@ -197,6 +197,48 @@
               !Array.isArray(planned.target) || planned.target.length !== 4 ||
               !planned.target.every(Number.isFinite))
             throw new TypeError(`Magic Gunner aim ${id} needs one exact source-owned plan`);
+        } else if (event?.type === 'gunnerShotE') {
+          const input = event.input, effect = input?.effect, actor = input?.actor;
+          const action = input?.actionOwner, identity = input?.actionIdentity;
+          const planned = input?.planned;
+          if (typeof passes.gunnerShotE?.record !== 'function' ||
+              effect?.type !== 'action-shoot' || String(effect.id ?? '') !== id ||
+              String(actor?.id ?? '') !== String(effect.playerId ?? '') ||
+              actor?.visible !== true || actor?.alive !== true || actor.ejected || actor.inVent ||
+              (actor.invisible && String(actor.id) !== String(magic.viewerId || '')) ||
+              action?.kind !== 'shoot' || action.motionId !== 'action-shoot' ||
+              String(action.sourceEffectId ?? '') !== id || action.variant !== effect.variant ||
+              identity?.playerId !== String(effect.playerId ?? '') ||
+              identity?.sourceEffectId !== id || identity?.motionId !== 'action-shoot' ||
+              identity?.variant !== effect.variant || planned?.eventId !== id ||
+              planned?.effectId !== id || !(planned.values instanceof Float32Array) ||
+              planned.values.length !== 16 || !planned.values.every(Number.isFinite) ||
+              ![input.visibleAtMs, effect.x, effect.y, effect.targetX, effect.targetY,
+                effect.startedAt].every(Number.isFinite) || effect.duration !== 1200 ||
+              input.visibleAtMs < effect.startedAt || input.visibleAtMs >= effect.startedAt + 1200 ||
+              Math.abs(planned.progress - (input.visibleAtMs - effect.startedAt) / 1200) > 1e-6)
+            throw new TypeError(`Magic Gunner shot ${id} needs one visible source-owned plan`);
+        } else if (event?.type === 'taserHeadshotE') {
+          const input = event.input, scene = input?.scene, effect = scene?.effects?.[0];
+          const planned = input?.planned;
+          if (typeof passes.taserHeadshotE?.record !== 'function' ||
+              !Array.isArray(scene?.effects) || scene.effects.length !== 1 ||
+              !['action-taser', 'action-gunner-headshot'].includes(effect?.type) ||
+              String(effect.id ?? '') !== id || planned?.id !== id || planned.contactOnly !== true ||
+              planned.killOutcomeUnknown !== (effect.type === 'action-gunner-headshot') ||
+              String(planned.targetId ?? '') !== String(effect.targetId ?? '') ||
+              !Array.isArray(scene.players) || scene.players.length !== 1 ||
+              String(scene.players[0]?.id ?? '') !== String(effect.targetId ?? '') ||
+              scene.players[0].visible !== true || scene.players[0].ejected ||
+              scene.players[0].inVent ||
+              (scene.players[0].invisible && String(scene.players[0].id) !== String(magic.viewerId || '')) ||
+              ![scene.nowMs, effect.x, effect.y, input.camera?.x, input.camera?.y, input.zoom].every(Number.isFinite) ||
+              !Number.isFinite(effect.startedAt) || effect.duration !== 1200 || input.zoom <= 0 ||
+              scene.nowMs < effect.startedAt ||
+              scene.nowMs >= effect.startedAt + (effect.type === 'action-taser' ? 480 : 420) ||
+              Math.abs(planned.progress - (scene.nowMs - effect.startedAt) /
+                (effect.type === 'action-taser' ? 480 : 420)) > 1e-6)
+            throw new TypeError(`Magic taser/headshot ${id} needs one visible contact-only plan`);
         } else if (event?.type === 'headMarker') {
           const source=retained.get(id), input=event.input, planned=input?.planned;
           const prefix=source?.effectType==='enhance-activation'?'enhance:':'fighter-ec:';
@@ -876,6 +918,18 @@
               startedAt: event.input.effect.startedAt,
               visibleAtMs,
               progress: event.input.planned.progress }));
+          } else if (event.type === 'gunnerShotE') {
+            const result = need('gunnerShotE', 'record').record({ frame, target, viewport,
+              planned: event.input.planned });
+            if (result !== event.effectId)
+              throw new Error(`Magic Gunner shot ${event.effectId} was not drawn once`);
+          } else if (event.type === 'taserHeadshotE') {
+            const outcome = need('taserHeadshotE', 'record').record({ frame, target,
+              viewport, scene: event.input.scene, camera: event.input.camera,
+              zoom: event.input.zoom });
+            if (outcome?.drawn !== 1 || outcome.effects?.length !== 1 ||
+                outcome.effects[0]?.id !== event.effectId || !outcome.commands?.length)
+              throw new Error(`Magic taser/headshot ${event.effectId} was not recorded once`);
           } else if (event.type === 'headMarker') {
             const planned=event.input.planned;
             const markerViewport=Object.freeze({ ...viewport,

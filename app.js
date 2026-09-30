@@ -20823,7 +20823,7 @@ function stopWithdrawnSunbeamPresentation() {
 }
 
 function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera, zoom,
-  shapeProviders = {}, markerSelection = null) {
+  shapeProviders = {}, markerSelection = null, playerStage = null) {
   if (!data || viewport?.kind !== "main" || !Array.isArray(viewport.worldToLogical) ||
       !Number.isFinite(camera?.x) || !Number.isFinite(camera?.y) ||
       !Number.isFinite(zoom) || zoom <= 0 ||
@@ -20851,6 +20851,12 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       unsupported, expiredEffectIds: effects.map(effect => effect?.id), ready: true };
   const active = effects.filter(effect => {
     const now = eEffectNow(effect, data, wallNow);
+    if (['action-shoot', 'action-taser', 'action-gunner-headshot'].includes(effect?.type)) {
+      const duration = effect.duration ?? 1200;
+      if (![effect.startedAt, duration].every(Number.isFinite) || duration <= 0 || duration > 1200)
+        return true;
+      return now < effect.startedAt || now - effect.startedAt < duration;
+    }
     if (isWallClockEmpLifetime(effect)) {
       if (![effect.startedAt, effect.duration].every(Number.isFinite) ||
           effect.duration <= 0) return true;
@@ -21018,6 +21024,134 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
             ? 'authoritative-poison-field-owns-webgpu-visual' :
               'authoritative-poison-field-outside-viewport') });
       }
+      continue;
+    }
+    if (['action-shoot', 'action-taser', 'action-gunner-headshot'].includes(type)) {
+      const id = String(effect?.id ?? ''), playerId = String(effect?.playerId ?? '');
+      const sourceIdsAreExact = id && (typeof effect.id === 'string' || typeof effect.id === 'number') &&
+        sourceEffectIds.filter(value => String(value) === id).length === 1;
+      const duration = effect?.duration ?? 1200;
+      const commonValid = sourceIdsAreExact && playerId && Number.isFinite(effect.startedAt) &&
+        Number.isFinite(duration) && duration > 0 && duration <= 1200 &&
+        Number.isFinite(now) && Number.isFinite(effect.x) && Number.isFinite(effect.y);
+      if (!commonValid) {
+        unsupported.push({ index, type, id: effect?.id, reason: 'gunner-contact-source-invalid' });
+        continue;
+      }
+      const age = now - effect.startedAt;
+      if (age < 0) {
+        omitted.push({ effectId: effect.id, reason: 'gunner-contact-not-started' });
+        continue;
+      }
+      if (type === 'action-shoot') {
+        if (age <= 0) {
+          omitted.push({ effectId: effect.id, reason: 'gunner-contact-not-started' });
+          continue;
+        }
+        const api = window.DvaWebGPUGunnerShotE;
+        const source = api?.cardinalMuzzle?.(effect);
+        const actor = playerStage?.visibleActors?.find(player => String(player.id) === playerId);
+        const actionOwner = playerStage?.actionOwners?.get?.(playerId);
+        const visible = Boolean(actor && actor.alive && !actor.ejected && !actor.inVent &&
+          (!actor.invisible || playerId === String(data.selfId || '')));
+        if (!visible) {
+          omitted.push({ effectId: effect.id, reason: 'gunner-shot-owner-not-visible' });
+          continue;
+        }
+        if (!['handgun', 'smg', 'assault', 'sniper', 'taser'].includes(effect.variant) ||
+            duration !== 1200 || !Number.isFinite(effect.targetX) ||
+            !Number.isFinite(effect.targetY) || !Number.isFinite(effect.radius) || effect.radius <= 0 ||
+            !source || !api?.plan || actionOwner?.kind !== 'shoot' ||
+            actionOwner.motionId !== 'action-shoot' ||
+            String(actionOwner.sourceEffectId ?? '') !== id || actionOwner.variant !== effect.variant) {
+          unsupported.push({ index, type, id: effect.id,
+            reason: 'gunner-shot-visible-action-or-source-invalid' });
+          continue;
+        }
+        const actionIdentity = Object.freeze({ playerId, sourceEffectId: id,
+          motionId: actionOwner.motionId, variant: actionOwner.variant });
+        const actorSnapshot = Object.freeze({ ...actor, visible: true });
+        const planned = api.plan({ effect, actor: actorSnapshot, actorVisible: true,
+          actionOwner, playerCommand: actionIdentity, now, phase: data.phase,
+          viewerId: String(data.selfId || ''), camera, zoom, viewport, reducedMotion, alpha: 1 });
+        if (!planned || planned.eventId !== id) {
+          // The only planner-null conditions intentionally omitted here are
+          // fully offscreen bounds. Invalid visible plans stay blocking.
+          const muzzle = source.source;
+          const dprX = viewport.pixelWidth / viewport.width, dprY = viewport.pixelHeight / viewport.height;
+          const toPixel = (x, y) => [(x - camera.x) * zoom * dprX, (y - camera.y) * zoom * dprY];
+          const [sx, sy] = toPixel(muzzle.x, muzzle.y), [tx, ty] = toPixel(effect.targetX, effect.targetY);
+          const margin = Math.max(150, effect.radius * zoom) * Math.max(dprX, dprY);
+          const offscreen = Math.max(sx, tx) + margin < 0 || Math.max(sy, ty) + margin < 0 ||
+            Math.min(sx, tx) - margin > viewport.pixelWidth ||
+            Math.min(sy, ty) - margin > viewport.pixelHeight;
+          if (offscreen) omitted.push({ effectId: effect.id,
+            reason: 'gunner-shot-source-to-target-offscreen' });
+          else unsupported.push({ index, type, id: effect.id, reason: 'gunner-shot-visible-plan-invalid' });
+          continue;
+        }
+        if (age >= duration) {
+          omitted.push({ effectId: effect.id, reason: 'gunner-shot-visual-expired' });
+          continue;
+        }
+        events.push({ type: 'gunnerShotE', effectId: id,
+          input: { effect, actor: actorSnapshot, actionOwner, actionIdentity, planned, visibleAtMs: now } });
+        continue;
+      }
+      const api = window.DvaWebGPUTaserHeadshotE;
+      const targetId = String(effect.targetId ?? '');
+      const validType = type === 'action-taser'
+        ? effect.variant === '' || effect.variant == null
+        : api?.classify?.(effect)?.kind === 'headshot';
+      if (!api?.plan || !api?.commandsFor || !targetId || !validType || duration !== 1200 ||
+          !Number.isFinite(effect.x) || !Number.isFinite(effect.y)) {
+        unsupported.push({ index, type, id: effect.id,
+          reason: 'gunner-contact-visible-source-invalid' });
+        continue;
+      }
+      const windowMs = type === 'action-taser' ? api.TASER_MS : api.HEADSHOT_MS;
+      if (age >= windowMs) {
+        omitted.push({ effectId: effect.id,
+          reason: type === 'action-taser' ? 'taser-contact-visual-expired' : 'headshot-contact-visual-expired' });
+        continue;
+      }
+      const shooter = playerStage?.visibleActors?.find(player => String(player.id) === playerId);
+      const targetActor = playerStage?.visibleActors?.find(player => String(player.id) === targetId);
+      const rosterVisible = actor => Boolean(actor && !actor.ejected && !actor.inVent &&
+        (!actor.invisible || String(actor.id) === String(data.selfId || '')));
+      if (!shooter?.alive || !rosterVisible(shooter) || !rosterVisible(targetActor)) {
+        omitted.push({ effectId: effect.id, reason: 'gunner-contact-participant-not-visible' });
+        continue;
+      }
+      const contactScene = { effects: [effect], players: [{ ...targetActor, visible: true }],
+        viewerId: String(data.selfId || ''), nowMs: now, reducedMotion };
+      const planned = api.plan({ scene: contactScene, camera, zoom, viewport });
+      if (!Array.isArray(planned) || planned.length !== 1 || planned[0].id !== id) {
+        unsupported.push({ index, type, id: effect.id,
+          reason: 'gunner-contact-visible-plan-invalid' });
+        continue;
+      }
+      const commands = api.commandsFor(planned[0]);
+      if (!commands.length) {
+        unsupported.push({ index, type, id: effect.id,
+          reason: 'gunner-contact-visible-plan-empty' });
+        continue;
+      }
+      const bounds = commands.reduce((box, command) => {
+        const t = command.transform, halfW = command.w / 2, halfH = command.h / 2;
+        const points = [[-halfW, -halfH], [halfW, -halfH], [halfW, halfH], [-halfW, halfH]]
+          .map(([x, y]) => ({ x: t[0] * x + t[2] * y + t[4], y: t[1] * x + t[3] * y + t[5] }));
+        for (const point of points) { box.minX = Math.min(box.minX, point.x);
+          box.maxX = Math.max(box.maxX, point.x); box.minY = Math.min(box.minY, point.y);
+          box.maxY = Math.max(box.maxY, point.y); }
+        return box;
+      }, { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity });
+      if (bounds.maxX < 0 || bounds.maxY < 0 || bounds.minX > viewport.width || bounds.minY > viewport.height) {
+        omitted.push({ effectId: effect.id, reason: 'gunner-contact-fully-offscreen' });
+        continue;
+      }
+      events.push({ type: 'taserHeadshotE', effectId: id,
+        input: { scene: contactScene, planned: planned[0], camera, zoom } });
       continue;
     }
     if (type === 'gunner-passive-aim') {
@@ -23183,15 +23317,12 @@ function drawGunnerActionEffect(effect, progress) {
   const reduced = prefersReducedMotion(), p = clamp(Number(progress) || 0, 0, 1);
   const pulse = reduced ? 0 : Math.sin(p * Math.PI);
   const fade = 1 - objectEffectEase(clamp((p - .72) / .28, 0, 1));
-  const dx = Number(effect.targetX) - Number(effect.x), dy = Number(effect.targetY) - Number(effect.y);
-  const hasTargetAxis = Number.isFinite(dx) && Number.isFinite(dy) && Math.hypot(dx, dy) > .001;
-  const direction = hasTargetAxis ? cardinalDirectionVector(dx, dy) : { dx: 1, dy: 0 };
-  const muzzle = ({ handgun:{forward:29,height:-32}, smg:{forward:37,height:-34}, assault:{forward:43,height:-36}, sniper:{forward:57,height:-37}, taser:{forward:31,height:-32} })[weaponId] || {forward:35,height:-34};
+  const muzzleRecipe = window.DvaWebGPUGunnerShotE?.cardinalMuzzle?.(effect);
+  if (!muzzleRecipe) return false;
+  const direction = muzzleRecipe;
   const length = ({handgun:42,smg:48,assault:56,sniper:72,taser:40})[weaponId] || 46;
   const height = ({handgun:34,smg:38,assault:42,sniper:48,taser:34})[weaponId] || 38;
-  const horizontal = direction.dx !== 0;
-  const startX = Number(effect.x) + (horizontal ? 0 : direction.dy < 0 ? 8 : -8) + direction.dx * muzzle.forward;
-  const startY = Number(effect.y) + (horizontal ? muzzle.height : direction.dy < 0 ? -43 : -10) + direction.dy * muzzle.forward;
+  const startX = muzzleRecipe.source.x, startY = muzzleRecipe.source.y;
   const inheritedAlpha = ctx.globalAlpha;
   if (fade <= 0.001 || inheritedAlpha <= 0.001) return true;
   ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = inheritedAlpha * fade;
@@ -27454,6 +27585,8 @@ function captureWebGPUMainAppPlayerScene(data = state.data, viewport, camera, zo
   };
   const playerIdentity = { selfPlayerId: String(data.selfId || ''),
     preparation: data.phase === 'selecting' && !data.soloMission };
+  const playerActionSnapshot = { visibleActors: candidates,
+    actionOwners: new Map(playerActions) };
   const bustScene = data.phase === 'playing' || data.phase === 'meeting'
     ? { players: candidates.filter(player => player.alive && !player.ejected &&
         Number(player.bustUntil) > estimatedServerNow(data)).map(player =>
@@ -27489,7 +27622,8 @@ function captureWebGPUMainAppPlayerScene(data = state.data, viewport, camera, zo
   }
   playerEffects.rootPlans = rootPlans;
   if (!preparation) return { stages: { players: { ...playerIdentity,
-    ...playerEffects, commands: unsupported.length ? null : buildCommands(null) } },
+    ...playerEffects, ...playerActionSnapshot,
+    commands: unsupported.length ? null : buildCommands(null) } },
     markerActors: candidates, unsupported, blocked: unsupported.length > 0 };
   if (!(entries instanceof Map)) throw new TypeError('Preparation player WebGPU scene needs roster entries Map');
   const summonPlayers = data.players.filter(Boolean).map(player => {
@@ -27503,7 +27637,7 @@ function captureWebGPUMainAppPlayerScene(data = state.data, viewport, camera, zo
     nowMs: state.frameNow || performance.now(), reducedMotion: prefersReducedMotion() };
   return { stages: {
     preparationSummons: { scene, camera, zoom },
-    players: { ...playerIdentity, ...playerEffects, entries, createCommands({ entries: currentEntries, arrivalFor }) {
+    players: { ...playerIdentity, ...playerEffects, ...playerActionSnapshot, entries, createCommands({ entries: currentEntries, arrivalFor }) {
       assertSession();
       if (currentEntries !== entries || typeof arrivalFor !== 'function')
         throw new Error('Preparation player WebGPU scene needs same-frame summon arrivals');
@@ -27753,7 +27887,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
     startedAt: marker.startedAt, pointerId: marker.pointerId,
     expiresAt: marker.expiresAt } : null;
   const late = captureWebGPUMainAppLateMagicScene(data, viewport,
-    early.camera, early.zoom, shapeProviders, headMarkers);
+    early.camera, early.zoom, shapeProviders, headMarkers, players.stages.players);
   assertCurrent();
   const retainedSources = late.stage.events.filter(event =>
     event.type === 'headMarker').map(event => {
@@ -27783,6 +27917,18 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
     return { effect, fields: Object.fromEntries(['id', 'type', 'variant',
       'x', 'y', 'targetX', 'targetY', 'startedAt', 'duration']
       .map(key => [key, effect[key]])) };
+  });
+  const gunnerPortSources = late.stage.events.filter(event =>
+    event.type === 'gunnerShotE' || event.type === 'taserHeadshotE').map(event => {
+    const effect = event.type === 'gunnerShotE' ? event.input.effect : event.input.scene.effects[0];
+    const actor = event.type === 'gunnerShotE' ? event.input.actor :
+      players.stages.players.visibleActors.find(player => String(player.id) === String(effect.playerId));
+    const target = event.type === 'taserHeadshotE'
+      ? players.stages.players.visibleActors.find(player => String(player.id) === String(effect.targetId)) : null;
+    const fields = Object.fromEntries(['id', 'type', 'x', 'y', 'targetX', 'targetY',
+      'startedAt', 'duration', 'radius', 'playerId', 'targetId', 'variant']
+      .map(key => [key, effect[key]]));
+    return { effect, fields, actor, target, actionOwner: event.input.actionOwner || null };
   });
   const conditional = captureWebGPUMainAppConditionalTail(data,
     early.camera, early.zoom, viewport, shapeProviders);
@@ -27904,6 +28050,30 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
         specialAmmoSources.some(({ effect, fields }) =>
           !state.magicEffects.includes(effect) ||
           Object.keys(fields).some(key => effect[key] !== fields[key])) ||
+        gunnerPortSources.some(({ effect, fields, actor, target, actionOwner }) => {
+          if (!state.magicEffects.includes(effect) ||
+              Object.keys(fields).some(key => effect[key] !== fields[key])) return true;
+          const viewerId = String(data.selfId || '');
+          if (String(state.data?.selfId || '') !== viewerId) return true;
+          const currentActor = state.data?.players?.find(player =>
+            String(player?.id ?? '') === String(actor?.id ?? ''));
+          const currentTarget = target && state.data?.players?.find(player =>
+            String(player?.id ?? '') === String(target.id));
+          const hidden = player => !player || player.ejected || player.inVent ||
+            player.invisible && String(player.id) !== viewerId;
+          if (hidden(currentActor) || !currentActor.alive || target && hidden(currentTarget)) return true;
+          if (actionOwner && candidate.stages.players.actionOwners?.get?.(String(effect.playerId)) !== actionOwner)
+            return true;
+          const inVisibleRoster = player => {
+            if (!player) return false;
+            const position = renderedPlayer(player);
+            return position.x >= candidate.camera.x - 240 &&
+              position.x <= candidate.camera.x + candidate.viewport.width / candidate.zoom + 240 &&
+              position.y >= candidate.camera.y - 240 &&
+              position.y <= candidate.camera.y + candidate.viewport.height / candidate.zoom + 240;
+          };
+          return !inVisibleRoster(currentActor) || target && !inVisibleRoster(currentTarget);
+        }) ||
         retainedSources.some(({ effect, id, type, playerId, variant, active,
           markerCount, instanceKey,
           startedAt, duration, expiresAt, aggregateCount }) =>
@@ -28198,7 +28368,59 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
   if (visibleSpecialAmmo.size !== specialAmmoVisible.length)
     throw new Error('WebGPU world candidate duplicate visible special-ammo source');
   const routedSpecialAmmo = new Set();
+  const magicVisibleActor = playerId => candidate.stages.players.visibleActors?.find(player =>
+    String(player?.id ?? '') === String(playerId ?? '')) || null;
   const magicEffects = { ...magicInput, events: magicInput.events.map(event => {
+    if (event.type === 'gunnerShotE') {
+      assertPassesCurrent();
+      const input = event.input, effect = input?.effect, id = String(event.effectId);
+      const actor = magicVisibleActor(effect?.playerId);
+      const actionOwner = candidate.stages.players.actionOwners?.get?.(String(effect?.playerId ?? ''));
+      const viewerId = String(candidate.stages.players.selfPlayerId || '');
+      if (!effect || !state.magicEffects.includes(effect) || String(effect.id ?? '') !== id ||
+          effect.type !== 'action-shoot' || !actor || !actor.alive || actor.ejected || actor.inVent ||
+          actor.invisible && String(actor.id) !== viewerId ||
+          actionOwner !== input.actionOwner || actionOwner?.kind !== 'shoot' ||
+          actionOwner.motionId !== 'action-shoot' ||
+          String(actionOwner.sourceEffectId ?? '') !== id || actionOwner.variant !== effect.variant ||
+          input.actor?.id !== actor.id || input.actionIdentity?.playerId !== String(effect.playerId) ||
+          input.actionIdentity?.sourceEffectId !== id)
+        throw new Error(`WebGPU world candidate Gunner shot source or action changed: ${id}`);
+      const planned = window.DvaWebGPUGunnerShotE?.plan?.({ effect,
+        actor: input.actor, actorVisible: true, actionOwner,
+        playerCommand: input.actionIdentity, viewerId,
+        now: input.visibleAtMs, phase: magicInput.phase,
+        camera: candidate.camera, zoom: candidate.zoom,
+        viewport: candidate.viewport, reducedMotion: magicInput.reducedMotion, alpha: 1 });
+      if (!planned || planned.eventId !== id || planned.effectId !== id ||
+          !(planned.values instanceof Float32Array) || planned.values.length !== 16 ||
+          !planned.values.every(Number.isFinite))
+        throw new Error(`WebGPU world candidate visible Gunner shot did not plan: ${id}`);
+      return { ...event, input: { ...input, planned } };
+    }
+    if (event.type === 'taserHeadshotE') {
+      assertPassesCurrent();
+      const input = event.input, effect = input?.scene?.effects?.[0], id = String(event.effectId);
+      const shooter = magicVisibleActor(effect?.playerId), target = magicVisibleActor(effect?.targetId);
+      const viewerId = String(candidate.stages.players.selfPlayerId || '');
+      const visible = actor => Boolean(actor && !actor.ejected && !actor.inVent &&
+        (!actor.invisible || String(actor.id) === viewerId));
+      if (!effect || !state.magicEffects.includes(effect) || String(effect.id ?? '') !== id ||
+          !['action-taser', 'action-gunner-headshot'].includes(effect.type) ||
+          !shooter?.alive || !visible(shooter) || !visible(target) ||
+          String(input.scene.viewerId || '') !== viewerId ||
+          String(input.scene.players?.[0]?.id ?? '') !== String(target.id))
+        throw new Error(`WebGPU world candidate contact event participant changed: ${id}`);
+      const planned = window.DvaWebGPUTaserHeadshotE?.plan?.({ scene: input.scene,
+        camera: candidate.camera, zoom: candidate.zoom, viewport: candidate.viewport });
+      if (!Array.isArray(planned) || planned.length !== 1 || planned[0]?.id !== id)
+        throw new Error(`WebGPU world candidate visible contact event did not plan: ${id}`);
+      const commands = window.DvaWebGPUTaserHeadshotE.commandsFor(planned[0]);
+      if (!Array.isArray(commands) || !commands.length)
+        throw new Error(`WebGPU world candidate contact event had no commands: ${id}`);
+      return { ...event, input: { ...input, planned: planned[0], camera: candidate.camera,
+        zoom: candidate.zoom } };
+    }
     if (event.type === 'commonActionBodyE') {
       assertPassesCurrent();
       const input = event.input, effect = input?.effect, sourceFields = input?.sourceFields;

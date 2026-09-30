@@ -33,9 +33,10 @@
       transform: [c, s, -s, c, (a.x + b.x) / 2, (a.y + b.y) / 2], color: rgba, mode: 'additive' };
   }
 
-  function targetVisible(player) {
+  function targetVisible(player, viewerId) {
     return Boolean(player && player.visible !== false && player.hidden !== true &&
-      !player.invisible && !player.inVent && !player.ejected);
+      (!player.invisible || String(player.id) === String(viewerId || '')) &&
+      !player.inVent && !player.ejected);
   }
 
   function classify(effect) {
@@ -63,7 +64,7 @@
       if (age < 0 || age >= duration) continue;
       const target = scene.players.find(p => String(p?.id || '') === targetId);
       // Never let a stale/unredacted magic-effect coordinate reveal a concealed actor.
-      if (!targetVisible(target)) continue;
+      if (!targetVisible(target, scene.viewerId)) continue;
       const progress = clamp(age / duration);
       output.push({ id, targetId, kind: classification.kind, ...classification,
         point: { x: (effect.x - camera.x) * zoom, y: (effect.y - camera.y) * zoom },
@@ -135,7 +136,7 @@
     return Object.freeze({ record, destroy() { destroyed = true; } });
   }
 
-  const api = Object.freeze({ TASER_MS, HEADSHOT_MS, MAX_EVENTS, plan, create });
+  const api = Object.freeze({ TASER_MS, HEADSHOT_MS, MAX_EVENTS, classify, plan, commandsFor, create });
   root.DvaWebGPUTaserHeadshotE = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);

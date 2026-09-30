@@ -34,6 +34,8 @@
     playerNameplates: root.DvaWebGPUPlayerNameplates || (typeof require === 'function' ? require('./webgpu-player-nameplates.js') : null),
     headMarkers: root.DvaWebGPUHeadMarkers || (typeof require === 'function' ? require('./webgpu-head-markers.js') : null),
     gunnerAim: root.DvaWebGPUGunnerAim || (typeof require === 'function' ? require('./webgpu-gunner-aim.js') : null),
+    gunnerShotE: root.DvaWebGPUGunnerShotE || (typeof require === 'function' ? require('./webgpu-gunner-shot-e.js') : null),
+    taserHeadshotE: root.DvaWebGPUTaserHeadshotE || (typeof require === 'function' ? require('./webgpu-taser-headshot-e.js') : null),
     killCamera: root.DvaWebGPUKillCameraMarkers || (typeof require === 'function' ? require('./webgpu-kill-camera-markers.js') : null),
     hitEffects: root.DvaWebGPUHitEffects || (typeof require === 'function' ? require('./webgpu-hit-effects.js') : null),
     gravityImpacts: root.DvaWebGPUGravityImpacts || (typeof require === 'function' ? require('./webgpu-gravity-impacts.js') : null),
@@ -87,7 +89,7 @@
     'attackTargets', 'taskIndicators',
     'hud', 'minimap', 'modeBanner', 'lighting', 'killAnimation', 'sensory',
     'markerExplanation', 'acquisition']);
-  const MAGIC_EVENT_TYPES = Object.freeze(['shapes', 'gunnerAimAcquisition', 'gravityImpact', 'grenadeImpact',
+  const MAGIC_EVENT_TYPES = Object.freeze(['shapes', 'gunnerAimAcquisition', 'gunnerShotE', 'taserHeadshotE', 'gravityImpact', 'grenadeImpact',
     'bodyBenefit', 'staminaBenefitE', 'manaBenefitE', 'bodyBenefitExtra', 'statusTempo', 'barrierE', 'bustE', 'dodgeE', 'renkiE', 'ideaE', 'alchemyE', 'hackerRootE', 'hackerStatusRecoveryE', 'floraE', 'healE', 'sunbeamE', 'fighterEnergyE', 'gravityFieldE', 'rigidItemImpactE', 'bottleShardsE', 'archiveCabinetE', 'fireActivation', 'empEffect', 'specialAmmoEffect', 'commonActionBodyE', 'medicalObjectE',
     'medicalCabinetE', 'medicalFootbathUseE', 'medicalUploadConsoleE', 'corridorA01E', 'corridorObjectUseE', 'roomObjectUseE', 'reactorRoomObjectsE', 'powerRoomObjectsE',
     'taskCompletion', 'headMarker', 'mysteryBoxRevealE']);
@@ -167,6 +169,7 @@
       preparationSummons: 'create', players: 'createTextureCache',
       playerNameplates: 'create', headMarkers: 'create',
       gunnerAim: 'create', killCamera: 'create', hitEffects: 'record',
+      gunnerShotE: 'create', taserHeadshotE: 'create',
       gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusTempo: 'create', barrierE: 'create', ...(modules === defaults || modules.barrierProR07Game ? { barrierProR07Game: 'create' } : {}), bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', healSparkleE: 'create', healSparkleGameAdapter: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
       attackTargets: 'record', taskIndicators: 'create', hud: 'create',
       minimap: 'create', modeBanner: 'create', killBloom: 'create',
@@ -368,6 +371,8 @@
       add('headMarkers', modules.headMarkers.create({ frameOwner: renderer }), 'record');
       add('gunnerAim', modules.gunnerAim.create({ device: renderer.device,
         format: renderer.format }), 'record');
+      add('gunnerShotE', modules.gunnerShotE.create({ frameOwner: renderer }), 'record');
+      add('taserHeadshotE', modules.taserHeadshotE.create(), 'record');
       borrow('killCamera', modules.killCamera.create({ textAtlas,
         shapes: passes.shapes }));
       borrow('hitEffects', modules.hitEffects);

@@ -4,7 +4,26 @@
   'use strict';
   const VARIANTS = Object.freeze({ handgun: 0, smg: 1, assault: 2, sniper: 3, taser: 4 });
   const MUZZLE_FORWARD = Object.freeze({ handgun: 29, smg: 37, assault: 43, sniper: 57, taser: 31 });
+  const MUZZLE_HEIGHT = Object.freeze({ handgun: -32, smg: -34, assault: -36, sniper: -37, taser: -32 });
   const finite = Number.isFinite;
+  // Shared with the legacy authored muzzle effect in app.js. Keep its cardinal
+  // tie-break and weapon-specific offsets as the sole coordinate recipe.
+  function cardinalMuzzle(effect) {
+    const variant = effect?.variant;
+    if (!Object.prototype.hasOwnProperty.call(MUZZLE_FORWARD, variant) ||
+        ![effect?.x, effect?.y, effect?.targetX, effect?.targetY].every(finite)) return null;
+    const dx = effect.targetX - effect.x, dy = effect.targetY - effect.y;
+    if (Math.hypot(dx, dy) <= .001) return null;
+    const direction = Math.abs(dx) >= Math.abs(dy)
+      ? { dx: dx < 0 ? -1 : 1, dy: 0 }
+      : { dx: 0, dy: dy < 0 ? -1 : 1 };
+    const horizontal = direction.dx !== 0;
+    const source = Object.freeze({
+      x: effect.x + (horizontal ? 0 : direction.dy < 0 ? 8 : -8) + direction.dx * MUZZLE_FORWARD[variant],
+      y: effect.y + (horizontal ? MUZZLE_HEIGHT[variant] : direction.dy < 0 ? -43 : -10) + direction.dy * MUZZLE_FORWARD[variant]
+    });
+    return Object.freeze({ ...direction, source });
+  }
   const shader = /* wgsl */ `
 struct Params { viewport: vec4f, points: vec4f, state: vec4f, detail: vec4f };
 @group(0) @binding(0) var<uniform> p: Params;
@@ -55,19 +74,20 @@ fn bell(x:f32,w:f32)->f32{return exp(-x*x/max(w*w,.0001));}
   return vec4f(rgb*gain,a);
 }`;
 
-  function eligibleActor(actor, actorVisible, playerId) {
+  function eligibleActor(actor, actorVisible, playerId, viewerId) {
     return Boolean(actor && actorVisible === true && String(actor.id ?? '') === String(playerId) &&
-      actor.alive === true && !actor.ejected && !actor.inVent && !actor.invisible);
+      actor.alive === true && !actor.ejected && !actor.inVent &&
+      (!actor.invisible || String(actor.id ?? '') === String(viewerId || '')));
   }
   function plan({ effect, actor, actorVisible, actionOwner, playerCommand,
-    now, phase, camera, zoom, viewport, reducedMotion = false, alpha = 1 } = {}) {
+    viewerId, now, phase, camera, zoom, viewport, reducedMotion = false, alpha = 1 } = {}) {
     const variant = VARIANTS[effect?.variant];
     const eventId = effect?.id;
     const ownerId = actionOwner?.sourceEffectId ?? actionOwner?.effectId ?? actionOwner?.id;
     if (effect?.type !== 'action-shoot' || variant === undefined ||
         typeof eventId !== 'string' || !eventId ||
         !['playing', 'meeting'].includes(phase) ||
-        !eligibleActor(actor, actorVisible, effect.playerId) ||
+        !eligibleActor(actor, actorVisible, effect.playerId, viewerId) ||
         (ownerId !== undefined && String(ownerId) !== eventId) ||
         (actionOwner?.playerId !== undefined && String(actionOwner.playerId) !== String(effect.playerId)) ||
         (playerCommand && String(playerCommand.playerId) !== String(effect.playerId))) return null;
@@ -85,10 +105,9 @@ fn bell(x:f32,w:f32)->f32{return exp(-x*x/max(w*w,.0001));}
     const dx = effect.targetX - effect.x, dy = effect.targetY - effect.y;
     const length = Math.hypot(dx, dy);
     if (!finite(length) || length <= .001) return null;
-    const ux = dx / length, uy = dy / length;
-    const muzzle = MUZZLE_FORWARD[effect.variant];
-    const sourceX = effect.x + ux * muzzle - uy * 20;
-    const sourceY = effect.y + uy * muzzle - 30 + ux * 20;
+    const muzzle = cardinalMuzzle(effect);
+    if (!muzzle) return null;
+    const sourceX = muzzle.source.x, sourceY = muzzle.source.y;
     const dprX = viewport.pixelWidth / viewport.width, dprY = viewport.pixelHeight / viewport.height;
     const toPixel = (x, y) => [(x - camera.x) * zoom * dprX, (y - camera.y) * zoom * dprY];
     const [sx, sy] = toPixel(sourceX, sourceY), [tx, ty] = toPixel(effect.targetX, effect.targetY);
@@ -163,7 +182,7 @@ fn bell(x:f32,w:f32)->f32{return exp(-x*x/max(w*w,.0001));}
         slots.length = 0;
       } });
   }
-  const api = Object.freeze({ VARIANTS, MUZZLE_FORWARD, shader, plan, create });
+  const api = Object.freeze({ VARIANTS, MUZZLE_FORWARD, MUZZLE_HEIGHT, cardinalMuzzle, shader, plan, create });
   root.DvaWebGPUGunnerShotE = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);
