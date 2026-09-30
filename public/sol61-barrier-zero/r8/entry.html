@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="data:,">
+<meta name="theme-color" content="#10151a"><title>Barrier r8 · GPT-6.1-Sol</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#10151a}iframe{position:fixed;inset:0;width:100%;height:100%;border:0}</style>
+<iframe id="barrier" title="Barrier r8 preview"></iframe>
+<script type="module">
+const frame=document.querySelector('#barrier'),url=new URL('./index.html',location.href);url.searchParams.set('embed','1');
+if(new URL(location.href).searchParams.has('verify'))url.searchParams.set('verify',new URL(location.href).searchParams.get('verify')||'barrier-r8-native');
+frame.src=url.href;
+frame.addEventListener('load',()=>{try{const doc=frame.contentDocument,style=doc.createElement('style');style.textContent=`html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#10151a}main{display:grid;place-items:center;box-sizing:border-box;width:100vw;height:100vh;max-width:none;margin:0;padding:0}h1,#state,#run,#cases,#audit{display:none!important}canvas{display:block;width:min(100vw,calc(100vh * 49 / 31));height:min(100vh,calc(100vw * 31 / 49));max-width:none;aspect-ratio:49/31;object-fit:contain}main>p{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));margin:0;z-index:5}#gesture{font:14px system-ui;padding:9px 12px;background:#253543;color:#fff;border:1px solid #789;border-radius:5px}`;doc.head.append(style);const animate=()=>{const rt=frame.contentWindow.barrierR8;if(rt){const t=(performance.now()-start)%4600;let stage,ageMs;if(t<650){stage='create';ageMs=t}else if(t<1800){stage='stable';ageMs=t-650}else if(t<2450){stage='hit';ageMs=t-1800}else if(t<3400){stage='stable';ageMs=t-2450}else if(t<3880){stage='break';ageMs=t-3400}else{stage='off';ageMs=0}rt.apply({stage,ageMs});rt.submit().catch(e=>{const state=doc.querySelector('#state');if(state)state.textContent='Preview stopped: '+e.message})}requestAnimationFrame(animate)};const start=performance.now();requestAnimationFrame(animate)}catch(e){document.documentElement.dataset.embedError=String(e)}});
+</script></html>

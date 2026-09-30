@@ -1,0 +1,187 @@
+{
+  "schema": "dva-e-gallery-r8-release-package-v1",
+  "id": "sol61-barrier-zero-r8",
+  "source": {
+    "absolutePath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20260930\\sol61-barrier-zero\\r8",
+    "artistManifestSha256": "dadbc6e9542ec789eb677a7843d0f6205adbec08032d3bdb5d9f9bd8e3350de0",
+    "artistManifest": "sol61-barrier-zero-r8",
+    "artistFileCount": 23,
+    "artistIntegrity": "pass"
+  },
+  "target": {
+    "gitRoot": "C:/Users/user/Documents/Codex/2026-07-12/defenders-vs-attackers/.codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean",
+    "gitHeadAtCopyStart": "949077804148440c549e612bf9ab78e3d9dfb175",
+    "absolutePath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\.codex-runtime\\pages-telemetry-release\\sunbeam-withdrawal-release\\work\\clean\\public\\sol61-barrier-zero\\r8",
+    "entry": "entry.html",
+    "urlPath": "/public/sol61-barrier-zero/r8/entry.html",
+    "intendedGalleryStatus": "Unadopted",
+    "quality": "not_run",
+    "adoption": "unadopted",
+    "listening": "not_run",
+    "gameIntegration": "not_run",
+    "public": "not_run"
+  },
+  "runtimeFreezeSha256": "5e8d3abb8cfcb2311f07df54658777da39fa17fcaf78b69abba9f2314b3ca91a",
+  "nativeEvidence": {
+    "sourcePath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20260930\\sol61-barrier-zero\\r8\\evidence\\native-gpu.json",
+    "sha256": "b6faa1272b36b0822baf47d64079e024449ad9365bbc9b480cc3427eb0b7b1a4",
+    "timelineFrames": 58,
+    "diagnostics": 12,
+    "gpuErrors": 0,
+    "shaderCompile": "pass"
+  },
+  "compatibilityAdapter": {
+    "scope": "runtime compile-time WGSL token rename only",
+    "from": "Frame.layout",
+    "to": "Frame.frameLayout",
+    "uniformSlotIndex": 4,
+    "byteRange": [
+      64,
+      80
+    ],
+    "uniformSizeBytes": 128,
+    "JSWebGPULayoutDescriptorsChanged": false,
+    "originalArtistWGSLPreserved": true,
+    "before": {
+      "world": "7adccd5afefef0315e1bfb9b0a476b171cf7bed763606528abeecf1229410e28",
+      "post": "eb561c7aeab9b5bba62ffbb8b68ee8bf8cfad1c967920cd6ca5b460232d2af45"
+    },
+    "after": {
+      "world": "5ac282ef049367e59dcb2aa188beae56c28d06a9bff30129746aa4776fe981ee",
+      "post": "596f58609118bbf14ca5927c51db8c903523d074a8eedf22c58deabfdb9493de"
+    },
+    "tokenOccurrences": {
+      "world": 4,
+      "post": 5
+    }
+  },
+  "files": {
+    "runtime.mjs": {
+      "sha256": "ba17d5d4c59116be9fa89f25d438d668c1dfd32c6c67bd461a5c3b6bc6b18041",
+      "bytes": 13229,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": true
+    },
+    "index.html": {
+      "sha256": "c7a3e297c043ada271535627a8991afab559e1a3d97de39f3fddd0a1f5a50952",
+      "bytes": 5776,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": true
+    },
+    "sfx-controller.mjs": {
+      "sha256": "cb656bcff2ea77cb4f8e3d82090d9c09c79be1dc1942379b9d8c8cb5db1333e6",
+      "bytes": 1781,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": true
+    },
+    "embed-test.html": {
+      "sha256": "98758be790cb5e261e9cd920e1c1452af76c73090fd8e6038ff181d6f8f2a1f9",
+      "bytes": 1091,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": true
+    },
+    "design.mjs": {
+      "sha256": "78fed494cca86a62103a786b70271fa4013733003400725b9e3f958fab51ea90",
+      "bytes": 3891,
+      "artistSourceSha256": "78fed494cca86a62103a786b70271fa4013733003400725b9e3f958fab51ea90",
+      "byteIdenticalToSource": true
+    },
+    "projection.mjs": {
+      "sha256": "89d68ce4724c9dba9e4a758609c049c525212ce46b100bc31ea5d46cdda2d4dd",
+      "bytes": 2147,
+      "artistSourceSha256": "89d68ce4724c9dba9e4a758609c049c525212ce46b100bc31ea5d46cdda2d4dd",
+      "byteIdenticalToSource": true
+    },
+    "input-state.mjs": {
+      "sha256": "78003ea5e90b3cfbce2dde73a54bab6547a660fc81908f3feb52551d57e96f2f",
+      "bytes": 1162,
+      "artistSourceSha256": "78003ea5e90b3cfbce2dde73a54bab6547a660fc81908f3feb52551d57e96f2f",
+      "byteIdenticalToSource": true
+    },
+    "world-shader.mjs": {
+      "sha256": "358c0c02523f037668ca1fc5794d98a0746f64a5d32f02d8394ae1b49aa702bd",
+      "bytes": 7747,
+      "artistSourceSha256": "358c0c02523f037668ca1fc5794d98a0746f64a5d32f02d8394ae1b49aa702bd",
+      "byteIdenticalToSource": true
+    },
+    "post-shader.mjs": {
+      "sha256": "c4e2a88b04488817325c65499a7939511382580db720d6bf79835d4d29f5396b",
+      "bytes": 3489,
+      "artistSourceSha256": "c4e2a88b04488817325c65499a7939511382580db720d6bf79835d4d29f5396b",
+      "byteIdenticalToSource": true
+    },
+    "sfx-score.mjs": {
+      "sha256": "ae4553ca17c37b66d4cbb4332adaeeb9e0f5b0d167e5d3264d58ef6130a67888",
+      "bytes": 1651,
+      "artistSourceSha256": "ae4553ca17c37b66d4cbb4332adaeeb9e0f5b0d167e5d3264d58ef6130a67888",
+      "byteIdenticalToSource": true
+    },
+    "render-contract.json": {
+      "sha256": "4fbb31c65899c7896f894f8d677429a4df2430f7825b176412a459b0f2fc342c",
+      "bytes": 6047,
+      "artistSourceSha256": "4fbb31c65899c7896f894f8d677429a4df2430f7825b176412a459b0f2fc342c",
+      "byteIdenticalToSource": true
+    },
+    "body.png": {
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "bytes": 243081,
+      "artistSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "byteIdenticalToSource": true
+    },
+    "barrier-create-r8.wav": {
+      "sha256": "e18a506e188aad301e5f552319c11db05737107cf4749788086c94f6aaaa620f",
+      "bytes": 62444,
+      "artistSourceSha256": "e18a506e188aad301e5f552319c11db05737107cf4749788086c94f6aaaa620f",
+      "byteIdenticalToSource": true
+    },
+    "barrier-hit-r8.wav": {
+      "sha256": "ea0b70a4728da0fe6db7234677ca842e7788086ea9d921f08df4930065a83364",
+      "bytes": 62444,
+      "artistSourceSha256": "ea0b70a4728da0fe6db7234677ca842e7788086ea9d921f08df4930065a83364",
+      "byteIdenticalToSource": true
+    },
+    "barrier-break-r8.wav": {
+      "sha256": "539cc253d5baf94df175e88025cbdcee7309a505688bd9c689db5a2473e1409d",
+      "bytes": 46124,
+      "artistSourceSha256": "539cc253d5baf94df175e88025cbdcee7309a505688bd9c689db5a2473e1409d",
+      "byteIdenticalToSource": true
+    },
+    "evidence/gpu.json": {
+      "sha256": "1bb3a36b09ad2738fbfde4728a56d1cf694a7b55e2ce222a511e96f25699f033",
+      "bytes": 9560,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": true
+    },
+    "evidence/native-gpu.json": {
+      "sha256": "b6faa1272b36b0822baf47d64079e024449ad9365bbc9b480cc3427eb0b7b1a4",
+      "bytes": 69014,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": true
+    },
+    "evidence/run-history.json": {
+      "sha256": "159f706288e313df60bdfe8704cc02ca67cff1fde933e8be072577069aab2f23",
+      "bytes": 1128,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": true
+    },
+    "evidence/native-hit-main.png": {
+      "sha256": "3c546dedc39e02e8425f21a7323f073ef0c5b62c1f97c4d6e22ebd900a206c16",
+      "bytes": 26779,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": true
+    },
+    "evidence/native-hit-combined.png": {
+      "sha256": "c0999b7655107cb9ea5157d9fa7cf738a5c6761c8f944b678ce4f3372d874cec",
+      "bytes": 41254,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": true
+    },
+    "entry.html": {
+      "sha256": "0cdc56efa96f788077f22cc771b760a189d794d24baea5e8d78097106d10e04a",
+      "bytes": 2256,
+      "artistSourceSha256": null,
+      "byteIdenticalToSource": false,
+      "role": "release-only embed/full-view/preview host"
+    }
+  }
+}

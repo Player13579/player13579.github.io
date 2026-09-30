@@ -1,0 +1,30 @@
+{
+  "schema": "dva-e-runtime-run-history-v1",
+  "id": "sol61-barrier-zero-r8",
+  "attempts": [
+    {
+      "attempt": 1,
+      "result": "failed; all submit evidence discarded",
+      "observed": [
+        "Frozen WGSL field identifier Frame.layout was rejected as a reserved keyword in both native shader modules.",
+        "Actor texture external-image copy rejected missing RENDER_ATTACHMENT usage.",
+        "Invalid shader modules cascaded into invalid pipelines and command submissions."
+      ],
+      "fix": "Runtime-only compile adapter renames WGSL identifier layout to frameLayout; actor texture adds COPY_DST, RENDER_ATTACHMENT, TEXTURE_BINDING.",
+      "artistSourceChanged": false,
+      "includedInPassEvidence": false
+    },
+    {
+      "attempt": 2,
+      "result": "pass",
+      "urlRequirement": "verify=barrier-r8-native",
+      "nativeTimelineFrames": 58,
+      "modes": ["main-only", "combined"],
+      "timelineMarksPerMode": 29,
+      "isolations": 12,
+      "gpuErrors": 0,
+      "verificationAudioContextCreated": false,
+      "artistIntegrity": "23 manifest entries passed SHA-256 checks"
+    }
+  ]
+}
