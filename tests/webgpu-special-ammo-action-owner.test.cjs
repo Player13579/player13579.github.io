@@ -47,10 +47,10 @@ const sandbox = {
   Object, Number, String, Math, Array, Map, Set, Boolean, RegExp
 };
 const runtime = vm.runInNewContext(`${definitions}
-${app.match(/^const SPECIAL_AMMO_RELOAD_AUTHORED_SOURCES = Object\.freeze\([\s\S]*?^\}\);/m)?.[0] || ''}
+${topLevelFunction('specialAmmoReloadAuthoredSources')}
 ${topLevelFunction('specialAmmoLoadActionOwner')}
 ${topLevelFunction('buildWebGPUSpecialAmmoLoadActionCommand')}
-({ SPECIAL_AMMO_RELOAD_AUTHORED_SOURCES, specialAmmoLoadActionOwner, buildWebGPUSpecialAmmoLoadActionCommand })`, sandbox);
+({ SPECIAL_AMMO_RELOAD_AUTHORED_SOURCES: specialAmmoReloadAuthoredSources(), specialAmmoLoadActionOwner, buildWebGPUSpecialAmmoLoadActionCommand })`, sandbox);
 function profileFor(skin, weapon) {
   const key = skin === 'white-hood' ? 'white-hood' : skin === 'blue-dress' ? 'blue-dress' : 'male-bot';
   return runtime.SPECIAL_AMMO_RELOAD_AUTHORED_SOURCES[key][weapon][0];
@@ -66,7 +66,8 @@ function fixture({ skin = 'white-hood', weapon = 'handgun', direction = 'front',
   const data = { selfId: 'viewer', roomId: 'room', players: [player] };
   sandbox.state.magicEffects = [effect];
   sandbox.state.frameNow = now;
-  const visualClock = { elapsed: visualElapsed };
+  const visualClock = { elapsed: visualElapsed,
+    advance(wallMs, actorRate) { this.elapsed += wallMs * actorRate; } };
   sandbox.eEffectNow = (source, sourceData, wallNow) =>
     Number.isFinite(source?.eClockStartedAt) && source.eClockRoomId === sourceData?.roomId
       ? source.startedAt + visualClock.elapsed : wallNow;
@@ -120,7 +121,12 @@ test('special-ammo owner uses the already-scaled E clock exactly once over 1450m
   assert.equal(accelerated.action.progress, 450 / 1450);
   accelerated.visualClock.elapsed = 1450;
   assert.equal(runtime.specialAmmoLoadActionOwner(accelerated.player, accelerated.data, 2450), null);
-  const mixedRate = fixture({ now: 1300, rate: 1, visualElapsed: 350 });
+  const mixedRate = fixture({ now: 1300, startedAt: 1000, visualElapsed: 0 });
+  mixedRate.visualClock.advance(100, 1); // ACC1
+  mixedRate.visualClock.advance(100, 2); // ACC2
+  mixedRate.visualClock.advance(100, 0.5); // slowdown
+  mixedRate.action = runtime.specialAmmoLoadActionOwner(
+    mixedRate.player, mixedRate.data, 1300);
   assert.equal(mixedRate.action.progress, 350 / 1450,
     'ACC1/ACC2/slowdown segments arrive as one already-integrated actor clock');
   const unregisteredClock = fixture({ now: 1225, rate: 2, clockRegistered: false });

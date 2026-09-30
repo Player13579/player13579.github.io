@@ -2649,6 +2649,7 @@ const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   requestSerial: 0, lastSoundRequestSerial: 0,
   acquisitionCanvas: null, startToken: null,
   unstableLayoutRetryTimer: null, unstableLayoutRetryGeneration: -1 };
+let webgpuRetainedHeadMarkerFailureDetails = [];
 const webgpuStartupTiming = { nextAttemptId: 0, current: null, playClickedAtMs: null,
   firstPumpAfterPlayAtMs: null, preDriver: null };
 function createWebGPUStartupAttempt(origin, playClickedAtMs = null) {
@@ -18907,6 +18908,9 @@ function captureWebGPUMainFailureDiagnostic(message) {
     error: String(message).slice(0, 1600),
     pending: String(document.body?.dataset?.webgpuMainPending || 'unknown').slice(0, 96),
     incomplete: String(document.body?.dataset?.webgpuMainIncomplete || '').slice(0, 1600),
+    retainedHeadMarkerFailures: Array.isArray(webgpuRetainedHeadMarkerFailureDetails)
+      ? webgpuRetainedHeadMarkerFailureDetails.slice(-4).map(detail => ({ ...detail,
+        selectedCandidateKeys: [...(detail.selectedCandidateKeys || [])] })) : [],
     frameStage: webgpuMainApp.lastFrameStage || null,
     elapsedMs: Number.isFinite(pendingAt) ? Math.max(0, Math.round(performance.now() - pendingAt)) : null,
     driver: webgpuMainApp.driver?.state || null,
@@ -18928,6 +18932,35 @@ function captureWebGPUMainFailureDiagnostic(message) {
       .filter(src => /(?:^|\/)(?:app|webgpu-main-runtime|webgpu-main-pass-registry|webgpu-viewport)\.js\?/.test(src))
       .slice(0, 4).map(src => src.slice(0, 240))
   };
+}
+
+function recordRetainedHeadMarkerFailure(effect, type, playerId, data, sourcePlayer,
+  scene, marker, sceneActor, frameNow) {
+  const clip = (value, length = 120) => String(value ?? '').slice(0, length);
+  const candidates = Array.isArray(scene?.presentation?.nonCredits)
+    ? scene.presentation.nonCredits : [];
+  const selectedCandidateKeys = candidates.slice(0, 8).map(candidate =>
+    `${clip(candidate?.type, 48)}:${clip(candidate?.instanceKey, 96)}:${
+      clip(candidate?.sourceEffect?.id, 96)}`.slice(0, 220));
+  const detail = Object.freeze({
+    effectId: clip(effect?.id), effectType: clip(type, 64), playerId: clip(playerId),
+    sourceRoom: clip(effect?.eClockRoomId), currentRoom: clip(data?.roomId),
+    effectKey: clip(effect?._headMarkerInstanceKey || effect?.id),
+    sourceActorExists: Boolean(sourcePlayer), sceneExists: Boolean(scene),
+    selectedCandidateKeys: Object.freeze(selectedCandidateKeys),
+    selectedCandidateCount: candidates.length,
+    selectedCandidatesTruncated: candidates.length > selectedCandidateKeys.length,
+    markerExists: Boolean(marker),
+    sceneActor: sceneActor ? Object.freeze({
+      alive: typeof sceneActor.alive === 'boolean' ? sceneActor.alive : null,
+      ejected: typeof sceneActor.ejected === 'boolean' ? sceneActor.ejected : null,
+      inVent: typeof sceneActor.inVent === 'boolean' ? sceneActor.inVent : null }) : null,
+    frameNow: Number.isFinite(frameNow) ? frameNow : null
+  });
+  const previous = Array.isArray(webgpuRetainedHeadMarkerFailureDetails)
+    ? webgpuRetainedHeadMarkerFailureDetails : [];
+  webgpuRetainedHeadMarkerFailureDetails = [...previous.slice(-3), detail];
+  return detail;
 }
 
 async function copyWebGPUMainFailureDiagnostic() {
@@ -20849,6 +20882,9 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
   }
   if (!shapeProviders || typeof shapeProviders !== "object" || Array.isArray(shapeProviders))
     throw new TypeError("Late magic shape ports must be keyed by effect type");
+  // A valid new capture supersedes stale failure evidence; any retained-marker
+  // failures encountered in this capture repopulate the bounded details.
+  webgpuRetainedHeadMarkerFailureDetails = [];
   const now = state.frameNow || performance.now();
   const wallNow = now;
   const events = [], unsupported = [], omitted = [], deferredVisible = [];
@@ -21617,6 +21653,8 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       if (!scene || !marker || !instanceKey || !playerId ||
           !scene.player?.alive || scene.player?.ejected || scene.player?.inVent ||
           (type === 'enhance-activation' && scene.player?.invisible)) {
+        recordRetainedHeadMarkerFailure(effect, type, playerId, data, sourcePlayer,
+          scene, marker, scene?.player, now);
         unsupported.push({ index, type, id: effect.id,
           reason: 'retained-head-marker-source-or-actor-unavailable' });
         continue;
@@ -26084,6 +26122,10 @@ function eVisualTime(player, data = state.data) {
   return current.time;
 }
 function eEffectNow(effect, data = state.data, wallNow = state.frameNow || performance.now()) {
+  // Overhead marker selection and visible-effect retention both use wall time.
+  // Body-benefit E types are excluded by isSharedHeadMarkerEffect and keep the
+  // actor E clock below.
+  if (isSharedHeadMarkerEffect(effect) || isCreditHeadMarkerEffect(effect)) return wallNow;
   if (effect?.type === 'flora' || effect?.type === 'flora-sunbeam' ||
       !Number.isFinite(effect?.eClockStartedAt) ||
       String(effect.eClockRoomId || '') !== String(data?.roomId || '')) return wallNow;
@@ -27370,7 +27412,9 @@ function buildWebGPUHandgunReloadActionCommand(player, data, view, action) {
     name: playerIdentityLabel(player).slice(0, 14) });
 }
 
-const SPECIAL_AMMO_RELOAD_AUTHORED_SOURCES = Object.freeze({
+function specialAmmoReloadAuthoredSources() {
+  if (specialAmmoReloadAuthoredSources.sources) return specialAmmoReloadAuthoredSources.sources;
+  return specialAmmoReloadAuthoredSources.sources = Object.freeze({
   'white-hood': Object.freeze({
     handgun: [AUTHORED_PHILIA_HANDGUN_RELOAD, 'authoredPhiliaHandgunReload'],
     smg: [AUTHORED_PHILIA_SMG_RELOAD, 'authoredPhiliaSmgReload'],
@@ -27389,7 +27433,8 @@ const SPECIAL_AMMO_RELOAD_AUTHORED_SOURCES = Object.freeze({
     assault: [AUTHORED_BOT_ASSAULT_RELOAD, 'authoredBotAssaultReload'],
     sniper: [AUTHORED_BOT_SNIPER_RELOAD, 'authoredBotSniperReload'],
     taser: [AUTHORED_BOT_TASER_RELOAD, 'authoredBotTaserReload'] })
-});
+  });
+}
 
 function buildWebGPUSpecialAmmoLoadActionCommand(player, data, view, action) {
   const api = window.DvaWebGPUPlayerSprite;
@@ -27408,7 +27453,7 @@ function buildWebGPUSpecialAmmoLoadActionCommand(player, data, view, action) {
       !match) return null;
   const weaponId = match[2];
   const identity = player.isBot ? 'male-bot' : displayedSkinId(player, data);
-  const source = SPECIAL_AMMO_RELOAD_AUTHORED_SOURCES[identity]?.[weaponId];
+  const source = specialAmmoReloadAuthoredSources()[identity]?.[weaponId];
   if (!source) return null;
   const [profiles, textureKey] = source;
   const direction = authoredDirection(player, motionFor(player, data));

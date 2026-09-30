@@ -107,6 +107,8 @@
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
     Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+      version('mana-zero-sol61-r6', 'GPT-6.1-Sol zero r6', 'public/sol61-mana-zero/r6/preview.html?embed=1', 'public/sol61-mana-zero/r6/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結済みH64で技術再生pass、品質fail。SFX聴感未受入、ユーザー未採用、本編未接続。', 'effect-H64'),
+      version('mana-zero-sol61-r5', 'GPT-6.1-Sol zero r5', 'public/sol61-mana-zero/r5/preview.html?embed=1', 'public/sol61-mana-zero/r5/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結済みH64で技術再生pass、品質fail。SFX聴感未受入、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-mana-zero/r4/preview.html?embed=1', 'public/sol61-mana-zero/r4/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結品質記録: H64暗明で縦stripe/衣装の帯に読め、受領固有の身体応答が不成立。技術再生はpass（実GPU compile/submission、全寿命4 cycle）。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-mana-zero/r3/preview.html?embed=1', 'public/sol61-mana-zero/r3/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴の技術再生pass・品質fail。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
       version('mana-zero-sol61-r2', 'GPT-6.1-Sol zero r2', 'public/sol61-mana-zero/r2/preview.html?embed=1', 'public/sol61-mana-zero/r2/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴の技術再生pass・品質fail。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
@@ -138,6 +140,7 @@
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
     Object.freeze({ id: 'stamina-astra', title: 'スタミナ', versions: Object.freeze([
+      version('stamina-sol61-r9-frontfix', 'GPT-6.1-Sol r9 · front/rear契約修正', 'public/sol61-stamina-e/r9-front-contract-fix/index.html?embed=1', 'public/sol61-stamina-e/r9-front-contract-fix/runtime.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未受入', '設計作者: GPT-6.1-Sol。front/rear合成契約の実装: GPT-6-Luna。凍結ソースhashに束縛した実WebGPU H64 480×260再生を確認。main-only、obs-off、combined全寿命の技術検査pass。視覚品質は不合格（服まわりの光が目立つ）。verify音声gain=0のため聴感受入なし。ユーザー未採用、本編未接続。', 'effect-H64'),
       version('stamina-sol61-r8', 'GPT-6.1-Sol r8', 'public/sol61-stamina-e/r8/index.html?embed=1', 'public/sol61-stamina-e/r8/design.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結品質判定は不合格: packetは移動するが衣装発光/腕端の光片に分節し、活力による活動再開が主作用として読めない。技術再生pass。有限SFXのCPU契約pass、正常ブラウザーgestureと実聴は未実施。ユーザー未採用、本編未接続。', 'effect-H64'),
       version('stamina-sol61-r7', 'GPT-6.1-Sol r7', 'public/sol61-stamina-e/r7/index.html?embed=1', 'public/sol61-stamina-e/r7/design.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴の技術再生pass・品質fail。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
       version('stamina-sol61-r6', 'GPT-6.1-Sol r6', 'public/sol61-stamina-e/r6/index.html?embed=1&height=64', 'public/sol61-stamina-e/r6/design.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。新規有限活力閃光の技術WebGPU再生は確認済み。左胸の付属片と衣装発光が主形を支配し、活力発現の動作が伝わらないため品質不合格。有限固有SFXあり、聴感未検証。改稿中の比較履歴。', 'effect-H64'),
@@ -206,7 +209,9 @@
       version('status-cleanse-astra-r02', 'Astra r0.2', 'public/astra-status-cleanse-v1/versions/r02/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r02/cleanse.mjs', '品質不合格・本編未採用', 'aliasは除去されたが、主形が光る花器に見える。', 'actor-H64'),
       version('status-cleanse-astra-r01', 'Astra r0.1', 'public/astra-status-cleanse-v1/versions/r01/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r01/cleanse.mjs', '品質不合格・本編未採用', '主形が小さな杯に見え、ray-marchに帯状aliasがある。', 'actor-H64')
     ]) }),
-    Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮', defaultVersionId: 'cooldown-sol61-shortening-zero', versions: Object.freeze([
+    Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮', defaultVersionId: 'cooldown-clock-zero-r1', versions: Object.freeze([
+      version('cooldown-clock-zero-r1', 'GPT-6.1-Sol zero clock r1 · 待機時間短縮', 'public/sol61-cooldown-clock-zero/r1/index.html?embed=1', 'public/sol61-cooldown-clock-zero/r1/main.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。新時計ゼロ設計。clock主形は読め、時計針は現在/リセットへ戻さず短縮方向に進む。一方、H64で手から身体への受益伝達が局所flashに留まり、全体の空間的benefitが弱く品質不合格。技術再生pass（tested-a2一致hash、実WebGPU compile/submission、3完全cycle）。旧compile-a1はcompile失敗・frame 0のため除外。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
+      version('cooldown-sol61-shortening-zero-r2', 'GPT-6.1-Sol zero r2 · 待機時間短縮', 'public/sol61-cooldown-zero/r2/preview.html?embed=1', 'public/sol61-cooldown-zero/r2/effect.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。待機時間短縮ゼロ設計r2。凍結manifestの技術再生pass・品質不合格を維持。ユーザー未採用、本編未接続、SFX聴感未受入。', 'effect-H64'),
       version('cooldown-sol61-shortening-zero', 'GPT-6.1-Sol r5 · 待機時間短縮ゼロ', 'public/sol61-cooldown-zero-r5/shortening-zero/index.html?embed=1', 'public/sol61-cooldown-zero-r5/shortening-zero/design.mjs', '視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。待機時間短縮の意図を保つゼロ設計。数値上の残り待機時間短縮は既存ゲーム処理と分離。GPU技術再生pass、視覚意図は不合格: H64で斜めの発光楕円/宝石に読め、短縮効果として伝わらない。実聴未実施、ユーザー未採用、本編未接続。旧「幾何学的圧縮」案が意図と不一致だった履歴を保持。', 'effect-H64'),
       version('cooldown-sol61-r5-attempt-2', 'GPT-6.1-Sol r5 attempt 2', 'public/sol61-cooldown-zero-r5/versions/r5-attempt2/index.html?embed=1', 'public/sol61-cooldown-zero-r5/versions/r5-attempt2/design.mjs', '視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴のGPU compile/submission/複数loopはpass、視覚品質は不合格。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
       version('cooldown-sol61-r5-attempt-1', 'GPT-6.1-Sol r5 attempt 1', 'public/sol61-cooldown-zero-r5/versions/r5-attempt1/index.html?embed=1', 'public/sol61-cooldown-zero-r5/versions/r5-attempt1/design.mjs', '視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴のGPU compile/submission/複数loopはpass、視覚品質は不合格。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
@@ -227,6 +232,8 @@
       version('astra-cooldown-benefit-r0.1', 'Astra r0.1', 'public/astra-cooldown-benefit-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r01/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。三面が汎用的な同心輪へ融合。SFX圧縮時刻も不一致。', 'actor-H64')
     ]) }),
     Object.freeze({ id: 'barrier-pro', title: 'バリア', versions: Object.freeze([
+      version('barrier-sol61-r5', 'GPT-6.1-Sol zero r5', 'public/sol61-barrier-zero/r5/index.html?embed=1', 'public/sol61-barrier-zero/r5/runtime.mjs', '技術再生pass・視覚品質不合格・sparkle未達・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結版の実GPU native H64 main-only/combined暗明全寿命replay pass。視覚品質不合格。sparkleはRGBゲートを通らず、nativeで明確に読めないため未達。ユーザー未採用、本編未接続、SFX聴感未実施。', 'effect-H64'),
+      version('barrier-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-barrier-zero/r4/index.html?embed=1', 'public/sol61-barrier-zero/r4/runtime.mjs', '品質不合格・未採用・本編未接続・聴感未受入', '作者: GPT-6.1-Sol。技術再生可能な新規設計候補として掲載。品質不合格、ユーザー未採用、本編未接続、SFX聴感未受入。2026-09-30の採用撤回後、バリア群に現行採用版はありません。', 'effect-H64'),
       version('barrier-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-barrier-zero/r3/index.html?embed=1', 'public/sol61-barrier-zero/r3/runtime.mjs', 'ユーザー不採用・質感不合格・本編未接続', '作者: GPT-6.1-Sol。ユーザー評価: プラスチックのような質感へ変わったため不採用。実GPUH64全寿命・3ループの技術再生記録は保持するが、品質合格を意味しない。改修予定。有限固有SFXあり、聴感未受入。', 'effect-H64'),
       version('barrier-sol61-r2', 'GPT-6.1-Sol zero r2', 'public/sol61-barrier-zero/r2/index.html?embed=1', 'public/sol61-barrier-zero/r2/runtime.mjs', '品質確認未完了・未採用・本編未接続', '作者: GPT-6.1-Sol。広い曲面と内外面の実3D透明殻へ改稿。実GPUコンパイル・H64全寿命・前後面・3ループ確認。定常時のデジタルな固有性は懸念が残り、品質合格ではない。有限SFXあり、聴感未受入。', 'effect-H64'),
       version('barrier-sol61-r2-draft1', 'GPT-6.1-Sol zero r2 初稿', 'public/sol61-barrier-zero/r2-draft1/index.html?embed=1', 'public/sol61-barrier-zero/r2-draft1/runtime.mjs', '旧初稿・品質未達・未採用', '作者: GPT-6.1-Sol。r2改稿前の実GPU再生可能な初稿。一般的な滑らかな泡に見え、固有性と面の役割が弱いため未達。原版の有限VFX/SFXを比較用に保持。', 'effect-H64'),
@@ -391,8 +398,8 @@
       latest: group.versions[0].id, defaultVersionId: group.defaultVersionId || group.versions[0].id,
       versions: Object.freeze(group.versions.map(item => Object.freeze({ ...item,
         category: 'effect',
-        creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : item.id.includes('-sol61-') ? 'gpt-6.1-sol' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra',
-        creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : item.id.includes('-sol61-') ? 'GPT-6.1-Sol' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra',
+        creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : item.id === 'stamina-sol61-r9-frontfix' ? 'gpt-6.1-sol+gpt-6-luna' : item.id === 'cooldown-clock-zero-r1' ? 'gpt-6.1-sol' : item.id.includes('-sol61-') ? 'gpt-6.1-sol' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra',
+        creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : item.id === 'stamina-sol61-r9-frontfix' ? 'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)' : item.id === 'cooldown-clock-zero-r1' ? 'GPT-6.1-Sol' : item.id.includes('-sol61-') ? 'GPT-6.1-Sol' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra',
         qualityStatus: /不合格|不達|未達/.test(item.status) ? 'fail' : /保留|未受入/.test(item.status) ? 'pending' : 'candidate',
         userAdoptionStatus: adoptionState(item), adoptionStatusLabel: adoptionStatusLabel(item),
         gameIntegrationStatus: /本編接続済み/.test(item.status) ? 'verified' : /本編未接続|本編未採用/.test(item.status) ? 'not-integrated' : 'unverified',
