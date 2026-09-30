@@ -1,0 +1,208 @@
+{
+  "id": "cafeteria-attempt04-room-e-trial-r1-runtime-closure",
+  "author": "GPT-6-Luna",
+  "sourceDesignAuthor": "GPT-6.1-Sol",
+  "designManifest": {
+    "path": "design-manifest-v2.json",
+    "sha256": "e94b0c8bce40bf6352f3c71cd7ccdc019ff8c9ba08b1f4d5e50feb3adb1f5529"
+  },
+  "artistDependencies": [
+    {
+      "path": "INPUTS.md",
+      "bytes": 4346,
+      "sha256": "8603a78e2952cb207d067e7caceb7a707d663d908e5ae4160feb8b9c60c6770d"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 6256,
+      "sha256": "d39dbf1b5477f11c36948d13a630ce8052c28f13571ee931c4b5e2e3c6da3c9e"
+    },
+    {
+      "path": "OBSERVER-REVIEW.md",
+      "bytes": 3176,
+      "sha256": "3c0ffc17493a2ed6e2a0c0a5c66b606c0e8cad0678f51097a0e4ce366903eac8"
+    },
+    {
+      "path": "HANDOFF.md",
+      "bytes": 3559,
+      "sha256": "3021ca9bbfdf193664eb3d475f5cfee5eb4c00b09aa20ca5d977b21541162063"
+    },
+    {
+      "path": "scene.mjs",
+      "bytes": 3632,
+      "sha256": "6efdd66800e88b23bb5761b12a4a08ec7a4ba3a1919d4a7e413b4dccc2712d38"
+    },
+    {
+      "path": "draw-plan.mjs",
+      "bytes": 960,
+      "sha256": "ed7d974b561346c9a6be513c41d84802ae686fcf8d9970d5d6a1c69f8b35af33"
+    },
+    {
+      "path": "projection.mjs",
+      "bytes": 1293,
+      "sha256": "15f721e46963f05306257e114434463fd93e2bace04e5ec3e8ceba14d47dddb7"
+    },
+    {
+      "path": "world-shader.mjs",
+      "bytes": 5290,
+      "sha256": "ff1f664c8e233b86df6ec17e4b8180710ef8e0d342924c7d3830aad85ea2ec3c"
+    },
+    {
+      "path": "post-shader.mjs",
+      "bytes": 2381,
+      "sha256": "419e7195043022a5f4899908068eee7ec665eca967bd40ebd83c527ff842d3d6"
+    },
+    {
+      "path": "sfx-score.mjs",
+      "bytes": 2292,
+      "sha256": "e4a173b880fd23c7fe9dc253e5a47c07bb4ff350e8b23da1b89fb0643fc2c6c7"
+    },
+    {
+      "path": "b-design.mjs",
+      "bytes": 28430,
+      "sha256": "2534c6bc82718490ecca42dcab440b625c6cb81f0dff1a3bcdef284dcad8ba2a"
+    },
+    {
+      "path": "b-contract.json",
+      "bytes": 79070,
+      "sha256": "a2cfd79d3c7694fcc4d054d6b57dd755c7b568624830113ce0602027b64cfa5e"
+    },
+    {
+      "path": "render-contract.json",
+      "bytes": 5450,
+      "sha256": "eab67a3dd2cc708e1f492ccb0ae00156074b32ad267bca7921614b15cd0a648a"
+    },
+    {
+      "path": "cpu-check.mjs",
+      "bytes": 5404,
+      "sha256": "339c265be05a96d5eef7e80c49c6eee1aac956f61c8fdc73706a3aa4254ca8b7"
+    },
+    {
+      "path": "evidence/cpu.json",
+      "bytes": 4795,
+      "sha256": "a2e3bbbf74c90fbd308d27f33e9fae52a18807902ce3e13a52123c6ae75c3216"
+    },
+    {
+      "path": "cafeteria-vent-r1.wav",
+      "bytes": 115244,
+      "sha256": "b4d10047baab1e7a17ce27618bf3c67291024c16b99bbb5f4fa6e1d9114ade4d"
+    },
+    {
+      "path": "cafeteria-steam-r1.wav",
+      "bytes": 230444,
+      "sha256": "d9036043adeb9969f954298939ab0fda8b0ad49a2962f3ef3bddb5e4921698e3"
+    },
+    {
+      "path": "cafeteria-purge-r1.wav",
+      "bytes": 163244,
+      "sha256": "d9ea58c07a60f9d5b7889e15d110b28ccfeb9140efeadd792e8962e9e84e79ec"
+    },
+    {
+      "path": "inputs/public-cafeteria-attempt04.png",
+      "bytes": 2184834,
+      "sha256": "c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65"
+    },
+    {
+      "path": "inputs/public-asset-gallery.js",
+      "bytes": 109448,
+      "sha256": "28a9d10f193925ff168daa3146a7d1631536674d94aa66b4cb20564d9269adce"
+    },
+    {
+      "path": "inputs/基底.md",
+      "bytes": 126024,
+      "sha256": "e559ca8faf6f3635aea0bc49a4e551496429fce95c1432d051bd7e39f00395b1"
+    },
+    {
+      "path": "inputs/拡張.md",
+      "bytes": 76198,
+      "sha256": "b74001fab9dc7338a1dbde889db5a9175bac549979191694a293b76e14061ea5"
+    },
+    {
+      "path": "pack-design.mjs",
+      "bytes": 2221,
+      "sha256": "9a8586f14185e249a8ff454a2ee227307ed49ec997f823d326b40d4253a77080"
+    },
+    {
+      "path": "design-manifest.json",
+      "bytes": 4935,
+      "sha256": "993d3be805f8a4a9354ef7ac69ad634aaeba66bc8370ee5c783a2ea88e0cbd2c"
+    },
+    {
+      "path": "reflection-contract.json",
+      "bytes": 5832,
+      "sha256": "496671e9726dccb4640a70b2e80121ca69ca88e32d27becef60443dd9d277520"
+    },
+    {
+      "path": "pack-addendum.mjs",
+      "bytes": 1216,
+      "sha256": "4ee6c1361b4182e70c0169e1efc56bfdeefdd8f6bd780bfcdf1c2aac1712efb8"
+    },
+    {
+      "path": "inputs/public-cafeteria-attempt04.png",
+      "bytes": 2184834,
+      "sha256": "c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65"
+    },
+    {
+      "path": "cafeteria-vent-r1.wav",
+      "bytes": 115244,
+      "sha256": "b4d10047baab1e7a17ce27618bf3c67291024c16b99bbb5f4fa6e1d9114ade4d"
+    },
+    {
+      "path": "cafeteria-steam-r1.wav",
+      "bytes": 230444,
+      "sha256": "d9036043adeb9969f954298939ab0fda8b0ad49a2962f3ef3bddb5e4921698e3"
+    },
+    {
+      "path": "cafeteria-purge-r1.wav",
+      "bytes": 163244,
+      "sha256": "d9ea58c07a60f9d5b7889e15d110b28ccfeb9140efeadd792e8962e9e84e79ec"
+    }
+  ],
+  "runtimeFiles": [
+    {
+      "path": "runtime.mjs",
+      "bytes": 17193,
+      "sha256": "05c8e8a5ef50d4e9f0cc434e96e5f45640d068c12f4a4596934f8f3a3bd285d2"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2860,
+      "sha256": "18295fba2c9a2f91607c64746190396bde4c896e9e3659d44f916654096656b6"
+    },
+    {
+      "path": "embed-test.html",
+      "bytes": 1050,
+      "sha256": "1f6fb3754576d22b1936b898fda100686b70f8da7455d9666ca5e97fbf60c324"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 5619,
+      "sha256": "0e71c4b44a5e69a358f59bef62e9acc0812922ad8a8eaeaf24a52baf24338fd3"
+    },
+    {
+      "path": "runtime-port-test.mjs",
+      "bytes": 5022,
+      "sha256": "8915ed982798cc02234268818025e5c4dfdc9fb35bac509b4de7a85c1cc6ee8b"
+    },
+    {
+      "path": "gpu-check.mjs",
+      "bytes": 3008,
+      "sha256": "6a19f7d415190593479972f408e36811689ca8a57183dcaaba335bffdfaccf4d"
+    },
+    {
+      "path": "freeze-runtime.mjs",
+      "bytes": 3664,
+      "sha256": "301fb89ad7828f30686baa091fe3e5af5a8aa00a9eb2fcdab71034e679119ef7"
+    }
+  ],
+  "closure": {
+    "fileCount": 37,
+    "sha256": "9a30d749f8a8aa661d40f3a605ba972fbb57cb65df5900cf2f65286c14d0e608"
+  },
+  "status": "technically-replayable-closure",
+  "gpuEvidence": {
+    "path": "runtime-evidence/gpu-check-results.json",
+    "sha256": "d1c462c0bd3701e71584d105061b7d7875259d1639e7e3b1715c8f07b47c0104",
+    "status": "compile-submit-fit-phase-samples-pass"
+  }
+}

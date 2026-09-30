@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>食堂・環境E試作 r1</title>
+  <style>
+    :root { color-scheme: dark; font: 13px/1.35 system-ui, sans-serif; background:#111820; color:#f3f4f5; }
+    * { box-sizing: border-box; }
+    html, body { width:100%; height:100%; margin:0; overflow:hidden; }
+    #stage { width:100%; height:100%; display:block; background:#111820; }
+    #toolbar { position:fixed; inset:8px 8px auto 8px; display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px;
+      max-height:42vh; overflow:auto; padding:8px 10px; border:1px solid #64717b; border-radius:7px;
+      background:rgba(14,20,27,.90); box-shadow:0 2px 12px #0008; }
+    #toolbar label { display:inline-flex; align-items:center; gap:4px; white-space:nowrap; }
+    #toolbar button, #toolbar select { font:inherit; color:inherit; background:#273440; border:1px solid #85909a; border-radius:4px; padding:4px 7px; }
+    #phase { width:min(280px,34vw); }
+    #phase-readout { min-width:76px; font-variant-numeric:tabular-nums; }
+    #status { position:fixed; inset:auto 8px 8px 8px; padding:4px 8px; border-radius:4px;
+      color:#f5e5bd; background:rgba(14,20,27,.78); font:12px/1.35 ui-monospace,monospace; white-space:pre-wrap; }
+    .embedded #toolbar, .embedded #status { display:none; }
+    @media (prefers-reduced-motion: reduce) { #toolbar { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <canvas id="stage" aria-label="採用済み食堂画像上の有限な環境E試作"></canvas>
+  <section id="toolbar" aria-label="環境E診断操作">
+    <label><input id="active" type="checkbox" checked> E有効</label>
+    <label><input id="lighting" type="checkbox" checked> 灯</label>
+    <label><input id="steam" type="checkbox" checked> 湯気</label>
+    <label><input id="purge" type="checkbox" checked> 洗浄</label>
+    <label><input id="reflections" type="checkbox" checked> 床反射</label>
+    <label><input id="obs" type="checkbox" checked> 近傍OBS</label>
+    <label><input id="cross" type="checkbox" checked> トレーcross</label>
+    <label><input id="bitmapOnly" type="checkbox"> 原画のみ</label>
+    <label><input id="reducedMotion" type="checkbox"> 動き低減</label>
+    <label for="phase">位相</label><input id="phase" type="range" min="0" max="12000" step="10" value="0">
+    <output id="phase-readout">0 ms</output>
+    <button id="reset" type="button">先頭から再生</button>
+    <button id="resume" type="button">自動ループ</button>
+    <button id="sound" type="button">音を有効化</button>
+  </section>
+  <output id="status" role="status">WebGPUを起動中</output>
+  <script type="module" src="./runtime.mjs"></script>
+</body>
+</html>

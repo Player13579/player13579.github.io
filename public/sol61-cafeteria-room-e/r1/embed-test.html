@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>食堂 環境E runtime 検証ホスト</title>
+  <style>
+    html,body { width:100%; height:100%; margin:0; overflow:hidden; background:#101820; }
+    iframe { display:block; width:100%; height:100%; border:0; }
+  </style>
+</head>
+<body>
+  <iframe id="room" title="食堂環境E試作"></iframe>
+  <script>
+    const search = new URLSearchParams(location.search);
+    const target = new URL('./index.html', location.href);
+    target.searchParams.set('embed', '1');
+    if (search.has('verify')) target.searchParams.set('verify', '1');
+    if (search.has('capture')) target.searchParams.set('capture', '1');
+    const frame = document.getElementById('room');
+    frame.src = target.href;
+    Object.defineProperty(window, '__roomE', { get: () => frame.contentWindow.__roomE });
+    Object.defineProperty(window, '__gallerySfx', { get: () => frame.contentWindow.__gallerySfx });
+  </script>
+</body>
+</html>

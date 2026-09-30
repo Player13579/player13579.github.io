@@ -1,0 +1,1732 @@
+{
+  "kind": "ECodeImplementation",
+  "author": "GPT-6.1-Sol",
+  "effort": "high",
+  "source_revision": {
+    "repository": "player13579/B",
+    "branch": "Codex-honoo",
+    "commit": "37eb4bdfe59f0dc075f9b4333b7d6af76b784a88",
+    "base_blob": "8a908495ae1f9b7175e00384ab88c50e5c78bd43",
+    "extension_blob": "0eda016558e426ff4142d850d26200b40fafd834"
+  },
+  "InferenceExpansionPolicy": {
+    "ExpressionIntent": {
+      "must_communicate": [
+        "同じ食堂の固定identity",
+        "灯→床/湯気の所在",
+        "温菜の上昇消散",
+        "給湯器内の有限洗浄→tray response"
+      ],
+      "protected_relations": [
+        "原画不変",
+        "全室contain",
+        "源のbitmap登録",
+        "ゲームイベント/採用/quality状態を捏造しない"
+      ],
+      "omission_scope": [],
+      "exaggeration_scope": [],
+      "ambiguity_scope": []
+    },
+    "SelectionLifecycle": {
+      "declared": "一室・多様なWebGPU E・VFX/SFX・B",
+      "attribute_resolved": "warm灯/局所床応答/温菜蒸気/既存給湯器洗浄/有限展示episode",
+      "inferred_accepted": [],
+      "rejected": "全室汎用vendingテンプレート/未根拠のlensghost/新bitmap"
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "源/床の材質response/air sheet/機内water cycle/静止room境界",
+      "shared_condition_policy": "同じ原画transformと12sclock、各源/寿命は保持",
+      "no_discipline_based_split": true
+    },
+    "SharedConditions": {
+      "raster": "同SHA1305×1206",
+      "display": "isotropic fit arbitraryviewport、980×620/930×860/465×430",
+      "time": "wall monotonic ms, pause/reset visible episode separately"
+    },
+    "PhenomenonRegistry": [
+      {
+        "id": "PH1",
+        "name": "周壁の実灯の追加放射",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "visible",
+        "local_state_difference": "同じ原画の七つの灯にsource geometryを持つ",
+        "partition_reason": "一定供給と展示開始終了の独立した源状態"
+      },
+      {
+        "id": "PH2",
+        "name": "磨かれた床の局所受光と反射",
+        "origin": "attribute_resolved",
+        "anchor": "floor",
+        "visibility": "visible",
+        "local_state_difference": "源と異なる床receiver/surface境界",
+        "partition_reason": "sourceに依存して別の材質応答と有限境界を持つ"
+      },
+      {
+        "id": "PH3",
+        "name": "温菜上の水滴散乱sheet",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "二つの食品放出口と有限に移流する密度場",
+        "partition_reason": "給熱で離脱して独立に消散する媒体状態"
+      },
+      {
+        "id": "PH4",
+        "name": "給湯器ノズルからトレーへの洗浄水",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "visible",
+        "local_state_difference": "機内のノズル→水柱→トレーの有限cycle",
+        "partition_reason": "境界/重力方向/開始終了を持つ機械動作と接触response"
+      },
+      {
+        "id": "PH5",
+        "name": "不変のGPT食堂原画と固定設備境界",
+        "origin": "attribute_resolved",
+        "anchor": "background",
+        "visibility": "visible",
+        "local_state_difference": "一枚の採用原画として保持される既存room identity",
+        "partition_reason": "独立した固定境界/支持/occlusionのcontext条件"
+      }
+    ],
+    "PhenomenonBlock": [
+      {
+        "identity": {
+          "id": "PH1",
+          "name": "周壁の実灯の追加放射",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "visible",
+          "local_state_difference": "同じ原画の七つの灯にsource geometryを持つ",
+          "partition_reason": "一定供給と展示開始終了の独立した源状態"
+        },
+        "DeepStructure": {
+          "Core": "source矩形の白いradiance peak",
+          "Structure": "壁方向に沿う有限の長いlamp footprint",
+          "Surface": "0.8px source edge。源の外にworld halo物体を追加しない"
+        },
+        "PhysicalModel": {
+          "model_kind": "optical_transport",
+          "system_boundary": "scene.LAMPSの実灯矩形のみ",
+          "state_variables": "source radiance RGB、展示lamp envelope、画素位置",
+          "inputs": "有限room episodeのentry/exit。原画の電気状態を新しい実ゲーム事実にしない",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "光学/静止proxyでmass evolutionを作らない"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "光学/静止境界でmechanical impulseを描かない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "源供給→PH2/PH3と表示。RGBは非photometricの追加放射proxy"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電気source所在のみ、charge transportを観測したと主張しない"
+            }
+          },
+          "constitutive_response": "白いrectangular coreから局所暖色へ。瞬間flashや周期pulseは追加しない",
+          "initial_condition": "episode前は追加放射0、原画の静止灯は保持",
+          "boundary_conditions": "scene.LAMPSの実灯矩形のみ",
+          "approximation_scope": "原画へ登録した2.5D illustrative proxy。未測定の照度/温度/深度/BRDF/絶対流量を物理実証へ読み替えない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "原画24×4pxの源。表示scaleはfitRoom",
+          "characteristic_time": "12s有限episode、160ms導入/500ms終端",
+          "dominant_balance": "白いrectangular coreから局所暖色へ。瞬間flashや周期pulseは追加しない",
+          "dimensionless_reasoning": "field幅/fixture幅、寿命/episode12sの比で可読性と支持を定める。無次元物理数の実測はない",
+          "detail_cutoff": "930×860/980×620/465×430のisotropic fit。critical形を保持し、micro-noiseを作らない"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "lamp熱はこの追加光学proxyに可視化しない"
+              ],
+              "evidence_or_constraint": "lamp熱はこの追加光学proxyに可視化しない"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "灯source自体に流れを追加しない"
+              ],
+              "evidence_or_constraint": "灯source自体に流れを追加しない"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "追加放射",
+                "PH2/PH3へ光の入力"
+              ],
+              "evidence_or_constraint": "world-shader.drawLamp→drawFloor/drawSteam"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "元画像のlamp diffuser"
+              ],
+              "evidence_or_constraint": "半幅12×2px、white-coreとedge"
+            },
+            "Electromagnetics": {
+              "applicability": "applicable",
+              "role": "latent",
+              "items": [
+                "有限episodeは運転表示を選ぶだけ、実電源状態を推定しない"
+              ],
+              "evidence_or_constraint": "source radiance一定の選択"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "固体壁灯の変形はない"
+              ],
+              "evidence_or_constraint": "固体壁灯の変形はない"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "非coherent灯で世界内干渉/回折を追加しない。display PSFはOBS"
+              ],
+              "evidence_or_constraint": "非coherent灯で世界内干渉/回折を追加しない。display PSFはOBS"
+            },
+            "SurfaceScience": {
+              "applicability": "applicable",
+              "role": "latent",
+              "items": [
+                "原画の灯表面の放出口"
+              ],
+              "evidence_or_constraint": "source登録矩形内だけ放射"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "壁に固定された白芯",
+            "床と湯気の局所応答"
+          ],
+          "indirect_evidence": "他PHへの型付き因果/原画source拘束",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "0.8px source edge。源の外にworld halo物体を追加しない",
+          "perceptual_failure_risk": "既存原画灯の位置から滑る/明るい点だけ浮く",
+          "cue_roles": [
+            {
+              "cue": "壁に固定された白芯",
+              "supports": "周壁の実灯の追加放射",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            },
+            {
+              "cue": "床と湯気の局所応答",
+              "supports": "周壁の実灯の追加放射",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            }
+          ],
+          "confusable_alternative": "室内と関係のない点滅装飾",
+          "disambiguating_evidence": "source/receiver固定登録・同phase sourceOFFで応答消失",
+          "viewing_conditions": "980×620 gallery、930×860/465×430 full contain、同じparameters。比較のため背景別弱体化をしない"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "実壁に沿うsource矩形とfixed receiver。新壁/新影なし",
+          "normal_field_coherence": "原画の壁向き/床/機内trayに沿う。unknown3D normalはsource proxyで宣言",
+          "curvature_behavior": "壁方向に沿う有限の長いlamp footprint",
+          "silhouette_logic": "壁に固定された白芯 / 床と湯気の局所応答",
+          "contact_relation": "scene.LAMPSの実灯矩形のみ",
+          "spatial_relation": "実壁に沿うsource矩形とfixed receiver。新壁/新影なし"
+        },
+        "StateDynamics": {
+          "state_space_extent": "source radiance RGB、展示lamp envelope、画素位置",
+          "transition_path_character": "equilibrium-maintained",
+          "local_stability_type": "stable",
+          "convergence_behavior": "0–160ms導入、160–11500ms一定、11500–12000ms終了",
+          "damping_profile": "0–160ms導入、160–11500ms一定、11500–12000ms終了",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "episode前は追加放射0、原画の静止灯は保持",
+          "transition_failure_risk": "既存原画灯の位置から滑る/明るい点だけ浮く",
+          "driving_input": "有限room episodeのentry/exit。原画の電気状態を新しい実ゲーム事実にしない",
+          "response_timescale": "12s有限episode、160ms導入/500ms終端",
+          "phase_relation": "0–160ms導入、160–11500ms一定、11500–12000ms終了",
+          "stability_condition": "finite age>=0 && age<12000ms && active; otherwise additive VFX0"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1 -> PH2: 灯の追加radianceを局所床材のdiffuse/specular proxyへ運ぶ; 指定floor receiverにのみ暖色の広い面受光と狭い反射lobeが生じる",
+            "PH1 -> PH3: 白色光が凝結dropletで散乱される; 食品から離れる湯気は暖白く見えるが光源coreとしては扱わない"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "source/receiver固定登録・同phase sourceOFFで応答消失",
+            "predicted_response": "白いrectangular coreから局所暖色へ。瞬間flashや周期pulseは追加しない",
+            "competing_explanation": "室内と関係のない点滅装飾",
+            "uncertainty": "投影/材質/実温度は未測定。compiled GPU/quality/listeningまだnot_run",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "灯の追加radianceを局所床材のdiffuse/specular proxyへ運ぶ",
+              "consequence": "指定floor receiverにのみ暖色の広い面受光と狭い反射lobeが生じる"
+            },
+            {
+              "source": "PH1",
+              "target": "PH3",
+              "mechanism": "白色光が凝結dropletで散乱される",
+              "consequence": "食品から離れる湯気は暖白く見えるが光源coreとしては扱わない"
+            }
+          ],
+          "observation_dependency": [],
+          "gaze_path": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "reason": "源から床への局所光を読む"
+            },
+            {
+              "source": "PH1",
+              "target": "PH3",
+              "reason": "灯の安定光から温菜のゆっくりした移流へ"
+            }
+          ]
+        },
+        "Evidence": {
+          "direct": [
+            "壁に固定された白芯",
+            "床と湯気の局所応答"
+          ],
+          "indirect": [],
+          "candidates": [
+            "boundary",
+            "phase_difference",
+            "reflection_change",
+            "density_layering",
+            "attenuation",
+            "contact_trace"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH2",
+              "change": "指定floor receiverにのみ暖色の広い面受光と狭い反射lobeが生じる"
+            },
+            {
+              "target": "PH3",
+              "change": "食品から離れる湯気は暖白く見えるが光源coreとしては扱わない"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH1",
+          "retained_cues": [
+            "壁に固定された白芯",
+            "床と湯気の局所応答"
+          ],
+          "simplification": "未知3Dを精密逆算せず原画登録の有限領域を使う。Bのcamera/body事実として偽らない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable_for_standard",
+          "axes": {
+            "material_response": [
+              "長いdiffuser源",
+              "周囲の床材応答"
+            ],
+            "temporal_phase": [
+              "導入160ms",
+              "保持後の500ms終端"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "既存原画灯の位置から滑る/明るい点だけ浮く",
+          "室内と関係のない点滅装飾",
+          "CPU支持/compile成功を品質passへ置換"
+        ]
+      },
+      {
+        "identity": {
+          "id": "PH2",
+          "name": "磨かれた床の局所受光と反射",
+          "origin": "attribute_resolved",
+          "anchor": "floor",
+          "visibility": "visible",
+          "local_state_difference": "源と異なる床receiver/surface境界",
+          "partition_reason": "sourceに依存して別の材質応答と有限境界を持つ"
+        },
+        "DeepStructure": {
+          "Core": "source法線方向の狭いspecular極大",
+          "Structure": "rough-floor lobeとdiffuse面域は同receiver内の異なる幅",
+          "Surface": "実floor mask/設備除外/境界apodization"
+        },
+        "PhysicalModel": {
+          "model_kind": "derived_world_response",
+          "system_boundary": "六つのfloor receiverと原画床mask",
+          "state_variables": "diffuse/specular lobe、source multiplier、surface mask",
+          "inputs": "PH1追加radiance、PH5静止床面/設備境界",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "光学/静止proxyでmass evolutionを作らない"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "光学/静止境界でmechanical impulseを描かない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "追加反射gainは0.35、diffuse0.055の有限proxy。実BRDF/絶対放射量の実証ではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電気source所在のみ、charge transportを観測したと主張しない"
+            }
+          },
+          "constitutive_response": "内向き法線に沿う12×36px反射と42×76px受光を別包絡で加算",
+          "initial_condition": "既存描画の反射はbaseline、追加量だけ0から開始",
+          "boundary_conditions": "六つのfloor receiverと原画床mask",
+          "approximation_scope": "原画へ登録した2.5D illustrative proxy。未測定の照度/温度/深度/BRDF/絶対流量を物理実証へ読み替えない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "最大84×152px receiver、半寸でも床の面応答を残す",
+          "characteristic_time": "lamp envelopeへ即時依存。surface実測遅延は主張しない",
+          "dominant_balance": "内向き法線に沿う12×36px反射と42×76px受光を別包絡で加算",
+          "dimensionless_reasoning": "field幅/fixture幅、寿命/episode12sの比で可読性と支持を定める。無次元物理数の実測はない",
+          "detail_cutoff": "930×860/980×620/465×430のisotropic fit。critical形を保持し、micro-noiseを作らない"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "追加radianceによる床温度変化は可視化しない"
+              ],
+              "evidence_or_constraint": "追加radianceによる床温度変化は可視化しない"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "乾いた床の静止応答、流体を追加しない"
+              ],
+              "evidence_or_constraint": "乾いた床の静止応答、流体を追加しない"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "world diffuse",
+                "粗いsurface反射"
+              ],
+              "evidence_or_constraint": "drawFloorの二つの異なるellipse"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "磨かれた床の非photometric応答"
+              ],
+              "evidence_or_constraint": "原画tileと固定法線"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "電気回路を床へ描かない"
+              ],
+              "evidence_or_constraint": "電気回路を床へ描かない"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "床の変形はない"
+              ],
+              "evidence_or_constraint": "床の変形はない"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "薄膜/干渉色は原画根拠なし"
+              ],
+              "evidence_or_constraint": "薄膜/干渉色は原画根拠なし"
+            },
+            "SurfaceScience": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "floor mask",
+                "設備接触境界"
+              ],
+              "evidence_or_constraint": "fixture footprintをdrawFloorから除外"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "灯と同方向のfloor lobe",
+            "狭い反射と広い受光の幅差"
+          ],
+          "indirect_evidence": "他PHへの型付き因果/原画source拘束",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "実floor mask/設備除外/境界apodization",
+          "perceptual_failure_risk": "床全体を白く塗る/飾り楕円が独立する",
+          "cue_roles": [
+            {
+              "cue": "灯と同方向のfloor lobe",
+              "supports": "磨かれた床の局所受光と反射",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            },
+            {
+              "cue": "狭い反射と広い受光の幅差",
+              "supports": "磨かれた床の局所受光と反射",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            }
+          ],
+          "confusable_alternative": "床に置いた新しい発光マーカー",
+          "disambiguating_evidence": "PH1OFFで新量だけ消え、床bitmapと既存反射は残る",
+          "viewing_conditions": "980×620 gallery、930×860/465×430 full contain、同じparameters。比較のため背景別弱体化をしない"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "南北は長軸Y、東西は長軸X。床上で設備/開口へ漏らさないproxy",
+          "normal_field_coherence": "原画の壁向き/床/機内trayに沿う。unknown3D normalはsource proxyで宣言",
+          "curvature_behavior": "rough-floor lobeとdiffuse面域は同receiver内の異なる幅",
+          "silhouette_logic": "灯と同方向のfloor lobe / 狭い反射と広い受光の幅差",
+          "contact_relation": "六つのfloor receiverと原画床mask",
+          "spatial_relation": "南北は長軸Y、東西は長軸X。床上で設備/開口へ漏らさないproxy"
+        },
+        "StateDynamics": {
+          "state_space_extent": "diffuse/specular lobe、source multiplier、surface mask",
+          "transition_path_character": "equilibrium-maintained",
+          "local_stability_type": "stable",
+          "convergence_behavior": "PH1同phase。独立fade/tailなし",
+          "damping_profile": "PH1同phase。独立fade/tailなし",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "既存描画の反射はbaseline、追加量だけ0から開始",
+          "transition_failure_risk": "床全体を白く塗る/飾り楕円が独立する",
+          "driving_input": "PH1追加radiance、PH5静止床面/設備境界",
+          "response_timescale": "lamp envelopeへ即時依存。surface実測遅延は主張しない",
+          "phase_relation": "PH1同phase。独立fade/tailなし",
+          "stability_condition": "finite age>=0 && age<12000ms && active; otherwise additive VFX0"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1 -> PH2: 灯の追加radianceを局所床材のdiffuse/specular proxyへ運ぶ; 指定floor receiverにのみ暖色の広い面受光と狭い反射lobeが生じる"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "PH1OFFで新量だけ消え、床bitmapと既存反射は残る",
+            "predicted_response": "内向き法線に沿う12×36px反射と42×76px受光を別包絡で加算",
+            "competing_explanation": "床に置いた新しい発光マーカー",
+            "uncertainty": "投影/材質/実温度は未測定。compiled GPU/quality/listeningまだnot_run",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "灯の追加radianceを局所床材のdiffuse/specular proxyへ運ぶ",
+              "consequence": "指定floor receiverにのみ暖色の広い面受光と狭い反射lobeが生じる"
+            }
+          ],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "灯と同方向のfloor lobe",
+            "狭い反射と広い受光の幅差"
+          ],
+          "indirect": [],
+          "candidates": [
+            "boundary",
+            "phase_difference",
+            "reflection_change",
+            "density_layering",
+            "attenuation",
+            "contact_trace"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH2",
+          "retained_cues": [
+            "灯と同方向のfloor lobe",
+            "狭い反射と広い受光の幅差"
+          ],
+          "simplification": "未知3Dを精密逆算せず原画登録の有限領域を使う。Bのcamera/body事実として偽らない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable_for_standard",
+          "axes": {
+            "ratio_proportion": [
+              "source対receiver",
+              "反射と面受光の幅差"
+            ],
+            "material_response": [
+              "静止tile保持",
+              "局所warm応答"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "床全体を白く塗る/飾り楕円が独立する",
+          "床に置いた新しい発光マーカー",
+          "CPU支持/compile成功を品質passへ置換"
+        ]
+      },
+      {
+        "identity": {
+          "id": "PH3",
+          "name": "温菜上の水滴散乱sheet",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "二つの食品放出口と有限に移流する密度場",
+          "partition_reason": "給熱で離脱して独立に消散する媒体状態"
+        },
+        "DeepStructure": {
+          "Core": "食品放出口に近いdense sheet",
+          "Structure": "横幅/曲がり/上昇位置が同phaseから連続",
+          "Surface": "ellipse辺縁と上部density減衰"
+        },
+        "PhysicalModel": {
+          "model_kind": "material_continuum",
+          "system_boundary": "二つの食品面上から上昇84px以内/左右31px以内のprojected air proxy",
+          "state_variables": "birth、phase、rise/drift、sheet density/alpha、scattered radiance",
+          "inputs": "PH5の選択されたhot-food状態、PH1照明。12birthのみ、演出の無限emitなし",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "食品からの境界供給→sheet内の有限密度→消散。保存流体simulationではなくstylized有限projection"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "source拘束/移流方向を保持。保存simulationではない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "食品からの境界供給→sheet内の有限密度→消散。保存流体simulationではなくstylized有限projection"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電気source所在のみ、charge transportを観測したと主張しない"
+            }
+          },
+          "constitutive_response": "口から立つdensity sheetが拡幅しながら上昇し、上部で薄くなる",
+          "initial_condition": "有限birth時に密度0から滑らかに増加",
+          "boundary_conditions": "二つの食品面上から上昇84px以内/左右31px以内のprojected air proxy",
+          "approximation_scope": "原画へ登録した2.5D illustrative proxy。未測定の照度/温度/深度/BRDF/絶対流量を物理実証へ読み替えない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "最大68px上昇、width5→14px。actualtemperatureやmicrodroplet径は未測定",
+          "characteristic_time": "2.4s advective lifetime、1.8s source repeat、二源220ms位相差",
+          "dominant_balance": "口から立つdensity sheetが拡幅しながら上昇し、上部で薄くなる",
+          "dimensionless_reasoning": "field幅/fixture幅、寿命/episode12sの比で可読性と支持を定める。無次元物理数の実測はない",
+          "detail_cutoff": "930×860/980×620/465×430のisotropic fit。critical形を保持し、micro-noiseを作らない"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "温菜熱の展示選択",
+                "周囲での凝結/消散"
+              ],
+              "evidence_or_constraint": "給熱停止で新birth停止、既存sheet有限"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "上昇移流",
+                "拡幅",
+                "有限drift"
+              ],
+              "evidence_or_constraint": "drawSteam phase→rise68px/width5→14px"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "PH1によるdroplet散乱"
+              ],
+              "evidence_or_constraint": "scattered premultRGB/alpha、bright出力0"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "水滴集合と空気"
+              ],
+              "evidence_or_constraint": "煙の黒色/火炎を追加しない"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "蒸気へ電荷/雷を追加しない"
+              ],
+              "evidence_or_constraint": "蒸気へ電荷/雷を追加しない"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "低濃度気体/水滴集合、降伏粘塑性はない"
+              ],
+              "evidence_or_constraint": "低濃度気体/水滴集合、降伏粘塑性はない"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "water蒸気にcoherent干渉を描かない"
+              ],
+              "evidence_or_constraint": "water蒸気にcoherent干渉を描かない"
+            },
+            "SurfaceScience": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "食品境界からの離脱"
+              ],
+              "evidence_or_constraint": "食品sourceから発生、空中消散"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "食品へ接する細い口",
+            "上昇に伴う拡幅と薄化"
+          ],
+          "indirect_evidence": "他PHへの型付き因果/原画source拘束",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "ellipse辺縁と上部density減衰",
+          "perceptual_failure_risk": "漂う白blob/煙/原画上蓋との前後誤読",
+          "cue_roles": [
+            {
+              "cue": "食品へ接する細い口",
+              "supports": "温菜上の水滴散乱sheet",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            },
+            {
+              "cue": "上昇に伴う拡幅と薄化",
+              "supports": "温菜上の水滴散乱sheet",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            }
+          ],
+          "confusable_alternative": "火災の煙、粒子列",
+          "disambiguating_evidence": "明るいdroplet散乱・二食品源・ゆっくり消散。源定位が実画像と食い違えばfail",
+          "viewing_conditions": "980×620 gallery、930×860/465×430 full contain、同じparameters。比較のため背景別弱体化をしない"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "食品前面のprojected口から離れ、glass imageをalphaで全面消さない。unknown深度はproxyとして保持",
+          "normal_field_coherence": "原画の壁向き/床/機内trayに沿う。unknown3D normalはsource proxyで宣言",
+          "curvature_behavior": "横幅/曲がり/上昇位置が同phaseから連続",
+          "silhouette_logic": "食品へ接する細い口 / 上昇に伴う拡幅と薄化",
+          "contact_relation": "二つの食品面上から上昇84px以内/左右31px以内のprojected air proxy",
+          "spatial_relation": "食品前面のprojected口から離れ、glass imageをalphaで全面消さない。unknown深度はproxyとして保持"
+        },
+        "StateDynamics": {
+          "state_space_extent": "birth、phase、rise/drift、sheet density/alpha、scattered radiance",
+          "transition_path_character": "intermittent",
+          "local_stability_type": "stable",
+          "convergence_behavior": "一sheet2400ms。birth列500..9280ms、第二源+220ms。最後のsheet11900msで自然終了、episode12000msで全取消",
+          "damping_profile": "一sheet2400ms。birth列500..9280ms、第二源+220ms。最後のsheet11900msで自然終了、episode12000msで全取消",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "有限birth時に密度0から滑らかに増加",
+          "transition_failure_risk": "漂う白blob/煙/原画上蓋との前後誤読",
+          "driving_input": "PH5の選択されたhot-food状態、PH1照明。12birthのみ、演出の無限emitなし",
+          "response_timescale": "2.4s advective lifetime、1.8s source repeat、二源220ms位相差",
+          "phase_relation": "一sheet2400ms。birth列500..9280ms、第二源+220ms。最後のsheet11900msで自然終了、episode12000msで全取消",
+          "stability_condition": "finite age>=0 && age<12000ms && active; otherwise additive VFX0"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1 -> PH3: 白色光が凝結dropletで散乱される; 食品から離れる湯気は暖白く見えるが光源coreとしては扱わない",
+            "PH5 -> PH3: 展示で選んだ食品の給熱/原画の食品面と既存ambient照明が放出口と散乱を拘束する; 二つの実食品面から有限密度sheetが上方へ離れ、PH1追加OFFでも既存ambientの散乱分は保持"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "明るいdroplet散乱・二食品源・ゆっくり消散。源定位が実画像と食い違えばfail",
+            "predicted_response": "口から立つdensity sheetが拡幅しながら上昇し、上部で薄くなる",
+            "competing_explanation": "火災の煙、粒子列",
+            "uncertainty": "投影/材質/実温度は未測定。compiled GPU/quality/listeningまだnot_run",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH3",
+              "mechanism": "白色光が凝結dropletで散乱される",
+              "consequence": "食品から離れる湯気は暖白く見えるが光源coreとしては扱わない"
+            },
+            {
+              "source": "PH5",
+              "target": "PH3",
+              "mechanism": "展示で選んだ食品の給熱/原画の食品面と既存ambient照明が放出口と散乱を拘束する",
+              "consequence": "二つの実食品面から有限密度sheetが上方へ離れ、PH1追加OFFでも既存ambientの散乱分は保持"
+            }
+          ],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "食品へ接する細い口",
+            "上昇に伴う拡幅と薄化"
+          ],
+          "indirect": [],
+          "candidates": [
+            "boundary",
+            "phase_difference",
+            "reflection_change",
+            "density_layering",
+            "attenuation",
+            "contact_trace"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH3",
+          "retained_cues": [
+            "食品へ接する細い口",
+            "上昇に伴う拡幅と薄化"
+          ],
+          "simplification": "未知3Dを精密逆算せず原画登録の有限領域を使う。Bのcamera/body事実として偽らない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable_for_standard",
+          "axes": {
+            "temporal_phase": [
+              "finitebirth/life",
+              "上昇と密度低下"
+            ],
+            "ratio_proportion": [
+              "source口と上部幅差",
+              "二つの粗いsheet"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "漂う白blob/煙/原画上蓋との前後誤読",
+          "火災の煙、粒子列",
+          "CPU支持/compile成功を品質passへ置換"
+        ]
+      },
+      {
+        "identity": {
+          "id": "PH4",
+          "name": "給湯器ノズルからトレーへの洗浄水",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "visible",
+          "local_state_difference": "機内のノズル→水柱→トレーの有限cycle",
+          "partition_reason": "境界/重力方向/開始終了を持つ機械動作と接触response"
+        },
+        "DeepStructure": {
+          "Core": "ノズル入口と水のトレー接触白ピーク",
+          "Structure": "下降柱とflat tray responseの異なる形",
+          "Surface": "機内tray boundaryで止める。杯や受益イベントなし"
+        },
+        "PhysicalModel": {
+          "model_kind": "material_continuum",
+          "system_boundary": "原画920,323→920,343の20px、トレー楕円11×3px",
+          "state_variables": "cycle age、flow envelope、vertical front、tail滴、surface ripple、white specular",
+          "inputs": "展示purge starts2800/7200ms、PH5の既存ノズル/トレー、選択した照明",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "境界流量供給→トレー内受領→有限排水proxy。既存floorへ水を増やさない"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "source拘束/移流方向を保持。保存simulationではない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "境界流量供給→トレー内受領→有限排水proxy。既存floorへ水を増やさない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電気source所在のみ、charge transportを観測したと主張しない"
+            }
+          },
+          "constitutive_response": "60msで下端へ到達、1400msまで流下、最後の滴260ms以内で受ける",
+          "initial_condition": "ノズル閉で追加水0",
+          "boundary_conditions": "原画920,323→920,343の20px、トレー楕円11×3px",
+          "approximation_scope": "原画へ登録した2.5D illustrative proxy。未測定の照度/温度/深度/BRDF/絶対流量を物理実証へ読み替えない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "20px flow、幅3.6px、22×6px tray response",
+          "characteristic_time": "60msfront/1400msflow/260mstail、ripples440ms周期",
+          "dominant_balance": "60msで下端へ到達、1400msまで流下、最後の滴260ms以内で受ける",
+          "dimensionless_reasoning": "field幅/fixture幅、寿命/episode12sの比で可読性と支持を定める。無次元物理数の実測はない",
+          "detail_cutoff": "930×860/980×620/465×430のisotropic fit。critical形を保持し、micro-noiseを作らない"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "洗浄水温は未指定。PH3の温菜熱とは別"
+              ],
+              "evidence_or_constraint": "洗浄水温は未指定。PH3の温菜熱とは別"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "下降flow",
+                "trayへの移送",
+                "finite drainage"
+              ],
+              "evidence_or_constraint": "flow front→receiver phase差"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "水の白いspecular",
+                "透明scatter"
+              ],
+              "evidence_or_constraint": "brightはtrayの小面積のみ、world主流別"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "透明水",
+                "既存金属tray"
+              ],
+              "evidence_or_constraint": "water alphaとscatter/white peakを別式"
+            },
+            "Electromagnetics": {
+              "applicability": "applicable",
+              "role": "latent",
+              "items": [
+                "機械valveの選択されたcycle"
+              ],
+              "evidence_or_constraint": "ゲーム購入や電源状態は主張しない"
+            },
+            "Rheology": {
+              "applicability": "applicable",
+              "role": "latent",
+              "items": [
+                "水の低粘度proxy"
+              ],
+              "evidence_or_constraint": "一定flowで細い柱、非Newtonian変形なし"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "水柱の干渉色/虹は追加しない"
+              ],
+              "evidence_or_constraint": "水柱の干渉色/虹は追加しない"
+            },
+            "SurfaceScience": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "tray接触波",
+                "bounded最後の滴"
+              ],
+              "evidence_or_constraint": "薄いellipse responseは機内trayだけ"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "ノズルから下向きのfront",
+            "同じトレーへの波と最後の滴"
+          ],
+          "indirect_evidence": "他PHへの型付き因果/原画source拘束",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "機内tray boundaryで止める。杯や受益イベントなし",
+          "perceptual_failure_risk": "設備外の光点/存在しない杯への注水/長い光るbeam",
+          "cue_roles": [
+            {
+              "cue": "ノズルから下向きのfront",
+              "supports": "給湯器ノズルからトレーへの洗浄水",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            },
+            {
+              "cue": "同じトレーへの波と最後の滴",
+              "supports": "給湯器ノズルからトレーへの洗浄水",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            }
+          ],
+          "confusable_alternative": "レーザー/取得beam",
+          "disambiguating_evidence": "短い機内域、透明外層、トレーの遅延応答、valve/fluid SFX",
+          "viewing_conditions": "980×620 gallery、930×860/465×430 full contain、同じparameters。比較のため背景別弱体化をしない"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "source/receiver同じbitmap transform。水柱は機内のvisible proxy境界で止まる",
+          "normal_field_coherence": "原画の壁向き/床/機内trayに沿う。unknown3D normalはsource proxyで宣言",
+          "curvature_behavior": "下降柱とflat tray responseの異なる形",
+          "silhouette_logic": "ノズルから下向きのfront / 同じトレーへの波と最後の滴",
+          "contact_relation": "原画920,323→920,343の20px、トレー楕円11×3px",
+          "spatial_relation": "source/receiver同じbitmap transform。水柱は機内のvisible proxy境界で止まる"
+        },
+        "StateDynamics": {
+          "state_space_extent": "cycle age、flow envelope、vertical front、tail滴、surface ripple、white specular",
+          "transition_path_character": "intermittent",
+          "local_stability_type": "stable",
+          "convergence_behavior": "各1660ms。4.460/8.860s以降新水/PSF0",
+          "damping_profile": "各1660ms。4.460/8.860s以降新水/PSF0",
+          "oscillation_pattern": "bounded",
+          "equilibrium_recovery": "ノズル閉で追加水0",
+          "transition_failure_risk": "設備外の光点/存在しない杯への注水/長い光るbeam",
+          "driving_input": "展示purge starts2800/7200ms、PH5の既存ノズル/トレー、選択した照明",
+          "response_timescale": "60msfront/1400msflow/260mstail、ripples440ms周期",
+          "phase_relation": "各1660ms。4.460/8.860s以降新水/PSF0",
+          "stability_condition": "finite age>=0 && age<12000ms && active; otherwise additive VFX0"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH5 -> PH4: 原画のノズル/トレー境界と洗浄cycleが流れを拘束する; 水は20pxの機内域を下り、トレー内へだけ水面応答を残す"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "短い機内域、透明外層、トレーの遅延応答、valve/fluid SFX",
+            "predicted_response": "60msで下端へ到達、1400msまで流下、最後の滴260ms以内で受ける",
+            "competing_explanation": "レーザー/取得beam",
+            "uncertainty": "投影/材質/実温度は未測定。compiled GPU/quality/listeningまだnot_run",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH5",
+              "target": "PH4",
+              "mechanism": "原画のノズル/トレー境界と洗浄cycleが流れを拘束する",
+              "consequence": "水は20pxの機内域を下り、トレー内へだけ水面応答を残す"
+            }
+          ],
+          "observation_dependency": [],
+          "gaze_path": [
+            {
+              "source": "PH5",
+              "target": "PH4",
+              "reason": "固定設備と短いcycleを照合する"
+            }
+          ]
+        },
+        "Evidence": {
+          "direct": [
+            "ノズルから下向きのfront",
+            "同じトレーへの波と最後の滴"
+          ],
+          "indirect": [],
+          "candidates": [
+            "boundary",
+            "phase_difference",
+            "reflection_change",
+            "density_layering",
+            "attenuation",
+            "contact_trace"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH4",
+          "retained_cues": [
+            "ノズルから下向きのfront",
+            "同じトレーへの波と最後の滴"
+          ],
+          "simplification": "未知3Dを精密逆算せず原画登録の有限領域を使う。Bのcamera/body事実として偽らない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable_for_standard",
+          "axes": {
+            "material_response": [
+              "透明flowとmetal contact",
+              "white specularと薄いwater surface"
+            ],
+            "temporal_phase": [
+              "front/flow/tail",
+              "同cycle SFX"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "設備外の光点/存在しない杯への注水/長い光るbeam",
+          "レーザー/取得beam",
+          "CPU支持/compile成功を品質passへ置換"
+        ]
+      },
+      {
+        "identity": {
+          "id": "PH5",
+          "name": "不変のGPT食堂原画と固定設備境界",
+          "origin": "attribute_resolved",
+          "anchor": "background",
+          "visibility": "visible",
+          "local_state_difference": "一枚の採用原画として保持される既存room identity",
+          "partition_reason": "独立した固定境界/支持/occlusionのcontext条件"
+        },
+        "DeepStructure": {
+          "Core": "部屋境界と源になる既存fixture",
+          "Structure": "二開口・周壁・空いた中心・buffet/飲料/sofa",
+          "Surface": "原画の影/材質/反射を不変保持"
+        },
+        "PhysicalModel": {
+          "model_kind": "rigid_or_articulated",
+          "system_boundary": "同SHA1305×1206原画のみ。新fixtureなし",
+          "state_variables": "bitmap texels、view fit/letterbox、設備source登録位置",
+          "inputs": "ユーザー採用のGPT Pro attempt04、arbitraryviewport",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "光学/静止proxyでmass evolutionを作らない"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "光学/静止境界でmechanical impulseを描かない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "静止背景は既存描画で保持。熱/電気量の再構築・保存計算は不適用"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電気source所在のみ、charge transportを観測したと主張しない"
+            }
+          },
+          "constitutive_response": "等方fitのみ、pixel/pose/collisionを書き換えない",
+          "initial_condition": "不変bitmap",
+          "boundary_conditions": "同SHA1305×1206原画のみ。新fixtureなし",
+          "approximation_scope": "原画へ登録した2.5D illustrative proxy。未測定の照度/温度/深度/BRDF/絶対流量を物理実証へ読み替えない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "1305×1206image/930×860旧worldreview、floor/fixturepositions未解決",
+          "characteristic_time": "static equilibrium、frameごとのfitのみ",
+          "dominant_balance": "等方fitのみ、pixel/pose/collisionを書き換えない",
+          "dimensionless_reasoning": "field幅/fixture幅、寿命/episode12sの比で可読性と支持を定める。無次元物理数の実測はない",
+          "detail_cutoff": "930×860/980×620/465×430のisotropic fit。critical形を保持し、micro-noiseを作らない"
+        },
+        "OctaDomain": {
+          "conform_to": "OctaDomainTemplate",
+          "all_8_domains_required": true,
+          "Domains": {
+            "Thermo": {
+              "applicability": "applicable",
+              "role": "latent",
+              "items": [
+                "PH3で選んだhot-food source"
+              ],
+              "evidence_or_constraint": "原画温度は確定事実ではなくtrial選択"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "latent",
+              "items": [
+                "PH3/PH4の設備境界"
+              ],
+              "evidence_or_constraint": "既存原画自体へ新流体は描き込まない"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "既存光/影/材質をbitmap保存"
+              ],
+              "evidence_or_constraint": "bitmap-onlyのsource pixelに一致"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "床/壁/fixture/foodの原画材質"
+              ],
+              "evidence_or_constraint": "床mask/源登録へ既存画像境界を使う"
+            },
+            "Electromagnetics": {
+              "applicability": "applicable",
+              "role": "latent",
+              "items": [
+                "周壁灯/給湯設備の固定所在"
+              ],
+              "evidence_or_constraint": "実電力状態は不明"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "原画のsolid geometryを変形しない"
+              ],
+              "evidence_or_constraint": "原画のsolid geometryを変形しない"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存bitmapからwave計測を推定しない"
+              ],
+              "evidence_or_constraint": "既存bitmapからwave計測を推定しない"
+            },
+            "SurfaceScience": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "floorとfixture支持境界"
+              ],
+              "evidence_or_constraint": "Eが既存floor/機内に接する"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "同SHAroom全景",
+            "E位置が同transformに拘束"
+          ],
+          "indirect_evidence": "他PHへの型付き因果/原画source拘束",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "原画の影/材質/反射を不変保持",
+          "perceptual_failure_risk": "原画採用を新E採用/ゲーム統合へ読み替える/980×620でroomをcrop",
+          "cue_roles": [
+            {
+              "cue": "同SHAroom全景",
+              "supports": "不変のGPT食堂原画と固定設備境界",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            },
+            {
+              "cue": "E位置が同transformに拘束",
+              "supports": "不変のGPT食堂原画と固定設備境界",
+              "reliability_and_overlap": "実寸全寿命のGPUで未検証。CPU supportsは可視品質ではない"
+            }
+          ],
+          "confusable_alternative": "新しいSol画像/更新されたゲームmap",
+          "disambiguating_evidence": "hash不変、full contain、作者/新E status別",
+          "viewing_conditions": "980×620 gallery、930×860/465×430 full contain、同じparameters。比較のため背景別弱体化をしない"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "原画座標をscene.fitRoomで等方fit。legacycollision不合格は修理しない",
+          "normal_field_coherence": "原画の壁向き/床/機内trayに沿う。unknown3D normalはsource proxyで宣言",
+          "curvature_behavior": "二開口・周壁・空いた中心・buffet/飲料/sofa",
+          "silhouette_logic": "同SHAroom全景 / E位置が同transformに拘束",
+          "contact_relation": "同SHA1305×1206原画のみ。新fixtureなし",
+          "spatial_relation": "原画座標をscene.fitRoomで等方fit。legacycollision不合格は修理しない"
+        },
+        "StateDynamics": {
+          "state_space_extent": "bitmap texels、view fit/letterbox、設備source登録位置",
+          "transition_path_character": "equilibrium-maintained",
+          "local_stability_type": "stable",
+          "convergence_behavior": "全episodeで不変。E停止後bitmap-only",
+          "damping_profile": "全episodeで不変。E停止後bitmap-only",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "不変bitmap",
+          "transition_failure_risk": "原画採用を新E採用/ゲーム統合へ読み替える/980×620でroomをcrop",
+          "driving_input": "ユーザー採用のGPT Pro attempt04、arbitraryviewport",
+          "response_timescale": "static equilibrium、frameごとのfitのみ",
+          "phase_relation": "全episodeで不変。E停止後bitmap-only",
+          "stability_condition": "finite age>=0 && age<12000ms && active; otherwise additive VFX0"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH5 -> PH3: 展示で選んだ食品の給熱/原画の食品面と既存ambient照明が放出口と散乱を拘束する; 二つの実食品面から有限密度sheetが上方へ離れ、PH1追加OFFでも既存ambientの散乱分は保持",
+            "PH5 -> PH4: 原画のノズル/トレー境界と洗浄cycleが流れを拘束する; 水は20pxの機内域を下り、トレー内へだけ水面応答を残す"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "hash不変、full contain、作者/新E status別",
+            "predicted_response": "等方fitのみ、pixel/pose/collisionを書き換えない",
+            "competing_explanation": "新しいSol画像/更新されたゲームmap",
+            "uncertainty": "投影/材質/実温度は未測定。compiled GPU/quality/listeningまだnot_run",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH5",
+              "target": "PH3",
+              "mechanism": "展示で選んだ食品の給熱/原画の食品面と既存ambient照明が放出口と散乱を拘束する",
+              "consequence": "二つの実食品面から有限密度sheetが上方へ離れ、PH1追加OFFでも既存ambientの散乱分は保持"
+            },
+            {
+              "source": "PH5",
+              "target": "PH4",
+              "mechanism": "原画のノズル/トレー境界と洗浄cycleが流れを拘束する",
+              "consequence": "水は20pxの機内域を下り、トレー内へだけ水面応答を残す"
+            }
+          ],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "同SHAroom全景",
+            "E位置が同transformに拘束"
+          ],
+          "indirect": [],
+          "candidates": [
+            "boundary",
+            "phase_difference",
+            "reflection_change",
+            "density_layering",
+            "attenuation",
+            "contact_trace"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH3",
+              "change": "二つの実食品面から有限密度sheetが上方へ離れ、PH1追加OFFでも既存ambientの散乱分は保持"
+            },
+            {
+              "target": "PH4",
+              "change": "水は20pxの機内域を下り、トレー内へだけ水面応答を残す"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "context",
+          "world_state_ref": "PH5",
+          "retained_cues": [
+            "同SHAroom全景",
+            "E位置が同transformに拘束"
+          ],
+          "simplification": "未知3Dを精密逆算せず原画登録の有限領域を使う。Bのcamera/body事実として偽らない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable_for_standard",
+          "axes": {
+            "whitespace_density": [
+              "全room contain",
+              "中央床を新物体で埋めない"
+            ],
+            "hierarchy_gaze_flow": [
+              "周壁灯から床/温菜",
+              "給湯cycleからtray"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "原画採用を新E採用/ゲーム統合へ読み替える/980×620でroomをcrop",
+          "新しいSol画像/更新されたゲームmap",
+          "CPU支持/compile成功を品質passへ置換"
+        ]
+      }
+    ]
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "既存room/air/water/floor PH。原画逆geometry未知をdisplay-only例外で隠さない"
+    },
+    "Units": {
+      "length": "m（仮置きscale）と original_px（登録screen量）を明示区別",
+      "time": "s; implementation ms",
+      "temperature": "未測定、qualitative hot-food選択",
+      "pressure": "未測定",
+      "angle": "degree: cross−12°"
+    },
+    "WorldCoordinates": {
+      "handedness": "right_handed",
+      "X": "right_positive",
+      "Y": "up_positive",
+      "Z": "camera_backward_positive",
+      "origin": "room_centre_proxy"
+    },
+    "projection": {
+      "type": "固定原画に登録した2.5D orthographic illustrative proxy",
+      "world_to_screen": "world/CAMの厳密な復元は未実施。source original_px→uniform fit→native screen、物理位置のinverseをclaimしない",
+      "nominal_scale": "旧world930×860単位はpixelでm未確定。illustrative metreはbuffet幅1mへ正規化可能だがshaderの実数は原画px",
+      "camera_pose": "原画は真上近似、正確なcamera pose/FOV未提供。asset-registration proxyとして明示"
+    },
+    "Gravity": {
+      "condition": "normal",
+      "magnitude": "9.81m/s² illustrative condition、fluid numericalsolverではない",
+      "evidence": "PH3浮上/PH4下向きflowはprojected registration"
+    },
+    "WindCapsule": {
+      "medium_state": "air",
+      "state": "calm_with_local_hot-food_buoyancy",
+      "direction": "原画screen右へ最大9pxの有限drift、worldに無根拠な強風を加えない",
+      "magnitude": "finite STEAM.driftPx9",
+      "falloff": "phaseと密度減衰",
+      "fluctuation": "bounded deterministic curlのみ、micro-noiseなし",
+      "applicable_responses": [
+        "PH3 density sheet拡幅/上昇/低振幅曲率"
+      ],
+      "not_applicable": "hair/clothなし"
+    }
+  },
+  "PEMTemplate": {
+    "Mode": {
+      "phenomenon_equality": true,
+      "focus_phenomenon": "none"
+    },
+    "CausalMesh": {
+      "physical_mesh_required": true,
+      "gaze_target_policy": "standard",
+      "adjustment_reason": "not_applicable_for_standard",
+      "gaze_path_A": "PH1→PH2→PH3",
+      "gaze_path_B": "PH5→PH4",
+      "local_extrema_connected_to_gaze_paths": true
+    },
+    "AttentionControl": {
+      "attention_focus": "distributed",
+      "single_requires_explicit_request": true
+    }
+  },
+  "ObservationIntegrationTemplate": {
+    "observer": "display",
+    "ObservationRegistry": [
+      {
+        "id": "OBS1",
+        "operation_type": "posteffect",
+        "input_references": [
+          "PH1",
+          "PH4"
+        ],
+        "target_mask": "final composited bright MRT、finite source supports",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": "25tap PSF .18、同IntensityBudget",
+        "protected_regions": [
+          "開口/中央床/fixture silhouettes"
+        ],
+        "output_consequence": "実sourceのscreen近傍に有限光の広がり",
+        "dependencies": [
+          "PH1",
+          "PH4",
+          "display_condition"
+        ],
+        "sampling_consequence": "radius6*max(DPR,fitScale) nativepx、支持outsideでsample loop省略"
+      },
+      {
+        "id": "OBS2",
+        "operation_type": "display_artifact",
+        "input_references": [
+          "PH4"
+        ],
+        "target_mask": "tray white specularの同frame bright texel、角−12°",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": "crosspeak .12、同IntensityBudget",
+        "protected_regions": [
+          "機内tray以外"
+        ],
+        "output_consequence": "小さいwater/metal whitepeakに8×3originalpxのcrossPSF",
+        "dependencies": [
+          "PH4",
+          "display_condition"
+        ],
+        "sampling_consequence": "rotated finitebox内だけ。全point/time統一角"
+      },
+      {
+        "id": "OBS3",
+        "operation_type": "tone",
+        "input_references": [
+          "PH1",
+          "PH2",
+          "PH3",
+          "PH4",
+          "PH5",
+          "OBS1",
+          "OBS2"
+        ],
+        "target_mask": "全canvas",
+        "stage": "display",
+        "composite_method": "replace_with_constraint",
+        "intensity": "linearからsRGBへencode、whitepeakを減光するtonemapper無し",
+        "protected_regions": [
+          "bitmap-only一致"
+        ],
+        "output_consequence": "bitmap＋追加EをnativeWebGPUcanvasへ表示",
+        "dependencies": [
+          "PH5",
+          "OBS1",
+          "OBS2",
+          "display_condition"
+        ],
+        "sampling_consequence": "linear filtering original texture; no Canvas2D/readback rendering"
+      }
+    ],
+    "SamplingContract": {
+      "output_resolution": "arbitrary actualcanvas; verify980×620/930×860/465×430DPR1/2",
+      "intended_display_scale": "entire1305×1206bitmap isotropiccontain。game寸とは別のroomtrial",
+      "spatial_detail_policy": "主形はlamp24×4px/steam幅5–14pxとrise68/flow20px、native縮尺で意味を実評価する。crop/magnificationで補わない",
+      "temporal_sampling": "60Hz target/no artificialslowdown/no motionblur追加。captureintervalとclean cadence別",
+      "filter_and_resample_policy": "WebGPU sampler linear原画、analytic smooth-boundaries、25tapfinitePSF"
+    },
+    "ImageIntegration": {
+      "ToneColor": "OBS3",
+      "LightIntegration": "OBS1/OBS2",
+      "ShadowDensity": "原画PH5保持、新shadowsolverなし",
+      "DepthAir": "PH3world density",
+      "EdgeLine": "各world finite-boundary",
+      "TextureOutput": "原画PH5のみ"
+    },
+    "LensFlareField": {
+      "registry_id": "none",
+      "artifact_type": "optical_observation_artifact",
+      "world_anchor": "none",
+      "SourceMapping": {
+        "source_state": "attribute_resolved",
+        "source_id": "PH1/PH4",
+        "source_screen_position": "same fit of sourcePx",
+        "source_luminance_rank": "white-core above scatter"
+      },
+      "ResponseVisibility": {
+        "level": "none",
+        "reason": "display observerを意図的に選択。OBSERVER-REVIEWの実lens内部反射候補は中央床に独立spotを投影するため局所設備識別を優先して非選択"
+      },
+      "LensModel": {
+        "flare_mode": "latent",
+        "coating_strength": "not_applicable",
+        "aperture_state": "not_applicable",
+        "anamorphic": false
+      },
+      "SpatialBinding": {
+        "image_center_relation": "not_applicable_no_selected_lens",
+        "optical_axis_offset": "none",
+        "chain_axis": "none"
+      },
+      "Responses": {
+        "Ghost": "not_selected、lens内部反射を宣言する根拠なし",
+        "Veil": "not_selected、全室contrast変化を目的にしない",
+        "Streak": "physical_lens_streak_not_selected。OBS2はdisplayPSF別",
+        "Spectral": "not_selected、レンズ虹色追加なし"
+      }
+    },
+    "IntensityBudget": {
+      "global_observation_budget": "PH1白い源5.8/4.9/3.3linear、PH4tray peak3.5/3.5/3.4linear、近傍PSF.18、cross.12。global luma modulation無し",
+      "para": "none",
+      "flare_gradient": "none",
+      "glow": "source-local low relative .18",
+      "diffusion": "none",
+      "grain": "none",
+      "chromatic_aberration": "none",
+      "protected_region_priority": "highest",
+      "intentional_departures": []
+    },
+    "CompositeValidation": {
+      "contour_preserved": "not_tested",
+      "highlight_clipping": "not_tested",
+      "shadow_crushing": "not_tested",
+      "chroma_displacement": "not_tested",
+      "fine_detail_retention": "not_tested",
+      "protected_background_preserved": "not_tested"
+    },
+    "Acceptance": {
+      "OBS_separate_from_PH": true,
+      "physical_lensflare_source_binding_preserved": "not_applicable_no_selected_lens",
+      "display_artifact_does_not_fake_physical_source": true,
+      "intensity_budget_is_single_source_of_truth": true,
+      "sampling_conditions_and_actual_execution_distinguished": true
+    }
+  },
+  "Extensions": {
+    "KeywordExpansion": {
+      "registered_keyword_explicit": false,
+      "activated_keywords": [],
+      "reason": "v1..v6/f0..f3/o1..o9/digital/phantasy明示無し。室内環境で多数sparkle/魔法を補完しない"
+    },
+    "MultiLayerVFX": {
+      "enabled": true,
+      "reason": "明示環境Eに異なるsource/medium/surface境界",
+      "layers": [
+        "PH1_source",
+        "PH2_receiver",
+        "PH3_air",
+        "PH4_water"
+      ],
+      "OBS_separate": true
+    },
+    "PostEffects": {
+      "enabled": true,
+      "ordinary_posteffects": false,
+      "selection": {
+        "mode": "exact_selected_operations",
+        "basis": "attribute_resolved",
+        "operations": [
+          "OBS1_source_local_display_PSF",
+          "OBS2_tray_display_cross"
+        ],
+        "scope": "既存PH source/surface高輝度のみ。レンズ系は非選択"
+      }
+    },
+    "LuminanceDynamicsModule": {
+      "trigger": {
+        "explicit_VFX": true,
+        "explicit_PostEffects": false,
+        "inferred_requires_luminance_dynamics": false
+      },
+      "omitted_if_not_enabled": true,
+      "target_metrics": {
+        "target_size": "entire room isotropic",
+        "camera_distance": "raster source固定",
+        "screen_occupancy": "fitRoom計算。各有限rectのみ",
+        "readability_priority": "high"
+      },
+      "Image": {
+        "spatial_envelope": "source矩形・反射二幅・上昇sheet・機内water",
+        "local_contrast_budget": "ObservationIntegrationTemplate.IntensityBudget"
+      },
+      "Video": {
+        "temporal_envelope": "lampentry→一定→exit、steamfinitebirth/life、purgefront/flow/tail",
+        "micro_variation": "none。世界内fluid曲率は有限deterministic backboneでscreen flickerではない",
+        "anti_flicker": "intentionalphase保持、低解像度消失はactualGPUで再判定"
+      },
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+      "sampling_consequence": "scale/DPRは実canvasから、post radiusはnativepx。captureをcleanperfへ混ぜない",
+      "AlphaBackground": {
+        "enabled": false,
+        "required_background_if_enabled": "#000000"
+      },
+      "alpha_ref": "LuminanceDynamicsModule.AlphaBackground",
+      "ActivationExclusions": {
+        "non_emissive_particles_only": "no_auto_activation",
+        "grain_only": "no_auto_activation"
+      },
+      "Acceptance": {
+        "mode_specific_envelope": true,
+        "numeric_defaults_subordinate_to_target_metrics": true,
+        "no_unwanted_global_luma_lift": true,
+        "screen_processing_stays_in_observation_layer": true
+      }
+    }
+  },
+  "validation": {
+    "formal_image_schema": "not_applicable_ECodeImplementation",
+    "CPU": "pass-static-support-and-finite-only",
+    "WGSL_compile": "not_run",
+    "GPU_submit": "not_run",
+    "visual_quality": "not_run",
+    "listening": "not_run",
+    "game_integration": "not_run",
+    "public": "not_run",
+    "adoption": "unadopted-room-E-candidate"
+  }
+}

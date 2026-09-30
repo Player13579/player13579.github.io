@@ -1,0 +1,6 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import path from 'node:path';import {fileURLToPath} from 'node:url';
+const root=path.dirname(fileURLToPath(import.meta.url)),sha=name=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,name))).digest('hex');
+const original=JSON.parse(fs.readFileSync(path.join(root,'design-manifest.json'),'utf8'));const failed=original.files.filter(f=>sha(f.path)!==f.sha256);if(failed.length)throw new Error(JSON.stringify(failed));
+const add=['design-manifest.json','reflection-contract.json','pack-addendum.mjs'].map(name=>({path:name,bytes:fs.statSync(path.join(root,name)).size,sha256:sha(name)}));
+const manifest={id:'cafeteria-attempt04-room-e-trial-r1-contract-v2',author:'GPT-6.1-Sol',scope:'reflection/B fixed-view contract completion only; no shader or visual change',original23Closure:'all exact hashes preserved',files:[...original.files,...add],status:original.status,entry:null,runtimeReadyForHandoff:true};
+fs.writeFileSync(path.join(root,'design-manifest-v2.json'),JSON.stringify(manifest,null,2)+'\n');console.log(JSON.stringify({original:original.files.length,hashFailures:failed.length,total:manifest.files.length,shaderChanged:false}));

@@ -8,14 +8,11 @@
     'stamina-sol61-r8': { magnification: 240 / (64 * (530 / 260)), focusX: 490, focusY: 310 },
     'mana-zero-sol61-r4': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'mana-zero-sol61-r6': { magnification: 240 / 64, focusX: 490, focusY: 310 },
-    'mana-zero-sol61-r7': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'mana-zero-sol61-r5': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'stamina-sol61-r9-frontfix': { magnification: 240 / (64 * (980 / 480)), focusX: 490, focusY: 200 },
     'stamina-sol61-r10': { magnification: 240 / 64, focusX: 490, focusY: 310 },
-    'stamina-sol61-r12': { magnification: 240 / 64, focusX: 490, focusY: 293.75 },
     'stamina-sol61-r11': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'cooldown-clock-zero-r1': { magnification: 240 / 64, focusX: 490, focusY: 310 },
-    'cooldown-clock-zero-r3': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'cooldown-clock-zero-r2': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'barrier-sol61-r4': { magnification: 4, focusX: 490, focusY: 310 },
     'barrier-sol61-r6': { magnification: 4, focusX: 490, focusY: 310 },
@@ -119,9 +116,8 @@
       version('luck-astra-clean-v2', 'Astra v2', 'luck-astra-v2-preview.html', 'webgpu-luck-astra-v2.js', '却下・品質未達・本編未採用', '履歴上WebGPU再生可能。翼の見た目が品質基準に届かず却下。'),
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
-    Object.freeze({ id: 'mana-astra', title: 'マナ', defaultVersionId: 'mana-zero-sol61-r6', versions: Object.freeze([
-      version('mana-zero-sol61-r7', 'GPT-6.1-Sol zero r7', 'public/sol61-mana-zero/r7/preview.html?embed=1', 'public/sol61-mana-zero/r7/effect.mjs', '技術再生・ケイデンスpass・品質不合格・未採用・本編未接続・聴感未検証', '創作設計: GPT-6.1-Sol。忠実なruntime adapter・集中検査・実WebGPU再生: GPT-6-Luna。凍結されたSol設計とシェーダーを変更せず実装。Intel gen-12lp実GPUでシェーダーcompile・描画・4ループを確認、GPUエラー0。品質不合格: .50–.80sも胸の小さな帯が目立ち、身体へ届いて定着する受領の主現象が弱い。ユーザー未採用、本編未接続、SFX聴感未検証。', 'effect-H64'),
-      version('mana-zero-sol61-r6', 'GPT-6.1-Sol zero r6', 'public/sol61-mana-zero/r6/preview.html?embed=1', 'public/sol61-mana-zero/r6/effect.mjs', '2026-09-30ユーザー採用済み・過去の視覚品質不合格・技術再生pass・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結H64技術再生pass。過去の品質レビューでは不合格。2026-09-30にユーザーがr6を採用。採用状態を品質合格や本編接続と混同しない。SFX聴感未受入、本編未接続。', 'effect-H64'),
+    Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+      version('mana-zero-sol61-r6', 'GPT-6.1-Sol zero r6', 'public/sol61-mana-zero/r6/preview.html?embed=1', 'public/sol61-mana-zero/r6/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結済みH64で技術再生pass、品質fail。SFX聴感未受入、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r5', 'GPT-6.1-Sol zero r5', 'public/sol61-mana-zero/r5/preview.html?embed=1', 'public/sol61-mana-zero/r5/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結済みH64で技術再生pass、品質fail。SFX聴感未受入、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-mana-zero/r4/preview.html?embed=1', 'public/sol61-mana-zero/r4/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結品質記録: H64暗明で縦stripe/衣装の帯に読め、受領固有の身体応答が不成立。技術再生はpass（実GPU compile/submission、全寿命4 cycle）。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-mana-zero/r3/preview.html?embed=1', 'public/sol61-mana-zero/r3/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結履歴の技術再生pass・品質fail。ユーザー未採用、本編未接続、実聴未実施。', 'effect-H64'),
@@ -154,8 +150,7 @@
       version('mana-astra-zero-v1', 'Astra zero v1', 'webgpu-mana-astra-zero-preview.html', 'webgpu-mana-astra-zero-preview.js', '試作・品質未達・本編未採用', '履歴上WebGPU自動ループ再生済み。形状、滑らかさ、SFXが品質未達。')
     ]) }),
     Object.freeze({ id: 'stamina-astra', title: 'スタミナ', defaultVersionId: 'stamina-sol61-r11', versions: Object.freeze([
-      version('stamina-sol61-r12', 'GPT-6.1-Sol r12', 'public/sol61-stamina-e/r12/index.html?embed=1', 'public/sol61-stamina-e/r12/runtime.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '創作/品質判断: GPT-6.1-Sol。忠実なWebGPU移植・公開パッケージ検査: GPT-6-Luna。修正済みH64原寸・暗明の全寿命で胸部の心臓様形状が主となり、活力回復の作用と必須光条が読めず品質不合格。GPU compile/submission pass。原画URLだけを同一byteの同梱PNGへ変更して実embed再生を確認。聴感・cadence・本編は未受入。', 'effect-H64'),
-      version('stamina-sol61-r11', 'GPT-6.1-Sol r11', 'public/sol61-stamina-e/r11/index.html?embed=1', 'public/sol61-stamina-e/r11/runtime.mjs', '技術再生pass・過去の視覚品質不合格・2026-09-30ユーザー採用済み・本編未接続・聴感未検証', '創作/品質判定: GPT-6.1-Sol。音声境界修正と集中検査: GPT-6-Luna。H64の全寿命では腕横の白い光片と衣装光が主となり、回復作用として読めないため過去レビューで品質不合格。2026-09-30にユーザーがr11を採用。採用状態を品質合格や本編接続と混同しない。実GPU compile/submission pass。captureとsubmission件数が一致せず滑らかさ未受入。SFX聴感未実施。r10の改稿でありゼロ設計ではない。', 'effect-H64'),
+      version('stamina-sol61-r11', 'GPT-6.1-Sol r11', 'public/sol61-stamina-e/r11/index.html?embed=1', 'public/sol61-stamina-e/r11/runtime.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '創作/品質判定: GPT-6.1-Sol。音声境界修正と集中検査: GPT-6-Luna。H64の全寿命では腕横の白い光片と衣装光が主となり、回復作用として読めないため品質不合格。実GPU compile/submission pass。captureとsubmission件数が一致せず滑らかさ未受入。SFX聴感未実施。r10の改稿でありゼロ設計ではない。', 'effect-H64'),
       version('stamina-sol61-r10', 'GPT-6.1-Sol r10', 'public/sol61-stamina-e/r10/index.html?embed=1', 'public/sol61-stamina-e/r10/runtime.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結manifestの技術再生pass。H64では弱い灰/茶色の衣装・身体の印に留まり、連続した配送/受領が読めないため品質不合格。ユーザー未採用、本編未接続、SFX聴感未実施。design.mjsは品質メタデータのみの差とsource manifestに記録されている。', 'effect-H64'),
       version('stamina-sol61-r9-frontfix', 'GPT-6.1-Sol r9 · front/rear契約修正', 'public/sol61-stamina-e/r9-front-contract-fix/index.html?embed=1', 'public/sol61-stamina-e/r9-front-contract-fix/runtime.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未受入', '設計作者: GPT-6.1-Sol。front/rear合成契約の実装: GPT-6-Luna。凍結ソースhashに束縛した実WebGPU H64 480×260再生を確認。main-only、obs-off、combined全寿命の技術検査pass。視覚品質は不合格（服まわりの光が目立つ）。verify音声gain=0のため聴感受入なし。ユーザー未採用、本編未接続。', 'effect-H64'),
       version('stamina-sol61-r8', 'GPT-6.1-Sol r8', 'public/sol61-stamina-e/r8/index.html?embed=1', 'public/sol61-stamina-e/r8/design.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結品質判定は不合格: packetは移動するが衣装発光/腕端の光片に分節し、活力による活動再開が主作用として読めない。技術再生pass。有限SFXのCPU契約pass、正常ブラウザーgestureと実聴は未実施。ユーザー未採用、本編未接続。', 'effect-H64'),
@@ -226,8 +221,7 @@
       version('status-cleanse-astra-r02', 'Astra r0.2', 'public/astra-status-cleanse-v1/versions/r02/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r02/cleanse.mjs', '品質不合格・本編未採用', 'aliasは除去されたが、主形が光る花器に見える。', 'actor-H64'),
       version('status-cleanse-astra-r01', 'Astra r0.1', 'public/astra-status-cleanse-v1/versions/r01/index.html?embed=1&h=64', 'public/astra-status-cleanse-v1/versions/r01/cleanse.mjs', '品質不合格・本編未採用', '主形が小さな杯に見え、ray-marchに帯状aliasがある。', 'actor-H64')
     ]) }),
-    Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮', defaultVersionId: 'cooldown-clock-zero-r3', versions: Object.freeze([
-      version('cooldown-clock-zero-r3', 'GPT-6.1-Sol zero clock r3 · 待機時間短縮', 'public/sol61-cooldown-clock-zero/r3/index.html?embed=1', 'public/sol61-cooldown-clock-zero/r3/main.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '創作: GPT-6.1-Sol。時計針の時計回り契約と忠実なruntime検査: GPT-6-Luna。時計針・発光弧・受益流を時計回りへ統一。H64暗明と全寿命の実GPU compile/submission、3完全cycleを確認。Sol視覚レビューでは1250msの右側crossが胸部光に埋没。observerモデルがなく、physical-lens bindingの根拠も未確認。動的品質試験は未実施のため視覚品質不合格。性能記録は再生証拠でありゲーム性能受入ではない。SFX橋渡しの集中検査pass、実聴・ユーザー採用・本編接続は未実施。', 'effect-H64'),
+    Object.freeze({ id: 'cooldown-astra', title: '待機時間短縮', defaultVersionId: 'cooldown-clock-zero-r2', versions: Object.freeze([
       version('cooldown-clock-zero-r2', 'GPT-6.1-Sol zero clock r2 · 待機時間短縮', 'public/sol61-cooldown-clock-zero/r2/index.html?embed=1', 'public/sol61-cooldown-clock-zero/r2/main.mjs', '技術再生pass・視覚品質不合格・cadence未達・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結GPU再生pass。時計から手/身体への連続受益はr1より改善したが、終盤の受益状態と右sparkleの可読性が不足し品質不合格。performance/cadenceも未達（507.7ms stall記録、原因未特定）。ユーザー未採用、本編未接続、SFX聴感未実施。', 'effect-H64'),
       version('cooldown-clock-zero-r1', 'GPT-6.1-Sol zero clock r1 · 待機時間短縮', 'public/sol61-cooldown-clock-zero/r1/index.html?embed=1', 'public/sol61-cooldown-clock-zero/r1/main.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。新時計ゼロ設計。clock主形は読め、時計針は現在/リセットへ戻さず短縮方向に進む。一方、H64で手から身体への受益伝達が局所flashに留まり、全体の空間的benefitが弱く品質不合格。技術再生pass（tested-a2一致hash、実WebGPU compile/submission、3完全cycle）。旧compile-a1はcompile失敗・frame 0のため除外。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('cooldown-sol61-shortening-zero-r2', 'GPT-6.1-Sol zero r2 · 待機時間短縮', 'public/sol61-cooldown-zero/r2/preview.html?embed=1', 'public/sol61-cooldown-zero/r2/effect.mjs', '技術再生pass・視覚品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。待機時間短縮ゼロ設計r2。凍結manifestの技術再生pass・品質不合格を維持。ユーザー未採用、本編未接続、SFX聴感未受入。', 'effect-H64'),
@@ -307,7 +301,7 @@
   let currentCategory = 'effect';
   let currentAdoptionFilter = 'unadopted';
   const selections = new Map();
-  const adoptedVersionIds = new Set(['status-recovery-sol61-r1','sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29','stamina-sol61-r11','mana-zero-sol61-r6']);
+  const adoptedVersionIds = new Set(['status-recovery-sol61-r1','sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29']);
   const categoryTabs = [...document.querySelectorAll('[data-category]')];
   const layout = document.getElementById('gallery-layout');
   const emptyCategory = document.getElementById('empty-category');
@@ -329,13 +323,12 @@
     return '採用状態不明';
   }
   function visibleVersionIndices(group) {
-    const hasCurrentAdoption = group.versions.some(item => adoptionState(item) === 'adopted');
+    const hasCurrentAdoption = group.versions.some(item => adoptedVersionIds.has(item.id));
     if (currentCategory === 'effect') {
-      if (currentAdoptionFilter === 'adopted') return hasCurrentAdoption ? group.versions.map((item, i) => item.replayable ? i : -1).filter(i => i >= 0).sort((a, b) => Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted')) : [];
+      if (currentAdoptionFilter === 'adopted') return hasCurrentAdoption ? group.versions.map((item, i) => item.replayable ? i : -1).filter(i => i >= 0) : [];
       return hasCurrentAdoption ? [] : group.versions.map((_, i) => i);
     }
-    const mapGroupAdopted = group.versions.some(item => adoptionState(item) === 'adopted');
-    return mapGroupAdopted === (currentAdoptionFilter === 'adopted') ? group.versions.map((_, i) => i).sort((a, b) => currentAdoptionFilter === 'adopted' ? Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted') : 0) : [];
+    return group.versions.map((item, i) => ({item, i})).filter(({item}) => currentAdoptionFilter === 'adopted' ? adoptionState(item) === 'adopted' : adoptionState(item) !== 'adopted').map(x => x.i);
   }
   function setHeadline() {
     document.getElementById('list-heading').textContent = `${currentAdoptionFilter === 'adopted' ? '採用済み' : '未採用'}の${currentCategory === 'effect' ? 'エフェクト' : 'マップ'}一覧`;
@@ -419,9 +412,9 @@
       latest: group.versions[0].id, defaultVersionId: group.defaultVersionId || group.versions[0].id,
       versions: Object.freeze(group.versions.map(item => Object.freeze({ ...item,
         category: 'effect',
-        creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : item.id === 'stamina-sol61-r9-frontfix' ? 'gpt-6.1-sol+gpt-6-luna' : item.id.startsWith('cooldown-clock-zero-r') ? 'gpt-6.1-sol' : item.id.includes('-sol61-') ? 'gpt-6.1-sol' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra',
-        creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : item.id === 'stamina-sol61-r9-frontfix' ? 'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)' : item.id.startsWith('cooldown-clock-zero-r') ? 'GPT-6.1-Sol' : item.id.includes('-sol61-') ? 'GPT-6.1-Sol' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra',
-        qualityStatus: /不合格|不達|未達/.test(item.status) ? 'fail' : /保留|未受入|品質未検証|品質未審査/.test(item.status) ? 'pending' : 'candidate',
+        creatorModelId: item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : item.id === 'stamina-sol61-r9-frontfix' ? 'gpt-6.1-sol+gpt-6-luna' : (item.id === 'cooldown-clock-zero-r1' || item.id === 'cooldown-clock-zero-r2') ? 'gpt-6.1-sol' : item.id.includes('-sol61-') ? 'gpt-6.1-sol' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra',
+        creatorDisplayName: item.id === 'barrier-pro-r07' ? 'GPT Pro' : item.id === 'stamina-sol61-r9-frontfix' ? 'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)' : (item.id === 'cooldown-clock-zero-r1' || item.id === 'cooldown-clock-zero-r2') ? 'GPT-6.1-Sol' : item.id.includes('-sol61-') ? 'GPT-6.1-Sol' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra',
+        qualityStatus: /不合格|不達|未達/.test(item.status) ? 'fail' : /保留|未受入/.test(item.status) ? 'pending' : 'candidate',
         userAdoptionStatus: adoptionState(item), adoptionStatusLabel: adoptionStatusLabel(item),
         gameIntegrationStatus: /本編接続済み/.test(item.status) ? 'verified' : /本編未接続|本編未採用/.test(item.status) ? 'not-integrated' : 'unverified',
         previewKind: 'webgpu', technicalReplayStatus: item.replayable ? 'listed-existing-replay-contract' : 'unavailable'
@@ -449,7 +442,6 @@
       {id:'station-attempt-01',title:'全体図 attempt 01',src:'assets/gpt-map-history/station-attempt-01.png',hash:'d2a80b2ced722b5ba639b7e38640c1ddb0152c1cadf5c487bf7be31ff7f1d16e',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'pending-review',adoption:'not-adopted',note:'2026-09-23保存原本。技術メモは視覚受入保留、移動受入未実施。'}]},
     {id:'cafeteria-gpt-20260923',category:'map',title:'カフェテリア · 2026-09-23試作',creatorDisplayName:'ChatGPT (model unverified)',quality:'mixed',adoption:'adopted',defaultVersionId:'cafeteria-room-attempt-04',integration:'not-integrated',reason:'attempt 04を2026-09-30にユーザー採用。旧版の不採用履歴と幾何検証結果を保持。ゲーム統合は未完了。',versions:[
       {id:'cafeteria-room-attempt-04',title:'一室試作 attempt 04（採用済み）',src:'assets/gpt-map-history/cafeteria-20260923-attempt-04.png',hash:'c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65',creatorDisplayName:'GPT Pro',qualityStatus:'user-adopted-geometry-unresolved',adoption:'adopted',note:'2026-09-30にユーザーが版指定で採用。原本・作者を保持。以前のNorth/West開口・配置検証の不合格は未解決であり、ゲーム統合完了を意味しない。'},
-      {id:'cafeteria-room-e-gptpro-sol61-luna-r1',title:'attempt 04 + environment E r1',previewKind:'webgpu',replayable:true,page:'public/sol61-cafeteria-room-e/r1/index.html?embed=1',source:'public/sol61-cafeteria-room-e/r1/package-manifest.json',creatorDisplayName:'GPT Pro / GPT-6.1-Sol / GPT-6-Luna',originalCreatorDisplayName:'GPT Pro',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',originalMapSha256:'c1c1ea6ecb84b643b721760cece01914560093b1e67d5f222e720082af776a65',qualityStatus:'pending-review',adoption:'not-adopted',note:'技術再生pass。元のGPT Pro原画 attempt 04は採用済みだが、この新規E版は未採用。GPT-6.1-SolがEを設計しGPT-6-Lunaが忠実なruntimeを実装。視覚品質レビュー・聴感・本編接続は未実施。'},
       {id:'cafeteria-room-attempt-03',title:'一室試作 attempt 03',src:'assets/gpt-map-history/cafeteria-20260923-attempt-03.png',hash:'a86a55567a3377c9df52955c2ca9cbceb23feffda7fce46209780677bf146c10',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected-geometry',adoption:'not-adopted',note:'北/西開口と室内構成は視覚確認されたが、設備 footprint・開口・南側歩行領域・回遊性のステーション縮尺レビュー不合格。'},
       {id:'cafeteria-room-attempt-02',title:'一室試作 attempt 02',src:'assets/gpt-map-history/cafeteria-20260923-attempt-02.png',hash:'9032820f1a241a45e8e6434cb31ab11936c7bdcd6235bd0ee20402e5e692f8f6',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'rejected',adoption:'not-adopted',note:'改善版だが依頼していない南側出入口が含まれ、attempt 03に置換。'},
       {id:'cafeteria-room-attempt-01',title:'一室試作 attempt 01',src:'assets/gpt-map-history/cafeteria-20260923-attempt-01.png',hash:'4475795805cd3dcee358baf3fbccca452488579459179018ccad15eb5b3db5ec',creatorDisplayName:'GPT Pro',qualityStatus:'rejected',adoption:'not-adopted',note:'ChatGPT Pro生成。野菜自販機が不自然で椅子の隙間が狭いとのユーザー指摘。後続候補へ進み、採用・ゲーム統合なし。'}]},
@@ -461,85 +453,23 @@
     .map(group => group.id === 'medical-gpt-history'
       ? { ...group, versions: group.versions.filter(item => item.id !== 'medical-room-dense-attempt-01') }
       : group);
-  function makeMapPreview(item) {
-    if (item.previewKind !== 'webgpu' || item.replayable !== true || !item.page) throw new TypeError('WebGPU map preview requires a replayable page');
-    const preview = new URL(item.page, location.href);
-    preview.searchParams.set('embed', '1');
-    preview.searchParams.set('galleryRelease', 'map-webgpu-20260930-r1');
-    preview.searchParams.delete('height'); preview.searchParams.delete('zoom');
-    if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
-    else preview.searchParams.delete('verify');
-    return preview;
-  }
-  function fitMapFrame(iframe) {
-    const scale = Math.min(stage.clientWidth / PRESENTATION.width, stage.clientHeight / PRESENTATION.height);
-    const width = PRESENTATION.width * scale, height = PRESENTATION.height * scale;
-    iframe.width = String(PRESENTATION.width); iframe.height = String(PRESENTATION.height);
-    iframe.style.left = `${(stage.clientWidth - width) / 2}px`;
-    iframe.style.top = `${(stage.clientHeight - height) / 2}px`;
-    iframe.style.transformOrigin = 'top left'; iframe.style.transform = `scale(${scale})`;
-    iframe.dataset.mapFitScale = String(scale);
-  }
-  function disposeMapPreview() {
-    const frame = stage.querySelector('iframe');
-    if (frame) { sfxBridge?.detachFrame(frame); frame.remove(); }
-    if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll);
-    fitObserver?.disconnect(); fitObserver = null;
-    previewStatusPoll = null; activeAudioFrame = null; activeAudioItem = null;
-  }
-  window.addEventListener('pagehide', disposeMapPreview, { once: true });
-  const exposedMapEntries = imageGroups.map(group => Object.freeze({
-    id: group.id, title: group.title, category: 'map', creatorDisplayName: group.creatorDisplayName,
-    qualityStatus: group.quality, userAdoptionStatus: group.adoption, gameIntegrationStatus: group.integration,
-    reason: group.reason,
-    versions: Object.freeze(group.versions.map(item => Object.freeze({ ...item,
-      category: 'map', creatorDisplayName: item.creatorDisplayName || group.creatorDisplayName,
-      originalCreatorDisplayName: item.originalCreatorDisplayName || group.originalCreatorDisplayName,
-      designAuthorDisplayName: item.designAuthorDisplayName || group.designAuthorDisplayName,
-      runtimeAuthorDisplayName: item.runtimeAuthorDisplayName || group.runtimeAuthorDisplayName,
-      qualityStatus: item.qualityStatus || group.quality,
-      userAdoptionStatus: adoptionState(item), gameIntegrationStatus: group.integration,
-      previewKind: item.previewKind || 'image',
-      technicalReplayStatus: item.previewKind === 'webgpu' ? (item.replayable === true && item.page ? 'replayable' : 'unavailable') : 'saved-original'
-    })))
-  }));
-  window.__webgpuEGallery = Object.freeze({ ...window.__webgpuEGallery, mapEntries: Object.freeze(exposedMapEntries) });
     function selectImage(group, versionIndex) {
     const item=group.versions[versionIndex];
-    const webgpu = item.previewKind === 'webgpu';
-    if (webgpu && (item.replayable !== true || !item.page)) throw new TypeError('Unplayable WebGPU maps are excluded from the gallery');
-    disposeMapPreview(); stage.querySelector('img')?.remove();
-    notice.hidden=true; audioRow.hidden = verifyMode || !webgpu;
-    if (webgpu) {
-      const preview = makeMapPreview(item);
-      const iframe = document.createElement('iframe'); iframe.title = group.title+' '+item.title+' WebGPU room preview';
-      iframe.allow = 'autoplay'; iframe.src = preview.href; fitMapFrame(iframe);
-      iframe.addEventListener('load',()=>{
-        if (iframe !== stage.querySelector('iframe')) return;
-        activeAudioFrame = iframe; activeAudioItem = item;
-        reflectAudio(sfxBridge?.attachFrame(iframe,item));
-        try {
-          const child = iframe.contentDocument; if (!child) throw new Error('プレビューにアクセスできません');
-          const error = child.getElementById('error');
-          const updateNotice = () => { const message = error?.textContent?.trim(); notice.textContent = message || ''; notice.hidden = !message; };
-          updateNotice(); previewStatusPoll = window.setInterval(updateNotice,250);
-        } catch (error) { notice.textContent=error.message; notice.hidden=false; }
-      });
-      iframe.addEventListener('error',()=>{notice.textContent='プレビューを読み込めませんでした';notice.hidden=false;});
-      stage.append(iframe); fitObserver = new ResizeObserver(()=>fitMapFrame(iframe)); fitObserver.observe(stage);
-    } else {
-      const img=document.createElement('img'); img.alt=group.title+' '+item.title; img.src=item.src; img.dataset.sha256=item.hash;
-      img.addEventListener('error',()=>{notice.textContent='画像原本を読み込めませんでした';notice.hidden=false;}); stage.append(img);
-    }
+    const previousFrame = stage.querySelector('iframe');
+    if (previousFrame) sfxBridge?.detachFrame(previousFrame);
+    previousFrame?.remove(); stage.querySelector('img')?.remove();
+    activeAudioFrame = null; activeAudioItem = null;
+    if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll); previewStatusPoll=null;
+    notice.hidden=true; const img=document.createElement('img'); img.alt=group.title+' '+item.title; img.src=item.src; img.dataset.sha256=item.hash;
+    img.addEventListener('error',()=>{notice.textContent='画像原本を読み込めませんでした';notice.hidden=false;}); stage.append(img);
     document.getElementById('selected-title').textContent=group.title+' · '+item.title;
     const quality=item.qualityStatus||group.quality;
     const adoption=adoptionState(item);
-    const authors=[item.originalCreatorDisplayName&&'原画作者: '+item.originalCreatorDisplayName,item.designAuthorDisplayName&&'E作者: '+item.designAuthorDisplayName,item.runtimeAuthorDisplayName&&'runtime作者: '+item.runtimeAuthorDisplayName].filter(Boolean).join(' · ');
-    document.getElementById('selected-description').textContent=(authors?authors+'。 ':'')+'作者: '+(item.creatorDisplayName||group.creatorDisplayName||'不明')+'。版: '+item.id+'。品質状態: '+quality+'。採用状態: '+(adoption==='unknown'?'unknown':adoption)+'。本編接続: '+group.integration+'。'+(item.note||group.reason)+(item.hash?' 原本SHA-256: '+item.hash:'');
+    document.getElementById('selected-description').textContent='作者: '+(item.creatorDisplayName||group.creatorDisplayName||'不明')+'。版: '+item.id+'。品質状態: '+quality+'。採用状態: '+(adoption==='unknown'?'unknown':adoption)+'。本編接続: '+group.integration+'。'+(item.note||group.reason)+' 原本SHA-256: '+item.hash;
     document.getElementById('selected-status').textContent=quality+' · '+adoptionStatusLabel(item)+' · '+group.integration;
-    document.getElementById('selected-source').textContent=webgpu?'WebGPUマップ · '+(item.source||item.page):'保存原本画像 · '+item.src;
-    const link=document.getElementById('selected-link');link.href=webgpu?makeMapPreview(item).href:item.src;link.textContent=webgpu?'WebGPUマッププレビューを見る ↗':'原本画像を見る ↗';
-    const visible=visibleVersionIndices(group).map(i=>({v:group.versions[i],i}));
+    document.getElementById('selected-source').textContent='保存原本画像 · '+item.src;
+    const link=document.getElementById('selected-link');link.href=item.src;link.textContent='原本画像を見る ↗';
+    const visible=group.versions.map((v,i)=>({v,i})).filter(({v})=>currentAdoptionFilter==='adopted'?v.adoption==='adopted':v.adoption!=='adopted');
     versionSelect.replaceChildren(...visible.map(({v,i},n)=>{const o=document.createElement('option');o.value=String(n);o.textContent=v.title+' — '+adoptionStatusLabel(v)+(v.qualityStatus?' · '+v.qualityStatus:'');o.dataset.versionId=v.id;return o;}));
     versionSelect.value=String(Math.max(0,visible.findIndex(x=>x.i===versionIndex)));versionSelect.disabled=visible.length<2;
     versionSelect.onchange=()=>selectImage(group,visible[Number(versionSelect.value)].i);

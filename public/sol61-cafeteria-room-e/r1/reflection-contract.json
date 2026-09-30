@@ -1,0 +1,54 @@
+{
+  "kind": "artist-reflection-closure-addendum",
+  "revision": "r1-contract-v2",
+  "author": "GPT-6.1-Sol",
+  "reason": "現行B ReflectionClosureTemplate.ReflectionClosureRule/MicrofacetFieldMinimumSetを、実コードの固定視点surface proxyに完全対応付ける。元23artistファイルとshader bytesを変更しない。新しい見た目の版ではない。",
+  "ReflectionClosureTemplate": {
+    "Applicability": {"applies_when":["reflection","highlight"],"otherwise":"latent_optics_condition"},
+    "ReflectionClosureBlock": [
+      {
+        "reflection_PH":"PH2",
+        "surface_type":"hard_surface",
+        "MicrofacetField": {
+          "view_dependence":"視点は原画の固定raster proxy。観測yaw/pitchを動かすBRDFは実装しない。floor specular長軸を壁の内向き方向へ固定し、camera-view依存をこの一視点に縮約する。未知camera poseを実測としない。arbitrary viewportは同じviewのscale/offsetだけ。",
+          "fresnel":"材質Fresnelと灯入射量は固定観測のeffective specular coefficient0.35へ縮約する。Schlick/F0の独立数値やgrazing検証は実コードにないため作らない。view-varying Fresnel solverとして合格を主張しない。",
+          "microfacet":"異方的rough-surface NDFの固定view projected lobeをellipse12×36pxで代理する。密なmicrofacet sampling/GGXを実行したとは言わない。masking-shadowingはfixture/boundary floorMask。広いdiffuse ellipse42×76px coefficient0.055を別にする。",
+          "surface_state_modulation":"この床は乾いた固定状態。wetness/thinfilm/contaminationは非選択、tile texture/既存reflectionを不変保持。設備/壁の境界がreceiver量を0へ拘束する。",
+          "energy_consistency":"固定-view nonphotometric proxyの追加量はlamp envelopeに比例し、specular0.35/diffuse0.055と有限支持で限定。実光束保存/BRDF積分を計測した結果ではない。bitmap baselineへ新source分だけ加える。lampOFF/expiryで新量0。",
+          "occlusion_consistency":true
+        },
+        "ReflectionLinks": {
+          "physical_influence_out":"PH1追加radiance→PH2 fixed floor surface response。PH2から他PHへの再照明はこのproxyにない。",
+          "physical_feedback_in":"not_applicable: 反射が灯/床温度/形状を変える帰還経路は選んでいない。"
+        },
+        "Evidence":["狭い長軸specularと広いdiffuseの幅差","lampOFFで追加だけ消え、原画tile/既存反射は保持"],
+        "codeMapping":"world-shader.drawFloor: diffuse/spec→source envelope/flags→floorMask→scene alpha0、brightRGB0。OBS近光で床reflectionを作らない。"
+      },
+      {
+        "reflection_PH":"PH4",
+        "surface_type":"wet_like",
+        "MicrofacetField": {
+          "view_dependence":"既存機内trayの固定raster view。nozzle→trayのflow reachがcontactの時相を与える。water/specularを他viewの正確な法線推定としない。",
+          "fresnel":"水面Fresnel/照明/固定cameraの積をeffective white specular3.5/3.5/3.4へ縮約する。独立F0/屈折率/Schlickをshaderに持たないので精密物理評価はnot_runでなく未実装scopeとして明示。白峰を弱めてつじつまを合わせない。",
+          "microfacet":"小さいtray接触面のsmooth-lobe proxy ellipse2.2×1.4px。dry stateではcoefficient0、water contactではこの狭い白peakが生じ、粗いwave ellipse11×3pxのscatter/alphaと分離する。actualNDF/GGX simulationではない。",
+          "surface_state_modulation":"flow frontが到達してからtrayの薄いwet responseが生じる。wet/dry差はflow=0時のwhitepeak/波0、contact時の白峰+拡がる低alpha ring、tail滴終了で全0。permanent濡れ/thinfilm干渉色/汚れは追加しない。",
+          "energy_consistency":"source cycle/flow/reachからspecular量を決め、ray energy solverとして測定したとは主張しない。bright textureへは局所white contactだけ、scatterではなく高輝度responseのOBS入力。purgeOFF/expiryでpeakとPSF0。",
+          "occlusion_consistency":true
+        },
+        "ReflectionLinks": {
+          "physical_influence_out":"PH5の固定ノズル/トレー境界→PH4 flow contact→同PHのwet reflection。OBS1/OBS2依存は別のobservation link。",
+          "physical_feedback_in":"not_applicable: 光学responseが水流/valveを変える経路はない。"
+        },
+        "Evidence":["ノズルfrontから遅れて現れるtray whitepeak","同cycleのflat tray波と最後の滴、OFFで既存tray原画に戻る"],
+        "codeMapping":"world-shader.drawPurge: vertical front→receiver/white ellipse→scene/bright MRT、post reads transformed tray texel→finite near/cross。"
+      }
+    ],
+    "Acceptance":{"reflection_integrated_into_PH_mesh":true,"lensflare_registered_as_OBS_not_reflection":"physical_lens_not_selected; displayPSF別","physical_BRDF_or_view_variation_validation":"not_applicable_fixed_raster_proxy_only","rendered_surface_quality":"not_run"}
+  },
+  "GradientAnchorPolicy": {
+    "trigger":"attribute_resolved",
+    "anchors":[{"PH":"PH1/PH2","relation":"white lamp source→warm receiver、実source/receiverで異なる配色役割"},{"PH":"PH3","relation":"densityと照明のwarm-white散乱→薄い無色の境界、hueの虹移動なし"},{"PH":"PH4","relation":"tray whitepeakと弱い青緑water scatter、surface状態へ固定"}],
+    "OBS_gradient":"none; floor/world gradientをlens-spectrumと偽らない"
+  },
+  "audit":{"fullMicrofacetFields":2,"shaderChanged":false,"original23Closure":"preserved","CPU":"static mapping reviewed; no new numerical shader assertions","GPU":"not_run","visual":"not_run"}
+}
