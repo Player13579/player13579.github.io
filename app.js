@@ -20822,6 +20822,20 @@ function stopWithdrawnSunbeamPresentation() {
   webgpuMainApp?.driver?.stopSunbeamSounds?.();
 }
 
+function powerCabinetOutsideViewport(spec, passType, camera, zoom, viewport) {
+  const reactorRadius = Math.max(spec?.width, spec?.height) * .94;
+  const halfWidth = passType === 'reactorRoomObjectsE' ? reactorRadius : spec?.halfWidth;
+  const halfHeight = passType === 'reactorRoomObjectsE' ? reactorRadius : spec?.halfHeight;
+  if (![spec?.x, spec?.y, halfWidth, halfHeight, camera?.x, camera?.y,
+        zoom, viewport?.width, viewport?.height].every(Number.isFinite) ||
+      halfWidth <= 0 || halfHeight <= 0 || zoom <= 0 ||
+      viewport.width <= 0 || viewport.height <= 0) return false;
+  return spec.x + halfWidth < camera.x ||
+    spec.x - halfWidth > camera.x + viewport.width / zoom ||
+    spec.y + halfHeight < camera.y ||
+    spec.y - halfHeight > camera.y + viewport.height / zoom;
+}
+
 function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera, zoom,
   shapeProviders = {}, markerSelection = null, playerStage = null) {
   if (!data || viewport?.kind !== "main" || !Array.isArray(viewport.worldToLogical) ||
@@ -21793,10 +21807,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           Number.isFinite(camera?.x) && Number.isFinite(camera?.y) &&
           Number.isFinite(zoom) && zoom > 0 &&
           Number.isFinite(viewport?.width) && Number.isFinite(viewport?.height) &&
-          (spec.x + spec.halfWidth <= camera.x ||
-           spec.x - spec.halfWidth >= camera.x + viewport.width / zoom ||
-           spec.y + spec.halfHeight <= camera.y ||
-           spec.y - spec.halfHeight >= camera.y + viewport.height / zoom)) {
+          powerCabinetOutsideViewport(spec, passType, camera, zoom, viewport)) {
         omitted.push({ effectId: effect.id, reason: 'power-cabinet-outside-viewport' });
         continue;
       }
@@ -26587,6 +26598,25 @@ function currentCharacterAction(player) {
   return { ...action, progress: clamp(progress, 0, 1) };
 }
 
+function specialAmmoLoadActionOwner(player, data, wallNow = state.frameNow || performance.now()) {
+  if (!player || !Array.isArray(state.magicEffects)) return null;
+  const candidates = state.magicEffects.filter(effect =>
+    effect?.type === 'action-special-ammo-load' &&
+    String(effect.playerId || '') === String(player.id));
+  if (!candidates.length) return null;
+  const effect = candidates[candidates.length - 1];
+  const hasStartTime = Number.isFinite(effect.startedAt);
+  const elapsed = hasStartTime
+    ? eEffectNow(effect, data, wallNow) - Number(effect.startedAt) : Number.NaN;
+  if (hasStartTime && (!Number.isFinite(elapsed) || elapsed < 0 || elapsed >= 1450))
+    return null;
+  return { kind: 'reload', motionId: 'action-special-ammo-load',
+    variant: String(effect.variant || ''), progress: hasStartTime
+      ? clamp(elapsed / 1450, 0, 0.999999) : Number.NaN,
+    sourceEffectId: String(effect.id ?? ''), startedAt: effect.startedAt,
+    duration: Number(effect.duration) };
+}
+
 function characterAscensionPresentation(player, data) {
   const liveNow = estimatedServerNow(data);
   const ascensionStartedAt = Number(player.ascensionStartedAt) || 0;
@@ -27340,6 +27370,87 @@ function buildWebGPUHandgunReloadActionCommand(player, data, view, action) {
     name: playerIdentityLabel(player).slice(0, 14) });
 }
 
+const SPECIAL_AMMO_RELOAD_AUTHORED_SOURCES = Object.freeze({
+  'white-hood': Object.freeze({
+    handgun: [AUTHORED_PHILIA_HANDGUN_RELOAD, 'authoredPhiliaHandgunReload'],
+    smg: [AUTHORED_PHILIA_SMG_RELOAD, 'authoredPhiliaSmgReload'],
+    assault: [AUTHORED_PHILIA_ASSAULT_RELOAD, 'authoredPhiliaAssaultReload'],
+    sniper: [AUTHORED_PHILIA_SNIPER_RELOAD, 'authoredPhiliaSniperReload'],
+    taser: [AUTHORED_PHILIA_TASER_RELOAD, 'authoredPhiliaTaserReload'] }),
+  'blue-dress': Object.freeze({
+    handgun: [AUTHORED_SOPHIA_HANDGUN_RELOAD, 'authoredSophiaHandgunReload'],
+    smg: [AUTHORED_SOPHIA_SMG_RELOAD, 'authoredSophiaSmgReload'],
+    assault: [AUTHORED_SOPHIA_ASSAULT_RELOAD, 'authoredSophiaAssaultReload'],
+    sniper: [AUTHORED_SOPHIA_SNIPER_RELOAD, 'authoredSophiaSniperReload'],
+    taser: [AUTHORED_SOPHIA_TASER_RELOAD, 'authoredSophiaTaserReload'] }),
+  'male-bot': Object.freeze({
+    handgun: [AUTHORED_BOT_HANDGUN_RELOAD, 'authoredBotHandgunReload'],
+    smg: [AUTHORED_BOT_SMG_RELOAD, 'authoredBotSmgReload'],
+    assault: [AUTHORED_BOT_ASSAULT_RELOAD, 'authoredBotAssaultReload'],
+    sniper: [AUTHORED_BOT_SNIPER_RELOAD, 'authoredBotSniperReload'],
+    taser: [AUTHORED_BOT_TASER_RELOAD, 'authoredBotTaserReload'] })
+});
+
+function buildWebGPUSpecialAmmoLoadActionCommand(player, data, view, action) {
+  const api = window.DvaWebGPUPlayerSprite;
+  const owner = specialAmmoLoadActionOwner(player, data,
+    state.frameNow || performance.now());
+  const sourceEffectId = String(action?.sourceEffectId || '');
+  const match = /^(weak|penetrate|shock):(handgun|smg|assault|sniper|taser)$/.exec(
+    String(action?.variant || ''));
+  if (!api?.createCommand || !player?.alive || player.ejected || player.inVent ||
+      player.invisible || action?.kind !== 'reload' ||
+      action.motionId !== 'action-special-ammo-load' || !owner ||
+      !sourceEffectId || owner.sourceEffectId !== sourceEffectId ||
+      owner.variant !== action.variant || owner.startedAt !== action.startedAt ||
+      Number(action.duration) !== 1450 || Number(owner.duration) !== 1450 ||
+      !Number.isFinite(owner.progress) || owner.progress < 0 || owner.progress >= 1 ||
+      !match) return null;
+  const weaponId = match[2];
+  const identity = player.isBot ? 'male-bot' : displayedSkinId(player, data);
+  const source = SPECIAL_AMMO_RELOAD_AUTHORED_SOURCES[identity]?.[weaponId];
+  if (!source) return null;
+  const [profiles, textureKey] = source;
+  const direction = authoredDirection(player, motionFor(player, data));
+  const profile = profiles?.[direction];
+  const image = state.textures?.[textureKey]?.[direction];
+  const cell = Array.isArray(profile?.cell)
+    ? profile.cell : [Number(profile?.cell), Number(profile?.cell)];
+  const botProfile = identity === 'male-bot';
+  const origin = botProfile ? profile?.origin : profile?.registration?.origin;
+  const scale = botProfile ? profile?.runtimeScale : profile?.registration?.runtimeScale;
+  const ground = botProfile ? [0, 31] : profile?.registration?.ground;
+  if (!profile || !image?.complete || image.naturalWidth !== profile.size?.[0] ||
+      image.naturalHeight !== profile.size?.[1] || !cell.every(Number.isFinite) ||
+      !Number.isFinite(origin?.[0]) || !Number.isFinite(origin?.[1]) ||
+      !Number.isFinite(scale) || scale <= 0 || !Array.isArray(ground) ||
+      !ground.every(Number.isFinite)) return null;
+  const frameIndex = botProfile
+    ? (prefersReducedMotion() ? 0 : owner.progress < 0.14 ? 0 :
+      owner.progress < 0.38 ? 1 : owner.progress < 0.65 ? 2 :
+      owner.progress < 0.87 ? 3 : 4)
+    : profile.phases?.reduce((selected, at, index) =>
+      owner.progress + 1e-9 >= at ? index : selected, 0);
+  if (!Number.isInteger(frameIndex) || frameIndex < 0 ||
+      (frameIndex + 1) * cell[0] > image.naturalWidth || cell[1] > image.naturalHeight)
+    return null;
+  const { ascensionRise } = characterAscensionPresentation(player, data);
+  const alpha = player.id === data.selfId && data.self?.floraInvisibleActive ? .32 : 1;
+  const command = api.createCommand({
+    player: { ...player, y: player.y - ascensionRise }, identity, direction,
+    mode: 'special-ammo-load-reload', entry: { assetPath: profile.assetPath,
+      layout: { sourceOrigin: { x: origin[0], y: origin[1] },
+        ground: { x: ground[0], y: ground[1] }, scale } },
+    image, frame: { x: frameIndex * cell[0], y: 0,
+      width: cell[0], height: cell[1] },
+    body: { lift: 0, sway: 0, lean: 0 }, camera: view.camera, zoom: view.zoom,
+    alpha, arrival: Object.prototype.hasOwnProperty.call(view, 'arrival') ? view.arrival : null,
+    arrivalAnchor: player, order: view.order ?? 0 });
+  return command && Object.freeze({ ...command,
+    sourceEffectId, poseKey: `special-ammo-reload-${weaponId}-${direction}-${frameIndex}`,
+    name: playerIdentityLabel(player).slice(0, 14) });
+}
+
 function buildWebGPUAuthoredPlayerSpriteCommand(sourcePlayer, data, view) {
   const api = window.DvaWebGPUPlayerSprite;
   if (!api?.createCommand || !sourcePlayer || !data || !view?.camera ||
@@ -27348,6 +27459,8 @@ function buildWebGPUAuthoredPlayerSpriteCommand(sourcePlayer, data, view) {
   const ghost = !player.alive && !player.ejected;
   const action = Object.prototype.hasOwnProperty.call(view, 'action')
     ? view.action : currentCharacterAction(player);
+  if (action?.motionId === 'action-special-ammo-load')
+    return buildWebGPUSpecialAmmoLoadActionCommand(player, data, view, action);
   if (action?.kind === 'shoot' && action.motionId === 'magazine-hold')
     return buildWebGPUMagazineHoldActionCommand(player, data, view, action);
   if (action?.kind === 'reload' && action.motionId === 'action-reload' &&
@@ -27522,8 +27635,11 @@ function captureWebGPUMainAppPlayerScene(data = state.data, viewport, camera, zo
   const entries = state.preparationRosterEntries;
   const playerActions = new Map();
   const spriteReady = player => {
-    const action = currentCharacterAction(player);
+    const action = specialAmmoLoadActionOwner(player, data) || currentCharacterAction(player);
     playerActions.set(player.id, action);
+    if (action?.motionId === 'action-special-ammo-load')
+      return Boolean(buildWebGPUSpecialAmmoLoadActionCommand(player, data,
+        { camera, zoom, order: 0, arrival: null }, action));
     if (action?.kind === 'shoot' && action.motionId === 'magazine-hold')
       return Boolean(buildWebGPUMagazineHoldActionCommand(player, data,
         { camera, zoom, order: 0, arrival: null }, action));
