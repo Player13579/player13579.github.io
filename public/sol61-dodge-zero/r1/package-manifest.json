@@ -1,0 +1,173 @@
+{
+  "schema": "sol61-dodge-zero-r1-package/v1",
+  "assetId": "sol61-dodge-zero-r1",
+  "artist": "GPT-6.1-Sol",
+  "sourceManifestSha256": "90d75cdbdd3b87dce3253c2fd7bf891e10e5819ae43cf409a147b658cce0d8af",
+  "originalAtlasSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+  "entry": "index.html",
+  "packageRevision": 2,
+  "previousPackageManifestSha256": "88286f16bb859cc9b32b7c60731da75bf12dec13f8651c4f7d81f301d6f85f64",
+  "canvas": {
+    "id": "webgpuMainCanvas",
+    "width": 980,
+    "height": 620,
+    "actorFixtureHeightPx": 64,
+    "center": [
+      490,
+      310
+    ],
+    "crop": [
+      62,
+      15,
+      136,
+      225
+    ]
+  },
+  "runtime": {
+    "webgpuOnly": true,
+    "renderer": "RGBA16F scene/source MRT + BGRA8 output; original cropped actor base draw followed by additive field",
+    "finiteSfx": [
+      "register.wav",
+      "release.wav"
+    ],
+    "verification": "URL must include verify; verification creates no AudioContext and reports audio zero"
+  },
+  "evidence": {
+    "native": {
+      "path": "runtime/evidence/native-runtime-proof.json",
+      "sha256": "9e5cf28963fe57d9dfe203ccc2c4f3bf60a2e08225fdd3ba67a717f796642ead",
+      "status": "pass",
+      "shaderCompileNoErrors": true,
+      "pipelineSubmitNoUncapturedErrors": true
+    },
+    "autoLoop": {
+      "path": "runtime/evidence/gallery-autoloop-proof.json",
+      "sha256": "95ec507df7de56c164e208f98b2fa20c9d940e8d6fa1c93fa400fc373930802a",
+      "status": "pass",
+      "cycles": 21,
+      "frames": 1256,
+      "verify": true,
+      "audioContextCreated": false,
+      "route": "http://127.0.0.1:4187/index.html?embed=1&controls=1&verify=dodge-r1-visibility-dispose&gallery-proof=1"
+    },
+    "disposal": {
+      "path": "runtime/evidence/runtime-disposal-proof.json",
+      "sha256": "b0d30db1d2b810a54b5cd43e340e201b6647f59781317df4ad08dfda7396750c",
+      "status": "pass",
+      "submittedFramesBeforeDispose": 5781,
+      "submittedFramesAfterDispose": 5781,
+      "noActiveVoices": true,
+      "verify": true,
+      "route": "http://127.0.0.1:4187/index.html?embed=1&controls=1&verify=dodge-r1-visibility-dispose&gallery-proof=1"
+    },
+    "visibilityPause": {
+      "path": "runtime/evidence/gallery-visibility-pause.json",
+      "sha256": "45f1bdce94e55814e4f09c9420489405f4f6c40e23878b58ed78ebe6e98075db",
+      "hidden": true,
+      "verify": true,
+      "audioContextCreated": false,
+      "route": "http://127.0.0.1:4187/index.html?embed=1&controls=1&verify=dodge-r1-visibility-dispose&gallery-proof=1"
+    },
+    "visibilityReturn": {
+      "status": "not_proven",
+      "reason": "Owned-page visibility return event did not produce a fresh verify-only artifact; the older record is non-verify and is not counted."
+    },
+    "fakeAudioContext": {
+      "path": "runtime/tests/sfx-runtime-check.json",
+      "sha256": "efd1c54c4cb30b74055fab6a855f400b94fe6f168783f40f055f6ab23f5f3bb9",
+      "status": "pass",
+      "tests": 7,
+      "scope": "fake AudioContext scheduling/lifecycle contract; does not claim subjective listening or real device output"
+    },
+    "cpuRuntime": {
+      "path": "runtime/tests/runtime-check.json",
+      "sha256": "d38142bc6acc4c90aa5b604b9dacf91b42276b94847196a5371cb664648e58bc",
+      "status": "pass",
+      "tests": 11,
+      "scope": "bounded source/state and score checks; does not prove browser AudioContext voice lifecycle or listening"
+    },
+    "sfxBridge": {
+      "status": "not_proven",
+      "reason": "Finite cues, source pairing, offsets, playback rate, mute, duplicate, expiry and disposal are covered by fake AudioContext tests; actual gesture register/release pair not captured."
+    }
+  },
+  "status": {
+    "technical": "native WebGPU compile/submit, fixed-phase checks, continuous lifetimes and automatic preview loop pass",
+    "galleryAutoloop": "pass",
+    "explicitDispose": "pass",
+    "visibilityPause": "pass; return unproven",
+    "finiteSfxContract": "fake AudioContext tests pass 7/7",
+    "quality": "pending root review",
+    "listening": "not_run",
+    "gameIntegration": "not_run",
+    "adoption": "none"
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "0d68e469f188abf1d64619b35819bd6609661c0774274d5c2e2b908ac5416dec",
+      "sourceFrozen": false,
+      "sourceSha256": null
+    },
+    {
+      "path": "manual.html",
+      "sha256": "1a1dc1792121b9f252662b1cdbce60cfd71f2580f25b10f4f5c7cfdc219eaeb1",
+      "sourceFrozen": false,
+      "sourceSha256": null
+    },
+    {
+      "path": "runtime.mjs",
+      "sha256": "3d5889d99610cc65ca784f1ec61514d17fdae2e7d9367d13bb62f42cd4660371",
+      "sourceFrozen": false,
+      "sourceSha256": null
+    },
+    {
+      "path": "artist.mjs",
+      "sha256": "7fa5ad17e67b73dd61e430373843e08aeffd43a69561c7bcf9a3334d19572606",
+      "sourceFrozen": true,
+      "sourceSha256": "7fa5ad17e67b73dd61e430373843e08aeffd43a69561c7bcf9a3334d19572606"
+    },
+    {
+      "path": "design.mjs",
+      "sha256": "7c079fb5299ccbe28197877376bdc641218729c15659491305bf4bfe1b19a58e",
+      "sourceFrozen": true,
+      "sourceSha256": "7c079fb5299ccbe28197877376bdc641218729c15659491305bf4bfe1b19a58e"
+    },
+    {
+      "path": "world-shader.mjs",
+      "sha256": "df34030a6063a8945de4040ff4e0fd80c0b932030f70e74d8adcd21c91fbc9c2",
+      "sourceFrozen": true,
+      "sourceSha256": "df34030a6063a8945de4040ff4e0fd80c0b932030f70e74d8adcd21c91fbc9c2"
+    },
+    {
+      "path": "post-shader.mjs",
+      "sha256": "45665871ea75b431aaa25f263a9a25f9e37670bceff1ee147c77df94f29b8fd6",
+      "sourceFrozen": true,
+      "sourceSha256": "45665871ea75b431aaa25f263a9a25f9e37670bceff1ee147c77df94f29b8fd6"
+    },
+    {
+      "path": "sfx-score.mjs",
+      "sha256": "9071cadd47a46f3837d02e555b99163364b9c37773fbbc8ec62c53431a6bcadd",
+      "sourceFrozen": true,
+      "sourceSha256": "9071cadd47a46f3837d02e555b99163364b9c37773fbbc8ec62c53431a6bcadd"
+    },
+    {
+      "path": "body.png",
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "sourceFrozen": true,
+      "sourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    },
+    {
+      "path": "register.wav",
+      "sha256": "3c2b49d6b84e5c03530236dd7ca442e075f4262a9fa970d767a344b9938f76eb",
+      "sourceFrozen": true,
+      "sourceSha256": "3c2b49d6b84e5c03530236dd7ca442e075f4262a9fa970d767a344b9938f76eb"
+    },
+    {
+      "path": "release.wav",
+      "sha256": "c96b0d3ae0d1c536b279ce0e257b3f804271a46a27635e852f83e624d14ca0b2",
+      "sourceFrozen": true,
+      "sourceSha256": "c96b0d3ae0d1c536b279ce0e257b3f804271a46a27635e852f83e624d14ca0b2"
+    }
+  ]
+}

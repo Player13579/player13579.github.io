@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dodge E r1 — native WebGPU fixture</title>
+<style>
+:root{color-scheme:dark;font:14px system-ui,sans-serif;background:#11151b;color:#e8edf3}body{margin:0;display:grid;place-items:center;min-height:100vh}.frame{width:min(980px,100vw)}canvas{display:block;width:100%;height:auto;aspect-ratio:980/620;background:#111;border:1px solid #46515e}.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px}.bar[hidden]{display:none}button,select{background:#252d37;color:inherit;border:1px solid #566271;border-radius:4px;padding:6px 9px}.status{margin-left:auto;color:#a9b7c6;font:12px ui-monospace,monospace}body.embed .bar,body.verify .bar{display:none}body.showControls .bar{display:flex}pre{white-space:pre-wrap;max-height:42vh;overflow:auto;background:#080b10;padding:8px;font:11px ui-monospace,monospace}
+</style>
+</head>
+<body>
+<div class="frame"><canvas id="webgpuMainCanvas" width="980" height="620" aria-label="Dodge E r1 WebGPU actor fixture"></canvas>
+<div class="bar"><button id="runAudit">Run bounded native audit</button><button id="replay">Replay 1000 ms protection</button><button id="early">Early consume at 600 ms</button><button id="unknown">Remote authority unknown</button><button id="seed">Seeded state, no receipt</button><button id="hide">Conceal / restore</button><select id="bg"><option value="dark">Dark background</option><option value="light">Light background</option></select><button id="primary">Primary ON</button><button id="body">Body alpha ON</button><button id="source">White source ON</button><button id="near">Near ON</button><label>rate <select id="rate"><option>1</option><option>2</option><option>0</option></select></label><button id="audio">Enable finite SFX</button><button id="dispose">Dispose owned runtime</button><span id="status" class="status">starting</span></div><pre id="proof" hidden></pre></div>
+<script type="module" src="./runtime.mjs?v=autoloop-v5"></script>
+</body></html>
