@@ -1,0 +1,62 @@
+{
+  "schema": "dva-native-webgpu-runtime-package/v1",
+  "effect": "Security Room E",
+  "version": "r04",
+  "entry": "index.html",
+  "runtimeFiles": [
+    {
+      "path": "index.html",
+      "bytes": 4200,
+      "sha256": "566314241342330234cc752f6be8c4c471ea3432ec9d2a05fa13867a0b393501"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 43203,
+      "sha256": "74fb5d5a45ac3a4b20d07b16a47c9349e8f27ab93cdb4f1ea6ad303094141d95"
+    },
+    {
+      "path": "security-room-r04-cues.mjs",
+      "bytes": 2960,
+      "sha256": "7f9ab5fba3a14375cb15b02c61755808478d5c35fa21f2cf3a68d4fd02cfc34e"
+    },
+    {
+      "path": "security-room-r04.wgsl",
+      "bytes": 33424,
+      "sha256": "ef98ef34b532295b694cf487ef8bd33fa548c777ff8ee12c4094869cb345da0d"
+    },
+    {
+      "path": "security-room-r01-original.png",
+      "bytes": 2155465,
+      "sha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64"
+    }
+  ],
+  "dependencyClosure": [
+    "runtime.mjs",
+    "security-room-r04-cues.mjs",
+    "security-room-r04.wgsl",
+    "security-room-r01-original.png"
+  ],
+  "frozenArtistSource": {
+    "root": "outputs/request-20261001/security-zero-gpt6sol/r04",
+    "manifest": "SOURCE-MANIFEST.json",
+    "manifestSha256": "19dcfee0628993c78384a3aec5bce77f5efc207316157c3bfb45449946de3207",
+    "frozenFileCount": 17,
+    "wgslSha256": "ef98ef34b532295b694cf487ef8bd33fa548c777ff8ee12c4094869cb345da0d",
+    "originalPngSha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64"
+  },
+  "attribution": {
+    "creativeDesign": "GPT-6.1-Sol",
+    "runtimeImplementation": "GPT-6-Luna"
+  },
+  "verification": {
+    "technicalNativeGpu": "PASS: frozen shader compile, pipeline validation, submission/readback, 43-case native fixture matrix",
+    "originalOffIdentity": "PASS: all-flags-off, visibility=0, E-only exposure=0; 1340x1174 PNG exact to artist original (zero differing pixels)",
+    "halfSizeNativeCapture": "PASS: actual 670x587 canvas buffer and CSS rect; independent PNG captured",
+    "audioVerification": 0,
+    "normalListening": "NOT_RUN",
+    "visualQuality": "PENDING_ROOT_REVIEW",
+    "gameplayAdoption": "NOT_CONNECTED",
+    "failedAttempt": "outputs/request-20261001/security-zero-gpt6sol/r04-runtime/captures/native-02-uncaptured-gpu-error-1790798074642.json",
+    "evidence": "outputs/request-20261001/security-zero-gpt6sol/r04-runtime/captures/native-03-native-static-matrix.json"
+  }
+}

@@ -347,7 +347,30 @@
   const notice = document.getElementById('notice');
   const versionSelect = document.getElementById('version-select');
   let fitObserver = null;
-  let currentCategory = 'effect';
+  // CATEGORY_MEMORY_HELPERS_BEGIN
+  const CATEGORY_STORAGE_KEY = 'dva-gallery-category-v1';
+  const VALID_CATEGORIES = new Set(['effect', 'map']);
+  const isValidCategory = value => VALID_CATEGORIES.has(value);
+  function resolveInitialCategory(urlCategory, storageProvider) {
+    if (isValidCategory(urlCategory)) return urlCategory;
+    try {
+      const storage = typeof storageProvider === 'function' ? storageProvider() : storageProvider;
+      const remembered = storage?.getItem(CATEGORY_STORAGE_KEY);
+      if (isValidCategory(remembered)) return remembered;
+    } catch {}
+    return 'map';
+  }
+  function persistCategory(category, storageProvider) {
+    if (!isValidCategory(category)) return false;
+    try {
+      const storage = typeof storageProvider === 'function' ? storageProvider() : storageProvider;
+      if (!storage || typeof storage.setItem !== 'function') return false;
+      storage.setItem(CATEGORY_STORAGE_KEY, category);
+      return true;
+    } catch { return false; }
+  }
+  // CATEGORY_MEMORY_HELPERS_END
+  let currentCategory = resolveInitialCategory(params.get('category'), () => window.localStorage);
   let currentAdoptionFilter = 'unadopted';
   const selections = new Map();
   const adoptedVersionIds = new Set(['quantum-transmutation-sol61-r1','barrier-sol61-r11','status-recovery-sol61-r1','sunbeam-lens-v2-r05','item-pickup-sol61-r1','heal-astra-sparkle-r1','luck-astra-zero-r09','luck-astra-zero-r03','emp-astra-v1.8','status-cleanse-astra-r29','stamina-sol61-r11','mana-zero-sol61-r6','cooldown-clock-zero-r4']);
@@ -366,7 +389,7 @@
   }
   function adoptionStatusLabel(item) {
     const state = adoptionState(item);
-    if (state === 'adopted' && item.environmentEStatus === 'in-progress') return '原画のみ採用・E制作中';
+    if (state === 'reference-only') return 'セット原画の参照';
     if (state === 'adopted') return '採用済み';
     if (state === 'previously-adopted') return '旧採用版（現行採用対象外）';
     if (state === 'not-adopted') return '未採用';
@@ -380,7 +403,7 @@
     }
     const mapGroupAdopted = group.versions.some(item => adoptionState(item) === 'adopted');
     if (currentAdoptionFilter === 'adopted') return mapGroupAdopted ? group.versions.map((_, i) => i).sort((a, b) => Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted')) : [];
-    return group.versions.map((item, i) => adoptionState(item) === 'adopted' ? -1 : i).filter(i => i >= 0);
+    return group.versions.map((item, i) => ['adopted','reference-only'].includes(adoptionState(item)) ? -1 : i).filter(i => i >= 0);
   }
   function setHeadline() {
     document.getElementById('list-heading').textContent = `${currentAdoptionFilter === 'adopted' ? '採用済み' : '未採用'}の${currentCategory === 'effect' ? 'エフェクト' : 'マップ'}一覧`;
@@ -474,8 +497,7 @@
   window.__webgpuEGallery = Object.freeze({ presentation: PRESENTATION, categories: Object.freeze(['map','effect']),
     entries: Object.freeze(exposedEntries) });
   const imageGroups = [
-    {id:'security-server-gpt6sol-r01',category:'map',title:'サーバー室 · GPT-6-Sol',creatorDisplayName:'GPT-6-Sol',quality:'user-adopted-original',adoption:'adopted',integration:'not-integrated',geometryStatus:'pending',environmentEStatus:'in-progress',reason:'ユーザー採用済みのGPT-6-Solゼロ設計サーバー室／警備室 r01原画です。これはテクスチャ原画の採用で、壁・物体の幾何/衝突受入と本編統合は未完了。環境Eは制作中で、まだ完成・再生可能な版として扱いません。',versions:[
-      {id:'security-server-gpt6sol-r01-original',title:'GPT-6-Sol security/server room r01 original',src:'assets/sol-map-history/security-room-r01-original.png',hash:'b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64',creatorDisplayName:'GPT-6-Sol',qualityStatus:'user-adopted-original',adoption:'adopted',geometryStatus:'pending',environmentEStatus:'in-progress',note:'ユーザー採用済みの原画テクスチャ。原本 1340×1174 RGB、SHA-256一致。実配置の壁/物体衝突・攻撃遮蔽・ゲーム接続は未受入。対応する環境Eは制作中で未完了。'}]},
+    {"id":"security-server-gpt6sol-r01","category":"map","title":"サーバー室 + 環境E","creatorDisplayName":"GPT-6-Sol (original) + GPT-6.1-Sol (E design) + GPT-6-Luna (runtime)","quality":"pending-review","adoption":"adopted","defaultVersionId":"security-room-e-gpt6sol-luna-r04","integration":"not-integrated","geometryStatus":"pending","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","reason":"採用対象は原画と環境Eが同時再生されるr04セット。原画単体の採用ではありません。geometry/衝突/攻撃遮蔽・通常聴感・本編接続は未受入。","versions":[{"id":"security-room-e-gpt6sol-luna-r04","title":"サーバー室 原画＋環境E r04","previewKind":"webgpu","replayable":true,"page":"public/sol61-server-room-e/r04/index.html?embed=1","source":"public/sol61-server-room-e/r04/package-manifest.json","adoption":"adopted","qualityStatus":"pending-review","technicalReplayStatus":"pass","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","originalCreatorDisplayName":"GPT-6-Sol","designAuthorDisplayName":"GPT-6.1-Sol","runtimeAuthorDisplayName":"GPT-6-Luna","normalAudioListening":"not_run","note":"原画SHA b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64 を保持したWebGPU環境Eセット。実GPU埋込自動ループ・有限auth receipt確認済み、verify音0。原画OFF完全一致。品質と聴感・geometry・本編受入は別途未完了。"},{"id":"security-server-gpt6sol-r01-original","title":"セット原画の参照 · 単体採用ではありません","src":"assets/sol-map-history/security-room-r01-original.png","hash":"b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64","creatorDisplayName":"GPT-6-Sol","qualityStatus":"original-reference-only","adoption":"reference-only","role":"reference-only","standaloneAdoption":false,"geometryStatus":"pending","environmentEStatus":"reference-only","note":"r04採用セットに含まれる原画の参照。原画単体を現行採用版として扱いません。原本1340×1174 RGB、SHA-256一致。"}]},
     {id:'security-gpt-pro',category:'map',title:'警備室 · ChatGPT 5.6 Pro',creatorDisplayName:'ChatGPT 5.6 Pro',quality:'geometry-unverified',adoption:'not-adopted',integration:'not-integrated',reason:'既存ProブランチのBコードから生成した警備室の原本。食堂設備や椅子の反復を避けた独立候補。開口・アンカー・衝突・隣室接続の数値受入は未了。ゲームには未統合。',versions:[
       {id:'security-pro-candidate-01',title:'ChatGPT 5.6 Pro candidate 01',src:'assets/gpt-map-history/security-candidate-01.png',hash:'a80e8e94427d721fb0cc0ada28a6d239406c4f9870f8c28d70e72556d89023d8',qualityStatus:'geometry-unverified',adoption:'not-adopted',note:'1305×1206 RGBAの生成原本。ブランチ表示モデルはChatGPT 5.6 Pro。Bコードと生成記録: outputs/request-20260930/security-candidate。監視卓・機器ラック・保管庫を中心とする候補。開口・物体の数値照合は未了、床の多くはalpha253で完全不透明の契約に未達。'}]},
     {id:'cafeteria-gpt-pro',category:'map',title:'カフェテリア · GPT Pro',creatorDisplayName:'GPT Pro',quality:'rejected-geometry',adoption:'not-adopted',integration:'not-integrated',reason:'ChatGPT Proの画像生成候補。4版すべて未採用・ゲーム未統合。North/West opening geometryが不合格。Bコード/生成記録: outputs/request-20260929/map-resume/generation-manifest.json。',versions:[
@@ -505,7 +527,8 @@
       {id:'cafeteria-floor-attempt-02',title:'床材 attempt 02',src:'assets/gpt-map-history/cafeteria-floor-component.png',hash:'d205dea3669fe9b0a8f63b7cb0078c57a7c99d256853cc1cb2f8fd679e75f25c',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'一次担当が単一カフェテリアの床材素材として受入。シームレスな反復利用は未受入。部品受入であり、マップ採用ではない。'}]},
     {id:'cafeteria-buffet-component',category:'map',title:'カフェテリア・ビュッフェ · コンポーネント',creatorDisplayName:'ChatGPT (model unverified)',quality:'accepted-component-only',adoption:'not-adopted',integration:'not-integrated',reason:'完成マップではなく単体設備の原画候補。画像作者の基底モデルは未確認で、生成コードの正確なコード先行手順にも証跡不足。',versions:[
       {id:'cafeteria-buffet-attempt-01',title:'ビュッフェ attempt 01',src:'assets/gpt-map-history/cafeteria-buffet-component.png',hash:'da99b673cd36a45f055e7442ab1b11e7ebeb9bdaf40699d561055a82ec4623f0',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'Primary visual candidate acceptance only。コード全文の保存・厳密なコード再送証跡が不足。ゲーム未統合。'}]},
-  ].filter(group => group.id === 'security-server-gpt6sol-r01')
+    {"id":"medical-room-code-only-r3","category":"map","title":"救護室 · ChatGPT Pro r3","creatorDisplayName":"ChatGPT Pro (underlying image model unverified)","quality":"root-viewed-candidate","adoption":"not-adopted","integration":"not-integrated","geometryStatus":"unverified","environmentEStatus":"awaiting-texture-adoption","reason":"ChatGPT ProのBコード添付のみで生成した救護室の一室原画候補。rootが画像を確認済み。採用・geometry/衝突・本編接続は未検証。環境Eはテクスチャ採用後に着手するため未作成。","versions":[{"id":"medical-room-code-only-r3-original","title":"ChatGPT Pro r3 original","src":"assets/map2-first-aid-code-only-r3-20261001/medical-room-r3-original.png","hash":"949c6f5d1a5a176e4b9cec098fda7b19b774d1b0cc99fb44f02b18f2e9543bc0","creatorDisplayName":"ChatGPT Pro (underlying image model unverified)","qualityStatus":"root-viewed-candidate","adoption":"not-adopted","geometryStatus":"unverified","environmentEStatus":"awaiting-texture-adoption","note":"原本1161×1355、SHA-256一致。ChatGPT Proの別childで生成。入力はmedical-r2 B-design-code.pyの完成ファイル添付だけ（添付の再ダウンロードSHAが元コードSHAと一致）、本文は空、追加promptなし。技術world grid 288×336はマップ構造契約であり、原画解像度指定ではない。geometry・衝突・本編統合は未検証。Eはテクスチャ採用待ち。来歴: assets/map2-first-aid-code-only-r3-20261001/provenance.json"}]},
+  ].filter(group => ['security-server-gpt6sol-r01','medical-room-code-only-r3'].includes(group.id))
     .map(group => group.id === 'medical-gpt-history'
       ? { ...group, versions: group.versions.filter(item => item.id !== 'medical-room-dense-attempt-01') }
       : group);
@@ -556,7 +579,7 @@
     const keys=['category','filter','asset','version'];
     if(!keys.some(key=>params.has(key)))return Object.freeze({status:'default'});
     const supplied=Object.fromEntries(keys.filter(key=>params.has(key)).map(key=>[key,params.get(key)]));
-    const fallback=()=>{currentCategory='effect';currentAdoptionFilter='unadopted';return Object.freeze({status:'fallback',reason:'invalid-or-ineligible'});};
+    const fallback=()=>{currentAdoptionFilter='unadopted';return Object.freeze({status:'fallback',reason:'invalid-or-ineligible'});};
     let category=currentCategory,filter=currentAdoptionFilter;
     if(params.has('category')){if(!['map','effect'].includes(supplied.category))return fallback();category=supplied.category;}
     if(params.has('filter')){if(!['adopted','unadopted'].includes(supplied.filter))return fallback();filter=supplied.filter;}
@@ -669,6 +692,6 @@
   }
   const adoptionTabs=[...document.querySelectorAll('[data-filter]')];
   adoptionTabs.forEach(tab=>tab.addEventListener('click',()=>{currentAdoptionFilter=tab.dataset.filter;renderSelection();}));
-  categoryTabs.forEach(tab=>tab.addEventListener('click',()=>{currentCategory=tab.dataset.category;renderSelection();}));
+  categoryTabs.forEach(tab=>tab.addEventListener('click',()=>{if(!isValidCategory(tab.dataset.category))return;currentCategory=tab.dataset.category;persistCategory(currentCategory,()=>window.localStorage);renderSelection();}));
   for(const group of imageGroups)for(const version of group.versions)version.adoption ??= group.adoption;
   renderSelection();})();
