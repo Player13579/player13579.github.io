@@ -8,6 +8,7 @@
     'stamina-sol61-r8': { magnification: 240 / (64 * (530 / 260)), focusX: 490, focusY: 310 },
     'mana-zero-sol61-r4': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'mana-zero-sol61-r6': { magnification: 240 / 64, focusX: 490, focusY: 310 },
+    'mana-zero-sol61-r7': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'mana-zero-sol61-r5': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'stamina-sol61-r9-frontfix': { magnification: 240 / (64 * (980 / 480)), focusX: 490, focusY: 200 },
     'stamina-sol61-r10': { magnification: 240 / 64, focusX: 490, focusY: 310 },
@@ -116,7 +117,8 @@
       version('luck-astra-clean-v2', 'Astra v2', 'luck-astra-v2-preview.html', 'webgpu-luck-astra-v2.js', '却下・品質未達・本編未採用', '履歴上WebGPU再生可能。翼の見た目が品質基準に届かず却下。'),
       version('luck-astra-clean-v1', 'Astra v1', 'luck-astra-v1-preview.html', 'webgpu-luck-astra-v1.js', '品質未審査・本編未採用', 'WebGPUプレビューとソースを掲載。品質判定記録なし。')
     ]) }),
-    Object.freeze({ id: 'mana-astra', title: 'マナ', versions: Object.freeze([
+    Object.freeze({ id: 'mana-astra', title: 'マナ', defaultVersionId: 'mana-zero-sol61-r7', versions: Object.freeze([
+      version('mana-zero-sol61-r7', 'GPT-6.1-Sol zero r7', 'public/sol61-mana-zero/r7/preview.html?embed=1', 'public/sol61-mana-zero/r7/effect.mjs', '技術再生・ケイデンスpass・品質不合格・未採用・本編未接続・聴感未検証', '創作設計: GPT-6.1-Sol。忠実なruntime adapter・集中検査・実WebGPU再生: GPT-6-Luna。凍結されたSol設計とシェーダーを変更せず実装。Intel gen-12lp実GPUでシェーダーcompile・描画・4ループを確認、GPUエラー0。品質不合格: .50–.80sも胸の小さな帯が目立ち、身体へ届いて定着する受領の主現象が弱い。ユーザー未採用、本編未接続、SFX聴感未検証。', 'effect-H64'),
       version('mana-zero-sol61-r6', 'GPT-6.1-Sol zero r6', 'public/sol61-mana-zero/r6/preview.html?embed=1', 'public/sol61-mana-zero/r6/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結済みH64で技術再生pass、品質fail。SFX聴感未受入、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r5', 'GPT-6.1-Sol zero r5', 'public/sol61-mana-zero/r5/preview.html?embed=1', 'public/sol61-mana-zero/r5/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結済みH64で技術再生pass、品質fail。SFX聴感未受入、ユーザー未採用、本編未接続。', 'effect-H64'),
       version('mana-zero-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-mana-zero/r4/preview.html?embed=1', 'public/sol61-mana-zero/r4/effect.mjs', '品質不合格・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結品質記録: H64暗明で縦stripe/衣装の帯に読め、受領固有の身体応答が不成立。技術再生はpass（実GPU compile/submission、全寿命4 cycle）。SFX聴感未実施、ユーザー未採用、本編未接続。', 'effect-H64'),
