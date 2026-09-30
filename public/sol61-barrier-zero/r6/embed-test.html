@@ -1,0 +1,7 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><title>Barrier r6 verification frame</title><style>html,body{width:960px;height:260px;margin:0;overflow:hidden}iframe{border:0;width:960px;height:260px;display:block}</style><iframe title="Barrier r6"></iframe><script>
+const f=document.querySelector('iframe');f.src='./index.html?verify=1&embed=1&audit=1';
+Object.defineProperty(window,'__barrier',{get:()=>f.contentWindow.__barrier});
+Object.defineProperty(window,'__gallerySfx',{get:()=>f.contentWindow.__gallerySfx});
+Object.defineProperty(window,'__ready',{get:()=>!!window.__barrier?.ready&&window.__barrier.stats().frame>0});
+window.__stamina={frame(ms,options={}){const b=window.__barrier;if(!b?.ready)return null;const aliases={main:'emit',sparkle:'stars',face:'coverage'};for(const [key,value] of Object.entries(options)){b.settings[aliases[key]??key]=value;}b.seek(ms);return b.stats();},snapshot(){const b=window.__barrier;if(!b?.stats)return b;return{...b.stats(),adapter:b.adapter,submitted:b.stats().frame,cycles:b.stats().loops};},resume(){window.__barrier?.resume();},reset(){window.__barrier?.resume();}};
+</script></html>

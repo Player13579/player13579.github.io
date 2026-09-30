@@ -15,6 +15,7 @@
     'cooldown-clock-zero-r1': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'cooldown-clock-zero-r2': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'barrier-sol61-r4': { magnification: 4, focusX: 490, focusY: 310 },
+    'barrier-sol61-r6': { magnification: 4, focusX: 490, focusY: 310 },
     'barrier-sol61-r5': { magnification: 4, focusX: 490, focusY: 310 },
     'cooldown-sol61-shortening-zero': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'stamina-sol61-r7': { magnification: 240 / (64 * (530 / 260)), focusX: 490, focusY: 310 },
@@ -243,7 +244,8 @@
       version('astra-cooldown-benefit-r0.2', 'Astra r0.2', 'public/astra-cooldown-benefit-v1/versions/r02/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r02/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。身体前を三本の弧が通過するように見え、待機の短縮と受益者の変化が読めない。', 'actor-H64'),
       version('astra-cooldown-benefit-r0.1', 'Astra r0.1', 'public/astra-cooldown-benefit-v1/versions/r01/index.html?embed=1&height=64', 'public/astra-cooldown-benefit-v1/versions/r01/effect.mjs', '品質不合格・本編未採用', '作者: GPT-6-Astra。三面が汎用的な同心輪へ融合。SFX圧縮時刻も不一致。', 'actor-H64')
     ]) }),
-    Object.freeze({ id: 'barrier-pro', title: 'バリア', versions: Object.freeze([
+    Object.freeze({ id: 'barrier-pro', title: 'バリア', defaultVersionId: 'barrier-sol61-r6', versions: Object.freeze([
+      version('barrier-sol61-r6', 'GPT-6.1-Sol zero r6', 'public/sol61-barrier-zero/r6/index.html?embed=1', 'public/sol61-barrier-zero/r6/runtime.mjs', '実GPU技術再生pass・視覚品質未達・未採用・本編未接続・聴感未実施', '作者: GPT-6.1-Sol（設計）。GPT-6-Lunaが設計凍結版に忠実なWebGPU runtime portとWGSL予約語の機械修正を担当。元r6はWGSL予約語smoothでコンパイル失敗。tested-a2では識別子トークンsmoothをeSmoothへ変更し、smoothstepと他の設計ソースを保持。GPU compile/submit pass。視覚品質は未達: nativeのprevent/protect境界が明確に読めず、主担当の品質審査中。ユーザー未採用、本編未接続、音声聴感未実施。', 'effect-H64'),
       version('barrier-sol61-r5', 'GPT-6.1-Sol zero r5', 'public/sol61-barrier-zero/r5/index.html?embed=1', 'public/sol61-barrier-zero/r5/runtime.mjs', '技術再生pass・視覚品質不合格・sparkle未達・未採用・本編未接続・聴感未検証', '作者: GPT-6.1-Sol。凍結版の実GPU native H64 main-only/combined暗明全寿命replay pass。視覚品質不合格。sparkleはRGBゲートを通らず、nativeで明確に読めないため未達。ユーザー未採用、本編未接続、SFX聴感未実施。', 'effect-H64'),
       version('barrier-sol61-r4', 'GPT-6.1-Sol zero r4', 'public/sol61-barrier-zero/r4/index.html?embed=1', 'public/sol61-barrier-zero/r4/runtime.mjs', '品質不合格・未採用・本編未接続・聴感未受入', '作者: GPT-6.1-Sol。技術再生可能な新規設計候補として掲載。品質不合格、ユーザー未採用、本編未接続、SFX聴感未受入。2026-09-30の採用撤回後、バリア群に現行採用版はありません。', 'effect-H64'),
       version('barrier-sol61-r3', 'GPT-6.1-Sol zero r3', 'public/sol61-barrier-zero/r3/index.html?embed=1', 'public/sol61-barrier-zero/r3/runtime.mjs', 'ユーザー不採用・質感不合格・本編未接続', '作者: GPT-6.1-Sol。ユーザー評価: プラスチックのような質感へ変わったため不採用。実GPUH64全寿命・3ループの技術再生記録は保持するが、品質合格を意味しない。改修予定。有限固有SFXあり、聴感未受入。', 'effect-H64'),
