@@ -1,0 +1,151 @@
+{
+  "schema": "dva-webgpu-e-package-candidate-v1",
+  "edition": "barrier-sol61-r11-runtime-attempt-a1",
+  "entry": "index.html?embed=1",
+  "deployableFileCount": 15,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2124,
+      "sha256": "95f51ca21881846aac2fe310c84fc74a91b2403c064752f1d80e780fbe90112a"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 19699,
+      "sha256": "5e07a07129b8873a0ba31ce4366dbffabe0d5a4d6c8d7b449eedd0bfbb8c10ae"
+    },
+    {
+      "path": "gallery-clock-a1.mjs",
+      "bytes": 7330,
+      "sha256": "461b855fcbf961ff4dd28e534bec6049270af3206650aa35b757cbdf4e5b0692"
+    },
+    {
+      "path": "sfx-runtime.mjs",
+      "bytes": 6907,
+      "sha256": "392d3663c79b812dcaeda6208fba83c200fce9d223c64e68117586e12bc2abd2"
+    },
+    {
+      "path": "artist.mjs",
+      "bytes": 247,
+      "sha256": "e2e8b7824675e3df20e21621acfc502e0558ed27ee6fe1d4e0dfdaad4bc34cdb"
+    },
+    {
+      "path": "design.mjs",
+      "bytes": 8694,
+      "sha256": "97c60c23fbd17b4a609d8532933bcb95cb6c9baf77c3e430313fff8b1abe2a09"
+    },
+    {
+      "path": "projection.mjs",
+      "bytes": 1943,
+      "sha256": "1c744bafadcd881f5610ffffe84b9e1012167238c2a5b23bbe430421eba6b05f"
+    },
+    {
+      "path": "world-shader.mjs",
+      "bytes": 11044,
+      "sha256": "73eea7e89f6f70cbc017e599ee1488941326e608f6a20741316daa7ee3c3d749"
+    },
+    {
+      "path": "post-shader.mjs",
+      "bytes": 3520,
+      "sha256": "37d8dbbbe1270a34a267adeb487fcbdec28911bdd303126c3b44780aeca0f40b"
+    },
+    {
+      "path": "e-clock-contract.mjs",
+      "bytes": 2962,
+      "sha256": "af160f7a4a89c8731991acaafcfdda1d664f14ab052a539e5999c46a68592205"
+    },
+    {
+      "path": "sfx-score.mjs",
+      "bytes": 1490,
+      "sha256": "b1f40494211238f8287015f2d11c292eb3add0e313163133459917678da5bbc1"
+    },
+    {
+      "path": "hit-state-off-shader.mjs",
+      "bytes": 265,
+      "sha256": "7cfc1eedeaea0c8fc145d9bfec5643a74c7f733bf14c93c594bfd105ebddffb9"
+    },
+    {
+      "path": "body.png",
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    },
+    {
+      "path": "render-contract.json",
+      "bytes": 3852,
+      "sha256": "ac1222ca92ef8aaddd37ebc826faadd7036cbfa95b42ffda186c0ab958377468"
+    },
+    {
+      "path": "SOURCE-MANIFEST.json",
+      "bytes": 5054,
+      "sha256": "3bed0bd0145b010397727c8675f0b46fb4bbc9cf9bd4e3cfbcd4c013560d345e"
+    }
+  ],
+  "authorship": {
+    "artist": "GPT-6.1-Sol",
+    "runtime": "GPT-6-Luna",
+    "artistSourceManifestSha256": "3bed0bd0145b010397727c8675f0b46fb4bbc9cf9bd4e3cfbcd4c013560d345e",
+    "artistFrozenFileCount": 25,
+    "exactArtistRuntimeDependencies": 10
+  },
+  "runtimeAdapter": {
+    "basedOn": "r10/runtime-attempt-a1 generic WebGPU bridge",
+    "abiBytes": 128,
+    "abiOrder": [
+      "viewport",
+      "phase",
+      "gates",
+      "optics",
+      "frameLayout",
+      "contact",
+      "camera",
+      "bounds"
+    ],
+    "requiredFeatures": [],
+    "pipelines": [
+      "rearHit",
+      "frontHit"
+    ],
+    "diagnostic": "authored hit-state-off-shader.mjs; disables HIT_STATE_ENABLED only"
+  },
+  "technical": {
+    "status": "pass",
+    "wgslCompilation": "pass",
+    "initialGpuSubmit": "pass",
+    "nativeCanvas": "980x620 CSS and intrinsic at DPR1; actor H64",
+    "nativeMatrixCases": 49,
+    "lifespan": "full automatic cycle and wrap observed",
+    "verificationAudio": {
+      "contextCount": 0,
+      "voices": 0,
+      "gain": 0,
+      "bridgeUnlockBlocked": true
+    },
+    "eventClock": {
+      "createMs": 140,
+      "hitMs": 75,
+      "breakMs": 80,
+      "rate": 2,
+      "ageRateMultipliedOnce": false,
+      "duplicateCreateHitReceiptsRejected": true
+    },
+    "resize": "fixed 980x620 render target held under narrow viewport",
+    "visibility": "not_observed_headless",
+    "gpuErrors": [],
+    "consoleErrors": [],
+    "pageErrors": [],
+    "requestFailures": []
+  },
+  "status": {
+    "adoption": "unadopted",
+    "visualQuality": "pending-primary-review",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not_connected",
+    "gallery": "not_published"
+  },
+  "evidence": {
+    "nativeProof": "outputs/request-20260930/sol61-barrier-zero/r11/runtime-attempt-a1/evidence/NATIVE-GPU-PROOF.json",
+    "nativeProofSha256": "1414d4c349139de4f944714ee8c21dc7afcda5a92807bcd9addeafe73c7e7d61",
+    "focusedTests": "runtime-port.test.mjs 4/4; r11 CPU-CHECK 16/16",
+    "notes": "Two early headless visibility attempts did not observe document.hidden; failures are preserved separately. Final technical replay excludes visibility pass."
+  }
+}
