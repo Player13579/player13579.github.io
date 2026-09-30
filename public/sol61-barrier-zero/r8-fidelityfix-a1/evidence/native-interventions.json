@@ -1,0 +1,948 @@
+{
+  "id": "per-cell-near-fix-a1",
+  "verification": true,
+  "url": "http://127.0.0.1:8774/pixel-check.html?verify=barrier-r8-fidelity-a1",
+  "canvas": {
+    "width": 980,
+    "height": 620,
+    "dpr": 1
+  },
+  "cases": [
+    {
+      "name": "default-create160-dual",
+      "spec": {
+        "stage": "create",
+        "ageMs": 160,
+        "layout": {
+          "dual": true
+        }
+      },
+      "submitted": {
+        "submitId": 3,
+        "stage": "create",
+        "age": 0.16,
+        "live": true,
+        "flags": {
+          "source": true,
+          "coverage": true,
+          "actor": true,
+          "receiver": true,
+          "near": true,
+          "cross": true,
+          "ghost": true,
+          "points": true,
+          "front": true,
+          "rear": true
+        },
+        "settingsSerial": 2,
+        "layout": {
+          "dual": true,
+          "diagnosticOccluder": false
+        },
+        "camera": {
+          "observerCenter": [
+            0,
+            0
+          ],
+          "sourceShift": [
+            0,
+            0
+          ]
+        },
+        "box": {
+          "world": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "field": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "sources": [
+            -43.50426485669775,
+            -49.62097716984858,
+            43.50426485669775,
+            49.62097716984858
+          ],
+          "points": [
+            -47.383052735485634,
+            -53.49976504863646,
+            47.383052735485634,
+            53.49976504863646
+          ],
+          "body": [
+            -19.342222222222222,
+            -32,
+            19.342222222222222,
+            32
+          ],
+          "near": [
+            -59.40748605161798,
+            -65.33532005147985,
+            59.40748605161798,
+            65.33532005147985
+          ],
+          "cross": [
+            -55.16616864638835,
+            -61.28288095953918,
+            55.16616864638835,
+            61.28288095953918
+          ],
+          "ghost": [
+            -69.6068237707164,
+            -79.39356347175773,
+            69.6068237707164,
+            79.39356347175773
+          ],
+          "OBS": [
+            -80.6068237707164,
+            -90.39356347175773,
+            80.6068237707164,
+            90.39356347175773
+          ],
+          "worldMetres": [
+            -1.351130499768276,
+            -1.503957470077215,
+            1.351130499768276,
+            1.503957470077215
+          ],
+          "scale": 38.78787878787879,
+          "note": "support only; not visibility/quality/performance"
+        },
+        "nearBlur": {
+          "cells": 2,
+          "horizontalDraws": 2,
+          "verticalDraws": 2,
+          "scissorRects": [
+            [
+              157,
+              212,
+              176,
+              196
+            ],
+            [
+              647,
+              212,
+              176,
+              196
+            ]
+          ]
+        },
+        "confirmedBy": 3,
+        "confirmedAfterLaterFrame": true
+      },
+      "capturePath": "evidence/native-interventions/default-create160-dual.png",
+      "captureSha256": "e99147514122acb5330ee26f8d5538018dc646a06141c057f8313f7c553dbc89",
+      "pngBytes": 26742
+    },
+    {
+      "name": "near-off-create160-dual",
+      "spec": {
+        "stage": "create",
+        "ageMs": 160,
+        "layout": {
+          "dual": true
+        },
+        "settings": {
+          "near": false
+        }
+      },
+      "submitted": {
+        "submitId": 5,
+        "stage": "create",
+        "age": 0.16,
+        "live": true,
+        "flags": {
+          "source": true,
+          "coverage": true,
+          "actor": true,
+          "receiver": true,
+          "near": false,
+          "cross": true,
+          "ghost": true,
+          "points": true,
+          "front": true,
+          "rear": true
+        },
+        "settingsSerial": 4,
+        "layout": {
+          "dual": true,
+          "diagnosticOccluder": false
+        },
+        "camera": {
+          "observerCenter": [
+            0,
+            0
+          ],
+          "sourceShift": [
+            0,
+            0
+          ]
+        },
+        "box": {
+          "world": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "field": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "sources": [
+            -43.50426485669775,
+            -49.62097716984858,
+            43.50426485669775,
+            49.62097716984858
+          ],
+          "points": [
+            -47.383052735485634,
+            -53.49976504863646,
+            47.383052735485634,
+            53.49976504863646
+          ],
+          "body": [
+            -19.342222222222222,
+            -32,
+            19.342222222222222,
+            32
+          ],
+          "near": [
+            -59.40748605161798,
+            -65.33532005147985,
+            59.40748605161798,
+            65.33532005147985
+          ],
+          "cross": [
+            -55.16616864638835,
+            -61.28288095953918,
+            55.16616864638835,
+            61.28288095953918
+          ],
+          "ghost": [
+            -69.6068237707164,
+            -79.39356347175773,
+            69.6068237707164,
+            79.39356347175773
+          ],
+          "OBS": [
+            -80.6068237707164,
+            -90.39356347175773,
+            80.6068237707164,
+            90.39356347175773
+          ],
+          "worldMetres": [
+            -1.351130499768276,
+            -1.503957470077215,
+            1.351130499768276,
+            1.503957470077215
+          ],
+          "scale": 38.78787878787879,
+          "note": "support only; not visibility/quality/performance"
+        },
+        "nearBlur": {
+          "cells": 2,
+          "horizontalDraws": 2,
+          "verticalDraws": 2,
+          "scissorRects": [
+            [
+              157,
+              212,
+              176,
+              196
+            ],
+            [
+              647,
+              212,
+              176,
+              196
+            ]
+          ]
+        },
+        "confirmedBy": 5,
+        "confirmedAfterLaterFrame": true
+      },
+      "capturePath": "evidence/native-interventions/near-off-create160-dual.png",
+      "captureSha256": "bed0bc7c6086b75e568fb7af497d3706df7acb7f775fbda528d7c1fe047d7f37",
+      "pngBytes": 25224
+    },
+    {
+      "name": "default-create430-dual",
+      "spec": {
+        "stage": "create",
+        "ageMs": 430,
+        "layout": {
+          "dual": true
+        }
+      },
+      "submitted": {
+        "submitId": 7,
+        "stage": "create",
+        "age": 0.43,
+        "live": true,
+        "flags": {
+          "source": true,
+          "coverage": true,
+          "actor": true,
+          "receiver": true,
+          "near": true,
+          "cross": true,
+          "ghost": true,
+          "points": true,
+          "front": true,
+          "rear": true
+        },
+        "settingsSerial": 6,
+        "layout": {
+          "dual": true,
+          "diagnosticOccluder": false
+        },
+        "camera": {
+          "observerCenter": [
+            0,
+            0
+          ],
+          "sourceShift": [
+            0,
+            0
+          ]
+        },
+        "box": {
+          "world": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "field": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "sources": [
+            -43.50426485669775,
+            -49.62097716984858,
+            43.50426485669775,
+            49.62097716984858
+          ],
+          "points": [
+            -47.383052735485634,
+            -53.49976504863646,
+            47.383052735485634,
+            53.49976504863646
+          ],
+          "body": [
+            -19.342222222222222,
+            -32,
+            19.342222222222222,
+            32
+          ],
+          "near": [
+            -59.40748605161798,
+            -65.33532005147985,
+            59.40748605161798,
+            65.33532005147985
+          ],
+          "cross": [
+            -55.16616864638835,
+            -61.28288095953918,
+            55.16616864638835,
+            61.28288095953918
+          ],
+          "ghost": [
+            -69.6068237707164,
+            -79.39356347175773,
+            69.6068237707164,
+            79.39356347175773
+          ],
+          "OBS": [
+            -80.6068237707164,
+            -90.39356347175773,
+            80.6068237707164,
+            90.39356347175773
+          ],
+          "worldMetres": [
+            -1.351130499768276,
+            -1.503957470077215,
+            1.351130499768276,
+            1.503957470077215
+          ],
+          "scale": 38.78787878787879,
+          "note": "support only; not visibility/quality/performance"
+        },
+        "nearBlur": {
+          "cells": 2,
+          "horizontalDraws": 2,
+          "verticalDraws": 2,
+          "scissorRects": [
+            [
+              157,
+              212,
+              176,
+              196
+            ],
+            [
+              647,
+              212,
+              176,
+              196
+            ]
+          ]
+        },
+        "confirmedBy": 7,
+        "confirmedAfterLaterFrame": true
+      },
+      "capturePath": "evidence/native-interventions/default-create430-dual.png",
+      "captureSha256": "a8056581e511ecd398217ecc91daed1323d5cede32ca0696ab88c41f4bb7c69f",
+      "pngBytes": 39491
+    },
+    {
+      "name": "near-off-create430-dual",
+      "spec": {
+        "stage": "create",
+        "ageMs": 430,
+        "layout": {
+          "dual": true
+        },
+        "settings": {
+          "near": false
+        }
+      },
+      "submitted": {
+        "submitId": 9,
+        "stage": "create",
+        "age": 0.43,
+        "live": true,
+        "flags": {
+          "source": true,
+          "coverage": true,
+          "actor": true,
+          "receiver": true,
+          "near": false,
+          "cross": true,
+          "ghost": true,
+          "points": true,
+          "front": true,
+          "rear": true
+        },
+        "settingsSerial": 8,
+        "layout": {
+          "dual": true,
+          "diagnosticOccluder": false
+        },
+        "camera": {
+          "observerCenter": [
+            0,
+            0
+          ],
+          "sourceShift": [
+            0,
+            0
+          ]
+        },
+        "box": {
+          "world": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "field": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "sources": [
+            -43.50426485669775,
+            -49.62097716984858,
+            43.50426485669775,
+            49.62097716984858
+          ],
+          "points": [
+            -47.383052735485634,
+            -53.49976504863646,
+            47.383052735485634,
+            53.49976504863646
+          ],
+          "body": [
+            -19.342222222222222,
+            -32,
+            19.342222222222222,
+            32
+          ],
+          "near": [
+            -59.40748605161798,
+            -65.33532005147985,
+            59.40748605161798,
+            65.33532005147985
+          ],
+          "cross": [
+            -55.16616864638835,
+            -61.28288095953918,
+            55.16616864638835,
+            61.28288095953918
+          ],
+          "ghost": [
+            -69.6068237707164,
+            -79.39356347175773,
+            69.6068237707164,
+            79.39356347175773
+          ],
+          "OBS": [
+            -80.6068237707164,
+            -90.39356347175773,
+            80.6068237707164,
+            90.39356347175773
+          ],
+          "worldMetres": [
+            -1.351130499768276,
+            -1.503957470077215,
+            1.351130499768276,
+            1.503957470077215
+          ],
+          "scale": 38.78787878787879,
+          "note": "support only; not visibility/quality/performance"
+        },
+        "nearBlur": {
+          "cells": 2,
+          "horizontalDraws": 2,
+          "verticalDraws": 2,
+          "scissorRects": [
+            [
+              157,
+              212,
+              176,
+              196
+            ],
+            [
+              647,
+              212,
+              176,
+              196
+            ]
+          ]
+        },
+        "confirmedBy": 9,
+        "confirmedAfterLaterFrame": true
+      },
+      "capturePath": "evidence/native-interventions/near-off-create430-dual.png",
+      "captureSha256": "56b434995dba0927fb8904516bc0f79268895ec5ca60466557cfa3489cc9b0ff",
+      "pngBytes": 36222
+    },
+    {
+      "name": "default-hit55-dual",
+      "spec": {
+        "stage": "hit",
+        "ageMs": 55,
+        "layout": {
+          "dual": true
+        }
+      },
+      "submitted": {
+        "submitId": 11,
+        "stage": "hit",
+        "age": 0.055,
+        "live": true,
+        "flags": {
+          "source": true,
+          "coverage": true,
+          "actor": true,
+          "receiver": true,
+          "near": true,
+          "cross": true,
+          "ghost": true,
+          "points": true,
+          "front": true,
+          "rear": true
+        },
+        "settingsSerial": 10,
+        "layout": {
+          "dual": true,
+          "diagnosticOccluder": false
+        },
+        "camera": {
+          "observerCenter": [
+            0,
+            0
+          ],
+          "sourceShift": [
+            0,
+            0
+          ]
+        },
+        "box": {
+          "world": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "field": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "sources": [
+            -43.50426485669775,
+            -49.62097716984858,
+            43.50426485669775,
+            49.62097716984858
+          ],
+          "points": [
+            -47.383052735485634,
+            -53.49976504863646,
+            47.383052735485634,
+            53.49976504863646
+          ],
+          "body": [
+            -19.342222222222222,
+            -32,
+            19.342222222222222,
+            32
+          ],
+          "near": [
+            -59.40748605161798,
+            -65.33532005147985,
+            59.40748605161798,
+            65.33532005147985
+          ],
+          "cross": [
+            -55.16616864638835,
+            -61.28288095953918,
+            55.16616864638835,
+            61.28288095953918
+          ],
+          "ghost": [
+            -69.6068237707164,
+            -79.39356347175773,
+            69.6068237707164,
+            79.39356347175773
+          ],
+          "OBS": [
+            -80.6068237707164,
+            -90.39356347175773,
+            80.6068237707164,
+            90.39356347175773
+          ],
+          "worldMetres": [
+            -1.351130499768276,
+            -1.503957470077215,
+            1.351130499768276,
+            1.503957470077215
+          ],
+          "scale": 38.78787878787879,
+          "note": "support only; not visibility/quality/performance"
+        },
+        "nearBlur": {
+          "cells": 2,
+          "horizontalDraws": 2,
+          "verticalDraws": 2,
+          "scissorRects": [
+            [
+              157,
+              212,
+              176,
+              196
+            ],
+            [
+              647,
+              212,
+              176,
+              196
+            ]
+          ]
+        },
+        "confirmedBy": 11,
+        "confirmedAfterLaterFrame": true
+      },
+      "capturePath": "evidence/native-interventions/default-hit55-dual.png",
+      "captureSha256": "9ee21fe45362fd99ae3f3405e0184567b747574709817409e7c39f6a4a5f4790",
+      "pngBytes": 39232
+    },
+    {
+      "name": "source-off-hit55-dual",
+      "spec": {
+        "stage": "hit",
+        "ageMs": 55,
+        "layout": {
+          "dual": true
+        },
+        "settings": {
+          "source": false
+        }
+      },
+      "submitted": {
+        "submitId": 13,
+        "stage": "hit",
+        "age": 0.055,
+        "live": true,
+        "flags": {
+          "source": false,
+          "coverage": true,
+          "actor": true,
+          "receiver": true,
+          "near": true,
+          "cross": true,
+          "ghost": true,
+          "points": true,
+          "front": true,
+          "rear": true
+        },
+        "settingsSerial": 12,
+        "layout": {
+          "dual": true,
+          "diagnosticOccluder": false
+        },
+        "camera": {
+          "observerCenter": [
+            0,
+            0
+          ],
+          "sourceShift": [
+            0,
+            0
+          ]
+        },
+        "box": {
+          "world": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "field": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "sources": [
+            -43.50426485669775,
+            -49.62097716984858,
+            43.50426485669775,
+            49.62097716984858
+          ],
+          "points": [
+            -47.383052735485634,
+            -53.49976504863646,
+            47.383052735485634,
+            53.49976504863646
+          ],
+          "body": [
+            -19.342222222222222,
+            -32,
+            19.342222222222222,
+            32
+          ],
+          "near": [
+            -59.40748605161798,
+            -65.33532005147985,
+            59.40748605161798,
+            65.33532005147985
+          ],
+          "cross": [
+            -55.16616864638835,
+            -61.28288095953918,
+            55.16616864638835,
+            61.28288095953918
+          ],
+          "ghost": [
+            -69.6068237707164,
+            -79.39356347175773,
+            69.6068237707164,
+            79.39356347175773
+          ],
+          "OBS": [
+            -80.6068237707164,
+            -90.39356347175773,
+            80.6068237707164,
+            90.39356347175773
+          ],
+          "worldMetres": [
+            -1.351130499768276,
+            -1.503957470077215,
+            1.351130499768276,
+            1.503957470077215
+          ],
+          "scale": 38.78787878787879,
+          "note": "support only; not visibility/quality/performance"
+        },
+        "nearBlur": {
+          "cells": 2,
+          "horizontalDraws": 2,
+          "verticalDraws": 2,
+          "scissorRects": [
+            [
+              157,
+              212,
+              176,
+              196
+            ],
+            [
+              647,
+              212,
+              176,
+              196
+            ]
+          ]
+        },
+        "confirmedBy": 13,
+        "confirmedAfterLaterFrame": true
+      },
+      "capturePath": "evidence/native-interventions/source-off-hit55-dual.png",
+      "captureSha256": "f068cd3ccdc9dd07b06f7834401f2c0508240ffb61ef38f0c9a0e4ec450550ab",
+      "pngBytes": 18591
+    },
+    {
+      "name": "expiry-dual",
+      "spec": {
+        "stage": "off",
+        "ageMs": 0,
+        "layout": {
+          "dual": true
+        }
+      },
+      "submitted": {
+        "submitId": 15,
+        "stage": "off",
+        "age": 0,
+        "live": false,
+        "flags": {
+          "source": true,
+          "coverage": true,
+          "actor": true,
+          "receiver": true,
+          "near": true,
+          "cross": true,
+          "ghost": true,
+          "points": true,
+          "front": true,
+          "rear": true
+        },
+        "settingsSerial": 14,
+        "layout": {
+          "dual": true,
+          "diagnosticOccluder": false
+        },
+        "camera": {
+          "observerCenter": [
+            0,
+            0
+          ],
+          "sourceShift": [
+            0,
+            0
+          ]
+        },
+        "box": {
+          "world": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "field": [
+            -52.40748605161798,
+            -58.335320051479854,
+            52.40748605161798,
+            58.335320051479854
+          ],
+          "sources": [
+            -43.50426485669775,
+            -49.62097716984858,
+            43.50426485669775,
+            49.62097716984858
+          ],
+          "points": [
+            -47.383052735485634,
+            -53.49976504863646,
+            47.383052735485634,
+            53.49976504863646
+          ],
+          "body": [
+            -19.342222222222222,
+            -32,
+            19.342222222222222,
+            32
+          ],
+          "near": [
+            -59.40748605161798,
+            -65.33532005147985,
+            59.40748605161798,
+            65.33532005147985
+          ],
+          "cross": [
+            -55.16616864638835,
+            -61.28288095953918,
+            55.16616864638835,
+            61.28288095953918
+          ],
+          "ghost": [
+            -69.6068237707164,
+            -79.39356347175773,
+            69.6068237707164,
+            79.39356347175773
+          ],
+          "OBS": [
+            -80.6068237707164,
+            -90.39356347175773,
+            80.6068237707164,
+            90.39356347175773
+          ],
+          "worldMetres": [
+            -1.351130499768276,
+            -1.503957470077215,
+            1.351130499768276,
+            1.503957470077215
+          ],
+          "scale": 38.78787878787879,
+          "note": "support only; not visibility/quality/performance"
+        },
+        "nearBlur": {
+          "cells": 2,
+          "horizontalDraws": 2,
+          "verticalDraws": 2,
+          "scissorRects": [
+            [
+              157,
+              212,
+              176,
+              196
+            ],
+            [
+              647,
+              212,
+              176,
+              196
+            ]
+          ]
+        },
+        "confirmedBy": 15,
+        "confirmedAfterLaterFrame": true
+      },
+      "capturePath": "evidence/native-interventions/expiry-dual.png",
+      "captureSha256": "f068cd3ccdc9dd07b06f7834401f2c0508240ffb61ef38f0c9a0e4ec450550ab",
+      "pngBytes": 18591
+    }
+  ],
+  "audio": {
+    "verification": true,
+    "contextCreated": false,
+    "contextState": "absent",
+    "unlocked": false,
+    "muted": false,
+    "armed": false,
+    "lastCause": null
+  },
+  "gpuErrors": []
+}

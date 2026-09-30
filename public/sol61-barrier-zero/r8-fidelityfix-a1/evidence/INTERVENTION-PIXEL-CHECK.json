@@ -1,0 +1,130 @@
+{
+  "id": "per-cell-near-fix-a1",
+  "runtimeSha256": "8f427e783340a1cb8e2e1d54609c6054a263d251c33a1963787dbef64347cb0f",
+  "sourceRuntimeSha256": "ba17d5d4c59116be9fa89f25d438d668c1dfd32c6c67bd461a5c3b6bc6b18041",
+  "interventionEvidenceSha256": "e824e8d4b22ce2e86d90cb7c7492103d313635a242b75c38935e568d66c280a6",
+  "captureSha256": {
+    "default-create160-dual": "e99147514122acb5330ee26f8d5538018dc646a06141c057f8313f7c553dbc89",
+    "near-off-create160-dual": "bed0bc7c6086b75e568fb7af497d3706df7acb7f775fbda528d7c1fe047d7f37",
+    "default-create430-dual": "a8056581e511ecd398217ecc91daed1323d5cede32ca0696ab88c41f4bb7c69f",
+    "near-off-create430-dual": "56b434995dba0927fb8904516bc0f79268895ec5ca60466557cfa3489cc9b0ff",
+    "default-hit55-dual": "9ee21fe45362fd99ae3f3405e0184567b747574709817409e7c39f6a4a5f4790",
+    "source-off-hit55-dual": "f068cd3ccdc9dd07b06f7834401f2c0508240ffb61ef38f0c9a0e4ec450550ab",
+    "expiry-dual": "f068cd3ccdc9dd07b06f7834401f2c0508240ffb61ef38f0c9a0e4ec450550ab"
+  },
+  "verification": {
+    "url": "http://127.0.0.1:8774/pixel-check.html?verify=barrier-r8-fidelity-a1",
+    "canvas": {
+      "width": 980,
+      "height": 620,
+      "dpr": 1
+    },
+    "audio": {
+      "verification": true,
+      "contextCreated": false,
+      "contextState": "absent",
+      "unlocked": false,
+      "muted": false,
+      "armed": false,
+      "lastCause": null
+    },
+    "gpuErrors": [],
+    "allCapturesConfirmedByLaterFrame": true,
+    "allDualCasesHave2HorizontalAnd2VerticalDraws": true
+  },
+  "nearOffDeltaChecks": [
+    {
+      "pair": [
+        "default-create160-dual",
+        "near-off-create160-dual"
+      ],
+      "whole": {
+        "changedPixels": 7111,
+        "bbox": [
+          202,
+          274,
+          755,
+          360
+        ]
+      },
+      "leftCell": {
+        "changedPixels": 4012,
+        "bbox": [
+          202,
+          274,
+          268,
+          360
+        ]
+      },
+      "rightCell": {
+        "changedPixels": 3099,
+        "bbox": [
+          695,
+          278,
+          755,
+          357
+        ]
+      },
+      "bothCellsChanged": true,
+      "deltaBoundsInsideSubmittedScissors": true
+    },
+    {
+      "pair": [
+        "default-create430-dual",
+        "near-off-create430-dual"
+      ],
+      "whole": {
+        "changedPixels": 14944,
+        "bbox": [
+          199,
+          256,
+          779,
+          363
+        ]
+      },
+      "leftCell": {
+        "changedPixels": 7892,
+        "bbox": [
+          199,
+          256,
+          290,
+          363
+        ]
+      },
+      "rightCell": {
+        "changedPixels": 7052,
+        "bbox": [
+          690,
+          258,
+          779,
+          362
+        ]
+      },
+      "bothCellsChanged": true,
+      "deltaBoundsInsideSubmittedScissors": true
+    }
+  ],
+  "sourceExpiryChecks": {
+    "defaultHitVsSourceOff": {
+      "changedPixels": 15658,
+      "bbox": [
+        194,
+        256,
+        779,
+        363
+      ]
+    },
+    "sourceOffVsExpiryExactRgbEquality": true,
+    "sourceOffSha256": "f068cd3ccdc9dd07b06f7834401f2c0508240ffb61ef38f0c9a0e4ec450550ab",
+    "expirySha256": "f068cd3ccdc9dd07b06f7834401f2c0508240ffb61ef38f0c9a0e4ec450550ab"
+  },
+  "interpretation": "Native GPU support/delta evidence only. Two blur passes now draw once in each dual cell. At both create ages, near-off produces nonzero differences in left and right active cell, bounded by each submitted scissor. Source-off hit differs from live default hit; source-off image exactly matches expired/off image. Does not establish aesthetic quality, listening, game integration, public replay, or adoption.",
+  "status": {
+    "technicalRuntimeAdapter": "verified by CPU and native GPU evidence",
+    "quality": "not_run",
+    "listening": "not_run",
+    "gameIntegration": "not_run",
+    "public": "not_run",
+    "adoption": "unadopted"
+  }
+}

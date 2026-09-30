@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=980,initial-scale=1"><meta name="theme-color" content="#10151a"><link rel="icon" href="data:,"><title>Barrier r8 fidelityfix a1 · full canvas</title>
+<style>html,body{width:980px;height:620px;margin:0;padding:0;overflow:hidden;background:#10151a}iframe{display:block;width:980px;height:620px;border:0;margin:0;padding:0;overflow:hidden}</style></head>
+<body><iframe id="barrier-runtime" title="Barrier fidelityfix a1 full native canvas" width="980" height="620"></iframe>
+<script type="module">
+import { phaseFor, causeStillActiveAfterSubmit } from './gallery-clock.mjs';
+(() => {
+  const frame=document.getElementById('barrier-runtime');
+  const own=new URL(location.href);
+  const child=new URL('./index.html',own.href);
+  child.searchParams.set('embed','1');
+  if(own.searchParams.has('verify')) child.searchParams.set('verify',own.searchParams.get('verify')||'1');
+  frame.src=child.href;
+  let installed=false, animation=0, stopped=false, cycle=0, submitCount=0, firstSubmitId=null, lastSubmitId=null, wraps=0, lastPhase=null, launchCounts={}, statusNode=null, proofNode=null, lastTick=0, lastPhaseKey=null, phaseHistory=[], galleryStart=null, installTime=performance.now();
+  const eventFor=(phase,id,start,age)=>{
+    const base={id,startedAtMs:start-age};
+    if(phase==='create')return{...base,type:'action-stand',variant:'durability-created',targetId:'fixture-owner'};
+    if(phase==='hit')return{...base,type:'preparation-barrier-hit',variant:'durability-hit',playerId:'fixture-owner',contactPosition:[.50,.15,.66]};
+    if(phase==='break')return{...base,type:'preparation-barrier-hit',variant:'durability-broken',playerId:'fixture-owner',contactPosition:[.50,.15,.66]};
+    return null;
+  };
+  const report=(status,error='')=>({status,error,cycleMs:4600,cycle,wraps,submitCount,firstSubmitId,lastSubmitId,phase:lastPhase,phaseHistory,launchCounts,lastError:frame.contentWindow?.barrierR8?.audit?.lastError??null,gpuErrors:frame.contentWindow?.barrierR8?.audit?.gpuErrors??[],audio:frame.contentWindow?.barrierR8?.audit?.audio??null});
+  const setStatus=(status,error='')=>{const value=JSON.stringify(report(status,error));if(statusNode)statusNode.textContent=value;if(proofNode)proofNode.textContent=value;};
+  const tick=async rafTime=>{
+    if(stopped)return;
+    const win=frame.contentWindow,r=win?.barrierR8;
+    if(!r){animation=requestAnimationFrame(tick);return;}
+    if(rafTime-lastTick<32){animation=requestAnimationFrame(tick);return;}
+    lastTick=rafTime;
+    try{
+      const now=performance.now();if(galleryStart===null){if(r.audit.lastSubmitted){galleryStart=now;window.__barrierGalleryStart=now;setStatus('running');}else if(now-installTime>15000){stopped=true;setStatus('initial-submit-timeout','runtime did not complete initial WebGPU submit');return;}else{setStatus('waiting-initial-submit');animation=requestAnimationFrame(tick);return;}}const elapsed=now-galleryStart,cycleNow=Math.floor(elapsed/4600);
+      if(cycleNow>cycle){wraps+=cycleNow-cycle;cycle=cycleNow;launchCounts={};r.reset();}
+      const cycleAge=elapsed%4600,[stage,ageMs]=phaseFor(cycleAge),key=`${cycle}:${stage}`;
+      r.apply({stage,ageMs});
+      const submitted=await r.submit();
+      if(firstSubmitId===null)firstSubmitId=submitted.submitId;
+      lastSubmitId=submitted.submitId;submitCount++;
+      lastPhase={cycle,stage,ageMs,live:submitted.live,submitId:submitted.submitId,sourceCause:launchCounts[key]===1?key:null};if(key!==lastPhaseKey){phaseHistory.push({...lastPhase});if(phaseHistory.length>32)phaseHistory.shift();lastPhaseKey=key;}
+      if(r.audit.gpuErrors.length){stopped=true;setStatus('gpu-error',r.audit.gpuErrors.join('; '));return;}
+      const afterSubmitNow=performance.now(),afterElapsed=afterSubmitNow-galleryStart,afterCycle=Math.floor(afterElapsed/4600),[afterStage,afterAgeMs]=phaseFor(afterElapsed%4600);
+      const stillActive=causeStillActiveAfterSubmit({cycle:cycleNow,phase:stage},{cycle:afterCycle,phase:afterStage,ageMs:afterAgeMs});
+      if(stillActive&&!(key in launchCounts)&&r.audit.audio.unlocked){
+        const event=eventFor(afterStage,`barrier-gallery-${afterCycle}-${afterStage}`,afterSubmitNow,afterAgeMs);
+        const resolved=await r.dispatchEvent(event,afterSubmitNow);
+        launchCounts[key]=resolved?1:-1;
+      }
+      setStatus('running');animation=requestAnimationFrame(tick);
+    }catch(error){stopped=true;setStatus('error',String(error?.stack??error));}
+  };
+  let installAttempts=0;
+  const install=()=>{
+    try{
+      const doc=frame.contentDocument,win=frame.contentWindow;
+      if(!doc||!doc.querySelector('#surface')){setStatus('waiting-canvas');if(installAttempts++<100)setTimeout(install,50);else setStatus('install-timeout');return;}
+      if(!win.barrierR8){setStatus('waiting-runtime');if(installAttempts++<100)setTimeout(install,50);else setStatus('runtime-timeout');return;}
+      if(!statusNode){statusNode=document.createElement('output');statusNode.id='barrier-gallery-driver-status';statusNode.hidden=true;document.body.append(statusNode);}
+      if(!proofNode){proofNode=doc.createElement('output');proofNode.id='barrier-gallery-driver-proof';proofNode.hidden=true;doc.body.append(proofNode);}
+      if(!doc.getElementById('barrier-gallery-embed-style')){
+        const style=doc.createElement('style');style.id='barrier-gallery-embed-style';
+        style.textContent='html,body{width:980px!important;height:620px!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#10151a!important}main{position:relative!important;display:block!important;width:980px!important;height:620px!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}main>h1,main>#state,main>p,main>#cases,main>#audit{display:none!important}#surface{position:absolute!important;inset:0!important;display:block!important;width:980px!important;height:620px!important;max-width:none!important;aspect-ratio:auto!important;margin:0!important;padding:0!important;background:transparent!important}';
+        doc.head.append(style);
+      }
+      const activate=()=>{try{return win.barrierR8?.triggerGesture()??false;}catch(_){return false;}};
+      window.__gallerySfx={activateFromGesture:activate};
+      win.__gallerySfx=window.__gallerySfx;
+      window.__barrierGalleryStart=performance.now();
+      window.__barrierEmbedReady={canvas:[doc.querySelector('#surface').width,doc.querySelector('#surface').height],runtimeReady:true,verification:!!win.barrierR8.verification,audio:win.barrierR8.audit.audio,driver:'after initial native submit, authored 4600ms lifecycle; create/stable/hit/stable/break/off; rAF native submits; finite causal WAVs only after gesture; verify silent'};
+      if(!installed){installed=true;setStatus('ready');animation=requestAnimationFrame(tick);}
+    }catch(error){setStatus('install-error',String(error?.stack??error));if(installAttempts++<100)setTimeout(install,50);else setStatus('install-timeout',String(error?.stack??error));}
+  };
+  frame.addEventListener('load',install);
+  window.addEventListener('pagehide',()=>{stopped=true;cancelAnimationFrame(animation);try{frame.contentWindow?.barrierR8?.destroy();}catch(_){}});
+})();
+</script></body></html>
+
+
+

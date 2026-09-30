@@ -1,0 +1,33 @@
+{
+  "schema": "dva-e-r8-runtime-adapter-attempt-v1",
+  "id": "per-cell-near-fix-a1",
+  "source": {
+    "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20260930\\sol61-barrier-zero\\r8",
+    "artistManifestSha256": "dadbc6e9542ec789eb677a7843d0f6205adbec08032d3bdb5d9f9bd8e3350de0",
+    "artistFileCount": 23,
+    "artistFilesCopiedByteIdentically": true,
+    "originalRuntimeSha256": "ba17d5d4c59116be9fa89f25d438d668c1dfd32c6c67bd461a5c3b6bc6b18041",
+    "originalRunHistorySha256": "159f706288e313df60bdfe8704cc02ca67cff1fde933e8be072577069aab2f23"
+  },
+  "change": {
+    "scope": "runtime-only: run horizontal+vertical blur for every cell scissor; first draw clears target and subsequent cell draws load it; add submitted blur draw/count/scissor audit",
+    "artistWGSLOrParameterChanges": false,
+    "expectedMono": 1,
+    "expectedDual": 2
+  },
+  "runtime": {
+    "path": "runtime.mjs",
+    "sha256": "8f427e783340a1cb8e2e1d54609c6054a263d251c33a1963787dbef64347cb0f"
+  },
+  "preservedOriginal": {
+    "sourceRuntimePath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20260930\\sol61-barrier-zero\\r8\\runtime.mjs",
+    "sourceRuntimeSha256": "ba17d5d4c59116be9fa89f25d438d668c1dfd32c6c67bd461a5c3b6bc6b18041",
+    "sourceRunHistoryPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20260930\\sol61-barrier-zero\\r8\\evidence\\run-history.json",
+    "sourceRunHistorySha256": "159f706288e313df60bdfe8704cc02ca67cff1fde933e8be072577069aab2f23"
+  },
+  "quality": "not_run",
+  "listening": "not_run",
+  "gameIntegration": "not_run",
+  "public": "not_run",
+  "adoption": "unadopted"
+}

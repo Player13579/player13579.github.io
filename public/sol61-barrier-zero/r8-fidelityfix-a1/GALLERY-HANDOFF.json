@@ -1,0 +1,57 @@
+{
+  "schema": "dva-barrier-gallery-handoff-v1",
+  "versionId": "barrier-sol61-r8-fidelityfix-a1",
+  "editionId": "r8-fidelityfix-a1",
+  "effectGroup": "Barrier",
+  "groupKey": "barrier-pro",
+  "entry": {
+    "sourcePath": "index.html",
+    "galleryPath": "public/sol61-barrier-zero/r8-fidelityfix-a1/entry.html?embed=1",
+    "verificationUrl": "http://127.0.0.1:18768/webgpu-e-gallery.html?verify=barrier-gallery-r8-fidelityfix-a1",
+    "canvasLogicalPx": [
+      980,
+      620
+    ],
+    "aspectRatio": "49:31",
+    "display": "full native canvas",
+    "wrapperSha256": "c42497d0515831bb1d356dbb4308ed4220f3efdfe4c8d800fedf38d0b0393d4b"
+  },
+  "authorship": {
+    "creativeDesign": "GPT-6.1-Sol",
+    "runtimeAndAdapter": "GPT-6-Luna",
+    "contractClarification": "GPT-6.1-Sol",
+    "galleryPackageAssembly": "GPT-6-Luna"
+  },
+  "status": {
+    "technicalReplay": "pass native WebGPU compile/submit; 58 frames + 12 diagnostics; actual nested gallery full authored cycle and wrap, 131 submits; 0 GPU errors; 980x620 canvas; verification audio context absent",
+    "visualQuality": "user_observed_fail_digital_semantics",
+    "adoption": "unadopted",
+    "gameIntegration": "not_run",
+    "listening": "not_run",
+    "publicGalleryRegistered": "local JS registry added; publication pending"
+  },
+  "galleryPolicy": {
+    "adoptedDefault": false,
+    "sameBarrierGroup": true,
+    "defaultList": "unadopted",
+    "adoptionMustNotBeInferredFromReplay": true
+  },
+  "runtime": {
+    "sha256": "8f427e783340a1cb8e2e1d54609c6054a263d251c33a1963787dbef64347cb0f",
+    "correctedContractSha256": "bd33f7961d654a7f45af02d78ad257f72d691bd6b7f3912ede5b23486a388e69",
+    "originalArtistManifestSha256": "dadbc6e9542ec789eb677a7843d0f6205adbec08032d3bdb5d9f9bd8e3350de0",
+    "preview": "after initial native submit, authored 4600ms create/stable/hit/stable/break/off lifecycle; rAF submits targeting30fps; recheck post-submit phase/cycle before finite cue; suppress stale expiry; reset seen IDs at wrap; verify silent; no evidence capture",
+    "postSubmitSoundGate": "10 CPU boundary cases pass; normal audio playback not exercised because verification forces audio off"
+  },
+  "technicalEvidence": [
+    "evidence/native-interventions.json",
+    "evidence/INTERVENTION-PIXEL-CHECK.json",
+    "provenance/b-compliance-fix-a1/CPU-VALIDATION.json",
+    "CANONICAL-REPLAY-PROOF.json",
+    "evidence/native-gpu.json",
+    "evidence/gpu.json",
+    "evidence/native-captures/main-only/",
+    "evidence/native-captures/combined/"
+  ],
+  "instructions": "Root owns later gallery JS integration and release. This handoff is not quality, adoption, game or listening approval."
+}

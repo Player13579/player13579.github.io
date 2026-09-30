@@ -1,0 +1,17 @@
+# Barrier r8 B contract clarification a1
+
+Original r8's 23-file artist freeze, world/post code, visual parameters and public entry remain intact. This attempt adds a complete PH contract against the **same creation-time B commit** `37eb4bdfe59f0dc075f9b4333b7d6af76b784a88`. The saved B specifications match the fetched current source after BOM/line-ending/trailing-newline normalization; this is an original contract omission, not a later rule applied retroactively. Exact source hashes are in SOURCE-MAPPING.json.
+
+The new contract replaces incomplete CausalTimeline/CouplingMap substitutes with the required StateDynamics, typed Couplings/CausalAssessment, CausalityLinks, SurroundingChanges, VisualProjection, BeautyStructureApplication, AcceptanceCriteria and FailurePatterns. PH2 is a declared fantasy optical protection layer; PH3 is optical transport. Materials uses `supporting`. This corrects schema vocabulary without upgrading physical accuracy. Original normalized radiance, finite ray integration and fixed sprite diffuse approximation remain explicit.
+
+Incoming PH3 irradiance is not feedback. PH1 produces a one-pass reflected output into the PH3 radiance MRT; there is no recursive illumination solve or return action on PH2. Physical links join PH systems. OBS dependency arrows originate at the observer and point to its required world inputs. Data flow into a framebuffer is not that dependency direction. Gaze links remain separate.
+
+Each PH state, surrounding change and beauty axis references existing functions or constants. Causal assessments are predictions with `hypothesis_only` and empty comparison evidence, even where CPU math is tested. Their AcceptanceCriteria specify obligations, not visual acceptance. The existing fixed-image review and actual execution statuses remain separately scoped.
+
+Run `node build-contract.mjs` then `node validate-contract.mjs` from this directory. The custom CPU suite checks full PH keys and enums, eight domains, beauty evidence, typed references/directions, honest evidence status, and original imported registration/contact/source/ghost math. It also verifies original code/input and independent adapter hashes. It is **not** the canonical distributed image validator, an independent schema audit, full-global B certification, a GPU/WGSL check, listening or adoption.
+
+MINIMAL-BEFORE-AFTER.json records every changed leaf. SOURCE-MAPPING.json binds the original and corrected contract to source hashes. No new visual edition should be listed solely for this metadata attempt. Root will combine this contract with `../per-cell-near-fix-a1/` into one new reproducible revision. That independent runtime fix restores both cells' near filtering; its pixel measurements are not measurements from this contract task.
+
+Remaining acceptance: meaningful native H64 contact response, causal optional observer images (including isolated source/center interventions), continuous full-life review and finite SFX listening. The contract does not resolve the weak contact contour read or potentially object-like ghost identified in QUALITY-REVIEW.md. Keep those hypotheses pending; do not dim white source peaks or apply withdrawn plastic concerns.
+
+Attribution: GPT-6.1-Sol authored this contract clarification and scoped CPU suite. Original artist authorship remains unchanged; independent runtime repair attribution belongs to its own manifest.

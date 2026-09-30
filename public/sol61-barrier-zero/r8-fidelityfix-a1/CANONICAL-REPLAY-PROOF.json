@@ -1,0 +1,121 @@
+{
+  "schema": "dva-canonical-gallery-package-replay-proof-v1",
+  "galleryVersionId": "barrier-sol61-r8-fidelityfix-a1",
+  "editionId": "r8-fidelityfix-a1",
+  "effectGroup": "Barrier",
+  "adoptedDefault": false,
+  "canonicalGit": {
+    "root": "C:/Users/user/Documents/Codex/2026-07-12/defenders-vs-attackers/.codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean",
+    "headObservedBeforeCopy": "91242d37c459bf33d26d3bc40f9a5f3a409c3463"
+  },
+  "canonicalPackagePath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\.codex-runtime\\pages-telemetry-release\\sunbeam-withdrawal-release\\work\\clean\\public\\sol61-barrier-zero\\r8-fidelityfix-a1",
+  "entry": {
+    "path": "public/sol61-barrier-zero/r8-fidelityfix-a1/index.html?embed=1",
+    "verificationUrl": "http://127.0.0.1:8765/index.html?verify=barrier-r8-fidelityfix-a1",
+    "canvas": {
+      "width": 980,
+      "height": 620,
+      "dpr": 1
+    }
+  },
+  "replay": {
+    "nativeBrowser": "Chrome",
+    "adapter": {
+      "vendor": "intel",
+      "architecture": "gen-12lp",
+      "device": "",
+      "description": ""
+    },
+    "status": "pass native WebGPU compile/submit and capture",
+    "timelineFrames": 58,
+    "phases": 29,
+    "modes": [
+      "main-only",
+      "combined"
+    ],
+    "laterConfirmedFrames": 58,
+    "diagnosticCases": 12,
+    "diagnosticNames": [
+      "sourceOFF",
+      "nearOFF",
+      "crossOFF",
+      "ghostOFF",
+      "coverageOFF",
+      "receiverOFF",
+      "pointsOFF",
+      "frontOFF",
+      "rearOFF",
+      "movedSourcesObserver",
+      "opaqueOccluder",
+      "expiry"
+    ],
+    "gpuErrors": 0,
+    "audio": {
+      "verification": true,
+      "contextCreated": false,
+      "contextState": "absent",
+      "unlocked": false,
+      "muted": false,
+      "armed": false,
+      "lastCause": null
+    },
+    "shaderCompile": {
+      "status": "pass",
+      "engine": "native browser WebGPU ShaderModule.getCompilationInfo plus successful RenderPipeline creation/submission",
+      "errorMessages": 0,
+      "source": {
+        "world": "7adccd5afefef0315e1bfb9b0a476b171cf7bed763606528abeecf1229410e28",
+        "post": "eb561c7aeab9b5bba62ffbb8b68ee8bf8cfad1c967920cd6ca5b460232d2af45"
+      },
+      "compiled": {
+        "world": "5ac282ef049367e59dcb2aa188beae56c28d06a9bff30129746aa4776fe981ee",
+        "post": "596f58609118bbf14ca5927c51db8c903523d074a8eedf22c58deabfdb9493de"
+      },
+      "identifierCompatibility": {
+        "tokenMap": {
+          "from": "Frame.layout",
+          "to": "Frame.frameLayout"
+        },
+        "occurrences": {
+          "world": 4,
+          "post": 5
+        },
+        "uniformFieldIndex": 4,
+        "uniformByteRange": [
+          64,
+          80
+        ],
+        "changedUniformOrder": false,
+        "changedByteSize": false,
+        "changedJSWebGPULayoutDescriptors": false
+      },
+      "artistFiles": 23
+    },
+    "captureValidation": {
+      "count": 58,
+      "allPngMagicValid": true,
+      "allTimestampsMatchContract": true,
+      "firstSubmitAndLaterMatchingSubmit": true,
+      "unmodifiedSources": "manifest hashes pass"
+    }
+  },
+  "hashes": {
+    "artistManifest": "dadbc6e9542ec789eb677a7843d0f6205adbec08032d3bdb5d9f9bd8e3350de0",
+    "runtime": "8f427e783340a1cb8e2e1d54609c6054a263d251c33a1963787dbef64347cb0f",
+    "clarifiedContract": "bd33f7961d654a7f45af02d78ad257f72d691bd6b7f3912ede5b23486a388e69",
+    "nativeGpuRecord": "a77389beb85da06614bfe72dd97a2199a5a4f1ff31b8138e6480701d3fc5fcd0",
+    "gpuSummary": "dd262aef27e1d807332f30cdb276bc194ea7d243f97cef23059b4b8cdf52b4ec"
+  },
+  "authorStatus": {
+    "creativeDesign": "GPT-6.1-Sol",
+    "runtimeAdapter": "GPT-6-Luna",
+    "contractClarification": "GPT-6.1-Sol",
+    "packageAssembly": "GPT-6-Luna"
+  },
+  "qualityStatus": "user_observed_fail_digital_semantics",
+  "adoption": "unadopted",
+  "gameIntegration": "not_run",
+  "listening": "not_run",
+  "publicGalleryRegistration": "pending_root_gallery_update",
+  "interpretation": "Technical native replay establishes package WebGPU compile/submit and capture only. It does not supersede the user-observed digital-semantics failure, establish quality acceptance, or imply adoption/game/listening acceptance."
+}

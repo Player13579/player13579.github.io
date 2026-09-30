@@ -1,0 +1,9 @@
+# Canonical package replay proof — r8-fidelityfix-a1
+
+Package copied under the confirmed Pages Git root `C:/Users/user/Documents/Codex/2026-07-12/defenders-vs-attackers/.codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean`; HEAD before copy was `91242d37c459bf33d26d3bc40f9a5f3a409c3463`. Canonical directory: `C:\Users\user\Documents\Codex\2026-07-12\defenders-vs-attackers\.codex-runtime\pages-telemetry-release\sunbeam-withdrawal-release\work\clean\public\sol61-barrier-zero\r8-fidelityfix-a1`. The output package was copied to the exact owned public path only; no gallery HTML/JavaScript or Git staging was changed.
+
+A foreground Chrome verification run used `http://127.0.0.1:8765/index.html?verify=barrier-r8-fidelityfix-a1`. It completed 58 frames across 29 lifecycle phases in main-only and combined modes, plus 12 diagnostics. All 58 lifecycle frames were confirmed by later matching submissions. Native WebGPU compilation/render-pipeline submission passed with 0 GPU errors. Canvas was 980×620 at DPR 1; adapter intel / gen-12lp. Verification audio was absent (`contextCreated=false`). The tab and local server were closed after replay.
+
+Evidence: `evidence/native-gpu.json`, `evidence/gpu.json`, `evidence/native-captures/main-only/`, `evidence/native-captures/combined/`, `evidence/native-hit-main.png`, and `evidence/native-hit-combined.png`. Shader compatibility mapping retained `Frame.layout` → `Frame.frameLayout`, field index 4, byte range 64–80, unchanged 128-byte uniform layout and unchanged JS WebGPU descriptor keys.
+
+The version remains in the Barrier group and unadopted. Quality is **user-observed fail for digital semantics**; this technical pass does not override that result. Game integration and listening remain not run. Root owns gallery registration.

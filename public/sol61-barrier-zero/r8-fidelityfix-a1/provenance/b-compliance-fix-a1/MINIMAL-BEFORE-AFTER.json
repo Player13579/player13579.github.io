@@ -1,0 +1,900 @@
+[
+  {
+    "path": "PhenomenonBlock.PH1.PhysicalModel.state_variables",
+    "before": "unchanged body → local source-bound area illumination → originalbody",
+    "after": "固定body quad/crop/alphaと局所linear反射radiance。bodyFSのalpha、位置、UVは受光で変わらない"
+  },
+  {
+    "path": "PhenomenonBlock.PH1.PhysicalModel.inputs",
+    "before": "authoritative event/snapshot plus declared optical parameters, wallage/no actor rate",
+    "after": "PH3 irradiance; authoritative visibility/live gate"
+  },
+  {
+    "path": "PhenomenonBlock.PH1.OctaDomain.Materials.role",
+    "before": "secondary",
+    "after": "supporting"
+  },
+  {
+    "path": "PhenomenonBlock.PH1.PerceptualReadability.figure_ground_separation",
+    "before": "main boundaries/interior clearspace relativebody, not background-specific compensation",
+    "after": "medium"
+  },
+  {
+    "path": "PhenomenonBlock.PH1.CausalTimeline",
+    "before": {
+      "initial": "inactive/original body",
+      "cause": "typed actualcommitted durability event/cause/owner or positiveactual snapshot",
+      "propagation": "geodesic registrationfront/contactreceipt/unregistrationfront on samecurved layer",
+      "response": "unchanged body → local source-bound area illumination → originalbody",
+      "termination": "source/field/receiver/OBS+finiteaudio end together; no point-onlytail"
+    },
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH1.CouplingMap",
+    "before": {
+      "physical_influence_out": [],
+      "physical_feedback_in": "PH3 irradiance→originalbody localreflection",
+      "observation_dependency": [
+        "OBS1near"
+      ],
+      "boundary_conditions": "all use samecause/worldphase/alpha/samplecontract"
+    },
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Evidence.source",
+    "before": "worldShader.received/bodyFS",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Evidence.CPU",
+    "before": "cpu-check finite/support only",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Evidence.actualGPU",
+    "before": "not_run",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Evidence.visual",
+    "before": "not_run",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Evidence.listening",
+    "before": "not_run",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Evidence.direct",
+    "before": null,
+    "after": [
+      "world bodyFS original atlas crop/alpha",
+      "received source-distance/cosine irradiance"
+    ]
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Evidence.indirect",
+    "before": null,
+    "after": []
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Evidence.candidates",
+    "before": null,
+    "after": [
+      "silhouette",
+      "occlusion",
+      "reflection_change"
+    ]
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Evidence.execution_scope",
+    "before": null,
+    "after": "source-code evidence; r8 fixed-image review separate; no new GPU/listening from this attempt"
+  },
+  {
+    "path": "PhenomenonBlock.PH1.StateDynamics",
+    "before": null,
+    "after": {
+      "state_space_extent": "固定body quad/crop/alphaと局所linear反射radiance。bodyFSのalpha、位置、UVは受光で変わらない",
+      "transition_path_character": "intermittent",
+      "local_stability_type": "stable",
+      "convergence_behavior": "PH3消失時に追加反射0、元bitmapへ戻る",
+      "damping_profile": "入射に代数的追従。記憶・独立dampingなし",
+      "oscillation_pattern": "none",
+      "equilibrium_recovery": "PH3消失時に追加反射0、元bitmapへ戻る",
+      "transition_failure_risk": "alpha外の反射、二重色変換、bodyを持ち上げるadapter誤り",
+      "driving_input": "PH3 irradiance; authoritative visibility/live gate",
+      "response_timescale": "毎フレームの同じ有限phase値に代数的追従。独立の残光・応答遅延なし",
+      "phase_relation": "同じauthoritative event age。独立oscillator/actor animation rateなし",
+      "stability_condition": "finite input、visible live owner、正durabilityまたは有効break event。無効状態はoff。入力判定と放射のgateを共有"
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH1.Couplings",
+    "before": null,
+    "after": {
+      "DominantCouplings": [
+        "PH3.Optics -> PH1.Optics: 局所irradianceを固定diffuse proxyで反射"
+      ],
+      "SecondaryCouplings": [
+        "PH1.Materials -> PH3.Optics: 元bitmapの色/alphaが出力を制約"
+      ],
+      "CausalAssessment": {
+        "intervention": "同じphase/alpha/poseでreceived寄与を0にする。元bodyは保持",
+        "predicted_response": "局所反射のみ消え、crop/alpha/姿勢とPH2登録状態は不変",
+        "competing_explanation": "fieldの前面加算やpost近傍が明るさ差の原因になり得る",
+        "uncertainty": "コードに記された応答の予測。CPU数値検査は本attemptの狭い意味論のみ。pixel/H64連続鑑賞/実機音は別検査。接触liftとghost読みは未受理",
+        "check_status": "hypothesis_only",
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH1.CausalityLinks",
+    "before": null,
+    "after": {
+      "physical_influence": [
+        {
+          "source": "PH3",
+          "target": "PH1",
+          "mechanism": "world received: six area nodes plus two foci; cosine/distance irradiance, fixed diffuse sprite",
+          "consequence": "元画像の真のalpha内だけに局所反射を加える。形状・姿勢・素材状態は不変"
+        },
+        {
+          "source": "PH1",
+          "target": "PH3",
+          "mechanism": "world bodyFS: alpha-occluded reflected contribution enters scene/bright MRT",
+          "consequence": "一回の受光応答の放射出力。fieldへの再照射・反復解法は存在しない"
+        }
+      ],
+      "observation_dependency": [
+        {
+          "source": "OBS1",
+          "target": "PH1",
+          "basis": "alpha合成済みbright MRTを入力とする有限15tap近傍フィルタ"
+        }
+      ],
+      "gaze_path": [
+        {
+          "source": "PH1",
+          "target": "PH2",
+          "reason": "受益bodyから囲む登録境界へ。因果関係の証明とは別"
+        }
+      ]
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH1.SurroundingChanges",
+    "before": null,
+    "after": {
+      "entries": [
+        {
+          "target": "PH3",
+          "change": "真のbody alphaが背面放射とsourceSignalを遮蔽。受光出力はbodyFS MRTへ一回加算"
+        }
+      ],
+      "latent_reference_target": "none"
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH1.VisualProjection",
+    "before": null,
+    "after": {
+      "role": "supporting",
+      "world_state_ref": "PH1.PhysicalModel.state_variables / PH1.StateDynamics",
+      "retained_cues": [
+        "元の輪郭とcrop",
+        "元の色・姿勢",
+        "局所受光"
+      ],
+      "simplification": "固定spriteのdiffuse proxy。true alphaと元の比率を保持",
+      "omission_scope": [],
+      "exaggeration_scope": [],
+      "ambiguity_scope": [],
+      "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH1.BeautyStructureApplication",
+    "before": null,
+    "after": {
+      "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+      "target_policy": "standard",
+      "adjustment_reason": "not_applicable: 標準の複数軸と実装根拠を用いる",
+      "axes": {
+        "material_response": [
+          "linear decodeした元bitmapへ局所反射を加算",
+          "固定normal/cosine/distance項を持つ受光近似。新specular材質なし"
+        ],
+        "ratio_proportion": [
+          "body高さ1.65mをnativeH64へ投影",
+          "crop/quadは入力原本の比率を保持"
+        ]
+      }
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH1.AcceptanceCriteria",
+    "before": null,
+    "after": {
+      "full_structure_present": true,
+      "all_8_domains_present": true,
+      "visibility_specific_evidence_present": true,
+      "physical_and_observation_links_not_mixed": true,
+      "physical_model_scale_and_response_consistent": true,
+      "perceptual_cues_and_identifiability_limits_explained": true,
+      "causal_assessment_status_matches_evidence": true
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH1.FailurePatterns",
+    "before": null,
+    "after": [
+      "label_only",
+      "logical_causality_without_evidence",
+      "uniform_response",
+      "observation_operation_registered_as_PH",
+      "latent_forced_visible_object",
+      "before_after_only",
+      "alpha外の反射、二重色変換、bodyを持ち上げるadapter誤り"
+    ]
+  },
+  {
+    "path": "PhenomenonBlock.PH2.PhysicalModel.model_kind",
+    "before": "field",
+    "after": "declared_fantasy"
+  },
+  {
+    "path": "PhenomenonBlock.PH2.PhysicalModel.state_variables",
+    "before": "connected geodesic registration650ms → active while positive actual durability → actualcontact lift/receipt650ms → curved coverage unregistration480ms",
+    "after": "stage0/1/2/3/4、t秒、live、geodesic coverage[0,1]、known contact、lift[0,.12]、receipt[0,1]"
+  },
+  {
+    "path": "PhenomenonBlock.PH2.PhysicalModel.inputs",
+    "before": "authoritative event/snapshot plus declared optical parameters, wallage/no actor rate",
+    "after": "input-state authoritative durability/event/owner/visibility; contact or unknown; elapsed wall time"
+  },
+  {
+    "path": "PhenomenonBlock.PH2.OctaDomain.Materials.role",
+    "before": "secondary",
+    "after": "supporting"
+  },
+  {
+    "path": "PhenomenonBlock.PH2.PerceptualReadability.figure_ground_separation",
+    "before": "main boundaries/interior clearspace relativebody, not background-specific compensation",
+    "after": "medium"
+  },
+  {
+    "path": "PhenomenonBlock.PH2.CausalTimeline",
+    "before": {
+      "initial": "inactive/original body",
+      "cause": "typed actualcommitted durability event/cause/owner or positiveactual snapshot",
+      "propagation": "geodesic registrationfront/contactreceipt/unregistrationfront on samecurved layer",
+      "response": "connected geodesic registration650ms → active while positive actual durability → actualcontact lift/receipt650ms → curved coverage unregistration480ms",
+      "termination": "source/field/receiver/OBS+finiteaudio end together; no point-onlytail"
+    },
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH2.CouplingMap",
+    "before": {
+      "physical_influence_out": [
+        "PH2→PH3 actualradiation"
+      ],
+      "physical_feedback_in": "authoritative inputstate, no invented physicalfeedback",
+      "observation_dependency": [
+        "OBS1near"
+      ],
+      "boundary_conditions": "all use samecause/worldphase/alpha/samplecontract"
+    },
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Evidence.source",
+    "before": "registered/density/layer:24 finite samples each camera half",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Evidence.CPU",
+    "before": "cpu-check finite/support only",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Evidence.actualGPU",
+    "before": "not_run",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Evidence.visual",
+    "before": "not_run",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Evidence.listening",
+    "before": "not_run",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Evidence.direct",
+    "before": null,
+    "after": [
+      "registered geodesic front",
+      "hitGeometry bounded lift/expanding receipt",
+      "field curved coverage/extinction"
+    ]
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Evidence.indirect",
+    "before": null,
+    "after": []
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Evidence.candidates",
+    "before": null,
+    "after": [
+      "boundary",
+      "deformation",
+      "phase_difference",
+      "attenuation"
+    ]
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Evidence.execution_scope",
+    "before": null,
+    "after": "source-code evidence; r8 fixed-image review separate; no new GPU/listening from this attempt"
+  },
+  {
+    "path": "PhenomenonBlock.PH2.StateDynamics",
+    "before": null,
+    "after": {
+      "state_space_extent": "stage0/1/2/3/4、t秒、live、geodesic coverage[0,1]、known contact、lift[0,.12]、receipt[0,1]",
+      "transition_path_character": "equilibrium-maintained",
+      "local_stability_type": "stable",
+      "convergence_behavior": "createは全方向coverage1へ、hitはlift/receipt0へ、breakはcoverage0へ。stage4/offは全0",
+      "damping_profile": "ease/Gaussianとphase gateで有限終端。物理粘性の測定値ではない",
+      "oscillation_pattern": "none",
+      "equilibrium_recovery": "createは全方向coverage1へ、hitはlift/receipt0へ、breakはcoverage0へ。stage4/offは全0",
+      "transition_failure_risk": "age境界のtail、別ownerのhit、unknown contactで位置を偽造、responseをbody deformationと誤解",
+      "driving_input": "input-state authoritative durability/event/owner/visibility; contact or unknown; elapsed wall time",
+      "response_timescale": "create650ms / hit650ms / break480ms、stableは実際のpositive durabilityで維持",
+      "phase_relation": "同じauthoritative event age。独立oscillator/actor animation rateなし",
+      "stability_condition": "finite input、visible live owner、正durabilityまたは有効break event。無効状態はoff。入力判定と放射のgateを共有"
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH2.Couplings",
+    "before": null,
+    "after": {
+      "DominantCouplings": [
+        "PH2.Optics -> PH3.Optics: 同じcoverageから面放射とsource envelopeを導出"
+      ],
+      "SecondaryCouplings": [],
+      "CausalAssessment": {
+        "intervention": "同じcontact/phaseでknown=falseにする、またはlive=falseにする",
+        "predicted_response": "unknownではlift0、receiptはseed0方向の局所receipt。offでは全coverage/emission0",
+        "competing_explanation": "白source patchだけでもhitと読める可能性。幾何liftのCPU存在はH64の輪郭変化を保証しない",
+        "uncertainty": "コードに記された応答の予測。CPU数値検査は本attemptの狭い意味論のみ。pixel/H64連続鑑賞/実機音は別検査。接触liftとghost読みは未受理",
+        "check_status": "hypothesis_only",
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH2.CausalityLinks",
+    "before": null,
+    "after": {
+      "physical_influence": [
+        {
+          "source": "PH2",
+          "target": "PH3",
+          "mechanism": "field-model.field / world density: coverage × finite emission and source envelope",
+          "consequence": "同じ曲面上の放射と局所光源。別の防御物体を生まない"
+        }
+      ],
+      "observation_dependency": [
+        {
+          "source": "OBS1",
+          "target": "PH2",
+          "basis": "alpha合成済みbright MRTを入力とする有限15tap近傍フィルタ"
+        }
+      ],
+      "gaze_path": [
+        {
+          "source": "PH2",
+          "target": "PH1",
+          "reason": "保護曲面から内部の受益bodyへ"
+        }
+      ]
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH2.SurroundingChanges",
+    "before": null,
+    "after": {
+      "entries": [
+        {
+          "target": "PH3",
+          "change": "coverageが面放射・source強度をgateし、解除した領域に独立point tailを残さない"
+        }
+      ],
+      "latent_reference_target": "none"
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH2.VisualProjection",
+    "before": null,
+    "after": {
+      "role": "essential",
+      "world_state_ref": "PH2.PhysicalModel.state_variables / PH2.StateDynamics",
+      "retained_cues": [
+        "一つの連続凸曲面と内部余白",
+        "登録/解除front",
+        "known contactの局所lift/receipt"
+      ],
+      "simplification": "有限厚みの単一楕円体shell。実際の防御collider/力場ではなくdeclared digital光学層",
+      "omission_scope": [],
+      "exaggeration_scope": [],
+      "ambiguity_scope": [],
+      "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH2.BeautyStructureApplication",
+    "before": null,
+    "after": {
+      "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+      "target_policy": "standard",
+      "adjustment_reason": "not_applicable: 標準の複数軸と実装根拠を用いる",
+      "axes": {
+        "ratio_proportion": [
+          "axes .96/1.14/.72mの単一曲面",
+          "shell half .085 normalizedとlift上限.12で広い内部を保持"
+        ],
+        "temporal_phase": [
+          "create geodesic到達時刻.57×angle/piと.08s front",
+          "break .39×angle/piと.09s front、同じ曲面を下から解除"
+        ]
+      }
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH2.AcceptanceCriteria",
+    "before": null,
+    "after": {
+      "full_structure_present": true,
+      "all_8_domains_present": true,
+      "visibility_specific_evidence_present": true,
+      "physical_and_observation_links_not_mixed": true,
+      "physical_model_scale_and_response_consistent": true,
+      "perceptual_cues_and_identifiability_limits_explained": true,
+      "causal_assessment_status_matches_evidence": true
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH2.FailurePatterns",
+    "before": null,
+    "after": [
+      "label_only",
+      "logical_causality_without_evidence",
+      "uniform_response",
+      "observation_operation_registered_as_PH",
+      "latent_forced_visible_object",
+      "before_after_only",
+      "age境界のtail、別ownerのhit、unknown contactで位置を偽造、responseをbody deformationと誤解"
+    ]
+  },
+  {
+    "path": "PhenomenonBlock.PH3.PhysicalModel.model_kind",
+    "before": "radiation",
+    "after": "optical_transport"
+  },
+  {
+    "path": "PhenomenonBlock.PH3.PhysicalModel.state_variables",
+    "before": "source amplitude from actual phase and owned coverage → source-local irradiance and reflected radiance → zero onend/hide/dead/vent",
+    "after": "二つのsource position/strength、有限linear emission/extinction、ray T、body received irradiance、alpha-occluded sourceSignal"
+  },
+  {
+    "path": "PhenomenonBlock.PH3.PhysicalModel.inputs",
+    "before": "authoritative event/snapshot plus declared optical parameters, wallage/no actor rate",
+    "after": "PH2 phase/coverage/contact; PH1 alpha and fixed diffuse response; unchanged optical constants"
+  },
+  {
+    "path": "PhenomenonBlock.PH3.OctaDomain.Materials.role",
+    "before": "secondary",
+    "after": "supporting"
+  },
+  {
+    "path": "PhenomenonBlock.PH3.PerceptualReadability.figure_ground_separation",
+    "before": "main boundaries/interior clearspace relativebody, not background-specific compensation",
+    "after": "medium"
+  },
+  {
+    "path": "PhenomenonBlock.PH3.CausalTimeline",
+    "before": {
+      "initial": "inactive/original body",
+      "cause": "typed actualcommitted durability event/cause/owner or positiveactual snapshot",
+      "propagation": "geodesic registrationfront/contactreceipt/unregistrationfront on samecurved layer",
+      "response": "source amplitude from actual phase and owned coverage → source-local irradiance and reflected radiance → zero onend/hide/dead/vent",
+      "termination": "source/field/receiver/OBS+finiteaudio end together; no point-onlytail"
+    },
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH3.CouplingMap",
+    "before": {
+      "physical_influence_out": [
+        "PH3→PH1 localirradiance"
+      ],
+      "physical_feedback_in": "PH2 ownedarea emission/sourcephase",
+      "observation_dependency": [
+        "OBS1near",
+        "OBS2diffraction",
+        "OBS3ghost"
+      ],
+      "boundary_conditions": "all use samecause/worldphase/alpha/samplecontract"
+    },
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Evidence.source",
+    "before": "focus/density/received; scene/bright/sourceSignal sharedalpha",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Evidence.CPU",
+    "before": "cpu-check finite/support only",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Evidence.actualGPU",
+    "before": "not_run",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Evidence.visual",
+    "before": "not_run",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Evidence.listening",
+    "before": "not_run",
+    "after": null
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Evidence.direct",
+    "before": null,
+    "after": [
+      "source finite strengths/actual known contact",
+      "sampledRay Beer-Lambert T",
+      "world received/bodyFS/sourceSignal"
+    ]
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Evidence.indirect",
+    "before": null,
+    "after": []
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Evidence.candidates",
+    "before": null,
+    "after": [
+      "attenuation",
+      "occlusion",
+      "reflection_change",
+      "phase_difference"
+    ]
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Evidence.execution_scope",
+    "before": null,
+    "after": "source-code evidence; r8 fixed-image review separate; no new GPU/listening from this attempt"
+  },
+  {
+    "path": "PhenomenonBlock.PH3.StateDynamics",
+    "before": null,
+    "after": {
+      "state_space_extent": "二つのsource position/strength、有限linear emission/extinction、ray T、body received irradiance、alpha-occluded sourceSignal",
+      "transition_path_character": "intermittent",
+      "local_stability_type": "stable",
+      "convergence_behavior": "active stableは有限面放射、source pulseは0へ減衰。owner off/phase終了では追加放射0",
+      "damping_profile": "ease/Gaussianとphase gateで有限終端。物理粘性の測定値ではない",
+      "oscillation_pattern": "none",
+      "equilibrium_recovery": "active stableは有限面放射、source pulseは0へ減衰。owner off/phase終了では追加放射0",
+      "transition_failure_risk": "遮蔽前sourceをpostが読む、known hitをsourceShiftで動かしたと誤認、feedbackのない入射をfeedbackと称する",
+      "driving_input": "PH2 phase/coverage/contact; PH1 alpha and fixed diffuse response; unchanged optical constants",
+      "response_timescale": "source create peak .16/.43s width .050s、break .13/.34s width .036s、hit source0 peak .055s width .040s、phaseで有限gate",
+      "phase_relation": "同じauthoritative event age。独立oscillator/actor animation rateなし",
+      "stability_condition": "finite input、visible live owner、正durabilityまたは有効break event。無効状態はoff。入力判定と放射のgateを共有"
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH3.Couplings",
+    "before": null,
+    "after": {
+      "DominantCouplings": [
+        "PH3.Optics -> PH1.Optics: 有限distance/cosine受光",
+        "PH2.Optics -> PH3.Optics: curve coverageが放射を維持/終端"
+      ],
+      "SecondaryCouplings": [
+        "PH1.Materials -> PH3.Optics: body alphaによるrear/source遮蔽"
+      ],
+      "CausalAssessment": {
+        "intervention": "同じPH2/body/cameraでpost source入力を0にする、またはobserver centerだけを移す",
+        "predicted_response": "source入力0でcross/ghost0。Cのみ移動でG=C-1.6(S-C)、世界source S/field/bodyは不変",
+        "competing_explanation": "camera移動とknown-hit source座標overwriteを混ぜるとsource独立検査にならない",
+        "uncertainty": "コードに記された応答の予測。CPU数値検査は本attemptの狭い意味論のみ。pixel/H64連続鑑賞/実機音は別検査。接触liftとghost読みは未受理",
+        "check_status": "hypothesis_only",
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH3.CausalityLinks",
+    "before": null,
+    "after": {
+      "physical_influence": [
+        {
+          "source": "PH2",
+          "target": "PH3",
+          "mechanism": "field-model.field / world density: coverage × finite emission and source envelope",
+          "consequence": "同じ曲面上の放射と局所光源。別の防御物体を生まない"
+        },
+        {
+          "source": "PH3",
+          "target": "PH1",
+          "mechanism": "world received: six area nodes plus two foci; cosine/distance irradiance, fixed diffuse sprite",
+          "consequence": "元画像の真のalpha内だけに局所反射を加える。形状・姿勢・素材状態は不変"
+        },
+        {
+          "source": "PH1",
+          "target": "PH3",
+          "mechanism": "world bodyFS: alpha-occluded reflected contribution enters scene/bright MRT",
+          "consequence": "一回の受光応答の放射出力。fieldへの再照射・反復解法は存在しない"
+        }
+      ],
+      "observation_dependency": [
+        {
+          "source": "OBS1",
+          "target": "PH3",
+          "basis": "alpha合成済みbright MRTを入力とする有限15tap近傍フィルタ"
+        },
+        {
+          "source": "OBS2",
+          "target": "PH3",
+          "basis": "PH3 sourceSignalの実際の可視値と投影位置を入力とする有限光学像"
+        },
+        {
+          "source": "OBS3",
+          "target": "PH3",
+          "basis": "PH3 sourceSignalの実際の可視値と投影位置を入力とする有限光学像"
+        }
+      ],
+      "gaze_path": []
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH3.SurroundingChanges",
+    "before": null,
+    "after": {
+      "entries": [
+        {
+          "target": "PH1",
+          "change": "六面積nodeと二fociによる局所diffuse反射。熱・力・耐久値・素材変化は生まない"
+        }
+      ],
+      "latent_reference_target": "none"
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH3.VisualProjection",
+    "before": null,
+    "after": {
+      "role": "supporting",
+      "world_state_ref": "PH3.PhysicalModel.state_variables / PH3.StateDynamics",
+      "retained_cues": [
+        "曲面coverageに属するsource白核",
+        "body局所受光",
+        "背面sourceの真alpha遮蔽"
+      ],
+      "simplification": "六area nodeと24 ray steps/half。正規化radiance、測定energy/BRDFではない",
+      "omission_scope": [],
+      "exaggeration_scope": [],
+      "ambiguity_scope": [],
+      "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH3.BeautyStructureApplication",
+    "before": null,
+    "after": {
+      "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+      "target_policy": "standard",
+      "adjustment_reason": "not_applicable: 標準の複数軸と実装根拠を用いる",
+      "axes": {
+        "contrast": [
+          "owned white[8,8,7.6] peaksを保持",
+          "rear/upper/lowerの広い光学色域。背景別減光なし"
+        ],
+        "material_response": [
+          "24steps/halfのextinction積分",
+          "元bitmap alpha内の固定diffuse受光と遮蔽。測定BRDFではない"
+        ]
+      }
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH3.AcceptanceCriteria",
+    "before": null,
+    "after": {
+      "full_structure_present": true,
+      "all_8_domains_present": true,
+      "visibility_specific_evidence_present": true,
+      "physical_and_observation_links_not_mixed": true,
+      "physical_model_scale_and_response_consistent": true,
+      "perceptual_cues_and_identifiability_limits_explained": true,
+      "causal_assessment_status_matches_evidence": true
+    }
+  },
+  {
+    "path": "PhenomenonBlock.PH3.FailurePatterns",
+    "before": null,
+    "after": [
+      "label_only",
+      "logical_causality_without_evidence",
+      "uniform_response",
+      "observation_operation_registered_as_PH",
+      "latent_forced_visible_object",
+      "before_after_only",
+      "遮蔽前sourceをpostが読む、known hitをsourceShiftで動かしたと誤認、feedbackのない入射をfeedbackと称する"
+    ]
+  },
+  {
+    "path": "ReflectionClosureBlock.PH1.ReflectionLinks.physical_influence_out",
+    "before": "PH1 localreflected radiance intoOBS1",
+    "after": "PH1 -> PH3: bodyFS reflected output to alpha-occluded radiance MRT"
+  },
+  {
+    "path": "ReflectionClosureBlock.PH1.ReflectionLinks.physical_feedback_in",
+    "before": "PH3irradiance",
+    "after": "not_applicable: PH3 incoming irradiance is one-way input; no return illumination of PH2, no recursive light solve"
+  },
+  {
+    "path": "ReflectionClosureBlock.PH1.ReflectionLinks.incoming_irradiance",
+    "before": null,
+    "after": "PH3 -> PH1: received fixed diffuse proxy"
+  },
+  {
+    "path": "CouplingRegistry",
+    "before": [
+      {
+        "relation_type": "physical_influence",
+        "from": "PH2",
+        "to": "PH3",
+        "property": "samecurvedarea emission→irradiance/sourcefoci"
+      },
+      {
+        "relation_type": "physical_influence",
+        "from": "PH3",
+        "to": "PH1",
+        "property": "localcosine/distance receiveddiffuse light"
+      },
+      {
+        "relation_type": "observation_dependency",
+        "from": "PH2/PH3/PH1",
+        "to": "OBS1",
+        "property": "occludedMRT radiance→near"
+      },
+      {
+        "relation_type": "observation_dependency",
+        "from": "PH3",
+        "to": "OBS2/OBS3",
+        "property": "occludedsourceSignal→projection/C/time→diffraction/ghost"
+      }
+    ],
+    "after": [
+      {
+        "relation_type": "physical_influence",
+        "from": "PH2",
+        "to": "PH3",
+        "property": "field-model.field / world density: coverage × finite emission and source envelope"
+      },
+      {
+        "relation_type": "physical_influence",
+        "from": "PH3",
+        "to": "PH1",
+        "property": "world received: six area nodes plus two foci; cosine/distance irradiance, fixed diffuse sprite"
+      },
+      {
+        "relation_type": "physical_influence",
+        "from": "PH1",
+        "to": "PH3",
+        "property": "world bodyFS: alpha-occluded reflected contribution enters scene/bright MRT"
+      },
+      {
+        "relation_type": "observation_dependency",
+        "from": "OBS1",
+        "to": "PH2",
+        "property": "alpha合成済みbright MRTを入力とする有限15tap近傍フィルタ"
+      },
+      {
+        "relation_type": "observation_dependency",
+        "from": "OBS1",
+        "to": "PH3",
+        "property": "alpha合成済みbright MRTを入力とする有限15tap近傍フィルタ"
+      },
+      {
+        "relation_type": "observation_dependency",
+        "from": "OBS1",
+        "to": "PH1",
+        "property": "alpha合成済みbright MRTを入力とする有限15tap近傍フィルタ"
+      },
+      {
+        "relation_type": "observation_dependency",
+        "from": "OBS2",
+        "to": "PH3",
+        "property": "PH3 sourceSignalの実際の可視値と投影位置を入力とする有限光学像"
+      },
+      {
+        "relation_type": "observation_dependency",
+        "from": "OBS3",
+        "to": "PH3",
+        "property": "PH3 sourceSignalの実際の可視値と投影位置を入力とする有限光学像"
+      }
+    ]
+  },
+  {
+    "path": "quality",
+    "before": "not_run actualr8GPU/visual/listening/game/public/adoption",
+    "after": "pending: contact H64 primary response / optional ghost causality and object read; CPU contract checks are not GPU, listening, public or adoption acceptance"
+  },
+  {
+    "path": "InferenceExpansionPolicy",
+    "before": null,
+    "after": {
+      "ExpressionIntent": {
+        "source": "user_declared",
+        "purpose": "新しいcommon action digital defense E。元body・原因・保護曲面をnative H64で読めること",
+        "must_communicate": [
+          "実際の受益ownerを囲む継続的防御",
+          "実際の接触に応じる同じ面",
+          "登録・解除の有限状態差"
+        ],
+        "preserve_ambiguity": [],
+        "allowed_omission": [],
+        "allowed_exaggeration": [],
+        "protected_relations": [
+          "元bodyの姿勢/crop/alpha",
+          "actual contact/owner/durability/time",
+          "owned white source peakを減光しない"
+        ]
+      }
+    }
+  },
+  {
+    "path": "PhenomenonSystemAcceptance",
+    "before": null,
+    "after": {
+      "all_PH_have_required_full_structure": true,
+      "visible_implicit_latent_have_same_field_set": true,
+      "OBS_not_in_PH_registry": true,
+      "PIA_resolved_as_identification_lifecycle": "PH1 original receiving body; PH2 declared owned layer; PH3 transport derived from source/receiver; no latent extra object"
+    }
+  },
+  {
+    "path": "RevisionScope",
+    "before": null,
+    "after": {
+      "kind": "contract clarification only",
+      "artist_world_post_parameter_change": false,
+      "original_freeze_preserved": true,
+      "quality_acceptance": false,
+      "physical_accuracy_reclassification": false,
+      "canonical_source": "same creation-time B37eb; normalized saved specifications match current remote; no retroactive rule claim",
+      "runtime_adapter": "../per-cell-near-fix-a1/runtime.mjs",
+      "integration": "root combines contract + adapter into one later edition; this attempt is not standalone gallery artwork"
+    }
+  }
+]

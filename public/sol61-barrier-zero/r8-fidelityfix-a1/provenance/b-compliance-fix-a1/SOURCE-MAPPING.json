@@ -1,0 +1,101 @@
+{
+  "source_revision": {
+    "repository": "player13579/B",
+    "branch": "Codex-honoo",
+    "commit": "37eb4bdfe59f0dc075f9b4333b7d6af76b784a88",
+    "baseBlob": "8a908495ae1f9b7175e00384ab88c50e5c78bd43",
+    "extensionBlob": "0eda016558e426ff4142d850d26200b40fafd834"
+  },
+  "canonical_raw_git_sha256": {
+    "base": "00f0f8138bb8e557c89a3b3c500d0603a39d6516fcfc5626328f8af8dc3adde4",
+    "extension": "5f40e5838477c7f05b9a10cfb01c5371a3093686e2f2b0f01ab82a6160ca855a"
+  },
+  "saved_text_normalization": "strip BOM; CRLF -> LF; trimEnd only; prior provenance check full text equality",
+  "original_sources": [
+    {
+      "path": "../../b-contract.json",
+      "sha256": "d89e9670c9c53ef3f1055bbd5f8ee465ed49e1db7651ea7785f15cc9f0f7f2a0"
+    },
+    {
+      "path": "../../design-manifest.json",
+      "sha256": "dadbc6e9542ec789eb677a7843d0f6205adbec08032d3bdb5d9f9bd8e3350de0"
+    },
+    {
+      "path": "../../design.mjs",
+      "sha256": "78fed494cca86a62103a786b70271fa4013733003400725b9e3f958fab51ea90"
+    },
+    {
+      "path": "../../field-model.mjs",
+      "sha256": "55ce15a1e2873b71117879e9b22d177816f55da3484439670ae06fec6fb81ebc"
+    },
+    {
+      "path": "../../world-shader.mjs",
+      "sha256": "358c0c02523f037668ca1fc5794d98a0746f64a5d32f02d8394ae1b49aa702bd"
+    },
+    {
+      "path": "../../post-shader.mjs",
+      "sha256": "c4e2a88b04488817325c65499a7939511382580db720d6bf79835d4d29f5396b"
+    },
+    {
+      "path": "../../projection.mjs",
+      "sha256": "89d68ce4724c9dba9e4a758609c049c525212ce46b100bc31ea5d46cdda2d4dd"
+    },
+    {
+      "path": "../../input-state.mjs",
+      "sha256": "78003ea5e90b3cfbce2dde73a54bab6547a660fc81908f3feb52551d57e96f2f"
+    },
+    {
+      "path": "../../runtime.mjs",
+      "sha256": "ba17d5d4c59116be9fa89f25d438d668c1dfd32c6c67bd461a5c3b6bc6b18041"
+    },
+    {
+      "path": "../../sfx-score.mjs",
+      "sha256": "ae4553ca17c37b66d4cbb4332adaeeb9e0f5b0d167e5d3264d58ef6130a67888"
+    },
+    {
+      "path": "../../inputs/基底.md",
+      "sha256": "e559ca8faf6f3635aea0bc49a4e551496429fce95c1432d051bd7e39f00395b1"
+    },
+    {
+      "path": "../../inputs/拡張.md",
+      "sha256": "b74001fab9dc7338a1dbde889db5a9175bac549979191694a293b76e14061ea5"
+    }
+  ],
+  "PH_source_map": {
+    "PH1": [
+      "world-shader.mjs: received/bodyFS",
+      "design.mjs: original atlas/quad"
+    ],
+    "PH2": [
+      "field-model.mjs: registered/hitGeometry/field",
+      "input-state.mjs: authoritativeState/resolveInputEvent"
+    ],
+    "PH3": [
+      "field-model.mjs: source/sampledRay/observerSource",
+      "world-shader.mjs: focus/received/sourceSignal",
+      "post-shader.mjs: visibleSource/finish"
+    ]
+  },
+  "runtime_fix": {
+    "path": "../per-cell-near-fix-a1/runtime.mjs",
+    "sha256": "8f427e783340a1cb8e2e1d54609c6054a263d251c33a1963787dbef64347cb0f"
+  },
+  "required_PH_keys": [
+    "identity",
+    "DeepStructure",
+    "PhysicalModel",
+    "ScaleRegime",
+    "OctaDomain",
+    "PerceptualReadability",
+    "GeometryConstraint",
+    "StateDynamics",
+    "Couplings",
+    "CausalityLinks",
+    "Evidence",
+    "SurroundingChanges",
+    "VisualProjection",
+    "BeautyStructureApplication",
+    "AcceptanceCriteria",
+    "FailurePatterns"
+  ]
+}

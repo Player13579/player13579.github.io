@@ -1,0 +1,189 @@
+{
+  "id": "sol61-barrier-zero-r8",
+  "status": "pass CPU finite/support/authority/score/Bstructure only; not GPU/visual",
+  "checks": 2243767,
+  "fieldSupportSamples": 913152,
+  "maximumLift": 0.11882399522640423,
+  "configs": [
+    [
+      64,
+      1,
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    [
+      64,
+      2,
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    [
+      64,
+      1,
+      [
+        12,
+        -9
+      ],
+      [
+        0.08,
+        0.04
+      ]
+    ],
+    [
+      48,
+      1,
+      [
+        -12,
+        9
+      ],
+      [
+        -0.08,
+        -0.04
+      ]
+    ]
+  ],
+  "frames": [
+    0,
+    20,
+    90,
+    160,
+    300,
+    430,
+    550,
+    649,
+    650,
+    1200,
+    1700,
+    1800,
+    1835,
+    1855,
+    1920,
+    2050,
+    2250,
+    2449,
+    2450,
+    3100,
+    3400,
+    3440,
+    3540,
+    3650,
+    3750,
+    3830,
+    3879,
+    3880,
+    4599
+  ],
+  "wave": [
+    {
+      "kind": "create",
+      "samples": 31200,
+      "seconds": 0.65,
+      "peak": 0.09296669065952301,
+      "listening": "not_run"
+    },
+    {
+      "kind": "hit",
+      "samples": 31200,
+      "seconds": 0.65,
+      "peak": 0.14505597949028015,
+      "listening": "not_run"
+    },
+    {
+      "kind": "break",
+      "samples": 23040,
+      "seconds": 0.48,
+      "peak": 0.07105471193790436,
+      "listening": "not_run"
+    }
+  ],
+  "H64Support": {
+    "world": [
+      -52.40748605161798,
+      -58.335320051479854,
+      52.40748605161798,
+      58.335320051479854
+    ],
+    "field": [
+      -52.40748605161798,
+      -58.335320051479854,
+      52.40748605161798,
+      58.335320051479854
+    ],
+    "sources": [
+      -43.50426485669775,
+      -49.62097716984858,
+      43.50426485669775,
+      49.62097716984858
+    ],
+    "points": [
+      -47.383052735485634,
+      -53.49976504863646,
+      47.383052735485634,
+      53.49976504863646
+    ],
+    "body": [
+      -19.342222222222222,
+      -32,
+      19.342222222222222,
+      32
+    ],
+    "near": [
+      -59.40748605161798,
+      -65.33532005147985,
+      59.40748605161798,
+      65.33532005147985
+    ],
+    "cross": [
+      -55.16616864638835,
+      -61.28288095953918,
+      55.16616864638835,
+      61.28288095953918
+    ],
+    "ghost": [
+      -69.6068237707164,
+      -79.39356347175773,
+      69.6068237707164,
+      79.39356347175773
+    ],
+    "OBS": [
+      -80.6068237707164,
+      -90.39356347175773,
+      80.6068237707164,
+      90.39356347175773
+    ],
+    "worldMetres": [
+      -1.351130499768276,
+      -1.503957470077215,
+      1.351130499768276,
+      1.503957470077215
+    ],
+    "scale": 38.78787878787879,
+    "note": "support only; not visibility/quality/performance"
+  },
+  "estimatedWorldWork": {
+    "rayStepsPerHalf": 24,
+    "halfPasses": 2,
+    "note": "projected bounded quads only; exact visible shader invocation count and actual GPUtime not measured"
+  },
+  "remaining": [
+    "WGSL actualcompile/submit",
+    "nativeH64 main+combined continuousfull lifetime",
+    "real contact lift/propagatingreceipt defense meaning",
+    "selectedghost/diffraction source/centre/occlusion/OFF/expiry actualcomparisons",
+    "finite liveSFX/controller verify0",
+    "actual listening/game/public/adoption"
+  ],
+  "resourcesStarted": 0
+}

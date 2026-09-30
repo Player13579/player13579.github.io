@@ -1,0 +1,462 @@
+{
+  "id": "r8-fidelityfix-a1",
+  "status": "pass native WebGPU compile/submit and capture",
+  "adapter": {
+    "vendor": "intel",
+    "architecture": "gen-12lp",
+    "device": "",
+    "description": ""
+  },
+  "canvas": {
+    "width": 980,
+    "height": 620,
+    "dpr": 1
+  },
+  "timelineFrames": 58,
+  "phases": 29,
+  "modes": [
+    "main-only",
+    "combined"
+  ],
+  "confirmedLaterMatchingSubmits": 58,
+  "diagnostics": [
+    {
+      "name": "sourceOFF",
+      "submitId": 119,
+      "confirmedBy": 119,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": false,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": true,
+        "ghost": true,
+        "points": true,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "nearOFF",
+      "submitId": 121,
+      "confirmedBy": 121,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": false,
+        "cross": true,
+        "ghost": true,
+        "points": true,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "crossOFF",
+      "submitId": 123,
+      "confirmedBy": 123,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": false,
+        "ghost": true,
+        "points": true,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "ghostOFF",
+      "submitId": 125,
+      "confirmedBy": 125,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": true,
+        "ghost": false,
+        "points": true,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "coverageOFF",
+      "submitId": 127,
+      "confirmedBy": 127,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": false,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": true,
+        "ghost": true,
+        "points": true,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "receiverOFF",
+      "submitId": 129,
+      "confirmedBy": 129,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": false,
+        "near": true,
+        "cross": true,
+        "ghost": true,
+        "points": true,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "pointsOFF",
+      "submitId": 131,
+      "confirmedBy": 131,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": true,
+        "ghost": true,
+        "points": false,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "frontOFF",
+      "submitId": 133,
+      "confirmedBy": 133,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": true,
+        "ghost": true,
+        "points": true,
+        "front": false,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "rearOFF",
+      "submitId": 135,
+      "confirmedBy": 135,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": true,
+        "ghost": true,
+        "points": true,
+        "front": true,
+        "rear": false
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "movedSourcesObserver",
+      "submitId": 137,
+      "confirmedBy": 137,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": true,
+        "ghost": true,
+        "points": true,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          12,
+          -9
+        ],
+        "sourceShift": [
+          0.08,
+          0.04
+        ]
+      }
+    },
+    {
+      "name": "opaqueOccluder",
+      "submitId": 139,
+      "confirmedBy": 139,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": true,
+        "ghost": true,
+        "points": true,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": true
+      },
+      "camera": {
+        "observerCenter": [
+          12,
+          -9
+        ],
+        "sourceShift": [
+          0.08,
+          0.04
+        ]
+      }
+    },
+    {
+      "name": "expiry",
+      "submitId": 141,
+      "confirmedBy": 141,
+      "confirmedAfterLaterFrame": true,
+      "flags": {
+        "source": true,
+        "coverage": true,
+        "actor": true,
+        "receiver": true,
+        "near": true,
+        "cross": true,
+        "ghost": true,
+        "points": true,
+        "front": true,
+        "rear": true
+      },
+      "layout": {
+        "dual": false,
+        "diagnosticOccluder": false
+      },
+      "camera": {
+        "observerCenter": [
+          0,
+          0
+        ],
+        "sourceShift": [
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "gpuErrors": 0,
+  "shaderCompile": {
+    "status": "pass",
+    "engine": "native browser WebGPU ShaderModule.getCompilationInfo plus successful RenderPipeline creation/submission",
+    "errorMessages": 0,
+    "source": {
+      "world": "7adccd5afefef0315e1bfb9b0a476b171cf7bed763606528abeecf1229410e28",
+      "post": "eb561c7aeab9b5bba62ffbb8b68ee8bf8cfad1c967920cd6ca5b460232d2af45"
+    },
+    "compiled": {
+      "world": "5ac282ef049367e59dcb2aa188beae56c28d06a9bff30129746aa4776fe981ee",
+      "post": "596f58609118bbf14ca5927c51db8c903523d074a8eedf22c58deabfdb9493de"
+    },
+    "identifierCompatibility": {
+      "tokenMap": {
+        "from": "Frame.layout",
+        "to": "Frame.frameLayout"
+      },
+      "occurrences": {
+        "world": 4,
+        "post": 5
+      },
+      "uniformFieldIndex": 4,
+      "uniformByteRange": [
+        64,
+        80
+      ],
+      "changedUniformOrder": false,
+      "changedByteSize": false,
+      "changedJSWebGPULayoutDescriptors": false
+    },
+    "artistFiles": 23
+  },
+  "evidence": [
+    "evidence/native-gpu.json",
+    "evidence/native-captures/main-only/*.png",
+    "evidence/native-captures/combined/*.png",
+    "evidence/native-hit-main.png",
+    "evidence/native-hit-combined.png"
+  ],
+  "audio": {
+    "verification": true,
+    "contextCreated": false,
+    "contextState": "absent",
+    "unlocked": false,
+    "muted": false,
+    "armed": false,
+    "lastCause": null
+  },
+  "visualQuality": "not_run root-owned",
+  "listening": "not_run",
+  "gameIntegration": "not_run",
+  "public": "not_run",
+  "adoption": "unadopted"
+}
