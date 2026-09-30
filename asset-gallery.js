@@ -354,6 +354,7 @@
   }
   function adoptionStatusLabel(item) {
     const state = adoptionState(item);
+    if (state === 'adopted' && item.environmentEStatus === 'in-progress') return '原画のみ採用・E制作中';
     if (state === 'adopted') return '採用済み';
     if (state === 'previously-adopted') return '旧採用版（現行採用対象外）';
     if (state === 'not-adopted') return '未採用';
@@ -492,7 +493,7 @@
       {id:'cafeteria-floor-attempt-02',title:'床材 attempt 02',src:'assets/gpt-map-history/cafeteria-floor-component.png',hash:'d205dea3669fe9b0a8f63b7cb0078c57a7c99d256853cc1cb2f8fd679e75f25c',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'一次担当が単一カフェテリアの床材素材として受入。シームレスな反復利用は未受入。部品受入であり、マップ採用ではない。'}]},
     {id:'cafeteria-buffet-component',category:'map',title:'カフェテリア・ビュッフェ · コンポーネント',creatorDisplayName:'ChatGPT (model unverified)',quality:'accepted-component-only',adoption:'not-adopted',integration:'not-integrated',reason:'完成マップではなく単体設備の原画候補。画像作者の基底モデルは未確認で、生成コードの正確なコード先行手順にも証跡不足。',versions:[
       {id:'cafeteria-buffet-attempt-01',title:'ビュッフェ attempt 01',src:'assets/gpt-map-history/cafeteria-buffet-component.png',hash:'da99b673cd36a45f055e7442ab1b11e7ebeb9bdaf40699d561055a82ec4623f0',creatorDisplayName:'ChatGPT (model unverified)',qualityStatus:'accepted-component-only',adoption:'not-adopted',note:'Primary visual candidate acceptance only。コード全文の保存・厳密なコード再送証跡が不足。ゲーム未統合。'}]},
-  ].filter(group => !['cafeteria-gpt-pro', 'cafeteria-floor-component', 'cafeteria-buffet-component', 'station-gpt-history'].includes(group.id))
+  ].filter(group => group.id === 'security-server-gpt6sol-r01')
     .map(group => group.id === 'medical-gpt-history'
       ? { ...group, versions: group.versions.filter(item => item.id !== 'medical-room-dense-attempt-01') }
       : group);
