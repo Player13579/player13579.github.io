@@ -1,0 +1,251 @@
+{
+  "id": "medical-r3-original-environment-r1",
+  "authorRole": "requested current Sol creative owner",
+  "actualExecutionModel": "unavailable_in_child_runtime_metadata",
+  "requestedModel": "gpt-6.1-sol",
+  "catalogDisplayName": "GPT-6.1-Sol",
+  "catalogProvenance": "C:/Users/user/.codex/model-routing-state.json fetched 2026-09-30T21:25:35.811692900Z; exact execution mapping unresolved",
+  "adoption": "unknown/unadopted",
+  "quality": "candidate; partial r4 code applicability; native GPU review pending",
+  "gameIntegration": "not_run",
+  "technicalReplay": "CPU package checks only; actual WebGPU not_run",
+  "entry": "index.html?embed=1",
+  "verifyEntry": "index.html?embed=1&verify",
+  "sourceRepairHistory": [
+    {
+      "change": "Rename reserved WGSL local identifier target to memberMask; redistribution expression unchanged.",
+      "canonicalSource": "source/effect.mjs",
+      "canonicalSourceSha256AfterRepair": "c7ea734ded1a441ea78c7cc76c6f0074398ff3a8820f3beeb8c335bf7a9216fa",
+      "historicalPackageSnapshot": "outputs/request-20261001/medical-r3-environment/r1/package/source/effect.mjs",
+      "historicalPackageSnapshotSha256": "f871ac185c1559ca59c8a9b4f2062f790ac8db5778a7111da170ad009294b4ed",
+      "nativeShaderCompilation": "pending",
+      "evidence": "outputs/request-20261001/medical-r3-environment/r1/native/WGSL-REPAIR.md"
+    }
+  ],
+  "original": {
+    "file": "medical-room-r3-original.png",
+    "sha256": "949c6f5d1a5a176e4b9cec098fda7b19b774d1b0cc99fb44f02b18f2e9543bc0",
+    "size": [
+      1161,
+      1355
+    ],
+    "policy": "literal byte copy, preserved outside gallery and inside paired candidate"
+  },
+  "authoredInputProvenance": [
+    {
+      "kind": "native original inspection",
+      "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261001\\map-zero-reset\\medical-r3\\original\\medical-room-r3-original.png",
+      "sha256": "949c6f5d1a5a176e4b9cec098fda7b19b774d1b0cc99fb44f02b18f2e9543bc0"
+    },
+    {
+      "kind": "new supplied formal medical VFX code; constant prompt AST read only",
+      "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261001\\map-zero-reset\\medical-vfx-r4\\B-design-code-medical-VFX.py",
+      "sha256": "8cf8d6fe6c3359625512d994451016623311e417522b836228d609c70da26232",
+      "programExecuted": false
+    },
+    {
+      "kind": "canonical B rules",
+      "commit": "197ca5868bfdc12c3b604bc66edd5700e6c3853f",
+      "baseBlob": "a688233ad601c9a071a685fc4129ee276db778f1",
+      "extensionBlob": "1e4e2ebf761540a1d5203b7cc86e83326ef56e13"
+    },
+    {
+      "kind": "project AGENTS and current fullaccess/DVA/asset-generation/B skills"
+    }
+  ],
+  "creativeBoundary": "No old E artistic source/code/README/audio read. Existing E path names only were inventoried. No image generation or edit. Initial unpublished doorway/SFX proposal was discarded before handoff in favor of supplied source contract and latest map audio rule.",
+  "mapping": {
+    "PH1": {
+      "target": "床",
+      "implementation": "source/effect.mjs masks.floor / sample.architectural / worldAt",
+      "supported_pixels": [
+        185,
+        365,
+        975,
+        1255
+      ],
+      "consequence": "寝台と接地領域を除く乾いた床の弱い定常受光。新しい影・濡れはない。"
+    },
+    "PH2": {
+      "target": "既存壁・東開口",
+      "implementation": "masks.wall; original-only opening",
+      "consequence": "壁の弱い定常受光。開口の形と原画内の扉は不変。新しいcasterや遮蔽は作らない。"
+    },
+    "PH3": {
+      "target": "寝台の金属・ビニル",
+      "implementation": "masks.metal/masks.vinyl; worldAt narrow/vinyl",
+      "consequence": "金属の細い方向性反射と青灰ビニルの広い弱い反射肩。寝台の幾何・alphaは不変。"
+    },
+    "PH4": {
+      "target": "左上の収納設備",
+      "implementation": "masks.cabinet; worldAt architecture",
+      "consequence": "既存天板の露出面だけ弱い受光。トレー・布・瓶を追加しない。"
+    },
+    "PH5": {
+      "target": "右上手洗いの蛇口・ボウル",
+      "implementation": "masks.metal faucet; masks.ceramic; worldAt narrow/broad",
+      "consequence": "蛇口の狭い金属反射と陶器の広い曲面反射。排水口と蛇口根元は保護。水は描かない。"
+    },
+    "PH6": {
+      "target": "4600K相当の上方拡散入射条件",
+      "implementation": "sample source*world / worldAt params.source*params.world",
+      "consequence": "物体を追加せず、PH1〜5で材質別に定常入力を読む。source=0で追加世界応答とOBS抽出はゼロ。",
+      "uncertainty": "原画には右開口由来に見える既存明部もある。原画を消さず、r4均一照明との完全な一致は主張しない。"
+    },
+    "OBS1": {
+      "implementation": "runtime original texture / effect decode/encode",
+      "status": "原画のtoneを維持。別パレット化・追加tone変更なし。"
+    },
+    "OBS2": {
+      "implementation": "original texture baked shadows retained; masks.floor excludes bed/contact",
+      "status": "原画既存影を維持。追加density=0、casterなし。"
+    },
+    "OBS3": {
+      "implementation": "worldAt material-specific lobe; no further tone operator",
+      "status": "原画由来の反射を維持。OBS3追加tone調整=0。"
+    },
+    "OBS4": {
+      "implementation": "mask-limited worldAt; same-member OBS target",
+      "status": "alphaと幾何に手を加えない。新しい縁なし。native mask境界はGPU確認待ち。"
+    },
+    "OBS5": {
+      "implementation": "original textureSampleLevel linear; runtime aspectfit",
+      "status": "原画細部をサンプリング、ノイズ/粒子/scanline追加なし。288px読解は未確認。"
+    },
+    "OBS6": {
+      "implementation": "extraction + fragmentMain finite 5x5 Gaussian redistribution",
+      "status": "金属・陶器だけY .8〜.9 soft抽出。最大.06再配分。sigma3.0234375原画px、支持半径9.0703125原画px。同じmember内へ限定、vinyl/床/壁/収納は抽出対象外。",
+      "uncertainty": "2.5% source area design limitはGPU読出し測定待ち。グループ内の各個体mask境界の目視確認待ち。"
+    }
+  },
+  "rulesToSourceVisibleEvidence": [
+    [
+      "InferenceExpansionPolicy.AttributeAndActionResolutionRule",
+      "masks / worldAt",
+      "原画既存部材の受光を具体化し新しい物体を作らない",
+      "native original inspection pass; GPU not_run"
+    ],
+    [
+      "PhenomenonSystemTemplate.PhysicalModelClosureRule",
+      "source*world; mapping PH6",
+      "上方入射→実在材質→反射/吸収。定性的静止モデル。光源物体は追加しない",
+      "CPU source=0 test"
+    ],
+    [
+      "PhenomenonSystemTemplate.StateTransformerRule",
+      "sample ignores time; WGSL params.time unused",
+      "SC2の定常状態を保ち自動ループ中も反射は点滅しない",
+      "CPU all-time invariance test"
+    ],
+    [
+      "VFX.MultilayerArchitectureRule",
+      "narrow / broad / vinyl / architecture",
+      "金属の狭い反射、非金属の広い肩、建築受光、OBSを別計算",
+      "CPU member support tests; GPU not_run"
+    ],
+    [
+      "VFX.MaterialOpticalResponseRule",
+      "worldAt RGB; original alpha unchanged",
+      "反射radianceと不透明coverageは別。非発光設備を発光器具にしない",
+      "CPU source intervention; GPU not_run"
+    ],
+    [
+      "ReflectionClosureTemplate.ReflectionClosureRule",
+      "masks + narrow/broad shape assumptions",
+      "原画の局所曲率を登録し粗さ相応の幅を分ける",
+      "3D normals not measured; native inspection pending"
+    ],
+    [
+      "ObservationIntegrationTemplate.PostEffectsCommonRule",
+      "extraction / finite redistribution",
+      "上流の既存反射だけを有限な表示拡散へ再配分。主形・影を作らない",
+      "CPU kernel bound; GPU not_run"
+    ],
+    [
+      "ObservationIntegrationTemplate.ObservationRegistrySeparationRule",
+      "OBS6 extraction vs worldAt",
+      "反射はPH、表示拡散はOBS。source OFFで両方の追加応答は消える",
+      "static review + CPU pass"
+    ],
+    [
+      "ObservationIntegrationTemplate.SamplingAndReconstructionRule",
+      "OBS_SIGMA / OBS_RADIUS / runtime aspectfit",
+      "原画座標1161x1355へ同じ倍率で投影。288px基準の核幅を変換",
+      "CPU aspect ratio/kernel check; actual 288px not_run"
+    ],
+    [
+      "PostEffects.GlobalLocalRule",
+      "target metal/ceramic only",
+      "コード指定PH3/PH5局所scopeを保持。床や壁へ汎用bloomを加えない",
+      "CPU unsupported target checks"
+    ],
+    [
+      "LuminanceDynamicsModule.LDMModeRule",
+      "stationary worldAt",
+      "コード指定時間変化なし。任意micro variationなし",
+      "CPU time invariance"
+    ],
+    [
+      "ECodeImplementation.ExecutableECodeBranchRule",
+      "runtime/effect sources + this evidence",
+      "Image promptの実行ではなく別WebGPU翻訳成果物。実GPUと構文検査を区別",
+      "JS syntax pass; WGSL/GPU not_run"
+    ]
+  ],
+  "contracts": {
+    "time": "Stationary SC2 t_ref=0, continued under persistent input. Public RAF presentation loops; no world blink/sweep or arbitrary modulation. Diagnostic t has no creative effect.",
+    "coordinates": "Original top-left pixel registration, isotropic aspectfit. Metric world source contract is not reconstructed from a single image; conservative projected masks used.",
+    "alpha": "Original coverage retained; radiance is linear RGB; no extra alpha multiply; OFF returns sampled original directly.",
+    "color": "Original encoded sRGB bytes loaded into rgba8unorm, explicit decode/encode for ON; no background brightness compensation, palette swap, or new emissive devices.",
+    "OBS": "Finite source extraction/redistribution within metal or ceramic mask; no standalone flares/ghosts.",
+    "SFX": "none; latest 2026-10-01 user map-only exception. No AudioContext."
+  },
+  "literalEmptyUnsupportedSurfaces": [
+    "running water",
+    "wet-film",
+    "medical monitor",
+    "medical lamp",
+    "particles",
+    "new caster shadows",
+    "lens ghost",
+    "map SFX"
+  ],
+  "unresolvedLimits": [
+    "No actual WebGPU compile/submit/pixel replay observed by author; primary owns native check before gallery listing.",
+    "No r3 geometry/collision/game acceptance.",
+    "r4 formal source declares no door/bottles and specific dimensions; r3 original includes door/bottles and an independently produced layout. Source geometry/exclusion constraints are not fully satisfied. Original is preserved literally.",
+    "Exact 3D normals, BRDF, irradiance and mutual interreflection cannot be identified from the original; projected conservative masks are design assumptions, not measurements.",
+    "OBS6 extraction area <=2.5% and native mask fidelity require actual GPU pixel evidence.",
+    "Effect OFF native identity and 288px actual-size reading await primary GPU checks.",
+    "Actual execution model metadata unavailable; requested-model attribution must not be presented as verified execution identity."
+  ],
+  "validation": {
+    "cpu": "pass, see cpu-validation.json (CPU only)",
+    "javascriptSyntax": "pass, node --check runtime.mjs + source/effect.mjs",
+    "WGSLCompilation": "not_run",
+    "actualGPU": "not_run",
+    "listening": "not_applicable_map_no_sfx",
+    "galleryPublication": "root_owner_pending",
+    "sourceFullBAcceptance": "not_claimed_partial_r3_mapping"
+  },
+  "ownedOutput": {
+    "public": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\.codex-runtime\\pages-telemetry-release\\sunbeam-withdrawal-release\\work\\clean\\public\\sol61-medical-r3-environment\\r1",
+    "evidence": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261001\\medical-r3-environment\\r1"
+  },
+  "remainingDecisions": [
+    "native GPU visual/mask and time acceptance",
+    "gallery publication only after technically replayable",
+    "full source geometry applicability and game integration"
+  ],
+  "primaryNativeTechnicalFollowup": {
+    "status": "technically_replayable_candidate",
+    "evidence": "outputs/request-20261001/medical-r3-environment/r1/native/CASES-FINAL.json",
+    "scope": "actual WGSL compilation/pipeline,42+frames; fixedtime6 combined/original/sourceOFF/OBS_OFF ready/errors0",
+    "historicalAuthorValidation": "original author-time results retained above; superseded for this native scope only",
+    "qualityAcceptance": "pending",
+    "userAdoption": "not_granted_to_this_candidate",
+    "gameIntegration": "not_connected",
+    "audio": "no_map_SFX_requested",
+    "publication": "R40_preparation_not_yet_published"
+  }
+}

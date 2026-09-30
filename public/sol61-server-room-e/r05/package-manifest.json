@@ -1,0 +1,68 @@
+{
+  "schema": "dva-native-webgpu-runtime-package/v1",
+  "effect": "Security Room E",
+  "version": "r05",
+  "entry": "index.html",
+  "runtimeFiles": [
+    {
+      "path": "index.html",
+      "bytes": 4107,
+      "sha256": "0f00af47c98f35953d21cbc3cad5c99bc1436b03ac7b8498c069b09cfff88d65"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 37130,
+      "sha256": "fd2c616339ab5678fd03d759b8ca461c4c753daa121e7b9c056cf132272d5921"
+    },
+    {
+      "path": "visual-clock.mjs",
+      "bytes": 866,
+      "sha256": "23333852862408a70b1faf028fd5e18ea0d410a629bfe35c9088fbfc0930bd14"
+    },
+    {
+      "path": "security-room-r05.wgsl",
+      "bytes": 33930,
+      "sha256": "0840b7d6f253a8da1b554182abb4efd6fbcf79b3c5ebef0380d8d15260e0dab2"
+    },
+    {
+      "path": "security-room-r01-original.png",
+      "bytes": 2155465,
+      "sha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64"
+    }
+  ],
+  "dependencyClosure": [
+    "runtime.mjs",
+    "visual-clock.mjs",
+    "security-room-r05.wgsl",
+    "security-room-r01-original.png"
+  ],
+  "frozenArtistSource": {
+    "manifest": "outputs/request-20261001/server-r05-improvement/SOURCE-MANIFEST.json",
+    "manifestSha256": "eb1c118e10ce99e0912b5fbaad9ba687303317d95f0af3e43199a994b0dc6360",
+    "frozenFileCount": 12,
+    "wgslSha256": "0840b7d6f253a8da1b554182abb4efd6fbcf79b3c5ebef0380d8d15260e0dab2",
+    "originalPngSha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64"
+  },
+  "adoption": "UNADOPTED; current adopted map unit remains original r01 plus environment E r04",
+  "technicallyReplayable": "PENDING_NATIVE_WEBGPU_VALIDATION",
+  "verification": {
+    "cpuStatic": "PASS: hashes, dependency closure, API bindings, four-pass order, visual-clock boundaries and no-audio contract",
+    "syntax": "PASS: node --check runtime.mjs and visual-clock.mjs",
+    "nativeWebGPU": "NOT_RUN; primary native validation required",
+    "visualQuality": "PENDING_ROOT_REVIEW",
+    "gameplayAdoption": "NOT_CONNECTED",
+    "audio": "NOT_APPLICABLE_NO_MAP_SFX"
+  },
+  "runtimeContributorAttribution": "primary-assigned bounded worker; actual execution-model identity not independently recorded",
+  "primaryNativeTechnicalFollowup": {
+    "status": "technically_replayable_candidate",
+    "evidence": "outputs/request-20261001/server-r05-improvement/native/QUEUE-FIXED-CASES.json",
+    "scope": "actual combined/allOFF/sourceOnly/receiverOnly serialized readbacks; queue fence completed; original/source hashes match",
+    "historicalAuthorValidation": "original author-time results retained above; superseded for this native scope only",
+    "qualityAcceptance": "pending",
+    "userAdoption": "not_granted_to_this_candidate",
+    "gameIntegration": "not_connected",
+    "audio": "no_map_SFX_requested",
+    "publication": "R40_preparation_not_yet_published"
+  }
+}

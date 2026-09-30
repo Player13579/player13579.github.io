@@ -1,0 +1,45 @@
+{
+  "schema": "dva-native-webgpu-runtime-package/v1",
+  "effect": "Medical Room Environment E",
+  "version": "r3 E r1",
+  "entry": "index.html",
+  "runtimeFiles": [
+    {
+      "path": "index.html",
+      "bytes": 590,
+      "sha256": "818317c0d2960e9c731f8333e3db8fc53c18fd10043db895b878622e8d6d3b3f"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 4650,
+      "sha256": "d7c58a28242b74dd872de77e319970383f55c4ce3fee28351b951d04225cbf3b"
+    },
+    {
+      "path": "source/effect.mjs",
+      "bytes": 6001,
+      "sha256": "c7ea734ded1a441ea78c7cc76c6f0074398ff3a8820f3beeb8c335bf7a9216fa"
+    },
+    {
+      "path": "medical-room-r3-original.png",
+      "bytes": 1764725,
+      "sha256": "949c6f5d1a5a176e4b9cec098fda7b19b774d1b0cc99fb44f02b18f2e9543bc0"
+    }
+  ],
+  "dependencyClosure": [
+    "runtime.mjs",
+    "source/effect.mjs",
+    "medical-room-r3-original.png"
+  ],
+  "historicalArtistManifest": {
+    "path": "manifest.json",
+    "sha256": "de9ec4ad611094cc0767102156ecb5939d2be54b8635f2e1bfcfc3a0f83e5ef0"
+  },
+  "nativeTechnical": {
+    "status": "ready_combined_and_control_cases_errors0",
+    "evidence": "outputs/request-20261001/medical-r3-environment/r1/native/CASES-FINAL.json"
+  },
+  "adoption": "unknown_no_user_adoption",
+  "qualityAcceptance": "pending",
+  "gameIntegration": "not_connected",
+  "sfx": "none_map_user_exception"
+}
