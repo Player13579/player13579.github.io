@@ -7,6 +7,8 @@
     // mapped into the 980x620 gallery iframe (including Stamina r8's centered 480x260 canvas).
     'stamina-sol61-r8': { magnification: 240 / (64 * (530 / 260)), focusX: 490, focusY: 310 },
     'mana-zero-sol61-r4': { magnification: 240 / 64, focusX: 490, focusY: 310 },
+    'mana-zero-sol61-r6': { magnification: 240 / 64, focusX: 490, focusY: 310 },
+    'mana-zero-sol61-r5': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'cooldown-sol61-shortening-zero': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'stamina-sol61-r7': { magnification: 240 / (64 * (530 / 260)), focusX: 490, focusY: 310 },
     'mana-zero-sol61-r3': { magnification: 240 / 64, focusX: 490, focusY: 310 },
