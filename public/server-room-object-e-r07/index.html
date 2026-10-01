@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embed')</script>
+<link rel="icon" href="data:,">
+<title>Security Room r07 — WebGPU Object E Fixture</title>
+<style>
+:root{color-scheme:dark;font:14px/1.45 system-ui,sans-serif;background:#10151a;color:#e8edf1}*{box-sizing:border-box}body{margin:0;padding:12px}header{max-width:1400px;margin:0 auto 10px}h1{font-size:18px;margin:0 0 3px}p{margin:0;color:#b9c5ce}.tag{color:#ffd27b;font-weight:700}.controls{max-width:1400px;margin:0 auto 10px;display:flex;flex-wrap:wrap;gap:7px;align-items:center}.controls button,.controls select{background:#222d35;color:#eef;border:1px solid #52616d;border-radius:4px;padding:5px 8px}.controls label{display:flex;gap:4px;align-items:center}.controls .spacer{width:14px}#status{font:12px ui-monospace,monospace;color:#9dc5dc;min-height:20px;max-width:1400px;margin:0 auto}.stage{display:flex;justify-content:center;align-items:flex-start;overflow:auto}.wrap{position:relative;flex:none}canvas{display:block;width:1340px;height:1174px;max-width:none;background:#000;image-rendering:auto}.overlay{position:absolute;left:5px;top:5px;padding:3px 6px;background:#10151acc;color:#def;font:11px ui-monospace,monospace;pointer-events:none}.hidden{display:none!important}
+.embed,.embed body{width:100%;height:100%;margin:0;padding:0;overflow:hidden}.embed .stage{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;overflow:hidden}.embed .wrap{width:min(100vw,114.1397vh);height:auto;aspect-ratio:1340/1174}.embed canvas{width:100%;height:100%}.embed header,.embed .controls,.embed #status,.embed .overlay{display:none!important}
+</style>
+</head>
+<body>
+<header><h1>Security Room r07 · per-object WebGPU fixture</h1><p><span class="tag">Gallery fixture only.</span> Walk into an object’s access range to trigger one local receipt. Leaving and re-entering after its cooldown can trigger it again. These previews grant no production capability, entitlement, or gameplay benefit. No camera tripod, new image, Canvas 2D, or map SFX.</p></header>
+<div class="controls" aria-label="Native fixture controls">
+<label>E rate <select id="rate"><option value="0">0×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+<label>Canvas CSS <select id="size"><option value="1340">1340 × 1174</option><option value="670">670 × 587</option></select></label>
+<button id="auth">Send synthetic auth fixture</button>
+<button id="compare">Compare original</button>
+<label><input id="objectLayer" type="checkbox" checked> object E</label>
+<label>object shift <select id="objectShift"><option value="0,0">0, 0 px</option><option value="24,-12">+24, −12 px</option></select></label>
+<label><input id="reducedMotion" type="checkbox"> reduced motion</label>
+<label>object E view <select id="objectDiagnostic"><option value="0" selected>combined</option><option value="1">source only</option><option value="2">receiver only</option><option value="3">local observation bloom</option></select></label>
+<button id="full">Fit full canvas</button>
+<label><input id="monitor" type="checkbox" checked> monitor</label>
+<label><input id="authSource" type="checkbox" checked> auth</label>
+<label><input id="rack" type="checkbox" checked> rack</label>
+<label><input id="visibility" type="checkbox" checked> source visibility</label>
+<label><input id="near" type="checkbox" checked> near</label>
+<label><input id="flare" type="checkbox" checked> flare</label>
+<label><input id="exposure" type="checkbox" checked> E-only exposure</label>
+<label>presentation <select id="presentation"><option value="combined" selected>combined</option><option value="sourceOnly">source only</option><option value="receiverOnly">receiver only</option></select></label>
+<label>observer <select id="observer"><option value="670,587,-0.1745329252">(670,587), −10°</option><option value="520,700,-0.1745329252">(520,700), −10°</option><option value="670,587,0">(670,587), 0°</option></select></label>
+<label>source shift <select id="shift"><option value="0,0">0, 0 px</option><option value="24,-12">+24, −12 px</option></select></label>
+<button id="diagnostics">Read native pass probes</button>
+<button id="matrix">Run static PNG matrix</button>
+</div>
+<div id="status" role="status">Starting WebGPU…</div>
+<div id="previewCount" role="status">Preview successful uses: 0</div>
+<div class="stage"><div class="wrap"><canvas id="view" width="1340" height="1174" aria-label="Security room r06 WebGPU render with movable gallery actor"></canvas><div class="overlay" id="overlay">WebGPU · local gallery fixture only</div></div></div>
+<script type="module" src="runtime.mjs"></script>
+</body>
+</html>

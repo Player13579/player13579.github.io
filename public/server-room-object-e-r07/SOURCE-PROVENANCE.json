@@ -1,0 +1,95 @@
+{
+  "schema": "dva-server-room-object-e-gallery-source-provenance/v1",
+  "sourcePackage": "outputs/request-20261002/server-object-e-r07-control-queue",
+  "sourcePackageManifestSha256": "9c32e94ddb628ec619c2cd397d33fef88ba81e3b6cf673ec5b3d024d379e979c",
+  "originalPackageManifestPreserved": true,
+  "galleryRegistrationAddsNativeStatusOnly": true,
+  "original": {
+    "path": "security-room-r01-original.png",
+    "width": 1340,
+    "height": 1174,
+    "sha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64"
+  },
+  "runtimeFiles": [
+    {
+      "path": "index.html",
+      "bytes": 4913,
+      "sha256": "9d9f845b25d8c1c01ab23445554841d4ccb3e43eeb7d6f480c9d0964e374c810"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 45589,
+      "sha256": "45394c735daa4da94ba2cb06d4afaae025be4454bda5e7925a21ff7b7ea980b6"
+    },
+    {
+      "path": "visual-clock.mjs",
+      "bytes": 866,
+      "sha256": "23333852862408a70b1faf028fd5e18ea0d410a629bfe35c9088fbfc0930bd14"
+    },
+    {
+      "path": "security-room-r05.wgsl",
+      "bytes": 33930,
+      "sha256": "0840b7d6f253a8da1b554182abb4efd6fbcf79b3c5ebef0380d8d15260e0dab2"
+    },
+    {
+      "path": "security-room-r01-original.png",
+      "bytes": 2155465,
+      "sha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64"
+    },
+    {
+      "path": "object-e.mjs",
+      "bytes": 8236,
+      "sha256": "101e20764b1153abc067b7e5ff0fc3aeea0ac46719a59fbf3cf79f382c7c8d8c"
+    },
+    {
+      "path": "object-e.wgsl",
+      "bytes": 9259,
+      "sha256": "6781a9ddf2421ef5e0586ebc8587a79ee411b41842176b280a7a3a151acd5d77"
+    }
+  ],
+  "objectE": {
+    "ids": [
+      "server-r05-monitor-console",
+      "server-r05-equipment-locker",
+      "server-r05-auth-panel",
+      "server-r05-service-rack"
+    ],
+    "technicalReplay": "pending-primary-native",
+    "quality": "pending-native-full-life-mask-receiver-and-input-review",
+    "adoption": "unknown_unadopted",
+    "gameIntegration": "not_connected",
+    "fixtureBenefit": {
+      "kind": "preview-successful-use-count",
+      "delta": 1,
+      "scope": "local fixture counter only; no currency/resource/health/item/status entitlement"
+    },
+    "perObjectCooldownMs": 3000,
+    "grantOn": "fresh outside-to-inside usable-range edge",
+    "useRadiusPx": [
+      100,
+      100,
+      105,
+      100
+    ],
+    "lifetimeMs": 1800,
+    "sourceReceiptsClockOwner": "server-r05-art",
+    "rendererClock": "unchanged r05 visual-clock.mjs E time/rate"
+  },
+  "nativeEvidence": [
+    "server-r07-queued-resize-native.json",
+    "server-r07-selector-mismatch-native.json",
+    "server-r07-selector-fixed-native.json",
+    "server-r07-interaction-native.json",
+    "server-r07-native-pass-probes.json",
+    "server-r07-compare-native.json",
+    "server-r07-native-acceptance.md"
+  ],
+  "limitations": [
+    "quality-pending",
+    "adoption-not-adopted",
+    "geometry-collision-pending",
+    "Safari-pending",
+    "main-game-integration-not-connected",
+    "map-SFX-disabled"
+  ]
+}
