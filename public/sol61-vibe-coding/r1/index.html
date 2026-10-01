@@ -14,6 +14,7 @@
     canvas { width:min(100vw,158.064516vh); height:min(100vh,63.265306vw); max-width:100%; max-height:100%; aspect-ratio:980/620; display:block; background:#080b12; }
     #controls { display:flex; gap:.7rem; align-items:center; min-height:38px; padding:4px 10px; background:#111621; }
     #status { margin-left:auto; opacity:.8; }
+    #error { position:absolute; z-index:2; left:12px; right:12px; top:12px; max-height:35%; overflow:auto; padding:10px 12px; border:1px solid #a94d58; border-radius:6px; background:#281319ed; color:#ffe4e6; white-space:pre-wrap; overflow-wrap:anywhere; font:12px/1.45 ui-monospace,monospace; }
     [hidden] { display:none !important; }
     html.embed body { display:block; background:transparent; }
     html.embed #stage { position:absolute; inset:0; }
@@ -22,7 +23,7 @@
   </style>
 </head>
 <body>
-  <main id="stage"><canvas id="preview" aria-label="Vibe Coding WebGPU preview"></canvas></main>
+  <main id="stage"><canvas id="preview" aria-label="Vibe Coding WebGPU preview"></canvas><pre id="error" role="alert" aria-live="assertive" hidden></pre></main>
   <div id="controls">
     <label>再生速度 <select id="rate"><option value="1">1×</option><option value="0.5">0.5×</option><option value="2">2×</option><option value="0">停止</option></select></label>
     <label><input id="source" type="checkbox" checked> Source</label>
@@ -31,6 +32,21 @@
     <span>H64 · 1200 E ms · 46 authored variants</span>
     <span id="status" role="status">Starting WebGPU…</span>
   </div>
-  <script type="module" src="./runtime-host.mjs"></script>
+  <script>
+    (() => {
+      const errorNode = document.getElementById('error');
+      const showStartupError = error => {
+        if (!errorNode) return;
+        errorNode.textContent = `Vibe runtime startup error: ${String(error?.stack || error?.message || error || 'module failed to load')}`;
+        errorNode.hidden = false;
+      };
+      window.addEventListener('error', event => {
+        if (event.target === document.querySelector('script[type="module"]'))
+          showStartupError(event.error || event.message);
+      }, true);
+      window.addEventListener('unhandledrejection', event => showStartupError(event.reason));
+    })();
+  </script>
+  <script type="module" src="./runtime-host.mjs?v=vibe-display-20261001-r2"></script>
 </body>
 </html>

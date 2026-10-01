@@ -456,7 +456,7 @@
   }
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'barrier-r10-gallery-20261001-r25');
+    preview.searchParams.set('galleryRelease', 'vibe-display-20261001-r46');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

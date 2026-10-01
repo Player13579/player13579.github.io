@@ -129,8 +129,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 2006,
-      "sha256": "6d4bd9d063ba8762f5429f9b3a15913cc8a2f3c5a3bbdbda1d39ad3add4f78f3"
+      "bytes": 3050,
+      "sha256": "4d21fba6e28904f46f34cf29e211debe5b6ead5cff306896da101275f35129bf"
     },
     {
       "path": "kernel.mjs",
@@ -149,8 +149,8 @@
     },
     {
       "path": "runtime-host.mjs",
-      "bytes": 31461,
-      "sha256": "31a317d1f80c1a3630adf661d1f570b219fe08140e365247b92a4977ab45c183"
+      "bytes": 32294,
+      "sha256": "81e12374a9551b8512fd7f0f16b61ea689615f42927269198a0375ba5baab845"
     },
     {
       "path": "sfx.mjs",
@@ -252,7 +252,13 @@
   },
   "runtimeHost": {
     "path": "runtime-host.mjs",
-    "sha256": "31a317d1f80c1a3630adf661d1f570b219fe08140e365247b92a4977ab45c183",
+    "sha256": "81e12374a9551b8512fd7f0f16b61ea689615f42927269198a0375ba5baab845",
+    "previousRuntimeSha256": "31a317d1f80c1a3630adf661d1f570b219fe08140e365247b92a4977ab45c183",
+    "galleryErrorSurfaceRepair": {
+      "attribution": "GPT-6-Luna",
+      "scope": "embedded startup, runtime, GPU validation and device-loss diagnostics",
+      "preservesFrozenArtistSources": true
+    },
     "postFreezeActorAtlasLoaderFix": {
       "attribution": "GPT-6.1-Sol",
       "scope": "actor fixture atlas loader correction",

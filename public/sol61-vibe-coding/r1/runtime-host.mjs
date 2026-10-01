@@ -7,6 +7,7 @@ const EMBED = params.get('embed') === '1';
 document.documentElement.classList.toggle('embed', EMBED);
 const canvas = document.querySelector('#preview');
 const statusNode = document.querySelector('#status');
+const errorNode = document.querySelector('#error');
 const rateSelect = document.querySelector('#rate');
 const sourceToggle = document.querySelector('#source');
 const observerToggle = document.querySelector('#observer');
@@ -24,7 +25,8 @@ const state = { device:null, context:null, format:null, kernel:null, resources:n
   visualAge:0, cycleStart:0, cycle:0, event:null, receipt:null, prepared:null,
   raf:0, paused:false, disposed:false, ready:false, submissions:0, frameSerial:0,
   source:false, normalMuted:false, audioContext:null, audioBuffer:null, gestureUnlocked:false,
-  sound:null, lastSuccessfulFrame:null, errors:[], shaders:[], resizeObserver:null };
+  sound:null, lastSuccessfulFrame:null, errors:[], errorGeneration:0, persistentRuntimeError:false,
+  shaders:[], resizeObserver:null };
 state.source = !VERIFY;
 state.normalMuted = VERIFY;
 if (VERIFY) state.source = true;
@@ -79,9 +81,18 @@ fn encode(c:vec3f)->vec3f { let x=clamp(c,vec3f(0),vec3f(1));return select(x*12.
 `;
 
 function setStatus(message) { if (statusNode) statusNode.textContent = message; }
-function stageError(error) {
+function clearRuntimeError() {
+  if (!errorNode || state.persistentRuntimeError) return;
+  errorNode.textContent = '';
+  errorNode.hidden = true;
+}
+function stageError(error, persistent = false) {
   const text = String(error?.stack || error?.message || error);
-  state.errors.push(text); setStatus(`WebGPU error: ${String(error?.message || error)}`);
+  state.errors.push(text); state.errorGeneration++;
+  state.persistentRuntimeError ||= persistent;
+  const message = `WebGPU error: ${String(error?.message || error)}`;
+  setStatus(message);
+  if (errorNode) { errorNode.textContent = message; errorNode.hidden = false; }
   console.error('[vibe-r1]', error);
 }
 function texture(device, width, height, format, label) {
@@ -255,7 +266,9 @@ async function render(now) {
   const command=encoder.finish();state.device.queue.submit([command]);state.submissions++;
   const submittedFrame=state.frameSerial, submittedEventKey=p?.receipt.key;
   state.lastSuccessfulFrame={id:submittedFrame,eventKey:submittedEventKey,ageEms:p?.ageEms??null,rate:p?.rate??null};
+  const submittedErrorGeneration=state.errorGeneration;
   state.device.queue.onSubmittedWorkDone().then(()=>{
+    if(submittedErrorGeneration===state.errorGeneration)clearRuntimeError();
     if(state.disposed||VERIFY||!p||!state.gestureUnlocked||state.normalMuted||document.hidden||!state.source)return;
     const nowPrepared=currentPrepared(performance.now());
     if(!nowPrepared||nowPrepared.receipt.key!==submittedEventKey||nowPrepared.ageEms>=1180||nowPrepared.rate<=0)return;
@@ -300,6 +313,10 @@ async function initialize() {
   if(!navigator.gpu)throw new Error('WebGPU is unavailable');
   const adapter=await navigator.gpu.requestAdapter();if(!adapter)throw new Error('No WebGPU adapter');
   state.device=await adapter.requestDevice();
+  state.device.addEventListener('uncapturederror',event=>stageError(event.error,true));
+  state.device.lost.then(info=>{
+    if(!state.disposed)stageError(new Error(`WebGPU device lost: ${info.message||info.reason||'unknown reason'}`),true);
+  });
   state.context=canvas.getContext('webgpu');if(!state.context)throw new Error('Could not acquire WebGPU canvas context');
   state.format=navigator.gpu.getPreferredCanvasFormat();
   state.context.configure({device:state.device,format:state.format,alphaMode:'opaque'});
