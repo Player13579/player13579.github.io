@@ -119,8 +119,9 @@
       version('heal-astra-sparkle-draft-a', 'Astra sparkle draft A', 'public/astra-heal-sparkle-r1/draft-a/index.html', 'public/astra-heal-sparkle-r1/draft-a/heal-sparkle.js', '品質不合格・旧試作・未採用', '作者: GPT-6-Astra。履歴品質理由: Maintenance sparkle too weak; one receiver anchor near face. 後続r1に置換。', 'actor-H64'),
       version('heal-astra-prototype', 'Astra旧採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '旧採用版・r1へ更新', '以前の採用原版として来歴を保持。現行採用版はユーザー指定のsparkle r1。原版の採用履歴は変えず、現在の版選択とは区別しています。', 'actor-H64', 0.7937)
     ]) }),
-    Object.freeze({ id: 'vibe-coding-sol61', title: 'バイブコーディング', defaultVersionId: 'vibe-coding-sol61-r5', versions: Object.freeze([
-      version('vibe-coding-sol61-r5', 'GPT-6.1-Sol r5', 'public/sol61-vibe-coding/r5/index.html?embed=1', 'public/sol61-vibe-coding/r5/package-manifest.json', '実WebGPU技術再生pass・品質審査中・採用状態不明・本編未接続', '設計・runtime: GPT-6.1-Sol。現行の創作・品質基準ターゲットはmineral-water。native technical replay: verify hard-muteで300/620/900msの画面、source/OBS/receiver介入620ms、continuous playback、実fixture32の既存root観察を確認。品質の全寿命・独立画像審査、通常SFX聴感、Safari/iPad、ゲーム接続、採用は未受入。runtimeは他のgenerated-item targetも扱えるが、本版の品質基準はmineral-waterで評価中。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6.1-Sol',creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',adoption:'unknown',qualityStatus:'pending-review',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261002/vibe-r5-native/NATIVE-REPLAY.json'}),
+    Object.freeze({ id: 'vibe-coding-sol61', title: 'バイブコーディング', defaultVersionId: 'vibe-coding-sol61-r7', versions: Object.freeze([
+            version('vibe-coding-sol61-r7', 'GPT-6.1-Sol r7', 'public/sol61-vibe-coding/r7/index.html?embed=1', 'public/sol61-vibe-coding/r7/package-manifest.json', '実WebGPU技術再生pass・Codex品質確認中（GPT-6.1-Sol）・採用状態不明・本編未接続', '設計: GPT-6.1-Sol。凍結設計に忠実なhost修復: GPT-6-Luna。sealed native replayの350ms/780ms current-cause snapshotと13/13 declared browser dependencyのHTTP 200・hash一致を確認。native連続全寿命・視覚品質合格・smoothness・通常SFX聴感・Safari/iPad・ゲーム接続・採用は未受入。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (creative design) + GPT-6-Luna (faithful host)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'codex-review-in-progress',qualityReviewStatus:'in-progress',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261002/vibe-r7-quality/NATIVE-REVIEW.md',technicalReplayStatus:'pass',normalAudioListening:'not_run',safariReplayStatus:'unverified',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261002/native-map-and-vibe-check/vibe-r07-sealed-browser-closure.json',nativeProof:'outputs/request-20261002/native-map-and-vibe-check/vibe-r07-sealed780-proof.json',fullLifetimeStatus:'pending',smoothnessStatus:'unverified'}),
+version('vibe-coding-sol61-r5', 'GPT-6.1-Sol r5', 'public/sol61-vibe-coding/r5/index.html?embed=1', 'public/sol61-vibe-coding/r5/package-manifest.json', '実WebGPU技術再生pass・Codex品質確認中（GPT-6.1-Sol）・ユーザー採用撤回済み・本編未接続', '設計・runtime: GPT-6.1-Sol。現行の創作・品質基準ターゲットはmineral-water。native technical replay: verify hard-muteで300/620/900msの画面、source/OBS/receiver介入620ms、continuous playback、実fixture32の既存root観察を確認。Codex品質レビューは進行中。2026-10-02のユーザー採用は撤回され、現行は未採用。単発volleyとcontinuous rainの差および全寿命品質を解決して再審査する。通常SFX聴感、Safari/iPad、ゲーム接続も未受入。runtimeは他のgenerated-item targetも扱えるが、本版の品質基準はmineral-water。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6.1-Sol',creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',adoption:'not-adopted',adoptionHistory:[{status:'adopted',source:'user-direction-2026-10-02'},{status:'withdrawn',source:'user-direction-2026-10-02',reason:'single-volley-versus-continuous-rain requirement and full-lifetime quality remain unresolved'}],qualityStatus:'codex-review-in-progress',qualityReviewStatus:'in-progress',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261002/vibe-r5-mineral-quality-review/REVIEW.md',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261002/vibe-r5-native/NATIVE-REPLAY.json'}),
       version('vibe-coding-sol61-r4', 'GPT-6.1-Sol r4', 'public/sol61-vibe-coding/r4/index.html?embed=1', 'public/sol61-vibe-coding/r4/package-manifest.json', '実WebGPU技術再生確認・品質改善中・未採用・本編未接続', 'マトリックスレインと生成対象の英語createコードを描画。原設計と改稿: GPT-6.1-Sol。初回操作で版固有SFXを解錠、verifyでは無音。通常聴感・動的全寿命品質・iPad Safari・本編接続は未受入。', 'effect-H64', 1, {creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6.1-Sol',adoption:'unknown',qualityStatus:'pending-improvement',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
       version('vibe-coding-sol61-r3', 'GPT-6.1-Sol r3', 'public/sol61-vibe-coding/r3/index.html?embed=1', 'public/sol61-vibe-coding/r3/package-manifest.json', '実WebGPU技術再生確認・品質改善中・未採用・本編未接続', 'マトリックスレインと生成対象の英語createコードを描画。原設計と改稿: GPT-6.1-Sol。初回操作で版固有SFXを解錠、verifyでは無音。通常聴感・動的全寿命品質・iPad Safari・本編接続は未受入。', 'effect-H64', 1, {creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6.1-Sol',adoption:'unknown',qualityStatus:'pending-improvement',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
       version('vibe-coding-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-vibe-coding/r1/index.html?embed=1', 'public/sol61-vibe-coding/r1/package-manifest.json', 'Codexブラウザ実再生確認・Safari黒画面調査中・採用未確認・本編未接続', '設計: GPT-6.1-Sol。凍結artist sourceを保持。初期化中のresize競合と不要な描画待ち、例外時の停止処理を修正。CodexブラウザではキャラとEの実描画を確認したが、報告されたSafariの黒画面は未解決として検証を継続。品質・通常SFX聴感・本編接続は未受入。', 'effect-H64', 1, {creator:'gpt-6.1-sol',creatorDisplayName:'GPT-6.1-Sol',adoption:'unknown',qualityStatus:'candidate',technicalReplayStatus:'pass',safariReplayStatus:'unverified_user_black_screen',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
@@ -448,11 +449,42 @@
   }
   function adoptionStatusLabel(item) {
     const state = adoptionState(item);
+    if (item.adoptionHistory?.at(-1)?.status === 'withdrawn') return 'ユーザー採用撤回済み';
     if (state === 'reference-only') return 'セット原画の参照';
     if (state === 'adopted') return '採用済み';
     if (state === 'previously-adopted') return '旧採用版（現行採用対象外）';
     if (state === 'not-adopted') return '未採用';
     return '採用状態不明';
+  }
+  function qualityReviewLabel(item) {
+    if (item.qualityReviewStatus === 'in-progress' && item.qualityReviewerDisplayName && item.qualityEvidence) {
+      return 'Codex品質確認中（' + item.qualityReviewerDisplayName + '）';
+    }
+    if ((item.qualityReviewStatus === 'not-accepted' || item.qualityReviewOutcome === 'fail') &&
+        item.qualityReviewerDisplayName && item.qualityEvidence) {
+      return 'Codex品質未達（' + item.qualityReviewerDisplayName + '）';
+    }
+    if (item.qualityReviewStatus === 'complete' && item.qualityReviewOutcome === 'pass' &&
+        item.qualityReviewerDisplayName && item.qualityEvidence) {
+      return adoptionState(item) === 'not-adopted'
+        ? 'Codex品質基準達成・ユーザー審査待ち（' + item.qualityReviewerDisplayName + '）'
+        : 'Codex品質基準達成（' + item.qualityReviewerDisplayName + '）';
+    }
+    return 'Codex品質確認状況不明';
+  }
+  function technicalReplayLabel(item) {
+    if (item.technicalReplayStatus === 'pass') return '技術再生pass';
+    if (item.technicalReplayStatus && item.technicalReplayStatus !== 'pass') return '技術再生' + item.technicalReplayStatus;
+    return item.replayable === true ? '技術再生登録済み' : '技術再生状況不明';
+  }
+  function gameIntegrationLabel(item, group) {
+    const state = item.gameIntegrationStatus || group?.integration;
+    if (['verified', 'integrated'].includes(state)) return '本編接続確認済み';
+    if (['not_connected', 'not-integrated'].includes(state)) return '本編未接続';
+    return '本編接続状況不明';
+  }
+  function versionStatusSummary(item, group) {
+    return [technicalReplayLabel(item), qualityReviewLabel(item), adoptionStatusLabel(item), gameIntegrationLabel(item, group)].join(' · ');
   }
   function visibleVersionIndices(group) {
     const hasCurrentAdoption = group.versions.some(item => adoptionState(item) === 'adopted');
@@ -511,13 +543,13 @@
     updateGalleryAudioControl('effect', item);
     document.getElementById('selected-title').textContent = `${group.title} · ${item.title}`;
     document.getElementById('selected-description').textContent = item.detail;
-    document.getElementById('selected-status').textContent = item.status;
+    document.getElementById('selected-status').textContent = versionStatusSummary(item, group);
     document.getElementById('selected-source').textContent = `WebGPU: ${item.source}`;
     const shownVersions = visibleVersionIndices(group);
     versionSelect.replaceChildren(...shownVersions.map((originalIndex, i) => {
       const v = group.versions[originalIndex]; const option = document.createElement('option'); option.value = String(i);
       const state = adoptionState(v);
-      option.textContent = `${v.title} — ${adoptionStatusLabel(v)} · ${v.status}`; return option;
+      option.textContent = `${v.title} — ${versionStatusSummary(v, group)}`; return option;
     }));
     versionSelect.value = String(Math.max(0, shownVersions.indexOf(selectedVersionIndex)));
     versionSelect.disabled = shownVersions.length < 2;
@@ -563,6 +595,7 @@
         creatorModelId: item.creatorModelId || (item.id === 'barrier-pro-r07' ? 'chatgpt-pro' : ['stamina-sol61-r9-frontfix','stamina-sol61-r13','mana-zero-sol61-r8','cooldown-clock-zero-r4','barrier-sol61-r8','barrier-sol61-r8-fidelityfix-a1'].includes(item.id) ? 'gpt-6.1-sol+gpt-6-luna' : item.id.startsWith('cooldown-clock-zero-r') ? 'gpt-6.1-sol' : item.id.includes('-sol61-') ? 'gpt-6.1-sol' : item.id === 'item-pickup-sol-r2' ? 'gpt-6-sol' : 'gpt-6-astra'),
         creatorDisplayName: item.creatorDisplayName || (item.id === 'barrier-pro-r07' ? 'GPT Pro' : ['stamina-sol61-r9-frontfix','stamina-sol61-r13','mana-zero-sol61-r8','cooldown-clock-zero-r4','barrier-sol61-r8','barrier-sol61-r8-fidelityfix-a1'].includes(item.id) ? 'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)' : item.id.startsWith('cooldown-clock-zero-r') ? 'GPT-6.1-Sol' : item.id.includes('-sol61-') ? 'GPT-6.1-Sol' : item.id === 'item-pickup-sol-r2' ? 'GPT-6-Sol' : 'GPT-6-Astra'),
         qualityStatus: item.qualityStatus || (/不合格|不達|未達/.test(item.status) ? 'fail' : /保留|未受入|品質未検証|品質未審査/.test(item.status) ? 'pending' : 'candidate'),
+        qualityReviewStatusLabel: qualityReviewLabel(item),
         userAdoptionStatus: adoptionState(item), adoptionStatusLabel: adoptionStatusLabel(item),
         gameIntegrationStatus: item.gameIntegrationStatus || (/本編接続済み/.test(item.status) ? 'verified' : /本編未接続|本編未採用/.test(item.status) ? 'not-integrated' : 'unverified'),
         previewKind: 'webgpu', technicalReplayStatus: item.technicalReplayStatus || (item.replayable ? 'listed-existing-replay-contract' : 'unavailable')
@@ -803,12 +836,12 @@
     const authors=[item.originalCreatorDisplayName&&'原画作者: '+item.originalCreatorDisplayName,item.designAuthorDisplayName&&'E作者: '+item.designAuthorDisplayName,item.runtimeAuthorDisplayName&&'runtime作者: '+item.runtimeAuthorDisplayName].filter(Boolean).join(' · ');
     const interactionAuthors=[item.interactionPreviewDesignAuthorDisplayName&&'操作fixture設計者: '+item.interactionPreviewDesignAuthorDisplayName,item.interactionPreviewRuntimeAuthorDisplayName&&'操作fixture runtime作者: '+item.interactionPreviewRuntimeAuthorDisplayName].filter(Boolean).join(' · ');
     const interactionStatus=item.interactionPreviewPage?`操作デモ状態: ${item.interactionPreviewStatus}。${item.interactionPreviewNote||''}`:'';
-    document.getElementById('selected-description').textContent=(authors?authors+'。 ':'')+(interactionAuthors?interactionAuthors+'。 ':'')+'作者: '+(item.creatorDisplayName||group.creatorDisplayName||'不明')+'。版: '+item.id+'。品質状態: '+quality+'。採用状態: '+(adoption==='unknown'?'unknown':adoption)+'。本編接続: '+group.integration+'。'+(item.note||group.reason)+(interactionStatus?'。'+interactionStatus:'')+(item.hash?' 原本SHA-256: '+item.hash:'');
-    document.getElementById('selected-status').textContent=quality+' · '+adoptionStatusLabel(item)+' · '+group.integration;
+    document.getElementById('selected-description').textContent=(authors?authors+'。 ':'')+(interactionAuthors?interactionAuthors+'。 ':'')+'作者: '+(item.creatorDisplayName||group.creatorDisplayName||'不明')+'。版: '+item.id+'。'+versionStatusSummary(item,group)+'。'+(item.note||group.reason)+(interactionStatus?'。'+interactionStatus:'')+(item.hash?' 原本SHA-256: '+item.hash:'');
+    document.getElementById('selected-status').textContent=versionStatusSummary(item,group);
     document.getElementById('selected-source').textContent=webgpu?(mapInteractionPreview?`キャラ操作fixture · ${item.interactionPreviewPage} · manifest ${item.interactionPreviewManifest} · SHA-256 ${item.interactionPreviewManifestSha256}`:'WebGPUマップ · '+(item.source||item.page)):'保存原本画像 · '+item.src;
     const link=document.getElementById('selected-link');link.href=webgpu?makeMapPreview(item).href:item.src;link.textContent=webgpu?(mapInteractionPreview?'キャラ操作fixtureを見る ↗':'WebGPUマッププレビューを見る ↗'):'原本画像を見る ↗';
     const visible=visibleVersionIndices(group).map(i=>({v:group.versions[i],i}));
-    versionSelect.replaceChildren(...visible.map(({v,i},n)=>{const o=document.createElement('option');o.value=String(n);o.textContent=v.title+' — '+adoptionStatusLabel(v)+(v.qualityStatus?' · '+v.qualityStatus:'');o.dataset.versionId=v.id;return o;}));
+    versionSelect.replaceChildren(...visible.map(({v,i},n)=>{const o=document.createElement('option');o.value=String(n);o.textContent=v.title+' — '+versionStatusSummary(v,group);o.dataset.versionId=v.id;return o;}));
     versionSelect.value=String(Math.max(0,visible.findIndex(x=>x.i===versionIndex)));versionSelect.disabled=visible.length<2;
     versionSelect.onchange=()=>selectImage(group,visible[Number(versionSelect.value)].i);
     buttons.forEach(b=>b.setAttribute('aria-current',b.dataset.id===group.id?'true':'false'));
@@ -864,7 +897,7 @@
       const preferred=remembered?.groupId===group.id?indices.find(i=>group.versions[i].id===remembered.versionId):undefined;
       const first=preferred??indices.find(i=>group.versions[i].id===group.defaultVersionId)??indices[0];
       const item=group.versions[first];const title=document.createElement('strong');title.textContent=group.title+' · '+item.title;
-      const status=document.createElement('span');status.textContent=currentCategory==='effect'?`${adoptionStatusLabel(item)} · ${item.status}`:`${adoptionStatusLabel(item)} · ${item.qualityStatus||group.quality}`;
+      const status=document.createElement('span');status.textContent=currentCategory==='effect'?versionStatusSummary(item,group):`${adoptionStatusLabel(item)} · ${item.qualityStatus||group.quality}`;
       b.append(title,status);b.addEventListener('click',()=>currentCategory==='effect'?select(entries.indexOf(group),first):selectImage(group,first));catalog.append(b);buttons.push(b);
     }
     const remembered=selections.get(`${currentCategory}:${currentAdoptionFilter}`);
