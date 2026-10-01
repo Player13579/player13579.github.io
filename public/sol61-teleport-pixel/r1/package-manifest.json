@@ -1,0 +1,60 @@
+{
+  "package": "sol61-teleport-pixel/r1",
+  "purpose": "Standalone, private-realm WebGPU preview replay for gallery integration",
+  "qualityAcceptance": "pending",
+  "userAdoption": "unadopted",
+  "gameIntegration": "not-connected",
+  "creativeSource": {
+    "path": "teleport-pixel.mjs",
+    "author": "GPT-6.1-Sol",
+    "sha256": "9798a0ef7597baea6ff46f3a279b49e5ebc6f9332d51accbb768e9cead105bf0",
+    "sourceFreezeSha256": "95fa975b8c4be17b357c92ed0bbeaa63076a548920fc1d4a3c3243a53744bd53",
+    "modified": false
+  },
+  "localDependencies": [
+    {
+      "path": "teleport-preview-adapter.mjs",
+      "source": "outputs/request-20261001/teleport-pixel-zero-r1/runtime-preview/teleport-preview-adapter.mjs",
+      "role": "Preview-only fixture adapter; no server receipt claim"
+    },
+    {
+      "path": "preview-playback.mjs",
+      "source": "outputs/request-20261001/teleport-pixel-zero-r1/runtime-preview/preview-playback.mjs",
+      "role": "Frozen fixture clock and hard-zero/finite SFX gates"
+    },
+    {
+      "path": "vendor/teleport-pixel-r1-player-sprite-cache.js",
+      "source": ".codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean/webgpu-player-sprite.js",
+      "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2",
+      "role": "Private iframe cache; pinned dirty bytes, does not update the game global"
+    },
+    {
+      "path": "assets/generated/philia-front-nine-v752.png",
+      "source": ".codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean/assets/generated/philia-front-nine-v752.png",
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "role": "Existing white-hood/front pose raster; exact 256x256 crop from 768x768 source; image author unresolved"
+    }
+  ],
+  "rewrites": [
+    "Source absolute preview URL for sprite-cache replaced with ./vendor/teleport-pixel-r1-player-sprite-cache.js.",
+    "Canonical authored raster URL replaced with ./assets/generated/philia-front-nine-v752.png and exact bytes verified before binding.",
+    "Source preview modules/assets/provenance copied to a version-scoped local route; no shared game cache or renderer file is modified."
+  ],
+  "replayContract": {
+    "automaticLoop": true,
+    "fixtureLifetimeMs": 640,
+    "heldReviewQuery": "reviewAgeMs=0..639 (optional, omit in gallery)",
+    "verifyQuery": "verify (hard zero; no AudioContext creation)",
+    "normalSfx": "Finite PCM phases admitted only after same-frame GPU submit, unlocked only by user gesture, cast/source/phase-bound",
+    "bridge": "window.__gallerySfx.activateFromGesture() and [data-gallery-sfx] control",
+    "telemetry": "html[data-teleport-pixel-*] and canvas[data-version, data-loops, data-submits, data-frames, data-causal-id, data-age-ms, data-plan, data-verify]"
+  },
+  "gallery": {
+    "page": "sol61-teleport-pixel/r1/index.html",
+    "source": "sol61-teleport-pixel/r1/teleport-pixel.mjs",
+    "versionId": "teleport-pixel-sol61-r1",
+    "groupId": "teleport-sol61",
+    "creator": "GPT-6.1-Sol",
+    "status": "Technically replayable; quality review pending; unadopted; not connected to the game"
+  }
+}

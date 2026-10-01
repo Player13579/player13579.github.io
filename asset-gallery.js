@@ -2,6 +2,7 @@
   'use strict';
   const PRESENTATION = Object.freeze({ width: 980, height: 620, anchorHeight: 64 });
   const EFFECT_VIEW = Object.freeze({
+    'teleport-pixel-sol61-r1': { magnification: 1, focusX: 490, focusY: 310 },
     // Each frozen Sol version is framed from its own iframe CSS canvas and H64 actor size.
     // The target on-screen actor height is 240 CSS px; focus is each canvas' actual center
     // mapped into the 980x620 gallery iframe (including Stamina r8's centered 480x260 canvas).
@@ -97,7 +98,8 @@
     Object.freeze({ id, title, page, source, status, detail, anchor, zoom, ...metadata, replayable: true });
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const entries = Object.freeze([
-    Object.freeze({ id: 'teleport-sol61', title: '転移', defaultVersionId: 'teleport-sol61-zero-r1', integration: 'not-integrated', reason: '新しいSolゼロ設計のWebGPU候補。本編接続と品質審査は未完了。', versions: Object.freeze([
+    Object.freeze({ id: 'teleport-sol61', title: '転移', defaultVersionId: 'teleport-pixel-sol61-r1', integration: 'not-integrated', reason: '新しいSolゼロ設計のWebGPU候補。本編接続と品質審査は未完了。', versions: Object.freeze([
+      version('teleport-pixel-sol61-r1', 'GPT-6.1-Sol pixel r1', 'public/sol61-teleport-pixel/r1/index.html?embed=1', 'public/sol61-teleport-pixel/r1/package-manifest.json', '実WebGPU技術再生確認・品質改善中・未採用・本編未接続', '発動座標で同じキャラをピクセルへ分解し、転移先で再構成する新版。設計: GPT-6.1-Sol、忠実な再生実装: GPT-6-Luna。640 E-msのローカル因果fixtureをループ再生。版固有SFXは初回操作で解錠し、verifyでは無音。技術再生と品質合格・採用・本編接続を区別。実キャラの排他的描画所有、本編producer、iPad、通常聴感は未受入。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (design) + GPT-6-Luna (runtime)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'not-adopted',qualityStatus:'pending-improvement',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
       version('teleport-sol61-zero-r1', 'GPT-6.1-Sol zero r1', 'public/sol61-teleport-zero-r1/index.html', 'public/sol61-teleport-zero-r1/artist.mjs', '実WebGPU再生確認済み・品質審査前・未採用・本編未接続', '作者: GPT-6.1-Sol。忠実な再生実装: GPT-6-Luna。出発と到着を760 E-msで交互に再生するデジタルゲート。現象固有SFXを同じ時計で再生し、初回は音声操作が必要。人物・マップへの受光はこの独立プレビューでは無効。本編の実人物との接続、視覚品質、通常音声の聴感は未受入。', 'effect-H64', 1, {originalCreatorDisplayName: 'GPT-6.1-Sol', designAuthorDisplayName: 'GPT-6.1-Sol', runtimeAuthorDisplayName: 'GPT-6-Luna', creatorDisplayName: 'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)', creatorModelId: 'gpt-6.1-sol+gpt-6-luna', adoption: 'unknown', qualityStatus: 'not_run', technicalReplayStatus: 'pass', normalAudioListening: 'not_run', gameIntegrationStatus: 'not_connected', technicalEvidence: 'outputs/request-20261001/teleport-zero-r1/native/READY.json'})
     ]) }),
     Object.freeze({ id: 'item-pickup-sol', title: 'アイテム取得', defaultVersionId: 'item-pickup-sol61-r1', versions: Object.freeze([
@@ -115,7 +117,9 @@
       version('heal-astra-sparkle-draft-a', 'Astra sparkle draft A', 'public/astra-heal-sparkle-r1/draft-a/index.html', 'public/astra-heal-sparkle-r1/draft-a/heal-sparkle.js', '品質不合格・旧試作・未採用', '作者: GPT-6-Astra。履歴品質理由: Maintenance sparkle too weak; one receiver anchor near face. 後続r1に置換。', 'actor-H64'),
       version('heal-astra-prototype', 'Astra旧採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '旧採用版・r1へ更新', '以前の採用原版として来歴を保持。現行採用版はユーザー指定のsparkle r1。原版の採用履歴は変えず、現在の版選択とは区別しています。', 'actor-H64', 0.7937)
     ]) }),
-    Object.freeze({ id: 'vibe-coding-sol61', title: 'バイブコーディング', defaultVersionId: 'vibe-coding-sol61-r1', versions: Object.freeze([
+    Object.freeze({ id: 'vibe-coding-sol61', title: 'バイブコーディング', defaultVersionId: 'vibe-coding-sol61-r4', versions: Object.freeze([
+      version('vibe-coding-sol61-r4', 'GPT-6.1-Sol r4', 'public/sol61-vibe-coding/r4/index.html?embed=1', 'public/sol61-vibe-coding/r4/package-manifest.json', '実WebGPU技術再生確認・品質改善中・未採用・本編未接続', 'マトリックスレインと生成対象の英語createコードを描画。原設計と改稿: GPT-6.1-Sol。初回操作で版固有SFXを解錠、verifyでは無音。通常聴感・動的全寿命品質・iPad Safari・本編接続は未受入。', 'effect-H64', 1, {creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6.1-Sol',adoption:'unknown',qualityStatus:'pending-improvement',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
+      version('vibe-coding-sol61-r3', 'GPT-6.1-Sol r3', 'public/sol61-vibe-coding/r3/index.html?embed=1', 'public/sol61-vibe-coding/r3/package-manifest.json', '実WebGPU技術再生確認・品質改善中・未採用・本編未接続', 'マトリックスレインと生成対象の英語createコードを描画。原設計と改稿: GPT-6.1-Sol。初回操作で版固有SFXを解錠、verifyでは無音。通常聴感・動的全寿命品質・iPad Safari・本編接続は未受入。', 'effect-H64', 1, {creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6.1-Sol',adoption:'unknown',qualityStatus:'pending-improvement',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
       version('vibe-coding-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-vibe-coding/r1/index.html?embed=1', 'public/sol61-vibe-coding/r1/package-manifest.json', 'Codexブラウザ実再生確認・Safari黒画面調査中・採用未確認・本編未接続', '設計: GPT-6.1-Sol。凍結artist sourceを保持。初期化中のresize競合と不要な描画待ち、例外時の停止処理を修正。CodexブラウザではキャラとEの実描画を確認したが、報告されたSafariの黒画面は未解決として検証を継続。品質・通常SFX聴感・本編接続は未受入。', 'effect-H64', 1, {creator:'gpt-6.1-sol',creatorDisplayName:'GPT-6.1-Sol',adoption:'unknown',qualityStatus:'candidate',technicalReplayStatus:'pass',safariReplayStatus:'unverified_user_black_screen',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
     ]) }),
     Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', defaultVersionId: 'sunbeam-lens-v2-r05', versions: Object.freeze([

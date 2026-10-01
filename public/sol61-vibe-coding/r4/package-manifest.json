@@ -1,0 +1,128 @@
+{
+  "id": "sol61-vibe-coding-r4",
+  "runtimeABI": "dva-vibe-r4-linear-strokes-1",
+  "artist": "GPT-6.1-Sol",
+  "runtimeAdapter": "GPT-6.1-Sol",
+  "status": "technically-replayable-native-static-visual-reviewed-quality-pending",
+  "mainGameConnected": false,
+  "galleryPublished": false,
+  "dependencies": {
+    "artist/artist.mjs": "ed5fe3b8e0f65af1de132297afe75ccf0177df28b488244e44d2b4a31e33f586",
+    "artist/glyphs.mjs": "c99e2107287937e0396230d7a067b62a3e79b57db745fcf77736b14c874cf9dc",
+    "artist/lifecycle.mjs": "8c34e787bfa25616de2c91630ac65776041c2097d42621c0442d27b740e7582b",
+    "artist/optics.wgsl": "5f7989308af46f9ecc97cf0784f64a71bdfbb01c6c92bbac57edc8686ff7f3a9",
+    "artist/programs.mjs": "c7f55c99a4cdd756abd81c7521979fbfeda8f5dd3545783d27ca28c6b81cdaf6",
+    "artist/sfx.mjs": "c68f2ce107a03ba34f3d8c1f58d224cb02b1a94958a18bfc6ff010b448603e6f",
+    "artist/world.wgsl": "e4d88072ca0165d9b2d11f35c11e13127285a63da571df195230752674169093"
+  },
+  "host": "runtime-host.mjs",
+  "rendererBoundary": "Standalone preview; main app/registry and public gallery integration remain separate",
+  "nativeGPU": "Intel gen-12lp IAB Chromium154: presented screenshots at 0,180,360,620,900,1190 E-ms; native source/OBS/light/long-target fixtures; errors empty",
+  "audioListening": "not_run",
+  "frozenArtistManifestSha256": "d35d986062add416d48a2ee942f22a1c3f4c76cd1c943e2d5ce6d675c1f8a5a7",
+  "bodyFixture": {
+    "sourcePath": "assets/generated/philia-front-nine-v752.png",
+    "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+    "copiedPath": "actor-white-hood-front-atlas.png",
+    "copiedSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+    "registeredPose": "white-hood/front idle, crop [0,0,256,256] from 768x768 atlas",
+    "sourceOrigin": [
+      128,
+      240
+    ],
+    "ground": [
+      0,
+      31
+    ],
+    "effectiveScale": 0.315,
+    "fixedBasis": {
+      "hWorld": 70.875,
+      "alphaThreshold": 18,
+      "alphaBounds": [
+        57,
+        16,
+        198,
+        241
+      ]
+    },
+    "displayHeightCssPx": 64,
+    "cameraScaleAtDpr1": 0.9029982363315696,
+    "authority": "outputs/request-20261001/actual-body-reference-h-contract.md"
+  },
+  "variantTargetInventory": {
+    "path": "outputs/request-20261001/sol61-vibe-coding/r2/PRODUCER-AND-CODE-TARGETS.md",
+    "sha256": "c922aa4123a13c17a81192d63b69d23f35e3b5be6ab5786983adc6764f7553bb"
+  },
+  "audio": {
+    "source": "frozen artist/sfx.mjs",
+    "implementation": "proof-gated Web Audio PCM; unlock by user gesture",
+    "verify": "disabled when URL contains verify",
+    "nativeListening": "not_run"
+  },
+  "files": [
+    {
+      "path": "actor-white-hood-front-atlas.png",
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+    },
+    {
+      "path": "artist/artist.mjs",
+      "sha256": "ed5fe3b8e0f65af1de132297afe75ccf0177df28b488244e44d2b4a31e33f586"
+    },
+    {
+      "path": "artist/glyphs.mjs",
+      "sha256": "c99e2107287937e0396230d7a067b62a3e79b57db745fcf77736b14c874cf9dc"
+    },
+    {
+      "path": "artist/lifecycle.mjs",
+      "sha256": "8c34e787bfa25616de2c91630ac65776041c2097d42621c0442d27b740e7582b"
+    },
+    {
+      "path": "artist/optics.wgsl",
+      "sha256": "5f7989308af46f9ecc97cf0784f64a71bdfbb01c6c92bbac57edc8686ff7f3a9"
+    },
+    {
+      "path": "artist/programs.mjs",
+      "sha256": "c7f55c99a4cdd756abd81c7521979fbfeda8f5dd3545783d27ca28c6b81cdaf6"
+    },
+    {
+      "path": "artist/sfx.mjs",
+      "sha256": "c68f2ce107a03ba34f3d8c1f58d224cb02b1a94958a18bfc6ff010b448603e6f"
+    },
+    {
+      "path": "artist/world.wgsl",
+      "sha256": "e4d88072ca0165d9b2d11f35c11e13127285a63da571df195230752674169093"
+    },
+    {
+      "path": "index.html",
+      "sha256": "7fdfe5ec5310c8da3ce1d2b870f184ecc92690634c8dd9b85e925ba48728cda8"
+    },
+    {
+      "path": "preview-page.mjs",
+      "sha256": "77b489fe2ddf84b9cf5bdfab8cc6b1c782964d26fccd0a8aef80e980b5dc3708"
+    },
+    {
+      "path": "PROVENANCE.json",
+      "sha256": "1bef09e98f9de9ad44e4cc45eb739d3ad2d9ed90f675120375ed5bb5560a81aa"
+    },
+    {
+      "path": "runtime-host.mjs",
+      "sha256": "ecf756a5bfb7de1ed7e815570abf2428e3e9bba43a3d397041dab373482aa168"
+    },
+    {
+      "path": "targets.mjs",
+      "sha256": "86f795b515383849a61029d8057eb4c772026d8fa8d4f1acedd1ba7cb22f6092"
+    }
+  ],
+  "focusedTest": {
+    "path": "tests/webgpu-vibe-coding-r2-host.test.cjs",
+    "sha256": "fe658bc02425c41facb064943dcbff164b9cf16c3bbe9c7a129414582dc79ccb"
+  },
+  "parent": "sol61-vibe-coding-r3",
+  "quality": "pending-normal-SFX-listening-and-dynamic-full-loop-review",
+  "adoption": "unknown_unadopted",
+  "embedDiagnostics": {
+    "selector": "#error",
+    "startupSelector": "#startup-status",
+    "failuresVisible": true
+  }
+}
