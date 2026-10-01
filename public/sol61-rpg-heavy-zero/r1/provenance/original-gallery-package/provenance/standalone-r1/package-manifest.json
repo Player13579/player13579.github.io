@@ -1,0 +1,41 @@
+{
+  "schema": "dva-rpg-gallery-package/1",
+  "packageId": "sol-rpg-heavy-zero-r1",
+  "status": "standalone-package-ready-native-replay-pending",
+  "sourceAuthority": "outputs/request-20261001/gunner-heavy-zero-r1/rpg-e-r1",
+  "creative": {
+    "path": "rpg-e-r1/rpg-e.mjs",
+    "sha256": "6c32c0414f095b883c37c17f8f923278fb4bcd9b3169c74331dc9c0e20071baf",
+    "sourceAuthor": "GPT-6.1-Sol",
+    "designChanges": false
+  },
+  "host": {
+    "entry": "rpg-e-r1/runtime-preview/index.html",
+    "author": "GPT-6-Luna (bounded faithful preview host; catalog mapping to confirm in parent handoff)",
+    "renderApi": "WebGPU",
+    "dependencies": "local-relative-only",
+    "externalPackages": [],
+    "iframeAdaptation": "presentation retains standalone controls; #error alert bridge added; no gallery/embed mode"
+  },
+  "audio": {
+    "verify": "hard-zero",
+    "normal": "finite-version-sfx-unlock-only-after-user-gesture-and-submission",
+    "listening": "not-run"
+  },
+  "validation": {
+    "creativeContractChecks": "41-passed-mock-api-only",
+    "hostOwnershipChecks": "29-passed",
+    "syntax": "pass",
+    "nativeWebGpuPixels": "pending-primary-actual-browser-review",
+    "wgslDriverCompilation": "pending-native-browser",
+    "qualityAcceptance": "pending-primary-review",
+    "adoption": false,
+    "gameIntegration": "unimplemented"
+  },
+  "notes": [
+    "Receipt/room/impact/light positions are hypothetical fixture input.",
+    "Physical preview geometry is simple authored fixture geometry, not adopted game surfaces.",
+    "Post-resize-fix actual pixels have not yet been confirmed; previous black capture predates CSS MIME repair and is confounded.",
+    "Do not list as technically replayable until native WebGPU review confirms pixels and visible errors are absent."
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "name": "sol-rpg-heavy-zero-r1-runtime-preview-host-gallery-package",
+  "scope": "hypothetical-preview-only",
+  "authoring": "faithful standalone preview host plus embed loop/audio bridge; no E shader/audio creative edits",
+  "implementationModel": "GPT-6-Luna (bounded host/package implementation; parent confirms catalog display mapping)",
+  "runtime": {
+    "entry": "index.html",
+    "localCodeDependencies": [
+      {
+        "path": "index.html",
+        "sha256": "0b14199da66c1467e27a7c91d3f3a300acd59c7b1ba1772e364a89b7cc688325"
+      },
+      {
+        "path": "preview.css",
+        "sha256": "6d7e93f8b9484013c5a8d7f9824982f76ac56946ddacad84aa4df1918f7862f0"
+      },
+      {
+        "path": "preview-host.mjs",
+        "sha256": "e3fcfafe4ef17a8ae2a8e59beaa277551615fcc8917064bc6e38afac48d7b42c"
+      },
+      {
+        "path": "../rpg-e.mjs",
+        "sha256": "6c32c0414f095b883c37c17f8f923278fb4bcd9b3169c74331dc9c0e20071baf"
+      }
+    ],
+    "externalPackages": [],
+    "browserFeatures": [
+      "WebGPU",
+      "Web Audio API",
+      "ResizeObserver"
+    ]
+  },
+  "provenanceAndTests": [
+    {
+      "path": "../preview-fixture.mjs",
+      "purpose": "fixed hypothetical-input provenance; unit parity",
+      "sha256": "eca9b0eb50975eb002ae4a7cf6034f4a4bb3d9f6332b121482cf2d18e5fd2410"
+    },
+    {
+      "path": "../../motion-male-left/playback-fixture.json",
+      "purpose": "approved male-left r5/r6 pose identity and physical anchors",
+      "sha256": "8d420389a6abad138aa8bdd8ce7cc34fdfe3e55f4e753855001980be59f7871d"
+    },
+    {
+      "path": "../../motion-male-left/rpg-male-left-ready-source-r5.png",
+      "purpose": "approved ready pose; checked against fixture SHA by contract test",
+      "sha256": "2a2ca10e63b7e91f8379a0d0cf75dfe6994d9e904d6402c0eeb0e0c287a7c465"
+    },
+    {
+      "path": "../../motion-male-left/rpg-male-left-recoil-source-r6.png",
+      "purpose": "approved recoil pose; checked against fixture SHA by contract test",
+      "sha256": "857c1a936960b6cefbda60efda1205fa39fa4cdf7ba8682b0cfd6db4e4263643"
+    },
+    {
+      "path": "../DESIGN-AND-ADAPTER.md",
+      "purpose": "frozen design/submission contract",
+      "sha256": "3abb8a82a2750032a9b92dd7ecb89e73e286ef20a864a563c4db2a76f0fb02e9"
+    },
+    {
+      "path": "../source-freeze.json",
+      "purpose": "frozen creative identity",
+      "sha256": "adeb213cf1e3bc33201f2957c6b27893b4918b97780b13746201bb895b113d19"
+    },
+    {
+      "path": "host-ownership.test.mjs",
+      "purpose": "host, local-cycle and finite SFX behavior checks",
+      "sha256": "96ec2d7eb20af1a1661a3e9d343e2a4e89d0ab81f465d91c9e526e8107244495"
+    },
+    {
+      "path": "../contract.test.mjs",
+      "purpose": "41 frozen module contract checks and physical source byte tests",
+      "sha256": "6889ca356ab586fee9d420e57ec407374d77bb4be8e4dd508e37b43da54e3f87"
+    },
+    {
+      "path": "../../../surface-buffer-differential.test.mjs",
+      "purpose": "candidate-only exact CPU surface-buffer differential and float32 conversion edge test",
+      "sha256": "7f961c7baf5de1ba9524991b0763da5a4e8472c76835378f75a9d3c5f445c227"
+    }
+  ],
+  "validation": {
+    "node": "v24.19.0",
+    "hostSyntax": "pass",
+    "hostOwnershipChecks": "pass",
+    "frozenModuleContractChecks": 41,
+    "embedCycle": "local preview clock, 1200 E-ms plus 300 ms pause, fresh cause/source/attempt/sound IDs",
+    "normalPlayback": "embed auto-loop is silent until gallery gesture; authored finite PCM follows only exact module submission receipts",
+    "verifyAudio": "hard-zero; verify bridge returns silent and creates no AudioContext",
+    "hostBrowserLoad": "pending-primary-post-repair-native-review",
+    "actualWgslCompilation": "pending-native-browser",
+    "actualGpuPixels": "pending-native-browser",
+    "fullLifetimeVisualReview": "pending-primary-review",
+    "audioListening": "not-run",
+    "qualityAcceptance": "pending-primary-review",
+    "gameIntegration": "unimplemented",
+    "adoption": false
+  },
+  "packagingOnlyChanges": [
+    "HTML and CSS add embed=1 presentation sizing and hide standalone-only UI while retaining visible #error",
+    "host adds local fixture cycle identity, pause gap, submitted-frame telemetry, and __gallerySfx gesture bridge",
+    "default standalone page controls and one-shot play behavior remain"
+  ],
+  "candidateHostOptimization": {
+    "originalHostSha256": "f0c7b0e17e7d5cfb652628ff565d798b391e0e0fb327e2d2ae9966de65b857fe",
+    "candidateHostSha256": "e3fcfafe4ef17a8ae2a8e59beaa277551615fcc8917064bc6e38afac48d7b42c",
+    "creativeSourceSha256": "6c32c0414f095b883c37c17f8f923278fb4bcd9b3169c74331dc9c0e20071baf",
+    "conversion": "single module-shared Float32Array/Uint32Array scratch; unchanged F16 bit arithmetic",
+    "staticPalette": "background and surface base/albedo/normal/z/one values preconverted once",
+    "differentialStatus": "pass; exact Uint16 buffers match frozen full-resolution CPU baseline hashes",
+    "nativeGpuAcceptance": "pending-primary; not established by this candidate package"
+  }
+}

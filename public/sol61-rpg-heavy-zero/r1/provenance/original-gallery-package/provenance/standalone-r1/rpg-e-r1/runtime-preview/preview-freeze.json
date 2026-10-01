@@ -1,0 +1,98 @@
+{
+  "name": "sol-rpg-heavy-zero-r1-runtime-preview-host-gallery-package",
+  "scope": "hypothetical-preview-only",
+  "authoring": "faithful standalone preview host with packaging-only visible error bridge",
+  "implementationModel": "GPT-6-Luna (bounded host/package implementation; parent confirms catalog display mapping)",
+  "runtime": {
+    "entry": "index.html",
+    "localCodeDependencies": [
+      {
+        "path": "index.html",
+        "sha256": "f234fa13099cf120520d9b0dcda856f155b816df422318b1e600c89b5c806376"
+      },
+      {
+        "path": "preview.css",
+        "sha256": "fd783d3aeb59276d4e4adf3e19288e6e0241df903c79f507faf59a9f4e2e02e9"
+      },
+      {
+        "path": "preview-host.mjs",
+        "sha256": "b7f45241052b04c18c899d9e8abdfe2bf70618275019616571767f9abfd89182"
+      },
+      {
+        "path": "../rpg-e.mjs",
+        "sha256": "6c32c0414f095b883c37c17f8f923278fb4bcd9b3169c74331dc9c0e20071baf"
+      }
+    ],
+    "externalPackages": [],
+    "browserFeatures": [
+      "WebGPU",
+      "Web Audio API",
+      "ResizeObserver"
+    ]
+  },
+  "provenanceAndTests": [
+    {
+      "path": "../preview-fixture.mjs",
+      "purpose": "fixed-input and approved-pose provenance; contract-test import",
+      "sha256": "eca9b0eb50975eb002ae4a7cf6034f4a4bb3d9f6332b121482cf2d18e5fd2410"
+    },
+    {
+      "path": "../../motion-male-left/playback-fixture.json",
+      "purpose": "approved male-left r5/r6 pose identity and physical anchors",
+      "sha256": "8d420389a6abad138aa8bdd8ce7cc34fdfe3e55f4e753855001980be59f7871d"
+    },
+    {
+      "path": "../../motion-male-left/rpg-male-left-ready-source-r5.png",
+      "purpose": "approved ready-pose source, verified by frozen contract test",
+      "sha256": "2a2ca10e63b7e91f8379a0d0cf75dfe6994d9e904d6402c0eeb0e0c287a7c465"
+    },
+    {
+      "path": "../../motion-male-left/rpg-male-left-recoil-source-r6.png",
+      "purpose": "approved recoil-pose source, verified by frozen contract test",
+      "sha256": "857c1a936960b6cefbda60efda1205fa39fa4cdf7ba8682b0cfd6db4e4263643"
+    },
+    {
+      "path": "../DESIGN-AND-ADAPTER.md",
+      "purpose": "unchanged frozen design/submission contract",
+      "sha256": "3abb8a82a2750032a9b92dd7ecb89e73e286ef20a864a563c4db2a76f0fb02e9"
+    },
+    {
+      "path": "../source-freeze.json",
+      "purpose": "unchanged source identity",
+      "sha256": "adeb213cf1e3bc33201f2957c6b27893b4918b97780b13746201bb895b113d19"
+    },
+    {
+      "path": "host-ownership.test.mjs",
+      "purpose": "URL audio mode, fixture parity, leases, geometry masks and bounded resize tests",
+      "sha256": "52791f08a2620cae355dec7d7f83154a1ef5197a7f7574ebabe9213007d2a0ae"
+    },
+    {
+      "path": "../contract.test.mjs",
+      "purpose": "frozen module contract and source-pose byte checks",
+      "sha256": "6889ca356ab586fee9d420e57ec407374d77bb4be8e4dd508e37b43da54e3f87"
+    }
+  ],
+  "validation": {
+    "node": "v24.19.0",
+    "hostSyntax": "pass",
+    "hostOwnershipAssertions": 29,
+    "frozenModuleContractChecks": 41,
+    "packageClosure": "hash-pinned-in-package-closure.json",
+    "reviewAgeMode": "optional silent actual-fixture age 0–1199ms",
+    "normalPlayback": "actual fixture 1x 0–1200ms loop; finite authored SFX only after user gesture and exact successful submission",
+    "verifyAudio": "hard-zero; no AudioContext and no unlock path",
+    "hostBrowserLoad": "pending-primary-post-repair-native-review",
+    "actualWgslCompilation": "pending-native-browser",
+    "actualGpuPixels": "pending-native-browser",
+    "fullLifetimeVisualReview": "pending-primary-review",
+    "audioListening": "not-run",
+    "qualityAcceptance": "pending-primary-review",
+    "gameIntegration": "unimplemented",
+    "adoption": false
+  },
+  "packagingOnlyChanges": [
+    "index.html adds #error[role=alert] bridge",
+    "preview-host.mjs mirrors visible/fatal errors to #error and clears on healthy status",
+    "preview.css styles visible error bridge"
+  ]
+}

@@ -1,0 +1,9 @@
+# RPG E r1 gallery package candidate
+
+This package contains the frozen `sol-rpg-heavy-zero-r1` module and its corrected standalone WebGPU preview host, with all runtime and test inputs copied into a local relative-path closure. The E module, approved pose metadata/images, and upstream provenance are preserved byte-for-byte. Package-local host presentation adds an explicit `#error` alert bridge for an embedding parent; it mirrors failures while retaining the standalone status text and controls. This does not change the E kernel, lighting, SFX, receipt, clock, or input design.
+
+Open `rpg-e-r1/runtime-preview/index.html` from a local HTTP server. WebGPU and Web Audio are browser features; no packages or network imports are used. Add `?verify=1` to force hard-zero audio (no AudioContext, no unlock path). Without verify, audio starts muted and the `Play with sound` click unlocks only the finite authored launch/impact PCM after the exact E submission receipt. `?reviewAgeMs=0..1199` is optional and silent for phase inspection; omit it for the actual 1× 0–1200 ms loop. The frozen preview uses hypothetical receipt/room/impact/light inputs and an explicitly simple preview geometry. It is not a game port.
+
+**Native replay is pending.** Earlier pre-layout-fix evidence showed a black canvas and CSS/backing feedback; later diagnosis found the prior preview server returned HTTP 415 for the stylesheet. The host and server-side stylesheet route were repaired, but no post-repair actual GPU pixels have been confirmed in this package. The source module's 41 contract tests and the host tests prove API/unit constraints only. Do not list this as native-replay pass, quality accepted, adopted, heard/listened, or game integrated until the primary's actual browser review supplies evidence.
+
+All copied source paths, exact SHA-256 values, and packaging-only deltas are in `package-closure.json` and `PACKAGING-DIFF.md`.
