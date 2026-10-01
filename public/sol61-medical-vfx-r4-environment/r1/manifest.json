@@ -1,0 +1,65 @@
+{
+  "id": "medical-vfx-r4-original-environment-r1",
+  "author": "GPT-6.1-Sol",
+  "actualExecutionModel": "gpt-6.1-sol",
+  "adoption": "unknown/unadopted",
+  "quality": "candidate; visible-quality acceptance pending",
+  "technicalReplay": "pass; native Chrome WebGPU bgra8unorm, zero errors and shader messages",
+  "gameIntegration": "not_run",
+  "original": {
+    "file": "medical-room-vfx-r4.png",
+    "sha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "size": [
+      1164,
+      1351
+    ]
+  },
+  "imageVFXCode": {
+    "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261001\\map-zero-reset\\medical-vfx-r4\\B-design-code-medical-VFX.py",
+    "sha256": "8cf8d6fe6c3359625512d994451016623311e417522b836228d609c70da26232",
+    "programExecuted": false
+  },
+  "imageGenerationProvenance": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261001\\map-zero-reset\\medical-vfx-r4\\WORKFLOW.json",
+  "imageAcceptance": "Original retained; image VFX does not count as runtime E",
+  "entry": "index.html?embed=1",
+  "verifyEntry": "index.html?embed=1&verify",
+  "api": "window.__medicalR3 state/evidence/setEffect/setLayer/setTime/resume/stop",
+  "time": "Stationary PH6 upper diffuse4600K source; no invented blink/sweep/door light",
+  "SFX": "none; current map-only user exception",
+  "runtimeSource": "source/effect.mjs",
+  "design": "DESIGN.md",
+  "sourceRevision": {
+    "commit": "87d5b90ee72f85bb4ffb36bd7199ca5cbd44f01b",
+    "baseBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extensionBlob": "c9406dd38952f38ffda1ef5dbf8f770c19bf295a"
+  },
+  "runtimeShaderSha256": "7b77a46b36f27f1926a176881defbc7875927ac0c1bfbcbab20d5574e673b626",
+  "designSha256": "06dac8321d9cb24e9fcdffb2e310f6b4e3404f129a0a77c5f47264516b9ae450",
+  "prepublicationCorrection": {
+    "previousShaderSha256": "54700d177ab4278e050ef0c2b2074ffedbd2bb94bd7ffc4b54edc622f646d3b0",
+    "reason": "Correct exposed lower-leg upper reflection masks and PH-specific applicability documentation before first GPU acceptance/publication",
+    "oldTrace": "outputs/request-20261001/medical-vfx-r4-environment/r1/DESIGN-CODE-TRACE.md retained unchanged as review of old hash",
+    "newExposedLegMasks": [
+      [
+        350,
+        1020,
+        363,
+        1038
+      ],
+      [
+        560,
+        1020,
+        573,
+        1038
+      ]
+    ],
+    "validation": "CPU/static recheck; root actual-GPU and visual-quality pending",
+    "physicalLimits": [
+      "No solved 3D light transport or BRDF",
+      "No global radiance-conservation proof",
+      "Finite-headroom addition does not prove perfectly isolated replacement of baked reflection"
+    ]
+  },
+  "technicalEvidence": "outputs/request-20261001/medical-vfx-r4-gallery-registration/NATIVE-REPLAY.json",
+  "nativeFrames": 31
+}

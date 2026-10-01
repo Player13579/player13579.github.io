@@ -1,0 +1,45 @@
+{
+  "id": "medical-vfx-r4-original-environment-r2",
+  "authorModelRequested": "gpt-6.1-sol",
+  "catalogDisplayName": "GPT-6.1-Sol",
+  "executionModelMetadata": "not_exposed_to_worker; primary must reconcile configured spawn identity",
+  "catalogSource": "C:/Users/user/.codex/model-routing-state.json updated2026-10-01T00:36:01.2797734Z",
+  "adoption": "unknown/unadopted",
+  "quality": "candidate; visible-quality acceptance pending",
+  "technicalReplay": "pass; native Chrome WebGPU bgra8unorm, zero errors and shader messages",
+  "gameIntegration": "not_run",
+  "original": {
+    "file": "medical-room-vfx-r4.png",
+    "sha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "size": [
+      1164,
+      1351
+    ]
+  },
+  "imageVFXCode": {
+    "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261001\\map-zero-reset\\medical-vfx-r4\\B-design-code-medical-VFX.py",
+    "sha256": "8cf8d6fe6c3359625512d994451016623311e417522b836228d609c70da26232",
+    "programExecuted": false
+  },
+  "sourceRevision": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "baseBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extensionBlob": "f35b61661d0209c0329d4a501a760d35b451d52e"
+  },
+  "time": "stationary upper-light/reflection/receiver/PSF; no arbitrary flicker or invented fixture",
+  "radiance": "new local linear source radiance6/4/3; no .97/headroom clamp; preferred SDR presentation may clip",
+  "SFX": "none; map-specific current user exception",
+  "entry": "index.html?embed=1",
+  "verifyEntry": "index.html?embed=1&verify",
+  "api": "window.__medicalR3 state/evidence/setEffect/setLayer/setTime/resume/stop",
+  "runtimeSource": "source/effect.mjs",
+  "runtimeShaderSha256": "78291e39e24cc19dc3f43b5e024878ed42f8b689a05a2a738119edded58df055",
+  "design": "DESIGN.md",
+  "limitations": [
+    "2D material registration and empirical radiance/receiver model, not solved 3D BRDF/transport",
+    "Analytic PSF is an observer design, not measured lens or energy-conserving convolution",
+    "Root must judge native gallery-size visible quality; code presence/pixel delta alone insufficient"
+  ],
+  "technicalEvidence": "outputs/request-20261001/medical-vfx-r4-gallery-registration/NATIVE-REPLAY.json",
+  "nativeFrames": 63
+}
