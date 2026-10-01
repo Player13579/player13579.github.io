@@ -82,8 +82,37 @@ assert.deepEqual(serverEvidence.cases.map(item => item.presentation), ['combined
 
 const medical = imageGroups.find(group => group.id === 'medical-r3-original-environment-r1');
 assert.ok(medical, 'medical r3 appears only as its replayable original-plus-E pair');
-assert.equal(medical.versions.length, 1);
-const medicalR1 = medical.versions[0];
+assert.equal(medical.defaultVersionId, 'medical-r4-original-environment-r5', 'native-replayable r5 is the current medical room default');
+assert.deepEqual(Array.from(medical.versions, version => version.id), [
+  'medical-r4-original-environment-r5',
+  'medical-r4-original-environment-r4',
+  'medical-r4-original-environment-r3',
+  'medical-r4-original-environment-r2',
+  'medical-r4-original-environment-r1',
+  'medical-r3-original-environment-r1'
+], 'newest first while retaining all original-plus-E medical histories');
+const medicalR5 = medical.versions[0];
+assert.equal(medicalR5.adoption, 'not-adopted');
+assert.equal(medicalR5.qualityStatus, 'pending-improvement');
+assert.equal(medicalR5.technicalReplayStatus, 'pass');
+assert.equal(medicalR5.environmentEStatus, 'technically-replayable');
+assert.equal(medicalR5.originalSrc, 'public/sol61-medical-vfx-r4-environment/r5/medical-room-vfx-r4.png');
+assert.equal(medicalR5.originalHash, '9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e');
+assert.equal(sha256(path.join(app, medicalR5.originalSrc)), medicalR5.originalHash);
+assert.equal(fs.existsSync(path.join(app, medicalR5.page.split('?')[0])), true, 'medical r5 native replay page exists');
+assert.equal(fs.existsSync(path.join(app, medicalR5.source)), true, 'medical r5 manifest exists');
+assert.equal(medicalR5.technicalEvidence, 'outputs/request-20261001/medical-vfx-r4-environment/r5/native/READY.json');
+assert.equal(medicalR5.gameIntegrationStatus, 'not_connected');
+assert.equal(medicalR5.normalAudioListening, 'not_applicable_no_map_sfx_requested');
+const medicalReady = JSON.parse(fs.readFileSync(path.join(repo, medicalR5.technicalEvidence), 'utf8'));
+assert.equal(medicalReady.evidence.status, 'ready');
+assert.equal(medicalReady.evidence.frames, 195);
+assert.equal(medicalReady.evidence.effect, true);
+assert.equal(medicalReady.evidence.format, 'bgra8unorm');
+assert.deepEqual(medicalReady.evidence.errors, []);
+assert.deepEqual(medicalReady.evidence.shaderMessages, []);
+const medicalR1 = medical.versions.find(version => version.id === 'medical-r3-original-environment-r1');
+assert.ok(medicalR1, 'the older medical r3 original-plus-E version remains selectable');
 assert.equal(medicalR1.adoption, 'not-adopted');
 assert.equal(medicalR1.qualityStatus, 'unknown');
 assert.equal(medicalR1.originalSrc, 'public/sol61-medical-r3-environment/r1/medical-room-r3-original.png');

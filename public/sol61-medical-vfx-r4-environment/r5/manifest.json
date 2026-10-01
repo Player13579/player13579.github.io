@@ -1,0 +1,59 @@
+{
+  "id": "medical-vfx-r4-original-environment-r5",
+  "authorModelRequested": "gpt-6.1-sol",
+  "catalogDisplayName": "GPT-6.1-Sol",
+  "executionModelMetadata": "not_exposed_to_worker; primary reconciles configured identity",
+  "adoption": "unknown/unadopted",
+  "quality": "pending-improvement; visible material response stronger than r4, primary actual-size quality acceptance not final",
+  "technicalReplay": "pass; native Chrome WebGPU ready 195 frames, bgra8unorm, zero errors and shader messages",
+  "gameIntegration": "not_connected; game integration and collision unverified",
+  "original": {
+    "file": "medical-room-vfx-r4.png",
+    "sha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "size": [
+      1164,
+      1351
+    ]
+  },
+  "imageVFXCode": {
+    "path": "outputs/request-20261001/map-zero-reset/medical-vfx-r4/B-design-code-medical-VFX.py",
+    "sha256": "8cf8d6fe6c3359625512d994451016623311e417522b836228d609c70da26232"
+  },
+  "sourceRevision": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "baseBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extensionBlob": "f35b61661d0209c0329d4a501a760d35b451d52e"
+  },
+  "time": "stationary source and surface; no decorative dynamics",
+  "worldContract": "r4 geometry retained; explicit stronger upper-input calibration and source-normal material lobes on cushions/cabinet/ceramic; source-bound separate OBS",
+  "SFX": "none; current map exception",
+  "entry": "index.html?embed=1",
+  "verifyEntry": "index.html?embed=1&verify",
+  "worldOnlyEntry": "index.html?embed=1&verify&obs=off",
+  "api": "window.__medicalR3 state/evidence/setEffect/setLayer/setTime/resume/stop",
+  "runtimeSource": "source/effect.mjs",
+  "runtimeShaderSha256": "86e7744cda3bcac728ff9b9c243b628e9dbed630946df48fb0aff2e8bcf2e208",
+  "design": "DESIGN.md",
+  "limits": [
+    "Selected geometry/angular/relative exposure assumptions, not calibrated 3D transport or complete BRDF",
+    "No global radiometric conservation proof",
+    "Visibility/quality not inferred from CPU fields or pixel delta"
+  ],
+  "frozenSourceContract": {
+    "file": "source-contract.json",
+    "sha256": "6fde95cfb9f4297c5a218b9d78f71deb1e838d0a3526b9d1a95a2e6c494990af"
+  },
+  "actualExecutionModelId": null,
+  "actualExecutionIdentityEvidence": "not exposed to worker; requested route and agent name are not execution-ID evidence",
+  "revisionFeedback": [
+    "outputs/request-20261001/medical-vfx-r4-gallery-registration/native/r4-obs-off.jpg",
+    "outputs/request-20261001/medical-vfx-r4-gallery-registration/native/r4-off.jpg",
+    "outputs/request-20261001/medical-vfx-r4-environment/r4/gallery-registration/PUBLIC-RESULT.json"
+  ],
+  "technicalEvidence": "outputs/request-20261001/medical-vfx-r4-environment/r5/native/READY.json",
+  "visualEvidence": [
+    "outputs/request-20261001/medical-vfx-r4-environment/r5/native/OFF.png",
+    "outputs/request-20261001/medical-vfx-r4-environment/r5/native/ON.png",
+    "outputs/request-20261001/medical-vfx-r4-environment/r5/native/ON-OBS-OFF.png"
+  ]
+}

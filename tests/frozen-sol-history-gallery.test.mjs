@@ -14,13 +14,13 @@ const specs=[
  {id:'cooldown-sol61-shortening-zero',group:'cooldown-astra',source:'outputs/request-20260930/sol61-cooldown-zero-r5/shortening-zero',dest:'public/sol61-cooldown-zero-r5/shortening-zero',manifest:'manifest.json',files:['index.html','runtime.mjs','design.mjs','shader.mjs','sfx.mjs','body.png']}
 ];
 function sha(bytes){return crypto.createHash('sha256').update(bytes).digest('hex')}
-test('frozen new Sol histories are newest, truthful, and source-manifest byte identical',()=>{
+test('frozen Sol histories remain present, truthful, and source-manifest byte identical',()=>{
  for(const s of specs){
    const start=gallery.indexOf(`id: '${s.group}'`);
    const end=gallery.indexOf(']) }),',start);
    const block=gallery.slice(start,end);
    assert(block.indexOf(`version('${s.id}'`)>-1,`${s.id} is in ${s.group}`);
-   assert.equal(block.indexOf(`version('${s.id}'`),block.indexOf('version(\''),`${s.id} is the group's newest/default listed version`);
+   assert.equal(block.split(`version('${s.id}'`).length-1,1,`${s.id} has exactly one catalog entry`);
    const entry=s.id==='stamina-sol61-r8'?'index.html':s.id==='mana-zero-sol61-r4'?'preview.html':'index.html';
    assert.ok(block.includes(`'${s.dest}/${entry}`),`${s.id} points to its copied public entry`);
    const sourceRoot=path.join(repoRoot,s.source),destRoot=path.join(pagesRoot,s.dest),manifestBytes=fs.readFileSync(path.join(sourceRoot,s.manifest));
@@ -34,6 +34,10 @@ test('frozen new Sol histories are newest, truthful, and source-manifest byte id
    }
    assert.ok(expectedManifest);
  }
+ const staminaStart=gallery.indexOf("id: 'stamina-astra'");
+ const staminaEnd=gallery.indexOf(']) }),',staminaStart);
+ const staminaBlock=gallery.slice(staminaStart,staminaEnd);
+ assert.match(staminaBlock,/defaultVersionId: 'stamina-sol61-r11'/,'the currently adopted r11 remains the default; historical r8 is not required to be newest');
 });
 test('catalog retains all five previously staged histories and excludes unexecuted semantic rejection',()=>{
  for(const id of ['stamina-sol61-r7','mana-zero-sol61-r2','mana-zero-sol61-r3','cooldown-sol61-r5-attempt-1','cooldown-sol61-r5-attempt-2'])assert.ok(gallery.includes(`version('${id}'`),`${id} remains listed`);
@@ -49,5 +53,9 @@ test('new previews retain own-dimension framing and cache query is bumped',()=>{
  assert.match(gallery,/'stamina-sol61-r8': \{ magnification: 240 \/ \(64 \* \(530 \/ 260\)\), focusX: 490, focusY: 310 \}/);
  assert.match(gallery,/'mana-zero-sol61-r4': \{ magnification: 240 \/ 64, focusX: 490, focusY: 310 \}/);
  assert.match(gallery,/'cooldown-sol61-shortening-zero': \{ magnification: 240 \/ 64, focusX: 490, focusY: 310 \}/);
- const html=fs.readFileSync(path.join(pagesRoot,'webgpu-e-gallery.html'),'utf8');assert.match(html,/asset-gallery\.js\?v=asset-gallery-20260930-status-recovery-adopted-v1/);
+ const html=fs.readFileSync(path.join(pagesRoot,'webgpu-e-gallery.html'),'utf8');
+ const cacheRevision=html.match(/asset-gallery\.js\?v=([^'"\s]+)/)?.[1];
+ assert.ok(cacheRevision, 'gallery script URL carries a non-empty cache revision');
+ assert.match(cacheRevision,/medical-r5/, 'cache revision tracks the latest medical r5 gallery registration');
+ assert.match(gallery,/medical-r4-original-environment-r5/, 'the cache revision corresponds to a catalog containing the medical r5 registration');
 });
