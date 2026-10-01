@@ -42,7 +42,7 @@ test('embed preview exposes child failures outside the controls row', () => {
     'error surface is outside the controls container');
   assert.match(html, /html\.embed #controls \{ display:none; \}/);
   assert.match(runtime, /document\.querySelector\('#error'\)/);
-  assert.match(html, /src="\.\/runtime-host\.mjs\?v=vibe-startup-20261001-r48"/);
+  assert.match(html, /src="\.\/runtime-host\.mjs\?v=vibe-record-diagnostic-20261001-r49"/);
 });
 
 test('HTML bootstrap reports module-load failures before runtime-host starts', () => {
@@ -80,7 +80,7 @@ test('startup and runtime errors are routed through the mirrored error surface',
   rig.context.stageError(new Error('No WebGPU adapter'));
   assert.equal(rig.errorNode.hidden, false);
   assert.match(rig.errorNode.textContent, /No WebGPU adapter/);
-  assert.match(rig.statusNode.textContent, /WebGPU error: No WebGPU adapter/);
+  assert.match(rig.statusNode.textContent, /WebGPU error: Error: No WebGPU adapter/);
   assert.equal(rig.state.errors.length, 1);
   assert.equal(rig.state.errorGeneration, 1);
   assert.equal(rig.logged.length, 1);

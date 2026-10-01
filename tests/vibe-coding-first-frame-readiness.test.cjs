@@ -149,3 +149,51 @@ test('resize callbacks after device loss do not recreate targets', async () => {
   assert.equal(api.status().phase, 'lost');
   await api.dispose();
 });
+
+test('stack-only Safari errors retain their name, empty-message marker, and stack', () => {
+  const state = { errors: [], errorGeneration: 0, persistentRuntimeError: false };
+  const statusNode = { textContent: '' }, errorNode = { textContent: '', hidden: true };
+  const context = vm.createContext({state,statusNode,errorNode,console:{error(){}},String});
+  vm.runInContext(`${extractFunction(runtime,'setStatus')}\n${extractFunction(runtime,'stageError')}`,context);
+  const cause = new Error(''); cause.name = 'OperationError'; cause.stack = 'recordWorld@kernel.mjs:94:75 passKernel@runtime-host.mjs:220:19';
+  const error = new Error('kernel pass failed',{cause}); error.name = 'OperationError';
+  context.stageError(error,true);
+  assert.match(state.errors[0], /Caused by OperationError: \(empty message\)/);
+  assert.match(state.errors[0], /recordWorld@kernel\.mjs:94:75/);
+  assert.match(errorNode.textContent, /OperationError: kernel pass failed/);
+});
+
+test('kernel pass validation checks bounds and reports exact context for scissor failures', () => {
+  const state = {phase:'running',ready:true,resources:{receiver:{width:100,height:50}},targetSizes:null,
+    lastRecordContext:null,kernel:{},recordSlots:{rear:{group:{}}}};
+  const canvas = {width:100,height:50};
+  let recordCalls = 0;
+  const context = vm.createContext({state,canvas,JSON,Number,Array,Error,RangeError,
+    beginPass(){return {setScissorRect(x,y,w,h){
+      assert.deepEqual([x,y,w,h],[10,5,90,45]);
+      const error=new Error('scissor rejected by mock GPU');error.name='OperationError';
+      error.stack='recordWorld@kernel.mjs:94:75 passKernel@runtime-host.mjs:254:15';throw error;
+    },end(){}};},
+    recordWorld(pass,kernel,p){recordCalls++;pass.setScissorRect(...p.scissor);},recordObserver(){recordCalls++;}
+  });
+  vm.runInContext(`${extractFunction(runtime,'passBoundsContext')}\n${extractFunction(runtime,'validatePassBounds')}\n${extractFunction(runtime,'passKernel')}`,context);
+  const prepared={status:'prepared',live:true,viewport:[100,50],scissor:Object.freeze([10,5,90,45])};
+  let thrown;
+  try { context.passKernel({},'rear',['receiver'],'world',prepared); } catch(error) { thrown=error; }
+  assert.ok(thrown);
+  assert.equal(thrown.name,'OperationError');
+  assert.match(thrown.message,/scissor rejected by mock GPU/);
+  assert.match(thrown.message,/"viewport":\[100,50\]/);
+  assert.match(thrown.message,/"scissor":\[10,5,90,45\]/);
+  assert.match(thrown.message,/"attachments":\[\{"name":"receiver","width":100,"height":50\}\]/);
+  assert.match(thrown.cause.stack,/recordWorld/);
+  assert.equal(recordCalls,1);
+  assert.deepEqual(JSON.parse(JSON.stringify(state.lastRecordContext)).scissor,[10,5,90,45]);
+
+  const invalid={status:'prepared',live:true,viewport:[100,50],scissor:[90,45,20,10]};
+  let invalidThrown;
+  try { context.passKernel({},'rear',['receiver'],'world',invalid); } catch(error) { invalidThrown=error; }
+  assert.equal(invalidThrown.name,'RangeError');
+  assert.match(invalidThrown.message,/invalid WebGPU pass bounds/);
+  assert.equal(recordCalls,1,'invalid scissor is rejected before the artist recorder or GPU pass runs');
+});

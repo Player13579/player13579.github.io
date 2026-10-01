@@ -38,7 +38,8 @@
       const errorNode = document.getElementById('error');
       const showStartupError = error => {
         if (!errorNode) return;
-        errorNode.textContent = `Vibe runtime startup error: ${String(error?.stack || error?.message || error || 'module failed to load')}`;
+        const message = `${String(error?.name || 'Error')}: ${String(error?.message || error || 'module failed to load')}`;
+        errorNode.textContent = `Vibe runtime startup error: ${message}${error?.stack ? '\n' + error.stack : ''}`;
         errorNode.hidden = false;
       };
       window.addEventListener('error', event => {
@@ -48,6 +49,6 @@
       window.addEventListener('unhandledrejection', event => showStartupError(event.reason));
     })();
   </script>
-  <script type="module" src="./runtime-host.mjs?v=vibe-startup-20261001-r48"></script>
+  <script type="module" src="./runtime-host.mjs?v=vibe-record-diagnostic-20261001-r49"></script>
 </body>
 </html>

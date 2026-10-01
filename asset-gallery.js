@@ -456,7 +456,7 @@
   }
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'vibe-startup-20261001-r48');
+    preview.searchParams.set('galleryRelease', 'vibe-record-diagnostic-20261001-r49');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

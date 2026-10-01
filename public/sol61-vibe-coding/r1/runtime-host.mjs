@@ -27,7 +27,7 @@ const state = { device:null, context:null, format:null, kernel:null, resources:n
   raf:0, paused:false, disposed:false, ready:false, phase:'starting', firstFrameSubmitted:false, submissions:0, frameSerial:0,
   source:false, normalMuted:false, audioContext:null, audioBuffer:null, gestureUnlocked:false,
   sound:null, lastSuccessfulFrame:null, errors:[], errorGeneration:0, persistentRuntimeError:false,
-  shaders:[], resizeObserver:null };
+  shaders:[], resizeObserver:null, targetSizes:null, lastRecordContext:null };
 state.source = !VERIFY;
 state.normalMuted = VERIFY;
 if (VERIFY) state.source = true;
@@ -95,10 +95,14 @@ function clearRuntimeError() {
   errorNode.hidden = true;
 }
 function stageError(error, persistent = false) {
-  const text = String(error?.stack || error?.message || error);
+  const name = error?.name || 'Error';
+  const detail = error?.message ? `${name}: ${error.message}` : `${name}: (empty message)`;
+  const cause = error?.cause;
+  const causeDetail = cause ? `\nCaused by ${cause.name || 'Error'}: ${cause.message || '(empty message)'}${cause.stack ? `\n${cause.stack}` : ''}` : '';
+  const text = `${detail}${error?.stack ? `\n${error.stack}` : ''}${causeDetail}`;
   state.errors.push(text); state.errorGeneration++;
   state.persistentRuntimeError ||= persistent;
-  const message = `WebGPU error: ${String(error?.message || error)}`;
+  const message = `WebGPU error: ${detail}`;
   setStatus(message);
   if (errorNode) { errorNode.textContent = message; errorNode.hidden = false; }
   console.error('[vibe-r1]', error);
@@ -133,7 +137,7 @@ function destroyResources(r) {
 }
 function disposeTargets() {
   if (state.resources) destroyResources(state.resources);
-  state.resources = null; state.resolveGroup = null; state.compositeGroup = null;
+  state.resources = null; state.resolveGroup = null; state.compositeGroup = null; state.targetSizes = null;
 }
 function frameRect(width,height) {
   const dpr = width / Math.max(1, canvas.clientWidth);
@@ -185,6 +189,7 @@ function makeTargets(width,height) {
     {binding:2,resource:state.actorSampler}]});
   for (const [name, group] of Object.entries(recordGroups)) state.recordSlots[name].group = group;
   state.resources = r; state.resolveGroup = resolveGroup; state.compositeGroup = compositeGroup; state.actorGroup = actorGroup;
+  state.targetSizes = Object.fromEntries(Object.keys(r).map(name => [name, {width, height}]));
   } catch (error) {
     destroyResources(r);
     throw error;
@@ -252,10 +257,44 @@ function drawActor(encoder) {
   pass.setPipeline(state.actorPipeline);pass.setBindGroup(0,state.actorGroup);pass.draw(6,1);pass.end();
 }
 function passKernel(encoder,slotName,targetNames,kind,p) {
-  const pass=beginPass(encoder,targetNames,`vibe-r1:${slotName}`);
-  if(kind==='observer')recordObserver(pass,state.kernel,p,{bindGroup:state.recordSlots.observer.group});
-  else recordWorld(pass,state.kernel,p,{kind,bindGroup:state.recordSlots[slotName].group});
-  pass.end();
+  const context = passBoundsContext(targetNames,p);
+  state.lastRecordContext = {slotName,kind,...context};
+  try {
+    validatePassBounds(context);
+    const pass=beginPass(encoder,targetNames,`vibe-r1:${slotName}`);
+    if(kind==='observer')recordObserver(pass,state.kernel,p,{bindGroup:state.recordSlots.observer.group});
+    else recordWorld(pass,state.kernel,p,{kind,bindGroup:state.recordSlots[slotName].group});
+    pass.end();
+  } catch (cause) {
+    const message = `${cause?.name || 'Error'}: ${cause?.message || '(empty message)'}`;
+    const error = new Error(`Vibe ${slotName}/${kind} record failed; bounds=${JSON.stringify(context)}; cause=${message}`, {cause});
+    error.name = cause?.name || 'Error';
+    throw error;
+  }
+}
+function passBoundsContext(targetNames,p) {
+  const viewport = Array.isArray(p?.viewport) ? [...p.viewport] : p?.viewport ?? null;
+  const scissor = Array.isArray(p?.scissor) ? [...p.scissor] : p?.scissor ?? null;
+  const attachments = targetNames.map(name => {
+    const texture = state.resources?.[name];
+    const tracked = state.targetSizes?.[name];
+    return {name,width:Number.isFinite(texture?.width)?texture.width:(tracked?.width??null),
+      height:Number.isFinite(texture?.height)?texture.height:(tracked?.height??null)};
+  });
+  return {phase:state.phase,ready:state.ready,canvas:[canvas.width,canvas.height],viewport,scissor,attachments};
+}
+function validatePassBounds(context) {
+  const {canvas:canvasSize,viewport,scissor,attachments}=context;
+  const finiteInt = value => Number.isFinite(value) && Number.isInteger(value);
+  const validViewport = Array.isArray(viewport) && viewport.length===2 && viewport.every(value=>finiteInt(value)&&value>0) &&
+    Array.isArray(canvasSize) && viewport[0]===canvasSize[0] && viewport[1]===canvasSize[1];
+  const validScissor = Array.isArray(scissor) && scissor.length===4 && scissor.every(finiteInt) &&
+    scissor[0]>=0 && scissor[1]>=0 && scissor[2]>0 && scissor[3]>0 && validViewport &&
+    scissor[0]+scissor[2]<=viewport[0] && scissor[1]+scissor[3]<=viewport[1];
+  const validAttachments = validViewport && attachments.length>0 && attachments.every(target=>
+    target.width===viewport[0] && target.height===viewport[1]);
+  if(!validViewport||!validScissor||!validAttachments)
+    throw new RangeError(`invalid WebGPU pass bounds: viewport=${JSON.stringify(viewport)} scissor=${JSON.stringify(scissor)} canvas=${JSON.stringify(canvasSize)} attachments=${JSON.stringify(attachments)}`);
 }
 function drawResolve(encoder) {
   const pass=encoder.beginRenderPass({label:'vibe-r1:rear-actor-alpha-resolve',colorAttachments:['emission','signal'].map(name=>({view:state.resources[name].createView(),clearValue:{r:0,g:0,b:0,a:0},loadOp:'clear',storeOp:'store'}))});
@@ -500,7 +539,7 @@ window.__gallerySfx=Object.freeze({activateFromGesture:unlockAudio,setMuted,stat
 window.vibeCodingR1=Object.freeze({status:()=>({ready:state.ready,phase:state.phase,firstFrameSubmitted:state.firstFrameSubmitted,verify:VERIFY,embed:EMBED,canvas:[canvas.width,canvas.height],cssRect:(()=>{const r=canvas.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};})(),
   format:state.format,submissions:state.submissions,frameSerial:state.frameSerial,cycle:state.cycle,ageEms:state.prepared?.ageEms??null,rate:Number(rateSelect?.value||1),
   eventId:state.event?.id||null,receipt:state.receipt,prepared:state.prepared?{status:state.prepared.status,ageEms:state.prepared.ageEms,sourcePx:state.prepared.sourcePx,scissor:state.prepared.scissor}:null,
-  fixture,sourceProjection:projectFixtureOrigin(frameRect(canvas.width,canvas.height)),sourceEnabled:state.source,observerEnabled:observerToggle?.checked!==false,shaderModules:state.kernel?.modules?.length||0,
+  fixture,sourceProjection:projectFixtureOrigin(frameRect(canvas.width,canvas.height)),sourceEnabled:state.source,observerEnabled:observerToggle?.checked!==false,shaderModules:state.kernel?.modules?.length||0,lastRecordContext:state.lastRecordContext,
   targetFormats:state.resources?{artistMRT:ABI.worldFormats,observer:'rgba16float',bodySurface:'rgba16float',foregroundCoverage:'rgba8unorm',actorTexture:'rgba8unorm-srgb',presentation:state.format}:{},errors:state.errors.slice()}),
   pause:()=>{state.paused=true;state.lastFrameAt=0;state.sound?.visibilityChanged();if(state.raf)cancelAnimationFrame(state.raf);state.raf=0;},
   resume:()=>{if(!state.disposed&&state.phase!=='failed'&&state.phase!=='lost'){state.paused=false;state.lastFrameAt=0;requestFrame();}},readNativeTargets,dispose});

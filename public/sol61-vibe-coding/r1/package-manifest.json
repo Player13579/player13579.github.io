@@ -129,8 +129,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 3296,
-      "sha256": "aad4646a87f9889abb4c3e5c0448b5eeafe5d9ea78eb9f263c1638c516090029"
+      "bytes": 3404,
+      "sha256": "1766eac6f27736bfc70eb2536b169c1071b7ddd2f95a8b4a31fcdcf276db5215"
     },
     {
       "path": "kernel.mjs",
@@ -149,8 +149,8 @@
     },
     {
       "path": "runtime-host.mjs",
-      "bytes": 35623,
-      "sha256": "2487edc9fb41113f8064b871e2ed948b888508f709efa68a60dea21f5f6fb970"
+      "bytes": 38346,
+      "sha256": "bee4d25dab5841a8a5678d1374b173dcda1c5534ffde8aa5daf9457a3b581c09"
     },
     {
       "path": "sfx.mjs",
@@ -252,8 +252,8 @@
   },
   "runtimeHost": {
     "path": "runtime-host.mjs",
-    "sha256": "2487edc9fb41113f8064b871e2ed948b888508f709efa68a60dea21f5f6fb970",
-    "previousRuntimeSha256": "81e12374a9551b8512fd7f0f16b61ea689615f42927269198a0375ba5baab845",
+    "sha256": "bee4d25dab5841a8a5678d1374b173dcda1c5534ffde8aa5daf9457a3b581c09",
+    "previousRuntimeSha256": "2487edc9fb41113f8064b871e2ed948b888508f709efa68a60dea21f5f6fb970",
     "galleryErrorSurfaceRepair": {
       "attribution": "GPT-6-Luna",
       "scope": "embedded startup, runtime, GPU validation and device-loss diagnostics",
@@ -275,6 +275,12 @@
       "preservesFrozenArtistSources": true,
       "cpuLifecycleChecks": "pass",
       "safariReplay": "not_verified"
+    },
+    "recordFailureDiagnosticsR49": {
+      "attribution": "GPT-6-Luna",
+      "scope": "preserve Safari error message and per-pass scissor/attachment context",
+      "preservesFrozenArtistSources": true,
+      "safariRootCause": "unresolved_pending_actual_error_context"
     }
   }
 }
