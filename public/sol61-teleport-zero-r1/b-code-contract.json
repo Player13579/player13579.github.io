@@ -1,0 +1,1681 @@
+{
+  "artifact_kind": "B executable E translation contract; not B-Expression-2 image/video serialization",
+  "source_revision": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "base_blob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extension_blob": "f35b61661d0209c0329d4a501a760d35b451d52e"
+  },
+  "assignment": {
+    "owned_root": "outputs/request-20261001/teleport-zero-r1",
+    "decided": "新規action-teleport、二枚の直角ゲート、760Ems、実sprite H64基準、WebGPU/SFX、画像生成なし。primaryが意味/clock/privacy最終採否。",
+    "acceptance": "CPU構造/数値検査とsource契約照合。本物GPU/聴感/main/gallery/public採用は後段。",
+    "independent_decisions": "map/body material domainとactualbody/coverage描画能力はhost実装 gate。創作を既存encoded islandへ縮小しない。"
+  },
+  "InferenceExpansionPolicy": {
+    "DeclaredIntent": {
+      "subject": "action-teleport（action-heart-teleportとは別）",
+      "main_action": "成功した地点/対象転移の出発と到着を各イベント位置で表す。身体コピーや行動遅延を追加しない。",
+      "count": "一つのreceiptに二枚の直角ゲート。actor/receipt数は実入力に従う。",
+      "style": "digital procedural WebGPU",
+      "text_logo_policy": "文字/ロゴなし",
+      "background": "実ゲームのmapを保持し、新規backgroundを作らない"
+    },
+    "ExpressionIntent": {
+      "must_communicate": [
+        "出発は閉口、到着は開口",
+        "発光する境界/暗い面/実身体が別である",
+        "receiptの実位置と終端"
+      ],
+      "protected_relations": [
+        "caster attributionとmoving ownerを混同しない",
+        "actualbodyを一回draw",
+        "実身体の遮蔽とprivacyを維持",
+        "光学はvisible sourceのみ",
+        "背景でgain/paletteを変えない"
+      ],
+      "preserve_ambiguity": [
+        "二つのreceiptを同じtransactionと確定しない",
+        "身体を原子へ分解した等のgame事実を造らない"
+      ]
+    },
+    "SelectionLifecycle": {
+      "declared": [
+        "成功event/既存map/既存body"
+      ],
+      "attribute_resolved": [
+        "直角ゲート造形とlinear放射、source-bound観測応答",
+        "実受け手への有限diffuse入射の画風上近似"
+      ],
+      "inferred_accepted": [],
+      "excluded": [
+        "以前の転移E造形/コード/README/palette/SFX",
+        "架空の相方receipt、snapshotbody、遠隔経路、傷/残骸/煙/新画像"
+      ]
+    }
+  },
+  "FoundationOperationTemplate": {
+    "output_path": "ECodeImplementation.ExecutableECodeBranchRule",
+    "operation": "executable_effect_translation",
+    "image_generation": false,
+    "formal_image_video_serialization": false
+  },
+  "PlatonicGoodTemplate": {
+    "Good": {
+      "evidence": "独立receiptを元の術者attributionのまま受理し、privacy後にfieldを描く。"
+    },
+    "Truth": {
+      "coordinate_continuity": "event固定anchor→同一host camera→screen",
+      "physical_causality": "宣言された転移を表示するfieldと実受け手の応答を分離。実物理の実証ではない。",
+      "state_transition_readability": "対向面の閉口/開口と異なる局所ピーク。"
+    },
+    "Beauty": {
+      "boundary_readability": "幅3.52pxのspineと2.11px cap（H64）、暗い面と明るい縁。",
+      "gaze_circulation": "上部cap→身体→下部接地側、反対spine→近傍床→開口余白。",
+      "structural_separation": "PH geometryとOBS blur/ghost/fringeを別signalへ。"
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "field境界/光学入力と実body/実床の受け手境界が独立。学問名による分割をしない。",
+      "shared_condition_policy": "同じreceipt E時間/anchor/Hを参照するがbody/floorの受光範囲は区別。",
+      "no_discipline_based_split": true
+    },
+    "SharedConditions": {},
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "対向ゲートfield",
+        "origin": "declared",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "独立receiptのvariantに従う開口/閉口。実teleportを起こす処理はserver、E fieldに二度移動させる権限なし。",
+        "partition_reason": "field境界/発生/終端が実bodyや床から独立"
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "移動対象のactualbody",
+        "origin": "attribute_resolved",
+        "anchor": "body",
+        "visibility": "visible",
+        "local_state_difference": "arrival fieldと現在bodyの交差でだけ既存diffuseへ入射を与える。server移動済みbodyをsnapshotで置き換えない。",
+        "partition_reason": "body位置/姿勢/alphaはfieldと独立した現実source"
+      },
+      "PH3": {
+        "id": "PH3",
+        "name": "実近傍床のdiffuse受光",
+        "origin": "attribute_resolved",
+        "anchor": "floor",
+        "visibility": "visible",
+        "local_state_difference": "actual map diffuse channelをlinear入力と確定後RGB*(1+I)で一度描く。追加background画像/平面は作らない。",
+        "partition_reason": "既存floorの受光mask/responseがbodyから独立"
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "対向ゲートfield",
+          "origin": "declared",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "独立receiptのvariantに従う開口/閉口。実teleportを起こす処理はserver、E fieldに二度移動させる権限なし。",
+          "partition_reason": "field境界/発生/終端が実bodyや床から独立"
+        },
+        "DeepStructure": {
+          "Core": "spine/capの有限境界と閉口seam",
+          "Structure": "二枚の浅い直角面、3個の接続key、rear upper/front lower",
+          "Surface": "AA境界と終了前のopacity緩和、sourceは先に終端"
+        },
+        "PhysicalModel": {
+          "model_kind": "declared_fantasy",
+          "system_boundary": "height1.12H、openinghalf .035..355H、spine .055H",
+          "state_variables": "receipt ageEms/variant/anchor/H、existingbody selectedpose/materialalpha、existingmap diffuse",
+          "inputs": "primary-authorized authoritative receipt、current visibleactualbody/map",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "Eが質量を生成/破壊しない。server relocationを再実行しない。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "既存body運動量を保持、Eでforceを追加しない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "declaredfield供給中だけ有限radiance。観測responseはsourceより弱い係数で、物理jouleの実測主張なし。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電気的色/音はデザインであり電荷移動/電流を宣言しない。"
+            }
+          },
+          "constitutive_response": "独立receiptのvariantに従う開口/閉口。実teleportを起こす処理はserver、E fieldに二度移動させる権限なし。",
+          "initial_condition": "receiptEms0時signal/alpha0、既存body/mapはそのまま",
+          "boundary_conditions": "760Ems終端、privacy/room/device/hide取消、finite signal cutoff",
+          "approximation_scope": "stylized linear diffuse gain、flat atlas/map response。物理microfacet/PBRの成立やnative可読性は未実証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "height1.12H、openinghalf .035..355H、spine .055H",
+          "characteristic_time": ".760 E秒; motion .0608..3496秒",
+          "dominant_balance": "geometryの明瞭な境界と有限sourceから受光/OBSへの減衰。力学solverなし。",
+          "dimensionless_reasoning": "width/H .055、opening/H .035..355; source/ghost係数 .027。Re/Weは流体作用なしでnot_applicable。",
+          "detail_cutoff": "H32ではprimary幅1.76px以上、AA。micro/粒子なし、必須primaryの削除で調整しない。"
+        },
+        "OctaDomain": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Thermoの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Fluidの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "有限光源/遮蔽と線形radiance",
+              "actual receiver/sourceの別signal"
+            ],
+            "evidence_or_constraint": "開口の単調閉鎖/拡張 / 暗い面とbright rim/keyの異なる幅/phase"
+          },
+          "Materials": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Materialsの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Electromagneticsの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rheologyの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "WaveOpticsの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "SurfaceScienceの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "開口の単調閉鎖/拡張",
+            "暗い面とbright rim/keyの異なる幅/phase"
+          ],
+          "indirect_evidence": "他PH入力/受光の位相差",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "本物H64、DPR/overlapnative未観測",
+          "perceptual_failure_risk": "encoded/doublepremult/body double draw/whiteclipping時の構造消失",
+          "cue_roles": [
+            {
+              "cue": "開口の単調閉鎖/拡張",
+              "supports": "実位置/形の保持",
+              "reliability_and_overlap": "同じframe signal由来で統計的独立を主張しない。遮蔽/縮尺nativeで確認。"
+            },
+            {
+              "cue": "暗い面とbright rim/keyの異なる幅/phase",
+              "supports": "source/receiver区別",
+              "reliability_and_overlap": "同じframe signal由来で統計的独立を主張しない。遮蔽/縮尺nativeで確認。"
+            }
+          ],
+          "confusable_alternative": "単なる囲いUI/Barrier",
+          "disambiguating_evidence": "760Emsで終端、開口が反対向き、arrival actualbodyと有限受光が同時に解放される",
+          "viewing_conditions": "H32/48/64/96、DPR1/2、native actualmap/body、30/60fps"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "既存world→screenを共有。ゲート浅いskew、upper rear/lowerfront",
+          "normal_field_coherence": "flat diffuse近似/declaredfield。未知actualmaterialnormalを生成しない。",
+          "curvature_behavior": "直角capの境界AA、source以外の表面変形なし",
+          "silhouette_logic": "二枚の浅い直角面、3個の接続key、rear upper/front lower",
+          "contact_relation": "実foot/pivot保持、床がなければPH3受光なし",
+          "spatial_relation": "fixed eventanchor、actualbody独立"
+        },
+        "StateDynamics": {
+          "state_space_extent": "age0..760Ems、閉口/開口一回のみ",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "finite terminal exactly760Ems",
+          "damping_profile": "sampleArtist各pulse終端。bodymotionを dampingしない。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "E消失後既存body/mapのみ",
+          "transition_failure_risk": "clockreset/owner替え/receipt再利用/時間のwallfallback",
+          "driving_input": "authoritative receipt plus movingOwner canonical E delta",
+          "response_timescale": ".760 E秒; motion .0608..3496秒",
+          "phase_relation": "各pulseを同一receiptageへ、owner間独立",
+          "stability_condition": "finiteclock、currentness、same device/generationが成立するときだけ"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Optics -> PH2.Optics:到着有限入射",
+            "PH1.Optics -> PH3.Optics:足側有限入射"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "anchor/Hを保持しarrival/departure/ageだけ変更",
+            "predicted_response": "760Emsで終端、開口が反対向き、arrival actualbodyと有限受光が同時に解放される",
+            "competing_explanation": "単なる囲いUI/Barrier",
+            "uncertainty": "native/shadercompile/actualbody material/pose未観測。計算で芸術的成功を証明しない。",
+            "check_status": "tested",
+            "evidence_refs": [
+              "cpu-report.json（pureCPUのみ）"
+            ]
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [
+            {
+              "source": "PH1",
+              "target": "PH2",
+              "mechanism": "arrival有限fieldの入射",
+              "consequence": "arrival fieldと現在bodyの交差でだけ既存diffuseへ入射を与える。server移動済みbodyをsnapshotで置き換えない。"
+            },
+            {
+              "source": "PH1",
+              "target": "PH3",
+              "mechanism": "footfieldの有限入射",
+              "consequence": "actual map diffuse channelをlinear入力と確定後RGB*(1+I)で一度描く。追加background画像/平面は作らない。"
+            }
+          ],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "開口の単調閉鎖/拡張",
+            "暗い面とbright rim/keyの異なる幅/phase"
+          ],
+          "indirect": [
+            "PH1入力状態とPH2/PH3有限入射"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH2",
+              "change": "arrival fieldと現在bodyの交差でだけ既存diffuseへ入射を与える。server移動済みbodyをsnapshotで置き換えない。"
+            },
+            {
+              "target": "PH3",
+              "change": "actual map diffuse channelをlinear入力と確定後RGB*(1+I)で一度描く。追加background画像/平面は作らない。"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH1.StateDynamics",
+          "retained_cues": [
+            "開口の単調閉鎖/拡張",
+            "暗い面とbright rim/keyの異なる幅/phase"
+          ],
+          "simplification": "既存geometry/body1draw保持、micro detailを新規追加しない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "contrast": [
+              "開口の単調閉鎖/拡張",
+              "暗面/発光source/実受け手の明度役割の違い"
+            ],
+            "temporal_phase": [
+              "暗い面とbright rim/keyの異なる幅/phase",
+              "geometry収束とsource/受光終端の位相差"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "body_double_draw",
+          "OBS_as_PH",
+          "encoded_island",
+          "background_gain_compensation"
+        ]
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "移動対象のactualbody",
+          "origin": "attribute_resolved",
+          "anchor": "body",
+          "visibility": "visible",
+          "local_state_difference": "arrival fieldと現在bodyの交差でだけ既存diffuseへ入射を与える。server移動済みbodyをsnapshotで置き換えない。",
+          "partition_reason": "body位置/姿勢/alphaはfieldと独立した現実source"
+        },
+        "DeepStructure": {
+          "Core": "既存actualbody silhouette/pivot/support",
+          "Structure": "runtime selected sprite crop/UV/affineを保持",
+          "Surface": "既存premult coverageを一回使用、lightはlinear baseRGBへ掛ける"
+        },
+        "PhysicalModel": {
+          "model_kind": "rigid_or_articulated",
+          "system_boundary": "actualbody visibleHをhostから受領、reference64px。物理身長は推測しない。",
+          "state_variables": "receipt ageEms/variant/anchor/H、existingbody selectedpose/materialalpha、existingmap diffuse",
+          "inputs": "primary-authorized authoritative receipt、current visibleactualbody/map",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "Eが質量を生成/破壊しない。server relocationを再実行しない。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "既存body運動量を保持、Eでforceを追加しない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "declaredfield供給中だけ有限radiance。観測responseはsourceより弱い係数で、物理jouleの実測主張なし。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電気的色/音はデザインであり電荷移動/電流を宣言しない。"
+            }
+          },
+          "constitutive_response": "arrival fieldと現在bodyの交差でだけ既存diffuseへ入射を与える。server移動済みbodyをsnapshotで置き換えない。",
+          "initial_condition": "receiptEms0時signal/alpha0、既存body/mapはそのまま",
+          "boundary_conditions": "760Ems終端、privacy/room/device/hide取消、finite signal cutoff",
+          "approximation_scope": "stylized linear diffuse gain、flat atlas/map response。物理microfacet/PBRの成立やnative可読性は未実証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "actualbody visibleHをhostから受領、reference64px。物理身長は推測しない。",
+          "characteristic_time": "既存body motion E時計、受光は .1064..5396 E秒",
+          "dominant_balance": "geometryの明瞭な境界と有限sourceから受光/OBSへの減衰。力学solverなし。",
+          "dimensionless_reasoning": "width/H .055、opening/H .035..355; source/ghost係数 .027。Re/Weは流体作用なしでnot_applicable。",
+          "detail_cutoff": "H32ではprimary幅1.76px以上、AA。micro/粒子なし、必須primaryの削除で調整しない。"
+        },
+        "OctaDomain": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Thermoの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Fluidの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "有限光源/遮蔽と線形radiance",
+              "actual receiver/sourceの別signal"
+            ],
+            "evidence_or_constraint": "既存姿勢/輪郭/足point保持 / ゲート内にいる範囲だけcyan入射、離れれば元色"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "既存atlas/map diffuse/alphaを保持"
+            ],
+            "evidence_or_constraint": "既存姿勢/輪郭/足point保持 / ゲート内にいる範囲だけcyan入射、離れれば元色"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Electromagneticsの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rheologyの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "WaveOpticsの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "SurfaceScienceの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "既存姿勢/輪郭/足point保持",
+            "ゲート内にいる範囲だけcyan入射、離れれば元色"
+          ],
+          "indirect_evidence": "他PH入力/受光の位相差",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "本物H64、DPR/overlapnative未観測",
+          "perceptual_failure_risk": "encoded/doublepremult/body double draw/whiteclipping時の構造消失",
+          "cue_roles": [
+            {
+              "cue": "既存姿勢/輪郭/足point保持",
+              "supports": "実位置/形の保持",
+              "reliability_and_overlap": "同じframe signal由来で統計的独立を主張しない。遮蔽/縮尺nativeで確認。"
+            },
+            {
+              "cue": "ゲート内にいる範囲だけcyan入射、離れれば元色",
+              "supports": "source/receiver区別",
+              "reliability_and_overlap": "同じframe signal由来で統計的独立を主張しない。遮蔽/縮尺nativeで確認。"
+            }
+          ],
+          "confusable_alternative": "ゲートに追従する偽bodyまたは二重draw",
+          "disambiguating_evidence": "world-fixed fieldとbodyの別変換、移動後のfield/bodyintersection、draw count1",
+          "viewing_conditions": "H32/48/64/96、DPR1/2、native actualmap/body、30/60fps"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "既存world→screenを共有。ゲート浅いskew、upper rear/lowerfront",
+          "normal_field_coherence": "flat diffuse近似/declaredfield。未知actualmaterialnormalを生成しない。",
+          "curvature_behavior": "直角capの境界AA、source以外の表面変形なし",
+          "silhouette_logic": "runtime selected sprite crop/UV/affineを保持",
+          "contact_relation": "実foot/pivot保持、床がなければPH3受光なし",
+          "spatial_relation": "fixed eventanchor、actualbody独立"
+        },
+        "StateDynamics": {
+          "state_space_extent": "age0..760Ems、閉口/開口一回のみ",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "finite terminal exactly760Ems",
+          "damping_profile": "sampleArtist各pulse終端。bodymotionを dampingしない。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "E消失後既存body/mapのみ",
+          "transition_failure_risk": "clockreset/owner替え/receipt再利用/時間のwallfallback",
+          "driving_input": "authoritative receipt plus movingOwner canonical E delta",
+          "response_timescale": "既存body motion E時計、受光は .1064..5396 E秒",
+          "phase_relation": "各pulseを同一receiptageへ、owner間独立",
+          "stability_condition": "finiteclock、currentness、same device/generationが成立するときだけ"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Optics -> PH2.Optics:入力受光"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "anchor/Hを保持しarrival/departure/ageだけ変更",
+            "predicted_response": "world-fixed fieldとbodyの別変換、移動後のfield/bodyintersection、draw count1",
+            "competing_explanation": "ゲートに追従する偽bodyまたは二重draw",
+            "uncertainty": "native/shadercompile/actualbody material/pose未観測。計算で芸術的成功を証明しない。",
+            "check_status": "tested",
+            "evidence_refs": [
+              "cpu-report.json（pureCPUのみ）"
+            ]
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "既存姿勢/輪郭/足point保持",
+            "ゲート内にいる範囲だけcyan入射、離れれば元色"
+          ],
+          "indirect": [
+            "PH1入力状態とPH2/PH3有限入射"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH2.StateDynamics",
+          "retained_cues": [
+            "既存姿勢/輪郭/足point保持",
+            "ゲート内にいる範囲だけcyan入射、離れれば元色"
+          ],
+          "simplification": "既存geometry/body1draw保持、micro detailを新規追加しない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "contrast": [
+              "既存姿勢/輪郭/足point保持",
+              "暗面/発光source/実受け手の明度役割の違い"
+            ],
+            "temporal_phase": [
+              "ゲート内にいる範囲だけcyan入射、離れれば元色",
+              "geometry収束とsource/受光終端の位相差"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "body_double_draw",
+          "OBS_as_PH",
+          "encoded_island",
+          "background_gain_compensation"
+        ]
+      },
+      "PH3": {
+        "identity": {
+          "id": "PH3",
+          "name": "実近傍床のdiffuse受光",
+          "origin": "attribute_resolved",
+          "anchor": "floor",
+          "visibility": "visible",
+          "local_state_difference": "actual map diffuse channelをlinear入力と確定後RGB*(1+I)で一度描く。追加background画像/平面は作らない。",
+          "partition_reason": "既存floorの受光mask/responseがbodyから独立"
+        },
+        "DeepStructure": {
+          "Core": "既存floor受光域 yH=.10",
+          "Structure": "bodyfieldの足側局所にのみ有限diffuse response",
+          "Surface": "xH .20..68、yH中心 .10から .10..29でsmooth cutoff"
+        },
+        "PhysicalModel": {
+          "model_kind": "derived_world_response",
+          "system_boundary": "finite .68H×.29H; sourcecap widthとの関係",
+          "state_variables": "receipt ageEms/variant/anchor/H、existingbody selectedpose/materialalpha、existingmap diffuse",
+          "inputs": "primary-authorized authoritative receipt、current visibleactualbody/map",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "Eが質量を生成/破壊しない。server relocationを再実行しない。"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "既存body運動量を保持、Eでforceを追加しない。"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "declaredfield供給中だけ有限radiance。観測responseはsourceより弱い係数で、物理jouleの実測主張なし。"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "電気的色/音はデザインであり電荷移動/電流を宣言しない。"
+            }
+          },
+          "constitutive_response": "actual map diffuse channelをlinear入力と確定後RGB*(1+I)で一度描く。追加background画像/平面は作らない。",
+          "initial_condition": "receiptEms0時signal/alpha0、既存body/mapはそのまま",
+          "boundary_conditions": "760Ems終端、privacy/room/device/hide取消、finite signal cutoff",
+          "approximation_scope": "stylized linear diffuse gain、flat atlas/map response。物理microfacet/PBRの成立やnative可読性は未実証。"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "finite .68H×.29H; sourcecap widthとの関係",
+          "characteristic_time": ".0836..6004 E秒、body受光と終端差あり",
+          "dominant_balance": "geometryの明瞭な境界と有限sourceから受光/OBSへの減衰。力学solverなし。",
+          "dimensionless_reasoning": "width/H .055、opening/H .035..355; source/ghost係数 .027。Re/Weは流体作用なしでnot_applicable。",
+          "detail_cutoff": "H32ではprimary幅1.76px以上、AA。micro/粒子なし、必須primaryの削除で調整しない。"
+        },
+        "OctaDomain": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Thermoの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Fluidの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "有限光源/遮蔽と線形radiance",
+              "actual receiver/sourceの別signal"
+            ],
+            "evidence_or_constraint": "実床模様を保った局所明度変化 / foot sourceから有限距離で減衰し遠方mapは不変"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "既存atlas/map diffuse/alphaを保持"
+            ],
+            "evidence_or_constraint": "実床模様を保った局所明度変化 / foot sourceから有限距離で減衰し遠方mapは不変"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Electromagneticsの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rheologyの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "WaveOpticsの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "SurfaceScienceの新規作用は宣言されていない。fieldは非物質で、body/floorの既存状態を改変しない。"
+            ],
+            "evidence_or_constraint": "PH1入力/PH2・PH3受け手の限定作用。架空の熱/電荷/流れ/波干渉/濡れを追加しない。"
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": [
+            "実床模様を保った局所明度変化",
+            "foot sourceから有限距離で減衰し遠方mapは不変"
+          ],
+          "indirect_evidence": "他PH入力/受光の位相差",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "本物H64、DPR/overlapnative未観測",
+          "perceptual_failure_risk": "encoded/doublepremult/body double draw/whiteclipping時の構造消失",
+          "cue_roles": [
+            {
+              "cue": "実床模様を保った局所明度変化",
+              "supports": "実位置/形の保持",
+              "reliability_and_overlap": "同じframe signal由来で統計的独立を主張しない。遮蔽/縮尺nativeで確認。"
+            },
+            {
+              "cue": "foot sourceから有限距離で減衰し遠方mapは不変",
+              "supports": "source/receiver区別",
+              "reliability_and_overlap": "同じframe signal由来で統計的独立を主張しない。遮蔽/縮尺nativeで確認。"
+            }
+          ],
+          "confusable_alternative": "背景に重ねただけの発光decal",
+          "disambiguating_evidence": "actualmap materiallinearRGBに結合し、既存floor alpha/geometry保持",
+          "viewing_conditions": "H32/48/64/96、DPR1/2、native actualmap/body、30/60fps"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "既存world→screenを共有。ゲート浅いskew、upper rear/lowerfront",
+          "normal_field_coherence": "flat diffuse近似/declaredfield。未知actualmaterialnormalを生成しない。",
+          "curvature_behavior": "直角capの境界AA、source以外の表面変形なし",
+          "silhouette_logic": "bodyfieldの足側局所にのみ有限diffuse response",
+          "contact_relation": "実foot/pivot保持、床がなければPH3受光なし",
+          "spatial_relation": "fixed eventanchor、actualbody独立"
+        },
+        "StateDynamics": {
+          "state_space_extent": "age0..760Ems、閉口/開口一回のみ",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "finite terminal exactly760Ems",
+          "damping_profile": "sampleArtist各pulse終端。bodymotionを dampingしない。",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "E消失後既存body/mapのみ",
+          "transition_failure_risk": "clockreset/owner替え/receipt再利用/時間のwallfallback",
+          "driving_input": "authoritative receipt plus movingOwner canonical E delta",
+          "response_timescale": ".0836..6004 E秒、body受光と終端差あり",
+          "phase_relation": "各pulseを同一receiptageへ、owner間独立",
+          "stability_condition": "finiteclock、currentness、same device/generationが成立するときだけ"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Optics -> PH3.Optics:入力受光"
+          ],
+          "SecondaryCouplings": [],
+          "CausalAssessment": {
+            "intervention": "anchor/Hを保持しarrival/departure/ageだけ変更",
+            "predicted_response": "actualmap materiallinearRGBに結合し、既存floor alpha/geometry保持",
+            "competing_explanation": "背景に重ねただけの発光decal",
+            "uncertainty": "native/shadercompile/actualbody material/pose未観測。計算で芸術的成功を証明しない。",
+            "check_status": "tested",
+            "evidence_refs": [
+              "cpu-report.json（pureCPUのみ）"
+            ]
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "実床模様を保った局所明度変化",
+            "foot sourceから有限距離で減衰し遠方mapは不変"
+          ],
+          "indirect": [
+            "PH1入力状態とPH2/PH3有限入射"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH3.StateDynamics",
+          "retained_cues": [
+            "実床模様を保った局所明度変化",
+            "foot sourceから有限距離で減衰し遠方mapは不変"
+          ],
+          "simplification": "既存geometry/body1draw保持、micro detailを新規追加しない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "conform_to": "PlatonicGoodTemplate.BeautyStructuring",
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "contrast": [
+              "実床模様を保った局所明度変化",
+              "暗面/発光source/実受け手の明度役割の違い"
+            ],
+            "temporal_phase": [
+              "foot sourceから有限距離で減衰し遠方mapは不変",
+              "geometry収束とsource/受光終端の位相差"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "visibility_specific_evidence_present": true,
+          "physical_and_observation_links_not_mixed": true,
+          "physical_model_scale_and_response_consistent": true,
+          "perceptual_cues_and_identifiability_limits_explained": true,
+          "causal_assessment_status_matches_evidence": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "body_double_draw",
+          "OBS_as_PH",
+          "encoded_island",
+          "background_gain_compensation"
+        ]
+      }
+    }
+  },
+  "PEMTemplate": {
+    "Mode": {
+      "phenomenon_equality": true,
+      "focus_phenomenon": "none"
+    },
+    "CausalMesh": {
+      "physical_mesh_required": true,
+      "gaze_target_policy": "standard",
+      "adjustment_reason": "not_applicable:通常の2経路",
+      "gaze_path_A": "PH1上部cap→PH2身体の受光→PH3下部局所受光",
+      "gaze_path_B": "PH1反対spine→PH3有限減衰→PH2開口内の保持輪郭",
+      "local_extrema_connected_to_gaze_paths": true
+    },
+    "AttentionControl": {
+      "attention_focus": "hierarchical",
+      "single_requires_explicit_request": true
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "転移field、既存body、既存floorの受光"
+    },
+    "Units": {
+      "length": "m（host実寸換算は不明、artist幾何はH=actualbody heightで正規化。物理身長を新規推測しない）",
+      "time": "s",
+      "temperature": "declared:no thermal simulation",
+      "pressure": "declared:no pressure simulation",
+      "angle": "rad"
+    },
+    "WorldCoordinates": {
+      "handedness": "right_handed",
+      "X": "right_positive",
+      "Y": "up_positive",
+      "Z": "backward_positive",
+      "camera_forward": "negative_Z",
+      "origin": "declared_anchor_origin"
+    },
+    "CameraCoordinates": {
+      "X": "right_positive",
+      "Y": "up_positive",
+      "forward": "negative_Z",
+      "projection": "orthographic",
+      "FOV_or_scale": "host cameraの実world→screen scale。同じ変換でevent anchorとbodyを配置。"
+    },
+    "ScreenCoordinates": {
+      "domain": "[0,1]x[0,1]",
+      "x": "0_left_to_1_right",
+      "y": "0_top_to_1_bottom"
+    },
+    "TransformChain": {
+      "order": [
+        "world",
+        "camera",
+        "screen"
+      ],
+      "world_to_camera": "hostの実camera変換。game x右/y下をB worldのY上へ符号変換し、再びscreen y下へ投影。",
+      "camera_to_screen": "artist shader p=(screenPixel-screenEventAnchor)/actualH。event anchorはfoot point。既存sprite crop/pivot/affineを変更しない。"
+    },
+    "ContactCoordinates": {
+      "contact_patch": "実body commandのfoot/support metadataを参照、fieldはyH=.105に有限床投影。",
+      "contact_normal": "既存floorのみ。未知normalを生成せずflat diffuse近似を明示。",
+      "support_relation": "実bodyのstanding/motion/airborneに従う。ゲートでbodyを支持しない。",
+      "no_penetration": true
+    },
+    "VectorField": {
+      "dominant_vector": {
+        "direction": "左右のspine→中央（出発）、中央→左右（到着）",
+        "magnitude": "0.32H / .2888E秒 の滑らかな設計変位",
+        "falloff": "幾何spine局所、外縁AA",
+        "fluctuation": "none"
+      },
+      "secondary_vector": {
+        "direction": "光源→実body/近傍floor",
+        "magnitude": "receiver≤1.65、floor energy≤.42のlinear gain近似",
+        "falloff": "smooth finite supports",
+        "fluctuation": "none"
+      }
+    },
+    "Gravity": {
+      "condition": "normal",
+      "vector": "既存game物理の重力条件を保持。fieldは非物質のdeclared_fantasyで重力軌道なし。",
+      "strength": "ゲーム既存値を改変しない、未取得のm/s²を捏造しない",
+      "affected_responses": "身体の既存支持/運動だけ。Eは新規particle/cloth動作なし。",
+      "evidence": "実body足位置と既存接地/airborne command。nativeで確認。"
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "air",
+      "medium_properties": {
+        "density": "既存室内空気の背景条件、数値未使用",
+        "viscosity": "数値未使用、field輸送へ空気抵抗を導入しない"
+      },
+      "Field": {
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "speed": 0,
+        "gust": "none",
+        "shear": "none",
+        "turbulence": "none"
+      },
+      "ApplicableResponses": {
+        "body": "追加風力なし、実bodyを維持",
+        "cloth": "追加揺れなし",
+        "hair": "追加揺れなし",
+        "loose_elements": "新規particleなし",
+        "environment": "空気の新規可視化なし"
+      },
+      "non_applicable_responses_explicit": true
+    }
+  },
+  "ObservationIntegrationTemplate": {
+    "ObservationRegistry": {
+      "OBS1": {
+        "operation_type": "filter",
+        "input_references": [
+          "PH1"
+        ],
+        "target_mask": "perowner visible sourceSignal。body/他owner/background RGBを入力にしない。",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": ".16×blur",
+        "protected_regions": [
+          "actualbodyのcoverage/contour",
+          "HUD",
+          "sourceが隠れた全領域",
+          "遠隔missing counterpart"
+        ],
+        "output_consequence": "sourceの2axis diffusion bloom",
+        "dependencies": [
+          "PH1"
+        ],
+        "sampling_consequence": "H64/DPR actualsignal。bounded UV、画面端outside0、no temporal history。縮尺/edge見切れはnative未確認。"
+      },
+      "OBS2": {
+        "operation_type": "lensflare",
+        "input_references": [
+          "PH1"
+        ],
+        "target_mask": "perowner visible sourceSignal。body/他owner/background RGBを入力にしない。",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": ".027×occlusion済みsource key",
+        "protected_regions": [
+          "actualbodyのcoverage/contour",
+          "HUD",
+          "sourceが隠れた全領域",
+          "遠隔missing counterpart"
+        ],
+        "output_consequence": "左spineの可視keyに束縛した直角開口ghost",
+        "dependencies": [
+          "PH1"
+        ],
+        "sampling_consequence": "H64/DPR actualsignal。bounded UV、画面端outside0、no temporal history。縮尺/edge見切れはnative未確認。"
+      },
+      "OBS3": {
+        "operation_type": "display_artifact",
+        "input_references": [
+          "PH1"
+        ],
+        "target_mask": "perowner visible sourceSignal。body/他owner/background RGBを入力にしない。",
+        "stage": "post_composite",
+        "composite_method": "add",
+        "intensity": ".11×source color difference,shift≤.55px",
+        "protected_regions": [
+          "actualbodyのcoverage/contour",
+          "HUD",
+          "sourceが隠れた全領域",
+          "遠隔missing counterpart"
+        ],
+        "output_consequence": "source像境界のみの色差",
+        "dependencies": [
+          "PH1"
+        ],
+        "sampling_consequence": "H64/DPR actualsignal。bounded UV、画面端outside0、no temporal history。縮尺/edge見切れはnative未確認。"
+      }
+    },
+    "SamplingContract": {
+      "output_resolution": "host実backing pixels。未GPU測定。",
+      "intended_display_scale": "actual sprite H64; H32/48/64/96、DPR1/2をnative検査。",
+      "spatial_detail_policy": "spine .055H、caps .066H、keys .07H以上。AA max(.65/H,fwidth)。micro texture/1px文字なし。",
+      "temporal_sampling": "canonical E-ms。60/30fpsとrate .15/1/2/12/>12/0を確認。時間積分/motion blurなし。高速rateでは全相を見せるためのslowdownをしない。",
+      "filter_and_resample_policy": "linear HDR source、2separable blur、bounded zero outside UV、sampler filteringの実device能力確認。"
+    },
+    "ImageIntegration": {
+      "ToneColor": "final共通sRGB encodeだけ、artist toneMapなし",
+      "LightIntegration": "OBS1、PH2/PH3有限受光",
+      "ShadowDensity": "既存遮蔽維持",
+      "DepthAir": "新規fogなし",
+      "EdgeLine": "OBS3はsource像のみ",
+      "TextureOutput": "new textureなし"
+    },
+    "IntensityBudget": {
+      "global_observation_budget": "owner独立固定design: bloom .16、ghost .027×source、fringe .11×source difference。背景/luminance auto調整なし。",
+      "para": "none",
+      "flare_gradient": "none",
+      "glow": ".16 finite signal blur",
+      "diffusion": "AAのみ",
+      "grain": "none",
+      "chromatic_aberration": "source境界のみ .55px最大（H64 referenceでpx指定）",
+      "protected_region_priority": "highest",
+      "intentional_departures": []
+    },
+    "CompositeValidation": {
+      "contour_preserved": "not_tested",
+      "highlight_clipping": "not_tested",
+      "shadow_crushing": "not_tested",
+      "chroma_displacement": "not_tested",
+      "fine_detail_retention": "not_tested",
+      "protected_background_preserved": "not_tested"
+    },
+    "LensFlareField": {
+      "registry_id": "OBS2",
+      "artifact_type": "optical_observation_artifact",
+      "world_anchor": "none",
+      "SourceMapping": {
+        "source_state": "attribute_resolved",
+        "source_id": "PH1",
+        "source_screen_position": "anchor+(-halfOpeningH,-.48)*H",
+        "source_luminance_rank": "visible leftkey current radiance only"
+      },
+      "ResponseVisibility": {
+        "level": "very_low",
+        "reason": "stylized orthographic camera lens coating、visible sourceSignalに従属"
+      },
+      "LensModel": {
+        "flare_mode": "source_specific_custom",
+        "coating_strength": "high",
+        "aperture_state": "mid",
+        "anamorphic": false
+      },
+      "SpatialBinding": {
+        "image_center_relation": "ghost=source-.23*(source-center)",
+        "optical_axis_offset": "current source/center distance",
+        "chain_axis": "source-center"
+      },
+      "Responses": {
+        "Ghost": "一個の弱い直角開口のぼけた像、power4のfinite実用support",
+        "Veil": "none:body/mapのcontrastを広く落とさない",
+        "Streak": "none:rectangular primaryの主軸を二重化しない",
+        "Spectral": "coating bias [.65,.80,1]×同sourceRGB。rainbowを捏造しない。"
+      }
+    }
+  },
+  "ExtremumDesignColorTemplate": {
+    "PEV": {
+      "candidate_state_set": [
+        "D-close:開口収束とseamピーク",
+        "A-open:実身体に接する開口と入射ピーク",
+        "late:暗い面/床の終端"
+      ],
+      "selected_physics_extremum": "D-close/A-openを同一receipt内の各時刻へ",
+      "reason": "閉口/開口と受け手への応答を別時相で読む。異なるピークを一枚へ強制しない。"
+    },
+    "AES": {
+      "selected_from_PEV_only": true,
+      "visual_circulation": "二つのspine/capと開口の余白",
+      "asymmetric_balance": "左右は対向、接地側capがfront、上部はrear。",
+      "tension_release": "出発閉口の短いseam、到着開口の解放",
+      "body_environment_consonance": "actualbodyと既存床の同時受光",
+      "selected_aesthetic_extremum": "bodyが開口内に読めるarrival .25..44、閉口のdeparture .40"
+    },
+    "DesignScience": {
+      "VisualHierarchy": "二枚のゲート→actualbody/floor response→source optics",
+      "DensityPlan": "ゲート境界のみ密、中央/遠方を空ける",
+      "ShapeOrder": "直角capと平行spine、Hに対する幅を保持",
+      "OrnamentFunction": "3keysはfieldの保持/接続を示す、粒子数増で質を作らない"
+    },
+    "CCM": {
+      "Palette": {
+        "base": [
+          0.022,
+          0.075,
+          0.17
+        ],
+        "secondary": [
+          0.08,
+          0.56,
+          0.95
+        ],
+        "accent": [
+          0.55,
+          0.95,
+          1
+        ],
+        "neutral": [
+          0.86,
+          0.96,
+          1
+        ]
+      },
+      "ColorDynamics": {
+        "temp": "cool",
+        "value_range": "linear HDR source energy core5.6/seam8.4、display encodeで白ピークがあり得る",
+        "saturation": "暗面はblue、sourceはcyan/pale neutral"
+      },
+      "Lighting": {
+        "key_K": "declared nonthermal field:K換算しない",
+        "fill_tint": "cyan incident field"
+      },
+      "BackgroundBinding": {
+        "bg_dominant": "host actual map固定",
+        "bg_accent": "既存map固定、背景color lookup/adaptationなし"
+      },
+      "PerceptualControl": {
+        "attention_focus": "hierarchical",
+        "figure_ground_stability": "native未測定",
+        "arousal_level": "mid",
+        "perceptual_noise_tolerance": "low"
+      }
+    }
+  },
+  "ReflectionClosureTemplate": {
+    "Applicability": {
+      "applies_when": [],
+      "otherwise": "latent_optics_condition"
+    },
+    "reason": "新規specular/metal/wet sheenなし。受光は既存linear diffuseへ有限gainを適用する画風近似。実atlas/map material反射はhost所有で変更しない。未知F0/NDFを補わない。"
+  },
+  "PhenomenonProfileTemplate": {
+    "ApplicabilityGuide": {
+      "selections": []
+    },
+    "ProfilePolicy": {
+      "secondary_boost_only": true,
+      "full_PH_structure_still_required": true,
+      "only_selected_profiles_in_design": true
+    },
+    "reason": "既存body/mapを保持、新規wind/fire/water/material transformationを作らない"
+  },
+  "ExtensionActivationTable": {
+    "entries": {
+      "VFX": {
+        "active": true,
+        "basis": "explicit WebGPU E creative"
+      },
+      "ECodeImplementation": {
+        "active": true,
+        "basis": "explicit executable source"
+      },
+      "PostEffects": {
+        "active": true,
+        "basis": "attribute_resolved source-bound OBS"
+      },
+      "LDM": {
+        "active": true,
+        "basis": "VFX local luminance dynamics"
+      },
+      "BeautifulPoseCapsule": {
+        "active": true,
+        "basis": "actualbody exists"
+      },
+      "CharacterPolicy": {
+        "active": true,
+        "basis": "実existing actorがhumanなら既存属性を保持"
+      },
+      "KeywordExpansion": {
+        "active": false,
+        "basis": "keyword none"
+      },
+      "MagicArchitecture": {
+        "active": false,
+        "basis": "action-teleport個別効果名のみ。source pushMagicEffect関数名はユーザーMagic指定ではない。"
+      },
+      "VideoGenerationPolicy": {
+        "active": false,
+        "basis": "no image/video generation"
+      },
+      "GradientAnchorPolicy": {
+        "active": false,
+        "basis": "同一source中のrim/key役割色のみ、連続hue gradientなし"
+      }
+    }
+  },
+  "CharacterPolicy": {
+    "characters": {
+      "$movingActor": {
+        "GeneralCharacter": {
+          "character_id": "$movingActor",
+          "declared_attributes": "actualbodyの既存skin/costume/性別/年齢/role。新規推測しない。",
+          "unspecified_attributes_not_filled_from_presets": true,
+          "male_expression_policy": "既存spriteを維持。Eが表情/化粧を変更しない。"
+        }
+      }
+    }
+  },
+  "BeautifulPoseCapsule": {
+    "characters": {
+      "$movingActor": {
+        "PosePhase": "TRANSITION",
+        "PoseType": "runtime actual body commandへ分岐（standing/airborne等を実metadataで指定）",
+        "Common": {
+          "intent": "移動済みactualbodyを一回描く、転移専用偽poseを生成しない",
+          "primary_axis": "実selected body sprite/poseの頭→足軸",
+          "gaze_or_orientation": "actual command方向保持",
+          "contact_points": [
+            "実commandの接点; airborneならnone"
+          ],
+          "COM_or_support_center": "既存motion/body姿勢を保持",
+          "reaction_or_propulsion": "server actualmovementのみ",
+          "limb_or_appendage_roles": "既存動作の肢役割を保持",
+          "recovery": "Eが新規回復motionを追加しない",
+          "PH_mechanics_refs": {
+            "PhysicalModel": "PH2.PhysicalModel",
+            "ScaleRegime": "PH2.ScaleRegime",
+            "StateDynamics": "PH2.StateDynamics"
+          },
+          "static_dynamic_mechanics": {
+            "mode": "actual motion stateを参照",
+            "static_balance_or_support": "standing時は既存足/床支持",
+            "momentum_propulsion_or_contact_change": "実motionを参照、転移の加速度を新規推測しない"
+          },
+          "perceptual_readability_ref": {
+            "PerceptualReadability": "PH2.PerceptualReadability",
+            "joint_and_contact_cues": [
+              "既存silhouetteとfoot/pivotを保つ",
+              "ゲートが去ってbody輪郭が残る"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "PostEffects": {
+    "trigger": {
+      "ordinary_posteffects": false,
+      "beta_targets": []
+    },
+    "selection": {
+      "mode": "exact_selected_operations",
+      "scope_resolution": "attribute_resolved_target_and_scope",
+      "exact_selected_operations": [
+        "source-local bloom",
+        "source-bound rectangular ghost",
+        "source-bound chromatic edge"
+      ]
+    },
+    "autonomous_activation": {
+      "physical_causality_input_required": false,
+      "registry": "ObservationIntegrationTemplate.ObservationRegistry",
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract"
+    },
+    "SPCA": {
+      "applies_if": "PH1 local peak",
+      "evidence_types_standard_two_of": [
+        "gradient",
+        "decay",
+        "occlusion"
+      ],
+      "explicit_intent_adjustment": "none",
+      "PostEffects_alone_does_not_require_new_PH": true
+    },
+    "global_posteffects": {
+      "applies": false,
+      "exact_OBS_operations": [],
+      "OBS_refs": []
+    },
+    "local_posteffects": {
+      "applies": true,
+      "targets": [
+        "PH1 visible source"
+      ],
+      "exact_OBS_operations": [
+        "bloom",
+        "rectangular ghost",
+        "source-only color fringe"
+      ],
+      "OBS_refs": [
+        "OBS1",
+        "OBS2",
+        "OBS3"
+      ]
+    }
+  },
+  "LuminanceDynamicsModule": {
+    "trigger": {
+      "explicit_VFX": true,
+      "explicit_PostEffects": false,
+      "inferred_requires_luminance_dynamics": true
+    },
+    "omitted_if_not_enabled": true,
+    "target_metrics": {
+      "target_size": "H64 actor reference",
+      "camera_distance": "host actual camera",
+      "screen_occupancy": "viewport dependent, not guessed",
+      "readability_priority": "high"
+    },
+    "runtime_temporal_envelope": "sampleArtist pulse curves; distinct core/seam/floor/body peaks",
+    "micro_variation": "none: no unwanted shimmer",
+    "anti_flicker": "single smooth pulses; no looping modulation",
+    "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+    "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+    "AlphaBackground": {
+      "enabled": false,
+      "required_background_if_enabled": "#000000"
+    }
+  },
+  "ECodeImplementation": {
+    "trigger": "executable_runtime_E_code_explicit",
+    "output_kind": "executable_effect_source_not_image_generation",
+    "source_revision": {
+      "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+      "base_blob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+      "extension_blob": "f35b61661d0209c0329d4a501a760d35b451d52e"
+    },
+    "target_runtime": "WebGPU",
+    "source_and_time_contract": "receipt eventid+roomSession; movingOwner canonical E clock delta; fixed event anchor; duration760; no pair/remote target.",
+    "world_PH_refs": [
+      "PH1",
+      "PH2",
+      "PH3"
+    ],
+    "observation_OBS_refs": [
+      "OBS1",
+      "OBS2",
+      "OBS3"
+    ],
+    "implementation_artifacts": [
+      "artist.mjs",
+      "world-shader.mjs",
+      "post-shader.mjs",
+      "sfx-score.mjs"
+    ],
+    "applicable_rule_evidence": "DESIGN.md 対応表",
+    "validation": {
+      "syntax_and_shader": "JS syntax pass; WGSL compile not_run",
+      "actual_GPU_pixels_and_timing": "not_run",
+      "game_event_and_SFX": "not_run"
+    }
+  },
+  "GlobalAcceptanceTemplate": {
+    "Requirements": {
+      "PhenomenonRegistry_required": true,
+      "full_PH_structure_required": true,
+      "all_8_domains_required": true,
+      "ObservationRegistry_required_when_OBS_exist": true,
+      "WindCapsule_required": true,
+      "Gravity_required": true,
+      "world_camera_screen_transform_required": true
+    },
+    "ValidationResults": {
+      "StructuralInspection": {
+        "status": "pass",
+        "checks": "cpu-b-contract-check に完全PH fields/8domains/typedlinks/OBS/DAGを確認"
+      },
+      "SemanticReconciliation": {
+        "status": "warning",
+        "checks": "producer/visibility/clock sourceとprimary採否を照合。実body pose/material/actualHDR受光描画はhost gate未実装。"
+      },
+      "RenderObservation": {
+        "status": "not_run",
+        "evidence_source": "none",
+        "checks": "GPU pixels/timing/native/audio listening not_run"
+      }
+    },
+    "OutcomeEvaluation": {
+      "intent_alignment": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "rationale": "実画素未観察"
+      },
+      "artistic_effect": {
+        "status": "not_run",
+        "evidence_refs": [],
+        "evaluator_basis": "実H64とoverlap/full lifetimeの観察が必要",
+        "strengths": "not_run",
+        "limitations": "not_run"
+      }
+    },
+    "ComparativeEvaluation": {
+      "status": "planned",
+      "question": "独立receipt/overlap/縮尺/背景が変わっても閉口/開口と実bodyが読めるか",
+      "changed_factor": "variant/age/actor_count/position/H/DPR/background/rate",
+      "controlled_conditions": "artist frozen source/palette/gainを全条件で固定",
+      "scene_set": "DESIGN acceptance matrix",
+      "repetitions_and_order": "runtime段で同条件3回、提示順交替を提案。未実行。",
+      "criteria": "nativeprimarycausality,actualbody1draw,occlusionbeforeoptics,全寿命/SFX同期",
+      "evidence": "none",
+      "result_and_limitations": "planned only"
+    },
+    "FinalStatus": {
+      "specification_status": "Warning",
+      "render_status": "NotRun",
+      "failure_reasons": [
+        "runtime integration/material+pose binding/native/shader/audio proof not_run"
+      ]
+    }
+  },
+  "VFX": {
+    "trigger": "explicit",
+    "world_registration": "PhenomenonSystemTemplate.PhenomenonRegistry",
+    "observation_registration": "ObservationIntegrationTemplate.ObservationRegistry",
+    "design_intent": {
+      "subject_and_action": "action-teleport対向直角ゲート",
+      "expression_intent_ref": "InferenceExpansionPolicy.ExpressionIntent",
+      "primary_read": "出発閉口/到着開口、実body/field位置の別",
+      "layering_basis": "面/境界/key/受光/光学の機能が異なる"
+    },
+    "layers": [
+      {
+        "layer_id": "gate",
+        "role": "primary_form",
+        "domain": "world",
+        "PH_refs": [
+          "PH1"
+        ],
+        "OBS_refs": [],
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "spine/caps .055/.066H、暗面alpha .72、2planes upperrear/lowerfront"
+        },
+        "function_and_visible_result": "spine/caps .055/.066H、暗面alpha .72、2planes upperrear/lowerfront",
+        "spatial_structure": {
+          "anchor_and_transform": "fixed eventanchor + actualhostcamera",
+          "extent_orientation_depth": "spine/caps .055/.066H、暗面alpha .72、2planes upperrear/lowerfront",
+          "macro": "二枚の浅いゲートと開口の余白",
+          "meso": "spine/cap/keyの幅差",
+          "micro": "AAだけ。noise/文字/particleなし",
+          "edge_and_occlusion": "solid painter order coverage before source optics"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declaredfieldまたは実body/floor受光",
+          "emission_opacity_density": "alphaとradiance別値、signalalpha0、密度simulationなし",
+          "color_and_light_response": "固定CCM sourceと有限receive",
+          "model_refs": [
+            "PH1"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "独立receipt E時計",
+          "distribution_and_correlation": "3key固定、particle distribution不適用",
+          "onset_peak_decay": "sampleArtist distinct envelopes",
+          "state_and_sampling_refs": "shared SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "linear premult HDR、rear/body1draw/front/source optics/one finalencode",
+          "protected_cues": "actualsilhouette/fieldposition/count/occlusion",
+          "failure_to_avoid": "glowでshape代替、owner pooling、backgroundcompensation"
+        }
+      },
+      {
+        "layer_id": "keys",
+        "role": "internal_structure",
+        "domain": "world",
+        "PH_refs": [
+          "PH1"
+        ],
+        "OBS_refs": [],
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "3個の広い接続keyとseam、core/seamの別phase"
+        },
+        "function_and_visible_result": "3個の広い接続keyとseam、core/seamの別phase",
+        "spatial_structure": {
+          "anchor_and_transform": "fixed eventanchor + actualhostcamera",
+          "extent_orientation_depth": "3個の広い接続keyとseam、core/seamの別phase",
+          "macro": "二枚の浅いゲートと開口の余白",
+          "meso": "spine/cap/keyの幅差",
+          "micro": "AAだけ。noise/文字/particleなし",
+          "edge_and_occlusion": "solid painter order coverage before source optics"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declaredfieldまたは実body/floor受光",
+          "emission_opacity_density": "alphaとradiance別値、signalalpha0、密度simulationなし",
+          "color_and_light_response": "固定CCM sourceと有限receive",
+          "model_refs": [
+            "PH1"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "独立receipt E時計",
+          "distribution_and_correlation": "3key固定、particle distribution不適用",
+          "onset_peak_decay": "sampleArtist distinct envelopes",
+          "state_and_sampling_refs": "shared SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "linear premult HDR、rear/body1draw/front/source optics/one finalencode",
+          "protected_cues": "actualsilhouette/fieldposition/count/occlusion",
+          "failure_to_avoid": "glowでshape代替、owner pooling、backgroundcompensation"
+        }
+      },
+      {
+        "layer_id": "receivers",
+        "role": "environment_response",
+        "domain": "world",
+        "PH_refs": [
+          "PH2",
+          "PH3"
+        ],
+        "OBS_refs": [],
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "現在body交差/実床の有限diffusegain、actualdraw内一度"
+        },
+        "function_and_visible_result": "現在body交差/実床の有限diffusegain、actualdraw内一度",
+        "spatial_structure": {
+          "anchor_and_transform": "fixed eventanchor + actualhostcamera",
+          "extent_orientation_depth": "現在body交差/実床の有限diffusegain、actualdraw内一度",
+          "macro": "二枚の浅いゲートと開口の余白",
+          "meso": "spine/cap/keyの幅差",
+          "micro": "AAだけ。noise/文字/particleなし",
+          "edge_and_occlusion": "solid painter order coverage before source optics"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "declaredfieldまたは実body/floor受光",
+          "emission_opacity_density": "alphaとradiance別値、signalalpha0、密度simulationなし",
+          "color_and_light_response": "固定CCM sourceと有限receive",
+          "model_refs": [
+            "PH2",
+            "PH3"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "独立receipt E時計",
+          "distribution_and_correlation": "3key固定、particle distribution不適用",
+          "onset_peak_decay": "sampleArtist distinct envelopes",
+          "state_and_sampling_refs": "shared SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "linear premult HDR、rear/body1draw/front/source optics/one finalencode",
+          "protected_cues": "actualsilhouette/fieldposition/count/occlusion",
+          "failure_to_avoid": "glowでshape代替、owner pooling、backgroundcompensation"
+        }
+      },
+      {
+        "layer_id": "optics",
+        "role": "observation_support",
+        "domain": "observation",
+        "PH_refs": [],
+        "OBS_refs": [
+          "OBS1",
+          "OBS2",
+          "OBS3"
+        ],
+        "selection": {
+          "basis": "attribute_resolved",
+          "scope_and_reason": "visible source-only bloom/ghost/fringe"
+        },
+        "function_and_visible_result": "visible source-only bloom/ghost/fringe",
+        "spatial_structure": {
+          "anchor_and_transform": "perowner source screen mask",
+          "extent_orientation_depth": "visible source-only bloom/ghost/fringe",
+          "macro": "二枚の浅いゲートと開口の余白",
+          "meso": "spine/cap/keyの幅差",
+          "micro": "AAだけ。noise/文字/particleなし",
+          "edge_and_occlusion": "solid painter order coverage before source optics"
+        },
+        "material_and_optics": {
+          "carrier_and_mechanism": "OBS操作",
+          "emission_opacity_density": "alphaとradiance別値、signalalpha0、密度simulationなし",
+          "color_and_light_response": "固定CCM sourceと有限receive",
+          "model_refs": [
+            "OBS1",
+            "OBS2",
+            "OBS3"
+          ]
+        },
+        "motion_and_phase": {
+          "driver_and_transport": "独立receipt E時計",
+          "distribution_and_correlation": "3key固定、particle distribution不適用",
+          "onset_peak_decay": "sampleArtist distinct envelopes",
+          "state_and_sampling_refs": "shared SamplingContract"
+        },
+        "integration": {
+          "composite_and_mask": "linear premult HDR、rear/body1draw/front/source optics/one finalencode",
+          "protected_cues": "actualsilhouette/fieldposition/count/occlusion",
+          "failure_to_avoid": "glowでshape代替、owner pooling、backgroundcompensation"
+        }
+      }
+    ],
+    "interlayer_links": [
+      {
+        "source_layer": "optics",
+        "target_layer": "gate",
+        "relation_type": "observation_dependency",
+        "mechanism_and_consequence": "visible sourceだけでOBSを生成",
+        "foundation_binding": "OBS1/2/3 -> PH1"
+      }
+    ],
+    "causal_path": {
+      "input": "actualauthoritative receipt",
+      "carrier_PH": "PH1",
+      "receiver": "PH2/PH3 existing only",
+      "ScaleRegime_ref": "PH1.ScaleRegime",
+      "StateDynamics_ref": "PH1.StateDynamics",
+      "ReactivePhaseChange_ref": "not_applicable:新規反応/相変化なし"
+    },
+    "orchestration": {
+      "common_time_basis": "760 canonical E-ms、receiptのmovingtarget ownerclock",
+      "layer_phase_relations": "core/seam/body/floor separate pulse",
+      "environment_response": "actualbody/floor finitefield only",
+      "visual_hierarchy": "gate→receiver→optics",
+      "bullet_time": "not_applicable:no user request"
+    },
+    "output_integration": {
+      "budget_ref": "ObservationIntegrationTemplate.IntensityBudget",
+      "sampling_contract_ref": "ObservationIntegrationTemplate.SamplingContract",
+      "LDM_ref": "LuminanceDynamicsModule",
+      "composite_order": "OBS1/2/3はPH1入力から独立、最後同sceneへadd",
+      "color_alpha_contract": "linear-sRGB premult rgba16float; actualbody once; one finalencode",
+      "scale_adaptation": "geometry intact; no microtexture; reducedMotion constantopening/no fringe"
+    },
+    "validation_plan": {
+      "layer_checks": "H64 full lifetime",
+      "composite_checks": "actualbody1draw/visibility-before-optics/overlap",
+      "temporal_checks": "E rate/cancel/sound offset",
+      "actual_results_ref": "GlobalAcceptanceTemplate.ValidationResults"
+    }
+  }
+}

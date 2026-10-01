@@ -39,6 +39,7 @@
     'sol61-rational-free-r1': { magnification: 240 / 64, focusX: 490, focusY: 433 },
     // Dodge r1's native 980x620 package centers the H64 actor and its field at 490,310.
     'sol61-dodge-zero-r1': { magnification: 240 / 64, focusX: 490, focusY: 310 },
+    'teleport-sol61-zero-r1': { magnification: 240 / 64, focusX: 490, focusY: 349 },
     'cooldown-sol61-shortening-zero': { magnification: 240 / 64, focusX: 490, focusY: 310 },
     'stamina-sol61-r7': { magnification: 240 / (64 * (530 / 260)), focusX: 490, focusY: 310 },
     'mana-zero-sol61-r3': { magnification: 240 / 64, focusX: 490, focusY: 310 },
@@ -96,6 +97,9 @@
     Object.freeze({ id, title, page, source, status, detail, anchor, zoom, ...metadata, replayable: true });
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const entries = Object.freeze([
+    Object.freeze({ id: 'teleport-sol61', title: '転移', defaultVersionId: 'teleport-sol61-zero-r1', integration: 'not-integrated', reason: '新しいSolゼロ設計のWebGPU候補。本編接続と品質審査は未完了。', versions: Object.freeze([
+      version('teleport-sol61-zero-r1', 'GPT-6.1-Sol zero r1', 'public/sol61-teleport-zero-r1/index.html', 'public/sol61-teleport-zero-r1/artist.mjs', '実WebGPU再生確認済み・品質審査前・未採用・本編未接続', '作者: GPT-6.1-Sol。忠実な再生実装: GPT-6-Luna。出発と到着を760 E-msで交互に再生するデジタルゲート。現象固有SFXを同じ時計で再生し、初回は音声操作が必要。人物・マップへの受光はこの独立プレビューでは無効。本編の実人物との接続、視覚品質、通常音声の聴感は未受入。', 'effect-H64', 1, {originalCreatorDisplayName: 'GPT-6.1-Sol', designAuthorDisplayName: 'GPT-6.1-Sol', runtimeAuthorDisplayName: 'GPT-6-Luna', creatorDisplayName: 'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)', creatorModelId: 'gpt-6.1-sol+gpt-6-luna', adoption: 'unknown', qualityStatus: 'not_run', technicalReplayStatus: 'pass', normalAudioListening: 'not_run', gameIntegrationStatus: 'not_connected', technicalEvidence: 'outputs/request-20261001/teleport-zero-r1/native/READY.json'})
+    ]) }),
     Object.freeze({ id: 'item-pickup-sol', title: 'アイテム取得', defaultVersionId: 'item-pickup-sol61-r1', versions: Object.freeze([
       version('item-pickup-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-item-pickup-e/r1/preview.html', 'public/sol61-item-pickup-e/r1/design.mjs', 'アイテム取得全般としてユーザー採用済み・本編接続中', '作者: GPT-6.1-Sol。ユーザーがr1をアイテム取得全般の共通Eとして採用。接地取得・箱・戦利品・受け取り等の成功した取得に適用する。取得元から実際の受領枠へ光が移動し、枠の輪郭へ定着する。有限VFXとSFXが同期ループ。原版の作者と表現を保持し、本編全経路への接続・実発動・聴感は検証中。', 'effect-H64'),
       version('item-pickup-sol-r2', 'Sol r2', 'public/sol-item-pickup-e/sol-r2/preview.html', 'public/sol-item-pickup-e/sol-r2/item-pickup-e.js', '品質完成候補・ユーザー採用未確認・本編未接続', '作者: GPT-6-Sol。正規action-item-pickupイベントから新規設計。接地面の収束、連続した曲面移送、受領部の強い局所光をWebGPUで自動再生。暗明H64の全寿命とGPUエラー0、SFX数値を確認。聴感と実キャラ遮蔽・本編接続は未審査。ユーザー採用未確認。', 'effect-H64')

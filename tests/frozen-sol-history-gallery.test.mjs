@@ -56,6 +56,6 @@ test('new previews retain own-dimension framing and cache query is bumped',()=>{
  const html=fs.readFileSync(path.join(pagesRoot,'webgpu-e-gallery.html'),'utf8');
  const cacheRevision=html.match(/asset-gallery\.js\?v=([^'"\s]+)/)?.[1];
  assert.ok(cacheRevision, 'gallery script URL carries a non-empty cache revision');
- assert.match(cacheRevision,/medical-r5/, 'cache revision tracks the latest medical r5 gallery registration');
+ assert.match(cacheRevision,/teleport-zero-r1/, 'cache revision tracks the latest Teleport r1 gallery registration');
  assert.match(gallery,/medical-r4-original-environment-r5/, 'the cache revision corresponds to a catalog containing the medical r5 registration');
 });

@@ -24,6 +24,7 @@ test('canonical gallery entrypoint exposes Map and Effect and retains current el
   assert.match(gallerySource, /categories: Object\.freeze\(\['map','effect'\]\)/);
   const ids = Array.from(effectGroups, group => group.id);
   assert.deepEqual(ids, [
+    'teleport-sol61',
     'item-pickup-sol', 'rational-free-sol', 'heal-astra', 'vibe-coding-sol61', 'sunbeam-astra', 'credit-acquisition',
     'luck-astra', 'mana-astra', 'stamina-astra', 'emp-astra', 'recovery-astra',
     'status-cleanse-astra', 'cooldown-astra', 'dodge-sol61', 'quantum-transmutation-sol61', 'barrier-pro'
