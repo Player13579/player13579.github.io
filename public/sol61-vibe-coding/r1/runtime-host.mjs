@@ -8,6 +8,7 @@ document.documentElement.classList.toggle('embed', EMBED);
 const canvas = document.querySelector('#preview');
 const statusNode = document.querySelector('#status');
 const errorNode = document.querySelector('#error');
+const startupStatusNode = document.querySelector('#startup-status');
 const rateSelect = document.querySelector('#rate');
 const sourceToggle = document.querySelector('#source');
 const observerToggle = document.querySelector('#observer');
@@ -23,7 +24,7 @@ const state = { device:null, context:null, format:null, kernel:null, resources:n
   actorUniform:null, actorGroup:null, recordSlots:null, resolvePipeline:null,
   resolveGroup:null, compositePipeline:null, compositeGroup:null, lastFrameAt:0,
   visualAge:0, cycleStart:0, cycle:0, event:null, receipt:null, prepared:null,
-  raf:0, paused:false, disposed:false, ready:false, submissions:0, frameSerial:0,
+  raf:0, paused:false, disposed:false, ready:false, phase:'starting', firstFrameSubmitted:false, submissions:0, frameSerial:0,
   source:false, normalMuted:false, audioContext:null, audioBuffer:null, gestureUnlocked:false,
   sound:null, lastSuccessfulFrame:null, errors:[], errorGeneration:0, persistentRuntimeError:false,
   shaders:[], resizeObserver:null };
@@ -81,6 +82,13 @@ fn encode(c:vec3f)->vec3f { let x=clamp(c,vec3f(0),vec3f(1));return select(x*12.
 `;
 
 function setStatus(message) { if (statusNode) statusNode.textContent = message; }
+function setPhase(phase, message) {
+  state.phase = phase;
+  if (startupStatusNode) {
+    startupStatusNode.textContent = message;
+    startupStatusNode.hidden = phase === 'running';
+  }
+}
 function clearRuntimeError() {
   if (!errorNode || state.persistentRuntimeError) return;
   errorNode.textContent = '';
@@ -94,6 +102,26 @@ function stageError(error, persistent = false) {
   setStatus(message);
   if (errorNode) { errorNode.textContent = message; errorNode.hidden = false; }
   console.error('[vibe-r1]', error);
+}
+function releaseRuntimeTargets() {
+  try { disposeTargets(); } catch {}
+  for (const slot of Object.values(state.recordSlots || {})) {
+    try { slot.buffer.destroy(); } catch {}
+  }
+  try { state.actorUniform?.destroy(); } catch {}
+  try { state.actorTexture?.destroy(); } catch {}
+  state.recordSlots = null; state.actorGroup = null; state.resolveGroup = null; state.compositeGroup = null;
+}
+function stopRuntime(error, phase = 'failed') {
+  if (state.disposed || state.phase === 'failed' || state.phase === 'lost') return;
+  state.paused = true;
+  state.ready = false;
+  if (state.raf) cancelAnimationFrame(state.raf);
+  state.raf = 0;
+  setPhase(phase, `${phase === 'lost' ? 'WebGPU device lost' : 'WebGPU stopped'}: ${String(error?.message || error)}`);
+  stageError(error, true);
+  state.sound?.close();
+  releaseRuntimeTargets();
 }
 function texture(device, width, height, format, label) {
   return device.createTexture({ label, size:[width,height], format,
@@ -123,26 +151,28 @@ function projectFixtureOrigin(r) {
 }
 function makeTargets(width,height) {
   const r = {};
+  const recordGroups = {};
+  let resolveGroup = null, compositeGroup = null, actorGroup = null;
+  try {
   for (const name of ['rearMaterial','rearRadiance','rearSignal','frontMaterial','frontRadiance','frontSignal',
     'receiverMaterial','receiverRadiance','receiverSignal','sparkleMaterial','sparkleRadiance','sparkleSignal','emission','signal','observer','bodySurface'])
     r[name] = texture(state.device,width,height,'rgba16float',`vibe-r1:${name}`);
   r.foreground = texture(state.device,width,height,'rgba8unorm','vibe-r1:empty-fixture-foreground');
-  state.resources = r;
-  state.resolveGroup = state.device.createBindGroup({ layout:state.resolvePipeline.getBindGroupLayout(0), entries:[
+  resolveGroup = state.device.createBindGroup({ layout:state.resolvePipeline.getBindGroupLayout(0), entries:[
     {binding:0,resource:r.rearRadiance.createView()},{binding:1,resource:r.rearSignal.createView()},
     {binding:2,resource:r.bodySurface.createView()},{binding:3,resource:r.frontRadiance.createView()},
     {binding:4,resource:r.frontSignal.createView()},{binding:5,resource:r.receiverRadiance.createView()},
     {binding:6,resource:r.sparkleRadiance.createView()}] });
-  state.compositeGroup = state.device.createBindGroup({ layout:state.compositePipeline.getBindGroupLayout(0), entries:[
+  compositeGroup = state.device.createBindGroup({ layout:state.compositePipeline.getBindGroupLayout(0), entries:[
     {binding:0,resource:r.rearMaterial.createView()},{binding:1,resource:r.bodySurface.createView()},
     {binding:2,resource:r.frontMaterial.createView()},{binding:3,resource:r.emission.createView()},
     {binding:4,resource:r.observer.createView()}] });
-  for (const slot of Object.values(state.recordSlots)) {
-    slot.group = state.device.createBindGroup({layout:state.kernel.worldBindings,entries:[
+  for (const [name, slot] of Object.entries(state.recordSlots)) {
+    recordGroups[name] = state.device.createBindGroup({layout:state.kernel.worldBindings,entries:[
       {binding:0,resource:{buffer:slot.buffer}},{binding:1,resource:r.foreground.createView()},
       {binding:2,resource:r.bodySurface.createView()}]});
   }
-  state.recordSlots.observer.group = state.device.createBindGroup({
+  recordGroups.observer = state.device.createBindGroup({
     layout:state.kernel.observer.getBindGroupLayout(0),entries:[
       {binding:0,resource:{buffer:state.recordSlots.observer.buffer}},{binding:1,resource:r.emission.createView()},
       {binding:2,resource:r.signal.createView()},{binding:3,resource:state.observerSampler}]});
@@ -150,12 +180,19 @@ function makeTargets(width,height) {
   // WGSL vec4 alignment leaves an 8-byte pad after viewport.
   const uniform = new Float32Array([width,height,0,0,ar.x,ar.y,ar.w,ar.h,0,0,256,256,768,768,0,0]);
   state.device.queue.writeBuffer(state.actorUniform,0,uniform);
-  state.actorGroup = state.device.createBindGroup({layout:state.actorLayout,entries:[
+  actorGroup = state.device.createBindGroup({layout:state.actorLayout,entries:[
     {binding:0,resource:{buffer:state.actorUniform}},{binding:1,resource:state.actorTexture.createView()},
     {binding:2,resource:state.actorSampler}]});
+  for (const [name, group] of Object.entries(recordGroups)) state.recordSlots[name].group = group;
+  state.resources = r; state.resolveGroup = resolveGroup; state.compositeGroup = compositeGroup; state.actorGroup = actorGroup;
+  } catch (error) {
+    destroyResources(r);
+    throw error;
+  }
 }
 function sizeCanvas() {
-  if (!state.device || state.disposed) return;
+  if (!state.device || state.disposed || !state.ready || state.phase === 'failed' || state.phase === 'lost' ||
+      !state.actorTexture || !state.actorPipeline || !state.resolvePipeline || !state.compositePipeline || !state.recordSlots) return;
   const box = canvas.getBoundingClientRect();
   const dpr = Math.max(1,Math.min(2,window.devicePixelRatio||1));
   const w=Math.max(1,Math.round(box.width*dpr)),h=Math.max(1,Math.round(box.height*dpr));
@@ -234,9 +271,10 @@ function updateFixture(now) {
   const age=state.visualAge-state.cycleStart;
   if(age>=1400){makeFixtureEvent(now);}
 }
-async function render(now) {
+function render(now) {
   state.raf=0;
-  if(state.disposed||!state.ready||state.paused||document.hidden)return;
+  if(state.disposed||!state.ready||state.paused||document.hidden||state.phase==='failed'||state.phase==='lost')return;
+  try {
   if(!state.resources)sizeCanvas();
   const delta=state.lastFrameAt?Math.min(50,Math.max(0,now-state.lastFrameAt)):0;state.lastFrameAt=now;
   state.visualAge+=delta*Number(rateSelect?.value||1);
@@ -264,24 +302,27 @@ async function render(now) {
   }
   drawComposite(encoder);
   const command=encoder.finish();state.device.queue.submit([command]);state.submissions++;
+  if (!state.firstFrameSubmitted) { state.firstFrameSubmitted = true; setPhase('running', ''); }
   const submittedFrame=state.frameSerial, submittedEventKey=p?.receipt.key;
   state.lastSuccessfulFrame={id:submittedFrame,eventKey:submittedEventKey,ageEms:p?.ageEms??null,rate:p?.rate??null};
   const submittedErrorGeneration=state.errorGeneration;
   state.device.queue.onSubmittedWorkDone().then(()=>{
-    if(submittedErrorGeneration===state.errorGeneration)clearRuntimeError();
+    if(submittedErrorGeneration===state.errorGeneration&&!state.persistentRuntimeError)clearRuntimeError();
     if(state.disposed||VERIFY||!p||!state.gestureUnlocked||state.normalMuted||document.hidden||!state.source)return;
     const nowPrepared=currentPrepared(performance.now());
     if(!nowPrepared||nowPrepared.receipt.key!==submittedEventKey||nowPrepared.ageEms>=1180||nowPrepared.rate<=0)return;
     state.sound?.onSubmission(nowPrepared,{submitted:true,eventKey:submittedEventKey,visible:true,gesture:true});
-  }).catch(stageError);
+  }).catch(error=>stopRuntime(error));
   if(VERIFY)state.audioContext=null;
   setStatus(`WebGPU · cycle ${state.cycle} · ${p?Math.floor(p.ageEms)+' E ms':'gap'} · submit ${state.submissions}${VERIFY?' · verify audio 0':''}`);
   state.raf=requestAnimationFrame(render);
+  } catch (error) { stopRuntime(error); }
 }
-function requestFrame(){if(!state.ready||state.disposed||state.paused||state.raf)return;state.raf=requestAnimationFrame(render);}
+function requestFrame(){if(!state.ready||state.disposed||state.paused||state.raf||state.phase==='failed'||state.phase==='lost')return;state.raf=requestAnimationFrame(render);}
 
 async function loadActorTexture(device) {
   const image=new Image();image.src=fixture.asset;await image.decode();
+  if(state.disposed||state.phase==='failed'||state.phase==='lost')throw new Error('actor upload cancelled after runtime stopped');
   if(image.naturalWidth!==768||image.naturalHeight!==768)throw new Error('actor atlas dimensions changed');
   // External-image copies require COPY_DST AND RENDER_ATTACHMENT, even when
   // the destination is subsequently only sampled by the actor pipeline.
@@ -290,14 +331,16 @@ async function loadActorTexture(device) {
   try {
     texture=device.createTexture({label:'canonical white-hood/front authored atlas',size:[768,768],format:'rgba8unorm-srgb',usage:GPUTextureUsage.COPY_DST|GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.RENDER_ATTACHMENT});
     device.queue.copyExternalImageToTexture({source:image,premultipliedAlpha:false},{texture},[768,768]);
-    await device.queue.onSubmittedWorkDone();
   } catch(error) { uploadError=error; }
-  const validationError=await device.popErrorScope();
-  if(uploadError||validationError){
+  const validation=Promise.resolve(device.popErrorScope()).then(validationError=>{
+    if (validationError) throw validationError;
+  });
+  validation.catch(()=>{});
+  if(uploadError){
     texture?.destroy();
-    throw new Error(`actor atlas upload failed: ${(uploadError||validationError).message}`);
+    throw new Error(`actor atlas upload failed: ${uploadError.message}`);
   }
-  return texture;
+  return {texture,validation};
 }
 function shaderModule(device,label,code){const m=device.createShaderModule({label,code});state.shaders.push(m);return m;}
 async function compileDiagnostics() {
@@ -310,17 +353,25 @@ async function compileDiagnostics() {
   return results;
 }
 async function initialize() {
+  setPhase('initializing', 'WebGPUを初期化中…');
   if(!navigator.gpu)throw new Error('WebGPU is unavailable');
   const adapter=await navigator.gpu.requestAdapter();if(!adapter)throw new Error('No WebGPU adapter');
   state.device=await adapter.requestDevice();
-  state.device.addEventListener('uncapturederror',event=>stageError(event.error,true));
+  state.device.addEventListener('uncapturederror',event=>stopRuntime(event.error));
   state.device.lost.then(info=>{
-    if(!state.disposed)stageError(new Error(`WebGPU device lost: ${info.message||info.reason||'unknown reason'}`),true);
-  });
+    if(!state.disposed)stopRuntime(new Error(`WebGPU device lost: ${info.message||info.reason||'unknown reason'}`), 'lost');
+  }).catch(error=>{if(!state.disposed)stopRuntime(error,'lost');});
   state.context=canvas.getContext('webgpu');if(!state.context)throw new Error('Could not acquire WebGPU canvas context');
   state.format=navigator.gpu.getPreferredCanvasFormat();
   state.context.configure({device:state.device,format:state.format,alphaMode:'opaque'});
-  state.actorTexture=await loadActorTexture(state.device);
+  setPhase('actor-upload', 'WebGPU actor upload queued…');
+  const actorUpload=await loadActorTexture(state.device);
+  if(state.disposed||state.phase==='failed'||state.phase==='lost'){
+    actorUpload.texture.destroy();
+    throw new Error('actor upload completed after runtime stopped');
+  }
+  state.actorTexture=actorUpload.texture;
+  actorUpload.validation.then(()=>{}).catch(error=>stopRuntime(new Error(`actor atlas validation failed: ${error.message||error}`)));
   state.actorSampler=state.device.createSampler({magFilter:'linear',minFilter:'linear'});
   state.observerSampler=state.device.createSampler({magFilter:'linear',minFilter:'linear'});
   const world=shaderModule(state.device,'vibe-r1-authored-actor-surface',actorWGSL);
@@ -340,15 +391,18 @@ async function initialize() {
   state.compositePipeline=state.device.createRenderPipeline({label:'vibe-r1-linear-presentation',layout:'auto',vertex:{module:composite,entryPoint:'fullVS'},
     fragment:{module:composite,entryPoint:'compositeFS',targets:[{format:state.format}]},primitive:{topology:'triangle-list'}});
   state.kernel=createKernel(state.device,{worldFormats:ABI.worldFormats,observerFormat:'rgba16float'});
-  const diagnostics=await compileDiagnostics();
-  const errors=diagnostics.filter(d=>d.type==='error');
-  if(errors.length)throw new Error(`WGSL compilation errors: ${JSON.stringify(errors)}`);
+  const diagnosticsPromise=compileDiagnostics();
+  diagnosticsPromise.then(diagnostics=>{
+    const errors=diagnostics.filter(d=>d.type==='error');
+    if(errors.length)stopRuntime(new Error(`WGSL compilation errors: ${JSON.stringify(errors)}`));
+  }).catch(error=>stopRuntime(new Error(`WGSL diagnostics failed: ${error.message||error}`)));
   state.recordSlots=null;createRecordSlots();
-  state.ready=true;sizeCanvas();
+  if(state.phase==='failed'||state.phase==='lost')throw new Error('WebGPU initialization stopped after a GPU error');
+  state.ready=true;setPhase('first-frame-pending', 'WebGPUを初回描画中…');sizeCanvas();
   state.sound=sfxSubmissionController({verification:VERIFY,startVoice:createVoice,cancelVoice:stopVoice});
   state.lastFrameAt=0;requestFrame();
-  window.dispatchEvent(new CustomEvent('vibe-r1-ready',{detail:{diagnostics,format:state.format}}));
-  setStatus(`WebGPU ready · ${state.format} · 128-byte ABI · ${VARIANTS.length} variants${VERIFY?' · verify audio 0':''}`);
+  window.dispatchEvent(new CustomEvent('vibe-r1-ready',{detail:{format:state.format}}));
+  setStatus(`WebGPU initialized · waiting for first submission · ${state.format}${VERIFY?' · verify audio 0':''}`);
 }
 
 function ensureAudioBuffer() {
@@ -392,7 +446,7 @@ function halfToFloat(h) {
   return sign*Math.pow(2,exp-15)*(1+mant/1024);
 }
 async function readNativeTargets({targets=['bodySurface','foreground','frontMaterial','rearMaterial','emission','observer'],rect=null}={}) {
-  if(!state.ready||state.disposed||!state.device||!state.resources)throw new Error('Vibe r1 native targets are not available');
+  if(!state.firstFrameSubmitted||state.disposed||!state.device||!state.resources)throw new Error('Vibe r1 native targets are not available before the first submitted frame');
   const wasPaused=state.paused;
   state.paused=true;state.lastFrameAt=0;
   if(state.raf)cancelAnimationFrame(state.raf);state.raf=0;
@@ -440,25 +494,25 @@ async function readNativeTargets({targets=['bodySurface','foreground','frontMate
     if(!wasPaused&&!state.disposed){state.paused=false;state.lastFrameAt=0;requestFrame();}
   }
 }
-function visibilityChanged(){if(document.hidden){state.paused=true;state.lastFrameAt=0;state.sound?.visibilityChanged();}else if(!state.disposed){state.paused=false;state.lastFrameAt=0;sizeCanvas();requestFrame();}}
+function visibilityChanged(){if(document.hidden){state.paused=true;state.lastFrameAt=0;state.sound?.visibilityChanged();}else if(!state.disposed&&state.phase!=='failed'&&state.phase!=='lost'){state.paused=false;state.lastFrameAt=0;try{sizeCanvas();requestFrame();}catch(error){stopRuntime(error);}}}
 window.addEventListener('pagehide',dispose,{once:true});document.addEventListener('visibilitychange',visibilityChanged);
 window.__gallerySfx=Object.freeze({activateFromGesture:unlockAudio,setMuted,status:galleryStatus,snapshot:gallerySnapshot,dispose});
-window.vibeCodingR1=Object.freeze({status:()=>({ready:state.ready,verify:VERIFY,embed:EMBED,canvas:[canvas.width,canvas.height],cssRect:(()=>{const r=canvas.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};})(),
+window.vibeCodingR1=Object.freeze({status:()=>({ready:state.ready,phase:state.phase,firstFrameSubmitted:state.firstFrameSubmitted,verify:VERIFY,embed:EMBED,canvas:[canvas.width,canvas.height],cssRect:(()=>{const r=canvas.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};})(),
   format:state.format,submissions:state.submissions,frameSerial:state.frameSerial,cycle:state.cycle,ageEms:state.prepared?.ageEms??null,rate:Number(rateSelect?.value||1),
   eventId:state.event?.id||null,receipt:state.receipt,prepared:state.prepared?{status:state.prepared.status,ageEms:state.prepared.ageEms,sourcePx:state.prepared.sourcePx,scissor:state.prepared.scissor}:null,
   fixture,sourceProjection:projectFixtureOrigin(frameRect(canvas.width,canvas.height)),sourceEnabled:state.source,observerEnabled:observerToggle?.checked!==false,shaderModules:state.kernel?.modules?.length||0,
   targetFormats:state.resources?{artistMRT:ABI.worldFormats,observer:'rgba16float',bodySurface:'rgba16float',foregroundCoverage:'rgba8unorm',actorTexture:'rgba8unorm-srgb',presentation:state.format}:{},errors:state.errors.slice()}),
   pause:()=>{state.paused=true;state.lastFrameAt=0;state.sound?.visibilityChanged();if(state.raf)cancelAnimationFrame(state.raf);state.raf=0;},
-  resume:()=>{if(!state.disposed){state.paused=false;state.lastFrameAt=0;requestFrame();}},readNativeTargets,dispose});
+  resume:()=>{if(!state.disposed&&state.phase!=='failed'&&state.phase!=='lost'){state.paused=false;state.lastFrameAt=0;requestFrame();}},readNativeTargets,dispose});
 
 sourceToggle?.addEventListener('change',()=>{state.source=sourceToggle.checked;if(!state.source)state.sound?.cancel();requestFrame();});
 observerToggle?.addEventListener('change',requestFrame);
 rateSelect?.addEventListener('change',()=>{state.sound?.cancel();state.lastFrameAt=0;requestFrame();});
 muteButton?.addEventListener('click',()=>{if(state.normalMuted)setMuted(false);else setMuted(true);});
 document.addEventListener('pointerdown',()=>{if(!VERIFY)void unlockAudio().catch(stageError);},{once:true});
-window.addEventListener('resize',sizeCanvas);
+window.addEventListener('resize',()=>{try{sizeCanvas();}catch(error){stopRuntime(error);}});
 try {
   const stage=document.querySelector('#stage');
-  if(typeof ResizeObserver==='function'){state.resizeObserver=new ResizeObserver(sizeCanvas);state.resizeObserver.observe(stage);}
+  if(typeof ResizeObserver==='function'){state.resizeObserver=new ResizeObserver(()=>{try{sizeCanvas();}catch(error){stopRuntime(error);}});state.resizeObserver.observe(stage);}
   await initialize();
-} catch(error) { stageError(error); }
+} catch(error) { stopRuntime(error); }

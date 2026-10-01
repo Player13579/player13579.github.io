@@ -116,7 +116,7 @@
       version('heal-astra-prototype', 'Astra旧採用原版', 'heal-astra-preview.html', 'webgpu-heal-astra-prototype.js', '旧採用版・r1へ更新', '以前の採用原版として来歴を保持。現行採用版はユーザー指定のsparkle r1。原版の採用履歴は変えず、現在の版選択とは区別しています。', 'actor-H64', 0.7937)
     ]) }),
     Object.freeze({ id: 'vibe-coding-sol61', title: 'バイブコーディング', defaultVersionId: 'vibe-coding-sol61-r1', versions: Object.freeze([
-      version('vibe-coding-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-vibe-coding/r1/index.html?embed=1', 'public/sol61-vibe-coding/r1/package-manifest.json', '実WebGPU再生確認済み・品質候補・採用未確認・本編未接続', '設計: GPT-6.1-Sol。凍結artist sourceを保持し、actor atlas転送先の必須用途フラグを修正。実GPUでキャラalpha4,837画素と同じイベントに属するE描画を確認。品質・通常SFX聴感・本編接続は未受入。', 'effect-H64', 1, {creator:'gpt-6.1-sol',creatorDisplayName:'GPT-6.1-Sol',adoption:'unknown',qualityStatus:'candidate',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
+      version('vibe-coding-sol61-r1', 'GPT-6.1-Sol r1', 'public/sol61-vibe-coding/r1/index.html?embed=1', 'public/sol61-vibe-coding/r1/package-manifest.json', 'Codexブラウザ実再生確認・Safari黒画面調査中・採用未確認・本編未接続', '設計: GPT-6.1-Sol。凍結artist sourceを保持。初期化中のresize競合と不要な描画待ち、例外時の停止処理を修正。CodexブラウザではキャラとEの実描画を確認したが、報告されたSafariの黒画面は未解決として検証を継続。品質・通常SFX聴感・本編接続は未受入。', 'effect-H64', 1, {creator:'gpt-6.1-sol',creatorDisplayName:'GPT-6.1-Sol',adoption:'unknown',qualityStatus:'candidate',technicalReplayStatus:'pass',safariReplayStatus:'unverified_user_black_screen',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
     ]) }),
     Object.freeze({ id: 'sunbeam-astra', title: 'サンビーム', defaultVersionId: 'sunbeam-lens-v2-r05', versions: Object.freeze([
       version('sunbeam-optical-sol61-r07', 'GPT-6.1-Sol optical r07', 'public/sol61-sunbeam-optical-r07/index.html?embed=1&height=64', 'public/sol61-sunbeam-optical-r07/effect.mjs', '実WebGPU再生確認済み・改修候補・ユーザー未採用・本編未接続', '光学改稿: GPT-6.1-Sol。基盤: GPT-6-Astraの採用済みr05を保持。薄いリング状ゴーストと画面内に見える部分を分離。全寿命11時点・源OFF・OBS OFF・光源/観測中心の変更を実GPU記録。通常SFX聴感と品質の最終受入は未実施。現行採用版r05は保持。', 'effect-H64', 1, {creator:'gpt-6.1-sol',creatorDisplayName:'GPT-6.1-Sol (optical revision); GPT-6-Astra (preserved base)',adoption:'not-adopted',qualityStatus:'candidate',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected'}),
@@ -456,7 +456,7 @@
   }
   function makePreview(item) {
     const preview = new URL(item.page, location.href);
-    preview.searchParams.set('galleryRelease', 'vibe-display-20261001-r46');
+    preview.searchParams.set('galleryRelease', 'vibe-startup-20261001-r48');
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));

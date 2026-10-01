@@ -42,7 +42,7 @@ test('embed preview exposes child failures outside the controls row', () => {
     'error surface is outside the controls container');
   assert.match(html, /html\.embed #controls \{ display:none; \}/);
   assert.match(runtime, /document\.querySelector\('#error'\)/);
-  assert.match(html, /src="\.\/runtime-host\.mjs\?v=vibe-display-20261001-r2"/);
+  assert.match(html, /src="\.\/runtime-host\.mjs\?v=vibe-startup-20261001-r48"/);
 });
 
 test('HTML bootstrap reports module-load failures before runtime-host starts', () => {
@@ -68,9 +68,13 @@ test('HTML bootstrap reports module-load failures before runtime-host starts', (
 });
 
 test('startup and runtime errors are routed through the mirrored error surface', () => {
-  assert.match(runtime, /await initialize\(\);\s*\} catch\(error\) \{ stageError\(error\); \}/);
-  assert.match(runtime, /\}\)\.catch\(stageError\);/,
-    'asynchronous frame and submitted-work failures use the same handler');
+  assert.match(runtime, /await initialize\(\);\s*\} catch\(error\) \{ stopRuntime\(error\); \}/);
+  const frameLoop = runtime.slice(runtime.indexOf('function render(now)'), runtime.indexOf('function requestFrame'));
+  assert.match(frameLoop, /function render\(now\)/);
+  assert.match(frameLoop, /catch \(error\) \{ stopRuntime\(error\); \}/,
+    'frame failures are handled synchronously and stop the animation loop');
+  assert.match(runtime, /\.catch\(error=>stopRuntime\(error\)\)/,
+    'submitted-work failures become fatal and stop further frame submissions');
   assert.match(runtime, /unlockAudio\(\)\.catch\(stageError\)/);
   const rig = statusRig();
   rig.context.stageError(new Error('No WebGPU adapter'));
@@ -98,9 +102,11 @@ test('only a current successful GPU work completion clears the visible error', (
   assert.equal(rig.errorNode.hidden, false,
     'persistent GPU failures cannot be cleared by a successful queue completion');
   assert.equal(rig.state.persistentRuntimeError, true);
-  assert.match(runtime, /const submittedErrorGeneration=state\.errorGeneration;\s*state\.device\.queue\.onSubmittedWorkDone\(\)\.then\(\(\)=>\{\s*if\(submittedErrorGeneration===state\.errorGeneration\)clearRuntimeError\(\);/);
-  assert.match(runtime, /addEventListener\('uncapturederror',event=>stageError\(event\.error,true\)\)/);
-  assert.match(runtime, /state\.device\.lost\.then\(info=>\{\s*if\(!state\.disposed\)stageError\(new Error\(`WebGPU device lost:/);
+  assert.match(runtime, /const submittedErrorGeneration=state\.errorGeneration;\s*state\.device\.queue\.onSubmittedWorkDone\(\)\.then\(\(\)=>\{\s*if\(submittedErrorGeneration===state\.errorGeneration&&!state\.persistentRuntimeError\)clearRuntimeError\(\);/);
+  assert.match(runtime, /addEventListener\('uncapturederror',event=>stopRuntime\(event\.error\)\)/);
+  assert.match(runtime, /state\.device\.lost\.then\(info=>\{\s*if\(!state\.disposed\)stopRuntime\(new Error\(`WebGPU device lost:/);
+  assert.match(runtime, /function stopRuntime\(error, phase = 'failed'\)/);
+  assert.match(runtime, /function render\(now\)/, 'render is synchronous so it cannot reject as an async RAF callback');
 });
 
 test('verification audio remains forced off and status API shape remains unchanged', () => {
@@ -110,4 +116,5 @@ test('verification audio remains forced off and status API shape remains unchang
   assert.match(runtime, /function galleryStatus\(\)\{return Object\.freeze\(/);
   assert.match(runtime, /errors:state\.errors\.length/);
   assert.match(runtime, /window\.vibeCodingR1=Object\.freeze\(\{status:\(\)=>\(/);
+  assert.match(runtime, /phase:state\.phase,firstFrameSubmitted:state\.firstFrameSubmitted/);
 });

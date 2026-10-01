@@ -15,6 +15,7 @@
     #controls { display:flex; gap:.7rem; align-items:center; min-height:38px; padding:4px 10px; background:#111621; }
     #status { margin-left:auto; opacity:.8; }
     #error { position:absolute; z-index:2; left:12px; right:12px; top:12px; max-height:35%; overflow:auto; padding:10px 12px; border:1px solid #a94d58; border-radius:6px; background:#281319ed; color:#ffe4e6; white-space:pre-wrap; overflow-wrap:anywhere; font:12px/1.45 ui-monospace,monospace; }
+    #startup-status { position:absolute; left:12px; bottom:12px; z-index:1; padding:8px 12px; background:#111621ed; color:#e7eaf0; font:12px/1.45 system-ui,sans-serif; }
     [hidden] { display:none !important; }
     html.embed body { display:block; background:transparent; }
     html.embed #stage { position:absolute; inset:0; }
@@ -23,7 +24,7 @@
   </style>
 </head>
 <body>
-  <main id="stage"><canvas id="preview" aria-label="Vibe Coding WebGPU preview"></canvas><pre id="error" role="alert" aria-live="assertive" hidden></pre></main>
+  <main id="stage"><canvas id="preview" aria-label="Vibe Coding WebGPU preview"></canvas><output id="startup-status" role="status">WebGPUを初期化中…</output><pre id="error" role="alert" aria-live="assertive" hidden></pre></main>
   <div id="controls">
     <label>再生速度 <select id="rate"><option value="1">1×</option><option value="0.5">0.5×</option><option value="2">2×</option><option value="0">停止</option></select></label>
     <label><input id="source" type="checkbox" checked> Source</label>
@@ -47,6 +48,6 @@
       window.addEventListener('unhandledrejection', event => showStartupError(event.reason));
     })();
   </script>
-  <script type="module" src="./runtime-host.mjs?v=vibe-display-20261001-r2"></script>
+  <script type="module" src="./runtime-host.mjs?v=vibe-startup-20261001-r48"></script>
 </body>
 </html>
