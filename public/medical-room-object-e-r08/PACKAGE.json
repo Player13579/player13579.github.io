@@ -1,0 +1,162 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "id": "sol61-medical-vfx-r4-environment-r7-object-e-r8",
+  "title": "Medical Room r8 · preserved Environment E r7 plus Object E r8",
+  "version": "r8-object-e",
+  "entry": "runtime/index.html?embed=1",
+  "verifyEntry": "runtime/index.html?verify",
+  "original": {
+    "path": "medical-room-vfx-r4.png",
+    "sha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "width": 1164,
+    "height": 1351
+  },
+  "environmentVersion": {
+    "id": "medical-r4-original-environment-r7",
+    "status": "preserved",
+    "sourceManifestSha256": "ed7ebb22d644bffc7d63e23f2827ec1407e69b58a17a2ffd414e17a624090de1"
+  },
+  "objectEffect": {
+    "version": "r8",
+    "status": "native-technical-pass",
+    "receipts": [
+      {
+        "objectId": "medical-r7-stretcher-01",
+        "localUseCount": 1,
+        "evidence": "outputs/request-20261002/native-map-and-vibe-check/medical-r08-stretcher-active.json"
+      },
+      {
+        "objectId": "medical-r7-sink-01",
+        "localUseCount": 2,
+        "evidence": "outputs/request-20261002/native-map-and-vibe-check/medical-r08-sink-active.json"
+      },
+      {
+        "objectId": "medical-r7-supply-cart-01",
+        "localUseCount": 3,
+        "evidence": "outputs/request-20261002/native-map-and-vibe-check/medical-r08-cart-active.json"
+      }
+    ]
+  },
+  "sourceProvenance": {
+    "path": "SOURCE-PROVENANCE.json",
+    "sha256": "ee7950d553f3935fda503247259d1c548f5af70c50712f33de1ef3f14f435fd8"
+  },
+  "runtimeClosure": {
+    "files": [
+      {
+        "path": "SOURCE-PROVENANCE.json",
+        "bytes": 11132,
+        "sha256": "ee7950d553f3935fda503247259d1c548f5af70c50712f33de1ef3f14f435fd8"
+      },
+      {
+        "path": "API-RUNTIME.md",
+        "bytes": 6866,
+        "sha256": "394cd51368c39b849e88a257b61461a26e5fbcbd17644c58650a861d75cd0d8b"
+      },
+      {
+        "path": "source-contract.json",
+        "bytes": 5632,
+        "sha256": "1527899e580834dfac4d2c174f4f5842ae9046deb83fc9d0142f4912ec3a828e"
+      },
+      {
+        "path": "artist.mjs",
+        "bytes": 5982,
+        "sha256": "19d4e1c680308dd57cf1c39dbf95524dd2eea251e4a31c7dece8c1d2dab4ab6a"
+      },
+      {
+        "path": "cloth.mjs",
+        "bytes": 2331,
+        "sha256": "0fedef0be7ce32e6d9da664eb94c5f7480cfd0627baaab0387c1c1e590da4b65"
+      },
+      {
+        "path": "support-light/artist.mjs",
+        "bytes": 4640,
+        "sha256": "faa9631d0de41eceaab63e044208dde354890b3850778147ebcfe23edf3abc11"
+      },
+      {
+        "path": "world.wgsl",
+        "bytes": 11876,
+        "sha256": "d8f2010e8868ca822223ef51a95de827fcc72fe6e39cff103a535aaa6f2302c2"
+      },
+      {
+        "path": "blur.wgsl",
+        "bytes": 756,
+        "sha256": "cfdde22d84b2f3e2f5b75c164da2922d2c55d3e65745348fc76febed336f4370"
+      },
+      {
+        "path": "post.wgsl",
+        "bytes": 1725,
+        "sha256": "7aa7485c75da97994fcabfb16bc64a558a2b7420fedff65afa5e58aad4f82915"
+      },
+      {
+        "path": "medical-room-vfx-r4.png",
+        "bytes": 1804220,
+        "sha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e"
+      },
+      {
+        "path": "contract.json",
+        "bytes": 9037,
+        "sha256": "53daf2e8b51acbfd22bf050b19ae01658fbd671d45268b848dd3ff0bad91e90b"
+      },
+      {
+        "path": "runtime/index.html",
+        "bytes": 3352,
+        "sha256": "3ba8adb1725b4f7fd0ec88c8707f4c6ed1fb8fb5986942d3db7b75110ffcb258"
+      },
+      {
+        "path": "runtime/runtime.mjs",
+        "bytes": 36088,
+        "sha256": "ec6ca62e0ec5f134f4ba3fb06d752739bd048deb008958c65b6522408209ab18"
+      },
+      {
+        "path": "runtime/object-e.mjs",
+        "bytes": 14009,
+        "sha256": "a1bfc3e5d31e34c1cda5c21f802626bcfb52041c880c0ef75750915860941655"
+      },
+      {
+        "path": "runtime/object-fixture.mjs",
+        "bytes": 15202,
+        "sha256": "191d62e6bdb766800a0001266186c8645db36de011f6e923a637838c2ecf2592"
+      }
+    ]
+  },
+  "statuses": {
+    "technicalReplay": "pass-native-webgpu",
+    "quality": "pending",
+    "adoption": "not-adopted",
+    "gameIntegration": "not_connected",
+    "gameObjects": "not_connected",
+    "geometryCollision": "not_verified",
+    "normalSfxListening": "not_run",
+    "mapSfx": "disabled-not-requested",
+    "fullLifetimeQuality": "pending"
+  },
+  "nativeEvidence": {
+    "source": "outputs/request-20261002/native-map-and-vibe-check",
+    "originalSha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "shaderMessages": {
+      "world": [],
+      "blur": [],
+      "post": [],
+      "objectE": []
+    },
+    "errors": [],
+    "audioGain": 0,
+    "mapAudio": "disabled",
+    "objects": {
+      "stretcherCount": 1,
+      "sinkCount": 2,
+      "cartCount": 3
+    },
+    "screenshots": [
+      "medical-r08-fixed-native.jpg",
+      "medical-r08-stretcher-active.jpg",
+      "medical-r08-sink-active.jpg",
+      "medical-r08-cart-active.jpg"
+    ]
+  },
+  "history": {
+    "priorManifestAndCheckPreservedAt": "outputs/request-20261002/medical-object-e-r08/package",
+    "sourceContentChanged": false
+  }
+}
