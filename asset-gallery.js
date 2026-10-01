@@ -391,8 +391,11 @@
   let mapSelectionGeneration = 0;
   let activeMapSelection = null;
   let mapOriginalComparison = false;
+  let mapInteractionPreview = false;
   const mapComparison = document.getElementById('map-comparison');
   const mapComparisonButton = document.getElementById('map-compare-toggle');
+  const mapInteractionControl = document.getElementById('map-interaction-control');
+  const mapInteractionToggle = document.getElementById('map-interaction-toggle');
   // CATEGORY_MEMORY_HELPERS_BEGIN
   const CATEGORY_STORAGE_KEY = 'dva-gallery-category-v1';
   const VALID_CATEGORIES = new Set(['effect', 'map']);
@@ -450,6 +453,17 @@
     const mapGroupAdopted = group.versions.some(item => adoptionState(item) === 'adopted');
     if (currentAdoptionFilter === 'adopted') return mapGroupAdopted ? group.versions.map((_, i) => i).sort((a, b) => Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted')) : [];
     return group.versions.map((item, i) => ['adopted','reference-only'].includes(adoptionState(item)) ? -1 : i).filter(i => i >= 0);
+  }
+  function visibleCatalogCounts(groups) {
+    let groupCount = 0;
+    let versionCount = 0;
+    for (const group of groups) {
+      const indices = visibleVersionIndices(group);
+      if (!indices.length) continue;
+      groupCount += 1;
+      versionCount += indices.length;
+    }
+    return { groupCount, versionCount };
   }
   function setHeadline() {
     document.getElementById('list-heading').textContent = `${currentAdoptionFilter === 'adopted' ? '採用済み' : '未採用'}の${currentCategory === 'effect' ? 'エフェクト' : 'マップ'}一覧`;
@@ -553,7 +567,7 @@
       && typeof item.originalHash === 'string' && /^[a-f0-9]{64}$/i.test(item.originalHash);
   }
   const imageGroups = [
-    {"id":"security-server-gpt6sol-r01","category":"map","title":"サーバー室 + 環境E","creatorDisplayName":"GPT-6-Sol (original) + version-specific E/runtime attribution","quality":"pending-review","adoption":"adopted","defaultVersionId":"security-room-e-gpt6sol-luna-r04","integration":"not-integrated","geometryStatus":"pending","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","reason":"採用対象は原画と環境Eが同時再生されるr04セット。原画単体の採用ではありません。geometry/衝突/攻撃遮蔽・通常聴感・本編接続は未受入。","versions":[{"id":"security-room-e-gpt6sol-luna-r04","title":"サーバー室 原画＋環境E r04","previewKind":"webgpu","replayable":true,"page":"public/sol61-server-room-e/r04/index.html?embed=1","source":"public/sol61-server-room-e/r04/package-manifest.json","adoption":"adopted","qualityStatus":"pending-review","technicalReplayStatus":"pass","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","originalCreatorDisplayName":"GPT-6-Sol","designAuthorDisplayName":"GPT-6.1-Sol","runtimeAuthorDisplayName":"GPT-6-Luna","originalSrc":"public/sol61-server-room-e/r04/security-room-r01-original.png","originalHash":"b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64","normalAudioListening":"not_run","note":"原画SHA b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64 を保持したWebGPU環境Eセット。実GPU埋込自動ループ・有限auth receipt確認済み、verify音0。原画OFF完全一致。品質と聴感・geometry・本編受入は別途未完了。"},{"id":"security-room-e-gpt6sol-r05","title":"サーバー室 原画＋環境E r05","previewKind":"webgpu","replayable":true,"page":"public/sol61-server-room-e/r05/index.html?embed=1","source":"public/sol61-server-room-e/r05/package-manifest.json","adoption":"not-adopted","qualityStatus":"unknown","technicalReplayStatus":"pass","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","originalCreatorDisplayName":"GPT-6-Sol","designAuthorDisplayName":"GPT-6.1-Sol","runtimeAuthorDisplayName":"primary-assigned runtime contributor (model identity unresolved)","originalSrc":"public/sol61-server-room-e/r05/security-room-r01-original.png","originalHash":"b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64","normalAudioListening":"not_applicable_no_map_sfx_requested","gameIntegrationStatus":"not_connected","technicalEvidence":"outputs/request-20261001/server-r05-improvement/native/QUEUE-FIXED-CASES.json","note":"r01原画SHA-256を保持する環境E r05候補。native WebGPUのcombined/allOFF/sourceOnly/receiverOnly readbackは完了。品質レビュー未実施、未採用、geometry/衝突/通常ゲーム接続は未検証。マップSFXは依頼されていません。"},{"id":"security-server-gpt6sol-r01-original","title":"セット原画の参照 · 単体採用ではありません","src":"assets/sol-map-history/security-room-r01-original.png","hash":"b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64","creatorDisplayName":"GPT-6-Sol","qualityStatus":"original-reference-only","adoption":"reference-only","role":"reference-only","standaloneAdoption":false,"geometryStatus":"pending","environmentEStatus":"reference-only","note":"r04採用セットに含まれる原画の参照。原画単体を現行採用版として扱いません。原本1340×1174 RGB、SHA-256一致。"}]},
+    {"id":"security-server-gpt6sol-r01","category":"map","title":"サーバー室 + 環境E","creatorDisplayName":"GPT-6-Sol (original) + version-specific E/runtime attribution","quality":"pending-review","adoption":"adopted","defaultVersionId":"security-room-e-gpt6sol-luna-r04","integration":"not-integrated","geometryStatus":"pending","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","reason":"採用対象は原画と環境Eが同時再生されるr04セット。原画単体の採用ではありません。geometry/衝突/攻撃遮蔽・通常聴感・本編接続は未受入。","versions":[{"id":"security-room-e-gpt6sol-luna-r04","title":"サーバー室 原画＋環境E r04","previewKind":"webgpu","replayable":true,"page":"public/sol61-server-room-e/r04/index.html?embed=1","source":"public/sol61-server-room-e/r04/package-manifest.json","interactionPreviewPage":"public/server-room-object-interaction-r1/index.html?embed=1","interactionPreviewManifest":"public/server-room-object-interaction-r1/package-manifest.json","interactionPreviewManifestSha256":"bbdeef615f4657422cf5e2218b13de7d1aba26a7ec727c8c40fd7e56479d5beb","interactionPreviewPackageStatus":"native-runtime-and-pointer-fixture-interaction-verified-quality-pending","interactionPreviewDesignAuthorDisplayName":"GPT-6.1-Sol","interactionPreviewRuntimeAuthorDisplayName":"GPT-6-Luna","interactionPreviewStatus":"current Chrome rim-integrated render and pointer-stick fixture grant verified; full contour, input, quality, and main-game acceptance pending","interactionPreviewNote":"操作デモは独立したローカル試験fixtureです。本編receiptを発行せず、原画・Eの採用/品質合格を追加主張しません。console/rack操作はfixture内のstateだけを変更し、マップ音声は無効です。manifestでは実touch/held keyboard、全輪郭品質、本編接続、公開は未検証です。","adoption":"adopted","qualityStatus":"pending-review","technicalReplayStatus":"pass","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","originalCreatorDisplayName":"GPT-6-Sol","designAuthorDisplayName":"GPT-6.1-Sol","runtimeAuthorDisplayName":"GPT-6-Luna","originalSrc":"public/sol61-server-room-e/r04/security-room-r01-original.png","originalHash":"b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64","normalAudioListening":"not_run","note":"原画SHA b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64 を保持したWebGPU環境Eセット。実GPU埋込自動ループ・有限auth receipt確認済み、verify音0。原画OFF完全一致。品質と聴感・geometry・本編受入は別途未完了。"},{"id":"security-room-e-gpt6sol-r05","title":"サーバー室 原画＋環境E r05","previewKind":"webgpu","replayable":true,"page":"public/sol61-server-room-e/r05/index.html?embed=1","source":"public/sol61-server-room-e/r05/package-manifest.json","adoption":"not-adopted","qualityStatus":"unknown","technicalReplayStatus":"pass","environmentEStatus":"technically-replayable","adoptionUnit":"original-map-plus-environment-e","originalCreatorDisplayName":"GPT-6-Sol","designAuthorDisplayName":"GPT-6.1-Sol","runtimeAuthorDisplayName":"primary-assigned runtime contributor (model identity unresolved)","originalSrc":"public/sol61-server-room-e/r05/security-room-r01-original.png","originalHash":"b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64","normalAudioListening":"not_applicable_no_map_sfx_requested","gameIntegrationStatus":"not_connected","technicalEvidence":"outputs/request-20261001/server-r05-improvement/native/QUEUE-FIXED-CASES.json","note":"r01原画SHA-256を保持する環境E r05候補。native WebGPUのcombined/allOFF/sourceOnly/receiverOnly readbackは完了。品質レビュー未実施、未採用、geometry/衝突/通常ゲーム接続は未検証。マップSFXは依頼されていません。"},{"id":"security-server-gpt6sol-r01-original","title":"セット原画の参照 · 単体採用ではありません","src":"assets/sol-map-history/security-room-r01-original.png","hash":"b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64","creatorDisplayName":"GPT-6-Sol","qualityStatus":"original-reference-only","adoption":"reference-only","role":"reference-only","standaloneAdoption":false,"geometryStatus":"pending","environmentEStatus":"reference-only","note":"r04採用セットに含まれる原画の参照。原画単体を現行採用版として扱いません。原本1340×1174 RGB、SHA-256一致。"}]},
     {id:'security-gpt-pro',category:'map',title:'警備室 · ChatGPT 5.6 Pro',creatorDisplayName:'ChatGPT 5.6 Pro',quality:'geometry-unverified',adoption:'not-adopted',integration:'not-integrated',reason:'既存ProブランチのBコードから生成した警備室の原本。食堂設備や椅子の反復を避けた独立候補。開口・アンカー・衝突・隣室接続の数値受入は未了。ゲームには未統合。',versions:[
       {id:'security-pro-candidate-01',title:'ChatGPT 5.6 Pro candidate 01',src:'assets/gpt-map-history/security-candidate-01.png',hash:'a80e8e94427d721fb0cc0ada28a6d239406c4f9870f8c28d70e72556d89023d8',qualityStatus:'geometry-unverified',adoption:'not-adopted',note:'1305×1206 RGBAの生成原本。ブランチ表示モデルはChatGPT 5.6 Pro。Bコードと生成記録: outputs/request-20260930/security-candidate。監視卓・機器ラック・保管庫を中心とする候補。開口・物体の数値照合は未了、床の多くはalpha253で完全不透明の契約に未達。'}]},
     {id:'cafeteria-gpt-pro',category:'map',title:'カフェテリア · GPT Pro',creatorDisplayName:'GPT Pro',quality:'rejected-geometry',adoption:'not-adopted',integration:'not-integrated',reason:'ChatGPT Proの画像生成候補。4版すべて未採用・ゲーム未統合。North/West opening geometryが不合格。Bコード/生成記録: outputs/request-20260929/map-resume/generation-manifest.json。',versions:[
@@ -597,13 +611,44 @@
     .filter(group => group.versions.length > 0);
   function makeMapPreview(item) {
     if (item.previewKind !== 'webgpu' || item.replayable !== true || !item.page) throw new TypeError('WebGPU map preview requires a replayable page');
-    const preview = new URL(item.page, location.href);
+    const page = mapInteractionPreview && item.id === 'security-room-e-gpt6sol-luna-r04'
+      ? item.interactionPreviewPage
+      : item.page;
+    const preview = new URL(page || item.page, location.href);
     preview.searchParams.set('embed', '1');
     preview.searchParams.set('galleryRelease', 'map-webgpu-20260930-r1');
     preview.searchParams.delete('height'); preview.searchParams.delete('zoom');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     else preview.searchParams.delete('verify');
     return preview;
+  }
+  function canUseMapInteractionPreview(item) {
+    return currentCategory === 'map'
+      && item?.id === 'security-room-e-gpt6sol-luna-r04'
+      && typeof item.interactionPreviewPage === 'string'
+      && item.interactionPreviewPage.length > 0;
+  }
+  function resetMapInteractionForSelection(item) {
+    if (activeMapSelection?.versionId !== item.id) {
+      mapOriginalComparison = false;
+      mapInteractionPreview = false;
+    }
+  }
+  function resetMapInteractionForListChange() {
+    mapInteractionPreview = false;
+  }
+  function setMapInteractionPreviewEnabled(item, enabled) {
+    if (mapOriginalComparison || !canUseMapInteractionPreview(item)) {
+      mapInteractionPreview = false;
+      return false;
+    }
+    mapInteractionPreview = Boolean(enabled);
+    return mapInteractionPreview;
+  }
+  function syncMapInteractionControl(canShowInteraction) {
+    mapInteractionControl.hidden = !canShowInteraction;
+    mapInteractionToggle.checked = Boolean(canShowInteraction && mapInteractionPreview && !mapOriginalComparison);
+    mapInteractionToggle.disabled = !canShowInteraction || mapOriginalComparison;
   }
   function fitMapFrame(iframe) {
     const scale = Math.min(stage.clientWidth / PRESENTATION.width, stage.clientHeight / PRESENTATION.height);
@@ -710,13 +755,15 @@
   function selectImage(group, versionIndex) {
     const item=group.versions[versionIndex];
     const webgpu = item.previewKind === 'webgpu';
-    if (activeMapSelection?.versionId !== item.id) mapOriginalComparison = false;
+    resetMapInteractionForSelection(item);
     const generation = ++mapSelectionGeneration;
     activeMapSelection = { groupId: group.id, versionId: item.id, versionIndex };
     const canCompareOriginal = webgpu && typeof item.originalSrc === 'string' && /^[a-f0-9]{64}$/i.test(item.originalHash || '');
+    const canShowInteraction = webgpu && canUseMapInteractionPreview(item);
     mapComparison.hidden = !canCompareOriginal;
     mapComparisonButton.setAttribute('aria-pressed', String(mapOriginalComparison));
     mapComparisonButton.textContent = mapOriginalComparison ? '原画＋Eに戻す' : '原画のみで比較';
+    syncMapInteractionControl(canShowInteraction);
     if (webgpu && (item.replayable !== true || !item.page)) throw new TypeError('Unplayable WebGPU maps are excluded from the gallery');
     disposeMapPreview(); stage.querySelector('img')?.remove();
     const audioPolicy = updateGalleryAudioControl('map', item);
@@ -751,16 +798,19 @@
     const quality=item.qualityStatus||group.quality;
     const adoption=adoptionState(item);
     const authors=[item.originalCreatorDisplayName&&'原画作者: '+item.originalCreatorDisplayName,item.designAuthorDisplayName&&'E作者: '+item.designAuthorDisplayName,item.runtimeAuthorDisplayName&&'runtime作者: '+item.runtimeAuthorDisplayName].filter(Boolean).join(' · ');
-    document.getElementById('selected-description').textContent=(authors?authors+'。 ':'')+'作者: '+(item.creatorDisplayName||group.creatorDisplayName||'不明')+'。版: '+item.id+'。品質状態: '+quality+'。採用状態: '+(adoption==='unknown'?'unknown':adoption)+'。本編接続: '+group.integration+'。'+(item.note||group.reason)+(item.hash?' 原本SHA-256: '+item.hash:'');
+    const interactionAuthors=[item.interactionPreviewDesignAuthorDisplayName&&'操作fixture設計者: '+item.interactionPreviewDesignAuthorDisplayName,item.interactionPreviewRuntimeAuthorDisplayName&&'操作fixture runtime作者: '+item.interactionPreviewRuntimeAuthorDisplayName].filter(Boolean).join(' · ');
+    const interactionStatus=item.interactionPreviewPage?`操作デモ状態: ${item.interactionPreviewStatus}。${item.interactionPreviewNote||''}`:'';
+    document.getElementById('selected-description').textContent=(authors?authors+'。 ':'')+(interactionAuthors?interactionAuthors+'。 ':'')+'作者: '+(item.creatorDisplayName||group.creatorDisplayName||'不明')+'。版: '+item.id+'。品質状態: '+quality+'。採用状態: '+(adoption==='unknown'?'unknown':adoption)+'。本編接続: '+group.integration+'。'+(item.note||group.reason)+(interactionStatus?'。'+interactionStatus:'')+(item.hash?' 原本SHA-256: '+item.hash:'');
     document.getElementById('selected-status').textContent=quality+' · '+adoptionStatusLabel(item)+' · '+group.integration;
-    document.getElementById('selected-source').textContent=webgpu?'WebGPUマップ · '+(item.source||item.page):'保存原本画像 · '+item.src;
-    const link=document.getElementById('selected-link');link.href=webgpu?makeMapPreview(item).href:item.src;link.textContent=webgpu?'WebGPUマッププレビューを見る ↗':'原本画像を見る ↗';
+    document.getElementById('selected-source').textContent=webgpu?(mapInteractionPreview?`キャラ操作fixture · ${item.interactionPreviewPage} · manifest ${item.interactionPreviewManifest} · SHA-256 ${item.interactionPreviewManifestSha256}`:'WebGPUマップ · '+(item.source||item.page)):'保存原本画像 · '+item.src;
+    const link=document.getElementById('selected-link');link.href=webgpu?makeMapPreview(item).href:item.src;link.textContent=webgpu?(mapInteractionPreview?'キャラ操作fixtureを見る ↗':'WebGPUマッププレビューを見る ↗'):'原本画像を見る ↗';
     const visible=visibleVersionIndices(group).map(i=>({v:group.versions[i],i}));
     versionSelect.replaceChildren(...visible.map(({v,i},n)=>{const o=document.createElement('option');o.value=String(n);o.textContent=v.title+' — '+adoptionStatusLabel(v)+(v.qualityStatus?' · '+v.qualityStatus:'');o.dataset.versionId=v.id;return o;}));
     versionSelect.value=String(Math.max(0,visible.findIndex(x=>x.i===versionIndex)));versionSelect.disabled=visible.length<2;
     versionSelect.onchange=()=>selectImage(group,visible[Number(versionSelect.value)].i);
     buttons.forEach(b=>b.setAttribute('aria-current',b.dataset.id===group.id?'true':'false'));
-    document.getElementById('entry-counter').textContent=imageGroups.filter(g=>g.category===group.category).length+' 群 · '+visible.length+' 版';
+    const counts = visibleCatalogCounts(imageGroups.filter(g => g.category === currentCategory));
+    document.getElementById('entry-counter').textContent=`${counts.groupCount} 群 · ${counts.versionCount} 版`;
     selections.set(`${currentCategory}:${currentAdoptionFilter}`,{groupId:group.id,versionId:item.id});
   }
   mapComparisonButton.addEventListener('click', () => {
@@ -768,7 +818,23 @@
     mapOriginalComparison = !mapOriginalComparison;
     selectImage(imageGroups.find(group => group.id === activeMapSelection.groupId), activeMapSelection.versionIndex);
   });
+  mapInteractionToggle.addEventListener('change', () => {
+    if (currentCategory !== 'map' || mapOriginalComparison || !activeMapSelection) return;
+    const group = imageGroups.find(entry => entry.id === activeMapSelection.groupId);
+    const item = group?.versions[activeMapSelection.versionIndex];
+    if (!item || !canUseMapInteractionPreview(item) || mapOriginalComparison) {
+      setMapInteractionPreviewEnabled(item, false);
+      mapInteractionToggle.checked = false;
+      return;
+    }
+    setMapInteractionPreviewEnabled(item, mapInteractionToggle.checked);
+    selectImage(group, activeMapSelection.versionIndex);
+  });
   function renderSelection() {
+    resetMapInteractionForListChange();
+    mapInteractionToggle.checked = false;
+    mapInteractionToggle.disabled = true;
+    mapInteractionControl.hidden = true;
     if (currentCategory !== 'map') { mapSelectionGeneration++; activeMapSelection = null; mapOriginalComparison = false; mapComparison.hidden = true; }
     setHeadline();
     updateGalleryAudioControl(currentCategory, null);
@@ -779,7 +845,7 @@
     const groups=currentCategory==='effect'?entries:imageGroups.filter(g=>g.category===currentCategory);
     const matching=groups.map(group=>({group,indices:visibleVersionIndices(group)})).filter(row=>row.indices.length);
     if(!matching.length){
-      mapSelectionGeneration++; activeMapSelection = null; mapOriginalComparison = false; mapComparison.hidden = true;
+      mapSelectionGeneration++; activeMapSelection = null; mapOriginalComparison = false; mapInteractionPreview = false; mapInteractionControl.hidden = true; mapInteractionToggle.checked = false; mapInteractionToggle.disabled = true; mapComparison.hidden = true;
       layout.hidden=true;emptyCategory.hidden=false;emptyCategory.textContent=`${document.getElementById('list-heading').textContent}はありません。`;
       const previousFrame = stage.querySelector('iframe');
       if (previousFrame) sfxBridge?.detachFrame(previousFrame);

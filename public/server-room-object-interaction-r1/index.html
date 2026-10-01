@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark"><title>Server Room Object Interaction — Gallery Fixture r1</title>
+  <style>
+    :root { color-scheme: dark; font: 13px/1.4 system-ui,sans-serif; }
+    * { box-sizing: border-box; }
+    html,body { margin:0;width:100%;height:100%;overflow:hidden;background:#101113;color:#eee; }
+    canvas { display:block;width:100%;height:100%; }
+    #panel { position:fixed;z-index:2;left:10px;top:10px;max-width:min(590px,calc(100vw - 150px));padding:9px 11px;border:1px solid #ffffff38;border-radius:8px;background:#101923e8;box-shadow:0 5px 20px #0008; }
+    #panel h1 { margin:0 0 4px;font-size:14px; }
+    #panel p { margin:3px 0;color:#d3dce1; }
+    #objects { display:flex;flex-wrap:wrap;gap:7px;margin:7px 0; }
+    .object { min-width:190px;padding:5px 7px;border:1px solid #ffffff36;border-radius:5px;background:#0005; }
+    .object strong,.object span { display:block; }
+    button { color:inherit;background:#29343a;border:1px solid #85939a;border-radius:5px;padding:5px 9px;font:inherit;cursor:pointer; }
+    button[aria-pressed="true"] { background:#2c5668;border-color:#9bddff; }
+    #controls { display:flex;flex-wrap:wrap;gap:6px; }
+    #status { margin-top:6px;color:#e5f5cb; }
+    #stick { position:fixed;right:18px;bottom:18px;width:116px;height:116px;z-index:3;border-radius:50%;border:1px solid #ffffff66;background:#0f1822a8;touch-action:none;user-select:none; }
+    #stick::before { content:'';position:absolute;inset:35px;border-radius:50%;background:#ffffff2a; }
+    #nub { position:absolute;width:38px;height:38px;left:38px;top:38px;border:1px solid #d9f0ff;border-radius:50%;background:#6da9ca9c;pointer-events:none; }
+    #diagnostics { position:fixed;z-index:2;left:10px;bottom:10px;max-width:min(560px,calc(100vw - 150px));max-height:21vh;overflow:auto;margin:0;padding:6px 8px;border-radius:5px;background:#111d;color:#d9e1e5;white-space:pre-wrap;font:10px/1.35 ui-monospace,monospace; }
+    #error { position:fixed;z-index:10;inset:auto 10px 10px 10px;max-height:50vh;overflow:auto;border:1px solid #c66;border-radius:6px;padding:10px;background:#3b1111f2;color:#ffc7c7;white-space:pre-wrap;font:12px/1.4 ui-monospace,monospace; }
+    html.embed #panel,html.embed #diagnostics { display:none!important; }
+  </style>
+  <script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embed');</script>
+</head>
+<body>
+  <canvas id="view" aria-label="Adopted server-room original with a moving white-hood actor and fixture interactions"></canvas>
+  <section id="panel" aria-label="Gallery fixture status">
+    <h1>Object-interaction gallery fixture · adopted r04 original</h1>
+    <p>This is a labeled gallery fixture. Benefits are local test state; no gameplay receipt is emitted. Map audio is off.</p>
+    <div id="objects">
+      <div class="object"><strong>Console · gallery-server-console-1</strong><span id="consoleState">Approach the console.</span></div>
+      <div class="object"><strong>Rack · gallery-server-rack-1</strong><span id="rackState">Approach the rack.</span></div>
+    </div>
+    <div id="controls">
+      <button id="eligible" type="button" aria-pressed="true">Fixture eligible: on</button>
+      <button id="reset" type="button">Reset fixture</button>
+      <button id="compare" type="button" aria-pressed="false">Original compare: off</button>
+    </div>
+    <div id="status" role="status">Loading pinned sources…</div>
+  </section>
+  <div id="stick" aria-label="Virtual movement stick" role="application"><div id="nub"></div></div>
+  <pre id="diagnostics" aria-live="polite">Initializing WebGPU…</pre>
+  <pre id="error" role="alert" hidden></pre>
+  <script type="module" src="./runtime.mjs"></script>
+</body>
+</html>

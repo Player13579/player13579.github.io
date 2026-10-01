@@ -1,0 +1,82 @@
+{
+  "schema": "dva-gallery-fixture-package/1",
+  "packageId": "server-room-object-interaction-r1",
+  "version": "r1",
+  "packageStatus": "native-runtime-and-pointer-fixture-interaction-verified-quality-pending",
+  "purpose": "Interactive local gallery fixture for the adopted server-room source set; not canonical game integration.",
+  "authorship": {
+    "adoptedOriginalAuthor": "GPT-6-Sol",
+    "adoptedEnvironmentEAuthor": "GPT-6.1-Sol",
+    "adoptedEnvironmentERuntimeAuthor": "GPT-6-Luna",
+    "activationRimDesignAuthor": "GPT-6.1-Sol",
+    "runtimeAndFixtureImplementationAuthor": "GPT-6-Luna"
+  },
+  "designSources": {
+    "interactionDesignSha256": "dea369c4a7a58ab24b93c50ea11a90827d79647f69dba4620c26cc6afe2ddccd",
+    "activationRimDesignSha256": "121aa9923b54bf5c6d3ad76c34e83c111711602b3acee3a6d3907e2a49799b31"
+  },
+  "sourceSet": {
+    "adoption": "adopted-server-room-original-r01-plus-environment-e-r04",
+    "original": {
+      "path": "assets/security-room-r01-original.png",
+      "sha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64",
+      "width": 1340,
+      "height": 1174
+    },
+    "environmentShader": {
+      "path": "assets/security-room-r04.wgsl",
+      "sha256": "ef98ef34b532295b694cf487ef8bd33fa548c777ff8ee12c4094869cb345da0d",
+      "immutableCopy": true
+    },
+    "rimProfile": {
+      "version": "digital-service-ack/r1-activation-rim-1",
+      "sha256": "121aa9923b54bf5c6d3ad76c34e83c111711602b3acee3a6d3907e2a49799b31"
+    }
+  },
+  "runtime": {
+    "entry": "index.html",
+    "module": "runtime.mjs",
+    "renderApi": "WebGPU",
+    "canvasFallback": false,
+    "audio": "disabled",
+    "benefits": "local-fixture-state-only",
+    "authoritativeGameplayReceipts": false,
+    "mainGameIntegration": "none"
+  },
+  "validation": {
+    "javascriptSyntax": "passed",
+    "focusedCpuTests": "passed-11-of-11",
+    "nativeMovementAndCollision": "passed-before-rim-shader-revision; pointer-stick fixture movement and console collision verified; no held-keyboard or physical touch-device claim",
+    "nativeCurrentRimShaderCompilation": "passed-current-rim-integrated-source-in-Chrome; actual render captured; no uncaptured GPU errors",
+    "nativeFixtureActivation": "passed-pointer-stick-console-positive-grant-once-with-rim",
+    "nativeVisualContourReview": "partial-screenshot-observation-only; left contour partly obscured by standalone UI overlay",
+    "nativeQualityAcceptance": "pending-full-contour-and-receiving-effect-review",
+    "qualityAcceptance": "pending",
+    "packageReplayAcceptance": "pending",
+    "publication": "not-published-at-source-freeze; deployment acceptance recorded separately"
+  },
+  "nativeEvidence": {
+    "host": "Chrome",
+    "renderScreenshot": "outputs/request-20261001/map-object-benefit-interaction/CHROME-RIM-INITIAL.jpg",
+    "consoleRimScreenshot": "outputs/request-20261001/map-object-benefit-interaction/CHROME-RIM-CONSOLE.jpg",
+    "grantReceipt": "outputs/request-20261001/map-object-benefit-interaction/CHROME-RIM-CONSOLE-GRANT.json",
+    "shaderSourceSha256": "f4be83b9444f270836500f51ba1aa501eebc0b002c907502fc9c9ec862ecb70f",
+    "uncapturedGPUErrors": 0
+  },
+  "files": [
+    {"path":"actor-body.wgsl","bytes":1698,"sha256":"02700407140158fc02834b5c98f365741e15eb63520c0f17310e7286fd749422"},
+    {"path":"final.wgsl","bytes":1540,"sha256":"b0f22e2739cd7619e18823f0ddae893c9148762ac05319c2723140bbc2a953cc"},
+    {"path":"fixture-laws.mjs","bytes":17666,"sha256":"495076923f8e441cb9295b0adb135973229940e5cb4112758caeef0855c2515e"},
+    {"path":"index.html","bytes":3884,"sha256":"ec644d856607f8679954f6f92283a38edd9313a33bc163a7ee37f171813b2afa"},
+    {"path":"linear-composition.wgsl","bytes":6032,"sha256":"f4be83b9444f270836500f51ba1aa501eebc0b002c907502fc9c9ec862ecb70f"},
+    {"path":"runtime.mjs","bytes":21440,"sha256":"120f304d432aaff80c92780ed8c3fa8bb2bdfe5f9e009872e19436f7bf5507fb"},
+    {"path":"source-blur.wgsl","bytes":799,"sha256":"a100cb734ed572263a1de07465c55ce379af5d9eeba6ff86c82113ec232dbcbc"},
+    {"path":"source-mask.wgsl","bytes":703,"sha256":"6f2fe67088e90e034ec27c75fbe8020196e84f2f16f194825e1d1fb5d929856b"},
+    {"path":"assets/philia-front-nine-v752.png","bytes":399216,"sha256":"4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"},
+    {"path":"assets/security-room-r01-original.png","bytes":2155465,"sha256":"b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64"},
+    {"path":"assets/security-room-r04.wgsl","bytes":33424,"sha256":"ef98ef34b532295b694cf487ef8bd33fa548c777ff8ee12c4094869cb345da0d"}
+  ]
+}
+
+
+
