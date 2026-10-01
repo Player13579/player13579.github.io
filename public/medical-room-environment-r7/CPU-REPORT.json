@@ -1,0 +1,203 @@
+{
+  "id": "sol61-medical-vfx-r4-environment-r7",
+  "kind": "pure CPU/source-only",
+  "checks": [
+    {
+      "name": "dry original hash/PNG dimensions",
+      "status": "pass",
+      "evidence": {
+        "sha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+        "bytes": 1804220
+      }
+    },
+    {
+      "name": "valve finite support and smooth endpoints",
+      "status": "pass",
+      "evidence": {
+        "open": [
+          0,
+          0.35
+        ],
+        "run": [
+          0.35,
+          5.4
+        ],
+        "close": [
+          5.4,
+          5.85
+        ]
+      }
+    },
+    {
+      "name": "gravity projection, shrinking jet and flux conservation",
+      "status": "pass",
+      "evidence": {
+        "VELOCITY": 0.3395305452627101,
+        "FALL": 0.21618106246852847,
+        "topOriginalDiameter": 8,
+        "bottomOriginalDiameter": 2.971928195212736,
+        "maximumRelativeError": 5.371129499086752e-16
+      }
+    },
+    {
+      "name": "delayed source-off tail/retained arrivals are finite",
+      "status": "pass",
+      "evidence": {
+        "mainTailEnd": 6.066181062468528,
+        "dropImpacts": [
+          6.397374730350283,
+          6.897374730350283,
+          7.497374730350282
+        ],
+        "lastCrownEnd": 7.5238782981382535,
+        "DROP_VOLUME": 1.715728467880506e-8
+      }
+    },
+    {
+      "name": "input/stored/drained mass ledger nonnegative",
+      "status": "pass",
+      "evidence": {
+        "injectedM3": 0.0003270514726253808,
+        "remainingM3": 1.2863184436806463e-9,
+        "drainedM3": 0.00032705018630693744,
+        "maxBalanceError": 4.9060148304969076e-18,
+        "physicalNotMetrology": true
+      }
+    },
+    {
+      "name": "240Hz midpoint convergence and impulse timing",
+      "status": "pass",
+      "evidence": {
+        "maxVolumeDifference240vs480": 1.6525777285878262e-10,
+        "maxVolumeDifference240vs60": 3.303919859171735e-9,
+        "dryCutoffPhysicalVolumeM3": 3.6057596108165586e-8
+      }
+    },
+    {
+      "name": "film bounded by real bowl; temporal change/dry reset",
+      "status": "pass",
+      "evidence": {
+        "maxWetDiameterOriginalPx": [
+          96,
+          57.6
+        ],
+        "fit420JetHeightLogical": 14.300518134715025,
+        "fit420WetDiameterLogical": [
+          29.844559585492227,
+          17.906735751295336
+        ],
+        "dry": [
+          10000,
+          12000
+        ],
+        "nativeReadability": "not_run"
+      }
+    },
+    {
+      "name": "finite-depth dispersion and damping edge cases",
+      "status": "pass",
+      "evidence": {
+        "omegaSteady": 17.39575007030721,
+        "frequencyHz": 2.768619612480578,
+        "basis": "finite-depth gravity-capillary, nominal20C, 2.5D approximation"
+      }
+    },
+    {
+      "name": "input privacy/currentness/basis/clock and uniform domains",
+      "status": "pass",
+      "evidence": {
+        "lightUBOBytes": 96,
+        "waterUBOBytes": 128,
+        "noDPRPhysicalScaleChange": true,
+        "noClockFallback": true
+      }
+    },
+    {
+      "name": "supported cloth source/damped residual/convergence",
+      "status": "pass",
+      "evidence": {
+        "maxError240vs480OriginalPx": 3.113101565421772e-8,
+        "maxQOriginalPx": [
+          6.624432279953898,
+          2.9304318355981267
+        ],
+        "cutoffPhysicalQ": [
+          0.00007525321032879841,
+          2.911165661592618e-9
+        ],
+        "forcingSupport": [
+          1.8,
+          7.3
+        ],
+        "patches": [
+          {
+            "id": "cart-soft-white-fold",
+            "rect": [
+              254,
+              156,
+              312,
+              229
+            ],
+            "amplitudePx": 6,
+            "frequencyHz": 1.35,
+            "damping": 0.32,
+            "phase": 0
+          },
+          {
+            "id": "sink-soft-white-fold",
+            "rect": [
+              791,
+              136,
+              834,
+              166
+            ],
+            "amplitudePx": 2.8,
+            "frequencyHz": 1.8,
+            "damping": 0.38,
+            "phase": 0.65
+          }
+        ],
+        "native": "not_run"
+      }
+    },
+    {
+      "name": "canonical full PH/OBS/selected extension fields",
+      "status": "pass",
+      "evidence": {
+        "PH": 8,
+        "OBS": 2,
+        "canonicalCommit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+        "fullImageSchema": "not_applicable_E_code_branch"
+      }
+    },
+    {
+      "name": "assembled shader and encode/source boundary",
+      "status": "pass",
+      "evidence": {
+        "WGSLCompile": "not_run",
+        "linearWorking": true,
+        "oneFinalEncode": true,
+        "refractionAndClothNotNewSource": true
+      }
+    },
+    {
+      "name": "exact permitted r6 support files remain byte-identical",
+      "status": "pass",
+      "evidence": {
+        "source": "../r6/manifest.json",
+        "files": 5,
+        "author": "GPT-6.1-Sol",
+        "permission": "explicit primary lighting reuse"
+      }
+    }
+  ],
+  "native": "not_run",
+  "quality": "not_accepted",
+  "result": "pass",
+  "summary": {
+    "checks": 13,
+    "nativeQuality": "not_run",
+    "adoption": "unadopted",
+    "game": "not_connected"
+  }
+}

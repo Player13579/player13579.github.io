@@ -1,0 +1,64 @@
+{
+  "id": "medical-r7-gallery-preview-package",
+  "version": "r7",
+  "purpose": "reproducible standalone gallery preview package; technical status only",
+  "sourceOfRecord": "outputs/request-20261001/medical-vfx-r4-environment/r7",
+  "sourceManifest": {
+    "path": "manifest.json",
+    "sha256": "ed7ebb22d644bffc7d63e23f2827ec1407e69b58a17a2ffd414e17a624090de1",
+    "frozenEntries": 29
+  },
+  "runtimeManifest": {
+    "path": "runtime/manifest.json",
+    "sha256": "b4e5deb3ca5619dbd77dd8b9c55f57c2919e3a5f6745182998722419c2d81f1a",
+    "upstreamSha256": "23c74c0a7d06cb758222915539ad8c67de5dbb43c740d93fb96c6cd77c213dcd"
+  },
+  "entry": "runtime/index.html",
+  "verifyEntry": "runtime/index.html?verify",
+  "embedEntry": "runtime/index.html?embed=1",
+  "publicHostAdapter": {
+    "file": "runtime/index.html",
+    "type": "embed-query-class-only",
+    "trigger": "?embed=1",
+    "effect": "Hides controls and diagnostics; keeps the error surface visible.",
+    "upstreamSha256": "4e288d2e142bac244a14a2a33d127ba414cecabfad519799b44bfdb5abdbae15",
+    "publicSha256": "34b85ede9119a59eb9635b0c35ef03fe1735ff50040b82c33e8f006cea0f9041"
+  },
+  "relativePathsPreserved": true,
+  "relativePathPolicy": "The frozen r7 tree and runtime are copied in place; all runtime URLs and local ES module imports remain unchanged.",
+  "original": {
+    "path": "medical-room-vfx-r4.png",
+    "sha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "state": "dry and unchanged"
+  },
+  "runtimeDependencies": [
+    "artist.mjs",
+    "cloth.mjs",
+    "support-light/artist.mjs",
+    "world.wgsl",
+    "blur.wgsl",
+    "post.wgsl",
+    "medical-room-vfx-r4.png"
+  ],
+  "audioGain": 0,
+  "mapSfx": "disabled",
+  "publication": "not published",
+  "galleryRegistration": "not registered",
+  "gameIntegration": "not connected",
+  "nativeEvidence": {
+    "record": "outputs/request-20261001/medical-r7-native/evidence/NATIVE.json",
+    "verify": true,
+    "webgpu": "ready",
+    "timeMs": 3000,
+    "completedCurrentQueueProof": true,
+    "errors": 0,
+    "quality": "full-fit water and cloth readability failed; pending Sol revision"
+  },
+  "workShare": [
+    {
+      "displayName": "GPT-6-Luna",
+      "percent": 100,
+      "contribution": "Reproducible source/runtime package and dependency-closure checks"
+    }
+  ]
+}

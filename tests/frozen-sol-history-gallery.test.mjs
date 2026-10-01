@@ -56,6 +56,6 @@ test('new previews retain own-dimension framing and cache query is bumped',()=>{
  const html=fs.readFileSync(path.join(pagesRoot,'webgpu-e-gallery.html'),'utf8');
  const cacheRevision=html.match(/asset-gallery\.js\?v=([^'"\s]+)/)?.[1];
  assert.ok(cacheRevision, 'gallery script URL carries a non-empty cache revision');
- assert.match(cacheRevision,/vibe-display-r46/, 'cache revision tracks the Vibe Coding error-surface release');
+ assert.match(cacheRevision,/medical-r7-r47/, 'cache revision tracks the medical r7 gallery release');
  assert.match(gallery,/medical-r4-original-environment-r5/, 'the cache revision corresponds to a catalog containing the medical r5 registration');
 });

@@ -1,0 +1,59 @@
+{
+  "status": "native_technical_pass_quality_revision_required",
+  "packageCheck": "pass",
+  "packageCheckEvidence": "PACKAGE-CHECK.json",
+  "checks": {
+    "sourceManifest": "SHA-256 matches the frozen r7 manifest",
+    "sourceTree": "all 29 frozen entries present with exact byte counts and SHA-256 hashes",
+    "runtimeTree": "runtime manifest hashes match the copied runtime files",
+    "dependencyClosure": "all seven runtime dependencies resolve inside this package",
+    "original": "dry PNG byte hash matches the frozen source"
+  },
+  "nativeWebGpu": "pass; primary-owned verification",
+  "wgslCompilation": "pass; world/blur/post shaderMessages empty",
+  "nativeEvidence": {
+    "record": "outputs/request-20261001/medical-r7-native/evidence/NATIVE.json",
+    "screenshots": [
+      "outputs/request-20261001/medical-r7-native/evidence/RUNNING.png",
+      "outputs/request-20261001/medical-r7-native/evidence/WATER-OFF.png",
+      "outputs/request-20261001/medical-r7-native/evidence/WATER-CLOTH-OFF.png"
+    ],
+    "verify": true,
+    "format": "bgra8unorm",
+    "originalSha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "viewport": [2560, 1440],
+    "dpr": 2,
+    "fit": [659.6595114729829, 0, 1240.6809770540342, 1440],
+    "proof": {
+      "frameId": 929,
+      "settingsVersion": 1,
+      "roomId": "medical",
+      "sourceMode": "gallery-demo",
+      "basisHash": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+      "phaseMs": 3000,
+      "stage": "running",
+      "completed": true,
+      "current": true,
+      "errors": []
+    },
+    "shaderMessages": { "world": [], "blur": [], "post": [] },
+    "errors": 0
+  },
+  "visualQuality": "fail; full-fit water and cloth readability failed, pending Sol revision. Do not enlarge or relocate the source effects in runtime.",
+  "adoption": "unknown/unadopted",
+  "gameIntegration": "not connected",
+  "galleryRegistration": "not performed",
+  "publication": "not performed",
+  "audioGain": 0,
+  "mapSfx": "disabled",
+  "entry": "runtime/index.html?embed=1",
+  "verifyEntry": "runtime/index.html?verify",
+  "publicHostAdapter": {
+    "file": "runtime/index.html",
+    "type": "embed-query-class-only",
+    "trigger": "?embed=1",
+    "controlsHidden": true,
+    "diagnosticsHidden": true,
+    "errorsRemainVisible": true
+  }
+}

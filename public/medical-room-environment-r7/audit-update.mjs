@@ -1,0 +1,10 @@
+import {readFile,writeFile} from 'node:fs/promises';
+const path=new URL('./B-AUDIT.json',import.meta.url),b=JSON.parse(await readFile(path,'utf8'));
+Object.assign(b.baselineCoverage.find(x=>x.section==='PhenomenonSystemTemplate'),{decision:'PH01..03光支持、PH04jet/PH05固液film/PH06residual、PH07cartcloth/PH08sinkcloth、実境界/支持で分割。全八PH完全構造/八領域',code:'b-code-contract Registry/Block; fluid/cloth funcs',observation:'全室水source/contact/off/drain＋二位置airforce/settle'});
+Object.assign(b.baselineCoverage.find(x=>x.section==='CoordinateGravityWindTemplate'),{decision:'原画basisと設計physical投影分離、g9.81、finite室内air選択推論、二clothsupport、rim接触clip。openvent未断定',code:'fluidgravity/anchors、clothgust/modal/RK4、fullWindCapsule',observation:'resize同geometry、jetclip、二fold有限settle',status:'CPU projection/delay/convergence passed'});
+Object.assign(b.baselineCoverage.find(x=>x.section==='AnimeStudiesTemplate'),{decision:'水running/off/residual/drain＋二clothforce/release/settle＋光支持',code:'valve/table/drops/cloth/RK4/10s cutoff',observation:'同clock waterOFF/clothOFF/PHonly/allON全寿命'});
+Object.assign(b.baselineCoverage.find(x=>x.section==='OctaDomainTemplate'),{decision:'PH04..06 Fluid/MaterialsとPH07..08 Materials/Rheology primary、八領域の適用/非適用を全PHに保存'});
+Object.assign(b.baselineCoverage.find(x=>x.section==='ReflectionClosureTemplate'),{decision:'waterはoriginal環境/PH01入射、clothはUV/normalとrelative Lambert。PH/OBSを分ける',code:'waterMaterial/fabric/ReflectionClosureBlock PH04_06/PH07_08'});
+b.extensionCoverage.VFX.evidence='全室設備/材質を比較。PH04..06water/contact/drain、PH07..08supportedfabric、PH01..03光支持、OBS別登録';
+b.inputAudit.autonomousSynthesis='DESIGN全室候補表。ユーザー例を上限にせず形/用途/支持からroomair/clothを補完。観測事実と推論を区別';
+await writeFile(path,JSON.stringify(b,null,2)+'\n');

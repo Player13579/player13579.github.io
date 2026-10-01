@@ -6,7 +6,7 @@ const vm = require('node:vm');
 
 const repo = path.resolve(__dirname, '../../../../../../');
 const app = path.resolve(__dirname, '..');
-const gallery = fs.readFileSync(path.join(app, 'asset-gallery.js'), 'utf8');
+const gallery = fs.readFileSync(path.join(app, 'asset-gallery.js'), 'utf8').replace(/\r\n/g, '\n');
 const assetDir = path.join(app, 'assets/gpt-map-history');
 function evaluateVisibleMaps(source = gallery) {
   const start = source.indexOf('  function isEligibleEnvironmentEMapVersion(item) {');
@@ -82,8 +82,9 @@ assert.deepEqual(serverEvidence.cases.map(item => item.presentation), ['combined
 
 const medical = imageGroups.find(group => group.id === 'medical-r3-original-environment-r1');
 assert.ok(medical, 'medical r3 appears only as its replayable original-plus-E pair');
-assert.equal(medical.defaultVersionId, 'medical-r4-original-environment-r5', 'native-replayable r5 is the current medical room default');
+assert.equal(medical.defaultVersionId, 'medical-r4-original-environment-r7', 'newest native-replayable r7 is the current medical room default');
 assert.deepEqual(Array.from(medical.versions, version => version.id), [
+  'medical-r4-original-environment-r7',
   'medical-r4-original-environment-r5',
   'medical-r4-original-environment-r4',
   'medical-r4-original-environment-r3',
@@ -91,7 +92,16 @@ assert.deepEqual(Array.from(medical.versions, version => version.id), [
   'medical-r4-original-environment-r1',
   'medical-r3-original-environment-r1'
 ], 'newest first while retaining all original-plus-E medical histories');
-const medicalR5 = medical.versions[0];
+const medicalR7 = medical.versions[0];
+assert.equal(medicalR7.adoption, 'not-adopted');
+assert.equal(medicalR7.qualityStatus, 'pending-improvement');
+assert.equal(medicalR7.technicalReplayStatus, 'pass');
+assert.equal(medicalR7.designAuthorDisplayName, 'GPT-6.1-Sol');
+assert.equal(medicalR7.runtimeAuthorDisplayName, 'GPT-6-Luna');
+assert.equal(sha256(path.join(app, medicalR7.originalSrc)), medicalR7.originalHash);
+assert.equal(fs.existsSync(path.join(app, medicalR7.page.split('?')[0])), true);
+assert.match(medicalR7.note, /readability failed/);
+const medicalR5 = medical.versions.find(version => version.id === 'medical-r4-original-environment-r5');
 assert.equal(medicalR5.adoption, 'not-adopted');
 assert.equal(medicalR5.qualityStatus, 'pending-improvement');
 assert.equal(medicalR5.technicalReplayStatus, 'pass');

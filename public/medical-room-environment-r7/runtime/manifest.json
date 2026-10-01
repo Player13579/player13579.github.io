@@ -1,0 +1,88 @@
+{
+  "id": "sol61-medical-vfx-r4-environment-r7-runtime",
+  "version": "r7-runtime",
+  "entry": "index.html",
+  "verifyEntry": "index.html?verify",
+  "publicHostAdapter": {
+    "type": "embed-query-class-only",
+    "trigger": "?embed=1",
+    "effect": "Hides controls and diagnostics in embedded presentation; leaves the error surface visible.",
+    "upstreamIndexSha256": "4e288d2e142bac244a14a2a33d127ba414cecabfad519799b44bfdb5abdbae15",
+    "publicIndexSha256": "34b85ede9119a59eb9635b0c35ef03fe1735ff50040b82c33e8f006cea0f9041",
+    "sourceCodeChanged": false
+  },
+  "creativeAuthor": "GPT-6.1-Sol",
+  "implementationModelRequested": "GPT-6-Luna",
+  "sourceManifest": {
+    "path": "../manifest.json",
+    "sha256": "ed7ebb22d644bffc7d63e23f2827ec1407e69b58a17a2ffd414e17a624090de1"
+  },
+  "original": {
+    "path": "../medical-room-vfx-r4.png",
+    "sha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "width": 1164,
+    "height": 1351,
+    "state": "dry; bytes unchanged"
+  },
+  "frozenSource": {
+    "apiRuntimeSha256": "394cd51368c39b849e88a257b61461a26e5fbcbd17644c58650a861d75cd0d8b",
+    "sourceContractSha256": "1527899e580834dfac4d2c174f4f5842ae9046deb83fc9d0142f4912ec3a828e",
+    "artistSha256": "19d4e1c680308dd57cf1c39dbf95524dd2eea251e4a31c7dece8c1d2dab4ab6a",
+    "clothSha256": "0fedef0be7ce32e6d9da664eb94c5f7480cfd0627baaab0387c1c1e590da4b65",
+    "supportLightArtistSha256": "faa9631d0de41eceaab63e044208dde354890b3850778147ebcfe23edf3abc11",
+    "worldWgslSha256": "d8f2010e8868ca822223ef51a95de827fcc72fe6e39cff103a535aaa6f2302c2",
+    "blurWgslSha256": "cfdde22d84b2f3e2f5b75c164da2922d2c55d3e65745348fc76febed336f4370",
+    "postWgslSha256": "7aa7485c75da97994fcabfb16bc64a558a2b7420fedff65afa5e58aad4f82915"
+  },
+  "runtimeDependencies": [
+    "../artist.mjs",
+    "../cloth.mjs",
+    "../support-light/artist.mjs",
+    "../world.wgsl",
+    "../blur.wgsl",
+    "../post.wgsl",
+    "../medical-room-vfx-r4.png"
+  ],
+  "contract": {
+    "canvas": "single WebGPU canvas; no Canvas2D",
+    "worldGroups": "group0 light/original/sampler; group1 water UBO128; group2 cloth UBO64",
+    "hdr": "linear rgba16float scene/source MRT; source-only two-pass half-resolution blur; one final encode",
+    "demoClock": "visible-time gallery-demo lease; hidden pause preserves phase; water 12s and light 22s remain independent",
+    "proof": "bounded to three explicit asynchronous queue-completion proofs; RAF never awaits completion",
+    "audioGain": 0,
+    "mapSfx": "disabled"
+  },
+  "status": {
+    "javascriptSyntax": "pass",
+    "focusedCpuChecks": "pass; 48 assertions",
+    "frozenSourceHashes": "pass",
+    "wgslCompilation": "not_run",
+    "nativeWebGpu": "pending primary verification",
+    "visualQuality": "not assessed",
+    "performance": "not assessed",
+    "gallery": "not_registered",
+    "adoption": "unknown/unadopted",
+    "gameIntegration": "not_connected"
+  },
+  "files": {
+    "index.html": {
+      "sha256": "34b85ede9119a59eb9635b0c35ef03fe1735ff50040b82c33e8f006cea0f9041"
+    },
+    "runtime.mjs": {
+      "sha256": "438a4a79c0f937a25961e1ff093e7d012a292af76a3910e9b0a59f36b697ee13"
+    },
+    "runtime-check.mjs": {
+      "sha256": "fdcaf6e70c414b27ea526ed87d81425267c88c2cf0cf75a402d3f9668c634dd9"
+    },
+    "CPU-REPORT.json": {
+      "sha256": "5c40d99ca58cd9de8e535caaf51b9404e526f7a35acab2f6f30e440ccf1b5284"
+    }
+  },
+  "workShare": [
+    {
+      "displayName": "GPT-6-Luna",
+      "percent": 100,
+      "contribution": "Faithful standalone r7 WebGPU runtime and focused source/CPU checks"
+    }
+  ]
+}

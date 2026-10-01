@@ -1,0 +1,182 @@
+{
+  "kind": "E code分岐の適用規則監査。正式Image/Video B生成schemaの全root合格主張ではない",
+  "source": {
+    "repository": "player13579/B",
+    "branch": "Codex-honoo",
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "baseBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extensionBlob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+    "retrieval": "同担当による全文読了済みauthenticated canonical snapshot、同HEAD再確認、r7/b-source byte copy"
+  },
+  "outputBoundary": {
+    "originalEdited": false,
+    "newImageGeneration": false,
+    "formalImageVideoModeSet": false,
+    "renderOperationSet": false,
+    "runtimeERequired": true,
+    "MapSFX": "none"
+  },
+  "inputAudit": {
+    "creative": "actual original view_image、ユーザー訂正、primary承認の設備流体、B正本",
+    "permittedReuse": "r6光支持のみ明示再利用。support-light五ファイルはr6manifest hashと照合",
+    "otherCreativeE": "参考にしない",
+    "failureEvidence": "r5 ready/effect trueでも光のみ/弱い品質。可視品質証明に読み替えない",
+    "physics": "MIT有限深さ分散関係/IAPWSnominal20°Csurface tension。実設備測定値ではない",
+    "autonomousSynthesis": "DESIGN全室候補表。ユーザー例を上限にせず形/用途/支持からroomair/clothを補完。観測事実と推論を区別"
+  },
+  "baselineCoverage": [
+    {
+      "section": "InferenceExpansionPolicy",
+      "decision": "原画dry設備の事実と通水デモ推論を分け、valve状態未接続を保持",
+      "code": "source-contract observed/inferred/sourceMode; acceptedFrameInput",
+      "observation": "設備登録と開始/停止/残滴/排水が既存geometry内",
+      "status": "source specified; native not_run"
+    },
+    {
+      "section": "FoundationOperationTemplate",
+      "decision": "ECodeImplementation directly。画像mode/render_requested偽設定なし",
+      "code": "artist/world/fluid/blur/post/API",
+      "observation": "samehashを実WebGPUへ次worker接続",
+      "status": "source specified; WGSL not_run"
+    },
+    {
+      "section": "PlatonicGoodTemplate",
+      "decision": "不変原画・選択推論透明性・現象先行・有限dynamic保全",
+      "code": "immutable hash、finite table、IMAGE-E-HANDOFF",
+      "observation": "dry比較とcancel後の消失",
+      "status": "CPU/source audit"
+    },
+    {
+      "section": "PhenomenonSystemTemplate",
+      "decision": "PH01..03光支持、PH04jet/PH05固液film/PH06residual、PH07cartcloth/PH08sinkcloth、実境界/支持で分割。全八PH完全構造/八領域",
+      "code": "b-code-contract Registry/Block; fluid/cloth funcs",
+      "observation": "全室水source/contact/off/drain＋二位置airforce/settle",
+      "status": "canonical full PH schema CPU pass"
+    },
+    {
+      "section": "PEMTemplate",
+      "decision": "同時計に別因果を保つ。水から光源を発生させず既存光が水材質へ",
+      "code": "time12/22、mass flowdelay、positivehighlight sourceSignal",
+      "observation": "水OFF/光OFF/OBS OFF比較",
+      "status": "source audit; native not_run"
+    },
+    {
+      "section": "CoordinateGravityWindTemplate",
+      "decision": "原画basisと設計physical投影分離、g9.81、finite室内air選択推論、二clothsupport、rim接触clip。openvent未断定",
+      "code": "fluidgravity/anchors、clothgust/modal/RK4、fullWindCapsule",
+      "observation": "resize同geometry、jetclip、二fold有限settle",
+      "status": "CPU projection/delay/convergence passed"
+    },
+    {
+      "section": "OctaDomainTemplate",
+      "decision": "PH04..06 Fluid/MaterialsとPH07..08 Materials/Rheology primary、八領域の適用/非適用を全PHに保存",
+      "code": "全PH OctaDomain complete",
+      "observation": "非selfemissive material/motion/接触",
+      "status": "8domains schema passed; fullfluid solve not claimed"
+    },
+    {
+      "section": "AnimeStudiesTemplate",
+      "decision": "水running/off/residual/drain＋二clothforce/release/settle＋光支持",
+      "code": "valve/table/drops/cloth/RK4/10s cutoff",
+      "observation": "同clock waterOFF/clothOFF/PHonly/allON全寿命",
+      "status": "finite lifecycle CPU pass; visual not_run"
+    },
+    {
+      "section": "ObservationIntegrationTemplate",
+      "decision": "sourceSignalはr6sourceと水のreflectedhighlightのみ。filmcoverage/darkrefractionと分離。budgetはr6保持",
+      "code": "waterMaterial sourceSignal、blur、post",
+      "observation": "PHのみでも水を読む、OBS支持、freshOFFで残像なし",
+      "status": "OBS full schema/source audit; GPU not_run"
+    },
+    {
+      "section": "ExtremumDesignColorTemplate",
+      "decision": "透明水は元環境とnormalによる暗明を持ち、青glowへ置換しない。r6色anchor支持保持",
+      "code": "tint/Fresnel/reflected/transmitted",
+      "observation": "白bowl上の動くmaterial差分",
+      "status": "source specified; actualfit not_run"
+    },
+    {
+      "section": "ReflectionClosureTemplate",
+      "decision": "waterはoriginal環境/PH01入射、clothはUV/normalとrelative Lambert。PH/OBSを分ける",
+      "code": "waterMaterial/fabric/ReflectionClosureBlock PH04_06/PH07_08",
+      "observation": "selfglowではない受光/refractionのsource同期",
+      "status": "source audit; native not_run"
+    },
+    {
+      "section": "PhenomenonProfileTemplate",
+      "decision": "r6 MetalHardSurface/SurfaceScience支持保持、水はfullPHの薄膜/質量式で明示。不要な反応/相変化profileなし",
+      "code": "PH04..06 PhysicalModel/StateDynamics",
+      "observation": "既存bowl内有限liquidのみ",
+      "status": "source specified"
+    },
+    {
+      "section": "TermsTemplate",
+      "decision": "静的画像VFXとruntimeEを分け、一時水は焼込まない。main接続とgallerydemoを分ける",
+      "code": "IMAGE-E-HANDOFF/source-contract staticDynamic/mainState",
+      "observation": "OFF/residualend/roomchange後に動的水zero",
+      "status": "source contract; native not_run"
+    },
+    {
+      "section": "GlobalAcceptanceTemplate",
+      "decision": "CPU/GPU/可視/性能/公開/採用/game/geometryを分離。CPUprobeで受入にしない",
+      "code": "manifest/status/CPU-REPORT/DESIGN rejection gate",
+      "observation": "small46px motion不合格ならSolへ差戻し",
+      "status": "source freeze only; native not_run"
+    }
+  ],
+  "extensionCoverage": {
+    "VFX": {
+      "active": true,
+      "evidence": "全室設備/材質を比較。PH04..06water/contact/drain、PH07..08supportedfabric、PH01..03光支持、OBS別登録",
+      "formalImageSchemaClaim": false
+    },
+    "ECodeImplementation": {
+      "active": true,
+      "evidence": "JS/WGSL source、sourceclock/geometry/lifecycle/API/manifest、actualGPU gate別",
+      "canonicalStructureChecked": true
+    },
+    "PostEffects": {
+      "active": true,
+      "basis": "explicitly selected r6 source-only blur/ghost support、global automatic none",
+      "evidence": "OBS01/02 input/mask/stage/budget/sampling、water reflected peakだけ追加input",
+      "canonicalStructureChecked": true
+    },
+    "LuminanceDynamicsModule": {
+      "active": true,
+      "basis": "explicit VFX",
+      "evidence": "material暗明normal/flow/wave timing、r6支持光、10s waterzero。数値defaultで実寸可読性を置換しない",
+      "translation": "Image/Video包絡をruntimeへ翻訳、画像generationmodeなし"
+    },
+    "GradientAnchorPolicy": {
+      "active": true,
+      "basis": "r6光materialgradientと水元環境reflectionをPHanchor",
+      "canonicalStructureChecked": true
+    },
+    "KeywordExpansion": {
+      "active": false,
+      "reason": "v*/f*/o*等指定なし。水の反射から架空登録keywordを起動しない"
+    },
+    "MagicArchitecture": {
+      "active": false,
+      "reason": "設備流体、Magic/魔法指定なし"
+    },
+    "CharacterPolicy": {
+      "active": false,
+      "reason": "このsourceは人物描画なし。本編人物順/受光別契約"
+    },
+    "VideoGenerationPolicy": {
+      "active": false,
+      "reason": "runtime finite animationのみ、動画生成依頼なし"
+    }
+  },
+  "validationLimits": {
+    "canonicalSubset": "repository design_contract full PH/OBS/ECode/Post/LDM/Gradient照合、Image/Video全root validator fake passなし",
+    "science": "mass/delay/convergenceの有限近似。実水理/temperature/shape metrologyなし",
+    "WGSL": "not_run",
+    "nativeQuality": "not_run",
+    "independentBReviewer": "not_run",
+    "performance": "not_run",
+    "main": "not_connected",
+    "adoption": "unadopted"
+  }
+}

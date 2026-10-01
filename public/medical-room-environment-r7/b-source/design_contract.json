@@ -1,0 +1,2373 @@
+{
+  "schema_version": "B-Expression-2",
+  "baseline": {
+    "InferenceExpansionPolicy": {
+      "object": {
+        "DeclaredIntent": {
+          "object": {
+            "character_count": {},
+            "character_attributes": {},
+            "main_action": {},
+            "main_objects": {},
+            "background": {},
+            "style": {},
+            "text_logo_policy": {}
+          }
+        },
+        "ExpressionIntent": {
+          "object": {
+            "source": {},
+            "purpose": {},
+            "must_communicate": {
+              "array": {}
+            },
+            "preserve_ambiguity": {
+              "array": {}
+            },
+            "allowed_omission": {
+              "array": {}
+            },
+            "allowed_exaggeration": {
+              "array": {}
+            },
+            "protected_relations": {
+              "array": {}
+            }
+          }
+        },
+        "SelectionLifecycle": {
+          "object": {
+            "stages": {
+              "array": {}
+            },
+            "candidate_catalog_in_final_code": {
+              "constant": false
+            },
+            "world_registry": {},
+            "observation_registry": {},
+            "adoption_checks": {
+              "array": {}
+            }
+          }
+        },
+        "inferred_support_elements": {
+          "object": {
+            "default_permission": {},
+            "explicit_user_permission_required": {
+              "constant": true
+            },
+            "allowed_domains": {
+              "array": {}
+            },
+            "allowed_scope": {},
+            "support_declared_elements_without_overriding_them": {
+              "constant": true
+            },
+            "latent_visualization_object_not_required": {
+              "constant": true
+            }
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "declared_intent_preserved": {
+              "constant": true
+            },
+            "inference_without_explicit_user_permission_absent": {
+              "constant": true
+            },
+            "candidate_accepted_registered_distinguished": {
+              "constant": true
+            },
+            "unselected_candidates_absent_from_final": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "FoundationOperationTemplate": {
+      "object": {
+        "OutputContract": {
+          "object": {
+            "schema_version": {},
+            "mode": {},
+            "operation": {}
+          }
+        },
+        "TemplateConsolidation": {
+          "object": {
+            "per_chapter_template_count": {
+              "constant": 1
+            },
+            "template_position": {},
+            "inter_template_duplication_forbidden": {
+              "constant": true
+            },
+            "cross_chapter_reference_preferred": {
+              "constant": true
+            }
+          }
+        },
+        "RuleContract": {
+          "object": {
+            "fields": {
+              "array": {}
+            },
+            "same_priority_resolution": {},
+            "unresolved_conflict_result": {}
+          }
+        },
+        "GlobalInterpretation": {
+          "object": {
+            "world_registry": {},
+            "observation_registry": {},
+            "full_PH_structure_required_for_all_visibilities": {
+              "constant": true
+            },
+            "WindCapsule_required": {
+              "constant": true
+            }
+          }
+        },
+        "UniversalNoLabelOnly": {
+          "object": {
+            "label_only_declaration_forbidden": {
+              "constant": true
+            },
+            "indirect_evidence_for_implicit_latent": {
+              "constant": true
+            }
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "each_chapter_has_exactly_one_template": {
+              "constant": true
+            },
+            "independent_template_groups_absent": {
+              "constant": true
+            },
+            "unique_rule_ids_and_resolvable_references": {
+              "constant": true
+            },
+            "same_priority_conflicts_resolved_explicitly": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "PlatonicGoodTemplate": {
+      "object": {
+        "Good": {
+          "object": {
+            "evidence": {}
+          }
+        },
+        "Truth": {
+          "object": {
+            "coordinate_continuity": {},
+            "physical_causality": {},
+            "state_transition_readability": {}
+          }
+        },
+        "Beauty": {
+          "object": {
+            "boundary_readability": {},
+            "gaze_circulation": {},
+            "structural_separation": {}
+          }
+        },
+        "BeautyStructuring": {
+          "object": {
+            "axes": {
+              "array": {}
+            },
+            "standard_minimum_axes_per_PH": {
+              "constant": 2
+            },
+            "standard_minimum_evidence_per_applied_axis": {
+              "constant": 2
+            },
+            "intent_adjustment_ref": {}
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "each_PH_connected_to_at_least_two_GTB_layers": {
+              "constant": true
+            },
+            "single_formula_does_not_dominate_beauty": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "PhenomenonSystemTemplate": {
+      "object": {
+        "PartitionPolicy": {
+          "object": {
+            "criterion": {},
+            "shared_condition_policy": {},
+            "no_discipline_based_split": {
+              "constant": true
+            }
+          }
+        },
+        "SharedConditions": {
+          "optional": true,
+          "values": {
+            "object": {}
+          }
+        },
+        "PhenomenonRegistry": {
+          "values": {
+            "object": {
+              "id": {},
+              "name": {},
+              "origin": {},
+              "anchor": {},
+              "visibility": {},
+              "local_state_difference": {},
+              "partition_reason": {}
+            }
+          }
+        },
+        "PhenomenonBlock": {
+          "values": {
+            "object": {
+              "identity": {
+                "object": {
+                  "id": {},
+                  "name": {},
+                  "origin": {},
+                  "anchor": {},
+                  "visibility": {},
+                  "local_state_difference": {},
+                  "partition_reason": {}
+                }
+              },
+              "DeepStructure": {
+                "object": {
+                  "Core": {
+                    "text": true
+                  },
+                  "Structure": {
+                    "text": true
+                  },
+                  "Surface": {
+                    "text": true
+                  }
+                }
+              },
+              "PhysicalModel": {
+                "object": {
+                  "model_kind": {
+                    "text": true
+                  },
+                  "system_boundary": {
+                    "text": true
+                  },
+                  "state_variables": {
+                    "text": true
+                  },
+                  "inputs": {
+                    "text": true
+                  },
+                  "balance_conditions": {
+                    "object": {
+                      "mass": {
+                        "object": {
+                          "status": {},
+                          "balance_or_reason": {
+                            "text": true
+                          }
+                        }
+                      },
+                      "momentum": {
+                        "object": {
+                          "status": {},
+                          "balance_or_reason": {
+                            "text": true
+                          }
+                        }
+                      },
+                      "energy": {
+                        "object": {
+                          "status": {},
+                          "balance_or_reason": {
+                            "text": true
+                          }
+                        }
+                      },
+                      "charge": {
+                        "object": {
+                          "status": {},
+                          "balance_or_reason": {
+                            "text": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "constitutive_response": {
+                    "text": true
+                  },
+                  "initial_condition": {
+                    "text": true
+                  },
+                  "boundary_conditions": {
+                    "text": true
+                  },
+                  "approximation_scope": {
+                    "text": true
+                  }
+                }
+              },
+              "ScaleRegime": {
+                "object": {
+                  "characteristic_length": {
+                    "text": true
+                  },
+                  "characteristic_time": {
+                    "text": true
+                  },
+                  "dominant_balance": {
+                    "text": true
+                  },
+                  "dimensionless_reasoning": {
+                    "text": true
+                  },
+                  "detail_cutoff": {
+                    "text": true
+                  }
+                }
+              },
+              "OctaDomain": {
+                "object": {
+                  "Thermo": {
+                    "object": {
+                      "applicability": {},
+                      "role": {},
+                      "items": {
+                        "array": {}
+                      },
+                      "evidence_or_constraint": {}
+                    }
+                  },
+                  "Fluid": {
+                    "object": {
+                      "applicability": {},
+                      "role": {},
+                      "items": {
+                        "array": {}
+                      },
+                      "evidence_or_constraint": {}
+                    }
+                  },
+                  "Optics": {
+                    "object": {
+                      "applicability": {},
+                      "role": {},
+                      "items": {
+                        "array": {}
+                      },
+                      "evidence_or_constraint": {}
+                    }
+                  },
+                  "Materials": {
+                    "object": {
+                      "applicability": {},
+                      "role": {},
+                      "items": {
+                        "array": {}
+                      },
+                      "evidence_or_constraint": {}
+                    }
+                  },
+                  "Electromagnetics": {
+                    "object": {
+                      "applicability": {},
+                      "role": {},
+                      "items": {
+                        "array": {}
+                      },
+                      "evidence_or_constraint": {}
+                    }
+                  },
+                  "Rheology": {
+                    "object": {
+                      "applicability": {},
+                      "role": {},
+                      "items": {
+                        "array": {}
+                      },
+                      "evidence_or_constraint": {}
+                    }
+                  },
+                  "WaveOptics": {
+                    "object": {
+                      "applicability": {},
+                      "role": {},
+                      "items": {
+                        "array": {}
+                      },
+                      "evidence_or_constraint": {}
+                    }
+                  },
+                  "SurfaceScience": {
+                    "object": {
+                      "applicability": {},
+                      "role": {},
+                      "items": {
+                        "array": {}
+                      },
+                      "evidence_or_constraint": {}
+                    }
+                  }
+                }
+              },
+              "PerceptualReadability": {
+                "object": {
+                  "direct_evidence": {
+                    "text": true
+                  },
+                  "indirect_evidence": {
+                    "text": true
+                  },
+                  "figure_ground_separation": {
+                    "text": true
+                  },
+                  "edge_legibility": {
+                    "text": true
+                  },
+                  "perceptual_failure_risk": {
+                    "text": true
+                  },
+                  "cue_roles": {
+                    "array": {
+                      "object": {
+                        "cue": {},
+                        "supports": {},
+                        "reliability_and_overlap": {}
+                      }
+                    }
+                  },
+                  "confusable_alternative": {
+                    "text": true
+                  },
+                  "disambiguating_evidence": {
+                    "text": true
+                  },
+                  "viewing_conditions": {
+                    "text": true
+                  }
+                }
+              },
+              "GeometryConstraint": {
+                "object": {
+                  "surface_orientation": {
+                    "text": true
+                  },
+                  "normal_field_coherence": {
+                    "text": true
+                  },
+                  "curvature_behavior": {
+                    "text": true
+                  },
+                  "silhouette_logic": {
+                    "text": true
+                  },
+                  "contact_relation": {
+                    "text": true
+                  },
+                  "spatial_relation": {
+                    "text": true
+                  }
+                }
+              },
+              "StateDynamics": {
+                "object": {
+                  "state_space_extent": {
+                    "text": true
+                  },
+                  "transition_path_character": {
+                    "text": true
+                  },
+                  "local_stability_type": {
+                    "text": true
+                  },
+                  "convergence_behavior": {
+                    "text": true
+                  },
+                  "damping_profile": {
+                    "text": true
+                  },
+                  "oscillation_pattern": {
+                    "text": true
+                  },
+                  "equilibrium_recovery": {
+                    "text": true
+                  },
+                  "transition_failure_risk": {
+                    "text": true
+                  },
+                  "driving_input": {
+                    "text": true
+                  },
+                  "response_timescale": {
+                    "text": true
+                  },
+                  "phase_relation": {
+                    "text": true
+                  },
+                  "stability_condition": {
+                    "text": true
+                  }
+                }
+              },
+              "Couplings": {
+                "object": {
+                  "DominantCouplings": {
+                    "array": {}
+                  },
+                  "SecondaryCouplings": {
+                    "array": {}
+                  },
+                  "CausalAssessment": {
+                    "object": {
+                      "intervention": {},
+                      "predicted_response": {},
+                      "competing_explanation": {},
+                      "uncertainty": {},
+                      "check_status": {},
+                      "evidence_refs": {
+                        "array": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "CausalityLinks": {
+                "object": {
+                  "physical_influence": {
+                    "array": {
+                      "object": {
+                        "source": {},
+                        "target": {},
+                        "mechanism": {
+                          "text": true
+                        },
+                        "consequence": {
+                          "text": true
+                        }
+                      }
+                    }
+                  },
+                  "observation_dependency": {
+                    "array": {
+                      "object": {
+                        "source": {},
+                        "target": {},
+                        "basis": {
+                          "text": true
+                        }
+                      }
+                    }
+                  },
+                  "gaze_path": {
+                    "array": {
+                      "object": {
+                        "source": {},
+                        "target": {},
+                        "reason": {
+                          "text": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "Evidence": {
+                "object": {
+                  "direct": {
+                    "array": {}
+                  },
+                  "indirect": {
+                    "array": {}
+                  },
+                  "candidates": {
+                    "array": {}
+                  }
+                }
+              },
+              "SurroundingChanges": {
+                "object": {
+                  "entries": {
+                    "array": {
+                      "object": {
+                        "target": {
+                          "text": true
+                        },
+                        "change": {
+                          "text": true
+                        }
+                      }
+                    }
+                  },
+                  "latent_reference_target": {}
+                }
+              },
+              "VisualProjection": {
+                "object": {
+                  "role": {},
+                  "world_state_ref": {},
+                  "retained_cues": {
+                    "array": {}
+                  },
+                  "simplification": {},
+                  "omission_scope": {
+                    "array": {}
+                  },
+                  "exaggeration_scope": {
+                    "array": {}
+                  },
+                  "ambiguity_scope": {
+                    "array": {}
+                  },
+                  "intent_ref": {}
+                }
+              },
+              "BeautyStructureApplication": {
+                "object": {
+                  "conform_to": {},
+                  "target_policy": {},
+                  "adjustment_reason": {},
+                  "axes": {
+                    "values": {
+                      "array": {}
+                    }
+                  }
+                }
+              },
+              "AcceptanceCriteria": {
+                "object": {
+                  "full_structure_present": {
+                    "constant": true
+                  },
+                  "all_8_domains_present": {
+                    "constant": true
+                  },
+                  "visibility_specific_evidence_present": {
+                    "constant": true
+                  },
+                  "physical_and_observation_links_not_mixed": {
+                    "constant": true
+                  },
+                  "physical_model_scale_and_response_consistent": {
+                    "constant": true
+                  },
+                  "perceptual_cues_and_identifiability_limits_explained": {
+                    "constant": true
+                  },
+                  "causal_assessment_status_matches_evidence": {
+                    "constant": true
+                  }
+                }
+              },
+              "FailurePatterns": {
+                "array": {}
+              }
+            }
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "all_PH_have_required_full_structure": {
+              "constant": true
+            },
+            "visible_implicit_latent_have_same_field_set": {
+              "constant": true
+            },
+            "OBS_not_in_PH_registry": {
+              "constant": true
+            },
+            "PIA_resolved_as_identification_lifecycle": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "PEMTemplate": {
+      "object": {
+        "Mode": {
+          "object": {
+            "phenomenon_equality": {
+              "constant": true
+            },
+            "focus_phenomenon": {}
+          }
+        },
+        "CausalMesh": {
+          "object": {
+            "physical_mesh_required": {},
+            "gaze_target_policy": {},
+            "adjustment_reason": {},
+            "gaze_path_A": {},
+            "gaze_path_B": {},
+            "local_extrema_connected_to_gaze_paths": {
+              "constant": true
+            }
+          }
+        },
+        "AttentionControl": {
+          "object": {
+            "attention_focus": {},
+            "single_requires_explicit_request": {
+              "constant": true
+            }
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "no_unexplained_isolation": {
+              "constant": true
+            },
+            "gaze_paths_match_selected_policy_and_explicit_intent": {
+              "constant": true
+            },
+            "local_peak_returns_to_mesh": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "CoordinateGravityWindTemplate": {
+      "object": {
+        "WorldApplicability": {
+          "object": {
+            "status": {},
+            "reason": {}
+          }
+        },
+        "Units": {
+          "object": {
+            "length": {},
+            "time": {},
+            "temperature": {},
+            "pressure": {},
+            "angle": {}
+          }
+        },
+        "WorldCoordinates": {
+          "object": {
+            "handedness": {},
+            "X": {},
+            "Y": {},
+            "Z": {},
+            "camera_forward": {},
+            "origin": {}
+          }
+        },
+        "CameraCoordinates": {
+          "object": {
+            "X": {},
+            "Y": {},
+            "forward": {},
+            "projection": {},
+            "FOV_or_scale": {}
+          }
+        },
+        "ScreenCoordinates": {
+          "object": {
+            "domain": {},
+            "x": {},
+            "y": {}
+          }
+        },
+        "TransformChain": {
+          "object": {
+            "order": {
+              "array": {}
+            },
+            "world_to_camera": {},
+            "camera_to_screen": {}
+          }
+        },
+        "ContactCoordinates": {
+          "object": {
+            "contact_patch": {},
+            "contact_normal": {},
+            "support_relation": {},
+            "no_penetration": {
+              "constant": true
+            }
+          }
+        },
+        "VectorField": {
+          "object": {
+            "dominant_vector": {
+              "object": {
+                "direction": {},
+                "magnitude": {},
+                "falloff": {},
+                "fluctuation": {}
+              }
+            },
+            "secondary_vector": {
+              "object": {
+                "direction": {},
+                "magnitude": {},
+                "falloff": {},
+                "fluctuation": {}
+              }
+            }
+          }
+        },
+        "Gravity": {
+          "object": {
+            "condition": {},
+            "vector": {},
+            "strength": {},
+            "affected_responses": {},
+            "evidence": {}
+          }
+        },
+        "WindCapsule": {
+          "object": {
+            "required": {
+              "constant": true
+            },
+            "medium_state": {},
+            "medium_properties": {
+              "object": {
+                "density": {},
+                "viscosity": {}
+              }
+            },
+            "Field": {
+              "object": {
+                "direction": {},
+                "speed": {},
+                "gust": {},
+                "shear": {},
+                "turbulence": {}
+              }
+            },
+            "ApplicableResponses": {
+              "object": {
+                "body": {},
+                "cloth": {},
+                "hair": {},
+                "loose_elements": {},
+                "environment": {}
+              }
+            },
+            "non_applicable_responses_explicit": {
+              "constant": true
+            }
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "world_camera_screen_transform_defined": {
+              "constant": true
+            },
+            "screen_axis_convention_defined": {
+              "constant": true
+            },
+            "Gravity_present": {
+              "constant": true
+            },
+            "WindCapsule_present": {
+              "constant": true
+            },
+            "medium_state_present": {
+              "constant": true
+            },
+            "no_inapplicable_wind_evidence_required": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "OctaDomainTemplate": {
+      "object": {
+        "Acceptance": {
+          "object": {
+            "all_8_domains_present": {
+              "constant": true
+            },
+            "role_classification_present": {
+              "constant": true
+            },
+            "latent_does_not_require_direct_visualization": {
+              "constant": true
+            },
+            "non_applicable_domains_retained_with_reason_and_latent_role": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "AnimeStudiesTemplate": {
+      "object": {
+        "KeyframeSnapshot": {
+          "object": {
+            "phase": {},
+            "state_t_minus_1_evidence": {},
+            "state_t_evidence": {},
+            "state_t_plus_1_evidence": {}
+          }
+        },
+        "Layout": {
+          "object": {
+            "staging": {},
+            "projection_consistency_ref": {},
+            "whitespace_role": {}
+          }
+        },
+        "PoseActing_or_SceneActing": {
+          "object": {
+            "character_ref": {},
+            "object_balance": {},
+            "contact_logic": {}
+          }
+        },
+        "MotionReadability": {
+          "object": {
+            "motion_blur_smear_speed_line_policy": {},
+            "primary_causality_replacement_by_motion_effects": {
+              "constant": false
+            }
+          }
+        },
+        "CompositeIntegration": {
+          "object": {
+            "observation_ref": {},
+            "contact_shadow_used_for_integration": {
+              "text": true
+            }
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "previous_and_next_time_or_explicit_ambiguity_accounted_for": {
+              "constant": true
+            },
+            "projection_consistent": {
+              "constant": true
+            },
+            "posteffects_do_not_replace_primary_causality": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "ObservationIntegrationTemplate": {
+      "object": {
+        "ObservationRegistry": {
+          "values": {
+            "object": {
+              "operation_type": {
+                "text": true
+              },
+              "input_references": {
+                "array": {}
+              },
+              "target_mask": {},
+              "stage": {
+                "text": true
+              },
+              "composite_method": {
+                "text": true
+              },
+              "intensity": {},
+              "protected_regions": {
+                "array": {}
+              },
+              "output_consequence": {
+                "text": true
+              },
+              "dependencies": {
+                "array": {}
+              },
+              "sampling_consequence": {
+                "text": true
+              }
+            }
+          }
+        },
+        "SamplingContract": {
+          "object": {
+            "output_resolution": {},
+            "intended_display_scale": {},
+            "spatial_detail_policy": {},
+            "temporal_sampling": {},
+            "filter_and_resample_policy": {}
+          }
+        },
+        "ImageIntegration": {
+          "object": {
+            "ToneColor": {},
+            "LightIntegration": {},
+            "ShadowDensity": {},
+            "DepthAir": {},
+            "EdgeLine": {},
+            "TextureOutput": {}
+          }
+        },
+        "LensFlareField": {
+          "object": {
+            "registry_id": {},
+            "artifact_type": {},
+            "world_anchor": {},
+            "SourceMapping": {
+              "object": {
+                "source_state": {},
+                "source_id": {},
+                "source_screen_position": {},
+                "source_luminance_rank": {}
+              }
+            },
+            "ResponseVisibility": {
+              "object": {
+                "level": {},
+                "reason": {}
+              }
+            },
+            "LensModel": {
+              "object": {
+                "flare_mode": {},
+                "coating_strength": {},
+                "aperture_state": {},
+                "anamorphic": {}
+              }
+            },
+            "SpatialBinding": {
+              "object": {
+                "image_center_relation": {},
+                "optical_axis_offset": {},
+                "chain_axis": {}
+              }
+            },
+            "Responses": {
+              "object": {
+                "Ghost": {},
+                "Veil": {},
+                "Streak": {},
+                "Spectral": {}
+              }
+            }
+          },
+          "optional": true
+        },
+        "IntensityBudget": {
+          "object": {
+            "global_observation_budget": {},
+            "para": {},
+            "flare_gradient": {},
+            "glow": {},
+            "diffusion": {},
+            "grain": {},
+            "chromatic_aberration": {},
+            "protected_region_priority": {},
+            "intentional_departures": {
+              "array": {
+                "object": {
+                  "OBS_ref": {},
+                  "scope": {},
+                  "intent_basis": {},
+                  "preserved_relations": {}
+                }
+              }
+            }
+          }
+        },
+        "CompositeValidation": {
+          "object": {
+            "contour_preserved": {},
+            "highlight_clipping": {},
+            "shadow_crushing": {},
+            "chroma_displacement": {},
+            "fine_detail_retention": {},
+            "protected_background_preserved": {}
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "OBS_separate_from_PH": {
+              "constant": true
+            },
+            "physical_lensflare_source_binding_preserved": {
+              "constant": true
+            },
+            "display_artifact_does_not_fake_physical_source": {
+              "constant": true
+            },
+            "intensity_budget_is_single_source_of_truth": {
+              "constant": true
+            },
+            "sampling_conditions_and_actual_execution_distinguished": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "ExtremumDesignColorTemplate": {
+      "object": {
+        "PEV": {
+          "object": {
+            "candidate_state_set": {
+              "array": {}
+            },
+            "selected_physics_extremum": {},
+            "reason": {}
+          }
+        },
+        "AES": {
+          "object": {
+            "selected_from_PEV_only": {},
+            "visual_circulation": {},
+            "asymmetric_balance": {},
+            "tension_release": {},
+            "body_environment_consonance": {},
+            "selected_aesthetic_extremum": {}
+          }
+        },
+        "DesignScience": {
+          "object": {
+            "VisualHierarchy": {},
+            "DensityPlan": {},
+            "ShapeOrder": {},
+            "OrnamentFunction": {}
+          }
+        },
+        "CCM": {
+          "object": {
+            "Palette": {
+              "object": {
+                "base": {},
+                "secondary": {},
+                "accent": {},
+                "neutral": {}
+              }
+            },
+            "ColorDynamics": {
+              "object": {
+                "temp": {},
+                "value_range": {},
+                "saturation": {}
+              }
+            },
+            "Lighting": {
+              "object": {
+                "key_K": {},
+                "fill_tint": {}
+              }
+            },
+            "BackgroundBinding": {
+              "object": {
+                "bg_dominant": {},
+                "bg_accent": {}
+              }
+            },
+            "PerceptualControl": {
+              "object": {
+                "attention_focus": {},
+                "figure_ground_stability": {},
+                "arousal_level": {},
+                "perceptual_noise_tolerance": {}
+              }
+            }
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "PEV_applied_before_AES_when_world_candidates_exist": {
+              "constant": true
+            },
+            "AES_does_not_override_world_validity": {
+              "constant": true
+            },
+            "legacy_FDS_resolved_to_DesignScience": {
+              "constant": true
+            },
+            "CCM_fields_fixed": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "ReflectionClosureTemplate": {
+      "object": {
+        "Applicability": {
+          "object": {
+            "applies_when": {
+              "array": {}
+            },
+            "otherwise": {}
+          }
+        },
+        "ReflectionClosureBlock": {
+          "values": {
+            "object": {
+              "reflection_PH": {},
+              "surface_type": {},
+              "MicrofacetField": {
+                "object": {
+                  "view_dependence": {},
+                  "fresnel": {},
+                  "microfacet": {},
+                  "surface_state_modulation": {},
+                  "energy_consistency": {},
+                  "occlusion_consistency": {
+                    "constant": true
+                  }
+                }
+              },
+              "ReflectionLinks": {
+                "object": {
+                  "physical_influence_out": {},
+                  "physical_feedback_in": {}
+                }
+              },
+              "Evidence": {
+                "array": {}
+              }
+            }
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "reflection_integrated_into_PH_mesh": {
+              "constant": true
+            },
+            "lensflare_registered_as_OBS_not_reflection": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "PhenomenonProfileTemplate": {
+      "object": {
+        "ApplicabilityGuide": {
+          "object": {
+            "selections": {
+              "array": {
+                "object": {
+                  "PH_ref": {},
+                  "profile": {},
+                  "variant": {},
+                  "basis": {}
+                }
+              }
+            }
+          }
+        },
+        "ProfilePolicy": {
+          "object": {
+            "secondary_boost_only": {
+              "constant": true
+            },
+            "full_PH_structure_still_required": {
+              "constant": true
+            },
+            "only_selected_profiles_in_design": {
+              "constant": true
+            }
+          }
+        },
+        "Profiles": {
+          "object": {
+            "Water": {
+              "optional": true
+            },
+            "Fire": {
+              "optional": true
+            },
+            "Wind": {
+              "optional": true
+            },
+            "ClothSoftMaterial": {
+              "optional": true
+            },
+            "MetalHardSurface": {
+              "optional": true
+            },
+            "BodySkin": {
+              "optional": true
+            },
+            "SurfaceScience": {
+              "optional": true
+            },
+            "ReactivePhaseChange": {
+              "object": {
+                "applies_when": {
+                  "optional": true
+                },
+                "omitted_if_not_applicable": {
+                  "constant": true,
+                  "optional": true
+                },
+                "applications": {
+                  "array": {
+                    "object": {
+                      "existing_PH_refs": {
+                        "array": {}
+                      },
+                      "process_kind": {},
+                      "mechanism_and_supply": {},
+                      "transport_and_heat": {},
+                      "interface_and_history": {},
+                      "rate_limiting_process": {},
+                      "evidence_and_uncertainty": {}
+                    }
+                  }
+                }
+              },
+              "optional": true
+            }
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "profile_does_not_replace_PH_schema": {
+              "constant": true
+            },
+            "reactive_profile_only_when_applicable": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "TermsTemplate": {
+      "object": {
+        "Acceptance": {
+          "object": {
+            "undefined_legacy_terms_absent": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "GlobalAcceptanceTemplate": {
+      "object": {
+        "Requirements": {
+          "object": {
+            "PhenomenonRegistry_required": {
+              "constant": true
+            },
+            "full_PH_structure_required": {
+              "constant": true
+            },
+            "all_8_domains_required": {
+              "constant": true
+            },
+            "ObservationRegistry_required_when_OBS_exist": {
+              "constant": true
+            },
+            "WindCapsule_required": {
+              "constant": true
+            },
+            "Gravity_required": {
+              "constant": true
+            },
+            "world_camera_screen_transform_required": {
+              "constant": true
+            }
+          }
+        },
+        "ValidationResults": {
+          "object": {
+            "StructuralInspection": {
+              "object": {
+                "status": {},
+                "checks": {
+                  "object": {
+                    "required_blocks": {},
+                    "rule_contracts": {},
+                    "PH_OBS_separation": {},
+                    "OctaDomain": {},
+                    "scientific_fields": {},
+                    "coordinate_gravity_wind": {},
+                    "template_consolidation": {}
+                  }
+                }
+              }
+            },
+            "SemanticReconciliation": {
+              "object": {
+                "status": {},
+                "checks": {
+                  "object": {
+                    "DeclaredIntent_preserved": {},
+                    "trigger_resolution": {},
+                    "exception_resolution": {},
+                    "source_binding": {},
+                    "scope_and_dependencies": {},
+                    "scientific_consistency": {}
+                  }
+                }
+              }
+            },
+            "RenderObservation": {
+              "object": {
+                "status": {},
+                "evidence_source": {},
+                "checks": {
+                  "object": {
+                    "visual_causality": {},
+                    "contour_preservation": {},
+                    "clipping_crushing": {},
+                    "chroma_detail": {},
+                    "contact_projection": {},
+                    "temporal_continuity": {},
+                    "cue_discrimination_and_sampling": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "OutcomeEvaluation": {
+          "object": {
+            "intent_alignment": {
+              "object": {
+                "status": {},
+                "evidence_refs": {
+                  "array": {}
+                },
+                "rationale": {}
+              }
+            },
+            "artistic_effect": {
+              "object": {
+                "status": {},
+                "evidence_refs": {
+                  "array": {}
+                },
+                "evaluator_basis": {},
+                "strengths": {},
+                "limitations": {}
+              }
+            }
+          }
+        },
+        "ComparativeEvaluation": {
+          "object": {
+            "status": {},
+            "question": {},
+            "changed_factor": {},
+            "controlled_conditions": {},
+            "scene_set": {},
+            "repetitions_and_order": {},
+            "criteria": {},
+            "evidence": {},
+            "result_and_limitations": {}
+          }
+        },
+        "FinalStatus": {
+          "object": {
+            "specification_status": {},
+            "render_status": {},
+            "failure_reasons": {
+              "array": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "extensions": {
+    "KeywordExpansion": {
+      "object": {
+        "expansion_policy": {},
+        "final_output_rule": {
+          "object": {
+            "keyword_surface_forms_removed": {
+              "constant": true
+            },
+            "unselected_expansions_absent": {
+              "constant": true
+            },
+            "detected_expansion_text_preserved": {
+              "constant": true
+            }
+          }
+        },
+        "FilterOperations": {
+          "object": {
+            "registry": {},
+            "f1_to_f3_soft_boundary": {
+              "constant": true
+            },
+            "f2": {
+              "object": {
+                "screen_coordinate_ref": {},
+                "upper_boundary": {},
+                "lower_boundary": {},
+                "center_readable_region_preserved": {
+                  "constant": true
+                },
+                "when_character_exists": {
+                  "object": {
+                    "background_excluded": {
+                      "constant": true
+                    },
+                    "background_added_to_protected_regions": {
+                      "constant": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "optional": true
+        },
+        "o9": {
+          "object": {
+            "operation_type": {},
+            "world_internal_PH": {
+              "constant": false
+            }
+          },
+          "optional": true
+        },
+        "Acceptance": {
+          "object": {
+            "v1_definition_uses_multiple_cross_streaks": {
+              "constant": true
+            },
+            "f2_curvature_unambiguous": {
+              "constant": true
+            }
+          }
+        },
+        "resolved_expansion": {
+          "text": true
+        }
+      }
+    },
+    "CharacterPolicy": {
+      "object": {
+        "trigger": {},
+        "GeneralCharacter": {
+          "object": {
+            "character_id": {},
+            "declared_attributes": {},
+            "unspecified_attributes_not_filled_from_presets": {
+              "constant": true
+            },
+            "male_expression_policy": {}
+          }
+        },
+        "FemalePreset": {
+          "object": {
+            "applies_if_explicitly_selected": {
+              "constant": true
+            },
+            "selected": {},
+            "expanded_text": {
+              "values": {}
+            },
+            "output_selected_only": {
+              "constant": true
+            }
+          },
+          "optional": true
+        },
+        "LN_SAINT": {
+          "object": {
+            "religious_symbol_auto_completion": {}
+          },
+          "optional": true
+        },
+        "Acceptance": {
+          "object": {
+            "general_attributes_preserved": {
+              "constant": true
+            },
+            "preset_not_auto_selected": {
+              "constant": true
+            },
+            "FemaleType_B_text_consistent": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "BeautifulPoseCapsule": {
+      "object": {
+        "trigger": {},
+        "PosePhase": {},
+        "PoseType": {},
+        "Common": {
+          "object": {
+            "intent": {},
+            "primary_axis": {},
+            "gaze_or_orientation": {},
+            "contact_points": {
+              "array": {}
+            },
+            "COM_or_support_center": {},
+            "reaction_or_propulsion": {},
+            "limb_or_appendage_roles": {},
+            "recovery": {},
+            "PH_mechanics_refs": {
+              "object": {
+                "PhysicalModel": {},
+                "ScaleRegime": {},
+                "StateDynamics": {}
+              }
+            },
+            "static_dynamic_mechanics": {
+              "object": {
+                "mode": {},
+                "static_balance_or_support": {},
+                "momentum_propulsion_or_contact_change": {}
+              }
+            },
+            "perceptual_readability_ref": {
+              "object": {
+                "PerceptualReadability": {},
+                "joint_and_contact_cues": {
+                  "array": {}
+                }
+              }
+            }
+          }
+        },
+        "StandingReferenceOnly": {
+          "object": {
+            "applies_if": {},
+            "support_leg_load": {},
+            "primary_axis_camera_slant": {},
+            "action_axis_difference": {}
+          },
+          "optional": true
+        },
+        "Acceptance": {
+          "object": {
+            "pose_type_specific_mechanics_complete": {
+              "constant": true
+            },
+            "standing_defaults_not_forced_on_other_types": {
+              "constant": true
+            },
+            "contact_COM_force_axis_roles_recovery_present": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "VFX": {
+      "object": {
+        "trigger": {},
+        "world_registration": {},
+        "observation_registration": {},
+        "design_intent": {
+          "object": {
+            "subject_and_action": {},
+            "expression_intent_ref": {},
+            "primary_read": {},
+            "layering_basis": {}
+          }
+        },
+        "layers": {
+          "array": {
+            "object": {
+              "layer_id": {},
+              "role": {},
+              "domain": {},
+              "selection": {
+                "object": {
+                  "basis": {},
+                  "scope_and_reason": {}
+                }
+              },
+              "PH_refs": {
+                "array": {}
+              },
+              "OBS_refs": {
+                "array": {}
+              },
+              "function_and_visible_result": {},
+              "spatial_structure": {
+                "object": {
+                  "anchor_and_transform": {},
+                  "extent_orientation_depth": {},
+                  "macro": {},
+                  "meso": {},
+                  "micro": {},
+                  "edge_and_occlusion": {}
+                }
+              },
+              "material_and_optics": {
+                "object": {
+                  "carrier_and_mechanism": {},
+                  "emission_opacity_density": {},
+                  "color_and_light_response": {},
+                  "model_refs": {}
+                }
+              },
+              "motion_and_phase": {
+                "object": {
+                  "driver_and_transport": {},
+                  "distribution_and_correlation": {},
+                  "onset_peak_decay": {},
+                  "state_and_sampling_refs": {}
+                }
+              },
+              "integration": {
+                "object": {
+                  "composite_and_mask": {},
+                  "protected_cues": {},
+                  "failure_to_avoid": {}
+                }
+              }
+            }
+          }
+        },
+        "interlayer_links": {
+          "array": {
+            "object": {
+              "source_layer": {},
+              "target_layer": {},
+              "relation_type": {},
+              "mechanism_and_consequence": {},
+              "foundation_binding": {}
+            }
+          }
+        },
+        "causal_path": {
+          "object": {
+            "input": {},
+            "carrier_PH": {},
+            "receiver": {},
+            "ScaleRegime_ref": {},
+            "StateDynamics_ref": {},
+            "ReactivePhaseChange_ref": {}
+          }
+        },
+        "orchestration": {
+          "object": {
+            "common_time_basis": {},
+            "layer_phase_relations": {},
+            "environment_response": {},
+            "visual_hierarchy": {},
+            "bullet_time": {}
+          }
+        },
+        "output_integration": {
+          "object": {
+            "budget_ref": {},
+            "sampling_contract_ref": {},
+            "LDM_ref": {},
+            "composite_order": {},
+            "color_alpha_contract": {},
+            "scale_adaptation": {}
+          }
+        },
+        "validation_plan": {
+          "object": {
+            "layer_checks": {},
+            "composite_checks": {},
+            "temporal_checks": {},
+            "actual_results_ref": {}
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "world_VFX_registered_as_PH": {
+              "constant": true
+            },
+            "observation_only_effects_not_misregistered_as_VFX_PH": {
+              "constant": true
+            },
+            "layer_roles_scales_and_relations_explicit": {
+              "constant": true
+            },
+            "layer_count_does_not_force_new_content_or_PH_partition": {
+              "constant": true
+            },
+            "material_motion_environment_and_composite_consistent": {
+              "constant": true
+            },
+            "shared_intensity_and_sampling_contracts_preserved": {
+              "constant": true
+            },
+            "structural_requirements_not_reported_as_render_evidence": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "ECodeImplementation": {
+      "object": {
+        "trigger": {},
+        "output_kind": {},
+        "source_revision": {
+          "object": {
+            "commit": {},
+            "base_blob": {},
+            "extension_blob": {}
+          }
+        },
+        "target_runtime": {
+          "constant": "WebGPU"
+        },
+        "source_and_time_contract": {},
+        "world_PH_refs": {
+          "array": {}
+        },
+        "observation_OBS_refs": {
+          "array": {}
+        },
+        "implementation_artifacts": {
+          "array": {}
+        },
+        "applicable_rule_evidence": {},
+        "validation": {
+          "object": {
+            "syntax_and_shader": {},
+            "actual_GPU_pixels_and_timing": {},
+            "game_event_and_SFX": {}
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "baseline_and_selected_extensions_preserved": {
+              "constant": true
+            },
+            "image_generation_not_implied": {
+              "constant": true
+            },
+            "WebGPU_visual_runtime_required": {
+              "constant": true
+            },
+            "image_generation_VFX_not_runtime_E": {
+              "constant": true
+            },
+            "runtime_code_and_visual_acceptance_distinguished": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "PostEffects": {
+      "object": {
+        "trigger": {
+          "object": {
+            "ordinary_posteffects": {},
+            "beta_targets": {
+              "array": {}
+            }
+          }
+        },
+        "selection": {
+          "object": {
+            "mode": {},
+            "scope_resolution": {},
+            "exact_selected_operations": {
+              "array": {}
+            }
+          }
+        },
+        "autonomous_activation": {
+          "object": {
+            "physical_causality_input_required": {
+              "constant": false
+            },
+            "registry": {},
+            "budget_ref": {},
+            "sampling_contract_ref": {}
+          }
+        },
+        "SPCA": {
+          "object": {
+            "applies_if": {},
+            "evidence_types_standard_two_of": {
+              "array": {}
+            },
+            "explicit_intent_adjustment": {},
+            "PostEffects_alone_does_not_require_new_PH": {
+              "constant": true
+            }
+          },
+          "optional": true
+        },
+        "global_posteffects": {
+          "object": {
+            "applies": {},
+            "exact_OBS_operations": {
+              "array": {}
+            },
+            "OBS_refs": {
+              "array": {}
+            }
+          }
+        },
+        "local_posteffects": {
+          "object": {
+            "applies": {},
+            "targets": {
+              "array": {}
+            },
+            "exact_OBS_operations": {
+              "array": {}
+            },
+            "OBS_refs": {
+              "array": {}
+            }
+          }
+        },
+        "operation_contract": {
+          "object": {
+            "required_fields": {
+              "array": {}
+            },
+            "sampling_consequence": {}
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "exact_selected_operation_does_not_infer_layers": {
+              "constant": true
+            },
+            "global_local_scope_unambiguous": {
+              "constant": true
+            },
+            "legacy_five_domain_reference_absent": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "LuminanceDynamicsModule": {
+      "object": {
+        "trigger": {
+          "object": {
+            "explicit_VFX": {},
+            "explicit_PostEffects": {},
+            "inferred_requires_luminance_dynamics": {}
+          }
+        },
+        "omitted_if_not_enabled": {
+          "constant": true
+        },
+        "target_metrics": {
+          "object": {
+            "target_size": {},
+            "camera_distance": {},
+            "screen_occupancy": {},
+            "readability_priority": {}
+          }
+        },
+        "Image": {
+          "object": {
+            "spatial_envelope": {},
+            "local_contrast_budget": {}
+          },
+          "optional": true
+        },
+        "Video": {
+          "object": {
+            "temporal_envelope": {},
+            "micro_variation": {},
+            "anti_flicker": {
+              "text": true
+            }
+          },
+          "optional": true
+        },
+        "budget_ref": {},
+        "sampling_contract_ref": {},
+        "sampling_consequence": {},
+        "AlphaBackground": {
+          "object": {
+            "enabled": {},
+            "required_background_if_enabled": {}
+          }
+        },
+        "alpha_ref": {},
+        "ActivationExclusions": {
+          "object": {
+            "non_emissive_particles_only": {},
+            "grain_only": {}
+          }
+        },
+        "Acceptance": {
+          "object": {
+            "mode_specific_envelope": {
+              "constant": true
+            },
+            "numeric_defaults_subordinate_to_target_metrics": {
+              "constant": true
+            },
+            "no_unwanted_global_luma_lift": {
+              "constant": true
+            },
+            "screen_processing_stays_in_observation_layer": {
+              "constant": true
+            },
+            "screen_signal_appearance_integrated_into_VFX_layers": {
+              "constant": true
+            },
+            "source_mask_stage_composite_and_sampling_defined": {
+              "constant": true
+            },
+            "unselected_operations_not_inferred": {
+              "constant": true
+            },
+            "physical_mechanism_not_asserted_without_source": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "MagicArchitecture": {
+      "object": {
+        "trigger": {},
+        "all_design_blocks_required": {
+          "constant": true
+        },
+        "PROJECT": {
+          "object": {
+            "EFFECT_NAME": {},
+            "CATEGORY": {},
+            "ELEMENT": {},
+            "MOOD": {},
+            "READABILITY_PRIORITY": {}
+          }
+        },
+        "USE_CASE": {
+          "object": {
+            "PURPOSE": {},
+            "SCALE": {},
+            "DISTANCE_TO_PLAYER": {},
+            "SPEED_FEEL": {},
+            "WEIGHT_FEEL": {}
+          }
+        },
+        "CAUSAL_PATH": {
+          "object": {
+            "input": {},
+            "carrier_PH": {},
+            "receiver": {},
+            "ScaleRegime_ref": {},
+            "StateDynamics_ref": {},
+            "ReactivePhaseChange_ref": {}
+          }
+        },
+        "SELECTED_PRESET": {
+          "object": {
+            "preset_id": {},
+            "MAIN_SHAPE": {},
+            "SUB_SHAPE": {},
+            "MAIN_TEXTURE": {},
+            "GARNISH": {}
+          }
+        },
+        "THREE_ELEMENTS_DESIGN": {
+          "object": {
+            "MAIN_EFFECT": {
+              "object": {
+                "enabled": {},
+                "disabled_reason": {},
+                "ROLE": {},
+                "MAIN_SHAPE": {},
+                "MAIN_MOTION_HINT": {},
+                "MAIN_TEXTURE": {},
+                "MAIN_GLOW": {}
+              }
+            },
+            "SUB_EFFECT": {
+              "object": {
+                "enabled": {},
+                "disabled_reason": {},
+                "ROLE": {},
+                "SUB_SHAPE": {},
+                "SUB_TRANSPARENCY": {},
+                "SUB_TONE_LIMIT": {},
+                "NOTE": {}
+              }
+            },
+            "GARNISH_EFFECT": {
+              "object": {
+                "enabled": {},
+                "disabled_reason": {},
+                "ROLE": {},
+                "GARNISH_PARTICLES": {},
+                "DENSITY": {},
+                "SIZE_VARIATION": {},
+                "PERFORMANCE_NOTE": {}
+              }
+            }
+          }
+        },
+        "INFERRED_SUPPORT_ELEMENTS": {
+          "object": {
+            "accepted_only": {
+              "constant": true
+            },
+            "visual_support": {},
+            "causal_support": {},
+            "composition_support": {}
+          }
+        },
+        "ANIME_EXAGGERATION_PACK": {
+          "object": {
+            "CROSS_LENS_FLARE": {},
+            "ABSTRACT_BG_POWER": {},
+            "GHOST_BLUR_AFTERIMAGE": {},
+            "POSTERIZE_2TONE": {},
+            "DISTORTION_HEATWAVE": {}
+          }
+        },
+        "COMPOSITION_RULES": {
+          "object": {
+            "eye_order": {
+              "array": {}
+            },
+            "MAIN": {},
+            "SUB": {},
+            "GARNISH": {},
+            "outer_areas": {}
+          }
+        },
+        "ANTI_FLICKER_NEAR_DISTANCE": {
+          "object": {
+            "applies_if": {},
+            "rules": {
+              "array": {}
+            }
+          }
+        },
+        "CatalogReference": {
+          "object": {
+            "full_catalog_location": {},
+            "full_catalog_not_repeated_in_generated_output": {
+              "constant": true
+            }
+          }
+        },
+        "VFX_ref": {
+          "optional": true
+        },
+        "Acceptance": {
+          "object": {
+            "Fireball_alone_does_not_activate": {
+              "constant": true
+            },
+            "magic_explicit_activates_full_architecture": {
+              "constant": true
+            },
+            "selected_preset_only_in_generated_output": {
+              "constant": true
+            },
+            "VFX_owns_layer_level_rendering_detail": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "GradientAnchorPolicy": {
+      "object": {
+        "trigger": {},
+        "gradient_type": {},
+        "anchor": {},
+        "registration": {
+          "object": {
+            "world_surface_gradient": {},
+            "world_VFX_gradient": {},
+            "observation_gradient": {}
+          }
+        },
+        "o9_ref": {},
+        "Acceptance": {
+          "object": {
+            "physical_and_observation_gradients_distinguished": {
+              "constant": true
+            },
+            "unanchored_world_gradient_absent": {
+              "constant": true
+            }
+          }
+        }
+      }
+    },
+    "VideoGenerationPolicy": {
+      "object": {
+        "Mode": {},
+        "Duration": {
+          "object": {
+            "source": {},
+            "seconds": {}
+          }
+        },
+        "Style": {},
+        "dataclass_forbidden": {
+          "constant": true
+        },
+        "timeline": {
+          "object": {
+            "unit": {},
+            "tracks": {
+              "object": {
+                "PH": {
+                  "array": {
+                    "object": {
+                      "id": {},
+                      "start": {},
+                      "end": {},
+                      "state_before": {},
+                      "state_during": {},
+                      "state_after": {}
+                    }
+                  }
+                },
+                "OBS": {
+                  "array": {
+                    "object": {
+                      "id": {},
+                      "start": {},
+                      "end": {},
+                      "state_before": {},
+                      "state_during": {},
+                      "state_after": {}
+                    }
+                  }
+                },
+                "camera": {
+                  "array": {
+                    "object": {
+                      "start": {},
+                      "end": {},
+                      "transform": {},
+                      "state_before": {},
+                      "state_during": {},
+                      "state_after": {}
+                    }
+                  }
+                },
+                "audio": {
+                  "array": {
+                    "object": {
+                      "id": {},
+                      "start": {},
+                      "end": {},
+                      "role": {},
+                      "state_before": {},
+                      "state_during": {},
+                      "state_after": {}
+                    }
+                  }
+                },
+                "dialogue": {
+                  "array": {
+                    "object": {
+                      "reading_romaji": {},
+                      "mora_count": {},
+                      "prosody": {},
+                      "pause_before": {},
+                      "pause_after": {},
+                      "start": {},
+                      "end": {},
+                      "state_before": {},
+                      "state_during": {},
+                      "state_after": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ContinuityLedger": {
+          "object": {
+            "characters": {},
+            "costumes": {},
+            "light_sources": {},
+            "objects": {},
+            "contacts": {}
+          }
+        },
+        "ResponseAndSamplingChecks": {
+          "object": {
+            "PH_response_timescale_refs": {
+              "array": {}
+            },
+            "temporal_sampling_ref": {},
+            "OBS_sampling_consequence_refs": {
+              "array": {}
+            },
+            "frame_cadence_and_exposure": {},
+            "observation_windows_fit_timeline": {
+              "constant": true
+            },
+            "longer_physical_response_state_at_video_end": {}
+          }
+        },
+        "DialoguePolicy": {
+          "object": {
+            "applies_if_declared": {
+              "constant": true
+            },
+            "required_sentence": {},
+            "mora_guides": {
+              "object": {
+                "10s": {
+                  "constant": 30
+                },
+                "15s": {
+                  "constant": 45
+                },
+                "25s": {
+                  "constant": 75
+                }
+              }
+            },
+            "final_line_end_margin": {}
+          },
+          "optional": true
+        },
+        "Acceptance": {
+          "object": {
+            "single_duration_source_of_truth": {
+              "constant": true
+            },
+            "all_tracks_within_duration": {
+              "constant": true
+            },
+            "response_timescale_and_OBS_sampling_checked_against_timeline": {
+              "constant": true
+            },
+            "character_costume_light_object_contact_continuity_checked": {
+              "constant": true
+            }
+          }
+        }
+      }
+    }
+  }
+}
