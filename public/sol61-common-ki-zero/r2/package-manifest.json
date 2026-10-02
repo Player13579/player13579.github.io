@@ -1,0 +1,92 @@
+{
+  "schema": "common-renki-gallery-package/v1",
+  "id": "renki-sol61-zero-r2",
+  "version": "r2",
+  "author": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol"
+  },
+  "runtimeAdapterAuthor": {
+    "model": "gpt-6-luna",
+    "displayName": "GPT-6-Luna"
+  },
+  "status": "frozen-source-technical-replay-pass-quality-unmet-unadopted",
+  "sourceSealSha256": "4ad596faca32b05c3f1051ca67ee8d64dbe7a9976a582efb6cdee6355eb623eb",
+  "sourceManifestSha256": "ad28cafe7acc137f70e0f9dbb4638a3b5e75ca607c602e2b9bbee31254089ef7",
+  "creativeSourceSha256": "728a831d98f6024363b0f6863f562b8c72dd3c069674108841a8ceba57e81be0",
+  "entry": "package/gallery.html?embed=1&galleryAutoLoop=1",
+  "standaloneEntry": "package/index.html",
+  "sourceFiles": [
+    {
+      "path": "package/body-focus-original.png",
+      "bytes": 1220306,
+      "sha256": "e3c96c1b719d56ca8c210e11f2cef5f359ad9075b2b50f8c3e63eef3c04a85d0",
+      "mime": "image/png"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 1436,
+      "sha256": "269cce5bbea5ec7d7aa3bbb02a52d5a03868a6b124d33f2b0bfaee45c00ca0a0",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "package/post.wgsl",
+      "bytes": 1080,
+      "sha256": "48093ee574b479d029c79cfee20e80580ab3f289ac39a9297d206f9702c18c48",
+      "mime": "text/plain; charset=utf-8"
+    },
+    {
+      "path": "package/preview.mjs",
+      "bytes": 3680,
+      "sha256": "827feeef4365c03e19da48a25336ba2a3e5e408ba9833d7330af3c49c0da5a70",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "package/renki.mjs",
+      "bytes": 11590,
+      "sha256": "728a831d98f6024363b0f6863f562b8c72dd3c069674108841a8ceba57e81be0",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "package/scene.wgsl",
+      "bytes": 4871,
+      "sha256": "61296ca7abaf6a521e639d7b26e3c7775d866e1e3ae8122e62f8a36055821301",
+      "mime": "text/plain; charset=utf-8"
+    }
+  ],
+  "galleryAdapterReplayStatus": "pass",
+  "galleryAdapter": {
+    "path": "package/gallery.html",
+    "bytes": 3842,
+    "sha256": "c93261d907dd26f81b1e35aae122e8b0aa4c660bfea7c6d0939d957b5248b638",
+    "mime": "text/html; charset=utf-8",
+    "purpose": "CSS-only support-bound crop/scale of the unchanged 640x360 source canvas; controls hidden; authored play control remains addressable by parent gallery SFX gesture bridge; startup, runtime, resource-load and unhandled-rejection errors are revealed from source status, window error events, __renkiFailure, and __renkiSnapshot.errors",
+    "supportFit": {
+      "observedUnion": {
+        "x": 267,
+        "y": 176,
+        "width": 108,
+        "height": 84
+      },
+      "paddedViewportBounds": {
+        "x": 243,
+        "y": 152,
+        "width": 156,
+        "height": 132
+      },
+      "marginPx": 24,
+      "coverage": 0.78,
+      "sourceCapturePhases": [
+        "R2: 250/600/900 ms; post-off 900"
+      ],
+      "fullLifetimeBoundsVerified": false
+    }
+  },
+  "technicalReplay": "pass",
+  "quality": "not-accepted",
+  "adoption": "not-adopted",
+  "gameIntegration": "not-connected",
+  "normalSfxListening": "not-run",
+  "safari": "unverified",
+  "galleryAdapterEvidence": "outputs/request-20261003/renki-gallery-adapter-native-r1/PRIMARY-REVIEW.md"
+}
