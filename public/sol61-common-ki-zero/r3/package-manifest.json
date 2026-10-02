@@ -1,0 +1,93 @@
+{
+  "schema": "common-renki-gallery-package/v1",
+  "id": "renki-sol61-zero-r3",
+  "version": "r3",
+  "author": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol"
+  },
+  "runtimeAdapterAuthor": {
+    "model": "gpt-6-luna",
+    "displayName": "GPT-6-Luna"
+  },
+  "status": "frozen-source-technical-replay-pass-quality-unmet-unadopted",
+  "sourceManifestSha256": "17697f52029958f216574a6dec417c29d5fa7868a909b9f858835e4da66fd802",
+  "sourceSealSha256": "8f08688e64b827abe4ddbd3d247966aa67e1d3b3503e5568fa239ae213ab6329",
+  "creativeSourceSha256": "d36d7313d30f628b1dfe467cb678e86ba4c157d0f1931c2a3240b65b233bbe40",
+  "entry": "package/gallery.html?embed=1&galleryAutoLoop=1",
+  "standaloneEntry": "package/index.html",
+  "sourceFiles": [
+    {
+      "path": "package/body-focus-original.png",
+      "bytes": 1220306,
+      "sha256": "e3c96c1b719d56ca8c210e11f2cef5f359ad9075b2b50f8c3e63eef3c04a85d0",
+      "mime": "image/png"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 1436,
+      "sha256": "4b5788f27339b39c3bad8be34225235b5691d2fb46ebac6594c21ec07d24af62",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "package/post.wgsl",
+      "bytes": 1080,
+      "sha256": "48093ee574b479d029c79cfee20e80580ab3f289ac39a9297d206f9702c18c48",
+      "mime": "text/plain; charset=utf-8"
+    },
+    {
+      "path": "package/preview.mjs",
+      "bytes": 3680,
+      "sha256": "827feeef4365c03e19da48a25336ba2a3e5e408ba9833d7330af3c49c0da5a70",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "package/renki.mjs",
+      "bytes": 12189,
+      "sha256": "d36d7313d30f628b1dfe467cb678e86ba4c157d0f1931c2a3240b65b233bbe40",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "package/scene.wgsl",
+      "bytes": 5470,
+      "sha256": "1c405e6c0b522363d30e93f074f4cdfafd7659ddac7b022a027fd2221344a890",
+      "mime": "text/plain; charset=utf-8"
+    }
+  ],
+  "galleryAdapterReplayStatus": "pass",
+  "galleryAdapterEvidence": "outputs/request-20261003/renki-r3-gallery-native/REVIEW.md",
+  "galleryAdapter": {
+    "path": "package/gallery.html",
+    "bytes": 3842,
+    "sha256": "ad11982b58475528e455eb7ff76e373fe93f8e9c2c54e3a248dc517adaa991b0",
+    "mime": "text/html; charset=utf-8",
+    "purpose": "R1/R2 tested responsive support-fit and error-visibility adapter reused unchanged; root confirmed R3 actual WebGPU adapter auto-loop replay and a visible active abdominal effect.",
+    "supportFit": {
+      "observedUnion": {
+        "x": 267,
+        "y": 176,
+        "width": 108,
+        "height": 84
+      },
+      "paddedViewportBounds": {
+        "x": 243,
+        "y": 152,
+        "width": 156,
+        "height": 132
+      },
+      "marginPx": 24,
+      "coverage": 0.78,
+      "sourceCapturePhases": [
+        "R3: held 500/850 ms; post-off 850 ms"
+      ],
+      "fitBoundsInheritedFrom": "R1/R2 tested layout; Root sampled R3 effect within viewport; complete R3 full-lifetime support bounds not asserted",
+      "fullLifetimeBoundsVerified": false
+    }
+  },
+  "technicalReplay": "pass",
+  "quality": "not-accepted",
+  "adoption": "not-adopted",
+  "gameIntegration": "not-connected",
+  "normalSfxListening": "not-run",
+  "safari": "unverified"
+}
