@@ -1,0 +1,19 @@
+{
+  "packageId": "common-ki-zero-sol61-preview-r4",
+  "derivativeOf": {
+    "packageId": "common-ki-zero-sol61-preview-r3",
+    "parentSealFileSha256": "b767592dcec1e2eae3f9b16bd476809bb980d85a649a4fd6598e7f2aa7ff3afc",
+    "parentManifestSha256": "e86572f242b1d034d5d8921a2db4bb8e06d9b00855915a9ee9e80ab9ad2a4d2c"
+  },
+  "implementation": "GPT-6-Luna",
+  "changes": [
+    "R3-to-R4 runtime diff is exactly the OBS vec2i(float,float) to vec2i(vec2f(float,float)) conversion. R1/R2 readiness and reserved-member repairs remain inherited."
+  ],
+  "status": {
+    "sourceTests": "pass: 13/13",
+    "nativeReplay": "awaiting primary native verification",
+    "quality": "pending",
+    "adoption": "unadopted",
+    "mainGameConnected": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "common-ki-standalone-runtime-closure/v1",
+  "entry": "index.html",
+  "imports": [
+    {
+      "from": "index.html",
+      "to": "preview.mjs",
+      "kind": "module-script"
+    },
+    {
+      "from": "index.html",
+      "to": "webgpu-player-sprite.js",
+      "kind": "classic-script"
+    },
+    {
+      "from": "preview.mjs",
+      "to": "creative.mjs",
+      "kind": "module-import"
+    },
+    {
+      "from": "preview.mjs",
+      "to": "assets/male-right-walk-v790.png",
+      "kind": "runtime-fetch"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 3102,
+      "sha256": "f091ff8647f1c1c6c37b7100f60390b07f5d03c456a04244833a015e78659024"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 32134,
+      "sha256": "858c5c30615b63cc2319069c857ab8d41bb2a95175303512c190322f488c818e"
+    },
+    {
+      "path": "creative.mjs",
+      "bytes": 8316,
+      "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+    },
+    {
+      "path": "webgpu-player-sprite.js",
+      "bytes": 7126,
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+    },
+    {
+      "path": "assets/male-right-walk-v790.png",
+      "bytes": 327713,
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+    }
+  ]
+}

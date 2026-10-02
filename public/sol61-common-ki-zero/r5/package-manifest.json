@@ -1,0 +1,117 @@
+{
+  "schema": "common-ki-standalone-preview-package/v1",
+  "packageId": "common-ki-zero-sol61-preview-r5",
+  "displayName": "共通錬気 R5 — paired folded channels with body receiving",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "faithfulImplementation": "GPT-6-Luna",
+  "status": {
+    "nativeReplay": "awaiting primary native verification",
+    "quality": "pending",
+    "adoption": "unadopted",
+    "mainGameConnected": false
+  },
+  "derivativeOf": {
+    "packageId": "common-ki-zero-sol61-preview-r4",
+    "sealFileSha256": "07b13103a99595292764b812e53884c23c4813ad88e3123eaad4ec4a31a422a0",
+    "manifestSha256": "5069d7bee05bf1c9d3c630b1abe1f1e94236732e28f38b56fe3fc360270665ca"
+  },
+  "change": "Fresh quality candidate using the exact R5 artist equations and WGSL, 416-byte source ABI, body-alpha-masked receiving light, and required rear/receiver/body/body-receive/front/OBS ordering. R4 is unchanged.",
+  "inputDesign": {
+    "designSha256": "16479250aa1987c3d59e622ca5fc93893cfe8a0e0050dbfa9dfc5ae864853260",
+    "creativeModuleSha256": "e10fb079c89e0e7733aaaa82d135610175acf86e796921b4de7e987f03a3e23b",
+    "creativeTestsSha256": "7f468954424f892b502b5e8302088ae70888a96f9df976d80db3bd24b22c2672",
+    "artistCodeByteIdentical": true,
+    "packageRelativeImportOnly": "The copied R5 module changes only the inherited R4 module relative import so its bytes resolve inside this package. Its equations and WGSL are byte-identical to the design module.",
+    "inheritedSupportsAndSfxSha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+  },
+  "renderer": {
+    "sourceUniformBytes": 416,
+    "formatIntermediate": "rgba16float",
+    "sortOrder": [
+      "neutral background",
+      "rear source",
+      "source-bound floor/side received light",
+      "ordinary body",
+      "body-alpha-masked received light",
+      "front source",
+      "source-bound OBS",
+      "explicit display transfer"
+    ],
+    "bodyReceivedMask": "ordinary body texture alpha multiplied once by authored gain .78; additive alpha 0; body RGB and opacity untouched",
+    "fixture": "pinned male-right-walk-v790 first crop, alpha hull; actual-scale plus H64 comparison",
+    "verifyAudio": "hard zero with verify query",
+    "normalAudio": "inherited finite 880 ms local fixture PCM, explicit gesture and validation-null + queue completion proof only",
+    "productionAck": "not connected"
+  },
+  "sourcePins": [
+    {
+      "file": "outputs/request-20261002/common-ki-sol61-quality-r5/DESIGN.md",
+      "sha256": "16479250aa1987c3d59e622ca5fc93893cfe8a0e0050dbfa9dfc5ae864853260"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-sol61-quality-r5/creative.mjs",
+      "sha256": "e10fb079c89e0e7733aaaa82d135610175acf86e796921b4de7e987f03a3e23b"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-sol61-quality-r5/verify-creative.mjs",
+      "sha256": "7f468954424f892b502b5e8302088ae70888a96f9df976d80db3bd24b22c2672"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-zero-sol61-preview-r4/package-manifest.json",
+      "sha256": "5069d7bee05bf1c9d3c630b1abe1f1e94236732e28f38b56fe3fc360270665ca"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-zero-sol61-preview-r4/SEAL.json",
+      "sha256": "07b13103a99595292764b812e53884c23c4813ad88e3123eaad4ec4a31a422a0"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-zero-sol61-preview-r4/package/preview.mjs",
+      "sha256": "858c5c30615b63cc2319069c857ab8d41bb2a95175303512c190322f488c818e"
+    },
+    {
+      "file": "outputs/request-20261002/r52-minimap-eager-host/snapshot/webgpu-player-sprite.js",
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+    },
+    {
+      "file": "outputs/request-20261002/r52-minimap-eager-host/snapshot/assets/generated/male-right-walk-v790.png",
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+    }
+  ],
+  "runtimeFiles": [
+    {
+      "path": "index.html",
+      "bytes": 3102,
+      "sha256": "7c649ff4cc23d604335c09e19aed9996b49b2d25c7aefcf42bcd11e9f77ef81e"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 32997,
+      "sha256": "812d82b3a96975e99565ede4180870f2550b48649b7c025c0ce7fe07f1c12991"
+    },
+    {
+      "path": "creative.mjs",
+      "bytes": 11322,
+      "sha256": "37c95c2705d291531f4785534b7ca03613b519056d1728216c4b26179aa252e0"
+    },
+    {
+      "path": "webgpu-player-sprite.js",
+      "bytes": 7126,
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+    },
+    {
+      "path": "assets/male-right-walk-v790.png",
+      "bytes": 327713,
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+    },
+    {
+      "path": "common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "bytes": 8316,
+      "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+    }
+  ],
+  "closureSha256": "e9a33f58354910f8f44accab0d13a1837407a86a7f4a373f1854a568977d42aa"
+}

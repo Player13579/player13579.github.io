@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>共通錬気 R5 — standalone WebGPU preview</title>
+  <style>
+    :root { color-scheme: dark; font: 15px/1.45 system-ui,sans-serif; background:#111922; color:#e9f0f7 }
+    body { margin:0 auto; padding:20px; max-width:1260px }
+    h1 { font-size:1.35rem; margin:0 0 8px }
+    .notice { color:#c4d0dc; border-left:3px solid #72b6ef; padding:8px 12px; margin:12px 0 }
+    .stage { background:#202b37; border:1px solid #435465; border-radius:8px; overflow:hidden }
+    canvas { width:100%; height:min(70vh,720px); display:block; touch-action:none }
+    .controls { display:flex; gap:12px 18px; flex-wrap:wrap; padding:14px 0; align-items:center }
+    label { display:flex; align-items:center; gap:7px }
+    button,select,input { font:inherit; accent-color:#8bc9f6 }
+    input[type=range] { width:160px }
+    button { background:#263949; border:1px solid #55718a; color:#f5fbff; border-radius:5px; padding:7px 12px; cursor:pointer }
+    button:disabled { opacity:.5; cursor:wait }
+    pre { white-space:pre-wrap; overflow-wrap:anywhere; max-height:210px; overflow:auto; background:#0c131b; padding:12px; border-radius:6px }
+    .small { color:#afbdc9; font-size:.88rem }
+  </style>
+</head>
+<body>
+  <h1>共通錬気 R5 — standalone WebGPU preview</h1>
+  <p class="notice">これは固定のローカル描画fixtureです。ゲームの錬気receipt、privacy/body admission、同フレームack、SFX連携はありません。ここでのGPU提出は本編接続の証明ではありません。</p>
+  <div class="stage"><canvas id="view" aria-label="WebGPU common ki preview"></canvas></div>
+  <div class="controls">
+    <button id="play">連続再生</button><button id="pause">停止</button>
+    <button id="render">現在値を描画</button>
+    <label>phase E ms <input id="age" type="range" min="0" max="1200" step="1" value="640"><output id="ageOut">640</output></label>
+    <label>fixture H <select id="height"><option value="actual">male-right-walk 実scale</option><option value="64">H64 比較</option></select></label>
+    <label>source <input id="source" type="checkbox" checked></label>
+    <label>nearby <input id="nearby" type="checkbox" checked></label>
+    <label>OBS <input id="observer" type="checkbox" checked></label>
+    <label>variant <select id="variant"><option value="">ordinary</option><option value="tenfold">tenfold</option></select></label>
+  </div>
+  <p id="status" role="status">WebGPU起動待ち</p>
+  <pre id="diagnostics">診断準備中</pre>
+  <p class="small">verify query parameter は常に消音です。通常起動では「連続再生」のgesture後、各fixture cycleの最初の有効な可視source drawがvalidationを通りqueue完了した後に限り、880msの局所preview SFXを1回鳴らします。これはゲームのreceiptや本編SFX連携ではありません。</p>
+  <script src="./webgpu-player-sprite.js"></script>
+  <script type="module" src="./preview.mjs"></script>
+</body>
+</html>

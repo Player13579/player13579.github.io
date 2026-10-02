@@ -1,0 +1,126 @@
+{
+  "schema": "common-ki-standalone-preview-package/v1",
+  "packageId": "common-ki-zero-sol61-preview-r4",
+  "displayName": "共通錬気 r4 — OBS integer-vector constructor compatibility repair",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "faithfulImplementation": "GPT-6-Luna",
+  "status": {
+    "nativeReplay": "awaiting primary native verification",
+    "quality": "pending",
+    "adoption": "unadopted",
+    "mainGameConnected": false
+  },
+  "derivativeOf": {
+    "packageId": "common-ki-zero-sol61-preview-r3",
+    "sealFileSha256": "b767592dcec1e2eae3f9b16bd476809bb980d85a649a4fd6598e7f2aa7ff3afc",
+    "manifestSha256": "e86572f242b1d034d5d8921a2db4bb8e06d9b00855915a9ee9e80ab9ad2a4d2c"
+  },
+  "change": "Convert the two floating OBS pixel components to vec2f before vec2i, preserving component conversion/truncation and all shader math, support, and ABI.",
+  "inputDesign": {
+    "contractSha256": "9448881d1224e5f0fa046aa14af65a4a0b30e739ce851ee410e2dcf5ea7be955",
+    "originalCreativeModuleSha256": "665fcbad56db6365aa85eae9fe9e199c77389a8640aa934a49153c36dae394e9",
+    "WGSLIdentifierPatch": {
+      "from": "filter",
+      "to": "sourceSampler",
+      "bindingLayoutChanged": false,
+      "artistCoefficientsChanged": false
+    },
+    "OBSConstructorRepair": {
+      "from": "vec2i(f32,f32)",
+      "to": "vec2i(vec2f(f32,f32))",
+      "coordinateConversion": "component-wise truncation toward zero",
+      "uniformLayoutChanged": false,
+      "creativeChanged": false
+    }
+  },
+  "renderer": {
+    "sourceUniformBytes": 288,
+    "formatIntermediate": "rgba16float",
+    "sortOrder": [
+      "back plates",
+      "receiver",
+      "body",
+      "front plates",
+      "OBS",
+      "explicit SDR transfer"
+    ],
+    "HFixture": "H64 comparison plus registered male-right-walk first crop actual alpha support",
+    "verifyAudio": "hard zero",
+    "normalAudio": "local fixture only; explicit gesture; one 880ms PCM after positive submitted source, null validation, and queue completion",
+    "productionAck": "not connected"
+  },
+  "sourcePins": [
+    {
+      "file": "outputs/request-20261002/common-ki-zero-sol61-design-r1/CONTRACT.md",
+      "sha256": "9448881d1224e5f0fa046aa14af65a4a0b30e739ce851ee410e2dcf5ea7be955"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-zero-sol61-design-r1/creative.mjs",
+      "sha256": "665fcbad56db6365aa85eae9fe9e199c77389a8640aa934a49153c36dae394e9"
+    },
+    {
+      "file": "outputs/request-20261002/r61-field-owner-integrated-host/candidate/app.js",
+      "sha256": "60fff0feb94da4ea078b853962c4ac28d0035c9618839cb7d6edb99d3138656a"
+    },
+    {
+      "file": "outputs/request-20261002/emp-producer-span-port/candidate/offline-server-main.js",
+      "sha256": "f3dbbacc70e05fb9c4d1fb817e6fbc0247b5ec65eda9cf54b976b5d18cb69bee"
+    },
+    {
+      "file": "outputs/request-20261002/emp-producer-span-port/candidate/offline-server-worker.js",
+      "sha256": "f2c3d4c9e4f912dec6839d67376ba047bd8f69dd5ca0cdc95ad84c94100aac9d"
+    },
+    {
+      "file": "outputs/request-20261002/r52-minimap-eager-host/snapshot/webgpu-player-sprite.js",
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+    },
+    {
+      "file": "outputs/request-20261002/r52-minimap-eager-host/snapshot/webgpu-primitives.js",
+      "sha256": "1ce5c0ee4af5d89cccd2a4c84d561b96cd9885bab9d740965b3b44b5483db481"
+    },
+    {
+      "file": "outputs/request-20261002/r52-minimap-eager-host/snapshot/assets/generated/male-right-walk-v790.png",
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-zero-sol61-preview-r3/package-manifest.json",
+      "sha256": "e86572f242b1d034d5d8921a2db4bb8e06d9b00855915a9ee9e80ab9ad2a4d2c"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-zero-sol61-preview-r3/SEAL.json",
+      "sha256": "b767592dcec1e2eae3f9b16bd476809bb980d85a649a4fd6598e7f2aa7ff3afc"
+    },
+    {
+      "file": "outputs/request-20261002/common-ki-zero-sol61-preview-r3/package/preview.mjs",
+      "sha256": "d38243e6a76387a3fd9f75b2b2eebfe4b32ee85792295b05d9d44d1280e974d2"
+    }
+  ],
+  "runtimeFiles": [
+    {
+      "path": "index.html",
+      "bytes": 3102,
+      "sha256": "f091ff8647f1c1c6c37b7100f60390b07f5d03c456a04244833a015e78659024"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 32134,
+      "sha256": "858c5c30615b63cc2319069c857ab8d41bb2a95175303512c190322f488c818e"
+    },
+    {
+      "path": "creative.mjs",
+      "bytes": 8316,
+      "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+    },
+    {
+      "path": "webgpu-player-sprite.js",
+      "bytes": 7126,
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+    },
+    {
+      "path": "assets/male-right-walk-v790.png",
+      "bytes": 327713,
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+    }
+  ],
+  "closureSha256": "315c61c3d333e7a4b2b87fd8a1138bdb6c62f97ebd940db02f6d1ae192e1799a"
+}

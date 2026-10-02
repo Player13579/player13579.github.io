@@ -1,0 +1,63 @@
+{
+  "schema": "common-ki-standalone-runtime-closure/v1",
+  "entry": "index.html",
+  "imports": [
+    {
+      "from": "index.html",
+      "to": "preview.mjs",
+      "kind": "module-script"
+    },
+    {
+      "from": "index.html",
+      "to": "webgpu-player-sprite.js",
+      "kind": "classic-script"
+    },
+    {
+      "from": "preview.mjs",
+      "to": "creative.mjs",
+      "kind": "module-import"
+    },
+    {
+      "from": "creative.mjs",
+      "to": "common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "kind": "inherited-module-import"
+    },
+    {
+      "from": "preview.mjs",
+      "to": "assets/male-right-walk-v790.png",
+      "kind": "runtime-fetch"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 3102,
+      "sha256": "7c649ff4cc23d604335c09e19aed9996b49b2d25c7aefcf42bcd11e9f77ef81e"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 32997,
+      "sha256": "812d82b3a96975e99565ede4180870f2550b48649b7c025c0ce7fe07f1c12991"
+    },
+    {
+      "path": "creative.mjs",
+      "bytes": 11322,
+      "sha256": "37c95c2705d291531f4785534b7ca03613b519056d1728216c4b26179aa252e0"
+    },
+    {
+      "path": "webgpu-player-sprite.js",
+      "bytes": 7126,
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+    },
+    {
+      "path": "assets/male-right-walk-v790.png",
+      "bytes": 327713,
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+    },
+    {
+      "path": "common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "bytes": 8316,
+      "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+    }
+  ]
+}
