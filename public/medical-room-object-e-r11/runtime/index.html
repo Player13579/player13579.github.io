@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Medical Room r11 · front sink interaction + preserved R10 Object E</title>
+  <style>
+    :root { color-scheme: dark; font: 14px/1.45 system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #111; }
+    canvas { display: block; width: 100%; height: 100%; }
+    #controls { position: fixed; z-index: 2; left: 12px; top: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; max-width: min(720px, calc(100vw - 24px)); padding: 8px 10px; border: 1px solid #ffffff35; border-radius: 8px; background: #111c; color: #fff; }
+    button { font: inherit; color: inherit; background: #292929; border: 1px solid #777; border-radius: 5px; padding: 4px 9px; cursor: pointer; }
+    button[aria-pressed="true"] { background: #31546a; border-color: #8ac8ec; }
+    #diagnostics { position: fixed; z-index: 2; left: 12px; bottom: 12px; max-width: min(760px, calc(100vw - 24px)); max-height: 34vh; overflow: auto; padding: 8px 10px; border: 1px solid #ffffff35; border-radius: 8px; background: #111d; color: #fff; white-space: pre-wrap; font: 12px/1.4 ui-monospace, monospace; }
+    #error { position: fixed; z-index: 3; left: 12px; right: 12px; bottom: 12px; max-height: 40vh; overflow: auto; color: #ff9b9b; background: #260c0cee; border: 1px solid #b55; padding: 10px; white-space: pre-wrap; font: 12px/1.4 ui-monospace, monospace; }
+    #object-status { position: fixed; z-index: 2; right: 12px; top: 12px; padding: 5px 8px; border-radius: 5px; background: #111c; color: #c8ee9b; }
+    canvas:focus-visible { outline: 2px solid #8ac8ec; outline-offset: -2px; }
+    html.embed #controls, html.embed #diagnostics { display: none !important; }
+  </style>
+  <script>if (new URLSearchParams(location.search).get('embed') === '1') document.documentElement.classList.add('embed');</script>
+</head>
+<body>
+  <canvas id="scene" tabindex="0" aria-label="医療室 r4 原画、環境 E r7、個体別 E r11（正面操作・既存水面輪郭）。画像内をクリックして移動、WASD または矢印キーで操作"></canvas>
+  <div id="controls" aria-label="Preview controls">
+    <button id="effect" type="button" aria-pressed="true">Effect: on</button>
+    <button id="water" type="button" aria-pressed="true">Water: on</button>
+    <button id="cloth" type="button" aria-pressed="true">Cloth: on</button>
+    <button id="obs" type="button" aria-pressed="true">OBS: on</button>
+    <button id="original-only" type="button" aria-pressed="false">Original only: off</button>
+    <button id="object-source" type="button" aria-pressed="true">Object source: on</button>
+    <button id="object-obs" type="button" aria-pressed="true">Object OBS: on</button>
+    <button id="reset-session" type="button">Reset session</button>
+    <button id="proof" type="button">Prove next frame</button>
+    <span id="readiness">Initializing WebGPU…</span>
+  </div>
+  <div id="object-status" role="status">プレビュー操作成功: 0</div>
+  <pre id="diagnostics" aria-live="polite">Starting…</pre>
+  <pre id="error" role="alert" hidden></pre>
+  <script type="module" src="./runtime.mjs"></script>
+</body>
+</html>
+
