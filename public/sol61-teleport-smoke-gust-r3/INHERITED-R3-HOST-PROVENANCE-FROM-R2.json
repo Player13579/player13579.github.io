@@ -1,0 +1,22 @@
+{
+  "schema": "teleport-smoke-height-zero-r3-provenance/v1",
+  "parent": {
+    "path": "outputs/request-20261002/teleport-smoke-height-zero-preview-r2/package",
+    "versionId": "teleport-smoke-height-zero-r2",
+    "packageManifestSha256": "e64042d1e787bef2c9ea43c4b43455da4ea533dcfe22cadb91cc4fac9b08e110",
+    "sealSha256": "bed534a48157913e0d72b5069ef1dd720a5e507ce261450db6b019ce1aa84732"
+  },
+  "approvedCreativeDerivative": {
+    "path": "outputs/request-20261002/teleport-smoke-height-zero-design-r2/creative.mjs",
+    "sha256": "8d449423cf4208f6a1f5b24d7b8abbcfd24fc38c72fd2c6f43f1f0bd9c34da01",
+    "designSealSha256": "ea6fdbb844c8c8d7a35fddb1d5ca7c7906f8638aa040225567758d8279057080",
+    "approvalContractSha256": "f9c16801749e7fc6441d5786b7142bde0eb08bac4cdf0cb4eedca8c6d918bdc4",
+    "change": "Split one invalid WGSL multi-let declaration into two sequential let declarations; no value or equation changes."
+  },
+  "authorizedRuntimeChanges": [
+    "teleport-smoke-height-zero-host.mjs: preserve scalar diagnostic fields and attach pipeline label on compilation failure.",
+    "preview.mjs and failure-diagnostics.mjs: preserve native error.message, structured scalar diagnostics and pipeline label while retaining error stack and stopping visibly."
+  ],
+  "preserved": "All remaining R2 creative/runtime/art/profile/choreography/audio inputs are byte-identical in this derivative.",
+  "scopeLimits": ["No browser or native GPU run", "No quality or adoption claim", "No publication"]
+}

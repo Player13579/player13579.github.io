@@ -1,0 +1,22 @@
+{
+  "schema":"teleport-smoke-gust-r4-validation/v1",
+  "version":"teleport-smoke-gust-r4",
+  "designAuthority":{"contractSha256":"c6d7cb9126407744ba45e788cf1df9bb5c70e069377699a24201782e2c83ecb5","sourceSha256":"40f655ce3b153776dbc6e517f6894bd07f521053b0c977e7d012cd938081754d"},
+  "results":[
+    {"suite":"frozen Sol design-source properties","command":"node outputs/request-20261002/teleport-gust-sol61-creative-r4/verify-source.mjs","geometryChecks":7840,"maxDerivativeError":3.099780476745195e-8,"status":"pass"},
+    {"suite":"R4 equation parity, actor/source/SFX preservation, constructor descriptors","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r4/tests/creative.test.mjs","groups":14,"designPortGeometryChecks":7840,"status":"pass"},
+    {"suite":"receiver adapter, privacy, clock and ticket tests","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r4/tests/adapter.test.mjs","cases":32,"status":"pass"},
+    {"suite":"finite audio and hard-zero tests","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r4/tests/audio.test.mjs","cases":13,"status":"pass"},
+    {"suite":"visible failure diagnostics tests","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r4/tests/failure-diagnostics.test.mjs","cases":12,"status":"pass"},
+    {"suite":"WGSL/storage/source-identity syntax review","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r4/tests/syntax-review.mjs","cases":8,"status":"pass"},
+    {"suite":"actual R4 shader-equivalent ellipsoid and finite-difference support samples","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r4/tests/shear-geometry.test.mjs","points":2132480,"queryAndTapChecks":6274688,"minimumSupportSlackH":0.0307,"status":"pass"},
+    {"suite":"Node syntax","command":"node --check for all runtime modules and test modules","status":"pass"}
+  ],
+  "nativeWebGPU":"not-run; primary native review required",
+  "creativeQuality":"pending GPT-6.1-Sol review",
+  "normalSfxListening":"not-run",
+  "gameIntegration":"not-connected",
+  "safariIpad":"not-run",
+  "adoption":"unknown_unadopted",
+  "limits":["Source properties and mock pipeline constructors do not establish native WGSL compilation or GPU rendering.","The 0.0307 H minimum support slack comes from sampled actual transformed ellipsoid points and exact shader finite-difference taps, not from reusing the CPU support formula as shader geometry.","The conserved density measure is the authored radius-product proxy, not measured fluid mass."]
+}

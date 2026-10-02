@@ -1,0 +1,19 @@
+{
+  "schema":"teleport-smoke-height-zero-r4-validation/v1",
+  "checks":[
+    {"name":"creative numeric/temporal regressions","cases":9,"status":"pass"},
+    {"name":"adapter/host regressions","cases":32,"status":"pass"},
+    {"name":"audio lifecycle and hard-zero regressions","cases":13,"status":"pass"},
+    {"name":"approved creative and receiver interface checks","cases":6,"status":"pass"},
+    {"name":"actual creative nested failure, receiver flat failure, and preview report path","cases":12,"status":"pass"},
+    {"name":"inherited R3 seal checks and JavaScript syntax","status":"pass"}
+  ],
+  "nativeWebGPU":"not-run",
+  "technicalReplay":"pending-primary-native-webgpu",
+  "quality":"pending-GPT-6.1-Sol",
+  "adoption":"unknown_unadopted",
+  "gameIntegration":"not-connected",
+  "normalSfxListening":"not-run",
+  "safari":"not-run",
+  "limits":["Focused tests use a mock device and do not establish native WGSL compilation or replay.","No browser, native GPU or publication was performed."]
+}

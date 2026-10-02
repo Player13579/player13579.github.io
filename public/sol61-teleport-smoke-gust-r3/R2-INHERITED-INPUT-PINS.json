@@ -1,0 +1,49 @@
+{
+  "schema": "zero-protected-technical-inputs",
+  "creativeReuse": false,
+  "technicalSurveyOnly": true,
+  "protectedSeal": "53f6a93a01ab8aa096a45b9ffce90d7c781d3d4c325c01288aff27a9ed6e93ed",
+  "inputs": [
+    {
+      "path": "outputs/request-20261002/teleport-pixel-r6-compact-cells/SEAL.json",
+      "sha256": "53f6a93a01ab8aa096a45b9ffce90d7c781d3d4c325c01288aff27a9ed6e93ed",
+      "bytes": 5664,
+      "use": "凍結技術入力の出典。旧創作を新創作へ継承しない"
+    },
+    {
+      "path": "outputs/request-20261002/teleport-pixel-r6-compact-cells/package/e-clock.mjs",
+      "sha256": "47535f621c53db90d2de6d3d900dda922b90a5d083919d313cb13bca5a9eecd9",
+      "bytes": 4711,
+      "use": "immutable owning actor/source E-clock validatorだけ"
+    },
+    {
+      "path": "outputs/request-20261002/teleport-pixel-r6-compact-cells/package/teleport-preview-adapter.mjs",
+      "sha256": "24d95f8dee6113f02820293553fc2141c9cb814242b23aed91552e9b8fc8e7bc",
+      "bytes": 10394,
+      "use": "causal/raw endpoint whitelist/privacy validationだけ; plan/phase/geometryは使わない"
+    },
+    {
+      "path": "outputs/request-20261002/teleport-pixel-r6-compact-cells/package/vendor/teleport-pixel-r1-player-sprite-cache.js",
+      "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2",
+      "bytes": 12771,
+      "use": "prepared actual pose/UV/alpha/affine,device/upload pin/fenceの技術仕様"
+    },
+    {
+      "path": "outputs/request-20261002/teleport-pixel-r6-compact-cells/package/assets/generated/philia-front-nine-v752.png",
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "bytes": 399216,
+      "use": "原画 identityのみ。新規画像/創作変更なし。原作者 attribution は原本から保存"
+    },
+    {
+      "path": "outputs/request-20261002/continuation-primary/TELEPORT-SMOKE-LATEST-REQUIREMENTS.md",
+      "sha256": "5972d7d22a87964849c73e846da928e53588623c7b3d62535ea2bca7c59930f8",
+      "bytes": 1437,
+      "use": "最新ユーザーの白煙・実高度・手早いstroke要求のprimary正本"
+    }
+  ],
+  "authorship": {
+    "newCreative": "GPT-6.1-Sol",
+    "borrowedInterfaces": "既存R6/R1出典の作者表示をそのまま保持。新ZERO作者へ付替えない",
+    "actorOriginal": "本taskで新規著作者を断定しない"
+  }
+}

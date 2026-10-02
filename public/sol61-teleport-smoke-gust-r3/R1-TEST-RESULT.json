@@ -1,0 +1,12 @@
+{
+  "schema": "teleport-smoke-gust-focused-test-result/v1",
+  "status": "passed-local-focused-tests",
+  "testScopes": {
+    "equationAndBounds": "outputs/request-20261002/teleport-smoke-gust-design-r1/tests.mjs",
+    "inheritedCreative": "../tests/creative.test.mjs",
+    "inheritedAdapter": "../tests/adapter.test.mjs",
+    "inheritedAudio": "../tests/audio.test.mjs",
+    "failureDiagnostics": "../tests/failure-diagnostics.test.mjs"
+  },
+  "notRun": ["native WGSL compilation", "GPU rendering", "creative quality acceptance", "SFX listening", "Safari/iPad", "game integration"]
+}

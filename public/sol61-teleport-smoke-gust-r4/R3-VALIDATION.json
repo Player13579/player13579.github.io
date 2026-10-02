@@ -1,0 +1,68 @@
+{
+  "schema": "teleport-smoke-gust-r3-validation/v1",
+  "version": "teleport-smoke-gust-r3",
+  "results": [
+    {
+      "suite": "inherited creative, phase, support, shader-descriptor and R1 invariance tests",
+      "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r3/tests/creative.test.mjs",
+      "cases": 14,
+      "status": "pass"
+    },
+    {
+      "suite": "inherited adapter/body/privacy tests",
+      "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r3/tests/adapter.test.mjs",
+      "cases": 32,
+      "status": "pass"
+    },
+    {
+      "suite": "inherited finite audio and verify hard-zero tests",
+      "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r3/tests/audio.test.mjs",
+      "cases": 13,
+      "status": "pass"
+    },
+    {
+      "suite": "inherited failure diagnostics tests",
+      "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r3/tests/failure-diagnostics.test.mjs",
+      "cases": 12,
+      "status": "pass"
+    },
+    {
+      "suite": "source syntax and R4 baseline pin tests",
+      "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r3/tests/syntax-review.mjs",
+      "cases": 7,
+      "status": "pass"
+    },
+    {
+      "suite": "shader-equivalent physical shear and exact finite-difference support",
+      "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r3/tests/shear-geometry.test.mjs",
+      "points": 2132480,
+      "queryAndTapChecks": 6132928,
+      "status": "pass"
+    },
+    {
+      "suite": "dense-window projected center separation against R1",
+      "command": "node outputs/request-20261002/teleport-smoke-gust-design-r2/measure-centers.mjs",
+      "samples": 58,
+      "gainH": {
+        "min": 0.28124759353268647,
+        "max": 0.3338179310450988
+      },
+      "status": "pass"
+    },
+    {
+      "suite": "Node syntax",
+      "command": "node --check for all runtime modules, test modules, and inherited measurement script",
+      "status": "pass"
+    }
+  ],
+  "nativeWebGPU": "not-run; primary review required",
+  "creativeQuality": "pending GPT-6.1-Sol",
+  "normalSfxListening": "not-run",
+  "gameIntegration": "not-connected",
+  "safariIpad": "not-run",
+  "limits": [
+    "CPU sampling and mock pipeline constructors do not prove native WGSL compilation or GPU rendering.",
+    "The support test samples the actual WGSL-equivalent transformed ellipsoid and both WGSL finite-difference query offsets; it does not substitute the CPU support equation as the shader geometry.",
+    "R2 review found no sampled crop under its margins; R3 corrects the contract transform without claiming that R2 had visible clipping."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "teleport-smoke-gust-r2-source-provenance/v1",
+  "directParent": {
+    "package": "outputs/request-20261002/teleport-smoke-gust-preview-r1/package",
+    "packageManifestSha256": "5b314a39461029b10e692da80e654f7ae071a818410642134107ea292fa40f56",
+    "sealSha256": "7e39d5e2ad7a91ab9c84bd5706e5c5cdf438cdb53e667114f55d02253b95573b",
+    "sealFrozen": false,
+    "creativeSha256": "1de43ab047b7efd5be48bb4abee485974b8eb38eaafb98bff9e7d128d6a97410"
+  },
+  "preservedR4Reference": {
+    "package": "outputs/request-20261002/teleport-smoke-height-zero-preview-r4/package",
+    "packageManifestSha256": "1d83ee72d93f17cad43e06bb57192629ada75581b2b6977496eff3545eb32438",
+    "sealSha256": "ec2832b288f6e759131a341760c600ef76740a6d2fa1d76a3bdda083dc51b08d",
+    "creativeSha256": "8d449423cf4208f6a1f5b24d7b8abbcfd24fc38c72fd2c6f43f1f0bd9c34da01"
+  },
+  "authorship": {
+    "creativeDirection": "GPT-6.1-Sol; settled primary contract",
+    "faithfulEquationAndHostImplementation": "GPT-6-Luna",
+    "qualityReview": "pending GPT-6.1-Sol"
+  },
+  "preservedFromR1": [
+    "teleport-smoke-height-zero-adapter.mjs byte-identical, including privacy, receipt, support and E-clock handoff code",
+    "actor phase/body/source equations and fixed ground XY",
+    "140 E-ms body strokes, 180 ms arrival start, 500 ms departure smoke end, 800 E-ms finite smoke life",
+    "finite PCM and audio scheduler",
+    "authored atlas bytes and sprite-cache source",
+    "receipt validation, privacy, E-clock and body-ticket rules"
+  ],
+  "boundedHostDeltaFromR1": "Lobe storage packing now uses the existing radiusPad.w float for determinant-one x-z tilt instead of the previous zero padding value.",
+  "boundedR2Changes": [
+    "smoke-only projected high/low x differential, broad rolling x-height fold, and x-z determinant-one ellipsoid tilt",
+    "CPU support expanded for tilt and actual finite-difference gradient taps; same shear used by WGSL field and gradients",
+    "16 ray samples preserved from R1 with step-scaled extinction",
+    "per-lobe density compensated by the actual radius product against the R4 proxy mass"
+  ],
+  "notPerformed": ["browser", "native WebGPU replay", "publication", "game integration", "normal SFX listening", "Safari/iPad"],
+  "acceptance": {"nativeWebGPU": "pending-primary", "creativeQuality": "pending-GPT-6.1-Sol", "adoption": "unknown_unadopted", "gameIntegration": "not-connected"}
+}

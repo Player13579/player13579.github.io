@@ -1,0 +1,8 @@
+{
+  "schema":"teleport-smoke-height-zero-r4-provenance/v1",
+  "parent":{"versionId":"teleport-smoke-height-zero-r3","packageManifestSha256":"bea86f19403fece3e4c41979386100e3b61245bfbe5b2f325597daed74abef3b","sealSha256":"3d010d07846fdc76ea224530de68bf3ba369aee471a60b204501359fa8f4927e"},
+  "soleRuntimeBehaviorChange":"failure-diagnostics.mjs flattens both actual creative nested and receiver flat diagnostics; it preserves scalar type/message/lineNum/linePos/offset/length/pipelineLabel and native error.message.",
+  "metadataOnlyChanges":["package version identifier r3 to r4 in index and preview report"],
+  "preserved":"Corrected creative source, all art/math/WGSL, adapter, receiver host, timing, waits, lifespan, audio, tests other than failure-diagnostics, vendor code, and authored sprite bytes are inherited unchanged from sealed R3.",
+  "limits":{"nativeWebGPU":"not-run","technicalReplay":"pending-primary-native-webgpu","quality":"pending-GPT-6.1-Sol","adoption":"unknown_unadopted","gameIntegration":"not-connected","normalSfxListening":"not-run","safari":"not-run"}
+}

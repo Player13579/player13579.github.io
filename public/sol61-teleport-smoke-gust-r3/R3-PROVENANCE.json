@@ -1,0 +1,95 @@
+{
+  "schema": "teleport-smoke-gust-r3-provenance/v1",
+  "versionId": "teleport-smoke-gust-r3",
+  "directParent": {
+    "package": "outputs/request-20261002/teleport-smoke-gust-preview-r2/package",
+    "versionId": "teleport-smoke-gust-r2",
+    "packageManifestSha256": "66973ebded8d4fc2d2e456bffbf1f8adcbffebde255e40421ebdb60f8ba02dee",
+    "sealSha256": "541f7dd74406cc134ce3d4e13a744022145bcd0024c317a3314b7e1295813320",
+    "sealFrozen": true,
+    "runtimeRows": [
+      {
+        "path": "index.html",
+        "bytes": 3399,
+        "sha256": "1dfa38da92c37dccb0d4db4711af011b1062aa316afaf75e3921947e97ca5175"
+      },
+      {
+        "path": "gallery-content.html",
+        "bytes": 2207,
+        "sha256": "a23814060dcaaecabdd00c15e20c7919fb540931196615d6b8b669df04728dec"
+      },
+      {
+        "path": "preview.mjs",
+        "bytes": 13843,
+        "sha256": "778dff732652dbd0242588c504117809f83658c8443defc3d34a2a3bdfe28d73"
+      },
+      {
+        "path": "creative.mjs",
+        "bytes": 21605,
+        "sha256": "a653dc886e8c47cca742dfc51299ec1534b54edb2c2c4510b12327c488f48b7c"
+      },
+      {
+        "path": "failure-diagnostics.mjs",
+        "bytes": 1345,
+        "sha256": "1b476ad71563f1437563aa6a26c3ba8d9ea261a5fcd2b6c787c56b62e24876ab"
+      },
+      {
+        "path": "teleport-smoke-height-zero-adapter.mjs",
+        "bytes": 11922,
+        "sha256": "a114f29c41b55bcf270c457d3e2f3197c9beacdec08646e9910ff32b5472a6d3"
+      },
+      {
+        "path": "teleport-smoke-height-zero-audio.mjs",
+        "bytes": 3606,
+        "sha256": "4c2805d4074cb92ff4fcdd43c55f7d5ab5c768b120eac81aa6a36eaeb8f9cf87"
+      },
+      {
+        "path": "teleport-smoke-height-zero-host.mjs",
+        "bytes": 25174,
+        "sha256": "1a2e9733a4630b97c03a9bc6056b39a76b96e997e574790af567bf7247009dc7"
+      },
+      {
+        "path": "vendor/teleport-pixel-r1-player-sprite-cache.js",
+        "bytes": 12771,
+        "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2"
+      },
+      {
+        "path": "vendor/r6-owning-e-clock-validator.mjs",
+        "bytes": 991,
+        "sha256": "fb5e75393b8c40856fdc45f48c99e0d0c28ae3a4c3945a7d7031192cf48a15ad"
+      },
+      {
+        "path": "vendor/r6-raw-causal-projection-validator.mjs",
+        "bytes": 3998,
+        "sha256": "6aa4cc0df87ddb589496218048401db2bf1fd63c7d93700ccb6d162f4885231a"
+      },
+      {
+        "path": "assets/generated/philia-front-nine-v752.png",
+        "bytes": 399216,
+        "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+      }
+    ],
+    "sealedRows": 33
+  },
+  "authorship": {
+    "creativeDirection": "GPT-6.1-Sol settled the creative constraints and physical shear contract; R2-specific equations and coefficients were selected by GPT-6-Luna as implementation choices within those bounds",
+    "faithfulImplementation": "GPT-6-Luna, including the R3 normalized-coefficient correction",
+    "qualityReview": "pending GPT-6.1-Sol"
+  },
+  "acceptance": {
+    "numericAndsourceTests": "pending final R3 run",
+    "nativeWebGPU": "pending-primary",
+    "creativeQuality": "pending GPT-6.1-Sol",
+    "adoption": "unknown_unadopted",
+    "gameIntegration": "not-connected"
+  },
+  "attributionNotes": [
+    "R1/R2 historical authorship is preserved in the parent packages.",
+    "R3 changes only the mathematical implementation of the already-settled shear; it adds no artistic timing, shape, wind, or density decision."
+  ],
+  "runtimeDelta": {
+    "shaderEquation": "WGSL normalized shear multiplies tiltXZ by radiusZ/radiusX, equivalent to physical x -= tiltXZ*z before normalization",
+    "diagnosticIdentity": "Correct inherited diagnostic version strings from R1 to R3; no control, clock, or lifecycle behavior changed",
+    "preserved": "All R2 smoke equations and coefficients, 16 rays, 7 lobes, source/actor phases, CPU support, runtime host, adapter, audio, image and assets except diagnostic metadata labels"
+  }
+}
