@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="teleport-package" content="teleport-smoke-gust-r8">
+  <title>White teleport smoke gust with local conversion light R8</title>
+  <style>
+    :root{color-scheme:dark;background:#101419;font:14px/1.4 system-ui,sans-serif}
+    *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#101419}
+    #surface{display:block;width:100vw;height:100vh;border:0;background:#0d1116}
+    .assistive{position:fixed!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    #error[hidden]{display:none}
+  </style>
+</head>
+<body>
+  <main aria-label="White teleport smoke gust with local conversion light R8"><canvas id="surface" width="980" height="640" aria-label="WebGPU white smoke gust R8 preview"></canvas></main>
+  <section class="assistive" aria-label="Accessible preview controls and status">
+    <label>Endpoint<select id="endpoint"><option value="pair">Pair</option><option value="departure">Departure</option><option value="arrival">Arrival</option></select></label>
+    <label>E rate<select id="rate"><option>0</option><option>0.5</option><option selected>1</option><option>1.5</option><option>2</option></select></label>
+    <button id="restart" type="button">Replay</button><button id="sound" type="button">Enable normal SFX</button>
+    <label><input id="source" type="checkbox" checked>Source</label><label><input id="nearby" type="checkbox" checked>Nearby</label>
+    <label><input id="observer" type="checkbox" checked>Observer</label><label><input id="effect" type="checkbox" checked>Effect</label>
+    <div id="gpu" aria-live="polite">Preparing WebGPU preview.</div><div id="status" aria-live="polite">Quality review pending.</div>
+    <div id="audio" aria-live="polite">Normal SFX awaits user gesture.</div><div id="error" hidden></div>
+  </section>
+  <script src="./vendor/teleport-pixel-r1-player-sprite-cache.js"></script>
+  <script type="module" src="./preview.mjs"></script>
+</body>
+</html>

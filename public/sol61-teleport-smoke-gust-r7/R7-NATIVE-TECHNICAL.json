@@ -1,0 +1,82 @@
+{
+  "schema": "teleport-gust-r7-primary-native/v1",
+  "packageManifestSha256": "21a974d7e701a1e2f4790af6431c33adf43c780b4b00ec6b01e879c524b20145",
+  "host": "continuation-primary/serve-teleport-gust-r7.cjs",
+  "native": "Windows Codex IAB WebGPU verify muted",
+  "technicalReplay": "pass",
+  "observed": {
+    "continuousReplay": true,
+    "held250": {
+      "frames": 107,
+      "submits": 107,
+      "shaderDiagnosticErrors": 0,
+      "sourceRole": "arrival",
+      "bodySourceRole": "arrival",
+      "conversionSources": [
+        "arrival"
+      ]
+    },
+    "held355": {
+      "frames": 6,
+      "sourceRole": "arrival",
+      "bodySourceRole": null,
+      "conversionSources": [
+        "arrival"
+      ]
+    },
+    "held450": {
+      "frames": 4,
+      "sourceRole": null,
+      "bodySourceRole": null,
+      "conversionSources": []
+    },
+    "sourceOffComparison": "same held250: bright body/source disabled while neutral white smoke and authored body remain",
+    "visible": "actual body, white gust and localized bright conversion area visible"
+  },
+  "quality": {
+    "accepted": false,
+    "reason": "Smoke remains smooth tapered masses; coherent turbulent wind and smoke quality not yet at required level",
+    "emission": "visibly present; whole optical and lifetime quality acceptance remains pending"
+  },
+  "adoption": "unadopted",
+  "gameIntegration": "not-connected",
+  "normalSfx": "unverified",
+  "safari": "unverified",
+  "galleryAdapter": "not run separately",
+  "artifacts": [
+    {
+      "path": "outputs/request-20261002/native-map-and-vibe-check/teleport-gust-r7-held250.json",
+      "sha256": "9b8069ae149daa9e85dfd2e8e28be220b933c19a2d1ec33151a5cc1a1a56ae6d"
+    },
+    {
+      "path": "outputs/request-20261002/native-map-and-vibe-check/teleport-gust-r7-held250.png",
+      "sha256": "f54d8025c54a4d4563710e0c06c83be70eb5ed8f3a65383e560a0a5793564da3"
+    },
+    {
+      "path": "outputs/request-20261002/native-map-and-vibe-check/teleport-gust-r7-held250-sourceoff.png",
+      "sha256": "69c75277f1db965451585465dd7a85f450e1629e2bdc838604618ea7e11ad85d"
+    },
+    {
+      "path": "outputs/request-20261002/native-map-and-vibe-check/teleport-gust-r7-held250-nearbyoff.png",
+      "sha256": "90b32466e76c565f4c3d0a4144914fe0235e88e422bace9e500ee631373c1b60"
+    },
+    {
+      "path": "outputs/request-20261002/native-map-and-vibe-check/teleport-gust-r7-held355.json",
+      "sha256": "2c7fa7c7e623e64661deae136b89cc8ce5eca6bfd642fbd397e7aea446ae7b04"
+    },
+    {
+      "path": "outputs/request-20261002/native-map-and-vibe-check/teleport-gust-r7-held355.png",
+      "sha256": "1150df48f00e117284a1cdd46280b4efdae0bce26b1bde7cab0f936d6339ae27"
+    },
+    {
+      "path": "outputs/request-20261002/native-map-and-vibe-check/teleport-gust-r7-held450.json",
+      "sha256": "3972fd2f2231599aacbbe138bdc2be1459a8f45e3d8c7a0e9c2d5af14d0b9edd"
+    }
+  ],
+  "cleanup": {
+    "tab": 116,
+    "closed": true,
+    "session": 29205,
+    "stopped": true
+  }
+}

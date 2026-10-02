@@ -1,0 +1,145 @@
+{
+  "schema": "teleport-smoke-gust-package/v1",
+  "versionId": "teleport-smoke-gust-r9",
+  "entry": "index.html",
+  "galleryContentEntry": "gallery-content.html",
+  "source": {
+    "design": "teleport-smoke-gust-sol61-design-r9",
+    "designSealSha256": "7cc49491cf282500473e78d4a345d8f76f7b44832b0cb39f38dc76eb428a876e",
+    "contractSha256": "fc3ff77ecb0534e0c67101410507ff727fe0d9f8c072f173172fc1d67bbc1479",
+    "r8PackageSealSha256": "50218449ea66afe34b8dbe327fa353f09e474a2c07dce29c09a894725ed8ef72",
+    "implementation": "faithful R8 host/adapter/audio ABI; exact R9 creative component replaces R8 field"
+  },
+  "authorship": {
+    "creativeDesign": "GPT-6.1-Sol",
+    "faithfulRuntimePort": "GPT-6-Luna"
+  },
+  "status": {
+    "sourceTests": "pass",
+    "technicalReplay": "not-run",
+    "technicallyReplayable": false,
+    "nativeWebGPU": "not-run",
+    "creativeQuality": "unmet",
+    "adoption": "unadopted",
+    "gameIntegration": "not-connected",
+    "safari": "not-run",
+    "normalSfxListening": "not-run"
+  },
+  "requirements": {
+    "subject": "White smoke blown by a gust, with a fast real-height body that rises/disappears and descends/appears; one volume with readable roll/entrainment at H64.",
+    "retained": [
+      "current B/base/extensions",
+      "distinguishable phenomenon emission and nearby received light",
+      "source-bound observer",
+      "finite meaningful SFX",
+      "actual pose alpha/body occlusion/currentness/privacy"
+    ],
+    "explicitChanges": [
+      "White volumetric smoke field and real height refine the narrow white-smoke volume in R8. R8 did not use pixel decomposition.",
+      "GPT-6.1-Sol is creative owner"
+    ],
+    "unchanged": [
+      "R8 seven 32-byte rows (224 bytes), curl-phase packer, resources/bindings, actual height and optical/source/receiver/observer/privacy/SFX host behavior"
+    ],
+    "notWaived": [
+      "receiver",
+      "observer",
+      "SFX",
+      "quality",
+      "native H64 acceptance"
+    ]
+  },
+  "runtimeClosure": [
+    {
+      "path": "assets/generated/philia-front-nine-v752.png",
+      "bytes": 399216,
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+    },
+    {
+      "path": "creative.mjs",
+      "bytes": 23615,
+      "sha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+    },
+    {
+      "path": "failure-diagnostics.mjs",
+      "bytes": 1345,
+      "sha256": "1b476ad71563f1437563aa6a26c3ba8d9ea261a5fcd2b6c787c56b62e24876ab"
+    },
+    {
+      "path": "field.wgsl",
+      "bytes": 1562,
+      "sha256": "ca09c770af06364d5ae9805814258abb0f7cead4c5184cbb14f76e4d7deca432"
+    },
+    {
+      "path": "gallery-content.html",
+      "bytes": 2247,
+      "sha256": "85dba0bfbeaa201697bb726e18dd69a9fdb3261921f1aa14cc2008a0ab23f4e7"
+    },
+    {
+      "path": "gust-design.mjs",
+      "bytes": 4182,
+      "sha256": "31f04387af8c59b323a640a6e48b9ab22fe50814c3c605cd163cec9d229226c2"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3352,
+      "sha256": "294c1bdf560b558f3a160e1a40d9adceeb6909a7a01ffc017219b3c868b3068c"
+    },
+    {
+      "path": "pack-rows.mjs",
+      "bytes": 610,
+      "sha256": "212ca8ddc4899d6e6432b8feefa50cf7a13641ca0bfeb2f674be841968fb65a7"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 14326,
+      "sha256": "55dfc150e619380bf4e35fee5bac5b8ed902bb6676c544892fb6986891e5a2ab"
+    },
+    {
+      "path": "radiance.mjs",
+      "bytes": 2327,
+      "sha256": "2e28174dd92ea2b36ace64fa91ceda8bb90e43da43576f1355b760403788ac4b"
+    },
+    {
+      "path": "teleport-smoke-height-zero-adapter.mjs",
+      "bytes": 12409,
+      "sha256": "d90e3ea28bba8dfa50472ac13a7624f50f676f4cde5af4f65603f5ea2f1d50e8"
+    },
+    {
+      "path": "teleport-smoke-height-zero-audio.mjs",
+      "bytes": 3606,
+      "sha256": "4c2805d4074cb92ff4fcdd43c55f7d5ab5c768b120eac81aa6a36eaeb8f9cf87"
+    },
+    {
+      "path": "teleport-smoke-height-zero-host.mjs",
+      "bytes": 28064,
+      "sha256": "46abc3575d99cb7c2f06c872329dc897fcbfa80110a7955f4e9889c79c7fbd98"
+    },
+    {
+      "path": "vendor/r6-owning-e-clock-validator.mjs",
+      "bytes": 991,
+      "sha256": "fb5e75393b8c40856fdc45f48c99e0d0c28ae3a4c3945a7d7031192cf48a15ad"
+    },
+    {
+      "path": "vendor/r6-raw-causal-projection-validator.mjs",
+      "bytes": 3998,
+      "sha256": "6aa4cc0df87ddb589496218048401db2bf1fd63c7d93700ccb6d162f4885231a"
+    },
+    {
+      "path": "vendor/teleport-pixel-r1-player-sprite-cache.js",
+      "bytes": 12771,
+      "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2"
+    }
+  ],
+  "provenance": {
+    "galleryDerivative": {
+      "reason": "Correct the inaccurate R8 description in staged R9 metadata only; frozen source package and native receipts remain preserved.",
+      "sourceManifestSha256": "a126f3564cb3440c1cc17c7bf3139f905ce49401441b41b4d17d53fbc6a74d12",
+      "sourceSealSha256": "7f0eff31578454852c3d122c1764b542e06724257955eb5001e19aac35f9aac8",
+      "sourceExplicitChanges": [
+        "white volumetric smoke field and real height replace R8 narrow pixel-decomposition field",
+        "GPT-6.1-Sol is creative owner"
+      ]
+    }
+  }
+}

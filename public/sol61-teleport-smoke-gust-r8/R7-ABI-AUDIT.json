@@ -1,0 +1,18 @@
+{
+  "schema": "teleport-smoke-gust-r7-abi-audit/v1",
+  "status": "source-audited",
+  "notNativeCompilation": true,
+  "pipelineEntries": [
+    {"pipeline":"smoke","entry":"fs","group0":{"0":"SmokeParams 96B","1":"seven Lobe rows 224B","2":"body/conversion flux storage 32B"}},
+    {"pipeline":"smokeEmission","entry":"emissionOnly","group0":{"0":"SmokeParams 96B","1":"seven Lobe rows 224B"},"note":"separate auto-layout; ambient scatter excluded, radiance plus real medium alpha only"},
+    {"pipeline":"conversionFlux","entry":"cs","group0":{"0":"SmokeParams 96B","1":"seven Lobe rows 224B","2":"body/conversion flux storage 32B"}},
+    {"pipeline":"actor","entry":"fs","group0":{"0":"Actor 112B","1":"authored rgba8 atlas","2":"linear sampler","3":"body/conversion flux storage 32B"}},
+    {"pipeline":"emission","entry":"emission","group0":{"0":"Actor 112B","1":"authored rgba8 atlas","2":"linear sampler"},"note":"separate auto-layout; true atlas alpha attenuates rear source"},
+    {"pipeline":"sourceFlux","entry":"cs","group0":{"0":"FluxParams 48B","1":"authored atlas","2":"linear sampler","3":"body/conversion flux storage 32B"}},
+    {"pipeline":"observer","entry":"fs","group0":{"0":"ObserverParams 32B","1":"source-only radiance target","2":"linear sampler"}},
+    {"pipeline":"nearbyReceiver","entry":"fs","group0":{"0":"ReceiverParams 32B","1":"body/conversion flux storage 32B"},"vertex":"same-frame fixture world position, normal, linear material and valid flag; host binds its own pipeline layout"}
+  ],
+  "storage": {"smokeParamsBytes":96,"actorBytes":112,"bodyFluxParamsBytes":48,"receiverParamsBytes":32,"observerParamsBytes":32,"lobeRowBytes":32,"lobeCount":7,"lobeStorageBytes":224,"fluxFloatCount":8,"fluxStorageBytes":32,"fluxSlots":{"0":"body alpha-mask flux","1":"conversion radiance flux","2":"conversion centroid x","3":"conversion centroid depth","4":"conversion centroid height","5to7":"reserved and zero"}},
+  "composition": ["clear source-only target each frame","back smoke source emission","actual alpha body source/occluder","front smoke source emission","emission-only thresholded observer"],
+  "controls": {"sourceOFF":"body and conversion source flux zero; no nearby/source-only observer light","nearbyOFF":"body/floor receiving disabled; source and observer independent","observerOFF":"source-only PSF disabled; ambient smoke and nearby receiving remain independent"}
+}
