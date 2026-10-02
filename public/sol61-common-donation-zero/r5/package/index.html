@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>共通募金 — 送り出して折り畳まれる debit film R5</title>
+  <style>
+    :root{color-scheme:dark;font:15px/1.45 system-ui,sans-serif;background:#111820;color:#e9edf3}
+    body{margin:0 auto;padding:18px;max-width:1180px}h1{font-size:1.25rem;margin:0 0 8px}
+    .notice{border-left:3px solid #a99bd9;padding:8px 12px;color:#cbd0dc;background:#1a202b}
+    .stage{border:1px solid #536071;border-radius:8px;overflow:hidden;background:#111820}
+    canvas{width:100%;height:min(68vh,740px);display:block;touch-action:none}
+    .controls{display:flex;gap:9px 16px;flex-wrap:wrap;align-items:center;padding:12px 0}
+    label{display:flex;align-items:center;gap:6px}button,select,input{font:inherit}button{padding:7px 11px;background:#29263a;border:1px solid #70658b;color:#fff;border-radius:5px}
+    input[type=range]{width:190px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b1016;padding:10px;max-height:230px;overflow:auto}
+    .small{font-size:.88rem;color:#b9c3ce}
+  </style>
+</head>
+<body>
+  <h1>共通募金 — 送り出して折り畳まれる借方フィルム R5</h1>
+  <p class="notice">ローカルの producer-shaped fixture を使う独立プレビューです。1C のデビットを身体の外へ送り出して折り畳まれる一枚の発光薄膜として示します。ゲームAPI、受取人、ゲーム内レシート、採用、統合は実行しません。</p>
+  <div class="stage"><canvas id="view" aria-label="Standalone donation debit-film WebGPU preview"></canvas></div>
+  <div class="controls">
+    <button id="play">通常fixtureを再生</button><button id="pause">停止</button><button id="render">保持値を描画</button>
+    <label>E age <input id="age" type="range" min="0" max="1200" step="1" value="450"><output id="ageOut">450</output> ms</label>
+    <label>H <select id="height"><option value="actual">male atlas scale (H≈95)</option><option value="64">H64</option><option value="96">H96</option></select></label>
+    <label>E rate <select id="rate"><option value="1">1×</option><option value="0.5">0.5×</option><option value="1.5">1.5×</option><option value="0">0× pause</option></select></label>
+    <label>SRC <input id="source" type="checkbox" checked></label><label>NEARBY <input id="nearby" type="checkbox" checked></label><label>OBS <input id="observer" type="checkbox" checked></label>
+  </div>
+  <p id="status" role="status">WebGPU起動待ち</p>
+  <pre id="diagnostics">初期化中</pre>
+  <p class="small">SRC は身体の前を進んで折り畳まれる violet/pearl 薄膜、NEARBY は同じ投影から逆算した表示床、OBS は表示されている実際の面放射に連動する PSF です。通常モードのPCMは明示的なfixture再生gestureの後、正の可視sourceが同じframeで記録・submitされ、validation がnullで queue completion が成功したときだけ一度再生します。verify query は常に音声ゼロです。</p>
+  <script src="./webgpu-player-sprite.js"></script>
+  <script type="module" src="./preview.mjs"></script>
+</body>
+</html>

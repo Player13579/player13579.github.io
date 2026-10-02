@@ -1,0 +1,54 @@
+{
+  "schema": "common-ki-r6-gallery-provenance/v1",
+  "sourcePackage": "outputs/request-20261002/common-ki-zero-sol61-preview-r6",
+  "sourceManifestSha256": "be885b55f5636819bfe17cd59bd1821d33b07623b39b377998d5e568c4b3ab7a",
+  "sourceSealFileSha256": "223e293df5f04870969e30993c9e3db782f5e0135096038c148621aaf928111d",
+  "sourceClosure": [
+    {
+      "path": "package/index.html",
+      "bytes": 3178,
+      "sha256": "10b711186bf6b8bdbdf96796777aa82b841d71f515a74b1c41971d7b0571c7fe"
+    },
+    {
+      "path": "package/preview.mjs",
+      "bytes": 32852,
+      "sha256": "f95779a7b12e77a42c58d12c5d82e89c88f962550e6bc4c115960df9d933e141"
+    },
+    {
+      "path": "package/creative.mjs",
+      "bytes": 12778,
+      "sha256": "dd0aaa8c8ad5051a4873dc5beb1eceb557df0c67e0dac703e4bdd9a4263e652c"
+    },
+    {
+      "path": "package/webgpu-player-sprite.js",
+      "bytes": 7126,
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+    },
+    {
+      "path": "package/assets/male-right-walk-v790.png",
+      "bytes": 327713,
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+    },
+    {
+      "path": "common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "bytes": 8316,
+      "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+    }
+  ],
+  "derivativeFiles": [
+    "package/preview-gallery-r1.mjs",
+    "gallery.html"
+  ],
+  "adapter": "R5 content-only display adapter ported to R6 with R6 identity; source preview, creative, image, sprite helper, runtime closure, and package metadata copied byte-for-byte",
+  "verify": "normal route does not add verify; parent gallery makePreview preserves verify only when parent URL has it; R6 adapter checks presence for hard-zero audio",
+  "primaryNativeObservation": {
+    "receipt": "outputs/request-20261002/continuation-primary/KI-R6-NATIVE-REVIEW.json",
+    "receiptSha256": "b995c09568413c281e7498c96e23d7c3dbde786d617e4b4933decfe26fefc66d",
+    "evidenceKind": "primary transcription of actual CUA observations, not raw diagnostic export",
+    "result": "source technical replay passed: 8 shader modules, zero compilation errors, frame serial 388 continuous and 390 at held 640 ms, validation null and queue fulfilled",
+    "quality": "unmet: small blue short lines and a blob around the body make staged inbound gathering and abdominal condensation insufficiently readable at actual scale",
+    "galleryAdapter": "not yet native tested"
+  },
+  "adoption": "unadopted",
+  "gameIntegration": "not connected"
+}
