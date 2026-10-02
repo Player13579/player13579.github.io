@@ -2644,6 +2644,7 @@ if (WEBGPU_FRAME_PANEL_ENABLED) {
 const webgpuMainApp = { driver: null, startPending: null, mapId: null,
   generation: 0, visible: false, submittedHits: null, failed: false,
   presentationPendingAt: null, presentationPendingKey: '', presentationTimer: null,
+  preparationLayoutSuspended: false,
   submittedPreparationHits: null, submittedMinimapBounds: null,
   submittedFrame: null, submittedSunbeamHands: new Map(),
   requestSerial: 0, lastSoundRequestSerial: 0,
@@ -18983,6 +18984,31 @@ async function copyWebGPUMainFailureDiagnostic() {
   }
 }
 
+function webgpuMainPortraitPreparationLayout() {
+  const body = document.body;
+  const media = window.matchMedia?.('(max-width: 680px) and (orientation: portrait)');
+  const visiblePreparationPanel = [els.joinPanel, els.selectPanel].some(panel =>
+    panel && !panel.hasAttribute('hidden'));
+  return state.screen === 'game' && body?.classList?.contains('game-open') === true &&
+    media?.matches === true && visiblePreparationPanel;
+}
+
+function holdWebGPUMainForPortraitPreparationLayout() {
+  if (!webgpuMainPortraitPreparationLayout()) {
+    webgpuMainApp.preparationLayoutSuspended = false;
+    return false;
+  }
+  stopWebGPUMainPresentationWatchdog();
+  setWebGPUMainPendingDiagnostic('waiting:preparation-layout');
+  if (!webgpuMainApp.preparationLayoutSuspended) {
+    // Cancel any pending ownership/hits once on entry; repeated RAFs must not
+    // churn generations while CSS intentionally hides the canvas.
+    webgpuMainApp.preparationLayoutSuspended = true;
+    suspendWebGPUMainAppDriver();
+  }
+  return true;
+}
+
 function stopWebGPUMainPresentationWatchdog() {
   if (webgpuMainApp.presentationTimer != null)
     window.clearTimeout(webgpuMainApp.presentationTimer);
@@ -18992,10 +19018,18 @@ function stopWebGPUMainPresentationWatchdog() {
 }
 
 function checkWebGPUMainPresentationDeadline() {
-  if (webgpuMainApp.failed || state.screen !== 'game' || document.hidden ||
-      webgpuMainApp.visible) {
+  if (webgpuMainApp.failed) {
     stopWebGPUMainPresentationWatchdog();
-    return !webgpuMainApp.failed;
+    return false;
+  }
+  if (state.screen !== 'game' || document.hidden) {
+    stopWebGPUMainPresentationWatchdog();
+    return true;
+  }
+  if (holdWebGPUMainForPortraitPreparationLayout()) return true;
+  if (webgpuMainApp.visible) {
+    stopWebGPUMainPresentationWatchdog();
+    return true;
   }
   const now = performance.now();
   const key = JSON.stringify([state.roomId, state.roomSessionGeneration,
@@ -19275,6 +19309,10 @@ function pumpWebGPUMainAppDriver() {
   if (webgpuMainApp.failed) {
     setWebGPUMainPendingDiagnostic('failed');
     recordWebGPUFirstRetryEvent('pump-exit', 'failed');
+    return;
+  }
+  if (holdWebGPUMainForPortraitPreparationLayout()) {
+    recordWebGPUFirstRetryEvent('pump-exit', 'preparation-layout');
     return;
   }
   const data = state.data;
