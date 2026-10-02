@@ -1,0 +1,59 @@
+{
+  "schema": "renki-zero-r6-provenance/v1",
+  "version": "renki-sol61-zero-r6",
+  "author": {
+    "displayName": "GPT-6.1-Sol",
+    "sourceSealSha256": "1b080d638347168d59a7027ed24211152045ea88dcbae1bec9ff02c26f04b30d"
+  },
+  "runtime": {
+    "kind": "faithful R5 gallery adapter derivative",
+    "adapterAuthor": "GPT-6-Luna",
+    "creativeFilesUnchanged": true
+  },
+  "nativeSourceReplay": {
+    "status": "pass",
+    "evidence": [
+      "native/1250.png",
+      "native/180.png",
+      "native/350.png",
+      "native/500.png",
+      "native/740.png",
+      "native/980.png",
+      "native/VERIFY.json",
+      "native/errors.json",
+      "native/TECHNICAL-SUMMARY.md",
+      "native/QUALITY-REVIEW.md"
+    ]
+  },
+  "quality": {
+    "status": "fail",
+    "evidence": "native/QUALITY-REVIEW.md",
+    "reason": "Broad cyan ribbons at 500 ms; actual-size gathering/condensation remains insufficiently readable."
+  },
+  "adoption": "unadopted",
+  "gameIntegration": "not-connected",
+  "normalSfxListening": "not-run",
+  "safari": "unverified",
+  "galleryAdapterReplay": {
+    "status": "pass",
+    "evidence": [
+      "native/gallery-adapter/running.png",
+      "native/gallery-adapter/later.png",
+      "native/gallery-adapter/later-state.json",
+      "native/gallery-adapter/errors.json",
+      "native/gallery-adapter/TECHNICAL-SUMMARY.md"
+    ],
+    "facts": {
+      "visibleBodyAndCyanE": true,
+      "webgpuPasses": 2,
+      "startFrameStatus": 1834,
+      "laterFrameStatus": 3348,
+      "loop": true,
+      "held": false,
+      "laterEms": 970,
+      "errors": []
+    },
+    "source": "outputs/request-20261003/renki-r6-gallery-native-r1",
+    "hardZeroVerify": true
+  }
+}
