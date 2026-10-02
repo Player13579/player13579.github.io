@@ -1,0 +1,144 @@
+{
+  "package": "sol61-teleport-pixel/r3-conversion-front",
+  "id": "sol61-teleport-pixel-r3-conversion-front",
+  "artist": "GPT-6.1-Sol",
+  "abi": "teleport-pixel-linear-mrt-owning-e-clock-r2",
+  "status": "self-contained-cpu-pass-native-gate-pending",
+  "qualityAcceptance": "pending-primary-native-review",
+  "userAdoption": "unknown_unadopted",
+  "gameIntegration": "not-connected",
+  "galleryPublished": false,
+  "creativeSource": {
+    "path": "teleport-pixel.mjs",
+    "author": "GPT-6.1-Sol",
+    "sha256": "6e874ff7afe7a4c46cf9fbb459fa5d181c66da1ddf5a88529d8de2a6bfe50eff",
+    "modified": true,
+    "parentSha256": "b1fae06c3c70fcab1c9769374f8eab087ad964b9acec49789359f9b071adb6cd"
+  },
+  "nativeGPU": "not_run",
+  "clock": {
+    "timeBasis": "actor-e-clock",
+    "durationEms": 640,
+    "ownerFields": [
+      "actorId",
+      "causalId",
+      "roomId",
+      "generation",
+      "relocationRevision",
+      "sourceIds",
+      "current",
+      "atEms"
+    ],
+    "wallFallback": false,
+    "pauseSupported": true
+  },
+  "rendering": {
+    "format": "rgba16float scene/source MRT",
+    "surface": "WebGPU canvas",
+    "newRaster": false,
+    "additionalEmission": true,
+    "observer": "finite source-bound display spread",
+    "originalAtlasBytePreserved": true,
+    "cellTargetCssPx": 2.5,
+    "reducedMotionCellCssPx": 5.5,
+    "sourceAlphaPreserved": true
+  },
+  "audio": {
+    "source": "unchanged authored r1 synthesizePCM",
+    "verify": "hard-zero no context/node allocation",
+    "normalListening": "not_run"
+  },
+  "embedDiagnostics": "#error",
+  "files": [
+    {
+      "path": "assets/generated/philia-front-nine-v752.png",
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+    },
+    {
+      "path": "DESIGN-r2.md",
+      "sha256": "e350e8d6bf5e7a26c4654f9f1313c28d486fb9200688f6538fc3b76daa53ade0"
+    },
+    {
+      "path": "DESIGN-r3.md",
+      "sha256": "015e9d11a03c3c902ee471315f04ed0c7702838cdf57312edd8b66ef8a6de2c1"
+    },
+    {
+      "path": "e-clock.mjs",
+      "sha256": "47535f621c53db90d2de6d3d900dda922b90a5d083919d313cb13bca5a9eecd9"
+    },
+    {
+      "path": "index.html",
+      "sha256": "f5c5695436488e473ff9dae5aecca26be4462c44f9cb08231175f58ac28b8454"
+    },
+    {
+      "path": "observation-renderer.mjs",
+      "sha256": "f5005e13ed86d409b2421aa62361850801de8dbf132312681d5590bf9d321aa2"
+    },
+    {
+      "path": "preview-playback.mjs",
+      "sha256": "618f794f6e70c7174632cae426788e48e78bcc28c9961540007f5cfd21e3db3c"
+    },
+    {
+      "path": "preview.mjs",
+      "sha256": "623606a21ebd0fea4e053b11eb6baced032ea74b170038069d640a9249e856ed"
+    },
+    {
+      "path": "PROVENANCE-r2.json",
+      "sha256": "2e699b80f53160a967efd3b29dd23604d3b8c6f9aeb7ea387c380e8c72e786a9"
+    },
+    {
+      "path": "PROVENANCE-r3.json",
+      "sha256": "eafa1077e713ce7544e5f4d9efb13c99e468d99395e3df9744156705f2ebad15"
+    },
+    {
+      "path": "provenance/DESIGN.md",
+      "sha256": "e1bb28526b8e7a8277c637564fad68ba4deac47a6a6cdbda9afa8f975f694b77"
+    },
+    {
+      "path": "provenance/source-freeze.json",
+      "sha256": "95fa975b8c4be17b357c92ed0bbeaa63076a548920fc1d4a3c3243a53744bd53"
+    },
+    {
+      "path": "provenance/source-preview-contract-review.md",
+      "sha256": "9c2d7f127ba2fabd3c4bc3935b1c4bcb2a3f08f1bc9bfaab5321538d895effca"
+    },
+    {
+      "path": "provenance/source-preview-dependency-manifest.json",
+      "sha256": "13ebb2efd155f715da1189c2cb16b4c59671f116954203ec22e049f0ac2bac1e"
+    },
+    {
+      "path": "provenance/source-preview-README.md",
+      "sha256": "473e68a48d025c08e24949409b1263bd9fdc9b5a5a62d6a38bab509ed197c7c5"
+    },
+    {
+      "path": "provenance/TELEPORT-PRODUCER-CONTRACT.md",
+      "sha256": "6af77010e91a77077126734d65faf2af6156a00b2d80d838adae1df28cd54b84"
+    },
+    {
+      "path": "teleport-pixel.mjs",
+      "sha256": "6e874ff7afe7a4c46cf9fbb459fa5d181c66da1ddf5a88529d8de2a6bfe50eff"
+    },
+    {
+      "path": "teleport-preview-adapter.mjs",
+      "sha256": "24d95f8dee6113f02820293553fc2141c9cb814242b23aed91552e9b8fc8e7bc"
+    },
+    {
+      "path": "vendor/teleport-pixel-r1-player-sprite-cache.js",
+      "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2"
+    }
+  ],
+  "integrityConvention": "package-manifest.json hashes the content files and excludes package-integrity.json; package-integrity.json hashes this manifest and all other package files, excluding only itself, so the metadata dependency graph is acyclic.",
+  "bProvenance": "inherited-r2; no new B source/raster or all-B validation claim",
+  "modelWorkShare": [
+    {
+      "displayName": "GPT-6.1-Sol",
+      "sharePercent": 40,
+      "scope": "settled creative conversion-front design and bounded technical requirements"
+    },
+    {
+      "displayName": "GPT-6-Luna",
+      "sharePercent": 60,
+      "scope": "r3 shader/module derivative, focused CPU contracts, sealing, and evidence"
+    }
+  ]
+}
