@@ -1,0 +1,27 @@
+- main:
+  - paragraph: TECHNICAL PREVIEW · HYPOTHETICAL ONLY
+  - heading "Heavy RPG · r9" [level=1]
+  - generic: VERIFY · AUDIO HARD ZERO
+  - generic "WebGPU effect preview"
+  - status: Submitted E clock 100 ms · R8 physical receiver + R9 observer recorded · source feed ON · response ON · foreground visibility parity only
+  - region "Preview controls":
+    - text: Variant
+    - combobox "Variant":
+      - option "Normal" [selected]
+      - option "Enhance"
+    - checkbox "Reduced motion"
+    - text: Reduced motion
+    - checkbox "Receiver source light" [checked]
+    - text: Receiver source light
+    - checkbox "Physical receiver" [checked]
+    - text: Physical receiver
+    - checkbox "OBS source feed" [checked]
+    - text: OBS source feed
+    - checkbox "OBS response" [checked]
+    - text: OBS response
+    - text: E clock
+    - slider "E clock" [disabled]: "100"
+    - status: 100 ms
+  - paragraph: "Controls are separate: Receiver source light changes only fixture-declared physical light positions; Physical receiver bypasses R8 surface lighting; OBS source feed disables only the source-bound observer input; OBS response sets observer gain to zero while preserving the scene. Both OBS controls are ON by default. The observer visibility mask matches this host’s foreground overlay draw order; it does not model world/body occlusion."
+  - paragraph: Source, impact, lighting positions, and room are hypothetical preview inputs. Physical pose anchors come from the approved male-left RPG source. This is not a game port or adoption.
+  - generic "GPU surface lease"

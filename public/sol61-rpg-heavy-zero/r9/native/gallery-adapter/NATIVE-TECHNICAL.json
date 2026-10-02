@@ -1,0 +1,38 @@
+{
+  "schema": "rocket-r9-gallery-adapter-native/v1",
+  "status": "pass-limited-technical",
+  "observations": [
+    "1920x1080 real WebGPU native adapter replay; observer ON",
+    "active embedded loop visible at 649 ms (white/gray cloud); terminal blank",
+    "no surfaced GPU errors"
+  ],
+  "evidence": [
+    {
+      "path": "native/gallery-adapter/errors.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "native/gallery-adapter/status.json",
+      "bytes": 1986,
+      "sha256": "99e423ac765c7d0206da08ed9b73b7bd0351a962a001cdfbcf05fbb4ec58ba70"
+    },
+    {
+      "path": "native/gallery-adapter/loop.png",
+      "bytes": 12106,
+      "sha256": "036e9d805e57b4caa287ef1a8d94d19d32c28b8ed90ba962138a0ad167166163"
+    },
+    {
+      "path": "native/gallery-adapter/loop-active.png",
+      "bytes": 12630,
+      "sha256": "0b0ff070b3eed4d22f0d0ce7d8f46e9eca59d20285a251a73fb410152e5d7933"
+    }
+  ],
+  "quality": "unaccepted",
+  "qualityReason": "Blurry large impact and thin projectile remain unresolved.",
+  "adoption": "unadopted",
+  "gameIntegration": "not_connected",
+  "normalSfxListening": "not_run",
+  "safari": "unverified",
+  "worldBodyOcclusion": "not-established"
+}

@@ -1,0 +1,11 @@
+# R4実画面の判定 — 品質未受入
+
+rootのheld500/850/850postOFFをview_imageで確認。Source227adbc9533f2330ceab5881449f1e8ef78afeef985fb76ece26c63c532e05b9と撮影条件を固定する。root実WebGPU2pass成功だが、これをqualitypassにしない。
+
+500msではR3より内部の面/厚みがあり、薄い輪郭だけのloopは弱まった。しかし主silhouetteはpaired smooth white fingers/ribbonsに見え、輸送されるデジタルenergyとしての太い断面変化や凝縮因果は弱い。850msは小さい腹部/腰patchで、層/奥行き/収納結果はまだ弱い。発光が白いこと自体は欠陥ではない。増減光を次の修正目的にしない。
+
+postOFF850も基本shapeがほぼ同じ。実OBSはruntimeに接続されているが、適切な全時相の知覚寄与やsource/receiverとの役割分担はこの一対から全合格にできない。
+
+重要な設計不足：coreの数値上の広い密度と強いshear対比が、actual spriteの狭いalpha支持/投影/合成後には読める独立したstorage形になっていない。CPUratio約.168はquality証拠でない。mask ownershipを保つというtechnical判断が、前面のbody-energy全部を衣装輪郭へ閉じ込める造形として適切かを再考する必要がある。次稿は実abdomen sourceを動かさず、back遮蔽/前面の自発光volume/衣装受光を分けて、外部輸送とstored結果の関係が見えるprojected主形を設計する。単なるray数/particles/detail/brightness追加はしない。
+
+時間挙動はstillsで未確認。次の設計前の最小観察はcontinuous1×とpacket中間600/735、terminal980/1120/1250、source/receiverOFF。R4はそのまま凍結し、ここでR5を新規制作しない。SFX聴感/Safari/同時負荷/本編/採用は未確認。

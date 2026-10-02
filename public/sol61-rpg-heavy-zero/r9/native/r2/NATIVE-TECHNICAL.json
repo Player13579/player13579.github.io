@@ -1,0 +1,69 @@
+{
+  "schema": "rocket-r9-native-technical-summary/v1",
+  "provenance": "root-owned actual native capture in rocket-r9-native-r2; this derivative records the reported observation and pins its raw artifacts",
+  "status": "limited technical replay pass",
+  "routes": [
+    "standalone R2 native route",
+    "content-only gallery route not yet natively replayed"
+  ],
+  "observations": {
+    "held100": "rendered; status reported R8 physical receiver + R9 observer; source feed ON; response ON",
+    "held650": "normal rendered",
+    "enhance650": "rendered",
+    "observerToggle": "ON/OFF status inspected; held100-post-off capture included",
+    "realtime": "authored field reached its 1200 ms end; playback stopped at authored end",
+    "gpuErrors": 0
+  },
+  "evidence": [
+    {
+      "path": "native/r2/errors.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source": "outputs/request-20261003/rocket-r9-native-r2/errors.json"
+    },
+    {
+      "path": "native/r2/held100-dom.txt",
+      "bytes": 1587,
+      "sha256": "f45acddb3413c1f18bb2091cfeb8e4260785842abc5dee83fb83a3ad7cac27eb",
+      "source": "outputs/request-20261003/rocket-r9-native-r2/held100-dom.txt"
+    },
+    {
+      "path": "native/r2/held100.png",
+      "bytes": 35703,
+      "sha256": "ef565433ef43a8655720480716d4d988ea05f04c5a888abd251a3b6d632352f9",
+      "source": "outputs/request-20261003/rocket-r9-native-r2/held100.png"
+    },
+    {
+      "path": "native/r2/held100-post-off.png",
+      "bytes": 53059,
+      "sha256": "c5c60515cc86f7f78186c2c980a3b6d548d0203aef655b3f1e4891706fd6c0e0",
+      "source": "outputs/request-20261003/rocket-r9-native-r2/held100-post-off.png"
+    },
+    {
+      "path": "native/r2/held650.png",
+      "bytes": 34049,
+      "sha256": "951dd217684b767a36f156e911b9d45dd9eb59425a3666ac8635c99465969a57",
+      "source": "outputs/request-20261003/rocket-r9-native-r2/held650.png"
+    },
+    {
+      "path": "native/r2/enhance650.png",
+      "bytes": 34306,
+      "sha256": "4d8e5890010d2414437aaee6446ebdc34c7ed616710445be035fec0e7807a8b7",
+      "source": "outputs/request-20261003/rocket-r9-native-r2/enhance650.png"
+    },
+    {
+      "path": "native/r2/realtime-dom.txt",
+      "bytes": 1567,
+      "sha256": "f1cd27b7f8e2d6e5cca65c7b1637bc5b2298a169e58bac33c0089783bccdb8ad",
+      "source": "outputs/request-20261003/rocket-r9-native-r2/realtime-dom.txt"
+    }
+  ],
+  "limits": [
+    "No full quality acceptance: primary review reports a blurry large impact and thin projectile.",
+    "No gallery-adapter native replay yet.",
+    "Normal SFX listening, Safari/iPad, performance, world/body occlusion, and gameplay connection remain unaccepted."
+  ],
+  "quality": "not-accepted",
+  "adoption": "unadopted",
+  "gameIntegration": "not_connected"
+}
