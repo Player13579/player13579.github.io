@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Vibe Coding R8 Other-items Preview r1 · WebGPU preview</title>
+  <style>
+    :root { color-scheme: dark; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #080d12; color: #d6e2eb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 18px; }
+    main { width: min(100%, 1100px); }
+    h1 { margin: 0 0 12px; font-size: clamp(18px, 3vw, 26px); font-weight: 600; }
+    .controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 0 0 12px; }
+    label { display: grid; gap: 5px; color: #9aaebb; font-size: 12px; }
+    select, button { min-height: 38px; color: #d6e2eb; background: #111b23; border: 1px solid #30404c; border-radius: 5px; padding: 7px 10px; font: inherit; }
+    select { max-width: min(78vw, 630px); }
+    button:disabled { opacity: .55; }
+    canvas { display: block; width: 100%; height: min(72vh, 650px); min-height: 380px; border: 1px solid #24313a; background: #0a1015; }
+    output { display: block; margin: 10px 0 0; color: #b6c8d2; font-size: 12px; white-space: pre-wrap; }
+    #startup-status { padding: 10px 12px; border-left: 3px solid #75d7a1; background: #101a20; }
+    #startup-status[data-failed="true"] { border-color: #ff7f7f; color: #ffd1d1; }
+    #details { margin-top: 8px; color: #8297a4; line-height: 1.5; }
+  </style>
+  <script>
+    window.addEventListener('error', event => {
+      const node = document.querySelector('#startup-status');
+      if (node) { node.hidden = false; node.dataset.failed = 'true'; node.textContent = `Preview startup error: ${event.message || 'module load failed'}`; }
+      const bridge = document.querySelector('#error');
+      if (bridge) { bridge.style.display = 'block'; bridge.textContent = `R8 item preview: ${event.message || 'module load failed'}`; }
+    });
+    window.addEventListener('unhandledrejection', event => {
+      const node = document.querySelector('#startup-status');
+      if (node) { node.hidden = false; node.dataset.failed = 'true'; node.textContent = `Preview startup error: ${event.reason?.message || event.reason || 'unhandled rejection'}`; }
+      const bridge = document.querySelector('#error');
+      if (bridge) { bridge.style.display = 'block'; bridge.textContent = `R8 item preview: ${event.reason?.message || event.reason || 'unhandled rejection'}`; }
+    });
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Vibe Coding R8 Other-items Preview r1 · WebGPU preview</h1>
+    <div class="controls">
+      <label>Canonical recipe / actual target
+        <select id="variant" aria-label="Canonical Vibe Coding recipe"></select>
+      </label>
+      <label>Actor E clock
+        <select id="rate"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select>
+      </label>
+      <button id="audio" type="button">Enable sound</button>
+      <label><span>Motion</span><select id="motion"><option value="full" selected>Full</option><option value="reduced">Reduced</option></select></label>
+    </div>
+    <canvas id="preview" aria-label="Vibe Coding R8 Other-items Preview r1 WebGPU rendering"></canvas>
+    <output id="startup-status" role="status">Loading the registered actor and WebGPU…</output>
+    <output id="status" role="status">Preparing preview</output>
+    <div id="details">Fixture namespace only · no server transaction or game adoption. The canvas contains the shader-drawn code; labels describe the selected producer target.</div>
+  <pre id="error" role="alert" style="display:none;white-space:pre-wrap"></pre></main>
+  <script type="module" src="./preview-page.mjs?v=vibe-r8-other-items-preview-r1-1"></script>
+</body>
+</html>
