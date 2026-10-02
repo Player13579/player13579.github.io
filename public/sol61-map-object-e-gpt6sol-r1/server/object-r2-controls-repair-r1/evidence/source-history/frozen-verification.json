@@ -1,0 +1,173 @@
+{
+  "schema": "dva-server-object-e-r2-private-verification/v1",
+  "status": "pass-private-source-and-vm-validation",
+  "source": {
+    "designerSealSha256": "8ddac37cd2c8fadd768aac856a29c23a7592aeedf24536a598aa8ca5b9bbd6d1",
+    "publicCommit": "8fe12a04542686425bda0d62a2d1e30146fbe9ba",
+    "originalSha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64",
+    "quality": "unmet",
+    "adoption": "unadopted"
+  },
+  "checks": [
+    {
+      "name": "source closure and preserved pins",
+      "status": "pass",
+      "command": "node tests/source-closure.test.cjs",
+      "result": "36 assertions"
+    },
+    {
+      "name": "actual draw plus receipt/creative chain",
+      "status": "pass",
+      "command": "node tests/runtime-draw.integration.test.cjs",
+      "result": "2 cases; real draw, receipt validation/commit, buildFrame/packUniform/createKernels; WebGPU device/encoder/pass/submission stubbed"
+    },
+    {
+      "name": "private host routing",
+      "status": "pass",
+      "command": "node tests/host-routes.test.cjs",
+      "result": "9 route checks; GET/HEAD only; listener not started"
+    },
+    {
+      "name": "designer CPU validation",
+      "status": "pass",
+      "command": "node tests/run-cpu-validation.cjs",
+      "result": "4536 cases; report copied into test-only run directory"
+    },
+    {
+      "name": "syntax",
+      "status": "pass",
+      "command": "node --check build-r2.cjs; node --check candidate/runtime.mjs; node --check host/server.cjs"
+    },
+    {
+      "name": "host readiness",
+      "status": "pass",
+      "command": "node host/server.cjs --check",
+      "result": "10 exact files; 127.0.0.1:4240; no listener"
+    }
+  ],
+  "notRun": [
+    "WGSL/GPU compilation",
+    "native playback",
+    "quality acceptance",
+    "game integration",
+    "map SFX (disabled)"
+  ],
+  "runtimeClosureCount": 10,
+  "hostClosureCount": 10,
+  "packageManifestSha256": "8215c4e7583685874536c68901e88cd3ccc154ee692e8ed99daeec800b4a7ac0",
+  "hostManifestSha256": "b3763be02504efaae4182c5c4cc3ab72884447c1dd2bc38af0bc602f52b2d738",
+  "artifactHashes": {
+    "PLAN.md": {
+      "bytes": 1637,
+      "sha256": "3ed4866325f49efaf3b7e36c716f3c78aaa2d0d94f1731e4196a91c0f6e908bb"
+    },
+    "build-r2.cjs": {
+      "bytes": 41022,
+      "sha256": "104b03e2f019f3a351c43f99f171e58ef6420d62ccf7c4be664105a2b2589416"
+    },
+    "build-report.json": {
+      "bytes": 1988,
+      "sha256": "7a1438556a987648f2719cd6fd79e9997c4d03f47cb93b71062bd5c3ff857664"
+    },
+    "candidate/SOURCE-PROVENANCE.json": {
+      "bytes": 4045,
+      "sha256": "09b5fa8a57917b6e51ac7b7e96389199eb6170670f2ddca7d5a74055e2840dd8"
+    },
+    "candidate/common-rim.wgsl": {
+      "bytes": 11655,
+      "sha256": "7db35e6a8c3d18579dff71d19e17958d281c9908c9b88b8ba857cefe2df37951"
+    },
+    "candidate/creative.mjs": {
+      "bytes": 10232,
+      "sha256": "a60fb13976ccad9d1bfaf8ba07acc4b0c3c72b10636ad831c97679686cdf2283"
+    },
+    "candidate/index.html": {
+      "bytes": 4492,
+      "sha256": "91eecf76f8998b8771740609ded365fa9514e9c2974d9c30c44174ed97f39164"
+    },
+    "candidate/object-e.mjs": {
+      "bytes": 8236,
+      "sha256": "101e20764b1153abc067b7e5ff0fc3aeea0ac46719a59fbf3cf79f382c7c8d8c"
+    },
+    "candidate/object-e.wgsl": {
+      "bytes": 7893,
+      "sha256": "15975adcfe8ef2e66c371dd496d854be1f96810452361e7a0dfff60482488de5"
+    },
+    "candidate/package-manifest.json": {
+      "bytes": 3274,
+      "sha256": "8215c4e7583685874536c68901e88cd3ccc154ee692e8ed99daeec800b4a7ac0"
+    },
+    "candidate/runtime.mjs": {
+      "bytes": 43509,
+      "sha256": "e45f5389fe8174c760e03ac508d5ecb2cce3346e64f0728c42624f77fb5f1375"
+    },
+    "candidate/security-room-r01-original.png": {
+      "bytes": 2155465,
+      "sha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64"
+    },
+    "candidate/security-room-r05-missing.wgsl": {
+      "bytes": 35097,
+      "sha256": "eb77d6de243d2a6af2a7d6cfd739b120fa77f76fb84c244f57cbd35f02577078"
+    },
+    "candidate/shader.wgsl": {
+      "bytes": 9139,
+      "sha256": "1aad3506811e225d62618e754a9dfffea43aca84f022dc999ad155e3cea4d497"
+    },
+    "candidate/visual-clock.mjs": {
+      "bytes": 866,
+      "sha256": "23333852862408a70b1faf028fd5e18ea0d410a629bfe35c9088fbfc0930bd14"
+    },
+    "finalize-r2.cjs": {
+      "bytes": 4777,
+      "sha256": "d06bc756676508c7ad017a5dd71a10ccd9fecd901b463d079a5b84c847304184"
+    },
+    "host/host-manifest.json": {
+      "bytes": 2145,
+      "sha256": "b3763be02504efaae4182c5c4cc3ab72884447c1dd2bc38af0bc602f52b2d738"
+    },
+    "host/server.cjs": {
+      "bytes": 4526,
+      "sha256": "dabd22f38aa0024e65f4348468d1de343232a19a65e92306f0aee119b0779c67"
+    },
+    "prepare-host-manifest.cjs": {
+      "bytes": 1929,
+      "sha256": "05797d4c60719af8effc7f43f59a811f58f5be44557700bd38cfa5bf02aebcb9"
+    },
+    "tests/host-routes.test.cjs": {
+      "bytes": 1217,
+      "sha256": "e1456fd6ee44e9434b3de5d4ef8af5ec5e5e1525e8a3df332eace418788e05a9"
+    },
+    "tests/r2-cpu-run/CPU-VALIDATION.json": {
+      "bytes": 8153,
+      "sha256": "5384f78075a795de9faa7fe67a3640deda8d00ae30e0b662e593127e384d4e10"
+    },
+    "tests/r2-cpu-run/authority/public-server/object-e.mjs": {
+      "bytes": 8236,
+      "sha256": "101e20764b1153abc067b7e5ff0fc3aeea0ac46719a59fbf3cf79f382c7c8d8c"
+    },
+    "tests/r2-cpu-run/creative.mjs": {
+      "bytes": 10232,
+      "sha256": "a60fb13976ccad9d1bfaf8ba07acc4b0c3c72b10636ad831c97679686cdf2283"
+    },
+    "tests/r2-cpu-run/shader.wgsl": {
+      "bytes": 9139,
+      "sha256": "1aad3506811e225d62618e754a9dfffea43aca84f022dc999ad155e3cea4d497"
+    },
+    "tests/r2-cpu-run/verify.mjs": {
+      "bytes": 4272,
+      "sha256": "d4c80e3f9e0c11018829de70227258089cdbed5038a9a5349950b6a9a2165d19"
+    },
+    "tests/run-cpu-validation.cjs": {
+      "bytes": 2274,
+      "sha256": "2eae94f510b2942f32e8c3e759541f52760b206a728836c6f963e05ec1ee6b4a"
+    },
+    "tests/runtime-draw.integration.test.cjs": {
+      "bytes": 9336,
+      "sha256": "9af326c3486b9b8d27bd26684c1210e11a125b826a9a8542662a0adfadd8d66f"
+    },
+    "tests/source-closure.test.cjs": {
+      "bytes": 4407,
+      "sha256": "f69c538b28d3ffb5c319a3079af2d89c77374dcd29913f2be29f75c606260ed4"
+    }
+  }
+}

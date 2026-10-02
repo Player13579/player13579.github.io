@@ -1,0 +1,760 @@
+{
+  "status": "pass",
+  "readOnlyFrozenInputs": true,
+  "designSealSha256": "8ddac37cd2c8fadd768aac856a29c23a7592aeedf24536a598aa8ca5b9bbd6d1",
+  "frozenFiles": 22,
+  "inputs": [
+    {
+      "path": "../server-r2-later-native/monitor-later.png",
+      "bytes": 86834,
+      "sha256": "18867ddc8db60d8314426f8c5430e2e598882788eecb66690cd47b161b20ced9"
+    },
+    {
+      "path": "../server-r2-later-native/monitor-later.json",
+      "bytes": 9266,
+      "sha256": "8f2e1f0a2483c03534fe488566af00f352da92649d53b6ecb2a63c295210dc28"
+    },
+    {
+      "path": "../server-r2-later-native/monitor-later-second.png",
+      "bytes": 86824,
+      "sha256": "cd7927468febda91e1679b32889b474292d48a0c9074714a67186e1e35f9855f"
+    },
+    {
+      "path": "../server-r2-later-native/monitor-later-second.json",
+      "bytes": 9231,
+      "sha256": "7a54b67d21e1bc8a79082347b008902c207d9102a0f925965650592eae8f0535"
+    },
+    {
+      "path": "../server-r2-later-native/monitor-later-second-source-off.png",
+      "bytes": 86700,
+      "sha256": "c9855d4e66a5e8af1fe0792d3fa01aa69b5790532211b17a64695aeb96797c5a"
+    },
+    {
+      "path": "../../request-20261002/native-map-and-vibe-check/server-r2-monitor-held-probes.json",
+      "bytes": 9232,
+      "sha256": "0a251762f570648fc677137767b8c34ac992aa0b7a58c479bdd51190c52387d2"
+    },
+    {
+      "path": "../../request-20261002/native-map-and-vibe-check/server-r2-monitor-held-no-rim-api.png",
+      "bytes": 86778,
+      "sha256": "af4028877d2793f3b7e4b30a292c99158ca40963a97edf7b38f03046f4b3f7b2"
+    }
+  ],
+  "actualSnapshots": [
+    {
+      "frame": 2051,
+      "confirmedBy": "device.queue.onSubmittedWorkDone",
+      "age": 509.1000000000204,
+      "clockMs": 24400.350000000075,
+      "receipt": [
+        {
+          "objectId": "server-r05-monitor-console",
+          "ageMs": 509.1000000000204
+        }
+      ],
+      "sourceHash": "1aad3506811e225d62618e754a9dfffea43aca84f022dc999ad155e3cea4d497",
+      "originalHash": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64",
+      "rim": [
+        false,
+        false
+      ],
+      "mapSfx": 0,
+      "canvas": {
+        "width": 670,
+        "height": 587,
+        "cssRect": {
+          "x": 297.5,
+          "y": 241.484375,
+          "width": 670,
+          "height": 587
+        },
+        "dpr": 2,
+        "textureFormat": "bgra8unorm",
+        "context": "webgpu"
+      }
+    },
+    {
+      "frame": 2992,
+      "confirmedBy": "device.queue.onSubmittedWorkDone",
+      "age": 1018.5500000000284,
+      "clockMs": 24909.800000000083,
+      "receipt": [
+        {
+          "objectId": "server-r05-monitor-console",
+          "ageMs": 1018.5500000000284
+        }
+      ],
+      "sourceHash": "1aad3506811e225d62618e754a9dfffea43aca84f022dc999ad155e3cea4d497",
+      "originalHash": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64",
+      "rim": [
+        false,
+        false
+      ],
+      "mapSfx": 0,
+      "canvas": {
+        "width": 670,
+        "height": 587,
+        "cssRect": {
+          "x": 297.5,
+          "y": 241.484375,
+          "width": 670,
+          "height": 587
+        },
+        "dpr": 2,
+        "textureFormat": "bgra8unorm",
+        "context": "webgpu"
+      }
+    }
+  ],
+  "expectedAnalyticOnly": [
+    {
+      "age": 60.8,
+      "fronts": [
+        {
+          "screen": 0,
+          "start": 100,
+          "end": 570,
+          "gate": 0,
+          "frontU": 0,
+          "sourceOriginalPoint": [
+            519,
+            155.5
+          ],
+          "analyticEmission": [
+            0,
+            0,
+            0
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 1,
+          "start": 170,
+          "end": 640,
+          "gate": 0,
+          "frontU": 0,
+          "sourceOriginalPoint": [
+            650,
+            152.25
+          ],
+          "analyticEmission": [
+            0.0072000000000000015,
+            0.03456,
+            0.06336000000000001
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 2,
+          "start": 240,
+          "end": 710,
+          "gate": 0,
+          "frontU": 0,
+          "sourceOriginalPoint": [
+            808,
+            157
+          ],
+          "analyticEmission": [
+            0.0072000000000000015,
+            0.03456,
+            0.06336000000000001
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 3,
+          "start": 310,
+          "end": 780,
+          "gate": 0,
+          "frontU": 0,
+          "sourceOriginalPoint": [
+            526,
+            210.25
+          ],
+          "analyticEmission": [
+            0.0072000000000000015,
+            0.03456,
+            0.06336000000000001
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 4,
+          "start": 380,
+          "end": 850,
+          "gate": 0,
+          "frontU": 0,
+          "sourceOriginalPoint": [
+            652,
+            205
+          ],
+          "analyticEmission": [
+            0.0072000000000000015,
+            0.03456,
+            0.06336000000000001
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 5,
+          "start": 450,
+          "end": 920,
+          "gate": 0,
+          "frontU": 0,
+          "sourceOriginalPoint": [
+            804,
+            211.25
+          ],
+          "analyticEmission": [
+            0.0072000000000000015,
+            0.03456,
+            0.06336000000000001
+          ],
+          "analyticMaterialOriginalPx": 0
+        }
+      ]
+    },
+    {
+      "age": 509.1000000000204,
+      "fronts": [
+        {
+          "screen": 0,
+          "start": 100,
+          "end": 570,
+          "gate": 0.6609099419997089,
+          "frontU": 0.9513953488372566,
+          "sourceOriginalPoint": [
+            629.3618604651217,
+            155.5
+          ],
+          "analyticEmission": [
+            0.1459910878199389,
+            0.7007572215357066,
+            1.2847215728154622
+          ],
+          "analyticMaterialOriginalPx": 0.241263843777637
+        },
+        {
+          "screen": 1,
+          "start": 170,
+          "end": 640,
+          "gate": 1,
+          "frontU": 0.7886046511628381,
+          "sourceOriginalPoint": [
+            761.981860465123,
+            152.25
+          ],
+          "analyticEmission": [
+            0.21720000000000003,
+            1.04256,
+            1.9113600000000002
+          ],
+          "analyticMaterialOriginalPx": 1.479275738855135
+        },
+        {
+          "screen": 2,
+          "start": 240,
+          "end": 710,
+          "gate": 1,
+          "frontU": 0.6258139534884195,
+          "sourceOriginalPoint": [
+            881.2202325581451,
+            157
+          ],
+          "analyticEmission": [
+            0.21720000000000003,
+            1.04256,
+            1.9113600000000002
+          ],
+          "analyticMaterialOriginalPx": 2.2149550783084924
+        },
+        {
+          "screen": 3,
+          "start": 310,
+          "end": 780,
+          "gate": 1,
+          "frontU": 0.4630232558140009,
+          "sourceOriginalPoint": [
+            577.3955813953542,
+            210.25
+          ],
+          "analyticEmission": [
+            0.21720000000000003,
+            1.04256,
+            1.9113600000000002
+          ],
+          "analyticMaterialOriginalPx": 2.3838247913529513
+        },
+        {
+          "screen": 4,
+          "start": 380,
+          "end": 850,
+          "gate": 1,
+          "frontU": 0.3002325581395823,
+          "sourceOriginalPoint": [
+            692.5313953488436,
+            205
+          ],
+          "analyticEmission": [
+            0.21720000000000003,
+            1.04256,
+            1.9113600000000002
+          ],
+          "analyticMaterialOriginalPx": 1.9426709185272608
+        },
+        {
+          "screen": 5,
+          "start": 450,
+          "end": 920,
+          "gate": 1,
+          "frontU": 0.13744186046516366,
+          "sourceOriginalPoint": [
+            820.0806976744242,
+            211.25
+          ],
+          "analyticEmission": [
+            0.21720000000000003,
+            1.04256,
+            1.9113600000000002
+          ],
+          "analyticMaterialOriginalPx": 1.004385258086821
+        }
+      ]
+    },
+    {
+      "age": 1018.5500000000284,
+      "fronts": [
+        {
+          "screen": 0,
+          "start": 100,
+          "end": 570,
+          "gate": 0,
+          "frontU": 1,
+          "sourceOriginalPoint": [
+            635,
+            155.5
+          ],
+          "analyticEmission": [
+            0.0072000000000000015,
+            0.03456,
+            0.06336000000000001
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 1,
+          "start": 170,
+          "end": 640,
+          "gate": 0,
+          "frontU": 1,
+          "sourceOriginalPoint": [
+            792,
+            152.25
+          ],
+          "analyticEmission": [
+            0,
+            0,
+            0
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 2,
+          "start": 240,
+          "end": 710,
+          "gate": 0,
+          "frontU": 1,
+          "sourceOriginalPoint": [
+            925,
+            157
+          ],
+          "analyticEmission": [
+            0,
+            0,
+            0
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 3,
+          "start": 310,
+          "end": 780,
+          "gate": 0,
+          "frontU": 1,
+          "sourceOriginalPoint": [
+            637,
+            210.25
+          ],
+          "analyticEmission": [
+            0.0072000000000000015,
+            0.03456,
+            0.06336000000000001
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 4,
+          "start": 380,
+          "end": 850,
+          "gate": 0,
+          "frontU": 1,
+          "sourceOriginalPoint": [
+            787,
+            205
+          ],
+          "analyticEmission": [
+            0,
+            0,
+            0
+          ],
+          "analyticMaterialOriginalPx": 0
+        },
+        {
+          "screen": 5,
+          "start": 450,
+          "end": 920,
+          "gate": 0,
+          "frontU": 1,
+          "sourceOriginalPoint": [
+            921,
+            211.25
+          ],
+          "analyticEmission": [
+            0,
+            0,
+            0
+          ],
+          "analyticMaterialOriginalPx": 0
+        }
+      ]
+    }
+  ],
+  "selectedPointDeltas509vs1018": [
+    {
+      "key": "monitor-source",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "auth-display-source",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "auth-ready-source",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "rack-green-source",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "desk-receiver",
+      "displayRgbDelta": [
+        0,
+        0.00392156862745098,
+        0.00784313725490196
+      ],
+      "displayCodeDelta": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "floor-continuity-a",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "floor-continuity-b",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "floor-continuity-c",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "floor-continuity-d",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "cabinet-left",
+      "displayRgbDelta": [
+        0,
+        0.003921568627450994,
+        0.003921568627450994
+      ],
+      "displayCodeDelta": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "key": "cabinet-right",
+      "displayRgbDelta": [
+        0,
+        0.0039215686274509665,
+        0.0039215686274509665
+      ],
+      "displayCodeDelta": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "key": "caster-left",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "caster-right",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "column-occlusion",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "foreground-occlusion",
+      "displayRgbDelta": [
+        0.0039215686274509665,
+        0.007843137254901988,
+        0.01568627450980392
+      ],
+      "displayCodeDelta": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "key": "monitor-near-edge",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "monitor-flare-axis",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "auth-near-edge",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "auth-flare-axis",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "observer-off-axis",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "monitor-wing-top-left",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "monitor-wing-inner-left",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "monitor-wing-top-right",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "monitor-wing-lower-left",
+      "displayRgbDelta": [
+        0,
+        0,
+        0
+      ],
+      "displayCodeDelta": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "limits": [
+    "Selected fixed points are not moving-front peak coverage",
+    "Different phases are not independent receiverOFF/sourceOFF intervention",
+    "Screenshots are not a continuous movement observation",
+    "World-target label is not assumed to be isolated raw emission/received RGB"
+  ],
+  "model": {
+    "slug": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol",
+    "share": 100,
+    "catalogPath": "C:/Users/user/.codex/model-routing-state.json",
+    "updatedAt": "2026-10-02T15:40:43.7305617Z",
+    "catalogSha256": "aa21077c8e2951515af9abb029d3ae44246cd68435185a41e0b758b3e73525d3"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "dva-private-candidate-controls-repair/v1",
+  "status": "candidate-prepared-not-launched",
+  "base": {
+    "candidate": "outputs/request-20261002/server-object-e-quality-integrated-r2/candidate/runtime.mjs",
+    "frozenRuntimeSha256": "e45f5389fe8174c760e03ac508d5ecb2cce3346e64f0728c42624f77fb5f1375",
+    "seal": "outputs/request-20261002/server-object-e-quality-integrated-r2/SEAL.json",
+    "designSealSha256": "8ddac37cd2c8fadd768aac856a29c23a7592aeedf24536a598aa8ca5b9bbd6d1",
+    "publicParentCommit": "8fe12a04542686425bda0d62a2d1e30146fbe9ba"
+  },
+  "repair": {
+    "file": "candidate/runtime.mjs",
+    "sha256": "6ae1a41d9140a70a7835359285a0eddfea6508fba8f63bf3afe7b4bff7873b8a",
+    "changedSourceLines": 1,
+    "before": "state.auth = input.authSource.checked",
+    "after": "state.auth = input.auth.checked",
+    "cause": "The current HTML's #authSource control is stored on input.auth; input.authSource was undefined, so every generic visible control change threw before applying rim toggles."
+  },
+  "preserved": {
+    "currentHtmlSha256": "91eecf76f8998b8771740609ded365fa9514e9c2974d9c30c44174ed97f39164",
+    "creativeSha256": "a60fb13976ccad9d1bfaf8ba07acc4b0c3c72b10636ad831c97679686cdf2283",
+    "actorOverlaySha256": "15975adcfe8ef2e66c371dd496d854be1f96810452361e7a0dfff60482488de5",
+    "objectReceiptGeometrySha256": "101e20764b1153abc067b7e5ff0fc3aeea0ac46719a59fbf3cf79f382c7c8d8c",
+    "commonRimSha256": "7db35e6a8c3d18579dff71d19e17958d281c9908c9b88b8ba857cefe2df37951",
+    "finalTransferSha256": "eb77d6de243d2a6af2a7d6cfd739b120fa77f76fb84c244f57cbd35f02577078",
+    "originalMapSha256": "b13814c922b644ef1c29929c7604df8e9e5f5980ef32c9fe466335e57d01ea64",
+    "mapSfxGain": 0
+  },
+  "strictHost": {
+    "manifest": "host/host-manifest.json",
+    "serverSha256": "d6d42a6a8b49594e922c079dc0f196312c7c76fb252736ccbdd4ab445d27d46c",
+    "bind": "127.0.0.1",
+    "port": 4243,
+    "status": "private-unlaunched",
+    "closureFiles": 10
+  },
+  "validation": {
+    "controlsRegression": {
+      "command": "node outputs/request-20261003/server-object-e-r2-controls-repair-r1/tests/controls-regression.test.cjs",
+      "status": "passed",
+      "testSha256": "22c4e9df1a4d0d95fbf623ca872bec5f26b018412676879e7b02d91cd6287930",
+      "visibleInputsAndSelects": 16,
+      "updateStateInputs": ["monitor", "auth", "rack", "visibility", "near", "flare", "exposure", "rimSource", "rimObserver", "reducedMotion", "missingAmbient", "missingConsole", "presentation"],
+      "changesExercised": 17,
+      "legacyAbsentSelectorsRemainNull": ["observer", "shift", "missingNearby"]
+    },
+    "strictHostRoutes": {
+      "command": "node outputs/request-20261003/server-object-e-r2-controls-repair-r1/tests/strict-host.test.cjs",
+      "status": "passed",
+      "testSha256": "a90299ec1898c7eb156ff8edf6437cdabb90edabbf6388c9c92231483071495c",
+      "checks": ["strict 10-file closure", "candidate runtime bytes", "current HTML bytes", "HEAD", "405", "traversal rejection", "frozen R2 source seal", "one-line diff", "nine preserved R2 files"]
+    },
+    "hostCheck": {
+      "command": "node outputs/request-20261003/server-object-e-r2-controls-repair-r1/host/server.cjs --check",
+      "status": "passed; ready; files=10; bind=127.0.0.1; port=4243; publicSourceCommit=8fe12a04542686425bda0d62a2d1e30146fbe9ba"
+    },
+    "syntax": "node --check passed for runtime.mjs and host/server.cjs",
+    "productionListenerStarted": false,
+    "browserUsed": false,
+    "nativeGpuAcceptance": false,
+    "adoption": "unadopted"
+  },
+  "unresolved": ["Native GPU quality and game integration remain outside this controls-only repair."]
+}

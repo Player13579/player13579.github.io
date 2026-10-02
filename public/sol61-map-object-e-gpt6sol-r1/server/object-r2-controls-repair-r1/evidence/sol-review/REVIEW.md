@@ -1,0 +1,37 @@
+# Server object R2 — actual later-phase monitor review
+
+**Verdict: monitor-console use readability remains unmet at the actual map display. Source processing is present, but the successful-use action is too subtle to identify clearly without the status text/common rim. This does not prove a missing GPU pass or failure of the other objects.** R2 remains unadopted/user-quality-unmet; no new version is authored by this review. Own only this folder. No browser/server/shared/public/ledger change.
+
+Viewed existing60.8ms no-rim/API screenshot and new actual monitor-later509.1ms, monitor-later-second1018.55ms and same second-phase sourceOFF screenshots. Primary entered the existing front-access region with the actual character, producing one existing local successful receipt; no synthetic activation. Native snapshots confirm monitor-console alone, other receipt ages−1, originalb13814c9…01ea64 and exactR2shader1aad3506…a4d497, submitted-work-done readback,670×587 actual canvas,1340×1174 intermediate, visible UI commonrimsource/observerbothOFF, mapSFX0. Read-only22-file frozen-design seal and evidence checks pass; SOURCE-VERIFICATION.json records exact hashes/ages/probes.
+
+## Expected source-registered processes
+
+|Owner|Registered actual surfaces and successful process|What this evidence can judge|
+|---|---|---|
+|monitor-console|Six actual glass quads; staggered image/focus fronts start100+70k,430ms travel, gates end570/640/710/780/850/920ms. Source-bound response on existing keyboard/pointing housing/controlpad/desk/accessories/drawers/chair. Same authored feeds/outer contour remain.|Actual monitor receipt509active and1018resolved. No new device or additional use.|
+|locker|Exposed central equipment column, downward bounded acknowledgment130–890, finite source/material. Fixed doors/topcase receive it; no opening/item grant.|No locker receipt here; unobserved.|
+|auth|Existing display front100–530, finite fixed-plate relaxation; original lamps confirm600–1550 and housing receives source.|No auth receipt here; its idle lights are not acceptance of useE.|
+|rack|Four actual tray interiors/LED banks stagger90+170j, material relaxation and status resolution through1720; bounded cooling-air floor shear.|No rack receipt here; idle racks are not acceptance of useE.|
+|chair/threshold air|Ambient selected passive material/refraction, fixed arms/casters/door geometry and collision. Console emission lights only registered receivers.|Still captures cannot accept ambient motion. No new recipient/receipt/door opening.|
+
+60.8ms is before the first100ms front; a weak use effect at that age is correct.509.1ms is a meaningful active sample: all six front gates are nonzero, and fronts should occupy different positions.1018.55ms is after the last920ms front, so return toward idle is correct despite the receipt lasting1800ms. Do not call the lack of an active front at1018 a bug or extend the effect merely to fill that frame.
+
+## Actual visual result
+
+At509 the six blue camera images remain identifiable and fixed to their original screens, an improvement over the prior whitewashed screen source. But the room still primarily reads as the original powered monitor wall. The staggered connection/focus activity is not sufficiently distinct at670×587 to communicate successful console use. There is no clear broad material locking/arrival/resolution gesture visible in this held image; the localized brightness/focus variation is readily mistaken for ordinary bright feed texture. This concern is now based on the active phase, not the earlier60ms shot.
+
+The input/worktop/chair source-related response is very small. Selected final display probe desk changes509→1018 by[0,1,2]8-bit codes; selected monitor-source point is unchanged. These numbers corroborate subtlety at those fixed points, **not** a complete footprint/peak measurement or a quality threshold. A moving front can miss fixed probes; therefore unchanged monitor-source does not prove absent emission. No blanket 'source/receiver pass broken' conclusion follows.
+
+The1018sourceOFF comparison removes low powered/source-related contributions, including some visible auth/rack/monitor accents, while preserving bright authored feed imagery. That is correct donor-preserving semantics: sourceOFF must not black out photographed original screens. The room-level difference is subtle, and the timing tests only ambient/resolved source rather than the earlier use peak. It cannot establish509active source causality, receiver strength or independent observer effect. Current files expose combined/world/rim/final samples; do not mistake the labeled world target for isolated raw emission/receiver RGB after ping-pong finalLinear.
+
+Common activation rim is genuinely excluded in these observations. Its absence makes the use-specific weakness more apparent; restoring the shared bright outline is not a solution or specificE evidence. No actual source-original/collision/frame registration displacement or new unauthorized object is visibly introduced. MapSFX is correctly disabled under the map-only exception.
+
+## Bounded next decision
+
+Retain quality-unmet for the console. A continuous1×100–920ms receipt sequence could still show more motion than held509; only that short active-window observation is missing, not another1000ms still. If primary next runs a native check, match sourceOFF or source-only at509 and probe each **actual moving front** at x=quad.left+quad.width×clamp((age−100−70k)/430), same registered y/fit. Fixed left-screen/background samples are insufficient. Received/observerOFF at the same active age can isolate their contribution. Root's already-closed resources need not be reopened merely for redundant screenshots.
+
+The design-level reason for subtlety is concrete: maximum2.4original-px focus displacement≈1.2displaypx is set against the highly contrasted painted feeds; source color largely reinforces their existing blue and the fixed bright underlying screens. The remedy is a more readable **monitor-material acquisition→lock→resolution process**, not simply stronger glow/count or dimming the original to avoid white clipping. Proposed bounded refinement if authorized: original feed content temporarily resamples coherently over a broad registered front, with a visibly larger but contour-contained image alignment/settling displacement, followed by stable original feed; stagger the same six faces, let the existing source front trace that lock and drive the actual adjacent input/worktop/chair material response. Preserve donor pixels at rest, original surfaces, receipt/collision/front-access, common rim equality and mapSFX0. No new camera view, hardware, console task, text receipt or beneficial mechanic.
+
+This is a specific improvement direction tied to the observed weak action, **not** a frozenR3 coefficient/WGSL contract or authorization to change other objects. Actual locator/locker/auth/rack receipt windows and ambient motion remain unobserved; they require their own successful local receipt evidence before quality acceptance or redesign. Source/pipeline/hash success is not all-object quality. The same fullB/subject/mandatory rule applies: object roles must read with phenomenon emission/receiver/appropriate observer at actual size, while map audio remains explicitly exempt.
+
+モデル分担: GPT-6.1-Sol100% — source-registered timing review, actual later-phase quality assessment and bounded improvement direction.
