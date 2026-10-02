@@ -1,0 +1,18 @@
+{
+  "schema": "teleport-smoke-height-zero-r3-validation/v1",
+  "checks": [
+    {"name":"creative numeric and temporal regression","cases":9,"status":"pass","execution":"node tests/creative.test.mjs"},
+    {"name":"adapter and host planning regression","cases":32,"status":"pass","execution":"node tests/adapter.test.mjs"},
+    {"name":"audio hard-zero and lifecycle regression","cases":13,"status":"pass","execution":"node tests/audio.test.mjs"},
+    {"name":"approved source derivation and receiver interface","cases":6,"status":"pass","execution":"node tests/syntax-review.mjs"},
+    {"name":"pipeline and preview failure diagnostics","cases":7,"status":"pass","execution":"node tests/failure-diagnostics.test.mjs"}
+  ],
+  "nativeWebGPU":"not-run",
+  "technicalReplay":"pending-primary-native-webgpu",
+  "creativeQuality":"pending-GPT-6.1-Sol",
+  "audioListening":"not-run",
+  "safari":"not-run",
+  "gameIntegration":"not-connected",
+  "adoption":"unknown_unadopted",
+  "limits":["No native WGSL compiler or GPU submission was executed by this stage.","Source and mock tests do not establish visual quality or browser compatibility."]
+}

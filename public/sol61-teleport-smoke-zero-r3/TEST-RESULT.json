@@ -1,0 +1,27 @@
+{
+  "schema": "teleport-smoke-height-zero-implementation-tests/v1",
+  "creativeNumeric": {
+    "command": "node outputs/request-20261002/teleport-smoke-height-zero-design/tests.mjs",
+    "status": "passed",
+    "cases": 9,
+    "native": false
+  },
+  "adapterAndHost": {
+    "command": "node outputs/request-20261002/teleport-smoke-height-zero-preview-r2/tests/adapter.test.mjs",
+    "status": "passed",
+    "cases": 32,
+    "coverage": ["raw receipt/current owning clock and independent scope", "prepared pose/pair ticket", "ages 0, 140, 179, 180, 320", "filtered pair ordinary body/no source", "registered alpha actor H and CSS clip mapping", "WGSL diagnostic refusal"]
+  },
+  "audio": {
+    "command": "node outputs/request-20261002/teleport-smoke-height-zero-preview-r2/tests/audio.test.mjs",
+    "status": "passed",
+    "cases": 13,
+    "coverage": ["hard-zero allocation", "gesture gate", "failed submission", "single cue per receipt", "rate pause", "revocation", "late cue skip", "disposal"]
+  },
+  "syntax": {
+    "status": "passed",
+    "files": ["preview.mjs", "teleport-smoke-height-zero-host.mjs", "teleport-smoke-height-zero-adapter.mjs", "teleport-smoke-height-zero-audio.mjs", "vendor/r6-raw-causal-projection-validator.mjs", "vendor/r6-owning-e-clock-validator.mjs"]
+  },
+  "notRun": ["actual host.render GPU command-recording stub for effect-off/filtered arrival", "native WGSL compilation", "native GPU submission/validation", "held-age browser replay", "H64 continuous quality review", "normal SFX listening", "Safari/iPad", "game integration or adoption"],
+  "authoring": {"design": "GPT-6.1-Sol", "faithfulImplementation": "GPT-6-Luna"}
+}

@@ -1,0 +1,5 @@
+# Teleport smoke height-zero preview R3
+
+R3 is a derivative of the immutable sealed R2 package. Its only runtime changes are: (1) use the approved GPT-6.1-Sol syntax-only creative source, which splits one invalid WGSL multi-`let` declaration without changing values, order, or equations; (2) preserve full scalar WGSL compilation diagnostics with their pipeline label; and (3) report native GPU error messages and structured diagnostic arrays while retaining stack details and visible failure behavior. The preview stops on failure and does not retry or claim readiness.
+
+All other creative, adapter, host, image, audio, profile, and choreography bytes are inherited unchanged except for the above explicit host/preview edits and R3 package version labels. See `R3-INPUT-RECEIPT.json` and `R3-VALIDATION.json` at the stage root for input pins and executed checks. Native WebGPU compilation/replay, primary quality review, ordinary SFX listening, Safari, gameplay integration, and adoption remain pending.
