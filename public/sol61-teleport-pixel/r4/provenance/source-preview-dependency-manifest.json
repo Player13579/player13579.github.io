@@ -1,0 +1,71 @@
+{
+  "previewOnly": true,
+  "notProduction": true,
+  "creativeEffect": {
+    "path": "../teleport-pixel.mjs",
+    "author": "GPT-6.1-Sol",
+    "sha256": "9798a0ef7597baea6ff46f3a279b49e5ebc6f9332d51accbb768e9cead105bf0",
+    "modified": false
+  },
+  "design": {
+    "path": "../DESIGN.md",
+    "author": "GPT-6.1-Sol",
+    "modified": false
+  },
+  "producerContract": {
+    "path": "../TELEPORT-PRODUCER-CONTRACT.md",
+    "modified": false
+  },
+  "actualAuthoredRaster": {
+    "path": ".codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean/assets/generated/philia-front-nine-v752.png",
+    "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+    "canonicalGitRoot": ".codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean",
+    "assetManifestIdentity": "white-hood/front",
+    "cropPx": [
+      0,
+      0,
+      256,
+      256
+    ],
+    "sourceSizePx": [
+      768,
+      768
+    ],
+    "imageAuthor": "unresolved; current authored-motion manifest records asset path/hash but not original image author",
+    "copiedOrGenerated": false
+  },
+  "technicalSpriteLease": {
+    "path": ".codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean/webgpu-player-sprite.js",
+    "api": [
+      "createTextureCache",
+      "prepareSampledResource",
+      "ownerLease.pin"
+    ],
+    "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2",
+    "canonicalGitRoot": ".codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean",
+    "gitState": "modified worktree source; exact dirty bytes are pinned by source-freeze.json",
+    "headBaseline": "6275464f6f37b98b8113b529cdef2132eb487030",
+    "headHasPrepareSampledResource": false,
+    "copiedOrModified": false,
+    "publication": "must not be included in game publication as part of this preview task"
+  },
+  "previewHarness": {
+    "files": [
+      "index.html",
+      "preview.mjs",
+      "teleport-preview-adapter.mjs"
+    ],
+    "localFixtureOnly": true,
+    "serverOrBrowserStarted": false,
+    "webgpuShaderCompile": "not_run",
+    "visualAcceptance": "not_run"
+  },
+  "localFixture": {
+    "casterId": "fixture-caster",
+    "transportedActorId": "fixture-transported-actor",
+    "endpoints": "explicit preview records; not server-issued source proofs",
+    "productionReceiptClaim": false,
+    "gameplayBodyOwnershipClaim": false,
+    "audio": "finite source-bound PCM is admitted after successful same-frame GPU submission; normal playback is gesture-gated; verify and held-review modes are hard-zero"
+  }
+}

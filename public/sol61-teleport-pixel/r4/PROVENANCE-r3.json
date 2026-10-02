@@ -1,0 +1,44 @@
+{
+  "package": "sol61-teleport-pixel/r3-conversion-front",
+  "id": "sol61-teleport-pixel-r3-conversion-front",
+  "artist": "GPT-6.1-Sol",
+  "implementation": "GPT-6-Luna",
+  "modelWorkShare": [
+    { "displayName": "GPT-6.1-Sol", "sharePercent": 40, "scope": "settled creative conversion-front design and bounded technical requirements" },
+    { "displayName": "GPT-6-Luna", "sharePercent": 60, "scope": "r3 shader/module derivative, focused CPU contracts, sealing, and evidence" }
+  ],
+  "parent": {
+    "path": "../teleport-pixel-r2/package",
+    "manifestSha256": "d08da3f2c5b3055ca920978812d44a18ca3cac6dbd5362b8a535e317a3e00f8d",
+    "creativeSourceSha256": "b1fae06c3c70fcab1c9769374f8eab087ad964b9acec49789359f9b071adb6cd",
+    "integrityIndexSha256": "e4a08163dcd7a27cbcafb1dbf4028b4a16c80c98fc4cc2e1a3d44b43942b4db5"
+  },
+  "authoredAtlas": {
+    "path": "assets/generated/philia-front-nine-v752.png",
+    "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+    "bytesPreserved": true,
+    "creativeSourceReauthored": false
+  },
+  "bProvenance": {
+    "inherited": "provenance/source-freeze.json and r2 provenance closure",
+    "change": "No new raster, authored sprite, B source, or B schema is introduced. r3 changes shader conversion behavior only; authored atlas identity and source authorship remain unchanged.",
+    "allBValidation": "not-claimed"
+  },
+  "contract": {
+    "clock": "actor-e-clock",
+    "durationEms": 640,
+    "departureEndMs": 280,
+    "arrivalStartMs": 160,
+    "shaderAbi": "teleport-pixel-linear-mrt-owning-e-clock-r2",
+    "sourceAlphaPreserved": true
+  },
+  "status": {
+    "focusedCpuContracts": "pass",
+    "shaderCompilation": "not-run",
+    "nativeGpu": "not-run",
+    "qualityAcceptance": "pending-primary-native-review",
+    "userAdoption": "unknown_unadopted",
+    "gameIntegration": "not-connected",
+    "galleryPublished": false
+  }
+}
