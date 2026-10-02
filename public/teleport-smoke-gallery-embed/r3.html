@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="teleport-package" content="teleport-smoke-height-zero-r3">
+  <meta name="gallery-embed" content="content-only-shell-v1">
+  <title>テレポート 白煙・実高度 ZERO R3</title>
+  <style>
+    :root{color-scheme:dark;background:#0d1116}
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{width:100%;height:100%;min-width:0;min-height:0;margin:0;padding:0;overflow:hidden;background:#0d1116}
+    body{display:grid;place-items:center}
+    h1,body>p:first-of-type,.controls,#gpu,#status,#audio,.notice{display:none!important}
+    #surface{display:block;width:100%;height:100%;max-width:none;max-height:none;aspect-ratio:auto;margin:0;padding:0;border:0;background:#0d1116}
+    #error[hidden]{display:none!important}
+    #error:not([hidden]){position:fixed;z-index:10;inset:8px;max-height:calc(100% - 16px);overflow:auto;margin:0;padding:10px;white-space:pre-wrap;color:#ffb6b6;background:#2b1717;border:1px solid #a44949;font:14px/1.45 system-ui,sans-serif}
+  </style>
+</head>
+<body>
+  <h1>テレポート 白煙・実高度 ZERO</h1>
+  <p>Content-only gallery shell. The frozen preview module owns rendering, diagnostics and audio.</p>
+  <div class="controls" hidden>
+    <label>Endpoint<select id="endpoint"><option value="pair" selected>pair</option><option value="departure">departure</option><option value="arrival">arrival</option></select></label>
+    <label>Rate<select id="rate"><option>0</option><option>0.5</option><option selected>1</option><option>1.5</option><option>2</option></select></label>
+    <button id="restart" type="button">再生し直す</button>
+    <button id="sound" type="button">通常SFXをgestureで有効化</button>
+    <label><input id="source" type="checkbox" checked>source</label>
+    <label><input id="nearby" type="checkbox" checked>nearby</label>
+    <label><input id="observer" type="checkbox" checked>observer</label>
+    <label><input id="effect" type="checkbox" checked>effect</label>
+  </div>
+  <canvas id="surface" width="980" height="640" aria-label="WebGPU preview"></canvas>
+  <div id="gpu" hidden>WebGPU loading</div>
+  <div id="status" hidden>Preview loading</div>
+  <div id="audio" hidden>Audio loading</div>
+  <div id="error" hidden></div>
+  <p class="notice" hidden>Frozen preview diagnostics and fixture limitations are unchanged.</p>
+  <script src="../sol61-teleport-smoke-zero-r3/vendor/teleport-pixel-r1-player-sprite-cache.js"></script>
+  <script type="module">
+    const preview = new URL('../sol61-teleport-smoke-zero-r3/preview.mjs', import.meta.url);
+    preview.search = location.search;
+    import(preview.href).catch(error => {
+      const node = document.getElementById('error');
+      if (node) { node.hidden = false; node.textContent = String(error?.stack || error); }
+    });
+  </script>
+</body>
+</html>

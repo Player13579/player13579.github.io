@@ -1,0 +1,23 @@
+{
+  "schema": "teleport-smoke-gust-source-provenance/v1",
+  "basePackage": "outputs/request-20261002/teleport-smoke-height-zero-preview-r4/package",
+  "baseSealSha256": "ec2832b288f6e759131a341760c600ef76740a6d2fa1d76a3bdda083dc51b08d",
+  "basePackageManifestSha256": "1d83ee72d93f17cad43e06bb57192629ada75581b2b6977496eff3545eb32438",
+  "frozenR4CreativeSha256": "8d449423cf4208f6a1f5b24d7b8abbcfd24fc38c72fd2c6f43f1f0bd9c34da01",
+  "preservedByteIdentical": [
+    "teleport-smoke-height-zero-audio.mjs",
+    "failure-diagnostics.mjs",
+    "vendor/teleport-pixel-r1-player-sprite-cache.js",
+    "vendor/r6-owning-e-clock-validator.mjs",
+    "vendor/r6-raw-causal-projection-validator.mjs",
+    "assets/generated/philia-front-nine-v752.png"
+  ],
+  "derivativeChanges": [
+    "creative.mjs: smoke-only gust motion, shape, support and WGSL bounds",
+    "teleport-smoke-height-zero-adapter.mjs: attaches current support bounds to each endpoint row",
+    "teleport-smoke-height-zero-host.mjs: uploads CPU support for the expanded WGSL parameter block",
+    "preview.mjs and index.html: derivative identity",
+    "gallery-content.html: content-only viewport shell reusing this package's renderer"
+  ],
+  "notModified": ["source atlas raster", "PCM generation and scheduling", "actor sprite pose/UV/alpha", "source emission", "actor phase and handoff", "ground position"]
+}
