@@ -27,12 +27,93 @@ main{max-width:1600px;margin:auto;padding:clamp(12px,2vw,24px)}header{display:fl
 <body><main>
 <header><div><div class="eyebrow">Defenders vs Attackers · WebGPU</div><h1>素材ギャラリー</h1><p>マップ・エフェクトを切り替え、作者・品質・採用・本編接続を版ごとに表示します。</p></div><div class="counter" id="entry-counter" aria-live="polite">0 件</div></header>
 <nav class="categories" role="tablist" aria-label="素材カテゴリ"><button type="button" role="tab" id="tab-map" aria-selected="false" data-category="map">Map</button><button type="button" role="tab" id="tab-effect" aria-selected="true" data-category="effect">Effect</button></nav><div class="adoption-filters" role="group" aria-label="採用状態"><button type="button" data-filter="adopted" aria-pressed="false">採用済み</button><button type="button" data-filter="unadopted" aria-pressed="true">未採用</button></div><div class="gallery-audio" id="gallery-audio"><button type="button" id="gallery-audio-enable" aria-pressed="false">音声を開始</button><span id="gallery-audio-status" role="status">最初のタップでEの効果音を有効にします。</span></div><div id="empty-category" class="empty-category" role="status" hidden></div><div class="layout" id="gallery-layout"><section class="viewer" aria-label="選択した素材のプレビュー"><div class="viewer-head"><div><h2 id="selected-title"></h2><p id="selected-description"></p><label class="version-control" for="version-select">版を選択<select id="version-select" aria-label="選択した素材の版"></select></label></div><span class="badge" id="selected-status"></span></div>
-<div class="stage" id="stage"><div class="notice" id="notice" role="status">WebGPU を確認しています…</div></div><div class="map-comparison" id="map-comparison" hidden><label id="map-interaction-control" hidden><input type="checkbox" id="map-interaction-toggle" disabled>キャラ操作</label><button type="button" id="map-compare-toggle" aria-pressed="false">原画のみで比較</button></div>
+<div class="stage" id="stage"><div class="notice" id="notice" role="status">素材一覧を読み込んでいます…</div></div><div class="map-comparison" id="map-comparison" hidden><label id="map-interaction-control" hidden><input type="checkbox" id="map-interaction-toggle" disabled>キャラ操作</label><button type="button" id="map-compare-toggle" aria-pressed="false">原画のみで比較</button></div>
 <p class="scale-contract" id="effect-scale-contract"><strong>原寸基準: 980×620 CSS px、人物基準H64=64 px。</strong>各Eの主形が見やすい倍率で拡大します。背景部分のみを切り取り、主形は画面内に保ちます。</p>
 <div class="viewer-foot"><p id="selected-source"></p><a id="selected-link" target="_blank" rel="noopener">元のプレビューを見る ↗</a></div></section>
 <aside class="catalog"><h2 id="list-heading">未採用のエフェクト一覧</h2><div class="catalog-list" id="catalog"></div></aside></div>
 <p class="intro">一覧を採用状態で切り替え、版ごとの状態を確認できます。音声を開始すると、Eと固有SFXが同期してループ再生されます。制作元、品質判定、本編採用状況を版ごとに表示します。</p>
 </main>
+<script>
+(() => {
+  'use strict';
+
+  const notice = document.getElementById('notice');
+  if (!notice) return;
+
+  const initialGpuStatus = 'WebGPU を確認しています…';
+  const catalogScript = script => /(?:^|\/)asset-gallery\.js(?:[?#]|$)/.test(script?.src || '');
+  let catalogReady = false;
+  let guardOwnsNotice = false;
+  let guardNoticeText = '';
+  let failureKind = '';
+  let timer;
+
+  const initialized = () => {
+    const catalog = document.getElementById('catalog');
+    const empty = document.getElementById('empty-category');
+    const counter = document.getElementById('entry-counter')?.textContent || '';
+    return Boolean((!empty?.hidden && empty?.textContent?.trim()) || /[1-9]\d*\s*(?:件|群|版)/u.test(counter));
+  };
+
+  const setNotice = (message, withRetry) => {
+    notice.replaceChildren(document.createTextNode(message));
+    guardOwnsNotice = true;
+    guardNoticeText = message;
+    if (!withRetry) return;
+
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.textContent = '再読み込み';
+    retry.addEventListener('click', () => {
+      const next = new URL(window.location.href);
+      next.searchParams.set('galleryReload', String(Date.now()));
+      window.location.assign(next.toString());
+    }, { once: true });
+    notice.append(document.createTextNode(' '), retry);
+  };
+
+  const markReady = () => {
+    if (failureKind === 'runtime' || failureKind === 'load') return false;
+    if (!initialized()) return false;
+    catalogReady = true;
+    failureKind = '';
+    clearTimeout(timer);
+    if (guardOwnsNotice && notice.firstChild?.textContent === guardNoticeText) notice.textContent = initialGpuStatus;
+    guardOwnsNotice = false;
+    return true;
+  };
+
+  notice.textContent = '素材一覧を読み込んでいます…';
+  timer = setTimeout(() => {
+    if (markReady()) return;
+    if (failureKind) return;
+    failureKind = 'delay';
+    setNotice('素材一覧の読み込みが遅れています。WebGPUの状態はまだ未確認です。', true);
+  }, 12000);
+
+  window.addEventListener('error', event => {
+    if (catalogReady) return;
+    if (catalogScript(event.target)) {
+      failureKind = 'load';
+      setNotice('素材一覧スクリプトを読み込めませんでした。WebGPUの状態はまだ未確認です。', true);
+      return;
+    }
+    if (typeof event.filename === 'string' && /(?:^|\/)asset-gallery\.js(?:[?#:]|$)/.test(event.filename)) {
+      failureKind = 'runtime';
+      const detail = event.message ? ` (${event.message})` : '';
+      setNotice(`素材一覧の初期化に失敗しました${detail}。WebGPUの状態はまだ未確認です。`, true);
+    }
+  }, true);
+
+  window.addEventListener('load', event => {
+    if (catalogReady || !catalogScript(event.target)) return;
+    if (!markReady() && !failureKind) {
+      failureKind = 'runtime';
+      setNotice('素材一覧スクリプトは読み込まれましたが、一覧の初期化を確認できません。', true);
+    }
+  }, true);
+})();
+</script>
 <script src="asset-gallery-sfx-bridge.js?v=gallery-sfx-20260930-r1"></script>
 <script src="asset-gallery.js?v=medical-r10-water-restore-20261002-server-r08-common-rim-20261002-vibe-r8-teleport-r3-teleport-r4-teleport-r5-teleport-r6-vibe-r8-adopted-20261002-medical-r11-front-interaction-20261002-teleport-white-smoke-r3-r4-20261002-vibe-r8-other-items-preview-r1-20261002-smoke-content-only-teleport-smoke-gust-r1-20261002-teleport-gust-r2-r3-20261002-teleport-gust-r4-20261002-quality-status-r2-teleport-gust-r5-20261002-20261002-ki-donation-gallery-r1-20261002-ki-r6-donation-r5-release-r1-map-object-e-release-r1-rocket-r2-r3-native-20261002-donation-card-gallery-release-r3-common-ki-r7-gallery-20261002-teleport-gust-r7-r8-r9-stage-r1-server-object-e-r2-controls-repair-r1-rocket-r5-20261003-rocket-r6-20261003-medical-server-map-adoptions-20261003-renki-zero-r1-r2-20261003-stamina-sparkle-r1-r2-20261003-renki-zero-r3-20261003-syntax-fix-20261003-rocket-r7-20261003-renki-r4-rocket-r9-combined-20261003-r9-gallery-replay-description-20261003-renki-zero-r5-13abc540ad51e63e"></script>
 </body></html>
