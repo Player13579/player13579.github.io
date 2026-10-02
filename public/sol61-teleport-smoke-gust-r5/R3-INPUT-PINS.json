@@ -1,0 +1,190 @@
+{
+  "schema": "teleport-smoke-gust-r3-input-pins/v1",
+  "directParent": {
+    "package": "outputs/request-20261002/teleport-smoke-gust-preview-r2/package",
+    "versionId": "teleport-smoke-gust-r2",
+    "packageManifestSha256": "66973ebded8d4fc2d2e456bffbf1f8adcbffebde255e40421ebdb60f8ba02dee",
+    "sealSha256": "541f7dd74406cc134ce3d4e13a744022145bcd0024c317a3314b7e1295813320",
+    "sealFrozen": true,
+    "runtimeRows": [
+      {
+        "path": "index.html",
+        "bytes": 3399,
+        "sha256": "1dfa38da92c37dccb0d4db4711af011b1062aa316afaf75e3921947e97ca5175"
+      },
+      {
+        "path": "gallery-content.html",
+        "bytes": 2207,
+        "sha256": "a23814060dcaaecabdd00c15e20c7919fb540931196615d6b8b669df04728dec"
+      },
+      {
+        "path": "preview.mjs",
+        "bytes": 13843,
+        "sha256": "778dff732652dbd0242588c504117809f83658c8443defc3d34a2a3bdfe28d73"
+      },
+      {
+        "path": "creative.mjs",
+        "bytes": 21605,
+        "sha256": "a653dc886e8c47cca742dfc51299ec1534b54edb2c2c4510b12327c488f48b7c"
+      },
+      {
+        "path": "failure-diagnostics.mjs",
+        "bytes": 1345,
+        "sha256": "1b476ad71563f1437563aa6a26c3ba8d9ea261a5fcd2b6c787c56b62e24876ab"
+      },
+      {
+        "path": "teleport-smoke-height-zero-adapter.mjs",
+        "bytes": 11922,
+        "sha256": "a114f29c41b55bcf270c457d3e2f3197c9beacdec08646e9910ff32b5472a6d3"
+      },
+      {
+        "path": "teleport-smoke-height-zero-audio.mjs",
+        "bytes": 3606,
+        "sha256": "4c2805d4074cb92ff4fcdd43c55f7d5ab5c768b120eac81aa6a36eaeb8f9cf87"
+      },
+      {
+        "path": "teleport-smoke-height-zero-host.mjs",
+        "bytes": 25174,
+        "sha256": "1a2e9733a4630b97c03a9bc6056b39a76b96e997e574790af567bf7247009dc7"
+      },
+      {
+        "path": "vendor/teleport-pixel-r1-player-sprite-cache.js",
+        "bytes": 12771,
+        "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2"
+      },
+      {
+        "path": "vendor/r6-owning-e-clock-validator.mjs",
+        "bytes": 991,
+        "sha256": "fb5e75393b8c40856fdc45f48c99e0d0c28ae3a4c3945a7d7031192cf48a15ad"
+      },
+      {
+        "path": "vendor/r6-raw-causal-projection-validator.mjs",
+        "bytes": 3998,
+        "sha256": "6aa4cc0df87ddb589496218048401db2bf1fd63c7d93700ccb6d162f4885231a"
+      },
+      {
+        "path": "assets/generated/philia-front-nine-v752.png",
+        "bytes": 399216,
+        "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+      }
+    ],
+    "sealedRows": 33
+  },
+  "sourceCorrection": {
+    "path": "creative.mjs",
+    "parentSha256": "a653dc886e8c47cca742dfc51299ec1534b54edb2c2c4510b12327c488f48b7c",
+    "transform": "normalized.x-l.radiusPad.w*(l.radiusPad.z/l.radiusPad.x)*normalized.z",
+    "reason": "implement the settled physical-space x -= k*z transform after coordinate normalization",
+    "outputSha256": "6bbcefd2367a7c0bc7b07043baaccc5593b8ea087474e42a774065abaec84a15"
+  },
+  "unchangedRuntimeInputs": [
+    {
+      "path": "failure-diagnostics.mjs",
+      "bytes": 1345,
+      "sha256": "1b476ad71563f1437563aa6a26c3ba8d9ea261a5fcd2b6c787c56b62e24876ab"
+    },
+    {
+      "path": "teleport-smoke-height-zero-adapter.mjs",
+      "bytes": 11922,
+      "sha256": "a114f29c41b55bcf270c457d3e2f3197c9beacdec08646e9910ff32b5472a6d3"
+    },
+    {
+      "path": "teleport-smoke-height-zero-audio.mjs",
+      "bytes": 3606,
+      "sha256": "4c2805d4074cb92ff4fcdd43c55f7d5ab5c768b120eac81aa6a36eaeb8f9cf87"
+    },
+    {
+      "path": "teleport-smoke-height-zero-host.mjs",
+      "bytes": 25174,
+      "sha256": "1a2e9733a4630b97c03a9bc6056b39a76b96e997e574790af567bf7247009dc7"
+    },
+    {
+      "path": "vendor/teleport-pixel-r1-player-sprite-cache.js",
+      "bytes": 12771,
+      "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2"
+    },
+    {
+      "path": "vendor/r6-owning-e-clock-validator.mjs",
+      "bytes": 991,
+      "sha256": "fb5e75393b8c40856fdc45f48c99e0d0c28ae3a4c3945a7d7031192cf48a15ad"
+    },
+    {
+      "path": "vendor/r6-raw-causal-projection-validator.mjs",
+      "bytes": 3998,
+      "sha256": "6aa4cc0df87ddb589496218048401db2bf1fd63c7d93700ccb6d162f4885231a"
+    },
+    {
+      "path": "assets/generated/philia-front-nine-v752.png",
+      "bytes": 399216,
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+    }
+  ],
+  "transitiveR1Ancestry": {
+    "schema": "teleport-smoke-gust-r2-input-pins/v1",
+    "directParent": {
+      "packageManifestPath": "outputs/request-20261002/teleport-smoke-gust-preview-r1/package/package-manifest.json",
+      "packageManifestSha256": "5b314a39461029b10e692da80e654f7ae071a818410642134107ea292fa40f56",
+      "sealPath": "outputs/request-20261002/teleport-smoke-gust-preview-r1/package/SEAL.json",
+      "sealSha256": "7e39d5e2ad7a91ab9c84bd5706e5c5cdf438cdb53e667114f55d02253b95573b",
+      "sealFrozen": false,
+      "inputClosureRowsVerified": {
+        "runtime": 12,
+        "sealedPackage": 30
+      }
+    },
+    "sourceBytePins": [
+      {
+        "path": "creative.mjs",
+        "sha256": "1de43ab047b7efd5be48bb4abee485974b8eb38eaafb98bff9e7d128d6a97410",
+        "change": "fresh R2 smoke lobe/fold implementation; actor/source phase region preserved"
+      },
+      {
+        "path": "teleport-smoke-height-zero-adapter.mjs",
+        "sha256": "a114f29c41b55bcf270c457d3e2f3197c9beacdec08646e9910ff32b5472a6d3",
+        "change": "byte-identical to R1; reuses its existing per-frame smokeSupport row"
+      },
+      {
+        "path": "teleport-smoke-height-zero-host.mjs",
+        "sha256": "60f8cb59f59352fafbf2ade4e2cbbf81e2c2d0cda48c9e00c0e9e759d89610e1",
+        "change": "R2 delta replaces lobe padding float with tiltXZ and exports the actual storage pack helper"
+      },
+      {
+        "path": "teleport-smoke-height-zero-audio.mjs",
+        "sha256": "4c2805d4074cb92ff4fcdd43c55f7d5ab5c768b120eac81aa6a36eaeb8f9cf87",
+        "change": "byte-identical"
+      },
+      {
+        "path": "vendor/teleport-pixel-r1-player-sprite-cache.js",
+        "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2",
+        "change": "byte-identical"
+      },
+      {
+        "path": "assets/generated/philia-front-nine-v752.png",
+        "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "change": "byte-identical; no raster generated"
+      }
+    ],
+    "contractPath": "outputs/request-20261002/teleport-smoke-gust-design-r2/CONTRACT.md",
+    "contractSha256": "fa2f9babdd28526b4c78bbcfb3b18fe793d04ed06f69b38e2671cb464804a28c",
+    "notes": [
+      "R1 advertised `frozen:false`; this task verifies its current input closure and does not relabel R1 frozen.",
+      "The pre-lobe actor phase/body/source code is preserved in R2; adapter/host have only the explicit support/tilt ABI changes above.",
+      "Native WebGPU review and GPT-6.1-Sol quality review remain pending."
+    ]
+  },
+  "nativeAndQuality": {
+    "nativeWebGPU": "pending-primary",
+    "qualityReview": "pending-GPT-6.1-Sol"
+  },
+  "metadataOnlyRuntimeRows": [
+    "index.html",
+    "gallery-content.html",
+    "preview.mjs"
+  ],
+  "r2ShearReview": {
+    "reportPath": "outputs/request-20261002/teleport-smoke-gust-r2-shear-review/REPORT.md",
+    "reportSha256": "b3b66219f499f7f7915fede9324ec599f217e8b8b3b2e0e8526929688d08b176",
+    "dataPath": "outputs/request-20261002/teleport-smoke-gust-r2-shear-review/R2-SHEAR-REVIEW.json",
+    "dataSha256": "bcda976dc26457f221e708076034b65f840e67b2e9149649a089dfba98c08b71"
+  }
+}

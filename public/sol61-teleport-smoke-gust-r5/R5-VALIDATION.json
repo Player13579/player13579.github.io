@@ -1,0 +1,30 @@
+{
+  "schema": "teleport-smoke-gust-r5-validation/v1",
+  "version": "teleport-smoke-gust-r5",
+  "designAuthority": {
+    "contractSha256": "b6610064a948116a67fff61ee683c21db71c738cc2304e7292c71ed6d9a5f3be",
+    "sourceSha256": "d2cca54f9b690b1af58b8532f3854387af93d200f14aa8bc80aab237d869f2cf"
+  },
+  "results": [
+    {"suite":"Sol R5 source equation properties","checks":1568,"status":"pass"},
+    {"suite":"creative, life/phase, CPU support, equation parity and metadata behavior","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r5/tests/creative.test.mjs","geometryChecks":7840,"status":"pass"},
+    {"suite":"R5 shader shear against expanded CPU support and finite-difference taps","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r5/tests/shear-geometry.test.mjs","interiorShaderPoints":2132480,"positiveHeightQueryAndGradientTapChecks":5954112,"minimumGlobalSupportSlackH":0.031810624,"status":"pass"},
+    {"suite":"receiver adapter, privacy, clock and ticket behavior","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r5/tests/adapter.test.mjs","cases":32,"status":"pass"},
+    {"suite":"finite audio and hard-zero behavior","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r5/tests/audio.test.mjs","cases":13,"status":"pass"},
+    {"suite":"failure diagnostics","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r5/tests/failure-diagnostics.test.mjs","cases":12,"status":"pass"},
+    {"suite":"WGSL/storage/source identity syntax review","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r5/tests/syntax-review.mjs","cases":8,"status":"pass"},
+    {"suite":"relative import/asset closure, unchanged input and exact R5 port guards","command":"node outputs/request-20261002/teleport-smoke-gust-preview-r5/tests/package-closure.test.mjs","runtimeClosure":13,"sealedRows":49,"status":"pass"},
+    {"suite":"Node syntax","command":"node --check for package runtime and focused test modules","status":"pass"}
+  ],
+  "nativeWebGPU": "not-run; primary review required",
+  "creativeQuality": "pending GPT-6.1-Sol review",
+  "normalSfxListening": "not-run",
+  "gameIntegration": "not-connected",
+  "safariIpad": "not-run",
+  "adoption": "unknown_unadopted",
+  "limits": [
+    "CPU support and shader query sampling do not prove native shader compilation, GPU rendering or final visible alpha.",
+    "The support test samples 280 active ages at 4 ms steps, interior lobe points and both shader gradient taps; it is not a whole-life native quality judgment.",
+    "Radius-product compensation is only an authored density proxy, not measured conserved fluid mass."
+  ]
+}

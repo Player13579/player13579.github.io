@@ -1,0 +1,24 @@
+{
+  "schema": "teleport-smoke-gust-r2-validation/v1",
+  "version": "teleport-smoke-gust-r2",
+  "source": "tests and contract under outputs/request-20261002/teleport-smoke-gust-preview-r2/ and teleport-smoke-gust-design-r2/",
+  "results": [
+    {"suite": "R2 creative/numeric/runtime-contract tests", "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r2/tests/creative.test.mjs", "cases": 14, "status": "pass"},
+    {"suite": "R1 adapter/body/privacy regression tests", "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r2/tests/adapter.test.mjs", "cases": 32, "status": "pass"},
+    {"suite": "R1 finite audio/hard-zero regression tests", "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r2/tests/audio.test.mjs", "cases": 13, "status": "pass"},
+    {"suite": "failure diagnostics regression tests", "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r2/tests/failure-diagnostics.test.mjs", "cases": 12, "status": "pass"},
+    {"suite": "dense-window projected center separation", "command": "node outputs/request-20261002/teleport-smoke-gust-design-r2/measure-centers.mjs", "samples": 58, "gainH": {"min": 0.28124759353268647, "max": 0.3338179310450988}, "status": "pass"},
+    {"suite": "source-level nearby-receiver syntax and baseline pin review", "command": "node outputs/request-20261002/teleport-smoke-gust-preview-r2/tests/syntax-review.mjs", "cases": 6, "status": "pass"},
+    {"suite": "Node syntax", "commands": ["node --check on 9 runtime files", "node --check on all 6 test modules", "node --check on measure-centers.mjs"], "status": "pass"}
+  ],
+  "nativeWebGPU": "not-run; primary review required",
+  "creativeQuality": "pending GPT-6.1-Sol",
+  "normalSfxListening": "not-run",
+  "gameIntegration": "not-connected",
+  "safariIpad": "not-run",
+  "limits": [
+    "Mock pipeline constructors and CPU equations do not prove native WGSL compile or GPU rendering.",
+    "The 58 center checks use authored seed indexes [4,5] versus [0,1] as a reproducible high/low proxy; they are not a visual quality judgment.",
+    "Density compensation preserves the declared per-lobe density-times-volume proxy, not exact clipped physical mass."
+  ]
+}

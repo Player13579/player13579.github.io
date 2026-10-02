@@ -1,0 +1,41 @@
+{
+  "schema": "teleport-zero-inherited-technical-function-extractions/v1",
+  "purpose": "reuse only raw receipt whitelist and immutable owning-clock predicate; never R6 creative/timing/geometry",
+  "inputs": [
+    {
+      "path": "outputs/request-20261002/teleport-pixel-r6-compact-cells/package/e-clock.mjs",
+      "sha256": "47535f621c53db90d2de6d3d900dda922b90a5d083919d313cb13bca5a9eecd9",
+      "extracts": [
+        "validateOwningClock"
+      ]
+    },
+    {
+      "path": "outputs/request-20261002/teleport-pixel-r6-compact-cells/package/teleport-preview-adapter.mjs",
+      "sha256": "24d95f8dee6113f02820293553fc2141c9cb814242b23aed91552e9b8fc8e7bc",
+      "extracts": [
+        "sourceOnly",
+        "deepFreeze",
+        "createCausalPairReceipt"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "path": "vendor/r6-owning-e-clock-validator.mjs",
+      "bytes": 991,
+      "sha256": "fb5e75393b8c40856fdc45f48c99e0d0c28ae3a4c3945a7d7031192cf48a15ad"
+    },
+    {
+      "path": "vendor/r6-raw-causal-projection-validator.mjs",
+      "bytes": 3998,
+      "sha256": "6aa4cc0df87ddb589496218048401db2bf1fd63c7d93700ccb6d162f4885231a"
+    }
+  ],
+  "excluded": [
+    "endpointOnlyPlan",
+    "endpointOnlyEPlan",
+    "legacy phase timing",
+    "geometry/grid plan",
+    "pixel artist shader/equations"
+  ]
+}
