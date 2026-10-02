@@ -1,0 +1,274 @@
+{
+  "schema": "dva-medical-r09-source-provenance/v1",
+  "sourceManifest": {
+    "path": "outputs/request-20261002/medical-object-e-r08/package/manifest.json",
+    "sha256": "ed7ebb22d644bffc7d63e23f2827ec1407e69b58a17a2ffd414e17a624090de1",
+    "preservedUnmodified": true
+  },
+  "priorPackageCheck": {
+    "path": "outputs/request-20261002/medical-object-e-r08/package/PACKAGE-CHECK.json",
+    "sha256": "60dd27948eb67e41e862112d0615fd3b2bd4ca0bdbe3ed5c5084e3225b02cc02",
+    "preservedUnmodified": true,
+    "result": "pass",
+    "scope": "Preserved historical package-check artifact; it records its own sourceManifestSha256 and is not substituted for the later package-check attempt.",
+    "followupAttempt": {
+      "path": "outputs/request-20261002/medical-object-e-r08/HANDOFF.md",
+      "sha256": "f042844edc87f0e09f702701877078741e28f7a4b256582ad00de6c3c4c558d5",
+      "result": "failed-on-pre-existing-frozen-source-byte-count-inconsistency",
+      "actualBytes": 65712,
+      "priorDeclaredBytes": 68085
+    },
+    "discrepancy": "The historical frozen-source manifest declared b-source/design_contract.json as 68085 bytes; the preserved file is 65712 bytes."
+  },
+  "reconciliation": "This new version ledger records actual current source bytes and hashes. It does not rewrite source files, the historical source manifest, or its package-check result.",
+  "sourceFiles": [
+    {
+      "path": "API-RUNTIME.md",
+      "actualBytes": 6866,
+      "actualSha256": "394cd51368c39b849e88a257b61461a26e5fbcbd17644c58650a861d75cd0d8b",
+      "priorDeclaredBytes": 6866,
+      "priorDeclaredSha256": "394cd51368c39b849e88a257b61461a26e5fbcbd17644c58650a861d75cd0d8b",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "artist.mjs",
+      "actualBytes": 5982,
+      "actualSha256": "19d4e1c680308dd57cf1c39dbf95524dd2eea251e4a31c7dece8c1d2dab4ab6a",
+      "priorDeclaredBytes": 5982,
+      "priorDeclaredSha256": "19d4e1c680308dd57cf1c39dbf95524dd2eea251e4a31c7dece8c1d2dab4ab6a",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "audit-update.mjs",
+      "actualBytes": 2053,
+      "actualSha256": "ac584ca1e2520107a8975a3f260328b79b9cb5302dff13b47c4e328d157dde6a",
+      "priorDeclaredBytes": 2053,
+      "priorDeclaredSha256": "ac584ca1e2520107a8975a3f260328b79b9cb5302dff13b47c4e328d157dde6a",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "B-AUDIT.json",
+      "actualBytes": 8794,
+      "actualSha256": "01f539f0fed411331bd25e6362198742f9e41410b9a66014adb121a9c63509ac",
+      "priorDeclaredBytes": 8794,
+      "priorDeclaredSha256": "01f539f0fed411331bd25e6362198742f9e41410b9a66014adb121a9c63509ac",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "b-code-contract.json",
+      "actualBytes": 136605,
+      "actualSha256": "3641b265061f67b7e53937a00d33f0506dc7b49e229b27d11255cda41be4366c",
+      "priorDeclaredBytes": 136605,
+      "priorDeclaredSha256": "3641b265061f67b7e53937a00d33f0506dc7b49e229b27d11255cda41be4366c",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "b-source/design_contract.json",
+      "actualBytes": 65712,
+      "actualSha256": "677d8a16ea4807faa0559dd7f0371835ce4917cb8276a331da713d2504890fe6",
+      "priorDeclaredBytes": 68085,
+      "priorDeclaredSha256": "b46046b87445dc510d5e51e1dcfeac719823628defb4f8f8e125355323cb4c55",
+      "differsFromPriorManifest": true
+    },
+    {
+      "path": "b-source/基底.md",
+      "actualBytes": 126262,
+      "actualSha256": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25",
+      "priorDeclaredBytes": 128151,
+      "priorDeclaredSha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364",
+      "differsFromPriorManifest": true
+    },
+    {
+      "path": "b-source/拡張.md",
+      "actualBytes": 76645,
+      "actualSha256": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7",
+      "priorDeclaredBytes": 77706,
+      "priorDeclaredSha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67",
+      "differsFromPriorManifest": true
+    },
+    {
+      "path": "blur.wgsl",
+      "actualBytes": 756,
+      "actualSha256": "cfdde22d84b2f3e2f5b75c164da2922d2c55d3e65745348fc76febed336f4370",
+      "priorDeclaredBytes": 756,
+      "priorDeclaredSha256": "cfdde22d84b2f3e2f5b75c164da2922d2c55d3e65745348fc76febed336f4370",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "build-shader.mjs",
+      "actualBytes": 558,
+      "actualSha256": "d065043e676606fc87f7ab87f1d33f4fe4a2f909e40c9fd0d0335238968f0f1f",
+      "priorDeclaredBytes": 558,
+      "priorDeclaredSha256": "d065043e676606fc87f7ab87f1d33f4fe4a2f909e40c9fd0d0335238968f0f1f",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "cloth.mjs",
+      "actualBytes": 2331,
+      "actualSha256": "0fedef0be7ce32e6d9da664eb94c5f7480cfd0627baaab0387c1c1e590da4b65",
+      "priorDeclaredBytes": 2331,
+      "priorDeclaredSha256": "0fedef0be7ce32e6d9da664eb94c5f7480cfd0627baaab0387c1c1e590da4b65",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "cloth.wgsl",
+      "actualBytes": 1519,
+      "actualSha256": "0e5b79cbf608a638aa847774d1dddfee728fb2ccf2f51e6d76502d42006a0e6e",
+      "priorDeclaredBytes": 1519,
+      "priorDeclaredSha256": "0e5b79cbf608a638aa847774d1dddfee728fb2ccf2f51e6d76502d42006a0e6e",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "cpu-check.mjs",
+      "actualBytes": 11399,
+      "actualSha256": "e99a02506d020d6600de56a4e324437a49930751ea57d2ddf17a1438797b3a59",
+      "priorDeclaredBytes": 11399,
+      "priorDeclaredSha256": "e99a02506d020d6600de56a4e324437a49930751ea57d2ddf17a1438797b3a59",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "CPU-REPORT.json",
+      "actualBytes": 5237,
+      "actualSha256": "dd2000a061ee832f5edfea7c41ee61ee7d534e7ff1be8d28889a07f9339ca694",
+      "priorDeclaredBytes": 5237,
+      "priorDeclaredSha256": "dd2000a061ee832f5edfea7c41ee61ee7d534e7ff1be8d28889a07f9339ca694",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "DESIGN.md",
+      "actualBytes": 10869,
+      "actualSha256": "47dfcdf07e09925e268241a9fb7481e6f0270c5b8c4885ebd8c19c9706709279",
+      "priorDeclaredBytes": 10869,
+      "priorDeclaredSha256": "47dfcdf07e09925e268241a9fb7481e6f0270c5b8c4885ebd8c19c9706709279",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "fluid.wgsl",
+      "actualBytes": 5644,
+      "actualSha256": "f93fd5a15a74fbecde6f8b13759c174d272edc9626f45008977ea19e2b75aac1",
+      "priorDeclaredBytes": 5644,
+      "priorDeclaredSha256": "f93fd5a15a74fbecde6f8b13759c174d272edc9626f45008977ea19e2b75aac1",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "freeze.mjs",
+      "actualBytes": 2330,
+      "actualSha256": "9c6e50ef629bfe8581913c1ce01631ecc4a7d0c09a3720a9f63a42d71279d472",
+      "priorDeclaredBytes": 2330,
+      "priorDeclaredSha256": "9c6e50ef629bfe8581913c1ce01631ecc4a7d0c09a3720a9f63a42d71279d472",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "IMAGE-E-HANDOFF.md",
+      "actualBytes": 3543,
+      "actualSha256": "45eb100659cd6d6b6ac3e043ce3f7b9320c419998303d3e53ee0ad68fb232dd3",
+      "priorDeclaredBytes": 3543,
+      "priorDeclaredSha256": "45eb100659cd6d6b6ac3e043ce3f7b9320c419998303d3e53ee0ad68fb232dd3",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "make-b-contract.mjs",
+      "actualBytes": 26238,
+      "actualSha256": "7b539a9247a2401199fda9dc54eaf71c659e45898d01024cb7c7301394921011",
+      "priorDeclaredBytes": 26238,
+      "priorDeclaredSha256": "7b539a9247a2401199fda9dc54eaf71c659e45898d01024cb7c7301394921011",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "medical-room-vfx-r4.png",
+      "actualBytes": 1804220,
+      "actualSha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+      "priorDeclaredBytes": 1804220,
+      "priorDeclaredSha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "post.wgsl",
+      "actualBytes": 1725,
+      "actualSha256": "7aa7485c75da97994fcabfb16bc64a558a2b7420fedff65afa5e58aad4f82915",
+      "priorDeclaredBytes": 1725,
+      "priorDeclaredSha256": "7aa7485c75da97994fcabfb16bc64a558a2b7420fedff65afa5e58aad4f82915",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "source-contract.json",
+      "actualBytes": 5632,
+      "actualSha256": "1527899e580834dfac4d2c174f4f5842ae9046deb83fc9d0142f4912ec3a828e",
+      "priorDeclaredBytes": 5632,
+      "priorDeclaredSha256": "1527899e580834dfac4d2c174f4f5842ae9046deb83fc9d0142f4912ec3a828e",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "support-light/artist.mjs",
+      "actualBytes": 4640,
+      "actualSha256": "faa9631d0de41eceaab63e044208dde354890b3850778147ebcfe23edf3abc11",
+      "priorDeclaredBytes": 4640,
+      "priorDeclaredSha256": "faa9631d0de41eceaab63e044208dde354890b3850778147ebcfe23edf3abc11",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "support-light/b-code-contract.json",
+      "actualBytes": 63940,
+      "actualSha256": "c85212eb6f9d59ca99003d17e1d61c907bbdf6b004634b11eb7d65d6a2c6d503",
+      "priorDeclaredBytes": 63940,
+      "priorDeclaredSha256": "c85212eb6f9d59ca99003d17e1d61c907bbdf6b004634b11eb7d65d6a2c6d503",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "support-light/blur.wgsl",
+      "actualBytes": 756,
+      "actualSha256": "cfdde22d84b2f3e2f5b75c164da2922d2c55d3e65745348fc76febed336f4370",
+      "priorDeclaredBytes": 756,
+      "priorDeclaredSha256": "cfdde22d84b2f3e2f5b75c164da2922d2c55d3e65745348fc76febed336f4370",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "support-light/post.wgsl",
+      "actualBytes": 1725,
+      "actualSha256": "7aa7485c75da97994fcabfb16bc64a558a2b7420fedff65afa5e58aad4f82915",
+      "priorDeclaredBytes": 1725,
+      "priorDeclaredSha256": "7aa7485c75da97994fcabfb16bc64a558a2b7420fedff65afa5e58aad4f82915",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "support-light/world.wgsl",
+      "actualBytes": 4713,
+      "actualSha256": "f4024004cf5c6e370833a9e62544fb22078bb31defb6093e48ddf54e1febaa2f",
+      "priorDeclaredBytes": 4713,
+      "priorDeclaredSha256": "f4024004cf5c6e370833a9e62544fb22078bb31defb6093e48ddf54e1febaa2f",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "TASK.md",
+      "actualBytes": 2963,
+      "actualSha256": "f02cf1560461ce059e894eb7035444c3c9ee031b3cc67d75eb10baa41fcc1ac9",
+      "priorDeclaredBytes": 2963,
+      "priorDeclaredSha256": "f02cf1560461ce059e894eb7035444c3c9ee031b3cc67d75eb10baa41fcc1ac9",
+      "differsFromPriorManifest": false
+    },
+    {
+      "path": "world.wgsl",
+      "actualBytes": 11876,
+      "actualSha256": "d8f2010e8868ca822223ef51a95de827fcc72fe6e39cff103a535aaa6f2302c2",
+      "priorDeclaredBytes": 11876,
+      "priorDeclaredSha256": "d8f2010e8868ca822223ef51a95de827fcc72fe6e39cff103a535aaa6f2302c2",
+      "differsFromPriorManifest": false
+    }
+  ],
+  "parentVersion": {
+    "package": "medical-object-e-r08",
+    "closureManifest": "outputs/request-20261002/medical-r08-gallery-ready-stage/r08-browser-closure-manifest.json",
+    "closureManifestSha256": "9e00450cd284889df41c09d2547429a6273d0f1fdd339780e762f8c2eb32fe55",
+    "copyGuard": "outputs/request-20261002/medical-r09-water-rim/r08-source-guard.json",
+    "frozenOriginalAndR8PackagePreserved": true
+  },
+  "r09Derivative": {
+    "scope": "only registered object rim renderer and successful positive-benefit sink water response, plus version identity/package metadata",
+    "creativeDesignOwner": "GPT-6.1-Sol",
+    "faithfulImplementationOwner": "GPT-6-Luna",
+    "sourceBasisSha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "nativeReview": "pending; no R09 browser/native run claimed",
+    "mapSfx": "disabled-not-requested",
+    "adoption": "not-adopted"
+  }
+}

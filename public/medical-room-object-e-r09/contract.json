@@ -1,0 +1,619 @@
+{
+  "schemaVersion": 1,
+  "id": "medical-r9-water-rim-contract-20261002",
+  "creativeOwner": "GPT-6.1-Sol",
+  "basis": {
+    "version": "medical-r4-original-environment-r7",
+    "width": 1164,
+    "height": 1351,
+    "sha256": "9f3fe2fb6772daa8104dcf97abe1bf87e5254a17af4c629dd0d3b5d7088ffa7e",
+    "space": "image-pixel-top-left-y-down"
+  },
+  "status": {
+    "adoption": "unadopted",
+    "gameIntegration": "not_connected",
+    "visualAcceptance": "pending_primary_native_review",
+    "audio": "disabled_no_map_sfx_requested"
+  },
+  "fixture": {
+    "roomId": "medical",
+    "sourceMode": "gallery-object-fixture",
+    "actorId": "gallery-actor",
+    "actorRadiusPx": 18,
+    "speedPxPerSecond": 210,
+    "startPx": [
+      700,
+      1070
+    ],
+    "benefitKind": "preview-successful-use-count",
+    "benefitDelta": 1,
+    "benefitScope": "local fixture counter only; no currency/resource/health/item/status entitlement",
+    "uiLabel": "プレビュー操作成功",
+    "perObjectCooldownMs": 3500,
+    "grantOn": "fresh outside-to-inside approach edge",
+    "useRadiusPx": 70,
+    "clock": "visible current gallery monotonic milliseconds; no wall-clock fallback",
+    "restart": "manual reset clears session and creates a new sessionId; no periodic object replay"
+  },
+  "admission": {
+    "required": [
+      "matching current basis hash",
+      "current visible room",
+      "known local objectId",
+      "matching active sessionId and actorId",
+      "finite nonnegative acceptedAtMs",
+      "successful fixture operation and local count commit before E",
+      "fresh globally unique causeId",
+      "approach qualified at committed anchor within 70 px",
+      "success true for rim; positive benefit delta for material action"
+    ],
+    "reject": [
+      "failed use",
+      "out of range",
+      "duplicate receipt or repeated snapshot",
+      "unknown object",
+      "wrong room/basis/session/actor",
+      "clock rewind",
+      "nonfinite clock",
+      "paused hidden original-only or disposed host"
+    ],
+    "zeroDelta": "successful use may play only finite object rim; non-glow benefit action is withheld; fixture normally commits +1",
+    "dedupe": "session-wide causeId set; do not prune when VFX expires"
+  },
+  "objects": [
+    {
+      "id": "medical-r7-stretcher-01",
+      "label": "診察ストレッチャー",
+      "anchorPx": [
+        612,
+        725
+      ],
+      "visualCenterPx": [
+        462,
+        735
+      ],
+      "footprintPolygonPx": [
+        [
+          336,
+          420
+        ],
+        [
+          578,
+          420
+        ],
+        [
+          590,
+          445
+        ],
+        [
+          590,
+          591
+        ],
+        [
+          579,
+          603
+        ],
+        [
+          579,
+          899
+        ],
+        [
+          593,
+          899
+        ],
+        [
+          593,
+          947
+        ],
+        [
+          580,
+          959
+        ],
+        [
+          580,
+          1036
+        ],
+        [
+          569,
+          1051
+        ],
+        [
+          552,
+          1052
+        ],
+        [
+          549,
+          1023
+        ],
+        [
+          369,
+          1023
+        ],
+        [
+          367,
+          1052
+        ],
+        [
+          348,
+          1052
+        ],
+        [
+          344,
+          1037
+        ],
+        [
+          344,
+          959
+        ],
+        [
+          332,
+          947
+        ],
+        [
+          332,
+          899
+        ],
+        [
+          344,
+          899
+        ],
+        [
+          344,
+          603
+        ],
+        [
+          332,
+          593
+        ],
+        [
+          332,
+          514
+        ],
+        [
+          340,
+          514
+        ],
+        [
+          340,
+          445
+        ]
+      ],
+      "rimOutlinePx": [
+        [
+          354,
+          418
+        ],
+        [
+          566,
+          418
+        ],
+        [
+          578,
+          430
+        ],
+        [
+          578,
+          994
+        ],
+        [
+          572,
+          1012
+        ],
+        [
+          560,
+          1019
+        ],
+        [
+          359,
+          1019
+        ],
+        [
+          345,
+          1006
+        ],
+        [
+          344,
+          432
+        ]
+      ],
+      "rimIncludes": "main upholstered stretcher frame silhouette; side handles and feet remain footprint collision only",
+      "materialMask": {
+        "rectPx": [
+          354,
+          564,
+          565,
+          995
+        ],
+        "roundRadiusPx": 14,
+        "insetBoundaryFadePx": 12
+      },
+      "action": {
+        "kind": "supported-cushion-compression-and-release",
+        "inference": "preview actuator rehearsal; no claim actor lies on bed or gains a gameplay speed buff",
+        "durationMs": 1800,
+        "peakDisplacementPx": 6,
+        "phaseMs": [
+          0,
+          220,
+          500,
+          1400,
+          1800
+        ],
+        "formula": "q=6*(1-exp(-age/90))*exp(-max(0,age-220)/430)*(0.75+0.25*cos(2*pi*max(0,age-220)/520)); q=0 at age>=1800; warp original sample y by q*sin(pi*u)^2*sin(pi*v)^2 inside material mask",
+        "visibleResult": "broad lower cushion shallow indentation and damped recovery; metal frame stays fixed",
+        "force": "brief local supported pad load; damped elastic restoring response; no gravity particles",
+        "termination": "exact original sampling restored at expiry"
+      }
+    },
+    {
+      "id": "medical-r7-supply-cart-01",
+      "label": "医療用品トレー付き引き出し",
+      "anchorPx": [
+        550,
+        282
+      ],
+      "visualCenterPx": [
+        344,
+        219
+      ],
+      "footprintPolygonPx": [
+        [
+          205,
+          109
+        ],
+        [
+          480,
+          109
+        ],
+        [
+          487,
+          122
+        ],
+        [
+          487,
+          257
+        ],
+        [
+          478,
+          268
+        ],
+        [
+          478,
+          321
+        ],
+        [
+          475,
+          335
+        ],
+        [
+          462,
+          336
+        ],
+        [
+          457,
+          322
+        ],
+        [
+          239,
+          322
+        ],
+        [
+          235,
+          338
+        ],
+        [
+          222,
+          338
+        ],
+        [
+          214,
+          323
+        ],
+        [
+          211,
+          266
+        ],
+        [
+          202,
+          255
+        ]
+      ],
+      "rimOutlinePx": [
+        [
+          208,
+          113
+        ],
+        [
+          479,
+          113
+        ],
+        [
+          484,
+          123
+        ],
+        [
+          484,
+          250
+        ],
+        [
+          474,
+          263
+        ],
+        [
+          474,
+          317
+        ],
+        [
+          217,
+          317
+        ],
+        [
+          214,
+          265
+        ],
+        [
+          203,
+          253
+        ],
+        [
+          203,
+          123
+        ]
+      ],
+      "materialMask": {
+        "rectPx": [
+          254,
+          156,
+          312,
+          229
+        ],
+        "roundRadiusPx": 2,
+        "insetBoundaryFadePx": 4
+      },
+      "action": {
+        "kind": "supported-fold-edge-lift-and-settle",
+        "inference": "single sterile-supply access rehearsal; no physical item is spawned or transferred",
+        "durationMs": 1500,
+        "peakDisplacementPx": 6,
+        "phaseMs": [
+          0,
+          180,
+          420,
+          1100,
+          1500
+        ],
+        "formula": "q=6*sin(pi*min(age/420,1))*exp(-max(0,age-420)/260) for age<420; thereafter q=3*exp(-(age-420)/260)*sin(2*pi*(age-420)/360); q=0 at age>=1500; use q*sin(pi*u)^2*v^2 warp original sample y; upper edge is supported, lower fold moves",
+        "visibleResult": "white folded cloth lower edge lifts and returns; tray and bottles stay fixed",
+        "force": "short access-induced air/contact impulse and damped supported sheet response",
+        "termination": "q exactly zero; existing ambient cloth remains unchanged"
+      }
+    },
+    {
+      "id": "medical-r7-sink-01",
+      "label": "手洗いシンク",
+      "anchorPx": [
+        725,
+        270
+      ],
+      "visualCenterPx": [
+        885,
+        231
+      ],
+      "footprintPolygonPx": [
+        [
+          782,
+          109
+        ],
+        [
+          978,
+          109
+        ],
+        [
+          991,
+          124
+        ],
+        [
+          991,
+          286
+        ],
+        [
+          981,
+          309
+        ],
+        [
+          968,
+          349
+        ],
+        [
+          955,
+          357
+        ],
+        [
+          789,
+          356
+        ],
+        [
+          775,
+          346
+        ],
+        [
+          775,
+          126
+        ]
+      ],
+      "rimOutlinePx": [
+        [
+          788,
+          112
+        ],
+        [
+          977,
+          112
+        ],
+        [
+          990,
+          128
+        ],
+        [
+          990,
+          277
+        ],
+        [
+          982,
+          296
+        ],
+        [
+          965,
+          305
+        ],
+        [
+          799,
+          305
+        ],
+        [
+          784,
+          296
+        ],
+        [
+          779,
+          278
+        ],
+        [
+          779,
+          128
+        ]
+      ],
+      "materialMask": {
+        "rectPx": [
+          811,
+          190,
+          967,
+          273
+        ],
+        "roundRadiusPx": 22,
+        "insetBoundaryFadePx": 6
+      },
+      "action": {
+        "kind": "positive-receipt-faucet-jet-and-basin-ripple",
+        "inference": "preview-only successful sink use; no gameplay water resource or healing is claimed",
+        "durationMs": 1800,
+        "requiresPositiveBenefit": true,
+        "anchorsPx": {
+          "outlet": [
+            885,
+            187
+          ],
+          "contact": [
+            885,
+            234
+          ]
+        },
+        "formula": "95ms rise; narrow 8.4px blue-body/3.6px pale-blue core follows the outlet-contact segment; stream tapers 1060-1370ms; two thin contact rings expand within a 54x29px elliptical basin mask and decay to exactly zero by 1800ms",
+        "visibleResult": "pale-blue continuous faucet jet, restrained longitudinal modulation, brief four/five-streak contact spray, then two small clipped elliptical settling rings; no bowl-wide glow or floor spill",
+        "force": "one successful local sink operation only; positive benefit gates water and basin response; finite visible monotonic receipt age; no wall-clock fallback",
+        "termination": "stream is zero by 1370ms; rings and source action are exactly zero at 1800ms; ongoing ambient water timeline is not restarted"
+      }
+    }
+  ],
+  "rim": {
+    "durationMs": 1800,
+    "coreHalfWidthPx": 1.7,
+    "shoulderWidthPx": 4.3,
+    "colorLinearRgb": [
+      0.3,
+      0.72,
+      1
+    ],
+    "peakLinearEmission": 4.8,
+    "envelope": "smoothstep(0,105,age)*(1-smoothstep(1120,1800,age)); zero before receipt or at/after 1800ms",
+    "sweep": "localized brighter highlight traverses each exact closed registered rim contour by cumulative perimeter distance over 540ms beginning at 95ms; per-object independent and corner-continuous",
+    "source": "explicit successful-use accent, no invented physical lamp",
+    "receiver": "source-driven response only on the same object material within 5px inward from its registered contour",
+    "obs": {
+      "kind": "direct local optical halo in the rgba16float object scene",
+      "radiusPx": 11,
+      "gain": 0.32,
+      "off": "remove only local halo; preserve visible colored source",
+      "sourceOff": "remove rim core, shoulder, sweep, receiver and halo"
+    },
+    "lensFlare": "not_applicable_no_lens_assembly_or_direct_lamp_source_selected",
+    "lensGhost": "not_applicable_no_lens_assembly_selected"
+  },
+  "coordinates": {
+    "screen": "screen=fitOffset+imagePx*fitScale; invert same transform for actor pointer; uniform scaling and DPR applied once at framebuffer stage",
+    "collision": "fixture-only polygon expanded by 18 px actor radius; walls inside floor [180,180]..[980,1250]; no promise production geometry",
+    "reachability": "anchors sit on free-floor side; path collision cannot cross object footprint; choose distance to anchor for admission",
+    "translationTest": "translate object anchor, footprint, rim, material/contact together by +20,+15 px in isolated fixture; no change to source PNG or production coordinates"
+  },
+  "preserve": [
+    "original bytes/hash",
+    "existing water/cloth/light environment passes and controls",
+    "unadopted status",
+    "historical version authorship",
+    "map silence"
+  ],
+  "tests": [
+    "three local object IDs only; old production footBath ID rejected",
+    "ordinary actor movement reaches every free-side anchor around collision footprint",
+    "fresh qualified entry commits fixture +1 before exactly one receipt and E",
+    "standing within radius and snapshot replay do not regrant/replay",
+    "leave and reenter during cooldown rejects; after cooldown fresh cause accepted",
+    "failed receipt gives no rim/action; success zero delta gives rim only",
+    "source OFF removes core/receiver/near glow but keeps material motion",
+    "OBS OFF preserves material action and source core",
+    "each object's own receipt changes its own masks; unrelated objects do not flash",
+    "combined original plus ambient plus finite object action at 0/120/350/700/1400/1800/2500 ms",
+    "no action or object rim before receipt and exact finite zero at expiry",
+    "original-only/hidden/room switch/dispose cancels active receipts; returning never revives stale causes",
+    "DPR1/DPR2 and resize preserve polygon registration and pointer inverse",
+    "native WebGPU validation/readback with dependency SHA and completed frame state",
+    "gallery iframe actor approach and successful fixture grant recorded, no fabricated main integration",
+    "all browser verification URLs contain verify; audio zero",
+    "R09 water path is anchored at the registered faucet outlet and basin contact and requires positive local sink benefit",
+    "water source and observer gates are independent; stream tapers before clipped finite settling rings",
+    "each registered closed object contour has a corner-continuous, finite travelling rim highlight",
+    "R09 derivative native WebGPU compile/readback and active sink evidence remain pending primary review"
+  ],
+  "bScope": {
+    "mode": "existing-r7-E-difference-contract",
+    "canonicalReload": "not_required_under_loader_all_differences_exception",
+    "formalFullBCompliance": "not_claimed",
+    "imageGeneration": "none",
+    "extensionKeywords": "none newly requested"
+  },
+  "waterJet": {
+    "source": "successful local sink receipt with positive benefit delta and object source enabled",
+    "sourceOff": "remove emitted stream, contact response and rim source; retain original and unrelated environment",
+    "observerOff": "remove only the local observer halo; retain colored source, stream and basin response",
+    "shape": {
+      "bodyHalfWidthPx": 4.2,
+      "coreHalfWidthPx": 1.8,
+      "outletPx": [
+        885,
+        187
+      ],
+      "contactPx": [
+        885,
+        234
+      ],
+      "basinEllipsePx": [
+        885,
+        234,
+        54,
+        29
+      ]
+    },
+    "timingMs": {
+      "rise": 95,
+      "holdEnd": 1060,
+      "taperEnd": 1370,
+      "lastRipple": 1800
+    },
+    "restrictions": [
+      "zero/failed receipt emits no water",
+      "no map SFX",
+      "no basin-wide fill",
+      "no floor spill"
+    ]
+  }
+}
