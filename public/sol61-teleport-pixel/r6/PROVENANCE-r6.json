@@ -1,0 +1,27 @@
+{
+  "schema": "teleport-r6-provenance",
+  "version": "sol61-teleport-pixel-r6",
+  "artist": "GPT-6.1-Sol",
+  "faithfulImplementation": "GPT-6-Luna",
+  "parent": {
+    "path": "outputs/request-20261002/teleport-pixel-r5-packet-coherence/package",
+    "sealSha256": "e97b7e5c65f52b0272850585891475e12e6af8549d98deda4b723ee3714d0ee2"
+  },
+  "approvedContract": {
+    "path": "outputs/request-20261002/teleport-r5-quality-review/R6-CONTRACT.md",
+    "sha256": "9dc9eaaabed71878fc95503eb372c737a6471e0a55fe634a57b9660ede2d7a70",
+    "primaryApprovalSha256": "46b755489eb2f50b2cdbf2ecc6655a79b101668632b6dbd85f81aafc44d1d937"
+  },
+  "changes": [
+    "normal CSS cell target 3.25px, maximum packet gap .38",
+    "independent deterministic index-derived x/y lanes within approved bounds",
+    "per-cell 4*s*(1-s) front pulse using sourceRelease/resolved"
+  ],
+  "preserved": [
+    "authored atlas and PCM",
+    "640 actor E-ms clock",
+    "receipt, privacy, owner and device lifecycle",
+    "source/nearby/OBS gains and independent gates"
+  ],
+  "acceptance": "CPU and generated-WGSL checks only; native replay and artistic review remain pending"
+}

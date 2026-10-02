@@ -1,6 +1,54 @@
 (() => {
   'use strict';
   const PRESENTATION = Object.freeze({ width: 980, height: 620, anchorHeight: 64 });
+  const TELEPORT_FIT_PIN = Object.freeze({
+    sourceSealSha256: '53f6a93a01ab8aa096a45b9ffce90d7c781d3d4c325c01288aff27a9ed6e93ed',
+    contractSha256: 'e94edad11f21a21bb42efef7117bd85985617fe97812adb04178aa0d251a68d6',
+    certificateSha256: '75d70acc7d1fab2b531f7ae0d7a3d90542d100ba4be55ef6fb76b39178b2854e',
+    fixture: 'teleport-sol61-pair-r5-r6-reviewH64',
+    coordinateSpace: 'preview-css-canvas-980x620',
+    temporalIntervalMs: Object.freeze([0, 640]),
+    bounds: Object.freeze({ x: 273, y: 210, width: 432, height: 164 }),
+    focus: Object.freeze({ x: 489, y: 292 }),
+    coverage: 0.88,
+    magnificationCeiling: 8
+  });
+  function deriveCertifiedGalleryFit(metadata, stageWidth, stageHeight, versionId) {
+    const p = TELEPORT_FIT_PIN;
+    const expectedSeal = metadata?.certifiedVersion === 'R5' ? 'e97b7e5c65f52b0272850585891475e12e6af8549d98deda4b723ee3714d0ee2' : p.sourceSealSha256;
+    if (!metadata || metadata.sourceSealSha256 !== expectedSeal
+      || metadata.contractSha256 !== p.contractSha256 || metadata.certificateSha256 !== p.certificateSha256
+      || metadata.fixture !== p.fixture || metadata.versionId !== versionId
+      || metadata.reviewH !== 64 || metadata.coordinateSpace !== p.coordinateSpace
+      || metadata.temporalIntervalMs?.[0] !== 0 || metadata.temporalIntervalMs?.[1] !== 640
+      || metadata.coverage !== p.coverage || metadata.magnificationCeiling !== p.magnificationCeiling
+      || !metadata.bounds || !metadata.focus
+      || ['x','y','width','height'].some(k => !Number.isFinite(metadata.bounds[k]))
+      || ['x','y'].some(k => !Number.isFinite(metadata.focus[k]))
+      || metadata.bounds.x < 0 || metadata.bounds.y < 0 || metadata.bounds.width <= 0 || metadata.bounds.height <= 0
+      || metadata.bounds.x + metadata.bounds.width > 980 || metadata.bounds.y + metadata.bounds.height > 620
+      || ['x','y','width','height'].some(k => metadata.bounds[k] !== p.bounds[k])
+      || metadata.focus.x !== p.focus.x || metadata.focus.y !== p.focus.y
+      || metadata.certifiedVersion !== (metadata.versionId === 'teleport-pixel-sol61-r5-packet-coherence' ? 'R5'
+        : metadata.versionId === 'teleport-pixel-sol61-r6-compact-cells' ? 'R6' : null)
+      || !Number.isFinite(stageWidth) || !Number.isFinite(stageHeight) || stageWidth <= 0 || stageHeight <= 0) return null;
+    const f = Math.min(stageWidth / 980, stageHeight / 620);
+    const m = Math.min(p.magnificationCeiling, p.coverage * stageWidth / (f * metadata.bounds.width), p.coverage * stageHeight / (f * metadata.bounds.height));
+    const s = f * m;
+    let tx = stageWidth / 2 - s * metadata.focus.x;
+    let ty = stageHeight / 2 - s * metadata.focus.y;
+    const minTx = -s * metadata.bounds.x;
+    const maxTx = stageWidth - s * (metadata.bounds.x + metadata.bounds.width);
+    const minTy = -s * metadata.bounds.y;
+    const maxTy = stageHeight - s * (metadata.bounds.y + metadata.bounds.height);
+    if (![f,m,s,tx,ty,minTx,maxTx,minTy,maxTy].every(Number.isFinite) || m <= 0 || minTx > maxTx || minTy > maxTy) return null;
+    tx = Math.max(minTx, Math.min(maxTx, tx));
+    ty = Math.max(minTy, Math.min(maxTy, ty));
+    return Object.freeze({ baseFit: f, magnification: m, scale: s, tx, ty,
+      bounds: Object.freeze({ x: tx + s * metadata.bounds.x, y: ty + s * metadata.bounds.y,
+        width: s * metadata.bounds.width, height: s * metadata.bounds.height }),
+      focus: Object.freeze({ x: tx + s * metadata.focus.x, y: ty + s * metadata.focus.y }) });
+  }
   const EFFECT_VIEW = Object.freeze({
     'teleport-pixel-sol61-r2': { magnification: 1, focusX: 490, focusY: 310 },
     'teleport-pixel-sol61-r1': { magnification: 1, focusX: 490, focusY: 310 },
@@ -99,8 +147,9 @@
     Object.freeze({ id, title, page, source, status, detail, anchor, zoom, ...metadata, replayable: true });
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const entries = Object.freeze([
-    Object.freeze({ id: 'teleport-sol61', title: '転移', defaultVersionId: 'teleport-pixel-sol61-r5-packet-coherence', integration: 'not-integrated', reason: '新しいSolゼロ設計のWebGPU候補。本編接続と品質審査は未完了。', versions: Object.freeze([
-      version('teleport-pixel-sol61-r5-packet-coherence', 'GPT-6.1-Sol packet coherence R5', 'public/sol61-teleport-pixel/r5/index.html?embed=1&reviewH=64', 'public/sol61-teleport-pixel/r5/package-manifest.json', '実WebGPU技術再生pass・Codex品質確認中（GPT-6.1-Sol）・採用状態不明・本編未接続', '設計・実装: GPT-6.1-Sol。凍結R5 packageを変更せずにnative replay。normal 1×は89 submitted frames/12 loops、Intel gen-12lp、ready、errors/warningsなし。held 90/320/430/550 E-msは各ready・1 submit。320ms source-off/nearby-off/obs-offも各readyで比較。品質確認中でありpassではない。通常SFX聴感、Safari/iPad、本編接続、採用は未受入。native acceptance evidence: outputs/request-20261002/teleport-r5-native/NATIVE-ACCEPTANCE.json; full record: outputs/request-20261002/teleport-r5-native/NATIVE-REPLAY.md.', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6.1-Sol',creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',adoption:'unknown',qualityStatus:'codex-review-in-progress',qualityReviewStatus:'in-progress',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261002/teleport-r5-gallery-stage/QUALITY-REVIEW-STATUS.md',technicalReplayStatus:'pass',normalAudioListening:'not_run',safariReplayStatus:'unverified',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261002/teleport-r5-native/NATIVE-REPLAY.md',nativeAcceptanceProof:'outputs/request-20261002/teleport-r5-native/NATIVE-ACCEPTANCE.json'}),
+    Object.freeze({ id: 'teleport-sol61', title: '転移', defaultVersionId: 'teleport-pixel-sol61-r6-compact-cells', integration: 'not-integrated', reason: '新しいSolゼロ設計のWebGPU候補。本編接続と品質審査は未完了。', versions: Object.freeze([
+      version('teleport-pixel-sol61-r6-compact-cells', 'GPT-6.1-Sol Teleport pixel R6 compact cells', 'public/sol61-teleport-pixel/r6/index.html?embed=1&reviewH=64', 'public/sol61-teleport-pixel/r6/package-manifest.json', '実WebGPU技術再生pass・Codex品質確認中（GPT-6.1-Sol）・採用状態不明・本編未接続', 'Sol設計、Luna忠実実装。R5を固定入力としてapproved R6の3.25 CSS px cell、最大gap .38、独立x/y index lane、cell-local 4*s*(1-s) crossingを実装。CPU/WGSL parityと6/6 focused suites、38,460 compact-cell sweep。Intel gen-12lpで1×169 submits/17 loops、held8 phasesと320ms controls ready、errorsなし、verify audio hard-zero。technical replay passはprimaryのisolated WebGPU replayだけを指す。full-life artistic quality pending、normal SFX/Safari/game/adoption未受入。native evidence: outputs/request-20261002/teleport-r6-native/NATIVE-ACCEPTANCE.json と NATIVE-REPLAY.md. 旧ピクセル方式。煙と空中の上昇・下降を使う新方式を新規制作中。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (design) + GPT-6-Luna (implementation)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'codex-review-in-progress',qualityReviewStatus:'in-progress',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261002/teleport-pixel-r6-compact-cells/VALIDATION.json',technicalReplayStatus:'pass',normalAudioListening:'not_run',safariReplayStatus:'unverified',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261002/teleport-r6-native/NATIVE-REPLAY.md',nativeAcceptanceProof:'outputs/request-20261002/teleport-r6-native/NATIVE-ACCEPTANCE.json',galleryFit:{sourceSealSha256:'53f6a93a01ab8aa096a45b9ffce90d7c781d3d4c325c01288aff27a9ed6e93ed',contractSha256:'e94edad11f21a21bb42efef7117bd85985617fe97812adb04178aa0d251a68d6',certificateSha256:'75d70acc7d1fab2b531f7ae0d7a3d90542d100ba4be55ef6fb76b39178b2854e',fixture:'teleport-sol61-pair-r5-r6-reviewH64',versionId:'teleport-pixel-sol61-r6-compact-cells',certifiedVersion:'R6',reviewH:64,coordinateSpace:'preview-css-canvas-980x620',temporalIntervalMs:[0,640],bounds:{x:273,y:210,width:432,height:164},focus:{x:489,y:292},coverage:0.88,magnificationCeiling:8}}),
+      version('teleport-pixel-sol61-r5-packet-coherence', 'GPT-6.1-Sol packet coherence R5', 'public/sol61-teleport-pixel/r5/index.html?embed=1&reviewH=64', 'public/sol61-teleport-pixel/r5/package-manifest.json', '実WebGPU技術再生pass・Codex品質確認中（GPT-6.1-Sol）・採用状態不明・本編未接続', '設計・実装: GPT-6.1-Sol。凍結R5 packageを変更せずにnative replay。normal 1×は89 submitted frames/12 loops、Intel gen-12lp、ready、errors/warningsなし。held 90/320/430/550 E-msは各ready・1 submit。320ms source-off/nearby-off/obs-offも各readyで比較。品質確認中でありpassではない。通常SFX聴感、Safari/iPad、本編接続、採用は未受入。native acceptance evidence: outputs/request-20261002/teleport-r5-native/NATIVE-ACCEPTANCE.json; full record: outputs/request-20261002/teleport-r5-native/NATIVE-REPLAY.md.', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6.1-Sol',creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',adoption:'unknown',qualityStatus:'codex-review-in-progress',qualityReviewStatus:'in-progress',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261002/teleport-r5-gallery-stage/QUALITY-REVIEW-STATUS.md',technicalReplayStatus:'pass',normalAudioListening:'not_run',safariReplayStatus:'unverified',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261002/teleport-r5-native/NATIVE-REPLAY.md',nativeAcceptanceProof:'outputs/request-20261002/teleport-r5-native/NATIVE-ACCEPTANCE.json',galleryFit:{sourceSealSha256:'e97b7e5c65f52b0272850585891475e12e6af8549d98deda4b723ee3714d0ee2',contractSha256:'e94edad11f21a21bb42efef7117bd85985617fe97812adb04178aa0d251a68d6',certificateSha256:'75d70acc7d1fab2b531f7ae0d7a3d90542d100ba4be55ef6fb76b39178b2854e',fixture:'teleport-sol61-pair-r5-r6-reviewH64',versionId:'teleport-pixel-sol61-r5-packet-coherence',certifiedVersion:'R5',reviewH:64,coordinateSpace:'preview-css-canvas-980x620',temporalIntervalMs:[0,640],bounds:{x:273,y:210,width:432,height:164},focus:{x:489,y:292},coverage:0.88,magnificationCeiling:8}}),
       version('teleport-pixel-sol61-r4-radiance', 'GPT-6.1-Sol Teleport pixel R4 radiance', 'public/sol61-teleport-pixel/r4/index.html?embed=1&reviewH=56.25', 'public/sol61-teleport-pixel/r4/package-manifest.json', '実WebGPU local native technical replay pass・full-life品質審査中・採用状態不明・本編未接続・public native replay observed', '設計・runtime: GPT-6.1-Sol。frozen R4 packageのsource seal/23-file closureはbyte exact。primary local native normal 1× replay: 260 submitted frames/26 loops、ready・errorなし・verify audio context 0。age 320 held sampleも1 frame/no error。public native rate-1 replay: 658 submitted frames/79 loops, ready, errors/logsなし, verify audio 0; evidence is the public-gallery frame record. Full-life quality, normal SFX listening, Safari/iPad, game integration, and adoption remain unaccepted.package manifestのnativeGPU:not_runはnative review前の凍結snapshotを保持。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6.1-Sol',creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',adoption:'unknown',qualityStatus:'codex-review-in-progress',qualityReviewStatus:'in-progress',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261002/teleport-r4-quality-review/REVIEW.md',technicalReplayStatus:'pass',normalAudioListening:'not_run',safariReplayStatus:'unverified',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261002/teleport-r4-native/NATIVE-REPLAY.md',qualityEvidence:'outputs/request-20261002/teleport-r4-quality-review/REVIEW.md'}),
       version('teleport-pixel-sol61-r3-conversion-front', 'GPT-6.1-Sol conversion front R3', 'public/sol61-teleport-pixel/r3/index.html?embed=1&reviewH=56.25', 'public/sol61-teleport-pixel/r3/package-manifest.json', '実WebGPU native continuous replay pass・品質審査/全寿命確認中・採用状態不明・本編未接続', '設計: GPT-6.1-Sol。忠実なshader/package実装: GPT-6-Luna。primary normal 1× replayで連続submitted framesと転移セルを確認。H64 reviewはreviewH=56.25を使用。Frozen package manifestのnativeGPU:not_runはnative review前のsource snapshotとして保持し、後発primary native reportはtechnical replayのみを認定。単一castの全寿命・視覚品質・通常SFX聴感・Safari/iPad・ゲーム接続・採用は未確認。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (design) + GPT-6-Luna (faithful implementation)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'pending-review',technicalReplayStatus:'pass',normalAudioListening:'not_run',safariReplayStatus:'unverified',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261002/teleport-r3-gallery-readiness/NATIVE-REPLAY.md'}),
       version('teleport-pixel-sol61-r2', 'GPT-6.1-Sol pixel r2', 'public/sol61-teleport-pixel/r2/index.html?embed=1', 'public/sol61-teleport-pixel/r2/package-manifest.json', '実WebGPU技術再生pass・品質審査未実施・採用状態不明・本編未接続', '作者: GPT-6.1-Sol。actor-e-clockによる640 E-ms有限効果。native technical replay: held 200/400/639ms、continuous 136 loops、rate 0/.5/1/1.5、pause age 0、verify AudioContext 0。background-light639は確認済み。source/observer OFFのnavigation直後captureは介入状態を証明しないため証拠として未確定。視覚品質、通常SFX聴感、Safari/iPad、ゲーム接続、採用は未受入。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',creatorDisplayName:'GPT-6.1-Sol',creatorModelId:'gpt-6.1-sol',adoption:'unknown',qualityStatus:'pending-review',technicalReplayStatus:'pass',normalAudioListening:'not_run',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261002/teleport-r2-native/NATIVE-REPLAY.json'}),
@@ -524,6 +573,21 @@ version('vibe-coding-sol61-r5', 'GPT-6.1-Sol r5', 'public/sol61-vibe-coding/r5/i
     return preview;
   }
   function fitPreview(iframe, item, group) {
+    const certified = deriveCertifiedGalleryFit(item.galleryFit, stage.clientWidth, stage.clientHeight, item.id);
+    if (certified) {
+      iframe.style.left = `${certified.tx}px`;
+      iframe.style.top = `${certified.ty}px`;
+      iframe.style.transformOrigin = 'top left';
+      iframe.style.transform = `scale(${certified.scale})`;
+      iframe.dataset.fitScale = String(certified.baseFit);
+      iframe.dataset.displayScale = String(certified.scale);
+      iframe.dataset.magnification = String(certified.magnification);
+      iframe.dataset.focusX = String(certified.focus.x);
+      iframe.dataset.focusY = String(certified.focus.y);
+      iframe.dataset.certifiedBounds = JSON.stringify(certified.bounds);
+      iframe.dataset.fitSource = item.galleryFit.certifiedVersion;
+      return;
+    }
     const view = EFFECT_VIEW[item.id] || EFFECT_VIEW[group.id] || { magnification: 1, focusX: 490, focusY: 310 };
     const fit = Math.min(stage.clientWidth / PRESENTATION.width, stage.clientHeight / PRESENTATION.height);
     const scale = fit * view.magnification;

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>転移ピクセル r6 — isolated WebGPU preview</title>
+<script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embed');</script>
+<style>
+  :root { color-scheme: dark; font: 16px/1.5 system-ui, sans-serif; background:#10161c; color:#edf4f7; }
+  body { margin:0 auto; max-width:1040px; padding:20px; }
+  h1 { font-size:1.35rem; margin:0 0 8px; }
+  p { margin:6px 0 14px; color:#b7c4ca; }
+  .controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:14px 0; }
+  button, select { color:inherit; background:#24323c; border:1px solid #52646e; border-radius:6px; padding:9px 12px; font:inherit; }
+  canvas { display:block; box-sizing:border-box; width:min(100%, 980px); height:auto; aspect-ratio:980 / 620; background:#090e12; border:1px solid #3b4a53; }
+  #status { min-height:3em; white-space:pre-wrap; }
+  .note { border-left:3px solid #a88b52; padding-left:10px; color:#d4c39c; }
+  #error { color:#ffd1c4; background:#391e20; padding:10px; white-space:pre-wrap; }
+  #error[hidden] { display:none; }
+  html.embed, html.embed body { width:980px; height:620px; max-width:none; margin:0; padding:0; overflow:hidden; }
+  .embed h1, .embed .intro, .embed .controls, .embed #gpu, .embed #audio, .embed #status, .embed .note { display:none; }
+  .embed canvas { width:980px; height:620px; aspect-ratio:auto; border:0; }
+  html.embed #error { box-sizing:border-box; max-height:190px; overflow:auto; }
+  .embed #error:not([hidden]) { position:absolute; z-index:5; left:12px; right:12px; bottom:12px; }
+</style>
+<script src="./vendor/teleport-pixel-r1-player-sprite-cache.js"></script>
+<script type="module" src="./preview.mjs"></script>
+</head>
+<body>
+<h1>転移ピクセル r6 — isolated WebGPU preview</h1>
+<p class="intro">GPT-6.1-Solのr6候補を同じWebGPU deviceで再生します。人物poseは凍結済みwhite-hood/front原画をprivate sprite-cache leaseから参照します。ローカル因果fixtureを640 E-msで自動反復し、音はユーザージェスチャー後だけ再生します。品質審査中・ユーザー未採用・本編未接続です。</p>
+<div class="controls">
+  <label>入力 <select id="mode" disabled><option value="pair">可視の因果ペア（preview fixture）</option><option value="arrival">arrival-only lease</option><option value="departure">departure-only lease</option></select></label>
+  <label>E clock <select id="rate"><option value="0">Pause</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label><button id="restart" type="button" data-gallery-sfx disabled>Replay · enable sound</button>
+  <label>Review <select id="review-fixture" aria-label="Held diagnostic phase"></select></label>
+  <label><input type="checkbox" id="review-source">SRC</label><label><input type="checkbox" id="review-nearby">Nearby</label><label><input type="checkbox" id="review-obs">OBS</label>
+  <span id="gpu"></span>
+  <span id="audio">Preparing audio policy…</span>
+</div>
+<canvas id="surface" aria-label="転移ピクセル WebGPU preview"></canvas>
+<p id="status" role="status" aria-live="polite">WebGPUと原画を準備しています。</p>
+<p id="error" role="alert" hidden></p>
+<p class="note">端点とcast IDはローカル検証fixtureです。本編receipt・server projection・game integrationの証拠ではありません。原画hashは4F1901DF…36490A3ですが、manifestに画像作者名がなく帰属未解決です。静止phaseは <code>?reviewAgeEms=0…639</code> を指定できます。held fixtureは品質合格を証明しません。<code>?verify=1</code>はAUDIO HARD ZEROでAudioContext/nodeを生成せず解除できません。</p>
+</body>
+</html>

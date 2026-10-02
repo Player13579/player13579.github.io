@@ -1,0 +1,188 @@
+{
+  "package": "sol61-teleport-pixel/r6-compact-cells",
+  "id": "sol61-teleport-pixel-r6-compact-cells",
+  "artist": "GPT-6.1-Sol",
+  "abi": "teleport-pixel-linear-mrt-owning-e-clock-r2",
+  "status": "self-contained-cpu-pass-native-gate-pending",
+  "qualityAcceptance": "pending-primary-native-review",
+  "userAdoption": "unknown_unadopted",
+  "gameIntegration": "not-connected",
+  "galleryPublished": false,
+  "creativeSource": {
+    "path": "teleport-pixel.mjs",
+    "author": "GPT-6.1-Sol",
+    "sha256": "50b066b40bda9c15c76bba89ad2ab5a1397f9faa95d488f46520d691bb0234e4",
+    "modified": true,
+    "parentSha256": "ad9490cccf2e031005414ca032c347fede021c89542d451361fe6c57d62977e6",
+    "parentVersion": "sol61-teleport-pixel-r5"
+  },
+  "nativeGPU": "not_run",
+  "clock": {
+    "timeBasis": "actor-e-clock",
+    "durationEms": 640,
+    "ownerFields": [
+      "actorId",
+      "causalId",
+      "roomId",
+      "generation",
+      "relocationRevision",
+      "sourceIds",
+      "current",
+      "atEms"
+    ],
+    "wallFallback": false,
+    "pauseSupported": true
+  },
+  "rendering": {
+    "format": "rgba16float scene/source MRT",
+    "surface": "WebGPU canvas",
+    "newRaster": false,
+    "additionalEmission": true,
+    "observer": "independent finite current-source nearby receiver/display response with R5 radiance profile",
+    "originalAtlasBytePreserved": true,
+    "cellTargetCssPx": 3.25,
+    "reducedMotionCellCssPx": 5.5,
+    "sourceAlphaPreserved": true,
+    "radianceProfile": "RADIANCE declaration in teleport-pixel.mjs",
+    "packetGapMaximum": 0.38,
+    "transitionEnvelope": "per-cell 4*s*(1-s), s=sourceRelease/resolved"
+  },
+  "audio": {
+    "source": "unchanged authored r1 synthesizePCM",
+    "verify": "hard-zero no context/node allocation",
+    "normalListening": "not_run"
+  },
+  "embedDiagnostics": "#error",
+  "files": [
+    {
+      "path": "B-CONTRACT.json",
+      "sha256": "84116c6c79d06538d496c88008a6ac6cb64a3f3b102cbe2cbb1eddcfa496abfe"
+    },
+    {
+      "path": "DESIGN-r2.md",
+      "sha256": "e350e8d6bf5e7a26c4654f9f1313c28d486fb9200688f6538fc3b76daa53ade0"
+    },
+    {
+      "path": "DESIGN-r3.md",
+      "sha256": "015e9d11a03c3c902ee471315f04ed0c7702838cdf57312edd8b66ef8a6de2c1"
+    },
+    {
+      "path": "DESIGN-r4.md",
+      "sha256": "2172f97d585c101535e90f0dbc3a82ce39b7bbc01fe6742f4fb6d909c3169def"
+    },
+    {
+      "path": "DESIGN-r5.md",
+      "sha256": "7e81e1a05ca0629506218e188739e6f3175bd3036b66f8adbb09f234e19313d3"
+    },
+    {
+      "path": "DESIGN-r6.md",
+      "sha256": "3bf5c10b87021bb1f7187777cc51794adb28bc7e28f0992d61d561fcf9de2cfc"
+    },
+    {
+      "path": "PROVENANCE-r2.json",
+      "sha256": "2e699b80f53160a967efd3b29dd23604d3b8c6f9aeb7ea387c380e8c72e786a9"
+    },
+    {
+      "path": "PROVENANCE-r3.json",
+      "sha256": "eafa1077e713ce7544e5f4d9efb13c99e468d99395e3df9744156705f2ebad15"
+    },
+    {
+      "path": "PROVENANCE-r4.json",
+      "sha256": "9d649acf752ab56c9da7ab9a65db9684d5edfecbbbe1b7388500bf639e776a7d"
+    },
+    {
+      "path": "PROVENANCE-r5.json",
+      "sha256": "5e2a31459a38c87e4482fe3b71c3c601c8d9975cbeda3e79b2a4f7a532045830"
+    },
+    {
+      "path": "PROVENANCE-r6.json",
+      "sha256": "12d4d6b803fccac393fc00cf8212b1080f1439aa5e1441f95207056dc9428a5e"
+    },
+    {
+      "path": "assets/generated/philia-front-nine-v752.png",
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+    },
+    {
+      "path": "e-clock.mjs",
+      "sha256": "47535f621c53db90d2de6d3d900dda922b90a5d083919d313cb13bca5a9eecd9"
+    },
+    {
+      "path": "index.html",
+      "sha256": "0370cd0f033e5b6b7bc5a91dee6d81acbb3858b024b71ce8f43ab3aeba2c0cae"
+    },
+    {
+      "path": "observation-renderer.mjs",
+      "sha256": "447d28227df36a24fe2eeff1ec877de0b864fbf64fdf27e3eb60f6b74588af47"
+    },
+    {
+      "path": "preview-playback.mjs",
+      "sha256": "618f794f6e70c7174632cae426788e48e78bcc28c9961540007f5cfd21e3db3c"
+    },
+    {
+      "path": "preview.mjs",
+      "sha256": "a02a93bab77804261f5237f0de8d98180f653d37ffa181fc4de876215ea40471"
+    },
+    {
+      "path": "provenance/DESIGN.md",
+      "sha256": "e1bb28526b8e7a8277c637564fad68ba4deac47a6a6cdbda9afa8f975f694b77"
+    },
+    {
+      "path": "provenance/TELEPORT-PRODUCER-CONTRACT.md",
+      "sha256": "6af77010e91a77077126734d65faf2af6156a00b2d80d838adae1df28cd54b84"
+    },
+    {
+      "path": "provenance/source-freeze.json",
+      "sha256": "95fa975b8c4be17b357c92ed0bbeaa63076a548920fc1d4a3c3243a53744bd53"
+    },
+    {
+      "path": "provenance/source-preview-README.md",
+      "sha256": "473e68a48d025c08e24949409b1263bd9fdc9b5a5a62d6a38bab509ed197c7c5"
+    },
+    {
+      "path": "provenance/source-preview-contract-review.md",
+      "sha256": "9c2d7f127ba2fabd3c4bc3935b1c4bcb2a3f08f1bc9bfaab5321538d895effca"
+    },
+    {
+      "path": "provenance/source-preview-dependency-manifest.json",
+      "sha256": "13ebb2efd155f715da1189c2cb16b4c59671f116954203ec22e049f0ac2bac1e"
+    },
+    {
+      "path": "review-controls.mjs",
+      "sha256": "d9df92b3e392c0734fce15a492c8fe004d2656212ff6eee99edae49a6a7ebd96"
+    },
+    {
+      "path": "teleport-pixel.mjs",
+      "sha256": "50b066b40bda9c15c76bba89ad2ab5a1397f9faa95d488f46520d691bb0234e4"
+    },
+    {
+      "path": "teleport-preview-adapter.mjs",
+      "sha256": "24d95f8dee6113f02820293553fc2141c9cb814242b23aed91552e9b8fc8e7bc"
+    },
+    {
+      "path": "vendor/teleport-pixel-r1-player-sprite-cache.js",
+      "sha256": "77f884c37ae245c3cb43d28acba21b56e26089862da631d8e9818fba3489f3e2"
+    }
+  ],
+  "integrityConvention": "package-manifest.json hashes the content files and excludes package-integrity.json; package-integrity.json hashes this manifest and all other package files, excluding only itself, so the metadata dependency graph is acyclic.",
+  "bProvenance": {
+    "repository": "https://github.com/player13579/B.git",
+    "branch": "Codex-honoo",
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "baseBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extensionBlob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+    "baseSha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364",
+    "extensionSha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67"
+  },
+  "modelWorkShare": [
+    {
+      "displayName": "GPT-6.1-Sol",
+      "sharePercent": 20,
+      "scope": "approved creative design"
+    },
+    {
+      "displayName": "GPT-6-Luna",
+      "sharePercent": 80,
+      "scope": "faithful implementation, focused tests and validation"
+    }
+  ]
+}
