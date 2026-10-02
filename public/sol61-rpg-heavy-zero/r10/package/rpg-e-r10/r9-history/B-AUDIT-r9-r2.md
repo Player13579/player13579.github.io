@@ -1,0 +1,15 @@
+# B / current mandatory observer差分
+
+currentB HEAD22d3fcfd617f42b1a967de767906204c0221ec64をauthenticatedgit ls-remoteで再確認。全読済みの同基底/拡張をauthorityへ保持。ECodeImplementationの限定差分、formal image schema/STRUCTURAL_PASSは非適用。B画像や新textureへ送らない。
+
+R8のPH1jets/PH2impact/PH3Lambertreceiver/PH4bodycontextと八domain/CCM/PEM/ReflectionClosureをsourceexactで保持。新OBS1はvisible hotqualified PH1/PH2radiance→two-scale pointspread、OBS2は既存hostの表示responseで変更なし。PH3はobserverではない。PostEffects currentmandatoryは通常経路の実scene/source/visibility/outputに対応、空pass/default0ではない。
+
+IntensityBudgetはsource本体そのまま、OBS既定.14近+.055遠、default1・allowed0..2、sourcequalification onset.9、localized1.4/6.5displaypixel、色は源のまま。PHのdensity/opacity/radianceとOBSを分離。局所変化/finiteage/源の遮蔽と結合し、無源halo/全画面whiteflood/white抑制を使わない。registeredkeywordsのみ展開、新f/o/v presetを起動しない。
+
+八領域は親PHexact: Thermo/Fluid/Materials/Rheology等のphysicalequationsを新観測現象へ書替えない。OBSはOptics/WaveOpticsのartist sensor-response surrogateで実lens calibrationではない。Electromagneticsに現実chargeを追加しない。SurfaceScienceはLambert材質入力を保持しOBS入力へ混ぜない。各PHの未適用を勝手なphysical装置追加にしない。
+
+CausalLinks source radiation→actualsamefieldvisibility→qualifiedsource→observerpointspread。射線/heat/pressure/velocity/MP/hitをOBSから変えない。timeはactualsourcefieldageとlifeに従いhistory0。parent火源終了後のsmoke/受光だけではobserver源なし。actualocclusionがない親frontdrawはその事実を宣言してpresented parityとworldphysicalacceptanceを区別、maskを捏造しない。
+
+SamplingContractは追加2shader pipelines/2passes、fieldsource equations再描画と19posttaps、1HDRtargetperprepared、arraymaskはhostowned。native性能はnot_run、再描画がfreeとはしない。EqualityはR8fullhash/sourceequations保全とnewWGSLembedding、画像whitespace parsed-objectとは違う。
+
+ComparativeEvaluationは同actualR8scene/pose/phase/exposureのR9 observerON/OFF、sourcefeedON/OFF、opaque/translucent mask、receiverON/OFF、no-source/期限、H64/dark/light/continuous。default meaningful passはsource/mock検査、actualGPU not_run、quality unaccepted。PSFが圧力shapeを隠す/無源残留/grayfloor bloom/PHを暗くするならfail。

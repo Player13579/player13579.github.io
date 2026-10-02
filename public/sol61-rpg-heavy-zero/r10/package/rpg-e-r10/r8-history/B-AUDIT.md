@@ -1,0 +1,19 @@
+# 現行B限定差分監査
+
+現行B Codex-honoo HEAD22d3fcfd617f42b1a967de767906204c0221ec64を今回git ls-remoteで再確認。全体を読んだ基底/拡張と同じ正本。親R7のauthorityと全PH/八domain監査を継承し、今回はPH2 impact材質/輸送のみ変更。formal STRUCTURAL_PASSや実科学校正を主張しない。
+
+今回指定/保持必須/明示上書きはCONTRACT冒頭に対応付けた。題材は必須発光/受光/適格observer/時間変化を免除しない。白いhot sourceの維持と材質形態の改善を分ける。既存receipt/physics/actual body/receiver/observer/SFX/currentnessを保持。
+
+PH1発射jetsとPH3受光/PH4文脈/OBSはsource同一。PH2 DeepStructureは実impact originと同じcontact frame。PhysicalModelは有限なartist density/radiance積分で、爆薬mass/pressure/Jouleの保存solveはない。Constituentは近/遠の燃焼媒体と冷却輸送される煙、initialは同じreceipt、boundaryはfield端ゼロ/期限ゼロ。Approximationは20depth×2厚い媒体。ScaleRegimeは継承fire105×76/smoke122×92原座標px、正規化local支持域と8–120ms展開、170–980ms輸送。actual H64での知覚は未確認。
+
+GeometryConstraintは既存field/pose/接触点。StateDynamicsは広い開き→層の熱源減衰→同媒体の上昇/拡張→期限解消。共通空隙が前後両層の積分を貫通し、閉じた金色capを避ける具体的形態cueとなる。CausalityLinksは同入力ageからdensity/heat/transportへ、実発光から既存近傍受光へ。gazeはcontactからbroad unfoldとtransported smokeへ。新力・damage・hit・後方弾体なし。
+
+八領域: Thermoはartist heat/pulse/冷却、Fluidは有限な広がり/輸送surrogate、Opticsは実HDR emissionと媒体照明/既存receiver/OBS、Materialsは燃焼から厚い灰色煙への同carrier遷移、Electromagneticsは追加回路/chargeなし、Rheologyは装置変形なし、WaveOpticsは新干渉/diffractionなし、SurfaceScienceは既存受光normal/albedoを保持。各領域の非適用を曖昧に追加描画へ転換しない。
+
+LDMは80ms付近の有限source pulse/460ms熱減衰/170–980ms輸送。白さを下げる目的でなく、熱源・前後厚み・空隙・冷却材質という二つ以上のcueを設計。VFXはその同因果の場だけ、PostEffectsは既存source-bound OBSだけ。競合説明は小さい通常火/滑らかな閉cap/三本のwisps。Nativeでこの競合を退けるまで品質未達の改善候補。
+
+SamplingContractは20ray固定、2媒体=40評価/volume pixel、fire+smoke重なる場合80、親60/120より増えない。新target/uniform/texture/particleなし。CPU finite・期限・境界・共通cleft積分検査は実施、GPU負荷は未測定。
+
+Equality適用判断: compact画像生成codeのparsed formal design-object equalityを実行E shaderへ誤用しない。本件はECodeImplementationの限定翻訳差分で、volume原本と埋込WGSLのexact equality、および非volumeの全親source equalityを実行検査する。画像生成/新texture/formal画像schemaを捏造しない。
+
+ComparativeEvaluationは同fixture/pose/camera/exposure/phaseでR6/R7/R8を比較する計画。Acceptanceは初期broad pressure、厚いnear/far combustion、同物質の後期transport、source/receiver/observer独立性、全life/SFX/actualサイズ。RenderObservation not_run、OutcomeEvaluation pending、採用 unchanged。

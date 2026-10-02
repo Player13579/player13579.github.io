@@ -1,0 +1,724 @@
+{
+  "schema": "dva-rpg-r10-private-preview-package/v1",
+  "packageId": "sol-rpg-heavy-quality-r10-observer",
+  "entry": "rpg-e-r10/runtime-preview/index.html",
+  "sourceAuthor": "GPT-6.1-Sol",
+  "runtimeHostRepairAuthor": "GPT-6-Luna",
+  "creativeSha256": "12f5d31b945594f8601ac09902fb19213bb5359f6afcf9371fc06f4c16d31252",
+  "parentPhysicalSha256": "0b1591b8cbd76dfd7fc4719d7812faa0ab176299988933e96ca1eccc330a329a",
+  "observerSha256": "9edd6187f692f22b417cae58732a56cce5795afeeaeaed530db10a271a877dd5",
+  "observerParentSha256": "d13ed4e47a869ec87ac6cf49babc6ce3fe25a5e292338a0cc7dd39c4e7a1a59f",
+  "renderApi": "WebGPU",
+  "dependencies": "local-relative-only",
+  "browserFiles": [
+    "motion-male-left/playback-fixture.json",
+    "motion-male-left/rpg-male-left-ready-source-r5.png",
+    "motion-male-left/rpg-male-left-recoil-source-r6.png",
+    "rpg-e-r10/B-AUDIT.md",
+    "rpg-e-r10/CONTRACT.md",
+    "rpg-e-r10/jet-cpu.mjs",
+    "rpg-e-r10/jet.wgsl",
+    "rpg-e-r10/LIGHT_POST.wgsl",
+    "rpg-e-r10/NEXT-HOST-CONTRACT.md",
+    "rpg-e-r10/observer.mjs",
+    "rpg-e-r10/observer.wgsl",
+    "rpg-e-r10/PARENT-PINS.json",
+    "rpg-e-r10/physical/rpg-e.mjs",
+    "rpg-e-r10/r8-history/B-AUDIT.md",
+    "rpg-e-r10/r8-history/CONTRACT.md",
+    "rpg-e-r10/r8-history/CPU-VALIDATION.json",
+    "rpg-e-r10/r8-history/DESIGN-AND-ADAPTER.md",
+    "rpg-e-r10/r8-history/jet-cpu.mjs",
+    "rpg-e-r10/r8-history/jet.wgsl",
+    "rpg-e-r10/r8-history/PARENT-PINS.json",
+    "rpg-e-r10/r8-history/SEAL.json",
+    "rpg-e-r10/r8-history/SOURCE-VERIFICATION.json",
+    "rpg-e-r10/r8-history/volume-cpu.mjs",
+    "rpg-e-r10/r8-history/volume.wgsl",
+    "rpg-e-r10/r9-history/B-AUDIT-r9-r2.md",
+    "rpg-e-r10/r9-history/CONTRACT-r9-r2.md",
+    "rpg-e-r10/r9-history/observer.mjs",
+    "rpg-e-r10/r9-history/r8/rpg-e.mjs",
+    "rpg-e-r10/r9-history/rpg-e-r9.mjs",
+    "rpg-e-r10/r9-history/SEAL-r9-r2.json",
+    "rpg-e-r10/r9-history/SOURCE-PINS-r9-r2.json",
+    "rpg-e-r10/REPORT.md",
+    "rpg-e-r10/rpg-e-r10.mjs",
+    "rpg-e-r10/runtime-preview/gallery-audio-bridge.mjs",
+    "rpg-e-r10/runtime-preview/index.html",
+    "rpg-e-r10/runtime-preview/pin-guard.mjs",
+    "rpg-e-r10/runtime-preview/preview-freeze.json",
+    "rpg-e-r10/runtime-preview/preview-host.mjs",
+    "rpg-e-r10/runtime-preview/preview.css",
+    "rpg-e-r10/runtime-preview/README.md",
+    "rpg-e-r10/SEAL.json",
+    "rpg-e-r10/SOURCE-PINS.json",
+    "rpg-e-r10/source.wgsl",
+    "rpg-e-r10/VFX.wgsl",
+    "rpg-e-r10/volume-cpu.mjs",
+    "rpg-e-r10/volume.wgsl"
+  ],
+  "files": [
+    {
+      "path": "motion-male-left/playback-fixture.json",
+      "bytes": 3017,
+      "sha256": "8d420389a6abad138aa8bdd8ce7cc34fdfe3e55f4e753855001980be59f7871d",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "motion-male-left/rpg-male-left-ready-source-r5.png",
+      "bytes": 847235,
+      "sha256": "2a2ca10e63b7e91f8379a0d0cf75dfe6994d9e904d6402c0eeb0e0c287a7c465",
+      "mime": "image/png"
+    },
+    {
+      "path": "motion-male-left/rpg-male-left-recoil-source-r6.png",
+      "bytes": 822742,
+      "sha256": "857c1a936960b6cefbda60efda1205fa39fa4cdf7ba8682b0cfd6db4e4263643",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/0.png",
+      "bytes": 11966,
+      "sha256": "2f7f4ee48dd2af9c62832dca0e87f78e2d6173ab6c385440163ba1f5ec4fba83",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/1.png",
+      "bytes": 13511,
+      "sha256": "5112b4f21ee333f8f62dd62d27ec4c6d82aea14172de6cf1bce3ffdfc12efdcc",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/10.png",
+      "bytes": 9595,
+      "sha256": "253f3efc351add0b79b7db1a31f25336c4b3de9aeb98b43e1949b5466b0b2365",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/11.png",
+      "bytes": 9595,
+      "sha256": "253f3efc351add0b79b7db1a31f25336c4b3de9aeb98b43e1949b5466b0b2365",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/12.png",
+      "bytes": 11320,
+      "sha256": "fa4a7348091f1dddd9e977e5674556533e230a3d930680a046c800c9918df2c9",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/13.png",
+      "bytes": 13330,
+      "sha256": "8f3eb984084c2dfc1842250125f63272a29f7f561a35ca5c402d70020c0d7368",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/14.png",
+      "bytes": 12756,
+      "sha256": "f221842739c2c94338d18dc158fac17aaf23071b242e29f171f732e0ac5d639f",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/15.png",
+      "bytes": 11911,
+      "sha256": "5510c6a2aa26df3a9767d02aa71613bb6384a72ef7a8c5addee44716c4e29915",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/16.png",
+      "bytes": 11434,
+      "sha256": "0b4b8c7363aa0cac271d24a5eb5d7138ecf4b0d7299382177689d1ccfb6d8645",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/17.png",
+      "bytes": 11313,
+      "sha256": "1088d627262a1c144384eb253751eac2af2f5cb2ee5a7c56af9c90a365da0b75",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/18.png",
+      "bytes": 11292,
+      "sha256": "dc0f0044bf04779c9828d87f351c0ac05cacba850a5da54c5843feb9ef7f371e",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/19.png",
+      "bytes": 11098,
+      "sha256": "c3ce9a686b20d263f7346fb2bae1842c110611017eb905f9a93b44739e637391",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/2.png",
+      "bytes": 12735,
+      "sha256": "0169fc782c0d215415dde51026d0fd9a692d342eae5143143f7e1dfd7d53fea8",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/20.png",
+      "bytes": 9595,
+      "sha256": "253f3efc351add0b79b7db1a31f25336c4b3de9aeb98b43e1949b5466b0b2365",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/21.png",
+      "bytes": 9595,
+      "sha256": "253f3efc351add0b79b7db1a31f25336c4b3de9aeb98b43e1949b5466b0b2365",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/22.png",
+      "bytes": 9595,
+      "sha256": "253f3efc351add0b79b7db1a31f25336c4b3de9aeb98b43e1949b5466b0b2365",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/23.png",
+      "bytes": 9595,
+      "sha256": "253f3efc351add0b79b7db1a31f25336c4b3de9aeb98b43e1949b5466b0b2365",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/24.png",
+      "bytes": 13033,
+      "sha256": "548d8721d79f81a3ea532486e4aaaf7a83dcd0dc0d97bf6b64a2dc79fbda7a31",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/25.png",
+      "bytes": 12861,
+      "sha256": "ffd34e47e1be378175ddde6e8be7f7e329c60c9f99ebe7615d929487cc57b8f2",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/26.png",
+      "bytes": 12789,
+      "sha256": "83730227cf7a694416b83e93b61ffdaae0ef0bb32a11065e9f5ffcb8a9565e5f",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/27.png",
+      "bytes": 11990,
+      "sha256": "0ba99ef5b9e5fad3f190e48e13bef627002abd333f52146ad205f5dd66914a0a",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/28.png",
+      "bytes": 11776,
+      "sha256": "5ab5a381935f3eb10d3ca0fcf342d484c85cdb8f28852e8f62b593be9d6b3636",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/29.png",
+      "bytes": 11331,
+      "sha256": "f4e28f8dd705a55bb06ecb0df3aef02746e12be340eca5eed00b95688578a9f2",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/3.png",
+      "bytes": 12119,
+      "sha256": "b4649afc9e5a96ef4e38160b25a5d880a0697267327db9b4373afd8aee6b59d7",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/30.png",
+      "bytes": 11321,
+      "sha256": "379086365fbc0fdb32e6ef77170a91027bd4b6f58aab47376de9192a5ce2f761",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/31.png",
+      "bytes": 11260,
+      "sha256": "965e65c1576f94adba4ec4c18d5c1440e168c076227daf2bdc9a65394c0e3a35",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/4.png",
+      "bytes": 11890,
+      "sha256": "00417d8b09e626fde9b887a3e67881871b7062d2f2f0738a1045200d32e49806",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/5.png",
+      "bytes": 11621,
+      "sha256": "6495f33931ddf421e171207ac531d91a81166e16fd4a765086a608be13f333a2",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/6.png",
+      "bytes": 11333,
+      "sha256": "e18958e5d090b8768f77b5d9b1510cdaec5e318c282add97dfad82e46faabfa6",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/7.png",
+      "bytes": 11311,
+      "sha256": "0ab31c20aa62754070fbdaaaadbfb656e14489ef93d10d09c6a19b2b6304fd44",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/8.png",
+      "bytes": 11069,
+      "sha256": "8b6238cb2e3767586d80c4f61c3a0a5caf3601598d88ce845795c60f790c6aad",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/9.png",
+      "bytes": 9595,
+      "sha256": "253f3efc351add0b79b7db1a31f25336c4b3de9aeb98b43e1949b5466b0b2365",
+      "mime": "image/png"
+    },
+    {
+      "path": "native/gallery-loop-r2/errors.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "native/gallery-loop-r2/REVIEW.md",
+      "bytes": 854,
+      "sha256": "019393290b92fe5045028c29f0ac24a6a6f4dea874282d2b8b3a0e3c7eedc58c",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "native/gallery-loop-r2/timeline.json",
+      "bytes": 5458,
+      "sha256": "cbc7900b60e9b2de910e779dcdb1be65d97333e864efd7cc1eb9ec3a23fff9a2",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/B-AUDIT.md",
+      "bytes": 3766,
+      "sha256": "2c4b5394e82b9e9321b037024015ca0042924fe03367b0d6cdec9d13c1a9a09d",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/CONTRACT.md",
+      "bytes": 8387,
+      "sha256": "a9317127297bb2700d29a7972d207c1176f7dcf21a914277543d3ee9468f469b",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/jet-cpu.mjs",
+      "bytes": 1964,
+      "sha256": "817eb1dfdea6a118de7a0a7200cf65e5e156ff986d6fee7730e34e0d37d04031",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/jet.wgsl",
+      "bytes": 2164,
+      "sha256": "7fae66ff02dd311c320466eb3bbc823593b578b164a230951e6241f438604523",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "rpg-e-r10/LIGHT_POST.wgsl",
+      "bytes": 1426,
+      "sha256": "e3d1fd732cfd695a22bc0739579316a52fa4fe15fde4deb2a5e4bf2e1211c6a5",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "rpg-e-r10/NEXT-HOST-CONTRACT.md",
+      "bytes": 2135,
+      "sha256": "ee42d14b01dccd8a66bb5ab300edb45f6eb804aca1f192726c09018d67983472",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/observer.mjs",
+      "bytes": 8538,
+      "sha256": "9edd6187f692f22b417cae58732a56cce5795afeeaeaed530db10a271a877dd5",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/observer.wgsl",
+      "bytes": 1077,
+      "sha256": "95dbc44c65eb4ce83d100ac76894726b07ee46c9ef0599a7ec5bd3bb232ec2e3",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "rpg-e-r10/PARENT-PINS.json",
+      "bytes": 704,
+      "sha256": "f94f55713c2c8a826e55302881d9239fe30750488c6c638ce5131452e3c79d55",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/physical/rpg-e.mjs",
+      "bytes": 23787,
+      "sha256": "0b1591b8cbd76dfd7fc4719d7812faa0ab176299988933e96ca1eccc330a329a",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/B-AUDIT.md",
+      "bytes": 3494,
+      "sha256": "11ea1ea44185313aa50b1c9a2bc3574d05bb9f3e00d208350d0ac51ef82fe9bc",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/CONTRACT.md",
+      "bytes": 7496,
+      "sha256": "347831063615de9248ba0835d7b6f6211676118bb4f2f91254dca68d46cd28ee",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/CPU-VALIDATION.json",
+      "bytes": 25550,
+      "sha256": "ea0da6df104de322ed3d4b578edac39d18908ec01a7eb8a4afe6804eba5a838c",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/DESIGN-AND-ADAPTER.md",
+      "bytes": 1360,
+      "sha256": "76f4f7c06c73fc7865ff125edc052e45de7f071e3bf15435eff42654a2130ae5",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/jet-cpu.mjs",
+      "bytes": 1997,
+      "sha256": "95deaa8635f56e4237c1e48c0e2d43081e813723ae9d0543e2019b6386a29390",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/jet.wgsl",
+      "bytes": 2147,
+      "sha256": "afef4c035967b224fd14de36365207b066aedff2a2ca2f189a0afb99e45aada9",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/PARENT-PINS.json",
+      "bytes": 765,
+      "sha256": "ae45a4d9a4d0b1ed5eae5b2cef6785ab98eca2d5c0713c99c4554d2439c42bbe",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/SEAL.json",
+      "bytes": 3666,
+      "sha256": "f0ee7558eae60fb1ecb360b9cf5edc15e1373e78eee4300bf2073b65bed9a699",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/SOURCE-VERIFICATION.json",
+      "bytes": 2885,
+      "sha256": "4e2adc4746a2ab4c52c16451179c118a2f3420ddec436a7b48dd4d8b8a5da2ba",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/volume-cpu.mjs",
+      "bytes": 2887,
+      "sha256": "82c7c0da5f20399afe08a218c7ac786102417450ae36e81337e2d04f5af358de",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r8-history/volume.wgsl",
+      "bytes": 2846,
+      "sha256": "f92af4bc3e904065325c0aaf420aa6b9faeb7b33ce79d129d2028206d7856808",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "rpg-e-r10/r9-history/B-AUDIT-r9-r2.md",
+      "bytes": 2643,
+      "sha256": "f845bc75b163c734b51af59c626d4e357ee326be46de0b87e12780e4333f872d",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r9-history/CONTRACT-r9-r2.md",
+      "bytes": 7510,
+      "sha256": "3e51f3d644f55cd51c1fd7a9d46ff8868f0653fb8d043000d2711b9d32d645f1",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r9-history/observer.mjs",
+      "bytes": 8522,
+      "sha256": "d13ed4e47a869ec87ac6cf49babc6ce3fe25a5e292338a0cc7dd39c4e7a1a59f",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r9-history/r8/rpg-e.mjs",
+      "bytes": 23563,
+      "sha256": "f4604c3ff5ecf254a9f8050f3c350068ccd5932e86f3f632bba79d71f68385b1",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r9-history/rpg-e-r9.mjs",
+      "bytes": 2071,
+      "sha256": "d010ee0d648aedfdba96ae92d41e73ba8f174212d89a4dd8d9f7195126b0070a",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r9-history/SEAL-r9-r2.json",
+      "bytes": 2302,
+      "sha256": "5b72a7e2a7946d519f661763fa5f7d0e5dc22ab641a378fb3b645be4321f88f9",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/r9-history/SOURCE-PINS-r9-r2.json",
+      "bytes": 2459,
+      "sha256": "b15625fc3d7d00f9236fd91c81fe6d4d0827a2d8c83db3c901e4f9ed245734be",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/REPORT.md",
+      "bytes": 1919,
+      "sha256": "fe042a9f31ddee29814f34bcc94005a490c948960cfb716ef09fdac6de1c0d28",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/rpg-e-r10.mjs",
+      "bytes": 2084,
+      "sha256": "12f5d31b945594f8601ac09902fb19213bb5359f6afcf9371fc06f4c16d31252",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/runtime-preview/gallery-audio-bridge.mjs",
+      "bytes": 1122,
+      "sha256": "0e2f620205a3626664782a392a8e74d6d7b3386706be882c9de90680966c9296",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/runtime-preview/index.html",
+      "bytes": 2798,
+      "sha256": "9a0fc572f799323c522d7932626b5fc897245a5a6eaf102472ba3a64495e42a9",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/runtime-preview/pin-guard.mjs",
+      "bytes": 1190,
+      "sha256": "2db5bad94a0d8163259faf34777b412c62eb629fb991723db4c056cca628a056",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/runtime-preview/preview-freeze.json",
+      "bytes": 5477,
+      "sha256": "06ef2a018714908c08e49bde11ea80208f9097c2a2b83a2dd48670abd895da97",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/runtime-preview/preview-host.mjs",
+      "bytes": 31826,
+      "sha256": "70f53f5dc9146ad95bc15d37bd6833396043bffcc825aed351bff2d424d6614e",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/runtime-preview/preview.css",
+      "bytes": 2787,
+      "sha256": "6d7e93f8b9484013c5a8d7f9824982f76ac56946ddacad84aa4df1918f7862f0",
+      "mime": "text/css; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/runtime-preview/README.md",
+      "bytes": 1220,
+      "sha256": "fa251bae4a3d91dd3a75680586f3e80d1439da98247c3205e22820f8e07f7490",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/SEAL.json",
+      "bytes": 5525,
+      "sha256": "87c7c9283eb48e47a958385faec59fa86931611dacaefe86f3853bc7cc0f3478",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/SOURCE-PINS.json",
+      "bytes": 3098,
+      "sha256": "9682ea69d57466f7d4cfe3a705db8dd93fc7106449e3122cb570897677ec717d",
+      "mime": "application/json; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/source.wgsl",
+      "bytes": 7325,
+      "sha256": "f0487f4804cb08c3c5369044389aca82903d9693169c2da044d5afe7fd0a8310",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "rpg-e-r10/VFX.wgsl",
+      "bytes": 6856,
+      "sha256": "ea6e49f2acbc97f4462b5a97fd1c8fd1d544ea89cddcc6d848154b33dbde57c2",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "rpg-e-r10/volume-cpu.mjs",
+      "bytes": 3028,
+      "sha256": "69b28c57b54b37f3e7b39758307c829318ba22b4228753f0800b5d73bb491e63",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "rpg-e-r10/volume.wgsl",
+      "bytes": 3016,
+      "sha256": "4c80e45db51f9cd3f816969076a795291b9ffc0653f85c93fc745cc0c812a18b",
+      "mime": "text/wgsl"
+    }
+  ],
+  "initVersion": "sol-rpg-heavy-quality-r9-observer",
+  "sourceSealSha256": "87c7c9283eb48e47a958385faec59fa86931611dacaefe86f3853bc7cc0f3478",
+  "mandatoryPostEffects": "implemented: R9 source-qualified observer; inherited all-front fixture only; no world/body occlusion claim",
+  "actualGpu": "source standalone actual WebGPU pass; fullscreen gallery adapter pending root-owned private-native replay",
+  "quality": "fail",
+  "adoption": "unadopted",
+  "gameIntegration": "not-connected",
+  "observer": {
+    "sourcePath": "rpg-e-r9/observer.mjs",
+    "observerWgslPath": "rpg-e-r9/observer.wgsl",
+    "sourceSha256": "d13ed4e47a869ec87ac6cf49babc6ce3fe25a5e292338a0cc7dd39c4e7a1a59f",
+    "sourceParentSha256": "21dd6995ec6415dde63bdfc829275730f8639e2b7a882f8097f3dd6e32a62694",
+    "version": "sol-rpg-heavy-quality-r9-observer",
+    "defaultSourceFeed": true,
+    "defaultResponse": true,
+    "visibility": "foreground overlay parity; no world depth",
+    "intensity": 1,
+    "passOrder": [
+      "physical receiver",
+      "R8 PH scene",
+      "R9 source qualification and OBS",
+      "single tone map"
+    ]
+  },
+  "runtimeDependencies": {
+    "entry": "rpg-e-r9/runtime-preview/index.html",
+    "creative": "rpg-e-r9/rpg-e-r9.mjs",
+    "creativeSha256": "d010ee0d648aedfdba96ae92d41e73ba8f174212d89a4dd8d9f7195126b0070a",
+    "parentPhysical": "rpg-e-r9/r8/rpg-e.mjs",
+    "parentPhysicalSha256": "f4604c3ff5ecf254a9f8050f3c350068ccd5932e86f3f632bba79d71f68385b1",
+    "observer": "rpg-e-r9/observer.mjs",
+    "observerSha256": "d13ed4e47a869ec87ac6cf49babc6ce3fe25a5e292338a0cc7dd39c4e7a1a59f",
+    "expectedVersion": "sol-rpg-heavy-quality-r9-observer",
+    "initializePinGuard": "rpg-e-r9/runtime-preview/pin-guard.mjs"
+  },
+  "normalAudioListening": "not-run",
+  "safari": "unverified",
+  "sourceWorldOcclusion": "not-established",
+  "qualityReview": {
+    "reviewer": "GPT-6.1-Sol",
+    "reviewerAlsoCreator": true,
+    "independentAuthorship": false,
+    "outcome": "fail",
+    "evidence": "../native/r1/QUALITY-REVIEW.md"
+  },
+  "galleryAdapter": {
+    "path": "rpg-e-r10/runtime-preview/gallery-audio-bridge.mjs",
+    "status": "pending-root-native",
+    "sourceCreativeChanged": false,
+    "sourceObserverChanged": false,
+    "sourcePhysicalChanged": false
+  },
+  "galleryAdapterLoopRepair": {
+    "status": "pass",
+    "sourceHostPreservedSha256": "be5053a8b4d51ba73d2a37e071976df48a40f4d97475dde61b13af06b60bfcac",
+    "derivedHostSha256": "70f53f5dc9146ad95bc15d37bd6833396043bffcc825aed351bff2d424d6614e",
+    "pinGuardSha256": "2db5bad94a0d8163259faf34777b412c62eb629fb991723db4c056cca628a056",
+    "previewFreezeSha256": "dbc11daf4efdb9ff7b32201e9395c025cb877e0e4ab9746315559706ce0dd313",
+    "explicitRoute": "rpg-e-r10/runtime-preview/index.html?embed=1&galleryAutoLoop=1",
+    "cycle": {
+      "lengthMs": 1500,
+      "eventMs": 1200,
+      "pauseMs": 300,
+      "uniqueInputCycleId": true
+    },
+    "creativeChanged": false,
+    "observerChanged": false,
+    "physicalChanged": false,
+    "actualNativeEvidence": {
+      "status": "pass",
+      "url": "http://127.0.0.1:4271/rpg-e-r10/runtime-preview/index.html?embed=1&galleryAutoLoop=1&reviewH=64&verify=1",
+      "screenshotCount": 32,
+      "actualVisibleCycleTransitions": [
+        "7 ms",
+        "1200 ms",
+        "14 ms",
+        "1200 ms",
+        "46 ms"
+      ],
+      "sampleImages": [
+        "native/gallery-loop-r2/1.png",
+        "native/gallery-loop-r2/11.png",
+        "native/gallery-loop-r2/13.png"
+      ],
+      "errors": [],
+      "verifyAudio": "hard-zero",
+      "nativeFrameSerialOrCauseIdsObserved": false,
+      "plannerIdentityTests": "pass in test-auto-loop.mjs"
+    },
+    "evidence": [
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/0.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/1.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/2.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/3.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/4.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/5.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/6.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/7.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/8.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/9.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/10.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/11.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/12.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/13.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/14.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/15.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/16.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/17.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/18.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/19.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/20.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/21.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/22.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/23.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/24.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/25.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/26.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/27.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/28.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/29.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/30.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/31.png",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/errors.json",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/timeline.json",
+      "public/sol61-rpg-heavy-zero/r10/native/gallery-loop-r2/REVIEW.md"
+    ]
+  },
+  "galleryAdapterReplay": "pass",
+  "galleryAdapterEvidence": "native/gallery-loop-r2/REVIEW.md",
+  "galleryAdapterEvidenceFiles": [
+    "native/gallery-loop-r2/0.png",
+    "native/gallery-loop-r2/1.png",
+    "native/gallery-loop-r2/2.png",
+    "native/gallery-loop-r2/3.png",
+    "native/gallery-loop-r2/4.png",
+    "native/gallery-loop-r2/5.png",
+    "native/gallery-loop-r2/6.png",
+    "native/gallery-loop-r2/7.png",
+    "native/gallery-loop-r2/8.png",
+    "native/gallery-loop-r2/9.png",
+    "native/gallery-loop-r2/10.png",
+    "native/gallery-loop-r2/11.png",
+    "native/gallery-loop-r2/12.png",
+    "native/gallery-loop-r2/13.png",
+    "native/gallery-loop-r2/14.png",
+    "native/gallery-loop-r2/15.png",
+    "native/gallery-loop-r2/16.png",
+    "native/gallery-loop-r2/17.png",
+    "native/gallery-loop-r2/18.png",
+    "native/gallery-loop-r2/19.png",
+    "native/gallery-loop-r2/20.png",
+    "native/gallery-loop-r2/21.png",
+    "native/gallery-loop-r2/22.png",
+    "native/gallery-loop-r2/23.png",
+    "native/gallery-loop-r2/24.png",
+    "native/gallery-loop-r2/25.png",
+    "native/gallery-loop-r2/26.png",
+    "native/gallery-loop-r2/27.png",
+    "native/gallery-loop-r2/28.png",
+    "native/gallery-loop-r2/29.png",
+    "native/gallery-loop-r2/30.png",
+    "native/gallery-loop-r2/31.png",
+    "native/gallery-loop-r2/errors.json",
+    "native/gallery-loop-r2/timeline.json",
+    "native/gallery-loop-r2/REVIEW.md"
+  ],
+  "galleryAdapterNativeProof": {
+    "loop": "pass",
+    "sourceQuality": "fail",
+    "adoption": "unadopted",
+    "gameIntegration": "not_connected",
+    "normalSfxListening": "not_run",
+    "safari": "unverified",
+    "nativeFrameSerialsObserved": false
+  }
+}

@@ -1,0 +1,25 @@
+# Rocket R10 native quality review — not accepted
+
+Actual reviewer/creator GPT-6.1-Sol. This is the creator's source-grounded follow-up quality review, not a separate independently authored creative acceptance. Source/host/proof frozen originals read-only. Root owns final native/publication/adoption. No new version is approved or implemented by this report.
+
+Viewed root actual100,650normal,650observerOFF,650enhance,end and900PNG, then corrected proof.100 shows a smooth orange folded/rolled band with a broad white interior, rather than convincing heavy combustion.650normal is a continuous opaque grey U-shaped smooth tube with sharply cut faces at the open notch.650enhance retains that tube with a warm interior. These observations are sufficient to reject R10 impact quality. Readability/sharper outline improved over R9's fuzzy cloud, but the primary material is now an apparent solid/rubber component. A clear shape is not automatically the requested heavy blast/smoke.
+
+900.png is a black startup canvas labelled Requesting WebGPU device, with no presented900ms receipt. It is excluded from phase/material evidence. Root later saw900smoke but did not save that view; this review does not turn the unsaved observation into artifact proof. Root preserved VERIFY-before-evidence-correction.json and wrote corrected VERIFY.json. end.png/end-state.txt show authored1200field ended and only hypothetical fixture surfaces remain. Discrete root start228 and end do not establish full continuous material transport/quality.
+
+## Exact source mechanism
+
+Frozen R10 physical module0b1591b8cbd76dfd7fc4719d7812faa0ab176299988933e96ca1eccc330a329a, combined12f5d31b945594f8601ac09902fb19213bb5359f6afcf9371fc06f4c16d31252, observer9edd6187f692f22b417cae58732a56cce5795afeeaeaed530db10a271a877dd5. Measured source/host equality is recorded separately. Host preview-freeze identifies exactly those R10 modules. Body/room/receiver geometry is hypothetical grey polygons; approved pose anchors do not establish rendered character/motion fidelity or real combat/world occlusion.
+
+R10 replaced Gaussian haze with nearly continuous finite superellipse skins and finite depth extrusion, then applied one depth-through upper cleft. The projected envelope is a rounded slab following a smooth bend. Its flat notch mask cuts through all layers and yields two cut end faces. Smoke opacity coefficient.47 and unbroken bulk support integrate to a visually solid medium, with smooth effective-normal grey shading. The coarse roll factor modulates an existing smooth connected body rather than forming changing smoke lobes. This source structure directly explains the U/tube image; there is no evidence of host crop, empty guard fallback or failed compilation causing that material reading. Strong source/receiver/observer equations and75kCPUchecks never established material quality.
+
+The cleft was designed to prevent far-layer refill, but an open space obtained by cutting a smooth extruded solid also creates mechanical faces. Simply softening its edges, lowering opacity/white, adding finer noise/rays/glitter, or keeping the U silhouette while increasing bloom would not resolve the construction failure. A further authorized structural design should replace the swept slab/upper notch with a few broad causally evolving combustion/smoke masses and natural changing density valleys, retaining depth and strong source. That is a new creative hypothesis, not an accepted source or a host compromise. No R11 is silently created here.
+
+## PostEffects and separate gates
+
+650normal fire has ended at620; front/rear jets ended360/160; only kind3smoke remains, and actual source extraction excludes kind3. OBS input is therefore0 by exact source design. Exercising OBSOFF650 demonstrates a control at a non-hot phase; it is not a positive contribution/adequacy check. No missing-PostEffects claim follows from equal shape at this phase. The actual mandatory ordinary source-fed WebGPU pass remains connected; a hot phase such as100 needs aligned feedON/OFF and responseON/OFF evidence. Positive optical adequacy and full-lifetime role remain unaccepted.650enhance fire lasts700 but near-expiry source contribution must be measured, not presumed above the hot-response threshold.
+
+Technical standalone replay passes per root/errors[]/submitted phase labels. World/body occlusion is explicitly not modeled; inherited full foreground-overlay transmission is presented-source parity only. Hypothetical fixture/body/materials, ordinary SFX listening (verify hardzero), continuous full-lifetime/actual-size/variant/reduced/background quality, simultaneous GPU cost, Safari/iPad and actual game integration remain separate gates. Adoption remains unchanged/unadopted; technical gallery eligibility does not imply quality/adoption.
+
+No source/gallery/catalog/game/public writes or resources started. R10 source seal/history and original failed/corrected native receipts retained. New creative authorization belongs to root.
+
+モデル分担：GPT-6.1-Sol100% — 実画像とsource機構の品質判定、証拠/OBS境界訂正。
