@@ -1,0 +1,113 @@
+{
+  "schema": "common-ki-r7-gallery-provenance/v1",
+  "sourcePackage": "outputs/request-20261002/common-ki-zero-sol61-preview-r7",
+  "sourceManifestSha256": "e8fe37e52796d144dd44ddf49d6927c0c81fe7d30124e7b4db3590f1f37aead7",
+  "sourceSealFileSha256": "926ad90f6ef94395956b9c94b691b55258623ded8e0104d568e7d68d2a382f78",
+  "sourceClosure": [
+    {
+      "path": "package/index.html",
+      "route": "/index.html",
+      "bytes": 3188,
+      "sha256": "fb8c64906dfa68a7fb94a606bec0fe69b06028b4204d2cb7c3198f4e1f496d05"
+    },
+    {
+      "path": "package/preview.mjs",
+      "route": "/preview.mjs",
+      "bytes": 34201,
+      "sha256": "64962bf444a3eb08de84a3083c095a0d5d71a4b3cb6a4bc615ebcf88b75d4461"
+    },
+    {
+      "path": "package/creative.mjs",
+      "route": "/creative.mjs",
+      "bytes": 13924,
+      "sha256": "bc21f7e589937ff87cd4a306f89f29c92276a77a215bea7f54d9a520c33f89d7"
+    },
+    {
+      "path": "package/webgpu-player-sprite.js",
+      "route": "/webgpu-player-sprite.js",
+      "bytes": 7126,
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+    },
+    {
+      "path": "package/assets/male-right-walk-v790.png",
+      "route": "/assets/male-right-walk-v790.png",
+      "bytes": 327713,
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+    },
+    {
+      "path": "common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "route": "/common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "bytes": 8316,
+      "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+    }
+  ],
+  "adapterFiles": [
+    "package/preview-gallery-r1.mjs",
+    "gallery.html"
+  ],
+  "adapterDescription": "Content-only display adapter derived from the R6 gallery adapter; only source-relative image route and version identity were changed. Frozen creative, preview, sprite, index and source metadata remain exact.",
+  "publicBase": {
+    "remote": "https://github.com/player13579/player13579.github.io.git",
+    "branch": "Codex-honoo",
+    "commit": "e5971e0aa56e203038dfbc83bf65caf09e1b3168",
+    "assetGallerySha256": "dabf5f40f851881fc0f077b08ce5951b31d683b407517894ae81dc1b35395a07",
+    "previousBase": "0711f2ace0dc5ea6d4104be396cd44cb1e180535"
+  },
+  "native": {
+    "primaryReceipt": "outputs/request-20261002/continuation-primary/KI-R7-NATIVE.json",
+    "primaryReceiptSha256": "f07b4bf31b19398f86f6004cf3f5b4cbe624dc6e9192ede6f639038649f78d1f",
+    "primaryObservedSourceReplay": "pass; actual held-640 body and blue incoming laminae visible, loop frameSerial 542, validation null and queue fulfilled, shader errors 0",
+    "galleryAdapterReplay": "pass: primary observed ready/active visual loop at frameSerial 3685 with no errors or shader compilation errors; normal SFX listening untested",
+    "quality": "not accepted: apparent energy remains modest",
+    "evidence": [
+      {
+        "path": "outputs/request-20261002/continuation-primary/KI-R7-NATIVE.json",
+        "bytes": 1230,
+        "sha256": "f07b4bf31b19398f86f6004cf3f5b4cbe624dc6e9192ede6f639038649f78d1f"
+      },
+      {
+        "path": "outputs/request-20261002/native-map-and-vibe-check/ki-r7-held640.txt",
+        "bytes": 3949,
+        "sha256": "214589bd426e2d0e54eb8b4692b0c7ebed9bf59e00ecc9d8c8030344b398daaf"
+      },
+      {
+        "path": "outputs/request-20261002/native-map-and-vibe-check/ki-r7-held640.png",
+        "bytes": 35515,
+        "sha256": "c2b86d091001be07740ecfee1f36b4ee07d620b68f85a498933585e8789acc30"
+      },
+      {
+        "path": "outputs/request-20261002/native-map-and-vibe-check/ki-r7-loop.txt",
+        "bytes": 3605,
+        "sha256": "554c3055c2be037fc76736f3d1d7d4a4f2edc2724906684bc91de9f66d778516"
+      }
+    ],
+    "galleryAdapterEvidence": [
+      {
+        "path": "outputs/request-20261002/native-map-and-vibe-check/ki-r7-gallery-adapter.json",
+        "sha256": "98c41391b01d6792e30f3f60d2580ed37f8bf8e082575d071744a75c7c466d52"
+      },
+      {
+        "path": "outputs/request-20261002/native-map-and-vibe-check/ki-r7-gallery-adapter.png",
+        "sha256": "5df5427596837010fea786dbde68336fbf097b7e52c99fae76dde45573a240cb"
+      }
+    ]
+  },
+  "adoption": "not-adopted",
+  "gameIntegration": "not connected",
+  "normalAudioListening": "not run",
+  "safari": "unverified",
+  "rebase": {
+    "sourceStage": "outputs/request-20261002/common-ki-r7-gallery-stage-r1",
+    "reason": "additive rebase over published Donation R1/R2 and Rocket R2-R4 release",
+    "catalogScope": "only Ki group defaultVersionId and the new R7 version entry changed",
+    "htmlScope": "only asset-gallery.js cache token appended"
+  },
+  "combinedStage": {
+    "parent": "e5971e0aa56e203038dfbc83bf65caf09e1b3168",
+    "donationQualityPatchSourceSha256": "dabf5f40f851881fc0f077b08ce5951b31d683b407517894ae81dc1b35395a07",
+    "donationQualityPatchCandidateSha256": "ebc83a3826fe76d6d094540850c1f195f76de98002b403e5d7cafd94959a81ba",
+    "primaryGalleryAdapterEvidenceSha256": "98c41391b01d6792e30f3f60d2580ed37f8bf8e082575d071744a75c7c466d52",
+    "primaryGalleryAdapterScreenshotSha256": "5df5427596837010fea786dbde68336fbf097b7e52c99fae76dde45573a240cb",
+    "scope": "Ki R7 addition/default plus only Donation R1/R2 in-progress quality metadata; see public quality evidence file"
+  }
+}

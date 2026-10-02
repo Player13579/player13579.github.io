@@ -1,0 +1,61 @@
+{
+  "schema": "common-ki-preview-r7-closure/v1",
+  "files": [
+    {
+      "path": "package/index.html",
+      "route": "/index.html",
+      "bytes": 3188,
+      "sha256": "fb8c64906dfa68a7fb94a606bec0fe69b06028b4204d2cb7c3198f4e1f496d05"
+    },
+    {
+      "path": "package/preview.mjs",
+      "route": "/preview.mjs",
+      "bytes": 34201,
+      "sha256": "64962bf444a3eb08de84a3083c095a0d5d71a4b3cb6a4bc615ebcf88b75d4461"
+    },
+    {
+      "path": "package/creative.mjs",
+      "route": "/creative.mjs",
+      "bytes": 13924,
+      "sha256": "bc21f7e589937ff87cd4a306f89f29c92276a77a215bea7f54d9a520c33f89d7"
+    },
+    {
+      "path": "package/webgpu-player-sprite.js",
+      "route": "/webgpu-player-sprite.js",
+      "bytes": 7126,
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+    },
+    {
+      "path": "package/assets/male-right-walk-v790.png",
+      "route": "/assets/male-right-walk-v790.png",
+      "bytes": 327713,
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+    },
+    {
+      "path": "common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "route": "/common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "bytes": 8316,
+      "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+    }
+  ],
+  "moduleGraph": {
+    "entry": "/preview.mjs",
+    "paths": [
+      "/common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "/creative.mjs",
+      "/preview.mjs"
+    ],
+    "edges": [
+      {
+        "from": "/preview.mjs",
+        "specifier": "./creative.mjs",
+        "to": "/creative.mjs"
+      },
+      {
+        "from": "/creative.mjs",
+        "specifier": "../common-ki-zero-sol61-preview-r4/package/creative.mjs",
+        "to": "/common-ki-zero-sol61-preview-r4/package/creative.mjs"
+      }
+    ]
+  }
+}

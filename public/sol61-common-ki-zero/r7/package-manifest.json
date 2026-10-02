@@ -1,0 +1,172 @@
+{
+  "schema": "common-ki-zero-preview-r7-package/v1",
+  "status": "private-candidate-native-pending",
+  "asset": "common-ki-zero-sol61-preview-r7",
+  "creativeAuthor": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol"
+  },
+  "implementationAuthor": {
+    "model": "gpt-6-luna",
+    "displayName": "GPT-6-Luna"
+  },
+  "designContractSha256": "0f7b9f690ca8d28b8de974b0aeff6bbda7d83f0a3564137ac946d3b7db1afb92",
+  "creativeSourceSha256": "bc21f7e589937ff87cd4a306f89f29c92276a77a215bea7f54d9a520c33f89d7",
+  "technicalSourcePins": [
+    {
+      "path": "outputs/request-20261002/common-ki-zero-sol61-preview-r6/package/preview.mjs",
+      "sha256": "f95779a7b12e77a42c58d12c5d82e89c88f962550e6bc4c115960df9d933e141",
+      "role": "technical preview base; new R7 adapter is derived only in this directory"
+    },
+    {
+      "path": "outputs/request-20261002/common-ki-zero-sol61-preview-r6/package/webgpu-player-sprite.js",
+      "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199",
+      "role": "unchanged sprite command/texture implementation"
+    },
+    {
+      "path": "outputs/request-20261002/common-ki-zero-sol61-preview-r6/package/assets/male-right-walk-v790.png",
+      "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6",
+      "role": "unchanged technical body source"
+    },
+    {
+      "path": "outputs/request-20261002/common-ki-zero-sol61-preview-r4/package/creative.mjs",
+      "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16",
+      "role": "exact inherited supports and finite PCM/SFX implementation"
+    }
+  ],
+  "cpuValidation": {
+    "path": "CPU-VALIDATION.json",
+    "sha256": "0c90e8363f7b2581f0d3d02b9290f221e38c04b754611b80d888165c347e6a51",
+    "passed": true,
+    "frames": 482,
+    "actualNativePixels": false,
+    "sourcePath": "outputs/request-20261002/common-ki-sol61-quality-r7/CPU-VALIDATION.json",
+    "sourceSha256": "0c90e8363f7b2581f0d3d02b9290f221e38c04b754611b80d888165c347e6a51"
+  },
+  "closure": {
+    "fileCount": 6,
+    "byteCount": 394468,
+    "sha256": "0eeac536047eb349606c09ac9f9f8fcba7a92cdc17c30fea9d118c0d578c9e72",
+    "files": [
+      {
+        "path": "package/index.html",
+        "route": "/index.html",
+        "bytes": 3188,
+        "sha256": "fb8c64906dfa68a7fb94a606bec0fe69b06028b4204d2cb7c3198f4e1f496d05"
+      },
+      {
+        "path": "package/preview.mjs",
+        "route": "/preview.mjs",
+        "bytes": 34201,
+        "sha256": "64962bf444a3eb08de84a3083c095a0d5d71a4b3cb6a4bc615ebcf88b75d4461"
+      },
+      {
+        "path": "package/creative.mjs",
+        "route": "/creative.mjs",
+        "bytes": 13924,
+        "sha256": "bc21f7e589937ff87cd4a306f89f29c92276a77a215bea7f54d9a520c33f89d7"
+      },
+      {
+        "path": "package/webgpu-player-sprite.js",
+        "route": "/webgpu-player-sprite.js",
+        "bytes": 7126,
+        "sha256": "c905260e10811c59ca79031ed182fbb29283b14e2799df4deab6a9281f513199"
+      },
+      {
+        "path": "package/assets/male-right-walk-v790.png",
+        "route": "/assets/male-right-walk-v790.png",
+        "bytes": 327713,
+        "sha256": "d707879e5ef7172dc92c4e2b31f24718cfc01ce68552b7f08ba3bc086ec030a6"
+      },
+      {
+        "path": "common-ki-zero-sol61-preview-r4/package/creative.mjs",
+        "route": "/common-ki-zero-sol61-preview-r4/package/creative.mjs",
+        "bytes": 8316,
+        "sha256": "d706de969d58531c257cefd2212a2d90346bdb53f402bd7a42b673fa6400ff16"
+      }
+    ],
+    "moduleGraphSha256": "64b6069409c9f79ad1e501a7c6c023c5ef31053ea455ca437bb8239dd8680d46",
+    "moduleGraph": {
+      "entry": "/preview.mjs",
+      "paths": [
+        "/common-ki-zero-sol61-preview-r4/package/creative.mjs",
+        "/creative.mjs",
+        "/preview.mjs"
+      ],
+      "edges": [
+        {
+          "from": "/preview.mjs",
+          "specifier": "./creative.mjs",
+          "to": "/creative.mjs"
+        },
+        {
+          "from": "/creative.mjs",
+          "specifier": "../common-ki-zero-sol61-preview-r4/package/creative.mjs",
+          "to": "/common-ki-zero-sol61-preview-r4/package/creative.mjs"
+        }
+      ]
+    }
+  },
+  "host": {
+    "path": "serve.mjs",
+    "sha256": "cea608d6d46ac0ab0c0376d72498e89b9abcdfc92f3c1ed709cc8aac269eba96",
+    "port": 4229,
+    "strictMime": {
+      ".mjs": "text/javascript; charset=utf-8",
+      ".js": "text/javascript; charset=utf-8"
+    },
+    "launch": "node outputs/request-20261002/common-ki-zero-sol61-preview-r7/serve.mjs",
+    "url": "http://127.0.0.1:4229/?verify=1"
+  },
+  "tests": {
+    "previewContract": {
+      "path": "tests/preview-contract.test.mjs",
+      "sha256": "2dbc8d8447a39d7ad35200293114845001d3702f7af11a32737062acf2e0d3ed"
+    },
+    "hostClosure": {
+      "path": "tests/host-closure.test.mjs",
+      "sha256": "e5667f86174d5074a2c7ae6757780b8bff1af8ec0ba41c021e2a8efb529b97c2"
+    },
+    "packageVerifier": {
+      "path": "verify-package.mjs",
+      "sha256": "3dc79ff9f62030dda4f515ce4461df94fe14049bee680e7bdba0c8cfd4b244ad"
+    },
+    "results": {
+      "previewContract": {
+        "path": "PREVIEW-TEST-RESULT.json",
+        "sha256": "936d72e88222aa60c18f2eeeebbab65e48fe38f0998ab11c80f3fa6d1678303a"
+      },
+      "hostClosure": {
+        "path": "HOST-TEST-RESULT.json",
+        "sha256": "024f6c0038c74cea1ef8650cedec3f875569f7a9fbc41e73d3d0586ca2df12a3"
+      }
+    }
+  },
+  "requirements": {
+    "uniformBytes": 256,
+    "curveAbiSlots": 3,
+    "activeCurveCondition": "energy > 0; third ABI slot energy is 0",
+    "group1Binding0": "kiStoredBody texture_2d<f32> per actual E pipeline layout",
+    "sameFrameBodyMask": true,
+    "passes": [
+      "source rear",
+      "receiver",
+      "source-over body display",
+      "body received",
+      "source front",
+      "OBS"
+    ],
+    "sound": {
+      "source": "exact R4 inherited supports/synthesizeSfx",
+      "verifyMode": "hard zero",
+      "ordinaryGestureAndProof": "inherited R6 behavior; listening not performed"
+    },
+    "status": {
+      "native": "pending primary",
+      "quality": "pending primary",
+      "adoption": "unadopted",
+      "game": "not integrated",
+      "ordinaryAudioListening": "not performed"
+    }
+  }
+}
