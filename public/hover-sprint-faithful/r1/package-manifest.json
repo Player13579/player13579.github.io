@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "groupId": "hover-sprint",
+  "versionId": "hover-sprint-faithful-extraction-r1",
+  "title": "Hover Sprint — faithful production replay r1",
+  "previewPage": "public/hover-sprint-faithful/r1/gallery.html?embed=1&galleryAutoLoop=1",
+  "source": "public/hover-sprint-faithful/r1/package-manifest.json",
+  "creativeSource": "public/hover-sprint-faithful/r1/source/webgpu-hover-sprint-e.js",
+  "originalSourceAuthor": "unresolved-in-frozen-provenance",
+  "runtimeAdapterAuthor": "GPT-6-Luna",
+  "runtimeAdapterRevision": "r4-single-frame-scheduler-and-embed-fit",
+  "adoption": "unknown",
+  "qualityStatus": "in-progress",
+  "qualityReviewStatus": "in-progress",
+  "technicalReplayStatus": "pending-parent-gallery-native-replay",
+  "normalAudioListening": "not_run",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected",
+  "contract": {
+    "path": "outputs/request-20261004/next-ordinary-e-gap-contract-sol61-r1/HS-EXTRACTION-CONTRACT.md",
+    "sha256": "146219d37f5439596fb584cc822158f8121c52d0b614e620b1fa217989cfc1ee",
+    "sourceRepository": "C:/Users/user/Documents/Codex/2026-07-12/defenders-vs-attackers/.codex-runtime/pages-telemetry-release/sunbeam-withdrawal-release/work/clean/",
+    "sourceCommit": "c15dd484c9d73e306805cb2abee31cb15c00b479"
+  },
+  "sourcePins": [
+    {
+      "path": "public/hover-sprint-faithful/r1/source/webgpu-hover-sprint-e.js",
+      "bytes": 9968,
+      "sha256": "d870afe3882143fa057d3e6cba11292236649e7e42b2fddb334409786ffb0550"
+    },
+    {
+      "path": "public/hover-sprint-faithful/r1/source/webgpu-defense-movement-e-sfx.js",
+      "bytes": 6683,
+      "sha256": "ad38fdf9b02c632bf16532bd6121a3794f7ff3f7b656ddf43abeef9f08fc7e1f"
+    },
+    {
+      "path": "public/hover-sprint-faithful/r1/source/webgpu-e-cue-player.js",
+      "bytes": 13756,
+      "sha256": "1ae2b2ed9f2635c931e4d8923af16d0d0e9fe55fa592e0622f308c30d21f7067"
+    },
+    {
+      "path": "public/hover-sprint-faithful/r1/source/webgpu-frame-core.js",
+      "bytes": 18791,
+      "sha256": "be09856428ea84ddfc168987db8448763665cc6616486c00e535164ab56c8d9d"
+    },
+    {
+      "path": "public/hover-sprint-faithful/r1/source/webgpu-primitives.js",
+      "bytes": 12836,
+      "sha256": "2a5ae0810d2bd79b71e1137b489b49215e9013927857ad547571b2596c17775b"
+    },
+    {
+      "path": "public/hover-sprint-faithful/r1/source/webgpu-renderer.js",
+      "bytes": 15978,
+      "sha256": "40ac29f84f1592d968ee3b9e3df516e23e6f64e81110ac68efd5f4d70355d054"
+    },
+    {
+      "path": "public/hover-sprint-faithful/r1/source/webgpu-compositing.js",
+      "bytes": 6827,
+      "sha256": "778bb00ba3ff753e60f8a74f6e407bb32b833621e84f69f309ff64fbbaea90e1"
+    }
+  ],
+  "runtimeContract": {
+    "startupSchema": "dva-gallery-startup/v1",
+    "startupIdentity": "same attempt token/version/epoch; visible submitted and queue-completed E frame",
+    "submissionReceipt": "Trailing renderer frame.addEncoder observer captures actual frame-core frameId, validation and queue-done promises; no extra render pass or second queue submit",
+    "renderPassCount": "Actual core command count minus trailing observer encoder: active clear plus E batch is 2; source-off clear is 1",
+    "receiptFailure": "Surface proofError.error even when proof is null; fail explicitly if both proof and proofError are absent",
+    "scheduler": "At most one ordinary RAF/render continuation; serialize initial, held, resize and ordinary draws on one chain; handle all outcomes; Play starts from current cycle plus one",
+    "embedFit": "6:5 canvas contained within the available viewport without internal scrolling; logical 384x320 geometry is unchanged",
+    "parentAudioBridge": "__gallerySfx.activateFromGesture(item)",
+    "audio": "existing Hover Sprint onset only; exact-once; no sustain/end cue; verify hard mute",
+    "clocks": "local scene.nowMs for 1200 ms activation event; server scene.serverNow and hoverSprintUntil for 8000 ms live state",
+    "embed": "?embed=1 hides controls/headings/diagnostics and retains 6:5 canvas",
+    "loopGapMs": 500
+  },
+  "files": [
+    {
+      "route": "public/hover-sprint-faithful/r1/gallery.html",
+      "localPath": "candidate/gallery.html",
+      "bytes": 3454,
+      "sha256": "85a6cc971b881a0f2d8c5ba347bcb6bb41920a9d9b8b227302e40b7d0c395b7f",
+      "mimeType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/gallery.mjs",
+      "localPath": "candidate/gallery.mjs",
+      "bytes": 12727,
+      "sha256": "c7d6bc9bf3ebaf3ea137759b5f1dc018c98f764eb42ed65275347347a7c766cb",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/host-contract.js",
+      "localPath": "candidate/host-contract.js",
+      "bytes": 8836,
+      "sha256": "3f3dadfe7278515e417913b81973b3233023831cedf420f8b07ab46c15b5e81c",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/startup-bootstrap.js",
+      "localPath": "candidate/startup-bootstrap.js",
+      "bytes": 4093,
+      "sha256": "0b110f44673760701f6bd1b5af041072763b5d4c0856e124dc06014b884c0256",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/source/webgpu-hover-sprint-e.js",
+      "localPath": "candidate/source/webgpu-hover-sprint-e.js",
+      "bytes": 9968,
+      "sha256": "d870afe3882143fa057d3e6cba11292236649e7e42b2fddb334409786ffb0550",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/source/webgpu-defense-movement-e-sfx.js",
+      "localPath": "candidate/source/webgpu-defense-movement-e-sfx.js",
+      "bytes": 6683,
+      "sha256": "ad38fdf9b02c632bf16532bd6121a3794f7ff3f7b656ddf43abeef9f08fc7e1f",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/source/webgpu-e-cue-player.js",
+      "localPath": "candidate/source/webgpu-e-cue-player.js",
+      "bytes": 13756,
+      "sha256": "1ae2b2ed9f2635c931e4d8923af16d0d0e9fe55fa592e0622f308c30d21f7067",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/source/webgpu-frame-core.js",
+      "localPath": "candidate/source/webgpu-frame-core.js",
+      "bytes": 18791,
+      "sha256": "be09856428ea84ddfc168987db8448763665cc6616486c00e535164ab56c8d9d",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/source/webgpu-primitives.js",
+      "localPath": "candidate/source/webgpu-primitives.js",
+      "bytes": 12836,
+      "sha256": "2a5ae0810d2bd79b71e1137b489b49215e9013927857ad547571b2596c17775b",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/source/webgpu-renderer.js",
+      "localPath": "candidate/source/webgpu-renderer.js",
+      "bytes": 15978,
+      "sha256": "40ac29f84f1592d968ee3b9e3df516e23e6f64e81110ac68efd5f4d70355d054",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/hover-sprint-faithful/r1/source/webgpu-compositing.js",
+      "localPath": "candidate/source/webgpu-compositing.js",
+      "bytes": 6827,
+      "sha256": "778bb00ba3ff753e60f8a74f6e407bb32b833621e84f69f309ff64fbbaea90e1",
+      "mimeType": "text/javascript; charset=utf-8"
+    }
+  ]
+}

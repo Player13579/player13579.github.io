@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hover Sprint — faithful production replay</title>
+  <style>
+    :root{color-scheme:dark;font:15px/1.45 system-ui,sans-serif;background:#101820;color:#eaf4fa}
+    body{margin:0;padding:20px;display:grid;justify-items:center;gap:12px}
+    h1,p{margin:0;max-width:42rem;text-align:center}
+    .screen{width:min(96vw,720px);aspect-ratio:6/5;display:grid;place-items:center;background:#0b1218;border:1px solid #476070;border-radius:8px;overflow:hidden}
+    canvas{display:block;width:100%;height:100%;aspect-ratio:6/5}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;max-width:48rem}
+    button,label{padding:7px 10px;border:1px solid #476070;border-radius:5px;background:#182630;color:inherit}
+    label{display:flex;align-items:center;gap:6px}input[type=range]{width:min(55vw,360px)}
+    output,#status{font:12px ui-monospace,monospace;color:#b8d2df}
+    html.embed,html.embed body{width:100%;height:100%;overflow:hidden}
+    html.embed body{padding:0;display:grid;place-items:center}html.embed h1,html.embed p,html.embed .controls,html.embed #status,html.embed #audio-state{display:none}
+    html.embed .screen{width:min(100vw,120vh);height:min(100vh,83.333333vw);aspect-ratio:6/5;border:0;border-radius:0}
+    html.embed canvas{width:100%;height:100%;aspect-ratio:6/5}
+    html.verify button[data-audio],html.verify label[data-audio]{display:none}
+  </style>
+</head>
+<body>
+  <h1>Hover Sprint — faithful production replay</h1>
+  <p>Existing automatic Hover Sprint state replay. The eight-second live state follows the frozen production source; no new cast action or artwork is introduced.</p>
+  <div class="screen"><canvas id="preview" aria-label="WebGPU Hover Sprint effect"></canvas></div>
+  <div class="controls">
+    <label><input id="source" type="checkbox" checked> E source</label>
+    <label><input id="reduced" type="checkbox"> Reduced motion</label>
+    <label><input id="observer" type="checkbox"> Frame details</label>
+    <label>Recorded fixture heading <select id="heading"><option value="right">Right</option><option value="down">Down</option><option value="left">Left</option><option value="up">Up</option><option value="down-right">Down-right</option></select></label>
+    <label><input id="muted" type="checkbox"> Mute</label>
+    <button id="audio" data-audio type="button">Enable sound</button>
+    <button id="play" type="button">Resume loop</button>
+    <label>Hold <input id="seek" type="range" min="0" max="8000" step="1" value="0"></label>
+    <output id="seek-value">0 ms</output>
+  </div>
+  <output id="status" role="status">Preparing WebGPU…</output>
+  <output id="observer-state" hidden></output>
+  <output id="audio-state" data-audio>Audio stays locked until gesture.</output>
+  <script src="startup-bootstrap.js"></script>
+  <script src="source/webgpu-frame-core.js"></script>
+  <script src="source/webgpu-primitives.js"></script>
+  <script src="source/webgpu-compositing.js"></script>
+  <script src="source/webgpu-renderer.js"></script>
+  <script src="source/webgpu-hover-sprint-e.js"></script>
+  <script src="source/webgpu-defense-movement-e-sfx.js"></script>
+  <script src="source/webgpu-e-cue-player.js"></script>
+  <script src="host-contract.js"></script>
+  <script type="module" src="gallery.mjs"></script>
+</body>
+</html>
