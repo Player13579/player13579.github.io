@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "groupId": "alchemy-particle-cannon-sol61",
+  "versionId": "alchemy-cannon-sol61-r2",
+  "title": "GPT-6.1-Sol Alchemy Cannon E r2",
+  "previewPage": "public/sol61-alchemy-cannon/r2/gallery.html?embed=1&galleryAutoLoop=1",
+  "source": "public/sol61-alchemy-cannon/r2/package-manifest.json",
+  "creativeSource": "public/sol61-alchemy-cannon/r2/effect.mjs",
+  "creativeSourceVersion": "alchemy-cannon-new-e-sol61-r2",
+  "creativeSourceAuthor": "GPT-6.1-Sol",
+  "runtimeAdapterAuthor": "GPT-6-Luna",
+  "adapterRole": "faithful standalone and gallery preview wrapper; R2 runtime interface unchanged; not game integration",
+  "originalPackageManifest": "public/sol61-alchemy-cannon/r2/creative-source-manifest.json",
+  "originalPackageManifestSha256": "5dc56ceff96723f7f6e4269ab04d3d86f6d972099b4b5daffbc7216057f93566",
+  "creativeEffectSha256": "f745cc024949b992a50c0520c91db256ce4b508a09a8d71278e2bb6edb4755b5",
+  "adoption": "unknown",
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "not-started",
+  "technicalReplayStatus": "pending-gallery-native-replay",
+  "normalAudioListening": "not_run",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected",
+  "runtimeContract": {
+    "startupSchema": "dva-gallery-startup/v1",
+    "stages": [
+      "child-document",
+      "adapter",
+      "device",
+      "assets",
+      "pipelines",
+      "first-frame",
+      "playing"
+    ],
+    "startupSnapshot": "__dvaGalleryStartupSnapshot",
+    "parentAudioBridge": "__gallerySfx.activateFromGesture(item)",
+    "audio": "activation-only; one cue per new activation cause; pulses silent; verify hard-mute",
+    "autoLoopQuery": "galleryAutoLoop=1"
+  },
+  "files": [
+    {
+      "route": "public/sol61-alchemy-cannon/r2/gallery.html",
+      "bytes": 1982,
+      "sha256": "3855807c84e876cb005be670afe3713ca330c7c5cf2b3232dcf794935fe55228"
+    },
+    {
+      "route": "public/sol61-alchemy-cannon/r2/main.mjs",
+      "bytes": 21788,
+      "sha256": "1c2e02a94ac9953f3c692841880b15e56c921cd05f8d9385b664dc08be110522"
+    },
+    {
+      "route": "public/sol61-alchemy-cannon/r2/audio.mjs",
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    {
+      "route": "public/sol61-alchemy-cannon/r2/effect.mjs",
+      "bytes": 5427,
+      "sha256": "f745cc024949b992a50c0520c91db256ce4b508a09a8d71278e2bb6edb4755b5"
+    },
+    {
+      "route": "public/sol61-alchemy-cannon/r2/creative-source-manifest.json",
+      "bytes": 2344,
+      "sha256": "5dc56ceff96723f7f6e4269ab04d3d86f6d972099b4b5daffbc7216057f93566"
+    }
+  ]
+}
