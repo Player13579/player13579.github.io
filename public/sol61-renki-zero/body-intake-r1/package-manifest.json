@@ -1,0 +1,130 @@
+{
+  "schema": "common-renki-gallery-package/v1",
+  "id": "renki-sol61-body-intake-r1",
+  "version": "body-intake-r1",
+  "sourceVersion": "renki-sol61-body-intake-r1",
+  "author": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol"
+  },
+  "sourceManifestSha256": "99e3b5aefb10ffa4825eef4270e9ecee9eb43fc1b49f5eb8ca8e5250c997b6dc",
+  "creativeSourceSha256": "c340e1ac6c6372f8b52f0f16436885a6671fafe3bfce3d337f9282c166f50c2e",
+  "entry": "package/gallery.html?embed=1&galleryAutoLoop=1",
+  "standaloneEntry": "package/index.html",
+  "sourceFiles": [
+    {
+      "path": "package/body-focus-original.png",
+      "bytes": 1220306,
+      "sha256": "e3c96c1b719d56ca8c210e11f2cef5f359ad9075b2b50f8c3e63eef3c04a85d0"
+    },
+    {
+      "path": "package/gallery.html",
+      "bytes": 3874,
+      "sha256": "2e97f90d24eeee42462b238086eebb6fb7bf65d7e6cf955fd5b68118832f8418"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 1450,
+      "sha256": "e3b298dab12749eefbb72c9893d4321834a53f72b1a6205728a9e5c295fc417f"
+    },
+    {
+      "path": "package/post.wgsl",
+      "bytes": 1080,
+      "sha256": "48093ee574b479d029c79cfee20e80580ab3f289ac39a9297d206f9702c18c48"
+    },
+    {
+      "path": "package/preview.mjs",
+      "bytes": 3794,
+      "sha256": "6a8ca4129c39c3ea9c8266f0fbb7e22bd6d09962d0b90417ff0e60c64c4a9bde"
+    },
+    {
+      "path": "package/renki.mjs",
+      "bytes": 12584,
+      "sha256": "c340e1ac6c6372f8b52f0f16436885a6671fafe3bfce3d337f9282c166f50c2e"
+    },
+    {
+      "path": "package/scene.wgsl",
+      "bytes": 5442,
+      "sha256": "707e79945cb2d74a6c741aa944839e5ab5ba9d80a7f3f7a8660362c4dd01e8eb"
+    }
+  ],
+  "sourceTechnicalReplay": "pass",
+  "technicalReplay": "pass",
+  "technicalReplayEvidence": [
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/REPORT.md",
+      "bytes": 1036,
+      "sha256": "0c57967f93738f5892a95ebba62fd176a8faa67e8e439f313cef7dafd4621f86"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/500.png",
+      "bytes": 37355,
+      "sha256": "ce3370c0c663c74e0d9b5d1bc77c57d1939667a0fc8fcb14a2232d9576368106"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/740.png",
+      "bytes": 36988,
+      "sha256": "5380e76a567c7ab427e31f8129300fd9c74706046757c70e720e591e190ede1a"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/1250.png",
+      "bytes": 37012,
+      "sha256": "cfabd0bb8d38e2267fa296a09e0689657b553da1d8ae474750b1996ab7a3ef3e"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/gallery.png",
+      "bytes": 12066,
+      "sha256": "130cea23da3c04bb28b6a9f882121a312be3f3e2829635ac7d1c256c1a6c0ddf"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/errors.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  ],
+  "quality": "fail",
+  "qualityReviewStatus": "not-accepted",
+  "qualityReviewOutcome": "fail",
+  "qualityReviewerDisplayName": "Codex primary",
+  "qualityReviewReason": "The wide smooth cyan channel can read as an outward waist beam instead of matter entering the body; continuous-motion quality remains unestablished.",
+  "qualityEvidence": [
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/REPORT.md",
+      "bytes": 1036,
+      "sha256": "0c57967f93738f5892a95ebba62fd176a8faa67e8e439f313cef7dafd4621f86"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/500.png",
+      "bytes": 37355,
+      "sha256": "ce3370c0c663c74e0d9b5d1bc77c57d1939667a0fc8fcb14a2232d9576368106"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/740.png",
+      "bytes": 36988,
+      "sha256": "5380e76a567c7ab427e31f8129300fd9c74706046757c70e720e591e190ede1a"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/1250.png",
+      "bytes": 37012,
+      "sha256": "cfabd0bb8d38e2267fa296a09e0689657b553da1d8ae474750b1996ab7a3ef3e"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/gallery.png",
+      "bytes": 12066,
+      "sha256": "130cea23da3c04bb28b6a9f882121a312be3f3e2829635ac7d1c256c1a6c0ddf"
+    },
+    {
+      "path": "outputs/request-20261003/renki-body-intake-native-r1/errors.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  ],
+  "adoption": "not-adopted",
+  "gameIntegration": "not-connected",
+  "normalSfxListening": "not-run",
+  "safari": "unverified",
+  "sourceManifestStatus": {
+    "nativeReplay": "not_run",
+    "quality": "not_run"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "schema": "common-renki-gallery-package/v1",
+  "id": "renki-sol61-digital-compression-r1-repair-r3",
+  "version": "digital-compression-r1-repair-r3",
+  "sourceVersion": "renki-sol61-digital-compression-r1-repair-r3",
+  "author": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol"
+  },
+  "sourceManifestSha256": "d12bd3e3cdb09982460b2709cc76f55fbb266227a3918ecae64615cb40af496a",
+  "creativeSourceSha256": "1b7e2386f28fb2bb7aaa8478b34b239a78f171d183c36339e655eb2c1ee0610f",
+  "entry": "package/gallery.html?embed=1&galleryAutoLoop=1",
+  "standaloneEntry": "package/index.html",
+  "sourceFiles": [
+    {
+      "path": "package/body-focus-original.png",
+      "bytes": 1220306,
+      "sha256": "e3c96c1b719d56ca8c210e11f2cef5f359ad9075b2b50f8c3e63eef3c04a85d0"
+    },
+    {
+      "path": "package/gallery.html",
+      "bytes": 3910,
+      "sha256": "b71b5cdb23e3444761cb6360774fb8968f7ec59c6a533b1424199467499de3fc"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 1486,
+      "sha256": "9639abd81dda8f62b7093967edc347b40cb73cd088357d0ad116a485ffabc09d"
+    },
+    {
+      "path": "package/post.wgsl",
+      "bytes": 1080,
+      "sha256": "48093ee574b479d029c79cfee20e80580ab3f289ac39a9297d206f9702c18c48"
+    },
+    {
+      "path": "package/preview.mjs",
+      "bytes": 3794,
+      "sha256": "6a8ca4129c39c3ea9c8266f0fbb7e22bd6d09962d0b90417ff0e60c64c4a9bde"
+    },
+    {
+      "path": "package/renki.mjs",
+      "bytes": 13136,
+      "sha256": "1b7e2386f28fb2bb7aaa8478b34b239a78f171d183c36339e655eb2c1ee0610f"
+    },
+    {
+      "path": "package/scene.wgsl",
+      "bytes": 5976,
+      "sha256": "bcaafc36e84ceed336e397c14d4e2b95e05f86839a3df058bf3dd95b14d9908c"
+    }
+  ],
+  "sourceTechnicalReplay": "pass",
+  "technicalReplay": "pass",
+  "technicalReplayEvidence": [
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/REPORT.md",
+      "bytes": 975,
+      "sha256": "a84358c9621b49c83ab95e07192920b21db2c3496b72370dc8dcd4be834f654e"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/250.png",
+      "bytes": 40933,
+      "sha256": "78a5946d1b8a0162cd07c305ef9e750bd831805354da2a80c5e8c63fb9dbccea"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/500.png",
+      "bytes": 40655,
+      "sha256": "41a29f219c20b10aea291ef98f957fe957aacab74c00419a583ee448d36774a4"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/850.png",
+      "bytes": 40564,
+      "sha256": "888df2ab7a0ad507f1fe314bfe4b488c1be6b0ba65a3f7481eec3b28d4f62518"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/gallery-third.png",
+      "bytes": 12554,
+      "sha256": "743adc12a90761960fa3493452c3f7f76d042c5f421efbf88f7f64c2a8f37a50"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/errors.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  ],
+  "quality": "fail",
+  "qualityReviewStatus": "not-accepted",
+  "qualityReviewOutcome": "fail",
+  "qualityReviewerDisplayName": "Codex primary",
+  "qualityReviewReason": "Loose cuboids read as side panels and an external torso enclosure rather than energy entering the body.",
+  "qualityEvidence": [
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/REPORT.md",
+      "bytes": 975,
+      "sha256": "a84358c9621b49c83ab95e07192920b21db2c3496b72370dc8dcd4be834f654e"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/250.png",
+      "bytes": 40933,
+      "sha256": "78a5946d1b8a0162cd07c305ef9e750bd831805354da2a80c5e8c63fb9dbccea"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/500.png",
+      "bytes": 40655,
+      "sha256": "41a29f219c20b10aea291ef98f957fe957aacab74c00419a583ee448d36774a4"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/850.png",
+      "bytes": 40564,
+      "sha256": "888df2ab7a0ad507f1fe314bfe4b488c1be6b0ba65a3f7481eec3b28d4f62518"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/gallery-third.png",
+      "bytes": 12554,
+      "sha256": "743adc12a90761960fa3493452c3f7f76d042c5f421efbf88f7f64c2a8f37a50"
+    },
+    {
+      "path": "outputs/request-20261003/renki-digital-native-r3/errors.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  ],
+  "adoption": "not-adopted",
+  "gameIntegration": "not-connected",
+  "normalSfxListening": "not-run",
+  "safari": "unverified",
+  "sourceManifestStatus": {
+    "nativeReplay": "not_run",
+    "quality": "not_run"
+  }
+}
