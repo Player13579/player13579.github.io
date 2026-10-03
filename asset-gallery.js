@@ -698,15 +698,24 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     phaseReceivedAt: performance.now(), sequence: 0, ready: false, failed: false, retired: false,
     phaseTimer: null, softTimer: null, overallTimer: null, onMessage: null };
   activeGalleryChildStartup = attempt;
+  function galleryChildStartupMessageIsValidForAttempt(event, attempt) {
+    const data = event?.data;
+    return event?.origin === attempt.origin && event?.source === attempt.iframe?.contentWindow &&
+      data?.schema === 'dva-gallery-startup/v1' && data.token === attempt.token &&
+      data.versionId === attempt.versionId && data.attemptEpoch === attempt.epoch &&
+      Number.isSafeInteger(data.sequence) && data.sequence > attempt.sequence &&
+      Boolean(GALLERY_CHILD_PHASES[data.stage]) &&
+      ['pending','delayed','ready','error','cancelled','unsupported'].includes(data.status);
+  }
+  function galleryChildFirstFrameProofIsValid(proof) {
+    return proof?.recorded === true && proof?.submitted === true &&
+      proof?.completed === true && proof?.canvasConnected === true &&
+      Number.isSafeInteger(proof?.passes) && proof.passes >= 1 &&
+      Number(proof.viewportWidth) > 0 && Number(proof.viewportHeight) > 0;
+  }
   attempt.onMessage = event => {
-    if (!galleryChildIsCurrent(attempt) || event.origin !== attempt.origin ||
-        event.source !== iframe.contentWindow) return;
+    if (!galleryChildIsCurrent(attempt) || !galleryChildStartupMessageIsValidForAttempt(event, attempt)) return;
     const data = event.data;
-    if (!data || data.schema !== 'dva-gallery-startup/v1' || data.token !== attempt.token ||
-        data.versionId !== attempt.versionId || data.attemptEpoch !== attempt.epoch ||
-        !Number.isSafeInteger(data.sequence) || data.sequence <= attempt.sequence ||
-        !GALLERY_CHILD_PHASES[data.stage] ||
-        !['pending','delayed','ready','error','cancelled','unsupported'].includes(data.status)) return;
     if (attempt.failed || (attempt.ready && data.status !== 'error')) return;
     const rank = GALLERY_CHILD_PHASE_ORDER.indexOf(data.stage);
     if (rank < attempt.phaseRank) return;
@@ -720,10 +729,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     if (data.status === 'cancelled') return;
     if (data.status === 'ready') {
       const proof = data.firstFrame;
-      if (data.stage !== 'playing' || proof?.recorded !== true || proof?.submitted !== true ||
-          proof?.completed !== true || proof?.canvasConnected !== true ||
-          Number(proof?.passes) !== 2 ||
-          !(Number(proof.viewportWidth) > 0) || !(Number(proof.viewportHeight) > 0)) return;
+      if (data.stage !== 'playing' || !galleryChildFirstFrameProofIsValid(proof)) return;
       attempt.ready = true;
       galleryChildClearTimers(attempt);
       galleryChildStatusNode().hidden = true;
