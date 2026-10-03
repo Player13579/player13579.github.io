@@ -1,0 +1,1 @@
+Private R11 impact successor. Same hypothetical R9 host, observer and receiver/audio ABI. PH volume only plus truthful identity/pins/scale labels. 112-world-unit pose calibration and proxy body; not H64 or actual actor/main integration. Native quality pending; unadopted.

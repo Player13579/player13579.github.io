@@ -1,0 +1,73 @@
+{
+  "schema": "dva-heavy-launch-motion-source-fixture-r1",
+  "status": "PRIMARY_SOURCE_REVIEW_ACCEPTED",
+  "author": "GPT-6.1-Sol",
+  "identity": "male-bot",
+  "direction": "left",
+  "motionId": "gunner-rpg",
+  "actionKind": "shoot",
+  "sourceType": "gunner-rpg",
+  "variants": ["normal", "enhance"],
+  "durationMs": 260,
+  "clock": "existing source-bound character action motion dynamics; not E clock/wall age",
+  "units": "original source pixels, x right/y down",
+  "frames": [
+    {
+      "phase": "ready",
+      "startMs": 0,
+      "endMsExclusive": 65,
+      "file": "rpg-male-left-ready-source-r5.png",
+      "sha256": "2a2ca10e63b7e91f8379a0d0cf75dfe6994d9e904d6402c0eeb0e0c287a7c465",
+      "sourceSize": [1254, 1254],
+      "sourceRect": [0, 0, 1254, 1254],
+      "footPivot": [850, 1207],
+      "bodyBoundsEstimate": [432, 27, 668, 1180],
+      "renderAlpha16Bounds": [32, 27, 1161, 1180],
+      "supportHandAnchor": [473, 498],
+      "triggerHandAnchor": [625, 506],
+      "tubeMouthAnchor": [397, 408],
+      "launchAxis": [-1, 0],
+      "weaponState": "loaded"
+    },
+    {
+      "phase": "shoulder-recoil",
+      "startMs": 65,
+      "endMsExclusive": 260,
+      "file": "rpg-male-left-recoil-source-r6.png",
+      "sha256": "857c1a936960b6cefbda60efda1205fa39fa4cdf7ba8682b0cfd6db4e4263643",
+      "sourceSize": [1254, 1254],
+      "sourceRect": [0, 0, 1254, 1254],
+      "footPivot": [850, 1210],
+      "bodyBoundsEstimate": [440, 31, 691, 1179],
+      "renderAlpha16Bounds": [368, 31, 838, 1179],
+      "supportHandAnchor": [476, 498],
+      "triggerHandAnchor": [629, 506],
+      "tubeMouthAnchor": [388, 410],
+      "launchAxis": [-1, 0],
+      "weaponState": "empty"
+    }
+  ],
+  "registration": {
+    "rule": "one common uniform scale from existing accepted male-bot physical body height; translate source footPivot to actual actor ground anchor; no per-frame resize/warp",
+    "canonicalBodyHeightSourcePx": 1180,
+    "bodyBoundsRole": "manual character-only diagnostic estimate including hands; use renderAlpha16Bounds/full sourceRect for culling so loaded warhead is not clipped",
+    "muzzleRule": "worldGround + commonScale * (tubeMouthAnchor - footPivot); never use rocket nose or frame alpha left edge",
+    "anchorEvidence": "manually inspected source coordinates; technical GPU alignment verification pending",
+    "residualSourceVariation": { "footContactVerticalPx": 3, "estimatedTubeMouthHorizontalPx": 9, "estimatedTubeMouthVerticalPx": 2 }
+  },
+  "lease": {
+    "keyFields": ["roomSessionGeneration", "actorId", "sourceEffectId", "motionId", "variant", "actionStartedAt"],
+    "requireActualSourceBoundAction": true,
+    "requireSamePreparedPoseForMuzzle": true,
+    "releaseAfterSubmittedGpuCompletion": true,
+    "retireAt260Ms": true,
+    "loop": false,
+    "mirroringAllowed": false,
+    "unhandledDirections": ["front", "back", "right"],
+    "unhandledWeapons": ["missile"]
+  },
+  "adopted": false,
+  "gpuVerified": false,
+  "gameIntegrated": false,
+  "galleryListed": false
+}
