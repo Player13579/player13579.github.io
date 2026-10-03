@@ -1,0 +1,3 @@
+# Isolated namespace replay
+
+Root replayed R7 isolated package on4277 and corrected R8 successor on4278 using their sol61-renki-zero/r7 and /r8 gallery routes, embed=1&galleryAutoLoop=1&verify=1. Both actual WebGPU screenshots display the registered body and authored cyan material. Error logs empty. This confirms import/runtime playback after namespace correction; it does not replace full original source review, quality acceptance, normal SFX, Safari or game integration. R7 faceted form and R8 head/cloud form remain quality-unaccepted, unadopted. Source bytes unchanged. Tab203 and server sessions21177/12032 closed/stopped.
