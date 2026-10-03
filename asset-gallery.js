@@ -808,7 +808,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     }
     const mapGroupAdopted = group.versions.some(item => adoptionState(item) === 'adopted');
     if (currentAdoptionFilter === 'adopted') return mapGroupAdopted ? group.versions.map((_, i) => i).sort((a, b) => Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted')) : [];
-    return group.versions.map((item, i) => ['adopted','reference-only'].includes(adoptionState(item)) ? -1 : i).filter(i => i >= 0);
+    return mapGroupAdopted ? [] : group.versions.map((item, i) => ['adopted','reference-only'].includes(adoptionState(item)) ? -1 : i).filter(i => i >= 0);
   }
   function visibleCatalogCounts(groups) {
     let groupCount = 0;
