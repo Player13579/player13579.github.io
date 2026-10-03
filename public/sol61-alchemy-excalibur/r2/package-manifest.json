@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "groupId": "alchemy-excalibur-sol61",
+  "versionId": "alchemy-excalibur-sol61-r2",
+  "creativeVersionId": "alchemy-excalibur-new-e-sol61-r2",
+  "title": "GPT-6.1-Sol Excalibur E R2",
+  "previewPage": "public/sol61-alchemy-excalibur/r2/gallery.html?embed=1",
+  "source": "public/sol61-alchemy-excalibur/r2/package-manifest.json",
+  "creativeSource": "public/sol61-alchemy-excalibur/r2/creative-source-manifest.json",
+  "creativeSourceAuthor": "GPT-6.1-Sol",
+  "runtimeAdapterAuthor": "GPT-6-Luna",
+  "adapterRole": "faithful standalone WebGPU gallery wrapper; not game integration",
+  "creativeSourceSha256": "451ab262620075420440677a9f0769b26ee5874c3ebb6f8845c0f1102cb04d49",
+  "sourceLineage": {
+    "revisionOfVersionId": "alchemy-excalibur-sol61-r1",
+    "revisionOfPackageManifestSha256": "1f2da6c9259eef4567528e5afd1710bdc76f794023bfbafdd43b72f42f9ce3e4",
+    "contract": "R2-CONTRACT.md; root accepted; authored timing/silhouette change is Sol-owned."
+  },
+  "adoption": "unknown",
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "not-started",
+  "technicalReplayStatus": "pending-gallery-native-replay",
+  "standaloneTechnicalReplayStatus": "pending-native-replay",
+  "normalAudioListening": "not_run",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected",
+  "preview": {
+    "canvasCssWidth": 980,
+    "canvasCssHeight": 620,
+    "anchor": "effect-H64",
+    "magnification": 1,
+    "fullCanvasVisible": true
+  },
+  "runtimeContract": {
+    "startupSchema": "dva-gallery-startup/v1",
+    "startupSnapshot": "__dvaGalleryStartupSnapshot",
+    "parentAudioBridge": "__gallerySfx.activateFromGesture(item)",
+    "audio": "gesture-activated, verify hard-mute; sound preview only",
+    "framePasses": 2,
+    "standaloneClock": "1x caller-owned effect clock"
+  },
+  "adapterRevision": "catalog-version-binding+verify-preserving-resume+R2-controls",
+  "files": [
+    {
+      "route": "public/sol61-alchemy-excalibur/r2/gallery.html",
+      "bytes": 4548,
+      "sha256": "a2ecfcb44e078ba318b54757188872ace59f989c7c1d7fa6d82e3ab64916ccf8"
+    },
+    {
+      "route": "public/sol61-alchemy-excalibur/r2/gallery.mjs",
+      "bytes": 8232,
+      "sha256": "38e2c940107603c878b8e3d31457bef50a508d78ec727be606788541eb0c0142"
+    },
+    {
+      "route": "public/sol61-alchemy-excalibur/r2/runtime.mjs",
+      "bytes": 10351,
+      "sha256": "ff9923741335bfff5605ba0c6f6da5c1fb1122a92abad5892b81966d9d9780f3"
+    },
+    {
+      "route": "public/sol61-alchemy-excalibur/r2/sfx.mjs",
+      "bytes": 6727,
+      "sha256": "3ce74dba4972d57904ad634e54e88ead2c99c31211f1032cc3ff17f51827811b"
+    },
+    {
+      "route": "public/sol61-alchemy-excalibur/r2/plan.mjs",
+      "bytes": 5817,
+      "sha256": "a81e0782c13cbe538568d944cb50eee0d5feb0b1644a2872cb16fa3c9796a443"
+    },
+    {
+      "route": "public/sol61-alchemy-excalibur/r2/shader.mjs",
+      "bytes": 5155,
+      "sha256": "b0bc02ba0948f0406bdb811c0f5c4c52ba7c041c6a8a03ed3c82273303010858"
+    },
+    {
+      "route": "public/sol61-alchemy-excalibur/r2/creative-source-manifest.json",
+      "bytes": 1084,
+      "sha256": "451ab262620075420440677a9f0769b26ee5874c3ebb6f8845c0f1102cb04d49"
+    }
+  ]
+}
