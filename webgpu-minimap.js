@@ -73,37 +73,73 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
 
   function verticesFor(planResult, viewport) {
     const sx = viewport.logicalToPixel[0], sy = viewport.logicalToPixel[3];
-    const result = [];
-    const emit = (x, y, color) => result.push(x * sx, y * sy, ...color);
-    const tri = (a, b, c, color) => { emit(...a, color); emit(...b, color); emit(...c, color); };
-    const quad = (a, b, c, d, color) => { tri(a, b, c, color); tri(a, c, d, color); };
+    const fanTriangleCount = (start, end) => Math.max(12, Math.ceil((end - start) / (Math.PI * 2) * 48));
+    const fullFanTriangles = fanTriangleCount(0, Math.PI * 2);
+    const rectVertices = (w, h) => w <= 0 || h <= 0 ? 0 : 6;
+    let vertexCount = 0;
+    for (const shape of planResult.shapes) {
+      const v = shape.values;
+      if (shape.kind === 'rect') vertexCount += rectVertices(v[2], v[3]);
+      else if (shape.kind === 'disc') vertexCount += fullFanTriangles * 3;
+      else if (shape.kind === 'ring') vertexCount += 48 * 6;
+      else if (shape.kind === 'roundRect') {
+        const [x, y, w, h, r] = v;
+        vertexCount += rectVertices(w - 2 * r, h);
+        vertexCount += rectVertices(r, h - 2 * r);
+        vertexCount += rectVertices(r, h - 2 * r);
+        vertexCount += 3 * fanTriangleCount(Math.PI, Math.PI * 1.5);
+        vertexCount += 3 * fanTriangleCount(Math.PI * 1.5, Math.PI * 2);
+        vertexCount += 3 * fanTriangleCount(Math.PI * .5, Math.PI);
+        vertexCount += 3 * fanTriangleCount(0, Math.PI * .5);
+      }
+    }
+
+    const result = new Float32Array(vertexCount * 6);
+    let offset = 0;
+    const emit = (x, y, color) => {
+      result[offset++] = x * sx;
+      result[offset++] = y * sy;
+      result[offset++] = color[0];
+      result[offset++] = color[1];
+      result[offset++] = color[2];
+      result[offset++] = color[3];
+    };
+    const tri = (ax, ay, bx, by, cx, cy, color) => {
+      emit(ax, ay, color); emit(bx, by, color); emit(cx, cy, color);
+    };
+    const quad = (ax, ay, bx, by, cx, cy, dx, dy, color) => {
+      tri(ax, ay, bx, by, cx, cy, color);
+      tri(ax, ay, cx, cy, dx, dy, color);
+    };
     const rect = (x, y, w, h, color) => {
       if (w <= 0 || h <= 0) return;
-      quad([x, y], [x + w, y], [x + w, y + h], [x, y + h], color);
+      quad(x, y, x + w, y, x + w, y + h, x, y + h, color);
     };
     const fan = (x, y, radius, color, start = 0, end = Math.PI * 2) => {
       const count = Math.max(12, Math.ceil((end - start) / (Math.PI * 2) * 48));
       for (let i = 0; i < count; i++) {
         const a = start + (end - start) * i / count, b = start + (end - start) * (i + 1) / count;
-        tri([x, y], [x + Math.cos(a) * radius, y + Math.sin(a) * radius],
-          [x + Math.cos(b) * radius, y + Math.sin(b) * radius], color);
+        const ax = x + Math.cos(a) * radius, ay = y + Math.sin(a) * radius;
+        const bx = x + Math.cos(b) * radius, by = y + Math.sin(b) * radius;
+        tri(x, y, ax, ay, bx, by, color);
       }
     };
     const ring = (x, y, radius, width, color) => {
       const outer = radius + width / 2, inner = Math.max(0, radius - width / 2);
       for (let i = 0; i < 48; i++) {
         const a = i * Math.PI * 2 / 48, b = (i + 1) * Math.PI * 2 / 48;
-        quad([x + Math.cos(a) * inner, y + Math.sin(a) * inner],
-          [x + Math.cos(a) * outer, y + Math.sin(a) * outer],
-          [x + Math.cos(b) * outer, y + Math.sin(b) * outer],
-          [x + Math.cos(b) * inner, y + Math.sin(b) * inner], color);
+        const ax = x + Math.cos(a) * inner, ay = y + Math.sin(a) * inner;
+        const bx = x + Math.cos(a) * outer, by = y + Math.sin(a) * outer;
+        const cx = x + Math.cos(b) * outer, cy = y + Math.sin(b) * outer;
+        const dx = x + Math.cos(b) * inner, dy = y + Math.sin(b) * inner;
+        quad(ax, ay, bx, by, cx, cy, dx, dy, color);
       }
     };
     for (const shape of planResult.shapes) {
       const v = shape.values, c = shape.color;
-      if (shape.kind === 'rect') rect(...v, c);
-      else if (shape.kind === 'disc') fan(...v, c);
-      else if (shape.kind === 'ring') ring(...v, c);
+      if (shape.kind === 'rect') rect(v[0], v[1], v[2], v[3], c);
+      else if (shape.kind === 'disc') fan(v[0], v[1], v[2], c);
+      else if (shape.kind === 'ring') ring(v[0], v[1], v[2], v[3], c);
       else if (shape.kind === 'roundRect') {
         const [x, y, w, h, r] = v;
         rect(x + r, y, w - 2 * r, h, c);
@@ -115,7 +151,8 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
         fan(x + w - r, y + h - r, r, c, 0, Math.PI * .5);
       }
     }
-    return new Float32Array(result);
+    if (offset !== result.length) throw new Error('Minimap vertex pre-count mismatch');
+    return result;
   }
 
   function create({ device, format } = {}) {
@@ -135,10 +172,68 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
     });
     let destroyed = false;
     const live = new Set();
+    // The cache is deliberately renderer-local and CPU-only. A minimap scene
+    // adapter may create new wrapper/array objects every frame, so key the
+    // reusable geometry by its ordered numeric content rather than identity.
+    const staticGeometryCache = new Map();
+    const STATIC_GEOMETRY_CACHE_LIMIT = 4;
+    function staticGeometryKey(scene, viewport) {
+      const map = scene?.map, bounds = scene?.bounds;
+      const rooms = map?.rooms == null ? [] : map.rooms;
+      const corridors = map?.corridorAreas == null ? [] : map.corridorAreas;
+      // Preserve legacy support for iterables and malformed inputs by simply
+      // bypassing caching; plan()/verticesFor() remain the behavior oracle.
+      if (!Array.isArray(rooms) || !Array.isArray(corridors) ||
+          !map || !bounds || !rooms.every(area => area &&
+            [area.x, area.y, area.w, area.h].every(finite)) ||
+          !corridors.every(area => area &&
+            [area.x, area.y, area.w, area.h].every(finite))) return null;
+      const values = [map.width, map.height, bounds.x, bounds.y, bounds.width,
+        bounds.height, viewport.logicalToPixel[0], viewport.logicalToPixel[3]];
+      if (!values.every(finite)) return null;
+      for (const area of rooms) values.push(area.x, area.y, area.w, area.h);
+      values.push('corridors');
+      for (const area of corridors) values.push(area.x, area.y, area.w, area.h);
+      // JSON is an unambiguous encoding for these finite numbers and ordered
+      // tuples. Include a format tag so future geometry changes cannot alias.
+      const exactValues = values.map(value => typeof value === 'number' && Object.is(value, -0)
+        ? '-0' : value);
+      return `minimap-static-v1:${JSON.stringify(exactValues)}`;
+    }
+    function touchStaticGeometry(key) {
+      const geometry = staticGeometryCache.get(key);
+      if (!geometry) return null;
+      staticGeometryCache.delete(key);
+      staticGeometryCache.set(key, geometry);
+      return geometry;
+    }
+    function cacheStaticGeometry(key, geometry) {
+      staticGeometryCache.set(key, geometry);
+      while (staticGeometryCache.size > STATIC_GEOMETRY_CACHE_LIMIT) {
+        staticGeometryCache.delete(staticGeometryCache.keys().next().value);
+      }
+      return geometry;
+    }
+    function verticesForFrame(planResult, scene, viewport) {
+      const key = staticGeometryKey(scene, viewport);
+      if (key === null) return verticesFor(planResult, viewport);
+      const cached = touchStaticGeometry(key);
+      const staticShapeCount = 1 + (scene.map.rooms == null ? 0 : scene.map.rooms.length) +
+        (scene.map.corridorAreas == null ? 0 : scene.map.corridorAreas.length);
+      const staticPlan = { shapes: planResult.shapes.slice(0, staticShapeCount) };
+      const dynamicPlan = { shapes: planResult.shapes.slice(staticShapeCount) };
+      const staticVertices = cached || cacheStaticGeometry(key, verticesFor(staticPlan, viewport));
+      const dynamicVertices = verticesFor(dynamicPlan, viewport);
+      const combined = new Float32Array(staticVertices.length + dynamicVertices.length);
+      combined.set(staticVertices, 0);
+      combined.set(dynamicVertices, staticVertices.length);
+      return combined;
+    }
     function draw({ frame, target, viewport, scene } = {}) {
       if (destroyed) throw new Error('Minimap renderer destroyed');
       if (!frame?.add || typeof target !== 'string' || !target) throw new TypeError('Shared frame and registered target required');
-      const geometry = verticesFor(plan(scene, viewport), viewport);
+      const planned = plan(scene, viewport);
+      const geometry = verticesForFrame(planned, scene, viewport);
       const buffer = device.createBuffer({ label: 'DVA minimap vertices', size: geometry.byteLength, usage: 0x20 | 0x08 });
       const uniform = device.createBuffer({ label: 'DVA minimap viewport', size: 16, usage: 0x40 | 0x08 });
       device.queue.writeBuffer(buffer, 0, geometry);
@@ -165,6 +260,7 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
       destroyed = true;
       for (const buffer of live) buffer.destroy();
       live.clear();
+      staticGeometryCache.clear();
     } });
   }
   const api = Object.freeze({ create, plan, verticesFor, shader });

@@ -170,24 +170,40 @@
     if (w <= 0 || h <= 0) return;
     const r = Math.max(0, Math.min(radius, w / 2, h / 2));
     const bands = Math.max(1, Math.ceil(h));
+    let pending = null;
+    const flush = () => {
+      if (!pending) return;
+      frame.rect(target, pending.rect);
+      pending = null;
+    };
+    const addRect = (rect, bandBottom) => {
+      if (pending && pending.rect.x === rect.x && pending.rect.w === rect.w &&
+          pending.rect.color === rect.color && pending.bottom === rect.y) {
+        pending.rect.h = bandBottom - pending.rect.y;
+        pending.bottom = bandBottom;
+        return;
+      }
+      flush();
+      pending = { rect: { ...rect }, bottom: bandBottom };
+    };
     for (let i = 0; i < bands; i++) {
       const top = y + i * h / bands, bottom = y + (i + 1) * h / bands;
       const sample = (i + .5) * h / bands;
       const distance = Math.min(sample, h - sample);
       const inset = distance >= r || r === 0 ? 0 : r - Math.sqrt(Math.max(0, r * r - (r - distance) ** 2));
-      if (!stroke) frame.rect(target, { x: x + inset, y: top, w: w - 2 * inset, h: bottom - top, color });
+      if (!stroke) addRect({ x: x + inset, y: top, w: w - 2 * inset, h: bottom - top, color }, bottom);
       else {
         const line = 1.5;
-        if (sample <= line || h - sample <= line) frame.rect(target,
-          { x: x + inset, y: top, w: w - 2 * inset, h: bottom - top, color });
+        if (sample <= line || h - sample <= line) addRect(
+          { x: x + inset, y: top, w: w - 2 * inset, h: bottom - top, color }, bottom);
         else {
-          frame.rect(target, { x: x + inset, y: top, w: line, h: bottom - top, color });
-          frame.rect(target, { x: x + w - inset - line, y: top, w: line, h: bottom - top, color });
+          addRect({ x: x + inset, y: top, w: line, h: bottom - top, color }, bottom);
+          addRect({ x: x + w - inset - line, y: top, w: line, h: bottom - top, color }, bottom);
         }
       }
     }
+    flush();
   }
-
   function create({ textAtlas, atlasMetrics } = {}) {
     if (typeof textAtlas?.layout !== 'function' || !Array.isArray(textAtlas.textures)) {
       throw new TypeError('HUD requires uploaded GPU text atlas');
