@@ -1,0 +1,40 @@
+{
+  "schema": "dva-excalibur-source-provenance/v1",
+  "versionId": "excalibur-zero-flare-ghost-sol61-r5",
+  "designAuthor": "GPT-6.1-Sol",
+  "runtimeAdapterAuthor": "GPT-6-Luna",
+  "sourceFreeze": {
+    "path": "outputs/request-20261004/finish-excalibur-r5-creative-sol61-r1/SOURCE-FREEZE.json",
+    "sha256": "753e34d915c6da890a0732f441f07eb5b26f51efda94bc77d4d5534f130f3846"
+  },
+  "creativeSeal": {
+    "path": "outputs/request-20261004/finish-excalibur-r5-creative-sol61-r1/SEAL.json",
+    "sha256": "d649c671a885115404db82806bd09ba253d93742c363dfaf99f31904a3bc0b1d"
+  },
+  "privateRuntimePackage": {
+    "manifestSha256": "b0a063b04d5f0b4e1cd3469c3f6c5f0711b803aff235d3c7285b31b2f86c73c8",
+    "sealSha256": "6f572ed1aa6863bf2d5eb6d61aa817535a9feedc23a7e55da4fb5fd7990ade89"
+  },
+  "sourceFiles": [
+    {
+      "file": "plan.mjs",
+      "sha256": "bfca1621b85413c248c24c737fffac1b19b1e1e26b0642120e0cb490314bb299",
+      "bytes": 3480
+    },
+    {
+      "file": "shader.mjs",
+      "sha256": "e799ebaba6b7ecbc4cc7a4bbbd9326092fb93191f8181c61c83466dc32bbf361",
+      "bytes": 6854
+    },
+    {
+      "file": "sfx.mjs",
+      "sha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3",
+      "bytes": 5874
+    }
+  ],
+  "shaderExports": {
+    "WORLD_WGSL": "9b00a38b6e01814434b3933aebb44bfcb1702b88d1556ca035acd1d64e32ec8c",
+    "POST_WGSL": "1af06f82f160ead6a4dd04f0f5990b38887301537e53a6f0e2882c4cfda6e8df",
+    "source": "actual imported JS module exports, normalized template newlines, matching root actual import compile"
+  }
+}

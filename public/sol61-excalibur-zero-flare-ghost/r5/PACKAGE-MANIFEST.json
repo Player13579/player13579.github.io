@@ -1,0 +1,364 @@
+{
+  "schema": "dva-e-gallery-package/v1",
+  "versionId": "excalibur-zero-flare-ghost-sol61-r5",
+  "creativeVersion": "excalibur-zero-flare-ghost-sol61-r5",
+  "parentVersionId": "excalibur-zero-flare-ghost-sol61-r4",
+  "galleryGroupId": "alchemy-excalibur-sol61",
+  "route": "public/sol61-excalibur-zero-flare-ghost/r5/",
+  "previewPage": "gallery.html?embed=1",
+  "galleryStartupVersionId": "excalibur-zero-flare-ghost-sol61-r5",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "adapterAuthor": "GPT-6-Luna",
+  "creativeSources": {
+    "plan": {
+      "path": "outputs/request-20261004/finish-excalibur-r5-creative-sol61-r1/plan.mjs",
+      "sha256": "bfca1621b85413c248c24c737fffac1b19b1e1e26b0642120e0cb490314bb299"
+    },
+    "shader": {
+      "path": "outputs/request-20261004/finish-excalibur-r5-creative-sol61-r1/shader.mjs",
+      "sha256": "e799ebaba6b7ecbc4cc7a4bbbd9326092fb93191f8181c61c83466dc32bbf361"
+    }
+  },
+  "sfxSource": {
+    "path": "outputs/request-20261004/finish-excalibur-r5-creative-sol61-r1/sfx.mjs",
+    "sha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3",
+    "outputSha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3",
+    "versionMetadataOnly": false
+  },
+  "adapterRevision": 3,
+  "adapterDerivation": {
+    "from": "outputs/request-20261004/finish-excalibur-r4-runtime-luna-r1/package",
+    "sourcePackageSealSha256": "cc2d9739619bec55b46fbd75c8ec5b476d48d47248a1af3d1990f822f1773dfb",
+    "reason": "copy settled R4 target reprojection and DPR-only held/active redraw adapter; no runtime behavior changes"
+  },
+  "qualityStatus": "not-accepted",
+  "adoption": "unknown",
+  "technicalReplayStatus": "pass-limited-native-520-and-1200; phase1050 snapshot incomplete",
+  "normalAudioListening": "not_run",
+  "gameIntegrationStatus": "not_connected",
+  "nativeReadiness": {
+    "priorAdapterProof": "outputs/request-20261004/finish-excalibur-r4-runtime-luna-r1/native-root/revision3/automatic-dpr1.json",
+    "priorAdapterProofSha256": "43db42e62794b960101f511e5cee328889940de8bca872f0f0b56549733f56a4",
+    "scope": "R4 adapter only; no R5 visual or GPU acceptance",
+    "currentParentBase": "17b8cc8270fddf383d2044dad6a7246088401672",
+    "currentParentTree": "2567f0a64642648cc9cc149bd33f6309061fcf13",
+    "currentParentReplayStatus": "pending-root-native-replay",
+    "priorBaseParentNative": {
+      "status": "pass-limited-parent-gallery-held520-on-prior-candidate",
+      "priorCandidateCommit": "62ffc8b65663cafef59a8693936b2450222d890c",
+      "priorBase": "5309567c450fc6553d50be31c0eb422d2523c7b3",
+      "priorBaseTree": "702de321dfe68f1008f2003e42eadb400a57ce62",
+      "evidenceScope": "Prior-base held-520 proof only. It is not evidence that an R5 candidate based on R4 or a later gallery head passed parent-native replay.",
+      "reviewPath": "public/sol61-excalibur-zero-flare-ghost/r5/native/prior-base-5309567/PARENT-NATIVE-REVIEW.json",
+      "reviewSha256": "6a927277b89a39906080c25ff4e79f05153830d8a4dfa8d85f5b2e8326a38167",
+      "activeSnapshotPath": "public/sol61-excalibur-zero-flare-ghost/r5/native/prior-base-5309567/parent-active520.json",
+      "activeSnapshotSha256": "a99c5117258f78ce0d711eb40a3f03c581773665be7e0ee791c1d730f2f3a103",
+      "screenshotPath": "public/sol61-excalibur-zero-flare-ghost/r5/native/prior-base-5309567/parent-active520.png",
+      "screenshotSha256": "d38a75f8ea58a1f4999398179e768f4c884013c0c9b484c7079eb0ad78b1476e",
+      "phaseMs": 520,
+      "completed": true,
+      "passes": 2,
+      "currentBaseReplay": "pending-root-native-replay",
+      "reviewStatus": "pass-limited-parent-gallery-held520-on-prior-candidate"
+    },
+    "precedingBaseParentNative": {
+      "status": "pass-limited-parent-gallery-held520-on-immediately-preceding-base-source-candidate",
+      "sourceCandidateCommit": "d37ffe54d7c8015fb8bc2b27dab094138c3062b3",
+      "sourceCandidateTree": "24ba3f85533fb1abe08b426c34756b56d62d2056",
+      "base": "01dc03c4963230aca2efff2864ca137bda48f31b",
+      "baseTree": "f276bc8f184975f7a7988c6099f00ad774f51660",
+      "reviewPath": "native/predecessor-base-01dc/PARENT-NATIVE-REVIEW.json",
+      "reviewSha256": "317e77d2b24be88d5bbd444e77292438d2f357db7c225b60f2c039f56d70ef48",
+      "activeSnapshotPath": "native/predecessor-base-01dc/parent-active520.json",
+      "activeSnapshotSha256": "9788210c4e3447f3b2259d7d8069aec3df9147c9f27b2b679f82398cd0050254",
+      "screenshotPath": "native/predecessor-base-01dc/parent-active520.png",
+      "screenshotSha256": "67ca75a1faa46a20f6668c1c0cebb0ad43d964acb3046b61c772b0c7e9c5445a",
+      "phaseMs": 520,
+      "completedFrame": true,
+      "passes": 2,
+      "viewport": {
+        "cssWidth": 980,
+        "cssHeight": 490,
+        "devicePixelRatio": 2,
+        "renderWidth": 1960,
+        "renderHeight": 980
+      },
+      "sourceHashes": {
+        "plan": "bfca1621b85413c248c24c737fffac1b19b1e1e26b0642120e0cb490314bb299",
+        "shader": "e799ebaba6b7ecbc4cc7a4bbbd9326092fb93191f8181c61c83466dc32bbf361"
+      },
+      "currentReleaseBase": "17b8cc8270fddf383d2044dad6a7246088401672",
+      "currentReleaseBaseTree": "2567f0a64642648cc9cc149bd33f6309061fcf13",
+      "currentBaseReplayStatus": "pending-root-native-replay"
+    }
+  },
+  "files": [
+    {
+      "route": "gallery-contract.mjs",
+      "bytes": 3188,
+      "sha256": "5c84d141af48109c3bcf4d9c4845bd056cde24a4b6018d351b58b9c52f05084d"
+    },
+    {
+      "route": "gallery.html",
+      "bytes": 3771,
+      "sha256": "f986b8f291fa3eabf925991e89770264dd28d17c37cb1032a781430236de2ea2"
+    },
+    {
+      "route": "gallery.mjs",
+      "bytes": 13737,
+      "sha256": "ca10af78923ae8600f3d049066ffbd94301a760c29492d5094632ea0d39fff6e"
+    },
+    {
+      "route": "plan.mjs",
+      "bytes": 3480,
+      "sha256": "bfca1621b85413c248c24c737fffac1b19b1e1e26b0642120e0cb490314bb299"
+    },
+    {
+      "route": "runtime.mjs",
+      "bytes": 16057,
+      "sha256": "2a038680c77a1bd2f7484847cb9e922de4bb0954ea2aefa9158ef5c2c8b8cffe"
+    },
+    {
+      "route": "sfx.mjs",
+      "bytes": 5874,
+      "sha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3"
+    },
+    {
+      "route": "shader.mjs",
+      "bytes": 6854,
+      "sha256": "e799ebaba6b7ecbc4cc7a4bbbd9326092fb93191f8181c61c83466dc32bbf361"
+    }
+  ],
+  "publication": "not-published",
+  "standaloneTechnicalReplayStatus": "pass-limited-native-520-and-1200; phase1050 snapshot incomplete",
+  "galleryAdapterReplayStatus": "pending-root-native-replay",
+  "parentGalleryReplayStatus": "pending-root-native-replay",
+  "qualityReviewStatus": "not-accepted",
+  "qualityReviewReason": "The smooth body remains visually unaccepted; the phase1050 JSON snapshot was saved before queue completion.",
+  "sfxListeningStatus": "not_run",
+  "safariReplayStatus": "unverified",
+  "sourceFreezeSha256": "753e34d915c6da890a0732f441f07eb5b26f51efda94bc77d4d5534f130f3846",
+  "creativeSealSha256": "d649c671a885115404db82806bd09ba253d93742c363dfaf99f31904a3bc0b1d",
+  "sourcePackageManifestSha256": "b0a063b04d5f0b4e1cd3469c3f6c5f0711b803aff235d3c7285b31b2f86c73c8",
+  "sourcePackageSealSha256": "6f572ed1aa6863bf2d5eb6d61aa817535a9feedc23a7e55da4fb5fd7990ade89",
+  "nativeAcceptance": "native/ROOT-ACCEPTANCE.md",
+  "nativeProofs": [
+    {
+      "route": "native/phase520.json",
+      "bytes": 4920,
+      "sha256": "814f0aba8c694a2a818111d6da3eea6d45d6ab7ff0c9a45203b050234c3afff0"
+    },
+    {
+      "route": "native/phase520.png",
+      "bytes": 250664,
+      "sha256": "999a569970cd403b923c7d83e1cfcd0cdfd4788ad7656a1c71aa4ae3158c45c4"
+    },
+    {
+      "route": "native/phase1050.json",
+      "bytes": 4930,
+      "sha256": "afde6ad125a7d80f5619ef356f3002d5d18f86319d9519e5db56254eeeb2c24e"
+    },
+    {
+      "route": "native/phase1050.png",
+      "bytes": 181475,
+      "sha256": "ac432b7fd7a35d57fb0360d2c5efa0804eb10ae59bfcae6616bb6f2ecf32d0a3"
+    },
+    {
+      "route": "native/phase1200.json",
+      "bytes": 4923,
+      "sha256": "198fe42ec252a953748b4b4f249dc6233dcdab959ac876b61c84a91412b1899b"
+    },
+    {
+      "route": "native/phase1200.png",
+      "bytes": 75304,
+      "sha256": "aed75f22ecaef1fab60e7d86575cfef2b304339815a3d4ad3c47e7b826a132f6"
+    },
+    {
+      "route": "native/predecessor-base-01dc/parent-active520.json",
+      "bytes": 7081,
+      "sha256": "9788210c4e3447f3b2259d7d8069aec3df9147c9f27b2b679f82398cd0050254"
+    },
+    {
+      "route": "native/predecessor-base-01dc/parent-active520.png",
+      "bytes": 42724,
+      "sha256": "67ca75a1faa46a20f6668c1c0cebb0ad43d964acb3046b61c772b0c7e9c5445a"
+    }
+  ],
+  "packageFiles": [
+    {
+      "route": "CREATIVE-SOURCE-MANIFEST.json",
+      "bytes": 1553,
+      "sha256": "27921c922402113b056c9c76efa600c2da6ee23db3bc728cfe0873bc8a7ceeb2"
+    },
+    {
+      "route": "gallery-contract.mjs",
+      "bytes": 3188,
+      "sha256": "5c84d141af48109c3bcf4d9c4845bd056cde24a4b6018d351b58b9c52f05084d"
+    },
+    {
+      "route": "gallery.html",
+      "bytes": 3771,
+      "sha256": "f986b8f291fa3eabf925991e89770264dd28d17c37cb1032a781430236de2ea2"
+    },
+    {
+      "route": "gallery.mjs",
+      "bytes": 13737,
+      "sha256": "ca10af78923ae8600f3d049066ffbd94301a760c29492d5094632ea0d39fff6e"
+    },
+    {
+      "route": "native/phase1050.json",
+      "bytes": 4930,
+      "sha256": "afde6ad125a7d80f5619ef356f3002d5d18f86319d9519e5db56254eeeb2c24e"
+    },
+    {
+      "route": "native/phase1050.png",
+      "bytes": 181475,
+      "sha256": "ac432b7fd7a35d57fb0360d2c5efa0804eb10ae59bfcae6616bb6f2ecf32d0a3"
+    },
+    {
+      "route": "native/phase1200.json",
+      "bytes": 4923,
+      "sha256": "198fe42ec252a953748b4b4f249dc6233dcdab959ac876b61c84a91412b1899b"
+    },
+    {
+      "route": "native/phase1200.png",
+      "bytes": 75304,
+      "sha256": "aed75f22ecaef1fab60e7d86575cfef2b304339815a3d4ad3c47e7b826a132f6"
+    },
+    {
+      "route": "native/phase520.json",
+      "bytes": 4920,
+      "sha256": "814f0aba8c694a2a818111d6da3eea6d45d6ab7ff0c9a45203b050234c3afff0"
+    },
+    {
+      "route": "native/phase520.png",
+      "bytes": 250664,
+      "sha256": "999a569970cd403b923c7d83e1cfcd0cdfd4788ad7656a1c71aa4ae3158c45c4"
+    },
+    {
+      "route": "native/predecessor-base-01dc/parent-active520.json",
+      "bytes": 7081,
+      "sha256": "9788210c4e3447f3b2259d7d8069aec3df9147c9f27b2b679f82398cd0050254"
+    },
+    {
+      "route": "native/predecessor-base-01dc/parent-active520.png",
+      "bytes": 42724,
+      "sha256": "67ca75a1faa46a20f6668c1c0cebb0ad43d964acb3046b61c772b0c7e9c5445a"
+    },
+    {
+      "route": "native/predecessor-base-01dc/PARENT-NATIVE-REVIEW.json",
+      "bytes": 3099,
+      "sha256": "317e77d2b24be88d5bbd444e77292438d2f357db7c225b60f2c039f56d70ef48"
+    },
+    {
+      "route": "native/prior-base-5309567/parent-active520.json",
+      "bytes": 6561,
+      "sha256": "a99c5117258f78ce0d711eb40a3f03c581773665be7e0ee791c1d730f2f3a103"
+    },
+    {
+      "route": "native/prior-base-5309567/parent-active520.png",
+      "bytes": 669080,
+      "sha256": "d38a75f8ea58a1f4999398179e768f4c884013c0c9b484c7079eb0ad78b1476e"
+    },
+    {
+      "route": "native/prior-base-5309567/PARENT-NATIVE-REVIEW.json",
+      "bytes": 1539,
+      "sha256": "6a927277b89a39906080c25ff4e79f05153830d8a4dfa8d85f5b2e8326a38167"
+    },
+    {
+      "route": "native/prior-base-5309567/PARENT-PRIOR-BASE-PINS.json",
+      "bytes": 2147,
+      "sha256": "453cd5ce776c6dc59dc7ea701b25a53541013aae3cdeadb82d8880ef856ddcbd"
+    },
+    {
+      "route": "native/ROOT-ACCEPTANCE.md",
+      "bytes": 4220,
+      "sha256": "6c9736d00916544959a9b6802c424e358be43b9a043afd92ab050128efd7fb00"
+    },
+    {
+      "route": "plan.mjs",
+      "bytes": 3480,
+      "sha256": "bfca1621b85413c248c24c737fffac1b19b1e1e26b0642120e0cb490314bb299"
+    },
+    {
+      "route": "runtime.mjs",
+      "bytes": 16057,
+      "sha256": "2a038680c77a1bd2f7484847cb9e922de4bb0954ea2aefa9158ef5c2c8b8cffe"
+    },
+    {
+      "route": "sfx.mjs",
+      "bytes": 5874,
+      "sha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3"
+    },
+    {
+      "route": "shader.mjs",
+      "bytes": 6854,
+      "sha256": "e799ebaba6b7ecbc4cc7a4bbbd9326092fb93191f8181c61c83466dc32bbf361"
+    },
+    {
+      "route": "SOURCE-PACKAGE-MANIFEST.json",
+      "bytes": 3188,
+      "sha256": "b0a063b04d5f0b4e1cd3469c3f6c5f0711b803aff235d3c7285b31b2f86c73c8"
+    },
+    {
+      "route": "SOURCE-PACKAGE-SEAL.json",
+      "bytes": 1411,
+      "sha256": "6f572ed1aa6863bf2d5eb6d61aa817535a9feedc23a7e55da4fb5fd7990ade89"
+    }
+  ],
+  "baseCommit": "17b8cc8270fddf383d2044dad6a7246088401672",
+  "baseTree": "2567f0a64642648cc9cc149bd33f6309061fcf13",
+  "rebasedFromCommit": "01dc03c4963230aca2efff2864ca137bda48f31b",
+  "rebasedFromTree": "f276bc8f184975f7a7988c6099f00ad774f51660",
+  "parentGalleryReplayEvidenceScope": "Preceding-base-only parent-native held520 pass was observed on source candidate d37ffe54d7c8015fb8bc2b27dab094138c3062b3 and base 01dc03c4963230aca2efff2864ca137bda48f31b; current release base 17b8cc8270fddf383d2044dad6a7246088401672 has no fresh parent-native replay.",
+  "priorBaseParentNative": {
+    "status": "pass-limited-parent-gallery-held520-on-prior-candidate",
+    "priorCandidateCommit": "62ffc8b65663cafef59a8693936b2450222d890c",
+    "priorBase": "5309567c450fc6553d50be31c0eb422d2523c7b3",
+    "priorBaseTree": "702de321dfe68f1008f2003e42eadb400a57ce62",
+    "evidenceScope": "Prior-base held-520 proof only. It is not evidence that an R5 candidate based on R4 or a later gallery head passed parent-native replay.",
+    "reviewPath": "public/sol61-excalibur-zero-flare-ghost/r5/native/prior-base-5309567/PARENT-NATIVE-REVIEW.json",
+    "reviewSha256": "6a927277b89a39906080c25ff4e79f05153830d8a4dfa8d85f5b2e8326a38167",
+    "activeSnapshotPath": "public/sol61-excalibur-zero-flare-ghost/r5/native/prior-base-5309567/parent-active520.json",
+    "activeSnapshotSha256": "a99c5117258f78ce0d711eb40a3f03c581773665be7e0ee791c1d730f2f3a103",
+    "screenshotPath": "public/sol61-excalibur-zero-flare-ghost/r5/native/prior-base-5309567/parent-active520.png",
+    "screenshotSha256": "d38a75f8ea58a1f4999398179e768f4c884013c0c9b484c7079eb0ad78b1476e",
+    "phaseMs": 520,
+    "completed": true,
+    "passes": 2,
+    "currentBaseReplay": "pending-root-native-replay",
+    "reviewStatus": "pass-limited-parent-gallery-held520-on-prior-candidate"
+  },
+  "parentNativeReviewPath": "public/sol61-excalibur-zero-flare-ghost/r5/native/predecessor-base-01dc/PARENT-NATIVE-REVIEW.json",
+  "parentNativeReviewSha256": "317e77d2b24be88d5bbd444e77292438d2f357db7c225b60f2c039f56d70ef48",
+  "precedingBaseParentNative": {
+    "status": "pass-limited-parent-gallery-held520-on-immediately-preceding-base-source-candidate",
+    "sourceCandidateCommit": "d37ffe54d7c8015fb8bc2b27dab094138c3062b3",
+    "sourceCandidateTree": "24ba3f85533fb1abe08b426c34756b56d62d2056",
+    "base": "01dc03c4963230aca2efff2864ca137bda48f31b",
+    "baseTree": "f276bc8f184975f7a7988c6099f00ad774f51660",
+    "reviewPath": "native/predecessor-base-01dc/PARENT-NATIVE-REVIEW.json",
+    "reviewSha256": "317e77d2b24be88d5bbd444e77292438d2f357db7c225b60f2c039f56d70ef48",
+    "activeSnapshotPath": "native/predecessor-base-01dc/parent-active520.json",
+    "activeSnapshotSha256": "9788210c4e3447f3b2259d7d8069aec3df9147c9f27b2b679f82398cd0050254",
+    "screenshotPath": "native/predecessor-base-01dc/parent-active520.png",
+    "screenshotSha256": "67ca75a1faa46a20f6668c1c0cebb0ad43d964acb3046b61c772b0c7e9c5445a",
+    "phaseMs": 520,
+    "completedFrame": true,
+    "passes": 2,
+    "viewport": {
+      "cssWidth": 980,
+      "cssHeight": 490,
+      "devicePixelRatio": 2,
+      "renderWidth": 1960,
+      "renderHeight": 980
+    },
+    "sourceHashes": {
+      "plan": "bfca1621b85413c248c24c737fffac1b19b1e1e26b0642120e0cb490314bb299",
+      "shader": "e799ebaba6b7ecbc4cc7a4bbbd9326092fb93191f8181c61c83466dc32bbf361"
+    },
+    "currentReleaseBase": "17b8cc8270fddf383d2044dad6a7246088401672",
+    "currentReleaseBaseTree": "2567f0a64642648cc9cc149bd33f6309061fcf13",
+    "currentBaseReplayStatus": "pending-root-native-replay"
+  }
+}

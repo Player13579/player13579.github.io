@@ -1,0 +1,81 @@
+{
+  "schema": "dva-e-gallery-package/v1",
+  "versionId": "excalibur-zero-flare-ghost-sol61-r5",
+  "creativeVersion": "excalibur-zero-flare-ghost-sol61-r5",
+  "parentVersionId": "excalibur-zero-flare-ghost-sol61-r4",
+  "galleryGroupId": "alchemy-excalibur-sol61",
+  "route": "public/sol61-excalibur-zero-flare-ghost/r5/",
+  "previewPage": "public/sol61-excalibur-zero-flare-ghost/r5/gallery.html?embed=1",
+  "galleryStartupVersionId": "excalibur-zero-flare-ghost-sol61-r5",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "adapterAuthor": "GPT-6-Luna",
+  "creativeSources": {
+    "plan": {
+      "path": "outputs/request-20261004/finish-excalibur-r5-creative-sol61-r1/plan.mjs",
+      "sha256": "bfca1621b85413c248c24c737fffac1b19b1e1e26b0642120e0cb490314bb299"
+    },
+    "shader": {
+      "path": "outputs/request-20261004/finish-excalibur-r5-creative-sol61-r1/shader.mjs",
+      "sha256": "e799ebaba6b7ecbc4cc7a4bbbd9326092fb93191f8181c61c83466dc32bbf361"
+    }
+  },
+  "sfxSource": {
+    "path": "outputs/request-20261004/finish-excalibur-r5-creative-sol61-r1/sfx.mjs",
+    "sha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3",
+    "outputSha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3",
+    "versionMetadataOnly": false
+  },
+  "adapterRevision": 3,
+  "adapterDerivation": {
+    "from": "outputs/request-20261004/finish-excalibur-r4-runtime-luna-r1/package",
+    "sourcePackageSealSha256": "cc2d9739619bec55b46fbd75c8ec5b476d48d47248a1af3d1990f822f1773dfb",
+    "reason": "copy settled R4 target reprojection and DPR-only held/active redraw adapter; no runtime behavior changes"
+  },
+  "qualityStatus": "pending",
+  "adoption": "unknown",
+  "technicalReplayStatus": "pending-native-runtime",
+  "normalAudioListening": "not_run",
+  "gameIntegrationStatus": "not_connected",
+  "nativeReadiness": {
+    "priorAdapterProof": "outputs/request-20261004/finish-excalibur-r4-runtime-luna-r1/native-root/revision3/automatic-dpr1.json",
+    "priorAdapterProofSha256": "43db42e62794b960101f511e5cee328889940de8bca872f0f0b56549733f56a4",
+    "scope": "R4 adapter only; no R5 visual or GPU acceptance"
+  },
+  "files": [
+    {
+      "route": "gallery-contract.mjs",
+      "bytes": 3188,
+      "sha256": "5c84d141af48109c3bcf4d9c4845bd056cde24a4b6018d351b58b9c52f05084d"
+    },
+    {
+      "route": "gallery.html",
+      "bytes": 3771,
+      "sha256": "f986b8f291fa3eabf925991e89770264dd28d17c37cb1032a781430236de2ea2"
+    },
+    {
+      "route": "gallery.mjs",
+      "bytes": 13737,
+      "sha256": "ca10af78923ae8600f3d049066ffbd94301a760c29492d5094632ea0d39fff6e"
+    },
+    {
+      "route": "plan.mjs",
+      "bytes": 3480,
+      "sha256": "bfca1621b85413c248c24c737fffac1b19b1e1e26b0642120e0cb490314bb299"
+    },
+    {
+      "route": "runtime.mjs",
+      "bytes": 16057,
+      "sha256": "2a038680c77a1bd2f7484847cb9e922de4bb0954ea2aefa9158ef5c2c8b8cffe"
+    },
+    {
+      "route": "sfx.mjs",
+      "bytes": 5874,
+      "sha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3"
+    },
+    {
+      "route": "shader.mjs",
+      "bytes": 6854,
+      "sha256": "e799ebaba6b7ecbc4cc7a4bbbd9326092fb93191f8181c61c83466dc32bbf361"
+    }
+  ]
+}
