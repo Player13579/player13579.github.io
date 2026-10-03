@@ -1,0 +1,71 @@
+{
+  "schema": "common-renki-gallery-package/v1",
+  "id": "renki-sol61-zero-r6-quality-r1",
+  "version": "r6-quality-r1",
+  "sourceVersion": "renki-sol61-zero-r6-quality-r1",
+  "author": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol"
+  },
+  "sourceManifestSha256": "c50bf8edc190b4ed32e38a0312f8946cd069f59f8c50b0ac60bbfd26e6d75c54",
+  "creativeSourceSha256": "b06e27c7b8649cfcc0ea9b780096bfcb1bd3f9f89c5801d0e0667c9370641fa7",
+  "entry": "package/gallery.html?embed=1&galleryAutoLoop=1",
+  "standaloneEntry": "package/index.html",
+  "sourceFiles": [
+    {
+      "path": "package/body-focus-original.png",
+      "bytes": 1220306,
+      "sha256": "e3c96c1b719d56ca8c210e11f2cef5f359ad9075b2b50f8c3e63eef3c04a85d0"
+    },
+    {
+      "path": "package/gallery.html",
+      "bytes": 3882,
+      "sha256": "f47371d465b4290697ee68f8c16a78e32126203064cf645f5209bb1761b17281"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 1458,
+      "sha256": "5cf529938fa4dfa359c8373e5a18a96166810f76b72d6d1f4ddd7e3867ea3389"
+    },
+    {
+      "path": "package/post.wgsl",
+      "bytes": 1080,
+      "sha256": "48093ee574b479d029c79cfee20e80580ab3f289ac39a9297d206f9702c18c48"
+    },
+    {
+      "path": "package/preview.mjs",
+      "bytes": 3680,
+      "sha256": "827feeef4365c03e19da48a25336ba2a3e5e408ba9833d7330af3c49c0da5a70"
+    },
+    {
+      "path": "package/renki.mjs",
+      "bytes": 13333,
+      "sha256": "b06e27c7b8649cfcc0ea9b780096bfcb1bd3f9f89c5801d0e0667c9370641fa7"
+    },
+    {
+      "path": "package/scene.wgsl",
+      "bytes": 6664,
+      "sha256": "56cae0d9b3becdc482b06f4ceba5eea4842ddbd960f2ac916984b32dba1544bc"
+    }
+  ],
+  "sourceTechnicalReplay": "pass",
+  "technicalReplay": "pass",
+  "quality": "fail",
+  "qualityReviewStatus": "not-accepted",
+  "qualityReviewOutcome": "fail",
+  "qualityReviewerDisplayName": "GPT-6.1-Sol",
+  "qualityReviewReason": "At 250 ms the inbound shapes read as closed cyan pills; at 850 ms the storage reads as a small luminous waist badge, so the intended event geometry is not sufficiently legible.",
+  "qualityEvidence": "outputs/request-20261003/renki-zero-r6-quality-native-r1/REPORT.md",
+  "technicalReplayEvidence": "outputs/request-20261003/renki-zero-r6-quality-native-r1/REPORT.md",
+  "galleryAdapterReplay": "pass",
+  "galleryAdapterEvidence": "outputs/request-20261003/renki-quality-gallery-root-r1/native/REPORT.md",
+  "galleryAdapterEvidenceFiles": [
+    "outputs/request-20261003/renki-quality-gallery-root-r1/native/r1.png",
+    "outputs/request-20261003/renki-quality-gallery-root-r1/native/REPORT.md"
+  ],
+  "adoption": "not-adopted",
+  "gameIntegration": "not-connected",
+  "normalSfxListening": "not-run",
+  "safari": "unverified",
+  "publicationEligible": true
+}

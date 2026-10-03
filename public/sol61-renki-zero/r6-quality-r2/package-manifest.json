@@ -1,0 +1,66 @@
+{
+  "schema": "common-renki-gallery-package/v1",
+  "id": "renki-sol61-zero-r6-quality-r2",
+  "version": "r6-quality-r2",
+  "sourceVersion": "renki-sol61-zero-r6-quality-r2",
+  "author": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol"
+  },
+  "sourceManifestSha256": "2e5dc03abb74bf580647d5fbb8c47a1476c1ad03afa38fcac112f75d682bf6f2",
+  "creativeSourceSha256": "4a907ce32b18c0eb558425124eef475a35da7c074cdbe2eeb6cafaa50f0ee98c",
+  "entry": "package/gallery.html?embed=1&galleryAutoLoop=1",
+  "standaloneEntry": "package/index.html",
+  "sourceFiles": [
+    {
+      "path": "package/body-focus-original.png",
+      "bytes": 1220306,
+      "sha256": "e3c96c1b719d56ca8c210e11f2cef5f359ad9075b2b50f8c3e63eef3c04a85d0"
+    },
+    {
+      "path": "package/gallery.html",
+      "bytes": 3882,
+      "sha256": "e438f4326c4914b396fdb3fdc6a01c5e28e631648f8d656135da5722004886b3"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 1458,
+      "sha256": "18e041f6bf1c7be04ddff6a81698d674f7cd134d3bdf7e4fbbacbabe56eb12ca"
+    },
+    {
+      "path": "package/post.wgsl",
+      "bytes": 1080,
+      "sha256": "48093ee574b479d029c79cfee20e80580ab3f289ac39a9297d206f9702c18c48"
+    },
+    {
+      "path": "package/preview.mjs",
+      "bytes": 3680,
+      "sha256": "827feeef4365c03e19da48a25336ba2a3e5e408ba9833d7330af3c49c0da5a70"
+    },
+    {
+      "path": "package/renki.mjs",
+      "bytes": 13388,
+      "sha256": "4a907ce32b18c0eb558425124eef475a35da7c074cdbe2eeb6cafaa50f0ee98c"
+    },
+    {
+      "path": "package/scene.wgsl",
+      "bytes": 6719,
+      "sha256": "f47afed9bdda140f7e7f5cf092ab9f7a24daf3ab962eff30ea92fefefa17f09d"
+    }
+  ],
+  "sourceTechnicalReplay": "pass",
+  "technicalReplay": "pass",
+  "quality": "fail",
+  "qualityReviewStatus": "not-accepted",
+  "qualityReviewOutcome": "fail",
+  "qualityReviewerDisplayName": "GPT-6.1-Sol",
+  "qualityReviewReason": "At 250 ms two detached pale shapes remain; at 500 ms a cyan sheet crosses the actor; at 850 ms the storage reads as a luminous torso/apron rather than an interior accumulation with depth.",
+  "qualityEvidence": "outputs/request-20261003/renki-zero-r6-quality-native-r2/REPORT.md",
+  "technicalReplayEvidence": "outputs/request-20261003/renki-zero-r6-quality-native-r2/REPORT.md",
+  "galleryAdapterReplay": "pass",
+  "adoption": "not-adopted",
+  "gameIntegration": "not-connected",
+  "normalSfxListening": "not-run",
+  "safari": "unverified",
+  "publicationEligible": true
+}
