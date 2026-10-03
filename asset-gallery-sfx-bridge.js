@@ -54,14 +54,31 @@
     }
 
     function invoke(target, method, args) {
+      if (typeof target?.[method] !== 'function') return { found: false };
       try {
-        if (typeof target?.[method] !== 'function') return false;
-        // Invoke before the first await, while the caller's user activation is live.
-        Promise.resolve(target[method](...args)).catch(() => {});
-        return true;
-      } catch (_) {
-        return false;
+        // Call synchronously in the trusted gesture stack; observe async status afterward.
+        return { found: true, value: target[method](...args) };
+      } catch (error) {
+        return { found: true, error };
       }
+    }
+
+    function resultState(value, sync) {
+      if (value === false || value?.state === 'unsupported' || value?.state === 'unavailable'
+        || value?.state === 'silent' || value?.state === 'stale') {
+        return value && typeof value === 'object' ? value : { state: 'unsupported', reason: 'preview rejected audio activation' };
+      }
+      if (value?.state === 'active') return value;
+      // Existing authored APIs include boolean success and Promise<void> success.
+      if (value === true || value === undefined) return { state: 'active', reason: 'using the preview’s authored SFX' };
+      return { state: 'unsupported', reason: 'preview did not confirm authored SFX activation' };
+    }
+
+    function settleActivation(token, result) {
+      if (!current || current.generation !== token) return { state: 'stale', reason: 'preview changed before audio status completed' };
+      const normalized = resultState(result, false);
+      if (normalized.state === 'active') audioUnlocked = true;
+      return setState(normalized.state, normalized.reason || '');
     }
 
     function soundControl(doc) {
@@ -92,42 +109,55 @@
       if (verify || child.childVerify) return setState('silent', 'verification mode');
 
       const { win, doc } = child;
-      let activated = false;
+      const token = current.generation;
+      let activation = { found: false };
       if (itemId(item) === 'item-pickup-sol-r2') {
-        activated = invoke(win, 'enableItemPickupLoopAudio', []);
+        activation = invoke(win, 'enableItemPickupLoopAudio', []);
       } else if (win.__gallerySfx && typeof win.__gallerySfx.activateFromGesture === 'function') {
-        activated = invoke(win.__gallerySfx, 'activateFromGesture', [item]);
+        activation = invoke(win.__gallerySfx, 'activateFromGesture', [item]);
       } else if (win.__manaPreview) {
-        activated = invoke(win.__manaPreview, 'enableAudio', []);
+        activation = invoke(win.__manaPreview, 'enableAudio', []);
       } else if (win.__cooldown?.audio) {
-        activated = invoke(win.__cooldown.audio, 'enable', []);
+        activation = invoke(win.__cooldown.audio, 'enable', []);
       } else if (win.__EMP__?.audio) {
-        activated = invoke(win.__EMP__.audio, 'enable', []);
+        activation = invoke(win.__EMP__.audio, 'enable', []);
       }
 
-      if (!activated) {
+      // Preserve the legacy fallback chain for controls that throw synchronously.
+      if (activation.error) activation = { found: false };
+      if (!activation.found) {
         const button = soundControl(doc);
         if (button) {
-          try { button.click(); activated = true; } catch (_) { /* unsupported edition */ }
+          try { button.click(); activation = { found: true, value: undefined, legacy: true }; } catch (_) { /* unsupported edition */ }
         }
       }
-
-      // Several editions use the canvas itself as the gesture target; the
-      // preview owns the callback and its synchronized loop after this event.
-      if (!activated) {
+      if (!activation.found) {
         try {
           const canvas = doc.querySelector('canvas');
           const EventCtor = win.PointerEvent || win.MouseEvent;
           if (canvas && EventCtor) {
             canvas.dispatchEvent(new EventCtor('pointerdown', { bubbles: true }));
-            activated = true;
+            activation = { found: true, value: undefined, legacy: true };
           }
         } catch (_) { /* inaccessible or older DOM implementation */ }
       }
-
-      if (!activated) return setState('unsupported', 'edition exposes no usable authored SFX control');
+      if (!activation.found) return setState('unsupported', 'edition exposes no usable authored SFX control');
+      const value = activation.value;
+      if (value && typeof value.then === 'function') {
+        setState('pending', 'waiting for the preview to confirm authored SFX activation');
+        return Promise.resolve(value).then(
+          result => settleActivation(token, result),
+          () => {
+            if (!current || current.generation !== token) return { state: 'stale', reason: 'preview changed before audio status completed' };
+            return setState('unsupported', 'preview audio activation was rejected');
+          }
+        );
+      }
+      const normalized = activation.legacy
+        ? { state: 'active', reason: 'using the preview’s authored SFX' }
+        : resultState(value, true);
+      if (normalized.state !== 'active') return setState(normalized.state, normalized.reason || '');
       audioUnlocked = true;
-
       // Lens-ghost has only an authored manual one-shot. Reuse it when the
       // preview's own phase wraps. Two older previews disarm their own sound
       // after each visual cycle; rearm when their exposed counter advances.

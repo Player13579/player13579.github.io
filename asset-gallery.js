@@ -571,11 +571,11 @@ Object.freeze({
   ])
 }),
     Object.freeze({ id: "alchemy-particle-cannon-sol61", title: "錬成・粒子砲", defaultVersionId: "alchemy-cannon-sol61-r2", integration: 'not-integrated', reason: 'ギャラリー内のWebGPU再生・自動ループ確認済み。Codex品質確認未完了。未採用。本編未接続。', versions: Object.freeze([
-      version("alchemy-cannon-sol61-r2", "GPT-6.1-Sol Alchemy Cannon E r2", "public/sol61-alchemy-cannon/r2/gallery.html?embed=1&galleryAutoLoop=1", "public/sol61-alchemy-cannon/r2/package-manifest.json", 'Standalone native WebGPU replay pass · parent gallery replay pending · Codex quality review in progress · adoption unknown · game disconnected', '粒子砲R2。ギャラリー内のWebGPU再生確認済み。品質確認用の試作で、採用・本編接続は未完了です。', 'actor-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (creative design) + GPT-6-Luna (faithful gallery adapter)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'pending',qualityReviewStatus:'in-progress',technicalReplayStatus:'pass',sourceTechnicalReplayStatus:'pass',galleryAdapterReplayStatus:'pass',gameIntegrationStatus:'not_connected',normalAudioListening:'not_run',safariReplayStatus:'unverified',packageManifestSha256:'94d490e8d908ed43b90a61c907c0c3e3a4969d3f1ed10b82a8132be2cb4de1c8',packageSealSha256:'c0e01ed5ee54f267910332f64c6ab8fef3feb4e07e5ed25063dbc15d3e0a0404',creativeSourceSha256:'f745cc024949b992a50c0520c91db256ce4b508a09a8d71278e2bb6edb4755b5'}),
+      version("alchemy-cannon-sol61-r2", "GPT-6.1-Sol Alchemy Cannon E r2", "public/sol61-alchemy-cannon/r2/gallery.html?embed=1&galleryAutoLoop=1", "public/sol61-alchemy-cannon/r2/package-manifest.json", 'Standalone native WebGPU replay pass · parent gallery replay pass · Codex quality review in progress · adoption unknown · game disconnected', '粒子砲R2。ギャラリー内のWebGPU再生確認済み。品質確認用の試作で、採用・本編接続は未完了です。', 'actor-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (creative design) + GPT-6-Luna (faithful gallery adapter)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'pending',qualityReviewStatus:'in-progress',technicalReplayStatus:'pass',sourceTechnicalReplayStatus:'pass',galleryAdapterReplayStatus:'pass',gameIntegrationStatus:'not_connected',normalAudioListening:'not_run',safariReplayStatus:'unverified',packageManifestSha256:'94d490e8d908ed43b90a61c907c0c3e3a4969d3f1ed10b82a8132be2cb4de1c8',packageSealSha256:'c0e01ed5ee54f267910332f64c6ab8fef3feb4e07e5ed25063dbc15d3e0a0404',creativeSourceSha256:'f745cc024949b992a50c0520c91db256ce4b508a09a8d71278e2bb6edb4755b5'}),
       version("alchemy-cannon-sol61-r1", "錬成・粒子砲 R1", "public/sol61-alchemy-cannon/r1/gallery.html?embed=1&galleryAutoLoop=1", "public/sol61-alchemy-cannon/r1/package-manifest.json", 'WebGPU再生確認済み · Codex確認未完了 · 本編未接続', '粒子砲の発動と粒子束を自動ループします。形状の読みやすさには改善余地があります。品質確認用の試作です。', 'effect-H64', 1, {"originalCreatorDisplayName":"Not separately attributed","designAuthorDisplayName":"GPT-6.1-Sol","runtimeAuthorDisplayName":"GPT-6-Luna","creatorDisplayName":"GPT-6.1-Sol (creative design) + GPT-6-Luna (faithful gallery adapter)","creatorModelId":"gpt-6.1-sol+gpt-6-luna","adoption":"unknown","qualityStatus":"pending","qualityReviewStatus":"in-progress","qualityReviewReason":"Codex quality review is incomplete. Standalone native imagery raised a flat-bar/blob readability concern; this is recorded for review and does not restrict user inspection.","technicalReplayStatus":"pass","sourceTechnicalReplayStatus":"pass","galleryAdapterReplayStatus":"pass","gameIntegrationStatus":"not_connected","normalAudioListening":"not_run","safariReplayStatus":"unverified","packageManifestSha256":"ca2d80069af361d9035731ca4364f1464555a0575328e367d5458a151553e6dc","packageSealSha256":"d07ef8f6c5364ca9602dad7b004f95086ffd3408f5e380de2cfa4a880cc86ac2","creativeSourceSha256":"90f54c0b5050b52ac86d5a67152caa0b9b7a0e1d6f2ff925de7964ba205f00ac"})
     ]) }),
 
-    Object.freeze({ id: 'alchemy-excalibur-sol61', title: '錬成・エクスカリバー', defaultVersionId: 'alchemy-excalibur-sol61-r2', integration: 'not-integrated', reason: 'エクスカリバーR2を最新候補として表示。単体native replay pass、限定品質レビュー未受入、採用状態unknown、親gallery replay待ち、本編未接続。', versions: Object.freeze([version('alchemy-excalibur-sol61-r2','GPT-6.1-Sol Excalibur E R2','public/sol61-alchemy-excalibur/r2/gallery.html?embed=1','public/sol61-alchemy-excalibur/r2/package-manifest.json','Standalone native replay pass · limited quality review not accepted · parent gallery replay pending · adoption unknown · game disconnected','GPT-6.1-Sol authored the creative revision; GPT-6-Luna prepared the faithful gallery/runtime wrapper. Standalone native replay completed 14,160 frames with no errors or warnings. The limited review found the forward-moving crest and staged decay, but the remaining straight bands and filled shoulder still read as a rigid strip; quality is not accepted. Parent gallery replay, full-lifetime review, normal audio listening, Safari, and game integration remain pending.','effect-H64',1,{originalCreatorDisplayName:'No source artwork author claimed',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (creative revision) + GPT-6-Luna (faithful gallery/runtime adapter)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'not-accepted',qualityReviewStatus:'not-accepted',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261004/excalibur-r2-quality-decision-sol61-r1/REVIEW.md',technicalReplayStatus:'pending-gallery-native-replay',standaloneTechnicalReplayStatus:'pass',technicalEvidence:'outputs/request-20261004/excalibur-r2-native-root-r1/auto-proof.json',gameIntegrationStatus:'not_connected',normalAudioListening:'not_run',sfxListeningStatus:'not_run',safariReplayStatus:'unverified',packageManifestSha256:'186f887f79295d6e0897b410cdc6a89a031e3abea7a9c02c13e1d83b0ef564a0',packageSealSha256:'acd3b9a89805bc3ea4d11e8ecdd390cd3f322e8ada899bba660480d535743919',creativeSourceSha256:'451ab262620075420440677a9f0769b26ee5874c3ebb6f8845c0f1102cb04d49'}),version('alchemy-excalibur-sol61-r1','GPT-6.1-Sol Excalibur E R1','public/sol61-alchemy-excalibur/r1/gallery.html?embed=1','public/sol61-alchemy-excalibur/r1/package-manifest.json','WebGPU再生確認済み · Codex確認未完了 · 本編未接続','刃状の光を生成し、先端まで展開してから消失します。品質確認用の試作です。','effect-H64',1,{originalCreatorDisplayName:'No source artwork author claimed',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (creative design/equations) + GPT-6-Luna (faithful runtime/gallery implementation)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'pending',qualityReviewStatus:'in-progress',technicalReplayStatus:'pass',standaloneTechnicalReplayStatus:'pass',gameIntegrationStatus:'not_connected',normalAudioListening:'not_run',sfxListeningStatus:'not_run',safariReplayStatus:'unverified',packageManifestSha256:'1f2da6c9259eef4567528e5afd1710bdc76f794023bfbafdd43b72f42f9ce3e4',packageSealSha256:'8b71f45d7436de8570f9f761c13443cd834a5afe03d1fd2d1c96133dc3136f7e',creativeSourceSha256:'4b51c3e7381fc5ee3d1ba9754095cf7ad4099431c16aaa75c112c8c37bb07ece'})]) }),
+    Object.freeze({ id: 'alchemy-excalibur-sol61', title: '錬成・エクスカリバー', defaultVersionId: 'alchemy-excalibur-sol61-r2', integration: 'not-integrated', reason: 'エクスカリバーR2を最新候補として表示。単体native replay pass、限定品質レビュー未受入、採用状態unknown、親gallery replay待ち、本編未接続。', versions: Object.freeze([version('alchemy-excalibur-sol61-r2','GPT-6.1-Sol Excalibur E R2','public/sol61-alchemy-excalibur/r2/gallery.html?embed=1','public/sol61-alchemy-excalibur/r2/package-manifest.json','Standalone native replay pass · limited quality review not accepted · parent gallery replay pass · adoption unknown · game disconnected','GPT-6.1-Sol authored the creative revision; GPT-6-Luna prepared the faithful gallery/runtime wrapper. Standalone native replay completed 14,160 frames with no errors or warnings. The limited review found the forward-moving crest and staged decay, but the remaining straight bands and filled shoulder still read as a rigid strip; quality is not accepted. Parent gallery replay passed (public proof: outputs/request-20261004/excalibur-r2-release-root-r1/public-proof.json); full-lifetime review, normal audio listening, Safari, and game integration remain pending.','effect-H64',1,{originalCreatorDisplayName:'No source artwork author claimed',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (creative revision) + GPT-6-Luna (faithful gallery/runtime adapter)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'not-accepted',qualityReviewStatus:'not-accepted',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261004/excalibur-r2-quality-decision-sol61-r1/REVIEW.md',technicalReplayStatus:'pass',galleryAdapterReplayStatus:'pass',galleryAdapterEvidence:'outputs/request-20261004/excalibur-r2-release-root-r1/public-proof.json',standaloneTechnicalReplayStatus:'pass',technicalEvidence:'outputs/request-20261004/excalibur-r2-native-root-r1/auto-proof.json',gameIntegrationStatus:'not_connected',normalAudioListening:'not_run',sfxListeningStatus:'not_run',safariReplayStatus:'unverified',packageManifestSha256:'186f887f79295d6e0897b410cdc6a89a031e3abea7a9c02c13e1d83b0ef564a0',packageSealSha256:'acd3b9a89805bc3ea4d11e8ecdd390cd3f322e8ada899bba660480d535743919',creativeSourceSha256:'451ab262620075420440677a9f0769b26ee5874c3ebb6f8845c0f1102cb04d49'}),version('alchemy-excalibur-sol61-r1','GPT-6.1-Sol Excalibur E R1','public/sol61-alchemy-excalibur/r1/gallery.html?embed=1','public/sol61-alchemy-excalibur/r1/package-manifest.json','WebGPU再生確認済み · Codex確認未完了 · 本編未接続','刃状の光を生成し、先端まで展開してから消失します。品質確認用の試作です。','effect-H64',1,{originalCreatorDisplayName:'No source artwork author claimed',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (creative design/equations) + GPT-6-Luna (faithful runtime/gallery implementation)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'pending',qualityReviewStatus:'in-progress',technicalReplayStatus:'pass',standaloneTechnicalReplayStatus:'pass',gameIntegrationStatus:'not_connected',normalAudioListening:'not_run',sfxListeningStatus:'not_run',safariReplayStatus:'unverified',packageManifestSha256:'2685c4cdc535322b35fe5b02e912437825f495c686074b09ccd82f4b06c4efa2',packageSealSha256:'04ece16c52c24e5bcb90d0c5a11411a0e4f05f50a0feb31ba37b8f6e7c5dde1c',creativeSourceSha256:'4b51c3e7381fc5ee3d1ba9754095cf7ad4099431c16aaa75c112c8c37bb07ece'})]) }),
     Object.freeze({ id: 'alchemy-railgun-sol61', title: '錬成レールガン', defaultVersionId: 'alchemy-railgun-sol61-r1', integration: 'not-integrated', reason: 'レールガンR1。ギャラリー内のWebGPU再生確認済み。Codex確認未完了、本編未接続。', versions: Object.freeze([version('alchemy-railgun-sol61-r1','GPT-6.1-Sol Railgun E R1','public/sol61-alchemy-railgun/r1/gallery.html?embed=1','public/sol61-alchemy-railgun/r1/effect.mjs','WebGPU再生確認済み · Codex確認未完了 · 本編未接続','発射点から伸びる光と、先端へ向かう消失を自動ループします。品質確認用の試作です。','effect-H64',1,{originalCreatorDisplayName:'GPT-6.1-Sol',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (creative design) + GPT-6-Luna (faithful adapter/runtime)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'unknown',qualityStatus:'pending',qualityReviewStatus:'in-progress',technicalReplayStatus:'pass',gameIntegrationStatus:'not_connected',normalAudioListening:'not_run',sfxListeningStatus:'not_run',safariReplayStatus:'unverified',creativeSourceSha256:'f691057c104742fb4dbf6e3e681613322662572b93ae8622aedf70acb454fbdf'})]) })
   ]);
   const params = new URLSearchParams(location.search);
@@ -614,23 +614,74 @@ Object.freeze({
     else if (category === 'effect' && !audioStarted) audioStatus.textContent = '最初の操作でEの効果音を有効にします。';
     return policy;
   }
+  let audioActivationGeneration = 0;
+  let audioPending = null;
+  let reflectedAudioFrame = null;
+  let reflectedAudioItem = null;
+  function resetAudioReflection() {
+    audioStarted = false;
+    audioButton.textContent = '音声を開始';
+    audioButton.setAttribute('aria-pressed', 'false');
+  }
+  function invalidateGalleryAudioActivation() {
+    audioActivationGeneration += 1;
+    if (audioPending || audioStarted) {
+      resetAudioReflection();
+      audioStatus.textContent = '';
+    }
+    audioPending = null;
+    reflectedAudioFrame = null;
+    reflectedAudioItem = null;
+  }
   function reflectAudio(result) {
     if (verifyMode) return;
-    if (result?.state === 'active') {
+    if (result?.state === 'pending') {
+      audioStatus.textContent = 'プレビューの音声状態を確認しています。';
+    } else if (result?.state === 'active') {
       audioStarted = true;
+      audioPending = null;
       audioButton.textContent = '音声再生中';
       audioButton.setAttribute('aria-pressed', 'true');
       audioStatus.textContent = '表示中のEの固有SFXをループに合わせて再生します。';
     } else if (result?.state === 'unsupported') {
+      audioStarted = false;
+      audioPending = null;
+      audioButton.textContent = '音声を開始';
+      audioButton.setAttribute('aria-pressed', 'false');
       audioStatus.textContent = 'この版の固有SFXは再生できません。';
     } else if (result?.state === 'unavailable') {
+      audioStarted = false;
+      audioPending = null;
+      audioButton.textContent = '音声を開始';
+      audioButton.setAttribute('aria-pressed', 'false');
       audioStatus.textContent = 'プレビューの準備後に音声を開始します。';
     }
+  }
+  function observeAudioActivation(result, iframe, item) {
+    const generation = ++audioActivationGeneration;
+    if (reflectedAudioFrame !== iframe || reflectedAudioItem !== item) {
+      resetAudioReflection();
+      reflectedAudioFrame = iframe; reflectedAudioItem = item;
+      audioPending = null;
+    }
+    if (result?.state === 'pending' || (result && typeof result.then === 'function')) audioPending = { iframe, item, generation };
+    if (!result || typeof result.then !== 'function') { reflectAudio(result); return; }
+    reflectAudio({ state: 'pending' });
+    Promise.resolve(result).then(finalResult => {
+      if (generation !== audioActivationGeneration || activeAudioFrame !== iframe || activeAudioItem !== item) return;
+      reflectAudio(finalResult);
+    }, () => {
+      if (generation !== audioActivationGeneration || activeAudioFrame !== iframe || activeAudioItem !== item) return;
+      reflectAudio({ state: 'unsupported' });
+    });
   }
   function beginGalleryAudio() {
     if (!galleryAudioPolicy(currentCategory, verifyMode, activeAudioItem).bridgeAllowed
       || !sfxBridge || !activeAudioFrame || !activeAudioItem) return;
-    reflectAudio(sfxBridge.activateFromGesture(activeAudioFrame, activeAudioItem));
+    if (audioPending?.iframe === activeAudioFrame && audioPending?.item === activeAudioItem) return;
+    const iframe = activeAudioFrame, item = activeAudioItem;
+    // Invoke before observing a Promise so browser user activation remains live.
+    observeAudioActivation(sfxBridge.activateFromGesture(iframe, item), iframe, item);
   }
   audioButton.addEventListener('click', beginGalleryAudio);
   if (!verifyMode) {
@@ -740,6 +791,7 @@ function galleryChildClearTimers(attempt) {
   attempt.phaseTimer = attempt.softTimer = attempt.overallTimer = null;
 }
 function retireGalleryChildStartup(reason = 'selection-changed') {
+  invalidateGalleryAudioActivation();
   const attempt = activeGalleryChildStartup;
   if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll);
   previewStatusPoll = null;
@@ -1134,7 +1186,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     iframe.addEventListener('load', () => {
       if (!galleryChildIsCurrent(attempt)) return;
       activeAudioFrame = iframe; activeAudioItem = item;
-      reflectAudio(sfxBridge?.attachFrame(iframe, item));
+      observeAudioActivation(sfxBridge?.attachFrame(iframe, item), iframe, item);
       let childSnapshot = null;
       try { childSnapshot = iframe.contentWindow?.__dvaGalleryStartupSnapshot?.(); } catch (_) {}
       if (childSnapshot?.schema !== 'dva-gallery-startup/v1' || childSnapshot?.token !== attempt.token ||
@@ -1264,6 +1316,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     iframe.dataset.mapFitScale = String(scale);
   }
   function disposeMapPreview() {
+    invalidateGalleryAudioActivation();
     const frame = stage.querySelector('iframe');
     if (frame) { sfxBridge?.detachFrame(frame); frame.remove(); }
     if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll);
@@ -1383,7 +1436,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
         if (iframe !== stage.querySelector('iframe')) return;
         if (audioPolicy.bridgeAllowed) {
           activeAudioFrame = iframe; activeAudioItem = item;
-          reflectAudio(sfxBridge?.attachFrame(iframe,item));
+          observeAudioActivation(sfxBridge?.attachFrame(iframe,item), iframe, item);
         }
         try {
           const child = iframe.contentDocument; if (!child) throw new Error('プレビューにアクセスできません');

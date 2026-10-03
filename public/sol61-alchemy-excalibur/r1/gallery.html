@@ -53,7 +53,7 @@
       if (!button || !window.__excaliburPreview) return;
       if (button.id === 'enable-audio') { void window.__gallerySfx?.activateFromGesture({ id: 'gallery-button' }); return; }
       if (button.dataset.phase !== undefined) void window.__excaliburPreview.setPhase(Number(button.dataset.phase));
-      else if (button.id === 'resume') location.href = location.pathname + '?embed=1';
+      else if (button.id === 'resume') { const next = new URL(location.href); next.searchParams.delete('phase'); next.searchParams.set('embed', '1'); location.href = next.toString(); }
       else if (button.dataset.main !== undefined) void window.__excaliburPreview.configure({ main: button.dataset.main === 'true' });
       else if (button.dataset.obs !== undefined) void window.__excaliburPreview.configure({ obs: button.dataset.obs === 'true' });
     });
