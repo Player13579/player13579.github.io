@@ -974,7 +974,10 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
   function versionStatusSummary(item, group) {
     return [technicalReplayLabel(item), qualityReviewLabel(item), adoptionStatusLabel(item), gameIntegrationLabel(item, group)].join(' · ');
   }
+  const OBJECT_SPECIFIC_EFFECT_GROUP_IDS = new Set(['camera-tripod-observation-map-e','atrium-hydration-object','engineering-wash-object-e']);
+  function visibleEffectGroups(groups) { return groups.filter(group => !OBJECT_SPECIFIC_EFFECT_GROUP_IDS.has(group.id)); }
   function visibleVersionIndices(group) {
+    if (currentCategory === 'effect' && OBJECT_SPECIFIC_EFFECT_GROUP_IDS.has(group.id)) return [];
     const hasCurrentAdoption = group.versions.some(item => adoptionState(item) === 'adopted');
     if (currentCategory === 'effect') {
       if (currentAdoptionFilter === 'adopted') return hasCurrentAdoption ? group.versions.map((item, i) => item.replayable ? i : -1).filter(i => i >= 0).sort((a, b) => Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted')) : [];
@@ -1039,8 +1042,17 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
   function select(index, versionIndex) {
     mapSelectionGeneration++; activeMapSelection = null; mapOriginalComparison = false; mapComparison.hidden = true;
     stage.querySelector('img')?.remove();
-    selectedIndex = (index + entries.length) % entries.length;
-    const group = entries[selectedIndex];
+    const requestedIndex = (index + entries.length) % entries.length;
+    const visibleGroups = visibleEffectGroups(entries).filter(candidate => visibleVersionIndices(candidate).length);
+    if (!visibleGroups.length) return;
+    let group = entries[requestedIndex];
+    if (OBJECT_SPECIFIC_EFFECT_GROUP_IDS.has(group.id) || !visibleVersionIndices(group).length) {
+      group = visibleGroups[0];
+      selectedIndex = entries.indexOf(group);
+      const fallbackVersion = visibleVersionIndices(group);
+      const defaultVersion = group.versions.findIndex(item => item.id === group.defaultVersionId);
+      versionIndex = fallbackVersion.includes(defaultVersion) ? defaultVersion : fallbackVersion[0];
+    } else selectedIndex = requestedIndex;
     selectedVersionIndex = Math.min(versionIndex, group.versions.length - 1);
     const item = group.versions[selectedVersionIndex];
     updateGalleryAudioControl('effect', item);
@@ -1095,7 +1107,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     galleryChildArmStage(attempt, 'child-document');
     fitObserver?.disconnect(); fitObserver = new ResizeObserver(() => fitPreview(iframe, item, group)); fitObserver.observe(stage);
   }
-  const exposedEntries = entries.map(group => Object.freeze({ id: group.id,
+  const exposedEntries = visibleEffectGroups(entries).map(group => Object.freeze({ id: group.id,
       title: group.title, integration: group.integration, reason: group.reason,
       category: 'effect',
       latest: group.versions[0].id, defaultVersionId: group.defaultVersionId || group.versions[0].id,
@@ -1388,7 +1400,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     categoryTabs.forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.category===currentCategory)));
     adoptionTabs.forEach(tab=>tab.setAttribute('aria-pressed',String(tab.dataset.filter===currentAdoptionFilter)));
     layout.hidden=false;emptyCategory.hidden=true;catalog.replaceChildren();buttons=[];
-    const groups=currentCategory==='effect'?entries:imageGroups.filter(g=>g.category===currentCategory);
+    const groups=currentCategory==='effect'?visibleEffectGroups(entries):imageGroups.filter(g=>g.category===currentCategory);
     const matching=groups.map(group=>({group,indices:visibleVersionIndices(group)})).filter(row=>row.indices.length);
     if(!matching.length){
       retireGalleryChildStartup('empty-category');
