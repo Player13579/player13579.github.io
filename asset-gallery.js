@@ -536,6 +536,215 @@ version('vibe-coding-sol61-r5', 'GPT-6.1-Sol r5', 'public/sol61-vibe-coding/r5/i
   const layout = document.getElementById('gallery-layout');
   const emptyCategory = document.getElementById('empty-category');
   let previewStatusPoll = null;
+// Inserted inside the existing gallery catalog IIFE. This tracks one selected iframe only.
+const GALLERY_CHILD_PHASES = Object.freeze({
+  'child-document': ['選択したプレビューを読み込んでいます…', 15000],
+  adapter: ['WebGPUアダプターを取得しています…', 15000],
+  device: ['WebGPUデバイスを取得しています…', 15000],
+  assets: ['この版の描画素材を読み込んでいます…', 20000],
+  pipelines: ['この版のWebGPU描画を準備しています…', 45000],
+  'first-frame': ['最初のWebGPU描画を確認しています…', 10000],
+  playing: ['プレビューの描画を開始しました（視覚品質は別途確認）', 10000]
+});
+const GALLERY_CHILD_PHASE_ORDER = Object.freeze(Object.keys(GALLERY_CHILD_PHASES));
+let activeGalleryChildStartup = null;
+let galleryChildAttemptSerial = 0;
+
+function galleryChildText(value, limit = 500) {
+  return String(value == null ? '' : value).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, '_').slice(0, limit);
+}
+function galleryChildStatusNode() { return document.getElementById('gallery-startup-status') || notice; }
+function galleryChildClearStatus() {
+  const node = galleryChildStatusNode();
+  if (!node) return;
+  node.hidden = true;
+  node.replaceChildren();
+}
+function galleryChildIsCurrent(attempt) {
+  return Boolean(attempt && activeGalleryChildStartup === attempt && !attempt.retired &&
+    attempt.iframe?.isConnected && stage.querySelector('iframe') === attempt.iframe);
+}
+function galleryChildShow(attempt, message, retry = false) {
+  if (!galleryChildIsCurrent(attempt)) return;
+  const statusNode = galleryChildStatusNode();
+  statusNode.hidden = false;
+  statusNode.replaceChildren(document.createTextNode(galleryChildText(message)));
+  if (retry) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = 'このプレビューを再読み込み';
+    button.addEventListener('click', () => {
+      if (galleryChildIsCurrent(attempt)) select(attempt.index, attempt.versionIndex);
+    }, { once: true });
+    statusNode.append(document.createTextNode(' '), button);
+  }
+}
+function galleryChildClearTimers(attempt) {
+  if (attempt.phaseTimer !== null) clearTimeout(attempt.phaseTimer);
+  if (attempt.softTimer !== null) clearTimeout(attempt.softTimer);
+  if (attempt.overallTimer !== null) clearTimeout(attempt.overallTimer);
+  attempt.phaseTimer = attempt.softTimer = attempt.overallTimer = null;
+}
+function retireGalleryChildStartup(reason = 'selection-changed') {
+  const attempt = activeGalleryChildStartup;
+  if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll);
+  previewStatusPoll = null;
+  if (!attempt) { galleryChildClearStatus(); return; }
+  try {
+    attempt.iframe?.contentWindow?.postMessage({ schema: 'dva-gallery-startup/v1', action: 'retire',
+      token: attempt.token, versionId: attempt.versionId, attemptEpoch: attempt.issuedEpoch }, attempt.origin);
+  } catch (_) {}
+  attempt.retired = true;
+  attempt.epoch = ++galleryChildAttemptSerial;
+  attempt.retiredReason = reason;
+  galleryChildClearTimers(attempt);
+  window.removeEventListener('message', attempt.onMessage);
+  if (attempt.iframe) {
+    sfxBridge?.detachFrame(attempt.iframe);
+    attempt.iframe.remove();
+  }
+  if (activeGalleryChildStartup === attempt) activeGalleryChildStartup = null;
+  galleryChildClearStatus();
+  if (activeAudioFrame === attempt.iframe) { activeAudioFrame = null; activeAudioItem = null; }
+}
+function galleryChildStageNotice(attempt, stageName, delayed = false) {
+  const row = GALLERY_CHILD_PHASES[stageName];
+  if (row) galleryChildShow(attempt, delayed
+    ? `${row[0]} ${'処理に時間がかかっています。描画開始はまだ確認できません。'}` : row[0]);
+}
+function galleryChildWatchLegacyFailure(attempt, iframe) {
+  if (!galleryChildIsCurrent(attempt)) return;
+  if (attempt.phaseTimer !== null) clearTimeout(attempt.phaseTimer);
+  if (attempt.softTimer !== null) clearTimeout(attempt.softTimer);
+  attempt.phaseTimer = attempt.softTimer = null;
+  attempt.legacy = true;
+  galleryChildShow(attempt,
+    'この版は描画開始を報告しません。プレビューは読み込まれましたが、描画開始は未確認です。', true);
+  const timer = window.setInterval(() => {
+    if (!galleryChildIsCurrent(attempt) || attempt.failed || attempt.ready) {
+      window.clearInterval(timer);
+      if (previewStatusPoll === timer) previewStatusPoll = null;
+      return;
+    }
+    try {
+      const message = iframe.contentDocument?.getElementById('error')?.textContent?.trim();
+      if (!message) return;
+      window.clearInterval(timer);
+      if (previewStatusPoll === timer) previewStatusPoll = null;
+      const unsupported = /webgpu.{0,32}(?:required|unsupported|not supported)|no adapter|not supported|unsupported|利用できません|非対応/i.test(message);
+      galleryChildFail(attempt, 'child-document', unsupported ? 'LEGACY_WEBGPU_UNSUPPORTED' : 'LEGACY_PREVIEW_ERROR',
+        message, unsupported ? 'unsupported' : 'error');
+    } catch (error) {
+      window.clearInterval(timer);
+      if (previewStatusPoll === timer) previewStatusPoll = null;
+      galleryChildFail(attempt, 'child-document', 'LEGACY_STATUS_READ_ERROR',
+        error?.message || 'このプレビューの状態を読み取れませんでした。');
+    }
+  }, 250);
+  previewStatusPoll = timer;
+}
+function galleryChildFail(attempt, stageName, code, message, status = 'error') {
+  if (!galleryChildIsCurrent(attempt) || attempt.failed) return;
+  attempt.failed = true;
+  attempt.status = status;
+  galleryChildClearTimers(attempt);
+  if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll);
+  previewStatusPoll = null;
+  // If the parent deadline won a race with a child operation, revoke the child's
+  // resource lease too. The child's first actual error remains authoritative.
+  try {
+    attempt.iframe?.contentWindow?.postMessage({ schema: 'dva-gallery-startup/v1', action: 'retire',
+      token: attempt.token, versionId: attempt.versionId, attemptEpoch: attempt.issuedEpoch }, attempt.origin);
+  } catch (_) {}
+  const phase = GALLERY_CHILD_PHASES[stageName]?.[0] || 'プレビュー';
+  const safeMessage = galleryChildText(message || `${phase}が期限内に完了しませんでした。再読み込みできます。`);
+  const label = status === 'unsupported' ? 'WebGPUを利用できません' : 'プレビューを開始できませんでした';
+  galleryChildShow(attempt, `${label} [${galleryChildText(code, 64)}] ${safeMessage}`, true);
+}
+function galleryChildArmStage(attempt, phase) {
+  const row = GALLERY_CHILD_PHASES[phase];
+  if (!row || !galleryChildIsCurrent(attempt)) return;
+  const rank = GALLERY_CHILD_PHASE_ORDER.indexOf(phase);
+  if (rank < attempt.phaseRank) return;
+  if (attempt.phase === phase) return;
+  attempt.phase = phase;
+  attempt.phaseRank = rank;
+  attempt.phaseReceivedAt = performance.now();
+  if (attempt.phaseTimer !== null) clearTimeout(attempt.phaseTimer);
+  if (attempt.softTimer !== null) clearTimeout(attempt.softTimer);
+  attempt.phaseTimer = attempt.softTimer = null;
+  const remaining = Math.max(0, 90000 - (performance.now() - attempt.createdAt));
+  const hardMs = Math.min(row[1], remaining);
+  galleryChildStageNotice(attempt, phase);
+  if (hardMs <= 0) return galleryChildFail(attempt, phase, `STARTUP_TIMEOUT_${phase.toUpperCase().replace('-', '_')}`,
+    `${row[0]} 期限内に完了しませんでした。再読み込みできます。`);
+  if (hardMs > 8000) attempt.softTimer = setTimeout(() => galleryChildStageNotice(attempt, phase, true), 8000);
+  attempt.phaseTimer = setTimeout(() => galleryChildFail(attempt, phase,
+    `STARTUP_TIMEOUT_${phase.toUpperCase().replace('-', '_')}`,
+    `${row[0]} 期限内に完了しませんでした。再読み込みできます。`), hardMs);
+}
+function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
+  const tokenBytes = new Uint8Array(16);
+  crypto.getRandomValues(tokenBytes);
+  const token = [...tokenBytes].map(value => value.toString(16).padStart(2, '0')).join('');
+  const url = new URL(preview.href, location.href);
+  if (url.origin !== location.origin) throw new Error('子プレビューは同一オリジンのURLが必要です');
+  const epoch = ++galleryChildAttemptSerial;
+  url.searchParams.set('galleryStartupToken', token);
+  url.searchParams.set('galleryVersionId', item.id);
+  url.searchParams.set('galleryAttemptEpoch', String(epoch));
+  const attempt = { token, versionId: item.id, epoch, issuedEpoch: epoch, index, versionIndex, iframe, origin: url.origin,
+    url: url.href, createdAt: performance.now(), phase: '', phaseRank: -1,
+    phaseReceivedAt: performance.now(), sequence: 0, ready: false, failed: false, retired: false,
+    phaseTimer: null, softTimer: null, overallTimer: null, onMessage: null };
+  activeGalleryChildStartup = attempt;
+  attempt.onMessage = event => {
+    if (!galleryChildIsCurrent(attempt) || event.origin !== attempt.origin ||
+        event.source !== iframe.contentWindow) return;
+    const data = event.data;
+    if (!data || data.schema !== 'dva-gallery-startup/v1' || data.token !== attempt.token ||
+        data.versionId !== attempt.versionId || data.attemptEpoch !== attempt.epoch ||
+        !Number.isSafeInteger(data.sequence) || data.sequence <= attempt.sequence ||
+        !GALLERY_CHILD_PHASES[data.stage] ||
+        !['pending','delayed','ready','error','cancelled','unsupported'].includes(data.status)) return;
+    if (attempt.failed || (attempt.ready && data.status !== 'error')) return;
+    const rank = GALLERY_CHILD_PHASE_ORDER.indexOf(data.stage);
+    if (rank < attempt.phaseRank) return;
+    attempt.sequence = data.sequence;
+    if (data.stage !== attempt.phase) galleryChildArmStage(attempt, data.stage);
+    if (data.status === 'error' || data.status === 'unsupported') {
+      galleryChildFail(attempt, data.stage, data.error?.code || 'PREVIEW_STARTUP_ERROR',
+        data.error?.message || 'このプレビューの初期化に失敗しました。', data.status);
+      return;
+    }
+    if (data.status === 'cancelled') return;
+    if (data.status === 'ready') {
+      const proof = data.firstFrame;
+      if (data.stage !== 'playing' || proof?.recorded !== true || proof?.submitted !== true ||
+          proof?.completed !== true || proof?.canvasConnected !== true ||
+          Number(proof?.passes) !== 2 ||
+          !(Number(proof.viewportWidth) > 0) || !(Number(proof.viewportHeight) > 0)) return;
+      attempt.ready = true;
+      galleryChildClearTimers(attempt);
+      galleryChildStatusNode().hidden = true;
+    }
+  };
+  window.addEventListener('message', attempt.onMessage);
+  galleryChildArmStage(attempt, 'child-document');
+  attempt.overallTimer = setTimeout(() => {
+    if (attempt.legacy && galleryChildIsCurrent(attempt) && !attempt.failed) {
+      attempt.status = 'unconfirmed';
+      galleryChildShow(attempt,
+        'この版は描画開始を報告しません。90秒以内の描画開始は未確認です。', true);
+      return;
+    }
+    galleryChildFail(attempt, attempt.phase,
+      'STARTUP_TIMEOUT_OVERALL', 'プレビュー全体が90秒以内に描画を開始しませんでした。再読み込みできます。');
+  },
+    Math.max(0, 90000 - (performance.now() - attempt.createdAt)));
+  return attempt;
+}
+
   const defaultVersionIndex = entry => Math.max(0, entry.versions.findIndex(item => item.id === entry.defaultVersionId));
   let buttons = [];
   function adoptionState(item) {
@@ -671,8 +880,7 @@ version('vibe-coding-sol61-r5', 'GPT-6.1-Sol r5', 'public/sol61-vibe-coding/r5/i
     const preview = makePreview(item); sourceLink.href = preview.href;
     sourceLink.textContent = '元のWebGPUプレビューを見る ↗';
     buttons.forEach((button, i) => button.setAttribute('aria-current', i === selectedIndex ? 'true' : 'false'));
-    if (previewStatusPoll !== null) window.clearInterval(previewStatusPoll);
-    previewStatusPoll = null;
+    retireGalleryChildStartup('effect-selection-changed');
     const previousFrame = stage.querySelector('iframe');
     if (previousFrame) sfxBridge?.detachFrame(previousFrame);
     previousFrame?.remove();
@@ -682,22 +890,29 @@ version('vibe-coding-sol61-r5', 'GPT-6.1-Sol r5', 'public/sol61-vibe-coding/r5/i
     notice.textContent = 'WebGPU プレビューを読み込んでいます…';
     const iframe = document.createElement('iframe'); iframe.title = `${group.title} ${item.title} WebGPU 自動再生`;
     iframe.allow = 'autoplay'; iframe.width = String(PRESENTATION.width); iframe.height = String(PRESENTATION.height);
-    iframe.src = preview.href; fitPreview(iframe, item, group);
+    const attempt = beginGalleryChildStartup(item, preview, iframe, selectedIndex, selectedVersionIndex);
     iframe.addEventListener('load', () => {
+      if (!galleryChildIsCurrent(attempt)) return;
       activeAudioFrame = iframe; activeAudioItem = item;
       reflectAudio(sfxBridge?.attachFrame(iframe, item));
-      try {
-        const child = iframe.contentDocument; if (!child) throw new Error('プレビューにアクセスできません');
-        const error = child.getElementById('error');
-        const updateNotice = () => { const message = error?.textContent?.trim(); notice.textContent = message || ''; notice.hidden = !message; };
-        updateNotice();
-        // Preview hosts differ in how they expose status; polling avoids cross-frame
-        // Node identity failures during rapid version switching.
-        previewStatusPoll = window.setInterval(updateNotice, 250);
-      } catch (error) { notice.textContent = error.message; notice.hidden = false; }
+      let childSnapshot = null;
+      try { childSnapshot = iframe.contentWindow?.__dvaGalleryStartupSnapshot?.(); } catch (_) {}
+      if (childSnapshot?.schema !== 'dva-gallery-startup/v1' || childSnapshot?.token !== attempt.token ||
+          childSnapshot?.versionId !== attempt.versionId || childSnapshot?.attemptEpoch !== attempt.epoch) {
+        // Legacy HTML load is not a child status or first-frame signal. Keep it bounded
+        // and explicit without inventing a renderer phase or hiding the notice.
+        galleryChildWatchLegacyFailure(attempt, iframe);
+      }
     });
-    iframe.addEventListener('error', () => { notice.textContent = 'プレビューを読み込めませんでした'; notice.hidden = false; });
-    stage.append(iframe); fitObserver?.disconnect(); fitObserver = new ResizeObserver(() => fitPreview(iframe, item, group)); fitObserver.observe(stage);
+    iframe.addEventListener('error', () => galleryChildFail(attempt, 'child-document',
+      'CHILD_DOCUMENT_ERROR', '選択したプレビューを読み込めませんでした。再読み込みできます。'));
+    iframe.src = attempt.url;
+    fitPreview(iframe, item, group);
+    stage.append(iframe);
+    // The live startup status is above the stage; hide its obsolete in-stage loading notice under the opaque iframe.
+    notice.hidden = true;
+    galleryChildArmStage(attempt, 'child-document');
+    fitObserver?.disconnect(); fitObserver = new ResizeObserver(() => fitPreview(iframe, item, group)); fitObserver.observe(stage);
   }
   const exposedEntries = entries.map(group => Object.freeze({ id: group.id,
       title: group.title, integration: group.integration, reason: group.reason,
@@ -980,6 +1195,7 @@ version('vibe-coding-sol61-r5', 'GPT-6.1-Sol r5', 'public/sol61-vibe-coding/r5/i
     selectImage(group, activeMapSelection.versionIndex);
   });
   function renderSelection() {
+    if (currentCategory !== 'effect') retireGalleryChildStartup('category-changed');
     resetMapInteractionForListChange();
     mapInteractionToggle.checked = false;
     mapInteractionToggle.disabled = true;
@@ -994,6 +1210,7 @@ version('vibe-coding-sol61-r5', 'GPT-6.1-Sol r5', 'public/sol61-vibe-coding/r5/i
     const groups=currentCategory==='effect'?entries:imageGroups.filter(g=>g.category===currentCategory);
     const matching=groups.map(group=>({group,indices:visibleVersionIndices(group)})).filter(row=>row.indices.length);
     if(!matching.length){
+      retireGalleryChildStartup('empty-category');
       mapSelectionGeneration++; activeMapSelection = null; mapOriginalComparison = false; mapInteractionPreview = false; mapInteractionControl.hidden = true; mapInteractionToggle.checked = false; mapInteractionToggle.disabled = true; mapComparison.hidden = true;
       layout.hidden=true;emptyCategory.hidden=false;emptyCategory.textContent=`${document.getElementById('list-heading').textContent}はありません。`;
       const previousFrame = stage.querySelector('iframe');
