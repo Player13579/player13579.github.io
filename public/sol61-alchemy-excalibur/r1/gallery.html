@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>GPT-6.1-Sol Excalibur E R1</title>
+  <style>
+    :root { color-scheme: dark; font: 14px/1.45 system-ui, sans-serif; background:#10151d; color:#edf1f7; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:16px; }
+    main { width:min(980px,100%); }
+    h1 { margin:0 0 8px; font-size:18px; font-weight:600; }
+    p { margin:4px 0 10px; color:#b6c1ce; }
+    .stage { width:100%; aspect-ratio:980/620; background:#0b111a; border:1px solid #34404d; overflow:hidden; }
+    canvas { display:block; width:100%; height:100%; }
+    .controls { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+    button { min-height:34px; color:inherit; background:#202a36; border:1px solid #465667; border-radius:5px; padding:5px 10px; }
+    button:focus-visible { outline:2px solid #f1c66f; outline-offset:2px; }
+    #status,#dpr { min-height:20px; color:#b8c8d8; font-variant-numeric:tabular-nums; }
+    #error { white-space:pre-wrap; overflow-wrap:anywhere; color:#ffb6a9; background:#321e22; padding:9px; }
+    [hidden] { display:none !important; }
+    body.embed { padding:0; min-height:0; display:block; }
+    body.embed h1, body.embed p, body.embed .controls, body.embed #dpr { display:none; }
+    body.embed main { width:100%; }
+    body.embed .stage { width:100%; border:0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>GPT-6.1-Sol Excalibur E R1</h1>
+    <p>合成された発明成功receiptの視覚プレビューです。ダメージ判定・手の解剖学的なゲーム接続は行いません。</p>
+    <div class="stage"><canvas id="preview" width="980" height="620" aria-label="WebGPU Excalibur effect preview"></canvas></div>
+    <div id="status" role="status" aria-live="polite">WebGPUを準備しています</div>
+    <div id="dpr"></div>
+    <div class="controls" aria-label="固定時相比較">
+      <button type="button" id="enable-audio">このEのSFXを有効化</button>
+      <button type="button" data-phase="0">0 ms</button><button type="button" data-phase="90">90 ms</button>
+      <button type="button" data-phase="320">320 ms</button><button type="button" data-phase="650">650 ms</button>
+      <button type="button" data-phase="900">900 ms</button><button type="button" data-phase="1199">1199 ms</button>
+      <button type="button" data-phase="1200">終了 1200 ms</button><button type="button" id="resume">自動再生</button>
+      <button type="button" data-main="false">主形 OFF</button><button type="button" data-main="true">主形 ON</button>
+      <button type="button" data-obs="false">OBS OFF</button><button type="button" data-obs="true">OBS ON</button>
+    </div>
+    <pre id="error" hidden></pre>
+  </main>
+  <script type="module" src="./gallery.mjs"></script>
+  <script>
+    if (new URLSearchParams(location.search).has('embed')) document.body.classList.add('embed');
+    if (new URLSearchParams(location.search).has('verify')) document.querySelector('#enable-audio').hidden = true;
+    addEventListener('click', event => {
+      const button = event.target.closest('button');
+      if (!button || !window.__excaliburPreview) return;
+      if (button.id === 'enable-audio') { void window.__gallerySfx?.activateFromGesture({ id: 'gallery-button' }); return; }
+      if (button.dataset.phase !== undefined) void window.__excaliburPreview.setPhase(Number(button.dataset.phase));
+      else if (button.id === 'resume') location.href = location.pathname + '?embed=1';
+      else if (button.dataset.main !== undefined) void window.__excaliburPreview.configure({ main: button.dataset.main === 'true' });
+      else if (button.dataset.obs !== undefined) void window.__excaliburPreview.configure({ obs: button.dataset.obs === 'true' });
+    });
+  </script>
+</body>
+</html>
