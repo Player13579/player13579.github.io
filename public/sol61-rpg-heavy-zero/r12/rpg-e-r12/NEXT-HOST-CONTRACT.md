@@ -1,0 +1,1 @@
+Use CONTRACT.md Faithful Luna port. Native-ready module rpg-e-r12.mjs; physical/rpg-e.mjs imported by unchanged observer. Preserve same actual host geometry and R11 source/PCM. New version must be stage-listed only after technically replayable; no adoption/quality claims from source checks.

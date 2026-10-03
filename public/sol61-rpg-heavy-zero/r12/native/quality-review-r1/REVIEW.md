@@ -1,0 +1,25 @@
+# Rocket R12 actual-image author quality review
+
+Observed partial improvement: connected smoke bulk650/900 is materially stronger than R11 sparse wisps. Overall heavy-blast/front readability remains unmet. No R13 source/newversion was created in this review; consequential lifecycle final review takes priority. Preserve R12 eligible technical replay/history, unadopted.
+
+Actual source/host exact R12 package: PH910b8fa1946125d454db83e66dd2b4a9b6525fad8e79df153a5a7a20ef3df501, combinedb3aa632d4be46d495c3c33e5b79281ef51bcdeec8e7575d1a2108cb2ea8a16f0, observerfb6b2c6ae6569c9514659aa97a0555b5d50b8febd271e6b7a9029326d6dec9b2. Host basis same R11 adapter with version/path strings only. Input hashes saved. Root errors[]/actualWebGPU heldsamples are technical evidence, not qualitypass.
+
+Allactual100/350/350-observer-off/650/900-rendered/loop viewed.900.png also viewed but shows RequestingWebGPUdevice startup, so explicitly EXCLUDED fromphase/expiry qualityproof. Root REVIEW.md confirms corrected900-rendered displays Submitted900.
+
+100: luminous orange/white impact has a smooth rounded oval silhouette, crossed by broad pale horizontal bands. It reads as a banded luminous ball above the base, not a forceful pressure front with separated combustion layers. This is not a complaint about strong white peaks.350: glowing red/orange bulk is rounded with soft blurred boundary and pale swathes.350-observer-off retains that same soft mass, so reducing OBS/blur is not a justified repair. OBS is mandatory and should remain meaningful defaultON. No inference that observer caused the failure.
+
+650: larger connected gray density with broad light/shadow lobes replaces isolated R11wisps.900-rendered: connected mass remains, with thinner/lowercontrast residual. This satisfies the narrow sampled connected-bulk improvement, but thick mass alone does not prove gas advection or heavyblast. loop image contains late gray material only; no visibleage and no video, so it cannot certify all temporal phases/cycling smoothness. Front/rear directional jets still distinct; no rear impact is shown.
+
+## Concrete next construction contract (design decision, not executable yet)
+
+Keep R7 directional jets/actual pose anchors/attempt receipt/field support/lifetimes/PCM and source-qualified PH/receiver/trueOBS resource leases exact. Revise impact density topology/advection only. R11/R12 compact ellipsoid regions now coalesce into a convex rounded carrier; changing coefficients/noise/brightness/shell curvature or count again is unlikely to remove that projection. Replace convex packet dominance with an outward unfolding pressure fan and trailing entrained smoke regions. Not old superellipse extrusion/continuous U shell, not a ring or newdecorative sparks.
+
+Bounded phase ownership:0–160ms a dense source-local seed must visibly give way to two spatially separated, staggered near/far pressure fronts moving away from impact, each with open irregular side and depth extent. Their emission follows transported burn age, not bands sweeping across a stationary ball.160–500ms fronts split/fold into broad outward/upward flow with a changing nonconvex silhouette and a real lower-density passage between near/far regions; maintain strong burning material on actual front locations.500–900ms same trajectories carry thick smoke interior and edge breakup. The source-local core should transfer density into fronts, rather than staying a smooth centered cap while bright bands animate. Preserve finite source/heat/lifetime and exact support; no required SIfluid solver or inventedgroundnormal.
+
+Accept R12 connected smoke interior as a retained requirement; do not lose it by returning to sparse wisps. Connected does not require one convex opaqueblob. Broad internal pockets and interpenetrating depths should read after20rayintegration. Pressure frontier support and smoke transport must both visibly change from100→350→650; differentiating near/far merely in code is not proof. Cost should remain20depth/atmost4carriers, no count/detail-only gain, no newimage textures/history. Author of actual next candidate settles exact equations and tests; this prose is not a frozen executable design.
+
+Native next candidate gates: early40/100/180, transition350/450, smoke650/900, clean1200 and truecontinuous0–1200 observation. Samehypotheticalfixture/worldscale as comparison, separately actualregistered game/H64 proof still required. At350 preserveOBS ON/OFF to verify source material improvement independent of observer; source-lightOFF/receiverOFF at emissivephase remains needed. Finite smokeend/SFXnormalgesture/Safari/GPUcost/realgameownership/occlusion remain unverified. No blanket dim/exposure/OBSdisable remedy or quality claim fromCPUcoverage.
+
+No source edits/browser/server/newtests/gallery/ledger/adoption actions. Model catalog displayname local fallback2026-10-02T18:06:22.559442200Z GPT-6.1-Sol.
+
+モデル分担：GPT-6.1-Sol 100% — actual-image author quality review and bounded next-construction contract.

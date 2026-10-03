@@ -1,0 +1,91 @@
+{
+  "schema": "rocket-r11-design-manifest/v1",
+  "entry": "rpg-e-r11.mjs",
+  "candidateVersion": "sol-rpg-heavy-quality-r11-observer",
+  "physicalVersion": "sol-rpg-heavy-quality-r11",
+  "observerVersionHistorical": "sol-rpg-heavy-quality-r9-observer",
+  "author": "GPT-6.1-Sol",
+  "adoption": "unadopted",
+  "status": "native-ready-source; faithful-host-not-created-here",
+  "quality": "unaccepted pending",
+  "sourceFiles": [
+    {
+      "path": "physical/rpg-e.mjs",
+      "sha256": "fb33eea4108937c876b5c77b3d765aa643b5249ca296af2232e250c87abbde7e",
+      "bytes": 24176
+    },
+    {
+      "path": "observer.mjs",
+      "sha256": "fb6b2c6ae6569c9514659aa97a0555b5d50b8febd271e6b7a9029326d6dec9b2",
+      "bytes": 8538
+    },
+    {
+      "path": "rpg-e-r11.mjs",
+      "sha256": "6d388f5b91f885ee5177ae40e3e0885ca9be6fef1df94a1dee522b1d442b5caa",
+      "bytes": 2084
+    },
+    {
+      "path": "volume.wgsl",
+      "sha256": "840bb218525eb900297d3bf97de124126346225b2f6d2e55dfdf71bd60b7b105",
+      "bytes": 3392
+    },
+    {
+      "path": "jet.wgsl",
+      "sha256": "7fae66ff02dd311c320466eb3bbc823593b578b164a230951e6241f438604523",
+      "bytes": 2164
+    },
+    {
+      "path": "VFX.wgsl",
+      "sha256": "14b7b572bfef8404311806295475a860b0dc41a1c8e8b312de33ac8006bb9df3",
+      "bytes": 7233
+    },
+    {
+      "path": "source.wgsl",
+      "sha256": "21587f3e9f7d42696ee57fdb5e11a42bda52b987415f8ad9f2d71892b1e05fbc",
+      "bytes": 7702
+    },
+    {
+      "path": "observer.wgsl",
+      "sha256": "1abccbd88b7128c4bbca5c065248b132de2be8f252e49d6b94c5d1b4e74ad55c",
+      "bytes": 1078
+    },
+    {
+      "path": "LIGHT_POST.wgsl",
+      "sha256": "d714dd222e5bceecd9568822408c4bd96b2d72e194d767ddecf6e6d25dc830ac",
+      "bytes": 1427
+    },
+    {
+      "path": "authority/e-design-quality.md",
+      "sha256": "f97a6d2fa027eb4c5ccaf16ec33ce3b305478853865467406e256af09b836639",
+      "bytes": 60421
+    },
+    {
+      "path": "authority/基底.md",
+      "sha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364",
+      "bytes": 128151
+    },
+    {
+      "path": "authority/拡張.md",
+      "sha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67",
+      "bytes": 77706
+    }
+  ],
+  "tests": {
+    "CPU": 40247,
+    "inheritedActualFunctions": 41,
+    "observerActualFunctionMocks": 954,
+    "JSSyntaxFiles": 10
+  },
+  "authorityHead": "22d3fcfd617f42b1a967de767906204c0221ec64",
+  "parentPhysical": "0b1591b8cbd76dfd7fc4719d7812faa0ab176299988933e96ca1eccc330a329a",
+  "remaining": [
+    "faithful-host actual initialize and WGSL compilation",
+    "actual H64/zoom continuous full-lifetime quality",
+    "hot-phase source/receiver/OBS comparison",
+    "real pose/body integration and any world occlusion",
+    "normal SFX listening",
+    "1/4/8-effect GPU cost",
+    "Safari/iPad",
+    "game integration"
+  ]
+}

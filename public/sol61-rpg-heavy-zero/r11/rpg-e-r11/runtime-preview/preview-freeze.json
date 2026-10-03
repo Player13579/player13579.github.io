@@ -1,0 +1,56 @@
+{
+  "schema": "rocket-r11-private-runtime-freeze/v1",
+  "entry": "rpg-e-r11.mjs",
+  "candidateVersion": "sol-rpg-heavy-quality-r11-observer",
+  "physicalVersion": "sol-rpg-heavy-quality-r11",
+  "observerVersion": "sol-rpg-heavy-quality-r9-observer",
+  "observerAuthorship": "preserved historical R9 observer source",
+  "sourceSealSha256": "cadd1b69617fcd1ce7838094cfab77d256b40a37dcc9efa9b9354f24c5ffda80",
+  "sourcePins": {
+    "entry": "6d388f5b91f885ee5177ae40e3e0885ca9be6fef1df94a1dee522b1d442b5caa",
+    "physical": "fb33eea4108937c876b5c77b3d765aa643b5249ca296af2232e250c87abbde7e",
+    "observer": "fb6b2c6ae6569c9514659aa97a0555b5d50b8febd271e6b7a9029326d6dec9b2"
+  },
+  "r10HostTemplate": {
+    "path": "outputs/request-20261003/rocket-r10-faithful-preview-r1/candidate/package/rpg-e-r10/runtime-preview/preview-host.mjs",
+    "sha256": "be5053a8b4d51ba73d2a37e071976df48a40f4d97475dde61b13af06b60bfcac",
+    "entryPoint": "R10 faithful preview host ABI"
+  },
+  "hostControls": {
+    "startEnd": "authored Play/Pause and E-clock range",
+    "variant": [
+      "normal",
+      "enhance"
+    ],
+    "reducedMotion": true,
+    "poseAge": "follows E clock by default; explicit independent diagnostic override",
+    "sourceVisible": true,
+    "physicalSourceLight": true,
+    "physicalReceiverPass": true,
+    "observerSourceFeed": true,
+    "observerResponse": true,
+    "observerIntensityRange": [
+      0,
+      2
+    ],
+    "allSourceEffectControlsDefaultOn": true
+  },
+  "embeddedLoop": {
+    "cycleMs": 1500,
+    "eventMs": 1200,
+    "pauseGapMs": 300,
+    "distinctCauseSourceIdsPerCycle": true,
+    "verifyAudio": "hard-zero",
+    "continuousAudio": "never; normal audio is user-gesture/effect-receipt gated"
+  },
+  "fieldLayerCount": "actual plan.fields.length; no fixed layer count",
+  "worldOcclusion": "not-modeled; foreground overlay transmission parity only",
+  "sourceSpriteBodyIntegration": "not-established; gray fixture geometry only",
+  "authoredCost": {
+    "carrierEvaluationsPerVolumePixel": 80,
+    "nativeEffectCountScaling": "not-measured"
+  },
+  "nativeWGSL": "pending root-owned compile",
+  "quality": "pending-native",
+  "adoption": "unadopted"
+}

@@ -1,0 +1,3 @@
+# Additional R11 held phases
+
+Root sampled exact frozen R11 at 250/350/450/900 ms on actual WebGPU with default source, receiver and OBS enabled. All four screenshots are saved by age; error log is empty. These are held phases, not continuous-motion proof. At 250–450 ms the material remains a low blurred luminous cluster with separated upright lobes; at 900 ms only sparse gray smoke is visible. The additional sampled phases do not resolve the heavy explosion thickness/readability concern noted in the earlier author review. Quality remains unaccepted, not an exposure/white-clipping failure. Source and host were unchanged. Owned tab199 closed; host5774 stopped.

@@ -1,0 +1,31 @@
+# Rocket R12 — pressure front leaves entrained smoke interior
+
+GPT-6.1-Sol creative impact-only derivative. Unadopted; native quality pending. Exact R11 parentfb33eea4108937c876b5c77b3d765aa643b5249ca296af2232e250c87abbde7e, sealcadd1b69617fcd1ce7838094cfab77d256b40a37dcc9efa9b9354f24c5ffda80. Original prior authored modules and native images remain unchanged. This is not a clean-input zero remake. Read actual100/250/350/450/650/900/loop via view_image: low blurred fire lobes persist in intermediate samples; later smoke remains sparse. No sampled thick phase was found. Continuous quality is not established.
+
+## Authority mapping
+
+Requested: bounded impact material/transport redesign after confirmed R11 heavy-blast/smoke failure. Retained mandatory: real pose anchors, forward/rear directional distinction, actual receipt privacy/currentness, finite source radiance and receiver response, real ordinary runtime WebGPU source-fed observer PostEffects, finite gesture-gated PCM. Explicit overrides:none. B base/extensions22d3fcfd617f42b1a967de767906204c0221ec64 verified via explicit readonly remote refs; preserved full texts in authority. Current E quality authority copied at freeze. White brightness is not a failure, no dim/blur/noise coverup. No new textures/sprites/particles or gameplay change. No world/body occlusion claim; foreground visibility input truth remains host-owned.
+
+## Executable construction
+
+volume.wgsl is embedded verbatim into physical/rpg-e.mjs/VFX_WGSL. Four parcel regions still20 depths, but no R11 narrow kernel powers or moving deep density valley. New material ownership separates a finite travelling pressure front from the gas left behind. Each front expands from shared seed with28ms birth stagger and180ms completion stagger. Shared transport smooth150..980, reduced motion factor.33. Centers/radii/angles/weights are exact in WGSL and mirrored CPU; broad y radii .37–.45 rather than isolated small upright tips. Smoke adds radii(.065,.065,.055) and shared .045 transport rise, so it inherits the same formation rather than unrelated puffs.
+
+Inverse-turn parcel coordinates shear x by.075sin(3.4qz+1.3k−.0035t)m, y by.080cos(turn+3xy.x)m; z/radii differs per actual front. Compact bulk is1−smooth(.05 fire/.18 smoke,1,r²), not a thin shell/extruded solid. Finite normalizedboundary remains .94..1. Pressurefront F=local.y+.38local.z−[−.65+1.2smooth(20+30k,280+30k,t)], ridge exp(−(F/.28)²). Fire density compact×(.28+.72ridge)×weight. Smoke density compact×(.70+.30roll)×weight where roll=.62+.38sin(3local.y−3.5local.z+1.4k−.005t). This supplies a substantial interior behind the front, with broad turning density variation, no fine noise or full-volume cleft.
+
+Color source constants retained[16,10.4,4]/[13,4.4,.60], orange[2.8,.13,.008], crease[7,2.3,.08]. Hot region follows travelling ridge instead of a static lower hot center. Fire pulse80+28k with65ms width, exp−t/460 retained. Smoke previous directional normal material and170ms residual heat retained. Opacity coefficient.48 fire/.47 smoke and clocks unchanged; not blanket brightness/alpha gain. Integrated values differ as expected for redistributed material. CPU coarse24² alpha sums10029.146/35044.607/650119.736/90072.302 (R1116.090/9.317/26.696/15.690); this is coverage evidence only, not quality. Peak coarse10014.086HDR. Dense interior could still project as an opaque rounded cloud; root actual rejection gate must check that, no selfacceptance.
+
+## Unchanged cross-system contracts
+
+R7-authored jets exact, actual mouth/rear anchors, finite forward360/400 and rear160/190, field support sizes forward98×34/rear58×42, impact105×76 smoke122×92. Event1200, normal/enhanced fire620/700, smoke1040/1100, smoke generation220..500. No rear impact or newprojectile. Entire PH module reverse replacing volume and VERSION matches R11 exactly. Plan, createPass, pose/receipt/currentness/device/owner unsupported guards and PCM functions are source-identical. Launch360ms/impact520ms44.1/48kHz, verifyhardzero, one accepted audio owner unchanged.
+
+Observer.mjs exact R11 bytes, historical R9 identity preserved; actual source extraction evaluates NEW PH shader via imported module, smoke excluded. Combined rpg-e-r12.mjs differs from R11 only candidate version. Same source/receiver/OBS frameToken/target/scene/device/queue-completion contracts. Ordinary ON, distinct19fetch observer; no final tone-map-only replacement. SOURCE_WGSL/OBS_WGSL extracted from actual modules, not unconnected examples.
+
+## Faithful Luna port and native gates
+
+Copy exact new package into a NEW R12 derivative of rocket-r11-faithful-preview-r1. Import rpg-e-r12.mjs, relabel candidate/version/source manifest, leave host geometry, pose providers, plan receipts, physical receiver, foreground transmission order and SFX unchanged. Do not fit/enlarge fire independently or change field geometry to disguise shape. Root owns route/listener; no server/browser launched here. Preserve R11 gallery eligibility/history.
+
+Root capture emissive100/250/350/450 and smoke650/900 plus1200end, one real continuous cycle. Require unfolding near/far fronts and transported connected smoke interior at actual same scale; fail if low campfire, solid sheet/closed shell, isolated wisps, uniform blob or mere whiteflood. At emissive250 compare source-lightOFF/receiverOFF/OBS sourceOFF/responseOFF with defaultON; keep mandatory actual post normal route. Fixture currently hypothetical gray block-body not actualH64 game registration or world occlusion proof. Normal SFX listening, Safari/iPad, GPU cost and actual game integration remain unverified.
+
+Cost unchanged fromR11:20×4=80 density evaluations/volume pixel, overlap PHfire+smoke+source worst240;19OBS texturefetches, no newtargets/uniforms.31,771 CPU/source assertions passed;954 actual API GPU-call mocks passed after test import/version adaptation. Initial inherited observer test failed because oldR11 filename absent; corrected test only, rerunpass. Native WGSL compile notrun. CPU mirror is manually authored equation check, cannot prove shader compilation or visual quality.
+
+モデル分担：GPT-6.1-Sol100% — bounded impact creative derivative, executable shader and faithful contract/checks.

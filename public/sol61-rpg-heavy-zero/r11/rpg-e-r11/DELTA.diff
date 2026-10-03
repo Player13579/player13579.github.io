@@ -1,0 +1,111 @@
+--- R10/physical/rpg-e.mjs
++++ R11/physical/rpg-e.mjs
+@@ -1,5 +1,5 @@
+-// GPT-6.1-Sol derivative RPG heavy pressure surfaces E r10; R8/R9 history preserved. Preview causal protocol only; not a game port.
+-export const VERSION = 'sol-rpg-heavy-quality-r10';
++// GPT-6.1-Sol derivative RPG transported blast volumes E r11; prior authorship/history preserved. Preview causal protocol only; not a game port.
++export const VERSION = 'sol-rpg-heavy-quality-r11';
+ export const MAX_ATTEMPTS = 64;
+ const finite = n => typeof n === 'number' && Number.isFinite(n);
+ const point = p => p && finite(p.x) && finite(p.y);
+@@ -106,51 +106,44 @@
+ }
+ // Front-to-back emission/absorption integration of a finite local volume.
+ // R6: open combustion interfaces and carrier transport replace the R5 enclosed medium.
+-// R10: finite rolled pressure surfaces; one shared open air cleft passes through all depth layers.
++// R11: four transported compact density packets, no shared cut or extruded skin.
+ fn volume(p:vec2f,t:f32,en:f32,reduced:f32,smoke:bool)->vec4f {
+  let fireLife=pow(max(0.0,1.0-t/mix(620.0,700.0,en)),1.1);
+  let smokeLife=smoothstep(220.0,500.0,t)*pow(max(0.0,1.0-t/mix(1040.0,1100.0,en)),0.66);
+  let life=select(fireLife,smokeLife,smoke)*smoothstep(0.0,15.0,t);
+- let unfold=smoothstep(8.0,120.0,t);let transport=smoothstep(170.0,980.0,t);let motion=1.0-reduced*0.67;
++ let unfold=smoothstep(8.0,140.0,t);let transport=smoothstep(150.0,980.0,t);let motion=1.0-reduced*0.67;
+  let boundary=(1.0-smoothstep(0.94,1.0,abs(p.x)))*(1.0-smoothstep(0.94,1.0,abs(p.y)));
+- let cy=0.025+0.075*unfold+0.25*transport*motion;
+- let airX=0.055*sin((p.y-cy)*3.0-t*0.003)*motion+0.20*(p.y-cy);
+- let airWidth=select(0.065,0.080,smoke)*(0.35+0.65*unfold);
+- let airGate=smoothstep(cy-0.01,cy+0.14,p.y);
+- let openCleft=1.0-smoothstep(airWidth,airWidth+0.022,abs(p.x-airX));
+- let sharedAir=1.0-openCleft*airGate*unfold;
+  var radiance=vec3f(0.0);var transmittance=1.0;
+  for(var i=0u;i<20u;i++) {
+   let z=1.0-(f32(i)+0.5)*0.1;var density=0.0;var weightedColor=vec3f(0.0);
+-  for(var k=0u;k<2u;k++) {
+-   let side=select(-1.0,1.0,k==1u);let phase=f32(k)*1.6;
+-   let cx=side*(0.10*unfold+0.07*transport)*motion;
+-   let rx=select(0.31+0.25*unfold-0.06*transport,0.38+0.18*unfold+0.10*transport,smoke);
+-   let ry=select(0.18+0.15*unfold+0.06*transport,0.23+0.16*unfold+0.13*transport,smoke);
+-   let u=(p.x-cx)/rx;
+-   let bend=0.095*sin(u*2.4+phase-t*0.004)*(.3+.7*unfold)*motion;
+-   let v=(p.y-cy-bend)/ry;
+-   let radial=pow(pow(abs(u),4.0)+pow(abs(v),4.0),0.25);
+-   let skin=1.0-smoothstep(0.94,1.04,radial);
+-   let roll=0.63+0.37*pow(0.5+0.5*cos(u*2.6+v*3.1-t*0.004+phase),2.0);
+-   let layerDepth=select(0.32,-0.34,k==1u)+0.10*sin(u*2.2+v*1.8-t*0.003+phase)*motion;
+-   let thickness=select(0.25+0.08*unfold,0.31+0.10*transport,smoke);
+-   let dz=(z-layerDepth)/thickness;
+-   let depthSkin=1.0-smoothstep(0.82,1.05,abs(dz));
+-   let d=skin*roll*sharedAir*boundary*depthSkin;
++  for(var k=0u;k<4u;k++) {
++   let kk=f32(k);let side=select(-1.0,1.0,k==2u);
++   var center=vec3f(0.0,0.025,0.30);var radii=vec3f(0.46,0.23,0.30);var angle=0.15;var weight=1.0;
++   if(k==0u){center.x=-0.08*transport*motion;center.y+=0.09*transport*motion;radii.x+=0.12*unfold;weight=1.0-0.78*smoothstep(200.0,650.0,t);}
++   if(k==1u || k==2u){center=vec3f(side*(0.08+0.30*unfold+0.05*transport*motion),0.10+select(0.16,0.08,k==2u)*unfold+select(0.16,0.25,k==2u)*transport*motion,select(-0.34,0.12,k==2u));radii=vec3f(0.25+0.08*transport,0.23+0.11*transport,0.28);angle=side*(0.37+0.20*transport*motion);weight=0.88*smoothstep(20.0,100.0,t);}
++   if(k==3u){center=vec3f(0.06-0.12*transport*motion,0.08+0.36*unfold+0.16*transport*motion,-0.18);radii=vec3f(0.30,0.24+0.08*transport,0.26);angle=-0.28*motion;weight=0.76*smoothstep(50.0,160.0,t);}
++   if(smoke){radii+=vec3f(0.055,0.055,0.045);center.y+=0.075*transport*motion;}
++   let q=vec3f(p,z)-center;let co=cos(angle);let si=sin(angle);
++   let xy=vec2f(co*q.x+si*q.y,-si*q.x+co*q.y);
++   let shear=0.10*sin(q.z*4.0+kk*1.7-t*0.004)*motion;
++   let local=vec3f(xy.x-shear,xy.y+0.055*sin(q.z*3.0+kk-t*0.002)*motion,q.z)/radii;
++   let radial2=dot(local,local);let compact=pow(max(0.0,1.0-radial2),select(2.0,1.25,smoke));
++   // This moving density valley belongs to one packet/depth, never a through-volume notch.
++   let channel=local.x+local.y*0.32+local.z*0.43-0.22*sin(t*0.003+kk*1.9);
++   let valley=1.0-0.78*exp(-pow(channel/0.26,2.0));
++   let broad=0.72+0.28*sin(local.y*2.1-local.z*2.4+kk*1.6-t*0.004);
++   let d=compact*valley*broad*weight*boundary;
+    var color=vec3f(0.0);
+-   if(smoke) {
+-    let rawNormal=vec3f(u/rx+0.35*sin(v*2.1-t*0.003+phase),v/ry,dz/thickness);
+-    let normal=rawNormal/max(length(rawNormal),0.0001);
+-    let key=clamp(dot(normal,normalize(vec3f(-0.45,0.70,0.60))),0.0,1.0);
+-    color=mix(vec3f(0.018,0.024,0.033),vec3f(0.59,0.61,0.63),pow(key,1.15));
+-    color+=vec3f(0.90,0.25,0.02)*exp(-t/170.0)*exp(-pow(v+0.30,2.0));
+-   }else {
+-    let heat=exp(-t/460.0);
+-    let hot=exp(-pow((u+side*0.16)/0.43,2.0)-pow((v+0.36)/0.30,2.0));
+-    let pulse=1.0+0.80*exp(-pow((t-80.0)/65.0,2.0));
+-    let nearHot=select(vec3f(16.0,10.4,4.0),vec3f(13.0,4.4,0.60),k==1u);
+-    let crease=exp(-pow((v-0.32*sin(u*2.0-t*0.004+phase))/0.14,2.0));
++   if(smoke){
++    let normal=local/max(length(local),0.0001);let key=clamp(dot(normal,normalize(vec3f(-0.45,0.70,0.60))),0.0,1.0);
++    let inner=clamp(1.0-radial2,0.0,1.0);
++    color=mix(vec3f(0.025,0.032,0.043),vec3f(0.67,0.69,0.71),pow(key,1.1))*(0.72+0.28*(1.0-inner));
++    color+=vec3f(0.90,0.25,0.02)*exp(-t/170.0)*inner;
++   }else{
++    let heat=exp(-t/460.0);let hot=exp(-pow((local.x+0.18*sin(kk*1.3))/0.65,2.0)-pow((local.y+0.30)/0.55,2.0)-pow((local.z-0.24)/0.70,2.0));
++    let pulse=1.0+0.80*exp(-pow((t-80.0-kk*12.0)/65.0,2.0));
++    let nearHot=select(vec3f(16.0,10.4,4.0),vec3f(13.0,4.4,0.60),k==1u || k==3u);
++    let crease=exp(-pow((channel-0.32)/0.18,2.0))*(0.35+0.65*max(0.0,1.0-radial2));
+     color=mix(vec3f(2.8,0.13,0.008),nearHot,hot*heat)*pulse+vec3f(7.0,2.3,0.08)*crease*heat;
+    }
+    density+=d;weightedColor+=d*color;
+--- R10/observer.mjs
++++ R11/observer.mjs
+@@ -1,6 +1,6 @@
+ import {VFX_WGSL} from './physical/rpg-e.mjs';
+ export const VERSION='sol-rpg-heavy-quality-r9-observer';
+-// R10 PH is sampled directly. Historical R9R2 OBS equations/lifecycle remain unchanged.
++// R11 PH is sampled directly. Historical R9R2 OBS equations/lifecycle remain unchanged.
+ export const SOURCE_WGSL=VFX_WGSL.replace('@fragment fn fs(o:Out)->@location(0) vec4f','fn r8Field(o:Out)->vec4f')+`
+ @group(0) @binding(2)var transmission:texture_2d_array<f32>;
+ @fragment fn sourceFS(o:Out)->@location(0)vec4f{
+--- R10/rpg-e-r10.mjs
++++ R11/rpg-e-r11.mjs
+@@ -1,6 +1,6 @@
+ export * from './physical/rpg-e.mjs';
+ export {createObserverPass,VERSION as OBSERVER_VERSION} from './observer.mjs';
+-export const CANDIDATE_VERSION='sol-rpg-heavy-quality-r10-observer';
++export const CANDIDATE_VERSION='sol-rpg-heavy-quality-r11-observer';
+ import {createPass as createPhysicalPass} from './physical/rpg-e.mjs';
+ import {createObserverPass} from './observer.mjs';
+ // Ordinary R9 path requires its observer input; the R8 receipt/SFX ABI remains.

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>RPG E r12 transported volume observer technical preview</title>
+  <script>if(new URLSearchParams(location.search).has("embed"))document.documentElement.classList.add("embed");</script>
+  <link rel="stylesheet" href="./preview.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div><p class="eyebrow">TECHNICAL PREVIEW · HYPOTHETICAL ONLY</p><h1>Heavy RPG · r12</h1></div>
+      <span id="mode" class="badge">Starting</span>
+    </header>
+    <section class="stage"><canvas id="stage" aria-label="WebGPU effect preview"></canvas><div id="diagnostic" role="status">Requesting WebGPU device…</div><pre id="error" role="alert" hidden></pre></section>
+    <section class="controls" aria-label="Preview controls">
+      <button id="play" disabled>Play with sound</button>
+      <button id="silent" disabled>Play silently</button>
+      <button id="pause" disabled>Pause</button>
+      <label>Variant <select id="variant"><option value="normal">Normal</option><option value="enhance">Enhance</option></select></label>
+      <label class="check"><input id="reduced" type="checkbox"> Reduced motion</label>
+      <label class="check"><input id="sourceLight" type="checkbox" checked> Receiver source light</label>
+      <label class="check"><input id="receiverPass" type="checkbox" checked> Physical receiver</label>
+      <label class="check"><input id="observerSourceFeed" type="checkbox" checked> OBS source feed</label>
+      <label class="check"><input id="observerResponse" type="checkbox" checked> OBS response</label>
+      <label class="check"><input id="sourceVisible" type="checkbox" checked> Source visible</label>
+      <label class="check"><input id="poseLock" type="checkbox" checked> Pose follows E clock</label>
+      <label class="scrub">Pose age <input id="poseAge" type="range" min="0" max="260" value="0" disabled><output id="poseAgeValue">0 ms</output></label>
+      <label class="scrub">OBS intensity <input id="observerIntensity" type="range" min="0" max="200" value="100"><output id="observerIntensityValue">1.00×</output></label>
+      <label class="scrub">E clock <input id="clock" type="range" min="0" max="1200" value="0"><output id="clockValue">0 ms</output></label>
+    </section>
+    <p class="note">Controls are separate: Receiver source light changes only fixture-declared physical light positions; Physical receiver bypasses R12 surface lighting; OBS source feed disables only the source-bound observer input; OBS response sets observer gain to zero while preserving the scene. Both OBS controls are ON by default. The observer visibility mask matches this host’s foreground overlay draw order; it does not model world/body occlusion. Source visibility gates only the source-bound rocket input; pose timing follows the authored E clock by default, with a diagnostic pose-age override; OBS intensity is an independent 0–2× control.</p>
+    <p class="note">Source, impact, lighting positions, and room are hypothetical preview inputs. Physical pose anchors come from the approved male-left RPG source. This is not a game port or adoption. Gray polygon bodies are fixture geometry and do not prove source sprite/body integration.</p>
+    <details><summary>GPU surface lease</summary><pre id="lease">Not initialized.</pre></details>
+  </main>
+  <script type="module" src="./preview-host.mjs"></script>
+</body>
+</html>
+
+
+
