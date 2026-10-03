@@ -1,0 +1,62 @@
+{
+  "schema": "atrium-hydration-isolated-native-replay/v1",
+  "owner": "root",
+  "result": "pass",
+  "sourceManifestSha256": "2fddfc3e763b0fb1b88a02777149f94e940b6ee12ad0dd87b5844c739677e4b5",
+  "sourceSealSha256": "83e3c3d851b31b71c3355998e431a45edc438fae30e3287601c9341fd94ead8e",
+  "hostPinsSha256": "f7c9ed5ea90b40c8ecb477df44668d9eaeabc6fb35a0dd6673a20fb7fd2d14a3",
+  "observations": {
+    "normalAutoplayFrames": 1944,
+    "passesPerFrame": 2,
+    "age600": "localized water-surface emission observed",
+    "age600SourceOff": "source-control evidence captured",
+    "age600PostOff": "post-effect-control evidence captured",
+    "age2600": "effect expired; original image remains",
+    "consoleErrors": 0
+  },
+  "limits": [
+    "isolated native preview only",
+    "not continuous full-lifetime quality acceptance",
+    "not H64/map-scale or occlusion acceptance",
+    "not main-game integration",
+    "not Safari/iPad acceptance",
+    "map audio remains disabled by rule"
+  ],
+  "files": {
+    "600.png": {
+      "path": "native-evidence/600.png",
+      "bytes": 64259,
+      "sha256": "1e9c31b0cb921ac6703d50848581ff34eec53c2eddf2895d4a4d833bb1599e49"
+    },
+    "600-source-off.png": {
+      "path": "native-evidence/600-source-off.png",
+      "bytes": 64104,
+      "sha256": "872ddf7928ebbeb7447686483a8620df50e2caefeca30a474b55b1f56fd821cc"
+    },
+    "600-post-off.png": {
+      "path": "native-evidence/600-post-off.png",
+      "bytes": 64132,
+      "sha256": "46a305bf10a245a14ff6ddcdcbe5464bf45e6ad71551f86cb9773446f985c9cb"
+    },
+    "2600.png": {
+      "path": "native-evidence/2600.png",
+      "bytes": 64251,
+      "sha256": "5947a6cff4e13b6713aada5656bc53892eab6e7d79cc02d94282b7b7b48e5952"
+    },
+    "600.txt": {
+      "path": "native-evidence/600.txt",
+      "bytes": 66,
+      "sha256": "696b4ecd562fca25cbfa2a85ec7526e55a58b4d91e06ce52e7480624a79359d2"
+    },
+    "2600.txt": {
+      "path": "native-evidence/2600.txt",
+      "bytes": 68,
+      "sha256": "b870a1ef8ea754d65ba3a989c89f9ee5e8d864762c96945cd911ca1160baa07c"
+    },
+    "console.json": {
+      "path": "native-evidence/console.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  }
+}

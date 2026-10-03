@@ -424,6 +424,108 @@ version('vibe-coding-sol61-r5', 'GPT-6.1-Sol r5', 'public/sol61-vibe-coding/r5/i
       version('sol-rpg-heavy-quality-r3', 'GPT-6.1-Sol RPG heavy quality r3', 'public/sol61-rpg-heavy-zero/r3/rpg-e-r3/runtime-preview/index.html', 'public/sol61-rpg-heavy-zero/r3/package-manifest.json', '実WebGPU技術再生pass・品質不合格（煙の灰色lobesが燃焼を覆う）・採用状態不明・本編未接続', '創作E: GPT-6.1-Sol。preview host: GPT-6-Luna (R1から継承)。Primary native receipt: held 180ms/600msでWebGPU ready・submit・errorsなし。品質審査ではsmoothなinflated gray lobesが燃焼を隠し不合格。通常SFX聴感、Safari/iPad、採用、本編接続は未実施。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol', designAuthorDisplayName:'GPT-6.1-Sol', runtimeAuthorDisplayName:'GPT-6-Luna (inherited preview host)', creatorDisplayName:'GPT-6.1-Sol (creative) + GPT-6-Luna (inherited host)', creatorModelId:'gpt-6.1-sol+gpt-6-luna', adoption:'unknown', qualityStatus:'not-accepted', qualityReviewStatus:'not-accepted', qualityReviewerDisplayName:'GPT-6.1-Sol', qualityEvidence:'outputs/request-20261002/continuation-primary/NATIVE-CARD-AND-ROCKET-REVIEW.json', technicalReplayStatus:'pass', normalAudioListening:'not_run', safariReplayStatus:'unverified', gameIntegrationStatus:'not_connected', technicalEvidence:'outputs/request-20261002/continuation-primary/ROCKET-R3-SERVED.json', technicalEvidenceFiles:['outputs/request-20261002/continuation-primary/ROCKET-R3-SERVED.json','outputs/request-20261002/native-map-and-vibe-check/rocket-r3-held180.png','outputs/request-20261002/native-map-and-vibe-check/rocket-r3-held600.png','outputs/request-20261002/native-map-and-vibe-check/rocket-r3-held600.json'], nativeAcceptanceProof:'outputs/request-20261002/continuation-primary/NATIVE-CARD-AND-ROCKET-REVIEW.json', packageManifestSha256:'a3df90c33ccf0c1b92f24360cb68a389324b560fdd057807ef9216bb0e81eea9', creativeSourceSha256:'b56403f81a52c6a6eb3beecf9fce64e6440aba774205c6195e178e052e481c25'}),
       version('sol-rpg-heavy-quality-r2', 'GPT-6.1-Sol RPG heavy quality r2', 'public/sol61-rpg-heavy-zero/r2/rpg-e-r2/runtime-preview/index.html', 'public/sol61-rpg-heavy-zero/r2/package-manifest.json', '実WebGPU技術再生pass・品質不合格（soft orange masses・energy hierarchy弱）・採用状態不明・本編未接続', '創作E: GPT-6.1-Sol。preview host: GPT-6-Luna (R1から継承)。Primary native receipt: held 180ms/600msでWebGPU ready・submit・errorsなし。品質審査ではsoft orange massesと弱いenergetic hierarchyが未達。通常SFX聴感、Safari/iPad、採用、本編接続は未実施。', 'effect-H64', 1, {originalCreatorDisplayName:'GPT-6.1-Sol', designAuthorDisplayName:'GPT-6.1-Sol', runtimeAuthorDisplayName:'GPT-6-Luna (inherited preview host)', creatorDisplayName:'GPT-6.1-Sol (creative) + GPT-6-Luna (inherited host)', creatorModelId:'gpt-6.1-sol+gpt-6-luna', adoption:'unknown', qualityStatus:'not-accepted', qualityReviewStatus:'not-accepted', qualityReviewerDisplayName:'GPT-6.1-Sol', qualityEvidence:'outputs/request-20261002/continuation-primary/NATIVE-CARD-AND-ROCKET-REVIEW.json', technicalReplayStatus:'pass', normalAudioListening:'not_run', safariReplayStatus:'unverified', gameIntegrationStatus:'not_connected', technicalEvidence:'outputs/request-20261002/continuation-primary/ROCKET-R2-SERVED.json', technicalEvidenceFiles:['outputs/request-20261002/continuation-primary/ROCKET-R2-SERVED.json','outputs/request-20261002/native-map-and-vibe-check/rocket-r2-held180.png','outputs/request-20261002/native-map-and-vibe-check/rocket-r2-held600.png','outputs/request-20261002/native-map-and-vibe-check/rocket-r2-held600.json'], nativeAcceptanceProof:'outputs/request-20261002/continuation-primary/NATIVE-CARD-AND-ROCKET-REVIEW.json', packageManifestSha256:'a4a92456def4f289d4d0a15b9506cb8b51e1995276a6f9deb862d8823dd57056', creativeSourceSha256:'aa3e16cc833bde8fb61a31a89c7ad1526d6804ced4bdf44ecf5ee07890f520f0'}),
       version('sol-rpg-heavy-zero-r1', 'GPT-6.1-Sol RPG heavy zero r1', 'public/sol61-rpg-heavy-zero/r1/rpg-e-r1/runtime-preview/index.html', 'public/sol61-rpg-heavy-zero/r1/package-manifest.json', '実WebGPU技術再生pass・品質審査前・採用状態不明・本編未接続', '作者: GPT-6.1-Sol。preview host実装: GPT-6-Luna。actual native verify replay: 30 loops、1,892 submitted frames、759 submitted E frames、およびheld 180 ms frameを確認。創作Eとゲーム内RPG表現の意味は元版のまま。品質受入、通常SFX聴感、Safari/iPad、採用、本編接続は未実施。', 'effect-H64', 1, {originalCreatorDisplayName: 'GPT-6.1-Sol', designAuthorDisplayName: 'GPT-6.1-Sol', runtimeAuthorDisplayName: 'GPT-6-Luna', creatorDisplayName: 'GPT-6.1-Sol (design) + GPT-6-Luna (host repair)', creatorModelId: 'gpt-6.1-sol+gpt-6-luna', adoption: 'unknown', qualityStatus: 'pending-review', technicalReplayStatus: 'pass', normalAudioListening: 'not_run', gameIntegrationStatus: 'not_connected', technicalEvidence: 'outputs/request-20261002/rpg-repair-native/NATIVE-REPLAY.json', packageClosure: 'outputs/request-20261002/rpg-repaired-gallery-stage/package-closure.json'})
+    ]) }),
+Object.freeze({
+  id: 'camera-tripod-observation-map-e',
+  title: '観察台',
+  defaultVersionId: 'camera-tripod-observation-map-e-sol61-r3',
+  integration: 'not-integrated',
+  reason: '対象は地図を読む観察台に作用するobject-specific WebGPU E。原画全体やcrop単独のMap登録ではない。native technical replay pass。品質レビュー中・ユーザー未採用・本編未接続。original imageはE再生背景としてのみ参照し、Map adoption setには追加しない。Map SFXは無効。',
+  versions: Object.freeze([
+version(
+          'camera-tripod-observation-map-e-sol61-r3',
+          'GPT-6.1-Sol 観察台 optical registration E r3',
+          'public/camera-tripod-observation-map-e-r3/index.html?embed=1',
+          'public/camera-tripod-observation-map-e-r3/PACKAGE-MANIFEST.json',
+          'Root native WebGPU replay pass · targeted horizontal-band repair pass · full quality pending · not adopted · game disconnected · map SFX disabled',
+          '創作E: GPT-6.1-Sol。preview/host adapter: GPT-6-Luna（変更なしのR2 previewとstage adapter）。Root native R3 replay: 172 frames、1200ms保持。250/700/1200/1650/1900/2200ms capture、1200ms source OFFとPostEffects OFFを確認、console errors/warningsなし。GPT-6.1-Sol限定審査は横白帯化の修正をPASSし、2つのreading領域、source OFF、expiryの正常性を確認。全面品質、H64、actor occlusion、Safari/iPad、main-game integrationは未受入。未採用、Map SFX 0。R1版は履歴として保持。',
+          'map-object-preview-canvas',
+          1,
+          {
+            designAuthorDisplayName: 'GPT-6.1-Sol',
+            runtimeAuthorDisplayName: 'GPT-6-Luna (unchanged R2 preview/adapter)',
+            creatorDisplayName: 'GPT-6.1-Sol (creative E) + GPT-6-Luna (unchanged preview/adapter)',
+            creatorModelId: 'gpt-6.1-sol+gpt-6-luna',
+            adoption: 'not-adopted',
+            qualityStatus: 'pending',
+            qualityReviewStatus: 'in-progress',
+            qualityReviewerDisplayName: 'GPT-6.1-Sol',
+            qualityEvidence: 'outputs/request-20261003/camera-tripod-gallery-stage-r2/R3-QUALITY-REVIEW-STATUS.json',
+            technicalReplayStatus: 'pass',
+            galleryAdapterReplayStatus: 'native-render-pass',
+            normalAudioListening: 'not_applicable_no_map_sfx_requested',
+            safariReplayStatus: 'unverified',
+            gameIntegrationStatus: 'not_connected',
+            originalSrc: 'public/camera-tripod-observation-map-e-r3/source/field-aurelia-corridor-objects-v318.webp',
+            originalHash: '1d1618121e269801abe037f32ab873eb18394c7b6f4fbcffdb169dec55fec34f',
+            mapSfxPolicy: 'disabled-unless-explicit-user-request',
+            galleryPresentation: '980x620 iframe; centered 440x440 map-object preview canvas; no H64 actor measurement',
+            packageManifestSha256: '2fb27b8cb74de4d653a60fcb1edc02b213652ecf11fa605bee7fc3f148241c68',
+            packageSealSha256: '8e9f6ae5c675534f3e6cde1ce4ff0ae9483ea363f42f1d67a6452d8521f0a4fa',
+            technicalEvidence: 'outputs/request-20261003/camera-tripod-native-r3/',
+            nativeAcceptanceProof: 'outputs/request-20261003/camera-tripod-native-r3/',
+            nativeReplaySummary: '172 frames; 1200ms held; source/post off checks; 2200ms expiry; console errors/warnings empty',
+            technicalEvidenceFiles: [
+              'outputs/request-20261003/camera-tripod-native-r3/250.png',
+              'outputs/request-20261003/camera-tripod-native-r3/700.png',
+              'outputs/request-20261003/camera-tripod-native-r3/1200.png',
+              'outputs/request-20261003/camera-tripod-native-r3/1200-source-off.png',
+              'outputs/request-20261003/camera-tripod-native-r3/1200-post-off.png',
+              'outputs/request-20261003/camera-tripod-native-r3/1650.png',
+              'outputs/request-20261003/camera-tripod-native-r3/1900.png',
+              'outputs/request-20261003/camera-tripod-native-r3/2200.png'
+            ]
+          }
+        ),
+    version(
+      'camera-tripod-observation-map-e-sol61-r1',
+      'GPT-6.1-Sol 観察台 optical registration E r1',
+      'public/camera-tripod-observation-map-e-r1/index.html?embed=1',
+      'public/camera-tripod-observation-map-e-r1/PACKAGE-MANIFEST.json',
+      'Standalone native WebGPU technical replay pass · quality pending · not adopted · game disconnected · map SFX disabled',
+      '設計/創作: GPT-6.1-Sol。技術再生: camera-tripod-native-r2、2-pass replay、held1200で観察面を確認、PostEffects OFFでprimary保持、source OFFで原画保持、2200ms後object pass 0。原画はE preview背景としてのみ同じversion packageに含む。Map SFX 0。quality review未完了、user adoptionなし、main-game integrationなし、actor occlusionとSafari未確認。R2 compatibility repairのモデル attributionは修理記録に明記なし。',
+      'map-object-preview-canvas',
+      1,
+      {
+        originalCreatorDisplayName: 'GPT-6.1-Sol',
+        designAuthorDisplayName: 'GPT-6.1-Sol',
+        runtimeAuthorDisplayName: 'GPT-6.1-Sol',
+        creatorDisplayName: 'GPT-6.1-Sol',
+        creatorModelId: 'gpt-6.1-sol',
+        compatibilityRepairAuthorAttribution: 'unrecorded in technical R2 repair record',
+        adoption: 'not-adopted',
+        qualityStatus: 'pending',
+        qualityReviewStatus: 'pending',
+        technicalReplayStatus: 'pass',
+        normalAudioListening: 'not_applicable_no_map_sfx_requested',
+        safariReplayStatus: 'unverified',
+        gameIntegrationStatus: 'not_connected',
+        originalSrc: 'public/camera-tripod-observation-map-e-r1/source/field-aurelia-corridor-objects-v318.webp',
+        originalHash: '1d1618121e269801abe037f32ab873eb18394c7b6f4fbcffdb169dec55fec34f',
+        mapSfxPolicy: 'disabled-unless-explicit-user-request',
+        galleryAdapterReplayStatus: 'pending-native-root',
+        galleryPresentation: '980x620 iframe; centered 440x440 map-object preview canvas; no H64 actor measurement',
+        packageManifestSha256: '549b672003ebb36fbe78096b0baa49eee1a5e6e6305c931984749346dce50c4b',
+        packageSealSha256: 'f44d4190d86c5f0edfa53d6f879815f1a85ee9eb30394c9d51f0183b5ac59708',
+        technicalEvidence: 'outputs/request-20261003/camera-tripod-native-r2/VERIFY.json',
+        nativeAcceptanceProof: 'outputs/request-20261003/camera-tripod-native-r2/VERIFY.json',
+        technicalEvidenceFiles: [
+          'outputs/request-20261003/camera-tripod-native-r2/VERIFY.json',
+          'outputs/request-20261003/camera-tripod-native-r2/1200.png',
+          'outputs/request-20261003/camera-tripod-native-r2/1200-post-off.png',
+          'outputs/request-20261003/camera-tripod-native-r2/1200-source-off.png'
+        ]
+      }
+    )
+  ])
+}),
+
+    Object.freeze({ id: 'atrium-hydration-object', title: 'Atrium 湧水給水卓', defaultVersionId: 'atrium-hydration-sol61-r1', integration: 'not-integrated', reason: 'Atriumの湧水給水卓に結び付く局所object E候補。Effect一覧では版固定の原画＋Eとして表示する。原画単独のMap版を追加せず、採用・本編接続・品質状態は独立して記録。Map SFXは規則により0。', versions: Object.freeze([
+      version('atrium-hydration-sol61-r1', 'GPT-6.1-Sol Atrium hydration E r1', 'public/atrium-hydration/r1/index.html?embed=1', 'public/atrium-hydration/source/field-aurelia-corridor-objects-v318.webp', '実WebGPU技術再生pass（独立原画プレビュー）・品質未受入・未採用・本編未接続', 'GPT-6.1-Sol設計の局所object E。現行原画の版固定previewでRoot native再生を確認（通常自動再生1944 frames、2 passes/frame、600 ms発光、source/post OFF、2600 msで原画のみ）。この証拠は独立previewのみ。全寿命品質、H64実寸/遮蔽、本編接続、Safari/iPadは未確認。Map SFXは規則により0。', 'effect-H64', 1, { originalCreatorDisplayName: 'GPT-6.1-Sol', designAuthorDisplayName: 'GPT-6.1-Sol', runtimeAuthorDisplayName: 'GPT-6-Luna', creatorDisplayName: 'GPT-6.1-Sol (E design) + GPT-6-Luna (gallery preview/startup adapter)', creatorModelId: 'gpt-6.1-sol+gpt-6-luna', adoption: 'not-adopted', qualityStatus: 'unaccepted', qualityReviewStatus: 'in-progress', qualityReviewerDisplayName: 'Codex', qualityEvidence: 'outputs/request-20261003/e-gallery-combined-root-r1/native/', technicalReplayStatus: 'pass', normalAudioListening: 'not_run', gameIntegrationStatus: 'not_connected', technicalEvidence: 'public/atrium-hydration/r1/NATIVE-TECHNICAL.json', nativeAcceptanceProof: 'public/atrium-hydration/r1/NATIVE-TECHNICAL.json', packageManifestSha256: '684d1863b8a41cf08ce7d67499c88b53ac18110fb32698926beb46389254557b', packageSealSha256: '8758998c62d771fb4547ed14a3183bf943c5312a91caa8829f157487dd8193d4', originalSourceSha256: '1d1618121e269801abe037f32ab873eb18394c7b6f4fbcffdb169dec55fec34f', adapterEvidence: 'outputs/request-20261003/hydration-gallery-stage-r1/ADAPTER-NOTES.md' })
+    ]) }),
+Object.freeze({ id: 'ninjutsu-focus-sol61', title: '忍殺 focus', defaultVersionId: 'ninjutsu-focus-r3', integration: 'not-integrated', reason: 'GPT-6.1-SolのR3視覚修正をdefaultにした未採用E。R2は履歴版として保持。R3 standalone native triageとactual Asset Gallery route描画はpass。full-lifetime/H64/OBS-off/reduced image review/normal SFX/Safari/game integrationは別途未受入。', versions: Object.freeze([
+      version('ninjutsu-focus-r3','GPT-6.1-Sol Ninjutsu Focus R3','public/ninjutsu-focus-gallery/r3/index.html?embed=1&ninjutsuVisual=r3&visualBase=..','public/ninjutsu-focus-gallery/r3/PACKAGE-MANIFEST.json','R3 standalone native triage pass + actual Asset Gallery route render pass · full-lifetime quality pending · not adopted · game disconnected','R3 is the separate Sol visual revision with four tapered crescent arcs, open center and convergent sight fan. Native standalone R3 triage at 180/480/960 ms passed on the pinned shared WebGPU renderer with clean shader diagnostics and zero validation errors. Root then rendered R3 through the actual Asset Gallery route, cleared the loading state and saw the red crescents/fan with no console errors; saved evidence path: outputs/request-20261003/ninjutsu-gallery-native-result-r2/r3.png. H64, full 1200 ms lifetime and expiry, OBS-off/reduced-motion image inspection, ordinary SFX listening and Safari/iPad remain pending. Not adopted or connected to gameplay.','effect-H64',1,{originalCreatorDisplayName:'V797 source authorship preserved; underlying author attribution follows producer evidence',designAuthorDisplayName:'GPT-6.1-Sol',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6.1-Sol (R3 visual design/revision) + GPT-6-Luna (gallery runtime and faithful host adapter)',creatorModelId:'gpt-6.1-sol+gpt-6-luna',adoption:'not-adopted',qualityStatus:'pending',qualityReviewStatus:'in-progress',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261003/ninjutsu-focus-visual-r3/NATIVE-REVIEW.md',technicalReplayStatus:'pass',normalAudioListening:'not_run',safariReplayStatus:'unverified',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261003/ninjutsu-gallery-native-result-r2/r3.png',technicalEvidenceFiles:['outputs/request-20261003/ninjutsu-native-result-r3/matrix.txt','outputs/request-20261003/ninjutsu-gallery-native-result-r2/r3.png','outputs/request-20261003/ninjutsu-gallery-native-result-r2/r2-state.txt'],nativeAcceptanceProof:'outputs/request-20261003/ninjutsu-gallery-native-result-r2/r3.png',galleryRuntimeStatus:'native-render-pass',packageManifestSha256:'9fdb5beb447346274b25088ddd101541b8161f012ba6abea94b1a30c7536a805',creativeSourceSha256:'c09794670c1f4dbf0afca0655e7827805582d739454d7ddcf5c08ebc050522fb'}),
+      version('ninjutsu-focus-r2','GPT-6-Luna Ninjutsu Focus R2','public/ninjutsu-focus-gallery/r2/index.html?embed=1&ninjutsuVisual=r2&visualBase=..','public/ninjutsu-focus-gallery/r2/PACKAGE-MANIFEST.json','Native module and gallery autoplay pass · visual quality not accepted · not adopted · game disconnected','R2 historical GPU implementation with a bounded native auto-loop pass. GPT-6.1-Sol review found the filled red disk/parallel-ray appearance below the visual target; keep it available as an unaccepted comparison/history while R3 is the group default. The 1200 ms full lifetime, H64, ordinary SFX listening, Safari/iPad and main-game integration remain separate pending checks. Not adopted or connected to gameplay.','effect-H64',1,{originalCreatorDisplayName:'V797 source authorship preserved; underlying author attribution follows producer evidence',designAuthorDisplayName:'V797 structural contract (original design attribution pending source record)',runtimeAuthorDisplayName:'GPT-6-Luna',creatorDisplayName:'GPT-6-Luna (faithful WebGPU implementation and R2 GPU lease repair); inherited visual design provenance retained',creatorModelId:'gpt-6-luna',adoption:'not-adopted',qualityStatus:'not-accepted',qualityReviewStatus:'not-accepted',qualityReviewOutcome:'fail',qualityReviewerDisplayName:'GPT-6.1-Sol',qualityEvidence:'outputs/request-20261003/ninjutsu-focus-quality-review-r2/NATIVE-R2-REVIEW.md',technicalReplayStatus:'pass',normalAudioListening:'not_run',safariReplayStatus:'unverified',gameIntegrationStatus:'not_connected',technicalEvidence:'outputs/request-20261003/ninjutsu-gallery-native-result-r1/state.txt',nativeAcceptanceProof:'outputs/request-20261003/ninjutsu-gallery-native-result-r1/state.txt',galleryRuntimeStatus:'native-auto-loop-pass',packageManifestSha256:'2939c253b433736d7ceee0310e16172575fcd34daf743aad282f4ec90ada9c56',creativeSourceSha256:'c71e884b8af71a14a731ee6d46dc966c930b6d496c5621b10213525a505531d3'})
     ]) })
   ]);
   const params = new URLSearchParams(location.search);

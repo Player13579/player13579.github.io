@@ -1,0 +1,125 @@
+{
+  "schema": "dva-gallery-effect-package/v1",
+  "id": "camera-tripod-observation-map-e-sol61-r3",
+  "category": "effect",
+  "adoption": "not-adopted",
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "targeted-repair-pass; full-quality-pending",
+  "technicalReplayStatus": "pass",
+  "galleryAdapterReplayStatus": "pending-native-root",
+  "gameIntegrationStatus": "not_connected",
+  "mapSfxPolicy": "disabled-unless-explicit-user-request",
+  "files": {
+    "index.html": {
+      "bytes": 1891,
+      "sha256": "22c705cd1b0fef0b9ec0f8cea18185d8579558abf6eb033a2a9f4588829718c8"
+    },
+    "gallery-startup-adapter.js": {
+      "bytes": 7846,
+      "sha256": "932c277043baa254f93fd555443967d9663dd19dad7b8c084d4e260b33ee8e30"
+    },
+    "candidate/gallery-bootstrap.mjs": {
+      "bytes": 318,
+      "sha256": "2089fc8dcaa4e64620da650ef2a1e53f91850da0fd72a08104c16c102156cbaf"
+    },
+    "candidate/index.html": {
+      "bytes": 918,
+      "sha256": "09611c198f88153c84998d6106c19f17e8040c9b5b64ecb075a1abb8c0eb0e1a"
+    },
+    "candidate/preview.mjs": {
+      "bytes": 4480,
+      "sha256": "aaedf01c3d88b532ade2711313719711612fab683716371176f15e37dc94dc57"
+    },
+    "candidate/webgpu-room-object-use-e.js": {
+      "bytes": 37739,
+      "sha256": "48db3a3919359779a1938d355622b4ca39ad4815912a533f644ec18a460668fa"
+    },
+    "source/field-aurelia-corridor-objects-v318.webp": {
+      "bytes": 4082206,
+      "sha256": "1d1618121e269801abe037f32ab873eb18394c7b6f4fbcffdb169dec55fec34f"
+    }
+  },
+  "entry": {
+    "page": "public/camera-tripod-observation-map-e-r3/index.html?embed=1",
+    "originalSrc": "public/camera-tripod-observation-map-e-r3/source/field-aurelia-corridor-objects-v318.webp",
+    "originalHash": "1d1618121e269801abe037f32ab873eb18394c7b6f4fbcffdb169dec55fec34f"
+  },
+  "authors": {
+    "creative": {
+      "displayName": "GPT-6.1-Sol",
+      "modelId": "gpt-6.1-sol"
+    },
+    "runtimePreview": {
+      "displayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna",
+      "note": "unchanged preview.mjs copied from R2"
+    },
+    "stageHost": {
+      "displayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna",
+      "note": "gallery adapter/host only; effect module unchanged"
+    }
+  },
+  "qualityReview": {
+    "path": "R3-QUALITY-REVIEW-STATUS.json",
+    "sha256": "2e06faa9c2c28c876a5524dd3619cc15760f20a3b17cd1f52e36392f326c80e8"
+  },
+  "nativeEvidence": {
+    "path": "NATIVE-EVIDENCE.json",
+    "sha256": "539d86ee966a8463a1aef2cd97145463606276c9ffa431ca0d5a97fb5e82dcc7",
+    "summary": "172 frames; 1200 ms held capture",
+    "captureSet": [
+      {
+        "path": "outputs/request-20261003/camera-tripod-native-r3/250.png",
+        "bytes": 51087,
+        "sha256": "a3dab9ba5c384fd9d6ef15526847c9e1407aae73220e64f900bfeecef84245af"
+      },
+      {
+        "path": "outputs/request-20261003/camera-tripod-native-r3/700.png",
+        "bytes": 51059,
+        "sha256": "3e5908be51bbe2657a6981c687f80edf1ae97ebd9ecf87044b20bc0467dc3fa9"
+      },
+      {
+        "path": "outputs/request-20261003/camera-tripod-native-r3/1200.png",
+        "bytes": 51118,
+        "sha256": "498b6477c1200e72612d5772072378cd43b7251c9e16eab0321d5486c2265001"
+      },
+      {
+        "path": "outputs/request-20261003/camera-tripod-native-r3/1200-source-off.png",
+        "bytes": 51110,
+        "sha256": "342171881d6ea26d291330ac0857c57b148a5d106cf0276b12121bb630667d62"
+      },
+      {
+        "path": "outputs/request-20261003/camera-tripod-native-r3/1200-post-off.png",
+        "bytes": 51163,
+        "sha256": "c317424268c18e0719455c6e149ff429289fc34b8158a740c8f96188317d7866"
+      },
+      {
+        "path": "outputs/request-20261003/camera-tripod-native-r3/1650.png",
+        "bytes": 51264,
+        "sha256": "073c5659acd94576b5969cc9b4ec353e34229cae8706a5483262fb6a687f835f"
+      },
+      {
+        "path": "outputs/request-20261003/camera-tripod-native-r3/1900.png",
+        "bytes": 51216,
+        "sha256": "8a41f43c0cededf86e4379d4b1c7f893c532e9de5ffc9eaadbc65ebe2ccddeef"
+      },
+      {
+        "path": "outputs/request-20261003/camera-tripod-native-r3/2200.png",
+        "bytes": 51163,
+        "sha256": "11caa46483114576aa9fd6751132ebf13eaedfb9533f2944517b5ff38952f4ba"
+      }
+    ]
+  },
+  "provenance": {
+    "r3Source": {
+      "path": "outputs/request-20261003/camera-tripod-e-visual-r3/candidate/webgpu-room-object-use-e.js",
+      "sha256": "48db3a3919359779a1938d355622b4ca39ad4815912a533f644ec18a460668fa"
+    },
+    "r2Parent": {
+      "path": "outputs/request-20261003/camera-tripod-e-technical-r2/candidate/webgpu-room-object-use-e.js",
+      "sha256": "a63bf868be6cf9f6d4cda3c1b38103699f255db9fa441e3ec91f59177857273e"
+    },
+    "nativeReplay": "camera-tripod-native-r3"
+  }
+}

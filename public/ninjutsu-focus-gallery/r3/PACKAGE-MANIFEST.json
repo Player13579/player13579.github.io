@@ -1,0 +1,81 @@
+{
+  "schema": "ninjutsu-gallery-version-package-r1",
+  "version": "r3",
+  "visualSource": "webgpu-ninjutsu-focus-e-r3.js",
+  "visualSha256": "c09794670c1f4dbf0afca0655e7827805582d739454d7ddcf5c08ebc050522fb",
+  "entryPage": {
+    "path": "index.html",
+    "bytes": 4773,
+    "sha256": "044dbc060b5ca96792d644b8742e7bad5cc2656918c76952905431514ae4ae82"
+  },
+  "entryModule": {
+    "path": "gallery.mjs",
+    "bytes": 3035,
+    "sha256": "926dd110f56c1a1c5169400768256c90ab195ab2ab69243f64f565da0e323d21"
+  },
+  "shared": {
+    "frameCore": {
+      "path": "main-record-substage-profile-r1/candidate/webgpu-frame-core.js",
+      "bytes": 18791,
+      "sha256": "be09856428ea84ddfc168987db8448763665cc6616486c00e535164ab56c8d9d"
+    },
+    "primitives": {
+      "path": "main-record-substage-profile-r1/candidate/webgpu-primitives.js",
+      "bytes": 14677,
+      "sha256": "1bcc57429f393c4434d10cb7cdca5dbe2cede463ba516d9eb15ca0df71347a58"
+    },
+    "compositing": {
+      "path": "rational-buffer-native-fixture-r1/source/webgpu-compositing.js",
+      "bytes": 6827,
+      "sha256": "778bb00ba3ff753e60f8a74f6e407bb32b833621e84f69f309ff64fbbaea90e1"
+    },
+    "renderer": {
+      "path": "main-record-substage-profile-r1/candidate/webgpu-renderer.js",
+      "bytes": 16796,
+      "sha256": "0f9a188a75544b3141e1264dec1d59753fd1ef7fbdd3d10a44e3760a47d667a7"
+    },
+    "shapes": {
+      "path": "ninjutsu-focus-webgpu-port-r2/tests/fixtures/webgpu-effect-shapes.js",
+      "bytes": 13143,
+      "sha256": "8a0913d0eb272c5050dcc1b57b3f2c3beeca983e602a414d79ec241ed62f77f8"
+    },
+    "runtime": {
+      "path": "ninjutsu-gallery-runtime-r2/candidate/ninjutsu-gallery-runtime.js",
+      "bytes": 17023,
+      "sha256": "41410eaef1dc83cbd4dd0e3465bcb17ecced930fa511bcd2996cc6c4615be390"
+    },
+    "r2": {
+      "path": "ninjutsu-focus-webgpu-port-r2/candidate/webgpu-ninjutsu-focus-e.js",
+      "bytes": 17030,
+      "sha256": "c71e884b8af71a14a731ee6d46dc966c930b6d496c5621b10213525a505531d3"
+    },
+    "r3": {
+      "path": "ninjutsu-focus-visual-r3/candidate/webgpu-ninjutsu-focus-e.js",
+      "bytes": 18520,
+      "sha256": "c09794670c1f4dbf0afca0655e7827805582d739454d7ddcf5c08ebc050522fb"
+    },
+    "loader": {
+      "path": "ninjutsu-gallery-runtime-r2/candidate/ninjutsu-visual-loader.js",
+      "bytes": 656,
+      "sha256": "cb4171efb8457bf040d72989667d8c2e3df31978aef2e1773a1edf23688d494f"
+    }
+  },
+  "frameContract": {
+    "width": 980,
+    "height": 620,
+    "anchor": "effect-H64",
+    "zoom": 1,
+    "automaticLoop": true,
+    "verificationMode": "verify query forces silent runtime"
+  },
+  "quality": {
+    "status": "in-progress",
+    "fullLifetime": "pending",
+    "normalAudioListening": "not-run",
+    "safariReplay": "unverified",
+    "gameIntegration": "not-connected",
+    "adoption": "not-adopted",
+    "galleryRuntimeStatus": "native-render-pass",
+    "galleryRuntimeEvidence": "outputs/request-20261003/ninjutsu-gallery-native-result-r2/r3.png"
+  }
+}
