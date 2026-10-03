@@ -188,9 +188,9 @@ async function boot() {
         viewport: { x: canvas.width, y: canvas.height }, visible: !document.hidden,
         obs: controls.obs.checked, reducedMotion: controls.reduced.checked };
       const event = receipt(age);
-      const plans = controls.source.checked && mode === 'play'
+      const plans = controls.source.checked && (mode === 'play' || mode === 'hold')
         ? planRailguns([event], frameInput) : [];
-      if (audioEnabled && plans.length) audio.play(event.id, plans[0].ageMs);
+      if (audioEnabled && mode === 'play' && plans.length) audio.play(event.id, plans[0].ageMs);
 
       const encoder = device.createCommandEncoder();
       device.queue.writeBuffer(sceneUniform, 0, new Float32Array([
