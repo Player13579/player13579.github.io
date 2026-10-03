@@ -1,0 +1,104 @@
+{
+  "schema": "common-renki-gallery-package/v1",
+  "id": "renki-sol61-zero-r5",
+  "version": "r5",
+  "author": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol"
+  },
+  "runtimeAdapterAuthor": {
+    "model": "unresolved-worker-runtime-identity",
+    "displayName": "Codex faithful adapter; model attribution pending root verification"
+  },
+  "sourceManifestSha256": "b904350475221a845ba19899b2feb54d3fd487502a1de03eb7d1697e712bee3d",
+  "sourceSealSha256": "33b7d916bb5d1ad0d1d66fc6cae6d50024411377af24f46af4a862c692e42141",
+  "creativeSourceSha256": "0259e6a6b66e30fd7dc6d900c8292af7f2ecf59ec70f7ced83875110a4ca9111",
+  "entry": "package/gallery.html?embed=1&galleryAutoLoop=1",
+  "standaloneEntry": "package/index.html",
+  "sourceFiles": [
+    {
+      "path": "package/body-focus-original.png",
+      "bytes": 1220306,
+      "sha256": "e3c96c1b719d56ca8c210e11f2cef5f359ad9075b2b50f8c3e63eef3c04a85d0",
+      "mime": "image/png"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 1436,
+      "sha256": "3d8a775c2fb3e57d393c62361a541d45bbf6178692a5b9fc977685164d99b51a",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "package/post.wgsl",
+      "bytes": 1080,
+      "sha256": "48093ee574b479d029c79cfee20e80580ab3f289ac39a9297d206f9702c18c48",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "package/preview.mjs",
+      "bytes": 3680,
+      "sha256": "827feeef4365c03e19da48a25336ba2a3e5e408ba9833d7330af3c49c0da5a70",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "package/renki.mjs",
+      "bytes": 12884,
+      "sha256": "0259e6a6b66e30fd7dc6d900c8292af7f2ecf59ec70f7ced83875110a4ca9111",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "package/scene.wgsl",
+      "bytes": 6226,
+      "sha256": "8f5ccfe0386f9296b2201916db7e10ef7da406297864b9bd14e6c60c840db068",
+      "mime": "text/wgsl"
+    }
+  ],
+  "galleryAdapter": {
+    "path": "package/gallery.html",
+    "bytes": 3860,
+    "sha256": "a250660c963ce45f008f0fbe81113ed6cfb62e781a3c2efe4b87b59074b410fc",
+    "mime": "text/html; charset=utf-8",
+    "mechanicsFrom": "R4 stage exact responsive support-fit, failure-visible status, and gallery SFX bridge; labels/fit envelope adapted to R5 only",
+    "replayStatus": "pass-limited-technical",
+    "evidence": "native/TECHNICAL-SUMMARY.md"
+  },
+  "sourceTechnicalReadiness": "Root native WebGPU replay passed: two passes, 6,320 frames, visible loop, zero errors; source preview was observed at 1,250 ms off.",
+  "technicalReplay": "pass",
+  "quality": "fail",
+  "adoption": "not-adopted",
+  "gameIntegration": "not-connected",
+  "normalSfxListening": "not-run",
+  "safari": "unverified",
+  "publicationEligible": true,
+  "sourceTechnicalReplayStatus": "pass",
+  "galleryAdapterReplayStatus": "pass",
+  "qualityReviewStatus": "not-accepted",
+  "qualityReviewReason": "At 180, 250 and 500 ms, broad cyan plate/wing silhouettes dominate. Storage improved in size, but the waist badge lacks readable depth.",
+  "qualityEvidence": "native/QUALITY-REVIEW.md",
+  "technicalReplayEvidence": "native/TECHNICAL-SUMMARY.md",
+  "publicationApproval": "pending-root-publisher",
+  "technicalEvidenceFiles": [
+    "public/sol61-common-ki-zero/r5/native/1120.png",
+    "public/sol61-common-ki-zero/r5/native/1250.png",
+    "public/sol61-common-ki-zero/r5/native/180.png",
+    "public/sol61-common-ki-zero/r5/native/250.png",
+    "public/sol61-common-ki-zero/r5/native/500.png",
+    "public/sol61-common-ki-zero/r5/native/560.png",
+    "public/sol61-common-ki-zero/r5/native/740-post-off.png",
+    "public/sol61-common-ki-zero/r5/native/740.png",
+    "public/sol61-common-ki-zero/r5/native/850.png",
+    "public/sol61-common-ki-zero/r5/native/980.png",
+    "public/sol61-common-ki-zero/r5/native/VERIFY.json",
+    "public/sol61-common-ki-zero/r5/native/end-state.txt",
+    "public/sol61-common-ki-zero/r5/native/gallery-errors.json",
+    "public/sol61-common-ki-zero/r5/native/gallery-second.png",
+    "public/sol61-common-ki-zero/r5/native/gallery.png",
+    "public/sol61-common-ki-zero/r5/native/TECHNICAL-SUMMARY.md",
+    "public/sol61-common-ki-zero/r5/native/QUALITY-REVIEW.md"
+  ],
+  "galleryAdapterEvidenceFiles": [
+    "public/sol61-common-ki-zero/r5/native/gallery-errors.json",
+    "public/sol61-common-ki-zero/r5/native/gallery-second.png",
+    "public/sol61-common-ki-zero/r5/native/gallery.png"
+  ]
+}

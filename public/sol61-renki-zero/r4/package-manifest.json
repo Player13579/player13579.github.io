@@ -1,0 +1,71 @@
+{
+  "schema": "common-renki-gallery-package/v1",
+  "id": "renki-sol61-zero-r4",
+  "version": "r4",
+  "author": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol"
+  },
+  "runtimeAdapterAuthor": {
+    "model": "gpt-6-luna",
+    "displayName": "GPT-6-Luna"
+  },
+  "sourceManifestSha256": "29f3ab5d7ad748c79282e25f14dda80c8f838b68d9dbea8812a33d359f34c564",
+  "sourceSealSha256": "19249b4ce4486786676092c8059bee74a9ccd99ab83a18facf80e1c81ab824a9",
+  "creativeSourceSha256": "227adbc9533f2330ceab5881449f1e8ef78afeef985fb76ece26c63c532e05b9",
+  "entry": "package/gallery.html?embed=1&galleryAutoLoop=1",
+  "standaloneEntry": "package/index.html",
+  "sourceFiles": [
+    {
+      "path": "package/body-focus-original.png",
+      "bytes": 1220306,
+      "sha256": "e3c96c1b719d56ca8c210e11f2cef5f359ad9075b2b50f8c3e63eef3c04a85d0",
+      "mime": "image/png"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 1436,
+      "sha256": "e360199c853466742520f67c243547ee0a37ee706aa1c468e05a88936fd7e138",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "package/post.wgsl",
+      "bytes": 1080,
+      "sha256": "48093ee574b479d029c79cfee20e80580ab3f289ac39a9297d206f9702c18c48",
+      "mime": "text/plain; charset=utf-8"
+    },
+    {
+      "path": "package/preview.mjs",
+      "bytes": 3680,
+      "sha256": "827feeef4365c03e19da48a25336ba2a3e5e408ba9833d7330af3c49c0da5a70",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "package/renki.mjs",
+      "bytes": 13161,
+      "sha256": "227adbc9533f2330ceab5881449f1e8ef78afeef985fb76ece26c63c532e05b9",
+      "mime": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "package/scene.wgsl",
+      "bytes": 6438,
+      "sha256": "e268cfa0d71f0710b12b25eaa346fbd02016a82f6d308510ee33cfe8de820306",
+      "mime": "text/plain; charset=utf-8"
+    }
+  ],
+  "galleryAdapter": {
+    "path": "package/gallery.html",
+    "bytes": 3842,
+    "sha256": "4341660b241229139b0cfea3ee9ab02e141996d53d8f4fb632a7ca3a6baf8449",
+    "mime": "text/html; charset=utf-8",
+    "mechanicsFrom": "Renki R3 responsive support-fit and failure-visible adapter",
+    "replayStatus": "pass-limited-technical",
+    "nativeEvidence": "native/gallery-adapter/NATIVE-TECHNICAL.json"
+  },
+  "technicalReplay": "pass-limited-native-and-gallery-adapter",
+  "quality": "unaccepted",
+  "adoption": "not-adopted",
+  "gameIntegration": "not-connected",
+  "normalSfxListening": "not-run",
+  "safari": "unverified"
+}
