@@ -2,16 +2,20 @@ import {VERSION,DURATION_MS,WORLD_WGSL,PRESENT_WGSL,DonationSound,ReceiptGate,ph
 import {postUniforms} from './observer.mjs';
 const scalar=m=>({message:m.message,type:m.type,lineNum:m.lineNum,linePos:m.linePos,offset:m.offset,length:m.length});
 export class DonationRenderer {
-  static async create(canvas){const r=new DonationRenderer(canvas);await r.init();return r;}
-  constructor(canvas){this.canvas=canvas;this.diagnostics=[];this.submitCount=0;this.frames=[];this.ready=false;this.disposed=false;this.targetGeneration=0;this.deviceGeneration=1;this.frameToken=0;this.expectedReceipt=null;this.retirements=new Set();this.materialTexture=null;this.sourceTexture=null;this.postBind=null;this.disposePromise=null;}
+  static async create(canvas,{onStartupPhase}={}){const r=new DonationRenderer(canvas,{onStartupPhase});try{await r.init();return r;}catch(error){try{await r.dispose();}catch(cleanupError){r.diagnostics.push({module:'init-cleanup',message:String(cleanupError?.message||cleanupError)});}throw error;}}
+  constructor(canvas,{onStartupPhase}={}){this.canvas=canvas;this.onStartupPhase=onStartupPhase;this.diagnostics=[];this.submitCount=0;this.frames=[];this.ready=false;this.disposed=false;this.targetGeneration=0;this.deviceGeneration=1;this.frameToken=0;this.expectedReceipt=null;this.retirements=new Set();this.materialTexture=null;this.sourceTexture=null;this.postBind=null;this.disposePromise=null;}
   async init(){
-    if(!navigator.gpu)throw Error('WebGPU is required.');
-    const adapter=await navigator.gpu.requestAdapter();if(!adapter)throw Error('WebGPU adapter unavailable.');
-    this.device=await adapter.requestDevice();this.context=this.canvas.getContext('webgpu');if(!this.context)throw Error('WebGPU canvas context unavailable.');
+    this.onStartupPhase?.('adapter');
+    if(!navigator.gpu)throw Object.assign(Error('WebGPU is required.'),{code:'WEBGPU_UNSUPPORTED',unsupported:true});
+    const adapter=await navigator.gpu.requestAdapter();if(!adapter)throw Object.assign(Error('WebGPU adapter unavailable.'),{code:'WEBGPU_ADAPTER_UNAVAILABLE',unsupported:true});
+    this.onStartupPhase?.('device');
+    this.device=await adapter.requestDevice();this.context=this.canvas.getContext('webgpu');if(!this.context)throw Object.assign(Error('WebGPU canvas context unavailable.'),{code:'WEBGPU_CANVAS_UNSUPPORTED',unsupported:true});
     this.format=navigator.gpu.getPreferredCanvasFormat();this.context.configure({device:this.device,format:this.format,alphaMode:'premultiplied'});
     this.device.addEventListener('uncapturederror',e=>{this.diagnostics.push({module:'device',message:e.error.message,type:e.error.name});});
     void this.device.lost?.then(info=>{if(this.disposed)return;this.deviceGeneration++;this.targetGeneration++;this.ready=false;this.diagnostics.push({module:'device-lost',reason:info?.reason,message:info?.message||'WebGPU device lost'});});
+    this.onStartupPhase?.('assets');
     const modules=[];for(const [name,code] of [['world',WORLD_WGSL],['present-observer',PRESENT_WGSL]]){const module=this.device.createShaderModule({label:VERSION+'/'+name,code});const info=await module.getCompilationInfo();const messages=info.messages.map(scalar);const failed=messages.some(m=>m.type==='error');this.diagnostics.push({module:name,messages,status:failed?'failed':'pass'});if(failed)throw Error(`${name} WGSL compilation failed: ${JSON.stringify(messages.filter(m=>m.type==='error'))}`);modules.push(module);}
+    this.onStartupPhase?.('pipelines');
     this.device.pushErrorScope('validation');
     try{
       this.world=await this.device.createRenderPipelineAsync({label:VERSION+'/world MRT',layout:'auto',vertex:{module:modules[0],entryPoint:'vs'},fragment:{module:modules[0],entryPoint:'fs',targets:[{format:'rgba16float'},{format:'rgba16float'}]},primitive:{topology:'triangle-list'}});
@@ -80,7 +84,7 @@ export class DonationRenderer {
     // generation/texture/receipt never reaches queue.submit; the caller's next
     // RAF samples a fresh state and current target.
     if(!this.isCurrent(snapshot)){this.diagnostics.push({module:'frame-guard',message:'stale/disposed donation frame rejected before submit',frameToken:snapshot.frameToken});return false;}
-    this.device.queue.submit([commandBuffer]);this.submitCount++;this.frames.push({submit:this.submitCount,ms:snapshot.ms,causeId:snapshot.causeId,phase:phase(snapshot.ms),source:snapshot.source,obs:snapshot.obs,intensity:snapshot.intensity,frameToken:snapshot.frameToken,targetGeneration:snapshot.targetGeneration});if(this.frames.length>180)this.frames.shift();return true;
+    this.device.queue.submit([commandBuffer]);this.submitCount++;this.frames.push({submit:this.submitCount,ms:snapshot.ms,causeId:snapshot.causeId,phase:phase(snapshot.ms),source:snapshot.source,obs:snapshot.obs,intensity:snapshot.intensity,passes:2,frameToken:snapshot.frameToken,targetGeneration:snapshot.targetGeneration});if(this.frames.length>180)this.frames.shift();return true;
   }
   async dispose(){
     if(this.disposePromise)return this.disposePromise;this.disposed=true;this.ready=false;this.targetGeneration++;this.frameToken++;
