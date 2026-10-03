@@ -1,0 +1,19 @@
+{
+ "schema":"rocket-r16-held-native-source-pins/v1",
+ "scope":"Root actualGPU held100/300 and300 OBSresponseOFF; correct visible Submitted E clocks; errors/warnings reported empty",
+ "producerRoot":"../rocket-r16-advected-gas-r1",
+ "entry":{"path":"candidate/package/rpg-e-r16/rpg-e-r16.mjs","sha256":"c5bfcd1c742e0e882aa38da721559d4b2ae3a0a5a185460b66a0d6e4ac193bcc"},
+ "physical":{"path":"candidate/package/rpg-e-r16/r8/rpg-e.mjs","sha256":"0b1470ad9c7c8810b695d849d99e18ea03411370a4a9c1854efdd22a97dd12a1"},
+ "retainedObserver":{"path":"candidate/package/rpg-e-r16/observer.mjs","sha256":"d13ed4e47a869ec87ac6cf49babc6ce3fe25a5e292338a0cc7dd39c4e7a1a59f"},
+ "manifest":{"path":"CANDIDATE-MANIFEST.json","sha256":"b780bf13e07173a532000d55c1a10160bd06ca37c6eb6f63bb5b89ac5b66a496"},
+ "captures":[
+  {"path":"100.png","sha256":"7a324b122f4eabd3e2434e97ce5970f2cbf45784a510499bb9677e08fbade4bc"},
+  {"path":"300.png","sha256":"f4c1bf8f2a8fb1d19de54b4bb939eb580e66c1d9070c5855e78d59e65cc14d95"},
+  {"path":"300-obs-off.png","sha256":"447c071ab554f5ce368ed7ba8b5591ea2fa3341909fedf55feeb43dd652aac39","intervention":"OBSresponseOFF; sourcefeedON and scene preserved; not allPostOff"}
+ ],
+ "technical":"bounded held replay passes as root reported; locally hashed producer/capture bytes",
+ "quality":"unaccepted:100 softbrightball;300 triangularsoftblob; OBSresponseOFF retains softness",
+ "limits":"No HDR readback, fullmotion/SFX/Safari/H64/actor/game/adoption acceptance",
+ "next":"root fresh independent diagnosis; noR17/source changes",
+ "resourceStatus":"worker61659/PID35748 stopped and absent confirmed; no worker browser"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "rocket-r15-held-native-source-pins/v1",
+  "scope": "Root IAB held100/300 actualGPU replay; Submitted E clocks visible; errors/warns reported empty. No full motion, SFX listening, Safari, actor or main-game acceptance.",
+  "producerRoot": "../rocket-r15-continuous-gas-r1",
+  "entry": {"path":"candidate/package/rpg-e-r15/rpg-e-r15.mjs","sha256":"94530ed856d652c9f0946cbca4830c99070c151280c8f2f0e7a80e65c7814b21"},
+  "physical": {"path":"candidate/package/rpg-e-r15/r8/rpg-e.mjs","sha256":"cedd6022b03403f5159e7cf6c72738efdb8c2e82c10d13fa706f3ac5d5ab2063"},
+  "observer": {"path":"candidate/package/rpg-e-r15/observer.mjs","sha256":"d13ed4e47a869ec87ac6cf49babc6ce3fe25a5e292338a0cc7dd39c4e7a1a59f"},
+  "manifest": {"path":"CANDIDATE-MANIFEST.json","sha256":"ed562e123901502b53a0899cf5a842416ab924e61b40d6291b452fefe0b94987"},
+  "captures": [
+    {"path":"100.png","sha256":"d43bb268f5215d9a8cecc43bf913f031e5332e7049de51b0c767e278e58ce511"},
+    {"path":"300.png","sha256":"f8133b44f8233ab9a7fe3e69ee8c304890ff8be3a907155b6fd9cc1f564d34cd"}
+  ],
+  "quality": "held samples unaccepted:100 cap plus separate ball;300 smooth flat wedge/anvil",
+  "pinMeaning": "Producer bytes and saved capture files hashed locally. Root actual replay is separately reported; this is not GPU HDR readback."
+}
