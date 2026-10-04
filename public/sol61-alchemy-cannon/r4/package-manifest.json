@@ -1,0 +1,112 @@
+{
+  "schema": "dva-e-runtime-package/v1",
+  "groupId": "alchemy-particle-cannon-sol61",
+  "versionId": "alchemy-cannon-sol61-r4",
+  "parentVersionId": "alchemy-cannon-sol61-r3",
+  "creativeVersion": "alchemy-cannon-new-e-sol61-r4",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "runtimeAdapterAuthor": "GPT-6-Luna",
+  "adoption": "unknown",
+  "qualityStatus": "not-accepted",
+  "technicalReplayStatus": "pass",
+  "normalAudioListening": "not_run",
+  "gameIntegrationStatus": "not_connected",
+  "route": "public/sol61-alchemy-cannon/r4/",
+  "previewPage": "gallery.html?embed=1&galleryAutoLoop=1",
+  "creativeSource": {
+    "path": "outputs/request-20261004/finish-cannon-r4-creative-sol61-r1/effect.mjs",
+    "sha256": "cf1a2c5f6922cfc94ffc881564a7243a1025d64b0cb2ec627b639927c8f0b084"
+  },
+  "audioSource": {
+    "path": "outputs/request-20261004/finish-cannon-r4-creative-sol61-r1/audio.mjs",
+    "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+  },
+  "runtimeDerivation": {
+    "from": "outputs/request-20261004/finish-cannon-r3-runtime-luna-r1/",
+    "reason": "R3 runtime adapter plus exact R4 sampler, with a native phase/cause proof API tied to submitted draw and completed queue"
+  },
+  "nativeReviewInstructions": "NATIVE-REVIEW.md",
+  "files": [
+    {
+      "route": "gallery.html",
+      "bytes": 1982,
+      "sha256": "ffc909c97015f866e2a251dc1417c2b51bfbc5f907604148ad84b5da58c0d596"
+    },
+    {
+      "route": "main.mjs",
+      "bytes": 30319,
+      "sha256": "3c8158e66b80a4f85d1c40b32bf7be3522f8f82299de0b5170891f1d1c6de1ad"
+    },
+    {
+      "route": "effect.mjs",
+      "bytes": 7058,
+      "sha256": "cf1a2c5f6922cfc94ffc881564a7243a1025d64b0cb2ec627b639927c8f0b084"
+    },
+    {
+      "route": "audio.mjs",
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    {
+      "route": "runtime-r4.test.mjs",
+      "bytes": 7019,
+      "sha256": "43d2542f3dea82e3e08790a637958959ed1b37e0c7b4a566dbb07b6846cb15d3"
+    },
+    {
+      "route": "package-seal.test.mjs",
+      "bytes": 2295,
+      "sha256": "98045b1ea31f11bb278dba6d3854253d3cdd9af543409252ecbcc2c2fc812d21"
+    },
+    {
+      "route": "NATIVE-REVIEW.md",
+      "bytes": 1561,
+      "sha256": "fdb9306ecd9fa18d1b3dbe57df7b7f03f1fab65d63f367b079c8ae773df71da4"
+    },
+    {
+      "route": "serve.mjs",
+      "bytes": 1189,
+      "sha256": "4a8f2c97e31f811474d247c1a2e4c0d8dd8046992fe0f8f61780b2ef9e8533ad"
+    },
+    {
+      "route": "CREATIVE-ASSIGNMENT.md",
+      "bytes": 1896,
+      "sha256": "795c5afbb9d2c42df2f8011f4f8c7207fe4c8db26d07223bc6a49f456bbb1dbc"
+    },
+    {
+      "route": "SOURCE-PINS.json",
+      "bytes": 2156,
+      "sha256": "9701ddd8b24c647af81fd60e06eb4643ceda3d0943f9abc4b2b801eb96a5a1f7"
+    }
+  ],
+  "standaloneTechnicalReplayStatus": "pass-limited-native-phases-and-exact-expiry",
+  "galleryAdapterReplayStatus": "pass",
+  "parentGalleryReplayStatus": "pass-with-unattributed-startup-warning",
+  "qualityReviewStatus": "not-accepted",
+  "packageFiles": [
+    {
+      "route": "gallery.html",
+      "bytes": 1982,
+      "sha256": "ffc909c97015f866e2a251dc1417c2b51bfbc5f907604148ad84b5da58c0d596"
+    },
+    {
+      "route": "main.mjs",
+      "bytes": 30319,
+      "sha256": "3c8158e66b80a4f85d1c40b32bf7be3522f8f82299de0b5170891f1d1c6de1ad"
+    },
+    {
+      "route": "audio.mjs",
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    {
+      "route": "effect.mjs",
+      "bytes": 7058,
+      "sha256": "cf1a2c5f6922cfc94ffc881564a7243a1025d64b0cb2ec627b639927c8f0b084"
+    },
+    {
+      "route": "creative-source-manifest.json",
+      "bytes": 2156,
+      "sha256": "9701ddd8b24c647af81fd60e06eb4643ceda3d0943f9abc4b2b801eb96a5a1f7"
+    }
+  ]
+}
