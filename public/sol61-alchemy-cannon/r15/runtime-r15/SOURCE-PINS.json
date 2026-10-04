@@ -1,0 +1,60 @@
+{
+  "schema": "dva-cannon-r15-faithful-runtime-source-pins/v1",
+  "status": "private faithful runtime draft; creative source remains UNSEALED",
+  "source": {
+    "producerPath": "outputs/request-20261004/finish-cannon-r15-creative-sol61-r1",
+    "designOwner": "GPT-6.1-Sol",
+    "version": "alchemy-cannon-new-e-sol61-r15",
+    "sourceStatus": "unsealed executable draft; no native or quality decision implied",
+    "effect": {
+      "path": "source-r15/effect.mjs",
+      "bytes": 5512,
+      "sha256": "cf3739efd6d6f26c481e084850cd14f892d59fe061eb805f552d2981152e2e80"
+    },
+    "material": {
+      "path": "source-r15/material.mjs",
+      "bytes": 4225,
+      "sha256": "4551d1f0d4ab59d3c42df221d24626cec1b7493f3cc2e7fff9bc9c44ecd34bd6"
+    },
+    "shaderExport": {
+      "bytes": 2893,
+      "sha256": "76bfdb34522bc8bf2a1187754e2aae079c5eb0f9b6374051d1fc4c6e5b5374a3",
+      "construction": "actual ESM import of effect.mjs and material.mjs; hash exact exported concatenated SHADER"
+    },
+    "audio": {
+      "path": "source-r15/audio.mjs",
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    "handoffSha256": "ebff1a542833b6d1619aa26ddbc88296df124086c61d98c65f73bb6577345f5c",
+    "checksSha256": "0a505ef537ea6af6be3d683428d93ed5f4f9199018c78099658ab436ea2342f4"
+  },
+  "adapter": {
+    "implementationOwner": "GPT-6-Luna",
+    "base": "R13 repair-attempt-02 cause-preserving review adapter; exact identity substitutions plus material module pin",
+    "creativeChanges": false
+  },
+  "abi": {
+    "vertexStrideBytes": 32,
+    "vertexFloats": 8,
+    "viewUniformBytes": 16,
+    "depthSamples": 16,
+    "worldTuple": "[u, y, encodedAge, power]",
+    "newBindings": false
+  },
+  "bounds": {
+    "activationMs": 900,
+    "beamMs": 420,
+    "reducedShapeAgeMs": 210,
+    "causePreservingHeldControls": true
+  },
+  "acceptance": {
+    "nativeCompile": "pending root",
+    "nativePhases": "pending root",
+    "visualQuality": "not accepted / not reviewed",
+    "ordinarySfxListening": "not run",
+    "devicePerformance": "not run",
+    "gameIntegration": "not connected",
+    "adoption": "unknown"
+  }
+}

@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+const root=path.dirname(fileURLToPath(import.meta.url));
+const src=path.join(root,'source-r15'),base=path.join(root,'source-r14-adapter'),preview=path.join(root,'preview','cannon-r15');
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex'),read=p=>fs.readFileSync(p);
+const pins={effect:'cf3739efd6d6f26c481e084850cd14f892d59fe061eb805f552d2981152e2e80',material:'4551d1f0d4ab59d3c42df221d24626cec1b7493f3cc2e7fff9bc9c44ecd34bd6',shader:'76bfdb34522bc8bf2a1187754e2aae079c5eb0f9b6374051d1fc4c6e5b5374a3',audio:'683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a'};
+for(const [f,k] of [['effect.mjs','effect'],['material.mjs','material'],['audio.mjs','audio']])assert.equal(sha(read(path.join(src,f))),pins[k],`${f} source pin`);
+const mod=await import(pathToFileURL(path.join(src,'effect.mjs')).href);assert.equal(sha(Buffer.from(mod.SHADER)),pins.shader,'actual imported SHADER pin');
+assert.equal(mod.VERSION,'alchemy-cannon-new-e-sol61-r15');
+for(const f of ['effect.mjs','material.mjs','audio.mjs'])fs.copyFileSync(path.join(src,f),path.join(preview,f));
+let main=read(path.join(base,'main.mjs')).toString('utf8');
+for(const [from,to] of [['alchemy-cannon-sol61-r13','alchemy-cannon-sol61-r15'],['alchemy-cannon-new-e-sol61-r13','alchemy-cannon-new-e-sol61-r15'],['281cf3907cd90ef8b0a1623f8f9394854312dd8b7064e1ed5511fa5e1cade7a8',pins.effect],['adf1a666c74e8df2ff1bbe366e5fb5c198580d9e8d97994ad763af7d5e8b2f8b',pins.shader],['R13 runtime version','R15 runtime version'],['R13 imported shader export','R15 imported shader export'],['__cannonR13SourcePins','__cannonR15SourcePins']]){assert.equal(main.split(from).length-1,1,from);main=main.replace(from,to);}
+const audioLine="  audioModuleSha256: '683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a',";assert.equal(main.split(audioLine).length-1,1);main=main.replace(audioLine,`  materialModuleSha256: '${pins.material}',\n${audioLine}`);
+const audioLoop="    ['audio.mjs', EXPECTED_SOURCE_PINS.audioModuleSha256]]) {";assert.equal(main.split(audioLoop).length-1,1);main=main.replace(audioLoop,"    ['material.mjs', EXPECTED_SOURCE_PINS.materialModuleSha256],\n"+audioLoop);
+fs.writeFileSync(path.join(preview,'main.mjs'),main);
+let gallery=read(path.join(base,'gallery-base.html')).toString('utf8');assert(gallery.includes('r13'));gallery=gallery.replaceAll('r13','r15');fs.writeFileSync(path.join(preview,'gallery.html'),gallery);
+const copied={schema:'dva-cannon-r15-faithful-runtime-source-pins/v1',status:'private faithful runtime draft; creative source remains UNSEALED',source:{producerPath:'outputs/request-20261004/finish-cannon-r15-creative-sol61-r1',designOwner:'GPT-6.1-Sol',version:mod.VERSION,sourceStatus:'unsealed executable draft; no native or quality decision implied',effect:{path:'source-r15/effect.mjs',bytes:read(path.join(src,'effect.mjs')).length,sha256:pins.effect},material:{path:'source-r15/material.mjs',bytes:read(path.join(src,'material.mjs')).length,sha256:pins.material},shaderExport:{bytes:Buffer.byteLength(mod.SHADER),sha256:pins.shader,construction:'actual ESM import of effect.mjs and material.mjs; hash exact exported concatenated SHADER'},audio:{path:'source-r15/audio.mjs',bytes:read(path.join(src,'audio.mjs')).length,sha256:pins.audio},handoffSha256:sha(read(path.join(src,'HANDOFF.md'))),checksSha256:sha(read(path.join(src,'CHECKS.json')))},adapter:{implementationOwner:'GPT-6-Luna',base:'R13 repair-attempt-02 cause-preserving review adapter; exact identity substitutions plus material module pin',creativeChanges:false},abi:{vertexStrideBytes:32,vertexFloats:8,viewUniformBytes:16,depthSamples:16,worldTuple:'[u, y, encodedAge, power]',newBindings:false},bounds:{activationMs:900,beamMs:420,reducedShapeAgeMs:210,causePreservingHeldControls:true},acceptance:{nativeCompile:'pending root',nativePhases:'pending root',visualQuality:'not accepted / not reviewed',ordinarySfxListening:'not run',devicePerformance:'not run',gameIntegration:'not connected',adoption:'unknown'}};
+fs.writeFileSync(path.join(root,'SOURCE-PINS.json'),JSON.stringify(copied,null,2)+'\n');
+console.log(JSON.stringify({pins,mainBytes:Buffer.byteLength(main),galleryBytes:Buffer.byteLength(gallery)}));

@@ -1,0 +1,79 @@
+{
+  "schema": "dva-cannon-r15-native-capture-index/v1",
+  "status": "bounded initial material review; NOT quality accepted",
+  "captureCount": 3,
+  "captures": [
+    {
+      "name": "off220",
+      "requestedAgeMs": 220,
+      "sampledAgeMs": 220,
+      "observation": false,
+      "sourceEnabled": true,
+      "causeId": "cannon-r15-root-review",
+      "eventId": "alchemy-cannon-review:cannon-r15-root-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-2",
+      "completed": true,
+      "queueError": null,
+      "image": {
+        "path": "native/initial-material/off220.jpg",
+        "bytes": 19253,
+        "sha256": "620b85ea75468610fcb6272955e3caa9df55da5ea5c0f01b9312afd068ce4743"
+      },
+      "proof": {
+        "path": "native/initial-material/off220.json",
+        "bytes": 10023,
+        "sha256": "f1710f8d62cc3eb217c8bdb8bc5e9872304cc2a0105059e1ae9d485a3bcf50e2"
+      }
+    },
+    {
+      "name": "on220",
+      "requestedAgeMs": 220,
+      "sampledAgeMs": 220,
+      "observation": true,
+      "sourceEnabled": true,
+      "causeId": "cannon-r15-root-review",
+      "eventId": "alchemy-cannon-review:cannon-r15-root-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-2",
+      "completed": true,
+      "queueError": null,
+      "image": {
+        "path": "native/initial-material/on220.jpg",
+        "bytes": 19412,
+        "sha256": "8f0ea722d9f5bb150b98729f885e903944bc4be8740b33b7e9eeeee353603801"
+      },
+      "proof": {
+        "path": "native/initial-material/on220.json",
+        "bytes": 10017,
+        "sha256": "51c8d3bf62cfab991d5db8fbf318794bc4a26ac65fc1a827e58c31417501e0c5"
+      }
+    },
+    {
+      "name": "off420",
+      "requestedAgeMs": 420,
+      "sampledAgeMs": null,
+      "observation": false,
+      "sourceEnabled": true,
+      "causeId": "cannon-r15-root-review",
+      "eventId": "alchemy-cannon-review:cannon-r15-root-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-3",
+      "completed": true,
+      "queueError": null,
+      "image": {
+        "path": "native/initial-material/off420.jpg",
+        "bytes": 15738,
+        "sha256": "5ac78511a517407e1ccde78857dea3552814dca38b10b20dfb879dac0ac5327e"
+      },
+      "proof": {
+        "path": "native/initial-material/off420.json",
+        "bytes": 8979,
+        "sha256": "debfa69f030b9f3bdcb651f69d35719cae86ce1586ccdea96263147a2d94f2b8"
+      }
+    }
+  ],
+  "limitations": [
+    "Only held OFF220/ON220 and completed OFF420 expiry; not full motion or full lifetime.",
+    "Capture snapshots are not atomic GPU image readback.",
+    "Verify audio was hard-muted; ordinary SFX listening was not run.",
+    "Sol native material decision is FAIL; ON220 source-local OBS response was supported in the limited matched slice only."
+  ]
+}
