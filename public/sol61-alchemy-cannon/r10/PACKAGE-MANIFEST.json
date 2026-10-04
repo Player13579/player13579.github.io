@@ -1,0 +1,204 @@
+{
+  "schema": "dva-e-runtime-package/v1",
+  "versionId": "alchemy-cannon-sol61-r10",
+  "creativeVersion": "alchemy-cannon-new-e-sol61-r10",
+  "route": "public/sol61-alchemy-cannon/r10/",
+  "previewPage": "gallery.html?embed=1&galleryAutoLoop=1",
+  "technicalReplayStatus": "pass-limited-native-same-event-220ms-OBS-pair-and-exact-420ms-expiry-after-new-navigation",
+  "standaloneTechnicalReplayStatus": "pass-limited-native-same-event-220ms-OBS-pair-and-exact-420ms-expiry-after-new-navigation",
+  "galleryAdapterReplayStatus": "not_verified",
+  "parentGalleryReplayStatus": "not_verified",
+  "qualityStatus": "not-accepted",
+  "qualityReviewStatus": "provisional-root-not-accepted-formal-Sol-review-pending",
+  "qualityReviewerDisplayName": "Root native review",
+  "qualityReviewReason": "At 220 ms the open gaps are visible, but the three white/cyan ribbons read as a regularly woven flat lattice rather than coherent energetic material with readable front/back folds and depth. OBS ON/OFF appearance differs only slightly. Strong white brightness is explicitly not the rejected property.",
+  "qualityEvidence": "native/ROOT-LIMITED-QUALITY.md",
+  "adoption": "unknown",
+  "normalFullLifetime": "not_run",
+  "normalAudioListening": "not_run",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected",
+  "performance": "not_run",
+  "nativeEvidenceScope": "At 220 ms the same cause, event and fixture frame were captured with source enabled and OBS ON/OFF; queue completion succeeded with no error. Exact 420 ms expiry was separately re-navigated with the same cause id but a new fixture lifecycle; it completed with zero effect vertices, one expired event, and 72 fixture vertices. This does not prove an uninterrupted 220-to-420 timeline.",
+  "creativeSource": {
+    "author": "GPT-6.1-Sol",
+    "sourceVersion": "alchemy-cannon-new-e-sol61-r10",
+    "sourceStatus": "unsealed; source bytes are copied unchanged from the producer folder",
+    "effectSha256": "a532bbefe31fa73c04c3f8bb66ce1d8dc83e21a61423c4d7b5bc33c56b1cc3b4",
+    "shaderSha256": "bbbcf682cbd43de7b221ff164973ccf81606ac8fb6bd4634c15754a6c3edac20",
+    "audioSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+    "designContractSha256": "2a4f4d8d1c792ab143497f4178c64858322e8307c83d312677b0dd7a1cb65047"
+  },
+  "runtimeAdapterAuthor": "GPT-6-Luna",
+  "runtimeAdapterBaseline": "Cannon R9 faithful runtime; route files use the R10 effect/audio plus pin/identity-only main/gallery adaptation",
+  "sourcePinsSha256": "b43e0b177c59d9150e671f0c8b423578de58daf642ff5205390f856d4a1fdfc6",
+  "nativeEvidenceMetadataSha256": "57032af1709220d68db72247d0badf5e53ec8cae375a818c7ccb2f1ae4ed9fd1",
+  "nativeEvidenceFiles": [
+    "native/on220.json",
+    "native/on220.jpg",
+    "native/off220.json",
+    "native/off220.jpg",
+    "native/expiry420.json",
+    "native/expiry420.jpg",
+    "native/NATIVE-REVIEW-METADATA.json",
+    "native/ROOT-LIMITED-QUALITY.md",
+    "native/ACCEPTANCE-SCOPE.json"
+  ],
+  "validation": {
+    "runtimeFocusedStatus": "pass",
+    "runtimeFocusedCommand": "node --test tests/runtime-r10.test.mjs",
+    "runtimeFocusedExitCode": 0,
+    "runtimeFocusedTestCount": 8,
+    "runtimeFocusedPassed": 8,
+    "runtimeFocusedResultSha256": "0cce933e5197fa89513a27066eb86617fb225ee93d26e1c5664cc1e0f31b67ec",
+    "copiedPackageClosureStatus": "pass",
+    "copiedPackageClosureExitCode": 0,
+    "copiedPackageClosureTestCount": 11,
+    "copiedPackageClosureResultPath": "outputs/request-20261004/finish-cannon-r10-gallery-package-luna-r1/PACKAGE-TEST-RESULT.json"
+  },
+  "packageFiles": [
+    {
+      "route": "audio.mjs",
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    {
+      "route": "creative-source-manifest.json",
+      "bytes": 775,
+      "sha256": "c68f158836c0628ed12800a0c56a5aa6dd934d0aa16428c6ad160454de9ad914"
+    },
+    {
+      "route": "effect.mjs",
+      "bytes": 9975,
+      "sha256": "a532bbefe31fa73c04c3f8bb66ce1d8dc83e21a61423c4d7b5bc33c56b1cc3b4"
+    },
+    {
+      "route": "evidence/RELEASE-SCOPE.md",
+      "bytes": 1499,
+      "sha256": "bb3e0e6cd50076ecf53a00bf6d576fb0e21e388227aa1fc763dae423fe8a71d9"
+    },
+    {
+      "route": "evidence/creative-source/CPU-CHECKS.json",
+      "bytes": 958,
+      "sha256": "f028ea78d70f70f29c16a398d85a463b4555e08fcb243acb5945eba9fc8f9092"
+    },
+    {
+      "route": "evidence/creative-source/DESIGN-CONTRACT.md",
+      "bytes": 7855,
+      "sha256": "2a4f4d8d1c792ab143497f4178c64858322e8307c83d312677b0dd7a1cb65047"
+    },
+    {
+      "route": "evidence/creative-source/audio.mjs",
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    {
+      "route": "evidence/creative-source/effect.mjs",
+      "bytes": 9975,
+      "sha256": "a532bbefe31fa73c04c3f8bb66ce1d8dc83e21a61423c4d7b5bc33c56b1cc3b4"
+    },
+    {
+      "route": "evidence/runtime/R9-EFFECT-BASELINE.mjs",
+      "bytes": 10542,
+      "sha256": "ed8d2c2f8a926dd660c56c96b12bf8c9916f461680ce55b01d9b24d71f055bdd"
+    },
+    {
+      "route": "evidence/runtime/R9-GALLERY-BASELINE.html",
+      "bytes": 2124,
+      "sha256": "ed6f4308cfd4889674c8237a4985eb0720eef15eb5357519a4dacd36030effe4"
+    },
+    {
+      "route": "evidence/runtime/R9-MAIN-BASELINE.mjs",
+      "bytes": 36167,
+      "sha256": "392ef4b2561612916041b0b6e0b6aed7d50cb462a0053e4e05a10e1964cc6535"
+    },
+    {
+      "route": "evidence/runtime/ROUTE-CHECK.json",
+      "bytes": 1344,
+      "sha256": "4c7b146a3061e7e259053de64b2360977ac8c1b4fe8dbb7c42a0c166e7358ef0"
+    },
+    {
+      "route": "evidence/runtime/ROUTE-PINS.json",
+      "bytes": 653,
+      "sha256": "9722e0725c5e0e65b47c3a5402646aac8a7c34c7b7d97b7a38c96e88d7017a72"
+    },
+    {
+      "route": "evidence/runtime/RUNTIME-CONTRACT.md",
+      "bytes": 1572,
+      "sha256": "21f456c387eed77b63d489926abc97a18eeb005eb2b78f1a538fb815c7829960"
+    },
+    {
+      "route": "evidence/runtime/RUNTIME-READY.json",
+      "bytes": 4090,
+      "sha256": "84eee7f19cf046ff91c7b58680054131ef1e4f7a006e0385203f604980462d24"
+    },
+    {
+      "route": "evidence/runtime/SOURCE-PINS.json",
+      "bytes": 1778,
+      "sha256": "b43e0b177c59d9150e671f0c8b423578de58daf642ff5205390f856d4a1fdfc6"
+    },
+    {
+      "route": "evidence/runtime/TEST-RESULT.json",
+      "bytes": 1428,
+      "sha256": "0cce933e5197fa89513a27066eb86617fb225ee93d26e1c5664cc1e0f31b67ec"
+    },
+    {
+      "route": "gallery.html",
+      "bytes": 2126,
+      "sha256": "a6fe28a4aa0adda142f179b09a33601bab2992a8177e2929a56fca208f78dc2c"
+    },
+    {
+      "route": "main.mjs",
+      "bytes": 36172,
+      "sha256": "e96421fa1632c92e2bec0596c31212ab34e784b1b0cd0841d942f2881f62322a"
+    },
+    {
+      "route": "native/ACCEPTANCE-SCOPE.json",
+      "bytes": 1704,
+      "sha256": "e73e7387390bbfdf32e324e3b41ab6360fc648526d21d99a84a298a3608deb69"
+    },
+    {
+      "route": "native/NATIVE-REVIEW-METADATA.json",
+      "bytes": 2685,
+      "sha256": "57032af1709220d68db72247d0badf5e53ec8cae375a818c7ccb2f1ae4ed9fd1"
+    },
+    {
+      "route": "native/ROOT-LIMITED-QUALITY.md",
+      "bytes": 1679,
+      "sha256": "031adeef95f42e39230b4e4ddf00020305dd4f039f00830d14df7a57c78ffa89"
+    },
+    {
+      "route": "native/expiry420.jpg",
+      "bytes": 16068,
+      "sha256": "3eb4d6f448fc363ca0bccfa77c51733b180bf4be784a5ecfad69eee9d22892f3"
+    },
+    {
+      "route": "native/expiry420.json",
+      "bytes": 2558,
+      "sha256": "a2ae8b0658b6a86ac970dbbe46d170dd7622456562868888d1bfeda4df8337db"
+    },
+    {
+      "route": "native/off220.jpg",
+      "bytes": 22472,
+      "sha256": "e0daae7c065e042dea14b3b44f84c366537ffde5d91525694a9e42a0d10a69d8"
+    },
+    {
+      "route": "native/off220.json",
+      "bytes": 2862,
+      "sha256": "1d2d09eea9d999146f6e8c6bfbd7adcff9576ae79dec26628fd194f9be7eb4a5"
+    },
+    {
+      "route": "native/on220.jpg",
+      "bytes": 22512,
+      "sha256": "48e05fcca2809ffced0432a015fd304abb6364648c3336914cf0eb5cee6bddfb"
+    },
+    {
+      "route": "native/on220.json",
+      "bytes": 2860,
+      "sha256": "9579635074f3e9ec393be4fdcd93cb87ffa229de8d978892a02dbea1e0f558e0"
+    }
+  ],
+  "packageSealPath": "SEAL.json",
+  "publication": "private-package-candidate-not-published",
+  "quality": "provisional-not-accepted-formal-Sol-decision-pending"
+}

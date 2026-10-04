@@ -1,0 +1,92 @@
+{
+  "schema": "dva-cannon-r10-faithful-runtime-ready/v1",
+  "status": "private-root-native-review-ready",
+  "published": false,
+  "sourceStatus": "unsealed draft; copied byte-exact from frozen creative input; no creative acceptance",
+  "sourcePins": {
+    "producerPath": "outputs/request-20261004/finish-cannon-r10-creative-sol61-r1",
+    "version": "alchemy-cannon-new-e-sol61-r10",
+    "effect": {
+      "sha256": "a532bbefe31fa73c04c3f8bb66ce1d8dc83e21a61423c4d7b5bc33c56b1cc3b4",
+      "bytes": 9975
+    },
+    "shaderExport": {
+      "sha256": "bbbcf682cbd43de7b221ff164973ccf81606ac8fb6bd4634c15754a6c3edac20",
+      "bytes": 2558
+    },
+    "audio": {
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "bytes": 3823
+    },
+    "designContractSha256": "2a4f4d8d1c792ab143497f4178c64858322e8307c83d312677b0dd7a1cb65047",
+    "cpuChecksSha256": "f028ea78d70f70f29c16a398d85a463b4555e08fcb243acb5945eba9fc8f9092"
+  },
+  "versionId": "alchemy-cannon-sol61-r10",
+  "runtimeRoutes": [
+    {
+      "route": "gallery.html",
+      "http": 200,
+      "bytes": 2126,
+      "sha256": "a6fe28a4aa0adda142f179b09a33601bab2992a8177e2929a56fca208f78dc2c",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "main.mjs",
+      "http": 200,
+      "bytes": 36172,
+      "sha256": "e96421fa1632c92e2bec0596c31212ab34e784b1b0cd0841d942f2881f62322a",
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "effect.mjs",
+      "http": 200,
+      "bytes": 9975,
+      "sha256": "a532bbefe31fa73c04c3f8bb66ce1d8dc83e21a61423c4d7b5bc33c56b1cc3b4",
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "audio.mjs",
+      "http": 200,
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "contentType": "text/javascript; charset=utf-8"
+    }
+  ],
+  "tests": {
+    "command": "node --test tests/runtime-r10.test.mjs",
+    "status": "pass",
+    "exitCode": 0,
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "scope": "source identity/hash, minimal R9 runtime adapter diff, sampler parity, 32B tuple/View16 mocked draw, projected-sheet finite/support/opening controls, 220ms same-event proof API, 420ms expiry, gallery startup/SFX hard-mute policy"
+  },
+  "reviewHost": {
+    "pid": 19700,
+    "host": "127.0.0.1",
+    "port": 52437,
+    "startedAt": "2026-10-04T08:27:30.014Z",
+    "expiresAt": "2026-10-04T09:12:30.014Z",
+    "reviewRoutes": {
+      "sameEvent220ObsOn": "http://127.0.0.1:52437/gallery.html?verify=1&pulsePhase=220&causeId=cannon-r10-review-220&variant=continuous&observation=1&source=1&reducedMotion=0",
+      "sameEvent220ObsOff": "http://127.0.0.1:52437/gallery.html?verify=1&pulsePhase=220&causeId=cannon-r10-review-220&variant=continuous&observation=0&source=1&reducedMotion=0",
+      "exact420Expiry": "http://127.0.0.1:52437/gallery.html?verify=1&pulsePhase=420&causeId=cannon-r10-review-expiry-420&variant=continuous&observation=1&source=1&reducedMotion=0",
+      "normalWholeLife": "http://127.0.0.1:52437/gallery.html?verify=1&mode=sequence&variant=continuous&observation=1&source=1&reducedMotion=0"
+    },
+    "rootApi": "window.__alchemyCannonNativeReview.snapshot() and window.__alchemyCannonProof",
+    "stopMethod": "POST /__shutdown with this lease token via stop-host-r10.mjs; bounded auto-exit after 45 minutes"
+  },
+  "acceptance": {
+    "nativeGpuCompile": "pending root native review",
+    "sameEventObs220": "prepared, not captured",
+    "exactExpiry420": "prepared, not captured",
+    "normalWholeLife": "prepared, not captured",
+    "visualQuality": "not assessed",
+    "normalSfxListening": "not run",
+    "gameIntegration": "not connected",
+    "adoption": "unknown"
+  },
+  "baseline": "Settled Cannon R9 runtime files were not modified; R10 adapter changes version/source hash identifiers and uses exact R10 effect/audio source.",
+  "sharedCheckoutTouched": false,
+  "pushPerformed": false
+}

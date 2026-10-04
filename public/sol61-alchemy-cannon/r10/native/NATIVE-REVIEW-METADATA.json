@@ -1,0 +1,82 @@
+{
+  "schema": "dva-cannon-r10-native-evidence-metadata/v1",
+  "evaluator": "GPT-6.1-Sol (root native review)",
+  "decisionStatus": "limited technical pass; provisional visual quality NOT ACCEPTED; formal Sol decision pending",
+  "hostRoute": "private R10 hash-pinned standalone gallery preview with verify=1",
+  "sourceEffectSha256": "a532bbefe31fa73c04c3f8bb66ce1d8dc83e21a61423c4d7b5bc33c56b1cc3b4",
+  "sourceShaderSha256": "bbbcf682cbd43de7b221ff164973ccf81606ac8fb6bd4634c15754a6c3edac20",
+  "sameEvent220": {
+    "causeId": "cannon-r10-review-220",
+    "eventId": "alchemy-cannon-review:cannon-r10-review-220",
+    "frameId": "alchemy-cannon-fixture-frame-1-1",
+    "ageMs": 220,
+    "obsOn": {
+      "path": "on220.jpg",
+      "observation": true,
+      "vertexCount": 300,
+      "queueCompleted": true,
+      "queueError": null,
+      "proof": "on220.json"
+    },
+    "obsOff": {
+      "path": "off220.jpg",
+      "observation": false,
+      "vertexCount": 294,
+      "queueCompleted": true,
+      "queueError": null,
+      "proof": "off220.json"
+    }
+  },
+  "expiry420": {
+    "causeId": "cannon-r10-review-220",
+    "eventId": "alchemy-cannon-review:cannon-r10-review-220",
+    "ageMs": 420,
+    "scope": "separate navigation/new fixture lifecycle; same cause id does not establish a continuous event timeline",
+    "zeroEffectVertices": 0,
+    "expiredEventCount": 1,
+    "fixtureVertices": 72,
+    "queueCompleted": true,
+    "queueError": null,
+    "proof": "expiry420.json",
+    "screenshot": "expiry420.jpg"
+  },
+  "screenshotFilesAreOriginalJPEGs": true,
+  "files": [
+    {
+      "file": "on220.json",
+      "bytes": 2860,
+      "sha256": "9579635074f3e9ec393be4fdcd93cb87ffa229de8d978892a02dbea1e0f558e0",
+      "mediaType": "application/json"
+    },
+    {
+      "file": "on220.jpg",
+      "bytes": 22512,
+      "sha256": "48e05fcca2809ffced0432a015fd304abb6364648c3336914cf0eb5cee6bddfb",
+      "mediaType": "image/jpeg"
+    },
+    {
+      "file": "off220.json",
+      "bytes": 2862,
+      "sha256": "1d2d09eea9d999146f6e8c6bfbd7adcff9576ae79dec26628fd194f9be7eb4a5",
+      "mediaType": "application/json"
+    },
+    {
+      "file": "off220.jpg",
+      "bytes": 22472,
+      "sha256": "e0daae7c065e042dea14b3b44f84c366537ffde5d91525694a9e42a0d10a69d8",
+      "mediaType": "image/jpeg"
+    },
+    {
+      "file": "expiry420.json",
+      "bytes": 2558,
+      "sha256": "a2ae8b0658b6a86ac970dbbe46d170dd7622456562868888d1bfeda4df8337db",
+      "mediaType": "application/json"
+    },
+    {
+      "file": "expiry420.jpg",
+      "bytes": 16068,
+      "sha256": "3eb4d6f448fc363ca0bccfa77c51733b180bf4be784a5ecfad69eee9d22892f3",
+      "mediaType": "image/jpeg"
+    }
+  ]
+}
