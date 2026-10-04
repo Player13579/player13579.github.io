@@ -1,0 +1,128 @@
+{
+  "actualUrl": "http://127.0.0.1:53604/index.html?verify=donation-r4-idle-startup",
+  "idleInitial": {
+    "stage": "awaiting-input",
+    "status": "pending",
+    "mode": "standalone-manual",
+    "resourcesReady": true,
+    "firstFramePresent": false,
+    "runtimeReady": true,
+    "rendererCount": 2,
+    "audioGain": 0,
+    "elapsedMs": 18050.5
+  },
+  "idleOver90": {
+    "stage": "awaiting-input",
+    "status": "pending",
+    "firstFramePresent": false,
+    "elapsedMs": 108506.19999980927,
+    "sinceStartupMs": 108453.59999990463,
+    "runtimeReady": true,
+    "rendererCount": 2,
+    "audioGain": 0
+  },
+  "trustedPlay": {
+    "stage": "playing",
+    "status": "ready",
+    "firstFrame": {
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "canvasConnected": true,
+      "viewportWidth": 322,
+      "viewportHeight": 162,
+      "backingWidth": 640,
+      "backingHeight": 320,
+      "passes": 2,
+      "submit": 3,
+      "frameToken": 1
+    },
+    "frameDeadlineAtMs": 209472.5,
+    "runtimeCauseId": "gallery-synthetic-2",
+    "timeMs": 240.80000014304824,
+    "running": true,
+    "activeFrameFound": true,
+    "audioGain": 0
+  },
+  "naturalEnd": {
+    "stage": "playing",
+    "status": "ready",
+    "timeMs": 2800,
+    "running": false,
+    "runtimeReady": true,
+    "terminalClearFound": true,
+    "audioGain": 0
+  },
+  "embed": {
+    "url": "http://127.0.0.1:53604/index.html?verify=donation-r4-idle-startup-embed&embed=1",
+    "mode": "existing-autoplay",
+    "stage": "playing",
+    "status": "ready",
+    "awaitingInput": false,
+    "firstFrame": {
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "canvasConnected": true,
+      "viewportWidth": 319,
+      "viewportHeight": 159.5,
+      "backingWidth": 638,
+      "backingHeight": 320,
+      "passes": 2,
+      "submit": 3,
+      "frameToken": 1
+    },
+    "runtimeReady": true,
+    "embedParam": true,
+    "audioGain": 0
+  },
+  "consoles": {
+    "standalone": 0,
+    "embed": 0
+  },
+  "evidence": {
+    "idle-initial.json": {
+      "bytes": 1402,
+      "sha256": "4040281c52f419460622b68132699d4aa614a5e5dade929df43fec0652a9d96e"
+    },
+    "idle-over90.json": {
+      "bytes": 1375,
+      "sha256": "aee7848abf7ddc1f7511773db8355b1d2e17448abdb861c9d96bcde4a5897d42"
+    },
+    "trusted-play.json": {
+      "bytes": 6805,
+      "sha256": "2c026403e16c630da220bee9e9360c043d08c7b974b856a4b187cf2c97232f4c"
+    },
+    "natural-end.json": {
+      "bytes": 54234,
+      "sha256": "5470a8ff4203a45ef2969584190547a7f015b4138fa53520d8312fa6ce7514bd"
+    },
+    "embed-autoplay.json": {
+      "bytes": 33677,
+      "sha256": "70ea833b8b477f415186c64fe72663dec25db1c435b9653e28fc14399276f3bf"
+    },
+    "standalone-console.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "embed-console.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "trusted-play.jpg": {
+      "bytes": 40676,
+      "sha256": "74b7ad76d98a9d434e0b3dbb9c7baf47272d03c7912a44b8b1bd8a5f8bb1f539"
+    },
+    "embed-autoplay.jpg": {
+      "bytes": 3459,
+      "sha256": "6db46fb3724be8d10eba16452595407188c089181eb56d0495ed02c0b77a8547"
+    }
+  },
+  "boundaries": {
+    "embedVerification": "top-level embed=1 autoplay; no real parent-gallery iframe bridge test",
+    "audio": "verify mode muted; normal SFX not tested",
+    "visualQuality": "not accepted",
+    "gameIntegration": "not tested",
+    "adoption": "unchanged/unknown"
+  }
+}
