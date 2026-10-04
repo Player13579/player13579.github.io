@@ -1,0 +1,10 @@
+# Cannon R8 seal-change audit
+
+- Producer creative SEAL SHA-256: a5aeb84456684d6f0cc24a42db9d3b0b811e0fc13a5d6bc099dbdf5dd6ca1d90 (runtime pins and runtime seal reference the same hash). Frozen source files match all 10 source-r8/SEAL.json entries.
+- Runtime package RUNTIME-SEAL SHA-256: 6ab181ad3db7a5d54b481c10574e65f749d737b586207b924569097bdbf756bf; PACKAGE-MANIFEST references that exact hash. All 38 sealed runtime/contract/test/source-copy files match their listed bytes. Effect, imported shader, audio, gallery and main match their source pins.
+- Runtime seal, package manifest and source pins were written at 2026-10-04T07:12:44.363Z; native review metadata and native review test were written earlier at 2026-10-04T07:11:16.481Z and 2026-10-04T07:11:59.198Z.
+- Root-native evidence is excluded from RUNTIME-SEAL.json; PACKAGE-MANIFEST pins NATIVE-REVIEW-METADATA.json, whose listed hashes match all 6 evidence files. The three screenshot files have .png names but metadata records JPEG bytes and the extension mismatch.
+- The derived runtime package is runtime-r8/, separate from the creative producer output. Its RUNTIME-SEAL.json, PACKAGE-MANIFEST.json and SOURCE-PINS.json were regenerated in that same package directory after native review rather than emitted into a second versioned package snapshot. The creative producer SEAL/SOURCE-FREEZE and frozen source files remain consistent.
+- The supplied earlier readiness prefix e985f25… is not found in a preserved R8 runtime artifact/receipt in the owned output; the exact earlier seal bytes and old-to-final content diff cannot be established. Do not infer the prior bytes.
+- Focused verification passed: combined node:test run reported 10/10 passing tests across package seal, source pin, native review and runtime files. The package generator hardcodes its test result/count fields rather than loading an independent test-results artifact; this weakens test-result provenance but does not invalidate the separately executed passing checks.
+- Acceptance remains limited native technical pass, quality not accepted, and full motion/performance/audio/Safari/game integration not established.

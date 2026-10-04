@@ -1,0 +1,687 @@
+{
+  "schema": "dva-cannon-r8-seal-change-audit/v1",
+  "auditedAt": "2026-10-04T07:24:21.372Z",
+  "scope": "read-only runtime/source seal and post-review artifact integrity",
+  "paths": {
+    "runtime": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-runtime-luna-r1\\runtime-r8",
+    "producer": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-creative-sol61-root-r1",
+    "ownedAudit": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-seal-change-audit-luna-r1"
+  },
+  "sealHashes": {
+    "producerCreativeSealSha256": "a5aeb84456684d6f0cc24a42db9d3b0b811e0fc13a5d6bc099dbdf5dd6ca1d90",
+    "producerCreativeSealDeclaredByRuntimePins": "a5aeb84456684d6f0cc24a42db9d3b0b811e0fc13a5d6bc099dbdf5dd6ca1d90",
+    "producerCreativeSealDeclaredByRuntimeSeal": "a5aeb84456684d6f0cc24a42db9d3b0b811e0fc13a5d6bc099dbdf5dd6ca1d90",
+    "sourceFreezeActualSha256": "bbc09561f50e7aeda9aee22b6606a8d15471da8706ffb30f082fe08af1831edb",
+    "sourceFreezeDeclared": "bbc09561f50e7aeda9aee22b6606a8d15471da8706ffb30f082fe08af1831edb",
+    "sourceFreezeDeclaredByRuntimeSeal": "bbc09561f50e7aeda9aee22b6606a8d15471da8706ffb30f082fe08af1831edb",
+    "runtimeSealSha256": "6ab181ad3db7a5d54b481c10574e65f749d737b586207b924569097bdbf756bf",
+    "runtimeSealDeclaredByPackageManifest": "6ab181ad3db7a5d54b481c10574e65f749d737b586207b924569097bdbf756bf",
+    "packageManifestSha256": "db3ed6bb856028f4ba54e66f615959197944448889c38470a9c9d4c2dbfbfc5b",
+    "sourcePinsSha256": "4f7de602bf73b7741ee8f18250d1046a454d2657a67078e9f7d5649586946fd8",
+    "sourcePinsDeclaredByPackageManifest": "4f7de602bf73b7741ee8f18250d1046a454d2657a67078e9f7d5649586946fd8"
+  },
+  "core": [
+    {
+      "path": "preview/cannon-r8/effect.mjs",
+      "expectedSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "actualSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "bytes": 10193,
+      "matches": true
+    },
+    {
+      "path": "preview/cannon-r8/audio.mjs",
+      "expectedSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "actualSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "bytes": 3823,
+      "matches": true
+    },
+    {
+      "path": "preview/cannon-r8/gallery.html",
+      "expectedSha256": "b0da1d1940866cddf8a9557b68d929faa2eb9ca401321a480d1c6763140c2b9e",
+      "actualSha256": "b0da1d1940866cddf8a9557b68d929faa2eb9ca401321a480d1c6763140c2b9e",
+      "bytes": 2122,
+      "matches": true
+    },
+    {
+      "path": "preview/cannon-r8/main.mjs",
+      "expectedSha256": "e713262622b45aba64edd3392abfb2b9c2d152231f64f639ce3834050f7ff19a",
+      "actualSha256": "e713262622b45aba64edd3392abfb2b9c2d152231f64f639ce3834050f7ff19a",
+      "bytes": 36163,
+      "matches": true
+    }
+  ],
+  "shader": {
+    "path": "preview/cannon-r8/effect.mjs exported SHADER",
+    "expectedSha256": "cb2178b95f9e06e38e5f45bf2f952875723d7b96ee7191a3c8286813aa20f5d1",
+    "actualSha256": "cb2178b95f9e06e38e5f45bf2f952875723d7b96ee7191a3c8286813aa20f5d1",
+    "matches": true
+  },
+  "sourceCopies": [
+    {
+      "name": "effect.mjs",
+      "hashes": [
+        {
+          "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-creative-sol61-root-r1\\effect.mjs",
+          "sha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+          "bytes": 10193
+        },
+        {
+          "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-runtime-luna-r1\\runtime-r8\\source-r8\\producer-seal\\effect.mjs",
+          "sha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+          "bytes": 10193
+        },
+        {
+          "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-runtime-luna-r1\\runtime-r8\\validation-copy\\finish-cannon-r8-creative-sol61-root-r1\\effect.mjs",
+          "sha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+          "bytes": 10193
+        },
+        {
+          "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-runtime-luna-r1\\runtime-r8\\preview\\cannon-r8\\effect.mjs",
+          "sha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+          "bytes": 10193
+        }
+      ],
+      "allIdentical": true
+    },
+    {
+      "name": "audio.mjs",
+      "hashes": [
+        {
+          "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-creative-sol61-root-r1\\audio.mjs",
+          "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+          "bytes": 3823
+        },
+        {
+          "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-runtime-luna-r1\\runtime-r8\\source-r8\\producer-seal\\audio.mjs",
+          "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+          "bytes": 3823
+        },
+        {
+          "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-runtime-luna-r1\\runtime-r8\\validation-copy\\finish-cannon-r8-creative-sol61-root-r1\\audio.mjs",
+          "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+          "bytes": 3823
+        },
+        {
+          "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r8-runtime-luna-r1\\runtime-r8\\preview\\cannon-r8\\audio.mjs",
+          "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+          "bytes": 3823
+        }
+      ],
+      "allIdentical": true
+    }
+  ],
+  "sourceSealEntryCount": 10,
+  "sourceSealEntries": [
+    {
+      "path": "source-r8/producer-seal/effect.mjs",
+      "expectedBytes": 10193,
+      "actualBytes": 10193,
+      "expectedSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "actualSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "matches": true
+    },
+    {
+      "path": "source-r8/producer-seal/audio.mjs",
+      "expectedBytes": 3823,
+      "actualBytes": 3823,
+      "expectedSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "actualSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "matches": true
+    },
+    {
+      "path": "source-r8/producer-seal/build-r8.cjs",
+      "expectedBytes": 5812,
+      "actualBytes": 5812,
+      "expectedSha256": "2ed691a0e80ca87ce01f76b55e7cdd3e36a28ad90f87a697a6e597ecfce581fb",
+      "actualSha256": "2ed691a0e80ca87ce01f76b55e7cdd3e36a28ad90f87a697a6e597ecfce581fb",
+      "matches": true
+    },
+    {
+      "path": "source-r8/producer-seal/checks.mjs",
+      "expectedBytes": 2755,
+      "actualBytes": 2755,
+      "expectedSha256": "2433e2a38f4d2e74db9b6c36abb64e443df0944c3a688cac4ea733b8ba454368",
+      "actualSha256": "2433e2a38f4d2e74db9b6c36abb64e443df0944c3a688cac4ea733b8ba454368",
+      "matches": true
+    },
+    {
+      "path": "source-r8/producer-seal/CPU-CHECKS.json",
+      "expectedBytes": 767,
+      "actualBytes": 767,
+      "expectedSha256": "5c977412215edfc263025522aa21b1915690cb36b93f8e84235797851710519d",
+      "actualSha256": "5c977412215edfc263025522aa21b1915690cb36b93f8e84235797851710519d",
+      "matches": true
+    },
+    {
+      "path": "source-r8/producer-seal/INPUT-PINS.json",
+      "expectedBytes": 318,
+      "actualBytes": 318,
+      "expectedSha256": "7a1c356850de067e0934b3bfc3965d540999f12fef3840150a7f64f4adc6b778",
+      "actualSha256": "7a1c356850de067e0934b3bfc3965d540999f12fef3840150a7f64f4adc6b778",
+      "matches": true
+    },
+    {
+      "path": "source-r8/producer-seal/DESIGN-CONTRACT.md",
+      "expectedBytes": 5284,
+      "actualBytes": 5284,
+      "expectedSha256": "27c6b38c92f26c4e5b36c42ce8e39f5eaab69051c7c67eac8a2084d3a811e528",
+      "actualSha256": "27c6b38c92f26c4e5b36c42ce8e39f5eaab69051c7c67eac8a2084d3a811e528",
+      "matches": true
+    },
+    {
+      "path": "source-r8/producer-seal/NATIVE-COMPILE-ROOT-BOUND.json",
+      "expectedBytes": 441,
+      "actualBytes": 441,
+      "expectedSha256": "3c34ab800a4181a1eceb1c34ff1f318cfdb53dfdf35d179c82808f5ba9e26502",
+      "actualSha256": "3c34ab800a4181a1eceb1c34ff1f318cfdb53dfdf35d179c82808f5ba9e26502",
+      "matches": true
+    },
+    {
+      "path": "source-r8/producer-seal/NATIVE-COMPILE-FAILED-ACTIVE-KEYWORD.json",
+      "expectedBytes": 1132,
+      "actualBytes": 1132,
+      "expectedSha256": "a814422e513ee04d6358849ca9df407fd6fa69cb2bf694e9d35bb77df26bf007",
+      "actualSha256": "a814422e513ee04d6358849ca9df407fd6fa69cb2bf694e9d35bb77df26bf007",
+      "matches": true
+    },
+    {
+      "path": "source-r8/producer-seal/SOURCE-FREEZE.json",
+      "expectedBytes": 1889,
+      "actualBytes": 1889,
+      "expectedSha256": "bbc09561f50e7aeda9aee22b6606a8d15471da8706ffb30f082fe08af1831edb",
+      "actualSha256": "bbc09561f50e7aeda9aee22b6606a8d15471da8706ffb30f082fe08af1831edb",
+      "matches": true
+    }
+  ],
+  "runtimeSealEntryCount": 38,
+  "runtimeSealEntries": [
+    {
+      "route": "GALLERY-ELIGIBILITY.json",
+      "expectedBytes": 686,
+      "actualBytes": 686,
+      "expectedSha256": "0875387922ccd94c432da5c05d335a149601326fdcd5c0f83bd04d2aa71d23d7",
+      "actualSha256": "0875387922ccd94c432da5c05d335a149601326fdcd5c0f83bd04d2aa71d23d7",
+      "matches": true
+    },
+    {
+      "route": "RUNTIME-CONTRACT.md",
+      "expectedBytes": 1501,
+      "actualBytes": 1501,
+      "expectedSha256": "a3463ef6d2fd5e0ddbd617dd885cd25244e9e6639796fb345aef9e09860e988a",
+      "actualSha256": "a3463ef6d2fd5e0ddbd617dd885cd25244e9e6639796fb345aef9e09860e988a",
+      "matches": true
+    },
+    {
+      "route": "SOURCE-PINS.json",
+      "expectedBytes": 1573,
+      "actualBytes": 1573,
+      "expectedSha256": "4f7de602bf73b7741ee8f18250d1046a454d2657a67078e9f7d5649586946fd8",
+      "actualSha256": "4f7de602bf73b7741ee8f18250d1046a454d2657a67078e9f7d5649586946fd8",
+      "matches": true
+    },
+    {
+      "route": "native-review-r8.test.mjs",
+      "expectedBytes": 2552,
+      "actualBytes": 2552,
+      "expectedSha256": "1ad6a7abb701ff2aab9cc267f4e0999687b3a1d0bfd0f9da9df87804355cad16",
+      "actualSha256": "1ad6a7abb701ff2aab9cc267f4e0999687b3a1d0bfd0f9da9df87804355cad16",
+      "matches": true
+    },
+    {
+      "route": "package-seal-r8.test.mjs",
+      "expectedBytes": 1252,
+      "actualBytes": 1252,
+      "expectedSha256": "7dfc07af03e1a4da5d0c31dcb028e4507319f73ae632af2d1f7613420caa4463",
+      "actualSha256": "7dfc07af03e1a4da5d0c31dcb028e4507319f73ae632af2d1f7613420caa4463",
+      "matches": true
+    },
+    {
+      "route": "preview/cannon-r8/audio.mjs",
+      "expectedBytes": 3823,
+      "actualBytes": 3823,
+      "expectedSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "actualSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "matches": true
+    },
+    {
+      "route": "preview/cannon-r8/effect.mjs",
+      "expectedBytes": 10193,
+      "actualBytes": 10193,
+      "expectedSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "actualSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "matches": true
+    },
+    {
+      "route": "preview/cannon-r8/gallery.html",
+      "expectedBytes": 2122,
+      "actualBytes": 2122,
+      "expectedSha256": "b0da1d1940866cddf8a9557b68d929faa2eb9ca401321a480d1c6763140c2b9e",
+      "actualSha256": "b0da1d1940866cddf8a9557b68d929faa2eb9ca401321a480d1c6763140c2b9e",
+      "matches": true
+    },
+    {
+      "route": "preview/cannon-r8/main.mjs",
+      "expectedBytes": 36163,
+      "actualBytes": 36163,
+      "expectedSha256": "e713262622b45aba64edd3392abfb2b9c2d152231f64f639ce3834050f7ff19a",
+      "actualSha256": "e713262622b45aba64edd3392abfb2b9c2d152231f64f639ce3834050f7ff19a",
+      "matches": true
+    },
+    {
+      "route": "record-native-review-r8.mjs",
+      "expectedBytes": 6592,
+      "actualBytes": 6592,
+      "expectedSha256": "29c1e4f8c04fb6a45b75fae74a3a1b703f8e2528aa026d293da2e6e2812744c8",
+      "actualSha256": "29c1e4f8c04fb6a45b75fae74a3a1b703f8e2528aa026d293da2e6e2812744c8",
+      "matches": true
+    },
+    {
+      "route": "route-check-r8.mjs",
+      "expectedBytes": 1713,
+      "actualBytes": 1713,
+      "expectedSha256": "5e7b8be94f146bbdb05627b8ea82d4ab1de892f12c45aa4e657a138ae24b72fb",
+      "actualSha256": "5e7b8be94f146bbdb05627b8ea82d4ab1de892f12c45aa4e657a138ae24b72fb",
+      "matches": true
+    },
+    {
+      "route": "runtime-r8.test.mjs",
+      "expectedBytes": 14119,
+      "actualBytes": 14119,
+      "expectedSha256": "066369e8b20f924f7af9ceb14da6d110a62c7bdab7be1d963437d7e051e59626",
+      "actualSha256": "066369e8b20f924f7af9ceb14da6d110a62c7bdab7be1d963437d7e051e59626",
+      "matches": true
+    },
+    {
+      "route": "seal-runtime-r8.mjs",
+      "expectedBytes": 2843,
+      "actualBytes": 2843,
+      "expectedSha256": "838293bfd8153751e3a1eabc788b97266969d3d4e989364497fcd58d8a0268c1",
+      "actualSha256": "838293bfd8153751e3a1eabc788b97266969d3d4e989364497fcd58d8a0268c1",
+      "matches": true
+    },
+    {
+      "route": "serve.mjs",
+      "expectedBytes": 1306,
+      "actualBytes": 1306,
+      "expectedSha256": "1331010d8dba5506d8bb077f56ac3a467c8b9e5e9be84dbaa68bdeafa7f15c2c",
+      "actualSha256": "1331010d8dba5506d8bb077f56ac3a467c8b9e5e9be84dbaa68bdeafa7f15c2c",
+      "matches": true
+    },
+    {
+      "route": "source-pin-r8.test.mjs",
+      "expectedBytes": 1734,
+      "actualBytes": 1734,
+      "expectedSha256": "3919397b0be3ff76752a2e3eaeb359482cadc2f97dc563ce05ac8cb61cfd6f32",
+      "actualSha256": "3919397b0be3ff76752a2e3eaeb359482cadc2f97dc563ce05ac8cb61cfd6f32",
+      "matches": true
+    },
+    {
+      "route": "source-r6/audio.mjs",
+      "expectedBytes": 3823,
+      "actualBytes": 3823,
+      "expectedSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "actualSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "matches": true
+    },
+    {
+      "route": "source-r6/effect.mjs",
+      "expectedBytes": 10570,
+      "actualBytes": 10570,
+      "expectedSha256": "c3f7d1677743e43964cce118e20ed109b7d948efb69784005a5edc028cb7e185",
+      "actualSha256": "c3f7d1677743e43964cce118e20ed109b7d948efb69784005a5edc028cb7e185",
+      "matches": true
+    },
+    {
+      "route": "source-r8/CPU-CHECKS.json",
+      "expectedBytes": 767,
+      "actualBytes": 767,
+      "expectedSha256": "5c977412215edfc263025522aa21b1915690cb36b93f8e84235797851710519d",
+      "actualSha256": "5c977412215edfc263025522aa21b1915690cb36b93f8e84235797851710519d",
+      "matches": true
+    },
+    {
+      "route": "source-r8/DESIGN-CONTRACT.md",
+      "expectedBytes": 5284,
+      "actualBytes": 5284,
+      "expectedSha256": "27c6b38c92f26c4e5b36c42ce8e39f5eaab69051c7c67eac8a2084d3a811e528",
+      "actualSha256": "27c6b38c92f26c4e5b36c42ce8e39f5eaab69051c7c67eac8a2084d3a811e528",
+      "matches": true
+    },
+    {
+      "route": "source-r8/NATIVE-COMPILE-ROOT-BOUND.json",
+      "expectedBytes": 441,
+      "actualBytes": 441,
+      "expectedSha256": "3c34ab800a4181a1eceb1c34ff1f318cfdb53dfdf35d179c82808f5ba9e26502",
+      "actualSha256": "3c34ab800a4181a1eceb1c34ff1f318cfdb53dfdf35d179c82808f5ba9e26502",
+      "matches": true
+    },
+    {
+      "route": "source-r8/SEAL.json",
+      "expectedBytes": 1586,
+      "actualBytes": 1586,
+      "expectedSha256": "a5aeb84456684d6f0cc24a42db9d3b0b811e0fc13a5d6bc099dbdf5dd6ca1d90",
+      "actualSha256": "a5aeb84456684d6f0cc24a42db9d3b0b811e0fc13a5d6bc099dbdf5dd6ca1d90",
+      "matches": true
+    },
+    {
+      "route": "source-r8/SEMANTIC-ABI.json",
+      "expectedBytes": 1446,
+      "actualBytes": 1446,
+      "expectedSha256": "43fdbe3ad65779adc40c8e49bc8c2ab8b4c13a517a9ce67779f9e11e76a8ab05",
+      "actualSha256": "43fdbe3ad65779adc40c8e49bc8c2ab8b4c13a517a9ce67779f9e11e76a8ab05",
+      "matches": true
+    },
+    {
+      "route": "source-r8/SOURCE-FREEZE.json",
+      "expectedBytes": 1889,
+      "actualBytes": 1889,
+      "expectedSha256": "bbc09561f50e7aeda9aee22b6606a8d15471da8706ffb30f082fe08af1831edb",
+      "actualSha256": "bbc09561f50e7aeda9aee22b6606a8d15471da8706ffb30f082fe08af1831edb",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/CPU-CHECKS.json",
+      "expectedBytes": 767,
+      "actualBytes": 767,
+      "expectedSha256": "5c977412215edfc263025522aa21b1915690cb36b93f8e84235797851710519d",
+      "actualSha256": "5c977412215edfc263025522aa21b1915690cb36b93f8e84235797851710519d",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/DESIGN-CONTRACT.md",
+      "expectedBytes": 5284,
+      "actualBytes": 5284,
+      "expectedSha256": "27c6b38c92f26c4e5b36c42ce8e39f5eaab69051c7c67eac8a2084d3a811e528",
+      "actualSha256": "27c6b38c92f26c4e5b36c42ce8e39f5eaab69051c7c67eac8a2084d3a811e528",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/INPUT-PINS.json",
+      "expectedBytes": 318,
+      "actualBytes": 318,
+      "expectedSha256": "7a1c356850de067e0934b3bfc3965d540999f12fef3840150a7f64f4adc6b778",
+      "actualSha256": "7a1c356850de067e0934b3bfc3965d540999f12fef3840150a7f64f4adc6b778",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/NATIVE-COMPILE-FAILED-ACTIVE-KEYWORD.json",
+      "expectedBytes": 1132,
+      "actualBytes": 1132,
+      "expectedSha256": "a814422e513ee04d6358849ca9df407fd6fa69cb2bf694e9d35bb77df26bf007",
+      "actualSha256": "a814422e513ee04d6358849ca9df407fd6fa69cb2bf694e9d35bb77df26bf007",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/NATIVE-COMPILE-ROOT-BOUND.json",
+      "expectedBytes": 441,
+      "actualBytes": 441,
+      "expectedSha256": "3c34ab800a4181a1eceb1c34ff1f318cfdb53dfdf35d179c82808f5ba9e26502",
+      "actualSha256": "3c34ab800a4181a1eceb1c34ff1f318cfdb53dfdf35d179c82808f5ba9e26502",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/SOURCE-FREEZE.json",
+      "expectedBytes": 1889,
+      "actualBytes": 1889,
+      "expectedSha256": "bbc09561f50e7aeda9aee22b6606a8d15471da8706ffb30f082fe08af1831edb",
+      "actualSha256": "bbc09561f50e7aeda9aee22b6606a8d15471da8706ffb30f082fe08af1831edb",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/audio.mjs",
+      "expectedBytes": 3823,
+      "actualBytes": 3823,
+      "expectedSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "actualSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/build-r8.cjs",
+      "expectedBytes": 5812,
+      "actualBytes": 5812,
+      "expectedSha256": "2ed691a0e80ca87ce01f76b55e7cdd3e36a28ad90f87a697a6e597ecfce581fb",
+      "actualSha256": "2ed691a0e80ca87ce01f76b55e7cdd3e36a28ad90f87a697a6e597ecfce581fb",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/checks.mjs",
+      "expectedBytes": 2755,
+      "actualBytes": 2755,
+      "expectedSha256": "2433e2a38f4d2e74db9b6c36abb64e443df0944c3a688cac4ea733b8ba454368",
+      "actualSha256": "2433e2a38f4d2e74db9b6c36abb64e443df0944c3a688cac4ea733b8ba454368",
+      "matches": true
+    },
+    {
+      "route": "source-r8/producer-seal/effect.mjs",
+      "expectedBytes": 10193,
+      "actualBytes": 10193,
+      "expectedSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "actualSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "matches": true
+    },
+    {
+      "route": "validation-copy/finish-cannon-r7-creative-sol61-r1/effect.mjs",
+      "expectedBytes": 10492,
+      "actualBytes": 10492,
+      "expectedSha256": "8c20b6c16e89318f9c415871dfb3fc0d62de2079508cd0a655fb65fc15aee130",
+      "actualSha256": "8c20b6c16e89318f9c415871dfb3fc0d62de2079508cd0a655fb65fc15aee130",
+      "matches": true
+    },
+    {
+      "route": "validation-copy/finish-cannon-r8-creative-sol61-root-r1/CPU-CHECKS.json",
+      "expectedBytes": 767,
+      "actualBytes": 767,
+      "expectedSha256": "5c977412215edfc263025522aa21b1915690cb36b93f8e84235797851710519d",
+      "actualSha256": "5c977412215edfc263025522aa21b1915690cb36b93f8e84235797851710519d",
+      "matches": true
+    },
+    {
+      "route": "validation-copy/finish-cannon-r8-creative-sol61-root-r1/audio.mjs",
+      "expectedBytes": 3823,
+      "actualBytes": 3823,
+      "expectedSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "actualSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "matches": true
+    },
+    {
+      "route": "validation-copy/finish-cannon-r8-creative-sol61-root-r1/checks.mjs",
+      "expectedBytes": 2755,
+      "actualBytes": 2755,
+      "expectedSha256": "2433e2a38f4d2e74db9b6c36abb64e443df0944c3a688cac4ea733b8ba454368",
+      "actualSha256": "2433e2a38f4d2e74db9b6c36abb64e443df0944c3a688cac4ea733b8ba454368",
+      "matches": true
+    },
+    {
+      "route": "validation-copy/finish-cannon-r8-creative-sol61-root-r1/effect.mjs",
+      "expectedBytes": 10193,
+      "actualBytes": 10193,
+      "expectedSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "actualSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+      "matches": true
+    }
+  ],
+  "runtimeSealFilesAllMatch": true,
+  "sourceSealFilesAllMatch": true,
+  "nativeReview": {
+    "metadataSha256": "20ed0f3dc0ebb3a1857d5b7eaf5429218779b817bb5060c366d9154d27398eb3",
+    "manifestDeclaredMetadataSha256": "20ed0f3dc0ebb3a1857d5b7eaf5429218779b817bb5060c366d9154d27398eb3",
+    "entries": [
+      {
+        "name": "obs-on220.json",
+        "expectedBytes": 4718,
+        "actualBytes": 4718,
+        "expectedSha256": "04098d1dcc9af417c7b7f2762e8594626635493fe944ba83c87d5861ebba2297",
+        "actualSha256": "04098d1dcc9af417c7b7f2762e8594626635493fe944ba83c87d5861ebba2297",
+        "matches": true,
+        "detectedMediaType": null,
+        "extensionMatches": null
+      },
+      {
+        "name": "obs-on220.png",
+        "expectedBytes": 19558,
+        "actualBytes": 19558,
+        "expectedSha256": "547f1e30004b1060a69f116d26a77f1970273ff05852f4a45fdbd8bdbe8bb540",
+        "actualSha256": "547f1e30004b1060a69f116d26a77f1970273ff05852f4a45fdbd8bdbe8bb540",
+        "matches": true,
+        "detectedMediaType": "image/jpeg",
+        "extensionMatches": false
+      },
+      {
+        "name": "obs-off220.json",
+        "expectedBytes": 4720,
+        "actualBytes": 4720,
+        "expectedSha256": "a564175a3e38e8fbcd9f6efe86872e40de70541fc5116b0495eb8f35dca40a05",
+        "actualSha256": "a564175a3e38e8fbcd9f6efe86872e40de70541fc5116b0495eb8f35dca40a05",
+        "matches": true,
+        "detectedMediaType": null,
+        "extensionMatches": null
+      },
+      {
+        "name": "obs-off220.png",
+        "expectedBytes": 19135,
+        "actualBytes": 19135,
+        "expectedSha256": "2392e55fe29ad1ef90549dce7e4ad83220ae4584556bc864dac82a6059798eae",
+        "actualSha256": "2392e55fe29ad1ef90549dce7e4ad83220ae4584556bc864dac82a6059798eae",
+        "matches": true,
+        "detectedMediaType": "image/jpeg",
+        "extensionMatches": false
+      },
+      {
+        "name": "expiry420.json",
+        "expectedBytes": 4129,
+        "actualBytes": 4129,
+        "expectedSha256": "5333df00df04eeb15d0d4791cc7ee08a96460886ee814e04af3fadbe1b540a25",
+        "actualSha256": "5333df00df04eeb15d0d4791cc7ee08a96460886ee814e04af3fadbe1b540a25",
+        "matches": true,
+        "detectedMediaType": null,
+        "extensionMatches": null
+      },
+      {
+        "name": "expiry420.png",
+        "expectedBytes": 15983,
+        "actualBytes": 15983,
+        "expectedSha256": "0a0d04619cd2f6957822b7c2f6021018a024a83a3764b236e3079381bfbf82c5",
+        "actualSha256": "0a0d04619cd2f6957822b7c2f6021018a024a83a3764b236e3079381bfbf82c5",
+        "matches": true,
+        "detectedMediaType": "image/jpeg",
+        "extensionMatches": false
+      }
+    ],
+    "nativeFilesExcludedFromRuntimeSeal": true
+  },
+  "generatedArtifacts": {
+    "runtimeSeal": {
+      "path": "RUNTIME-SEAL.json",
+      "mtime": "2026-10-04T07:12:44.363Z"
+    },
+    "packageManifest": {
+      "path": "PACKAGE-MANIFEST.json",
+      "mtime": "2026-10-04T07:12:44.364Z"
+    },
+    "sourcePins": {
+      "path": "SOURCE-PINS.json",
+      "mtime": "2026-10-04T07:12:44.279Z"
+    },
+    "postReviewTouchedPaths": [
+      {
+        "path": "SOURCE-PINS.json",
+        "mtime": "2026-10-04T07:12:44.279Z",
+        "sha256": "4f7de602bf73b7741ee8f18250d1046a454d2657a67078e9f7d5649586946fd8"
+      },
+      {
+        "path": "RUNTIME-SEAL.json",
+        "mtime": "2026-10-04T07:12:44.363Z",
+        "sha256": "6ab181ad3db7a5d54b481c10574e65f749d737b586207b924569097bdbf756bf"
+      },
+      {
+        "path": "PACKAGE-MANIFEST.json",
+        "mtime": "2026-10-04T07:12:44.364Z",
+        "sha256": "db3ed6bb856028f4ba54e66f615959197944448889c38470a9c9d4c2dbfbfc5b"
+      },
+      {
+        "path": "GALLERY-ELIGIBILITY.json",
+        "mtime": "2026-10-04T07:11:16.482Z",
+        "sha256": "0875387922ccd94c432da5c05d335a149601326fdcd5c0f83bd04d2aa71d23d7"
+      },
+      {
+        "path": "native-root/NATIVE-REVIEW-METADATA.json",
+        "mtime": "2026-10-04T07:11:16.481Z",
+        "sha256": "20ed0f3dc0ebb3a1857d5b7eaf5429218779b817bb5060c366d9154d27398eb3"
+      },
+      {
+        "path": "native-review-r8.test.mjs",
+        "mtime": "2026-10-04T07:11:59.198Z",
+        "sha256": "1ad6a7abb701ff2aab9cc267f4e0999687b3a1d0bfd0f9da9df87804355cad16"
+      }
+    ],
+    "times": {
+      "runtimeSealWrittenAt": "2026-10-04T07:12:44.363Z",
+      "packageManifestWrittenAt": "2026-10-04T07:12:44.364Z",
+      "sourcePinsWrittenAt": "2026-10-04T07:12:44.279Z",
+      "nativeMetadataWrittenAt": "2026-10-04T07:11:16.481Z",
+      "nativeReviewTestWrittenAt": "2026-10-04T07:11:59.198Z",
+      "routeCheckVerifiedAt": "2026-10-04T06:59:58.217Z"
+    },
+    "packageManifestConsistent": true
+  },
+  "priorReadyReceipt": {
+    "status": "superseded-by-bound-runtime-r8",
+    "shaPrefixSearched": "e985f25",
+    "matchingCopiesFound": [],
+    "priorSealHashAvailable": false,
+    "explanation": "No preserved R8 runtime seal/package copy or file recording the supplied e985f25… prefix was found under the owned R8 runtime output. Current generated seal/manifest timestamps are after native review/test; prior exact bytes cannot be established without the prior artifact."
+  },
+  "nativeEvidenceNotes": {
+    "decision": {
+      "decision": "not accepted",
+      "finding": "OBS OFF still shows a thin blue/green band with an isolated white flattened lenticular head; the cross-section is not materially readable. OBS ON does not resolve it. White intensity itself is not the cause.",
+      "reviewedBy": "root",
+      "date": "2026-10-04"
+    },
+    "filenamesWithActualMediaTypeMismatch": [
+      {
+        "name": "obs-on220.png",
+        "detectedMediaType": "image/jpeg",
+        "bytes": 19558,
+        "sha256": "547f1e30004b1060a69f116d26a77f1970273ff05852f4a45fdbd8bdbe8bb540"
+      },
+      {
+        "name": "obs-off220.png",
+        "detectedMediaType": "image/jpeg",
+        "bytes": 19135,
+        "sha256": "2392e55fe29ad1ef90549dce7e4ad83220ae4584556bc864dac82a6059798eae"
+      },
+      {
+        "name": "expiry420.png",
+        "detectedMediaType": "image/jpeg",
+        "bytes": 15983,
+        "sha256": "0a0d04619cd2f6957822b7c2f6021018a024a83a3764b236e3079381bfbf82c5"
+      }
+    ]
+  },
+  "testClaims": {
+    "packageManifestTests": {
+      "status": "pass",
+      "runtimeFocused": "10/10",
+      "producerCopiedChecks": {
+        "samplerParity": 208,
+        "supportSamples": 976,
+        "integralSamples": 6832,
+        "status": "pass",
+        "scope": "CPU API parity/support/integral only"
+      }
+    },
+    "executedNodeTest": {
+      "status": "pass",
+      "cases": 10,
+      "files": [
+        "package-seal-r8.test.mjs",
+        "source-pin-r8.test.mjs",
+        "native-review-r8.test.mjs",
+        "runtime-r8.test.mjs"
+      ]
+    },
+    "testScript": "package-seal-r8.test.mjs verifies current manifest/runtime seal and served closure; native-review-r8.test.mjs asserts native evidence against separate metadata and confirms native-root excluded from runtime seal.",
+    "knownGap": "Package manifest generator hardcodes tests.status=pass and runtimeFocused=10/10 rather than loading a timestamped test-results artifact. No previous readiness seal bytes are preserved to establish the e985f25… to 6ab181… content delta."
+  }
+}

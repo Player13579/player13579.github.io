@@ -1,0 +1,28 @@
+{
+  "sourceSha256": "cda4f845ab55ecbf04a54926479c44cee69f97198333617340df61e6e2e1ae1b",
+  "result": {
+    "result": {
+      "type": "object",
+      "value": {
+        "deviceDestroyed": true,
+        "error": {
+          "message": "[Invalid ShaderModule (unlabeled)] is invalid due to a previous error.\n - While validating vertex stage ([Invalid ShaderModule (unlabeled)], entryPoint: \"vs\").\n - While validating vertex state.\n",
+          "name": "GPUPipelineError"
+        },
+        "messages": [
+          {
+            "lineNum": 42,
+            "linePos": 8,
+            "message": "'active' is a reserved keyword",
+            "type": "error"
+          }
+        ],
+        "scope": "exact exported SHADER/32Bvertex/View16/premultiplied pipeline compile only; no draw",
+        "validation": {
+          "message": "Error while parsing WGSL: :42:8 error: 'active' is a reserved keyword\n   let active=first*first;let quiet=returning*returning;\n       ^^^^^^\n\n\n - While calling [Device].CreateShaderModule([ShaderModuleDescriptor]).\n"
+        },
+        "version": "alchemy-cannon-new-e-sol61-r8"
+      }
+    }
+  }
+}

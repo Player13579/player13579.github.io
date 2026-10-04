@@ -1,0 +1,118 @@
+{
+  "schema": "dva-cannon-r8-native-review-metadata/v1",
+  "versionId": "alchemy-cannon-sol61-r8",
+  "sourceVersion": "alchemy-cannon-new-e-sol61-r8",
+  "technicalStatus": "limited-native-technical-pass",
+  "qualityStatus": "not_accepted",
+  "sameCause220": {
+    "causeId": "cannon-r8-samecause220",
+    "eventId": "alchemy-cannon-review:cannon-r8-samecause220",
+    "frameId": "alchemy-cannon-fixture-frame-1-2",
+    "obsOn": {
+      "completed": true,
+      "sequence": 160,
+      "vertices": 300
+    },
+    "obsOff": {
+      "completed": true,
+      "sequence": 162,
+      "vertices": 294
+    }
+  },
+  "expiry420": {
+    "causeId": "cannon-r8-samecause220",
+    "eventId": "alchemy-cannon-review:cannon-r8-samecause220",
+    "completed": true,
+    "sequence": 163,
+    "activeEventCount": 0,
+    "expiredEventCount": 1,
+    "beamVertexCount": 0
+  },
+  "queueErrors": [
+    null,
+    null,
+    null
+  ],
+  "sourcePins": {
+    "audioModuleSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+    "effectModuleSha256": "6e6e74680426c7ddeb047afc3d42e79a8694770e53237a345b064b7db21b4839",
+    "shaderSha256": "cb2178b95f9e06e38e5f45bf2f952875723d7b96ee7191a3c8286813aa20f5d1",
+    "verifiedAt": "2026-10-04T07:00:45.856Z",
+    "version": "alchemy-cannon-new-e-sol61-r8"
+  },
+  "artifactFiles": [
+    {
+      "name": "obs-on220.json",
+      "bytes": 4718,
+      "sha256": "04098d1dcc9af417c7b7f2762e8594626635493fe944ba83c87d5861ebba2297"
+    },
+    {
+      "name": "obs-on220.png",
+      "bytes": 19558,
+      "sha256": "547f1e30004b1060a69f116d26a77f1970273ff05852f4a45fdbd8bdbe8bb540",
+      "image": {
+        "originalFilename": "obs-on220.png",
+        "bytes": 19558,
+        "sha256": "547f1e30004b1060a69f116d26a77f1970273ff05852f4a45fdbd8bdbe8bb540",
+        "detectedMediaType": "image/jpeg",
+        "width": 1061,
+        "height": 720,
+        "filenameExtensionMatchesMediaType": false
+      }
+    },
+    {
+      "name": "obs-off220.json",
+      "bytes": 4720,
+      "sha256": "a564175a3e38e8fbcd9f6efe86872e40de70541fc5116b0495eb8f35dca40a05"
+    },
+    {
+      "name": "obs-off220.png",
+      "bytes": 19135,
+      "sha256": "2392e55fe29ad1ef90549dce7e4ad83220ae4584556bc864dac82a6059798eae",
+      "image": {
+        "originalFilename": "obs-off220.png",
+        "bytes": 19135,
+        "sha256": "2392e55fe29ad1ef90549dce7e4ad83220ae4584556bc864dac82a6059798eae",
+        "detectedMediaType": "image/jpeg",
+        "width": 1061,
+        "height": 720,
+        "filenameExtensionMatchesMediaType": false
+      }
+    },
+    {
+      "name": "expiry420.json",
+      "bytes": 4129,
+      "sha256": "5333df00df04eeb15d0d4791cc7ee08a96460886ee814e04af3fadbe1b540a25"
+    },
+    {
+      "name": "expiry420.png",
+      "bytes": 15983,
+      "sha256": "0a0d04619cd2f6957822b7c2f6021018a024a83a3764b236e3079381bfbf82c5",
+      "image": {
+        "originalFilename": "expiry420.png",
+        "bytes": 15983,
+        "sha256": "0a0d04619cd2f6957822b7c2f6021018a024a83a3764b236e3079381bfbf82c5",
+        "detectedMediaType": "image/jpeg",
+        "width": 1061,
+        "height": 720,
+        "filenameExtensionMatchesMediaType": false
+      }
+    }
+  ],
+  "rootQualityDecision": {
+    "decision": "not accepted",
+    "finding": "OBS OFF still shows a thin blue/green band with an isolated white flattened lenticular head; the cross-section is not materially readable. OBS ON does not resolve it. White intensity itself is not the cause.",
+    "reviewedBy": "root",
+    "date": "2026-10-04"
+  },
+  "limitations": [
+    "two 220 ms held-control captures and exact 420 ms expiry only",
+    "continuous-motion/full 900 ms activation not established",
+    "normal audio listening not run",
+    "performance not measured",
+    "Safari/iPad not tested",
+    "main-game integration not connected",
+    "adoption unknown",
+    "publication not performed"
+  ]
+}

@@ -1,0 +1,7 @@
+# Cannon R8 faithful runtime contract
+
+R8 adapts the frozen Sol creative in `source-r8/` and preserves the settled Cannon event/runtime contract. The effect sampler retains the frozen `validateEvent(e, frameId)` / `sampleEvent(e, nowMs, frameId, options)` API; it is byte/output-parity checked against the sealed R6 event sampler across the frozen 208 combinations. R8 does not alter event cause, hand/endpoint, clock, activation, collision, lifetime, selected-version audio, source toggle, OBS control, reduced-motion, or verify mute behavior.
+
+The renderer retains the 32-byte vertex ABI (locations 0/1/2, offsets 0/8/24), 16-byte View uniform, main -2/layer 2 and OBS -1/layer 0 sentinels, ordinary straight-RGBA premultiply branch, 16 depth samples, 300 vertices per active beam and 294 without OBS. Required support remains within main 27 and OBS 31. Activation remains 900 ms; beam remains 420 ms. No additional binding, texture, feature, render cache, or CPU render integral was introduced.
+
+The creative and runtime source pins bind to exact R8 frozen files and the imported `SHADER` export. The compile receipt proves only WGSL/pipeline compilation; it does not prove draw or visual quality. Root owns native same-event 220 ms OBS OFF/ON and exact 420 ms expiry captures and the quality decision. Until those captures are reviewed, native visual quality is `not_run`; normal audio, 900 ms full-motion, performance, Safari/iPad, game integration, adoption, and publication remain unverified.

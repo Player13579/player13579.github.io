@@ -1,0 +1,17 @@
+{
+  "schema": "dva-cannon-r8-copied-runtime-test-run/v1",
+  "command": "node --test package-seal-r8.test.mjs source-pin-r8.test.mjs native-review-r8.test.mjs runtime-r8.test.mjs",
+  "cwd": "test-runtime/",
+  "sourceRuntimeSealSha256": "6ab181ad3db7a5d54b481c10574e65f749d737b586207b924569097bdbf756bf",
+  "startedAt": "2026-10-04T07:33:22.364Z",
+  "finishedAt": "2026-10-04T07:33:22.966Z",
+  "status": "pass",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "testsReported": 10,
+  "passedReported": 10,
+  "failedReported": 0,
+  "stdout": "✔ R8 native evidence binds same-cause OBS comparison and exact expiry (11.9403ms)\n✔ R8 runtime seal and served closure match exact bytes (80.5033ms)\n{\"status\":\"pass\",\"tests\":6,\"pipelineContract\":\"mock-GPU adapter\",\"nativeVisualAndPerformance\":\"not_run\"}\n✔ R8 frozen effect/audio copies match; event sampling remains R6-identical (246.0765ms)\n✔ runtime initialization verifies exact frozen effect/audio bytes, imported shader and R8 version (11.5414ms)\n✔ event identity, continuous/GBO variants, overlap, OBS/source controls, reduced age and expiry (15.8676ms)\n✔ phase proof binds exact 90/150/220/280 samples and a fresh 420 expiry (41.2326ms)\n✔ same-cause OBS recapture holds the same review event/frame; query can start OBS off (0.9928ms)\n✔ actual WebGPU adapter preserves raw tuple attributes, blend, group/order and draw count (9.38ms)\n✔ parent startup and selected-version audio adapter bind R8 and hard-mute verify (3.4552ms)\n✔ R8 frozen source hashes, imported shader, and runtime pins match (100.5085ms)\nℹ tests 10\nℹ suites 0\nℹ pass 10\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 517.0613\n",
+  "stderr": ""
+}
