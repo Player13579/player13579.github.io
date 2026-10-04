@@ -1,0 +1,11 @@
+# Railgun R4 limited native review
+
+Evaluator: GPT-6.1-Sol root. Actual R4 renderer drew successfully; no creative change was made by the runtime worker. The source is still an unsealed producer draft. Exact byte provenance is the runtime's hash-guarded route/health and source-pin tests; native snapshots identify R4 but do not themselves embed module/WGSL hashes.
+
+The unobstructed held100 OBS OFF image shows a broad cool mass above the strong white signal, rather than only the old coincident bright/blue rod. Its quiet upper surface transitions toward a brighter inner edge and closes at the finite end. OBS ON retains that organization while adding streaks. At held300 the warm compression front remains connected to the cool downstream material and the much narrower trailing signal. This supports a limited improvement in one-sided material organization. It is not full quality acceptance or proof that all normal-motion phases convey the intended mechanism.
+
+Strong white is permitted and is not a rejection reason. No brightness cap, background correction, noise or particle-count fix is requested from these images. Source/aperture visibility in the initial OFF image was obstructed by the diagnostic HUD; it is not used for source-attachment acceptance. Subsequent images hide only the text proof overlay in the owned tab, with identical E, scene and viewport. No real actor/receiver integration is established.
+
+Actual same cycle8 source identity magic_alchemy_railgun_1_8 is held at100, then300 and900. Completed900 receipt reports no visible sources and sourceCleared true. The latest submitted counter can be one ahead of the completed counter; the recorded completed frame itself has the required age/control/cycle, not merely an old first-frame receipt. This proves the recorded held-phase retirement, not uninterrupted expiry smoothness or performance.
+
+Overall quality status: pending. Technical scope: actual held100 OFF/ON, held300 OFF and completed900 expiry. Ordinary0–900 motion, reduced motion, overlap/frame cost, ordinary SFX listening, Safari/iPad and main-game integration remain unverified. Preserve R4 and these original captures; a next creative change requires a concrete additional observed gap.

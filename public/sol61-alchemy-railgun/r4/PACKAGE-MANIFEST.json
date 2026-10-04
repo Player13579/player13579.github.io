@@ -1,0 +1,89 @@
+{
+  "schema": "dva-e-gallery-package/v1",
+  "versionId": "alchemy-railgun-sol61-r4",
+  "groupId": "alchemy-railgun-sol61",
+  "creatorDisplayName": "GPT-6.1-Sol (creative design/equations) + GPT-6-Luna (faithful adapter/runtime)",
+  "designAuthorDisplayName": "GPT-6.1-Sol",
+  "runtimeAuthorDisplayName": "GPT-6-Luna",
+  "sourceManifestSha256": "8a6ab6a59cab80f022eb873a40b8205035b9ed6423b84c8b62453a1c62112bd8",
+  "creativeSourceSha256": "3d504ac616af4feeb2d555337d7ecabd927505dff2a05240a87e9d3816873354",
+  "sourceWgslSha256": "63058e74448f9f1884ec927c6e56a8f52e1d729ba3d4d3f4fa539d7a51ac5795",
+  "compositeWgslSha256": "07d99dbde28e2635ebda3e0aae262ba546f5d7f7579c4908dd4fd9e3d0ae1a01",
+  "creativeFreezeStatus": "unsealed",
+  "runtime": {
+    "eventDurationMs": 900,
+    "galleryCycleMs": 1250,
+    "quietGapMs": 350,
+    "maxEvents": 8,
+    "sourceFormat": "rgba16float",
+    "compositeFormat": "bgra8unorm",
+    "audioMs": 280
+  },
+  "candidateCatalogTargets": [
+    {
+      "path": "public/sol61-alchemy-railgun/r4/gallery.html",
+      "bytes": 1464,
+      "sha256": "7acf5c014c51a368393199e9651f179680313ce0f4c65298913892944a042f66"
+    },
+    {
+      "path": "public/sol61-alchemy-railgun/r4/main.mjs",
+      "bytes": 17636,
+      "sha256": "2335fd2d092005828f5586a36bd197c306ed7f8abdab30989dec23bd3d18f776"
+    },
+    {
+      "path": "public/sol61-alchemy-railgun/r4/effect.mjs",
+      "bytes": 11539,
+      "sha256": "3d504ac616af4feeb2d555337d7ecabd927505dff2a05240a87e9d3816873354"
+    },
+    {
+      "path": "public/sol61-alchemy-railgun/r4/audio.mjs",
+      "bytes": 2370,
+      "sha256": "1535e3a3c3fb40088626359e3b2e27dbcfbba0dedd1ca9f13fe36771c3143563"
+    }
+  ],
+  "technicalReplayStatus": "pass-limited-native-standalone-held100-obs-pair-held300-off-and-900ms-expiry",
+  "standaloneTechnicalReplayStatus": "pass-limited-native",
+  "nativeEvidenceScope": "verify-only; cycle 8; unobstructed completed held100 OBS-off/on pair, held300 OBS-off, completed900 expiry; initial HUD-obscured off100 preserved separately; not continuous motion or full quality acceptance",
+  "parentGalleryReplayStatus": "pending-root-parent-gallery-review",
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "pending-not-accepted",
+  "qualityReviewerDisplayName": "GPT-6.1-Sol root",
+  "qualityReviewSummary": "Root observed limited improvement in one-sided material organization at held100 and connected compression at held300; overall quality remains pending, not accepted. No normal-motion/full-lifetime acceptance.",
+  "qualityEvidence": "native/ROOT-LIMITED-QUALITY.md",
+  "evidence": [
+    "native/FIXTURE-NOTE.md",
+    "native/ROOT-LIMITED-QUALITY.md",
+    "native/off100.json",
+    "native/off100.jpg",
+    "native/off100-unobstructed.json",
+    "native/off100-unobstructed.jpg",
+    "native/on100-unobstructed.json",
+    "native/on100-unobstructed.jpg",
+    "native/off300.json",
+    "native/off300.jpg",
+    "native/expiry900.json",
+    "native/expiry900.jpg"
+  ],
+  "nativeEvidenceImageEncoding": "JPEG/JFIF exact copied bytes under .jpg names; 1061x720",
+  "adoption": "unknown",
+  "gameIntegrationStatus": "not_connected",
+  "normalAudioListening": "not_run",
+  "sfxListeningStatus": "not_run",
+  "safariReplayStatus": "unverified",
+  "gpuFramePerformance": "not_run",
+  "release": "not_published",
+  "publicationAuthorized": false,
+  "runtimeAdjustments": {
+    "frameWait": "bounded; returns exact completion/timeout indicators and captured snapshot without creating a completion receipt",
+    "nativeModuleHandles": "unwrapped; no Proxy",
+    "postConstructorCompilationInfo": "omitted after observed redundant poll hang; exporter internal validation retained",
+    "upstreamDiagnostic": "renderer-created but no draw; later wait incomplete; not pass/fail"
+  },
+  "upstreamTestReceiptSha256": "5f6af2eede6c8b39c1a16b5bcddea6483dc35228e43ad9d7a0d9e2fef21de601",
+  "provenance": {
+    "runtimeSourceIdentitySha256": "093a6fd8ddb0ad9738168fa4a9f4938c4491e6721f9ed07be6d45d72d9f40ea0",
+    "runtimeHostLeaseSha256": "ee14a1a3789a0ed975d92cc7d4d795c0595b1d695b67b3c88db9104dd39e4e6a",
+    "runtimeHostCloseoutSha256": "5f86ea782d4fa74dce4899047541062501d33ce7397264dede7bb580f90220d7",
+    "rootReviewSha256": "b4035d50284bcb53f026a0b3058e0f74863396408871119941551002fddc92fa"
+  }
+}

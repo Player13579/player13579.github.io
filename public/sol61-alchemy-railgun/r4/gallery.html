@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>錬成レールガン E r4</title>
+  <style>
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#121820;color:#d4e8ef;font:13px system-ui}
+    canvas{width:100%;height:100%;display:block}
+    #controls{position:absolute;bottom:12px;left:12px;padding:10px;background:#10202cdb;border-radius:8px}
+    input{vertical-align:middle}#proof{max-width:560px;font:11px monospace;white-space:pre-wrap}
+    body.embed #controls,body.embed #audio{display:none}body.verify #audio{display:none}
+  </style>
+</head>
+<body>
+  <canvas id="view" aria-label="錬成レールガン WebGPU preview"></canvas>
+  <div id="controls"><b>錬成レールガン発射 r4</b><br>
+    <button id="play">1× Play</button> <button id="hold">Hold</button>
+    <input id="age" type="range" min="0" max="900" value="0"><span id="label">0ms</span><br>
+    <label><input type="checkbox" id="source" checked>Source</label>
+    <label><input type="checkbox" id="obs" checked>OBS</label>
+    <label><input type="checkbox" id="reduced">Reduced</label>
+    <label><input type="checkbox" id="bright">Bright fixture</label><pre id="proof"></pre>
+  </div>
+  <button id="audio">音を有効にする</button>
+  <script type="module" src="./main.mjs?v=2335fd2d092005828f5586a36bd197c306ed7f8abdab30989dec23bd3d18f776"></script>
+</body>
+</html>
+
