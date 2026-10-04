@@ -1091,9 +1091,16 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     return 'Codex品質確認状況不明';
   }
   function technicalReplayLabel(item) {
-    if (item.technicalReplayStatus === 'pass') return '技術再生pass';
-    if (item.technicalReplayStatus && item.technicalReplayStatus !== 'pass') return '技術再生' + item.technicalReplayStatus;
-    return item.replayable === true ? '技術再生登録済み' : '技術再生状況不明';
+    const state = item?.technicalReplayStatus;
+    if (state === 'pass') return '技術再生確認済み';
+    if (typeof state === 'string') {
+      if (/^pass-/i.test(state)) return '技術再生確認済み（限定範囲）';
+      if (/^(fail|failed)(?:-|$)/i.test(state)) return '技術再生不成立';
+      if (/^(pending|not_run|unverified)(?:-|_|$)/i.test(state)) return '技術再生未確認';
+      if (/^limited-native-/i.test(state)) return '技術再生状況（限定記録）';
+      return '技術再生状況不明';
+    }
+    return item?.replayable === true ? '技術再生登録済み' : '技術再生状況不明';
   }
   function gameIntegrationLabel(item, group) {
     const state = item.gameIntegrationStatus || group?.integration;
