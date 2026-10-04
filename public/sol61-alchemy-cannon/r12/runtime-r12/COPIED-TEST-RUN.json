@@ -1,0 +1,12 @@
+{
+  "schema": "dva-cannon-r12-copied-runtime-tests/v1",
+  "status": "pass",
+  "command": "node --test tests/runtime-r12.test.mjs",
+  "cwd": "runtime-r12/",
+  "exitCode": 0,
+  "tests": 7,
+  "passed": 7,
+  "failed": 0,
+  "stdout": "✔ R12 effect, exported WGSL shader and exact audio bytes match the supplied unsealed pins (13.0584ms)\n✔ main and gallery are exact R11 adapter identity/hash adaptations (3.4316ms)\n✔ 32-byte event tuple semantics and actual endpoint/lifetime remain inherited from R11 (234.4653ms)\n✔ R12 front samples are monotonic, finite, and reduced shape is settled without moving expiry (0.5135ms)\n✔ root capture API preserves the same cause and exact 420 ms expiry contract (1.0482ms)\n✔ gallery control, startup identity and verification hard-mute remain unchanged (0.5099ms)\n✔ WebGPU adapter retains tuple offsets and View16 while importing exact R12 shader (2.1754ms)\nℹ tests 7\nℹ suites 0\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 368.4138\n",
+  "stderr": ""
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "dva-cannon-r12-runtime-ready/v1",
+  "status": "private-runtime-ready-for-root-native-review",
+  "published": false,
+  "sourceQuality": "unsealed draft; source copied unchanged; quality not assessed/accepted",
+  "sourcePins": "SOURCE-PINS.json",
+  "sourceByteCopyEvidence": "SOURCE-PROVENANCE.json",
+  "routePins": "runtime-r12/ROUTE-PINS.json",
+  "abi": {"vertexStrideBytes":32,"vertexFloats":8,"viewUniformBytes":16,"depthSamples":16,"newBindings":false},
+  "durationMs": {"activation":900,"beam":420,"reducedShapeFreezeAge":210},
+  "focusedTests": {"status":"pass","tests":7,"passed":7,"failed":0,"result":"runtime-r12/TEST-RESULT.txt"},
+  "routeCheck": {"status":"pass","exactRoutes":4,"unexpectedFilesExposed":false,"result":"runtime-r12/ROUTE-CHECK.json"},
+  "hostRouteCheck": {"status":"pass","routes200":4,"unauthorized403":true,"invalidLease403":true,"unlisted404":true,"result":"runtime-r12/HOST-ROUTE-CHECK.json"},
+  "nativeReview": {"status":"pending-root-review","phaseRoutes":"runtime-r12/HOST-LEASE.json","api":"window.__alchemyCannonNativeReview.snapshot(); window.__alchemyCannonNativeReview.capturePulsePhase({phaseMs:220,causeId:\"cannon-r12-root-review\"}); window.__alchemyCannonProof","requiredPhasesMs":[28,100,150,210,220,420],"continuousWholeLife":true,"quality":"not accepted; root visual/native review pending"},
+  "audio": {"sourceBytesExact":true,"verifyModeHardMuted":true,"ordinaryListening":"not run"},
+  "devicePerformance":"not run",
+  "gameIntegration":"not connected",
+  "adoption":"unknown",
+  "host": {"pid":30968,"host":"127.0.0.1","port":55351,"startedAt":"2026-10-04T09:40:58.692Z","expiresAt":"2026-10-04T10:10:58.692Z","identity":"runtime-r12/HOST-IDENTITY.json","lease":"runtime-r12/HOST-LEASE.json","cleanup":"runtime-r12/stop-host-r12.ps1"}
+}
