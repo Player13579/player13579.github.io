@@ -1,0 +1,64 @@
+{
+  "baselineR6": {
+    "runtimeContract": "finish-cannon-r6-runtime-luna-r1 RUNTIME-SEAL.json and RUNTIME-CONTRACT.md",
+    "audioSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+    "effectSha256": "c3f7d1677743e43964cce118e20ed109b7d948efb69784005a5edc028cb7e185"
+  },
+  "runtime": {
+    "strideBytes": 32,
+    "audio": {
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    "version": "alchemy-cannon-sol61-r7",
+    "semanticAbiSha256": "8663f5e40164835f5932ecb5665b21f4ccde6b951a718ec3707d5019f94ad4b6",
+    "shaderSha256": "46eac0a0311dcda64b227850d092cb0fb40f9c76c5464a57337227dacb53ae9e",
+    "effect": {
+      "bytes": 10492,
+      "sha256": "8c20b6c16e89318f9c415871dfb3fc0d62de2079508cd0a655fb65fc15aee130"
+    },
+    "sourceVersion": "alchemy-cannon-new-e-sol61-r7"
+  },
+  "compile": {
+    "receiptSha256": "61377b2ac09a08b6ac80eb9ba64434b7f00337aba9ee84de0904a8facf9d453e",
+    "scope": "source-bound WGSL/pipeline compile only; no bindgroup/draw",
+    "receipt": "source-r7/NATIVE-COMPILE-ROOT-BOUND.json"
+  },
+  "status": {
+    "normalAudio": "not_run",
+    "nativeVisual": "pending-root-review",
+    "gameIntegration": "not_connected",
+    "performance": "not_run",
+    "publication": "not_published",
+    "adoption": "unknown"
+  },
+  "schema": "cannon-r7-runtime-source-pins/v1",
+  "producer": {
+    "sealedEntryCount": 29,
+    "entries": [
+      {
+        "producerFile": "effect.mjs",
+        "bytes": 10492,
+        "sha256": "8c20b6c16e89318f9c415871dfb3fc0d62de2079508cd0a655fb65fc15aee130",
+        "file": "preview/cannon-r7/effect.mjs"
+      },
+      {
+        "producerFile": "audio.mjs",
+        "bytes": 3823,
+        "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+        "file": "preview/cannon-r7/audio.mjs"
+      }
+    ],
+    "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261004\\finish-cannon-r7-creative-sol61-r1",
+    "sealSha256": "b53fb0c7002c61ad14a02419b4b6b3be179e3dd67aad7f1595e19d21a75385ce",
+    "sourceFreezeSha256": "69da7b96a84f6a710cf69f40dd89328be5dbdb4f97496eb823e864bee0ba5ff3",
+    "handoffSha256": "29aa80ab36a07be582aacf43eb5f0630fa874ccca49fbc52cd3678196e51297f",
+    "sealEntriesVerifiedBeforeCopy": 29,
+    "copyVerification": "frozen source effect/audio and freeze/seal/handoff/ABI/pins/compile bytes compared before adapter edits",
+    "version": "alchemy-cannon-new-e-sol61-r7"
+  },
+  "nativeReviewContract": {
+    "sha256": "b273ca346ec324fc3e91bc91783b874bfa9337766cecda5b094461fd49534bce",
+    "file": "source-r7/NATIVE-REVIEW-CONTRACT.md"
+  }
+}

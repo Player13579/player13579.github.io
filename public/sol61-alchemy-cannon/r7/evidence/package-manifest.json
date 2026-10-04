@@ -1,0 +1,67 @@
+{
+  "schema": "dva-cannon-r7-runtime-package/v1",
+  "versionId": "alchemy-cannon-sol61-r7",
+  "sourceVersion": "alchemy-cannon-new-e-sol61-r7",
+  "sourceFreezeSha256": "69da7b96a84f6a710cf69f40dd89328be5dbdb4f97496eb823e864bee0ba5ff3",
+  "creativeSealSha256": "b53fb0c7002c61ad14a02419b4b6b3be179e3dd67aad7f1595e19d21a75385ce",
+  "handoffSha256": "29aa80ab36a07be582aacf43eb5f0630fa874ccca49fbc52cd3678196e51297f",
+  "sourcePinsSha256": "464ebd422728f5829a58b770faf9f67c991c95e8f684d628207751ce1a426181",
+  "runtimeSealSha256": "aba0918698d4a6e63ff4cdc2edbffabaab49d9b2391fff73dc92b45446686ddc",
+  "copySealVerifiedBeforeAdaptation": true,
+  "tests": {
+    "command": "node --test outputs/request-20261004/finish-cannon-r7-runtime-luna-r1/runtime-r7.test.mjs outputs/request-20261004/finish-cannon-r7-runtime-luna-r1/source-pin.test.mjs outputs/request-20261004/finish-cannon-r7-runtime-luna-r1/package-seal.test.mjs",
+    "status": "pass (9/9)"
+  },
+  "routeCheck": {
+    "status": "pass",
+    "base": "http://127.0.0.1:55867",
+    "checked": [
+      {
+        "route": "/gallery.html",
+        "bytes": 2122,
+        "sha256": "e217c164cae6d769c9ce12c7d55afb520d4fc66a1d5110bf1ea45c9b2b46e653",
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "route": "/main.mjs",
+        "bytes": 36163,
+        "sha256": "428d3e795879b6071a3168333b12d6eb2746c26263d10369046ba8dfbe66dca2",
+        "contentType": "text/javascript; charset=utf-8"
+      },
+      {
+        "route": "/effect.mjs",
+        "bytes": 10492,
+        "sha256": "8c20b6c16e89318f9c415871dfb3fc0d62de2079508cd0a655fb65fc15aee130",
+        "contentType": "text/javascript; charset=utf-8"
+      },
+      {
+        "route": "/audio.mjs",
+        "bytes": 3823,
+        "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+        "contentType": "text/javascript; charset=utf-8"
+      }
+    ],
+    "sourcePins": {
+      "version": "alchemy-cannon-new-e-sol61-r7",
+      "effectModuleSha256": "8c20b6c16e89318f9c415871dfb3fc0d62de2079508cd0a655fb65fc15aee130",
+      "audioModuleSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+      "shaderSha256": "46eac0a0311dcda64b227850d092cb0fb40f9c76c5464a57337227dacb53ae9e",
+      "verifiedAt": "2026-10-04T06:20:26.938Z"
+    }
+  },
+  "hostLease": "HOST-LEASE.json",
+  "compile": {
+    "status": "pass",
+    "sha256": "61377b2ac09a08b6ac80eb9ba64434b7f00337aba9ee84de0904a8facf9d453e",
+    "scope": "source-bound WGSL/pipeline compile only; no bindgroup/draw"
+  },
+  "acceptance": {
+    "nativeVisual": "limited-technical-pass; quality not accepted (see native-root/R7-NATIVE-REVIEW-METADATA.json)",
+    "normalFullLifetime": "not run; bounded 220 ms held comparison and exact 420 ms expiry only",
+    "actualGpuPerformance": "not_run",
+    "normalAudio": "not run",
+    "gameIntegration": "not_connected",
+    "publication": "private gallery-closure plan only; awaiting Excalibur R5 publication and exact-base re-pin",
+    "adoption": "unknown"
+  }
+}

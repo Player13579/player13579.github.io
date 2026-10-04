@@ -1,0 +1,61 @@
+{
+  "moduleSha256": "8c20b6c16e89318f9c415871dfb3fc0d62de2079508cd0a655fb65fc15aee130",
+  "shaderSha256": "46eac0a0311dcda64b227850d092cb0fb40f9c76c5464a57337227dacb53ae9e",
+  "contextURL": "http://127.0.0.1:39861/gallery.html?embed=1&verify=exR6-root&phase=180",
+  "scope": "actual imported R7 SHADER and matching pipeline compile only, no R7 draw or quality/performance/audio acceptance",
+  "result": {
+    "result": {
+      "type": "object",
+      "value": {
+        "deviceDestroyed": true,
+        "executedDescriptor": {
+          "attributes": [
+            {
+              "format": "float32x2",
+              "offset": 0,
+              "shaderLocation": 0
+            },
+            {
+              "format": "float32x4",
+              "offset": 8,
+              "shaderLocation": 1
+            },
+            {
+              "format": "float32x2",
+              "offset": 24,
+              "shaderLocation": 2
+            }
+          ],
+          "entryPoints": [
+            "vs",
+            "fs"
+          ],
+          "fragmentTarget": {
+            "blend": {
+              "alpha": {
+                "dstFactor": "one-minus-src-alpha",
+                "operation": "add",
+                "srcFactor": "one"
+              },
+              "color": {
+                "dstFactor": "one-minus-src-alpha",
+                "operation": "add",
+                "srcFactor": "one"
+              }
+            },
+            "format": "bgra8unorm"
+          },
+          "layout": "auto",
+          "primitive": {
+            "topology": "triangle-list"
+          },
+          "vertexStride": 32
+        },
+        "messages": [],
+        "pipelineError": null,
+        "validation": null
+      }
+    }
+  },
+  "recordedAt": "2026-10-04T05:40:42.800Z"
+}

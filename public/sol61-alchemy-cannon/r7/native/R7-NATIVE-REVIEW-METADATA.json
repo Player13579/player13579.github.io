@@ -1,0 +1,124 @@
+{
+  "schema": "dva-cannon-r7-root-native-review-receipt/v1",
+  "versionId": "alchemy-cannon-sol61-r7",
+  "sourceVersion": "alchemy-cannon-new-e-sol61-r7",
+  "sourcePins": {
+    "effectSha256": "8c20b6c16e89318f9c415871dfb3fc0d62de2079508cd0a655fb65fc15aee130",
+    "shaderSha256": "46eac0a0311dcda64b227850d092cb0fb40f9c76c5464a57337227dacb53ae9e",
+    "audioSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+  },
+  "review": {
+    "technical": "limited-pass",
+    "quality": "not-accepted",
+    "qualityDecision": "native-root/ROOT-QUALITY-DECISION.md",
+    "reviewer": "GPT-6.1-Sol (root)"
+  },
+  "heldCapture": {
+    "phaseMs": 220,
+    "causeId": "cannon-r7-samecause-220",
+    "eventId": "alchemy-cannon-review:cannon-r7-samecause-220",
+    "frameId": "alchemy-cannon-fixture-frame-1-1",
+    "obsOff": {
+      "file": "native-root/obs-off220.json",
+      "submittedFrameSequence": 1,
+      "completed": true,
+      "observation": false
+    },
+    "obsOn": {
+      "file": "native-root/obs-on220.json",
+      "submittedFrameSequence": 2,
+      "completed": true,
+      "observation": true
+    },
+    "display": {
+      "cssRect": {
+        "left": 160,
+        "top": 60.5,
+        "width": 960,
+        "height": 540
+      },
+      "cssClient": {
+        "width": 960,
+        "height": 540
+      },
+      "backing": {
+        "width": 960,
+        "height": 540
+      },
+      "devicePixelRatio": 2,
+      "view16": [
+        960,
+        540,
+        0,
+        0
+      ],
+      "view16Bytes": 16,
+      "worldToScreen": {
+        "x": "cssRect.left + worldX / view16[0] * cssRect.width",
+        "y": "cssRect.top + worldY / view16[1] * cssRect.height"
+      }
+    },
+    "sourceEnabled": true,
+    "reducedMotion": false,
+    "shaderMessages": []
+  },
+  "expiry": {
+    "file": "native-root/expiry420.json",
+    "requestedAgeMs": 420,
+    "causeId": "cannon-r7-samecause-220",
+    "eventId": "alchemy-cannon-review:cannon-r7-samecause-220",
+    "frameId": "alchemy-cannon-fixture-frame-1-2",
+    "submittedFrameSequence": 3,
+    "completed": true,
+    "activeEventCount": 0,
+    "expiredEventCount": 1,
+    "vertexCount": 0
+  },
+  "artifacts": [
+    {
+      "path": "native-root/obs-off220.json",
+      "bytes": 3131,
+      "sha256": "7e0e20feaeeb0c3819941d004ab4ab1eac02cd2552e0604d760938c33f1e6647"
+    },
+    {
+      "path": "native-root/obs-off220.png",
+      "bytes": 19087,
+      "sha256": "fa82be4ad058d84a55f25f9e1e29fb28127369c9e936d51bfe7c5587dad89863"
+    },
+    {
+      "path": "native-root/obs-on220.json",
+      "bytes": 3129,
+      "sha256": "1c6a0464f26a4265057d29130c4d35641963a6ef1e52399672c466c42b393fa5"
+    },
+    {
+      "path": "native-root/obs-on220.png",
+      "bytes": 19425,
+      "sha256": "e803665993ec7d4f17e429ff4179f1e561592c4268d47f56b75f30bd071b540e"
+    },
+    {
+      "path": "native-root/expiry420.json",
+      "bytes": 2823,
+      "sha256": "dc5e7b0be1db360a5c07938a38ed7ca7cee268f175d5b204ba6a1b6a3ae8aab0"
+    },
+    {
+      "path": "native-root/expiry420.png",
+      "bytes": 16068,
+      "sha256": "3eb4d6f448fc363ca0bccfa77c51733b180bf4be784a5ecfad69eee9d22892f3"
+    },
+    {
+      "path": "native-root/ROOT-QUALITY-DECISION.md",
+      "bytes": 2046,
+      "sha256": "4fc1f3f13800559e0d49826bc3f7356d7a297790eab0d84b359072987ed0b04c"
+    }
+  ],
+  "limitations": [
+    "No full-motion claim",
+    "Other display sizes unverified",
+    "Normal SFX listening not run",
+    "GPU performance not run",
+    "Safari/iPad unverified",
+    "Main-game integration not connected",
+    "Adoption unknown",
+    "Quality not accepted"
+  ]
+}
