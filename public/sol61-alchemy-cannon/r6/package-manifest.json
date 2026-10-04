@@ -7,12 +7,12 @@
   "technicalReplayStatus": "pass-limited-native-phases-and-exact-expiry",
   "standaloneTechnicalReplayStatus": "pass-limited-native-phases-and-exact-expiry",
   "galleryAdapterReplayStatus": "pass-limited-runtime-route-check",
-  "parentGalleryReplayStatus": "not-verified",
-  "qualityStatus": "pending",
-  "qualityReviewStatus": "in-progress",
-  "qualityReviewerDisplayName": "Root native review pending",
-  "qualityReviewReason": "Only limited source-bound 220 ms and 420 ms native phases are available; fresh parent-gallery startup and visual quality review remain pending.",
-  "qualityEvidence": "public/sol61-alchemy-cannon/r6/native/phase220.png",
+  "parentGalleryReplayStatus": "pass-limited-native-parent-replay",
+  "qualityStatus": "not-accepted",
+  "qualityReviewStatus": "not-accepted",
+  "qualityReviewerDisplayName": "Primary review",
+  "qualityReviewReason": "Parent-gallery native review observed a broad blue/green band with a white oval; the intended distinct bent pressure-compression silhouette is not sufficiently realized.",
+  "qualityEvidence": "public/sol61-alchemy-cannon/r6/native/parent-gallery/parent-active220.png",
   "adoption": "unknown",
   "normalFullLifetime": "not_run",
   "normalAudioListening": "not_run",
@@ -90,9 +90,29 @@
       "sha256": "05e958205e1dc8e439420246005b71a7b30a664b1e69564889f34771553acfba"
     },
     {
+      "route": "native/parent-gallery/parent-active220.json",
+      "bytes": 4999,
+      "sha256": "7612b169422bdc8d4ff083b616c87e51f1de103956b7a2fb481645ef32274c1e"
+    },
+    {
+      "route": "native/parent-gallery/parent-active220.png",
+      "bytes": 25557,
+      "sha256": "db1209995115328ee6c3166a52d54ad1472b397fe43527fcdb07108ef67ea72a"
+    },
+    {
+      "route": "native/parent-gallery/parent-expiry420.json",
+      "bytes": 4375,
+      "sha256": "4490fe7456e9538366baac7e98888e41eaccd5e33b45f99bd2a8d460a2b4b1f4"
+    },
+    {
+      "route": "native/parent-gallery/parent-expiry420.png",
+      "bytes": 22234,
+      "sha256": "8dffd6e83eb6f19dc52f0b3ac5daf8bad52cf166f33ff4d96e60ec788971ed88"
+    },
+    {
       "route": "native/QUALITY-STATUS.md",
-      "bytes": 975,
-      "sha256": "54b58217486cdcadb8af6933d396b17812b093a18bc4ddcf957c38f817746247"
+      "bytes": 1619,
+      "sha256": "acb429143fee8529b4501854afc5f596b1c05a091f3d7716c48e7d745146500f"
     }
   ],
   "creativeSource": {
@@ -104,15 +124,20 @@
     "status": "unchanged from Cannon R5"
   },
   "runtimeAdapterAuthor": "GPT-6-Luna",
-  "parentGalleryEvidence": null,
+  "parentGalleryEvidence": "public/sol61-alchemy-cannon/r6/native/parent-gallery/parent-active220.json",
   "technicalEvidence": "public/sol61-alchemy-cannon/r6/native/QUALITY-STATUS.md",
   "technicalEvidenceFiles": [
     "public/sol61-alchemy-cannon/r6/native/phase220.json",
     "public/sol61-alchemy-cannon/r6/native/phase220.png",
     "public/sol61-alchemy-cannon/r6/native/phase420.json",
-    "public/sol61-alchemy-cannon/r6/native/phase420.png"
+    "public/sol61-alchemy-cannon/r6/native/phase420.png",
+    "public/sol61-alchemy-cannon/r6/native/parent-gallery/parent-active220.json",
+    "public/sol61-alchemy-cannon/r6/native/parent-gallery/parent-active220.png",
+    "public/sol61-alchemy-cannon/r6/native/parent-gallery/parent-expiry420.json",
+    "public/sol61-alchemy-cannon/r6/native/parent-gallery/parent-expiry420.png"
   ],
   "nativeLimitedPhaseEvidence": "public/sol61-alchemy-cannon/r6/native/phase220.json",
   "nativeLimitedExpiryEvidence": "public/sol61-alchemy-cannon/r6/native/phase420.json",
-  "qualityScope": "not accepted; full visual review pending"
+  "qualityScope": "not accepted; broad blue/green band with white oval in parent-gallery review",
+  "qualityOutcome": "fail"
 }
