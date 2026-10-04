@@ -1,0 +1,424 @@
+{
+  "schema": "exr6-native-capture-inventory/v1",
+  "version": "excalibur-zero-flare-ghost-sol61-r6",
+  "reviewContract": "outputs/request-20261004/finish-excalibur-r6-native-review-contract-sol61-r1/NATIVE-REVIEW-CONTRACT.md",
+  "reviewScope": "Seven held draws only. Not full motion/life, audio, quality acceptance, public release, adoption, game integration, or device-wide acceptance.",
+  "expectedSources": {
+    "plan": "1e7ee4d3821cac49c583475a7f28d7b3cb2acebaf9a7cbaf3c37d8dea725fa95",
+    "shader": "899b3e3f1126fad0550f7ab44bbf46f7595e6b9c61cad4862686f00bfe7e942f",
+    "world": "04d2e5c5680eafcd29a37e3af1127d46fccdf30d2cab205c7ecbbec2bd31f5f6",
+    "post": "1af06f82f160ead6a4dd04f0f5990b38887301537e53a6f0e2882c4cfda6e8df"
+  },
+  "captureCount": 7,
+  "allFramesCompleted": true,
+  "uniqueCauseIds": [
+    "excalibur-zero-flare-ghost-sol61-r6:mute3m3l-qlead558:play-0:cause-1:cycle-0"
+  ],
+  "facts": {
+    "viewport": "2560x1280 backing, DPR 2, scale 2.4, per captured frame",
+    "render": "Two submitted passes, two targets, rgba16float world and bgra8unorm presentation, per captured frame",
+    "expiry": "1200 ms capture reports alive=false and emissionGain=0",
+    "rawUniformBytes": "No raw 128-byte uploaded uniform snapshot is present in the native JSON files. Runtime contract/tests expect the 128-byte ABI; this inventory does not claim byte-level upload capture."
+  },
+  "captures": [
+    {
+      "id": "phase180",
+      "json": {
+        "path": "native-root/phase180.json",
+        "sha256": "f65d65a558f095aa7d5e22c058789178f4cfb3b5ea97b5f5b5675bd971fe4524"
+      },
+      "png": {
+        "path": "native-root/phase180.png",
+        "sha256": "6bd6a458280f0337330807751b1f6ef0fdb1ef39b77f76360668818efe7cd6ef",
+        "bytes": 16901
+      },
+      "causeId": "excalibur-zero-flare-ghost-sol61-r6:mute3m3l-qlead558:play-0:cause-1:cycle-0",
+      "ageMs": 180,
+      "controls": {
+        "flareOn": true,
+        "ghostOn": true,
+        "nearOn": true,
+        "opticalCenter": {
+          "x": 1280,
+          "y": 640
+        },
+        "postOn": true,
+        "reducedMotion": false,
+        "sourceOn": true,
+        "sourceVisibility": 1,
+        "variant": "normal"
+      },
+      "frame": {
+        "completed": true,
+        "sequence": 2,
+        "passes": 2,
+        "targetCount": 2,
+        "uniformAge": 180,
+        "uniformReducedMotion": 0,
+        "worldFormat": "rgba16float",
+        "presentationFormat": "bgra8unorm"
+      },
+      "sample": {
+        "alive": true,
+        "emissionGain": 0.8924692223825023
+      },
+      "viewport": {
+        "devicePixelRatio": 2,
+        "height": 1280,
+        "scale": 2.4,
+        "width": 2560
+      },
+      "sourceHashes": {
+        "plan": "1e7ee4d3821cac49c583475a7f28d7b3cb2acebaf9a7cbaf3c37d8dea725fa95",
+        "shader": "899b3e3f1126fad0550f7ab44bbf46f7595e6b9c61cad4862686f00bfe7e942f"
+      },
+      "adapter": "ready",
+      "device": "ready",
+      "deviceLost": false,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "id": "phase520",
+      "json": {
+        "path": "native-root/phase520.json",
+        "sha256": "690ed89ffef037b13749e86bd155f2d269d63daccae92f0cbe5ee76dd64b637d"
+      },
+      "png": {
+        "path": "native-root/phase520.png",
+        "sha256": "ed5e0060bc44fbfe80000c44b17cdf78f53f047f531094c7dcd5ea739e84f1db",
+        "bytes": 18347
+      },
+      "causeId": "excalibur-zero-flare-ghost-sol61-r6:mute3m3l-qlead558:play-0:cause-1:cycle-0",
+      "ageMs": 520,
+      "controls": {
+        "flareOn": true,
+        "ghostOn": true,
+        "nearOn": true,
+        "opticalCenter": {
+          "x": 1280,
+          "y": 640
+        },
+        "postOn": true,
+        "reducedMotion": false,
+        "sourceOn": true,
+        "sourceVisibility": 1,
+        "variant": "normal"
+      },
+      "frame": {
+        "completed": true,
+        "sequence": 3,
+        "passes": 2,
+        "targetCount": 2,
+        "uniformAge": 520,
+        "uniformReducedMotion": 0,
+        "worldFormat": "rgba16float",
+        "presentationFormat": "bgra8unorm"
+      },
+      "sample": {
+        "alive": true,
+        "emissionGain": 0.6719382541914944
+      },
+      "viewport": {
+        "devicePixelRatio": 2,
+        "height": 1280,
+        "scale": 2.4,
+        "width": 2560
+      },
+      "sourceHashes": {
+        "plan": "1e7ee4d3821cac49c583475a7f28d7b3cb2acebaf9a7cbaf3c37d8dea725fa95",
+        "shader": "899b3e3f1126fad0550f7ab44bbf46f7595e6b9c61cad4862686f00bfe7e942f"
+      },
+      "adapter": "ready",
+      "device": "ready",
+      "deviceLost": false,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "id": "post-off520",
+      "json": {
+        "path": "native-root/post-off520.json",
+        "sha256": "415f17bbf72d330263224451e23ecde2da01b670b42368241127854485e94cd4"
+      },
+      "png": {
+        "path": "native-root/post-off520.png",
+        "sha256": "998d9de8d74d07ce4baaef66b5ee5f5beece903cfc17c468bd0a0fdda6a04f33",
+        "bytes": 12247
+      },
+      "causeId": "excalibur-zero-flare-ghost-sol61-r6:mute3m3l-qlead558:play-0:cause-1:cycle-0",
+      "ageMs": 520,
+      "controls": {
+        "flareOn": true,
+        "ghostOn": true,
+        "nearOn": true,
+        "opticalCenter": {
+          "x": 1280,
+          "y": 640
+        },
+        "postOn": false,
+        "reducedMotion": false,
+        "sourceOn": true,
+        "sourceVisibility": 1,
+        "variant": "normal"
+      },
+      "frame": {
+        "completed": true,
+        "sequence": 4,
+        "passes": 2,
+        "targetCount": 2,
+        "uniformAge": 520,
+        "uniformReducedMotion": 0,
+        "worldFormat": "rgba16float",
+        "presentationFormat": "bgra8unorm"
+      },
+      "sample": {
+        "alive": true,
+        "emissionGain": 0.6719382541914944
+      },
+      "viewport": {
+        "devicePixelRatio": 2,
+        "height": 1280,
+        "scale": 2.4,
+        "width": 2560
+      },
+      "sourceHashes": {
+        "plan": "1e7ee4d3821cac49c583475a7f28d7b3cb2acebaf9a7cbaf3c37d8dea725fa95",
+        "shader": "899b3e3f1126fad0550f7ab44bbf46f7595e6b9c61cad4862686f00bfe7e942f"
+      },
+      "adapter": "ready",
+      "device": "ready",
+      "deviceLost": false,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "id": "visibility-zero520",
+      "json": {
+        "path": "native-root/visibility-zero520.json",
+        "sha256": "59fc46a11b7ee99192a5ae00a2ee8e3173a138de7a63f5ab4541010a08530f7c"
+      },
+      "png": {
+        "path": "native-root/visibility-zero520.png",
+        "sha256": "48a357fb1b9b659c73b96bdcb578ed08590f1cf8257b99546f9f38405874fae6",
+        "bytes": 11926
+      },
+      "causeId": "excalibur-zero-flare-ghost-sol61-r6:mute3m3l-qlead558:play-0:cause-1:cycle-0",
+      "ageMs": 520,
+      "controls": {
+        "flareOn": true,
+        "ghostOn": true,
+        "nearOn": true,
+        "opticalCenter": {
+          "x": 1280,
+          "y": 640
+        },
+        "postOn": true,
+        "reducedMotion": false,
+        "sourceOn": true,
+        "sourceVisibility": 0,
+        "variant": "normal"
+      },
+      "frame": {
+        "completed": true,
+        "sequence": 5,
+        "passes": 2,
+        "targetCount": 2,
+        "uniformAge": 520,
+        "uniformReducedMotion": 0,
+        "worldFormat": "rgba16float",
+        "presentationFormat": "bgra8unorm"
+      },
+      "sample": {
+        "alive": true,
+        "emissionGain": 0.6719382541914944
+      },
+      "viewport": {
+        "devicePixelRatio": 2,
+        "height": 1280,
+        "scale": 2.4,
+        "width": 2560
+      },
+      "sourceHashes": {
+        "plan": "1e7ee4d3821cac49c583475a7f28d7b3cb2acebaf9a7cbaf3c37d8dea725fa95",
+        "shader": "899b3e3f1126fad0550f7ab44bbf46f7595e6b9c61cad4862686f00bfe7e942f"
+      },
+      "adapter": "ready",
+      "device": "ready",
+      "deviceLost": false,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "id": "source-off520",
+      "json": {
+        "path": "native-root/source-off520.json",
+        "sha256": "7b42edddd7cf29e4cee19cc33d17f8b3eb59567afcd242c2d08dc5aef87ac4ac"
+      },
+      "png": {
+        "path": "native-root/source-off520.png",
+        "sha256": "a7959db26561b4569eda5fc8c69ce7028a3d02e48f7f8d3464d1ea31d35a329c",
+        "bytes": 6130
+      },
+      "causeId": "excalibur-zero-flare-ghost-sol61-r6:mute3m3l-qlead558:play-0:cause-1:cycle-0",
+      "ageMs": 520,
+      "controls": {
+        "flareOn": true,
+        "ghostOn": true,
+        "nearOn": true,
+        "opticalCenter": {
+          "x": 1280,
+          "y": 640
+        },
+        "postOn": true,
+        "reducedMotion": false,
+        "sourceOn": false,
+        "sourceVisibility": 1,
+        "variant": "normal"
+      },
+      "frame": {
+        "completed": true,
+        "sequence": 6,
+        "passes": 2,
+        "targetCount": 2,
+        "uniformAge": 520,
+        "uniformReducedMotion": 0,
+        "worldFormat": "rgba16float",
+        "presentationFormat": "bgra8unorm"
+      },
+      "sample": {
+        "alive": true,
+        "emissionGain": 0.6719382541914944
+      },
+      "viewport": {
+        "devicePixelRatio": 2,
+        "height": 1280,
+        "scale": 2.4,
+        "width": 2560
+      },
+      "sourceHashes": {
+        "plan": "1e7ee4d3821cac49c583475a7f28d7b3cb2acebaf9a7cbaf3c37d8dea725fa95",
+        "shader": "899b3e3f1126fad0550f7ab44bbf46f7595e6b9c61cad4862686f00bfe7e942f"
+      },
+      "adapter": "ready",
+      "device": "ready",
+      "deviceLost": false,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "id": "phase1050",
+      "json": {
+        "path": "native-root/phase1050.json",
+        "sha256": "06ab07c755260b2e7d270ca974baf54b459b4885b95e1db5ac00be1982df23f2"
+      },
+      "png": {
+        "path": "native-root/phase1050.png",
+        "sha256": "74e20c0d2ea08f9053b9574e1ad2e0b75740ad88b101536819348ba42afff28e",
+        "bytes": 12132
+      },
+      "causeId": "excalibur-zero-flare-ghost-sol61-r6:mute3m3l-qlead558:play-0:cause-1:cycle-0",
+      "ageMs": 1050,
+      "controls": {
+        "flareOn": true,
+        "ghostOn": true,
+        "nearOn": true,
+        "opticalCenter": {
+          "x": 1280,
+          "y": 640
+        },
+        "postOn": true,
+        "reducedMotion": false,
+        "sourceOn": true,
+        "sourceVisibility": 1,
+        "variant": "normal"
+      },
+      "frame": {
+        "completed": true,
+        "sequence": 8,
+        "passes": 2,
+        "targetCount": 2,
+        "uniformAge": 1050,
+        "uniformReducedMotion": 0,
+        "worldFormat": "rgba16float",
+        "presentationFormat": "bgra8unorm"
+      },
+      "sample": {
+        "alive": true,
+        "emissionGain": 0.23325824788420188
+      },
+      "viewport": {
+        "devicePixelRatio": 2,
+        "height": 1280,
+        "scale": 2.4,
+        "width": 2560
+      },
+      "sourceHashes": {
+        "plan": "1e7ee4d3821cac49c583475a7f28d7b3cb2acebaf9a7cbaf3c37d8dea725fa95",
+        "shader": "899b3e3f1126fad0550f7ab44bbf46f7595e6b9c61cad4862686f00bfe7e942f"
+      },
+      "adapter": "ready",
+      "device": "ready",
+      "deviceLost": false,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "id": "phase1200",
+      "json": {
+        "path": "native-root/phase1200.json",
+        "sha256": "117e3125828a5b520a67c774f4b4b34cc1b3a1e2d6d85d7979eb17a4cd0f38e7"
+      },
+      "png": {
+        "path": "native-root/phase1200.png",
+        "sha256": "a7959db26561b4569eda5fc8c69ce7028a3d02e48f7f8d3464d1ea31d35a329c",
+        "bytes": 6130
+      },
+      "causeId": "excalibur-zero-flare-ghost-sol61-r6:mute3m3l-qlead558:play-0:cause-1:cycle-0",
+      "ageMs": 1200,
+      "controls": {
+        "flareOn": true,
+        "ghostOn": true,
+        "nearOn": true,
+        "opticalCenter": {
+          "x": 1280,
+          "y": 640
+        },
+        "postOn": true,
+        "reducedMotion": false,
+        "sourceOn": true,
+        "sourceVisibility": 1,
+        "variant": "normal"
+      },
+      "frame": {
+        "completed": true,
+        "sequence": 9,
+        "passes": 2,
+        "targetCount": 2,
+        "uniformAge": 1200,
+        "uniformReducedMotion": 0,
+        "worldFormat": "rgba16float",
+        "presentationFormat": "bgra8unorm"
+      },
+      "sample": {
+        "alive": false,
+        "emissionGain": 0
+      },
+      "viewport": {
+        "devicePixelRatio": 2,
+        "height": 1280,
+        "scale": 2.4,
+        "width": 2560
+      },
+      "sourceHashes": {
+        "plan": "1e7ee4d3821cac49c583475a7f28d7b3cb2acebaf9a7cbaf3c37d8dea725fa95",
+        "shader": "899b3e3f1126fad0550f7ab44bbf46f7595e6b9c61cad4862686f00bfe7e942f"
+      },
+      "adapter": "ready",
+      "device": "ready",
+      "deviceLost": false,
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}

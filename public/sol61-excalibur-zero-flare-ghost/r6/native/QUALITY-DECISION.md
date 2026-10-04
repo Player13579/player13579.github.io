@@ -1,0 +1,31 @@
+# Excalibur R6：材料面とsource/observer分離の限定native pass
+
+actual phase180/520、POST OFF520、visibility0 520、sourceOFF520、1050、1200の7画像を一枚ずつ閲覧した。すべて同cause/cycle0、同normal/reducedfalse/sourceとpath720、currentcompleted frameとplan1e7ee4…/shader899b3e…にbindする。実R5 parent520を参照し、凍結R6の材料が実投影に出たか判断した。R5とのviewport/route倍率は違うため全pageのpixel差や同一輝度率を使わない。
+
+520は静かなblueの幅広い背側、その下を手元からpointへ連続する細いwhite active cutting面、前半から後半へ跨ぐwarm斜め圧縮域が区別できる。R5で支配的だった孤立した滑らかなwhite/pink lenticular highlightに比べ、圧縮域が同じcutting面を横切る局所面として組織されている。active面は別の空中装飾線ではなく同じblade/fieldの支持内に属し、有限point/rimへ繋がる。quiet背側も単なる周辺glowではなく主形の面として残る。この材料の階層と一本のblade/切断場としての可読性は限定passとする。
+
+POST OFFでもsourceとBODYは残り、青い背側・白いcutting面・warm斜め圧縮域を読める。従ってobserverで材料の成立を代用していない。白の強さそのものを欠陥として棄却しない。一方、quiet面はなお滑らかな作者指定の面であり、この一視点のheldで実物性/校正された立体厚みや全時間の完成材質を証明しない。新しいtexture/noise/volume拡張をその理由だけで要求しない。今の限定観察から新Excalibur稿を作る必然的欠陥は確定しない。
+
+180は短いsource-connected主形で、上側quiet背側・下側active面・手元寄りの圧縮とfinitepointが見える。520へ伸びた支持は同sourceとscaleを維持する。1050は短いpointed主形へ退場し、手元から切れて浮くtipではない。L720のdeclared materialFront約120.339worldとrecordedscale2.4/DPR2から、手元からpointの短い支持は整合的に読める。ただしこれらheld間の正常な移流速度/滑らかさの合格にはしない。
+
+observerの限定因果も成立する。allON520ではhand apertureの短いstrongwhiteとflare/near、二つの選択ghostが見える。POST OFFでobserver成分が消える。visibility0ではhand apertureとsource-derived observerが消え、downstream BODYは同age・同位置に残る。sourceOFFではsource/BODY/observerが全部消えbackdropだけとなる。visibilityとsourceOnの役割が区別されている。選択flareにghostが伴う要件はこのheld ONで可視寄与があるが、各individual flare/ghost/near switch全寿命の受入は別。
+
+1200はsamecause completedseq9、alivefalse/gain0で、実画像にBODY/source/observer残像が無くbackdropだけとなる。sourceOFF520のblankと混同しない。sourceOFF時のsampled.emissionGainはlife gainで非零のままでも、sourceOnによるWORLD gain0と実停止が成立する。終端の平らなwhite capや孤立残光はこのsubsetでは見られない。終了直前1199やrelease全区間は未観察。
+
+## 証跡の実範囲
+
+current completed sequencesは180=2、520=3、POSToff=4、visibility0=5、sourceOFF=6、1050=8、1200=9。latestSubmitted copyのcompletedfalseは同seqのsubmit時snapshotであり、frame/latestCompletedのcompletedtrueを否定するものではない。currentcause/age/uniformAge/controls/view/source hashが一致しrender errors/messagesなし。以前R5の1050 saved incompleteをこのR6actualcompleteへ流用していない。
+
+recorded view/backing2560×1280/DPR2、scale2.4、hand460.8,793.6、opticalCenter1280,640、MRT2rgba16float/POSTbgra8unorm/2passes。全native画像は1280×720で上下のpage余白を含む。rawbyte/hashを別保存する。元producer128byte/32float uniform/1200clock/source-prefix/POST/SFXの不変は凍結契約で保持し、captureはuniformAge/reduced/control/viewの実操作を証明する。全uploaded128byte dumpを含まないので、全slotのbytes native照合まで主張しない。
+
+SFXはverify modeのuncreated/disabled、歴史的R3versionmetadataを維持する。これを誤版音や通常聴感passとしない。nativeproofにSFXmodule hashは無く、exact source SFX保持はcreative seal側の別証拠。direct private held routeのstartup pending/firstFrame nullをparent publicstartup合格へ変えない。画面に実actorが無いsynthetic handを本番原画H64登録としない。
+
+current B/E Equality/default Beauty/PEM、source-material-observerとfinite endpoint/現象全寿命基準を適用。current remote22d3fcfd617f42b1a967de767906204c0221ec64と明示optional差分schema例外は継続sessionで確認済み。完全B/STRUCTURAL_PASS、nativeFULL品質は主張しない。
+
+## 残る受入
+
+次は凍結sourceの正常1×全1200msで伸長→圧縮面の輸送→releaseを連続観察し、途中の520..1050と1130/1199を必要な箇所だけ補う。reduced/GBO/short-longpath/source移動/overlap、通常小CSS/本番actor登録、明暗支持、individual selected observer、actualGPU/frame/stutter、normalSFX、Safari/device、parent/public/game/adoptionは別gate。初回subsetで具体的な新creativefailがないため新稿は提案しない。rootの最終判断へこの限定passと未確認を渡す。旧frozen source/runtime/acceptedversionsは変更しない。
+
+## モデル分担
+
+- GPT-6.1-Sol100%：本R6actual画像の限定品質判断と残るgate。rootnative capture/過去Sol創作/Luna runtimeの寄与は元証跡へ保持する。

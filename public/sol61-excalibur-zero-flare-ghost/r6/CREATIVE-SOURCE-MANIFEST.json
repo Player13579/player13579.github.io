@@ -1,0 +1,51 @@
+{
+  "schema": "dva-excalibur-source-provenance/v1",
+  "versionId": "excalibur-zero-flare-ghost-sol61-r6",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "runtimeAdapterAuthor": "GPT-6-Luna",
+  "sourceFreeze": {
+    "path": "outputs/request-20261004/finish-excalibur-r6-creative-sol61-r1/SOURCE-FREEZE.json",
+    "bytes": 4285,
+    "sha256": "efa99ec98bba87601447c551f4bb8f84172502eb61e11003d180fd49c5d29cae"
+  },
+  "creativeSeal": {
+    "path": "outputs/request-20261004/finish-excalibur-r6-creative-sol61-r1/SEAL.json",
+    "bytes": 4876,
+    "sha256": "babdf294ca896c05ea416783ab74ab05d06e1138155dfd93a5c50b0925fa13cc"
+  },
+  "handoff": {
+    "path": "outputs/request-20261004/finish-excalibur-r6-creative-sol61-r1/LUNA-HANDOFF.md",
+    "bytes": 5212,
+    "sha256": "7b8ba72a46733b11ebd0c3dc07fa076042cdd1a47ad652341bcbac979a72a390"
+  },
+  "sourceFiles": [
+    {
+      "file": "plan.mjs",
+      "bytes": 3480,
+      "sha256": "1e7ee4d3821cac49c583475a7f28d7b3cb2acebaf9a7cbaf3c37d8dea725fa95"
+    },
+    {
+      "file": "shader.mjs",
+      "bytes": 7065,
+      "sha256": "899b3e3f1126fad0550f7ab44bbf46f7595e6b9c61cad4862686f00bfe7e942f"
+    },
+    {
+      "file": "sfx.mjs",
+      "bytes": 5874,
+      "sha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3"
+    }
+  ],
+  "shaderExports": {
+    "WORLD_WGSL": "04d2e5c5680eafcd29a37e3af1127d46fccdf30d2cab205c7ecbbec2bd31f5f6",
+    "POST_WGSL": "1af06f82f160ead6a4dd04f0f5990b38887301537e53a6f0e2882c4cfda6e8df",
+    "actualImportedExports": true
+  },
+  "priorAdapter": {
+    "versionId": "excalibur-zero-flare-ghost-sol61-r4",
+    "adapterRevision": 3,
+    "packageManifestSha256": "8866fa751ba76962a31a762e14c2cbae3fe7e4ab33089105f752da7bd792ecbe",
+    "packageSealSha256": "cc2d9739619bec55b46fbd75c8ec5b476d48d47248a1af3d1990f822f1773dfb",
+    "runtimeSha256": "2a038680c77a1bd2f7484847cb9e922de4bb0954ea2aefa9158ef5c2c8b8cffe",
+    "galleryContractSha256": "5c84d141af48109c3bcf4d9c4845bd056cde24a4b6018d351b58b9c52f05084d"
+  }
+}
