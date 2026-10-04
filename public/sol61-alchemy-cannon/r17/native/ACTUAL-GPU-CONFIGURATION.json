@@ -1,0 +1,105 @@
+{
+  "schema": "dva-cannon-r17-actual-gpu-configuration/v1",
+  "actualPreferredCanvasFormat": "bgra8unorm",
+  "contextAlphaMode": "premultiplied",
+  "pipelineBlend": {
+    "color": {
+      "srcFactor": "one",
+      "dstFactor": "one-minus-src-alpha",
+      "operation": "add"
+    },
+    "alpha": {
+      "srcFactor": "one",
+      "dstFactor": "one-minus-src-alpha",
+      "operation": "add"
+    }
+  },
+  "vertexStrideBytes": 32,
+  "viewUniformBytes": 16,
+  "materialOpticalCells": 24,
+  "materialParcelCount": 7,
+  "gpuDepthAttachment": false,
+  "sourceProofs": [
+    {
+      "capture": "off220",
+      "proofSha256": "a8d8160bf085f0985fe02a4295f9b18217d22967db9f599d015a6945f07009bc",
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "parcelCount": 7,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment",
+        "parcelCountMeaning": "7 source-born material packets; not physical particles"
+      }
+    },
+    {
+      "capture": "on220",
+      "proofSha256": "04cbcd8e64fe798d43ba62fe82215b804b5e496ff6b345a46ad915a9cc45ea73",
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "parcelCount": 7,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment",
+        "parcelCountMeaning": "7 source-born material packets; not physical particles"
+      }
+    },
+    {
+      "capture": "off420",
+      "proofSha256": "d39f2ab7b26b1798c7f7478135f29aa6c7cb6612fcb32f6b8316223eea1970ed",
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "parcelCount": 7,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment",
+        "parcelCountMeaning": "7 source-born material packets; not physical particles"
+      }
+    }
+  ]
+}

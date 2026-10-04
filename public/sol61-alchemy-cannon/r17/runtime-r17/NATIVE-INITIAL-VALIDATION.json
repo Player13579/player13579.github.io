@@ -1,0 +1,152 @@
+{
+  "schema": "dva-cannon-r17-initial-native-validation/v1",
+  "status": "pass-limited-initial-native-gate",
+  "scope": "Actual completed held OFF220/ON220 matched same cause/frame plus OFF420 expiry; no full quality/full lifetime/SFX/performance/device/game acceptance.",
+  "sourcePins": {
+    "material": "da59e89355ca041a8e44a5a8962f9b4b9c5b9e946bc49a379faa082825d8d318",
+    "audio": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+    "versionId": "alchemy-cannon-sol61-r17",
+    "version": "alchemy-cannon-new-e-sol61-r17",
+    "shader": "60b806a77c0f0af0044eca2c6e78536f4c8dbff4ef6b9a160fc3e4be949ffe3a",
+    "effect": "31c2d6c672a08e8f9a37d1a4745d89bd3fc3c79d0a9946417bd51add7752c2ee"
+  },
+  "captures": [
+    {
+      "submitted": true,
+      "sampledMs": 220,
+      "cause": "cannon-r17-root-review",
+      "sourceEnabled": true,
+      "frame": "alchemy-cannon-fixture-frame-1-1",
+      "eventVertices": 294,
+      "reducedMotion": false,
+      "jpegBytes": 16604,
+      "requestedMs": 220,
+      "observation": false,
+      "jpegSha256": "5bf7bf45ea21c4927e94cabb73998ee90004afbb99b60c77be0cae046fe7072f",
+      "completed": true,
+      "queueCompletedAt": "2026-10-04T12:39:15.575Z",
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "parcelCount": 7,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment",
+        "parcelCountMeaning": "7 source-born material packets; not physical particles"
+      },
+      "event": "alchemy-cannon-review:cannon-r17-root-review",
+      "capture": "off220"
+    },
+    {
+      "submitted": true,
+      "sampledMs": 220,
+      "cause": "cannon-r17-root-review",
+      "sourceEnabled": true,
+      "frame": "alchemy-cannon-fixture-frame-1-1",
+      "eventVertices": 300,
+      "reducedMotion": false,
+      "jpegBytes": 16706,
+      "requestedMs": 220,
+      "observation": true,
+      "jpegSha256": "0a8aaf71440aad2ba9cb205b4910061d6ec54ecd7d39d87844f66859badec199",
+      "completed": true,
+      "queueCompletedAt": "2026-10-04T12:39:40.692Z",
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "parcelCount": 7,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment",
+        "parcelCountMeaning": "7 source-born material packets; not physical particles"
+      },
+      "event": "alchemy-cannon-review:cannon-r17-root-review",
+      "capture": "on220"
+    },
+    {
+      "submitted": true,
+      "sampledMs": null,
+      "cause": "cannon-r17-root-review",
+      "sourceEnabled": true,
+      "frame": "alchemy-cannon-fixture-frame-1-2",
+      "eventVertices": 0,
+      "reducedMotion": false,
+      "jpegBytes": 13400,
+      "requestedMs": 420,
+      "observation": false,
+      "jpegSha256": "5f70bb995bfdc1a2a76e573fcf0fcae15feeb091e5b5a50c43dd021cb80e02d7",
+      "completed": true,
+      "queueCompletedAt": "2026-10-04T12:39:41.148Z",
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "parcelCount": 7,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment",
+        "parcelCountMeaning": "7 source-born material packets; not physical particles"
+      },
+      "event": "alchemy-cannon-review:cannon-r17-root-review",
+      "capture": "off420"
+    }
+  ],
+  "matchedOffOn": {
+    "requestedAndSampled220": true,
+    "sameFixtureFrame": true,
+    "sameCause": true,
+    "sameEvent": true,
+    "onlyObservationDiffers": true
+  },
+  "expiry420": {
+    "sampledAgeNull": true,
+    "activeEvents0": true,
+    "expiredEvents1": true,
+    "requested420": true,
+    "vertices0": true
+  },
+  "consoleErrors": 0,
+  "quality": "pending formal Sol review; no quality claim",
+  "visualNote": "Root says initial material appears thinner; this report validates proof binding only."
+}
