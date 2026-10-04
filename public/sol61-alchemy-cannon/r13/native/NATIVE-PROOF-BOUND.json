@@ -1,0 +1,147 @@
+{
+  "schema": "dva-cannon-r13-native-proof-bound/v1",
+  "reviewer": "GPT-6.1-Sol",
+  "decisionStatus": "FAIL material and OBS scope; limited finite-front/connection/expiry support; no full-lifetime/global-failure inference",
+  "qualityDecisionPath": "native/QUALITY-DECISION.md",
+  "qualityDecisionSha256": "916a5e5ce6e895b9e789d048be3925fd6b031438dafb02e6aabc453555004bcc",
+  "sourcePins": {
+    "effect": "281cf3907cd90ef8b0a1623f8f9394854312dd8b7064e1ed5511fa5e1cade7a8",
+    "shader": "adf1a666c74e8df2ff1bbe366e5fb5c198580d9e8d97994ad763af7d5e8b2f8b",
+    "audio": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+  },
+  "heldPhases": [
+    {
+      "name": "off28",
+      "ageMs": 28,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-3",
+      "effectVertices": 294,
+      "image": "native/phase-evidence/off28.jpg",
+      "json": "native/phase-evidence/off28.json"
+    },
+    {
+      "name": "off100",
+      "ageMs": 100,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-4",
+      "effectVertices": 294,
+      "image": "native/phase-evidence/off100.jpg",
+      "json": "native/phase-evidence/off100.json"
+    },
+    {
+      "name": "off150",
+      "ageMs": 150,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-5",
+      "effectVertices": 294,
+      "image": "native/phase-evidence/off150.jpg",
+      "json": "native/phase-evidence/off150.json"
+    },
+    {
+      "name": "off210",
+      "ageMs": 210,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-6",
+      "effectVertices": 294,
+      "image": "native/phase-evidence/off210.jpg",
+      "json": "native/phase-evidence/off210.json"
+    },
+    {
+      "name": "off220",
+      "ageMs": 220,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-7",
+      "effectVertices": 294,
+      "image": "native/phase-evidence/off220.jpg",
+      "json": "native/phase-evidence/off220.json"
+    },
+    {
+      "name": "off280",
+      "ageMs": 280,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-8",
+      "effectVertices": 294,
+      "image": "native/phase-evidence/off280.jpg",
+      "json": "native/phase-evidence/off280.json"
+    },
+    {
+      "name": "off330",
+      "ageMs": 330,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-9",
+      "effectVertices": 294,
+      "image": "native/phase-evidence/off330.jpg",
+      "json": "native/phase-evidence/off330.json"
+    },
+    {
+      "name": "off390",
+      "ageMs": 390,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-10",
+      "effectVertices": 294,
+      "image": "native/phase-evidence/off390.jpg",
+      "json": "native/phase-evidence/off390.json"
+    },
+    {
+      "name": "off420",
+      "ageMs": 420,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-11",
+      "effectVertices": 0,
+      "image": "native/phase-evidence/off420.jpg",
+      "json": "native/phase-evidence/off420.json"
+    },
+    {
+      "name": "on220",
+      "ageMs": 220,
+      "causeId": "cannon-r13-held-review",
+      "eventId": "alchemy-cannon-review:cannon-r13-held-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-12",
+      "effectVertices": 300,
+      "image": "native/phase-evidence/on220.jpg",
+      "json": "native/phase-evidence/on220.json"
+    }
+  ],
+  "obsComparison": {
+    "ageMs": 220,
+    "sameCause": true,
+    "sameEvent": true,
+    "sameFrame": false,
+    "meaning": "Separate OFF/ON fixture frames. ON220 contains rectangular teal field; Sol rejects this appearance."
+  },
+  "expiry420": {
+    "status": "held actual expiry",
+    "effectVertices": 0,
+    "queueCompleted": true,
+    "noContinuousTimelineClaim": true
+  },
+  "controlRepair": {
+    "path": "native/control-repair/SUMMARY.json",
+    "status": "limited-native-control-repair-pass",
+    "activeToggleCases": 4,
+    "expiredToggleCases": 4,
+    "retainedCause": "alchemy-cannon-review:cannon-r13-control-repair",
+    "held220AgeMs": 220,
+    "errors": [],
+    "consoleErrors": 0
+  },
+  "ordinarySequence": "Limited sparse captures frame000–010 and stable terminal frame; capture cadence is not GPU FPS and later metadata is not atomic with earlier image captures.",
+  "incomplete": [
+    "normal SFX listening",
+    "device/performance",
+    "Safari/iPad",
+    "parent gallery replay",
+    "game integration",
+    "adoption",
+    "continuous smoothness/whole lifetime"
+  ]
+}

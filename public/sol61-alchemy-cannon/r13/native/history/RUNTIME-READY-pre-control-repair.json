@@ -1,0 +1,45 @@
+{
+  "schema": "dva-cannon-r13-private-runtime-ready/v1",
+  "runtimeStatus": "faithful runtime ready; root native capture/compile completed; quality decision remains pending",
+  "sourceStatus": "unsealed Sol R13 creative draft copied into owned output unchanged",
+  "focusedTests": {
+    "file": "tests/runtime-r13.test.mjs",
+    "status": "pass",
+    "passed": 8,
+    "failed": 0,
+    "evidence": "TEST-RESULT.txt"
+  },
+  "cpuSourceChecks": {
+    "status": "pass on isolated test-support copy only",
+    "evidence": "test-support/finish-cannon-r13-creative-sol61-r1/CHECKS-RESULT.txt",
+    "scope": "CPU Float64/source contract only, not WGSL driver parity"
+  },
+  "sourcePins": {
+    "effectSha256": "281cf3907cd90ef8b0a1623f8f9394854312dd8b7064e1ed5511fa5e1cade7a8",
+    "shaderSha256": "adf1a666c74e8df2ff1bbe366e5fb5c198580d9e8d97994ad763af7d5e8b2f8b",
+    "audioSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+  },
+  "runtimeContract": {
+    "vertexStrideBytes": 32,
+    "eventTupleFloats": 8,
+    "viewUniformBytes": 16,
+    "depthSamples": 16,
+    "activationMs": 900,
+    "beamMs": 420,
+    "reducedShapeAgeMs": 210,
+    "singlePulse": "one createPulseReviewEvent, same cause/frame, performance.now/requestAnimationFrame progression; expiry from source sampler"
+  },
+  "routeCheck": "HOST-ROUTE-CHECK.json; exact 4 GETs hash/length/MIME pass; no-cookie/bad-token denied; extra route 404",
+  "hostLease": "HOST-LEASE.json",
+  "hostIdentity": "HOST-IDENTITY.json",
+  "acceptance": {
+    "nativeCompile": "root reports actual R13 WebGPU compile clean; native review evidence recorded",
+    "actualNativeReview": "root captured held OFF28/100/150/210/220/280/330/390/420 and ON220 with queue completion; ordinary sequence pre-event and terminal evidence recorded; visual quality decision pending",
+    "visualQuality": "unaccepted pending review",
+    "ordinarySfxListening": "not run",
+    "devicePerformance": "not run",
+    "gameIntegration": "not connected",
+    "adoption": "unknown",
+    "ordinaryMotion": "Limited native held phases and ordinary-sequence captures recorded; full visual-quality acceptance pending"
+  }
+}

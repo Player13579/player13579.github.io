@@ -1,0 +1,20 @@
+{
+  "schema": "dva-cannon-r13-repair-attempt-02/v1",
+  "baseAttempt": "../preview/cannon-r13; source hashes match attempt 01",
+  "scope": "OBS/source restart of active or expired single-pulse run must retain native review cause; held review continues in place",
+  "rootCause": "restartCurrent discarded run.causeId and called start(lastMode) without a cause after run had expired; start resolved only explicit causeId or query singleCauseId, absent on single-pulse-ready URL",
+  "repair": [
+    "Extracted createRestartCurrentHandler used by the actual OBS/source control listeners",
+    "Pass active single-pulse run cause to start on control restart",
+    "Retain the last single-pulse cause across run completion and reuse it when controls change after expiry",
+    "Guard cause-less single-pulse starts before mutating animation/audio state",
+    "Preserve held pulse-review behavior without restarting the held phase"
+  ],
+  "creativeInputChanges": false,
+  "nativeVerified": "limited control-repair native pass; four active and four expired OBS/source toggles plus held220; no console errors/warnings",
+  "reviewHostStarted": true,
+  "attempt01Modified": false,
+  "nativeEvidence": "native-root/control-check/SUMMARY.json",
+  "hostCleanup": "HOST-STOP-RESULT.json: PID 35336 stopped, port 58797 closed",
+  "visualQuality": "R13 material/OBS fail unchanged; this task only validates control repair"
+}

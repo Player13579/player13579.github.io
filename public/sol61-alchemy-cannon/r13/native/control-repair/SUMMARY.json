@@ -1,0 +1,108 @@
+{
+  "status": "limited-native-control-repair-pass",
+  "activeControls": [
+    {
+      "control": "observation",
+      "preAge": null,
+      "postAge": 10.899999952314829,
+      "visibleEventIds": [
+        "alchemy-cannon-review:cannon-r13-control-repair"
+      ]
+    },
+    {
+      "control": "observation",
+      "preAge": 10.899999952314829,
+      "postAge": 31.59999990463257,
+      "visibleEventIds": [
+        "alchemy-cannon-review:cannon-r13-control-repair"
+      ]
+    },
+    {
+      "control": "source",
+      "preAge": 31.59999990463257,
+      "postAge": 35.30000009536889,
+      "visibleEventIds": []
+    },
+    {
+      "control": "source",
+      "preAge": 35.30000009536889,
+      "postAge": 36.29999990462966,
+      "visibleEventIds": [
+        "alchemy-cannon-review:cannon-r13-control-repair"
+      ]
+    }
+  ],
+  "expiredControls": [
+    {
+      "control": "observation",
+      "preAge": 420.999999904634,
+      "postAge": 5.700000047683716,
+      "terminalPreCauseId": "cannon-r13-control-repair",
+      "visiblePostEventIds": [
+        "alchemy-cannon-review:cannon-r13-control-repair"
+      ]
+    },
+    {
+      "control": "observation",
+      "preAge": 426.7000000476837,
+      "postAge": 38.299999952316284,
+      "terminalPreCauseId": "cannon-r13-control-repair",
+      "visiblePostEventIds": [
+        "alchemy-cannon-review:cannon-r13-control-repair"
+      ]
+    },
+    {
+      "control": "source",
+      "preAge": 426.5999999523192,
+      "postAge": 35.400000047680805,
+      "terminalPreCauseId": "cannon-r13-control-repair",
+      "visiblePostEventIds": []
+    },
+    {
+      "control": "source",
+      "preAge": 426.5000000476866,
+      "postAge": 38.299999952316284,
+      "terminalPreCauseId": "cannon-r13-control-repair",
+      "visiblePostEventIds": [
+        "alchemy-cannon-review:cannon-r13-control-repair"
+      ]
+    }
+  ],
+  "held": {
+    "beforeAge": 220,
+    "afterAge": 220,
+    "completed": true
+  },
+  "errors": [],
+  "quality": "R13 material/OBS fail unchanged",
+  "files": [
+    {
+      "file": "active-controls.json",
+      "sha256": "cc21c111e8101cfacf0d0d2774fb3fd8901ee3d7f26ca870f28a5eefd05f37b4"
+    },
+    {
+      "file": "console.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "file": "expired-controls.json",
+      "sha256": "fe5e4e56924968b480c4ec06bbab7fbdbd3c88972176b65bf99e4e313c79de4b"
+    },
+    {
+      "file": "held220-controls.json",
+      "sha256": "1f48c1c6139f105993aa90d5309bdcb5bc13f443ad9fcfbd4022acd907b4fe4a"
+    },
+    {
+      "file": "held220.jpg",
+      "sha256": "d075836cd335549c355ddd97f36d3b1b0c03dafc87edd608d22ea942fc203e41"
+    },
+    {
+      "file": "ROOT-ASSERTION-SCOPE-CORRECTION.json",
+      "sha256": "d795cb9fcf1498e55956c332c2fd2f87b68e8b8464019d9eb7ef4d6bb272c422"
+    },
+    {
+      "file": "terminal.jpg",
+      "sha256": "68a541276b66936fd0faf0b64e11a4e6196db2e039f10c94cbea1d792dc59f19"
+    }
+  ]
+}

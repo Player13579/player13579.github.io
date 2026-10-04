@@ -1,0 +1,4 @@
+{
+  "reason": "First root summary assertion incorrectly required submitted mode and singlePulse metadata immediately before first RAF. The ready pre snapshot has no submitted draw; live snapshots have cause on visible event records, singlePulse summary appears at terminal. Original captures unchanged.",
+  "action": "Assert actual available submitted/terminal fields; no event identity inferred from absent source-off draw."
+}
