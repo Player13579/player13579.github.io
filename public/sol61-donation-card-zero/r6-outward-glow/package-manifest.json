@@ -1,0 +1,153 @@
+{
+  "schema": "dva-gallery-normalized-package-manifest/v1",
+  "versionId": "donation-card-zero-sol61-r6-outward-glow",
+  "displayVersion": "R6",
+  "statusAtPackageSeal": "candidate-native-trial-pending",
+  "sourceCandidateManifestSha256": "a5cea8ae4c79a5b753b14d82b65d5c931eb91c20ab9466d8a83b6db0e69ce15f",
+  "sourceEdition": "GPT-6.1-Sol R6 outward-glow correction",
+  "runtimeAdapter": "GPT-6-Luna faithful R2 WebGPU/SFX host reuse",
+  "base": {
+    "versionId": "donation-card-zero-sol61-r5-optical-rays-technical-repair-r2-dark-backdrop",
+    "manifestSha256": "380361465ae5a21348aff5843a4e6a14e8022d362bd1cd07a8c008a2cd3b78c5",
+    "sealSha256": "697f4cf4f5bb75dbe3b5d09f465cf9d056e1d4af13a46b251a2ef9a7042005e0",
+    "packageRoute": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r2-dark-backdrop/package"
+  },
+  "sourcePins": {
+    "status": "creative-candidate-measurement-and-native-pending",
+    "model": "GPT-6.1-Sol",
+    "base": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r2-dark-backdrop/package",
+    "changes": [
+      "actual creative WORLD export compact coin/arrival radiance",
+      "smooth normalized exported observer PSF"
+    ],
+    "files": [
+      {
+        "name": "WORLD-MRT.wgsl",
+        "sha256": "307ce8887f1fe419b445defaa4bc93bdf133f09f011d03a1ecb3774cca12759d"
+      },
+      {
+        "name": "creative.mjs",
+        "sha256": "46c836be9ab677aae50826d4f0321dc894a4707a175c5ea22fcfd7fa8d2b8e60"
+      },
+      {
+        "name": "creative-budget-compat.mjs",
+        "sha256": "850ac9ffcaa2efe2e1e53c43af06557570db773a12385adba3dcd1ba1f3d53b2"
+      },
+      {
+        "name": "observer.mjs",
+        "sha256": "f5c607ee2217ff8e424ca47f92e19565379b17a7e9054038b0a6588afe87d104"
+      },
+      {
+        "name": "observer-budget-compat.mjs",
+        "sha256": "6e023956ab389345ba2ccb34c7742b3c5afd34a772dd6ed8d5ea0907af47b417"
+      }
+    ],
+    "sourcePathNormalized": true
+  },
+  "scope": {
+    "exactCreativeExportsCopied": [
+      "creative.mjs",
+      "observer.mjs",
+      "creative-budget-compat.mjs",
+      "observer-budget-compat.mjs"
+    ],
+    "shaderTextMaterializedFromExports": [
+      "WORLD-MRT.wgsl",
+      "POST.wgsl"
+    ],
+    "inheritedUnchangedFromDarkBackdropR2": [
+      "runtime.mjs",
+      "preview.mjs",
+      "startup-bootstrap.js",
+      "startup-first-frame.mjs",
+      "sfx-compat.mjs"
+    ],
+    "indexChanges": [
+      "R6 candidate labeling only; existing #0f1b23 html/body.embed dark backdrop retained"
+    ],
+    "previewChanges": [
+      "replaced one stale R4 completion/status string; all playback, runtime and SFX behavior preserved"
+    ],
+    "preservedBehavior": [
+      "WebGPU only",
+      "existing 2800ms lifetime/route",
+      "existing source-off and expiry behavior",
+      "existing SFX bridge and authored cues",
+      "existing 82/18 direct/observer allocation",
+      "R2 observer near/far budget wrapper"
+    ]
+  },
+  "files": [
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/POST.wgsl",
+      "bytes": 2529,
+      "sha256": "4bc3052a7e88c2b9a3cc7bedca3efdd1511fe2a62063e82573eeb477c1d4453d"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/WORLD-MRT.wgsl",
+      "bytes": 10373,
+      "sha256": "307ce8887f1fe419b445defaa4bc93bdf133f09f011d03a1ecb3774cca12759d"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/creative-budget-compat.mjs",
+      "bytes": 104,
+      "sha256": "850ac9ffcaa2efe2e1e53c43af06557570db773a12385adba3dcd1ba1f3d53b2"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/creative.mjs",
+      "bytes": 15445,
+      "sha256": "46c836be9ab677aae50826d4f0321dc894a4707a175c5ea22fcfd7fa8d2b8e60"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/index.html",
+      "bytes": 2869,
+      "sha256": "4c84e08a62d0c917ba386b9fa32a70eb1ff7c3e1a06879439099fda3b4fcc344"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/observer-budget-compat.mjs",
+      "bytes": 528,
+      "sha256": "6e023956ab389345ba2ccb34c7742b3c5afd34a772dd6ed8d5ea0907af47b417"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/observer.mjs",
+      "bytes": 6002,
+      "sha256": "f5c607ee2217ff8e424ca47f92e19565379b17a7e9054038b0a6588afe87d104"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/preview.mjs",
+      "bytes": 8981,
+      "sha256": "4e7c047e27e05d365f2e824586790e3cc985a986678be70a7004937b96e45563"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/runtime.mjs",
+      "bytes": 15303,
+      "sha256": "548e8c83fb5f20462a94c7f88d2dfa4e26cf1383b49ea9b25bf1be64b069f409"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/sfx-compat.mjs",
+      "bytes": 747,
+      "sha256": "4427388d620ec8d41add97bbe86d0b0e4bb9bffc4db797d33389aa9c6cdce8b0"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/startup-bootstrap.js",
+      "bytes": 5583,
+      "sha256": "c3065d51abc595b97c429cdbceb96bda792db5c669fec9de13ac7192c1b44e91"
+    },
+    {
+      "path": "public/sol61-donation-card-zero/r6-outward-glow/package/startup-first-frame.mjs",
+      "bytes": 2325,
+      "sha256": "8ab372605f7127ba75dde939b19703a3aad6ec3fecd135eda76e960f58568e7f"
+    }
+  ],
+  "galleryAcceptance": {
+    "technicalReplayStatus": "pass-limited-native",
+    "qualityStatus": "pending",
+    "qualityReviewStatus": "limited-pass-full-quality-pending",
+    "adoption": "unknown",
+    "normalAudioListening": "not_run",
+    "safariReplayStatus": "unverified",
+    "gameIntegrationStatus": "not_connected",
+    "evidencePath": "outputs/request-20261005/donation-r6-outward-native-root-r1/REPORT.md",
+    "evidenceSha256": "e3ea13862ac5015f07e2cd46b2ae82254a8cb9bab422783acfe5347057827c42"
+  }
+}
