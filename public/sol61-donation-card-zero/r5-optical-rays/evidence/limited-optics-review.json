@@ -1,0 +1,62 @@
+{
+  "scope": "CPU source response plus exact kernel algebra; no GPU or image quality pass",
+  "sourceHashes": {
+    "creative.mjs": "c151d0d47a6de421401bc38829a04ff35dfa980982668ff1419963a09ae243e4",
+    "observer.mjs": "1f4bdfaacf6e1cbb1f9bfba40f5f106566908c9f50acbeb4b08c4fa813d4cb2f",
+    "POST.wgsl": "03d894e40c64457d7c34a35a5289fa2e7ea7f6bab3367f28f83f859b1159c190",
+    "WORLD-MRT.wgsl": "0a00b39cda20748953f84b6413b5a424e14b0a0d029362cc6a7cec195f589ce4"
+  },
+  "nearSum": 1,
+  "farSum": 1,
+  "raySum": 1.0000000000000002,
+  "compactFlux": {
+    "direct": 0.82,
+    "near": 0.1,
+    "far": 0.045,
+    "ray": 0.18000000000000002,
+    "total": 1.145,
+    "observerOff": 1,
+    "numericalRatios": [
+      1.1449999999999951,
+      1.144999999999998,
+      1.1449999999999971
+    ]
+  },
+  "zeroCases": {
+    "sourceOff": [
+      0,
+      0,
+      0
+    ],
+    "expired": [
+      0,
+      0,
+      0
+    ],
+    "observerOffResponseOnly": [
+      0,
+      0,
+      0
+    ]
+  },
+  "defaultUniform": [
+    0.10000000149011612,
+    0.04500000178813934,
+    0.18000000715255737,
+    1,
+    320,
+    160,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+  ],
+  "minimalDebitAlgebra": {
+    "debit": 0.145,
+    "compactDirect": 0.675,
+    "total": 1,
+    "noncompactTotal": 1
+  }
+}

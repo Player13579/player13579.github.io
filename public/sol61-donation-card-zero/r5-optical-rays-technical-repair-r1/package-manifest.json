@@ -1,0 +1,234 @@
+{
+  "schema": "dva-effect-gallery-technical-repair-r1",
+  "edition": "donation-card-zero-sol61-r5-optical-rays-technical-repair-r1",
+  "designAuthor": "GPT-6.1-Sol",
+  "technicalAdapterAuthor": "GPT-6-Luna",
+  "creativeEdition": "donation-card-zero-sol61-r5-optical-rays",
+  "creativeHistory": {
+    "verifiedPriorCreativeEditions": 9,
+    "totalWithThisEdition": 10,
+    "creativeCountReset": false,
+    "automaticNextCreativeRevision": false,
+    "technicalRepairAddsCreativeEdition": false
+  },
+  "parentPublicCommit": "9ad9fdd50e5861acc20d2ca8793defff39820a3b",
+  "source": {
+    "versionId": "donation-card-zero-sol61-r5-optical-rays",
+    "path": "public/sol61-donation-card-zero/r5-optical-rays",
+    "packageManifestPath": "public/sol61-donation-card-zero/r5-optical-rays/package-manifest.json",
+    "packageManifestSha256": "c661806f1350eb844165a76d0ca7d6464fc7a5d8fbc3ea9f8a46d1a426297641",
+    "creativePackageManifestSha256": "1da364de45f6dec05a913b376774818e0e056294296292ddc4e54af1e56a658b",
+    "files": [
+      {
+        "path": "package/creative.mjs",
+        "publicPath": "public/sol61-donation-card-zero/r5-optical-rays/package/creative.mjs",
+        "bytes": 15445,
+        "sha256": "c151d0d47a6de421401bc38829a04ff35dfa980982668ff1419963a09ae243e4"
+      },
+      {
+        "path": "package/index.html",
+        "publicPath": "public/sol61-donation-card-zero/r5-optical-rays/package/index.html",
+        "bytes": 2838,
+        "sha256": "d73f7ad7a1e13a61efc91a240688698364bcd131a5026a07b466db51381f32d4"
+      },
+      {
+        "path": "package/observer.mjs",
+        "publicPath": "public/sol61-donation-card-zero/r5-optical-rays/package/observer.mjs",
+        "bytes": 5998,
+        "sha256": "1f4bdfaacf6e1cbb1f9bfba40f5f106566908c9f50acbeb4b08c4fa813d4cb2f"
+      },
+      {
+        "path": "package/POST.wgsl",
+        "publicPath": "public/sol61-donation-card-zero/r5-optical-rays/package/POST.wgsl",
+        "bytes": 2526,
+        "sha256": "03d894e40c64457d7c34a35a5289fa2e7ea7f6bab3367f28f83f859b1159c190"
+      },
+      {
+        "path": "package/preview.mjs",
+        "publicPath": "public/sol61-donation-card-zero/r5-optical-rays/package/preview.mjs",
+        "bytes": 9022,
+        "sha256": "7e691920303347f66502febf80a259f004951ab69000ce99317b8cc195a6de8c"
+      },
+      {
+        "path": "package/runtime.mjs",
+        "publicPath": "public/sol61-donation-card-zero/r5-optical-rays/package/runtime.mjs",
+        "bytes": 15275,
+        "sha256": "7b5a3f279447b31d4b0fe60c7070c96b024e10b1516796f77ed46ebb4f6cd2f7"
+      },
+      {
+        "path": "package/startup-bootstrap.js",
+        "publicPath": "public/sol61-donation-card-zero/r5-optical-rays/package/startup-bootstrap.js",
+        "bytes": 5583,
+        "sha256": "c3065d51abc595b97c429cdbceb96bda792db5c669fec9de13ac7192c1b44e91"
+      },
+      {
+        "path": "package/startup-first-frame.mjs",
+        "publicPath": "public/sol61-donation-card-zero/r5-optical-rays/package/startup-first-frame.mjs",
+        "bytes": 2325,
+        "sha256": "8ab372605f7127ba75dde939b19703a3aad6ec3fecd135eda76e960f58568e7f"
+      },
+      {
+        "path": "package/WORLD-MRT.wgsl",
+        "publicPath": "public/sol61-donation-card-zero/r5-optical-rays/package/WORLD-MRT.wgsl",
+        "bytes": 10373,
+        "sha256": "0a00b39cda20748953f84b6413b5a424e14b0a0d029362cc6a7cec195f589ce4"
+      }
+    ]
+  },
+  "sourceFailureRecord": {
+    "limitedNativeReceipt": "public/sol61-donation-card-zero/r5-optical-rays/evidence/root-native-receipt.json",
+    "limitedNativeReceiptSha256": "8e336e1fa28698c0e05a306d3afe7542f4539f2fc95cadf5b8370e74718b70fd",
+    "limitedOpticsFinding": "public/sol61-donation-card-zero/r5-optical-rays/evidence/limited-optics-review.json",
+    "limitedOpticsFindingSha256": "1894938fe501c898c62faf3301101df76327346efaf4eefc38a1966790182262",
+    "finding": "Original R5 had 14.5% duplicated near/far scatter above its compact-source energy budget."
+  },
+  "technicalChanges": {
+    "scope": "deterministic host compatibility only; no creative design, source art, timing, optical kernel, spectrum, or audio changes",
+    "files": [
+      {
+        "path": "package/preview.mjs",
+        "sourceSha256": "7e691920303347f66502febf80a259f004951ab69000ce99317b8cc195a6de8c",
+        "servedSha256": "5ad8b04ef0cc064a0fc574808ee97fb251b9439acb99ecdaf9ab32ba6307bda5",
+        "changes": [
+          "SFX import path only"
+        ]
+      },
+      {
+        "path": "package/runtime.mjs",
+        "sourceSha256": "7b5a3f279447b31d4b0fe60c7070c96b024e10b1516796f77ed46ebb4f6cd2f7",
+        "servedSha256": "548e8c83fb5f20462a94c7f88d2dfa4e26cf1383b49ea9b25bf1be64b069f409",
+        "changes": [
+          "creative facade import path only",
+          "postUniforms compatibility import path only"
+        ]
+      }
+    ],
+    "compatibilityModules": {
+      "sfx-compat.mjs": "4427388d620ec8d41add97bbe86d0b0e4bb9bffc4db797d33389aa9c6cdce8b0",
+      "observer-budget-compat.mjs": "6e023956ab389345ba2ccb34c7742b3c5afd34a772dd6ed8d5ea0907af47b417",
+      "creative-budget-compat.mjs": "850ac9ffcaa2efe2e1e53c43af06557570db773a12385adba3dcd1ba1f3d53b2"
+    },
+    "observerBudget": {
+      "sourceExpression": "c.rgb+scatter",
+      "correctedExpression": "c.rgb+scatter-sourceAt(q).rgb*(observer.gains.x+observer.gains.y)*observerActive",
+      "nearGain": 0.1,
+      "farGain": 0.045,
+      "rayGain": 0.18,
+      "defaultSourceEnergy": {
+        "direct": 0.675,
+        "near": 0.1,
+        "far": 0.045,
+        "ray": 0.18,
+        "total": 1
+      },
+      "diagnosticIntensityRange": [
+        0,
+        2
+      ],
+      "maxDebit": 0.29,
+      "minimumDirectAtMaximumIntensity": 0.53,
+      "obsOffDebit": 0,
+      "sourceOffDebit": 0,
+      "expiredDebit": 0
+    },
+    "tests": {
+      "sfxBridgeRegression": {
+        "path": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/evidence/sfx-bridge-regression.json",
+        "sha256": "55a8589df453a18e48513cae61cb8f2f3f166de8eecc32b3231f16f5f03b8d23",
+        "passed": 13,
+        "harness": "current parent bridge with mocked WebAudio; not native listening"
+      },
+      "observerBudget": {
+        "status": "pass",
+        "covered": "single exact expression replacement, runtime facade binding, postUniforms identity, bounded flux debit and source/observer/expiry zero cases"
+      }
+    }
+  },
+  "status": {
+    "adoption": "not-adopted",
+    "fullQuality": "pending",
+    "limitedOpticsRepair": "CPU-budget-contract-test-pending",
+    "nativeReplay": "pending-root-derived-package-replay",
+    "gallerySfxIntegration": "pending-focused-current-bridge-tests",
+    "ordinarySfxListening": "not_run",
+    "safariReplay": "unverified",
+    "gameIntegration": "not_connected",
+    "galleryAdapterReplay": "pass-focused-sfx-bridge-contract-tests",
+    "sfxBridgeContractTests": "pass-13-focused-checks",
+    "observerBudgetContract": "pass-focused-contract-checks"
+  },
+  "files": [
+    {
+      "path": "package/POST.wgsl",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/POST.wgsl",
+      "bytes": 2526,
+      "sha256": "03d894e40c64457d7c34a35a5289fa2e7ea7f6bab3367f28f83f859b1159c190"
+    },
+    {
+      "path": "package/WORLD-MRT.wgsl",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/WORLD-MRT.wgsl",
+      "bytes": 10373,
+      "sha256": "0a00b39cda20748953f84b6413b5a424e14b0a0d029362cc6a7cec195f589ce4"
+    },
+    {
+      "path": "package/creative-budget-compat.mjs",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/creative-budget-compat.mjs",
+      "bytes": 104,
+      "sha256": "850ac9ffcaa2efe2e1e53c43af06557570db773a12385adba3dcd1ba1f3d53b2"
+    },
+    {
+      "path": "package/creative.mjs",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/creative.mjs",
+      "bytes": 15445,
+      "sha256": "c151d0d47a6de421401bc38829a04ff35dfa980982668ff1419963a09ae243e4"
+    },
+    {
+      "path": "package/index.html",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/index.html",
+      "bytes": 2838,
+      "sha256": "d73f7ad7a1e13a61efc91a240688698364bcd131a5026a07b466db51381f32d4"
+    },
+    {
+      "path": "package/observer-budget-compat.mjs",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/observer-budget-compat.mjs",
+      "bytes": 528,
+      "sha256": "6e023956ab389345ba2ccb34c7742b3c5afd34a772dd6ed8d5ea0907af47b417"
+    },
+    {
+      "path": "package/observer.mjs",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/observer.mjs",
+      "bytes": 5998,
+      "sha256": "1f4bdfaacf6e1cbb1f9bfba40f5f106566908c9f50acbeb4b08c4fa813d4cb2f"
+    },
+    {
+      "path": "package/preview.mjs",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/preview.mjs",
+      "bytes": 9024,
+      "sha256": "5ad8b04ef0cc064a0fc574808ee97fb251b9439acb99ecdaf9ab32ba6307bda5"
+    },
+    {
+      "path": "package/runtime.mjs",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/runtime.mjs",
+      "bytes": 15303,
+      "sha256": "548e8c83fb5f20462a94c7f88d2dfa4e26cf1383b49ea9b25bf1be64b069f409"
+    },
+    {
+      "path": "package/sfx-compat.mjs",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/sfx-compat.mjs",
+      "bytes": 747,
+      "sha256": "4427388d620ec8d41add97bbe86d0b0e4bb9bffc4db797d33389aa9c6cdce8b0"
+    },
+    {
+      "path": "package/startup-bootstrap.js",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/startup-bootstrap.js",
+      "bytes": 5583,
+      "sha256": "c3065d51abc595b97c429cdbceb96bda792db5c669fec9de13ac7192c1b44e91"
+    },
+    {
+      "path": "package/startup-first-frame.mjs",
+      "publicPath": "public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/startup-first-frame.mjs",
+      "bytes": 2325,
+      "sha256": "8ab372605f7127ba75dde939b19703a3aad6ec3fecd135eda76e960f58568e7f"
+    }
+  ]
+}
