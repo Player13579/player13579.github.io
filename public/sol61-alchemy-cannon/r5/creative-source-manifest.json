@@ -1,0 +1,19 @@
+{
+  "schema": "dva-cannon-r5-runtime-source-pins/v1",
+  "runtimeVersionId": "alchemy-cannon-sol61-r5",
+  "creativeVersion": "alchemy-cannon-new-e-sol61-r5",
+  "pins": [
+    {"role":"frozen-effect","path":"outputs/request-20261004/finish-cannon-r5-creative-sol61-r1/effect.mjs","sha256":"f21e1b7ac5136773efefde50295ba86fde6f6975d9d0df9aeab8e9ff7f937cff"},
+    {"role":"frozen-audio","path":"outputs/request-20261004/finish-cannon-r5-creative-sol61-r1/audio.mjs","sha256":"683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"},
+    {"role":"semantic-ABI","path":"outputs/request-20261004/finish-cannon-r5-creative-sol61-r1/SEMANTIC-ABI.json","sha256":"6059536a423a586f3108de8e03b3e50de1cf3c054617b86424b1e8b222da0463"},
+    {"role":"canonical-GPU-generator","path":"outputs/request-20261004/finish-cannon-r5-creative-sol61-r1/build-gpu.cjs","sha256":"14c44fc868b59c19db594fc01cf4d44d1144e48889ed74be462bd17f75b262d6"},
+    {"role":"settled-R4-runtime-adapter","path":"outputs/request-20261004/finish-cannon-r4-runtime-luna-r1/main.mjs","sha256":"3c8158e66b80a4f85d1c40b32bf7be3522f8f82299de0b5170891f1d1c6de1ad"},
+    {"role":"R5-runtime-effect-copy","path":"preview/cannon-r5/effect.mjs","sha256":"f21e1b7ac5136773efefde50295ba86fde6f6975d9d0df9aeab8e9ff7f937cff"},
+    {"role":"R5-runtime-audio-copy","path":"preview/cannon-r5/audio.mjs","sha256":"683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"}
+  ],
+  "repro": {
+    "command": "node outputs/request-20261004/finish-cannon-r5-runtime-luna-r1/preview/cannon-r5/runtime-r5.test.mjs",
+    "generatorScratch": "outputs/request-20261004/finish-cannon-r5-runtime-luna-r1/generator-check/",
+    "sourceAuthority": "frozen R5 creative inputs and settled R4 runtime copied read-only"
+  }
+}
