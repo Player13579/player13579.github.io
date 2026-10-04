@@ -1,0 +1,12 @@
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root=path.dirname(fileURLToPath(import.meta.url)),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const excluded=['PACKAGE-SEAL.json','PACKAGE-MANIFEST.json'];
+const files=[];const walk=dir=>{for(const e of fs.readdirSync(dir,{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name))){const f=path.join(dir,e.name),route=path.relative(root,f).split(path.sep).join('/');if(e.isDirectory())walk(f);else if(!excluded.includes(route)){const b=fs.readFileSync(f);files.push({route,bytes:b.length,sha256:sha(b)});}}};walk(root);
+const seal={schema:'dva-cannon-r9-transport-package-seal/v1',versionId:'alchemy-cannon-sol61-r9',createdAt:'2026-10-04',excludedFromSelfHash:excluded,files};
+fs.writeFileSync(path.join(root,'PACKAGE-SEAL.json'),JSON.stringify(seal,null,2)+String.fromCharCode(10));
+const pkg={schema:'dva-cannon-r9-source-bound-gallery-package/v1',versionId:'alchemy-cannon-sol61-r9',sourceVersion:'alchemy-cannon-new-e-sol61-r9',sourceStatus:'copied-draft-bytes-pinned; producer input remains unsealed',sourceBinding:'SOURCE-FREEZE.json',runtimePackage:'runtime/runtime-r9',runtimeSealSha256:sha(fs.readFileSync(path.join(root,'runtime/runtime-r9/RUNTIME-SEAL.json'))),nativeProof:'NATIVE-PROOF-BOUND.json',qualityStatus:'not_accepted',qualityDecision:'native-quality/QUALITY-DECISION.md',publication:'private-only; no catalog or candidate edits',adoption:'unknown',mainGameIntegration:'not_connected',limitations:['continuous full-lifetime perceptual review not accepted','normal SFX not listened','actual GPU performance not measured','Safari/iPad unverified','main game disconnected'],tests:{packageFocused:'4/4',runtimeFocused:'7/7',status:'pass'},packageSealSha256:sha(fs.readFileSync(path.join(root,'PACKAGE-SEAL.json'))),sealedFileCount:files.length,selfExclusion:excluded};
+fs.writeFileSync(path.join(root,'PACKAGE-MANIFEST.json'),JSON.stringify(pkg,null,2)+String.fromCharCode(10));
+console.log(JSON.stringify({status:'sealed-transport-package',versionId:pkg.versionId,sealedFiles:files.length,packageSealSha256:pkg.packageSealSha256,excluded},null,2));

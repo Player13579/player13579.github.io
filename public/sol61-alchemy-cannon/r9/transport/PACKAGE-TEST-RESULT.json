@@ -1,0 +1,23 @@
+{
+  "schema": "dva-cannon-r9-package-test-result/v1",
+  "status": "pass",
+  "focusedTests": "4/4",
+  "actualFilesTested": [
+    {
+      "route": "tests/package-r9.test.mjs",
+      "bytes": 4829,
+      "sha256": "ae1ed55c869c176f72e4715386c8118a0235c2108083967acfc26f2b497144c9"
+    },
+    {
+      "route": "verify-package-r9.mjs",
+      "bytes": 1200,
+      "sha256": "233a01744eb2f63bea91387d329a0544f26af3d23fe5dff26e8c0d4c1d3544f7"
+    },
+    {
+      "route": "seal-package-r9.mjs",
+      "bytes": 2227,
+      "sha256": "640c58faf1289eb8c11d7719ffd4bc15eb7dd13f0d32e75dc379b816176a20a7"
+    }
+  ],
+  "evidenceScope": "source copy binding, nested runtime seal/source pins, captured ON/OFF/expiry receipts and image hashes, Sol decision/limitations, package self-exclusion"
+}

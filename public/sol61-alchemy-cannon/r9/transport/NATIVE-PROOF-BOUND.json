@@ -1,0 +1,101 @@
+{
+  "schema": "dva-cannon-r9-limited-native-gpu-proof/v1",
+  "status": "root-captured limited GPU compile/draw proof; not full visual-quality acceptance",
+  "versionId": "alchemy-cannon-sol61-r9",
+  "sourcePins": {
+    "effect": "ed8d2c2f8a926dd660c56c96b12bf8c9916f461680ce55b01d9b24d71f055bdd",
+    "shader": "851ae4cf391b90b2b3a6f05fccc06a91cfa0327dfb06896a10bea8a36d4b8eb3",
+    "audio": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+  },
+  "captures": [
+    {
+      "json": "native-root/on220.json",
+      "jsonBytes": 3160,
+      "jsonSha256": "ef4121181d2e3b3f4cff9d6f6b041ecfd1ccec2176e11ba65d5309ead2076471",
+      "image": "native-root/on220.jpg",
+      "imageBytes": 19786,
+      "imageSha256": "f0f26006b8ea58ae352180521a30104eb0b6709457257470e946550253c576d1",
+      "imageMagic": "ffd8ff",
+      "native": {
+        "kind": "native-pulse-phase",
+        "causeId": "r9-native-220",
+        "eventId": "alchemy-cannon-review:r9-native-220",
+        "frameId": "alchemy-cannon-fixture-frame-1-1",
+        "requestedAgeMs": 220,
+        "sequence": 1,
+        "completed": true,
+        "submitted": true,
+        "activeEventCount": 1,
+        "beamVertexCount": 300,
+        "sourceEnabled": true,
+        "observation": true,
+        "queueError": null,
+        "shaderMessages": 0
+      }
+    },
+    {
+      "json": "native-root/off220.json",
+      "jsonBytes": 3162,
+      "jsonSha256": "72dff8b4cbad5d39c240830cf01b7158847520a38fb2fce7284af1b81ac52aa0",
+      "image": "native-root/off220.jpg",
+      "imageBytes": 19319,
+      "imageSha256": "4520cd80c2beb4898232956a786a8e839e0a37a62c1ca540c2d58b3b572eaf5e",
+      "imageMagic": "ffd8ff",
+      "native": {
+        "kind": "native-pulse-phase",
+        "causeId": "r9-native-220",
+        "eventId": "alchemy-cannon-review:r9-native-220",
+        "frameId": "alchemy-cannon-fixture-frame-1-1",
+        "requestedAgeMs": 220,
+        "sequence": 2,
+        "completed": true,
+        "submitted": true,
+        "activeEventCount": 1,
+        "beamVertexCount": 294,
+        "sourceEnabled": true,
+        "observation": false,
+        "queueError": null,
+        "shaderMessages": 0
+      }
+    },
+    {
+      "json": "native-root/expiry420.json",
+      "jsonBytes": 2832,
+      "jsonSha256": "c8ba4a86ead4641afeeeebbc1e961e8a49fa632c4deeeafa7dec84b0e78e6761",
+      "image": "native-root/expiry420.jpg",
+      "imageBytes": 15983,
+      "imageSha256": "0a0d04619cd2f6957822b7c2f6021018a024a83a3764b236e3079381bfbf82c5",
+      "imageMagic": "ffd8ff",
+      "native": {
+        "kind": "native-pulse-expiry",
+        "causeId": "r9-native-220",
+        "eventId": "alchemy-cannon-review:r9-native-220",
+        "frameId": "alchemy-cannon-fixture-frame-1-2",
+        "requestedAgeMs": 420,
+        "sequence": 3,
+        "completed": true,
+        "submitted": true,
+        "activeEventCount": 0,
+        "beamVertexCount": 0,
+        "sourceEnabled": true,
+        "observation": false,
+        "queueError": null,
+        "shaderMessages": 0
+      }
+    }
+  ],
+  "same220": {
+    "causeId": "r9-native-220",
+    "eventId": "alchemy-cannon-review:r9-native-220",
+    "frameId": "alchemy-cannon-fixture-frame-1-1",
+    "onSequence": 1,
+    "offSequence": 2
+  },
+  "expiry": {
+    "sequence": 3,
+    "beamVertexCount": 0,
+    "totalFixtureVertexCount": 72,
+    "activeEventCount": 0,
+    "sourceEnabled": true
+  }
+}

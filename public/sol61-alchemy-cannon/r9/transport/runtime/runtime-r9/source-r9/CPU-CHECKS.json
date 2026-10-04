@@ -1,0 +1,55 @@
+{
+  "status": "pass",
+  "samplerByteAndSemanticParity": 832,
+  "supportSamples": 1296,
+  "integralSamples": 14256,
+  "advectiveShapeInvariants": 20,
+  "reducedMotionMaterialFreezeSamples": 100,
+  "maxMainSupportWorld": 21.960022170536785,
+  "analyticMainBoundWorld": 23,
+  "analyticObsBoundWorld": 27,
+  "drawMainBoundWorld": 27,
+  "drawObsBoundWorld": 31,
+  "depthSteps": 16,
+  "rollsPerDepth": 3,
+  "referenceDepthSteps": 128,
+  "maxAbsolutePremultipliedError": 0.04209902786805131,
+  "peakReferenceRadiance": 9.410914456408323,
+  "relativePeakError": 0.004473425835826629,
+  "widthDiagnostics220": [
+    {
+      "u": 0.12,
+      "worldAlpha20Width": 25.714058243457142,
+      "alpha20SupportConnected": true
+    },
+    {
+      "u": 0.25,
+      "worldAlpha20Width": 31.574564898784047,
+      "alpha20SupportConnected": true
+    },
+    {
+      "u": 0.4,
+      "worldAlpha20Width": 21.216310712049314,
+      "alpha20SupportConnected": true
+    },
+    {
+      "u": 0.55,
+      "worldAlpha20Width": 24.775868014153385,
+      "alpha20SupportConnected": true
+    },
+    {
+      "u": 0.7,
+      "worldAlpha20Width": 27.763497451027717,
+      "alpha20SupportConnected": true
+    },
+    {
+      "u": 0.84,
+      "worldAlpha20Width": 22.348613181891675,
+      "alpha20SupportConnected": true
+    }
+  ],
+  "effectSha256": "ed8d2c2f8a926dd660c56c96b12bf8c9916f461680ce55b01d9b24d71f055bdd",
+  "shaderSha256": "851ae4cf391b90b2b3a6f05fccc06a91cfa0327dfb06896a10bea8a36d4b8eb3",
+  "audioSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a",
+  "limitations": "CPU double model/reference, exact sampler parity and analytic support only. Shader formulas are authored in parallel, not executed GPU parity. Numeric width is not perceptual material acceptance. Native compile/display/life/performance/audio/gallery/game not_run."
+}
