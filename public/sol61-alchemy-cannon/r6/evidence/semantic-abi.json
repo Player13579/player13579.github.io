@@ -1,0 +1,55 @@
+{
+  "schema": "cannon-gpu-material-tuple/v1",
+  "version": "alchemy-cannon-new-e-sol61-r6",
+  "approvedBy": "primary root message",
+  "strideBytes": 32,
+  "attributes": [
+    {
+      "location": 0,
+      "offset": 0,
+      "format": "float32x2",
+      "meaning": "worldXY"
+    },
+    {
+      "location": 1,
+      "offset": 8,
+      "format": "float32x4",
+      "ordinary": "straightRGBA",
+      "negativeEmission": "[u,localY,encodedAge,power]"
+    },
+    {
+      "location": 2,
+      "offset": 24,
+      "format": "float32x2",
+      "meaning": "[emissionOrTag,layer]"
+    }
+  ],
+  "tags": {
+    "main": {
+      "emission": -2,
+      "layer": 2,
+      "vertices": 6,
+      "transverseBoundWorld": 27
+    },
+    "observation": {
+      "emission": -1,
+      "layer": 0,
+      "vertices": 6,
+      "transverseBoundWorld": 31
+    },
+    "ordinary": "emission>=0 keeps R4 straightRGBA premultiply branch"
+  },
+  "encodedAge": {
+    "normal": "ageMs>=0",
+    "reduced": "-1-ageMs; shader fixes material travel=.48 and phaseTime=0"
+  },
+  "supportBoundDerivation": "radius<=22, |center|<=4.2, OBSspread<=4; main27 and OBS31 bound true support, not hit width",
+  "mainVolumeSamples": 16,
+  "sourceThroatVertices": 288,
+  "totalVerticesPerActiveBeam": 300,
+  "worldWithoutOBSVertices": 294,
+  "newBindings": false,
+  "newTextures": false,
+  "newFeatures": false,
+  "CPUIntegralUsedInRender": false
+}
