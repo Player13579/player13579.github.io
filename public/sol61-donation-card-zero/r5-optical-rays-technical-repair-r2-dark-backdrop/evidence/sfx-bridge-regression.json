@@ -1,0 +1,138 @@
+{
+  "task": "Donation R5 SFX and observer compatibility regression",
+  "candidatePackage": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package",
+  "candidateFiles": [
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/POST.wgsl",
+      "bytes": 2526,
+      "sha256": "03d894e40c64457d7c34a35a5289fa2e7ea7f6bab3367f28f83f859b1159c190"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/WORLD-MRT.wgsl",
+      "bytes": 10373,
+      "sha256": "0a00b39cda20748953f84b6413b5a424e14b0a0d029362cc6a7cec195f589ce4"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/creative-budget-compat.mjs",
+      "bytes": 104,
+      "sha256": "850ac9ffcaa2efe2e1e53c43af06557570db773a12385adba3dcd1ba1f3d53b2"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/creative.mjs",
+      "bytes": 15445,
+      "sha256": "c151d0d47a6de421401bc38829a04ff35dfa980982668ff1419963a09ae243e4"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/index.html",
+      "bytes": 2838,
+      "sha256": "d73f7ad7a1e13a61efc91a240688698364bcd131a5026a07b466db51381f32d4"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/observer-budget-compat.mjs",
+      "bytes": 528,
+      "sha256": "6e023956ab389345ba2ccb34c7742b3c5afd34a772dd6ed8d5ea0907af47b417"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/observer.mjs",
+      "bytes": 5998,
+      "sha256": "1f4bdfaacf6e1cbb1f9bfba40f5f106566908c9f50acbeb4b08c4fa813d4cb2f"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/preview.mjs",
+      "bytes": 9024,
+      "sha256": "5ad8b04ef0cc064a0fc574808ee97fb251b9439acb99ecdaf9ab32ba6307bda5"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/runtime.mjs",
+      "bytes": 15303,
+      "sha256": "548e8c83fb5f20462a94c7f88d2dfa4e26cf1383b49ea9b25bf1be64b069f409"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/sfx-compat.mjs",
+      "bytes": 747,
+      "sha256": "4427388d620ec8d41add97bbe86d0b0e4bb9bffc4db797d33389aa9c6cdce8b0"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/startup-bootstrap.js",
+      "bytes": 5583,
+      "sha256": "c3065d51abc595b97c429cdbceb96bda792db5c669fec9de13ac7192c1b44e91"
+    },
+    {
+      "path": "outputs/request-20261005/donation-r5-gallery-luna-r1/candidate/public/sol61-donation-card-zero/r5-optical-rays-technical-repair-r1/package/startup-first-frame.mjs",
+      "bytes": 2325,
+      "sha256": "8ab372605f7127ba75dde939b19703a3aad6ec3fecd135eda76e960f58568e7f"
+    }
+  ],
+  "bridge": {
+    "source": "private bare Git commit 9ad9fdd50e5861acc20d2ca8793defff39820a3b:asset-gallery-sfx-bridge.js",
+    "bytes": 9619,
+    "sha256": "cc5da8c77029a02adf86d41b0290a3d4a952d15d623248317b029eb20094fede"
+  },
+  "test": {
+    "passed": 13,
+    "checks": [
+      {
+        "name": "verify: no AudioContext, oscillator or PCM creation",
+        "passed": true
+      },
+      {
+        "name": "normal: playback receive before gesture is silent and duplicate cause is rejected",
+        "passed": true
+      },
+      {
+        "name": "unlocked normal SFX: frozen cues/schedules, no PCM, duplicate receipt does not replay, new cause gets one cue set, stop clears nodes",
+        "passed": true
+      },
+      {
+        "name": "natural 2800ms expiry stops the active SFX and closes playback",
+        "passed": true
+      },
+      {
+        "name": "dispose before late unlock prevents enable/restart/stale audio",
+        "passed": true
+      },
+      {
+        "name": "real parent bridge accepts the adapter boolean and activates the Donation preview",
+        "passed": true
+      },
+      {
+        "name": "actual wrapper + parent bridge + DonationPlayback unlocks on gesture and duplicate accepted cause schedules no second cue set",
+        "passed": true
+      },
+      {
+        "name": "real parent bridge rejects false and rejected adapter activation without restart",
+        "passed": true
+      },
+      {
+        "name": "real parent bridge and adapter suppress disposed and detached late unlock",
+        "passed": true
+      },
+      {
+        "name": "real parent bridge verify mode remains silent",
+        "passed": true
+      },
+      {
+        "name": "candidate retains exact R4-authored cue/DonationSound bytes and playback implementation, plus has no PCM API implementation",
+        "passed": true
+      },
+      {
+        "name": "runtime imports the real observer-budget facade and uses exactly one bounded ray-radiance subtraction; postUniforms stays byte-function-identical",
+        "passed": true
+      },
+      {
+        "name": "observer-budget adapter rejects zero or ambiguous source-expression matches",
+        "passed": true
+      }
+    ],
+    "cues": 9,
+    "durationMs": 2800,
+    "contexts": 4,
+    "normalAudioListening": "not_run; mock scheduling only"
+  },
+  "limits": {
+    "ordinarySfxListening": "not run; mock WebAudio scheduling only",
+    "nativeWebGPU": "not run",
+    "deviceOrSafari": "not run",
+    "gameIntegration": "not run"
+  }
+}

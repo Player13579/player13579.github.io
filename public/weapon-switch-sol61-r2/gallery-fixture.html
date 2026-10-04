@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weapon Switch zero Sol61 r2 WebGPU preview</title>
+<style>
+  html,body{margin:0;background:#101820;color:#dbe8ec;font:14px system-ui}
+  main{display:grid;gap:8px;justify-items:center;padding:10px}
+  canvas{width:min(100%,720px);height:auto;aspect-ratio:3/2;background:#101820}
+  #status{min-height:1.2em}
+  button,select{font:inherit}
+</style>
+<main>
+  <div>
+    <label>Fixture variant
+      <select id="variant">
+        <option value="0">Handgun</option>
+        <option value="1">SMG</option>
+        <option value="2">Assault</option>
+        <option value="3">Sniper</option>
+        <option value="4">Taser</option>
+      </select>
+    </label>
+    <button id="hold">Hold phase</button>
+    <button id="resume">Resume loop</button>
+  </div>
+  <canvas id="view" width="720" height="480"></canvas>
+  <div id="status" role="status"></div>
+</main>
+<script type="module" src="./runtime.mjs"></script>
+<script type="module">
+  import { startWeaponSwitchGalleryFixture } from './gallery-fixture-loop.mjs';
+
+  const params = new URL(location.href).searchParams;
+  if (params.has('embed') && params.has('galleryFixture')) {
+    const stop = startWeaponSwitchGalleryFixture({
+      url: location.href,
+      snapshot: () => window.__weaponSwitchSnapshot?.(),
+      receipt: input => window.__weaponSwitchReceipt?.(input),
+      getVariant: () => document.querySelector('#variant').value,
+      resumeButton: document.querySelector('#resume'),
+      setStatus: value => { document.querySelector('#status').textContent = value; }
+    });
+    window.addEventListener('pagehide', stop, { once: true });
+  }
+</script>
+</html>

@@ -1,0 +1,118 @@
+{
+  "schema": "dva-e-gallery-package/v1",
+  "versionId": "excalibur-zero-flare-ghost-sol61-r7",
+  "creativeVersion": "excalibur-zero-flare-ghost-sol61-r7",
+  "parentVersionId": "excalibur-zero-flare-ghost-sol61-r6",
+  "galleryGroupId": "alchemy-excalibur-sol61",
+  "route": "public/sol61-excalibur-zero-flare-ghost/r7/",
+  "previewPage": "gallery.html?embed=1",
+  "galleryStartupVersionId": "excalibur-zero-flare-ghost-sol61-r7",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "adapterAuthor": "GPT-6-Luna",
+  "authorization": "specific-user-ghost-shape-correction-r7-only-no-auto-loop-reset",
+  "creativeSources": {
+    "plan": {
+      "path": "outputs/request-20261005/excalibur-ghost-shape-sol61-r7/plan.mjs",
+      "sha256": "f9dca786ff9b18c42b90ecf31681234f5c1e74938b168464d7ff402ac42120af"
+    },
+    "shader": {
+      "path": "outputs/request-20261005/excalibur-ghost-shape-sol61-r7/shader.mjs",
+      "sha256": "5ec342cdac10aaa0bf001a6a50b90462124521921ba249bbae139eccb0757696"
+    }
+  },
+  "sfxSource": {
+    "path": "outputs/request-20261005/excalibur-ghost-shape-sol61-r7/sfx.mjs",
+    "sha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3",
+    "outputSha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3",
+    "identicalToR6": true
+  },
+  "shaderExports": {
+    "worldWgslSha256": "04d2e5c5680eafcd29a37e3af1127d46fccdf30d2cab205c7ecbbec2bd31f5f6",
+    "postWgslSha256": "167823592c2d03af6ad37583fa95ababe6de967fda3779d54685617ca7218990",
+    "worldIdenticalToR6": true,
+    "postGhostShapeChanged": true,
+    "actualImportedExports": true
+  },
+  "adapterRevision": 4,
+  "adapterDerivation": {
+    "from": "outputs/request-20261004/finish-excalibur-r6-gallery-candidate-luna-r1/stage-package-only/site/public/sol61-excalibur-zero-flare-ghost/r6",
+    "runtimeSha256": "2a038680c77a1bd2f7484847cb9e922de4bb0954ea2aefa9158ef5c2c8b8cffe",
+    "galleryContractSha256": "5c84d141af48109c3bcf4d9c4845bd056cde24a4b6018d351b58b9c52f05084d",
+    "reason": "Preserve exact frozen R6 renderer/host and bind the R7-authored plan, shader, SFX and version pins."
+  },
+  "historicalR6Closure": {
+    "path": "inputs/frozen-r6/package/",
+    "packageManifestSha256": "cb453cd89bcf22c54eea70b2d9999aea4da7594709f68af3aaeb3ef55b0aae03",
+    "packageSealSha256": "1bd685acd12ac1f64ff3caff36caea34139cc4323f2e7936c91d3c127fc14a8e",
+    "nativeArtifactsAreR6Only": true
+  },
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "not_run",
+  "qualityDecision": "pending-root-review-of-r7-ghost-shape",
+  "technicalReplayStatus": "pending-root-native-r7",
+  "parentGalleryReplayStatus": "not_run",
+  "normalAudioListening": "not_run",
+  "sfxListeningStatus": "not_run",
+  "gameIntegrationStatus": "not_connected",
+  "safariReplayStatus": "unverified",
+  "gpuFramePerformance": "not_run",
+  "adoption": "unknown",
+  "publication": "not_published",
+  "runtime": {
+    "uniformAbiBytes": 128,
+    "uniformFloat32Count": 32,
+    "lifetimeMs": 1200,
+    "verifyCaptureMuted": true
+  },
+  "nativeEvidenceScope": "No R7 native evidence. Frozen R6 screenshots and receipts remain unchanged in the input closure and do not validate R7.",
+  "files": [
+    {
+      "route": "CREATIVE-SOURCE-MANIFEST.json",
+      "bytes": 1899,
+      "sha256": "a506beaf39a98ebb1eafa7d6390db13985352fe02fd1abc55615dc19b93c668a",
+      "mimeType": "application/json"
+    },
+    {
+      "route": "gallery-contract.mjs",
+      "bytes": 3188,
+      "sha256": "5c84d141af48109c3bcf4d9c4845bd056cde24a4b6018d351b58b9c52f05084d",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "gallery.html",
+      "bytes": 3771,
+      "sha256": "c40d512c954a56c70555122b44d31c1a01c011a3c0e4d7168a70393c87c49d61",
+      "mimeType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "gallery.mjs",
+      "bytes": 13737,
+      "sha256": "ad513fe7785089bd1a1028018d4b317ffc43897cf72b8d33ba8d7bbd6e14dc7a",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "plan.mjs",
+      "bytes": 3480,
+      "sha256": "f9dca786ff9b18c42b90ecf31681234f5c1e74938b168464d7ff402ac42120af",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "runtime.mjs",
+      "bytes": 16057,
+      "sha256": "2a038680c77a1bd2f7484847cb9e922de4bb0954ea2aefa9158ef5c2c8b8cffe",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "sfx.mjs",
+      "bytes": 5874,
+      "sha256": "c291e419cb1aaac77886e864f9b48cc972874d89b8547b5bffbccddaa48bc5e3",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "shader.mjs",
+      "bytes": 7230,
+      "sha256": "5ec342cdac10aaa0bf001a6a50b90462124521921ba249bbae139eccb0757696",
+      "mimeType": "text/javascript; charset=utf-8"
+    }
+  ]
+}
