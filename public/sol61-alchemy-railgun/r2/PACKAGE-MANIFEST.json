@@ -1,0 +1,112 @@
+{
+  "schema": "dva-e-gallery-package/v1",
+  "versionId": "alchemy-railgun-sol61-r2",
+  "groupId": "alchemy-railgun-sol61",
+  "creatorDisplayName": "GPT-6.1-Sol (creative design/equations) + GPT-6-Luna (faithful adapter/runtime)",
+  "designAuthorDisplayName": "GPT-6.1-Sol",
+  "runtimeAuthorDisplayName": "GPT-6-Luna",
+  "sourceManifestSha256": "2ae47fc813ac48144fd344196be49992621f2eb3ce47fb3a8b1548157b23f306",
+  "creativeSourceSha256": "8366592b6b02a6066ef259fdd092c9425c1b1e3d87c8e30810483bb0d9f025b1",
+  "audioSourceSha256": "1535e3a3c3fb40088626359e3b2e27dbcfbba0dedd1ca9f13fe36771c3143563",
+  "sourceWgslSha256": "b5d30803c48c5d0c84c03cea4cce4ead4c7dffa81d7316bda8936c9bcc99034c",
+  "compositeWgslSha256": "07d99dbde28e2635ebda3e0aae262ba546f5d7f7579c4908dd4fd9e3d0ae1a01",
+  "nativeCompileReceiptSha256": "0ec1ea80730405f8ba6184d71a0c8c63fffad5d9161e2d51935b48237c286b2b",
+  "runtime": {
+    "eventDurationMs": 900,
+    "galleryCycleMs": 1250,
+    "quietGapMs": 350,
+    "maxEvents": 8,
+    "sourceFormat": "rgba16float",
+    "compositeFormat": "bgra8unorm",
+    "audioMs": 280
+  },
+  "technicalReplayStatus": "pass",
+  "nativeEvidenceScope": "verify-only loop plus completed held phases 100/300/900 ms, same cycle; limited phase sample, not whole-life quality acceptance",
+  "parentGalleryReplayStatus": "pass-limited-parent-native-300-expiry",
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "pending",
+  "qualityNote": "Root native snapshots showed a blue-white long rail with parallel observer streaks at 100 ms and a compact warm front with a thin long rear at 300 ms. No whole-motion verdict was made; quality is pending and not accepted.",
+  "adoption": "unknown",
+  "gameIntegrationStatus": "not_connected",
+  "normalAudioListening": "not_run",
+  "sfxListeningStatus": "not_run",
+  "safariReplayStatus": "unverified",
+  "publicationEligible": true,
+  "publicationAuthorized": false,
+  "evidence": [
+    "native/ROOT-NATIVE-REVIEW.md",
+    "native/loop.json",
+    "native/phase100.json",
+    "native/phase100.png",
+    "native/phase300.json",
+    "native/phase300.png",
+    "native/phase900.json",
+    "native/phase900.png",
+    "native/parent-active300.json",
+    "native/parent-active300.png",
+    "native/parent-expiry900.json",
+    "native/parent-expiry900.png"
+  ],
+  "nativeReview": {
+    "reviewer": "primary",
+    "route": "private native gallery candidate, verify=true",
+    "loop": "504 completed frames reported; 3 passes per frame; failed=null",
+    "heldFrames": [
+      {
+        "ageMs": 100,
+        "cycle": 41,
+        "sourceVisible": true,
+        "queueCompleted": true,
+        "proof": "native-root/phase100.json",
+        "image": "native-root/phase100.png"
+      },
+      {
+        "ageMs": 300,
+        "cycle": 41,
+        "sourceVisible": true,
+        "queueCompleted": true,
+        "proof": "native-root/phase300.json",
+        "image": "native-root/phase300.png"
+      },
+      {
+        "ageMs": 900,
+        "cycle": 41,
+        "sourceVisible": false,
+        "queueCompleted": true,
+        "proof": "native-root/phase900.json",
+        "image": "native-root/phase900.png"
+      }
+    ],
+    "visualObservation": "100 ms showed a blue-white long rail and parallel observer streaks; 300 ms showed a compact warm front with a thin long rear. No whole-motion quality verdict was made.",
+    "notEstablished": [
+      "normal unmuted SFX listening",
+      "GPU performance",
+      "Safari/iPad",
+      "main-game integration",
+      "adoption"
+    ],
+    "parentGallery": {
+      "status": "pass-limited-parent-native-300-expiry",
+      "route": "private parent gallery, verify=true",
+      "initialDeepLink": "opened Common Fund R4; actual R2 group version then selected from visible UI; no deep-link pass claim",
+      "viewport": {
+        "cssWidth": 980,
+        "cssHeight": 620,
+        "backingWidth": 1960,
+        "backingHeight": 1240
+      },
+      "startup": "playing/ready; first-frame completed; three passes",
+      "active300": "cycle 102, completed frame 6674, age 300 ms, source visible",
+      "expiry900": "cycle 102, completed frame 7406, age 900 ms, sources empty; grid-only image",
+      "failed": null,
+      "verifyHardMuted": true,
+      "wholeMotionQualityVerdict": false,
+      "proofFiles": [
+        "parent-active300.json",
+        "parent-active300.png",
+        "parent-expiry900.json",
+        "parent-expiry900.png"
+      ]
+    }
+  }
+}
