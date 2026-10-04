@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';import crypto from 'node:crypto';import fs from 'node:fs';import path from 'node:path';import {fileURLToPath,pathToFileURL} from 'node:url';
+const root=path.dirname(fileURLToPath(import.meta.url)),src=path.join(root,'source-r14'),base=path.join(root,'source-r13-adapter'),preview=path.join(root,'preview','cannon-r14');
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex'),read=p=>fs.readFileSync(p),pins={effect:'d630272a7fed41cc36a93904c3b864cdada483c1c16838ebf221fa454afae278',material:'b0e4157310ccb6c87bc88d4e896d6db8b1af949a9e7925c0c21fee6b47a62515',shader:'567b6fe65a253b073bae0092fb1a3466e8e0b7e1e367a82405bec3920d400c3f',audio:'683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a'};
+for(const [file,key] of [['effect.mjs','effect'],['material.mjs','material'],['audio.mjs','audio']])assert.equal(sha(read(path.join(src,file))),pins[key],`${file} source pin`);
+const effectModule=await import(pathToFileURL(path.join(src,'effect.mjs')).href);assert.equal(sha(Buffer.from(effectModule.SHADER)),pins.shader);
+for(const file of ['effect.mjs','material.mjs','audio.mjs'])fs.copyFileSync(path.join(src,file),path.join(preview,file));
+let main=read(path.join(base,'main.mjs')).toString('utf8');
+for(const [from,to] of [
+ ['alchemy-cannon-sol61-r13','alchemy-cannon-sol61-r14'],
+ ['alchemy-cannon-new-e-sol61-r13','alchemy-cannon-new-e-sol61-r14'],
+ ['281cf3907cd90ef8b0a1623f8f9394854312dd8b7064e1ed5511fa5e1cade7a8',pins.effect],
+ ['adf1a666c74e8df2ff1bbe366e5fb5c198580d9e8d97994ad763af7d5e8b2f8b',pins.shader],
+ ['R13 runtime version','R14 runtime version'],
+ ['R13 imported shader export','R14 imported shader export'],
+ ['__cannonR13SourcePins','__cannonR14SourcePins']]){const n=main.split(from).length-1;assert.equal(n,1,`single runtime substitution: ${from}`);main=main.replace(from,to);}
+const audioEntry="  audioModuleSha256: '683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a',";
+assert.equal(main.split(audioEntry).length-1,1);main=main.replace(audioEntry,`  materialModuleSha256: '${pins.material}',\n${audioEntry}`);
+const audioLoop="    ['audio.mjs', EXPECTED_SOURCE_PINS.audioModuleSha256]]) {";
+assert.equal(main.split(audioLoop).length-1,1);main=main.replace(audioLoop,"    ['material.mjs', EXPECTED_SOURCE_PINS.materialModuleSha256],\n    ['audio.mjs', EXPECTED_SOURCE_PINS.audioModuleSha256]]) {");
+fs.writeFileSync(path.join(preview,'main.mjs'),main);
+let gallery=read(path.join(base,'gallery-base.html')).toString('utf8');assert(gallery.includes('r13'));gallery=gallery.replaceAll('r13','r14');fs.writeFileSync(path.join(preview,'gallery.html'),gallery);
+const sourcePins={schema:'dva-cannon-r14-faithful-runtime-source-pins/v1',status:'private faithful runtime draft; copied R14 creative inputs remain UNSEALED',source:{producerPath:'outputs/request-20261004/finish-cannon-r14-creative-sol61-r1',designOwner:'GPT-6.1-Sol',version:effectModule.VERSION,sourceStatus:'UNSEALED executable draft; producer files read-only; no native or quality decision implied',effect:{path:'source-r14/effect.mjs',bytes:read(path.join(src,'effect.mjs')).length,sha256:pins.effect},material:{path:'source-r14/material.mjs',bytes:read(path.join(src,'material.mjs')).length,sha256:pins.material},shaderExport:{bytes:Buffer.byteLength(effectModule.SHADER),sha256:pins.shader,construction:'import effect.mjs, which imports MATERIAL_WGSL from material.mjs; hash exact exported concatenated SHADER bytes'},audio:{path:'source-r14/audio.mjs',bytes:read(path.join(src,'audio.mjs')).length,sha256:pins.audio},designContractSha256:sha(read(path.join(src,'DESIGN-CONTRACT.md'))),handoffSha256:sha(read(path.join(src,'HANDOFF.md'))),authorChecksSha256:sha(read(path.join(src,'CHECKS.json')))},adapter:{implementationOwner:'GPT-6-Luna',base:'R13 repair-attempt-02 preview; cause-preserving single-pulse restart handler',creativeChanges:false,mainChanges:'R13 version/source identities adapted to R14; material hash added to source pin verification and material.mjs dependency explicitly pinned; R14 sampler imports R14 material module; no timing, ABI, geometry, color or audio rewrite'},abi:{vertexStrideBytes:32,vertexFloats:8,viewUniformBytes:16,depthSamples:16,worldTuple:'[u, y, encodedAge, power]',noNewBindingsOrDrawAdapters:true},bounds:{activationMs:900,beamMs:420,reducedShapeAgeMs:210,singlePulseRestartCausePreserved:true},acceptance:{nativeCompile:'pending root',actualNativePhases:'pending root',visualQuality:'not accepted / not reviewed for R14',ordinarySfxListening:'not run',devicePerformance:'not run',gameIntegration:'not connected',adoption:'unknown'}};
+fs.writeFileSync(path.join(root,'SOURCE-PINS.json'),JSON.stringify(sourcePins,null,2)+'\n');
+console.log(JSON.stringify({pins,runtimeMainBytes:Buffer.byteLength(main),galleryBytes:Buffer.byteLength(gallery),sourceStatus:sourcePins.source.sourceStatus}));

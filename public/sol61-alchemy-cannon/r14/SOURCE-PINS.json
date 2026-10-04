@@ -1,0 +1,57 @@
+{
+  "schema": "dva-cannon-r14-gallery-source-binding/v1",
+  "status": "UNSEALED producer source copied byte-exactly; no acceptance implied",
+  "owner": "GPT-6.1-Sol",
+  "version": "alchemy-cannon-new-e-sol61-r14",
+  "producerPath": "outputs/request-20261004/finish-cannon-r14-creative-sol61-r1",
+  "files": {
+    "effect.mjs": {
+      "bytes": 5515,
+      "sha256": "d630272a7fed41cc36a93904c3b864cdada483c1c16838ebf221fa454afae278"
+    },
+    "material.mjs": {
+      "bytes": 4137,
+      "sha256": "b0e4157310ccb6c87bc88d4e896d6db8b1af949a9e7925c0c21fee6b47a62515"
+    },
+    "audio.mjs": {
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    "DESIGN-CONTRACT.md": {
+      "bytes": 12273,
+      "sha256": "1cf000845baa92b77a3d52cac57c3ec4b5de6edbac515abb6112d5ff270d43f9"
+    },
+    "HANDOFF.md": {
+      "bytes": 2477,
+      "sha256": "7d506c0daa0e03484b8e8cf96642107435afe53eaaf8540a40448af1216d4098"
+    },
+    "CHECKS.json": {
+      "bytes": 2308,
+      "sha256": "5eedca095fa2dd7b23ccaa2919613357b39e51d7914f233a951baa5e6dd48c23"
+    },
+    "ARTIFACT-PINS.json": {
+      "bytes": 856,
+      "sha256": "32dc3d2e4bbcb7c166e5adfe0fdbdb96e957716f52325f5ea1a44cdf03259536"
+    },
+    "checks.mjs": {
+      "bytes": 2909,
+      "sha256": "aba53ccebc5ee4accd14a43958ae1fffa0a1f3cb8925a8eb7d9cb2dab6dd6271"
+    }
+  },
+  "shaderExport": {
+    "bytes": 2644,
+    "sha256": "567b6fe65a253b073bae0092fb1a3466e8e0b7e1e367a82405bec3920d400c3f",
+    "construction": "SHA-256 of exact SHADER export after importing effect.mjs; effect imports MATERIAL_WGSL from material.mjs"
+  },
+  "runtimeAdapter": {
+    "owner": "GPT-6-Luna",
+    "baseline": "R13 repair-attempt-02 cause-preserving review adapter",
+    "sourceCreativeChanges": false,
+    "sourceModuleImports": [
+      "effect.mjs",
+      "material.mjs",
+      "audio.mjs"
+    ],
+    "materialIsIndependentRequiredModule": true
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "dva-cannon-r14-faithful-runtime-source-pins/v1",
+  "status": "private faithful runtime draft; copied R14 creative inputs remain UNSEALED",
+  "source": {
+    "producerPath": "outputs/request-20261004/finish-cannon-r14-creative-sol61-r1",
+    "designOwner": "GPT-6.1-Sol",
+    "version": "alchemy-cannon-new-e-sol61-r14",
+    "sourceStatus": "UNSEALED executable draft; producer files read-only; no native or quality decision implied",
+    "effect": {
+      "path": "source-r14/effect.mjs",
+      "bytes": 5515,
+      "sha256": "d630272a7fed41cc36a93904c3b864cdada483c1c16838ebf221fa454afae278"
+    },
+    "material": {
+      "path": "source-r14/material.mjs",
+      "bytes": 4137,
+      "sha256": "b0e4157310ccb6c87bc88d4e896d6db8b1af949a9e7925c0c21fee6b47a62515"
+    },
+    "shaderExport": {
+      "bytes": 2644,
+      "sha256": "567b6fe65a253b073bae0092fb1a3466e8e0b7e1e367a82405bec3920d400c3f",
+      "construction": "import effect.mjs, which imports MATERIAL_WGSL from material.mjs; hash exact exported concatenated SHADER bytes"
+    },
+    "audio": {
+      "path": "source-r14/audio.mjs",
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    "designContractSha256": "1cf000845baa92b77a3d52cac57c3ec4b5de6edbac515abb6112d5ff270d43f9",
+    "handoffSha256": "7d506c0daa0e03484b8e8cf96642107435afe53eaaf8540a40448af1216d4098",
+    "authorChecksSha256": "5eedca095fa2dd7b23ccaa2919613357b39e51d7914f233a951baa5e6dd48c23"
+  },
+  "adapter": {
+    "implementationOwner": "GPT-6-Luna",
+    "base": "R13 repair-attempt-02 preview; cause-preserving single-pulse restart handler",
+    "creativeChanges": false,
+    "mainChanges": "R13 version/source identities adapted to R14; material hash added to source pin verification and material.mjs dependency explicitly pinned; R14 sampler imports R14 material module; no timing, ABI, geometry, color or audio rewrite"
+  },
+  "abi": {
+    "vertexStrideBytes": 32,
+    "vertexFloats": 8,
+    "viewUniformBytes": 16,
+    "depthSamples": 16,
+    "worldTuple": "[u, y, encodedAge, power]",
+    "noNewBindingsOrDrawAdapters": true
+  },
+  "bounds": {
+    "activationMs": 900,
+    "beamMs": 420,
+    "reducedShapeAgeMs": 210,
+    "singlePulseRestartCausePreserved": true
+  },
+  "acceptance": {
+    "nativeCompile": "pending root",
+    "actualNativePhases": "pending root",
+    "visualQuality": "not accepted / not reviewed for R14",
+    "ordinarySfxListening": "not run",
+    "devicePerformance": "not run",
+    "gameIntegration": "not connected",
+    "adoption": "unknown"
+  }
+}

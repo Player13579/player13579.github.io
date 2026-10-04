@@ -1,0 +1,76 @@
+{
+  "schema": "dva-cannon-r14-native-capture-index/v1",
+  "status": "limited initial material captures; not full lifetime or visual acceptance",
+  "captureCount": 3,
+  "captures": [
+    {
+      "name": "off220",
+      "ageMs": 220,
+      "observation": false,
+      "causeId": "cannon-r14-native-material",
+      "eventId": "alchemy-cannon-review:cannon-r14-native-material",
+      "frameId": "alchemy-cannon-fixture-frame-1-2",
+      "submittedSequence": 1,
+      "completed": true,
+      "queueError": null,
+      "image": {
+        "path": "native/initial-material/off220.jpg",
+        "bytes": 17869,
+        "sha256": "e6a3f1356acce07a0fcd5ae0dff6f64ae56d7e2a7234b1e8671da338012c8eb6"
+      },
+      "proof": {
+        "path": "native/initial-material/off220.json",
+        "bytes": 10101,
+        "sha256": "428f859d38d0a318346d5f1077ac77297008478772442aac471650291a2033e8"
+      }
+    },
+    {
+      "name": "on220",
+      "ageMs": 220,
+      "observation": true,
+      "causeId": "cannon-r14-native-material",
+      "eventId": "alchemy-cannon-review:cannon-r14-native-material",
+      "frameId": "alchemy-cannon-fixture-frame-1-4",
+      "submittedSequence": 4,
+      "completed": true,
+      "queueError": null,
+      "image": {
+        "path": "native/initial-material/on220.jpg",
+        "bytes": 17920,
+        "sha256": "d54d07728e577c1e8b7fe6f163a43474d3ef4247214ab07f59ce171a68276612"
+      },
+      "proof": {
+        "path": "native/initial-material/on220.json",
+        "bytes": 10095,
+        "sha256": "91e8902aa0a1b07e20a66ee03ad2851d71801f0977952714d66786cb612a2c99"
+      }
+    },
+    {
+      "name": "off420",
+      "ageMs": 420,
+      "observation": false,
+      "causeId": "cannon-r14-native-material",
+      "eventId": "alchemy-cannon-review:cannon-r14-native-material",
+      "frameId": "alchemy-cannon-fixture-frame-1-3",
+      "submittedSequence": 2,
+      "completed": true,
+      "queueError": null,
+      "image": {
+        "path": "native/initial-material/off420.jpg",
+        "bytes": 13399,
+        "sha256": "9dd8d976aaf395813009d066eeeb6bbb4fdcdf3991251f513666ec9855746363"
+      },
+      "proof": {
+        "path": "native/initial-material/off420.json",
+        "bytes": 9033,
+        "sha256": "eeb97ecf0bd5fc674ac0b325a59513e075c34b7cd559a753d10ae6f46aff5ce9"
+      }
+    }
+  ],
+  "limitations": [
+    "separate held fixtures for off220/on220/off420; not continuous motion",
+    "verify audio was hard-muted; normal SFX not reviewed",
+    "same capture bracket and completed queue are not atomic GPU image readback",
+    "reviewer decision is limited material fail; OBS support in sampled slice is improved but broader response unreviewed"
+  ]
+}

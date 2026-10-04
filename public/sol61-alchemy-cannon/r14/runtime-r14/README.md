@@ -1,0 +1,11 @@
+# Cannon R14 faithful runtime
+
+Private faithful runtime draft for the unsealed R14 source. `source-r14/` contains byte-identical copies of effect, material, audio, design contract, handoff, CPU checks, artifact pins and check script. Producer source remained read-only; the copied CPU check script was run only under `test-support/`.
+
+The runtime uses R13 repair-attempt-02's cause-preserving native-review control adapter. It changes version and source identity to R14, imports R14 effect and audio, and adds explicit `material.mjs` source-pin verification. The R14 effect imports `MATERIAL_WGSL` from that module; shader verification hashes the exact imported concatenated `effect.mjs` `SHADER` export. It does not regex-extract a shader literal. Exact source and route pins are in `SOURCE-PINS.json` and `ROUTE-PINS.json`.
+
+The private host scripts, when root requests a review, serve only five exact route files: `gallery.html`, `main.mjs`, `effect.mjs`, `material.mjs`, and `audio.mjs`. `material.mjs` is an explicit dynamic module dependency and receives JavaScript MIME and its own byte/hash pin. The host binds `127.0.0.1`, uses a 30-minute one-time lease, hard-mutes all audio with `verify=1`, begins in idle `single-pulse-ready` mode, and does not create an event before root subscribes and invokes `playSinglePulse`.
+
+`tests/runtime-r14.test.mjs` verifies all five route hashes and import closure, module and concatenated shader pins, 208 inherited sampler comparisons against R13, R14 material support/reduced-motion witnesses, and the cause-preserving active/expired/held handler through an actual sampled event and proof validation with a synthetic queue-completion fixture. The copied authored checks report 104 mechanical sampler checks and finite material witnesses. These CPU checks and fixture proofs do not replace native WGSL compilation, visual review, or actual motion acceptance.
+
+Native host/browser review has not been started. Visual material quality, ordinary SFX listening, device/performance, game integration, and adoption remain unverified. The R13 source and its failed material evidence remain preserved; no R13 beam-material design/code is used by the R14 material module (R13 sampler parity and faithful runtime adapter are used only for the explicit inherited mechanical contract).

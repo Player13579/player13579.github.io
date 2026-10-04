@@ -1,0 +1,15 @@
+{
+  "schema": "dva-cannon-r14-private-runtime-ready/v1",
+  "runtimeStatus": "private faithful R14 runtime ready for root request; no host started",
+  "sourceStatus": "unsealed Sol executable draft; copied inputs byte-identical and source read-only",
+  "sourcePins": {
+    "effectSha256": "d630272a7fed41cc36a93904c3b864cdada483c1c16838ebf221fa454afae278",
+    "materialSha256": "b0e4157310ccb6c87bc88d4e896d6db8b1af949a9e7925c0c21fee6b47a62515",
+    "shaderExportSha256": "567b6fe65a253b073bae0092fb1a3466e8e0b7e1e367a82405bec3920d400c3f",
+    "audioSha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+  },
+  "tests": {"status":"pass","focusedTests":5,"samplerParityCases":208,"authorCpuSamplerChecks":104,"evidence":"TEST-RESULT.txt and CPU-CHECKS-RESULT.txt"},
+  "routeClosure": {"status":"pass","routeCount":5,"routes":["gallery.html","main.mjs","effect.mjs","material.mjs","audio.mjs"],"evidence":"ROUTE-CLOSURE-CHECK.json"},
+  "runtimeContract": {"vertexStrideBytes":32,"eventTupleFloats":8,"viewUniformBytes":16,"depthSamples":16,"activationMs":900,"beamMs":420,"reducedShapeAgeMs":210,"causePreservingControlRepair":"R13 repair-attempt-02 adapter; active/expired/same-cause tests pass"},
+  "acceptance": {"nativeCompile":"pending root","actualNativePhases":"pending root","visualQuality":"not accepted / not reviewed for R14","ordinarySfxListening":"not run","devicePerformance":"not run","gameIntegration":"not connected","adoption":"unknown"}
+}

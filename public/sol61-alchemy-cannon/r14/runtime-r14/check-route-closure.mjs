@@ -1,0 +1,6 @@
+import assert from 'node:assert/strict';import crypto from 'node:crypto';import fs from 'node:fs';import path from 'node:path';
+const root='outputs/request-20261004/finish-cannon-r14-runtime-luna-r1',preview=path.join(root,'preview','cannon-r14'),pins=JSON.parse(fs.readFileSync(path.join(root,'ROUTE-PINS.json'),'utf8')),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+assert.deepEqual(pins.routes.map(x=>x.route),['gallery.html','main.mjs','effect.mjs','material.mjs','audio.mjs']);for(const r of pins.routes){const b=fs.readFileSync(path.join(preview,r.route));assert.equal(b.length,r.bytes);assert.equal(sha(b),r.sha256);}
+const html=fs.readFileSync(path.join(preview,'gallery.html'),'utf8'),main=fs.readFileSync(path.join(preview,'main.mjs'),'utf8'),effect=fs.readFileSync(path.join(preview,'effect.mjs'),'utf8');
+assert.match(html,/<script type="module" src="\.\/main\.mjs"><\/script>/);assert.match(main,/from '\.\/effect\.mjs'/);assert.match(main,/from '\.\/audio\.mjs'/);assert.match(effect,/from '\.\/material\.mjs'/);
+const r={schema:'dva-cannon-r14-five-route-closure-check/v1',status:'pass',routes:pins.routes,entryClosure:['gallery.html','main.mjs','effect.mjs','material.mjs','audio.mjs'],host:'not started; waiting for root request'};fs.writeFileSync(path.join(root,'ROUTE-CLOSURE-CHECK.json'),JSON.stringify(r,null,2)+'\n');
