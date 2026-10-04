@@ -1,0 +1,147 @@
+{
+  "schema": "dva-cannon-r16-native-capture-index/v1",
+  "status": "limited actual native proof; quality FAIL for selected material relationship",
+  "captureCount": 3,
+  "captures": [
+    {
+      "name": "off220",
+      "requestedAgeMs": 220,
+      "sampledAgeMs": 220,
+      "observation": false,
+      "sourceEnabled": true,
+      "reducedMotion": false,
+      "causeId": "cannon-r16-root-review",
+      "eventId": "alchemy-cannon-review:cannon-r16-root-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-1",
+      "completed": true,
+      "queueError": null,
+      "actualGpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment"
+      },
+      "jpg": {
+        "path": "native/initial-material/off220.jpg",
+        "bytes": 17243,
+        "sha256": "90e395013d9eb9840f96300a03f153b8b8b3996cb5828e64242a16226587638f"
+      },
+      "proof": {
+        "path": "native/initial-material/off220.json",
+        "bytes": 12780,
+        "sha256": "f5593af3dc733c8c1dc4f0c8ee7e9d564f9c6d9fd92b43e7b9ca005beae8d374"
+      }
+    },
+    {
+      "name": "on220",
+      "requestedAgeMs": 220,
+      "sampledAgeMs": 220,
+      "observation": true,
+      "sourceEnabled": true,
+      "reducedMotion": false,
+      "causeId": "cannon-r16-root-review",
+      "eventId": "alchemy-cannon-review:cannon-r16-root-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-1",
+      "completed": true,
+      "queueError": null,
+      "actualGpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment"
+      },
+      "jpg": {
+        "path": "native/initial-material/on220.jpg",
+        "bytes": 17502,
+        "sha256": "430cc294f72bf0fddbd579eaac9bf0de2d85fc0b493dd35bd221fd8d4e71651e"
+      },
+      "proof": {
+        "path": "native/initial-material/on220.json",
+        "bytes": 12774,
+        "sha256": "a0eaa643945f71c2445fa023b4d0156a727fd9d7cfb9e7015a9506fe1443bef8"
+      }
+    },
+    {
+      "name": "off420",
+      "requestedAgeMs": 420,
+      "sampledAgeMs": null,
+      "observation": false,
+      "sourceEnabled": true,
+      "reducedMotion": false,
+      "causeId": "cannon-r16-root-review",
+      "eventId": "alchemy-cannon-review:cannon-r16-root-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-2",
+      "completed": true,
+      "queueError": null,
+      "actualGpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment"
+      },
+      "jpg": {
+        "path": "native/initial-material/off420.jpg",
+        "bytes": 13399,
+        "sha256": "9dd8d976aaf395813009d066eeeb6bbb4fdcdf3991251f513666ec9855746363"
+      },
+      "proof": {
+        "path": "native/initial-material/off420.json",
+        "bytes": 11736,
+        "sha256": "335a672a78d8678a593193bc3dd9c48b53a7ab3be475da54e0051e7e5594b69e"
+      }
+    }
+  ],
+  "qualityDecisionSha256": "3e6b939a27ded8fe9f26d8cb9f16ff3d69ad95aa2cc225838c1ad75cf15cb6a1",
+  "reviewEvidenceSha256": "0b20cf3f9da760e6969f0c7ad188e5e991f46c483f1b7186e6383b1d4e0cb7ea",
+  "limitations": [
+    "Matched held OFF220/ON220 initial material only plus held OFF420 expiry; not full motion/lifetime.",
+    "GPU queue/bracket completion is not atomic framebuffer readback.",
+    "Verify hard muted all audio; normal SFX/hearing not run.",
+    "Formal Sol material FAIL; OBS support is limited to the matched sampled slice."
+  ]
+}

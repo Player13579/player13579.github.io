@@ -1,0 +1,182 @@
+{
+  "schema": "dva-cannon-r16-initial-native-validation/v1",
+  "status": "pass-limited-initial-native-gate",
+  "scope": "Completed held OFF220/ON220 matched same cause/frame plus OFF420 expiry only; not full quality or lifetime.",
+  "sourcePins": {
+    "version": "alchemy-cannon-new-e-sol61-r16",
+    "effect": "668f75747a8ae6f4dbda974cafd647276d785bb354538c1208353391f96523ac",
+    "material": "9463347a1b1f677688f5a49e04add407acd484d1777aabb7671325304f9c46f9",
+    "shader": "643bc20287ee82fbee45b8c14771b9e60257abf5d9ead67a2ea4f6d8c31330d3",
+    "audio": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+  },
+  "captures": [
+    {
+      "name": "off220",
+      "requestedAgeMs": 220,
+      "sampledAgeMs": 220,
+      "causeId": "cannon-r16-root-review",
+      "eventId": "alchemy-cannon-review:cannon-r16-root-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-1",
+      "sourceEnabled": true,
+      "reducedMotion": false,
+      "observation": false,
+      "completed": true,
+      "queueError": null,
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment"
+      },
+      "jpg": {
+        "bytes": 17243,
+        "sha256": "90e395013d9eb9840f96300a03f153b8b8b3996cb5828e64242a16226587638f"
+      },
+      "json": {
+        "bytes": 12780,
+        "sha256": "f5593af3dc733c8c1dc4f0c8ee7e9d564f9c6d9fd92b43e7b9ca005beae8d374"
+      }
+    },
+    {
+      "name": "on220",
+      "requestedAgeMs": 220,
+      "sampledAgeMs": 220,
+      "causeId": "cannon-r16-root-review",
+      "eventId": "alchemy-cannon-review:cannon-r16-root-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-1",
+      "sourceEnabled": true,
+      "reducedMotion": false,
+      "observation": true,
+      "completed": true,
+      "queueError": null,
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment"
+      },
+      "jpg": {
+        "bytes": 17502,
+        "sha256": "430cc294f72bf0fddbd579eaac9bf0de2d85fc0b493dd35bd221fd8d4e71651e"
+      },
+      "json": {
+        "bytes": 12774,
+        "sha256": "a0eaa643945f71c2445fa023b4d0156a727fd9d7cfb9e7015a9506fe1443bef8"
+      }
+    },
+    {
+      "name": "off420",
+      "requestedAgeMs": 420,
+      "sampledAgeMs": null,
+      "causeId": "cannon-r16-root-review",
+      "eventId": "alchemy-cannon-review:cannon-r16-root-review",
+      "frameId": "alchemy-cannon-fixture-frame-1-2",
+      "sourceEnabled": true,
+      "reducedMotion": false,
+      "observation": false,
+      "completed": true,
+      "queueError": null,
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment"
+      },
+      "jpg": {
+        "bytes": 13399,
+        "sha256": "9dd8d976aaf395813009d066eeeb6bbb4fdcdf3991251f513666ec9855746363"
+      },
+      "json": {
+        "bytes": 11736,
+        "sha256": "335a672a78d8678a593193bc3dd9c48b53a7ab3be475da54e0051e7e5594b69e"
+      }
+    }
+  ],
+  "matchedOffOn": {
+    "sameCause": true,
+    "sameEvent": true,
+    "sameFixtureFrame": true,
+    "requestedAndSampled220": true,
+    "onlyObservationDiffers": true
+  },
+  "expired420": {
+    "requested420": true,
+    "sampledAgeNull": true,
+    "vertices0": true,
+    "activeEvents0": true,
+    "expiredEvents1": true
+  },
+  "gpuConfiguration": {
+    "alphaMode": "premultiplied",
+    "blend": {
+      "color": {
+        "srcFactor": "one",
+        "dstFactor": "one-minus-src-alpha",
+        "operation": "add"
+      },
+      "alpha": {
+        "srcFactor": "one",
+        "dstFactor": "one-minus-src-alpha",
+        "operation": "add"
+      }
+    },
+    "vertexStrideBytes": 32,
+    "viewUniformBytes": 16,
+    "depthSamples": 24,
+    "depthAttachment": false
+  },
+  "actualPreferredCanvasFormat": "bgra8unorm",
+  "console": [],
+  "consoleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "limitations": [
+    "Actual WebGPU compilation/submit and exact initial capture proved; no visual quality decision inferred.",
+    "No ordinary motion or full lifetime review.",
+    "Verify hard-mutes audio; ordinary SFX not listened.",
+    "No device/performance/game/adoption acceptance."
+  ]
+}

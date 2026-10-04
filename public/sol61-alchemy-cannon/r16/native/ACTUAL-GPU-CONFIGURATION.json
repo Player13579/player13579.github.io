@@ -1,0 +1,98 @@
+{
+  "schema": "dva-cannon-r16-actual-gpu-configuration/v1",
+  "actualPreferredCanvasFormat": "bgra8unorm",
+  "contextAlphaMode": "premultiplied",
+  "pipelineBlend": {
+    "color": {
+      "srcFactor": "one",
+      "dstFactor": "one-minus-src-alpha",
+      "operation": "add"
+    },
+    "alpha": {
+      "srcFactor": "one",
+      "dstFactor": "one-minus-src-alpha",
+      "operation": "add"
+    }
+  },
+  "vertexStrideBytes": 32,
+  "viewUniformBytes": 16,
+  "materialOpticalDepthSamples": 24,
+  "gpuDepthAttachment": false,
+  "sourceProofs": [
+    {
+      "capture": "off220",
+      "proofSha256": "f5593af3dc733c8c1dc4f0c8ee7e9d564f9c6d9fd92b43e7b9ca005beae8d374",
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment"
+      }
+    },
+    {
+      "capture": "on220",
+      "proofSha256": "a0eaa643945f71c2445fa023b4d0156a727fd9d7cfb9e7015a9506fe1443bef8",
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment"
+      }
+    },
+    {
+      "capture": "off420",
+      "proofSha256": "335a672a78d8678a593193bc3dd9c48b53a7ab3be475da54e0051e7e5594b69e",
+      "gpuConfiguration": {
+        "format": "bgra8unorm",
+        "alphaMode": "premultiplied",
+        "blend": {
+          "color": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          },
+          "alpha": {
+            "srcFactor": "one",
+            "dstFactor": "one-minus-src-alpha",
+            "operation": "add"
+          }
+        },
+        "vertexStrideBytes": 32,
+        "viewUniformBytes": 16,
+        "depthSamples": 24,
+        "depthAttachment": false,
+        "depthSamplesMeaning": "24 material optical path cells; no GPU depth attachment"
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "dva-cannon-r16-runtime-status/v1",
+  "status": "faithful-runtime-and-limited-initial-native-gate-complete; host stopped",
+  "version": "alchemy-cannon-new-e-sol61-r16",
+  "versionId": "alchemy-cannon-sol61-r16",
+  "routeCount": 5,
+  "focusedTests": {
+    "status": "pass",
+    "tests": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "authorChecks": {
+    "status": "pass",
+    "samplerChecks": 104,
+    "boundChecks": 240
+  },
+  "gpuReceiptContract": {
+    "formatReceiptImplementation": "ready; reads actual getPreferredCanvasFormat() and returns configuration used",
+    "actualNativeFormatReceipt": "bgra8unorm; captured in completed native proof",
+    "alphaMode": "premultiplied",
+    "blend": "one / one-minus-src-alpha",
+    "materialDepthSamples": 24,
+    "gpuDepthAttachment": false
+  },
+  "nativeCapture": {
+    "status": "pass-limited-initial-native-gate",
+    "report": "NATIVE-INITIAL-VALIDATION.json",
+    "scope": "OFF220/ON220 same cause/frame and OFF420 expiry only",
+    "actualPreferredCanvasFormat": "bgra8unorm",
+    "alphaMode": "premultiplied",
+    "blend": "one / one-minus-src-alpha",
+    "materialDepthSamples": 24,
+    "gpuDepthAttachment": false,
+    "visualQuality": "pending formal Sol review; no pass claimed"
+  },
+  "qualityAcceptance": "not claimed",
+  "host": {
+    "status": "stopped",
+    "portClosed": true,
+    "localPidAndPortNotCarriedIntoReplayStatus": true
+  }
+}

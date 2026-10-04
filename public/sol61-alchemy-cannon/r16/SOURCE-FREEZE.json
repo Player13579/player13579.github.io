@@ -1,0 +1,83 @@
+{
+  "schema": "dva-cannon-r16-gallery-source-binding/v1",
+  "status": "UNSEALED producer source copied byte-exactly; no creative or quality acceptance implied",
+  "owner": "GPT-6.1-Sol",
+  "version": "alchemy-cannon-new-e-sol61-r16",
+  "producerPath": "outputs/request-20261004/finish-cannon-r16-creative-sol61-r1",
+  "files": {
+    "effect.mjs": {
+      "bytes": 5532,
+      "sha256": "668f75747a8ae6f4dbda974cafd647276d785bb354538c1208353391f96523ac"
+    },
+    "material.mjs": {
+      "bytes": 4378,
+      "sha256": "9463347a1b1f677688f5a49e04add407acd484d1777aabb7671325304f9c46f9"
+    },
+    "audio.mjs": {
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    "DESIGN-CONTRACT.md": {
+      "bytes": 10226,
+      "sha256": "48ed0641f97f2a4450960c60166a7514e412c4d1b8e449114a601a78eec84cc3"
+    },
+    "HANDOFF.md": {
+      "bytes": 2323,
+      "sha256": "86ae991b55806be5f8714ea0bbae45249463783550a5fe8e8c0f3006c095e21e"
+    },
+    "CHECKS.json": {
+      "bytes": 7479,
+      "sha256": "91f6c647f5800d85a1d2012b5a23930c8b7ddbb22696b3ff1a1e53fd2a9ea980"
+    },
+    "ARTIFACT-PINS.json": {
+      "bytes": 1587,
+      "sha256": "fd3e9ef56820dcf1704d09fa81b125944daee42fd1cefb59a02c98ac59685428"
+    },
+    "checks.mjs": {
+      "bytes": 3043,
+      "sha256": "818595a015b92c768043677ced5c0ea04a05204f583ad201582a7e9bbe2c7c54"
+    },
+    "build-draft.cjs": {
+      "bytes": 674,
+      "sha256": "d60d54ac01b79f1558aab6fd986a931355b233485b04d2e4c9bed9bc77e3d16d"
+    },
+    "diagnose-r15.mjs": {
+      "bytes": 2577,
+      "sha256": "b6df77f41591bda72847e2032ad22210c61610e27609101bceeaa339221c58cc"
+    },
+    "MECHANISM-DIAGNOSIS.md": {
+      "bytes": 4857,
+      "sha256": "3794efe15fe72fc69d29727326ada1a65fc494d4945d9291bc5975212520465a"
+    },
+    "R15-DIAGNOSIS.json": {
+      "bytes": 12517,
+      "sha256": "f530723aec8ae58a1dd1057e8bb4e29f5d366635457661f1bd33421ff62f7e88"
+    }
+  },
+  "shaderExport": {
+    "bytes": 2911,
+    "sha256": "643bc20287ee82fbee45b8c14771b9e60257abf5d9ead67a2ea4f6d8c31330d3",
+    "construction": "actual ESM import of effect.mjs with its material.mjs dependency; exact concatenated SHADER"
+  },
+  "sourceProvenance": {
+    "designContract": "DESIGN-CONTRACT.md",
+    "mechanismDiagnosis": "MECHANISM-DIAGNOSIS.md",
+    "priorR15Diagnosis": "R15-DIAGNOSIS.json and diagnose-r15.mjs",
+    "authoredChecks": "CHECKS.json and checks.mjs"
+  },
+  "adapter": {
+    "owner": "GPT-6-Luna",
+    "baseline": "R15 faithful adapter retaining R13 cause-preserving controls; source creative files unchanged",
+    "abi": {
+      "vertexStrideBytes": 32,
+      "viewUniformBytes": 16,
+      "materialOpticalDepthSamples": 24,
+      "gpuDepthAttachment": false
+    },
+    "actualGPU": {
+      "format": "bgra8unorm",
+      "alphaMode": "premultiplied",
+      "blend": "one / one-minus-src-alpha"
+    }
+  }
+}

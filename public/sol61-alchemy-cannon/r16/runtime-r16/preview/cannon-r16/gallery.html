@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Alchemy Cannon E r16 · gallery preview</title>
+  <style>
+    :root { color-scheme: dark; background: #10191d; font: 14px/1.4 system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-width: 0; min-height: 0; width: 100%; height: 100%; overflow: hidden; }
+    body { display: grid; place-items: center; }
+    main { width: 100%; max-width: 960px; }
+    canvas { display: block; width: 100%; height: auto; aspect-ratio: 16/9; background: #111a1f; }
+    #controls { display: flex; gap: 8px; align-items: center; padding: 8px; color: #e8f1f2; }
+    button { background: #1c2c31; color: inherit; border: 1px solid #557074; border-radius: 5px; padding: 5px 9px; }
+    #status { color: #aac0c3; }
+    :root[data-embed="1"] #controls { display: none; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.dataset.embed='1';</script>
+</head>
+<body>
+  <main>
+    <canvas id="effect" width="960" height="540" aria-label="Alchemy Cannon E r16 effect preview"></canvas>
+    <div id="controls">
+      <button id="activation" type="button">Replay activation</button>
+      <button id="pulses" type="button">Replay pulse stream</button>
+      <button id="sequence" type="button">Replay full sequence</button>
+      <button id="normal-overlap" type="button">Normal 2 overlap</button>
+      <button id="gbo-10" type="button">GBO 10 live</button>
+      <label><input id="observation" type="checkbox" checked> OBS</label>
+      <label><input id="source" type="checkbox" checked> Effect</label>
+      <output id="status" aria-live="polite"></output>
+    </div>
+    <output id="startup-status" class="sr-only" aria-live="polite"></output>
+  </main>
+  <script type="module" src="./main.mjs"></script>
+</body>
+</html>
+

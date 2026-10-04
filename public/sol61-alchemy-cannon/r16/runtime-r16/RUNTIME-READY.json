@@ -1,0 +1,77 @@
+{
+  "schema": "dva-cannon-r16-runtime-ready/v1",
+  "status": "faithful-runtime-and-limited-initial-native-gate-complete; host stopped",
+  "runtimeRoot": "outputs/request-20261004/finish-cannon-r16-runtime-luna-r1",
+  "version": "alchemy-cannon-new-e-sol61-r16",
+  "versionId": "alchemy-cannon-sol61-r16",
+  "sourcePins": {
+    "producerPath": "outputs/request-20261004/finish-cannon-r16-creative-sol61-r1",
+    "designOwner": "GPT-6.1-Sol",
+    "version": "alchemy-cannon-new-e-sol61-r16",
+    "sourceStatus": "unsealed executable draft; no native or quality decision implied",
+    "effect": {
+      "path": "source-r16/effect.mjs",
+      "bytes": 5532,
+      "sha256": "668f75747a8ae6f4dbda974cafd647276d785bb354538c1208353391f96523ac"
+    },
+    "material": {
+      "path": "source-r16/material.mjs",
+      "bytes": 4378,
+      "sha256": "9463347a1b1f677688f5a49e04add407acd484d1777aabb7671325304f9c46f9"
+    },
+    "shaderExport": {
+      "bytes": 2911,
+      "sha256": "643bc20287ee82fbee45b8c14771b9e60257abf5d9ead67a2ea4f6d8c31330d3",
+      "construction": "actual ESM import of effect.mjs which imports material.mjs; exact concatenated SHADER export"
+    },
+    "audio": {
+      "path": "source-r16/audio.mjs",
+      "bytes": 3823,
+      "sha256": "683e0e333e7608f81b5255e3b9bd50dd5f88e143fbb6e78627d770546e4f170a"
+    },
+    "handoffSha256": "86ae991b55806be5f8714ea0bbae45249463783550a5fe8e8c0f3006c095e21e",
+    "checksSha256": "91f6c647f5800d85a1d2012b5a23930c8b7ddbb22696b3ff1a1e53fd2a9ea980"
+  },
+  "routeCount": 5,
+  "routePins": "ROUTE-PINS.json",
+  "testResults": "TEST-RESULTS.json",
+  "focusedTests": {
+    "status": "pass",
+    "tests": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "authorChecks": {
+    "status": "pass",
+    "samplerChecks": 104,
+    "boundChecks": 240
+  },
+  "gpuReceiptContract": {
+    "formatReceiptImplementation": "ready; reads actual getPreferredCanvasFormat() and returns configuration used",
+    "actualNativeFormatReceipt": "bgra8unorm; captured in completed native proof",
+    "alphaMode": "premultiplied",
+    "blend": "one / one-minus-src-alpha",
+    "materialDepthSamples": 24,
+    "gpuDepthAttachment": false
+  },
+  "qualityAcceptance": "not claimed",
+  "nativeCompile": "pending root",
+  "host": {
+    "status": "stopped",
+    "pid": 4820,
+    "port": 61368,
+    "portClosed": true,
+    "stopReceipt": "HOST-STOP-RESULT.json"
+  },
+  "nativeCapture": {
+    "status": "pass-limited-initial-native-gate",
+    "report": "NATIVE-INITIAL-VALIDATION.json",
+    "scope": "OFF220/ON220 same cause/frame and OFF420 expiry only",
+    "actualPreferredCanvasFormat": "bgra8unorm",
+    "alphaMode": "premultiplied",
+    "blend": "one / one-minus-src-alpha",
+    "materialDepthSamples": 24,
+    "gpuDepthAttachment": false,
+    "visualQuality": "pending formal Sol review; no pass claimed"
+  }
+}
