@@ -1,0 +1,139 @@
+{
+  "schema": "ninjutsu-r5-native-evidence-summary/v1",
+  "source": {
+    "version": "ninjutsu-focus-quality-upgrade-sol61-r5",
+    "moduleSha256": "353dd263a31a311e85b2c8b694cfceb89fa6a2e4fd451eee34ad483386799577",
+    "fieldWgslSha256": "36f5194a9d8c04e2275a03656d1a29aa0d834e47cf98bade9592df80a6bf80ca",
+    "postWgslSha256": "28f444c75e42ae11702d3749fcdac7f817acb6f4487380a4d45768003a10c1aa"
+  },
+  "quality": {
+    "qualityReviewStatus": "limited-pass-full-quality-pending",
+    "label": "Codex品質確認未完了",
+    "narrowCriterion": "The continuous converging source-to-focus field is visible in both the held 874.7 ms release-beginning phase and the held 306.7 ms main-action phase, including with observer post-effects OFF.",
+    "newSourceWarranted": false,
+    "fullQualityAccepted": false
+  },
+  "observations": [
+    {
+      "eventId": "ninjutsu-gallery-24",
+      "causeId": "ninjutsu-gallery|24|ninjutsu-gallery-24",
+      "ageMs": 874.7,
+      "phase": "release-beginning held phase",
+      "observerOn": {
+        "completedFrame": 1416,
+        "commandCount": 10
+      },
+      "observerOff": {
+        "completedFrame": 3093,
+        "commandCount": 5
+      },
+      "sameEventHeldPhase": true,
+      "screenshotsExactCompletedFrameBound": false,
+      "decision": "Narrow continuous-connection criterion passes; this phase does not establish moving-front travel or whole-lifetime hierarchy."
+    },
+    {
+      "eventId": "ninjutsu-gallery-27",
+      "causeId": "ninjutsu-gallery|27|ninjutsu-gallery-27",
+      "ageMs": 306.7,
+      "phase": "main-action held phase",
+      "observerOn": {
+        "completedFrame": 3471,
+        "commandCount": 10
+      },
+      "observerOff": {
+        "completedFrame": 2460,
+        "commandCount": 5
+      },
+      "sameEventHeldPhase": true,
+      "screenshotsExactCompletedFrameBound": false,
+      "decision": "Narrow continuous-connection criterion passes; this phase does not establish temporal front travel, lock handoff, or normal-motion quality."
+    },
+    {
+      "eventId": "ninjutsu-gallery-24",
+      "causeId": "ninjutsu-gallery|24|ninjutsu-gallery-24",
+      "ageMs": 1213.1,
+      "phase": "expiry observation",
+      "status": "expired",
+      "drawn": false,
+      "openFrames": 0,
+      "lastCompletedFrame": 5063,
+      "lastCompletedAgeMs": 1194.3,
+      "currentFrame": 5064,
+      "expiryGpuCompletionVerified": false,
+      "decision": "Blank screenshot and expired CPU state only; no current completed GPU retirement/clear receipt."
+    }
+  ],
+  "remaining": {
+    "normal120to1200MotionAndLockHandoff": "unverified",
+    "fullLifetime": "unverified",
+    "normalSfxListening": "not_run",
+    "safariDevice": "unverified",
+    "performance": "not_run",
+    "gameIntegration": "not_connected",
+    "adoption": "unknown",
+    "candidateParentGalleryReplay": "pending-root-native-parent-replay"
+  },
+  "evidence": [
+    {
+      "path": "native/actual-held874-on.json",
+      "bytes": 4284,
+      "sha256": "013edf58695884d85ab7ac63a032fe7b24a83402b5a5b5d348aabfdc9e15c9c4"
+    },
+    {
+      "path": "native/actual-held874-on.png",
+      "bytes": 47959,
+      "sha256": "9936b3a57326493d890a17af28048fae16b79c215faeb2e13c286f98273889ae"
+    },
+    {
+      "path": "native/actual-held874-off.json",
+      "bytes": 2573,
+      "sha256": "c57d19dc5735a2dd48cb968c867fb21eb64168a8c9830c4d3f46f20f888a6c24"
+    },
+    {
+      "path": "native/actual-held874-off.png",
+      "bytes": 47898,
+      "sha256": "606f172a638995a687a2dc7416f7df5de4bb1cd0ac45f259157a7a9bb56c968d"
+    },
+    {
+      "path": "native/actual-expiry.json",
+      "bytes": 2582,
+      "sha256": "d8bdf3ad3c7bcb7ab5c60a1b2bc62a075f2635efb6af0e2146009b18852ffd26"
+    },
+    {
+      "path": "native/actual-expiry.png",
+      "bytes": 45230,
+      "sha256": "3a39511dee15688da51e1e6a59e6afe52d3d0894e7c23ec4bb25bff474c80cdb"
+    },
+    {
+      "path": "native/mainphase-sol-return-off.json",
+      "bytes": 4273,
+      "sha256": "d918df8e7c7724be64767c087d3c8e858d3c1ed27c847dc21f42cd515506b528"
+    },
+    {
+      "path": "native/mainphase-sol-return-off.jpg",
+      "bytes": 48130,
+      "sha256": "40166fc17d03058aa5d46c79d7a4fb208cd7d643df5f0f6f348c05e7fdf591e1"
+    },
+    {
+      "path": "native/mainphase-sol-return-on.json",
+      "bytes": 1608,
+      "sha256": "b53afed6aedd333f89802fba42eca7d4ec5451830982466d44ba11f3a4ee37d1"
+    },
+    {
+      "path": "native/mainphase-sol-return-on.jpg",
+      "bytes": 48275,
+      "sha256": "1d66d23a65489d87698bc46984a33b065fbdf5d15a3a5d6f825d2524a3fffb80"
+    },
+    {
+      "path": "native/QUALITY-DECISION-held874.md",
+      "bytes": 6956,
+      "sha256": "a7eb724701c42d5c44fd235f4d76f3cfa0f156fc78b187a2a45157f62d35603a"
+    },
+    {
+      "path": "native/QUALITY-DECISION-mainphase.md",
+      "bytes": 5083,
+      "sha256": "b0e958716768acce9ad97104c4738f67ae6bd77afa5279fcc87e7b861baef184"
+    }
+  ],
+  "interpretation": "The prior derivative’s ring-based rejection is retained as historical worker interpretation. Current authoritative Sol reviews establish only the narrow continuous-connection criterion; full-quality remains pending. No creative source change is warranted from these still-phase reviews."
+}

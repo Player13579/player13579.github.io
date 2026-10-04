@@ -1,0 +1,67 @@
+{
+  "schema": "dva-e-runtime-package/v1",
+  "versionId": "ninjutsu-focus-quality-upgrade-sol61-r5",
+  "galleryId": "ninjutsu-focus-r5",
+  "route": "public/ninjutsu-focus-gallery/r5/",
+  "previewPage": "index.html?embed=1&ninjutsuVisual=r5&runtimePatch=800be06a58128c16",
+  "technicalReplayStatus": "limited-native-source-bound-held-phase-pass",
+  "standaloneTechnicalReplayStatus": "limited-native-source-bound-held-phase-pass",
+  "galleryAdapterReplayStatus": "pending-root-native-parent-replay",
+  "parentGalleryReplayStatus": "pending-root-native-parent-replay",
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "limited-pass-full-quality-pending",
+  "qualityReviewerDisplayName": "GPT-6.1-Sol",
+  "qualityReviewReason": "The narrow continuous source-to-focus connection criterion passes in two held native phases; normal-motion front transport, lock handoff and full-lifetime quality remain pending.",
+  "qualityEvidence": "native/NATIVE-EVIDENCE.md",
+  "adoption": "unknown",
+  "normalFullLifetime": "not_run",
+  "normalAudioListening": "not_run",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected",
+  "performance": "not_run",
+  "nativeEvidenceScope": "Held 874.7 ms same-event observer ON/OFF plus held 306.7 ms main-action observer ON/OFF. Expiry at 1213.1 ms is blank/CPU expired, but GPU-completed expiry/clear is unverified.",
+  "creativeSource": {
+    "author": "GPT-6.1-Sol",
+    "sourceVersion": "ninjutsu-focus-quality-upgrade-sol61-r5",
+    "effectSha256": "353dd263a31a311e85b2c8b694cfceb89fa6a2e4fd451eee34ad483386799577",
+    "fieldWgslSha256": "36f5194a9d8c04e2275a03656d1a29aa0d834e47cf98bade9592df80a6bf80ca",
+    "postWgslSha256": "28f444c75e42ae11702d3749fcdac7f817acb6f4487380a4d45768003a10c1aa"
+  },
+  "runtimeAdapterAuthor": "GPT-6-Luna",
+  "sharedRuntime": {
+    "sha256": "800be06a58128c161ffd2d773cb39ad64af2ac343dc1c89c4e09135fef41bdde",
+    "route": "r5/ninjutsu-gallery-runtime-r5.js",
+    "scope": "Versioned R5 route; public shared R4 runtime bytes remain unchanged."
+  },
+  "nativeEvidenceFiles": [
+    "native/actual-held874-on.json",
+    "native/actual-held874-on.png",
+    "native/actual-held874-off.json",
+    "native/actual-held874-off.png",
+    "native/actual-expiry.json",
+    "native/actual-expiry.png",
+    "native/mainphase-sol-return-off.json",
+    "native/mainphase-sol-return-off.jpg",
+    "native/mainphase-sol-return-on.json",
+    "native/mainphase-sol-return-on.jpg",
+    "native/QUALITY-DECISION-held874.md",
+    "native/QUALITY-DECISION-mainphase.md"
+  ],
+  "runtimeRoutes": [
+    "/public/ninjutsu-focus-gallery/r5/gallery.mjs",
+    "/public/ninjutsu-focus-gallery/r5/index.html",
+    "/public/ninjutsu-focus-gallery/r5/ninjutsu-visual-loader-r5.js",
+    "/public/ninjutsu-focus-gallery/r5/webgpu-ninjutsu-focus-e-r5.js",
+    "/public/ninjutsu-focus-gallery/r5/ninjutsu-gallery-runtime-r5.js",
+    "/public/ninjutsu-focus-gallery/shared/webgpu-compositing.js",
+    "/public/ninjutsu-focus-gallery/shared/webgpu-effect-shapes.js",
+    "/public/ninjutsu-focus-gallery/shared/webgpu-frame-core.js",
+    "/public/ninjutsu-focus-gallery/shared/webgpu-primitives.js",
+    "/public/ninjutsu-focus-gallery/shared/webgpu-renderer.js"
+  ],
+  "screenshotMediaNote": "Three root native captures retain their original .png basenames but contain JPEG byte streams; source bytes/names are preserved without conversion. Mainphase captures are .jpg JPEG streams.",
+  "validation": {
+    "adapterTests": "3/3 passed on copied runtime adapter tests",
+    "candidateClosure": "11 exact runtime routes; parent-gallery native replay remains pending; no browser was launched for this package assembly."
+  }
+}
