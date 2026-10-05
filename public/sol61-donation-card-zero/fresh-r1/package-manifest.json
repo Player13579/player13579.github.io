@@ -1,0 +1,105 @@
+{
+  "schema": "dva-gallery-package-manifest/v1",
+  "versionId": "donation-zero-sol61-r1",
+  "displayVersion": "R1",
+  "title": "Donation Zero R1 — fresh GPT-6.1-Sol design",
+  "statusAtPackageSeal": "static-runtime-tests-pass-native-pending",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "runtimeAuthor": "GPT-6-Luna",
+  "previewPage": "public/sol61-donation-card-zero/fresh-r1/index.html?embed=1",
+  "source": "public/sol61-donation-card-zero/fresh-r1/source/plan.mjs",
+  "sourcePinManifestSha256": "3b4482a4c3ab54a5f12d8045a340d17de971e2482abfb6a0b8edd02270248c32",
+  "runtimeABI": {
+    "uniformFloatCount": 52,
+    "uniformBytes": 208,
+    "worldMrtCount": 2,
+    "passes": 2,
+    "shaderEntrypoints": [
+      "vs",
+      "fs"
+    ],
+    "postBindings": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "sfxActivation": "user-gesture; verify mode hard-muted"
+  },
+  "runtimeContract": "WebGPU-only owned-resource renderer, generation-checked resize/submit, local synthetic receipt playback, cancellation/disposal, embed auto-loop; no gameplay intake adapter is installed.",
+  "syntheticGalleryOnly": true,
+  "networkPayment": false,
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "pending",
+  "fullQualityAccepted": false,
+  "technicalReplayStatus": "pending-root-native-webgpu",
+  "nativeWGSLCompile": "not_run",
+  "nativePixels": "not_run",
+  "fullLifetimeVisualQuality": "pending",
+  "normalAudioListening": "not_run",
+  "safariIPad": "unverified",
+  "gameIntegration": "disconnected-no-authoritative-intake-mapping",
+  "adoption": "unknown",
+  "publication": "not_published",
+  "sourceValidation": {
+    "status": "pass-cpu-source-only",
+    "checks": 295,
+    "nativeWGSLCompile": "not_run",
+    "nativePixels": "not_run",
+    "normalAudioListening": "not_run",
+    "fullImageSchemaPass": false
+  },
+  "acceptanceBoundary": "Fresh Donation R1 creative bytes remain Sol-owned. Luna contributes the faithful WebGPU runtime wrapper and focused CPU/fake-GPU tests. No native startup/render, visual quality, normal audio, Safari/iPad, game integration, adoption or publication is claimed.",
+  "files": [
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r1/index.html",
+      "bytes": 1551,
+      "sha256": "077cd19e031f10e3a72d55f569cf7ac8e176c6ae946dc8d991bf3d7a83c6cc9a",
+      "mimeType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r1/preview.mjs",
+      "bytes": 5555,
+      "sha256": "1056fa4baf5c9979e98ef13654d01bf7ea66a30539f530b30c335a7884bd4e08",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r1/runtime.mjs",
+      "bytes": 12574,
+      "sha256": "0d8345718861d2d75e84dcbd6d08032168016db18f1b84c9970576a9b8673087",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r1/startup-bootstrap.js",
+      "bytes": 4343,
+      "sha256": "ad619f5c59fedf8ec1a50049153dd48844782b7e53e669a28c73f41ce7fba529",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r1/source/plan.mjs",
+      "bytes": 6087,
+      "sha256": "fcd866a0f2e634c6f4cc7f8f64f827fac228ece2e38680d49b3d23b4e2cc3a13",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r1/source/shader.mjs",
+      "bytes": 7028,
+      "sha256": "eb4025fab838840549304a1ff5938db6505dc4113e113517f34996464443575c",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r1/source/sfx-design.mjs",
+      "bytes": 3847,
+      "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9",
+      "mimeType": "text/javascript; charset=utf-8"
+    }
+  ],
+  "technicalRepair": {
+    "kind": "parent-first-frame-proof",
+    "author": "GPT-6.1-Sol",
+    "sourceManifestSha256": "33eb09aa483c03ec696ff8f321f77ec303714aacc2de60d1ae6b45e1a1eb3ebd",
+    "creativeEditionUnchanged": true,
+    "nativeParentReplay": "pending",
+    "historicalFailureEvidence": "outputs/request-20261005/donation-zero-r1-parent-native-root-r1/REPORT.md"
+  }
+}

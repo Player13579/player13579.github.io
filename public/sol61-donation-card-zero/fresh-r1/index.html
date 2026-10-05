@@ -1,0 +1,8 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Donation Zero R1 — WebGPU preview</title>
+<style>
+html,body{margin:0;min-height:100%;background:#0f1b23;color:#e8f4ff;font:15px system-ui,sans-serif}
+main{max-width:960px;margin:24px auto;padding:0 16px}h1{font-size:20px}p{line-height:1.55}button,input{font:inherit}button{padding:7px 12px;margin:4px;background:#263c4c;color:#fff;border:1px solid #708ca0;border-radius:5px}canvas{display:block;width:min(960px,100%);aspect-ratio:3/2;background:transparent}#status{white-space:pre-wrap}
+body.embed{height:100vh;overflow:hidden;display:grid;place-items:center}body.embed main{width:100%;max-width:none;margin:0;padding:0}body.embed main>*:not(canvas){display:none}body.embed canvas{width:min(100vw,150vh);height:auto;aspect-ratio:3/2;border:0}body.failed #status{display:block;color:#ffb4b4;padding:12px}
+</style>
+<main><h1>Donation Zero R1</h1><p>Gallery preview only. The synthetic receipt does not make a payment or contact a server.</p><canvas id="preview" aria-label="Donation WebGPU preview"></canvas><p><button id="play" disabled>Play synthetic receipt</button><button id="stop" disabled>Stop</button><input id="phase" type="range" min="0" max="2400" value="0" aria-label="Preview age"><label><input id="source" type="checkbox" checked> Source radiation</label></p><p id="status">Preparing WebGPU…</p></main>
+<script src="./startup-bootstrap.js"></script><script type="module" src="./preview.mjs"></script></html>
