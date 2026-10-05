@@ -1,0 +1,201 @@
+{
+  "schema": "dva-gallery-package-manifest/v1",
+  "versionId": "donation-zero-sol61-r4",
+  "displayVersion": "fresh R4",
+  "title": "Donation Zero fresh R4 — GPT-6.1-Sol",
+  "statusAtPackageSeal": "limited exact-current-parent native six-pass visible replay; overall quality pending",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "runtimeAuthor": "GPT-6-Luna",
+  "route": "public/sol61-donation-card-zero/fresh-r4-quarter-optics",
+  "previewPage": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/index.html?embed=1&galleryAutoLoop=1",
+  "source": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/source/plan.mjs",
+  "sourcePinManifestSha256": "57b1c25d5077f700dbedd5ea68c8b90e5832da5a3bde95305102a54585831ff7",
+  "runtimeSourceBindingSha256": "859db37d1495b189c67c27c5b7bb53fa10d10e7444c427171eb9ae6690423940",
+  "runtimeABI": {
+    "uniformFloatCount": 52,
+    "uniformBytes": 208,
+    "worldMrtCount": 2,
+    "passes": 6,
+    "passOrder": [
+      "world",
+      "source-downsample-4x4",
+      "filter-x-quarter",
+      "filter-y-quarter",
+      "optical-response-quarter",
+      "post"
+    ],
+    "hdrIntermediateFormat": "rgba16float",
+    "shaderEntrypoints": [
+      "vs",
+      "fs"
+    ],
+    "filterXBindings": [
+      0,
+      1,
+      2
+    ],
+    "filterYBindings": [
+      0,
+      1,
+      2
+    ],
+    "postBindings": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "postBinding2": "Y reconstruction rgba16float target",
+    "postBinding4": "raw rgba16float radiator",
+    "sfxActivation": "user-gesture; verify mode hard-muted",
+    "downsampleBindings": [
+      1
+    ],
+    "opticalBindings": [
+      0,
+      1,
+      2
+    ]
+  },
+  "runtimeContract": "Exact runtime.mjs from the sealed donation-performance-bind-layout-repair-luna-r1 package; same R4 creative plan, shader and SFX modules. Six-pass sequence is world → 4x4 source downsample → quarter-resolution X reconstruction → quarter-resolution Y reconstruction → quarter-resolution optical response → post. The downsample bind group supplies only active texture binding 1; X/Y/optical groups retain active bindings [0,1,2]. The preview retains gallery startup ownership, matching-cause/age/generation/target checks, queue completion, and viewport dimensions. Parent native proof of six passes and finite visible emission remains pending.",
+  "sourceInheritance": {
+    "creativeAncestor": "fresh R3; R4 Sol pins are exact",
+    "runtimeBase": "donation-zero-sol61-r3",
+    "runtimeBasePackageManifestSha256": "5a4e1e73ab014002e6ddcf95115fd0aa1169982d289dd68f4585ffb127706d65",
+    "runtimeBasePackageSealSha256": "8f7dc721eea4a3747774ae2627f38d8588fa9965c186a9c07d3f6dacf53ccad4",
+    "manualProofPreviewSha256": "450b6140da3c17b86077c7f6462794f1d615dc553e6752120cb1bd9e48cfa6e8",
+    "changedRuntimeAreas": [
+      "R4 separate X/Y shader modules and pipelines",
+      "raw→X→Y→POST pass order",
+      "two extra full-resolution targets and bindings",
+      "atomic resize/current-generation proof/disposal for X/Y",
+      "R4 route/version metadata",
+      "manual-hold preview first-frame proof rearm"
+    ]
+  },
+  "creativeLoop": {
+    "kind": "new-zero-series",
+    "edition": 4,
+    "maximum": 5,
+    "remaining": 1,
+    "editionsCreatedInThisRuntimeAssignment": 0,
+    "automaticResetAllowed": false
+  },
+  "timing": {
+    "durationMs": 2400,
+    "coinReleaseMs": [
+      280,
+      390,
+      500,
+      610,
+      720
+    ],
+    "flightMs": 980,
+    "resultFillCompletesMs": 1810,
+    "resultVisibleUntilLifetimeEnd": true
+  },
+  "receiptContract": {
+    "cause": "successful unique donation-settled receipt",
+    "recipient": "finite registered recipient anchor; synthetic local gallery fixture only",
+    "noProductionIntake": true,
+    "amountDoesNotSetCoinCount": true,
+    "syntheticGalleryOnly": true,
+    "networkPayment": false
+  },
+  "technicalReplayStatus": "pass-limited-native-webgpu",
+  "nativeWGSLCompile": "pass-limited-parent-replay",
+  "nativePixels": "visible in inline parent screenshots; numeric emission readback not exposed",
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "pending",
+  "fullQualityAccepted": false,
+  "normalAudioListening": "not_run",
+  "safariIPad": "unverified",
+  "gameIntegration": "not_connected",
+  "adoption": "unknown",
+  "publication": "not_published",
+  "donR4AcceptancePlan": {
+    "DON_R4_01": "native+parent-gallery lifetime and age-correlation; pending",
+    "DON_R4_02": "same-view R3/R4 external-ray and scale comparison; pending",
+    "DON_R4_03": "minted cap/oblique/near-edge geometry checks; pending",
+    "DON_R4_04": "source/near/ray/post controls and cancellation/occlusion checks; pending",
+    "DON_R4_05": "extent/scale/resize/device-generation/nonalias/four-pass checks; pending",
+    "DON_R4_06": "normal-mode SFX listening separate from verify; pending"
+  },
+  "acceptanceBoundary": "Limited exact-parent replay only: startup cleared; six ordered passes, same cause, completed queue, current generations and 1860x1240 viewport; screenshots show the card/receiver and four moving coins with external rays. The receipt does not count all planned coins or establish numeric emission, full lifetime, quality, normal SFX listening, Safari/iPad, game integration, adoption, or publication.",
+  "files": [
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/index.html",
+      "bytes": 1551,
+      "sha256": "11d4070782e9fbed987572c13b0d01f2e93c5c7e7071984132596539aa82a396",
+      "mimeType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/preview.mjs",
+      "bytes": 5331,
+      "sha256": "8facd5a5d423acc7a1fbe1f3fdf84fdfd8d779f3691e92f6db24a432e1ccac7c",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/runtime.mjs",
+      "bytes": 23556,
+      "sha256": "0bc8f6ec280bcc313a4a2a0d958903f836847e3830f8a5566874ba04e87d6cf6",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/startup-bootstrap.js",
+      "bytes": 4343,
+      "sha256": "7015f0121335480ac30efb26584ae9cb5bb03e9d36d947e75b5f3f8e937bed2f",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/source/plan.mjs",
+      "bytes": 6261,
+      "sha256": "09328db8e985e7053a7cbab58ed927a2f27b7db677a769f7a4cffb4c50e1d963",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/source/shader.mjs",
+      "bytes": 12314,
+      "sha256": "657807664e06864d4bcccb19e0ad3d6b7cd1c14b58523ac5fd2942e2aa4a9c7f",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/source/sfx-design.mjs",
+      "bytes": 3847,
+      "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9",
+      "mimeType": "text/javascript; charset=utf-8"
+    }
+  ],
+  "parentGalleryReplayStatus": "pass-limited-native",
+  "publicationEligible": true,
+  "sourceAuthority": {
+    "repairReadySha256": "576ce8ccd2bb48fc013f7eed79480b83d300248d930072c37bdf30581f00a339",
+    "repairManifestSha256": "5ab87002a6a0e0705596491e0e6d674e673512a3d3b6d1252a344cdf48996c50",
+    "repairSealSha256": "30e641fdcac8ec6c6521c429b750f4beaffefea464effe72fce2f6e0aa1fc748",
+    "repairSourcePinsSha256": "859db37d1495b189c67c27c5b7bb53fa10d10e7444c427171eb9ae6690423940",
+    "changedRuntimeSha256": "0bc8f6ec280bcc313a4a2a0d958903f836847e3830f8a5566874ba04e87d6cf6",
+    "creativeEditionUnchanged": true,
+    "technicalDerivativeAddsCreativeEdition": false,
+    "parentNativeReceiptSha256": "b2a463645875f3eeacaeca0ecc10264baf78241067dfdd222624d8e5517c0b8f",
+    "parentNativeReceiptPath": "outputs/request-20261006/donation-quarter-optics-parent-native-root-r1/OBSERVATION.json",
+    "parentNativePassCount": 6
+  },
+  "publicationEligibilityScope": "limited-native-parent-technical-replay-only",
+  "parentNativeReceiptPath": "outputs/request-20261006/donation-quarter-optics-parent-native-root-r1/OBSERVATION.json",
+  "parentNativeReceiptSha256": "b2a463645875f3eeacaeca0ecc10264baf78241067dfdd222624d8e5517c0b8f",
+  "parentNativeObservation": {
+    "passes": 6,
+    "viewport": [
+      1860,
+      1240
+    ],
+    "sameCause": "donation-zero-gallery-synthetic-1",
+    "completed": true,
+    "generation": 1,
+    "targetGeneration": 1,
+    "ageMs": 16.599999994039536,
+    "visibleOutput": "card, receiver, four moving gold coins and external diagonal radiance in inline screenshots",
+    "numericEmissionReadback": "not_exposed_not_claimed"
+  }
+}
