@@ -1,13 +1,13 @@
 {
   "schema": "excalibur-zero-swing-r2-gallery-package/v1",
-  "status": "private-current-parent-candidate-native-pending",
+  "status": "limited-parent-native-technical-pass-quality-pending",
   "versionId": "excalibur-zero-swing-sol61-r2",
   "edition": "R2/5",
   "route": "public/sol61-excalibur-zero-swing/r2",
   "parent": {
-    "commit": "e9cba13caf6e6d38c54f902d44e127b8c39bf99b",
-    "tree": "60583a5da44eea91f447e1cee3d170474b0b5090",
-    "routeAbsentOnParent": true
+    "commit": "ab975edf38f8f896646358d43231fe3db1e121a0",
+    "tree": "b8daf8ba2e40367a120be8d1db412d5c5efd6192",
+    "routeAbsentOnParent": false
   },
   "registration": {
     "groupId": "alchemy-excalibur-sol61",
@@ -19,8 +19,13 @@
     "olderGroupVersionsPreserved": true,
     "adoption": "unknown",
     "quality": "pending",
-    "parentNative": "pending-root",
-    "publicationEligible": false
+    "parentNative": "pass-limited-parent-overlay",
+    "publicationEligible": true,
+    "publicationScope": "limited-technical-listing-only-quality-pending",
+    "nativeEvidence": "outputs/request-20261006/excalibur-r2-framing-native-root-r1/OBSERVATION.json",
+    "nativeEvidenceSha256": "e263edcef5070192469fd3aadc4f9421a919f107334ec695f998e59af7458c9f",
+    "hostReadySha256": "36267720bd7175639238bf1279077148df53902dcae060b72ccceef7ad7cf746",
+    "hostManifestSha256": "390a189369f9d3280f817ee0a55b4b39bc3f7930452f5f801541d10d5bfb5e77"
   },
   "creative": {
     "author": "GPT-6.1-Sol",
@@ -73,19 +78,21 @@
     "routeFiles": 9,
     "focus": "candidate-bound creative numerical, GPU command-recording mocks, parent proof, SFX verify/default, version identity",
     "WGSLNativeCompile": "not_run",
-    "actualParentReplay": "pending-root",
-    "normalAudioListening": "not_run"
+    "actualParentReplay": "pass-limited-parent-overlay",
+    "normalAudioListening": "not_run",
+    "nativeLimit": "One selected R2 static-fixture replay at 350.5ms; no full-lifetime/quality/audio/Safari/game claim.",
+    "nativeEvidenceSha256": "e263edcef5070192469fd3aadc4f9421a919f107334ec695f998e59af7458c9f"
   },
   "files": [
     {
       "path": "app.mjs",
-      "bytes": 9966,
-      "sha256": "9a4389faa43f6b30fc975fd14feadb1edaa050f7142344d32a4d6595d2a91b1d"
+      "bytes": 10240,
+      "sha256": "486157fa3c445bde0332da65346a34e146e2de162580b3435b5199a882497d40"
     },
     {
       "path": "index.html",
-      "bytes": 2149,
-      "sha256": "a013c10c78fd470812547880705af19540ef389c37eac41e7a9a03ee7bb0efc8"
+      "bytes": 3247,
+      "sha256": "06b67fd412b7b8277633fb1c0cfec9cd4473235353ba029f8466f1cf4f3e3798"
     },
     {
       "path": "source/creative-adapter.mjs",
