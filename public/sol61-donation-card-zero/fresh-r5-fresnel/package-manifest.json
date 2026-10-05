@@ -1,0 +1,254 @@
+{
+  "schema": "donation-r5-c504-gallery-adapter-package-manifest/v1",
+  "version": "donation-zero-sol61-r5",
+  "group": "common-donation-zero-sol61",
+  "creativeEdition": 5,
+  "creativeEditionLimit": 5,
+  "author": "GPT-6.1-Sol",
+  "runtimeAdapter": "GPT-6-Luna",
+  "sourceCommit": "a26d44b5d595de242ab81fb5104f63c904145137",
+  "sourceTree": "aa6fd2a47846ecc2af2a8d75c62e829aecc241b9",
+  "parentCommit": "c50402883399c1a9b2097dad7aa655927383c5fb",
+  "sourceR4Route": "public/sol61-donation-card-zero/fresh-r4-quarter-optics/runtime.mjs",
+  "sourceR4RuntimeSha256": "0bc8f6ec280bcc313a4a2a0d958903f836847e3830f8a5566874ba04e87d6cf6",
+  "sourceCreativeReadySha256": "519c08f878087fa21a84416873fa548d394c83a1f89b267c8bec8e4cb56a8f3b",
+  "sourceCreativeManifestSha256": "61acefb90cb11e5548373d3ec1825780ff3f322845c41934b56f20f9ebd0df1d",
+  "sourceCreativeSealSha256": "9c32c6d2f2b64162ff309e579f4de30a561832bcc6cc5ea4bf33003f84e88109",
+  "routePath": "public/sol61-donation-card-zero/fresh-r5-fresnel",
+  "routeEntry": "public/sol61-donation-card-zero/fresh-r5-fresnel/index.html?verify=<root-owned-cause>",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1974,
+      "sha256": "26d350e40385eb1d385e71f0501314c30c2da16270f2e0880708d529c39afb10",
+      "role": "faithful-gallery-embedded-layout-adapter"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 10692,
+      "sha256": "ef527a7c3636cae5dcb47d1f447741416322fb75fd605d63e165901eac60f819",
+      "role": "faithful-gallery-startup-loop-and-presentation-adapter"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 6630,
+      "sha256": "c0c95124c1c1c91d37018065ec3966004246d5ffc5f5e5dcaaea66f187b6fd00",
+      "role": "frozen-Sol-R5-input"
+    },
+    {
+      "path": "source/shader.mjs",
+      "bytes": 13225,
+      "sha256": "203ce830e33afb728d555d055365934f5a93c31e879d306493f236975cdaa470",
+      "role": "frozen-Sol-R5-input"
+    },
+    {
+      "path": "source/material.mjs",
+      "bytes": 7196,
+      "sha256": "0d8f3d82fa5e1cb5435f78fefa9a592d6b36ef5a2e20679abb6e7b915c1daf1c",
+      "role": "frozen-Sol-R5-input"
+    },
+    {
+      "path": "source/sfx-design.mjs",
+      "bytes": 3847,
+      "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9",
+      "role": "frozen-Sol-R5-input"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 23556,
+      "sha256": "0bc8f6ec280bcc313a4a2a0d958903f836847e3830f8a5566874ba04e87d6cf6",
+      "role": "exact-public-R4-runtime-ABI"
+    }
+  ],
+  "importClosure": [
+    [
+      "index.html",
+      "./app.mjs",
+      "app.mjs"
+    ],
+    [
+      "app.mjs",
+      "./runtime.mjs",
+      "runtime.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/plan.mjs",
+      "source/plan.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/sfx-design.mjs",
+      "source/sfx-design.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/plan.mjs",
+      "source/plan.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/shader.mjs",
+      "source/shader.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/sfx-design.mjs",
+      "source/sfx-design.mjs"
+    ],
+    [
+      "source/plan.mjs",
+      "./material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "source/shader.mjs",
+      "./material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "source/sfx-design.mjs",
+      "./plan.mjs",
+      "source/plan.mjs"
+    ]
+  ],
+  "observerShaderExports": [
+    {
+      "name": "DOWNSAMPLE_WGSL",
+      "sha256": "584c43631139358c88b6956d45fda752687a5a2c2143e5bdd712bc35a3c42503"
+    },
+    {
+      "name": "FILTER_X_WGSL",
+      "sha256": "359f45ee6ec366ba9b4065874624569506f30a015b8512c435d4897db47325c1"
+    },
+    {
+      "name": "FILTER_Y_WGSL",
+      "sha256": "7132e7ec0389495b344b1f3eee2b9a0d8fb0aeaf5079bf4ddf46fce774015770"
+    },
+    {
+      "name": "OPTICAL_WGSL",
+      "sha256": "129813098dd89b32c2241a567a639f0b2d77069e6f0beef62eaa37fcb3c7b8e0"
+    },
+    {
+      "name": "POST_WGSL",
+      "sha256": "2181994a3317d59e31c36c4c143c43877ec798d5715c8b352a391ff870ec6cd0"
+    }
+  ],
+  "runtimeAbi": {
+    "uniformFloats": 52,
+    "bytes": 208,
+    "worldTargets": [
+      "rgba16float",
+      "rgba16float"
+    ],
+    "downsample": "4x4",
+    "passOrder": [
+      "world",
+      "source-downsample-4x4",
+      "filter-x-quarter",
+      "filter-y-quarter",
+      "optical-response-quarter",
+      "post"
+    ],
+    "newGpuResourcesAdded": false
+  },
+  "startupFixture": {
+    "activeScene": true,
+    "sourceOn": true,
+    "ageMs": 1100,
+    "awaitsQueueCompletion": true,
+    "verifiesCurrentCauseAndEpoch": true,
+    "verifiesSubmitCountAndGenerations": true,
+    "nativeAcceptance": "limited-standalone-pass",
+    "parentGalleryReplay": "pending"
+  },
+  "nativeEvidence": {
+    "path": "outputs/request-20261006/donation-r5-native-root-r1/OBSERVATION.json",
+    "sha256": "261261f7165c65922b09887d15a46d80defd733270b2795a45168ff2a0801e96",
+    "scope": "standalone-source-route-only",
+    "viewport": [
+      1920,
+      1280
+    ],
+    "activeAgesMs": [
+      1100,
+      1600
+    ],
+    "passes": 6,
+    "queueCompleted": true,
+    "expiryAgeMs": 2400,
+    "expiryBlank": true,
+    "shaderModuleMessages": 0,
+    "awaitInclusiveSamplesMs": [
+      22.900000005960464,
+      20,
+      17.299999997019768,
+      15.5,
+      16.700000002980232,
+      12.099999994039536
+    ],
+    "limitation": "not parent-gallery replay, final optical/material quality, isolated GPU timing/FPS, normal SFX, Safari/iPad, or game integration"
+  },
+  "status": {
+    "native": "limited-standalone-pass",
+    "parentGalleryReplay": "pending",
+    "quality": "pending",
+    "adoption": "unadopted",
+    "gameIntegration": "not_connected",
+    "normalListening": "not_run",
+    "performance": "not_run",
+    "safari": "unverified",
+    "actualWGSLCompile": "pass-no-messages-direct-native",
+    "publicationEligible": false
+  },
+  "galleryAdapter": {
+    "model": "GPT-6-Luna",
+    "protocol": "dva-gallery-startup/v1",
+    "startupRequires": [
+      "embed",
+      "galleryAutoLoop=1",
+      "galleryStartupToken",
+      "galleryVersionId=donation-zero-sol61-r5",
+      "galleryAttemptEpoch"
+    ],
+    "readyGate": "same-cause six-pass submitted and queue-completed frame, connected canvas, positive viewport, stable renderer and target generations",
+    "initialSameFixtureCompletedAgesMs": [
+      1100,
+      1600
+    ],
+    "loop": {
+      "timelineMs": 2400,
+      "newCausePerCycle": true
+    },
+    "retirement": [
+      "parent-retire",
+      "pagehide"
+    ],
+    "audio": {
+      "verify": "hard-zero",
+      "normal": "first-user-gesture unlocks authored SFX and starts cues against the same receipt clock",
+      "autoplayLocked": "reported honestly"
+    },
+    "creativeBytesChanged": false,
+    "parentGalleryNative": "pending-root-native",
+    "publicationEligible": false,
+    "presentation": {
+      "embeddedHeadingAndControls": "hidden",
+      "canvas": "fills-iframe-viewport",
+      "innerScroll": "disabled",
+      "error": "compact-visible-alert",
+      "displayScale": 2.2,
+      "scaleSupportedRange": [
+        0.5,
+        3
+      ]
+    }
+  },
+  "filesSha256": "8ee62a55a9f5d15ba775bfe46dd36dcebb2841d5d878b9f6add2cfe0cdfc5298",
+  "registeredBaseCommit": "c50402883399c1a9b2097dad7aa655927383c5fb"
+}
