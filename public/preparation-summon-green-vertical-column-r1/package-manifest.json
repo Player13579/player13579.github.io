@@ -1,0 +1,93 @@
+{
+  "schema": "preparation-summon-vertical-column-gallery-package/v1",
+  "versionId": "preparation-summon-green-vertical-column-r1",
+  "parent": {
+    "commit": "6625c83c15f08110399abf11eb24058d21053dea",
+    "tree": "a2cd76e269b7a56ca7b972d319bc9a19fc6a23a3",
+    "versionId": "preparation-summon-green-sol61-r2",
+    "packageManifestSha256": "1565e23c50d3e2d730d0772a706cc0a96ebea332a39d56010ffa08aa7cfb8529",
+    "creativeEdition": {
+      "edition": 2,
+      "cap": 5,
+      "status": "provisional; complete history unproven"
+    }
+  },
+  "authors": {
+    "creativeDesign": "GPT-6.1-Sol (preserved original geometry/equations)",
+    "runtime": "GPT-6-Luna (preserved original WebGPU runtime)",
+    "directedGeometryRepair": "GPT-6-Luna"
+  },
+  "correction": {
+    "authority": "user-correction-2026-10-06",
+    "scope": "hold world-space XZ radius constant at 0.29 m over world-Y height; preserve projection, circle, timing and SFX",
+    "counting": "directed source repair; no creative-loop reset or historical renumbering",
+    "pipelineTrace": "runtime.mjs creates multiWorldModule from source/multi-world.wgsl; worldPipeline vertex and fragment use multiWorldModule; draw() sets state.worldPipeline then issues draw(3). Both world.wgsl and active multi-world.wgsl now use constant radius 0.29.",
+    "supersedesPreparedCandidate": {
+      "output": "outputs/request-20261006/summon-vertical-column-gallery-preflight-luna-r1",
+      "reason": "initial prepared derivative changed world.wgsl only; runtime actually renders via multi-world.wgsl, which retained tapered radius; superseded before publication"
+    }
+  },
+  "lineage": {
+    "originalCreativeSourceHashes": {
+      "effect.mjs": "5f165379218ec060f89c906f59b24b40b1cd55823e7a1eb4db5e6b6ee1073d65",
+      "world.wgsl": "4edc539a2f1d9eda181aa6fd925a0afe0c11c2021549601b7e5f129bb4832b4f",
+      "multi-world.wgsl": "77f66870b4b693c6387d212cdd04310cc21673498f9885e3b8453a796d2fa44a",
+      "observation.wgsl": "73cdf0a4dd8275dd62b94f7e6897f05127a5f1d91c5b57112ecab33a98dcf1d7",
+      "sfx.mjs": "50680c4338638b1b7c94c78690c3bb65fe23f8dc9cb7588d28b591bc0a3425f5"
+    },
+    "derivedSourceHashes": {
+      "effect.mjs": "5f165379218ec060f89c906f59b24b40b1cd55823e7a1eb4db5e6b6ee1073d65",
+      "world.wgsl": "0b6ccf183258c488af25ebe8234a4a1ebb4baa24cd6735aee0346226d03e451f",
+      "multi-world.wgsl": "050cd2bf128f34dcba903333bc0c181a926d9e8aaa2e4d1bd7ef45f0845d0d84",
+      "observation.wgsl": "73cdf0a4dd8275dd62b94f7e6897f05127a5f1d91c5b57112ecab33a98dcf1d7",
+      "sfx.mjs": "50680c4338638b1b7c94c78690c3bb65fe23f8dc9cb7588d28b591bc0a3425f5"
+    }
+  },
+  "files": [
+    {
+      "route": "public/preparation-summon-green-vertical-column-r1/gallery.html",
+      "bytes": 1610,
+      "sha256": "f01843f0173007a4958c056e5cb0c0febe42cbdabb1a8b4103f030ce1cbd69fc"
+    },
+    {
+      "route": "public/preparation-summon-green-vertical-column-r1/gallery-autoplay.mjs",
+      "bytes": 2022,
+      "sha256": "abbe4ee3b9b8ce00a68fec536a286a19bcf972225dc80a20bc19d0a6aaf87746"
+    },
+    {
+      "route": "public/preparation-summon-green-vertical-column-r1/runtime.mjs",
+      "bytes": 24895,
+      "sha256": "f6ea57be696d991641273a4e141b08f43eef710230d4477e20c1f5eb6278d6d9"
+    },
+    {
+      "route": "public/preparation-summon-green-vertical-column-r1/lifecycle.mjs",
+      "bytes": 1828,
+      "sha256": "356ffe823369b301468e83895a331de299c78fef81e3e94adf70e9baee707f7f"
+    },
+    {
+      "route": "public/preparation-summon-green-vertical-column-r1/source/effect.mjs",
+      "bytes": 2150,
+      "sha256": "5f165379218ec060f89c906f59b24b40b1cd55823e7a1eb4db5e6b6ee1073d65"
+    },
+    {
+      "route": "public/preparation-summon-green-vertical-column-r1/source/world.wgsl",
+      "bytes": 3324,
+      "sha256": "0b6ccf183258c488af25ebe8234a4a1ebb4baa24cd6735aee0346226d03e451f"
+    },
+    {
+      "route": "public/preparation-summon-green-vertical-column-r1/source/multi-world.wgsl",
+      "bytes": 4065,
+      "sha256": "050cd2bf128f34dcba903333bc0c181a926d9e8aaa2e4d1bd7ef45f0845d0d84"
+    },
+    {
+      "route": "public/preparation-summon-green-vertical-column-r1/source/observation.wgsl",
+      "bytes": 1385,
+      "sha256": "73cdf0a4dd8275dd62b94f7e6897f05127a5f1d91c5b57112ecab33a98dcf1d7"
+    },
+    {
+      "route": "public/preparation-summon-green-vertical-column-r1/source/sfx.mjs",
+      "bytes": 1828,
+      "sha256": "50680c4338638b1b7c94c78690c3bb65fe23f8dc9cb7588d28b591bc0a3425f5"
+    }
+  ]
+}
