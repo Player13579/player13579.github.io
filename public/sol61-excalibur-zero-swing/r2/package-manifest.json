@@ -1,0 +1,126 @@
+{
+  "schema": "excalibur-zero-swing-r2-gallery-package/v1",
+  "status": "private-current-parent-candidate-native-pending",
+  "versionId": "excalibur-zero-swing-sol61-r2",
+  "edition": "R2/5",
+  "route": "public/sol61-excalibur-zero-swing/r2",
+  "parent": {
+    "commit": "e9cba13caf6e6d38c54f902d44e127b8c39bf99b",
+    "tree": "60583a5da44eea91f447e1cee3d170474b0b5090",
+    "routeAbsentOnParent": true
+  },
+  "registration": {
+    "groupId": "alchemy-excalibur-sol61",
+    "defaultVersionId": "excalibur-zero-swing-sol61-r2",
+    "newestVersionsFirst": [
+      "excalibur-zero-swing-sol61-r2",
+      "excalibur-zero-swing-sol61-r1"
+    ],
+    "olderGroupVersionsPreserved": true,
+    "adoption": "unknown",
+    "quality": "pending",
+    "parentNative": "pending-root",
+    "publicationEligible": false
+  },
+  "creative": {
+    "author": "GPT-6.1-Sol",
+    "runtimeAdapterAuthor": "GPT-6-Luna",
+    "producerRoot": "outputs/request-20261006/excalibur-zero-swing-quality-review-sol-r2-reseal/",
+    "producerReadySha256": "7c1a27546508358d7f9927fae7eb2d12634033934d99c7ee43078b8fb1e0da0c",
+    "producerManifestSha256": "bfeac0a330d06264a16e845a52519d1ac3cc8e08e77490c25cbbe1d0f06d5aaf",
+    "producerSealSha256": "b46931549382e12c4bae11934471fb47e7daeeeb58ced798762b27bd30d7f109",
+    "rawModuleHashes": {
+      "r2/creative-adapter.mjs": "9f36574230901cff342a4d1a974aaa06cc98ced523a193dcbc14393175f66df6",
+      "r2/creative-plan.mjs": "7a3977b0b6fe162777cc5051fed90ca23df3f7bcd9f47f72d9f8596ac9153e15",
+      "r2/creative-shader.mjs": "627b6d5e2fda6961f8f61022fda717172e12933d0a5d1aab0fa5397a3596281c",
+      "r2/sfx.mjs": "9c6cc759ab014cf67ac8420f973fccd0d4ae1636741662eac598d1f5aadeeec5"
+    },
+    "routeModuleHashes": {
+      "source/creative-adapter.mjs": "9f36574230901cff342a4d1a974aaa06cc98ced523a193dcbc14393175f66df6",
+      "source/creative-plan.mjs": "8492e29f0bc00c3cc2058579abb737f1f0a37158e916a79c1c44ea366035f768",
+      "source/creative-shader.mjs": "627b6d5e2fda6961f8f61022fda717172e12933d0a5d1aab0fa5397a3596281c",
+      "source/sfx.mjs": "9c6cc759ab014cf67ac8420f973fccd0d4ae1636741662eac598d1f5aadeeec5"
+    },
+    "creativePlan": {
+      "inputSha256": "7a3977b0b6fe162777cc5051fed90ca23df3f7bcd9f47f72d9f8596ac9153e15",
+      "routeSha256": "8492e29f0bc00c3cc2058579abb737f1f0a37158e916a79c1c44ea366035f768",
+      "change": "one relative import rewrite to colocated exact shared motion planner"
+    },
+    "edition": "R2/5; incident reseal did not increment creative iteration"
+  },
+  "sharedDependencies": {
+    "motionPlanner": {
+      "path": "outputs/request-20261005/excalibur-shared-sword-motion-runtime-luna-r1/motion-planner.mjs",
+      "sha256": "48753301f3e79ced4708d4a56ba3f70a996334e7ecc2ce8d53c2a70062c5b760"
+    },
+    "permittedTexture": {
+      "path": "assets/generated/alchemy-excalibur.webp",
+      "workspacePath": "public/assets/generated/alchemy-excalibur.webp",
+      "sha256": "a75177d081271240026f63b4d36beec2979fe276f048e9ddcc9ed50e6a89eaf6",
+      "bytes": 280344
+    }
+  },
+  "runtime": {
+    "adapterContract": "finished R1 parent adapter; two submitted passes; proof only after queue completion and current active/emitting same cause, current device/target generations and viewport",
+    "firstFrameNumericEmissionReadback": "not_provided",
+    "normalAudioDefault": true,
+    "verifyHardZero": true,
+    "fixtureLoop": "start gathering -> exact R2 energy/peak sequence -> finite expiry/clear -> next cause",
+    "r1RouteRetained": true,
+    "r1PreviousHistoryRetained": true
+  },
+  "testScope": {
+    "routeFiles": 9,
+    "focus": "candidate-bound creative numerical, GPU command-recording mocks, parent proof, SFX verify/default, version identity",
+    "WGSLNativeCompile": "not_run",
+    "actualParentReplay": "pending-root",
+    "normalAudioListening": "not_run"
+  },
+  "files": [
+    {
+      "path": "app.mjs",
+      "bytes": 9966,
+      "sha256": "9a4389faa43f6b30fc975fd14feadb1edaa050f7142344d32a4d6595d2a91b1d"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2149,
+      "sha256": "a013c10c78fd470812547880705af19540ef389c37eac41e7a9a03ee7bb0efc8"
+    },
+    {
+      "path": "source/creative-adapter.mjs",
+      "bytes": 4397,
+      "sha256": "9f36574230901cff342a4d1a974aaa06cc98ced523a193dcbc14393175f66df6"
+    },
+    {
+      "path": "source/creative-plan.mjs",
+      "bytes": 7190,
+      "sha256": "8492e29f0bc00c3cc2058579abb737f1f0a37158e916a79c1c44ea366035f768"
+    },
+    {
+      "path": "source/creative-shader.mjs",
+      "bytes": 8076,
+      "sha256": "627b6d5e2fda6961f8f61022fda717172e12933d0a5d1aab0fa5397a3596281c"
+    },
+    {
+      "path": "source/gallery-contract.mjs",
+      "bytes": 2688,
+      "sha256": "635d91d524a7874ac3083b8ea299425b4327ee375fa1188f53bab09cddf6ad0e"
+    },
+    {
+      "path": "source/motion-planner.mjs",
+      "bytes": 6817,
+      "sha256": "48753301f3e79ced4708d4a56ba3f70a996334e7ecc2ce8d53c2a70062c5b760"
+    },
+    {
+      "path": "source/runtime-host.mjs",
+      "bytes": 14567,
+      "sha256": "540ca943d4ed524d6ea626bef82f27eec77a94caebe5134fe5d144f01159e59f"
+    },
+    {
+      "path": "source/sfx.mjs",
+      "bytes": 3933,
+      "sha256": "9c6cc759ab014cf67ac8420f973fccd0d4ae1636741662eac598d1f5aadeeec5"
+    }
+  ]
+}
