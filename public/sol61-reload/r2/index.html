@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reload E R2 private WebGPU host</title>
+  <style>
+    :root{color-scheme:dark;font:14px/1.4 system-ui,sans-serif;background:#111820;color:#edf5f3}body{margin:0;padding:16px;display:grid;gap:12px}header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}fieldset{border:1px solid #52636a;border-radius:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}button,select,input{font:inherit}button{padding:7px 10px}label{display:flex;gap:5px;align-items:center}canvas{width:min(100%,980px);height:auto;aspect-ratio:16/9;background:#111820;border:1px solid #56646a}#status{min-height:1.4em;white-space:pre-wrap}small{color:#b9c6c7}.embedded #fixtureControls{display:none}.hidden{display:none!important}
+  </style>
+  <script type="module" src="./startup-bootstrap.mjs"></script>
+  <script type="module" src="./preview.mjs"></script>
+</head>
+<body>
+  <header><strong>Reload E R2</strong><span id="status">Starting WebGPU host…</span></header>
+  <fieldset id="fixtureControls" aria-label="Fixture controls">
+    <label>Height <select id="height"><option>32</option><option selected>64</option><option>128</option></select> px</label>
+    <label>Weapon <select id="weapon"><option>handgun</option><option>smg</option><option>assault</option><option>sniper</option><option>taser</option></select></label>
+    <button id="start">Fixture start</button><button id="complete">Fixture complete</button><button id="off">Source off</button>
+    <label>Visibility <input id="visibility" type="range" min="0" max="1" step="0.05" value="1"></label>
+    <label><input id="obs" type="checkbox" checked> OBS</label><label><input id="main" type="checkbox" checked> Main</label>
+    <label><input id="reduced" type="checkbox"> Reduced motion</label>
+  </fieldset>
+  <fieldset id="gpuProbeControls" class="hidden" aria-label="One-shot diagnostic probe"><button id="gpuProbeButton" type="button">Capture one GPU frame</button><small>Diagnostic only: one manual 128×128-or-smaller world/emission/blurY readback; does not affect readiness.</small></fieldset>
+  <canvas id="reload" width="980" height="552" aria-label="WebGPU effect target"></canvas>
+  <small>Fixture controls exercise the private renderer. They do not connect to a game action-reload event or assert game integration. Add <code>?verify=1</code> to hard-zero audio.</small>
+</body>
+</html>

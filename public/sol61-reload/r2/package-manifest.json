@@ -1,0 +1,137 @@
+{
+  "schema": "reload-e-r2-private-parent-package/v1",
+  "status": "private-parent-native-pending",
+  "edition": "R2/5",
+  "versionId": "reload-e-zero-sol61-r2",
+  "parentCommit": "e9cba13caf6e6d38c54f902d44e127b8c39bf99b",
+  "parentTree": "60583a5da44eea91f447e1cee3d170474b0b5090",
+  "source": {
+    "producerReadySha256": "2a91687039ba5e89fd064a6c873849ec20bd7ea2c94987e2d1884c5224ddc241",
+    "producerManifestSha256": "2b1124d5c790500b88cb94594a047d72fa96146f996622844c6135ae7eb5f0df",
+    "producerSealSha256": "d33fbb0f04d3821c1bbc99a48d7df4af5ff49cd6d0e19bd0f1ccd2a7aff71d15",
+    "plannerSha256": "04f03470b93faf7a440af24e7e005ef93f82ebda5540c0466dc1981c7c6f2967",
+    "shaderSha256": "d469df4abcc86a175700aff125908ade753c60a13d45406e3f889a3b35b3b42c",
+    "sfxSha256": "1fce5a4a5cb6eefbe0f115792c61951d04e846af805c2470eef0c26b8aee68e2",
+    "uniformBytes": 128,
+    "entrypoints": [
+      "vsFullscreen",
+      "fsWorld",
+      "fsBlurX",
+      "fsBlurY",
+      "fsComposite"
+    ]
+  },
+  "geometry": {
+    "unit": "H",
+    "reviewH": 64,
+    "shapeBounds": {
+      "topYH": 0.46,
+      "bottomYH": -0.72
+    },
+    "source": "R2 frozen WGSL/planner"
+  },
+  "runtimeDerivative": {
+    "sourceR1CandidateManifestSha256": "3f0ec290a5423701ded5e8554323fb5664404b015e87318cd92226303fdd06fa",
+    "sourceR1CandidateSealSha256": "bc26ff5c7098183185080cbb0f3a45e0cf1b2048290505e99870000131d9c872",
+    "proofPreflightReadySha256": "7277537326b36056806d32f93edbdf1685faf0d78a9113d5f42ac56f7942a20f",
+    "proofPreflightManifestSha256": "fd140ae07abbfa60e72c6f658cd00abaeb631a5d868aa8892865cb8085604988",
+    "proofPreflightSealSha256": "2d56c5f3f851f9a898d448eb41f6751e73ccaa8ddf457f71a199d76f946edeac",
+    "changedRuntimeFiles": [
+      "runtime.mjs",
+      "preview.mjs",
+      "startup-bootstrap.mjs"
+    ],
+    "diagnosticOptIn": "frame-diagnostic=1&gpu-probe=1"
+  },
+  "r1History": {
+    "versionId": "reload-e-zero-sol61-r1",
+    "creativeFilesUnchanged": true,
+    "technicalStatus": "pending-parent",
+    "priorMainOffExpiryFailuresRetained": true
+  },
+  "verification": {
+    "fakeGpuTests": "pending",
+    "nativeCompile": "not_run",
+    "actualParent": "not_run",
+    "quality": "pending",
+    "ordinaryListening": "not_run",
+    "publicationEligible": false
+  },
+  "files": [
+    {
+      "path": "creative/reload-e-sfx-sol61-r2.mjs",
+      "bytes": 4950,
+      "sha256": "1fce5a4a5cb6eefbe0f115792c61951d04e846af805c2470eef0c26b8aee68e2"
+    },
+    {
+      "path": "creative/reload-e-sol61-r2.mjs",
+      "bytes": 7904,
+      "sha256": "04f03470b93faf7a440af24e7e005ef93f82ebda5540c0466dc1981c7c6f2967"
+    },
+    {
+      "path": "creative/reload-e-sol61-r2.wgsl",
+      "bytes": 6313,
+      "sha256": "d469df4abcc86a175700aff125908ade753c60a13d45406e3f889a3b35b3b42c"
+    },
+    {
+      "path": "frame-diagnostic.mjs",
+      "bytes": 2669,
+      "sha256": "f36e69ce91ad0347d8fbe821c01419f66d95bdba535f0b6ab55bcb1da20c12f7"
+    },
+    {
+      "path": "gallery-sfx-api.mjs",
+      "bytes": 847,
+      "sha256": "19f4740b314d4779e9a75259eb25bd31ad3b427dbfbd34e3339ad833a2306311"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2483,
+      "sha256": "48ba43b60c54421bafdbf41daed3bae17a1ed02d60f8d4dfb5c3b9cbdff4676b"
+    },
+    {
+      "path": "mock-gpu.mjs",
+      "bytes": 3080,
+      "sha256": "9ed0986a52c513f51224a52741a70a374125007bf23ed1337a8f8349f9c7151e"
+    },
+    {
+      "path": "package.json",
+      "bytes": 203,
+      "sha256": "72854a46824bc2c58302004f85904dbd588f18ce011865cb40bad0a427e5fff4"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 12505,
+      "sha256": "3c7fc6a231f98ac210ef2cab9a5e61bccb59b654bdb30735559b30986d040ba7"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1950,
+      "sha256": "7a420829416cf08eccb4e2c526e865fd99dde3221526573ee67dae0df4af8c50"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 25065,
+      "sha256": "cb839a11e86303b993e202fa771b213d09ab5298ac4998326fdcd662b19a9253"
+    },
+    {
+      "path": "startup-bootstrap.mjs",
+      "bytes": 7051,
+      "sha256": "6e1d891f1a856d528e2f5d0be6ff2424d24c45215533016bb7fd224fa3baaa07"
+    },
+    {
+      "path": "test/creative-r2-contract.mjs",
+      "bytes": 6672,
+      "sha256": "54ab9a5a1a7121146374a306881498a4c1d9292cbfc22be515c80c3af2b6f852"
+    },
+    {
+      "path": "test/first-frame-proof.test.mjs",
+      "bytes": 3644,
+      "sha256": "cd5a3c46020b1bbdcdbfe13f92d3a50a5df94e8e7495b49372a671cf09f708a5"
+    },
+    {
+      "path": "test/gpu-probe.test.mjs",
+      "bytes": 5430,
+      "sha256": "1e2f50355d804ac8f6bd531d17c4193fc960d617529cdafd953c5ab78136244c"
+    }
+  ]
+}
