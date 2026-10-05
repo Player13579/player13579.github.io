@@ -1,0 +1,160 @@
+{
+  "schema": "dva-gallery-package-manifest/v1",
+  "versionId": "donation-zero-sol61-r4",
+  "displayVersion": "fresh R4",
+  "title": "Donation Zero fresh R4 — GPT-6.1-Sol",
+  "statusAtPackageSeal": "faithful-R4-filter-uniform-binding-and-startup-validation-repair-focused-tests-pass-native-pending",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "runtimeAuthor": "GPT-6-Luna",
+  "route": "public/sol61-donation-card-zero/fresh-r4",
+  "previewPage": "public/sol61-donation-card-zero/fresh-r4/index.html?embed=1",
+  "source": "public/sol61-donation-card-zero/fresh-r4/source/plan.mjs",
+  "sourcePinManifestSha256": "57b1c25d5077f700dbedd5ea68c8b90e5832da5a3bde95305102a54585831ff7",
+  "runtimeSourceBindingSha256": "f8e13650099c6d27096ef811ef42a34c8de068969dd7481de05c60af3bd84f5e",
+  "runtimeABI": {
+    "uniformFloatCount": 52,
+    "uniformBytes": 208,
+    "worldMrtCount": 2,
+    "passes": 4,
+    "passOrder": [
+      "world",
+      "filter-x",
+      "filter-y",
+      "post"
+    ],
+    "hdrIntermediateFormat": "rgba16float",
+    "shaderEntrypoints": [
+      "vs",
+      "fs"
+    ],
+    "filterXBindings": [
+      0,
+      1,
+      2
+    ],
+    "filterYBindings": [
+      0,
+      1,
+      2
+    ],
+    "postBindings": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "postBinding2": "Y reconstruction rgba16float target",
+    "postBinding4": "raw rgba16float radiator",
+    "sfxActivation": "user-gesture; verify mode hard-muted"
+  },
+  "runtimeContract": "Faithful implementation of the exact R4 plan/shader/SFX modules; no creative-source changes. Two independent full-resolution rgba16float reconstruction targets implement raw→X→Y before POST(world,Y,raw). World/raw/X/Y are distinct targets; all textures and bind groups share the current device and target generation. Resize creates a complete replacement target/binding set before commit; disposal destroys both reconstruction targets. Manual active-age hold proof-rearm is carried from the separately pinned R3 preview derivative; its native evidence remains pending. Both X and Y filter groups bind the shared 208-byte Params uniform at binding 0, plus the input texture at 1 and sampler at 2. Initial pipeline, resource, bind-group and resize validation remains scoped until all first targets are constructed and before readiness. Current-owner uncaptured GPU errors preserve their original message, invalidate readiness and reject first-frame proof; stale/disposed-owner events are recorded without affecting a replacement owner.",
+  "sourceInheritance": {
+    "creativeAncestor": "fresh R3; R4 Sol pins are exact",
+    "runtimeBase": "donation-zero-sol61-r3",
+    "runtimeBasePackageManifestSha256": "5a4e1e73ab014002e6ddcf95115fd0aa1169982d289dd68f4585ffb127706d65",
+    "runtimeBasePackageSealSha256": "8f7dc721eea4a3747774ae2627f38d8588fa9965c186a9c07d3f6dacf53ccad4",
+    "manualProofPreviewSha256": "450b6140da3c17b86077c7f6462794f1d615dc553e6752120cb1bd9e48cfa6e8",
+    "changedRuntimeAreas": [
+      "R4 separate X/Y shader modules and pipelines",
+      "raw→X→Y→POST pass order",
+      "two extra full-resolution targets and bindings",
+      "atomic resize/current-generation proof/disposal for X/Y",
+      "R4 route/version metadata",
+      "manual-hold preview first-frame proof rearm"
+    ]
+  },
+  "creativeLoop": {
+    "kind": "new-zero-series",
+    "edition": 4,
+    "maximum": 5,
+    "remaining": 1,
+    "editionsCreatedInThisRuntimeAssignment": 0,
+    "automaticResetAllowed": false
+  },
+  "timing": {
+    "durationMs": 2400,
+    "coinReleaseMs": [
+      280,
+      390,
+      500,
+      610,
+      720
+    ],
+    "flightMs": 980,
+    "resultFillCompletesMs": 1810,
+    "resultVisibleUntilLifetimeEnd": true
+  },
+  "receiptContract": {
+    "cause": "successful unique donation-settled receipt",
+    "recipient": "finite registered recipient anchor; synthetic local gallery fixture only",
+    "noProductionIntake": true,
+    "amountDoesNotSetCoinCount": true,
+    "syntheticGalleryOnly": true,
+    "networkPayment": false
+  },
+  "technicalReplayStatus": "pending-native-webgpu",
+  "nativeWGSLCompile": "not_run",
+  "nativePixels": "not_run",
+  "qualityStatus": "pending",
+  "qualityReviewStatus": "pending",
+  "fullQualityAccepted": false,
+  "normalAudioListening": "not_run",
+  "safariIPad": "unverified",
+  "gameIntegration": "not_connected",
+  "adoption": "unknown",
+  "publication": "not_published",
+  "donR4AcceptancePlan": {
+    "DON_R4_01": "native+parent-gallery lifetime and age-correlation; pending",
+    "DON_R4_02": "same-view R3/R4 external-ray and scale comparison; pending",
+    "DON_R4_03": "minted cap/oblique/near-edge geometry checks; pending",
+    "DON_R4_04": "source/near/ray/post controls and cancellation/occlusion checks; pending",
+    "DON_R4_05": "extent/scale/resize/device-generation/nonalias/four-pass checks; pending",
+    "DON_R4_06": "normal-mode SFX listening separate from verify; pending"
+  },
+  "acceptanceBoundary": "Static and CPU/fake-GPU checks only. They cannot establish native WGSL compilation/pixels, creative quality, visible gallery replay, normal audio, Safari/iPad, game integration, adoption, or publication.",
+  "files": [
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4/index.html",
+      "bytes": 1551,
+      "sha256": "11d4070782e9fbed987572c13b0d01f2e93c5c7e7071984132596539aa82a396",
+      "mimeType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4/preview.mjs",
+      "bytes": 5331,
+      "sha256": "8facd5a5d423acc7a1fbe1f3fdf84fdfd8d779f3691e92f6db24a432e1ccac7c",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4/runtime.mjs",
+      "bytes": 20074,
+      "sha256": "daebb06a0a4b808f758abd42ccb71fca74238fc4daa7d19455351642385f610d",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4/startup-bootstrap.js",
+      "bytes": 4343,
+      "sha256": "7015f0121335480ac30efb26584ae9cb5bb03e9d36d947e75b5f3f8e937bed2f",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4/source/plan.mjs",
+      "bytes": 6261,
+      "sha256": "09328db8e985e7053a7cbab58ed927a2f27b7db677a769f7a4cffb4c50e1d963",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4/source/shader.mjs",
+      "bytes": 11234,
+      "sha256": "54477169f31e61878770c0f2fa8d6ea7b235fd0c4c005b1770cda364f56c4452",
+      "mimeType": "text/javascript; charset=utf-8"
+    },
+    {
+      "route": "public/sol61-donation-card-zero/fresh-r4/source/sfx-design.mjs",
+      "bytes": 3847,
+      "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9",
+      "mimeType": "text/javascript; charset=utf-8"
+    }
+  ]
+}

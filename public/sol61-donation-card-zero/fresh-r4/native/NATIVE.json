@@ -1,0 +1,25 @@
+{
+  "schema": "donation-r4-repaired-native-root-observation/v1",
+  "status": "limited-native-visible-replay-pass-quality-pending",
+  "hostReadyPath": "outputs/request-20261005/donation-r4-repaired-native-host-luna-r1/HOST-READY.json",
+  "hostReadySha256": "75228169d67174790468f8e79ab26ed7390a980233295b6199a6603d9ea78d4c",
+  "runtimeSha256": "daebb06a0a4b808f758abd42ccb71fca74238fc4daa7d19455351642385f610d",
+  "previewSha256": "8facd5a5d423acc7a1fbe1f3fdf84fdfd8d779f3691e92f6db24a432e1ccac7c",
+  "packageManifestSha256": "6d7d6ad9c5d729d2fed6ae59de368c62c883f6e546fea452796fff336b33d4f9",
+  "packageSealSha256": "bf7429dcf6d6310ce52e6821979401705396fb67a788eb3dbdf142fb3af989e5",
+  "browser": {"id":"2","name":"Codex In-app Browser","ownedTabId":"66"},
+  "url": "http://127.0.0.1:8883/?verify=donation-r4-binding-fixed-root-r1&height=64",
+  "canvas": {"width":1920,"height":1280},
+  "observations": [
+    {"ageMs":901,"sourceOn":true,"pixels":"Blue card/chip at left, five moving gold coins between card and intake, external crossed golden radiance visible. Canvas is no longer blank."},
+    {"ageMs":1600,"sourceOn":true,"pixels":"Coins gather at receiving intake at upper right; external golden radiance remains anchored to coins; card remains visible."},
+    {"ageMs":1600,"sourceOn":false,"pixels":"Card, intake and non-emissive gold coin geometry remain; strong coin glow and crossed external radiance disappear."},
+    {"ageMs":2400,"sourceOn":true,"pixels":"Effect canvas returns to blank background; card, coins, intake and residual glow disappear."}
+  ],
+  "screenshotEvidence": "Four original tool-returned browser screenshots inspected by root. No exported raster or hash is claimed; full DON-R4-01 through 06 quality audit remains incomplete.",
+  "startupReadOnlySnapshot": {"status":"ready","stage":"playing","sequence":8,"mode":"standalone-manual","resourcesReady":true,"firstFrame":{"recorded":true,"submitted":true,"completed":true,"canvasConnected":true,"passes":4,"viewportWidth":1920,"viewportHeight":1280,"submit":2,"generation":1,"targetGeneration":1,"playbackGeneration":3,"causeId":"donation-zero-gallery-synthetic-1","sourceOn":true,"ageMs":14.699999995529652}},
+  "consoleWarnErrorLogs": [],
+  "scope": {"limitedNativeReplay":true,"priorMissingBindingBlankRestored":true,"fullLifetimeQuality":"pending","parentGallery":"pending","scale1and3":"pending","ordinarySfxListening":"not_run","safariIPad":"unverified","gameIntegration":"not_connected","adoption":"unknown"},
+  "creativeEdition": {"edition":4,"maximum":5,"technicalRepairAddsEdition":false},
+  "cleanup": {"ownedTabClosed":true,"remainingTabs":["2"],"userTabUntouched":true,"serverSessionId":15289,"serverStopped":true,"serverExitCode":1}
+}
