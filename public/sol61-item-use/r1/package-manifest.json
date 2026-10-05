@@ -1,0 +1,70 @@
+{
+  "schema": "dva-e-gallery-package/v1",
+  "versionId": "item-use-sol61-r1",
+  "groupId": "common-item-use-sol61",
+  "creativeVersion": "item-use-e-zero-sol61-r1",
+  "creativeAuthorDisplayName": "GPT-6.1-Sol",
+  "creativeAuthorModelId": "gpt-6.1-sol",
+  "runtimeAuthorDisplayName": "GPT-6-Luna",
+  "runtimeAuthorModelId": "gpt-6-luna",
+  "creativeChanges": false,
+  "wrapperReadySha256": "413c1a797d982c84d44f3387d40bb4e1be192b72ce288ecab6b72b041d186148",
+  "wrapperManifestSha256": "08f22522d060ccf42e63185268c0cfee009adca487c496a6e672e39559c5b988",
+  "wrapperSealSha256": "80a2923c3603cd1509dd107d9aa5a5a932b218cb049beef79d712ab7668a16cd",
+  "standaloneNativeEvidenceSha256": "abb5b6ecccfdeef80628cdd4eda76c64f58d5d64ea187ca4fe689cb99dca7087",
+  "files": [
+    {
+      "path": "bootstrap.mjs",
+      "bytes": 4535,
+      "sha256": "d6a9de2c93bbd63fb6f65ecf1b56c8b4fad4aea126c7ceeb0528e07ca0fc148b"
+    },
+    {
+      "path": "diagnostics.mjs",
+      "bytes": 264,
+      "sha256": "99d9e74045541550d0073ff9ca1c83d3949c79ebd8bcfb9a3b7e9fbfb4c11047"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 11466,
+      "sha256": "dbc894b229656c6a20356321a9e03fbe650e27980831b5a5191c6c03a7c3bbdd"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1216,
+      "sha256": "b92bfe2d3ea823e7128d4cacf8505202634193ac55704846ba9724fd81a4ba5b"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 17975,
+      "sha256": "556324c1f5080fe42518b1fc4f2eb9f1b7084598f0f5eaa7d1be9a085e474d0c"
+    },
+    {
+      "path": "source/item-use-e-sfx-sol61-r1.mjs",
+      "bytes": 3621,
+      "sha256": "1246e76c95ab59177c20b4f0373f3cbde027095a100b2710691c3b43ac2a0d3d"
+    },
+    {
+      "path": "source/item-use-e-sol61-r1.mjs",
+      "bytes": 4965,
+      "sha256": "8ff37bcba2300171de317bc7d72a9be22758378d00997d40b8407281259ad91b"
+    },
+    {
+      "path": "source/item-use-e-sol61-r1.wgsl",
+      "bytes": 4928,
+      "sha256": "d3eaf87db7a8369ca85bc7c2e600e5084a8dfd3abcb82f58b505b836769dd9aa"
+    }
+  ],
+  "acceptance": {
+    "standaloneTechnicalReplay": "root-native-positive",
+    "galleryAdapterReplay": "pending-root-embed-layout-native-recheck",
+    "quality": "pending",
+    "adoption": "unknown",
+    "normalAudioListening": "not_run",
+    "safariIPad": "unverified",
+    "gameIntegration": "not_connected",
+    "publicationEligible": false,
+    "parentProofSchemaMapping": "actual completed passOrder and dimensions only",
+    "embeddedLayout": "full-iframe-viewport-no-overflow; standalone-fixture-preserved"
+  },
+  "diagnosticApi": "window.__itemUseGalleryDiagnosticSnapshot() returns recursively frozen current fixture diagnostics"
+}
