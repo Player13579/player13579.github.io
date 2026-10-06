@@ -1,0 +1,84 @@
+{
+  "schema": "dva-webgpu-effect-package/v1",
+  "groupId": "poison-field-zero-sol61",
+  "versionId": "poison-field-zero-sol61-r2",
+  "entry": "index.html",
+  "creator": "GPT-6.1-Sol",
+  "runtime": "GPT-6-Luna",
+  "renderer": "WebGPU-only",
+  "unitContract": {
+    "fieldPosition": "canvas backing pixels",
+    "radius": "64 CSS px converted using the actual canvas backingWidth / getBoundingClientRect().width"
+  },
+  "renderContract": {
+    "optimization": "conservative support scissor from the uploaded Float32 uniform; full transparent clears remain on both WORLD MRT attachments and full presentation target",
+    "observerSupport": "all nine bilinear OBS taps retained with halo and Float32 rounding guard",
+    "fallback": "inactive, expired, source/main-off and fully offscreen use legal transparent 1x1 scissor; invalid/mismatched/extreme inputs use full viewport",
+    "frames": "serial requestAnimationFrame loop; each observation settles before the next frame is requested",
+    "hold": "render selected controlled observation with SFX muted; stop continuous RAF until released",
+    "cycle": "new cause each finite 12,000 ms lifetime; submit inactive expiry clear before resetting"
+  },
+  "measurement": "bounded 256-record ring; queue and scope callback settlement wall times are not GPU timestamp durations",
+  "startupContract": "dva-gallery-startup/v1; initial clear stays pending; playing-ready requires an active completed current two-pass receipt, literal-null error scopes, strictly positive visual build, current target and backing dimensions, connected canvas, and finite unexpired cause; readiness is independent of the 180 ms SFX receipt freshness window",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 3288,
+      "sha256": "b42e7901b6764fe37d6082f9b3b8165976d16495ea22cff3c1aca4a90774767f"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 10009,
+      "sha256": "0a88e3687c4d04ca31e23e368b08e02872bfea7486cd7ebac35e9e657c6bdfe3"
+    },
+    {
+      "path": "runtime-host.mjs",
+      "bytes": 33388,
+      "sha256": "21b1fb54c55ac179baeb639d5fab41bf29795adb97dacbad1f3af1c75139b5d0"
+    },
+    {
+      "path": "gallery-loop.mjs",
+      "bytes": 2666,
+      "sha256": "7cad55422182652eb3750b5ceb68e7c453099699b73ff5b7bd2f52c4e8362df3"
+    },
+    {
+      "path": "support-scissor.mjs",
+      "bytes": 2012,
+      "sha256": "48e9045022e4f389ccf8539b06a0a857cd480137e49906004f922af146583e63"
+    },
+    {
+      "path": "poison-model.mjs",
+      "bytes": 8006,
+      "sha256": "01bdafb02500512dfefa234aeec9ebfa055a0756f5fa898e5d4ec0e7ec6fca56"
+    },
+    {
+      "path": "poison-shaders.mjs",
+      "bytes": 6796,
+      "sha256": "e8bde584bac2974452c1345b93aad70c149183a1dcca417c4f8464121288350c"
+    }
+  ],
+  "adoption": "unknown",
+  "quality": "pending",
+  "technicalReplay": "pending",
+  "nativePerformance": "not_measured",
+  "normalAudioListening": "pending",
+  "gameIntegration": "not_connected",
+  "core": {
+    "manifestSha256": "05fb96b383d3f6dc5d4f175050ec26a7e0681bc6af181c4de03045782596245b",
+    "modelSha256": "01bdafb02500512dfefa234aeec9ebfa055a0756f5fa898e5d4ec0e7ec6fca56",
+    "shadersSha256": "e8bde584bac2974452c1345b93aad70c149183a1dcca417c4f8464121288350c",
+    "worldWgslSha256": "6272d6d741496772f50bcfccbdf440f473abe061ae7c757ebefd87ff1527926a",
+    "observerWgslSha256": "67b35b36af74c1deb472c4b2971fc1c8dc6127f5b056800ad500fad28622bcc0",
+    "modelVersion": "poison-field-quality-sol61-r2"
+  },
+  "optimization": {
+    "diagnosisManifestSha256": "27a1de00234daf0ec9fd2ba891cdddf7d85f71cda5a7c84aed4a9c69fe124d9b",
+    "contractSha256": "77f0d0c42c9e11d919b88234c0bbcfb4406e50242831e7fac33db509e3174593",
+    "helperSha256": "48e9045022e4f389ccf8539b06a0a857cd480137e49906004f922af146583e63"
+  },
+  "host": {
+    "manifestSha256": "924d0ff69b602ca872c76112f3883617be0a7d9a0953a32be2d52841136ba572",
+    "sourceRendererSha256": "8642850549324affa453a5d4612fe5d2bcfcb4f0447fe6098e8cbd173e617cd8",
+    "independentReviewSealSha256": "8092c48a1dadcf66bedb506af35ed345416777b8f98a04964be372a0ee0781c0"
+  }
+}

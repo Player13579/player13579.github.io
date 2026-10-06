@@ -1,0 +1,65 @@
+{
+  "schema": "dva-webgpu-effect-package/v1",
+  "groupId": "poison-field-zero-sol61",
+  "versionId": "poison-field-zero-sol61-r1",
+  "entry": "index.html",
+  "creator": "GPT-6.1-Sol",
+  "runtime": "GPT-6-Luna",
+  "renderer": "WebGPU-only",
+  "unitContract": {
+    "fieldPosition": "canvas backing pixels",
+    "radius": "64 CSS px converted using the actual canvas backingWidth / getBoundingClientRect().width"
+  },
+  "renderContract": {
+    "frames": "serial requestAnimationFrame loop; each observe settles before the next frame is requested",
+    "hold": "render selected controlled observation with SFX muted; stop continuous RAF until released",
+    "cycle": "new cause each finite 12,000 ms lifetime; submit inactive expiry clear before resetting"
+  },
+  "startupContract": "dva-gallery-startup/v1; initial clear stays pending; playing-ready requires active completed current two-pass receipt, literal-null error scopes, positive visual build, current target and backing dimensions, connected canvas, and a finite unexpired cause; readiness is independent of the 180 ms SFX window",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 3225,
+      "sha256": "b4d67bcee721c044f2146eeb4c43bcdb30d7e366ec8ff49e930d0697fa0cc14d"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9342,
+      "sha256": "cfc9fc6160a6e9788854df4b82e653111500032c6820ae496f985dc56d6a5803"
+    },
+    {
+      "path": "runtime-host.mjs",
+      "bytes": 23658,
+      "sha256": "47328edef66352a32843f59ee941fc1d354aeed036f02a28d371e5581280d47e"
+    },
+    {
+      "path": "gallery-loop.mjs",
+      "bytes": 2666,
+      "sha256": "7cad55422182652eb3750b5ceb68e7c453099699b73ff5b7bd2f52c4e8362df3"
+    },
+    {
+      "path": "poison-model.mjs",
+      "bytes": 8003,
+      "sha256": "059771f11b76dfe94b22421e68de1643a0fa1fbab9300bf137e9089379ff117c"
+    },
+    {
+      "path": "poison-shaders.mjs",
+      "bytes": 4685,
+      "sha256": "6beaa15720044b14b23ea30a95470bb6a2d9d28553596c1dcf0d3dbebe0270d6"
+    }
+  ],
+  "adoption": "unknown",
+  "quality": "pending",
+  "technicalReplay": "pending",
+  "normalAudioListening": "pending",
+  "gameIntegration": "not_connected",
+  "core": {
+    "manifestSha256": "deef70ecd00ee1e96a031e2081a4b91bb5a86deda9758cf0e5363d78b8886401",
+    "modelSha256": "059771f11b76dfe94b22421e68de1643a0fa1fbab9300bf137e9089379ff117c",
+    "shadersSha256": "6beaa15720044b14b23ea30a95470bb6a2d9d28553596c1dcf0d3dbebe0270d6"
+  },
+  "host": {
+    "manifestSha256": "924d0ff69b602ca872c76112f3883617be0a7d9a0953a32be2d52841136ba572",
+    "sourceRendererSha256": "8642850549324affa453a5d4612fe5d2bcfcb4f0447fe6098e8cbd173e617cd8"
+  }
+}
