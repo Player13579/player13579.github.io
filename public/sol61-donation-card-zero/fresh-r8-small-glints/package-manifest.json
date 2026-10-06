@@ -1,0 +1,242 @@
+{
+  "schema": "dva-donation-gold-additional-correction-package/v1",
+  "version": "donation-zero-sol61-r8-small-glints",
+  "group": "common-donation-zero-sol61",
+  "author": "GPT-6.1-Sol",
+  "historicalRuntimeAdapter": "GPT-6-Luna",
+  "creativeEdition": 8,
+  "creativeEditionLimit": 11,
+  "additionalCorrection": {
+    "edition": 2,
+    "authorizedEditions": 5,
+    "authorization": "latest user instruction 2026-10-06 supersedes historical R6 noR7 permission record",
+    "automaticNextEdition": false
+  },
+  "parent": {
+    "version": "donation-zero-sol61-r7-gold-softbox",
+    "packagePath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261006\\donation-gold-extra5-sol61-r1\\candidate\\public\\sol61-donation-card-zero\\fresh-r7-gold-softbox",
+    "manifestSha256": "c737b8f13af3ef4a3a050001d8414668edbfa56beeeaf079f259127c948fdabc",
+    "sourcePins": [
+      {
+        "path": "index.html",
+        "bytes": 2089,
+        "sha256": "2da87cdf84f789b0f7fb45e82ab96e61c4594b6a1066733d2d904db962227b72"
+      },
+      {
+        "path": "app.mjs",
+        "bytes": 10756,
+        "sha256": "f10ecad9be14d38a93ef7c12f8dc6085a54cfcd8beac7cb9299a21cf8fdac3af"
+      },
+      {
+        "path": "runtime.mjs",
+        "bytes": 28346,
+        "sha256": "7171ce8de3f4b381c8c7626940790cc277efe271ee4d67317cdf48e2e556f0c0"
+      },
+      {
+        "path": "source/plan.mjs",
+        "bytes": 6737,
+        "sha256": "5dff086775c1485fec4f5677813a7830fa26631cd521b3757ca3fa7e0c3c2d4f"
+      },
+      {
+        "path": "source/material.mjs",
+        "bytes": 8055,
+        "sha256": "f6b5f46b034b4b48933db39ff0ca91b43a48a5e693ed9710f8c4c47326c03192"
+      },
+      {
+        "path": "source/shader.mjs",
+        "bytes": 16503,
+        "sha256": "95097d868672cd40d137edc0f91b512ff497253bdbab81a53c68c2aa53505cc5"
+      },
+      {
+        "path": "source/sfx-design.mjs",
+        "bytes": 3847,
+        "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9"
+      }
+    ]
+  },
+  "routePath": "public/sol61-donation-card-zero/fresh-r8-small-glints",
+  "routeEntry": "public/sol61-donation-card-zero/fresh-r8-small-glints/index.html?embed=1&galleryAutoLoop=1",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2104,
+      "sha256": "53721c41f6ed59dd937251baa24946705e08b4266bbcb92811a3108ecc267487"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 10756,
+      "sha256": "8165c5c40951dacb3a888b05962dadc95022023bbd83a6ac1a0867d0f097eb75"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 28506,
+      "sha256": "2b55102a01b9acc387e2a152eadec930c6781a516dd4076d16629e67e5c5e29b"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 6791,
+      "sha256": "d360a755b75a37a0f116c80808d2d7e73a8201716e9c5db32581497fba3819fa"
+    },
+    {
+      "path": "source/material.mjs",
+      "bytes": 8055,
+      "sha256": "f6b5f46b034b4b48933db39ff0ca91b43a48a5e693ed9710f8c4c47326c03192"
+    },
+    {
+      "path": "source/shader.mjs",
+      "bytes": 14664,
+      "sha256": "12379578b30bfc1b7fba09bab06954274479e6db90f3cf30125716594fc04118"
+    },
+    {
+      "path": "source/sfx-design.mjs",
+      "bytes": 3847,
+      "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9"
+    },
+    {
+      "path": "source/glints.mjs",
+      "bytes": 2744,
+      "sha256": "58074161d2194b1763ebe8a1a1ed4fa9ad8e79479645b637c4e8c5cfc651b723"
+    }
+  ],
+  "importClosure": [
+    [
+      "index.html",
+      "./app.mjs",
+      "app.mjs"
+    ],
+    [
+      "app.mjs",
+      "./runtime.mjs",
+      "runtime.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/plan.mjs",
+      "source/plan.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/sfx-design.mjs",
+      "source/sfx-design.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/plan.mjs",
+      "source/plan.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/shader.mjs",
+      "source/shader.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/sfx-design.mjs",
+      "source/sfx-design.mjs"
+    ],
+    [
+      "source/plan.mjs",
+      "./material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "source/shader.mjs",
+      "./material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "source/sfx-design.mjs",
+      "./plan.mjs",
+      "source/plan.mjs"
+    ],
+    [
+      "source/shader.mjs",
+      "./glints.mjs",
+      "source/glints.mjs"
+    ],
+    [
+      "source/plan.mjs",
+      "./glints.mjs",
+      "source/glints.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/glints.mjs",
+      "source/glints.mjs"
+    ]
+  ],
+  "status": {
+    "WGSLCompile": "not_run",
+    "native": "not_run",
+    "quality": "pending-real-output",
+    "adoption": "unknown",
+    "gameIntegration": "not_connected",
+    "normalListening": "not_run",
+    "performance": "not_run",
+    "safari": "unverified",
+    "publicationEligible": false
+  },
+  "B": {
+    "mode": "derivative-no-new-formal-B-serialization",
+    "historicalAuthorityCommit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "currentFullCompliance": "not_claimed"
+  },
+  "material": {
+    "model": "RGB complex-IOR gold conductor + directional GGX/Smith + analytic neutral studio softboxes",
+    "lighting": "selected distant white fill, broad softbox and narrow slanted strip; approximate roughness prefilter",
+    "geometry": "R7 identical shallow minted cap/bevel/high-relief proxy; no new normals or mesh",
+    "HDR": "reflection/emission preserved in rgba16float; common RGB-ratio-preserving shoulder after optical redistribution and before one sRGB encode",
+    "limits": [
+      "analytic selected studio environment, not actual game-scene reflection",
+      "RGB gold optical constants, not spectral integration",
+      "native material read/sparkle readability/continuity unverified"
+    ]
+  },
+  "changedFromR7": [
+    "index.html",
+    "app.mjs",
+    "runtime.mjs",
+    "source/plan.mjs",
+    "source/shader.mjs",
+    "source/glints.mjs"
+  ],
+  "unchangedGoldMaterialAndSfx": true,
+  "optics": {
+    "rayExtent": 14,
+    "oldRayExtent": 48,
+    "pupilAxesDegrees": [
+      22.5,
+      112.5
+    ],
+    "continuousNormalizedKernel": true,
+    "reconstruction": {
+      "worldWidth": 0.65,
+      "pixelFloor": 0.85,
+      "downsample": 4
+    },
+    "sourceFacets": 13,
+    "oldSourceFacets": 7,
+    "localRadius": [
+      0.44,
+      0.51
+    ],
+    "digitalPeak": [
+      10,
+      13
+    ],
+    "cadenceSeconds": [
+      0.19,
+      0.326
+    ],
+    "duty": [
+      0.19,
+      0.22
+    ],
+    "cost": "13 disjoint cheap mask tests; at most one local facet BRDF per hit; 98 cross samples instead of 162; same six passes and quarter optical targets"
+  }
+}
