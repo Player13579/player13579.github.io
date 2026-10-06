@@ -1,5 +1,5 @@
 {
-  "schema": "excalibur-r6-extra1-gold-probe-package/v1",
+  "schema": "excalibur-r6-startup-retirement-derivative/v1",
   "edition": "excalibur-zero-swing-sol61-r6",
   "versionId": "excalibur-zero-swing-sol61-r6",
   "groupId": "alchemy-excalibur-sol61",
@@ -21,15 +21,15 @@
   "files": [
     {
       "path": "app.mjs",
-      "bytes": 11506,
-      "sha256": "d470128250cca37818eab4c7531a868354599c0a5c1d51b7722ef4d8332dde3f",
-      "gitBlobSha1": "c211572012f0621dd157aeffc5081950ad4424ca"
+      "bytes": 13779,
+      "sha256": "d44c248b0a26248f0a4eca34f16a1700a20a32ec43fa7b5248f36db530247995",
+      "gitBlobSha1": "97f73f885e78f3d27480f5dd11a64807a3279e1e"
     },
     {
       "path": "creative-adapter.mjs",
-      "bytes": 6481,
-      "sha256": "16d07a2d17fc393e7c6b2c2245ed8f7386ac905b04611551b18cf8bea6f9f773",
-      "gitBlobSha1": "7586874d1ca53b7fb4d384e0d6fb9e4f4a995c04"
+      "bytes": 8461,
+      "sha256": "6b6cfe43b3ff65de882a672e71c87e77abcc65eacfa323869c7f1d69d65151ff",
+      "gitBlobSha1": "21e23546f3787408c9100e9cee1032b8811fba8c"
     },
     {
       "path": "creative-plan.mjs",
@@ -69,9 +69,9 @@
     },
     {
       "path": "runtime-host.mjs",
-      "bytes": 14630,
-      "sha256": "bb43d71ea9511f68cb034a12b4d1d243d7610056f0966e66f4ec69170a2c8966",
-      "gitBlobSha1": "51c2a08f309cae423a7e956b22e42c63bb8fc51c"
+      "bytes": 17912,
+      "sha256": "8e2a01c05f007b60275c7f78b15e7472e4952d2f7b99509f8d8ccf154ed5a612",
+      "gitBlobSha1": "3df181727a801d9a024f9f1adbee98074084bc5a"
     },
     {
       "path": "sfx.mjs",
@@ -110,5 +110,12 @@
   "adoption": "unknown",
   "gameIntegration": "not_connected",
   "publicationEligible": false,
-  "publication": "not_published"
+  "publication": "not_published",
+  "technicalDerivative": {
+    "fromVersion": "excalibur-zero-swing-sol61-r6",
+    "contract": "excalibur-r6-public-startup-diagnosis-sol61-r1/CONTRACT.md",
+    "contractSealSha256": "2b20969c508acadc7ea81fd698ebc065581827c54412fc15738076292a581eb4",
+    "publicSourceCommit": "442c9acaef8b1f48c6ab0d4eedcb707ae8b016e5",
+    "creativeRevision": false
+  }
 }
