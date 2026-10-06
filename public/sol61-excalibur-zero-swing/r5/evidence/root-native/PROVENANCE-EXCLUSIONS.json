@@ -1,0 +1,16 @@
+{
+  "schema": "excalibur-r5-public-provenance-exclusions/v1",
+  "versionId": "excalibur-zero-swing-sol61-r5",
+  "excludedFromPublic": [
+    "private source/output paths carried by the original kit manifest",
+    "private source-pin and probe artifacts",
+    "build and verification scripts that depend on local source paths",
+    "the raw parent-ready envelope with localhost URL and galleryStartupToken",
+    "nine cropped screenshots excluded by the Sol quality review"
+  ],
+  "preservedPublicEvidence": {
+    "byteIdenticalFiles": 22,
+    "sanitizedParentReadySummary": 1
+  },
+  "frozenPackageMetadataNote": "The immutable package manifest preserves its original authoring-time status fields. Current gallery adoption authority remains unknown, and current quality remains pending; current-parent native status is recorded separately on the version row."
+}
