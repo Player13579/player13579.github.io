@@ -1,0 +1,134 @@
+{
+  "schema": "excalibur-r7-gold-face-creative-package/v1",
+  "edition": "excalibur-zero-swing-sol61-r7",
+  "versionId": "excalibur-zero-swing-sol61-r7",
+  "groupId": "alchemy-excalibur-sol61",
+  "route": "public/sol61-excalibur-zero-swing/r7",
+  "author": "GPT-6.1-Sol",
+  "creativeEditionCount": 7,
+  "historicalCreativeIterations": 5,
+  "additionalCreativeAllowance": {
+    "authorized": 5,
+    "used": 2,
+    "remaining": 3,
+    "nextAutomaticVersion": false
+  },
+  "files": [
+    {
+      "path": "app.mjs",
+      "bytes": 20656,
+      "sha256": "153cc1649fcb4e6cd988dfbfdbf6f8c30c6e7eed982ad24f2c0f668af2918855"
+    },
+    {
+      "path": "blade-emission-model.mjs",
+      "bytes": 1501,
+      "sha256": "c163174b62ed26c1cc74ecebf1174540e548c1b9d1f04ccd09ddf3f3c5fa0540"
+    },
+    {
+      "path": "creative-adapter.mjs",
+      "bytes": 8461,
+      "sha256": "2b23a624dbd86bc82a3f496d2e9478013f6120359557582bfcdc05d202f59ce2"
+    },
+    {
+      "path": "creative-plan.mjs",
+      "bytes": 12041,
+      "sha256": "2cadb1571920899d354462311252ae9f64b2edd931f3f33f3d41d99de58a7a07"
+    },
+    {
+      "path": "creative-shader.mjs",
+      "bytes": 12204,
+      "sha256": "1455d90b4ac24a2c2ebff1c018a1d03e221624f4ef211a5970de85c524d22d73"
+    },
+    {
+      "path": "field-model.mjs",
+      "bytes": 1900,
+      "sha256": "4f9d9ec5f9023346adffa3c0995355133fc6813947b13ff114c7440c8aa0d827"
+    },
+    {
+      "path": "gallery-contract.mjs",
+      "bytes": 2699,
+      "sha256": "0eaa8e13b1191b9912d7794ade790476f036490a47c10edae97bceb5f50977b0"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3865,
+      "sha256": "34fce4398429e875df37751b9c2aa4d7232b7fc62f6fe49669d6fb6ad84a484d"
+    },
+    {
+      "path": "material-model.mjs",
+      "bytes": 2204,
+      "sha256": "cf429ae7b5493756726b33e4db9b498bfdb263d42adda4e6bd7b54d09499469d"
+    },
+    {
+      "path": "runtime-host.mjs",
+      "bytes": 21317,
+      "sha256": "e42d24ae12d06deb031199f9cbcc9e15b0198e6b55a73c991e5b5dfbcb2bbc38"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 12144,
+      "sha256": "47f86eaf4990d8c115e1a992fbd995c68dbd7ddc38ba0820abbe57e0730d106a"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "public/request-20261005/excalibur-shared-sword-motion-runtime-luna-r1/motion-planner.mjs",
+      "bytes": 6817,
+      "sha256": "48753301f3e79ced4708d4a56ba3f70a996334e7ecc2ce8d53c2a70062c5b760",
+      "unchanged": true
+    },
+    {
+      "path": "assets/generated/alchemy-excalibur.webp",
+      "bytes": 280344,
+      "sha256": "a75177d081271240026f63b4d36beec2979fe276f048e9ddcc9ed50e6a89eaf6",
+      "unchanged": true
+    }
+  ],
+  "passOrder": [
+    "world-source-mrt",
+    "optical-source-probe",
+    "source-bound-observer-presentation"
+  ],
+  "provenance": {
+    "baseCommit": "8807f314716ba064143aa43bb67d34c062c6d691",
+    "baseVersion": "excalibur-zero-swing-sol61-r6",
+    "baseManifest": {
+      "path": "base-r6/package-manifest.json",
+      "bytes": 6108,
+      "sha256": "18ff59b2ae1579b3f58e6c58adc3af61428fd6af8185b6f08d45030b06bd0410"
+    },
+    "baseSeal": {
+      "path": "base-r6/package-seal.json",
+      "bytes": 4692,
+      "sha256": "9f09e9331d2ee6ecbb5a25a3bb41e223ff567924099a000ddfada96561eb6cc4"
+    },
+    "newCreativeScope": "gold blade emission distribution only; edition/API identity updated",
+    "unchangedCreative": [
+      "gather14",
+      "releaseFront",
+      "releaseMotes28",
+      "materialBRDF",
+      "sourceProbe",
+      "observerOptics",
+      "SFXScore",
+      "motionPlanner"
+    ],
+    "inheritedTechnicalRuntime": "exact current R6 startup/SFX/lifetime runtime except edition identity; original authorship retained",
+    "hostDimensionRepair": "separate; not applied here",
+    "sourceTexture": "unchanged existing asset; no generated texture"
+  },
+  "validation": {
+    "focusedChecks": "pass7/7",
+    "javascriptSyntax": "pass",
+    "nativeWGSL": "not_run",
+    "nativePixels": "not_run",
+    "normalSFX": "not_run",
+    "SafariIpad": "not_run",
+    "performance": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "quality": "pending",
+  "adoption": "unknown",
+  "publication": "not_published",
+  "publicationEligible": false
+}
