@@ -1,0 +1,53 @@
+{
+  "schema": "reload-r3-sanitized-private-native-summary/v1",
+  "versionId": "reload-e-zero-sol61-r3",
+  "sourcePackageManifestSha256": "5ff5ef9b7be10981d3768108f4e9c73fae30c1d89cc2910b663114909e037626",
+  "nativeScope": "private 68bb parent host; not a replay on the later public 71b6562 commit",
+  "testedParent": {
+    "commit": "68bb8cbcf6829eacee6a39b63e3dd8b1b441d49a",
+    "tree": "726402e577702534dd08712a5a32883cec048309"
+  },
+  "result": {
+    "stage": "playing",
+    "status": "ready",
+    "elapsedMs": 501.3,
+    "firstFrame": {
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "nonzeroEmission": true,
+      "finiteRgbComponents": 196608,
+      "nonFiniteRgbComponents": 0,
+      "positiveRgbComponents": 17149,
+      "passes": 4,
+      "passOrder": [
+        "world+emission",
+        "blur-x",
+        "blur-y",
+        "composite"
+      ],
+      "viewportWidth": 1866,
+      "viewportHeight": 1050
+    }
+  },
+  "ongoingRenderer": {
+    "state": "ready",
+    "generation": 1,
+    "targetGeneration": 1,
+    "submissionsAtCapture": 807
+  },
+  "screenshot": {
+    "path": "reload-r3-repaired-visible.jpg",
+    "sha256": "db24a632ffae7c910ccf6ce296c9d676903075e0810e35d287ebbfadba7fde8b",
+    "bytes": 43786
+  },
+  "acceptance": {
+    "technicalReplay": "pass-limited-private-68bb-parent",
+    "currentPublicParentReplay": "not_run",
+    "quality": "pending",
+    "adoption": "unknown",
+    "normalAudioListening": "not_run",
+    "safari": "unverified",
+    "gameIntegration": "not_connected"
+  }
+}
