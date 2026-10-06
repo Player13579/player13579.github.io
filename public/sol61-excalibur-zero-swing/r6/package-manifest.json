@@ -5,7 +5,7 @@
   "groupId": "alchemy-excalibur-sol61",
   "author": "GPT-6.1-Sol",
   "route": "public/sol61-excalibur-zero-swing/r6",
-  "baseCommit": "71b6562b46c3360adb79f0512508304f2a55b7bc",
+  "baseCommit": "827d25d4fd8e0b08bdc66241abd83d0c4be73070",
   "creativeEditionCount": 6,
   "historicalCreativeIterations": 5,
   "additionalCreativeAllowance": {
@@ -21,9 +21,9 @@
   "files": [
     {
       "path": "app.mjs",
-      "bytes": 13779,
-      "sha256": "d44c248b0a26248f0a4eca34f16a1700a20a32ec43fa7b5248f36db530247995",
-      "gitBlobSha1": "97f73f885e78f3d27480f5dd11a64807a3279e1e"
+      "bytes": 13886,
+      "sha256": "07ecb87184b513118cd59fcc7adf5426e965d60e8e1744efed6924f6416c8634",
+      "gitBlobSha1": "ece165ff52530c394ecb1b3dc61683f00765da46"
     },
     {
       "path": "creative-adapter.mjs",
@@ -69,9 +69,9 @@
     },
     {
       "path": "runtime-host.mjs",
-      "bytes": 17912,
-      "sha256": "8e2a01c05f007b60275c7f78b15e7472e4952d2f7b99509f8d8ccf154ed5a612",
-      "gitBlobSha1": "3df181727a801d9a024f9f1adbee98074084bc5a"
+      "bytes": 18501,
+      "sha256": "fd96412a73142f83b3794a70b4a4cf0d1736dbe145e2bb718944d82c903b1186",
+      "gitBlobSha1": "db53dda981d0d09c91aff9742bb3033ae71fbe41"
     },
     {
       "path": "sfx.mjs",
@@ -105,7 +105,7 @@
     "width": 1254,
     "height": 1254
   },
-  "native": "not_run",
+  "native": "not_run; CPU checks only; primary must complete exact-parent actual startup and frame acceptance",
   "quality": "pending",
   "adoption": "unknown",
   "gameIntegration": "not_connected",
@@ -113,9 +113,19 @@
   "publication": "not_published",
   "technicalDerivative": {
     "fromVersion": "excalibur-zero-swing-sol61-r6",
-    "contract": "excalibur-r6-public-startup-diagnosis-sol61-r1/CONTRACT.md",
-    "contractSealSha256": "2b20969c508acadc7ea81fd698ebc065581827c54412fc15738076292a581eb4",
-    "publicSourceCommit": "442c9acaef8b1f48c6ab0d4eedcb707ae8b016e5",
-    "creativeRevision": false
+    "contract": "outputs/request-20261006/excalibur-r6-current-public-startup-contract-sol61-r2/CONTRACT.md",
+    "contractSha256": "171b69707382d91bc1a9ae8a6308330bbcb1239230f144b2ed3113a70545f23d",
+    "publicSourceCommit": "827d25d4fd8e0b08bdc66241abd83d0c4be73070",
+    "publicSourceTree": "0e132e4cf67f06ece2896812f16be2c85e7678de",
+    "repair": "A: omit unused source-only scaffold for the app-selected creative-only host mode",
+    "creativeRevision": false,
+    "parentBudgetChange": false,
+    "realizedPerformanceClaim": false
+  },
+  "renderModeContract": {
+    "default": "source-only",
+    "R6App": "creative-only",
+    "unknownMode": "rejected before GPU requests",
+    "creativeOnlyInvariant": "render before creative adapter attachment throws and submits nothing"
   }
 }

@@ -1,13 +1,13 @@
 {
   "schema": "excalibur-r6-startup-retirement-package-seal/v1",
   "versionId": "excalibur-zero-swing-sol61-r6",
-  "manifestSha256": "0aff08dc8120a58cc0c44efbcff8fa8f4ff872f06c4b711499cc0bdbd9e5844a",
+  "manifestSha256": "5a8cc8c825234ac126f9f739293499bb0f9a873ae171a180834b5798ca9f6f5e",
   "files": [
     {
       "path": "app.mjs",
-      "bytes": 13779,
-      "sha256": "d44c248b0a26248f0a4eca34f16a1700a20a32ec43fa7b5248f36db530247995",
-      "gitBlobSha1": "97f73f885e78f3d27480f5dd11a64807a3279e1e"
+      "bytes": 13886,
+      "sha256": "07ecb87184b513118cd59fcc7adf5426e965d60e8e1744efed6924f6416c8634",
+      "gitBlobSha1": "ece165ff52530c394ecb1b3dc61683f00765da46"
     },
     {
       "path": "creative-adapter.mjs",
@@ -53,9 +53,9 @@
     },
     {
       "path": "runtime-host.mjs",
-      "bytes": 17912,
-      "sha256": "8e2a01c05f007b60275c7f78b15e7472e4952d2f7b99509f8d8ccf154ed5a612",
-      "gitBlobSha1": "3df181727a801d9a024f9f1adbee98074084bc5a"
+      "bytes": 18501,
+      "sha256": "fd96412a73142f83b3794a70b4a4cf0d1736dbe145e2bb718944d82c903b1186",
+      "gitBlobSha1": "db53dda981d0d09c91aff9742bb3033ae71fbe41"
     },
     {
       "path": "sfx.mjs",
@@ -63,32 +63,5 @@
       "sha256": "b087e4b25b89b924c56f0f36340eec1eea85d3f86b3894fc32e57a41528ca310",
       "gitBlobSha1": "de25d89278f27dc9ae15d58176ea369e06c6831e"
     }
-  ],
-  "dependencies": [
-    {
-      "path": "public/request-20261005/excalibur-shared-sword-motion-runtime-luna-r1/motion-planner.mjs",
-      "bytes": 6817,
-      "sha256": "48753301f3e79ced4708d4a56ba3f70a996334e7ecc2ce8d53c2a70062c5b760",
-      "gitBlobSha1": "ac0afff10368d68423e9b146a2771f46e0d37991",
-      "unchangedBaseDependency": true
-    },
-    {
-      "path": "assets/generated/alchemy-excalibur.webp",
-      "bytes": 280344,
-      "sha256": "a75177d081271240026f63b4d36beec2979fe276f048e9ddcc9ed50e6a89eaf6",
-      "gitBlobSha1": "ce326cbeba3be67943ee6fe7cb9e152349dd19e2",
-      "unchangedBaseDependency": true
-    }
-  ],
-  "technicalDerivative": {
-    "fromVersion": "excalibur-zero-swing-sol61-r6",
-    "contract": "excalibur-r6-public-startup-diagnosis-sol61-r1/CONTRACT.md",
-    "contractSealSha256": "2b20969c508acadc7ea81fd698ebc065581827c54412fc15738076292a581eb4",
-    "publicSourceCommit": "442c9acaef8b1f48c6ab0d4eedcb707ae8b016e5",
-    "creativeRevision": false
-  },
-  "native": "not_run",
-  "quality": "pending",
-  "adoption": "unknown",
-  "frozen": true
+  ]
 }
