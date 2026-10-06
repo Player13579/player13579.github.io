@@ -1,0 +1,95 @@
+{
+  "schema": "dva-e-gallery-package/v1",
+  "version": "iai-result-zero-sol61-r1",
+  "groupId": "iai-result-zero-sol61",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "runtimeAuthor": "GPT-6-Luna",
+  "adoption": "unknown",
+  "quality": "pending",
+  "nativeReplay": "pending",
+  "parentReplay": "pending",
+  "normalAudioListening": "pending",
+  "safariReplay": "pending",
+  "gameIntegration": "not_connected",
+  "publication": "pending",
+  "core": {
+    "candidate": "outputs/request-20261006/iai-result-zero-sol61-r1",
+    "manifestSha256": "dd5085da5fef779a1fa667036a6f8014fc5d0d7259b795f6f4a210e01c7b741f",
+    "sealSha256": "72132f50d24d55da392ffec031b5e2dac72bd9ac96289756cd93dd01e75a5b1b",
+    "modelSha256": "7eff37b9a06c496dd02d91a0bdf3bc7dd3cf17a95f710f7229c354522c406535",
+    "shadersSha256": "c45c883f9b47b9c2db8f8bc1f1113629d4637abe618498426b2e1d21f20b2967"
+  },
+  "host": {
+    "candidate": "outputs/request-20261006/iai-result-host-luna-r2",
+    "manifestSha256": "07d191dcf9be8669de8d51ad6105fe6d52b54beea28287c9ff04f96176c9534c",
+    "sealSha256": "291c2738afa68bbf1d424eded60490f21441a224fa8e9b2ca3af21aedf52fa97",
+    "rendererSourceSha256": "384ad578bf22dead63a783fd346cad3174c71d3f5ac3d67829f87c0456a40017",
+    "importPathDerivative": true,
+    "technicalDerivative": "iai-r4-startup-phase-technical-luna-r1"
+  },
+  "startupContract": {
+    "protocol": "dva-gallery-startup/v1",
+    "versionId": "iai-result-zero-sol61-r1",
+    "requiresRealParentTokenAndAttemptEpoch": true,
+    "readyRequires": "current active 2-pass completed host ticket, literal null scope result, current target/generation/lease, positive E age and field radius, connected canvas and positive backing viewport",
+    "clearOnlyReady": false,
+    "heldPreview": "one muted same-E-time render; no RAF/expiry timer/audio/catch-up while held; suppress cue for that same cause on resume",
+    "autoLoop": "new cause after finite 900 E-ms active cause lifetime; paused during hold/hidden",
+    "proofSource": "actual host.render receipt"
+  },
+  "runtimeFiles": [
+    {
+      "path": "index.html",
+      "bytes": 2415,
+      "sha256": "aae2641b349413b78e6a573bcd5922bf780f601b97278006b76c508b703b41ba"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 12887,
+      "sha256": "1615697988afc80156b3c6fb38be464a9333a21ebae7f0be226fb7ecd14cec35"
+    },
+    {
+      "path": "package/renderer.mjs",
+      "bytes": 33122,
+      "sha256": "384ad578bf22dead63a783fd346cad3174c71d3f5ac3d67829f87c0456a40017"
+    },
+    {
+      "path": "package/serial-raf.mjs",
+      "bytes": 1315,
+      "sha256": "22866351461e95a2c87b985adf066d8e319da7cec76ba04f2a7daab9048d902b"
+    },
+    {
+      "path": "package/iai-model.mjs",
+      "bytes": 10580,
+      "sha256": "7eff37b9a06c496dd02d91a0bdf3bc7dd3cf17a95f710f7229c354522c406535"
+    },
+    {
+      "path": "package/iai-shaders.mjs",
+      "bytes": 4011,
+      "sha256": "c45c883f9b47b9c2db8f8bc1f1113629d4637abe618498426b2e1d21f20b2967"
+    },
+    {
+      "path": "package/projection.mjs",
+      "bytes": 358,
+      "sha256": "67e19e059ab9ac8b11cdc295472e2a714a48fa89e148ed78d8135c65c08a89b7"
+    },
+    {
+      "path": "package/gallery-sfx-api.mjs",
+      "bytes": 1034,
+      "sha256": "6bb4d528c59eb8b9c29b38d728f8895019289f7a4bcdbb7b484e03d068116133"
+    }
+  ],
+  "gallerySfxAdapter": {
+    "api": "window.__gallerySfx.activateFromGesture",
+    "status": "technical-derivative-source-only",
+    "returns": "Promise<boolean>",
+    "call": "renderer.unlockAudio invoked synchronously in trusted gesture stack",
+    "guards": [
+      "verify",
+      "disposed",
+      "live !== true"
+    ],
+    "heldAndMuteIndependent": true,
+    "soundStartedIndependent": true
+  }
+}
