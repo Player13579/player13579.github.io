@@ -1,13 +1,13 @@
 {
-  "schema": "excalibur-r6-startup-retirement-package-seal/v1",
+  "schema": "excalibur-r6-a-sfx-composed-package-seal/v1",
   "versionId": "excalibur-zero-swing-sol61-r6",
-  "manifestSha256": "5a8cc8c825234ac126f9f739293499bb0f9a873ae171a180834b5798ca9f6f5e",
+  "manifestSha256": "18ff59b2ae1579b3f58e6c58adc3af61428fd6af8185b6f08d45030b06bd0410",
   "files": [
     {
       "path": "app.mjs",
-      "bytes": 13886,
-      "sha256": "07ecb87184b513118cd59fcc7adf5426e965d60e8e1744efed6924f6416c8634",
-      "gitBlobSha1": "ece165ff52530c394ecb1b3dc61683f00765da46"
+      "bytes": 20656,
+      "sha256": "8b634721ade3f0ef56e9aa2ded39665c7a0e577e37f876b8115f009277ddb37e",
+      "gitBlobSha1": "4021e7044ed4bb7a476fe38616a881d0c81f8322"
     },
     {
       "path": "creative-adapter.mjs",
@@ -35,9 +35,9 @@
     },
     {
       "path": "gallery-contract.mjs",
-      "bytes": 2740,
-      "sha256": "942c52eeeed460c3b2d16935ac3a45e6578a7328598e88d3761fe3fbf753291a",
-      "gitBlobSha1": "c45f756c11d02a366b1e7ae2e9417a711ab75bfd"
+      "bytes": 2699,
+      "sha256": "868736f80113da32a2fb628ce8022a01016c0844c3c2ea37f63b316831d7047a",
+      "gitBlobSha1": "a2d27fb42a3f2bd8c710e09a97191c46d715e3a9"
     },
     {
       "path": "index.html",
@@ -53,15 +53,63 @@
     },
     {
       "path": "runtime-host.mjs",
-      "bytes": 18501,
-      "sha256": "fd96412a73142f83b3794a70b4a4cf0d1736dbe145e2bb718944d82c903b1186",
-      "gitBlobSha1": "db53dda981d0d09c91aff9742bb3033ae71fbe41"
+      "bytes": 21307,
+      "sha256": "a807e2ad0768a1015b20d2d9fe5b2947465044c01421bfbd78b3c5d6b83ff175",
+      "gitBlobSha1": "d1354f8fbfbbb6a30469e472fba2b1f118ab1483"
     },
     {
       "path": "sfx.mjs",
-      "bytes": 4203,
-      "sha256": "b087e4b25b89b924c56f0f36340eec1eea85d3f86b3894fc32e57a41528ca310",
-      "gitBlobSha1": "de25d89278f27dc9ae15d58176ea369e06c6831e"
+      "bytes": 12144,
+      "sha256": "4f208375c1cb231cfe116789b97f5395dbdc379fdffcb66dbd07df6448e5391b",
+      "gitBlobSha1": "7865c2959aa79b78192262cc3217d99cd81fe072"
     }
-  ]
+  ],
+  "dependencies": [
+    {
+      "path": "public/request-20261005/excalibur-shared-sword-motion-runtime-luna-r1/motion-planner.mjs",
+      "unchangedBaseDependency": true,
+      "bytes": 6817,
+      "sha256": "48753301f3e79ced4708d4a56ba3f70a996334e7ecc2ce8d53c2a70062c5b760",
+      "gitBlobSha1": "ac0afff10368d68423e9b146a2771f46e0d37991"
+    },
+    {
+      "path": "assets/generated/alchemy-excalibur.webp",
+      "unchangedBaseDependency": true,
+      "bytes": 280344,
+      "sha256": "a75177d081271240026f63b4d36beec2979fe276f048e9ddcc9ed50e6a89eaf6",
+      "gitBlobSha1": "ce326cbeba3be67943ee6fe7cb9e152349dd19e2"
+    }
+  ],
+  "sourceTexture": {
+    "path": "assets/generated/alchemy-excalibur.webp",
+    "unchangedBaseDependency": true,
+    "bytes": 280344,
+    "sha256": "a75177d081271240026f63b4d36beec2979fe276f048e9ddcc9ed50e6a89eaf6",
+    "gitBlobSha1": "ce326cbeba3be67943ee6fe7cb9e152349dd19e2"
+  },
+  "composition": {
+    "method": "startup-A semantic delta transplanted onto frozen faithful-SFX package; no whole-file source replacement",
+    "commonBaseCommit": "827d25d4fd8e0b08bdc66241abd83d0c4be73070",
+    "commonBaseTree": "0e132e4cf67f06ece2896812f16be2c85e7678de",
+    "currentStartupACommit": "51188d1a7a67a1bfd005d2faa852f83554cc92a4",
+    "currentStartupATree": "cd638884314bd763752f58c2818da23e33f739a4",
+    "currentParentAppSha256": "07ecb87184b513118cd59fcc7adf5426e965d60e8e1744efed6924f6416c8634",
+    "currentParentRuntimeHostSha256": "fd96412a73142f83b3794a70b4a4cf0d1736dbe145e2bb718944d82c903b1186",
+    "sfxProducerReadySha256": "94668b32957b5c9d333f213d3c66595e2f0a281298d283ac2d6b2a7ae1211509",
+    "sfxIndependentReviewSha256": "f90f51ff73e61490f0baaaf312a90f2356c68c566f4345c28ac5ace75a73987a",
+    "startupASemanticChanges": [
+      "app selects renderMode creative-only",
+      "host mode validated/forwarded/stored; source-only default preserved",
+      "only source-only scaffold shader/pipeline/sampler/bind/vertex allocation is conditional",
+      "resize/ready remain after scaffold branch",
+      "creative-only render before adapter fails; encoder label conditional"
+    ]
+  },
+  "native": "not_run",
+  "quality": "pending",
+  "adoption": "unknown",
+  "gameIntegration": "not_connected",
+  "publicationEligible": false,
+  "publication": "not_published",
+  "frozen": true
 }
