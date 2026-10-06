@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weapon Switch five-kind · GPT-6.1-Sol r4 technical preview</title>
+<style>
+  html,body{margin:0;background:#101820;color:#dbe8ec;font:14px system-ui}
+  main{display:grid;gap:8px;justify-items:center;padding:10px}
+  canvas{width:min(100%,720px);height:auto;aspect-ratio:3/2;background:#101820}
+  #status{min-height:1.2em;max-width:100%;overflow-wrap:anywhere}
+  #status.is-error{color:#ffb3b3;white-space:pre-wrap}
+  button,select{font:inherit}
+  fieldset{display:flex;flex-wrap:wrap;gap:8px;border:1px solid #60717e}
+  label{white-space:nowrap}
+</style>
+<main>
+  <div>
+    <label>Destination kind · edition 5/5
+      <select id="variant" aria-label="Selected destination kind; local fixture preview only">
+        <option value="0" data-kind="handgun">Handgun (HG) · amber wholeform lift</option>
+        <option value="1" data-kind="smg">Submachine gun (SMG) · ordered three-slice seat</option>
+        <option value="2" data-kind="assault">Assault rifle (AR) · opposed half translation</option>
+        <option value="3" data-kind="sniper">Sniper rifle (SR) · longitudinal reveal</option>
+        <option value="4" data-kind="taser">Taser (TSR) · vertical paired convergence</option>
+      </select>
+    </label>
+    <span>Version-bound local preview only; selection sends no game event.</span>
+    <button id="hold">Hold phase</button>
+    <button id="resume">Resume preview</button>
+  </div>
+  <fieldset aria-label="Renderer controls">
+    <legend>Same-cause renderer controls</legend>
+    <label><input id="main" type="checkbox" checked> main</label>
+    <label><input id="dock" type="checkbox" checked> dock</label>
+    <label><input id="source" type="checkbox" checked> source MRT</label>
+    <label><input id="observer" type="checkbox" checked> observer</label>
+    <label><input id="extra" type="checkbox" checked> registered extra light</label>
+    <label><input id="motionDetail" type="checkbox" checked> kind motion</label>
+    <label><input id="face" type="checkbox" checked> face</label>
+    <label><input id="reducedMotion" type="checkbox"> reduced motion</label>
+  </fieldset>
+  <canvas id="view" width="720" height="480" aria-label="Weapon switch WebGPU preview; no game event"></canvas>
+  <div id="status" role="status">Starting WebGPU…</div>
+</main>
+<script type="module" src="./runtime.mjs"></script>
+<script type="module">
+  import { startWeaponSwitchGalleryFixture } from './gallery-fixture-loop.mjs';
+  const params = new URL(location.href).searchParams;
+  if (params.has('embed') && params.has('galleryFixture')) {
+    const stop = startWeaponSwitchGalleryFixture({
+      url: location.href,
+      snapshot: () => window.__weaponSwitchSnapshot?.(),
+      fixtureSelection: input => window.__weaponSwitchFixtureSelection?.(input),
+      getVariant: () => document.querySelector('#variant').value,
+      resumeButton: document.querySelector('#resume'),
+      setStatus: value => { document.querySelector('#status').textContent = value; }
+    });
+    window.addEventListener('pagehide', stop, { once: true });
+  }
+</script>
+</html>

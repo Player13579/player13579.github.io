@@ -1,0 +1,89 @@
+{
+  "schema": "dva-weapon-switch-kind-package/v1",
+  "versionId": "weapon-switch-kind-sol61-r4",
+  "groupId": "weapon-switch-sol",
+  "title": "武器切替 銃種別 (HG/SMG/AR/SR/TSR) · GPT-6.1-Sol r4 · edition 5/5",
+  "creativeEdition": 5,
+  "creativeEditionLimit": 5,
+  "designAuthorDisplayName": "GPT-6.1-Sol",
+  "runtimeAuthorDisplayName": "GPT-6-Luna",
+  "previewKind": "webgpu",
+  "pageRoute": "public/weapon-switch-kind-sol61-r4/gallery-fixture.html?galleryFixture=1&embed=1",
+  "packageManifestRoute": "public/weapon-switch-kind-sol61-r4/package-manifest.json",
+  "sourceCommit": "2ab5d35945d44d89ca29ac6b542754281cb8a977",
+  "sourceTree": "a08e998787876fe5383694cf7d12d70549b540b6",
+  "sourceCoreManifestSha256": "8b12d7c4efb18ec2c7d7b3d4b1f10072712608d2e3dcb9783b4ca84e884abd60",
+  "hostManifestSha256": "8eea7609d650e52c59c520e1c0926def07c070a75f2b1589431ed3d448199794",
+  "sourcePins": {
+    "model": "8a76bd6dc816bf0d6fc9deb5c45803551b40241fb8f6c36cbce7efa033fd0b2e",
+    "worldWgsl": "91f119d8b2068a5531a5751eea29ebf3d9214051b9f6fc5a99c90240647fec71",
+    "observerWgsl": "ec62dc51a1b5558a46f60a29e823ac45d236067e4c4b9708ba840e477268b31e",
+    "sfx": "c0e1c2c0547587a70aa598a92b58cd108f74a96c63d2597cb5fb202a5825c1c5",
+    "contactModel": "c7325262912a2fab6ccbdb99b4d6c4a43d19e75adad8f9665c833bd03c5e7a7e",
+    "parentSfxBridge": "cc5da8c77029a02adf86d41b0290a3d4a952d15d623248317b029eb20094fede"
+  },
+  "audioContract": {
+    "independentGestureUnlock": true,
+    "successfulGestureResult": "explicit Promise<{state:\"active\"}>",
+    "playbackRequiresFreshCauseAndCurrentGpuProof": true,
+    "verifyMuted": true
+  },
+  "readiness": {
+    "technicalReplayStatus": "not_run",
+    "nativeGpuReplay": "not_run",
+    "normalAudioListening": "not_run",
+    "safariReplayStatus": "unverified",
+    "qualityStatus": "pending",
+    "gameIntegrationStatus": "not_connected",
+    "adoption": "unknown",
+    "userReviewStatus": "waiting-at-improvement-limit",
+    "publicationStatus": "private-candidate-only"
+  },
+  "files": [
+    {
+      "path": "gallery-fixture-loop.mjs",
+      "bytes": 2208,
+      "sha256": "e5d25843b9104fa4cd7fe627b648c3515f1a4848c5f699b999f133feaf063ec4"
+    },
+    {
+      "path": "gallery-fixture.html",
+      "bytes": 3193,
+      "sha256": "17c736b1a141997bfa2e837b745742bf966edf64c19156975c98a37d5db6d3fb"
+    },
+    {
+      "path": "host-contract.mjs",
+      "bytes": 3116,
+      "sha256": "5993c8b5441591b198a1b7fc2d7df8e6cb6678e1c3efb04b5fb0a84692257ec0"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 46582,
+      "sha256": "ac029e9085589fa617adbfc1e58099a008ca1e9770e24b65aaf9e25af593912d"
+    },
+    {
+      "path": "source/contact-model.mjs",
+      "bytes": 1525,
+      "sha256": "c7325262912a2fab6ccbdb99b4d6c4a43d19e75adad8f9665c833bd03c5e7a7e"
+    },
+    {
+      "path": "source/observer.wgsl",
+      "bytes": 1671,
+      "sha256": "ec62dc51a1b5558a46f60a29e823ac45d236067e4c4b9708ba840e477268b31e"
+    },
+    {
+      "path": "source/per-kind-model.mjs",
+      "bytes": 9204,
+      "sha256": "8a76bd6dc816bf0d6fc9deb5c45803551b40241fb8f6c36cbce7efa033fd0b2e"
+    },
+    {
+      "path": "source/sfx.mjs",
+      "bytes": 3789,
+      "sha256": "c0e1c2c0547587a70aa598a92b58cd108f74a96c63d2597cb5fb202a5825c1c5"
+    },
+    {
+      "path": "source/weapon-switch.wgsl",
+      "bytes": 6198,
+      "sha256": "91f119d8b2068a5531a5751eea29ebf3d9214051b9f6fc5a99c90240647fec71"
+    }
+  ]
+}
