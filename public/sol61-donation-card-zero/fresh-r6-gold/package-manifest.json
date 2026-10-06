@@ -1,0 +1,206 @@
+{
+  "schema": "dva-donation-r6-current-parent-gallery-package/v1",
+  "version": "donation-zero-sol61-r6-gold-sparkles",
+  "group": "common-donation-zero-sol61",
+  "creativeEdition": 6,
+  "creativeEditionLimit": 6,
+  "author": "GPT-6.1-Sol",
+  "runtimeAdapter": "GPT-6-Luna",
+  "sourceParent": {
+    "commit": "6625c83c15f08110399abf11eb24058d21053dea",
+    "tree": "a2cd76e269b7a56ca7b972d319bc9a19fc6a23a3"
+  },
+  "currentRegistrationParent": {
+    "commit": "9df9a7dc8cbea8ac90874ed4b420ffcde4f8e178",
+    "tree": "f62d74a087f8fd66b2a045805bf71c2072ea88bb"
+  },
+  "registrationStatus": "private-current-parent-gallery-preflight",
+  "publicationEligible": false,
+  "sourceSeal": "outputs/request-20261006/donation-gold-color-correction-sol-r1/SEAL.json",
+  "sourcePackageManifestSha256": "45aa33abd26a44cb317a6b11c755cb0888abe29dc669278702a9bc7769a5a919",
+  "sourcePackageSealSha256": "6e01a375317dcd102d49c96590390a1574a1982b79bd81d161bbb75cfe216c2c",
+  "routePath": "public/sol61-donation-card-zero/fresh-r6-gold",
+  "routeEntry": "public/sol61-donation-card-zero/fresh-r6-gold/index.html?embed=1&galleryAutoLoop=1",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2051,
+      "sha256": "b01d86c6328397de4c73b5c0928906222cf38ec953fb7479071f95ba8b8cadc0"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 10721,
+      "sha256": "118da20ce7abf15ddbce169207c33256e39f23ff3590b1e00259d7064611080e"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 28346,
+      "sha256": "7171ce8de3f4b381c8c7626940790cc277efe271ee4d67317cdf48e2e556f0c0"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 6658,
+      "sha256": "0edee17e7ac0507673322f710649001542e830cfd1167de829840be55abcc488"
+    },
+    {
+      "path": "source/material.mjs",
+      "bytes": 7130,
+      "sha256": "e065a0164f13a459d61f1929c04c4b55f09c229a00dfd1a9c2b065edcfe5f264"
+    },
+    {
+      "path": "source/shader.mjs",
+      "bytes": 15928,
+      "sha256": "ca9042c9d19c3a494e2b7ef29e1f3972ed1702aa63c75476c4ae2abb3aa61ba7"
+    },
+    {
+      "path": "source/sfx-design.mjs",
+      "bytes": 3847,
+      "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9"
+    }
+  ],
+  "importClosure": [
+    [
+      "index.html",
+      "./app.mjs",
+      "app.mjs"
+    ],
+    [
+      "app.mjs",
+      "./runtime.mjs",
+      "runtime.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/plan.mjs",
+      "source/plan.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/sfx-design.mjs",
+      "source/sfx-design.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/plan.mjs",
+      "source/plan.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/shader.mjs",
+      "source/shader.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/sfx-design.mjs",
+      "source/sfx-design.mjs"
+    ],
+    [
+      "source/plan.mjs",
+      "./material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "source/shader.mjs",
+      "./material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "source/sfx-design.mjs",
+      "./plan.mjs",
+      "source/plan.mjs"
+    ]
+  ],
+  "solCreativeSource": {
+    "path": "outputs/request-20261006/donation-gold-color-correction-sol-r1/candidate/source/shader.mjs",
+    "sha256": "56fd4485de963ee7688173b99cf3dd3dfa69745c5d8bc9bdbcf7f91455bf2b3b",
+    "compiledAsNative": false
+  },
+  "technicalLineage": {
+    "identifierRepair": {
+      "from": "56fd4485de963ee7688173b99cf3dd3dfa69745c5d8bc9bdbcf7f91455bf2b3b",
+      "to": "b3c7150723ea7f7b51fdc368a9635e86fbaf09c346d8f5c1ea8025d5df559cca",
+      "path": "outputs/request-20261006/donation-r6-gallery-preflight-luna-r1/candidate-wt/public/sol61-donation-card-zero/fresh-r6-gold/source/shader.mjs",
+      "scope": "rename reserved identifier patch to facetRegion at exactly three sites",
+      "nativeCompile": "pending"
+    },
+    "reviewedUnion": {
+      "baselineParentCommit": "6625c83c15f08110399abf11eb24058d21053dea",
+      "baselineParentTree": "a2cd76e269b7a56ca7b972d319bc9a19fc6a23a3",
+      "baselineRuntimeSha256": "0bc8f6ec280bcc313a4a2a0d958903f836847e3830f8a5566874ba04e87d6cf6",
+      "baselineShaderSha256": "b3c7150723ea7f7b51fdc368a9635e86fbaf09c346d8f5c1ea8025d5df559cca",
+      "unionRuntimeSha256": "7171ce8de3f4b381c8c7626940790cc277efe271ee4d67317cdf48e2e556f0c0",
+      "unionShaderSha256": "ca9042c9d19c3a494e2b7ef29e1f3972ed1702aa63c75476c4ae2abb3aa61ba7",
+      "onlyChangedSourceFiles": [
+        "runtime.mjs",
+        "source/shader.mjs"
+      ],
+      "otherFiveSourceFilesByteIdentical": true,
+      "shaderChange": "goldCoin conservative alpha/bounds guards only",
+      "runtimeChange": "optical pass support scissor only; full clear retained"
+    },
+    "standaloneNativeEvidence": {
+      "path": "outputs/request-20261006/root-continuation-evidence-r4/donation-visible-lifetime.json",
+      "sha256": "26ee9394f8b243081f7f9626df38bc79d73e9bf3dce0019fee37094baba34ebb",
+      "ages": [
+        280,
+        390,
+        500,
+        610,
+        720,
+        1100,
+        1600,
+        1700,
+        2400
+      ],
+      "status": "foreground-lifetime-samples-quality-pending",
+      "captureLimits": "JPEG 530x561 screenshot raster vs996x664 GPU backing;280/2400 pre-screenshot snapshots have prior completion;no atomic pixel-readback/full continuity proof",
+      "scope": "limited held-age source facts for standalone union only; no atomic pixel-readback/full continuity proof; not current-parent gallery acceptance"
+    }
+  },
+  "originalLoop": {
+    "versionCount": 5,
+    "limit": 5,
+    "status": "closed-awaiting-user-review",
+    "reset": false,
+    "priorEditionPreserved": true
+  },
+  "requestedCorrection": {
+    "edition": 6,
+    "authorizedEditions": 1,
+    "automaticNextEdition": false,
+    "noR7Authorized": true
+  },
+  "standaloneEvidence": {
+    "path": "outputs/request-20261006/root-continuation-evidence-r4/donation-visible-lifetime.json",
+    "sha256": "26ee9394f8b243081f7f9626df38bc79d73e9bf3dce0019fee37094baba34ebb",
+    "ages": [
+      280,
+      390,
+      500,
+      610,
+      720,
+      1100,
+      1600,
+      1700,
+      2400
+    ],
+    "status": "foreground-lifetime-samples-quality-pending",
+    "captureLimits": "JPEG 530x561 screenshot raster vs996x664 GPU backing;280/2400 pre-screenshot snapshots have prior completion;no atomic pixel-readback/full continuity proof"
+  },
+  "status": {
+    "native": "pending-current-parent-native",
+    "WGSLCompile": "pending-current-parent-native",
+    "quality": "pending",
+    "adoption": "unknown",
+    "gameIntegration": "not_connected",
+    "normalListening": "not_run",
+    "performance": "pending",
+    "safari": "unverified",
+    "publicationEligible": false
+  }
+}

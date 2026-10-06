@@ -1,0 +1,188 @@
+{
+  "schema": "dva-donation-gold-additional-correction-package/v1",
+  "version": "donation-zero-sol61-r7-gold-softbox",
+  "group": "common-donation-zero-sol61",
+  "author": "GPT-6.1-Sol",
+  "historicalRuntimeAdapter": "GPT-6-Luna",
+  "creativeEdition": 7,
+  "creativeEditionLimit": 11,
+  "additionalCorrection": {
+    "edition": 1,
+    "authorizedEditions": 5,
+    "authorization": "latest user instruction 2026-10-06 supersedes historical R6 noR7 permission record",
+    "automaticNextEdition": false
+  },
+  "parent": {
+    "version": "donation-zero-sol61-r6-gold-sparkles",
+    "packagePath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261006\\root-continuation-evidence-r4\\donation-release-metadata-r2\\candidate\\public\\sol61-donation-card-zero\\fresh-r6-gold",
+    "manifestSha256": "9559a6522ce3f0a645e823e6a247c13b9337a77eb10a0ed62f40fe188676b2ad",
+    "sourcePins": [
+      {
+        "path": "index.html",
+        "bytes": 2051,
+        "sha256": "b01d86c6328397de4c73b5c0928906222cf38ec953fb7479071f95ba8b8cadc0"
+      },
+      {
+        "path": "app.mjs",
+        "bytes": 10721,
+        "sha256": "118da20ce7abf15ddbce169207c33256e39f23ff3590b1e00259d7064611080e"
+      },
+      {
+        "path": "runtime.mjs",
+        "bytes": 28346,
+        "sha256": "7171ce8de3f4b381c8c7626940790cc277efe271ee4d67317cdf48e2e556f0c0"
+      },
+      {
+        "path": "source/plan.mjs",
+        "bytes": 6658,
+        "sha256": "0edee17e7ac0507673322f710649001542e830cfd1167de829840be55abcc488"
+      },
+      {
+        "path": "source/material.mjs",
+        "bytes": 7130,
+        "sha256": "e065a0164f13a459d61f1929c04c4b55f09c229a00dfd1a9c2b065edcfe5f264"
+      },
+      {
+        "path": "source/shader.mjs",
+        "bytes": 15928,
+        "sha256": "ca9042c9d19c3a494e2b7ef29e1f3972ed1702aa63c75476c4ae2abb3aa61ba7"
+      },
+      {
+        "path": "source/sfx-design.mjs",
+        "bytes": 3847,
+        "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9"
+      }
+    ]
+  },
+  "routePath": "public/sol61-donation-card-zero/fresh-r7-gold-softbox",
+  "routeEntry": "public/sol61-donation-card-zero/fresh-r7-gold-softbox/index.html?embed=1&galleryAutoLoop=1",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2089,
+      "sha256": "2da87cdf84f789b0f7fb45e82ab96e61c4594b6a1066733d2d904db962227b72"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 10756,
+      "sha256": "f10ecad9be14d38a93ef7c12f8dc6085a54cfcd8beac7cb9299a21cf8fdac3af"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 28346,
+      "sha256": "7171ce8de3f4b381c8c7626940790cc277efe271ee4d67317cdf48e2e556f0c0"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 6737,
+      "sha256": "5dff086775c1485fec4f5677813a7830fa26631cd521b3757ca3fa7e0c3c2d4f"
+    },
+    {
+      "path": "source/material.mjs",
+      "bytes": 8055,
+      "sha256": "f6b5f46b034b4b48933db39ff0ca91b43a48a5e693ed9710f8c4c47326c03192"
+    },
+    {
+      "path": "source/shader.mjs",
+      "bytes": 16503,
+      "sha256": "95097d868672cd40d137edc0f91b512ff497253bdbab81a53c68c2aa53505cc5"
+    },
+    {
+      "path": "source/sfx-design.mjs",
+      "bytes": 3847,
+      "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9"
+    }
+  ],
+  "importClosure": [
+    [
+      "index.html",
+      "./app.mjs",
+      "app.mjs"
+    ],
+    [
+      "app.mjs",
+      "./runtime.mjs",
+      "runtime.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/plan.mjs",
+      "source/plan.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "app.mjs",
+      "./source/sfx-design.mjs",
+      "source/sfx-design.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/plan.mjs",
+      "source/plan.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/shader.mjs",
+      "source/shader.mjs"
+    ],
+    [
+      "runtime.mjs",
+      "./source/sfx-design.mjs",
+      "source/sfx-design.mjs"
+    ],
+    [
+      "source/plan.mjs",
+      "./material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "source/shader.mjs",
+      "./material.mjs",
+      "source/material.mjs"
+    ],
+    [
+      "source/sfx-design.mjs",
+      "./plan.mjs",
+      "source/plan.mjs"
+    ]
+  ],
+  "status": {
+    "WGSLCompile": "not_run",
+    "native": "not_run",
+    "quality": "pending-real-output",
+    "adoption": "unknown",
+    "gameIntegration": "not_connected",
+    "normalListening": "not_run",
+    "performance": "not_run",
+    "safari": "unverified",
+    "publicationEligible": false
+  },
+  "changedFromR6": [
+    "index.html",
+    "app.mjs",
+    "source/plan.mjs",
+    "source/material.mjs",
+    "source/shader.mjs"
+  ],
+  "unchangedRuntimeAndSfx": true,
+  "B": {
+    "mode": "derivative-no-new-formal-B-serialization",
+    "historicalAuthorityCommit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "currentFullCompliance": "not_claimed"
+  },
+  "material": {
+    "model": "RGB complex-IOR gold conductor + directional GGX/Smith + analytic neutral studio softboxes",
+    "lighting": "selected distant white fill, broad softbox and narrow slanted strip; approximate roughness prefilter",
+    "geometry": "same ray-marched minted coin with cap dome 0.68 instead of 0.32 to expose broad normal variation",
+    "HDR": "reflection/emission preserved in rgba16float; common RGB-ratio-preserving shoulder after optical redistribution and before one sRGB encode",
+    "limits": [
+      "analytic selected studio environment, not actual game-scene reflection",
+      "RGB gold optical constants, not spectral integration",
+      "native material read/sparkle readability/continuity unverified"
+    ]
+  }
+}
