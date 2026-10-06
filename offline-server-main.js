@@ -3919,7 +3919,7 @@ const CHECKPOINT_ARCHIVE_FILE = path.join(MODERATION_DIR, "checkpoint-history.js
 const CHECKPOINT_ACTIVE_TIMEOUT_MS = 45_000;
 const ANALYTICS_REMOTE_URL = String(
   process.env.ANALYTICS_REMOTE_URL ||
-  "https://raw.githubusercontent.com/nuusu887/-/analytics-data/data/checkpoint-history.json"
+  "https://raw.githubusercontent.com/player13579/-/analytics-data/data/checkpoint-history.json"
 ).trim();
 const ANALYTICS_REMOTE_TOKEN = String(process.env.ANALYTICS_REMOTE_TOKEN || "").trim();
 const ANALYTICS_REMOTE_WRITE_URL = String(process.env.ANALYTICS_REMOTE_WRITE_URL || (() => {
@@ -3928,7 +3928,7 @@ const ANALYTICS_REMOTE_WRITE_URL = String(process.env.ANALYTICS_REMOTE_WRITE_URL
 })()).trim();
 const PROFILE_REMOTE_URL = String(
   process.env.PROFILE_REMOTE_URL ||
-  "https://raw.githubusercontent.com/nuusu887/nuusu887.github.io/Codex-honoo/runtime-data/player-profiles.json"
+  "https://raw.githubusercontent.com/player13579/player13579.github.io/Codex-honoo/runtime-data/player-profiles.json"
 ).trim();
 const PROFILE_REMOTE_WRITE_URL = String(process.env.PROFILE_REMOTE_WRITE_URL || (() => {
   const match = PROFILE_REMOTE_URL.match(/^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/([^/]+)\/(.+)$/);
@@ -20686,7 +20686,7 @@ function allowedCorsOrigin(origin) {
     if (local && ["http:", "https:"].includes(url.protocol)) return origin;
     if (url.protocol !== "https:") return "";
     if (
-      host === "nuusu887.github.io" ||
+      host === "player13579.github.io" ||
       host === "plicy.net" ||
       host === "html5.plicy.net" ||
       host === "game.plicy.net" ||

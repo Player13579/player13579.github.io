@@ -73,7 +73,7 @@ function motionSafeScrollBehavior(requested = "smooth") {
 const VERIFY_REAL_SCREEN_FIXTURE_KIND = IS_VERIFICATION_MODE
   ? String(URL_PARAMETERS.get("realScreenFixture") || "")
   : "";
-const IS_TRUSTED_REAL_SCREEN_FIXTURE_HOST = /^(?:localhost|127(?:\.\d{1,3}){3}|nuusu887\.github\.io)$/i.test(location.hostname);
+const IS_TRUSTED_REAL_SCREEN_FIXTURE_HOST = /^(?:localhost|127(?:\.\d{1,3}){3}|player13579\.github\.io)$/i.test(location.hostname);
 const VERIFY_REAL_SCREEN_AUTO_START = Boolean(
   URL_PARAMETERS.get("autoStart") === "1" &&
   IS_TRUSTED_REAL_SCREEN_FIXTURE_HOST
@@ -32867,7 +32867,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=nuusu-name-v33", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=player-name-restore-v34", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.

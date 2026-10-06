@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0a1018">
 <link rel="icon" href="data:,">
-<title>素材ギャラリー · ヌース</title>
+<title>素材ギャラリー · Defenders vs Attackers</title>
 <style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#0a1018;color:#edf3f5}
 *{box-sizing:border-box}[hidden]{display:none!important}body{margin:0}button,a{font:inherit}button:focus-visible,a:focus-visible{outline:2px solid #8de8e1;outline-offset:3px}
@@ -26,7 +26,7 @@ main{max-width:1600px;margin:auto;padding:clamp(12px,2vw,24px)}header{display:fl
 </style>
 </head>
 <body><main>
-<header><div><div class="eyebrow">ヌース · WebGPU</div><h1>素材ギャラリー</h1><p>マップ・エフェクトを切り替え、作者・品質・採用・本編接続を版ごとに表示します。</p></div><div class="counter" id="entry-counter" aria-live="polite">0 件</div></header>
+<header><div><div class="eyebrow">Defenders vs Attackers · WebGPU</div><h1>素材ギャラリー</h1><p>マップ・エフェクトを切り替え、作者・品質・採用・本編接続を版ごとに表示します。</p></div><div class="counter" id="entry-counter" aria-live="polite">0 件</div></header>
 <nav class="categories" role="tablist" aria-label="素材カテゴリ"><button type="button" role="tab" id="tab-map" aria-selected="false" data-category="map">Map</button><button type="button" role="tab" id="tab-effect" aria-selected="true" data-category="effect">Effect</button></nav><div class="adoption-filters" role="group" aria-label="採用状態"><button type="button" data-filter="adopted" aria-pressed="false">採用済み</button><button type="button" data-filter="unadopted" aria-pressed="true">未採用</button></div><div class="gallery-audio" id="gallery-audio"><button type="button" id="gallery-audio-enable" aria-pressed="false">音声を開始</button><span id="gallery-audio-status" role="status">最初のタップでEの効果音を有効にします。</span></div><div id="empty-category" class="empty-category" role="status" hidden></div><div class="layout" id="gallery-layout"><section class="viewer" aria-label="選択した素材のプレビュー"><div class="viewer-head"><div><h2 id="selected-title"></h2><p id="selected-description"></p><label class="version-control" for="version-select">版を選択<select id="version-select" aria-label="選択した素材の版"></select></label></div><span class="badge" id="selected-status"></span></div>
 <div class="gallery-startup-status" id="gallery-startup-status" role="status" aria-live="polite" hidden></div><div class="stage" id="stage"><div class="notice" id="notice" role="status">素材一覧を読み込んでいます…</div></div><div class="map-comparison" id="map-comparison" hidden><label id="map-interaction-control" hidden><input type="checkbox" id="map-interaction-toggle" disabled>キャラ操作</label><button type="button" id="map-compare-toggle" aria-pressed="false">原画のみで比較</button></div>
 <p class="scale-contract" id="effect-scale-contract"><strong>原寸基準: 980×620 CSS px、人物基準H64=64 px。</strong>各Eの主形が見やすい倍率で拡大します。背景部分のみを切り取り、主形は画面内に保ちます。</p>
