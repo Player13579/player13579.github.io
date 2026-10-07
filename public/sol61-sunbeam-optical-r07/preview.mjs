@@ -15,10 +15,11 @@ try{
   setTimeScale:scale=>{if(!Number.isFinite(scale)||scale<0)throw TypeError('nonnegative actor scale required');timeScale=scale;sound.setTimeScale(scale);},
   dispose:async()=>{cancelAnimationFrame(raf);renderer.destroy();await sound.destroy();},
  };
- function loop(now){
+ function loop(){
   if(!paused){
-   actorTime+=(now-lastNow)*timeScale;lastNow=now;const cycle=Math.floor(actorTime/2000),age=actorTime%2000;
-   if(lastAt&&api.intervals.length<1500)api.intervals.push(now-lastAt);lastAt=now;
+   // Use the same clock at callback execution as resume() uses; its RAF timestamp may predate Replay.
+   const callbackNow=performance.now();actorTime+=(callbackNow-lastNow)*timeScale;lastNow=callbackNow;const cycle=Math.floor(actorTime/2000),age=actorTime%2000;
+   if(lastAt&&api.intervals.length<1500)api.intervals.push(callbackNow-lastAt);lastAt=callbackNow;
    const changed=cycle!==lastLoop;if(changed){lastLoop=cycle;api.loops++;}
    renderer.render(age);api.options=renderer.options;
    const sourceEnabled=renderer.options.sourceVisibility>0&&renderer.options.intensity>0;
