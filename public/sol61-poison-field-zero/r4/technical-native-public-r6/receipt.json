@@ -1,0 +1,244 @@
+{
+  "checkedAt": "2026-10-07T17:28:04.216073+00:00",
+  "status": "ACCEPT_LIMITED_PUBLIC_PARENT_NATIVE_LIFETIME",
+  "publicCommit": "6900fb4fa6c263523dd1aed5bc20306c3d886290",
+  "resultPath": "/workspace/artifacts/poison-r4-current-public-closure-native-prep-luna-r6/run-20261007T172458Z/evidence/RESULT.json",
+  "resultSha256": "290b7ea6aa7213622aaf1d74bb7c1a9fe058dbb976b7ffde8c96d292dc9efbe9",
+  "actualSourceBodyChecks": {
+    "count": 9,
+    "allMatched": true
+  },
+  "selectionAndOwner": {
+    "passed": true,
+    "parentSelectedExactR4": true,
+    "tokenVersionEpochMatched": true,
+    "currentIframeWindowMatched": true,
+    "protocolReady": true,
+    "firstFrame": {
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "canvasConnected": true,
+      "active": true,
+      "scopeErrors": null,
+      "passes": 2,
+      "viewportWidth": 923,
+      "viewportHeight": 360,
+      "ageMs": 198.89999999850988,
+      "build": 0.25609035201382147,
+      "causeId": "[\"poison-field-r4-1\",\"poison-field-r4-source\",1791393903615]",
+      "generation": 1,
+      "targetGeneration": 1,
+      "currentTargetGeneration": 1,
+      "backingWidth": 923,
+      "backingHeight": 360
+    },
+    "canvasPositive": true,
+    "referenceCircle": "64px content dimensions",
+    "verifyMuted": true,
+    "held": false,
+    "statusSamplingStartedAfterGate": true
+  },
+  "normalLifetime": {
+    "causeId": "[\"poison-field-r4-1\",\"poison-field-r4-source\",1791393903615]",
+    "createdAt": 1791393903615,
+    "endsAt": 1791393915615,
+    "authoredDurationMs": 12000,
+    "actualElapsedFromCreationMs": 12232,
+    "actualElapsedFromCreationClock": "child Date.now epoch",
+    "firstActiveChildEpochMs": 1791393903942,
+    "lastChildEpochMs": 1791393915847,
+    "firstActiveChildPerfMs": 2708,
+    "lastActiveChildPerfMs": 14362.30000000447,
+    "activeSpanMs": 11654.30000000447,
+    "sampleCount": 72,
+    "uniqueCurrentCauseActiveCompletedProofCount": 160,
+    "terminalInactiveQueueClear": true,
+    "terminalInactiveProof": {
+      "event": {
+        "phase": "proof-evaluation",
+        "status": "settled",
+        "at": 14489.40000000596,
+        "causeId": null,
+        "ageMs": 70.60000000149012,
+        "createdAt": null,
+        "endsAt": null,
+        "generation": 1,
+        "targetGeneration": 1,
+        "lease": 2,
+        "width": 923,
+        "height": 360,
+        "queueStatus": "fulfilled",
+        "scopes": [
+          null,
+          null,
+          null
+        ],
+        "active": false,
+        "build": 0,
+        "passes": 2,
+        "executionFailure": ""
+      },
+      "activeCauseProof": {
+        "phase": "proof-evaluation",
+        "status": "settled",
+        "at": 14123.70000000298,
+        "causeId": "[\"poison-field-r4-1\",\"poison-field-r4-source\",1791393903615]",
+        "ageMs": 11742.39999999851,
+        "createdAt": 1791393903615,
+        "endsAt": 1791393915615,
+        "generation": 1,
+        "targetGeneration": 1,
+        "lease": 2,
+        "width": 923,
+        "height": 360,
+        "queueStatus": "fulfilled",
+        "scopes": [
+          null,
+          null,
+          null
+        ],
+        "active": true,
+        "build": 1,
+        "passes": 2,
+        "executionFailure": ""
+      },
+      "sourceNowPerfMs": 14612.90000000596,
+      "sourceObservedEpochMs": 1791393915847,
+      "postExpiryEpochMs": 232,
+      "queueDrained": true,
+      "noLastFailure": true,
+      "sameGenerationTargetLeaseAndBacking": true
+    },
+    "automaticSecondCauseAfterClearNotObserved": true,
+    "loopPixelClearClaim": "not_made; autoLoop restart may create a new cause after 80 ms"
+  },
+  "diagnosticSummary": {
+    "uniqueSourceEventCount": 1159,
+    "uniqueQueueSubmitEvents": 163,
+    "uniqueQueueCompletionCallbacks": 163,
+    "uniqueLiteralNullScopeResults": 489,
+    "uniqueActiveProofEvaluations": 160,
+    "uniqueTerminalInactiveProofs": 2,
+    "uniqueCurrentCauseActiveProofs": 160
+  },
+  "terminalInactiveProof": {
+    "event": {
+      "phase": "proof-evaluation",
+      "status": "settled",
+      "at": 14489.40000000596,
+      "causeId": null,
+      "ageMs": 70.60000000149012,
+      "createdAt": null,
+      "endsAt": null,
+      "generation": 1,
+      "targetGeneration": 1,
+      "lease": 2,
+      "width": 923,
+      "height": 360,
+      "queueStatus": "fulfilled",
+      "scopes": [
+        null,
+        null,
+        null
+      ],
+      "active": false,
+      "build": 0,
+      "passes": 2,
+      "executionFailure": ""
+    },
+    "activeCauseProof": {
+      "phase": "proof-evaluation",
+      "status": "settled",
+      "at": 14123.70000000298,
+      "causeId": "[\"poison-field-r4-1\",\"poison-field-r4-source\",1791393903615]",
+      "ageMs": 11742.39999999851,
+      "createdAt": 1791393903615,
+      "endsAt": 1791393915615,
+      "generation": 1,
+      "targetGeneration": 1,
+      "lease": 2,
+      "width": 923,
+      "height": 360,
+      "queueStatus": "fulfilled",
+      "scopes": [
+        null,
+        null,
+        null
+      ],
+      "active": true,
+      "build": 1,
+      "passes": 2,
+      "executionFailure": ""
+    },
+    "sourceNowPerfMs": 14612.90000000596,
+    "sourceObservedEpochMs": 1791393915847,
+    "postExpiryEpochMs": 232,
+    "queueDrained": true,
+    "noLastFailure": true,
+    "sameGenerationTargetLeaseAndBacking": true
+  },
+  "actualErrors": {
+    "browserErrors": [],
+    "consoleErrors": [],
+    "pageErrors": [],
+    "requestFailures": [],
+    "criticalRuntimeFailures": []
+  },
+  "visualEvidence": {
+    "extractionReceipt": "/workspace/dva-cloud/receipts/root-poison-current-public-actual-review-r6/VIDEO-EXTRACTIONS.json",
+    "rootViewedVideoPTS": [
+      5,
+      10,
+      16
+    ],
+    "observed": "live parent selects R4; green luminous field has visibly different contours at the three sampled video states",
+    "exactVideoPTSsourceAgeJoin": "not established",
+    "isolatedPostClearPixels": "UNKNOWN: parent autoloop restarts; inactive proof is separate from images"
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "contextClosed": true,
+    "handleDisposed": true,
+    "cleanupErrors": [],
+    "launcherXvfbAuthClosed": true
+  },
+  "historicalWholeFailurePreserved": true,
+  "scopeLimits": [
+    "muted verify only",
+    "software SwiftShader Chromium, not iPad Safari",
+    "continuous fluency/full quality not accepted",
+    "normal SFX listening not run",
+    "main game integration not connected",
+    "R4 unadopted creative4of5 remaining1; no new creative revision"
+  ],
+  "evidenceFiles": [
+    {
+      "path": "public/sol61-poison-field-zero/r4/technical-native-public-r6/native-result.json",
+      "bytes": 712243,
+      "sha256": "290b7ea6aa7213622aaf1d74bb7c1a9fe058dbb976b7ffde8c96d292dc9efbe9"
+    },
+    {
+      "path": "public/sol61-poison-field-zero/r4/technical-native-public-r6/normal-parent-replay.webm",
+      "bytes": 1359983,
+      "sha256": "32de236e2c9dc7171889315f393813e878cf59e168933ca720669dd9d67d81f7"
+    },
+    {
+      "path": "public/sol61-poison-field-zero/r4/technical-native-public-r6/video-pts-10s.png",
+      "bytes": 409854,
+      "sha256": "44dd5ad33edc2bcf75107d460566fae8252a2708481fc3ad8f2fb836ed74cc65"
+    },
+    {
+      "path": "public/sol61-poison-field-zero/r4/technical-native-public-r6/video-pts-16s.png",
+      "bytes": 406231,
+      "sha256": "8863ce76625c2b2edaeedde49cba595e299b646c2dd44d4d47c6f91020438fc5"
+    },
+    {
+      "path": "public/sol61-poison-field-zero/r4/technical-native-public-r6/video-pts-5s.png",
+      "bytes": 378092,
+      "sha256": "14bb3207559d9c1eb18bb43df33e8221929c01e80f4ed796221bac312c14df09"
+    }
+  ],
+  "recordingModelAttribution": "Execution model metadata unavailable; no model inferred from parent or source author.",
+  "nativePublicEntryReplayCommit": "6900fb4fa6c263523dd1aed5bc20306c3d886290"
+}
