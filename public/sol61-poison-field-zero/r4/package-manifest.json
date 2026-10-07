@@ -1,0 +1,90 @@
+{
+  "schema": "dva-webgpu-effect-package/v1",
+  "groupId": "poison-field-zero-sol61",
+  "versionId": "poison-field-zero-sol61-r4",
+  "entry": "index.html",
+  "creator": "GPT-6.1-Sol",
+  "runtime": "historical GPT-6-Luna host retained; R4 identity/diagnostic adaptation GPT-6.1-Sol",
+  "renderer": "WebGPU-only",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 3287,
+      "sha256": "5c69c8ed6a6f381b10f8a6c17a6760fdce5d1cae3ea80f2bd2a405e7d57abb98"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9872,
+      "sha256": "d080d5f37098e7b26c47d0f623a59f65a0738f574bec2f975e84c5fe9e209153"
+    },
+    {
+      "path": "runtime-host.mjs",
+      "bytes": 33388,
+      "sha256": "c4845ae34b74fe94248d369ac818b56b5ca15d5d53d88a455d7e1d652c75d6c1"
+    },
+    {
+      "path": "gallery-loop.mjs",
+      "bytes": 2666,
+      "sha256": "7cad55422182652eb3750b5ceb68e7c453099699b73ff5b7bd2f52c4e8362df3"
+    },
+    {
+      "path": "support-scissor.mjs",
+      "bytes": 2012,
+      "sha256": "48e9045022e4f389ccf8539b06a0a857cd480137e49906004f922af146583e63"
+    },
+    {
+      "path": "poison-model.mjs",
+      "bytes": 8006,
+      "sha256": "ca0f8a456dfdee6cbe51b696a423083b1a6f111fce013b6a4243d89f4fb26a30"
+    },
+    {
+      "path": "poison-shaders.mjs",
+      "bytes": 9288,
+      "sha256": "a853acc3eb6482250fef3d7d7def09eea6e93868d69ce6c3f91b8560279d5e98"
+    }
+  ],
+  "unitContract": {
+    "fieldPosition": "canvas backing pixels",
+    "radius": "64 CSS px via actual backingWidth / getBoundingClientRect().width"
+  },
+  "renderContract": {
+    "world": "32 depth segments; 3 shared-density optical path segments only after finite-support rejection",
+    "optimization": "unchanged conservative support scissor; both WORLD MRT and presentation retain full transparent clears",
+    "observer": "unchanged R3 source-only HDR 9-tap local scatter, alpha/display",
+    "hold": "existing controlled observation with SFX muted; field age follows live clock",
+    "cycle": "new cause every actual 12000ms lifetime; expiry clear then 80ms restart"
+  },
+  "core": {
+    "modelSha256": "ca0f8a456dfdee6cbe51b696a423083b1a6f111fce013b6a4243d89f4fb26a30",
+    "shadersSha256": "a853acc3eb6482250fef3d7d7def09eea6e93868d69ce6c3f91b8560279d5e98",
+    "worldWgslSha256": "f57cf91e18511d6b472c98494db5dafdb5962b88f1e2e3a5c7c8bd138778ace3",
+    "observerWgslSha256": "67b35b36af74c1deb472c4b2971fc1c8dc6127f5b056800ad500fad28622bcc0",
+    "modelVersion": "poison-field-quality-sol61-r4",
+    "runtimeDiagnosticWorldWgslSha256": "f57cf91e18511d6b472c98494db5dafdb5962b88f1e2e3a5c7c8bd138778ace3",
+    "runtimeDiagnosticObserverWgslSha256": "67b35b36af74c1deb472c4b2971fc1c8dc6127f5b056800ad500fad28622bcc0"
+  },
+  "creativeEdition": 4,
+  "creativeEditionLimit": 5,
+  "additionalCreativeEditionsRemaining": 1,
+  "adoption": "unknown",
+  "quality": "pending",
+  "technicalReplay": "pending native shader compilation and actual submit",
+  "nativePerformance": "not_measured",
+  "normalAudioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "publication": "private-preview-only",
+  "publicationEligible": false,
+  "provenance": {
+    "sourceR3Package": "outputs/request-20261007/local-poison-r3-matched-control-host-luna-r1/package",
+    "sourceR3ManifestSha256": "68638697a5ab58b949bab96fcc5c92416ce6be49cec98744c8b69eb8d9166b27",
+    "sourceR3SealSha256": "2c431c161132a50c535ea82affd46e705f31a5136dc7542dd6edbf19aaf4e5b0",
+    "sourceDesign": "outputs/request-20261007/poison-r3-glow-design-sol61-r1",
+    "demonstratedDefectReview": "outputs/request-20261007/local-poison-r3-matched-quality-sol61-r1/REVIEW.md",
+    "r4DesignContractSha256": "0396a11e29eb8bd6940f9b7497ec523c550bf287c3801342f0dda67dbddf33a8",
+    "inputPinsSha256": "622d00b035354b6b71905185d22008e8cca1b8c2d3c126d6ecf8b99cb438502b",
+    "BCommit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "baseBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extensionBlob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+    "historicalAttributionPreserved": true
+  }
+}
