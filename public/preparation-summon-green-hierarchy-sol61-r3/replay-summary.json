@@ -1,0 +1,47 @@
+{
+  "schema": "dva-gallery-limited-replay-summary/v1",
+  "scope": "limited gallery listing only; not a quality acceptance or main-game approval",
+  "versionId": "preparation-summon-green-hierarchy-sol61-r3",
+  "groupId": "preparation-arrival",
+  "creativeEdition": {
+    "number": 3,
+    "cap": 5,
+    "creativeAuthor": "GPT-6.1-Sol",
+    "technicalAuthor": "GPT-6-Luna"
+  },
+  "package": {
+    "manifestSha256": "a8ba0ce7149a6f94cfa4a71700ec95d97cfa94ec8cded9a2d728c917f8d216ff",
+    "sealSha256": "877f7d9244b1097201f07cec717db726a2f9334d00c9794104970e3c00cadc4c",
+    "runtimeSha256": "955bd642252b22a105bab7bba6b6dd5aade77e2f68194cd588832fe99ac124e8",
+    "originalPackageBytesPreserved": true
+  },
+  "listingApproval": {
+    "status": "APPROVED_LIMITED_REPLAY_LISTING_NOT_QUALITY_ACCEPTANCE",
+    "approvalSha256": "d5cd5735bce3ceccf2ffb4519148cfe836fc2dc9ef32ec87ee78b481ead6c373"
+  },
+  "observed": [
+    "All ten actual loaded payload hashes match.",
+    "Actual runtime shader hashes match.",
+    "Single and joint green geometric effect visible in the exact R3 video.",
+    "Two unforced natural expiry and clear cycles pass.",
+    "Single early exact-ID completed source-frame coverage passes.",
+    "No observed page console runtime queue rejection or unexpected network errors."
+  ],
+  "native": {
+    "overallStatus": "FAIL_NATIVE_HARNESS",
+    "failure": "Joint early [40,160) ms completed source-frame coverage FAIL.",
+    "unexecuted": "Native retirement and root drain gates were not executed after the early assertion."
+  },
+  "qualityStatus": "pending",
+  "adoption": "not-adopted",
+  "audio": {
+    "normalSfxListening": "not_run"
+  },
+  "safari": "unverified",
+  "gameIntegration": "not_connected",
+  "privateEvidence": {
+    "published": false,
+    "referencePolicy": "Private proof artifacts are excluded from this public summary and from public routes."
+  },
+  "publicationReceipt": "Not included; this version summary is not a publication receipt."
+}
