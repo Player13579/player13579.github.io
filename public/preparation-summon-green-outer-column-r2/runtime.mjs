@@ -1,6 +1,7 @@
 import { DURATION, EFFECT_ID, WORLD, packUniform, project } from './source/effect.mjs';
 import { playSummon } from './source/sfx.mjs';
 import { createCauseLedger } from './lifecycle.mjs';
+import { createCanvasSizeGate, runLiveSizedFrame } from './dimension-gate.mjs';
 
 const query = new URL(location.href).searchParams;
 const verify = query.has('verify');
@@ -21,6 +22,16 @@ const state = { phase: 'child-document', sequence: 0, initialized: false, ready:
   buffers: new Set(), inflight: new Set(),
   retiredTargets: new Set() };
 const ledger = createCauseLedger({ stopSound: sound => sound?.stop?.() });
+state.sizeWaiters = new Set();
+const sizeGate = createCanvasSizeGate({ getRect: () => canvas.getBoundingClientRect(),
+  getDpr: () => globalThis.devicePixelRatio, getSize: () => state.size,
+  onResize: (width, height) => {
+    state.size = [width, height]; state.generation++;
+    canvas.width = width; canvas.height = height;
+    if (state.initialized && state.device) {
+      retireTargets(state.targets); state.targets = createTargets(width, height);
+    }
+  } });
 const soundSeen = new Set();
 const live = () => !state.disposed;
 const fmtError = error => ({ name: error?.name || 'Error', message: String(error?.message || error),
@@ -78,10 +89,9 @@ function allocateUniform(bytes) {
   return buffer;
 }
 
-function allocateCauseStorage(causes, at) {
+function allocateCauseStorage(causes, at, dpr) {
   const data = new Float32Array(8 * 4);
   const [width, height] = state.size;
-  const dpr = Math.max(1, globalThis.devicePixelRatio || 1);
   const ppm = (64 * dpr) / WORLD.actorHeight;
   const globalAnchor = [width * .5, height * .70];
   for (let i = 0; i < Math.min(causes.length, 8); i++) {
@@ -118,20 +128,12 @@ function retireTargets(targets) {
 
 function syncSize() {
   if (!state.initialized || !live()) return false;
-  const dpr = Math.max(1, globalThis.devicePixelRatio || 1);
-  const rect = canvas.getBoundingClientRect();
-  const width = Math.max(1, Math.round(rect.width * dpr));
-  const height = Math.max(1, Math.round(rect.height * dpr));
-  if (width === state.size[0] && height === state.size[1]) return false;
-  state.size = [width, height]; state.generation++;
-  canvas.width = width; canvas.height = height;
-  retireTargets(state.targets); state.targets = createTargets(width, height);
-  return true;
+  const result = sizeGate.sync();
+  return result.valid ? result.changed || result.restored : null;
 }
 
-function uniformFor(age, causesCount) {
+function uniformFor(age, causesCount, dpr) {
   const [width, height] = state.size;
-  const dpr = Math.max(1, globalThis.devicePixelRatio || 1);
   const ppm = (64 * dpr) / WORLD.actorHeight;
   const anchor = [width * .5, height * .70];
   const packed = packUniform({ width, height, anchor, ppm, age, exposure: 1.0,
@@ -155,8 +157,12 @@ function submissionSettled(buffers, targets, proof) {
 }
 
 function draw(ageOverride, { force = false, clearOnly = false } = {}) {
-  if (!state.initialized || !live() || state.size[0] < 1 || state.size[1] < 1) return null;
-  syncSize();
+  if (!state.initialized) return null;
+  return runLiveSizedFrame(live, sizeGate.sync, dimensions => drawSized(ageOverride,
+    { force, clearOnly, dpr: dimensions.dpr }));
+}
+
+function drawSized(ageOverride, { force = false, clearOnly = false, dpr } = {}) {
   const now = performance.now();
   const expired = ledger.prune(now);
   if (expired.length) state.events.push({ at: now, kind: 'expired', causes: expired.map(c => c.causeId) });
@@ -179,14 +185,14 @@ function draw(ageOverride, { force = false, clearOnly = false } = {}) {
     { view: targets.source.createView(), clearValue: { r: 0, g: 0, b: 0, a: 0 }, loadOp: 'clear', storeOp: 'store' }
   ] });
   const age = causes.length ? (causes[0].previewAge ?? ledger.age(causes[0], now)) : 0;
-  const buffer = allocateUniform(uniformFor(age, causes.length)); frameBuffers.push(buffer);
-  const causeBuffer = allocateCauseStorage(causes, now); frameBuffers.push(causeBuffer);
+  const buffer = allocateUniform(uniformFor(age, causes.length, dpr)); frameBuffers.push(buffer);
+  const causeBuffer = allocateCauseStorage(causes, now, dpr); frameBuffers.push(causeBuffer);
   const bind = state.device.createBindGroup({ layout: state.worldLayout,
     entries: [{ binding: 0, resource: { buffer } }, { binding: 1, resource: { buffer: causeBuffer } }] });
   worldPass.setPipeline(state.worldPipeline); worldPass.setBindGroup(0, bind); worldPass.draw(3);
   worldPass.end();
 
-  const obsBuffer = allocateUniform(uniformFor(age, causes.length)); frameBuffers.push(obsBuffer);
+  const obsBuffer = allocateUniform(uniformFor(age, causes.length, dpr)); frameBuffers.push(obsBuffer);
   const observationBind = state.device.createBindGroup({ layout: state.observationLayout, entries: [
     { binding: 0, resource: { buffer: obsBuffer } },
     { binding: 1, resource: targets.world.createView() },
@@ -216,7 +222,7 @@ function tick() {
   state.raf = 0;
   if (!live() || state.held) return;
   const proof = draw();
-  if (ledger.active.size) schedule();
+  if (ledger.active.size && !proof?.deferred && !sizeGate.deferred) schedule();
   else if (proof?.causeId) draw(undefined, { force: true });
 }
 
@@ -303,6 +309,8 @@ window.addEventListener('message', event => {
 
 async function boot() {
   emit('child-document', 'pending'); emit('adapter', 'pending');
+  const initialSize = await waitForUsableSize();
+  if (!initialSize || !live()) return;
   if (!navigator.gpu) {
     const error = { code: 'WEBGPU_UNAVAILABLE', message: 'This preview requires WebGPU.' };
     status.textContent = error.message; emit('device', 'unsupported', { error }); return;
@@ -330,7 +338,6 @@ async function boot() {
     state.context = canvas.getContext('webgpu');
     if (!state.context) throw Object.assign(new Error('Canvas could not create a WebGPU context.'), { code: 'WEBGPU_CANVAS_UNAVAILABLE' });
     state.format = navigator.gpu.getPreferredCanvasFormat();
-    state.context.configure({ device: state.device, format: state.format, alphaMode: 'premultiplied' });
     emit('assets', 'pending');
     const [worldCode, multiWorldCode, observationCode] = await Promise.all([
       readSource(shaders.world), readSource(shaders.multiWorld), readSource(shaders.observation)]);
@@ -377,12 +384,30 @@ async function boot() {
       minFilter: 'linear', magFilter: 'linear', mipmapFilter: 'nearest',
       addressModeU: 'clamp-to-edge', addressModeV: 'clamp-to-edge' });
     emit('pipelines', 'ready');
-    new ResizeObserver(() => { if (syncSize()) { if (!ledger.active.size) draw(undefined, { force: true }); else schedule(); } }).observe(canvas);
-    window.addEventListener('resize', () => { if (syncSize()) { if (!ledger.active.size) draw(undefined, { force: true }); else schedule(); } });
-    state.initialized = true; syncSize();
-    const initial = draw(undefined, { force: true, clearOnly: true });
-    await state.device.queue.onSubmittedWorkDone();
-    if (!live()) return;
+    const onSizeChange = () => {
+      for (const wake of [...state.sizeWaiters]) wake();
+      const resized = syncSize();
+      if (resized === null) { state.renderDeferred = true; cancelScheduled(); return; }
+      if (!resized) return;
+      state.renderDeferred = false;
+      if (!state.ready) return;
+      if (state.held || !ledger.active.size) draw(undefined, { force: true }); else schedule();
+    };
+    new ResizeObserver(onSizeChange).observe(canvas);
+    window.addEventListener('resize', onSizeChange);
+    state.initialized = true;
+    const validInitial = sizeGate.sync();
+    if (!validInitial.valid) {
+      state.initialized = false;
+      const restoredSize = await waitForUsableSize();
+      if (!restoredSize || !live()) return;
+      state.initialized = true;
+    }
+    if (!state.targets) state.targets = createTargets(state.size[0], state.size[1]);
+    state.context.configure({ device: state.device, format: state.format, alphaMode: 'premultiplied' });
+    syncSize();
+    const initial = await completeInitialClear();
+    if (!initial || !live()) return;
     state.ready = true;
     state.events.push({ at: performance.now(), kind: 'initial-clear-complete', proof: initial });
     const firstFrame = { recorded: true, submitted: true, completed: true, canvasConnected: canvas.isConnected,
@@ -404,6 +429,7 @@ async function boot() {
 function dispose(reason = 'disposed') {
   if (state.disposed) return;
   cancelScheduled();
+  for (const wake of [...state.sizeWaiters]) wake();
   if (state.initialized && state.targets) {
     ledger.cancelAll();
     if (!state.deviceLost) draw(undefined, { force: true, clearOnly: true });
@@ -420,6 +446,54 @@ function dispose(reason = 'disposed') {
   });
   emit('playing', reason === 'device-lost' ? 'error' : 'cancelled', { error: reason === 'device-lost'
     ? state.latestError : { code: 'RETIRED', message: reason } });
+}
+
+async function waitForUsableSize() {
+  while (live()) {
+    const size = sizeGate.sync();
+    if (size.valid) return size;
+    await new Promise(resolve => {
+      let observer;
+      const finish = () => {
+        observer?.disconnect(); window.removeEventListener('resize', finish);
+        state.sizeWaiters.delete(finish); resolve();
+      };
+      observer = new ResizeObserver(finish); observer.observe(canvas);
+      window.addEventListener('resize', finish, { once: true });
+      state.sizeWaiters.add(finish);
+      if (!live()) finish();
+    });
+  }
+  return null;
+}
+
+async function completeInitialClear() {
+  while (live()) {
+    const dimensions = sizeGate.sync();
+    if (!dimensions.valid) {
+      if (!await waitForUsableSize() || !live()) return null;
+      continue;
+    }
+    const proof = draw(undefined, { force: true, clearOnly: true });
+    if (proof?.deferred) {
+      if (!await waitForUsableSize() || !live()) return null;
+      continue;
+    }
+    if (!proof) {
+      await state.device.queue.onSubmittedWorkDone();
+      continue;
+    }
+    await state.device.queue.onSubmittedWorkDone();
+    if (!live()) return null;
+    const current = sizeGate.sync();
+    if (!current.valid) {
+      if (!await waitForUsableSize() || !live()) return null;
+      continue;
+    }
+    if (proof.generation !== state.generation || proof.width !== state.size[0] || proof.height !== state.size[1]) continue;
+    return proof;
+  }
+  return null;
 }
 window.addEventListener('pagehide', () => dispose('pagehide'), { once: true });
 document.addEventListener('visibilitychange', () => {
