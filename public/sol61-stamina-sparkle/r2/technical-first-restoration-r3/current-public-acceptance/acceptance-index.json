@@ -1,0 +1,180 @@
+{
+  "schema": "stamina-r2-current-public-acceptance-index-luna-r1/v1",
+  "createdAt": "2026-10-07",
+  "scope": "bounded evidence index; no catalog edit or publication",
+  "publicAcceptance": {
+    "version": "stamina-sparkle-sol61-r2",
+    "creativeEdition": "R2",
+    "adoption": "unadopted",
+    "R11AdoptionDefaultUnchanged": true,
+    "commit": "724541de7199d7c632d900d255dc3ae5a847b90d",
+    "commitMatchesAcrossReviews": true,
+    "status": "ACCEPT_LIMITED_CURRENT_PUBLIC_ENTRY_AND_CONTINUOUS_REPLAY",
+    "accepted": "actual current-public gallery entry and continuous native replay only",
+    "entryAndReplay": {
+      "HTTPRawBlobExactRoutes": 16,
+      "browserRawBlobExactRoutes": 7,
+      "firstFrameCompleted": true,
+      "ordinaryReplaySamples": 12,
+      "submissions": [
+        3,
+        25
+      ],
+      "loop": [
+        0,
+        4
+      ],
+      "sourceBodyH": 64,
+      "physicalCanvas": [
+        980,
+        620
+      ],
+      "errors": [],
+      "actualResultStatus": "PASS_LIMITED_ACTUAL_PUBLIC_ENTRY_AND_CONTINUOUS_REPLAY",
+      "sampleCount": 12,
+      "url": "https://player13579.github.io/webgpu-e-gallery.html?category=effect&filter=adopted&asset=stamina-astra&version=stamina-sparkle-sol61-r2&verify=stamina-public-r3-724541de7199",
+      "deepLink": {
+        "status": "selected",
+        "category": "effect",
+        "filter": "adopted",
+        "asset": "stamina-astra",
+        "version": "stamina-sparkle-sol61-r2"
+      },
+      "ownedResourcesClosed": true
+    },
+    "delivery": {
+      "httpEntityRoutes": 16,
+      "exactRoutes": 16,
+      "allExact": true,
+      "deploymentBuiltExactCommit": true,
+      "rawGitBlobPins": 11,
+      "allBlobPinsPass": true,
+      "deliveryRawGitHashesSelfConsistent": true,
+      "overlappingDeliveryPinsCrossCheck": true
+    },
+    "notAccepted": {
+      "ordinarySFXListening": false,
+      "fullQuality": false,
+      "SafariIpad": false,
+      "mainConnected": false,
+      "adoption": false,
+      "R11AdoptionDefaultChanged": false
+    },
+    "scopeNote": "public replay is distinct from the private FIRST restoration proof; screenshots do not prove full-lifetime quality."
+  },
+  "privateFirstRestoration": {
+    "scope": "private queue/first-restoration fence; not public-catalog or public replay acceptance",
+    "status": "ACCEPT_LIMITED_PRIVATE_FIRST_RESTORATION_QUEUE_FENCE",
+    "zeroCssMs": 500.0947259977693,
+    "zeroSubmitCounts": [
+      10,
+      10
+    ],
+    "firstRestorationSubmission": 11,
+    "sameCause": "stamina-sparkle-sol61-r2:1",
+    "actualFirstProof": {
+      "status": "completed-current-same-cause",
+      "submissionId": 11,
+      "causeId": "stamina-sparkle-sol61-r2:1",
+      "ageMs": 867.2000000029802,
+      "viewportWidth": 980,
+      "viewportHeight": 620,
+      "lifecycleEpoch": 7,
+      "queueIdentityCaptured": true,
+      "completionPromiseCaptured": null,
+      "settled": true,
+      "guardPassed": true,
+      "queueCompletionObserved": true,
+      "sameCause": true,
+      "completedSubmissionId": 11,
+      "completedCauseId": "stamina-sparkle-sol61-r2:1",
+      "completedAgeMs": 867.2000000029802,
+      "currentCauseIdAtCompletion": "stamina-sparkle-sol61-r2:1",
+      "currentRenderedSubmissionId": 11,
+      "baseline": {
+        "causeId": "stamina-sparkle-sol61-r2:1",
+        "ageMs": 853.5,
+        "submissionId": 10,
+        "lifecycleEpoch": 3
+      },
+      "error": null
+    },
+    "limitations": [
+      "Software Chromium SwiftShader, not hardware/iPad Safari",
+      "gpuContext metadata null; actual original queue proof observed, no invented adapter info or null error scopes",
+      "Later screenshot loop2, not FIRST cause1 exact frame",
+      "verify forces audio zero; no normal SFX/listening",
+      "Private baseline3e910 parent, not current public catalog",
+      "Old81890 FAIL_FIRST_RESTORATION_STALE preserved",
+      "R2 creative edition/unadopted; R11 adopted/default unchanged"
+    ],
+    "resourcesClosed": true
+  },
+  "boundedSyncProposal": {
+    "status": "proposal_only",
+    "catalogEdited": false,
+    "published": false,
+    "catalogMetadata": "If the current catalog metadata still has this technical acceptance pending, record only the limited current-public entry/replay and exact 16-route delivery at commit 724541de7199d7c632d900d255dc3ae5a847b90d; preserve R2 unadopted and R11 default unchanged.",
+    "rootActualProofDelta": "Record the private FIRST restoration queue fence separately as private evidence: submission 11, same cause stamina-sparkle-sol61-r2:1, queue completion observed. Do not merge this private fence into public replay proof or imply public FIRST-restoration acceptance.",
+    "remainingGates": [
+      "ordinary SFX listening",
+      "full visual/lifetime quality acceptance",
+      "Safari/iPad verification",
+      "main-game connection",
+      "R2 adoption decision"
+    ],
+    "candidateScope": "technical adapter, package size/hash, bounded catalog metadata and evidence only; current-public replay pending",
+    "ledgerRefs": [
+      "/workspace/dva-cloud/work-r1/CLOUD-ACTIVE-GOAL.json"
+    ]
+  },
+  "inputPins": [
+    {
+      "path": "/workspace/dva-cloud/receipts/root-stamina-current-public-replay-r3/ROOT-REVIEW.json",
+      "bytes": 1805,
+      "sha256": "780f4c87bda03be467752dfd48a01433347750a0aece5e03bc88d5e7dfbbfd6b"
+    },
+    {
+      "path": "/workspace/dva-cloud/receipts/root-stamina-first-restoration-actual-review-r6/ROOT-REVIEW.json",
+      "bytes": 3118,
+      "sha256": "f2ab8bb2d0997737c8348db98f7b54d506ece286be479c8099f3e43b296339f1"
+    },
+    {
+      "path": "/workspace/dva-cloud/receipts/root-stamina-first-restoration-actual-review-r6/PUBLIC-DELIVERY-READBACK.json",
+      "bytes": 28516,
+      "sha256": "83ffcb42aa67235e08791057816c2c52f4b7bbe19c0fa4c18ee1542d386e7ddf"
+    },
+    {
+      "path": "/workspace/dva-cloud/receipts/root-stamina-first-restoration-actual-review-r6/COMMIT-BLOB-READBACK.json",
+      "bytes": 2242,
+      "sha256": "39c271bf933706fa4c74c4ebf448b6c97478f4849d5d4f14c58323363c6ad932"
+    },
+    {
+      "path": "/workspace/artifacts/stamina-r2-current-public-replay-cloud-r3/run-20261007T180926Z/RESULT.json",
+      "bytes": 17710,
+      "sha256": "888955efadac1c1c8ca95f0c706702e6af6c56d0d958e5c7f05dda050bc7380f"
+    },
+    {
+      "path": "/workspace/artifacts/stamina-r2-first-restoration-native-prep-luna-r6/run-20261007T175526Z/evidence/NATIVE-RESULT.json",
+      "bytes": 44818,
+      "sha256": "5d8cdd7ae6c3211e1885b09d0d1764399d04ee37b4778ac858da801c42996dfb"
+    },
+    {
+      "path": "/workspace/dva-cloud/receipts/root-stamina-first-restoration-actual-review-r6/RELEASE-CANDIDATE.json",
+      "bytes": 2406,
+      "sha256": "ffda186e374da4587de3962217f7f24818e42ebdb0ea70e3d062fef1eddb5a3f"
+    },
+    {
+      "path": "/workspace/dva-cloud/work-r1/CLOUD-ACTIVE-GOAL.json",
+      "bytes": 26847,
+      "sha256": "df28c3c5bc7313439d79121f6b33bfc17194d43b8751b275435bf1f5da87e6ce"
+    }
+  ],
+  "verification": {
+    "cpuAndSha256Only": true,
+    "browserOrGPURunPerformed": false,
+    "catalogOrPublicMutationPerformed": false,
+    "allReferencedHashChecksPass": true,
+    "deliveryEntityToRawBlobPinsPass": true
+  }
+}
