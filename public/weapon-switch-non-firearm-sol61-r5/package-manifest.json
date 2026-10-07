@@ -1,0 +1,181 @@
+{
+  "schema": "weapon-switch-r5-public-package-manifest/v2",
+  "versionId": "weapon-switch-non-firearm-sol61-r5",
+  "status": "PUBLIC_R5_RELEASE",
+  "author": "GPT-6.1-Sol",
+  "editionAllowance": {
+    "additional": 1,
+    "total": 5,
+    "remaining": 4
+  },
+  "technicalHost": "GPT-6-Luna",
+  "scope": "exact sealed gallery-adapter fixture source with mechanical version-local imports; no main-game integration or quality claim",
+  "packageEntry": "/public/weapon-switch-non-firearm-sol61-r5/gallery-fixture.html",
+  "payload": [
+    {
+      "path": "gallery-fixture.html",
+      "bytes": 2280,
+      "sha256": "6666da1adb943de713fdea51c70b6051b06131edca4dad8276cbb8f8e59c72bc",
+      "route": "/public/weapon-switch-non-firearm-sol61-r5/gallery-fixture.html"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 26302,
+      "sha256": "dd5fe3c9c93b5f6585010cf82ff0cf716dff2e8b9f2f3a1cc553a84b32c289fd",
+      "route": "/public/weapon-switch-non-firearm-sol61-r5/runtime.mjs"
+    },
+    {
+      "path": "source/creative-model.mjs",
+      "bytes": 8500,
+      "sha256": "73338ea1fabb4f880f9cd097eb1f7954d89472b3b59b44da262fcc92284af08d",
+      "route": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-model.mjs"
+    },
+    {
+      "path": "source/creative-shaders.mjs",
+      "bytes": 5878,
+      "sha256": "8f990b25c194fc4ef08c3f8e7eaf57bc5d1efbc283f8e840e27ca8635f367918",
+      "route": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-shaders.mjs"
+    },
+    {
+      "path": "source/creative-sfx.mjs",
+      "bytes": 2834,
+      "sha256": "aee0460e32272bab30d1cf39ba3186033f0d6dd3acf6c634b80b31283ffa4151",
+      "route": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-sfx.mjs"
+    },
+    {
+      "path": "source/receipt-adapter.mjs",
+      "bytes": 4573,
+      "sha256": "ee1900a8cd23eed0698e586aab3abf021e0900b2157832b909f536e6ccdab1fb",
+      "route": "/public/weapon-switch-non-firearm-sol61-r5/source/receipt-adapter.mjs"
+    }
+  ],
+  "closure": {
+    "edges": [
+      {
+        "from": "gallery-fixture.html",
+        "specifier": "./runtime.mjs",
+        "to": "runtime.mjs",
+        "fromRoute": "/public/weapon-switch-non-firearm-sol61-r5/gallery-fixture.html",
+        "toRoute": "/public/weapon-switch-non-firearm-sol61-r5/runtime.mjs"
+      },
+      {
+        "from": "runtime.mjs",
+        "specifier": "./source/creative-model.mjs",
+        "to": "source/creative-model.mjs",
+        "fromRoute": "/public/weapon-switch-non-firearm-sol61-r5/runtime.mjs",
+        "toRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-model.mjs"
+      },
+      {
+        "from": "runtime.mjs",
+        "specifier": "./source/creative-shaders.mjs",
+        "to": "source/creative-shaders.mjs",
+        "fromRoute": "/public/weapon-switch-non-firearm-sol61-r5/runtime.mjs",
+        "toRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-shaders.mjs"
+      },
+      {
+        "from": "runtime.mjs",
+        "specifier": "./source/creative-sfx.mjs",
+        "to": "source/creative-sfx.mjs",
+        "fromRoute": "/public/weapon-switch-non-firearm-sol61-r5/runtime.mjs",
+        "toRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-sfx.mjs"
+      },
+      {
+        "from": "runtime.mjs",
+        "specifier": "./source/receipt-adapter.mjs",
+        "to": "source/receipt-adapter.mjs",
+        "fromRoute": "/public/weapon-switch-non-firearm-sol61-r5/runtime.mjs",
+        "toRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/receipt-adapter.mjs"
+      },
+      {
+        "from": "source/receipt-adapter.mjs",
+        "specifier": "./creative-model.mjs",
+        "to": "source/creative-model.mjs",
+        "fromRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/receipt-adapter.mjs",
+        "toRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-model.mjs"
+      },
+      {
+        "from": "source/creative-shaders.mjs",
+        "specifier": "./creative-model.mjs",
+        "to": "source/creative-model.mjs",
+        "fromRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-shaders.mjs",
+        "toRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-model.mjs"
+      },
+      {
+        "from": "source/creative-sfx.mjs",
+        "specifier": "./creative-model.mjs",
+        "to": "source/creative-model.mjs",
+        "fromRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-sfx.mjs",
+        "toRoute": "/public/weapon-switch-non-firearm-sol61-r5/source/creative-model.mjs"
+      }
+    ],
+    "metadataRoutes": [
+      "/public/weapon-switch-non-firearm-sol61-r5/package-manifest.json",
+      "/public/weapon-switch-non-firearm-sol61-r5/package-seal.json",
+      "/public/weapon-switch-non-firearm-sol61-r5/native-review.json"
+    ]
+  },
+  "sourcePins": {
+    "galleryAdapterReady": {
+      "path": "outputs/request-20261007/weapon-switch-r5-gallery-adapter-luna-r1/READY.json",
+      "sha256": "ca31882f74338dc253615fa70fe09c3f859ae129484f12d623e35e332a5a7c9b"
+    },
+    "galleryAdapterSeal": {
+      "path": "outputs/request-20261007/weapon-switch-r5-gallery-adapter-luna-r1/SEAL.json",
+      "sha256": "d0b2f3a7ad221f3555cb07d14df89ecaef703ffa1d773a3568e0a30b35da5c7d"
+    },
+    "originalRuntime": {
+      "path": "outputs/request-20261007/weapon-switch-r5-gallery-adapter-luna-r1/public/weapon-switch-non-firearm-sol61-r5/runtime.mjs",
+      "sha256": "3a8ce1ff3adaaf21a8ae349692e0664cc9e7c278457857210b70d2022a299021"
+    },
+    "derivedRuntime": {
+      "sha256": "dd5fe3c9c93b5f6585010cf82ff0cf716dff2e8b9f2f3a1cc553a84b32c289fd",
+      "changedOccurrences": 1,
+      "change": {
+        "from": "import { admitLocalSelectionR5 } from '../../adapter.mjs';",
+        "to": "import { admitLocalSelectionR5 } from './source/receipt-adapter.mjs';"
+      }
+    },
+    "originalAdapter": {
+      "path": "outputs/request-20261007/weapon-switch-r5-gallery-adapter-luna-r1/adapter.mjs",
+      "sha256": "f61881d55cbe5e0a0fe213ddd3e295ba3b71a22fbc9c415eccf5bac75a63788e"
+    },
+    "derivedAdapter": {
+      "sha256": "ee1900a8cd23eed0698e586aab3abf021e0900b2157832b909f536e6ccdab1fb",
+      "changedOccurrences": 1,
+      "change": {
+        "from": "from './public/weapon-switch-non-firearm-sol61-r5/source/creative-model.mjs';",
+        "to": "from './creative-model.mjs';"
+      }
+    },
+    "creativeModulesByteExact": true
+  },
+  "acceptance": {
+    "parentReplay": "pass",
+    "lifetimeReplay": "pass-limited",
+    "technicalReplay": "pass-limited",
+    "quality": "pending",
+    "adoption": "unknown",
+    "gameIntegration": "not-connected",
+    "normalSFXFunctionalStatus": "pass-limited-functional",
+    "normalAudioListening": "not_run",
+    "safari": "unverified"
+  },
+  "sourceSnapshot": {
+    "originalManifestSha256": "1ff68d4fe666bbaf3de31f9400804d37489ad43c12fb07660e16164033636066",
+    "originalSealSha256": "9657bd18146a26aa736eef0b63bb782a76fcd1d3b0ec31ab6d7b7adfb4ee55f0",
+    "inputManifestSha256": "1ff68d4fe666bbaf3de31f9400804d37489ad43c12fb07660e16164033636066",
+    "inputSealSha256": "9657bd18146a26aa736eef0b63bb782a76fcd1d3b0ec31ab6d7b7adfb4ee55f0"
+  },
+  "creativeModulesByteExact": false,
+  "creativeSfxPcmByteIdentical": true,
+  "technicalDerivative": {
+    "changedPaths": [
+      "source/creative-sfx.mjs"
+    ],
+    "sourceParentSha256": "633cbfd73e13ab04888cc22ac0b273b7e9a93a46b2bb0e7729ce0669ce194df6",
+    "changedSourceSha256": "aee0460e32272bab30d1cf39ba3186033f0d6dd3acf6c634b80b31283ffa4151",
+    "creativePCMByteIdentical": true,
+    "preservedOtherSourceHashes": true,
+    "editionIncrement": false
+  }
+}

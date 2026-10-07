@@ -1,0 +1,44 @@
+{
+  "schema": "dva-r5-native-review/v1",
+  "versionId": "weapon-switch-non-firearm-sol61-r5",
+  "status": "root-accepted-evidence",
+  "evidence": {
+    "parentReplay": {
+      "status": "pass",
+      "sha256": "ad6122e6ca3e7a5d11201ff73a1c98dc7e6321eb7519fc2c194b271b62bb6ea7"
+    },
+    "lifetimeReplay": {
+      "status": "pass-limited",
+      "sha256": "ad6122e6ca3e7a5d11201ff73a1c98dc7e6321eb7519fc2c194b271b62bb6ea7"
+    },
+    "quality": {
+      "status": "pending",
+      "reviewer": "GPT-6.1-Sol",
+      "sha256": "b5e31dd4b1cd6313386d828236158b7140ed2f419c74272e898c3331eef2f436",
+      "scope": "Sparse onset, main-only/OFF/bright background/interruption and Safari/main game remain pending."
+    },
+    "normalSFX": {
+      "functionalStatus": "pass-limited-functional",
+      "sha256": "61891e3b8fdc07a34c635198974ce9d34a435db7a987c36191fb2af5930590f8",
+      "physicalListening": false,
+      "listening": "not_run",
+      "scope": "12 actual AudioBufferSource.start and exact source PCM captures with completed GPU proofs; no physical sink/listening or subjective audio acceptance."
+    }
+  },
+  "technicalDerivative": {
+    "changedPath": "source/creative-sfx.mjs",
+    "sourceParentSha256": "633cbfd73e13ab04888cc22ac0b273b7e9a93a46b2bb0e7729ce0669ce194df6",
+    "changedSourceSha256": "aee0460e32272bab30d1cf39ba3186033f0d6dd3acf6c634b80b31283ffa4151",
+    "creativePCMByteIdentical": true,
+    "preservedOtherSourceHashes": true,
+    "editionIncrement": false
+  },
+  "adoption": "unknown",
+  "gameIntegration": "not-connected",
+  "safari": "unverified",
+  "limitations": [
+    "Native review is version-specific.",
+    "Adoption and main-game integration are separate.",
+    "Safari/iPad remains unverified."
+  ]
+}

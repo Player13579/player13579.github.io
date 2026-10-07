@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weapon Switch R5 · gallery technical preview</title>
+<style>
+  html,body{margin:0;background:#101820;color:#dbe8ec;font:14px system-ui}
+  main{display:grid;gap:10px;justify-items:center;padding:12px}
+  #stage{position:relative;width:min(96vw,900px);aspect-ratio:3/2;background:#101820;overflow:hidden}
+  canvas{position:absolute;inset:0;width:100%;height:100%}
+  #status{min-height:1.2em;max-width:900px;overflow-wrap:anywhere}
+  #warning{max-width:900px;color:#ffd88b}
+  fieldset{display:flex;gap:8px;flex-wrap:wrap;max-width:900px}
+</style>
+<main>
+  <strong>Weapon Switch R5 · gallery technical preview</strong>
+  <p id="warning">This isolated synthetic gallery actor is not the game producer or a real gameplay actor. Use the selector for a trusted local fixture selection. Explicit embed or auto-loop demo URLs create private synthetic receipts. Quality, ordinary SFX listening, Safari/iPad, and main-game integration remain unverified.</p>
+  <div><label for="selected">Local fixture selection</label>
+    <select id="selected">
+      <option value="orichalcum-sword">orichalcum-sword</option>
+      <option value="heavy:rpg">heavy:rpg</option>
+      <option value="heavy:missile">heavy:missile</option>
+      <option value="invention:railgun">invention:railgun</option>
+      <option value="invention:particle-cannon">invention:particle-cannon</option>
+      <option value="invention:excalibur">invention:excalibur</option>
+    </select>
+    <button id="select">Select preview</button>
+  </div>
+  <fieldset><legend>R5 technical visibility</legend>
+    <label><input id="mainOn" type="checkbox" checked> main</label>
+    <label><input id="sourceOn" type="checkbox" checked> source</label>
+    <label><input id="observerOn" type="checkbox" checked> observer</label>
+    <label><input id="reducedMotion" type="checkbox"> reduced motion</label>
+  </fieldset>
+  <div id="stage"><canvas id="view" aria-label="Private R5 WebGPU renderer fixture with registered GPU actor marker"></canvas></div>
+  <div id="status" role="status">Waiting for a trusted local fixture selection.</div>
+</main>
+<script type="module" src="./runtime.mjs"></script>
+</html>
