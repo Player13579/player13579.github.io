@@ -10,8 +10,8 @@
     "edition": 1,
     "authorizedEditions": 1,
     "instructions": [
-      "募金の金貨は幾何学模様を刻む",
-      "華の模様も入れる"
+      "\u52df\u91d1\u306e\u91d1\u8ca8\u306f\u5e7e\u4f55\u5b66\u6a21\u69d8\u3092\u523b\u3080",
+      "\u83ef\u306e\u6a21\u69d8\u3082\u5165\u308c\u308b"
     ],
     "automaticNextEdition": false
   },
@@ -102,8 +102,8 @@
     },
     {
       "path": "runtime.mjs",
-      "sha256": "c5447b638fea323a7af66d9569898cc23262c6ec11a97fc12c670b2524aa2c30",
-      "bytes": 36439
+      "sha256": "f29a93959a99e534283ddc7eb903ec13080c142dc8b205a99800ae1a29eff116",
+      "bytes": 36440
     },
     {
       "path": "source/engraving.mjs",
@@ -158,5 +158,23 @@
     "adoption": "unknown"
   },
   "currentTechnicalAdapter": "GPT-6-Luna",
-  "lifecycleOwnershipContractSha256": "0a0411069952ed043bf113f677bb9523f988942575855adb34abbd7787c659c8"
+  "lifecycleOwnershipContractSha256": "0a0411069952ed043bf113f677bb9523f988942575855adb34abbd7787c659c8",
+  "technicalMetadataRepair": {
+    "id": "donation-r12-shader-diagnostic-hash-repair-luna-r1",
+    "model": "GPT-6-Luna",
+    "scope": "correct only the malformed filter-y startup WGSL identity hash in runtime metadata; preserve all creative/design source bytes",
+    "sourceTechnicalDerivativeId": "donation-r12-startup-batch-technical-luna-r2",
+    "sourceRuntimeSha256": "c5447b638fea323a7af66d9569898cc23262c6ec11a97fc12c670b2524aa2c30",
+    "derivedRuntimeSha256": "f29a93959a99e534283ddc7eb903ec13080c142dc8b205a99800ae1a29eff116",
+    "changedRuntimeLiteralCount": 1,
+    "filterYSourceSha256": "3ff99f1cf7472f90b9b4ce792a459a8d89e0a2b0cf7b0132c6b1cb92c80d92fe",
+    "creativeSourceManifestSha256": "506de3cb7c8dfdb506159c1820a03d77c948600fc92e4bf809887796aad1811d",
+    "creativeSourceBytesByteExact": true,
+    "native": "not_run",
+    "quality": "pending-real-output",
+    "adoption": "unknown",
+    "publication": false,
+    "gameIntegration": "not_connected",
+    "automaticFurtherCreativeRevision": false
+  }
 }

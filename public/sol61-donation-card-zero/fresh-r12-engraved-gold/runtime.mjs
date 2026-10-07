@@ -5,7 +5,7 @@ import { DonationSound } from './source/sfx-design.mjs';
 
 const HDR_FORMAT='rgba16float';
 const UNIFORM_BYTES=52*4;
-const STARTUP_SHADER_HASHES=Object.freeze({world:'b43341990b8cb689c5a154011c87f42b6a6343eda288ba70ad7fc3f0bcbd853e',downsample:'584c43631139358c88b6956d45fda752687a5a2c2143e5bdd712bc35a3c42503','filter-x':'da72e2e2bc3113c0463e16b96e9a41a4fd7115d87b6112e3e18f4ded434bea5c','filter-y':'3ff99f1cf7472f90b9b4ce792a459a8d89e0a2b0cf7b013c6b1cb92c80d92fe',optical:'a05232428f378d27c8d43c842312cce58b87adf077ce170689e783f56fc43c24',post:'086bc471503d0838876bfbf8bc8c4d14f1ffff33ba569fc2e66f848a369ffd23'});
+const STARTUP_SHADER_HASHES=Object.freeze({world:'b43341990b8cb689c5a154011c87f42b6a6343eda288ba70ad7fc3f0bcbd853e',downsample:'584c43631139358c88b6956d45fda752687a5a2c2143e5bdd712bc35a3c42503','filter-x':'da72e2e2bc3113c0463e16b96e9a41a4fd7115d87b6112e3e18f4ded434bea5c','filter-y':'3ff99f1cf7472f90b9b4ce792a459a8d89e0a2b0cf7b0132c6b1cb92c80d92fe',optical:'a05232428f378d27c8d43c842312cce58b87adf077ce170689e783f56fc43c24',post:'086bc471503d0838876bfbf8bc8c4d14f1ffff33ba569fc2e66f848a369ffd23'});
 const usage=()=>globalThis.GPUTextureUsage;
 const bufferUsage=()=>globalThis.GPUBufferUsage;
 const startupClock=()=>{const value=globalThis.performance?.now?.();return Number.isFinite(value)?value:Date.now();};
