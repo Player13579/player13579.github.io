@@ -1,0 +1,127 @@
+{
+  "schema": "dva-effect-gallery-adapter-manifest/v1",
+  "adapterId": "excalibur-r10-public-gallery-adapter",
+  "versionId": "excalibur-actual-blade-gold-sol61-r10",
+  "sourceCommit": "e79dfde1cfd37edbc6483eaaa4182ab5ca939590",
+  "sourceTree": "c3fb4a9754fbd8b0a988e74acd5396ab04afd1c7",
+  "sourcePackageManifest": {
+    "path": "public/sol61-alchemy-excalibur/r10/package-manifest.json",
+    "sha256": "36881eec0eedff67366051bcd895a6c1cf8a8abe91a419b4adee30c61c0f56b7",
+    "fileCount": 35,
+    "totalBytes": 4635630,
+    "unchanged": true
+  },
+  "criticalSourcePins": [
+    {
+      "path": "inputs/assets/ATLAS.json",
+      "sha256": "839c0fdd64fdb1299295311b2d4f76c902ccbab55b7b7826f1a9c5c85da496e7",
+      "gitBlob": "4a116baab62144afaf6de8ca6adc5a1ea71eb7b9",
+      "bytes": 782,
+      "mime": null
+    },
+    {
+      "path": "inputs/bridge/inputs/r10/excalibur-r8-creative-plan.mjs",
+      "sha256": "2238f972375b81e72e7ceb6b26a1fdeb4d40a168afa71768e2da3296ea8ee91d",
+      "gitBlob": "60335a369be120cc3ba55a0e0bacfa5aded5b1f2",
+      "bytes": 8489,
+      "mime": null
+    },
+    {
+      "path": "inputs/bridge/inputs/r10/excalibur-r8-creative-shader.mjs",
+      "sha256": "f2413d1e0c13302c5985586edca8a6a31fdd476997c5bc6fab640ae5d8d0d411",
+      "gitBlob": "067573d4b6877fd3961ae3ce5718a40aef1045c4",
+      "bytes": 7718,
+      "mime": null
+    },
+    {
+      "path": "inputs/bridge/inputs/r9/excalibur-r8-creative-plan.mjs",
+      "sha256": "b233a6912bf2b1a768867fe930003e2cff4e27665af917a06e2cef0d80acc423",
+      "gitBlob": "e8cac1c6ee6e784c590fdc1aa6c15d24c5d0c79b",
+      "bytes": 8025,
+      "mime": null
+    },
+    {
+      "path": "inputs/bridge/inputs/r9/excalibur-r8-creative-shader.mjs",
+      "sha256": "da2976d7889c9bc7867b72086a486076e34f5ef660aca9f7fd30834c7192521c",
+      "gitBlob": "afd61de23c384dd1d0fde5afbb5acc337dec8538",
+      "bytes": 6358,
+      "mime": null
+    },
+    {
+      "path": "inputs/bridge/source/excalibur-preview-bridge.mjs",
+      "sha256": "6a92e704b7016d60508932d458a7e2643d6402d44d9ce5b194809e7343d2fd5f",
+      "gitBlob": "e94e9560f14407c3871ab441b1b93c274e625d26",
+      "bytes": 21090,
+      "mime": null
+    },
+    {
+      "path": "inputs/runtime/webgpu-renderer.js",
+      "sha256": "3d8bed6ecf0e987a6a12c2bcd0ff4eba45cd723d78b79b58da5244a2937ddd81",
+      "gitBlob": "bb1e64283a259ded1aa6761ad159d018300ca2bc",
+      "bytes": 22857,
+      "mime": null
+    },
+    {
+      "path": "inputs/shell/preview-bridge-shell.mjs",
+      "sha256": "bf3e9df6c62cf59723213321a373805180725de16c08d9f2b1e0d10c6d3c158e",
+      "gitBlob": "6388647feca7716e065b28cdcdb2d59e7fde2cb4",
+      "bytes": 8563,
+      "mime": null
+    },
+    {
+      "path": "inputs/shell/verified-atlas-loader.mjs",
+      "sha256": "5794ae3b594731b903f662ecf15d2148c7345b9c5de9d866a7d153ca3f3e1c10",
+      "gitBlob": "0590d494fc1b826e5634e8bf74a5cfeb6bdabc80",
+      "bytes": 4683,
+      "mime": null
+    }
+  ],
+  "files": [
+    {
+      "path": "public/sol61-alchemy-excalibur/r10/gallery-adapter.html",
+      "sha256": "04b6112ea2f6c3e64d69b1e9b1c02e6eae8bb577daa82636bdc0b487aec7bb02",
+      "bytes": 2487,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "public/sol61-alchemy-excalibur/r10/source/gallery-adapter.mjs",
+      "sha256": "9f497243781654419846f95c4791afdb93020f323c60cd8b45c483d88d639b7d",
+      "bytes": 17980,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "public/sol61-alchemy-excalibur/r10/source/gallery-adapter-contract.mjs",
+      "sha256": "dd04fb685b5b699206428a6fb7e1b244ab377dc17e687b960cde3a8f913a8167",
+      "bytes": 809,
+      "contentType": "text/javascript; charset=utf-8"
+    }
+  ],
+  "authors": {
+    "originalCreative": "GPT-6.1-Sol",
+    "adapterRuntime": "GPT-6-Luna"
+  },
+  "creativeEditionAllowance": {
+    "used": 5,
+    "total": 5,
+    "remaining": 0,
+    "reset": false
+  },
+  "creativeQualityAndAdoption": {
+    "qualityStatus": "limited sampled expression remains pending; no promotion",
+    "adoption": "not-adopted",
+    "gameIntegration": "not_connected"
+  },
+  "audio": {
+    "status": "not-connected",
+    "reason": "Frozen R10 host exposes no authored SFX hook; adapter adds no audio."
+  },
+  "runtimeContract": {
+    "R10Only": true,
+    "normalQueryBoots": true,
+    "verifyQueryBoots": true,
+    "verifyHardMuteIndicator": true,
+    "autoLoopAndExpiryRetained": true,
+    "authenticatedRetireAndPagehideCleanupRetained": true
+  },
+  "sourcePackageManifestNotRewritten": true
+}
