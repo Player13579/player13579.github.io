@@ -1,0 +1,273 @@
+{
+  "schema": "human-transmutation-r8-package/v1",
+  "versionId": "human-transmutation-sol61-r8",
+  "groupId": "alchemy-human-transmutation-sol61",
+  "catalogVersionId": "human-transmutation-sol61-r8",
+  "defaultVersionId": "human-transmutation-sol61-r8",
+  "edition": {
+    "creativeEdition": 8,
+    "creativeLimit": 10,
+    "creativeRemaining": 2
+  },
+  "source": {
+    "parentVersionId": "human-transmutation-sol61-r7",
+    "r7ManifestSha256": "e611abdd20f9adb87efa10631f98df47355a3c10a3bfad2698fed62569c80843",
+    "r7SealSha256": "9addb134f1e491b2f025f6526237838f3ee16992cf1be14d835d10d6468a316a"
+  },
+  "provenance": {
+    "creativeDesignOwner": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "technicalImplementer": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "historicalSourceAttribution": {
+      "creativeDesignOwner": {
+        "modelId": "gpt-6.1-sol",
+        "displayName": "GPT-6.1-Sol"
+      },
+      "technicalImplementer": {
+        "modelId": "gpt-6.1-sol",
+        "displayName": "GPT-6.1-Sol"
+      },
+      "historicalSourceAttribution": {
+        "creativeDesignOwner": {
+          "modelId": "gpt-6.1-sol",
+          "displayName": "GPT-6.1-Sol",
+          "contribution": "Primary settled creative correction design."
+        },
+        "technicalImplementer": {
+          "modelId": "gpt-6-luna",
+          "displayName": "GPT-6-Luna",
+          "contribution": "Bounded implementation, package closure, and CPU tests."
+        },
+        "historicalSourceAttribution": "R5 actual execution remains UNEXPOSED in the source manifest; this R6 does not retroactively assign R5 work."
+      }
+    }
+  },
+  "runtime": {
+    "entry": "gallery.html",
+    "normalCatalogURL": "public/sol61-human-transmutation/r8/gallery.html?embed=1&galleryVersionId=human-transmutation-sol61-r8&galleryAutoLoop=1",
+    "versionQueryImplemented": "galleryVersionId=human-transmutation-sol61-r8",
+    "verificationQuery": "The existing gallery shell passes verify only when the parent query contains it; verification mode remains muted.",
+    "canvasCssExtent": [
+      980,
+      480
+    ],
+    "targetId": "revived-philia",
+    "attachments": [
+      "scene",
+      "emission",
+      "bloom-x",
+      "bloom-y",
+      "fixation-glint-source"
+    ],
+    "worldMrtOutputs": 3,
+    "submittedRenderPasses": 4,
+    "runtimeClosure": [
+      "gallery.html",
+      "human-canvas-fit.mjs",
+      "gallery-auth.mjs",
+      "index.html",
+      "preview.mjs",
+      "fixture.mjs",
+      "cause.mjs",
+      "core.mjs",
+      "shader.mjs",
+      "glints.mjs",
+      "sfx.mjs",
+      "handoff-state.mjs",
+      "assets/philia-front-nine-v752.png"
+    ],
+    "sourceR5ManifestRuntimeClosure": [
+      "index.html",
+      "preview.mjs",
+      "fixture.mjs",
+      "cause.mjs",
+      "core.mjs",
+      "shader.mjs",
+      "glints.mjs",
+      "sfx.mjs",
+      "handoff-state.mjs",
+      "assets/philia-front-nine-v752.png"
+    ],
+    "rendererScope": "R7 material transport and fine finite-source optics; R8 non-row material sites and independently staggered short pulses."
+  },
+  "effectCorrection": {
+    "siteCount": 60,
+    "distribution": "non-row low-discrepancy alpha-supported Poisson sites",
+    "minimumSourcePixelSeparation": 15,
+    "sourceRadiusH64": 0.5,
+    "primaryRayH64": 1.75,
+    "secondaryRayH64": 1.3,
+    "rayWidthH64": 0.28,
+    "beginAfterArrivalMs": 24,
+    "independentStaggerRangeMs": [
+      0,
+      184
+    ],
+    "riseMs": 18,
+    "individualDurationRangeMs": [
+      78,
+      126
+    ],
+    "fallMs": 40,
+    "sourceRadiance": 14,
+    "axisDegrees": 17
+  },
+  "status": {
+    "cpuTests": "passed 6/6",
+    "shaderCompilation": "not_run",
+    "nativeVisualAcceptance": "not_run",
+    "qualityAcceptance": "pending",
+    "publication": "not published",
+    "adoption": "not adopted",
+    "ordinarySfxListening": "not_run",
+    "safariIpad": "unverified",
+    "mainGameIntegration": "not connected"
+  },
+  "files": [
+    {
+      "path": "assets/philia-front-nine-v752.png",
+      "bytes": 399216,
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "parentR7Sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "cause.mjs",
+      "bytes": 4198,
+      "sha256": "fe4b727bdbbaf5fb1acca07045ff75996760dce96980d9e962b8aec6c8be3ae7",
+      "parentR7Sha256": "35a316fbe0dccd74119ce6645ec7125b3cc672987713003b582f9dd765568fbf",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "core.mjs",
+      "bytes": 10915,
+      "sha256": "8df166f28eb59d8f7efd62b6e3e056c2db8fcfbced3a14e1581a3756b03b243b",
+      "parentR7Sha256": "3e035cd80a4985a3cf3a5a4c5b8543f587481a92b4885b4fa7702db6121cd8a9",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "CPU-RESULTS.json",
+      "bytes": 1177,
+      "sha256": "bb5379b4fd1d3abce31ea686824919e713e5540e7a8f60b1af7b951e2cdd95f5",
+      "parentR7Sha256": null,
+      "parentContentPreserved": false
+    },
+    {
+      "path": "DESIGN-FACTS.json",
+      "bytes": 2547,
+      "sha256": "bb380e38f9bafff1232d5311a1a51234bd9c43e96df0a9ed36e36759f1d98bae",
+      "parentR7Sha256": null,
+      "parentContentPreserved": false
+    },
+    {
+      "path": "EDITION-EXCEPTION.json",
+      "bytes": 194,
+      "sha256": "d9fedfac0a805f850cf38fb7239e4d8ee7cf7eb485445aade1eb54cf6d51d152",
+      "parentR7Sha256": null,
+      "parentContentPreserved": false
+    },
+    {
+      "path": "fixture.mjs",
+      "bytes": 1099,
+      "sha256": "64147604d367c0785abba08c5a9b6f73e757d16fa1528a11a5031e6ab83337d3",
+      "parentR7Sha256": "2aeb49842990b038f9ed4f0e81ea37a147f29ea1714993d8dc0a2d16fea86bc2",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "gallery-auth.mjs",
+      "bytes": 702,
+      "sha256": "f97a886b1de5a5d003fe8e37617754be21b0562cc89bd79a88a248cbc9a02f94",
+      "parentR7Sha256": "f97a886b1de5a5d003fe8e37617754be21b0562cc89bd79a88a248cbc9a02f94",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 6550,
+      "sha256": "8b599f35ecc7abd1dddca4afaeb0e11a6296f19a5704beee1c4f2a91c0baef65",
+      "parentR7Sha256": "4cfb71f18bdf29b2fb40b63d40078f01426e10382f6a91ced26015cd74ebd014",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "glints.mjs",
+      "bytes": 8796,
+      "sha256": "a86f95ee8e98907e27450780797c0890fae4a67c219e0b38c63f364d2dfe2961",
+      "parentR7Sha256": "65cb9fe54c208d49571228d9a7ddab8456f86989cba9c080ba88038ce929154a",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "handoff-state.mjs",
+      "bytes": 1675,
+      "sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+      "parentR7Sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "human-canvas-fit.mjs",
+      "bytes": 4711,
+      "sha256": "b882a4cd85b51f30ec29c08200f83163211f64882dcefbf4bfffc9e3733de053",
+      "parentR7Sha256": "b882a4cd85b51f30ec29c08200f83163211f64882dcefbf4bfffc9e3733de053",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 2765,
+      "sha256": "ab0ebcc8a1ed5e98f3f9f543865e16dd200ec50c5709d20a95a5f536bf89c25c",
+      "parentR7Sha256": "0c68f7f247a6c47a7b24f17924491c36c295d6c1d42ee409822f4201cf2e6fc8",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 7132,
+      "sha256": "b7e3091be8817de68df729384013bc9fbe276b94bc4e811a765ff05653aee4ca",
+      "parentR7Sha256": "55ea78b136a2a06ab7e565be5b3879d904d078270210a8a79813c0e943cb017f",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 3240,
+      "sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+      "parentR7Sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "shader.mjs",
+      "bytes": 9998,
+      "sha256": "b32c85398262dcd48e893ed96e07efd8f7fccf0249d25d9860dd214e3723cc88",
+      "parentR7Sha256": "47e2da47c99407d467731c0e0a25edb460e7082901dd35c561daf191a37c8878",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "SITE-PLACEMENT.json",
+      "bytes": 10122,
+      "sha256": "6c8e797b5e4bad7a5dab72b8d29834bdbffdbccfafacdb01aa4454181fdf606e",
+      "parentR7Sha256": null,
+      "parentContentPreserved": false
+    },
+    {
+      "path": "SOURCE-PINS.json",
+      "bytes": 2789,
+      "sha256": "37664bc2bfbb50ea720eacf5af6e55fff2819ed1cb4ba824c152073ecf45545f",
+      "parentR7Sha256": null,
+      "parentContentPreserved": false
+    },
+    {
+      "path": "tests/r8.test.mjs",
+      "bytes": 4251,
+      "sha256": "3d5fade80d9f1b691193700e86274cac2aadd7748a4e793866581c621a378816",
+      "parentR7Sha256": null,
+      "parentContentPreserved": false
+    },
+    {
+      "path": "WORK.json",
+      "bytes": 1244,
+      "sha256": "82cb7a03e1ba3b23c22dff89374df6fd52314ef6aa2d79d8bd193626c160c1cf",
+      "parentR7Sha256": null,
+      "parentContentPreserved": false
+    }
+  ]
+}

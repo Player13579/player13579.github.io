@@ -1,0 +1,2075 @@
+{
+  "attemptId": "c39d1212-3bc2-40d4-90bd-fa96e54f73e8",
+  "status": "PASS_NATIVE_WEBGPU_LIFECYCLE",
+  "version": "acceleration-benefit-zero-sol61-r7",
+  "verifyQueryPresent": true,
+  "packageManifestSha256": "f1d2809243b84234aa101b27414706c6debeb73e5e868d3165815b2ae108ff4c",
+  "candidateReady": {
+    "versionId": "acceleration-benefit-zero-sol61-r7",
+    "rootSha256": "b2e39aa12a43dbcdbad2790fa1d366ecd6f52498729c3c77295a54aab2ab4b12",
+    "recomputedRootSha256": "b2e39aa12a43dbcdbad2790fa1d366ecd6f52498729c3c77295a54aab2ab4b12",
+    "fileCount": 9,
+    "exactPathSet": true,
+    "exactAfterRun": true
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "methods": [
+      "hold(elapsedMs, options)",
+      "setPhase(elapsedMs, options)",
+      "resume()",
+      "replay()"
+    ],
+    "holdRangeActorMs": [
+      0,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "options": [
+      "obs",
+      "sparkle",
+      "source",
+      "main",
+      "bodyResponse",
+      "includeActor",
+      "direction",
+      "reducedMotion"
+    ],
+    "waitsForGpuQueueCompletion": true,
+    "childFrame": true
+  },
+  "sourceExpectedSha256": {
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "index.html": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+    "gallery-adapter.mjs": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+    "effect.mjs": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c"
+  },
+  "packageRoot": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-small-many-r7",
+  "outputRoot": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7",
+  "preBrowserHttpSourcePin": [
+    {
+      "path": "body.png",
+      "status": 200,
+      "actualSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "match": true,
+      "bytes": 243081
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "actualSha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+      "expectedSha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+      "match": true,
+      "bytes": 1988
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200,
+      "actualSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "match": true,
+      "bytes": 19123
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200,
+      "actualSha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+      "expectedSha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+      "match": true,
+      "bytes": 22407
+    }
+  ],
+  "serverResponses": [
+    {
+      "path": "body.png",
+      "status": 200,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "match": true,
+      "bytes": 243081
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+      "expectedSha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+      "match": true,
+      "bytes": 1988
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200,
+      "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "match": true,
+      "bytes": 19123
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200,
+      "sha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+      "expectedSha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+      "match": true,
+      "bytes": 22407
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+      "expectedSha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+      "match": true,
+      "bytes": 1988
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200,
+      "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "match": true,
+      "bytes": 19123
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200,
+      "sha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+      "expectedSha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+      "match": true,
+      "bytes": 22407
+    },
+    {
+      "path": "body.png",
+      "status": 200,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "match": true,
+      "bytes": 243081
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+      "expectedSha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+      "match": true,
+      "bytes": 1988
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200,
+      "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "match": true,
+      "bytes": 19123
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200,
+      "sha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+      "expectedSha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+      "match": true,
+      "bytes": 22407
+    },
+    {
+      "path": "body.png",
+      "status": 200,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "match": true,
+      "bytes": 243081
+    }
+  ],
+  "serverFailures": [],
+  "clientResponses": [
+    {
+      "path": "index.html",
+      "status": 200
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200
+    },
+    {
+      "path": "body.png",
+      "status": 200
+    }
+  ],
+  "messages": [],
+  "errors": [],
+  "phases": [
+    {
+      "label": "h64-t0200",
+      "elapsedMs": 200,
+      "bodyHeightCssPx": 64,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 4,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 200,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 1,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0200.png",
+      "screenshot": "h64-t0200.png",
+      "screenshotSha256": "fb228e9f8daef225587fc5ee9559ec14dee14c6cb011980f704928849ff51593",
+      "screenshotBytes": 10458,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h64-t0400",
+      "elapsedMs": 400,
+      "bodyHeightCssPx": 64,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 5,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 400,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 2,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0400.png",
+      "screenshot": "h64-t0400.png",
+      "screenshotSha256": "ee39c8f51d14c44d2f93dd2d0157627193ae1d3e813bfddc2fb7aa0200672c0e",
+      "screenshotBytes": 10456,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h64-t0600",
+      "elapsedMs": 600,
+      "bodyHeightCssPx": 64,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 6,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 600,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 3,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0600.png",
+      "screenshot": "h64-t0600.png",
+      "screenshotSha256": "c05d9d74f581f7ba50925dec77f8f07173b43292b829853dbcc9dd6fc50ca713",
+      "screenshotBytes": 10004,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h64-t0700",
+      "elapsedMs": 700,
+      "bodyHeightCssPx": 64,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 7,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 700,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 4,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0700.png",
+      "screenshot": "h64-t0700.png",
+      "screenshotSha256": "c05512c4dd6b41a6b141f25b6b0d8cec0e1dba5afbddf470713173a85d6e004d",
+      "screenshotBytes": 10808,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h64-t0800",
+      "elapsedMs": 800,
+      "bodyHeightCssPx": 64,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 8,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 800,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 5,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0800.png",
+      "screenshot": "h64-t0800.png",
+      "screenshotSha256": "25b7c343a373c8c8aa994aa4df1abdf7cebcb43c901d9a84b396aba7c3e57666",
+      "screenshotBytes": 9220,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h192-t0200",
+      "elapsedMs": 200,
+      "bodyHeightCssPx": 192,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 9,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 200,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 6,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0200.png",
+      "screenshot": "h192-t0200.png",
+      "screenshotSha256": "a40b26bc0e7ad39e55f320ecfa21477eb7d32e9d5ea61c3fa3df0378692a86f8",
+      "screenshotBytes": 44772,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h192-t0400",
+      "elapsedMs": 400,
+      "bodyHeightCssPx": 192,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 10,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 400,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 7,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0400.png",
+      "screenshot": "h192-t0400.png",
+      "screenshotSha256": "dd10728a5faed3e8f0a4f473ffb74dbf58c8e653afdc787855b633a9c512196c",
+      "screenshotBytes": 44877,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h192-t0600",
+      "elapsedMs": 600,
+      "bodyHeightCssPx": 192,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 11,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 600,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 8,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0600.png",
+      "screenshot": "h192-t0600.png",
+      "screenshotSha256": "c1da4e9181ee13851b5eae39993349c918ee9d788bc37f102f8f0ee4c1723499",
+      "screenshotBytes": 42884,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h192-t0700",
+      "elapsedMs": 700,
+      "bodyHeightCssPx": 192,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 12,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 700,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 9,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0700.png",
+      "screenshot": "h192-t0700.png",
+      "screenshotSha256": "c8c513cd2a4147ad4bda570c057fc9f39b27ec395d0976dd9be189dc8fb4ba95",
+      "screenshotBytes": 46305,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h192-t0800",
+      "elapsedMs": 800,
+      "bodyHeightCssPx": 192,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 13,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 800,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 10,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0800.png",
+      "screenshot": "h192-t0800.png",
+      "screenshotSha256": "4fd2b13fa5a61f01fa2e81383e0e3099a2cd3206e97fbdf371440f7cb79c30d9",
+      "screenshotBytes": 39199,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "control-obs-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "obs": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 14,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 11,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": false,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-sparkle-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "sparkle": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 15,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 12,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": false,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-source-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "source": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 16,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 13,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": false,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-main-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "main": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 17,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 14,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": false,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-bodyResponse-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "bodyResponse": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 18,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 15,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": false,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-includeActor-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "includeActor": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 19,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 16,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": false,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-obs-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "obs": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 20,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 17,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": false,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-sparkle-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "sparkle": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 21,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 18,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": false,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-source-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "source": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 22,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 19,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": false,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-main-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "main": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 23,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 20,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": false,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-bodyResponse-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "bodyResponse": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 24,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 21,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": false,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-includeActor-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "includeActor": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 25,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 22,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": false,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-direction-reversed",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "direction": -1
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 26,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 23,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": -1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "verifyMute": {
+        "queryPresent": true,
+        "apiVerify": true,
+        "activationAllowed": false,
+        "edgeMuteAudio": true
+      },
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    }
+  ],
+  "controls": [
+    {
+      "bodyHeight": 64,
+      "name": "obs",
+      "toggles": {
+        "obs": false,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "sparkle",
+      "toggles": {
+        "obs": true,
+        "sparkle": false,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "source",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": false,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "main",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": false,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "bodyResponse",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": false,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "includeActor",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": false,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "obs",
+      "toggles": {
+        "obs": false,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "sparkle",
+      "toggles": {
+        "obs": true,
+        "sparkle": false,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "source",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": false,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "main",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": false,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "bodyResponse",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": false,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "includeActor",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": false,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    }
+  ],
+  "gpuInstrumentation": {
+    "deviceCount": 1,
+    "instrumentation": {
+      "requestAdapter": true,
+      "requestDevice": true,
+      "pipeline": true,
+      "shaderModule": true,
+      "queueCompletion": true
+    },
+    "deviceErrors": [],
+    "pipelineScopes": [
+      {
+        "kind": "validation",
+        "result": null
+      }
+    ],
+    "shaderCompilation": [
+      {
+        "label": "acceleration-benefit-zero-sol61-r7",
+        "messages": []
+      }
+    ],
+    "queueCompletions": [
+      {
+        "time": 4986.100000023842
+      },
+      {
+        "time": 4986.400000035763
+      },
+      {
+        "time": 5026.300000011921
+      },
+      {
+        "time": 5030.800000011921
+      },
+      {
+        "time": 5344.199999988079
+      },
+      {
+        "time": 5348.100000023842
+      },
+      {
+        "time": 6100.900000035763
+      },
+      {
+        "time": 6106
+      },
+      {
+        "time": 6257.800000011921
+      },
+      {
+        "time": 6262.5
+      },
+      {
+        "time": 6389.900000035763
+      },
+      {
+        "time": 6394.600000023842
+      },
+      {
+        "time": 6522.100000023842
+      },
+      {
+        "time": 6537.199999988079
+      },
+      {
+        "time": 7154.100000023842
+      },
+      {
+        "time": 7168.300000011921
+      },
+      {
+        "time": 7695
+      },
+      {
+        "time": 8189.800000011921
+      },
+      {
+        "time": 8346.5
+      },
+      {
+        "time": 8363.5
+      },
+      {
+        "time": 8521.900000035763
+      },
+      {
+        "time": 8530.699999988079
+      },
+      {
+        "time": 8700.600000023842
+      },
+      {
+        "time": 8706
+      },
+      {
+        "time": 8711.600000023842
+      },
+      {
+        "time": 8717.100000023842
+      },
+      {
+        "time": 8723.699999988079
+      },
+      {
+        "time": 8727.699999988079
+      },
+      {
+        "time": 8736.199999988079
+      },
+      {
+        "time": 8741.300000011921
+      },
+      {
+        "time": 8746.5
+      },
+      {
+        "time": 8750.5
+      },
+      {
+        "time": 8756.100000023842
+      },
+      {
+        "time": 8760
+      },
+      {
+        "time": 8767.800000011921
+      },
+      {
+        "time": 8780.199999988079
+      },
+      {
+        "time": 8785.300000011921
+      },
+      {
+        "time": 8797.300000011921
+      },
+      {
+        "time": 8802.5
+      },
+      {
+        "time": 8807.199999988079
+      },
+      {
+        "time": 8816.699999988079
+      },
+      {
+        "time": 8829.100000023842
+      },
+      {
+        "time": 8834.199999988079
+      },
+      {
+        "time": 8846.600000023842
+      },
+      {
+        "time": 8853.100000023842
+      },
+      {
+        "time": 8866.100000023842
+      },
+      {
+        "time": 8872.300000011921
+      },
+      {
+        "time": 8877.300000011921
+      },
+      {
+        "time": 9781.100000023842
+      },
+      {
+        "time": 9801
+      },
+      {
+        "time": 9801.300000011921
+      }
+    ],
+    "queueFailures": []
+  },
+  "cleanup": {
+    "contextCloseAttempted": true,
+    "browserCloseAttempted": true,
+    "contextClosed": true,
+    "browserConnected": false,
+    "localServerCloseAttempted": true,
+    "localServerClosed": true,
+    "passed": true
+  },
+  "browser": {
+    "name": "Microsoft Edge",
+    "executable": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "headless": true,
+    "launchArgs": [
+      "--mute-audio",
+      "--disable-background-networking",
+      "--enable-unsafe-webgpu",
+      "--enable-features=Vulkan",
+      "--ignore-gpu-blocklist"
+    ],
+    "sandboxDisablingFlagSupplied": false,
+    "playwrightVersion": "1.62.1",
+    "actualVersion": "154.0.4258.62"
+  },
+  "viewport": {
+    "width": 1000,
+    "height": 720,
+    "deviceScaleFactor": 1
+  },
+  "startedAt": "2026-10-08T20:49:30.577Z",
+  "serverRequests": [
+    {
+      "path": "/body.png",
+      "search": ""
+    },
+    {
+      "path": "/index.html",
+      "search": ""
+    },
+    {
+      "path": "/gallery-adapter.mjs",
+      "search": ""
+    },
+    {
+      "path": "/effect.mjs",
+      "search": ""
+    },
+    {
+      "path": "/index.html",
+      "search": "?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryStartupToken=439e77182bdd452d9306111224a48fd4&galleryVersionId=acceleration-benefit-zero-sol61-r7&galleryAttemptEpoch=1"
+    },
+    {
+      "path": "/gallery-adapter.mjs",
+      "search": ""
+    },
+    {
+      "path": "/effect.mjs",
+      "search": ""
+    },
+    {
+      "path": "/body.png",
+      "search": ""
+    },
+    {
+      "path": "/index.html",
+      "search": "?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryStartupToken=bd13c1c01bd74647b48da13b6c0698b1&galleryVersionId=acceleration-benefit-zero-sol61-r7&galleryAttemptEpoch=1"
+    },
+    {
+      "path": "/gallery-adapter.mjs",
+      "search": ""
+    },
+    {
+      "path": "/effect.mjs",
+      "search": ""
+    },
+    {
+      "path": "/body.png",
+      "search": ""
+    }
+  ],
+  "preBrowserHttpSourcePinAt": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\EVIDENCE.json",
+  "parentUrl": "http://127.0.0.1:57592/harness.html?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryVersionId=acceleration-benefit-zero-sol61-r7",
+  "generatedParentConstruction": {
+    "scriptPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\generated-parent-construction.js",
+    "scriptSha256": "d9bd8604acd7b260b5701122dc615c26b3efae2a1d48c80032be944bb9112f20",
+    "parentUrl": "http://127.0.0.1:57592/harness.html?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryVersionId=acceleration-benefit-zero-sol61-r7",
+    "childUrl": "http://127.0.0.1:57592/index.html?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryStartupToken=439e77182bdd452d9306111224a48fd4&galleryVersionId=acceleration-benefit-zero-sol61-r7&galleryAttemptEpoch=1",
+    "identity": {
+      "token": "439e77182bdd452d9306111224a48fd4",
+      "versionId": "acceleration-benefit-zero-sol61-r7",
+      "attemptEpoch": 1
+    }
+  },
+  "generatedMountPreflight": {
+    "serverRoot": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-small-many-r7",
+    "constructedChildUrl": "http://127.0.0.1:57592/index.html?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryStartupToken=439e77182bdd452d9306111224a48fd4&galleryVersionId=acceleration-benefit-zero-sol61-r7&galleryAttemptEpoch=1",
+    "requests": [
+      {
+        "role": "generated-child-entry",
+        "url": "http://127.0.0.1:57592/index.html?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryStartupToken=439e77182bdd452d9306111224a48fd4&galleryVersionId=acceleration-benefit-zero-sol61-r7&galleryAttemptEpoch=1",
+        "status": 200,
+        "path": "index.html",
+        "savedPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\mount-preflight-bytes\\index.html",
+        "bytes": 1988,
+        "actualSha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+        "expectedSha256": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+        "match": true
+      },
+      {
+        "role": "imported-module",
+        "url": "http://127.0.0.1:57592/gallery-adapter.mjs",
+        "status": 200,
+        "path": "gallery-adapter.mjs",
+        "savedPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\mount-preflight-bytes\\gallery-adapter.mjs",
+        "bytes": 19123,
+        "actualSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+        "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+        "match": true
+      },
+      {
+        "role": "imported-module",
+        "url": "http://127.0.0.1:57592/effect.mjs",
+        "status": 200,
+        "path": "effect.mjs",
+        "savedPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\mount-preflight-bytes\\effect.mjs",
+        "bytes": 22407,
+        "actualSha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+        "expectedSha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+        "match": true
+      },
+      {
+        "role": "module-asset",
+        "url": "http://127.0.0.1:57592/body.png",
+        "status": 200,
+        "path": "body.png",
+        "savedPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\mount-preflight-bytes\\body.png",
+        "bytes": 243081,
+        "actualSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+        "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+        "match": true
+      }
+    ],
+    "passed": true
+  },
+  "generatedMountPreflightAt": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\generated-mount-preflight.json",
+  "navigation": {
+    "status": 200,
+    "finalUrl": "http://127.0.0.1:57592/harness.html?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryVersionId=acceleration-benefit-zero-sol61-r7",
+    "title": "R6/R7 sparkle native harness"
+  },
+  "parentStartup": {
+    "url": "http://127.0.0.1:57592/harness.html?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryVersionId=acceleration-benefit-zero-sol61-r7",
+    "title": "R6/R7 sparkle native harness",
+    "verify": true,
+    "gpuAvailable": true,
+    "childFrameCount": 1,
+    "childSrc": "http://127.0.0.1:57592/index.html?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryStartupToken=bd13c1c01bd74647b48da13b6c0698b1&galleryVersionId=acceleration-benefit-zero-sol61-r7&galleryAttemptEpoch=1"
+  },
+  "startup": {
+    "childUrl": "http://127.0.0.1:57592/index.html?verify=c39d1212-3bc2-40d4-90bd-fa96e54f73e8&galleryStartupToken=bd13c1c01bd74647b48da13b6c0698b1&galleryVersionId=acceleration-benefit-zero-sol61-r7&galleryAttemptEpoch=1",
+    "childVerify": true,
+    "separateChildRealm": true,
+    "version": "acceleration-benefit-zero-sol61-r7",
+    "verify": true,
+    "frames": 2,
+    "canvas": {
+      "connected": true,
+      "width": 1000,
+      "height": 720,
+      "contextType": "webgpu",
+      "rect": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    "ready": {
+      "schema": "dva-gallery-startup/v1",
+      "token": "bd13c1c01bd74647b48da13b6c0698b1",
+      "versionId": "acceleration-benefit-zero-sol61-r7",
+      "attemptEpoch": 1,
+      "sequence": 7,
+      "stage": "playing",
+      "status": "ready",
+      "firstFrame": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "sourcePasses": [
+          "acceleration-benefit"
+        ],
+        "submissionId": 1,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 0,
+        "bodyProjectedHeight": 64,
+        "lifecycleEpoch": 0
+      }
+    },
+    "identity": {
+      "token": "bd13c1c01bd74647b48da13b6c0698b1",
+      "versionId": "acceleration-benefit-zero-sol61-r7",
+      "attemptEpoch": 1
+    },
+    "failure": null,
+    "gpuDevices": 1
+  },
+  "verifyMute": {
+    "queryPresent": true,
+    "apiVerify": true,
+    "activationAllowed": false,
+    "launchMuteAudio": true
+  },
+  "resume": {
+    "before": {
+      "frames": 26,
+      "loop": 0,
+      "elapsedMs": 420
+    },
+    "resumed": true,
+    "after": {
+      "frames": 27,
+      "loop": 0,
+      "elapsedMs": 428.2000000476837,
+      "failure": null
+    }
+  },
+  "naturalClock": {
+    "before": {
+      "loop": 0,
+      "elapsedMs": 466.2000000476837,
+      "frames": 28
+    },
+    "after": {
+      "loop": 1,
+      "elapsedMs": 0,
+      "frames": 69,
+      "failure": null
+    },
+    "wallMs": 874.0999999642372
+  },
+  "replay": {
+    "before": {
+      "frames": 69,
+      "loop": 1
+    },
+    "accepted": true,
+    "after": {
+      "frames": 69,
+      "loop": 2,
+      "failure": null
+    }
+  },
+  "lifecycle": {
+    "before": {
+      "frames": 70,
+      "disposed": false
+    },
+    "disposed": true,
+    "framesAfter": 70,
+    "failure": null
+  },
+  "sourceHashMatches": true,
+  "captureSummary": {
+    "requiredImages": 10,
+    "actualRequiredImages": 10,
+    "totalScreenshotBytes": 268983,
+    "limitBytes": 20971520,
+    "underLimit": true,
+    "phaseMs": [
+      200,
+      400,
+      600,
+      700,
+      800
+    ],
+    "bodyHeights": [
+      64,
+      192
+    ]
+  },
+  "nativeGpuAcceptance": {
+    "shaderCompileClean": true,
+    "queueWorkClean": true,
+    "shaderCompileCount": 1,
+    "queueCompletionCount": 51
+  },
+  "finishedAt": "2026-10-08T20:50:10.166Z"
+}

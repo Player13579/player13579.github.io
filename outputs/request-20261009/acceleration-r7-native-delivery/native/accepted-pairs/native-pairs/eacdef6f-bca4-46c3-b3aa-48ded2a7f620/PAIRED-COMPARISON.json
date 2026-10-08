@@ -1,0 +1,317 @@
+{
+  "schema": "dva-acceleration-r6-r7-native-comparison/v1",
+  "pairId": "eacdef6f-bca4-46c3-b3aa-48ded2a7f620",
+  "status": "PASS_PAIRED_NATIVE_WEBGPU",
+  "captureContract": {
+    "phaseTimesMs": [
+      200,
+      400,
+      600,
+      700,
+      800
+    ],
+    "actorHeightsCssPx": [
+      64,
+      192
+    ],
+    "expectedPngCount": 20,
+    "actualPngCount": 20,
+    "totalPngBytes": 531266,
+    "maxTotalPngBytes": 20971520,
+    "comparison": "R6 and R7 evidence was collected in separate sequential Edge attempts. R7 is the original successful attempt from the first pair; its bytes and report remain unchanged. The first pair report remains preserved as failed because its R6 runner preflight used the wrong frozen READY sort order. The corrected R6 attempt then passed independently.",
+    "requiredRuntimeChecks": [
+      "verify query and hard mute at every held phase",
+      "full frozen READY file set/root and package-manifest-pinned runtime bytes before and after each attempt",
+      "actual shader compilation, pipeline/frame validation scopes and queue completion",
+      "actual hold/setPhase/resume/replay/dispose lifecycle",
+      "owned Edge context/browser and local server cleanup"
+    ]
+  },
+  "packages": [
+    {
+      "name": "r6",
+      "root": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-small-many-r6",
+      "version": "acceleration-benefit-zero-sol61-r6",
+      "packageManifestSha256": "30c927ff9dd2000c57ef7d1ebf20026ec80e095484e8f41208939d3168cb883f",
+      "evidencePath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\EVIDENCE.json",
+      "evidenceSha256": "dedbff8abdf7a66e053b324035066726aea26aa299252f7ae86b0f975e9db5d0",
+      "status": "PASS_NATIVE_WEBGPU_LIFECYCLE",
+      "exitCode": 0
+    },
+    {
+      "name": "r7",
+      "root": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-small-many-r7",
+      "version": "acceleration-benefit-zero-sol61-r7",
+      "packageManifestSha256": "f1d2809243b84234aa101b27414706c6debeb73e5e868d3165815b2ae108ff4c",
+      "evidencePath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\EVIDENCE.json",
+      "evidenceSha256": "ffe2d48f36c6855fa5c1c1e934579e96d0fe4bc973ad4834a769bb752bd8fce3",
+      "status": "PASS_NATIVE_WEBGPU_LIFECYCLE",
+      "exitCode": 0
+    }
+  ],
+  "pairs": [
+    {
+      "bodyHeightCssPx": 64,
+      "elapsedMs": 200,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h64-t0200.png",
+        "sha256": "fa934e6e5bba481f95cc46b5da1d6e9f8bc75740daa799ccc491b0b319411aab",
+        "bytes": 10033,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0200.png",
+        "sha256": "fb228e9f8daef225587fc5ee9559ec14dee14c6cb011980f704928849ff51593",
+        "bytes": 10458,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    },
+    {
+      "bodyHeightCssPx": 64,
+      "elapsedMs": 400,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h64-t0400.png",
+        "sha256": "a2773768b6ee8ec96a2da25c6b3d06c998454a4d1c746bfc5c5910f5d867cdc2",
+        "bytes": 10155,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0400.png",
+        "sha256": "ee39c8f51d14c44d2f93dd2d0157627193ae1d3e813bfddc2fb7aa0200672c0e",
+        "bytes": 10456,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    },
+    {
+      "bodyHeightCssPx": 64,
+      "elapsedMs": 600,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h64-t0600.png",
+        "sha256": "5374f865e9e86120b47ed5b574ed8a859353d3261917c4175f138fcc02507515",
+        "bytes": 9945,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0600.png",
+        "sha256": "c05d9d74f581f7ba50925dec77f8f07173b43292b829853dbcc9dd6fc50ca713",
+        "bytes": 10004,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    },
+    {
+      "bodyHeightCssPx": 64,
+      "elapsedMs": 700,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h64-t0700.png",
+        "sha256": "dea3d829d7e6a494fede4f567d9a95af9e7ab1138cfa3433438d74db2a15c3fb",
+        "bytes": 10209,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0700.png",
+        "sha256": "c05512c4dd6b41a6b141f25b6b0d8cec0e1dba5afbddf470713173a85d6e004d",
+        "bytes": 10808,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    },
+    {
+      "bodyHeightCssPx": 64,
+      "elapsedMs": 800,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h64-t0800.png",
+        "sha256": "15a9f07f82879f1261f5ab655b75044901f2906db3ec961ee65d666e1595e3c4",
+        "bytes": 9351,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h64-t0800.png",
+        "sha256": "25b7c343a373c8c8aa994aa4df1abdf7cebcb43c901d9a84b396aba7c3e57666",
+        "bytes": 9220,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    },
+    {
+      "bodyHeightCssPx": 192,
+      "elapsedMs": 200,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h192-t0200.png",
+        "sha256": "002182194f492b186a950345a9e9afb6e9e827bf6b90563f64279add651bb940",
+        "bytes": 42755,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0200.png",
+        "sha256": "a40b26bc0e7ad39e55f320ecfa21477eb7d32e9d5ea61c3fa3df0378692a86f8",
+        "bytes": 44772,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    },
+    {
+      "bodyHeightCssPx": 192,
+      "elapsedMs": 400,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h192-t0400.png",
+        "sha256": "f75d2ed5450e8a923b897e937f1f159a64038fe87481d462dee12693767d6b5d",
+        "bytes": 43584,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0400.png",
+        "sha256": "dd10728a5faed3e8f0a4f473ffb74dbf58c8e653afdc787855b633a9c512196c",
+        "bytes": 44877,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    },
+    {
+      "bodyHeightCssPx": 192,
+      "elapsedMs": 600,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h192-t0600.png",
+        "sha256": "6fa0bb22cea4777621edc20b399671884db9d5face1b4ce6e56158be4adeccd2",
+        "bytes": 42718,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0600.png",
+        "sha256": "c1da4e9181ee13851b5eae39993349c918ee9d788bc37f102f8f0ee4c1723499",
+        "bytes": 42884,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    },
+    {
+      "bodyHeightCssPx": 192,
+      "elapsedMs": 700,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h192-t0700.png",
+        "sha256": "2545cfac2c0ab363a33806456770c242ea4910b840590b81b51216e385cf5770",
+        "bytes": 43725,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0700.png",
+        "sha256": "c8c513cd2a4147ad4bda570c057fc9f39b27ec395d0976dd9be189dc8fb4ba95",
+        "bytes": 46305,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    },
+    {
+      "bodyHeightCssPx": 192,
+      "elapsedMs": 800,
+      "r6": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\r6-corrected\\native-attempts\\706b732f-e89d-4df5-8a82-79670de0ec08\\h192-t0800.png",
+        "sha256": "c7280eca882ae93e5065bf10c4ba3b163f52a46ac10fc55d9bdd51eabd16e119",
+        "bytes": 39808,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      },
+      "r7": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-r7-native-delivery\\native\\native-pairs\\824c69d3-f958-449d-a712-c80425cfb529\\r7\\native-attempts\\c39d1212-3bc2-40d4-90bd-fa96e54f73e8\\h192-t0800.png",
+        "sha256": "4fd2b13fa5a61f01fa2e81383e0e3099a2cd3206e97fbdf371440f7cb79c30d9",
+        "bytes": 39199,
+        "format": "PNG",
+        "dimensions": {
+          "width": 1000,
+          "height": 720
+        }
+      }
+    }
+  ],
+  "cleanup": [
+    {
+      "name": "r6",
+      "contextCloseAttempted": true,
+      "browserCloseAttempted": true,
+      "contextClosed": true,
+      "browserConnected": false,
+      "localServerCloseAttempted": true,
+      "localServerClosed": true,
+      "passed": true
+    },
+    {
+      "name": "r7",
+      "contextCloseAttempted": true,
+      "browserCloseAttempted": true,
+      "contextClosed": true,
+      "browserConnected": false,
+      "localServerCloseAttempted": true,
+      "localServerClosed": true,
+      "passed": true
+    }
+  ],
+  "createdAt": "2026-10-08T20:59:35.979Z"
+}

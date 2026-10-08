@@ -1,0 +1,174 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "acceleration-benefit-sol61",
+  "entry": "index.html",
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "inheritedFrom": "acceleration-benefit-r4-gallery-host-luna-r1",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format-srgb-view",
+    "linearLightPremultipliedAlpha": true,
+    "durationActorMs": 1000,
+    "repeatGapMs": 600,
+    "uniformBytes": 64
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "methods": [
+      "hold(elapsedMs, options)",
+      "setPhase(elapsedMs, options)",
+      "resume()",
+      "replay()"
+    ],
+    "holdRangeActorMs": [
+      0,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "options": [
+      "obs",
+      "sparkle",
+      "source",
+      "main",
+      "bodyResponse",
+      "includeActor",
+      "direction",
+      "reducedMotion"
+    ],
+    "waitsForGpuQueueCompletion": true,
+    "childFrame": true
+  },
+  "versionId": "acceleration-benefit-zero-sol61-r7",
+  "effectAuthor": "GPT-6.1-Sol",
+  "effectImplementationAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "partial",
+  "technicalReplayStatus": "pending-native-webgpu",
+  "creativeIteration": 7,
+  "creativeIterationCap": 10,
+  "remainingCreativeIterations": 3,
+  "files": {
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "index.html": "e31ac04990c0135ea50a92ce4743bff9bfe7a27412c0cd1bcc86d34faeb68e5b",
+    "gallery-adapter.mjs": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+    "effect.mjs": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c"
+  },
+  "validation": {
+    "status": "passed",
+    "sourceCount": 48,
+    "carrierSites": 36,
+    "receivingEpisodes": 12,
+    "peakSimultaneous": 16,
+    "peakMs": 451,
+    "peakNominalDistinctPositions": 16,
+    "peakNominalH64Separated2px": 16,
+    "counts": [
+      {
+        "ms": 0,
+        "activeSources": 0,
+        "nominalH64Separated2px": 0
+      },
+      {
+        "ms": 100,
+        "activeSources": 2,
+        "nominalH64Separated2px": 2
+      },
+      {
+        "ms": 200,
+        "activeSources": 10,
+        "nominalH64Separated2px": 10
+      },
+      {
+        "ms": 300,
+        "activeSources": 4,
+        "nominalH64Separated2px": 4
+      },
+      {
+        "ms": 400,
+        "activeSources": 8,
+        "nominalH64Separated2px": 8
+      },
+      {
+        "ms": 500,
+        "activeSources": 12,
+        "nominalH64Separated2px": 12
+      },
+      {
+        "ms": 600,
+        "activeSources": 2,
+        "nominalH64Separated2px": 2
+      },
+      {
+        "ms": 700,
+        "activeSources": 16,
+        "nominalH64Separated2px": 16
+      },
+      {
+        "ms": 800,
+        "activeSources": 4,
+        "nominalH64Separated2px": 4
+      },
+      {
+        "ms": 900,
+        "activeSources": 4,
+        "nominalH64Separated2px": 4
+      },
+      {
+        "ms": 1000,
+        "activeSources": 0,
+        "nominalH64Separated2px": 0
+      }
+    ],
+    "limits": "CPU projection and flux are design facts, not actual screen-visible or perceptually distinct counts; native GPU and ordinary playback not run.",
+    "nodeSyntax": {
+      "effect.mjs": "passed",
+      "gallery-adapter.mjs": "passed",
+      "test-effect-r7.mjs": "passed"
+    },
+    "nativeWgslCompilation": "not_run",
+    "nativeWebGpu": "not_run: root-owned sequential gate",
+    "visualQuality": "not_accepted",
+    "initialTestFailure": {
+      "kind": "test-source-newline-spelling",
+      "cause": "CRLF vs LF in unchanged renderer/SFX source slice",
+      "correction": "Normalize line endings for logic comparison; no rendering logic change."
+    }
+  },
+  "derivative": {
+    "sourceVersion": "acceleration-benefit-zero-sol61-r6",
+    "sourcePackagePath": "outputs/request-20261009/acceleration-small-many-r6/package-manifest.json",
+    "sourcePackageManifestSha256": "30c927ff9dd2000c57ef7d1ebf20026ec80e095484e8f41208939d3168cb883f",
+    "sourceEffectSha256": "be70e90916b2410205803916d62f0362e820204704d8829ea02194506ded5503",
+    "authorizedCorrection": "Small, more numerous readable optical sparkles; R7 of authorized cap10.",
+    "historicalSourceAuthors": {
+      "creative": "GPT-6.1-Sol",
+      "implementation": "GPT-6-Luna",
+      "host": "GPT-6-Luna"
+    },
+    "publicationByWorker": false,
+    "qualityAccepted": false
+  },
+  "validationArtifacts": {
+    "test-effect-r7.mjs": "fddd310961f9d5f6b5906d26ecd84d0f5fd3711b152e1b6fd23caa39b65ce683",
+    "TEST-RESULTS.json": "b9998e5dc46b64d1d9aeb716357100935becbaaefe60d320975beb7a9da15ab4",
+    "SOURCE-PINS.json": "523c397aa3c952f0e7a0dc256d3461032eee721e107f2fdaf4a8c1a62588539a",
+    "IMPLEMENTATION-NOTE.md": "27097bd1845d51afe7815579c96b1562ae5b0d4b7a5e38830127e1befc5b7f61"
+  },
+  "candidateStatus": "cpu-validated-immutable-ready-for-root-native"
+}
