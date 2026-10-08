@@ -1049,6 +1049,11 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+function mayUseGameShellFallback(request, url) {
+  return request.mode === "navigate" &&
+    (url.pathname === "/" || url.pathname === "/index.html");
+}
+
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
@@ -1065,12 +1070,12 @@ self.addEventListener("fetch", (event) => {
     if (response.ok) return response;
     const exact = await matchRuntimeResponse(event.request);
     if (exact) return exact;
-    if (event.request.mode === "navigate") return (await matchNavigationShell()) || response;
+    if (mayUseGameShellFallback(event.request, url)) return (await matchNavigationShell()) || response;
     return response;
   }).catch(async () => {
     const exact = await matchRuntimeResponse(event.request);
     if (exact) return exact;
-    if (event.request.mode === "navigate") return (await matchNavigationShell()) || Response.error();
+    if (mayUseGameShellFallback(event.request, url)) return (await matchNavigationShell()) || Response.error();
     return Response.error();
   }));
 });
