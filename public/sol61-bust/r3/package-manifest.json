@@ -1,0 +1,110 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "bust-sol61",
+  "versionId": "bust-zero-sol61-r3",
+  "entry": "index.html",
+  "effectAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "partial-pending-actual-R3-native-material-and-full-lifetime-review",
+  "userReviewReady": false,
+  "creativeIteration": 3,
+  "creativeIterationLimit": 5,
+  "technicalReplayStatus": "pending-native-webgpu",
+  "files": {
+    "index.html": "32059eae93ab8bca68b8b845f2d451e845eb303826e213b263f89de34fda47b4",
+    "gallery-adapter.mjs": "6e6b99d90eeade8bed7bb778f10769a6bcb2423382267726d86642a6d596b3b6",
+    "bust.mjs": "689b0068d0913e1a87fa8ca41c1b63e92c161fee3cb06b3882261b329542889b",
+    "bust.wgsl": "7ac15727da3a69965f25c13102f44bb62fd738d2a3d6f63652e7d61bb1db63a5",
+    "bust-sfx.mjs": "ff579c80e8678dda98a80fe78adcc0f565da735dc5e0ade92f4531db07680ab0",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "receipt-runner-contract.mjs": "4e4c4bad2b4c487569a486a34f2d14c6c890e705bede758479ca2b72c0fa7e7f"
+  },
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "fixtureLineage": "unchanged neutral actor fixture reused from sealed R2 technical host",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "events": {
+    "timed-bust-start": {
+      "durationMs": 650,
+      "targetId": "beneficiary-target"
+    },
+    "timed-bust-break": {
+      "durationMs": 480,
+      "targetId": "barrier-owner-target"
+    }
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format",
+    "separateActorFixturePass": true,
+    "surfaceFormat": "navigator.gpu.getPreferredCanvasFormat()",
+    "materialDepthSamples": 48
+  },
+  "api": {
+    "rendererPlaybackEventAbi": "R2 ABI preserved",
+    "materialExports": [
+      "BUST_MEDIUM",
+      "sampleBustMaterial(variant,ageMs,{row,pathH})",
+      "bustSupportBounds(variant,actorHeight,{sourceEnabled,observerEnabled})"
+    ],
+    "sourceEnabledOff": "source medium/photon observation suppressed according to frozen R3 contract",
+    "observerEnabledOff": "local PSF only; world integration interval/sample positions remain unchanged",
+    "reducedMotion": "frozen 35% motion scale only",
+    "normalEntrySfx": "unmuted-by-default; AudioContext unlock exposed through user gesture; causal requests require actual GPU completion and age <=100ms; playbackRate 2",
+    "verifyMode": "hard mute",
+    "holdResumeReplay": "verify-only hold, resumes by resetting lastClock to null; replay begins start phase with null lastClock"
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "hold": "hold(ageMs,{variant,targetId,bodyHeight:64|192,sourceEnabled,observerEnabled,reducedMotion})",
+    "waitsForGpuQueueCompletion": true,
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ]
+  },
+  "validation": {
+    "sourceManifest": "pinned-and-all-source-files-checked",
+    "frozenSourceTests": "passed: source-author test-bust.mjs reports 15,459 CPU/mock/material assertions",
+    "hostCpu": "passed: test-host-cpu.mjs reports 67 assertions",
+    "httpPreflight": "inherited frozen-host HTTP preflight; derivative helper route will be checked by the pinned native runner",
+    "nativeRunner": "prepared-and-pinned; not run in this assignment",
+    "nativeWebGpu": "not-run",
+    "nativePixels": "not-run",
+    "GPUPerformance": "not-measured",
+    "normalAudioListening": "not-run",
+    "fullLifetimeQuality": "pending",
+    "public": "not-run",
+    "gameIntegration": "not-run",
+    "technicalDerivativeCpuContract": "passed: delayed-completion first-submit receipt, mismatches, and completed phase-run sequencing"
+  },
+  "sourceManifest": {
+    "path": "outputs/request-20261008/bust-zero-sol61-r3/source-manifest.json",
+    "sha256": "7c0c56b2052f3d5296424868b73817e5457a56284e1d13becbb5df861fd7c8cf"
+  },
+  "technicalDerivative": {
+    "basedOn": "outputs/request-20261008/bust-r3-gallery-host-luna-r1/public/sol61-bust/r3",
+    "creativeChanges": false,
+    "changes": [
+      "Freeze first-frame cause, submission id, phase, age, viewport, target and lifecycle epoch at WebGPU submit before asynchronous completion.",
+      "Retain epoch, current canvas, connected canvas and visibility checks before publishing the completion receipt.",
+      "Add a pure receipt and runner contract module for CPU verification."
+    ],
+    "technicalAuthor": "GPT-6-Luna"
+  },
+  "nativeRunner": {
+    "path": "outputs/request-20261008/bust-r3-receipt-runner-repair-luna-r1/verify.mjs",
+    "status": "prepared-and-pinned; not run in this assignment"
+  }
+}

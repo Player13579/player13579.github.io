@@ -1,0 +1,109 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "bust-sol61",
+  "versionId": "bust-zero-sol61-r4",
+  "entry": "index.html",
+  "effectAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "partial-pending-actual-R4-native-material-internal-transport-full-lifetime-and-sparkle-review",
+  "userReviewReady": false,
+  "creativeIteration": 4,
+  "creativeIterationLimit": 5,
+  "technicalReplayStatus": "pending-native-webgpu",
+  "files": {
+    "index.html": "dad24e3269e7ce79cc4ec2a059d248fcb75436def841ef1e27c92e019b497124",
+    "gallery-adapter.mjs": "6e6b99d90eeade8bed7bb778f10769a6bcb2423382267726d86642a6d596b3b6",
+    "receipt-runner-contract.mjs": "4e4c4bad2b4c487569a486a34f2d14c6c890e705bede758479ca2b72c0fa7e7f",
+    "bust.mjs": "3fe7e699df87546dbc07ece5d45373429086a208ff988cc486d2e648e8269ab3",
+    "bust.wgsl": "cd4369cd56111406ac3a1ef019a42cd5d170e208307f228d94404ca194bc5e4e",
+    "bust-sfx.mjs": "ff579c80e8678dda98a80fe78adcc0f565da735dc5e0ade92f4531db07680ab0",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "fixtureLineage": "unchanged neutral actor fixture reused from R3 technical host",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "events": {
+    "timed-bust-start": {
+      "durationMs": 650,
+      "targetId": "beneficiary-target"
+    },
+    "timed-bust-break": {
+      "durationMs": 480,
+      "targetId": "barrier-owner-target"
+    }
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format",
+    "separateActorFixturePass": true,
+    "materialDepthSamples": 48
+  },
+  "api": {
+    "rendererPlaybackEventAbi": "R3 ABI preserved",
+    "uniformBytes": 48,
+    "durationsMs": [
+      650,
+      480
+    ],
+    "sourceEnabledOff": "frozen R4 behavior",
+    "observerEnabledOff": "frozen R4 behavior",
+    "reducedMotion": "frozen R4 behavior",
+    "normalEntrySfx": "unmuted by default; gesture unlock; causal GPU-completion gate and 2x playback rate",
+    "verifyMode": "hard mute",
+    "holdResumeReplay": "verify-only hold; resume recreates playback with null clock; replay restarts start phase"
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "hold": "hold(ageMs,{variant,targetId,bodyHeight:64|192,sourceEnabled,observerEnabled,reducedMotion})",
+    "waitsForGpuQueueCompletion": true,
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ]
+  },
+  "validation": {
+    "sourceManifest": "pinned-and-all-listed-source-files-checked",
+    "creativeBytes": "exactly match sealed R4 source manifest",
+    "hostCpu": "actual adapter module executed against CPU WebGPU/Audio mocks",
+    "servedClosure": "all seven served package files returned HTTP 200 and matched package hashes, including receipt helper",
+    "nativeRunner": "not prepared in this assignment",
+    "nativeWebGpu": "not-run",
+    "nativePixels": "not-run",
+    "GPUPerformance": "not-measured",
+    "normalAudioListening": "not-run",
+    "fullLifetimeQuality": "pending",
+    "public": "not-run",
+    "gameIntegration": "not-run"
+  },
+  "sourceManifest": {
+    "path": "outputs/request-20261008/bust-zero-sol61-r4/source-manifest.json",
+    "sha256": "b31f551b94d06a69e0d36abf2b1cb10249faf291eebfdba8820efb9acb7bcb06"
+  },
+  "technicalDerivative": {
+    "basedOn": "outputs/request-20261008/bust-r3-receipt-runner-repair-luna-r1/public/sol61-bust/r3",
+    "creativeChanges": false,
+    "changes": [
+      "Adapt R3 repaired host and submission snapshot/first-frame helper to sealed R4 source identity.",
+      "R4 bust.mjs, bust.wgsl, and bust-sfx.mjs copied byte-for-byte from the sealed source.",
+      "Keep 48-byte uniform ABI, 650/480ms durations, 2x actor clock, lifecycle hold/resume/replay, verify hard mute, and normal causal SFX consumer."
+    ],
+    "technicalAuthor": "GPT-6-Luna"
+  },
+  "cpuProof": {
+    "path": "test-host-cpu.mjs",
+    "scope": "actual adapter execution, delayed completion across phase transition, fixed first receipt identity, hold/resume, natural repeat, verify mute, normal post-submit SFX, served closure hash audit"
+  },
+  "nativeStatus": "not run"
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "dva-stamina-r5-public-http-readback/v1",
+  "candidate": "outputs/request-20261008/stamina-r5-public-release-root-r1/rebased-candidate",
+  "targetCommit": "68446a48d290d1a6c1e32487737afdd2a50f48c3",
+  "origin": "https://player13579.github.io",
+  "runId": "2026-10-08T09-00-58-129Z-f7ad9a10-8d4d-45b8-9d97-eefeadee8f33",
+  "startedAt": "2026-10-08T09:00:58.131Z",
+  "fileCount": 10,
+  "passes": [
+    {
+      "mode": "baseline",
+      "result": "PASS",
+      "receipt": "HTTP-BASELINE.json",
+      "files": 10
+    },
+    {
+      "mode": "cachebusted",
+      "result": "PASS",
+      "receipt": "HTTP-CACHEBUSTED.json",
+      "files": 10
+    }
+  ],
+  "status": "EXACT_BYTES_BOTH_HTTP_PASSES",
+  "completedAt": "2026-10-08T09:01:00.836Z"
+}

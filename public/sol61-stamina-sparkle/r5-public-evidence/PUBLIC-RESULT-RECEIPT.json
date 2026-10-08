@@ -1,0 +1,102 @@
+{
+  "schema": "stamina-r5-public-parent-result-receipt/v1",
+  "publicUrl": "https://player13579.github.io/webgpu-e-gallery.html?verify=stamina-r5-public-parent&category=effect&filter=unadopted&asset=stamina-astra&version=stamina-benefit-sol61-r5",
+  "deployedCommit": "68446a48d290d1a6c1e32487737afdd2a50f48c3",
+  "publicInterception": "none",
+  "runReport": {
+    "path": "NATIVE-REPORT.json",
+    "sha256": "af2bc7b2a342c9049b1e663ac72efedff829682ee3f7bc0049eb743c21ef78ae",
+    "status": "LIMITED_PUBLIC_FULL_PARENT_NATIVE_REPLAY"
+  },
+  "interpretation": {
+    "technicalPublicReplay": "observed in the actual public gallery route; exact candidate HTML/catalog/package hashes matched HTTP readback and browser responses",
+    "publicDeployment": "confirmed by this run and separate deployment receipt",
+    "quality": "not accepted by this verification",
+    "ordinarySfxListening": "not run",
+    "safariIpad": "unverified",
+    "mainGameIntegration": "not established",
+    "staleTemplateLimit": "NATIVE-REPORT.json retains legacy acceptanceLimits text saying public release is not established; that private-template wording does not override the public HTTP/browser evidence in this run"
+  },
+  "observations": {
+    "selectedVersion": "stamina-benefit-sol61-r5",
+    "verify": true,
+    "verifyAudioMuted": true,
+    "audioEnabled": false,
+    "strictStartupIdentityOrder": true,
+    "startupMessageCount": 5,
+    "firstFrame": {
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "canvasConnected": true,
+      "passes": 2,
+      "viewportWidth": 980,
+      "viewportHeight": 620,
+      "sourcePasses": [
+        "world",
+        "post"
+      ],
+      "sourceWitness": "effect.mjs pinned two-pass encoder path",
+      "sourceSha256": "ab581f261047da0f9d01a4a4b9ce4d635a265203e72ed2303d012a11caae73be",
+      "submissionId": 1,
+      "causeId": "stamina-benefit-sol61-r5:0",
+      "ageMs": 1,
+      "bodyProjectedHeight": 64,
+      "postEnabled": true,
+      "cssWidth": 980,
+      "cssHeight": 620,
+      "dpr": 1,
+      "backingWidth": 980,
+      "backingHeight": 620,
+      "lifecycleEpoch": 3
+    },
+    "postResumeSameCauseCompletedSubmissions": 33,
+    "postResumeLifecycleScope": "synthetic child visibilitychange handler exercise; not an OS/iPad background-return test",
+    "naturalLoop": {
+      "causeIdBefore": "stamina-benefit-sol61-r5:0",
+      "causeIdAfter": "stamina-benefit-sol61-r5:1",
+      "loop": 1,
+      "completedRows": 1
+    },
+    "errors": {
+      "child": [],
+      "console": [],
+      "page": [],
+      "requests": []
+    },
+    "cleanup": {
+      "pageClosed": true,
+      "contextClosed": true,
+      "browserClosed": true,
+      "serverClosed": true
+    },
+    "sourceHashesUnchanged": true
+  },
+  "screenshots": [
+    {
+      "path": "parent-first-completed-frame.png",
+      "bytes": 212866,
+      "sha256": "214b7f68e8194c6b2f1afc2f4a51533d218008edf088a706210dc45b7f94165d"
+    },
+    {
+      "path": "natural-loop-frame.png",
+      "bytes": 212976,
+      "sha256": "9d141cb35775b971d5a5bfbdc7b62999aa602422584fc4fa33bbac96c9c2646c"
+    }
+  ],
+  "httpAndBrowserProof": {
+    "httpReadbackRows": 10,
+    "browserResponses": 8,
+    "allReadbackStatuses200": true,
+    "allBrowserResponses200": true,
+    "allBrowserBodiesCaptured": true
+  },
+  "cpuPreflight": {
+    "status": "READY_CPU_ONLY",
+    "baseCommit": "68446a48d290d1a6c1e32487737afdd2a50f48c3",
+    "publicSourceCommit": "68446a48d290d1a6c1e32487737afdd2a50f48c3",
+    "sourceStrategy": "deployed 68446 commit bytes; historical a6 commit retained as comparison provenance"
+  },
+  "unchangedReport": true,
+  "visiblePageCopy": "The public page card text still says its replay evidence is private and public deployment is unverified. This is stale prose relative to the observed public deployment and exact live HTTP/browser byte hashes; it was not edited during verification."
+}
