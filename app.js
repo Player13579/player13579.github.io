@@ -21331,9 +21331,10 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         omitted.push({ effectId: effect.id, reason: 'mystery-box-outside-viewport' });
         continue;
       }
+      const effectForPlan = window.DvaWebGPUMysteryBoxRevealE?.normalizeEffectStartTime?.(effect) || effect;
       let planned = null;
       try {
-        planned = window.DvaWebGPUMysteryBoxRevealE?.plan?.({ effect, now,
+        planned = window.DvaWebGPUMysteryBoxRevealE?.plan?.({ effect: effectForPlan, now,
           viewerId: String(data.selfId), selfId: String(data.selfId),
           camera, zoom, viewport, reducedMotion });
       } catch (_) { /* Malformed visible source must block full-frame readiness. */ }
@@ -21343,7 +21344,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         continue;
       }
       events.push({ type: 'mysteryBoxRevealE', effectId: effect.id,
-        input: { sourceEffectId: String(effect.id), effect, planned } });
+        input: { sourceEffectId: String(effect.id), effect: effectForPlan, planned } });
       continue;
     }
     if (type === 'action-mana') {
@@ -32867,7 +32868,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=player-name-restore-v34", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.

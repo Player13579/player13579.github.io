@@ -1,0 +1,74 @@
+{
+  "schema": "dva-effect-gallery-package/v1",
+  "packageId": "stamina-sparkle-sol61-r3",
+  "version": "stamina-sparkle-sol61-r3",
+  "status": "private-preview-candidate-not-native-or-quality-accepted",
+  "author": {
+    "creative": "GPT-6.1-Sol",
+    "previewRuntime": "GPT-6-Luna"
+  },
+  "title": "スタミナ恩恵E · 三本の光帯 r3",
+  "entry": "gallery-content.html",
+  "standaloneEntry": "index.html",
+  "renderer": "WebGPU",
+  "dependencies": "local-relative-only",
+  "parentPackageSealSha256": "5978a79fbaf92beced6cbac4a50ca885bea7da8b53618ed8380c793254653956",
+  "creativeInput": {
+    "path": "stamina-r3-creative-root-r1/creative/effect-draft2.mjs",
+    "bytes": 12300,
+    "sha256": "2686a1ba4e6e3956dee1718216c00aee6d2f8d6935c7a442cf746504da73ceac"
+  },
+  "inheritedR2History": {
+    "repository": "Player13579/player13579.github.io",
+    "sourceCommit": "de53560894de256a6e97df8cb315ffab1f19704e",
+    "sourceTree": "46e5fa43d683370da172d9f8ce2f85a4a89624e8"
+  },
+  "files": [
+    {
+      "path": "body.png",
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 12316,
+      "sha256": "8616ba338598e1024a50475d8ce678511690c8d19d6abff91280d7e7f21688d6"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2742,
+      "sha256": "263d3ca46f13235ac89736be802023b5d7b324c78ede43e3017f75dda775857d"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 8817,
+      "sha256": "38122cb40e5930ac65402aa0f3bd91d8be68f89b11faf02a5c5d10bacb9193b1"
+    },
+    {
+      "path": "sound.mjs",
+      "bytes": 2906,
+      "sha256": "0637c4c11385486d62b1101229891e67d1aecdfe293c3eeedef31e060a9b2785"
+    },
+    {
+      "path": "gallery-content.html",
+      "bytes": 2092,
+      "sha256": "f0e8d16626a678a8850011a3c925ebfe27e88a0963163b43b01cd25a8b8c2d1b"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 27164,
+      "sha256": "cddbb2d2eb71ccf33603d93638b4c3940f14ad4bcbeed0ac85fb5e61ad87321d"
+    }
+  ],
+  "technicalRuntimeDerivative": {
+    "kind": "reserved-WGSL-identifier-compile-repair-plus-gallery-SFX-lifecycle",
+    "creativeEditionUnchanged": true,
+    "creativeInputSha256": "2686a1ba4e6e3956dee1718216c00aee6d2f8d6935c7a442cf746504da73ceac",
+    "runtimeEffectPath": "effect.mjs",
+    "runtimeEffectSha256": "8616ba338598e1024a50475d8ce678511690c8d19d6abff91280d7e7f21688d6",
+    "compileRepair": "exactly two local identifier renames, active to ribbonEnvelope, no expression/timing/geometry changes",
+    "sfxRepair": "gesture unlock only; one play per current cause after its actual submitted-render GPU queue fence, with currentness guards",
+    "sourceRuntime": "outputs/request-20261008/stamina-r3-faithful-runtime-luna-r2",
+    "parentBridgeCommit": "74f242dc4991f3593bce25687cb7afb8c5facb70"
+  }
+}

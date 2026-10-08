@@ -4,6 +4,12 @@
   'use strict';
   const TYPE = 'mystery-box', DURATION = 2600, FLOATS = 16;
   const finite = Number.isFinite, clamp = (v, lo = 0, hi = 1) => Math.max(lo, Math.min(hi, v));
+  function normalizeEffectStartTime(effect) {
+    if (!effect || typeof effect !== 'object' || finite(effect.startedAt) ||
+        (effect.startedAt !== undefined && effect.startedAt !== null) || !finite(effect.at))
+      return effect;
+    return Object.freeze({ ...effect, startedAt: effect.at });
+  }
   const smooth = v => { const t = clamp(v); return t * t * (3 - 2 * t); };
   const shader = /* wgsl */`
 struct Params { view:vec4f, shape:vec4f, timing:vec4f, tint:vec4f };
@@ -138,7 +144,7 @@ fn ease(v:f32)->f32 {let x=clamp(v,0.0,1.0);return x*x*(3.0-2.0*x);}
     return Object.freeze({plan,record,shader,get state(){return destroyed?'destroyed':frameOwner.state;},destroy(){if(destroyed)return;destroyed=true;
       for(const s of slots)if(frameOwner.release(s.uniform))s.uniform.destroy();slots.length=0;}});
   }
-  const api=Object.freeze({TYPE,DURATION,shader,plan,planBatch,pack,create});
+  const api=Object.freeze({TYPE,DURATION,shader,plan,planBatch,pack,create,normalizeEffectStartTime});
   root.DvaWebGPUMysteryBoxRevealE=api;
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof globalThis!=='undefined'?globalThis:window);
