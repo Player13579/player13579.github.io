@@ -1,0 +1,115 @@
+{
+  "schema": "dva-r452-finite-visual-review/v1",
+  "review": "R452",
+  "edition": "donation-zero-sol61-r14-legible-minted-engraving",
+  "requested_reviewer": "GPT-6.1-Sol high",
+  "actual_model_and_reasoning": "UNEXPOSED",
+  "finite_disposition": "FAVORABLE_LIMITED_STILL_COMPARISON_AND_TERMINAL_CLEAR; full six-petal recognition at original pixels UNRESOLVED; whole-quality acceptance NOT_ESTABLISHED",
+  "display_scope": "Actual 980x900 gallery screenshots, DPR 1 per receipt; source canvas 980x620. Each held coin is approximately 20–23 px wide and 27–29 px tall including rim. Terminal capture is a 736x466 canvas image. Review judges these displayed pixels; no H64 projection acceptance.",
+  "held_receipt": {
+    "epoch": 5,
+    "causeId": "donation-r14-legible-minted-engraving-fixture-4",
+    "ageMs": 1100,
+    "submit": 18,
+    "passes": 6,
+    "generation": 1,
+    "targetGeneration": 1,
+    "sourceOn": true,
+    "sceneOn": true,
+    "canvas": [
+      980,
+      620
+    ],
+    "completed": true
+  },
+  "terminal_receipt": {
+    "causeId": "donation-r14-legible-minted-engraving-fixture-3",
+    "ageMs": 2400,
+    "running": false,
+    "capture": {
+      "path": "screenshots/natural-terminal-2400ms.png",
+      "bytes": 4797,
+      "sha256": "d224f8e1113c9e21b475792d6eb5f4bdcd98bc492232539bf53f9d12e710cd52"
+    }
+  },
+  "runtime_scope": {
+    "completedSeconds": 17.451,
+    "exit0": "Parent-reported; this review did not replay",
+    "held_is_natural_continuity_proof": false,
+    "continuous_quality_established": false
+  },
+  "findings": {
+    "engraving_comparison": "R14 gives all five exposed caps a fuller internal relief pattern than R407 R13. At original pixels, the angular enclosure is more coherent and distinct from the central flower-like marks; the 4x nearest crop makes separated groove shoulders easier to inspect. R13 shows more isolated bright marks and a less clear central pattern. This supports improved separation/readability in this matched held pose. The complete six-petal count remains difficult to identify unprompted at roughly 20 px face width; enlargement cannot establish missing native-size detail.",
+    "gold_and_shape": "Five pale warm-gold faces remain distinct, with brighter yellow rims and narrow darker sidewalls. Coin volume and oval projections remain readable. Darker R14 recessed detail gives the caps more minted relief without flattening them into a single bright disk. This still does not establish correct conductor appearance through rotation.",
+    "surface_glints": "No large crossed ray visibly blankets a coin face. The small cap/rim highlights leave the new relief visible. The source has two compact face sites; authored site count or independent recurrence is not visually established by a single held capture.",
+    "surrounding_space": "Separate warm crossed glints remain sparse above, below and between the five coins. Gaps preserve the dark negative space and coin silhouettes; the glint pattern is visually preserved against the matched R13 image. This supports this frame’s spacing only, not drifting, flashing, recurrence or late-intake density.",
+    "terminal_clear": "Viewed actual natural-terminal-2400ms.png: coins and surrounding glints are absent; source card and receiver remain against the dark background. Together with the bound fixture-3 2400 ms terminal capture receipt, this supports a clear terminal still. It does not establish the visual continuity or smoothness of the natural lifetime."
+  },
+  "source_geometry": {
+    "r13_to_r14": {
+      "hexApothem": [
+        4.2,
+        5.0
+      ],
+      "flowerRadius": [
+        2.6,
+        2.65
+      ],
+      "flowerAmplitude": [
+        0.55,
+        0.82
+      ],
+      "hexDepth": [
+        0.28,
+        0.42
+      ],
+      "flowerDepth": [
+        0.25,
+        0.4
+      ],
+      "r14_groove_halfwidths": {
+        "hex": 0.48,
+        "flower": 0.45
+      },
+      "r14_floorFraction": 0.28,
+      "r14_flowerMetricLimit": 1.7,
+      "shoulder_radius": [
+        5.2,
+        6.5
+      ],
+      "shoulder_width": [
+        0.9,
+        0.55
+      ],
+      "shoulder_height": [
+        0.22,
+        0.16
+      ]
+    },
+    "mechanism": "Closed regular hexagon from three absolute half-plane distances; six-lobed polar flower from cosine-6 harmonic with bounded slope metric. The cap distance subtracts engraving depth on both caps and hit normals come from finite differences. R14 groove floors reduce broad illumination by cavity=1−0.54*grooveFloor and raise local roughness to at least 0.44. These are source-grounded geometric/material mechanisms, not proof of complete motif recognition in every pose.",
+    "preservation": "R13 and R14 glints.mjs byte-identical SHA256 23dcea7218f96ccdeb04b1c1af32f5d054e4a062c548a0bea13452b2b7ba3bf7; material.mjs also byte-identical. Sparse face sites and world-space packet implementation are preserved."
+  },
+  "comparison": "Actual R407 R13 held image and R411 review were read. R411’s unresolved flower/hex readability is improved at this held pose, but not promoted to a full native-size six-petal acceptance.",
+  "metadata_caution": "Gallery local-preparation text says used 1 / remaining 1. Authoritative R431 ALLOWANCE-AFTER-CODE says authorized 2 / consumed 2 / remaining 0. Receipt naturalClearProof.clearScreenshotTaken=false is a stale summary alongside the separately present bound naturalTerminalImageCapture and its actual viewed PNG; terminal-image finding relies on that concrete capture.",
+  "allowance": {
+    "authorized": 2,
+    "consumed": 2,
+    "remaining": 0,
+    "consumed_by_review": 0,
+    "new_edition_created": false,
+    "r15_created": false
+  },
+  "not_established": [
+    "whole visual quality",
+    "continuous natural motion quality",
+    "independent visible glint timing",
+    "full lifetime visual quality",
+    "native performance",
+    "ordinary SFX",
+    "Safari/iPad",
+    "main/game integration",
+    "H64 projection",
+    "adoption"
+  ],
+  "mutations": "Only owned R452 review artifacts and crop/nearest inspection derivatives; no creative code, browser/GPU, public or shared source writes."
+}

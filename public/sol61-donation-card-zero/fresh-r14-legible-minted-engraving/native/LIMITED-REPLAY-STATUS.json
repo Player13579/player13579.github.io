@@ -1,0 +1,88 @@
+{
+  "schema": "dva-donation-r14-limited-replay-status/v1",
+  "version": "donation-zero-sol61-r14-legible-minted-engraving",
+  "disposition": "limited native replay evidence only; full visual quality not accepted; candidate release metadata",
+  "releaseBase": {
+    "currentRemoteCommit": "03211759ef2538e431faccfc6948cb3479d5e6fd",
+    "currentRemoteCommitActualParent": "95dda04ae7a911ca64ec8bb53161af6a4c406739",
+    "currentRemoteCatalogSha256": "569cc78688e43b99fec883b3f3e86b6b41116c18b7f327dcd40bf312d95e80f7",
+    "source": "R412 raw Git object plus R448 audit"
+  },
+  "replayInput": {
+    "rootReceipt": "R450",
+    "rootReceiptSha256": "f82a126c2e134678995344cd1dba1ddc9f07e01e6b19b197c4127f7603f11884",
+    "privateParentSourceCommit": "95dda04ae7a911ca64ec8bb53161af6a4c406739",
+    "privateParentCatalogSha256": "820d1f12f59328b793c71de49295c853bd36d3962c679f60593eb20972d83db4",
+    "privateParentHtmlSha256": "a41aa7ba4b9bef30b344a022ac90004ff53a00c8f3cffdf0b254300ca27b2b82",
+    "relationship": "R450 replay evidence was captured against the R438 private parent snapshot. The R454 delta uses the later exact current remote 032 catalog audited in R448; it does not claim R450 replayed against the 032 catalog."
+  },
+  "native": {
+    "renderer": "Vulkan SwiftShader software WebGPU",
+    "actualRunSeconds": 17.451,
+    "privateHeadedParentUI": true,
+    "selectedVersion": "donation-zero-sol61-r14-legible-minted-engraving",
+    "shaderInfoAndPipelineRequests": "fulfilled",
+    "resolvedErrorScope": null,
+    "pageErrors": [],
+    "queueDrainCompleted": true,
+    "heldProof": {
+      "causeId": "donation-r14-legible-minted-engraving-fixture-4",
+      "ageMs": 1100,
+      "submit": 18,
+      "passes": 6,
+      "completed": true,
+      "screenshot": "native/held-active-after-natural-next-cause.png",
+      "screenshotBytes": 165678,
+      "screenshotSha256": "1aa579867af1c7a0fa8b4a684908a1fd1cfd4418573a47885bb7d67f747266c9"
+    },
+    "preHoldObservation": {
+      "causeId": "donation-r14-legible-minted-engraving-fixture-4",
+      "ageMs": 2194.60000001192,
+      "submit": 17,
+      "interpretation": "separate running observation before hold; not held screenshot age"
+    },
+    "naturalTerminal": {
+      "causeId": "donation-r14-legible-minted-engraving-fixture-3",
+      "ageMs": 2400,
+      "submit": 11,
+      "rendererQueueDrained": true,
+      "screenshot": "native/natural-terminal-2400ms.png",
+      "screenshotBytes": 4797,
+      "screenshotSha256": "d224f8e1113c9e21b475792d6eb5f4bdcd98bc492232539bf53f9d12e710cd52",
+      "legacyClearScreenshotTakenFlag": false,
+      "correction": "same-cause terminal PNG capture record proves image was captured despite the unreconciled false legacy flag"
+    },
+    "performance": "not established; hardware GPU evidence false",
+    "rayBudget": 192,
+    "ordinarySfx": "not run",
+    "safariIpad": "unverified",
+    "mainGameIntegration": "not connected",
+    "adoption": "unknown"
+  },
+  "quality": {
+    "review": "R452",
+    "reviewSha256": "9f69fad5d340c2f8e7abebc30570e925d05d981450ec31197ed1951d98c9af42",
+    "finiteDisposition": "FAVORABLE_LIMITED_STILL_COMPARISON_AND_TERMINAL_CLEAR; full six-petal recognition at original pixels UNRESOLVED; whole-quality acceptance NOT_ESTABLISHED",
+    "sample": "five coins in the held comparison; exact six-petal count remains unresolved at original pixels",
+    "favorableLimitedFindings": "more coherent angular enclosure and fuller separated center relief in the matched held pose; terminal still is clear",
+    "wholeQuality": "not accepted"
+  },
+  "independentGate": {
+    "receipt": "R453 V2",
+    "candidateSha256": "f878f905ed9eacb9366fda87a1cab2417b7dc1a576f95b45cd7232ea0e6e0821",
+    "correctionSha256": "11504776158d76828d7455a8c372b8b224174466fc0b96ed4d8f701521f14cbe",
+    "correctedHeldEvidence": "fixture-4 age 1100 ms / submit 18; pre-hold 2194.6 ms / submit 17 is separate",
+    "correctedTerminalEvidence": "fixture-3 age 2400 ms / submit 11 with captured PNG"
+  },
+  "allowance": {
+    "authority": "donation-additional-two-20261009",
+    "authorized": 2,
+    "consumed": 2,
+    "remaining": 0,
+    "edition": 14,
+    "cap": 14,
+    "r15Created": false,
+    "automaticNextVersion": false
+  },
+  "adoption": "unknown"
+}

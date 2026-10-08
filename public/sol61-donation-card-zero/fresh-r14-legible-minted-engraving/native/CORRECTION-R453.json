@@ -1,0 +1,131 @@
+{
+  "schema": "dva-r14-actual-native-evidence-correction-r453/v1",
+  "status": "CORRECTION_PRESERVING_PRIOR_AUDIT",
+  "correctsCandidate": {
+    "path": "/tmp/dva-cloud-capacity-continuation/donation-r14-actual-native-evidence-independent-gate-r453/PUBLIC-NATIVE-EVIDENCE-CANDIDATE.json",
+    "sha256": "de42aa475547c091e6c73baede54fc7ad03f928fddf7391ca8e84c7c6c21672e"
+  },
+  "revisedCandidate": {
+    "path": "/tmp/dva-cloud-capacity-continuation/donation-r14-actual-native-evidence-independent-gate-r453/PUBLIC-NATIVE-EVIDENCE-CANDIDATE-V2.json",
+    "sha256": "f878f905ed9eacb9366fda87a1cab2417b7dc1a576f95b45cd7232ea0e6e0821"
+  },
+  "corrections": [
+    {
+      "field": "RUN-RESULT.ageAtNaturalTerminal",
+      "priorInterpretation": "stale first-completed fixture-1 alias",
+      "correctedInterpretation": "legacy top-level field is assigned from final post-queue-drain fixture-4 hold snapshot at age1100; it is mislabeled as natural-terminal age. Natural terminal is fixture-3, age2400, submit11."
+    },
+    {
+      "field": "RUN-RESULT.naturalClearProof.clearScreenshotTaken",
+      "priorInterpretation": "claimed false despite natural terminal image capture",
+      "correctedInterpretation": "retained false legacy flag is unreconciled; runner did capture screenshots/natural-terminal-2400ms.png at the exact same-cause terminal condition before observing the next cause."
+    },
+    {
+      "field": "held screenshot age",
+      "priorInterpretation": "incorrectly used pre-hold actualNextCause age2194.6ms",
+      "correctedInterpretation": "pre-hold fixture-4 observation was running at 2194.6ms / submit17; runner then called hold(1100), returned completed fixture-4 epoch5 age1100 / submit18; screenshot followed; post-screenshot and queue-drain snapshots confirm age1100, submit18. HELD-QUALITY-PROOF is accurate."
+    }
+  ],
+  "runnerSequenceSource": "runner.py lines 438-465: captures terminal screenshot on same-cause age2400 and completed submit; breaks on next cause; calls hold(1100); writes proof; captures held full-page screenshot; snapshots after screenshot; then drains queue and snapshots again.",
+  "heldProof": {
+    "epoch": 5,
+    "causeId": "donation-r14-legible-minted-engraving-fixture-4",
+    "ageMs": 1100,
+    "submit": 18,
+    "passes": 6,
+    "generation": 1,
+    "targetGeneration": 1,
+    "sourceOn": true,
+    "sceneOn": true,
+    "canvas": [
+      980,
+      620
+    ],
+    "completed": true
+  },
+  "postScreenshotSnapshot": {
+    "causeId": "donation-r14-legible-minted-engraving-fixture-4",
+    "ageMs": 1100,
+    "running": false,
+    "lastCompleted": {
+      "epoch": 5,
+      "causeId": "donation-r14-legible-minted-engraving-fixture-4",
+      "ageMs": 1100,
+      "submit": 18,
+      "passes": 6,
+      "generation": 1,
+      "targetGeneration": 1,
+      "sourceOn": true,
+      "sceneOn": true,
+      "canvas": [
+        980,
+        620
+      ],
+      "completed": true
+    }
+  },
+  "queueDrainSnapshot": {
+    "causeId": "donation-r14-legible-minted-engraving-fixture-4",
+    "ageMs": 1100,
+    "running": false,
+    "lastCompleted": {
+      "epoch": 5,
+      "causeId": "donation-r14-legible-minted-engraving-fixture-4",
+      "ageMs": 1100,
+      "submit": 18,
+      "passes": 6,
+      "generation": 1,
+      "targetGeneration": 1,
+      "sourceOn": true,
+      "sceneOn": true,
+      "canvas": [
+        980,
+        620
+      ],
+      "completed": true
+    }
+  },
+  "naturalTerminalCapture": {
+    "causeId": "donation-r14-legible-minted-engraving-fixture-3",
+    "ageMs": 2400,
+    "submitCount": 11,
+    "png": {
+      "path": "screenshots/natural-terminal-2400ms.png",
+      "bytes": 4797,
+      "sha256": "d224f8e1113c9e21b475792d6eb5f4bdcd98bc492232539bf53f9d12e710cd52"
+    }
+  },
+  "rawEvidence": [
+    {
+      "path": "/tmp/dva-cloud-capacity-continuation/root-donation-r14-private-parent-actual-r450/RUN-RESULT.json",
+      "bytes": 1195773,
+      "sha256": "f82a126c2e134678995344cd1dba1ddc9f07e01e6b19b197c4127f7603f11884",
+      "mtimeUtc": "2026-10-08T23:19:27.126899+00:00"
+    },
+    {
+      "path": "/tmp/dva-cloud-capacity-continuation/root-donation-r14-private-parent-actual-r450/HELD-QUALITY-PROOF.json",
+      "bytes": 269,
+      "sha256": "54d9d9c59ddc4e11753d08b3135800f6f0840997411785173bc8d25c4f727f3b",
+      "mtimeUtc": "2026-10-08T23:19:26.814290+00:00"
+    },
+    {
+      "path": "/tmp/dva-cloud-capacity-continuation/donation-r14-exact-parent-runner-prepare-r438/runner.py",
+      "bytes": 53020,
+      "sha256": "21c074e8bc87ef9a7ebb3fb5cb864907c63aa4c398630fc41bbc21b713d69bab",
+      "mtimeUtc": "2026-10-08T23:18:12.832064+00:00"
+    },
+    {
+      "path": "/tmp/dva-cloud-capacity-continuation/root-donation-r14-private-parent-actual-r450/screenshots/natural-terminal-2400ms.png",
+      "bytes": 4797,
+      "sha256": "d224f8e1113c9e21b475792d6eb5f4bdcd98bc492232539bf53f9d12e710cd52",
+      "mtimeUtc": "2026-10-08T23:19:22.748699+00:00"
+    },
+    {
+      "path": "/tmp/dva-cloud-capacity-continuation/root-donation-r14-private-parent-actual-r450/screenshots/held-active-after-natural-next-cause.png",
+      "bytes": 165678,
+      "sha256": "1aa579867af1c7a0fa8b4a684908a1fd1cfd4418573a47885bb7d67f747266c9",
+      "mtimeUtc": "2026-10-08T23:19:26.898096+00:00"
+    }
+  ],
+  "scope": "Read-only correction. No GPU/browser relaunch, creative change, or public write."
+}
