@@ -1,0 +1,933 @@
+{
+  "schema": "dva-public-parent-native-selection/v1",
+  "attemptId": "9e927376-e6fa-4a64-a737-05af83520584",
+  "status": "PASS_PUBLIC_PARENT_SELECTION_NATIVE_STARTUP",
+  "publicGalleryUrl": "https://player13579.github.io/webgpu-e-gallery.html",
+  "expectedCatalogScriptSha256": "fce57bb47ec9f4535b80efe48856c565788192ed772fef29a8c21e9c2a22df86",
+  "expectedGalleryHtmlSha256": "c3303301b54b62d45eb5c4b29e5ea0d7e964947a15bc886781248ed83ecf4ad3",
+  "pinnedCatalogSource": "C:/Users/user/Documents/Codex/2026-07-12/defenders-vs-attackers/outputs/request-20261009/sparkle-catalog-integration/asset-gallery.js.base",
+  "pinnedCatalogSourceSha256": "ae9c9f2e0946d2d23618d2370f2691e27be165222b261f5c79c03192ccb2b0e1",
+  "selectorKeysFromCatalog": [
+    "category",
+    "filter",
+    "asset",
+    "version"
+  ],
+  "startedAt": "2026-10-08T19:08:36.795Z",
+  "browser": {
+    "name": "Microsoft Edge",
+    "executable": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "headless": true,
+    "args": [
+      "--mute-audio",
+      "--disable-background-networking",
+      "--enable-unsafe-webgpu",
+      "--enable-features=Vulkan",
+      "--ignore-gpu-blocklist"
+    ],
+    "sandboxDisablingFlagSupplied": false,
+    "actualVersion": "154.0.4258.62"
+  },
+  "targets": [
+    {
+      "target": "acceleration",
+      "groupId": "acceleration-benefit-sol61",
+      "versionId": "acceleration-benefit-zero-sol61-r6",
+      "expectedManifestSha256": "30c927ff9dd2000c57ef7d1ebf20026ec80e095484e8f41208939d3168cb883f",
+      "status": "PASS_PUBLIC_PARENT_SELECTION_NATIVE_STARTUP",
+      "selector": {
+        "category": "effect",
+        "filter": "unadopted",
+        "asset": "acceleration-benefit-sol61",
+        "version": "acceleration-benefit-zero-sol61-r6"
+      },
+      "requestedUrl": "https://player13579.github.io/webgpu-e-gallery.html?verify=public-parent-native&category=effect&filter=unadopted&asset=acceleration-benefit-sol61&version=acceleration-benefit-zero-sol61-r6",
+      "selected": {
+        "initialDeepLink": {
+          "status": "selected",
+          "category": "effect",
+          "filter": "unadopted",
+          "asset": "acceleration-benefit-sol61",
+          "version": "acceleration-benefit-zero-sol61-r6"
+        },
+        "group": {
+          "id": "acceleration-benefit-sol61",
+          "title": "Acceleration Benefit"
+        },
+        "version": {
+          "id": "acceleration-benefit-zero-sol61-r6",
+          "page": "public/sol61-acceleration-benefit/r6/index.html?embed=1&galleryVersionId=acceleration-benefit-zero-sol61-r6&galleryAutoLoop=1",
+          "source": "public/sol61-acceleration-benefit/r6/package-manifest.json",
+          "previewKind": "webgpu"
+        },
+        "selectorValue": "0",
+        "selectorSelectedVersionId": null,
+        "iframeUrl": "https://player13579.github.io/public/sol61-acceleration-benefit/r6/index.html?embed=1&galleryVersionId=acceleration-benefit-zero-sol61-r6&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=public-parent-native&height=64&galleryStartupToken=da400101803a26acf096e5a79e493019&galleryAttemptEpoch=1",
+        "statusText": "プレビューの描画を開始しました（視覚品質は別途確認）",
+        "title": "Acceleration Benefit · GPT-6.1-Sol Acceleration Benefit R6",
+        "verify": true
+      },
+      "packageResponses": [
+        {
+          "path": "index.html",
+          "url": "https://player13579.github.io/public/sol61-acceleration-benefit/r6/index.html?embed=1&galleryVersionId=acceleration-benefit-zero-sol61-r6&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=public-parent-native&height=64&galleryStartupToken=da400101803a26acf096e5a79e493019&galleryAttemptEpoch=1",
+          "status": 200,
+          "sha256": "5511552f53d8db0dde04af951ecbc187b3de6c91ce2e07751dbf44543ac60291",
+          "bytes": 1933,
+          "expectedSha256": "5511552f53d8db0dde04af951ecbc187b3de6c91ce2e07751dbf44543ac60291",
+          "match": true
+        },
+        {
+          "path": "gallery-adapter.mjs",
+          "url": "https://player13579.github.io/public/sol61-acceleration-benefit/r6/gallery-adapter.mjs",
+          "status": 200,
+          "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+          "bytes": 19123,
+          "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+          "match": true
+        },
+        {
+          "path": "effect.mjs",
+          "url": "https://player13579.github.io/public/sol61-acceleration-benefit/r6/effect.mjs",
+          "status": 200,
+          "sha256": "be70e90916b2410205803916d62f0362e820204704d8829ea02194506ded5503",
+          "bytes": 21998,
+          "expectedSha256": "be70e90916b2410205803916d62f0362e820204704d8829ea02194506ded5503",
+          "match": true
+        },
+        {
+          "path": "body.png",
+          "url": "https://player13579.github.io/public/sol61-acceleration-benefit/r6/body.png",
+          "status": 200,
+          "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+          "bytes": 243081,
+          "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+          "match": true
+        },
+        {
+          "path": "package-manifest.json",
+          "url": "https://player13579.github.io/public/sol61-acceleration-benefit/r6/package-manifest.json",
+          "status": 200,
+          "sha256": "30c927ff9dd2000c57ef7d1ebf20026ec80e095484e8f41208939d3168cb883f",
+          "bytes": 4328,
+          "expectedSha256": null,
+          "match": null
+        }
+      ],
+      "startup": {
+        "snapshot": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "da400101803a26acf096e5a79e493019",
+          "versionId": "acceleration-benefit-zero-sol61-r6",
+          "attemptEpoch": 1,
+          "sequence": 7,
+          "stage": "playing",
+          "status": "ready",
+          "firstFrame": {
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "passes": 1,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "sourcePasses": [
+              "acceleration-benefit"
+            ],
+            "submissionId": 1,
+            "causeId": "acceleration-benefit-gallery-receipt-0",
+            "ageMs": 0,
+            "bodyProjectedHeight": 64,
+            "lifecycleEpoch": 0
+          }
+        },
+        "parentStatus": "プレビューの描画を開始しました（視覚品質は別途確認）",
+        "parentStatusHidden": true
+      },
+      "child": {
+        "outerFrameUrl": "https://player13579.github.io/public/sol61-acceleration-benefit/r6/index.html?embed=1&galleryVersionId=acceleration-benefit-zero-sol61-r6&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=public-parent-native&height=64&galleryStartupToken=da400101803a26acf096e5a79e493019&galleryAttemptEpoch=1",
+        "snapshot": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "da400101803a26acf096e5a79e493019",
+          "versionId": "acceleration-benefit-zero-sol61-r6",
+          "attemptEpoch": 1,
+          "sequence": 7,
+          "stage": "playing",
+          "status": "ready",
+          "firstFrame": {
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "passes": 1,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "sourcePasses": [
+              "acceleration-benefit"
+            ],
+            "submissionId": 1,
+            "causeId": "acceleration-benefit-gallery-receipt-0",
+            "ageMs": 0,
+            "bodyProjectedHeight": 64,
+            "lifecycleEpoch": 0
+          }
+        },
+        "detail": null,
+        "outerFrameCount": 1,
+        "windowFrameCount": 1,
+        "nestedIframeCount": 1,
+        "verify": true,
+        "frames": [
+          {
+            "url": "https://player13579.github.io/public/sol61-acceleration-benefit/r6/index.html?embed=1&galleryVersionId=acceleration-benefit-zero-sol61-r6&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=public-parent-native&height=64&galleryStartupToken=da400101803a26acf096e5a79e493019&galleryAttemptEpoch=1",
+            "title": "Acceleration Benefit R6 WebGPU Preview",
+            "canvas": {
+              "connected": true,
+              "width": 980,
+              "height": 620,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 980,
+                "height": 620
+              }
+            },
+            "verify": true,
+            "fatal": null,
+            "humanState": null,
+            "gpu": {
+              "adapters": 1,
+              "devices": 1,
+              "pipelines": 1,
+              "shaderModules": 1,
+              "shaderCompilation": [
+                {
+                  "messages": []
+                }
+              ],
+              "scopes": [
+                {
+                  "result": null
+                }
+              ],
+              "queueCompletions": 3,
+              "queueFailures": [],
+              "errors": []
+            }
+          }
+        ]
+      },
+      "errors": {
+        "page": [],
+        "console": [],
+        "requests": []
+      },
+      "cleanup": {
+        "contextClosed": true,
+        "browserConnected": false,
+        "closedAt": "2026-10-08T19:08:42.392Z"
+      },
+      "screenshot": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\sparkle-public-parent-native\\attempt-9e927376-e6fa-4a64-a737-05af83520584\\acceleration-parent.png",
+        "sha256": "fd8ac743d1e8f2895604ec206835a69643a872650a45197db914be5ff0c8e7c2",
+        "bytes": 157570,
+        "dimensions": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "catalogScriptResponses": [
+        {
+          "url": "https://player13579.github.io/asset-gallery.js?sha256=fce57bb47ec9f4535b80efe48856c565788192ed772fef29a8c21e9c2a22df86",
+          "status": 200,
+          "sha256": "fce57bb47ec9f4535b80efe48856c565788192ed772fef29a8c21e9c2a22df86",
+          "bytes": 851423,
+          "match": true
+        }
+      ],
+      "packageManifest": {
+        "url": "https://player13579.github.io/public/sol61-acceleration-benefit/r6/package-manifest.json",
+        "status": 200,
+        "sha256": "30c927ff9dd2000c57ef7d1ebf20026ec80e095484e8f41208939d3168cb883f",
+        "bytes": 4328,
+        "expectedSha256": "30c927ff9dd2000c57ef7d1ebf20026ec80e095484e8f41208939d3168cb883f",
+        "contentType": "application/json; charset=utf-8",
+        "observedBy": "selected parent page fetch + browser response event",
+        "versionId": "acceleration-benefit-zero-sol61-r6",
+        "groupId": "acceleration-benefit-sol61"
+      }
+    },
+    {
+      "target": "human-transmutation",
+      "groupId": "alchemy-human-transmutation-sol61",
+      "versionId": "human-transmutation-sol61-r6",
+      "expectedManifestSha256": "5d2b0227669016ea7d229623272d714ea98f50bc194576efde2e8b27b590f4e7",
+      "status": "PASS_PUBLIC_PARENT_SELECTION_NATIVE_STARTUP",
+      "selector": {
+        "category": "effect",
+        "filter": "unadopted",
+        "asset": "alchemy-human-transmutation-sol61",
+        "version": "human-transmutation-sol61-r6"
+      },
+      "requestedUrl": "https://player13579.github.io/webgpu-e-gallery.html?verify=public-parent-native&category=effect&filter=unadopted&asset=alchemy-human-transmutation-sol61&version=human-transmutation-sol61-r6",
+      "selected": {
+        "initialDeepLink": {
+          "status": "selected",
+          "category": "effect",
+          "filter": "unadopted",
+          "asset": "alchemy-human-transmutation-sol61",
+          "version": "human-transmutation-sol61-r6"
+        },
+        "group": {
+          "id": "alchemy-human-transmutation-sol61",
+          "title": "錬成・人体生成"
+        },
+        "version": {
+          "id": "human-transmutation-sol61-r6",
+          "page": "public/sol61-human-transmutation/r6/gallery.html?embed=1&galleryVersionId=human-transmutation-sol61-r6&galleryAutoLoop=1",
+          "source": "public/sol61-human-transmutation/r6/package-manifest.json",
+          "previewKind": "webgpu"
+        },
+        "selectorValue": "0",
+        "selectorSelectedVersionId": null,
+        "iframeUrl": "https://player13579.github.io/public/sol61-human-transmutation/r6/gallery.html?embed=1&galleryVersionId=human-transmutation-sol61-r6&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=public-parent-native&height=64&galleryStartupToken=876ada0c09a81fa489993d2ca10cdf03&galleryAttemptEpoch=1",
+        "statusText": "プレビューの描画を開始しました（視覚品質は別途確認）",
+        "title": "錬成・人体生成 · GPT-6.1-Sol 人体生成 E R6",
+        "verify": true
+      },
+      "packageResponses": [
+        {
+          "path": "gallery.html",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/gallery.html?embed=1&galleryVersionId=human-transmutation-sol61-r6&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=public-parent-native&height=64&galleryStartupToken=876ada0c09a81fa489993d2ca10cdf03&galleryAttemptEpoch=1",
+          "status": 200,
+          "sha256": "f3352ac2c3c3949acdf06091e42df33450d93c2527772b8e3f37c92f8247b547",
+          "bytes": 6450,
+          "expectedSha256": "f3352ac2c3c3949acdf06091e42df33450d93c2527772b8e3f37c92f8247b547",
+          "match": true
+        },
+        {
+          "path": "human-canvas-fit.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/human-canvas-fit.mjs",
+          "status": 200,
+          "sha256": "12b5e669a7bd9751da0c511b613e8d76f801acea045b815f4b3b4e50636f52b3",
+          "bytes": 4662,
+          "expectedSha256": "12b5e669a7bd9751da0c511b613e8d76f801acea045b815f4b3b4e50636f52b3",
+          "match": true
+        },
+        {
+          "path": "gallery-auth.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/gallery-auth.mjs",
+          "status": 200,
+          "sha256": "211f6784b78d94a287965956d3767d9f2f799e253b923c25580a8df4e4b6146a",
+          "bytes": 692,
+          "expectedSha256": "211f6784b78d94a287965956d3767d9f2f799e253b923c25580a8df4e4b6146a",
+          "match": true
+        },
+        {
+          "path": "index.html",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+          "status": 200,
+          "sha256": "3566f4a03e211cff185b757fb300861404e19511baa0fc81667283a71272a7c6",
+          "bytes": 2757,
+          "expectedSha256": "3566f4a03e211cff185b757fb300861404e19511baa0fc81667283a71272a7c6",
+          "match": true
+        },
+        {
+          "path": "preview.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/preview.mjs",
+          "status": 200,
+          "sha256": "5707601031844c13d7070d8bf305713e55d27ef5a6f41ad16c5bf3c510909a94",
+          "bytes": 7071,
+          "expectedSha256": "5707601031844c13d7070d8bf305713e55d27ef5a6f41ad16c5bf3c510909a94",
+          "match": true
+        },
+        {
+          "path": "fixture.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/fixture.mjs",
+          "status": 200,
+          "sha256": "ab9255309b8de5e42f2bc3ed7cdbd56f74d8582265c719b99197338c03047ffb",
+          "bytes": 1088,
+          "expectedSha256": "ab9255309b8de5e42f2bc3ed7cdbd56f74d8582265c719b99197338c03047ffb",
+          "match": true
+        },
+        {
+          "path": "sfx.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/sfx.mjs",
+          "status": 200,
+          "sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+          "bytes": 3240,
+          "expectedSha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+          "match": true
+        },
+        {
+          "path": "core.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/core.mjs",
+          "status": 200,
+          "sha256": "2f393baaa80dfe7d6f7d2d4e9d998eb8e65000150256fe56941ffdcfeb6a9813",
+          "bytes": 10810,
+          "expectedSha256": "2f393baaa80dfe7d6f7d2d4e9d998eb8e65000150256fe56941ffdcfeb6a9813",
+          "match": true
+        },
+        {
+          "path": "cause.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/cause.mjs",
+          "status": 200,
+          "sha256": "312bb4ec7ccd23b87e655f0c5dee1f6c5683e091105176fa6f09ecc9a3bc4710",
+          "bytes": 4130,
+          "expectedSha256": "312bb4ec7ccd23b87e655f0c5dee1f6c5683e091105176fa6f09ecc9a3bc4710",
+          "match": true
+        },
+        {
+          "path": "shader.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/shader.mjs",
+          "status": 200,
+          "sha256": "1e159c22f021b06fba738b081cc2e9425cfe6e7db10fe1d8b3aed15194b41b2e",
+          "bytes": 9700,
+          "expectedSha256": "1e159c22f021b06fba738b081cc2e9425cfe6e7db10fe1d8b3aed15194b41b2e",
+          "match": true
+        },
+        {
+          "path": "handoff-state.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/handoff-state.mjs",
+          "status": 200,
+          "sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+          "bytes": 1675,
+          "expectedSha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+          "match": true
+        },
+        {
+          "path": "glints.mjs",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/glints.mjs",
+          "status": 200,
+          "sha256": "462517178500ddfc615e3a509067bb4d532ffd7f14c5d8c7f6cf223c877f521b",
+          "bytes": 4849,
+          "expectedSha256": "462517178500ddfc615e3a509067bb4d532ffd7f14c5d8c7f6cf223c877f521b",
+          "match": true
+        },
+        {
+          "path": "assets/philia-front-nine-v752.png",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/assets/philia-front-nine-v752.png",
+          "status": 200,
+          "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "bytes": 399216,
+          "expectedSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "match": true
+        },
+        {
+          "path": "package-manifest.json",
+          "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/package-manifest.json",
+          "status": 200,
+          "sha256": "5d2b0227669016ea7d229623272d714ea98f50bc194576efde2e8b27b590f4e7",
+          "bytes": 11775,
+          "expectedSha256": null,
+          "match": null
+        }
+      ],
+      "startup": {
+        "snapshot": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "876ada0c09a81fa489993d2ca10cdf03",
+          "versionId": "human-transmutation-sol61-r6",
+          "attemptEpoch": 1,
+          "sequence": 3,
+          "stage": "playing",
+          "status": "ready",
+          "currentOwner": "human-transmutation-sol61-r6",
+          "fitGeometry": {
+            "coordinateSpace": "child-canvas-local-css",
+            "frameUrl": "https://player13579.github.io/public/sol61-human-transmutation/r6/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+            "currentOwner": "human-transmutation-sol61-r6",
+            "versionId": "human-transmutation-sol61-r6",
+            "canvasRect": {
+              "left": 0,
+              "top": 0,
+              "width": 980,
+              "height": 480
+            },
+            "backingExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "backingScale": [
+              1,
+              1
+            ],
+            "causeId": "human-r6-fixture-1",
+            "generation": 0,
+            "submitted": 1,
+            "completed": 1,
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            }
+          },
+          "firstFrame": {
+            "canvasGeometry": {
+              "coordinateSpace": "child-canvas-local-css",
+              "frameUrl": "https://player13579.github.io/public/sol61-human-transmutation/r6/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+              "currentOwner": "human-transmutation-sol61-r6",
+              "versionId": "human-transmutation-sol61-r6",
+              "canvasRect": {
+                "left": 0,
+                "top": 0,
+                "width": 980,
+                "height": 480
+              },
+              "backingExtent": [
+                980,
+                480
+              ],
+              "dpr": 1,
+              "backingScale": [
+                1,
+                1
+              ],
+              "causeId": "human-r6-fixture-1",
+              "generation": 0,
+              "submitted": 1,
+              "completed": 1,
+              "actualActorHeight": 64,
+              "spriteRect": {
+                "x": 453.5911111111111,
+                "y": 203.73333333333335,
+                "width": 72.81777777777778,
+                "height": 72.81777777777778
+              }
+            },
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "canvasWidth": 980,
+            "canvasHeight": 480,
+            "passes": 4,
+            "viewportWidth": 980,
+            "viewportHeight": 480,
+            "physicalWidth": 980,
+            "physicalHeight": 480,
+            "dpr": 1,
+            "causeId": "human-r6-fixture-1",
+            "generation": 0,
+            "sourceSubmissionId": 1,
+            "queueCompleted": true,
+            "sourceVersionId": "human-transmutation-sol61-r6",
+            "sourceOwner": "human-transmutation-sol61-r6",
+            "actualActorHeight": 64,
+            "verify": true
+          }
+        },
+        "parentStatus": "プレビューの描画を開始しました（視覚品質は別途確認）",
+        "parentStatusHidden": true
+      },
+      "child": {
+        "outerFrameUrl": "https://player13579.github.io/public/sol61-human-transmutation/r6/gallery.html?embed=1&galleryVersionId=human-transmutation-sol61-r6&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=public-parent-native&height=64&galleryStartupToken=876ada0c09a81fa489993d2ca10cdf03&galleryAttemptEpoch=1",
+        "snapshot": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "876ada0c09a81fa489993d2ca10cdf03",
+          "versionId": "human-transmutation-sol61-r6",
+          "attemptEpoch": 1,
+          "sequence": 3,
+          "stage": "playing",
+          "status": "ready",
+          "currentOwner": "human-transmutation-sol61-r6",
+          "fitGeometry": {
+            "coordinateSpace": "child-canvas-local-css",
+            "frameUrl": "https://player13579.github.io/public/sol61-human-transmutation/r6/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+            "currentOwner": "human-transmutation-sol61-r6",
+            "versionId": "human-transmutation-sol61-r6",
+            "canvasRect": {
+              "left": 0,
+              "top": 0,
+              "width": 980,
+              "height": 480
+            },
+            "backingExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "backingScale": [
+              1,
+              1
+            ],
+            "causeId": "human-r6-fixture-1",
+            "generation": 0,
+            "submitted": 1,
+            "completed": 1,
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            }
+          },
+          "firstFrame": {
+            "canvasGeometry": {
+              "coordinateSpace": "child-canvas-local-css",
+              "frameUrl": "https://player13579.github.io/public/sol61-human-transmutation/r6/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+              "currentOwner": "human-transmutation-sol61-r6",
+              "versionId": "human-transmutation-sol61-r6",
+              "canvasRect": {
+                "left": 0,
+                "top": 0,
+                "width": 980,
+                "height": 480
+              },
+              "backingExtent": [
+                980,
+                480
+              ],
+              "dpr": 1,
+              "backingScale": [
+                1,
+                1
+              ],
+              "causeId": "human-r6-fixture-1",
+              "generation": 0,
+              "submitted": 1,
+              "completed": 1,
+              "actualActorHeight": 64,
+              "spriteRect": {
+                "x": 453.5911111111111,
+                "y": 203.73333333333335,
+                "width": 72.81777777777778,
+                "height": 72.81777777777778
+              }
+            },
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "canvasWidth": 980,
+            "canvasHeight": 480,
+            "passes": 4,
+            "viewportWidth": 980,
+            "viewportHeight": 480,
+            "physicalWidth": 980,
+            "physicalHeight": 480,
+            "dpr": 1,
+            "causeId": "human-r6-fixture-1",
+            "generation": 0,
+            "sourceSubmissionId": 1,
+            "queueCompleted": true,
+            "sourceVersionId": "human-transmutation-sol61-r6",
+            "sourceOwner": "human-transmutation-sol61-r6",
+            "actualActorHeight": 64,
+            "verify": true
+          }
+        },
+        "detail": {
+          "canvas": {
+            "width": 980,
+            "height": 480,
+            "connected": true
+          },
+          "firstFrame": {
+            "canvasGeometry": {
+              "coordinateSpace": "child-canvas-local-css",
+              "frameUrl": "https://player13579.github.io/public/sol61-human-transmutation/r6/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+              "currentOwner": "human-transmutation-sol61-r6",
+              "versionId": "human-transmutation-sol61-r6",
+              "canvasRect": {
+                "left": 0,
+                "top": 0,
+                "width": 980,
+                "height": 480
+              },
+              "backingExtent": [
+                980,
+                480
+              ],
+              "dpr": 1,
+              "backingScale": [
+                1,
+                1
+              ],
+              "causeId": "human-r6-fixture-1",
+              "generation": 0,
+              "submitted": 1,
+              "completed": 1,
+              "actualActorHeight": 64,
+              "spriteRect": {
+                "x": 453.5911111111111,
+                "y": 203.73333333333335,
+                "width": 72.81777777777778,
+                "height": 72.81777777777778
+              }
+            },
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "canvasWidth": 980,
+            "canvasHeight": 480,
+            "passes": 4,
+            "viewportWidth": 980,
+            "viewportHeight": 480,
+            "physicalWidth": 980,
+            "physicalHeight": 480,
+            "dpr": 1,
+            "causeId": "human-r6-fixture-1",
+            "generation": 0,
+            "sourceSubmissionId": 1,
+            "queueCompleted": true,
+            "sourceVersionId": "human-transmutation-sol61-r6",
+            "sourceOwner": "human-transmutation-sol61-r6",
+            "actualActorHeight": 64,
+            "verify": true
+          },
+          "humanGeometry": {
+            "status": "geometry-fit",
+            "coordinateSpace": "child-canvas-local-css",
+            "frameUrl": "https://player13579.github.io/public/sol61-human-transmutation/r6/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+            "currentOwner": "human-transmutation-sol61-r6",
+            "versionId": "human-transmutation-sol61-r6",
+            "canvasRect": {
+              "left": 0,
+              "top": 0,
+              "width": 980,
+              "height": 480
+            },
+            "backingExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "backingScale": [
+              1,
+              1
+            ],
+            "causeId": "human-r6-fixture-1",
+            "generation": 0,
+            "submitted": 64,
+            "completed": 64,
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            }
+          }
+        },
+        "outerFrameCount": 1,
+        "windowFrameCount": 1,
+        "nestedIframeCount": 1,
+        "verify": true,
+        "frames": [
+          {
+            "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/gallery.html?embed=1&galleryVersionId=human-transmutation-sol61-r6&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=public-parent-native&height=64&galleryStartupToken=876ada0c09a81fa489993d2ca10cdf03&galleryAttemptEpoch=1",
+            "title": "人体生成 · GPT-6.1-Sol r6 fit adapter r1",
+            "canvas": null,
+            "verify": true,
+            "fatal": null,
+            "humanState": null,
+            "gpu": {
+              "adapters": 0,
+              "devices": 0,
+              "pipelines": 0,
+              "shaderModules": 0,
+              "shaderCompilation": [],
+              "scopes": [],
+              "queueCompletions": 0,
+              "queueFailures": [],
+              "errors": []
+            }
+          },
+          {
+            "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+            "title": "人体生成 · GPT-6.1-Sol r6（点状光微调）",
+            "canvas": {
+              "connected": true,
+              "width": 980,
+              "height": 480,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 980,
+                "height": 480
+              }
+            },
+            "verify": true,
+            "fatal": null,
+            "humanState": {
+              "ready": true,
+              "fatal": null,
+              "verify": true,
+              "running": true,
+              "receipt": {
+                "version": "human-transmutation-sol61-r6",
+                "causeId": "human-r6-fixture-1",
+                "targetId": "revived-philia",
+                "scopeId": "human-r6-private-preview",
+                "generation": 0,
+                "elapsedMs": 1275,
+                "phaseMs": 1200,
+                "active": false,
+                "actorVisible": true,
+                "sourceEnabled": true,
+                "observerEnabled": true,
+                "glintsEnabled": true,
+                "reducedMotion": false,
+                "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+                "actualActorHeight": 64,
+                "spriteRect": {
+                  "x": 453.5911111111111,
+                  "y": 203.73333333333335,
+                  "width": 72.81777777777778,
+                  "height": 72.81777777777778
+                },
+                "physicalExtent": [
+                  980,
+                  480
+                ],
+                "cssExtent": [
+                  980,
+                  480
+                ],
+                "dpr": 1,
+                "submitted": 65,
+                "completed": 65,
+                "passes": 4,
+                "format": "bgra8unorm",
+                "worldFormat": "rgba16float",
+                "materialTransport": "unsplit-row-sheet",
+                "glintSource": "actual-alpha-bound-fixation-MRT",
+                "glintRayAngleRadians": 0.29670597283903605,
+                "queueCompleted": true
+              },
+              "renderer": {
+                "submitted": 65,
+                "completed": 65,
+                "inFlight": false,
+                "disposed": false,
+                "extent": "980x480"
+              },
+              "compilationMessages": []
+            },
+            "gpu": {
+              "adapters": 1,
+              "devices": 1,
+              "pipelines": 3,
+              "shaderModules": 3,
+              "shaderCompilation": [
+                {
+                  "messages": []
+                },
+                {
+                  "messages": []
+                },
+                {
+                  "messages": []
+                }
+              ],
+              "scopes": [
+                {
+                  "result": null
+                },
+                {
+                  "result": null
+                },
+                {
+                  "result": null
+                }
+              ],
+              "queueCompletions": 65,
+              "queueFailures": [],
+              "errors": []
+            }
+          }
+        ]
+      },
+      "errors": {
+        "page": [],
+        "console": [],
+        "requests": []
+      },
+      "cleanup": {
+        "contextClosed": true,
+        "browserConnected": false,
+        "closedAt": "2026-10-08T19:08:48.259Z"
+      },
+      "screenshot": {
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\sparkle-public-parent-native\\attempt-9e927376-e6fa-4a64-a737-05af83520584\\human-transmutation-parent.png",
+        "sha256": "a9b1bcb107490cd48962e5dba155af72c96734e5dc8d9b2e30e7c826c6e1db8b",
+        "bytes": 166033,
+        "dimensions": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "catalogScriptResponses": [
+        {
+          "url": "https://player13579.github.io/asset-gallery.js?sha256=fce57bb47ec9f4535b80efe48856c565788192ed772fef29a8c21e9c2a22df86",
+          "status": 200,
+          "sha256": "fce57bb47ec9f4535b80efe48856c565788192ed772fef29a8c21e9c2a22df86",
+          "bytes": 851423,
+          "match": true
+        }
+      ],
+      "packageManifest": {
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r6/package-manifest.json",
+        "status": 200,
+        "sha256": "5d2b0227669016ea7d229623272d714ea98f50bc194576efde2e8b27b590f4e7",
+        "bytes": 11775,
+        "expectedSha256": "5d2b0227669016ea7d229623272d714ea98f50bc194576efde2e8b27b590f4e7",
+        "contentType": "application/json; charset=utf-8",
+        "observedBy": "selected parent page fetch + browser response event",
+        "versionId": "human-transmutation-sol61-r6",
+        "groupId": "alchemy-human-transmutation-sol61"
+      }
+    }
+  ],
+  "cleanup": {
+    "allOwnedContextsClosed": true,
+    "allOwnedBrowsersClosed": true
+  },
+  "scope": "Exact public-parent selection, served bytes, WebGPU startup and connected-canvas technical evidence only. Screenshots are provided for primary review; no creative quality acceptance.",
+  "httpPreflight": {
+    "status": "PASS_PUBLISHED_HTTP_BYTES",
+    "attempts": [
+      {
+        "startedAt": "2026-10-08T19:08:36.795Z",
+        "html": {
+          "url": "https://player13579.github.io/webgpu-e-gallery.html",
+          "status": 200,
+          "bytes": 12031,
+          "sha256": "c3303301b54b62d45eb5c4b29e5ea0d7e964947a15bc886781248ed83ecf4ad3",
+          "expectedSha256": "c3303301b54b62d45eb5c4b29e5ea0d7e964947a15bc886781248ed83ecf4ad3",
+          "headers": {
+            "etag": "W/\"6ac7e9d1-2eff\"",
+            "lastModified": "Thu, 08 Oct 2026 19:06:57 GMT",
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        "catalogScript": {
+          "url": "https://player13579.github.io/asset-gallery.js?sha256=fce57bb47ec9f4535b80efe48856c565788192ed772fef29a8c21e9c2a22df86",
+          "status": 200,
+          "bytes": 851423,
+          "sha256": "fce57bb47ec9f4535b80efe48856c565788192ed772fef29a8c21e9c2a22df86",
+          "expectedSha256": "fce57bb47ec9f4535b80efe48856c565788192ed772fef29a8c21e9c2a22df86",
+          "headers": {
+            "etag": "W/\"6ac7e9d2-cfddf\"",
+            "lastModified": "Thu, 08 Oct 2026 19:06:58 GMT",
+            "contentType": "application/javascript; charset=utf-8"
+          }
+        }
+      }
+    ],
+    "readyAt": "2026-10-08T19:08:36.979Z"
+  },
+  "screenshotBudget": {
+    "count": 2,
+    "bytes": 323603,
+    "maxBytes": 20971520,
+    "withinLimit": true
+  },
+  "completedAt": "2026-10-08T19:08:48.260Z"
+}
