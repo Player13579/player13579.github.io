@@ -1,0 +1,55 @@
+{
+  "schema": "dva-public-replay-summary/v1",
+  "versionId": "excalibur-actual-blade-gold-sol61-r10",
+  "edition": "R10 final authorized additional edition 5/5; remaining 0; no R11",
+  "technicalReplay": {
+    "status": "PASS_LIMITED_PARENT_NATIVE_R10_TECHNICAL",
+    "scope": "Exact R10 selected and started through the real parent WebGPU Effect gallery; software preview on Chromium SwiftShader Vulkan.",
+    "sameCause": "preview:r10:1",
+    "release": {
+      "frameId": 76,
+      "targetGeneration": 1,
+      "completedFrameAccepted": true,
+      "eAgeMs": 325.8,
+      "latestTimingAgeMs": 329.8,
+      "note": "Completed frame age and separately sampled latest timing are distinct."
+    },
+    "tail": {
+      "frameId": 160,
+      "targetGeneration": 1,
+      "completedFrameAccepted": true,
+      "eAgeMs": 622.2
+    },
+    "terminal": {
+      "frameId": 325,
+      "targetGeneration": 1,
+      "sourceGeneration": 1,
+      "phase": "expired",
+      "eAgeMs": 1200,
+      "completedFrameAccepted": true,
+      "retired": true
+    },
+    "captureCaveat": "Release and tail snapshots were read before screenshots; no post-screenshot snapshot or hold exists, so screenshot pixels are phase-approximate rather than atomically tied to the exact completed frame. Expiry was ended.",
+    "clock": "preview-render-backpressure separates authored active age from elapsed/render wait; this does not establish real-time lifetime, performance, or hardware performance."
+  },
+  "quality": {
+    "status": "pending",
+    "fullQualityAccepted": false,
+    "sampledConcern": "At sampled parent pixels the detached form reads chiefly as a short rounded glowing capsule/rod; blade-sheet, broader sheath, and short wake are not distinctly readable as separate structural roles.",
+    "scopeLimit": "This is a bounded sampled-pixel concern, not a proven all-size/full-lifetime defect. Three sampled stills do not establish continuous motion, gold-conductor optical response, or a matched R9/R10 comparison."
+  },
+  "adoption": "not-adopted",
+  "independentGates": {
+    "ordinarySfx": "not_run",
+    "safariIpad": "unverified",
+    "mainGameIntegration": "not_connected",
+    "hardwarePerformance": "not_accepted",
+    "fullQuality": "not_accepted",
+    "publicDelivery": "not_yet_verified"
+  },
+  "attribution": {
+    "creativeAuthor": "GPT-6.1-Sol (historical source attribution preserved)",
+    "runtimeRepair": "GPT-6-Luna (historical real-host clear-color repair preserved)",
+    "lifecycleAndTerminalContract": "Historical package provenance preserved; actual author identity for the unexposed execution is unverified and is not newly asserted here."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "ex-r10-technical-cpu-results/v1",
+  "status": "CPU_TECHNICAL_CONTRACT_PASS",
+  "tests": [
+    {
+      "path": "clock-backpressure.mjs",
+      "status": "PASS",
+      "testSha256": "2ba9d28b3d23e353ff2a66ce4dcd671e69dab070f92b0a279def8c0d9e8ea6a9",
+      "resultSha256": "11feb1ff99406319bacab2642b3952e7243d2ca75482b3335f5f827a7c657d5d",
+      "scope": "actual preview clock module under controlled CPU promises; selected rates 1x and 2x, delayed completion, one render in flight, 620/1200 lifetimes, separate authored and wall time, hold/resume/end/replay/resize/dispose"
+    },
+    {
+      "path": "shell-promise-propagation.mjs",
+      "status": "PASS",
+      "testSha256": "63f1da55318585460c5409347ce4f79d372c6c441604adaf21a680dd14a9eb19",
+      "resultSha256": "648e5c788352e8a4f14e55320de330ccac7d133ad24b41976b3eb1e6588f4c83",
+      "scope": "actual shell and preview clock modules under controlled CPU completion promises; start/hold/resume/end are sequential and completion blocks next frame"
+    },
+    {
+      "path": "bridge-contract.mjs",
+      "status": "PASS",
+      "testSha256": "971fc6aad731630ae30beab987dba61ecf2fac5a444bb1cf68efb38144d4e387",
+      "resultSha256": "597b9406c1d644ae848bbbb6a692de33783d3ef1631b8ca71c2165933f5489b6",
+      "scope": "actual bridge module with controlled CPU instrumentation; pose/identity/physical lease/source-off/out-of-order/scope rejection/retirement/queue teardown; fixture proofs are not native evidence"
+    },
+    {
+      "path": "startup-proof-gate-static.mjs",
+      "status": "PASS",
+      "testSha256": "d95abb8399da6dd63a569d1c35ea5c7ef84471d870eeced78b950362f188007d",
+      "resultSha256": "7f028d99101fdea2ff871499148d497128801a41f2b1d7f0a0ab7fb9477f86f4",
+      "scope": "source structure only; exact startup identity, currentness guards, actual proof callback gate and parent retirement checks"
+    }
+  ],
+  "realProofs": false,
+  "fakeProofPromotedAsNative": false,
+  "gpu": false,
+  "browser": false,
+  "native": false,
+  "quality": false,
+  "performance": false,
+  "audio": false,
+  "public": false,
+  "mainGame": false,
+  "remaining": [
+    "Root-assigned GPU lease and new actual parent native replay of this exact derivative",
+    "continuous normal-speed full-lifetime quality review",
+    "ordinary SFX listening",
+    "Safari/iPad",
+    "public delivery",
+    "main-game integration"
+  ]
+}

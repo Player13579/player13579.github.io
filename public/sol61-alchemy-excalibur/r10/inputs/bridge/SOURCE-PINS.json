@@ -1,0 +1,92 @@
+{
+  "schema": "excalibur-preview-bridge-source-pins/v2",
+  "files": [
+    {
+      "path": "inputs/r10/excalibur-r8-creative-plan.mjs",
+      "source": "/workspace/dva-cloud/creative/excalibur-sol61-r10-quality-cloud-r1/source/excalibur-r8-creative-plan.mjs",
+      "bytes": 8489,
+      "sha256": "2238f972375b81e72e7ceb6b26a1fdeb4d40a168afa71768e2da3296ea8ee91d"
+    },
+    {
+      "path": "inputs/r10/excalibur-r8-creative-shader.mjs",
+      "source": "/workspace/dva-cloud/creative/excalibur-sol61-r10-quality-cloud-r1/source/excalibur-r8-creative-shader.mjs",
+      "bytes": 7718,
+      "sha256": "f2413d1e0c13302c5985586edca8a6a31fdd476997c5bc6fab640ae5d8d0d411"
+    },
+    {
+      "path": "inputs/r10/excalibur-r8-engineering-shaders.mjs",
+      "source": "/workspace/dva-cloud/creative/excalibur-sol61-r10-quality-cloud-r1/source/excalibur-r8-engineering-shaders.mjs",
+      "bytes": 1614,
+      "sha256": "e28b3ed935182870bd459f669a4f1581370c583de35d29fa54167ec5539b90b0"
+    },
+    {
+      "path": "inputs/r10/excalibur-r8-release-ledger.mjs",
+      "source": "/workspace/dva-cloud/creative/excalibur-sol61-r10-quality-cloud-r1/source/excalibur-r8-release-ledger.mjs",
+      "bytes": 4534,
+      "sha256": "53e158168c710284f9e53032abbcab58b71f8cd2be9c5d90c584da801c21e81a"
+    },
+    {
+      "path": "inputs/r10/excalibur-r8-uniform-retirement.mjs",
+      "source": "/workspace/dva-cloud/creative/excalibur-sol61-r10-quality-cloud-r1/source/excalibur-r8-uniform-retirement.mjs",
+      "bytes": 1190,
+      "sha256": "b7b4323b0d39a103a4a46f15a57788d003f4c2c88788ee85b9257e03d281d251"
+    },
+    {
+      "path": "inputs/r9/excalibur-r8-creative-plan.mjs",
+      "source": "/workspace/dva-cloud/creative/excalibur-terminal-sol61-r9/PARENT-CREATIVE-PLAN.original.mjs",
+      "bytes": 8025,
+      "sha256": "b233a6912bf2b1a768867fe930003e2cff4e27665af917a06e2cef0d80acc423"
+    },
+    {
+      "path": "inputs/r9/excalibur-r8-creative-shader.mjs",
+      "source": "/workspace/dva-cloud/creative/excalibur-terminal-sol61-r9/excalibur-r8-creative-shader.mjs",
+      "bytes": 6358,
+      "sha256": "da2976d7889c9bc7867b72086a486076e34f5ef660aca9f7fd30834c7192521c"
+    }
+  ],
+  "canonicalLandmarkSource": {
+    "source": "/workspace/dva-cloud/creative/excalibur-sol61-r10-quality-cloud-r1/source/app.js",
+    "bytes": 2083945,
+    "sha256": "6152c56e1c8e57e52f006f9b3e07fbe21ca84ea21dc6d0b46d40cc71751f9fa6"
+  },
+  "creativeInputSeal": {
+    "source": "/workspace/dva-cloud/creative/excalibur-sol61-r10-quality-cloud-r1/SEAL.json",
+    "bytes": 295,
+    "sha256": "084dd3cafe8fb5f764913028c1231d3af2daa3e1bebee8b234b6b84c25927c46",
+    "payloadCountReadback": 44,
+    "finalEditionUsed": 5,
+    "remainingCreativeEditions": 0
+  },
+  "technicalOverlay": {
+    "contractPath": "NEWreceipts/ex-r10-gallery-lifecycle-sol61-r1/CONTRACT.md",
+    "contractSha256": "26f150760ab8fa509101c6b35dd4a926221d2f20aabf16c256c8b73f03c33927",
+    "solCandidatePath": "integration/ex-r10-gallery-lifecycle-sol61-r1",
+    "solCandidateManifestSha256": "9db249257ef636dd86d1d0bee780c172eb387ea208bdfac63785c22898c5e0d1",
+    "solCandidateSealSha256": "2608924577a9c39d14ad725983abfab3c8d30b785560eae2f70ec9c395bd2a5d",
+    "modifiedRuntimeFiles": [
+      {
+        "path": "source/host.mjs",
+        "bytes": 16876,
+        "sha256": "4b717ed06ad4479ba97875bf05d3bcb11ad8fc0ba7c6c2969e5e4a329e60df8f"
+      },
+      {
+        "path": "inputs/bridge/source/excalibur-preview-bridge.mjs",
+        "bytes": 21090,
+        "sha256": "6a92e704b7016d60508932d458a7e2643d6402d44d9ce5b194809e7343d2fd5f"
+      },
+      {
+        "path": "inputs/shell/preview-bridge-shell.mjs",
+        "bytes": 8563,
+        "sha256": "bf3e9df6c62cf59723213321a373805180725de16c08d9f2b1e0d10c6d3c158e"
+      },
+      {
+        "path": "inputs/shell/preview-clock.mjs",
+        "bytes": 4465,
+        "sha256": "7c9932969f9d87c6b91f3d09c547af025fd0660be985c66e81cab079905cdde9"
+      }
+    ],
+    "historicalBridgeManifestSha256": "6beb5a747d01542c61a39683c36dcf484e803b32f3af8e3160ff188b9a8ac286",
+    "historicalBridgeSealSha256": "7847c79c09a76cf648ec736afc265bf88bbe5bf7787069a43724bac38ea7c050",
+    "unchangedOriginalBridgeBytes": "archived exact MANIFEST/SEAL at NEWreceipts/ex-r10-technical-gallery-luna-r2/provenance/"
+  }
+}

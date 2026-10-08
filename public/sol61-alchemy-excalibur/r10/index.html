@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Excalibur R9 / R10 private comparison</title>
+<style>body{margin:20px;background:#20252c;color:#edf0f3;font:14px system-ui,sans-serif}main{width:max-content;max-width:100%}h1{font-size:19px;margin:0 0 16px}.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0}button,select,input{font:inherit}label{display:flex;gap:5px;align-items:center}canvas{display:block;width:800px;height:600px;border:1px solid #596574;box-sizing:content-box;background:#292e35}output{display:block;white-space:pre-wrap;margin:12px 0;max-width:800px;font:12px ui-monospace,monospace}.note{color:#bdc5ce}</style></head>
+<body><main><h1>Excalibur R9 / R10</h1><div class="controls">
+<label>Version <select id="edition"><option value="r9">R9 baseline</option><option value="r10" selected>R10</option></select></label>
+<label>Character <select id="identity"><option value="white-hood">White hood</option><option value="blue-dress">Blue dress</option><option value="male-bot">Male bot</option></select></label>
+<label>Direction <select id="facing"><option value="1">Right</option><option value="-1">Left</option></select></label>
+<label>Rate <select id="rate"><option value="1">1×</option><option value="2">2×</option></select></label>
+<button id="replay" disabled>Replay</button><button id="hold" disabled>Hold</button><button id="resume" disabled>Resume</button><button id="end" disabled>End</button>
+<label><input id="mainOn" type="checkbox" checked>Main</label><label><input id="sourceOn" type="checkbox" checked>Source</label><label><input id="observerOn" type="checkbox" checked>Observer</label>
+</div><canvas id="view" width="800" height="600" aria-label="Excalibur preview at gameplay character size"></canvas>
+<output id="status">Loading exact registered source…</output><p class="note">Private standalone comparison. Verification playback is silent. Creative quality remains pending.</p></main>
+<script src="inputs/runtime/webgpu-frame-core.js"></script><script src="inputs/runtime/webgpu-primitives.js"></script><script src="inputs/runtime/webgpu-compositing.js"></script><script src="inputs/runtime/webgpu-player-sprite.js"></script><script src="inputs/runtime/webgpu-renderer.js"></script>
+<script src="inputs/motion/r9-motion-helpers.js"></script><script src="inputs/motion/physical-motion-affine-r9.js"></script><script type="module" src="source/host.mjs"></script></body></html>

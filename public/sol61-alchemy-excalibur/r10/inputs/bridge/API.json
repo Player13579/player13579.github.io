@@ -1,0 +1,74 @@
+{
+  "schema": "excalibur-independent-preview-record-bridge/v2",
+  "module": "source/excalibur-preview-bridge.mjs",
+  "factory": "createExcaliburPreviewBridge({renderer,textureCache,edition:'r9'|'r10',onCommitted})",
+  "scope": "standalone-preview-only",
+  "hostContract": {
+    "renderer": "actual pinned shared Dva WebGPU renderer, ready, device epoch >=1",
+    "mainTarget": "registerTarget with sampleable:true, physical backing width/height, exact logicalWidth/logicalHeight and generation",
+    "frame": "actual renderer.beginFrame(); frame.clear(main target) precedes record; host submits actual frame afterward",
+    "atlas": "actual HTMLImageElement decoded from hash-verified existing alpha PNG; actual player createTextureCache uploads it; materialFor source/cache identity is checked",
+    "viewport": [
+      "targetLease from actual registered target.captureLease()",
+      "device",
+      "deviceGeneration",
+      "generation",
+      "targetGeneration",
+      "width",
+      "height",
+      "pixelWidth",
+      "pixelHeight",
+      "dpr",
+      "worldToLogical",
+      "logicalToPixel"
+    ],
+    "currentState": "exact targetLease; ownerAlive/ownerVisible/connectedVisible from owned preview fixture; isCurrent checks owned clock generation, visibility, resize and disposal",
+    "source": "explicit previewOnly:true; type:'alchemy-excalibur'; id/playerId/roomId/localGeneration/startedAt/duration>=1200; immutable cause object retained for lifetime",
+    "command": "real registered atlas body command with exact crop and authored sourceSize; rigid/registered motion sprite.transform; origin is crop bottom center; exact pose1 same-atlas extension; action === command.exAction",
+    "action": [
+      "kind:'slash'",
+      "motionId:'alchemy-excalibur'",
+      "sourceEffectId",
+      "progress [0,1)",
+      "poseIndex [0,2]",
+      "poseScale",
+      "roomId",
+      "generation = source.localGeneration",
+      "targetGeneration = physical lease generation"
+    ],
+    "clock": "host-owned elapsed/E clock; eAgeSeconds=elapsedMs/1000; action progress separately from 620ms motion lifetime; caller supplies actual releaseBoundary (R10 .52)",
+    "holds": "held flag changes matching completed frame uniforms; no synthetic accepted release; hold after release boundary must still encode and complete a real release frame",
+    "replay": "retire old source before new replay cause; use new clock generation/currentState; prepare updates current target set; old pending callbacks become invalid",
+    "cleanup": "host closes its resources; bridge.destroy waits queue before scratch/registration cleanup; bridge does not destroy renderer or shared cache"
+  },
+  "methods": {
+    "prepare": "await prepare({viewport,sourceIds,prewarmCommands}) -> target allocation receipt or false; source cap32",
+    "record": "record({frame,target='main',viewport,source,command,action,eAgeSeconds,pathEndWorld,currentState,mainOn=true,sourceOn=true,observerOn=true,held=false,releaseBoundary=.52}) -> queued-only receipt or false",
+    "recordTail": "same arguments but no command/action; only private release accepted by real completedFrame.accept + actual proof.done + all three null error scopes may drive tail",
+    "retire": "retire(sourceOrId) invalidates own preview ledger and pending commit callbacks",
+    "destroy": "await destroy()",
+    "onCommitted": "preview-frame-completed callback includes scope, edition, source, packet, releaseAccepted, completedFrame, isCurrent, eAgeSeconds, poseIndex, targetGeneration, uniformBytes"
+  },
+  "recordedPath": [
+    "actual body+registered extension frame.sprite",
+    "56 float / 224 byte uniform",
+    "world MRT: main and source rgba16float attachments, original WORLD_WGSL",
+    "observer+displayed backdrop snapshot rgba16float attachments, original OBSERVER_WGSL wrapped with sealed engineering wrapper",
+    "shared renderer encodeLinearHDRLayer into exact physical target",
+    "renderer owns submit/errorScopes/queue completion and completed-frame proof"
+  ],
+  "externalProofBooleansAccepted": false,
+  "gameAuthorityUsed": false,
+  "productionAcceptedSourcesTouched": false,
+  "nativeOperator": "Root only",
+  "pending": [
+    "real shader/pipeline/queue scopes",
+    "Root visible R9/R10 continuous comparison",
+    "ordinary audio",
+    "public",
+    "main-game acceptance"
+  ],
+  "submissionCompletion": "Each actual onSubmitted callback returns its proof-gated promise; the shell returns the host completion promise to the preview clock. Only a real renderer completed-frame proof can invoke onCommitted.",
+  "startup": "Parent playing/ready notification is emitted only after real completed-frame acceptance and current visible target/cause checks; startup token, version, and attempt epoch are exact.",
+  "timing": "Preview-only selected-rate authored time pauses during actual submission/proof backpressure. Wall duration and render wait are separate; no performance or real-time acceptance."
+}
