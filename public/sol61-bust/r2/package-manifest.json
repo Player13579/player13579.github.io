@@ -1,0 +1,101 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "bust-sol61",
+  "versionId": "bust-zero-sol61-r2",
+  "entry": "index.html",
+  "effectAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "partial-pending-native-pixels-and-full-lifetime-review",
+  "technicalReplayStatus": "pending-native-webgpu",
+  "files": {
+    "index.html": "67881bafa6603a0327c91ea78b778d7330d4681699393717b83f82bf53e382c3",
+    "gallery-adapter.mjs": "4bed1912b5b79c1559e884221e66d3f4184d418ada30cb6f6a8fbfcb5aa47f82",
+    "bust.mjs": "9032d51a2c1bbfd59b28d095a3cc121f52c697a81bea656ce5cc974257e26cf8",
+    "bust.wgsl": "10de1646cb3a0890c6de925f535779d2e2ca710bcd10a1b354cdbf2f8c0ebf2d",
+    "bust-sfx.mjs": "ff579c80e8678dda98a80fe78adcc0f565da735dc5e0ade92f4531db07680ab0",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "events": {
+    "timed-bust-start": {
+      "durationMs": 650,
+      "targetId": "beneficiary-target"
+    },
+    "timed-bust-break": {
+      "durationMs": 480,
+      "targetId": "barrier-owner-target"
+    }
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format",
+    "separateActorFixturePass": true,
+    "surfaceFormat": "navigator.gpu.getPreferredCanvasFormat()"
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "hold": "hold(ageMs,{variant,targetId,bodyHeight:64|192,sourceEnabled,observerEnabled})",
+    "waitsForGpuQueueCompletion": true,
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ]
+  },
+  "validation": {
+    "syntax": "passed: node --check",
+    "fakeDeviceHost": "source-author CPU/mock suite passed 1733 assertions; separate host fake-device rerun not performed",
+    "nativeWebGpuReplay": "passed on Edge 154.0.4258.62 headless with --enable-unsafe-webgpu; 35 assertions",
+    "visualQuality": "not assessed or accepted; screenshots are technical rendering evidence only",
+    "normalAudioCapability": "activation API exposed in normal entry; actual unlock/playback capability not established",
+    "normalAudioListening": "not-run",
+    "verifyAudio": "passed: verify mode made zero AudioBuffer and BufferSource calls",
+    "gameIntegration": "not-run",
+    "nativeVerification": "outputs/request-20261008/bust-r2-gallery-host-luna-r1/attempt-3f815675-ea21-4c8d-9e24-cbcb4b3b07ed/native-verification.json"
+  },
+  "sourceManifest": {
+    "path": "outputs/request-20261008/bust-zero-sol61-r2/source-manifest.json",
+    "sha256": "849f0527408213333e34fd65b59afa1f9c49884413be2549e6b6880cd4ca7331"
+  },
+  "technicalDerivative": {
+    "basedOn": "outputs/request-20261008/bust-native-verify-luna-r1/repaired-package/public/sol61-bust/r1",
+    "creativeChanges": false,
+    "changes": [
+      "Apply the frozen R1 repaired WebGPU gallery host and actor fixture unchanged to the R2 ABI.",
+      "Retain 650ms beneficiary start and 480ms barrier-owner break with ACTOR_SCALE 2 and synchronized SFX playback rate.",
+      "Rebuild native verification around R2 source pins; validate actual H64/H192 holds, both source and observer controls, and replay-at-RAF-boundary behavior.",
+      "Technical WGSL parser compatibility: rename reserved identifier active to activeMask without changing expressions or shader behavior."
+    ],
+    "preservedR1SourceHashes": {
+      "bust.mjs": "236cbd219f1badf62b6a0955b27d08303fe14f98651f773e0de83a7785ede21e",
+      "bust.wgsl": "ef1680563761409c4a7d21bf6e2b8ebb11b2784113d821302b7973e6f63a74c2",
+      "bust-sfx.mjs": "13a2cba30468b5e5d239cccc604bbfff1bec6cec9e38c027a2cf58609d6a199c"
+    },
+    "shaderTechnicalFix": {
+      "file": "bust.wgsl",
+      "sourceSha256": "15776098822b5651185babedda991f3608d3aa46d198e7a76b3d153b4c83f265",
+      "derivedSha256": "10de1646cb3a0890c6de925f535779d2e2ca710bcd10a1b354cdbf2f8c0ebf2d",
+      "change": "whole-word identifier rename active -> activeMask; no expression or creative parameter changes"
+    },
+    "technicalAuthor": "GPT-6-Luna",
+    "resumeClockRepair": {
+      "file": "gallery-adapter.mjs",
+      "parentSha256": "62e2baa7d8687d4f59840d0a3b738a1308f17691ec7aac11ed1f306e5dc2fff6",
+      "derivedSha256": "4bed1912b5b79c1559e884221e66d3f4184d418ada30cb6f6a8fbfcb5aa47f82",
+      "change": "On verification resume, reset the playback clock to null so the next tick starts the current variant. No creative asset, shader, SFX, timing, or target changes."
+    }
+  },
+  "technicalAuthor": "GPT-6-Luna"
+}
