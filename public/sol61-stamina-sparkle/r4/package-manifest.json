@@ -1,0 +1,67 @@
+{
+  "schema": "dva-effect-gallery-package/v1",
+  "packageId": "stamina-benefit-sol61-r4",
+  "version": "stamina-benefit-sol61-r4",
+  "status": "isolated-gallery-host-native-candidate-not-quality-accepted",
+  "author": {
+    "creative": "GPT-6.1-Sol",
+    "hostAdapterPreview": "GPT-6-Luna"
+  },
+  "title": "スタミナ恩恵E · r4",
+  "entry": "gallery-content.html",
+  "standaloneEntry": "index.html",
+  "renderer": "WebGPU",
+  "durationMs": 1320,
+  "historyPreserved": "stamina-sparkle-sol61-r3 and prior adoption/withdrawal records remain source history; no shared catalog was edited",
+  "sourceCommit": "187f0e5c4375d022d56f23ec5bcb1a674ed24f4f",
+  "files": {
+    "body.png": {
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "source": "187f0e5c4375d022d56f23ec5bcb1a674ed24f4f:public/sol61-stamina-sparkle/r3/body.png",
+      "exactSolPin": false
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 27164,
+      "sha256": "e124798ae4d08b064894d0bee0997f18fa458bb9ec3960685c46c8d095a56ded",
+      "source": "187f0e5c4375d022d56f23ec5bcb1a674ed24f4f:public/sol61-stamina-sparkle/r3/gallery-adapter.mjs",
+      "exactSolPin": false
+    },
+    "gallery-content.html": {
+      "bytes": 2132,
+      "sha256": "74eeb4d04f122be8cba49a8f7203cbd98936f3a955b366b25ebc94b1938cf457",
+      "source": "187f0e5c4375d022d56f23ec5bcb1a674ed24f4f:public/sol61-stamina-sparkle/r3/gallery-content.html",
+      "exactSolPin": false
+    },
+    "index.html": {
+      "bytes": 2760,
+      "sha256": "9420047dc082b4d1730ec120501a70243a842c66f95e91dd462a4283b420c893",
+      "source": "187f0e5c4375d022d56f23ec5bcb1a674ed24f4f:public/sol61-stamina-sparkle/r3/index.html",
+      "exactSolPin": false
+    },
+    "preview.mjs": {
+      "bytes": 8817,
+      "sha256": "38122cb40e5930ac65402aa0f3bd91d8be68f89b11faf02a5c5d10bacb9193b1",
+      "source": "187f0e5c4375d022d56f23ec5bcb1a674ed24f4f:public/sol61-stamina-sparkle/r3/preview.mjs",
+      "exactSolPin": false
+    },
+    "effect.mjs": {
+      "bytes": 15288,
+      "sha256": "50674c99628625516deb8dd3b0d19fa18bfbad2f0343e36e7fb3e05ee787bca1",
+      "source": "outputs/request-20261008/stamina-benefit-sol61-r4/effect.mjs",
+      "exactSolPin": true
+    },
+    "sound.mjs": {
+      "bytes": 3446,
+      "sha256": "94c4a22072a129bb10e8d1c4fc2f4b3e8fc1056135439303db42bb41a03635eb",
+      "source": "outputs/request-20261008/stamina-benefit-sol61-r4/sound.mjs",
+      "exactSolPin": true
+    }
+  },
+  "technicalHostDerivative": {
+    "path": "gallery-adapter.mjs",
+    "baselineSha256": "cddbb2d2eb71ccf33603d93638b4c3940f14ad4bcbeed0ac85fb5e61ad87321d",
+    "candidateSha256": "e124798ae4d08b064894d0bee0997f18fa458bb9ec3960685c46c8d095a56ded",
+    "change": "only first-frame sourceSha256 pin updated from prior r3 creative input to exact r4 creative effect source"
+  }
+}
