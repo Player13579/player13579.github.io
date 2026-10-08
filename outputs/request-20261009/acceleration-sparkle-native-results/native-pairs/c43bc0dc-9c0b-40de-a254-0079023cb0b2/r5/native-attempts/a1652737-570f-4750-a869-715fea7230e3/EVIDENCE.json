@@ -1,0 +1,1789 @@
+{
+  "attemptId": "a1652737-570f-4750-a869-715fea7230e3",
+  "status": "PASS_NATIVE_WEBGPU_LIFECYCLE",
+  "version": "acceleration-benefit-zero-sol61-r5",
+  "verifyQueryPresent": true,
+  "packageManifestSha256": "f36ef5d4b1baef4e3f7ab2ad9509521ed3e4bf4a4fcf37e92128e1473675cccb",
+  "sourceExpectedSha256": {
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "index.html": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+    "gallery-adapter.mjs": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+    "effect.mjs": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b"
+  },
+  "packageRoot": "C:\\Users\\user\\Documents\\Codex\\2026-10-08\\stamina-adoption-withdrawal-luna-r2-worktree\\public\\sol61-acceleration-benefit\\r5",
+  "outputRoot": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5",
+  "preBrowserHttpSourcePin": [
+    {
+      "path": "body.png",
+      "status": 200,
+      "actualSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "match": true,
+      "bytes": 243081
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "actualSha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+      "expectedSha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+      "match": true,
+      "bytes": 1933
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200,
+      "actualSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "match": true,
+      "bytes": 19123
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200,
+      "actualSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+      "expectedSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+      "match": true,
+      "bytes": 18870
+    }
+  ],
+  "serverResponses": [
+    {
+      "path": "body.png",
+      "status": 200,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "match": true,
+      "bytes": 243081
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+      "expectedSha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+      "match": true,
+      "bytes": 1933
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200,
+      "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "match": true,
+      "bytes": 19123
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200,
+      "sha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+      "expectedSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+      "match": true,
+      "bytes": 18870
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+      "expectedSha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+      "match": true,
+      "bytes": 1933
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200,
+      "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "match": true,
+      "bytes": 19123
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200,
+      "sha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+      "expectedSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+      "match": true,
+      "bytes": 18870
+    },
+    {
+      "path": "body.png",
+      "status": 200,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "match": true,
+      "bytes": 243081
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+      "expectedSha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+      "match": true,
+      "bytes": 1933
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200,
+      "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "match": true,
+      "bytes": 19123
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200,
+      "sha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+      "expectedSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+      "match": true,
+      "bytes": 18870
+    },
+    {
+      "path": "body.png",
+      "status": 200,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "match": true,
+      "bytes": 243081
+    }
+  ],
+  "serverFailures": [],
+  "clientResponses": [
+    {
+      "path": "index.html",
+      "status": 200
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "status": 200
+    },
+    {
+      "path": "effect.mjs",
+      "status": 200
+    },
+    {
+      "path": "body.png",
+      "status": 200
+    }
+  ],
+  "messages": [],
+  "errors": [],
+  "phases": [
+    {
+      "label": "h64-t0200",
+      "elapsedMs": 200,
+      "bodyHeightCssPx": 64,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 4,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 200,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 1,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\h64-t0200.png",
+      "screenshot": "h64-t0200.png",
+      "screenshotSha256": "56bb0b3fcc0d8519ad36256332c9c5dcbebd5d04011715fd3a89ba508badf581",
+      "screenshotBytes": 10024,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h64-t0400",
+      "elapsedMs": 400,
+      "bodyHeightCssPx": 64,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 5,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 400,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 2,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\h64-t0400.png",
+      "screenshot": "h64-t0400.png",
+      "screenshotSha256": "c016de4ab310dc88cf9d8ff2763ced9e802089e318c724ae0b5a6e77fcddc89f",
+      "screenshotBytes": 9905,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h64-t0600",
+      "elapsedMs": 600,
+      "bodyHeightCssPx": 64,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 6,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 600,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 3,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\h64-t0600.png",
+      "screenshot": "h64-t0600.png",
+      "screenshotSha256": "f218fe6780f25d46968c6bbf549309d8ca4f9c3a7ee0f11cd2843474ab578d4a",
+      "screenshotBytes": 9830,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h64-t0800",
+      "elapsedMs": 800,
+      "bodyHeightCssPx": 64,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 7,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 800,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 4,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\h64-t0800.png",
+      "screenshot": "h64-t0800.png",
+      "screenshotSha256": "6353e59a9b6193002f145eaf85ade6d51031812b6f3bdd2db46aea1ca1c2c807",
+      "screenshotBytes": 9146,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h192-t0200",
+      "elapsedMs": 200,
+      "bodyHeightCssPx": 192,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 8,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 200,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 5,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\h192-t0200.png",
+      "screenshot": "h192-t0200.png",
+      "screenshotSha256": "b74920617f125290a0fe09c936dd95c718c4ac8fc5d4ba14adeabb00567df486",
+      "screenshotBytes": 42618,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h192-t0400",
+      "elapsedMs": 400,
+      "bodyHeightCssPx": 192,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 9,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 400,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 6,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\h192-t0400.png",
+      "screenshot": "h192-t0400.png",
+      "screenshotSha256": "939aed12047ab1c7caa8b693210bba63d2532759365a452f831f2211c14bf519",
+      "screenshotBytes": 42299,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h192-t0600",
+      "elapsedMs": 600,
+      "bodyHeightCssPx": 192,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 10,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 600,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 7,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\h192-t0600.png",
+      "screenshot": "h192-t0600.png",
+      "screenshotSha256": "ad3a855493aee9f381d3b7b7ef5571f01349f9ec6ac42998dba7edfa5b5b4757",
+      "screenshotBytes": 42200,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "h192-t0800",
+      "elapsedMs": 800,
+      "bodyHeightCssPx": 192,
+      "options": {},
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 11,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 800,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 8,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\h192-t0800.png",
+      "screenshot": "h192-t0800.png",
+      "screenshotSha256": "9c9ccf46a42e9002ebcef0e9a4b4f01049e85a3d7a74e7922a6f40673d63e9bc",
+      "screenshotBytes": 38838,
+      "screenshotFormat": "PNG",
+      "screenshotDimensions": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    {
+      "label": "control-obs-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "obs": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 12,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 9,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": false,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-sparkle-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "sparkle": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 13,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 10,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": false,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-source-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "source": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 14,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 11,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": false,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-main-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "main": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 15,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 12,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": false,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-bodyResponse-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "bodyResponse": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 16,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 13,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": false,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-includeActor-off-h64",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "includeActor": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 17,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 14,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": false,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-obs-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "obs": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 18,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 15,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": false,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-sparkle-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "sparkle": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 19,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 16,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": false,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-source-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "source": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 20,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 17,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": false,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-main-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "main": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 21,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 18,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": false,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-bodyResponse-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "bodyResponse": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 22,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 19,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": false,
+          "includeActor": true,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-includeActor-off-h192",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 192,
+      "options": {
+        "includeActor": false
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 23,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 192,
+        "bodyProjectedWidth": 116.05333333333333,
+        "lifecycleEpoch": 20,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": false,
+          "direction": 1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    },
+    {
+      "label": "control-direction-reversed",
+      "elapsedMs": 420,
+      "bodyHeightCssPx": 64,
+      "options": {
+        "direction": -1
+      },
+      "receipt": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "submissionId": 24,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 420,
+        "bodyProjectedHeight": 64,
+        "bodyProjectedWidth": 38.684444444444445,
+        "lifecycleEpoch": 21,
+        "active": true,
+        "phase": "transport",
+        "toggles": {
+          "obs": true,
+          "sparkle": true,
+          "source": true,
+          "main": true,
+          "bodyResponse": true,
+          "includeActor": true,
+          "direction": -1,
+          "reducedMotion": false
+        }
+      },
+      "errorScope": {
+        "kind": "validation",
+        "result": null
+      },
+      "queueMethod": "function",
+      "queueCompletionDelta": 2,
+      "screenshotPath": null,
+      "screenshot": null,
+      "screenshotSha256": null,
+      "screenshotBytes": 0,
+      "screenshotFormat": null,
+      "screenshotDimensions": null
+    }
+  ],
+  "controls": [
+    {
+      "bodyHeight": 64,
+      "name": "obs",
+      "toggles": {
+        "obs": false,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "sparkle",
+      "toggles": {
+        "obs": true,
+        "sparkle": false,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "source",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": false,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "main",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": false,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "bodyResponse",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": false,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 64,
+      "name": "includeActor",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": false,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "obs",
+      "toggles": {
+        "obs": false,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "sparkle",
+      "toggles": {
+        "obs": true,
+        "sparkle": false,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "source",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": false,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "main",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": false,
+        "bodyResponse": true,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "bodyResponse",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": false,
+        "includeActor": true,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    },
+    {
+      "bodyHeight": 192,
+      "name": "includeActor",
+      "toggles": {
+        "obs": true,
+        "sparkle": true,
+        "source": true,
+        "main": true,
+        "bodyResponse": true,
+        "includeActor": false,
+        "direction": 1,
+        "reducedMotion": false
+      }
+    }
+  ],
+  "gpuInstrumentation": {
+    "deviceCount": 1,
+    "instrumentation": {
+      "requestAdapter": true,
+      "requestDevice": true,
+      "pipeline": true,
+      "shaderModule": true,
+      "queueCompletion": true
+    },
+    "deviceErrors": [],
+    "pipelineScopes": [
+      {
+        "kind": "validation",
+        "result": null
+      }
+    ],
+    "shaderCompilation": [
+      {
+        "label": "acceleration-benefit-zero-sol61-r5",
+        "messages": []
+      }
+    ],
+    "queueCompletions": [
+      {
+        "time": 3224.600000023842
+      },
+      {
+        "time": 3224.600000023842
+      },
+      {
+        "time": 3242.800000011921
+      },
+      {
+        "time": 3246.899999976158
+      },
+      {
+        "time": 3409.5
+      },
+      {
+        "time": 3413.300000011921
+      },
+      {
+        "time": 3560.800000011921
+      },
+      {
+        "time": 3564.899999976158
+      },
+      {
+        "time": 3708
+      },
+      {
+        "time": 3714
+      },
+      {
+        "time": 3847.600000023842
+      },
+      {
+        "time": 3851.800000011921
+      },
+      {
+        "time": 3986
+      },
+      {
+        "time": 3990.300000011921
+      },
+      {
+        "time": 4163.100000023842
+      },
+      {
+        "time": 4171.199999988079
+      },
+      {
+        "time": 4334.800000011921
+      },
+      {
+        "time": 4339.600000023842
+      },
+      {
+        "time": 4513.600000023842
+      },
+      {
+        "time": 4520.699999988079
+      },
+      {
+        "time": 4525.300000011921
+      },
+      {
+        "time": 4531.300000011921
+      },
+      {
+        "time": 4539.800000011921
+      },
+      {
+        "time": 4544.800000011921
+      },
+      {
+        "time": 4549.5
+      },
+      {
+        "time": 4553.899999976158
+      },
+      {
+        "time": 4560.199999988079
+      },
+      {
+        "time": 4563.899999976158
+      },
+      {
+        "time": 4570.199999988079
+      },
+      {
+        "time": 4573.699999988079
+      },
+      {
+        "time": 4580.600000023842
+      },
+      {
+        "time": 4584.699999988079
+      },
+      {
+        "time": 4588.600000023842
+      },
+      {
+        "time": 4592.600000023842
+      },
+      {
+        "time": 4598.300000011921
+      },
+      {
+        "time": 4602.100000023842
+      },
+      {
+        "time": 4605.300000011921
+      },
+      {
+        "time": 4610
+      },
+      {
+        "time": 4618.699999988079
+      },
+      {
+        "time": 4623.699999988079
+      },
+      {
+        "time": 4627
+      },
+      {
+        "time": 4630.600000023842
+      },
+      {
+        "time": 4637.100000023842
+      },
+      {
+        "time": 4641.199999988079
+      },
+      {
+        "time": 5564.600000023842
+      },
+      {
+        "time": 5584.399999976158
+      },
+      {
+        "time": 5584.800000011921
+      }
+    ],
+    "queueFailures": []
+  },
+  "cleanup": {
+    "contextCloseAttempted": true,
+    "browserCloseAttempted": true,
+    "contextClosed": true,
+    "browserConnected": false,
+    "localServerCloseAttempted": true
+  },
+  "browser": {
+    "name": "Microsoft Edge",
+    "executable": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "headless": true,
+    "launchArgs": [
+      "--mute-audio",
+      "--disable-background-networking",
+      "--enable-unsafe-webgpu",
+      "--enable-features=Vulkan",
+      "--ignore-gpu-blocklist"
+    ],
+    "sandboxDisablingFlagSupplied": false,
+    "playwrightVersion": "1.62.1",
+    "actualVersion": "154.0.4258.62"
+  },
+  "viewport": {
+    "width": 1000,
+    "height": 720,
+    "deviceScaleFactor": 1
+  },
+  "startedAt": "2026-10-08T18:54:32.063Z",
+  "serverRequests": [
+    {
+      "path": "/body.png",
+      "search": ""
+    },
+    {
+      "path": "/index.html",
+      "search": ""
+    },
+    {
+      "path": "/gallery-adapter.mjs",
+      "search": ""
+    },
+    {
+      "path": "/effect.mjs",
+      "search": ""
+    },
+    {
+      "path": "/index.html",
+      "search": "?verify=a1652737-570f-4750-a869-715fea7230e3&galleryStartupToken=87432fb428e745279ebd78f80d433785&galleryVersionId=acceleration-benefit-zero-sol61-r5&galleryAttemptEpoch=1"
+    },
+    {
+      "path": "/gallery-adapter.mjs",
+      "search": ""
+    },
+    {
+      "path": "/effect.mjs",
+      "search": ""
+    },
+    {
+      "path": "/body.png",
+      "search": ""
+    },
+    {
+      "path": "/index.html",
+      "search": "?verify=a1652737-570f-4750-a869-715fea7230e3&galleryStartupToken=d3aba5f919f54f5cbe2df6656ae81f3a&galleryVersionId=acceleration-benefit-zero-sol61-r5&galleryAttemptEpoch=1"
+    },
+    {
+      "path": "/gallery-adapter.mjs",
+      "search": ""
+    },
+    {
+      "path": "/effect.mjs",
+      "search": ""
+    },
+    {
+      "path": "/body.png",
+      "search": ""
+    }
+  ],
+  "preBrowserHttpSourcePinAt": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\EVIDENCE.json",
+  "parentUrl": "http://127.0.0.1:63079/harness.html?verify=a1652737-570f-4750-a869-715fea7230e3&galleryVersionId=acceleration-benefit-zero-sol61-r5",
+  "generatedParentConstruction": {
+    "scriptPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\generated-parent-construction.js",
+    "scriptSha256": "33306b43879761f298c9cb620e9fd21a1ef5c067c72552df90383d5094d5e72c",
+    "parentUrl": "http://127.0.0.1:63079/harness.html?verify=a1652737-570f-4750-a869-715fea7230e3&galleryVersionId=acceleration-benefit-zero-sol61-r5",
+    "childUrl": "http://127.0.0.1:63079/index.html?verify=a1652737-570f-4750-a869-715fea7230e3&galleryStartupToken=87432fb428e745279ebd78f80d433785&galleryVersionId=acceleration-benefit-zero-sol61-r5&galleryAttemptEpoch=1",
+    "identity": {
+      "token": "87432fb428e745279ebd78f80d433785",
+      "versionId": "acceleration-benefit-zero-sol61-r5",
+      "attemptEpoch": 1
+    }
+  },
+  "generatedMountPreflight": {
+    "serverRoot": "C:\\Users\\user\\Documents\\Codex\\2026-10-08\\stamina-adoption-withdrawal-luna-r2-worktree\\public\\sol61-acceleration-benefit\\r5",
+    "constructedChildUrl": "http://127.0.0.1:63079/index.html?verify=a1652737-570f-4750-a869-715fea7230e3&galleryStartupToken=87432fb428e745279ebd78f80d433785&galleryVersionId=acceleration-benefit-zero-sol61-r5&galleryAttemptEpoch=1",
+    "requests": [
+      {
+        "role": "generated-child-entry",
+        "url": "http://127.0.0.1:63079/index.html?verify=a1652737-570f-4750-a869-715fea7230e3&galleryStartupToken=87432fb428e745279ebd78f80d433785&galleryVersionId=acceleration-benefit-zero-sol61-r5&galleryAttemptEpoch=1",
+        "status": 200,
+        "path": "index.html",
+        "savedPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\mount-preflight-bytes\\index.html",
+        "bytes": 1933,
+        "actualSha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+        "expectedSha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+        "match": true
+      },
+      {
+        "role": "imported-module",
+        "url": "http://127.0.0.1:63079/gallery-adapter.mjs",
+        "status": 200,
+        "path": "gallery-adapter.mjs",
+        "savedPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\mount-preflight-bytes\\gallery-adapter.mjs",
+        "bytes": 19123,
+        "actualSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+        "expectedSha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+        "match": true
+      },
+      {
+        "role": "imported-module",
+        "url": "http://127.0.0.1:63079/effect.mjs",
+        "status": 200,
+        "path": "effect.mjs",
+        "savedPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\mount-preflight-bytes\\effect.mjs",
+        "bytes": 18870,
+        "actualSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+        "expectedSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+        "match": true
+      },
+      {
+        "role": "module-asset",
+        "url": "http://127.0.0.1:63079/body.png",
+        "status": 200,
+        "path": "body.png",
+        "savedPath": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\mount-preflight-bytes\\body.png",
+        "bytes": 243081,
+        "actualSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+        "expectedSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+        "match": true
+      }
+    ],
+    "passed": true
+  },
+  "generatedMountPreflightAt": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\acceleration-sparkle-native-results\\native-pairs\\c43bc0dc-9c0b-40de-a254-0079023cb0b2\\r5\\native-attempts\\a1652737-570f-4750-a869-715fea7230e3\\generated-mount-preflight.json",
+  "navigation": {
+    "status": 200,
+    "finalUrl": "http://127.0.0.1:63079/harness.html?verify=a1652737-570f-4750-a869-715fea7230e3&galleryVersionId=acceleration-benefit-zero-sol61-r5",
+    "title": "R6 sparkle native harness"
+  },
+  "parentStartup": {
+    "url": "http://127.0.0.1:63079/harness.html?verify=a1652737-570f-4750-a869-715fea7230e3&galleryVersionId=acceleration-benefit-zero-sol61-r5",
+    "title": "R6 sparkle native harness",
+    "verify": true,
+    "gpuAvailable": true,
+    "childFrameCount": 1,
+    "childSrc": "http://127.0.0.1:63079/index.html?verify=a1652737-570f-4750-a869-715fea7230e3&galleryStartupToken=d3aba5f919f54f5cbe2df6656ae81f3a&galleryVersionId=acceleration-benefit-zero-sol61-r5&galleryAttemptEpoch=1"
+  },
+  "startup": {
+    "childUrl": "http://127.0.0.1:63079/index.html?verify=a1652737-570f-4750-a869-715fea7230e3&galleryStartupToken=d3aba5f919f54f5cbe2df6656ae81f3a&galleryVersionId=acceleration-benefit-zero-sol61-r5&galleryAttemptEpoch=1",
+    "childVerify": true,
+    "separateChildRealm": true,
+    "version": "acceleration-benefit-zero-sol61-r5",
+    "verify": true,
+    "frames": 3,
+    "canvas": {
+      "connected": true,
+      "width": 1000,
+      "height": 720,
+      "contextType": "webgpu",
+      "rect": {
+        "width": 1000,
+        "height": 720
+      }
+    },
+    "ready": {
+      "schema": "dva-gallery-startup/v1",
+      "token": "d3aba5f919f54f5cbe2df6656ae81f3a",
+      "versionId": "acceleration-benefit-zero-sol61-r5",
+      "attemptEpoch": 1,
+      "sequence": 7,
+      "stage": "playing",
+      "status": "ready",
+      "firstFrame": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 1,
+        "viewportWidth": 1000,
+        "viewportHeight": 720,
+        "sourcePasses": [
+          "acceleration-benefit"
+        ],
+        "submissionId": 1,
+        "causeId": "acceleration-benefit-gallery-receipt-0",
+        "ageMs": 0,
+        "bodyProjectedHeight": 64,
+        "lifecycleEpoch": 0
+      }
+    },
+    "identity": {
+      "token": "d3aba5f919f54f5cbe2df6656ae81f3a",
+      "versionId": "acceleration-benefit-zero-sol61-r5",
+      "attemptEpoch": 1
+    },
+    "failure": null,
+    "gpuDevices": 1
+  },
+  "verifyMute": {
+    "queryPresent": true,
+    "apiVerify": true,
+    "activationAllowed": false,
+    "launchMuteAudio": true
+  },
+  "resume": {
+    "before": {
+      "frames": 24,
+      "loop": 0,
+      "elapsedMs": 420
+    },
+    "resumed": true,
+    "after": {
+      "frames": 25,
+      "loop": 0,
+      "elapsedMs": 435.1999999284744,
+      "failure": null
+    }
+  },
+  "naturalClock": {
+    "before": {
+      "loop": 0,
+      "elapsedMs": 435.1999999284744,
+      "frames": 25
+    },
+    "after": {
+      "loop": 1,
+      "elapsedMs": 0,
+      "frames": 71,
+      "failure": null
+    },
+    "wallMs": 897.5
+  },
+  "replay": {
+    "before": {
+      "frames": 71,
+      "loop": 1
+    },
+    "accepted": true,
+    "after": {
+      "frames": 71,
+      "loop": 2,
+      "failure": null
+    }
+  },
+  "lifecycle": {
+    "before": {
+      "frames": 72,
+      "disposed": false
+    },
+    "disposed": true,
+    "framesAfter": 72,
+    "failure": null
+  },
+  "sourceHashMatches": true,
+  "captureSummary": {
+    "requiredImages": 8,
+    "actualRequiredImages": 8,
+    "totalScreenshotBytes": 204860,
+    "limitBytes": 20971520,
+    "underLimit": true,
+    "phaseMs": [
+      200,
+      400,
+      600,
+      800
+    ],
+    "bodyHeights": [
+      64,
+      192
+    ]
+  },
+  "nativeGpuAcceptance": {
+    "shaderCompileClean": true,
+    "queueWorkClean": true,
+    "shaderCompileCount": 1,
+    "queueCompletionCount": 47
+  },
+  "finishedAt": "2026-10-08T18:54:39.551Z"
+}

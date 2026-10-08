@@ -1,0 +1,68 @@
+{
+  "schema": "human-transmutation-r6-sparkle-cpu-results/v1",
+  "runtimeVersionId": "human-transmutation-sol61-r6",
+  "command": "node --test tests/glints.test.mjs",
+  "result": "PASS",
+  "testCount": 8,
+  "passed": 8,
+  "failed": 0,
+  "gpuShaderCompileOrReplay": "NOT RUN; primary verification pending",
+  "checks": [
+    "25 distinct registered subsites across five original anchors",
+    "Every site alpha > 0.85 in the hash-pinned R5 original PNG",
+    "R6 optical dimensions are smaller than the R5 baseline, with axis/radiance/gain preserved",
+    "Per-site stagger schedule and start/end/source/visibility phase gates",
+    "WGSL world and presentation arrays/loops expand to GLINT_SITES.length; zero-pulse source sampling and exponent math are skipped",
+    "Fixture H48/H64/H128 input contract preserved",
+    "Maximum simultaneous active point glints bounded"
+  ],
+  "support": {
+    "count": 25,
+    "distinct": 25,
+    "alphaThresholdExclusive": 0.85,
+    "minimumObservedAlpha": 1.0,
+    "originalImageSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+  },
+  "optics": {
+    "r5Baseline": {
+      "sourceRadiusH64": 0.72,
+      "rayLengthH64": 5.6,
+      "secondaryRayLengthH64": 4.2,
+      "rayWidthH64": 0.38,
+      "angleDegrees": 17,
+      "sourceRadiance": 7.5,
+      "rayGain": 1.9
+    },
+    "r6": {
+      "sourceRadiusH64": 0.45,
+      "rayLengthH64": 2.2,
+      "secondaryRayLengthH64": 1.65,
+      "rayWidthH64": 0.22,
+      "angleDegrees": 17,
+      "sourceRadiance": 7.5,
+      "rayGain": 1.9
+    },
+    "perSiteStaggerMs": [
+      0,
+      11,
+      22,
+      33,
+      44
+    ],
+    "existingArrivalGateMs": 24,
+    "riseMs": 35,
+    "endAfterArrivalMs": 174,
+    "pulseEnvelopeMs": 150
+  },
+  "concurrency": {
+    "maximumActiveSites": 9,
+    "phaseSampleStepMs": 0.25,
+    "phaseRangeMs": [
+      0,
+      1199.75
+    ],
+    "firstMaximumSampleMs": 428.5,
+    "lastMaximumSampleMs": 554.75,
+    "samples": 4800
+  }
+}

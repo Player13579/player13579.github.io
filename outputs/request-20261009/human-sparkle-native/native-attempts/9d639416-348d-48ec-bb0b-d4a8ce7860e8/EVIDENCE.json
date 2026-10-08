@@ -1,0 +1,75 @@
+{
+  "schema": "human-transmutation-native-compare/v1",
+  "attemptId": "9d639416-348d-48ec-bb0b-d4a8ce7860e8",
+  "status": "FAIL_NATIVE_OR_SOURCE_PIN",
+  "expectedPins": {
+    "r5Manifest": "2d4eccd78bc79fcb3f27bd99f187b67e2b20c5581e2da106bda8c9bf4b7948b3",
+    "r6Manifest": "5d2b0227669016ea7d229623272d714ea98f50bc194576efde2e8b27b590f4e7",
+    "r6Ready": "8da5863a6a2aef8f3f74be09fc7286ac896db128680e964449ca2ffbab5d54a0",
+    "r6Seal": "e4e13985d608b01f8419655dcfb540f4b6096553a89fd4eb78c5613aaca17c40"
+  },
+  "packageRoot": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-small-many-r6\\public\\sol61-human-transmutation\\r6",
+  "outputRoot": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native",
+  "attemptDir": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\9d639416-348d-48ec-bb0b-d4a8ce7860e8",
+  "browser": {
+    "name": "Microsoft Edge",
+    "executable": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "headless": true,
+    "launchArgs": [
+      "--mute-audio",
+      "--disable-background-networking",
+      "--enable-unsafe-webgpu",
+      "--enable-features=Vulkan",
+      "--ignore-gpu-blocklist"
+    ],
+    "sandboxDisablingFlagSupplied": false
+  },
+  "viewport": {
+    "width": 980,
+    "height": 480,
+    "deviceScaleFactor": 1
+  },
+  "matrix": {
+    "actorHeights": [
+      64,
+      128
+    ],
+    "phasesMs": [
+      450,
+      650,
+      850,
+      1050
+    ],
+    "unsupportedHeightSkipped": {
+      "height": 192,
+      "reason": "R5 and frozen R6 fixture APIs explicitly accept only H48/H64/H128."
+    }
+  },
+  "r5": {
+    "baseUrl": "https://player13579.github.io/public/sol61-human-transmutation/r5/",
+    "manifestUrl": "https://player13579.github.io/public/sol61-human-transmutation/r5/package-manifest.json?verify=1",
+    "preflight": [],
+    "requests": [],
+    "captures": []
+  },
+  "r6": {
+    "localUrl": null,
+    "preflight": [],
+    "requests": [],
+    "captures": []
+  },
+  "browserErrors": [],
+  "pageErrors": [],
+  "gpuErrors": [],
+  "validationErrors": [],
+  "queue": [],
+  "replay": {},
+  "cleanup": {},
+  "startedAt": "2026-10-08T18:56:25.516Z",
+  "error": {
+    "name": "Error",
+    "message": "R6 seal content file count mismatch",
+    "stack": "Error: R6 seal content file count mismatch\n    at assert (C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-verify.cjs:28:61)\n    at validateR6Package (C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-verify.cjs:123:3)\n    at main (C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-verify.cjs:309:22)\n    at Object.<anonymous> (C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-verify.cjs:347:1)\n    at Module._compile (node:internal/modules/cjs/loader:1872:14)\n    at Object..js (node:internal/modules/cjs/loader:2003:10)\n    at Module.load (node:internal/modules/cjs/loader:1594:32)\n    at Module._load (node:internal/modules/cjs/loader:1396:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)"
+  },
+  "finishedAt": "2026-10-08T18:56:25.519Z"
+}

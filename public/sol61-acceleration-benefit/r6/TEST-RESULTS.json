@@ -1,0 +1,42 @@
+{
+  "schema": "dva-focused-validation/v1",
+  "versionId": "acceleration-benefit-zero-sol61-r6",
+  "recordedAt": "2026-10-08T18:50:25.893Z",
+  "runtime": {
+    "node": "v24.19.0"
+  },
+  "commands": [
+    {
+      "command": "node --check effect.mjs",
+      "status": "passed"
+    },
+    {
+      "command": "node --check gallery-adapter.mjs",
+      "status": "passed"
+    },
+    {
+      "command": "node test-effect-r6.mjs",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "sourceCount": 32,
+    "attachedCarrierSources": 24,
+    "receiverRimSources": 8,
+    "peakSimultaneous": 12,
+    "movingCarrierAnchors": 24,
+    "opticalModel": {
+      "axisDegrees": 17.5,
+      "crossWidthH": 0.0018,
+      "rayDecayH": 0.018,
+      "sourceRadiusH": 0.0024,
+      "cutoffDecays": 6
+    }
+  },
+  "nativeWgslCompilation": "not_run; delegated paired R5/R6 native runner is pending",
+  "nativeReplay": "pending",
+  "visualQuality": "not accepted",
+  "normalAudioListening": "not run",
+  "gameIntegration": "not run",
+  "publication": "not run"
+}

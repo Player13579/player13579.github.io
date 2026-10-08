@@ -1,0 +1,59 @@
+{
+  "schema": "dva-derivative-source-pins/v1",
+  "purpose": "Record the exact current public R5 entry and byte-matched closure used to seed this single R6 correction.",
+  "upstreamPackage": {
+    "path": "C:/Users/user/Documents/Codex/2026-10-08/stamina-adoption-withdrawal-luna-r2-worktree/public/sol61-acceleration-benefit/r5/package-manifest.json",
+    "sha256": "f36ef5d4b1baef4e3f7ab2ad9509521ed3e4bf4a4fcf37e92128e1473675cccb",
+    "sourceEffectPath": "outputs/request-20261008/acceleration-benefit-zero-sol61-r5/effect.mjs",
+    "sourceEffectSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+    "sourceManifestPath": "outputs/request-20261008/acceleration-benefit-zero-sol61-r5/source-manifest.json",
+    "sourceManifestSha256": "394416d82f2828e9627f79f6a5e52abcc9e0ba2ad96d3caecba8388342a5f734",
+    "sourceManifestBytesMatch": true
+  },
+  "runtimeClosure": {
+    "body.png": {
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "matchesUpstreamPackage": true
+    },
+    "gallery-adapter.mjs": {
+      "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "matchesUpstreamPackage": true
+    },
+    "index.html": {
+      "sha256": "62bb0a18db27af6e4b588e23d2b12ff00dc7c415fd9b4e9efb16673f6a960c90",
+      "matchesUpstreamPackage": true
+    },
+    "effect.mjs": {
+      "sha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+      "matchesUpstreamPackage": true
+    }
+  },
+  "derivative": {
+    "path": "outputs/request-20261009/acceleration-small-many-r6",
+    "sourceVersion": "acceleration-benefit-zero-sol61-r5",
+    "newVersion": "acceleration-benefit-zero-sol61-r6",
+    "authorizedChange": "One requested correction: smaller, more numerous sparkles.",
+    "upstreamSourceWasNotModified": true,
+    "publicCatalogWasNotModified": true
+  },
+  "historicalSeedCatalog": {
+    "snapshotPath": "C:/Users/user/Documents/Codex/2026-10-08/stamina-adoption-withdrawal-luna-r2-worktree/asset-gallery.js",
+    "commit": "243332b27cad0129d74dd66643414fc902061209",
+    "sha256": "5036a1d7d253f1060922b3c33d966b055eb948a1c7a2483eb75107da7be2b45b",
+    "currentDefaultVersionId": "acceleration-benefit-zero-sol61-r5",
+    "catalogEntryPath": "public/sol61-acceleration-benefit/r5/index.html?embed=1&galleryAutoLoop=1&sourceSha256=3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b&packageManifestSha256=f36ef5d4b1baef4e3f7ab2ad9509521ed3e4bf4a4fcf37e92128e1473675cccb",
+    "entryStatus": "unadopted; quality partial; creative iteration 5/5; no automatic R6",
+    "catalogModified": false,
+    "role": "historical-seed-snapshot"
+  },
+  "currentPublicCatalog": {
+    "primaryVerifiedCommitAbbreviation": "d4547a8",
+    "currentRootR5EffectSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+    "currentCatalogSnapshotPath": "outputs/request-20261009/stamina-r3-adoption/asset-gallery.js",
+    "currentCatalogSnapshotSha256": "ae9c9f2e0946d2d23618d2370f2691e27be165222b261f5c79c03192ccb2b0e1",
+    "snapshotBaseCommit": "c72c665bc5cbc90ed4c64abb3fd9f9b36b387b43",
+    "versionId": "acceleration-benefit-zero-sol61-r5",
+    "status": "R5 remains the current default; root verified its current public effect pin against the local R5 seed. This supersedes the historical seed-snapshot claim above.",
+    "catalogModified": false
+  }
+}

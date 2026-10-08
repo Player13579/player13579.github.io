@@ -1,0 +1,34 @@
+{
+  "schema": "human-transmutation-r6-bounded-work/v1",
+  "objective": "Implement the user-authorized single sparkle-size and density correction on the frozen R5 runtime.",
+  "acceptedRequirements": [
+    "Five original fixation anchors each expand to five close, distinct subsites (25 total).",
+    "Every subsite lies within the R5 original sprite alpha support with alpha > 0.85; move only unsupported proposed points to the nearest valid opaque pixel.",
+    "Primary ray length 2.2 H64 px, secondary ray length 1.65 H64 px, ray width 0.22 H64 px, source radius 0.45 H64 px; preserve 17-degree axis, radiance 7.5, gain 1.9.",
+    "Offsets within each five-site anchor are staggered +0,+11,+22,+33,+44 ms after the existing +24 ms material-arrival start; retain the existing 35 ms rise, 70 ms fall, and 174 ms end-after-arrival (150 ms pulse envelope).",
+    "World source and presentation ray loops derive their array/iteration counts from GLINT_SITES.length. Skip source/material samples and exponent work when a site pulse is zero.",
+    "Keep original silhouette, opaque full-body binding, formation, flight, timing, colors, SFX and all unrelated renderer behavior unchanged.",
+    "Keep native fixture H48/H64/H128 accepted inputs.",
+    "R6 is the one user-authorized correction exception after R5 reached the 5/5 creative cap; set cap to 6 with zero remaining and no further autonomous edition."
+  ],
+  "remainingIndependentDecisions": [
+    "Primary native WebGPU verification of shader compilation, actual rendering, visibility, and the required size comparison.",
+    "Quality acceptance, full lifetime, ordinary SFX, Safari/iPad, adoption, publication, and main-game integration remain separate and unverified."
+  ],
+  "authorizationBoundaries": [
+    "Do not publish remotely or modify shared catalogs.",
+    "Do not alter frozen R5 files.",
+    "Do not create any follow-up edition or extra creative loop."
+  ],
+  "implementer": {
+    "modelId": "gpt-6-luna",
+    "displayName": "GPT-6-Luna",
+    "responsibility": "Bounded faithful technical implementation and CPU tests under the settled GPT-6.1-Sol design."
+  },
+  "designOwner": {
+    "modelId": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol",
+    "responsibility": "Primary settled creative correction design."
+  },
+  "implementationStatus": "READY for primary native verification; CPU-only acceptance is recorded separately."
+}

@@ -1,0 +1,118 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "acceleration-benefit-sol61",
+  "versionId": "acceleration-benefit-zero-sol61-r6",
+  "entry": "index.html",
+  "effectAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "partial",
+  "technicalReplayStatus": "pending-native-webgpu",
+  "creativeIteration": 6,
+  "creativeIterationCap": 6,
+  "files": {
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "index.html": "5511552f53d8db0dde04af951ecbc187b3de6c91ce2e07751dbf44543ac60291",
+    "gallery-adapter.mjs": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+    "effect.mjs": "be70e90916b2410205803916d62f0362e820204704d8829ea02194506ded5503"
+  },
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "inheritedFrom": "acceleration-benefit-r4-gallery-host-luna-r1",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format-srgb-view",
+    "linearLightPremultipliedAlpha": true,
+    "durationActorMs": 1000,
+    "repeatGapMs": 600,
+    "uniformBytes": 64
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "methods": [
+      "hold(elapsedMs, options)",
+      "setPhase(elapsedMs, options)",
+      "resume()",
+      "replay()"
+    ],
+    "holdRangeActorMs": [
+      0,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "options": [
+      "obs",
+      "sparkle",
+      "source",
+      "main",
+      "bodyResponse",
+      "includeActor",
+      "direction",
+      "reducedMotion"
+    ],
+    "waitsForGpuQueueCompletion": true,
+    "childFrame": true
+  },
+  "validation": {
+    "nodeSyntax": "passed",
+    "cpuTimelineContract": "passed",
+    "sourceCount": 32,
+    "peakSimultaneousSources": 12,
+    "movingCarrierAnchors": 24,
+    "nativeWgslCompilation": "not_run; paired R5/R6 native runner pending",
+    "nativeWebGpuReplay": "pending",
+    "visualQuality": "not_accepted",
+    "normalAudioListening": "not_run",
+    "safariReplay": "unverified",
+    "gameIntegration": "not_run",
+    "publication": "not_run"
+  },
+  "effectImplementationAuthor": "GPT-6-Luna",
+  "derivative": {
+    "sourceVersion": "acceleration-benefit-zero-sol61-r5",
+    "sourcePublicCatalogCommit": "243332b27cad0129d74dd66643414fc902061209",
+    "sourcePublicCatalogSha256": "5036a1d7d253f1060922b3c33d966b055eb948a1c7a2483eb75107da7be2b45b",
+    "sourcePackageManifestSha256": "f36ef5d4b1baef4e3f7ab2ad9509521ed3e4bf4a4fcf37e92128e1473675cccb",
+    "sourceEffectSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+    "sourceManifestSha256": "394416d82f2828e9627f79f6a5e52abcc9e0ba2ad96d3caecba8388342a5f734",
+    "authorizedCorrection": "One user-requested correction: smaller, more numerous sparkles.",
+    "nativeReplayRequiredBeforeFinalSeal": true,
+    "sourceQualityAccepted": false,
+    "publicationAuthorized": false,
+    "currentPublicCatalogCommitAbbreviation": "d4547a8",
+    "currentPublicCatalogSha256": "ae9c9f2e0946d2d23618d2370f2691e27be165222b261f5c79c03192ccb2b0e1",
+    "currentPublicR5EffectSha256": "3d14a0084460d03621fd00e9cdf026bfaee28d04048c08ea245f5144d516b32b",
+    "historicalSeedCatalogCommit": "243332b27cad0129d74dd66643414fc902061209",
+    "historicalSeedCatalogSha256": "5036a1d7d253f1060922b3c33d966b055eb948a1c7a2483eb75107da7be2b45b",
+    "currentCatalogVerification": "Primary verified current R5 effect pin against the exact R5 seed; historical seed snapshot was not treated as current."
+  },
+  "validationArtifacts": {
+    "testScript": {
+      "path": "test-effect-r6.mjs",
+      "sha256": "b8fd06c7b4cb5e2467bc5e1d72b6ff107408d06adab21fb27a696c2fe65f9fa2"
+    },
+    "testResults": {
+      "path": "TEST-RESULTS.json",
+      "sha256": "5cecc5f5a46ee8c1e46e40ca49d1fe1fd71ab053adcf60ed8ca2fb938f171520"
+    },
+    "sourcePins": {
+      "path": "SOURCE-PINS.json",
+      "sha256": "04495463b59cbddad1e80ceb1f759816fef311a2ab68d2942b7f5ee32d2047ff"
+    }
+  },
+  "candidateStatus": "ready-for-separate-native-replay-unsealed"
+}

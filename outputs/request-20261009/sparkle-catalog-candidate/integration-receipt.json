@@ -1,0 +1,52 @@
+{
+  "baseCommit": "d4547a8c54fd71354ad89345cc90b1ff927538f6",
+  "baseTree": "ec1d6d1571be573ae462e5ae5d87d18f08cc3704",
+  "baseCatalogSha256": "ae9c9f2e0946d2d23618d2370f2691e27be165222b261f5c79c03192ccb2b0e1",
+  "baseHtmlSha256": "e939f8f20aee949a08fb5a3a1ca99b282d494874556f50eb6b4a50613a224baf",
+  "candidateCatalogSha256": "fce57bb47ec9f4535b80efe48856c565788192ed772fef29a8c21e9c2a22df86",
+  "candidateHtmlSha256": "c3303301b54b62d45eb5c4b29e5ea0d7e964947a15bc886781248ed83ecf4ad3",
+  "diffScope": "only the two target groups: prepend one R6 version and set that group default; all prior version expressions preserved",
+  "groups": [
+    {
+      "groupId": "acceleration-benefit-sol61",
+      "versionId": "acceleration-benefit-zero-sol61-r6",
+      "manifestSha256": "30c927ff9dd2000c57ef7d1ebf20026ec80e095484e8f41208939d3168cb883f",
+      "evidenceSha256": "ead11055e288d8a71493fd4f3602ccb52c00c80b1dae648fcb708d9510abd011",
+      "dependencies": [
+        "body.png",
+        "effect.mjs",
+        "gallery-adapter.mjs",
+        "index.html"
+      ]
+    },
+    {
+      "groupId": "alchemy-human-transmutation-sol61",
+      "versionId": "human-transmutation-sol61-r6",
+      "manifestSha256": "5d2b0227669016ea7d229623272d714ea98f50bc194576efde2e8b27b590f4e7",
+      "evidenceSha256": "15dbcb72fade603b652de1103a2befb3a47ab1004ceae1527935ddf2df3481da",
+      "dependencies": [
+        "CPU-RESULTS.json",
+        "EDITION-EXCEPTION.json",
+        "SITE-PLACEMENT.json",
+        "SOURCE-PINS.json",
+        "WORK.json",
+        "assets/philia-front-nine-v752.png",
+        "cause.mjs",
+        "core.mjs",
+        "fixture.mjs",
+        "gallery-auth.mjs",
+        "gallery.html",
+        "glints.mjs",
+        "handoff-state.mjs",
+        "human-canvas-fit.mjs",
+        "index.html",
+        "preview.mjs",
+        "sfx.mjs",
+        "shader.mjs",
+        "tests/check-original-alpha.py",
+        "tests/glints.test.mjs"
+      ]
+    }
+  ],
+  "scope": "metadata candidate only; no commit/push/publication; adoption, quality partial, audio/Safari/main-game states remain unaccepted"
+}

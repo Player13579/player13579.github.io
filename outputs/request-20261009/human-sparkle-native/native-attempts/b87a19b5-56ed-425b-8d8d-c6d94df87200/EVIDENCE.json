@@ -1,0 +1,1757 @@
+{
+  "schema": "human-transmutation-native-compare/v1",
+  "attemptId": "b87a19b5-56ed-425b-8d8d-c6d94df87200",
+  "status": "FAIL_NATIVE_OR_SOURCE_PIN",
+  "expectedPins": {
+    "r5Manifest": "2d4eccd78bc79fcb3f27bd99f187b67e2b20c5581e2da106bda8c9bf4b7948b3",
+    "r6Manifest": "5d2b0227669016ea7d229623272d714ea98f50bc194576efde2e8b27b590f4e7",
+    "r6Ready": "8da5863a6a2aef8f3f74be09fc7286ac896db128680e964449ca2ffbab5d54a0",
+    "r6Seal": "e4e13985d608b01f8419655dcfb540f4b6096553a89fd4eb78c5613aaca17c40"
+  },
+  "packageRoot": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-small-many-r6\\public\\sol61-human-transmutation\\r6",
+  "outputRoot": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native",
+  "attemptDir": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200",
+  "browser": {
+    "name": "Microsoft Edge",
+    "executable": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "headless": true,
+    "launchArgs": [
+      "--mute-audio",
+      "--disable-background-networking",
+      "--enable-unsafe-webgpu",
+      "--enable-features=Vulkan",
+      "--ignore-gpu-blocklist"
+    ],
+    "sandboxDisablingFlagSupplied": false,
+    "playwrightVersion": "1.62.1",
+    "actualVersion": "154.0.4258.62"
+  },
+  "viewport": {
+    "width": 980,
+    "height": 480,
+    "deviceScaleFactor": 1
+  },
+  "matrix": {
+    "actorHeights": [
+      64,
+      128
+    ],
+    "phasesMs": [
+      450,
+      650,
+      850,
+      1050
+    ],
+    "unsupportedHeightSkipped": {
+      "height": 192,
+      "reason": "R5 and frozen R6 fixture APIs explicitly accept only H48/H64/H128."
+    }
+  },
+  "r5": {
+    "baseUrl": "https://player13579.github.io/public/sol61-human-transmutation/r5/",
+    "manifestUrl": "https://player13579.github.io/public/sol61-human-transmutation/r5/package-manifest.json?verify=1",
+    "preflight": [
+      {
+        "path": "package-manifest.json",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/package-manifest.json?verify=1",
+        "status": 200,
+        "expectedSha256": "2d4eccd78bc79fcb3f27bd99f187b67e2b20c5581e2da106bda8c9bf4b7948b3",
+        "actualSha256": "2d4eccd78bc79fcb3f27bd99f187b67e2b20c5581e2da106bda8c9bf4b7948b3",
+        "match": true
+      },
+      {
+        "path": "index.html",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/index.html?verify=1",
+        "status": 200,
+        "bytes": 2707,
+        "expectedSha256": "f11544cdb7c1d3ed63606c51622d6855ca05e7a70382c25500afc186dfe55a6a",
+        "actualSha256": "f11544cdb7c1d3ed63606c51622d6855ca05e7a70382c25500afc186dfe55a6a",
+        "match": true
+      },
+      {
+        "path": "preview.mjs",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/preview.mjs?verify=1",
+        "status": 200,
+        "bytes": 7071,
+        "expectedSha256": "0ae9e8dc30c62a18231d8a932955334b58ea9555134d0217d74051071c77e8ab",
+        "actualSha256": "0ae9e8dc30c62a18231d8a932955334b58ea9555134d0217d74051071c77e8ab",
+        "match": true
+      },
+      {
+        "path": "fixture.mjs",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/fixture.mjs?verify=1",
+        "status": 200,
+        "bytes": 1088,
+        "expectedSha256": "0970bd7a8708a5806eef34260cceb4d49b86775a9edf30dc66a9ecbe6177330c",
+        "actualSha256": "0970bd7a8708a5806eef34260cceb4d49b86775a9edf30dc66a9ecbe6177330c",
+        "match": true
+      },
+      {
+        "path": "cause.mjs",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/cause.mjs?verify=1",
+        "status": 200,
+        "bytes": 4130,
+        "expectedSha256": "fa0ccf28fff3126532de1ae05e05d2a5941485a9f0e8ceee4bfa5664a002f509",
+        "actualSha256": "fa0ccf28fff3126532de1ae05e05d2a5941485a9f0e8ceee4bfa5664a002f509",
+        "match": true
+      },
+      {
+        "path": "core.mjs",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/core.mjs?verify=1",
+        "status": 200,
+        "bytes": 10810,
+        "expectedSha256": "b9fc1df7673f262b7f36697d6ad49af5186e44320b9b21c65adcaa51624a1bc6",
+        "actualSha256": "b9fc1df7673f262b7f36697d6ad49af5186e44320b9b21c65adcaa51624a1bc6",
+        "match": true
+      },
+      {
+        "path": "shader.mjs",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/shader.mjs?verify=1",
+        "status": 200,
+        "bytes": 9102,
+        "expectedSha256": "63219a5fbb13d4c77d3060f29ff537fe5b10b05c45de46930a6262d804db6af1",
+        "actualSha256": "63219a5fbb13d4c77d3060f29ff537fe5b10b05c45de46930a6262d804db6af1",
+        "match": true
+      },
+      {
+        "path": "glints.mjs",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/glints.mjs?verify=1",
+        "status": 200,
+        "bytes": 2267,
+        "expectedSha256": "e9040286ee5aae87f95a3ae5616ce91ffff0f084134cda195e0378bea7611a57",
+        "actualSha256": "e9040286ee5aae87f95a3ae5616ce91ffff0f084134cda195e0378bea7611a57",
+        "match": true
+      },
+      {
+        "path": "sfx.mjs",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/sfx.mjs?verify=1",
+        "status": 200,
+        "bytes": 3240,
+        "expectedSha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+        "actualSha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+        "match": true
+      },
+      {
+        "path": "handoff-state.mjs",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/handoff-state.mjs?verify=1",
+        "status": 200,
+        "bytes": 1675,
+        "expectedSha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+        "actualSha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+        "match": true
+      },
+      {
+        "path": "assets/philia-front-nine-v752.png",
+        "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/assets/philia-front-nine-v752.png?verify=1",
+        "status": 200,
+        "bytes": 399216,
+        "expectedSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "actualSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "match": true
+      }
+    ],
+    "requests": [],
+    "captures": [
+      {
+        "label": "r5-h64-t450",
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200\\r5-h64-t450.png",
+        "sha256": "8d4e82b01e3eb9c8f4adaee2f11a0b3c42b7aef105342011ef148963e818f192",
+        "bytes": 6861,
+        "png": {
+          "width": 980,
+          "height": 480
+        },
+        "phaseMs": 450,
+        "requestedActorHeight": 64,
+        "actualActorHeight": 64,
+        "receipt": {
+          "version": "human-transmutation-sol61-r5",
+          "causeId": "human-r5-fixture-1",
+          "targetId": "revived-philia",
+          "scopeId": "human-r5-private-preview",
+          "generation": 0,
+          "elapsedMs": 450,
+          "phaseMs": 450,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 453.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            980,
+            480
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 1,
+          "submitted": 4,
+          "completed": 4,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "glintSource": "actual-alpha-bound-fixation-MRT",
+          "glintRayAngleRadians": 0.29670597283903605,
+          "queueCompleted": true
+        },
+        "glints": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 450,
+            "phaseMs": 450,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 11,
+            "completed": 11,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-glint-source",
+          "nonzeroRGB": 87,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 450,
+            "phaseMs": 450,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 11,
+            "completed": 11,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 1112,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "label": "r5-h64-t650",
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200\\r5-h64-t650.png",
+        "sha256": "8f20a00f83e209de64249553eab50a56d269d97d1d9e3f47916fe1219c2bb9ee",
+        "bytes": 7895,
+        "png": {
+          "width": 980,
+          "height": 480
+        },
+        "phaseMs": 650,
+        "requestedActorHeight": 64,
+        "actualActorHeight": 64,
+        "receipt": {
+          "version": "human-transmutation-sol61-r5",
+          "causeId": "human-r5-fixture-1",
+          "targetId": "revived-philia",
+          "scopeId": "human-r5-private-preview",
+          "generation": 0,
+          "elapsedMs": 650,
+          "phaseMs": 650,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 453.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            980,
+            480
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 1,
+          "submitted": 14,
+          "completed": 14,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "glintSource": "actual-alpha-bound-fixation-MRT",
+          "glintRayAngleRadians": 0.29670597283903605,
+          "queueCompleted": true
+        },
+        "glints": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 650,
+            "phaseMs": 650,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 19,
+            "completed": 19,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-glint-source",
+          "nonzeroRGB": 78,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 650,
+            "phaseMs": 650,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 19,
+            "completed": 19,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 1353,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "label": "r5-h64-t850",
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200\\r5-h64-t850.png",
+        "sha256": "9fa350916b181ff8d0bca1a199a7dd1b87137ca52a94186d5956603c54e1f3a7",
+        "bytes": 7887,
+        "png": {
+          "width": 980,
+          "height": 480
+        },
+        "phaseMs": 850,
+        "requestedActorHeight": 64,
+        "actualActorHeight": 64,
+        "receipt": {
+          "version": "human-transmutation-sol61-r5",
+          "causeId": "human-r5-fixture-1",
+          "targetId": "revived-philia",
+          "scopeId": "human-r5-private-preview",
+          "generation": 0,
+          "elapsedMs": 850,
+          "phaseMs": 850,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 453.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            980,
+            480
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 1,
+          "submitted": 21,
+          "completed": 21,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "glintSource": "actual-alpha-bound-fixation-MRT",
+          "glintRayAngleRadians": 0.29670597283903605,
+          "queueCompleted": true
+        },
+        "glints": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 850,
+            "phaseMs": 850,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 26,
+            "completed": 26,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-glint-source",
+          "nonzeroRGB": 0,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": true,
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 850,
+            "phaseMs": 850,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 26,
+            "completed": 26,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 1613,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "label": "r5-h64-t1050",
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200\\r5-h64-t1050.png",
+        "sha256": "b38c023f79bbcde5e2531c933e4e64a35bcf1068999303a9286168985f20dd29",
+        "bytes": 7812,
+        "png": {
+          "width": 980,
+          "height": 480
+        },
+        "phaseMs": 1050,
+        "requestedActorHeight": 64,
+        "actualActorHeight": 64,
+        "receipt": {
+          "version": "human-transmutation-sol61-r5",
+          "causeId": "human-r5-fixture-1",
+          "targetId": "revived-philia",
+          "scopeId": "human-r5-private-preview",
+          "generation": 0,
+          "elapsedMs": 1050,
+          "phaseMs": 1050,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 453.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            980,
+            480
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 1,
+          "submitted": 29,
+          "completed": 29,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "glintSource": "actual-alpha-bound-fixation-MRT",
+          "glintRayAngleRadians": 0.29670597283903605,
+          "queueCompleted": true
+        },
+        "glints": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 1050,
+            "phaseMs": 1050,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 36,
+            "completed": 36,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-glint-source",
+          "nonzeroRGB": 0,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": true,
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 1050,
+            "phaseMs": 1050,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 36,
+            "completed": 36,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 1582,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "label": "r5-h128-t450",
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200\\r5-h128-t450.png",
+        "sha256": "6818f64c7c9b1928d6df2d017a51e2290f10e0dd6e837c5f4de972543b6cec4e",
+        "bytes": 16625,
+        "png": {
+          "width": 980,
+          "height": 480
+        },
+        "phaseMs": 450,
+        "requestedActorHeight": 128,
+        "actualActorHeight": 128,
+        "receipt": {
+          "version": "human-transmutation-sol61-r5",
+          "causeId": "human-r5-fixture-1",
+          "targetId": "revived-philia",
+          "scopeId": "human-r5-private-preview",
+          "generation": 0,
+          "elapsedMs": 450,
+          "phaseMs": 450,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 128,
+          "spriteRect": {
+            "x": 417.1822222222222,
+            "y": 167.46666666666667,
+            "width": 145.63555555555556,
+            "height": 145.63555555555556
+          },
+          "physicalExtent": [
+            980,
+            480
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 1,
+          "submitted": 39,
+          "completed": 39,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "glintSource": "actual-alpha-bound-fixation-MRT",
+          "glintRayAngleRadians": 0.29670597283903605,
+          "queueCompleted": true
+        },
+        "glints": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 450,
+            "phaseMs": 450,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 417.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 46,
+            "completed": 46,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-glint-source",
+          "nonzeroRGB": 329,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 450,
+            "phaseMs": 450,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 417.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 46,
+            "completed": 46,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 2254,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "label": "r5-h128-t650",
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200\\r5-h128-t650.png",
+        "sha256": "1a07f49d4fee7ed6b3fa7d2be9698010580cf355984044a1fcd58dd17417cf75",
+        "bytes": 19816,
+        "png": {
+          "width": 980,
+          "height": 480
+        },
+        "phaseMs": 650,
+        "requestedActorHeight": 128,
+        "actualActorHeight": 128,
+        "receipt": {
+          "version": "human-transmutation-sol61-r5",
+          "causeId": "human-r5-fixture-1",
+          "targetId": "revived-philia",
+          "scopeId": "human-r5-private-preview",
+          "generation": 0,
+          "elapsedMs": 650,
+          "phaseMs": 650,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 128,
+          "spriteRect": {
+            "x": 417.1822222222222,
+            "y": 167.46666666666667,
+            "width": 145.63555555555556,
+            "height": 145.63555555555556
+          },
+          "physicalExtent": [
+            980,
+            480
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 1,
+          "submitted": 48,
+          "completed": 48,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "glintSource": "actual-alpha-bound-fixation-MRT",
+          "glintRayAngleRadians": 0.29670597283903605,
+          "queueCompleted": true
+        },
+        "glints": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 650,
+            "phaseMs": 650,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 417.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 54,
+            "completed": 54,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-glint-source",
+          "nonzeroRGB": 339,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 650,
+            "phaseMs": 650,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 417.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 54,
+            "completed": 54,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 2894,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "label": "r5-h128-t850",
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200\\r5-h128-t850.png",
+        "sha256": "7dcee9140645550b13a89e036b0ec1cf4ba0b98a2fa486f5729048cd12176a64",
+        "bytes": 19707,
+        "png": {
+          "width": 980,
+          "height": 480
+        },
+        "phaseMs": 850,
+        "requestedActorHeight": 128,
+        "actualActorHeight": 128,
+        "receipt": {
+          "version": "human-transmutation-sol61-r5",
+          "causeId": "human-r5-fixture-1",
+          "targetId": "revived-philia",
+          "scopeId": "human-r5-private-preview",
+          "generation": 0,
+          "elapsedMs": 850,
+          "phaseMs": 850,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 128,
+          "spriteRect": {
+            "x": 417.1822222222222,
+            "y": 167.46666666666667,
+            "width": 145.63555555555556,
+            "height": 145.63555555555556
+          },
+          "physicalExtent": [
+            980,
+            480
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 1,
+          "submitted": 57,
+          "completed": 57,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "glintSource": "actual-alpha-bound-fixation-MRT",
+          "glintRayAngleRadians": 0.29670597283903605,
+          "queueCompleted": true
+        },
+        "glints": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 850,
+            "phaseMs": 850,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 417.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 63,
+            "completed": 63,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-glint-source",
+          "nonzeroRGB": 0,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": true,
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 850,
+            "phaseMs": 850,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 417.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 63,
+            "completed": 63,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 6435,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "label": "r5-h128-t1050",
+        "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200\\r5-h128-t1050.png",
+        "sha256": "c8d4b97a18542dbd7c08f98e668c67151cbdda866d558ce36c4cf8ae75538e3c",
+        "bytes": 19456,
+        "png": {
+          "width": 980,
+          "height": 480
+        },
+        "phaseMs": 1050,
+        "requestedActorHeight": 128,
+        "actualActorHeight": 128,
+        "receipt": {
+          "version": "human-transmutation-sol61-r5",
+          "causeId": "human-r5-fixture-1",
+          "targetId": "revived-philia",
+          "scopeId": "human-r5-private-preview",
+          "generation": 0,
+          "elapsedMs": 1050,
+          "phaseMs": 1050,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 128,
+          "spriteRect": {
+            "x": 417.1822222222222,
+            "y": 167.46666666666667,
+            "width": 145.63555555555556,
+            "height": 145.63555555555556
+          },
+          "physicalExtent": [
+            980,
+            480
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 1,
+          "submitted": 65,
+          "completed": 65,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "glintSource": "actual-alpha-bound-fixation-MRT",
+          "glintRayAngleRadians": 0.29670597283903605,
+          "queueCompleted": true
+        },
+        "glints": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 1050,
+            "phaseMs": 1050,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 417.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 71,
+            "completed": 71,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-glint-source",
+          "nonzeroRGB": 0,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": true,
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r5",
+            "causeId": "human-r5-fixture-1",
+            "targetId": "revived-philia",
+            "scopeId": "human-r5-private-preview",
+            "generation": 0,
+            "elapsedMs": 1050,
+            "phaseMs": 1050,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 417.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              980,
+              480
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 1,
+            "submitted": 71,
+            "completed": 71,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "glintSource": "actual-alpha-bound-fixation-MRT",
+            "glintRayAngleRadians": 0.29670597283903605,
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 6265,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      }
+    ],
+    "versionId": "human-transmutation-sol61-r5",
+    "runtimeClosure": [
+      "index.html",
+      "preview.mjs",
+      "fixture.mjs",
+      "cause.mjs",
+      "core.mjs",
+      "shader.mjs",
+      "glints.mjs",
+      "sfx.mjs",
+      "handoff-state.mjs",
+      "assets/philia-front-nine-v752.png"
+    ],
+    "startup": {
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/r5/index.html?verify=1&embed=1&height=64",
+      "verifyQuery": "1",
+      "embedQuery": "1",
+      "title": "人体生成 · Sol r5",
+      "readyGlobal": true,
+      "state": {
+        "ready": true,
+        "fatal": null,
+        "verify": true,
+        "running": true,
+        "age": 37.69999998807907,
+        "causeId": "human-r5-fixture-1",
+        "generation": 0,
+        "loops": 0,
+        "receipt": {
+          "version": "human-transmutation-sol61-r5",
+          "causeId": "human-r5-fixture-1",
+          "targetId": "revived-philia",
+          "scopeId": "human-r5-private-preview",
+          "generation": 0,
+          "elapsedMs": 0,
+          "phaseMs": 0,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 453.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            980,
+            480
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 1,
+          "submitted": 1,
+          "completed": 1,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "glintSource": "actual-alpha-bound-fixation-MRT",
+          "glintRayAngleRadians": 0.29670597283903605,
+          "queueCompleted": true
+        },
+        "audio": {
+          "verify": true,
+          "allocated": false,
+          "playing": false,
+          "causeId": null,
+          "disposed": false
+        },
+        "renderer": {
+          "submitted": 2,
+          "completed": 1,
+          "inFlight": true,
+          "disposed": false,
+          "extent": "980x480"
+        },
+        "compilationMessages": []
+      },
+      "canvas": {
+        "cssWidth": 980,
+        "cssHeight": 480,
+        "context": "webgpu",
+        "pixelWidth": 980,
+        "pixelHeight": 480
+      },
+      "observation": {
+        "adapters": [
+          {
+            "info": {
+              "vendor": "intel",
+              "architecture": "gen-12lp",
+              "device": null,
+              "description": null
+            },
+            "isFallbackAdapter": null
+          }
+        ],
+        "devices": [
+          {
+            "label": null
+          }
+        ],
+        "deviceErrors": [],
+        "deviceLosses": [],
+        "validationErrors": [],
+        "shaderModules": [],
+        "queue": [
+          {
+            "started": 2293.600000023842,
+            "settled": true,
+            "rejected": null,
+            "completedAt": 2327.600000023842
+          },
+          {
+            "started": 2330.399999976158,
+            "settled": false,
+            "rejected": null
+          }
+        ],
+        "instrumentationErrors": []
+      }
+    }
+  },
+  "r6": {
+    "localUrl": "http://127.0.0.1:62723/index.html?verify=1&embed=1&height=64",
+    "preflight": [
+      {
+        "path": "gallery.html",
+        "status": 200,
+        "bytes": 6450,
+        "expectedSha256": "f3352ac2c3c3949acdf06091e42df33450d93c2527772b8e3f37c92f8247b547",
+        "actualSha256": "f3352ac2c3c3949acdf06091e42df33450d93c2527772b8e3f37c92f8247b547",
+        "match": true
+      },
+      {
+        "path": "human-canvas-fit.mjs",
+        "status": 200,
+        "bytes": 4662,
+        "expectedSha256": "12b5e669a7bd9751da0c511b613e8d76f801acea045b815f4b3b4e50636f52b3",
+        "actualSha256": "12b5e669a7bd9751da0c511b613e8d76f801acea045b815f4b3b4e50636f52b3",
+        "match": true
+      },
+      {
+        "path": "gallery-auth.mjs",
+        "status": 200,
+        "bytes": 692,
+        "expectedSha256": "211f6784b78d94a287965956d3767d9f2f799e253b923c25580a8df4e4b6146a",
+        "actualSha256": "211f6784b78d94a287965956d3767d9f2f799e253b923c25580a8df4e4b6146a",
+        "match": true
+      },
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 2757,
+        "expectedSha256": "3566f4a03e211cff185b757fb300861404e19511baa0fc81667283a71272a7c6",
+        "actualSha256": "3566f4a03e211cff185b757fb300861404e19511baa0fc81667283a71272a7c6",
+        "match": true
+      },
+      {
+        "path": "preview.mjs",
+        "status": 200,
+        "bytes": 7071,
+        "expectedSha256": "5707601031844c13d7070d8bf305713e55d27ef5a6f41ad16c5bf3c510909a94",
+        "actualSha256": "5707601031844c13d7070d8bf305713e55d27ef5a6f41ad16c5bf3c510909a94",
+        "match": true
+      },
+      {
+        "path": "fixture.mjs",
+        "status": 200,
+        "bytes": 1088,
+        "expectedSha256": "ab9255309b8de5e42f2bc3ed7cdbd56f74d8582265c719b99197338c03047ffb",
+        "actualSha256": "ab9255309b8de5e42f2bc3ed7cdbd56f74d8582265c719b99197338c03047ffb",
+        "match": true
+      },
+      {
+        "path": "cause.mjs",
+        "status": 200,
+        "bytes": 4130,
+        "expectedSha256": "312bb4ec7ccd23b87e655f0c5dee1f6c5683e091105176fa6f09ecc9a3bc4710",
+        "actualSha256": "312bb4ec7ccd23b87e655f0c5dee1f6c5683e091105176fa6f09ecc9a3bc4710",
+        "match": true
+      },
+      {
+        "path": "core.mjs",
+        "status": 200,
+        "bytes": 10810,
+        "expectedSha256": "2f393baaa80dfe7d6f7d2d4e9d998eb8e65000150256fe56941ffdcfeb6a9813",
+        "actualSha256": "2f393baaa80dfe7d6f7d2d4e9d998eb8e65000150256fe56941ffdcfeb6a9813",
+        "match": true
+      },
+      {
+        "path": "shader.mjs",
+        "status": 200,
+        "bytes": 9700,
+        "expectedSha256": "1e159c22f021b06fba738b081cc2e9425cfe6e7db10fe1d8b3aed15194b41b2e",
+        "actualSha256": "1e159c22f021b06fba738b081cc2e9425cfe6e7db10fe1d8b3aed15194b41b2e",
+        "match": true
+      },
+      {
+        "path": "glints.mjs",
+        "status": 200,
+        "bytes": 4849,
+        "expectedSha256": "462517178500ddfc615e3a509067bb4d532ffd7f14c5d8c7f6cf223c877f521b",
+        "actualSha256": "462517178500ddfc615e3a509067bb4d532ffd7f14c5d8c7f6cf223c877f521b",
+        "match": true
+      },
+      {
+        "path": "sfx.mjs",
+        "status": 200,
+        "bytes": 3240,
+        "expectedSha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+        "actualSha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+        "match": true
+      },
+      {
+        "path": "handoff-state.mjs",
+        "status": 200,
+        "bytes": 1675,
+        "expectedSha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+        "actualSha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+        "match": true
+      },
+      {
+        "path": "assets/philia-front-nine-v752.png",
+        "status": 200,
+        "bytes": 399216,
+        "expectedSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "actualSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "match": true
+      }
+    ],
+    "requests": [
+      {
+        "path": "gallery.html",
+        "status": 200,
+        "bytes": 6450,
+        "actualSha256": "f3352ac2c3c3949acdf06091e42df33450d93c2527772b8e3f37c92f8247b547",
+        "expectedSha256": "f3352ac2c3c3949acdf06091e42df33450d93c2527772b8e3f37c92f8247b547",
+        "match": true
+      },
+      {
+        "path": "human-canvas-fit.mjs",
+        "status": 200,
+        "bytes": 4662,
+        "actualSha256": "12b5e669a7bd9751da0c511b613e8d76f801acea045b815f4b3b4e50636f52b3",
+        "expectedSha256": "12b5e669a7bd9751da0c511b613e8d76f801acea045b815f4b3b4e50636f52b3",
+        "match": true
+      },
+      {
+        "path": "gallery-auth.mjs",
+        "status": 200,
+        "bytes": 692,
+        "actualSha256": "211f6784b78d94a287965956d3767d9f2f799e253b923c25580a8df4e4b6146a",
+        "expectedSha256": "211f6784b78d94a287965956d3767d9f2f799e253b923c25580a8df4e4b6146a",
+        "match": true
+      },
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 2757,
+        "actualSha256": "3566f4a03e211cff185b757fb300861404e19511baa0fc81667283a71272a7c6",
+        "expectedSha256": "3566f4a03e211cff185b757fb300861404e19511baa0fc81667283a71272a7c6",
+        "match": true
+      },
+      {
+        "path": "preview.mjs",
+        "status": 200,
+        "bytes": 7071,
+        "actualSha256": "5707601031844c13d7070d8bf305713e55d27ef5a6f41ad16c5bf3c510909a94",
+        "expectedSha256": "5707601031844c13d7070d8bf305713e55d27ef5a6f41ad16c5bf3c510909a94",
+        "match": true
+      },
+      {
+        "path": "fixture.mjs",
+        "status": 200,
+        "bytes": 1088,
+        "actualSha256": "ab9255309b8de5e42f2bc3ed7cdbd56f74d8582265c719b99197338c03047ffb",
+        "expectedSha256": "ab9255309b8de5e42f2bc3ed7cdbd56f74d8582265c719b99197338c03047ffb",
+        "match": true
+      },
+      {
+        "path": "cause.mjs",
+        "status": 200,
+        "bytes": 4130,
+        "actualSha256": "312bb4ec7ccd23b87e655f0c5dee1f6c5683e091105176fa6f09ecc9a3bc4710",
+        "expectedSha256": "312bb4ec7ccd23b87e655f0c5dee1f6c5683e091105176fa6f09ecc9a3bc4710",
+        "match": true
+      },
+      {
+        "path": "core.mjs",
+        "status": 200,
+        "bytes": 10810,
+        "actualSha256": "2f393baaa80dfe7d6f7d2d4e9d998eb8e65000150256fe56941ffdcfeb6a9813",
+        "expectedSha256": "2f393baaa80dfe7d6f7d2d4e9d998eb8e65000150256fe56941ffdcfeb6a9813",
+        "match": true
+      },
+      {
+        "path": "shader.mjs",
+        "status": 200,
+        "bytes": 9700,
+        "actualSha256": "1e159c22f021b06fba738b081cc2e9425cfe6e7db10fe1d8b3aed15194b41b2e",
+        "expectedSha256": "1e159c22f021b06fba738b081cc2e9425cfe6e7db10fe1d8b3aed15194b41b2e",
+        "match": true
+      },
+      {
+        "path": "glints.mjs",
+        "status": 200,
+        "bytes": 4849,
+        "actualSha256": "462517178500ddfc615e3a509067bb4d532ffd7f14c5d8c7f6cf223c877f521b",
+        "expectedSha256": "462517178500ddfc615e3a509067bb4d532ffd7f14c5d8c7f6cf223c877f521b",
+        "match": true
+      },
+      {
+        "path": "sfx.mjs",
+        "status": 200,
+        "bytes": 3240,
+        "actualSha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+        "expectedSha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+        "match": true
+      },
+      {
+        "path": "handoff-state.mjs",
+        "status": 200,
+        "bytes": 1675,
+        "actualSha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+        "expectedSha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+        "match": true
+      },
+      {
+        "path": "assets/philia-front-nine-v752.png",
+        "status": 200,
+        "bytes": 399216,
+        "actualSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "expectedSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "match": true
+      }
+    ],
+    "captures": [],
+    "versionId": "human-transmutation-sol61-r6",
+    "manifestSha256": "5d2b0227669016ea7d229623272d714ea98f50bc194576efde2e8b27b590f4e7",
+    "readySha256": "8da5863a6a2aef8f3f74be09fc7286ac896db128680e964449ca2ffbab5d54a0",
+    "sealSha256": "e4e13985d608b01f8419655dcfb540f4b6096553a89fd4eb78c5613aaca17c40",
+    "runtimeClosure": [
+      "gallery.html",
+      "human-canvas-fit.mjs",
+      "gallery-auth.mjs",
+      "index.html",
+      "preview.mjs",
+      "fixture.mjs",
+      "cause.mjs",
+      "core.mjs",
+      "shader.mjs",
+      "glints.mjs",
+      "sfx.mjs",
+      "handoff-state.mjs",
+      "assets/philia-front-nine-v752.png"
+    ],
+    "fixtureHeights": [
+      48,
+      64,
+      128
+    ]
+  },
+  "browserErrors": [],
+  "pageErrors": [],
+  "gpuErrors": [],
+  "validationErrors": [],
+  "queue": [],
+  "replay": {},
+  "cleanup": {
+    "pageClosed": true,
+    "contextClosed": true,
+    "browserConnectedAfterClose": false,
+    "localServerClosed": true
+  },
+  "startedAt": "2026-10-08T18:58:01.573Z",
+  "localHost": {
+    "address": "http://127.0.0.1:62723",
+    "owned": true,
+    "routeScope": "sealed R6 runtimeClosure only"
+  },
+  "sourcePreflight": {
+    "r5Passed": true,
+    "r6Passed": true,
+    "r5RuntimeFiles": 10,
+    "r6RuntimeFiles": 13
+  },
+  "preBrowserHttpSourcePinAt": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-attempts\\b87a19b5-56ed-425b-8d8d-c6d94df87200\\PRE-BROWSER-PREFLIGHT.json",
+  "error": {
+    "name": "Error",
+    "message": "r5 browser-loaded runtime responses do not match pinned bytes",
+    "stack": "Error: r5 browser-loaded runtime responses do not match pinned bytes\n    at assert (C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-verify.cjs:28:61)\n    at runVersion (C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-verify.cjs:333:3)\n    at async main (C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-sparkle-native\\native-verify.cjs:360:5)"
+  },
+  "finishedAt": "2026-10-08T18:58:09.292Z"
+}

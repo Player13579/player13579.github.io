@@ -1,0 +1,295 @@
+{
+  "schema": "human-transmutation-r6-sparkle-correction-package/v1",
+  "versionId": "human-transmutation-sol61-r6",
+  "groupId": "alchemy-human-transmutation-sol61",
+  "catalogVersionId": "human-transmutation-sol61-r6",
+  "defaultVersionId": "human-transmutation-sol61-r6",
+  "edition": {
+    "creativeEdition": 6,
+    "creativeLimit": 6,
+    "creativeRemaining": 0,
+    "exception": "One user-authorized correction after R5 reached 5/5; this R6 corrects only reported large sparse fixation glints. No further autonomous edition."
+  },
+  "source": {
+    "parentVersionId": "human-transmutation-sol61-r5",
+    "r5ManifestSha256": "2d4eccd78bc79fcb3f27bd99f187b67e2b20c5581e2da106bda8c9bf4b7948b3",
+    "r5SourceSealSha256": "238bbbb3b8d671521aeed0741454174fa92253f9c0c20b3fdb5b342f8c06dffc",
+    "r5ActualSourceExecutionModel": "UNEXPOSED",
+    "r5RequestedCreativeModel": "GPT-6.1-Sol",
+    "originalSourceAndRenderer": "R5 bytes and original source remain frozen at their verified R5 URLs; R6 package records changed-file parent hashes."
+  },
+  "provenance": {
+    "creativeDesignOwner": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol",
+      "contribution": "Primary settled creative correction design."
+    },
+    "technicalImplementer": {
+      "modelId": "gpt-6-luna",
+      "displayName": "GPT-6-Luna",
+      "contribution": "Bounded implementation, package closure, and CPU tests."
+    },
+    "historicalSourceAttribution": "R5 actual execution remains UNEXPOSED in the source manifest; this R6 does not retroactively assign R5 work."
+  },
+  "runtime": {
+    "entry": "gallery.html",
+    "normalCatalogURL": "public/sol61-human-transmutation/r6/gallery.html?embed=1&galleryVersionId=human-transmutation-sol61-r6&galleryAutoLoop=1",
+    "versionQueryImplemented": "galleryVersionId=human-transmutation-sol61-r6; shell owner, preview cause VERSION_ID and labels use R6.",
+    "verificationQuery": "The existing gallery shell passes verify only when the parent query contains it; verification mode remains muted.",
+    "canvasCssExtent": [
+      980,
+      480
+    ],
+    "targetId": "revived-philia",
+    "attachments": [
+      "scene",
+      "emission",
+      "bloom-x",
+      "bloom-y",
+      "fixation-glint-source"
+    ],
+    "worldMrtOutputs": 3,
+    "submittedRenderPasses": 4,
+    "runtimeClosure": [
+      "gallery.html",
+      "human-canvas-fit.mjs",
+      "gallery-auth.mjs",
+      "index.html",
+      "preview.mjs",
+      "fixture.mjs",
+      "cause.mjs",
+      "core.mjs",
+      "shader.mjs",
+      "glints.mjs",
+      "sfx.mjs",
+      "handoff-state.mjs",
+      "assets/philia-front-nine-v752.png"
+    ],
+    "sourceR5ManifestRuntimeClosure": [
+      "index.html",
+      "preview.mjs",
+      "fixture.mjs",
+      "cause.mjs",
+      "core.mjs",
+      "shader.mjs",
+      "glints.mjs",
+      "sfx.mjs",
+      "handoff-state.mjs",
+      "assets/philia-front-nine-v752.png"
+    ],
+    "rendererScope": "Keep the R5 WebGPU renderer and material reconstruction. R6 changes the fixation-site list, per-site stagger, zero-pulse sample/exponent gates, and R6 version labels only."
+  },
+  "effectCorrection": {
+    "anchorCount": 5,
+    "sitesPerAnchor": 5,
+    "siteCount": 25,
+    "alphaThresholdExclusive": 0.85,
+    "preserved": [
+      "original silhouette and source PNG bytes",
+      "opaque full-body binding",
+      "17 degree ray axis",
+      "source radiance 7.5",
+      "ray gain 1.9",
+      "formation, flight, arrival, color and timing behavior outside the single glint correction",
+      "SFX and native fixture heights H48/H64/H128"
+    ],
+    "r6Optics": {
+      "sourceRadiusH64": 0.45,
+      "rayLengthH64": 2.2,
+      "secondaryRayLengthH64": 1.65,
+      "rayWidthH64": 0.22,
+      "riseMs": 35,
+      "pulseEnvelopeMs": 150,
+      "endAfterArrivalMs": 174,
+      "staggerMs": [
+        0,
+        11,
+        22,
+        33,
+        44
+      ]
+    }
+  },
+  "status": {
+    "cpuTests": "passed",
+    "shaderCompilation": "pending primary native WebGPU verification",
+    "nativeVisualAcceptance": "pending",
+    "qualityAcceptance": "pending",
+    "adoption": "not adopted",
+    "publication": "not published",
+    "ordinarySfxListening": "not run",
+    "safariIpad": "unverified",
+    "mainGameIntegration": "not connected"
+  },
+  "files": [
+    {
+      "path": "gallery.html",
+      "bytes": 6450,
+      "sha256": "f3352ac2c3c3949acdf06091e42df33450d93c2527772b8e3f37c92f8247b547",
+      "sourcePath": "gallery.html",
+      "sourceR5Sha256": "adb14e82a2cf29c6045cc0999dd44a212d18c125d6db60243965efa089f1f649",
+      "parentContentPreserved": false,
+      "changeReason": "R6 private version label, 25-site point-glint implementation, or route label change; see WORK.json."
+    },
+    {
+      "path": "human-canvas-fit.mjs",
+      "bytes": 4662,
+      "sha256": "12b5e669a7bd9751da0c511b613e8d76f801acea045b815f4b3b4e50636f52b3",
+      "sourcePath": "human-canvas-fit.mjs",
+      "sourceR5Sha256": "12b5e669a7bd9751da0c511b613e8d76f801acea045b815f4b3b4e50636f52b3",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "gallery-auth.mjs",
+      "bytes": 692,
+      "sha256": "211f6784b78d94a287965956d3767d9f2f799e253b923c25580a8df4e4b6146a",
+      "sourcePath": "gallery-auth.mjs",
+      "sourceR5Sha256": "211f6784b78d94a287965956d3767d9f2f799e253b923c25580a8df4e4b6146a",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 2757,
+      "sha256": "3566f4a03e211cff185b757fb300861404e19511baa0fc81667283a71272a7c6",
+      "sourcePath": "index.html",
+      "sourceR5Sha256": "f11544cdb7c1d3ed63606c51622d6855ca05e7a70382c25500afc186dfe55a6a",
+      "parentContentPreserved": false,
+      "changeReason": "R6 private version label, 25-site point-glint implementation, or route label change; see WORK.json."
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 7071,
+      "sha256": "5707601031844c13d7070d8bf305713e55d27ef5a6f41ad16c5bf3c510909a94",
+      "sourcePath": "preview.mjs",
+      "sourceR5Sha256": "0ae9e8dc30c62a18231d8a932955334b58ea9555134d0217d74051071c77e8ab",
+      "parentContentPreserved": false,
+      "changeReason": "R6 private version label, 25-site point-glint implementation, or route label change; see WORK.json."
+    },
+    {
+      "path": "fixture.mjs",
+      "bytes": 1088,
+      "sha256": "ab9255309b8de5e42f2bc3ed7cdbd56f74d8582265c719b99197338c03047ffb",
+      "sourcePath": "fixture.mjs",
+      "sourceR5Sha256": "0970bd7a8708a5806eef34260cceb4d49b86775a9edf30dc66a9ecbe6177330c",
+      "parentContentPreserved": false,
+      "changeReason": "R6 private version label, 25-site point-glint implementation, or route label change; see WORK.json."
+    },
+    {
+      "path": "cause.mjs",
+      "bytes": 4130,
+      "sha256": "312bb4ec7ccd23b87e655f0c5dee1f6c5683e091105176fa6f09ecc9a3bc4710",
+      "sourcePath": "cause.mjs",
+      "sourceR5Sha256": "fa0ccf28fff3126532de1ae05e05d2a5941485a9f0e8ceee4bfa5664a002f509",
+      "parentContentPreserved": false,
+      "changeReason": "R6 private version label, 25-site point-glint implementation, or route label change; see WORK.json."
+    },
+    {
+      "path": "core.mjs",
+      "bytes": 10810,
+      "sha256": "2f393baaa80dfe7d6f7d2d4e9d998eb8e65000150256fe56941ffdcfeb6a9813",
+      "sourcePath": "core.mjs",
+      "sourceR5Sha256": "b9fc1df7673f262b7f36697d6ad49af5186e44320b9b21c65adcaa51624a1bc6",
+      "parentContentPreserved": false,
+      "changeReason": "R6 private version label, 25-site point-glint implementation, or route label change; see WORK.json."
+    },
+    {
+      "path": "shader.mjs",
+      "bytes": 9700,
+      "sha256": "1e159c22f021b06fba738b081cc2e9425cfe6e7db10fe1d8b3aed15194b41b2e",
+      "sourcePath": "shader.mjs",
+      "sourceR5Sha256": "63219a5fbb13d4c77d3060f29ff537fe5b10b05c45de46930a6262d804db6af1",
+      "parentContentPreserved": false,
+      "changeReason": "R6 private version label, 25-site point-glint implementation, or route label change; see WORK.json."
+    },
+    {
+      "path": "glints.mjs",
+      "bytes": 4849,
+      "sha256": "462517178500ddfc615e3a509067bb4d532ffd7f14c5d8c7f6cf223c877f521b",
+      "sourcePath": "glints.mjs",
+      "sourceR5Sha256": "e9040286ee5aae87f95a3ae5616ce91ffff0f084134cda195e0378bea7611a57",
+      "parentContentPreserved": false,
+      "changeReason": "R6 private version label, 25-site point-glint implementation, or route label change; see WORK.json."
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 3240,
+      "sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+      "sourcePath": "sfx.mjs",
+      "sourceR5Sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "handoff-state.mjs",
+      "bytes": 1675,
+      "sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+      "sourcePath": "handoff-state.mjs",
+      "sourceR5Sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "assets/philia-front-nine-v752.png",
+      "bytes": 399216,
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "sourcePath": "assets/philia-front-nine-v752.png",
+      "sourceR5Sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "SITE-PLACEMENT.json",
+      "bytes": 7339,
+      "sha256": "b4d0ead1fd1652c9fb20823ce6ad7df567ed2dc0ed6fd685508ed63808adff8b",
+      "sourcePath": null,
+      "sourceR5Sha256": null,
+      "role": "R6 implementation/test/acceptance evidence"
+    },
+    {
+      "path": "SOURCE-PINS.json",
+      "bytes": 4931,
+      "sha256": "0bd490c660a83e7446b807c884b584662e97941389a3f8df922314aa874e4dd8",
+      "sourcePath": null,
+      "sourceR5Sha256": null,
+      "role": "R6 implementation/test/acceptance evidence"
+    },
+    {
+      "path": "WORK.json",
+      "bytes": 2434,
+      "sha256": "292d72ef221b18b4728dcecb95e6e19647cff82a5badee3446444e7332db284e",
+      "sourcePath": null,
+      "sourceR5Sha256": null,
+      "role": "R6 implementation/test/acceptance evidence"
+    },
+    {
+      "path": "CPU-RESULTS.json",
+      "bytes": 2041,
+      "sha256": "f88922b3694d9ec195618ae2dec2775e192c4a3614234473bb8e758a63fd823f",
+      "sourcePath": "CPU-RESULTS.json",
+      "sourceR5Sha256": "6cf65895eae2f811d18c1d30d1fa50165920c85175c4528b855954a9ce2688c5",
+      "parentContentPreserved": false,
+      "changeReason": "R6 private version label, 25-site point-glint implementation, or route label change; see WORK.json."
+    },
+    {
+      "path": "EDITION-EXCEPTION.json",
+      "bytes": 512,
+      "sha256": "3976220bcbc8954edf42518dc247edab825d7dc28d10ab76390e3fb3e8ac7c7a",
+      "sourcePath": null,
+      "sourceR5Sha256": null,
+      "role": "R6 implementation/test/acceptance evidence"
+    },
+    {
+      "path": "tests/check-original-alpha.py",
+      "bytes": 832,
+      "sha256": "a555035b39766674b3d791493211ba1d4e173a38bec4b9b1c528b3f33eddc5f4",
+      "sourcePath": null,
+      "sourceR5Sha256": null,
+      "role": "R6 implementation/test/acceptance evidence"
+    },
+    {
+      "path": "tests/glints.test.mjs",
+      "bytes": 5456,
+      "sha256": "fbafda4b5280a49ccaa6182a266791a2545050b09c4a52a6746c82cc96748362",
+      "sourcePath": null,
+      "sourceR5Sha256": null,
+      "role": "R6 implementation/test/acceptance evidence"
+    }
+  ]
+}
