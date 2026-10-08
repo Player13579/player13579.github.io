@@ -22478,48 +22478,7 @@ function throwLandingWebGPUScene(data) {
     clairvoyanceImage: state.textures.clairvoyanceThrowAte };
 }
 
-function drawInventionEnergyTexture(effect, progress) {
-  const railgun = effect.type === "alchemy-railgun";
-  const particle = effect.type === "alchemy-particle-cannon" || effect.type === "alchemy-particle-beam";
-  if (!railgun && !particle) return false;
-  const textureKey = railgun ? "alchemyRailgunFieldEffect" : "alchemyParticleCannonFieldEffect";
-  const prepared = transparentSpriteSource(state.textures[textureKey], textureKey, 18);
-  const sprite = prepared ? normalizedSpriteFrame(prepared, textureKey, 1, 1, 0, 0) : null;
-  if (!sprite) return false;
-  const sourceX = Number(effect.x) || 0, sourceY = Number(effect.y) || 0;
-  const targetX = Number.isFinite(Number(effect.targetX)) ? Number(effect.targetX) : sourceX;
-  const targetY = Number.isFinite(Number(effect.targetY)) ? Number(effect.targetY) : sourceY;
-  const dx = targetX - sourceX, dy = targetY - sourceY, length = Math.hypot(dx, dy);
-  // No target axis means there is no rail/particle channel to register. Let
-  // the existing caller continue to its ordinary zero-range result instead of
-  // manufacturing the historical 5000/1250-unit ray.
-  if (length <= 0.001) return false;
-  const reduced = prefersReducedMotion(), p = clamp(Number(progress) || 0, 0, 1);
-  const pulse = reduced ? 0 : Math.sin(p * Math.PI);
-  const fade = 1 - objectEffectEase(clamp((p - .76) / .24, 0, 1));
-  const inheritedAlpha = ctx.globalAlpha;
-  if (fade <= .001 || inheritedAlpha <= .001) return true;
-  const sourceAnchor = .08, targetAnchor = .92;
-  const renderWidth = length / (targetAnchor - sourceAnchor);
-  const desiredHeight = (railgun ? 190 : 310) * (.92 + pulse * .16);
-  const naturalShortHeight = Math.max(.5, renderWidth * sprite.height / sprite.width);
-  const renderHeight = Math.min(desiredHeight, naturalShortHeight);
-  ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = inheritedAlpha * fade;
-  ctx.translate(sourceX, sourceY); ctx.rotate(Math.atan2(dy, dx));
-  // Explicit source-anchor registration: x=.08 maps to source and x=.92 maps
-  // exactly to target, independent of source image aspect ratio or distance.
-  ctx.drawImage(sprite, -sourceAnchor * renderWidth, -renderHeight / 2, renderWidth, renderHeight);
-  if (!reduced) {
-    const now = (state.frameNow || performance.now()) / 1000;
-    if (railgun) {
-      const shock = objectEffectEase(clamp(p / .42, 0, 1));
-      for (let i=0;i<11;i+=1) { const along=((i+.5)/11)*length, spread=(1-shock)*(18+(i%3)*9); ctx.globalAlpha=inheritedAlpha*fade*(.24+(i%4)*.055);ctx.fillStyle=i%3===0?'#fff4cf':'#8be9ff';ctx.fillRect(along,(i%2?-1:1)*spread,12+(i%4)*8,1.4+(i%2)); }
-    } else {
-      for (let i=0;i<18;i+=1) { const along=((i/18+p*.48)%1)*length,helix=Math.sin(i*1.73+now*9.2)*renderHeight*.26*(1-p*.35),size=1.4+(i%4)*.75;ctx.globalAlpha=inheritedAlpha*fade*(.28+(i%5)*.06);ctx.fillStyle=i%2?'#e5b7ff':'#7df4ff';ctx.save();ctx.translate(along,helix);ctx.rotate(Math.PI/4+now*.7);ctx.fillRect(-size,-size,size*2,size*2);ctx.restore(); }
-    }
-  }
-  ctx.restore(); return true;
-}
+
 
 const MARKER_OWNED_EFFECT_TYPES = new Set([
   "instant-stand-firm-acquired",
@@ -32517,7 +32476,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-legacy-effect-clusters-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
