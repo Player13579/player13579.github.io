@@ -1,0 +1,113 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "bust-sol61",
+  "versionId": "bust-zero-sol61-r5",
+  "entry": "index.html",
+  "effectAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "partial-pending-R5-native-review",
+  "userReviewReady": false,
+  "creativeIteration": 5,
+  "creativeIterationLimit": 5,
+  "additionalCreativeEditionsRemaining": 0,
+  "creativeCountReset": false,
+  "technicalReplayStatus": "pending-native-webgpu",
+  "files": {
+    "index.html": "fdb3ad7d5c2e02fc05892c1788e87ba974d537f7c7f983d213d06523ed234f86",
+    "gallery-adapter.mjs": "6e6b99d90eeade8bed7bb778f10769a6bcb2423382267726d86642a6d596b3b6",
+    "receipt-runner-contract.mjs": "4e4c4bad2b4c487569a486a34f2d14c6c890e705bede758479ca2b72c0fa7e7f",
+    "bust.mjs": "80560c06cd71c75cded44786a8e089a57192249a9ecedbcdde7e1b78665154cf",
+    "bust.wgsl": "37f535b2645f0558d178888174efac4ca75cc027c52ac2198700a35f73101fd4",
+    "bust-sfx.mjs": "ff579c80e8678dda98a80fe78adcc0f565da735dc5e0ade92f4531db07680ab0",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "fixtureLineage": "unchanged neutral actor fixture reused from sealed R3/R4 technical host; not an R5 creative texture",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "events": {
+    "timed-bust-start": {
+      "durationMs": 650,
+      "targetId": "beneficiary-target"
+    },
+    "timed-bust-break": {
+      "durationMs": 480,
+      "targetId": "barrier-owner-target"
+    }
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format",
+    "separateActorFixturePass": true,
+    "materialDepthSamples": 48
+  },
+  "api": {
+    "rendererPlaybackEventAbi": "48-byte ABI preserved; actual sealed R5 modules",
+    "uniformBytes": 48,
+    "durationsMs": [
+      650,
+      480
+    ],
+    "sourceEnabledOff": "R5: all PH/OBS terms zero",
+    "observerEnabledOff": "R5: local PSF and start streak zero while world-integral sample is retained",
+    "reducedMotion": "R5: insertion travel/recoil 35%; medium curvature/thickness/transport/cut/streak-angle/lifetime unchanged",
+    "normalEntrySfx": "unmuted by default; gesture unlock; causal GPU-completion gate and 2x playback rate",
+    "verifyMode": "hard mute",
+    "holdResumeReplay": "verify-only hold; resume recreates playback with null clock; replay restarts start phase"
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "hold": "hold(ageMs,{variant,targetId,bodyHeight:64|192,sourceEnabled,observerEnabled,reducedMotion})",
+    "waitsForGpuQueueCompletion": true,
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ]
+  },
+  "validation": {
+    "sourceManifest": "pinned-and-all-listed-source-files-checked",
+    "creativeBytes": "bust.mjs, bust.wgsl, and bust-sfx.mjs match the sealed R5 source manifest byte-for-byte",
+    "hostCpu": "pass; actual R5 adapter and creative modules ran against CPU WebGPU/Audio mocks with 33 host assertions",
+    "sourceCpu": "pass; copied sealed test-bust.mjs and exact R5 modules; 40,155 assertions",
+    "servedClosure": "pass; seven package routes returned HTTP 200 with correct MIME and exact SHA-256, including imported receipt helper",
+    "nativeRunner": "not prepared in this bounded assignment",
+    "nativeWebGpu": "not-run",
+    "nativePixels": "not-run",
+    "GPUPerformance": "not-measured",
+    "normalAudioListening": "not-run",
+    "fullLifetimeQuality": "pending actual R5 native and primary review",
+    "public": "not-run",
+    "gameIntegration": "not-run",
+    "SafariIPad": "not-run"
+  },
+  "sourceManifest": {
+    "path": "outputs/request-20261008/bust-zero-sol61-r5/source-manifest.json",
+    "sha256": "837725bb2fe1041ebf225e330329736440dec241c4d183f907c3e17674b83e12"
+  },
+  "technicalDerivative": {
+    "basedOn": "outputs/request-20261008/bust-r4-gallery-host-luna-r1/public/sol61-bust/r4",
+    "creativeChanges": false,
+    "changes": [
+      "Copied the sealed R5 bust.mjs, bust.wgsl, and bust-sfx.mjs byte-for-byte into a separate R5 package.",
+      "Adapted the repaired R4 gallery adapter and submission receipt helper to the actual sealed R5 version identity, retaining the 48-byte ABI, two event durations, 2x actor clock, verify-only hold, hard verify mute, lifecycle behavior, and submission-completion-gated causal SFX.",
+      "Reused the neutral R3/R4 actor fixture solely as a technical host backdrop; no creative E texture or runtime module was edited."
+    ],
+    "technicalAuthor": "GPT-6-Luna"
+  },
+  "cpuProof": {
+    "path": "test-host-cpu.mjs",
+    "scope": "actual R5 adapter/module execution, delayed completion across phase transition, frozen first submission receipt, hold/resume, natural start-break-start, source/observer/reduced controls, verify hard mute, normal post-submit SFX at 2x, served HTTP closure hash audit"
+  },
+  "nativeStatus": "not run"
+}

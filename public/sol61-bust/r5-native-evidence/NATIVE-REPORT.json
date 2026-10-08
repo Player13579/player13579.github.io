@@ -1,0 +1,289 @@
+{
+  "schema": "dva-bust-r5-actual-native-report/v1",
+  "status": "passed-native-webgpu-visible-edge",
+  "attemptId": "a3188906-938a-4c53-90b5-f54ab140f6fa",
+  "rawNativeReportPath": "outputs/request-20261008/bust-r5-actual-native-luna-r1/attempt-a3188906-938a-4c53-90b5-f54ab140f6fa/native-verification.json",
+  "rawNativeReportSha256": "b5c76ab20f55a789e3b72e2f5622e8fe6abd35b716b1ff3f7b15d30d6315e9d2",
+  "runnerSha256": "1d8ed54d2c6f612e04812e21e596006a113a965c4f701a0d1659c6759112079d",
+  "route": "http://127.0.0.1:61864/harness.html?verify&galleryStartupToken=d50ba934faf546ada42feed1a0882093&galleryVersionId=bust-zero-sol61-r5&galleryAttemptEpoch=1",
+  "browser": {
+    "version": "154.0.4258.62",
+    "headlessRequested": false,
+    "executablePath": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "launchArgs": null,
+    "sandboxEnabled": "unobserved",
+    "gpuDisabled": "unobserved-in-args"
+  },
+  "host": {
+    "readyPath": "outputs/request-20261008/bust-r5-gallery-host-luna-r1/READY.json",
+    "sealSha256": "7299b5fbbb2f89a7784a7227f71a7b7ca1a939face6caaf7ca66fdb3d99678aa",
+    "packageManifestSha256": "24b7cff6fe200fc63fc7399a9d52a990c83f0004c06845367d97c299ca4b3e43",
+    "sourceManifestSha256": "837725bb2fe1041ebf225e330329736440dec241c4d183f907c3e17674b83e12"
+  },
+  "native": {
+    "assertionsPassed": 37,
+    "assertionsFailed": 0,
+    "shaderModules": [
+      {
+        "label": "Bust neutral actor fixture",
+        "codeLength": 621,
+        "pending": false,
+        "errors": 0
+      },
+      {
+        "label": "bust-zero-sol61-r5",
+        "codeLength": 10873,
+        "pending": false,
+        "errors": 0
+      }
+    ],
+    "validationScopes": {
+      "pushes": 2,
+      "pops": 2,
+      "errors": 0
+    },
+    "uncapturedGpuErrors": 0,
+    "submits": 184,
+    "queueCompletions": 201,
+    "frames": 184,
+    "gpuFailure": null,
+    "audioVerify": {
+      "verify": true,
+      "nodeCalls": {
+        "source": 0,
+        "buffer": 0
+      },
+      "activation": true
+    },
+    "autoplay": {
+      "phaseTransitions": 8,
+      "transitions": [
+        {
+          "from": "timed-bust-start",
+          "fromAgeMs": 640.5999755859375,
+          "to": "timed-bust-break",
+          "toAgeMs": 0,
+          "wallGapMs": 19
+        },
+        {
+          "from": "timed-bust-break",
+          "fromAgeMs": 478.3999938964844,
+          "to": "timed-bust-start",
+          "toAgeMs": 0,
+          "wallGapMs": 18.80000001192093
+        },
+        {
+          "from": "timed-bust-start",
+          "fromAgeMs": 618.5999755859375,
+          "to": "timed-bust-break",
+          "toAgeMs": 0,
+          "wallGapMs": 19.099999964237213
+        },
+        {
+          "from": "timed-bust-break",
+          "fromAgeMs": 445,
+          "to": "timed-bust-start",
+          "toAgeMs": 0,
+          "wallGapMs": 19
+        },
+        {
+          "from": "timed-bust-start",
+          "fromAgeMs": 648.4000244140625,
+          "to": "timed-bust-break",
+          "toAgeMs": 0,
+          "wallGapMs": 18.599999964237213
+        },
+        {
+          "from": "timed-bust-break",
+          "fromAgeMs": 453,
+          "to": "timed-bust-start",
+          "toAgeMs": 0,
+          "wallGapMs": 18
+        },
+        {
+          "from": "timed-bust-start",
+          "fromAgeMs": 641.5999755859375,
+          "to": "timed-bust-break",
+          "toAgeMs": 0,
+          "wallGapMs": 17.900000035762787
+        },
+        {
+          "from": "timed-bust-break",
+          "fromAgeMs": 456,
+          "to": "timed-bust-start",
+          "toAgeMs": 0,
+          "wallGapMs": 19
+        }
+      ],
+      "medianActorToWallRate": 2.0000000374479443
+    },
+    "negativeRafReplay": {
+      "replayReturned": true,
+      "callbackInvoked": true,
+      "nonnegativeAfterReplay": true
+    },
+    "captures": {
+      "count": 18,
+      "visibleEdge": true,
+      "files": [
+        {
+          "label": "h64-start-early",
+          "relativePath": "h64-start-early.png",
+          "sha256": "f33e22d55babb4d1c09801470fd78a1b8e8d2f54ca1d6b06b7778d369172f4d2",
+          "bytes": 10317,
+          "actualFileSha256": "f33e22d55babb4d1c09801470fd78a1b8e8d2f54ca1d6b06b7778d369172f4d2",
+          "matchesRaw": true
+        },
+        {
+          "label": "h64-start-mid",
+          "relativePath": "h64-start-mid.png",
+          "sha256": "cde5fafa94a33c55ecc0832096e7d498b4486baf7282a6caf942ae4811ccc292",
+          "bytes": 10343,
+          "actualFileSha256": "cde5fafa94a33c55ecc0832096e7d498b4486baf7282a6caf942ae4811ccc292",
+          "matchesRaw": true
+        },
+        {
+          "label": "h64-start-late",
+          "relativePath": "h64-start-late.png",
+          "sha256": "20fbf357e221175b61f538683495843208247627fd960b5235648a49e17ea4fb",
+          "bytes": 10658,
+          "actualFileSha256": "20fbf357e221175b61f538683495843208247627fd960b5235648a49e17ea4fb",
+          "matchesRaw": true
+        },
+        {
+          "label": "h64-start-end",
+          "relativePath": "h64-start-end.png",
+          "sha256": "3181a0950870f0188dd12b6ee5057d11390b7e3a0addbe2f8781119649546cde",
+          "bytes": 7087,
+          "actualFileSha256": "3181a0950870f0188dd12b6ee5057d11390b7e3a0addbe2f8781119649546cde",
+          "matchesRaw": true
+        },
+        {
+          "label": "h64-break-early",
+          "relativePath": "h64-break-early.png",
+          "sha256": "8fd5c767da58f032498ff12e17176ae8ffcfb2d5a2fe0c7fe0a243c265582e01",
+          "bytes": 10682,
+          "actualFileSha256": "8fd5c767da58f032498ff12e17176ae8ffcfb2d5a2fe0c7fe0a243c265582e01",
+          "matchesRaw": true
+        },
+        {
+          "label": "h64-break-mid",
+          "relativePath": "h64-break-mid.png",
+          "sha256": "1e3227b175a5c09244540cb21c59dd4dcd5d2163d55250017cbec4508a36f2ec",
+          "bytes": 11738,
+          "actualFileSha256": "1e3227b175a5c09244540cb21c59dd4dcd5d2163d55250017cbec4508a36f2ec",
+          "matchesRaw": true
+        },
+        {
+          "label": "h64-break-late",
+          "relativePath": "h64-break-late.png",
+          "sha256": "a728048fdc7dc67bc989e47e9ed579bf271521e7707ef7063a4b6bcf16453d57",
+          "bytes": 9376,
+          "actualFileSha256": "a728048fdc7dc67bc989e47e9ed579bf271521e7707ef7063a4b6bcf16453d57",
+          "matchesRaw": true
+        },
+        {
+          "label": "h64-break-end",
+          "relativePath": "h64-break-end.png",
+          "sha256": "3181a0950870f0188dd12b6ee5057d11390b7e3a0addbe2f8781119649546cde",
+          "bytes": 7087,
+          "actualFileSha256": "3181a0950870f0188dd12b6ee5057d11390b7e3a0addbe2f8781119649546cde",
+          "matchesRaw": true
+        },
+        {
+          "label": "h192-start-early",
+          "relativePath": "h192-start-early.png",
+          "sha256": "a6bd3e19926766269c5320b3cece3ff0a2e837d75d759360cc60ca0b1d6d5c10",
+          "bytes": 48962,
+          "actualFileSha256": "a6bd3e19926766269c5320b3cece3ff0a2e837d75d759360cc60ca0b1d6d5c10",
+          "matchesRaw": true
+        },
+        {
+          "label": "h192-start-mid",
+          "relativePath": "h192-start-mid.png",
+          "sha256": "f1e48b560e750520121b4c156a1ed72c9f6b3b648e25c1b211f3b039f4d64eee",
+          "bytes": 50425,
+          "actualFileSha256": "f1e48b560e750520121b4c156a1ed72c9f6b3b648e25c1b211f3b039f4d64eee",
+          "matchesRaw": true
+        },
+        {
+          "label": "h192-start-late",
+          "relativePath": "h192-start-late.png",
+          "sha256": "3d707ddd1c1e824b8719b552ff6a88e800e8e422e62f7d43fa7e473d5be6d3f6",
+          "bytes": 53154,
+          "actualFileSha256": "3d707ddd1c1e824b8719b552ff6a88e800e8e422e62f7d43fa7e473d5be6d3f6",
+          "matchesRaw": true
+        },
+        {
+          "label": "h192-start-end",
+          "relativePath": "h192-start-end.png",
+          "sha256": "463f13247d9647ea13869628d71abd25722ea83274f7d49bbf66768d946e9d9c",
+          "bytes": 34854,
+          "actualFileSha256": "463f13247d9647ea13869628d71abd25722ea83274f7d49bbf66768d946e9d9c",
+          "matchesRaw": true
+        },
+        {
+          "label": "h192-break-early",
+          "relativePath": "h192-break-early.png",
+          "sha256": "00b7b42137429b8c97aae6f47a0ff58ce950f550368d835be21783f7bf1b8b74",
+          "bytes": 52757,
+          "actualFileSha256": "00b7b42137429b8c97aae6f47a0ff58ce950f550368d835be21783f7bf1b8b74",
+          "matchesRaw": true
+        },
+        {
+          "label": "h192-break-mid",
+          "relativePath": "h192-break-mid.png",
+          "sha256": "aa308ac9097faac10b2933fd113039322f27795fc46b8eb300f8c986bb8fa933",
+          "bytes": 59923,
+          "actualFileSha256": "aa308ac9097faac10b2933fd113039322f27795fc46b8eb300f8c986bb8fa933",
+          "matchesRaw": true
+        },
+        {
+          "label": "h192-break-late",
+          "relativePath": "h192-break-late.png",
+          "sha256": "dfe35aee5b38ee13e51e818aaca932349ccef2ce2a946e3f0a8f5a14227184ab",
+          "bytes": 45545,
+          "actualFileSha256": "dfe35aee5b38ee13e51e818aaca932349ccef2ce2a946e3f0a8f5a14227184ab",
+          "matchesRaw": true
+        },
+        {
+          "label": "h192-break-end",
+          "relativePath": "h192-break-end.png",
+          "sha256": "463f13247d9647ea13869628d71abd25722ea83274f7d49bbf66768d946e9d9c",
+          "bytes": 34854,
+          "actualFileSha256": "463f13247d9647ea13869628d71abd25722ea83274f7d49bbf66768d946e9d9c",
+          "matchesRaw": true
+        },
+        {
+          "label": "h64-start-source-off",
+          "relativePath": "h64-start-source-off.png",
+          "sha256": "3181a0950870f0188dd12b6ee5057d11390b7e3a0addbe2f8781119649546cde",
+          "bytes": 7087,
+          "actualFileSha256": "3181a0950870f0188dd12b6ee5057d11390b7e3a0addbe2f8781119649546cde",
+          "matchesRaw": true
+        },
+        {
+          "label": "h64-start-observer-off",
+          "relativePath": "h64-start-observer-off.png",
+          "sha256": "d388b20a17706ca2d769ec2a6837994f74b033cc2e34c954b09bc45e10d637c5",
+          "bytes": 9234,
+          "actualFileSha256": "d388b20a17706ca2d769ec2a6837994f74b033cc2e34c954b09bc45e10d637c5",
+          "matchesRaw": true
+        }
+      ]
+    },
+    "cleanup": {
+      "pagesClosed": true,
+      "browserClosed": true,
+      "serverClosed": true
+    },
+    "packageAndCreativeSourceIntact": true
+  },
+  "limitations": [
+    "This is bounded actual native technical evidence, not creative visual quality acceptance",
+    "Screenshot/metrics and receiver fixture do not establish full gameplay-body integration or real-sprite occlusion",
+    "No ordinary SFX listening",
+    "No public gallery/game integration or Safari/iPad verification",
+    "Legacy assertion text contains R4 wording for the inherited harness; runtime version, source and package hashes in raw report are R5"
+  ]
+}
