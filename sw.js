@@ -5,8 +5,8 @@
 // v520 adds independent Natural Recovery resources and its persistent marker,
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
-const RUNTIME_RELEASE = "fire-e-causal-v919-mystery-box-start-clock-r1";
-const CACHE_NAME = "dva-static-mystery-box-start-clock-r1-v1";
+const RUNTIME_RELEASE = "fire-e-causal-v920-mystery-box-start-clock-r1-grenades-dom-r1";
+const CACHE_NAME = "dva-static-mystery-box-start-clock-r1-grenades-dom-r1-v1";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 const STATIC_ASSETS = [
   "/assets/generated/webgpu-text/atlas.json",
@@ -472,7 +472,9 @@ const STATIC_ASSETS = [
   "/game-engine.js",
   "/offline-runtime.js",
   "/offline-server-worker.js",
+  "/offline-server-worker-fire-e-causal-v920-box-grenades-r1.js",
   "/offline-server-main.js",
+  "/offline-server-main-fire-e-causal-v920-box-grenades-r1.js",
   "/config.js",
   "/manifest.webmanifest",
   "/icon.png",
@@ -941,7 +943,9 @@ const BOOT_CRITICAL_ASSETS = new Set([
   "/game-engine.js",
   "/offline-runtime.js",
   "/offline-server-worker.js",
+  "/offline-server-worker-fire-e-causal-v920-box-grenades-r1.js",
   "/offline-server-main.js",
+  "/offline-server-main-fire-e-causal-v920-box-grenades-r1.js",
   "/config.js",
   "/manifest.webmanifest",
   "/icon.png",

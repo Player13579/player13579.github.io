@@ -156,7 +156,6 @@ const els = {
   tacticsNovelVideoStatus: $("#tacticsNovelVideoStatus"),
   soloTrainingProgress: $("#soloTrainingProgress"),
   soloMissionGrid: $("#soloMissionGrid"),
-  canvas: $("#gameCanvas"),
   webgpuMainCanvas: $("#webgpuMainCanvas"),
   canvasStatusSummary: $("#gameCanvasStatusSummary"),
   canvasStatusAnnouncement: $("#gameCanvasStatusAnnouncement"),
@@ -372,30 +371,14 @@ let expandedMapGpuHandedOff = false;
 let expandedMapGpuHandoffPending = null;
 let gameplayViewportMeasurementsSuspended = false;
 let gameplayViewportRootSizeObserver = null;
-let fieldCanvasCssWidth = 0;
-let fieldCanvasCssHeight = 0;
-let fieldCanvasCssTop = 0;
 let soloMissionHudCssBottom = 0;
-const syncFieldCanvasCssSize = (rect) => {
-  if (document.hidden || gameplayViewportMeasurementsSuspended) return;
-  const width = Number(rect?.width);
-  const height = Number(rect?.height);
-  if (Number.isFinite(width) && width > 0) fieldCanvasCssWidth = width;
-  if (Number.isFinite(height) && height > 0) fieldCanvasCssHeight = height;
-  if (Number.isFinite(Number(rect?.top))) fieldCanvasCssTop = Number(rect.top);
-};
 const syncSoloMissionHudCssHeight = (rect) => {
   if (document.hidden || gameplayViewportMeasurementsSuspended) return;
   const height = Number(rect?.height);
   if (Number.isFinite(Number(rect?.bottom))) soloMissionHudCssBottom = Number(rect.bottom);
 };
-syncFieldCanvasCssSize(els.canvas.getBoundingClientRect());
 syncSoloMissionHudCssHeight(els.soloMissionHud.getBoundingClientRect());
 if ("ResizeObserver" in window) {
-  const fieldCanvasSizeObserver = new ResizeObserver((entries) => {
-    syncFieldCanvasCssSize(els.canvas.getBoundingClientRect());
-  });
-  fieldCanvasSizeObserver.observe(els.canvas);
   const soloMissionHudSizeObserver = new ResizeObserver((entries) => {
     syncSoloMissionHudCssHeight(els.soloMissionHud.getBoundingClientRect());
   });
@@ -410,7 +393,6 @@ if ("ResizeObserver" in window) {
   gameplayViewportRootSizeObserver.observe(document.documentElement);
 } else {
   window.addEventListener("resize", () => {
-    syncFieldCanvasCssSize(els.canvas.getBoundingClientRect());
     syncSoloMissionHudCssHeight(els.soloMissionHud.getBoundingClientRect());
   });
 }
@@ -2896,7 +2878,6 @@ const sunbeamLive = { renderer: null, pending: null, generation: 0,
   soundPlayers: new Map(), playedCauses: new Set() };
 const SUNBEAM_V2_CONSUMED_CAUSES = new Set();
 document.body.dataset.webgpuMainOwner = "1";
-if (els.canvas) els.canvas.style.opacity = "0";
 if (els.webgpuMainCanvas) els.webgpuMainCanvas.style.opacity = "0";
 
 function prepareTitleHero() {
@@ -5859,7 +5840,7 @@ function cancelEnhanceAction(kind = state.enhanceHold.kind, { recoverOnFailure =
   state.enhanceHold = { kind: "", chargeKind: "", pointerId: null, startedAt: 0, timer: 0, itemId: "", chargeId: "" };
   if (hold.chargeKind === "shoot") state.gunActivationPending = false;
   if (hold.pointerId !== null) {
-    for (const button of [els.shootButton, els.tabletShootShortcut, els.fireJutsuButton, els.tabletFireShortcut, els.itemUseButton, els.itemThrowButton, els.canvas]) {
+    for (const button of [els.shootButton, els.tabletShootShortcut, els.fireJutsuButton, els.tabletFireShortcut, els.itemUseButton, els.itemThrowButton, els.webgpuMainCanvas]) {
       try {
         if (button?.hasPointerCapture?.(hold.pointerId)) button.releasePointerCapture(hold.pointerId);
       } catch {}
@@ -16969,7 +16950,6 @@ function scheduleGameplayViewportReflow(settle = false) {
       setTabletOpen(state.tabletOpen, { persist: false, focus: false });
       scheduleTabletBranchLayout();
       scheduleActiveEffectsLayout(() => {
-        syncFieldCanvasCssSize(els.canvas.getBoundingClientRect());
         syncSoloMissionHudCssHeight(els.soloMissionHud.getBoundingClientRect());
         const after = gameplayViewportGeometryKey();
         if (after !== before && gameplayViewportReflowPasses < GAMEPLAY_VIEWPORT_REFLOW_MAX_PASSES - 1) {
@@ -18627,19 +18607,16 @@ function pumpLiveSunbeamOverlay(data, camera, zoom) {
   sunbeamLive.submitted.clear();
   if (WEBGPU_MAIN_OWNER || state.screen !== 'game' ||
       data !== state.data || data?.phase !== 'playing' || document.hidden ||
-      !els.webgpuMainCanvas?.isConnected || !els.canvas?.isConnected) {
+      !els.webgpuMainCanvas?.isConnected) {
     suspendLiveSunbeamOverlay();
     return;
   }
   const receipts = [...sunbeamLive.poseReceipts.values()];
   const canvas = els.webgpuMainCanvas;
   const rect = canvas.getBoundingClientRect();
-  const fieldRect = els.canvas.getBoundingClientRect();
   const dpr = window.devicePixelRatio || 1;
   if (![rect.left, rect.top, rect.width, rect.height, dpr].every(Number.isFinite) ||
-      rect.width <= 0 || rect.height <= 0 || dpr <= 0 ||
-      ['left', 'top', 'width', 'height'].some(key =>
-        Math.abs(rect[key] - fieldRect[key]) > 1)) {
+      rect.width <= 0 || rect.height <= 0 || dpr <= 0) {
     suspendLiveSunbeamOverlay();
     return;
   }
@@ -18802,8 +18779,6 @@ function suspendWebGPUMainAppDriver({ destroy = false } = {}) {
     document.documentElement.dataset.fieldRenderer = "webgpu-pending";
   if (els.webgpuMainCanvas) els.webgpuMainCanvas.style.opacity = "0";
   if (els.webgpuMainCanvas) els.webgpuMainCanvas.style.pointerEvents = "none";
-  if (els.canvas) els.canvas.style.pointerEvents = WEBGPU_MAIN_OWNER ? "none" : "auto";
-  if (els.canvas) els.canvas.style.opacity = "0";
   if (webgpuMainApp.acquisitionCanvas) webgpuMainApp.acquisitionCanvas.style.display = "none";
   sunbeamLive.pendingSounds.clear();
   FIRE_E_SOUND_RECEIPTS.pending.clear();
@@ -18925,7 +18900,7 @@ function captureWebGPUMainFailureDiagnostic(message) {
       rootHeight: numeric(rootSize.height), dpr: numeric(window.devicePixelRatio),
       hidden: Boolean(document.hidden), editableFocus: Boolean(document.activeElement?.matches?.(
         'input, textarea, select, [contenteditable="true"]')) },
-    canvases: { main: rectOf(els.webgpuMainCanvas), reference: rectOf(els.canvas) },
+    canvases: { main: rectOf(els.webgpuMainCanvas) },
     mapImage: { complete: Boolean(image?.complete), width: numeric(image?.naturalWidth),
       height: numeric(image?.naturalHeight), expectedWidth: numeric(state.data?.map?.width),
       expectedHeight: numeric(state.data?.map?.height) },
@@ -19119,14 +19094,13 @@ function invalidateWebGPUMainSubmittedHits() {
 function activeGameInputSurface() {
   return window.DvaWebGPUGameInputSurface?.resolveSurface({
     webgpuCanvas: els.webgpuMainCanvas,
-    legacyCanvas: els.canvas,
     webgpuFrameCurrent: webgpuMainSubmittedFrameCurrent(),
     webgpuOwner: WEBGPU_MAIN_OWNER
   }) || null;
 }
 
 function gameFocusSurface() {
-  return activeGameInputSurface() || (WEBGPU_MAIN_OWNER ? els.webgpuMainCanvas : els.canvas);
+  return activeGameInputSurface() || (WEBGPU_MAIN_OWNER ? els.webgpuMainCanvas : null);
 }
 
 function captureGameInputPointer(event) {
@@ -19141,7 +19115,7 @@ function suppressGameSurfaceTouch(event) {
 function bindGameInputSurfaceEvents() {
   const bind = window.DvaWebGPUGameInputSurface?.bindSurfaceEvents;
   if (!bind) throw new Error("WebGPU game input surface helper is unavailable");
-  return bind({ surfaces: [els.canvas, els.webgpuMainCanvas],
+  return bind({ surfaces: [els.webgpuMainCanvas],
     resolveActiveSurface: activeGameInputSurface,
     handlers: {
       pointerdown(event) {
@@ -19564,7 +19538,6 @@ function pumpWebGPUMainAppDriver() {
       return;
     }
     mainCanvas.style.opacity = "1";
-    els.canvas.style.opacity = "0";
     webgpuMainApp.acquisitionCanvas.style.display = receipt.acquisitionActive ? "block" : "none";
     // The pointer receipt becomes active only after the submitted pixels are
     // actually selected as the visible game surface.
@@ -19596,7 +19569,6 @@ function pumpWebGPUMainAppDriver() {
       }
     }
     mainCanvas.style.pointerEvents = "auto";
-    els.canvas.style.pointerEvents = WEBGPU_MAIN_OWNER ? "none" : "auto";
     if (webgpuMainApp.driver.commitSunbeamVisibleFrame(
       receipt.recordResult.sunbeamFrameToken,
       () => state.screen === 'game' && !document.hidden &&
@@ -30575,19 +30547,8 @@ function drawMinimalWalkFrame(atlas, key, direction, frame, moving, movementMode
   // Each direction is one independent horizontal row: neutral, one foot, the
   // opposite foot. Slow, normal, and dash use distinct contact timing and body
   // dynamics while real rendered displacement remains the only clock.
-  const profile = walkMotionProfile(movementMode);
   const poseIndex = walkMotionPose(movementMode, frame, moving);
   const body = walkBodyMotion(movementMode, direction, frame, moving);
-  if (IS_VERIFICATION_MODE) {
-    els.canvas.dataset.walkPose = String(poseIndex);
-    els.canvas.dataset.walkGaitFrame = Number(frame).toFixed(2);
-    els.canvas.dataset.walkDirection = String(direction);
-    els.canvas.dataset.walkTexture = key;
-    els.canvas.dataset.walkMode = normalizeWalkMotionMode(movementMode);
-    els.canvas.dataset.walkStrideDistance = String(profile.strideDistance);
-    els.canvas.dataset.walkLift = body.lift.toFixed(3);
-    els.canvas.dataset.walkLean = body.lean.toFixed(4);
-  }
   const sprite = normalizedSpriteFrame(atlas, key, 3, 1, 0, poseIndex);
   if (!sprite) return false;
   ctx.save();
@@ -32868,7 +32829,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
@@ -32901,7 +32862,7 @@ function showMarkerExplanationDom(explanation, anchorX, anchorY, width, height) 
     body.textContent = explanation.detail;
     panel.replaceChildren(title, body);
   }
-  const canvasRect = els.canvas.getBoundingClientRect();
+  const canvasRect = els.webgpuMainCanvas.getBoundingClientRect();
   const x = canvasRect.left + anchorX * canvasRect.width / Math.max(1, width);
   const y = canvasRect.top + anchorY * canvasRect.height / Math.max(1, height);
   positionInventoryItemDetail({ getBoundingClientRect: () => ({ left: x, right: x, top: y, height: 0 }) }, panel);
@@ -33093,7 +33054,7 @@ function drawAcquisitionPhotonStream(data, camera, worldZoom, now = state.frameN
     (effect.type === 'mystery-box' || effect.type === 'transfer-in') &&
     (effect.type !== 'mystery-box' || effect.playerId === data.selfId) &&
     acquisitionPhotonWindow(effect, now) !== null);
-  const canvasRect = els.canvas.getBoundingClientRect();
+  const canvasRect = els.webgpuMainCanvas.getBoundingClientRect();
   if (!effects.length || !canvasRect.width || !canvasRect.height) { clearAcquisitionOverlay(); return; }
   const gpu = acquisitionGpuRenderer();
   const overlay = acquisitionGpuOverlay.canvas;

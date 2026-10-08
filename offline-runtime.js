@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-const OFFLINE_WORKER_VERSION = "fire-e-causal-v918";
+const OFFLINE_WORKER_VERSION = "fire-e-causal-v920-box-grenades-r1";
 // Generated-worker startup must never turn an instant matchmaking decision
 // into a 40-second stall. Fall back to the generated main-thread bundle after
 // one bounded perceptual beat; initialization is already prewarmed on title.
@@ -39,7 +39,7 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
       if (this.mainThreadApi) return Promise.resolve(true);
       if (this.worker) return this.readyPromise || Promise.resolve(true);
       const generation = ++this.workerGeneration;
-      const workerUrl = new URL("offline-server-worker.js", document.baseURI);
+      const workerUrl = new URL(`offline-server-worker-${OFFLINE_WORKER_VERSION}.js`, document.baseURI);
       workerUrl.searchParams.set("v", OFFLINE_WORKER_VERSION);
       workerUrl.searchParams.set("boot", String(generation));
       this.readyPromise = new Promise((resolve) => {
@@ -120,7 +120,7 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
         const timer = setTimeout(() => finish(false), OFFLINE_MAIN_READY_TIMEOUT_MS);
         script.addEventListener("load", () => finish(true), { once: true });
         script.addEventListener("error", () => finish(false), { once: true });
-        const mainUrl = new URL("offline-server-main.js", document.baseURI);
+        const mainUrl = new URL(`offline-server-main-${OFFLINE_WORKER_VERSION}.js`, document.baseURI);
         mainUrl.searchParams.set("v", OFFLINE_WORKER_VERSION);
         script.src = mainUrl.href;
         script.async = true;

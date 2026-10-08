@@ -674,7 +674,6 @@ html,
 body,
 .app-shell,
 .board-wrap,
-#gameCanvas,
 #tabletPanel {
   overscroll-behavior: none;
 }
@@ -691,13 +690,6 @@ html.game-open {
      vertically pannable; the canvas and gesture-owned controls opt out
      locally. */
   touch-action: pan-y;
-}
-
-#gameCanvas {
-  touch-action: none;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
 }
 
 [hidden] {
@@ -2058,19 +2050,6 @@ select:focus {
 
 .field-stage-slot:has(.field-lower-row[hidden]) .board-wrap {
   width: min(calc(100cqw - 4px), calc((100cqh - 4px) * 98 / 62));
-}
-
-#gameCanvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* During the WebGPU main-owner route the original field remains a geometry
-   reference but cannot receive input or expose stale Canvas 2D pixels. */
-body[data-webgpu-main-owner="1"] #gameCanvas {
-  opacity: 0;
-  pointer-events: none;
 }
 
 html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-owner="1"] .board-wrap::after {
