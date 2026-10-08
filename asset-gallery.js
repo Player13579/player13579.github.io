@@ -151,6 +151,58 @@
     Object.freeze({ id, title, page, source, status, detail, anchor, zoom, ...metadata, replayable: true });
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const entries = Object.freeze([
+    Object.freeze({
+      id: 'gunner-headshot-sol',
+      title: 'Gunner Headshot',
+      defaultVersionId: 'gunner-headshot-unified-sol61-cloud-r2',
+      integration: 'not-integrated',
+      reason: 'R2 is a limited replayable historical Sol design candidate. Native R5 remains FAILED_CAPTURED; R7 supports only three completed natural 420 ms cycles and sampled visible recurrence. Quality is NOT_ACCEPTED. Main-game/H64, normal SFX, Safari/iPad, adoption, fourth cycle, and current-public replay remain unresolved.',
+      versions: Object.freeze([
+        version(
+          'gunner-headshot-unified-sol61-cloud-r2',
+          'GPT-6.1-Sol Gunner Headshot R2',
+          'public/headshot-r2-tested-bytes-limited-gallery-r9/gallery.html?embed=1&galleryAutoLoop=1',
+          'public/headshot-r2-tested-bytes-limited-gallery-r9/source-package-manifest.json',
+          '限定的な3回の自然完了サイクル · 全体FAILED_CAPTURED · 品質未受入 · 採用不明 · 本編未接続',
+          'Historical R2 source by GPT-6.1-Sol, with the pinned R2 faithful bridge/runtime package. Three genuine same-queue, same-generation, same-target cycles reached fulfilled natural 420 ms clears with null error scopes and separate source settlement. The fourth cycle is pending. Overall native R5 remains FAILED_CAPTURED because its source HTTP body validator failed on 14 exact rows (two per each of seven runtime paths). This is a limited replayable version candidate only; quality remains NOT_ACCEPTED. H64/main integration, ordinary SFX listening, Safari/iPad, adoption, and current-public replay are not established.',
+          'effect-H64',
+          1,
+          {
+            originalCreatorDisplayName: 'GPT-6.1-Sol',
+            designAuthorDisplayName: 'GPT-6.1-Sol',
+            creatorDisplayName: 'GPT-6.1-Sol (historical creative source); faithful R2 bridge/runtime provenance pinned as GPT-6-Luna; execution model identity unexposed',
+            creatorModelId: 'gpt-6.1-sol',
+            runtimeAuthorDisplayName: 'GPT-6-Luna',
+            runtimeAuthorProvenance: 'Pinned source package manifest; actual execution model identity unexposed',
+            adoption: 'unknown',
+            qualityStatus: 'not-accepted',
+            qualityReviewStatus: 'not-accepted',
+            qualityReviewerDisplayName: 'GPT-6.1-Sol',
+            qualityReviewReason: 'At 1×, the contact patches primarily read as two luminous dashes/tabs; differentiated reflected face response and the early continuous handoff are not established. Three-cycle evidence is limited and sampled.',
+            qualityEvidence: 'public/headshot-r2-tested-bytes-limited-gallery-r9/delivery-manifest.json',
+            technicalReplayStatus: 'pass-limited-private-native-three-cycle',
+            parentGalleryReplayStatus: 'pass-limited-private-native-three-cycle',
+            nativeStatus: 'FAILED_CAPTURED',
+            nativeEvidenceScope: 'R5 overall failed captured; R7 only verifies three natural cycles; fourth cycle pending. No current-public replay claim.',
+            publicationEligible: true,
+            replayable: true,
+            previewOnly: true,
+            normalAudioListening: 'not_run',
+            sfxListeningStatus: 'not_run',
+            safariReplayStatus: 'unverified',
+            gameIntegrationStatus: 'not_connected',
+            h64Acceptance: 'not_run',
+            currentParentReplayStatus: 'not_run',
+            technicalEvidence: 'public/headshot-r2-tested-bytes-limited-gallery-r9/delivery-manifest.json',
+            packageManifestSha256: 'f8bd2835f2d2ce7767372e2a8c206111b774d36bada26fcaf41a8d99ac966fb1',
+            sourceManifestSha256: 'ca1a9852d72631ef077c6471569a3279c4e278b046e234ee0ba3f7c1a682f840',
+            sourceSealSha256: 'af6491ca0d71ddbd65d68b57d3a819cb48873884d6f5412647373dd1b7931476',
+            galleryAdapterPath: 'public/headshot-r2-tested-bytes-limited-gallery-r9/gallery.html',
+            galleryAdapterEvidence: 'public/headshot-r2-tested-bytes-limited-gallery-r9/delivery-manifest.json'
+          }
+        )
+      ])
+    }),
     Object.freeze({ id: 'iai-result-zero-sol61', title: 'Iai Result Zero', defaultVersionId: 'iai-result-zero-sol61-r1', versions: Object.freeze([
       version('iai-result-zero-sol61-r1', 'GPT-6.1-Sol Iai Result Zero R1', 'public/sol61-iai-result-zero/r1/index.html?embed=1&galleryAutoLoop=1&startupTrace=1', 'public/sol61-iai-result-zero/r1/package-manifest.json', 'Creative edition 1 · current-parent limited two-pass native replay · quality pending · adoption unknown · game disconnected', 'GPT-6.1-Sol creative edition 1 with faithful GPT-6-Luna startup diagnostics. Current Donation R12 parent replay recorded one held active two-pass frame (ticket 2205, age 184 E-ms) and a small pale-gold oval in a narrow viewport. This is limited technical evidence only. Full-lifetime readability/quality, normal SFX listening, Safari/iPad, publication, adoption and game integration remain pending or unverified.', 'effect-H64', 1, { originalCreatorDisplayName: 'GPT-6.1-Sol', designAuthorDisplayName: 'GPT-6.1-Sol', runtimeAuthorDisplayName: 'GPT-6-Luna', creatorDisplayName: 'GPT-6.1-Sol (creative edition 1) + GPT-6-Luna (faithful diagnostics derivative)', creatorModelId: 'gpt-6.1-sol+gpt-6-luna', adoption: 'unknown', qualityStatus: 'pending', qualityReviewStatus: 'pending', technicalReplayStatus: 'pass-limited-native-webgpu', parentGalleryReplayStatus: 'pass-limited-native-webgpu', currentParentReplayStatus: 'pass-limited-native-webgpu', nativeStatus: 'pass-limited-native-webgpu', normalAudioListening: 'not_run', sfxListeningStatus: 'not_run', safariReplayStatus: 'unverified', gameIntegrationStatus: 'not_connected', technicalEvidence: 'outputs/request-20261007/iai-current-native-root-r1/NATIVE-RECEIPT.json', technicalEvidenceSha256: '4a7b07da0c5e89264a4b9fd2482d19c68389341f6539b98ab6d778168bd77b25', nativeObservationAgeEms: 184, nativeReceiptTicketId: 2205, creativeEdition: 1, priorEditionPreserved: true, publicationEligible: false }),
     ]) }),

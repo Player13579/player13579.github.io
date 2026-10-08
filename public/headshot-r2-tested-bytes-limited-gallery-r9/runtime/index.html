@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Headshot contact — Sol r2 private preview</title>
+<style>body{margin:24px;background:#121722;color:#e4e9f0;font:15px system-ui}main{max-width:900px;margin:auto}canvas{display:block;width:720px;height:480px;max-width:100%;background:#1e2631}button,input{margin:10px 10px 10px 0}pre{white-space:pre-wrap}label{margin-right:16px}</style>
+<main><h1>Headshot contact · r2</h1><p>One target contact, 420 ms. Private unadopted design. No kill outcome.</p>
+<canvas id="surface" width="720" height="480"></canvas>
+<button id="play" disabled>Replay contact</button><button id="stop" disabled>Clear</button>
+<label><input id="reduced" type="checkbox">Reduced motion</label>
+<label><input id="observer" type="checkbox" checked>Sensor spread</label>
+<label>Inspect age <input id="age" type="range" min="0" max="420" value="40" step="1"></label>
+<pre id="status">Preparing WebGPU…</pre><p id="audio-status" aria-live="polite"></p>
+<script type="module" src="./app.mjs"></script></main></html>
