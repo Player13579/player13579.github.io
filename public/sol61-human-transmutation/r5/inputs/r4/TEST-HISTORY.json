@@ -1,0 +1,14 @@
+{
+  "schema": "human-r4-cpu-test-history/v1",
+  "failures": [
+    {
+      "recordedAtUTC": "2026-10-07T23:57:05.836085+00:00",
+      "command": "node tests/unsplit-material.mjs",
+      "exitCode": 1,
+      "testPreRepairSha256": "cc805afd6fbd4fb3838a1e948c32458f1d50b4d26c2c979d85dad0769b6f24d8",
+      "observedFailure": "Strict IEEE-754 ratio comparison: actual 0.39999999999999997, expected 0.4, assertion at tests/unsplit-material.mjs:88",
+      "classification": "CPU assertion tolerance defect; not a world shader defect",
+      "repair": "Use 1e-14 tolerance for reduced/normal geometry ratio; keep other checks unchanged"
+    }
+  ]
+}

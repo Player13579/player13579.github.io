@@ -1,0 +1,100 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>人体生成 · Sol r5 fit adapter r1</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#151c23}iframe{display:block;width:100%;height:100%;border:0}</style>
+<iframe id="source" title="人体生成 GPT-6.1-Sol R5"></iframe>
+<script type="module">
+import {observeHumanCanvas} from './human-canvas-fit.mjs';
+import {isParentStartup,acceptsRetire} from './gallery-auth.mjs';
+const versionId='human-transmutation-sol61-r5';
+const currentOwner='human-transmutation-sol61-r5';
+const query=new URLSearchParams(location.search),outer=window.parent;
+const token=query.get('galleryStartupToken'),epoch=Number(query.get('galleryAttemptEpoch'));
+const parentStartup=isParentStartup({isEmbedded:outer!==window,token,requestedVersion:query.get('galleryVersionId'),versionId,epoch});
+let sequence=0,disposed=false,snapshot=null,stage='child-document';
+function emit(nextStage,status,extra={}){
+  stage=nextStage;
+  const message={schema:'dva-gallery-startup/v1',token,versionId,attemptEpoch:epoch,sequence:++sequence,stage,status,...extra};
+  snapshot=Object.freeze(message);
+  if(parentStartup)outer.postMessage(message,location.origin);
+}
+if(parentStartup){window.__dvaGalleryStartupSnapshot=()=>snapshot;window.__humanCanvasFitSnapshot=geometrySnapshot;emit('child-document','pending',{currentOwner});}
+const childUrl=new URL('./index.html',location.href);
+for(const [key,value] of query)if(!['galleryStartupToken','galleryVersionId','galleryAttemptEpoch'].includes(key))childUrl.searchParams.set(key,value);
+// Parent startup verification keeps the creative's authored sound muted.
+if(parentStartup&&query.has('verify'))childUrl.searchParams.set('verify','');
+const child=document.getElementById('source');
+child.src=childUrl.href;
+function humanGeometry(state){
+  const win=child.contentWindow,canvas=child.contentDocument?.querySelector('canvas#stage');
+  const rect=canvas?.getBoundingClientRect();
+  const dpr=win?.devicePixelRatio;
+  return observeHumanCanvas({state,canvas,rect,dpr,versionId,currentOwner,expectedOwner:currentOwner,frameUrl:win?.location?.href});
+}
+function geometrySnapshot(){
+  const state=child.contentWindow?.__human?.getState?.();
+  try{return Object.freeze({status:'geometry-fit',...humanGeometry(state)});}
+  catch(error){
+    const canvas=child.contentDocument?.querySelector('canvas#stage'),rect=canvas?.getBoundingClientRect();
+    return Object.freeze({status:'failed-geometry',versionId,currentOwner,frameUrl:child.contentWindow?.location?.href||null,
+      canvas:rect?{rect:{left:rect.left,top:rect.top,width:rect.width,height:rect.height},backingExtent:canvas?[canvas.width,canvas.height]:null}:null,
+      canvasRect:rect?{left:rect.left,top:rect.top,width:rect.width,height:rect.height}:null,
+      backingExtent:canvas?[canvas.width,canvas.height]:null,dpr:child.contentWindow?.devicePixelRatio||null,error:String(error?.message||error)});
+  }
+}
+function validCompletedFrame(state){try{humanGeometry(state);return true;}catch(_){return false;}}
+
+async function waitForFirstFrame(){
+  if(!parentStartup)return;
+  emit('first-frame','pending',{currentOwner});
+  const deadline=performance.now()+9000;
+  try{
+    while(!disposed&&performance.now()<deadline){
+      const win=child.contentWindow;
+      if(win?.__humanError)throw new Error(String(win.__humanError));
+      const state=win?.__human?.getState?.();
+      if(state?.fatal)throw new Error(String(state.fatal));
+      if(state?.ready===true&&!state.fatal){
+        // The preview sets ready before its first queue submission completes. A null
+        // receipt is therefore pending; only a real receipt is eligible for the
+        // strict geometry/current-cause/generation/queue checks below.
+        const r=state.receipt;
+        if(!r){await new Promise(resolve=>setTimeout(resolve,40));continue;}
+        const canvas=child.contentDocument.querySelector('canvas#stage'),geometry=humanGeometry(state);
+        emit('playing','ready',{currentOwner,fitGeometry:geometry,firstFrame:{canvasGeometry:geometry,recorded:true,submitted:true,completed:true,canvasConnected:true,
+          canvasWidth:canvas.width,canvasHeight:canvas.height,passes:r.passes,viewportWidth:r.cssExtent[0],viewportHeight:r.cssExtent[1],
+          physicalWidth:r.physicalExtent[0],physicalHeight:r.physicalExtent[1],dpr:r.dpr,causeId:r.causeId,generation:r.generation,
+          sourceSubmissionId:r.submitted,queueCompleted:true,sourceVersionId:r.version,sourceOwner:currentOwner,
+          actualActorHeight:r.actualActorHeight,verify:state.verify}});
+        return;
+      }
+      await new Promise(resolve=>setTimeout(resolve,40));
+    }
+    if(!disposed)throw new Error('Timed out waiting for the source preview completed first WebGPU frame.');
+  }catch(error){if(!disposed)emit('first-frame','error',{currentOwner,error:{code:'HUMAN_R5_FIRST_FRAME_FAILED',message:error?.message||String(error)}});}
+}
+child.addEventListener('load',()=>{void waitForFirstFrame();});
+window.addEventListener('message',event=>{
+  if(!acceptsRetire({parentStartup,eventOrigin:event.origin,ownOrigin:location.origin,eventSource:event.source,parentWindow:outer,
+    data:event.data,token,versionId,epoch}))return;
+  disposed=true;emit(stage,'cancelled',{currentOwner});child.src='about:blank';
+});
+window.addEventListener('pagehide',()=>{disposed=true;child.src='about:blank';},{once:true});
+window.__gallerySfx=Object.freeze({
+  async activateFromGesture(){
+    if(query.has('verify')||child.contentWindow?.location.search.includes('verify'))return {state:'silent',reason:'verification mode'};
+    const win=child.contentWindow,doc=child.contentDocument,control=doc?.getElementById('audio');
+    if(!win?.__human||!control||control.disabled)return {state:'unavailable',reason:'source preview audio control is unavailable'};
+    if(!control.checked)control.click();
+    const deadline=performance.now()+2500;
+    while(performance.now()<deadline){
+      const audio=win.__human.getState().audio;
+      if(audio?.playing)return {state:'active',reason:'source preview authored SFX is active'};
+      if(audio?.verify)return {state:'silent',reason:'verification mode'};
+      await new Promise(resolve=>setTimeout(resolve,30));
+    }
+    return {state:'unsupported',reason:'source preview did not confirm authored SFX activation'};
+  }
+});
+</script>

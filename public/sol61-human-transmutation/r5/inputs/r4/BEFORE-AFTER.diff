@@ -1,0 +1,160 @@
+--- R3/shader.mjs
++++ R4/shader.mjs
+@@ -1,4 +1,4 @@
+-// r3: compact broad material convergence; bounded row shear and exact handoff.
++// r4: unsplit original-RGBA row transport; one continuous material region.
+ import {HANDOFF_TIMING as T,transportExtentRatio} from './handoff-state.mjs';
+ export const WORLD_WGSL = /* wgsl */`
+ struct Params {
+@@ -43,32 +43,27 @@
+     else {
+       let y=(uv.y-p.support.y)/p.support.w;
+       let pixelNorm=.7/p.extent.w;
+-      // Local row material converges beside its registered body support.
++      // Complete original rows approach beside their registered body support.
+       let rowArrival=${T.footArrivalMs}.+(1.-y)*${T.bodySweepMs}.;
+       let approach=smoothstep(rowArrival-${T.travelMs}.,rowArrival,time);
+       // Fixation starts only when transport has reached the exact original x.
+       let completed=smoothstep(rowArrival,rowArrival+${T.fixMs}.,time);
+-      // A smooth arrival path with max |dx/dy|=1 (.4 reduced), avoiding wing-like shear.
++      // One common path: no left/right cut, no artificial central vacuum.
++      // Max |dx/dy|=.45 (.18 reduced); no fixation until the exact original x.
+       // No x/y rescale, density thinning or RGB/alpha recolor: only row translation.
+       let travel=(1.-approach)*p.extent.w*select(${transportExtentRatio(false)},${transportExtentRatio(true)},p.controls.w>.5);
+       let shift=travel/p.rect.z;
+-      let leftUV=uv+vec2f(shift,0.);
+-      let rightUV=uv-vec2f(shift,0.);
+-      let left=sampleOriginal(leftUV); let right=sampleOriginal(rightUV);
+-      let center=p.support.x+p.support.z*.5;
+-      let sideAA=.7/p.rect.z;
+-      let leftHalf=1.-smoothstep(center-sideAA,center+sideAA,leftUV.x);
+-      let rightHalf=smoothstep(center-sideAA,center+sideAA,rightUV.x);
++      let incomingUV=uv+vec2f(shift,0.);
++      let incoming=sampleOriginal(incomingUV);
+       let materialOnset=smoothstep(rowArrival-${T.travelMs}.,rowArrival-${T.travelMs-30}.,time)*
+         smoothstep(0.,${T.materialOnsetMs}.,time);
+       let transportWeight=materialOnset*(1.-completed);
+-      let aL=left.a*leftHalf*transportWeight;
+-      let aR=right.a*rightHalf*transportWeight;
++      let incomingA=incoming.a*transportWeight;
+       let fixedA=s.a*completed;
+-      // These are mutually exclusive states of the same material, not overlaid copies.
+-      // At shift=0, leftHalf+rightHalf=1 and the original alpha is exactly preserved.
+-      let combinedA=fixedA+aL+aR;
+-      let premul=s.rgb*fixedA+left.rgb*aL+right.rgb*aR;
++      // At every pre-arrival row, use one complete cross-section, including its center.
++      // At shift=0, incoming and fixed are complementary states of the same RGBA.
++      let combinedA=fixedA+incomingA;
++      let premul=s.rgb*fixedA+incoming.rgb*incomingA;
+       actor=vec4f(premul/max(combinedA,.00001),combinedA);
+       // Front emission is bound to the actual original alpha, independently of density.
+       let front=clamp(1.-(time-${T.footArrivalMs}.)/${T.bodySweepMs}.,0.,1.);
+--- R3/handoff-state.mjs
++++ R4/handoff-state.mjs
+@@ -1,8 +1,9 @@
+ // Shared actual shader timing and analytic contract. E milliseconds, CSS distances.
+ export const HANDOFF_TIMING=Object.freeze({footArrivalMs:90,bodySweepMs:700,travelMs:110,fixMs:24,materialOnsetMs:30});
+-// Bound screen-space row shear to one horizontal CSS pixel per vertical CSS pixel.
++// One unsplit row approaches from screen-left; all its material shares this map.
++// Bound screen-space row shear to .45 (.18 reduced) CSS px per vertical CSS px.
+ // smoothstep has maximum derivative 1.5. The coefficient follows the live window.
+-export const MATERIAL_TRANSPORT=Object.freeze({maxRowShear:1,reducedMaxRowShear:.4});
++export const MATERIAL_TRANSPORT=Object.freeze({topology:'unsplit-row-sheet',direction:'screen-left-to-registered-x',maxRowShear:.45,reducedMaxRowShear:.18});
+ export function transportExtentRatio(reducedMotion=false){
+   return (reducedMotion ? MATERIAL_TRANSPORT.reducedMaxRowShear : MATERIAL_TRANSPORT.maxRowShear)*HANDOFF_TIMING.travelMs/(1.5*HANDOFF_TIMING.bodySweepMs);
+ }
+--- R3/core.mjs
++++ R4/core.mjs
+@@ -8,7 +8,7 @@
+   if(actual!==sourceSha256.toLowerCase()) throw new Error('Version-bound original sprite hash mismatch');
+   const bitmap=await createImageBitmap(new Blob([bytes],{type:'image/png'}),{colorSpaceConversion:'none',premultiplyAlpha:'none'});
+   if(bitmap.width!==textureWidth || bitmap.height!==textureHeight) {bitmap.close();throw new Error('Original texture extent mismatch');}
+-  const texture=device.createTexture({label:'human-r3-original-verified',size:[bitmap.width,bitmap.height],format:'rgba8unorm',usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST|GPUTextureUsage.RENDER_ATTACHMENT});
++  const texture=device.createTexture({label:'human-r4-original-verified',size:[bitmap.width,bitmap.height],format:'rgba8unorm',usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST|GPUTextureUsage.RENDER_ATTACHMENT});
+   device.queue.copyExternalImageToTexture({source:bitmap},{texture,premultipliedAlpha:false,colorSpace:'srgb'},[bitmap.width,bitmap.height]);
+   bitmap.close(); return {texture,sha256:actual};
+ }
+@@ -79,7 +79,7 @@
+       const submitted=++serial;device.queue.submit([encoder.finish()]);await device.queue.onSubmittedWorkDone();
+       const validation=await device.popErrorScope();if(validation)throw new Error(validation.message);
+       completed=submitted;
+-      lastReceipt={version:VERSION_ID,causeId:input.event.id,targetId:input.event.targetId,scopeId:input.scope.id,generation:input.scope.generation,elapsedMs,phaseMs,active:cause.active,actorVisible:visible,sourceEnabled,observerEnabled,reducedMotion,sourceSha256:input.sprite.sourceSha256,actualActorHeight:registered.actualActorHeight??null,spriteRect:visible?rect:null,physicalExtent:[w,h],cssExtent:[width,height],dpr,submitted,completed,passes:4,format,worldFormat:'rgba16float',queueCompleted:true};
++      lastReceipt={version:VERSION_ID,causeId:input.event.id,targetId:input.event.targetId,scopeId:input.scope.id,generation:input.scope.generation,elapsedMs,phaseMs,active:cause.active,actorVisible:visible,sourceEnabled,observerEnabled,reducedMotion,sourceSha256:input.sprite.sourceSha256,actualActorHeight:registered.actualActorHeight??null,spriteRect:visible?rect:null,physicalExtent:[w,h],cssExtent:[width,height],dpr,submitted,completed,passes:4,format,worldFormat:'rgba16float',materialTransport:'unsplit-row-sheet',queueCompleted:true};
+       return lastReceipt;
+     } finally {inFlight=false;}
+   }
+--- R3/cause.mjs
++++ R4/cause.mjs
+@@ -1,7 +1,7 @@
+ // Source/target ABI only. No visual design or GPU/audio operations.
+ export const EVENT_TYPE = 'alchemy-human-transmutation';
+ export const DEFAULT_DURATION_MS = 1200;
+-export const VERSION_ID = 'human-transmutation-sol61-r3';
++export const VERSION_ID = 'human-transmutation-sol61-r4';
+ 
+ const finitePoint = p => p && Number.isFinite(p.x) && Number.isFinite(p.y);
+ const nonempty = v => typeof v === 'string' && v.trim().length > 0;
+--- R3/fixture.mjs
++++ R4/fixture.mjs
+@@ -1,11 +1,11 @@
+ export const ORIGINAL_SHA256='4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3';
+ export const ORIGINAL_URL=new URL('./assets/philia-front-nine-v752.png',import.meta.url).href;
+-export function makeFixture({height=64,width=960,viewportHeight=600,causeId='human-r3-fixture-1',generation=0,eventAt=0}={}) {
++export function makeFixture({height=64,width=960,viewportHeight=600,causeId='human-r4-fixture-1',generation=0,eventAt=0}={}) {
+   if (![48,64,128].includes(height) || !Number.isFinite(width) || width<=0 || !Number.isFinite(viewportHeight) || viewportHeight<=0) throw new RangeError('Explicit H48/H64/H128 positive fixture required');
+   return {
+     event:{type:'alchemy-human-transmutation',id:causeId,playerId:'caster-distinct',targetId:'revived-philia',at:eventAt,x:320,y:220,durationMs:1200},
+     target:{id:'revived-philia',alive:true,ejected:false,inVent:false,invisible:false,bodyScreen:{x:width*.5,y:viewportHeight*.5+height*.5}},
+     sprite:{sourceSha256:ORIGINAL_SHA256,textureWidth:768,textureHeight:768,crop:{x:0,y:0,width:256,height:256},origin:{x:128,y:240},scale:height/225,alphaSupport:{x:57,y:16,width:141,height:225}},
+-    scope:{id:'human-r3-private-preview',generation},
++    scope:{id:'human-r4-private-preview',generation},
+   };
+ }
+--- R3/preview.mjs
++++ R4/preview.mjs
+@@ -9,14 +9,14 @@
+ ui.audio.disabled=verify;ui.audio.checked=!verify&&query.get('audio')==='1';
+ const audio=createHumanSFX({verify,onStatus:s=>byId('audio-status').textContent=verify?'検証モード：音量0':s});
+ let device,renderer,disposed=false,running=true,lastWall=performance.now(),age=0,generation=0,causeNumber=1,loops=0,visible=true,lastReceipt=null,ready=false,fatal=null,renderTail=Promise.resolve();
+-let causeId=`human-r3-fixture-${causeNumber}`;let causeAt=performance.now();
++let causeId=`human-r4-fixture-${causeNumber}`;let causeAt=performance.now();
+ const held=query.has('phase')?Number(query.get('phase')):null;
+ if(held!==null&&Number.isFinite(held)&&held>=0){age=held;running=false;}
+ function tickClock(now=performance.now()) {
+   // The replay handler and RAF sample this same clock when they execute.
+   if(running&&!document.hidden)age+=now-lastWall;
+   lastWall=now;
+-  if(running&&age>=1380){age%=1380;generation++;causeId=`human-r3-fixture-${++causeNumber}`;causeAt=now-age;loops++;audio.stop('next-cause');if(ui.audio.checked)playAudio();}
++  if(running&&age>=1380){age%=1380;generation++;causeId=`human-r4-fixture-${++causeNumber}`;causeAt=now-age;loops++;audio.stop('next-cause');if(ui.audio.checked)playAudio();}
+ }
+ function inputForCurrentFrame(){const r=canvas.getBoundingClientRect();const input=makeFixture({height:Number(ui.height.value),width:r.width,viewportHeight:r.height,causeId,generation,eventAt:causeAt});input.target.invisible=!visible;return {input,width:r.width,height:r.height,dpr:window.devicePixelRatio||1};}
+ function playAudio(){const expected=causeId,expectedGeneration=generation;void audio.start({causeId,elapsedMs:age,durationMs:1200,valid:()=>!disposed&&ready&&!document.hidden&&visible&&running&&ui.audio.checked&&ui.source.checked&&causeId===expected&&generation===expectedGeneration&&age<1200});}
+@@ -32,7 +32,7 @@
+ }
+ function fail(error){fatal=String(error?.message??error);running=false;audio.stop('drawing-failed');byId('fatal').textContent=fatal;window.__humanError=fatal;}
+ async function frame(){if(disposed||fatal)return;tickClock(performance.now());if(ready&&!document.hidden){try{await draw();}catch(e){fail(e);}}if(!disposed)requestAnimationFrame(frame);}
+-byId('replay').addEventListener('click',()=>{lastWall=performance.now();age=0;generation++;causeId=`human-r3-fixture-${++causeNumber}`;causeAt=lastWall;running=true;audio.stop('replay');if(ui.audio.checked)playAudio();void draw().catch(fail);});
++byId('replay').addEventListener('click',()=>{lastWall=performance.now();age=0;generation++;causeId=`human-r4-fixture-${++causeNumber}`;causeAt=lastWall;running=true;audio.stop('replay');if(ui.audio.checked)playAudio();void draw().catch(fail);});
+ byId('pause').addEventListener('click',()=>{tickClock(performance.now());running=!running;lastWall=performance.now();audio.stop('pause-toggle');if(running&&ui.audio.checked)playAudio();void draw().catch(fail);});
+ for(const [key,element]of Object.entries(ui))element.addEventListener('change',()=>{tickClock(performance.now());if(key==='source'&&!element.checked)audio.stop('source-off');if(key==='audio'){if(element.checked)playAudio();else audio.stop('audio-off');}void draw().catch(fail);});
+ document.addEventListener('visibilitychange',()=>{lastWall=performance.now();if(document.hidden)audio.stop('hidden');else if(ready)void draw().catch(fail);});
+--- R3/tests/continuous-handoff.mjs
++++ R4/tests/continuous-handoff.mjs
+@@ -20,11 +20,13 @@
+ }
+ const center=materialHandoffAt({rowY:.5,phaseMs:440+12});assert.equal(center.fixed,.5);assert.equal(center.travelCSS,0);assert.equal(center.fixedWeight+center.transportWeight,1);
+ assert.match(WORLD_WGSL,/smoothstep\(rowArrival,rowArrival\+24\.,time\)/);
+-assert.match(WORLD_WGSL,/let combinedA=fixedA\+aL\+aR/);
++assert.match(WORLD_WGSL,/let combinedA=fixedA\+incomingA/);
+ assert.doesNotMatch(WORLD_WGSL,/transportA\*\(1\.-actor\.a\)/);
+-const base=new URL('../../human-transmutation-sol61-cloud-resume-r2/',import.meta.url);
++const inherited=JSON.parse(await readFile(new URL('../inputs/r3/MANIFEST.json',import.meta.url),'utf8'));
+ for(const name of ['sfx.mjs','assets/philia-front-nine-v752.png']){
+-  const a=await readFile(new URL(`../${name}`,import.meta.url)),b=await readFile(new URL(name,base));
+-  assert.equal(createHash('sha256').update(a).digest('hex'),createHash('sha256').update(b).digest('hex'),`Original ${name} bytes inherited`);
++  const bytes=await readFile(new URL(`../${name}`,import.meta.url)),pin=inherited.files.find(f=>f.path===name);
++  assert.ok(pin,`R3 inheritance pin exists for ${name}`);
++  assert.equal(bytes.byteLength,pin.bytes);
++  assert.equal(createHash('sha256').update(bytes).digest('hex'),pin.sha256,`Original ${name} bytes inherited`);
+ }
+ console.log(JSON.stringify({status:'pass',sampledStates,checks:['arrival-precedes-all-fixation','opaque-and-edge-alpha-preservation','full-original-material-by814','shared-timing-in-actual-WGSL','r1-SFX-and-original-sprite-exact-byte-inheritance'],GPU:'not_run',visualQuality:'not_run',ordinarySFX:'not_run'}));

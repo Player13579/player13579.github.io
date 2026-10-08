@@ -1,0 +1,7 @@
+Human Transmutation R4 is actual revised creative code: one full original-RGBA row approaches beside the original actor and fixes only after exact arrival. This removes the artificial central cut and opposed material paths responsible for the R3 fork hypothesis. It also bounds normal/reduced row shear to .45/.18. It does not claim the resulting native shape is accepted.
+
+Original target/size, original PNG, SFX, strong direct emission, local observer spread, 1200 ms lifetime and ordinary actor after completion are preserved. R3 source pins and authority snapshots close unchanged. No new raster, native/browser session, main/catalog/public change or creative author reattribution occurred.
+
+Focused CPU and syntax checks pass; the earlier floating equality assertion failure is retained and corrected. Actual WebGPU compilation, paired visual comparison, normally paced full first/next loops, ordinary listening, Safari/iPad, main integration and gallery/public delivery remain unverified. Exact execution model identity is unresolved despite the requested gpt-6.1-sol/high assignment; this worker's accepted contribution to the R4 assignment is 100%, with historical work left under its own attribution.
+
+Actual start: 2026-10-07T23:54:27.614022+00:00. Actual code edit recorded after 2026-10-07T23:55:48.549990+00:00. The assigned new output is `/workspace/dva-cloud/creative/human-transmutation-sol61-r4-material-quality`. Sealing this actual edition consumes R4: created 4/5, remaining 1, unadopted, quality not accepted, no automatic R5.

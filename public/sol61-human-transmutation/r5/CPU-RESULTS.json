@@ -1,0 +1,194 @@
+{
+  "at": "2026-10-08T06:31:27.002875+00:00",
+  "status": "CPU_PASS_ONLY",
+  "actualExecutionModel": "UNEXPOSED",
+  "native": "NOT_RUN",
+  "quality": "NOT_ACCEPTED",
+  "checks": [
+    {
+      "syntax": "cause.mjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "syntax": "core.mjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "syntax": "fixture.mjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "syntax": "glints.mjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "syntax": "handoff-state.mjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "syntax": "preview.mjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "syntax": "sfx.mjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "syntax": "shader.mjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "test": "continuous-handoff.mjs",
+      "exitCode": 0,
+      "stdout": {
+        "status": "pass",
+        "sampledStates": 13560,
+        "checks": [
+          "arrival-precedes-all-fixation",
+          "opaque-and-edge-alpha-preservation",
+          "full-original-material-by814",
+          "shared-timing-in-actual-WGSL",
+          "r1-SFX-and-original-sprite-exact-byte-inheritance"
+        ],
+        "GPU": "not_run",
+        "visualQuality": "not_run",
+        "ordinarySFX": "not_run"
+      },
+      "stderr": ""
+    },
+    {
+      "test": "contracts.mjs",
+      "exitCode": 0,
+      "stdout": {
+        "status": "pass",
+        "checks": [
+          "strict-target",
+          "exact-finite-lifetime",
+          "original-crop-bounds",
+          "hidden-target",
+          "actual-support-H48-H64-H128",
+          "finite-synthetic-PCM",
+          "verify-zero-audio-allocation"
+        ],
+        "nativeGPU": "not_run",
+        "visualQuality": "not_run",
+        "ordinarySFX": "not_run"
+      },
+      "stderr": ""
+    },
+    {
+      "test": "glints.mjs",
+      "exitCode": 0,
+      "stdout": {
+        "status": "pass",
+        "pulses": 24005,
+        "gateChecks": 25,
+        "psfChecks": 27,
+        "peaks": [
+          {
+            "flux": 7.5,
+            "phaseMs": 183.25,
+            "index": 0,
+            "arrivalMs": 124.2222222222222
+          },
+          {
+            "flux": 7.5,
+            "phaseMs": 326.5,
+            "index": 1,
+            "arrivalMs": 267.3333333333333
+          },
+          {
+            "flux": 7.5,
+            "phaseMs": 438.5,
+            "index": 2,
+            "arrivalMs": 379.3333333333333
+          },
+          {
+            "flux": 7.5,
+            "phaseMs": 556.75,
+            "index": 3,
+            "arrivalMs": 497.55555555555554
+          },
+          {
+            "flux": 7.5,
+            "phaseMs": 731,
+            "index": 4,
+            "arrivalMs": 671.7777777777778
+          }
+        ],
+        "checks": [
+          "fixation-before-emission",
+          "foot-to-crown-same-cause-progression",
+          "source-off-target-hidden-expiry-no-emission",
+          "one-fixed-angle-all-sites-and-times",
+          "continuous-width-attenuation-and-scale",
+          "actual-MRT-source-consumed-by-observer",
+          "R4-bloom-unchanged"
+        ],
+        "native": "not_run",
+        "quality": "not_accepted"
+      },
+      "stderr": ""
+    },
+    {
+      "test": "renderer-path.mjs",
+      "exitCode": 0,
+      "stdout": {
+        "status": "pass",
+        "submitted": 8,
+        "checks": [
+          "actual-core-3-MRT-write-and-4-pass-consumption",
+          "same-frame-cause-target-registration",
+          "source-observer-glints-controls-through-live-render",
+          "finite-expiry-active-uniform-zero",
+          "hidden-target-visibility-zero",
+          "target-movement-changes-source-projection"
+        ],
+        "evidence": "CPU-device-double-calls-real-core; no native WGSL compilation or quality claim"
+      },
+      "stderr": ""
+    },
+    {
+      "test": "unsplit-material.mjs",
+      "exitCode": 0,
+      "stdout": {
+        "status": "pass",
+        "oldGapCases": 12,
+        "originalCenterCases": 12,
+        "rgbaSamples": 9216,
+        "motionSamples": 13440,
+        "maxShear": 0.4499999975744392,
+        "maxReducedShear": 0.17999999902982772,
+        "checks": [
+          "actual-original-center-alpha-and-R3-counterexample",
+          "single-map-full-RGBA-cross-section",
+          "bounded-row-shear-normal-reduced",
+          "one-direction-convergence-before-fixation",
+          "actual-WORLD-path-used-by-core",
+          "original-source-emission-bloom-preserved-with-additive-glint-source-and-rays"
+        ],
+        "evidenceKind": "CPU-original-alpha-and-analytic-map-plus-source-path-audit",
+        "GPU": "not_run",
+        "visualQuality": "not_run",
+        "ordinarySFX": "not_run"
+      },
+      "stderr": ""
+    }
+  ]
+}

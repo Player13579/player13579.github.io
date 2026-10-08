@@ -1,0 +1,120 @@
+{
+    "schemaVersion":  2,
+    "updatedAt":  "2026-10-07T06:50:40.4117596Z",
+    "appVersion":  {
+
+                   },
+    "modelCacheClientVersion":  "0.160.1",
+    "modelCacheFetchedAt":  "2026-10-07T06:49:30.325860200Z",
+    "modelCacheWriteTicks":  639269525703267505,
+    "modelCacheHash":  "2E1E41999649A97C2870C32806FA204EACFC591E36EDC40FE6DD2F5838F40EAF",
+    "scriptHash":  "3900DD4FCEEE38ABACBB9786CAA3B0E500D04D13A534ACD52C763D6E49603716",
+    "catalog":  [
+                    {
+                        "slug":  "gpt-6.1-sol",
+                        "displayName":  "GPT-6.1-Sol",
+                        "description":  "Latest workhorse model for coding and everyday work.",
+                        "priority":  1,
+                        "supportedReasoningLevels":  [
+                                                         "low",
+                                                         "medium",
+                                                         "high",
+                                                         "xhigh",
+                                                         "max",
+                                                         "ultra"
+                                                     ]
+                    },
+                    {
+                        "slug":  "gpt-6-astra",
+                        "displayName":  "GPT-6-Astra",
+                        "description":  "Frontier intelligence for the most demanding work.",
+                        "priority":  2,
+                        "supportedReasoningLevels":  [
+                                                         "low",
+                                                         "medium",
+                                                         "high",
+                                                         "xhigh",
+                                                         "max",
+                                                         "ultra"
+                                                     ]
+                    },
+                    {
+                        "slug":  "gpt-6-sol",
+                        "displayName":  "GPT-6-Sol",
+                        "description":  "Previous generation workhorse model.",
+                        "priority":  3,
+                        "supportedReasoningLevels":  [
+                                                         "low",
+                                                         "medium",
+                                                         "high",
+                                                         "xhigh",
+                                                         "max",
+                                                         "ultra"
+                                                     ]
+                    },
+                    {
+                        "slug":  "gpt-6-luna",
+                        "displayName":  "GPT-6-Luna",
+                        "description":  "Fast and affordable model for easier tasks.",
+                        "priority":  4,
+                        "supportedReasoningLevels":  [
+                                                         "low",
+                                                         "medium",
+                                                         "high",
+                                                         "xhigh",
+                                                         "max"
+                                                     ]
+                    },
+                    {
+                        "slug":  "gpt-5.6-sol",
+                        "displayName":  "GPT-5.6-Sol",
+                        "description":  "Older generation workhorse model.",
+                        "priority":  5,
+                        "supportedReasoningLevels":  [
+                                                         "low",
+                                                         "medium",
+                                                         "high",
+                                                         "xhigh",
+                                                         "max",
+                                                         "ultra"
+                                                     ]
+                    },
+                    {
+                        "slug":  "gpt-5.6-terra",
+                        "displayName":  "GPT-5.6-Terra",
+                        "description":  "Older balanced model for straightforward work.",
+                        "priority":  8,
+                        "supportedReasoningLevels":  [
+                                                         "low",
+                                                         "medium",
+                                                         "high",
+                                                         "xhigh",
+                                                         "max",
+                                                         "ultra"
+                                                     ]
+                    },
+                    {
+                        "slug":  "gpt-5.6-luna",
+                        "displayName":  "GPT-5.6-Luna",
+                        "description":  "Older fast and efficient model.",
+                        "priority":  9,
+                        "supportedReasoningLevels":  [
+                                                         "low",
+                                                         "medium",
+                                                         "high",
+                                                         "xhigh",
+                                                         "max"
+                                                     ]
+                    }
+                ],
+    "roles":  {
+                  "specialist":  "gpt-6.1-sol",
+                  "balanced":  "gpt-6.1-sol",
+                  "frontier":  "gpt-6.1-sol",
+                  "bounded":  "gpt-6-luna",
+                  "efficient":  "gpt-6-luna"
+              },
+    "changedFiles":  [
+
+                     ]
+}

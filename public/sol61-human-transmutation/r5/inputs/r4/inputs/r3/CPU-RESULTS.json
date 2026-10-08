@@ -1,0 +1,52 @@
+{
+  "schema": "human-r3-cpu-results/v1",
+  "status": "pass",
+  "receipts": [
+    {
+      "receipt": "/workspace/dva-cloud/NEWreceipts/human-r3-motion-focused-luna-r1",
+      "result": {
+        "schema": "human-r3-motion-focused-result/v1",
+        "status": "pass",
+        "sourceSnapshot": "inputs/source-snapshot",
+        "checks": {
+          "actualExportedWGSLExpressions": "pass",
+          "finiteDifferenceSamples": 4537350,
+          "boundarySamples": 16272,
+          "maxObservedRowShear": {
+            "normal": 0.9997333605414688,
+            "reducedMotion": 0.3998933442165873
+          },
+          "fixationImpliesZeroTravel": "pass",
+          "complementaryAlphaAtZeroOffset": "pass",
+          "originalMaterialRestoredByMs": 814,
+          "sourceLifetimeMs": 1200
+        },
+        "gpu": "not_run",
+        "wgslCompilation": "not_run",
+        "visualQuality": "not_assessed",
+        "nativeOrMainGameAcceptance": "not_claimed"
+      },
+      "resultSha256": "f0c82fe663a4766e7602a333ef0a4604a1b2cff122b054907b577cb2c8530fce"
+    },
+    {
+      "receipt": "/workspace/dva-cloud/NEWreceipts/human-r3-inherited-cpu-followup-luna-r1",
+      "result": {
+        "schema": "human-r3-inherited-cpu-followup-result/v1",
+        "status": "pass",
+        "candidateFileCount": 13,
+        "mjsSyntaxChecks": "pass",
+        "contracts": "pass",
+        "continuousHandoff": "pass",
+        "sourceTreeChanged": false,
+        "gpu": "not_run",
+        "visualQuality": "not_assessed",
+        "ordinarySFX": "not_assessed"
+      },
+      "resultSha256": "04759199ab758c48a8375d0b19937b043f9875cc4cf9bc8bd3d469ffceb4891e"
+    }
+  ],
+  "scope": "Actual shader-text/shared scalar model plus inherited ABI/lifetime/SFX/source preservation and JavaScript syntax; no real GPU execution",
+  "native": "not_run",
+  "visualQuality": "not_assessed",
+  "ordinarySFX": "not_assessed"
+}

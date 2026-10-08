@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {planHumanTransmutation}from'../cause.mjs';
+import {makeFixture}from'../fixture.mjs';
+import {synthesizeHumanSFX,createHumanSFX}from'../sfx.mjs';
+const fixture=makeFixture();
+const plan=elapsed=>planHumanTransmutation({...fixture,visualElapsedMs:elapsed});
+assert.equal(plan(0).actualActorHeight,64);assert.equal(plan(1199.99).active,true);assert.equal(plan(1200).active,false);assert.equal(plan(-1).active,false);
+assert.equal(plan(500).targetId,'revived-philia');assert.notEqual(plan(500).targetId,plan(500).casterId);
+assert.throws(()=>planHumanTransmutation({...fixture,target:{...fixture.target,id:'caster-distinct'},visualElapsedMs:0}),/targetId/);
+assert.throws(()=>planHumanTransmutation({...fixture,sprite:{...fixture.sprite,crop:{x:700,y:0,width:256,height:256}},visualElapsedMs:0}),/outside/);
+assert.equal(planHumanTransmutation({...fixture,target:{...fixture.target,invisible:true},visualElapsedMs:1}).active,false);
+for(const height of[48,64,128])assert.equal(planHumanTransmutation({...makeFixture({height}),visualElapsedMs:360}).actualActorHeight,height);
+const pcm=synthesizeHumanSFX();assert.equal(pcm.length,57600);assert.ok(pcm.every(Number.isFinite));assert.ok(pcm.some(x=>Math.abs(x)>.02));assert.ok(pcm.every(x=>Math.abs(x)<1));assert.ok(pcm.slice(-1000).every(x=>x===0));
+let allocations=0;globalThis.AudioContext=class{constructor(){allocations++;throw new Error('verify must not allocate')}};
+const audio=createHumanSFX({verify:true});assert.equal(await audio.start({causeId:'v',elapsedMs:0}),false);assert.equal(allocations,0);assert.equal(audio.getState().allocated,false);await audio.dispose();
+console.log(JSON.stringify({status:'pass',checks:['strict-target','exact-finite-lifetime','original-crop-bounds','hidden-target','actual-support-H48-H64-H128','finite-synthetic-PCM','verify-zero-audio-allocation'],nativeGPU:'not_run',visualQuality:'not_run',ordinarySFX:'not_run'}));
