@@ -1,0 +1,168 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "acceleration-benefit-sol61",
+  "versionId": "acceleration-benefit-zero-sol61-r3",
+  "entry": "index.html",
+  "effectAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "partial",
+  "technicalReplayStatus": "pass-limited-native-current-parent",
+  "files": {
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "index.html": "539234632d980328e99928d7e051e64b1034d1bdf22d53bc91de44313e5c00af",
+    "gallery-adapter.mjs": "e968d0f0c0900f69f667d7bad6f04862a8894e755489e74845a98cac3317cd4a",
+    "effect.mjs": "6fbe22dca0c5f500e7bcbf0fe03cf401a8ad8883fc9b483af8f7c0084a785455"
+  },
+  "sourceSeal": {
+    "path": "outputs/request-20261008/acceleration-benefit-zero-sol61-r3/effect.mjs",
+    "sha256": "6fbe22dca0c5f500e7bcbf0fe03cf401a8ad8883fc9b483af8f7c0084a785455",
+    "sourceManifestSha256": "74b4b23e695876dd8dfc47cd2eee928cadb59ad5354f8678f5fffc487e18a330",
+    "copiedBytesMatch": true,
+    "creativeSourceFrozen": true,
+    "sourceFileCount": 11
+  },
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format-srgb-view",
+    "linearLightPremultipliedAlpha": true,
+    "durationMs": 1000,
+    "repeatGapMs": 600
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "methods": [
+      "hold(elapsedMs, options)",
+      "setPhase(elapsedMs, options)",
+      "resume()",
+      "replay()"
+    ],
+    "holdRangeMs": [
+      0,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "options": [
+      "obs",
+      "sparkle",
+      "source",
+      "main",
+      "bodyResponse",
+      "includeActor",
+      "direction",
+      "reducedMotion"
+    ],
+    "waitsForGpuQueueCompletion": true
+  },
+  "validation": {
+    "nodeSyntax": "passed",
+    "hostTests": "passed",
+    "nativeWebGpuReplay": "passed-limited-actual-parent",
+    "visualQuality": "partial",
+    "normalAudioCapability": "not-run",
+    "normalAudioListening": "not-run",
+    "gameIntegration": "not-run"
+  },
+  "nativeVerification": {
+    "status": "PASS_ACTUAL_PARENT_NATIVE_WEBGPU_R3",
+    "attemptId": "3aefb2cd-0053-4ac2-9ff4-0dbee1c8a177",
+    "browser": "Microsoft Edge 154.0.4258.62",
+    "playwright": "1.62.1",
+    "verifyAudioMuted": true,
+    "actualCurrentParent": true,
+    "viewport": {
+      "width": 1440,
+      "height": 1000,
+      "dpr": 1
+    },
+    "canvas": {
+      "tag": "CANVAS",
+      "type": "GPUCanvasContext",
+      "width": 980,
+      "height": 620,
+      "cssRect": {
+        "x": 0,
+        "y": 0,
+        "width": 980,
+        "height": 620
+      },
+      "connected": true
+    },
+    "sourceHashMatches": true,
+    "heldFrameCount": 22,
+    "phaseAgesMs": [
+      180,
+      400,
+      650,
+      830,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "controls": [
+      "bodyResponse",
+      "includeActor",
+      "main",
+      "obs",
+      "source",
+      "sparkle"
+    ],
+    "continuousResume": true,
+    "replayAfterRaf": true,
+    "naturalRepeat": true,
+    "simulatedVisibilityLifecycle": {
+      "before": {
+        "frames": 116,
+        "elapsedMs": 376.60000002384186
+      },
+      "hidden": {
+        "frames": 116,
+        "elapsedMs": 376.60000002384186
+      },
+      "visible": {
+        "frames": 125,
+        "elapsedMs": 687.6000000238419,
+        "failure": null
+      },
+      "hiddenFramesStable": true,
+      "hiddenClockStable": true,
+      "visibleResumed": true,
+      "version": "acceleration-benefit-zero-sol61-r3"
+    },
+    "shaderModules": 1,
+    "shaderErrors": 0,
+    "queueSubmissions": 133,
+    "queueCompletions": 48,
+    "uncapturedGpuErrors": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "requestErrors": 0,
+    "cleanup": {
+      "browserClosed": true,
+      "serverClosed": true
+    },
+    "evidencePath": "outputs/request-20261008/acceleration-r3-catalog-native-final-luna-r1/native-attempts/3aefb2cd-0053-4ac2-9ff4-0dbee1c8a177/REPORT.json",
+    "evidenceSha256": "95ac51fdd7f607d4910e1acfb934683a316549f0b1f1b3d7a83ac454f78b4edd",
+    "testedCatalogSha256": "8bc4a9bb229b480d770722a18a9db1d763a23124f0ab1763f32077fc8edbbb84",
+    "testedPackageManifestSha256": "1f3a6ea6783169148fe2f38af095faa7b50d8c9e7fbfedc46a07f81b2252995f",
+    "exactFinalMetadataCandidateReplay": "not-run-after-metadata-finalization"
+  }
+}
