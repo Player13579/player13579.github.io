@@ -1,0 +1,47 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "acceleration-benefit-sol61",
+  "versionId": "acceleration-benefit-zero-sol61-r1",
+  "entry": "index.html",
+  "effectAuthor": "GPT-6.1-Sol",
+  "adoption": "unadopted",
+  "qualityStatus": "partial",
+  "technicalReplayStatus": "pending-native-webgpu",
+  "files": {
+    "index.html": "224053eebc6772a23ed88cf77320e27bf9fdb80ca36864d7b1b0f953098fb7cf",
+    "gallery-adapter.mjs": "e968d0f0c0900f69f667d7bad6f04862a8894e755489e74845a98cac3317cd4a",
+    "effect.mjs": "c0a8c6014d1fbf4bde8513da41d024ee5a4d87d935a54ee34ce269a3492843a5",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "crop": { "x": 62, "y": 15, "width": 136, "height": 225 },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format-srgb-view",
+    "linearLightPremultipliedAlpha": true,
+    "durationMs": 1000,
+    "repeatGapMs": 600
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "methods": ["hold(elapsedMs, options)", "setPhase(elapsedMs, options)", "resume()", "replay()"],
+    "holdRangeMs": [0, 1000],
+    "bodyHeightsCssPx": [64, 192],
+    "options": ["obs", "sparkle", "source", "main", "bodyResponse", "includeActor", "direction", "reducedMotion"],
+    "waitsForGpuQueueCompletion": true
+  },
+  "validation": {
+    "nodeSyntax": "passed",
+    "hostTests": "passed",
+    "nativeWebGpuReplay": "pending",
+    "visualQuality": "partial",
+    "normalAudioListening": "not-run",
+    "gameIntegration": "not-run"
+  }
+}
