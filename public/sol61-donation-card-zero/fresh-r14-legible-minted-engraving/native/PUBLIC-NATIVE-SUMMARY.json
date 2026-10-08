@@ -1,0 +1,66 @@
+{
+  "schema": "dva-r495-public-native-delivery-evidence-summary/v1",
+  "scope": "Actual public native replay evidence only; full visual quality remains pending/not accepted.",
+  "actualPublicSource": {
+    "commit": "3c2f4c7d50df6104ae43ce3ba2024a7e64c84fa3",
+    "tree": "d6b83df3da18dd94e9cf516a540954d1d4420d5f",
+    "parentCatalogSha256": "10ab4a6aa8080f0b8f564e55dd19fa35e86485187c82e683f2d1836d32987701",
+    "source": "root-donation-r14-durable-entity-actual-public-parent-r486"
+  },
+  "independentGate": {
+    "path": "donation-r486-public-native-independent-evidence-gate-r490/INDEPENDENT-RECEIPT.json",
+    "sha256": "508f975354a69bf8c02abde39f06c142ae2a500ac23f19e42a3f447ff3e5239c",
+    "executionProofSha256": "f26cbace12ec67c6e133589ce00fadce165b892b436ab37cdcf78518096b61c6"
+  },
+  "run": {
+    "status": "CAPTURED_ACTUAL_PUBLIC_HEADED_R14_NATURAL_CYCLE_VIA_PARENT_UI",
+    "durationSeconds": 17.765,
+    "fetchReadbacks": 13,
+    "allFetchRowsCommitPinned": true,
+    "passiveResponses": 13,
+    "allPassiveResponsesMatchAndPinned": true,
+    "publicNetworkMismatches": 0,
+    "naturalFixture3": {
+      "terminalAgeMs": 2400,
+      "sampleCount": 39,
+      "submit": 11,
+      "queueDrained": true
+    },
+    "fixture4Held": {
+      "ageMs": 1100,
+      "submit": 18,
+      "passes": 6,
+      "completed": true
+    },
+    "ownedProcessCleanup": true,
+    "sfx": "NOTRUN",
+    "hardwarePerformance": "not established",
+    "fullQuality": "pending/not accepted"
+  },
+  "screenshots": [
+    {
+      "path": "R486-actual-parent-selected-canvas.png",
+      "bytes": 2157,
+      "sha256": "07ca4d54da33449eef485e9307e1effb9f54f434d56cb7b1480e369ec9538281",
+      "width": 736,
+      "height": 466,
+      "runRecordMatches": true
+    },
+    {
+      "path": "R486-held-active-after-natural-next-cause.png",
+      "bytes": 90661,
+      "sha256": "6d430d36a4a5c6b2d44eb3d00aa8c464cc520bef2ed28b5dff188804cd8cfa56",
+      "width": 980,
+      "height": 900,
+      "runRecordMatches": true
+    },
+    {
+      "path": "R486-natural-terminal-2400ms.png",
+      "bytes": 4797,
+      "sha256": "d224f8e1113c9e21b475792d6eb5f4bdcd98bc492232539bf53f9d12e710cd52",
+      "width": 736,
+      "height": 466,
+      "runRecordMatches": true
+    }
+  ]
+}
