@@ -1,0 +1,2368 @@
+{
+  "schema": "human-r3-actual-native-outcome/v1",
+  "status": "SOFTWARE_WEBGPU_CAPTURED_REVIEW_PENDING",
+  "native": "software_webgpu_captured",
+  "quality": "review_pending",
+  "public": "not_assessed",
+  "versionId": "human-transmutation-sol61-r3",
+  "sourcePinsUnchangedDuringRun": true,
+  "sourceFilesVerified": 16,
+  "httpClosure": {
+    "status": "PASS_HTTP_CLOSURE",
+    "filesChecked": 16,
+    "files": [
+      {
+        "path": "/CPU-RESULTS.json",
+        "status": 200,
+        "bytes": 1897,
+        "sha256": "3bbb622ad05c03e4d51a4a6b12660d5dd537b9f566414d5bbd75df5ca377a2bc"
+      },
+      {
+        "path": "/DESIGN.md",
+        "status": 200,
+        "bytes": 5202,
+        "sha256": "91329c79c73a02df9f680b19bb09758e69d16c582c6544d8a912b4b11a8bdb3d"
+      },
+      {
+        "path": "/HANDOFF.md",
+        "status": 200,
+        "bytes": 3025,
+        "sha256": "49512f87552e67d613f6249ad5f51ca014aa8bd3a3314976ec9184d0fa9572d4"
+      },
+      {
+        "path": "/READY.json",
+        "status": 200,
+        "bytes": 523,
+        "sha256": "536f92dbaa2636d05423c0734c2099b9eb4cc2885617ffc933c7819d6472d01f"
+      },
+      {
+        "path": "/WORK.json",
+        "status": 200,
+        "bytes": 7397,
+        "sha256": "4d1332a958619d48960035e8cafff6b6d0fc5df79e596bbd845fc760917daaaf"
+      },
+      {
+        "path": "/assets/philia-front-nine-v752.png",
+        "status": 200,
+        "bytes": 399216,
+        "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+      },
+      {
+        "path": "/cause.mjs",
+        "status": 200,
+        "bytes": 4130,
+        "sha256": "655582c831aa01915e92ea0d03504b74ea6f863f0d713b2f422a247316d94ff4"
+      },
+      {
+        "path": "/core.mjs",
+        "status": 200,
+        "bytes": 10338,
+        "sha256": "8219152936c52290443d7944d4c98db8efc7aa821ab1822ca768709e86b18cdd"
+      },
+      {
+        "path": "/fixture.mjs",
+        "status": 200,
+        "bytes": 1088,
+        "sha256": "f21a50cd5e75a85fb15f671479ee154a152f3d383a7fa41292f2ea71b7e7f146"
+      },
+      {
+        "path": "/handoff-state.mjs",
+        "status": 200,
+        "bytes": 1524,
+        "sha256": "a526f79066cf79970f932a40d675f23f959987e649bcd94676b70e3ed4f78f8a"
+      },
+      {
+        "path": "/index.html",
+        "status": 200,
+        "bytes": 2061,
+        "sha256": "7fe597ddba1d2105377b34334d9429cc03aa0eae4e91772f3429eb13e1f0e709"
+      },
+      {
+        "path": "/preview.mjs",
+        "status": 200,
+        "bytes": 6841,
+        "sha256": "a15f1e59fd992dd442c3352fa35bab5a75c250fa04e7f7c8a18595b0c934d7fc"
+      },
+      {
+        "path": "/sfx.mjs",
+        "status": 200,
+        "bytes": 3240,
+        "sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2"
+      },
+      {
+        "path": "/shader.mjs",
+        "status": 200,
+        "bytes": 6941,
+        "sha256": "869bc5f9b7d39f95925a0566801338d0ea1654108d54818c1b6ee23b8953196b"
+      },
+      {
+        "path": "/tests/continuous-handoff.mjs",
+        "status": 200,
+        "bytes": 2383,
+        "sha256": "56a05e0466980a091b984fe3e8da58c0e85f761171c1bc09a84a9aa8cc92d8c5"
+      },
+      {
+        "path": "/tests/contracts.mjs",
+        "status": 200,
+        "bytes": 1956,
+        "sha256": "34487843315d91f192958e070f36472fcd8a1d98061de43c0792f96497db9881"
+      }
+    ],
+    "phaseProbeQuery": "/index.html?verify&phase=452&height=64",
+    "queryReturnsExactIndexBytes": true
+  },
+  "runtime": {
+    "browserVersion": "151.0.7922.34",
+    "playwright": "1.62.0",
+    "chromiumSandboxRequested": true,
+    "actualArguments": [
+      "/home/agent/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+      "--disable-field-trial-config",
+      "--disable-background-networking",
+      "--disable-background-timer-throttling",
+      "--disable-backgrounding-occluded-windows",
+      "--disable-back-forward-cache",
+      "--disable-breakpad",
+      "--disable-client-side-phishing-detection",
+      "--disable-component-extensions-with-background-pages",
+      "--disable-component-update",
+      "--no-default-browser-check",
+      "--disable-default-apps",
+      "--disable-dev-shm-usage",
+      "--disable-edgeupdater",
+      "--disable-extensions",
+      "--disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion",
+      "--enable-features=CDPScreenshotNewSurface",
+      "--allow-pre-commit-input",
+      "--disable-hang-monitor",
+      "--disable-ipc-flooding-protection",
+      "--disable-popup-blocking",
+      "--disable-prompt-on-repost",
+      "--disable-renderer-backgrounding",
+      "--disable-updater-scheduler",
+      "--force-color-profile=srgb",
+      "--metrics-recording-only",
+      "--no-first-run",
+      "--password-store=basic",
+      "--use-mock-keychain",
+      "--no-service-autorun",
+      "--export-tagged-pdf",
+      "--disable-search-engine-choice-screen",
+      "--unsafely-disable-devtools-self-xss-warnings",
+      "--edge-skip-compat-layer-relaunch",
+      "--disable-infobars",
+      "--disable-search-engine-choice-screen",
+      "--disable-sync",
+      "--enable-unsafe-swiftshader",
+      "--enable-automation",
+      "--ozone-platform=x11",
+      "--window-size=1100,820",
+      "--enable-unsafe-webgpu",
+      "--enable-features=Vulkan",
+      "--use-vulkan=swiftshader",
+      "--use-gl=angle",
+      "--use-angle=swiftshader",
+      "--disable-vulkan-surface",
+      "--enable-logging",
+      "--log-file=/workspace/dva-cloud/NEWreceipts/human-r3-actual-native-luna-r1/matchingartifacts/chromium.log",
+      "--v=1",
+      "--remote-debugging-pipe",
+      "--no-startup-window",
+      "--flag-switches-begin",
+      "--flag-switches-end",
+      "--enable-unsafe-swiftshader"
+    ],
+    "systemInfoBefore": {
+      "gpu": {
+        "devices": [
+          {
+            "vendorId": 65535,
+            "deviceId": 65535,
+            "vendorString": "Google Inc. (Google)",
+            "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+            "driverVendor": "SwANGLE",
+            "driverVersion": "5.0.0"
+          }
+        ],
+        "auxAttributes": {
+          "amdSwitchable": false,
+          "canSupportThreadedTextureMailbox": false,
+          "directRenderingVersion": "",
+          "displayType": "ANGLE_SWIFTSHADER",
+          "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_compressed_texture_etc GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_image GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_object_flags GL_ANGLE_memory_size GL_ANGLE_multi_draw GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_read_only_depth_stencil_feedback_loops GL_ANGLE_relaxed_vertex_attribute_type GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_rgbx_internal_format GL_ANGLE_robust_client_memory GL_ANGLE_robust_fragment_shader_output GL_ANGLE_robust_resource_initialization GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_ANGLE_vulkan_image GL_ANGLE_yuv_internal_format GL_APPLE_clip_distance GL_ARM_rgba8 GL_ARM_shader_framebuffer_fetch GL_ARM_shader_framebuffer_fetch_depth_stencil GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_array GL_EXT_EGL_image_external_wrap_modes GL_EXT_EGL_image_storage GL_EXT_base_instance GL_EXT_blend_minmax GL_EXT_buffer_storage GL_EXT_clear_texture GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_compressed_ETC1_RGB8_sub_texture GL_EXT_conservative_depth GL_EXT_copy_image GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_memory_object GL_EXT_memory_object_fd GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_robustness GL_EXT_sRGB GL_EXT_sRGB_write_control GL_EXT_semaphore GL_EXT_semaphore_fd GL_EXT_separate_shader_objects GL_EXT_shader_framebuffer_fetch GL_EXT_shader_framebuffer_fetch_non_coherent GL_EXT_shader_non_constant_global_initializers GL_EXT_shader_texture_lod GL_EXT_shadow_samplers GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_cube_map_array GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_rg GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_RG8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_blend_equation_advanced GL_KHR_debug GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_KHR_texture_compression_astc_ldr GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_polygon_mode GL_NV_read_depth GL_NV_read_depth_stencil GL_NV_read_stencil GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_EGL_sync GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_compressed_paletted_texture GL_OES_copy_image GL_OES_depth24 GL_OES_depth32 GL_OES_depth_texture GL_OES_depth_texture_cube_map GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_shading GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_3D GL_OES_texture_border_clamp GL_OES_texture_cube_map_array GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OES_vertex_half_float GL_OES_vertex_type_10_10_10_2 GL_OVR_multiview GL_OVR_multiview2 GL_QCOM_texture_lod_bias ",
+          "glImplementationParts": "(gl=egl-angle,angle=swiftshader)",
+          "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+          "glResetNotificationStrategy": 33362,
+          "glVendor": "Google Inc. (Google)",
+          "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+          "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_surface_orientation EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_EXT_image_gl_colorspace EGL_KHR_gl_colorspace EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_fence_sync EGL_KHR_wait_sync EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_KHR_swap_buffers_with_damage EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_IMG_context_priority EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_EXT_buffer_age EGL_ANGLE_create_surface_swap_interval EGL_ANGLE_vulkan_image EGL_KHR_partial_update EGL_ANGLE_global_fence_sync EGL_ANGLE_memory_usage_report ",
+          "glWsVendor": "Google Inc. (Google)",
+          "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+          "hardwareSupportsVulkan": true,
+          "inProcessGpu": false,
+          "initializationTime": 0.036942,
+          "isAsan": false,
+          "isClangCoverage": false,
+          "jpegDecodeAcceleratorSupported": false,
+          "maxMsaaSamples": "4",
+          "optimus": false,
+          "passthroughCmdDecoder": true,
+          "pixelShaderVersion": "3.00",
+          "processCrashCount": 0,
+          "sandboxed": false,
+          "skiaBackendType": "GaneshVulkan",
+          "subpixelFontRendering": true,
+          "targetCpuBits": 64,
+          "vertexShaderVersion": "3.00",
+          "visibilityCallbackCallCount": 0
+        },
+        "featureStatus": {
+          "2d_canvas": "enabled",
+          "direct_rendering_display_compositor": "disabled_off_ok",
+          "gpu_compositing": "enabled",
+          "multiple_raster_threads": "enabled_on",
+          "opengl": "enabled_on",
+          "rasterization": "enabled",
+          "raw_draw": "disabled_off_ok",
+          "skia_graphite": "disabled_off",
+          "trees_in_viz": "disabled_off",
+          "video_decode": "enabled",
+          "video_encode": "disabled_software",
+          "vulkan": "enabled_on",
+          "webgl": "enabled",
+          "webgpu": "unavailable_software",
+          "webgpu_on_vk_via_gl_interop": "disabled_off",
+          "webnn": "disabled_off"
+        },
+        "driverBugWorkarounds": [
+          "enable_webgl_timer_query_extensions",
+          "exit_on_context_lost",
+          "disabled_extension_GL_KHR_blend_equation_advanced",
+          "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+        ],
+        "videoDecoding": [],
+        "videoEncoding": []
+      },
+      "modelName": "",
+      "modelVersion": "",
+      "commandLine": "/home/agent/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --enable-automation --ozone-platform=x11 --window-size=1100,820 --enable-unsafe-webgpu --enable-features=Vulkan --use-vulkan=swiftshader --use-gl=angle --use-angle=swiftshader --disable-vulkan-surface --enable-logging --log-file=/workspace/dva-cloud/NEWreceipts/human-r3-actual-native-luna-r1/matchingartifacts/chromium.log --v=1 --user-data-dir=/tmp/playwright_chromiumdev_profile-LJkxqz --remote-debugging-pipe --no-startup-window --flag-switches-begin --flag-switches-end --enable-unsafe-swiftshader"
+    },
+    "systemInfoAfter": {
+      "gpu": {
+        "devices": [
+          {
+            "vendorId": 65535,
+            "deviceId": 65535,
+            "vendorString": "Google Inc. (Google)",
+            "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+            "driverVendor": "SwANGLE",
+            "driverVersion": "5.0.0"
+          }
+        ],
+        "auxAttributes": {
+          "amdSwitchable": false,
+          "canSupportThreadedTextureMailbox": false,
+          "directRenderingVersion": "",
+          "displayType": "ANGLE_SWIFTSHADER",
+          "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_compressed_texture_etc GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_image GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_object_flags GL_ANGLE_memory_size GL_ANGLE_multi_draw GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_read_only_depth_stencil_feedback_loops GL_ANGLE_relaxed_vertex_attribute_type GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_rgbx_internal_format GL_ANGLE_robust_client_memory GL_ANGLE_robust_fragment_shader_output GL_ANGLE_robust_resource_initialization GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_ANGLE_vulkan_image GL_ANGLE_yuv_internal_format GL_APPLE_clip_distance GL_ARM_rgba8 GL_ARM_shader_framebuffer_fetch GL_ARM_shader_framebuffer_fetch_depth_stencil GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_array GL_EXT_EGL_image_external_wrap_modes GL_EXT_EGL_image_storage GL_EXT_base_instance GL_EXT_blend_minmax GL_EXT_buffer_storage GL_EXT_clear_texture GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_compressed_ETC1_RGB8_sub_texture GL_EXT_conservative_depth GL_EXT_copy_image GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_memory_object GL_EXT_memory_object_fd GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_robustness GL_EXT_sRGB GL_EXT_sRGB_write_control GL_EXT_semaphore GL_EXT_semaphore_fd GL_EXT_separate_shader_objects GL_EXT_shader_framebuffer_fetch GL_EXT_shader_framebuffer_fetch_non_coherent GL_EXT_shader_non_constant_global_initializers GL_EXT_shader_texture_lod GL_EXT_shadow_samplers GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_cube_map_array GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_rg GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_RG8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_blend_equation_advanced GL_KHR_debug GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_KHR_texture_compression_astc_ldr GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_polygon_mode GL_NV_read_depth GL_NV_read_depth_stencil GL_NV_read_stencil GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_EGL_sync GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_compressed_paletted_texture GL_OES_copy_image GL_OES_depth24 GL_OES_depth32 GL_OES_depth_texture GL_OES_depth_texture_cube_map GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_shading GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_3D GL_OES_texture_border_clamp GL_OES_texture_cube_map_array GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OES_vertex_half_float GL_OES_vertex_type_10_10_10_2 GL_OVR_multiview GL_OVR_multiview2 GL_QCOM_texture_lod_bias ",
+          "glImplementationParts": "(gl=egl-angle,angle=swiftshader)",
+          "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+          "glResetNotificationStrategy": 33362,
+          "glVendor": "Google Inc. (Google)",
+          "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+          "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_surface_orientation EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_EXT_image_gl_colorspace EGL_KHR_gl_colorspace EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_fence_sync EGL_KHR_wait_sync EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_KHR_swap_buffers_with_damage EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_IMG_context_priority EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_EXT_buffer_age EGL_ANGLE_create_surface_swap_interval EGL_ANGLE_vulkan_image EGL_KHR_partial_update EGL_ANGLE_global_fence_sync EGL_ANGLE_memory_usage_report ",
+          "glWsVendor": "Google Inc. (Google)",
+          "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+          "hardwareSupportsVulkan": true,
+          "inProcessGpu": false,
+          "initializationTime": 0.036942,
+          "isAsan": false,
+          "isClangCoverage": false,
+          "jpegDecodeAcceleratorSupported": false,
+          "maxMsaaSamples": "4",
+          "optimus": false,
+          "passthroughCmdDecoder": true,
+          "pixelShaderVersion": "3.00",
+          "processCrashCount": 0,
+          "sandboxed": false,
+          "skiaBackendType": "GaneshVulkan",
+          "subpixelFontRendering": true,
+          "targetCpuBits": 64,
+          "vertexShaderVersion": "3.00",
+          "visibilityCallbackCallCount": 0
+        },
+        "featureStatus": {
+          "2d_canvas": "enabled",
+          "direct_rendering_display_compositor": "disabled_off_ok",
+          "gpu_compositing": "enabled",
+          "multiple_raster_threads": "enabled_on",
+          "opengl": "enabled_on",
+          "rasterization": "enabled",
+          "raw_draw": "disabled_off_ok",
+          "skia_graphite": "disabled_off",
+          "trees_in_viz": "disabled_off",
+          "video_decode": "enabled",
+          "video_encode": "disabled_software",
+          "vulkan": "enabled_on",
+          "webgl": "enabled",
+          "webgpu": "unavailable_software",
+          "webgpu_on_vk_via_gl_interop": "disabled_off",
+          "webnn": "disabled_off"
+        },
+        "driverBugWorkarounds": [
+          "enable_webgl_timer_query_extensions",
+          "exit_on_context_lost",
+          "disabled_extension_GL_KHR_blend_equation_advanced",
+          "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+        ],
+        "videoDecoding": [],
+        "videoEncoding": []
+      },
+      "modelName": "",
+      "modelVersion": "",
+      "commandLine": "/home/agent/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --enable-automation --ozone-platform=x11 --window-size=1100,820 --enable-unsafe-webgpu --enable-features=Vulkan --use-vulkan=swiftshader --use-gl=angle --use-angle=swiftshader --disable-vulkan-surface --enable-logging --log-file=/workspace/dva-cloud/NEWreceipts/human-r3-actual-native-luna-r1/matchingartifacts/chromium.log --v=1 --user-data-dir=/tmp/playwright_chromiumdev_profile-LJkxqz --remote-debugging-pipe --no-startup-window --flag-switches-begin --flag-switches-end --enable-unsafe-swiftshader"
+    },
+    "gpuObserver": {
+      "adapterRequests": [
+        {
+          "options": null,
+          "returned": true,
+          "info": {
+            "vendor": "google",
+            "architecture": "swiftshader",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": true
+          }
+        }
+      ],
+      "devices": [
+        {
+          "returned": true,
+          "descriptor": null,
+          "features": [
+            "core-features-and-limits"
+          ],
+          "limits": {
+            "maxTextureDimension2D": 8192
+          }
+        }
+      ],
+      "deviceLost": [],
+      "uncapturedErrors": [],
+      "pipelineRequests": [
+        {
+          "label": "human-world-mrt",
+          "targets": [
+            "rgba16float",
+            "rgba16float"
+          ],
+          "resolved": true
+        },
+        {
+          "label": "human-observer-convolution",
+          "targets": [
+            "rgba16float"
+          ],
+          "resolved": true
+        },
+        {
+          "label": "human-single-encode",
+          "targets": [
+            "rgba8unorm"
+          ],
+          "resolved": true
+        }
+      ],
+      "shaderModules": [
+        {
+          "label": "human-world",
+          "codeBytes": 4536,
+          "sha256": "192eeb0bc2034b0103c517ff48f0d333bb3ac3c681029ab5ee73db2415933f8c"
+        },
+        {
+          "label": "human-bloom",
+          "codeBytes": 796,
+          "sha256": "20d3b7440eba54c76783a64290ba2f209ed597bf9b03b310640bc957484e82fb"
+        },
+        {
+          "label": "human-present",
+          "codeBytes": 1189,
+          "sha256": "c3aebba9a940b409b3a65beeb62ab3ad8fd8f688b8746386389f2bedab671130"
+        }
+      ],
+      "queueSubmits": 173
+    }
+  },
+  "capture": {
+    "phase452Heights": [
+      {
+        "phaseMs": 452,
+        "height": 48,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "state": {
+          "ready": true,
+          "fatal": null,
+          "verify": true,
+          "running": false,
+          "age": 452,
+          "causeId": "human-r3-fixture-3",
+          "generation": 2,
+          "loops": 1,
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 48,
+            "spriteRect": {
+              "x": 502.6933333333333,
+              "y": 212.8,
+              "width": 54.61333333333334,
+              "height": 54.61333333333334
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 14,
+            "completed": 14,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "audio": {
+            "verify": true,
+            "allocated": false,
+            "playing": false,
+            "causeId": null,
+            "disposed": false
+          },
+          "renderer": {
+            "submitted": 14,
+            "completed": 14,
+            "inFlight": false,
+            "disposed": false,
+            "extent": "2120x960"
+          },
+          "compilationMessages": []
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 48,
+            "spriteRect": {
+              "x": 502.6933333333333,
+              "y": 212.8,
+              "width": 54.61333333333334,
+              "height": 54.61333333333334
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 15,
+            "completed": 15,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 3648,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        },
+        "canvasCss": {
+          "rect": {
+            "x": 20,
+            "y": 146,
+            "width": 1060,
+            "height": 480,
+            "top": 146,
+            "right": 1080,
+            "bottom": 626,
+            "left": 20
+          },
+          "width": 2120,
+          "height": 960,
+          "dpr": 2
+        }
+      },
+      {
+        "phaseMs": 452,
+        "height": 64,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "state": {
+          "ready": true,
+          "fatal": null,
+          "verify": true,
+          "running": false,
+          "age": 452,
+          "causeId": "human-r3-fixture-3",
+          "generation": 2,
+          "loops": 1,
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 24,
+            "completed": 24,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "audio": {
+            "verify": true,
+            "allocated": false,
+            "playing": false,
+            "causeId": null,
+            "disposed": false
+          },
+          "renderer": {
+            "submitted": 24,
+            "completed": 24,
+            "inFlight": false,
+            "disposed": false,
+            "extent": "2120x960"
+          },
+          "compilationMessages": []
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 25,
+            "completed": 25,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 4534,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        },
+        "canvasCss": {
+          "rect": {
+            "x": 20,
+            "y": 146,
+            "width": 1060,
+            "height": 480,
+            "top": 146,
+            "right": 1080,
+            "bottom": 626,
+            "left": 20
+          },
+          "width": 2120,
+          "height": 960,
+          "dpr": 2
+        }
+      },
+      {
+        "phaseMs": 452,
+        "height": 128,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "state": {
+          "ready": true,
+          "fatal": null,
+          "verify": true,
+          "running": false,
+          "age": 452,
+          "causeId": "human-r3-fixture-3",
+          "generation": 2,
+          "loops": 1,
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 457.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 32,
+            "completed": 32,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "audio": {
+            "verify": true,
+            "allocated": false,
+            "playing": false,
+            "causeId": null,
+            "disposed": false
+          },
+          "renderer": {
+            "submitted": 32,
+            "completed": 32,
+            "inFlight": false,
+            "disposed": false,
+            "extent": "2120x960"
+          },
+          "compilationMessages": []
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 457.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 33,
+            "completed": 33,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 7924,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        },
+        "canvasCss": {
+          "rect": {
+            "x": 20,
+            "y": 146,
+            "width": 1060,
+            "height": 480,
+            "top": 146,
+            "right": 1080,
+            "bottom": 626,
+            "left": 20
+          },
+          "width": 2120,
+          "height": 960,
+          "dpr": 2
+        }
+      }
+    ],
+    "phase452Toggles": [
+      {
+        "name": "source-off",
+        "phaseMs": 452,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "state": {
+          "ready": true,
+          "fatal": null,
+          "verify": true,
+          "running": false,
+          "age": 452,
+          "causeId": "human-r3-fixture-3",
+          "generation": 2,
+          "loops": 1,
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": false,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 457.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 41,
+            "completed": 41,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "audio": {
+            "verify": true,
+            "allocated": false,
+            "playing": false,
+            "causeId": null,
+            "disposed": false
+          },
+          "renderer": {
+            "submitted": 41,
+            "completed": 41,
+            "inFlight": false,
+            "disposed": false,
+            "extent": "2120x960"
+          },
+          "compilationMessages": []
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": false,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 457.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 42,
+            "completed": 42,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 0,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": true,
+          "queueCompleted": true
+        }
+      },
+      {
+        "name": "observer-off",
+        "phaseMs": 452,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "state": {
+          "ready": true,
+          "fatal": null,
+          "verify": true,
+          "running": false,
+          "age": 452,
+          "causeId": "human-r3-fixture-3",
+          "generation": 2,
+          "loops": 1,
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": false,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 457.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 50,
+            "completed": 50,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "audio": {
+            "verify": true,
+            "allocated": false,
+            "playing": false,
+            "causeId": null,
+            "disposed": false
+          },
+          "renderer": {
+            "submitted": 50,
+            "completed": 50,
+            "inFlight": false,
+            "disposed": false,
+            "extent": "2120x960"
+          },
+          "compilationMessages": []
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": false,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 128,
+            "spriteRect": {
+              "x": 457.1822222222222,
+              "y": 167.46666666666667,
+              "width": 145.63555555555556,
+              "height": 145.63555555555556
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 51,
+            "completed": 51,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 7924,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      }
+    ],
+    "timeline": [
+      {
+        "phaseMs": 45,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 45,
+          "phaseMs": 45,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 60,
+          "completed": 60,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 45,
+            "phaseMs": 45,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 61,
+            "completed": 61,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 1370,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 220,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 220,
+          "phaseMs": 220,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 66,
+          "completed": 66,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 220,
+            "phaseMs": 220,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 67,
+            "completed": 67,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 6311,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 430,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 430,
+          "phaseMs": 430,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 72,
+          "completed": 72,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 430,
+            "phaseMs": 430,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 73,
+            "completed": 73,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 4569,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 440,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 440,
+          "phaseMs": 440,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 78,
+          "completed": 78,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 440,
+            "phaseMs": 440,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 79,
+            "completed": 79,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 4535,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 452,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 452,
+          "phaseMs": 452,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 83,
+          "completed": 83,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 452,
+            "phaseMs": 452,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 84,
+            "completed": 84,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 4534,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 464,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 464,
+          "phaseMs": 464,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 89,
+          "completed": 89,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 464,
+            "phaseMs": 464,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 90,
+            "completed": 90,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 4519,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 710,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 710,
+          "phaseMs": 710,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 94,
+          "completed": 94,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 710,
+            "phaseMs": 710,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 95,
+            "completed": 95,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 5851,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 790,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 790,
+          "phaseMs": 790,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 101,
+          "completed": 101,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 790,
+            "phaseMs": 790,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 102,
+            "completed": 102,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 6544,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 814,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 814,
+          "phaseMs": 814,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 107,
+          "completed": 107,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 814,
+            "phaseMs": 814,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 108,
+            "completed": 108,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 6544,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 840,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 840,
+          "phaseMs": 840,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 113,
+          "completed": 113,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 840,
+            "phaseMs": 840,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 114,
+            "completed": 114,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 6544,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 865,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 865,
+          "phaseMs": 865,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 119,
+          "completed": 119,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 865,
+            "phaseMs": 865,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 120,
+            "completed": 120,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 6544,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 1050,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 1050,
+          "phaseMs": 1050,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 125,
+          "completed": 125,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 1050,
+            "phaseMs": 1050,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 126,
+            "completed": 126,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 6380,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      },
+      {
+        "phaseMs": 1199,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 1199,
+          "phaseMs": 1199,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 130,
+          "completed": 130,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "emission": {
+          "receipt": {
+            "version": "human-transmutation-sol61-r3",
+            "causeId": "human-r3-fixture-3",
+            "targetId": "revived-philia",
+            "scopeId": "human-r3-private-preview",
+            "generation": 2,
+            "elapsedMs": 1199,
+            "phaseMs": 1199,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "reducedMotion": false,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 493.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              2120,
+              960
+            ],
+            "cssExtent": [
+              1060,
+              480
+            ],
+            "dpr": 2,
+            "submitted": 131,
+            "completed": 131,
+            "passes": 4,
+            "format": "rgba8unorm",
+            "worldFormat": "rgba16float",
+            "queueCompleted": true
+          },
+          "attachment": "actual-rgba16float-emission",
+          "nonzeroRGB": 3918,
+          "nonfiniteRGB": 0,
+          "rgbStrictZero": false,
+          "queueCompleted": true
+        }
+      }
+    ],
+    "expiry": {
+      "state": {
+        "ready": true,
+        "fatal": null,
+        "verify": true,
+        "running": false,
+        "age": 1200,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "loops": 1,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 1200,
+          "phaseMs": 1200,
+          "active": false,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 138,
+          "completed": 138,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "audio": {
+          "verify": true,
+          "allocated": false,
+          "playing": false,
+          "causeId": null,
+          "disposed": false
+        },
+        "renderer": {
+          "submitted": 138,
+          "completed": 138,
+          "inFlight": false,
+          "disposed": false,
+          "extent": "2120x960"
+        },
+        "compilationMessages": []
+      },
+      "emission": {
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 1200,
+          "phaseMs": 1200,
+          "active": false,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 139,
+          "completed": 139,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "attachment": "actual-rgba16float-emission",
+        "nonzeroRGB": 0,
+        "nonfiniteRGB": 0,
+        "rgbStrictZero": true,
+        "queueCompleted": true
+      }
+    },
+    "expiryWithSourceAndObserverOff": {
+      "state": {
+        "ready": true,
+        "fatal": null,
+        "verify": true,
+        "running": false,
+        "age": 1200,
+        "causeId": "human-r3-fixture-3",
+        "generation": 2,
+        "loops": 1,
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 1200,
+          "phaseMs": 1200,
+          "active": false,
+          "actorVisible": true,
+          "sourceEnabled": false,
+          "observerEnabled": false,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 148,
+          "completed": 148,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "audio": {
+          "verify": true,
+          "allocated": false,
+          "playing": false,
+          "causeId": null,
+          "disposed": false
+        },
+        "renderer": {
+          "submitted": 148,
+          "completed": 148,
+          "inFlight": false,
+          "disposed": false,
+          "extent": "2120x960"
+        },
+        "compilationMessages": []
+      },
+      "emission": {
+        "receipt": {
+          "version": "human-transmutation-sol61-r3",
+          "causeId": "human-r3-fixture-3",
+          "targetId": "revived-philia",
+          "scopeId": "human-r3-private-preview",
+          "generation": 2,
+          "elapsedMs": 1200,
+          "phaseMs": 1200,
+          "active": false,
+          "actorVisible": true,
+          "sourceEnabled": false,
+          "observerEnabled": false,
+          "reducedMotion": false,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 493.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            2120,
+            960
+          ],
+          "cssExtent": [
+            1060,
+            480
+          ],
+          "dpr": 2,
+          "submitted": 149,
+          "completed": 149,
+          "passes": 4,
+          "format": "rgba8unorm",
+          "worldFormat": "rgba16float",
+          "queueCompleted": true
+        },
+        "attachment": "actual-rgba16float-emission",
+        "nonzeroRGB": 0,
+        "nonfiniteRGB": 0,
+        "rgbStrictZero": true,
+        "queueCompleted": true
+      }
+    },
+    "screenshots": true,
+    "videoPath": "/workspace/dva-cloud/NEWreceipts/human-r3-actual-native-luna-r1/matchingartifacts/video/page@f772327e55eb3484084080ab15bfd6c1.webm",
+    "pageErrors": [],
+    "console": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+      }
+    ]
+  },
+  "cleanup": {
+    "ownedProcessesExited": true,
+    "httpServerClosed": true,
+    "authRemoved": true,
+    "displaySocketRemoved": true,
+    "browserClosed": true
+  },
+  "visualReview": {
+    "reviewedFiles": [
+      "matchingartifacts/phase-452-H64-page.png",
+      "matchingartifacts/phase-452-H64-canvas.png",
+      "matchingartifacts/timeline-440-H64-canvas.png"
+    ],
+    "observation": "Compared against paired R2 captures at matching viewport, geometry, background, target and source. R3 visibly reduces the thin lateral material span by about 40% at all three actor heights while retaining the same vertical foreground bounds. Short bilateral protrusions remain at phase 452; this is evidence for Root quality review, not quality acceptance."
+  }
+}

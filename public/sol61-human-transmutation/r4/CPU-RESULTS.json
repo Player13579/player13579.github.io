@@ -1,0 +1,85 @@
+{
+  "schema": "human-r4-cpu-results/v1",
+  "status": "pass",
+  "evidenceKind": "CPU-original-alpha-and-analytic-geometry plus source-path/inherited contracts",
+  "commands": [
+    {
+      "command": "node tests/unsplit-material.mjs",
+      "exitCode": 0,
+      "rawStdout": "{\"status\":\"pass\",\"oldGapCases\":12,\"originalCenterCases\":12,\"rgbaSamples\":9216,\"motionSamples\":13440,\"maxShear\":0.4499999975744392,\"maxReducedShear\":0.17999999902982772,\"checks\":[\"actual-original-center-alpha-and-R3-counterexample\",\"single-map-full-RGBA-cross-section\",\"bounded-row-shear-normal-reduced\",\"one-direction-convergence-before-fixation\",\"actual-WORLD-path-used-by-core\",\"source-emission-bloom-present-unchanged\"],\"evidenceKind\":\"CPU-original-alpha-and-analytic-map-plus-source-path-audit\",\"GPU\":\"not_run\",\"visualQuality\":\"not_run\",\"ordinarySFX\":\"not_run\"}\n",
+      "result": {
+        "status": "pass",
+        "oldGapCases": 12,
+        "originalCenterCases": 12,
+        "rgbaSamples": 9216,
+        "motionSamples": 13440,
+        "maxShear": 0.4499999975744392,
+        "maxReducedShear": 0.17999999902982772,
+        "checks": [
+          "actual-original-center-alpha-and-R3-counterexample",
+          "single-map-full-RGBA-cross-section",
+          "bounded-row-shear-normal-reduced",
+          "one-direction-convergence-before-fixation",
+          "actual-WORLD-path-used-by-core",
+          "source-emission-bloom-present-unchanged"
+        ],
+        "evidenceKind": "CPU-original-alpha-and-analytic-map-plus-source-path-audit",
+        "GPU": "not_run",
+        "visualQuality": "not_run",
+        "ordinarySFX": "not_run"
+      }
+    },
+    {
+      "command": "node tests/continuous-handoff.mjs",
+      "exitCode": 0,
+      "rawStdout": "{\"status\":\"pass\",\"sampledStates\":13560,\"checks\":[\"arrival-precedes-all-fixation\",\"opaque-and-edge-alpha-preservation\",\"full-original-material-by814\",\"shared-timing-in-actual-WGSL\",\"r1-SFX-and-original-sprite-exact-byte-inheritance\"],\"GPU\":\"not_run\",\"visualQuality\":\"not_run\",\"ordinarySFX\":\"not_run\"}\n",
+      "result": {
+        "status": "pass",
+        "sampledStates": 13560,
+        "checks": [
+          "arrival-precedes-all-fixation",
+          "opaque-and-edge-alpha-preservation",
+          "full-original-material-by814",
+          "shared-timing-in-actual-WGSL",
+          "r1-SFX-and-original-sprite-exact-byte-inheritance"
+        ],
+        "GPU": "not_run",
+        "visualQuality": "not_run",
+        "ordinarySFX": "not_run"
+      }
+    },
+    {
+      "command": "node tests/contracts.mjs",
+      "exitCode": 0,
+      "rawStdout": "{\"status\":\"pass\",\"checks\":[\"strict-target\",\"exact-finite-lifetime\",\"original-crop-bounds\",\"hidden-target\",\"actual-support-H48-H64-H128\",\"finite-synthetic-PCM\",\"verify-zero-audio-allocation\"],\"nativeGPU\":\"not_run\",\"visualQuality\":\"not_run\",\"ordinarySFX\":\"not_run\"}\n",
+      "result": {
+        "status": "pass",
+        "checks": [
+          "strict-target",
+          "exact-finite-lifetime",
+          "original-crop-bounds",
+          "hidden-target",
+          "actual-support-H48-H64-H128",
+          "finite-synthetic-PCM",
+          "verify-zero-audio-allocation"
+        ],
+        "nativeGPU": "not_run",
+        "visualQuality": "not_run",
+        "ordinarySFX": "not_run"
+      }
+    }
+  ],
+  "syntax": {
+    "status": "pass",
+    "checkedModules": 13,
+    "command": "node --check on all authored and inherited snapshot .mjs files"
+  },
+  "nativeGPU": "not_run",
+  "visualQuality": "not_accepted_not_run",
+  "ordinarySFX": "not_run",
+  "SafariIpad": "not_run",
+  "mainIntegration": "not_connected",
+  "publicGallery": "not_run",
+  "failureHistory": "TEST-HISTORY.json",
+  "note": "Tests establish narrow geometry/ownership/inheritance properties; no normal-speed or native visual quality inference."
+}

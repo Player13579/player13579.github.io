@@ -1,0 +1,91 @@
+{
+  "schema": "dva-human-transmutation-gallery-integration-package/v1",
+  "creativeVersionId": "human-transmutation-sol61-r2",
+  "sourcePackageManifest": {
+    "path": "integration/human-r2-r3-catalog-candidate-luna-r1/source/R2-PACKAGE-MANIFEST.json",
+    "sha256": "c4b8078a18b669c0fa840b253e277a2da1a7f24f5395fb485e580d9ed36b3cf9"
+  },
+  "routeRoot": "public/sol61-human-transmutation/r2",
+  "entryRoute": "public/sol61-human-transmutation/r2/gallery.html?embed=1",
+  "sourceRouteFiles": [
+    {
+      "path": "index.html",
+      "bytes": 2061,
+      "sha256": "00a308900b151ff30838bc952da1f81f3384af6ebeec52c693913f87730ed7b2"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 6841,
+      "sha256": "1ae70e3e9636c135737297683f62888f5422dd35bf2d4440e84b5b8faf36379b"
+    },
+    {
+      "path": "core.mjs",
+      "bytes": 10338,
+      "sha256": "9bfb78da07f509dcdc5b1a21d324c12a0bfb97cbb52d6ea269fb432d5e6f96fb"
+    },
+    {
+      "path": "cause.mjs",
+      "bytes": 4130,
+      "sha256": "335fc585211a602e0406721eefc7626d2dba9e6f9faff3b45ddcfb4a174952eb"
+    },
+    {
+      "path": "shader.mjs",
+      "bytes": 6717,
+      "sha256": "a9a61915c4d9e5d80d3640e03ffd1bb267cd48cdc0c520c9866f314eed35166f"
+    },
+    {
+      "path": "fixture.mjs",
+      "bytes": 1088,
+      "sha256": "2833940a3be2306942bace086aff73dba38fbe6485acd9284a6490cc0b6a3409"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 3240,
+      "sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2"
+    },
+    {
+      "path": "handoff-state.mjs",
+      "bytes": 1051,
+      "sha256": "a8a1eefb8edba86c64c742d3a6ce0ea737463e8c441c2529e852b73a8a0012df"
+    },
+    {
+      "path": "assets/philia-front-nine-v752.png",
+      "bytes": 399216,
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+    }
+  ],
+  "sourceRouteFileCount": 9,
+  "integrationAdapter": {
+    "path": "gallery.html",
+    "bytes": 5491,
+    "sha256": "bb26a504af8fbf5aef7cea877a02d9020f2b8762aed9fd7488f8a6aa01aafe91",
+    "sourceManifestPurpose": "Parent startup bridge and authored-SFX gesture bridge. Ordinary parent startup preserves source audio; only a parent URL explicitly carrying verify adds the source mute flag. Receipt acceptance remains bound to the exact version, current cause/generation, connected canvas backing extent and completed queue. Retirement cancels the child."
+  },
+  "evidence": [
+    {
+      "path": "evidence/NATIVE-OUTCOME.json",
+      "bytes": 9244,
+      "sha256": "d6cf1f6acede6a0d49af6f540a4cf8693376d5b5ead746dbcce6453c317c05a4"
+    },
+    {
+      "path": "evidence/QUALITY-REVIEW.json",
+      "bytes": 4016,
+      "sha256": "345ead075c55c3b1802682a6bc4c10b949cf0b0ec155d3a4ed94c483194dae46"
+    }
+  ],
+  "attribution": {
+    "creativeDesignAuthor": "GPT-6.1-Sol",
+    "historicalRuntimeIntegrationAuthor": "GPT-6-Luna",
+    "galleryDeliveryAuthor": "GPT-6-Luna",
+    "originalArtistRegistration": "preserved in source creative and historical package records; unchanged"
+  },
+  "actualNativeStatus": "pass-limited-native-webgpu-software-swiftshader",
+  "parentGalleryReplayStatus": "pending",
+  "qualityStatus": "pending-not-accepted",
+  "adoption": "unknown",
+  "normalAudioListening": "not_run",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected",
+  "publicReleaseStatus": "candidate-only",
+  "acyclicity": "manifest pins source route files, adapter, and separate evidence blobs; does not pin itself."
+}

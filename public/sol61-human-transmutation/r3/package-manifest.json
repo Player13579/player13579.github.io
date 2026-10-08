@@ -1,0 +1,134 @@
+{
+  "schema": "dva-human-transmutation-gallery-integration-package/v1",
+  "creativeVersionId": "human-transmutation-sol61-r3",
+  "sourcePackageManifest": {
+    "path": "integration/human-r2-r3-catalog-candidate-luna-r1/source/R3-PACKAGE-MANIFEST.json",
+    "sha256": "1d1bc37dfb09fc82afb72a49a582e193701b8cbeb3c770084166536629a0e292"
+  },
+  "routeRoot": "public/sol61-human-transmutation/r3",
+  "entryRoute": "public/sol61-human-transmutation/r3/gallery.html?embed=1",
+  "sourceRouteFiles": [
+    {
+      "path": "CPU-RESULTS.json",
+      "bytes": 1897,
+      "sha256": "3bbb622ad05c03e4d51a4a6b12660d5dd537b9f566414d5bbd75df5ca377a2bc"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 5202,
+      "sha256": "91329c79c73a02df9f680b19bb09758e69d16c582c6544d8a912b4b11a8bdb3d"
+    },
+    {
+      "path": "HANDOFF.md",
+      "bytes": 3025,
+      "sha256": "49512f87552e67d613f6249ad5f51ca014aa8bd3a3314976ec9184d0fa9572d4"
+    },
+    {
+      "path": "READY.json",
+      "bytes": 523,
+      "sha256": "536f92dbaa2636d05423c0734c2099b9eb4cc2885617ffc933c7819d6472d01f"
+    },
+    {
+      "path": "WORK.json",
+      "bytes": 7397,
+      "sha256": "4d1332a958619d48960035e8cafff6b6d0fc5df79e596bbd845fc760917daaaf"
+    },
+    {
+      "path": "assets/philia-front-nine-v752.png",
+      "bytes": 399216,
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+    },
+    {
+      "path": "cause.mjs",
+      "bytes": 4130,
+      "sha256": "655582c831aa01915e92ea0d03504b74ea6f863f0d713b2f422a247316d94ff4"
+    },
+    {
+      "path": "core.mjs",
+      "bytes": 10338,
+      "sha256": "8219152936c52290443d7944d4c98db8efc7aa821ab1822ca768709e86b18cdd"
+    },
+    {
+      "path": "fixture.mjs",
+      "bytes": 1088,
+      "sha256": "f21a50cd5e75a85fb15f671479ee154a152f3d383a7fa41292f2ea71b7e7f146"
+    },
+    {
+      "path": "handoff-state.mjs",
+      "bytes": 1524,
+      "sha256": "a526f79066cf79970f932a40d675f23f959987e649bcd94676b70e3ed4f78f8a"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2061,
+      "sha256": "7fe597ddba1d2105377b34334d9429cc03aa0eae4e91772f3429eb13e1f0e709"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 6841,
+      "sha256": "a15f1e59fd992dd442c3352fa35bab5a75c250fa04e7f7c8a18595b0c934d7fc"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 3240,
+      "sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2"
+    },
+    {
+      "path": "shader.mjs",
+      "bytes": 6941,
+      "sha256": "869bc5f9b7d39f95925a0566801338d0ea1654108d54818c1b6ee23b8953196b"
+    },
+    {
+      "path": "tests/continuous-handoff.mjs",
+      "bytes": 2383,
+      "sha256": "56a05e0466980a091b984fe3e8da58c0e85f761171c1bc09a84a9aa8cc92d8c5"
+    },
+    {
+      "path": "tests/contracts.mjs",
+      "bytes": 1956,
+      "sha256": "34487843315d91f192958e070f36472fcd8a1d98061de43c0792f96497db9881"
+    }
+  ],
+  "sourceRouteFileCount": 16,
+  "integrationAdapter": {
+    "path": "gallery.html",
+    "bytes": 5801,
+    "sha256": "0793c59f8c13f996720eefc31c25b8e7b3730d0930c17af1c3a06cd70ac722ad",
+    "sourceManifestPurpose": "Parent startup bridge and authored-SFX gesture bridge. Ordinary parent startup preserves source audio; only a parent URL explicitly carrying verify adds the source mute flag. Receipt acceptance remains bound to the exact version, current cause/generation, connected canvas backing extent and completed queue. Retirement cancels the child."
+  },
+  "evidence": [
+    {
+      "path": "evidence/NATIVE-OUTCOME.json",
+      "bytes": 89715,
+      "sha256": "bfbfa413b529e0ecf4dcb4ec83d018d803b11f18fea6809634a3f38c4bb30a12"
+    },
+    {
+      "path": "evidence/PAIRED-COMPARISON.json",
+      "bytes": 5315,
+      "sha256": "569aed55dee75ff9eacdd65bd73b8122bf50afb5700aa6847e4bbd1d704e47ae"
+    },
+    {
+      "path": "evidence/REPORT.md",
+      "bytes": 2164,
+      "sha256": "36cfb307fbeeedc3dc69b9f10e4665d1191e43702c268e11d9ae20431dcbf610"
+    },
+    {
+      "path": "evidence/SOURCE-PINS.json",
+      "bytes": 726,
+      "sha256": "049f29c88de7abbd5438b7d3cdbd3f4567545e89874ea5105a3268be47d6700a"
+    }
+  ],
+  "attribution": {
+    "creativeDesignAuthor": "GPT-6.1-Sol",
+    "runtimeAndGalleryAdapterAuthor": "GPT-6-Luna"
+  },
+  "actualNativeStatus": "pass-limited-native-webgpu-software-swiftshader",
+  "parentGalleryReplayStatus": "pending",
+  "qualityStatus": "pending-not-accepted",
+  "adoption": "unknown",
+  "normalAudioListening": "not_run",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected",
+  "publicReleaseStatus": "candidate-only",
+  "acyclicity": "manifest pins source route files, adapter, and separate evidence blobs; does not pin itself."
+}

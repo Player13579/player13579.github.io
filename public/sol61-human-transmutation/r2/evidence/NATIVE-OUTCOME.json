@@ -1,0 +1,324 @@
+{
+  "schema": "human-r2-fixed-native-capture-review/v1",
+  "status": "SOFTWARE_WEBGPU_CAPTURED_REVIEW_PENDING",
+  "nativeResult": {
+    "path": "artifacts/RESULT.json",
+    "bytes": 92840,
+    "sha256": "544eaebda8ac9182fb33cbc52c1ee02f031d0176fe07c37976960f665236a365"
+  },
+  "runContract": "RUN-CONTRACT.json",
+  "technicalManifestSha256": "eb4a73831f62e9a4677c43b6fe0eb616a987370f8baad1dd9e01956a55af6881",
+  "sourceProvenanceSha256": "c021f941a002d1e214ef261999eadc521565dab5ff40fcfd970f9fc4f81ee8f0",
+  "shaderSource": {
+    "bytes": 6717,
+    "sha256": "a9a61915c4d9e5d80d3640e03ffd1bb267cd48cdc0c520c9866f314eed35166f"
+  },
+  "runtime": {
+    "browserVersion": "151.0.7922.34",
+    "sandboxRequested": true,
+    "softwareOnly": true,
+    "hardwareAccepted": false,
+    "iPadAccepted": false,
+    "adapter": [
+      {
+        "options": null,
+        "returned": true,
+        "info": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        }
+      }
+    ],
+    "device": [
+      {
+        "returned": true,
+        "descriptor": null,
+        "features": [
+          "core-features-and-limits"
+        ],
+        "limits": {
+          "maxTextureDimension2D": 8192
+        }
+      }
+    ],
+    "pipelines": [
+      {
+        "label": "human-world-mrt",
+        "targets": [
+          "rgba16float",
+          "rgba16float"
+        ],
+        "resolved": true
+      },
+      {
+        "label": "human-observer-convolution",
+        "targets": [
+          "rgba16float"
+        ],
+        "resolved": true
+      },
+      {
+        "label": "human-single-encode",
+        "targets": [
+          "rgba8unorm"
+        ],
+        "resolved": true
+      }
+    ],
+    "shaderModules": [
+      {
+        "label": "human-world",
+        "codeBytes": 4356,
+        "sha256": "0dcc4151ba1d1d7a5ee2738d54355039fe75ddfc6ecbe34b92cba494ce77711e"
+      },
+      {
+        "label": "human-bloom",
+        "codeBytes": 796,
+        "sha256": "20d3b7440eba54c76783a64290ba2f209ed597bf9b03b310640bc957484e82fb"
+      },
+      {
+        "label": "human-present",
+        "codeBytes": 1189,
+        "sha256": "c3aebba9a940b409b3a65beeb62ab3ad8fd8f688b8746386389f2bedab671130"
+      }
+    ],
+    "queueSubmits": 170,
+    "deviceLost": [],
+    "uncapturedErrors": []
+  },
+  "cause": {
+    "causeId": "human-r2-fixture-3",
+    "generation": 2,
+    "scopeId": "human-r2-private-preview",
+    "targetId": "revived-philia",
+    "phaseMs": 452,
+    "heightCaptures": [
+      {
+        "height": 48,
+        "completed": 15,
+        "submitted": 15,
+        "emissionNonzeroRGB": 3648,
+        "emissionNonfiniteRGB": 0
+      },
+      {
+        "height": 64,
+        "completed": 23,
+        "submitted": 23,
+        "emissionNonzeroRGB": 4534,
+        "emissionNonfiniteRGB": 0
+      },
+      {
+        "height": 128,
+        "completed": 32,
+        "submitted": 32,
+        "emissionNonzeroRGB": 7924,
+        "emissionNonfiniteRGB": 0
+      }
+    ]
+  },
+  "toggles": [
+    {
+      "name": "source-off",
+      "sourceEnabled": false,
+      "observerEnabled": true,
+      "emissionRgbStrictZero": true,
+      "emissionNonzeroRGB": 0
+    },
+    {
+      "name": "observer-off",
+      "sourceEnabled": true,
+      "observerEnabled": false,
+      "emissionRgbStrictZero": false,
+      "emissionNonzeroRGB": 7924
+    }
+  ],
+  "timeline": {
+    "phasesMs": [
+      45,
+      220,
+      430,
+      440,
+      452,
+      464,
+      710,
+      790,
+      814,
+      840,
+      865,
+      1050,
+      1199
+    ],
+    "sameCauseGeneration": true,
+    "allFramesQueueCompleted": true
+  },
+  "expiry": {
+    "phaseMs": 1200,
+    "emissionRgbStrictZero": true,
+    "nonzeroRGB": 0,
+    "sourceOffObserverOffStillStrictZero": true
+  },
+  "screenshots": [
+    {
+      "path": "artifacts/phase-452-initial.png",
+      "bytes": 93811,
+      "sha256": "dd92765448ed741357e953584391c35fd1051daf1a230ed8ed4e407d3e6e1448"
+    },
+    {
+      "path": "artifacts/phase-452-initial-canvas.png",
+      "bytes": 20544,
+      "sha256": "97545ffa7769291d1976e52fcba54b35607fdcc93c108907bf0e295707031f47"
+    },
+    {
+      "path": "artifacts/phase-452-H48-canvas.png",
+      "bytes": 15911,
+      "sha256": "68733007ae0b1dd0ef590f25f90f296f1e3c3ea010d405bf41daead4ee8f070b"
+    },
+    {
+      "path": "artifacts/phase-452-H48-page.png",
+      "bytes": 93985,
+      "sha256": "2c7ca674fdb8635f767f1ede0f37bcdf49f96bdc2e9a3a2c628e039987ca3eb0"
+    },
+    {
+      "path": "artifacts/phase-452-H64-canvas.png",
+      "bytes": 20544,
+      "sha256": "97545ffa7769291d1976e52fcba54b35607fdcc93c108907bf0e295707031f47"
+    },
+    {
+      "path": "artifacts/phase-452-H64-page.png",
+      "bytes": 98793,
+      "sha256": "c11e9384e3e8335f27193a25f39b334af8bda2d7f6c04d8b7c4d90cea4fdbcad"
+    },
+    {
+      "path": "artifacts/phase-452-H128-canvas.png",
+      "bytes": 46690,
+      "sha256": "c89b5e0b1d554b8b50c4a5d1590f8f4446c0dda84daf80c8fe64ba83abe495e8"
+    },
+    {
+      "path": "artifacts/phase-452-H128-page.png",
+      "bytes": 125334,
+      "sha256": "b4eba97c73bba2a443f4b61542aa426afd36cd98e701beddfc98db903bea6743"
+    },
+    {
+      "path": "artifacts/phase-452-source-off-canvas.png",
+      "bytes": 60728,
+      "sha256": "d56d3ccdec0020f972c3b0ea9f23b6dfb77fdfb2256f8a267459b7caf49224a1"
+    },
+    {
+      "path": "artifacts/phase-452-source-off-page.png",
+      "bytes": 138445,
+      "sha256": "55f6f057fd2dc35d180e62152ec07f4539c86056dc9e1c73e05c00587c0f4216"
+    },
+    {
+      "path": "artifacts/phase-452-observer-off-canvas.png",
+      "bytes": 44327,
+      "sha256": "86ca02801ecd6fea5aa6b7aec219d505add780f626c53f207ac252ff1451fe62"
+    },
+    {
+      "path": "artifacts/phase-452-observer-off-page.png",
+      "bytes": 122648,
+      "sha256": "be0b275d20e9969d108bb85c66598afcf9041e0732b60cfd6a5470a186e7fa79"
+    },
+    {
+      "path": "artifacts/timeline-45-H64-canvas.png",
+      "bytes": 11472,
+      "sha256": "14c04d5af6eccc601a25933b1c79dd74e630479b87e3137e14ae5d434603a723"
+    },
+    {
+      "path": "artifacts/timeline-220-H64-canvas.png",
+      "bytes": 14573,
+      "sha256": "44350a7576c0c39208beee48170be7022a1b3e85094bf8771f5440761f7516ef"
+    },
+    {
+      "path": "artifacts/timeline-430-H64-canvas.png",
+      "bytes": 19720,
+      "sha256": "f58d74ce84f2d6c04fcab02047d717b00b5290ef44f9561f5db18de4d679ac45"
+    },
+    {
+      "path": "artifacts/timeline-440-H64-canvas.png",
+      "bytes": 20036,
+      "sha256": "b08e858786d110224c07dd40c944d8658c0dec9bbf808584a53135b91a49d59b"
+    },
+    {
+      "path": "artifacts/timeline-452-H64-canvas.png",
+      "bytes": 20544,
+      "sha256": "97545ffa7769291d1976e52fcba54b35607fdcc93c108907bf0e295707031f47"
+    },
+    {
+      "path": "artifacts/timeline-464-H64-canvas.png",
+      "bytes": 20925,
+      "sha256": "60d99cb4f0d590098c5946b260122fd5774b8be874b9f303eae51cf4cedf212d"
+    },
+    {
+      "path": "artifacts/timeline-710-H64-canvas.png",
+      "bytes": 25726,
+      "sha256": "92dc45791e458475ab330b185c3e81c073ecac7471fe4a04251f88e055bea0d3"
+    },
+    {
+      "path": "artifacts/timeline-790-H64-canvas.png",
+      "bytes": 26277,
+      "sha256": "d5d9b2345374e72671e4af57eb9b1418f080d98b7b013e0db08e1f3216194a62"
+    },
+    {
+      "path": "artifacts/timeline-814-H64-canvas.png",
+      "bytes": 26229,
+      "sha256": "c6d3c5569550ee0e46e4b3cbd91fae8b3b3275a93d1614fb9c45305421246dc9"
+    },
+    {
+      "path": "artifacts/timeline-840-H64-canvas.png",
+      "bytes": 26026,
+      "sha256": "4a67cd808b3401cc2016e10b1fad76a2e60c0f30488e175a016ac9eba7f27a04"
+    },
+    {
+      "path": "artifacts/timeline-865-H64-canvas.png",
+      "bytes": 25927,
+      "sha256": "4b6a4d5c3f8604fe836bda4632b4b0cd0335f8deacaa31b6b0f927692592dbe1"
+    },
+    {
+      "path": "artifacts/timeline-1050-H64-canvas.png",
+      "bytes": 25725,
+      "sha256": "8343e62d9e7258afbdd4b797984af7e34549e20d4b8ab836203f35411b07fa76"
+    },
+    {
+      "path": "artifacts/timeline-1199-H64-canvas.png",
+      "bytes": 24452,
+      "sha256": "32fbfb82a35147ae4f7114c2c38d58f08ed6dfc8c72549b093d77b4802954c9f"
+    },
+    {
+      "path": "artifacts/phase-1200-clear-canvas.png",
+      "bytes": 24453,
+      "sha256": "458c753793214c8f490255046b3422fbcd0b211a069545d75840d8d1d96ed31b"
+    },
+    {
+      "path": "artifacts/phase-1200-clear-page.png",
+      "bytes": 102304,
+      "sha256": "ab928fb51f60382a52ffb017639c1bf2bf0a406373df93d79dd9f9e52cbb0e2f"
+    },
+    {
+      "path": "artifacts/phase-1200-source-off-observer-off-canvas.png",
+      "bytes": 24453,
+      "sha256": "458c753793214c8f490255046b3422fbcd0b211a069545d75840d8d1d96ed31b"
+    }
+  ],
+  "video": {
+    "path": "artifacts/video/page@2244d5f4c5cbc745e697910b2498ed47.webm",
+    "bytes": 2530023,
+    "sha256": "77320b30d37a978b7247c5445cb8d959cf74726c350960bb87c729ef87591072"
+  },
+  "captureCleanup": {
+    "ownedProcessesExited": true,
+    "httpServerClosed": true,
+    "authRemoved": true,
+    "displaySocketRemoved": true,
+    "browserClosed": true
+  },
+  "pageErrors": [],
+  "consoleErrors": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    }
+  ]
+}

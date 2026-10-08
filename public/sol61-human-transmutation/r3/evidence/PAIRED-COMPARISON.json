@@ -1,0 +1,233 @@
+{
+  "schema": "human-r3-actual-native-paired-canvas-analysis/v1",
+  "method": "Canvas screenshot RGB pixels unequal to the sampled uniform corner background; bounds cover all visible foreground including actor and world emission.",
+  "rows": [
+    {
+      "height": 48,
+      "r2": {
+        "path": "/workspace/dva-cloud/receipts/human-r2-fixed-native-luna-r2/artifacts/phase-452-H48-canvas.png",
+        "sha256": "68733007ae0b1dd0ef590f25f90f296f1e3c3ea010d405bf41daead4ee8f070b",
+        "bytes": 15911,
+        "canvasSize": [
+          2120,
+          960
+        ],
+        "backgroundRGB": [
+          44,
+          53,
+          60
+        ],
+        "nonBackgroundBoundsXYXY": [
+          1006,
+          462,
+          1114,
+          528
+        ],
+        "nonBackgroundWidth": 109,
+        "nonBackgroundHeight": 67
+      },
+      "r3": {
+        "path": "/workspace/dva-cloud/NEWreceipts/human-r3-actual-native-luna-r1/matchingartifacts/phase-452-H48-canvas.png",
+        "sha256": "98cc9eefa3bbced0ee333cb5ad82909b517bf0d55f23b05980235ce84033e3cb",
+        "bytes": 15622,
+        "canvasSize": [
+          2120,
+          960
+        ],
+        "backgroundRGB": [
+          44,
+          53,
+          60
+        ],
+        "nonBackgroundBoundsXYXY": [
+          1028,
+          462,
+          1092,
+          528
+        ],
+        "nonBackgroundWidth": 65,
+        "nonBackgroundHeight": 67
+      },
+      "horizontalSpanReductionPercent": 40.37,
+      "verticalSpanChanged": false
+    },
+    {
+      "height": 64,
+      "r2": {
+        "path": "/workspace/dva-cloud/receipts/human-r2-fixed-native-luna-r2/artifacts/phase-452-H64-canvas.png",
+        "sha256": "97545ffa7769291d1976e52fcba54b35607fdcc93c108907bf0e295707031f47",
+        "bytes": 20544,
+        "canvasSize": [
+          2120,
+          960
+        ],
+        "backgroundRGB": [
+          44,
+          53,
+          60
+        ],
+        "nonBackgroundBoundsXYXY": [
+          988,
+          458,
+          1133,
+          544
+        ],
+        "nonBackgroundWidth": 146,
+        "nonBackgroundHeight": 87
+      },
+      "r3": {
+        "path": "/workspace/dva-cloud/NEWreceipts/human-r3-actual-native-luna-r1/matchingartifacts/phase-452-H64-canvas.png",
+        "sha256": "ffa15265c68903cb4bb6ce89e2e823b7696fae965567f4fe6523b693102b4d71",
+        "bytes": 20249,
+        "canvasSize": [
+          2120,
+          960
+        ],
+        "backgroundRGB": [
+          44,
+          53,
+          60
+        ],
+        "nonBackgroundBoundsXYXY": [
+          1017,
+          458,
+          1103,
+          544
+        ],
+        "nonBackgroundWidth": 87,
+        "nonBackgroundHeight": 87
+      },
+      "horizontalSpanReductionPercent": 40.41,
+      "verticalSpanChanged": false
+    },
+    {
+      "height": 128,
+      "r2": {
+        "path": "/workspace/dva-cloud/receipts/human-r2-fixed-native-luna-r2/artifacts/phase-452-H128-canvas.png",
+        "sha256": "c89b5e0b1d554b8b50c4a5d1590f8f4446c0dda84daf80c8fe64ba83abe495e8",
+        "bytes": 46690,
+        "canvasSize": [
+          2120,
+          960
+        ],
+        "backgroundRGB": [
+          44,
+          53,
+          60
+        ],
+        "nonBackgroundBoundsXYXY": [
+          914,
+          437,
+          1207,
+          609
+        ],
+        "nonBackgroundWidth": 294,
+        "nonBackgroundHeight": 173
+      },
+      "r3": {
+        "path": "/workspace/dva-cloud/NEWreceipts/human-r3-actual-native-luna-r1/matchingartifacts/phase-452-H128-canvas.png",
+        "sha256": "dc27f95fa9dc71714fda2ab2d363c74f1ef60d7bed4d21644dd830ff93ea8eb0",
+        "bytes": 46436,
+        "canvasSize": [
+          2120,
+          960
+        ],
+        "backgroundRGB": [
+          44,
+          53,
+          60
+        ],
+        "nonBackgroundBoundsXYXY": [
+          974,
+          437,
+          1147,
+          609
+        ],
+        "nonBackgroundWidth": 174,
+        "nonBackgroundHeight": 173
+      },
+      "horizontalSpanReductionPercent": 40.82,
+      "verticalSpanChanged": false
+    }
+  ],
+  "sameCauseReadbackMatchesR2": {
+    "phase452HeightsNonzeroRGB": true,
+    "lifetimePhaseNonzeroRGB": true,
+    "timeline": [
+      [
+        45,
+        1370
+      ],
+      [
+        220,
+        6311
+      ],
+      [
+        430,
+        4569
+      ],
+      [
+        440,
+        4535
+      ],
+      [
+        452,
+        4534
+      ],
+      [
+        464,
+        4519
+      ],
+      [
+        710,
+        5851
+      ],
+      [
+        790,
+        6544
+      ],
+      [
+        814,
+        6544
+      ],
+      [
+        840,
+        6544
+      ],
+      [
+        865,
+        6544
+      ],
+      [
+        1050,
+        6380
+      ],
+      [
+        1199,
+        3918
+      ]
+    ],
+    "sourceObserverOffStrictZero": [
+      [
+        "source-off",
+        true
+      ],
+      [
+        "observer-off",
+        false
+      ]
+    ]
+  },
+  "pairedState": {
+    "r2CauseId": "human-r2-fixture-3",
+    "r3CauseId": "human-r3-fixture-3",
+    "r2Generation": 2,
+    "r3Generation": 2,
+    "r2TargetId": "revived-philia",
+    "r3TargetId": "revived-philia",
+    "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+    "phase452": 452,
+    "sameCauseHeldAcrossHeightAndToggleCaptures": true,
+    "crossRunCauseIdsMayDiffer": true
+  }
+}
