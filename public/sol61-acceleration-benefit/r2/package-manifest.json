@@ -1,0 +1,107 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "acceleration-benefit-sol61",
+  "versionId": "acceleration-benefit-zero-sol61-r2",
+  "entry": "index.html",
+  "effectAuthor": "GPT-6.1-Sol",
+  "adoption": "unadopted",
+  "qualityStatus": "partial",
+  "technicalReplayStatus": "pending-native-webgpu",
+  "files": {
+    "index.html": "127e8a7a6937dc8f82f5db430cf1d018d6e226b43a73bbff5bb4065d7429de92",
+    "gallery-adapter.mjs": "e968d0f0c0900f69f667d7bad6f04862a8894e755489e74845a98cac3317cd4a",
+    "effect.mjs": "18152261cd69694b8b983dae1787630f624b5a66ba858582743d4e304dde1077",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "sourceSeal": {
+    "path": "outputs/request-20261008/acceleration-benefit-zero-sol61-r2/effect.mjs",
+    "sha256": "18152261cd69694b8b983dae1787630f624b5a66ba858582743d4e304dde1077",
+    "copiedBytesMatch": true,
+    "creativeSourceFrozen": true
+  },
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format-srgb-view",
+    "linearLightPremultipliedAlpha": true,
+    "durationMs": 1000,
+    "repeatGapMs": 600
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "methods": [
+      "hold(elapsedMs, options)",
+      "setPhase(elapsedMs, options)",
+      "resume()",
+      "replay()"
+    ],
+    "holdRangeMs": [
+      0,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "options": [
+      "obs",
+      "sparkle",
+      "source",
+      "main",
+      "bodyResponse",
+      "includeActor",
+      "direction",
+      "reducedMotion"
+    ],
+    "waitsForGpuQueueCompletion": true
+  },
+  "validation": {
+    "nodeSyntax": "passed",
+    "hostTests": "passed",
+    "nativeWebGpuReplay": "passed",
+    "visualQuality": "partial",
+    "normalAudioListening": "not-run",
+    "gameIntegration": "not-run"
+  },
+  "nativeVerification": {
+    "status": "PASS_NATIVE_WEBGPU_REPLAY",
+    "attemptId": "1675e8b4-a70d-4fd6-acee-db560c72abfe",
+    "browser": "Microsoft Edge 154.0.4258.62 headless",
+    "playwright": "1.62.1",
+    "canvas": {
+      "context": "webgpu",
+      "width": 1280,
+      "height": 800
+    },
+    "heldFrames": 16,
+    "phasesMs": [
+      180,
+      400,
+      650,
+      830,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "sourceHashMatches": true,
+    "continuousRepeatObserved": true,
+    "replayAfterRafObserved": true,
+    "verifyAudioMuted": true,
+    "actualGalleryParentStartupNotExercised": true,
+    "evidencePath": "outputs/request-20261008/acceleration-benefit-r2-gallery-host-luna-r1/native-attempts/1675e8b4-a70d-4fd6-acee-db560c72abfe/EVIDENCE.json"
+  }
+}
