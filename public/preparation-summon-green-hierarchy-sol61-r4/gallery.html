@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Summon Green Hierarchy R4 WebGPU Preview</title>
+<style>
+  :root { color-scheme: dark; font: 14px system-ui, sans-serif; background: #050807; color: #d4ead9; }
+  html, body { margin: 0; min-height: 100%; background: #050807; }
+  main { display: grid; justify-items: center; gap: 8px; padding: 10px; }
+  canvas { display: block; width: min(100%, 720px); height: 260px; background: #050807; }
+  #status { min-height: 1.2em; text-align: center; }
+  button { font: inherit; color: inherit; background: #12311d; border: 1px solid #477b53; border-radius: 4px; padding: 5px 9px; }
+  body.embed main { padding: 0; }
+  body.embed #controls, body.embed #status { display: none; }
+</style>
+<body>
+  <main>
+    <div id="controls">
+      <button id="play" type="button">Play single cause</button>
+      <button id="joint" type="button">Play joint three-cause preview</button>
+      <button id="hold" type="button">Hold current frame</button>
+      <button id="resume" type="button">Resume</button>
+      <button id="cancel" type="button">Cancel causes</button>
+    </div>
+    <canvas id="view" width="720" height="260" aria-label="WebGPU summon effect preview"></canvas>
+    <div id="status" role="status" aria-live="polite">Preparing WebGPU…</div>
+  </main>
+  <script>if (new URL(location.href).searchParams.has('embed')) document.body.classList.add('embed');</script>
+  <script type="module" src="./runtime.mjs"></script>
+  <script type="module" src="./gallery-autoplay.mjs"></script>
+</body>
+</html>

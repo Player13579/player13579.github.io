@@ -1,0 +1,60 @@
+{
+  "schema": "summon-green-hierarchy-r4-replay-summary/v1",
+  "versionId": "preparation-summon-green-hierarchy-sol61-r4",
+  "assetGroup": "preparation-arrival",
+  "creativeEdition": 4,
+  "creativeEditionLimit": 5,
+  "authors": {
+    "creativeDesign": "GPT-6.1-Sol",
+    "technicalRuntimeAndPackaging": "GPT-6-Luna"
+  },
+  "package": {
+    "packageManifestSha256": "063973398a4a074224f8193ad00f309fa3c4f1940cc1d4d2963abb580b762f84",
+    "packageSealSha256": "6c67a5cfc41d9fd2aba40afe2853c431b95e3440f2470dbc0557b8f637016a35",
+    "runtimeSha256": "955bd642252b22a105bab7bba6b6dd5aade77e2f68194cd588832fe99ac124e8",
+    "worldShaderSha256": "1bbeb131265a77c9c9c7cc40480c11cc3bfe3624bb9a2971616ea38e1767af72",
+    "multiWorldShaderSha256": "6249dae7be0081250744c6b6f8df071a23683a8ff9fd2171a03fc7dbfab67fe4",
+    "publishedWrapperManifestSha256": "063973398a4a074224f8193ad00f309fa3c4f1940cc1d4d2963abb580b762f84",
+    "publishedWrapperSealSha256": "6c67a5cfc41d9fd2aba40afe2853c431b95e3440f2470dbc0557b8f637016a35",
+    "originalNativePackageManifestSha256": "087849fff7c80b5616ae8465e609eaf9789458c76f7e66b62711af0d9dc3b929",
+    "originalNativePackageSealSha256": "2baf7802c329989cb5819422977bb7037ad1d5970c905ec3707eb8600c91d0db",
+    "metadataOnlyDerivative": {
+      "removedPrivateField": "correction.sourceContractPath",
+      "sourceContractSha256": "2d009a54686dfa3ec69a6b1da3b028468ec110b300a58a4de39b379d54afbf17",
+      "sourceContractVisibility": "private historical input; hash-only provenance; not a served route",
+      "changedRuntimeOrCreativePayloads": [],
+      "unchangedPayloadCount": 10
+    }
+  },
+  "technicalReplay": {
+    "status": "pass-limited-private-native-webgpu",
+    "scope": "Private native replay used the exact original R4 package. The published wrapper differs only in source-manifest provenance metadata; all ten runtime, shader, SFX and HTML payload files are byte-identical to the native package. This is technical replay only.",
+    "canvasCssAndBacking": {
+      "width": 720,
+      "height": 260,
+      "dpr": 1
+    },
+    "distinctCompletedSourceFramesInOriginal40To160msWindow": {
+      "single": 6,
+      "joint": 6
+    },
+    "naturalUnforcedExpiryClearCycles": 2,
+    "atomicDisposal": "pass",
+    "queueObserver": "pass; no rejected work",
+    "resourceRetirement": "pass",
+    "runtimeOrPageErrors": 0,
+    "verificationAudio": "hard-muted; zero AudioContexts"
+  },
+  "visualObservation": "Root review of the exact-source screenshot and sampled video frames describes green line geometry and outer vertical emission. Sampled media PTS is not mapped to runtime source age and does not establish full-lifetime visual quality.",
+  "statuses": {
+    "quality": "pending",
+    "adoption": "not-adopted",
+    "normalSfxListening": "not_run",
+    "safari": "unverified",
+    "gameIntegration": "not_connected",
+    "currentPublicParentReplay": "pending",
+    "publication": "approved for limited technical replay listing; metadata-only wrapper candidate integration and public delivery pending"
+  },
+  "technicalEvidenceSha256": "566569a6aa45179171046a1c1ec7653770e8aed5a982fe08fc450373541dcca9",
+  "identityBinding": "Exact R4 version was used by the private run. An independent CPU probe confirms the unpublished production selector binds galleryVersionId to the selected row and its parent validator rejects mismatched reported version, origin, iframe source, token, epoch, or sequence. The current public parent remains unverified, and the parent does not independently hash child runtime bytes."
+}
