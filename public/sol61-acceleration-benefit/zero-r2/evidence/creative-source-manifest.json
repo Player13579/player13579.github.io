@@ -1,0 +1,146 @@
+{
+  "schema": "dva-e-package/v1",
+  "versionId": "acceleration-zero-arrow-sol61-r2",
+  "entry": "package/index.html",
+  "creatorModelId": "gpt-6.1-sol",
+  "creatorModelDisplayName": "GPT-6.1-Sol",
+  "creativeEdition": 2,
+  "series": "acceleration-zero-arrow",
+  "creativeEditionLimit": 5,
+  "remainingCreativeEditions": 3,
+  "nextCreativeEditionAuthorizedAutomatically": false,
+  "zeroDesign": true,
+  "creativeParent": "acceleration-zero-arrow-sol61-r1 (new zero series only)",
+  "sourceRevision": {
+    "repository": "https://github.com/player13579/B.git",
+    "ref": "refs/heads/Codex-honoo",
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "remoteVerification": "親が2026-10-09にlive remote HEADを再照合しR1正本と一致。本担当はGitを起動せず同じ封印snapshotを使用。",
+    "baseBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extensionBlob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+    "retrievedFiles": {
+      "B-base.md": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25",
+      "B-extension.md": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7"
+    }
+  },
+  "files": [
+    {
+      "path": "B-base.md",
+      "sha256": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25",
+      "bytes": 126262
+    },
+    {
+      "path": "B-extension.md",
+      "sha256": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7",
+      "bytes": 76645
+    },
+    {
+      "path": "build-contract.py",
+      "sha256": "f8156dc739bcb0a73093b3657e592389fd9d35d952b9fc9cb05fa3d96ebf5ece",
+      "bytes": 19083
+    },
+    {
+      "path": "cpu-checks.mjs",
+      "sha256": "c17b1c97ec076ef6d794a565e541784fe7a891f8415addc8b8ad992b3e673a3d",
+      "bytes": 9325
+    },
+    {
+      "path": "CPU-RESULT.json",
+      "sha256": "42e7f30f312487502b7859884b4db02c07731e62ce38c325ad6038c7b0b9145d",
+      "bytes": 1754
+    },
+    {
+      "path": "design-rule-mapping.json",
+      "sha256": "e4ae863cec55545f25d87d33d29504d0729d9abcc4dc6f67f2d2310c26c6222a",
+      "bytes": 52262
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "7323b52777225f1ff2ca1dbda148a6a766bfb5d04c1c62b47603f9c5bc97c463",
+      "bytes": 3286
+    },
+    {
+      "path": "model-attribution.json",
+      "sha256": "05945ec9a1e749e33c72fe6527a52f7af3a93c7c111e02dbe6b6b2f6cc49a751",
+      "bytes": 576
+    },
+    {
+      "path": "package/common.wgsl",
+      "sha256": "42876019e205eee4da72ea665f67d8946b38de641a0e2885276641f266e4b96d",
+      "bytes": 1349
+    },
+    {
+      "path": "package/index.html",
+      "sha256": "7a4e2366efcd98b50638f35159ec58628ccccf05a9c0386f499835a54757a2ef",
+      "bytes": 990
+    },
+    {
+      "path": "package/model.mjs",
+      "sha256": "264fd0c9b1abdc563b20e80254ab7855f9fb517e4e28b36fa5cbf532d0bf1b7c",
+      "bytes": 2726
+    },
+    {
+      "path": "package/observer.wgsl",
+      "sha256": "19e77154d485221158d3a098c93a571efd2ff0652591803690a821d36f0b4dbc",
+      "bytes": 2064
+    },
+    {
+      "path": "package/runtime.mjs",
+      "sha256": "6e62395592863ca5c12f26492eea19dc35b7f90315b5c0ca514ddedf8f5476fb",
+      "bytes": 10790
+    },
+    {
+      "path": "package/sfx.mjs",
+      "sha256": "dfd23a9fb269d103abf2b2d47097e0e35028ce847b69adb8ffa8039e696df188",
+      "bytes": 2654
+    },
+    {
+      "path": "package/world.wgsl",
+      "sha256": "b782e639e5b3bbc236f74784efe4c09f9b82f96bc655161dc6d35435e2b04b27",
+      "bytes": 2046
+    },
+    {
+      "path": "R1-contract-source.json",
+      "sha256": "8a8b816a95746e946d016b6ac39a96d3a4b7d65571798a1be8ea554be1561c0f",
+      "bytes": 35628
+    },
+    {
+      "path": "seal.py",
+      "sha256": "76761c518df3071dafa4cee607e634a3fe4163467202e540fc0a704de5d033d9",
+      "bytes": 4611
+    },
+    {
+      "path": "WORK.md",
+      "sha256": "0c280ff57de2f29ce4a1737fe23840b986bc899f1102bd0f980d96d8f6b0c300",
+      "bytes": 1476
+    }
+  ],
+  "runtimeClosure": [
+    "package/index.html",
+    "package/model.mjs",
+    "package/runtime.mjs",
+    "package/sfx.mjs",
+    "package/common.wgsl",
+    "package/world.wgsl",
+    "package/observer.wgsl"
+  ],
+  "externalRuntimeDependencies": [],
+  "status": {
+    "cpu": "pass",
+    "GPUCompilation": "not_run",
+    "technicalReplay": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "performance": "not_run",
+    "publication": "not_published",
+    "adoption": "unknown",
+    "gameIntegration": "not_connected",
+    "Safari_iPad": "not_run"
+  },
+  "validation": "CPU-RESULT.json",
+  "ruleMapping": "design-rule-mapping.json",
+  "design": "DESIGN.md",
+  "verificationAPI": "__dvaAcceleration / __zeroEVerification",
+  "audioAPI": "__dvaGallerySfx (generic parent adapter compatibility unverified)",
+  "firstNativeReviewRequired": true
+}

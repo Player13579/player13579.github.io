@@ -1,0 +1,192 @@
+{
+  "schema": "dva-zero-r2-private-parent-fixture/v1",
+  "status": "PASS_CPU_READY_NATIVE_NOT_RUN",
+  "privateFixtureOnly": true,
+  "acceptedListingInput": false,
+  "publicMutation": false,
+  "nativeWebGpu": false,
+  "browser": false,
+  "parentSource": {
+    "commit": "28dce7b99106d4dd710beba975feffa446bdbb34",
+    "htmlSha256": "04d5ce1b613f8cd81bc04ade8eb3f4623a5e0de735257e5225b33c269ee37526",
+    "catalogSha256": "7207a41d7da7759e98a00b6bb933edbe0d23a00a6d21a67e516756eef287be6a",
+    "bridgeSha256": "cc5da8c77029a02adf86d41b0290a3d4a952d15d623248317b029eb20094fede"
+  },
+  "privateCatalog": {
+    "path": "site/asset-gallery.js",
+    "sha256": "599205e61b62940e75f9505208c8756be556ac0563d598b7796dbf8381828db5",
+    "exactReverseToPublicCatalog": true,
+    "onlyTwoPrivateRows": true
+  },
+  "parentHtml": {
+    "sourceSha256": "04d5ce1b613f8cd81bc04ade8eb3f4623a5e0de735257e5225b33c269ee37526",
+    "servedSha256": "04d5ce1b613f8cd81bc04ade8eb3f4623a5e0de735257e5225b33c269ee37526",
+    "byteIdentical": true
+  },
+  "fixtureCases": [
+    {
+      "versionId": "acceleration-zero-arrow-sol61-r2",
+      "groupId": "acceleration-benefit-sol61",
+      "defaultPreserved": "acceleration-zero-arrow-sol61-r1",
+      "adoption": "not-adopted",
+      "quality": "pending",
+      "publicationEligible": false,
+      "publicListing": false,
+      "entryPath": "private-zero-fixtures/acceleration-zero-arrow-sol61-r2/package/index.html"
+    },
+    {
+      "versionId": "human-transmutation-zero-sol61-r2",
+      "groupId": "alchemy-human-transmutation-sol61",
+      "defaultPreserved": "human-transmutation-zero-sol61-r1",
+      "adoption": "not-adopted",
+      "quality": "pending",
+      "publicationEligible": false,
+      "publicListing": false,
+      "entryPath": "private-zero-fixtures/human-transmutation-zero-sol61-r2/index.html"
+    }
+  ],
+  "packageStates": [
+    {
+      "versionId": "acceleration-zero-arrow-sol61-r2",
+      "groupId": "acceleration-benefit-sol61",
+      "executionManifestSha256": "a50d7938c1a30b86a94c2be965b2e81ef92ef3a7e4dc4a615967772041092da9",
+      "technicalPackageManifestSha256": "919af7a3f8047a8382a4c3ce31e4055c6c4d6881359595269e8bffecde07a612",
+      "creativeManifestSha256": "dee91bd89def3b362ed3d2d31d59a151e988e44185404a2113f9e3e015e7be08",
+      "creativeSealSha256": "b74b587c853f180e0e507d5a83f3443100f00110803feeefceece1762dc94b90",
+      "servedEntrySha256": "7fa09ae69266dab22f866e270f2dbb43a7fde55eb1eea8fd70d17641ab34e0c4",
+      "servedFiles": 9
+    },
+    {
+      "versionId": "human-transmutation-zero-sol61-r2",
+      "groupId": "alchemy-human-transmutation-sol61",
+      "executionManifestSha256": "362f8106018486fb5139a85a883846990a8b819418f37397d367a9198192400f",
+      "technicalPackageManifestSha256": "bd5796db944f527c8ef30f3285cbcd0c71a22a0c0251c659056a4d8e0fa4ef28",
+      "creativeManifestSha256": "8e7adb44d955c53b98f0b4643ccd24c5b0db9f9e4b68d1b5a94ead6a28103432",
+      "creativeSealSha256": "aa62eaba8183253b030012f3b040e2cb833178311eca6e0f6dbd8aad81df3ead",
+      "servedEntrySha256": "22ff51697c1768cf9acccbabd94c44234ed15517364ee02455f5b6c5c8d249b1",
+      "servedFiles": 9
+    }
+  ],
+  "closureChecks": [
+    {
+      "versionId": "acceleration-zero-arrow-sol61-r2",
+      "allDeclaredHashesVerified": true,
+      "relativeModuleAndShaderDependenciesInClosure": true,
+      "servedFileCount": 9,
+      "entryPath": "private-zero-fixtures/acceleration-zero-arrow-sol61-r2/package/index.html",
+      "entrySha256": "7fa09ae69266dab22f866e270f2dbb43a7fde55eb1eea8fd70d17641ab34e0c4"
+    },
+    {
+      "versionId": "human-transmutation-zero-sol61-r2",
+      "allDeclaredHashesVerified": true,
+      "relativeModuleAndShaderDependenciesInClosure": true,
+      "servedFileCount": 9,
+      "entryPath": "private-zero-fixtures/human-transmutation-zero-sol61-r2/index.html",
+      "entrySha256": "22ff51697c1768cf9acccbabd94c44234ed15517364ee02455f5b6c5c8d249b1"
+    }
+  ],
+  "parentSelectionPredicateTests": [
+    {
+      "selected": {
+        "status": "selected",
+        "category": "effect",
+        "filter": "unadopted",
+        "asset": "acceleration-benefit-sol61",
+        "version": "acceleration-zero-arrow-sol61-r2"
+      },
+      "adoptedFilterRejected": true,
+      "preservedDefault": "acceleration-zero-arrow-sol61-r1",
+      "priorVersionRetained": true,
+      "canonicalEntriesArray": true
+    },
+    {
+      "selected": {
+        "status": "selected",
+        "category": "effect",
+        "filter": "unadopted",
+        "asset": "alchemy-human-transmutation-sol61",
+        "version": "human-transmutation-zero-sol61-r2"
+      },
+      "adoptedFilterRejected": true,
+      "preservedDefault": "human-transmutation-zero-sol61-r1",
+      "priorVersionRetained": true,
+      "canonicalEntriesArray": true
+    }
+  ],
+  "cpuCommands": [
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/acceleration-zero-arrow-sol61-r2/package/gallery-adapter.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/acceleration-zero-arrow-sol61-r2/package/gallery-host-core.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/acceleration-zero-arrow-sol61-r2/package/model.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/acceleration-zero-arrow-sol61-r2/package/runtime.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/acceleration-zero-arrow-sol61-r2/package/sfx.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/human-transmutation-zero-sol61-r2/gallery-host-core.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/human-transmutation-zero-sol61-r2/gallery-host.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/human-transmutation-zero-sol61-r2/plan.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/human-transmutation-zero-sol61-r2/preview.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/human-transmutation-zero-sol61-r2/renderer.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "node --check",
+      "path": "outputs/request-20261009/zero-r2-native-fallback-repair/site/private-zero-fixtures/human-transmutation-zero-sol61-r2/sfx.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    }
+  ],
+  "parentProtocolSourcePredicates": {
+    "randomToken": true,
+    "versionBound": true,
+    "epochBound": true,
+    "strictOriginSourceAndSequence": true,
+    "firstFrameFence": true
+  },
+  "noNativeClaim": "CPU-only private fixtures; no browser, WebGPU, quality, normal audio listening, publication, adoption, or game integration claim."
+}

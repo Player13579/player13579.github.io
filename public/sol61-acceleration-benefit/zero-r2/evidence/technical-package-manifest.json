@@ -1,0 +1,115 @@
+{
+  "schema": "dva-zero-e-gallery-technical-package/v1",
+  "versionId": "acceleration-zero-arrow-sol61-r2",
+  "entry": "package/index.html",
+  "sourceCreative": {
+    "authorModelId": "gpt-6.1-sol",
+    "manifestPath": "outputs/request-20261009/acceleration-zero-arrow-r2/package-manifest.json",
+    "manifestSha256": "dee91bd89def3b362ed3d2d31d59a151e988e44185404a2113f9e3e015e7be08",
+    "sealPath": "outputs/request-20261009/acceleration-zero-arrow-r2/SEALED.json",
+    "sealSha256": "b74b587c853f180e0e507d5a83f3443100f00110803feeefceece1762dc94b90",
+    "entryPath": "package/index.html",
+    "entrySha256": "7a4e2366efcd98b50638f35159ec58628ccccf05a9c0386f499835a54757a2ef"
+  },
+  "sourceAttribution": {
+    "creative": {
+      "displayName": null,
+      "modelId": "gpt-6.1-sol"
+    }
+  },
+  "technicalContributions": [
+    {
+      "component": "R2 creative runtime",
+      "displayName": "GPT-6.1-Sol",
+      "modelId": "gpt-6.1-sol",
+      "attributionStatus": "sealed R2 source manifest"
+    },
+    {
+      "component": "generic gallery host adapter/core",
+      "displayName": "GPT-6-Luna",
+      "modelId": null,
+      "attributionStatus": "reused R1 derivative; model identity unresolved in source record"
+    }
+  ],
+  "technicalDerivative": {
+    "manifestPath": "outputs/request-20261009/accel-zero-gallery-adapter/TECHNICAL-DERIVATIVE.json",
+    "manifestSha256": "f229deb428daf13be239b4c3452cc137f2f9e8a7d464c4df94c1a71b4a689630",
+    "creativeBytesModified": false,
+    "authorizedServedEntryDeltas": [
+      {
+        "path": "package/index.html",
+        "exactFrom": "<title>加速 ゼロ設計 上向き矢印 R1</title>",
+        "exactTo": "<title>加速 ゼロ設計 上向き矢印 R2</title>"
+      },
+      {
+        "path": "package/index.html",
+        "attribute": "type=module src",
+        "exactFrom": "./runtime.mjs",
+        "exactTo": "./gallery-adapter.mjs"
+      }
+    ]
+  },
+  "runtimeClosure": [
+    "package/common.wgsl",
+    "package/gallery-adapter.mjs",
+    "package/gallery-host-core.mjs",
+    "package/index.html",
+    "package/model.mjs",
+    "package/observer.wgsl",
+    "package/runtime.mjs",
+    "package/sfx.mjs",
+    "package/world.wgsl"
+  ],
+  "files": [
+    {
+      "path": "creative-source/index.html",
+      "sha256": "7a4e2366efcd98b50638f35159ec58628ccccf05a9c0386f499835a54757a2ef",
+      "bytes": 990
+    },
+    {
+      "path": "package/common.wgsl",
+      "sha256": "42876019e205eee4da72ea665f67d8946b38de641a0e2885276641f266e4b96d",
+      "bytes": 1349
+    },
+    {
+      "path": "package/gallery-adapter.mjs",
+      "sha256": "01b6cb37a87efeb9744dcbf5f9b0218086d0295978133c7ea49eccfe57ed4a3a",
+      "bytes": 2032
+    },
+    {
+      "path": "package/gallery-host-core.mjs",
+      "sha256": "b51757332a17553b462fadb72ec9875c3aecfbdbad0a63f1d4ca9003fc71e2a1",
+      "bytes": 5893
+    },
+    {
+      "path": "package/index.html",
+      "sha256": "7fa09ae69266dab22f866e270f2dbb43a7fde55eb1eea8fd70d17641ab34e0c4",
+      "bytes": 998
+    },
+    {
+      "path": "package/model.mjs",
+      "sha256": "264fd0c9b1abdc563b20e80254ab7855f9fb517e4e28b36fa5cbf532d0bf1b7c",
+      "bytes": 2726
+    },
+    {
+      "path": "package/observer.wgsl",
+      "sha256": "19e77154d485221158d3a098c93a571efd2ff0652591803690a821d36f0b4dbc",
+      "bytes": 2064
+    },
+    {
+      "path": "package/runtime.mjs",
+      "sha256": "6e62395592863ca5c12f26492eea19dc35b7f90315b5c0ca514ddedf8f5476fb",
+      "bytes": 10790
+    },
+    {
+      "path": "package/sfx.mjs",
+      "sha256": "dfd23a9fb269d103abf2b2d47097e0e35028ce847b69adb8ffa8039e696df188",
+      "bytes": 2654
+    },
+    {
+      "path": "package/world.wgsl",
+      "sha256": "b782e639e5b3bbc236f74784efe4c09f9b82f96bc655161dc6d35435e2b04b27",
+      "bytes": 2046
+    }
+  ]
+}

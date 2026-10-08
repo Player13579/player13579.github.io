@@ -1,0 +1,19 @@
+{
+  "schema": "dva-root-cleanup-terminal-supplement/v1",
+  "observedAt": "2026-10-09T07:58:17.9709570+09:00",
+  "attemptDirectory": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899",
+  "originalCleanupPath": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/CLEANUP.json",
+  "originalCleanupSha256": "d6a31a225bb250be5cbf342581bcad7a074bbd5982ba548da66d015441e02987",
+  "originalAllClosed": false,
+  "originalTimedOutResource": "browser-server",
+  "originalDeadlineMs": 5000,
+  "runnerSessionId": 3190,
+  "runnerSessionTerminal": true,
+  "runnerExitCode": 1,
+  "processObservationCommand": "Get-CimInstance Win32_Process -Filter name=msedge.exe",
+  "matchingBrowserProcesses": [],
+  "ownedBrowserProcessesAbsent": true,
+  "otherFourResourcesReportedClosed": true,
+  "originalPreserved": true,
+  "interpretation": "Close observation exceeded deadline; subsequent actual OS inventory contains no Edge process, runner terminal. This supplements original timeout; no rerun and no original cleanup rewrite."
+}

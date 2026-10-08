@@ -1,0 +1,422 @@
+{
+  "schema": "dva-zero-r2-native-normalized-report/v1",
+  "source": {
+    "reportPath": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/REPORT.json",
+    "reportSha256": "ec05779d94ef447a6fece8d95f6051e24ef795d25a35459a3dfc808dbc5b8efa",
+    "cleanupPath": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/CLEANUP.json",
+    "cleanupSha256": "d6a31a225bb250be5cbf342581bcad7a074bbd5982ba548da66d015441e02987",
+    "sourceStatus": "NATIVE_EVIDENCE_COLLECTED_REVIEW_REQUIRED",
+    "sourcePrivateFixtureOnly": true,
+    "sourceCleanupAllClosed": false,
+    "cleanupSupplementPath": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/ROOT-CLEANUP-TERMINAL.json",
+    "cleanupSupplementSha256": "8bf1d8d15839d08c654ced15d81b46b2d7f0eeea0c1a2a16c9d8af22115d17e9"
+  },
+  "status": "PASS_NATIVE_VISIBLE_WEBGPU",
+  "nativeClaim": true,
+  "cleanupComplete": true,
+  "privateFixtureOnly": true,
+  "cleanupCompletion": {
+    "originalAllClosed": false,
+    "supplementalCheck": {
+      "schema": "dva-root-cleanup-terminal-supplement/v1",
+      "originalTimedOutResource": "browser-server",
+      "originalDeadlineMs": 5000,
+      "runnerSessionId": 3190,
+      "runnerSessionTerminal": true,
+      "runnerExitCode": 1,
+      "matchingBrowserProcesses": [],
+      "ownedBrowserProcessesAbsent": true,
+      "otherFourResourcesReportedClosed": true,
+      "observedAt": "2026-10-09T07:58:17.9709570+09:00",
+      "interpretation": "Close observation exceeded deadline; subsequent actual OS inventory contains no Edge process, runner terminal. This supplements original timeout; no rerun and no original cleanup rewrite."
+    }
+  },
+  "limits": [
+    "Technical replay only. Root must visually review and select capture frames.",
+    "Normal audio listening remains pending.",
+    "No quality, adoption, publication, or game-integration acceptance is claimed."
+  ],
+  "packages": [
+    {
+      "id": "acceleration-zero-arrow-sol61-r2",
+      "versionId": "acceleration-zero-arrow-sol61-r2",
+      "entrySha256": "7fa09ae69266dab22f866e270f2dbb43a7fde55eb1eea8fd70d17641ab34e0c4",
+      "parentRuntime": {
+        "schema": "dva-zero-parent-runtime-binding/v1",
+        "sourceCommit": "28dce7b99106d4dd710beba975feffa446bdbb34",
+        "sourceHtmlSha256": "04d5ce1b613f8cd81bc04ade8eb3f4623a5e0de735257e5225b33c269ee37526",
+        "sourceCatalogSha256": "7207a41d7da7759e98a00b6bb933edbe0d23a00a6d21a67e516756eef287be6a",
+        "privateHtmlSha256": "04d5ce1b613f8cd81bc04ade8eb3f4623a5e0de735257e5225b33c269ee37526",
+        "privateCatalogSha256": "599205e61b62940e75f9505208c8756be556ac0563d598b7796dbf8381828db5",
+        "sfxBridgeSha256": "cc5da8c77029a02adf86d41b0290a3d4a952d15d623248317b029eb20094fede",
+        "cpuReadySha256": "28e3f5f38d4c8dce1779833eb1e045efc966076913d15aee57f970f14f2f0878"
+      },
+      "parentSelection": {
+        "status": "selected",
+        "category": "effect",
+        "filter": "unadopted",
+        "groupId": "acceleration-benefit-sol61",
+        "versionId": "acceleration-zero-arrow-sol61-r2"
+      },
+      "captures": [
+        {
+          "file": "age-400.png",
+          "sha256": "d222128e22b0d6aab7e7d89a9ba0444809a4ed1358da2d09158998fa6879a6c8",
+          "state": {
+            "causeId": "1",
+            "fixture": {
+              "generation": 2
+            },
+            "visible": true,
+            "visibilityBasis": "captured from the selected child canvas in the native parent run; root pixel review required before acceptance"
+          },
+          "render": {
+            "submission": {
+              "queueId": 1,
+              "deviceId": 1,
+              "sequence": 32,
+              "targetId": 1,
+              "causeId": "1",
+              "generation": 2,
+              "at": 4116.799999952316,
+              "batchCount": 1
+            },
+            "completion": {
+              "queueId": 1,
+              "deviceId": 1,
+              "throughSequence": 32,
+              "at": 4116.899999976158,
+              "complete": true,
+              "completedAt": 4124.899999976158
+            }
+          },
+          "rawSource": {
+            "path": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/acceleration-zero-arrow-sol61-r2/age-400-raw.json",
+            "sha256": "a103bdfdfddf6941009940f8cdac4be7da62df1d8ad88ea3c56dd74b9dd6fe69"
+          },
+          "screenshotTiming": "canvas screenshot was captured after the raw snapshot; same-frame identity is not asserted"
+        },
+        {
+          "file": "age-950.png",
+          "sha256": "a7b6fd6288bfa052e7d4e48e67a87d31376767120478f7832636a9dbbad2e7b4",
+          "state": {
+            "causeId": "3",
+            "fixture": {
+              "generation": 4
+            },
+            "visible": true,
+            "visibilityBasis": "captured from the selected child canvas in the native parent run; root pixel review required before acceptance"
+          },
+          "render": {
+            "submission": {
+              "queueId": 1,
+              "deviceId": 1,
+              "sequence": 112,
+              "targetId": 1,
+              "causeId": "3",
+              "generation": 4,
+              "at": 9412.299999952316,
+              "batchCount": 1
+            },
+            "completion": {
+              "queueId": 1,
+              "deviceId": 1,
+              "throughSequence": 112,
+              "at": 9412.399999976158,
+              "complete": true,
+              "completedAt": 9435.899999976158
+            }
+          },
+          "rawSource": {
+            "path": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/acceleration-zero-arrow-sol61-r2/age-950-raw.json",
+            "sha256": "bc4333584d6f8cb82f1969e7d35b3d65a3d5d83f6e78075a76ebd3dfcefe970e"
+          },
+          "screenshotTiming": "canvas screenshot was captured after the raw snapshot; same-frame identity is not asserted"
+        },
+        {
+          "file": "age-1450.png",
+          "sha256": "a7b6fd6288bfa052e7d4e48e67a87d31376767120478f7832636a9dbbad2e7b4",
+          "state": {
+            "causeId": "3",
+            "fixture": {
+              "generation": 4
+            },
+            "visible": true,
+            "visibilityBasis": "captured from the selected child canvas in the native parent run; root pixel review required before acceptance"
+          },
+          "render": {
+            "submission": {
+              "queueId": 1,
+              "deviceId": 1,
+              "sequence": 155,
+              "targetId": 1,
+              "causeId": "3",
+              "generation": 4,
+              "at": 10347.799999952316,
+              "batchCount": 1
+            },
+            "completion": {
+              "queueId": 1,
+              "deviceId": 1,
+              "throughSequence": 155,
+              "at": 10347.899999976158,
+              "complete": true,
+              "completedAt": 10350.199999988079
+            }
+          },
+          "rawSource": {
+            "path": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/acceleration-zero-arrow-sol61-r2/age-1450-raw.json",
+            "sha256": "46af02cddeb7daeab40718c69b1aa9ef97ef8b1e91527cec92f1b1e6bdd0c38e"
+          },
+          "screenshotTiming": "canvas screenshot was captured after the raw snapshot; same-frame identity is not asserted"
+        }
+      ]
+    },
+    {
+      "id": "human-transmutation-zero-sol61-r2",
+      "versionId": "human-transmutation-zero-sol61-r2",
+      "entrySha256": "22ff51697c1768cf9acccbabd94c44234ed15517364ee02455f5b6c5c8d249b1",
+      "parentRuntime": {
+        "schema": "dva-zero-parent-runtime-binding/v1",
+        "sourceCommit": "28dce7b99106d4dd710beba975feffa446bdbb34",
+        "sourceHtmlSha256": "04d5ce1b613f8cd81bc04ade8eb3f4623a5e0de735257e5225b33c269ee37526",
+        "sourceCatalogSha256": "7207a41d7da7759e98a00b6bb933edbe0d23a00a6d21a67e516756eef287be6a",
+        "privateHtmlSha256": "04d5ce1b613f8cd81bc04ade8eb3f4623a5e0de735257e5225b33c269ee37526",
+        "privateCatalogSha256": "599205e61b62940e75f9505208c8756be556ac0563d598b7796dbf8381828db5",
+        "sfxBridgeSha256": "cc5da8c77029a02adf86d41b0290a3d4a952d15d623248317b029eb20094fede",
+        "cpuReadySha256": "28e3f5f38d4c8dce1779833eb1e045efc966076913d15aee57f970f14f2f0878"
+      },
+      "parentSelection": {
+        "status": "selected",
+        "category": "effect",
+        "filter": "unadopted",
+        "groupId": "alchemy-human-transmutation-sol61",
+        "versionId": "human-transmutation-zero-sol61-r2"
+      },
+      "captures": [
+        {
+          "file": "age-550.png",
+          "sha256": "f1036bc7dd227ce6ea4af68b8d9fbd4553ab5613fa8fc472404269f064a494d3",
+          "state": {
+            "causeId": "human-transmutation-zero-sol61-r2:2",
+            "fixture": {
+              "generation": 3
+            },
+            "visible": true,
+            "visibilityBasis": "captured from the selected child canvas in the native parent run; root pixel review required before acceptance"
+          },
+          "render": {
+            "submission": {
+              "queueId": 1,
+              "deviceId": 1,
+              "sequence": 16,
+              "targetId": 1,
+              "causeId": "human-transmutation-zero-sol61-r2:2",
+              "generation": 3,
+              "at": 2818.199999988079,
+              "batchCount": 1
+            },
+            "completion": {
+              "queueId": 1,
+              "deviceId": 1,
+              "throughSequence": 16,
+              "at": 2818.199999988079,
+              "complete": true,
+              "completedAt": 2824.199999988079
+            }
+          },
+          "rawSource": {
+            "path": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/human-transmutation-zero-sol61-r2/age-550-raw.json",
+            "sha256": "3c285d68b765834b4f3e02fe09bdf87fd045ca15bc1f850a43cb3df8769847e6"
+          },
+          "screenshotTiming": "canvas screenshot was captured after the raw snapshot; same-frame identity is not asserted"
+        },
+        {
+          "file": "age-1700.png",
+          "sha256": "8e49c3b71046cedb8e031d63dc2e4ecb5345e0f4dae38eb43fc973939553ea3e",
+          "state": {
+            "causeId": "human-transmutation-zero-sol61-r2:2",
+            "fixture": {
+              "generation": 3
+            },
+            "visible": true,
+            "visibilityBasis": "captured from the selected child canvas in the native parent run; root pixel review required before acceptance"
+          },
+          "render": {
+            "submission": {
+              "queueId": 1,
+              "deviceId": 1,
+              "sequence": 70,
+              "targetId": 1,
+              "causeId": "human-transmutation-zero-sol61-r2:2",
+              "generation": 3,
+              "at": 3999.300000011921,
+              "batchCount": 1
+            },
+            "completion": {
+              "queueId": 1,
+              "deviceId": 1,
+              "throughSequence": 70,
+              "at": 3999.300000011921,
+              "complete": true,
+              "completedAt": 4006.699999988079
+            }
+          },
+          "rawSource": {
+            "path": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/human-transmutation-zero-sol61-r2/age-1700-raw.json",
+            "sha256": "a04d76238b2cefeb8dddb7331c76dbaf1335f33d77bd1b37ce35d07c8248225f"
+          },
+          "screenshotTiming": "canvas screenshot was captured after the raw snapshot; same-frame identity is not asserted"
+        },
+        {
+          "file": "age-2900.png",
+          "sha256": "87e32f4e14086d3253c7589e9424b82296948078cbb43ead353e95d54db4ee75",
+          "state": {
+            "causeId": "human-transmutation-zero-sol61-r2:2",
+            "fixture": {
+              "generation": 3
+            },
+            "visible": true,
+            "visibilityBasis": "captured from the selected child canvas in the native parent run; root pixel review required before acceptance"
+          },
+          "render": {
+            "submission": {
+              "queueId": 1,
+              "deviceId": 1,
+              "sequence": 127,
+              "targetId": 1,
+              "causeId": "human-transmutation-zero-sol61-r2:2",
+              "generation": 3,
+              "at": 5178.599999964237,
+              "batchCount": 1
+            },
+            "completion": {
+              "queueId": 1,
+              "deviceId": 1,
+              "throughSequence": 127,
+              "at": 5178.599999964237,
+              "complete": true,
+              "completedAt": 5185
+            }
+          },
+          "rawSource": {
+            "path": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/human-transmutation-zero-sol61-r2/age-2900-raw.json",
+            "sha256": "3bb81476cb3b80f81ade134ff4e530b8e0678f38a9bf5739f22b05cdefb680f4"
+          },
+          "screenshotTiming": "canvas screenshot was captured after the raw snapshot; same-frame identity is not asserted"
+        },
+        {
+          "file": "H128-age-550.png",
+          "sha256": "6c7bea368cbc7b68304afbbf42656458a171b0f5a5cd413b7f740a9182941a99",
+          "state": {
+            "causeId": "human-transmutation-zero-sol61-r2:4",
+            "fixture": {
+              "generation": 6
+            },
+            "visible": true,
+            "visibilityBasis": "captured from the selected child canvas in the native parent run; root pixel review required before acceptance"
+          },
+          "render": {
+            "submission": {
+              "queueId": 1,
+              "deviceId": 1,
+              "sequence": 201,
+              "targetId": 1,
+              "causeId": "human-transmutation-zero-sol61-r2:4",
+              "generation": 6,
+              "at": 6692.099999964237,
+              "batchCount": 1
+            },
+            "completion": {
+              "queueId": 1,
+              "deviceId": 1,
+              "throughSequence": 201,
+              "at": 6692.099999964237,
+              "complete": true,
+              "completedAt": 6699
+            }
+          },
+          "rawSource": {
+            "path": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/human-transmutation-zero-sol61-r2/H128-age-550-raw.json",
+            "sha256": "8cef4d2addafc3f9a4f551fd6069e6d0e8aca24790fbaed9208e890f63f71be5"
+          },
+          "screenshotTiming": "canvas screenshot was captured after the raw snapshot; same-frame identity is not asserted"
+        },
+        {
+          "file": "H128-age-1700.png",
+          "sha256": "73f98e74c59dfe17fc004292254e0b74fe9ba7895d06ee2c7a9d7c77371b3521",
+          "state": {
+            "causeId": "human-transmutation-zero-sol61-r2:4",
+            "fixture": {
+              "generation": 6
+            },
+            "visible": true,
+            "visibilityBasis": "captured from the selected child canvas in the native parent run; root pixel review required before acceptance"
+          },
+          "render": {
+            "submission": {
+              "queueId": 1,
+              "deviceId": 1,
+              "sequence": 254,
+              "targetId": 1,
+              "causeId": "human-transmutation-zero-sol61-r2:4",
+              "generation": 6,
+              "at": 7818.399999976158,
+              "batchCount": 1
+            },
+            "completion": {
+              "queueId": 1,
+              "deviceId": 1,
+              "throughSequence": 254,
+              "at": 7818.5,
+              "complete": true,
+              "completedAt": 7825.399999976158
+            }
+          },
+          "rawSource": {
+            "path": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/human-transmutation-zero-sol61-r2/H128-age-1700-raw.json",
+            "sha256": "6a2034872cb00def839f4ce1b15d66e11d051b97400e3b714a3db13f239e8267"
+          },
+          "screenshotTiming": "canvas screenshot was captured after the raw snapshot; same-frame identity is not asserted"
+        },
+        {
+          "file": "H128-age-2900.png",
+          "sha256": "d1639508530c0de20fd7939794a6b588b0c2ec720891c33d812f6941728a5c5f",
+          "state": {
+            "causeId": "human-transmutation-zero-sol61-r2:4",
+            "fixture": {
+              "generation": 6
+            },
+            "visible": true,
+            "visibilityBasis": "captured from the selected child canvas in the native parent run; root pixel review required before acceptance"
+          },
+          "render": {
+            "submission": {
+              "queueId": 1,
+              "deviceId": 1,
+              "sequence": 312,
+              "targetId": 1,
+              "causeId": "human-transmutation-zero-sol61-r2:4",
+              "generation": 6,
+              "at": 9049.599999964237,
+              "batchCount": 1
+            },
+            "completion": {
+              "queueId": 1,
+              "deviceId": 1,
+              "throughSequence": 312,
+              "at": 9049.699999988079,
+              "complete": true,
+              "completedAt": 9055.5
+            }
+          },
+          "rawSource": {
+            "path": "outputs/request-20261009/zero-r2-native-fallback-repair/native-attempts/2026-10-08T22-56-07-882Z-522f9d0b-5e2e-421b-ad33-6ef9cd77c899/human-transmutation-zero-sol61-r2/H128-age-2900-raw.json",
+            "sha256": "da147f114b3a92ab93473861363b5807e556f3de985abfb0b943a1be50cc67d3"
+          },
+          "screenshotTiming": "canvas screenshot was captured after the raw snapshot; same-frame identity is not asserted"
+        }
+      ]
+    }
+  ]
+}
