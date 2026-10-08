@@ -1,0 +1,164 @@
+{
+  "schema": "dva-zero-r3-gallery-execution-manifest/v1",
+  "versionId": "acceleration-zero-arrow-sol61-r3",
+  "groupId": "acceleration-benefit-sol61",
+  "creativeAuthorModelId": "gpt-6.1-sol",
+  "creativeManifestPath": "outputs/request-20261009/acceleration-zero-arrow-r3/package-manifest.json",
+  "creativeManifestSha256": "6b44f1bb34b012dba50816936fe86f86f9b136c200bbc662b03d4e383f66459a",
+  "creativeSealPath": "outputs/request-20261009/acceleration-zero-arrow-r3/SEALED.json",
+  "creativeSealSha256": "e9d07b79a39ecf0bd77246520b748b71b9e1e97a416fba12f49c72c8751b2412",
+  "sourceAttribution": {
+    "creative": {
+      "displayName": null,
+      "modelId": "gpt-6.1-sol"
+    }
+  },
+  "technicalAuthor": null,
+  "technicalContributions": [
+    {
+      "component": "R3 creative VFX/SFX runtime",
+      "displayName": "GPT-6.1-Sol",
+      "modelId": "gpt-6.1-sol",
+      "attributionStatus": "sealed R3 source manifest"
+    },
+    {
+      "component": "reused generic gallery host adapter/core",
+      "displayName": "GPT-6-Luna",
+      "modelId": null,
+      "attributionStatus": "R1 technical derivative; model ID remains unresolved in its provenance"
+    }
+  ],
+  "sourceRuntimeClosure": [
+    {
+      "path": "package/common.wgsl",
+      "sha256": "7edc1383809870c6aedbbe79b6187df126065619cac6431694c8bbc6f704c512",
+      "bytes": 1633
+    },
+    {
+      "path": "package/index.html",
+      "sha256": "b68e74e8143920d928c28d053a454d08491430d95de0626b9db14c4f07e15057",
+      "bytes": 991
+    },
+    {
+      "path": "package/model.mjs",
+      "sha256": "3356dc6f48b901c03e519c4c044ce2f820136cab984f3264357edb4f320e9909",
+      "bytes": 3292
+    },
+    {
+      "path": "package/observer.wgsl",
+      "sha256": "b47a3d0155317ac923e1ae6c05154a03999b066f38e5962990974ae6acbde33a",
+      "bytes": 2390
+    },
+    {
+      "path": "package/runtime.mjs",
+      "sha256": "e42a0abebbba374c6f2aa614f094a578919dcb76371fe8ef19e9ddee0d116858",
+      "bytes": 10883
+    },
+    {
+      "path": "package/sfx.mjs",
+      "sha256": "785888635138d7464009428936117b6c10d662244acc1de2e805831a89997dd2",
+      "bytes": 2688
+    },
+    {
+      "path": "package/world.wgsl",
+      "sha256": "0410f09b8a6ff2b7a86c44d391d97248e43e136f37007116a2574457de151114",
+      "bytes": 2090
+    }
+  ],
+  "servedRuntimeClosure": [
+    {
+      "path": "package/common.wgsl",
+      "sha256": "7edc1383809870c6aedbbe79b6187df126065619cac6431694c8bbc6f704c512",
+      "bytes": 1633,
+      "sourceSha256": "7edc1383809870c6aedbbe79b6187df126065619cac6431694c8bbc6f704c512",
+      "sourceBytes": 1633,
+      "role": "sealed-creative-runtime",
+      "sourcePath": null
+    },
+    {
+      "path": "package/gallery-adapter.mjs",
+      "sha256": "01b6cb37a87efeb9744dcbf5f9b0218086d0295978133c7ea49eccfe57ed4a3a",
+      "bytes": 2032,
+      "sourceSha256": null,
+      "sourceBytes": null,
+      "role": "reused-r1-generic-gallery-host",
+      "sourcePath": "outputs/request-20261009/accel-zero-gallery-adapter/candidate/package/gallery-adapter.mjs"
+    },
+    {
+      "path": "package/gallery-host-core.mjs",
+      "sha256": "b51757332a17553b462fadb72ec9875c3aecfbdbad0a63f1d4ca9003fc71e2a1",
+      "bytes": 5893,
+      "sourceSha256": null,
+      "sourceBytes": null,
+      "role": "reused-r1-generic-gallery-host",
+      "sourcePath": "outputs/request-20261009/accel-zero-gallery-adapter/candidate/package/gallery-host-core.mjs"
+    },
+    {
+      "path": "package/index.html",
+      "sha256": "c7ed36ead3734643f4c7a1ce6c4a81a83f127638c12acda66f2820fe3ff08aac",
+      "bytes": 999,
+      "sourceSha256": "b68e74e8143920d928c28d053a454d08491430d95de0626b9db14c4f07e15057",
+      "sourceBytes": 991,
+      "role": "served-title-and-gallery-module-rebind",
+      "sourcePath": null
+    },
+    {
+      "path": "package/model.mjs",
+      "sha256": "3356dc6f48b901c03e519c4c044ce2f820136cab984f3264357edb4f320e9909",
+      "bytes": 3292,
+      "sourceSha256": "3356dc6f48b901c03e519c4c044ce2f820136cab984f3264357edb4f320e9909",
+      "sourceBytes": 3292,
+      "role": "sealed-creative-runtime",
+      "sourcePath": null
+    },
+    {
+      "path": "package/observer.wgsl",
+      "sha256": "b47a3d0155317ac923e1ae6c05154a03999b066f38e5962990974ae6acbde33a",
+      "bytes": 2390,
+      "sourceSha256": "b47a3d0155317ac923e1ae6c05154a03999b066f38e5962990974ae6acbde33a",
+      "sourceBytes": 2390,
+      "role": "sealed-creative-runtime",
+      "sourcePath": null
+    },
+    {
+      "path": "package/runtime.mjs",
+      "sha256": "e42a0abebbba374c6f2aa614f094a578919dcb76371fe8ef19e9ddee0d116858",
+      "bytes": 10883,
+      "sourceSha256": "e42a0abebbba374c6f2aa614f094a578919dcb76371fe8ef19e9ddee0d116858",
+      "sourceBytes": 10883,
+      "role": "sealed-creative-runtime",
+      "sourcePath": null
+    },
+    {
+      "path": "package/sfx.mjs",
+      "sha256": "785888635138d7464009428936117b6c10d662244acc1de2e805831a89997dd2",
+      "bytes": 2688,
+      "sourceSha256": "785888635138d7464009428936117b6c10d662244acc1de2e805831a89997dd2",
+      "sourceBytes": 2688,
+      "role": "sealed-creative-runtime",
+      "sourcePath": null
+    },
+    {
+      "path": "package/world.wgsl",
+      "sha256": "0410f09b8a6ff2b7a86c44d391d97248e43e136f37007116a2574457de151114",
+      "bytes": 2090,
+      "sourceSha256": "0410f09b8a6ff2b7a86c44d391d97248e43e136f37007116a2574457de151114",
+      "sourceBytes": 2090,
+      "role": "sealed-creative-runtime",
+      "sourcePath": null
+    }
+  ],
+  "servedEntryChanges": [
+    {
+      "path": "package/index.html",
+      "change": "type=module src",
+      "from": "./runtime.mjs",
+      "to": "./gallery-adapter.mjs"
+    }
+  ],
+  "nativeReplay": "pending",
+  "qualityAccepted": false,
+  "adopted": false,
+  "publication": "not_published",
+  "gameIntegration": "not_connected"
+}

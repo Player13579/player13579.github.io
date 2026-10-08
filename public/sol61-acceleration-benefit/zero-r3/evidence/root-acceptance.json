@@ -1,0 +1,71 @@
+{
+  "schema": "dva-zero-e-root-listing-acceptance/v1",
+  "versionId": "acceleration-zero-arrow-sol61-r3",
+  "manifestSha256": "9d6b1238b46411df89aea8c143eb904540be513534b2d5dba186b6491db20896",
+  "nativeReportPath": "outputs/request-20261009/zero-r3-catalog-prepare/native-report-normalization/zero-r3-native-prepare-2026-10-08T23-24-59-310Z-aeaedcb5-a8c3-4972-a76d-e0857d6dafde/R3-COMPATIBILITY-REPORT.json",
+  "nativeReportSha256": "bcb0040677718b0438d728077ccc062bdc52275737b54ec235909535b0fd261b",
+  "visibleWebGPU": true,
+  "technicalReplayAccepted": true,
+  "qualityAccepted": false,
+  "adopted": false,
+  "acceptedEvidence": {
+    "versionId": "acceleration-zero-arrow-sol61-r3",
+    "packageId": "acceleration-zero-arrow-sol61-r3",
+    "nativePackageIndex": 0,
+    "sourcePins": [
+      {
+        "path": "outputs/request-20261009/zero-r3-gallery-package/packages/acceleration-zero-arrow-sol61-r3/technical-package-manifest.json",
+        "sha256": "9d6b1238b46411df89aea8c143eb904540be513534b2d5dba186b6491db20896"
+      },
+      {
+        "path": "outputs/request-20261009/zero-r3-gallery-package/packages/acceleration-zero-arrow-sol61-r3/package/index.html",
+        "sha256": "c7ed36ead3734643f4c7a1ce6c4a81a83f127638c12acda66f2820fe3ff08aac"
+      },
+      {
+        "path": "outputs/request-20261009/zero-r3-gallery-package/packages/acceleration-zero-arrow-sol61-r3/creative-source/index.html",
+        "sha256": "b68e74e8143920d928c28d053a454d08491430d95de0626b9db14c4f07e15057"
+      }
+    ],
+    "parentRuntime": {
+      "schema": "dva-zero-parent-runtime-binding/v1",
+      "sourceCommit": "03211759ef2538e431faccfc6948cb3479d5e6fd",
+      "sourceHtmlSha256": "6a350163b8f9b5b0a1b638e218158fbea9fdb7711b24dad26783f88f80334f37",
+      "sourceCatalogSha256": "569cc78688e43b99fec883b3f3e86b6b41116c18b7f327dcd40bf312d95e80f7",
+      "privateHtmlSha256": "6a350163b8f9b5b0a1b638e218158fbea9fdb7711b24dad26783f88f80334f37",
+      "privateCatalogSha256": "e79b315269818456112e2a2956cf06c79b66ea89e22c5fb969fe7188a4802a89",
+      "sfxBridgeSha256": "cc5da8c77029a02adf86d41b0290a3d4a952d15d623248317b029eb20094fede",
+      "cpuReadySha256": "3dcd1404bf668c0c6db191b8f2cf79146146980622ab918e983965069c7765df"
+    },
+    "visibleWebGPUFrameScope": [
+      {
+        "causeId": "1",
+        "generation": 2,
+        "completedFenceSequence": 32,
+        "snapshotPath": "outputs/request-20261009/zero-r3-native-prepare/native-attempts/2026-10-08T23-24-59-310Z-aeaedcb5-a8c3-4972-a76d-e0857d6dafde/acceleration-zero-arrow-sol61-r3/age-950.png",
+        "snapshotSha256": "62ee3734eb52af90ed8cd5710a8adffc376fdc916ca22d005e35629490e58704",
+        "submission": {
+          "queueId": 1,
+          "deviceId": 1,
+          "sequence": 32,
+          "targetId": 1,
+          "causeId": "1"
+        },
+        "rawPath": "outputs/request-20261009/zero-r3-native-prepare/native-attempts/2026-10-08T23-24-59-310Z-aeaedcb5-a8c3-4972-a76d-e0857d6dafde/acceleration-zero-arrow-sol61-r3/age-950-raw.json",
+        "rawSha256": "c6fe799e8ad3347d448c3228b915b8ed8624cf2239180cc34b189a2e0fe8cf62",
+        "screenshotIsSameFrame": false,
+        "reviewState": "root-viewed-visible-effect-limited; screenshot not atomic with raw"
+      }
+    ],
+    "reviewLimitations": [
+      "Root actually viewed only the two listed images; no full-lifetime motion or normal SFX listening acceptance.",
+      "Natural-play screenshots follow raw snapshots and do not establish atomic same-frame or exact-age identity.",
+      "RAF observations measure browser callback intervals on this PC, not GPU timing, iPad Safari performance, or full-game performance.",
+      "Creative R3 remains unadopted and main-game unconnected; publish eligible technically replayable version then continue quality review."
+    ]
+  },
+  "rootPixelReviewPath": "outputs/request-20261009/ZERO-R3-ROOT-PIXEL-REVIEW.json",
+  "rootPixelReviewSha256": "70b0acafc0bc5270ae6d6cd92ae2fe7380d0866efb4061423a822de0dd4419f3",
+  "reviewedBy": "GPT-6.1-Sol",
+  "reviewedAt": "2026-10-08T23:26:57.015Z",
+  "acceptanceScope": "Limited exact parent selection/startup/natural loops/completed GPU receipt and actual viewed image; not full quality, normal SFX, Safari, public replay, or game integration"
+}
