@@ -22631,64 +22631,11 @@ const QUANTUM_ELECTRIC_TEXTURE_ANCHORS = Object.freeze({
   target: Object.freeze({ x: 0.408, y: -0.353 })
 });
 
-function quantumElectricTextureTransform(effect, thickness) {
-  const sourceX = Number(effect?.x) || 0;
-  const sourceY = Number(effect?.y) || 0;
-  const targetX = Number.isFinite(effect?.targetX) ? Number(effect.targetX) : sourceX;
-  const targetY = Number.isFinite(effect?.targetY) ? Number(effect.targetY) : sourceY;
-  const dx = targetX - sourceX;
-  const dy = targetY - sourceY;
-  const length = Math.hypot(dx, dy);
-  if (!(length > 0.001)) return null;
 
-  const source = QUANTUM_ELECTRIC_TEXTURE_ANCHORS.source;
-  const target = QUANTUM_ELECTRIC_TEXTURE_ANCHORS.target;
-  const axisX = target.x - source.x;
-  const axisY = target.y - source.y;
-  const normalX = -axisY;
-  const normalY = axisX;
-  const axisMagnitudeSquared = axisX * axisX + axisY * axisY;
-  const perpendicularX = -dy / length * thickness;
-  const perpendicularY = dx / length * thickness;
-  const a = (dx * axisX + perpendicularX * normalX) / axisMagnitudeSquared;
-  const c = (dx * axisY + perpendicularX * normalY) / axisMagnitudeSquared;
-  const b = (dy * axisX + perpendicularY * normalX) / axisMagnitudeSquared;
-  const d = (dy * axisY + perpendicularY * normalY) / axisMagnitudeSquared;
-  const e = sourceX - a * source.x - c * source.y;
-  const f = sourceY - b * source.x - d * source.y;
-  return { a, b, c, d, e, f, sourceX, sourceY, targetX, targetY, length };
-}
 
 const QUANTUM_DISCHARGE_CONDUCTION_TIMES=Object.freeze([0,25,50,75,100,125,150,180,220,280,380,500,650,800,950,1050]);
 const QUANTUM_DISCHARGE_READINESS=new WeakMap();
-function drawQuantumElectricDirectedEffect(effect, progress) {
-  const p=clamp(Number(progress)||0,0,1),inheritedAlpha=ctx.globalAlpha;
-  if(p>=1||inheritedAlpha<=0.001)return true;
-  const transform=quantumElectricTextureTransform(effect,138);
-  if(!transform)return false;
-  const sprite=state.textures.quantumElectricDischarge,atlas=state.textures.quantumDischargeConduction;
-  const baseReady=sprite?.complete&&sprite.naturalWidth===1219&&sprite.naturalHeight===1022;
-  const atlasReady=atlas?.complete&&atlas.naturalWidth===2064&&atlas.naturalHeight===2064;
-  if(!QUANTUM_DISCHARGE_READINESS.has(effect)&&(baseReady||atlasReady))QUANTUM_DISCHARGE_READINESS.set(effect,atlasReady);
-  const animate=atlasReady&&QUANTUM_DISCHARGE_READINESS.get(effect)===true;
-  const reduced=prefersReducedMotion();
-  if((reduced||!animate)&&!baseReady)return false;
-  ctx.save();ctx.globalCompositeOperation='lighter';ctx.filter='none';ctx.shadowBlur=0;ctx.shadowColor='rgba(0,0,0,0)';ctx.shadowOffsetX=0;ctx.shadowOffsetY=0;
-  ctx.transform(transform.a,transform.b,transform.c,transform.d,transform.e,transform.f);
-  if(reduced||!animate){
-    ctx.globalAlpha=inheritedAlpha*(1-objectEffectEase(clamp((p-.76)/.24,0,1)));
-    ctx.drawImage(sprite,-.5,-.5,1,1);
-  }else{
-    const times=QUANTUM_DISCHARGE_CONDUCTION_TIMES,t=p*1050;let i=0;
-    while(i<times.length-2&&times[i+1]<t)i++;
-    const mix=clamp((t-times[i])/(times[i+1]-times[i]),0,1);
-    for(const [frame,weight]of [[i,1-mix],[i+1,mix]])if(weight>0){
-      ctx.globalAlpha=inheritedAlpha*weight;
-      ctx.drawImage(atlas,(frame%4)*516+2,Math.floor(frame/4)*516+2,512,512,-.5,-.5,1,1);
-    }
-  }
-  ctx.restore();return true;
-}
+
 
 
 
@@ -23131,118 +23078,13 @@ const TACTICAL_SYSTEM_EFFECT_CELLS = {
   "alchemy-particle-cannon": 8
 };
 
-function drawTaserContactEffect(effect, progress) {
-  const material = state.textures?.taserContactMaterial;
-  const flow = state.textures?.taserContactFlow;
-  if (effect._taserContactReady === undefined) effect._taserContactReady = Boolean(material?.complete && material.naturalWidth && flow?.complete && flow.naturalWidth);
-  if (!effect._taserContactReady) return true;
-  const p = clamp(Number(progress) || 0, 0, 1);
-  const fade = objectEffectEase(clamp(p / 0.06, 0, 1)) * (1 - objectEffectEase(clamp((p - 0.85) / 0.15, 0, 1)));
-  if (fade <= 0 || ctx.globalAlpha <= 0) return true;
-  const size = Math.min(390, Math.max(105, Number(effect.radius) || 120) * 1.9);
-  const width = size * 379 / 417;
-  const frame = prefersReducedMotion() ? 10 : p * 47;
-  const first = Math.floor(frame), second = Math.min(47, first + 1), mix = frame - first;
-  ctx.save();
-  ctx.translate(effect.x, effect.y);
-  ctx.globalCompositeOperation = "lighter";
-  ctx.globalAlpha *= fade;
-  ctx.drawImage(material, 0, 0, 379, 417, -width / 2, -size / 2, width, size);
-  const inherited = ctx.globalAlpha;
-  for (const [index, weight] of [[first, 1 - mix], [second, mix]]) {
-    if (weight <= 0) continue;
-    ctx.globalAlpha = inherited * weight;
-    ctx.drawImage(flow, (index % 8) * 265, Math.floor(index / 8) * 268, 265, 268, -width / 2 + 58 * size / 417, -size / 2 + 48 * size / 417, 265 * size / 417, 268 * size / 417);
-  }
-  ctx.restore();
-  return true;
-}
 
-function drawPairRouteWarningEffect(effect, progress) {
-  const material = state.textures?.pairWarningMaterial, flow = state.textures?.pairWarningFlow;
-  if (effect._pairWarningReady === undefined) effect._pairWarningReady = Boolean(material?.complete && material.naturalWidth && flow?.complete && flow.naturalWidth);
-  if (!effect._pairWarningReady) return true;
-  const p = clamp(Number(progress) || 0, 0, 1);
-  const fade = objectEffectEase(clamp(p / .07, 0, 1)) * (1 - objectEffectEase(clamp((p - .85) / .15, 0, 1)));
-  if (fade <= 0 || ctx.globalAlpha <= 0) return true;
-  const size = Math.min(390, Math.max(105, Number(effect.radius) || 120) * 1.9), height = size * 371 / 397;
-  const frame = prefersReducedMotion() ? 16 : p * 47, first = Math.floor(frame), second = Math.min(47, first + 1), mix = frame - first;
-  ctx.save(); ctx.translate(effect.x, effect.y); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha *= fade;
-  ctx.drawImage(material, 0, 0, 397, 371, -size / 2, size / 2 - height, size, height);
-  const inherited = ctx.globalAlpha;
-  for (const [index, weight] of [[first, 1 - mix], [second, mix]]) { if (weight <= 0) continue; ctx.globalAlpha = inherited * weight; ctx.drawImage(flow, (index % 8) * 268, Math.floor(index / 8) * 263, 268, 263, -size / 2 + 66 * size / 397, size / 2 - height + 51 * size / 397, 268 * size / 397, 263 * size / 397); }
-  ctx.restore(); return true;
-}
 
-function drawGravityTimeMembrane(effect, progress) {
-  const mode=effect.type==='gravity-accelerate'?'accelerate':effect.type==='gravity-decelerate'?'decelerate':null;
-  if(!mode)return false;
-  const p=Math.max(0,Math.min(1,Number(progress)||0)),inherited=ctx.globalAlpha;
-  if(inherited<=0||p>=1)return true;
-  const profile=GRAVITY_TIME_MEMBRANES[mode],base=state.textures[profile.baseKey],mask=state.textures[profile.maskKey];
-  if(!base?.complete||base.naturalWidth!==1290||base.naturalHeight!==1290)return true;
-  const ease=v=>v*v*(3-2*v),entry=ease(Math.min(1,p/.05)),exit=1-ease(Math.max(0,Math.min(1,(p-.90)/.10))),alpha=inherited*entry*exit;
-  if(alpha<=0)return true;
-  const scale=300/1254,x=Number(effect.x)||0,y=Number(effect.y)||0,originX=x-150,originY=y-150;
-  const age=p*(Number(effect.duration)||Number(effect.durationMs)||8000),cycle=mode==='accelerate'?850:2600;
-  const reduced=prefersReducedMotion(),phase=((age%cycle)+cycle)%cycle/cycle*32;
-  const frame=reduced?32:Math.floor(phase),mix=reduced?0:phase-frame;
-  // Accelerate's base membrane already carries its own bright core. Adding
-  // the caustic patches with lighter compounded those opaque highlights into
-  // white. Keep the same registered cells, but alpha-compose that one
-  // operator TE so the authored material remains legible.
-  ctx.save();ctx.globalCompositeOperation=mode==='accelerate'?'source-over':'lighter';ctx.globalAlpha=mode==='accelerate'?alpha*.82:alpha;ctx.shadowBlur=0;ctx.shadowColor='rgba(0,0,0,0)';ctx.shadowOffsetX=0;ctx.shadowOffsetY=0;
-  ctx.drawImage(base,originX-18*scale,originY-18*scale,1290*scale,1290*scale);
-  if(mask?.complete&&mask.naturalWidth===profile.atlasWidth&&mask.naturalHeight===profile.atlasHeight){
-    const lightAlpha=mode==='accelerate'?alpha*.48:Math.min(1,alpha*1.05);
-    const drawPhase=(index,weight)=>{
-      if(weight<=0)return;
-      ctx.globalAlpha=lightAlpha*weight;
-      for(const patch of profile.frames[index]){const r=patch[0],d=patch[1];ctx.drawImage(mask,r[0],r[1],r[2],r[3],originX+d[0]*scale,originY+d[1]*scale,d[2]*scale,d[3]*scale)}
-    };
-    drawPhase(frame,1-mix);
-    if(mix>0)drawPhase((frame+1)%32,mix);
-  }
-  ctx.restore();return true;
-}
 
-function drawTacticalSystemsEffect(effect, progress) {
-  // Smartphone action events remain authoritative input/character-action
-  // carriers. Their world TE is retired, so the legacy atlas cannot reach the renderer.
-  if(effect.type === "action-smartphone") return true;
-  if (effect.type === "pair-route-violation") return drawPairRouteWarningEffect(effect, progress);
-  if (effect.type === "action-taser") return drawTaserContactEffect(effect, progress);
-  // Time-rate changes retain their head markers and actor motion, not field TE.
-  // Consume the event here so missing textures cannot revive the legacy atlas.
-  if (drawGravityTimeMembrane(effect, progress)) return true;
-  // The authoritative persistent zone owns the storm from activation to expiry.
-  // Keep the root event for the caster power motion, without a second legacy field.
-  if (effect.type === "gravity-storm") return true;
-  // Shared smartphone actions use the same single-icon presentation as the shop.
-  // Operator-only tactical effects continue through their dedicated renderer.
-  if (drawCommonActionSimpleIcon(effect, progress)) return true;
-  const index = TACTICAL_SYSTEM_EFFECT_CELLS[effect.type];
-  if (!Number.isInteger(index)) return false;
-  const atlas = transparentSpriteSource(state.textures.tacticalSystemsAtlas, "tactical-systems-atlas", 18);
-  const sprite = atlas ? normalizedSpriteFrame(atlas, `tactical-system-${index}`, 3, 3, Math.floor(index / 3), index % 3) : null;
-  if (!sprite) return false;
-  const pulse = Math.sin(Math.min(1, progress) * Math.PI);
-  const base = Math.max(105, Number(effect.radius) || 120);
-  const size = Math.min(index === 6 ? 560 : 390, base * (1.55 + progress * 0.65 + pulse * 0.2));
-  ctx.save();
-  ctx.globalCompositeOperation = "lighter";
-  ctx.globalAlpha *= objectEffectEase(clamp(progress / 0.075, 0, 1)) * (1 - progress * 0.3) * (1 - objectEffectEase(clamp((progress - 0.62) / 0.38, 0, 1)));
-  ctx.translate(effect.x, effect.y);
-  ctx.rotate(index === 5 ? progress * 0.24 : 0);
-  drawAnimatedTextureBottom(sprite, 0, size / 2, size, size, {
-    mode: semanticEffectMotion(effect.type, effect.variant, index === 6 ? "gravity" : "shimmer"),
-    progress,
-    intensity: 0.9,
-    baseAlpha: 0.15
-  });
-  ctx.restore();
-  return true;
-}
+
+
+
+
 
 function drawFloraGeneratedEffect(effect, progress) {
   const source = state.textures.floraHealV1;
@@ -24199,143 +24041,14 @@ function drawGravityStormImpactEffect(effect, progress) {
   return true;
 }
 
-function drawFireHazardTransport(effect, progress, options = {}) {
-  const persistent=Boolean(options.persistent),p=Number(progress);
-  if (ctx.globalAlpha<=0 || !Number.isFinite(Number(effect?.x)) || !Number.isFinite(Number(effect?.y))) return true;
-  if (!persistent && (!Number.isFinite(p)||p<=0||p>=1)) return true;
-  const image=state.textures.fireMaterialTransport;
-  if (!image?.complete || image.naturalWidth!==2304 || image.naturalHeight!==2304) return true;
-  const reduced=prefersReducedMotion(),radius=persistent?Math.max(24,Number(effect.radius)||80):Math.max(70,Number(effect.radius)||105);
-  const size=radius*(persistent?2.25:1.74),y=Number(effect.y)+(persistent?0:radius*.12);
-  const time=persistent?Number(options.time)||0:p*1.8;
-  const phase=reduced?8:(((time*.72+Number(effect.x)*.001)%1+1)%1)*32;
-  const first=Math.floor(phase),blend=phase-first;
-  // Event admission supplies p; persistent field membership supplies lifetime.
-  // No new deadline, actor pursuit or target/source coordinate reinterpretation.
-  const envelope=persistent?.72:Math.min(1,p/.07)*Math.pow(1-p,1.08)*.78;
-  ctx.save();ctx.globalCompositeOperation='lighter';const alpha=ctx.globalAlpha*envelope;
-  const paintFireCell=(index,weight)=>{ctx.globalAlpha=alpha*weight;ctx.drawImage(image,(index%6)*384,Math.floor(index/6)*384,384,384,Number(effect.x)-size/2,y-size/2,size,size)};
-  // Unwarped actual material anchors the roots. Only the baked material-local
-  // density and upper flame curvature travel; no whole texture transform.
-  paintFireCell(0,1);paintFireCell(first+1,(1-blend)*.9);if(blend>0)paintFireCell((first+1)%32+1,blend*.9);
-  ctx.restore();return true;
-}
 
-function drawWaterHazardTransport(effect, progress, options = {}) {
-  const persistent=Boolean(options.persistent),p=Number(progress);
-  if (ctx.globalAlpha<=0 || !Number.isFinite(Number(effect?.x)) || !Number.isFinite(Number(effect?.y))) return true;
-  if (!persistent && (!Number.isFinite(p)||p<=0||p>=1)) return true;
-  const image=state.textures.waterMaterialTransport;
-  if (!image?.complete || image.naturalWidth!==3072 || image.naturalHeight!==1536) return true;
-  const reduced=prefersReducedMotion(),clear=effect.type==='status-burn-cleared';
-  const radius=persistent?Math.max(24,Number(effect.radius)||80):Math.max(70,Number(effect.radius)||105);
-  const width=radius*(persistent?2.25:2.06),height=width*256/384,x=Number(effect.x)-width/2,y=Number(effect.y)+(persistent?0:radius*.18)-height/2;
-  const time=persistent?Number(options.time)||0:p*(clear?1.2:2.4);
-  const phase=reduced?8:(((time*.48+Number(effect.x)*.001)%1+1)%1)*32,first=Math.floor(phase),blend=phase-first;
-  const ease=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)};
-  const impactEnd=clear?.25:.42,collapse=persistent?1:ease(p/impactEnd);
-  const impactWeight=persistent?0:(1-ease(p/impactEnd))*ease(p/(clear?.025:.07));
-  const settleWeight=persistent?1:ease(p/(clear?.18:.32));
-  const envelope=persistent?.72:(1-ease((p-.68)/.32))*.78;
-  ctx.save();ctx.globalCompositeOperation='source-over';const alpha=ctx.globalAlpha*envelope;
-  const paintWaterCell=(index,weight)=>{if(weight<=0)return;ctx.globalAlpha=alpha*weight;ctx.drawImage(image,(index%8)*384,Math.floor(index/8)*256,384,256,x,y,width,height)};
-  // The liquid footprint stays fixed. Impact upper regions settle locally;
-  // persistent state uses only the low liquid material, never frozen spray.
-  if (impactWeight>0) {const q=(reduced?6:collapse*11),i=Math.floor(q),b=q-i;paintWaterCell(2+i,impactWeight*(1-b));if(b>0&&i<11)paintWaterCell(3+i,impactWeight*b)}
-  paintWaterCell(1,settleWeight);paintWaterCell(14+first,settleWeight*(1-blend)*.65);if(blend>0)paintWaterCell(14+(first+1)%32,settleWeight*blend*.65);
-  ctx.restore();return true;
-}
+
+
 
 const POISON_TRANSPORT_ATLAS = {"width":2304,"height":2048,"poolCellWidth":384,"poolCellHeight":256,"poolStatic":{"x":0,"y":0,"width":384,"height":256},"poolPhases":[{"x":384,"y":0,"width":384,"height":256},{"x":768,"y":0,"width":384,"height":256},{"x":1152,"y":0,"width":384,"height":256},{"x":1536,"y":0,"width":384,"height":256},{"x":1920,"y":0,"width":384,"height":256},{"x":0,"y":256,"width":384,"height":256},{"x":384,"y":256,"width":384,"height":256},{"x":768,"y":256,"width":384,"height":256},{"x":1152,"y":256,"width":384,"height":256},{"x":1536,"y":256,"width":384,"height":256},{"x":1920,"y":256,"width":384,"height":256},{"x":0,"y":512,"width":384,"height":256},{"x":384,"y":512,"width":384,"height":256},{"x":768,"y":512,"width":384,"height":256},{"x":1152,"y":512,"width":384,"height":256},{"x":1536,"y":512,"width":384,"height":256},{"x":1920,"y":512,"width":384,"height":256},{"x":0,"y":768,"width":384,"height":256},{"x":384,"y":768,"width":384,"height":256},{"x":768,"y":768,"width":384,"height":256},{"x":1152,"y":768,"width":384,"height":256},{"x":1536,"y":768,"width":384,"height":256},{"x":1920,"y":768,"width":384,"height":256},{"x":0,"y":1024,"width":384,"height":256},{"x":384,"y":1024,"width":384,"height":256},{"x":768,"y":1024,"width":384,"height":256},{"x":1152,"y":1024,"width":384,"height":256},{"x":1536,"y":1024,"width":384,"height":256},{"x":1920,"y":1024,"width":384,"height":256},{"x":0,"y":1280,"width":384,"height":256},{"x":384,"y":1280,"width":384,"height":256},{"x":768,"y":1280,"width":384,"height":256}],"bubblePhases":[{"x":0,"y":1536,"width":128,"height":128},{"x":128,"y":1536,"width":128,"height":128},{"x":256,"y":1536,"width":128,"height":128},{"x":384,"y":1536,"width":128,"height":128},{"x":512,"y":1536,"width":128,"height":128},{"x":640,"y":1536,"width":128,"height":128},{"x":768,"y":1536,"width":128,"height":128},{"x":896,"y":1536,"width":128,"height":128},{"x":0,"y":1664,"width":128,"height":128},{"x":128,"y":1664,"width":128,"height":128},{"x":256,"y":1664,"width":128,"height":128},{"x":384,"y":1664,"width":128,"height":128},{"x":512,"y":1664,"width":128,"height":128},{"x":640,"y":1664,"width":128,"height":128},{"x":768,"y":1664,"width":128,"height":128},{"x":896,"y":1664,"width":128,"height":128},{"x":0,"y":1792,"width":128,"height":128},{"x":128,"y":1792,"width":128,"height":128},{"x":256,"y":1792,"width":128,"height":128},{"x":384,"y":1792,"width":128,"height":128},{"x":512,"y":1792,"width":128,"height":128},{"x":640,"y":1792,"width":128,"height":128},{"x":768,"y":1792,"width":128,"height":128},{"x":896,"y":1792,"width":128,"height":128},{"x":0,"y":1920,"width":128,"height":128},{"x":128,"y":1920,"width":128,"height":128},{"x":256,"y":1920,"width":128,"height":128},{"x":384,"y":1920,"width":128,"height":128},{"x":512,"y":1920,"width":128,"height":128},{"x":640,"y":1920,"width":128,"height":128},{"x":768,"y":1920,"width":128,"height":128},{"x":896,"y":1920,"width":128,"height":128}]};
-function drawPoisonHazardTransport(effect, progress, options = {}) {
-  const persistent=Boolean(options.persistent),p=Number(progress);
-  if(ctx.globalAlpha<=0||!Number.isFinite(Number(effect?.x))||!Number.isFinite(Number(effect?.y)))return true;
-  if(!persistent&&(!Number.isFinite(p)||p<=0||p>=1))return true;
-  const image=state.textures.poisonMaterialTransport,m=POISON_TRANSPORT_ATLAS;
-  if(!image?.complete||image.naturalWidth!==m.width||image.naturalHeight!==m.height)return true;
-  const reduced=prefersReducedMotion(),radius=persistent?Math.max(24,Number(effect.radius)||80):Math.max(70,Number(effect.radius)||105);
-  const width=radius*(persistent?2.25:1.9),height=width*m.poolCellHeight/m.poolCellWidth;
-  const x=Number(effect.x),y=Number(effect.y)-(persistent?0:radius*.08);
-  const time=persistent?Number(options.time)||0:p*2.4;
-  const phase=reduced?.32:((time*.23+Number(effect.x)*.001)%1+1)%1;
-  const envelope=persistent?.72:Math.min(1,p/.08)*Math.pow(1-p,1.08)*.78;
-  ctx.save();ctx.globalCompositeOperation='source-over';const alpha=ctx.globalAlpha*envelope;
-  const paintPoisonCell=(cell,cx,cy,w,h,weight)=>{if(weight<=0)return;ctx.globalAlpha=alpha*weight;ctx.drawImage(image,cell.x,cell.y,cell.width,cell.height,cx-w/2,cy-h/2,w,h)};
-  paintPoisonCell(m.poolStatic,x,y,width,height,1);
-  const q=phase*m.poolPhases.length,first=Math.floor(q),blend=q-first;
-  paintPoisonCell(m.poolPhases[first],x,y,width,height,(1-blend)*.75);
-  if(blend>0)paintPoisonCell(m.poolPhases[(first+1)%m.poolPhases.length],x,y,width,height,blend*.75);
-  // Individually authored bubble material owns pressure and membrane rupture.
-  // The footprint never follows an actor; staggered cycles use display time.
-  for(let index=0;index<3;index++){
-    const cycle=reduced?.38:((time*.37+index*.333)%1+1)%1;
-    const alive=Math.sin(Math.PI*cycle);if(alive<=.001)continue;
-    const frame=cycle*(m.bubblePhases.length-1),i=Math.floor(frame),b=frame-i;
-    const size=width*(index===1?.145:.115),lift=reduced?0:Math.max(0,(cycle-.3)/.7)*width*.17;
-    const bx=x+[-.25,.06,.29][index]*width,by=y+[.035,-.035,.065][index]*width-lift;
-    paintPoisonCell(m.bubblePhases[i],bx,by,size,size,1-b);
-    if(b>0)paintPoisonCell(m.bubblePhases[Math.min(i+1,m.bubblePhases.length-1)],bx,by,size,size,b);
-  }
-  ctx.restore();return true;
-}
 
-function drawStatusAndHazardEffect(effect, progress) {
-  if (effect.type === "status-poison" || effect.type === "hazard-poison") return drawPoisonHazardTransport(effect, progress);
-  if (effect.type === "status-burn-cleared" || effect.type === "hazard-water") return drawWaterHazardTransport(effect, progress);
-  if (effect.type === "status-burning" || effect.type === "hazard-fire") return drawFireHazardTransport(effect, progress);
-  const type = String(effect.type || "");
-  const family = ["status-burning", "hazard-fire"].includes(type) ? "fire"
-    : ["status-poison", "hazard-poison"].includes(type) ? "poison"
-      : ["status-burn-cleared", "hazard-water"].includes(type) ? "water"
-        : ["status-poison-cleared", "hazard-antidote"].includes(type) ? "antidote" : "";
-  const source = family === "fire" ? state.textures.hazardFireEffect
-    : family === "poison" ? state.textures.hazardPoisonEffect
-      : family === "water" ? state.textures.hazardWaterEffect : state.textures.itemAntidote;
-  if (!family || !source || !Number.isFinite(Number(effect.x)) || !Number.isFinite(Number(effect.y))) return false;
-  const prepared = transparentSpriteSource(source, `status-effect-${type}`, 18);
-  const sprite = prepared ? normalizedSpriteFrame(prepared, `status-effect-${type}`, 1, 1, 0, 0) : null;
-  if (!sprite) return false;
-  const p = clamp(Number(progress) || 0, 0, 1), tail = Math.pow(1 - p, 1.08), envelope = Math.sin(Math.PI * p);
-  const radius = Math.max(70, Number(effect.radius) || 105), reduced = prefersReducedMotion();
-  const inheritedAlpha = ctx.globalAlpha;
-  ctx.save(); ctx.translate(effect.x, effect.y);
-  ctx.globalCompositeOperation = family === "water" || family === "antidote" ? "source-over" : "lighter";
-  const textureY = family === "fire" ? radius * 0.12 : family === "water" ? radius * 0.18 : family === "poison" ? -radius * 0.08 : 0;
-  const textureScale = family === "fire" ? 1.74 : family === "water" ? 2.06 : family === "poison" ? 1.9 : 1.5;
-  ctx.globalAlpha = inheritedAlpha * (tail * (family === "water" ? 0.72 : 0.78));
-  drawAnimatedTextureCentered(sprite, 0, textureY, radius * textureScale, radius * textureScale, {
-    mode: family === "fire" ? "flow-up" : family === "water" ? "ripple" : "shimmer",
-    progress: p, phase: 0, intensity: 0.82, baseAlpha: 0.14
-  });
-  if (family === "fire") {
-    // Upward buoyancy starts at the source/ground plane and exhausts into the air.
-    for (let i = 0; i < (reduced ? 4 : 9); i += 1) {
-      const lane = (i / Math.max(1, (reduced ? 3 : 8)) - 0.5) * radius * 1.3;
-      const rise = radius * (0.12 + p * (0.54 + (i % 3) * 0.08));
-      ctx.globalAlpha = inheritedAlpha * (tail * envelope * (0.28 + (i % 2) * 0.12)); ctx.fillStyle = i % 3 ? "rgba(255,154,45,0.9)" : "rgba(255,238,173,0.96)";
-      ctx.beginPath(); ctx.ellipse(lane + Math.sin(p * 8 + i) * radius * 0.07, radius * 0.38 - rise, Math.max(1.3, radius * 0.035), Math.max(2.4, radius * 0.075), 0, 0, Math.PI * 2); ctx.fill();
-    }
-  } else if (family === "poison") {
-    // Suspension diffuses laterally and gently settles; it never mimics a flame column.
-    for (let i = 0; i < (reduced ? 4 : 8); i += 1) {
-      const a = i * 2.3999632297, spread = radius * (0.18 + p * 0.58);
-      const x = Math.cos(a) * spread, y = Math.sin(a) * spread * 0.42 - radius * (0.05 + p * 0.16);
-      ctx.globalAlpha = inheritedAlpha * (tail * envelope * 0.19); ctx.fillStyle = i % 2 ? "rgba(178,239,105,0.9)" : "rgba(218,255,157,0.92)";
-      ctx.beginPath(); ctx.arc(x, y, Math.max(2, radius * (0.07 - p * 0.025)), 0, Math.PI * 2); ctx.fill();
-    }
-  } else if (family === "water") {
-    // Water spreads and settles across the ground plane instead of rising or rotating.
-    const spread = radius * (0.28 + p * 0.73);
-    ctx.globalAlpha = inheritedAlpha * (tail * 0.52); ctx.strokeStyle = "rgba(201,244,255,0.92)"; ctx.lineWidth = Math.max(1.2, radius * 0.022);
-    ctx.beginPath(); ctx.ellipse(0, radius * 0.22, spread, Math.max(5, spread * 0.33), 0, 0, Math.PI * 2); ctx.stroke();
-    for (let i = 0; i < (reduced ? 3 : 6); i += 1) { ctx.globalAlpha = inheritedAlpha * (tail * envelope * 0.3); ctx.beginPath(); ctx.arc((i - 2.5) * radius * 0.19, radius * 0.15, radius * (0.08 + i * 0.014), 0, Math.PI * 2); ctx.stroke(); }
-  } else {
-    ctx.globalAlpha = inheritedAlpha * (tail * envelope * 0.55); ctx.strokeStyle = "rgba(218,255,229,0.95)"; ctx.lineWidth = Math.max(1.3, radius * 0.022);
-    ctx.beginPath(); ctx.arc(0, 0, radius * (0.36 + p * 0.34), 0, Math.PI * 2); ctx.stroke();
-  }
-  ctx.restore();
-  return true;
-}
+
+
 
 function drawObjectActivationEffect(effect, progress, now) {
   const type = effect.type.slice("object-".length);
@@ -32804,7 +32517,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-mystery-box-leaf-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-legacy-effect-clusters-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
