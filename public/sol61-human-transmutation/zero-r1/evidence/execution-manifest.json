@@ -1,0 +1,80 @@
+{
+  "schema": "human-zero-sfx-technical-repair-execution-manifest/v1",
+  "status": "PRIVATE_TECHNICAL_DERIVATIVE_CPU_REGRESSIONS_PASS_NATIVE_PENDING",
+  "derivativeId": "human-zero-sfx-technical-repair-r1",
+  "oldSource": {
+    "sourceVersion": "human-transmutation-zero-sol61-r1",
+    "manifestSha256": "8e6153756aedfe3a5827ff48fb0141df06707142b60902c045bd1ab1457c7442",
+    "sealFileSha256": "3cd96caf6ef1780c38fb159b85375dca52713da8496d352de3d784269d5daf48",
+    "frozenHumanGalleryAdapter": "outputs/request-20261009/human-zero-gallery-adapter",
+    "frozenAdapterManifestSha256": "49a1034d60dec548b1c10172074ac3c802d0c1d8ba08df987b0de73cae0cc87c",
+    "frozenAdapterSourceFiles": {
+      "preview.mjs": "e735e819383487ba11b9b71610d79daa6c557ba3ccb13bdaf54825f614c70661",
+      "sfx.mjs": "122e9d7e59aaee47243495eb46d52bdf833ba7e21fea064f89ca42b1ad239fac"
+    }
+  },
+  "technicalAuthor": {
+    "displayName": "GPT-6-Luna",
+    "modelId": "gpt-6-luna",
+    "role": "bounded technical SFX lifecycle/cause repair",
+    "historicalGalleryAdapterAttribution": "unresolved; preserved as unresolved and not reassigned"
+  },
+  "changes": {
+    "audioUnlockGeneration": "Independent activation epoch allows trusted async unlock to survive playback replay/invalidation; explicit mute and dispose still invalidate pending unlock.",
+    "receiptCausality": "Post-await current age, causeId, and generation are required and checked against completed receipt/active SFX generation; >130ms, negative, or absent age is rejected.",
+    "playbackOffset": "For accepted timely receipt, source offset uses the same post-await current age.",
+    "creativeDesignChanged": false,
+    "synthesizedPcmChanged": false,
+    "shaderGeometryMotionOrTimingRedesign": false
+  },
+  "servedRuntimeClosure": [
+    {
+      "path": "index.html",
+      "sha256": "2fc62053042bb013d361da66c04328197523c8c55b0fa56412e810fd812ea14d"
+    },
+    {
+      "path": "plan.mjs",
+      "sha256": "81fe5b012d8cabac347bec5e0c1076dba3a425b593b01af417fd0ea8e672cfe6"
+    },
+    {
+      "path": "preview.mjs",
+      "sha256": "6fe776d6bfd43d8d59e14563e18b2d0eeed9beaf5709302b260ce35b346b7852"
+    },
+    {
+      "path": "renderer.mjs",
+      "sha256": "ac60455df9f35a92de2762e09a275418a4cdae3245fa44d1c6b8105b92e896bc"
+    },
+    {
+      "path": "sfx.mjs",
+      "sha256": "eacff79bc8d2fc1df8f8d44852dcd28b100a0bdae000e89d64ac107e838e437d"
+    },
+    {
+      "path": "world.wgsl",
+      "sha256": "7f8b6dcae31cfd170bbb92d1526c9763cfe16369dc043d654baa25a151d0ebab"
+    },
+    {
+      "path": "observe.wgsl",
+      "sha256": "e4232dd462590036ef45de87d3b0ffa0383e82ca774c4686cffe8d77660291c6"
+    },
+    {
+      "path": "gallery-host.mjs",
+      "sha256": "1737f8fdad394a97766529bd1560574448d51192f182c7db160204514cbf7548"
+    },
+    {
+      "path": "gallery-host-core.mjs",
+      "sha256": "341f95e79c1ed8f6931eb4338a97d5063d61c7a3af3b92a06c9e3f1fdec0a003"
+    }
+  ],
+  "cpuEvidence": {
+    "status": "PASS_CPU_SFX_CAUSALITY_REGRESSIONS_AND_GALLERY_HOST_TEST",
+    "tests": [
+      "sfx-causality.test.mjs",
+      "gallery-host.test.mjs"
+    ],
+    "browser": false,
+    "nativeAudio": false,
+    "gpu": false,
+    "visualAcceptance": "not established",
+    "normalAudioListening": "not run"
+  }
+}

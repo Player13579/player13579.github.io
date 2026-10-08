@@ -1,0 +1,123 @@
+{
+  "schema": "dva-e-package/v1",
+  "versionId": "acceleration-zero-arrow-sol61-r1",
+  "entry": "package/index.html",
+  "creatorModelId": "gpt-6.1-sol",
+  "creativeEdition": 1,
+  "series": "acceleration-zero-arrow",
+  "creativeEditionLimit": 5,
+  "remainingCreativeEditions": 4,
+  "nextCreativeEditionAuthorizedAutomatically": false,
+  "zeroDesign": true,
+  "sourceRevision": {
+    "repository": "https://github.com/player13579/B.git",
+    "ref": "refs/heads/Codex-honoo",
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "remoteVerification": "authenticated git ls-remote and fetch, 2026-10-09 JST",
+    "baseBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extensionBlob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+    "retrievedFiles": {
+      "B-base.md": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25",
+      "B-extension.md": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7"
+    }
+  },
+  "files": [
+    {
+      "path": "B-base.md",
+      "sha256": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25",
+      "bytes": 126262
+    },
+    {
+      "path": "B-extension.md",
+      "sha256": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7",
+      "bytes": 76645
+    },
+    {
+      "path": "build-contract.py",
+      "sha256": "46fdc46f056daaf5e65ea9aa414692f75df1f55d6b075c4c1d49a8cddaa214e1",
+      "bytes": 16179
+    },
+    {
+      "path": "cpu-checks.mjs",
+      "sha256": "df1060c305b85dccd9b43278275b007e692326d02429d1c876f7a64db7a11e0a",
+      "bytes": 7346
+    },
+    {
+      "path": "CPU-RESULT.json",
+      "sha256": "33d80b399ecfae1e71553c0162d1447f10faba118aee8b46cc3c1a6648374d19",
+      "bytes": 1347
+    },
+    {
+      "path": "design-rule-mapping.json",
+      "sha256": "8a8b816a95746e946d016b6ac39a96d3a4b7d65571798a1be8ea554be1561c0f",
+      "bytes": 35628
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "8da7ae3014436345a6311bd772923e92fd9d121ae6699e372d8309d533b36b7f",
+      "bytes": 4635
+    },
+    {
+      "path": "package/index.html",
+      "sha256": "7a4e2366efcd98b50638f35159ec58628ccccf05a9c0386f499835a54757a2ef",
+      "bytes": 990
+    },
+    {
+      "path": "package/model.mjs",
+      "sha256": "1a015207c68f10b6b2c47a60b8b12b5b220d5729adb0054a1df619ec4b61e23a",
+      "bytes": 2306
+    },
+    {
+      "path": "package/observer.wgsl",
+      "sha256": "5822a831a5334fe0eb6004b2f05983a80b1ec431415b7196e17bb1f4f69916c0",
+      "bytes": 1667
+    },
+    {
+      "path": "package/runtime.mjs",
+      "sha256": "3db09efd888c673732c305e6f95376da39c92691764c11c1e1a9e439f3dcd4b1",
+      "bytes": 10684
+    },
+    {
+      "path": "package/sfx.mjs",
+      "sha256": "69023e31c5f00e75cb12c0fc8126ba09c4a3ded6d9f23a2a5aa2a127ab214dc7",
+      "bytes": 2304
+    },
+    {
+      "path": "package/world.wgsl",
+      "sha256": "1fd7c5bf0d84a6eb1b3b49b4e07a7039e7efe65761c56948b30616680e2238e7",
+      "bytes": 2790
+    },
+    {
+      "path": "seal.py",
+      "sha256": "546f7b633220e4d479d75803c51a92da3e01e250207956baf7c0462bb8362740",
+      "bytes": 3513
+    }
+  ],
+  "runtimeClosure": [
+    "package/index.html",
+    "package/model.mjs",
+    "package/runtime.mjs",
+    "package/sfx.mjs",
+    "package/world.wgsl",
+    "package/observer.wgsl"
+  ],
+  "externalRuntimeDependencies": [],
+  "status": {
+    "cpu": "pass",
+    "GPUCompilation": "not_run",
+    "technicalReplay": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "performance": "not_run",
+    "publication": "not_published",
+    "adoption": "unknown",
+    "gameIntegration": "not_connected",
+    "Safari_iPad": "not_run"
+  },
+  "validation": "CPU-RESULT.json",
+  "ruleMapping": "design-rule-mapping.json",
+  "design": "DESIGN.md",
+  "verificationAPI": "__dvaAcceleration / __zeroEVerification",
+  "audioAPI": "__dvaGallerySfx (generic parent adapter compatibility unverified)",
+  "firstNativeReviewRequired": true
+}

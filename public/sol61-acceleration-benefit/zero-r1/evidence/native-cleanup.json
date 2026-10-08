@@ -1,0 +1,718 @@
+{
+  "closed": {
+    "page": {
+      "complete": true
+    },
+    "context": {
+      "complete": true
+    },
+    "browser": {
+      "complete": true
+    },
+    "browser-server": {
+      "complete": true
+    },
+    "http-server": {
+      "complete": true
+    }
+  },
+  "allClosed": true,
+  "stageLog": [
+    {
+      "stage": "listen-private-parent-site",
+      "startedAt": "2026-10-08T22:11:11.933Z",
+      "timeoutMs": 5000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:11.939Z",
+      "durationMs": 6
+    },
+    {
+      "stage": "launch-owned-edge",
+      "startedAt": "2026-10-08T22:11:11.939Z",
+      "timeoutMs": 35000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:12.243Z",
+      "durationMs": 304
+    },
+    {
+      "stage": "connect-owned-edge",
+      "startedAt": "2026-10-08T22:11:12.243Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:12.278Z",
+      "durationMs": 35
+    },
+    {
+      "stage": "create-context",
+      "startedAt": "2026-10-08T22:11:12.278Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:12.298Z",
+      "durationMs": 20
+    },
+    {
+      "stage": "install-observers",
+      "startedAt": "2026-10-08T22:11:12.298Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:12.302Z",
+      "durationMs": 4
+    },
+    {
+      "stage": "new-page",
+      "startedAt": "2026-10-08T22:11:12.302Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:12.632Z",
+      "durationMs": 330
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:navigate-parent",
+      "startedAt": "2026-10-08T22:11:12.634Z",
+      "timeoutMs": 35000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:12.921Z",
+      "durationMs": 287
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:wait-parent-selection",
+      "startedAt": "2026-10-08T22:11:12.921Z",
+      "timeoutMs": 22000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.009Z",
+      "durationMs": 88
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:read-parent-selection",
+      "startedAt": "2026-10-08T22:11:13.009Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.014Z",
+      "durationMs": 5
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:wait-child-frame",
+      "startedAt": "2026-10-08T22:11:13.014Z",
+      "timeoutMs": 22000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.019Z",
+      "durationMs": 5
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:wait-runtime-api",
+      "startedAt": "2026-10-08T22:11:13.019Z",
+      "timeoutMs": 22000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.043Z",
+      "durationMs": 24
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:actual-parent-startup-and-first-receipt",
+      "startedAt": "2026-10-08T22:11:13.043Z",
+      "timeoutMs": 21000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.400Z",
+      "durationMs": 357
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:read-parent-accepted-startup-messages",
+      "startedAt": "2026-10-08T22:11:13.401Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.406Z",
+      "durationMs": 5
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:configure-H64-zoom4-source-observer",
+      "startedAt": "2026-10-08T22:11:13.407Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.411Z",
+      "durationMs": 4
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:wait-configured-completed-frame",
+      "startedAt": "2026-10-08T22:11:13.411Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.416Z",
+      "durationMs": 5
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:read-current-age-before-400",
+      "startedAt": "2026-10-08T22:11:13.416Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.419Z",
+      "durationMs": 3
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:natural-capture-delay-400",
+      "startedAt": "2026-10-08T22:11:13.419Z",
+      "timeoutMs": 1318.6000000238419,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.751Z",
+      "durationMs": 332
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:raw-snapshot-400",
+      "startedAt": "2026-10-08T22:11:13.751Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:13.769Z",
+      "durationMs": 18
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:screenshot-400",
+      "startedAt": "2026-10-08T22:11:13.770Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:14.040Z",
+      "durationMs": 270
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:read-current-age-before-950",
+      "startedAt": "2026-10-08T22:11:14.052Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:14.056Z",
+      "durationMs": 4
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:natural-capture-delay-950",
+      "startedAt": "2026-10-08T22:11:14.056Z",
+      "timeoutMs": 1231.3999999761581,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:14.299Z",
+      "durationMs": 243
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:raw-snapshot-950",
+      "startedAt": "2026-10-08T22:11:14.299Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:14.335Z",
+      "durationMs": 36
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:screenshot-950",
+      "startedAt": "2026-10-08T22:11:14.337Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:14.494Z",
+      "durationMs": 157
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:read-current-age-before-1450",
+      "startedAt": "2026-10-08T22:11:14.506Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:14.509Z",
+      "durationMs": 3
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:natural-capture-delay-1450",
+      "startedAt": "2026-10-08T22:11:14.509Z",
+      "timeoutMs": 1278.800000011921,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:14.790Z",
+      "durationMs": 281
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:raw-snapshot-1450",
+      "startedAt": "2026-10-08T22:11:14.790Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:14.832Z",
+      "durationMs": 42
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:screenshot-1450",
+      "startedAt": "2026-10-08T22:11:14.834Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:15.044Z",
+      "durationMs": 210
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:two-natural-loop-observation",
+      "startedAt": "2026-10-08T22:11:15.061Z",
+      "timeoutMs": 7860,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:19.989Z",
+      "durationMs": 4928
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:final-child-diagnostics",
+      "startedAt": "2026-10-08T22:11:19.990Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.081Z",
+      "durationMs": 91
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:parent-realm-audio-starts",
+      "startedAt": "2026-10-08T22:11:20.081Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.093Z",
+      "durationMs": 12
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:child-runtime-replay-control",
+      "startedAt": "2026-10-08T22:11:20.095Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.097Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:replay-current-cause-completed",
+      "startedAt": "2026-10-08T22:11:20.097Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.107Z",
+      "durationMs": 10
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:child-runtime-hold-control",
+      "startedAt": "2026-10-08T22:11:20.107Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.110Z",
+      "durationMs": 3
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:hold-completed-receipt",
+      "startedAt": "2026-10-08T22:11:20.110Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.125Z",
+      "durationMs": 15
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:read-held-receipt",
+      "startedAt": "2026-10-08T22:11:20.125Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.128Z",
+      "durationMs": 3
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:child-runtime-resume-control",
+      "startedAt": "2026-10-08T22:11:20.128Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.131Z",
+      "durationMs": 3
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:resume-advances",
+      "startedAt": "2026-10-08T22:11:20.131Z",
+      "timeoutMs": 7000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.136Z",
+      "durationMs": 5
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:actual-parent-retirement-by-category-selection",
+      "startedAt": "2026-10-08T22:11:20.136Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.221Z",
+      "durationMs": 85
+    },
+    {
+      "stage": "acceleration-zero-arrow-sol61-r1:parent-retirement-detached-child",
+      "startedAt": "2026-10-08T22:11:20.221Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.225Z",
+      "durationMs": 4
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:navigate-parent",
+      "startedAt": "2026-10-08T22:11:20.227Z",
+      "timeoutMs": 35000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.311Z",
+      "durationMs": 84
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:wait-parent-selection",
+      "startedAt": "2026-10-08T22:11:20.311Z",
+      "timeoutMs": 22000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.398Z",
+      "durationMs": 87
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:read-parent-selection",
+      "startedAt": "2026-10-08T22:11:20.398Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.429Z",
+      "durationMs": 31
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:wait-child-frame",
+      "startedAt": "2026-10-08T22:11:20.429Z",
+      "timeoutMs": 22000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.455Z",
+      "durationMs": 26
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:wait-runtime-api",
+      "startedAt": "2026-10-08T22:11:20.456Z",
+      "timeoutMs": 22000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:20.474Z",
+      "durationMs": 18
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:actual-parent-startup-and-first-receipt",
+      "startedAt": "2026-10-08T22:11:20.474Z",
+      "timeoutMs": 21000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:21.369Z",
+      "durationMs": 895
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:read-parent-accepted-startup-messages",
+      "startedAt": "2026-10-08T22:11:21.369Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:21.372Z",
+      "durationMs": 3
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:configure-H64-source-observer",
+      "startedAt": "2026-10-08T22:11:21.373Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:21.375Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:wait-configured-completed-frame",
+      "startedAt": "2026-10-08T22:11:21.375Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:21.439Z",
+      "durationMs": 64
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:read-current-age-before-550",
+      "startedAt": "2026-10-08T22:11:21.439Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:21.441Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:natural-capture-delay-550",
+      "startedAt": "2026-10-08T22:11:21.441Z",
+      "timeoutMs": 1000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:21.450Z",
+      "durationMs": 9
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:raw-snapshot-550",
+      "startedAt": "2026-10-08T22:11:21.450Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:21.454Z",
+      "durationMs": 4
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:screenshot-550",
+      "startedAt": "2026-10-08T22:11:21.456Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:21.634Z",
+      "durationMs": 178
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:read-current-age-before-1700",
+      "startedAt": "2026-10-08T22:11:21.642Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:21.644Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:natural-capture-delay-1700",
+      "startedAt": "2026-10-08T22:11:21.644Z",
+      "timeoutMs": 1937.6000000238419,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:22.594Z",
+      "durationMs": 950
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:raw-snapshot-1700",
+      "startedAt": "2026-10-08T22:11:22.594Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:22.623Z",
+      "durationMs": 29
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:screenshot-1700",
+      "startedAt": "2026-10-08T22:11:22.624Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:22.789Z",
+      "durationMs": 165
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:read-current-age-before-2900",
+      "startedAt": "2026-10-08T22:11:22.799Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:22.802Z",
+      "durationMs": 3
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:natural-capture-delay-2900",
+      "startedAt": "2026-10-08T22:11:22.802Z",
+      "timeoutMs": 1980.1000000238419,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:23.784Z",
+      "durationMs": 982
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:raw-snapshot-2900",
+      "startedAt": "2026-10-08T22:11:23.784Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:23.809Z",
+      "durationMs": 25
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:screenshot-2900",
+      "startedAt": "2026-10-08T22:11:23.810Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:23.970Z",
+      "durationMs": 160
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:configure-H128",
+      "startedAt": "2026-10-08T22:11:23.981Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:23.983Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:replay-at-H128",
+      "startedAt": "2026-10-08T22:11:23.983Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:23.985Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:wait-H128-completed-frame",
+      "startedAt": "2026-10-08T22:11:23.985Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:24.014Z",
+      "durationMs": 29
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-current-age-550",
+      "startedAt": "2026-10-08T22:11:24.014Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:24.016Z",
+      "durationMs": 3
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-natural-delay-550",
+      "startedAt": "2026-10-08T22:11:24.017Z",
+      "timeoutMs": 1522,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:24.539Z",
+      "durationMs": 522
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-raw-550",
+      "startedAt": "2026-10-08T22:11:24.539Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:24.576Z",
+      "durationMs": 37
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-screenshot-550",
+      "startedAt": "2026-10-08T22:11:24.577Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:24.751Z",
+      "durationMs": 174
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-current-age-1700",
+      "startedAt": "2026-10-08T22:11:24.763Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:24.765Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-natural-delay-1700",
+      "startedAt": "2026-10-08T22:11:24.765Z",
+      "timeoutMs": 1930.300000011921,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:25.700Z",
+      "durationMs": 935
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-raw-1700",
+      "startedAt": "2026-10-08T22:11:25.700Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:25.749Z",
+      "durationMs": 50
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-screenshot-1700",
+      "startedAt": "2026-10-08T22:11:25.751Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:25.910Z",
+      "durationMs": 159
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-current-age-2900",
+      "startedAt": "2026-10-08T22:11:25.917Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:25.919Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-natural-delay-2900",
+      "startedAt": "2026-10-08T22:11:25.919Z",
+      "timeoutMs": 1978.300000011921,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:26.905Z",
+      "durationMs": 986
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-raw-2900",
+      "startedAt": "2026-10-08T22:11:26.905Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:26.972Z",
+      "durationMs": 67
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:H128-screenshot-2900",
+      "startedAt": "2026-10-08T22:11:26.974Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:27.133Z",
+      "durationMs": 159
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:two-natural-loop-observation",
+      "startedAt": "2026-10-08T22:11:27.139Z",
+      "timeoutMs": 12180,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.382Z",
+      "durationMs": 9243
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:final-child-diagnostics",
+      "startedAt": "2026-10-08T22:11:36.382Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.527Z",
+      "durationMs": 145
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:parent-realm-audio-starts",
+      "startedAt": "2026-10-08T22:11:36.527Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.529Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:child-runtime-replay-control",
+      "startedAt": "2026-10-08T22:11:36.533Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.535Z",
+      "durationMs": 2
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:replay-current-cause-completed",
+      "startedAt": "2026-10-08T22:11:36.535Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.570Z",
+      "durationMs": 35
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:child-runtime-hold-control",
+      "startedAt": "2026-10-08T22:11:36.571Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.575Z",
+      "durationMs": 4
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:hold-completed-receipt",
+      "startedAt": "2026-10-08T22:11:36.575Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.607Z",
+      "durationMs": 32
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:read-held-receipt",
+      "startedAt": "2026-10-08T22:11:36.607Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.611Z",
+      "durationMs": 4
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:child-runtime-resume-control",
+      "startedAt": "2026-10-08T22:11:36.611Z",
+      "timeoutMs": 10000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.615Z",
+      "durationMs": 4
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:resume-advances",
+      "startedAt": "2026-10-08T22:11:36.615Z",
+      "timeoutMs": 7000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.626Z",
+      "durationMs": 11
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:actual-parent-retirement-by-category-selection",
+      "startedAt": "2026-10-08T22:11:36.626Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.692Z",
+      "durationMs": 66
+    },
+    {
+      "stage": "human-transmutation-zero-sol61-r1:parent-retirement-detached-child",
+      "startedAt": "2026-10-08T22:11:36.692Z",
+      "timeoutMs": 12000,
+      "status": "PASS",
+      "finishedAt": "2026-10-08T22:11:36.696Z",
+      "durationMs": 4
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "schema": "dva-zero-e-root-listing-acceptance/v1",
+  "versionId": "acceleration-zero-arrow-sol61-r1",
+  "manifestSha256": "54d32001477bd948bdad9be162926a595308db32f3793a4cdf9544ee3481d3fc",
+  "nativeReportPath": "outputs/request-20261009/zero-native-report-binding/R3-COMPATIBILITY-REPORT.json",
+  "nativeReportSha256": "061fbda62da03f6484e38f354d7aea73f2234a797ee6d6a5099cbc52a565271a",
+  "visibleWebGPU": true,
+  "technicalReplayAccepted": true,
+  "qualityAccepted": false,
+  "adopted": false,
+  "acceptedEvidence": {
+    "versionId": "acceleration-zero-arrow-sol61-r1",
+    "packageId": "acceleration-zero-arrow-r1",
+    "nativePackageIndex": 0,
+    "sourcePins": [
+      {
+        "path": "outputs/request-20261009/zero-release-manifest-fit/prepared/acceleration-zero-arrow-sol61-r1/technical-package-manifest.json",
+        "sha256": "54d32001477bd948bdad9be162926a595308db32f3793a4cdf9544ee3481d3fc"
+      },
+      {
+        "path": "outputs/request-20261009/zero-release-manifest-fit/prepared/acceleration-zero-arrow-sol61-r1/package/index.html",
+        "sha256": "29b7a94833ba4f21c4220333942e396a0e44d18de22491b411a1b5168a8976be"
+      },
+      {
+        "path": "outputs/request-20261009/zero-release-manifest-fit/prepared/acceleration-zero-arrow-sol61-r1/creative-source/index.html",
+        "sha256": "7a4e2366efcd98b50638f35159ec58628ccccf05a9c0386f499835a54757a2ef"
+      }
+    ],
+    "parentRuntime": {
+      "schema": "dva-zero-parent-runtime-binding/v1",
+      "sourceCommit": "c196b08b158cf4753ff62b8011577a197d68dca2",
+      "sourceHtmlSha256": "f880a3a1a46f96dfb57ff581526e42a4da918213140c7a06c33f98d062790194",
+      "sourceCatalogSha256": "466eb317e695f630b783faba4ae8fb98f29d9964dd61367fc4494574d1cdb0c0",
+      "privateHtmlSha256": "f880a3a1a46f96dfb57ff581526e42a4da918213140c7a06c33f98d062790194",
+      "privateCatalogSha256": "93976b0eb886ee7554c374089c2f743f2b9f891f27555b1a599d2d60ff7fafba",
+      "sfxBridgeSha256": "cc5da8c77029a02adf86d41b0290a3d4a952d15d623248317b029eb20094fede",
+      "cpuReadySha256": "5438ff610c6e7d4c33e19b19dd2b866f406a5fe1e38a9837bf2e0153a9db3468"
+    },
+    "adapterExecutionManifest": {
+      "path": "outputs/request-20261009/accel-zero-gallery-adapter/TECHNICAL-DERIVATIVE.json",
+      "sha256": "f229deb428daf13be239b4c3452cc137f2f9e8a7d464c4df94c1a71b4a689630",
+      "schema": "dva-e-technical-gallery-derivative/v1",
+      "sourceCreative": {
+        "authorModelId": "gpt-6.1-sol",
+        "manifestPath": "outputs/request-20261009/acceleration-zero-arrow-r1/package-manifest.json",
+        "manifestSha256": "a31bb507f2525cae11ddaf21662b375fa14845088e8a57bd3e4782fb82761451",
+        "sealPath": "outputs/request-20261009/acceleration-zero-arrow-r1/SEALED.json",
+        "sealSha256": "92c323ec5939dfd0c0c64366d80f9abcfae7ad4fd7b04ce109a22262b71883a7"
+      },
+      "technicalAuthor": {
+        "displayName": "GPT-6-Luna",
+        "modelId": null,
+        "attributionStatus": "execution manifest supplies display name only"
+      },
+      "servedEntry": {
+        "path": "package/index.html",
+        "sha256": "29b7a94833ba4f21c4220333942e396a0e44d18de22491b411a1b5168a8976be"
+      },
+      "servedRuntimeClosure": [
+        {
+          "path": "package/gallery-adapter.mjs",
+          "sha256": "01b6cb37a87efeb9744dcbf5f9b0218086d0295978133c7ea49eccfe57ed4a3a"
+        },
+        {
+          "path": "package/gallery-host-core.mjs",
+          "sha256": "b51757332a17553b462fadb72ec9875c3aecfbdbad0a63f1d4ca9003fc71e2a1"
+        },
+        {
+          "path": "package/index.html",
+          "sha256": "29b7a94833ba4f21c4220333942e396a0e44d18de22491b411a1b5168a8976be"
+        },
+        {
+          "path": "package/model.mjs",
+          "sha256": "1a015207c68f10b6b2c47a60b8b12b5b220d5729adb0054a1df619ec4b61e23a"
+        },
+        {
+          "path": "package/observer.wgsl",
+          "sha256": "5822a831a5334fe0eb6004b2f05983a80b1ec431415b7196e17bb1f4f69916c0"
+        },
+        {
+          "path": "package/runtime.mjs",
+          "sha256": "3db09efd888c673732c305e6f95376da39c92691764c11c1e1a9e439f3dcd4b1"
+        },
+        {
+          "path": "package/sfx.mjs",
+          "sha256": "69023e31c5f00e75cb12c0fc8126ba09c4a3ded6d9f23a2a5aa2a127ab214dc7"
+        },
+        {
+          "path": "package/world.wgsl",
+          "sha256": "1fd7c5bf0d84a6eb1b3b49b4e07a7039e7efe65761c56948b30616680e2238e7"
+        }
+      ]
+    },
+    "visibleWebGPUFrameScope": [
+      {
+        "causeId": "1",
+        "generation": 2,
+        "completedFenceSequence": 79,
+        "snapshotPath": "outputs/request-20261009/zero-parent-native-root-r2/native-attempts/2026-10-08T22-11-11-932Z-f49e278c-6cbb-4f9c-80a8-4097d58a1abb/acceleration-zero-arrow-sol61-r1/age-1450.png",
+        "snapshotSha256": "d5ea3b866b7f3b066ce5cbbb297e5f255b36b0b5345df47812799350cba0f9b7",
+        "submission": {
+          "queueId": 1,
+          "deviceId": 1,
+          "sequence": 79,
+          "targetId": 1,
+          "causeId": "1"
+        },
+        "captureAgeMs": 1455.800000011921,
+        "receiptAgeMs": 1443.3999999761581,
+        "fixtureHeight": 64,
+        "zoom": 4,
+        "rawPath": "outputs/request-20261009/zero-parent-native-root-r2/native-attempts/2026-10-08T22-11-11-932Z-f49e278c-6cbb-4f9c-80a8-4097d58a1abb/acceleration-zero-arrow-sol61-r1/age-1450-raw.json",
+        "rawSha256": "ce5137be6b7e7342b551dee39b47e0f78414f71b57faec32ecea2c257741cf66",
+        "screenshotPath": "outputs/request-20261009/zero-parent-native-root-r2/native-attempts/2026-10-08T22-11-11-932Z-f49e278c-6cbb-4f9c-80a8-4097d58a1abb/acceleration-zero-arrow-sol61-r1/age-1450.png",
+        "screenshotSha256": "d5ea3b866b7f3b066ce5cbbb297e5f255b36b0b5345df47812799350cba0f9b7",
+        "screenshotIsSameFrame": false
+      },
+      {
+        "causeId": "1",
+        "generation": 2,
+        "completedFenceSequence": 53,
+        "snapshotPath": "outputs/request-20261009/zero-parent-native-root-r2/native-attempts/2026-10-08T22-11-11-932Z-f49e278c-6cbb-4f9c-80a8-4097d58a1abb/acceleration-zero-arrow-sol61-r1/age-950.png",
+        "snapshotSha256": "8013f24ebe43c8f11cdf66ef3b5764622cb88f14473968e880ce43c33b791ca3",
+        "submission": {
+          "queueId": 1,
+          "deviceId": 1,
+          "sequence": 53,
+          "targetId": 1,
+          "causeId": "1"
+        },
+        "captureAgeMs": 966.3999999761581,
+        "receiptAgeMs": 954.1999999880791,
+        "fixtureHeight": 64,
+        "zoom": 4,
+        "rawPath": "outputs/request-20261009/zero-parent-native-root-r2/native-attempts/2026-10-08T22-11-11-932Z-f49e278c-6cbb-4f9c-80a8-4097d58a1abb/acceleration-zero-arrow-sol61-r1/age-950-raw.json",
+        "rawSha256": "51e227629c261cfacf79cf75f47749ceb92e53e3169ad47583693f58b5f7266b",
+        "screenshotPath": "outputs/request-20261009/zero-parent-native-root-r2/native-attempts/2026-10-08T22-11-11-932Z-f49e278c-6cbb-4f9c-80a8-4097d58a1abb/acceleration-zero-arrow-sol61-r1/age-950.png",
+        "screenshotSha256": "8013f24ebe43c8f11cdf66ef3b5764622cb88f14473968e880ce43c33b791ca3",
+        "screenshotIsSameFrame": false
+      }
+    ],
+    "reviewLimitations": [
+      "Root visual review reports limited technical replay only.",
+      "Screenshots were captured after raw receipts; exact same-frame identity is not asserted.",
+      "Quality acceptance, adoption, publication, and game integration remain false/unaccepted."
+    ]
+  },
+  "rootDecision": {
+    "normalSfxListening": "pending",
+    "mainIntegration": "disconnected",
+    "Safari": "pending",
+    "qualityReview": "outputs/request-20261009/ZERO-ROOT-VISUAL-REVIEW.json",
+    "publicParentReplay": "pending after publication",
+    "sourceReport": {
+      "path": "outputs/request-20261009/zero-parent-native-root-r2/native-attempts/2026-10-08T22-11-11-932Z-f49e278c-6cbb-4f9c-80a8-4097d58a1abb/REPORT.json",
+      "sha256": "6682774be853e016ed2a5d27686dcbab69dbda520bc30bafdd659c43bf5dae30"
+    },
+    "date": "2026-10-09T07:15:13.5579664+09:00",
+    "reviewer": "root",
+    "sourceCleanup": {
+      "path": "outputs/request-20261009/zero-parent-native-root-r2/native-attempts/2026-10-08T22-11-11-932Z-f49e278c-6cbb-4f9c-80a8-4097d58a1abb/CLEANUP.json",
+      "sha256": "7c6c075b0e2856841304d0fbeb613d21a3a277aa3a8d4683901eb47c00ea34e2"
+    },
+    "scope": "limited visible WebGPU technical replay only"
+  }
+}

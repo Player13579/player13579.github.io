@@ -1,0 +1,130 @@
+{
+  "schema": "dva-e-technical-gallery-derivative/v1",
+  "derivativeId": "acceleration-zero-arrow-gallery-host-luna-r1",
+  "versionId": "acceleration-zero-arrow-sol61-r1",
+  "creatorModelId": "gpt-6.1-sol",
+  "creativeEdition": 1,
+  "sourceSeal": {
+    "path": "outputs/request-20261009/acceleration-zero-arrow-r1/SEALED.json",
+    "sha256": "92c323ec5939dfd0c0c64366d80f9abcfae7ad4fd7b04ce109a22262b71883a7",
+    "manifestSha256": "a31bb507f2525cae11ddaf21662b375fa14845088e8a57bd3e4782fb82761451",
+    "packageManifestSha256": "a31bb507f2525cae11ddaf21662b375fa14845088e8a57bd3e4782fb82761451",
+    "immutableAfterReady": true
+  },
+  "technicalDerivative": {
+    "author": "GPT-6-Luna",
+    "scope": "parent gallery startup/lifecycle and authored-SFX bridge facade",
+    "creativeRedesign": false,
+    "sourceCreativeBytesModified": false
+  },
+  "parentContracts": {
+    "startup": {
+      "schema": "dva-gallery-startup/v1",
+      "parentSource": "outputs/request-20261009/e-gallery-r8-r7-combined-candidate/asset-gallery.js",
+      "parentSourceSha256": "466eb317e695f630b783faba4ae8fb98f29d9964dd61367fc4494574d1cdb0c0",
+      "readyRequires": "one same submitted runtime receipt with queue completion, current version/cause/generation, connected canvas and matching target dimensions"
+    },
+    "sfx": {
+      "api": "window.__gallerySfx.activateFromGesture",
+      "sourcePath": "outputs/request-20261009/stamina-r5-exact-parent-native-prepare/source/published-base/asset-gallery-sfx-bridge.js",
+      "sourceSha256": "cc5da8c77029a02adf86d41b0290a3d4a952d15d623248317b029eb20094fede",
+      "parentAssetUrlVersion": "gallery-sfx-async-cc5da8c77029"
+    }
+  },
+  "creativeRuntimeByteComparison": {
+    "model.mjs": {
+      "sourceSha256": "1a015207c68f10b6b2c47a60b8b12b5b220d5729adb0054a1df619ec4b61e23a",
+      "candidateSha256": "1a015207c68f10b6b2c47a60b8b12b5b220d5729adb0054a1df619ec4b61e23a",
+      "byteIdentical": true
+    },
+    "runtime.mjs": {
+      "sourceSha256": "3db09efd888c673732c305e6f95376da39c92691764c11c1e1a9e439f3dcd4b1",
+      "candidateSha256": "3db09efd888c673732c305e6f95376da39c92691764c11c1e1a9e439f3dcd4b1",
+      "byteIdentical": true
+    },
+    "sfx.mjs": {
+      "sourceSha256": "69023e31c5f00e75cb12c0fc8126ba09c4a3ded6d9f23a2a5aa2a127ab214dc7",
+      "candidateSha256": "69023e31c5f00e75cb12c0fc8126ba09c4a3ded6d9f23a2a5aa2a127ab214dc7",
+      "byteIdentical": true
+    },
+    "world.wgsl": {
+      "sourceSha256": "1fd7c5bf0d84a6eb1b3b49b4e07a7039e7efe65761c56948b30616680e2238e7",
+      "candidateSha256": "1fd7c5bf0d84a6eb1b3b49b4e07a7039e7efe65761c56948b30616680e2238e7",
+      "byteIdentical": true
+    },
+    "observer.wgsl": {
+      "sourceSha256": "5822a831a5334fe0eb6004b2f05983a80b1ec431415b7196e17bb1f4f69916c0",
+      "candidateSha256": "5822a831a5334fe0eb6004b2f05983a80b1ec431415b7196e17bb1f4f69916c0",
+      "byteIdentical": true
+    }
+  },
+  "indexEntryDelta": {
+    "sourceSha256": "7a4e2366efcd98b50638f35159ec58628ccccf05a9c0386f499835a54757a2ef",
+    "candidateSha256": "29b7a94833ba4f21c4220333942e396a0e44d18de22491b411a1b5168a8976be",
+    "onlyChange": "type=module src=\"./runtime.mjs\" -> type=module src=\"./gallery-adapter.mjs\"",
+    "validatedExactReplacement": true
+  },
+  "runtimeClosure": [
+    {
+      "path": "package/index.html",
+      "sha256": "29b7a94833ba4f21c4220333942e396a0e44d18de22491b411a1b5168a8976be"
+    },
+    {
+      "path": "package/gallery-adapter.mjs",
+      "sha256": "01b6cb37a87efeb9744dcbf5f9b0218086d0295978133c7ea49eccfe57ed4a3a"
+    },
+    {
+      "path": "package/gallery-host-core.mjs",
+      "sha256": "b51757332a17553b462fadb72ec9875c3aecfbdbad0a63f1d4ca9003fc71e2a1"
+    },
+    {
+      "path": "package/model.mjs",
+      "sha256": "1a015207c68f10b6b2c47a60b8b12b5b220d5729adb0054a1df619ec4b61e23a"
+    },
+    {
+      "path": "package/runtime.mjs",
+      "sha256": "3db09efd888c673732c305e6f95376da39c92691764c11c1e1a9e439f3dcd4b1"
+    },
+    {
+      "path": "package/sfx.mjs",
+      "sha256": "69023e31c5f00e75cb12c0fc8126ba09c4a3ded6d9f23a2a5aa2a127ab214dc7"
+    },
+    {
+      "path": "package/world.wgsl",
+      "sha256": "1fd7c5bf0d84a6eb1b3b49b4e07a7039e7efe65761c56948b30616680e2238e7"
+    },
+    {
+      "path": "package/observer.wgsl",
+      "sha256": "5822a831a5334fe0eb6004b2f05983a80b1ec431415b7196e17bb1f4f69916c0"
+    }
+  ],
+  "runtimeClosureFiles": [
+    "package/index.html",
+    "package/gallery-adapter.mjs",
+    "package/gallery-host-core.mjs",
+    "package/model.mjs",
+    "package/runtime.mjs",
+    "package/sfx.mjs",
+    "package/world.wgsl",
+    "package/observer.wgsl"
+  ],
+  "technicalChanges": [
+    "package/index.html loads gallery-adapter.mjs instead of runtime.mjs as the module entry",
+    "package/gallery-adapter.mjs imports the sealed runtime, initializes the parent handshake and authored-SFX facade, and delegates to gallery-host-core.mjs",
+    "package/gallery-host-core.mjs emits ready only from the runtime’s actual completed lastReceipt and handles retire/pagehide disposal"
+  ],
+  "exclusions": [
+    "B-base.md",
+    "B-extension.md",
+    "source .git data",
+    "creative redesign or shader edits"
+  ],
+  "status": {
+    "cpuHostTests": "pass-mock-only",
+    "nativeGpu": "not_run",
+    "browserParentReplay": "not_run",
+    "normalAudioListening": "not_run",
+    "publication": "not_published",
+    "adoption": "unknown"
+  }
+}
