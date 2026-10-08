@@ -1,0 +1,105 @@
+{
+  "schema": "donation-r13-native-limited-replay/v1",
+  "source": "R407 actual headed parent replay, independently gated R410",
+  "resultStatus": "CAPTURED_PRIVATE_HEADED_R13_NATURAL_CYCLE_VIA_PARENT_UI",
+  "completedSeconds": 14.578,
+  "selectedVersion": "donation-zero-sol61-r13-moving-space-minted-gold",
+  "selectedIframeSourceMatched": true,
+  "parentAcceptedReady": true,
+  "firstCompletedFrame": {
+    "recorded": true,
+    "submitted": true,
+    "completed": true,
+    "canvasConnected": true,
+    "passes": 6,
+    "viewportWidth": 980,
+    "viewportHeight": 620,
+    "submit": 1,
+    "generation": 1,
+    "targetGeneration": 1,
+    "playbackGeneration": 1,
+    "epoch": 1,
+    "causeId": "donation-r13-moving-space-minted-gold-fixture-1",
+    "sourceOn": true,
+    "sceneOn": true,
+    "ageMs": 1100
+  },
+  "naturalFixture3": {
+    "causeId": "donation-r13-moving-space-minted-gold-fixture-3",
+    "sampleCount": 7,
+    "ageMs": [
+      0,
+      2400
+    ],
+    "submit": [
+      7,
+      12
+    ],
+    "terminalRafProof": {
+      "causeId": "donation-r13-moving-space-minted-gold-fixture-3",
+      "running": false,
+      "ageMs": 2400,
+      "frameCauseId": "donation-r13-moving-space-minted-gold-fixture-3",
+      "frameAgeMs": 2400,
+      "submitCount": 12,
+      "frameSubmit": 12
+    },
+    "deviceQueueDrained": true,
+    "clearScreenshotTaken": false,
+    "pollAndRafTimestampChecks": {
+      "chronologicalNaturalCycleSamples": {
+        "count": 55,
+        "monotonic": true,
+        "firstAtMs": 6099.5,
+        "lastAtMs": 10116
+      },
+      "snapshotsDuringNaturalCycle": {
+        "count": 48,
+        "monotonic": true,
+        "firstAtMs": 6165.0999999940395,
+        "lastAtMs": 10116
+      },
+      "rafSamplesDuringNaturalCycle": {
+        "count": 35,
+        "monotonic": true,
+        "firstAtMs": 104.59999999403954,
+        "lastAtMs": 10175.899999976158
+      }
+    }
+  },
+  "heldFixture4SeparateCapture": {
+    "causeId": "donation-r13-moving-space-minted-gold-fixture-4",
+    "ageMs": 1100,
+    "lastCompleted": {
+      "epoch": 5,
+      "causeId": "donation-r13-moving-space-minted-gold-fixture-4",
+      "ageMs": 1100,
+      "submit": 16,
+      "passes": 6,
+      "generation": 1,
+      "targetGeneration": 1,
+      "sourceOn": true,
+      "sceneOn": true,
+      "canvas": [
+        980,
+        620
+      ],
+      "completed": true
+    },
+    "queueDrainCompleted": true
+  },
+  "correctNaturalTerminalAgeMs": 2400,
+  "legacyAgeAtNaturalTerminalWasIncorrect": 1100,
+  "heldCaptureAgeMs": 1100,
+  "evidencePaths": {
+    "runResult": "/tmp/dva-cloud-capacity-continuation/root-donation-r400-chronological-parent-replay-r407/attempt-20261008-r1/RUN-RESULT.json",
+    "independentGate": "/tmp/dva-cloud-capacity-continuation/donation-r407-native-limited-evidence-independent-gate-r410/INDEPENDENT-GATE.json"
+  },
+  "runResultSha256": "495c1ad0024f4a4345a1e38e1e4e3a6964bd3cb4e8fdea8e6499478e92a62e40",
+  "classification": "limited current-parent native replay pass; does not establish full quality, audio listening, Safari/iPad, performance, main/game integration or adoption",
+  "sfxListening": "not_run",
+  "safari": "unverified",
+  "hardwarePerformance": "not_established",
+  "mainConnected": false,
+  "adoption": "unknown"
+}
