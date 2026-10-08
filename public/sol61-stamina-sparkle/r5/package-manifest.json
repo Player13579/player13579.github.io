@@ -1,0 +1,105 @@
+{
+  "schema": "dva-effect-gallery-package/v1",
+  "packageId": "stamina-benefit-sol61-r5",
+  "version": "stamina-benefit-sol61-r5",
+  "status": "partial-isolated-gallery-host-native-verification-pending",
+  "author": {
+    "creative": "GPT-6.1-Sol",
+    "hostAdapterPreview": "GPT-6-Luna"
+  },
+  "title": "スタミナ恩恵E · r5",
+  "entry": "gallery-content.html",
+  "standaloneEntry": "index.html",
+  "renderer": "WebGPU",
+  "durationMs": 1320,
+  "actorScale": "2x control verified by native runner when run",
+  "creativeIteration": 5,
+  "creativeIterationCap": 5,
+  "capReached": true,
+  "adoption": "unadopted",
+  "quality": "not_accepted",
+  "historyPreserved": "R5 and prior source/adoption records remain preserved; this isolated candidate does not alter a shared catalog",
+  "source": {
+    "bodySha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "soundSha256": "94c4a22072a129bb10e8d1c4fc2f4b3e8fc1056135439303db42bb41a03635eb",
+    "effectSha256": "ab581f261047da0f9d01a4a4b9ce4d635a265203e72ed2303d012a11caae73be",
+    "sourceManifestSha256": "143fd749352d2f6bdc96509ad95de95d6a68b0cf83f68a072a50b47c9c34f584"
+  },
+  "runtimeAPI": [
+    "plan",
+    "phaseAt",
+    "sampleRestoration",
+    "createRenderer",
+    "sound.synthesize",
+    "sound.createSound"
+  ],
+  "soundPolicy": {
+    "verify": "hard-muted; no AudioContext or playback",
+    "normal": "user-gesture activation; cause audio follows completed GPU queue"
+  },
+  "startupReceipt": {
+    "schema": "dva-gallery-startup/v1",
+    "sourceVersionReceiptSha256": "ab581f261047da0f9d01a4a4b9ce4d635a265203e72ed2303d012a11caae73be",
+    "checks": [
+      "same-origin",
+      "event.source parent identity",
+      "token",
+      "versionId",
+      "attemptEpoch"
+    ]
+  },
+  "files": {
+    "body.png": {
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "bytes": 243081,
+      "source": "outputs/request-20261008/stamina-benefit-sol61-r5/body.png"
+    },
+    "effect.mjs": {
+      "sha256": "ab581f261047da0f9d01a4a4b9ce4d635a265203e72ed2303d012a11caae73be",
+      "bytes": 18834,
+      "source": "outputs/request-20261008/stamina-benefit-sol61-r5/effect.mjs"
+    },
+    "sound.mjs": {
+      "sha256": "94c4a22072a129bb10e8d1c4fc2f4b3e8fc1056135439303db42bb41a03635eb",
+      "bytes": 3446,
+      "source": "outputs/request-20261008/stamina-benefit-sol61-r5/sound.mjs"
+    },
+    "gallery-adapter.mjs": {
+      "sha256": "baf0d479ee2d987a4c70ddaef9481604b5ed489f0834808acaf697977771fc3c",
+      "bytes": 27376,
+      "source": "isolated host adapter; R4 ABI baseline only"
+    },
+    "gallery-content.html": {
+      "sha256": "74eeb4d04f122be8cba49a8f7203cbd98936f3a955b366b25ebc94b1938cf457",
+      "bytes": 2132,
+      "source": "isolated host adapter; R4 ABI baseline only"
+    },
+    "index.html": {
+      "sha256": "55a194a4d26b6ea39db14ad3e5c0e2343ff6a9e167d28090bce979b0f56e946b",
+      "bytes": 2813,
+      "source": "isolated host adapter; R4 ABI baseline only"
+    },
+    "preview.mjs": {
+      "sha256": "f5128f4dd419ab4942f55c3f2797d4aad9931c1de73b4f1f50f69f65ddb6e624",
+      "bytes": 8957,
+      "source": "isolated host adapter; R4 ABI baseline only"
+    }
+  },
+  "technicalHostDerivative": {
+    "candidateAdapterSha256": "baf0d479ee2d987a4c70ddaef9481604b5ed489f0834808acaf697977771fc3c",
+    "change": "R5 source pin, package/version labels, cap and adoption/quality metadata, sampleRestoration observer output; runtime host lifecycle retained from R4 ABI guide",
+    "baselinePath": "outputs/request-20261008/stamina-r4-gallery-host-luna-r1/candidate/public/sol61-stamina-sparkle/r4",
+    "baselineAdapterSha256": "e124798ae4d08b064894d0bee0997f18fa458bb9ec3960685c46c8d095a56ded"
+  },
+  "validation": {
+    "gameIntegration": "not_run",
+    "httpBytesPreflight": "prepared_not_run",
+    "quality": "not_accepted",
+    "nativeGPU": "not_run",
+    "normalSfxListening": "not_run",
+    "cpuMockLifecycle": "pass_host_contract_and_sealed_R5_effect_mock",
+    "browser": "not_run",
+    "syntax": "pass_node_check"
+  },
+  "completion": "partial"
+}
