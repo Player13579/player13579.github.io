@@ -1,0 +1,2592 @@
+{
+  "schema": "dva-headshot-r2-limited-public-replay-evidence/v1",
+  "recordedAt": "2026-10-08T14:51:27.022907+00:00",
+  "testedCommit": "c2f3dfb2481139356a2072ad6a308c83a3a4c89e",
+  "testedTree": "ba2da4abe1664399aa6df23901950937fbc74362",
+  "versionId": "gunner-headshot-unified-sol61-cloud-r2",
+  "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+  "status": "PASS_LIMITED_PUBLIC_SOURCE_CYCLES_AND_SAMPLED_PIXELS",
+  "rawRunResultSha256": "caa5a29f789467b362de115eee0b3c0f90f7665ae4f04f1c0ba2629feafff935",
+  "rawRunResultBytes": 4394369,
+  "externalRootAttemptUuid": "ffa3cbd9-6780-44f0-97f1-9a65f7c7fc38",
+  "observerLocalAttemptId": "cd31ab87-ea45-4c0c-92db-24e40092264f",
+  "identityScope": "Observer-local ID was generated once inside this Root-owned process; distinct from external Root attempt UUID, actual event records and artifacts retained",
+  "runtime": {
+    "browser": null,
+    "configuredBackend": "SwiftShader/Vulkan",
+    "actualAdapterInfoInR20": null,
+    "physicalHardwareAcceptance": false,
+    "parentViewport": [
+      980,
+      620
+    ],
+    "sourceBacking": [
+      720,
+      480
+    ],
+    "browserBuildInR20": "NOT_RECORDED",
+    "currentBinaryReadback": {
+      "checkedAt": "2026-10-08T15:00:59.175441+00:00",
+      "command": "/home/agent/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome --version",
+      "output": "Google Chrome for Testing 151.0.7922.34",
+      "historicalR20BuildClaim": false
+    }
+  },
+  "continuousObservationMs": 5951.331891992595,
+  "periodicSampleCount": 26,
+  "acceptedNaturalCompletionCount": 12,
+  "cycles": [
+    {
+      "ordinal": 1,
+      "wrapperAtMs": 2702.300000011921,
+      "sourceAtMs": 858.2999999970198,
+      "cycleSerial": 1,
+      "causeId": "preview-contact-1",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 3,
+        "sourceCauseId": "preview-contact-1",
+        "sourceStartedAt": 342.3999999910593,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 8,
+          "eventId": "preview-contact-1",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 342.3999999910593,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 780.5,
+          "fenceAcquiredAt": 782.3999999910593,
+          "fulfilledAt": 816.7000000029802
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-1",
+        "sourceStartedAt": 342.3999999910593,
+        "sourceSubmissionId": 8,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 8,
+          "eventId": "preview-contact-1",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 342.3999999910593,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 780.5,
+          "fenceAcquiredAt": 782.3999999910593,
+          "fulfilledAt": 816.7000000029802
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 2,
+      "wrapperAtMs": 3253,
+      "sourceAtMs": 1408.8999999910593,
+      "cycleSerial": 2,
+      "causeId": "preview-contact-2",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 10,
+        "sourceCauseId": "preview-contact-2",
+        "sourceStartedAt": 912.7000000029802,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 15,
+          "eventId": "preview-contact-2",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 912.7000000029802,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 1361.2000000029802,
+          "fenceAcquiredAt": 1361.3999999910593,
+          "fulfilledAt": 1384.0999999940395
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-2",
+        "sourceStartedAt": 912.7000000029802,
+        "sourceSubmissionId": 15,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 15,
+          "eventId": "preview-contact-2",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 912.7000000029802,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 1361.2000000029802,
+          "fenceAcquiredAt": 1361.3999999910593,
+          "fulfilledAt": 1384.0999999940395
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 3,
+      "wrapperAtMs": 3877.1000000089407,
+      "sourceAtMs": 2033,
+      "cycleSerial": 3,
+      "causeId": "preview-contact-3",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 17,
+        "sourceCauseId": "preview-contact-3",
+        "sourceStartedAt": 1478.2999999970198,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 24,
+          "eventId": "preview-contact-3",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 1478.2999999970198,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 1961.7000000029802,
+          "fenceAcquiredAt": 1961.7999999970198,
+          "fulfilledAt": 2001.2999999970198
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-3",
+        "sourceStartedAt": 1478.2999999970198,
+        "sourceSubmissionId": 24,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 24,
+          "eventId": "preview-contact-3",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 1478.2999999970198,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 1961.7000000029802,
+          "fenceAcquiredAt": 1961.7999999970198,
+          "fulfilledAt": 2001.2999999970198
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 4,
+      "wrapperAtMs": 4477.600000008941,
+      "sourceAtMs": 2633.5,
+      "cycleSerial": 4,
+      "causeId": "preview-contact-4",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 26,
+        "sourceCauseId": "preview-contact-4",
+        "sourceStartedAt": 2106.5,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 33,
+          "eventId": "preview-contact-4",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 2106.5,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 2561.7999999970198,
+          "fenceAcquiredAt": 2562,
+          "fulfilledAt": 2597.5
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-4",
+        "sourceStartedAt": 2106.5,
+        "sourceSubmissionId": 33,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 33,
+          "eventId": "preview-contact-4",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 2106.5,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 2561.7999999970198,
+          "fenceAcquiredAt": 2562,
+          "fulfilledAt": 2597.5
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 5,
+      "wrapperAtMs": 5027.9000000059605,
+      "sourceAtMs": 3183.7999999970198,
+      "cycleSerial": 5,
+      "causeId": "preview-contact-5",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 35,
+        "sourceCauseId": "preview-contact-5",
+        "sourceStartedAt": 2697.2000000029802,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 42,
+          "eventId": "preview-contact-5",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 2697.2000000029802,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 3144.7000000029802,
+          "fenceAcquiredAt": 3145,
+          "fulfilledAt": 3167.5999999940395
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-5",
+        "sourceStartedAt": 2697.2000000029802,
+        "sourceSubmissionId": 42,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 42,
+          "eventId": "preview-contact-5",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 2697.2000000029802,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 3144.7000000029802,
+          "fenceAcquiredAt": 3145,
+          "fulfilledAt": 3167.5999999940395
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 6,
+      "wrapperAtMs": 5577.20000000298,
+      "sourceAtMs": 3733.0999999940395,
+      "cycleSerial": 6,
+      "causeId": "preview-contact-6",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 44,
+        "sourceCauseId": "preview-contact-6",
+        "sourceStartedAt": 3238.8999999910593,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 50,
+          "eventId": "preview-contact-6",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 3238.8999999910593,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 3661.2000000029802,
+          "fenceAcquiredAt": 3661.3999999910593,
+          "fulfilledAt": 3693.8999999910593
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-6",
+        "sourceStartedAt": 3238.8999999910593,
+        "sourceSubmissionId": 50,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 50,
+          "eventId": "preview-contact-6",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 3238.8999999910593,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 3661.2000000029802,
+          "fenceAcquiredAt": 3661.3999999910593,
+          "fulfilledAt": 3693.8999999910593
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 7,
+      "wrapperAtMs": 6127.20000000298,
+      "sourceAtMs": 4283.0999999940395,
+      "cycleSerial": 7,
+      "causeId": "preview-contact-7",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 52,
+        "sourceCauseId": "preview-contact-7",
+        "sourceStartedAt": 3785.7999999970198,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 58,
+          "eventId": "preview-contact-7",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 3785.7999999970198,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 4211.79999999702,
+          "fenceAcquiredAt": 4211.899999991059,
+          "fulfilledAt": 4245
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-7",
+        "sourceStartedAt": 3785.7999999970198,
+        "sourceSubmissionId": 58,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 58,
+          "eventId": "preview-contact-7",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 3785.7999999970198,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 4211.79999999702,
+          "fenceAcquiredAt": 4211.899999991059,
+          "fulfilledAt": 4245
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 8,
+      "wrapperAtMs": 6677.5,
+      "sourceAtMs": 4833.399999991059,
+      "cycleSerial": 8,
+      "causeId": "preview-contact-8",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 60,
+        "sourceCauseId": "preview-contact-8",
+        "sourceStartedAt": 4325.70000000298,
+        "sourceAgeMs": 0.09999999403953552,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 67,
+          "eventId": "preview-contact-8",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 4325.70000000298,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 4778.29999999702,
+          "fenceAcquiredAt": 4778.399999991059,
+          "fulfilledAt": 4806.5999999940395
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-8",
+        "sourceStartedAt": 4325.70000000298,
+        "sourceSubmissionId": 67,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 67,
+          "eventId": "preview-contact-8",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 4325.70000000298,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 4778.29999999702,
+          "fenceAcquiredAt": 4778.399999991059,
+          "fulfilledAt": 4806.5999999940395
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 9,
+      "wrapperAtMs": 7252.300000011921,
+      "sourceAtMs": 5408.20000000298,
+      "cycleSerial": 9,
+      "causeId": "preview-contact-9",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 69,
+        "sourceCauseId": "preview-contact-9",
+        "sourceStartedAt": 4883.20000000298,
+        "sourceAgeMs": 0.09999999403953552,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 75,
+          "eventId": "preview-contact-9",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 4883.20000000298,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 5328.29999999702,
+          "fenceAcquiredAt": 5328.399999991059,
+          "fulfilledAt": 5382.399999991059
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-9",
+        "sourceStartedAt": 4883.20000000298,
+        "sourceSubmissionId": 75,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 75,
+          "eventId": "preview-contact-9",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 4883.20000000298,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 5328.29999999702,
+          "fenceAcquiredAt": 5328.399999991059,
+          "fulfilledAt": 5382.399999991059
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 10,
+      "wrapperAtMs": 7777.600000008941,
+      "sourceAtMs": 5933.5,
+      "cycleSerial": 10,
+      "causeId": "preview-contact-10",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 77,
+        "sourceCauseId": "preview-contact-10",
+        "sourceStartedAt": 5454.5999999940395,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 83,
+          "eventId": "preview-contact-10",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 5454.5999999940395,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 5880,
+          "fenceAcquiredAt": 5880.29999999702,
+          "fulfilledAt": 5913
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-10",
+        "sourceStartedAt": 5454.5999999940395,
+        "sourceSubmissionId": 83,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 83,
+          "eventId": "preview-contact-10",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 5454.5999999940395,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 5880,
+          "fenceAcquiredAt": 5880.29999999702,
+          "fulfilledAt": 5913
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 11,
+      "wrapperAtMs": 8353.800000011921,
+      "sourceAtMs": 6509.70000000298,
+      "cycleSerial": 11,
+      "causeId": "preview-contact-11",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 85,
+        "sourceCauseId": "preview-contact-11",
+        "sourceStartedAt": 5980.5,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 91,
+          "eventId": "preview-contact-11",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 5980.5,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 6444.0999999940395,
+          "fenceAcquiredAt": 6444.29999999702,
+          "fulfilledAt": 6473.899999991059
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-11",
+        "sourceStartedAt": 5980.5,
+        "sourceSubmissionId": 91,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 91,
+          "eventId": "preview-contact-11",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 5980.5,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 6444.0999999940395,
+          "fenceAcquiredAt": 6444.29999999702,
+          "fulfilledAt": 6473.899999991059
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    },
+    {
+      "ordinal": 12,
+      "wrapperAtMs": 8902.70000000298,
+      "sourceAtMs": 7058.70000000298,
+      "cycleSerial": 12,
+      "causeId": "preview-contact-12",
+      "activeProof": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "viewportWidth": 720,
+        "viewportHeight": 480,
+        "backingWidth": 720,
+        "backingHeight": 480,
+        "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+        "sourceHashes": {
+          "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+          "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+          "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+          "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+          "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+          "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+          "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "sourceTimeOrigin": 1791470689881.8,
+        "canvasIdentity": "1791470689881.8:surface",
+        "targetSurfaceId": "private-contact-surface",
+        "generation": 1,
+        "sourceSubmissionId": 93,
+        "sourceCauseId": "preview-contact-12",
+        "sourceStartedAt": 6561.29999999702,
+        "sourceAgeMs": 0,
+        "sourcePlayerId": "preview-shooter",
+        "sourceTargetId": "preview-target",
+        "sourceVariant": "hip:handgun",
+        "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+        "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+        "queueCompleted": true,
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ],
+        "evidenceKind": "original-native-receipt+native-call-observation"
+      },
+      "terminalProof": {
+        "receipt": {
+          "submitSerial": 99,
+          "eventId": "preview-contact-12",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 6561.29999999702,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 7011.0999999940395,
+          "fenceAcquiredAt": 7011.20000000298,
+          "fulfilledAt": 7038.5
+        },
+        "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+        "canvasIdentity": "1791470689881.8:surface",
+        "sourceCauseId": "preview-contact-12",
+        "sourceStartedAt": 6561.29999999702,
+        "sourceSubmissionId": 99,
+        "generation": 1,
+        "ageMs": 420,
+        "completion": "fulfilled",
+        "actualErrorScopes": [
+          {
+            "filter": "internal",
+            "error": null
+          },
+          {
+            "filter": "out-of-memory",
+            "error": null
+          },
+          {
+            "filter": "validation",
+            "error": null
+          }
+        ]
+      },
+      "independentSourceSettlement": {
+        "ready": true,
+        "retired": false,
+        "heldAge": null,
+        "active": false,
+        "hasSource": false,
+        "rafPending": false,
+        "lastReceipt": {
+          "submitSerial": 99,
+          "eventId": "preview-contact-12",
+          "playerId": "preview-shooter",
+          "targetId": "preview-target",
+          "variant": "hip:handgun",
+          "startedAt": 6561.29999999702,
+          "contactOnly": true,
+          "killOutcomeUnknown": true,
+          "ageMs": 420,
+          "active": false,
+          "clear": true,
+          "targetSurfaceId": "private-contact-surface",
+          "generation": 1,
+          "backingWidth": 720,
+          "backingHeight": 480,
+          "uniforms": [
+            720,
+            480,
+            420,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "completion": "fulfilled",
+          "actualErrorScopes": [
+            {
+              "filter": "internal",
+              "error": null
+            },
+            {
+              "filter": "out-of-memory",
+              "error": null
+            },
+            {
+              "filter": "validation",
+              "error": null
+            }
+          ],
+          "submittedAt": 7011.0999999940395,
+          "fenceAcquiredAt": 7011.20000000298,
+          "fulfilledAt": 7038.5
+        }
+      },
+      "sourceCanvas": {
+        "connected": true,
+        "backing": [
+          720,
+          480
+        ],
+        "css": [
+          720,
+          480
+        ]
+      }
+    }
+  ],
+  "firstFrameProof": {
+    "recorded": true,
+    "submitted": true,
+    "completed": true,
+    "canvasConnected": true,
+    "passes": 2,
+    "viewportWidth": 720,
+    "viewportHeight": 480,
+    "backingWidth": 720,
+    "backingHeight": 480,
+    "sourceVersionId": "gunner-headshot-unified-sol61-r2",
+    "sourceHashes": {
+      "index.html": "9cd5d5b202bfbb4818af5d01f71766119bf36421093063dbf5f9939903d9507c",
+      "app.mjs": "a042394f51458b9d4a7f099ac6edb717b7df68516efcd8849e9e91ce8637ded1",
+      "contact.mjs": "8d45795a50903d4bfd66945c1eb055591fef21ef2f2e73c2223460cdaf0f5729",
+      "renderer.mjs": "0fffffdf87cf36d746447c83189ec8d44046a8d46f3e3e37bf213a082a9b7b07",
+      "sfx.mjs": "5154b26309da2f46c5aea4bdfa705f8ee99debdab1c1b3ba67c08c4c59b567f6",
+      "shaders.mjs": "9a2e35c4a7c68679b241e8d02fb2a56ff260910be0d41deff20580925e5d0c4d",
+      "form.mjs": "b1e6e390be7f25ed1cde945bc94097f614d5fc1bfdc278ca16332161843d8560"
+    },
+    "sourceDocumentId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37",
+    "sourceTimeOrigin": 1791470689881.8,
+    "canvasIdentity": "1791470689881.8:surface",
+    "targetSurfaceId": "private-contact-surface",
+    "generation": 1,
+    "sourceSubmissionId": 3,
+    "sourceCauseId": "preview-contact-1",
+    "sourceStartedAt": 342.3999999910593,
+    "sourceAgeMs": 0,
+    "sourcePlayerId": "preview-shooter",
+    "sourceTargetId": "preview-target",
+    "sourceVariant": "hip:handgun",
+    "deviceOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1",
+    "queueOwnerId": "1791470689881.8:f3f27164-1242-46b8-ba4b-308c4a299b37:device-1:queue",
+    "queueCompleted": true,
+    "actualErrorScopes": [
+      {
+        "filter": "internal",
+        "error": null
+      },
+      {
+        "filter": "out-of-memory",
+        "error": null
+      },
+      {
+        "filter": "validation",
+        "error": null
+      }
+    ],
+    "evidenceKind": "original-native-receipt+native-call-observation"
+  },
+  "consoleErrorCount": 0,
+  "pageErrorCount": 0,
+  "ownedDisplayCleanup": {
+    "attempted": true,
+    "processes": [
+      {
+        "name": "wm",
+        "pid": 648973,
+        "action": "terminated"
+      },
+      {
+        "name": "xvfb",
+        "pid": 648968,
+        "action": "terminated"
+      }
+    ],
+    "authRemoved": true,
+    "logsClosed": true,
+    "errors": []
+  },
+  "cleanupSummary": [
+    {
+      "resource": "observer",
+      "attempted": true,
+      "outcome": {
+        "present": true,
+        "disconnected": true,
+        "faults": [],
+        "overflow": false
+      }
+    },
+    {
+      "resource": "page",
+      "attempted": true,
+      "outcome": "closed"
+    },
+    {
+      "resource": "context",
+      "attempted": true,
+      "outcome": "closed"
+    },
+    {
+      "resource": "display",
+      "attempted": true,
+      "outcome": {
+        "attempted": true,
+        "processes": [
+          {
+            "name": "wm",
+            "pid": 648973,
+            "action": "terminated"
+          },
+          {
+            "name": "xvfb",
+            "pid": 648968,
+            "action": "terminated"
+          }
+        ],
+        "authRemoved": true,
+        "logsClosed": true,
+        "errors": []
+      }
+    },
+    {
+      "resource": "playwright",
+      "attempted": true,
+      "outcome": "stopped"
+    }
+  ],
+  "media": [
+    {
+      "file": "video/page@13fba02de8e7efface4546c5340b4744.webm",
+      "bytes": 706035,
+      "sha256": "405a7735ab6fe29d7e83bcb52c91ff947ed0c23710d8d04cefe6c251925117ae",
+      "viewport": {
+        "width": 980,
+        "height": 620
+      }
+    }
+  ],
+  "finiteVideoDecode": {
+    "decodedIntegerFrames": 6,
+    "sourceAgeToVideoPTS": "UNKNOWN",
+    "rootVisualObservation": "Two small luminous contact patches/dashes visible in actual ready screenshot and finite video samples; differentiated material and continuous early motion are not accepted",
+    "readbackSealSha256": "26a17a30d5c86e498d3a6c2abf59d288d01d16e9878ae4a0d431ae3d5297a3b2"
+  },
+  "screenshot": {
+    "path": "public/headshot-r2-public-replay-evidence-r20/ACTIVE-PARENT-R20.png",
+    "bytes": 114970,
+    "sha256": "e6a0402fbce7b0c8961d6793b147d5a35203d72362bd1e3ac3b4ac4d10f94e62"
+  },
+  "attribution": {
+    "historicalSourceDesigner": "GPT-6.1-Sol",
+    "faithfulSourcePackageRuntime": "GPT-6-Luna per source manifest",
+    "observerConfiguredModel": "GPT-6-Luna (medium)",
+    "observerActualExecutionModel": "UNKNOWN",
+    "captureAgent": "Root",
+    "captureExecutionModel": "UNKNOWN"
+  },
+  "preservedHistoricalResults": {
+    "R5": "FAILED_CAPTURED",
+    "R15": "FAILED_CAPTURED"
+  },
+  "independentGates": {
+    "quality": "NOT_ACCEPTED",
+    "normalSfxListening": "not_run_verify_hardmute",
+    "Safari_iPad": "unverified",
+    "mainGame": "not_connected",
+    "H64": "not_run",
+    "adoption": "unknown",
+    "newCreativeR3": false,
+    "fullReleaseAssemblyAllowed": false
+  }
+}
