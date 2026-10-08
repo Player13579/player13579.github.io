@@ -20201,31 +20201,6 @@ function mysteryBoxMaterialReady() {
   return Boolean(image?.complete && image.naturalWidth === 1548 && image.naturalHeight === 516);
 }
 
-function drawMysteryBoxMaterialPart(index, x, y) {
-  const scale = 112 / 892;
-  ctx.drawImage(state.textures.mysteryBoxMaterial, index * 516 + 2, 2, 512, 512,
-    x - 594 * scale, y + 45 - 1199 * scale, 1254 * scale, 1254 * scale);
-}
-
-function drawMysteryBoxMaterials(x, y, opening, emission) {
-  ctx.save();
-  try {
-    ctx.shadowColor = 'rgba(0,0,0,0)'; ctx.shadowBlur = 0;
-    drawMysteryBoxMaterialPart(0, x, y);
-    if (emission > 0) {
-      ctx.save();
-      ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha *= emission;
-      drawMysteryBoxMaterialPart(2, x, y);
-      ctx.restore();
-    }
-    // A magical lift keeps the bow and rim rigid while the body stays on the ground.
-    const pivotX = x + 6 * (112 / 892), pivotY = y + 45 - 549 * (112 / 892);
-    ctx.translate(pivotX + 3 * opening, pivotY - 36 * opening);
-    ctx.rotate(-.035 * opening); ctx.translate(-pivotX, -pivotY);
-    drawMysteryBoxMaterialPart(1, x, y);
-  } finally { ctx.restore(); }
-}
-
 function mysteryBoxWebGPUScene(data) {
   return {
     scene: Array.isArray(data.map?.mysteryBoxes) ? data.map.mysteryBoxes : [],
@@ -32829,7 +32804,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-mystery-box-leaf-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
