@@ -1,0 +1,41 @@
+{
+  "task": "Stamina R3 gallery adoption metadata only",
+  "adoptionDate": "2026-10-09",
+  "pinnedRepository": "Player13579/player13579.github.io",
+  "branch": "Codex-honoo",
+  "baseCommit": "c72c665bc5cbc90ed4c64abb3fd9f9b36b387b43",
+  "baseTree": "6b59d0653f5f030f6c561556cccf6e6962889340",
+  "baseFiles": [
+    {
+      "sha256": "6c7671a4e26e767f88c554c8332fc3c1f464d680049aa1ca67f394d2f1af3e95",
+      "gitBlob": "33a96f7db9599eba114256c896aa3a243ec9aa89",
+      "path": "asset-gallery.js"
+    },
+    {
+      "sha256": "92310b1331ebfa76a1fe95c9331e714e13b934f2c2269982a433e7e5a7c3c736",
+      "gitBlob": "a1ee7f0dc3f39f76ddf2c97ef9980f0681a2aa9a",
+      "path": "webgpu-e-gallery.html"
+    }
+  ],
+  "candidateFiles": [
+    {
+      "sha256": "ae9c9f2e0946d2d23618d2370f2691e27be165222b261f5c79c03192ccb2b0e1",
+      "path": "asset-gallery.js"
+    },
+    {
+      "sha256": "e939f8f20aee949a08fb5a3a1ca99b282d494874556f50eb6b4a50613a224baf",
+      "path": "webgpu-e-gallery.html"
+    }
+  ],
+  "changes": [
+    "Stamina group default changed to stamina-sol61-r3",
+    "Only stamina-sol61-r3 set adoption=adopted, userAdopted=true, adoptionDate=2026-10-09 and adoptionHistory entry; quality fail, audio untested, game not connected preserved",
+    "HTML asset-gallery.js cache SHA-256 updated to candidate JS"
+  ],
+  "validation": [
+    "node --check asset-gallery.js passed",
+    "Exact intended diff check reconstructed candidate from pinned upstream bytes with only the Stamina default and R3 record changes",
+    "R3 metadata and HTML cache-key checks passed"
+  ],
+  "scope": "Metadata only; does not assert GPU/visual quality/audio/game integration acceptance or publish/commit/push"
+}
