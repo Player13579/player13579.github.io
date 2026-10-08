@@ -1,0 +1,180 @@
+{
+  "firstFrame": {
+    "actorHeightCssPx": 64,
+    "canvasConnected": true,
+    "causeId": "human-r5-fixture-1",
+    "completed": true,
+    "dpr": 1,
+    "extent": [
+      980,
+      480
+    ],
+    "generation": 0,
+    "passes": 4,
+    "queueCompleted": true,
+    "recorded": true,
+    "sourceOwner": "human-transmutation-sol61-r5",
+    "sourceSubmissionId": 1,
+    "sourceVersionId": "human-transmutation-sol61-r5",
+    "submitted": true
+  },
+  "gates": {
+    "adoption": "not adopted",
+    "automaticR6": "prohibited / none",
+    "creativeEdition": 5,
+    "creativeEditionCap": 5,
+    "currentGalleryAdoption": "not-adopted",
+    "fullLifetimeQuality": "pending",
+    "ipadSafari": "not run",
+    "mainGameIntegration": "not connected",
+    "ordinarySfxListening": "not run; verify hard mute confirms it was not heard",
+    "quality": "pending; no full-quality pass",
+    "remainingCreativeEditions": 0,
+    "runAdoptionAssessment": "not_assessed",
+    "runQualityAssessment": "not_assessed"
+  },
+  "integrity": {
+    "parentReadyPng": {
+      "candidatePath": "evidence/parent-ready.png",
+      "sha256": "11f99bfbc262b668214b3af2c1ecabb8cd24fcbf16ec45c3568d85ff6c5c66a5",
+      "publicPath": "public/human-transmutation-r5-delivery-evidence/PARENT-READY-R17.png"
+    },
+    "rootFinalReceipt": {
+      "candidatePath": "evidence/ROOT-FINAL-RECEIPT.json",
+      "sha256": "68f63210dd448b1c0cf759eb881e4117294f1b8db7f5caa7a04ac75df899bf21"
+    },
+    "rootLog": {
+      "candidatePath": "evidence/ROOT-STDOUT-STDERR.log",
+      "sha256": "b2faf237ae9c31434ed8e85e31a08f8335f49c9aed7a2dd7fc7fefd3ad42cc2d"
+    },
+    "runResult": {
+      "candidatePath": "evidence/RUN-RESULT.json",
+      "sha256": "178c6be0845dbf855f1dfac947a89e6508b5d09303caaafc12a63d361d5c3580"
+    }
+  },
+  "naturalObservation": {
+    "dedupCountCorrection": "The run scope field 41 is retained in raw evidence but is not a count of unique terminal events. The 32 natural samples repeat inactive receipts; deduplicating inactive receipts by causeId/generation/submitted/completed yields two events: 4/4 and 9/9.",
+    "elapsedMs": 2503,
+    "rawRunExpirySampleCount": 2,
+    "runnerStdoutTerminalPublications": 2,
+    "sampleCount": 32,
+    "scopeFieldNaturalTerminalPublicationsRawUnnormalized": 41,
+    "terminalEventDeduplicationKey": [
+      "causeId",
+      "generation",
+      "submitted",
+      "completed"
+    ],
+    "terminalEventRawInactiveRowsAcrossSamplesAndExpiryRows": 8,
+    "terminalEventUniqueCount": 2,
+    "terminalEvents": [
+      {
+        "active": false,
+        "actorHeightCssPx": 64,
+        "causeId": "human-r5-fixture-1",
+        "completed": 4,
+        "cssExtent": [
+          980,
+          480
+        ],
+        "devicePixelRatio": 1,
+        "generation": 0,
+        "observedElapsedMs": 1252.7999999970198,
+        "passes": 4,
+        "phaseMs": 1200,
+        "physicalExtent": [
+          980,
+          480
+        ],
+        "queueCompleted": true,
+        "receiptDuplicatesAcrossSamplesAndExpiryRows": 4,
+        "scopeId": "human-r5-private-preview",
+        "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "submitted": 4,
+        "targetId": "revived-philia"
+      },
+      {
+        "active": false,
+        "actorHeightCssPx": 64,
+        "causeId": "human-r5-fixture-2",
+        "completed": 9,
+        "cssExtent": [
+          980,
+          480
+        ],
+        "devicePixelRatio": 1,
+        "generation": 1,
+        "observedElapsedMs": 1239.4000000059605,
+        "passes": 4,
+        "phaseMs": 1200,
+        "physicalExtent": [
+          980,
+          480
+        ],
+        "queueCompleted": true,
+        "receiptDuplicatesAcrossSamplesAndExpiryRows": 4,
+        "scopeId": "human-r5-private-preview",
+        "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "submitted": 9,
+        "targetId": "revived-philia"
+      }
+    ]
+  },
+  "publicReadback": {
+    "allPass": true,
+    "matchedPinCount": 92,
+    "packageAllPass": true,
+    "parentReadyPngSha256": "11f99bfbc262b668214b3af2c1ecabb8cd24fcbf16ec45c3568d85ff6c5c66a5",
+    "pinCount": 92,
+    "routeCount": 5
+  },
+  "rawCountDiscrepancy": {
+    "deduplicatedUniqueTerminalEventCount": 2,
+    "resolution": "Preserve all raw records unchanged; use the two independently evidenced terminal tuples for the candidate catalog claim.",
+    "runExpirySampleCount": 2,
+    "scopeNaturalTerminalPublications": 41,
+    "stdoutNaturalTerminalPublications": 2
+  },
+  "recordedAtUtc": "2026-10-08T12:12:10.237207+00:00",
+  "renderingAndLifecycle": {
+    "consoleErrors": [],
+    "fatal": null,
+    "finalSampleInFlight": true,
+    "nextGenerationObserved": true,
+    "pageErrors": [],
+    "rendererRetainedAtFinalSample": true,
+    "requestFailures": []
+  },
+  "run": {
+    "caseId": "human-r5",
+    "parentUrl": "https://player13579.github.io/webgpu-e-gallery.html?verify=human-r5-live-7b92721&category=effect&filter=unadopted&asset=alchemy-human-transmutation-sol61&version=human-transmutation-sol61-r5",
+    "publicCommitObservedByRunner": "7b92721fc7e0b6bf6da14d43aa90b28fa8044549",
+    "rawParentSelectionVersionValue": "0 (selector ordinal; not a version id)",
+    "schema": "human-r5-live-public-frame-timeout-source-repair-run-r12/v1",
+    "selectedVersionId": "human-transmutation-sol61-r5",
+    "sourceUrl": "https://player13579.github.io/public/sol61-human-transmutation/r5/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+    "status": "PASS_LIVE_PUBLIC_HUMAN_R5_DEFAULT_CDP_NATURAL_CYCLE"
+  },
+  "schema": "human-r17-live-public-human-r5-technical-evidence-summary/v1",
+  "scope": "limited software-WebGPU actual public parent replay; R5 catalog evidence only",
+  "selectedParent": {
+    "exactR5Selected": true,
+    "selectedStatus": "技術再生確認済み（限定範囲） · Codex品質確認未完了 · 未採用 · 本編未接続 · ユーザー審査待ち（改善5版の上限到達）",
+    "selectedTitle": "錬成・人体生成 · GPT-6.1-Sol 人体生成 E R5 · limited actual software WebGPU replay",
+    "selectionCategory": "true",
+    "selectionFilter": "true"
+  },
+  "softwareRuntime": {
+    "backendLabel": "not present in this run receipt; report only the observed browser WebGPU queue receipts; no hardware-GPU conclusion",
+    "browser": "151.0.7922.34",
+    "cdpNoDefaults": true,
+    "gpuBackend": "software SwiftShader per the actual root-replay handoff; hardware GPU not established",
+    "ownedDisplay": ":91",
+    "playwrightVersion": "1.62.0",
+    "verifyMode": true
+  },
+  "visualNote": {
+    "basis": "handoff states Root viewed the actual parent-ready PNG and observed character plus green continuous rays",
+    "scope": "limited screenshot observation only; no full quality assessment"
+  }
+}
