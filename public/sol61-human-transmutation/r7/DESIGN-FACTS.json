@@ -1,0 +1,38 @@
+{
+  "schema": "human-transmutation-r7-design/v1",
+  "author": "GPT-6.1-Sol",
+  "basis": {
+    "nativeAttempt": "human-sparkle-native/native-attempts/99640ee1-c03b-4c1e-83a0-3b4e82c44924",
+    "viewed": [
+      "r6-h64-t650.png",
+      "r6-h64-t850.png",
+      "r6-h128-t650.png",
+      "r5-h64-t650.png"
+    ],
+    "observation": "R6では主に頭付近の再構成帯が読め、身体への細輝点の分布が乏しい。R5の長い大光条を戻さず、材質定着後の分散を改善する。"
+  },
+  "creativeChanges": {
+    "sites": 69,
+    "distribution": "足から冠まで15縦層・横方向不透明材質層化",
+    "minimumOriginalSeparationPx": 12,
+    "pulse": "到着24ms後から28ms rise、274ms後消灯、最後90ms fall。行ごとの定着後に短い残光が重なる。",
+    "sourceRadiusH64": 0.5,
+    "primaryRayH64": 1.75,
+    "secondaryRayH64": 1.3,
+    "rayWidthH64": 0.28,
+    "radiance": 14,
+    "axisDegrees": 17,
+    "opticalApproximation": "有限Gaussian光源の画素footprint畳込み。面積比で積分輝度を保持し、微小光源の格子位置依存を抑える。光条は同一MRT光源fluxからのみ発生。完全な回折シミュレーションではない。"
+  },
+  "preserved": [
+    "原画RGBA・連続行の再構成",
+    "移動・到着・固定の時計",
+    "SFX",
+    "verify強制無音",
+    "共通17度光条軸",
+    "source/observer/visibility gate"
+  ],
+  "bWorkflow": "既存R6からの差分。b-foundation-loaderのあらゆる差分例外を適用。新規B取得・新規raster不要。",
+  "qualityStatus": "未確認。CPU数・fluxを可視数として報告しない。primary native gate待ち。",
+  "historicalAttribution": "R6 Sol設計/Luna実装、R5 actual execution UNEXPOSEDを保持する。"
+}
