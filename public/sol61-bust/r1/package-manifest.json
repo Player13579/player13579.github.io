@@ -1,0 +1,81 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "bust-sol61",
+  "versionId": "bust-zero-sol61-r1",
+  "entry": "index.html",
+  "effectAuthor": "GPT-6.1-Sol",
+  "adoption": "unadopted",
+  "qualityStatus": "not-reviewed",
+  "technicalReplayStatus": "native-webgpu-verified-edge-headless",
+  "files": {
+    "index.html": "67881bafa6603a0327c91ea78b778d7330d4681699393717b83f82bf53e382c3",
+    "gallery-adapter.mjs": "62e2baa7d8687d4f59840d0a3b738a1308f17691ec7aac11ed1f306e5dc2fff6",
+    "bust.mjs": "236cbd219f1badf62b6a0955b27d08303fe14f98651f773e0de83a7785ede21e",
+    "bust.wgsl": "ef1680563761409c4a7d21bf6e2b8ebb11b2784113d821302b7973e6f63a74c2",
+    "bust-sfx.mjs": "13a2cba30468b5e5d239cccc604bbfff1bec6cec9e38c027a2cf58609d6a199c",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "events": {
+    "timed-bust-start": {
+      "durationMs": 650,
+      "targetId": "beneficiary-target"
+    },
+    "timed-bust-break": {
+      "durationMs": 480,
+      "targetId": "barrier-owner-target"
+    }
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format",
+    "separateActorFixturePass": true,
+    "surfaceFormat": "navigator.gpu.getPreferredCanvasFormat()"
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "hold": "hold(ageMs,{variant,targetId,bodyHeight:64|192})",
+    "waitsForGpuQueueCompletion": true,
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ]
+  },
+  "validation": {
+    "syntax": "passed",
+    "fakeDeviceHost": "passed",
+    "nativeWebGpuReplay": "passed",
+    "visualQuality": "not-reviewed",
+    "normalAudioListening": "not-tested",
+    "gameIntegration": "not-run",
+    "nativeVerification": "outputs/request-20261008/bust-native-verify-luna-r1/attempt-761b88af-c471-4b21-8872-ff1d50615882/native-verification.json"
+  },
+  "technicalDerivative": {
+    "basedOn": "outputs/request-20261008/bust-gallery-host-luna-r1/public/sol61-bust/r1",
+    "creativeChanges": false,
+    "preservedSourceHashes": {
+      "bust.mjs": "236cbd219f1badf62b6a0955b27d08303fe14f98651f773e0de83a7785ede21e",
+      "bust.wgsl": "ef1680563761409c4a7d21bf6e2b8ebb11b2784113d821302b7973e6f63a74c2",
+      "bust-sfx.mjs": "4cf427ede3f20ecd4badc6da8afea8f71d84b0f14e716b404c69c58997f78cef"
+    },
+    "changes": [
+      "Fix actor fixture shader return semicolons; require empty compilationInfo errors and an empty validation scope before pipeline use.",
+      "Add RENDER_ATTACHMENT to the copied fixture texture usage required by copyExternalImageToTexture in native WebGPU.",
+      "Premultiplied fixture alpha blending preserves transparent fixture pixels over the canvas background.",
+      "Pass bounded H64/H192 bodyHeight into both fixture and E dimensions for actual H verification.",
+      "Scale playback monotonic clock by ACTOR_SCALE and set SFX BufferSource playbackRate to that scale without changing synthesized PCM."
+    ]
+  }
+}
