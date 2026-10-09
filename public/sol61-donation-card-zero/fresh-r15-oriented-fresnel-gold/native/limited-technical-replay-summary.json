@@ -1,0 +1,115 @@
+{
+  "schema": "dva-donation-r15-public-limited-native-summary/v1",
+  "versionId": "donation-zero-sol61-r15-oriented-fresnel-gold",
+  "status": "PASS_LIMITED_PRIVATE_DIRECT_ENTRY_WEBGPU_REPLAY",
+  "source": {
+    "commit": "0a4caf06f7f3f0ab86eec4c461afe1b5fd011ba1",
+    "manifestSha256": "b99206b9e116db8682f4fbd86c7a5be0449f81250d704af183e5bc9b6cb3bd07",
+    "sealSha256": "76d11ec4dd3e7fbea1b6d48d60d4e9b38a6c40f4be061cce04da74b6fe98dcf7"
+  },
+  "allowance": {
+    "authorityId": "donation-additional-five-20261009",
+    "authorized": 5,
+    "consumed": 3,
+    "consumedEditions": [
+      "R13",
+      "R14",
+      "R15"
+    ],
+    "remaining": 2,
+    "totalCreativeEditionLimit": 17,
+    "automaticNextEdition": false,
+    "formalReturnRecordSha256": "3eba24bbf3faf896140f7ea223bf7e70a137f1835ac753c301a724ce04ba0913"
+  },
+  "scope": "Exact sealed R15 source entry ran in a private local WebGPU review; no public gallery parent/catalog selection was exercised.",
+  "browser": {
+    "family": "Microsoft Edge",
+    "version": "154.0.4258.62",
+    "adapterOrHardwareIdentity": "not established; queue instrumentation deviceId is null",
+    "launchConfiguration": {
+      "requestedChromiumSandbox": true,
+      "requestedAutomationSwitch": true,
+      "effectiveCommandLineMethod": "Browser.getBrowserCommandLine",
+      "effectiveCommandLineStatus": "SUPPORTED_AND_RECORDED",
+      "effectiveArgumentsCount": 48,
+      "effectiveArgumentsSha256": "56c5cc314ae948830071f8322b6acb82cf509be1e0460d0e15838805ac908ac0",
+      "containsNoSandbox": false,
+      "evidenceScope": "Playwright chromiumSandbox:true requested; captured browser command line excludes --no-sandbox. This records launch configuration, not an independent OS-level sandbox enforcement audit."
+    }
+  },
+  "entry": {
+    "viewport": {
+      "width": 980,
+      "height": 620,
+      "deviceScaleFactor": 1
+    },
+    "runtimeFilesExpected": 9,
+    "runtimeFilesServed": 9,
+    "sourceClosureHashMatched": true
+  },
+  "captures": {
+    "count": 23,
+    "allCaptureArtifactsIndependentlyHashChecked": true,
+    "dimensions": "980x620",
+    "exactPreAndPostCauseReceiptAndQueueFenceChecks": true,
+    "phaseAgesMs": [
+      600,
+      850,
+      1100,
+      1450,
+      1700,
+      2200,
+      2400
+    ],
+    "parameterAndControlInterventionsAt1100Ms": true
+  },
+  "naturalLifetimes": {
+    "completedDistinctCauses": 2,
+    "terminalAgeMs": [
+      2400,
+      2400
+    ],
+    "completedQueueFences": true,
+    "passCountAtTerminal": 6
+  },
+  "startup": {
+    "sourceSelfMessageReady": true,
+    "firstFramePlaying": true
+  },
+  "verification": {
+    "hardMuted": true,
+    "audioContextsCreated": 0,
+    "audioStarts": 0,
+    "pageConsoleRequestAndRuntimeErrors": 0,
+    "ownedCleanupAllClosed": true
+  },
+  "independentArtifactAudit": {
+    "status": "ARTIFACT_AUDIT_PASS_LIMITED_SCOPE",
+    "auditSha256": "9ad857d06f558b564e711c6c82f21b57aad7811ad38cc079b317ccb711b6fd54",
+    "reportSha256": "8e638399abec7f833c107b257b0ac7db90e221a9be23ff8c77679c914ada97cf",
+    "cleanupSha256": "4684438c5f4849b437c0a69da0d1a9caead8ca04f4a5d7ebaca39b03e88631a3"
+  },
+  "visualReview": {
+    "status": "NO_CONCRETE_R16_DEFECT_IN_REVIEWED_OUTPUT; FULL_QUALITY_PENDING",
+    "reviewSha256": "d8900b58fd6bb229e9269985998863874458f081fe20158a62ff6efb30bb2a0b",
+    "decisionSha256": "1bfec6ddb59547937398e9fde97e107a3d4398e42c6805b63da196f97db07024",
+    "viewedEvidenceSha256": "3f22c39ab22b641ad6c9d3273708b94a5f0c3a4b84d1652bea69864069a97ee3",
+    "reviewSealSha256": "4e220200ce128161548b9ab4f6be44efda603b850b5d827625515d9caa0fa258",
+    "reviewedImages": {
+      "heldPngs": 23,
+      "decodedNaturalFrames": 20
+    },
+    "reviewedArtifacts": "R3 review included 23 held screenshots and 20 decoded natural frames. This assembly independently matched all 23 R5 held PNGs byte-for-byte to the same-named R3 screenshots; the review carry-forward does not cover the R5 lifecycle video.",
+    "limitation": "Full quality remains pending gameplay-size H64 review and ordinary audio listening; this review does not grant quality acceptance or adoption."
+  },
+  "notEstablished": [
+    "visual quality acceptance or full-quality pass",
+    "public-parent/catalog selection or public URL replay",
+    "matched R14 comparison",
+    "normal SFX playback/listening",
+    "Safari/iPad",
+    "hardware or adapter identity/performance",
+    "main-game integration"
+  ],
+  "statement": "This record establishes limited private direct-entry replay and artifact integrity only. It does not claim visual quality, user adoption, public-parent replay, audio acceptance, device coverage, performance, or game integration."
+}
