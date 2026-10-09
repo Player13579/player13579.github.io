@@ -1,0 +1,150 @@
+{
+  "schema": "dva-stun-grenade-new-sol-source/v1",
+  "version": "stun-grenade-zero-sol61-r1",
+  "versionId": "stun-grenade-zero-sol61-r1",
+  "group": "gunner-stun-grenade-sol61",
+  "eventType": "grenade-stun-impact",
+  "entry": "index.html?embed=1&galleryAutoLoop=1",
+  "creativeAuthorization": {
+    "newInitialR1Only": true,
+    "historicalGenericAuthor": "unknown",
+    "historicalGenericCount": "unknown",
+    "legacyCapReset": false,
+    "nextEditionPermitted": false
+  },
+  "actualCreator": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol",
+    "scope": "New creative design, planner, WGSL, standalone renderer/preview, new PCM and source checks; no old creative input reuse."
+  },
+  "technicalContractInputs": "Exact16d gameplay producer and existing current parent startup schema only. No old shaders/PCM/raster copied.",
+  "foundation": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "base": {
+      "path": "inputs/B-base.md",
+      "gitBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+      "sha256": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25"
+    },
+    "extension": {
+      "path": "inputs/B-extension.md",
+      "gitBlob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+      "sha256": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7"
+    }
+  },
+  "visualDurationMs": 720,
+  "gameplayStunDurationMs": 2500,
+  "canonicalGameplayRadius": 145,
+  "uniformBytes": 128,
+  "passes": 3,
+  "targetFormat": "rgba16float",
+  "runtimeClosure": [
+    "index.html",
+    "app.mjs",
+    "runtime.mjs",
+    "source/plan.mjs",
+    "source/shaders.mjs",
+    "source/sound.mjs"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1399,
+      "sha256": "55704ab3d354802acb637cc7c7bc82023f97761d52cf95e104c1f168b6b96218"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 5362,
+      "sha256": "c1504f92e5d306aab3488d4679a1bc8d4cbe34f8b1a917017163203d05702f94"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 7656,
+      "sha256": "37af4c875c36383982d6c6826cfe9febe08da53da749f95352069f19bbbe5980"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 4457,
+      "sha256": "73cf0011466677bcfafa4d788ac8dc864bfffa13a07d309d0f1ea9447cd1dd54"
+    },
+    {
+      "path": "source/shaders.mjs",
+      "bytes": 6445,
+      "sha256": "09d77979b781abd077958a2eef56bd812326d5e11473e41e8511304349cc3970"
+    },
+    {
+      "path": "source/sound.mjs",
+      "bytes": 2672,
+      "sha256": "3efb462633d93e5de21645a730a7319488adf59c42876eb83409cb91e0cdd4e6"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 9423,
+      "sha256": "db37517e56df1b25bf74b8b4d8a24225337c2256fcb09c65b76e15b06ea467b6"
+    },
+    {
+      "path": "API.md",
+      "bytes": 4247,
+      "sha256": "d74c562ee6417b8dadcd631e057bec2b72299b78299d54c70fa0d262e0d3452c"
+    },
+    {
+      "path": "B-CODE-MAP.json",
+      "bytes": 10673,
+      "sha256": "3c2fcbd43a7dd6923fe7f24c7e6eb50a3e3c84c2aa16c22733addaf63c96bc62"
+    }
+  ],
+  "shaderHashes": {
+    "world": "86951db09b3aafc5afa6525279228ee5f28c89e7053fa3146c7ee711bd12ad91",
+    "optics": "c1f192c70936f42d22ad647efb485477f4368cba11dc4ae35f3fa16b7dd16a51",
+    "post": "7a234ad1aad65c502a0bfc78b30621376c5f949d053c887d7919c02fd877cdea"
+  },
+  "status": {
+    "source": "sealed-technical-wgsl-identifier-repair",
+    "cpu": "passed-95-scoped-checks",
+    "nativeShader": "not_run",
+    "pixels": "not_run",
+    "continuousMotion": "not_run",
+    "normalSfxListening": "not_run",
+    "parentGallery": "not_run",
+    "publication": "not_run",
+    "adoption": "unknown",
+    "gameIntegration": "not_connected",
+    "SafariIpad": "not_run",
+    "performance": "not_run"
+  },
+  "authorityConflictCheck": {
+    "path": "outputs/request-20261009/stun-grenade-r1-authority-crosscheck/AUTHORITY-CHECK.json",
+    "bytes": 4561,
+    "sha256": "566ac0e0b551b7a51b19f483b3baca6e347b5b780d3525ec045d7561808c7137"
+  },
+  "inputsPin": {
+    "path": "outputs/request-20261009/new-e-creative-sol61/INPUT-PINS.json",
+    "bytes": 3837,
+    "sha256": "2808ff14517b364ef320867fe117b722305a56fb937ea0f69fa7543199e0a7c8"
+  },
+  "limits": [
+    "Analytic material/gas/pressure/pupil approximations, no calibrated explosive yield/pressure/radiometry/SPL.",
+    "H64/H128 is actual projected diagnostic actor64*scale1/2, not game integration.",
+    "Pressure is floor-image displacement, not fabricated victim knockback.",
+    "Current one-R1 authorization does not establish historical cap or authorize subsequent revisions."
+  ],
+  "technicalDerivative": {
+    "schema": "dva-technical-derivative-provenance/v1",
+    "derivativeId": "stun-grenade-zero-sol61-r1-wgsl-repair",
+    "versionId": "stun-grenade-zero-sol61-r1",
+    "creativeEditionChanged": false,
+    "originalSourceRoot": "../stun-grenade-zero-sol61-r1",
+    "originalManifestSha256": "fdb3c567d8f0fafab0e5ae395fd49fd4973a805c964ead03f023da7aa68f1505",
+    "originalSealSha256": "b67d266ddb6bdc8f13b7ee25043b1a9096f9002ae23447e52f6860c6a770d048",
+    "change": "WGSL local reserved identifier active renamed to phenomenonActive consistently; no numeric, equation, color, timing, geometry, material, SFX or API change.",
+    "actualRepairAuthor": {
+      "model": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "preservedCreativeAuthor": {
+      "model": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol",
+      "scope": "New creative design, planner, WGSL, standalone renderer/preview, new PCM and source checks; no old creative input reuse."
+    },
+    "limits": "Static identifier/type/interface inspection and CPU checks are not native WGSL compile or pixel acceptance."
+  }
+}
