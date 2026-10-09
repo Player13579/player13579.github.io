@@ -1107,7 +1107,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
       if ((state === 'not-adopted' || state === 'unknown') && !closedReview) return 'ユーザー審査待ち（Codex品質基準達成）';
       return 'Codex品質基準達成';
     }
-    if (item.qualityReviewStatus === 'pending' || item.qualityReviewStatus === 'in-progress' || item.qualityReviewStatus === 'not-accepted' || item.qualityReviewStatus === 'limited-pass-full-quality-pending' || item.qualityReviewOutcome === 'fail') {
+    if (item.qualityReviewStatus === 'pending' || item.qualityReviewStatus === 'root-review' || item.qualityReviewStatus === 'quality-pending' || item.qualityReviewStatus === 'pending-review' || item.qualityReviewStatus === 'in-progress' || item.qualityReviewStatus === 'not-accepted' || item.qualityReviewStatus === 'limited-pass-full-quality-pending' || item.qualityReviewOutcome === 'fail') {
       return 'Codex品質確認未完了';
     }
     return 'Codex品質確認状況不明';
@@ -1133,10 +1133,13 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
   function userReviewLabel(item) {
     const legacyAtLimit = item.userReviewStatus === 'waiting' && item.userReviewReason === 'improvement-version-limit' &&
       item.improvementLoopLimit === 5 && Number.isInteger(item.improvementLoopVersionCount) && item.improvementLoopVersionCount >= 5;
-    const extraAtLimit = item.creativeReviewDisposition === 'user-review-wait-at-limit' &&
+    const allowance = item.additionalCreativeAllowance;
+    const r17AtLimit = allowance?.automaticNextVersion === false && Number.isInteger(allowance.authorized) && allowance.authorized > 0 &&
+      Number.isInteger(allowance.used) && allowance.used >= allowance.authorized && allowance.remaining === 0;
+    const extraAtLimit = (item.creativeReviewDisposition === 'user-review-wait-at-limit' &&
       Number.isInteger(item.authorizedAdditionalEditions) && item.authorizedAdditionalEditions > 0 &&
       Number.isInteger(item.authorizedAdditionalEditionsUsed) && item.authorizedAdditionalEditionsUsed >= item.authorizedAdditionalEditions &&
-      item.authorizedAdditionalEditionsRemaining === 0;
+      item.authorizedAdditionalEditionsRemaining === 0) || r17AtLimit;
     if (!legacyAtLimit && !extraAtLimit) return '';
     const state = adoptionState(item);
     const history = item.adoptionHistory || [];
@@ -1144,7 +1147,8 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
       history.some(entry => ['adopted', 'withdrawn', 'rejected'].includes(entry.status)) ||
       /採用済み|ユーザー採用済み|採用撤回|却下|撤回済み/.test(item.status || '');
     if (closedAdoption) return '';
-    return extraAtLimit ? 'ユーザー審査待ち（追加' + item.authorizedAdditionalEditions + '版の上限到達）' : 'ユーザー審査待ち（改善5版の上限到達）';
+    const extraLimit = item.authorizedAdditionalEditions ?? allowance?.authorized;
+    return extraAtLimit ? 'ユーザー審査待ち（追加' + extraLimit + '版の上限到達）' : 'ユーザー審査待ち（改善5版の上限到達）';
   }
   function presentationLabel(item, group) {
     return [technicalReplayLabel(item), qualityReviewLabel(item), adoptionStatusLabel(item), gameIntegrationLabel(item, group), userReviewLabel(item)].filter(Boolean).join(' · ');
