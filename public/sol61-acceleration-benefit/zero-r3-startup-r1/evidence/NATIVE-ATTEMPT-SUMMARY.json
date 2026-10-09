@@ -1,0 +1,56 @@
+{
+  "schema": "dva-acceleration-startup-r1-private-native-evidence/v1",
+  "versionId": "acceleration-zero-arrow-sol61-r3-startup-r1",
+  "attemptId": "2026-10-09T00-22-16-403Z-17d83a38-f914-4df2-812f-45fe732cff97",
+  "outcome": "PASS_LIMITED_PRIVATE_PARENT_COLD_START_TECHNICAL_REPLAY",
+  "currentPublicParentAcceptance": false,
+  "privateCandidateParentAndChild": true,
+  "nativeAuditSha256": "4b5ad017fc8e61a5f1683f5aef76964ec44485158eb10c0b66356dc31ec2e5f7",
+  "nativeReportSha256": "7d2864f10c3243328af15594f09793432e79e57639a5d3b0b21332131eb51596",
+  "resultSha256": "af6b3d9554b0f1538327874cb2ad58e77398582ae8f45aafde5cc02fc174a989",
+  "cleanupSha256": "52ccff75295b08d71f57a3fcb58363fa112f1921a325c031ae621b971d764e9b",
+  "packageManifestSha256": "5b6a5d1dba1ea93cd9348346ce7479a6ed65fa809bd69cff8f7558892858292f",
+  "packageExecutionManifestSha256": "fc145278d41e2c5a9b725e7f2f4ceaafa18ba551d064efeb58380348e2652bee",
+  "coldStart": {
+    "automaticCause": 1,
+    "generation": 1,
+    "firstSubmitAgeMs": 0.800000011920929,
+    "allowedAgeGateMs": 100,
+    "matchingQueueFenceCompleted": true,
+    "naturalTerminalAgeMs": 1809.1000000238419,
+    "terminalReceiptCurrent": true,
+    "terminalReceiptInactive": true,
+    "explicitReplayIssued": false
+  },
+  "closure": {
+    "fileCount": 9,
+    "allSourceHashesMatched": true,
+    "observedResponses200AndHashesMatched": true
+  },
+  "cleanup": {
+    "allOwnedResourcesClosed": true,
+    "pageCloseStagePassedBeforeResourceRemoval": true
+  },
+  "verifyHardMute": true,
+  "visualReview": {
+    "schema": "dva-acceleration-startup-visual-review/v1",
+    "receiptSha256": "50313b882ff8aae96e762024de0fff201331d57b086f471e12d4c7e5e5a3e85e",
+    "decision": "SCOPED_VISUAL_PHASES_ACCEPTED_NO_CREATIVE_R4",
+    "reviewerModelId": "gpt-6.1-sol",
+    "reviewerDisplayName": "GPT-6.1-Sol",
+    "inspectedFrames": 42,
+    "exactClipPtsUsed": true,
+    "gameAgeDerivedFromClipPts": false,
+    "wholeEffectQualityAccepted": false
+  },
+  "sourceVideo": {
+    "sha256": "37f6ece2071d87905d0c0f5a060dde6f706efd705f0902b61488c93a659e166f",
+    "bytes": 256352
+  },
+  "scopeLimits": [
+    "Private candidate parent and child only; not current public-parent acceptance.",
+    "Scoped startup visual phases accepted; this is not whole-effect quality acceptance.",
+    "Ordinary SFX listening, Safari/iPad, and main-game integration remain pending.",
+    "Clip PTS are not effect/game age; no normal-speed motion claim."
+  ]
+}

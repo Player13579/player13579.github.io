@@ -1,0 +1,140 @@
+{
+  "schema": "dva-zero-r3-startup-gallery-execution/v1",
+  "versionId": "acceleration-zero-arrow-sol61-r3-startup-r1",
+  "title": "加速ゼロ設計 R3・起動修理1",
+  "groupId": "acceleration-benefit-sol61",
+  "creativeBaseVersionId": "acceleration-zero-arrow-sol61-r3",
+  "creativeEdition": 3,
+  "newCreativeEditionConsumed": false,
+  "sourceCreative": {
+    "versionId": "acceleration-zero-arrow-sol61-r3",
+    "authorModelId": "gpt-6.1-sol",
+    "authorDisplayName": "GPT-6.1-Sol",
+    "manifestPath": "outputs/request-20261009/acceleration-zero-r3-startup-repair-r1/source-r3/package-manifest.json",
+    "manifestSha256": "6b44f1bb34b012dba50816936fe86f86f9b136c200bbc662b03d4e383f66459a",
+    "sealPath": "outputs/request-20261009/acceleration-zero-r3-startup-repair-r1/source-r3/SEALED.json",
+    "sealSha256": "e9d07b79a39ecf0bd77246520b748b71b9e1e97a416fba12f49c72c8751b2412",
+    "creativeEdition": 3,
+    "creativeEditionLimit": 5,
+    "remainingCreativeEditions": 2
+  },
+  "technicalSource": {
+    "manifestPath": "outputs/request-20261009/acceleration-zero-r3-startup-repair-r1/technical-derivative-manifest.json",
+    "manifestSha256": "18cc459325d08b2a6181824dfcae3ede6eb43448dc3b55841e93d1c59f91abea",
+    "sealPath": "outputs/request-20261009/acceleration-zero-r3-startup-repair-r1/SEALED.json",
+    "sealSha256": "401420c0c0769f6784ff5b830a2e455882843613e418dd8f6fb403a54a790633"
+  },
+  "technicalContributions": [
+    {
+      "component": "R3 creative effect design and runtime",
+      "displayName": "GPT-6.1-Sol",
+      "modelId": "gpt-6.1-sol",
+      "sourceVersionId": "acceleration-zero-arrow-sol61-r3",
+      "attributionStatus": "sealed creative source attribution; unchanged"
+    },
+    {
+      "component": "inherited generic gallery adapter/core",
+      "displayName": "GPT-6-Luna",
+      "modelId": null,
+      "sourceDerivativePath": "outputs/request-20261009/accel-zero-gallery-adapter/TECHNICAL-DERIVATIVE.json",
+      "attributionStatus": "reused R1 derivative; its model ID remains unresolved"
+    },
+    {
+      "component": "R3 cold-start initialization repair",
+      "displayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna",
+      "sourceDerivativePath": "outputs/request-20261009/acceleration-zero-r3-startup-repair-r1/technical-derivative-manifest.json",
+      "sourceDerivativeManifestSha256": "18cc459325d08b2a6181824dfcae3ede6eb43448dc3b55841e93d1c59f91abea",
+      "sourceDerivativeSealSha256": "401420c0c0769f6784ff5b830a2e455882843613e418dd8f6fb403a54a790633",
+      "attributionStatus": "sealed technical-only derivative; no creative edition consumed"
+    }
+  ],
+  "servedRuntimeClosure": [
+    {
+      "path": "package/common.wgsl",
+      "sha256": "7edc1383809870c6aedbbe79b6187df126065619cac6431694c8bbc6f704c512",
+      "bytes": 1633,
+      "sourceSha256": "7edc1383809870c6aedbbe79b6187df126065619cac6431694c8bbc6f704c512",
+      "sourceBytes": 1633,
+      "role": "sealed-technical-startup-repair",
+      "sourcePath": null
+    },
+    {
+      "path": "package/gallery-adapter.mjs",
+      "sha256": "01b6cb37a87efeb9744dcbf5f9b0218086d0295978133c7ea49eccfe57ed4a3a",
+      "bytes": 2032,
+      "sourceSha256": "01b6cb37a87efeb9744dcbf5f9b0218086d0295978133c7ea49eccfe57ed4a3a",
+      "sourceBytes": 2032,
+      "role": "reused-r1-generic-gallery-host",
+      "sourcePath": "outputs/request-20261009/accel-zero-gallery-adapter/candidate/package/gallery-adapter.mjs"
+    },
+    {
+      "path": "package/gallery-host-core.mjs",
+      "sha256": "b51757332a17553b462fadb72ec9875c3aecfbdbad0a63f1d4ca9003fc71e2a1",
+      "bytes": 5893,
+      "sourceSha256": "b51757332a17553b462fadb72ec9875c3aecfbdbad0a63f1d4ca9003fc71e2a1",
+      "sourceBytes": 5893,
+      "role": "reused-r1-generic-gallery-host",
+      "sourcePath": "outputs/request-20261009/accel-zero-gallery-adapter/candidate/package/gallery-host-core.mjs"
+    },
+    {
+      "path": "package/index.html",
+      "sha256": "bde72a6e65bea177e93cf011651e75f512b80bc7e3d18bf0a0417e382fb906da",
+      "bytes": 998,
+      "sourceSha256": "b68e74e8143920d928c28d053a454d08491430d95de0626b9db14c4f07e15057",
+      "sourceBytes": 991,
+      "role": "served-title-and-gallery-adapter-rebind",
+      "sourcePath": null
+    },
+    {
+      "path": "package/model.mjs",
+      "sha256": "9651c4d454067932888b5be1b2a1c04fe2771d171da717f302584aed48fbd4dd",
+      "bytes": 3303,
+      "sourceSha256": "9651c4d454067932888b5be1b2a1c04fe2771d171da717f302584aed48fbd4dd",
+      "sourceBytes": 3303,
+      "role": "sealed-technical-startup-repair",
+      "sourcePath": null
+    },
+    {
+      "path": "package/observer.wgsl",
+      "sha256": "b47a3d0155317ac923e1ae6c05154a03999b066f38e5962990974ae6acbde33a",
+      "bytes": 2390,
+      "sourceSha256": "b47a3d0155317ac923e1ae6c05154a03999b066f38e5962990974ae6acbde33a",
+      "sourceBytes": 2390,
+      "role": "sealed-technical-startup-repair",
+      "sourcePath": null
+    },
+    {
+      "path": "package/runtime.mjs",
+      "sha256": "acc59a9347115e3f2756752cd173c143c37d68871793668ad3439792d93ff331",
+      "bytes": 11403,
+      "sourceSha256": "acc59a9347115e3f2756752cd173c143c37d68871793668ad3439792d93ff331",
+      "sourceBytes": 11403,
+      "role": "sealed-technical-startup-repair",
+      "sourcePath": null
+    },
+    {
+      "path": "package/sfx.mjs",
+      "sha256": "785888635138d7464009428936117b6c10d662244acc1de2e805831a89997dd2",
+      "bytes": 2688,
+      "sourceSha256": "785888635138d7464009428936117b6c10d662244acc1de2e805831a89997dd2",
+      "sourceBytes": 2688,
+      "role": "sealed-technical-startup-repair",
+      "sourcePath": null
+    },
+    {
+      "path": "package/world.wgsl",
+      "sha256": "0410f09b8a6ff2b7a86c44d391d97248e43e136f37007116a2574457de151114",
+      "bytes": 2090,
+      "sourceSha256": "0410f09b8a6ff2b7a86c44d391d97248e43e136f37007116a2574457de151114",
+      "sourceBytes": 2090,
+      "role": "sealed-technical-startup-repair",
+      "sourcePath": null
+    }
+  ],
+  "nativeReplay": "pending",
+  "qualityStatus": "pending",
+  "adoption": "not-adopted",
+  "publication": "not-published",
+  "gameIntegration": "not-connected"
+}
