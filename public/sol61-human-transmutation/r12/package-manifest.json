@@ -1,0 +1,573 @@
+{
+  "schema": "human-transmutation-r12-package/v1",
+  "versionId": "human-transmutation-sol61-r12",
+  "groupId": "alchemy-human-transmutation-sol61",
+  "catalogVersionId": "human-transmutation-sol61-r12",
+  "defaultVersionId": "human-transmutation-sol61-r12",
+  "edition": {
+    "creativeEdition": 12,
+    "creativeLimit": 13,
+    "creativeRemaining": 1,
+    "creativeIterationStopped": false
+  },
+  "source": {
+    "parentVersionId": "human-transmutation-sol61-r11",
+    "parentManifestSha256": "95575f3d3aabd16437eb0a5263a1694f28fa58ea7c88e8e48e028e9f32f7513e",
+    "parentSealSha256": "a6417777bb681d4dcba023deace26424c267acdec0e7027e43de399fff844498",
+    "designPath": "outputs/request-20261010/human-transmutation-r12-local-fixation-design/DESIGN.md",
+    "designSha256": "e4ddf58e8026515cdee4b7b9715527cdb1148fc600661f5197ec98581ace4854",
+    "shaderPath": "outputs/request-20261010/human-transmutation-r12-local-fixation-design/shader.mjs",
+    "shaderSha256": "538682319e55d11ded7df03128b3814b365a18e7119acfb934896a6796d8963a",
+    "worldWgslSha256": "4d2b7440dfc038bdd10b57b65cd188b4ad4842e473d960e04d8c294c440b7520",
+    "analyticPath": "outputs/request-20261010/human-transmutation-r12-local-fixation-design/local-fixation.mjs",
+    "analyticSha256": "a16c0cb20e6529fff7f2945fb37c7c062a8d489b9ceebefee0e97ebd79459f41",
+    "sourcePinsPath": "SOURCE-PINS.json",
+    "sourcePinsSha256": "7c78428b05aa09f0c32f06ef79abe7af2aa877fac8c6acd9f890712155f3c083",
+    "t2IntegrationPath": "T2-INTEGRATION.json",
+    "t2IntegrationSha256": "9b2eed5ccd3ef3e9a60fcb2c519f8866ca6dcda7d07abe0c81fcc0192380e1ab",
+    "parentSourceUntouched": true
+  },
+  "provenance": {
+    "creativeDesignOwner": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "technicalImplementer": {
+      "modelId": "unknown",
+      "displayName": "unknown",
+      "reason": "Actual execution model identity is unavailable in this worker runtime."
+    },
+    "historicalSourceAttribution": {
+      "creativeDesignOwner": {
+        "modelId": "gpt-6.1-sol",
+        "displayName": "GPT-6.1-Sol"
+      },
+      "technicalImplementer": {
+        "modelId": "unknown",
+        "displayName": "unknown",
+        "reason": "Actual execution model identity is unavailable in this worker runtime."
+      },
+      "historicalSourceAttribution": {
+        "creativeDesignOwner": {
+          "modelId": "gpt-6.1-sol",
+          "displayName": "GPT-6.1-Sol"
+        },
+        "technicalImplementer": {
+          "modelId": "unknown",
+          "displayName": "unknown",
+          "reason": "Actual execution model identity is unavailable in this package task."
+        },
+        "historicalSourceAttribution": {
+          "creativeDesignOwner": {
+            "modelId": "gpt-6.1-sol",
+            "displayName": "GPT-6.1-Sol"
+          },
+          "technicalImplementer": {
+            "modelId": "gpt-6.1-sol",
+            "displayName": "GPT-6.1-Sol"
+          },
+          "historicalSourceAttribution": {
+            "creativeDesignOwner": {
+              "modelId": "gpt-6.1-sol",
+              "displayName": "GPT-6.1-Sol"
+            },
+            "technicalImplementer": {
+              "modelId": "gpt-6.1-sol",
+              "displayName": "GPT-6.1-Sol"
+            },
+            "historicalSourceAttribution": {
+              "creativeDesignOwner": {
+                "modelId": "gpt-6.1-sol",
+                "displayName": "GPT-6.1-Sol"
+              },
+              "technicalImplementer": {
+                "modelId": "gpt-6.1-sol",
+                "displayName": "GPT-6.1-Sol"
+              },
+              "historicalSourceAttribution": {
+                "creativeDesignOwner": {
+                  "modelId": "gpt-6.1-sol",
+                  "displayName": "GPT-6.1-Sol",
+                  "contribution": "Primary settled creative correction design."
+                },
+                "technicalImplementer": {
+                  "modelId": "gpt-6-luna",
+                  "displayName": "GPT-6-Luna",
+                  "contribution": "Bounded implementation, package closure, and CPU tests."
+                },
+                "historicalSourceAttribution": "R5 actual execution remains UNEXPOSED in the source manifest; this R6 does not retroactively assign R5 work."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "runtime": {
+    "entry": "gallery.html",
+    "normalCatalogURL": "public/sol61-human-transmutation/r12/gallery.html?embed=1&galleryVersionId=human-transmutation-sol61-r12&galleryAutoLoop=1",
+    "versionQueryImplemented": "galleryVersionId=human-transmutation-sol61-r12",
+    "verificationQuery": "The parent gallery query drives verify through the actual v1 startup handshake; verification mode stays silent.",
+    "canvasCssExtent": [
+      980,
+      480
+    ],
+    "targetId": "revived-philia",
+    "attachments": [
+      "scene",
+      "emission",
+      "bloom-x",
+      "bloom-y",
+      "fixation-glint-source"
+    ],
+    "worldMrtOutputs": 3,
+    "submittedRenderPasses": 4,
+    "runtimeClosure": [
+      "gallery.html",
+      "human-canvas-fit.mjs",
+      "gallery-auth.mjs",
+      "index.html",
+      "preview.mjs",
+      "core.mjs",
+      "cause.mjs",
+      "shader.mjs",
+      "handoff-state.mjs",
+      "glints.mjs",
+      "completion-design.mjs",
+      "settlement-design.mjs",
+      "local-fixation.mjs",
+      "fixture.mjs",
+      "assets/philia-front-nine-v752.png",
+      "sfx.mjs"
+    ],
+    "sourceR11RuntimeClosure": [
+      "gallery.html",
+      "human-canvas-fit.mjs",
+      "gallery-auth.mjs",
+      "index.html",
+      "preview.mjs",
+      "core.mjs",
+      "cause.mjs",
+      "shader.mjs",
+      "handoff-state.mjs",
+      "glints.mjs",
+      "completion-design.mjs",
+      "settlement-design.mjs",
+      "fixture.mjs",
+      "assets/philia-front-nine-v752.png",
+      "sfx.mjs"
+    ],
+    "rendererScope": "Frozen R11 body transport, same-alpha contour, glints, ray, source/observer processing and four-pass HDR pipeline; R12 adds the exact pinned row-local fixation pulse."
+  },
+  "effectCorrection": {
+    "inheritedFromR10": {
+      "contour": "alpha*max(0,alpha-min(alphaLeft,alphaRight,alphaUp,alphaDown)) from actual sampled RGBA",
+      "contourApproximation": "Approximate alpha-bound surface edge; not physical 3D Fresnel; emission is zero wherever sampled source alpha is zero.",
+      "contourWidthCss": "0.8*(actualActorHeight/64), same CSS width on x/y; neighborUV=vec2f(widthCSS)/p.rect.zw",
+      "completionEnvelopeMs": [
+        814,
+        844,
+        890,
+        1020
+      ],
+      "completionSourceRGB": [
+        0.24,
+        1.15,
+        0.72
+      ],
+      "completionSourceGain": 1.65,
+      "completionGlint": {
+        "sameSites": 60,
+        "sameStaggerAndDuration": true,
+        "onsetMs": 814,
+        "riseMs": 18,
+        "fallOverOriginalFinalMs": 40,
+        "combine": "max(arrivalPulse,completionPulse)"
+      },
+      "siteCount": 60,
+      "siteCountChange": 0,
+      "sitePlacementAndTiming": "exact R9 bytes; new burst only shares existing sites and timing bounds",
+      "sourceRadiusH64": 0.5,
+      "sourceRadiance": 14,
+      "rayGain": 1.9,
+      "primaryRayH64": 0.85,
+      "secondaryRayH64": 0.65,
+      "rayWidthH64": 0.23,
+      "axisDegrees": 17,
+      "longitudinalFalloff": "Gaussian-apodized smooth intensity instead of exponential long wing",
+      "sampling": "DPR-aware Gaussian pixel footprint; area normalization per lobe; no new global brightness clamp/dimming"
+    },
+    "materialSettlement": {
+      "sourceSupport": "same four-neighbor sampled-alpha contour; registered y=(uv.y-p.support.y)/p.support.w restricted to [0,1]",
+      "center": "1-(phaseMs-814)/96",
+      "widthNormalized": 0.24,
+      "baselineGain": 0.32,
+      "movingGain": 1.28,
+      "peakGain": 1.6,
+      "envelopeMs": [
+        814,
+        844,
+        890,
+        1020
+      ],
+      "sourceRGB": [
+        0.24,
+        1.15,
+        0.72
+      ],
+      "inheritedSourceGain": 1.65,
+      "endsMs": 1020,
+      "approximation": "Authored emissive material settlement, not measured physical Fresnel."
+    },
+    "unchanged": [
+      "verified original RGBA/crop/alpha support",
+      "unsplit-row transport and 700 ms foot-to-head sweep",
+      "60 original glint sites, stagger/duration and pulse union",
+      "17 degree Gaussian ray PSF",
+      "HDR attachments and four-pass pipeline",
+      "source/target/visibility/expiry gates",
+      "1200 ms lifetime"
+    ],
+    "localFixation": {
+      "schedule": "fixedAt=90+(1-y)*700+24 ms, registered body support y in [0,1]",
+      "riseMs": 8,
+      "holdThroughMs": 24,
+      "endsMs": 70,
+      "gain": 0.65,
+      "contour": "same sampled alpha edge as existing material source",
+      "approximation": "Authored emissive local fixation, not physical thermal/Fresnel simulation."
+    },
+    "audio": {
+      "implementation": "Root-accepted T2 asynchronous SFX lifecycle and actual preview/gallery gesture callers",
+      "waveform": "byte-exact T2 overlay; sample-for-sample identical to frozen R11 at 8 kHz and 48 kHz",
+      "nativeListening": "not run"
+    }
+  },
+  "referenceEvidence": {
+    "parentR11": {
+      "path": "outputs/request-20261010/human-transmutation-r11-material-settlement/public/sol61-human-transmutation/r11/READY.json",
+      "sha256": "f3cb87adcc7f4a32212272299ca2c1bccb5e1bf1e3ab18487efe646067f56c99",
+      "status": "historical parent only; R12 acceptance does not inherit R11 completion status"
+    },
+    "t2Audio": {
+      "readyPath": "outputs/request-20261010/human-audio-causal-repair-t2/READY.json",
+      "sha256": "bf1487ee71c90e4f89928e8cb104c5e9f65170c785f1cc856b9ddfed6b54dc6c",
+      "status": "root accepted CPU contract; native audio/listening remain not run"
+    }
+  },
+  "status": {
+    "cpuTests": "15/15 Node test files passed; 12/12 R12-localized accepted-T2 caller groups passed",
+    "runtimeClosure": "16/16 source-pinned resources; all package .mjs syntax checked",
+    "shaderCompilation": "not run; native WebGPU remains pending",
+    "nativeVisualAcceptance": "not run; root owns",
+    "qualityAcceptance": "pending",
+    "publication": "not published",
+    "adoption": "unknown/unadopted",
+    "ordinarySfxListening": "not run",
+    "safariIpad": "unverified",
+    "mainGameIntegration": "not connected",
+    "creativeIteration": "R12 of 13; one authorized edition remains."
+  },
+  "syntaxChecks": [
+    "cause.mjs",
+    "completion-design.mjs",
+    "core.mjs",
+    "fixture.mjs",
+    "gallery-auth.mjs",
+    "glints.mjs",
+    "handoff-state.mjs",
+    "human-canvas-fit.mjs",
+    "local-fixation.mjs",
+    "parent-r11-build-metadata.mjs",
+    "parent-r11-r11.test.mjs",
+    "preview.mjs",
+    "settlement-design.mjs",
+    "sfx.mjs",
+    "shader.mjs",
+    "tests/gallery-inline-0.mjs",
+    "tests/index-inline-0.mjs",
+    "tests/r12-audio-causal.test.mjs",
+    "tests/r12.test.mjs"
+  ],
+  "files": [
+    {
+      "path": "assets/philia-front-nine-v752.png",
+      "bytes": 399216,
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "parentR11Sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "authority-snapshots/b-loader-SKILL.md",
+      "bytes": 22776,
+      "sha256": "58a23a00123caf2a59c9233e31a1c1cc6852fe508f77b8367f68c9f4fd9cfb48",
+      "parentR11Sha256": "58a23a00123caf2a59c9233e31a1c1cc6852fe508f77b8367f68c9f4fd9cfb48",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "authority-snapshots/e-design-quality.md",
+      "bytes": 90012,
+      "sha256": "32514ff5112a5a5b1bce92bfea4c30e70a7c5899c36e5fd43ce38e8e2410f779",
+      "parentR11Sha256": "32514ff5112a5a5b1bce92bfea4c30e70a7c5899c36e5fd43ce38e8e2410f779",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "authority-snapshots/model-routing-state.json",
+      "bytes": 6205,
+      "sha256": "165fae0f74ff871083ccb1d0f1fa68463702f037fe377386b2eeb0711fd322e7",
+      "parentR11Sha256": "165fae0f74ff871083ccb1d0f1fa68463702f037fe377386b2eeb0711fd322e7",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "cause.mjs",
+      "bytes": 4201,
+      "sha256": "e1870a1aa95a6bad1c286e8984f22584c2876074eec08b9bf21f61ce7bb0f134",
+      "parentR11Sha256": "03788f5915526ad22a5d808437d963fdded5b7dc3e4900254f550304c2f40394",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "completion-design.mjs",
+      "bytes": 1411,
+      "sha256": "0ce7a56f801601e5f015df4128e3e6a7b8dc5d8362c7fbfdd347fdeb7c9014ec",
+      "parentR11Sha256": "0ce7a56f801601e5f015df4128e3e6a7b8dc5d8362c7fbfdd347fdeb7c9014ec",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "core.mjs",
+      "bytes": 10934,
+      "sha256": "36de1730d56f3abb8bb83f25725a0a6196e84f2949bcf13530f1c130fa5adb73",
+      "parentR11Sha256": "121ea06b56a8e88a2631ddadf0e406837de6cdd8473658f6566910a00241ab9f",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "CPU-RESULTS.json",
+      "bytes": 1038,
+      "sha256": "28e03bbc0421810b3941b5d288f60494110623f97d774107f2d95208c8eff8f1",
+      "parentR11Sha256": "591e9f9de8e0d7eda0117502e532633183f0bde0e6bb971e6fb41d928563b171",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "CPU-TEST-EXECUTION.json",
+      "bytes": 768,
+      "sha256": "258f8b85059fcf8ba167f040a67bc6f396b4964c91e6858c9a9d266301588453",
+      "parentR11Sha256": "1726377907995fe1bce100f119265cc6d0deb99406acdce49d345c667b2b1ed8",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "DESIGN-FACTS.json",
+      "bytes": 2156,
+      "sha256": "a8e4825a7d52f89a6dbd2bc3a9a99d4b851ae06fde09f1fe9eeb4ab3c738e565",
+      "parentR11Sha256": "a41e8233846a55b2925a2a3dc486b9ea5667e8448a765ea3e97416b82a794ef0",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1539,
+      "sha256": "e4ddf58e8026515cdee4b7b9715527cdb1148fc600661f5197ec98581ace4854"
+    },
+    {
+      "path": "EDITION-AUTHORIZATION.json",
+      "bytes": 405,
+      "sha256": "006a05572e81de4170ae8495aa89b898ae524e271ae13c2506ad85ae571e9cd8",
+      "parentR11Sha256": "6ffbcf624c17a41eef7ae67511cd16cfa31de04f8836f9aa417849a32e15d3f3",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "fixture.mjs",
+      "bytes": 1103,
+      "sha256": "20a27ce9574f90401fec7f1529ddff642c1cdacafb74220ab26b4a4d49291058",
+      "parentR11Sha256": "300f0ac47dee5011bd52cc74ea8e4ff8afb27357d37e223fce3f24b9f26835a7",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "gallery-auth.mjs",
+      "bytes": 702,
+      "sha256": "f97a886b1de5a5d003fe8e37617754be21b0562cc89bd79a88a248cbc9a02f94",
+      "parentR11Sha256": "f97a886b1de5a5d003fe8e37617754be21b0562cc89bd79a88a248cbc9a02f94",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 6690,
+      "sha256": "c8f12219f1ab94b0bc46bd5a504f5d726e316c7c602c16d9c956fa94985c3841",
+      "parentR11Sha256": "c7a31a4f1344b19151d74357dbf8874d6ca36c7f119a23dc2e9083ec2181b828",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "glints.mjs",
+      "bytes": 9503,
+      "sha256": "7ee29d0c7885a998aa59edec0701d001e295f38e686de6dd4535521701b1d160",
+      "parentR11Sha256": "7ee29d0c7885a998aa59edec0701d001e295f38e686de6dd4535521701b1d160",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "handoff-state.mjs",
+      "bytes": 1675,
+      "sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+      "parentR11Sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "human-canvas-fit.mjs",
+      "bytes": 4711,
+      "sha256": "b882a4cd85b51f30ec29c08200f83163211f64882dcefbf4bfffc9e3733de053",
+      "parentR11Sha256": "b882a4cd85b51f30ec29c08200f83163211f64882dcefbf4bfffc9e3733de053",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 2825,
+      "sha256": "31d16994f40f2342cbcb31160c0b55d9ae4a51178803a1b1243700a19a067c17",
+      "parentR11Sha256": "15343d844347c3d53e7760d580f0b2acaed27b63ef4a35f9de37eeb6b3299c39",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "local-fixation.mjs",
+      "bytes": 766,
+      "sha256": "a16c0cb20e6529fff7f2945fb37c7c062a8d489b9ceebefee0e97ebd79459f41"
+    },
+    {
+      "path": "MODEL-ATTRIBUTION.json",
+      "bytes": 725,
+      "sha256": "5016f99d95622c55539565c2e7dd83fcc5a7588c0c0856612f76dd0ea535c0f2",
+      "parentR11Sha256": "36985dc36cb6755000a7625035e51861e765095ac14bed3ef345373af81cf1b5",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "parent-r11-build-metadata.mjs",
+      "bytes": 11021,
+      "sha256": "726855d6688da8b85bb07245ab32c9955df7fd3f538dff2cf0de27ca3c426fe5"
+    },
+    {
+      "path": "parent-r11-r11.test.mjs",
+      "bytes": 8863,
+      "sha256": "0eb305195f3b8a634da6bc2154e0d750de3c631b3ac5505189654a48a75b4999"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 7521,
+      "sha256": "be0f6df37ca3c6ab784f29b58a19ddaceb5bc11aa8069b1ac391f813de54f3b0",
+      "parentR11Sha256": "9a9e216108896e9daa8ab9f8df0af5a1fa2dc29e2664a4387df86bd0a65a14a5",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "R11-DESIGN-FACTS.md",
+      "bytes": 563,
+      "sha256": "caf368f33bdde02c64f22eb7f5f68e7681587e7f31bcb3e76cf9d75b92f0d0c1",
+      "parentR11Sha256": "caf368f33bdde02c64f22eb7f5f68e7681587e7f31bcb3e76cf9d75b92f0d0c1",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "R11-REFERENCE-EVIDENCE.json",
+      "bytes": 836,
+      "sha256": "aa827d5eeb14c70b041e5ee4a0f8f43496f3add68812ad6100fcb1b982d84881",
+      "parentR11Sha256": "aa827d5eeb14c70b041e5ee4a0f8f43496f3add68812ad6100fcb1b982d84881",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "R12-DESIGN-FACTS.md",
+      "bytes": 1268,
+      "sha256": "f0399800feab1fa11ad7bef272b71541e84daa71f49797a36504c197b022f670"
+    },
+    {
+      "path": "R12-DESIGN-SOURCE-PINS.json",
+      "bytes": 1644,
+      "sha256": "4bc5d2721481083cd78ee8ba8f45efa249765880c05f66be648b62fe27df62de"
+    },
+    {
+      "path": "R12-TECHNICAL-STATUS.json",
+      "bytes": 534,
+      "sha256": "af67a6ddf5e4cb0cdd480df017bf454d74ec88deedb2b6b591f26a7a822e1345"
+    },
+    {
+      "path": "REVIEW-INPUT-PINS.json",
+      "bytes": 612,
+      "sha256": "4b7c921e7f49796b5792c03550f49487016f40b810d17b1a58cab69f614c863d",
+      "parentR11Sha256": "d32381a73361fa3e1f0372f42005252db8b61f8146311404411177c031af44b9",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "ROOT-NATIVE-REQUEST.md",
+      "bytes": 1324,
+      "sha256": "fb40265bde86de645809dd2e719c4aece15b3e4609cec281d4a8fc650b5c82d7",
+      "parentR11Sha256": "eaed873f02b4acfb10def6003f777a44e6944ecc9d072b0f5a041f9c5438c202",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "settlement-design.mjs",
+      "bytes": 816,
+      "sha256": "9463c579aebeb537f45868a4eca6a56ed9729aa454f0b62662dd513f2a283c2a",
+      "parentR11Sha256": "9463c579aebeb537f45868a4eca6a56ed9729aa454f0b62662dd513f2a283c2a",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 6654,
+      "sha256": "d913e74a41627e1cc54c7431278498aeb99926d0b17921d5de4b68204e6357b3",
+      "parentR11Sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "shader.mjs",
+      "bytes": 12572,
+      "sha256": "538682319e55d11ded7df03128b3814b365a18e7119acfb934896a6796d8963a",
+      "parentR11Sha256": "2889d8f44109f6fea3f25befbd9e2f404789dded0538d9da2607082cdce5fb14",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "SITE-PLACEMENT.json",
+      "bytes": 10122,
+      "sha256": "6c8e797b5e4bad7a5dab72b8d29834bdbffdbccfafacdb01aa4454181fdf606e",
+      "parentR11Sha256": "6c8e797b5e4bad7a5dab72b8d29834bdbffdbccfafacdb01aa4454181fdf606e",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "SOURCE-PINS.json",
+      "bytes": 6303,
+      "sha256": "7c78428b05aa09f0c32f06ef79abe7af2aa877fac8c6acd9f890712155f3c083",
+      "parentR11Sha256": "dd7422ced619d87037797d2d51b8518033073620b6229ce7ad412bef16613200",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "T2-INTEGRATION.json",
+      "bytes": 1903,
+      "sha256": "9b2eed5ccd3ef3e9a60fcb2c519f8866ca6dcda7d07abe0c81fcc0192380e1ab"
+    },
+    {
+      "path": "tests/gallery-inline-0.mjs",
+      "bytes": 6133,
+      "sha256": "1ee21d8754a79f33f90c2b6cfb25bbdbf404c0308fa66350a2c5e94c64d568e3",
+      "parentR11Sha256": "a7f9c22ef0323176febe1354ba64b8e94af4023dd1a3d416918eaa0fd1d998b6",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "tests/index-inline-0.mjs",
+      "bytes": 106,
+      "sha256": "e74c492cc60645cf841d71be1e10634a8821a243c07aa1b8b37cd2f3bbb429d5",
+      "parentR11Sha256": "e74c492cc60645cf841d71be1e10634a8821a243c07aa1b8b37cd2f3bbb429d5",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "tests/r12-audio-causal.test.mjs",
+      "bytes": 21079,
+      "sha256": "3987c591765ccba0b8622d0e1cb51c3d0ec9e30a50d89be281d8b3e43f995b87"
+    },
+    {
+      "path": "tests/r12.test.mjs",
+      "bytes": 8823,
+      "sha256": "ce9200be6c76b89c86ae62d0f2f40ee8866845f48307444767bbe669ba7b7e86"
+    },
+    {
+      "path": "WORK.json",
+      "bytes": 1682,
+      "sha256": "546b25db59632bc962977b071d71618c335bf798316b21f7ef613a63c23131cd",
+      "parentR11Sha256": "546b25db59632bc962977b071d71618c335bf798316b21f7ef613a63c23131cd",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 10014,
+      "sha256": "4d2b7440dfc038bdd10b57b65cd188b4ad4842e473d960e04d8c294c440b7520"
+    }
+  ]
+}
