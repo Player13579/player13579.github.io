@@ -1,0 +1,472 @@
+{
+  "schema": "human-transmutation-r11-package/v1",
+  "versionId": "human-transmutation-sol61-r11",
+  "groupId": "alchemy-human-transmutation-sol61",
+  "catalogVersionId": "human-transmutation-sol61-r11",
+  "defaultVersionId": "human-transmutation-sol61-r11",
+  "edition": {
+    "creativeEdition": 11,
+    "creativeLimit": 13,
+    "creativeRemaining": 2,
+    "creativeIterationStopped": false
+  },
+  "source": {
+    "parentVersionId": "human-transmutation-sol61-r10",
+    "parentManifestSha256": "aaf909375e491adc4735ca39dfb6f8bdb8aee09eea6b1e5ec2a608cb5c8eac6d",
+    "parentSealSha256": "3cd64298d3854a0087bc86f8b7eebf4f49dc702989ffa82b3200f30a83f7e31b",
+    "designPath": "outputs/request-20261010/human-transmutation-r11-material-settlement-design/DESIGN.md",
+    "designSha256": "9be2f56368361ba1197ad393da0a9e9ff14f7af9b734a6bae1340ec33334b363",
+    "analyticPath": "outputs/request-20261010/human-transmutation-r11-material-settlement-design/settlement-design.mjs",
+    "analyticSha256": "9463c579aebeb537f45868a4eca6a56ed9729aa454f0b62662dd513f2a283c2a",
+    "shaderPath": "outputs/request-20261010/human-transmutation-r11-material-settlement-design/shader.mjs",
+    "shaderSha256": "2889d8f44109f6fea3f25befbd9e2f404789dded0538d9da2607082cdce5fb14",
+    "sourcePinsPath": "SOURCE-PINS.json",
+    "parentSourceUntouched": true
+  },
+  "provenance": {
+    "creativeDesignOwner": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "technicalImplementer": {
+      "modelId": "unknown",
+      "displayName": "unknown",
+      "reason": "Actual execution model identity is unavailable in this worker runtime."
+    },
+    "historicalSourceAttribution": {
+      "creativeDesignOwner": {
+        "modelId": "gpt-6.1-sol",
+        "displayName": "GPT-6.1-Sol"
+      },
+      "technicalImplementer": {
+        "modelId": "unknown",
+        "displayName": "unknown",
+        "reason": "Actual execution model identity is unavailable in this package task."
+      },
+      "historicalSourceAttribution": {
+        "creativeDesignOwner": {
+          "modelId": "gpt-6.1-sol",
+          "displayName": "GPT-6.1-Sol"
+        },
+        "technicalImplementer": {
+          "modelId": "gpt-6.1-sol",
+          "displayName": "GPT-6.1-Sol"
+        },
+        "historicalSourceAttribution": {
+          "creativeDesignOwner": {
+            "modelId": "gpt-6.1-sol",
+            "displayName": "GPT-6.1-Sol"
+          },
+          "technicalImplementer": {
+            "modelId": "gpt-6.1-sol",
+            "displayName": "GPT-6.1-Sol"
+          },
+          "historicalSourceAttribution": {
+            "creativeDesignOwner": {
+              "modelId": "gpt-6.1-sol",
+              "displayName": "GPT-6.1-Sol"
+            },
+            "technicalImplementer": {
+              "modelId": "gpt-6.1-sol",
+              "displayName": "GPT-6.1-Sol"
+            },
+            "historicalSourceAttribution": {
+              "creativeDesignOwner": {
+                "modelId": "gpt-6.1-sol",
+                "displayName": "GPT-6.1-Sol",
+                "contribution": "Primary settled creative correction design."
+              },
+              "technicalImplementer": {
+                "modelId": "gpt-6-luna",
+                "displayName": "GPT-6-Luna",
+                "contribution": "Bounded implementation, package closure, and CPU tests."
+              },
+              "historicalSourceAttribution": "R5 actual execution remains UNEXPOSED in the source manifest; this R6 does not retroactively assign R5 work."
+            }
+          }
+        }
+      }
+    }
+  },
+  "runtime": {
+    "entry": "gallery.html",
+    "normalCatalogURL": "public/sol61-human-transmutation/r11/gallery.html?embed=1&galleryVersionId=human-transmutation-sol61-r11&galleryAutoLoop=1",
+    "versionQueryImplemented": "galleryVersionId=human-transmutation-sol61-r11",
+    "verificationQuery": "The parent gallery query drives verify through the actual v1 startup handshake; verify mode remains silent.",
+    "canvasCssExtent": [
+      980,
+      480
+    ],
+    "targetId": "revived-philia",
+    "attachments": [
+      "scene",
+      "emission",
+      "bloom-x",
+      "bloom-y",
+      "fixation-glint-source"
+    ],
+    "worldMrtOutputs": 3,
+    "submittedRenderPasses": 4,
+    "runtimeClosure": [
+      "gallery.html",
+      "human-canvas-fit.mjs",
+      "gallery-auth.mjs",
+      "index.html",
+      "preview.mjs",
+      "core.mjs",
+      "cause.mjs",
+      "shader.mjs",
+      "handoff-state.mjs",
+      "glints.mjs",
+      "completion-design.mjs",
+      "settlement-design.mjs",
+      "fixture.mjs",
+      "assets/philia-front-nine-v752.png",
+      "sfx.mjs"
+    ],
+    "sourceR10RuntimeClosure": [
+      "gallery.html",
+      "human-canvas-fit.mjs",
+      "gallery-auth.mjs",
+      "index.html",
+      "preview.mjs",
+      "core.mjs",
+      "cause.mjs",
+      "shader.mjs",
+      "handoff-state.mjs",
+      "glints.mjs",
+      "completion-design.mjs",
+      "fixture.mjs",
+      "assets/philia-front-nine-v752.png",
+      "sfx.mjs"
+    ],
+    "rendererScope": "Frozen R10 transport/alpha-bound completion, 60-site glints, source/observer processing and four-pass pipeline; R11 uses the exact Sol-authored material-settlement shader on the same alpha boundary."
+  },
+  "effectCorrection": {
+    "inheritedFromR10": {
+      "contour": "alpha*max(0,alpha-min(alphaLeft,alphaRight,alphaUp,alphaDown)) from actual sampled RGBA",
+      "contourApproximation": "Approximate alpha-bound surface edge; not physical 3D Fresnel; emission is zero wherever sampled source alpha is zero.",
+      "contourWidthCss": "0.8*(actualActorHeight/64), same CSS width on x/y; neighborUV=vec2f(widthCSS)/p.rect.zw",
+      "completionEnvelopeMs": [
+        814,
+        844,
+        890,
+        1020
+      ],
+      "completionSourceRGB": [
+        0.24,
+        1.15,
+        0.72
+      ],
+      "completionSourceGain": 1.65,
+      "completionGlint": {
+        "sameSites": 60,
+        "sameStaggerAndDuration": true,
+        "onsetMs": 814,
+        "riseMs": 18,
+        "fallOverOriginalFinalMs": 40,
+        "combine": "max(arrivalPulse,completionPulse)"
+      },
+      "siteCount": 60,
+      "siteCountChange": 0,
+      "sitePlacementAndTiming": "exact R9 bytes; new burst only shares existing sites and timing bounds",
+      "sourceRadiusH64": 0.5,
+      "sourceRadiance": 14,
+      "rayGain": 1.9,
+      "primaryRayH64": 0.85,
+      "secondaryRayH64": 0.65,
+      "rayWidthH64": 0.23,
+      "axisDegrees": 17,
+      "longitudinalFalloff": "Gaussian-apodized smooth intensity instead of exponential long wing",
+      "sampling": "DPR-aware Gaussian pixel footprint; area normalization per lobe; no new global brightness clamp/dimming"
+    },
+    "materialSettlement": {
+      "sourceSupport": "same four-neighbor sampled-alpha contour; registered y=(uv.y-p.support.y)/p.support.w restricted to [0,1]",
+      "center": "1-(phaseMs-814)/96",
+      "widthNormalized": 0.24,
+      "baselineGain": 0.32,
+      "movingGain": 1.28,
+      "peakGain": 1.6,
+      "envelopeMs": [
+        814,
+        844,
+        890,
+        1020
+      ],
+      "sourceRGB": [
+        0.24,
+        1.15,
+        0.72
+      ],
+      "inheritedSourceGain": 1.65,
+      "endsMs": 1020,
+      "approximation": "Authored emissive material settlement, not measured physical Fresnel."
+    },
+    "unchanged": [
+      "verified original RGBA/crop/alpha support",
+      "unsplit-row transport and 700 ms foot-to-head sweep",
+      "60 original glint sites, stagger/duration and pulse union",
+      "17 degree Gaussian ray PSF",
+      "HDR attachments and four-pass pipeline",
+      "source/target/visibility/expiry gates",
+      "1200 ms lifetime",
+      "existing synthetic SFX and normal/verify behavior"
+    ]
+  },
+  "referenceEvidence": {
+    "r10R16NativeSourceEntry": {
+      "path": "outputs/request-20261010/human-r10-observer-control-repair-r16/native-attempts/c16604ea-98c6-4848-8e91-cb3bfcd80bc0/EVIDENCE.json",
+      "sha256": "0b2a1a73fbce8e4cf3038c26c004fb0ac6cd80361bb60bec01ec7bda8becf06d",
+      "status": "PASS_R10_ACTUAL_GALLERY_ENTRY_NATIVE_CAPTURE"
+    },
+    "r10R18Audit": {
+      "path": "outputs/request-20261010/human-r10-native-full-lifetime-observation-r18/AUDIT.json",
+      "sha256": "5d33372298396b766b7454360bde66ac90b705b4deea857e59c400adf5b13651",
+      "status": "PASS_STRUCTURAL_AND_ACTUAL_CAPTURE_AUDIT; ROOT_CREATIVE_JUDGMENT_PENDING"
+    },
+    "role": "Inherited API/control regression context only; not R11 native or quality acceptance."
+  },
+  "status": {
+    "cpuTests": "7/7 passed",
+    "runtimeClosure": "15/15 files resolved; syntax checked",
+    "shaderCompilation": "not run",
+    "nativeVisualAcceptance": "not run",
+    "qualityAcceptance": "pending",
+    "publication": "not published",
+    "adoption": "unknown/unadopted",
+    "ordinarySfxListening": "not run",
+    "safariIpad": "unverified",
+    "mainGameIntegration": "not connected",
+    "creativeIteration": "R11 of 13; two authorized editions remain."
+  },
+  "files": [
+    {
+      "path": "assets/philia-front-nine-v752.png",
+      "bytes": 399216,
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "parentR10Sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "authority-snapshots/b-loader-SKILL.md",
+      "bytes": 22776,
+      "sha256": "58a23a00123caf2a59c9233e31a1c1cc6852fe508f77b8367f68c9f4fd9cfb48",
+      "parentR10Sha256": "58a23a00123caf2a59c9233e31a1c1cc6852fe508f77b8367f68c9f4fd9cfb48",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "authority-snapshots/e-design-quality.md",
+      "bytes": 90012,
+      "sha256": "32514ff5112a5a5b1bce92bfea4c30e70a7c5899c36e5fd43ce38e8e2410f779",
+      "parentR10Sha256": "32514ff5112a5a5b1bce92bfea4c30e70a7c5899c36e5fd43ce38e8e2410f779",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "authority-snapshots/model-routing-state.json",
+      "bytes": 6205,
+      "sha256": "165fae0f74ff871083ccb1d0f1fa68463702f037fe377386b2eeb0711fd322e7",
+      "parentR10Sha256": "165fae0f74ff871083ccb1d0f1fa68463702f037fe377386b2eeb0711fd322e7",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "cause.mjs",
+      "bytes": 4201,
+      "sha256": "03788f5915526ad22a5d808437d963fdded5b7dc3e4900254f550304c2f40394",
+      "parentR10Sha256": "a98380000223b644d9545e42157b813ae337d314354676ab49ce9cdb15ba41a1",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "completion-design.mjs",
+      "bytes": 1411,
+      "sha256": "0ce7a56f801601e5f015df4128e3e6a7b8dc5d8362c7fbfdd347fdeb7c9014ec",
+      "parentR10Sha256": "0ce7a56f801601e5f015df4128e3e6a7b8dc5d8362c7fbfdd347fdeb7c9014ec",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "core.mjs",
+      "bytes": 10934,
+      "sha256": "121ea06b56a8e88a2631ddadf0e406837de6cdd8473658f6566910a00241ab9f",
+      "parentR10Sha256": "20652cd3a792260b37e835e26692650770d459c155c362a8f6583b7bacc4a505",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "CPU-RESULTS.json",
+      "bytes": 465,
+      "sha256": "591e9f9de8e0d7eda0117502e532633183f0bde0e6bb971e6fb41d928563b171",
+      "parentR10Sha256": "801df50633a5acc9a8ea00626a8b86a61d49929a9141a0d915bb57b1712d35c7",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "CPU-TEST-EXECUTION.json",
+      "bytes": 363,
+      "sha256": "1726377907995fe1bce100f119265cc6d0deb99406acdce49d345c667b2b1ed8",
+      "parentR10Sha256": "1f6505e5812059537dee3234d88c4e6341ee1b637e3d736fe44356c221747a38",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "DESIGN-FACTS.json",
+      "bytes": 1959,
+      "sha256": "a41e8233846a55b2925a2a3dc486b9ea5667e8448a765ea3e97416b82a794ef0",
+      "parentR10Sha256": "d19677caa4d07de94558f597dfc6eb61937bf7cbe7a6e2b23a915b91445dbaba",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "EDITION-AUTHORIZATION.json",
+      "bytes": 369,
+      "sha256": "6ffbcf624c17a41eef7ae67511cd16cfa31de04f8836f9aa417849a32e15d3f3"
+    },
+    {
+      "path": "fixture.mjs",
+      "bytes": 1103,
+      "sha256": "300f0ac47dee5011bd52cc74ea8e4ff8afb27357d37e223fce3f24b9f26835a7",
+      "parentR10Sha256": "b0d2e939b7f59ec460cb11ecbc3ed1877723803d42ca54a088f87065eba73f0e",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "gallery-auth.mjs",
+      "bytes": 702,
+      "sha256": "f97a886b1de5a5d003fe8e37617754be21b0562cc89bd79a88a248cbc9a02f94",
+      "parentR10Sha256": "f97a886b1de5a5d003fe8e37617754be21b0562cc89bd79a88a248cbc9a02f94",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 6560,
+      "sha256": "c7a31a4f1344b19151d74357dbf8874d6ca36c7f119a23dc2e9083ec2181b828",
+      "parentR10Sha256": "778bf011b86b035d99258ae9cb441e0535b30e83a88c31685f8dc57adc4a106f",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "glints.mjs",
+      "bytes": 9503,
+      "sha256": "7ee29d0c7885a998aa59edec0701d001e295f38e686de6dd4535521701b1d160",
+      "parentR10Sha256": "7ee29d0c7885a998aa59edec0701d001e295f38e686de6dd4535521701b1d160",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "handoff-state.mjs",
+      "bytes": 1675,
+      "sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+      "parentR10Sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "human-canvas-fit.mjs",
+      "bytes": 4711,
+      "sha256": "b882a4cd85b51f30ec29c08200f83163211f64882dcefbf4bfffc9e3733de053",
+      "parentR10Sha256": "b882a4cd85b51f30ec29c08200f83163211f64882dcefbf4bfffc9e3733de053",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 2786,
+      "sha256": "15343d844347c3d53e7760d580f0b2acaed27b63ef4a35f9de37eeb6b3299c39",
+      "parentR10Sha256": "99561c03b8d3a1d1cb99ba7b9014173a9fec8493cb5c0a0f5450509345b0ee9a",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "MODEL-ATTRIBUTION.json",
+      "bytes": 900,
+      "sha256": "36985dc36cb6755000a7625035e51861e765095ac14bed3ef345373af81cf1b5",
+      "parentR10Sha256": "32230087bde9279a47fc1d0d3a22df657fc844a13b340ed788f386c4b19d81d5",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 7137,
+      "sha256": "9a9e216108896e9daa8ab9f8df0af5a1fa2dc29e2664a4387df86bd0a65a14a5",
+      "parentR10Sha256": "968774501aa52129b4903fa7bc54a05950a622495e7e095b8aad76175e058a34",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "R11-DESIGN-FACTS.md",
+      "bytes": 563,
+      "sha256": "caf368f33bdde02c64f22eb7f5f68e7681587e7f31bcb3e76cf9d75b92f0d0c1"
+    },
+    {
+      "path": "R11-REFERENCE-EVIDENCE.json",
+      "bytes": 836,
+      "sha256": "aa827d5eeb14c70b041e5ee4a0f8f43496f3add68812ad6100fcb1b982d84881"
+    },
+    {
+      "path": "REVIEW-INPUT-PINS.json",
+      "bytes": 1369,
+      "sha256": "d32381a73361fa3e1f0372f42005252db8b61f8146311404411177c031af44b9",
+      "parentR10Sha256": "81c16f16b0680b406cd3128933e1308835f2207a9d44738215af313f7707506a",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "ROOT-NATIVE-REQUEST.md",
+      "bytes": 1305,
+      "sha256": "eaed873f02b4acfb10def6003f777a44e6944ecc9d072b0f5a041f9c5438c202",
+      "parentR10Sha256": "24c0d5ef323a042ec6233e427678ed176c60525f4ebb78805ad6b23d928326b2",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "settlement-design.mjs",
+      "bytes": 816,
+      "sha256": "9463c579aebeb537f45868a4eca6a56ed9729aa454f0b62662dd513f2a283c2a"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 3240,
+      "sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+      "parentR10Sha256": "5688cdae2bfb6cdf55260260cee7dddfe1276ce6349f3ada5d0b98075e905fa2",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "shader.mjs",
+      "bytes": 12193,
+      "sha256": "2889d8f44109f6fea3f25befbd9e2f404789dded0538d9da2607082cdce5fb14",
+      "parentR10Sha256": "863ee11906e89d7cb6dd9278c46e80577eb128bf9dfbe2432caac883270075d2",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "SITE-PLACEMENT.json",
+      "bytes": 10122,
+      "sha256": "6c8e797b5e4bad7a5dab72b8d29834bdbffdbccfafacdb01aa4454181fdf606e",
+      "parentR10Sha256": "6c8e797b5e4bad7a5dab72b8d29834bdbffdbccfafacdb01aa4454181fdf606e",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "SOURCE-PINS.json",
+      "bytes": 3887,
+      "sha256": "dd7422ced619d87037797d2d51b8518033073620b6229ce7ad412bef16613200",
+      "parentR10Sha256": "3dc26e7930a4199f584bb60e43bbb448e42fa32369148e9a71ee82e735dd9fd9",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "tests/build-metadata.mjs",
+      "bytes": 11021,
+      "sha256": "726855d6688da8b85bb07245ab32c9955df7fd3f538dff2cf0de27ca3c426fe5",
+      "parentR10Sha256": "bbd6abd6af2cea7f4b9ed80e52a6f3053a44e14127cf1c1c93f24bd7caed7788",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "tests/gallery-inline-0.mjs",
+      "bytes": 6133,
+      "sha256": "a7f9c22ef0323176febe1354ba64b8e94af4023dd1a3d416918eaa0fd1d998b6",
+      "parentR10Sha256": "2a0023b1631de677d368822767f300cc4522d99654eee97e47ea52a3e364d7ab",
+      "parentContentPreserved": false
+    },
+    {
+      "path": "tests/index-inline-0.mjs",
+      "bytes": 106,
+      "sha256": "e74c492cc60645cf841d71be1e10634a8821a243c07aa1b8b37cd2f3bbb429d5",
+      "parentR10Sha256": "e74c492cc60645cf841d71be1e10634a8821a243c07aa1b8b37cd2f3bbb429d5",
+      "parentContentPreserved": true
+    },
+    {
+      "path": "tests/r11.test.mjs",
+      "bytes": 8863,
+      "sha256": "0eb305195f3b8a634da6bc2154e0d750de3c631b3ac5505189654a48a75b4999"
+    },
+    {
+      "path": "WORK.json",
+      "bytes": 1682,
+      "sha256": "546b25db59632bc962977b071d71618c335bf798316b21f7ef613a63c23131cd",
+      "parentR10Sha256": "5b870714909c6cd29bbb26a9c8596dfff0952c61a592f3a60f057973e3eb4bc9",
+      "parentContentPreserved": false
+    }
+  ]
+}
