@@ -1,0 +1,65 @@
+{
+  "schema": "quantum-electric-sfx-integration-note/v1",
+  "status": "SOURCE_DERIVATIVE_CPU_TESTED_LISTENING_PENDING",
+  "derivativeId": "quantum-electric-sol61-r1-sfx-integrated-r1",
+  "baseSource": "outputs/request-20261009/quantum-electric-sol61-r1-cycle-scheduler-repair-r1",
+  "upstreamAudioPacket": "outputs/request-20261009/quantum-electric-sfx-preview-integration-r2",
+  "inputPins": {
+    "channelsSha256": "e3afdf89a9c1bcedb4bff1d79188bb1ced1c98cc02865d468c7de766c9bf2d00",
+    "runtimeSha256": "dac3f83b25a06e9ee0c84e9f649e414c785b858a38c20845b745a7092a12b5f4",
+    "designSha256": "a0abfb85469cfe8867cd2facbfe3d8d7f47a8560134137095019a648dd877f6c",
+    "sourcePreviewSha256": "d7a40770bb8dabc11916945955d0dfa6923ddc496c85cf9c16211d82266534f2",
+    "packetAudioSha256": "ff48ef24e50bdaec97e368434fccaf386f742196910320798a3014b3a65be435",
+    "packetGuardSha256": "d7caca24b01f502bcd4919e0861778b0840bd84e6bab3424fb613390b70f6fd8"
+  },
+  "outputPins": {
+    "channelsSha256": "e3afdf89a9c1bcedb4bff1d79188bb1ced1c98cc02865d468c7de766c9bf2d00",
+    "runtimeSha256": "dac3f83b25a06e9ee0c84e9f649e414c785b858a38c20845b745a7092a12b5f4",
+    "designSha256": "a0abfb85469cfe8867cd2facbfe3d8d7f47a8560134137095019a648dd877f6c",
+    "audioSha256": "ff48ef24e50bdaec97e368434fccaf386f742196910320798a3014b3a65be435",
+    "previewSha256": "e7b60d3f442bc21963fd832877c2fb87e65c58ceefea01a74c1d338781542f55",
+    "audioGuardSha256": "d7caca24b01f502bcd4919e0861778b0840bd84e6bab3424fb613390b70f6fd8",
+    "framePumpSha256": "b8d9b2a19c7b23a23859a44899ad078d2c6a976f8529752aa5cd438d8d321318",
+    "galleryCandidateSha256": "513306320a5466cb3fa2294ac50cd2d7c021005411e870c66e7e2b36fe092ff3",
+    "galleryPackageManifestSha256": "3a06937cd244d501cde6a83bc6f31c28a94620d38107b5658b4434727768356d"
+  },
+  "unchanged": [
+    "channels.mjs",
+    "runtime.mjs",
+    "DESIGN.md",
+    "frame-pump.mjs"
+  ],
+  "previewChanges": [
+    "data favicon",
+    "exact current receipt guard and actual receipt playback",
+    "normal-mode user-gesture unlock",
+    "verify remains permanently audio muted",
+    "pagehide disposes runtime and sound",
+    "preserved 1050ms plus 900ms scheduler"
+  ],
+  "audioBehavior": {
+    "oneCurrentVisibleCompletedSourceOnReceiptPerCause": true,
+    "startsAtActualReceiptAge": true,
+    "expiredCauseRejected": true,
+    "verifyAudioContexts": 0,
+    "verifySourceStarts": 0,
+    "networkAssets": 0
+  },
+  "validation": {
+    "sourceRuntimeTests": "10 passed",
+    "sfxIntegrationTests": "1 passed",
+    "galleryRegistrationTests": "3 passed",
+    "inlinePreviewSyntax": "PASS",
+    "nativeOrListening": "not run"
+  },
+  "acceptance": {
+    "nativeWebGpu": false,
+    "currentParentReplay": false,
+    "visualQuality": false,
+    "ordinaryAudioListening": false,
+    "safari": false,
+    "gameIntegration": false,
+    "adoption": false,
+    "publicationEligible": false
+  }
+}

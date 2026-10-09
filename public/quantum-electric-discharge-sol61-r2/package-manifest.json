@@ -1,0 +1,58 @@
+{
+  "schema": "dva-e-private-package/v1",
+  "id": "quantum-electric-discharge-sol61-r2",
+  "groupId": "quantum-electric-discharge",
+  "title": "Quantum Electric Discharge · GPT-6.1-Sol optical R2",
+  "status": "private-technical-candidate",
+  "baseCandidate": "quantum-electric-discharge-sol61-r1",
+  "files": {
+    "DESIGN.md": "a0abfb85469cfe8867cd2facbfe3d8d7f47a8560134137095019a648dd877f6c",
+    "SFX-INTEGRATION-NOTE.json": "d3f429c0b015f23b0b686e27a5212f9b2766eef43119f7c7e5b72ff1f50b6503",
+    "audio-preview-guard.mjs": "d7caca24b01f502bcd4919e0861778b0840bd84e6bab3424fb613390b70f6fd8",
+    "audio.mjs": "ff48ef24e50bdaec97e368434fccaf386f742196910320798a3014b3a65be435",
+    "channels.mjs": "e3afdf89a9c1bcedb4bff1d79188bb1ced1c98cc02865d468c7de766c9bf2d00",
+    "frame-pump.mjs": "b8d9b2a19c7b23a23859a44899ad078d2c6a976f8529752aa5cd438d8d321318",
+    "optical-design.mjs": "c20ce74d89bf2e932f9266f382dfc1209cf74739b46095483c32389b290dcfe7",
+    "package-manifest.json": "0f1e44d8595446486c515a4cf1e9677c8de57888c635b235238031b977bf422d",
+    "preview.html": "e7b60d3f442bc21963fd832877c2fb87e65c58ceefea01a74c1d338781542f55",
+    "runtime.mjs": "01454037f072ed3031c212b8c4bf9d830b0ce5d2ef9e0d7a1e6b1310a052d40f",
+    "runtime.test.mjs": "8f656c43ca606a331613fdbac19cf34f9827abd5539d5bc4deb21a7d2c772e5f",
+    "sfx-integration.test.mjs": "5241bc44f45b6142e5df6399ea0a56c1459f35a05611ce0a9959d01a681284e4"
+  },
+  "authors": {
+    "creativeDesign": {
+      "displayName": "GPT-6.1-Sol",
+      "modelId": "gpt-6.1-sol"
+    },
+    "opticalDesign": {
+      "displayName": "GPT-6.1-Sol",
+      "modelId": "gpt-6.1-sol"
+    },
+    "faithfulRuntimeAndSoundImplementation": {
+      "displayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna"
+    }
+  },
+  "sourceR1Package": "outputs/request-20261009/quantum-electric-sol61-r1-sfx-integrated-r1",
+  "sourceR1PackageManifestSha256": "3a06937cd244d501cde6a83bc6f31c28a94620d38107b5658b4434727768356d",
+  "sourceR2DesignSha256": "a384696d7c0fe3376734892912e27453f8e4c79a070aa5f7fa50caab0d87c819",
+  "sourceR2OpticalDesignSha256": "c20ce74d89bf2e932f9266f382dfc1209cf74739b46095483c32389b290dcfe7",
+  "productionAccounting": {
+    "edition": 2,
+    "priorEdition": 1,
+    "assignedDefaultCap": 5,
+    "broaderLedgerCount": "unknown; original R1 note states count/cap beyond first candidate is unknown",
+    "capReset": false
+  },
+  "adoption": "not-adopted",
+  "qualityStatus": "pending",
+  "nativeStatus": "pending-root-native",
+  "actualParentReplayStatus": "pending-root",
+  "gameIntegrationStatus": "not-connected",
+  "publicationEligible": false,
+  "replayable": false,
+  "limitations": [
+    "CPU fixture only; native WGSL compilation and visible playback remain pending root.",
+    "Ordinary audio listening, iPad/Safari, actual parent gallery replay, and game integration are not established."
+  ]
+}
