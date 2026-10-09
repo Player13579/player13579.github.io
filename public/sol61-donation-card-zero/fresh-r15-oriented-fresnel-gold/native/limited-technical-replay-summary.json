@@ -21,7 +21,7 @@
     "automaticNextEdition": false,
     "formalReturnRecordSha256": "3eba24bbf3faf896140f7ea223bf7e70a137f1835ac753c301a724ce04ba0913"
   },
-  "scope": "Exact sealed R15 source entry ran in a private local WebGPU review; no public gallery parent/catalog selection was exercised.",
+  "scope": "Exact sealed R15 source entry passed limited private direct-entry replay; a later public-parent run independently rechecked selected R15 and a bracketed held receipt. Neither result establishes full visual quality or gameplay acceptance.",
   "browser": {
     "family": "Microsoft Edge",
     "version": "154.0.4258.62",
@@ -111,5 +111,80 @@
     "hardware or adapter identity/performance",
     "main-game integration"
   ],
-  "statement": "This record establishes limited private direct-entry replay and artifact integrity only. It does not claim visual quality, user adoption, public-parent replay, audio acceptance, device coverage, performance, or game integration."
+  "statement": "This record establishes limited private direct-entry replay and artifact integrity only. It does not claim visual quality, user adoption, public-parent replay, audio acceptance, device coverage, performance, or game integration.",
+  "publicParentReplay": {
+    "status": "pass-limited-public-parent-replay",
+    "attempt": "2026-10-09T04-18-44-318Z-5ab978b3-01bb-4dfb-bb05-c0ee9caa0566",
+    "sourceCommit": "3f398e435dc261cf19cb9f161dcbafc0f5b93286",
+    "independentAuditSha256": "c66b886f8ae9c618783ab12144785f036e2a1fa5c62407fd0f1a91e00dc8c8e7",
+    "selection": {
+      "category": "effect",
+      "filter": "unadopted",
+      "groupId": "common-donation-zero-sol61",
+      "versionId": "donation-zero-sol61-r15-oriented-fresnel-gold"
+    },
+    "child": {
+      "startupIdentityVerified": true,
+      "expectedRuntimePaths": 9,
+      "status200": 9,
+      "responseBodiesIndependentlyHashed": false
+    },
+    "naturalCauseSamples": [
+      {
+        "causeId": "donation-r15-oriented-fresnel-gold-fixture-2",
+        "ageMs": 76.59999995231556,
+        "submit": 6,
+        "generation": 1,
+        "targetGeneration": 1
+      },
+      {
+        "causeId": "donation-r15-oriented-fresnel-gold-fixture-3",
+        "ageMs": 24.999999976158506,
+        "submit": 97,
+        "generation": 1,
+        "targetGeneration": 1
+      },
+      {
+        "causeId": "donation-r15-oriented-fresnel-gold-fixture-4",
+        "ageMs": 6.59999997615887,
+        "submit": 206,
+        "generation": 1,
+        "targetGeneration": 1
+      }
+    ],
+    "naturalSamplesAreFullLifetimes": false,
+    "heldFrame": {
+      "causeId": "donation-r15-oriented-fresnel-gold-fixture-4",
+      "ageMs": 1100,
+      "submit": 208,
+      "generation": 1,
+      "targetGeneration": 1,
+      "completed": true,
+      "bracketedByMatchingBeforeAfterState": true
+    },
+    "verification": {
+      "hardMuted": true,
+      "sfxEnabled": false,
+      "activation": "locked"
+    },
+    "viewportCapture": {
+      "sha256": "e6af17244b30cfada90b608c15ad1b3b3d0a21d79252da46ec82ee264af3bde5",
+      "bytes": 195160,
+      "nonAtomic": true,
+      "lowerCanvasClipped": true,
+      "fullCanvasOr1to1QualityEstablished": false,
+      "rootSawCoinsAndGlints": true
+    },
+    "cleanupAllClosed": true,
+    "qualityAccepted": false,
+    "adoption": "unknown",
+    "limits": [
+      "No independent raw GPU queue observer; source completion receipt used.",
+      "Natural samples are early changing-cause observations, not per-cause full-lifetime completion.",
+      "Nine child runtime paths returned HTTP 200; child response bodies were not independently rehashed in this parent audit.",
+      "Screenshot is non-atomic and crops the lower canvas.",
+      "Ordinary audio, Safari/iPad, performance, main-game integration, and overall quality remain unverified.",
+      "Effective Chromium flags are not an independent OS-level sandbox enforcement audit."
+    ]
+  }
 }
