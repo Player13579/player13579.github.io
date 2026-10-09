@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>GPT-6.1-Sol Taser Contact R1</title>
+<style>
+  :root { color-scheme: dark; font: 14px/1.5 system-ui, sans-serif; background:#071019; color:#edf6ff; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; min-width:320px; min-height:100%; background:#071019; }
+  main { width:min(100%,960px); margin:0 auto; padding:10px; }
+  h1 { font-size:17px; margin:0 0 6px; }
+  p { margin:4px 0 8px; color:#aebfce; font-size:12px; }
+  canvas { display:block; width:100%; aspect-ratio:3/2; height:auto; background:#000; border:1px solid #233847; }
+  .controls { display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:8px 0; }
+  button { border:1px solid #7194a5; border-radius:4px; padding:5px 9px; background:#132633; color:#edf6ff; }
+  button:disabled { opacity:.65; }
+  label { white-space:nowrap; }
+  #status { white-space:pre-wrap; min-height:2.6em; color:#b5c9d5; font-size:12px; }
+  #error { color:#ffb4aa; white-space:pre-wrap; }
+  body[data-embed="true"] main { width:100vw; height:100vh; overflow:clip; padding:0; }
+  body[data-embed="true"] h1, body[data-embed="true"] #note, body[data-embed="true"] .controls,
+  body[data-embed="true"] #status, body[data-embed="true"] #error { display:none; }
+  body[data-embed="true"] canvas { width:100vw; height:100vh; aspect-ratio:auto; border:0; transform:scale(var(--gallery-display-scale,1)); transform-origin:center center; }
+</style>
+<main>
+  <h1>GPT-6.1-Sol · Taser Contact R1</h1>
+  <p id="note">480 ms の接触放電と3回の短い再放電。プレビュー専用の人物なし接触点です。通常音はユーザー操作で解錠され、verifyでは音声0です。採用・品質・本編接続は未確認です。</p>
+  <canvas id="surface" width="960" height="640" aria-label="Taser contact WebGPU preview"></canvas>
+  <div class="controls">
+    <button id="replay" type="button">新しい接触を再生</button>
+    <button id="pause" type="button">停止</button>
+    <button id="sound" type="button">音を有効にする</button>
+    <label><input id="source" type="checkbox" checked>発生源</label>
+    <label><input id="observer" type="checkbox" checked>観測側PostEffect</label>
+    <button id="bothOff" type="button">発生源・観測側を両方OFF</button>
+    <button id="bothOn" type="button">両方ON</button>
+  </div>
+  <div id="status" role="status">WebGPUを初期化しています。</div>
+  <div id="error" role="alert" hidden></div>
+</main>
+<script type="module" src="./preview.mjs"></script>
+</html>
