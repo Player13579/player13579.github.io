@@ -1,0 +1,321 @@
+{
+  "schema": "dva-executable-e-rule-code-map/v1",
+  "foundation": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "base": {
+      "path": "inputs/B-base.md",
+      "gitBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+      "sha256": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25"
+    },
+    "extension": {
+      "path": "inputs/B-extension.md",
+      "gitBlob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+      "sha256": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7"
+    }
+  },
+  "formalBImageVideoExpression": false,
+  "description": "Executable E code branch mapping, not a fabricated new Image/Video B mode or full physics certificate.",
+  "rules": [
+    {
+      "rule": "ECodeImplementation.ExecutableECodeBranchRule",
+      "reference": "Ext:592-607",
+      "file": "runtime.mjs",
+      "sourceLines": [
+        {
+          "needle": "class StunRenderer",
+          "line": 4
+        },
+        {
+          "needle": "createShaderModule",
+          "line": 16
+        },
+        {
+          "needle": "render(input",
+          "line": 34
+        },
+        {
+          "needle": "device.queue.submit",
+          "line": 47
+        }
+      ],
+      "implementation": "Actual WebGPU three-pass source/optics/display + code PCM; runtime compilation and pixels not_run.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "PhenomenonSystemTemplate.UniversalPhenomenonRule/StateTransformerRule/PhysicalModelClosureRule",
+      "reference": "Base:326-448",
+      "file": "source/plan.mjs",
+      "sourceLines": [
+        {
+          "needle": "normalizeEvent",
+          "line": 9
+        },
+        {
+          "needle": "export function sample",
+          "line": 23
+        },
+        {
+          "needle": "const shockRadius",
+          "line": 28
+        },
+        {
+          "needle": "const gasGain",
+          "line": 30
+        }
+      ],
+      "implementation": "PH1-6 declared in DESIGN, finite cause/geometry/time, bounded qualitative model not full physical simulation.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "OctaDomainTemplate.OctaDomainDefinition",
+      "reference": "Base:954-996",
+      "file": "DESIGN.md",
+      "sourceLines": [
+        {
+          "needle": "## 八領域",
+          "line": 24
+        },
+        {
+          "needle": "| PH1",
+          "line": 30
+        },
+        {
+          "needle": "| PH6",
+          "line": 35
+        }
+      ],
+      "implementation": "All eight domains applied or explicitly nonapplicable per existing PH; no invented fluid/charge obligations.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "VFX.MaterialOpticalResponseRule / ReflectionClosureTemplate",
+      "reference": "Ext:438-450; Base:1498-1550",
+      "file": "source/shaders.mjs",
+      "sourceLines": [
+        {
+          "needle": "fn steelReflection",
+          "line": 9
+        },
+        {
+          "needle": "let metal=",
+          "line": 28
+        },
+        {
+          "needle": "let density=",
+          "line": 38
+        },
+        {
+          "needle": "let tau=",
+          "line": 39
+        }
+      ],
+      "implementation": "Steel Fresnel/GGX/normal/roughness distinct from emissive hot gas and Beer-Lambert smoke. RGB F0 model, no measured optical constants.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "VFX.TransportTemporalResponseRule",
+      "reference": "Ext:452-465",
+      "file": "source/plan.mjs",
+      "sourceLines": [
+        {
+          "needle": "const t=",
+          "line": 26
+        },
+        {
+          "needle": "const heat=",
+          "line": 27
+        },
+        {
+          "needle": "const shockRadius=",
+          "line": 28
+        },
+        {
+          "needle": "const gasGain=",
+          "line": 30
+        }
+      ],
+      "implementation": "Strong finite flash, thermal tail, outward pressure, expanding/diluting puff, terminal zero.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "ObservationIntegrationTemplate.ObservationRegistrySeparationRule/PostEffectsCommonRule",
+      "reference": "Base:1147-1182; Ext:638-649",
+      "file": "source/shaders.mjs",
+      "sourceLines": [
+        {
+          "needle": "struct O",
+          "line": 16
+        },
+        {
+          "needle": "export const OPTICS",
+          "line": 51
+        },
+        {
+          "needle": "export const POST",
+          "line": 65
+        }
+      ],
+      "implementation": "World and visible radiators MRT separated from observation; selected near/horizontal pupil kernel, no world star or forced ghost.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "ObservationIntegrationTemplate.LensFlareSourceBindingRule/ObservationIntensityBudgetRule",
+      "reference": "Base:1195-1213,1354-1376",
+      "file": "source/shaders.mjs",
+      "sourceLines": [
+        {
+          "needle": "fn sourceAt",
+          "line": 54
+        },
+        {
+          "needle": "result=near/normNear",
+          "line": 62
+        },
+        {
+          "needle": "rgb=max",
+          "line": 73
+        }
+      ],
+      "implementation": "Same source textures and .12/.08 shared normalized budget, zero extension and direct-source subtraction, no independent glow source.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "ObservationIntegrationTemplate.SamplingAndReconstructionRule",
+      "reference": "Base:1226-1239",
+      "file": "runtime.mjs",
+      "sourceLines": [
+        {
+          "needle": "const HDR",
+          "line": 3
+        },
+        {
+          "needle": "const support=",
+          "line": 42
+        },
+        {
+          "needle": "setScissorRect",
+          "line": 44
+        }
+      ],
+      "implementation": "Full-resolution HDR and finite source/PSF support. Actual device performance not_run.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "LuminanceDynamicsModule",
+      "reference": "Ext:725-752",
+      "file": "source/plan.mjs",
+      "sourceLines": [
+        {
+          "needle": "const t=",
+          "line": 26
+        },
+        {
+          "needle": "const heat=",
+          "line": 27
+        }
+      ],
+      "implementation": "Action-bound envelope; no invented periodic pulsing or explicit v1-v3 keyword.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "ECodeImplementation cause/time/one-shot SFX",
+      "reference": "Ext:606-607",
+      "file": "source/sound.mjs",
+      "sourceLines": [
+        {
+          "needle": "export function makePCM",
+          "line": 3
+        },
+        {
+          "needle": "async activate",
+          "line": 18
+        },
+        {
+          "needle": "play(cause",
+          "line": 19
+        },
+        {
+          "needle": "ageMs>=85",
+          "line": 21
+        },
+        {
+          "needle": "cancel()",
+          "line": 28
+        }
+      ],
+      "implementation": "New finite PCM, type/cause dedup, current completed proof owner, age alignment, hard verify mute and stale-resume suppression.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    },
+    {
+      "rule": "DVA visible source/colored phenomenon/local illumination",
+      "reference": "asset-generation/references/dva.md:71-81",
+      "file": "source/shaders.mjs",
+      "sourceLines": [
+        {
+          "needle": "fn sourceIllumination",
+          "line": 8
+        },
+        {
+          "needle": "let discharge=",
+          "line": 32
+        },
+        {
+          "needle": "let gasEmission=",
+          "line": 44
+        },
+        {
+          "needle": "let skin=",
+          "line": 47
+        }
+      ],
+      "implementation": "Visible code-generated core/vent; colored hot gas; local floor/steel/person radiance response; native actual-size judgement pending.",
+      "verification": "Actual CPU/interface/source checks passed as scoped; GPU/pixels/hearing/device acceptance not_run."
+    }
+  ],
+  "PH": [
+    "PH1 casing",
+    "PH2 discharge",
+    "PH3 gas",
+    "PH4 pressure/index front",
+    "PH5 diagnostic plane",
+    "PH6 supplied diagnostic person"
+  ],
+  "OBS": [
+    "OBS1 source-bound near pupil",
+    "OBS2 source-bound horizontal pupil",
+    "OBS3 fixed display transfer"
+  ],
+  "sharedBudget": {
+    "near": 0.12,
+    "horizontal": 0.08,
+    "total": 0.2,
+    "sourceSubtraction": true,
+    "strictWholeSceneEnergyConservation": "not_established"
+  },
+  "keywordExpansion": {
+    "explicitRegisteredKeyword": null,
+    "arbitraryExpansionAdded": false
+  },
+  "sourceObserverDependencies": "PH -> world/source MRT -> normalized optics -> display; no observation feedback to PH",
+  "technicalDerivative": {
+    "schema": "dva-technical-derivative-provenance/v1",
+    "derivativeId": "stun-grenade-zero-sol61-r1-wgsl-repair",
+    "versionId": "stun-grenade-zero-sol61-r1",
+    "creativeEditionChanged": false,
+    "originalSourceRoot": "../stun-grenade-zero-sol61-r1",
+    "originalManifestSha256": "fdb3c567d8f0fafab0e5ae395fd49fd4973a805c964ead03f023da7aa68f1505",
+    "originalSealSha256": "b67d266ddb6bdc8f13b7ee25043b1a9096f9002ae23447e52f6860c6a770d048",
+    "change": "WGSL local reserved identifier active renamed to phenomenonActive consistently; no numeric, equation, color, timing, geometry, material, SFX or API change.",
+    "actualRepairAuthor": {
+      "model": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "preservedCreativeAuthor": {
+      "model": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol",
+      "scope": "New creative design, planner, WGSL, standalone renderer/preview, new PCM and source checks; no old creative input reuse."
+    },
+    "limits": "Static identifier/type/interface inspection and CPU checks are not native WGSL compile or pixel acceptance.",
+    "sourceLineNumbersUnchanged": true
+  }
+}
