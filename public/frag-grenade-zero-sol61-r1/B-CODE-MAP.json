@@ -1,0 +1,525 @@
+{
+  "schema": "dva-executable-e-code-correspondence/v1",
+  "versionId": "frag-grenade-zero-sol61-r1",
+  "source_commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+  "base": {
+    "path": "inputs/B-base.md",
+    "bytes": 126262,
+    "sha256": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25"
+  },
+  "extension": {
+    "path": "inputs/B-extension.md",
+    "bytes": 76645,
+    "sha256": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7"
+  },
+  "branch": "ECodeImplementation.ExecutableECodeBranchRule: actual runtime VFX/SFX, not Image/Video B-Expression serialization",
+  "process": "Creative physical mechanisms settled in root brief before draft. Formal eight-domain/code correspondence serialized after initial draft and before final immutable package; no claim that a full B-Expression artifact predated draft.",
+  "ExtensionActivationTable": {
+    "VFX": "active",
+    "ECodeImplementation": "active",
+    "LDM": "active",
+    "PostEffects": "contextual-visible-source25tapPSF",
+    "keywordExpansion": "none explicitly requested; no v1-v6 decorative activation"
+  },
+  "PH": [
+    {
+      "id": "PH.rupture-source",
+      "function": "compact ignition and finite radiance",
+      "OctaDomainTemplate": {
+        "Domains": {
+          "Thermo": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "9ms ignition",
+              "67/155ms cooling envelopes with final900ms cutoff"
+            ],
+            "evidence_or_constraint": "plan.sample(): phenomenological heat state, not calibrated combustion"
+          },
+          "Fluid": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "expansion/rise displaces the hot reaction support"
+            ],
+            "evidence_or_constraint": "phase.expansion, hotCenter/coreMetric"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "white-hot core/amber rim emitted radiance",
+              "dust optical-depth attenuation before visible-source MRT"
+            ],
+            "evidence_or_constraint": "WORLD.emission and transmission"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "finite explosive reaction represented by heat envelope"
+            ],
+            "evidence_or_constraint": "No chemical-yield or burn-rate inference"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rupture source: no directly modeled Electromagnetics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rupture source: no directly modeled Rheology mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rupture source: no directly modeled WaveOptics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rupture source: no directly modeled SurfaceScience mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          }
+        }
+      },
+      "Evidence": [
+        "source/plan.mjs:sample",
+        "source/shaders.mjs:WORLD core"
+      ],
+      "DominantCouplings": [
+        "ignition→radiance→receiver/OBS",
+        "dust density→source transmission"
+      ]
+    },
+    {
+      "id": "PH.dust",
+      "function": "three nonemissive absorbing/scattering lobes",
+      "OctaDomainTemplate": {
+        "Domains": {
+          "Thermo": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "cooling reduces incident source illumination"
+            ],
+            "evidence_or_constraint": "sourceRadiance reaches finite zero"
+          },
+          "Fluid": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "advected expanding lobe centers",
+              "buoyant rising support and finite fade"
+            ],
+            "evidence_or_constraint": "WORLD j-loop center/size; projected2.5D approximation"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "Beer-Lambert opacity/transmission",
+              "source-dependent single-scatter shade"
+            ],
+            "evidence_or_constraint": "opticalDepth/alpha/incident/phaseScatter; no multiple-scattering solver"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "neutral particulate albedo"
+            ],
+            "evidence_or_constraint": "dustShade has no additive emission floor"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Dust: no directly modeled Electromagnetics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Dust: no directly modeled Rheology mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Dust: no directly modeled WaveOptics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Dust: no directly modeled SurfaceScience mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          }
+        }
+      },
+      "Evidence": [
+        "source/shaders.mjs:opticalDepth"
+      ],
+      "DominantCouplings": [
+        "density→opacity/source extinction",
+        "source decay→dust illumination"
+      ]
+    },
+    {
+      "id": "PH.shell-fragments",
+      "function": "seven thin reflective ballistic pieces",
+      "OctaDomainTemplate": {
+        "Domains": {
+          "Thermo": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "tiny cooling heated edge only"
+            ],
+            "evidence_or_constraint": "heatedEdge*u.energy.y, not entire fragment emissive"
+          },
+          "Fluid": {
+            "applicability": "applicable",
+            "role": "latent",
+            "items": [
+              "initial pressure impulse supplies velocities"
+            ],
+            "evidence_or_constraint": "Ballistic prescribed initial condition, no air-drag or stress solver"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "complex-IOR RGB steel-like F0 and Schlick angle response",
+              "normalized GGX NDF/masking with incoming/view/normal"
+            ],
+            "evidence_or_constraint": "metal(): eta/extinction/Fresnel/distribution/masking; approximate steel constants not measurements"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "opaque thin metal faces",
+              "GGX microfacet roughness .31"
+            ],
+            "evidence_or_constraint": "rectangle face coverage, metal() normal/roughness"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Shell fragments: no directly modeled Electromagnetics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Shell fragments: no directly modeled Rheology mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Shell fragments: no directly modeled WaveOptics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Shell fragments: no directly modeled SurfaceScience mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          }
+        }
+      },
+      "Evidence": [
+        "source/shaders.mjs:metal",
+        "source/plan.mjs:fragmentContactTimes"
+      ],
+      "DominantCouplings": [
+        "flight/spin→normal/reflection",
+        "contact root→SFX metal impulse"
+      ]
+    },
+    {
+      "id": "PH.pressure-gradient",
+      "function": "nonemissive floor refraction",
+      "OctaDomainTemplate": {
+        "Domains": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Pressure gradient: no directly modeled Thermo mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "Fluid": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "expanding finite density front",
+              "density-gradient decay envelope"
+            ],
+            "evidence_or_constraint": "radial/front/densityGradient; no claimed shock PDE"
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "density gradient shifts floor sample",
+              "no source emission assigned to pressure"
+            ],
+            "evidence_or_constraint": "floorAlbedo(p+offset), finite1.7px proxy"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "air is a dilute participating dielectric"
+            ],
+            "evidence_or_constraint": "Small-angle image displacement; no physical hit-radius visualization"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Pressure gradient: no directly modeled Electromagnetics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Pressure gradient: no directly modeled Rheology mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Pressure gradient: no directly modeled WaveOptics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Pressure gradient: no directly modeled SurfaceScience mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          }
+        }
+      },
+      "Evidence": [
+        "source/shaders.mjs:densityGradient"
+      ],
+      "DominantCouplings": [
+        "density gradient→sample displacement"
+      ]
+    },
+    {
+      "id": "PH.near-receivers",
+      "function": "source illumination of floor and neutral person",
+      "OctaDomainTemplate": {
+        "Domains": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Receiving floor/person: no directly modeled Thermo mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Receiving floor/person: no directly modeled Fluid mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "distance attenuation/cosine floor incidence",
+              "source-linked diffuse actor shading"
+            ],
+            "evidence_or_constraint": "floorIncident/actorShade; neutral fixture only"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "matte neutral albedo"
+            ],
+            "evidence_or_constraint": "floorAlbedo and actorShade; not actual game sprite material"
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Receiving floor/person: no directly modeled Electromagnetics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Receiving floor/person: no directly modeled Rheology mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Receiving floor/person: no directly modeled WaveOptics mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Receiving floor/person: no directly modeled SurfaceScience mechanism is required at this finite analytic scale"
+            ],
+            "evidence_or_constraint": "No invented mechanism added to satisfy a domain quota; parent cause/material constraints retained."
+          }
+        }
+      },
+      "Evidence": [
+        "source/shaders.mjs:floorIncident"
+      ],
+      "DominantCouplings": [
+        "same sourceRadiance→near illumination",
+        "contextOn removes receiving-light terms"
+      ]
+    }
+  ],
+  "gradientRoles": {
+    "PH": [
+      "hot white/amber reaction support",
+      "cooling nonemissive neutral dust",
+      "steel reflected incident color"
+    ],
+    "OBS": "PSF preserves the visible source RGB; no arbitrary color quota or chromatic fringe"
+  },
+  "OBS": [
+    {
+      "id": "OBS.pupil-PSF",
+      "source": "visible-source MRT after foreground occlusion",
+      "equation": "sum25(weight×visibleRadiance)/sum25(weight)",
+      "parameter": "pupil .3..2 changes spatial support; exposure .1..4 independent display observer",
+      "mask": "sourceOn&&observerOn&&finiteLifetime; foreground plate masks source before filtering",
+      "temporal": "same current-age visible source, no persistence/timer",
+      "composition": "world−.16visibleSource+.16normalizedPSF",
+      "status": "implemented; native contribution/quality not_run"
+    }
+  ],
+  "IntensityBudget": {
+    "worldSource": "physical radiance envelope9*rupture+2.6*flame; no global intensity boost",
+    "direct": 0.84,
+    "observerRedistribution": 0.16,
+    "psfNormalized": true,
+    "nearIllumination": "separate PH receiver reflection from the same source",
+    "floorRefraction": "nonemissive; no added radiance",
+    "peakDisplay": "fixed exponential tone response then single sRGB transfer",
+    "limits": "Discrete sampling/scissor and viewport truncation require actual native check; not a calibrated conservation proof"
+  },
+  "correspondence": [
+    {
+      "rule": "Base954-996 each PH eight real domains, applicability/role/items/evidence",
+      "code": "PH registry above, source/plan.mjs sample and shader mechanisms",
+      "observable": "different heat/dust/material/pressure consequences",
+      "validation": "CPU eight-domain presence; semantics mapped; actual pixels not_run"
+    },
+    {
+      "rule": "Extension592-607 E branch actual WebGPU/SFX and PH/OBS split",
+      "code": {
+        "file": "source/shaders.mjs",
+        "worldLine": 20,
+        "opticsLine": 118,
+        "postLine": 134
+      },
+      "observable": "world/source MRT→normalized observer→one final transfer",
+      "validation": "source/import/128byteABI CPU; WGSL/native not_run"
+    },
+    {
+      "rule": "Current DVA visible source/color/near-light/local contrast/action-bound variation",
+      "code": {
+        "file": "source/shaders.mjs",
+        "sourceLine": 88,
+        "receiverLine": 58,
+        "dustLine": 79
+      },
+      "observable": "hot source early, reflected receiving-light, cooling nonemissive tail",
+      "validation": "requested actualH64/H128 source/context control captures; not_run"
+    },
+    {
+      "rule": "Current material optics/causal motion",
+      "code": {
+        "file": "source/shaders.mjs",
+        "materialLine": 22,
+        "flightLine": 97
+      },
+      "observable": "rotating reflected metal separate from emission, finite flight/settle",
+      "validation": "actual source/contact constants CPU; multiple-phase pixels not_run"
+    },
+    {
+      "rule": "Causal once SFX from same cause/time, retry and verify silence",
+      "code": "source/sound.mjs FragSound/renderPCM/METAL_CONTACT_TIMES; app.mjs current generation completed frame",
+      "observable": "fracture at onset, metal contacts at exact ballistic ground roots; no delayed retired audio",
+      "validation": "actual PCM/fake-context scoped CPU pass; ordinary listening/browser path not_run"
+    },
+    {
+      "rule": "Declared input/camera/time/display/reduced motion and termination",
+      "code": {
+        "file": "source/plan.mjs",
+        "packLine": 24,
+        "gateLine": 44
+      },
+      "observable": "frozen cause projects under camera/scale; [0,900) finite life; projected actorH64/H128",
+      "validation": "actual exports CPU; native projection guards pending"
+    }
+  ],
+  "acceptance": {
+    "static": "scoped CPU only",
+    "nativeShader": "not_run",
+    "pixels": "not_run",
+    "continuousMotion": "not_run",
+    "normalSFX": "not_run",
+    "fullBIndependentAcceptance": "not_run"
+  }
+}
