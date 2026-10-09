@@ -54,6 +54,9 @@
     'weapon-switch-zero-sol61-r2': { magnification: 4, focusX: 490, focusY: 310 },
     'teleport-pixel-sol61-r2': { magnification: 1, focusX: 490, focusY: 310 },
     'teleport-pixel-sol61-r1': { magnification: 1, focusX: 490, focusY: 310 },
+    // R3 exact-version fit from conservative full-lifetime bounds in preview-css-canvas-980x620; 8% stage padding.
+    'acceleration-zero-arrow-sol61-r3': { magnification: 2.815135135135135, focusX: 490, focusY: 342.5 },
+    'human-transmutation-zero-sol61-r3': { magnification: 5.918181818181818, focusX: 490, focusY: 310 },
     // Each frozen Sol version is framed from its own iframe CSS canvas and H64 actor size.
     // The target on-screen actor height is 240 CSS px; focus is each canvas' actual center
     // mapped into the 980x620 gallery iframe (including Stamina r8's centered 480x260 canvas).
@@ -1335,7 +1338,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     preview.searchParams.set('embed', '1');
     if (params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     preview.searchParams.set('height', String(PRESENTATION.anchorHeight));
-    if (item.zoom !== 1) preview.searchParams.set('zoom', String(item.zoom));
+    if (Number.isFinite(item.zoom) && item.zoom > 0 && item.zoom !== 1) preview.searchParams.set('zoom', String(item.zoom));
     return preview;
   }
   function fitHumanGalleryR4(iframe, item, group, stage) {
