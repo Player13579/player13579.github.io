@@ -1,0 +1,173 @@
+{
+  "schema": "dva-acceleration-zero-r4-limited-private-observation/v1",
+  "status": "LIMITED_PRIVATE_VISIBLE_OBSERVATION",
+  "versionId": "acceleration-zero-arrow-sol61-r4",
+  "attemptId": "2026-10-09T01-24-55-096Z-8e09432e-3747-4959-8b2a-f8a1a89b8d7e",
+  "scope": "A private parent/child WebGPU observation with a completed startup receipt, nine exact runtime closure responses, and four guarded H64 held captures. This supports limited technical replay listing only.",
+  "runOutcome": "The runner failed after the four captures at a post-capture assertion requiring an exact browser fetch of the technical package manifest. That manifest is disk-pinned package metadata, not one of the nine runtime resources requested by the child. Preserve the failed-run classification; this is not a successful full native-run claim.",
+  "sourcePins": {
+    "sourceManifestSha256": "51c3c130d9cbebbfde1714f0cd287d03101ed279ebb5b8ee03b7cc6310b2b978",
+    "sourceSealSha256": "32a8ad0b3369e78fe33ff3b447a9290d4d224a5b43b58c859b37edd4455b9185",
+    "technicalManifestSha256": "6cd167b0d621f3be46f3b7193dca7b3359039e8b4a70083e882c7bc4be7a2d84",
+    "entrySha256": "aa3c040392152b082fb951e5b9fcb3c571ffb3d41d0582ebbe05e7a3f072de76"
+  },
+  "runtimeClosure": [
+    {
+      "resource": "/public/sol61-acceleration-benefit/zero-r4/package/common.wgsl",
+      "sha256": "1ff9779bab68a8ccfcdfc2ada5a415ed9bf4109119dfe8f163e51689a27554d8",
+      "matchedDiskAndManifest": true,
+      "routeCount": 1
+    },
+    {
+      "resource": "/public/sol61-acceleration-benefit/zero-r4/package/gallery-adapter.mjs",
+      "sha256": "01b6cb37a87efeb9744dcbf5f9b0218086d0295978133c7ea49eccfe57ed4a3a",
+      "matchedDiskAndManifest": true,
+      "routeCount": 1
+    },
+    {
+      "resource": "/public/sol61-acceleration-benefit/zero-r4/package/gallery-host-core.mjs",
+      "sha256": "b51757332a17553b462fadb72ec9875c3aecfbdbad0a63f1d4ca9003fc71e2a1",
+      "matchedDiskAndManifest": true,
+      "routeCount": 1
+    },
+    {
+      "resource": "/public/sol61-acceleration-benefit/zero-r4/package/index.html",
+      "sha256": "aa3c040392152b082fb951e5b9fcb3c571ffb3d41d0582ebbe05e7a3f072de76",
+      "matchedDiskAndManifest": true,
+      "routeCount": 1
+    },
+    {
+      "resource": "/public/sol61-acceleration-benefit/zero-r4/package/model.mjs",
+      "sha256": "ae59527aae74148ce8de681c11564a8d787c3781ac81bc5a355eed954224d1a8",
+      "matchedDiskAndManifest": true,
+      "routeCount": 1
+    },
+    {
+      "resource": "/public/sol61-acceleration-benefit/zero-r4/package/observer.wgsl",
+      "sha256": "c82ec5de6fb92937ee0e8fa45f8afd33941a3ac218c9b71171653bd9aba5b5b9",
+      "matchedDiskAndManifest": true,
+      "routeCount": 1
+    },
+    {
+      "resource": "/public/sol61-acceleration-benefit/zero-r4/package/runtime.mjs",
+      "sha256": "acc59a9347115e3f2756752cd173c143c37d68871793668ad3439792d93ff331",
+      "matchedDiskAndManifest": true,
+      "routeCount": 1
+    },
+    {
+      "resource": "/public/sol61-acceleration-benefit/zero-r4/package/sfx.mjs",
+      "sha256": "785888635138d7464009428936117b6c10d662244acc1de2e805831a89997dd2",
+      "matchedDiskAndManifest": true,
+      "routeCount": 1
+    },
+    {
+      "resource": "/public/sol61-acceleration-benefit/zero-r4/package/world.wgsl",
+      "sha256": "0410f09b8a6ff2b7a86c44d391d97248e43e136f37007116a2574457de151114",
+      "matchedDiskAndManifest": true,
+      "routeCount": 1
+    }
+  ],
+  "startupReceipt": {
+    "ready": true,
+    "completed": true,
+    "verify": true,
+    "muted": true,
+    "queueCompletion": true
+  },
+  "heldCaptures": [
+    {
+      "ageMs": 400,
+      "image": "evidence/native/H64-age-400.png",
+      "imageSha256": "cd378c22025cb4e3fb1d4ea4ea56f8e3154ff2731aaf913e82c1b635993580f3",
+      "width": 980,
+      "height": 620,
+      "captureGuards": {
+        "targetStable": true,
+        "sequenceStable": true,
+        "generationStable": true,
+        "canvas980x620": true,
+        "complete": true,
+        "queueFence": true,
+        "modeStable": true,
+        "causeStable": true,
+        "ageStable": true
+      },
+      "nonAtomicCapture": true
+    },
+    {
+      "ageMs": 700,
+      "image": "evidence/native/H64-age-700.png",
+      "imageSha256": "c2bfb4835c0918cd08735337c21a92a77a5bba6620f8b416fad6396c6d0677ea",
+      "width": 980,
+      "height": 620,
+      "captureGuards": {
+        "targetStable": true,
+        "sequenceStable": true,
+        "generationStable": true,
+        "canvas980x620": true,
+        "complete": true,
+        "queueFence": true,
+        "modeStable": true,
+        "causeStable": true,
+        "ageStable": true
+      },
+      "nonAtomicCapture": true
+    },
+    {
+      "ageMs": 1000,
+      "image": "evidence/native/H64-age-1000.png",
+      "imageSha256": "27970a611ce97585930d011206c33db7e21eb2a55d3dcd48c65356931f4df561",
+      "width": 980,
+      "height": 620,
+      "captureGuards": {
+        "targetStable": true,
+        "sequenceStable": true,
+        "generationStable": true,
+        "canvas980x620": true,
+        "complete": true,
+        "queueFence": true,
+        "modeStable": true,
+        "causeStable": true,
+        "ageStable": true
+      },
+      "nonAtomicCapture": true
+    },
+    {
+      "ageMs": 1400,
+      "image": "evidence/native/H64-age-1400.png",
+      "imageSha256": "3fdb1bfe7083b7c598653d920ed41802cc274b15b7850cda81aa9ce3b73cce7f",
+      "width": 980,
+      "height": 620,
+      "captureGuards": {
+        "targetStable": true,
+        "sequenceStable": true,
+        "generationStable": true,
+        "canvas980x620": true,
+        "complete": true,
+        "queueFence": true,
+        "modeStable": true,
+        "causeStable": true,
+        "ageStable": true
+      },
+      "nonAtomicCapture": true
+    }
+  ],
+  "normalLifetimeAndMute": {
+    "independentlyPersisted": false,
+    "note": "Runner control flow reached the post-capture route gate after natural-cycle and mute/audio predicates, but their values were not persisted; this is not independent evidence."
+  },
+  "visualScope": "The 980x620 captures include gallery UI and parent fixture clipping. They support review of the visible arrow/glint region only; they are not clean full-canvas images and do not establish whole-effect quality.",
+  "cleanupAllClosed": true,
+  "pageErrors": [],
+  "consoleErrors": [],
+  "blockedRequests": [],
+  "limits": [
+    "No full successful native-run claim",
+    "No whole-effect quality acceptance",
+    "No current-public-parent replay",
+    "No normal SFX listening",
+    "No adoption",
+    "No game integration"
+  ],
+  "independentAuditSha256": "4f1af637533da09c097bb1257e5af1ddbeaf502946f4f76ec2b0b4dbbfea9b42"
+}
