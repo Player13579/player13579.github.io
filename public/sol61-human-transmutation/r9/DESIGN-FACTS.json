@@ -1,0 +1,99 @@
+{
+  "schema": "human-transmutation-r9-design/v1",
+  "author": "GPT-6.1-Sol",
+  "sourceReview": {
+    "path": "C:\\Users\\user\\Documents\\Codex\\2026-07-12\\defenders-vs-attackers\\outputs\\request-20261009\\human-r8-root-visual-review.json",
+    "sha256": "900a9c95e57f5d9b44f69897b292500203150db8c757c2a0cd4a7eeed0741145",
+    "nativeAttempt": "aca61ed2-69e9-45f6-9add-5f0b5c3f6a69",
+    "viewed": [
+      "r8-h128-t450.png",
+      "r8-h128-t650.png",
+      "r8-h128-t850.png",
+      "r8-h64-t650.png",
+      "r7-h128-t650.png"
+    ],
+    "observation": "R8 face readability substantially improves versus R7. Clothing has intersecting long rays at450ms; H64 has dominant wings, with individual points hard to separate."
+  },
+  "creativeChanges": {
+    "sourceCount": 60,
+    "sourceCountChange": 0,
+    "timingChange": "none; preserve independently delayed single pulses and fixed-material causal onset",
+    "opticalPSF": "Replace exponential longitudinal wings by Gaussian-apodized anisotropic lobes, primary sigma .85 and secondary sigma .65 H64px; transverse sigma .23. Smooth continuous intensity, no polygon/star boundary.",
+    "sampling": "Gaussian approximation to physical pixel-box convolution, pixelSigma=.5/(DPR*H/64); each lobe normalized by original/filtered axis-area ratio. This local sampling normalization is not a brightness cap.",
+    "preservedRadiance": 14,
+    "preservedSourceRadiusH64": 0.5,
+    "preservedRayGain": 1.9,
+    "preservedAngleDegrees": 17
+  },
+  "ruleToCode": [
+    {
+      "rule": "物理因果・源とOBSの分離",
+      "model": "R8材質到着後の発光源をMRTから読み、同一源に結び付けた観測PSFを合成する近似",
+      "implementation": "WORLD_WGSL/reconstruct unchanged; PRESENT_WGSL/present compact lobe equations",
+      "expectedOutput": "材質到着前や源OFFでは光条なし。小光点が身体支持範囲上に現れ、光条だけが近傍へ広がる。",
+      "confirmed": "CPU causal gates only; native unknown"
+    },
+    {
+      "rule": "DQ-05/LDM空間包絡・SamplingContract",
+      "model": "60点の局所白芯を維持し、長い指数裾を滑らかなapodized Gaussianへ変更。画素積分の面積補償。",
+      "implementation": "GLINT_OPTICS, rayPSF and PRESENT_WGSL/present",
+      "expectedOutput": "H64の長い翼と衣装網目を減らし、複数の小光点を分離。顔の可読性を維持。",
+      "confirmed": "CPU spatial profile and area only; actual visible count unknown"
+    },
+    {
+      "rule": "DQ-07時間包絡",
+      "model": "R8の独立stagger/durationを完全維持。新たな反復や点数増加なし。",
+      "implementation": "GLINT_SITES, glintAt and WORLD_WGSL pulse unchanged",
+      "expectedOutput": "元材質定着に遅れて個別に明滅し、R8の顔全体の同時白化を再導入しない。",
+      "confirmed": "CPU pulses and exact placement/timing identity"
+    }
+  ],
+  "approximations": [
+    "Gaussian apodization approximates an observer PSF; not a complete aperture diffraction or camera simulation.",
+    "Pixel box approximated by Gaussian footprint; native subpixel behavior must be reviewed.",
+    "Source radiance remains14; compact wing integral differs from R8 by design, without scaling the entire effect."
+  ],
+  "bWorkflow": "Frozen R8 derivative: canonical loader all-derivatives exception applies, no new B retrieval/raster. Current DVA E physical/optical and quality rules applied.",
+  "qualityStatus": "unknown pending actual native R9 review; CPU does not establish visibly small-many success",
+  "preserved": [
+    "Source body PNG",
+    "material row transport/motion",
+    "SFX",
+    "world source emission and existing bloom",
+    "source/observer gates and verify mute",
+    "site distribution and timing"
+  ],
+  "historicalAttribution": {
+    "creativeDesignOwner": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "technicalImplementer": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "historicalSourceAttribution": {
+      "creativeDesignOwner": {
+        "modelId": "gpt-6.1-sol",
+        "displayName": "GPT-6.1-Sol"
+      },
+      "technicalImplementer": {
+        "modelId": "gpt-6.1-sol",
+        "displayName": "GPT-6.1-Sol"
+      },
+      "historicalSourceAttribution": {
+        "creativeDesignOwner": {
+          "modelId": "gpt-6.1-sol",
+          "displayName": "GPT-6.1-Sol",
+          "contribution": "Primary settled creative correction design."
+        },
+        "technicalImplementer": {
+          "modelId": "gpt-6-luna",
+          "displayName": "GPT-6-Luna",
+          "contribution": "Bounded implementation, package closure, and CPU tests."
+        },
+        "historicalSourceAttribution": "R5 actual execution remains UNEXPOSED in the source manifest; this R6 does not retroactively assign R5 work."
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "human-transmutation-r10-design-facts/v1",
+  "source": {
+    "design": "outputs/request-20261010/human-transmutation-r10-body-completion-design/DESIGN.md",
+    "sha256": "127da261f80da9c24e72b50cbb2e4cacdfc4ae9140a405c38ce49b29e68f3087",
+    "analytic": "outputs/request-20261010/human-transmutation-r10-body-completion-design/completion-design.mjs",
+    "analyticSha256": "0ce7a56f801601e5f015df4128e3e6a7b8dc5d8362c7fbfdd347fdeb7c9014ec",
+    "parentManifestSha256": "c6266bedffa0588ce5c7c4ad09ed715f229d29702f63ea6fd3055980b7bf657e",
+    "parentSealSha256": "9633466ad978bfb0080297d049c73ea8470eb1d33b0b154691fb2c302af76c44"
+  },
+  "change": "Replace only R9 crown closure with sampled-alpha contour emission and add completion pulse to original 60 sites.",
+  "constants": {
+    "beginsMs": 814,
+    "riseEndMs": 844,
+    "fadeBeginsMs": 890,
+    "endsMs": 1020,
+    "lifetimeMs": 1200,
+    "widthCss": "0.8*(actualActorHeight/64)",
+    "neighborUv": "vec2f(widthCSS)/p.rect.zw",
+    "sourceRGB": [
+      0.24,
+      1.15,
+      0.72
+    ],
+    "sourceGain": 1.65,
+    "glintRiseMs": 18,
+    "glintFallMs": 40
+  },
+  "approximation": "Four-neighbor alpha-bound surface edge, not physical Fresnel; no emission outside sampled alpha.",
+  "preserved": {
+    "originalRgba": true,
+    "cropAndAlphaSupport": true,
+    "transportMs": 700,
+    "glintSites": 60,
+    "opticalDesign": {
+      "siteCount": 60,
+      "siteCountChange": 0,
+      "sitePlacementAndTiming": "exact R8 bytes",
+      "sourceRadiusH64": 0.5,
+      "sourceRadiance": 14,
+      "rayGain": 1.9,
+      "primaryRayH64": 0.85,
+      "secondaryRayH64": 0.65,
+      "rayWidthH64": 0.23,
+      "axisDegrees": 17,
+      "longitudinalFalloff": "Gaussian-apodized smooth intensity instead of exponential long wing",
+      "sampling": "DPR-aware Gaussian pixel footprint; area normalization per lobe; no new global brightness clamp/dimming"
+    },
+    "hdrAttachments": true,
+    "worldMrtOutputs": 3,
+    "renderPasses": 4,
+    "sfx": true,
+    "lifetimeMs": 1200
+  }
+}

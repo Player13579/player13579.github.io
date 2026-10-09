@@ -1,0 +1,6 @@
+{
+  "command": "node --test tests/r9.test.mjs",
+  "exitCode": 0,
+  "stdout": "CPU_FACTS_NOT_VISIBLE_ACCEPTANCE {\"sites\":60,\"max\":16,\"phases\":{\"450\":14,\"650\":11,\"850\":4,\"1050\":0},\"distinctRoundedPeakTimes\":60}\n✔ non-row separated material sites reach shader unchanged (7.0503ms)\n✔ independent pulses follow fully fixed material, expire and obey all gates (1.9488ms)\n✔ fine finite-source PSF, radiance and optical angle remain intact (0.4358ms)\n✔ independent onset and short lifetime reduce correlated CPU occupancy (41.2637ms)\n✔ R9 exact entries and native fixture registration are preserved (10.6419ms)\n✔ transport source PNG and SFX retain exact parent bytes (3.9095ms)\n✔ compact smooth optical lobes retain angle, conserve pixel-convolved area and reject long wings (39.4089ms)\n✔ R8 exact sites, timing, world material emission and unrelated shader sections preserved (11.0833ms)\nℹ tests 8\nℹ suites 0\nℹ pass 8\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 236.4866\n",
+  "stderr": ""
+}

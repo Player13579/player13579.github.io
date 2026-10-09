@@ -1,0 +1,176 @@
+{
+  "tests": {
+    "total": 8,
+    "passed": 8,
+    "execution": "CPU-TEST-EXECUTION.json"
+  },
+  "syntax": [
+    {
+      "path": "cause.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "core.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "fixture.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "gallery-auth.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "glints.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "handoff-state.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "human-canvas-fit.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "preview.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "sfx.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "shader.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "tests/gallery-inline-0.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "path": "tests/index-inline-0.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    }
+  ],
+  "closure": {
+    "entry": "gallery.html",
+    "visited": [
+      "assets/philia-front-nine-v752.png",
+      "cause.mjs",
+      "core.mjs",
+      "fixture.mjs",
+      "gallery-auth.mjs",
+      "gallery.html",
+      "glints.mjs",
+      "handoff-state.mjs",
+      "human-canvas-fit.mjs",
+      "index.html",
+      "preview.mjs",
+      "sfx.mjs",
+      "shader.mjs"
+    ],
+    "expectedCount": 13,
+    "edges": [
+      {
+        "from": "gallery.html",
+        "reference": "./human-canvas-fit.mjs",
+        "resolved": "human-canvas-fit.mjs"
+      },
+      {
+        "from": "gallery.html",
+        "reference": "./gallery-auth.mjs",
+        "resolved": "gallery-auth.mjs"
+      },
+      {
+        "from": "gallery.html",
+        "reference": "./index.html",
+        "resolved": "index.html"
+      },
+      {
+        "from": "index.html",
+        "reference": "./preview.mjs",
+        "resolved": "preview.mjs"
+      },
+      {
+        "from": "preview.mjs",
+        "reference": "./core.mjs",
+        "resolved": "core.mjs"
+      },
+      {
+        "from": "preview.mjs",
+        "reference": "./fixture.mjs",
+        "resolved": "fixture.mjs"
+      },
+      {
+        "from": "preview.mjs",
+        "reference": "./sfx.mjs",
+        "resolved": "sfx.mjs"
+      },
+      {
+        "from": "fixture.mjs",
+        "reference": "./assets/philia-front-nine-v752.png",
+        "resolved": "assets/philia-front-nine-v752.png"
+      },
+      {
+        "from": "core.mjs",
+        "reference": "./cause.mjs",
+        "resolved": "cause.mjs"
+      },
+      {
+        "from": "core.mjs",
+        "reference": "./shader.mjs",
+        "resolved": "shader.mjs"
+      },
+      {
+        "from": "shader.mjs",
+        "reference": "./handoff-state.mjs",
+        "resolved": "handoff-state.mjs"
+      },
+      {
+        "from": "shader.mjs",
+        "reference": "./glints.mjs",
+        "resolved": "glints.mjs"
+      },
+      {
+        "from": "glints.mjs",
+        "reference": "./handoff-state.mjs",
+        "resolved": "handoff-state.mjs"
+      }
+    ],
+    "result": "passed"
+  },
+  "sourceAlpha": {
+    "sites": 60,
+    "neighborhoodMinimum": 0.8549019607843137,
+    "thresholdExclusive": 0.85
+  },
+  "unchangedContracts": [
+    "GLINT_SITES exact60 and all timing",
+    "WORLD_WGSL byte-equal exported string",
+    "bodyPNG/SFX/handoff bytes",
+    "HDR presentation shoulder and bloom unchanged"
+  ],
+  "limitations": [
+    "No WebGPU shader compilation/native review",
+    "CPU PSF and nonzero counts are not evidence of visibly separated points",
+    "No ordinary SFX listening, Safari/iPad, main integration or publication"
+  ],
+  "toolingReadFailure": {
+    "operation": "rg explicit Windows wildcard paths",
+    "result": "OS error123; no files modified; corrected with -g filters"
+  }
+}

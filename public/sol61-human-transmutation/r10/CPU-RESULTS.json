@@ -1,0 +1,42 @@
+{
+  "schema": "human-transmutation-r10-cpu-results/v1",
+  "source": {
+    "frozenR9ManifestSha256": "c6266bedffa0588ce5c7c4ad09ed715f229d29702f63ea6fd3055980b7bf657e",
+    "frozenR9SealSha256": "9633466ad978bfb0080297d049c73ea8470eb1d33b0b154691fb2c302af76c44",
+    "actualPngSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+    "crop": [0, 0, 256, 256]
+  },
+  "tests": { "total": 7, "passed": 7, "failed": 0, "result": "passed" },
+  "actualRgbaContour": {
+    "decoder": "Node zlib; PNG filters 0-4; RGBA8 actual R9 source",
+    "registeredHeights": [64, 128],
+    "neighborCssWidth": [0.8, 1.6],
+    "H64NeighborTexels": 2.8125,
+    "positiveContourSamplesByCropYBand": [344, 468, 395, 938],
+    "sampledZeroAlphaEmitsZero": true,
+    "interpretation": "CPU source-support evidence only; not a visual-quality judgment"
+  },
+  "glints": {
+    "sourceSites": 60,
+    "arrivalPulseUnchangedBeforeMs": 814,
+    "completionUsesSameSitesAndStagger": true,
+    "completionUsesOriginalDurationAndRadius": true,
+    "union": "max(arrivalPulse,completionPulse)",
+    "finalSiteExpiredBeforeMs": 1200
+  },
+  "preservation": {
+    "sourcePngByteEqualToR9": true,
+    "SfxByteEqualToR9": true,
+    "handoffByteEqualToR9": true,
+    "rowTransportConstantsPreserved": true,
+    "mrtOutputs": 3,
+    "submittedPasses": 4,
+    "sourceAndObserverControlsSeparate": true
+  },
+  "limitations": [
+    "WebGPU shader compilation not run",
+    "Native H64/H128 captures not run",
+    "CPU contour sample counts do not prove visible continuity or visual quality",
+    "Ordinary SFX listening, Safari/iPad, user adoption, publication, and main-game integration remain unverified"
+  ]
+}

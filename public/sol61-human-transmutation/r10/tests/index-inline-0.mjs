@@ -1,0 +1,1 @@
+if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('human-embed')
