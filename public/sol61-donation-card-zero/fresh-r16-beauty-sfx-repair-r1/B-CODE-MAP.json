@@ -1,0 +1,447 @@
+{
+  "schema": "dva-donation-r16-current-executable-b-map/v1",
+  "foundation": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "base": {
+      "path": "inputs/B-base.md",
+      "gitBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+      "sha256": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25"
+    },
+    "extension": {
+      "path": "inputs/B-extension.md",
+      "gitBlob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+      "sha256": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7"
+    }
+  },
+  "PH": [
+    {
+      "id": "PH-R16-coin",
+      "state": {
+        "cause": "Unique successful donation-settled receipt, integrated age0..2400 and source/scene/alive/cancel controls.",
+        "form": "Actual carved cylindrical cap/rim hit and normals; rigid semantic trajectory"
+      },
+      "OctaDomainTemplate": {
+        "Domains": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No temperature or thermal state is declared."
+            ],
+            "evidence_or_constraint": "PH-R16-coin: Thermo not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No real fluid density/velocity/drag solver; semantic packet transport is not fluid motion."
+            ],
+            "evidence_or_constraint": "PH-R16-coin: Fluid not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "Actual conductor/dielectric reflected response",
+              "Same physical coverage masks source visibility/occlusion"
+            ],
+            "evidence_or_constraint": "source/material.mjs + source/shader.mjs actual hit/render path"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "RGB gold eta/k and GGX/Smith microfacet finish",
+              "Unchanged carved relief actual normal, no forced matte pattern floor"
+            ],
+            "evidence_or_constraint": "source/material.mjs; source/engraving.mjs; source/shader.mjs"
+          },
+          "Electromagnetics": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "Gold complex IOR accounts for optical interface losses"
+            ],
+            "evidence_or_constraint": "source/material.mjs; no free-charge or induction dynamics simulated"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rigid semantic carrier/registered UI; no stress-dependent flow, creep or deformation."
+            ],
+            "evidence_or_constraint": "PH-R16-coin: Rheology not part of declared mechanism; no extra phenomenon invented."
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No coherent world wave/film/interference selected. Analytic pupil PSF belongs to OBS, not this PH."
+            ],
+            "evidence_or_constraint": "PH-R16-coin: WaveOptics not part of declared mechanism; no extra phenomenon invented."
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No wetting, adsorption, adhesion, capillarity or physical coating state declared. Relief roughness belongs to Materials."
+            ],
+            "evidence_or_constraint": "PH-R16-coin: SurfaceScience not part of declared mechanism; no extra phenomenon invented."
+          }
+        }
+      },
+      "DominantCouplings": [
+        "receipt/time -> carrier position/alpha/arrival/source",
+        "surface normal + material + view/light -> outgoing reflected radiance",
+        "visible source MRT -> normalized OBS -> display; no OBS feedback into PH"
+      ],
+      "Evidence": "Executable source named in domains, native actual R16 pixels pending."
+    },
+    {
+      "id": "PH-R16-card",
+      "state": {
+        "cause": "Unique successful donation-settled receipt, integrated age0..2400 and source/scene/alive/cancel controls.",
+        "form": "Registered diagnostic UI surface/anchor"
+      },
+      "OctaDomainTemplate": {
+        "Domains": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No temperature or thermal state is declared."
+            ],
+            "evidence_or_constraint": "PH-R16-card: Thermo not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No real fluid density/velocity/drag solver; semantic packet transport is not fluid motion."
+            ],
+            "evidence_or_constraint": "PH-R16-card: Fluid not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "Actual conductor/dielectric reflected response",
+              "Same physical coverage masks source visibility/occlusion"
+            ],
+            "evidence_or_constraint": "source/material.mjs + source/shader.mjs actual hit/render path"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "Declared dielectric surface versus gold chip or emissive intake fill",
+              "Surface roughness/albedo and geometry mask"
+            ],
+            "evidence_or_constraint": "source/shader.mjs dielectricSurface and card/intake surfaces"
+          },
+          "Electromagnetics": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "Dielectric F0 and optional gold chip IOR describe optical interface response"
+            ],
+            "evidence_or_constraint": "source/material.mjs; no free-charge or induction dynamics simulated"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rigid semantic carrier/registered UI; no stress-dependent flow, creep or deformation."
+            ],
+            "evidence_or_constraint": "PH-R16-card: Rheology not part of declared mechanism; no extra phenomenon invented."
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No coherent world wave/film/interference selected. Analytic pupil PSF belongs to OBS, not this PH."
+            ],
+            "evidence_or_constraint": "PH-R16-card: WaveOptics not part of declared mechanism; no extra phenomenon invented."
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No wetting, adsorption, adhesion, capillarity or physical coating state declared. Relief roughness belongs to Materials."
+            ],
+            "evidence_or_constraint": "PH-R16-card: SurfaceScience not part of declared mechanism; no extra phenomenon invented."
+          }
+        }
+      },
+      "DominantCouplings": [
+        "receipt/time -> carrier position/alpha/arrival/source",
+        "surface normal + material + view/light -> outgoing reflected radiance",
+        "visible source MRT -> normalized OBS -> display; no OBS feedback into PH"
+      ],
+      "Evidence": "Executable source named in domains, native actual R16 pixels pending."
+    },
+    {
+      "id": "PH-R16-intake",
+      "state": {
+        "cause": "Unique successful donation-settled receipt, integrated age0..2400 and source/scene/alive/cancel controls.",
+        "form": "Registered diagnostic UI surface/anchor"
+      },
+      "OctaDomainTemplate": {
+        "Domains": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No temperature or thermal state is declared."
+            ],
+            "evidence_or_constraint": "PH-R16-intake: Thermo not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No real fluid density/velocity/drag solver; semantic packet transport is not fluid motion."
+            ],
+            "evidence_or_constraint": "PH-R16-intake: Fluid not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "Actual conductor/dielectric reflected response",
+              "Same physical coverage masks source visibility/occlusion"
+            ],
+            "evidence_or_constraint": "source/material.mjs + source/shader.mjs actual hit/render path"
+          },
+          "Materials": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "Declared dielectric surface versus gold chip or emissive intake fill",
+              "Surface roughness/albedo and geometry mask"
+            ],
+            "evidence_or_constraint": "source/shader.mjs dielectricSurface and card/intake surfaces"
+          },
+          "Electromagnetics": {
+            "applicability": "applicable",
+            "role": "supporting",
+            "items": [
+              "Dielectric F0 and optional gold chip IOR describe optical interface response"
+            ],
+            "evidence_or_constraint": "source/material.mjs; no free-charge or induction dynamics simulated"
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rigid semantic carrier/registered UI; no stress-dependent flow, creep or deformation."
+            ],
+            "evidence_or_constraint": "PH-R16-intake: Rheology not part of declared mechanism; no extra phenomenon invented."
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No coherent world wave/film/interference selected. Analytic pupil PSF belongs to OBS, not this PH."
+            ],
+            "evidence_or_constraint": "PH-R16-intake: WaveOptics not part of declared mechanism; no extra phenomenon invented."
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No wetting, adsorption, adhesion, capillarity or physical coating state declared. Relief roughness belongs to Materials."
+            ],
+            "evidence_or_constraint": "PH-R16-intake: SurfaceScience not part of declared mechanism; no extra phenomenon invented."
+          }
+        }
+      },
+      "DominantCouplings": [
+        "receipt/time -> carrier position/alpha/arrival/source",
+        "surface normal + material + view/light -> outgoing reflected radiance",
+        "visible source MRT -> normalized OBS -> display; no OBS feedback into PH"
+      ],
+      "Evidence": "Executable source named in domains, native actual R16 pixels pending."
+    },
+    {
+      "id": "PH-R16-medium",
+      "state": {
+        "cause": "Unique successful donation-settled receipt, integrated age0..2400 and source/scene/alive/cancel controls.",
+        "form": "Finite coin-local pulsed compact radiance packets"
+      },
+      "OctaDomainTemplate": {
+        "Domains": {
+          "Thermo": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No temperature or thermal state is declared."
+            ],
+            "evidence_or_constraint": "PH-R16-medium: Thermo not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Fluid": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No real fluid density/velocity/drag solver; semantic packet transport is not fluid motion."
+            ],
+            "evidence_or_constraint": "PH-R16-medium: Fluid not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Optics": {
+            "applicability": "applicable",
+            "role": "primary",
+            "items": [
+              "Finite source radiance and selected scattering phase approximation",
+              "Occlusion by the same coin/card/intake masks"
+            ],
+            "evidence_or_constraint": "source/glints.mjs actual WORLD medium path"
+          },
+          "Materials": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Digital carrier packet does not declare a measured solid/liquid material."
+            ],
+            "evidence_or_constraint": "PH-R16-medium: Materials not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Electromagnetics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No charge, field or polarization dynamics declared for the digital packet."
+            ],
+            "evidence_or_constraint": "PH-R16-medium: Electromagnetics not part of declared mechanism; no extra phenomenon invented."
+          },
+          "Rheology": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "Rigid semantic carrier/registered UI; no stress-dependent flow, creep or deformation."
+            ],
+            "evidence_or_constraint": "PH-R16-medium: Rheology not part of declared mechanism; no extra phenomenon invented."
+          },
+          "WaveOptics": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No coherent world wave/film/interference selected. Analytic pupil PSF belongs to OBS, not this PH."
+            ],
+            "evidence_or_constraint": "PH-R16-medium: WaveOptics not part of declared mechanism; no extra phenomenon invented."
+          },
+          "SurfaceScience": {
+            "applicability": "not_applicable",
+            "role": "latent",
+            "items": [
+              "No wetting, adsorption, adhesion, capillarity or physical coating state declared. Relief roughness belongs to Materials."
+            ],
+            "evidence_or_constraint": "PH-R16-medium: SurfaceScience not part of declared mechanism; no extra phenomenon invented."
+          }
+        }
+      },
+      "DominantCouplings": [
+        "receipt/time -> carrier position/alpha/arrival/source",
+        "surface normal + material + view/light -> outgoing reflected radiance",
+        "visible source MRT -> normalized OBS -> display; no OBS feedback into PH"
+      ],
+      "Evidence": "Executable source named in domains, native actual R16 pixels pending."
+    }
+  ],
+  "OBS": [
+    {
+      "id": "OBS-R16-near",
+      "source": "visible WORLD MRT broad and fullres glint source; finite normalized PSF",
+      "fraction": 0.065
+    },
+    {
+      "id": "OBS-R16-cross",
+      "source": "same source; normalized common22.5/112.5 degree axes",
+      "fraction": 0.28
+    },
+    {
+      "id": "OBS-R16-display",
+      "source": "common post-convolution RGB compression/sRGB",
+      "sourceIndependentExtraLight": false
+    }
+  ],
+  "rules": [
+    {
+      "rule": "ECodeImplementation.ExecutableECodeBranchRule",
+      "reference": "Ext592–607",
+      "file": "runtime.mjs",
+      "line": 120,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    },
+    {
+      "rule": "UniversalPhenomenonRule/StateTransformer/VisualCausality",
+      "reference": "Base326–448",
+      "file": "source/plan.mjs",
+      "line": 59,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    },
+    {
+      "rule": "OctaDomainDefinition",
+      "reference": "Base954–996",
+      "file": "B-CODE-MAP.json",
+      "line": null,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    },
+    {
+      "rule": "VFX.MaterialOpticalResponse/ReflectionClosure",
+      "reference": "Ext438–450;Base1498–1550",
+      "file": "source/shader.mjs",
+      "line": 81,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    },
+    {
+      "rule": "ObservationRegistrySeparationRule",
+      "reference": "Base1147–1182",
+      "file": "source/shader.mjs",
+      "line": 24,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    },
+    {
+      "rule": "ObservationIntensityBudgetRule",
+      "reference": "Base1204–1213,1354–1376",
+      "file": "source/shader.mjs",
+      "line": 249,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    },
+    {
+      "rule": "LensFlareSourceBinding/PostEffectsCommonRule",
+      "reference": "Base1184–1202;Ext638–649",
+      "file": "source/shader.mjs",
+      "line": 251,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    },
+    {
+      "rule": "SamplingAndReconstructionRule",
+      "reference": "Base1226–1239",
+      "file": "source/shader.mjs",
+      "line": 287,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    },
+    {
+      "rule": "KeywordExpansion/LDM",
+      "reference": "Ext13–34,725–752",
+      "file": "source/plan.mjs",
+      "line": 27,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    },
+    {
+      "rule": "SFX cause/time",
+      "reference": "Ext606–607",
+      "file": "source/sfx-design.mjs",
+      "line": 9,
+      "scope": "Current bounded revision mapping; no historical B-production provenance or overall native acceptance implied."
+    }
+  ],
+  "budget": {
+    "near": 0.065,
+    "rays": 0.28,
+    "sharedTotal": 0.345,
+    "sourceSubtraction": true,
+    "metalCoverageObserverBypass": false,
+    "globalMeasuredEnergyConservation": "not_proved"
+  },
+  "status": "Actual revised code mapping, native quality pending; inherited full physical/material/acoustic simulation not claimed."
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "dva-technical-derivative-provenance/v1",
+  "technicalRevisionId": "donation-r16-sfx-lifecycle-repair-r1",
+  "creativeVersionId": "donation-zero-sol61-r16-beauty",
+  "derivedFrom": {
+    "sourceIdentity": "a425d112ef907b899ca0a15ff413357a2862fe0ea9f0da470132654126f834ab",
+    "sourceReadyPath": "inputs/source-r16/READY.json",
+    "sourceVersion": "donation-zero-sol61-r16-beauty",
+    "sourceManifestSha256": "5d0525618ffa17e0bca464b76ff599e677e31eadf9919182d8e8fff36fb77667",
+    "sourceSealSha256": "868904c128d66ad9e81fd8357f6a4636e56b621fe68a439ee76c6d8f673e1108",
+    "sourcePath": "outputs/request-20261009/donation-zero-sol61-r16-beauty/"
+  },
+  "change": {
+    "files": [
+      "app.mjs"
+    ],
+    "purpose": "Gate dispatch of the existing R16 SFX score on a current active cause frame whose queue work completed; separate audio unlock from playback phase timing.",
+    "preservedRuntimeFiles": [
+      "index.html",
+      "runtime.mjs",
+      "source/engraving.mjs",
+      "source/glints.mjs",
+      "source/material.mjs",
+      "source/plan.mjs",
+      "source/sfx-design.mjs",
+      "source/shader.mjs"
+    ]
+  },
+  "creativeAllowance": {
+    "edition": 16,
+    "cap": 17,
+    "consumed": 4,
+    "remaining": 1,
+    "creativeChanges": 0
+  },
+  "status": "CPU_LIFECYCLE_VERIFIED_NATIVE_LISTENING_PENDING",
+  "author": {
+    "assignedModelSetting": "GPT-6-Luna medium",
+    "executionModelIdentity": "not independently exposed in runtime",
+    "modelRoutingSnapshot": {
+      "path": "inputs/model-routing/model-routing-state.json",
+      "sha256": "165fae0f74ff871083ccb1d0f1fa68463702f037fe377386b2eeb0711fd322e7",
+      "updatedAt": "2026-10-08T03:20:35.9712766Z",
+      "modelCacheFetchedAt": "2026-10-08T03:20:28.693085Z"
+    }
+  }
+}

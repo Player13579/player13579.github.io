@@ -1,0 +1,178 @@
+{
+  "schema": "dva-donation-r17-balanced-sparkles-package/v1",
+  "version": "donation-zero-sol61-r17-balanced-sparkles",
+  "versionId": "donation-zero-sol61-r17-balanced-sparkles",
+  "group": "common-donation-zero-sol61",
+  "creativeVersionOrdinal": 17,
+  "creativeVersionCap": 17,
+  "parentVersion": "donation-zero-sol61-r16-beauty",
+  "entry": "index.html?embed=1&galleryAutoLoop=1",
+  "routePath": "public/sol61-donation-card-zero/fresh-r17-balanced-sparkles",
+  "files": [
+    {
+      "path": "app.mjs",
+      "bytes": 15597,
+      "sha256": "d0ce4aa911a7c2c8a555630330cc112409fcc92aa3ec568db049e42a9b0b8398",
+      "sourceSha256": "bd48cc6b2e9324975f3cd133a032bbfe57f34a0d744b537cc516d7949ff9a933",
+      "changed": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 2073,
+      "sha256": "25921ac5c4b3003f8248503a819ee187786ce9e6d7839b77196cd13e8f8a0875",
+      "sourceSha256": "25921ac5c4b3003f8248503a819ee187786ce9e6d7839b77196cd13e8f8a0875",
+      "changed": false
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 36448,
+      "sha256": "a9f1dde1d6de30bdbf8678d9a2b7efe0cce69b5604569f3f9e4a8cc7bde50653",
+      "sourceSha256": "a9f1dde1d6de30bdbf8678d9a2b7efe0cce69b5604569f3f9e4a8cc7bde50653",
+      "changed": false
+    },
+    {
+      "path": "source/engraving.mjs",
+      "bytes": 3164,
+      "sha256": "1ae5c2e6290273118747e178e35c7c1b150a3fa765d65c517548f6ec3d22a391",
+      "sourceSha256": "1ae5c2e6290273118747e178e35c7c1b150a3fa765d65c517548f6ec3d22a391",
+      "changed": false
+    },
+    {
+      "path": "source/glints.mjs",
+      "bytes": 12431,
+      "sha256": "71762e89cac332940f6a37dc8c32724dd2dfb69703f5d7c3049bd08a801ee559",
+      "sourceSha256": "71762e89cac332940f6a37dc8c32724dd2dfb69703f5d7c3049bd08a801ee559",
+      "changed": false
+    },
+    {
+      "path": "source/material.mjs",
+      "bytes": 9577,
+      "sha256": "f838a25f9f2f412bb5347a2ae737fcd06361c30b32606d0ddb0cef5ec73c2fc0",
+      "sourceSha256": "f838a25f9f2f412bb5347a2ae737fcd06361c30b32606d0ddb0cef5ec73c2fc0",
+      "changed": false
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 7371,
+      "sha256": "7a8de0c4af5ef7d8bd3b8fe8f71bcfa5c5d60b3849cc21e36040072819d8a41f",
+      "sourceSha256": "7a8de0c4af5ef7d8bd3b8fe8f71bcfa5c5d60b3849cc21e36040072819d8a41f",
+      "changed": false
+    },
+    {
+      "path": "source/sfx-design.mjs",
+      "bytes": 3847,
+      "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9",
+      "sourceSha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9",
+      "changed": false
+    },
+    {
+      "path": "source/shader.mjs",
+      "bytes": 16611,
+      "sha256": "3e0bf6029229603394f0a50f0086ac29747f4ea83048a84d5ec1d520dd26da4a",
+      "sourceSha256": "3e0bf6029229603394f0a50f0086ac29747f4ea83048a84d5ec1d520dd26da4a",
+      "changed": false
+    }
+  ],
+  "runtimeClosure": [
+    "app.mjs",
+    "index.html",
+    "runtime.mjs",
+    "source/engraving.mjs",
+    "source/glints.mjs",
+    "source/material.mjs",
+    "source/plan.mjs",
+    "source/sfx-design.mjs",
+    "source/shader.mjs"
+  ],
+  "uniformBytes": 208,
+  "uniformFloats": 52,
+  "passes": 6,
+  "durationMs": 2400,
+  "coinCount": 5,
+  "siteBalance": {
+    "surfaceSitesPerCoin": 6,
+    "surroundingSitesPerCoin": 8,
+    "potentialSitesPerCoin": 14,
+    "surfacePatchRadius": 0.6,
+    "surfacePulseMs": [
+      81,
+      129
+    ],
+    "surroundingPulseMsMax": 80,
+    "activeCoinGain": "1/sqrt(max(1, active coin count))"
+  },
+  "source": {
+    "path": "SOURCE-PINS.json",
+    "sha256": "5e9a8917455878f55ceda5c273425c4f070648c57d81c7e9ccf608db37f98011",
+    "technicalManifestSha256": "ebaf95489acc3600aed4b65b5e9e5f7b0d59287ea33856f620f1db741d26adbf",
+    "technicalSealSha256": "17bc527f338409ebdf4c2800bb24f0cca5c11dc997aa224447d401ea42990780",
+    "creativeReadySha256": "a425d112ef907b899ca0a15ff413357a2862fe0ea9f0da470132654126f834ab"
+  },
+  "creator": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol",
+    "contribution": "settled creative design contract"
+  },
+  "implementation": {
+    "assignedCapability": "bounded implementation worker",
+    "executionModelIdentity": "not independently exposed in this runtime"
+  },
+  "allowance": {
+    "authority": "donation-additional-five-20261009",
+    "authorized": 5,
+    "consumed": 5,
+    "remaining": 0,
+    "cap": 17,
+    "nextEditionAuthorized": false
+  },
+  "adoption": "unknown",
+  "quality": {
+    "status": "pending-primary-actual-WebGPU-review",
+    "qualityReviewStatus": "in-progress"
+  },
+  "technicalReplay": "CPU checks passed; native WebGPU pending",
+  "publication": "not_run",
+  "normalSfxListening": "not_run",
+  "SafariIpad": "not_run",
+  "hardwarePerformance": "not_run",
+  "mainIntegration": "not_connected",
+  "imagesAdded": 0,
+  "supportFiles": [
+    {
+      "path": "TECHNICAL-CHANGE.json",
+      "bytes": 1024,
+      "sha256": "ba952899dcf63af2ec18b479025d04971c82edaf4443359950866983c3cca67e"
+    }
+  ],
+  "technicalRevisionId": "donation-r17-runtime-status-repair-r1",
+  "technicalDerivative": {
+    "schema": "dva-donation-r17-runtime-status-repair/v1",
+    "technicalRevisionId": "donation-r17-runtime-status-repair-r1",
+    "creativeVersion": "donation-zero-sol61-r17-balanced-sparkles",
+    "creativeSource": {
+      "path": "outputs/request-20261009/donation-zero-sol61-r17-balanced-sparkles",
+      "readySha256": "97d0e40189a7570d7b323a0f024e9a11c11fd280ed3d332681475df0f03bb636",
+      "manifestSha256": "b9b085d1dad486d03331d0ae8bd53c9db5fe2408d9ac31cf1e3b7223b2075bf5",
+      "sealSha256": "b3a106b83006d48dfd0f5f84c7d329e933992aa816773b7afb7cd1659a2e8a4f"
+    },
+    "changedRuntimeFiles": [
+      "app.mjs"
+    ],
+    "reason": "Derive actual snapshot edition and allowance from current Plan; original sealed snapshot incorrectly reported16/4/1 instead of17/5/0.",
+    "creativeChanges": false,
+    "creativeAllowance": {
+      "consumed": 5,
+      "remaining": 0,
+      "cap": 17
+    },
+    "metadataCorrection": "Surface pulse duration formula spans approximately80.6–129ms; old support prose81–139 is historical.",
+    "native": "pending"
+  },
+  "originalCreativeSource": {
+    "path": "outputs/request-20261009/donation-zero-sol61-r17-balanced-sparkles",
+    "readySha256": "97d0e40189a7570d7b323a0f024e9a11c11fd280ed3d332681475df0f03bb636",
+    "manifestSha256": "b9b085d1dad486d03331d0ae8bd53c9db5fe2408d9ac31cf1e3b7223b2075bf5",
+    "sealSha256": "b3a106b83006d48dfd0f5f84c7d329e933992aa816773b7afb7cd1659a2e8a4f"
+  },
+  "nativeVerification": "pending technical derivative replay"
+}

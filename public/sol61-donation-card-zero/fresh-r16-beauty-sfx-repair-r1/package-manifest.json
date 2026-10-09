@@ -1,0 +1,176 @@
+{
+  "schema": "dva-donation-r16-beauty-source/v1",
+  "version": "donation-zero-sol61-r16-beauty",
+  "versionId": "donation-zero-sol61-r16-beauty",
+  "group": "common-donation-zero-sol61",
+  "creativeVersionOrdinal": 16,
+  "creativeVersionCap": 17,
+  "parentVersion": "donation-zero-sol61-r15-oriented-fresnel-gold",
+  "entry": "index.html?embed=1&galleryAutoLoop=1",
+  "routePath": "public/sol61-donation-card-zero/fresh-r16-beauty",
+  "files": [
+    {
+      "path": "app.mjs",
+      "bytes": 12308,
+      "sha256": "a8476961227f676f9c77716d3829c0304773861c5c58da4ba87d9f0224a3c1ad"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2043,
+      "sha256": "75704d7c4caf96d84adb6d8914f8092a1dc3c2d0d6fef4377b0abd33869772e7"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 36448,
+      "sha256": "a9f1dde1d6de30bdbf8678d9a2b7efe0cce69b5604569f3f9e4a8cc7bde50653"
+    },
+    {
+      "path": "source/engraving.mjs",
+      "bytes": 3164,
+      "sha256": "1ae5c2e6290273118747e178e35c7c1b150a3fa765d65c517548f6ec3d22a391"
+    },
+    {
+      "path": "source/glints.mjs",
+      "bytes": 9786,
+      "sha256": "23dcea7218f96ccdeb04b1c1af32f5d054e4a062c548a0bea13452b2b7ba3bf7"
+    },
+    {
+      "path": "source/material.mjs",
+      "bytes": 9577,
+      "sha256": "f838a25f9f2f412bb5347a2ae737fcd06361c30b32606d0ddb0cef5ec73c2fc0"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 7360,
+      "sha256": "b21c8de6015bbd1e90bb3a5e3c1ec15f7bd9a2f4132f0a7e33cbdf8c33d4e544"
+    },
+    {
+      "path": "source/sfx-design.mjs",
+      "bytes": 3847,
+      "sha256": "a29e3ba6e84592e73a0db4f52ef25f7f6f8ae4d8ea484a6e85adbe6f444251c9"
+    },
+    {
+      "path": "source/shader.mjs",
+      "bytes": 16621,
+      "sha256": "ae18144f32435e89ca6308e0d3bc9893f23d7bc4f984ef4551e67531fb602a60"
+    }
+  ],
+  "runtimeClosure": [
+    "app.mjs",
+    "index.html",
+    "runtime.mjs",
+    "source/engraving.mjs",
+    "source/glints.mjs",
+    "source/material.mjs",
+    "source/plan.mjs",
+    "source/sfx-design.mjs",
+    "source/shader.mjs"
+  ],
+  "uniformBytes": 208,
+  "passes": 6,
+  "durationMs": 2400,
+  "shaderHashes": {
+    "world": "eda004a879813954b923b353a77fdadf98da5fe62f5578a682016b23fa27e9ba",
+    "downsample": "584c43631139358c88b6956d45fda752687a5a2c2143e5bdd712bc35a3c42503",
+    "filter-x": "da72e2e2bc3113c0463e16b96e9a41a4fd7115d87b6112e3e18f4ded434bea5c",
+    "filter-y": "3ff99f1cf7472f90b9b4ce792a459a8d89e0a2b0cf7b0132c6b1cb92c80d92fe",
+    "optical": "a05232428f378d27c8d43c842312cce58b87adf077ce170689e783f56fc43c24",
+    "post": "e5665a49293fcee8c097375e9c1101dbe1779f1acb0373112af8d18bbb232360"
+  },
+  "foundation": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "base": {
+      "path": "inputs/B-base.md",
+      "gitBlob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+      "sha256": "eb8d704bed9445c118ef7ead993b84a287cc7abdcd1144bf0b2c9a22f323df25"
+    },
+    "extension": {
+      "path": "inputs/B-extension.md",
+      "gitBlob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+      "sha256": "971283812ff98769b320fac022f1841ac90bc157e00ee8870806bc5bea7cbdd7"
+    }
+  },
+  "newAdditionalAuthority": {
+    "authority": "donation-additional-five-20261009",
+    "authorized": 5,
+    "consumed": 4,
+    "remaining": 1,
+    "builtEdition": "donation-zero-sol61-r16-beauty",
+    "creativeEditionOrdinal": 16,
+    "creativeEditionCap": 17,
+    "historyPreserved": true,
+    "priorConsumedEditions": [
+      "R13",
+      "R14",
+      "R15"
+    ],
+    "nextEditionAutomaticallyCreated": false
+  },
+  "historicalAllowances": {
+    "R7-R11extraFive": "5/5 consumed",
+    "R12engravingAddition": "1/1 consumed",
+    "R12spacePlacement": "local-donation-distribution-20261008-r1 1/1 consumed"
+  },
+  "actualCreator": {
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol",
+    "actual": true,
+    "scope": "Current beauty decision and WORLD/POST shader revision; version/startup metadata and currentB registration."
+  },
+  "historicalAuthorship": {
+    "designOwnerRequestedModel": "gpt-6.1-sol",
+    "designOwnerActualExecution": "UNEXPOSED",
+    "implementationRequestedModel": "gpt-6-luna",
+    "implementationActualExecution": "UNEXPOSED",
+    "scope": "CPU and WGSL analytic neutral studio illumination only; unchanged conductor model, direct lighting, geometry, engraving, glints, trajectories, six-pass pipeline, receipt gate, lifetime, controls and SFX."
+  },
+  "historicalRequestedCreator": "GPT-6.1-Sol",
+  "historicalRequestedAdapter": "GPT-6-Luna",
+  "currentContribution": {
+    "creator": "GPT-6.1-Sol",
+    "creativeCodeActual": true,
+    "independentCpuAudit": "GPT-6-Luna",
+    "shares": [
+      {
+        "displayName": "GPT-6.1-Sol",
+        "share": 90,
+        "work": "Actual new beauty shader/contract/design and sealed package."
+      },
+      {
+        "displayName": "GPT-6-Luna",
+        "share": 10,
+        "work": "Accepted independent exact-source planner/ABI/hash/closure CPU audit."
+      }
+    ]
+  },
+  "adoption": "unknown",
+  "quality": "pending-Root-actual-WebGPU-beauty-review",
+  "technicalReplay": "not_run",
+  "publication": "not_run",
+  "normalSfxListening": "not_run",
+  "SafariIpad": "not_run",
+  "hardwarePerformance": "not_run",
+  "mainIntegration": "not_connected",
+  "imagesAdded": 0,
+  "verification": {
+    "independentCpuResult": {
+      "path": "outputs/request-20261009/donation-r16-focused-cpu-audit/CPU-AUDIT-RESULT.json",
+      "bytes": 7408,
+      "sha256": "3c0e03346768dded2731d5e793fa7c5858d858d979d4337084ba7b0b029ffcb7"
+    },
+    "assertionCount": 27464,
+    "sections": 6,
+    "plannerSamples": 198,
+    "uniformComparisons": 1701,
+    "nativeWGSL": "not_run",
+    "pixels": "not_run",
+    "scope": "Preservation/source/interface checks only; no beauty claim."
+  },
+  "limits": [
+    "Tiny source support and motif visibility judged by native same-condition comparison; no strict per-pixel motif readability quota.",
+    "No global intensity/exposure boost; optical fractions/kernels/site counts/timing unchanged.",
+    "Exact unchanged source visibility/occlusion feeds normalized OBS, whole-metal bypass removed.",
+    "Historical actual source execution identities remain unexposed where unexposed; no reassignment.",
+    "Only R16 consumed; one remaining tocap17, no automaticR17."
+  ]
+}
