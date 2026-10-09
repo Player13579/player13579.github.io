@@ -1091,7 +1091,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     const state = adoptionState(item);
     if (item.adoptionHistory?.at(-1)?.status === 'withdrawn') return 'ユーザー採用撤回済み';
     if (state === 'reference-only') return 'セット原画の参照';
-    if (state === 'adopted') return '採用済み';
+    if (state === 'adopted') return 'ユーザー採用済み';
     if (state === 'previously-adopted') return '旧採用版（現行採用対象外）';
     if (state === 'not-adopted') return '未採用';
     return '採用状態不明';
@@ -1113,9 +1113,9 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
       if ((state === 'not-adopted' || state === 'unknown') && !closedReview) return 'ユーザー審査待ち（Codex品質基準達成）';
       return 'Codex品質基準達成';
     }
-    if (item.qualityReviewStatus === 'not-reviewed') return 'Codex未審査';
+    if (item.qualityReviewStatus === 'not-reviewed') return '品質未確認';
     if (item.qualityReviewStatus === 'pending' || item.qualityReviewStatus === 'root-review' || item.qualityReviewStatus === 'quality-pending' || item.qualityReviewStatus === 'pending-review' || item.qualityReviewStatus === 'in-progress' || item.qualityReviewStatus === 'not-accepted' || item.qualityReviewStatus === 'limited-pass-full-quality-pending' || item.qualityReviewOutcome === 'fail') {
-      return 'Codex品質確認未完了';
+      return 'Codex品質確認中';
     }
     return 'Codex品質確認状況不明';
   }
@@ -1153,7 +1153,8 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     const extraAtLimit = (item.creativeReviewDisposition === 'user-review-wait-at-limit' &&
       Number.isInteger(item.authorizedAdditionalEditions) && item.authorizedAdditionalEditions > 0 &&
       Number.isInteger(item.authorizedAdditionalEditionsUsed) && item.authorizedAdditionalEditionsUsed >= item.authorizedAdditionalEditions &&
-      item.authorizedAdditionalEditionsRemaining === 0) || r17AtLimit;
+      item.authorizedAdditionalEditionsRemaining === 0) || r17AtLimit || (Number.isInteger(item.additionalCreativeEditionsAuthorized) && item.additionalCreativeEditionsAuthorized > 0 &&
+      Number.isInteger(item.additionalCreativeEditionsUsed) && item.additionalCreativeEditionsUsed >= item.additionalCreativeEditionsAuthorized && item.additionalCreativeEditionsRemaining === 0);
     if (!legacyAtLimit && !extraAtLimit && !editionCapAtLimit) return '';
     const state = adoptionState(item);
     const history = item.adoptionHistory || [];
@@ -1161,7 +1162,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
       history.some(entry => ['adopted', 'withdrawn', 'rejected'].includes(entry.status)) ||
       /採用済み|ユーザー採用済み|採用撤回|却下|撤回済み/.test(item.status || '');
     if (closedAdoption) return '';
-    const extraLimit = item.authorizedAdditionalEditions ?? allowance?.authorized;
+    const extraLimit = item.authorizedAdditionalEditions ?? item.additionalCreativeEditionsAuthorized ?? allowance?.authorized;
     return editionCapAtLimit ? 'ユーザー審査待ち（改善上限 ' + item.creativeEdition + '/' + item.creativeEditionLimit + ' 到達）' : extraAtLimit ? 'ユーザー審査待ち（追加' + extraLimit + '版の上限到達）' : 'ユーザー審査待ち（改善5版の上限到達）';
   }
   function presentationLabel(item, group) {
