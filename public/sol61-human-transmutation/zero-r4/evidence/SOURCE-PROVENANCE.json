@@ -1,0 +1,56 @@
+{
+  "schema": "dva-human-r4-source-provenance-public-summary/v1",
+  "versionId": "human-transmutation-zero-sol61-r4",
+  "creativeAuthor": {
+    "displayName": "GPT-6.1-Sol",
+    "modelId": "gpt-6.1-sol",
+    "edition": 4,
+    "limit": 5,
+    "remaining": 1
+  },
+  "sourceManifest": {
+    "path": "outputs/request-20261009/human-transmutation-zero-r4/manifest.json",
+    "sha256": "27be451376968ad2b04b7f01411e94e619cf38d3678921272775e0b254f9433a"
+  },
+  "sourceSeal": {
+    "path": "outputs/request-20261009/human-transmutation-zero-r4/seal.json",
+    "sha256": "6f796ce75a2c7a0b7cc67d68a0ad5dece1f2bb94c9f67dfb02a78d3c202ce794"
+  },
+  "technicalPackage": {
+    "path": "outputs/request-20261009/human-zero-r4-gallery-package/packages/human-transmutation-zero-sol61-r4/technical-package-manifest.json",
+    "sha256": "4a06a63250136575a1b4e3909ef03b76f20a12c351aee852e4aa0d0595fe59ad"
+  },
+  "executionManifest": {
+    "path": "outputs/request-20261009/human-zero-r4-gallery-package/packages/human-transmutation-zero-sol61-r4/EXECUTION-MANIFEST.json",
+    "sha256": "1beddbb27bf000b77dc51d202ca58396f53e1e3f285c605b9adca54d3eddc1a0"
+  },
+  "runtimeClosureCount": 9,
+  "sourceArtifactsVerified": 28,
+  "packageClosureMismatches": [],
+  "technicalContributions": [
+    {
+      "component": "R4 creative VFX/SFX runtime",
+      "displayName": "GPT-6.1-Sol",
+      "modelId": "gpt-6.1-sol",
+      "attributionStatus": "sealed R4 source manifest"
+    },
+    {
+      "component": "inherited faithful SFX causal/running-state repair",
+      "displayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna",
+      "causalClassSha256": "70890e26b18276b1e2a46815d9dc24259fcf41ca14ddac30be718c301b2833f9",
+      "scope": "R4 full SFX/PCM byte-identical to R3; actual inherited causal class repair remains Luna",
+      "sourceVersion": "human-transmutation-zero-sol61-r3",
+      "attributionStatus": "inherited from sealed prior-version attribution; not reassigned to R4 creative author"
+    },
+    {
+      "component": "historical generic gallery facade/wrapper",
+      "displayName": null,
+      "modelId": null,
+      "attributionStatus": "unresolved; not reassigned"
+    }
+  ],
+  "adoption": "not-adopted",
+  "gameIntegration": "not-connected",
+  "sourceCreativeUnchangedByPackaging": true
+}
