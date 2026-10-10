@@ -1,0 +1,102 @@
+{
+  "schema": "dva-gallery-source-provenance/v1",
+  "groupID": "gunner-aim-acquisition-sol61",
+  "versionID": "gunner-aim-acquisition-sol61-r2",
+  "title": "ガンナー照準ロック",
+  "sourcePackage": "outputs/request-20261011/gunner-aim-acquisition-sol61-r2-r610",
+  "entry": "index.html",
+  "api": "window.__DVA_GUNNER_AIM_R2__",
+  "author": {
+    "creativeDesign": "GPT-6.1-Sol",
+    "runtime": "GPT-6.1-Sol",
+    "attributionSource": "sealed R2 manifest and source package"
+  },
+  "sourceManifestSha256": "bee4d339ad92a460c6bb7395e1e4dbf827133d8498ce6fb5461d886abcce2d7f",
+  "readySha256": "ca846b362ab48286dbb69656aa47a77868a49c3cfd04700057dd7c47d5145bb9",
+  "sourceSealSha256": "8bf76f552b1ed698f32b203bee3c6419e0dd9d7e7e2156d7d7607cb4e109bc0e",
+  "runtimeClosure": [
+    {
+      "path": "index.html",
+      "bytes": 997,
+      "sha256": "359d5920f73728ab1995cbbf5c67be1283f9b59a2b020df110b37e0e6228774f"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 10274,
+      "sha256": "f3c4b6bf563c93ce0744588fd4b4a15958fdc8d0ed2731a6a64435379e9e6b10"
+    },
+    {
+      "path": "contract.mjs",
+      "bytes": 3952,
+      "sha256": "d5b29d4c76ae3ac4ee811863a2fa2b3a70632d7b0a7645b14a37febee9f3b09a"
+    },
+    {
+      "path": "source.wgsl",
+      "bytes": 2364,
+      "sha256": "40de365395591aa858b2bf7bfe3a0c30a322b022fa584f80f4780dabf4670ea9"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1794,
+      "sha256": "9d057673c971bf5db4c5f6a76445e65b957b5a6a746937c59a1641663f8b0537"
+    }
+  ],
+  "dependencyEdges": {
+    "index.html": [
+      "runtime.mjs"
+    ],
+    "runtime.mjs": [
+      "contract.mjs",
+      "source.wgsl",
+      "observer.wgsl"
+    ],
+    "contract.mjs": []
+  },
+  "externalRuntimeDependencies": [],
+  "validation": {
+    "cpu": "pass-source-package",
+    "native": "pass-r616-r628-standalone-technical",
+    "parentGallery": "pass-r629-current-parent-gallery-technical",
+    "quality": "pending",
+    "adoption": "unknown",
+    "normalSFXListening": "not_run_verify_hard_mute",
+    "safari": "unverified",
+    "mainGame": "not_connected"
+  },
+  "nativeEvidence": {
+    "path": "outputs/request-20261011/gunner-aim-r2-native-r616/native/2026-10-10T21-54-06.114Z-2b7db8bf-67cd-4bf7-ab25-5d1cca1e71f1/RESULT.json",
+    "sha256": "385e6b4f3c6803c625a86c6632e1768327820a3cbc9f701d557bda986eb31a86",
+    "status": "PASS_R616_GUNNER_AIM_NATIVE_TECHNICAL",
+    "scope": "R616 standalone actual WebGPU technical replay; hard mute and five-file closure; not a public-parent replay or quality review"
+  },
+  "creativeEdition": 2,
+  "creativeEditionLimit": 5,
+  "creativeCap": {
+    "maximum": 5,
+    "consumed": 2,
+    "remaining": 3
+  },
+  "technicalEvidence": [
+    {
+      "stage": "R616-standalone",
+      "path": "outputs/request-20261011/gunner-aim-r2-native-r616/native/2026-10-10T21-54-06.114Z-2b7db8bf-67cd-4bf7-ab25-5d1cca1e71f1/RESULT.json",
+      "sha256": "385e6b4f3c6803c625a86c6632e1768327820a3cbc9f701d557bda986eb31a86",
+      "sourceStatus": "PASS_R616_GUNNER_AIM_NATIVE_TECHNICAL",
+      "scope": "Standalone actual WebGPU technical replay; R610 five-file closure; verification hard-muted."
+    },
+    {
+      "stage": "R628-one-to-one-standalone",
+      "path": "outputs/request-20261011/gunner-aim-r2-one-scale-r628/native/2026-10-10T22-00-47.070Z-653ce01d-6896-4fad-bfde-accb6e3c1fd6/RESULT.json",
+      "sha256": "47f675b0d7ccf09a8a3a970d9370650b145141158d8662f2315076faf9740bca",
+      "sourceStatus": "PASS_R616_GUNNER_AIM_NATIVE_TECHNICAL",
+      "scope": "640x320 CSS/backing, DPR 1; standalone native technical replay; R610 five-file closure."
+    },
+    {
+      "stage": "R629-current-parent-gallery",
+      "path": "outputs/request-20261011/gunner-aim-r2-parent-r629/native-attempts/2026-10-10T22-03-59.671Z-511f9960-2c2d-4409-9163-f43662685e07/RESULT.json",
+      "sha256": "1b4d25624a5f9a473479b48d004654adc3fd53aa03f52166f772efb8170f3a37",
+      "sourceStatus": "PASS_R625_NATIVE_PARENT_CAPTURE_TECHNICAL",
+      "scope": "Actual parent gallery technical replay, 12 PNG captures; source rows and R610 five-file route matched; resource cleanup closed. Source schema/status retain R625 naming."
+    }
+  ]
+}

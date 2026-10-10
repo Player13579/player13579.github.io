@@ -116,6 +116,8 @@
       let activation = { found: false };
       if (itemId(item) === 'gunner-aim-acquisition-sol61-r1') {
         activation = invoke(win.__DVA_GUNNER_AIM_R1__, 'unlockAudio', []);
+      } else if (itemId(item) === 'gunner-aim-acquisition-sol61-r2') {
+        activation = invoke(win.__DVA_GUNNER_AIM_R2__, 'unlockAudio', []);
       } else if (itemId(item) === 'item-pickup-sol-r2') {
         activation = invoke(win, 'enableItemPickupLoopAudio', []);
       } else if (win.__gallerySfx && typeof win.__gallerySfx.activateFromGesture === 'function') {
