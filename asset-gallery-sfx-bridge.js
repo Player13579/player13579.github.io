@@ -69,6 +69,9 @@
         return value && typeof value === 'object' ? value : { state: 'unsupported', reason: 'preview rejected audio activation' };
       }
       if (value?.state === 'active') return value;
+      // Taser Contact returns {ok, reason, snapshot}; normalize the source API result.
+      if (value?.ok === false) return { state: 'unsupported', reason: value.reason || 'preview rejected audio activation', snapshot: value.snapshot };
+      if (value?.ok === true) return { state: 'active', reason: value.reason || 'using the preview’s authored SFX', snapshot: value.snapshot };
       // Existing authored APIs include boolean success and Promise<void> success.
       if (value === true || value === undefined) return { state: 'active', reason: 'using the preview’s authored SFX' };
       return { state: 'unsupported', reason: 'preview did not confirm authored SFX activation' };

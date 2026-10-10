@@ -1,0 +1,1742 @@
+{
+  "schema": "dva-executable-e-rule-code-map/v2",
+  "versionId": "stun-grenade-sol61-r2",
+  "foundation": {
+    "repository": "https://github.com/Player13579/B.git",
+    "branch": "Codex-honoo",
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "files": [
+      {
+        "path": "基底.md",
+        "sha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364"
+      },
+      {
+        "path": "拡張.md",
+        "sha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67"
+      }
+    ]
+  },
+  "gitBlobs": {
+    "base": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extension": "f35b61661d0209c0329d4a501a760d35b451d52e"
+  },
+  "formalBImageVideoExpression": false,
+  "description": "実行用E分岐の規則→実WORLD式→観測結果対応。B画像schema全体の正式合格や物理solverを主張しない",
+  "InferenceExpansionPolicy": {
+    "DeclaredIntent": "既存Stun grenade閃光/二vent/登録receiver。新source/targetなし",
+    "ExpressionIntent": {
+      "source": "not_specified",
+      "purpose": "not_specified",
+      "must_communicate": [],
+      "allowed_exaggeration": [],
+      "allowed_omission": [],
+      "preserve_ambiguity": [],
+      "protected_relations": []
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "殻/放射/媒体/pressure/床/受光の独立状態境界",
+      "no_discipline_based_split": true
+    },
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "既存の円筒殻",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "visible",
+        "local_state_difference": "殻表面の反射と二つの既存開口",
+        "partition_reason": "既存の円筒殻の独立した状態・境界・応答"
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "短いvent方向放射",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "visible",
+        "local_state_difference": "二つのventから短い放射形が立上り、強い白色coreと分離",
+        "partition_reason": "短いvent方向放射の独立した状態・境界・応答"
+      },
+      "PH3": {
+        "id": "PH3",
+        "name": "有限の熱ガス",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散",
+        "partition_reason": "有限の熱ガスの独立した状態・境界・応答"
+      },
+      "PH4": {
+        "id": "PH4",
+        "name": "圧縮index前縁",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "既存床の光路が変わる非発光密度勾配",
+        "partition_reason": "圧縮index前縁の独立した状態・境界・応答"
+      },
+      "PH5": {
+        "id": "PH5",
+        "name": "診断床",
+        "origin": "attribute_resolved",
+        "anchor": "floor",
+        "visibility": "visible",
+        "local_state_difference": "同源の距離減衰する反射",
+        "partition_reason": "診断床の独立した状態・境界・応答"
+      },
+      "PH6": {
+        "id": "PH6",
+        "name": "既存受光図形",
+        "origin": "attribute_resolved",
+        "anchor": "body",
+        "visibility": "visible",
+        "local_state_difference": "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽",
+        "partition_reason": "既存受光図形の独立した状態・境界・応答"
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "既存の円筒殻",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "visible",
+          "local_state_difference": "殻表面の反射と二つの既存開口",
+          "partition_reason": "既存の円筒殻の独立した状態・境界・応答"
+        },
+        "DeepStructure": {
+          "Core": "既存の円筒殻の発生/応答域",
+          "Structure": "殻表面の反射と二つの既存開口",
+          "Surface": "finite境界と相別減衰。局所材質差"
+        },
+        "PhysicalModel": {
+          "model_kind": "rigid_or_articulated",
+          "system_boundary": "grenade-stun-impactの同cause/同位置、視覚[0,720)ms。既存receiver/床だけ",
+          "state_variables": "相対放射、密度、tau、座標、age、局所法線。校正済み温度/爆薬物性ではない",
+          "inputs": "PH2放射と初期gas impulse",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            }
+          },
+          "constitutive_response": "casing/vent/steelReflection",
+          "initial_condition": "同じimpact age0で立上り開始",
+          "boundary_conditions": "二つの既存vent、診断床/受光図形。新しいsource/target/遮蔽物を追加しない",
+          "approximation_scope": "ゲーム単位の解析的projection。receiverの凸面法線とN.Lによる自己遮蔽、前景mask。複雑な全scene ray tracingではない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "radius145 game units、receiver64 units、主放射長5–18 units",
+          "characteristic_time": "flash2.5/27ms、熱85–175ms、gas270–720ms",
+          "dominant_balance": "短い放射と初期gas移流→浮力/希釈、受光は瞬時応答",
+          "dimensionless_reasoning": "SI物性なし、Re/化学速度係数等を創作しない",
+          "detail_cutoff": "finite主輪郭、2vent、微粒子noiseなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存の円筒殻にThermoの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存の円筒殻にFluidの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "既存の円筒殻のOptics応答をcasing/vent/steelReflectionで表現",
+                "殻表面の反射と二つの既存開口"
+              ],
+              "evidence_or_constraint": "殻表面の反射と二つの既存開口"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "既存の円筒殻のMaterials応答をcasing/vent/steelReflectionで表現",
+                "殻表面の反射と二つの既存開口"
+              ],
+              "evidence_or_constraint": "殻表面の反射と二つの既存開口"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存の円筒殻にElectromagneticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存の円筒殻にRheologyの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存の円筒殻にWaveOpticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "SurfaceScience": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "既存の円筒殻のSurfaceScience応答をcasing/vent/steelReflectionで表現",
+                "殻表面の反射と二つの既存開口"
+              ],
+              "evidence_or_constraint": "殻表面の反射と二つの既存開口"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "殻表面の反射と二つの既存開口",
+          "indirect_evidence": "同源の位置/age/受光差",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "WORLD finite境界。OBSは主形を作らない",
+          "perceptual_failure_risk": "白い楕円だけ又は均一rimに見える",
+          "cue_roles": [
+            {
+              "cue": "殻表面の反射と二つの既存開口",
+              "supports": "既存の円筒殻",
+              "reliability_and_overlap": "実10/35msとON/OFFで確認。単一静止で動き全部を断定しない"
+            }
+          ],
+          "confusable_alternative": "固定電球/全周rim/装飾ring",
+          "disambiguating_evidence": "vent方向、N.L方向差、短い時間応答",
+          "viewing_conditions": "980x620 backing、H64/128、parent PNG寸法別記録"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "既存ventはy±4; screen+y下。受け手は局所凸面法線",
+          "normal_field_coherence": "head球/torsoとlegs capsuleへ共通normal",
+          "curvature_behavior": "有限ローブのbounded低周波輪郭",
+          "silhouette_logic": "殻表面の反射と二つの既存開口",
+          "contact_relation": "既存殻/床、受光図形前景mask",
+          "spatial_relation": "同source originとreceiver coordsを共通projection"
+        },
+        "StateDynamics": {
+          "state_space_extent": "同cause720ms、game stun2500msは別状態",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "視覚のみ720ms消去",
+          "damping_profile": "source27ms、gas別密度包絡",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "源/OBS残光を停止",
+          "transition_failure_risk": "消失後OBS残存/phase混同",
+          "driving_input": "grenade-stun-impact",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "閃光→vent残熱→gas希釈",
+          "stability_condition": "有限age/正projection"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Optics -> PH6.Optics: 同source放射とN.L/距離減衰",
+            "PH2.Thermo -> PH3.Fluid: 初期vent放出と上昇"
+          ],
+          "SecondaryCouplings": [
+            "PH2.Optics -> PH5.Optics: 同源床受光"
+          ],
+          "CausalAssessment": {
+            "intervention": "sourceOff/observerOff/contextOff、登録receiver位置/距離を変更",
+            "predicted_response": "sourceOffで放射/OBSなし、observerOffでvent主形維持、receiver左右移動で明るい面が反転",
+            "competing_explanation": "背景/PSFだけの主形又はuniformrim",
+            "uncertainty": "解析近似、全scene遮蔽/実人skin校正なし、native未確認",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "殻表面の反射と二つの既存開口"
+          ],
+          "indirect": [
+            "同cause同source"
+          ],
+          "candidates": [
+            "boundary",
+            "gradient",
+            "occlusion",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5/PH6",
+              "change": "同源の受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH1.StateDynamics",
+          "retained_cues": [
+            "殻表面の反射と二つの既存開口"
+          ],
+          "simplification": "少数finite形状。noiseや追加粒子で主因果を覆わない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "directional_balance": [
+              "殻表面の反射と二つの既存開口"
+            ],
+            "tension_release": [
+              "短いピークと有限尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "uniform_response",
+          "OBS_primary_shape"
+        ],
+        "implementation": "casing/vent/steelReflection",
+        "nativeResult": "not_run"
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "短いvent方向放射",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "visible",
+          "local_state_difference": "二つのventから短い放射形が立上り、強い白色coreと分離",
+          "partition_reason": "短いvent方向放射の独立した状態・境界・応答"
+        },
+        "DeepStructure": {
+          "Core": "短いvent方向放射の発生/応答域",
+          "Structure": "二つのventから短い放射形が立上り、強い白色coreと分離",
+          "Surface": "finite境界と相別減衰。局所材質差"
+        },
+        "PhysicalModel": {
+          "model_kind": "optical_transport",
+          "system_boundary": "grenade-stun-impactの同cause/同位置、視覚[0,720)ms。既存receiver/床だけ",
+          "state_variables": "相対放射、密度、tau、座標、age、局所法線。校正済み温度/爆薬物性ではない",
+          "inputs": "PH2放射と初期gas impulse",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            }
+          },
+          "constitutive_response": "jets/flashShape/discharge",
+          "initial_condition": "同じimpact age0で立上り開始",
+          "boundary_conditions": "二つの既存vent、診断床/受光図形。新しいsource/target/遮蔽物を追加しない",
+          "approximation_scope": "ゲーム単位の解析的projection。receiverの凸面法線とN.Lによる自己遮蔽、前景mask。複雑な全scene ray tracingではない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "radius145 game units、receiver64 units、主放射長5–18 units",
+          "characteristic_time": "flash2.5/27ms、熱85–175ms、gas270–720ms",
+          "dominant_balance": "短い放射と初期gas移流→浮力/希釈、受光は瞬時応答",
+          "dimensionless_reasoning": "SI物性なし、Re/化学速度係数等を創作しない",
+          "detail_cutoff": "finite主輪郭、2vent、微粒子noiseなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "短いvent方向放射のThermo応答をjets/flashShape/dischargeで表現",
+                "二つのventから短い放射形が立上り、強い白色coreと分離"
+              ],
+              "evidence_or_constraint": "二つのventから短い放射形が立上り、強い白色coreと分離"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "短いvent方向放射のFluid応答をjets/flashShape/dischargeで表現",
+                "二つのventから短い放射形が立上り、強い白色coreと分離"
+              ],
+              "evidence_or_constraint": "二つのventから短い放射形が立上り、強い白色coreと分離"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "短いvent方向放射のOptics応答をjets/flashShape/dischargeで表現",
+                "二つのventから短い放射形が立上り、強い白色coreと分離"
+              ],
+              "evidence_or_constraint": "二つのventから短い放射形が立上り、強い白色coreと分離"
+            },
+            "Materials": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "短いvent方向放射にMaterialsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "短いvent方向放射にElectromagneticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "短いvent方向放射にRheologyの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "短いvent方向放射にWaveOpticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "短いvent方向放射にSurfaceScienceの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "二つのventから短い放射形が立上り、強い白色coreと分離",
+          "indirect_evidence": "同源の位置/age/受光差",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "WORLD finite境界。OBSは主形を作らない",
+          "perceptual_failure_risk": "白い楕円だけ又は均一rimに見える",
+          "cue_roles": [
+            {
+              "cue": "二つのventから短い放射形が立上り、強い白色coreと分離",
+              "supports": "短いvent方向放射",
+              "reliability_and_overlap": "実10/35msとON/OFFで確認。単一静止で動き全部を断定しない"
+            }
+          ],
+          "confusable_alternative": "固定電球/全周rim/装飾ring",
+          "disambiguating_evidence": "vent方向、N.L方向差、短い時間応答",
+          "viewing_conditions": "980x620 backing、H64/128、parent PNG寸法別記録"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "既存ventはy±4; screen+y下。受け手は局所凸面法線",
+          "normal_field_coherence": "head球/torsoとlegs capsuleへ共通normal",
+          "curvature_behavior": "有限ローブのbounded低周波輪郭",
+          "silhouette_logic": "二つのventから短い放射形が立上り、強い白色coreと分離",
+          "contact_relation": "既存殻/床、受光図形前景mask",
+          "spatial_relation": "同source originとreceiver coordsを共通projection"
+        },
+        "StateDynamics": {
+          "state_space_extent": "同cause720ms、game stun2500msは別状態",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "視覚のみ720ms消去",
+          "damping_profile": "source27ms、gas別密度包絡",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "源/OBS残光を停止",
+          "transition_failure_risk": "消失後OBS残存/phase混同",
+          "driving_input": "grenade-stun-impact",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "閃光→vent残熱→gas希釈",
+          "stability_condition": "有限age/正projection"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Optics -> PH6.Optics: 同source放射とN.L/距離減衰",
+            "PH2.Thermo -> PH3.Fluid: 初期vent放出と上昇"
+          ],
+          "SecondaryCouplings": [
+            "PH2.Optics -> PH5.Optics: 同源床受光"
+          ],
+          "CausalAssessment": {
+            "intervention": "sourceOff/observerOff/contextOff、登録receiver位置/距離を変更",
+            "predicted_response": "sourceOffで放射/OBSなし、observerOffでvent主形維持、receiver左右移動で明るい面が反転",
+            "competing_explanation": "背景/PSFだけの主形又はuniformrim",
+            "uncertainty": "解析近似、全scene遮蔽/実人skin校正なし、native未確認",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "二つのventから短い放射形が立上り、強い白色coreと分離"
+          ],
+          "indirect": [
+            "同cause同source"
+          ],
+          "candidates": [
+            "boundary",
+            "gradient",
+            "occlusion",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5/PH6",
+              "change": "同源の受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH2.StateDynamics",
+          "retained_cues": [
+            "二つのventから短い放射形が立上り、強い白色coreと分離"
+          ],
+          "simplification": "少数finite形状。noiseや追加粒子で主因果を覆わない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "directional_balance": [
+              "二つのventから短い放射形が立上り、強い白色coreと分離"
+            ],
+            "tension_release": [
+              "短いピークと有限尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "uniform_response",
+          "OBS_primary_shape"
+        ],
+        "implementation": "jets/flashShape/discharge",
+        "nativeResult": "not_run"
+      },
+      "PH3": {
+        "identity": {
+          "id": "PH3",
+          "name": "有限の熱ガス",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散",
+          "partition_reason": "有限の熱ガスの独立した状態・境界・応答"
+        },
+        "DeepStructure": {
+          "Core": "有限の熱ガスの発生/応答域",
+          "Structure": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散",
+          "Surface": "finite境界と相別減衰。局所材質差"
+        },
+        "PhysicalModel": {
+          "model_kind": "material_continuum",
+          "system_boundary": "grenade-stun-impactの同cause/同位置、視覚[0,720)ms。既存receiver/床だけ",
+          "state_variables": "相対放射、密度、tau、座標、age、局所法線。校正済み温度/爆薬物性ではない",
+          "inputs": "PH2放射と初期gas impulse",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            }
+          },
+          "constitutive_response": "center/extent/boundary/density/tau/gasEmission",
+          "initial_condition": "同じimpact age0で立上り開始",
+          "boundary_conditions": "二つの既存vent、診断床/受光図形。新しいsource/target/遮蔽物を追加しない",
+          "approximation_scope": "ゲーム単位の解析的projection。receiverの凸面法線とN.Lによる自己遮蔽、前景mask。複雑な全scene ray tracingではない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "radius145 game units、receiver64 units、主放射長5–18 units",
+          "characteristic_time": "flash2.5/27ms、熱85–175ms、gas270–720ms",
+          "dominant_balance": "短い放射と初期gas移流→浮力/希釈、受光は瞬時応答",
+          "dimensionless_reasoning": "SI物性なし、Re/化学速度係数等を創作しない",
+          "detail_cutoff": "finite主輪郭、2vent、微粒子noiseなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "有限の熱ガスのThermo応答をcenter/extent/boundary/density/tau/gasEmissionで表現",
+                "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+              ],
+              "evidence_or_constraint": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "有限の熱ガスのFluid応答をcenter/extent/boundary/density/tau/gasEmissionで表現",
+                "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+              ],
+              "evidence_or_constraint": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "有限の熱ガスのOptics応答をcenter/extent/boundary/density/tau/gasEmissionで表現",
+                "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+              ],
+              "evidence_or_constraint": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "有限の熱ガスのMaterials応答をcenter/extent/boundary/density/tau/gasEmissionで表現",
+                "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+              ],
+              "evidence_or_constraint": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "有限の熱ガスにElectromagneticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "有限の熱ガスにRheologyの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "有限の熱ガスにWaveOpticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "有限の熱ガスにSurfaceScienceの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散",
+          "indirect_evidence": "同源の位置/age/受光差",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "WORLD finite境界。OBSは主形を作らない",
+          "perceptual_failure_risk": "白い楕円だけ又は均一rimに見える",
+          "cue_roles": [
+            {
+              "cue": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散",
+              "supports": "有限の熱ガス",
+              "reliability_and_overlap": "実10/35msとON/OFFで確認。単一静止で動き全部を断定しない"
+            }
+          ],
+          "confusable_alternative": "固定電球/全周rim/装飾ring",
+          "disambiguating_evidence": "vent方向、N.L方向差、短い時間応答",
+          "viewing_conditions": "980x620 backing、H64/128、parent PNG寸法別記録"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "既存ventはy±4; screen+y下。受け手は局所凸面法線",
+          "normal_field_coherence": "head球/torsoとlegs capsuleへ共通normal",
+          "curvature_behavior": "有限ローブのbounded低周波輪郭",
+          "silhouette_logic": "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散",
+          "contact_relation": "既存殻/床、受光図形前景mask",
+          "spatial_relation": "同source originとreceiver coordsを共通projection"
+        },
+        "StateDynamics": {
+          "state_space_extent": "同cause720ms、game stun2500msは別状態",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "視覚のみ720ms消去",
+          "damping_profile": "source27ms、gas別密度包絡",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "源/OBS残光を停止",
+          "transition_failure_risk": "消失後OBS残存/phase混同",
+          "driving_input": "grenade-stun-impact",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "閃光→vent残熱→gas希釈",
+          "stability_condition": "有限age/正projection"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Optics -> PH6.Optics: 同source放射とN.L/距離減衰",
+            "PH2.Thermo -> PH3.Fluid: 初期vent放出と上昇"
+          ],
+          "SecondaryCouplings": [
+            "PH2.Optics -> PH5.Optics: 同源床受光"
+          ],
+          "CausalAssessment": {
+            "intervention": "sourceOff/observerOff/contextOff、登録receiver位置/距離を変更",
+            "predicted_response": "sourceOffで放射/OBSなし、observerOffでvent主形維持、receiver左右移動で明るい面が反転",
+            "competing_explanation": "背景/PSFだけの主形又はuniformrim",
+            "uncertainty": "解析近似、全scene遮蔽/実人skin校正なし、native未確認",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+          ],
+          "indirect": [
+            "同cause同source"
+          ],
+          "candidates": [
+            "boundary",
+            "gradient",
+            "occlusion",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5/PH6",
+              "change": "同源の受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH3.StateDynamics",
+          "retained_cues": [
+            "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+          ],
+          "simplification": "少数finite形状。noiseや追加粒子で主因果を覆わない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "directional_balance": [
+              "両ventで有限ローブが移流し、浮力上昇と希釈後720ms消散"
+            ],
+            "tension_release": [
+              "短いピークと有限尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "uniform_response",
+          "OBS_primary_shape"
+        ],
+        "implementation": "center/extent/boundary/density/tau/gasEmission",
+        "nativeResult": "not_run"
+      },
+      "PH4": {
+        "identity": {
+          "id": "PH4",
+          "name": "圧縮index前縁",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "既存床の光路が変わる非発光密度勾配",
+          "partition_reason": "圧縮index前縁の独立した状態・境界・応答"
+        },
+        "DeepStructure": {
+          "Core": "圧縮index前縁の発生/応答域",
+          "Structure": "既存床の光路が変わる非発光密度勾配",
+          "Surface": "finite境界と相別減衰。局所材質差"
+        },
+        "PhysicalModel": {
+          "model_kind": "material_continuum",
+          "system_boundary": "grenade-stun-impactの同cause/同位置、視覚[0,720)ms。既存receiver/床だけ",
+          "state_variables": "相対放射、密度、tau、座標、age、局所法線。校正済み温度/爆薬物性ではない",
+          "inputs": "PH2放射と初期gas impulse",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            }
+          },
+          "constitutive_response": "pressureBand/floorPoint",
+          "initial_condition": "同じimpact age0で立上り開始",
+          "boundary_conditions": "二つの既存vent、診断床/受光図形。新しいsource/target/遮蔽物を追加しない",
+          "approximation_scope": "ゲーム単位の解析的projection。receiverの凸面法線とN.Lによる自己遮蔽、前景mask。複雑な全scene ray tracingではない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "radius145 game units、receiver64 units、主放射長5–18 units",
+          "characteristic_time": "flash2.5/27ms、熱85–175ms、gas270–720ms",
+          "dominant_balance": "短い放射と初期gas移流→浮力/希釈、受光は瞬時応答",
+          "dimensionless_reasoning": "SI物性なし、Re/化学速度係数等を創作しない",
+          "detail_cutoff": "finite主輪郭、2vent、微粒子noiseなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "圧縮index前縁にThermoの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "圧縮index前縁のFluid応答をpressureBand/floorPointで表現",
+                "既存床の光路が変わる非発光密度勾配"
+              ],
+              "evidence_or_constraint": "既存床の光路が変わる非発光密度勾配"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "圧縮index前縁のOptics応答をpressureBand/floorPointで表現",
+                "既存床の光路が変わる非発光密度勾配"
+              ],
+              "evidence_or_constraint": "既存床の光路が変わる非発光密度勾配"
+            },
+            "Materials": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "圧縮index前縁にMaterialsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "圧縮index前縁にElectromagneticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "圧縮index前縁にRheologyの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "圧縮index前縁にWaveOpticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "圧縮index前縁にSurfaceScienceの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "既存床の光路が変わる非発光密度勾配",
+          "indirect_evidence": "同源の位置/age/受光差",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "WORLD finite境界。OBSは主形を作らない",
+          "perceptual_failure_risk": "白い楕円だけ又は均一rimに見える",
+          "cue_roles": [
+            {
+              "cue": "既存床の光路が変わる非発光密度勾配",
+              "supports": "圧縮index前縁",
+              "reliability_and_overlap": "実10/35msとON/OFFで確認。単一静止で動き全部を断定しない"
+            }
+          ],
+          "confusable_alternative": "固定電球/全周rim/装飾ring",
+          "disambiguating_evidence": "vent方向、N.L方向差、短い時間応答",
+          "viewing_conditions": "980x620 backing、H64/128、parent PNG寸法別記録"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "既存ventはy±4; screen+y下。受け手は局所凸面法線",
+          "normal_field_coherence": "head球/torsoとlegs capsuleへ共通normal",
+          "curvature_behavior": "有限ローブのbounded低周波輪郭",
+          "silhouette_logic": "既存床の光路が変わる非発光密度勾配",
+          "contact_relation": "既存殻/床、受光図形前景mask",
+          "spatial_relation": "同source originとreceiver coordsを共通projection"
+        },
+        "StateDynamics": {
+          "state_space_extent": "同cause720ms、game stun2500msは別状態",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "視覚のみ720ms消去",
+          "damping_profile": "source27ms、gas別密度包絡",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "源/OBS残光を停止",
+          "transition_failure_risk": "消失後OBS残存/phase混同",
+          "driving_input": "grenade-stun-impact",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "閃光→vent残熱→gas希釈",
+          "stability_condition": "有限age/正projection"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Optics -> PH6.Optics: 同source放射とN.L/距離減衰",
+            "PH2.Thermo -> PH3.Fluid: 初期vent放出と上昇"
+          ],
+          "SecondaryCouplings": [
+            "PH2.Optics -> PH5.Optics: 同源床受光"
+          ],
+          "CausalAssessment": {
+            "intervention": "sourceOff/observerOff/contextOff、登録receiver位置/距離を変更",
+            "predicted_response": "sourceOffで放射/OBSなし、observerOffでvent主形維持、receiver左右移動で明るい面が反転",
+            "competing_explanation": "背景/PSFだけの主形又はuniformrim",
+            "uncertainty": "解析近似、全scene遮蔽/実人skin校正なし、native未確認",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "既存床の光路が変わる非発光密度勾配"
+          ],
+          "indirect": [
+            "同cause同source"
+          ],
+          "candidates": [
+            "boundary",
+            "gradient",
+            "occlusion",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5/PH6",
+              "change": "同源の受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH4.StateDynamics",
+          "retained_cues": [
+            "既存床の光路が変わる非発光密度勾配"
+          ],
+          "simplification": "少数finite形状。noiseや追加粒子で主因果を覆わない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "directional_balance": [
+              "既存床の光路が変わる非発光密度勾配"
+            ],
+            "tension_release": [
+              "短いピークと有限尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "uniform_response",
+          "OBS_primary_shape"
+        ],
+        "implementation": "pressureBand/floorPoint",
+        "nativeResult": "not_run"
+      },
+      "PH5": {
+        "identity": {
+          "id": "PH5",
+          "name": "診断床",
+          "origin": "attribute_resolved",
+          "anchor": "floor",
+          "visibility": "visible",
+          "local_state_difference": "同源の距離減衰する反射",
+          "partition_reason": "診断床の独立した状態・境界・応答"
+        },
+        "DeepStructure": {
+          "Core": "診断床の発生/応答域",
+          "Structure": "同源の距離減衰する反射",
+          "Surface": "finite境界と相別減衰。局所材質差"
+        },
+        "PhysicalModel": {
+          "model_kind": "derived_world_response",
+          "system_boundary": "grenade-stun-impactの同cause/同位置、視覚[0,720)ms。既存receiver/床だけ",
+          "state_variables": "相対放射、密度、tau、座標、age、局所法線。校正済み温度/爆薬物性ではない",
+          "inputs": "PH2放射と初期gas impulse",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            }
+          },
+          "constitutive_response": "sourceIllumination/floorPoint",
+          "initial_condition": "同じimpact age0で立上り開始",
+          "boundary_conditions": "二つの既存vent、診断床/受光図形。新しいsource/target/遮蔽物を追加しない",
+          "approximation_scope": "ゲーム単位の解析的projection。receiverの凸面法線とN.Lによる自己遮蔽、前景mask。複雑な全scene ray tracingではない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "radius145 game units、receiver64 units、主放射長5–18 units",
+          "characteristic_time": "flash2.5/27ms、熱85–175ms、gas270–720ms",
+          "dominant_balance": "短い放射と初期gas移流→浮力/希釈、受光は瞬時応答",
+          "dimensionless_reasoning": "SI物性なし、Re/化学速度係数等を創作しない",
+          "detail_cutoff": "finite主輪郭、2vent、微粒子noiseなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断床にThermoの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断床にFluidの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "診断床のOptics応答をsourceIllumination/floorPointで表現",
+                "同源の距離減衰する反射"
+              ],
+              "evidence_or_constraint": "同源の距離減衰する反射"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "診断床のMaterials応答をsourceIllumination/floorPointで表現",
+                "同源の距離減衰する反射"
+              ],
+              "evidence_or_constraint": "同源の距離減衰する反射"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断床にElectromagneticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断床にRheologyの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断床にWaveOpticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断床にSurfaceScienceの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "同源の距離減衰する反射",
+          "indirect_evidence": "同源の位置/age/受光差",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "WORLD finite境界。OBSは主形を作らない",
+          "perceptual_failure_risk": "白い楕円だけ又は均一rimに見える",
+          "cue_roles": [
+            {
+              "cue": "同源の距離減衰する反射",
+              "supports": "診断床",
+              "reliability_and_overlap": "実10/35msとON/OFFで確認。単一静止で動き全部を断定しない"
+            }
+          ],
+          "confusable_alternative": "固定電球/全周rim/装飾ring",
+          "disambiguating_evidence": "vent方向、N.L方向差、短い時間応答",
+          "viewing_conditions": "980x620 backing、H64/128、parent PNG寸法別記録"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "既存ventはy±4; screen+y下。受け手は局所凸面法線",
+          "normal_field_coherence": "head球/torsoとlegs capsuleへ共通normal",
+          "curvature_behavior": "有限ローブのbounded低周波輪郭",
+          "silhouette_logic": "同源の距離減衰する反射",
+          "contact_relation": "既存殻/床、受光図形前景mask",
+          "spatial_relation": "同source originとreceiver coordsを共通projection"
+        },
+        "StateDynamics": {
+          "state_space_extent": "同cause720ms、game stun2500msは別状態",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "視覚のみ720ms消去",
+          "damping_profile": "source27ms、gas別密度包絡",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "源/OBS残光を停止",
+          "transition_failure_risk": "消失後OBS残存/phase混同",
+          "driving_input": "grenade-stun-impact",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "閃光→vent残熱→gas希釈",
+          "stability_condition": "有限age/正projection"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Optics -> PH6.Optics: 同source放射とN.L/距離減衰",
+            "PH2.Thermo -> PH3.Fluid: 初期vent放出と上昇"
+          ],
+          "SecondaryCouplings": [
+            "PH2.Optics -> PH5.Optics: 同源床受光"
+          ],
+          "CausalAssessment": {
+            "intervention": "sourceOff/observerOff/contextOff、登録receiver位置/距離を変更",
+            "predicted_response": "sourceOffで放射/OBSなし、observerOffでvent主形維持、receiver左右移動で明るい面が反転",
+            "competing_explanation": "背景/PSFだけの主形又はuniformrim",
+            "uncertainty": "解析近似、全scene遮蔽/実人skin校正なし、native未確認",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "同源の距離減衰する反射"
+          ],
+          "indirect": [
+            "同cause同source"
+          ],
+          "candidates": [
+            "boundary",
+            "gradient",
+            "occlusion",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5/PH6",
+              "change": "同源の受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH5.StateDynamics",
+          "retained_cues": [
+            "同源の距離減衰する反射"
+          ],
+          "simplification": "少数finite形状。noiseや追加粒子で主因果を覆わない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "directional_balance": [
+              "同源の距離減衰する反射"
+            ],
+            "tension_release": [
+              "短いピークと有限尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "uniform_response",
+          "OBS_primary_shape"
+        ],
+        "implementation": "sourceIllumination/floorPoint",
+        "nativeResult": "not_run"
+      },
+      "PH6": {
+        "identity": {
+          "id": "PH6",
+          "name": "既存受光図形",
+          "origin": "attribute_resolved",
+          "anchor": "body",
+          "visibility": "visible",
+          "local_state_difference": "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽",
+          "partition_reason": "既存受光図形の独立した状態・境界・応答"
+        },
+        "DeepStructure": {
+          "Core": "既存受光図形の発生/応答域",
+          "Structure": "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽",
+          "Surface": "finite境界と相別減衰。局所材質差"
+        },
+        "PhysicalModel": {
+          "model_kind": "derived_world_response",
+          "system_boundary": "grenade-stun-impactの同cause/同位置、視覚[0,720)ms。既存receiver/床だけ",
+          "state_variables": "相対放射、密度、tau、座標、age、局所法線。校正済み温度/爆薬物性ではない",
+          "inputs": "PH2放射と初期gas impulse",
+          "balance_conditions": {
+            "mass": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "momentum": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "derived受光に独立質量/運動量を作らない。電荷は描画しない。源/吸収/散逸を定性的に閉じる; 数値保存solverではない"
+            }
+          },
+          "constitutive_response": "capsuleNormal/headPoint/sourceDirection/facing/visibility/materialDiffuse/body",
+          "initial_condition": "同じimpact age0で立上り開始",
+          "boundary_conditions": "二つの既存vent、診断床/受光図形。新しいsource/target/遮蔽物を追加しない",
+          "approximation_scope": "ゲーム単位の解析的projection。receiverの凸面法線とN.Lによる自己遮蔽、前景mask。複雑な全scene ray tracingではない"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "radius145 game units、receiver64 units、主放射長5–18 units",
+          "characteristic_time": "flash2.5/27ms、熱85–175ms、gas270–720ms",
+          "dominant_balance": "短い放射と初期gas移流→浮力/希釈、受光は瞬時応答",
+          "dimensionless_reasoning": "SI物性なし、Re/化学速度係数等を創作しない",
+          "detail_cutoff": "finite主輪郭、2vent、微粒子noiseなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存受光図形にThermoの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存受光図形にFluidの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "既存受光図形のOptics応答をcapsuleNormal/headPoint/sourceDirection/facing/visibility/materialDiffuse/bodyで表現",
+                "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽"
+              ],
+              "evidence_or_constraint": "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "既存受光図形のMaterials応答をcapsuleNormal/headPoint/sourceDirection/facing/visibility/materialDiffuse/bodyで表現",
+                "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽"
+              ],
+              "evidence_or_constraint": "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存受光図形にElectromagneticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存受光図形にRheologyの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存受光図形にWaveOpticsの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "既存受光図形にSurfaceScienceの独立機構を追加しない。電荷/干渉/粘弾性の未指定物理を描画しない"
+              ],
+              "evidence_or_constraint": "既存源・媒体条件の拘束のみ"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽",
+          "indirect_evidence": "同源の位置/age/受光差",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "WORLD finite境界。OBSは主形を作らない",
+          "perceptual_failure_risk": "白い楕円だけ又は均一rimに見える",
+          "cue_roles": [
+            {
+              "cue": "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽",
+              "supports": "既存受光図形",
+              "reliability_and_overlap": "実10/35msとON/OFFで確認。単一静止で動き全部を断定しない"
+            }
+          ],
+          "confusable_alternative": "固定電球/全周rim/装飾ring",
+          "disambiguating_evidence": "vent方向、N.L方向差、短い時間応答",
+          "viewing_conditions": "980x620 backing、H64/128、parent PNG寸法別記録"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "既存ventはy±4; screen+y下。受け手は局所凸面法線",
+          "normal_field_coherence": "head球/torsoとlegs capsuleへ共通normal",
+          "curvature_behavior": "有限ローブのbounded低周波輪郭",
+          "silhouette_logic": "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽",
+          "contact_relation": "既存殻/床、受光図形前景mask",
+          "spatial_relation": "同source originとreceiver coordsを共通projection"
+        },
+        "StateDynamics": {
+          "state_space_extent": "同cause720ms、game stun2500msは別状態",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "視覚のみ720ms消去",
+          "damping_profile": "source27ms、gas別密度包絡",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "源/OBS残光を停止",
+          "transition_failure_risk": "消失後OBS残存/phase混同",
+          "driving_input": "grenade-stun-impact",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "閃光→vent残熱→gas希釈",
+          "stability_condition": "有限age/正projection"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH2.Optics -> PH6.Optics: 同source放射とN.L/距離減衰",
+            "PH2.Thermo -> PH3.Fluid: 初期vent放出と上昇"
+          ],
+          "SecondaryCouplings": [
+            "PH2.Optics -> PH5.Optics: 同源床受光"
+          ],
+          "CausalAssessment": {
+            "intervention": "sourceOff/observerOff/contextOff、登録receiver位置/距離を変更",
+            "predicted_response": "sourceOffで放射/OBSなし、observerOffでvent主形維持、receiver左右移動で明るい面が反転",
+            "competing_explanation": "背景/PSFだけの主形又はuniformrim",
+            "uncertainty": "解析近似、全scene遮蔽/実人skin校正なし、native未確認",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽"
+          ],
+          "indirect": [
+            "同cause同source"
+          ],
+          "candidates": [
+            "boundary",
+            "gradient",
+            "occlusion",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5/PH6",
+              "change": "同源の受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH6.StateDynamics",
+          "retained_cues": [
+            "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽"
+          ],
+          "simplification": "少数finite形状。noiseや追加粒子で主因果を覆わない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "directional_balance": [
+              "向き/距離/自己遮蔽へ応答する受光と可視源の前景遮蔽"
+            ],
+            "tension_release": [
+              "短いピークと有限尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "uniform_response",
+          "OBS_primary_shape"
+        ],
+        "implementation": "capsuleNormal/headPoint/sourceDirection/facing/visibility/materialDiffuse/body",
+        "nativeResult": "not_run"
+      }
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "殻/熱源/媒体/receiver存在"
+    },
+    "TransformChain": {
+      "order": [
+        "world",
+        "camera",
+        "screen"
+      ],
+      "world_to_camera": "cause-camera差",
+      "camera_to_screen": "origin+scale;screen+y下"
+    },
+    "Gravity": {
+      "condition": "normal",
+      "evidence": [
+        "gas浮力上昇",
+        "既存殻床関係"
+      ]
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "air",
+      "Field": {
+        "direction": "初期vent±y後に上向き",
+        "speed": "spread/rise解析",
+        "gust": "none",
+        "shear": "boundedローブ輪郭",
+        "turbulence": "低周波rollのみ"
+      }
+    }
+  },
+  "ExtensionActivationTable": {
+    "VFX": "explicit",
+    "ECodeImplementation": "explicit",
+    "LDM": "既存source/gasの対象別包絡",
+    "PostEffects": "既存source-bound near/horizontal pupilを保持",
+    "GradientAnchorPolicy": "PH2白/amber・PH3残熱orange。未指定虹色なし",
+    "KeywordExpansion": "登録キーワードなし",
+    "MagicArchitecture": "not_applicable"
+  },
+  "OBS": [
+    {
+      "id": "OBS1",
+      "operation_type": "posteffect",
+      "input_references": [
+        "PH2",
+        "PH3"
+      ],
+      "target_mask": "occlusion後sourceMRT",
+      "stage": "post_composite",
+      "composite_method": "source share subtract + normalized PSF",
+      "intensity": ".12near+.08horizontal",
+      "protected_regions": [
+        "WORLD主輪郭",
+        "receiver前景"
+      ],
+      "dependencies": [
+        "PH2",
+        "PH3"
+      ],
+      "sampling_consequence": "source-bound normalized81tap/25tap、同age・終了後残光なし"
+    },
+    {
+      "id": "OBS2",
+      "operation_type": "tone",
+      "input_references": [
+        "WORLD",
+        "OBS1"
+      ],
+      "target_mask": "表示",
+      "stage": "display",
+      "composite_method": "fixed common compression then one sRGB",
+      "dependencies": [
+        "OBS1"
+      ],
+      "sampling_consequence": "linearHDR rgba16float→single表示transfer"
+    }
+  ],
+  "sharedBudget": {
+    "near": 0.12,
+    "horizontal": 0.08,
+    "total": 0.2,
+    "sourceSubtraction": true,
+    "strictWholeSceneEnergyConservation": "not_established"
+  },
+  "SamplingContract": {
+    "outputResolution": "980x620backing",
+    "intendedDisplayScale": "H64=1/H128=2、parent拡大別記録",
+    "spatialDetail": "有限主輪郭・少数lobes、追加細粒なし",
+    "temporalSampling": "performance.now由来RAFage、hold固定と自然再生別観測",
+    "resample": "HDRlinearPSF、native画素未確認"
+  },
+  "rules": [
+    {
+      "rule": "VFX.SpatialMorphologyRule",
+      "file": "source/shaders.mjs",
+      "sourceLines": [
+        {
+          "needle": "let growth=",
+          "line": 40
+        },
+        {
+          "needle": "let jetLength=",
+          "line": 43
+        },
+        {
+          "needle": "let boundary=",
+          "line": 62
+        }
+      ],
+      "observable": "二つのventと有限ローブ",
+      "result": "implemented; native not_run"
+    },
+    {
+      "rule": "VFX.MaterialOpticalResponseRule",
+      "file": "source/shaders.mjs",
+      "sourceLines": [
+        {
+          "needle": "fn capsuleNormal",
+          "line": 11
+        },
+        {
+          "needle": "let sourceDirection=",
+          "line": 89
+        },
+        {
+          "needle": "let materialDiffuse=",
+          "line": 92
+        },
+        {
+          "needle": "radiation*=1.0-body",
+          "line": 94
+        }
+      ],
+      "observable": "receiver方向/距離/自己遮蔽と前景occlusion",
+      "result": "implemented; native not_run"
+    },
+    {
+      "rule": "VFX.TransportTemporalRule",
+      "file": "source/shaders.mjs",
+      "sourceLines": [
+        {
+          "needle": "let spread=",
+          "line": 55
+        },
+        {
+          "needle": "let center=",
+          "line": 58
+        },
+        {
+          "needle": "let density=",
+          "line": 63
+        }
+      ],
+      "observable": "vent移流と浮力/密度減衰",
+      "result": "implemented; native not_run"
+    },
+    {
+      "rule": "ObservationIntegrationTemplate.PostEffectsCommonRule",
+      "file": "source/shaders.mjs",
+      "sourceLines": [
+        {
+          "needle": "export const OPTICS",
+          "line": 99
+        },
+        {
+          "needle": "export const POST",
+          "line": 113
+        }
+      ],
+      "observable": "WORLDとOBS分離",
+      "result": "implemented; native not_run"
+    },
+    {
+      "rule": "CoordinateGravityWindTemplate.NaturalVarianceRule",
+      "file": "source/shaders.mjs",
+      "sourceLines": [
+        {
+          "needle": "let roll=",
+          "line": 61
+        }
+      ],
+      "observable": "bounded低周波偏差。noise carpetなし",
+      "result": "implemented; native not_run"
+    }
+  ],
+  "acceptance": {
+    "CPU": "53 assertions passed",
+    "nativeCompile": "not_run",
+    "pixels": "not_run",
+    "normalSFX": "not_run",
+    "fullBIndependentAcceptance": "not_run",
+    "quality": "pending"
+  },
+  "provenance": "R1原本と歴史unknowncount保持、primaryが一回追加R2を確定。no reset/no automaticR3"
+}
