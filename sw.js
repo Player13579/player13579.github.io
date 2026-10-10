@@ -6,7 +6,7 @@
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
 const RUNTIME_RELEASE = "fire-e-causal-v920-mystery-box-start-clock-r1-grenades-dom-r1";
-const CACHE_NAME = "dva-static-mystery-box-start-clock-r1-grenades-dom-r1-v1-invention-leaf-81419a44b62b2c1e";
+const CACHE_NAME = "dva-static-mystery-box-start-clock-r1-grenades-dom-r1-v1-invention-leaf-81419a44b62b2c1e-hs-quantum-r295";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 const STATIC_ASSETS = [
   "/assets/generated/webgpu-text/atlas.json",

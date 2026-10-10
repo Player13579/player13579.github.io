@@ -9732,7 +9732,7 @@ function movePlayer(room, player, rawDx, rawDy, forcedDt, wantsDash = false, wan
   // deliberately lives in the common movement integrator: Bot navigation
   // uses it too, while teleports, knockback, and other authoritative position
   // changes retain their own non-input routes.
-  if (player.alive && availableStamina(mover) <= 0) {
+  if (player.alive && availableStamina(mover) <= 0 && !(Number(player.hoverSprintUntil) > timestamp)) {
     mover.vx = 0;
     mover.vy = 0;
     mover.movementMode = "idle";
@@ -14882,6 +14882,7 @@ function useQuantumControl(room, player, rawMode) {
     player.quantumElectricLastStaminaSpent = QUANTUM_ACTION_STAMINA_COST;
     resolveQuantumElectricDischarge(room, player, electricTarget, timestamp);
   } else if (mode === "nuclear-transmutation") {
+    spendOperatorMana(room, player, "クオンタム");
     spendStamina(player, QUANTUM_ACTION_STAMINA_COST, room, "クオンタム");
     consumeItem(player, itemId);
     const credits = acquireGoldAsCredits(room, player, `quantum-gold:${itemId}`);
@@ -14893,6 +14894,7 @@ function useQuantumControl(room, player, rawMode) {
     });
     pushEvent(room, `${player.name} が${ITEM_DEFINITIONS[itemId].label}を金へ核変換し、${credits}Cへ自動換金しました。`);
   } else if (mode === "kinetic-decelerate" || mode === "kinetic-accelerate") {
+    spendOperatorMana(room, player, "クオンタム");
     spendStamina(player, QUANTUM_ACTION_STAMINA_COST, room, "クオンタム");
     consumeItem(player, itemId);
     const output = mode === "kinetic-decelerate" ? "ice" : "heated-water";
