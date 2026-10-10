@@ -116,6 +116,8 @@
       let activation = { found: false };
       if (itemId(item) === 'gunner-shooting-sol61-r1') {
         activation = invoke(win.__DVA_SHOOTING_E_R1__, 'enableAudio', []);
+      } else if (itemId(item) === 'gunner-shooting-sol61-r2') {
+        activation = invoke(win.__DVA_SHOOTING_E_R2__, 'enableAudio', []);
       } else if (itemId(item) === 'gunner-aim-acquisition-sol61-r1') {
         activation = invoke(win.__DVA_GUNNER_AIM_R1__, 'unlockAudio', []);
       } else if (itemId(item) === 'gunner-aim-acquisition-sol61-r2') {
@@ -132,8 +134,8 @@
         activation = invoke(win.__EMP__.audio, 'enable', []);
       }
 
-      // Shooting R1 exposes only this source API; never substitute a control or synthetic audio path.
-      const strictSourceApi = itemId(item) === 'gunner-shooting-sol61-r1';
+      // Shooting R1 and R2 expose only their exact source APIs; never substitute another control or synthetic audio path.
+      const strictSourceApi = itemId(item) === 'gunner-shooting-sol61-r1' || itemId(item) === 'gunner-shooting-sol61-r2';
       if (strictSourceApi && activation.error) return setState('unsupported', 'source audio activation failed');
       if (strictSourceApi && !activation.found) return setState('unsupported', 'source audio API is not ready');
       // Preserve the legacy fallback chain for controls that throw synchronously.

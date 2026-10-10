@@ -1,0 +1,73 @@
+{
+  "schema": "dva-public-shooting-e-package-r699/v1",
+  "groupID": "gunner-shooting-sol61",
+  "versionID": "gunner-shooting-sol61-r2",
+  "entry": "index.html",
+  "globalName": "__DVA_SHOOTING_E_R2__",
+  "sourceManifestSha256": "bce31134c726f227ef693da47113e538a3c68facd9dbdf66eec98b277068b09e",
+  "sourceSealSha256": "305575389e14ba000ea354b8a7aad168f4c439e54168594b0557bd4a8acd2ae9",
+  "authors": {
+    "creative": "GPT-6.1-Sol",
+    "runtimeImplementation": "GPT-6.1-Sol",
+    "galleryIntegration": "GPT-6-Luna"
+  },
+  "runtimeClosure": [
+    {
+      "path": "contract.mjs",
+      "bytes": 3669,
+      "sha256": "562d13788088cb1b3320793a1b06713d6b9fc4dc066941c358179be17fd43655",
+      "publicPath": "public/gunner-shooting-sol61/r2-startup-r1/contract.mjs"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3073,
+      "sha256": "773cf7216bf1982e50f4965c66b7c172b6e91935c98e54654a75107329a1df32",
+      "publicPath": "public/gunner-shooting-sol61/r2-startup-r1/index.html"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1540,
+      "sha256": "34832a3daa9baab472d8a0d971dbc5ecd35082873d5ba0ba7a545fa907c669b5",
+      "publicPath": "public/gunner-shooting-sol61/r2-startup-r1/observer.wgsl"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 15793,
+      "sha256": "f1fb502fb52a44f4249ffb14b4b36fb65180477ea425b9e74c647a5c700fce04",
+      "publicPath": "public/gunner-shooting-sol61/r2-startup-r1/runtime.mjs"
+    },
+    {
+      "path": "source.wgsl",
+      "bytes": 4860,
+      "sha256": "c205729fc190f5d0123c23947f9b195264afbb5f03e746b1599f3c4810492d63",
+      "publicPath": "public/gunner-shooting-sol61/r2-startup-r1/source.wgsl"
+    }
+  ],
+  "dependencies": {
+    "index.html": [
+      "runtime.mjs"
+    ],
+    "runtime.mjs": [
+      "contract.mjs",
+      "source.wgsl",
+      "observer.wgsl"
+    ]
+  },
+  "sourceRuntimeValidation": {
+    "CPU": "pass:5 tests including actual mountPreview warmup lifecycle; fakeGPU scope only",
+    "wgslReservedWordScan": "pass: pinned R683 list; static supplement only",
+    "shader": "pending root-native real compilation",
+    "native": "pending root-only",
+    "quality": "in-progress",
+    "SFXListening": "not_run",
+    "mainGame": "not_run",
+    "publication": "pending"
+  },
+  "galleryMetadata": {
+    "quality": "pending",
+    "adoption": "unknown",
+    "native": "pending-root",
+    "normalAudioListening": "not_run",
+    "mainGame": "not_connected"
+  }
+}
