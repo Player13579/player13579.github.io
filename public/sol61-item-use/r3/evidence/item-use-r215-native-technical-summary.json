@@ -59,5 +59,63 @@
     "publicGalleryPublication": "not_performed",
     "sourceOnlyOrHardMute": "verify-mode hard mute; no normal sound acceptance",
     "evidenceLinkUi": "The current asset-gallery.js stores nativeEvidenceHref metadata but has no runtime property read for nativeEvidenceHref; evidence-link rendering is not established by this fixture."
+  },
+  "mediaCoverageCorrection": {
+    "schema": "dva-item-use-r215-media-coverage-correction-r275/v1",
+    "status": "LIMITED_DECODED_MEDIA_NOT_FULL_LIFETIME_COVERAGE",
+    "basis": {
+      "reviewPacket": "outputs/request-20261010/item-use-r3-full-lifetime-review-preparation-r268/EVIDENCE-SUMMARY.json",
+      "reviewPacketSha256": "58b01427ed5e35976f6b1622de3c06674988f36528380a407befadd36ee14650",
+      "readyPath": "outputs/request-20261010/item-use-r3-full-lifetime-review-preparation-r268/READY.json",
+      "readySha256": "c08c0d42b099e17c44199843759cc98af51650a51178b435cfbc5e4b08ac7877",
+      "manifestSha256": "a637d2fa899ffbf3f644848b7ef08984b8102b9024668f235f9c1b0dd9a08da6"
+    },
+    "video": {
+      "path": "evidence/item-use-r3-natural-lifetime.webm",
+      "bytes": 9911,
+      "sha256": "6db83f24588eb8d1357002bdaf9038e1f07bb3a004d09958f199a79585533e5c",
+      "mimeType": "video/webm;codecs=vp9",
+      "recorder": "MediaRecorder",
+      "captureSource": "#surface.captureStream(30)",
+      "recorderElapsedMs": 3709.2,
+      "decodedFrames": 9,
+      "decodedDurationMs": 285,
+      "firstFramePtsMs": 0,
+      "lastFramePtsMs": 285,
+      "frameClockMappingToNativeReceiptPerfMs": false,
+      "fullMovieLifetimeCoverage": "INSUFFICIENT",
+      "assessment": "INSUFFICIENT: the file decodes 9 frames only through PTS 285 ms, while MediaRecorder reports 3709.2 ms and two natural cycles span approximately 1698 ms; the provided video frame timestamps do not carry a proven mapping to receipt perfMs/ageMs. Do not claim that this film depicts both cycles or full expiry."
+    },
+    "nativeReceipts": {
+      "tracePath": "outputs/request-20261010/item-use-root-natural-film-r215/natural-lifetime-trace.json",
+      "traceSha256": "0c6f5a6145f8ed1aade3f7a748baf6305dbcc6d20d50cbf437dcf70a82f89a1e",
+      "traceEntries": 48,
+      "naturalCauses": 2,
+      "byCycle": {
+        "1": {
+          "count": 28,
+          "causeIds": [
+            "item-use-r3-natural-1-5c8d4bef-028a-4793-b65f-3975d53335c5"
+          ],
+          "firstAgeMs": 3.299999998882413,
+          "lastAgeMs": 838,
+          "allSubmittedAndCompleted": true,
+          "singleCause": true
+        },
+        "2": {
+          "count": 20,
+          "causeIds": [
+            "item-use-r3-natural-2-d0dfade2-8d65-4d52-ad69-a3db1c10d57b"
+          ],
+          "firstAgeMs": 0.19999999925494194,
+          "lastAgeMs": 780.4000000003725,
+          "allSubmittedAndCompleted": true,
+          "singleCause": true
+        }
+      },
+      "all48SubmittedCompleted": true,
+      "interpretation": "R215 separately contains same-cause active and terminal native GPU receipts through both natural causes; all 48 trace entries report submitted+completed, and each terminal reports inactive source with queue submission/completion."
+    },
+    "scopeBoundary": "Native queue receipts establish submitted/completed samples across two natural causes. They do not establish that the WebM covers either full lifetime. The media file only decodes through PTS 285 ms and cannot be mapped to native receipt perfMs/ageMs; do not call this full-lifetime video evidence."
   }
 }
