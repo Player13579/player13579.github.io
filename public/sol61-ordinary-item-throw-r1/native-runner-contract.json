@@ -1,0 +1,17 @@
+{
+  "schema": "ordinary-item-throw-native-preparation/v1",
+  "status": "prepared; root-owned native execution pending",
+  "entry": "index.html?verify=throw-r1-native&embed=1",
+  "source": "world.wgsl",
+  "sourceHashMustMatch": "outputs/request-20261010/ordinary-item-throw-sol61-r1/world.wgsl",
+  "nativeChecks": [
+    "Capture actual world and observer getCompilationInfo diagnostics, create both pipelines under validation error scope, and record popErrorScope result.",
+    "Render 600 ms fixture to paired rgba16float color/emission MRT; record viewport, target formats, uniform bytes, actual frame submission and queue.onSubmittedWorkDone completion.",
+    "Hold actual submitted frames at phases 0, .045, .12, .25, .5, .75, .84, .94, .975, .99; capture natural cause at onset, middle, ordinary arrival, and complete 600 ms expiration.",
+    "Run source OFF and observer OFF independently; source OFF must clear the effect, observer OFF must preserve the source while suppressing only bloom.",
+    "Run a natural 600 ms cycle and confirm the root shader terminal fade, then an expired frame with no lingering cue.",
+    "Verify test URL remains silent; no landing/Frag/Stun SFX is admitted.",
+    "Record uncaptured GPU errors/device loss; close after queue fence, release both MRT textures/buffers/context/device, and confirm no owned runtime remains."
+  ],
+  "notClaimed": ["native GPU compile/render", "visual quality acceptance", "ordinary SFX listening", "main-game integration", "public gallery registration or publication", "device-specific verification"]
+}

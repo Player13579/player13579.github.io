@@ -1,0 +1,22 @@
+import {createRuntime,THROW_EVENT} from './runtime.mjs';
+import {createThrowSfx} from './sfx.mjs';
+const canvas=document.querySelector('#fx'), out=document.querySelector('#status'), phase=document.querySelector('#phase');
+const buttons={replay:document.querySelector('#replay'),sfx:document.querySelector('#sfx'),hold:document.querySelector('#hold'),source:document.querySelector('#source'),observer:document.querySelector('#observer')};
+const verify=new URLSearchParams(location.search).has('verify');
+let runtime,sfx,sfxEnabled=false,sourceEnabled=true,observerEnabled=true,holdAt=null,activeStart=performance.now(),raf=0,disposed=false,lastReceipt=null,causeSequence=1;
+const sfxStarted=new Set();
+const durationMs=600;
+const event={id:'ordinary-throw-r1-preview-cause-1',type:THROW_EVENT,variant:'flight:ordinary-probe',playerId:'preview-owner',x:205,y:390,targetX:775,targetY:290,startedAt:activeStart,duration:durationMs};
+function report(v){out.textContent=JSON.stringify(v,null,2);}
+function currentNow(){return holdAt==null?performance.now():activeStart+durationMs*holdAt;}
+async function draw(){if(disposed)return;try{await runtime.resize();const scale=runtime.size.width/980;const r=await runtime.render({event,nowMs:currentNow(),sourceEnabled,observerEnabled,width:runtime.size.width,height:runtime.size.height,worldToPixel:scale,project:p=>({x:p.x*scale,y:p.y*scale})});lastReceipt=r;if(sfxEnabled&&!verify&&sourceEnabled&&r.status==='active'&&!sfxStarted.has(r.eventId)){const cause=r.eventId;const visible=await r.completed;if(visible&&cause===event.id&&sourceEnabled&&!sfxStarted.has(cause)){const speed=Math.hypot(event.targetX-event.x,event.targetY-event.y)/event.duration;const sound=sfx.play({causeId:cause,speedWorldPerMs:speed,durationMs:event.duration,verify,enabled:true,visibleFrameComplete:true});if(sound.status==='started')sfxStarted.add(cause);}}report({status:'ready',format:runtime.format,verify,holdPhase:holdAt,receipt:{...r,completed:undefined},deviceLoss:'not reported'});}catch(e){report({status:'error',message:String(e?.stack||e)});return;}raf=requestAnimationFrame(draw);}
+function reset(){cancelAnimationFrame(raf);holdAt=null;event.id=`ordinary-throw-r1-preview-cause-${++causeSequence}`;event.startedAt=performance.now();activeStart=event.startedAt;buttons.hold.textContent='Hold phase';raf=requestAnimationFrame(draw);}
+buttons.replay.addEventListener('click',reset);
+buttons.hold.addEventListener('click',()=>{holdAt=Number(phase.value)/1000;buttons.hold.textContent=`Held ${(holdAt*100).toFixed(1)}%`;cancelAnimationFrame(raf);raf=requestAnimationFrame(draw);});
+buttons.source.addEventListener('click',()=>{sourceEnabled=!sourceEnabled;if(!sourceEnabled)sfx?.stopAll();buttons.source.textContent=`Source ${sourceEnabled?'ON':'OFF'}`;});
+buttons.observer.addEventListener('click',()=>{observerEnabled=!observerEnabled;buttons.observer.textContent=`Observer ${observerEnabled?'ON':'OFF'}`;});
+if(verify)buttons.sfx.disabled=true;
+buttons.sfx.addEventListener('click',async()=>{try{sfx??=createThrowSfx();await sfx.unlock();sfxEnabled=true;buttons.sfx.textContent='SFX enabled';report({status:'sfx-unlocked',waitingFor:'matching submitted visible draw'});}catch(e){report({status:'sfx-error',message:String(e)});}});
+try{runtime=await createRuntime({canvas,shaderUrl:'./world.wgsl',onStatus:message=>{if(message.type==='device-lost')report({status:'device-lost',message});}});report({status:'compiled',worldDiagnostics:runtime.worldCompilation.messages,observerDiagnostics:runtime.observerCompilation.messages,canvasFormat:runtime.format,mrtFormat:'rgba16float',uniformBytes:64,verify});raf=requestAnimationFrame(draw);}catch(e){report({status:'startup-error',message:String(e?.stack||e)});}
+window.__throwR1=Object.freeze({get state(){return {verify,sourceEnabled,observerEnabled,holdAt,lastReceipt,startedAt:event.startedAt,durationMs:event.duration};},setPhase(v){if(!Number.isFinite(v)||v<0||v>1)throw new RangeError('phase 0..1');phase.value=String(Math.round(v*1000));holdAt=v;cancelAnimationFrame(raf);raf=requestAnimationFrame(draw);},replay:reset,sourceOff(){sourceEnabled=false;},sourceOn(){sourceEnabled=true;},observerOff(){observerEnabled=false;},observerOn(){observerEnabled=true;},async dispose(){disposed=true;cancelAnimationFrame(raf);await sfx?.dispose();await runtime?.dispose();}});
+addEventListener('pagehide',()=>{void window.__throwR1.dispose();},{once:true});
