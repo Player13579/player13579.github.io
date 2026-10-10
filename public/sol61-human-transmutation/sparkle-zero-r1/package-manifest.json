@@ -1,0 +1,97 @@
+{
+  "schema": "human-sparkle-zero-runtime-candidate/v1",
+  "status": "PRIVATE_CANDIDATE_NATIVE_PENDING",
+  "versionId": "human-transmutation-sparkle-zero-sol61-r1",
+  "groupId": "alchemy-human-transmutation-sol61",
+  "targetId": "revived-philia",
+  "edition": {
+    "kind": "new-user-authorized-sparkle-edition",
+    "edition": 1,
+    "additionalCreativeRevisionAuthorized": false
+  },
+  "authorship": {
+    "sparkleDesign": "GPT-6.1-Sol",
+    "technicalIntegration": "GPT-6-Luna",
+    "inheritedNonSparkleSource": "GPT-6.1-Sol"
+  },
+  "lineage": {
+    "baseVersionId": "human-transmutation-sol61-r13",
+    "basePackage": "outputs/request-20261010/human-transmutation-r13-square-sparkle-repair-r1/public/sol61-human-transmutation/r13",
+    "basePackageManifestSha256": "26e6e3c021c77d7399854c5a4f1cc095cd4270e06a229d6fa418e811841bd6a3",
+    "baseSealSha256": "465134ede60ca59b46651a68daa6ac55f9fcb342d0fa3dd213723eb658182a8f",
+    "baseReadySha256": "94df3f424ebd65a2bd48cc6dee9e40da974eba4881cb7b1acd384cf2ebb97cd6",
+    "baseSourcePinsSha256": "678254b479ebf4b9c70a8b1f8d67118f6ce690114bc3620061dbc76af1c5b462",
+    "inheritedNonSparkleHashes": {
+      "completion-design.mjs": "0ce7a56f801601e5f015df4128e3e6a7b8dc5d8362c7fbfdd347fdeb7c9014ec",
+      "settlement-design.mjs": "9463c579aebeb537f45868a4eca6a56ed9729aa454f0b62662dd513f2a283c2a",
+      "handoff-state.mjs": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a",
+      "local-fixation.mjs": "08e51b8bb95d67bc153c9d3bd496abf41e344061a0165b87281a2703d5e7f8ea",
+      "sfx.mjs": "d913e74a41627e1cc54c7431278498aeb99926d0b17921d5de4b68204e6357b3",
+      "human-canvas-fit.mjs": "b882a4cd85b51f30ec29c08200f83163211f64882dcefbf4bfffc9e3733de053",
+      "gallery-auth.mjs": "f97a886b1de5a5d003fe8e37617754be21b0562cc89bd79a88a248cbc9a02f94",
+      "assets/philia-front-nine-v752.png": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+    }
+  },
+  "sparkleSource": {
+    "author": "GPT-6.1-Sol",
+    "designSha256": "e134058986ede3620655a450eea1519acc589f431388a819e54a4b288c8ce604",
+    "moduleSha256": "f717494fb55efe3eb90184ba1ab738ae75fced82a119ba2ccaa8a15756ca46ec",
+    "moduleRuntimeCopySha256": "f717494fb55efe3eb90184ba1ab738ae75fced82a119ba2ccaa8a15756ca46ec",
+    "exactModuleCopy": true
+  },
+  "runtime": {
+    "entry": "public/sol61-human-transmutation/sparkle-zero-r1/gallery.html",
+    "runtimeClosure": [
+      "public/sol61-human-transmutation/sparkle-zero-r1/gallery.html",
+      "public/sol61-human-transmutation/sparkle-zero-r1/human-canvas-fit.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/gallery-auth.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/index.html",
+      "public/sol61-human-transmutation/sparkle-zero-r1/preview.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/core.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/cause.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/shader.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/handoff-state.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/sparkle-zero.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/completion-design.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/settlement-design.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/local-fixation.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/fixture.mjs",
+      "public/sol61-human-transmutation/sparkle-zero-r1/assets/philia-front-nine-v752.png",
+      "public/sol61-human-transmutation/sparkle-zero-r1/sfx.mjs"
+    ],
+    "routeCount": 16,
+    "presentUniformBytes": 80,
+    "worldSupportContract": "supportPx.xy=(rectCss.xy+supportUv.xy*rectCss.zw)*DPR; supportPx.zw=supportUv.zw*rectCss.zw*DPR",
+    "sourceAlphaContract": "positionPx -> positionPx/DPR -> local CSS rect UV -> sampleOriginal cropUV mapping",
+    "sparkleLifetimeMs": 1200,
+    "worldEmissionAttachment": "non-sparkle material/body radiation only",
+    "sparkleSourceAttachment": "point-radiation-only rgba16float MRT; excluded from world emission",
+    "observerContract": "observer OFF returns direct current point source; observer ON returns 0.28 direct + 0.72 normalized shared-axis PSF"
+  },
+  "supportArtifacts": [
+    {
+      "path": "public/sol61-human-transmutation/sparkle-zero-r1/PRESENT_WGSL.generated.wgsl",
+      "bytes": 2901,
+      "sha256": "86a63ab18ff38accf97360d86ece78e8000775aa4febe1539d6aa8a028af2e2c",
+      "generatedFrom": "shader.mjs:PRESENT_WGSL",
+      "runtimeRoute": false
+    }
+  ],
+  "acceptance": {
+    "cpuTests": "pass-private-preflight",
+    "nativeGpuParentReplay": "pending-root-run",
+    "visualQuality": "pending",
+    "adoption": "unknown",
+    "ordinarySfxListening": "not_run",
+    "safariIpad": "unverified",
+    "gameIntegration": "not_connected",
+    "publication": false
+  },
+  "metadataRoutes": [
+    {
+      "path": "public/sol61-human-transmutation/sparkle-zero-r1/package-manifest.json",
+      "class": "verification-only-metadata",
+      "runtimeDependency": false
+    }
+  ]
+}
