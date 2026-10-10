@@ -117,5 +117,46 @@
       "interpretation": "R215 separately contains same-cause active and terminal native GPU receipts through both natural causes; all 48 trace entries report submitted+completed, and each terminal reports inactive source with queue submission/completion."
     },
     "scopeBoundary": "Native queue receipts establish submitted/completed samples across two natural causes. They do not establish that the WebM covers either full lifetime. The media file only decodes through PTS 285 ms and cannot be mapped to native receipt perfMs/ageMs; do not call this full-lifetime video evidence."
+  },
+  "r351FollowupNativeAttempt": {
+    "status": "FAIL_R351_CURRENT_PUBLIC_NATIVE_POPUP_OR_SOURCE",
+    "attempt": "2026-10-10T12-52-24-467Z-ed6f2238-4e0d-4bfc-89ac-918144197074",
+    "resultPath": "outputs/request-20261010/item-use-popup-native-event-diagnosis-r351/candidate/native-attempts/2026-10-10T12-52-24-467Z-ed6f2238-4e0d-4bfc-89ac-918144197074/RESULT.json",
+    "resultSha256": "1165aa22334381f8c9ce66e889cf477dc13b098f871d8a81c6b12633b128295c",
+    "sourceCompileCorrelation": {
+      "scope": "Exact source fetch and shader compilation correlation only; does not pass popup gate or establish overall native replay.",
+      "exactPinnedFetchCount": 1,
+      "matchingCompileCount": 1,
+      "fetchCallId": 1,
+      "compileCallId": 1,
+      "bytes": 5244,
+      "rawFetchSha256": "25c35a5769361bb4a8d86856cd10fbb8344f4c9deb8247fdffc325a541b573ec",
+      "independentlyEncodedTextSha256": "25c35a5769361bb4a8d86856cd10fbb8344f4c9deb8247fdffc325a541b573ec",
+      "shaderModuleCodeSha256": "25c35a5769361bb4a8d86856cd10fbb8344f4c9deb8247fdffc325a541b573ec",
+      "correlated": true,
+      "returnedModule": true,
+      "compilationMessages": []
+    },
+    "cdpTransportDiscrepancy": {
+      "bytes": 5384,
+      "sha256": "3048a6879a15a32e6f6a9d2e14146bd5510e507ae84782d76e43607a32186051",
+      "classification": "CDP response-body transport representation only; its 5384-byte payload is not the browser Fetch clone or WebGPU compile input.",
+      "sourceAcceptance": "Do not compare this CDP body hash as the source pin. Browser Fetch clone and compiled code independently match the 5244-byte pinned source."
+    },
+    "popupGate": {
+      "accepted": false,
+      "popupBound": true,
+      "openerBound": true,
+      "navigationFrameNotAvailable": true,
+      "error": "Error: pinned popup response timed out: https://player13579.github.io/public/sol61-item-use/r3/evidence/item-use-r215-native-technical-summary.json\n    at Timeout.<anonymous> (file:///C:/Users/user/Documents/Codex/2026-07-12/defenders-vs-attackers/outputs/request-20261010/item-use-popup-native-event-diagnosis-r351/candidate/popup-response-observer-r351.mjs:126:18)\n    at listOnTimeout (node:internal/timers:635:17)\n    at process.processTimers (node:internal/timers:571:7)"
+    },
+    "cleanup": {
+      "popupClosed": true,
+      "pageClosed": true,
+      "contextClosed": true,
+      "browserClosed": true,
+      "allClosed": true
+    },
+    "overallMeaning": "R351 remains FAIL. Actual R3 shader source was fetched and compiled byte-exactly, but required popup-summary response gate timed out. This adds a source-integrity finding only; it does not establish successful native replay, E quality acceptance, adoption, game integration, normal audio, or Safari/iPad verification."
   }
 }
