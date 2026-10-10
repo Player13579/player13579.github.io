@@ -1,0 +1,48 @@
+{
+  "id": "dot-e-repairs-r1-public-gunner",
+  "sourceVisibility": "public",
+  "publicRepository": "Player13579/player13579.github.io",
+  "publicCommit": "56d0da8f810b52e3750a37d9c52ed72790860aa2",
+  "scope": "Gunner-only standalone comparison; no game modifications",
+  "renderer": "WebGPU-only",
+  "viewport": {
+    "width": 980,
+    "height": 620,
+    "anchor": "neutral H64 fixture"
+  },
+  "hardMuted": true,
+  "defaultPlayback": "paused",
+  "nativeGpuValidation": "not-run; container browser startup socket permission blocker",
+  "cpuValidation": "see evidence/cpu-tests.tap; mocks are not native GPU proof",
+  "productionSources": [
+    {
+      "version": "original",
+      "path": "gunner-original/production.js",
+      "entrypoint": "gunner-original/index.html",
+      "sourceVisibility": "public",
+      "sha256": "8c374b6b13bb38a5f9b196c1a5cd145da0f0edbdb9417297e655a94116b549fa",
+      "gitBlobSha1": "ff4ce3908856d40cc0958ba71be46384d803ae09",
+      "bytes": 11587,
+      "technicalReplayStatus": "not-run",
+      "visualQualityStatus": "unreviewed",
+      "normalAudioListening": "not-run",
+      "gameIntegrationStatus": "standalone-only"
+    },
+    {
+      "version": "repaired",
+      "path": "gunner-repaired/production.js",
+      "entrypoint": "gunner-repaired/index.html",
+      "sourceVisibility": "public",
+      "sha256": "0b6eea425cf690a44f49c67766e7314ef33f2dda95c01544ffcec3d27e6fcb7c",
+      "gitBlobSha1": "f6dff3e5b1855b6bf007b461a853aff1faa8d57d",
+      "bytes": 11603,
+      "technicalReplayStatus": "not-run",
+      "visualQualityStatus": "unreviewed",
+      "normalAudioListening": "not-run",
+      "gameIntegrationStatus": "standalone-only"
+    }
+  ],
+  "hostRevision": "async-terminal-state-guard-r1",
+  "cpuTestCount": 9,
+  "asyncFailureRegression": "pass-mocked; pending submissions and held shader/pipeline initialization preserve terminal error states"
+}

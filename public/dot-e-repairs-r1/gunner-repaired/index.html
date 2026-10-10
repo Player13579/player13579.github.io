@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gunner shot E · repaired</title><link rel="stylesheet" href="../preview.css"></head>
+<body data-effect="gunner" data-version="repaired">
+<main><canvas id="preview" width="980" height="620" aria-label="Standalone WebGPU gunner fixture"></canvas>
+<header><strong>Gunner shot E · repaired</strong><span>Public production source · standalone fixture · WebGPU only</span></header>
+<section id="controls" aria-label="Preview controls">
+<button id="play" type="button" disabled>Play</button><button id="restart" type="button" disabled>Restart</button>
+<label>Time <input id="time" type="range" min="0" max="1800" value="450" step="1" disabled><output id="time-label">450 ms</output></label>
+<label id="variant-label">Weapon <select id="variant"><option>handgun</option><option>smg</option><option>assault</option><option>sniper</option><option>taser</option></select></label>
+<label><input id="reduced" type="checkbox"> Reduced motion</label>
+</section>
+<footer><p id="status" role="status" aria-live="polite">Initializing WebGPU…</p>
+<p>Muted fixture; no game state, actor sprite, or game audio. GPU replay and visual acceptance are not certified by this package.</p></footer>
+</main>
+<script src="production.js"></script><script src="../adapter.js"></script><script src="../host.js"></script>
+</body></html>

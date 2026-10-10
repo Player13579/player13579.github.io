@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: public source pins and input files match byte for byte
+ok 1 - public source pins and input files match byte for byte
+  ---
+  duration_ms: 2.407656
+  type: 'test'
+  ...
+# Subtest: new direct-effect fixture matches only the public API and covers every variant
+ok 2 - new direct-effect fixture matches only the public API and covers every variant
+  ---
+  duration_ms: 2.070558
+  type: 'test'
+  ...
+# Subtest: production coordinate mapping and original/repaired fade differences remain intact
+ok 3 - production coordinate mapping and original/repaired fade differences remain intact
+  ---
+  duration_ms: 0.233104
+  type: 'test'
+  ...
+# Subtest: actual public production create/record APIs encode and release buffers using mock GPU
+ok 4 - actual public production create/record APIs encode and release buffers using mock GPU
+  ---
+  duration_ms: 1.141386
+  type: 'test'
+  ...
+# Subtest: mock browser handles paused frame, scrubbing, repeated controls, visibility and disposal
+ok 5 - mock browser handles paused frame, scrubbing, repeated controls, visibility and disposal
+  ---
+  duration_ms: 3.825841
+  type: 'test'
+  ...
+# Subtest: unsupported and injected shader failures remain errors, with no claimed GPU completion
+ok 6 - unsupported and injected shader failures remain errors, with no claimed GPU completion
+  ---
+  duration_ms: 2.974793
+  type: 'test'
+  ...
+# Subtest: pending GPU completion cannot overwrite an asynchronous error or device-loss state in either version
+ok 7 - pending GPU completion cannot overwrite an asynchronous error or device-loss state in either version
+  ---
+  duration_ms: 5.061611
+  type: 'test'
+  ...
+# Subtest: every held initialization boundary preserves asynchronous terminal errors in both versions
+ok 8 - every held initialization boundary preserves asynchronous terminal errors in both versions
+  ---
+  duration_ms: 11.825136
+  type: 'test'
+  ...
+# Subtest: closed gunner-only dependency graph has no audio, game mutation, or alternate canvas backend
+ok 9 - closed gunner-only dependency graph has no audio, game mutation, or alternate canvas backend
+  ---
+  duration_ms: 0.847181
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 127.129202
