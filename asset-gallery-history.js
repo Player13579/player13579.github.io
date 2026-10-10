@@ -1,10 +1,17 @@
 (function (root) {
   'use strict';
-  // History records are selectable, but never imply a successful GPU replay.
+  // Archived records remain preserved but are not ordinary replay entries.
+  function accepted(version) {
+    const gate = version.galleryAcceptance;
+    return version.publicationEligible === true && version.replayable === true &&
+      version.historyOnly === false && version.listingExcluded !== true &&
+      gate && ["entry", "closure", "nativeGpu", "normalSfx", "parentDisplay"].every(key => gate[key] === "pass");
+  }
   function mergeHistory(base, additions) {
     const remaining = new Map();
     for (const row of additions) {
       if (!row || !row.groupId || !row.version?.id) throw new Error('Invalid E history record');
+      if (!accepted(row.version)) continue;
       if (!remaining.has(row.groupId)) remaining.set(row.groupId, []);
       remaining.get(row.groupId).push(row);
     }

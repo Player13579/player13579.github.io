@@ -9,7 +9,7 @@ const { mergeHistory } = require('../asset-gallery-history.js');
 const source = fs.readFileSync(path.join(root, 'asset-gallery.js'), 'utf8');
 function catalog() {
   const context = { window: {}, console }; vm.createContext(context);
-  for (const name of ['asset-gallery-history.js', 'asset-gallery-history-data.js'])
+  for (const name of ['asset-gallery-history.js', 'asset-gallery-history-data-r2.js'])
     vm.runInContext(fs.readFileSync(path.join(root, name), 'utf8'), context);
   vm.runInContext(source.slice(0, source.indexOf('  const params = new URLSearchParams')) + '\n globalThis.catalog = entries; globalThis.base = baseEntries; })();', context);
   return context;
@@ -24,18 +24,20 @@ test('all existing versions and adopted defaults are unchanged, sparse slots nor
     assert.equal(after.versions.filter(Boolean).length, after.versions.length);
   }
 });
-test('history additions remain non-adopted and explicitly unverified', () => {
-  const { window, catalog: groups } = catalog();
-  assert.ok(window.E_GALLERY_HISTORY.length > 0);
-  for (const row of window.E_GALLERY_HISTORY) {
-    const v = groups.find(g => g.id === row.groupId).versions.find(v => v.id === row.version.id);
-    assert.equal(v.historyOnly, true); assert.equal(v.replayable, false);
-    assert.notEqual(v.adoption, 'adopted'); assert.notEqual(v.technicalReplayStatus, 'pass');
-    assert.ok(v.sourceUrl || v.page || v.source);
-  }
+test('all 23 additions are withheld from normal selectors; all 401 established records remain', () => {
+ const { window, catalog: groups, base } = catalog();
+ assert.equal(window.E_GALLERY_HISTORY.length, 23);
+ assert.equal(groups.reduce((n,g)=>n+g.versions.length,0),401);
+ assert.deepEqual(JSON.parse(JSON.stringify(groups)),JSON.parse(JSON.stringify(base.map(g=>({...g,versions:g.versions.filter(Boolean)})))));
+ for (const row of window.E_GALLERY_HISTORY) assert.ok(!groups.some(g=>g.versions.some(v=>v.id===row.version.id)));
 });
-test('duplicate version IDs are rejected without replacing old versions', () => {
-  assert.throws(() => mergeHistory([{ id: 'g', versions: [{ id: 'v' }] }], [{ groupId: 'g', version: { id: 'v' } }]), /Duplicate/);
+test('admission requires every technical gate and never admits explicitly excluded records', () => {
+ const version={id:'v', publicationEligible:true,replayable:true,historyOnly:false,galleryAcceptance:{entry:'pass',closure:'pass',nativeGpu:'pass',normalSfx:'pass',parentDisplay:'pass'}};
+ const run=v=>mergeHistory([], [{groupId:'g',version:v}]);
+ assert.equal(run(version)[0].versions.length,1);
+ for(const key of Object.keys(version.galleryAcceptance)) assert.equal(run({...version,galleryAcceptance:{...version.galleryAcceptance,[key]:'not_run'}}).length,0);
+ for(const patch of [{listingExcluded:true},{historyOnly:true},{publicationEligible:false},{replayable:false},{galleryAcceptance:null}]) assert.equal(run({...version,...patch}).length,0);
+ assert.throws(()=>mergeHistory([{id:'g',versions:[{id:'v'}]}],[{groupId:'g',version}]),/Duplicate/);
 });
 test('all history IDs are unique, archived source URLs are pinned and comparison routes exist', () => {
   const { window, catalog: groups } = catalog();
@@ -46,11 +48,20 @@ test('all history IDs are unique, archived source URLs are pinned and comparison
     else assert.ok(fs.existsSync(path.join(root, url)), url);
   }
 });
-test('new shot comparison defaults to repaired bytes without adopting them', () => {
-  const { catalog: groups } = catalog();
-  const group = groups.find(g => g.id === 'gunner-shot');
-  assert.equal(group.defaultVersionId, 'dot-gunner-repaired-r1');
-  assert.equal(group.versions[0].adoption, 'not-adopted');
+test('original creator stays unknown; dot host and repaired-only roles are separate', () => {
+ const {window,catalog:groups}=catalog();
+ assert.ok(!groups.some(g=>g.id==='gunner-shot'));
+ const pair=window.E_GALLERY_HISTORY.filter(r=>r.version.id.startsWith('dot-gunner-')).map(r=>r.version);
+ assert.equal(pair.length,2);
+ for(const v of pair){
+  assert.equal(v.creatorModelId,null);
+  assert.equal(v.technicalAttribution.modelId,'gpt-6-astra');
+  assert.equal(v.technicalAttribution.modelEvidence,'https://learn.chatgpt.com/docs/dots');
+  assert.equal(v.technicalAttribution.roles.includes('technical-source-repair'),v.id.includes('repaired'));
+ }
+ const excluded=window.E_GALLERY_HISTORY.filter(r=>r.version.listingExcluded);
+ assert.equal(excluded.length,2);
+ assert.ok(excluded.every(r=>r.version.listingStatus==='explicitly-excluded-missing-own-sfx'));
 });
 test('public lineage records never masquerade as successor previews', () => {
   const { window } = catalog();
@@ -76,9 +87,9 @@ test('history selection stops prior iframe/audio before blocking autoplay', () =
 test('history scripts load before the gallery and cache hashes match bytes', () => {
   const html = fs.readFileSync(path.join(root, 'webgpu-e-gallery.html'), 'utf8');
   const crypto = require('node:crypto');
-  for (const name of ['asset-gallery-history.js', 'asset-gallery-history-data.js', 'asset-gallery.js']) {
+  for (const name of ['asset-gallery-history.js', 'asset-gallery-history-data-r2.js', 'asset-gallery.js']) {
     const digest = crypto.createHash('sha256').update(fs.readFileSync(path.join(root, name))).digest('hex');
     assert.ok(html.includes(name + '?sha256=' + digest));
   }
-  assert.ok(html.indexOf('asset-gallery-history-data.js?') < html.lastIndexOf('asset-gallery.js?'));
+  assert.ok(html.indexOf('asset-gallery-history-data-r2.js?') < html.lastIndexOf('asset-gallery.js?'));
 });
