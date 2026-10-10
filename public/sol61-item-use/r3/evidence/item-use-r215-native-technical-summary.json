@@ -1,0 +1,63 @@
+{
+  "schema": "dva-item-use-r215-public-evidence-candidate/v1",
+  "status": "PROPOSAL_PRIVATE_TECHNICAL_EVIDENCE_ONLY",
+  "versionId": "item-use-sol61-r3",
+  "sourceParentAtNativeRun": "2f5669577220685ea67d96496288b6b5b497b556",
+  "sourceTreeAtNativeRun": "f29536f30c55460f7505363e75cb8a5e8e7344b1",
+  "priorNativeStatus": "CAPTURED_NATIVE_REVIEW_REQUIRED",
+  "priorNativeResult": {
+    "path": "outputs/request-20261010/item-use-root-natural-film-r215/RESULT.json",
+    "sha256": "382608a09eab9210a08ae67a4f2073501d9191c5ed5f1850b4d9c927d939d056"
+  },
+  "currentPublicParent": {
+    "commit": "be0df02f7661e372c22197592e52df24bd21b897",
+    "routePinsPath": "outputs/request-20261010/r178-public-native-preparation-r196/R196-LIVE-ROUTE-PINS.json",
+    "routeCount": 310,
+    "r196ReadyStatus": "READY_ROOT_NATIVE_PENDING",
+    "allR215RequestedPackageRoutesMatchedCurrentPages": true,
+    "matchedRoutes": 6,
+    "matchedRoutePaths": [
+      "public/sol61-item-use/r3/source/item-use-e-sol61-r3.mjs",
+      "public/sol61-item-use/r3/runtime.mjs",
+      "public/sol61-item-use/r3/source/item-use-e-sfx-sol61-r3.mjs",
+      "public/sol61-item-use/r3/package-manifest.json",
+      "public/sol61-item-use/r3/package-seal.json",
+      "public/sol61-item-use/r3/source/item-use-e-sol61-r3.wgsl"
+    ]
+  },
+  "nativeScope": {
+    "environment": "isolated H64 native harness",
+    "mode": "verify hard-mute",
+    "privateReplay": true,
+    "naturalCycles": 2,
+    "phases": 13,
+    "controls": 5,
+    "queue": {
+      "submissions": 66,
+      "completions": 66,
+      "errorScopes": 395,
+      "errors": []
+    },
+    "media": {
+      "file": "evidence/item-use-r3-natural-lifetime.webm",
+      "bytes": 9911,
+      "sha256": "6db83f24588eb8d1357002bdaf9038e1f07bb3a004d09958f199a79585533e5c",
+      "mimeType": "video/webm;codecs=vp9",
+      "decoded": "decoded"
+    },
+    "nativeParentReplay": "The R215 native attempt ran against parent 2f5669577220685ea67d96496288b6b5b497b556. Its six requested R3 package response bodies exactly match the corresponding current be0 Pages response and Git blob pins. This establishes byte identity of those package routes, not a replay of the be0 gallery parent."
+  },
+  "limitations": {
+    "qualityStatus": "pending",
+    "qualityAccepted": false,
+    "adoption": "unknown",
+    "gameIntegrationStatus": "not_connected",
+    "currentParentGalleryReplay": "not_run",
+    "normalAudioListening": "not_run",
+    "sfxListeningStatus": "not_run",
+    "safariReplayStatus": "unverified",
+    "publicGalleryPublication": "not_performed",
+    "sourceOnlyOrHardMute": "verify-mode hard mute; no normal sound acceptance",
+    "evidenceLinkUi": "The current asset-gallery.js stores nativeEvidenceHref metadata but has no runtime property read for nativeEvidenceHref; evidence-link rendering is not established by this fixture."
+  }
+}
