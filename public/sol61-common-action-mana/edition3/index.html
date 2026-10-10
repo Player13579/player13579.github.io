@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Common Action Mana E — R447 private native host</title>
+  <style>
+    :root { color-scheme: dark; font: 15px/1.45 system-ui,sans-serif; background:#17191d; color:#edf1f5 }
+    body { margin:0 auto; max-width:980px; padding:20px }
+    h1 { font-size:1.3rem; margin:0 0 10px }
+    p { margin:.4rem 0 1rem; color:#b9c2ce }
+    .controls { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:12px 0 }
+    button,select { font:inherit; color:inherit; background:#292e36; border:1px solid #515c6b; border-radius:6px; padding:7px 10px }
+    button:hover { background:#363e49 }
+    canvas { display:block; width:min(100%,800px); aspect-ratio:5/3; background:#17191d; border:1px solid #4b535e }
+    #state { min-height:1.5em; font-weight:650 }
+    pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#20242a; padding:12px; border-radius:6px; max-height:240px; overflow:auto }
+    .verify { color:#ffcc74 }
+    html.gallery-embed, html.gallery-embed body { width:100%; height:100%; max-width:none; margin:0; padding:0; overflow:hidden }
+    html.gallery-embed h1, html.gallery-embed p, html.gallery-embed .controls, html.gallery-embed #state,
+    html.gallery-embed #gpuInfo, html.gallery-embed details { display:none }
+    html.gallery-embed canvas { width:min(980px,100vw); height:min(620px,100vh); max-width:100vw; max-height:100vh; aspect-ratio:auto; border:0 }
+    #gallery-variant { display:none }
+    html.gallery-embed #gallery-variant { display:block; position:fixed; left:12px; bottom:12px; margin:0; padding:6px 10px; color:#fff; background:#111c; border-radius:4px; pointer-events:none }
+  </style>
+</head>
+<body>
+  <h1>Common Action Mana E — private R457 WebGPU host</h1>
+  <p>This fixture uses the R446 source modules and an actual WebGPU device when started from a local HTTP server. It omits the actor body; the source anchor is projected to canvas center. This is a technical host, not visual acceptance.</p>
+  <div class="controls">
+    <label>Variant <select id="variant"><option value="desire">Desire / 欲望</option><option value="grit">Grit / 気概</option><option value="rational">Rational / 理知</option></select></label>
+    <label>Actor height <select id="height"><option value="64">H64</option><option value="128">H128</option></select></label>
+    <label>Background <select id="background"><option value="dark">Dark</option><option value="light">Light</option></select></label>
+    <button id="replay">Unlock audio + replay</button>
+    <button id="replaySilent">Replay silently</button>
+  </div>
+  <p id="gallery-startup-status" hidden></p>
+  <div id="verifyBanner" class="verify" hidden>Verification mode: audio is hard-muted by the verify query parameter.</div>
+  <div id="state" role="status" aria-live="polite">Not started. Press replay to create one cause.</div>
+  <canvas id="surface" aria-label="WebGPU effect fixture"></canvas>
+  <p id="gallery-variant" aria-live="polite"></p>
+  <p id="gpuInfo">WebGPU initialization has not run.</p>
+  <details><summary>Frame receipts (submit and completion fence)</summary><pre id="receipts">[]</pre></details>
+  <script type="module" src="./host.mjs"></script>
+</body>
+</html>
