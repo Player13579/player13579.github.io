@@ -3,7 +3,7 @@
   "status": "PASS_LIMITED_PRIVATE_R2_NATIVE_TECHNICAL_REPLAY",
   "versionId": "headshot-zero-sol61-r2",
   "groupId": "gunner-headshot-sol",
-  "scope": "Exact frozen R2 package in private native wrapper; limited technical replay only. Not current public gallery, whole-effect quality acceptance, normal SFX listening, Safari/iPad, adoption, or game integration.",
+  "scope": "Exact frozen R2 package in private native wrapper; limited technical replay only. Not current public gallery, whole-effect quality acceptance, normal SFX listening, Safari/iPad, adoption, or game integration. A later T5 run adds one naturally timed H64 1,250 ms cycle with an actual completed-queue terminal receipt and a continuous 980x620 video. The video is not frame-matched to individual GPU receipts.",
   "source": {
     "packageManifestSha256": "223165c1f32faa329806b54d5326fd960918264c1a0a1f03f56743dae3c5bb92",
     "sealSha256": "e2c019ad8478a0ca316f8cc291694eb761f9bb05c7a0a9f56aa0d9c4be780b3b",
@@ -31,6 +31,150 @@
       "browserClosed": true,
       "serverClosed": true
     }
+  },
+  "continuousLifetimeEvidence": {
+    "schema": "headshot-r2-continuous-lifetime-native-t5/v1",
+    "status": "PASS_PRIVATE_R2_NATURAL_CYCLE_TRACE_AND_VIDEO",
+    "resultPath": "outputs/request-20261010/headshot-r2-continuous-lifetime-t5/native-attempts/2026-10-10T02-39-47-350Z-f6fc9bd9-ef39-452d-80f6-3ffa48ef181c/RESULT.json",
+    "resultSha256": "25fab9dada7a1e3168094c8b6960cfa01d18de16e50992fe1a47b3dbae77cdbc",
+    "independentReviewPath": "outputs/request-20261010/headshot-r2-continuous-lifetime-t5/headshot-t5-actual-receipt-review/ACTUAL-RECEIPT-REVIEW.json",
+    "independentReviewSha256": "4ba68f9047e5eaea993a1f9213f1d9a611a2328cbb4c311cad9986ece88796ec",
+    "native": true,
+    "browser": "Edge",
+    "verify": true,
+    "durationMs": 1250,
+    "sourceManifestSha256": "223165c1f32faa329806b54d5326fd960918264c1a0a1f03f56743dae3c5bb92",
+    "sourceSealSha256": "e2c019ad8478a0ca316f8cc291694eb761f9bb05c7a0a9f56aa0d9c4be780b3b",
+    "cause": 1,
+    "generation": 1,
+    "naturalInitialReceipt": {
+      "cause": 1,
+      "generation": 1,
+      "ageMs": 9.5,
+      "active": true,
+      "width": 980,
+      "height": 620,
+      "source": true,
+      "observer": true,
+      "fixture": true,
+      "submission": 2,
+      "completed": true
+    },
+    "naturalTerminalQueueFence": {
+      "versionId": "headshot-zero-sol61-r2",
+      "nativeStatus": "actual-submission-completed",
+      "gpuError": null,
+      "deviceLost": null,
+      "disposeCompleted": false,
+      "status": "ready",
+      "ready": true,
+      "disposed": false,
+      "mode": "playing",
+      "ageMs": 1287.300000011921,
+      "cause": 1,
+      "generation": 1,
+      "submitted": 69,
+      "completed": 69,
+      "lastReceipt": {
+        "cause": 1,
+        "generation": 1,
+        "ageMs": 1278.300000011921,
+        "active": false,
+        "width": 980,
+        "height": 620,
+        "source": true,
+        "observer": true,
+        "fixture": true,
+        "submission": 69,
+        "completed": true
+      },
+      "shaderDiagnostics": [
+        {
+          "module": "world",
+          "messages": []
+        },
+        {
+          "module": "observer",
+          "messages": []
+        }
+      ],
+      "actualScopes": [
+        {
+          "filter": "out-of-memory",
+          "error": null
+        },
+        {
+          "filter": "internal",
+          "error": null
+        },
+        {
+          "filter": "validation",
+          "error": null
+        }
+      ],
+      "audioStatus": "verify-hard-muted",
+      "verify": true,
+      "muted": true,
+      "options": {
+        "source": true,
+        "observer": true,
+        "fixture": true,
+        "fixtureH": 64,
+        "zoom": 1,
+        "anchorX": 490,
+        "anchorY": 350,
+        "reducedMotion": false
+      },
+      "width": 980,
+      "height": 620,
+      "rafScheduled": true,
+      "activeVoices": 0
+    },
+    "rafCallbackCount": 158,
+    "matchingCompletedSubmissionCount": 67,
+    "activeOnsetSamples": 8,
+    "activeFadeSamples": 18,
+    "terminalInactiveSamples": 1,
+    "t3SameSourceOffExpiryControl": {
+      "path": "outputs/request-20261010/headshot-r2-lifetime-native-t3/native-attempts/2026-10-10T01-34-59-650Z-5ad6a5bf-3fba-442c-a5e5-6034b3c78266/source-off-h64-t1260ms.png",
+      "sha256": "e99c89db1632c5abf8a521e528ac5c567b5857577077496412fb660911534a51",
+      "width": 980,
+      "height": 620,
+      "t3ResultPath": "outputs/request-20261010/headshot-r2-lifetime-native-t3/native-attempts/2026-10-10T01-34-59-650Z-5ad6a5bf-3fba-442c-a5e5-6034b3c78266/RESULT.json",
+      "t3ResultSha256": "2694f9f4ee1d86e32609c4273fc5d1e9f38699d2cc2049783c4a7c00cc213ad1",
+      "expiryChangedPixels": 0
+    },
+    "video": {
+      "path": "evidence/r2-t5-natural-h64.webm",
+      "bytes": 11039,
+      "sha256": "61edc38e2ce04dbba93bc0c1700d75a47195f327d6ce2ae14891480bb9fc2e61",
+      "mime": "video/webm",
+      "width": 980,
+      "height": 620,
+      "recordedFromPageOpen": true,
+      "containsStartupLeadIn": true,
+      "receiptFrameJoin": "not established; RAF receipt timestamps are a natural-time bracket only"
+    },
+    "routeChecks": {
+      "actualResponseRouteCount": 9,
+      "allExactBytesHashAndMime": true,
+      "responseBodiesFulfilled": 10,
+      "responseBodyErrors": 0,
+      "responseHandlerErrors": 0
+    },
+    "cleanup": {
+      "pageClosed": true,
+      "videoSaved": true,
+      "contextClosed": true,
+      "browserClosed": true,
+      "serverClosed": true
+    },
+    "errors": [],
+    "limits": [
+      "One private H64 natural cycle only; this does not establish current-public-parent replay.",
+      "The continuous video is not frame-aligned to a specific GPU receipt.",
+      "No whole-effect quality, normal SFX listening, Safari/iPad, adoption, or main-game integration acceptance is implied."
+    ]
   },
   "adoption": "unknown",
   "quality": "pending",

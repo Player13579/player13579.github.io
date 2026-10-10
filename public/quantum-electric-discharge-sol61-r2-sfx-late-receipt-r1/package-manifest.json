@@ -1,23 +1,25 @@
 {
   "schema": "dva-e-private-package/v1",
-  "id": "quantum-electric-discharge-sol61-r2",
-  "groupId": "quantum-electric-discharge",
-  "title": "Quantum Electric Discharge · GPT-6.1-Sol optical R2",
-  "status": "private-technical-candidate",
-  "baseCandidate": "quantum-electric-discharge-sol61-r1",
+  "id": "quantum-electric-discharge-sol61-r2-sfx-late-receipt-r1",
+  "groupId": "quantum-electric-discharge-sol61",
+  "title": "Quantum Electric Discharge · R2 SFX late-receipt technical r1",
+  "status": "private-technical-derivative",
+  "baseCandidate": "quantum-electric-discharge-sol61-r2",
   "files": {
     "DESIGN.md": "a0abfb85469cfe8867cd2facbfe3d8d7f47a8560134137095019a648dd877f6c",
     "SFX-INTEGRATION-NOTE.json": "d3f429c0b015f23b0b686e27a5212f9b2766eef43119f7c7e5b72ff1f50b6503",
     "audio-preview-guard.mjs": "d7caca24b01f502bcd4919e0861778b0840bd84e6bab3424fb613390b70f6fd8",
-    "audio.mjs": "ff48ef24e50bdaec97e368434fccaf386f742196910320798a3014b3a65be435",
+    "audio.mjs": "47b483d40b2031cf6aedfb5001fab0f4fc493ff4654df8acfe03c8250af2f559",
     "channels.mjs": "e3afdf89a9c1bcedb4bff1d79188bb1ced1c98cc02865d468c7de766c9bf2d00",
     "frame-pump.mjs": "b8d9b2a19c7b23a23859a44899ad078d2c6a976f8529752aa5cd438d8d321318",
     "optical-design.mjs": "c20ce74d89bf2e932f9266f382dfc1209cf74739b46095483c32389b290dcfe7",
-    "preview.html": "8370d958b0ad5b2be598ca5535135e4327b46479bac350643cb7dc81cd9dbfc0",
+    "preview.html": "3db0287e9fc2c6417bb9c1a014a8608c86a342bf2d0ff51d9d1900ef80f78cfb",
     "runtime.mjs": "01454037f072ed3031c212b8c4bf9d830b0ce5d2ef9e0d7a1e6b1310a052d40f",
-    "runtime.test.mjs": "8f656c43ca606a331613fdbac19cf34f9827abd5539d5bc4deb21a7d2c772e5f",
-    "sfx-integration.test.mjs": "5241bc44f45b6142e5df6399ea0a56c1459f35a05611ce0a9959d01a681284e4",
-    "gallery-startup-bridge.mjs": "50836ade86697d1ae8a5ff350cf501806d33495128f1b3d0f81183370dc58315"
+    "runtime.test.mjs": "6193b58188384f7d4a786407be4202b3c1a4220ebf784d93b992d7728d1f4e3f",
+    "sfx-integration.test.mjs": "3771d7afc7e61bbd3ef31c71ccea3d150470c8cfa047fcfc2e2fecd8549f4afc",
+    "gallery-startup-bridge.mjs": "50836ade86697d1ae8a5ff350cf501806d33495128f1b3d0f81183370dc58315",
+    "late-receipt.test.mjs": "38123e291e217c55151651651a369181f2627cc1d644a8f1ae77a98064fb6596",
+    "SFX-LATE-RECEIPT-NOTE.json": "6fd410bac1dfe245cc6002dd1b34e24c333a04e580915e2d96d94eec9c101120"
   },
   "authors": {
     "creativeDesign": {
@@ -31,6 +33,11 @@
     "faithfulRuntimeAndSoundImplementation": {
       "displayName": "GPT-6-Luna",
       "modelId": "gpt-6-luna"
+    },
+    "lateReceiptTechnicalRepair": {
+      "displayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna",
+      "scope": "bounded SFX late-receipt technical fix; creative R2 and PCM producer unchanged"
     }
   },
   "sourceR1Package": "outputs/request-20261009/quantum-electric-sol61-r1-sfx-integrated-r1",
@@ -46,19 +53,20 @@
   },
   "adoption": "not-adopted",
   "qualityStatus": "pending",
-  "nativeStatus": "pass-limited-r63-root-current-parent-before-heading-label-only-correction",
-  "actualParentReplayStatus": "pass-limited-r63-root-current-parent-before-heading-label-only-correction",
+  "nativeStatus": "pending-r68-current-parent-native",
+  "actualParentReplayStatus": "pending-r68-current-parent-native",
   "gameIntegrationStatus": "not-connected",
   "publicationEligible": false,
-  "replayable": true,
+  "replayable": false,
   "limitations": [
     "Current Human R2 union parent 56d0da8f810b52e3750a37d9c52ed72790860aa2 still requires root current-parent native replay; the cited R63 limited native receipt predates this union and the heading correction.",
     "R63 root native current-parent replay passed on this unchanged runtime before the technical R2 heading-label correction: pinned four-pass completed first frame, two natural completion transitions with a subsequent third-cause frame, source/observer controls restored, and verify-mode audio remained at zero. The R1 heading was corrected after this replay; no creative or executable bytes changed. Full visual quality, ordinary audio listening, Safari/iPad, and game integration remain unverified.",
-    "Ordinary audio listening, iPad/Safari, actual parent gallery replay, and game integration are not established."
+    "Ordinary audio listening, iPad/Safari, actual parent gallery replay, and game integration are not established.",
+    "This separate SFX technical version has CPU-only tests; current-parent native replay and ordinary audio listening remain pending. Upstream R63 native evidence does not verify this derivative."
   ],
   "technicalDerivative": {
-    "schema": "dva-e-gallery-startup-technical-derivative/v1",
-    "basePackageManifestSha256": "b530ed18f3e7720f9fb55310b38f3cbd2ccabe6bdc66a6c22f5640b368de1e06",
+    "schema": "quantum-r2-sfx-late-receipt-gallery-technical-derivative/v1",
+    "basePackageManifestSha256": "2f5b77d7648b482f30297da379d1715945aaef668c198c2ecbd75d6eff14fd8a",
     "protocol": "dva-gallery-startup/v1",
     "parentConsumerPath": "outputs/request-20261010/quantum-r51-capture-layout-native-r53/site/asset-gallery.js",
     "parentConsumerSha256": "429640e5297575acb171b46886f1a887e98598ba29471489a0becc557f185478",
@@ -67,8 +75,8 @@
     "frozenRuntimePath": "runtime.mjs",
     "frozenRuntimeSha256": "01454037f072ed3031c212b8c4bf9d830b0ce5d2ef9e0d7a1e6b1310a052d40f",
     "runtimePassCountEvidence": "The exact pinned render path encodes source, horizontal blur, vertical blur, and display passes before awaiting queue.onSubmittedWorkDone; the runtime receipt itself has no passes field.",
-    "sourceAuthority": "R2 shader, optical design, runtime, audio, and replay source remain the frozen originals. Only preview handshake/cleanup and package metadata changed.",
-    "nativeStatus": "pass-limited-r63-root-current-parent-before-heading-label-only-correction",
+    "sourceAuthority": "Quantum R2 creative, runtime, optical design, channels, frame pump, and PCM producer are preserved. Only the bounded SFX consumer/preview technical repair is added.",
+    "nativeStatus": "not-run-for-this-technical-derivative",
     "actualParentReplayStatus": "pass-limited-r63-root-current-parent-before-heading-label-only-correction",
     "adoption": "not-adopted",
     "qualityStatus": "pending",
@@ -83,15 +91,56 @@
       "scope": "static preview H1 label only; no module script/source changed",
       "nativeReplayBeforeCorrection": true
     },
-    "currentUnionParentReplayStatus": "pending-root-current-union-native",
-    "currentUnionParentCommit": "56d0da8f810b52e3750a37d9c52ed72790860aa2"
+    "currentUnionParentReplayStatus": "pending-r68-current-parent-native",
+    "currentUnionParentCommit": "56d0da8f810b52e3750a37d9c52ed72790860aa2",
+    "derivativeId": "quantum-electric-discharge-sol61-r2-sfx-late-receipt-r1",
+    "sourceVersionId": "quantum-electric-discharge-sol61-r2",
+    "lateReceiptReadySha256": "c4741ae79cc68ea7b248e00283b2192c581b33b40901284bb925ad025258de02",
+    "pcmProducerSha256": "5a0cf4fb7e2dc00face1cf8f6509c0cfee625e9f277adc6426f053f56d05bdc8",
+    "historicalUpstreamNativeEvidence": {
+      "path": "outputs/request-20261010/quantum-r2-private-publication-r63/native-attempts/2026-10-10T02-50-07.462Z-78322632-122c-4f73-bb94-c82bcce5e6a3/RESULT.json",
+      "sha256": "1ec4c7b07df15873a4468e1b446376a6794ec66e01153778d383a50aad94fb3b",
+      "scope": "R63 upstream R2 proof predates this late-receipt technical derivative; it is not evidence for this version."
+    },
+    "normalAudioListening": "pending"
   },
   "currentUnionParent": {
     "commit": "56d0da8f810b52e3750a37d9c52ed72790860aa2",
     "tree": "29842f4079117e72f30dc51c4ca8be2a5ca55ebb",
-    "rootNativeReplayStatus": "pending-root-current-union-native",
+    "rootNativeReplayStatus": "pending-root-r68-native",
     "fullQualityStatus": "pending",
     "adoption": "not-adopted",
-    "statement": "R63 limited native evidence was recorded against prior parent 2f5669577220685ea67d96496288b6b5b497b556 before the R2 heading correction. This Human R2 union parent has not received root native replay."
-  }
+    "statement": "This is a distinct SFX technical derivative of the frozen Quantum R2. Existing R63 limited native evidence is for its upstream package only and does not verify this late-receipt repair."
+  },
+  "lateReceiptTechnicalCorrection": {
+    "schema": "quantum-r2-late-receipt-technical-derivative/v1",
+    "status": "PASS_CPU_TESTS_PENDING_ROOT_NATIVE_AND_NORMAL_LISTENING",
+    "baseCandidateCommit": "82fcdd944a37af9c85330f9af849c77ad7d10eb1",
+    "basePackageManifestSha256": "2f5b77d7648b482f30297da379d1715945aaef668c198c2ecbd75d6eff14fd8a",
+    "sourcePcmProducerSha256": "5a0cf4fb7e2dc00face1cf8f6509c0cfee625e9f277adc6426f053f56d05bdc8",
+    "creativeSourcePins": {
+      "DESIGN.md": "a0abfb85469cfe8867cd2facbfe3d8d7f47a8560134137095019a648dd877f6c",
+      "channels.mjs": "e3afdf89a9c1bcedb4bff1d79188bb1ced1c98cc02865d468c7de766c9bf2d00",
+      "frame-pump.mjs": "b8d9b2a19c7b23a23859a44899ad078d2c6a976f8529752aa5cd438d8d321318",
+      "optical-design.mjs": "c20ce74d89bf2e932f9266f382dfc1209cf74739b46095483c32389b290dcfe7",
+      "runtime.mjs": "01454037f072ed3031c212b8c4bf9d830b0ce5d2ef9e0d7a1e6b1310a052d40f"
+    },
+    "qualityStatus": "pending",
+    "adoption": "not-adopted",
+    "nativeCurrentParentStatus": "pending-root-replay",
+    "ordinaryAudioListening": "pending",
+    "gameIntegration": "not-connected",
+    "derivativeId": "quantum-electric-discharge-sol61-r2-sfx-late-receipt-r1",
+    "baseVersionId": "quantum-electric-discharge-sol61-r2",
+    "lateReceiptReadyPath": "outputs/request-20261010/quantum-r2-sfx-late-receipt-technical-r1/R1-READY.json",
+    "lateReceiptReadySha256": "c4741ae79cc68ea7b248e00283b2192c581b33b40901284bb925ad025258de02",
+    "creativeEdition": 2,
+    "newCreativeEditionConsumed": false,
+    "currentUnionParentCommit": "56d0da8f810b52e3750a37d9c52ed72790860aa2",
+    "currentUnionParentReplayStatus": "pending-root-r68-native",
+    "nativeStatus": "pending-r68-current-parent-native",
+    "publicationEligible": false
+  },
+  "sourceR2PackageManifestSha256": "2f5b77d7648b482f30297da379d1715945aaef668c198c2ecbd75d6eff14fd8a",
+  "technicalReplayStatus": "pending-r68-current-parent-native"
 }

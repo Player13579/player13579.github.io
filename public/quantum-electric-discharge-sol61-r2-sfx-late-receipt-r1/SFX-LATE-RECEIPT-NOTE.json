@@ -1,0 +1,31 @@
+{
+  "schema": "quantum-r2-late-receipt-technical-note/v1",
+  "status": "PRIVATE_TECHNICAL_DERIVATIVE_CPU_TESTED_ROOT_ACCEPTANCE_PENDING",
+  "baseCandidateCommit": "82fcdd944a37af9c85330f9af849c77ad7d10eb1",
+  "basePackageManifestSha256": "2f5b77d7648b482f30297da379d1715945aaef668c198c2ecbd75d6eff14fd8a",
+  "audioPcmProducerSha256": "5a0cf4fb7e2dc00face1cf8f6509c0cfee625e9f277adc6426f053f56d05bdc8",
+  "changes": [
+    "derive last nonzero sample from actual renderQuantumDischargePcm output at the current AudioContext sample rate",
+    "return an explicit expired-audible-window result without creating AudioBuffer/AudioBufferSource nodes or incrementing admittedCauseCount",
+    "record the skipped cause separately so an identical receipt returns duplicate-expired-audible-window",
+    "remove preview-level pre-consumption of the cause before the audio consumer decides whether a source is scheduled",
+    "retain the independent 1050 ms visual/event lifetime and 900 ms inter-cycle delay"
+  ],
+  "tests": [
+    "actual consumer path at 279.9 ms schedules on nonzero PCM",
+    "280 ms and 1049 ms produce expired-audible-window with zero AudioBuffer/AudioBufferSource allocations",
+    "same skipped receipt is deduped separately without incrementing played count",
+    "missing/NaN/negative time rejected without consuming either state",
+    "verify remains muted; dispose closes/stops; fresh consumer lifetime resets both sets",
+    "original source PCM producer remains byte-identical"
+  ],
+  "qualityAndAdoption": {
+    "creativeSourceChanged": false,
+    "pcmChanged": false,
+    "visualQuality": "pending",
+    "normalAudioListening": "not performed",
+    "gameIntegration": "not connected",
+    "adoption": "not-adopted",
+    "publication": "not authorized by this packet"
+  }
+}
