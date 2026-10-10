@@ -1,0 +1,156 @@
+{
+  "schema": "dva-ability-entitlement-gallery-route-package/v1",
+  "groupId": "ability-entitlement-sol61",
+  "versionId": "ability-entitlement-sol61-r2",
+  "title": "能力獲得",
+  "entry": "public/ability-entitlement-sol61/r2/index.html",
+  "source": {
+    "creativeOwner": "GPT-6.1-Sol",
+    "creativeModelId": "gpt-6.1-sol",
+    "edition": 2,
+    "editionLimit": 5,
+    "additionalEditionsRemaining": 3,
+    "originalR2Path": "outputs/request-20261011/ability-entitlement-quality-r805/r2-source",
+    "sourcePins": "outputs/request-20261011/ability-entitlement-quality-r805/R2-SOURCE-PINS.json",
+    "sourcePinsSha256": "fb78214fa28feb117935779c641e7c3aa416efd479823224b3bc058ea19e9220",
+    "creativeModuleSha256": "454e9a59a1882b57040a8151e693d9442cad827ab44c7023e4670af304193664",
+    "creativeSourceCopiedUnmodified": true
+  },
+  "technical": {
+    "modelDisplayName": "GPT-6-Luna",
+    "revisionId": "ability-entitlement-runtime-r815-r823-r838-r844-current-gallery-rebase",
+    "runtimeDerivative": "outputs/request-20261011/ability-entitlement-runtime-r815",
+    "runtimeInputPinsSha256": "fd4888e1ba4ae7030c28f8918ac28ea839d96990e052f9f822f756bef39c805d",
+    "hostImplementationSha256": "b834101a3bc3356f3f80433748f81134fff6524e658fd65c6351b6e4bee86373",
+    "upstreamIndexSha256": "1ee5fd4dcec9818d0c08e2cc7210bdf39fa9ce236f912cddb074c7006b05d95f",
+    "galleryAdapter": "R823 adapter of R819 same-loop parent startup/retire protocol with exact R2/R815 host and creative-source pins",
+    "galleryAdapterSha256": "d32b9679a7965529063e6135dae6c34171805d5eadad202feb1438eca34288c1",
+    "creativeEditionConsumed": true,
+    "qualityEvidence": "outputs/request-20261011/ability-entitlement-quality-r818/REVIEW.md",
+    "qualityEvidenceSha256": "60099ff9ba7f63f68766a35b224010ba3469dba749a9adeda39129862bb4421e",
+    "nativeEvidence": "outputs/request-20261011/ability-entitlement-native-r822/runs/2026-10-11T02-08-36.428Z-c322d74e-a533-4876-8b19-e5e52c246776/RESULT.json",
+    "nativeEvidenceSha256": "71d5232db3d383f2dc692649e3a9ff318bf1a372a02c5da1d8f9fb3786516867",
+    "nativeEvidenceAttribution": "root-owned; retained from originating R822 incident",
+    "entryRepair": {
+      "id": "R838",
+      "inputPath": "outputs/request-20261011/ability-entitlement-gallery-r2-r823/candidate/public/ability-entitlement-sol61/r2/index.html",
+      "inputSha256": "133325b37520aa502efba86eae60723ec1354ac7624cfd75e846700c941b77d6",
+      "outputPath": "public/ability-entitlement-sol61/r2/index.html",
+      "outputSha256": "1ee5fd4dcec9818d0c08e2cc7210bdf39fa9ce236f912cddb074c7006b05d95f",
+      "change": "remove exactly one duplicate gallery-startup-bootstrap.js script tag and exactly one duplicate gallery-startup-adapter.mjs module script tag; no other entry bytes changed",
+      "sourceCreativeOrShaderChanges": 0
+    },
+    "currentGalleryRebase": {
+      "id": "R844",
+      "baseCommit": "de9adee95097e18043931f05ec52187aa9a6e037",
+      "fromCandidate": "f0e848132926daef181e61f579d40d497bae8996",
+      "reason": "Preserve current R837 gallery groups while adding only the repaired ability entitlement R2 group version"
+    },
+    "currentGalleryProducerRepair": {
+      "id": "R852",
+      "priorCandidate": "da7213e2131a7d135887564a7e46c4a4a36dd07e",
+      "priorActualFailure": "FAIL_R844_ACTUAL_PARENT initial deep-link did not select R2; actual evaluated group contained only R1 because explicit trailing versions property overrode spread",
+      "repair": "single authoritative frozen versions array containing R2 then R1",
+      "parentReplay": "pending-root-r852-parent-replay"
+    }
+  },
+  "status": {
+    "publicationEligible": false,
+    "reason": "R2 remains latest-first, unadopted, and quality-in-progress. R852 fixes the actual catalog producer: the prior spread was overwritten by a trailing R1-only versions property, so the R2 row was present in source text but absent from the evaluated group. R844 actual parent failure is preserved as resolver/registration evidence; R852 CPU evaluates the real group producer and current deep-link resolver. R822 remains limited native evidence on exact R815 only; R852 parent replay is pending. Main-game integration remains disconnected.",
+    "technicalReplayStatus": "pass-limited-r822-native-exact-r815",
+    "nativeStatus": "PASS_R822_NATIVE_TECHNICAL_LIMITED",
+    "nativeEvidence": "outputs/request-20261011/ability-entitlement-native-r822/runs/2026-10-11T02-08-36.428Z-c322d74e-a533-4876-8b19-e5e52c246776/RESULT.json",
+    "nativeEvidenceSha256": "71d5232db3d383f2dc692649e3a9ff318bf1a372a02c5da1d8f9fb3786516867",
+    "nativeEvidenceScope": "Root-owned R822 native WebGPU run used the exact R815 host/module/shader/baseline hashes. Four diagnostic captures at 45/220/510/820 ms passed same-cause/submission/frame/hash/visibility predicates; source/near/observer/reduced-motion controls at 820 ms, 120/120 submissions completed before retirement, no page/console/request/HTTP errors, GPU errors empty, queue drained, canvas closed and device destroyed. Limited technical evidence only; the diagnostic runner leaves full quality undecided, main integration disconnected and ordinary SFX listening not run.",
+    "nativeEvidenceAttribution": "Root-owned R822 incident; execution attribution remains with the originating incident record and is not reassigned to this R823 worker.",
+    "nativeEvidenceReview": "root-reviewed-limited-technical",
+    "qualityStatus": "in-progress; R818 scoped R1 source-shape defect fixed, full quality remains pending",
+    "qualityAccepted": false,
+    "adoption": "unknown",
+    "normalAudioListening": "not_run",
+    "safari": "unverified",
+    "mainGameIntegration": "not_connected",
+    "parentGalleryReplayStatus": "pending-root-r852-parent-replay",
+    "relatedParentFailure": {
+      "evidence": "outputs/request-20261011/ability-entitlement-native-r824/runs/2026-10-11T02-11-13.507Z-6a955c8b-bf8e-4fb1-8128-d15580b384ee/RESULT.json",
+      "sha256": "378ca39d95dcf97cf24f5a566402a7dd12bf47a6d707ad32709ac5cb665fe158",
+      "status": "FAIL_R824_ACTUAL_PARENT",
+      "scope": "R824 tested the current public R1 parent route and failed teardown after iframe removal (30-second retirement wait timeout); it is related group-level parent evidence, not an R2 run. All owned browser/server/context resources were closed. Preserve the failure and keep exact R2 parent replay pending."
+    },
+    "currentPublicParentReplayStatus": "pending-root-r852-parent-replay"
+  },
+  "runtimeClosureCount": 11,
+  "runtimeClosure": [
+    {
+      "path": "index.html",
+      "bytes": 2170,
+      "sha256": "1ee5fd4dcec9818d0c08e2cc7210bdf39fa9ce236f912cddb074c7006b05d95f"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16545,
+      "sha256": "b834101a3bc3356f3f80433748f81134fff6524e658fd65c6351b6e4bee86373"
+    },
+    {
+      "path": "source/ability-entitlement.mjs",
+      "bytes": 10387,
+      "sha256": "454e9a59a1882b57040a8151e693d9442cad827ab44c7023e4670af304193664"
+    },
+    {
+      "path": "source/permission-source.wgsl",
+      "bytes": 4286,
+      "sha256": "d79d18c5b116efe6e2b6b8cd237720553372e7a90f8e1aa945c94510358db7b5"
+    },
+    {
+      "path": "source/display-observer.wgsl",
+      "bytes": 1019,
+      "sha256": "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9"
+    },
+    {
+      "path": "source/composite.wgsl",
+      "bytes": 812,
+      "sha256": "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5"
+    },
+    {
+      "path": "source/status-card-baseline.mjs",
+      "bytes": 681,
+      "sha256": "7e4508e569f451f987234c837c8240b891cab4a208aa7150a62c157dcd6d3bab"
+    },
+    {
+      "path": "source/status-card-baseline.wgsl",
+      "bytes": 1385,
+      "sha256": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f"
+    },
+    {
+      "path": "gallery-startup-bootstrap.js",
+      "bytes": 1562,
+      "sha256": "75904263fcb411a45ba6acbec6efd89758300d5eacf4a9847ce8eec21abe2594"
+    },
+    {
+      "path": "gallery-parent-contract.mjs",
+      "bytes": 2280,
+      "sha256": "eb7d089a43cffc4b29369c1c637b1aaadc78088794fcaf8d51d7d93d12530dad"
+    },
+    {
+      "path": "gallery-startup-adapter.mjs",
+      "bytes": 4748,
+      "sha256": "d32b9679a7965529063e6135dae6c34171805d5eadad202feb1438eca34288c1"
+    }
+  ],
+  "additionalDistributedFiles": [
+    "package-manifest.json",
+    "provenance.json"
+  ],
+  "parentStartupApi": {
+    "global": "__dvaAbilityEntitlementGalleryStartup",
+    "methods": [
+      "snapshot",
+      "setAutoLoopEnabled(boolean)",
+      "retire"
+    ],
+    "protocol": "dva-gallery-startup/v1",
+    "readyContract": "playing/ready requires visible same-cause completed host output with exact R2 module, R2 shaders, and baseline pins; queue may remain active during playback",
+    "retireContract": "matching parent retire event stops auto replay and retires the host; host drains its queue, unconfigures canvas, and destroys its owned device"
+  },
+  "fixtureSemantics": "new successful self ability-entitlement receipt only; target ability-product-owned-status. No ammo receipt, ammo refill, active shortcut, or game integration claim. Source projection and target are fixture-owned."
+}
