@@ -1,0 +1,130 @@
+{
+  "schema": "dva-taser-private-runtime-package/v1",
+  "status": "PUBLICATION_CANDIDATE_PENDING_ROOT_REVIEW",
+  "groupId": "taser-contact-sol61",
+  "versionId": "taser-contact-sol61-r2",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "implementationModelIdentity": "unknown; not independently exposed to this worker",
+  "route": "public/sol61-taser-contact/r2/index.html",
+  "entry": "index.html",
+  "runtimeDependencyClosure": [
+    "index.html -> preview.mjs",
+    "preview.mjs -> geometry.mjs",
+    "preview.mjs -> runtime.mjs",
+    "preview.mjs -> taser-contact-sfx.mjs",
+    "runtime.mjs -> taser.wgsl"
+  ],
+  "r1Source": {
+    "path": "outputs/request-20261009/taser-r6-root-publication-executable-r11/final-parent-runner-r14/stage-r14/",
+    "manifestSha256": "b0829fbd3abff111a80cfd23e186a425099145e9933ba1f646fcbe413d57158e",
+    "r1ManifestSchema": "dva-runtime-package-manifest/v1",
+    "files": {
+      "geometry.mjs": "35b9b0447c89ef364086d298710afa7586537449cfdc08af7c3316eab66676a6",
+      "index.html": "dac521bc7765bd5249c2a828026830bee41d99713c4c5cb98fb5c65387998788",
+      "preview.mjs": "5d173f6dafc9138cf76297027e6496ec65c50beb582142fcc21549d11c67d44b",
+      "runtime.mjs": "e1d4a085e2592c219ab9b43fd72375a7e4d7c2801aea961b3cb6b4e5fb478d1c",
+      "taser-contact-sfx.mjs": "213c8c8dea802938dc51226564a4823c35ba279b8db1e4537d62d8b5f1868973",
+      "taser.wgsl": "2121fa0f977cd9e65bf9bede9986f34fea600fc54037e1871e7856bd081dc925"
+    }
+  },
+  "opticalContract": {
+    "directTerm": "unchanged",
+    "blur": "separable normalized Gaussian radiance",
+    "sigmaPx": 2.5,
+    "radiusPx": 7,
+    "supportOffsetsPx": [
+      -7,
+      -6,
+      -5,
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "oneDimensionalWeights": [
+      0.0031742033144480015,
+      0.0089805100242474,
+      0.021651108980934867,
+      0.04448075733770273,
+      0.07787123866346018,
+      0.11617023707406768,
+      0.14768131517304467,
+      0.15998125886418893,
+      0.14768131517304467,
+      0.11617023707406768,
+      0.07787123866346018,
+      0.04448075733770273,
+      0.021651108980934867,
+      0.0089805100242474,
+      0.0031742033144480015
+    ],
+    "scatterScale": 0.44,
+    "sourceOffOutput": 0,
+    "passes": [
+      "source-emission rgba16float",
+      "horizontal blur rgba16float",
+      "vertical blur rgba16float",
+      "direct plus 0.44 times blur, then existing tone map"
+    ]
+  },
+  "changedFiles": [
+    "index.html",
+    "runtime.mjs",
+    "taser.wgsl",
+    "provenance.md"
+  ],
+  "files": {
+    "geometry.mjs": {
+      "path": "geometry.mjs",
+      "bytes": 2729,
+      "sha256": "35b9b0447c89ef364086d298710afa7586537449cfdc08af7c3316eab66676a6"
+    },
+    "index.html": {
+      "path": "index.html",
+      "bytes": 2804,
+      "sha256": "0c94fc0c27e9a44e0e4979be3b1b0670ad9e471548a5b1cfb3d3aca122166e85"
+    },
+    "preview.mjs": {
+      "path": "preview.mjs",
+      "bytes": 25174,
+      "sha256": "2a2f35f73fa5d69aeee4d1e029d34441c22c1dfd4bb56f078c69a134d7e5f4d2"
+    },
+    "runtime.mjs": {
+      "path": "runtime.mjs",
+      "bytes": 8210,
+      "sha256": "e7c6d24402b5c50fb3f7d853f9a57f35d73d8d0c5523bd6c6fe64e44d09ffa79"
+    },
+    "taser-contact-sfx.mjs": {
+      "path": "taser-contact-sfx.mjs",
+      "bytes": 11241,
+      "sha256": "213c8c8dea802938dc51226564a4823c35ba279b8db1e4537d62d8b5f1868973"
+    },
+    "taser.wgsl": {
+      "path": "taser.wgsl",
+      "bytes": 3760,
+      "sha256": "88190448e52b42940f95bab0887f1ed98255acdd65f519bec88528fa8acf12d0"
+    },
+    "provenance.md": {
+      "path": "provenance.md",
+      "bytes": 835,
+      "sha256": "c426f95da3fdc6ac65bdea6e469b12ba8bec3521f3e30f6f2519371652902b5f"
+    }
+  },
+  "quality": "awaiting root native/GPU review",
+  "adoption": "unknown",
+  "publication": false,
+  "mainGameIntegration": "not-integrated",
+  "technicalDerivative": {
+    "from": "outputs/request-20261011/taser-contact-sol61-r2-r514/candidate/package-manifest.json",
+    "sourcePinsSha256": "1e89bbca44caa6433c4642e1b1ce948ede88b46c347ef7c02f676b5f754b15f4",
+    "reason": "correct preview startup version identity r1 -> r2 only"
+  }
+}

@@ -1,0 +1,1521 @@
+{
+  "schema": "dva-executable-e-code-correspondence/v2",
+  "versionId": "frag-grenade-sol61-r2",
+  "source_commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+  "sourceFiles": [
+    {
+      "path": "基底.md",
+      "sha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364"
+    },
+    {
+      "path": "拡張.md",
+      "sha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67"
+    }
+  ],
+  "sourceBlobs": {
+    "base": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+    "extension": "f35b61661d0209c0329d4a501a760d35b451d52e"
+  },
+  "branch": "ECodeImplementation: 実行用Eソース。B-Expression画像生成シリアライズではない",
+  "process": "親が一回追加R2を確定後、物理層と検査結果の分離を決定し実コードへ翻訳。B正式画像コードの構造合格とは主張しない",
+  "InferenceExpansionPolicy": {
+    "DeclaredIntent": {
+      "main_action": "Frag grenadeの破裂",
+      "main_objects": "熱源・殻破片・粉塵",
+      "background": "診断表示のみ。背景に応じE強度を変更しない",
+      "style": "実WebGPU",
+      "text_logo_policy": "描画文字なし",
+      "character_count": "診断受光形状1、人物素材ではない"
+    },
+    "ExpressionIntent": {
+      "source": "not_specified",
+      "purpose": "not_specified",
+      "must_communicate": [],
+      "preserve_ambiguity": [],
+      "allowed_omission": [],
+      "allowed_exaggeration": [],
+      "protected_relations": []
+    }
+  },
+  "PhenomenonSystemTemplate": {
+    "PartitionPolicy": {
+      "criterion": "熱源/媒体/剛体/前縁/受光の状態境界",
+      "shared_condition_policy": "同cause・同age・同projection",
+      "no_discipline_based_split": true
+    },
+    "SharedConditions": {},
+    "PhenomenonRegistry": {
+      "PH1": {
+        "id": "PH1",
+        "name": "短時間の破裂熱源",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "熱源中心・外縁の差と230msまでの冷却",
+        "partition_reason": "独立した状態・境界・応答: 短時間の破裂熱源"
+      },
+      "PH2": {
+        "id": "PH2",
+        "name": "膨張後に巻き上がる粉塵",
+        "origin": "attribute_resolved",
+        "anchor": "air",
+        "visibility": "visible",
+        "local_state_difference": "有限な輪郭・内部遮蔽・上昇・900ms消散",
+        "partition_reason": "独立した状態・境界・応答: 膨張後に巻き上がる粉塵"
+      },
+      "PH3": {
+        "id": "PH3",
+        "name": "非対称の殻破片",
+        "origin": "attribute_resolved",
+        "anchor": "object",
+        "visibility": "visible",
+        "local_state_difference": "七片の異なる弾道・回転反射・接地後の摩擦停止",
+        "partition_reason": "独立した状態・境界・応答: 非対称の殻破片"
+      },
+      "PH4": {
+        "id": "PH4",
+        "name": "外向きの圧縮粉塵前縁",
+        "origin": "attribute_resolved",
+        "anchor": "floor",
+        "visibility": "visible",
+        "local_state_difference": "床面の楕円投影で前縁が進行し380msで消える",
+        "partition_reason": "独立した状態・境界・応答: 外向きの圧縮粉塵前縁"
+      },
+      "PH5": {
+        "id": "PH5",
+        "name": "診断用床・受光面",
+        "origin": "attribute_resolved",
+        "anchor": "floor",
+        "visibility": "visible",
+        "local_state_difference": "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない",
+        "partition_reason": "独立した状態・境界・応答: 診断用床・受光面"
+      }
+    },
+    "PhenomenonBlock": {
+      "PH1": {
+        "identity": {
+          "id": "PH1",
+          "name": "短時間の破裂熱源",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "熱源中心・外縁の差と230msまでの冷却",
+          "partition_reason": "独立した状態・境界・応答: 短時間の破裂熱源"
+        },
+        "DeepStructure": {
+          "Core": "短時間の破裂熱源の発生域",
+          "Structure": "熱源中心・外縁の差と230msまでの冷却",
+          "Surface": "有限な境界と相別減衰、局所差"
+        },
+        "PhysicalModel": {
+          "model_kind": "optical_transport",
+          "system_boundary": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "state_variables": "経過秒、局所座標、密度、透過率、放射輝度。校正済みSI物性値ではない",
+          "inputs": "grenade-frag-impact cause; PH1放射・初期圧力",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "帯電を選択していない"
+            }
+          },
+          "constitutive_response": "source/plan.mjs sample; WORLD hotBoundary/reactionColor",
+          "initial_condition": "経過0秒で反応立上り。粉塵・破片は有限の初期輸送を受ける",
+          "boundary_conditions": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "approximation_scope": "ゲーム単位での解析的投影近似。物性・温度・爆薬成分の実測主張なし"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "132ゲーム単位半径。診断人高64ゲーム単位。m校正は不明",
+          "characteristic_time": "900ms全寿命。熱源55/95ms、圧縮前縁380ms、粉塵640–900ms尾部",
+          "dominant_balance": "慣性膨張後の抗力・浮力、破片の重力と床摩擦",
+          "dimensionless_reasoning": "必要なSI物性がないためRe/Weの数値を創作しない",
+          "detail_cutoff": "主輪郭と2px以上の殻形状。微粒子ノイズなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "短時間の破裂熱源のThermo応答をsource/plan.mjs sample; WORLD hotBoundary/reactionColorで実現",
+                "熱源中心・外縁の差と230msまでの冷却"
+              ],
+              "evidence_or_constraint": "熱源中心・外縁の差と230msまでの冷却"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "短時間の破裂熱源のFluid応答をsource/plan.mjs sample; WORLD hotBoundary/reactionColorで実現",
+                "熱源中心・外縁の差と230msまでの冷却"
+              ],
+              "evidence_or_constraint": "熱源中心・外縁の差と230msまでの冷却"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "短時間の破裂熱源のOptics応答をsource/plan.mjs sample; WORLD hotBoundary/reactionColorで実現",
+                "熱源中心・外縁の差と230msまでの冷却"
+              ],
+              "evidence_or_constraint": "熱源中心・外縁の差と230msまでの冷却"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "短時間の破裂熱源のMaterials応答をsource/plan.mjs sample; WORLD hotBoundary/reactionColorで実現",
+                "熱源中心・外縁の差と230msまでの冷却"
+              ],
+              "evidence_or_constraint": "熱源中心・外縁の差と230msまでの冷却"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "短時間の破裂熱源ではElectromagneticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "短時間の破裂熱源ではRheologyの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "短時間の破裂熱源ではWaveOpticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "短時間の破裂熱源ではSurfaceScienceの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "熱源中心・外縁の差と230msまでの冷却",
+          "indirect_evidence": "PH1からの照明・初期輸送",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "有限主輪郭をWORLDで生成",
+          "perceptual_failure_risk": "光の塊だけに見えたり、圧縮前縁を発光の命中リングと誤認する",
+          "cue_roles": [
+            {
+              "cue": "熱源中心・外縁の差と230msまでの冷却",
+              "supports": "短時間の破裂熱源",
+              "reliability_and_overlap": "時系列で判別。単一PNGで因果確定しない"
+            }
+          ],
+          "confusable_alternative": "均一なglow/固定の煙マーク",
+          "disambiguating_evidence": "異なる位相の膨張・飛翔・巻上り",
+          "viewing_conditions": "980x620 backing、H64 scale1とH128 scale2。実観測未実施"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "床はscreen下向きy、破片は回転法線",
+          "normal_field_coherence": "金属法線はspinへ追従",
+          "curvature_behavior": "有限ローブと輪郭の低周波偏差",
+          "silhouette_logic": "熱源中心・外縁の差と230msまでの冷却",
+          "contact_relation": "破片contact rootで床を貫通しない",
+          "spatial_relation": "共通source originから外向き、熱源は粉塵越しに減衰"
+        },
+        "StateDynamics": {
+          "state_space_extent": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "有限寿命へ冷却・沈降",
+          "damping_profile": "対象別の解析的減衰",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "900msで全Eを消去",
+          "transition_failure_risk": "OBS残光や床貫通",
+          "driving_input": "causeの破裂",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "短い熱源→圧縮前縁→粉塵・落下",
+          "stability_condition": "有限age、正の投影scale"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Thermo -> PH2.Fluid: 初期膨張後の上昇",
+            "PH1.Optics -> PH5.Optics: 距離減衰する照明"
+          ],
+          "SecondaryCouplings": [
+            "PH3.Materials -> PH5.SurfaceScience: 接地・摩擦"
+          ],
+          "CausalAssessment": {
+            "intervention": "同ageでsourceOn/observerOn/contextOnを独立切替。source位置・pupil変更",
+            "predicted_response": "sourceOffでE放射/OBSなし、observerOffでWORLD形維持、contextOffで近傍受光なし",
+            "competing_explanation": "診断床の模様や観測カーネルだけで運動して見えること",
+            "uncertainty": "光・流体は解析近似。実native画素と通常音声未審査",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "熱源中心・外縁の差と230msまでの冷却"
+          ],
+          "indirect": [
+            "同じcauseの位置・時間"
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5",
+              "change": "同熱源の距離依存受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH1.StateDynamics",
+          "retained_cues": [
+            "熱源中心・外縁の差と230msまでの冷却"
+          ],
+          "simplification": "低周波の有限輪郭、疎な七破片。微細模様で水増ししない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "asymmetric_balance": [
+              "熱源中心・外縁の差と230msまでの冷却"
+            ],
+            "tension_release": [
+              "短い破裂と長い粉塵尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "physical_and_observation_links_not_mixed": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "before_after_only",
+          "uniform_response"
+        ],
+        "implementation": "source/plan.mjs sample; WORLD hotBoundary/reactionColor",
+        "actualOutputStatus": "not_run"
+      },
+      "PH2": {
+        "identity": {
+          "id": "PH2",
+          "name": "膨張後に巻き上がる粉塵",
+          "origin": "attribute_resolved",
+          "anchor": "air",
+          "visibility": "visible",
+          "local_state_difference": "有限な輪郭・内部遮蔽・上昇・900ms消散",
+          "partition_reason": "独立した状態・境界・応答: 膨張後に巻き上がる粉塵"
+        },
+        "DeepStructure": {
+          "Core": "膨張後に巻き上がる粉塵の発生域",
+          "Structure": "有限な輪郭・内部遮蔽・上昇・900ms消散",
+          "Surface": "有限な境界と相別減衰、局所差"
+        },
+        "PhysicalModel": {
+          "model_kind": "material_continuum",
+          "system_boundary": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "state_variables": "経過秒、局所座標、密度、透過率、放射輝度。校正済みSI物性値ではない",
+          "inputs": "grenade-frag-impact cause; PH1放射・初期圧力",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "帯電を選択していない"
+            }
+          },
+          "constitutive_response": "WORLD four-lobe center/size/boundary/rho/opticalDepth",
+          "initial_condition": "経過0秒で反応立上り。粉塵・破片は有限の初期輸送を受ける",
+          "boundary_conditions": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "approximation_scope": "ゲーム単位での解析的投影近似。物性・温度・爆薬成分の実測主張なし"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "132ゲーム単位半径。診断人高64ゲーム単位。m校正は不明",
+          "characteristic_time": "900ms全寿命。熱源55/95ms、圧縮前縁380ms、粉塵640–900ms尾部",
+          "dominant_balance": "慣性膨張後の抗力・浮力、破片の重力と床摩擦",
+          "dimensionless_reasoning": "必要なSI物性がないためRe/Weの数値を創作しない",
+          "detail_cutoff": "主輪郭と2px以上の殻形状。微粒子ノイズなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "膨張後に巻き上がる粉塵のThermo応答をWORLD four-lobe center/size/boundary/rho/opticalDepthで実現",
+                "有限な輪郭・内部遮蔽・上昇・900ms消散"
+              ],
+              "evidence_or_constraint": "有限な輪郭・内部遮蔽・上昇・900ms消散"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "膨張後に巻き上がる粉塵のFluid応答をWORLD four-lobe center/size/boundary/rho/opticalDepthで実現",
+                "有限な輪郭・内部遮蔽・上昇・900ms消散"
+              ],
+              "evidence_or_constraint": "有限な輪郭・内部遮蔽・上昇・900ms消散"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "膨張後に巻き上がる粉塵のOptics応答をWORLD four-lobe center/size/boundary/rho/opticalDepthで実現",
+                "有限な輪郭・内部遮蔽・上昇・900ms消散"
+              ],
+              "evidence_or_constraint": "有限な輪郭・内部遮蔽・上昇・900ms消散"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "膨張後に巻き上がる粉塵のMaterials応答をWORLD four-lobe center/size/boundary/rho/opticalDepthで実現",
+                "有限な輪郭・内部遮蔽・上昇・900ms消散"
+              ],
+              "evidence_or_constraint": "有限な輪郭・内部遮蔽・上昇・900ms消散"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "膨張後に巻き上がる粉塵ではElectromagneticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "膨張後に巻き上がる粉塵ではRheologyの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "膨張後に巻き上がる粉塵ではWaveOpticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "膨張後に巻き上がる粉塵ではSurfaceScienceの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "有限な輪郭・内部遮蔽・上昇・900ms消散",
+          "indirect_evidence": "PH1からの照明・初期輸送",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "有限主輪郭をWORLDで生成",
+          "perceptual_failure_risk": "光の塊だけに見えたり、圧縮前縁を発光の命中リングと誤認する",
+          "cue_roles": [
+            {
+              "cue": "有限な輪郭・内部遮蔽・上昇・900ms消散",
+              "supports": "膨張後に巻き上がる粉塵",
+              "reliability_and_overlap": "時系列で判別。単一PNGで因果確定しない"
+            }
+          ],
+          "confusable_alternative": "均一なglow/固定の煙マーク",
+          "disambiguating_evidence": "異なる位相の膨張・飛翔・巻上り",
+          "viewing_conditions": "980x620 backing、H64 scale1とH128 scale2。実観測未実施"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "床はscreen下向きy、破片は回転法線",
+          "normal_field_coherence": "金属法線はspinへ追従",
+          "curvature_behavior": "有限ローブと輪郭の低周波偏差",
+          "silhouette_logic": "有限な輪郭・内部遮蔽・上昇・900ms消散",
+          "contact_relation": "破片contact rootで床を貫通しない",
+          "spatial_relation": "共通source originから外向き、熱源は粉塵越しに減衰"
+        },
+        "StateDynamics": {
+          "state_space_extent": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "有限寿命へ冷却・沈降",
+          "damping_profile": "対象別の解析的減衰",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "900msで全Eを消去",
+          "transition_failure_risk": "OBS残光や床貫通",
+          "driving_input": "causeの破裂",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "短い熱源→圧縮前縁→粉塵・落下",
+          "stability_condition": "有限age、正の投影scale"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Thermo -> PH2.Fluid: 初期膨張後の上昇",
+            "PH1.Optics -> PH5.Optics: 距離減衰する照明"
+          ],
+          "SecondaryCouplings": [
+            "PH3.Materials -> PH5.SurfaceScience: 接地・摩擦"
+          ],
+          "CausalAssessment": {
+            "intervention": "同ageでsourceOn/observerOn/contextOnを独立切替。source位置・pupil変更",
+            "predicted_response": "sourceOffでE放射/OBSなし、observerOffでWORLD形維持、contextOffで近傍受光なし",
+            "competing_explanation": "診断床の模様や観測カーネルだけで運動して見えること",
+            "uncertainty": "光・流体は解析近似。実native画素と通常音声未審査",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "有限な輪郭・内部遮蔽・上昇・900ms消散"
+          ],
+          "indirect": [
+            "同じcauseの位置・時間"
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5",
+              "change": "同熱源の距離依存受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH2.StateDynamics",
+          "retained_cues": [
+            "有限な輪郭・内部遮蔽・上昇・900ms消散"
+          ],
+          "simplification": "低周波の有限輪郭、疎な七破片。微細模様で水増ししない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "asymmetric_balance": [
+              "有限な輪郭・内部遮蔽・上昇・900ms消散"
+            ],
+            "tension_release": [
+              "短い破裂と長い粉塵尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "physical_and_observation_links_not_mixed": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "before_after_only",
+          "uniform_response"
+        ],
+        "implementation": "WORLD four-lobe center/size/boundary/rho/opticalDepth",
+        "actualOutputStatus": "not_run"
+      },
+      "PH3": {
+        "identity": {
+          "id": "PH3",
+          "name": "非対称の殻破片",
+          "origin": "attribute_resolved",
+          "anchor": "object",
+          "visibility": "visible",
+          "local_state_difference": "七片の異なる弾道・回転反射・接地後の摩擦停止",
+          "partition_reason": "独立した状態・境界・応答: 非対称の殻破片"
+        },
+        "DeepStructure": {
+          "Core": "非対称の殻破片の発生域",
+          "Structure": "七片の異なる弾道・回転反射・接地後の摩擦停止",
+          "Surface": "有限な境界と相別減衰、局所差"
+        },
+        "PhysicalModel": {
+          "model_kind": "rigid_or_articulated",
+          "system_boundary": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "state_variables": "経過秒、局所座標、密度、透過率、放射輝度。校正済みSI物性値ではない",
+          "inputs": "grenade-frag-impact cause; PH1放射・初期圧力",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "帯電を選択していない"
+            }
+          },
+          "constitutive_response": "WORLD velocity/contact/flight/travel/spin/metal",
+          "initial_condition": "経過0秒で反応立上り。粉塵・破片は有限の初期輸送を受ける",
+          "boundary_conditions": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "approximation_scope": "ゲーム単位での解析的投影近似。物性・温度・爆薬成分の実測主張なし"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "132ゲーム単位半径。診断人高64ゲーム単位。m校正は不明",
+          "characteristic_time": "900ms全寿命。熱源55/95ms、圧縮前縁380ms、粉塵640–900ms尾部",
+          "dominant_balance": "慣性膨張後の抗力・浮力、破片の重力と床摩擦",
+          "dimensionless_reasoning": "必要なSI物性がないためRe/Weの数値を創作しない",
+          "detail_cutoff": "主輪郭と2px以上の殻形状。微粒子ノイズなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "非対称の殻破片ではThermoの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "非対称の殻破片のFluid応答をWORLD velocity/contact/flight/travel/spin/metalで実現",
+                "七片の異なる弾道・回転反射・接地後の摩擦停止"
+              ],
+              "evidence_or_constraint": "七片の異なる弾道・回転反射・接地後の摩擦停止"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "非対称の殻破片のOptics応答をWORLD velocity/contact/flight/travel/spin/metalで実現",
+                "七片の異なる弾道・回転反射・接地後の摩擦停止"
+              ],
+              "evidence_or_constraint": "七片の異なる弾道・回転反射・接地後の摩擦停止"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "非対称の殻破片のMaterials応答をWORLD velocity/contact/flight/travel/spin/metalで実現",
+                "七片の異なる弾道・回転反射・接地後の摩擦停止"
+              ],
+              "evidence_or_constraint": "七片の異なる弾道・回転反射・接地後の摩擦停止"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "非対称の殻破片ではElectromagneticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "非対称の殻破片ではRheologyの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "非対称の殻破片ではWaveOpticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "SurfaceScience": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "非対称の殻破片のSurfaceScience応答をWORLD velocity/contact/flight/travel/spin/metalで実現",
+                "七片の異なる弾道・回転反射・接地後の摩擦停止"
+              ],
+              "evidence_or_constraint": "七片の異なる弾道・回転反射・接地後の摩擦停止"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "七片の異なる弾道・回転反射・接地後の摩擦停止",
+          "indirect_evidence": "PH1からの照明・初期輸送",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "有限主輪郭をWORLDで生成",
+          "perceptual_failure_risk": "光の塊だけに見えたり、圧縮前縁を発光の命中リングと誤認する",
+          "cue_roles": [
+            {
+              "cue": "七片の異なる弾道・回転反射・接地後の摩擦停止",
+              "supports": "非対称の殻破片",
+              "reliability_and_overlap": "時系列で判別。単一PNGで因果確定しない"
+            }
+          ],
+          "confusable_alternative": "均一なglow/固定の煙マーク",
+          "disambiguating_evidence": "異なる位相の膨張・飛翔・巻上り",
+          "viewing_conditions": "980x620 backing、H64 scale1とH128 scale2。実観測未実施"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "床はscreen下向きy、破片は回転法線",
+          "normal_field_coherence": "金属法線はspinへ追従",
+          "curvature_behavior": "有限ローブと輪郭の低周波偏差",
+          "silhouette_logic": "七片の異なる弾道・回転反射・接地後の摩擦停止",
+          "contact_relation": "破片contact rootで床を貫通しない",
+          "spatial_relation": "共通source originから外向き、熱源は粉塵越しに減衰"
+        },
+        "StateDynamics": {
+          "state_space_extent": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "有限寿命へ冷却・沈降",
+          "damping_profile": "対象別の解析的減衰",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "900msで全Eを消去",
+          "transition_failure_risk": "OBS残光や床貫通",
+          "driving_input": "causeの破裂",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "短い熱源→圧縮前縁→粉塵・落下",
+          "stability_condition": "有限age、正の投影scale"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Thermo -> PH2.Fluid: 初期膨張後の上昇",
+            "PH1.Optics -> PH5.Optics: 距離減衰する照明"
+          ],
+          "SecondaryCouplings": [
+            "PH3.Materials -> PH5.SurfaceScience: 接地・摩擦"
+          ],
+          "CausalAssessment": {
+            "intervention": "同ageでsourceOn/observerOn/contextOnを独立切替。source位置・pupil変更",
+            "predicted_response": "sourceOffでE放射/OBSなし、observerOffでWORLD形維持、contextOffで近傍受光なし",
+            "competing_explanation": "診断床の模様や観測カーネルだけで運動して見えること",
+            "uncertainty": "光・流体は解析近似。実native画素と通常音声未審査",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "七片の異なる弾道・回転反射・接地後の摩擦停止"
+          ],
+          "indirect": [
+            "同じcauseの位置・時間"
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5",
+              "change": "同熱源の距離依存受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH3.StateDynamics",
+          "retained_cues": [
+            "七片の異なる弾道・回転反射・接地後の摩擦停止"
+          ],
+          "simplification": "低周波の有限輪郭、疎な七破片。微細模様で水増ししない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "asymmetric_balance": [
+              "七片の異なる弾道・回転反射・接地後の摩擦停止"
+            ],
+            "tension_release": [
+              "短い破裂と長い粉塵尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "physical_and_observation_links_not_mixed": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "before_after_only",
+          "uniform_response"
+        ],
+        "implementation": "WORLD velocity/contact/flight/travel/spin/metal",
+        "actualOutputStatus": "not_run"
+      },
+      "PH4": {
+        "identity": {
+          "id": "PH4",
+          "name": "外向きの圧縮粉塵前縁",
+          "origin": "attribute_resolved",
+          "anchor": "floor",
+          "visibility": "visible",
+          "local_state_difference": "床面の楕円投影で前縁が進行し380msで消える",
+          "partition_reason": "独立した状態・境界・応答: 外向きの圧縮粉塵前縁"
+        },
+        "DeepStructure": {
+          "Core": "外向きの圧縮粉塵前縁の発生域",
+          "Structure": "床面の楕円投影で前縁が進行し380msで消える",
+          "Surface": "有限な境界と相別減衰、局所差"
+        },
+        "PhysicalModel": {
+          "model_kind": "material_continuum",
+          "system_boundary": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "state_variables": "経過秒、局所座標、密度、透過率、放射輝度。校正済みSI物性値ではない",
+          "inputs": "grenade-frag-impact cause; PH1放射・初期圧力",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "帯電を選択していない"
+            }
+          },
+          "constitutive_response": "WORLD collarRadius/collarBand/collarDensity and densityGradient",
+          "initial_condition": "経過0秒で反応立上り。粉塵・破片は有限の初期輸送を受ける",
+          "boundary_conditions": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "approximation_scope": "ゲーム単位での解析的投影近似。物性・温度・爆薬成分の実測主張なし"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "132ゲーム単位半径。診断人高64ゲーム単位。m校正は不明",
+          "characteristic_time": "900ms全寿命。熱源55/95ms、圧縮前縁380ms、粉塵640–900ms尾部",
+          "dominant_balance": "慣性膨張後の抗力・浮力、破片の重力と床摩擦",
+          "dimensionless_reasoning": "必要なSI物性がないためRe/Weの数値を創作しない",
+          "detail_cutoff": "主輪郭と2px以上の殻形状。微粒子ノイズなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "外向きの圧縮粉塵前縁のThermo応答をWORLD collarRadius/collarBand/collarDensity and densityGradientで実現",
+                "床面の楕円投影で前縁が進行し380msで消える"
+              ],
+              "evidence_or_constraint": "床面の楕円投影で前縁が進行し380msで消える"
+            },
+            "Fluid": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "外向きの圧縮粉塵前縁のFluid応答をWORLD collarRadius/collarBand/collarDensity and densityGradientで実現",
+                "床面の楕円投影で前縁が進行し380msで消える"
+              ],
+              "evidence_or_constraint": "床面の楕円投影で前縁が進行し380msで消える"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "外向きの圧縮粉塵前縁のOptics応答をWORLD collarRadius/collarBand/collarDensity and densityGradientで実現",
+                "床面の楕円投影で前縁が進行し380msで消える"
+              ],
+              "evidence_or_constraint": "床面の楕円投影で前縁が進行し380msで消える"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "外向きの圧縮粉塵前縁のMaterials応答をWORLD collarRadius/collarBand/collarDensity and densityGradientで実現",
+                "床面の楕円投影で前縁が進行し380msで消える"
+              ],
+              "evidence_or_constraint": "床面の楕円投影で前縁が進行し380msで消える"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "外向きの圧縮粉塵前縁ではElectromagneticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "外向きの圧縮粉塵前縁ではRheologyの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "外向きの圧縮粉塵前縁ではWaveOpticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "SurfaceScience": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "外向きの圧縮粉塵前縁ではSurfaceScienceの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "床面の楕円投影で前縁が進行し380msで消える",
+          "indirect_evidence": "PH1からの照明・初期輸送",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "有限主輪郭をWORLDで生成",
+          "perceptual_failure_risk": "光の塊だけに見えたり、圧縮前縁を発光の命中リングと誤認する",
+          "cue_roles": [
+            {
+              "cue": "床面の楕円投影で前縁が進行し380msで消える",
+              "supports": "外向きの圧縮粉塵前縁",
+              "reliability_and_overlap": "時系列で判別。単一PNGで因果確定しない"
+            }
+          ],
+          "confusable_alternative": "均一なglow/固定の煙マーク",
+          "disambiguating_evidence": "異なる位相の膨張・飛翔・巻上り",
+          "viewing_conditions": "980x620 backing、H64 scale1とH128 scale2。実観測未実施"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "床はscreen下向きy、破片は回転法線",
+          "normal_field_coherence": "金属法線はspinへ追従",
+          "curvature_behavior": "有限ローブと輪郭の低周波偏差",
+          "silhouette_logic": "床面の楕円投影で前縁が進行し380msで消える",
+          "contact_relation": "破片contact rootで床を貫通しない",
+          "spatial_relation": "共通source originから外向き、熱源は粉塵越しに減衰"
+        },
+        "StateDynamics": {
+          "state_space_extent": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "有限寿命へ冷却・沈降",
+          "damping_profile": "対象別の解析的減衰",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "900msで全Eを消去",
+          "transition_failure_risk": "OBS残光や床貫通",
+          "driving_input": "causeの破裂",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "短い熱源→圧縮前縁→粉塵・落下",
+          "stability_condition": "有限age、正の投影scale"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Thermo -> PH2.Fluid: 初期膨張後の上昇",
+            "PH1.Optics -> PH5.Optics: 距離減衰する照明"
+          ],
+          "SecondaryCouplings": [
+            "PH3.Materials -> PH5.SurfaceScience: 接地・摩擦"
+          ],
+          "CausalAssessment": {
+            "intervention": "同ageでsourceOn/observerOn/contextOnを独立切替。source位置・pupil変更",
+            "predicted_response": "sourceOffでE放射/OBSなし、observerOffでWORLD形維持、contextOffで近傍受光なし",
+            "competing_explanation": "診断床の模様や観測カーネルだけで運動して見えること",
+            "uncertainty": "光・流体は解析近似。実native画素と通常音声未審査",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "床面の楕円投影で前縁が進行し380msで消える"
+          ],
+          "indirect": [
+            "同じcauseの位置・時間"
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5",
+              "change": "同熱源の距離依存受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "essential",
+          "world_state_ref": "PH4.StateDynamics",
+          "retained_cues": [
+            "床面の楕円投影で前縁が進行し380msで消える"
+          ],
+          "simplification": "低周波の有限輪郭、疎な七破片。微細模様で水増ししない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "asymmetric_balance": [
+              "床面の楕円投影で前縁が進行し380msで消える"
+            ],
+            "tension_release": [
+              "短い破裂と長い粉塵尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "physical_and_observation_links_not_mixed": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "before_after_only",
+          "uniform_response"
+        ],
+        "implementation": "WORLD collarRadius/collarBand/collarDensity and densityGradient",
+        "actualOutputStatus": "not_run"
+      },
+      "PH5": {
+        "identity": {
+          "id": "PH5",
+          "name": "診断用床・受光面",
+          "origin": "attribute_resolved",
+          "anchor": "floor",
+          "visibility": "visible",
+          "local_state_difference": "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない",
+          "partition_reason": "独立した状態・境界・応答: 診断用床・受光面"
+        },
+        "DeepStructure": {
+          "Core": "診断用床・受光面の発生域",
+          "Structure": "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない",
+          "Surface": "有限な境界と相別減衰、局所差"
+        },
+        "PhysicalModel": {
+          "model_kind": "derived_world_response",
+          "system_boundary": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "state_variables": "経過秒、局所座標、密度、透過率、放射輝度。校正済みSI物性値ではない",
+          "inputs": "grenade-frag-impact cause; PH1放射・初期圧力",
+          "balance_conditions": {
+            "mass": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "momentum": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "energy": {
+              "status": "applicable",
+              "balance_or_reason": "源から媒体・床への輸送と散逸を定性的に閉じる。solverの保存精度は未検証"
+            },
+            "charge": {
+              "status": "not_applicable",
+              "balance_or_reason": "帯電を選択していない"
+            }
+          },
+          "constitutive_response": "WORLD floorIncident/actorShade/floorMask/wall",
+          "initial_condition": "経過0秒で反応立上り。粉塵・破片は有限の初期輸送を受ける",
+          "boundary_conditions": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "approximation_scope": "ゲーム単位での解析的投影近似。物性・温度・爆薬成分の実測主張なし"
+        },
+        "ScaleRegime": {
+          "characteristic_length": "132ゲーム単位半径。診断人高64ゲーム単位。m校正は不明",
+          "characteristic_time": "900ms全寿命。熱源55/95ms、圧縮前縁380ms、粉塵640–900ms尾部",
+          "dominant_balance": "慣性膨張後の抗力・浮力、破片の重力と床摩擦",
+          "dimensionless_reasoning": "必要なSI物性がないためRe/Weの数値を創作しない",
+          "detail_cutoff": "主輪郭と2px以上の殻形状。微粒子ノイズなし"
+        },
+        "OctaDomain": {
+          "Domains": {
+            "Thermo": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断用床・受光面ではThermoの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "Fluid": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断用床・受光面ではFluidの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "Optics": {
+              "applicability": "applicable",
+              "role": "primary",
+              "items": [
+                "診断用床・受光面のOptics応答をWORLD floorIncident/actorShade/floorMask/wallで実現",
+                "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない"
+              ],
+              "evidence_or_constraint": "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない"
+            },
+            "Materials": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "診断用床・受光面のMaterials応答をWORLD floorIncident/actorShade/floorMask/wallで実現",
+                "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない"
+              ],
+              "evidence_or_constraint": "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない"
+            },
+            "Electromagnetics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断用床・受光面ではElectromagneticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "Rheology": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断用床・受光面ではRheologyの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "WaveOptics": {
+              "applicability": "not_applicable",
+              "role": "latent",
+              "items": [
+                "診断用床・受光面ではWaveOpticsの独立機構を設けない。電荷・粘弾性・干渉を装飾追加しない"
+              ],
+              "evidence_or_constraint": "選択した縮尺では独立描画対象外。関連する光と媒体の拘束だけを保持"
+            },
+            "SurfaceScience": {
+              "applicability": "applicable",
+              "role": "supporting",
+              "items": [
+                "診断用床・受光面のSurfaceScience応答をWORLD floorIncident/actorShade/floorMask/wallで実現",
+                "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない"
+              ],
+              "evidence_or_constraint": "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない"
+            }
+          }
+        },
+        "PerceptualReadability": {
+          "direct_evidence": "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない",
+          "indirect_evidence": "PH1からの照明・初期輸送",
+          "figure_ground_separation": "medium",
+          "edge_legibility": "有限主輪郭をWORLDで生成",
+          "perceptual_failure_risk": "光の塊だけに見えたり、圧縮前縁を発光の命中リングと誤認する",
+          "cue_roles": [
+            {
+              "cue": "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない",
+              "supports": "診断用床・受光面",
+              "reliability_and_overlap": "時系列で判別。単一PNGで因果確定しない"
+            }
+          ],
+          "confusable_alternative": "均一なglow/固定の煙マーク",
+          "disambiguating_evidence": "異なる位相の膨張・飛翔・巻上り",
+          "viewing_conditions": "980x620 backing、H64 scale1とH128 scale2。実観測未実施"
+        },
+        "GeometryConstraint": {
+          "surface_orientation": "床はscreen下向きy、破片は回転法線",
+          "normal_field_coherence": "金属法線はspinへ追従",
+          "curvature_behavior": "有限ローブと輪郭の低周波偏差",
+          "silhouette_logic": "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない",
+          "contact_relation": "破片contact rootで床を貫通しない",
+          "spatial_relation": "共通source originから外向き、熱源は粉塵越しに減衰"
+        },
+        "StateDynamics": {
+          "state_space_extent": "入力causeの同一位置、132ゲーム単位の作用域と900ms寿命。診断床との接触は実ゲーム衝突の証明ではない",
+          "transition_path_character": "monotonic",
+          "local_stability_type": "stable",
+          "convergence_behavior": "有限寿命へ冷却・沈降",
+          "damping_profile": "対象別の解析的減衰",
+          "oscillation_pattern": "none",
+          "equilibrium_recovery": "900msで全Eを消去",
+          "transition_failure_risk": "OBS残光や床貫通",
+          "driving_input": "causeの破裂",
+          "response_timescale": "ScaleRegime.characteristic_time",
+          "phase_relation": "短い熱源→圧縮前縁→粉塵・落下",
+          "stability_condition": "有限age、正の投影scale"
+        },
+        "Couplings": {
+          "DominantCouplings": [
+            "PH1.Thermo -> PH2.Fluid: 初期膨張後の上昇",
+            "PH1.Optics -> PH5.Optics: 距離減衰する照明"
+          ],
+          "SecondaryCouplings": [
+            "PH3.Materials -> PH5.SurfaceScience: 接地・摩擦"
+          ],
+          "CausalAssessment": {
+            "intervention": "同ageでsourceOn/observerOn/contextOnを独立切替。source位置・pupil変更",
+            "predicted_response": "sourceOffでE放射/OBSなし、observerOffでWORLD形維持、contextOffで近傍受光なし",
+            "competing_explanation": "診断床の模様や観測カーネルだけで運動して見えること",
+            "uncertainty": "光・流体は解析近似。実native画素と通常音声未審査",
+            "check_status": "hypothesis_only",
+            "evidence_refs": []
+          }
+        },
+        "CausalityLinks": {
+          "physical_influence": [],
+          "observation_dependency": [],
+          "gaze_path": []
+        },
+        "Evidence": {
+          "direct": [
+            "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない"
+          ],
+          "indirect": [
+            "同じcauseの位置・時間"
+          ],
+          "candidates": [
+            "boundary",
+            "attenuation",
+            "phase_difference"
+          ]
+        },
+        "SurroundingChanges": {
+          "entries": [
+            {
+              "target": "PH5",
+              "change": "同熱源の距離依存受光"
+            }
+          ],
+          "latent_reference_target": "none"
+        },
+        "VisualProjection": {
+          "role": "supporting",
+          "world_state_ref": "PH5.StateDynamics",
+          "retained_cues": [
+            "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない"
+          ],
+          "simplification": "低周波の有限輪郭、疎な七破片。微細模様で水増ししない",
+          "omission_scope": [],
+          "exaggeration_scope": [],
+          "ambiguity_scope": [],
+          "intent_ref": "InferenceExpansionPolicy.ExpressionIntent"
+        },
+        "BeautyStructureApplication": {
+          "target_policy": "standard",
+          "adjustment_reason": "not_applicable",
+          "axes": {
+            "asymmetric_balance": [
+              "同一熱源の距離減衰と遮蔽。人物は診断図形で原画ではない"
+            ],
+            "tension_release": [
+              "短い破裂と長い粉塵尾部"
+            ]
+          }
+        },
+        "AcceptanceCriteria": {
+          "full_structure_present": true,
+          "all_8_domains_present": true,
+          "physical_and_observation_links_not_mixed": true
+        },
+        "FailurePatterns": [
+          "label_only",
+          "before_after_only",
+          "uniform_response"
+        ],
+        "implementation": "WORLD floorIncident/actorShade/floorMask/wall",
+        "actualOutputStatus": "not_run"
+      }
+    }
+  },
+  "CoordinateGravityWindTemplate": {
+    "WorldApplicability": {
+      "status": "applicable",
+      "reason": "破裂・媒体・破片が存在"
+    },
+    "Units": {
+      "length": "ゲーム単位。SI m校正未設定",
+      "time": "s",
+      "angle": "rad"
+    },
+    "TransformChain": {
+      "order": [
+        "world",
+        "camera",
+        "screen"
+      ],
+      "world_to_camera": "cause-camera差",
+      "camera_to_screen": "origin + gameUnit*scale、screen +Yは下"
+    },
+    "Gravity": {
+      "condition": "normal",
+      "vector": [
+        0,
+        520,
+        0
+      ],
+      "strength": "ゲーム単位/s²の設計近似",
+      "evidence": [
+        "下向き弾道曲率",
+        "contact rootで床停止"
+      ]
+    },
+    "WindCapsule": {
+      "required": true,
+      "medium_state": "air",
+      "Field": {
+        "direction": "初期外向き→浮力上向き",
+        "speed": "解析expansion/rise近似",
+        "gust": "none",
+        "shear": "低周波ローブの巻上り",
+        "turbulence": "bounded角度偏差。noise textureなし"
+      },
+      "ApplicableResponses": {
+        "loose_elements": "初期殻速度",
+        "environment": "粉塵移流",
+        "body": "診断図形で力学反応なし",
+        "cloth": "not_applicable",
+        "hair": "not_applicable"
+      }
+    }
+  },
+  "ExtensionActivationTable": {
+    "VFX": "explicit",
+    "ECodeImplementation": "explicit",
+    "PostEffects": "attribute_resolved: source-bound PSF",
+    "LDM": "explicit VFX: 対象別時間包絡",
+    "GradientAnchorPolicy": "熱源白→amber→橙の放射領域。粉塵と金属は非発光",
+    "KeywordExpansion": "検出語なし。v1等を起動しない",
+    "MagicArchitecture": "なし。通常破裂",
+    "VideoGenerationPolicy": "画像映像生成しない。900msは実runtime寿命"
+  },
+  "ObservationIntegrationTemplate": {
+    "ObservationRegistry": {
+      "OBS1": {
+        "operation_type": "posteffect",
+        "input_references": [
+          "PH1"
+        ],
+        "target_mask": "遮蔽後visible-source MRT",
+        "stage": "post_composite",
+        "composite_method": "world-.16source+.16PSF",
+        "intensity": ".16 redistribution、.84 direct",
+        "protected_regions": [
+          "WORLD主輪郭",
+          "sourceOff状態",
+          "900ms消去"
+        ],
+        "output_consequence": "強熱源だけの有限にじみ",
+        "dependencies": [
+          "PH1"
+        ],
+        "sampling_consequence": "25tap正規化、pupilとscaleで幅を変える。age同一で残光なし"
+      },
+      "OBS2": {
+        "operation_type": "tone",
+        "input_references": [
+          "WORLD",
+          "OBS1"
+        ],
+        "target_mask": "全表示",
+        "stage": "display",
+        "composite_method": "1-exp(-radiance*exposure) then sRGB",
+        "intensity": "exposure .1..4",
+        "protected_regions": [
+          "色差",
+          "材質"
+        ],
+        "output_consequence": "固定表示変換",
+        "dependencies": [
+          "OBS1"
+        ],
+        "sampling_consequence": "HDR rgba16float→単一sRGB変換"
+      }
+    },
+    "SamplingContract": {
+      "output_resolution": "980x620 native backing",
+      "intended_display_scale": "H64 scale1、H128 scale2",
+      "spatial_detail_policy": "finite主輪郭、七殻は幅4.8–8ゲーム単位。ノイズなし",
+      "temporal_sampling": "runtime RAFのperformance.now、自然再生はnative未確認",
+      "filter_and_resample_policy": "HDR linear sampling・25tapPSF。画素検証未実施"
+    },
+    "IntensityBudget": {
+      "direct": 0.84,
+      "observerRedistribution": 0.16,
+      "sourcePeak": "9*rupture+2.6*flame。背景別変化なし",
+      "intentional_departures": []
+    }
+  },
+  "PostEffects": {
+    "trigger": {
+      "ordinary_posteffects": false,
+      "beta_targets": []
+    },
+    "selection": {
+      "mode": "exact_selected_operations",
+      "scope_resolution": "attribute_resolved_target_and_scope",
+      "exact_selected_operations": [
+        "normalized_source_PSF"
+      ]
+    },
+    "local_posteffects": {
+      "applies": true,
+      "targets": [
+        "visible PH1"
+      ],
+      "OBS_refs": [
+        "OBS1"
+      ]
+    },
+    "global_posteffects": {
+      "applies": false,
+      "OBS_refs": []
+    },
+    "不採用理由": "光源は短い局所反応。レンズゴースト・粒子キラキラ・全画面veilは不要。源依存PSFで観測応答を示す"
+  },
+  "ECodeImplementation": {
+    "target_runtime": "WebGPU",
+    "implementation_artifacts": [
+      "runtime.mjs",
+      "source/shaders.mjs",
+      "source/plan.mjs",
+      "source/sound.mjs"
+    ],
+    "source_and_time_contract": "identified grenade-frag-impact、[0,900)ms、radius132、同cause一回SFX",
+    "validation": {
+      "syntax": "CPU検査へ",
+      "shader": "not_run",
+      "actual_GPU_pixels_and_timing": "not_run",
+      "game_event_and_SFX": "not_run"
+    }
+  },
+  "correspondence": [
+    {
+      "rule": "PhenomenonSystemTemplate.StateTransformerRule",
+      "code": "sample; WORLD collar/rise/contact",
+      "observable": "異なる層の遷移・尾部",
+      "validation": "CPU限定、native未実施"
+    },
+    {
+      "rule": "VFX.SpatialMorphologyRule",
+      "code": "hotBoundary; dust boundary; chipMetric",
+      "observable": "WORLD内で有限主輪郭・外縁を生成",
+      "validation": "CPU限定、native未実施"
+    },
+    {
+      "rule": "VFX.MaterialOpticalResponseRule",
+      "code": "opticalDepth; metal; reactionColor",
+      "observable": "密度/不透明度/放射/反射の分離",
+      "validation": "CPU限定、native未実施"
+    },
+    {
+      "rule": "VFX.TransportTemporalRule",
+      "code": "contact/flight/travel and rise",
+      "observable": "弾道→接地摩擦、粉塵上昇",
+      "validation": "CPU限定、native未実施"
+    },
+    {
+      "rule": "ObservationIntegrationTemplate.PostEffectsCommonRule",
+      "code": "OPTICS/POST; runtime pass order",
+      "observable": "PSFで主形を作らない",
+      "validation": "CPU限定、native未実施"
+    },
+    {
+      "rule": "CoordinateGravityWindTemplate.NaturalVarianceRule",
+      "code": "collarShape/roll",
+      "observable": "決定論+低周波有限偏差",
+      "validation": "CPU限定、native未実施"
+    },
+    {
+      "rule": "ECodeImplementation.ExecutableECodeBranchRule",
+      "code": "FragRenderer; FragSound; CauseGate",
+      "observable": "実WebGPU/SFX・同cause寿命・画像なし",
+      "validation": "CPU限定、native未実施"
+    }
+  ],
+  "acceptance": {
+    "static": "対象範囲のCPU検査のみ",
+    "fullBIndependentAcceptance": "not_run",
+    "nativeShader": "not_run",
+    "pixels": "not_run",
+    "continuousMotion": "not_run",
+    "normalSFX": "not_run",
+    "publication": "not_run",
+    "userAdoption": "unknown/unadopted candidate"
+  }
+}

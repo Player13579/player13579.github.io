@@ -44,7 +44,7 @@ async function withValidation(device,label,fn) {
   return result;
 }
 
-export async function createItemUseHost({device,context,format,shaderCode,width,height,ownerId=id(),verify=false,onProof=()=>{},onFailure=()=>{}}={}) {
+export async function createItemUseHost({device,context,format,shaderCode,width,height,ownerId=id(),verify=false,onProof=()=>{},onFailure=()=>{},onFrameTrace=()=>{}}={}) {
   if(!device||!context||typeof shaderCode!=='string'||!shaderCode)throw new TypeError('ready shared device/context and pinned shader source required');
   if(format!=='rgba8unorm'&&format!=='bgra8unorm')throw new TypeError('explicit canvas format required');
   positive(width,'width');positive(height,'height');
@@ -105,6 +105,9 @@ export async function createItemUseHost({device,context,format,shaderCode,width,
     const plan=planItemUse(fixture);const packed=packItemUse(plan);if(packed.byteLength!==96)throw new Error('packed uniform must be 96 bytes');
     const r=resources,t=r.targets,frameTargetGeneration=targetGeneration;
     let readbackBuffer=null;
+    const traceNow=()=>globalThis.performance?.now?.()??NaN;
+    const invocationSequence=sequence+1,uniformWriteAtBefore=traceNow();
+    let observedBytes=null,uniformWriteAt=NaN,queueSubmitAt=NaN;
     try {
     const [gw]=await groups(r.pipelines.world);
     const [gx,bx]=await groups(r.pipelines.x,[[0,view(t.emission)]]);
@@ -119,6 +122,8 @@ export async function createItemUseHost({device,context,format,shaderCode,width,
     try {
       const encoder=device.createCommandEncoder({label:`${VERSION}:${sequence+1}`});
       device.queue.writeBuffer(r.uniform,0,packed);
+      observedBytes=new Uint8Array(packed.buffer,packed.byteOffset,packed.byteLength).slice();
+      uniformWriteAt=traceNow();
       runPass(encoder,'world-mrt',r.pipelines.world,[gw,null],[view(t.surface),view(t.emission)]);
       if(region)encoder.copyTextureToBuffer({texture:t.emission,origin:{x:region.x,y:region.y,z:0}},{buffer:readbackBuffer,bytesPerRow,rowsPerImage:region.height},{width:region.width,height:region.height,depthOrArrayLayers:1});
       runPass(encoder,'spread-x',r.pipelines.x,[gx,bx],[view(t.spreadX)]);
@@ -128,10 +133,13 @@ export async function createItemUseHost({device,context,format,shaderCode,width,
       commandBuffer=encoder.finish();if(thenable(commandBuffer))throw new Error('record must remain synchronous');
       if(!current(expectedGeneration))throw new Error('frame retired before submit');
       device.queue.submit([commandBuffer]);submitted=true;sequence++;
+      if(sequence!==invocationSequence)throw new Error('instrumented submission sequence lost exact render ownership');
+      queueSubmitAt=traceNow();
     } catch(e) {const scopeError=await device.popErrorScope();if(scopeError)throw new Error(`record/submit validation error: ${scopeError.message??scopeError}`);throw e;}
     const submitError=await device.popErrorScope();if(submitError)throw new Error(`record/submit validation error: ${submitError.message??submitError}`);if(!submitted)throw new Error('frame was not submitted');
     const frame={ownerId,version:VERSION,token,generation:expectedGeneration,deviceGeneration:expectedGeneration,targetGeneration:frameTargetGeneration,sequence,dimensions:[t.width,t.height],targetFormat:'rgba16float',passOrder:['world-mrt','spread-x','spread-y','composite'],uniformBytes:packed.byteLength,submitted:true,completed:false,sourceGateActive:plan.active&&fixture.ageMs>0,sourceCauseId:plan.causeId,sourceItemId:plan.itemId,sourcePlayerId:fixture.playerId,validation:'clear'};
     await device.queue.onSubmittedWorkDone();
+    const queueWorkDoneAt=traceNow();
     if(!current(expectedGeneration)||resources.targets!==t||targetGeneration!==frameTargetGeneration){try{readbackBuffer?.destroy?.();}catch{}readbackBuffer=null;return {submitted:true,retired:true,proof:{...frame,completed:false,retired:true,firstSourceGateActiveSubmit:false},plan};}
     frame.completed=true;
     let emissionReadback=null;
@@ -139,7 +147,9 @@ export async function createItemUseHost({device,context,format,shaderCode,width,
     let firstSourceGateActiveSubmit=false;
     const positiveCurrentSample=Boolean(frame.sourceGateActive&&emissionReadback?.finitePositiveRgb&&emissionReadback?.positive&&frame.sourceCauseId===fixture.sourceCauseId&&frame.sourceCauseId===fixture.visibilityCauseId&&frame.sourcePlayerId===fixture.sourcePlayerId&&frame.sourcePlayerId===fixture.anchorPlayerId&&frame.deviceGeneration===generation&&frame.targetGeneration===targetGeneration&&current(expectedGeneration));
     if(positiveCurrentSample&&!proofGenerations.has(expectedGeneration)){proofGenerations.add(expectedGeneration);firstSourceGateActiveSubmit=true;onProof({...frame,emissionReadback,firstSourceGateActiveSubmit:true,fixtureOnly:true});}
-    return {submitted:true,proof:{...frame,emissionReadback,firstSourceGateActiveSubmit},plan};
+    const result={submitted:true,proof:{...frame,emissionReadback,firstSourceGateActiveSubmit},plan};
+    try { onFrameTrace(Object.freeze({schema:'item-use-natural-frame-trace-r492/v1',layoutId:'item-use-e-zero-sol61-r3/f32x24-le-v1',ownerId,token,generation:expectedGeneration,targetGeneration:frameTargetGeneration,sequence:invocationSequence,causeId:fixture.causeId,itemId:fixture.itemId,playerId:fixture.playerId,clockKind:fixture.clockKind,uniformBytesHex:Array.from(observedBytes,b=>b.toString(16).padStart(2,'0')).join(''),uniformWriteAtBefore,uniformWriteAt,queueSubmitAt,queueWorkDoneAt,completedAt:traceNow(),submitted:result.submitted,completed:result.proof.completed,retired:result.retired===true||result.proof.retired===true,sourceCauseId:result.proof.sourceCauseId,sourceItemId:result.proof.sourceItemId,sourcePlayerId:result.proof.sourcePlayerId,proofSequence:result.proof.sequence,packedAgeMs:new DataView(observedBytes.buffer,observedBytes.byteOffset,observedBytes.byteLength).getFloat32(20,true),planAgeMs:result.plan.ageMs,sourceGateActive:result.proof.sourceGateActive===true})); } catch {}
+    return result;
     } catch(e) {try{readbackBuffer?.unmap?.();}catch{}try{readbackBuffer?.destroy?.();}catch{}fail(e);throw e;}
   }
   async function resize(w,h){positive(w,'width');positive(h,'height');if(!current())throw new Error('host not current');state='resizing';const nextGeneration=++generation;let replacement=null;try{await device.queue.onSubmittedWorkDone();if(disposed||deviceLost||state!=='resizing'||generation!==nextGeneration)throw new Error('host retired during resize');replacement=await buildTargets(w,h);if(disposed||deviceLost||state!=='resizing'||generation!==nextGeneration){destroyTargets(replacement);replacement=null;throw new Error('host retired during resize');}const old=resources.targets;resources.targets=replacement;replacement=null;targetGeneration=nextGeneration;destroyTargets(old);state='ready';return {generation:nextGeneration,width:w,height:h};}catch(e){destroyTargets(replacement);fail(e);throw e;}}

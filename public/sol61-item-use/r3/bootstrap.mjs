@@ -9,6 +9,8 @@ const params=new URLSearchParams(location.search),verify=params.has('verify'),em
 document.documentElement.classList.toggle('gallery-embed',embedMode);
 let diagnostic=freezeDiagnosticSnapshot({status:'fixture starting'});
 Object.defineProperty(window,'__itemUseGalleryDiagnosticSnapshot',{value:()=>diagnostic,writable:false,configurable:false});
+const naturalTraceRows=[];
+Object.defineProperty(window,'__itemUseNaturalProofSnapshot',{value:()=>naturalTraceRows.slice(),writable:false,configurable:false});
 const say=x=>{diagnostic=freezeDiagnosticSnapshot(x);status.textContent=JSON.stringify(diagnostic,null,2);};
 const startup=createItemUseGalleryStartup(window);
 let host=null,audioContext=null,stopped=false,currentCue=null,cueObservedAt=0,currentTargetGeneration=1;
@@ -20,10 +22,10 @@ try {
  if(!window.parent||window.parent===window)throw Error('embedded gallery fixture required');
  if(params.get('galleryVersionId')!==GALLERY_VERSION_ID)throw Error('selected gallery item.id mismatch');
  if(!navigator.gpu)throw Error('WebGPU unavailable');
- startup.advance('child-document','ready',{versionId:GALLERY_VERSION_ID});
+ startup.advance('child-document','pending',{versionId:GALLERY_VERSION_ID});
  const adapter=await navigator.gpu.requestAdapter();if(!adapter)throw Error('WebGPU adapter unavailable');
- startup.advance('adapter','ready');
- const device=await adapter.requestDevice();startup.advance('device','ready');
+ startup.advance('adapter','pending');
+ const device=await adapter.requestDevice();startup.advance('device','pending');
  const context=canvas.getContext('webgpu');if(!context)throw Error('WebGPU canvas context unavailable');
  const format=navigator.gpu.getPreferredCanvasFormat();
  const resize=()=>{const r=canvas.getBoundingClientRect(),d=window.devicePixelRatio||1;canvas.width=Math.max(1,Math.round(r.width*d));canvas.height=Math.max(1,Math.round(r.height*d));context.configure({device,format,alphaMode:'premultiplied'});};
@@ -46,8 +48,8 @@ try {
  if(seal.versionId!==GALLERY_VERSION_ID||seal.packageManifestSha256!==expectedManifestSha256)throw Error('R3 package seal identity mismatch');
  const shaderUrl=new URL('./source/item-use-e-sol61-r3.wgsl',location.href);shaderUrl.searchParams.set('sha256',expectedWorldSha256);
  const response=await fetch(shaderUrl);if(!response.ok)throw Error('shader fetch failed: '+response.status);const shaderBytes=await response.arrayBuffer();if(await digestHex(shaderBytes)!==expectedWorldSha256)throw Error('R3 WGSL source SHA mismatch');const shaderCode=new TextDecoder().decode(shaderBytes);
- host=await createItemUseHost({device,context,format,shaderCode,width:canvas.width,height:canvas.height,verify,onFailure:e=>say({status:'host failure',error:String(e?.error??e)})});
- startup.advance('assets','ready');startup.advance('pipelines','ready');
+ host=await createItemUseHost({device,context,format,shaderCode,width:canvas.width,height:canvas.height,verify,onFailure:e=>say({status:'host failure',error:String(e?.error??e)}),onFrameTrace:trace=>{naturalTraceRows.push(trace);if(naturalTraceRows.length>2048)naturalTraceRows.shift();}});
+ startup.advance('assets','pending');startup.advance('pipelines','pending');
  window.addEventListener('resize',async()=>{try{resize();const sized=await host.resize(canvas.width,canvas.height);currentTargetGeneration=sized.generation;}catch(e){startup.advance('playing','error',{message:String(e)});}});
  const playerId='fixture-player';
  loop=startItemUseFixtureLoop({host,canvas,window,startup,verify,itemIds:[GALLERY_VERSION_ID],onStop:()=>sfx.dispose(),onCauseStart:f=>sfx.noteCauseStart(f.causeId,host),onProof:p=>say({status:'fixture positive emission sample; native/gallery acceptance pending',proof:p}),
