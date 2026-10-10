@@ -1,0 +1,123 @@
+{
+  "schema": "dva-common-action-mana-edition4-gallery-manifest-r484/v1",
+  "groupId": "common-action-mana-sol61",
+  "versionId": "common-action-mana-sol61-edition4-r476",
+  "previousVersionId": "common-action-mana-sol61-edition3-r446",
+  "technicalDerivativeId": "common-mana-edition4-gallery-r484",
+  "route": "public/sol61-common-action-mana/edition4",
+  "files": [
+    {
+      "path": "controller.mjs",
+      "bytes": 1738,
+      "sha256": "66f6854fba5fdb83d0e03e49789c071d2f3b9f4ecf64670b672afe7c1173f4d4",
+      "source": "R482 sealed host package"
+    },
+    {
+      "path": "frame.mjs",
+      "bytes": 1418,
+      "sha256": "6fe405a1eda8af6a7de6d07fe2f5580948f25c399fc71e3ce87db02b7369e311",
+      "source": "R482 sealed frame; relative import adjusted reversibly"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 27678,
+      "sha256": "8ba7a9392cf07582eb7fcfbf64331246335530d7d2abaaa27810e1275ed54528",
+      "source": "R482 sealed technical host; relative imports adjusted reversibly"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3322,
+      "sha256": "d2757e24c6ed417ed5a671b49a5ac67c24da0432c79b02015528869294ca619f",
+      "source": "R482 sealed host package"
+    },
+    {
+      "path": "startup-proof.mjs",
+      "bytes": 1347,
+      "sha256": "46ba3f1a999856bad2fe00cf8b4837aefa68074da0fbce06092cf881e7f99273",
+      "source": "R482 sealed host package"
+    },
+    {
+      "path": "model.mjs",
+      "bytes": 2183,
+      "sha256": "79383e24a4ffc9b0eccb4da5b72eee42942a26e492a43bae22efbc44febd4505",
+      "source": "R476 sealed edition 4 source payload"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 5233,
+      "sha256": "5616d593f2f9c8f62785bc10bbb6f381801fb00438db171a293e36182dde4cd4",
+      "source": "R476 sealed edition 4 source payload"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1613,
+      "sha256": "a1e0c27fc31f7c05ba725f029b593799a064d2c3bf6d060e02d2e180f2487e37",
+      "source": "R476 sealed edition 4 source payload"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 2374,
+      "sha256": "13139f5f9285e741c990aff6ff3d911fb5ab9b01980ae24134177b84fcf285df",
+      "source": "R476 sealed edition 4 source payload"
+    }
+  ],
+  "sourceIdentity": {
+    "r471OverlayManifestSha256": "17f68267ef1ed7217e17ac40ebdf2aa64d49fd23ee38e72f82c0dcc560d56067",
+    "r486BuildSha256": "f157a1bb0cbe40c338c78ac1f68b964ff05e772f502581f734da573b5a6abddc",
+    "r486Commit": "d7325b3973ec669cc5b4686652963e7c225304e1",
+    "r486Tree": "95d3c50b1626432191b2d40f3fa8725febfa5e30",
+    "r486CatalogSha256": "d10a6952bfb9f7b80797e9c53dff718dc408d09932660e0ae05a22dfeaac3d30",
+    "r486HtmlSha256": "c8ef7ab3deb896742eb8ab5407065954f82d25a2f79cc461c10364aa98a74d19",
+    "r486NativeReviewSha256": "f0c59c252a133a73b4baec372323b215d92580f2ff964aa767e4ea6af8eec49f",
+    "r476PinsSha256": "5d47bdc5be2582f92ebd4f2613f9d03c351dd4a4737e23bce18ba22eb6720fb3",
+    "r476ReadySha256": "3814e7d64b8ecb2436f1d3f4ba44ad3ee292ebe7f766288a10b56282530eb479",
+    "r476WorldSha256": "5616d593f2f9c8f62785bc10bbb6f381801fb00438db171a293e36182dde4cd4",
+    "r476ModelSha256": "79383e24a4ffc9b0eccb4da5b72eee42942a26e492a43bae22efbc44febd4505",
+    "r476ObserverSha256": "a1e0c27fc31f7c05ba725f029b593799a064d2c3bf6d060e02d2e180f2487e37",
+    "r476SfxSha256": "13139f5f9285e741c990aff6ff3d911fb5ab9b01980ae24134177b84fcf285df",
+    "r482PinsSha256": "191901d36ee3151070d98b2866230397d8342dae551babf80e2c1f024654aac5",
+    "r482ReadySha256": "50d827b31c0653bf31b6c6cbd9aa008c492d3f2918ada5d6d4d2cfef53da34e5",
+    "r482HostSha256": "f50f037d2707a927c38f6dac8811494012cf4f4697c6233149125c4377130858"
+  },
+  "creativeEdition": 4,
+  "creativeEditionLimit": 5,
+  "creativeEditionsRemaining": 1,
+  "creativeRevision": true,
+  "variants": [
+    "desire",
+    "grit",
+    "rational"
+  ],
+  "defaultPageBehavior": "cycleVariants=1 rotates one variant per new cause",
+  "authors": {
+    "creativeDesign": {
+      "displayName": "GPT-6.1-Sol",
+      "modelId": "gpt-6.1-sol",
+      "sourcePackage": "R476"
+    },
+    "technicalRuntime": {
+      "displayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna",
+      "sourcePackage": "R482"
+    }
+  },
+  "statuses": {
+    "adoption": "unknown",
+    "quality": "pending",
+    "qualityReview": "pending",
+    "nativeReplay": "not_run",
+    "nativeGpuCompile": "not_run",
+    "publicationEligible": false,
+    "normalAudioListening": "not_run",
+    "sfxListening": "not_run",
+    "safariReplay": "unverified",
+    "gameIntegration": "not_connected"
+  },
+  "lineage": {
+    "priorVersionRetained": "common-action-mana-sol61-edition3-r446",
+    "sourceEdition": "R476 creative edition 4/5",
+    "technicalHost": "R482",
+    "noAdoptionChanged": true
+  },
+  "acceptanceLimit": "Private same-gallery-version successor. This package records no native replay, quality acceptance, ordinary audio listening, Safari/iPad verification, game integration, or publication."
+}
