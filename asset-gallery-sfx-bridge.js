@@ -114,7 +114,9 @@
       const { win, doc } = child;
       const token = current.generation;
       let activation = { found: false };
-      if (itemId(item) === 'item-pickup-sol-r2') {
+      if (itemId(item) === 'gunner-aim-acquisition-sol61-r1') {
+        activation = invoke(win.__DVA_GUNNER_AIM_R1__, 'unlockAudio', []);
+      } else if (itemId(item) === 'item-pickup-sol-r2') {
         activation = invoke(win, 'enableItemPickupLoopAudio', []);
       } else if (win.__gallerySfx && typeof win.__gallerySfx.activateFromGesture === 'function') {
         activation = invoke(win.__gallerySfx, 'activateFromGesture', [item]);

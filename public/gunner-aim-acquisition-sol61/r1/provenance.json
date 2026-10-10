@@ -1,0 +1,655 @@
+{
+  "schema": "dva-gunner-aim-r1-gallery-provenance/v1",
+  "creativeSource": {
+    "version": "gunner-aim-acquisition-sol61-r1",
+    "author": "GPT-6.1-Sol",
+    "manifestSha256": "fc7ba4ed855bfe0d273dfcc02d9b456448b3d79d6534f4877a3098ee0cb99c3f",
+    "sealSha256": "da9d6b401b615f5ae96c1080de3e51546c42c07f4c61f99d25b6bb0ad1be46a1",
+    "manifest": {
+      "versionID": "gunner-aim-acquisition-sol61-r1",
+      "groupID": "gunner-aim-acquisition-sol61",
+      "entry": "index.html",
+      "runtimeClosure": [
+        "index.html",
+        "runtime.mjs",
+        "contract.mjs",
+        "source.wgsl",
+        "observer.wgsl"
+      ],
+      "files": [
+        {
+          "path": "index.html",
+          "role": "runtime",
+          "bytes": 995,
+          "sha256": "5b75a060109e27fd69370d7b704c5db142eb8ec17e5c8501f47f7a15cf495a04"
+        },
+        {
+          "path": "runtime.mjs",
+          "role": "runtime",
+          "bytes": 9388,
+          "sha256": "066a950c0df4efed88ad6a99376e5551a199f95b9496e7b5c77e526c23ef6b52"
+        },
+        {
+          "path": "contract.mjs",
+          "role": "runtime",
+          "bytes": 3950,
+          "sha256": "8b9ed5ab38d9c95f5f9264f5386604499afac9db1c96428aaa98a90a82dcd9cc"
+        },
+        {
+          "path": "source.wgsl",
+          "role": "runtime",
+          "bytes": 1617,
+          "sha256": "1712cc648f2f888e6e8926f9e192d365ead0e2c569edcafbe6e957c22ffe6943"
+        },
+        {
+          "path": "observer.wgsl",
+          "role": "runtime",
+          "bytes": 1794,
+          "sha256": "9d057673c971bf5db4c5f6a76445e65b957b5a6a746937c59a1641663f8b0537"
+        },
+        {
+          "path": "design.json",
+          "role": "provenance",
+          "bytes": 23882,
+          "sha256": "f1a71f31e7c6a8e5adcd78ff68f62d4cb8ef3c40709f0d3c5a8ec06f3d4acb8f"
+        },
+        {
+          "path": "design.py",
+          "role": "provenance",
+          "bytes": 19344,
+          "sha256": "ade71592b95631b211f9ed9d69a9c83896a617ee6485cd51ab21d483fee82553"
+        },
+        {
+          "path": "design-audit.json",
+          "role": "provenance",
+          "bytes": 4596,
+          "sha256": "0812613099535464dd3359f852ac6ef4e6422ae363d5d3091ae7907565c1ff19"
+        },
+        {
+          "path": "b-base.md",
+          "role": "provenance",
+          "bytes": 128151,
+          "sha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364"
+        },
+        {
+          "path": "b-extension.md",
+          "role": "provenance",
+          "bytes": 77706,
+          "sha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67"
+        },
+        {
+          "path": "README.md",
+          "role": "provenance",
+          "bytes": 4401,
+          "sha256": "3c98fd4f96ea7f315a82b166bb25750d6b48852fc45e9f068cebcb35a60d6bf4"
+        },
+        {
+          "path": "build-design.py",
+          "role": "provenance",
+          "bytes": 9405,
+          "sha256": "3b4900fb1f149d4b4a5b74a4d89c7e6a3889460a76003abc02ca3f0d17b3438e"
+        },
+        {
+          "path": "preflight.mjs",
+          "role": "provenance",
+          "bytes": 5581,
+          "sha256": "973825a25832bcb3345a7bee02f03ec04e4587deb248071cebfbd8e33e520fec"
+        },
+        {
+          "path": "cpu-preflight.json",
+          "role": "provenance",
+          "bytes": 25058,
+          "sha256": "03d8db0e56ee5243480f7af4a7d8817996a65aad2b58235eceb52a971fae9fb6"
+        },
+        {
+          "path": "cpu-observed-before-assert.json",
+          "role": "provenance",
+          "bytes": 60958,
+          "sha256": "0a598a97acb2d3db2de32ec09ac776ca41ab2e89495ec20d52a8d45080d070fd"
+        },
+        {
+          "path": "finalize.py",
+          "role": "provenance",
+          "bytes": 6029,
+          "sha256": "30b773c05cd3c457fc1c1fa6709018de27b713f078dbf5a390b3528545cee352"
+        },
+        {
+          "path": "b-validation.txt",
+          "role": "provenance",
+          "bytes": 69,
+          "sha256": "525e2879dd8e0fc85beb8e2cbed6936a6a8b11156af2c17d9b26faaf9e4a95a3"
+        }
+      ],
+      "edition": 1,
+      "creativeCap": {
+        "maximum": 5,
+        "consumed": 1,
+        "remaining": 4
+      },
+      "validation": {
+        "CPU": "pass",
+        "BStructural": "STRUCTURAL_PASS",
+        "native": "not_run",
+        "quality": "in-progress",
+        "mainGame": "not_run",
+        "publication": "pending"
+      },
+      "dependencies": {
+        "index.html": [
+          "runtime.mjs"
+        ],
+        "runtime.mjs": [
+          "contract.mjs",
+          "source.wgsl",
+          "observer.wgsl"
+        ],
+        "contract.mjs": []
+      },
+      "externalRuntimeDependencies": []
+    },
+    "ready": {
+      "status": "READY_FOR_ROOT_NATIVE",
+      "versionID": "gunner-aim-acquisition-sol61-r1",
+      "manifestSHA256": "fc7ba4ed855bfe0d273dfcc02d9b456448b3d79d6534f4877a3098ee0cb99c3f",
+      "entry": "index.html?verify=1&embed=1",
+      "API": "window.__DVA_GUNNER_AIM_R1__",
+      "CPU": "pass",
+      "native": "not_run",
+      "quality": "in-progress",
+      "sealedSource": true,
+      "edition": 1,
+      "creativeCap": {
+        "maximum": 5,
+        "consumed": 1,
+        "remaining": 4
+      }
+    },
+    "seal": {
+      "algorithm": "sha256",
+      "files": [
+        {
+          "path": "index.html",
+          "role": "runtime",
+          "bytes": 995,
+          "sha256": "5b75a060109e27fd69370d7b704c5db142eb8ec17e5c8501f47f7a15cf495a04"
+        },
+        {
+          "path": "runtime.mjs",
+          "role": "runtime",
+          "bytes": 9388,
+          "sha256": "066a950c0df4efed88ad6a99376e5551a199f95b9496e7b5c77e526c23ef6b52"
+        },
+        {
+          "path": "contract.mjs",
+          "role": "runtime",
+          "bytes": 3950,
+          "sha256": "8b9ed5ab38d9c95f5f9264f5386604499afac9db1c96428aaa98a90a82dcd9cc"
+        },
+        {
+          "path": "source.wgsl",
+          "role": "runtime",
+          "bytes": 1617,
+          "sha256": "1712cc648f2f888e6e8926f9e192d365ead0e2c569edcafbe6e957c22ffe6943"
+        },
+        {
+          "path": "observer.wgsl",
+          "role": "runtime",
+          "bytes": 1794,
+          "sha256": "9d057673c971bf5db4c5f6a76445e65b957b5a6a746937c59a1641663f8b0537"
+        },
+        {
+          "path": "design.json",
+          "role": "provenance",
+          "bytes": 23882,
+          "sha256": "f1a71f31e7c6a8e5adcd78ff68f62d4cb8ef3c40709f0d3c5a8ec06f3d4acb8f"
+        },
+        {
+          "path": "design.py",
+          "role": "provenance",
+          "bytes": 19344,
+          "sha256": "ade71592b95631b211f9ed9d69a9c83896a617ee6485cd51ab21d483fee82553"
+        },
+        {
+          "path": "design-audit.json",
+          "role": "provenance",
+          "bytes": 4596,
+          "sha256": "0812613099535464dd3359f852ac6ef4e6422ae363d5d3091ae7907565c1ff19"
+        },
+        {
+          "path": "b-base.md",
+          "role": "provenance",
+          "bytes": 128151,
+          "sha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364"
+        },
+        {
+          "path": "b-extension.md",
+          "role": "provenance",
+          "bytes": 77706,
+          "sha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67"
+        },
+        {
+          "path": "README.md",
+          "role": "provenance",
+          "bytes": 4401,
+          "sha256": "3c98fd4f96ea7f315a82b166bb25750d6b48852fc45e9f068cebcb35a60d6bf4"
+        },
+        {
+          "path": "build-design.py",
+          "role": "provenance",
+          "bytes": 9405,
+          "sha256": "3b4900fb1f149d4b4a5b74a4d89c7e6a3889460a76003abc02ca3f0d17b3438e"
+        },
+        {
+          "path": "preflight.mjs",
+          "role": "provenance",
+          "bytes": 5581,
+          "sha256": "973825a25832bcb3345a7bee02f03ec04e4587deb248071cebfbd8e33e520fec"
+        },
+        {
+          "path": "cpu-preflight.json",
+          "role": "provenance",
+          "bytes": 25058,
+          "sha256": "03d8db0e56ee5243480f7af4a7d8817996a65aad2b58235eceb52a971fae9fb6"
+        },
+        {
+          "path": "cpu-observed-before-assert.json",
+          "role": "provenance",
+          "bytes": 60958,
+          "sha256": "0a598a97acb2d3db2de32ec09ac776ca41ab2e89495ec20d52a8d45080d070fd"
+        },
+        {
+          "path": "finalize.py",
+          "role": "provenance",
+          "bytes": 6029,
+          "sha256": "30b773c05cd3c457fc1c1fa6709018de27b713f078dbf5a390b3528545cee352"
+        },
+        {
+          "path": "b-validation.txt",
+          "role": "provenance",
+          "bytes": 69,
+          "sha256": "525e2879dd8e0fc85beb8e2cbed6936a6a8b11156af2c17d9b26faaf9e4a95a3"
+        },
+        {
+          "path": "manifest.json",
+          "sha256": "fc7ba4ed855bfe0d273dfcc02d9b456448b3d79d6534f4877a3098ee0cb99c3f"
+        },
+        {
+          "path": "READY.json",
+          "sha256": "ef14783513ab0a295b831db29217467b52c7861e7e93705b703c88d6e3cce70f"
+        }
+      ],
+      "sealedAt": "2026-10-10T21:30:45.298641+00:00",
+      "immutable": true
+    }
+  },
+  "technicalDerivative": {
+    "version": "gunner-aim-acquisition-sol61-r1-device-loss-retirement-r597",
+    "author": "GPT-6-Luna",
+    "scope": "device-loss retirement classification only",
+    "manifestSha256": "411b887ef21686e8ca351d049018a6c7faf74c53a89f9475fc896876a600610c",
+    "sealSha256": "39465c7952683d6a308bf37b9ceb188fe9f5cf9863bf84d9085f9e0ef2e16e58",
+    "manifest": {
+      "versionID": "gunner-aim-acquisition-sol61-r1",
+      "groupID": "gunner-aim-acquisition-sol61",
+      "entry": "index.html",
+      "runtimeClosure": [
+        "index.html",
+        "runtime.mjs",
+        "contract.mjs",
+        "source.wgsl",
+        "observer.wgsl"
+      ],
+      "files": [
+        {
+          "path": "index.html",
+          "role": "runtime",
+          "bytes": 995,
+          "sha256": "5b75a060109e27fd69370d7b704c5db142eb8ec17e5c8501f47f7a15cf495a04"
+        },
+        {
+          "path": "runtime.mjs",
+          "role": "runtime",
+          "bytes": 10272,
+          "sha256": "7fe2b7e9fd467aa5ede25157a7025e36b984f4a8125c752efa43ca3d06ed5312"
+        },
+        {
+          "path": "contract.mjs",
+          "role": "runtime",
+          "bytes": 3950,
+          "sha256": "8b9ed5ab38d9c95f5f9264f5386604499afac9db1c96428aaa98a90a82dcd9cc"
+        },
+        {
+          "path": "source.wgsl",
+          "role": "runtime",
+          "bytes": 1617,
+          "sha256": "1712cc648f2f888e6e8926f9e192d365ead0e2c569edcafbe6e957c22ffe6943"
+        },
+        {
+          "path": "observer.wgsl",
+          "role": "runtime",
+          "bytes": 1794,
+          "sha256": "9d057673c971bf5db4c5f6a76445e65b957b5a6a746937c59a1641663f8b0537"
+        }
+      ],
+      "edition": 1,
+      "creativeCap": {
+        "maximum": 5,
+        "consumed": 1,
+        "remaining": 4
+      },
+      "validation": {
+        "CPU": "pass",
+        "native": "not_run",
+        "quality": "in-progress",
+        "mainGame": "not_run",
+        "publication": "pending"
+      },
+      "dependencies": {
+        "index.html": [
+          "runtime.mjs"
+        ],
+        "runtime.mjs": [
+          "contract.mjs",
+          "source.wgsl",
+          "observer.wgsl"
+        ],
+        "contract.mjs": []
+      },
+      "externalRuntimeDependencies": [],
+      "authorship": {
+        "originalCreativeAndRuntime": "GPT-6.1-Sol",
+        "technicalRepair": "GPT-6-Luna (medium)"
+      },
+      "sourceEvidence": {
+        "originalManifestSha256": "fc7ba4ed855bfe0d273dfcc02d9b456448b3d79d6534f4877a3098ee0cb99c3f",
+        "originalSealSha256": "da9d6b401b615f5ae96c1080de3e51546c42c07f4c61f99d25b6bb0ad1be46a1",
+        "originalRuntimeSha256": "066a950c0df4efed88ad6a99376e5551a199f95b9496e7b5c77e526c23ef6b52"
+      },
+      "scope": "device-loss retirement classification only"
+    },
+    "ready": {
+      "status": "READY_FOR_ROOT_REVIEW",
+      "versionID": "gunner-aim-acquisition-sol61-r1",
+      "sourceVersion": "sealed R585 preserved byte-exact under original-r585/",
+      "originalSealRecordsVerified": 19,
+      "originalManifestSha256": "fc7ba4ed855bfe0d273dfcc02d9b456448b3d79d6534f4877a3098ee0cb99c3f",
+      "originalSealSha256": "da9d6b401b615f5ae96c1080de3e51546c42c07f4c61f99d25b6bb0ad1be46a1",
+      "originalRuntimeSha256": "066a950c0df4efed88ad6a99376e5551a199f95b9496e7b5c77e526c23ef6b52",
+      "candidateManifestSha256": "411b887ef21686e8ca351d049018a6c7faf74c53a89f9475fc896876a600610c",
+      "candidateSealSha256": "39465c7952683d6a308bf37b9ceb188fe9f5cf9863bf84d9085f9e0ef2e16e58",
+      "runtimeClosure": [
+        "index.html",
+        "runtime.mjs",
+        "contract.mjs",
+        "source.wgsl",
+        "observer.wgsl"
+      ],
+      "cpu": {
+        "deviceLossConsumer": "pass, 4 fixture cases",
+        "actualRuntimeMock": "pass, original 5 cases plus retirement assertions",
+        "native": "not_run",
+        "gpu": "not_launched"
+      },
+      "creativeSource": "GPT-6.1-Sol, unchanged",
+      "technicalMaintenance": "GPT-6-Luna (medium)",
+      "publication": false
+    },
+    "seal": {
+      "schema": "gunner-aim-retirement-r597-seal/v1",
+      "files": [
+        {
+          "path": "contract.mjs",
+          "bytes": 3950,
+          "sha256": "8b9ed5ab38d9c95f5f9264f5386604499afac9db1c96428aaa98a90a82dcd9cc"
+        },
+        {
+          "path": "cpu-observed-before-assert.json",
+          "bytes": 60958,
+          "sha256": "0a598a97acb2d3db2de32ec09ac776ca41ab2e89495ec20d52a8d45080d070fd"
+        },
+        {
+          "path": "cpu-preflight.json",
+          "bytes": 25058,
+          "sha256": "03d8db0e56ee5243480f7af4a7d8817996a65aad2b58235eceb52a971fae9fb6"
+        },
+        {
+          "path": "device-loss-preflight.json",
+          "bytes": 103,
+          "sha256": "afa379c084a6a55974b5c1ec43c2b9178a973b0b7182edb7b4d6e4ff71e7b247"
+        },
+        {
+          "path": "device-loss.test.mjs",
+          "bytes": 2139,
+          "sha256": "0ab6ac7462c9d321ac64b1ee290951a557f39d259fae14b9756f2aa658c5013c"
+        },
+        {
+          "path": "index.html",
+          "bytes": 995,
+          "sha256": "5b75a060109e27fd69370d7b704c5db142eb8ec17e5c8501f47f7a15cf495a04"
+        },
+        {
+          "path": "manifest.json",
+          "bytes": 2083,
+          "sha256": "411b887ef21686e8ca351d049018a6c7faf74c53a89f9475fc896876a600610c"
+        },
+        {
+          "path": "observer.wgsl",
+          "bytes": 1794,
+          "sha256": "9d057673c971bf5db4c5f6a76445e65b957b5a6a746937c59a1641663f8b0537"
+        },
+        {
+          "path": "original-r585/b-base.md",
+          "bytes": 128151,
+          "sha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364"
+        },
+        {
+          "path": "original-r585/b-extension.md",
+          "bytes": 77706,
+          "sha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67"
+        },
+        {
+          "path": "original-r585/b-validation.txt",
+          "bytes": 69,
+          "sha256": "525e2879dd8e0fc85beb8e2cbed6936a6a8b11156af2c17d9b26faaf9e4a95a3"
+        },
+        {
+          "path": "original-r585/build-design.py",
+          "bytes": 9405,
+          "sha256": "3b4900fb1f149d4b4a5b74a4d89c7e6a3889460a76003abc02ca3f0d17b3438e"
+        },
+        {
+          "path": "original-r585/contract.mjs",
+          "bytes": 3950,
+          "sha256": "8b9ed5ab38d9c95f5f9264f5386604499afac9db1c96428aaa98a90a82dcd9cc"
+        },
+        {
+          "path": "original-r585/cpu-observed-before-assert.json",
+          "bytes": 60958,
+          "sha256": "0a598a97acb2d3db2de32ec09ac776ca41ab2e89495ec20d52a8d45080d070fd"
+        },
+        {
+          "path": "original-r585/cpu-preflight.json",
+          "bytes": 25058,
+          "sha256": "03d8db0e56ee5243480f7af4a7d8817996a65aad2b58235eceb52a971fae9fb6"
+        },
+        {
+          "path": "original-r585/design-audit.json",
+          "bytes": 4596,
+          "sha256": "0812613099535464dd3359f852ac6ef4e6422ae363d5d3091ae7907565c1ff19"
+        },
+        {
+          "path": "original-r585/design.json",
+          "bytes": 23882,
+          "sha256": "f1a71f31e7c6a8e5adcd78ff68f62d4cb8ef3c40709f0d3c5a8ec06f3d4acb8f"
+        },
+        {
+          "path": "original-r585/design.py",
+          "bytes": 19344,
+          "sha256": "ade71592b95631b211f9ed9d69a9c83896a617ee6485cd51ab21d483fee82553"
+        },
+        {
+          "path": "original-r585/finalize.py",
+          "bytes": 6029,
+          "sha256": "30b773c05cd3c457fc1c1fa6709018de27b713f078dbf5a390b3528545cee352"
+        },
+        {
+          "path": "original-r585/index.html",
+          "bytes": 995,
+          "sha256": "5b75a060109e27fd69370d7b704c5db142eb8ec17e5c8501f47f7a15cf495a04"
+        },
+        {
+          "path": "original-r585/manifest.json",
+          "bytes": 3905,
+          "sha256": "fc7ba4ed855bfe0d273dfcc02d9b456448b3d79d6534f4877a3098ee0cb99c3f"
+        },
+        {
+          "path": "original-r585/observer.wgsl",
+          "bytes": 1794,
+          "sha256": "9d057673c971bf5db4c5f6a76445e65b957b5a6a746937c59a1641663f8b0537"
+        },
+        {
+          "path": "original-r585/preflight.mjs",
+          "bytes": 5581,
+          "sha256": "973825a25832bcb3345a7bee02f03ec04e4587deb248071cebfbd8e33e520fec"
+        },
+        {
+          "path": "original-r585/README.md",
+          "bytes": 4401,
+          "sha256": "3c98fd4f96ea7f315a82b166bb25750d6b48852fc45e9f068cebcb35a60d6bf4"
+        },
+        {
+          "path": "original-r585/READY.json",
+          "bytes": 464,
+          "sha256": "ef14783513ab0a295b831db29217467b52c7861e7e93705b703c88d6e3cce70f"
+        },
+        {
+          "path": "original-r585/runtime.mjs",
+          "bytes": 9388,
+          "sha256": "066a950c0df4efed88ad6a99376e5551a199f95b9496e7b5c77e526c23ef6b52"
+        },
+        {
+          "path": "original-r585/seal.json",
+          "bytes": 3472,
+          "sha256": "da9d6b401b615f5ae96c1080de3e51546c42c07f4c61f99d25b6bb0ad1be46a1"
+        },
+        {
+          "path": "original-r585/source.wgsl",
+          "bytes": 1617,
+          "sha256": "1712cc648f2f888e6e8926f9e192d365ead0e2c569edcafbe6e957c22ffe6943"
+        },
+        {
+          "path": "preflight.mjs",
+          "bytes": 6435,
+          "sha256": "d92b55e8a6f2226f9c8846203409b8b083b0f95bf10baecbab0abd0f924e1d73"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2035,
+          "sha256": "c9fb0d673d8a677cf44e274a30491a3c639f9e67ebc01392a9bb9242f87c6cdf"
+        },
+        {
+          "path": "runtime.mjs",
+          "bytes": 10272,
+          "sha256": "7fe2b7e9fd467aa5ede25157a7025e36b984f4a8125c752efa43ca3d06ed5312"
+        },
+        {
+          "path": "source.wgsl",
+          "bytes": 1617,
+          "sha256": "1712cc648f2f888e6e8926f9e192d365ead0e2c569edcafbe6e957c22ffe6943"
+        }
+      ],
+      "sourceR585SealSha256": "da9d6b401b615f5ae96c1080de3e51546c42c07f4c61f99d25b6bb0ad1be46a1",
+      "originalSealRecordsVerified": 19,
+      "immutable": true
+    }
+  },
+  "verification": {
+    "nativeTechnical": {
+      "round": "R601",
+      "status": "PASS_R601_GUNNER_AIM_NATIVE_TECHNICAL",
+      "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/RESULT.json",
+      "sha256": "722df2a3f0902edc02260ee0891348445fda16e4eefcdf33de4c5ec1126f338b",
+      "fullAcceptance": true,
+      "runtimeDerivative": "R597"
+    },
+    "parentGalleryTechnical": {
+      "round": "R609",
+      "status": "PASS_R602_NATIVE_PARENT_CAPTURE_TECHNICAL",
+      "path": "outputs/request-20261011/gunner-aim-parent-r609/native-attempts/2026-10-10T21-48-32.684Z-ed996456-56b6-4721-86e8-cc8698c4dbca/RESULT.json",
+      "sha256": "5af6f33814725142aa9041d3cc8a100036d99f999f4a11eb756b411c24930e5b",
+      "sourceSchema": "dva-gunner-aim-parent-r602/v1",
+      "selectedGroup": "gunner-aim-acquisition-sol61",
+      "selectedVersion": "gunner-aim-acquisition-sol61-r1",
+      "verifyHardMute": true,
+      "resourceCleanup": "closed"
+    },
+    "qualityReview": {
+      "round": "R605",
+      "status": "not-accepted",
+      "outcome": "fail",
+      "reviewer": "GPT-6.1-Sol",
+      "path": "outputs/request-20261011/gunner-aim-quality-review-r605/review.json",
+      "sha256": "88df74efc3fdcb90e21443aa91493fbf165658593f7a8074985bac5b8fe78de4",
+      "evidenceCount": 14,
+      "evidence": [
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H64-age-40.png",
+          "sha256": "d067675731c3594b402aec6dc81bf035779d95ee682331aa2f2b0e8254ba9cad"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H64-age-315.png",
+          "sha256": "7570c5d3d16612492e1392d3ea0e49342c4e7a1a2b42054fc03cd20cfefc3d63"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H64-age-600.png",
+          "sha256": "14f89c400faedd71013a1d3cda84642debc6eddf8fc0656e9b992ff0ca6156d0"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H64-age-880.png",
+          "sha256": "7bc3bf4c00ff3ec355e1ceac82ca73e1d66e31e33a753fc8841a1c14e379b337"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H64-age-900.png",
+          "sha256": "1d8442cba76506188caa8f2582694471e65f00d090538369bfa1ff583a87c764"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H128-age-40.png",
+          "sha256": "2d02529d90e38a1530ba1b1471f62520ce9044948d268a87d67168887ed61a3d"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H128-age-315.png",
+          "sha256": "a1c3df95d58ca8e0a741bf1a2e38b6289c273cbe2e262806ec8a2eaf71dfaa37"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H128-age-600.png",
+          "sha256": "f171099ddc918b64b5b582bea8e7df7ea338a5fffad499f4e2d25b3f4167e168"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H128-age-880.png",
+          "sha256": "a5c75bed3828ce786b3b320ea235540f8df7b81ac7614e39d11aca527b7d8d78"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H128-age-900.png",
+          "sha256": "ddc522ade97f9622eeb3652d2411841caf209b47da70c9467722488cb0605236"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H64-source-off-age-315.png",
+          "sha256": "696c3de40f8d8b9bc5c7e5a50f303c1e26a0aec61a0ffeb6374689964cb1c9b4"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H64-observer-off-age-315.png",
+          "sha256": "3c2c83b97bb9b60ca8c640ab4b12b7fee527c8031b307eb4f65d44f98e42b478"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H128-source-off-age-315.png",
+          "sha256": "495504cabe898057b79e7440056580f8e4ce3bfbad3af6862ab82ff98b5cc5e0"
+        },
+        {
+          "path": "outputs/request-20261011/gunner-aim-native-r601/native/2026-10-10T21-43-49.520Z-36b8010d-f84a-43b5-ab33-fa4759bb6278/H128-observer-off-age-315.png",
+          "sha256": "022de35c3c1461daf1296fdcd4e66cd97766b1aa3fb4d25f9c5a3c7e6ef87798"
+        }
+      ],
+      "decision": "完成基準未達。照準用途と有限終端・発光因果は成立するが、主形が汎用の四分割光輪と同心細線に留まり、依頼の安直な線だけを避ける条件を満たしたとは判断しない。技術的再生可能候補として掲載可否はrootが現行掲載規則で扱う。品質完成/全力/ユーザー審査待ち完成とは表示しない。"
+    }
+  }
+}
