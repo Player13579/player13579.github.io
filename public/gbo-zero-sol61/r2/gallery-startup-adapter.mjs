@@ -138,6 +138,15 @@ async function retire() {
 window.__dvaGboGalleryStartupR1000 = Object.freeze({ snapshot: () => Object.freeze({ schema: 'dva-gallery-startup/v1',
   token: context.token, versionId: VERSION, attemptEpoch: context.attemptEpoch, ready: state.ready,
   retired: state.retired, firstFrame: state.firstFrame, sourcePins: state.sourcePins, retirement: state.retirement }), retire });
+function handleParentRetireMessage(event) {
+  const data = event?.data;
+  if (event?.source !== window.parent || event?.origin !== location.origin ||
+      data?.schema !== 'dva-gallery-startup/v1' || data.action !== 'retire' ||
+      data.token !== context.token || data.versionId !== VERSION || data.versionId !== context.versionId ||
+      data.attemptEpoch !== context.attemptEpoch) return;
+  void retire();
+}
+window.addEventListener('message', handleParentRetireMessage);
 window.addEventListener('dva-gallery-retire', () => void retire());
 window.addEventListener('pagehide', () => void retire(), { once: true });
 void poll();
