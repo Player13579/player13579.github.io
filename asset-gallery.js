@@ -1187,6 +1187,10 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
       if ((state === 'not-adopted' || state === 'unknown') && !closedReview) return 'ユーザー審査待ち（Codex品質基準達成）';
       return 'Codex品質基準達成';
     }
+    if (item.qualityReviewStatus === 'limited-pass-only' &&
+        item.qualityReviewOutcome === 'PASS_LIMITED_SAMPLED_PHYSICAL_PHASES_AND_OBSERVER') {
+      return 'Codex品質確認中（限定サンプル合格・全体判定未完了）';
+    }
     if (item.qualityReviewStatus === 'not-reviewed') return '品質未確認';
     if (item.qualityReviewStatus === 'pending' || item.qualityReviewStatus === 'root-review' || item.qualityReviewStatus === 'quality-pending' || item.qualityReviewStatus === 'pending-review' || item.qualityReviewStatus === 'in-progress' || item.qualityReviewStatus === 'not-accepted' || item.qualityReviewStatus === 'limited-pass-full-quality-pending' || item.qualityReviewOutcome === 'fail') {
       return 'Codex品質確認中';
