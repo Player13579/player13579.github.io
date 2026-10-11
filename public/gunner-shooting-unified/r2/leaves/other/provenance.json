@@ -1,0 +1,59 @@
+{
+  "schema": "dva-creative-technical-provenance/v1",
+  "groupId": "gunner-shooting-nonhandgun-sol61",
+  "versionId": "gunner-shooting-nonhandgun-sol61-r2",
+  "creative": {
+    "authorDisplayName": "GPT-6.1-Sol",
+    "modelId": "gpt-6.1-sol",
+    "sourcePath": "actual two creative WGSL shaders, not contract-only",
+    "readySha256": "ad62d1fa09df6d23c3af208c2cf5f513de721a555f7aa270796d77955d4ede80",
+    "designUnchanged": true
+  },
+  "technical": {
+    "authorDisplayName": "unresolved-current-agent-execution-identity",
+    "modelId": null,
+    "revisionId": "gunner-shooting-nonhandgun-sol61-r2-gallery-startup-r737",
+    "scope": "R723 startup handshake and SFX-routing pattern bound to R2 version and runtime pins; technical adapter only"
+  },
+  "source": {
+    "path": "outputs/request-20261011/gunner-shooting-nonhandgun-r2-r730",
+    "manifestSha256": "700f5dde2006411908d3b92789272a5bbfb0c6743e68cd446dd88e077e938b71",
+    "sealSha256": "fb7d1cdbca2413259e81ea74909064dafac489794b35d9aebc84cb64f07c5039",
+    "nativeEvidencePath": "outputs/request-20261011/shooting-source-native-r732/native-attempts/2026-10-11T00-26-31-488Z-48725636-b4f0-4ac8-a910-3bfbf5e48ae5/RESULT.json",
+    "nativeEvidenceSha256": "7da8212a710dfa6b4edfaa9e5363b5ffb12b1092698940e22a30f1165aa2ff7b",
+    "nativeEvidenceStatus": "PASS_R732_SOURCE_NATIVE_LIMITED"
+  },
+  "qualityEvidence": {
+    "path": "outputs/request-20261011/shooting-r2-lifetime-quality-r740/REVIEW.json",
+    "sha256": "e9df10f9d6a3e98eb49946919a74d8a53908d484e89e89f27987f3c31e5577b4",
+    "sealPath": "outputs/request-20261011/shooting-r2-lifetime-quality-r740/SEAL.json",
+    "sealSha256": "cb6d93a030e2b730d9410f96a6ce216f258ed233a35976089264f8aba1c67778",
+    "outcome": "PASS_LIMITED_SAMPLED_PHYSICAL_PHASES_AND_OBSERVER",
+    "fullQualityAcceptance": false,
+    "verifiedEvidencePins": 28
+  },
+  "history": {
+    "R1": {
+      "quality": "FAIL_NOT_ACCEPTED",
+      "evidencePath": "outputs/request-20261011/shooting-r1-quality-r728/REVIEW.json",
+      "preserveAsPriorVersion": true
+    }
+  },
+  "status": {
+    "r2SourceCpu": "pass",
+    "r2SourceNative": "PASS_R732_SOURCE_NATIVE_LIMITED",
+    "r2Visual": "limited-pass-only",
+    "r2ParentNative": "PASS_R746_PARENT_NATIVE_LIMITED",
+    "publication": "pending-root-R747",
+    "adoption": "unknown",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not_connected",
+    "R1PublishedBaseCommit": "d8be7db934bda01855fae50ee38abb451860c998",
+    "currentPublicParentReplay": "pending-publication-readback"
+  },
+  "parentNativeEvidence": {
+    "path": "outputs/request-20261011/shooting-nonhandgun-r2-parent-r746/native-attempts/2026-10-11T00-45-28.344Z-502bb346-3605-4e96-a253-869eef7f32a6/RESULT.json",
+    "sha256": "0d78a4171ddbfe0a4e43485e8a57daaa154373055a4dbb0218610703e1d0856f",
+    "status": "PASS_R746_PARENT_NATIVE_LIMITED"
+  }
+}

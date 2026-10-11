@@ -1,0 +1,87 @@
+{
+  "schema": "dva-shooting-gallery-package/v1",
+  "versionID": "gunner-shooting-sol61-r1",
+  "groupID": "gunner-shooting-sol61",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "technicalAuthor": "GPT-6-Luna",
+  "creativeSourceManifestSha256": "1caff9f7dde87846a2216ed08fa0e3166a76293372d4d85802f5217b9b0d21c2",
+  "creativeSourceSealSha256": "0e7f3aca910f73a71ff5561b01cbe3d0fecefcfdf212bfebedb091bea29456d4",
+  "sourceRuntimePins": [
+    {
+      "path": "contract.mjs",
+      "sha256": "70b603e97e6a5f2b85ad25014d4a3991cc8565fbf8c70fc53c5372e8dd0c21c0"
+    },
+    {
+      "path": "source.wgsl",
+      "sha256": "8a293dc87fd2bcc1b0cd60f94561a438799a3b7f6b8ebc09f43a35486820a39c"
+    },
+    {
+      "path": "observer.wgsl",
+      "sha256": "34832a3daa9baab472d8a0d971dbc5ecd35082873d5ba0ba7a545fa907c669b5"
+    }
+  ],
+  "runtimeClosure": [
+    {
+      "path": "index.html",
+      "bytes": 3073,
+      "sha256": "8f14d2a97f30c1479f168b7b8a59c737ba66c957e472ce7031e925c4305e881a",
+      "role": "runtime"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 14890,
+      "sha256": "83278bca10df45a7c6b741cd7765f8c0f3bc85989413485566dbd3d565d2126e",
+      "role": "runtime"
+    },
+    {
+      "path": "contract.mjs",
+      "bytes": 3617,
+      "sha256": "70b603e97e6a5f2b85ad25014d4a3991cc8565fbf8c70fc53c5372e8dd0c21c0",
+      "role": "runtime"
+    },
+    {
+      "path": "source.wgsl",
+      "bytes": 4159,
+      "sha256": "3a28d17cfa1a9b8e8d31e98d88e17698efd048e7dc7af773dd3ff75ba2e1f615",
+      "role": "runtime"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1540,
+      "sha256": "34832a3daa9baab472d8a0d971dbc5ecd35082873d5ba0ba7a545fa907c669b5",
+      "role": "runtime"
+    }
+  ],
+  "dependencies": {
+    "index.html": [
+      "runtime.mjs"
+    ],
+    "runtime.mjs": [
+      "contract.mjs",
+      "source.wgsl",
+      "observer.wgsl"
+    ]
+  },
+  "technicalChanges": [
+    "startup reporter schema and early snapshot",
+    "receipt-bound first frame with two actual render passes",
+    "retirement handling and init-flight cleanup",
+    "AudioContext.resume rejection returns resume-failed",
+    "WGSL reserved identifier alpha-renamed with exact inverse proof"
+  ],
+  "validation": {
+    "cpu": "pass: 8 R671 CPU tests; R668 source runtime regression test passed 3/3; fakeGPU only",
+    "rootNative": "pending-root-native",
+    "quality": "pending",
+    "adoption": "unknown",
+    "normalSFXListening": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "technicalSourceTransform": {
+    "path": "source.wgsl",
+    "operation": "WGSL reserved identifier alpha-rename active → sourceAlive only",
+    "originalSha256": "8a293dc87fd2bcc1b0cd60f94561a438799a3b7f6b8ebc09f43a35486820a39c",
+    "derivativeSha256": "3a28d17cfa1a9b8e8d31e98d88e17698efd048e7dc7af773dd3ff75ba2e1f615",
+    "inverse": "replace whole-word sourceAlive → active; verified byte-identical to sealed R668 source.wgsl"
+  }
+}

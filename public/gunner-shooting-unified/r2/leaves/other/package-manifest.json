@@ -1,0 +1,103 @@
+{
+  "schema": "dva-shooting-gallery-route-package/v1",
+  "stage": "FINAL_READY_FOR_ROOT_PUBLICATION",
+  "groupId": "gunner-shooting-nonhandgun-sol61",
+  "versionId": "gunner-shooting-nonhandgun-sol61-r2",
+  "route": "public/gunner-shooting-nonhandgun-sol61/r2-gallery-startup-r1",
+  "entry": "public/gunner-shooting-nonhandgun-sol61/r2-gallery-startup-r1/index.html",
+  "source": {
+    "path": "outputs/request-20261011/gunner-shooting-nonhandgun-r2-r730",
+    "manifestSha256": "700f5dde2006411908d3b92789272a5bbfb0c6743e68cd446dd88e077e938b71",
+    "sealSha256": "fb7d1cdbca2413259e81ea74909064dafac489794b35d9aebc84cb64f07c5039",
+    "nativeEvidencePath": "outputs/request-20261011/shooting-source-native-r732/native-attempts/2026-10-11T00-26-31-488Z-48725636-b4f0-4ac8-a910-3bfbf5e48ae5/RESULT.json",
+    "nativeEvidenceSha256": "7da8212a710dfa6b4edfaa9e5363b5ffb12b1092698940e22a30f1165aa2ff7b",
+    "nativeEvidenceStatus": "PASS_R732_SOURCE_NATIVE_LIMITED",
+    "creativeAuthor": "GPT-6.1-Sol",
+    "implementationAuthor": "GPT-6-Luna"
+  },
+  "technical": {
+    "author": "unresolved-current-agent-execution-identity",
+    "revision": "R2-bound copy of R723 startup/bootstrap/parent-proof/SFX-route mechanics; startup adapter version gate changed from R1 to R2; no source SFX changes",
+    "r723FrozenManifestSha256": "3e88af7aa77950702899bae45d81be5a3528865b9f94d621d1c91b4e2494e274",
+    "r723FrozenSealSha256": "a5b8e1b60d83e7ff4c82c53d10e1d2d7320b05e7c54a83bf87a9f2e52bedc592",
+    "modelId": null,
+    "parentNativeStatus": "PASS_R746_PARENT_NATIVE_LIMITED",
+    "parentNativeEvidencePath": "outputs/request-20261011/shooting-nonhandgun-r2-parent-r746/native-attempts/2026-10-11T00-45-28.344Z-502bb346-3605-4e96-a253-869eef7f32a6/RESULT.json",
+    "parentNativeEvidenceSha256": "0d78a4171ddbfe0a4e43485e8a57daaa154373055a4dbb0218610703e1d0856f",
+    "parentNativeScope": "Actual root-owned R746 parent WebGPU startup handshake, natural distinct-cause replay, held source capture, explicit retirement and all-resource cleanup; limited technical scope only."
+  },
+  "runtimeClosureCount": 9,
+  "runtimeClosure": [
+    {
+      "path": "index.html",
+      "bytes": 1142,
+      "sha256": "7cc23b5784af33558181544adb838517d432b6312e9a08bfb24a26f29b841361",
+      "sourcePath": "R723 technical wrapper; title only is R2"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 10657,
+      "sha256": "632df481c06f33527c166f6eae9b52d0477ce033ee9878bf1f708197beddaaaf"
+    },
+    {
+      "path": "contract.mjs",
+      "bytes": 2275,
+      "sha256": "d70c3c1b899a12cb5003e4021d64c188a29ab9b86c36803e72e50f5f9e5ef18e"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 2968,
+      "sha256": "c1f6f807162c7423f75c5115ac787b30cd6f9ff41bf24125c7659242a9fa4cea"
+    },
+    {
+      "path": "source.wgsl",
+      "bytes": 6092,
+      "sha256": "9fcfee67c2cee4928a19a620effa710f094e047119fff0ad41e4d71d24058a22"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1439,
+      "sha256": "3efb508f364379ea9a5411dda2583d4c314725d20307d3fc55c22dfef6e550ef"
+    },
+    {
+      "path": "gallery-startup-bootstrap.js",
+      "bytes": 1562,
+      "sha256": "75904263fcb411a45ba6acbec6efd89758300d5eacf4a9847ce8eec21abe2594"
+    },
+    {
+      "path": "gallery-parent-contract.mjs",
+      "bytes": 2280,
+      "sha256": "eb7d089a43cffc4b29369c1c637b1aaadc78088794fcaf8d51d7d93d12530dad"
+    },
+    {
+      "path": "gallery-startup-adapter.mjs",
+      "bytes": 5037,
+      "sha256": "3f3cb1748d55d181a27536bd2208c73743778dc7a7e79546fd0bdda2bddcb870"
+    }
+  ],
+  "quality": {
+    "evidencePath": "outputs/request-20261011/shooting-r2-lifetime-quality-r740/REVIEW.json",
+    "evidenceSha256": "e9df10f9d6a3e98eb49946919a74d8a53908d484e89e89f27987f3c31e5577b4",
+    "outcome": "PASS_LIMITED_SAMPLED_PHYSICAL_PHASES_AND_OBSERVER",
+    "fullQualityAcceptance": false,
+    "scope": "9 actual pixels, three variants, 25ms, 960x420 DPR1; limited pressure-flash only",
+    "sealPath": "outputs/request-20261011/shooting-r2-lifetime-quality-r740/SEAL.json",
+    "sealSha256": "cb6d93a030e2b730d9410f96a6ce216f258ed233a35976089264f8aba1c67778",
+    "verifiedEvidencePins": 28,
+    "evidenceSealPath": "outputs/request-20261011/shooting-r2-lifetime-quality-r740/SEAL.json",
+    "evidenceSealSha256": "cb6d93a030e2b730d9410f96a6ce216f258ed233a35976089264f8aba1c67778"
+  },
+  "parent": {
+    "R1Publication": "PASS_R735_PUBLICATION",
+    "R1ParentNative": "evidence-bound-in-published-base",
+    "R2ParentNative": "PASS_R746_PARENT_NATIVE_LIMITED"
+  },
+  "adoption": "unknown",
+  "normalAudioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "safari": "unverified",
+  "parentNative": "PASS_R746_PARENT_NATIVE_LIMITED",
+  "parentNativeStatus": "PASS_R746_PARENT_NATIVE_LIMITED",
+  "parentNativeEvidencePath": "outputs/request-20261011/shooting-nonhandgun-r2-parent-r746/native-attempts/2026-10-11T00-45-28.344Z-502bb346-3605-4e96-a253-869eef7f32a6/RESULT.json",
+  "parentNativeEvidenceSha256": "0d78a4171ddbfe0a4e43485e8a57daaa154373055a4dbb0218610703e1d0856f"
+}
