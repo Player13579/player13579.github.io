@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GBO 過駆動 E — GPT-6.1-Sol R1</title>
+  <style>
+    :root{color-scheme:dark;font:15px/1.5 system-ui,sans-serif;background:#101720;color:#d0e4ed}
+    *{box-sizing:border-box}body{margin:0;max-width:1120px;padding:18px;margin-inline:auto}
+    h1{font-size:1.3rem;margin:0 0 8px}p{margin:6px 0 12px}.meta{color:#a9c2cf;font-size:.92rem}
+    .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}
+    button,select{font:inherit;color:inherit;background:#1d2b36;border:1px solid #527080;border-radius:5px;padding:7px 10px}
+    button:disabled,select:disabled{opacity:.5}.switch{display:inline-flex;gap:6px;align-items:center}
+    iframe{display:block;width:100%;height:min(64vh,620px);min-height:360px;border:1px solid #405764;background:#101720}
+    #status{min-height:1.5em;color:#a9c2cf;white-space:pre-wrap}.warning{border-left:3px solid #d8a75e;padding:7px 10px;background:#222a30}
+    #evidence{max-height:14em;overflow:auto;background:#0b1117;padding:8px;white-space:pre-wrap;word-break:break-word}
+    html.verify #audio{display:none}
+    html[data-embedded="true"],html[data-embedded="true"] body{width:100%;height:100%;min-height:100%;max-width:none;margin:0;padding:0;overflow:hidden}
+    html[data-embedded="true"] h1,html[data-embedded="true"] .meta,html[data-embedded="true"] .warning,html[data-embedded="true"] .controls,html[data-embedded="true"] details{display:none!important}
+    html[data-embedded="true"] #status{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    html[data-embedded="true"] #preview{display:block;width:100%;height:100vh;height:100dvh;min-height:0;margin:0;border:0}
+  </style>
+</head>
+<body>
+  <h1>GBO 過駆動 E — GPT-6.1-Sol R1</h1>
+  <p class="meta">作者: GPT-6.1-Sol · 新規zero-design系列 R1/5（root明示決定） · 採用: unknown / review pending · 技術: CPU host checks only; native/WebGPU quality and normal SFX listening pending</p>
+  <p class="warning">下の操作は公開Gunner payloadを形に合わせたギャラリー用fixtureです。実ゲームイベントの配信・受理、main rendererへの接続、ゲーム採用を示しません。commitでは武器retirementを自動発火せず、明示したretirement fixtureだけで後段を表示します。過去の未登録GBO WebGPU sourceは別の履歴として保持され、作者・採否・総制作枠は未確認です。</p>
+  <div class="controls">
+    <select id="weapon" aria-label="武器"><option value="handgun">handgun</option><option value="smg">SMG</option><option value="assault">assault rifle</option><option value="sniper">sniper rifle</option><option value="taser">taser</option></select>
+    <button id="commit" disabled>成功commit fixture</button>
+    <button id="retire" disabled>明示retirement fixture</button>
+    <button id="audio" disabled>通常音声を有効化</button>
+    <label class="switch"><input id="source" type="checkbox" checked disabled> source</label>
+    <label class="switch"><input id="observer" type="checkbox" checked disabled> observer</label>
+    <button id="dispose" disabled>終了・所有資源を解放</button>
+  </div>
+  <div id="status" role="status">WebGPU rendererの初回完了receiptを待機中…</div>
+  <iframe id="preview" title="GBO WebGPU fixture preview"></iframe>
+  <details><summary>受理・描画・終了の確認レコード</summary><pre id="evidence">未実行</pre></details>
+  <script src="./gallery-startup-bootstrap.js"></script>
+  <script type="module" src="./host.mjs"></script>
+  <script type="module" src="./gallery-startup-adapter.mjs"></script>
+</body>
+</html>

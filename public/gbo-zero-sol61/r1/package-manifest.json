@@ -1,0 +1,111 @@
+{
+  "schema": "dva-gbo-zero-sol61-r1/package-v1",
+  "versionId": "gbo-zero-sol61-r1",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "creativeEdition": 1,
+  "creativeCap": 5,
+  "capAuthority": "explicit root instruction20261011 new zero-series; historical lifetime cap/count unknown",
+  "historicalSource": {
+    "status": "current public root shipped but unregistered/dead E; deployed app usesraster",
+    "sha256": "e332bb3c13eedaad82f153c183eae889240b1a615c7fc543a73ba5bc58ab82be",
+    "creativeAuthor": "unknown",
+    "adoption": "unknown",
+    "historicalCreativeCapCount": "unknown",
+    "creativeReuse": false
+  },
+  "sourceHistoryEvidence": {
+    "path": "outputs/request-20261011/gbo-history-r850/RESULT.md",
+    "bytes": 9490,
+    "sha256": "bdb52c0016bbb49a927255cf38f9f80c35fb92670e7d63d79bd079fe7a2c2ee2"
+  },
+  "status": "SEALED_SOURCE_CPU_READY_NATIVE_NOT_RUN",
+  "entry": "package/index.html",
+  "api": "globalThis.__gboZero",
+  "runtimeClosure": [
+    {
+      "path": "package/common.wgsl",
+      "bytes": 946,
+      "sha256": "22802bead58af0fa393e4a1c73e67424030720ff1e156ef1402b0d0a1d80a03a"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 797,
+      "sha256": "b57b8b896fdb313630ab094cf517b74d3b47fbdcc94585f0e3ee7a18d25b2f82"
+    },
+    {
+      "path": "package/model.mjs",
+      "bytes": 3993,
+      "sha256": "21f94c0f61177d5f2e56c743d9ad4a339bbfa82bb65ac04c5e4ef7dc137ebd08"
+    },
+    {
+      "path": "package/observer.wgsl",
+      "bytes": 1364,
+      "sha256": "b04e724c05b9b3e4c1872278a3b2b3c5276f4e4e7f6a4433a47866038190906f"
+    },
+    {
+      "path": "package/renderer.mjs",
+      "bytes": 4922,
+      "sha256": "2f3ea9b597336875fa8e5f0d58eeffeb7302aaf78387ef3790b4c890c2a1b563"
+    },
+    {
+      "path": "package/runtime.mjs",
+      "bytes": 6875,
+      "sha256": "45bf627e335a3f63abd1f8904d5f61dae0e99e6e9220e93fbc56435f53926962"
+    },
+    {
+      "path": "package/sfx.mjs",
+      "bytes": 2805,
+      "sha256": "df2f026bcff21f306787f956035e653eb49fcdac89d0fd6a0a36b8b545c1dbfa"
+    },
+    {
+      "path": "package/world.wgsl",
+      "bytes": 2250,
+      "sha256": "99903c6b54051763556a018db5153400a508ae6e14e371e2c1ead17dc606d0d4"
+    }
+  ],
+  "cpuChecks": 9,
+  "syntax": [
+    {
+      "path": "package/model.mjs",
+      "exitCode": 0
+    },
+    {
+      "path": "package/renderer.mjs",
+      "exitCode": 0
+    },
+    {
+      "path": "package/runtime.mjs",
+      "exitCode": 0
+    },
+    {
+      "path": "package/sfx.mjs",
+      "exitCode": 0
+    }
+  ],
+  "actualWGSLCompilation": "not_run;mock APIs not compiler proof",
+  "actualGPUQuality": "not_run",
+  "normalSFXListening": "not_run",
+  "publication": "not_run",
+  "mainIntegration": "not_run",
+  "adoption": "unknown",
+  "bSourceRevision": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "rules": [
+      {
+        "name": "基底.md",
+        "blob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+        "bytes": 128151,
+        "sha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364"
+      },
+      {
+        "name": "拡張.md",
+        "blob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+        "bytes": 77706,
+        "sha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67"
+      }
+    ],
+    "authority": "primary confirmed current cached canonical; no network"
+  },
+  "hostContract": "CONTRACT.md",
+  "ownedTransientResources": []
+}
