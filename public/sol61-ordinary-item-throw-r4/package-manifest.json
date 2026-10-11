@@ -1,0 +1,114 @@
+{
+  "schema": "ordinary-item-throw-runtime-package-r4-candidate/v1",
+  "assetId": "ordinary-item-throw",
+  "versionId": "ordinary-item-throw-sol61-r4",
+  "creativeEdition": 4,
+  "creativeCap": 5,
+  "sourceAuthor": "GPT-6.1-Sol",
+  "faithfulRuntimeAuthor": "GPT-6.1-Sol",
+  "creativeSource": {
+    "path": "world.wgsl",
+    "sha256": "2d139f0955f90828f9d2dae811d51f70ffa02cbc7624eddcdae3e177fd42519e",
+    "parentSha256": "e3c76ccc3ff946cb7c851ff8f7dc4e06232ba4ea689a3c9bb88348500174f743"
+  },
+  "lineage": "R4/5; R1/R2/R3 preserved separately; one later series edition remains after R4",
+  "status": {
+    "adoption": "unadopted",
+    "quality": "in_progress",
+    "native": "not_run",
+    "publication": "private candidate only",
+    "gameIntegration": "not_connected"
+  },
+  "files": [
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 13142,
+      "sha256": "ab5ab6408bf463473d4d9ed47f812bb8111caedde5d3de4b8ea3990e05503aed"
+    },
+    {
+      "path": "gallery-entry.json",
+      "bytes": 980,
+      "sha256": "e830df9ee8482b9ad1e12b4e7dd8ed53e4420cdf20281e357f1c4e1df437b1a9"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1770,
+      "sha256": "7f8482ea46a87dc580a4430508105e6f57169fb7cab85f4d8f067da22f5c31d0"
+    },
+    {
+      "path": "native-runner-contract.json",
+      "bytes": 2282,
+      "sha256": "07b48db1ead5b26b53e566b19f1fb8b74e1144c15354420d41173a61435ac4f2"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1412,
+      "sha256": "8dde3bafd3cefa22492263f2333c24da29260de678fae8b2f6344fd8611da219"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 12663,
+      "sha256": "25ec42059423b67a7c3e4139466141e80610962c89e364724b0d0082b18d7825"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 4439,
+      "sha256": "b976da42bd4a985bf52a1841cecfc7a790665417d7de4845896bdf4ed78ab25f"
+    },
+    {
+      "path": "tests/gallery-adapter.test.mjs",
+      "bytes": 8978,
+      "sha256": "679a3f05d3f872e88ce2333e25bcaaa2d12104d707c1340513a9c7eadfb5530c"
+    },
+    {
+      "path": "tests/r4-inherited-contract.test.mjs",
+      "bytes": 4436,
+      "sha256": "d7ec61993fa829ed3ee3883516bc9d208bdda3ea3144e81c213248b3a29efa28"
+    },
+    {
+      "path": "tests/runtime.test.mjs",
+      "bytes": 6024,
+      "sha256": "58b5a53360708e6638f9ce077d922806beb522ff0262e9d4b6c7166117db484f"
+    },
+    {
+      "path": "tests/sfx-preservation.test.mjs",
+      "bytes": 2580,
+      "sha256": "a19a1566a407e072c33c951f67d24974bc98aa9b2af3ffe44147ff5abf18de20"
+    },
+    {
+      "path": "tests/sfx-retry.test.mjs",
+      "bytes": 3136,
+      "sha256": "4711f6ff904e6bc41a30568c00f8c71da6a748cd2d68cc9f83561e0db61ba05e"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 4003,
+      "sha256": "2d139f0955f90828f9d2dae811d51f70ffa02cbc7624eddcdae3e177fd42519e"
+    }
+  ],
+  "technicalRevision": {
+    "id": "ordinary-item-throw-sol61-r3-inherits-r2-audio-allocation-repair-t1",
+    "author": "unresolved-execution-model",
+    "purpose": "Inherited T1 retryable WebAudio setup/start failure repair; partial nodes are cleaned and the same cause remains retryable.",
+    "creativeChanges": false,
+    "sourceSha256": "d588ac9213022122c3ddba385e456023d56c5288ceb2ae88b9c7623e14cfc40c",
+    "normalListening": "not performed",
+    "nativeGpu": "not run",
+    "inheritedByR3": true,
+    "inheritedByR4": true
+  },
+  "observerSource": {
+    "path": "outputs/request-20261010/ordinary-item-throw-sol61-r3-frozen-source-r1/candidate/observer.wgsl",
+    "sha256": "8dde3bafd3cefa22492263f2333c24da29260de678fae8b2f6344fd8611da219",
+    "embeddedExactIn": "runtime.mjs"
+  },
+  "mutableDraft": false,
+  "sealed": true,
+  "bCompliance": "rules/design/code mapping documented; native output semantic acceptance pending",
+  "testMetadataDerivative": {
+    "id": "ordinary-item-throw-sol61-r4-t1",
+    "creativeChanges": false,
+    "author": "GPT-6.1-Sol",
+    "purpose": "Repair inherited R3 source-path and 38ms assertions; source/render/audio bytes unchanged; record resolved role model."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "ordinary-item-throw-native-preparation-r4/v1",
+  "status": "R4 source packaged; native not_run; root acceptance pending",
+  "entry": "index.html?verify=throw-r4-native&embed=1&galleryAutoLoop=1&galleryVersionId=ordinary-item-throw-sol61-r4&galleryStartupToken=<fresh>&galleryAttemptEpoch=1",
+  "source": "world.wgsl",
+  "sourceHashMustMatch": {
+    "world": "2d139f0955f90828f9d2dae811d51f70ffa02cbc7624eddcdae3e177fd42519e",
+    "observer": "8dde3bafd3cefa22492263f2333c24da29260de678fae8b2f6344fd8611da219"
+  },
+  "nativeChecks": [
+    "Record actual adapter callback operands, exact loaded shader hash, actual compilationInfo messages, pipeline validation popErrorScope result, and first actual queue writeBuffer uniform before assertions.",
+    "Record actual submitted paired rgba16float MRT frame and queue.onSubmittedWorkDone completion; keep 64-byte frame uniform and actual preview-event duration 600 ms.",
+    "Capture current native actual frames across wake early/middle/late samples and ordinary arrival; separately verify natural expiry and clearing frame.",
+    "Verify source OFF clears both MRT outputs and observer OFF leaves source/emission unchanged while disabling only observer scatter.",
+    "Verify verification mode creates no AudioContext; test actual parent startup handshake, distinct autoLoop causes and parent retirement.",
+    "Stop RAF scheduling, await callbacks and final queue boundary, save immutable receipt/operands before assertions and before teardown, then release package resources and close root-owned browser/server.",
+    "Compare exact R3/R4 same route, cause age and actual display dimensions at 16/64/200/300/450/582/599ms; 600ms must clear.",
+    "Capture two complete naturally timed causes with decoded PTS/age correspondence; judge filled age-broadening wake and single head at actual size.",
+    "Test source-off, observer-off and wakeGain=0 only after same-state submit completion; CPU field tests do not prove visible quality."
+  ],
+  "notClaimed": [
+    "native shader compilation",
+    "full-lifetime visual quality",
+    "normal SFX listening",
+    "Safari/iPad",
+    "main-game integration",
+    "public gallery registration/publication",
+    "full B semantic acceptance"
+  ]
+}
