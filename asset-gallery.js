@@ -895,7 +895,16 @@ function isItemUseRetirementTarget(attempt) {
   try { return attempt?.versionId === 'item-use-sol61-r3' && new URL(attempt?.url).pathname === '/public/sol61-item-use/r3/index.html'; }
   catch (_) { return false; }
 }
-function isGboRetirementTarget(attempt) { if (attempt?.versionId === 'gbo-zero-sol61-r1' || attempt?.versionId === 'gbo-zero-sol61-r2') return true; if (attempt?.versionId !== 'gbo-zero-sol61-r3') return false; try { return new URL(attempt.url, location.href).pathname === '/public/gbo-zero-sol61/r3/index.html'; } catch (_) { return false; } }
+function isGboRetirementTarget(attempt) {
+  const versionId = attempt?.versionId;
+  if (versionId === 'gbo-zero-sol61-r1' || versionId === 'gbo-zero-sol61-r2') return true;
+  let expectedPath = null;
+  if (versionId === 'gbo-zero-sol61-r3') expectedPath = '/public/gbo-zero-sol61/r3/index.html';
+  else if (versionId === 'gbo-zero-sol61-r3-diagnostics-r1') expectedPath = '/public/gbo-zero-sol61/r3-diagnostics-r1/index.html';
+  else return false;
+  try { return new URL(attempt?.url, location.href).pathname === expectedPath; }
+  catch (_) { return false; }
+}
 function isUnifiedShootingRetirementTarget(attempt) {
   try { return new URL(attempt?.url).pathname.includes('/public/gunner-shooting-unified/'); }
   catch (_) { return false; }
