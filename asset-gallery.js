@@ -876,7 +876,7 @@ function galleryChildRetirementReceiptIsValid(event, attempt) {
   if (isTaserTerminalLinkRetirementTarget(attempt) && (attempt.packageSchema !== 'dva-taser-r2-package-seal/v1' || !/^[0-9a-f]{64}$/i.test(attempt.packageManifestSha256 || '') || !/^[0-9a-f]{64}$/i.test(attempt.packageSealSha256 || ''))) return false;
   const identityValid = event?.source === attempt.iframe?.contentWindow && event?.origin === attempt.origin &&
     data?.schema === 'dva-gallery-startup/v1' && data?.action === 'retired' &&
-    data?.token === attempt.token && data?.versionId === attempt.versionId &&
+    data?.token === attempt.token && data?.versionId === attempt.childProtocolVersionId &&
     data?.attemptEpoch === attempt.issuedEpoch && Number.isSafeInteger(data?.sequence) && data.sequence > attempt.sequence &&
     lifecycle?.disposeSettled === true && lifecycle?.teardown === 'disposed' &&
     lifecycle?.deviceLifecycle === 'destroyed-loss-settled' && device?.status === 'destroyed-loss-settled' &&
@@ -980,7 +980,7 @@ function retireGalleryChildStartup(reason = 'selection-changed') {
       const onRetirementMessage = event => {
         const data=event?.data;
         const identity=event?.source===attempt.iframe?.contentWindow&&event?.origin===attempt.origin&&
-          data?.schema==='dva-gallery-startup/v1'&&data?.token===attempt.token&&data?.versionId===attempt.versionId&&
+          data?.schema==='dva-gallery-startup/v1'&&data?.token===attempt.token&&data?.versionId===attempt.childProtocolVersionId&&
           data?.attemptEpoch===attempt.issuedEpoch&&Number.isSafeInteger(data?.sequence)&&data.sequence>attempt.sequence;
         if(identity&&data?.action==='retire-error'&&data?.teardown==='unknown'){
           if (isTaserTerminalLinkRetirementTarget(attempt) && !galleryChildTaserErrorIdentityIsValid(data, attempt)) return;
@@ -990,12 +990,12 @@ function retireGalleryChildStartup(reason = 'selection-changed') {
         attempt.sequence=data.sequence;attempt.retirementReceipt=structuredClone(data);finish(true);
       };
       attempt.retirementTimer=setTimeout(()=>finish(false),10000);window.addEventListener('message',onRetirementMessage);
-      try { attempt.iframe?.contentWindow?.postMessage({schema:'dva-gallery-startup/v1',action:'retire',token:attempt.token,versionId:attempt.versionId,attemptEpoch:attempt.issuedEpoch},attempt.origin); }
+      try { attempt.iframe?.contentWindow?.postMessage({schema:'dva-gallery-startup/v1',action:'retire',token:attempt.token,versionId:attempt.childProtocolVersionId,attemptEpoch:attempt.issuedEpoch},attempt.origin); }
       catch(error){finish(false,String(error?.message||error));}
     });
     return attempt.retirementPromise;
   }
-  try { attempt.iframe?.contentWindow?.postMessage({ schema: 'dva-gallery-startup/v1', action: 'retire', token: attempt.token, versionId: attempt.versionId, attemptEpoch: attempt.issuedEpoch }, attempt.origin); } catch (_) {}
+  try { attempt.iframe?.contentWindow?.postMessage({ schema: 'dva-gallery-startup/v1', action: 'retire', token: attempt.token, versionId: attempt.childProtocolVersionId, attemptEpoch: attempt.issuedEpoch }, attempt.origin); } catch (_) {}
   attempt.retired = true; attempt.epoch = ++galleryChildAttemptSerial; attempt.retiredReason = reason;
   galleryChildClearTimers(attempt); window.removeEventListener('message', attempt.onMessage);
   if (attempt.iframe) { sfxBridge?.detachFrame(attempt.iframe); attempt.iframe.remove(); }
@@ -1112,7 +1112,7 @@ function galleryChildFail(attempt, stageName, code, message, status = 'error') {
   // resource lease too. The child's first actual error remains authoritative.
   try {
     attempt.iframe?.contentWindow?.postMessage({ schema: 'dva-gallery-startup/v1', action: 'retire',
-      token: attempt.token, versionId: attempt.versionId, attemptEpoch: attempt.issuedEpoch }, attempt.origin);
+      token: attempt.token, versionId: attempt.childProtocolVersionId, attemptEpoch: attempt.issuedEpoch }, attempt.origin);
   } catch (_) {}
   const phase = GALLERY_CHILD_PHASES[stageName]?.[0] || 'プレビュー';
   const safeMessage = galleryChildText(message || `${phase}が期限内に完了しませんでした。再読み込みできます。`);
@@ -1141,6 +1141,29 @@ function galleryChildArmStage(attempt, phase) {
     `STARTUP_TIMEOUT_${phase.toUpperCase().replace('-', '_')}`,
     `${row[0]} 期限内に完了しませんでした。再読み込みできます。`), hardMs);
 }
+function galleryChildProtocolVersionId(item, preview) {
+  const technicalId = 'gunner-aim-acquisition-sol61-r2-sound-clock-r1-r1185';
+  const packageVersionId = 'gunner-aim-acquisition-sol61-r2';
+  if (item?.id !== technicalId) return typeof item?.id === 'string' ? item.id : null;
+  try {
+    const sourceUrl = new URL(item.page, location.href);
+    const previewUrl = new URL(preview?.href, location.href);
+    if (item.technicalRevisionId !== technicalId ||
+        sourceUrl.pathname !== '/public/gunner-aim-acquisition-sol61/r2-clock-r1/index.html' ||
+        previewUrl.pathname !== sourceUrl.pathname ||
+        sourceUrl.searchParams.get('galleryVersionId') !== packageVersionId) return null;
+    return packageVersionId;
+  } catch (_) { return null; }
+}
+function galleryChildStartupMessageIsValidForAttempt(event, attempt) {
+  const data = event?.data;
+  return event?.origin === attempt.origin && event?.source === attempt.iframe?.contentWindow &&
+    data?.schema === 'dva-gallery-startup/v1' && data.token === attempt.token &&
+    data.versionId === attempt.childProtocolVersionId && data.attemptEpoch === attempt.epoch &&
+    Number.isSafeInteger(data.sequence) && data.sequence > attempt.sequence &&
+    Boolean(GALLERY_CHILD_PHASES[data.stage]) &&
+    ['pending','delayed','ready','error','cancelled','unsupported'].includes(data.status);
+}
 function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
   const tokenBytes = new Uint8Array(16);
   crypto.getRandomValues(tokenBytes);
@@ -1148,23 +1171,16 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
   const url = new URL(preview.href, location.href);
   if (url.origin !== location.origin) throw new Error('子プレビューは同一オリジンのURLが必要です');
   const epoch = ++galleryChildAttemptSerial;
+  const childProtocolVersionId = galleryChildProtocolVersionId(item, preview);
+  if (!childProtocolVersionId) throw new Error('子プレビューの選択IDと登録済みルートが一致しません');
   url.searchParams.set('galleryStartupToken', token);
-  url.searchParams.set('galleryVersionId', item.id);
+  url.searchParams.set('galleryVersionId', childProtocolVersionId);
   url.searchParams.set('galleryAttemptEpoch', String(epoch));
-  const attempt = { token, versionId: item.id, epoch, issuedEpoch: epoch, index, versionIndex, iframe, origin: url.origin,
+  const attempt = { token, versionId: item.id, childProtocolVersionId, epoch, issuedEpoch: epoch, index, versionIndex, iframe, origin: url.origin,
     url: url.href, createdAt: performance.now(), phase: '', phaseRank: -1,
     phaseReceivedAt: performance.now(), sequence: 0, ready: false, failed: false, retired: false,
     phaseTimer: null, softTimer: null, overallTimer: null, onMessage: null };
   activeGalleryChildStartup = attempt;
-  function galleryChildStartupMessageIsValidForAttempt(event, attempt) {
-    const data = event?.data;
-    return event?.origin === attempt.origin && event?.source === attempt.iframe?.contentWindow &&
-      data?.schema === 'dva-gallery-startup/v1' && data.token === attempt.token &&
-      data.versionId === attempt.versionId && data.attemptEpoch === attempt.epoch &&
-      Number.isSafeInteger(data.sequence) && data.sequence > attempt.sequence &&
-      Boolean(GALLERY_CHILD_PHASES[data.stage]) &&
-      ['pending','delayed','ready','error','cancelled','unsupported'].includes(data.status);
-  }
   function galleryChildFirstFrameProofIsValid(proof) {
     return proof?.recorded === true && proof?.submitted === true &&
       proof?.completed === true && proof?.canvasConnected === true &&
@@ -1518,7 +1534,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
       let childSnapshot = null;
       try { childSnapshot = iframe.contentWindow?.__dvaGalleryStartupSnapshot?.(); } catch (_) {}
       if (childSnapshot?.schema !== 'dva-gallery-startup/v1' || childSnapshot?.token !== attempt.token ||
-          childSnapshot?.versionId !== attempt.versionId || childSnapshot?.attemptEpoch !== attempt.epoch) {
+          childSnapshot?.versionId !== attempt.childProtocolVersionId || childSnapshot?.attemptEpoch !== attempt.epoch) {
         // Legacy HTML load is not a child status or first-frame signal. Keep it bounded
         // and explicit without inventing a renderer phase or hiding the notice.
         galleryChildWatchLegacyFailure(attempt, iframe);
