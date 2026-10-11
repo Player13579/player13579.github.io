@@ -8,6 +8,11 @@ export const REVISIONS = Object.freeze({
     versionId: 'gunner-shooting-unified-sol61-r2',
     handgun: 'gunner-shooting-sol61-r2',
     other: 'gunner-shooting-nonhandgun-sol61-r2'
+  }),
+  r3: Object.freeze({
+    versionId: 'gunner-shooting-unified-sol61-r3',
+    handgun: 'gunner-shooting-sol61-r3',
+    other: 'gunner-shooting-nonhandgun-sol61-r3'
   })
 });
 export const WEAPONS = Object.freeze(['handgun', 'smg', 'assault', 'sniper']);
