@@ -1,0 +1,67 @@
+{
+  "schema": "flora-public-package/v1",
+  "packageRoot": "public/dot-flora-invisible/r1",
+  "versionId": "flora-invisible-sol61-r1",
+  "creatorModelId": "gpt-6.1-sol",
+  "runtimeDisplayName": "unknown",
+  "adoption": "unknown",
+  "quality": "not_run",
+  "cpuTests": "passed",
+  "technicalAcceptance": "pending",
+  "mainGameIntegration": "pending",
+  "startupStatus": "manual-preview-only; gallery-startup-unsupported-pending",
+  "runtimeClosureFileCount": 8,
+  "source": {
+    "candidateRevision": "b2dfdf8d69c270a0acc45761e77682871bab7e81",
+    "publicSourceRevision": "5839fd76647edf7b79bbb567db1a63a26a1571c1"
+  },
+  "files": {
+    "index.html": {
+      "sha256": "cdb0e80e6a0df4c5208574d1a567a0615a6f1b2db9813d98978d9f3148082836",
+      "bytes": 1183,
+      "role": "preview-entry"
+    },
+    "preview.mjs": {
+      "sha256": "965b1583e97963b47e68a6f3357a4db7cc5c7b87251f7941f68bf587d62373b2",
+      "bytes": 4618,
+      "role": "preview-runtime"
+    },
+    "renderer.mjs": {
+      "sha256": "914428fc92c9bbbf74ba1f108859dbdae5bb6356155b2fd04fadd4320e785b4c",
+      "bytes": 5057,
+      "role": "WebGPU-renderer"
+    },
+    "world.mjs": {
+      "sha256": "93eb370af9ef57f6caa35d24e4c872916ef4242a954d132035a3e4bf20bcad99",
+      "bytes": 2797,
+      "role": "world-shader"
+    },
+    "observer.mjs": {
+      "sha256": "6c353bbf3f1f11d89b54b654b95cf3c0738e2d38040f6e3066fe4969cddfe17f",
+      "bytes": 3223,
+      "role": "observer-shader"
+    },
+    "plan.mjs": {
+      "sha256": "f12928c29d5b71fc4037752b9b1e7ea1e9d9c047037d9462118a883c1df7c6b3",
+      "bytes": 5302,
+      "role": "planner"
+    },
+    "playback.mjs": {
+      "sha256": "031481d10ced02651451bc000a5b1bec7cd3bc128e8a664001947686387103e4",
+      "bytes": 8526,
+      "role": "playback-clock"
+    },
+    "sfx.mjs": {
+      "sha256": "ba9d5764ec321797725fe941fb33b277cb014d6eb127d806b5c39bc8bdb15dbb",
+      "bytes": 2905,
+      "role": "authored-sfx"
+    }
+  },
+  "dependencies": {},
+  "gpuCompileStatus": "not_run",
+  "normalAudioListening": "not_run",
+  "technicalAuthorModelIds": [
+    "gpt-6.1-sol",
+    "gpt-6-luna"
+  ]
+}
