@@ -1,0 +1,73 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ガンナー照準ロック R3</title><style>html,body{margin:0;background:#080c14;color:#cce8ee;font:14px system-ui}main{width:min(100%,960px);margin:auto}canvas{width:100%;height:auto;display:block;aspect-ratio:2}nav{display:flex;gap:8px;padding:8px}button{background:#153144;color:#dcfaff;border:1px solid #397487;padding:6px 12px}#status{padding:8px}html[data-embedded=true] nav,html[data-embedded=true] #status{display:none}</style><main><canvas aria-label="ガンナー照準ロックのWebGPU再生"></canvas><nav><button id="replay">再生</button><button id="audio">音声を有効にする</button><button id="mute">消音切替</button></nav><div id="status">準備中</div></main><script>document.documentElement.dataset.embedded=String(new URLSearchParams(location.search).has('embed'))</script><script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const token = params.get('galleryStartupToken') || '';
+  const versionId = params.get('galleryVersionId') || '';
+  const attemptEpoch = Number(params.get('galleryAttemptEpoch'));
+  const enabled = versionId === 'gunner-aim-acquisition-sol61-r3' && /^[a-f0-9]{32}$/i.test(token) && Number.isSafeInteger(attemptEpoch) && attemptEpoch > 0;
+  let sequence = 0, stage = 'child-document', status = 'pending', retireHandler = null, retired = false;
+  let retirementPromise = null, retirementAckRequested = false, retirementAckAttached = false, retirementAckSent = false, retirementErrorSent = false;
+  const row = () => ({schema:'dva-gallery-startup/v1', token, versionId, attemptEpoch, sequence, stage, status});
+  const emit = (nextStage, nextStatus, extra={}) => {
+    if (!enabled || retired) return false;
+    stage = nextStage; status = nextStatus; sequence++;
+    const message = {...row(), ...extra};
+    try { parent.postMessage(message, location.origin); } catch (_) {}
+    return true;
+  };
+  const hasCompletedRetirementSnapshot = snapshot => {
+    const retirement = snapshot?.retirement;
+    const ownedDestroyedLoss = Array.isArray(snapshot?.deviceLosses) && snapshot.deviceLosses.some(loss =>
+      loss?.ownedDevice === true && loss?.expected === true && loss?.reason === 'destroyed');
+    return snapshot?.disposed === true && snapshot?.errors?.length === 0 &&
+      retirement?.owned === true && retirement?.destroyCalled === true &&
+      retirement?.expectedDeviceLost === true && retirement?.expectedLossReason === 'destroyed' &&
+      Number.isSafeInteger(snapshot?.submitted) && snapshot.submitted >= 0 && snapshot.submitted === snapshot.completed &&
+      snapshot.inFlight === 0 && snapshot.pending === 0 &&
+      ['not-created','closed'].includes(snapshot?.audio?.contextState) && ownedDestroyedLoss;
+  };
+  const postRetirementFailure = error => {
+    if (!enabled || !retirementAckRequested || retirementErrorSent || retirementAckSent) return;
+    retirementErrorSent = true; sequence++;
+    try { parent.postMessage({...row(), action:'retire-error', sequence, teardown:'unknown', error:{code:'AIM_R3_RETIREMENT_FAILED',message:String(error?.message||error).slice(0,500)}}, location.origin); } catch (_) {}
+  };
+  const postRetired = snapshot => {
+    if (!enabled || !retirementAckRequested || retirementAckSent || retirementErrorSent) return;
+    if (!hasCompletedRetirementSnapshot(snapshot)) { postRetirementFailure(new Error('Aim R3 disposal snapshot lacks completed owned-device retirement proof')); return; }
+    retirementAckSent = true; sequence++;
+    const device = {status:'destroyed-loss-settled',drained:true,destroyCalled:true,lostReason:'destroyed',snapshot};
+    try { parent.postMessage({...row(),action:'retired',sequence,lifecycle:{disposeSettled:true,teardown:'disposed',deviceLifecycle:'destroyed-loss-settled',device}},location.origin); }
+    catch (error) { retirementAckSent = false; postRetirementFailure(error); }
+  };
+  const attachRetirementReceipt = () => {
+    if (!retirementPromise || !retirementAckRequested || retirementAckAttached) return;
+    retirementAckAttached = true;
+    retirementPromise.then(postRetired, postRetirementFailure);
+  };
+  const beginRetirement = acknowledge => {
+    if (acknowledge) retirementAckRequested = true;
+    if (!retired) { retired = true; status = 'cancelled'; }
+    if (!retireHandler) return null;
+    if (!retirementPromise) retirementPromise = Promise.resolve().then(() => retireHandler());
+    attachRetirementReceipt();
+    return retirementPromise;
+  };
+  const api = {
+    enabled,
+    snapshot: () => row(),
+    publish: (nextStage, nextStatus='pending', extra={}) => emit(nextStage,nextStatus,extra),
+    setRetireHandler: fn => { retireHandler = typeof fn === 'function' ? fn : null; if (retired) beginRetirement(false); },
+    isRetired: () => retired
+  };
+  window.__dvaGalleryStartupSnapshot = api.snapshot;
+  window.__dvaGalleryStartup = api;
+  if (enabled) emit('child-document','pending');
+  addEventListener('message', event => {
+    const data = event.data;
+    if (event.source !== parent || event.origin !== location.origin || data?.schema !== 'dva-gallery-startup/v1' || data?.action !== 'retire' || data.token !== token || data.versionId !== versionId || data.attemptEpoch !== attemptEpoch) return;
+    beginRetirement(true);
+  });
+  addEventListener('pagehide', () => { beginRetirement(false); }, {once:true});
+})();
+</script><script type="module" src="./runtime.mjs"></script></html>
+

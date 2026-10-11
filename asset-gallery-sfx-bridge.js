@@ -143,6 +143,8 @@
         activation = invoke(win.__DVA_GUNNER_AIM_R1__, 'unlockAudio', []);
       } else if (itemId(item) === 'gunner-aim-acquisition-sol61-r2') {
         activation = invoke(win.__DVA_GUNNER_AIM_R2__, 'unlockAudio', []);
+      } else if (itemId(item) === 'gunner-aim-acquisition-sol61-r3') {
+        activation = invoke(win.__DVA_GUNNER_AIM_R3__, 'unlockAudio', []);
       } else if (itemId(item) === 'item-pickup-sol-r2') {
         activation = invoke(win, 'enableItemPickupLoopAudio', []);
       } else if (win.__gallerySfx && typeof win.__gallerySfx.activateFromGesture === 'function') {
@@ -157,8 +159,11 @@
 
       // Shooting R1 and R2 expose only their exact source APIs; never substitute another control or synthetic audio path.
       const strictSourceApi = itemId(item) === 'gunner-shooting-sol61-r1' || itemId(item) === 'gunner-shooting-sol61-r2' || itemId(item) === 'gunner-shooting-nonhandgun-sol61-r1' || itemId(item) === 'gunner-shooting-nonhandgun-sol61-r2';
+      const strictAimApi = ['gunner-aim-acquisition-sol61-r1','gunner-aim-acquisition-sol61-r2','gunner-aim-acquisition-sol61-r3'].includes(itemId(item));
       if (strictSourceApi && activation.error) return setState('unsupported', 'source audio activation failed');
       if (strictSourceApi && !activation.found) return setState('unsupported', 'source audio API is not ready');
+      if (strictAimApi && activation.error) return setState('unsupported', 'source audio activation failed');
+      if (strictAimApi && !activation.found) return setState('unsupported', 'source audio API is not ready');
       // Preserve the legacy fallback chain for controls that throw synchronously.
       if (activation.error) activation = { found: false };
       if (!activation.found) {

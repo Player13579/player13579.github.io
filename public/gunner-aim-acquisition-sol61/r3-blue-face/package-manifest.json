@@ -1,0 +1,90 @@
+{
+  "schema": "dva-gunner-aim-r3-creative-r1334/v1",
+  "groupID": "gunner-aim-acquisition-sol61",
+  "versionID": "gunner-aim-acquisition-sol61-r3",
+  "edition": 3,
+  "creativeCap": {
+    "maximum": 5,
+    "consumed": 3,
+    "remaining": 2
+  },
+  "entry": "index.html",
+  "runtimeClosure": [
+    "index.html",
+    "runtime.mjs",
+    "audio.mjs",
+    "contract.mjs",
+    "source.wgsl",
+    "observer.wgsl"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "role": "runtime",
+      "bytes": 5586,
+      "sha256": "8ebcef61abc7b6984977804634df46090806264289df5e3e04db456b4561db2d"
+    },
+    {
+      "path": "runtime.mjs",
+      "role": "runtime",
+      "bytes": 14482,
+      "sha256": "6932cfc96fdd18164a3d47f764a70b98a5303c2e275e1697bd57eef5a377d209"
+    },
+    {
+      "path": "audio.mjs",
+      "role": "runtime",
+      "bytes": 6620,
+      "sha256": "e9c7de9508c4335a45e8e0288b4475406f4fd6f72f2a90a8fb0be3c0a876ed0a"
+    },
+    {
+      "path": "contract.mjs",
+      "role": "runtime",
+      "bytes": 3977,
+      "sha256": "132da9b710d826f05b9f14a96d8ec0b2bb2f02164c53e7fac82e0f7a38d87524"
+    },
+    {
+      "path": "source.wgsl",
+      "role": "runtime",
+      "bytes": 2456,
+      "sha256": "fdb1973eb621f0415a5fca3aebdf92b62cc894e4e34fd2caa083e8421448eafe"
+    },
+    {
+      "path": "observer.wgsl",
+      "role": "runtime",
+      "bytes": 1794,
+      "sha256": "9d057673c971bf5db4c5f6a76445e65b957b5a6a746937c59a1641663f8b0537"
+    },
+    {
+      "path": "provenance.json",
+      "role": "provenance",
+      "bytes": 5334,
+      "sha256": "78da76e3cfaf986a31810d7cb3320a5e743c014050a38a54ec575ced70874ed4"
+    },
+    {
+      "path": "DESIGN.md",
+      "role": "provenance",
+      "bytes": 7592,
+      "sha256": "780b97ed83e381556690a790dc6af03c059a2f485bc03ce0e899fac0828b8acf"
+    }
+  ],
+  "externalRuntimeDependencies": [],
+  "dependencies": {
+    "index.html": [
+      "runtime.mjs"
+    ],
+    "runtime.mjs": [
+      "contract.mjs",
+      "audio.mjs",
+      "source.wgsl",
+      "observer.wgsl"
+    ],
+    "audio.mjs": [
+      "contract.mjs"
+    ],
+    "contract.mjs": []
+  },
+  "qualityStatus": "pending-native-creative-review",
+  "adoption": "unknown",
+  "publicationEligible": false,
+  "authorDisplayName": "GPT-6.1-Sol"
+}
