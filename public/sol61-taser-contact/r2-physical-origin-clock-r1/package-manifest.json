@@ -1,0 +1,186 @@
+{
+  "schema": "dva-taser-private-runtime-package/v1",
+  "status": "TECHNICAL_CANDIDATE_CPU_TESTED_NATIVE_NOT_RUN",
+  "groupId": "taser-contact-sol61",
+  "versionId": "taser-contact-sol61-r2-physical-origin-clock-r1",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "implementationModelIdentity": "GPT-6-Luna bounded implementation role; exact live versioned catalog displayName not resolved",
+  "route": "public/sol61-taser-contact/r2-physical-origin-clock-r1/index.html",
+  "entry": "index.html",
+  "runtimeDependencyClosure": [
+    "index.html -> preview.mjs",
+    "preview.mjs -> geometry.mjs",
+    "preview.mjs -> runtime.mjs",
+    "preview.mjs -> taser-contact-sfx.mjs",
+    "preview.mjs -> terminal-link.mjs",
+    "preview.mjs -> retirement-adapter.mjs",
+    "runtime.mjs -> geometry.mjs",
+    "runtime.mjs -> taser.wgsl",
+    "runtime.mjs -> terminal-link.mjs",
+    "runtime.mjs -> retirement-adapter.mjs"
+  ],
+  "r1Source": {
+    "path": "outputs/request-20261009/taser-r6-root-publication-executable-r11/final-parent-runner-r14/stage-r14/",
+    "manifestSha256": "b0829fbd3abff111a80cfd23e186a425099145e9933ba1f646fcbe413d57158e",
+    "r1ManifestSchema": "dva-runtime-package-manifest/v1",
+    "files": {
+      "geometry.mjs": "35b9b0447c89ef364086d298710afa7586537449cfdc08af7c3316eab66676a6",
+      "index.html": "dac521bc7765bd5249c2a828026830bee41d99713c4c5cb98fb5c65387998788",
+      "preview.mjs": "5d173f6dafc9138cf76297027e6496ec65c50beb582142fcc21549d11c67d44b",
+      "runtime.mjs": "e1d4a085e2592c219ab9b43fd72375a7e4d7c2801aea961b3cb6b4e5fb478d1c",
+      "taser-contact-sfx.mjs": "213c8c8dea802938dc51226564a4823c35ba279b8db1e4537d62d8b5f1868973",
+      "taser.wgsl": "2121fa0f977cd9e65bf9bede9986f34fea600fc54037e1871e7856bd081dc925"
+    }
+  },
+  "opticalContract": {
+    "directTerm": "unchanged",
+    "blur": "separable normalized Gaussian radiance",
+    "sigmaPx": 2.5,
+    "radiusPx": 7,
+    "supportOffsetsPx": [
+      -7,
+      -6,
+      -5,
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "oneDimensionalWeights": [
+      0.0031742033144480015,
+      0.0089805100242474,
+      0.021651108980934867,
+      0.04448075733770273,
+      0.07787123866346018,
+      0.11617023707406768,
+      0.14768131517304467,
+      0.15998125886418893,
+      0.14768131517304467,
+      0.11617023707406768,
+      0.07787123866346018,
+      0.04448075733770273,
+      0.021651108980934867,
+      0.0089805100242474,
+      0.0031742033144480015
+    ],
+    "scatterScale": 0.44,
+    "sourceOffOutput": 0,
+    "passes": [
+      "source-emission rgba16float",
+      "horizontal blur rgba16float",
+      "vertical blur rgba16float",
+      "direct plus 0.44 times blur, then existing tone map"
+    ]
+  },
+  "changedFiles": [
+    "package-manifest.json",
+    "package-seal.json",
+    "preview.mjs",
+    "provenance.md"
+  ],
+  "files": {
+    "geometry.mjs": {
+      "path": "geometry.mjs",
+      "bytes": 2729,
+      "sha256": "35b9b0447c89ef364086d298710afa7586537449cfdc08af7c3316eab66676a6"
+    },
+    "index.html": {
+      "path": "index.html",
+      "bytes": 2804,
+      "sha256": "0c94fc0c27e9a44e0e4979be3b1b0670ad9e471548a5b1cfb3d3aca122166e85"
+    },
+    "preview.mjs": {
+      "path": "preview.mjs",
+      "bytes": 31438,
+      "sha256": "eddfbcbd901f2342daf30b543e89f69d78a04199e0963d189a6c700adb7e1e95"
+    },
+    "provenance.md": {
+      "path": "provenance.md",
+      "bytes": 1316,
+      "sha256": "73a6ebbc11837150f71300b8c725f8c45f230c68eebb5e7a03041370bb3f9a29"
+    },
+    "retirement-adapter.mjs": {
+      "path": "retirement-adapter.mjs",
+      "bytes": 6296,
+      "sha256": "029b062ca73ece73fa12da0ae8d3e344223f693f565d5500e54733f27b317161"
+    },
+    "runtime.mjs": {
+      "path": "runtime.mjs",
+      "bytes": 8777,
+      "sha256": "efa242e470cb3a6c319b2a6644d0fcc5e95fc04859518e0365db1809758e43ce"
+    },
+    "taser-contact-sfx.mjs": {
+      "path": "taser-contact-sfx.mjs",
+      "bytes": 12971,
+      "sha256": "0791d3ec9e0a2ebd0351591bb041bb001171ba2d6ff6d94d401a2804ce35a140"
+    },
+    "taser.wgsl": {
+      "path": "taser.wgsl",
+      "bytes": 3760,
+      "sha256": "88190448e52b42940f95bab0887f1ed98255acdd65f519bec88528fa8acf12d0"
+    },
+    "terminal-link.mjs": {
+      "path": "terminal-link.mjs",
+      "bytes": 8911,
+      "sha256": "d0a36c007d943637e2eddf30e5c201a9abedb3038828b814f981d876607fb28f"
+    }
+  },
+  "quality": "pending root native/GPU review; no creative quality verdict",
+  "adoption": "unknown",
+  "publication": false,
+  "mainGameIntegration": "not-integrated",
+  "technicalDerivative": {
+    "from": "R1224 frozen technical package",
+    "reason": "R1234 settled producer physical-origin clock correction; retain immutable submitted visual age and bind cause epoch across GPU completion",
+    "creativeEdition": false,
+    "creativeBytesChanged": false,
+    "creativeAuthor": "GPT-6.1-Sol",
+    "implementationModelIdentity": "GPT-6-Luna bounded implementation role; exact live versioned catalog displayName not resolved",
+    "sourceManifestSha256": "4bfe1839340182705d0315dc0c3a45f60fd2d19ada46c362d16bd5041584f006",
+    "nativeVerification": "not-run",
+    "type": "R1235 physical-origin clock technical derivative under R2 creative edition",
+    "technicalVersionId": "taser-contact-sol61-r2-physical-origin-clock-r1",
+    "creativeSourceVersionId": "taser-contact-sol61-r2",
+    "sourcePackage": "outputs/request-20261011/taser-sound-clock-gallery-r1224/READY-R1224.json",
+    "sourceTechnicalVersionId": "taser-contact-sol61-r2-sound-clock-r1",
+    "creativeEditionNumber": 2,
+    "capState": "unknown",
+    "adoption": "unknown",
+    "quality": "pending"
+  },
+  "retirementContract": {
+    "schema": "taser-contact-retirement-proof-r1140/v1",
+    "identity": {
+      "startupField": "adapterSessionId",
+      "messageFields": [
+        "token",
+        "sessionId",
+        "versionId",
+        "attemptEpoch",
+        "sequence"
+      ],
+      "sessionId": "UUID per child document"
+    },
+    "successRequires": [
+      "queue drained",
+      "renderer resources disposed",
+      "context unconfigured",
+      "device destroy called",
+      "device.lost settled with reason destroyed",
+      "audio closed or never created",
+      "zero voices",
+      "zero pending tasks",
+      "no cleanup errors"
+    ],
+    "failure": "authenticated retire-error; teardown unknown",
+    "actualProducer": "retirement-adapter.mjs runTaserRetirementCleanup emits proofSchema and handler forwards it"
+  }
+}
