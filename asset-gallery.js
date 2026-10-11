@@ -881,7 +881,7 @@ function galleryChildRetirementReceiptIsValid(event, attempt) {
     lifecycle?.deviceLifecycle === 'destroyed-loss-settled' && device?.status === 'destroyed-loss-settled' &&
     device.drained === true && device.destroyCalled === true && device.lostReason === 'destroyed';
 }
-function isGboRetirementTarget(attempt) { return attempt?.versionId === 'gbo-zero-sol61-r1'; }
+function isGboRetirementTarget(attempt) { return attempt?.versionId === 'gbo-zero-sol61-r1' || attempt?.versionId === 'gbo-zero-sol61-r2'; }
 function isUnifiedShootingRetirementTarget(attempt) {
   try { return new URL(attempt?.url).pathname.includes('/public/gunner-shooting-unified/'); }
   catch (_) { return false; }
