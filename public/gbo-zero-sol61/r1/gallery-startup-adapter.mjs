@@ -1,23 +1,15 @@
 const context = window.__dvaGalleryStartupContext;
 if (!context) throw new Error('R880 bootstrap was not installed before the module');
 const VERSION = 'gbo-zero-sol61-r1';
-const VERSION_DIRECTORY = 'public/gbo-zero-sol61/r1/source/';
-const CLOSURE = Object.freeze([
-  ['common.wgsl','22802bead58af0fa393e4a1c73e67424030720ff1e156ef1402b0d0a1d80a03a'],
-  ['index.html','b57b8b896fdb313630ab094cf517b74d3b47fbdcc94585f0e3ee7a18d25b2f82'],
-  ['model.mjs','21f94c0f61177d5f2e56c743d9ad4a339bbfa82bb65ac04c5e4ef7dc137ebd08'],
-  ['observer.wgsl','b04e724c05b9b3e4c1872278a3b2b3c5276f4e4e7f6a4433a47866038190906f'],
-  ['renderer.mjs','2f3ea9b597336875fa8e5f0d58eeffeb7302aaf78387ef3790b4c890c2a1b563'],
-  ['runtime.mjs','45bf627e335a3f63abd1f8904d5f61dae0e99e6e9220e93fbc56435f53926962'],
-  ['sfx.mjs','df2f026bcff21f306787f956035e653eb49fcdac89d0fd6a0a36b8b545c1dbfa'],
-  ['world.wgsl','99903c6b54051763556a018db5153400a508ae6e14e371e2c1ead17dc606d0d4']
-]);
+const VERSION_DIRECTORY = 'public/gbo-zero-sol61/r1/';
+const SOURCE_CLOSURE_PATH = 'public/gbo-zero-sol61/r1/source-closure-r967.json';
+const SOURCE_CLOSURE_MANIFEST_SHA256 = '5cf129d42bcc90c817ce276a0e058f3c48e62fe042c2fa1fff7542ffba4e551e';
 if (context.versionId !== VERSION || !context.token || !Number.isSafeInteger(context.attemptEpoch) || context.attemptEpoch < 1)
   throw new Error('gallery token/version/epoch is absent or does not match the R880 version');
 
 const phases = ['child-document','adapter','device','assets','pipelines','first-frame','playing'];
 const state = { sequence:context.sequence || 0, rank:context.rank ?? -1, retired:Boolean(context.retired), ready:false,
-  sourcePins:null, firstFrame:null, retirement:null, error:null, timer:0 };
+  sourcePins:null, sourceClosureManifest:null, firstFrame:null, retirement:null, error:null, timer:0 };
 const current = () => !state.retired && !context.retired && !window.__gboGalleryStartupHostRetired;
 function post(stage,status,extra={}) {
   if (!current() || window.parent === window) return;
@@ -29,15 +21,25 @@ function post(stage,status,extra={}) {
   window.parent.postMessage(context.current,location.origin);
 }
 async function verifyClosure() {
+  const response=await fetch(new URL('/'+SOURCE_CLOSURE_PATH,location.origin),{cache:'no-store'});
+  if(!response.ok) throw new Error('source closure manifest HTTP '+response.status);
+  const manifestBytes=await response.arrayBuffer();
+  const manifestSha=[...new Uint8Array(await crypto.subtle.digest('SHA-256',manifestBytes))].map(v=>v.toString(16).padStart(2,'0')).join('');
+  if(manifestSha!==SOURCE_CLOSURE_MANIFEST_SHA256) throw new Error('source closure manifest SHA-256 mismatch');
+  const manifest=JSON.parse(new TextDecoder().decode(manifestBytes));
+  if(manifest.schema!=='dva-gbo-zero-sol61-r1-source-closure-r967/v1' || manifest.versionId!==VERSION || manifest.technicalRevision!=='gbo-observer-center-reuse-r967' || !Array.isArray(manifest.sourceFiles) || manifest.sourceFiles.length!==8)
+    throw new Error('source closure manifest identity/shape mismatch');
   const result=[];
-  for (const [file,expected] of CLOSURE) {
-    const response=await fetch(new URL('/'+VERSION_DIRECTORY+file,location.origin),{cache:'no-store'});
-    if(!response.ok) throw new Error(`${file} HTTP ${response.status}`);
-    const bytes=await response.arrayBuffer();
+  for (const item of manifest.sourceFiles) {
+    if(typeof item.path!=='string' || item.path.includes('..') || !/^source\/(common\.wgsl|index\.html|model\.mjs|observer\.wgsl|renderer\.mjs|runtime\.mjs|sfx\.mjs|world\.wgsl)$/.test(item.path)) throw new Error('source closure path rejected');
+    const sourceResponse=await fetch(new URL('/'+VERSION_DIRECTORY+item.path,location.origin),{cache:'no-store'});
+    if(!sourceResponse.ok) throw new Error(item.path+' HTTP '+sourceResponse.status);
+    const bytes=await sourceResponse.arrayBuffer();
     const digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(v=>v.toString(16).padStart(2,'0')).join('');
-    if(digest!==expected) throw new Error(`${file} SHA-256 mismatch`);
-    result.push({file,sha256:digest,bytes:bytes.byteLength});
+    if(bytes.byteLength!==item.bytes || digest!==item.sha256) throw new Error(item.path+' SHA-256/length mismatch');
+    result.push({file:item.path,sha256:digest,bytes:bytes.byteLength});
   }
+  state.sourceClosureManifest={path:SOURCE_CLOSURE_PATH,sha256:manifestSha,schema:manifest.schema,technicalRevision:manifest.technicalRevision,observerSha256:manifest.sourceFiles.find(x=>x.path==='source/observer.wgsl')?.sha256};
   return result;
 }
 function inspectCompletedHost(host) {
@@ -69,7 +71,7 @@ async function poll() {
     if(!state.sourcePins) {
       state.sourcePins=await verifyClosure();
       post('adapter','ready'); post('device','ready',{deviceReady:true});
-      post('assets','ready',{sourceClosure:state.sourcePins});
+      post('assets','ready',{sourceClosure:state.sourcePins,sourceClosureManifest:state.sourceClosureManifest});
       post('pipelines','ready',{versionId:VERSION});
     }
     const checked=inspectCompletedHost(host);
@@ -78,7 +80,7 @@ async function poll() {
       state.firstFrame=Object.freeze({recorded:true,submitted:true,completed:true,canvasConnected:true,
         passes:2,viewportWidth:checked.canvas.width,viewportHeight:checked.canvas.height,
         causeID:checked.child.cause,generation:checked.child.generation,submission:checked.receipt.submission,
-        receipt:Object.freeze({...checked.receipt}),sourceClosure:state.sourcePins,visible:true,
+        receipt:Object.freeze({...checked.receipt}),sourceClosure:state.sourcePins,sourceClosureManifest:state.sourceClosureManifest,visible:true,
         shaderDiagnostics:checked.renderer.shaderDiagnostics,actualScopes:checked.renderer.actualScopes});
       post('first-frame','ready',{causeID:checked.child.cause,firstFrame:state.firstFrame});
       post('playing','ready',{causeID:checked.child.cause,firstFrame:state.firstFrame});
@@ -135,7 +137,7 @@ async function retire() {
 }
 window.__dvaGboGalleryStartupR880=Object.freeze({snapshot:()=>Object.freeze({schema:'dva-gallery-startup/v1',token:context.token,
   versionId:VERSION,attemptEpoch:context.attemptEpoch,ready:state.ready,retired:state.retired,firstFrame:state.firstFrame,
-  sourcePins:state.sourcePins,error:state.error,retirement:state.retirement}),retire});
+  sourcePins:state.sourcePins,sourceClosureManifest:state.sourceClosureManifest,error:state.error,retirement:state.retirement}),retire});
 window.addEventListener('dva-gallery-retire',()=>void retire());
 window.addEventListener('pagehide',()=>void retire(),{once:true});
 post('adapter','pending');

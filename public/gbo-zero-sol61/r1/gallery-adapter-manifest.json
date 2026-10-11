@@ -1,8 +1,8 @@
 {
-  "schema": "dva-gbo-zero-sol61-r1-parent-adapter-r927/v1",
+  "schema": "dva-gbo-zero-sol61-r1-parent-adapter-r967/v1",
   "sourceVersion": "gbo-zero-sol61-r1",
   "parentProtocol": "dva-gallery-startup/v1",
-  "nativeStatus": "pending-root-current-parent-native-r927",
+  "nativeStatus": "R957 limited render equivalence passed; R984 real adapter source-closure handshake passed under CPU; root parent host replay pending",
   "baseSourcePackageManifestSha256": "4321a2d49186f3380494328cb33e6bce54ebc8c752690e2b32bdb442c72bd65e",
   "sourceSealSha256": "c99188ec15317d209dc47490972221024e4ef6eec471639526dfa462e9625599",
   "sourceFiles": [
@@ -23,8 +23,8 @@
     },
     {
       "path": "source/observer.wgsl",
-      "bytes": 1364,
-      "sha256": "b04e724c05b9b3e4c1872278a3b2b3c5276f4e4e7f6a4433a47866038190906f"
+      "bytes": 1440,
+      "sha256": "528461d85be6f2833afb67b8f70c7d5f28b8510245b6d127b7faae6781c33b66"
     },
     {
       "path": "source/renderer.mjs",
@@ -49,14 +49,9 @@
   ],
   "wrapperFiles": [
     {
-      "path": "index.html",
-      "bytes": 3845,
-      "sha256": "fbe244f092a7961c38e462f791f6bc2a857378377fe0f0cff4502b595ef26467"
-    },
-    {
-      "path": "host.mjs",
-      "bytes": 10882,
-      "sha256": "c49417f8048e645973d70366c2fcecd11766ace36058ff50ee9bc0aa0be3004a"
+      "path": "gallery-startup-adapter.mjs",
+      "bytes": 9850,
+      "sha256": "5988e14528dd59f8a2751abe0bcfb7411ecc04194c0f68996d25062eefbe8d63"
     },
     {
       "path": "gallery-startup-bootstrap.js",
@@ -64,12 +59,36 @@
       "sha256": "b9afdd16c7a96cb9b7171fe03195ab8fcb28b918fcc189d949c898e6d5438871"
     },
     {
-      "path": "gallery-startup-adapter.mjs",
-      "bytes": 8770,
-      "sha256": "2d953b9170a645359e9908fe9fa1619fbfb6c1198fb9cdcfac2e6af2cebbf98c"
+      "path": "gallery-startup-bootstrap.js",
+      "bytes": 1671,
+      "sha256": "b9afdd16c7a96cb9b7171fe03195ab8fcb28b918fcc189d949c898e6d5438871"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 10882,
+      "sha256": "c49417f8048e645973d70366c2fcecd11766ace36058ff50ee9bc0aa0be3004a"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 10882,
+      "sha256": "c49417f8048e645973d70366c2fcecd11766ace36058ff50ee9bc0aa0be3004a"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3845,
+      "sha256": "fbe244f092a7961c38e462f791f6bc2a857378377fe0f0cff4502b595ef26467"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3845,
+      "sha256": "fbe244f092a7961c38e462f791f6bc2a857378377fe0f0cff4502b595ef26467"
+    },
+    {
+      "path": "source-closure-r967.json",
+      "bytes": 4580,
+      "sha256": "5cf129d42bcc90c817ce276a0e058f3c48e62fe042c2fa1fff7542ffba4e551e"
     }
   ],
-  "sourceCreativeBytesChanged": false,
   "limitedSourceFixtureEvidence": {
     "path": "outputs/request-20261011/gbo-root-acceptance-r883/ROOT-ACCEPTANCE.json",
     "sha256": "279c0674cccaea11da8bac55ff2801546ddc0984fc5c7b21b4e53bec680d7772"
@@ -77,5 +96,25 @@
   "rawR875FailurePreserved": {
     "path": "outputs/request-20261011/gbo-native-repair-r875/native-attempts/2026-10-11T03-33-56.103Z-6da4c7dd-f18a-46b3-bd24-b65b1f98b9af/RESULT.json",
     "sha256": "ecd16761811a407531f2e34e6a2a41f6737cf18c36bdd645dc78bfeecfff777a"
+  },
+  "currentSourcePackageManifestSha256": "35c9a6d1cd937f317088b8f2c582b214144ea10e863e2243c27c5a9fc93b21b1",
+  "sourceClosureManifest": {
+    "path": "source-closure-r967.json",
+    "sha256": "5cf129d42bcc90c817ce276a0e058f3c48e62fe042c2fa1fff7542ffba4e551e",
+    "schema": "dva-gbo-zero-sol61-r1-source-closure-r967/v1"
+  },
+  "creativeDesignChanged": false,
+  "creativeEditionChanged": false,
+  "technicalObserverBytesChanged": true,
+  "limitedNativeObserverEquivalence": {
+    "path": "outputs/request-20261011/gbo-observer-center-reuse-native-prep-r957/native-attempts/2026-10-11T05-09-45.617Z-a00c246a-ad7e-48c2-8d2e-59cb2cf7f92c/RESULT-R957.json",
+    "sha256": "bb292e25f15dd2f9bd5f072b0137ff21ece74a180a757a720fdf9f4d54476b79",
+    "status": "PASS_R957_ACTUAL_RENDER_EQUIVALENCE_LIMITED",
+    "comparisons": 32,
+    "passed": 32,
+    "maxChannelDelta": 0,
+    "meanChannelDelta": 0,
+    "qualityAcceptance": false,
+    "performanceClaim": false
   }
 }

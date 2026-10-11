@@ -1,0 +1,48 @@
+{
+  "schema": "dva-frag-r3-cpu-r1001/v1",
+  "status": "PASS_CPU_NATIVE_NOT_RUN",
+  "clockComparisons": 2709,
+  "syntax": [
+    {
+      "file": "app.mjs",
+      "exitCode": 0
+    },
+    {
+      "file": "runtime.mjs",
+      "exitCode": 0
+    },
+    {
+      "file": "source/plan.mjs",
+      "exitCode": 0
+    },
+    {
+      "file": "source/shaders.mjs",
+      "exitCode": 0
+    },
+    {
+      "file": "source/sound.mjs",
+      "exitCode": 0
+    }
+  ],
+  "exactPreservation": [
+    "900ms/radius132/ABI128/API",
+    "SFX",
+    "runtime R921 retirement",
+    "OPTICS",
+    "POST",
+    "reaction+fragment WORLD section"
+  ],
+  "causeGate": "passed positive/dedupe/room/retired checks",
+  "retirementRegression": {
+    "exitCode": 0,
+    "stdout": "R921 actual runtime dispose + page handler + parent validator tests passed"
+  },
+  "wgslCompilation": "not_run",
+  "actualSmokeQuality": "pending root GPU; procedural volume not rendered by CPU",
+  "normalSFXListening": "not_run",
+  "additionalAllowed": 1,
+  "additionalConsumed": 1,
+  "additionalRemaining": 0,
+  "historicalCreativeCount": "unknown",
+  "historicalCapRemaining": "unknown"
+}

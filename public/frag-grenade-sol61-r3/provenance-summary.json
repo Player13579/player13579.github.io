@@ -1,0 +1,55 @@
+{
+  "schema": "dva-frag-r3-provenance/v1",
+  "versionId": "frag-grenade-sol61-r3",
+  "groupId": "gunner-frag-grenade-sol61",
+  "creator": "GPT-6.1-Sol",
+  "creativeRevision": {
+    "authorizedAdditionalEditions": 1,
+    "consumed": 1,
+    "remaining": 0,
+    "historicalCount": "unknown",
+    "historicalCapRemaining": "unknown",
+    "reset": false,
+    "source": "Direct user authorization conveyed by root for one additional Frag grenade edition addressing rounded clumps/rings."
+  },
+  "parent": {
+    "versionId": "frag-grenade-sol61-r2",
+    "manifestSha256": "0909ad80676f6536e238e89ac1063e0e9f737ee2a234c093602dd7563c940bd9",
+    "publishedSourceCommit": "7beb509013e5713b6d4ad2591ccf84799b6fd845"
+  },
+  "packageManifestSha256": "3dd2c3fe8e6e7fa3150199410cf352a1493abbc25ed966d03c06f2041af7f0df",
+  "packageSeal": "package-seal.json",
+  "cpuEvidence": {
+    "path": "cpu-result-r1001.json",
+    "sha256": "171ec969904f25c21f2d71c9050a7d8f67797c1af0beb94b3cc6fad58e1f9c74",
+    "status": "PASS_CPU_NATIVE_NOT_RUN"
+  },
+  "qualityStatus": "in-progress",
+  "nativeStatus": "pass-limited-private-isolated-r3-native",
+  "humanSfxListening": "not-run",
+  "adoption": "unknown/unadopted candidate",
+  "userAdopted": false,
+  "gameIntegration": "not-connected",
+  "actualGpuQuality": "not-run",
+  "publication": "private-stage-only",
+  "nativeEvidence": {
+    "path": "native-r1002/RESULT.json",
+    "sha256": "c8d6ae81fadceaead51c87758f76c100bf202e0a42bbfbfca32d24f6406a1596",
+    "status": "PASS_R1002_R3_NATIVE_SHADER_SMOKE_EXPIRY_RETIREMENT",
+    "scope": "isolated R3 actual shader compilation, H64 smoke phase captures, causal expiry and attached-frame retirement; no adoption/full-quality/audio/browser compatibility claims"
+  },
+  "parentGalleryStatus": "pending-parent-gallery-r3",
+  "nativeEvidenceFiles": [
+    "native-r1002/RESULT.json",
+    "native-r1002/captures/smoke-400.png",
+    "native-r1002/captures/smoke-600.png",
+    "native-r1002/captures/source-off.png",
+    "native-r1002/captures/observer-off.png",
+    "native-r1002/captures/expiry-900.png"
+  ],
+  "visualReview": {
+    "scope": "root-inspected isolated smoke-400/smoke-600 captures",
+    "finding": "continuous diffuse gray-brown cloud; no two hard rounded clumps/material ring visible",
+    "decision": "targeted-still improvement only; overall quality not accepted"
+  }
+}

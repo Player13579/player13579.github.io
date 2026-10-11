@@ -1,0 +1,121 @@
+{
+  "schema": "dva-gbo-zero-sol61-r1-source-closure-r967/v1",
+  "versionId": "gbo-zero-sol61-r1",
+  "technicalRevision": "gbo-observer-center-reuse-r967",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "creativeEdition": 1,
+  "creativeCap": 5,
+  "creativeDesignChanged": false,
+  "creativeEditionConsumed": false,
+  "authoringSealPreserved": true,
+  "originalSourceSealSha256": "c99188ec15317d209dc47490972221024e4ef6eec471639526dfa462e9625599",
+  "originalSourceClosure": [
+    {
+      "path": "source/common.wgsl",
+      "bytes": 946,
+      "sha256": "22802bead58af0fa393e4a1c73e67424030720ff1e156ef1402b0d0a1d80a03a"
+    },
+    {
+      "path": "source/index.html",
+      "bytes": 797,
+      "sha256": "b57b8b896fdb313630ab094cf517b74d3b47fbdcc94585f0e3ee7a18d25b2f82"
+    },
+    {
+      "path": "source/model.mjs",
+      "bytes": 3993,
+      "sha256": "21f94c0f61177d5f2e56c743d9ad4a339bbfa82bb65ac04c5e4ef7dc137ebd08"
+    },
+    {
+      "path": "source/observer.wgsl",
+      "bytes": 1364,
+      "sha256": "b04e724c05b9b3e4c1872278a3b2b3c5276f4e4e7f6a4433a47866038190906f"
+    },
+    {
+      "path": "source/renderer.mjs",
+      "bytes": 4922,
+      "sha256": "2f3ea9b597336875fa8e5f0d58eeffeb7302aaf78387ef3790b4c890c2a1b563"
+    },
+    {
+      "path": "source/runtime.mjs",
+      "bytes": 6875,
+      "sha256": "45bf627e335a3f63abd1f8904d5f61dae0e99e6e9220e93fbc56435f53926962"
+    },
+    {
+      "path": "source/sfx.mjs",
+      "bytes": 2805,
+      "sha256": "df2f026bcff21f306787f956035e653eb49fcdac89d0fd6a0a36b8b545c1dbfa"
+    },
+    {
+      "path": "source/world.wgsl",
+      "bytes": 2250,
+      "sha256": "99903c6b54051763556a018db5153400a508ae6e14e371e2c1ead17dc606d0d4"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "source/common.wgsl",
+      "bytes": 946,
+      "sha256": "22802bead58af0fa393e4a1c73e67424030720ff1e156ef1402b0d0a1d80a03a"
+    },
+    {
+      "path": "source/index.html",
+      "bytes": 797,
+      "sha256": "b57b8b896fdb313630ab094cf517b74d3b47fbdcc94585f0e3ee7a18d25b2f82"
+    },
+    {
+      "path": "source/model.mjs",
+      "bytes": 3993,
+      "sha256": "21f94c0f61177d5f2e56c743d9ad4a339bbfa82bb65ac04c5e4ef7dc137ebd08"
+    },
+    {
+      "path": "source/observer.wgsl",
+      "bytes": 1440,
+      "sha256": "528461d85be6f2833afb67b8f70c7d5f28b8510245b6d127b7faae6781c33b66"
+    },
+    {
+      "path": "source/renderer.mjs",
+      "bytes": 4922,
+      "sha256": "2f3ea9b597336875fa8e5f0d58eeffeb7302aaf78387ef3790b4c890c2a1b563"
+    },
+    {
+      "path": "source/runtime.mjs",
+      "bytes": 6875,
+      "sha256": "45bf627e335a3f63abd1f8904d5f61dae0e99e6e9220e93fbc56435f53926962"
+    },
+    {
+      "path": "source/sfx.mjs",
+      "bytes": 2805,
+      "sha256": "df2f026bcff21f306787f956035e653eb49fcdac89d0fd6a0a36b8b545c1dbfa"
+    },
+    {
+      "path": "source/world.wgsl",
+      "bytes": 2250,
+      "sha256": "99903c6b54051763556a018db5153400a508ae6e14e371e2c1ead17dc606d0d4"
+    }
+  ],
+  "observerChange": {
+    "kind": "faithful technical observer center-texel reuse",
+    "originalSha256": "b04e724c05b9b3e4c1872278a3b2b3c5276f4e4e7f6a4433a47866038190906f",
+    "candidateSha256": "528461d85be6f2833afb67b8f70c7d5f28b8510245b6d127b7faae6781c33b66",
+    "detail": "Reuse the already fetched radiation center texel at the existing center 3x3 PSF slot. Preserve sample position, branch slot, weight and accumulation order; no creative, material, world-shader, event, or SFX changes.",
+    "nativePerformanceClaim": false
+  },
+  "nativeEvidence": {
+    "path": "outputs/request-20261011/gbo-observer-center-reuse-native-prep-r957/native-attempts/2026-10-11T05-09-45.617Z-a00c246a-ad7e-48c2-8d2e-59cb2cf7f92c/RESULT-R957.json",
+    "sha256": "bb292e25f15dd2f9bd5f072b0137ff21ece74a180a757a720fdf9f4d54476b79",
+    "status": "PASS_R957_ACTUAL_RENDER_EQUIVALENCE_LIMITED",
+    "matchedActualRenderedComparisons": 32,
+    "passedComparisons": 32,
+    "maxChannelDelta": 0,
+    "meanChannelDelta": 0,
+    "dimensionsAndInputs": "H64/H128, DPR1/DPR2, 0/45 degree, both fixture stages, 160/760 ms held ages",
+    "explicitGpuDisposeAndLostCleanup": true,
+    "cleanupAllClosed": true,
+    "scope": "limited observer render-byte equivalence; no visual quality, frame-time, game-integration, SFX-listening, Safari/iPad or adoption claim"
+  },
+  "sourceTest": {
+    "baselineCandidateManifestSha256": "2100b306c486e92b0c2d06cf8a30903ff2e5405d90a9f8c253b17d5fedd8adc1",
+    "optimizedCandidateManifestSha256": "9762b5555c4046d7505b6ecbb44a28ab7dc4289631419d56a59473548ff15797",
+    "nativeParentCommit": "ea73c69095266881626205915e6ea51887bee6b3"
+  }
+}

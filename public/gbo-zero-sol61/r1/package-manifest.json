@@ -18,7 +18,7 @@
     "bytes": 9490,
     "sha256": "bdb52c0016bbb49a927255cf38f9f80c35fb92670e7d63d79bd079fe7a2c2ee2"
   },
-  "status": "SEALED_SOURCE_CPU_READY_NATIVE_NOT_RUN",
+  "status": "TECHNICAL_DERIVATIVE_R967_PRIVATE_NATIVE_EQUIVALENCE_LIMITED",
   "entry": "package/index.html",
   "api": "globalThis.__gboZero",
   "runtimeClosure": [
@@ -39,8 +39,8 @@
     },
     {
       "path": "package/observer.wgsl",
-      "bytes": 1364,
-      "sha256": "b04e724c05b9b3e4c1872278a3b2b3c5276f4e4e7f6a4433a47866038190906f"
+      "bytes": 1440,
+      "sha256": "528461d85be6f2833afb67b8f70c7d5f28b8510245b6d127b7faae6781c33b66"
     },
     {
       "path": "package/renderer.mjs",
@@ -82,11 +82,11 @@
       "exitCode": 0
     }
   ],
-  "actualWGSLCompilation": "not_run;mock APIs not compiler proof",
-  "actualGPUQuality": "not_run",
+  "actualWGSLCompilation": "passed for original R927 and optimized observer in R957 actual native WebGPU render comparison; exact observer hashes and compilation diagnostics are bound by the R957 receipt",
+  "actualGPUQuality": "not_run; R957 establishes limited pixel equivalence only",
   "normalSFXListening": "not_run",
-  "publication": "not_run",
-  "mainIntegration": "not_run",
+  "publication": "private candidate only; no push",
+  "mainIntegration": "not connected",
   "adoption": "unknown",
   "bSourceRevision": {
     "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
@@ -107,5 +107,26 @@
     "authority": "primary confirmed current cached canonical; no network"
   },
   "hostContract": "CONTRACT.md",
-  "ownedTransientResources": []
+  "ownedTransientResources": [],
+  "sourceClosureManifest": {
+    "path": "source-closure-r967.json",
+    "sha256": "5cf129d42bcc90c817ce276a0e058f3c48e62fe042c2fa1fff7542ffba4e551e",
+    "schema": "dva-gbo-zero-sol61-r1-source-closure-r967/v1"
+  },
+  "technicalRevision": {
+    "id": "gbo-observer-center-reuse-r967",
+    "type": "faithful technical derivative",
+    "creativeDesignChanged": false,
+    "creativeEditionChanged": false,
+    "creativeCapConsumed": false,
+    "sourceSealSha256": "c99188ec15317d209dc47490972221024e4ef6eec471639526dfa462e9625599",
+    "nativeEvidencePath": "outputs/request-20261011/gbo-observer-center-reuse-native-prep-r957/native-attempts/2026-10-11T05-09-45.617Z-a00c246a-ad7e-48c2-8d2e-59cb2cf7f92c/RESULT-R957.json",
+    "nativeEvidenceSha256": "bb292e25f15dd2f9bd5f072b0137ff21ece74a180a757a720fdf9f4d54476b79",
+    "nativeEvidenceStatus": "PASS_R957_ACTUAL_RENDER_EQUIVALENCE_LIMITED",
+    "renderedComparisonCount": 32,
+    "renderedComparisonsPassed": 32,
+    "maxChannelDelta": 0,
+    "meanChannelDelta": 0,
+    "performanceClaim": false
+  }
 }

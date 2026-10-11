@@ -1,0 +1,69 @@
+{
+  "schema": "dva-gbo-zero-sol61-r2-provenance-r1000/v1",
+  "versionId": "gbo-zero-sol61-r2",
+  "groupId": "gbo-overdrive-sol61",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "creativeEdition": 2,
+  "creativeEditionLimit": 5,
+  "additionalCreativeEditionsRemaining": 3,
+  "parentVersionId": "gbo-zero-sol61-r1",
+  "sourceSeal": "source-seal-r2.json",
+  "sourceSealSha256": "55b5afeafcc9923679851bc4461aa44733156ea83e6387e8bc32e122321cbeee",
+  "packageManifestSha256": "2c1d6a8e1d38196e8002783503f680e21563b5dd82e5bebaf8a1af52f145aceb",
+  "sourceManifestSha256": "e4922ce80fa3b85d5d5ced01586ac621a146658bf030b43d08f1d4b1139c08db",
+  "runtimeClosure": [
+    {
+      "path": "package/common.wgsl",
+      "bytes": 946,
+      "sha256": "22802bead58af0fa393e4a1c73e67424030720ff1e156ef1402b0d0a1d80a03a"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 797,
+      "sha256": "5e6ee200745d75155e1e9a6784a85aac350048335bf1a17cc162e29468c00e0b"
+    },
+    {
+      "path": "package/model.mjs",
+      "bytes": 3993,
+      "sha256": "9a24108e8d2303f85c5d7a3c78fdface2145f3ea130a74e3d0d06ce40bd24ae0"
+    },
+    {
+      "path": "package/observer.wgsl",
+      "bytes": 1440,
+      "sha256": "528461d85be6f2833afb67b8f70c7d5f28b8510245b6d127b7faae6781c33b66"
+    },
+    {
+      "path": "package/renderer.mjs",
+      "bytes": 4922,
+      "sha256": "2f3ea9b597336875fa8e5f0d58eeffeb7302aaf78387ef3790b4c890c2a1b563"
+    },
+    {
+      "path": "package/runtime.mjs",
+      "bytes": 6875,
+      "sha256": "45bf627e335a3f63abd1f8904d5f61dae0e99e6e9220e93fbc56435f53926962"
+    },
+    {
+      "path": "package/sfx.mjs",
+      "bytes": 2805,
+      "sha256": "df2f026bcff21f306787f956035e653eb49fcdac89d0fd6a0a36b8b545c1dbfa"
+    },
+    {
+      "path": "package/world.wgsl",
+      "bytes": 3203,
+      "sha256": "2b55f37d833d412cf67ee2da152352717cbe19da1d6398a5799b8ec104bdc5c3"
+    }
+  ],
+  "status": "pass-limited-actual-native-held-stills",
+  "adoption": "unknown",
+  "mainGameIntegration": "not_connected",
+  "publication": "staged-only",
+  "qualityEvidence": [
+    "outputs/request-20261011/gbo-creative-quality-r995/r2-candidate/CREATIVE-REVISION-R2.md",
+    "outputs/request-20261011/gbo-creative-quality-r995/r2-candidate/CPU-RESULT-R2.json"
+  ],
+  "nativeEvidence": "outputs/request-20261011/gbo-r2-native-r1000/native-attempts/2026-10-11T08-01-10.325Z-8245342b-94d4-4173-bed4-1a433fb6ac08/RESULT-R1000.json",
+  "nativeEvidenceSha256": "42c497190823d0200ad41f33cedeecabbe5edb08986e15241f1138a77955cb3b",
+  "rootStillReview": "outputs/request-20261011/gbo-r2-native-r1000/ROOT-STILL-REVIEW.json",
+  "rootStillReviewSha256": "1097022f278cda8f1912b04b085da3199f081aed9996c1a6bb1531b732453531",
+  "nativeEvidenceScope": "Root-only actual GPU compilation and held still capture. Captures are not full-lifetime quality acceptance, ordinary SFX listening, public/gallery replay, adoption, Safari/iPad, or main-game integration."
+}

@@ -1,0 +1,1203 @@
+{
+  "schema": "dva-frag-r3-native-r1002/v1",
+  "status": "PASS_R1002_R3_NATIVE_SHADER_SMOKE_EXPIRY_RETIREMENT",
+  "runId": "2026-10-11T08-20-24.107Z-8973e8a6-edd8-4e30-936a-1eb68cb4130a",
+  "versionId": "frag-grenade-sol61-r3",
+  "manifestSha256": "3dd2c3fe8e6e7fa3150199410cf352a1493abbc25ed966d03c06f2041af7f0df",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1253,
+      "sha256": "a7505740b2acc98879602cbd30a599257dddc4cbd9572ea9f7574e6be662e9ce"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9682,
+      "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 9850,
+      "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 4530,
+      "sha256": "878d55c5bde023b5d00c8541d9ac5c2e435a9b0db358ca4aef3ca34a88585a73"
+    },
+    {
+      "path": "source/shaders.mjs",
+      "bytes": 11508,
+      "sha256": "991f5a7b98c2c4f98890c5bb5394b5a14f535a8f044719160e98c97a496cd71c"
+    },
+    {
+      "path": "source/sound.mjs",
+      "bytes": 4059,
+      "sha256": "8176eb773ce123ee3e6a9554cbfb3c481a2e5b5ec205e4f6234ec7d28fe69d64"
+    }
+  ],
+  "scope": "isolated R3 actual shader compilation, H64 smoke phase captures, causal expiry and attached-frame retirement; no adoption/full-quality/audio/browser compatibility claims",
+  "verify": "frag-r1002",
+  "steps": [
+    {
+      "name": "smoke-400",
+      "phase": {
+        "name": "smoke-400",
+        "ageMs": 400,
+        "sourceOn": true,
+        "observerOn": true
+      },
+      "before": {
+        "causeId": "synthetic-frag-2",
+        "ageMs": 0
+      },
+      "proof": {
+        "versionId": "frag-grenade-sol61-r3",
+        "causeId": "synthetic-frag-2",
+        "ageMs": 400,
+        "generation": 3,
+        "targetGeneration": 1,
+        "sequence": 3,
+        "submit": 3,
+        "passes": 3,
+        "passOrder": [
+          "world-source",
+          "source-bound-optics",
+          "final-display"
+        ],
+        "opticalDraw": true,
+        "opticalScissor": [
+          306,
+          208,
+          329,
+          328
+        ],
+        "width": 980,
+        "height": 620,
+        "viewportWidth": 980,
+        "viewportHeight": 620,
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "sourceOn": true,
+        "observerOn": true
+      },
+      "after": {
+        "causeId": "synthetic-frag-2",
+        "ageMs": 400,
+        "renderer": {
+          "versionId": "frag-grenade-sol61-r3",
+          "ready": true,
+          "generation": 3,
+          "targetGeneration": 1,
+          "submits": 3,
+          "pending": 0,
+          "canvas": [
+            980,
+            620
+          ],
+          "lastSubmitted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-2",
+            "ageMs": 400,
+            "generation": 3,
+            "targetGeneration": 1,
+            "sequence": 3,
+            "submit": 3,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": true,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": false,
+            "canvasConnected": true,
+            "sourceOn": true,
+            "observerOn": true
+          },
+          "lastCompleted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-2",
+            "ageMs": 400,
+            "generation": 3,
+            "targetGeneration": 1,
+            "sequence": 3,
+            "submit": 3,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": true,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "sourceOn": true,
+            "observerOn": true
+          },
+          "errors": []
+        },
+        "controls": {
+          "sourceOn": true,
+          "observerOn": true,
+          "contextOn": true,
+          "reducedMotion": false
+        },
+        "projection": {
+          "actorHeightPx": 64,
+          "logicalActorHeight": 64,
+          "scale": 1,
+          "canvasWidth": 980,
+          "canvasHeight": 620
+        }
+      },
+      "queueJoin": {
+        "submitted": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "sequence": 3,
+          "at": 1603.9000000003725
+        },
+        "completed": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "throughSequence": 3,
+          "completed": true,
+          "at": 1617.2000000001863
+        },
+        "traceErrors": []
+      },
+      "png": {
+        "file": "smoke-400.png",
+        "bytes": 16063,
+        "sha256": "39888b4dfca75227c37af4d1a914d85a3fc5c86d6c1276344eeb88714bf8f073",
+        "dimensions": {
+          "width": 1120,
+          "height": 760
+        },
+        "canvasExtent": {
+          "width": 980,
+          "height": 620
+        },
+        "canvasBox": {
+          "x": 0,
+          "y": 0,
+          "width": 980,
+          "height": 620
+        },
+        "canvasState": {
+          "connected": true,
+          "visible": true,
+          "dpr": 1
+        }
+      }
+    },
+    {
+      "name": "smoke-600",
+      "phase": {
+        "name": "smoke-600",
+        "ageMs": 600,
+        "sourceOn": true,
+        "observerOn": true
+      },
+      "before": {
+        "causeId": "synthetic-frag-3",
+        "ageMs": 0
+      },
+      "proof": {
+        "versionId": "frag-grenade-sol61-r3",
+        "causeId": "synthetic-frag-3",
+        "ageMs": 600,
+        "generation": 5,
+        "targetGeneration": 1,
+        "sequence": 5,
+        "submit": 5,
+        "passes": 3,
+        "passOrder": [
+          "world-source",
+          "source-bound-optics",
+          "final-display"
+        ],
+        "opticalDraw": true,
+        "opticalScissor": [
+          306,
+          208,
+          329,
+          328
+        ],
+        "width": 980,
+        "height": 620,
+        "viewportWidth": 980,
+        "viewportHeight": 620,
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "sourceOn": true,
+        "observerOn": true
+      },
+      "after": {
+        "causeId": "synthetic-frag-3",
+        "ageMs": 600,
+        "renderer": {
+          "versionId": "frag-grenade-sol61-r3",
+          "ready": true,
+          "generation": 5,
+          "targetGeneration": 1,
+          "submits": 5,
+          "pending": 0,
+          "canvas": [
+            980,
+            620
+          ],
+          "lastSubmitted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-3",
+            "ageMs": 600,
+            "generation": 5,
+            "targetGeneration": 1,
+            "sequence": 5,
+            "submit": 5,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": true,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": false,
+            "canvasConnected": true,
+            "sourceOn": true,
+            "observerOn": true
+          },
+          "lastCompleted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-3",
+            "ageMs": 600,
+            "generation": 5,
+            "targetGeneration": 1,
+            "sequence": 5,
+            "submit": 5,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": true,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "sourceOn": true,
+            "observerOn": true
+          },
+          "errors": []
+        },
+        "controls": {
+          "sourceOn": true,
+          "observerOn": true,
+          "contextOn": true,
+          "reducedMotion": false
+        },
+        "projection": {
+          "actorHeightPx": 64,
+          "logicalActorHeight": 64,
+          "scale": 1,
+          "canvasWidth": 980,
+          "canvasHeight": 620
+        }
+      },
+      "queueJoin": {
+        "submitted": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "sequence": 5,
+          "at": 2037.2000000001863
+        },
+        "completed": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "throughSequence": 5,
+          "completed": true,
+          "at": 2050.300000000745
+        },
+        "traceErrors": []
+      },
+      "png": {
+        "file": "smoke-600.png",
+        "bytes": 17436,
+        "sha256": "6d1d20dd3e0f4a0db48155cb1bb7b4eb91aa3bc0b4170275eabd88df3f20475f",
+        "dimensions": {
+          "width": 1120,
+          "height": 760
+        },
+        "canvasExtent": {
+          "width": 980,
+          "height": 620
+        },
+        "canvasBox": {
+          "x": 0,
+          "y": 0,
+          "width": 980,
+          "height": 620
+        },
+        "canvasState": {
+          "connected": true,
+          "visible": true,
+          "dpr": 1
+        }
+      }
+    },
+    {
+      "name": "source-off",
+      "phase": {
+        "name": "source-off",
+        "ageMs": 400,
+        "sourceOn": false,
+        "observerOn": true
+      },
+      "before": {
+        "causeId": "synthetic-frag-4",
+        "ageMs": 0
+      },
+      "proof": {
+        "versionId": "frag-grenade-sol61-r3",
+        "causeId": "synthetic-frag-4",
+        "ageMs": 400,
+        "generation": 7,
+        "targetGeneration": 1,
+        "sequence": 7,
+        "submit": 7,
+        "passes": 3,
+        "passOrder": [
+          "world-source",
+          "source-bound-optics",
+          "final-display"
+        ],
+        "opticalDraw": false,
+        "opticalScissor": [
+          306,
+          208,
+          329,
+          328
+        ],
+        "width": 980,
+        "height": 620,
+        "viewportWidth": 980,
+        "viewportHeight": 620,
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "sourceOn": false,
+        "observerOn": true
+      },
+      "after": {
+        "causeId": "synthetic-frag-4",
+        "ageMs": 400,
+        "renderer": {
+          "versionId": "frag-grenade-sol61-r3",
+          "ready": true,
+          "generation": 7,
+          "targetGeneration": 1,
+          "submits": 7,
+          "pending": 0,
+          "canvas": [
+            980,
+            620
+          ],
+          "lastSubmitted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-4",
+            "ageMs": 400,
+            "generation": 7,
+            "targetGeneration": 1,
+            "sequence": 7,
+            "submit": 7,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": false,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": false,
+            "canvasConnected": true,
+            "sourceOn": false,
+            "observerOn": true
+          },
+          "lastCompleted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-4",
+            "ageMs": 400,
+            "generation": 7,
+            "targetGeneration": 1,
+            "sequence": 7,
+            "submit": 7,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": false,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "sourceOn": false,
+            "observerOn": true
+          },
+          "errors": []
+        },
+        "controls": {
+          "sourceOn": false,
+          "observerOn": true,
+          "contextOn": true,
+          "reducedMotion": false
+        },
+        "projection": {
+          "actorHeightPx": 64,
+          "logicalActorHeight": 64,
+          "scale": 1,
+          "canvasWidth": 980,
+          "canvasHeight": 620
+        }
+      },
+      "queueJoin": {
+        "submitted": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "sequence": 7,
+          "at": 2281.300000000745
+        },
+        "completed": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "throughSequence": 7,
+          "completed": true,
+          "at": 2289.5
+        },
+        "traceErrors": []
+      },
+      "png": {
+        "file": "source-off.png",
+        "bytes": 9033,
+        "sha256": "8e12ccd34cf6b71ad575bb19f7d6850a7ee60cdf7b617283db094221ee17236d",
+        "dimensions": {
+          "width": 1120,
+          "height": 760
+        },
+        "canvasExtent": {
+          "width": 980,
+          "height": 620
+        },
+        "canvasBox": {
+          "x": 0,
+          "y": 0,
+          "width": 980,
+          "height": 620
+        },
+        "canvasState": {
+          "connected": true,
+          "visible": true,
+          "dpr": 1
+        }
+      }
+    },
+    {
+      "name": "observer-off",
+      "phase": {
+        "name": "observer-off",
+        "ageMs": 400,
+        "sourceOn": true,
+        "observerOn": false
+      },
+      "before": {
+        "causeId": "synthetic-frag-5",
+        "ageMs": 0
+      },
+      "proof": {
+        "versionId": "frag-grenade-sol61-r3",
+        "causeId": "synthetic-frag-5",
+        "ageMs": 400,
+        "generation": 9,
+        "targetGeneration": 1,
+        "sequence": 8,
+        "submit": 8,
+        "passes": 3,
+        "passOrder": [
+          "world-source",
+          "source-bound-optics",
+          "final-display"
+        ],
+        "opticalDraw": false,
+        "opticalScissor": [
+          306,
+          208,
+          329,
+          328
+        ],
+        "width": 980,
+        "height": 620,
+        "viewportWidth": 980,
+        "viewportHeight": 620,
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "sourceOn": true,
+        "observerOn": false
+      },
+      "after": {
+        "causeId": "synthetic-frag-5",
+        "ageMs": 400,
+        "renderer": {
+          "versionId": "frag-grenade-sol61-r3",
+          "ready": true,
+          "generation": 9,
+          "targetGeneration": 1,
+          "submits": 8,
+          "pending": 0,
+          "canvas": [
+            980,
+            620
+          ],
+          "lastSubmitted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-5",
+            "ageMs": 400,
+            "generation": 9,
+            "targetGeneration": 1,
+            "sequence": 8,
+            "submit": 8,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": false,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": false,
+            "canvasConnected": true,
+            "sourceOn": true,
+            "observerOn": false
+          },
+          "lastCompleted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-5",
+            "ageMs": 400,
+            "generation": 9,
+            "targetGeneration": 1,
+            "sequence": 8,
+            "submit": 8,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": false,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "sourceOn": true,
+            "observerOn": false
+          },
+          "errors": []
+        },
+        "controls": {
+          "sourceOn": true,
+          "observerOn": false,
+          "contextOn": true,
+          "reducedMotion": false
+        },
+        "projection": {
+          "actorHeightPx": 64,
+          "logicalActorHeight": 64,
+          "scale": 1,
+          "canvasWidth": 980,
+          "canvasHeight": 620
+        }
+      },
+      "queueJoin": {
+        "submitted": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "sequence": 8,
+          "at": 2507.9000000003725
+        },
+        "completed": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "throughSequence": 8,
+          "completed": true,
+          "at": 2520.100000000559
+        },
+        "traceErrors": []
+      },
+      "png": {
+        "file": "observer-off.png",
+        "bytes": 16070,
+        "sha256": "b301d225d72f6d59ced462e9399d0b13200da646b7c7ba865e8f33cd4195f1e6",
+        "dimensions": {
+          "width": 1120,
+          "height": 760
+        },
+        "canvasExtent": {
+          "width": 980,
+          "height": 620
+        },
+        "canvasBox": {
+          "x": 0,
+          "y": 0,
+          "width": 980,
+          "height": 620
+        },
+        "canvasState": {
+          "connected": true,
+          "visible": true,
+          "dpr": 1
+        }
+      }
+    },
+    {
+      "name": "expiry-900",
+      "phase": {
+        "name": "expiry-900",
+        "ageMs": 900,
+        "sourceOn": true,
+        "observerOn": true
+      },
+      "before": {
+        "causeId": "synthetic-frag-6",
+        "ageMs": 0
+      },
+      "proof": {
+        "versionId": "frag-grenade-sol61-r3",
+        "causeId": "synthetic-frag-6",
+        "ageMs": 900,
+        "generation": 11,
+        "targetGeneration": 1,
+        "sequence": 9,
+        "submit": 9,
+        "passes": 3,
+        "passOrder": [
+          "world-source",
+          "source-bound-optics",
+          "final-display"
+        ],
+        "opticalDraw": false,
+        "opticalScissor": [
+          306,
+          208,
+          329,
+          328
+        ],
+        "width": 980,
+        "height": 620,
+        "viewportWidth": 980,
+        "viewportHeight": 620,
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "sourceOn": true,
+        "observerOn": true
+      },
+      "after": {
+        "causeId": "synthetic-frag-6",
+        "ageMs": 900,
+        "renderer": {
+          "versionId": "frag-grenade-sol61-r3",
+          "ready": true,
+          "generation": 11,
+          "targetGeneration": 1,
+          "submits": 9,
+          "pending": 0,
+          "canvas": [
+            980,
+            620
+          ],
+          "lastSubmitted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-6",
+            "ageMs": 900,
+            "generation": 11,
+            "targetGeneration": 1,
+            "sequence": 9,
+            "submit": 9,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": false,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": false,
+            "canvasConnected": true,
+            "sourceOn": true,
+            "observerOn": true
+          },
+          "lastCompleted": {
+            "versionId": "frag-grenade-sol61-r3",
+            "causeId": "synthetic-frag-6",
+            "ageMs": 900,
+            "generation": 11,
+            "targetGeneration": 1,
+            "sequence": 9,
+            "submit": 9,
+            "passes": 3,
+            "passOrder": [
+              "world-source",
+              "source-bound-optics",
+              "final-display"
+            ],
+            "opticalDraw": false,
+            "opticalScissor": [
+              306,
+              208,
+              329,
+              328
+            ],
+            "width": 980,
+            "height": 620,
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "canvasConnected": true,
+            "sourceOn": true,
+            "observerOn": true
+          },
+          "errors": []
+        },
+        "controls": {
+          "sourceOn": true,
+          "observerOn": true,
+          "contextOn": true,
+          "reducedMotion": false
+        },
+        "projection": {
+          "actorHeightPx": 64,
+          "logicalActorHeight": 64,
+          "scale": 1,
+          "canvasWidth": 980,
+          "canvasHeight": 620
+        }
+      },
+      "queueJoin": {
+        "submitted": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "sequence": 9,
+          "at": 2725.7000000001863
+        },
+        "completed": {
+          "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+          "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+          "throughSequence": 9,
+          "completed": true,
+          "at": 2853.4000000003725
+        },
+        "traceErrors": []
+      },
+      "png": {
+        "file": "expiry-900.png",
+        "bytes": 9033,
+        "sha256": "8e12ccd34cf6b71ad575bb19f7d6850a7ee60cdf7b617283db094221ee17236d",
+        "dimensions": {
+          "width": 1120,
+          "height": 760
+        },
+        "canvasExtent": {
+          "width": 980,
+          "height": 620
+        },
+        "canvasBox": {
+          "x": 0,
+          "y": 0,
+          "width": 980,
+          "height": 620
+        },
+        "canvasState": {
+          "connected": true,
+          "visible": true,
+          "dpr": 1
+        }
+      }
+    }
+  ],
+  "cleanup": {
+    "server": "closed",
+    "browser": "closed",
+    "context": "closed",
+    "renderer": {
+      "schema": "dva-frag-renderer-retirement-r921/v1",
+      "versionId": "frag-grenade-sol61-r3",
+      "disposeSettled": true,
+      "teardown": "disposed",
+      "deviceLifecycle": "destroyed-loss-settled",
+      "drained": true,
+      "destroyCalled": true,
+      "lostReason": "destroyed",
+      "lossMessage": "Device was destroyed.",
+      "pendingSettled": true,
+      "pendingCount": 0,
+      "queueDrained": true,
+      "resourcesDisposed": true,
+      "cleanupErrors": [],
+      "runtimeErrors": [],
+      "audioDisposeSettled": true,
+      "audioSnapshot": {
+        "verify": true,
+        "state": "uncreated",
+        "attempts": 0,
+        "starts": 0,
+        "voices": 0,
+        "played": [],
+        "errors": []
+      }
+    }
+  },
+  "origin": "http://127.0.0.1:52116",
+  "targetUrl": "http://127.0.0.1:52116/host.html?verify=frag-r1002&token=6564735a-25a6-4a8c-8c81-b460685bf518",
+  "expiry": {
+    "at899": {
+      "alive": true,
+      "t": 0.899,
+      "rupture": 7.96634823125101e-8,
+      "flame": 0,
+      "sourceRadiance": 7.169713408125909e-7,
+      "expansion": 0.9799333420992228,
+      "dust": 0.000044264906690960615,
+      "debris": 0.000044264906690960615,
+      "pressure": 0,
+      "motion": 1,
+      "tail": 0.000044264906690960615
+    },
+    "at900": {
+      "alive": false,
+      "t": 0.9,
+      "rupture": 7.82281434374e-8,
+      "flame": 0,
+      "sourceRadiance": 0,
+      "expansion": 0.9800203990465478,
+      "dust": 0,
+      "debris": 0,
+      "pressure": 0,
+      "motion": 1,
+      "tail": 0
+    }
+  },
+  "retirement": {
+    "frameConnected": true,
+    "ack": {
+      "schema": "dva-gallery-startup/v1",
+      "action": "retired",
+      "token": "6564735a-25a6-4a8c-8c81-b460685bf518",
+      "versionId": "frag-grenade-sol61-r3",
+      "attemptEpoch": 1002,
+      "sequence": 8,
+      "lifecycle": {
+        "disposeSettled": true,
+        "teardown": "disposed",
+        "deviceLifecycle": "destroyed-loss-settled",
+        "device": {
+          "status": "destroyed-loss-settled",
+          "drained": true,
+          "destroyCalled": true,
+          "lostReason": "destroyed"
+        },
+        "renderer": {
+          "schema": "dva-frag-renderer-retirement-r921/v1",
+          "versionId": "frag-grenade-sol61-r3",
+          "disposeSettled": true,
+          "teardown": "disposed",
+          "deviceLifecycle": "destroyed-loss-settled",
+          "drained": true,
+          "destroyCalled": true,
+          "lostReason": "destroyed",
+          "lossMessage": "Device was destroyed.",
+          "pendingSettled": true,
+          "pendingCount": 0,
+          "queueDrained": true,
+          "resourcesDisposed": true,
+          "cleanupErrors": [],
+          "runtimeErrors": [],
+          "audioDisposeSettled": true,
+          "audioSnapshot": {
+            "verify": true,
+            "state": "uncreated",
+            "attempts": 0,
+            "starts": 0,
+            "voices": 0,
+            "played": [],
+            "errors": []
+          }
+        },
+        "audioDisposeSettled": true
+      }
+    },
+    "at": 3300.100000000559
+  },
+  "shaderCompilation": {
+    "devices": [
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 9,
+        "device": {}
+      }
+    ],
+    "compiles": [
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "label": "frag-grenade-sol61-r3/shader0",
+        "codeBytes": 9673,
+        "messages": []
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "label": "frag-grenade-sol61-r3/shader1",
+        "codeBytes": 1682,
+        "messages": []
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "label": "frag-grenade-sol61-r3/shader2",
+        "codeBytes": 1804,
+        "messages": []
+      }
+    ],
+    "errors": [],
+    "submits": [
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 1,
+        "at": 1493.9000000003725
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 2,
+        "at": 1590.7000000001863
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 3,
+        "at": 1603.9000000003725
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 4,
+        "at": 2024.2000000001863
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 5,
+        "at": 2037.2000000001863
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 6,
+        "at": 2274.4000000003725
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 7,
+        "at": 2281.300000000745
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 8,
+        "at": 2507.9000000003725
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "sequence": 9,
+        "at": 2725.7000000001863
+      }
+    ],
+    "completions": [
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "throughSequence": 1,
+        "completed": true,
+        "at": 1529.6000000005588
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "throughSequence": 2,
+        "completed": true,
+        "at": 1605
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "throughSequence": 3,
+        "completed": true,
+        "at": 1617.2000000001863
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "throughSequence": 4,
+        "completed": true,
+        "at": 2035.1000000005588
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "throughSequence": 5,
+        "completed": true,
+        "at": 2050.300000000745
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "throughSequence": 6,
+        "completed": true,
+        "at": 2286.7000000001863
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "throughSequence": 7,
+        "completed": true,
+        "at": 2289.5
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "throughSequence": 8,
+        "completed": true,
+        "at": 2520.100000000559
+      },
+      {
+        "frame": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002",
+        "queueId": "http://127.0.0.1:52116/candidate/index.html?embed=1&verify=frag-r1002&galleryStartupToken=6564735a-25a6-4a8c-8c81-b460685bf518&galleryVersionId=frag-grenade-sol61-r3&galleryAttemptEpoch=1002#queue-0",
+        "throughSequence": 9,
+        "completed": true,
+        "at": 2853.4000000003725
+      }
+    ]
+  }
+}

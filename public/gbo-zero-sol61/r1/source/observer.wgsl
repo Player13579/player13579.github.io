@@ -7,7 +7,9 @@ fn displayColor(c:vec3f)->vec3f{return select(c*12.92,1.055*pow(c,vec3f(1./2.4))
   var shoulder=vec3f(0.);var weight=0.;
   for(var y=-1;y<=1;y++){for(var x=-1;x<=1;x++){
    let delta=vec2f(f32(x),f32(y));let w=exp(-dot(delta,delta)*.65);
-   shoulder+=fetchLight(pos+vec2i(round(delta*pitch*2.3)))*w;weight+=w;
+   let samplePos=pos+vec2i(round(delta*pitch*2.3));
+   if(x==0&&y==0){shoulder+=radiation*w;}else{shoulder+=fetchLight(samplePos)*w;}
+   weight+=w;
   }}
   radiation+=shoulder/weight*.30;
  }
