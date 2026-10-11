@@ -1,0 +1,117 @@
+{
+  "schema": "dva-gbo-zero-sol61-r4-package-r1160/v1",
+  "versionId": "gbo-zero-sol61-r4",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "creativeEdition": 4,
+  "creativeCap": 5,
+  "remainingCreativeEditions": 1,
+  "parent": {
+    "versionId": "gbo-zero-sol61-r3",
+    "originalCreativeManifestSha256": "e36e10e82801127001c632eccdd663aa627fa05f0c1e55f606c3a1213b22fd10",
+    "technicalBaseVersionId": "gbo-zero-sol61-r3-diagnostics-r1",
+    "technicalBasePackageManifestSha256": "2d2d008011234d7f533054b278cb13bc4eae64654999a372d4c256e2e5221415",
+    "creativeReuse": "R3 creative VFX and runtime model retained; only registered SFX implementation updated from frozen R1156 R4 source."
+  },
+  "change": "R4 changes the registered magazine-commit and weapon-retirement sound response to the frozen R1156 mechanically excited receiver/latch implementation. Published R3 diagnostic runtime and all VFX sources remain byte-identical.",
+  "physicalModel": "declared_fantasy: 武器poseに拘束した発光場。反射する物体を追加しないので導体Fresnelは不適用。発光の近傍散乱は既存source-bound OBSを保持。カメラレンズ系を新設せずghost/flareを追加しない。",
+  "sourceDesignPath": "outputs/request-20261011/gbo-creative-r3-r1039/DESIGN-R1039.json",
+  "sourceDesignSha256": "f783553adccb4931dc54e43f66de357f953cf3be0ccf93e7417b9b5aa41e674d",
+  "sourceWorldSha256": "2b55f37d833d412cf67ee2da152352717cbe19da1d6398a5799b8ec104bdc5c3",
+  "worldSha256": "05e995b704be8b9912c4de2f239b25f095ef43065d6e60be7b4f1566bd80f43a",
+  "technicalBase": {
+    "id": "gbo-fixture-public-repair-r1037",
+    "candidatePackageManifestSha256": "5c29b5387871092a6bf2fd96a3d9a2fe88e680996fd78e4609445d8c078d0643",
+    "observerSha256": "9dd8520a204344047d248f8f052dd01dc03e92a87b65c6e176dc070428d69a19",
+    "nativeEvidence": "R1021 limited fixture geometry only; not this R3 package or current public route"
+  },
+  "clockChanged": false,
+  "phaseTimingsChanged": false,
+  "durationMs": 1450,
+  "observerChange": "R1037 exact actor-H diagnostic geometry; source/observer runtime ABI retained",
+  "sfxChange": true,
+  "apiChanged": false,
+  "runtimeClosure": [
+    {
+      "path": "package/common.wgsl",
+      "bytes": 946,
+      "sha256": "22802bead58af0fa393e4a1c73e67424030720ff1e156ef1402b0d0a1d80a03a"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 797,
+      "sha256": "088eb247bdce9fd193f498b3087754f8b70fc94e0c99642b3b735e59d7e06a78"
+    },
+    {
+      "path": "package/model.mjs",
+      "bytes": 3993,
+      "sha256": "1e336622659615cbece2753c889a06b96052354bf188b125679583ae22fd7c9c"
+    },
+    {
+      "path": "package/observer.wgsl",
+      "bytes": 1548,
+      "sha256": "9dd8520a204344047d248f8f052dd01dc03e92a87b65c6e176dc070428d69a19"
+    },
+    {
+      "path": "package/renderer.mjs",
+      "bytes": 8809,
+      "sha256": "0192d97207f5c6e01bd5e43826ae2c56d7349d5c30d8a4ec21b210089df5f84a"
+    },
+    {
+      "path": "package/runtime.mjs",
+      "bytes": 6875,
+      "sha256": "45bf627e335a3f63abd1f8904d5f61dae0e99e6e9220e93fbc56435f53926962"
+    },
+    {
+      "path": "package/sfx.mjs",
+      "bytes": 5013,
+      "sha256": "d7d8eae5507752551ed65fed3093221bc29980b1435bc080c565f8e38fc0f592"
+    },
+    {
+      "path": "package/world.wgsl",
+      "bytes": 3556,
+      "sha256": "05e995b704be8b9912c4de2f239b25f095ef43065d6e60be7b4f1566bd80f43a"
+    },
+    {
+      "path": "package/diagnostic-contract.mjs",
+      "bytes": 6239,
+      "sha256": "8b458365145ddf30223b242c05012b81e9d9c635575e6fea79b4625de597c142"
+    }
+  ],
+  "bSourceRevision": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "rules": [
+      {
+        "name": "基底.md",
+        "blob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+        "bytes": 128151,
+        "sha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364"
+      },
+      {
+        "name": "拡張.md",
+        "blob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+        "bytes": 77706,
+        "sha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67"
+      }
+    ],
+    "authority": "primary confirmed current cached canonical; no network"
+  },
+  "status": "PASS_CPU_DIAGNOSTICS_CONSUMER_CANDIDATE_ROOT_REVIEW_PENDING",
+  "adoption": "unknown",
+  "publication": "candidate-not-published",
+  "mainIntegration": "not_run",
+  "derivativeKind": "creative-edition",
+  "creativeSourceVersionId": "gbo-zero-sol61-r3",
+  "technicalDerivative": {
+    "id": "gbo-zero-sol61-r3-diagnostics-r1",
+    "author": "GPT-6-Luna",
+    "purpose": "Inherited R3 bounded diagnostics runtime retained as the technical base for the R4 creative SFX edition.",
+    "sourcePackageManifestSha256": "e36e10e82801127001c632eccdd663aa627fa05f0c1e55f606c3a1213b22fd10",
+    "sourceRendererSha256": "2f3ea9b597336875fa8e5f0d58eeffeb7302aaf78387ef3790b4c890c2a1b563",
+    "technicalRendererSha256": "0192d97207f5c6e01bd5e43826ae2c56d7349d5c30d8a4ec21b210089df5f84a",
+    "consumerContract": "Published R3 diagnostics lifetime counters and preserved error evidence remain enforced; no diagnostic contract relaxation.",
+    "consumerSource": "gallery-startup-adapter.mjs",
+    "consumerContractSourceSha256": "8b458365145ddf30223b242c05012b81e9d9c635575e6fea79b4625de597c142",
+    "inheritedPublishedPackageManifestSha256": "2d2d008011234d7f533054b278cb13bc4eae64654999a372d4c256e2e5221415",
+    "sfxSourceSha256": "d7d8eae5507752551ed65fed3093221bc29980b1435bc080c565f8e38fc0f592"
+  }
+}
