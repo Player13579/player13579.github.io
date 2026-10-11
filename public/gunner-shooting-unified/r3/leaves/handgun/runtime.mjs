@@ -50,17 +50,19 @@ export async function createShootingRuntime(canvas,{verify=false,onReceipt=()=>{
  }
  function audioSnapshot(){return {verify,muted,enabled:audioEnabled,state:audioContext?.state??'not-created',event:audioEvent,lastAttempt:audioAttempt,voices:voices.size}}
  function stopAudio(){for(const voice of voices){try{voice.source.stop()}catch{}voice.source.disconnect();voice.gain.disconnect()}voices.clear()}
- function sound(receipt,{age=receipt.age}={}){
-  if(receipt!==lastReceipt||receipt.targetGeneration!==targetGeneration||disposed||retiring||!audioEnabled||audioContext?.state!=='running'||sounded.has(receipt.causeID)||!audioEligible({...receipt,age,verify,muted}))return {ok:false,reason:'gated',snapshot:audioSnapshot()};
-  let samples;try{samples=synthShot(audioContext.sampleRate,receipt.sequence)}catch{audioAttempt={causeID:receipt.causeID,ok:false,reason:'invalid-sample',clockDomain:'performance.now',ageSeconds:(performance.now()-start)/1000};return {ok:false,reason:'invalid-sample',snapshot:audioSnapshot()}}
+ function sound(receipt,{age=receipt.age,startedAt}={}){
+  const now=performance.now();
+  if(!Number.isFinite(startedAt)||startedAt>now)return {ok:false,reason:'invalid-registered-origin',snapshot:audioSnapshot()};
+  if(receipt!==lastReceipt||receipt.causeID!==lastReceipt?.causeID||receipt.targetGeneration!==targetGeneration||disposed||retiring||!audioEnabled||audioContext?.state!=='running'||sounded.has(receipt.causeID)||!audioEligible({...receipt,age,verify,muted}))return {ok:false,reason:'gated',snapshot:audioSnapshot()};
+  let samples;try{samples=synthShot(audioContext.sampleRate,receipt.sequence)}catch{audioAttempt={causeID:receipt.causeID,ok:false,reason:'invalid-sample',clockDomain:'performance.now',ageSeconds:(now-startedAt)/1000};return {ok:false,reason:'invalid-sample',snapshot:audioSnapshot()}}
   const buffer=audioContext.createBuffer(1,samples.length,audioContext.sampleRate);buffer.copyToChannel(samples,0);
   const source=audioContext.createBufferSource(),gain=audioContext.createGain();gain.gain.value=.5;source.buffer=buffer;source.connect(gain).connect(audioContext.destination);
-  const timing=resolveCauseOffset({startedAt:start,now:performance.now(),sampleRate:audioContext.sampleRate,sampleCount:samples.length,verify:verify||muted});audioAttempt={causeID:receipt.causeID,...timing,started:false};
+  const timing=resolveCauseOffset({startedAt,now,sampleRate:audioContext.sampleRate,sampleCount:samples.length,verify:verify||muted});audioAttempt={causeID:receipt.causeID,registeredStartedAt:startedAt,...timing,started:false};
   if(!timing.ok){source.disconnect();gain.disconnect();return {ok:false,reason:timing.reason,snapshot:audioSnapshot()}}
   if(!audioEligible({...receipt,age:timing.ageSeconds,verify,muted})){audioAttempt={causeID:receipt.causeID,...timing,ok:false,reason:'trigger-window-expired',started:false};source.disconnect();gain.disconnect();return {ok:false,reason:'trigger-window-expired',snapshot:audioSnapshot()}}
   const started=startBufferAtCauseOffset(source,timing);if(!started.ok){audioAttempt={causeID:receipt.causeID,...timing,ok:false,reason:started.reason,started:false};source.disconnect();gain.disconnect();return {ok:false,reason:started.reason,snapshot:audioSnapshot()}}
   audioAttempt={causeID:receipt.causeID,...started,started:true};const voice={source,gain};voices.add(voice);source.onended=()=>{voices.delete(voice);source.disconnect();gain.disconnect()};sounded.add(receipt.causeID);
-  audioEvent={causeID:receipt.causeID,sequence:receipt.sequence,age:timing.ageSeconds,clockDomain:timing.clockDomain,bufferOffsetSeconds:timing.offsetSeconds,expectedRemainingDurationSeconds:timing.expectedRemainingDurationSeconds,registeredStartedAt:start,time:audioContext.currentTime,type:'synthetic-pressure-and-slide',started:true};
+  audioEvent={causeID:receipt.causeID,sequence:receipt.sequence,age:timing.ageSeconds,clockDomain:timing.clockDomain,bufferOffsetSeconds:timing.offsetSeconds,expectedRemainingDurationSeconds:timing.expectedRemainingDurationSeconds,registeredStartedAt:startedAt,time:audioContext.currentTime,type:'synthetic-pressure-and-slide',started:true};
   return {ok:true,reason:'started',source,gain,offset:started,snapshot:audioSnapshot()};
  }
  function setMuted(value){muted=verify||!!value;if(muted)stopAudio();return audioSnapshot()}
@@ -92,7 +94,7 @@ export async function mountPreview(){
    const width=960,height=480;runtime.resize(width,height);
    const receipt=await runtime.draw({age,causeID:`shooting-${cause}`,muzzle:[340,255],direction,sourceEnabled,observerEnabled,background,seed:cause,scale:1,held});
    history.push(receipt);if(history.length>300)history.shift();
-   if(!disposed&&!held&&running&&sourceEnabled&&receipt.causeID===`shooting-${cause}`&&receipt.active&&receipt.completed)runtime.sound(receipt,{age:(performance.now()-start)/1000});
+   if(!disposed&&!held&&running&&sourceEnabled&&receipt.causeID===`shooting-${cause}`&&receipt.active&&receipt.completed){const startedAt=start;runtime.sound(receipt,{age:(performance.now()-startedAt)/1000,startedAt});}
    if(status)status.textContent=`${AUTHORITY.versionID} · ${receipt.phase} · ${age.toFixed(3)}秒 · ${verify?'検証消音':runtime.audioSnapshot().muted?'消音':'音声'}`;
   }catch(e){running=false;if(status)status.textContent=e.message;api.error=String(e)}finally{busy=false;if(!disposed&&(running||pending)){pending=false;schedule()}}
  }

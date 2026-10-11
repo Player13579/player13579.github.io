@@ -38,8 +38,8 @@
     },
     {
       "path": "runtime.mjs",
-      "bytes": 17308,
-      "sha256": "039c57149d27eb32579d619a91ce2a9c8d4e8576ddfd680053e792d26262955e",
+      "bytes": 17554,
+      "sha256": "3413f7d31da8946a097dac3e0dfaa84d0b34625b0d91e58c2f77ec71e3c41912",
       "publicPath": "public/gunner-shooting-unified/r3/leaves/handgun/runtime.mjs"
     },
     {
@@ -79,10 +79,10 @@
     ]
   },
   "sourceRuntimeValidation": {
-    "CPU": "pass:5 tests including actual mountPreview warmup lifecycle; fakeGPU scope only",
+    "CPU": "pass: R987 actual sound closure CPU fixture suite, no GPU/browser",
     "wgslReservedWordScan": "pass: pinned R683 list; static supplement only",
-    "shader": "pending root-native real compilation",
-    "native": "pending root-only",
+    "shader": "pending: root-owned native compilation of this exact candidate",
+    "native": "pending: root-owned native run of this exact candidate",
     "quality": "in-progress",
     "SFXListening": "not_run",
     "mainGame": "not_run",
@@ -91,7 +91,7 @@
   "galleryMetadata": {
     "quality": "pending",
     "adoption": "unknown",
-    "native": "pending-root",
+    "native": "pending",
     "normalAudioListening": "not_run",
     "mainGame": "not_connected"
   },

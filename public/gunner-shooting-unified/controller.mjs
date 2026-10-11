@@ -21,6 +21,10 @@ const proofOk = f => Boolean(f && f.recorded === true && f.submitted === true &&
 
 export function createGallerySfxAdapter(controller) {
   return Object.freeze({ activateFromGesture: async () => {
+    const selected = controller.snapshot?.();
+    if (selected?.revision === 'r3' && selected?.weapon === 'handgun' && typeof controller.activateHandgunAudioAndReplay === 'function') {
+      return controller.activateHandgunAudioAndReplay();
+    }
     const result = await controller.enableAudio();
     const ok = result?.ok === true || result?.enabled === true;
     return { ok, reason: result?.reason || (ok ? 'using the preview’s authored SFX' : result?.verify ? 'verification mode' : 'source audio is not running'), snapshot: result?.snapshot ?? result };
@@ -152,6 +156,29 @@ export function createController({ document, location, parentWindow, topWindow =
     if (!api || typeof api.enableAudio !== 'function') throw new Error('child audio API unavailable');
     return api.enableAudio();
   }
+  async function activateHandgunAudioAndReplay() {
+    const failed = (reason, snap = snapshot()) => ({ ok: false, reason, snapshot: snap });
+    if (new URL(location.href).searchParams.has('verify')) return failed('verification mode');
+    if (disposed) return failed('controller disposed');
+    const child = current;
+    if (!child || child.revision !== 'r3' || child.weapon !== 'handgun') return failed('handgun source unavailable');
+    const win = frame.contentWindow;
+    const api = win?.[`__DVA_SHOOTING_E_${child.revision.toUpperCase()}__`];
+    if (!api || typeof api.enableAudio !== 'function' || typeof api.play !== 'function' || typeof api.snapshot !== 'function') return failed('handgun audio/play API unavailable');
+    let enabled;
+    try { enabled = await api.enableAudio(); }
+    catch (error) { return failed(String(error?.message || error)); }
+    if (enabled?.ok !== true) return failed(enabled?.reason || (enabled?.verify ? 'verification mode' : 'source audio is not running'), enabled?.snapshot ?? api.snapshot());
+    if (disposed || current !== child || frame.contentWindow !== win || new URL(location.href).searchParams.has('verify')) return failed(disposed ? 'controller disposed' : 'handgun source changed', api.snapshot());
+    const before = api.snapshot();
+    if (!before || before.disposed === true || before.ready !== true || before.verify === true || before.audio?.verify === true || before.audio?.muted === true) return failed('handgun source is unavailable or muted', before);
+    try {
+      const replay = await api.play();
+      const after = replay ?? api.snapshot();
+      const started = after?.running === true && typeof after?.causeID === 'string' && /^shooting-\d+$/.test(after.causeID) && after.causeID !== before.causeID;
+      return started ? { ok: true, reason: 'handgun SFX enabled and source replayed', snapshot: after, previousCauseID: before.causeID } : failed('handgun replay did not start a new registered cause', after);
+    } catch (error) { return failed(String(error?.message || error), api.snapshot()); }
+  }
   function dispose({ notifyParent = false } = {}) {
     const observe = promise => promise.then(result => {
       if (notifyParent) postOuterRetired();
@@ -190,5 +217,5 @@ export function createController({ document, location, parentWindow, topWindow =
   revisionSelect.addEventListener('change', () => { void select({ revision: revisionSelect.value, weapon: weaponSelect.value }).catch(e => { state.error = String(e); }); });
   weaponSelect.addEventListener('change', () => { void select({ revision: revisionSelect.value, weapon: weaponSelect.value }).catch(e => { state.error = String(e); }); });
   audioButton?.addEventListener('click', () => { void enableAudio().then(result => { if (status) status.textContent = result?.verify ? 'verify: 音声0固定' : result?.enabled || result?.ok ? '音声有効' : '音声未解除'; }).catch(e => { if (status) status.textContent = String(e.message || e); }); });
-  return Object.freeze({ select, snapshot, waitForCompletedVisibleCause, enableAudio, dispose });
+  return Object.freeze({ select, snapshot, waitForCompletedVisibleCause, enableAudio, activateHandgunAudioAndReplay, dispose });
 }
