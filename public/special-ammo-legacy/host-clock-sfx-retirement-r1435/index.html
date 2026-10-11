@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="special-ammo-host-version" content="special-ammo-legacy-host-clock-sfx-retirement-r1435">
+<title>Special ammo WebGPU plan-clock repair r1432</title>
+<style>
+:root{color-scheme:dark;font:16px system-ui,sans-serif;background:#101820;color:#edf4f6}*{box-sizing:border-box}body{margin:0;padding:16px}main{max-width:980px;margin:auto}h1{font-size:18px;margin:0 0 8px}p{color:#b7c9d0;font-size:13px;line-height:1.5}.stage{aspect-ratio:980/620;background:#131d25;border:1px solid #40515b;position:relative}canvas{display:block;width:100%;height:100%}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}label,button{font:inherit}button,select{color:#eef5f6;background:#1a2b35;border:1px solid #56717e;border-radius:6px;padding:8px}#status{min-height:1.4em;color:#aedbd6}
+</style>
+<script defer src="./source/webgpu-frame-core.js"></script>
+<script defer src="./source/webgpu-special-ammo-effect.js"></script>
+<script defer src="./source/webgpu-combat-e-sfx.js"></script>
+<script defer src="./source/webgpu-e-cue-player.js"></script>
+<script defer src="./host.js"></script>
+</head>
+<body><main>
+<h1>Special ammo · technical host clock and audio-retirement repair r1435</h1>
+<p>新規技術ホスト派生。既存FrameCoreのGPUDevice契約と連続preview時計を保持し、描画コアには実GPUDeviceを渡します。終了時は保有音声の遅延resumeを失効させ、cue停止とAudioContext closeを独立して試みます。VFX/SFX source bytesは5839fd76647edf7b79bbb567db1a63a26a1571c1由来です。作者・採用・品質状態を新たに主張しません。</p>
+<div class="stage"><canvas id="gpu" width="980" height="620" aria-label="special ammo WebGPU effect"></canvas></div>
+<div class="controls">
+<label>イベント <select id="kind"><option value="load">装填</option><option value="shot">発射</option><option value="impact">着弾</option></select></label>
+<label>弾種 <select id="ammo"><option value="weak">ウィーク</option><option value="penetrate">ペネトレイト</option><option value="shock">ショック</option></select></label>
+<label>武器モード <select id="weapon"><option>handgun</option><option>smg</option><option>assault</option><option>sniper</option><option>taser</option></select></label>
+<button id="sound" type="button">音声を有効化</button><span id="status" role="status">WebGPUを初期化しています…</span>
+</div>
+</main></body></html>
