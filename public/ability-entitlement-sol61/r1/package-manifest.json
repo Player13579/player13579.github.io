@@ -1,0 +1,128 @@
+{
+  "schema": "dva-ability-entitlement-gallery-route-package/v1",
+  "groupId": "ability-entitlement-sol61",
+  "versionId": "ability-entitlement-sol61-r1",
+  "title": "能力獲得",
+  "entry": "public/ability-entitlement-sol61/r1/index.html",
+  "source": {
+    "creativeOwner": "GPT-6.1-Sol",
+    "creativeModelId": "gpt-6.1-sol",
+    "edition": 1,
+    "editionLimit": 5,
+    "additionalEditionsRemaining": 4,
+    "originalR767Path": "outputs/request-20261011/ability-entitlement-e-sol61-r1-r767",
+    "originalR767InputPinsSha256": "2d21a567cc57501792d986e075fa4715d80dfdc7eeb68188a4333cc48135e340",
+    "originalCreativeModuleSha256": "cbbabae5d7fb10608928d5700a9fbda7ae88dc21a41138ab0a06cbb66b9b8102",
+    "originalShaderHashes": {
+      "source/composite.wgsl": "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5",
+      "source/display-observer.wgsl": "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9",
+      "source/permission-source.wgsl": "4fc41c87c5f0f73e6daa1cf1ca578c03caf00c1c8ac47d25691a82f7a48c8a37"
+    },
+    "sourceCreativeUnchanged": true
+  },
+  "technical": {
+    "modelDisplayName": "GPT-6-Luna",
+    "sourceContractResolution": "outputs/request-20261011/ability-entitlement-contract-resolution-r781",
+    "sourceContractProposalSha256": "c6c9904ada1503f1aeac8ca3cba43b3f60583250da7c666d46c11c783e0f604e",
+    "sourceContractPatchSha256": "6f115c5b819ee53c08f2e1cc7b783caee54c873642d2cd2a25cbf086c8463d8c",
+    "runtimeDerivative": "outputs/request-20261011/ability-entitlement-compositor-r802",
+    "runtimeInputPinsSha256": "a3ef89bfdd33e8414afade9db06e9346ed66e70a2ac402409def450c20069ff5",
+    "hostImplementationSha256": "2028b868abef00b6a2f0a859e29b42900abdd06dbdd350943502b58e6e7d3759",
+    "upstreamIndexSha256": "f68c8ca621d1fed460e34a3a6f42f54455b9aec1e495d8761eae69c6295a2d2d",
+    "galleryAdapter": "R804 adapter of proven R792/R723 parent startup and retire protocol; additionally pins the R802 status-card baseline",
+    "creativeEditionConsumed": false,
+    "rootQualityEvidence": "pending root decision; do not infer acceptance from image capture"
+  },
+  "status": {
+    "publicationEligible": false,
+    "reason": "R810 records a limited native technical pass; the exact current public gallery-parent replay remains pending. Quality is in progress and not accepted; listing requires the exact parent replay. Quality pass is not required for listing once that replay succeeds.",
+    "technicalReplayStatus": "pass-limited-current-r810-native-exact-host-controls-natural-expiry",
+    "qualityStatus": "in-progress; full quality remains pending",
+    "qualityAccepted": false,
+    "adoption": "unknown",
+    "normalAudioListening": "not_run",
+    "safari": "unverified",
+    "mainGameIntegration": "not_connected",
+    "nativeStatus": "PASS_R800_NATIVE_TECHNICAL_LIMITED",
+    "nativeEvidence": "outputs/request-20261011/ability-entitlement-native-r810/runs/2026-10-11T01-59-12.509Z-1a6839c1-e57d-4e99-9041-f2403289fbdd/RESULT.json",
+    "nativeEvidenceSha256": "1884151b3c9739646c4dd8effbb373282f6aa422b5a98851101a2603e5143fd7",
+    "parentGalleryReplayStatus": "pending-root-exact-r819-current-parent-replay",
+    "technicalEvidenceScope": "R810 actual native GPU replay passed for the pinned R802 host with four captures, same-cause controls, natural expiry, and drained/destroyed device. This is limited technical evidence only; the exact current public gallery-parent replay remains pending. Quality remains in progress, adoption unknown, and game integration disconnected.",
+    "qualityStatusEvidence": "outputs/request-20261011/ability-entitlement-root-acceptance-r813/QUALITY-STATUS.json",
+    "qualityStatusEvidenceSha256": "31dcbecc15d8ab0ae44e8dccf6e16b420b6526fd4f87fc4ed353b8a34fb53773"
+  },
+  "runtimeClosureCount": 11,
+  "runtimeClosure": [
+    {
+      "path": "index.html",
+      "bytes": 2170,
+      "sha256": "e918eb172e8aeb270b2a90d787b271c0f08e2fb7249702111190719a02cb3175"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16034,
+      "sha256": "2028b868abef00b6a2f0a859e29b42900abdd06dbdd350943502b58e6e7d3759"
+    },
+    {
+      "path": "source/ability-entitlement.mjs",
+      "bytes": 10387,
+      "sha256": "c6c9904ada1503f1aeac8ca3cba43b3f60583250da7c666d46c11c783e0f604e"
+    },
+    {
+      "path": "source/permission-source.wgsl",
+      "bytes": 3772,
+      "sha256": "4fc41c87c5f0f73e6daa1cf1ca578c03caf00c1c8ac47d25691a82f7a48c8a37"
+    },
+    {
+      "path": "source/display-observer.wgsl",
+      "bytes": 1019,
+      "sha256": "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9"
+    },
+    {
+      "path": "source/composite.wgsl",
+      "bytes": 812,
+      "sha256": "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5"
+    },
+    {
+      "path": "source/status-card-baseline.mjs",
+      "bytes": 681,
+      "sha256": "7e4508e569f451f987234c837c8240b891cab4a208aa7150a62c157dcd6d3bab"
+    },
+    {
+      "path": "source/status-card-baseline.wgsl",
+      "bytes": 1385,
+      "sha256": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f"
+    },
+    {
+      "path": "gallery-startup-bootstrap.js",
+      "bytes": 1562,
+      "sha256": "75904263fcb411a45ba6acbec6efd89758300d5eacf4a9847ce8eec21abe2594"
+    },
+    {
+      "path": "gallery-parent-contract.mjs",
+      "bytes": 2280,
+      "sha256": "eb7d089a43cffc4b29369c1c637b1aaadc78088794fcaf8d51d7d93d12530dad"
+    },
+    {
+      "path": "gallery-startup-adapter.mjs",
+      "bytes": 4748,
+      "sha256": "a81b5a0a93822dffd7ad7c597b171fc9aaf3ed95427256de4c4693569469251a"
+    }
+  ],
+  "additionalDistributedFiles": [
+    "package-manifest.json",
+    "provenance.json"
+  ],
+  "parentStartupApi": {
+    "global": "__dvaAbilityEntitlementGalleryStartup",
+    "methods": [
+      "snapshot",
+      "setAutoLoopEnabled(boolean)",
+      "retire"
+    ],
+    "protocol": "dva-gallery-startup/v1",
+    "readyContract": "playing/ready is emitted only for a visible, same-cause completed R802 submission with exact creative shader and status-card baseline pins; does not require the global queue to be idle during active playback",
+    "retireContract": "matching gallery retire event stops auto replay and clicks host retire; R802 drains queue, releases canvas context and destroys owned device"
+  },
+  "fixtureSemantics": "new successful self ability-entitlement receipt only; target ability-product-owned-status. No ammo receipt, ammo refill, active shortcut, or game integration claim. Source projection and target are explicitly fixture-owned."
+}
