@@ -1,0 +1,2 @@
+export const VERSION_IDS=Object.freeze(['flora-invisible-sol61-r1','flora-invisible-sol61-r1-technical-r2','flora-invisible-sol61-r1-technical-r3']);
+export const entries=Object.freeze(VERSION_IDS.map((id,i)=>Object.freeze({id,title:i===2?'インビジブル開始E r1・技術派生r3':i===1?'インビジブル開始E r1・技術派生r2':'インビジブル開始E 創作r1',creativeEdition:1,technicalDerivative:Boolean(i),creatorModelId:'gpt-6.1-sol',adoption:'unknown',quality:'not_run',gpu:'not_run',soundListening:'not_run',mainGame:'not_connected'})));

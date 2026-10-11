@@ -1,0 +1,87 @@
+{
+  "schema": "flora-public-package/v1",
+  "packageRoot": "public/dot-flora-invisible/technical-r3",
+  "versionId": "flora-invisible-sol61-r1-technical-r3",
+  "creatorModelId": "gpt-6.1-sol",
+  "runtimeDisplayName": "unknown",
+  "adoption": "unknown",
+  "quality": "not_run",
+  "cpuTests": "passed_cpu_only",
+  "technicalAcceptance": "pending_root_native",
+  "mainGameIntegration": "not_connected",
+  "startupStatus": "conditional-candidate; publication-and-root-native-acceptance-pending",
+  "runtimeClosureFileCount": 11,
+  "source": {
+    "candidateRevision": "flora-r3-error-propagation-native-caller-r1447",
+    "publicSourceRevision": "fa649876d48cfd43414bfafc738e29140ec075ef"
+  },
+  "files": {
+    "index.html": {
+      "sha256": "7b6164e7e49ceb109abd6239dc757ec4bc36a750e724bedb6436a95fd5fe9773",
+      "bytes": 1136,
+      "role": "technical-preview-entry"
+    },
+    "entry.mjs": {
+      "sha256": "b70f7ffaadfa08a9deb9898462c6716b647c6db86abbeb35c1a37894f19da46c",
+      "bytes": 3002,
+      "role": "technical-gallery-entry"
+    },
+    "catalog-entry.mjs": {
+      "sha256": "d96ca4381e2d28f8091ce4a19c7a62d325db23d9dc28edda812a453a44a9a715",
+      "bytes": 562,
+      "role": "version-catalog"
+    },
+    "preview.mjs": {
+      "sha256": "b35a784a198332dcf13c83426a4c14c811fdff42b4683c9ac14f91efd2d06c29",
+      "bytes": 19016,
+      "role": "technical-preview-controller"
+    },
+    "renderer.mjs": {
+      "sha256": "b73701a1b9248da6fc9770c121345795d231d922aaa00413bc862ae557fcb9b4",
+      "bytes": 12692,
+      "role": "technical-renderer"
+    },
+    "gallery-child.mjs": {
+      "sha256": "4dd286745d993313478df7f4cfb5652b8832fca56e5e4755d633116651614b4f",
+      "bytes": 4891,
+      "role": "gallery-child-protocol"
+    }
+  },
+  "dependencies": {
+    "../r1/world.mjs": {
+      "sha256": "93eb370af9ef57f6caa35d24e4c872916ef4242a954d132035a3e4bf20bcad99",
+      "bytes": 2797,
+      "role": "shared-runtime-dependency"
+    },
+    "../r1/observer.mjs": {
+      "sha256": "6c353bbf3f1f11d89b54b654b95cf3c0738e2d38040f6e3066fe4969cddfe17f",
+      "bytes": 3223,
+      "role": "shared-runtime-dependency"
+    },
+    "../r1/plan.mjs": {
+      "sha256": "f12928c29d5b71fc4037752b9b1e7ea1e9d9c047037d9462118a883c1df7c6b3",
+      "bytes": 5302,
+      "role": "shared-runtime-dependency"
+    },
+    "../r1/playback.mjs": {
+      "sha256": "031481d10ced02651451bc000a5b1bec7cd3bc128e8a664001947686387103e4",
+      "bytes": 8526,
+      "role": "shared-runtime-dependency"
+    },
+    "../r1/sfx.mjs": {
+      "sha256": "ba9d5764ec321797725fe941fb33b277cb014d6eb127d806b5c39bc8bdb15dbb",
+      "bytes": 2905,
+      "role": "shared-runtime-dependency"
+    }
+  },
+  "gpuCompileStatus": "not_run",
+  "normalAudioListening": "not_run",
+  "technicalAuthorModelIds": [
+    "gpt-6.1-sol",
+    "gpt-6-luna"
+  ],
+  "creativeBaseVersionId": "flora-invisible-sol61-r1",
+  "creativeEdition": 1,
+  "newCreativeEditionConsumed": false,
+  "technicalDerivativeOf": "flora-invisible-sol61-r1-technical-r2"
+}
