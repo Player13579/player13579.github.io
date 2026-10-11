@@ -49,7 +49,7 @@ export async function createItemUseHost({device,context,format,shaderCode,width,
   if(format!=='rgba8unorm'&&format!=='bgra8unorm')throw new TypeError('explicit canvas format required');
   positive(width,'width');positive(height,'height');
   if(VERSION!=='item-use-e-zero-sol61-r3'||UNIFORM_BYTES!==96||LIFETIME_MS!==780||ENTRIES.vertices!==3||ENTRIES.vertex!=='vertexItemUse'||ENTRIES.world!=='worldItemUse'||ENTRIES.spreadX!=='spreadItemUseX'||ENTRIES.spreadY!=='spreadItemUseY'||ENTRIES.composite!=='compositeItemUse'||SFX_VERSION!=='item-use-e-sfx-sol61-r3')throw new Error('frozen Item-use E ABI/entry contract mismatch');
-  const token=id();let generation=1,targetGeneration=1,sequence=0,state='preparing',resources=null,disposed=false,deviceLost=false;
+  const token=id();let generation=1,targetGeneration=1,sequence=0,state='preparing',resources=null,disposed=false,deviceLost=false,disposePromise=null;
   let audio=null,audioContextOwner=null,proofGenerations=new Set();
   const eventTarget=typeof device.addEventListener==='function';
   const uncaptured=e=>fail(new Error(`uncaptured GPU error: ${e.error?.message??e.message??'unknown'}`));
@@ -67,6 +67,7 @@ export async function createItemUseHost({device,context,format,shaderCode,width,
     });
   }
   function destroyTargets(t){if(!t)return;for(const k of ['surface','emission','spreadX','spreadY'])try{t[k]?.destroy?.();}catch{}}
+    function destroyTargetsChecked(t,errors){if(!t)return;for(const k of ['surface','emission','spreadX','spreadY']){try{if(t[k]){if(typeof t[k].destroy!=='function')throw new Error(`${k} texture has no destroy method`);t[k].destroy();}}catch(error){errors.push(`${k} texture disposal: ${String(error?.message??error)}`);}}}
   let uniform, startupTargets;
   try {
     const shader=await withValidation(device,'compileShader',async()=>device.createShaderModule({label:VERSION,code:shaderCode}));
@@ -154,7 +155,22 @@ export async function createItemUseHost({device,context,format,shaderCode,width,
   }
   async function resize(w,h){positive(w,'width');positive(h,'height');if(!current())throw new Error('host not current');state='resizing';const nextGeneration=++generation;let replacement=null;try{await device.queue.onSubmittedWorkDone();if(disposed||deviceLost||state!=='resizing'||generation!==nextGeneration)throw new Error('host retired during resize');replacement=await buildTargets(w,h);if(disposed||deviceLost||state!=='resizing'||generation!==nextGeneration){destroyTargets(replacement);replacement=null;throw new Error('host retired during resize');}const old=resources.targets;resources.targets=replacement;replacement=null;targetGeneration=nextGeneration;destroyTargets(old);state='ready';return {generation:nextGeneration,width:w,height:h};}catch(e){destroyTargets(replacement);fail(e);throw e;}}
   function retire(attemptToken){if(attemptToken!==token)throw new Error('attempt token mismatch');if(state==='disposed'||state==='failed'||state==='retired')return;state='retired';generation++;try{audio?.stopAll?.();}catch{}}
-  async function dispose(){if(disposed)return;disposed=true;state='disposed';generation++;if(eventTarget)device.removeEventListener('uncapturederror',uncaptured);try{await device.queue.onSubmittedWorkDone();}finally{destroyTargets(resources?.targets);try{resources?.uniform?.destroy?.();}catch{}try{audio?.dispose?.();}catch{}}}
+  function dispose(){
+    if(disposePromise)return disposePromise;
+    disposed=true;state='disposed';generation++;if(eventTarget)device.removeEventListener('uncapturederror',uncaptured);
+    disposePromise=(async()=>{
+      const cleanupErrors=[];let queueDrained=false,resourcesDisposed=true;
+      try{await device.queue.onSubmittedWorkDone();queueDrained=true;}catch(error){cleanupErrors.push(`queue drain: ${String(error?.message??error)}`);}
+        const beforeDestroyErrors=cleanupErrors.length;
+        destroyTargetsChecked(resources?.targets,cleanupErrors);
+        try{if(resources?.uniform){if(typeof resources.uniform.destroy!=='function')throw new Error('uniform buffer has no destroy method');resources.uniform.destroy();}}catch(error){cleanupErrors.push(`uniform disposal: ${String(error?.message??error)}`);}
+        if(cleanupErrors.length!==beforeDestroyErrors)resourcesDisposed=false;
+        try{await audio?.dispose?.();}catch(error){cleanupErrors.push(`renderer audio disposal: ${String(error?.message??error)}`);}
+      if(!queueDrained||!resourcesDisposed||cleanupErrors.length)throw Object.assign(new Error('Item Use renderer disposal incomplete'),{cleanupErrors,queueDrained,resourcesDisposed});
+      return Object.freeze({disposeSettled:true,queueDrained,resourcesDisposed,cleanupErrors:Object.freeze(cleanupErrors)});
+    })();
+    return disposePromise;
+  }
   return Object.freeze({ownerId,token,version:VERSION,state:()=>state,generation:()=>generation,render,resize,retire,dispose,deviceLost:lostPromise,cancelReceipt(causeId){if(typeof causeId!=='string'||!causeId)throw new TypeError('receipt cause ID required');audio?.cancel(causeId);},
     playSuccessfulReceipt({receipt,ageMs,sourceOn,mainOn,visibility,sourceCauseId,sourcePlayerId,visibilityCauseId,gestureGranted=false,audioContext}={}){
       if(!current())return {played:false,reason:'host-not-current'};

@@ -1,0 +1,95 @@
+{
+  "schema": "dva-gbo-zero-sol61-r3/package-v1",
+  "versionId": "gbo-zero-sol61-r3",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "creativeEdition": 3,
+  "creativeCap": 5,
+  "remainingCreativeEditions": 2,
+  "parent": {
+    "versionId": "gbo-zero-sol61-r2",
+    "originalCreativeManifestSha256": "2c1d6a8e1d38196e8002783503f680e21563b5dd82e5bebaf8a1af52f145aceb",
+    "creativeReuse": "R2 registered zero-series only; R1 and prior provenance preserved; no unregistered historical source reused"
+  },
+  "change": "成功commitで既存magazine→receiver接続から銃身拘束のデジタル作用面を充填する。retirementは既存面を分離・収束し有限終了させる。弾の発射、命中、追加ゲーム効果を描かない。",
+  "physicalModel": "declared_fantasy: 武器poseに拘束した発光場。反射する物体を追加しないので導体Fresnelは不適用。発光の近傍散乱は既存source-bound OBSを保持。カメラレンズ系を新設せずghost/flareを追加しない。",
+  "sourceDesignPath": "outputs/request-20261011/gbo-creative-r3-r1039/DESIGN-R1039.json",
+  "sourceDesignSha256": "f783553adccb4931dc54e43f66de357f953cf3be0ccf93e7417b9b5aa41e674d",
+  "sourceWorldSha256": "2b55f37d833d412cf67ee2da152352717cbe19da1d6398a5799b8ec104bdc5c3",
+  "worldSha256": "05e995b704be8b9912c4de2f239b25f095ef43065d6e60be7b4f1566bd80f43a",
+  "technicalBase": {
+    "id": "gbo-fixture-public-repair-r1037",
+    "candidatePackageManifestSha256": "5c29b5387871092a6bf2fd96a3d9a2fe88e680996fd78e4609445d8c078d0643",
+    "observerSha256": "9dd8520a204344047d248f8f052dd01dc03e92a87b65c6e176dc070428d69a19",
+    "nativeEvidence": "R1021 limited fixture geometry only; not this R3 package or current public route"
+  },
+  "clockChanged": false,
+  "phaseTimingsChanged": false,
+  "durationMs": 1450,
+  "observerChange": "R1037 exact actor-H diagnostic geometry; source/observer runtime ABI retained",
+  "sfxChange": false,
+  "apiChanged": false,
+  "runtimeClosure": [
+    {
+      "path": "package/common.wgsl",
+      "bytes": 946,
+      "sha256": "22802bead58af0fa393e4a1c73e67424030720ff1e156ef1402b0d0a1d80a03a"
+    },
+    {
+      "path": "package/index.html",
+      "bytes": 797,
+      "sha256": "983d59ac2789a77e72a8dd8f2ca4b9919b4172ca6e2b00d649a557de97b3948c"
+    },
+    {
+      "path": "package/model.mjs",
+      "bytes": 3993,
+      "sha256": "274289bfb685018cf912d3456bf38009366855fbec0bfe2ec1a438c8aa35f64c"
+    },
+    {
+      "path": "package/observer.wgsl",
+      "bytes": 1548,
+      "sha256": "9dd8520a204344047d248f8f052dd01dc03e92a87b65c6e176dc070428d69a19"
+    },
+    {
+      "path": "package/renderer.mjs",
+      "bytes": 4922,
+      "sha256": "2f3ea9b597336875fa8e5f0d58eeffeb7302aaf78387ef3790b4c890c2a1b563"
+    },
+    {
+      "path": "package/runtime.mjs",
+      "bytes": 6875,
+      "sha256": "45bf627e335a3f63abd1f8904d5f61dae0e99e6e9220e93fbc56435f53926962"
+    },
+    {
+      "path": "package/sfx.mjs",
+      "bytes": 2805,
+      "sha256": "df2f026bcff21f306787f956035e653eb49fcdac89d0fd6a0a36b8b545c1dbfa"
+    },
+    {
+      "path": "package/world.wgsl",
+      "bytes": 3556,
+      "sha256": "05e995b704be8b9912c4de2f239b25f095ef43065d6e60be7b4f1566bd80f43a"
+    }
+  ],
+  "bSourceRevision": {
+    "commit": "22d3fcfd617f42b1a967de767906204c0221ec64",
+    "rules": [
+      {
+        "name": "基底.md",
+        "blob": "8f1286e12402fe7b19650ad44bcddb38ad227a08",
+        "bytes": 128151,
+        "sha256": "a6ee315fa9aaafb4e99801e7b2c993bc7022b7746ed3dc46d67b9a327c1f8364"
+      },
+      {
+        "name": "拡張.md",
+        "blob": "f35b61661d0209c0329d4a501a760d35b451d52e",
+        "bytes": 77706,
+        "sha256": "863513ef874c7cb3cdf3baefa8d75d833b4eb79df4918e79832ae9c384b9fa67"
+      }
+    ],
+    "authority": "primary confirmed current cached canonical; no network"
+  },
+  "status": "PASS_CPU_PACKAGE_CANDIDATE_NATIVE_QUALITY_PENDING",
+  "adoption": "unknown",
+  "publication": "candidate-not-published",
+  "mainIntegration": "not_run"
+}

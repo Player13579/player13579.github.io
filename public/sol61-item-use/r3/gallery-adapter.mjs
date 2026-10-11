@@ -120,12 +120,35 @@ export function createItemUseGallerySfx({window:win=globalThis,verify=false,item
   return Object.freeze({activateFromGesture,noteCauseStart,observeCompletedFrame,snapshot:()=>Object.freeze({...state,unlocked,contextState:context?.state||'absent'}),dispose(){if(disposed)return;disposed=true;cancelAll();blockedCauses.clear();seenCauses.clear();unlocked=false;win.document?.removeEventListener?.('visibilitychange',onVisibilityChange);if(win.__gallerySfx===api)try{delete win.__gallerySfx;}catch{}}});
 }
 
+export const ITEM_USE_RETIREMENT_PROOF_SCHEMA='item-use-gallery-retirement-proof-r1030/v1';
+export function validateItemUseRetirementRequest(event,{parent,origin,token,versionId,attemptEpoch}={}) {
+  const m=event?.data;
+  return Boolean(event?.source===parent&&event?.origin===origin&&m?.schema==='dva-gallery-startup/v1'&&m?.action==='retire'&&m?.token===token&&m?.versionId===versionId&&m?.attemptEpoch===attemptEpoch);
+}
+export function validateItemUseRetirementProof(p) {
+  const d=p?.device,r=p?.renderer;
+  return Boolean(p?.proofSchema===ITEM_USE_RETIREMENT_PROOF_SCHEMA&&p.disposeSettled===true&&p.teardown==='disposed'&&p.deviceLifecycle==='destroyed-loss-settled'&&d?.status==='destroyed-loss-settled'&&d.drained===true&&d.destroyCalled===true&&d.lostReason==='destroyed'&&r?.pendingSettled===true&&r.pendingCount===0&&r.queueDrained===true&&r.resourcesDisposed===true&&Array.isArray(r.cleanupErrors)&&r.cleanupErrors.length===0&&p.audioDisposeSettled===true&&(p.audioContextState==='closed'||p.audioContextState==='absent')&&Array.isArray(p.cleanupErrors)&&p.cleanupErrors.length===0);
+}
+export function createItemUseRetirementCoordinator({startup,stopAndDrain}={}) {
+  if(typeof startup?.acceptRetirement!=='function'||typeof startup?.retired!=='function'||typeof startup?.retireError!=='function'||typeof stopAndDrain!=='function')throw new TypeError('retirement coordinator requires startup gate and cleanup callback');
+  let promise=null;
+  return event=>{
+    if(!startup.acceptRetirement(event))return Promise.resolve({accepted:false,reason:'invalid-or-duplicate-request'});
+    if(!promise)promise=Promise.resolve().then(stopAndDrain).then(proof=>{
+      if(!validateItemUseRetirementProof(proof))throw new Error('cleanup proof does not satisfy Item Use R1030 contract');
+      if(!startup.retired(proof))throw new Error('attached identity retirement receipt was not emitted');
+      return {accepted:true,proof};
+    }).catch(error=>{startup.retireError(error);throw error;});
+    return promise;
+  };
+}
+
 /** Gallery startup transport, distinct from the direct-call SFX API. */
 export function createItemUseGalleryStartup(env=globalThis) {
   const params=new URLSearchParams(env.location?.search||''),token=(params.get('galleryStartupToken')||'').slice(0,128),
     versionId=(params.get('galleryVersionId')||'').slice(0,160),attemptEpoch=Number(params.get('galleryAttemptEpoch')),
     parent=env.parent||env,embedded=parent!==env,identityValid=!embedded||Boolean(token&&versionId&&Number.isSafeInteger(attemptEpoch)&&attemptEpoch>0);
-  let sequence=0,terminal=false,readySent=false,firstFrame=null;
+  let sequence=0,terminal=false,readySent=false,firstFrame=null,retirementAccepted=false,retirementSent=false,retirementFailed=false;
   const valid=identityValid&&(!embedded||(env.location?.origin&&env.location.origin!=='null'));
   function emit(stage,status,extra={}) {
     if(!valid||terminal||readySent||!STARTUP_PHASES.has(stage)||!STARTUP_STATUSES.has(status))return false;
@@ -144,20 +167,30 @@ export function createItemUseGalleryStartup(env=globalThis) {
     return emit('playing','ready',{firstFrame});
   }
   function acceptRetirement(event) {
-    if(!embedded||!valid||event?.source!==parent||event?.origin!==env.location.origin)return false;
-    const m=event.data;
-    if(m?.schema!==STARTUP_SCHEMA||m.action!=='retire'||m.token!==token||m.versionId!==versionId||m.attemptEpoch!==attemptEpoch)return false;
-    emit('child-document','cancelled');terminal=true;return true;
+    if(retirementSent||retirementFailed||!embedded||!valid||!validateItemUseRetirementRequest(event,{parent,origin:env.location.origin,token,versionId,attemptEpoch}))return false;
+    retirementAccepted=true;return true;
   }
-  return Object.freeze({advance,ready,acceptRetirement,isActive:()=>valid&&!terminal&&!readySent,snapshot:()=>Object.freeze({schema:STARTUP_SCHEMA,token,versionId,attemptEpoch,sequence,terminal,readySent,firstFrame})});
+  function retired(lifecycle) {
+    if(!retirementAccepted||retirementSent||retirementFailed||!validateItemUseRetirementProof(lifecycle)||env.frameElement?.isConnected!==true)return false;
+    const message={schema:STARTUP_SCHEMA,action:'retired',token,versionId,attemptEpoch,sequence:++sequence,lifecycle};
+    try{parent.postMessage(message,env.location.origin);}catch{return false;}
+    retirementSent=true;terminal=true;return true;
+  }
+  function retireError(error) {
+    if(!retirementAccepted||retirementSent||retirementFailed||env.frameElement?.isConnected!==true)return false;
+    const message={schema:STARTUP_SCHEMA,action:'retire-error',token,versionId,attemptEpoch,sequence:++sequence,teardown:'unknown',error:{message:String(error?.message??error).slice(0,500)}};
+    try{parent.postMessage(message,env.location.origin);}catch{return false;}
+    retirementFailed=true;return true;
+  }
+  return Object.freeze({advance,ready,acceptRetirement,retired,retireError,isActive:()=>valid&&!terminal&&!readySent,snapshot:()=>Object.freeze({schema:STARTUP_SCHEMA,token,versionId,attemptEpoch,sequence,terminal,readySent,firstFrame,retirementAccepted,retirementSent,retirementFailed})});
 }
 
 
 /** Embedded-only repeating source-owned fixture. `fixture` must supply every gate and geometry field explicitly. */
-export function startItemUseFixtureLoop({host,canvas,fixture,onProof=()=>{},onFrame=()=>{},onFailure=()=>{},onStop=()=>{},onCauseStart=()=>{},startup,itemIds=[],verify=false,window:win=globalThis}={}) {
+export function startItemUseFixtureLoop({host,canvas,fixture,onProof=()=>{},onFrame=()=>{},onFailure=()=>{},onStop=()=>{},onRetire=async()=>({}),onCauseStart=()=>{},startup,itemIds=[],verify=false,window:win=globalThis}={}) {
   if(!host||!canvas||typeof fixture!=='function') throw new TypeError('host, canvas, and explicit fixture factory required');
   if(!(win.parent&&win.parent!==win)) throw new Error('automatic loop is limited to an embedded gallery fixture');
-  let stopped=false,raf=0,cause=null,startedAt=0,clearedAt=null,current=null,frameBusy=false,firstVisibleSent=false;
+  let stopped=false,raf=0,cause=null,startedAt=0,clearedAt=null,current=null,frameBusy=false,firstVisibleSent=false,inFlight=null,stopPromise=null;
   const makeId=()=>`fixture-item-use-${globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random()}`}`;
   const expected=(p,f)=>({causeId:f.causeId,itemId:f.itemId,playerId:f.playerId,ownerId:p.ownerId,token:p.token,
     deviceGeneration:p.deviceGeneration,targetGeneration:p.targetGeneration,generation:p.generation,canvasConnected:canvas.isConnected===true,canvasWidth:canvas.width,canvasHeight:canvas.height});
@@ -165,6 +198,7 @@ export function startItemUseFixtureLoop({host,canvas,fixture,onProof=()=>{},onFr
     if(stopped)return;
     if(frameBusy){raf=win.requestAnimationFrame(tick);return;}
     frameBusy=true;
+    let renderPromise=null;
     try {
       let startedNewCause=false;
       if(!cause){cause=makeId();startedAt=now;clearedAt=null;firstVisibleSent=false;startedNewCause=true;}
@@ -175,7 +209,8 @@ export function startItemUseFixtureLoop({host,canvas,fixture,onProof=()=>{},onFr
       current={...input,causeId:cause,ageMs:active?ageMs:780,sourceOn:active};
       if(startedNewCause)onCauseStart(current);
       const submittedAt=win.performance?.now?.()??now;
-      const result=await host.render(current);
+      renderPromise=Promise.resolve().then(()=>host.render(current));inFlight=renderPromise;
+      const result=await renderPromise;
       onFrame(result,current,{submittedAt,completedAt:win.performance?.now?.()??now});
       const proof=result?.proof;
       const id=proof&&expected(proof,current);
@@ -189,13 +224,24 @@ export function startItemUseFixtureLoop({host,canvas,fixture,onProof=()=>{},onFr
         else if(now>clearedAt){cause=null;}
       }
     } catch(e) {onFailure(e);}
-    finally {frameBusy=false;if(!stopped)raf=win.requestAnimationFrame(tick);}
+    finally {if(inFlight&&inFlight===renderPromise)inFlight=null;frameBusy=false;if(!stopped)raf=win.requestAnimationFrame(tick);}
   }
   raf=win.requestAnimationFrame(tick);
-  const retirement=event=>{if(startup?.acceptRetirement?.(event))stop();};
+  async function stop(){
+    if(stopPromise)return stopPromise;
+    stopped=true;let rafCancelled=raf===0;
+    if(raf!==0&&typeof win.cancelAnimationFrame==='function'){win.cancelAnimationFrame(raf);rafCancelled=true;}
+    raf=0;win.removeEventListener?.('message',retirement);
+    stopPromise=(async()=>{const active=inFlight;if(active)try{await active;}catch{}const pendingSettled=frameBusy===false&&inFlight===null;
+      const pendingCount=pendingSettled?0:1;
+      try{await onStop();}catch{}try{host.retire?.(host.token);}catch{}
+      return await onRetire(Object.freeze({pendingSettled,pendingCount,rafCancelled}));})();
+    return stopPromise;
+  }
+  const handleRetirement=createItemUseRetirementCoordinator({startup,stopAndDrain:stop});
+  const retirement=event=>{void handleRetirement(event).catch(()=>{});};
   win.addEventListener?.('message',retirement);
-  function stop(){if(stopped)return;stopped=true;win.cancelAnimationFrame?.(raf);win.removeEventListener?.('message',retirement);try{onStop();}catch{}try{host.retire?.(host.token);}catch{}void host.dispose?.();}
-  return Object.freeze({stop,current:()=>current,verify:Boolean(verify),fixtureOnly:true});
+  return Object.freeze({stop,retire:handleRetirement,current:()=>current,verify:Boolean(verify),fixtureOnly:true});
 }
 
 
