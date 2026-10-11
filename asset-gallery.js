@@ -828,6 +828,13 @@ const GALLERY_CHILD_PHASES = Object.freeze({
 const GALLERY_CHILD_PHASE_ORDER = Object.freeze(Object.keys(GALLERY_CHILD_PHASES));
 let activeGalleryChildStartup = null;
 let galleryChildAttemptSerial = 0;
+let galleryChildTransition = Promise.resolve();
+let gallerySelectionRequestSerial = 0;
+function galleryChildEnqueueTransition(operation) {
+  const result = galleryChildTransition.then(operation, operation);
+  galleryChildTransition = result.catch(() => undefined);
+  return result;
+}
 
 function galleryChildText(value, limit = 500) {
   return String(value == null ? '' : value).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, '_').slice(0, limit);
@@ -875,6 +882,13 @@ function galleryChildRetirementReceiptIsValid(event, attempt) {
     device.drained === true && device.destroyCalled === true && device.lostReason === 'destroyed';
 }
 function isGboRetirementTarget(attempt) { return attempt?.versionId === 'gbo-zero-sol61-r1'; }
+function isUnifiedShootingRetirementTarget(attempt) {
+  try { return new URL(attempt?.url).pathname.includes('/public/gunner-shooting-unified/'); }
+  catch (_) { return false; }
+}
+function isValidatedRetirementTarget(attempt) {
+  return isGboRetirementTarget(attempt) || isUnifiedShootingRetirementTarget(attempt);
+}
 function retireGalleryChildStartup(reason = 'selection-changed') {
   invalidateGalleryAudioActivation();
   const attempt = activeGalleryChildStartup;
@@ -882,7 +896,7 @@ function retireGalleryChildStartup(reason = 'selection-changed') {
   previewStatusPoll = null;
   if (!attempt) { galleryChildClearStatus(); return Promise.resolve(true); }
   if (attempt.retirementPromise) return attempt.retirementPromise;
-  if (isGboRetirementTarget(attempt)) {
+  if (isValidatedRetirementTarget(attempt)) {
     attempt.retired = true; attempt.epoch = ++galleryChildAttemptSerial; attempt.retiredReason = reason;
     galleryChildClearTimers(attempt); window.removeEventListener('message', attempt.onMessage);
     attempt.retirementPromise = new Promise(resolve => {
@@ -896,9 +910,9 @@ function retireGalleryChildStartup(reason = 'selection-changed') {
           if (activeAudioFrame === attempt.iframe) { activeAudioFrame = null; activeAudioItem = null; }
           galleryChildClearStatus(); resolve(true); return;
         }
-        const node=galleryChildStatusNode();if(node){node.hidden=false;node.textContent=detail
-          ? 'GBOプレビューの終了証明が不完全です。子iframeを保持して切替を停止します: '+galleryChildText(detail)
-          : 'GBOプレビューの終了証明が期限内に届きません。子iframeを保持して切替を停止します。';}
+        const node=galleryChildStatusNode();if(node){node.hidden=false;const label=isGboRetirementTarget(attempt)?'GBOプレビュー':'射撃プレビュー';node.textContent=detail
+          ? label+'の終了証明が不完全です。子iframeを保持して切替を停止します: '+galleryChildText(detail)
+          : label+'の終了証明が期限内に届きません。子iframeを保持して切替を停止します。';}
         resolve(false);
       };
       const onRetirementMessage = event => {
@@ -1349,8 +1363,14 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     link.hidden = false;
     return true;
   }
-  async function select(index, versionIndex) {
-    if (activeGalleryChildStartup?.versionId === 'gbo-zero-sol61-r1') { const retired = await retireGalleryChildStartup('effect-selection-changed'); if (!retired) return false; }
+  function select(index, versionIndex) {
+    const request = ++gallerySelectionRequestSerial;
+    return galleryChildEnqueueTransition(() => request === gallerySelectionRequestSerial
+      ? selectNow(index, versionIndex, request) : false);
+  }
+  async function selectNow(index, versionIndex, request) {
+    const retired = await retireGalleryChildStartup('effect-selection-changed');
+    if (!retired || request !== gallerySelectionRequestSerial) return false;
     mapSelectionGeneration++; activeMapSelection = null; mapOriginalComparison = false; mapComparison.hidden = true;
     stage.querySelector('img')?.remove();
     const requestedIndex = (index + entries.length) % entries.length;
@@ -1400,7 +1420,6 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     sourceLink.href = preview.href;
     sourceLink.textContent = item.recordKind === 'reference-only' ? '版の存在を示す公開記録を見る ↗' : item.historyOnly ? 'この版の保存元を見る ↗' : '元のWebGPUプレビューを見る ↗';
     buttons.forEach(button => button.setAttribute('aria-current', button.dataset.id === group.id ? 'true' : 'false'));
-    retireGalleryChildStartup('effect-selection-changed');
     const previousFrame = stage.querySelector('iframe');
     if (previousFrame) sfxBridge?.detachFrame(previousFrame);
     previousFrame?.remove();
@@ -1802,9 +1821,16 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     setMapInteractionPreviewEnabled(item, mapInteractionToggle.checked);
     selectImage(group, activeMapSelection.versionIndex);
   });
-  async function renderSelection() {
-    if (activeGalleryChildStartup?.versionId === 'gbo-zero-sol61-r1') { const retired = await retireGalleryChildStartup('category-or-filter-changed'); if (!retired) return false; }
-    if (currentCategory !== 'effect') retireGalleryChildStartup('category-changed');
+  function renderSelection() {
+    gallerySelectionRequestSerial++;
+    return galleryChildEnqueueTransition(() => renderSelectionNow());
+  }
+  async function renderSelectionNow() {
+    if (currentCategory !== 'effect' || isValidatedRetirementTarget(activeGalleryChildStartup)) {
+      const reason = currentCategory !== 'effect' ? 'category-changed' : 'category-or-filter-changed';
+      const retired = await retireGalleryChildStartup(reason);
+      if (!retired) return false;
+    }
     resetMapInteractionForListChange();
     mapInteractionToggle.checked = false;
     mapInteractionToggle.disabled = true;
@@ -1819,7 +1845,8 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     const groups=currentCategory==='effect'?visibleEffectGroups(entries):imageGroups.filter(g=>g.category===currentCategory);
     const matching=groups.map(group=>({group,indices:visibleVersionIndices(group)})).filter(row=>row.indices.length);
     if(!matching.length){
-      retireGalleryChildStartup('empty-category');
+      const retired = await retireGalleryChildStartup('empty-category');
+      if (!retired) return false;
       mapSelectionGeneration++; activeMapSelection = null; mapOriginalComparison = false; mapInteractionPreview = false; mapInteractionControl.hidden = true; mapInteractionToggle.checked = false; mapInteractionToggle.disabled = true; mapComparison.hidden = true;
       layout.hidden=true;emptyCategory.hidden=false;emptyCategory.textContent=`${document.getElementById('list-heading').textContent}はありません。`;
       const previousFrame = stage.querySelector('iframe');

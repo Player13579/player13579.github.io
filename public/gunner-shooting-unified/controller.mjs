@@ -31,7 +31,7 @@ export function createController({ document, location, parentWindow, topWindow =
   if (!frame || !revisionSelect || !weaponSelect) throw new Error('unified shooting controls missing');
   let current = null, serial = 0, disposed = false, switching = Promise.resolve(), controllerDisposePromise = null, outerSequence = 0, outerProofSent = false;
   const waiters = new Set();
-  const state = { revision: 'r1', weapon: 'handgun', versionId: REVISIONS.r1.versionId, leafVersionId: '', attemptEpoch: 0, token: '', phase: 'idle', active: false, teardown: 'none', completedSource: null, error: null };
+  const state = { revision: 'r1', weapon: 'handgun', versionId: REVISIONS.r1.versionId, leafVersionId: '', attemptEpoch: 0, token: '', phase: 'idle', active: false, teardown: 'none', completedSource: null, error: null, deviceLifecycle: null };
   const snapshot = () => structuredClone(state);
   function postOuter(stage, status, extra = {}) {
     if (!outerIdentity || !topWindow || topWindow === parentWindow || !outerIdentity.token || !outerIdentity.versionId || !Number.isSafeInteger(outerIdentity.attemptEpoch) || outerIdentity.attemptEpoch < 1) return;
@@ -81,13 +81,14 @@ export function createController({ document, location, parentWindow, topWindow =
     if (typeof disposer !== 'function') { state.teardown = 'unknown'; throw new Error('child dispose API unavailable; iframe retained'); }
     let timer;
     let outcome;
+    let disposalResult = null;
     try {
       outcome = await Promise.race([
         Promise.resolve().then(() => {
           const result = disposer.call(child.weapon === 'handgun' ? win[`__DVA_SHOOTING_E_${child.revision.toUpperCase()}__`] : win.__shootingR1);
           if (!result || typeof result.then !== 'function') throw new Error('child dispose API did not return a promise');
           return result;
-        }).then(() => 'disposed'),
+        }).then(value => { disposalResult = value; return 'disposed'; }),
         new Promise(resolve => { timer = setTimer(() => resolve('timeout'), teardownTimeoutMs); })
       ]);
     } catch (error) {
@@ -95,6 +96,24 @@ export function createController({ document, location, parentWindow, topWindow =
     }
     clearTimer(timer);
     if (outcome !== 'disposed') { state.teardown = 'unknown'; throw new Error('child dispose did not settle within bounded teardown; iframe retained'); }
+    const device = child.weapon === 'handgun'
+      ? (() => {
+          const runtime = disposalResult?.runtime;
+          const losses = runtime?.loss;
+          const latestLoss = Array.isArray(losses) && losses.length > 0 ? losses[losses.length - 1] : null;
+          const validLoss = latestLoss !== null && typeof latestLoss === 'object' && !Array.isArray(latestLoss) &&
+            typeof latestLoss.reason === 'string' && typeof latestLoss.message === 'string' &&
+            typeof latestLoss.disposed === 'boolean' && typeof latestLoss.retiring === 'boolean';
+          const destroyedLossSettled = runtime?.disposed === true && validLoss && latestLoss.reason === 'destroyed' &&
+            latestLoss.disposed === true && latestLoss.retiring === true;
+          return { drained: runtime?.disposed === true, destroyCalled: destroyedLossSettled, lostReason: validLoss ? latestLoss.reason : null };
+        })()
+      : { drained: disposalResult?.lifecycle?.drained === true, destroyCalled: disposalResult?.lifecycle?.destroyCalled === true, lostReason: disposalResult?.lifecycle?.lost?.reason || null };
+    if (device.drained !== true || device.destroyCalled !== true || device.lostReason !== 'destroyed') {
+      state.teardown = 'unknown'; state.deviceLifecycle = { status: 'unknown', ...device };
+      throw new Error(`child dispose settled without a verified drain, destroy, and destroyed-loss receipt (reason: ${device.lostReason || 'unavailable'}); iframe retained`);
+    }
+    state.deviceLifecycle = { status: 'destroyed-loss-settled', ...device };
     frame.removeAttribute('src');
     current = null; state.teardown = 'disposed'; state.phase = 'idle';
   }
@@ -105,7 +124,7 @@ export function createController({ document, location, parentWindow, topWindow =
       if (current) await retireChild(current);
       if (disposed) throw new Error('controller disposed');
       const epoch = ++serial, token = `shooting-unified-${epoch}-${Math.random().toString(36).slice(2)}`, leafVersionId = weapon === 'handgun' ? REVISIONS[revision].handgun : REVISIONS[revision].other;
-      state.revision = revision; state.weapon = weapon; state.versionId = REVISIONS[revision].versionId; state.leafVersionId = leafVersionId; state.attemptEpoch = epoch; state.token = token; state.phase = 'starting'; state.active = false; state.teardown = 'none'; state.completedSource = null; state.error = null;
+      state.revision = revision; state.weapon = weapon; state.versionId = REVISIONS[revision].versionId; state.leafVersionId = leafVersionId; state.attemptEpoch = epoch; state.token = token; state.phase = 'starting'; state.active = false; state.teardown = 'none'; state.completedSource = null; state.error = null; state.deviceLifecycle = null;
       current = { revision, weapon, versionId: state.versionId, leafVersionId, attemptEpoch: epoch, token, lastSequence: -1 };
       revisionSelect.value = revision; weaponSelect.value = weapon;
       frame.setAttribute('src', makeUrl(revision, weapon, token, epoch, leafVersionId));
@@ -128,16 +147,40 @@ export function createController({ document, location, parentWindow, topWindow =
     if (!api || typeof api.enableAudio !== 'function') throw new Error('child audio API unavailable');
     return api.enableAudio();
   }
-  function dispose() {
-    if (controllerDisposePromise) return controllerDisposePromise;
-    if (disposed) return Promise.resolve(snapshot());
+  function dispose({ notifyParent = false } = {}) {
+    const observe = promise => promise.then(result => {
+      if (notifyParent) postOuterRetired();
+      return result;
+    }, error => {
+      state.teardown = 'unknown'; state.error = String(error?.message || error);
+      if (notifyParent) postOuterRetirementFailure(error);
+      throw error;
+    });
+    if (controllerDisposePromise) return observe(controllerDisposePromise);
+    if (disposed) { if (notifyParent) postOuterRetired(); return Promise.resolve(snapshot()); }
     controllerDisposePromise = (async () => {
       await switching;
       await retireChild(current); disposed = true; parentWindow.removeEventListener('message', onMessage);
       for (const w of waiters) { clearTimer(w.timer); w.reject(new Error('controller disposed')); } waiters.clear();
       state.phase = 'disposed'; return snapshot();
     })();
-    return controllerDisposePromise;
+    return observe(controllerDisposePromise);
+  }
+  function postOuterRetirementFailure(error) {
+    if (!outerIdentity || !topWindow || topWindow === parentWindow || !outerIdentity.token ||
+        !outerIdentity.versionId || !Number.isSafeInteger(outerIdentity.attemptEpoch) || outerIdentity.attemptEpoch < 1 ||
+        state.teardown !== 'unknown') return;
+    topWindow.postMessage({ schema: SCHEMA, action: 'retire-error', token: outerIdentity.token,
+      versionId: outerIdentity.versionId, attemptEpoch: outerIdentity.attemptEpoch, sequence: ++outerSequence,
+      teardown: 'unknown', error: { code: 'CHILD_RETIREMENT_FAILED', message: String(error?.message || error).slice(0, 500) } }, location.origin);
+  }
+  function postOuterRetired() {
+    if (!outerIdentity || !topWindow || topWindow === parentWindow || !outerIdentity.token ||
+        !outerIdentity.versionId || !Number.isSafeInteger(outerIdentity.attemptEpoch) || outerIdentity.attemptEpoch < 1 ||
+        state.phase !== 'disposed' || state.teardown !== 'disposed') return;
+    topWindow.postMessage({ schema: SCHEMA, action: 'retired', token: outerIdentity.token,
+      versionId: outerIdentity.versionId, attemptEpoch: outerIdentity.attemptEpoch, sequence: ++outerSequence,
+      lifecycle: { disposeSettled: true, teardown: 'disposed', deviceLifecycle: state.deviceLifecycle?.status, device: structuredClone(state.deviceLifecycle) } }, location.origin);
   }
   revisionSelect.addEventListener('change', () => { void select({ revision: revisionSelect.value, weapon: weaponSelect.value }).catch(e => { state.error = String(e); }); });
   weaponSelect.addEventListener('change', () => { void select({ revision: revisionSelect.value, weapon: weaponSelect.value }).catch(e => { state.error = String(e); }); });
