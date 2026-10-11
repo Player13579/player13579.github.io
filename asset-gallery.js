@@ -886,8 +886,12 @@ function isUnifiedShootingRetirementTarget(attempt) {
   try { return new URL(attempt?.url).pathname.includes('/public/gunner-shooting-unified/'); }
   catch (_) { return false; }
 }
+function isFragRetirementTarget(attempt) {
+  try { return attempt?.versionId === 'frag-grenade-sol61-r3' && new URL(attempt?.url).pathname === '/public/frag-grenade-sol61-r3/index.html'; }
+  catch (_) { return false; }
+}
 function isValidatedRetirementTarget(attempt) {
-  return isGboRetirementTarget(attempt) || isUnifiedShootingRetirementTarget(attempt);
+  return isGboRetirementTarget(attempt) || isUnifiedShootingRetirementTarget(attempt) || isFragRetirementTarget(attempt);
 }
 function retireGalleryChildStartup(reason = 'selection-changed') {
   invalidateGalleryAudioActivation();
@@ -910,7 +914,7 @@ function retireGalleryChildStartup(reason = 'selection-changed') {
           if (activeAudioFrame === attempt.iframe) { activeAudioFrame = null; activeAudioItem = null; }
           galleryChildClearStatus(); resolve(true); return;
         }
-        const node=galleryChildStatusNode();if(node){node.hidden=false;const label=isGboRetirementTarget(attempt)?'GBOプレビュー':'射撃プレビュー';node.textContent=detail
+        const node=galleryChildStatusNode();if(node){node.hidden=false;const label=isGboRetirementTarget(attempt)?'GBOプレビュー':isFragRetirementTarget(attempt)?'Frag Grenadeプレビュー':'射撃プレビュー';node.textContent=detail
           ? label+'の終了証明が不完全です。子iframeを保持して切替を停止します: '+galleryChildText(detail)
           : label+'の終了証明が期限内に届きません。子iframeを保持して切替を停止します。';}
         resolve(false);
