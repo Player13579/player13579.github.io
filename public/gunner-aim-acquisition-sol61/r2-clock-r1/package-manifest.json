@@ -1,0 +1,89 @@
+{
+  "schema": "dva-gunner-aim-r2-sound-clock-package-r1185/v1",
+  "groupID": "gunner-aim-acquisition-sol61",
+  "versionID": "gunner-aim-acquisition-sol61-r2",
+  "technicalRevisionId": "gunner-aim-acquisition-sol61-r2-sound-clock-r1-r1185",
+  "entry": "index.html",
+  "edition": 2,
+  "creativeCap": {
+    "maximum": 5,
+    "consumed": 2,
+    "remaining": 3
+  },
+  "creativeEditionAuthorization": "R2/5; preserves sealed R2; remaining three editions unconsumed",
+  "files": [
+    {
+      "path": "index.html",
+      "role": "runtime",
+      "bytes": 5523,
+      "sha256": "ed1b4cabbbd678a3a9a56877a187483653f6b893ce3b766313be4cfa4e06c5d6"
+    },
+    {
+      "path": "runtime.mjs",
+      "role": "runtime",
+      "bytes": 14394,
+      "sha256": "0b68cef7507ce88eab8c22fa1d0a856bb7a120bbd013c062bd3d32c6df03def8"
+    },
+    {
+      "path": "audio.mjs",
+      "role": "runtime",
+      "bytes": 6620,
+      "sha256": "e9c7de9508c4335a45e8e0288b4475406f4fd6f72f2a90a8fb0be3c0a876ed0a"
+    },
+    {
+      "path": "contract.mjs",
+      "role": "runtime",
+      "bytes": 3952,
+      "sha256": "d5b29d4c76ae3ac4ee811863a2fa2b3a70632d7b0a7645b14a37febee9f3b09a"
+    },
+    {
+      "path": "source.wgsl",
+      "role": "runtime",
+      "bytes": 2364,
+      "sha256": "40de365395591aa858b2bf7bfe3a0c30a322b022fa584f80f4780dabf4670ea9"
+    },
+    {
+      "path": "observer.wgsl",
+      "role": "runtime",
+      "bytes": 1794,
+      "sha256": "9d057673c971bf5db4c5f6a76445e65b957b5a6a746937c59a1641663f8b0537"
+    },
+    {
+      "path": "provenance.json",
+      "role": "provenance",
+      "bytes": 3780,
+      "sha256": "655fd72fd63a260d99ddb842c8cf52151ec819c66fde46d975bdd1bee6a48a48"
+    }
+  ],
+  "runtimeClosure": [
+    "index.html",
+    "runtime.mjs",
+    "audio.mjs",
+    "contract.mjs",
+    "source.wgsl",
+    "observer.wgsl"
+  ],
+  "dependencies": {
+    "index.html": [
+      "runtime.mjs"
+    ],
+    "runtime.mjs": [
+      "contract.mjs",
+      "audio.mjs",
+      "source.wgsl",
+      "observer.wgsl"
+    ],
+    "audio.mjs": [
+      "contract.mjs"
+    ],
+    "contract.mjs": []
+  },
+  "externalRuntimeDependencies": [],
+  "preservation": {
+    "sourceWgslByteExact": true,
+    "observerWgslByteExact": true,
+    "contractByteExact": true,
+    "creativeCapConsumed": 0,
+    "PCMGeneratorByteExact": true
+  }
+}
