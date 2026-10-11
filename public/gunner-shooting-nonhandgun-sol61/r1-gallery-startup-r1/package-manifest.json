@@ -1,0 +1,103 @@
+{
+  "schema": "dva-shooting-gallery-route-package/v1",
+  "groupId": "gunner-shooting-nonhandgun-sol61",
+  "versionId": "gunner-shooting-nonhandgun-sol61-r1",
+  "entry": "public/gunner-shooting-nonhandgun-sol61/r1-gallery-startup-r1/index.html",
+  "source": {
+    "path": "outputs/request-20261011/gunner-shooting-nonhandgun-r1-r717",
+    "manifestSha256": "04c0d21e445ba1fb6e26a441d088fde6385b28b400c32be99746b3e85d9948e8",
+    "sealSha256": "8ed8fd4da25bb1cb7b3faee5888ba5e6d6fc197136a90e2afb4b24881eba3f64",
+    "creativeAuthor": "GPT-6.1-Sol",
+    "nativeEvidencePath": "outputs/request-20261011/shooting-source-native-r724/native-attempts/2026-10-11T00-15-38-013Z-78b405e4-6751-494f-85b2-7185db2ed5d1/RESULT.json",
+    "nativeEvidenceSha256": "a944d058f101d6b73ed43a332ac4b58bd4d60c34a6326775142169cc6d4572e2",
+    "nativeEvidenceStatus": "PASS_R724_SOURCE_NATIVE_LIMITED"
+  },
+  "technical": {
+    "author": "GPT-6-Luna",
+    "revision": "R723 parent-bound startup, same-cause completed-frame proof, automatic finite-cadence replay, retirement cleanup, strict SFX gesture branch",
+    "qualityEvidencePath": "outputs/request-20261011/shooting-r1-quality-r728/REVIEW.json",
+    "qualityEvidenceSha256": "6a82f2c005a58585dcbfefce659c3da19ca8e344639b5fdf8592008dfbb31f96",
+    "qualityOutcome": "FAIL_NOT_ACCEPTED",
+    "parentNativeStatus": "PASS_R743_PARENT_NATIVE_LIMITED",
+    "parentNativeEvidencePath": "outputs/request-20261011/shooting-nonhandgun-parent-r743/native-attempts/2026-10-11T00-41-44.428Z-d853b00c-7cd7-4fda-9063-3664dea8fe4c/RESULT.json",
+    "parentNativeEvidenceSha256": "acaf4098270098d62bf677ff4883f5d9d485329cc144c17b291d71d0b6be63c4",
+    "parentNativeScope": "Actual root-owned R743 parent WebGPU handshake, natural two-cause replay, held 25ms source capture, explicit retirement and all-resource cleanup; limited technical scope only."
+  },
+  "runtimeClosureCount": 9,
+  "runtimeClosure": [
+    {
+      "path": "index.html",
+      "bytes": 1142,
+      "sha256": "36ed23f11606e5c1808ece13d73e23a5c0a1611789c8a198e0c5655c06782d40",
+      "sourcePath": "R717 index.html technically wrapped with parent bootstrap/autoloop"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 10657,
+      "sha256": "632df481c06f33527c166f6eae9b52d0477ce033ee9878bf1f708197beddaaaf",
+      "sourcePath": "runtime.mjs"
+    },
+    {
+      "path": "contract.mjs",
+      "bytes": 2275,
+      "sha256": "af3fddc2c571ffd6aed055e65c55ae19a4ee987927a4755078ac3413916c3cc7",
+      "sourcePath": "contract.mjs"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 2968,
+      "sha256": "c1f6f807162c7423f75c5115ac787b30cd6f9ff41bf24125c7659242a9fa4cea",
+      "sourcePath": "sfx.mjs"
+    },
+    {
+      "path": "source.wgsl",
+      "bytes": 4934,
+      "sha256": "efb1775ddd03d2763054b39361c7c1ffaa71e76fee2098e1800ae777aad8ac4a",
+      "sourcePath": "source.wgsl"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1276,
+      "sha256": "a77f1e004be608ecf706e6bad3005ee718582266d50076241450b47059c5adb3",
+      "sourcePath": "observer.wgsl"
+    },
+    {
+      "path": "gallery-startup-bootstrap.js",
+      "bytes": 1562,
+      "sha256": "75904263fcb411a45ba6acbec6efd89758300d5eacf4a9847ce8eec21abe2594",
+      "sourcePath": "R723 technical adapter"
+    },
+    {
+      "path": "gallery-parent-contract.mjs",
+      "bytes": 2280,
+      "sha256": "eb7d089a43cffc4b29369c1c637b1aaadc78088794fcaf8d51d7d93d12530dad",
+      "sourcePath": "R723 technical adapter"
+    },
+    {
+      "path": "gallery-startup-adapter.mjs",
+      "bytes": 5037,
+      "sha256": "33e235d2abad4da4ec3590df46104064928bc5d5d9515ebf259b605af9664a19",
+      "sourcePath": "R723 technical adapter"
+    }
+  ],
+  "additionalDistributedFiles": [
+    "package-manifest.json",
+    "provenance.json"
+  ],
+  "parentStartupApi": {
+    "global": "__dvaShootingGalleryStartup",
+    "methods": [
+      "snapshot",
+      "setAutoLoopEnabled(boolean)",
+      "retire"
+    ],
+    "pauseContract": "setAutoLoopEnabled(false) pauses only the gallery recurring demo for same-cause held capture; source runtime remains unchanged",
+    "readyContract": "playing/ready follows fresh play cause and completed 2-pass same-cause frame"
+  },
+  "adoption": "unknown",
+  "parentNative": "PASS_R743_PARENT_NATIVE_LIMITED",
+  "gameIntegration": "not_connected",
+  "parentNativeStatus": "PASS_R743_PARENT_NATIVE_LIMITED",
+  "parentNativeEvidencePath": "outputs/request-20261011/shooting-nonhandgun-parent-r743/native-attempts/2026-10-11T00-41-44.428Z-d853b00c-7cd7-4fda-9063-3664dea8fe4c/RESULT.json",
+  "parentNativeEvidenceSha256": "acaf4098270098d62bf677ff4883f5d9d485329cc144c17b291d71d0b6be63c4"
+}

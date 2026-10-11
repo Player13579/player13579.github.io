@@ -118,6 +118,17 @@
         activation = invoke(win.__DVA_SHOOTING_E_R1__, 'enableAudio', []);
       } else if (itemId(item) === 'gunner-shooting-sol61-r2') {
         activation = invoke(win.__DVA_SHOOTING_E_R2__, 'enableAudio', []);
+      } else if (itemId(item) === 'gunner-shooting-nonhandgun-sol61-r1') {
+        activation = invoke(win.__shootingR1, 'enableAudio', []);
+        if (activation.found && !activation.error && activation.value && typeof activation.value.then === 'function') {
+          activation.value = Promise.resolve(activation.value).then(s => s?.enabled === true && s?.state === 'running' && s?.verify !== true
+            ? {ok:true, reason:'using the preview’s authored SFX', snapshot:s}
+            : {ok:false, reason:s?.verify ? 'verification mode' : 'source audio is not running', snapshot:s});
+        } else if (activation.found && !activation.error) {
+          activation.value = activation.value?.enabled === true && activation.value?.state === 'running' && activation.value?.verify !== true
+            ? {ok:true, reason:'using the preview’s authored SFX', snapshot:activation.value}
+            : {ok:false, reason:activation.value?.verify ? 'verification mode' : 'source audio is not running'};
+        }
       } else if (itemId(item) === 'gunner-aim-acquisition-sol61-r1') {
         activation = invoke(win.__DVA_GUNNER_AIM_R1__, 'unlockAudio', []);
       } else if (itemId(item) === 'gunner-aim-acquisition-sol61-r2') {
@@ -135,7 +146,7 @@
       }
 
       // Shooting R1 and R2 expose only their exact source APIs; never substitute another control or synthetic audio path.
-      const strictSourceApi = itemId(item) === 'gunner-shooting-sol61-r1' || itemId(item) === 'gunner-shooting-sol61-r2';
+      const strictSourceApi = itemId(item) === 'gunner-shooting-sol61-r1' || itemId(item) === 'gunner-shooting-sol61-r2' || itemId(item) === 'gunner-shooting-nonhandgun-sol61-r1';
       if (strictSourceApi && activation.error) return setState('unsupported', 'source audio activation failed');
       if (strictSourceApi && !activation.found) return setState('unsupported', 'source audio API is not ready');
       // Preserve the legacy fallback chain for controls that throw synchronously.
