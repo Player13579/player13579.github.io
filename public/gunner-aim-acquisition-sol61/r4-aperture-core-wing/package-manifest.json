@@ -1,0 +1,92 @@
+{
+  "schema": "dva-gunner-aim-acquisition-r4-faithful-runtime-r1843/v1",
+  "groupID": "gunner-aim-acquisition-sol61",
+  "versionID": "gunner-aim-acquisition-sol61-r4",
+  "edition": 4,
+  "creativeAuthor": "GPT-6.1-Sol",
+  "runtimeAuthor": "GPT-6-Luna",
+  "creativeCap": {
+    "maximum": 5,
+    "consumed": 4,
+    "remaining": 1
+  },
+  "adoption": "unknown",
+  "qualityStatus": "pending",
+  "technicalReplayStatus": "pending-root-native",
+  "publicationEligible": false,
+  "routePath": "/public/gunner-aim-acquisition-sol61/r4-aperture-core-wing/index.html",
+  "entry": "index.html",
+  "runtimeClosure": [
+    "index.html",
+    "runtime.mjs",
+    "audio.mjs",
+    "contract.mjs",
+    "source.wgsl",
+    "observer.wgsl"
+  ],
+  "sourceProvenance": {
+    "manifestPath": "source-creative-manifest-r1836.json",
+    "manifestSha256": "ca9753a94eb4dc61858188c4a44bb5f21927b57fdfcbb0de16a0ed1ebe18f19b",
+    "files": [
+      "source.wgsl",
+      "observer.wgsl",
+      "contract.mjs",
+      "audio.mjs"
+    ],
+    "authoritativeInput": "aim-r4-blue-face-psf-r1836"
+  },
+  "renderContract": {
+    "uniformBytes": 64,
+    "passes": [
+      "source-to-rgba16float-hdr",
+      "observer-to-canvas"
+    ],
+    "durationMs": 900,
+    "sourceClockAndPCM": "exact-frozen-R4-input",
+    "gain": "0.58 exact frozen input"
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "role": "runtime",
+      "bytes": 5586,
+      "sha256": "f6f67beb9b90c498c951dbfab27561ddb1fbb070f5740e0b2df80c9a2fb161d7"
+    },
+    {
+      "path": "runtime.mjs",
+      "role": "runtime",
+      "bytes": 14482,
+      "sha256": "36cc7edd7b8de3c0b79934ee76587fa7519cab20f32f371713d1cc35fde9c872"
+    },
+    {
+      "path": "audio.mjs",
+      "role": "runtime-contract",
+      "bytes": 6620,
+      "sha256": "e9c7de9508c4335a45e8e0288b4475406f4fd6f72f2a90a8fb0be3c0a876ed0a"
+    },
+    {
+      "path": "contract.mjs",
+      "role": "runtime-contract",
+      "bytes": 3977,
+      "sha256": "dfc8838811081aabe87ecae580afaea9e7eae8fa1e0909446883f369bac1006f"
+    },
+    {
+      "path": "source.wgsl",
+      "role": "creative-shader",
+      "bytes": 2456,
+      "sha256": "fdb1973eb621f0415a5fca3aebdf92b62cc894e4e34fd2caa083e8421448eafe"
+    },
+    {
+      "path": "observer.wgsl",
+      "role": "creative-shader",
+      "bytes": 2300,
+      "sha256": "8b0268016c9f6948dca75469d6a7a9603024718fda88a1e135d2899857141f9a"
+    },
+    {
+      "path": "source-creative-manifest-r1836.json",
+      "role": "creative-provenance",
+      "bytes": 1911,
+      "sha256": "ca9753a94eb4dc61858188c4a44bb5f21927b57fdfcbb0de16a0ed1ebe18f19b"
+    }
+  ]
+}
