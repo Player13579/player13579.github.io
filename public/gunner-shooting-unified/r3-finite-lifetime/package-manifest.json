@@ -1,0 +1,186 @@
+{
+  "schema": "dva-shooting-unified-technical-package-manifest/v1",
+  "stage": "CREATE_ONLY_PREPARED_PENDING_EXACT_ROUTE_NATIVE",
+  "groupId": "gunner-shooting-sol61",
+  "versionId": "gunner-shooting-unified-sol61-r3-finite-lifetime",
+  "baseVersionId": "gunner-shooting-unified-sol61-r3",
+  "route": "public/gunner-shooting-unified/r3-finite-lifetime",
+  "entry": "public/gunner-shooting-unified/r3-finite-lifetime/index.html",
+  "sourceManifestPath": "public/gunner-shooting-unified/r3-finite-lifetime/source-manifest.json",
+  "sourceManifestSha256": "fb014827c110e79042ab02bdeee607e74891dfe61e5e7d521b50bc83100a6282",
+  "sourcePins": {
+    "r1538Commit": "5839fd76647edf7b79bbb567db1a63a26a1571c1",
+    "count": 25,
+    "sha256": "dc14fc16856f08a17732c2977f0a54ad6c837cf2f47076ade4da151eb2f3bad8"
+  },
+  "creativeSource": {
+    "creatorDisplayName": "GPT-6.1-Sol",
+    "sourceVersionIds": [
+      "gunner-shooting-sol61-r2",
+      "gunner-shooting-nonhandgun-sol61-r2"
+    ],
+    "creativeEdition": 3,
+    "seriesProducedCount": 3,
+    "creativeEditionLimit": 5
+  },
+  "technicalOnly": true,
+  "technicalChange": "R1538 finite-life preview kick cutoff only; no new creative iteration, no source SFX/PCM/shader art edits beyond this cutoff.",
+  "runtimeClosureCount": 20,
+  "runtimeClosure": [
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/controller.mjs",
+      "bytes": 21406,
+      "sha256": "17d2d2e441019dc95b0db8e7b8feae1ed6bfeb282306958095e290b9ee4d165b",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/index.html",
+      "bytes": 2935,
+      "sha256": "b4f7147fbf2ee4efcf91091dc2e43c8558bf221cb43d1be87f670f30179fc27b",
+      "mime": "text/html"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/contract.mjs",
+      "bytes": 3130,
+      "sha256": "9d61eda60c9911c7d7f8c130b7045d7a44028d30560410a32256f8a2c131964b",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/index.html",
+      "bytes": 3073,
+      "sha256": "773cf7216bf1982e50f4965c66b7c172b6e91935c98e54654a75107329a1df32",
+      "mime": "text/html"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/material-sfx.mjs",
+      "bytes": 4234,
+      "sha256": "1899918f4a7c340e57364ca7254fd6f8ddbf899f1ab5cca89f483cd84d547bc9",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/observer.wgsl",
+      "bytes": 1540,
+      "sha256": "34832a3daa9baab472d8a0d971dbc5ecd35082873d5ba0ba7a545fa907c669b5",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/runtime.mjs",
+      "bytes": 18654,
+      "sha256": "c1d1c9af01f8d4959f36c71185e31a6e343324839bf6a6746c31e1cca7e921d0",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/sfx.mjs",
+      "bytes": 170,
+      "sha256": "fa96d1faea3a9978df408d8bb87356fa07116a74242af4d802eb1ebcf8bea0b0",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/source.wgsl",
+      "bytes": 4860,
+      "sha256": "c205729fc190f5d0123c23947f9b195264afbb5f03e746b1599f3c4810492d63",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/contract.mjs",
+      "bytes": 2275,
+      "sha256": "8a22a9b58ef1cae0c322575608939f6657dd71f3f6c75c4c2d6321b9e9a45278",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/gallery-parent-contract.mjs",
+      "bytes": 2280,
+      "sha256": "eb7d089a43cffc4b29369c1c637b1aaadc78088794fcaf8d51d7d93d12530dad",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/gallery-startup-adapter.mjs",
+      "bytes": 5287,
+      "sha256": "0e0e71fd0cefd924362ebdb611e1bd7f522e37377d0cbf144b01002ee9be48df",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/gallery-startup-bootstrap.js",
+      "bytes": 1562,
+      "sha256": "75904263fcb411a45ba6acbec6efd89758300d5eacf4a9847ce8eec21abe2594",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/index.html",
+      "bytes": 1171,
+      "sha256": "a08eff6fa9f164ec23779047a41fdbd982b9e84d99c335a7fba928368058dc8f",
+      "mime": "text/html"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/material-sfx.mjs",
+      "bytes": 4234,
+      "sha256": "1899918f4a7c340e57364ca7254fd6f8ddbf899f1ab5cca89f483cd84d547bc9",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/observer.wgsl",
+      "bytes": 1439,
+      "sha256": "3efb508f364379ea9a5411dda2583d4c314725d20307d3fc55c22dfef6e550ef",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/runtime.mjs",
+      "bytes": 11196,
+      "sha256": "dda9df2c7c57b7cab9c901b4f93b670884ceee8071a37d84532168383ff84ef3",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/sfx.mjs",
+      "bytes": 2930,
+      "sha256": "c1d25f2b81f8863e0ab0a58164ba3503af53d9e736a5b40c11a9c4eceb5b6a5c",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/source.wgsl",
+      "bytes": 6147,
+      "sha256": "71b5398a7cd5c298bbe635b490cc88da75e3a5e913e509a0c162254624367255",
+      "mime": "text/wgsl"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/playback-offset.mjs",
+      "bytes": 1645,
+      "sha256": "f9adc9a6f2e3521d525f6cccaee7a582368446ebc3e8857e36c4dee5fa6671a7",
+      "mime": "text/javascript"
+    }
+  ],
+  "metadataClosure": [
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/package-manifest.json",
+      "bytes": 4975,
+      "sha256": "d771aa1db76cf4504631a87bd966bedafbaf455bd0eb6601928292d9435ddbf8",
+      "mime": "application/json",
+      "role": "leaf provenance manifest; not imported by runtime"
+    },
+    {
+      "path": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/other/package-manifest.json",
+      "bytes": 8044,
+      "sha256": "ffe720d59589a41d7d0987812fa8c269f57e286237add9a7ca375cd9fa58f0ba",
+      "mime": "application/json",
+      "role": "leaf provenance manifest; not imported by runtime"
+    }
+  ],
+  "nonRuntimeMetadata": [
+    "source-manifest.json",
+    "package-manifest.json",
+    "provenance.json"
+  ],
+  "acceptance": {
+    "rootNative": "pending-exact-route-native",
+    "publication": "pending",
+    "quality": "pending",
+    "adoption": "unknown",
+    "normalAudioListening": "not_run",
+    "safari": "unverified",
+    "gameIntegration": "not_connected"
+  },
+  "relatedNativeEvidence": {
+    "status": "PASS_DEFERRED_TECHNICAL_CAPTURE_PENDING_QUALITY",
+    "sha256": "daaacd7b2e2ecbcd5aea3b4344405b32a366c4491acb7e7af47109b52749b966",
+    "scope": "Original unified R3 route only; not this finite-lifetime route."
+  }
+}

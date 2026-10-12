@@ -1,0 +1,126 @@
+{
+  "schema": "dva-public-shooting-e-package-r699/v1",
+  "groupID": "gunner-shooting-sol61",
+  "versionID": "gunner-shooting-sol61-r3",
+  "entry": "index.html",
+  "globalName": "__DVA_SHOOTING_E_R3__",
+  "sourceManifestSha256": "bce31134c726f227ef693da47113e538a3c68facd9dbdf66eec98b277068b09e",
+  "sourceSealSha256": "305575389e14ba000ea354b8a7aad168f4c439e54168594b0557bd4a8acd2ae9",
+  "authors": {
+    "creative": "GPT-6.1-Sol",
+    "runtimeImplementation": "GPT-6.1-Sol",
+    "galleryIntegration": "GPT-6-Luna"
+  },
+  "runtimeClosure": [
+    {
+      "path": "contract.mjs",
+      "bytes": 3130,
+      "sha256": "9d61eda60c9911c7d7f8c130b7045d7a44028d30560410a32256f8a2c131964b",
+      "publicPath": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/contract.mjs"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3073,
+      "sha256": "773cf7216bf1982e50f4965c66b7c172b6e91935c98e54654a75107329a1df32",
+      "publicPath": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/index.html"
+    },
+    {
+      "path": "material-sfx.mjs",
+      "bytes": 4234,
+      "sha256": "1899918f4a7c340e57364ca7254fd6f8ddbf899f1ab5cca89f483cd84d547bc9",
+      "publicPath": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/material-sfx.mjs"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1540,
+      "sha256": "34832a3daa9baab472d8a0d971dbc5ecd35082873d5ba0ba7a545fa907c669b5",
+      "publicPath": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/observer.wgsl"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 18654,
+      "sha256": "c1d1c9af01f8d4959f36c71185e31a6e343324839bf6a6746c31e1cca7e921d0",
+      "publicPath": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/runtime.mjs"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 170,
+      "sha256": "fa96d1faea3a9978df408d8bb87356fa07116a74242af4d802eb1ebcf8bea0b0",
+      "publicPath": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/sfx.mjs"
+    },
+    {
+      "path": "source.wgsl",
+      "bytes": 4860,
+      "sha256": "c205729fc190f5d0123c23947f9b195264afbb5f03e746b1599f3c4810492d63",
+      "publicPath": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/handgun/source.wgsl"
+    },
+    {
+      "path": "../playback-offset.mjs",
+      "bytes": 1645,
+      "sha256": "f9adc9a6f2e3521d525f6cccaee7a582368446ebc3e8857e36c4dee5fa6671a7",
+      "publicPath": "public/gunner-shooting-unified/r3-finite-lifetime/leaves/playback-offset.mjs"
+    }
+  ],
+  "dependencies": {
+    "index.html": [
+      "runtime.mjs"
+    ],
+    "runtime.mjs": [
+      "contract.mjs",
+      "source.wgsl",
+      "observer.wgsl",
+      "../playback-offset.mjs"
+    ],
+    "contract.mjs": [
+      "sfx.mjs"
+    ],
+    "sfx.mjs": [
+      "material-sfx.mjs"
+    ]
+  },
+  "sourceRuntimeValidation": {
+    "CPU": "pass: R987 actual sound closure CPU fixture suite, no GPU/browser",
+    "wgslReservedWordScan": "pass: pinned R683 list; static supplement only",
+    "shader": "pending: root-owned native compilation of this exact candidate",
+    "native": "pending: root-owned native run of this exact candidate",
+    "quality": "in-progress",
+    "SFXListening": "not_run",
+    "mainGame": "not_run",
+    "publication": "pending"
+  },
+  "galleryMetadata": {
+    "quality": "pending",
+    "adoption": "unknown",
+    "native": "pending",
+    "normalAudioListening": "not_run",
+    "mainGame": "not_connected"
+  },
+  "creativeEdition": 3,
+  "sfxSource": "outputs/request-20261011/shooting-material-sfx-r906",
+  "sfxListening": "not_run",
+  "qualityAcceptance": false,
+  "adoption": "unknown",
+  "mainGameIntegration": "not_connected",
+  "sfxSourceSealSha256": "0af4d5081323287f4ab4fc398eef25f55817425d32345c8b413b2959afe57f91",
+  "timingOverlay": "outputs/request-20261011/shooting-r3-sfx-timing-r932/PATCHSET-R932.json",
+  "technicalStartupRepair": {
+    "candidateId": "shooting-r3-handgun-startup-repair-r1422",
+    "scope": "R3 handgun eligible completed source frame only; live producer/controller protocol; artistic runtime contract, shader, SFX, and plan/uniform/synth bytes preserved",
+    "controllerPath": "public/gunner-shooting-unified/controller.mjs",
+    "controllerSha256": "22802e8014246fb9728b2ef36371eeaeed4c414aec8ab356d4a9a8f67a30b4f0",
+    "sourceCommit": "5839fd76647edf7b79bbb567db1a63a26a1571c1",
+    "quality": "not_established",
+    "native": "pending-root-native",
+    "productionEligible": false
+  },
+  "stage": "PRIVATE_TECHNICAL_CANDIDATE_PENDING_ROOT_NATIVE",
+  "unifiedVersionId": "gunner-shooting-unified-sol61-r3-finite-lifetime",
+  "technicalDerivative": {
+    "schema": "dva-shooting-r3-finite-lifetime-derivative/v1",
+    "status": "PENDING_ROOT_NATIVE",
+    "sourceVersionId": "gunner-shooting-unified-sol61-r3",
+    "change": "No visual shader or PCM changes; this leaf is copied from the exact R1538 source pins.",
+    "creativeEdition": 3,
+    "creativeEditionCountUnchanged": true
+  }
+}
