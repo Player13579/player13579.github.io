@@ -1,0 +1,395 @@
+{
+  "schema": "r2002-actual-sampled-natural-Aim-quality/v1",
+  "workId": "R2002",
+  "activity": "source-hash-samephase-receipt-native-geometry-and-original-pixel-review",
+  "startedAt": "2026-10-12T16:53:36.878Z",
+  "completedAt": "2026-10-12T16:53:36.950Z",
+  "exitCode": 0,
+  "formalExecId": null,
+  "outputRef": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\aim-r4-sampled-natural-quality-r2002/EVIDENCE.json",
+  "status": "PASS_LIMITED_SAMPLED_NATURAL_H64_DPR1_VISUAL_PHASES_AND_FINITE_CLEAR",
+  "nativeResult": {
+    "path": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/primary/aim-r4-continuous-quality-r1999-a1/NATIVE-RESULT.json",
+    "sha256": "f6dfdeee0a3fbec9ec6015793d35ab5844f40be9f2da2ac74b8d646f50794481",
+    "bytes": 383838,
+    "status": "PASS_LIMITED_CONTINUOUS_R4_CAPTURE",
+    "cleanup": {
+      "server": "not-created; Playwright route interception only",
+      "page": "closed",
+      "context": "closed",
+      "browser": "closed",
+      "captureSession": "detached"
+    },
+    "errors": [],
+    "phaseFailures": []
+  },
+  "sourcePins": [
+    {
+      "sourcePath": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/aim-r4-continuous-caller-r1999/route/source.wgsl",
+      "path": "inputs/source.wgsl",
+      "bytes": 2456,
+      "sha256": "fdb1973eb621f0415a5fca3aebdf92b62cc894e4e34fd2caa083e8421448eafe",
+      "readAt": "2026-10-12T16:53:36.884Z"
+    },
+    {
+      "sourcePath": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/aim-r4-continuous-caller-r1999/route/observer.wgsl",
+      "path": "inputs/observer.wgsl",
+      "bytes": 2300,
+      "sha256": "8b0268016c9f6948dca75469d6a7a9603024718fda88a1e135d2899857141f9a",
+      "readAt": "2026-10-12T16:53:36.885Z"
+    },
+    {
+      "sourcePath": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/aim-r4-continuous-caller-r1999/route/runtime.mjs",
+      "path": "inputs/runtime.mjs",
+      "bytes": 14482,
+      "sha256": "36cc7edd7b8de3c0b79934ee76587fa7519cab20f32f371713d1cc35fde9c872",
+      "readAt": "2026-10-12T16:53:36.886Z"
+    },
+    {
+      "sourcePath": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/aim-r4-continuous-caller-r1999/route/contract.mjs",
+      "path": "inputs/contract.mjs",
+      "bytes": 3977,
+      "sha256": "dfc8838811081aabe87ecae580afaea9e7eae8fa1e0909446883f369bac1006f",
+      "readAt": "2026-10-12T16:53:36.888Z"
+    },
+    {
+      "sourcePath": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/aim-r4-continuous-caller-r1999/route/audio.mjs",
+      "path": "inputs/audio.mjs",
+      "bytes": 6620,
+      "sha256": "e9c7de9508c4335a45e8e0288b4475406f4fd6f72f2a90a8fb0be3c0a876ed0a",
+      "readAt": "2026-10-12T16:53:36.889Z"
+    }
+  ],
+  "records": [
+    {
+      "phase": "acquiring",
+      "id": "early-positive",
+      "imagePath": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\aim-r4-continuous-quality-r1999-a1\\r4-handgun-natural-early-positive-age-55-cause-aim-fixture-2.png",
+      "sha256": "693aca31fdeba22f2d3d84edd8793a5681b8d52fd0eb8d3e5869af249dfcee90",
+      "bytes": 7118,
+      "width": 640,
+      "height": 320,
+      "actualViewed": true,
+      "beforeAgeMs": 55.099999994039536,
+      "afterAgeMs": 181.3999999910593,
+      "beforeSequence": 18,
+      "afterSequence": 25,
+      "cause": "aim-fixture-2",
+      "generation": 2,
+      "source": {
+        "id": "aim-fixture-2",
+        "cause": "aim-fixture-2",
+        "type": "gunner-passive-aim",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "variant": "handgun",
+        "x": 150,
+        "y": 160,
+        "targetX": 420,
+        "targetY": 160,
+        "startedAt": 1456.5,
+        "duration": 900,
+        "durationMs": 900,
+        "fixture": true
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_SOURCE_NEW_COMPLETED_FENCE",
+        "ok": true,
+        "attempts": 1,
+        "elapsedMs": 7,
+        "stableMs": null,
+        "sequence": 25,
+        "ageMs": 181.3999999910593,
+        "phase": "acquiring"
+      },
+      "sourceOn": true,
+      "observerOn": true,
+      "held": false,
+      "metrics": {
+        "ROI": [
+          350,
+          90,
+          140,
+          135
+        ],
+        "whiteBinPixels": 1080,
+        "blueBinPixels": 1804,
+        "binsDescriptiveNotQualityThreshold": true
+      },
+      "exactGpuFrame": false
+    },
+    {
+      "phase": "confirmed",
+      "id": "confirmation",
+      "imagePath": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\aim-r4-continuous-quality-r1999-a1\\r4-handgun-natural-confirmation-age-252-cause-aim-fixture-2.png",
+      "sha256": "47cd6eb2f9b51fec82cf7b4fea630317187b7ec32ba7ca1d501af917f5e7a1d3",
+      "bytes": 6872,
+      "width": 640,
+      "height": 320,
+      "actualViewed": true,
+      "beforeAgeMs": 252.5,
+      "afterAgeMs": 342.19999998807907,
+      "beforeSequence": 29,
+      "afterSequence": 34,
+      "cause": "aim-fixture-2",
+      "generation": 2,
+      "source": {
+        "id": "aim-fixture-2",
+        "cause": "aim-fixture-2",
+        "type": "gunner-passive-aim",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "variant": "handgun",
+        "x": 150,
+        "y": 160,
+        "targetX": 420,
+        "targetY": 160,
+        "startedAt": 1456.5,
+        "duration": 900,
+        "durationMs": 900,
+        "fixture": true
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_SOURCE_NEW_COMPLETED_FENCE",
+        "ok": true,
+        "attempts": 1,
+        "elapsedMs": 1,
+        "stableMs": null,
+        "sequence": 34,
+        "ageMs": 342.19999998807907,
+        "phase": "confirmed"
+      },
+      "sourceOn": true,
+      "observerOn": true,
+      "held": false,
+      "metrics": {
+        "ROI": [
+          350,
+          90,
+          140,
+          135
+        ],
+        "whiteBinPixels": 1936,
+        "blueBinPixels": 1564,
+        "binsDescriptiveNotQualityThreshold": true
+      },
+      "exactGpuFrame": false
+    },
+    {
+      "phase": "locked",
+      "id": "locked",
+      "imagePath": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\aim-r4-continuous-quality-r1999-a1\\r4-handgun-natural-locked-age-431-cause-aim-fixture-2.png",
+      "sha256": "4fb24f6e58add26de14bd58fd892b28e5491fc25f7b3ffd7ac039712b0759434",
+      "bytes": 4418,
+      "width": 640,
+      "height": 320,
+      "actualViewed": true,
+      "beforeAgeMs": 431.69999998807907,
+      "afterAgeMs": 503.3999999910593,
+      "beforeSequence": 39,
+      "afterSequence": 43,
+      "cause": "aim-fixture-2",
+      "generation": 2,
+      "source": {
+        "id": "aim-fixture-2",
+        "cause": "aim-fixture-2",
+        "type": "gunner-passive-aim",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "variant": "handgun",
+        "x": 150,
+        "y": 160,
+        "targetX": 420,
+        "targetY": 160,
+        "startedAt": 1456.5,
+        "duration": 900,
+        "durationMs": 900,
+        "fixture": true
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_SOURCE_NEW_COMPLETED_FENCE",
+        "ok": true,
+        "attempts": 1,
+        "elapsedMs": 1,
+        "stableMs": null,
+        "sequence": 43,
+        "ageMs": 503.3999999910593,
+        "phase": "locked"
+      },
+      "sourceOn": true,
+      "observerOn": true,
+      "held": false,
+      "metrics": {
+        "ROI": [
+          350,
+          90,
+          140,
+          135
+        ],
+        "whiteBinPixels": 980,
+        "blueBinPixels": 2208,
+        "binsDescriptiveNotQualityThreshold": true
+      },
+      "exactGpuFrame": false
+    },
+    {
+      "phase": "release",
+      "id": "late-release",
+      "imagePath": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\aim-r4-continuous-quality-r1999-a1\\r4-handgun-natural-late-release-age-681-cause-aim-fixture-2.png",
+      "sha256": "cd2bad96845cfae5b021860eaf242c7c9b390bd13ec5fde52b4707f8d3930343",
+      "bytes": 4251,
+      "width": 640,
+      "height": 320,
+      "actualViewed": true,
+      "beforeAgeMs": 681.3999999910593,
+      "afterAgeMs": 789.5999999940395,
+      "beforeSequence": 53,
+      "afterSequence": 59,
+      "cause": "aim-fixture-2",
+      "generation": 2,
+      "source": {
+        "id": "aim-fixture-2",
+        "cause": "aim-fixture-2",
+        "type": "gunner-passive-aim",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "variant": "handgun",
+        "x": 150,
+        "y": 160,
+        "targetX": 420,
+        "targetY": 160,
+        "startedAt": 1456.5,
+        "duration": 900,
+        "durationMs": 900,
+        "fixture": true
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_SOURCE_NEW_COMPLETED_FENCE",
+        "ok": true,
+        "attempts": 1,
+        "elapsedMs": 6,
+        "stableMs": null,
+        "sequence": 59,
+        "ageMs": 789.5999999940395,
+        "phase": "release"
+      },
+      "sourceOn": true,
+      "observerOn": true,
+      "held": false,
+      "metrics": {
+        "ROI": [
+          350,
+          90,
+          140,
+          135
+        ],
+        "whiteBinPixels": 960,
+        "blueBinPixels": 2116,
+        "binsDescriptiveNotQualityThreshold": true
+      },
+      "exactGpuFrame": false
+    },
+    {
+      "phase": "expired",
+      "id": "natural-terminal",
+      "imagePath": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\aim-r4-continuous-quality-r1999-a1\\r4-handgun-natural-natural-terminal-age-900-cause-aim-fixture-2.png",
+      "sha256": "183c02075891a96372e02684a606ec124c2456a9cb3210175536b57413a21f0f",
+      "bytes": 2074,
+      "width": 640,
+      "height": 320,
+      "actualViewed": true,
+      "beforeAgeMs": 900,
+      "afterAgeMs": 900,
+      "beforeSequence": 66,
+      "afterSequence": 66,
+      "cause": "aim-fixture-2",
+      "generation": 2,
+      "source": {
+        "id": "aim-fixture-2",
+        "cause": "aim-fixture-2",
+        "type": "gunner-passive-aim",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "variant": "handgun",
+        "x": 150,
+        "y": 160,
+        "targetX": 420,
+        "targetY": 160,
+        "startedAt": 1456.5,
+        "duration": 900,
+        "durationMs": 900,
+        "fixture": true
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_TERMINAL_COMPLETED_RECEIPT_STABLE",
+        "ok": true,
+        "attempts": 12,
+        "elapsedMs": 213,
+        "stableMs": 208,
+        "sequence": 66,
+        "ageMs": 900,
+        "phase": "expired"
+      },
+      "sourceOn": true,
+      "observerOn": true,
+      "held": false,
+      "metrics": {
+        "ROI": [
+          350,
+          90,
+          140,
+          135
+        ],
+        "whiteBinPixels": 0,
+        "blueBinPixels": 0,
+        "binsDescriptiveNotQualityThreshold": true
+      },
+      "exactGpuFrame": false
+    }
+  ],
+  "baseline": {
+    "path": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/primary/aim-r4-continuous-quality-r1999-a1/r4-handgun-natural-source-off-baseline-age-900-cause-aim-fixture-2.png",
+    "sha256": "183c02075891a96372e02684a606ec124c2456a9cb3210175536b57413a21f0f",
+    "bytes": 2074,
+    "actualViewed": true,
+    "exactDecodedPixelMatch": true,
+    "pixelDiffCount": 0,
+    "scope": "source OFF at already-expired900; ordinary fixture terminal baseline, not active source/observer isolation"
+  },
+  "visualDecision": {
+    "acquiring": "Four blue diamond faces establish acquisition around open gray target",
+    "confirmed": "Four corner/aperture transition with diagonal bright front; blue surfaces still visible rather than white wash",
+    "locked": "Four coherent open L corners; gray head/body/legs not covered",
+    "release": "Same stable aperture/silhouette with changing blue intensity; no new symbols or residual ghost",
+    "expired": "ordinary fixture only, decodedRGBA exactly baseline",
+    "observer": "compact attached core/wing appearance without separated copies; combinedON response only, active isolatedcausal gates unknown",
+    "material": "emissive display state, not real weapon/bodyBRDF; no source-proven or image-demonstrated new flaw"
+  },
+  "qualityLabelProposal": {
+    "qualityStatus": "partial",
+    "qualityReviewStatus": "limited-pass-only",
+    "qualityReviewOutcome": "PASS_LIMITED_SAMPLED_PHYSICAL_PHASES_AND_OBSERVER",
+    "qualityReviewerDisplayName": "GPT-6.1-Sol",
+    "qualityAccepted": false,
+    "wholeEffectQualityAccepted": false,
+    "qualityReviewScope": "one naturally playing handgun sharedfixture H64/DPR1, four active samephasebracketed samples + expired stable clear; combinedSOURCE+OBS only; not exactGPU/everyframe/isolatedOBS/near/main/hearing/Safari",
+    "qualityEvidence": "root must supply actual GitHub committed evidence path after durable save; none invented",
+    "consumerLabel": "Codex品質確認中（限定サンプル合格・全体判定未完了）",
+    "testedConsumer": {
+      "path": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/aim-r4-continuous-caller-r1999/parent/asset-gallery.js",
+      "sha256": "c424e9314062ac14227da7950c36cc4f7760ed149413696542a246b81c4b61ed",
+      "source": "pinnedR1967 callerparent, notfreshpublic32b/a097currentgallerynativeclaim"
+    }
+  },
+  "creativeRevision": {
+    "R5Warranted": false,
+    "consumed": 0,
+    "currentR4": 4,
+    "maximum": 5,
+    "remaining": 1,
+    "adoptionChanged": false
+  },
+  "scope": "Limited sampled natural visual phases, not everyframe/continuous timing/activeSOURCE-OBSisolation/otherweapons/DPR2/SFX/listening/main/Safari/performance/fullquality",
+  "sourceMutation": false,
+  "native": false
+}

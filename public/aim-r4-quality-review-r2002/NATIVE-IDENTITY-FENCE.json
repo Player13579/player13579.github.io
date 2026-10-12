@@ -1,0 +1,474 @@
+{
+  "schema": "aim-r4-r1999-native-identity-fence-summary/v1",
+  "workId": "R1999",
+  "sourceResult": {
+    "sourcePath": "primary/aim-r4-continuous-quality-r1999-a1/NATIVE-RESULT.json",
+    "sha256": "f6dfdeee0a3fbec9ec6015793d35ab5844f40be9f2da2ac74b8d646f50794481",
+    "bytes": 383838,
+    "compressedCopy": "R1999-NATIVE-RESULT.json.gz"
+  },
+  "status": "PASS_LIMITED_CONTINUOUS_R4_CAPTURE",
+  "route": "https://player13579.github.io/webgpu-e-gallery.html?category=effect&filter=unadopted&asset=gunner-aim-acquisition-sol61&version=gunner-aim-acquisition-sol61-r4&verify=1",
+  "scope": "One naturally playing handgun H64 DPR1 cause, sampled at observed completed receipts over 900 ms and terminal; samples are not every-frame evidence.",
+  "sourceIdentity": {
+    "groupId": "gunner-aim-acquisition-sol61",
+    "versionId": "gunner-aim-acquisition-sol61-r4",
+    "sourceId": "aim-fixture-2",
+    "causeId": "aim-fixture-2",
+    "generation": 2,
+    "variant": "handgun",
+    "playerId": "fixture-gunner",
+    "targetId": "fixture-visible-living-target",
+    "startedAtMs": 1456.5,
+    "durationMs": 900,
+    "fixtureHeight": 64
+  },
+  "sampleCount": 5,
+  "samples": [
+    {
+      "phase": "acquiring",
+      "targetAgeMs": {
+        "min": 5,
+        "maxExclusive": 210
+      },
+      "sourceIdentity": {
+        "sourceId": "aim-fixture-2",
+        "causeId": "aim-fixture-2",
+        "generation": 2,
+        "variant": "handgun",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "startedAtMs": 1456.5
+      },
+      "before": {
+        "ageMs": 55.099999994039536,
+        "phase": "acquiring",
+        "playing": true,
+        "submitted": 18,
+        "completed": 18,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 18,
+          "ageMs": 55.099999994039536,
+          "phase": "acquiring",
+          "active": true,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 1511.7999999970198,
+          "completedAt": 1518,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "after": {
+        "ageMs": 181.3999999910593,
+        "phase": "acquiring",
+        "playing": true,
+        "submitted": 25,
+        "completed": 25,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 25,
+          "ageMs": 181.3999999910593,
+          "phase": "acquiring",
+          "active": true,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 1638,
+          "completedAt": 1640.3999999910593,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_SOURCE_NEW_COMPLETED_FENCE",
+        "ok": true,
+        "attempts": 1,
+        "elapsedMs": 7,
+        "stableMs": null,
+        "sequence": 25,
+        "ageMs": 181.3999999910593,
+        "phase": "acquiring"
+      },
+      "geometryStable": true,
+      "image": {
+        "originalFilename": "r4-handgun-natural-early-positive-age-55-cause-aim-fixture-2.png",
+        "sourcePath": "primary/aim-r4-continuous-quality-r1999-a1/r4-handgun-natural-early-positive-age-55-cause-aim-fixture-2.png",
+        "sha256": "693aca31fdeba22f2d3d84edd8793a5681b8d52fd0eb8d3e5869af249dfcee90",
+        "bytes": 7118
+      }
+    },
+    {
+      "phase": "confirmed",
+      "targetAgeMs": {
+        "min": 210,
+        "maxExclusive": 430
+      },
+      "sourceIdentity": {
+        "sourceId": "aim-fixture-2",
+        "causeId": "aim-fixture-2",
+        "generation": 2,
+        "variant": "handgun",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "startedAtMs": 1456.5
+      },
+      "before": {
+        "ageMs": 252.5,
+        "phase": "confirmed",
+        "playing": true,
+        "submitted": 29,
+        "completed": 29,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 29,
+          "ageMs": 252.5,
+          "phase": "confirmed",
+          "active": true,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 1709.0999999940395,
+          "completedAt": 1713.0999999940395,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "after": {
+        "ageMs": 342.19999998807907,
+        "phase": "confirmed",
+        "playing": true,
+        "submitted": 34,
+        "completed": 34,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 34,
+          "ageMs": 342.19999998807907,
+          "phase": "confirmed",
+          "active": true,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 1798.7999999970198,
+          "completedAt": 1803.699999988079,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_SOURCE_NEW_COMPLETED_FENCE",
+        "ok": true,
+        "attempts": 1,
+        "elapsedMs": 1,
+        "stableMs": null,
+        "sequence": 34,
+        "ageMs": 342.19999998807907,
+        "phase": "confirmed"
+      },
+      "geometryStable": true,
+      "image": {
+        "originalFilename": "r4-handgun-natural-confirmation-age-252-cause-aim-fixture-2.png",
+        "sourcePath": "primary/aim-r4-continuous-quality-r1999-a1/r4-handgun-natural-confirmation-age-252-cause-aim-fixture-2.png",
+        "sha256": "47cd6eb2f9b51fec82cf7b4fea630317187b7ec32ba7ca1d501af917f5e7a1d3",
+        "bytes": 6872
+      }
+    },
+    {
+      "phase": "locked",
+      "targetAgeMs": {
+        "min": 430,
+        "maxExclusive": 670
+      },
+      "sourceIdentity": {
+        "sourceId": "aim-fixture-2",
+        "causeId": "aim-fixture-2",
+        "generation": 2,
+        "variant": "handgun",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "startedAtMs": 1456.5
+      },
+      "before": {
+        "ageMs": 431.69999998807907,
+        "phase": "locked",
+        "playing": true,
+        "submitted": 39,
+        "completed": 39,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 39,
+          "ageMs": 431.69999998807907,
+          "phase": "locked",
+          "active": true,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 1888.199999988079,
+          "completedAt": 1893.2999999970198,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "after": {
+        "ageMs": 503.3999999910593,
+        "phase": "locked",
+        "playing": true,
+        "submitted": 43,
+        "completed": 43,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 43,
+          "ageMs": 503.3999999910593,
+          "phase": "locked",
+          "active": true,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 1959.8999999910593,
+          "completedAt": 1963.8999999910593,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_SOURCE_NEW_COMPLETED_FENCE",
+        "ok": true,
+        "attempts": 1,
+        "elapsedMs": 1,
+        "stableMs": null,
+        "sequence": 43,
+        "ageMs": 503.3999999910593,
+        "phase": "locked"
+      },
+      "geometryStable": true,
+      "image": {
+        "originalFilename": "r4-handgun-natural-locked-age-431-cause-aim-fixture-2.png",
+        "sourcePath": "primary/aim-r4-continuous-quality-r1999-a1/r4-handgun-natural-locked-age-431-cause-aim-fixture-2.png",
+        "sha256": "4fb24f6e58add26de14bd58fd892b28e5491fc25f7b3ffd7ac039712b0759434",
+        "bytes": 4418
+      }
+    },
+    {
+      "phase": "release",
+      "targetAgeMs": {
+        "min": 670,
+        "maxExclusive": 900
+      },
+      "sourceIdentity": {
+        "sourceId": "aim-fixture-2",
+        "causeId": "aim-fixture-2",
+        "generation": 2,
+        "variant": "handgun",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "startedAtMs": 1456.5
+      },
+      "before": {
+        "ageMs": 681.3999999910593,
+        "phase": "release",
+        "playing": true,
+        "submitted": 53,
+        "completed": 53,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 53,
+          "ageMs": 681.3999999910593,
+          "phase": "release",
+          "active": true,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 2137.8999999910593,
+          "completedAt": 2143,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "after": {
+        "ageMs": 789.5999999940395,
+        "phase": "release",
+        "playing": true,
+        "submitted": 59,
+        "completed": 59,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 59,
+          "ageMs": 789.5999999940395,
+          "phase": "release",
+          "active": true,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 2246.199999988079,
+          "completedAt": 2248.5,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_SOURCE_NEW_COMPLETED_FENCE",
+        "ok": true,
+        "attempts": 1,
+        "elapsedMs": 6,
+        "stableMs": null,
+        "sequence": 59,
+        "ageMs": 789.5999999940395,
+        "phase": "release"
+      },
+      "geometryStable": true,
+      "image": {
+        "originalFilename": "r4-handgun-natural-late-release-age-681-cause-aim-fixture-2.png",
+        "sourcePath": "primary/aim-r4-continuous-quality-r1999-a1/r4-handgun-natural-late-release-age-681-cause-aim-fixture-2.png",
+        "sha256": "cd2bad96845cfae5b021860eaf242c7c9b390bd13ec5fde52b4707f8d3930343",
+        "bytes": 4251
+      }
+    },
+    {
+      "phase": "expired",
+      "targetAgeMs": {
+        "min": 900,
+        "maxExclusive": null
+      },
+      "sourceIdentity": {
+        "sourceId": "aim-fixture-2",
+        "causeId": "aim-fixture-2",
+        "generation": 2,
+        "variant": "handgun",
+        "playerId": "fixture-gunner",
+        "targetId": "fixture-visible-living-target",
+        "startedAtMs": 1456.5
+      },
+      "before": {
+        "ageMs": 900,
+        "phase": "expired",
+        "playing": false,
+        "submitted": 66,
+        "completed": 66,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 66,
+          "ageMs": 900,
+          "phase": "expired",
+          "active": false,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 2370.5,
+          "completedAt": 2375.5,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "after": {
+        "ageMs": 900,
+        "phase": "expired",
+        "playing": false,
+        "submitted": 66,
+        "completed": 66,
+        "inFlight": 0,
+        "pending": 0,
+        "latestReceipt": {
+          "sequence": 66,
+          "ageMs": 900,
+          "phase": "expired",
+          "active": false,
+          "passes": 2,
+          "completed": true,
+          "submittedAt": 2370.5,
+          "completedAt": 2375.5,
+          "sourceId": "aim-fixture-2",
+          "causeId": "aim-fixture-2",
+          "generation": 2
+        },
+        "errors": [],
+        "deviceLosses": []
+      },
+      "receiptWait": {
+        "status": "PASS_SAME_TERMINAL_COMPLETED_RECEIPT_STABLE",
+        "ok": true,
+        "attempts": 12,
+        "elapsedMs": 213,
+        "stableMs": 208,
+        "sequence": 66,
+        "ageMs": 900,
+        "phase": "expired"
+      },
+      "geometryStable": true,
+      "image": {
+        "originalFilename": "r4-handgun-natural-natural-terminal-age-900-cause-aim-fixture-2.png",
+        "sourcePath": "primary/aim-r4-continuous-quality-r1999-a1/r4-handgun-natural-natural-terminal-age-900-cause-aim-fixture-2.png",
+        "sha256": "183c02075891a96372e02684a606ec124c2456a9cb3210175536b57413a21f0f",
+        "bytes": 2074
+      }
+    }
+  ],
+  "terminal": {
+    "phase": "expired",
+    "ageMs": 900,
+    "playing": false,
+    "sourceEnabled": true,
+    "observerEnabled": true,
+    "sequence": 66,
+    "submitted": 66,
+    "completed": 66,
+    "inFlight": 0,
+    "pending": 0,
+    "receiptWait": {
+      "status": "PASS_SAME_TERMINAL_COMPLETED_RECEIPT_STABLE",
+      "ok": true,
+      "attempts": 12,
+      "elapsedMs": 213,
+      "stableMs": 208,
+      "sequence": 66,
+      "ageMs": 900,
+      "phase": "expired"
+    }
+  },
+  "imageCaptureLimitations": "Before/after completed receipt bracket; not attributable to a single GPU frame",
+  "deviceIdentityLimitations": "No raw GPU device identity is asserted in this summary",
+  "errors": [],
+  "cleanup": {
+    "server": "not-created; Playwright route interception only",
+    "page": "closed",
+    "context": "closed",
+    "browser": "closed",
+    "captureSession": "detached"
+  },
+  "qualityReview": {
+    "status": "limited-pass-only",
+    "outcome": "PASS_LIMITED_SAMPLED_PHYSICAL_PHASES_AND_OBSERVER",
+    "reviewer": "GPT-6.1-Sol",
+    "qualityAccepted": false,
+    "wholeEffectQualityAccepted": false,
+    "scope": "One naturally playing handgun, shared fixture H64/DPR1; four active sampled phase brackets plus stable terminal; combined SOURCE+OBS only"
+  }
+}
