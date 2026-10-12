@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PC9zdmc+">
+<title>Quantum Electric Discharge — private preview</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#080a13;color:#e8eafa;font:14px system-ui,sans-serif;padding:18px}main{max-width:980px;margin:auto}h1{font-size:19px;margin:0 0 5px}.note{color:#aab1ce;margin:0 0 14px}.stage{position:relative;width:100%;height:min(58vh,420px);min-height:250px;background:radial-gradient(ellipse,#11182c,#080a13 72%);border:1px solid #252d49;border-radius:10px;overflow:hidden}.stage canvas{position:absolute;inset:0;width:100%;height:100%}.actor{position:absolute;top:50%;width:34px;height:64px;transform:translate(-50%,-50%);border-radius:15px 15px 9px 9px;background:linear-gradient(#8da5d8,#34436b);box-shadow:0 0 14px #637bc533}.actor:before{content:"";position:absolute;top:-15px;left:9px;width:16px;height:16px;border-radius:50%;background:#b9c9ee}.label{position:absolute;top:calc(50% + 43px);transform:translateX(-50%);font-size:11px;color:#aeb9dc}.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 0}.controls label{display:flex;gap:6px;align-items:center}.controls button{background:#394c82;border:1px solid #647bb5;color:white;padding:7px 12px;border-radius:6px;cursor:pointer}.status{color:#aab1ce;min-height:20px;font:12px ui-monospace,monospace}.verify .audio,.verify .sound{display:none}
+</style>
+<main><h1>Quantum Electric Discharge · R2</h1>
+<p class="note">Private fixture · one visible source and target · 1050 ms event plus 900 ms pause · H64 coordinates</p>
+<div class="stage" id="stage"><canvas id="fx"></canvas><div class="actor" id="source"></div><span class="label" id="sl">Source</span><div class="actor" id="target"></div><span class="label" id="tl">Target</span></div>
+<div class="controls"><button id="replay">Replay</button><button id="sound" class="sound">Enable sound</button><label><input type="checkbox" id="emission" checked> Source emission</label><label><input type="checkbox" id="scatter" checked> Observer scatter</label><label><input type="checkbox" id="reduced"> Reduced motion</label><label><input type="checkbox" id="hidden"> Hide target (privacy gate)</label></div>
+<div class="status" id="status" role="status"></div></main>
+<script type="module">
+import {DischargeRuntime,audioEligible} from './runtime.mjs';
+import {DURATION_MS} from './channels.mjs';
+import {createSnapAudio} from './audio.mjs';
+import {createAudioReceiptCurrentness} from './audio-preview-guard.mjs';
+import {createFramePump} from './frame-pump.mjs';
+import {createGalleryStartupBridge} from './gallery-startup-bridge.mjs';
+import {createQuantumRetirementObserver,createTrackedFramePump} from './retirement-observer.mjs';
+const params=new URLSearchParams(location.search),verify=params.has('verify');
+if(verify)document.body.classList.add('verify');
+const stage=document.querySelector('#stage'),canvas=document.querySelector('#fx'),sourceEl=document.querySelector('#source'),targetEl=document.querySelector('#target'),status=document.querySelector('#status');
+const runtime=new DischargeRuntime({canvas});
+const startup=createGalleryStartupBridge({expectedRuntimeSha256:'01454037f072ed3031c212b8c4bf9d830b0ce5d2ef9e0d7a1e6b1310a052d40f',canvas});
+window.__dvaGalleryStartupSnapshot=startup.snapshot;
+const retirement=createQuantumRetirementObserver({canvas,expected:{versionId:'quantum-electric-discharge-sol61-r2-retirement-r2',packageSchema:'quantum-gallery-retirement-r1478/v1',sourceManifestSha256:'b530ed18f3e7720f9fb55310b38f3cbd2ccabe6bdc66a6c22f5640b368de1e06',originalSourceManifestSha256:'2f5b77d7648b482f30297da379d1715945aaef668c198c2ecbd75d6eff14fd8a'},startup});
+retirement.install();window.__quantumRetirementObserver=retirement;
+let causeNo=0,currentCauseId=null,currentGeneration=null,playing=false,startedAt=0,pendingFrame=null,latestReceipt=null,replayTimer=null,retired=false,startupReady=false;const played=new Set();
+const audioReceiptIsCurrent=createAudioReceiptCurrentness({runtime,getPendingFrame:()=>pendingFrame,getCurrentCauseId:()=>currentCauseId,getControls:()=>({sourceEmission:document.querySelector('#emission').checked,observerScatter:document.querySelector('#scatter').checked,reducedMotion:document.querySelector('#reduced').checked,targetVisible:!document.querySelector('#hidden').checked}),getPlaying:()=>playing,isVerify:()=>verify});
+const sound=createSnapAudio({verify,isCurrentReceipt:audioReceiptIsCurrent});
+const trackedFramePump=createTrackedFramePump(createFramePump,callback=>requestAnimationFrame(callback),()=>frame(),error=>{status.textContent='Frame loop error: '+String(error);playing=false;startup.fail('pipelines',error)});
+const framePump=trackedFramePump.pump;
+retirement.bind({runtime,sound,frameDrain:trackedFramePump,stop:()=>{if(retired)return;retired=true;playing=false;if(replayTimer!==null)clearTimeout(replayTimer);replayTimer=null;framePump.dispose();runtime.stop()}});
+startup.bindCleanup(reason=>{void retirement.retire(reason)});
+function scheduleFrame(){framePump.schedule()}
+function anchors(){const r=stage.getBoundingClientRect(),sx=r.width*.22,tx=r.width*.78,y=r.height*.5;for(const [el,x] of [[sourceEl,sx],[document.querySelector('#sl'),sx],[targetEl,tx],[document.querySelector('#tl'),tx]])el.style.left=x+'px';return {source:[sx,y],target:[tx,y],width:r.width,height:r.height,dpr:Math.min(devicePixelRatio||1,2)}}
+function size(){const r=stage.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.max(1,Math.round(r.width*dpr));canvas.height=Math.max(1,Math.round(r.height*dpr));anchors()}
+new ResizeObserver(size).observe(stage);size();
+function replay(){if(retired)return;causeNo++;currentCauseId='preview-'+causeNo;currentGeneration=runtime.start({id:currentCauseId});playing=true;latestReceipt=null;startedAt=performance.now();status.textContent='playing · cause '+causeNo}
+document.querySelector('#replay').onclick=replay;
+document.querySelector('#sound').onclick=async()=>{const unlocked=await sound.enable();status.textContent=unlocked?'sound enabled':'sound unavailable'};
+async function frame(){if(retired)return;if(!playing){scheduleFrame();return}const a=anchors(),age=performance.now()-startedAt,hidden=document.querySelector('#hidden').checked;targetEl.style.visibility=hidden?'hidden':'visible';document.querySelector('#tl').style.visibility=hidden?'hidden':'visible';const fitView=Math.min(a.width/640,a.height/300);const view=1;
+pendingFrame={causeId:currentCauseId,ageMs:age,controls:{sourceEmission:document.querySelector('#emission').checked,observerScatter:document.querySelector('#scatter').checked,reducedMotion:document.querySelector('#reduced').checked,targetVisible:!hidden,verify}};
+try{const receipt=await runtime.render({source:a.source.map(v=>v*a.dpr),target:a.target.map(v=>v*a.dpr),ageMs:age,seed:causeNo,actorHeight:64*a.dpr,reducedMotion:pendingFrame.controls.reducedMotion,sourceVisible:true,targetVisible:pendingFrame.controls.targetVisible,sourceEmission:pendingFrame.controls.sourceEmission,observerScatter:pendingFrame.controls.observerScatter,verify,view});if(retired)return;latestReceipt=receipt;if(receipt&&!startupReady){const firstFrame=startup.firstFrameFromReceipt(receipt,{causeId:currentCauseId,generation:currentGeneration});if(firstFrame&&startup.report('playing','ready',{firstFrame}))startupReady=true}if(receipt&&sound.unlocked&&audioReceiptIsCurrent(receipt)&&audioEligible(receipt,{verify,played}))sound.play(receipt);if(receipt)status.textContent=`cause ${receipt.causeId} · age ${Math.round(age)} ms · ${receipt.controls.sourceEmission?'emission on':'emission off'} · view 1 (embed fit ${fitView.toFixed(2)})`}catch(e){status.textContent='WebGPU unavailable: '+e.message;playing=false;startup.fail('pipelines',e)}finally{pendingFrame=null}
+if(retired)return;if(age>=DURATION_MS){playing=false;runtime.stop();status.textContent='complete · next cycle in 900 ms';replayTimer=setTimeout(replay,900)}scheduleFrame()}
+async function boot(){try{startup.report('assets','delayed');await startup.verifyRuntimeSource();startup.report('pipelines','pending');replay();scheduleFrame()}catch(error){status.textContent='Preview startup failed: '+error.message;startup.fail('assets',error)}}
+void boot();
+</script></html>
