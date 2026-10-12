@@ -1,0 +1,180 @@
+const STAGES = new Map([
+  ['child-document', 0], ['adapter', 1], ['device', 2], ['assets', 3],
+  ['pipelines', 4], ['first-frame', 5], ['playing', 6],
+]);
+const STATUSES = new Set(['pending', 'delayed', 'ready', 'error', 'cancelled', 'unsupported']);
+const DEFAULT_VERSION_ID = 'flora-invisible-codex-sol61-zero-r2';
+const DEFAULT_ROUTE = '/public/flora-zero-codex-sol61/r2/index.html';
+
+function errorText(value) { return String(value?.message || value || 'unknown error').slice(0, 500); }
+
+function validAudioRetirement(audio) {
+  return !!audio && audio.settled === true &&
+    (audio.contextState === 'absent' || audio.contextState === 'closed') &&
+    audio.voicesRemaining === 0 && audio.pendingCount === 0 &&
+    Array.isArray(audio.errors) && audio.errors.length === 0;
+}
+
+function evidenceFromCleanup(cleanup) {
+  if (cleanup?.status === 'not-started') {
+    if (!validAudioRetirement(cleanup.audioRetirement)) throw new Error('AUDIO_NOT_CLOSED_BEFORE_HOST_START');
+    return Object.freeze({ host: { status: 'not-created', pendingFrames: 0 },
+      audio: { settled: true, contextState: cleanup.audioRetirement.contextState,
+        voicesRemaining: cleanup.audioRetirement.voicesRemaining, pendingCount: cleanup.audioRetirement.pendingCount,
+        errors: [] }, rawReceipts: Object.freeze({ host: null, hostRetiredEvent: null, audio: Object.freeze({ ...cleanup.audioRetirement, errors: Object.freeze([...cleanup.audioRetirement.errors]) }) }), resourceState: 'not-created' });
+  }
+  const host = cleanup?.hostResult;
+  const event = cleanup?.hostRetiredEvent;
+  const audio = cleanup?.audioRetirement;
+  if (!host || host.state !== 'retired' || host.pendingFrames !== 0 ||
+      host.lost?.sameDevice !== true || host.lost?.reason !== 'destroyed')
+    throw new Error('HOST_RETIREMENT_SNAPSHOT_INCOMPLETE');
+  if (!event || event.name !== 'retired' || event.pendingErrorCount !== 0 ||
+      event.effectError !== null || event.queueError !== null || event.lostWaitError !== null ||
+      event.lost?.sameDevice !== true || event.lost?.reason !== 'destroyed')
+    throw new Error('HOST_RESOURCE_DRAIN_EVENT_INCOMPLETE');
+  if (!validAudioRetirement(audio)) throw new Error('AUDIO_RETIREMENT_INCOMPLETE');
+  // R1621's resolved retire() contract is source-pinned: it awaits frame/audio
+  // work, effect disposal, queue drain, context.unconfigure(), device.destroy(),
+  // and the same device's lost promise, and rejects if any step fails. The
+  // booleans below are derived only after that promise and its raw receipts pass.
+  const rawHost = Object.freeze({ ...host, lost: Object.freeze({ ...host.lost }) });
+  const rawEvent = Object.freeze({ ...event, lost: Object.freeze({ ...event.lost }) });
+  const rawAudio = Object.freeze({ ...audio, errors: Object.freeze([...audio.errors]) });
+  const noErrors = event.pendingErrorCount === 0 && event.effectError === null &&
+    event.queueError === null && event.lostWaitError === null;
+  return Object.freeze({
+    host: { status: host.state, pendingFrames: host.pendingFrames,
+      device: { status: 'destroyed-loss-settled', drained: noErrors && host.pendingFrames === 0,
+        destroyCalled: host.state === 'retired' && host.lost.reason === 'destroyed' && host.lost.sameDevice === true,
+        lostReason: host.lost.reason, sameDevice: host.lost.sameDevice },
+      resourceCleanupErrors: [event.effectError, event.queueError, event.lostWaitError].filter(Boolean) },
+    rawReceipts: Object.freeze({ host: rawHost, hostRetiredEvent: rawEvent, audio: rawAudio }),
+    audio: { settled: audio.settled, contextState: audio.contextState,
+      voicesRemaining: audio.voicesRemaining, pendingCount: audio.pendingCount, errors: [...audio.errors] },
+    resourceState: 'retired',
+  });
+}
+
+/**
+ * Child-side adapter for the actual 6543 parent gallery protocol. It emits
+ * phase messages only when the caller observes those phases, and acknowledges
+ * parent retirement only after the supplied real cleanup promise and its
+ * host/audio receipts satisfy the checked resource contract.
+ */
+export function createGalleryLifetimeBridge({ windowRef = globalThis.window,
+  versionId = DEFAULT_VERSION_ID, routePath = DEFAULT_ROUTE,
+  expectedPackageManifestSha256, retirePreview } = {}) {
+  if (!windowRef?.location || typeof retirePreview !== 'function')
+    throw new TypeError('WINDOW_LOCATION_AND_RETIRE_CALLBACK_REQUIRED');
+  if (typeof expectedPackageManifestSha256 !== 'string' || !/^[0-9a-f]{64}$/.test(expectedPackageManifestSha256))
+    throw new TypeError('EXACT_PACKAGE_MANIFEST_PIN_REQUIRED');
+  const pageUrl = new URL(windowRef.location.href);
+  const params = pageUrl.searchParams;
+  const token = params.get('galleryStartupToken');
+  const protocolVersionId = params.get('galleryVersionId');
+  const rawEpoch = params.get('galleryAttemptEpoch');
+  const epoch = rawEpoch && /^\d+$/.test(rawEpoch) ? Number(rawEpoch) : NaN;
+  const packageManifestSha256 = params.get('packageManifestSha256');
+  const enabled = pageUrl.origin === windowRef.location.origin && pageUrl.pathname === routePath &&
+    versionId === DEFAULT_VERSION_ID && routePath === DEFAULT_ROUTE &&
+    protocolVersionId === versionId && typeof token === 'string' && /^[0-9a-f]{32}$/.test(token) &&
+    Number.isSafeInteger(epoch) && epoch > 0 && packageManifestSha256 === expectedPackageManifestSha256;
+  if (!enabled) return Object.freeze({ enabled: false, reason: 'PARENT_STARTUP_IDENTITY_MISMATCH',
+    reportPhase() { return false; }, reportPlaying() { return false; },
+    dispose() { return false; }, get sequence() { return 0; } });
+
+  let sequence = 0, lastStageRank = -1, localRetirement = null, disposed = false;
+  const onRetirement = event => {
+    const data = event?.data;
+    if (disposed || event?.source !== windowRef.parent || event?.origin !== pageUrl.origin ||
+        data?.schema !== 'dva-gallery-startup/v1' || data?.action !== 'retire' ||
+        data?.token !== token || data?.versionId !== versionId || data?.attemptEpoch !== epoch) return;
+    void acknowledgeRetirement();
+  };
+  const onPageHide = () => { void localCleanup().catch(() => {}); };
+  windowRef.addEventListener('message', onRetirement);
+  windowRef.addEventListener('pagehide', onPageHide, { once: true });
+
+  function post(data) {
+    if (disposed) return false;
+    sequence++;
+    windowRef.parent.postMessage({ schema: 'dva-gallery-startup/v1', token, versionId,
+      attemptEpoch: epoch, sequence, ...data }, pageUrl.origin);
+    return true;
+  }
+  function reportPhase(stage, status = 'pending', detail = {}) {
+    const rank = STAGES.get(stage);
+    if (disposed || rank === undefined || stage === 'playing' && status === 'ready' ||
+        !STATUSES.has(status) || rank < lastStageRank ||
+        detail === null || typeof detail !== 'object' || Array.isArray(detail)) return false;
+    if (status === 'ready' && !['adapter','device','assets','pipelines','first-frame'].includes(stage)) return false;
+    if ((status === 'error' || status === 'unsupported') && !['error','object'].includes(typeof detail.error)) return false;
+    lastStageRank = rank;
+    const safeDetail = {};
+    if (detail.error !== undefined) safeDetail.error = { code: String(detail.error?.code || 'STARTUP_ERROR').slice(0, 100),
+      message: errorText(detail.error?.message || detail.error) };
+    if (detail.progress !== undefined && Number.isFinite(detail.progress)) safeDetail.progress = detail.progress;
+    return post({ stage, status, ...safeDetail });
+  }
+  function reportPlaying({ receipt, source, canvas } = {}) {
+    if (disposed || !receipt || !source || !canvas || !canvas.isConnected ||
+        receipt.completed !== true || receipt.submitted !== true || receipt.sameDevice !== true ||
+        receipt.sourceId !== source.sourceId || receipt.causeId !== source.causeId ||
+        receipt.generation !== source.generation || receipt.version !== 'flora-invisible-codex-sol61-zero-r2' || source.version !== 'flora-invisible-codex-sol61-zero-r2' || receipt.active !== true || !['preview-monotonic-rate1','producer-e-age'].includes(source.clockKind) || receipt.clockKind !== source.clockKind || !Number.isFinite(source.startedAtMs) || receipt.startedAtMs !== source.startedAtMs || receipt.durationMs !== source.durationMs ||
+        !Number.isSafeInteger(receipt.frameId) || receipt.frameId < 1 ||
+        !Number.isFinite(receipt.elapsedMs) || receipt.elapsedMs < 0 || receipt.elapsedMs >= source.durationMs ||
+        !Number.isFinite(source.durationMs) || source.durationMs !== 1600 ||
+        !Number.isSafeInteger(source.generation) || source.generation < 1 ||
+        typeof source.sourceId !== 'string' || !source.sourceId ||
+        typeof source.causeId !== 'string' || !source.causeId ||
+        !receipt.target || !receipt.encoder || !receipt.device || !(receipt.uniformBytes instanceof Uint8Array) || receipt.uniformBytes.byteLength !== 160 ||
+        !Number.isSafeInteger(receipt.passes) || receipt.passes < 1 ||
+        !Number.isSafeInteger(canvas.width) || canvas.width < 1 ||
+        !Number.isSafeInteger(canvas.height) || canvas.height < 1) return false;
+    if (lastStageRank < STAGES.get('first-frame')) return false;
+    const firstFrame = Object.freeze({ recorded: true, submitted: true, completed: true, canvasConnected: true,
+      passes: receipt.passes, viewportWidth: canvas.width, viewportHeight: canvas.height,
+      version: receipt.version, sourceId: receipt.sourceId, causeId: receipt.causeId,
+      generation: receipt.generation, frameId: receipt.frameId, elapsedMs: receipt.elapsedMs,
+      durationMs: source.durationMs, clockKind: source.clockKind, startedAtMs: source.startedAtMs,
+      sameDevice: true, packageManifestSha256: expectedPackageManifestSha256, uniformBytes: receipt.uniformBytes.byteLength });
+    lastStageRank = STAGES.get('playing');
+    return post({ stage: 'playing', status: 'ready', firstFrame });
+  }
+  function localCleanup() {
+    if (!localRetirement) localRetirement = Promise.resolve().then(() => retirePreview());
+    return localRetirement;
+  }
+  async function acknowledgeRetirement() {
+    try {
+      const cleanup = await localCleanup();
+      const evidence = evidenceFromCleanup(cleanup);
+      const lifecycle = Object.freeze({ disposeSettled: true, teardown: 'disposed',
+        packageManifestSha256: expectedPackageManifestSha256, resourceState: evidence.resourceState,
+        host: evidence.host, audio: evidence.audio, rawReceipts: evidence.rawReceipts ?? null });
+      post({ action: 'retired', lifecycle });
+      disposed = true;
+      windowRef.removeEventListener('message', onRetirement);
+      windowRef.removeEventListener('pagehide', onPageHide);
+    } catch (error) {
+      post({ action: 'retire-error', teardown: 'unknown', error: { code: 'RETIREMENT_NOT_SETTLED', message: errorText(error) },
+        lifecycle: { disposeSettled: false, teardown: 'unknown', packageManifestSha256: expectedPackageManifestSha256 } });
+      disposed = true;
+      windowRef.removeEventListener('message', onRetirement);
+      windowRef.removeEventListener('pagehide', onPageHide);
+    }
+  }
+
+  reportPhase('child-document', 'pending');
+  return Object.freeze({ enabled: true, versionId, token, attemptEpoch: epoch, packageManifestSha256,
+    reportPhase, reportPlaying, retireLocally: localCleanup,
+    dispose() { disposed = true; windowRef.removeEventListener('message', onRetirement); windowRef.removeEventListener('pagehide', onPageHide); },
+    get sequence() { return sequence; } });
+}
+
+export const FLORA_ZERO_PARENT_PROTOCOL = Object.freeze({ schema: 'dva-gallery-startup/v1',
+  versionId: DEFAULT_VERSION_ID, routePath: DEFAULT_ROUTE,
+  requiredQuery: Object.freeze(['galleryStartupToken','galleryVersionId','galleryAttemptEpoch','packageManifestSha256']),
+  startupStages: Object.freeze([...STAGES.keys()]),
+  retirementAck: Object.freeze(['action:retired','lifecycle.disposeSettled:true','lifecycle.teardown:disposed']) });

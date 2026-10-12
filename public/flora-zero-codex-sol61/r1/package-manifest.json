@@ -1,0 +1,163 @@
+{
+  "schema": "flora-zero-new-gallery-route-manifest-r1661/v1",
+  "status": "READY_PRIVATE_ROOT_NATIVE_PENDING",
+  "groupId": "flora-invisible-codex-sol61-zero",
+  "versionId": "flora-invisible-codex-sol61-zero-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.1-sol",
+  "creatorDisplayName": "GPT-6.1-Sol",
+  "designAuthorDisplayName": "GPT-6.1-Sol",
+  "creativeSourceManifestSha256": "423bc13bbcbd2f6d4d35adc627841bf8adabf819ebddcb5da8b0d7fea5cdc0a3",
+  "technicalComponents": {
+    "r1620": {
+      "name": "flora-zero-codex-r1620",
+      "manifestSha256": "423bc13bbcbd2f6d4d35adc627841bf8adabf819ebddcb5da8b0d7fea5cdc0a3",
+      "readySha256": "b7089d8ccc421fe50c27bc0a9555ad3e7f60ea794cbc910d134dd37e9cf4e9bb",
+      "immutable": true,
+      "status": "CREATIVE_SOURCE_COMPLETE_CPU_VALIDATED_ROOT_NATIVE_AND_QUALITY_PENDING"
+    },
+    "r1621": {
+      "name": "flora-zero-native-host-r1621",
+      "manifestSha256": "b4a9c045759f204fddcf2fd138fc25801d86e10d351792a52d02a742b9f73bcf",
+      "readySha256": "5319049ad4f9c9204744bd9c77ebcbda65fba33d3f30073a6dd2e04f1b5a34cd",
+      "immutable": true,
+      "status": "READY_ROOT_NATIVE_PENDING"
+    },
+    "r1623": {
+      "name": "flora-zero-sfx-playback-r1623",
+      "manifestSha256": "25beb873cc138a18a0540d1e6dfbbba50384623d0454c3dc65e8faad9416b022",
+      "readySha256": "6f7c229862f2c8f667b40cbaed54bb99cdeb76a5314780fed75688e0f37c7cec",
+      "immutable": true,
+      "status": "fresh technical playback component only"
+    },
+    "r1630": {
+      "name": "flora-zero-gallery-audio-controls-r1630",
+      "manifestSha256": "13ff5193a6505fd3ac8831e366e7d5f7d32757aae83c7ba093a5933524261342",
+      "readySha256": "ad15c46cc4e1b9674931951f0c389815daf5c2b0514274538c9b5605ed4712f9",
+      "immutable": true,
+      "status": "normal gallery audio control component only"
+    },
+    "r1636": {
+      "name": "flora-zero-gallery-lifecycle-r1636",
+      "manifestSha256": "e4c0e75bcc769de2bb66449fe2351b98e8ceeaa29bc99da184aaf91880df80cc",
+      "readySha256": "d3227b0b8f8701aa7aeee3883771b5089d5bb0bfb27ae672f201dc5cc610a166",
+      "immutable": true,
+      "status": "READY_PRIVATE_PARENT_PATCH_PROPOSAL; ROOT_NATIVE_AND_PUBLIC_INTEGRATION_PENDING"
+    },
+    "r1642": {
+      "name": "flora-zero-host-lifetime-repair-r1642",
+      "manifestSha256": "ea86cf044b6dc23c111ada8276539abd390c1637ec8acda5daa440b749a559cb",
+      "readySha256": "a9d5a1d6bec59e5c64053f7f45085f4c55c8e89c3747d34b69a7219dcac0299d",
+      "immutable": true,
+      "status": "CPU_READY_FOR_ROOT_NATIVE_CALLER_REFRESH"
+    }
+  },
+  "technicalAdapterDerivative": {
+    "id": "flora-zero-gallery-proof-snapshot-css-adapter-r1661",
+    "authorModelId": "gpt-6-luna",
+    "sourceR1626ManifestSha256": "7b1fd31a62ccb42b60d21b2dd95c3c466d73ed796ee73fe102f7f78603f2d829",
+    "scope": "actual completed host receipts expose source/cause/generation/frame/elapsed, all 160 uniform bytes, serializable device identity and submitted/completed flags; canvas CSS does not impose a 320px minimum over the requested inline logical height; creative source, R1 runtime, R1642 host and SFX unchanged",
+    "creativeEditionConsumed": false
+  },
+  "sourceClosureSha256": "e3a5f9df5e931b510a0267947856ad2717b0071efa170b1c70adef9549b45e7f",
+  "files": [
+    {
+      "path": "audio-controls/inputs/r1623/inputs/r1620-sfx.mjs",
+      "role": "sol-creative-sfx-dependency",
+      "bytes": 1513,
+      "sha256": "58394bf0d49b784b94674c4c4dbcc92be14d16609937c10190565a93013059aa",
+      "gitBlob": "bd51a47d87889936981ea6377f351cc41092f457"
+    },
+    {
+      "path": "audio-controls/inputs/r1623/src/pcm-buffer-adapter.mjs",
+      "role": "exact-pcm-buffer-adapter",
+      "bytes": 2323,
+      "sha256": "01e4d6e7873fa08c64cf6476e6c22f2892d065f405f03554c3c3276adc3b0416",
+      "gitBlob": "46fa0dd0f347813a8600d3905283449e5218aa3a"
+    },
+    {
+      "path": "audio-controls/inputs/r1623/src/playback-host.mjs",
+      "role": "finite-sfx-playback-host",
+      "bytes": 16819,
+      "sha256": "3ae2db5812e0abb7b307ed6c79c91b7161fbfec833b8c752500d020b72e78c69",
+      "gitBlob": "8bff04944a4afc37353663b4c79a47379a186f63"
+    },
+    {
+      "path": "audio-controls/src/normal-gallery-audio-controller.mjs",
+      "role": "normal-gesture-audio-controller",
+      "bytes": 3663,
+      "sha256": "8a94a5ca897ac602653f403adf187cb3ff9997fc5f3595fe4dc10524c4228197",
+      "gitBlob": "316aba2396d7391df28d494bc335c789a5a61ffa"
+    },
+    {
+      "path": "gallery-lifetime-bridge.mjs",
+      "role": "parent-gallery-lifecycle-bridge",
+      "bytes": 11939,
+      "sha256": "dfcc0c3ac2cab418573022874ae3625c08216905546d1e5829470807e57b55e8",
+      "gitBlob": "af369236db9c599761b646b2294e865488e0d5e2"
+    },
+    {
+      "path": "index.html",
+      "role": "gallery-entry-html",
+      "bytes": 2494,
+      "sha256": "2b9520f90a036c2f020b8488d476e3c8154a03754bd6779eec6b1f1e05ea52bf",
+      "gitBlob": "9cd3b90f1de40ef5a42d1ec673905b8bab73b242"
+    },
+    {
+      "path": "inputs/sol-r1620/model.mjs",
+      "role": "sol-creative-model",
+      "bytes": 2789,
+      "sha256": "8bbc8d40578f5dee35cb7297f62dba33596624a0627d9f449003a8214beca1fe",
+      "gitBlob": "9bca6daeee6a34b4886e99428bed7ac7023fb1d8"
+    },
+    {
+      "path": "inputs/sol-r1620/observer.wgsl",
+      "role": "sol-observer-shader",
+      "bytes": 1170,
+      "sha256": "66c2bd452e812cc629993cdae8bd310cbb10af5a48f4ec40540254256340b6f1",
+      "gitBlob": "1999df61e7043f427b732b272c8ac6e06e85ac37"
+    },
+    {
+      "path": "inputs/sol-r1620/reference/philia-front-heal-v822.png",
+      "role": "existing-public-character-reference",
+      "bytes": 164348,
+      "sha256": "b11a26d4ea3339ec91c65ebcc78b3268063727cc98c5bbdfa2eb939eaef726c1",
+      "gitBlob": "d5013a092841eac1c1242b009dad7bcf8256b563"
+    },
+    {
+      "path": "inputs/sol-r1620/runtime.mjs",
+      "role": "sol-creative-runtime",
+      "bytes": 7144,
+      "sha256": "d4be5c82b7affc1068903aa7521c530767a5eb2417e447481a9b65cce488780a",
+      "gitBlob": "81613a797e27a31d07e8888693647c267ae57d29"
+    },
+    {
+      "path": "inputs/sol-r1620/sfx.mjs",
+      "role": "sol-creative-sfx",
+      "bytes": 1513,
+      "sha256": "58394bf0d49b784b94674c4c4dbcc92be14d16609937c10190565a93013059aa",
+      "gitBlob": "bd51a47d87889936981ea6377f351cc41092f457"
+    },
+    {
+      "path": "inputs/sol-r1620/world.wgsl",
+      "role": "sol-world-shader",
+      "bytes": 3700,
+      "sha256": "7b176a2d0a0e49b9b360a2ed4ea9b4feba68c19e37605d7b90bd28fd965615ab",
+      "gitBlob": "1c79472353a3cb1863a80e9f3bd76146a52a0d5d"
+    },
+    {
+      "path": "preview-control.mjs",
+      "role": "gallery-normal-preview-control",
+      "bytes": 16431,
+      "sha256": "30d22ab5e067ebb3758ddb2e6f1a60fa96f996231ac766d3cc2c4c1f6f82e77b",
+      "gitBlob": "e4b60a22d0a5c8dc210a50e829573054c98fcdcb"
+    },
+    {
+      "path": "webgpu-lifetime-host.mjs",
+      "role": "r1642-repaired-webgpu-lifetime-host",
+      "bytes": 24027,
+      "sha256": "d5cdc1c97e9c764772affcc03adcb67d99970059b225006e3de39df29669070f",
+      "gitBlob": "7a613cc6d6164b2bbe38940d3abc01f473cec41a"
+    }
+  ]
+}
