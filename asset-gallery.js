@@ -1493,7 +1493,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     // Technical gallery listing is independent of production eligibility; this flag does not change quality, adoption, audio, device, or game-integration states.
     return item.replayable !== false && (item.publicationEligible !== false || item.galleryListingEligible === true);
   }
-  // Keep this visit's unread version count visible; persist only after the list is rendered.
+  // Count only version IDs first seen since the previous gallery visit; persist after rendering.
   const galleryUpdateVisit = window.DvaGalleryUpdates?.createVisit(
     visibleEffectGroups(entries).map(group => ({ id: group.id,
       versions: group.versions.filter(galleryVersionEligible) })), () => window.localStorage);
@@ -1503,10 +1503,10 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     if (!count || !notification) return;
     const total = galleryUpdateVisit?.versionCount || 0;
     count.textContent = String(total);
-    notification.setAttribute('aria-label', `更新されたエフェクト ${total} 版`);
+    notification.setAttribute('aria-label', `追加されたエフェクト ${total} 版`);
     notification.dataset.hasUpdates = String(total > 0);
     const hint = document.getElementById('gallery-update-hint');
-    if (hint) hint.textContent = total ? '前回の訪問以降に更新された版' : '未読の更新はありません';
+    if (hint) hint.textContent = total ? '前回の訪問以降に追加された版' : '未読の追加版はありません';
   }
   function rememberGalleryVersionVisit() {
     if (!galleryUpdateVisit) return;
@@ -2147,7 +2147,7 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
       const first=preferred??indices.find(i=>group.versions[i].id===group.defaultVersionId)??indices[0];
       const item=group.versions[first];const title=document.createElement('strong');title.textContent=group.title+' · '+item.title;
       const status=document.createElement('span');status.textContent=currentCategory==='effect'?versionStatusSummary(item,group):`${adoptionStatusLabel(item)} · ${item.qualityStatus||group.quality}`;
-      if (currentCategory === 'effect' && galleryUpdateVisit?.updatedGroupIds.has(group.id)) status.textContent += ' · 更新あり';
+      if (currentCategory === 'effect' && galleryUpdateVisit?.updatedGroupIds.has(group.id)) status.textContent += ' · 追加版あり';
       b.append(title,status);b.addEventListener('click',()=>currentCategory==='effect'?select(entries.indexOf(group),first):selectImage(group,first));catalog.append(b);buttons.push(b);
     }
     const remembered=selections.get(`${currentCategory}:${currentAdoptionFilter}`);
