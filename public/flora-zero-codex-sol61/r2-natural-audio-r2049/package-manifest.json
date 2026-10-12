@@ -1,0 +1,261 @@
+{
+  "schema": "flora-zero-natural-loop-r1957-route-manifest/v1",
+  "status": "PRIVATE_CPU_NORMAL_AUDIO_AUTOLOOP_UNLOCK_REPAIR_ROOT_NATIVE_PENDING",
+  "groupId": "flora-invisible-codex-sol61-zero",
+  "versionId": "flora-invisible-codex-sol61-zero-r2",
+  "creativeEdition": 2,
+  "creativeEditionLimit": 5,
+  "remaining": 3,
+  "creatorModelId": "gpt-6.1-sol",
+  "creatorDisplayName": "GPT-6.1-Sol",
+  "creativeSourceManifestSha256": "1a8a858b13115190f37c98176b41ac00b8db0c5df84caf7c8b719ea1329fec15",
+  "r2SourceManifestSha256": "1a8a858b13115190f37c98176b41ac00b8db0c5df84caf7c8b719ea1329fec15",
+  "r2SourceFileCount": 17,
+  "technicalHost": {
+    "name": "flora-zero-host-lifetime-repair-r1642",
+    "manifestSha256": "ea86cf044b6dc23c111ada8276539abd390c1637ec8acda5daa440b749a559cb",
+    "readySha256": "a9d5a1d6bec59e5c64053f7f45085f4c55c8e89c3747d34b69a7219dcac0299d",
+    "hostSha256": "d5cdc1c97e9c764772affcc03adcb67d99970059b225006e3de39df29669070f"
+  },
+  "audioControls": {
+    "name": "flora-zero-r2-audio-binding-r1660",
+    "manifestSha256": "0bd31c676ebee7ca1a770bd71abdb6c1ba53dafef03578970006ec5fb9ba94e7",
+    "readySha256": "2caa3f460034d47413bb6618f052c01f9e9af5d90970d13404ed1572cb255488",
+    "versionBoundWrapperSha256": "2fa1bc580bef88903fca2fd3535c6dcbc687b6a8f827f1c6b1929ca408f03bb78",
+    "pcmSha256": "58394bf0d49b784b94674c4c4dbcc92be14d16609937c10190565a93013059aa"
+  },
+  "technicalDerivative": {
+    "id": "flora-zero-r2-loop-runtime-r1957",
+    "modelId": "gpt-6-luna",
+    "scope": "Separate terminal admission revalidation from live play-intent ticket so an accepted new natural-loop source does not invalidate its own continuation. On cancellation after host admission, stop only the exact accepted source; preserve newer source and UI ownership.",
+    "creativeEditionConsumed": false
+  },
+  "canvasGeometry": {
+    "before": "CSS canvas min-height 320px, body middle grid row minmax(320px,1fr); requested height could disagree with visible box",
+    "after": "middle row minmax(0,1fr), canvas min-height 0, requested CSS height is clamped only to 1px; measured box and backing ratio drive R2 caster",
+    "supportHeightCss": 64,
+    "physicalSupportHeightFormula": "64*dpr",
+    "physicalScaleFormula": "64*dpr/224"
+  },
+  "files": [
+    {
+      "path": "audio-controls/inputs/r1623/inputs/r1620-sfx.mjs",
+      "role": "pinned-Flora-SFX-source",
+      "bytes": 1513,
+      "sha256": "58394bf0d49b784b94674c4c4dbcc92be14d16609937c10190565a93013059aa",
+      "gitBlob": "f386e9459d6a41dbe8cd7a086782f816419826ca"
+    },
+    {
+      "path": "audio-controls/inputs/r1623/src/pcm-buffer-adapter.mjs",
+      "role": "exact-PCM-buffer-adapter",
+      "bytes": 2323,
+      "sha256": "01e4d6e7873fa08c64cf6476e6c22f2892d065f405f03554c3c3276adc3b0416",
+      "gitBlob": "0910a32e0b52c31162689e0804685c054517100c"
+    },
+    {
+      "path": "audio-controls/inputs/r1623/src/playback-host.mjs",
+      "role": "finite-SFX-playback-host",
+      "bytes": 16819,
+      "sha256": "3ae2db5812e0abb7b307ed6c79c91b7161fbfec833b8c752500d020b72e78c69",
+      "gitBlob": "ff8248a88b574545001acbffd9f37dbe2484201f"
+    },
+    {
+      "path": "audio-controls/inputs/r1630/normal-gallery-audio-controller.mjs",
+      "role": "pinned-runtime-dependency",
+      "bytes": 3663,
+      "sha256": "8a94a5ca897ac602653f403adf187cb3ff9997fc5f3595fe4dc10524c4228197",
+      "gitBlob": "98b07333260c08dcd42b73c98fd1c6a8875fedfc"
+    },
+    {
+      "path": "audio-controls/inputs/r1652/model.mjs",
+      "role": "pinned-runtime-dependency",
+      "bytes": 5502,
+      "sha256": "b3cc0f72d468cfa8d2d6366a52d00c2edbda16ea1abd84d60c3db92e2af2c1d3",
+      "gitBlob": "bb9c4fde4ede0215db6375a0bf5cf3392a80718f"
+    },
+    {
+      "path": "audio-controls/src/normal-gallery-audio-controller.mjs",
+      "role": "normal-gesture-audio-controller",
+      "bytes": 3663,
+      "sha256": "8a94a5ca897ac602653f403adf187cb3ff9997fc5f3595fe4dc10524c4228197",
+      "gitBlob": "98b07333260c08dcd42b73c98fd1c6a8875fedfc"
+    },
+    {
+      "path": "audio-controls/src/version-bound-normal-gallery-audio-controller.mjs",
+      "role": "exact-R1-R2-version-bound-audio-controller",
+      "bytes": 2273,
+      "sha256": "8ec25551ebdb4f12d57cc2bbfddde4c572293b7960f7431bc7e7d68a0447a948"
+    },
+    {
+      "path": "cleanup-transport.mjs",
+      "bytes": 6325,
+      "sha256": "c7c37dbdedae963a579a0fd9fe82957c9fbb1f2810f540d0e002174d5a544929",
+      "gitBlob": "4844ec273550baa51d2761934210e75bb9afa09e"
+    },
+    {
+      "path": "gallery-lifetime-bridge.mjs",
+      "role": "parent-gallery-lifecycle-bridge",
+      "bytes": 11774,
+      "sha256": "9cb54e264888ee7683263e35bf77a773d7c1be340b40829694319105d5fd1cec"
+    },
+    {
+      "path": "index.html",
+      "role": "gallery-entry-html",
+      "bytes": 2632,
+      "sha256": "3f7161acfb452fbbe61eec32988af551d58e9a5f277d9c902eefc9bf6e3d781f",
+      "gitBlob": "e58a589199b77727f865861ba22f96259f38dda1"
+    },
+    {
+      "path": "inputs/sol-r1652/model.mjs",
+      "role": "R1652-creative-source",
+      "bytes": 5502,
+      "sha256": "b3cc0f72d468cfa8d2d6366a52d00c2edbda16ea1abd84d60c3db92e2af2c1d3",
+      "gitBlob": "bb9c4fde4ede0215db6375a0bf5cf3392a80718f"
+    },
+    {
+      "path": "inputs/sol-r1652/observer.wgsl",
+      "role": "R1652-creative-source",
+      "bytes": 1264,
+      "sha256": "33e99deefa01e7a7ff7e268f16f250c0bc366fdd5476f384b000d4eed82eb4a1",
+      "gitBlob": "00cff9b35869a0441b617ed38e9bcbdc148f80ff"
+    },
+    {
+      "path": "inputs/sol-r1652/reference/philia-front-heal-v822.png",
+      "role": "R1652-creative-source",
+      "bytes": 164348,
+      "sha256": "b11a26d4ea3339ec91c65ebcc78b3268063727cc98c5bbdfa2eb939eaef726c1",
+      "gitBlob": "bf1af3522c1789c712c9575eba5da92ce7d6b14f"
+    },
+    {
+      "path": "inputs/sol-r1652/runtime.mjs",
+      "role": "R1652-creative-source",
+      "bytes": 7144,
+      "sha256": "d4be5c82b7affc1068903aa7521c530767a5eb2417e447481a9b65cce488780a",
+      "gitBlob": "98655b2abf7bb2f740867a0bceab7eb6b6026bac"
+    },
+    {
+      "path": "inputs/sol-r1652/sfx.mjs",
+      "role": "R1652-creative-source",
+      "bytes": 1513,
+      "sha256": "58394bf0d49b784b94674c4c4dbcc92be14d16609937c10190565a93013059aa",
+      "gitBlob": "f386e9459d6a41dbe8cd7a086782f816419826ca"
+    },
+    {
+      "path": "inputs/sol-r1652/world.wgsl",
+      "role": "R1652-creative-source",
+      "bytes": 4419,
+      "sha256": "ba9d049e8ff061380fb49a1e783b6b66825bcf472f6848e3b6d19ef4e0a0bb2f",
+      "gitBlob": "d783d13af148ae2ed6ef8c575e7973a66cdb3115"
+    },
+    {
+      "path": "preview-control.mjs",
+      "role": "normal-gallery-preview-control",
+      "bytes": 22692,
+      "sha256": "0e8f03a370f476259c61ff810b011e11b2adfc57fb5bcd7d495e288486405247"
+    },
+    {
+      "path": "webgpu-lifetime-host.mjs",
+      "role": "R1642-repaired-WebGPU-lifetime-host",
+      "bytes": 24027,
+      "sha256": "d5cdc1c97e9c764772affcc03adcb67d99970059b225006e3de39df29669070f",
+      "gitBlob": "ea1a89c7c9cfa7867e10df3415d5b970190bdfc9"
+    },
+    {
+      "path": "natural-loop-controller.mjs",
+      "role": "natural-terminal-fence-loop-controller",
+      "bytes": 5068,
+      "sha256": "519e16d81ef45f8f5d63dbc6fa2164cee88e54163e85a575eb9c626cc9dfcb28",
+      "gitBlob": "8db17f24773d9f49c6aa5b6234c555d2a7177c54"
+    }
+  ],
+  "parentDerivative": {
+    "id": "flora-zero-r2-gallery-route-r1659",
+    "manifestSha256": "4adfeb85eb6ae775067b5676db68112c70740b2ab938a5d5ee304b03f1a9e7b4",
+    "sealSha256": "6cdbbaaad43fe2b8651f72f37d7668e8f421ba6009fd9f7d2aae5b6a3a7e7864"
+  },
+  "receiptSnapshotDerivative": {
+    "id": "flora-zero-r2-parent-proof-derivative-r1674",
+    "scope": "R2 preview-control onReceipt now stores readonly snapshots of actual completed receipts; exact160-byte runtime uniform copy; source/cause/generation/version/frame/elapsed/captureKind; device constructor label plus runtime-device identity booleans; submitted/completed/current-source strict binding; raw GPUDevice never serialized",
+    "creativeSourceChanged": false,
+    "hostChanged": false,
+    "modelRuntimeWgslSfxChanged": false
+  },
+  "routePath": "/public/flora-zero-codex-sol61/r2-natural-audio-r2049/index.html",
+  "displayRuntimeRevision": {
+    "id": "normal-embed-stage-framing-r1752",
+    "scope": "Embedded routes only: when embed=1, stageHeight supplies canvas CSS viewport height; supportHeightCss/logical actor height remain 64. Standalone height behavior is unchanged. Creative source/model/runtime/world/SFX/clock and lifetime are unchanged.",
+    "parentRoute": "/public/flora-zero-codex-sol61/r2/index.html",
+    "creativeEditionIncrement": 0,
+    "logicalActorHeightCss": 64,
+    "embeddedStageHeightCss": 360,
+    "normalEmbedSourceTopBeforeCss": -25.31,
+    "normalEmbedVisibleHeightBeforeCss": 38.69,
+    "rootNativeStatus": "pending"
+  },
+  "technicalRevision": {
+    "id": "r1788-caller-route-identity-repair",
+    "parentManifestSha256": "4cfa758cd7721023f80184a0e0c5d924cf9ef7897917a449fcd23f29538e42d2",
+    "sourceManifestSha256": "1a8a858b13115190f37c98176b41ac00b8db0c5df84caf7c8b719ea1329fec15",
+    "change": "Fix the preview-control bridge identity argument to match this exact immutable route alias path; reject any different path as before.",
+    "creativeEditionIncrement": 0,
+    "creativeRuntimeModelWorldSfxClockUnchanged": true,
+    "nativeOrGpuEvidence": false,
+    "qualityAccepted": false,
+    "rootNativeAcceptance": "pending"
+  },
+  "naturalLoopTechnicalRevision": {
+    "id": "flora-r2-natural-loop-r1942",
+    "scope": "Only when embed=1 and galleryAutoLoop=1, start the next R2 source after the actual host emits source-expired for a completed natural-terminal-clear frame and matching same-device queue fence. Pause/hold/stop/hidden/retire invalidates queued restart; manual play resets hold. False flag and unembedded routes remain one-shot.",
+    "creativeEditionIncrement": 0,
+    "creativeRuntimeModelWorldSfxClockUnchanged": true,
+    "nativeOrGpuEvidence": false,
+    "qualityAccepted": false,
+    "rootNativeAcceptance": "pending",
+    "cpuEvidence": [
+      "15 helper/controller checks",
+      "3 natural terminal cycles through copied R1930 host with delayed queue fence",
+      "actual copied parent bridge alias/first-frame/retirement CPU checks",
+      "preview-control exact inverse-diff"
+    ],
+    "creativeEditionConsumed": false
+  },
+  "naturalLoopIdentityRevision": {
+    "id": "flora-r2-loop-identity-r1947",
+    "scope": "Natural restart continuation revalidates the same terminal source/receipt/ticket inside the final Promise callback and carries an invalidatable guard through host/audio awaits. Async play/stop continuations are ticketed; stale operations do not start or overwrite a newer source/UI. Parent playing notice is emitted once for each monotonically advancing sourceId generation from an actual completed natural-frame receipt; first startup stage remains one-time.",
+    "previousRouteManifestSha256": "1b381921b8aa09b4b20bb22800a952ceef7147c96ac028e2d745eb2e002d92c0",
+    "creativeEditionIncrement": 0,
+    "creativeRuntimeModelWorldObserverWgslSfxClockUnchanged": true,
+    "rootNativeAcceptance": "pending",
+    "qualityAccepted": false,
+    "CPUResultSha256": "a32acd40deba1df54b2ef20086f584b03c1e48d1c2ba2f91e3e0d38d8f7f7262",
+    "tests": 12
+  },
+  "naturalLoopRuntimeRevision": {
+    "id": "flora-r2-loop-runtime-r1957",
+    "previousTechnicalRouteManifestSha256": "7852b2c8d9dea66c040b015684ce2b997bbd9d2222ab511a72456ec934ada55b",
+    "scope": "Revalidate old source/terminal receipt only at final continuation admission; carry the cancelable intent/ticket through asynchronous play without coupling it to the consumed terminal. On post-admission cancellation clean up only the exact accepted source, retaining a newer host/local source.",
+    "creativeEditionIncrement": 0,
+    "creativeRuntimeModelWorldObserverWgslSfxClockUnchanged": true,
+    "nativeOrGpuEvidence": false,
+    "qualityAccepted": false,
+    "rootNativeAcceptance": "pending",
+    "cpuEvidence": {
+      "status": "PASS",
+      "passed": 94,
+      "resultSha256": "12b031e17f83ed50b307a37bcfc6a332a141a8a8a3f0ee246812fb8f2b95e26c"
+    },
+    "creativeEditionConsumed": false
+  },
+  "normalAutoLoopAudioUnlockRepair": {
+    "id": "r2049-normal-auto-replay-skips-user-gesture-reunlock",
+    "parentManifestSha256": "f6880376bec4d367df39a6850c061b7614a81b14a32cd5815d085d3cc70da429",
+    "parentSealSha256": "29762732fe0503c33034c075a0140fc4fdc4000360ba84906cf8f24e2fa49d43",
+    "automaticModeSignal": "fromNaturalLoop",
+    "change": "Skip unlockFromGesture only when this existing play path is an automatic natural-loop restart; manual play retains its explicit gesture unlock. Audio errors are not used to fabricate loop success.",
+    "creativeEditionIncrement": 0,
+    "creativeRuntimeModelWorldShaderPcmClockUnchanged": true,
+    "nativeOrGpuEvidence": false,
+    "qualityAccepted": false,
+    "rootNativeAcceptance": "pending"
+  }
+}
