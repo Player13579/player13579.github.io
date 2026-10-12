@@ -1,0 +1,103 @@
+{
+  "schema": "dva-ability-entitlement-r1-retirement-technical-package/v1",
+  "packageSchema": "dva-ability-entitlement-r1-retirement-r2/v1",
+  "versionId": "ability-entitlement-sol61-r1",
+  "technicalRoute": "public/ability-entitlement-sol61/r1-retirement-r2/index.html",
+  "sourceCommit": "fa649876d48cfd43414bfafc738e29140ec075ef",
+  "sourceManifestSha256": "2d21a567cc57501792d986e075fa4715d80dfdc7eeb68188a4333cc48135e340",
+  "originalR1PackageManifestSha256": "78325f0d3c88d6093e22e1aa559d6e1b302a257a82d3f441571f6f164b4e5db2",
+  "originalRoute": "public/ability-entitlement-sol61/r1/index.html",
+  "creativeSourceUnchanged": true,
+  "creativeEdition": 1,
+  "creativeEditionLimit": 5,
+  "additionalCreativeEditionsRemaining": 4,
+  "creativeAuthor": "GPT-6.1-Sol",
+  "sourceFilesPreserved": true,
+  "status": {
+    "publicationEligible": false,
+    "galleryListingEligibilityPrivateFixtureOnly": true,
+    "qualityStatus": "in-progress",
+    "qualityAccepted": false,
+    "adoption": "unknown",
+    "gameIntegrationStatus": "not_connected",
+    "normalAudioListening": "not_run",
+    "safari": "unverified",
+    "nativeParentReplay": "pending-root-native"
+  },
+  "runtimeClosureCount": 12,
+  "runtimeClosure": [
+    {
+      "path": "index.html",
+      "bytes": 2170,
+      "sha256": "e918eb172e8aeb270b2a90d787b271c0f08e2fb7249702111190719a02cb3175"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 17985,
+      "sha256": "f3cc3b313fa382dbca2c15741786adaf171a54c75980f5e86f5bd2b8504cb659"
+    },
+    {
+      "path": "retirement-lifecycle.mjs",
+      "bytes": 6359,
+      "sha256": "bed5e0c4fbcbf296466aafc2c76c0f51da42f333052c67f1708a8efd3696e2b4"
+    },
+    {
+      "path": "source/ability-entitlement.mjs",
+      "bytes": 10387,
+      "sha256": "c6c9904ada1503f1aeac8ca3cba43b3f60583250da7c666d46c11c783e0f604e"
+    },
+    {
+      "path": "source/permission-source.wgsl",
+      "bytes": 3772,
+      "sha256": "4fc41c87c5f0f73e6daa1cf1ca578c03caf00c1c8ac47d25691a82f7a48c8a37"
+    },
+    {
+      "path": "source/display-observer.wgsl",
+      "bytes": 1019,
+      "sha256": "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9"
+    },
+    {
+      "path": "source/composite.wgsl",
+      "bytes": 812,
+      "sha256": "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5"
+    },
+    {
+      "path": "source/status-card-baseline.mjs",
+      "bytes": 681,
+      "sha256": "7e4508e569f451f987234c837c8240b891cab4a208aa7150a62c157dcd6d3bab"
+    },
+    {
+      "path": "source/status-card-baseline.wgsl",
+      "bytes": 1385,
+      "sha256": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f"
+    },
+    {
+      "path": "gallery-startup-bootstrap.js",
+      "bytes": 1562,
+      "sha256": "75904263fcb411a45ba6acbec6efd89758300d5eacf4a9847ce8eec21abe2594"
+    },
+    {
+      "path": "gallery-parent-contract.mjs",
+      "bytes": 2280,
+      "sha256": "eb7d089a43cffc4b29369c1c637b1aaadc78088794fcaf8d51d7d93d12530dad"
+    },
+    {
+      "path": "gallery-startup-adapter.mjs",
+      "bytes": 8004,
+      "sha256": "99ddd787ca878a873fe6e5936ec9bfa6fadd8dacd6032ce3ada78c0652f340c7"
+    }
+  ],
+  "changedTechnicalFiles": [
+    "host.mjs",
+    "gallery-startup-adapter.mjs",
+    "retirement-lifecycle.mjs"
+  ],
+  "unchangedArtAndSourceFiles": [
+    "source/ability-entitlement.mjs",
+    "source/permission-source.wgsl",
+    "source/display-observer.wgsl",
+    "source/composite.wgsl",
+    "source/status-card-baseline.mjs",
+    "source/status-card-baseline.wgsl"
+  ]
+}
