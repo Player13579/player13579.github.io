@@ -22,9 +22,9 @@
     "hostImplementationSha256": "b834101a3bc3356f3f80433748f81134fff6524e658fd65c6351b6e4bee86373",
     "galleryAdapterSha256": "d32b9679a7965529063e6135dae6c34171805d5eadad202feb1438eca34288c1",
     "qualityReview": "outputs/request-20261011/ability-entitlement-quality-r818/REVIEW.md",
-    "nativeEvidence": "outputs/request-20261011/ability-entitlement-native-r822/runs/2026-10-11T02-08-36.428Z-c322d74e-a533-4876-8b19-e5e52c246776/RESULT.json",
-    "nativeEvidenceSha256": "71d5232db3d383f2dc692649e3a9ff318bf1a372a02c5da1d8f9fb3786516867",
-    "nativeEvidenceAttribution": "root-owned R822 run; attribution retained with incident",
+    "nativeEvidence": "dva/outputs/e-technical-r1771/ability-r2-r1434/RESULT.json",
+    "nativeEvidenceSha256": "bbdd3ce9d9e5b4242251d3ccb348e68d8854adec5e6cc9d1d3d04793116da88f",
+    "nativeEvidenceAttribution": "root-owned R1434 limited technical run; saved and independently read back from private GitHub recovery commit 032db429a6b5830051ce5f74f749f530dab792d6",
     "galleryEntrySha256": "1ee5fd4dcec9818d0c08e2cc7210bdf39fa9ce236f912cddb074c7006b05d95f",
     "entryRepair": {
       "id": "R838",
@@ -46,17 +46,58 @@
       "cause": "R844 source spread contains R2+R1, but a later explicit versions:Object.freeze([R1]) overwrites the spread property during object evaluation; only R1 reaches current gallery registration.",
       "repair": "one authoritative frozen versions array; actual group object, history merge, visibility filter, and initial deep-link resolver are executed in R852 CPU contract",
       "runnerRepair": "Playwright waitForFunction uses the actual (function,arg,options) signature; predicates without an arg now pass undefined before options.",
-      "parentReplay": "pending-root-r852-parent-replay"
-    }
+      "parentReplay": "pass-limited-r1434-native-exact-r2-attached-retirement",
+      "parentReplayPriorStatus": "pending-root-r852-parent-replay"
+    },
+    "nativeEvidenceRepository": "Player13579/windows-dva-migration",
+    "nativeEvidenceCommit": "032db429a6b5830051ce5f74f749f530dab792d6",
+    "nativeEvidenceUrl": "https://github.com/Player13579/windows-dva-migration/blob/032db429a6b5830051ce5f74f749f530dab792d6/dva/outputs/e-technical-r1771/ability-r2-r1434/RESULT.json",
+    "technicalReplayStatus": "pass-limited-r1434-native-exact-r2",
+    "currentGalleryParentReplay": {
+      "currentRouteSourceMatches": true,
+      "evidenceUrl": "https://github.com/Player13579/windows-dva-migration/blob/032db429a6b5830051ce5f74f749f530dab792d6/dva/outputs/e-technical-r1771/ability-r2-r1434/RESULT.json",
+      "status": "PASS_ROOT_NATIVE_LIMITED_TECHNICAL",
+      "evidenceSha256": "bbdd3ce9d9e5b4242251d3ccb348e68d8854adec5e6cc9d1d3d04793116da88f",
+      "qualityAccepted": false,
+      "adoption": "unknown",
+      "currentPublicHead": "dd67599b5cd8f710ade37c1f67f164597f760d42",
+      "routePins": {
+        "packageManifestSha256": "f9d94d0a77d5f9732960f62eafd2cc40c49e09e26788881496a0d3ae68e13870",
+        "publicRoute": "/public/ability-entitlement-sol61/r2/index.html",
+        "indexHtmlSha256": "1ee5fd4dcec9818d0c08e2cc7210bdf39fa9ce236f912cddb074c7006b05d95f",
+        "hostSha256": "b834101a3bc3356f3f80433748f81134fff6524e658fd65c6351b6e4bee86373",
+        "sourceModuleSha256": "454e9a59a1882b57040a8151e693d9442cad827ab44c7023e4670af304193664"
+      },
+      "gameIntegration": "not_connected",
+      "id": "R1434",
+      "replayParentCommit": "5839fd76647edf7b79bbb567db1a63a26a1571c1",
+      "evidenceRepository": "Player13579/windows-dva-migration",
+      "evidenceBytes": 1848385,
+      "evidenceCommit": "032db429a6b5830051ce5f74f749f530dab792d6",
+      "sourceCommit": "5839fd76647edf7b79bbb567db1a63a26a1571c1",
+      "evidence": "dva/outputs/e-technical-r1771/ability-r2-r1434/RESULT.json",
+      "retirement": "attached explicit parent retirement passed; automatic detached retirement not independently established",
+      "versionId": "ability-entitlement-sol61-r2"
+    },
+    "nativeEvidenceHistory": [
+      {
+        "status": "PASS_R822_NATIVE_TECHNICAL_LIMITED",
+        "technicalReplayStatus": "pass-limited-r822-native-exact-r815",
+        "path": "outputs/request-20261011/ability-entitlement-native-r822/runs/2026-10-11T02-08-36.428Z-c322d74e-a533-4876-8b19-e5e52c246776/RESULT.json",
+        "sha256": "71d5232db3d383f2dc692649e3a9ff318bf1a372a02c5da1d8f9fb3786516867",
+        "attribution": "root-owned R822 run; attribution retained with incident",
+        "scope": "Root-owned R822 native WebGPU run used the exact R815 host/module/shader/baseline hashes. Four diagnostic captures at 45/220/510/820 ms passed same-cause/submission/frame/hash/visibility predicates; source/near/observer/reduced-motion controls at 820 ms, 120/120 submissions completed before retirement, no page/console/request/HTTP errors, GPU errors empty, queue drained, canvas closed and device destroyed. Limited technical evidence only; the diagnostic runner leaves full quality undecided, main integration disconnected and ordinary SFX listening not run."
+      }
+    ]
   },
   "status": {
     "publicationEligible": false,
-    "technicalReplayStatus": "pass-limited-r822-native-exact-r815",
-    "nativeStatus": "PASS_R822_NATIVE_TECHNICAL_LIMITED",
-    "nativeEvidence": "outputs/request-20261011/ability-entitlement-native-r822/runs/2026-10-11T02-08-36.428Z-c322d74e-a533-4876-8b19-e5e52c246776/RESULT.json",
-    "nativeEvidenceSha256": "71d5232db3d383f2dc692649e3a9ff318bf1a372a02c5da1d8f9fb3786516867",
-    "nativeEvidenceScope": "Root-owned R822 native WebGPU run used the exact R815 host/module/shader/baseline hashes. Four diagnostic captures at 45/220/510/820 ms passed same-cause/submission/frame/hash/visibility predicates; source/near/observer/reduced-motion controls at 820 ms, 120/120 submissions completed before retirement, no page/console/request/HTTP errors, GPU errors empty, queue drained, canvas closed and device destroyed. Limited technical evidence only; the diagnostic runner leaves full quality undecided, main integration disconnected and ordinary SFX listening not run.",
-    "nativeEvidenceAttribution": "root-owned R822 incident; not reassigned to R823 worker",
+    "technicalReplayStatus": "pass-limited-r1434-native-exact-r2",
+    "nativeStatus": "PASS_R1434_NATIVE_TECHNICAL_LIMITED",
+    "nativeEvidence": "dva/outputs/e-technical-r1771/ability-r2-r1434/RESULT.json",
+    "nativeEvidenceSha256": "bbdd3ce9d9e5b4242251d3ccb348e68d8854adec5e6cc9d1d3d04793116da88f",
+    "nativeEvidenceScope": "Exact R2 version/source pins and the current public R2 route were verified. The root-owned run played the actual gallery parent route at tested source commit 5839fd76647edf7b79bbb567db1a63a26a1571c1; 10 live receipts across the natural finite lifetime, 119 submitted and 119 completed GPU work items, and zero pre-removal or post-removal errors. The child was explicitly retired while attached; queue drained, context unconfigured, the same device destroyed and loss settled, then the gallery removed the iframe. Automatic detached retirement was not independently established. Limited technical replay only; quality remains in progress, adoption unknown, game integration disconnected, ordinary SFX listening not run, Safari unverified.",
+    "nativeEvidenceAttribution": "root-owned R1434 limited technical run; saved and independently read back from private GitHub recovery commit 032db429a6b5830051ce5f74f749f530dab792d6",
     "nativeEvidenceReview": "root-reviewed-limited-technical",
     "quality": "in-progress; scoped source-shape defect fixed in R818, remaining lifetime/audio/gameplay checks are open",
     "qualityAccepted": false,
@@ -64,14 +105,29 @@
     "normalSfxListening": "not_run",
     "safari": "unverified",
     "mainGame": "not_connected",
-    "parentGalleryReplayStatus": "pending-root-r852-parent-replay",
+    "parentGalleryReplayStatus": "pass-limited-r1434-native-exact-r2-attached-retirement",
     "relatedParentFailure": {
       "evidence": "outputs/request-20261011/ability-entitlement-native-r824/runs/2026-10-11T02-11-13.507Z-6a955c8b-bf8e-4fb1-8128-d15580b384ee/RESULT.json",
       "sha256": "378ca39d95dcf97cf24f5a566402a7dd12bf47a6d707ad32709ac5cb665fe158",
       "status": "FAIL_R824_ACTUAL_PARENT",
       "scope": "R824 tested the current public R1 parent route and failed teardown after iframe removal (30-second retirement wait timeout); it is related group-level parent evidence, not an R2 run. All owned browser/server/context resources were closed. Preserve the failure and keep exact R2 parent replay pending."
     },
-    "currentPublicParentReplayStatus": "pending-root-r852-parent-replay"
+    "currentPublicParentReplayStatus": "pass-limited-r1434-native-exact-r2-attached-retirement",
+    "nativeEvidenceRepository": "Player13579/windows-dva-migration",
+    "nativeEvidenceCommit": "032db429a6b5830051ce5f74f749f530dab792d6",
+    "nativeEvidenceUrl": "https://github.com/Player13579/windows-dva-migration/blob/032db429a6b5830051ce5f74f749f530dab792d6/dva/outputs/e-technical-r1771/ability-r2-r1434/RESULT.json",
+    "parentGalleryReplayPriorStatus": "pending-root-r852-parent-replay",
+    "currentPublicParentReplayPriorStatus": "pending-root-r852-parent-replay",
+    "nativeEvidenceHistory": [
+      {
+        "status": "PASS_R822_NATIVE_TECHNICAL_LIMITED",
+        "technicalReplayStatus": "pass-limited-r822-native-exact-r815",
+        "path": "outputs/request-20261011/ability-entitlement-native-r822/runs/2026-10-11T02-08-36.428Z-c322d74e-a533-4876-8b19-e5e52c246776/RESULT.json",
+        "sha256": "71d5232db3d383f2dc692649e3a9ff318bf1a372a02c5da1d8f9fb3786516867",
+        "attribution": "root-owned R822 run; attribution retained with incident",
+        "scope": "Root-owned R822 native WebGPU run used the exact R815 host/module/shader/baseline hashes. Four diagnostic captures at 45/220/510/820 ms passed same-cause/submission/frame/hash/visibility predicates; source/near/observer/reduced-motion controls at 820 ms, 120/120 submissions completed before retirement, no page/console/request/HTTP errors, GPU errors empty, queue drained, canvas closed and device destroyed. Limited technical evidence only; the diagnostic runner leaves full quality undecided, main integration disconnected and ordinary SFX listening not run."
+      }
+    ]
   },
   "notes": [
     "R1 remains unchanged and retains its R819 limited-native technical history.",
@@ -83,6 +139,7 @@
     "No ammo receipt/refill, active-action or main-game integration claim.",
     "R838 is a private technical derivative of R823. It removes exactly one duplicate startup-bootstrap script and one duplicate adapter module tag, updates entry/package/provenance/catalog pins and parent cache key, and leaves all creative sources/shaders and R2 2/5 edition accounting unchanged. Native parent replay remains pending.",
     "R844 rebases the R838 entry repair onto current R837 gallery commit de9adee95097e18043931f05ec52187aa9a6e037 by applying only the ability-entitlement group delta. All other groups and the current R1 version are retained. R2 parent replay remains pending.",
-    "R852 preserves R844 FAIL_R844_ACTUAL_PARENT as a selector/producer failure. The actual producer had a trailing R1-only versions property overriding the spread array; R852 removes this duplicate property and adds an executed producer+resolver assertion. The root-only browser runner also uses Playwright’s (function,arg,options) wait signature. No creative source/shader bytes, edition count, adoption, or integration status changed."
+    "R852 preserves R844 FAIL_R844_ACTUAL_PARENT as a selector/producer failure. The actual producer had a trailing R1-only versions property overriding the spread array; R852 removes this duplicate property and adds an executed producer+resolver assertion. The root-only browser runner also uses Playwright’s (function,arg,options) wait signature. No creative source/shader bytes, edition count, adoption, or integration status changed.",
+    "R1434 supersedes the then-pending R852 exact R2 parent replay status with a limited root-owned native replay of the exact R2 source/route pins at tested gallery source commit 5839fd76647edf7b79bbb567db1a63a26a1571c1. Evidence is saved/read back from private recovery commit 032db429a6b5830051ce5f74f749f530dab792d6. It proves attached explicit retirement only; automatic detached retirement, full quality, adoption, main-game integration, ordinary SFX listening, and Safari remain unresolved."
   ]
 }
