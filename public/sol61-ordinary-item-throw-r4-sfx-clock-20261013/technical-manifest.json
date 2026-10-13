@@ -1,0 +1,96 @@
+{
+  "schema": "dva-ordinary-item-throw-attached-retirement-preview/v1",
+  "technicalVersionId": "ordinary-item-throw-sol61-r4-sfx-clock-20261013",
+  "creativeVersionId": "ordinary-item-throw-sol61-r4",
+  "route": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/index.html",
+  "baseRepository": "Player13579/player13579.github.io",
+  "baseCommit": "a23a4d0df396b8b7b9572bf17b688fbf18c9b443",
+  "originalCreativePackageManifestSha256": "3a609c18813c49f548cc02cde26d3e199e301614e88ea3ccac185cc3fe2f01c2",
+  "inputA2TechnicalManifestSha256": "e0d4632f0229f20570887b8cf55d69a030bb23eef102c1e990bafb1721e6bb29",
+  "inputA2TechnicalSealSha256": "cb80f1b65158e352420141e1a8c863b9057c2803e1452d227036bf1f003d5345",
+  "inputA2SfxClockDeltaSha256": "3d1cdf97c581ff4825c432cdcf89c4e93297efd2e26ef150d738be7a1a04463f",
+  "wrapperBase": "ordinary-throw-general-audio-retirement-r1502",
+  "wrapperSchema": "ordinary-throw-attached-retirement-r1502/v1",
+  "creativeEdition": 4,
+  "creativeCap": 5,
+  "remainingCreativeEditions": 1,
+  "derivativeConsumedCreativeEdition": false,
+  "sourceAuthor": "GPT-6.1-Sol",
+  "technicalImplementationAuthor": "unresolved; do not infer from creative source author",
+  "adoption": "unadopted (preserved)",
+  "quality": "in progress; not accepted",
+  "files": [
+    {
+      "path": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/adapter-factory.mjs",
+      "bytes": 16271,
+      "sha256": "1487b2d7e8c0675c867b149b1203d37101ba8d259bf15e84044e1632ae0abe56"
+    },
+    {
+      "path": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/attached-retirement.js",
+      "bytes": 17267,
+      "sha256": "a3e6c6f91f864cbcb75a1f6fb641c229e79ec78af0370074bfd255a2d9b85224"
+    },
+    {
+      "path": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/gallery-entry.json",
+      "bytes": 1115,
+      "sha256": "2a6ee434a42505a9176b39adaed8b34a1cd20fb2ae23068b0d7c1ff366a4d54f"
+    },
+    {
+      "path": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/index.html",
+      "bytes": 1887,
+      "sha256": "e8d1e6e7d1fa4f9b619d9b92ae34b0eb7bae8cc0a6c8b82136ea03135aadaee4"
+    },
+    {
+      "path": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/observer.wgsl",
+      "bytes": 1412,
+      "sha256": "8dde3bafd3cefa22492263f2333c24da29260de678fae8b2f6344fd8611da219"
+    },
+    {
+      "path": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/runtime.mjs",
+      "bytes": 12663,
+      "sha256": "25ec42059423b67a7c3e4139466141e80610962c89e364724b0d0082b18d7825"
+    },
+    {
+      "path": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/sfx.mjs",
+      "bytes": 7507,
+      "sha256": "8734d10ea87e1ae5132b106f4513cd015d6bf4c6e6532434397450273710e49f"
+    },
+    {
+      "path": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/technical-bootstrap.mjs",
+      "bytes": 3098,
+      "sha256": "b4fc69519e5da8f6e6a2fcb79b3ddbf1a80874ae9c0c7c2ca9bf8f7af259eba8"
+    },
+    {
+      "path": "/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/world.wgsl",
+      "bytes": 4003,
+      "sha256": "2d139f0955f90828f9d2dae811d51f70ffa02cbc7624eddcdae3e177fd42519e"
+    }
+  ],
+  "validation": {
+    "cpuContract": "PASS 8/8; includes actual ESM bootstrap over actual A2 adapter modules with simulated WebGPU in normal and verify modes",
+    "actualBootstrap": "PASS one adapter/device/context initialization, R1502 observer registered once before factory, startup ready, gesture bridge uses same adapter, retire disposed the same adapter/device",
+    "verifyAudio": "PASS bridge rejects and zero SFX factory allocations",
+    "a2PayloadIdentity": "PASS 5/5 exact source SHA-256 pins",
+    "a3A4Delta": "PASS only index.html and technical-bootstrap.mjs differ from preserved A3 route",
+    "native": "PENDING ROOT",
+    "gpuQuality": "PENDING ROOT",
+    "normalAudioListening": "NOT ACCEPTED",
+    "publicRegistration": "PENDING ROOT",
+    "publication": "PENDING ROOT"
+  },
+  "command": {
+    "workId": "R4-R1502-wrapper-A4-single-bootstrap",
+    "startedAt": "2026-10-13T04:24:33.181Z",
+    "completedAt": "2026-10-13T04:24:33.927Z",
+    "exitCode": 0,
+    "commands": [
+      "node --test contract-tests.mjs",
+      "node --check candidate/public/sol61-ordinary-item-throw-r4-sfx-clock-20261013/technical-bootstrap.mjs"
+    ],
+    "environment": "DVA_FORBID_NATIVE=1"
+  },
+  "baseBranch": "Codex-honoo",
+  "predecessorA3TechnicalManifestSha256": "110e03613243fdad5e946b38c1bb51e4f0a00be4234a173ef833169cd152b96a",
+  "predecessorA3TechnicalSealSha256": "adab65faea66d83b0a8a26266e189edd2fddf56c3b68801d2d6b459c21ec9b3e",
+  "sourceClosureDelta": "Only index.html canvas id and technical-bootstrap.mjs changed from A3; all A2 creative/runtime payloads and A3 wrapper lifecycle observer remain byte-identical."
+}
