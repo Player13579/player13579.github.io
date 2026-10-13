@@ -1,0 +1,25 @@
+{
+  "schema": "item-use-sfx-start-retry-cpu/v1",
+  "status": "PASS_CPU_RUNTIME_AND_GALLERY_BRIDGE_RETRY",
+  "edition": "r4",
+  "technicalDerivativeId": "item-use-r4-sfx-start-retry-a5",
+  "sourceSfxSha256": "e33b7b762237bc5abe82f66f47459ed834e39e0d4d094048fed5276a3df23ed6",
+  "sourceManifestSha256": "b3982f62a945a2a80e6ec603feda781a8f4fb6127e8cc89d2f1e76a834415de1",
+  "sealSha256": "8c91865b8adf3a963428e66ce270821d481ba1f2f7885594801790fa6801facf",
+  "cpuTestsSha256": "b7687c32ebde4744f5acdd28c97bd36ccf673bacd55f9938ad146213d135572e",
+  "checks": [
+    "synchronous start failure does not consume cause",
+    "failed source and gain disconnected; stop not called before start success",
+    "same cause retries successfully on next actual valid host/gallery frame",
+    "third same-cause playback remains duplicate after success",
+    "renderer SFX error remains nonfatal and observable as playback-error",
+    "dispose cancels and drains the successful retry voice"
+  ],
+  "runtime": "actual source/runtime/gallery bridge; WebGPU mocks only",
+  "native": "not-run",
+  "browser": "not-run",
+  "normalAudioListening": "not-run",
+  "stdout": "{\"status\":\"PASS\",\"edition\":\"r4\",\"checks\":[\"planner-96B-clock-duplicate-expired-cancel-sourceOFF-finite-clear\",\"actual-runtime-four-pass-positive-readback-scope-error-delayed-retire-dispose\",\"SFX-PCM-16-48-96k-running-suspended-verify-mute-cancel\",\"actual-gallery-adapter-unlock-receipt-duplicate-retirement-identity-drain\",\"actual-bootstrap-manifest-seal-source-hash-startup-positive-mock-retire\"],\"native\":\"not-run\",\"browser\":\"not-run\",\"ordinaryListening\":\"not-run\",\"webgpu\":\"mock-only\"}",
+  "cpuEvidenceSha256": "bd4cbb8bea9d47874c275965cdb94f0f90266856406d0d57033202356c39c438",
+  "readySha256": "ecdc4b432c2181ac7024107343d617d1d13f5c5883d1f868a425eae9dfef8e2b"
+}

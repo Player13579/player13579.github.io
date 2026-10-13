@@ -1,0 +1,130 @@
+{
+  "packagingAuthorModelId": "gpt-6-luna",
+  "schema": "dva-e-gallery-package/v1",
+  "versionId": "item-use-sol61-r4",
+  "creativeAuthorDisplayName": "GPT-6.1-Sol",
+  "sfxVersion": "item-use-e-sfx-sol61-r4",
+  "files": [
+    {
+      "path": "bootstrap.mjs",
+      "bytes": 13073,
+      "sha256": "01d46781fce8af48e09edd1b5b4bbe2592ce7c32e622b085c59374dd248e747c"
+    },
+    {
+      "path": "diagnostics.mjs",
+      "bytes": 264,
+      "sha256": "99d9e74045541550d0073ff9ca1c83d3949c79ebd8bcfb9a3b7e9fbfb4c11047"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 19697,
+      "sha256": "2a0bc2440e7ca905753ec91b60a754afcdd5f0bdd3054cec7f0e4c472d41d1db"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1390,
+      "sha256": "04b011e8353f59636db2f38d76eb64112d159e2c9192ce3f8a7ca85d08cb9768"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 21428,
+      "sha256": "550a3416775824115a85a22141bcbd77c563ebf4d0e3a6b0d5ab8743ae258433"
+    },
+    {
+      "path": "source/item-use-e-sol61-r4.wgsl",
+      "bytes": 5177,
+      "sha256": "df45a83c03d61fa5ca3e34f1b022a7a7ce078af78108c8704509a1a01e8e709f"
+    },
+    {
+      "path": "source/item-use-e-sol61-r4.mjs",
+      "bytes": 4965,
+      "sha256": "726845758aa9699145e40049bb871544aa23aba6b0b354f2e3f3cc81339873ff"
+    },
+    {
+      "path": "source/item-use-e-sfx-sol61-r4.mjs",
+      "bytes": 4330,
+      "sha256": "e33b7b762237bc5abe82f66f47459ed834e39e0d4d094048fed5276a3df23ed6"
+    }
+  ],
+  "technicalDerivativeScope": "Faithful technical repair: admit SFX cause only after AudioBufferSourceNode.start succeeds; disconnect partially created nodes and preserve same-cause retry after synchronous start failure. PCM, creative shader/planner, and effect timing remain byte-identical.",
+  "runtimeAuthorModelId": "gpt-6-luna",
+  "creativeChanges": false,
+  "runtimeAuthorAttributionStatus": "inherited-from-R3-with-t1-lineage-unresolved",
+  "runtimeLineage": {
+    "frozenR1": {
+      "authorDisplayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna",
+      "runtimeSha256": "868a76b4c3286db69fb18dab0e0fc77d0ada74fd833abaa7758a2819049a1056"
+    },
+    "t1Lifecycle": {
+      "readySha256": "2f5b09309ca68fb664865e3bfa19c451c434b4873781338231a95ea8b96290b5",
+      "runtimeSha256": "b861a516a6d682294d4dfd58a73466a0b7bb113284e415420bfed300bd901727",
+      "authorDisplayName": null,
+      "modelId": null,
+      "attributionStatus": "unresolved"
+    },
+    "t2Delivery": {
+      "authorDisplayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna",
+      "scope": "native harness, evidence contract, package/catalog/route sealing; no creative source changes"
+    },
+    "sfxLoopRepair": {
+      "authorDisplayName": "GPT-6-Luna",
+      "modelId": "gpt-6-luna",
+      "artifact": "outputs/request-20261010/item-use-r3-sfx-loop-repair-r47",
+      "scope": "child gallery adapter/bootstrap only; source creative, renderer/runtime, parent bridge unchanged"
+    }
+  },
+  "qualityStatus": "pending",
+  "entries": [
+    "vertexItemUse",
+    "worldItemUse",
+    "spreadItemUseX",
+    "spreadItemUseY",
+    "compositeItemUse"
+  ],
+  "normalAudioListening": "not_run",
+  "uniformBytes": 96,
+  "sourceIdentity": {
+    "worldSha256": "df45a83c03d61fa5ca3e34f1b022a7a7ce078af78108c8704509a1a01e8e709f",
+    "plannerSha256": "726845758aa9699145e40049bb871544aa23aba6b0b354f2e3f3cc81339873ff",
+    "sfxSha256": "e33b7b762237bc5abe82f66f47459ed834e39e0d4d094048fed5276a3df23ed6",
+    "creativeReadySha256": "4989fd4d8daaa8b9c87b45a2a86fa28385e43d2fb14bd39b9e9a5c902e812197",
+    "designContractSha256": "799dc4acac494d2e4539205cc3844e7d1d1b77c399ca3f6b16023fdfdacbdeac"
+  },
+  "passes": 4,
+  "creativeVersion": "item-use-e-zero-sol61-r4",
+  "sourceProofFile": "source-proof.json",
+  "groupId": "common-item-use-sol61",
+  "acceptance": {
+    "parentGalleryReplay": "pending-root",
+    "adoption": "unknown",
+    "sourceNative": "pending-root",
+    "ordinarySfxListening": "not_run",
+    "mainGameIntegration": "not_connected",
+    "fullQuality": "pending"
+  },
+  "sfxDurationMs": 680,
+  "runtimeDerivative": "Edition-specific technical derivative over the accepted R4/R5 source package; repairs failed audio-start cleanup and retry eligibility. No new creative edition or creative source changes.",
+  "technicalDerivativeAuthorModelId": "gpt-6-luna",
+  "creativeAuthorModelId": "gpt-6.1-sol",
+  "technicalDerivativeId": "item-use-r4-sfx-start-retry-a5",
+  "packagingAuthorDisplayName": "GPT-6-Luna",
+  "lifetimeMs": 780,
+  "gameIntegrationStatus": "not_connected",
+  "adoption": "unknown",
+  "publicationEligible": false,
+  "runtimeAuthorDisplayName": "GPT-6-Luna",
+  "technicalDerivativeAuthorDisplayName": "GPT-6-Luna",
+  "safariReplayStatus": "unverified",
+  "creativeEdition": 4,
+  "creativeCapAuthority": "Explicit independent named R4/R5 production grant recorded in DESIGN-CONTRACT.json; historical edition total and R2 lineage remain unknown, R3 one-off permission is consumed, arithmetic from R3 history grants no further edition, and R6 is not authorized.",
+  "sourceLineage": {
+    "originalR3AuthorizedSourceSealSha256": "46f107e286c00ef0687e50c585b8697c1eda1abda16b5137e2dc615546269964",
+    "originalR3ManifestSha256": "e79ab7d92c5c012d373f0ba13a4d39b938531c593bb934c7ec5bc7de0cde2146",
+    "originalR3SealSha256": "bd37b5337580154a0b09956a65c1f184cf6a063cb9edbfd6408ecd6a119c3a12",
+    "sourceOriginalUnchanged": true,
+    "lineage": "New R4/R5 named creative revisions derived with preserved R3 provenance; original R3 package/evidence are historical lineage only and do not establish acceptance for this edition."
+  },
+  "technicalRoute": "public/sol61-item-use/r4-sfx-start-retry-a5/"
+}

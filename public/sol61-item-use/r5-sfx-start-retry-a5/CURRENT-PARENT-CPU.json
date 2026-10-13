@@ -1,0 +1,108 @@
+{
+  "schema": "item-use-r4-r5-current-parent-conformance-a3/v1",
+  "edition": "item-use-sol61-r5",
+  "status": "PASS_CURRENT_PARENT_CPU_MOCK_LIMITED",
+  "messageCount": 10,
+  "startupAccepted": 9,
+  "observed": [
+    {
+      "stage": "child-document",
+      "status": "pending",
+      "sequence": 1,
+      "accepted": true
+    },
+    {
+      "stage": "adapter",
+      "status": "pending",
+      "sequence": 2,
+      "accepted": true
+    },
+    {
+      "stage": "device",
+      "status": "pending",
+      "sequence": 3,
+      "accepted": true
+    },
+    {
+      "stage": "assets",
+      "status": "pending",
+      "sequence": 4,
+      "accepted": true
+    },
+    {
+      "stage": "pipelines",
+      "status": "pending",
+      "sequence": 5,
+      "accepted": true
+    },
+    {
+      "stage": "first-frame",
+      "status": "pending",
+      "sequence": 6,
+      "accepted": true
+    },
+    {
+      "stage": "playing",
+      "status": "pending",
+      "sequence": 7,
+      "accepted": true
+    },
+    {
+      "stage": "first-frame",
+      "status": "pending",
+      "sequence": 8,
+      "accepted": true
+    },
+    {
+      "stage": "playing",
+      "status": "ready",
+      "sequence": 9,
+      "accepted": true
+    }
+  ],
+  "firstFrameAccepted": true,
+  "retirementAccepted": true,
+  "target": true,
+  "aggregateClassifier": true,
+  "route": {
+    "url": "https://gallery.test/public/sol61-item-use/r5-sfx-start-retry-a5/index.html?embed=1&galleryAutoLoop=1&galleryVersionId=item-use-sol61-r5&sourceSha256=cd42e3ce46526271d0187112c52a33143eba0a53e76bd1f6ffb5fe8b2235b2b0&packageManifestSha256=0ee3dd95b14bae6a99c5df9e2c03d5c73436cf361c58c923da5c02864b970365&packageSealSha256=f65a55c25197084eb3838b4f26b5b4b2d49a86f806a5f53581e2fb7deb494be8&galleryStartupToken=cpu-bootstrap-token&galleryAttemptEpoch=7",
+    "source": "cd42e3ce46526271d0187112c52a33143eba0a53e76bd1f6ffb5fe8b2235b2b0",
+    "manifest": "0ee3dd95b14bae6a99c5df9e2c03d5c73436cf361c58c923da5c02864b970365",
+    "seal": "f65a55c25197084eb3838b4f26b5b4b2d49a86f806a5f53581e2fb7deb494be8",
+    "tokenParam": "galleryStartupToken",
+    "wrongTokenParamRejected": true
+  },
+  "negatives": {
+    "wrongPath": true,
+    "wrongSource": true,
+    "wrongManifest": true,
+    "wrongSeal": true,
+    "wrongToken": true,
+    "wrongEpoch": true,
+    "wrongChildId": true,
+    "wrongOrigin": true,
+    "wrongRetirementIdentity": true,
+    "wrongDeviceLoss": true
+  },
+  "groupOrder": [
+    "item-use-sol61-r5",
+    "item-use-sol61-r4",
+    "item-use-sol61-r3"
+  ],
+  "defaultPreserved": "item-use-sol61-r3",
+  "limitations": [
+    "Mock WebGPU only. No native shader execution or browser parent page.",
+    "No visual quality or ordinary audio acceptance, Safari/iPad, adoption, or game integration."
+  ],
+  "actualProducer": {
+    "bootstrapSha256": "624c6473e5212d91003ab838fe08a76a958d117db1ef0ff27665d9b3f7d57a57",
+    "runtimeSha256": "1d90f7ce12154e2e00f2f80d79e15243f5ca3d07d047b7e45fe871e769dc5a7c",
+    "galleryAdapterSha256": "ea88f834013093b2d58314111efffd4a3f5513d2c2aec19bb052be147af8ee8d",
+    "manifestSha256": "0ee3dd95b14bae6a99c5df9e2c03d5c73436cf361c58c923da5c02864b970365",
+    "sealSha256": "f65a55c25197084eb3838b4f26b5b4b2d49a86f806a5f53581e2fb7deb494be8",
+    "sfxSha256": "463f543165b4aa98e9252f518a83ca6bb38d92ebe65cf2d3ac71843e8751aa3f",
+    "cpuSourceSha256": "89be3809c7a6cf102902a72d793fe8704ccc8fe8325b4abb30827d64b7e69f31",
+    "startupEvents": "actual A5 bootstrap generated; no fabricated status/retirement events",
+    "webgpu": "CPU mock only"
+  }
+}

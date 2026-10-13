@@ -1,0 +1,124 @@
+import {createItemUseHost} from './runtime.mjs';
+import {freezeDiagnosticSnapshot} from './diagnostics.mjs';
+import {createItemUseGallerySfx,createItemUseGalleryStartup,startItemUseFixtureLoop,validateItemUseRetirementRequest} from './gallery-adapter.mjs';
+
+const GALLERY_VERSION_ID='item-use-sol61-r5';
+const ITEM_VARIANT='mineral-water';
+const canvas=document.querySelector('#surface'),status=document.querySelector('#status');
+const params=new URLSearchParams(location.search),verify=params.has('verify'),embedMode=params.get('embed')==='1';
+document.documentElement.classList.toggle('gallery-embed',embedMode);
+let diagnostic=freezeDiagnosticSnapshot({status:'fixture starting'});
+Object.defineProperty(window,'__itemUseGalleryDiagnosticSnapshot',{value:()=>diagnostic,writable:false,configurable:false});
+const naturalTraceRows=[];
+Object.defineProperty(window,'__itemUseNaturalProofSnapshot',{value:()=>naturalTraceRows.slice(),writable:false,configurable:false});
+const say=x=>{diagnostic=freezeDiagnosticSnapshot(x);status.textContent=JSON.stringify(diagnostic,null,2);};
+const startup=createItemUseGalleryStartup(window);
+let host=null,device=null,deviceLostPromise=null,context=null,audioContext=null,stopped=false,currentCue=null,cueObservedAt=0,currentTargetGeneration=1,configured=false,retirementPromise=null,earlyRetirementPromise=null,loop=null,pendingRetirement=null,bootstrapFinished=false;
+const sfx=createItemUseGallerySfx({window,verify,itemIds:[GALLERY_VERSION_ID],currentCue:()=>currentCue&&({...currentCue,ageMs:currentCue.ageMs+Math.max(0,performance.now()-cueObservedAt)}),
+  makeAudioContext:()=>audioContext??=(new AudioContext())});
+function earlyRetirement(event){
+ if(loop||!validateItemUseRetirementRequest(event,{parent:window.parent,origin:location.origin,token:startup.snapshot().token,versionId:startup.snapshot().versionId,attemptEpoch:startup.snapshot().attemptEpoch}))return;
+ if(!startup.acceptRetirement(event))return;
+ pendingRetirement=pendingRetirement||event;
+ if(bootstrapFinished)void finishEarlyRetirement();
+}
+window.addEventListener('message',earlyRetirement);
+async function finishEarlyRetirement(){
+ if(earlyRetirementPromise)return earlyRetirementPromise;
+ earlyRetirementPromise=(async()=>{try{const proof=await retireOwnedResources({pendingSettled:true,pendingCount:0,rafCancelled:true});startup.retired(proof);}
+ catch(error){startup.retireError(error);say({status:'retirement cleanup failed',error:String(error?.message??error)});}})();
+ return earlyRetirementPromise;
+}
+async function retireOwnedResources(drain={pendingSettled:false,pendingCount:1,rafCancelled:false}){
+ if(retirementPromise)return retirementPromise;
+ stopped=true;
+ retirementPromise=(async()=>{
+   const renderer=host;
+   let rendererProof={pendingSettled:drain.pendingSettled===true,pendingCount:drain.pendingCount??1,queueDrained:false,resourcesDisposed:false,cleanupErrors:[]};
+   let deviceProof={status:'unavailable',drained:false,destroyCalled:false,lostReason:null};
+   let audioDisposeSettled=false;
+   const errors=[];
+   try{sfx.dispose();}catch(error){errors.push(`gallery audio disposal: ${String(error?.message??error)}`);}
+   if(!drain.pendingSettled||drain.pendingCount!==0||drain.rafCancelled!==true)errors.push('fixture loop pending work was not proven settled');
+   if(renderer){
+     try{renderer.retire(renderer.token);}catch(error){errors.push(`renderer retire: ${String(error?.message??error)}`);}
+     try{const disposed=await renderer.dispose();rendererProof={...rendererProof,...disposed};}catch(error){rendererProof={...rendererProof,queueDrained:error?.queueDrained===true,resourcesDisposed:error?.resourcesDisposed===true,cleanupErrors:Array.isArray(error?.cleanupErrors)?error.cleanupErrors:[String(error?.message??error)]};errors.push(...rendererProof.cleanupErrors);}
+   }else if(device){
+     try{await device.queue.onSubmittedWorkDone();rendererProof={...rendererProof,disposeSettled:true,queueDrained:true,resourcesDisposed:true};}
+     catch(error){rendererProof={...rendererProof,disposeSettled:false,cleanupErrors:[`pre-host queue drain: ${String(error?.message??error)}`]};errors.push(...rendererProof.cleanupErrors);}
+   }
+   if(context&&configured){try{context.unconfigure();configured=false;}catch(error){errors.push(`canvas unconfigure: ${String(error?.message??error)}`);}}
+   if(device){
+     // The renderer drain settles submitted work before the owning bootstrap destroys its device.
+     try{device.destroy();deviceProof.destroyCalled=true;}catch(error){errors.push(`device destroy: ${String(error?.message??error)}`);}
+     try{
+       const lost=await (renderer?.deviceLost??deviceLostPromise);
+       deviceProof={...deviceProof,status:lost?.reason==='destroyed'?'destroyed-loss-settled':'unexpected-loss-settled',drained:rendererProof.queueDrained===true,lostReason:lost?.reason??null};
+       if(lost?.reason!=='destroyed')errors.push(`unexpected device loss reason: ${String(lost?.reason??'missing')}`);
+     }catch(error){errors.push(`device loss settlement: ${String(error?.message??error)}`);}
+   }
+   try{if(audioContext&&audioContext.state!=='closed')await audioContext.close();audioDisposeSettled=!audioContext||audioContext.state==='closed';}catch(error){errors.push(`audio context close: ${String(error?.message??error)}`);}
+   const proof={proofSchema:'item-use-gallery-retirement-proof-r1030/v1',disposeSettled:errors.length===0&&rendererProof.disposeSettled===true,
+     teardown:'disposed',deviceLifecycle:deviceProof.status,device:deviceProof,
+     renderer:{pendingSettled:rendererProof.pendingSettled===true,pendingCount:rendererProof.pendingCount??0,queueDrained:rendererProof.queueDrained===true,resourcesDisposed:rendererProof.resourcesDisposed===true,cleanupErrors:[...(rendererProof.cleanupErrors||[])]},
+     audioDisposeSettled,audioContextState:audioContext?.state??'absent',cleanupErrors:errors};
+   if(!proof.disposeSettled)throw Object.assign(new Error('Item Use retirement cleanup incomplete'),{proof});
+   return proof;
+ })();
+ return retirementPromise;
+}
+window.addEventListener('pagehide',()=>{void Promise.resolve(loop?.stop?.()).catch(error=>say({status:'retirement cleanup failed',error:String(error?.message??error)}));},{once:true});
+try {
+ if(!window.parent||window.parent===window)throw Error('embedded gallery fixture required');
+ if(params.get('galleryVersionId')!==GALLERY_VERSION_ID)throw Error('selected gallery item.id mismatch');
+ if(!navigator.gpu)throw Error('WebGPU unavailable');
+ startup.advance('child-document','pending',{versionId:GALLERY_VERSION_ID});
+ const adapter=await navigator.gpu.requestAdapter();if(!adapter)throw Error('WebGPU adapter unavailable');
+ startup.advance('adapter','pending');
+ device=await adapter.requestDevice();deviceLostPromise=Promise.resolve(device.lost);startup.advance('device','pending');
+ context=canvas.getContext('webgpu');if(!context)throw Error('WebGPU canvas context unavailable');
+ const format=navigator.gpu.getPreferredCanvasFormat();
+ const resize=()=>{const r=canvas.getBoundingClientRect(),d=window.devicePixelRatio||1;canvas.width=Math.max(1,Math.round(r.width*d));canvas.height=Math.max(1,Math.round(r.height*d));context.configure({device,format,alphaMode:'premultiplied'});configured=true;};
+ resize();
+ const expectedWorldSha256='cd42e3ce46526271d0187112c52a33143eba0a53e76bd1f6ffb5fe8b2235b2b0';
+ const versionMeta=document.querySelector('meta[name="item-use-version"]')?.content;
+ const sourceMeta=document.querySelector('meta[name="item-use-source-sha256"]')?.content;
+ const expectedManifestSha256=params.get('packageManifestSha256');
+ const expectedSealSha256=params.get('packageSealSha256');
+ const expectedSourceSha256=params.get('sourceSha256');
+ const digestHex=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),x=>x.toString(16).padStart(2,'0')).join('');
+ if(versionMeta!==GALLERY_VERSION_ID||sourceMeta!==expectedWorldSha256||params.get('galleryVersionId')!==GALLERY_VERSION_ID||expectedSourceSha256!==expectedWorldSha256||!/^([0-9a-f]{64})$/.test(expectedManifestSha256||'')||!/^([0-9a-f]{64})$/.test(expectedSealSha256||''))throw Error('selected R4/R5 version/source/package SHA is missing or mismatched');
+ const manifestResponse=await fetch('./package-manifest.json');if(!manifestResponse.ok)throw Error('R4/R5 package manifest fetch failed');
+ const manifestBytes=await manifestResponse.arrayBuffer();if(await digestHex(manifestBytes)!==expectedManifestSha256)throw Error('R4/R5 package manifest SHA mismatch');
+ const manifest=JSON.parse(new TextDecoder().decode(manifestBytes));
+ if(manifest.versionId!==GALLERY_VERSION_ID||manifest.creativeVersion!=='item-use-e-zero-sol61-r5'||manifest.files?.find(x=>x.path==='source/item-use-e-sol61-r5.wgsl')?.sha256!==expectedWorldSha256||manifest.files?.find(x=>x.path==='source/item-use-e-sol61-r5.mjs')?.sha256!=='5646e094bd285b953e2b4dfd41b90f452e92f06d778ad53be232e2baaec2aa8b'||manifest.files?.find(x=>x.path==='source/item-use-e-sfx-sol61-r5.mjs')?.sha256!=='463f543165b4aa98e9252f518a83ca6bb38d92ebe65cf2d3ac71843e8751aa3f')throw Error('R4/R5 package manifest identity/source pins mismatch');
+ const sealResponse=await fetch('./package-seal.json');if(!sealResponse.ok)throw Error('R4/R5 package seal fetch failed');
+ const sealBytes=await sealResponse.arrayBuffer();if(await digestHex(sealBytes)!==expectedSealSha256)throw Error('R4/R5 package seal SHA mismatch');
+ const seal=JSON.parse(new TextDecoder().decode(sealBytes));
+ if(seal.versionId!==GALLERY_VERSION_ID||seal.packageManifestSha256!==expectedManifestSha256)throw Error('R4/R5 package seal identity mismatch');
+ const shaderUrl=new URL('./source/item-use-e-sol61-r5.wgsl',location.href);shaderUrl.searchParams.set('sha256',expectedWorldSha256);
+ const response=await fetch(shaderUrl);if(!response.ok)throw Error('shader fetch failed: '+response.status);const shaderBytes=await response.arrayBuffer();if(await digestHex(shaderBytes)!==expectedWorldSha256)throw Error('R4/R5 WGSL source SHA mismatch');const shaderCode=new TextDecoder().decode(shaderBytes);
+ host=await createItemUseHost({device,context,format,shaderCode,width:canvas.width,height:canvas.height,verify,onFailure:e=>say({status:'host failure',error:String(e?.error??e)}),onFrameTrace:trace=>{naturalTraceRows.push(trace);if(naturalTraceRows.length>2048)naturalTraceRows.shift();}});
+ startup.advance('assets','pending');startup.advance('pipelines','pending');
+ window.addEventListener('resize',async()=>{try{resize();const sized=await host.resize(canvas.width,canvas.height);currentTargetGeneration=sized.generation;}catch(e){startup.advance('playing','error',{message:String(e)});}});
+ const playerId='fixture-player';
+ loop=startItemUseFixtureLoop({host,canvas,window,startup,verify,itemIds:[GALLERY_VERSION_ID],onStop:()=>sfx.dispose(),onRetire:drain=>retireOwnedResources(drain),onCauseStart:f=>sfx.noteCauseStart(f.causeId,host),onProof:p=>say({status:'fixture positive emission sample; native/gallery acceptance pending',proof:p}),
+   onFailure:e=>say({status:'frame rejected',error:String(e)}),onFrame:(result,f,timing)=>{
+     const receipt={type:'action-item-use',id:f.causeId,playerId:f.playerId,variant:f.itemId,at:Date.now(),x:f.anchor[0],y:f.anchor[1],targetX:null,targetY:null,targetId:''};
+     currentCue={causeId:f.causeId,itemId:f.itemId,playerId:f.playerId,ageMs:f.ageMs,sourceOn:f.sourceOn,mainOn:f.mainOn,obsOn:f.obsOn,visibility:f.visibility,receipt,host};
+     cueObservedAt=performance.now();
+     sfx.observeCompletedFrame(result,{...f,receipt},{host,canvas,expectedTargetGeneration:currentTargetGeneration,submittedAt:timing?.submittedAt,completedAt:timing?.completedAt});
+     if(result?.retired)say({status:'stale frame retired'});
+   },fixture:({causeId,ageMs,sourceOn})=>({clockKind:'fixture',causeId,sourceCauseId:causeId,visibilityCauseId:causeId,itemId:ITEM_VARIANT,
+     playerId,sourcePlayerId:playerId,anchorPlayerId:playerId,ageMs,heightPx:64*(window.devicePixelRatio||1),viewport:[canvas.width,canvas.height],anchor:[canvas.width*.5,canvas.height*.48],
+     sourceOn,mainOn:true,obsOn:true,visibility:1,intensity:1,angleRad:-.3,reducedMotion:false})});
+ window.removeEventListener('message',earlyRetirement);
+ if(pendingRetirement)void loop.retire(pendingRetirement).catch(error=>say({status:'retirement cleanup failed',error:String(error?.message??error)}));
+ bootstrapFinished=true;
+ startup.advance('first-frame','pending');startup.advance('playing','pending');
+ say({status:'fixture running; readiness awaits exact positive emission readback',galleryVersionId:GALLERY_VERSION_ID,verify,scope:'fixture-only'});
+} catch(e) {
+ bootstrapFinished=true;
+ if(pendingRetirement){if(loop)void loop.retire(pendingRetirement).catch(error=>say({status:'retirement cleanup failed',error:String(error?.message??error)}));else void finishEarlyRetirement();}
+ else{if(loop)window.removeEventListener('message',earlyRetirement);startup.advance('child-document','error',{message:String(e)});say({status:'startup failed',error:String(e)});}
+}
