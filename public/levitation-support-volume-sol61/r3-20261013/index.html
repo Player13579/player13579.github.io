@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="dva-effect-version" content="levitation-support-volume-sol61-r3-20261013">
+  <title>Levitation Support Volume R3</title>
+  <style>
+    :root { color-scheme: dark; font: 14px/1.4 system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; grid-template-rows: 1fr auto; background: #080d15; color: #e5f2fa; }
+    #stage { display: grid; place-items: center; min-height: 360px; }
+    #effect { display: block; width: min(100vw, 640px); height: 360px; background: #080d15; }
+    #controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; padding: 8px 12px; }
+    label, button { font: inherit; }
+    button { color: inherit; background: #172638; border: 1px solid #496279; border-radius: 4px; padding: 4px 10px; }
+    #diagnostic { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <main id="stage">
+    <canvas id="effect" aria-label="Levitation support effect, WebGPU rendered"></canvas>
+  </main>
+  <nav id="controls" aria-label="Effect controls">
+    <button id="enable-audio" type="button">Enable sound</button>
+    <label><input id="source-toggle" type="checkbox" checked> Source</label>
+    <label><input id="observer-toggle" type="checkbox" checked> Observer</label>
+    <label><input id="background-toggle" type="checkbox"> Bright fixture background</label>
+  </nav>
+  <output id="diagnostic" aria-live="polite"></output>
+  <script type="module">
+    import { bootLevitation } from './runtime.mjs';
+    bootLevitation().then(api => {
+      const out = document.querySelector('#diagnostic');
+      out.value = JSON.stringify(api.snapshot());
+    }).catch(error => {
+      const out = document.querySelector('#diagnostic'); out.value = `Levitation startup failed: ${error.stack ?? error}`;
+    });
+  </script>
+</body>
+</html>
+
+

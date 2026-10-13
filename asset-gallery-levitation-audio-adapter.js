@@ -15,6 +15,13 @@
       packageManifestSha256:'1eb0710a7deb6f506c9399903f37b7424c0095c9b08458c11042772f403490f0',
       packageSealSha256:'395d61e2b929d86828ec33c871968704c167b5b74a4fe4a264d5b3103d69ab77',
       sourceManifestSha256:'9c0676b34faa0ef9b9bc9e2bbc3212aa7f5f5d45310370c68574b5f213e18e43'
+    })],
+    ['levitation-support-volume-sol61-r3-20261013', Object.freeze({
+      versionId:'levitation-support-volume-sol61-r3-20261013',
+      route:'/public/levitation-support-volume-sol61/r3-20261013/index.html',
+      packageManifestSha256:'51db319efe3d9e7152865996be66d38fe03e6c269ec24c356267f19276428632',
+      packageSealSha256:'2b61a4350c69a5d570ffaab05902606ce4458ebc7189c96f22fbaba9cf5eecad',
+      sourceManifestSha256:'aaeab6816b14ae7a29e2aa3d915e87d156bfbae2380a28b170effebc1336e943'
     })]
   ]);
   const originalFactory=root.createGallerySfxBridge;
