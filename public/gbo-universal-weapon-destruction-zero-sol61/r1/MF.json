@@ -1,0 +1,100 @@
+{
+  "schema": "dva-executable-e-source-1",
+  "version": "gbo-universal-weapon-destruction-zero-sol61-r1",
+  "series": "gbo-universal-weapon-destruction-zero-sol61",
+  "edition": 1,
+  "creativeLimit": 5,
+  "author": {
+    "executionModel": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol",
+    "effort": "high",
+    "catalogSource": "models_cache",
+    "catalogAt": "2026-10-13T10:00:10.829Z"
+  },
+  "qualityAccepted": false,
+  "adoption": "unknown",
+  "files": [
+    {
+      "path": "DESIGN.md",
+      "bytes": 16338,
+      "sha256": "5a61d3d1bad71dd9e76b997a6f6b8998322fe488d21d84eef2cd3cb487bcfce3"
+    },
+    {
+      "path": "input-ledger.json",
+      "bytes": 2412,
+      "sha256": "562bf07ba9ea3ae9aafdf9f7d4b6305deb85e3c8437af23bfa0d826d13ea80df"
+    },
+    {
+      "path": "gbo-universal-weapon-destruction.mjs",
+      "bytes": 13823,
+      "sha256": "7a19a6876066964247b87105264f2175ec474770af5b23e609c30051fb3245e4"
+    },
+    {
+      "path": "gbo-destruction-sfx.mjs",
+      "bytes": 3272,
+      "sha256": "74d1fb6772496742dfaa0cb4edb14a7d64e2a4a73194cbcd6801de842f968895"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 3112,
+      "sha256": "6531a2d9051b020fb0f0bf98077b357e4e03ea2ff81b880e8214656eae25a062"
+    },
+    {
+      "path": "present.wgsl",
+      "bytes": 1555,
+      "sha256": "333735531e097012171f948e4d7aacfe7b4ae2c802c6e1941b527b82cefedeec"
+    },
+    {
+      "path": "test-runtime.mjs",
+      "bytes": 11646,
+      "sha256": "d11ee8b2f0ad9adaf315e2daa8567234a83c1e85b1fab9df69951e906e3f643e"
+    },
+    {
+      "path": "CPU-RESULT.json",
+      "bytes": 1866,
+      "sha256": "39e100484603f26637c8a0555286919539a484085c292aef221c1eab26ae8a15"
+    },
+    {
+      "path": "build-seal.mjs",
+      "bytes": 3464,
+      "sha256": "fa4fc253b78c3298e5e52db1160960d146fcfdf6d6232a903c0d31fedeb231fa"
+    }
+  ],
+  "runtimeClosure": {
+    "entry": "gbo-universal-weapon-destruction.mjs",
+    "files": [
+      "gbo-universal-weapon-destruction.mjs",
+      "gbo-destruction-sfx.mjs",
+      "world.wgsl",
+      "present.wgsl"
+    ],
+    "edges": [
+      {
+        "from": "gbo-universal-weapon-destruction.mjs",
+        "to": "gbo-destruction-sfx.mjs",
+        "kind": "static-esm"
+      },
+      {
+        "from": "gbo-universal-weapon-destruction.mjs",
+        "to": "world.wgsl",
+        "kind": "fetch-new-URL-import.meta.url"
+      },
+      {
+        "from": "gbo-universal-weapon-destruction.mjs",
+        "to": "present.wgsl",
+        "kind": "fetch-new-URL-import.meta.url"
+      }
+    ],
+    "external": "WebGPU and WebAudio browser APIs only; no generated texture/audio/network asset",
+    "testOnlyExternal": "../primary/check-owned-write-plan-fe77.mjs"
+  },
+  "validation": {
+    "cpuResult": "CPU-RESULT.json",
+    "actualModuleCases": 12,
+    "native": "not_run",
+    "pixels": "not_run",
+    "normalListening": "not_run",
+    "game": "not_run",
+    "public": "not_run"
+  }
+}
