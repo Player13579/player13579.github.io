@@ -29,7 +29,8 @@
       packageManifestSha256:'9cec5343c059045d58276496178d07bfc34dcd9889f95dad97c0181c8ca9f694',
       packageSealSha256:'7e5cc12fc78e1a75d077889977db03182a4dfdacf432b56f9f04ec2fd184d3be',
       sourceManifestSha256:'2ab58bf58f24d65c47775d856525521ab117abe910072d80c8e0461a517806f5'
-    })]
+    })],
+    ['levitation-support-volume-sol61-r5-20261013', Object.freeze({versionId:'levitation-support-volume-sol61-r5-20261013',route:'/public/levitation-support-volume-sol61/r5-20261013/index.html',packageManifestSha256:'be5a687175bfe5d7ec484a0514880b2299d2695fcefd227a02f01707b5e1d478',packageSealSha256:'79cdb962b1a02990ece40158c7799211cc573991ba5e3d0bb8d2a068b6aad411',sourceManifestSha256:'2b394535e150d8780f94020c5f8d871b10e9a7d6843f8ea9834d1f1bf3c6b462'})]
   ]);
   const originalFactory=root.createGallerySfxBridge;
   if(typeof originalFactory!=='function')throw new Error('gallery SFX bridge must load before Levitation adapter');
