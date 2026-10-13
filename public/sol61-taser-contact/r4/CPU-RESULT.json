@@ -1,0 +1,89 @@
+{
+  "schema": "dva-taser-creative-cpu/v1",
+  "edition": 4,
+  "status": "PASS_CPU_MOCK_ONLY",
+  "native": false,
+  "gpu": false,
+  "pixels": false,
+  "normalAudioListening": false,
+  "tests": [
+    {
+      "name": "finite lifetime including exact zero/end/invalid",
+      "status": "PASS"
+    },
+    {
+      "name": "all authored phases finite bounded rooted geometry",
+      "status": "PASS"
+    },
+    {
+      "name": "scale applied exactly once",
+      "status": "PASS"
+    },
+    {
+      "name": "contact eligibility and hidden/invalid target boundaries",
+      "status": "PASS"
+    },
+    {
+      "name": "edition-specific creative geometry",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic PCM deterministic finite bounded and cause-specific",
+      "status": "PASS"
+    },
+    {
+      "name": "closed audio gate does not consume source cause; retry then duplicate rejection",
+      "status": "PASS"
+    },
+    {
+      "name": "verify hard-mute start gate",
+      "status": "PASS"
+    },
+    {
+      "name": "late/future completed receipt rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "audio failure remains nonfatal return",
+      "status": "PASS"
+    },
+    {
+      "name": "actual renderer positive 4-pass submission and fulfilled queue receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "actual renderer expired clear has zero source rows",
+      "status": "PASS"
+    },
+    {
+      "name": "actual runtime dispose drain/unconfigure/destroy expected loss",
+      "status": "PASS"
+    },
+    {
+      "name": "no submit after dispose",
+      "status": "PASS"
+    },
+    {
+      "name": "actual preview initial startup + verify Context0 voice gate",
+      "status": "PASS"
+    },
+    {
+      "name": "actual submission consumer rejects stale cause/controls",
+      "status": "PASS"
+    },
+    {
+      "name": "actual held same-clock consumer preserves age and completion",
+      "status": "PASS"
+    },
+    {
+      "name": "Replay interleaved stale RAF timestamp cannot produce negative age",
+      "status": "PASS"
+    },
+    {
+      "name": "actual preview retirement proof and verify zero Context",
+      "status": "PASS"
+    }
+  ],
+  "DVA_FORBID_NATIVE": "1",
+  "testCount": 19
+}

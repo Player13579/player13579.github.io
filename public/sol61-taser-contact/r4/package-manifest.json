@@ -1,0 +1,94 @@
+{
+  "schema": "dva-taser-private-runtime-package/v1",
+  "versionId": "taser-contact-sol61-r4",
+  "groupId": "taser-contact-sol61",
+  "creativeEditionNumber": 4,
+  "entry": "index.html",
+  "route": "public/sol61-taser-contact/r4/index.html",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "implementationModelIdentity": "GPT-6.1-Sol",
+  "files": {
+    "CPU-RESULT.json": {
+      "path": "CPU-RESULT.json",
+      "bytes": 2226,
+      "sha256": "b8ae2df5c68378b63807ddca1e921029905fa1b9852e1ae93882d868d4690d7f"
+    },
+    "DESIGN.json": {
+      "path": "DESIGN.json",
+      "bytes": 3654,
+      "sha256": "2e23509159ad52341b4a4d69cc150abc9977c2799469170cc6842e6e63ce9e33"
+    },
+    "DESIGN.md": {
+      "path": "DESIGN.md",
+      "bytes": 1183,
+      "sha256": "7ac0090d5ee771d6f4ddcc7cf93b58514b3071c01774e37610becf9033d8c4f8"
+    },
+    "geometry.mjs": {
+      "path": "geometry.mjs",
+      "bytes": 3870,
+      "sha256": "10cb733526623c2927231613e0e7d66c78dcecff3028d7bf78180e5feb537375"
+    },
+    "index.html": {
+      "path": "index.html",
+      "bytes": 2968,
+      "sha256": "fc07cf7f5ae8035f87e3ba82ea18556a2ea46d1161d5b385d00d3d6ef8b19594"
+    },
+    "preview.mjs": {
+      "path": "preview.mjs",
+      "bytes": 32600,
+      "sha256": "fa8ad55be3af446ccd9befec31b9e8dc68dfa3f1f58d2689d8b5c04067d06509"
+    },
+    "retirement-adapter.mjs": {
+      "path": "retirement-adapter.mjs",
+      "bytes": 6296,
+      "sha256": "029b062ca73ece73fa12da0ae8d3e344223f693f565d5500e54733f27b317161"
+    },
+    "runtime.mjs": {
+      "path": "runtime.mjs",
+      "bytes": 9181,
+      "sha256": "b5e40166e7a1915ceede6ff48459a574b6d02bd9b6f8bae161730fa45c0e3904"
+    },
+    "taser-contact-sfx.mjs": {
+      "path": "taser-contact-sfx.mjs",
+      "bytes": 13790,
+      "sha256": "00228c317e5081baf1dc46c19ccd34519033a680172900c4e397bea670de4f27"
+    },
+    "taser.wgsl": {
+      "path": "taser.wgsl",
+      "bytes": 5998,
+      "sha256": "aa9a2b26f4c7a89596dc9a391a1ffc8eb345ff1ecab738d75e59b7a936695202"
+    },
+    "terminal-link.mjs": {
+      "path": "terminal-link.mjs",
+      "bytes": 8911,
+      "sha256": "d0a36c007d943637e2eddf30e5c201a9abedb3038828b814f981d876607fb28f"
+    }
+  },
+  "runtimeDependencyClosure": [
+    "index.html -> preview.mjs",
+    "preview.mjs -> geometry.mjs",
+    "preview.mjs -> runtime.mjs",
+    "preview.mjs -> taser-contact-sfx.mjs",
+    "preview.mjs -> terminal-link.mjs",
+    "preview.mjs -> retirement-adapter.mjs",
+    "runtime.mjs -> taser.wgsl",
+    "runtime.mjs -> geometry.mjs",
+    "runtime.mjs -> terminal-link.mjs",
+    "runtime.mjs -> retirement-adapter.mjs",
+    "taser-contact-sfx.mjs -> geometry.mjs"
+  ],
+  "status": "CREATIVE_CANDIDATE_CPU_MOCK_ONLY",
+  "newTarget": 5,
+  "historicCap": "unknown preserved",
+  "qualityAccepted": false,
+  "adoption": "unknown",
+  "publication": false,
+  "mainGameIntegration": "not-integrated",
+  "nativeVerification": "not-run",
+  "normalAudioListening": "not-run",
+  "retirementContract": {
+    "schema": "taser-contact-retirement-proof-r1140/v1",
+    "actualGPU": "not-run",
+    "CPU": "actual runtime/preview dispose positive mock proof only"
+  }
+}
