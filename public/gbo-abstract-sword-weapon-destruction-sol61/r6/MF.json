@@ -1,0 +1,251 @@
+{
+  "version": "gbo-abstract-sword-weapon-destruction-sol61-luminous-r6",
+  "edition": 6,
+  "series": "universal abstract sword destruction",
+  "authorModelId": "gpt-6.1-sol",
+  "authorDisplayName": "GPT-6.1-Sol",
+  "sourceEntrypoint": "runtime.mjs",
+  "sourceFiles": [
+    "runtime.mjs",
+    "geometry.mjs",
+    "world.wgsl",
+    "observer.wgsl",
+    "sfx.mjs"
+  ],
+  "files": [
+    {
+      "path": "runtime.mjs",
+      "bytes": 22541,
+      "sha256": "0afd32d875092e8f76fe4bd6e7c68c2430eecbf570e4aff1828d2222d3211215"
+    },
+    {
+      "path": "geometry.mjs",
+      "bytes": 11531,
+      "sha256": "236c418b5bae39246cebd17c35f6944d6b58bd6cae01212ea344a139bce6d5e6"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 475,
+      "sha256": "1dd73621949eed550d25ec0ae76c754e0dbc6c0bc740c6ea491492fb2d1501c6"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1623,
+      "sha256": "1bdec0f2e671a304eecf60985a2e5e7d626661250aa8e308b6359fc6994f4f15"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 1669,
+      "sha256": "b88469e9c135ad8e2568934bf39e6fd8b7479971e42f2cfa38fb1cd8aac4c010"
+    },
+    {
+      "path": "CPU-A2.json",
+      "bytes": 18303,
+      "sha256": "569abc24c5267f40f938022593e8e8c711e6beee31b7828486bc7906d892b0e9"
+    },
+    {
+      "path": "CPU-ATTEMPT-A1.json",
+      "bytes": 396,
+      "sha256": "cb3e00240d508ad851d55ea35b164d87c2e862f4ce71b64b111dab7184aa1de7"
+    },
+    {
+      "path": "DESIGN-CONTRACT.json",
+      "bytes": 46913,
+      "sha256": "6189ed77391de21b06280316cbc7520bf821f886c313e0520e530fdbdb5ce765"
+    },
+    {
+      "path": "HISTORICAL-R5-DESIGN.json",
+      "bytes": 55485,
+      "sha256": "869718291a54f68ad9b43636c4b2a3964ea309dc8b4d76180edea1d312898f10"
+    },
+    {
+      "path": "INPUT-LEDGER.json",
+      "bytes": 4606,
+      "sha256": "1388f3caa14bd4f5aafd937d60883542f4cf4d7738eb8f654820874f3bbaa33e"
+    },
+    {
+      "path": "NATIVE-PLAN.json",
+      "bytes": 2640,
+      "sha256": "3daed7ad98b9855dce0f6424a9d6453e8b0663108e30725a02c7b3bf97295762"
+    },
+    {
+      "path": "preview-lifecycle.mjs",
+      "bytes": 11352,
+      "sha256": "5f9bfd46ee40ec15a5f9a1a88436d7ded4bac59627c056f03e83bbd84a46573e"
+    },
+    {
+      "path": "preview.html",
+      "bytes": 1134,
+      "sha256": "8ecceae1ffec3806881a17feb10187b93dc307cde3a6605202c61765f735a153"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 8106,
+      "sha256": "5b133a7de0c483bf7c9c1dfff19b2f1383a1b8bf94a89086845040c79e3c3f38"
+    },
+    {
+      "path": "STARTUP.json",
+      "bytes": 1396,
+      "sha256": "882909d1f69d3d2db2d1f333908bd23decefd5095003c5ee072ec003c88dd6ff"
+    },
+    {
+      "path": "test-geometry.mjs",
+      "bytes": 2098,
+      "sha256": "71bafe8f4f8fef23ea16f3c150c3359c8319be362f552f40f4f632f71a6edb7a"
+    },
+    {
+      "path": "test-luminous.mjs",
+      "bytes": 4239,
+      "sha256": "0685c7d594e579ea2f0322de0c18de9b766ce64d17060dd507de27d8dd63b999"
+    },
+    {
+      "path": "test-runtime-r6.mjs",
+      "bytes": 17362,
+      "sha256": "185bb3ca04540ae8d8a2e1065ee9a2f0bc0680b71486941b7d0b910bdc5df8f2"
+    },
+    {
+      "path": "test-runtime.mjs",
+      "bytes": 15548,
+      "sha256": "0862350bab9f49520327fbdebf66f97ff1b14c9f8481ba5c5719516bd09f8fd5"
+    }
+  ],
+  "dependencies": {
+    "runtime.mjs": [
+      "geometry.mjs",
+      "sfx.mjs",
+      "world.wgsl",
+      "observer.wgsl"
+    ],
+    "preview.mjs": [
+      "runtime.mjs",
+      "preview-lifecycle.mjs",
+      "transport-manifest.json",
+      "source-closure.json"
+    ]
+  },
+  "sourceClosureComplete": true,
+  "closureScope": "runtime + transport closure local and sealed; validation test-luminous intentionally imports exact frozen R5 geometry",
+  "validationDependencies": {
+    "test-luminous.mjs": [
+      {
+        "path": "geometry.mjs",
+        "bytes": 9019,
+        "sha256": "1f715b3187b74a7f97c5f3d94e910a75d01bc61aaeee74d0033d662f7d111387"
+      }
+    ]
+  },
+  "activeTestSuites": [
+    "test-geometry.mjs",
+    "test-luminous.mjs",
+    "test-runtime-r6.mjs"
+  ],
+  "historicalFixture": "test-runtime.mjs is preserved initial inherited R5 one-HDR test; excluded from R6 final test suite, its limitation preserved CPU-ATTEMPT-A1",
+  "bAuthority": "c34a841645906af6cf1595cb5ce02bd08b568b18",
+  "creativeParent": {
+    "previousEdition": 5,
+    "creativeSource": {
+      "path": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/gbo-abstract-sword-weapon-destruction-zero-20261013-r5",
+      "files": [
+        {
+          "path": "runtime.mjs",
+          "bytes": 19969,
+          "sha256": "9d25c39fa7c32d246dfa749410c0e104cf4bdcd6d1983b5ed967771b75884806"
+        },
+        {
+          "path": "geometry.mjs",
+          "bytes": 9019,
+          "sha256": "1f715b3187b74a7f97c5f3d94e910a75d01bc61aaeee74d0033d662f7d111387"
+        },
+        {
+          "path": "world.wgsl",
+          "bytes": 306,
+          "sha256": "ab13fd669354174440b6a6a84cf2e325317191c291afa8f4dc6fcb10c7dfa492"
+        },
+        {
+          "path": "observer.wgsl",
+          "bytes": 1337,
+          "sha256": "07022196baa4ad9c84b4c55f2a0c781b2ec44cf43b9605390559a979c39a374b"
+        },
+        {
+          "path": "sfx.mjs",
+          "bytes": 1669,
+          "sha256": "b88469e9c135ad8e2568934bf39e6fd8b7479971e42f2cfa38fb1cd8aac4c010"
+        }
+      ],
+      "MF": {
+        "path": "MF.json",
+        "bytes": 3374,
+        "sha256": "8091635a1c2aa875fc1889643a78e86f9e84cbff7bb921db77776791674367da"
+      },
+      "seal": {
+        "path": "SEAL.json",
+        "bytes": 2201,
+        "sha256": "2c121bc413b7ed1e98d6f56212bd4ec69bf2a010bc5fc7e327ad311b170322b8"
+      }
+    },
+    "currentTechnicalSource": {
+      "path": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/primary/gbo-abstract-sword-release-metadata-a4-20261014/candidate/public/gbo-abstract-sword-weapon-destruction-sol61/r5",
+      "files": [
+        {
+          "path": "runtime.mjs",
+          "bytes": 21692,
+          "sha256": "3fc40d4b1a2c2bbdcb2ccbb52f4702236c9ee5ed7e0798ff53d796368ac9bdae"
+        },
+        {
+          "path": "geometry.mjs",
+          "bytes": 9019,
+          "sha256": "1f715b3187b74a7f97c5f3d94e910a75d01bc61aaeee74d0033d662f7d111387"
+        },
+        {
+          "path": "world.wgsl",
+          "bytes": 306,
+          "sha256": "ab13fd669354174440b6a6a84cf2e325317191c291afa8f4dc6fcb10c7dfa492"
+        },
+        {
+          "path": "observer.wgsl",
+          "bytes": 1337,
+          "sha256": "07022196baa4ad9c84b4c55f2a0c781b2ec44cf43b9605390559a979c39a374b"
+        },
+        {
+          "path": "sfx.mjs",
+          "bytes": 1669,
+          "sha256": "b88469e9c135ad8e2568934bf39e6fd8b7479971e42f2cfa38fb1cd8aac4c010"
+        }
+      ],
+      "MF": {
+        "path": "MF.json",
+        "bytes": 3607,
+        "sha256": "532029421bbbdbb695b2a08e4d26be8890e4a6d659d6c32a2fcad155f18716b3"
+      },
+      "seal": {
+        "path": "SEAL.json",
+        "bytes": 1350,
+        "sha256": "af95c8633bd8a3e1533e32f563ebbcf7cc3e9d0ed63d9045a235f1e47c1e7c1f"
+      }
+    }
+  },
+  "attribution": {
+    "newR6": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "parentCreative": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "parentFaithfulImplementationAndTechnicalHost": {
+      "modelId": "gpt-6-luna",
+      "displayName": "GPT-6-Luna"
+    },
+    "scope": "new authorship covers R6 emission model, separation of source attachment, observer response and tests/design evidence; inherited geometry/motion/SFX/runtime/gallery host credit remains historical"
+  },
+  "explicitHumanRevisionScope": [
+    "武器破壊前に剣から強い光を発するようにする",
+    "破壊後の剣も光続ける"
+  ],
+  "qualityAccepted": false,
+  "userAdoption": "unknown",
+  "publication": "pending",
+  "nativeGPU": "not_run",
+  "mainGameBinding": "excluded"
+}
