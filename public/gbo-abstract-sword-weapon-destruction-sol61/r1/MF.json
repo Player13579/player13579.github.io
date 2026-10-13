@@ -1,0 +1,109 @@
+{
+  "version": "gbo-abstract-sword-weapon-destruction-sol61-zero-r1",
+  "edition": 1,
+  "series": "fresh abstract sword universal weapon destruction",
+  "authorModelId": "gpt-6.1-sol",
+  "authorDisplayName": "GPT-6.1-Sol",
+  "faithfulImplementationModelId": "gpt-6-luna",
+  "faithfulImplementationDisplayName": "GPT-6-Luna",
+  "sourceEntrypoint": "runtime.mjs",
+  "sourceFiles": [
+    "runtime.mjs",
+    "geometry.mjs",
+    "world.wgsl",
+    "observer.wgsl",
+    "sfx.mjs"
+  ],
+  "files": [
+    {
+      "path": "runtime.mjs",
+      "bytes": 21696,
+      "sha256": "1231ab3b15de0244e00c4dd0bb52958e1f3545997495d779f75423f72595021c"
+    },
+    {
+      "path": "geometry.mjs",
+      "bytes": 6726,
+      "sha256": "bc34c6ad14f335734b91989c1e71a3ca17924f6f1611a3719fc566c45758b313"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 306,
+      "sha256": "ab13fd669354174440b6a6a84cf2e325317191c291afa8f4dc6fcb10c7dfa492"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1337,
+      "sha256": "07022196baa4ad9c84b4c55f2a0c781b2ec44cf43b9605390559a979c39a374b"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 1669,
+      "sha256": "b88469e9c135ad8e2568934bf39e6fd8b7479971e42f2cfa38fb1cd8aac4c010"
+    },
+    {
+      "path": "DESIGN-CONTRACT.json",
+      "bytes": 39437,
+      "sha256": "6f29e5601dbdb0ca5e5c1c6a1d682e5fcc25809d0857ee46797c34b3a31edf34"
+    },
+    {
+      "path": "STARTUP.json",
+      "bytes": 1026,
+      "sha256": "63c9dc9993ca5470f80312d12c7251fc7a61ed2e4b037fdaf2a9377dd87730eb"
+    },
+    {
+      "path": "INPUT-LEDGER.json",
+      "bytes": 3097,
+      "sha256": "1535e3e836cf90467587da2f7522c3059230872ad224e55831132125f3bc49c7"
+    },
+    {
+      "path": "test-geometry.mjs",
+      "bytes": 2097,
+      "sha256": "be443f7f35bf1509746b2ce6c69bb4d213248b315e2073873a2fc32ff2057cc5"
+    },
+    {
+      "path": "test-runtime.mjs",
+      "bytes": 15548,
+      "sha256": "0862350bab9f49520327fbdebf66f97ff1b14c9f8481ba5c5719516bd09f8fd5"
+    },
+    {
+      "path": "CPU-GEOMETRY.json",
+      "bytes": 358,
+      "sha256": "a6c95b425ecdd641cf6e81543ece6e0be3971bd7c4d7fb524d24830db6cc3b91"
+    },
+    {
+      "path": "CPU-GEOMETRY-INITIAL-FAILURE.json",
+      "bytes": 275,
+      "sha256": "6aa62c2a7bf1951bffe4452d103c23bf22e384f0deadea24ef9f0fcd4bec5043"
+    },
+    {
+      "path": "CPU-RUNTIME.json",
+      "bytes": 1798,
+      "sha256": "99e5924cf0e30a6927dd7b96a07bce955628c516043d05ecc759fc551ec3d489"
+    }
+  ],
+  "dependencies": {
+    "runtime.mjs": [
+      "geometry.mjs",
+      "sfx.mjs",
+      "world.wgsl",
+      "observer.wgsl"
+    ]
+  },
+  "sourceClosureComplete": true,
+  "creativeSourceZero": true,
+  "bAuthority": "c34a841645906af6cf1595cb5ce02bd08b568b18",
+  "equippedWeaponIndependent": true,
+  "qualityAccepted": false,
+  "userAdoption": "unknown",
+  "publication": "pending",
+  "nativeGPU": "not_run",
+  "mainGameBinding": "excluded",
+  "technicalDerivative": {
+    "kind": "audio-mute-a1",
+    "scope": "audio-only mute/active-voice stop/stale gesture epoch plus guarded active setOptions resume preserving cause/clock; no VFX geometry/world/observer/PCM changes",
+    "sameCreativeEdition": true,
+    "sourceCreatorManifestSha256": "ca40a975f4836c7f645672d0d97fa259647fa30eea60c4fa83ea3864f94afcb0",
+    "sourceCreatorSealSha256": "2b0ae813feac6ba8fd2e246c3d2c5ff63ceaa533c5e3f3be631f6e70ba0dfbff",
+    "sourceCreatorRuntimeSha256": "42141e0ff81f136713eaf3bbaf5ab5c638306ecb251342b4103fc619f4637573"
+  }
+}

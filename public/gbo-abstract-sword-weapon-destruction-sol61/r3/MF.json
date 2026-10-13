@@ -1,0 +1,119 @@
+{
+  "version": "gbo-abstract-sword-weapon-destruction-sol61-zero-r3",
+  "edition": 3,
+  "series": "fresh abstract sword universal weapon destruction",
+  "authorModelId": "gpt-6.1-sol",
+  "authorDisplayName": "GPT-6.1-Sol",
+  "faithfulImplementationModelId": "gpt-6-luna",
+  "faithfulImplementationDisplayName": "GPT-6-Luna",
+  "sourceEntrypoint": "runtime.mjs",
+  "sourceFiles": [
+    "runtime.mjs",
+    "geometry.mjs",
+    "world.wgsl",
+    "observer.wgsl",
+    "sfx.mjs"
+  ],
+  "files": [
+    {
+      "path": "runtime.mjs",
+      "bytes": 21766,
+      "sha256": "d940ce99ef6ade90c4423e22911d18fe8f58740338e33878d73076c9fa67ea24"
+    },
+    {
+      "path": "geometry.mjs",
+      "bytes": 8584,
+      "sha256": "6859ab136a55ad5e73c0ca45e60b72f7c6ef28643567ac812705a7bb6a3b5ef4"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 306,
+      "sha256": "ab13fd669354174440b6a6a84cf2e325317191c291afa8f4dc6fcb10c7dfa492"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1337,
+      "sha256": "07022196baa4ad9c84b4c55f2a0c781b2ec44cf43b9605390559a979c39a374b"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 1669,
+      "sha256": "b88469e9c135ad8e2568934bf39e6fd8b7479971e42f2cfa38fb1cd8aac4c010"
+    },
+    {
+      "path": "DESIGN-CONTRACT.json",
+      "bytes": 48531,
+      "sha256": "e663a80587c922f2e22c2440c7af48ec641c14b08240ee1ad858695ee8333b22"
+    },
+    {
+      "path": "REVISION-PLAN.json",
+      "bytes": 2213,
+      "sha256": "8cad126dcbccb18f43a4c1a910865bd369ea36818046312108ce208d749da4a0"
+    },
+    {
+      "path": "STARTUP.json",
+      "bytes": 800,
+      "sha256": "176ca3b422b6bd7e6d2aa3022de6a2ba15c8505c1da1600cb4114f3a3f6255cf"
+    },
+    {
+      "path": "INPUT-LEDGER.json",
+      "bytes": 3693,
+      "sha256": "307f70b3783f4bda852a8bc5cdd3bd09d96330cf3f6ef28796724db83c0e3e3f"
+    },
+    {
+      "path": "test-geometry.mjs",
+      "bytes": 2097,
+      "sha256": "be443f7f35bf1509746b2ce6c69bb4d213248b315e2073873a2fc32ff2057cc5"
+    },
+    {
+      "path": "test-runtime.mjs",
+      "bytes": 15548,
+      "sha256": "0862350bab9f49520327fbdebf66f97ff1b14c9f8481ba5c5719516bd09f8fd5"
+    },
+    {
+      "path": "test-revision.mjs",
+      "bytes": 1872,
+      "sha256": "5f28c05a371a04463006eb66720c5d848790f1422ea7ae6f3cdb70ac7fb38776"
+    },
+    {
+      "path": "CPU-REVISION.json",
+      "bytes": 1552,
+      "sha256": "8e63ab17136d815d14b8f24dfc71a402296b67debb97bd34e26f6212d3b908ec"
+    },
+    {
+      "path": "seal-revision-v2.mjs",
+      "bytes": 4791,
+      "sha256": "4dfea5551e9545062c8a37c36ac1b7342684f26b9120797add2feb3bda4f2e3c"
+    }
+  ],
+  "dependencies": {
+    "runtime.mjs": [
+      "geometry.mjs",
+      "sfx.mjs",
+      "world.wgsl",
+      "observer.wgsl"
+    ]
+  },
+  "sourceClosureComplete": true,
+  "creativeSourceZero": true,
+  "creativeParent": {
+    "R1SealSha256": "2b0ae813feac6ba8fd2e246c3d2c5ff63ceaa533c5e3f3be631f6e70ba0dfbff",
+    "previousEdition": 2
+  },
+  "bAuthority": "c34a841645906af6cf1595cb5ce02bd08b568b18",
+  "equippedWeaponIndependent": true,
+  "qualityAccepted": false,
+  "userAdoption": "unknown",
+  "publication": "pending",
+  "nativeGPU": "not_run",
+  "mainGameBinding": "excluded",
+  "technicalDerivative": {
+    "kind": "gallery-transport-reviewed-a2",
+    "sameCreativeEdition": true,
+    "creativeEditionsConsumed": 0,
+    "sourceCreatorManifestSha256": "40d6f3fe00701efec58fc00384992b357579612ba57ca74f78f5b2364fd80d32",
+    "sourceCreatorSealSha256": "ff18479e285a792a17a2b274b9393561f46b0b463ca61a66c710403dbff88239",
+    "sourceCreatorRuntimeSha256": "bfa71297f917624c20714692d382b21fe628604e3310bf7f70a13274f72c8fd2",
+    "scope": "noncreative gallery transport and technical runtime repair; preserve R3 creative source and geometry"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "version": "gbo-abstract-sword-weapon-destruction-sol61-zero-r5",
+  "edition": 5,
+  "series": "fresh abstract sword universal weapon destruction",
+  "authorModelId": "gpt-6.1-sol",
+  "authorDisplayName": "GPT-6.1-Sol",
+  "faithfulImplementationModelId": "gpt-6-luna",
+  "faithfulImplementationDisplayName": "GPT-6-Luna",
+  "sourceEntrypoint": "runtime.mjs",
+  "sourceFiles": [
+    "runtime.mjs",
+    "geometry.mjs",
+    "world.wgsl",
+    "observer.wgsl",
+    "sfx.mjs"
+  ],
+  "files": [
+    {
+      "path": "runtime.mjs",
+      "bytes": 21692,
+      "sha256": "3fc40d4b1a2c2bbdcb2ccbb52f4702236c9ee5ed7e0798ff53d796368ac9bdae"
+    },
+    {
+      "path": "geometry.mjs",
+      "bytes": 9019,
+      "sha256": "1f715b3187b74a7f97c5f3d94e910a75d01bc61aaeee74d0033d662f7d111387"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 306,
+      "sha256": "ab13fd669354174440b6a6a84cf2e325317191c291afa8f4dc6fcb10c7dfa492"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1337,
+      "sha256": "07022196baa4ad9c84b4c55f2a0c781b2ec44cf43b9605390559a979c39a374b"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 1669,
+      "sha256": "b88469e9c135ad8e2568934bf39e6fd8b7479971e42f2cfa38fb1cd8aac4c010"
+    },
+    {
+      "path": "DESIGN-CONTRACT.json",
+      "bytes": 55485,
+      "sha256": "869718291a54f68ad9b43636c4b2a3964ea309dc8b4d76180edea1d312898f10"
+    },
+    {
+      "path": "REVISION-PLAN.json",
+      "bytes": 2109,
+      "sha256": "f1306888657c8c3d4a06a94fdbe1257acf46f337efc40144a4014ca51b9a471f"
+    },
+    {
+      "path": "STARTUP.json",
+      "bytes": 800,
+      "sha256": "f525977ff7f8f997f77c78b365cc6b77840d69817072cc49736fe0ca229b05eb"
+    },
+    {
+      "path": "INPUT-LEDGER.json",
+      "bytes": 5138,
+      "sha256": "91c607a3d91f6225eba27d5e841c52b312ba3ee1bc87de5db5eed716f9159aa4"
+    },
+    {
+      "path": "test-geometry.mjs",
+      "bytes": 2097,
+      "sha256": "be443f7f35bf1509746b2ce6c69bb4d213248b315e2073873a2fc32ff2057cc5"
+    },
+    {
+      "path": "test-runtime.mjs",
+      "bytes": 15548,
+      "sha256": "0862350bab9f49520327fbdebf66f97ff1b14c9f8481ba5c5719516bd09f8fd5"
+    },
+    {
+      "path": "test-revision.mjs",
+      "bytes": 2436,
+      "sha256": "e613ffbe3b3614029c61e02529597c753e7e82337b33acbfc47204b3957d551e"
+    },
+    {
+      "path": "CPU-REVISION.json",
+      "bytes": 1492,
+      "sha256": "b3b2d1cf659bedeb53834fd6e75a3a533a9d25717e444249ea40d7ad6596049c"
+    }
+  ],
+  "dependencies": {
+    "runtime.mjs": [
+      "geometry.mjs",
+      "sfx.mjs",
+      "world.wgsl",
+      "observer.wgsl"
+    ]
+  },
+  "sourceClosureComplete": true,
+  "closureScope": "runtime only; tests deliberately refer to the previous frozen sibling edition",
+  "validationDependencies": {
+    "test-revision.mjs": [
+      {
+        "path": "../gbo-abstract-sword-weapon-destruction-zero-20261013-r4/geometry.mjs",
+        "sha256": "9089794b67df5c60e727dc77215931aa73b26355ad85aaf465f08b66e02a93d2"
+      }
+    ]
+  },
+  "creativeSourceZero": true,
+  "creativeParent": {
+    "R1SealSha256": "2b0ae813feac6ba8fd2e246c3d2c5ff63ceaa533c5e3f3be631f6e70ba0dfbff",
+    "previousEdition": 4
+  },
+  "bAuthority": "c34a841645906af6cf1595cb5ce02bd08b568b18",
+  "equippedWeaponIndependent": true,
+  "qualityAccepted": false,
+  "userAdoption": "unknown",
+  "publication": "pending",
+  "nativeGPU": "not_run",
+  "mainGameBinding": "excluded",
+  "transportDerivative": {
+    "kind": "gallery-transport-reviewed-a2",
+    "sourceRuntimeSha256": "9d25c39fa7c32d246dfa749410c0e104cf4bdcd6d1983b5ed967771b75884806",
+    "creativeEditionPreserved": 5,
+    "technicalOnly": true
+  }
+}
