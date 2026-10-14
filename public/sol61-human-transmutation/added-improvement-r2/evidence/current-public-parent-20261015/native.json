@@ -1,0 +1,823 @@
+{
+  "schema": "human-added-r2-actual-current-public-parent-native/v1",
+  "status": "PASS_LIMITED_ACTUAL_CURRENT_PUBLIC_PARENT_REPLAY",
+  "versionId": "human-transmutation-added-improvement-sol61-r2",
+  "publicCommit": "93c6b85e12aada06bb774b13b03b8c52657b0392",
+  "scope": "Actual existing original R2 via public parent generic startup, selected version2, completed source frames, 5naturalcycles and UI only; no strict parent retirement ACK or full quality claim",
+  "rawSha256": "b16aec0fc2bb1ae4de5522fcd3614a5d707074fa7c8860e1eda8c6cd7c9f2ec5",
+  "rawBytes": 948067,
+  "parentManagerSha256": "926e025e57ea31fa0d0f70734ec00f0717ae15dbdfb5fc742c0a8d426077a4b4",
+  "parentHtmlSha256": "1ced46d68614ce88b2ddd87ee4fda6c7ac8b3dc811d5c71e29776de0bc992612",
+  "sourceManifestSha256": "f68a13e7b7e3c3c37d379ace0efc4f5910b565c31f21c217ea4fc0f410b584d1",
+  "creativeSourceSha256": "084d43d15838fe231f54f47981c3be8f50bbb5f22958b34d34a4fa01d0d9a393",
+  "spriteSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+  "httpPins": [
+    {
+      "path": "asset-gallery.js",
+      "url": "https://player13579.github.io/asset-gallery.js",
+      "status": 200,
+      "mime": "application/javascript; charset=utf-8",
+      "bytes": 1658834,
+      "sha256": "926e025e57ea31fa0d0f70734ec00f0717ae15dbdfb5fc742c0a8d426077a4b4"
+    },
+    {
+      "path": "webgpu-e-gallery.html",
+      "url": "https://player13579.github.io/webgpu-e-gallery.html",
+      "status": 200,
+      "mime": "text/html; charset=utf-8",
+      "bytes": 14555,
+      "sha256": "1ced46d68614ce88b2ddd87ee4fda6c7ac8b3dc811d5c71e29776de0bc992612"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/package-manifest.json",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/package-manifest.json",
+      "status": 200,
+      "mime": "application/json; charset=utf-8",
+      "bytes": 8976,
+      "sha256": "f68a13e7b7e3c3c37d379ace0efc4f5910b565c31f21c217ea4fc0f410b584d1"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/assets/philia-front-nine-v752.png",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/assets/philia-front-nine-v752.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 399216,
+      "sha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/cause.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/cause.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 4218,
+      "sha256": "709afa27f5632607af74ce08ddeb34b5f0ab97367e9e002bc3fb7dad7a71757e"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/completion-design.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/completion-design.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 1411,
+      "sha256": "0ce7a56f801601e5f015df4128e3e6a7b8dc5d8362c7fbfdd347fdeb7c9014ec"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/core.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/core.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 12167,
+      "sha256": "83e4a61a0bbff17fae43c06a2f25d7e53e89b687668a71ed887c4975bed6c760"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/fixture.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/fixture.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 1137,
+      "sha256": "bbbc0e36d2d4ec4f3f54e92490f1f558937019681672b34ac7006dc26085aeb5"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/gallery-auth.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/gallery-auth.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 702,
+      "sha256": "f97a886b1de5a5d003fe8e37617754be21b0562cc89bd79a88a248cbc9a02f94"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/gallery.html",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/gallery.html",
+      "status": 200,
+      "mime": "text/html; charset=utf-8",
+      "bytes": 6734,
+      "sha256": "d043ffdda4cd7144375624e62e2644b7ac6c8060dd7446be295de085bbbbc348"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/handoff-state.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/handoff-state.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 1675,
+      "sha256": "380eef0d7e34545dd632a5d35853593748f851c023bc61aa2bdbcf49e9e65a7a"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/human-canvas-fit.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/human-canvas-fit.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 4711,
+      "sha256": "b882a4cd85b51f30ec29c08200f83163211f64882dcefbf4bfffc9e3733de053"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/index.html",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/index.html",
+      "status": 200,
+      "mime": "text/html; charset=utf-8",
+      "bytes": 2822,
+      "sha256": "ac3d8b6aeaf6e46b5619443d4656b7ce4901e816ba42c93d156be3572d005f39"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/local-fixation.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/local-fixation.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 778,
+      "sha256": "5f405defdb3ed3d220b172a2105a458f788d0e6b40ba510a5e924b1244305a8a"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/preview.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/preview.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 7586,
+      "sha256": "7f219c5d00c2b00ec320db4a44457f89683beff26e9980d0098da6ecc0996d9d"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/settlement-design.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/settlement-design.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 816,
+      "sha256": "9463c579aebeb537f45868a4eca6a56ed9729aa454f0b62662dd513f2a283c2a"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/sfx.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/sfx.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 6654,
+      "sha256": "d913e74a41627e1cc54c7431278498aeb99926d0b17921d5de4b68204e6357b3"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/shader.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/shader.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 9680,
+      "sha256": "6e526a6ef1bc65535004443dde8318535883bc985f0741bb88ee90f7febcc97a"
+    },
+    {
+      "path": "public/sol61-human-transmutation/added-improvement-r2/sparkle-zero.mjs",
+      "url": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/sparkle-zero.mjs",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 5779,
+      "sha256": "084d43d15838fe231f54f47981c3be8f50bbb5f22958b34d34a4fa01d0d9a393"
+    }
+  ],
+  "startup": {
+    "schema": "dva-gallery-startup/v1",
+    "token": "a63b9b3d0a670c692972f151dcb2885a",
+    "versionId": "human-transmutation-added-improvement-sol61-r2",
+    "attemptEpoch": 1,
+    "sequence": 3,
+    "stage": "playing",
+    "status": "ready",
+    "currentOwner": "human-transmutation-added-improvement-sol61-r2",
+    "fitGeometry": {
+      "coordinateSpace": "child-canvas-local-css",
+      "frameUrl": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+      "currentOwner": "human-transmutation-added-improvement-sol61-r2",
+      "versionId": "human-transmutation-added-improvement-sol61-r2",
+      "canvasRect": {
+        "left": 0,
+        "top": 0,
+        "width": 980,
+        "height": 480
+      },
+      "backingExtent": [
+        1960,
+        960
+      ],
+      "dpr": 2,
+      "backingScale": [
+        2,
+        2
+      ],
+      "causeId": "human-added-improvement-r2-fixture-1",
+      "generation": 0,
+      "submitted": 1,
+      "completed": 1,
+      "actualActorHeight": 64,
+      "spriteRect": {
+        "x": 453.5911111111111,
+        "y": 203.73333333333335,
+        "width": 72.81777777777778,
+        "height": 72.81777777777778
+      }
+    },
+    "firstFrame": {
+      "canvasGeometry": {
+        "coordinateSpace": "child-canvas-local-css",
+        "frameUrl": "https://player13579.github.io/public/sol61-human-transmutation/added-improvement-r2/index.html?embed=1&galleryAutoLoop=1&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=&height=64",
+        "currentOwner": "human-transmutation-added-improvement-sol61-r2",
+        "versionId": "human-transmutation-added-improvement-sol61-r2",
+        "canvasRect": {
+          "left": 0,
+          "top": 0,
+          "width": 980,
+          "height": 480
+        },
+        "backingExtent": [
+          1960,
+          960
+        ],
+        "dpr": 2,
+        "backingScale": [
+          2,
+          2
+        ],
+        "causeId": "human-added-improvement-r2-fixture-1",
+        "generation": 0,
+        "submitted": 1,
+        "completed": 1,
+        "actualActorHeight": 64,
+        "spriteRect": {
+          "x": 453.5911111111111,
+          "y": 203.73333333333335,
+          "width": 72.81777777777778,
+          "height": 72.81777777777778
+        }
+      },
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "canvasConnected": true,
+      "canvasWidth": 1960,
+      "canvasHeight": 960,
+      "passes": 4,
+      "viewportWidth": 980,
+      "viewportHeight": 480,
+      "physicalWidth": 1960,
+      "physicalHeight": 960,
+      "dpr": 2,
+      "causeId": "human-added-improvement-r2-fixture-1",
+      "generation": 0,
+      "sourceSubmissionId": 1,
+      "queueCompleted": true,
+      "sourceVersionId": "human-transmutation-added-improvement-sol61-r2",
+      "sourceOwner": "human-transmutation-added-improvement-sol61-r2",
+      "actualActorHeight": 64,
+      "verify": true
+    }
+  },
+  "sourceStateFirstObserved": {
+    "ready": true,
+    "fatal": null,
+    "verify": true,
+    "running": true,
+    "age": 379.90000000596046,
+    "causeId": "human-added-improvement-r2-fixture-11",
+    "generation": 10,
+    "loops": 10,
+    "receipt": {
+      "version": "human-transmutation-added-improvement-sol61-r2",
+      "causeId": "human-added-improvement-r2-fixture-11",
+      "targetId": "revived-philia",
+      "scopeId": "human-added-improvement-r2-private-preview",
+      "generation": 10,
+      "elapsedMs": 362.40000000596046,
+      "phaseMs": 362.40000000596046,
+      "active": true,
+      "actorVisible": true,
+      "sourceEnabled": true,
+      "observerEnabled": true,
+      "glintsEnabled": true,
+      "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+      "actualActorHeight": 64,
+      "spriteRect": {
+        "x": 453.5911111111111,
+        "y": 203.73333333333335,
+        "width": 72.81777777777778,
+        "height": 72.81777777777778
+      },
+      "physicalExtent": [
+        1960,
+        960
+      ],
+      "cssExtent": [
+        980,
+        480
+      ],
+      "dpr": 2,
+      "sparkleSupportPhysical": [
+        939.6088888888888,
+        416.5688888888889,
+        80.21333333333334,
+        128
+      ],
+      "submitted": 781,
+      "completed": 781,
+      "passes": 4,
+      "format": "bgra8unorm",
+      "worldFormat": "rgba16float",
+      "materialTransport": "unsplit-row-sheet",
+      "sparkleModel": "added-improvement-r2-registered-alpha-causal",
+      "queueCompleted": true
+    },
+    "audio": {
+      "verify": true,
+      "allocated": false,
+      "unlocked": false,
+      "unlockPending": false,
+      "playing": false,
+      "causeId": null,
+      "generation": null,
+      "pendingStarts": 0,
+      "disposed": false
+    },
+    "renderer": {
+      "submitted": 782,
+      "completed": 781,
+      "inFlight": true,
+      "disposed": false,
+      "extent": "1960x960"
+    },
+    "compilationMessages": []
+  },
+  "natural": {
+    "duration": 8516.40000000596,
+    "sampleCount": 160,
+    "causes": [
+      {
+        "id": "human-added-improvement-r2-fixture-25",
+        "min": 523.0999999940395,
+        "max": 1373.7000000029802,
+        "inactive": true,
+        "next": true
+      },
+      {
+        "id": "human-added-improvement-r2-fixture-26",
+        "min": 47.29999999701977,
+        "max": 1378.0999999940395,
+        "inactive": true,
+        "next": true
+      },
+      {
+        "id": "human-added-improvement-r2-fixture-27",
+        "min": 51.20000000298023,
+        "max": 1330.0999999940395,
+        "inactive": true,
+        "next": true
+      },
+      {
+        "id": "human-added-improvement-r2-fixture-28",
+        "min": 3.7000000029802322,
+        "max": 1337.7999999970198,
+        "inactive": true,
+        "next": true
+      },
+      {
+        "id": "human-added-improvement-r2-fixture-29",
+        "min": 11.799999997019768,
+        "max": 1330,
+        "inactive": true,
+        "next": true
+      },
+      {
+        "id": "human-added-improvement-r2-fixture-30",
+        "min": 4.5,
+        "max": 1336.7999999970198,
+        "inactive": true,
+        "next": true
+      },
+      {
+        "id": "human-added-improvement-r2-fixture-31",
+        "min": 10.299999997019768,
+        "max": 703.7999999970198,
+        "inactive": false,
+        "next": false
+      }
+    ],
+    "completeActiveTraversalsWithNextCause": 5,
+    "allOuterFramesFullyVisibleWith2CssSafeMargin": true,
+    "evidenceType": "receipt andvisibilitysamples, notencodedmovie/performance/fullqualityproof"
+  },
+  "ui": {
+    "before": {
+      "state": {
+        "ready": true,
+        "fatal": null,
+        "verify": true,
+        "running": false,
+        "age": 600,
+        "causeId": "human-added-improvement-r2-fixture-44",
+        "generation": 43,
+        "loops": 43,
+        "receipt": {
+          "version": "human-transmutation-added-improvement-sol61-r2",
+          "causeId": "human-added-improvement-r2-fixture-44",
+          "targetId": "revived-philia",
+          "scopeId": "human-added-improvement-r2-private-preview",
+          "generation": 43,
+          "elapsedMs": 600,
+          "phaseMs": 600,
+          "active": true,
+          "actorVisible": true,
+          "sourceEnabled": true,
+          "observerEnabled": true,
+          "glintsEnabled": true,
+          "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+          "actualActorHeight": 64,
+          "spriteRect": {
+            "x": 453.5911111111111,
+            "y": 203.73333333333335,
+            "width": 72.81777777777778,
+            "height": 72.81777777777778
+          },
+          "physicalExtent": [
+            1960,
+            960
+          ],
+          "cssExtent": [
+            980,
+            480
+          ],
+          "dpr": 2,
+          "sparkleSupportPhysical": [
+            939.6088888888888,
+            416.5688888888889,
+            80.21333333333334,
+            128
+          ],
+          "submitted": 3355,
+          "completed": 3355,
+          "passes": 4,
+          "format": "bgra8unorm",
+          "worldFormat": "rgba16float",
+          "materialTransport": "unsplit-row-sheet",
+          "sparkleModel": "added-improvement-r2-registered-alpha-causal",
+          "queueCompleted": true
+        },
+        "audio": {
+          "verify": true,
+          "allocated": false,
+          "unlocked": false,
+          "unlockPending": false,
+          "playing": false,
+          "causeId": null,
+          "generation": null,
+          "pendingStarts": 0,
+          "disposed": false
+        },
+        "renderer": {
+          "submitted": 3355,
+          "completed": 3355,
+          "inFlight": false,
+          "disposed": false,
+          "extent": "1960x960"
+        },
+        "compilationMessages": []
+      },
+      "outerRect": {
+        "x": 25.4453125,
+        "y": 27.96875,
+        "width": 972.0968017578125,
+        "height": 615,
+        "top": 27.96875,
+        "right": 997.5421142578125,
+        "bottom": 642.96875,
+        "left": 25.4453125
+      },
+      "scrollY": 600,
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 2
+      },
+      "selected": "2",
+      "selectedText": "GPT-6.1-Sol Human Transmutation Added Improvement R2 · limited source-gallery technical pass · quality partial · current public-parent replay pending — 技術再生確認済み（限定範囲） · Codex品質未達（GPT-6.1-Sol） · 採用状態不明 · 本編未接続",
+      "heading": "錬成・人体生成 · GPT-6.1-Sol Human Transmutation Added Improvement R2 · limited source-gallery technical pass · quality partial · current public-parent replay pending"
+    },
+    "after": {
+      "ready": true,
+      "fatal": null,
+      "verify": true,
+      "running": false,
+      "age": 600,
+      "causeId": "human-added-improvement-r2-fixture-44",
+      "generation": 43,
+      "loops": 43,
+      "receipt": {
+        "version": "human-transmutation-added-improvement-sol61-r2",
+        "causeId": "human-added-improvement-r2-fixture-44",
+        "targetId": "revived-philia",
+        "scopeId": "human-added-improvement-r2-private-preview",
+        "generation": 43,
+        "elapsedMs": 600,
+        "phaseMs": 600,
+        "active": true,
+        "actorVisible": true,
+        "sourceEnabled": true,
+        "observerEnabled": true,
+        "glintsEnabled": true,
+        "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "actualActorHeight": 64,
+        "spriteRect": {
+          "x": 453.5911111111111,
+          "y": 203.73333333333335,
+          "width": 72.81777777777778,
+          "height": 72.81777777777778
+        },
+        "physicalExtent": [
+          1960,
+          960
+        ],
+        "cssExtent": [
+          980,
+          480
+        ],
+        "dpr": 2,
+        "sparkleSupportPhysical": [
+          939.6088888888888,
+          416.5688888888889,
+          80.21333333333334,
+          128
+        ],
+        "submitted": 3437,
+        "completed": 3437,
+        "passes": 4,
+        "format": "bgra8unorm",
+        "worldFormat": "rgba16float",
+        "materialTransport": "unsplit-row-sheet",
+        "sparkleModel": "added-improvement-r2-registered-alpha-causal",
+        "queueCompleted": true
+      },
+      "audio": {
+        "verify": true,
+        "allocated": false,
+        "unlocked": false,
+        "unlockPending": false,
+        "playing": false,
+        "causeId": null,
+        "generation": null,
+        "pendingStarts": 0,
+        "disposed": false
+      },
+      "renderer": {
+        "submitted": 3438,
+        "completed": 3437,
+        "inFlight": true,
+        "disposed": false,
+        "extent": "1960x960"
+      },
+      "compilationMessages": []
+    },
+    "scope": "Original hold600ms; repeatedRAFsubmissions; UI-only not one-submissionqualitybinding",
+    "pngBytes": 488671,
+    "pngSha256": "f48355967efb1ef0f2f5a00db6e17869599d1b363abec1311230e1370f10996f",
+    "pngWidth": 2560,
+    "pngHeight": 2300,
+    "clip": {
+      "x": 0,
+      "y": 300,
+      "width": 1280,
+      "height": 1150,
+      "scale": 1
+    }
+  },
+  "cleanup": {
+    "before": {
+      "ready": true,
+      "fatal": null,
+      "verify": true,
+      "running": false,
+      "age": 600,
+      "causeId": "human-added-improvement-r2-fixture-44",
+      "generation": 43,
+      "loops": 43,
+      "receipt": {
+        "version": "human-transmutation-added-improvement-sol61-r2",
+        "causeId": "human-added-improvement-r2-fixture-44",
+        "targetId": "revived-philia",
+        "scopeId": "human-added-improvement-r2-private-preview",
+        "generation": 43,
+        "elapsedMs": 600,
+        "phaseMs": 600,
+        "active": true,
+        "actorVisible": true,
+        "sourceEnabled": true,
+        "observerEnabled": true,
+        "glintsEnabled": true,
+        "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "actualActorHeight": 64,
+        "spriteRect": {
+          "x": 453.5911111111111,
+          "y": 203.73333333333335,
+          "width": 72.81777777777778,
+          "height": 72.81777777777778
+        },
+        "physicalExtent": [
+          1960,
+          960
+        ],
+        "cssExtent": [
+          980,
+          480
+        ],
+        "dpr": 2,
+        "sparkleSupportPhysical": [
+          939.6088888888888,
+          416.5688888888889,
+          80.21333333333334,
+          128
+        ],
+        "submitted": 4374,
+        "completed": 4374,
+        "passes": 4,
+        "format": "bgra8unorm",
+        "worldFormat": "rgba16float",
+        "materialTransport": "unsplit-row-sheet",
+        "sparkleModel": "added-improvement-r2-registered-alpha-causal",
+        "queueCompleted": true
+      },
+      "audio": {
+        "verify": true,
+        "allocated": false,
+        "unlocked": false,
+        "unlockPending": false,
+        "playing": false,
+        "causeId": null,
+        "generation": null,
+        "pendingStarts": 0,
+        "disposed": false
+      },
+      "renderer": {
+        "submitted": 4374,
+        "completed": 4374,
+        "inFlight": false,
+        "disposed": false,
+        "extent": "1960x960"
+      },
+      "compilationMessages": []
+    },
+    "after": {
+      "ready": false,
+      "fatal": null,
+      "verify": true,
+      "running": false,
+      "age": 600,
+      "causeId": "human-added-improvement-r2-fixture-44",
+      "generation": 43,
+      "loops": 43,
+      "receipt": {
+        "version": "human-transmutation-added-improvement-sol61-r2",
+        "causeId": "human-added-improvement-r2-fixture-44",
+        "targetId": "revived-philia",
+        "scopeId": "human-added-improvement-r2-private-preview",
+        "generation": 43,
+        "elapsedMs": 600,
+        "phaseMs": 600,
+        "active": true,
+        "actorVisible": true,
+        "sourceEnabled": true,
+        "observerEnabled": true,
+        "glintsEnabled": true,
+        "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+        "actualActorHeight": 64,
+        "spriteRect": {
+          "x": 453.5911111111111,
+          "y": 203.73333333333335,
+          "width": 72.81777777777778,
+          "height": 72.81777777777778
+        },
+        "physicalExtent": [
+          1960,
+          960
+        ],
+        "cssExtent": [
+          980,
+          480
+        ],
+        "dpr": 2,
+        "sparkleSupportPhysical": [
+          939.6088888888888,
+          416.5688888888889,
+          80.21333333333334,
+          128
+        ],
+        "submitted": 4374,
+        "completed": 4374,
+        "passes": 4,
+        "format": "bgra8unorm",
+        "worldFormat": "rgba16float",
+        "materialTransport": "unsplit-row-sheet",
+        "sparkleModel": "added-improvement-r2-registered-alpha-causal",
+        "queueCompleted": true
+      },
+      "audio": {
+        "verify": true,
+        "allocated": false,
+        "unlocked": false,
+        "unlockPending": false,
+        "playing": false,
+        "causeId": null,
+        "generation": null,
+        "pendingStarts": 0,
+        "disposed": true
+      },
+      "renderer": {
+        "submitted": 4374,
+        "completed": 4374,
+        "inFlight": false,
+        "disposed": true,
+        "extent": "1960x960"
+      },
+      "compilationMessages": []
+    },
+    "destroyCalls": [
+      {
+        "called": true,
+        "before": {
+          "ready": false,
+          "fatal": null,
+          "verify": true,
+          "running": false,
+          "age": 600,
+          "causeId": "human-added-improvement-r2-fixture-44",
+          "generation": 43,
+          "loops": 43,
+          "receipt": {
+            "version": "human-transmutation-added-improvement-sol61-r2",
+            "causeId": "human-added-improvement-r2-fixture-44",
+            "targetId": "revived-philia",
+            "scopeId": "human-added-improvement-r2-private-preview",
+            "generation": 43,
+            "elapsedMs": 600,
+            "phaseMs": 600,
+            "active": true,
+            "actorVisible": true,
+            "sourceEnabled": true,
+            "observerEnabled": true,
+            "glintsEnabled": true,
+            "sourceSha256": "4f1901dfd275bfec01b6f4fd7da66f190e0b2396320de2fb36cc20a5e36490a3",
+            "actualActorHeight": 64,
+            "spriteRect": {
+              "x": 453.5911111111111,
+              "y": 203.73333333333335,
+              "width": 72.81777777777778,
+              "height": 72.81777777777778
+            },
+            "physicalExtent": [
+              1960,
+              960
+            ],
+            "cssExtent": [
+              980,
+              480
+            ],
+            "dpr": 2,
+            "sparkleSupportPhysical": [
+              939.6088888888888,
+              416.5688888888889,
+              80.21333333333334,
+              128
+            ],
+            "submitted": 4374,
+            "completed": 4374,
+            "passes": 4,
+            "format": "bgra8unorm",
+            "worldFormat": "rgba16float",
+            "materialTransport": "unsplit-row-sheet",
+            "sparkleModel": "added-improvement-r2-registered-alpha-causal",
+            "queueCompleted": true
+          },
+          "audio": {
+            "verify": true,
+            "allocated": false,
+            "unlocked": false,
+            "unlockPending": false,
+            "playing": false,
+            "causeId": null,
+            "generation": null,
+            "pendingStarts": 0,
+            "disposed": true
+          },
+          "renderer": {
+            "submitted": 4374,
+            "completed": 4374,
+            "inFlight": false,
+            "disposed": true,
+            "extent": "1960x960"
+          },
+          "compilationMessages": []
+        },
+        "lost": {
+          "reason": "destroyed",
+          "message": "Device was destroyed."
+        }
+      }
+    ],
+    "outerAttachedAtDisposal": true,
+    "sourceWindowMatches": true,
+    "scope": "Root explicitly invoked original source disposal while attached; not parent-driven strict retirement ACK; initial device identity not independently captured"
+  },
+  "console": [],
+  "ownedTabClosed": true,
+  "browser3TabsAfter": [],
+  "strictParentDrivenAttachedRetirement": "not_verified_original_generic_branch",
+  "qualityAccepted": false,
+  "normalSfxListening": "not_observed",
+  "safariReplay": "unverified",
+  "gameIntegration": "not_connected"
+}
