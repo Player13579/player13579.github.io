@@ -1,0 +1,933 @@
+{
+  "schema": "teleport-r9-current-public-parent-native/v1",
+  "status": "PASS_LIMITED_CURRENT_PUBLIC_PARENT_WEBGPU_STARTUP_AND_REPLAY",
+  "at": "2026-10-14T22:36:23.491Z",
+  "publicCommit": "0a0cedabe219008ec04ff344e2480566c4bee503",
+  "M": {
+    "bytes": 1660589,
+    "sha256": "49be185d1deec5881114fb84a89392679a5caac8f1af27a8f04ed177aee74624"
+  },
+  "H": {
+    "bytes": 14555,
+    "sha256": "b74bad71b6eac305982e8003cf17c91831a4394776b573830e92e53133b7127c"
+  },
+  "packageManifestSha256": "06cfda7b156c4afe2158080974de7587521dd491040c755065b126edc544530c",
+  "packageSealSha256": "b17f119f718689018d08bd3f63c76075eafab32ba8ce9341b3edf4bafda5ba44",
+  "originalCreativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35",
+  "sourceRuntimeUnchangedFiles": 15,
+  "raw": {
+    "bytes": 588691,
+    "sha256": "9c1a0e3efd058d21c0b87c7d2f562e1033c3ac76f11710647dcfb616f77e3905"
+  },
+  "png": {
+    "bytes": 417390,
+    "sha256": "633dd1c9614f5a5c39b3f8a4862124af824ed4dcb6fe9f71bff3cfb23a3123f2",
+    "width": 2560,
+    "height": 2200,
+    "acceptedForUiDelivery": false,
+    "rejection": "Visual inspection found repeated compositor content after Emulation metrics height1100; PNG dimensions alone did not establish a valid full viewport screenshot."
+  },
+  "actualRoute": "https://player13579.github.io/public/sol61-teleport-smoke-gust-r9/gallery-startup-a1/gallery-content.html?embed=1&reviewH=64&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=1&height=64&galleryStartupToken=3cf7f06d0b13451a307da58b73943a9f&galleryVersionId=teleport-smoke-gust-r9&galleryAttemptEpoch=3",
+  "startup": {
+    "messages": [
+      {
+        "at": 114160.20000000298,
+        "origin": "https://player13579.github.io",
+        "sourceIsCurrentIframe": true,
+        "data": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "3cf7f06d0b13451a307da58b73943a9f",
+          "versionId": "teleport-smoke-gust-r9",
+          "attemptEpoch": 3,
+          "sequence": 1,
+          "stage": "child-document",
+          "status": "pending",
+          "adapterSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+          "sourcePins": {
+            "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+            "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+            "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+          }
+        }
+      },
+      {
+        "at": 114813.40000000596,
+        "origin": "https://player13579.github.io",
+        "sourceIsCurrentIframe": true,
+        "data": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "3cf7f06d0b13451a307da58b73943a9f",
+          "versionId": "teleport-smoke-gust-r9",
+          "attemptEpoch": 3,
+          "sequence": 2,
+          "stage": "adapter",
+          "status": "pending",
+          "adapterSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+          "sourcePins": {
+            "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+            "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+            "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+          }
+        }
+      },
+      {
+        "at": 114986.80000001192,
+        "origin": "https://player13579.github.io",
+        "sourceIsCurrentIframe": true,
+        "data": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "3cf7f06d0b13451a307da58b73943a9f",
+          "versionId": "teleport-smoke-gust-r9",
+          "attemptEpoch": 3,
+          "sequence": 3,
+          "stage": "device",
+          "status": "pending",
+          "adapterSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+          "sourcePins": {
+            "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+            "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+            "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+          },
+          "deviceSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+          "canvasConnected": true
+        }
+      },
+      {
+        "at": 114988.90000000596,
+        "origin": "https://player13579.github.io",
+        "sourceIsCurrentIframe": true,
+        "data": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "3cf7f06d0b13451a307da58b73943a9f",
+          "versionId": "teleport-smoke-gust-r9",
+          "attemptEpoch": 3,
+          "sequence": 4,
+          "stage": "assets",
+          "status": "pending",
+          "adapterSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+          "sourcePins": {
+            "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+            "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+            "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+          }
+        }
+      },
+      {
+        "at": 115997.30000001192,
+        "origin": "https://player13579.github.io",
+        "sourceIsCurrentIframe": true,
+        "data": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "3cf7f06d0b13451a307da58b73943a9f",
+          "versionId": "teleport-smoke-gust-r9",
+          "attemptEpoch": 3,
+          "sequence": 5,
+          "stage": "pipelines",
+          "status": "pending",
+          "adapterSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+          "sourcePins": {
+            "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+            "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+            "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+          },
+          "canvasConnected": true
+        }
+      },
+      {
+        "at": 115997.70000000298,
+        "origin": "https://player13579.github.io",
+        "sourceIsCurrentIframe": true,
+        "data": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "3cf7f06d0b13451a307da58b73943a9f",
+          "versionId": "teleport-smoke-gust-r9",
+          "attemptEpoch": 3,
+          "sequence": 6,
+          "stage": "first-frame",
+          "status": "pending",
+          "adapterSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+          "sourcePins": {
+            "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+            "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+            "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+          }
+        }
+      },
+      {
+        "at": 116088.90000000596,
+        "origin": "https://player13579.github.io",
+        "sourceIsCurrentIframe": true,
+        "data": {
+          "schema": "dva-gallery-startup/v1",
+          "token": "3cf7f06d0b13451a307da58b73943a9f",
+          "versionId": "teleport-smoke-gust-r9",
+          "attemptEpoch": 3,
+          "sequence": 7,
+          "stage": "playing",
+          "status": "ready",
+          "adapterSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+          "sourcePins": {
+            "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+            "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+            "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+          },
+          "firstFrame": {
+            "recorded": true,
+            "submitted": true,
+            "completed": true,
+            "authoredVisible": true,
+            "canvasConnected": true,
+            "passes": 2,
+            "passScope": "minimum-unconditional-observer-and-final-presentation-passes-from-pinned-host",
+            "viewportWidth": 980,
+            "viewportHeight": 620,
+            "backingWidth": 1960,
+            "backingHeight": 1240,
+            "dpr": 2,
+            "causeId": "zero-cast-1",
+            "generation": 1,
+            "frameId": "smoke-frame-1",
+            "submittedAgeEms": 0,
+            "submission": 1,
+            "viewportGeneration": 2,
+            "deviceIdentity": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+            "sameDevice": true,
+            "sourceControls": {
+              "endpoint": "pair",
+              "sourceEnabled": true,
+              "nearbyEnabled": true,
+              "observerEnabled": true,
+              "effect": true,
+              "rate": 1
+            },
+            "sourcePins": {
+              "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+              "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+              "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+            }
+          }
+        }
+      }
+    ],
+    "parentStatus": "プレビューの描画を開始しました（視覚品質は別途確認）",
+    "statusHidden": true,
+    "firstFrame": {
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "authoredVisible": true,
+      "canvasConnected": true,
+      "passes": 2,
+      "passScope": "minimum-unconditional-observer-and-final-presentation-passes-from-pinned-host",
+      "viewportWidth": 980,
+      "viewportHeight": 620,
+      "backingWidth": 1960,
+      "backingHeight": 1240,
+      "dpr": 2,
+      "causeId": "zero-cast-1",
+      "generation": 1,
+      "frameId": "smoke-frame-1",
+      "submittedAgeEms": 0,
+      "submission": 1,
+      "viewportGeneration": 2,
+      "deviceIdentity": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+      "sameDevice": true,
+      "sourceControls": {
+        "endpoint": "pair",
+        "sourceEnabled": true,
+        "nearbyEnabled": true,
+        "observerEnabled": true,
+        "effect": true,
+        "rate": 1
+      },
+      "sourcePins": {
+        "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+        "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+        "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+      }
+    }
+  },
+  "naturalReplay": {
+    "samples": 32,
+    "first": {
+      "at": 166786.10000000894,
+      "age": 152.5999999910564,
+      "frames": 1728,
+      "submits": 1728,
+      "completed": 1725,
+      "loops": 64,
+      "sourceRole": "departure",
+      "errors": [],
+      "observerSubmits": 8,
+      "observerFences": 6,
+      "parentStatus": "プレビューの描画を開始しました（視覚品質は別途確認）"
+    },
+    "last": {
+      "at": 173216.20000000298,
+      "age": 70.40000000000146,
+      "frames": 1947,
+      "submits": 1947,
+      "completed": 1943,
+      "loops": 72,
+      "sourceRole": "departure",
+      "errors": [],
+      "observerSubmits": 227,
+      "observerFences": 255,
+      "parentStatus": "プレビューの描画を開始しました（視覚品質は別途確認）"
+    },
+    "scope": "6.5s timed technical samples; not whole-lifetime visual quality/performance acceptance"
+  },
+  "observedGpuAfterStartup": {
+    "submits": 227,
+    "fences": 255,
+    "firstSubmission": {
+      "sequence": 1,
+      "at": 166615,
+      "age": 10.699999991062214,
+      "encoders": [
+        {
+          "label": "teleport ZERO smoke-height authored frame",
+          "passes": [
+            {
+              "kind": "compute",
+              "label": "teleport-zero-departure-same-frame-body-source-flux"
+            },
+            {
+              "kind": "compute",
+              "label": "teleport-r7-departure-conversion-radiance-flux-centroid"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-zero-clear-source-radiance"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-zero-fixture-world-and-grounded-shadow"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-r7-departure-back-neutral-scatter-plus-qualified-conversion"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-r7-departure-back-conversion-source-only"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-r7-departure-lifted-body"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-r7-departure-lifted-body-alpha-occluder-and-body-source"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-r7-departure-front-neutral-scatter-plus-qualified-conversion"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-r7-departure-front-conversion-source-only"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-zero-emission-only-observer"
+            },
+            {
+              "kind": "render",
+              "label": "teleport-zero-final-presentation"
+            }
+          ]
+        }
+      ]
+    },
+    "errors": []
+  },
+  "ui": {
+    "technical": {
+      "review": {
+        "version": "teleport-smoke-gust-r9",
+        "qualityAcceptance": "pending",
+        "userAdoption": "unknown_unadopted",
+        "gameIntegration": "not-connected",
+        "hardZero": true,
+        "ageEms": 160.5,
+        "frames": 2602,
+        "submits": 2602,
+        "loops": 95,
+        "sourceRole": "departure",
+        "sourceRoles": [
+          "departure"
+        ],
+        "bodySourceRole": null,
+        "conversionSources": [
+          "departure"
+        ],
+        "errors": [],
+        "errorDiagnostics": [],
+        "receiver": {
+          "kind": "explicit-bounded-ground-plane-fixture",
+          "notGameEnvironment": true,
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "linearMaterial": [
+            0.22,
+            0.24,
+            0.27
+          ],
+          "extentActorH": [
+            3.2,
+            1.44
+          ]
+        },
+        "diagnostics": [
+          {
+            "label": "teleport-zero-white-smoke",
+            "messages": []
+          },
+          {
+            "label": "teleport-r7-conversion-emission",
+            "messages": []
+          },
+          {
+            "label": "teleport-r7-conversion-flux",
+            "messages": []
+          },
+          {
+            "label": "teleport-zero-authored-height-body",
+            "messages": []
+          },
+          {
+            "label": "teleport-zero-silhouette-white-source",
+            "messages": []
+          },
+          {
+            "label": "teleport-zero-silhouette-flux",
+            "messages": []
+          },
+          {
+            "label": "teleport-zero-source-bound-observer",
+            "messages": []
+          },
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "firstFrame": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "authoredVisible": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "passScope": "minimum-unconditional-observer-and-final-presentation-passes-from-pinned-host",
+        "viewportWidth": 980,
+        "viewportHeight": 620,
+        "backingWidth": 1960,
+        "backingHeight": 1240,
+        "dpr": 2,
+        "causeId": "zero-cast-1",
+        "generation": 1,
+        "frameId": "smoke-frame-1",
+        "submittedAgeEms": 0,
+        "submission": 1,
+        "viewportGeneration": 2,
+        "deviceIdentity": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+        "sameDevice": true,
+        "sourceControls": {
+          "endpoint": "pair",
+          "sourceEnabled": true,
+          "nearbyEnabled": true,
+          "observerEnabled": true,
+          "effect": true,
+          "rate": 1
+        },
+        "sourcePins": {
+          "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+          "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+          "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+        }
+      },
+      "firstFrameError": null,
+      "completedSubmissions": 2598,
+      "adapterSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+      "disposed": false,
+      "disposeSettled": false,
+      "lifecycle": "active"
+    },
+    "frameRect": {
+      "x": 25.4453125,
+      "y": 305.4375,
+      "width": 972.0968017578125,
+      "height": 615,
+      "top": 305.4375,
+      "right": 997.5421142578125,
+      "bottom": 920.4375,
+      "left": 25.4453125
+    },
+    "frameStyle": "left: 0.451613px; top: 0px; transform-origin: left top; transform: scale(0.991935);",
+    "canvasRect": {
+      "x": 0,
+      "y": 0,
+      "width": 980,
+      "height": 620,
+      "top": 0,
+      "right": 980,
+      "bottom": 620,
+      "left": 0
+    },
+    "backing": {
+      "width": 1960,
+      "height": 1240
+    },
+    "viewport": {
+      "width": 1280,
+      "height": 1100,
+      "dpr": 2,
+      "scrollY": 150
+    },
+    "parentStatus": "プレビューの描画を開始しました（視覚品質は別途確認）",
+    "parentStatusHidden": true,
+    "selected": "1",
+    "options": [
+      {
+        "value": "0",
+        "text": "GPT-6.1-Sol Gust R5 — 技術再生確認済み · Codex品質未達（GPT-6.1-Sol） · ユーザー採用済み · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "1",
+        "text": "GPT-6.1-Sol Gust R9 — 技術再生確認済み · Codex品質確認中 · 未採用 · 本編未接続",
+        "selected": true
+      },
+      {
+        "value": "2",
+        "text": "GPT-6.1-Sol Gust R8 — 技術再生確認済み · Codex品質未達（GPT-6.1-Sol） · 未採用 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "3",
+        "text": "GPT-6.1-Sol Gust R7 — 技術再生確認済み · Codex品質未達（GPT-6.1-Sol） · 採用状態不明 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "4",
+        "text": "GPT-6.1-Sol Gust R4 — 技術再生確認済み · Codex品質未達（GPT-6.1-Sol） · 未採用 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "5",
+        "text": "GPT-6.1-Sol Gust R3 — 技術再生確認済み · Codex品質未達（GPT-6.1-Sol） · 未採用 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "6",
+        "text": "GPT-6-Luna Gust R2 (Sol-settled constraints) — 技術再生確認済み · Codex品質未達（GPT-6.1-Sol） · 未採用 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "7",
+        "text": "GPT-6-Luna Gust white smoke R1 (Sol-authored base) — 技術再生確認済み · Codex品質未達（GPT-6.1-Sol） · 未採用 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "8",
+        "text": "GPT-6.1-Sol white smoke ZERO R4 — 技術再生確認済み · Codex品質確認中 · 未採用 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "9",
+        "text": "GPT-6.1-Sol white smoke ZERO R3 — 技術再生確認済み · Codex品質確認中 · 未採用 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "10",
+        "text": "GPT-6.1-Sol Teleport pixel R6 compact cells — 技術再生確認済み · Codex品質確認中 · 採用状態不明 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "11",
+        "text": "GPT-6.1-Sol packet coherence R5 — 技術再生確認済み · Codex品質確認中 · 採用状態不明 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "12",
+        "text": "GPT-6.1-Sol Teleport pixel R4 radiance — 技術再生確認済み · Codex品質確認中 · 採用状態不明 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "13",
+        "text": "GPT-6.1-Sol conversion front R3 — 技術再生確認済み · Codex品質確認状況不明 · 採用状態不明 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "14",
+        "text": "GPT-6.1-Sol pixel r2 — 技術再生確認済み · Codex品質確認状況不明 · 採用状態不明 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "15",
+        "text": "GPT-6.1-Sol pixel r1 — 技術再生確認済み · Codex品質確認状況不明 · 未採用 · 本編未接続",
+        "selected": false
+      },
+      {
+        "value": "16",
+        "text": "GPT-6.1-Sol zero r1 — 技術再生確認済み · Codex品質確認状況不明 · 採用状態不明 · 本編未接続",
+        "selected": false
+      }
+    ],
+    "audio": {
+      "hardZero": true,
+      "unlocked": false,
+      "contextCount": 0,
+      "played": 0,
+      "active": 0
+    },
+    "firstFrame": {
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "authoredVisible": true,
+      "canvasConnected": true,
+      "passes": 2,
+      "passScope": "minimum-unconditional-observer-and-final-presentation-passes-from-pinned-host",
+      "viewportWidth": 980,
+      "viewportHeight": 620,
+      "backingWidth": 1960,
+      "backingHeight": 1240,
+      "dpr": 2,
+      "causeId": "zero-cast-1",
+      "generation": 1,
+      "frameId": "smoke-frame-1",
+      "submittedAgeEms": 0,
+      "submission": 1,
+      "viewportGeneration": 2,
+      "deviceIdentity": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+      "sameDevice": true,
+      "sourceControls": {
+        "endpoint": "pair",
+        "sourceEnabled": true,
+        "nearbyEnabled": true,
+        "observerEnabled": true,
+        "effect": true,
+        "rate": 1
+      },
+      "sourcePins": {
+        "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+        "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+        "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+      }
+    }
+  },
+  "retirement": {
+    "first": {
+      "status": "disposed",
+      "disposed": true,
+      "cleanupSettled": true,
+      "stages": {
+        "initialize": {
+          "settled": true
+        },
+        "inflight-render": {
+          "settled": true
+        },
+        "submissions": {
+          "completedSubmissions": 3315,
+          "pending": 0
+        },
+        "audio": {
+          "hardZero": true,
+          "unlocked": false,
+          "contextCount": 0,
+          "played": 0,
+          "active": 0
+        },
+        "queue": {
+          "drained": true
+        },
+        "host": {
+          "destroyed": true
+        },
+        "cache": {
+          "destroyed": true
+        },
+        "device-destroy": {
+          "sameDevice": true,
+          "destroyRequested": true
+        },
+        "device-lost": {
+          "reason": "destroyed"
+        },
+        "image-url": {
+          "revoked": true
+        }
+      },
+      "errors": []
+    },
+    "second": {
+      "status": "disposed",
+      "disposed": true,
+      "cleanupSettled": true,
+      "stages": {
+        "initialize": {
+          "settled": true
+        },
+        "inflight-render": {
+          "settled": true
+        },
+        "submissions": {
+          "completedSubmissions": 3315,
+          "pending": 0
+        },
+        "audio": {
+          "hardZero": true,
+          "unlocked": false,
+          "contextCount": 0,
+          "played": 0,
+          "active": 0
+        },
+        "queue": {
+          "drained": true
+        },
+        "host": {
+          "destroyed": true
+        },
+        "cache": {
+          "destroyed": true
+        },
+        "device-destroy": {
+          "sameDevice": true,
+          "destroyRequested": true
+        },
+        "device-lost": {
+          "reason": "destroyed"
+        },
+        "image-url": {
+          "revoked": true
+        }
+      },
+      "errors": []
+    },
+    "sharedResult": true,
+    "outerPromiseIdentity": false,
+    "submitsAtSettled": 1595,
+    "submitsAfterPostDisposeControls": 1595,
+    "replayAfterDispose": {
+      "causeId": "zero-cast-96",
+      "generation": 1,
+      "loops": 96
+    },
+    "rateAfterDispose": 1,
+    "probe": {
+      "destroyCalls": [
+        {
+          "sameQueue": true,
+          "submits": 1595,
+          "at": 210492.30000001192,
+          "returned": true
+        }
+      ],
+      "losses": [
+        {
+          "reason": "destroyed",
+          "sameQueue": true,
+          "submits": 1595
+        }
+      ],
+      "errors": [],
+      "fences": 1630,
+      "firstSubmission": {
+        "sequence": 1,
+        "at": 166615,
+        "age": 10.699999991062214,
+        "encoders": [
+          {
+            "label": "teleport ZERO smoke-height authored frame",
+            "passes": [
+              {
+                "kind": "compute",
+                "label": "teleport-zero-departure-same-frame-body-source-flux"
+              },
+              {
+                "kind": "compute",
+                "label": "teleport-r7-departure-conversion-radiance-flux-centroid"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-zero-clear-source-radiance"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-zero-fixture-world-and-grounded-shadow"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-r7-departure-back-neutral-scatter-plus-qualified-conversion"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-r7-departure-back-conversion-source-only"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-r7-departure-lifted-body"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-r7-departure-lifted-body-alpha-occluder-and-body-source"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-r7-departure-front-neutral-scatter-plus-qualified-conversion"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-r7-departure-front-conversion-source-only"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-zero-emission-only-observer"
+              },
+              {
+                "kind": "render",
+                "label": "teleport-zero-final-presentation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "final": {
+      "review": {
+        "version": "teleport-smoke-gust-r9",
+        "qualityAcceptance": "pending",
+        "userAdoption": "unknown_unadopted",
+        "gameIntegration": "not-connected",
+        "hardZero": true,
+        "ageEms": 160.5,
+        "frames": 3315,
+        "submits": 3315,
+        "loops": 96,
+        "sourceRole": "departure",
+        "sourceRoles": [
+          "departure"
+        ],
+        "bodySourceRole": null,
+        "conversionSources": [
+          "departure"
+        ],
+        "errors": [],
+        "errorDiagnostics": [],
+        "receiver": {
+          "kind": "explicit-bounded-ground-plane-fixture",
+          "notGameEnvironment": true,
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "linearMaterial": [
+            0.22,
+            0.24,
+            0.27
+          ],
+          "extentActorH": [
+            3.2,
+            1.44
+          ]
+        },
+        "diagnostics": [
+          {
+            "label": "teleport-zero-white-smoke",
+            "messages": []
+          },
+          {
+            "label": "teleport-r7-conversion-emission",
+            "messages": []
+          },
+          {
+            "label": "teleport-r7-conversion-flux",
+            "messages": []
+          },
+          {
+            "label": "teleport-zero-authored-height-body",
+            "messages": []
+          },
+          {
+            "label": "teleport-zero-silhouette-white-source",
+            "messages": []
+          },
+          {
+            "label": "teleport-zero-silhouette-flux",
+            "messages": []
+          },
+          {
+            "label": "teleport-zero-source-bound-observer",
+            "messages": []
+          },
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "firstFrame": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "authoredVisible": true,
+        "canvasConnected": true,
+        "passes": 2,
+        "passScope": "minimum-unconditional-observer-and-final-presentation-passes-from-pinned-host",
+        "viewportWidth": 980,
+        "viewportHeight": 620,
+        "backingWidth": 1960,
+        "backingHeight": 1240,
+        "dpr": 2,
+        "causeId": "zero-cast-1",
+        "generation": 1,
+        "frameId": "smoke-frame-1",
+        "submittedAgeEms": 0,
+        "submission": 1,
+        "viewportGeneration": 2,
+        "deviceIdentity": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+        "sameDevice": true,
+        "sourceControls": {
+          "endpoint": "pair",
+          "sourceEnabled": true,
+          "nearbyEnabled": true,
+          "observerEnabled": true,
+          "effect": true,
+          "rate": 1
+        },
+        "sourcePins": {
+          "sourceManifestSha256": "7e4243971bb28c5280d948a7f88a848665b5bdc1ff27bb3bcde6501d3db25694",
+          "sourceSealSha256": "479089455e6af4931a3b26f25144edafb0ba566d770c3a14819894baa95e0ebb",
+          "creativeSha256": "c1ab12960927ef4ec6761811453f95a833c78ea0ce9bb33f2bd87a8b94e47f35"
+        }
+      },
+      "firstFrameError": null,
+      "completedSubmissions": 3315,
+      "adapterSessionId": "4a8146f2-dd41-4a14-9f3a-c9ada4891e30",
+      "disposed": true,
+      "disposeSettled": true,
+      "lifecycle": "settled"
+    },
+    "iframeStillAttached": true,
+    "scope": "Explicit technical dispose while attached, then original Replay/rate controls; not parent-driven strict retirement ACK"
+  },
+  "limitations": [
+    "Page.addScriptToEvaluateOnNewDocument unavailable; no external pre-first-submission observer; actual startup messages captured through original version-selector restart",
+    "Source own completed-frame proof and exact runtime hashes used; independent queue observation begins after startup",
+    "Screenshot uses originalrate0 repeatedRAF, not single-submission image-quality proof",
+    "Explicit attached dispose is not strict parent-driven retirement ACK",
+    "Outerdisposepromises differ; shared result/oneactualGPUdestroy/noresubmit confirmed",
+    "Full quality, ordinary SFX listening, Safari/iPad and game integration remain unaccepted",
+    "Rejected emulated-viewport screenshot preserved; runtime startup/GPU/replay/disposal evidence unaffected; no full-canvas physical visibility or image-quality acceptance from rejected PNG."
+  ],
+  "uiSafeMarginScope": "Logical emulated innerHeight only; physical full-canvas visibility not accepted from this screenshot. Final actual default-viewport UI capture pending."
+}
