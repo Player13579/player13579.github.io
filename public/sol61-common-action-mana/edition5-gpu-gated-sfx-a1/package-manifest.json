@@ -1,0 +1,164 @@
+{
+  "schema": "dva-common-action-mana-r5-gallery-manifest/v1",
+  "groupId": "common-action-mana-sol61",
+  "versionId": "common-action-mana-sol61-edition5-r5",
+  "previousVersionId": "common-action-mana-sol61-edition4-r476",
+  "route": "public/sol61-common-action-mana/edition5-gpu-gated-sfx-a1",
+  "files": [
+    {
+      "path": "controller.mjs",
+      "bytes": 1732,
+      "sha256": "dcc67d132532369ff001f6a9b9063f543fbd1b813f56492254d648f1d295bf83"
+    },
+    {
+      "path": "frame.mjs",
+      "bytes": 1497,
+      "sha256": "e1dbcd260cf29acc166dd125cbd911981a02caf413d50cb24944138a66c52977"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 45001,
+      "sha256": "6366e9544af5df5ce6e3bb24a4ccc78e6bde6c59102f36bc49347b371618a434"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3351,
+      "sha256": "221c600b87125c6057b50b6bbd94b58224b1ce416f78e68e2f17b2e760411a50"
+    },
+    {
+      "path": "model.mjs",
+      "bytes": 2771,
+      "sha256": "43c574fea64e46cae857039234fcde9ad73027ee6e0617075e771c596879339c"
+    },
+    {
+      "path": "observer.wgsl",
+      "bytes": 1749,
+      "sha256": "f94946cffcc632e2c6059e06025c7774f7778d0df7601635c45cdcb925d74eb9"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 2769,
+      "sha256": "478db725148991659898b03a41a44280b855097f76dc09bfdba501b3379567c9"
+    },
+    {
+      "path": "startup-proof.mjs",
+      "bytes": 1347,
+      "sha256": "46ba3f1a999856bad2fe00cf8b4837aefa68074da0fbce06092cf881e7f99273"
+    },
+    {
+      "path": "world.wgsl",
+      "bytes": 7693,
+      "sha256": "4369f08adbfd4e07fdd459edec85726c52bfc2e0bce03fdc38aa9027b2158953"
+    }
+  ],
+  "creativeEdition": 5,
+  "creativeEditionLimit": 5,
+  "creativeEditionsRemaining": 0,
+  "creativeRevision": true,
+  "variants": [
+    "desire",
+    "grit",
+    "rational"
+  ],
+  "durationMs": 1200,
+  "loopGapMs": 500,
+  "sourceClosureSha256": "0b644dd16ee1c9cc27a73f2bef549666553963706093406c9fdaa72a0b7210d9",
+  "sourceIdentity": {
+    "sourceCommit": "1786edf61c1a7da96f0d9090e5e6cda60ffc9a2b",
+    "previousManifestSha256": "4d7bfa7501e71cbaa1bbba42fb09ab9a44a08e5e5bad8a46ec346ad2d2199cdf",
+    "creativeSourceFiles": [
+      {
+        "path": "model.mjs",
+        "sha256": "43c574fea64e46cae857039234fcde9ad73027ee6e0617075e771c596879339c"
+      },
+      {
+        "path": "world.wgsl",
+        "sha256": "4369f08adbfd4e07fdd459edec85726c52bfc2e0bce03fdc38aa9027b2158953"
+      },
+      {
+        "path": "observer.wgsl",
+        "sha256": "f94946cffcc632e2c6059e06025c7774f7778d0df7601635c45cdcb925d74eb9"
+      },
+      {
+        "path": "sfx.mjs",
+        "sha256": "478db725148991659898b03a41a44280b855097f76dc09bfdba501b3379567c9"
+      }
+    ],
+    "priorStatusDiscrepancyPreserved": true
+  },
+  "authors": {
+    "creativeDesign": {
+      "modelId": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol"
+    },
+    "technicalRuntime": {
+      "modelId": "gpt-6-luna",
+      "displayName": "GPT-6-Luna",
+      "lineage": "R4 generic host; bounded R5 audio-fence technical derivative, creative edition unchanged"
+    }
+  },
+  "statuses": {
+    "adoption": "unknown",
+    "quality": "pending",
+    "qualityReview": "pending",
+    "nativeReplay": "not_run",
+    "nativeGpuCompile": "not_run",
+    "publicationEligible": false,
+    "normalAudioListening": "not_run",
+    "safariReplay": "unverified",
+    "gameIntegration": "not_connected",
+    "reviewWaitReason": "creative edition limit reached; quality pending"
+  },
+  "acceptanceLimit": "CPU/mock/source proof only. No GPU compile, visible quality, normal audio, current-parent native, public delivery or game integration acceptance.",
+  "parentCreativeSourceClosureSha256": "aacbbce14f4d545ac17696b06905bbb2ae831d5d8652b42ed9916e3ebbd6ce39",
+  "closureSerialization": {
+    "algorithm": "SHA-256 over UTF-8 JSON.stringify(sorted runtime files array)",
+    "memberShape": [
+      "path",
+      "bytes",
+      "sha256"
+    ],
+    "sort": "lexical path ascending",
+    "newline": "none",
+    "memberCount": 9,
+    "scope": "edition runtime members only; excludes package manifest, seal, and external gallery M/H"
+  },
+  "technicalDerivative": {
+    "status": "CPU_REAL_HOST_AND_SFX_PROVEN_PRIVATE_DERIVATIVE",
+    "scope": "same-frame queue completion plus clean validation/internal/out-of-memory scopes before one cause-age-offset SFX start",
+    "parent": {
+      "versionId": "common-action-mana-sol61-edition5-r5",
+      "manifestSha256": "01f9416e551f42e44209bbdf1933de9cce9d240ca38c96e62785b96fd192b8ef",
+      "sealSha256": "d687024f8ce1946f1d9d2412b8042da8d419b57c2d26bde723a6078cea38aac2",
+      "creativeSourceClosureSha256": "aacbbce14f4d545ac17696b06905bbb2ae831d5d8652b42ed9916e3ebbd6ce39"
+    },
+    "creative": {
+      "increment": 0,
+      "edition": 5,
+      "quartetUnchanged": true,
+      "sourceFiles": [
+        "model.mjs",
+        "world.wgsl",
+        "observer.wgsl",
+        "sfx.mjs"
+      ]
+    },
+    "acceptance": {
+      "cpuActualHostRenderFrame": true,
+      "cpuActualSfxPlayer": true,
+      "nativeGpu": false,
+      "normalListening": false,
+      "qualityAccepted": false,
+      "publicationEligible": false
+    },
+    "deliveryRouteDerivative": {
+      "status": "PRIVATE_CURRENT9E_ROUTE_BOUND_PACKAGE",
+      "route": "public/sol61-common-action-mana/edition5-gpu-gated-sfx-a1",
+      "routeChangeOnly": true,
+      "sourceCreativeClosureSha256": "aacbbce14f4d545ac17696b06905bbb2ae831d5d8652b42ed9916e3ebbd6ce39",
+      "runtimeTechnicalClosureSha256": "0b644dd16ee1c9cc27a73f2bef549666553963706093406c9fdaa72a0b7210d9",
+      "qualityAccepted": false,
+      "publicationEligible": false
+    }
+  }
+}

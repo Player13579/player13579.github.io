@@ -1,0 +1,118 @@
+{
+  "versionId": "stun-grenade-sol61-r3",
+  "label": "Vent-bound expansion",
+  "author": {
+    "modelId": "gpt-6.1-sol",
+    "displayName": "GPT-6.1-Sol",
+    "source": "C:/Users/user/.codex/models_cache.json",
+    "sourceSha256": "4bad36538485054c7da088d2df8d90ca9d786a1c97ed60b571808f15c6fad49a",
+    "fetchedAt": "2026-10-13T12:21:39.949113600Z"
+  },
+  "creativeEdition": 3,
+  "derivativeOf": "stun-grenade-sol61-r2",
+  "sourceCommit": "6c8964f3a8b4f31edf8e36a1a0cbaa0e8d14f374",
+  "sourceManifestSha256": "4a1fd1714f2fec210fffb7f456b5e03eee24a3b83851d5c64865d6d2a39adead",
+  "sourceInputMode": "exact R2 creative derivative explicitly authorized; old creative source was read and reused",
+  "budget": {
+    "grant": "R5まで作れてないeたくさんあるぞ",
+    "ordinals": [
+      3,
+      4,
+      5
+    ],
+    "thisOrdinal": 3,
+    "historicalPreR1Count": "unknown; not reconstructed or reset",
+    "remainingAfterThis": 2,
+    "noR6": true
+  },
+  "requirements": {
+    "mustCommunicate": "detonated non-fragmenting stun grenade: intense discharge at two casing vents, outward pressure and finite cooling gas",
+    "mustNotInvent": [
+      "damage",
+      "target stun confirmation",
+      "UI blindness",
+      "new impact or gameplay result"
+    ],
+    "clock": "wall-age optical 720ms; gameplay 2500ms unchanged",
+    "source": "original casing and two vent mouths at local y=-4,+4",
+    "layers": [
+      "luminous vent throat and tapered discharge",
+      "non-emissive expanding pressure on diagnostic floor",
+      "diluting advected gas and source-bound hot region",
+      "source-bound near blur and horizontal pupil response"
+    ],
+    "dimensions": {
+      "receiverHeight": 64,
+      "sourceCasingHeight": 16,
+      "gasRadiusMax": 28,
+      "defaultRange": 145
+    },
+    "morphology": {
+      "label": "Vent-bound expansion",
+      "advection": 16,
+      "side": 1.8,
+      "cooling": 165,
+      "gasExponent": 2.3,
+      "twist": 0.12,
+      "shockWidth": 3,
+      "outlet": 0.32,
+      "flashDecay": 27,
+      "heatEnd": 165,
+      "pressurePeak": 95,
+      "pressureEnd": 230
+    },
+    "reducedMotion": "suppresses buoyant rise only; causal outward discharge remains",
+    "micro": "low-order cap shoulder only; no dense fragments or glitter",
+    "gradient": "white-yellow flash, orange hot gas, neutral cooling smoke; no arbitrary hue cycling",
+    "keywords": "No v1-v6 or magic extension keyword supplied; no activation claims",
+    "optics": {
+      "observer": "analytic camera/display pupil approximation",
+      "near": "finite Gaussian kernel from radiation texture",
+      "flare": "horizontal PSF streak from actual radiation texture",
+      "ghost": "not selected; no specified internal lens geometry or useful causal role at H64",
+      "sourceOff": "hot emission and OBS zero; passive pressure and smoke remain",
+      "observerOff": "main world radiation retained"
+    },
+    "sfx": "dedicated deterministic synthesized pressure impulse, turbulent vent noise and damped steel modes; not recorded",
+    "assumptions": [
+      "stylized 2D volumetric projection",
+      "analytic dilution/emission; not calibrated chemical yield or fluid simulation",
+      "diagnostic receiver is not real game character"
+    ]
+  },
+  "meaningfulDifference": "R2 round lobes become vent-axis tapered plume, independent axial hot core and advected gas. Dedicated turbulent vent and pressure sound.",
+  "timeWindows": [
+    {
+      "from": 0,
+      "to": 85,
+      "expect": "casing vents and primary flash-discharge"
+    },
+    {
+      "from": 85,
+      "to": 230,
+      "expect": "outward pressure and cooling directed gas"
+    },
+    {
+      "from": 230,
+      "to": 720,
+      "expect": "passive gas disperses without luminous decoration"
+    },
+    {
+      "from": 720,
+      "to": 1070,
+      "expect": "E clear; neutral diagnostic scene remains"
+    }
+  ],
+  "quality": {
+    "accepted": false,
+    "status": "not_run",
+    "native": "not_run",
+    "normalSfxListening": "not_run",
+    "safariIpad": "not_run",
+    "gameIntegration": "not_run"
+  },
+  "userAdopted": false,
+  "adoptionLabel": "unknown",
+  "publicationEligible": false,
+  "scope": "root owns native/gallery/publication; no gameplay/UI/map changes"
+}

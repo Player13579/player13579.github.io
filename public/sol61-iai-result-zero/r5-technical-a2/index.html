@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Iai Result — WebGPU preview</title>
+<style>
+  :root{color-scheme:dark;font:14px/1.4 system-ui,sans-serif;background:#101217;color:#edf1f7}body{margin:0;padding:18px;display:grid;gap:14px;grid-template-columns:minmax(260px,340px) 1fr}h1{font-size:18px;margin:0 0 8px}fieldset{border:1px solid #586174;border-radius:8px;margin:0 0 10px;padding:10px}label{display:flex;justify-content:space-between;gap:12px;margin:7px 0}input,select,button{font:inherit}button{margin:4px;padding:7px 10px}canvas{display:block;width:100%;height:min(70vh,520px);background:#1b1e27;border:1px solid #41495b}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#171a21;padding:10px;border-radius:7px;max-height:300px;overflow:auto}.badge{color:#ffd280}.small{color:#b9c2d1;font-size:12px}@media(max-width:760px){body{grid-template-columns:1fr}}body.embed{display:block;padding:0}body.embed #panel{display:none}body.embed canvas{width:100vw;height:100vh;border:0}
+</style>
+<body>
+  <section id="panel">
+    <h1>Iai Result</h1><p id="mode" class="badge"></p>
+    <p class="small">A 900 E-ms preview. The first-frame signal requires a completed active two-pass GPU submission.</p>
+    <fieldset><legend>Cause and preview</legend>
+      <label>Variant <select id="variant"><option>upgraded-to-destruction</option><option>existing-disappearance</option><option selected>existing-destruction</option></select></label>
+      <label>Preview E-time rate <select id="rate"><option value="1">1×</option><option value="2" selected>2× (450 ms wall lifetime)</option></select></label>
+      <button id="start">Start new cause</button><button id="hold">Hold</button><button id="clear">Clear</button>
+    </fieldset>
+    <fieldset><legend>Independent controls</legend>
+      <label>Source <input id="source" type="checkbox" checked></label><label>Main pass <input id="main" type="checkbox" checked></label>
+      <label>Observer <input id="observer" type="checkbox" checked></label><label>Mute <input id="mute" type="checkbox"></label>
+      <button id="unlock">Unlock audio (user gesture)</button>
+    </fieldset><pre id="status">Starting WebGPU initialization…</pre>
+  </section>
+  <canvas id="field" aria-label="WebGPU Iai preview"></canvas>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>

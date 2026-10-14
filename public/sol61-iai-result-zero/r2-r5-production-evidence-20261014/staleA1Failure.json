@@ -1,0 +1,75 @@
+{
+  "schema": "dva-iai-stale-seal-failure/v1",
+  "status": "FAILED_STALE_A1_SEAL_PRESERVED",
+  "scope": "r2-r5 old packages and old MF/SEAL/READY left unchanged; original R1 remains read-only",
+  "cause": "Old A1 metadata hashes no longer match its mutated runtime package bytes after later host/entry strengthening; exact earlier overwritten A1 package bytes were not recovered.",
+  "mismatches": [
+    {
+      "edition": 2,
+      "path": "app.mjs",
+      "manifestSha256": "6dd66ce775f65cc37785f4d870e28c5369bc2484d5fd59dfca9a1407273d8ce1",
+      "currentSha256": "e7c813541ac1d2d29fd22ae92cfc018738671dbf096394e10800b1abc0740232",
+      "currentBytes": 17500,
+      "manifestBytes": 17295
+    },
+    {
+      "edition": 2,
+      "path": "package/renderer.mjs",
+      "manifestSha256": "acda4e899e652a3daf704bb4a7a6cd1e5b23e4bc1d1da244f693455b3137c485",
+      "currentSha256": "bc01b9a04223949792fd8408e9c1915d937fce37a7cd05dcb7ad9c41df214398",
+      "currentBytes": 36864,
+      "manifestBytes": 36542
+    },
+    {
+      "edition": 3,
+      "path": "app.mjs",
+      "manifestSha256": "6dd66ce775f65cc37785f4d870e28c5369bc2484d5fd59dfca9a1407273d8ce1",
+      "currentSha256": "e7c813541ac1d2d29fd22ae92cfc018738671dbf096394e10800b1abc0740232",
+      "currentBytes": 17500,
+      "manifestBytes": 17295
+    },
+    {
+      "edition": 3,
+      "path": "package/renderer.mjs",
+      "manifestSha256": "acda4e899e652a3daf704bb4a7a6cd1e5b23e4bc1d1da244f693455b3137c485",
+      "currentSha256": "bc01b9a04223949792fd8408e9c1915d937fce37a7cd05dcb7ad9c41df214398",
+      "currentBytes": 36864,
+      "manifestBytes": 36542
+    },
+    {
+      "edition": 4,
+      "path": "app.mjs",
+      "manifestSha256": "6dd66ce775f65cc37785f4d870e28c5369bc2484d5fd59dfca9a1407273d8ce1",
+      "currentSha256": "e7c813541ac1d2d29fd22ae92cfc018738671dbf096394e10800b1abc0740232",
+      "currentBytes": 17500,
+      "manifestBytes": 17295
+    },
+    {
+      "edition": 4,
+      "path": "package/renderer.mjs",
+      "manifestSha256": "21d10bcdcd84c72ba578cf90dba0e5afbaa87658096c9d5c0170a9660a8adf99",
+      "currentSha256": "16b6b83b8df762b21b2b06ea394eb65dccb5bfe080801c2d704c6499e4e51e01",
+      "currentBytes": 36864,
+      "manifestBytes": 36542
+    },
+    {
+      "edition": 5,
+      "path": "app.mjs",
+      "manifestSha256": "6dd66ce775f65cc37785f4d870e28c5369bc2484d5fd59dfca9a1407273d8ce1",
+      "currentSha256": "e7c813541ac1d2d29fd22ae92cfc018738671dbf096394e10800b1abc0740232",
+      "currentBytes": 17500,
+      "manifestBytes": 17295
+    },
+    {
+      "edition": 5,
+      "path": "package/renderer.mjs",
+      "manifestSha256": "49e1db4380667d881acac41870be56ec2046a8e64ac3be7545fe8fd0e237ab97",
+      "currentSha256": "6f1ef6f6cffd8fca64cbcc4dd7b2572a28eb4d6ed26a71533b869ec0e9edb2fa",
+      "currentBytes": 36864,
+      "manifestBytes": 36542
+    }
+  ],
+  "powershellParseErrors": "one attempted follow-up test edit failed PowerShell parsing before modifying source; earlier failed guard/cwd attempts also made no owned source changes",
+  "remedy": "fresh technical-a2 runtime copies sealed independently after CPU tests",
+  "createdAt": "2026-10-13"
+}

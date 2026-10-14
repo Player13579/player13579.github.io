@@ -1,0 +1,36 @@
+{
+  "versionId": "stun-grenade-sol61-r4",
+  "baseSourceSha256": "0d6748c840f84b8e99157645b5070f6d83d2b8e581378a0cbfe84a0a670580d6",
+  "status": "DERIVATIVE_RULE_TO_CODE_ONLY_NOT_FULL_B_AUDIT",
+  "mappings": [
+    {
+      "rules": [
+        "DQ-01",
+        "DQ-02",
+        "DQ-03",
+        "DQ-04",
+        "DQ-06"
+      ],
+      "code": "WORLD fs vent jets and gas mapping",
+      "observation": "H64 source/observer off and full lifetime"
+    },
+    {
+      "rules": [
+        "DQ-05",
+        "DQ-07"
+      ],
+      "code": "sample, packUniforms, WORLD density/hotCore, OPTICS and POST",
+      "observation": "source OFF removes hot/OBS; expiry clears radiation"
+    },
+    {
+      "rules": [
+        "DQ-08",
+        "DQ-09"
+      ],
+      "code": "CauseGate, GalleryAudioLifecycle, StunSound and makePCM",
+      "observation": "deduplication, stale proof rejection, finite PCM; normal listening pending"
+    }
+  ],
+  "canonicalQualityHash": "841453cda1aecb399aa8cc4f2cad31d3aebafe3984871d588d6be07cd8d2c214",
+  "fullCanonicalBReaudit": "not_run; historical R2 B map preserved at input source"
+}

@@ -1,0 +1,360 @@
+{
+  "status": "PASS_CPU_AND_MOCK_ONLY",
+  "versionId": "stun-grenade-sol61-r3",
+  "checks": [
+    {
+      "name": "syntax of actual closure modules",
+      "status": "PASS_CPU_ONLY"
+    },
+    {
+      "name": "event ownership, duplicate, stale, absent, expiry",
+      "status": "PASS_CPU_ONLY"
+    },
+    {
+      "name": "time/source/reduced motion and actual uniform ABI",
+      "status": "PASS_CPU_ONLY"
+    },
+    {
+      "name": "PCM finite deterministic nonzero pressure/turbulence, complete fade",
+      "status": "PASS_CPU_ONLY"
+    },
+    {
+      "name": "actual sound lifecycle verify, stale unlock, suspended, repeated cause, stop",
+      "status": "PASS_CPU_ONLY"
+    },
+    {
+      "name": "actual GalleryAudioLifecycle completed GPU receipt ownership and retry",
+      "status": "PASS_CPU_ONLY"
+    },
+    {
+      "name": "actual renderer initialize three real exported shaders and full draw path CPU mock",
+      "status": "PASS_CPU_ONLY"
+    },
+    {
+      "name": "actual entry/module dependency closure and edition identity",
+      "status": "PASS_CPU_ONLY"
+    }
+  ],
+  "signal": {
+    "sha256": "699b04c6fe4b1b6f8a510074597cb3500eed833c2b9fd0c4453454521da6fe42",
+    "peak": 0.6384698748588562,
+    "rms": 0.06303790720465413,
+    "earlyEnergy": 0.01876616815126579,
+    "lateEnergy": 1.187435734767799e-9,
+    "normalListening": "not_run"
+  },
+  "gpuTrace": [
+    [
+      "shader",
+      "stun-grenade-sol61-r3/shader0",
+      "c8237bf2f06d8011e1c4b0d3bfa4bc5e2dc9adbdc89c35aa4344c424d0f43a28"
+    ],
+    [
+      "shader",
+      "stun-grenade-sol61-r3/shader1",
+      "c83aa81ed145b31205f0c74a4381a8dfaac13c60c3c69c4ebfcc6244562bf627"
+    ],
+    [
+      "shader",
+      "stun-grenade-sol61-r3/shader2",
+      "23b44c2b6455eb95ec953289be0f663edd8bd90b9a31fe676a88cdca6a04d4b9"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 0
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 1,
+          "scissor": [
+            421,
+            303,
+            138,
+            138
+          ]
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 1,
+          "scissor": [
+            416,
+            298,
+            148,
+            148
+          ]
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 1,
+          "scissor": [
+            410,
+            292,
+            160,
+            160
+          ]
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 1,
+          "scissor": [
+            407,
+            289,
+            166,
+            166
+          ]
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 0
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 0
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 0
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 0
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 0
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 0
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "passes",
+      [
+        {
+          "label": "stun-world-source",
+          "draws": 1
+        },
+        {
+          "label": "stun-source-bound-optics",
+          "draws": 1,
+          "scissor": [
+            416,
+            298,
+            148,
+            148
+          ]
+        },
+        {
+          "label": "stun-final-display",
+          "draws": 1
+        }
+      ]
+    ],
+    [
+      "submit"
+    ],
+    [
+      "destroyTexture",
+      "stun-grenade-sol61-r3/world"
+    ],
+    [
+      "destroyTexture",
+      "stun-grenade-sol61-r3/source"
+    ],
+    [
+      "destroyTexture",
+      "stun-grenade-sol61-r3/optical"
+    ],
+    [
+      "destroyBuffer"
+    ],
+    [
+      "unconfigure"
+    ],
+    [
+      "destroyDevice"
+    ]
+  ],
+  "actualModuleExecution": true,
+  "actualGpu": false,
+  "wgslCompilation": "NOT_RUN_GPU_MOCK_DOES_NOT_COMPILE",
+  "nativeForbidden": "1",
+  "normalSfxListening": "not_run",
+  "qualityAccepted": false
+}

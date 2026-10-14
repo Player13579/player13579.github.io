@@ -1,0 +1,33 @@
+{
+  "status": "PASS_ORIGINAL_A1_DERIVATIVE_BYTES_RECOVERED_AND_EXACT_READBACK",
+  "method": "Exact inverse of documented subsequent host/entry edits, all recovered bytes verified against original frozen MF SHA256 and byte counts before writing; 6 unchanged closure files copied exactly per edition",
+  "runtimeFiles": 32,
+  "metadataFiles": 12,
+  "editions": [
+    {
+      "edition": 2,
+      "originalRuntimeFiles": 8,
+      "all32RuntimeBytesMatchOriginalSeals": true
+    },
+    {
+      "edition": 3,
+      "originalRuntimeFiles": 8,
+      "all32RuntimeBytesMatchOriginalSeals": true
+    },
+    {
+      "edition": 4,
+      "originalRuntimeFiles": 8,
+      "all32RuntimeBytesMatchOriginalSeals": true
+    },
+    {
+      "edition": 5,
+      "originalRuntimeFiles": 8,
+      "all32RuntimeBytesMatchOriginalSeals": true
+    }
+  ],
+  "staleA1Tree": "preserved unchanged",
+  "staleFailureRecord": "technical-a2/SEAL-STALE-A1.json retained as chronological record; unrecovered at child report time, subsequently resolved here",
+  "currentAcceptance": "technical-a2 only; restored originalA1 is history and not release eligible",
+  "native": "not_run",
+  "public": "not_published"
+}
