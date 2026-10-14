@@ -1,0 +1,223 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "acceleration-benefit-sol61",
+  "entry": "index.html",
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "inheritedFrom": "acceleration-benefit-r4-gallery-host-luna-r1",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format-srgb-view",
+    "linearLightPremultipliedAlpha": true,
+    "durationActorMs": 1000,
+    "repeatGapMs": 600,
+    "uniformBytes": 64
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "methods": [
+      "hold(elapsedMs, options)",
+      "setPhase(elapsedMs, options)",
+      "resume()",
+      "replay()"
+    ],
+    "holdRangeActorMs": [
+      0,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "options": [
+      "obs",
+      "sparkle",
+      "source",
+      "main",
+      "bodyResponse",
+      "includeActor",
+      "direction",
+      "reducedMotion"
+    ],
+    "waitsForGpuQueueCompletion": true,
+    "childFrame": true
+  },
+  "versionId": "acceleration-benefit-zero-sol61-r8",
+  "effectAuthor": "GPT-6.1-Sol",
+  "effectImplementationAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "not-accepted",
+  "technicalReplayStatus": "pending-native-webgpu",
+  "creativeIteration": 8,
+  "creativeIterationCap": 10,
+  "remainingCreativeIterations": 2,
+  "files": {
+    "effect.mjs": "73dc58cd9a77634a4810cb6d01c45d3df72e9bc0f96edb0713989fd6ea9e2323",
+    "gallery-adapter.mjs": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+    "index.html": "84209f823fa58233eda600cf4d564e5637359a685ab6df94727a2a5e2b9ed911",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "validation": {
+    "status": "PASS_CPU_ONLY",
+    "checks": 3436,
+    "supportedGlintSamples": 2720,
+    "counts": [
+      {
+        "ms": 100,
+        "r7AbovePoint2": 2,
+        "r8AbovePoint2": 6,
+        "r8FluxSum": 4.4661077701689464
+      },
+      {
+        "ms": 200,
+        "r7AbovePoint2": 8,
+        "r8AbovePoint2": 12,
+        "r8FluxSum": 8.743151351001856
+      },
+      {
+        "ms": 300,
+        "r7AbovePoint2": 4,
+        "r8AbovePoint2": 4,
+        "r8FluxSum": 1.9337776397246227
+      },
+      {
+        "ms": 400,
+        "r7AbovePoint2": 6,
+        "r8AbovePoint2": 12,
+        "r8FluxSum": 9.739869803243833
+      },
+      {
+        "ms": 500,
+        "r7AbovePoint2": 10,
+        "r8AbovePoint2": 12,
+        "r8FluxSum": 8.506419795095109
+      },
+      {
+        "ms": 600,
+        "r7AbovePoint2": 0,
+        "r8AbovePoint2": 4,
+        "r8FluxSum": 4.153278300694788
+      },
+      {
+        "ms": 700,
+        "r7AbovePoint2": 14,
+        "r8AbovePoint2": 16,
+        "r8FluxSum": 12.63873935945685
+      },
+      {
+        "ms": 780,
+        "r7AbovePoint2": 4,
+        "r8AbovePoint2": 4,
+        "r8FluxSum": 2.8042111469210114
+      },
+      {
+        "ms": 800,
+        "r7AbovePoint2": 0,
+        "r8AbovePoint2": 4,
+        "r8FluxSum": 1.1167580065794926
+      },
+      {
+        "ms": 820,
+        "r7AbovePoint2": 0,
+        "r8AbovePoint2": 0,
+        "r8FluxSum": 0
+      },
+      {
+        "ms": 850,
+        "r7AbovePoint2": 2,
+        "r8AbovePoint2": 4,
+        "r8FluxSum": 3.7751924721614367
+      },
+      {
+        "ms": 900,
+        "r7AbovePoint2": 4,
+        "r8AbovePoint2": 4,
+        "r8FluxSum": 3.141216137551844
+      },
+      {
+        "ms": 940,
+        "r7AbovePoint2": 2,
+        "r8AbovePoint2": 4,
+        "r8FluxSum": 1.746606257094719
+      },
+      {
+        "ms": 999,
+        "r7AbovePoint2": 0,
+        "r8AbovePoint2": 0,
+        "r8FluxSum": 0
+      },
+      {
+        "ms": 1000,
+        "r7AbovePoint2": 0,
+        "r8AbovePoint2": 0,
+        "r8FluxSum": 0
+      }
+    ],
+    "audio": [
+      {
+        "rate": 8000,
+        "samples": 7840,
+        "sha256": "dcdd71725f6d9e8192c0104910af2a78a0b02c230d92dffe786bd56677164eb4"
+      },
+      {
+        "rate": 48000,
+        "samples": 47040,
+        "sha256": "042167cb883e9cfea9d55bd017f5af41389ce47b9d0be68eb3753e0bff47e148"
+      },
+      {
+        "rate": 192000,
+        "samples": 188160,
+        "sha256": "32615332de90258b47bd7447de556671825465b64862998549ce0ee114188d0d"
+      }
+    ],
+    "nativeWgslCompilation": "not_run",
+    "nativeWebGpu": "not_run",
+    "perceivedGlintCount": "not_observed",
+    "quality": "not_accepted",
+    "ordinarySfxListening": "not_observed",
+    "nativeForbidden": "1",
+    "nodeSyntax": {
+      "effect": "passed",
+      "adapter": "passed",
+      "test": "passed"
+    },
+    "actualR7ImagePinsVerified": 10,
+    "limits": "CPU causal/support/source diagnostics only; no actual R8 raster, native GPU, visible count or acoustic acceptance"
+  },
+  "derivative": {
+    "sourceVersion": "acceleration-benefit-zero-sol61-r7",
+    "sourcePackageManifestSha256": "f1d2809243b84234aa101b27414706c6debeb73e5e868d3165815b2ae108ff4c",
+    "sourceEffectSha256": "97ba41a3e968955a736dd8008e12ff09d6e244343c090a0d936b2121f722110c",
+    "authorizedCorrection": "Explicit human cap10; actual R8 medium structure and finite temporal glint distribution improvement after current-public R7 image review",
+    "authorizationSourceSha256": "37852922bec9e3dba56497fa52e848a45a2e69f606016bad2d1fb78896711af8",
+    "historicalSourceAuthors": {
+      "creative": "GPT-6.1-Sol",
+      "implementation": "GPT-6.1-Sol",
+      "host": "GPT-6-Luna"
+    },
+    "publicationByWorker": false,
+    "qualityAccepted": false,
+    "noR9BeforeActualR8Review": true
+  },
+  "validationArtifacts": {
+    "test-effect-r8.mjs": "0121f2a3f9d748a1d7b8cd9f90a065e2e7f88a231e98d2c63ab88c2fb18e50ac",
+    "TEST-RESULTS.json": "8e3183728f2cb8410ac9739bf142269de978ac2143e6295b1771a4576f980e2d",
+    "SOURCE-PINS.json": "2a0568a6eea893c410cf0ff8b2211b0e534a95b936384d88d89349af274818c7",
+    "DESIGN-REVIEW.json": "19d4f3a0983e8a6c708c4fcfae91284f5b0c889137067e8b37412860b2eb4ecb",
+    "IMPLEMENTATION-NOTE.md": "046f0164a1831a106ac4d41ddb982eb6dddb1950b4b987da3928c96bcd6909f1",
+    "DRAFT-SYNTAX-FAILURE.json": "bba117a2b37789d86696754297041d227fb810d02505ccc231755c05cb051f98"
+  },
+  "candidateStatus": "cpu-validated-immutable-ready-for-root-native"
+}
