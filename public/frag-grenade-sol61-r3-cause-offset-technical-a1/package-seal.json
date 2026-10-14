@@ -1,0 +1,63 @@
+{
+  "authorization": {
+    "source": "direct human追加1版を許可する via root assignment",
+    "additionalAllowed": 1,
+    "additionalConsumed": 1,
+    "additionalRemaining": 0,
+    "historicalCreativeCount": "unknown",
+    "historicalCapRemaining": "unknown",
+    "capReset": false
+  },
+  "manifestSha256": "cab915066fa3931a8aca4dba4631ff52b1183edcb3bc36e848caf6cd0cf3e954",
+  "sourceLineage": {
+    "derivedPublicEntry": "public/frag-grenade-sol61-r3-cause-offset-technical-a1/index.html",
+    "parentPublicEntry": "public/frag-grenade-sol61-r3/index.html",
+    "parentManifestSha256": "3dd2c3fe8e6e7fa3150199410cf352a1493abbc25ed966d03c06f2041af7f0df",
+    "parentSealSha256": "fb338e2554174adde5a64ecb6e0af676c6e13adb806bcc1dbbb5ed43443bebf5",
+    "versionId": "frag-grenade-sol61-r3"
+  },
+  "schema": "dva-frag-r3-seal/v1",
+  "files": [
+    {
+      "sha256": "a7505740b2acc98879602cbd30a599257dddc4cbd9572ea9f7574e6be662e9ce",
+      "path": "index.html",
+      "bytes": 1253
+    },
+    {
+      "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b",
+      "path": "app.mjs",
+      "bytes": 9682
+    },
+    {
+      "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659",
+      "path": "runtime.mjs",
+      "bytes": 9850
+    },
+    {
+      "sha256": "878d55c5bde023b5d00c8541d9ac5c2e435a9b0db358ca4aef3ca34a88585a73",
+      "path": "source/plan.mjs",
+      "bytes": 4530
+    },
+    {
+      "sha256": "991f5a7b98c2c4f98890c5bb5394b5a14f535a8f044719160e98c97a496cd71c",
+      "path": "source/shaders.mjs",
+      "bytes": 11508
+    },
+    {
+      "sha256": "9add2914db7d6cf0a2ce2b22800f772446bfcde9fda012d1264d22ff25b46413",
+      "path": "source/sound.mjs",
+      "bytes": 4071
+    }
+  ],
+  "technicalScope": {
+    "native": "not_run",
+    "creativeIncrement": 0,
+    "change": "SFX source start offset aligns PCM to cause age",
+    "validationScope": "CPU_ONLY_NATIVE_NOT_RUN",
+    "published": false,
+    "nativeQualityAccepted": false,
+    "filesChanged": [
+      "source/sound.mjs"
+    ]
+  }
+}

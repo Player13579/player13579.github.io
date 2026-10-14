@@ -1,0 +1,135 @@
+{
+  "schema": "dva-effect-package-manifest/v1",
+  "versionId": "frag-grenade-sol61-r3",
+  "group": "gunner-frag-grenade-sol61",
+  "eventType": "grenade-frag-impact",
+  "durationMs": 900,
+  "gameRadius": 132,
+  "entry": "index.html",
+  "publicEntry": "public/frag-grenade-sol61-r3-cause-offset-technical-a1/index.html",
+  "runtimeClosure": [
+    "index.html",
+    "app.mjs",
+    "runtime.mjs",
+    "source/plan.mjs",
+    "source/shaders.mjs",
+    "source/sound.mjs"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1253,
+      "sha256": "a7505740b2acc98879602cbd30a599257dddc4cbd9572ea9f7574e6be662e9ce"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9682,
+      "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 9850,
+      "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 4530,
+      "sha256": "878d55c5bde023b5d00c8541d9ac5c2e435a9b0db358ca4aef3ca34a88585a73"
+    },
+    {
+      "path": "source/shaders.mjs",
+      "bytes": 11508,
+      "sha256": "991f5a7b98c2c4f98890c5bb5394b5a14f535a8f044719160e98c97a496cd71c"
+    },
+    {
+      "path": "source/sound.mjs",
+      "bytes": 4071,
+      "sha256": "9add2914db7d6cf0a2ce2b22800f772446bfcde9fda012d1264d22ff25b46413"
+    }
+  ],
+  "author": "GPT-6.1-Sol",
+  "userAdopted": false,
+  "adoptionLabel": "unknown/unadopted candidate",
+  "qualityStatus": "pending-native-full-lifetime-review",
+  "technicalStatus": "PASS_CPU_ONLY_NATIVE_NOT_RUN",
+  "authorization": {
+    "source": "direct human追加1版を許可する via root assignment",
+    "additionalAllowed": 1,
+    "additionalConsumed": 1,
+    "additionalRemaining": 0,
+    "historicalCreativeCount": "unknown",
+    "historicalCapRemaining": "unknown",
+    "capReset": false
+  },
+  "parent": {
+    "path": "outputs\\request-20261011\\frag-r2-retirement-derivative-r921\\candidate\\public\\frag-grenade-sol61-r2",
+    "manifestSha256": "0909ad80676f6536e238e89ac1063e0e9f737ee2a234c093602dd7563c940bd9",
+    "sourcePins": [
+      {
+        "path": "index.html",
+        "bytes": 1253,
+        "sha256": "e27e67574866a2fc0b1b62435941206c25cfddf61cfbcaca102c7c8d906afad2"
+      },
+      {
+        "path": "app.mjs",
+        "bytes": 9682,
+        "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b"
+      },
+      {
+        "path": "runtime.mjs",
+        "bytes": 9850,
+        "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659"
+      },
+      {
+        "path": "source/plan.mjs",
+        "bytes": 4530,
+        "sha256": "471692cec5bb0a477c44313efb0e5718f5f7c4e2ddefdaa5207540c0a6365b3f"
+      },
+      {
+        "path": "source/shaders.mjs",
+        "bytes": 9918,
+        "sha256": "3f63bd998234317fc586671e44e170ccb5af2aff932080a2f2f5f9b181595676"
+      },
+      {
+        "path": "source/sound.mjs",
+        "bytes": 4059,
+        "sha256": "8176eb773ce123ee3e6a9554cbfb3c481a2e5b5ec205e4f6234ec7d28fe69d64"
+      }
+    ],
+    "creativeVersion": "frag-grenade-sol61-r2",
+    "technicalDerivative": "r921 retirement repair",
+    "publishedSourceCommit": "7beb509013e5713b6d4ad2591ccf84799b6fd845"
+  },
+  "scope": "one smoke/dust creative revision; 900ms clock, radius132, source reaction, fragments, SFX and API preserved",
+  "validation": {
+    "scope": "CPU_ONLY_NATIVE_NOT_RUN",
+    "nativeQualityAccepted": false,
+    "sha256": "493584957d32267ced14e763caa53d5aa5619f0809ec7193d236081a1367d19a",
+    "actualGPUQuality": "not_run",
+    "cpuResult": "../CPU-RESULT-A3.json",
+    "actualWGSLCompilation": "not_run"
+  },
+  "parentCreativeValidation": {
+    "cpuResult": "../CPU-RESULT-R1001.json",
+    "sha256": "171ec969904f25c21f2d71c9050a7d8f67797c1af0beb94b3cc6fad58e1f9c74",
+    "actualWGSLCompilation": "not_run",
+    "actualGPUQuality": "not_run"
+  },
+  "sourceLineage": {
+    "technicalDerivativePublicEntry": "public/frag-grenade-sol61-r3-cause-offset-technical-a1/index.html",
+    "parentManifestSha256": "3dd2c3fe8e6e7fa3150199410cf352a1493abbc25ed966d03c06f2041af7f0df",
+    "parentSealSha256": "fb338e2554174adde5a64ecb6e0af676c6e13adb806bcc1dbbb5ed43443bebf5",
+    "versionId": "frag-grenade-sol61-r3",
+    "sameVersionId": true,
+    "parentPublicEntry": "public/frag-grenade-sol61-r3/index.html"
+  },
+  "technicalRevision": {
+    "nativeQualityAccepted": false,
+    "scope": "SFX cause-relative PCM start offset only",
+    "change": "source/sound.mjs: source.start() -> source.start(0,ageMs/1000)",
+    "technicalImplementation": "faithfulLuna",
+    "creativeAuthor": "GPT-6.1-Sol",
+    "publication": "not performed",
+    "creativeIncrement": 0
+  }
+}
