@@ -1,0 +1,52 @@
+{
+  "schema": "ordinary-item-throw-r5-retirement-transport-contract/v1",
+  "versionId": "ordinary-item-throw-sol61-r5",
+  "transportTag": "r5-retirement-transport-a1",
+  "route": "/public/sol61-ordinary-item-throw-r5/retirement-transport-a1/index.html",
+  "entry": "index.html",
+  "api": "__throwR5Gallery",
+  "apiMethods": [
+    "initialize",
+    "replay",
+    "setPhase",
+    "hold",
+    "resume",
+    "setSource",
+    "setObserver",
+    "enableSfx",
+    "retire",
+    "snapshot"
+  ],
+  "verifyRequired": true,
+  "rootNativeOnly": true,
+  "runnerProvided": false,
+  "creativeFilesImmutable": [
+    "world.wgsl",
+    "observer.wgsl"
+  ],
+  "retirementRequirements": {
+    "awaitActiveInitialization": true,
+    "awaitActiveTick": true,
+    "awaitSubmittedQueueWork": true,
+    "submittedEqualsCompleted": true,
+    "pendingSubmissions": 0,
+    "submissionCallbacks": 0,
+    "noNewSubmissions": true,
+    "contextUnconfigured": true,
+    "ownedDeviceDestroyCalls": 1,
+    "ownedDeviceLostReason": "destroyed",
+    "audio": "absent-or-closed-with-zero-voices-and-no-pending-work",
+    "exactParentIdentity": true,
+    "normalCancellationSeparated": true,
+    "ack": "action=retired only after every check passes",
+    "failure": "action=retire-error with teardown unknown"
+  },
+  "pending": [
+    "root native API/actual adapter test",
+    "subject fixture registered at H64",
+    "visible full-lifetime quality/performance",
+    "normal SFX listening",
+    "Safari/iPad",
+    "main-game integration"
+  ]
+}

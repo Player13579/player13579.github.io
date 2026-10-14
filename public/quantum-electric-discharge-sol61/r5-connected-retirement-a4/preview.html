@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PC9zdmc+">
+<title>Quantum Electric Discharge — private preview</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#080a13;color:#e8eafa;font:14px system-ui,sans-serif;padding:18px}main{max-width:980px;margin:auto}h1{font-size:19px;margin:0 0 5px}.note{color:#aab1ce;margin:0 0 14px}.stage{position:relative;width:100%;height:min(58vh,420px);min-height:250px;background:radial-gradient(ellipse,#11182c,#080a13 72%);border:1px solid #252d49;border-radius:10px;overflow:hidden}.stage canvas{position:absolute;inset:0;width:100%;height:100%}.actor{position:absolute;top:50%;width:34px;height:64px;transform:translate(-50%,-50%);border-radius:15px 15px 9px 9px;background:linear-gradient(#8da5d8,#34436b);box-shadow:0 0 14px #637bc533}.actor:before{content:"";position:absolute;top:-15px;left:9px;width:16px;height:16px;border-radius:50%;background:#b9c9ee}.label{position:absolute;top:calc(50% + 43px);transform:translateX(-50%);font-size:11px;color:#aeb9dc}.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 0}.controls label{display:flex;gap:6px;align-items:center}.controls button{background:#394c82;border:1px solid #647bb5;color:white;padding:7px 12px;border-radius:6px;cursor:pointer}.status{color:#aab1ce;min-height:20px;font:12px ui-monospace,monospace}.verify .audio,.verify .sound{display:none}
+</style>
+<main><h1>Quantum Electric Discharge · R5</h1>
+<p class="note">Private fixture · one visible source and target · 1050 ms event plus 900 ms pause · H64 coordinates</p>
+<div class="stage" id="stage"><canvas id="fx"></canvas><div class="actor" id="source"></div><span class="label" id="sl">Source</span><div class="actor" id="target"></div><span class="label" id="tl">Target</span></div>
+<div class="controls"><button id="replay">Replay</button><button id="sound" class="sound">Enable sound</button><label><input type="checkbox" id="emission" checked> Source emission</label><label><input type="checkbox" id="scatter" checked> Observer scatter</label><label><input type="checkbox" id="reduced"> Reduced motion</label><label><input type="checkbox" id="hidden"> Hide target (privacy gate)</label></div>
+<div class="status" id="status" role="status"></div></main>
+<script type="module" src="./preview.mjs"></script></html>

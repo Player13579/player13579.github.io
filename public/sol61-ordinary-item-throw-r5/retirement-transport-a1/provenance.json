@@ -1,0 +1,45 @@
+{
+  "schema": "ordinary-item-throw-r5-retirement-transport-provenance/v1",
+  "transportTag": "r5-retirement-transport-a1",
+  "versionId": "ordinary-item-throw-sol61-r5",
+  "kind": "noncreative technical derivative of sealed R5",
+  "creativeOrigin": {
+    "author": "GPT-6.1-Sol",
+    "modelId": "gpt-6.1-sol",
+    "edition": 5,
+    "cap": 5,
+    "sourceVersion": "ordinary-item-throw-sol61-r5",
+    "sourcePackageManifestSha256": "a84003987f774954379f70e4ea28458fc9a56bfebf4b585135dd3cc853e2ce08",
+    "worldSha256": "fcac0733409442e222a9d94dcedf17f7fb187020a7578b312db02244013bf6a7",
+    "observerSha256": "8dde3bafd3cefa22492263f2333c24da29260de678fae8b2f6344fd8611da219"
+  },
+  "technicalAuthor": {
+    "displayName": "GPT-6-Luna",
+    "modelId": "gpt-6-luna"
+  },
+  "changes": [
+    "instrument actual WebGPU submission completion, pending completion callbacks, lost reason, context unconfigure and owned device destroy",
+    "instrument actual WebAudio close state and active voice count",
+    "await active init/tick and separate startup cancellation from parent retirement receipt",
+    "add CPU tests against current parent startup/firstframe/retirement validators and stale/wrong identity/delayed-fence rejection"
+  ],
+  "nonChanges": [
+    "no WGSL changes",
+    "no geometry or event changes",
+    "no synthesized PCM or audio design changes",
+    "no existing R1-R4 source, adoption or author history changes",
+    "no native/browser/server/network/publication/main-game action"
+  ],
+  "adoption": "unadopted",
+  "quality": "native-pending",
+  "native": "not-run",
+  "listingEligible": false,
+  "edition": {
+    "ordinal": 5,
+    "cap": 5,
+    "remaining": 0,
+    "noR6": true
+  },
+  "sourceManifestSha256": "17882bc27163818009a50c4a8d2a568c12db4696f273479757f1209dc8fb5d6d",
+  "transportPackageManifestSha256": "1c3f419c3268f74eaf9f7633768ddf292df7941d78f211285937a3d0fc65c8fc"
+}

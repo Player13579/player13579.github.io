@@ -1,0 +1,76 @@
+{
+  "schema": "fire-zero-package-seal/v1",
+  "id": "fire-zero-sol61-r1",
+  "author": "GPT-6.1-Sol",
+  "frozen": true,
+  "creativeRevision": 1,
+  "technicalDerivative": "a4",
+  "package": {
+    "path": "PACKAGE.json",
+    "bytes": 1520,
+    "sha256": "d84bf8e0f84c28816b5d2d357d0f74ef14db661738bf6884fe2384fd53aae82b"
+  },
+  "sourceManifest": {
+    "path": "SOURCE-MANIFEST.json",
+    "bytes": 1265,
+    "sha256": "30a6ea59d6cd0524fe5e4e56b12b0d9443a1f0b02b2b632f37aede39e707471f"
+  },
+  "design": {
+    "path": "DESIGN.md",
+    "bytes": 11013,
+    "sha256": "7a108c21491925188e77472c6c5869ad54b05dbba03d4be37f0b3e315699ec30"
+  },
+  "cpuEvidence": {
+    "path": "CPU-RESULT.json",
+    "bytes": 2479,
+    "sha256": "76f8ec14827ab3156da63545b5ccaa5380d24b33ba4757690548ab12fef2061e"
+  },
+  "derivative": {
+    "path": "TECHNICAL-DERIVATIVE.json",
+    "bytes": 2856,
+    "sha256": "cc9e4315f74a602cc6cc52de2dac298de3cb1aa67cee679450ea4a57591f87cb"
+  },
+  "status": "SOURCE_CPU_READY_NATIVE_BOOTSTRAP_NOT_RUN",
+  "runtimeFiles": [
+    {
+      "path": "index.html",
+      "bytes": 1347,
+      "sha256": "a96c56d72f4f37dccc11ce2752cce735315c6308410e9ef78113e147f9a8b793"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 12007,
+      "sha256": "7d6f1c85ee78188cfb353523e13ba8ca5c3c018f568c69228cdf68fd1aa6b72f"
+    },
+    {
+      "path": "fire-runtime.mjs",
+      "bytes": 8822,
+      "sha256": "68c3d02027a50d43244bb8d8a6abca6de1737aff2193ccf217369809f9f05f66"
+    },
+    {
+      "path": "fire-plan.mjs",
+      "bytes": 2098,
+      "sha256": "0cc6d111a69f84be0147ee3d0aac84bda36a681cf46ce382a7d00606aa6bd0d8"
+    },
+    {
+      "path": "fire-volume.wgsl",
+      "bytes": 4577,
+      "sha256": "44ec103188093f7cb611457baf50c819b9dc872d6b3df819b2e2ce1975e2c939"
+    },
+    {
+      "path": "fire-observer.wgsl",
+      "bytes": 1772,
+      "sha256": "61c43c1d066829b69ac43f426dae09397a817bbacd4afd99f74b9322860681cd"
+    },
+    {
+      "path": "fire-sfx.mjs",
+      "bytes": 8193,
+      "sha256": "4fdfbf443a230e4b3fec72c229dce900c18f1fc75f825263433bda63e4d75023"
+    }
+  ],
+  "parentDerivativeSeal": {
+    "path": "../fire-zero-sol-r1-production-a3/PACKAGE-SEAL.json",
+    "bytes": 2278,
+    "sha256": "0868d43ce6af1cf3db41cbe14004e9ef664a084b6c5c4360565120955c8e5ff7"
+  }
+}

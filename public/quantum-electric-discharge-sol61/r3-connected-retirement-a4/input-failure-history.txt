@@ -1,0 +1,54 @@
+✔ full lifetime is finite, bounded, deterministic, with electrical main channel until contraction ends (36.7185ms)
+✔ terminal emission requires completed connection; no target corona during leader formation (0.9111ms)
+✔ single endpoint and privacy survive scale, reduced motion, vertical and short casts (0.9117ms)
+✔ return-current power crest moves from target toward caster on the same conductor (0.4388ms)
+✔ R5 contracts only the already connected channel; earlier editions retain it while cooling (0.2394ms)
+✖ synthetic electrical PCM has stepped pre-discharge and return transient, finite edge and silent tail (5.2829ms)
+✔ late receipt does not consume one-shot cause and suspended audio can retry (3.7235ms)
+✔ verify creates no audio and disposed delayed enable cannot resurrect it (0.3446ms)
+✔ creative geometry and immutable cycle timing remain single-target R3 (3.049ms)
+✔ Sol PSF is normalized symmetric 17-tap sigma 2.4; impulse is one smooth peak and constant input is invariant (1.4774ms)
+✔ WGSL contains exact generated Gaussian weights, backing-pixel separable taps and one final display encode (10.5043ms)
+✔ strict explicit layouts run source, horizontal blur, vertical blur and display passes in one fenced submission (2.3657ms)
+✔ observer-off is direct-only and still executes zeroed blur passes; source-off clears all three HDR targets and canvas (1.6258ms)
+✔ hidden source/target, no cause and invalid lifetime clear without a receipt (1.4031ms)
+✔ request sequence rejects stale completion when controls change while a four-pass frame is fenced (3.5823ms)
+✔ resize waits for queue use, replaces and destroys both intermediates with the emission target (1.4511ms)
+✔ one RAF chain preserves the R3 1050ms lifetime and 900ms inter-cycle gap (2.8689ms)
+✔ verify mode preserves selected observer visuals and creates no AudioContext or sound source (1.0443ms)
+✔ shader, pipeline, target and buffer failures balance scopes and release partial resources (1.2454ms)
+✔ draw, bind, write and validation errors cannot return receipts or leak replacement targets (0.8731ms)
+✔ queue failure cannot produce a receipt; disposal waits for pending four-pass work and destroys all three textures (2.0464ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 20
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 157.6884
+
+✖ failing tests:
+
+test at creative.test.mjs:9:1
+✖ synthetic electrical PCM has stepped pre-discharge and return transient, finite edge and silent tail (5.2829ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + -0
+  - 0
+  
+      at TestContext.<anonymous> (file:///C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/quantum-r3-r5-production-20261013/public/quantum-electric-discharge-sol61-r3/creative.test.mjs:9:390)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -0,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

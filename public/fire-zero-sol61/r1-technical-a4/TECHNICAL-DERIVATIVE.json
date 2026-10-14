@@ -1,0 +1,74 @@
+{
+  "schema": "fire-zero-technical-derivative/v1",
+  "id": "fire-zero-sol61-r1",
+  "creativeRevision": 1,
+  "author": "GPT-6.1-Sol",
+  "originalRoot": "../fire-zero-sol-r1-production-a3",
+  "originalSeal": {
+    "path": "PACKAGE-SEAL.json",
+    "bytes": 1876,
+    "sha256": "9eb3de418f6d5c08503f8323d83c2a9396487dd2cb36bda59f4892180e762e09"
+  },
+  "change": "Faithful preview bootstrap stabilization: wait one actual owned 8ms timer turn before first frame; allow retirement to settle that timer and return cancelled; emit first-frame/playing ready only for a completed two-pass active positive-sourceGain receipt matching current cause. First-frame payload carries receipt gpuCompleted and plan facts. Unscheduled cancellation lifecycle reports settled with elapsedMs 0.",
+  "changedFiles": [
+    "preview.mjs",
+    "cpu-test.mjs"
+  ],
+  "creativeFiles": [
+    {
+      "path": "fire-volume.wgsl",
+      "bytes": 4577,
+      "sha256": "44ec103188093f7cb611457baf50c819b9dc872d6b3df819b2e2ce1975e2c939",
+      "unchangedFromA1": false,
+      "identifierOnlyDerivativeFromA2": true
+    },
+    {
+      "path": "fire-observer.wgsl",
+      "bytes": 1772,
+      "sha256": "61c43c1d066829b69ac43f426dae09397a817bbacd4afd99f74b9322860681cd",
+      "unchangedFromA1": true,
+      "unchangedFromA2": true
+    },
+    {
+      "path": "fire-plan.mjs",
+      "bytes": 2098,
+      "sha256": "0cc6d111a69f84be0147ee3d0aac84bda36a681cf46ce382a7d00606aa6bd0d8",
+      "unchangedFromA1": true,
+      "unchangedFromA2": true
+    },
+    {
+      "path": "fire-sfx.mjs",
+      "bytes": 8193,
+      "sha256": "4fdfbf443a230e4b3fec72c229dce900c18f1fc75f825263433bda63e4d75023",
+      "unchangedFromA1": true,
+      "unchangedFromA2": true
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 11013,
+      "sha256": "7a108c21491925188e77472c6c5869ad54b05dbba03d4be37f0b3e315699ec30",
+      "unchangedFromA1": true,
+      "unchangedFromA2": true
+    }
+  ],
+  "nativeRun": false,
+  "technicalDerivative": "a4",
+  "parentDerivativeSeal": {
+    "path": "../fire-zero-sol-r1-production-a3/PACKAGE-SEAL.json",
+    "bytes": 2278,
+    "sha256": "0868d43ce6af1cf3db41cbe14004e9ef664a084b6c5c4360565120955c8e5ff7"
+  },
+  "technicalAuthor": "GPT-6-Luna",
+  "ancestorDerivativeSeal": {
+    "path": "../fire-zero-sol-r1-production-a2/PACKAGE-SEAL.json",
+    "bytes": 2071,
+    "sha256": "6bbfabd2a96f3a1becf826ec9559fddede48225c1cf81e3a04373caf419b86a4"
+  },
+  "publicRoute": "public/fire-zero-sol61/r1-technical-a4/",
+  "priorNativeObservation": {
+    "path": "../fire-zero-native-root-a1/FIRE-R1-A3-NATIVE.json",
+    "sha256": "c189296761d944a9881d034aa5f033ae2870f80859f87eb318ebca1c08f22103",
+    "summary": "A3 native first receipt was age 0 with active false and zero gains while preview reported ready; preserved root-owned evidence.",
+    "attribution": "preview readiness gate"
+  }
+}
