@@ -1,0 +1,84 @@
+{
+  "status": "PASS_LIMITED_NATIVE_STANDALONE_WEBGPU",
+  "versionId": "acceleration-benefit-zero-sol61-r10",
+  "packageManifestSha256": "7bcaad93ff2387d5610bf24a1d31c1a6020b4c9241c149dd4c07a94876b7177c",
+  "effectSha256": "64e1968a866ac2e60fbdb4319a4cf21dd963348c58c2aeb86d1e06d82e54e749",
+  "rawPath": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\acceleration-r10-actual-native-root-20261015-a1\\RAW.json",
+  "rawSha256": "febc4834f16090b1d98df445d0ff657feda8d047113dffd9e78e3b6d4db2ee4e",
+  "nativeWgslCompilation": "passed",
+  "scope": "standalone natural 4.5-second loop recording H64 and 19 held GPU-completed captures H64/H192, source/OBS separation",
+  "qualityStatus": "partial",
+  "qualityReviewStatus": "not-accepted",
+  "publicParentReplayStatus": "not_run",
+  "ordinarySfxListening": "not_observed",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected",
+  "movieSamples": 218,
+  "loops": [
+    {
+      "loop": 18,
+      "samples": 64,
+      "minActorAge": 0.800000011920929,
+      "maxActorAge": 1000
+    },
+    {
+      "loop": 19,
+      "samples": 44,
+      "minActorAge": 0,
+      "maxActorAge": 1000
+    },
+    {
+      "loop": 20,
+      "samples": 49,
+      "minActorAge": 0,
+      "maxActorAge": 1000
+    },
+    {
+      "loop": 21,
+      "samples": 61,
+      "minActorAge": 0,
+      "maxActorAge": 1000
+    }
+  ],
+  "allSamplesVisible": true,
+  "sourceHashes": [
+    {
+      "bytes": 26974,
+      "name": "effect.mjs",
+      "sha256": "64e1968a866ac2e60fbdb4319a4cf21dd963348c58c2aeb86d1e06d82e54e749"
+    },
+    {
+      "bytes": 19123,
+      "name": "gallery-adapter.mjs",
+      "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf"
+    },
+    {
+      "bytes": 1990,
+      "name": "index.html",
+      "sha256": "601fc61f95b275b9e2b3d4fb769d4e4ad4d53475af7eef9b8675f562e140dd85"
+    },
+    {
+      "bytes": 243081,
+      "name": "body.png",
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    },
+    {
+      "bytes": 10393,
+      "name": "package-manifest.json",
+      "sha256": "7bcaad93ff2387d5610bf24a1d31c1a6020b4c9241c149dd4c07a94876b7177c"
+    }
+  ],
+  "console": [],
+  "cleanup": {
+    "disposed": true,
+    "failure": null,
+    "frames": 2178
+  },
+  "captureCount": 19,
+  "limits": [
+    "Movie encoded frames are not individually bound to GPU submission receipts.",
+    "Held before/after actual completed GPU receipt identity is stable.",
+    "Disposal observation is limited to disposed=true/failure=null/frames; no explicit resource destruction trace.",
+    "Standalone firstFrame null is expected without a parent startup handshake."
+  ]
+}
