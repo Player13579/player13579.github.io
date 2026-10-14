@@ -1,0 +1,101 @@
+{
+  "status": "PASS_LIMITED_NATIVE_STANDALONE_WEBGPU",
+  "versionId": "acceleration-benefit-zero-sol61-r8",
+  "sourceCommit": "4990d3d929fb523fc185354a192daabd48cfdd75",
+  "packageManifestSha256": "3a3f5bb7779a5dfbdac3ca292eb9e6bb906a38198b2d805a97e221f9b0bb1201",
+  "effectSha256": "73dc58cd9a77634a4810cb6d01c45d3df72e9bc0f96edb0713989fd6ea9e2323",
+  "rawPath": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/primary/acceleration-r8-actual-native-root-20261015-a1/RAW.json",
+  "rawSha256": "10e04cfe21bf822ed01cd5222ce0131e50d9010eaa2d91ee414f979ea508e24a",
+  "nativeWgslCompilation": "passed",
+  "scope": "standalone natural loops H64 plus held H64/H192 200/400/600/700/800ms and H64 Source/OBS/restored at600ms",
+  "naturalLoops": [
+    {
+      "loop": 40,
+      "minActorMs": 2.7999999821186066,
+      "maxActorMs": 1000,
+      "completed": true,
+      "samples": 63
+    },
+    {
+      "loop": 41,
+      "minActorMs": 0,
+      "maxActorMs": 1000,
+      "completed": true,
+      "samples": 63
+    },
+    {
+      "loop": 42,
+      "minActorMs": 0,
+      "maxActorMs": 1000,
+      "completed": true,
+      "samples": 63
+    },
+    {
+      "loop": 43,
+      "minActorMs": 0,
+      "maxActorMs": 1000,
+      "completed": true,
+      "samples": 63
+    },
+    {
+      "loop": 44,
+      "minActorMs": 0,
+      "maxActorMs": 35.20000001788139,
+      "completed": false,
+      "samples": 2
+    }
+  ],
+  "captures": 13,
+  "sourceClosure": [
+    {
+      "bytes": 25373,
+      "file": "effect.mjs",
+      "sha256": "73dc58cd9a77634a4810cb6d01c45d3df72e9bc0f96edb0713989fd6ea9e2323",
+      "status": 200
+    },
+    {
+      "bytes": 19123,
+      "file": "gallery-adapter.mjs",
+      "sha256": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+      "status": 200
+    },
+    {
+      "bytes": 1988,
+      "file": "index.html",
+      "sha256": "84209f823fa58233eda600cf4d564e5637359a685ab6df94727a2a5e2b9ed911",
+      "status": 200
+    },
+    {
+      "bytes": 243081,
+      "file": "body.png",
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "status": 200
+    },
+    {
+      "bytes": 6487,
+      "file": "package-manifest.json",
+      "sha256": "3a3f5bb7779a5dfbdac3ca292eb9e6bb906a38198b2d805a97e221f9b0bb1201",
+      "status": 200
+    }
+  ],
+  "verifyHardMute": true,
+  "console": [],
+  "cleanup": {
+    "disposed": true,
+    "failure": null,
+    "frames": 3754,
+    "limits": "Actual runtime.dispose resolved; internal destruction/fence instrumentation not added"
+  },
+  "qualityStatus": "partial",
+  "qualityReviewStatus": "not-accepted",
+  "publicParentReplayStatus": "not_run",
+  "ordinarySfxListening": "not_observed",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected",
+  "limits": [
+    "Movie API samples do not identify every encoded frame with a GPU submission",
+    "Held screenshot before/after receipt identity remained exact",
+    "Standalone firstFrame handshake receipt absent outside parent; parent startup not established",
+    "Runtime.dispose resolved but internal queue/resource/device teardown not instrumented"
+  ]
+}
