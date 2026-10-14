@@ -1,0 +1,246 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "acceleration-benefit-sol61",
+  "entry": "index.html",
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "inheritedFrom": "acceleration-benefit-r4-gallery-host-luna-r1",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format-srgb-view",
+    "linearLightPremultipliedAlpha": true,
+    "durationActorMs": 1000,
+    "repeatGapMs": 600,
+    "uniformBytes": 64
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "methods": [
+      "hold(elapsedMs, options)",
+      "setPhase(elapsedMs, options)",
+      "resume()",
+      "replay()"
+    ],
+    "holdRangeActorMs": [
+      0,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "options": [
+      "obs",
+      "sparkle",
+      "source",
+      "main",
+      "bodyResponse",
+      "includeActor",
+      "direction",
+      "reducedMotion"
+    ],
+    "waitsForGpuQueueCompletion": true,
+    "childFrame": true
+  },
+  "versionId": "acceleration-benefit-zero-sol61-r9",
+  "effectAuthor": "GPT-6.1-Sol",
+  "effectImplementationAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "not-accepted",
+  "technicalReplayStatus": "pending-native-webgpu",
+  "creativeIteration": 9,
+  "creativeIterationCap": 10,
+  "remainingCreativeIterations": 1,
+  "files": {
+    "effect.mjs": "cad837e9e129005ad770c847061c66f71a61c06759acf4e7ad62053796a5ec82",
+    "gallery-adapter.mjs": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+    "index.html": "960a6edb1d38c29a997ad356d592bc0127831888433d726aaaf241bb4c593cb8",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "validation": {
+    "status": "PASS_CPU_ONLY",
+    "checks": 3435,
+    "supportedGlintSamples": 2720,
+    "gapDiagnostic": [
+      {
+        "bodyHeight": 64,
+        "channelCenterSeparationPx": 3.7779456000000002,
+        "nominalCentralGapPx": 1.5983615999999998,
+        "centralSupport": 0,
+        "upperSupport": 1,
+        "lowerSupport": 1,
+        "limits": "CPU geometric projections, not actual displayed counts/contrast"
+      },
+      {
+        "bodyHeight": 192,
+        "channelCenterSeparationPx": 11.3338368,
+        "nominalCentralGapPx": 4.7950848,
+        "centralSupport": 0,
+        "upperSupport": 1,
+        "lowerSupport": 1,
+        "limits": "CPU geometric projections, not actual displayed counts/contrast"
+      }
+    ],
+    "counts": [
+      {
+        "ms": 100,
+        "beforeAbovePoint2": 6,
+        "afterAbovePoint2": 6,
+        "afterFluxSum": 4.4661077701689464
+      },
+      {
+        "ms": 200,
+        "beforeAbovePoint2": 12,
+        "afterAbovePoint2": 12,
+        "afterFluxSum": 8.743151351001856
+      },
+      {
+        "ms": 300,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 1.9337776397246227
+      },
+      {
+        "ms": 400,
+        "beforeAbovePoint2": 12,
+        "afterAbovePoint2": 12,
+        "afterFluxSum": 9.739869803243833
+      },
+      {
+        "ms": 500,
+        "beforeAbovePoint2": 12,
+        "afterAbovePoint2": 12,
+        "afterFluxSum": 8.506419795095109
+      },
+      {
+        "ms": 600,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 4.153278300694788
+      },
+      {
+        "ms": 700,
+        "beforeAbovePoint2": 16,
+        "afterAbovePoint2": 16,
+        "afterFluxSum": 12.63873935945685
+      },
+      {
+        "ms": 780,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 2.8042111469210114
+      },
+      {
+        "ms": 800,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 1.1167580065794926
+      },
+      {
+        "ms": 820,
+        "beforeAbovePoint2": 0,
+        "afterAbovePoint2": 0,
+        "afterFluxSum": 0
+      },
+      {
+        "ms": 850,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 3.7751924721614367
+      },
+      {
+        "ms": 900,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 3.141216137551844
+      },
+      {
+        "ms": 940,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 1.746606257094719
+      },
+      {
+        "ms": 999,
+        "beforeAbovePoint2": 0,
+        "afterAbovePoint2": 0,
+        "afterFluxSum": 0
+      },
+      {
+        "ms": 1000,
+        "beforeAbovePoint2": 0,
+        "afterAbovePoint2": 0,
+        "afterFluxSum": 0
+      }
+    ],
+    "audio": [
+      {
+        "rate": 8000,
+        "samples": 7840,
+        "sha256": "dcdd71725f6d9e8192c0104910af2a78a0b02c230d92dffe786bd56677164eb4"
+      },
+      {
+        "rate": 48000,
+        "samples": 47040,
+        "sha256": "042167cb883e9cfea9d55bd017f5af41389ce47b9d0be68eb3753e0bff47e148"
+      },
+      {
+        "rate": 192000,
+        "samples": 188160,
+        "sha256": "32615332de90258b47bd7447de556671825465b64862998549ce0ee114188d0d"
+      }
+    ],
+    "nativeWgslCompilation": "not_run",
+    "nativeWebGpu": "not_run",
+    "perceivedGlintCount": "not_observed",
+    "quality": "not_accepted",
+    "ordinarySfxListening": "not_observed",
+    "nativeForbidden": "1",
+    "nodeSyntax": {
+      "effect": "passed",
+      "adapter": "passed",
+      "test": "passed"
+    },
+    "shaderStaticValidation": "balanced delimiters and actual runtime mechanism assertions only; GPU compilation not_run",
+    "limits": "CPU geometry/support/causal diagnostics; actual R9 display/native/optical/acoustic/full lifetime quality not_run"
+  },
+  "derivative": {
+    "sourceVersion": "acceleration-benefit-zero-sol61-r8",
+    "sourcePackageManifestSha256": "3a3f5bb7779a5dfbdac3ca292eb9e6bb906a38198b2d805a97e221f9b0bb1201",
+    "sourceEffectSha256": "73dc58cd9a77634a4810cb6d01c45d3df72e9bc0f96edb0713989fd6ea9e2323",
+    "sourceReadySha256": "fa5612787aa01437309f4b5dbd20dad5e822df990bfc1ab1fb6389852527bab0",
+    "actualR8ReviewSha256": "8126e912f08c026977ff5665be44ba002bbaee64bdbc1b6e149f5d0111a98b25",
+    "authorizedCorrection": "Explicit human throughR10 grant, R9 after actual R8 review: broad finite medium support/density geometry readable at H64",
+    "historicalSourceAuthors": {
+      "creative": "GPT-6.1-Sol",
+      "implementation": "GPT-6.1-Sol",
+      "host": "GPT-6-Luna"
+    },
+    "publicationByWorker": false,
+    "qualityAccepted": false,
+    "noR10BeforeActualR9Review": true,
+    "noR11": true
+  },
+  "validationArtifacts": {
+    "ASSIGNMENT.json": "d91a381a1e3fc0759538d1292b0f44d81bc5704fb7e047c1fd3f7e0b4c2eb98a",
+    "DESIGN-NOTE.json": "8a9a42a1274498f678c2807c4b09e049fac3875cfbedb1ed96ed8c51556b6481",
+    "test-effect-r9.mjs": "78c3e4bb3a1812455460b4be4dc57236cb43d2e9d65c7c78409b709b0646ce96",
+    "TEST-RESULTS.json": "a6c9ee7a44b0eee7091b7893b47b91d01800b68edab528064c275a7d29d26044",
+    "SOURCE-PINS.json": "3e6d25114fcf8383d942ab9f9283da4568b28cdbe335269eaf0487b58061dfc1",
+    "IMPLEMENTATION-NOTE.md": "6150fa26c3e654c6efc6f1935f8d92e0c31af3b43cbf371e85511b0aa7daf5b7",
+    "INITIAL-TEST-FAILURE.json": "d227165d21fefcc1c2a428e9e2202790de23458cbdea03f1201d9135a5d3976f"
+  },
+  "candidateStatus": "cpu-validated-immutable-ready-for-root-native"
+}
