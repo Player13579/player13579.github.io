@@ -1,0 +1,126 @@
+{
+  "schema": "fire-zero-creative-revision/v1",
+  "id": "fire-zero-sol61-r3",
+  "creativeRevision": 3,
+  "cap": 5,
+  "creativeAuthor": "GPT-6.1-Sol",
+  "authors": {
+    "newCreativeDesign": "GPT-6.1-Sol",
+    "currentIndependentCpuValidation": "GPT-6-Luna",
+    "historicalR2A2LifecycleRepair": "GPT-6-Luna"
+  },
+  "modelCatalog": {
+    "path": "C:/Users/user/.codex/models_cache.json",
+    "fetchedAt": "2026-10-14T11:59:56.446037100Z",
+    "models": [
+      {
+        "slug": "gpt-6.1-sol",
+        "displayName": "GPT-6.1-Sol"
+      },
+      {
+        "slug": "gpt-6-luna",
+        "displayName": "GPT-6-Luna"
+      }
+    ]
+  },
+  "currentAcceptedWorkShares": [
+    {
+      "model": "GPT-6.1-Sol",
+      "percent": 85,
+      "work": "R3 real gas-shape/emissivity/curvature/sampling design and code; evidence synthesis and package integration"
+    },
+    {
+      "model": "GPT-6-Luna",
+      "percent": 15,
+      "work": "Actual source-bound CPU entry45 checks, syntax/hash/currentness and static shader review, no source edits"
+    }
+  ],
+  "predecessor": {
+    "root": "../fire-zero-sol-r2-production-a2",
+    "packageManifest": {
+      "path": "PACKAGE.json",
+      "bytes": 1520,
+      "sha256": "ccde3daedfdb8fdbf500940f62958b86287d4c7178a8daed1faeff98ce23c710"
+    },
+    "packageSeal": {
+      "path": "PACKAGE-SEAL.json",
+      "bytes": 2092,
+      "sha256": "ae6e31074558602d3f18f9027fd28008c4d8632d68d014e482301af50a640c07"
+    },
+    "sourceManifest": {
+      "path": "SOURCE-MANIFEST.json",
+      "bytes": 1259,
+      "sha256": "f91198df200fc8cccd00eff18df21f959e88c95384334789f4cecf5861750cf4"
+    }
+  },
+  "inputBoundary": {
+    "oldPreZeroFireRead": false,
+    "allowed": "NewzeroR2A2 and its real native review only, current generic B/DVA rules"
+  },
+  "actualQualityInput": {
+    "path": "../fire-r2-actual-quality-sol-a1/REPORT.json",
+    "bytes": 65462,
+    "sha256": "1bab33cedc66595b9f72673230dde6b693034babafc62358054701d0b2a5a2a0"
+  },
+  "viewedPngs": [
+    {
+      "path": "../fire-r2-native-root-a1/dark-all.png",
+      "bytes": 930898,
+      "sha256": "7acfff06ea3a65ed2216f1f20c9fafa5b25744e3ec37d61365fd01713617977a"
+    },
+    {
+      "path": "../fire-r2-native-root-a1/dark-main-only.png",
+      "bytes": 839644,
+      "sha256": "8904d8128f3283b6289a7e49914b89c9fa6e4a13fb13519418eb5b28e4e2ad0a"
+    }
+  ],
+  "creativeChanges": [
+    "Swept x/z centerlines, broad rolled necks and curvature increasing into tips; width smoothly approaches zero rather than flatcap cutoff",
+    "Cooler lower-emission fuel interior and narrow brighter reaction interface, independent density and emissivity fields; intense hot root core retained",
+    "Gas flow and cutoff share .115L/world-height transport;32 depth samples with consistent stepLength normalization"
+  ],
+  "preserved": [
+    "L2600/gap850/extent1.1/H64 synthetic fixture default",
+    "Root-connected ignition/root-first cutoff/finite expiry zero",
+    "R2A2 actualfirstFrame/timer/samecause/strictretire/audio generic contract",
+    "Two WebGPU passes, separate source/received/observer controls and unchanged observer shader"
+  ],
+  "sourcePreservation": {
+    "runtimeExactR2A2": true,
+    "previewOnlyIdentityChange": true
+  },
+  "cpuEvidence": {
+    "report": {
+      "path": "../fire-zero-sol-r3-cpu-acceptance-luna-a1/REPORT.json",
+      "bytes": 6028,
+      "sha256": "14bcf781603968037a539f2fd58263fe446806ac1c83ac82dccb17974dfac250"
+    },
+    "result": {
+      "path": "../fire-zero-sol-r3-cpu-acceptance-luna-a1/CPU-RESULT.json",
+      "bytes": 4131,
+      "sha256": "1ba537858511689696ad14783da2990f7b97aab1e832aca00d96168d203b8d2a"
+    },
+    "checks": 45,
+    "CPUOnly": true
+  },
+  "shaderStaticLimits": {
+    "previewDiffFromR2A2": "equal after replacing only fire-zero-sol61-r3→r2 and __fireZeroR3→R2",
+    "previewNormalizedEqual": true,
+    "runtimeBytesMatchR2A2": true,
+    "knownReservedIdentifierActiveAbsent": true,
+    "fullCurrentReservedTableAvailable": false,
+    "actualWGSLCompilation": "not_run",
+    "phWorldPipelinePresent": true,
+    "PHVolumeShaderChangedFromR2": true,
+    "volumeShaderHas32FilmSamplesAndStepLengthAndNormalization": true,
+    "volumeBytes": 6703,
+    "noCanvas2D": true,
+    "noRasterDependencies": true
+  },
+  "publication": false,
+  "nativeRun": false,
+  "qualityAccepted": false,
+  "normalSfxListening": false,
+  "userAdopted": false,
+  "gameIntegration": false
+}
