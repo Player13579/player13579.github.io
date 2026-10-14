@@ -1,0 +1,325 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "acceleration-benefit-sol61",
+  "entry": "index.html",
+  "actor": {
+    "fixtureSourceSha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+    "inheritedFrom": "acceleration-benefit-r4-gallery-host-luna-r1",
+    "crop": {
+      "x": 62,
+      "y": 15,
+      "width": 136,
+      "height": 225
+    },
+    "textureFormat": "rgba8unorm-srgb",
+    "bodyHeightCssPx": 64,
+    "bodyAspect": "136/225",
+    "clockScale": 2
+  },
+  "rendering": {
+    "canvasContext": "webgpu",
+    "surfaceViewFormat": "preferred-canvas-format-srgb-view",
+    "linearLightPremultipliedAlpha": true,
+    "durationActorMs": 1000,
+    "repeatGapMs": 600,
+    "uniformBytes": 64
+  },
+  "verificationApi": {
+    "requiresQuery": "verify",
+    "methods": [
+      "hold(elapsedMs, options)",
+      "setPhase(elapsedMs, options)",
+      "resume()",
+      "replay()"
+    ],
+    "holdRangeActorMs": [
+      0,
+      1000
+    ],
+    "bodyHeightsCssPx": [
+      64,
+      192
+    ],
+    "options": [
+      "obs",
+      "sparkle",
+      "source",
+      "main",
+      "bodyResponse",
+      "includeActor",
+      "direction",
+      "reducedMotion"
+    ],
+    "waitsForGpuQueueCompletion": true,
+    "childFrame": true
+  },
+  "versionId": "acceleration-benefit-zero-sol61-r10",
+  "effectAuthor": "GPT-6.1-Sol",
+  "effectImplementationAuthor": "GPT-6.1-Sol",
+  "technicalHostAuthor": "GPT-6-Luna",
+  "adoption": "unadopted",
+  "qualityStatus": "not-accepted",
+  "technicalReplayStatus": "pending-native-webgpu",
+  "creativeIteration": 10,
+  "creativeIterationCap": 10,
+  "remainingCreativeIterations": 0,
+  "files": {
+    "effect.mjs": "64e1968a866ac2e60fbdb4319a4cf21dd963348c58c2aeb86d1e06d82e54e749",
+    "gallery-adapter.mjs": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf",
+    "index.html": "601fc61f95b275b9e2b3d4fb769d4e4ad4d53475af7eef9b8675f562e140dd85",
+    "body.png": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+  },
+  "validation": {
+    "status": "PASS_CPU_ONLY",
+    "checks": 3469,
+    "supportedGlintSamples": 2720,
+    "gapDiagnostic": [
+      {
+        "bodyHeight": 64,
+        "channelCenterSeparationPx": 3.7779456000000002,
+        "nominalCentralGapPx": 1.5983615999999998,
+        "centralSupport": 0,
+        "upperSupport": 1,
+        "lowerSupport": 1,
+        "limits": "CPU geometric projections, not actual displayed counts/contrast"
+      },
+      {
+        "bodyHeight": 192,
+        "channelCenterSeparationPx": 11.3338368,
+        "nominalCentralGapPx": 4.7950848,
+        "centralSupport": 0,
+        "upperSupport": 1,
+        "lowerSupport": 1,
+        "limits": "CPU geometric projections, not actual displayed counts/contrast"
+      }
+    ],
+    "opticalDiagnostics": [
+      {
+        "ms": 200,
+        "roundRadialAcross": 0.24999999999999933,
+        "roundRadialDepth": 0.25000000000000033,
+        "centerColumn": {
+          "density": 0.03391152307645128,
+          "bodyEmission": 0.030816762041073427,
+          "blueOpticalDepth": 0.27129218461161025
+        },
+        "edgeColumn": {
+          "density": 0.015257556699840889,
+          "bodyEmission": 0.016704866256325182,
+          "blueOpticalDepth": 0.12206045359872711
+        },
+        "oldReferenceBodyEmission": 0.030816751082804086,
+        "bodyEmissionRatio": 1.0000003555945698,
+        "scope": "CPU continuous column model, not actual screen depth/quality"
+      },
+      {
+        "ms": 360,
+        "roundRadialAcross": 0.2499999999999989,
+        "roundRadialDepth": 0.2500000000000001,
+        "centerColumn": {
+          "density": 0.04284398417530382,
+          "bodyEmission": 0.02556120550580914,
+          "blueOpticalDepth": 0.3427518734024306
+        },
+        "edgeColumn": {
+          "density": 0.019272167197215893,
+          "bodyEmission": 0.013853639376232539,
+          "blueOpticalDepth": 0.15417733757772714
+        },
+        "oldReferenceBodyEmission": 0.025561192631260683,
+        "bodyEmissionRatio": 1.0000005036755775,
+        "scope": "CPU continuous column model, not actual screen depth/quality"
+      }
+    ],
+    "quadrature": [
+      {
+        "ms": 200,
+        "zLow": -0.049794252077562315,
+        "zHigh": 0.10965574792243767,
+        "actual31": 0.03259448222913025,
+        "reference4096": 0.03391151610111964,
+        "relativeError": 0.038837363332921246,
+        "scope": "CPU integration comparison only, GPU/native timing/output not observed"
+      },
+      {
+        "ms": 400,
+        "zLow": -0.09549050957614953,
+        "zHigh": 0.11642421874999997,
+        "actual31": 0.03393809372918242,
+        "reference4096": 0.033911515109414044,
+        "relativeError": 0.0007837638537417176,
+        "scope": "CPU integration comparison only, GPU/native timing/output not observed"
+      },
+      {
+        "ms": 600,
+        "zLow": -0.0941798523196233,
+        "zHigh": 0.12271316568047337,
+        "actual31": 0.0324622771365899,
+        "reference4096": 0.033911512065970886,
+        "relativeError": 0.042735780302620305,
+        "scope": "CPU integration comparison only, GPU/native timing/output not observed"
+      },
+      {
+        "ms": 800,
+        "zLow": -0.09236125308126733,
+        "zHigh": 0.03750918207535017,
+        "actual31": 0.04103885692420334,
+        "reference4096": 0.04209437605409435,
+        "relativeError": 0.025075062961726603,
+        "scope": "CPU integration comparison only, GPU/native timing/output not observed"
+      }
+    ],
+    "counts": [
+      {
+        "ms": 100,
+        "beforeAbovePoint2": 6,
+        "afterAbovePoint2": 6,
+        "afterFluxSum": 4.4661077701689464
+      },
+      {
+        "ms": 200,
+        "beforeAbovePoint2": 12,
+        "afterAbovePoint2": 12,
+        "afterFluxSum": 8.743151351001856
+      },
+      {
+        "ms": 300,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 1.9337776397246227
+      },
+      {
+        "ms": 400,
+        "beforeAbovePoint2": 12,
+        "afterAbovePoint2": 12,
+        "afterFluxSum": 9.739869803243833
+      },
+      {
+        "ms": 500,
+        "beforeAbovePoint2": 12,
+        "afterAbovePoint2": 12,
+        "afterFluxSum": 8.506419795095109
+      },
+      {
+        "ms": 600,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 4.153278300694788
+      },
+      {
+        "ms": 700,
+        "beforeAbovePoint2": 16,
+        "afterAbovePoint2": 16,
+        "afterFluxSum": 12.63873935945685
+      },
+      {
+        "ms": 780,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 2.8042111469210114
+      },
+      {
+        "ms": 800,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 1.1167580065794926
+      },
+      {
+        "ms": 820,
+        "beforeAbovePoint2": 0,
+        "afterAbovePoint2": 0,
+        "afterFluxSum": 0
+      },
+      {
+        "ms": 850,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 3.7751924721614367
+      },
+      {
+        "ms": 900,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 3.141216137551844
+      },
+      {
+        "ms": 940,
+        "beforeAbovePoint2": 4,
+        "afterAbovePoint2": 4,
+        "afterFluxSum": 1.746606257094719
+      },
+      {
+        "ms": 999,
+        "beforeAbovePoint2": 0,
+        "afterAbovePoint2": 0,
+        "afterFluxSum": 0
+      },
+      {
+        "ms": 1000,
+        "beforeAbovePoint2": 0,
+        "afterAbovePoint2": 0,
+        "afterFluxSum": 0
+      }
+    ],
+    "audio": [
+      {
+        "rate": 8000,
+        "samples": 7840,
+        "sha256": "dcdd71725f6d9e8192c0104910af2a78a0b02c230d92dffe786bd56677164eb4"
+      },
+      {
+        "rate": 48000,
+        "samples": 47040,
+        "sha256": "042167cb883e9cfea9d55bd017f5af41389ce47b9d0be68eb3753e0bff47e148"
+      },
+      {
+        "rate": 192000,
+        "samples": 188160,
+        "sha256": "32615332de90258b47bd7447de556671825465b64862998549ce0ee114188d0d"
+      }
+    ],
+    "nativeWgslCompilation": "not_run",
+    "nativeWebGpu": "not_run",
+    "perceivedGlintCount": "not_observed",
+    "quality": "not_accepted",
+    "ordinarySfxListening": "not_observed",
+    "nativeForbidden": "1",
+    "nodeSyntax": {
+      "effect": "passed",
+      "adapter": "passed",
+      "test": "passed"
+    },
+    "shaderValidation": "CPU actual-mechanism/static-delimiter checks; native WGSL compilation not_run",
+    "initialFailures": "none in R10 production/test executions",
+    "limits": "CPU geometry/opticaldepth/integration/source diagnostics only; native WGSL/output/optical/full-lifetime/audio quality not accepted"
+  },
+  "derivative": {
+    "sourceVersion": "acceleration-benefit-zero-sol61-r9",
+    "sourcePackageManifestSha256": "99b6b7c7b18b25f9a8bf952f5edf221af2731128e85816d13b3e8cddeafb6381",
+    "sourceEffectSha256": "cad837e9e129005ad770c847061c66f71a61c06759acf4e7ad62053796a5ec82",
+    "sourceReadySha256": "fd13618bc7a5625c4fa7b1e81080be55f7826b4462c8c13437785e93d30e1558",
+    "actualR9ReviewSha256": "c03602a1b8d452ad6af21e97db4fc0599c58e109be21a709cba83d8aa9b62ef4",
+    "authorizedCorrection": "Final R10 under explicit human throughR10 grant after actual R9 review: rounded medium/depth/coherence, preserve observed H64 gap and600ms glints",
+    "historicalSourceAuthors": {
+      "creative": "GPT-6.1-Sol",
+      "implementation": "GPT-6.1-Sol",
+      "host": "GPT-6-Luna"
+    },
+    "publicationByWorker": false,
+    "qualityAccepted": false,
+    "noR11": true
+  },
+  "validationArtifacts": {
+    "ASSIGNMENT.json": "c22f3fcf5b6c87f433f069dee7d8fdfaa6250a60c6a0f8a4c211d9963a4f58d7",
+    "DESIGN-NOTE.json": "fe461eea623b9404e9428e3e83bb193d10ce3a4c347b20114f9b96c949029eaf",
+    "test-effect-r10.mjs": "05c36b6e5f3a3f5b0acb6a04587b5293e56d8d33e81dc31b244d95a6df8828b2",
+    "TEST-RESULTS.json": "28e84b0cec23bc3836a4b84843bd9d61939f466375253ef57ae3cfb9bfc5adc7",
+    "SOURCE-PINS.json": "44ce55db5a4b6c775f7ec10fad63eaf523a1e01cb237bfcf48c00008c30e274d",
+    "IMPLEMENTATION-NOTE.md": "9c83a63fc5e1a52752e7c8dcb85725f57d71d3c86d9e64453293f988fbc4a2b4"
+  },
+  "candidateStatus": "cpu-validated-immutable-ready-for-root-native",
+  "creativeIterationStopped": true,
+  "userReviewStatus": "waiting",
+  "userReviewReason": "creative-edition-limit",
+  "noR11": true
+}
