@@ -1,0 +1,36 @@
+{
+  "schema": "shooting-gpu-gated-sfx-technical-provenance/v1",
+  "versionID": "gunner-shooting-unified-sol61-r4-causal-exhaust",
+  "parents": {
+    "sourceManifestSha256": "fa9be0ec9e630af908c40255c532dd881696f260af0d1ad00031c72630de7db5",
+    "outerPackageManifestSha256": "22eab98524f5d2d3bf3bbfc48e475852351e1f7504646bae83e224fb15924bfa",
+    "sourceProvenanceSha256": "3512c0e583934876f897e1822a5833a520abd2a204c5d8064ec55e5f8ff434a9"
+  },
+  "creativeAuthor": "GPT-6.1-Sol",
+  "technicalOwner": "GPT-6-Luna",
+  "creativeIncrement": 0,
+  "changedFiles": [
+    "leaves/other/runtime.mjs",
+    "leaves/other/sfx.mjs",
+    "leaves/other/contract.mjs"
+  ],
+  "unchanged": {
+    "shaderFormulaAndWGSL": true,
+    "pcmSynthesizerWaveformBytes": true,
+    "handgun": true,
+    "originalAdapterAndSourceHistory": true
+  },
+  "validation": {
+    "cpu": "PASS_CPU_FAKE_GPU_REAL_RUNTIME_AND_SFX",
+    "cpuResultSha256": "c427357f11244a3c0db3da47030d13902409cc5200900fb1c8414e5e5056d145",
+    "native": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "server": "NOT_RUN",
+    "normalListening": "NOT_RUN",
+    "gallery": "NOT_CONFIRMED"
+  },
+  "history": {
+    "originalClosurePreservedVerbatimUnder": "input-manifests/r4-causal-exhaust",
+    "priorStoppedAttempt": "An earlier metadata preflight stopped before writes because it incorrectly expected 9 nested files; originals confirmed 10 and the corrected closure preserves all 10."
+  }
+}
