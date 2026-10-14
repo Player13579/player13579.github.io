@@ -1,0 +1,65 @@
+{
+  "schema": "dva-human-added-quality-evidence-summary/v1",
+  "versionId": "human-transmutation-added-improvement-sol61-r3",
+  "qualityStatus": "partial",
+  "qualityReviewStatus": "limited-static-pass-full-quality-unverified",
+  "qualityAccepted": false,
+  "fullQualityAccepted": false,
+  "sourceReportSha256": "ecb2b8ed897ef20ec8c9964202141777e895fff3e1f24c8f020de121b2fe990e",
+  "scope": {
+    "individuallyViewedBoundPng": 22,
+    "heightsCss": [
+      64,
+      128
+    ],
+    "phaseMs": [
+      0,
+      80,
+      200,
+      400,
+      600,
+      800,
+      1000,
+      1200,
+      1300
+    ],
+    "controlsAt600": [
+      "sourceOff",
+      "observerOff",
+      "glintsOff",
+      "restored"
+    ],
+    "naturalMovieVisuallyReviewed": false,
+    "auditoryAcceptance": false
+  },
+  "findings": [
+    {
+      "scope": "0–200ms",
+      "verdict": "limited-pass-stills",
+      "observation": "0ms is blank,80ms has a small mint-green foot onset;200ms shows lower-body material beneath a rising luminous front, at both sizes."
+    },
+    {
+      "scope": "400–800ms",
+      "verdict": "limited-pass-stills",
+      "observation": "Complete original image rows fix from lower body toward head; the already formed skirt/body remain while the front reaches upper body/head. No artificial left/right split or central missing-material channel is apparent in inspected frames."
+    },
+    {
+      "scope": "800–1000ms",
+      "verdict": "limited-pass-stills",
+      "observation": "The person becomes complete and readable; head/contour birth light diminishes. Several separated local cross glints occur on/near formed material during earlier200–800ms stages."
+    },
+    {
+      "scope": "1200/1300ms",
+      "verdict": "pass-terminal-held-pixels",
+      "observation": "Only the completed actor remains, with no visible E/glints.1200 and1300 PNGs are byte-identical at both sizes. The persistent revived actor is the result, not residual E."
+    }
+  ],
+  "limits": [
+    "Natural453samples/five1200ms traversals are technical clock evidence, not movie pixel/continuous-quality acceptance.",
+    "No normal-speed motion, repetition-frequency, exact contact-transition or stutter judgment.",
+    "No ordinary SFX listening/acoustic acceptance.",
+    "Observer/glint isolation was reviewed only at600ms H64.",
+    "Held screenshot identity is stable before/after completed GPU receipt; not atomic GPU texture readback."
+  ],
+  "additionalSeriesCreativeAllowance": "3/3 consumed; no new creative edition"
+}
