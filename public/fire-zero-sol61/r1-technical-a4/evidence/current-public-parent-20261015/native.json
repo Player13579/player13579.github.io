@@ -1,0 +1,495 @@
+{
+  "schema": "fire-current-public-parent-native/v1",
+  "versionId": "fire-zero-sol61-r1",
+  "scope": "limited current public parent WebGPU startup, completed first GPU frame, five complete active natural traversals followed by the next cause, and strict source-attached retirement",
+  "publicCommit": "127de151d17703fb7e721f7b6dc2d9c57ff9f423",
+  "rootRawSha256": "7842090d6d8fc6c8bd6340e62a932a9165a908d7110e3d4529461b67f3e39549",
+  "sourcePins": {
+    "schema": "fire-zero-gallery/v1",
+    "packageManifestSha256": "d84bf8e0f84c28816b5d2d357d0f74ef14db661738bf6884fe2384fd53aae82b",
+    "packageSealSha256": "5779a9dcc1c716aaa01ec0d3b1fc6bbecba241820e850a16f7ae504a0ff40357",
+    "sourceManifestSha256": "30a6ea59d6cd0524fe5e4e56b12b0d9443a1f0b02b2b632f37aede39e707471f",
+    "runtimeFiles": [
+      {
+        "path": "index.html",
+        "bytes": 1347,
+        "sha256": "a96c56d72f4f37dccc11ce2752cce735315c6308410e9ef78113e147f9a8b793"
+      },
+      {
+        "path": "preview.mjs",
+        "bytes": 12007,
+        "sha256": "7d6f1c85ee78188cfb353523e13ba8ca5c3c018f568c69228cdf68fd1aa6b72f"
+      },
+      {
+        "path": "fire-runtime.mjs",
+        "bytes": 8822,
+        "sha256": "68c3d02027a50d43244bb8d8a6abca6de1737aff2193ccf217369809f9f05f66"
+      },
+      {
+        "path": "fire-plan.mjs",
+        "bytes": 2098,
+        "sha256": "0cc6d111a69f84be0147ee3d0aac84bda36a681cf46ce382a7d00606aa6bd0d8"
+      },
+      {
+        "path": "fire-volume.wgsl",
+        "bytes": 4577,
+        "sha256": "44ec103188093f7cb611457baf50c819b9dc872d6b3df819b2e2ce1975e2c939"
+      },
+      {
+        "path": "fire-observer.wgsl",
+        "bytes": 1772,
+        "sha256": "61c43c1d066829b69ac43f426dae09397a817bbacd4afd99f74b9322860681cd"
+      },
+      {
+        "path": "fire-sfx.mjs",
+        "bytes": 8193,
+        "sha256": "4fdfbf443a230e4b3fec72c229dce900c18f1fc75f825263433bda63e4d75023"
+      }
+    ]
+  },
+  "startup": {
+    "schema": "dva-gallery-startup/v1",
+    "token": "c5764d529f6b1ded0870986b0a736b2a",
+    "versionId": "fire-zero-sol61-r1",
+    "attemptEpoch": 9,
+    "adapterSessionId": "2a154c77-9c89-4ec1-bcba-047e65686ae4",
+    "sourcePins": {
+      "schema": "fire-zero-gallery/v1",
+      "packageManifestSha256": "d84bf8e0f84c28816b5d2d357d0f74ef14db661738bf6884fe2384fd53aae82b",
+      "packageSealSha256": "5779a9dcc1c716aaa01ec0d3b1fc6bbecba241820e850a16f7ae504a0ff40357",
+      "sourceManifestSha256": "30a6ea59d6cd0524fe5e4e56b12b0d9443a1f0b02b2b632f37aede39e707471f",
+      "runtimeFiles": [
+        {
+          "path": "index.html",
+          "bytes": 1347,
+          "sha256": "a96c56d72f4f37dccc11ce2752cce735315c6308410e9ef78113e147f9a8b793"
+        },
+        {
+          "path": "preview.mjs",
+          "bytes": 12007,
+          "sha256": "7d6f1c85ee78188cfb353523e13ba8ca5c3c018f568c69228cdf68fd1aa6b72f"
+        },
+        {
+          "path": "fire-runtime.mjs",
+          "bytes": 8822,
+          "sha256": "68c3d02027a50d43244bb8d8a6abca6de1737aff2193ccf217369809f9f05f66"
+        },
+        {
+          "path": "fire-plan.mjs",
+          "bytes": 2098,
+          "sha256": "0cc6d111a69f84be0147ee3d0aac84bda36a681cf46ce382a7d00606aa6bd0d8"
+        },
+        {
+          "path": "fire-volume.wgsl",
+          "bytes": 4577,
+          "sha256": "44ec103188093f7cb611457baf50c819b9dc872d6b3df819b2e2ce1975e2c939"
+        },
+        {
+          "path": "fire-observer.wgsl",
+          "bytes": 1772,
+          "sha256": "61c43c1d066829b69ac43f426dae09397a817bbacd4afd99f74b9322860681cd"
+        },
+        {
+          "path": "fire-sfx.mjs",
+          "bytes": 8193,
+          "sha256": "4fdfbf443a230e4b3fec72c229dce900c18f1fc75f825263433bda63e4d75023"
+        }
+      ]
+    },
+    "sequence": 7,
+    "stage": "playing",
+    "status": "ready",
+    "error": null,
+    "firstFrame": {
+      "adapterSessionId": "2a154c77-9c89-4ec1-bcba-047e65686ae4",
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "gpuCompleted": true,
+      "plan": {
+        "active": true,
+        "sourceGain": 1
+      },
+      "submittedAgeEms": 9,
+      "submission": 1,
+      "canvasConnected": true,
+      "passes": 2,
+      "viewportWidth": 1930,
+      "viewportHeight": 1240,
+      "causeId": "fire-fixture-1",
+      "generation": 1,
+      "source": {
+        "path": "fire-runtime.mjs",
+        "bytes": 8822,
+        "sha256": "68c3d02027a50d43244bb8d8a6abca6de1737aff2193ccf217369809f9f05f66"
+      }
+    }
+  },
+  "firstFrame": {
+    "adapterSessionId": "2a154c77-9c89-4ec1-bcba-047e65686ae4",
+    "recorded": true,
+    "submitted": true,
+    "completed": true,
+    "gpuCompleted": true,
+    "plan": {
+      "active": true,
+      "sourceGain": 1
+    },
+    "submittedAgeEms": 9,
+    "submission": 1,
+    "canvasConnected": true,
+    "passes": 2,
+    "viewportWidth": 1930,
+    "viewportHeight": 1240,
+    "causeId": "fire-fixture-1",
+    "generation": 1,
+    "source": {
+      "path": "fire-runtime.mjs",
+      "bytes": 8822,
+      "sha256": "68c3d02027a50d43244bb8d8a6abca6de1737aff2193ccf217369809f9f05f66"
+    }
+  },
+  "completeActiveTraversalsWithNextCause": 5,
+  "naturalReceiptVisibilitySamples": 345,
+  "naturalDurationMs": 18299.39999999106,
+  "allSamplesFullyVisible": true,
+  "naturalLoops": [
+    {
+      "causeId": "fire-fixture-6",
+      "samples": 1,
+      "minSubmittedAgeEms": 594.9000000059605,
+      "maxSubmittedAgeEms": 594.9000000059605,
+      "maxCompletionAgeEms": 606.7999999970198,
+      "coversActiveLifetime": false,
+      "followedByNextCause": true
+    },
+    {
+      "causeId": "fire-fixture-7",
+      "samples": 65,
+      "minSubmittedAgeEms": 51.900000005960464,
+      "maxSubmittedAgeEms": 3455.4000000059605,
+      "maxCompletionAgeEms": 3465,
+      "coversActiveLifetime": true,
+      "followedByNextCause": true
+    },
+    {
+      "causeId": "fire-fixture-8",
+      "samples": 65,
+      "minSubmittedAgeEms": 18.200000002980232,
+      "maxSubmittedAgeEms": 3426,
+      "maxCompletionAgeEms": 3436.2000000029802,
+      "coversActiveLifetime": true,
+      "followedByNextCause": true
+    },
+    {
+      "causeId": "fire-fixture-9",
+      "samples": 66,
+      "minSubmittedAgeEms": 8.400000005960464,
+      "maxSubmittedAgeEms": 3461.2000000029802,
+      "maxCompletionAgeEms": 3472.7999999970198,
+      "coversActiveLifetime": true,
+      "followedByNextCause": true
+    },
+    {
+      "causeId": "fire-fixture-10",
+      "samples": 65,
+      "minSubmittedAgeEms": 40.69999998807907,
+      "maxSubmittedAgeEms": 3434,
+      "maxCompletionAgeEms": 3444.199999988079,
+      "coversActiveLifetime": true,
+      "followedByNextCause": true
+    },
+    {
+      "causeId": "fire-fixture-11",
+      "samples": 66,
+      "minSubmittedAgeEms": 8.099999994039536,
+      "maxSubmittedAgeEms": 3463.199999988079,
+      "maxCompletionAgeEms": 3473,
+      "coversActiveLifetime": true,
+      "followedByNextCause": true
+    },
+    {
+      "causeId": "fire-fixture-12",
+      "samples": 17,
+      "minSubmittedAgeEms": 18.899999991059303,
+      "maxSubmittedAgeEms": 868.2999999970198,
+      "maxCompletionAgeEms": 880.7999999970198,
+      "coversActiveLifetime": false,
+      "followedByNextCause": false
+    }
+  ],
+  "retirement": {
+    "parentAccepted": true,
+    "strictAttachedAccepted": true,
+    "accepted": true,
+    "observation": {
+      "versionId": "fire-zero-sol61-r1",
+      "attemptEpoch": 9,
+      "token": "c5764d529f6b1ded0870986b0a736b2a",
+      "adapterSessionId": "2a154c77-9c89-4ec1-bcba-047e65686ae4",
+      "sourceAttachedAtMessage": true,
+      "knownSource": true,
+      "origin": "https://player13579.github.io",
+      "sourceUrl": "https://player13579.github.io/public/fire-zero-sol61/r1-technical-a4/index.html?embed=1&galleryAutoLoop=1&galleryVersionId=fire-zero-sol61-r1&galleryPackageSchema=fire-zero-gallery%2Fv1&galleryPackageManifestSha256=d84bf8e0f84c28816b5d2d357d0f74ef14db661738bf6884fe2384fd53aae82b&galleryPackageSealSha256=5779a9dcc1c716aaa01ec0d3b1fc6bbecba241820e850a16f7ae504a0ff40357&gallerySourceManifestSha256=30a6ea59d6cd0524fe5e4e56b12b0d9443a1f0b02b2b632f37aede39e707471f&galleryRelease=vibe-record-diagnostic-20261001-r49&verify=1&height=64&galleryStartupToken=c5764d529f6b1ded0870986b0a736b2a&galleryAttemptEpoch=9",
+      "disconnectedAfterParentProcessing": true
+    },
+    "packet": {
+      "schema": "dva-gallery-startup/v1",
+      "token": "c5764d529f6b1ded0870986b0a736b2a",
+      "versionId": "fire-zero-sol61-r1",
+      "attemptEpoch": 9,
+      "adapterSessionId": "2a154c77-9c89-4ec1-bcba-047e65686ae4",
+      "sequence": 8,
+      "status": "cancelled",
+      "action": "retired",
+      "lifecycle": {
+        "schema": "fire-zero-retirement/v1",
+        "token": "c5764d529f6b1ded0870986b0a736b2a",
+        "versionId": "fire-zero-sol61-r1",
+        "attemptEpoch": 9,
+        "adapterSessionId": "2a154c77-9c89-4ec1-bcba-047e65686ae4",
+        "id": "fire-zero-sol61-r1",
+        "retired": true,
+        "disposeSettled": true,
+        "bootSettled": true,
+        "creationSettled": true,
+        "noQueuedOrActive": true,
+        "pending": 0,
+        "bootstrapTimer": {
+          "pending": false,
+          "settled": true,
+          "elapsedMs": 8.800000011920929
+        },
+        "submitted": 1874,
+        "completed": 1874,
+        "device": {
+          "sameOwnedDevice": true,
+          "drained": true,
+          "destroyCalled": true,
+          "lostReason": "destroyed"
+        },
+        "contextUnconfigured": true,
+        "resourcesRemaining": 0,
+        "audio": {
+          "edition": "fire-zero-sol61-r1",
+          "verify": true,
+          "muted": true,
+          "disposed": true,
+          "contextCreated": false,
+          "contextState": "absent",
+          "pendingVoices": 0,
+          "pendingUnlocks": 0,
+          "pendingTimers": 0,
+          "accepted": 0,
+          "rejected": 98,
+          "consumedCauses": [],
+          "errors": [],
+          "listeningAccepted": false,
+          "absent": true,
+          "closed": true,
+          "pending": 0,
+          "active": 0
+        },
+        "gpu": {
+          "id": "fire-zero-sol61-r1",
+          "retired": true,
+          "drained": true,
+          "sameOwnedDevice": true,
+          "destroyCalled": true,
+          "pending": 0,
+          "submission": 1874,
+          "completedSubmission": 1874,
+          "generation": 3,
+          "contextUnconfigured": true,
+          "resourcesRemaining": 0,
+          "lost": {
+            "reason": "destroyed",
+            "message": "Device was destroyed.",
+            "destroyCalled": true,
+            "retiring": true,
+            "retired": true
+          },
+          "errors": []
+        },
+        "sourcePins": {
+          "schema": "fire-zero-gallery/v1",
+          "packageManifestSha256": "d84bf8e0f84c28816b5d2d357d0f74ef14db661738bf6884fe2384fd53aae82b",
+          "packageSealSha256": "5779a9dcc1c716aaa01ec0d3b1fc6bbecba241820e850a16f7ae504a0ff40357",
+          "sourceManifestSha256": "30a6ea59d6cd0524fe5e4e56b12b0d9443a1f0b02b2b632f37aede39e707471f",
+          "runtimeFiles": [
+            {
+              "path": "index.html",
+              "bytes": 1347,
+              "sha256": "a96c56d72f4f37dccc11ce2752cce735315c6308410e9ef78113e147f9a8b793"
+            },
+            {
+              "path": "preview.mjs",
+              "bytes": 12007,
+              "sha256": "7d6f1c85ee78188cfb353523e13ba8ca5c3c018f568c69228cdf68fd1aa6b72f"
+            },
+            {
+              "path": "fire-runtime.mjs",
+              "bytes": 8822,
+              "sha256": "68c3d02027a50d43244bb8d8a6abca6de1737aff2193ccf217369809f9f05f66"
+            },
+            {
+              "path": "fire-plan.mjs",
+              "bytes": 2098,
+              "sha256": "0cc6d111a69f84be0147ee3d0aac84bda36a681cf46ce382a7d00606aa6bd0d8"
+            },
+            {
+              "path": "fire-volume.wgsl",
+              "bytes": 4577,
+              "sha256": "44ec103188093f7cb611457baf50c819b9dc872d6b3df819b2e2ce1975e2c939"
+            },
+            {
+              "path": "fire-observer.wgsl",
+              "bytes": 1772,
+              "sha256": "61c43c1d066829b69ac43f426dae09397a817bbacd4afd99f74b9322860681cd"
+            },
+            {
+              "path": "fire-sfx.mjs",
+              "bytes": 8193,
+              "sha256": "4fdfbf443a230e4b3fec72c229dce900c18f1fc75f825263433bda63e4d75023"
+            }
+          ]
+        },
+        "errors": []
+      }
+    },
+    "lifecycle": {
+      "schema": "fire-zero-retirement/v1",
+      "token": "c5764d529f6b1ded0870986b0a736b2a",
+      "versionId": "fire-zero-sol61-r1",
+      "attemptEpoch": 9,
+      "adapterSessionId": "2a154c77-9c89-4ec1-bcba-047e65686ae4",
+      "id": "fire-zero-sol61-r1",
+      "retired": true,
+      "disposeSettled": true,
+      "bootSettled": true,
+      "creationSettled": true,
+      "noQueuedOrActive": true,
+      "pending": 0,
+      "bootstrapTimer": {
+        "pending": false,
+        "settled": true,
+        "elapsedMs": 8.800000011920929
+      },
+      "submitted": 1874,
+      "completed": 1874,
+      "device": {
+        "sameOwnedDevice": true,
+        "drained": true,
+        "destroyCalled": true,
+        "lostReason": "destroyed"
+      },
+      "contextUnconfigured": true,
+      "resourcesRemaining": 0,
+      "audio": {
+        "edition": "fire-zero-sol61-r1",
+        "verify": true,
+        "muted": true,
+        "disposed": true,
+        "contextCreated": false,
+        "contextState": "absent",
+        "pendingVoices": 0,
+        "pendingUnlocks": 0,
+        "pendingTimers": 0,
+        "accepted": 0,
+        "rejected": 98,
+        "consumedCauses": [],
+        "errors": [],
+        "listeningAccepted": false,
+        "absent": true,
+        "closed": true,
+        "pending": 0,
+        "active": 0
+      },
+      "gpu": {
+        "id": "fire-zero-sol61-r1",
+        "retired": true,
+        "drained": true,
+        "sameOwnedDevice": true,
+        "destroyCalled": true,
+        "pending": 0,
+        "submission": 1874,
+        "completedSubmission": 1874,
+        "generation": 3,
+        "contextUnconfigured": true,
+        "resourcesRemaining": 0,
+        "lost": {
+          "reason": "destroyed",
+          "message": "Device was destroyed.",
+          "destroyCalled": true,
+          "retiring": true,
+          "retired": true
+        },
+        "errors": []
+      },
+      "sourcePins": {
+        "schema": "fire-zero-gallery/v1",
+        "packageManifestSha256": "d84bf8e0f84c28816b5d2d357d0f74ef14db661738bf6884fe2384fd53aae82b",
+        "packageSealSha256": "5779a9dcc1c716aaa01ec0d3b1fc6bbecba241820e850a16f7ae504a0ff40357",
+        "sourceManifestSha256": "30a6ea59d6cd0524fe5e4e56b12b0d9443a1f0b02b2b632f37aede39e707471f",
+        "runtimeFiles": [
+          {
+            "path": "index.html",
+            "bytes": 1347,
+            "sha256": "a96c56d72f4f37dccc11ce2752cce735315c6308410e9ef78113e147f9a8b793"
+          },
+          {
+            "path": "preview.mjs",
+            "bytes": 12007,
+            "sha256": "7d6f1c85ee78188cfb353523e13ba8ca5c3c018f568c69228cdf68fd1aa6b72f"
+          },
+          {
+            "path": "fire-runtime.mjs",
+            "bytes": 8822,
+            "sha256": "68c3d02027a50d43244bb8d8a6abca6de1737aff2193ccf217369809f9f05f66"
+          },
+          {
+            "path": "fire-plan.mjs",
+            "bytes": 2098,
+            "sha256": "0cc6d111a69f84be0147ee3d0aac84bda36a681cf46ce382a7d00606aa6bd0d8"
+          },
+          {
+            "path": "fire-volume.wgsl",
+            "bytes": 4577,
+            "sha256": "44ec103188093f7cb611457baf50c819b9dc872d6b3df819b2e2ce1975e2c939"
+          },
+          {
+            "path": "fire-observer.wgsl",
+            "bytes": 1772,
+            "sha256": "61c43c1d066829b69ac43f426dae09397a817bbacd4afd99f74b9322860681cd"
+          },
+          {
+            "path": "fire-sfx.mjs",
+            "bytes": 8193,
+            "sha256": "4fdfbf443a230e4b3fec72c229dce900c18f1fc75f825263433bda63e4d75023"
+          }
+        ]
+      },
+      "errors": []
+    }
+  },
+  "actualHttpSourceFiles": 10,
+  "ui": {
+    "screenshotSha256": "0c4868675878bb5f68f85d0a20490a4107ce670e4e624adba3ef8721071444d6",
+    "bytes": 636466,
+    "width": 2560,
+    "height": 1700,
+    "scope": "UI/visible-positive-source proof only; document clip; continuous redraw held clock, not a single-submission quality binding"
+  },
+  "rawProofSha256": "7842090d6d8fc6c8bd6340e62a932a9165a908d7110e3d4529461b67f3e39549",
+  "limits": [
+    "quality remains not accepted",
+    "no full visible-lifetime or continuous-motion acceptance",
+    "no normal audio listening, Safari/iPad, or game integration claim"
+  ],
+  "rootSummarySha256": "b1366680503d2b4c3e4429195badd19e72c84aecb405517ffd8751199d86fa00",
+  "status": "PASS_LIMITED_CURRENT_PUBLIC_PARENT_WEBGPU",
+  "qualityAccepted": false,
+  "ordinarySfxListening": "not_observed",
+  "safariReplayStatus": "unverified",
+  "gameIntegrationStatus": "not_connected"
+}
