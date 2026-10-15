@@ -1,0 +1,380 @@
+{
+  "schema": "ability-r8-current-parent-limited/v1",
+  "status": "PASS_LIMITED_CURRENT_PARENT",
+  "candidateAssetGallerySha256": "29cea6fb710b8f2fedda7d21df752785175dca0719fb5a5396ccfca3d3ce5cf0",
+  "candidateHtmlSha256": "0cd51c456b53a4ca5650b2aabe686981826f2cb3e151f6176d6add96bf3487ad",
+  "releaseAssetGallerySha256": "16d353e23ac1fe1f09e31b428eb101af76a952c3bc684faaf5837fdbfbcd1f55",
+  "releaseHtmlSha256": "88e0cd860bae150a4400a99ec6da0984c299b045627fb8b45b0e4d3fadf2d7d8",
+  "packageManifestSha256": "d69373f2b214883bc0aeaafee1ae36c9c62cb748cdf972b6f9ac243c4a22ed33",
+  "packageSealSha256": "8f06e96d80f9f391ab836ef526d7bf7afca1974ce88fdc0d8d4d292c3db661d5",
+  "sourceManifestSha256": "195951999edbeeca6f900b212d9ed8bd72ad2a81675d370dabc512bbe9004717",
+  "sampleCount": 92,
+  "distinctLoopCauses": 5,
+  "verifyMutedAll": true,
+  "voicesAllZero": true,
+  "attachedRetirementAck": {
+    "attached": true,
+    "canvasAttached": true,
+    "data": {
+      "schema": "dva-gallery-startup/v1",
+      "action": "retired",
+      "stage": "playing",
+      "status": "cancelled",
+      "token": "58448c109346e0289ea48bd51ee0e7b0",
+      "versionId": "ability-entitlement-sol61-r8",
+      "attemptEpoch": 1,
+      "sequence": 7,
+      "packageSchema": "ability-entitlement-attached-retirement/v1",
+      "packageManifestSha256": "d69373f2b214883bc0aeaafee1ae36c9c62cb748cdf972b6f9ac243c4a22ed33",
+      "packageSealSha256": "8f06e96d80f9f391ab836ef526d7bf7afca1974ce88fdc0d8d4d292c3db661d5",
+      "sourceManifestSha256": "195951999edbeeca6f900b212d9ed8bd72ad2a81675d370dabc512bbe9004717",
+      "adapterSessionId": "9e430ea9-ace2-4fef-a774-e8acaad9b3d9",
+      "canvasConnected": true,
+      "attached": true,
+      "runtimeSnapshot": {
+        "versionId": "ability-entitlement-sol61-r8",
+        "lifeMs": 1160,
+        "status": "stopped",
+        "mode": "stopped",
+        "ready": false,
+        "disposed": true,
+        "disposeCompleted": true,
+        "verify": true,
+        "muted": true,
+        "gpuError": null,
+        "deviceLost": {
+          "reason": "destroyed",
+          "message": "Device was destroyed.",
+          "expected": true,
+          "owned": true
+        },
+        "retirementErrors": [],
+        "causeKey": null,
+        "generation": 350,
+        "submitted": 350,
+        "completed": 350,
+        "lastReceipt": {
+          "sequence": 350,
+          "causeKey": "[\"fixture-room-1\",\"fixture-session-1\",\"fixture-self-1\",\"fixture-replay-55c912cb-a09d-4348-a33c-3a1e988d38cb\",\"gunner-special-ammo\"]",
+          "ageMs": 1178.1000000089407,
+          "phase": "expired",
+          "plan": {
+            "causeKey": "[\"fixture-room-1\",\"fixture-session-1\",\"fixture-self-1\",\"fixture-replay-55c912cb-a09d-4348-a33c-3a1e988d38cb\",\"gunner-special-ammo\"]",
+            "roomId": "fixture-room-1",
+            "sessionId": "fixture-session-1",
+            "playerId": "fixture-self-1",
+            "abilityId": "gunner-special-ammo",
+            "source": [
+              240,
+              210
+            ],
+            "sourceHeight": 64,
+            "sourceRegistrationId": "fixture-self-projection-1",
+            "sourceGeneration": 1,
+            "targetRect": {
+              "x": 589.953125,
+              "y": 159.953125,
+              "width": 156,
+              "height": 46
+            },
+            "targetRegistrationId": "fixture-status-card-1",
+            "targetGeneration": 1,
+            "frameRegistrationId": 350,
+            "coordinateSpace": "canvas-css",
+            "gates": {
+              "sourceEnabled": true,
+              "nearEnabled": true,
+              "sparkleEnabled": true,
+              "observerEnabled": true
+            }
+          },
+          "uniforms": [
+            1960,
+            1240,
+            2,
+            0,
+            480,
+            420,
+            128,
+            0,
+            1179.90625,
+            319.90625,
+            312,
+            92,
+            1178.0999755859375,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1
+          ],
+          "uniformHash": "524820053ae82c3268f2fbc835ad9f622639f61f2a49d421a5ff6f60bd8b94e5",
+          "sourceHash": "9dd48f37fb03e854464c55bfe851e1f1f99f3b3176804458df81c93af8ed0a53",
+          "shaderHashes": [
+            "66b2623429c7e9ec9942afc32687167a9baf817ad71078fbd7aa09ddf8a5a0c1",
+            "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9",
+            "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5"
+          ],
+          "hostBaselineShaderHash": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f",
+          "viewport": {
+            "cssWidth": 980,
+            "cssHeight": 620,
+            "width": 1960,
+            "height": 1240,
+            "dpr": 2
+          },
+          "submittedAt": 22304.79999999702,
+          "completedAt": 22333.09999999404
+        },
+        "rafScheduled": false,
+        "activeVoices": 0,
+        "width": 1960,
+        "height": 1240,
+        "diagnosticAge": null,
+        "submission": {
+          "sequence": 350,
+          "causeKey": "[\"fixture-room-1\",\"fixture-session-1\",\"fixture-self-1\",\"fixture-replay-55c912cb-a09d-4348-a33c-3a1e988d38cb\",\"gunner-special-ammo\"]",
+          "ageMs": 1178.1000000089407,
+          "phase": "expired",
+          "plan": {
+            "causeKey": "[\"fixture-room-1\",\"fixture-session-1\",\"fixture-self-1\",\"fixture-replay-55c912cb-a09d-4348-a33c-3a1e988d38cb\",\"gunner-special-ammo\"]",
+            "roomId": "fixture-room-1",
+            "sessionId": "fixture-session-1",
+            "playerId": "fixture-self-1",
+            "abilityId": "gunner-special-ammo",
+            "source": [
+              240,
+              210
+            ],
+            "sourceHeight": 64,
+            "sourceRegistrationId": "fixture-self-projection-1",
+            "sourceGeneration": 1,
+            "targetRect": {
+              "x": 589.953125,
+              "y": 159.953125,
+              "width": 156,
+              "height": 46
+            },
+            "targetRegistrationId": "fixture-status-card-1",
+            "targetGeneration": 1,
+            "frameRegistrationId": 350,
+            "coordinateSpace": "canvas-css",
+            "gates": {
+              "sourceEnabled": true,
+              "nearEnabled": true,
+              "sparkleEnabled": true,
+              "observerEnabled": true
+            }
+          },
+          "uniforms": [
+            1960,
+            1240,
+            2,
+            0,
+            480,
+            420,
+            128,
+            0,
+            1179.90625,
+            319.90625,
+            312,
+            92,
+            1178.0999755859375,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1
+          ],
+          "uniformHash": "524820053ae82c3268f2fbc835ad9f622639f61f2a49d421a5ff6f60bd8b94e5",
+          "sourceHash": "9dd48f37fb03e854464c55bfe851e1f1f99f3b3176804458df81c93af8ed0a53",
+          "shaderHashes": [
+            "66b2623429c7e9ec9942afc32687167a9baf817ad71078fbd7aa09ddf8a5a0c1",
+            "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9",
+            "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5"
+          ],
+          "hostBaselineShaderHash": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f",
+          "viewport": {
+            "cssWidth": 980,
+            "cssHeight": 620,
+            "width": 1960,
+            "height": 1240,
+            "dpr": 2
+          },
+          "submittedAt": 22304.79999999702
+        },
+        "completion": {
+          "sequence": 350,
+          "causeKey": "[\"fixture-room-1\",\"fixture-session-1\",\"fixture-self-1\",\"fixture-replay-55c912cb-a09d-4348-a33c-3a1e988d38cb\",\"gunner-special-ammo\"]",
+          "ageMs": 1178.1000000089407,
+          "phase": "expired",
+          "plan": {
+            "causeKey": "[\"fixture-room-1\",\"fixture-session-1\",\"fixture-self-1\",\"fixture-replay-55c912cb-a09d-4348-a33c-3a1e988d38cb\",\"gunner-special-ammo\"]",
+            "roomId": "fixture-room-1",
+            "sessionId": "fixture-session-1",
+            "playerId": "fixture-self-1",
+            "abilityId": "gunner-special-ammo",
+            "source": [
+              240,
+              210
+            ],
+            "sourceHeight": 64,
+            "sourceRegistrationId": "fixture-self-projection-1",
+            "sourceGeneration": 1,
+            "targetRect": {
+              "x": 589.953125,
+              "y": 159.953125,
+              "width": 156,
+              "height": 46
+            },
+            "targetRegistrationId": "fixture-status-card-1",
+            "targetGeneration": 1,
+            "frameRegistrationId": 350,
+            "coordinateSpace": "canvas-css",
+            "gates": {
+              "sourceEnabled": true,
+              "nearEnabled": true,
+              "sparkleEnabled": true,
+              "observerEnabled": true
+            }
+          },
+          "uniforms": [
+            1960,
+            1240,
+            2,
+            0,
+            480,
+            420,
+            128,
+            0,
+            1179.90625,
+            319.90625,
+            312,
+            92,
+            1178.0999755859375,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1
+          ],
+          "uniformHash": "524820053ae82c3268f2fbc835ad9f622639f61f2a49d421a5ff6f60bd8b94e5",
+          "sourceHash": "9dd48f37fb03e854464c55bfe851e1f1f99f3b3176804458df81c93af8ed0a53",
+          "shaderHashes": [
+            "66b2623429c7e9ec9942afc32687167a9baf817ad71078fbd7aa09ddf8a5a0c1",
+            "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9",
+            "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5"
+          ],
+          "hostBaselineShaderHash": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f",
+          "viewport": {
+            "cssWidth": 980,
+            "cssHeight": 620,
+            "width": 1960,
+            "height": 1240,
+            "dpr": 2
+          },
+          "submittedAt": 22304.79999999702,
+          "completedAt": 22333.09999999404
+        },
+        "counts": {
+          "submitted": 350,
+          "completed": 350
+        },
+        "sourceHash": "9dd48f37fb03e854464c55bfe851e1f1f99f3b3176804458df81c93af8ed0a53",
+        "shaders": [
+          {
+            "name": "permission-source.wgsl",
+            "hash": "66b2623429c7e9ec9942afc32687167a9baf817ad71078fbd7aa09ddf8a5a0c1"
+          },
+          {
+            "name": "display-observer.wgsl",
+            "hash": "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9"
+          },
+          {
+            "name": "composite.wgsl",
+            "hash": "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5"
+          }
+        ],
+        "hostBaselineShaderHash": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f"
+      },
+      "retirementReceipt": {
+        "proofSchema": "ability-gallery-retirement/v1",
+        "disposeSettled": true,
+        "closed": true,
+        "initSettled": true,
+        "creationClosed": true,
+        "pendingInit": 0,
+        "pendingRender": 0,
+        "pumpStopped": true,
+        "resourcesCreated": 9,
+        "resourcesDestroyed": 9,
+        "resourcesDisposed": true,
+        "contextState": "unconfigured",
+        "cleanupErrors": [],
+        "audio": {
+          "disposeSettled": true,
+          "contextState": "absent",
+          "voicesRemaining": 0,
+          "gainsRemaining": 0,
+          "cleanupErrors": []
+        },
+        "teardown": "disposed",
+        "deviceLifecycle": "destroyed-loss-settled",
+        "variant": "destroyed",
+        "device": {
+          "status": "destroyed-loss-settled",
+          "drained": true,
+          "destroyCalled": true,
+          "lostReason": "destroyed"
+        }
+      }
+    }
+  },
+  "oldFrameRemovedAfterAck": true,
+  "replacementPlaying": true,
+  "finalRetirement": {
+    "proofSchema": "ability-gallery-retirement/v1",
+    "disposeSettled": true,
+    "closed": true,
+    "initSettled": true,
+    "creationClosed": true,
+    "pendingInit": 0,
+    "pendingRender": 0,
+    "pumpStopped": true,
+    "resourcesCreated": 9,
+    "resourcesDestroyed": 9,
+    "resourcesDisposed": true,
+    "contextState": "unconfigured",
+    "cleanupErrors": [],
+    "audio": {
+      "disposeSettled": true,
+      "contextState": "absent",
+      "voicesRemaining": 0,
+      "gainsRemaining": 0,
+      "cleanupErrors": []
+    },
+    "teardown": "disposed",
+    "deviceLifecycle": "destroyed-loss-settled",
+    "variant": "destroyed",
+    "device": {
+      "status": "destroyed-loss-settled",
+      "drained": true,
+      "destroyCalled": true,
+      "lostReason": "destroyed"
+    }
+  },
+  "rawEvidenceSha256": "33e2d2cbbe024b39651aad7e097f019e097054339119fc85e02e13a0ad4ee24c",
+  "consoleClean": "not_assessed",
+  "limits": [
+    "Limited diagnostic-frame visual acceptance; full natural continuity quality and normal SFX listening unaccepted",
+    "Safari, game integration and user adoption unaccepted",
+    "Root-owned local verification server initially used wrong dependency directory; preserved fixture correction, not public bug evidence"
+  ],
+  "at": "2026-10-15T02:33:17.638Z"
+}
