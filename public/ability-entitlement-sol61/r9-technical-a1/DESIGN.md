@@ -1,0 +1,11 @@
+# Ability Entitlement R9 — simultaneous owned contour
+
+Creative author GPT-6.1-Sol. Edition9/10 under existing R6–R10 grant; R10 remains. Preserve all R1–R8 sources/adoption/authorship.
+
+R8's travelling mirrored contour can suggest an acquisition still in progress (creative hypothesis, not proven R8 failure). R9 communicates an already successful entitlement: the entire exact registered rounded card contour appears together from90–180ms. Fixed thickness1.05 CSSpx; restrained stationary radiance shoulder115–350ms, then stable owned rim through930ms and fade to exact zero1160ms. No accumulated perimeter, head, moving trail, seam or interior flood. Actor receipt glint remains0–190ms; two small fixed0.34rad glints at240/340ms on opposite top/bottom tangent positions follow complete rim. Reduced motion removes second glint; all geometry remains stationary in either mode. Nearby/observer optics derive only from this local source. No global distortion, unrelated scene ghost, physical transport, unlocking, item/currency/ammo/activation semantics.
+
+Settled implementation contract: keep LIFE_MS1160, same80-byte ABI and all admission/dedup/same-frame registration/input identity gates. EDITION r9; CAPTURE_AGES [0,45,89,90,115,150,180,190,240,264,295,340,364,410,510,700,930,1050,1159,1160,1200]. PHASES [0,90 receipt-onset],[90,180 simultaneous-inscription],[180,360 contour-settle],[360,930 owned-result],[930,1160 release]. samplePlan contourProgress=smooth(90,180,age); uiGain=alive?smooth(90,180,age)*(1-smooth(930,1160,age)):0. sourceGain unchanged.
+
+SFX settled design: receipt20ms55ms1180Hzgain.047 unchanged; replace long inscription noise with fixed stamp90ms100msgain.018freq0; resolved harmonic begins180ms460ms1040Hzgain.074 aligned to full rim. Duration1.10s/synthesis/audio admission unchanged. Verify hard0; ordinary listening separate.
+
+Use exact primary shader bytes. Preserve observer/composite/baseline4 sources. Existing-asset difference workflow, no raster. Root accepts actualGPU whole-contour at150/180ms, no travelling head, stable owned700, fade1050, exact sourceOFF/expiry, parent looping/attached retirement. CPU contract/finite PCM/geometry/hash checks are separate from perceived quality. No full-quality/audio/Safari/game/adoption claim without evidence.
