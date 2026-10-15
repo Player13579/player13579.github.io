@@ -1,0 +1,113 @@
+{
+  "schema": "ability-gallery-retirement/v1",
+  "packageSchema": "ability-entitlement-attached-retirement/v1",
+  "versionId": "ability-entitlement-sol61-r7",
+  "creativeEdition": 7,
+  "creativeEditionIncrement": 1,
+  "originalPackageManifestSha256": "e314de2be1667cacab67d0ad482094d3dc6e3a36737c05273fd515a6c9f4745d",
+  "sourceManifestSha256": "6481358bc9946bed77a6936a1b1a2477b30caaaceb24ce8399a048e328b82f90",
+  "runtime": [
+    {
+      "path": "gallery-parent-contract.mjs",
+      "bytes": 6411,
+      "sha256": "835b0b1d2faffdedfd25bbd0a8dabb4c3ac53088797faed8e73e2655d2e95817"
+    },
+    {
+      "path": "gallery-startup-adapter.mjs",
+      "bytes": 8019,
+      "sha256": "35a275b5c5a029c1170508271a20877c95400638886a8c73ce14977cb1787afe"
+    },
+    {
+      "path": "gallery-startup-bootstrap.js",
+      "bytes": 2322,
+      "sha256": "d142bd683fef712ec0fda644856118c9d7c5bf3402ec90621c3be7a2caf34989"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 25417,
+      "sha256": "3678d8f6148c0b4921409efc16765eafefdbd63810b5feac017c543f6803448c"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2175,
+      "sha256": "1189cd3a357b1459d90c51ff5fecc79df018f35526748b1606e2f39fa5641768"
+    },
+    {
+      "path": "source/audio-admission.mjs",
+      "bytes": 1971,
+      "sha256": "226d2cfb98e217cf09708808a826868eb272a8df5b4aa52854bce6650f48c26c"
+    },
+    {
+      "path": "source/frame-gate.mjs",
+      "bytes": 483,
+      "sha256": "4916ea402d57350d5d8b1c50acda8877ad1055daee085b79ab53ca9cac84d81c"
+    },
+    {
+      "path": "source/device-loss-proof.mjs",
+      "bytes": 255,
+      "sha256": "4454b965633362c514e1c3d58b459b3a4df49e18d782afb50dd3f015a44c3f46"
+    }
+  ],
+  "creative": [
+    {
+      "path": "source/ability-entitlement.mjs",
+      "bytes": 10869,
+      "sha256": "bc47f1eae6f38c449d0b50f54fd3d0eb05abd69ef59e7a5309a4f166a71d42e0",
+      "unchanged": false
+    },
+    {
+      "path": "source/permission-source.wgsl",
+      "bytes": 4323,
+      "sha256": "f9c70e6b1db349dbb33f45c33fc0628c5c35bae7542f5b4c37295b9b63653656",
+      "unchanged": false
+    },
+    {
+      "path": "source/display-observer.wgsl",
+      "bytes": 1019,
+      "sha256": "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9",
+      "unchanged": true
+    },
+    {
+      "path": "source/composite.wgsl",
+      "bytes": 812,
+      "sha256": "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5",
+      "unchanged": true
+    },
+    {
+      "path": "source/status-card-baseline.mjs",
+      "bytes": 681,
+      "sha256": "7e4508e569f451f987234c837c8240b891cab4a208aa7150a62c157dcd6d3bab",
+      "unchanged": true
+    },
+    {
+      "path": "source/status-card-baseline.wgsl",
+      "bytes": 1385,
+      "sha256": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f",
+      "unchanged": true
+    }
+  ],
+  "provenance": [
+    {
+      "path": "source-manifest.json",
+      "bytes": 3702,
+      "sha256": "6481358bc9946bed77a6936a1b1a2477b30caaaceb24ce8399a048e328b82f90"
+    }
+  ],
+  "documentation": [
+    {
+      "path": "DESIGN.md",
+      "bytes": 2568,
+      "sha256": "a21d0613fb730e913bc05ee3a796afa47814ef07d36f8e9ae7d29936878803ac"
+    }
+  ],
+  "acceptance": {
+    "cpu": "passed",
+    "native": "pending-root",
+    "quality": "pending",
+    "adoption": "unknown",
+    "publication": "not-published"
+  },
+  "cpuTests": [
+    "r7-runtime.test.mjs"
+  ]
+}

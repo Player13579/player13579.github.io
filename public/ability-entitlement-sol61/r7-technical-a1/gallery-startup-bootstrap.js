@@ -1,0 +1,11 @@
+(() => {
+  const query = new URLSearchParams(location.search);
+  const one = key => {const all=query.getAll(key);return all.length===1?all[0]:''};
+  const context = {token:one('galleryStartupToken'),versionId:one('galleryVersionId'),attemptEpoch:Number(one('galleryAttemptEpoch')),embedded:query.has('embed'),autoLoop:one('galleryAutoLoop')==='1',packageSchema:one('packageSchema'),packageManifestSha256:one('packageManifestSha256'),packageSealSha256:one('packageSealSha256'),sourceManifestSha256:one('sourceManifestSha256'),parentSequence:0,retired:false,sequence:0,rank:-1,current:{schema:'dva-gallery-startup/v1',token:one('galleryStartupToken'),versionId:one('galleryVersionId'),attemptEpoch:Number(one('galleryAttemptEpoch')),sequence:0,stage:'child-document',status:'pending',packageSchema:one('packageSchema'),packageManifestSha256:one('packageManifestSha256'),packageSealSha256:one('packageSealSha256'),sourceManifestSha256:one('sourceManifestSha256') }};
+  document.documentElement.dataset.embedded=String(context.embedded);
+  Object.defineProperty(window,'__dvaGalleryStartupContext',{value:context,configurable:false});
+  Object.defineProperty(window,'__dvaGalleryStartupSnapshot',{value:()=>context.current,configurable:false});
+  const retire=event=>{const d=event?.data;if(event?.source!==window.parent||event?.origin!==location.origin||d?.schema!=='dva-gallery-startup/v1'||d.action!=='retire'||d.token!==context.token||d.versionId!==context.versionId||d.attemptEpoch!==context.attemptEpoch||d.packageSchema!==context.packageSchema||d.packageManifestSha256!==context.packageManifestSha256||d.packageSealSha256!==context.packageSealSha256||d.sourceManifestSha256!==context.sourceManifestSha256||!Number.isSafeInteger(d.sequence)||d.sequence<=context.parentSequence)return;context.parentSequence=d.sequence;context.retireRequests=(context.retireRequests||0)+1;context.retired=true;window.dispatchEvent(new Event('dva-gallery-retire'));};
+  window.addEventListener('message',retire);window.addEventListener('pagehide',()=>{context.retired=true;window.dispatchEvent(new Event('dva-gallery-retire'));},{once:true});
+  if(context.token&&context.versionId&&Number.isSafeInteger(context.attemptEpoch)&&context.attemptEpoch>0&&window.parent!==window)window.parent.postMessage(context.current,location.origin);
+})();
