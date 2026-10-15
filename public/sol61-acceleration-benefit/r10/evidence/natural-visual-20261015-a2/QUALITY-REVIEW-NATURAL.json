@@ -1,0 +1,131 @@
+{
+  "schema": "dva-acceleration-r10-natural-visual-review/v1",
+  "date": "2026-10-15",
+  "reviewer": "GPT-6.1-Sol",
+  "version": "acceleration-benefit-zero-sol61-r10",
+  "publicCommit": "528bcffba7827ebb2de62294ad56b936380cfc96",
+  "scope": "New limited review of existing immutable R10 natural playback; no creative revision or runtime change.",
+  "sourcePins": {
+    "manifest": "7bcaad93ff2387d5610bf24a1d31c1a6020b4c9241c149dd4c07a94876b7177c",
+    "effect": "64e1968a866ac2e60fbdb4319a4cf21dd963348c58c2aeb86d1e06d82e54e749",
+    "adapter": "cfb066a77d475fbffe18c1e0eaecc06be333eb216688db2059753d818ad8ffcf"
+  },
+  "viewed": {
+    "nativeHeldActorMs": 600,
+    "naturalAdjacentFrames": [
+      21,
+      36
+    ],
+    "naturalPtsSeconds": [
+      2.221,
+      2.824
+    ],
+    "contact": "4x4 row-major original-pixel crops, no resizing",
+    "overviewFrames": 12
+  },
+  "observations": [
+    {
+      "finding": "Two separated cyan packets and fixed bright glints are readable at the H64 gameplay actor size.",
+      "status": "observed"
+    },
+    {
+      "finding": "In the adjacent natural frames, packets move from the left toward the body, narrow at reception and leave a localized highlight before returning to the baseline.",
+      "status": "observed-limited-sequence"
+    },
+    {
+      "finding": "Stronger round volumetric thickness than R9 is not established by these views.",
+      "status": "not-established"
+    }
+  ],
+  "capture": {
+    "videoCodec": "VP9",
+    "dimensions": {
+      "width": 1960,
+      "height": 1240
+    },
+    "rafStateSamples": 262,
+    "trackProcessorTimestamps": 235,
+    "loops": [
+      139,
+      145
+    ],
+    "iframeAllSamplesVisible": true,
+    "trackEnded": true,
+    "errors": []
+  },
+  "decodedMovie": {
+    "frames": 157,
+    "firstPtsSeconds": 0,
+    "lastPtsSeconds": 6.092,
+    "ptsGapMs": {
+      "minimum": 1,
+      "median": 21,
+      "p95": 78,
+      "maximum": 1650
+    },
+    "interpretation": "Encoded-frame cadence only; the 1.650 s interval is present in this recording. This does not establish compositor presentation smoothness or exact source cause/GPU frame identity."
+  },
+  "quality": "partial",
+  "qualityReviewStatus": "not-accepted",
+  "naturalMovieVisualReview": "limited-adjacent-decoded-frame-review-complete",
+  "fullContinuityAccepted": false,
+  "limitations": [
+    "The 157 encoded frames include a maximum 1650 ms PTS interval; whole-recording smoothness is not accepted.",
+    "Decoded frames and API state samples do not prove exact event/GPU/compositor identity.",
+    "Actual ordinary SFX listening has not been observed.",
+    "Safari/iPad and main-game integration remain unverified."
+  ],
+  "preserved": {
+    "adoptedDefaultVersion": "acceleration-zero-arrow-sol61-r4",
+    "r10Adopted": false,
+    "creativeEditions": 10,
+    "creativeRemaining": 0,
+    "noR11": true,
+    "oldFrozenReviewsUnchanged": true
+  },
+  "resources": {
+    "ownedVerificationTab": 100,
+    "closed": true,
+    "temporaryServers": 0,
+    "captureTracksEnded": true,
+    "retiredApiDisposed": true,
+    "strictRetirementAck": "not-observed"
+  },
+  "evidence": [
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\acceleration-r10-natural-root-20261015-a2\\ACCEL-R10-NATURAL.webm",
+      "bytes": 395989,
+      "sha256": "5afcb462a56e63c8fde0a524a12a9104a9e6e5f4c07bbb63f72ff921b4334729"
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\acceleration-r10-natural-root-20261015-a2\\ACCEL-R10-NATURAL.json",
+      "bytes": 110718,
+      "sha256": "e0361c4213495f06a0fb0660432ba5c03dabd8113d76ee0da7922918098333e4"
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\acceleration-r10-natural-root-20261015-a2\\ACCEL-R10-FINISH.json",
+      "bytes": 5194,
+      "sha256": "305871a1fe69db21f94e0d4e673842f3a31ab50f506b874f7d5a68540cedc652"
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\acceleration-r10-natural-root-20261015-a2\\ACCEL-R10-PUBLIC-600.png",
+      "bytes": 279546,
+      "sha256": "75e637b4771391a4cb2c79110fc92aa000f0a799490e53e42220073168c9ad6b"
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\acceleration-r10-natural-media-audit-bounded-20261015-a2\\active-episode-contact.png",
+      "bytes": 238378,
+      "sha256": "3f61f76f4ae3919e30f717df47453ff836e39c4404f525fa89fe4834c5ecb59b"
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\acceleration-r10-natural-media-audit-bounded-20261015-a2\\active-episode-PTS.json",
+      "bytes": 4492,
+      "sha256": "7a7bc5420a42bc07985f94fd85d92c0b896e83382bd21372a47ed1aec5ebb52a"
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\dva-resume-01a12c26-r1420\\primary\\acceleration-r10-natural-media-audit-bounded-20261015-a2\\READY.json",
+      "bytes": 4484,
+      "sha256": "0725569e70a6f5d9314c0124de874960f814365c6274ab2cc68475c516fe937a"
+    }
+  ]
+}

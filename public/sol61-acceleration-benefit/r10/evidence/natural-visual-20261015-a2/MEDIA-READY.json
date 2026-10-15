@@ -1,0 +1,139 @@
+{
+  "schema": "acceleration-r10-natural-media-audit-ready/v1",
+  "status": "CPU_MEDIA_INTEGRITY_COMPLETE",
+  "source": {
+    "publicCommit": "528bcffba7827ebb2de62294ad56b936380cfc96",
+    "version": "acceleration-benefit-zero-sol61-r10",
+    "movie": {
+      "path": "../acceleration-r10-natural-root-20261015-a2/ACCEL-R10-NATURAL.webm",
+      "bytes": 395989,
+      "sha256": "5afcb462a56e63c8fde0a524a12a9104a9e6e5f4c07bbb63f72ff921b4334729"
+    },
+    "captureMetadata": {
+      "path": "../acceleration-r10-natural-root-20261015-a2/ACCEL-R10-NATURAL.json",
+      "bytes": 110718,
+      "sha256": "e0361c4213495f06a0fb0660432ba5c03dabd8113d76ee0da7922918098333e4"
+    }
+  },
+  "capture": {
+    "videoCodec": "VP9",
+    "dimensions": {
+      "width": 1960,
+      "height": 1240
+    },
+    "rafStateSamples": 262,
+    "trackProcessorTimestamps": 235,
+    "loops": [
+      139,
+      145
+    ],
+    "iframeAllSamplesVisible": true,
+    "trackEnded": true,
+    "errors": []
+  },
+  "decodedMovie": {
+    "frames": 157,
+    "firstPtsSeconds": 0,
+    "lastPtsSeconds": 6.092,
+    "ptsGapMs": {
+      "minimum": 1,
+      "median": 21,
+      "p95": 78,
+      "maximum": 1650
+    },
+    "interpretation": "Encoded-frame cadence only; the 1.650 s interval is present in this recording. This does not establish compositor presentation smoothness or exact source cause/GPU frame identity."
+  },
+  "activeEpisode": {
+    "contactPath": "active-episode-contact.png",
+    "ptsTablePath": "active-episode-PTS.json",
+    "decodedFramesInclusive": [
+      21,
+      36
+    ],
+    "frames": 16,
+    "ptsSeconds": [
+      2.221,
+      2.824
+    ],
+    "spanMs": 603,
+    "cropPixels": {
+      "x": 840,
+      "y": 680,
+      "width": 208,
+      "height": 208
+    },
+    "layout": "4x4 row-major",
+    "tilesPixelExactAgainstDirectSourceCrop": true,
+    "interpretation": "Approximate first visible active episode; the first cyan-positive diagnostic pixels are frame 23 and last are frame 34. No exact event-to-encoded-frame identity or semantic phase verdict."
+  },
+  "artifacts": {
+    "wholetrack-overview.png": {
+      "bytes": 25724,
+      "sha256": "4f4f0143ed68490630ba6a6c1bcbfd821d57be1d5ae20bbdcf6eb36f46b6c5bf"
+    },
+    "natural-actual-frame-contact.png": {
+      "bytes": 166644,
+      "sha256": "8a51b87efc95ddd06480f7c33ff2406f16be75680b5d0c5ea2854245263605cf"
+    },
+    "active-episode-contact.png": {
+      "bytes": 238378,
+      "sha256": "3f61f76f4ae3919e30f717df47453ff836e39c4404f525fa89fe4834c5ecb59b"
+    },
+    "active-episode-PTS.json": {
+      "bytes": 4492,
+      "sha256": "7a7bc5420a42bc07985f94fd85d92c0b896e83382bd21372a47ed1aec5ebb52a"
+    },
+    "frame-01.png": {
+      "bytes": 32267,
+      "sha256": "b56210f895bd15d3502eee716664bf5691ec5146e6cabef7936546972c9bbc46"
+    },
+    "frame-02.png": {
+      "bytes": 28687,
+      "sha256": "5141333a001ba8ab80a5579d1052f9183a423aa3086709b3e07caddf32b46ba0"
+    },
+    "frame-03.png": {
+      "bytes": 35215,
+      "sha256": "2aca9937252f163dbdaa70457f8e20cdc44f8feab3993e7a7cd8887c6db039fb"
+    },
+    "frame-04.png": {
+      "bytes": 38119,
+      "sha256": "244e4bb9bd888a0e4319da1fd12c49caebfd52c1884fdec712bf4b173efc1f58"
+    },
+    "frame-05.png": {
+      "bytes": 36060,
+      "sha256": "68244c05cd429dd98325f91f92039952e11c91d91676205c6b7ebbeb883b0c70"
+    },
+    "frame-06.png": {
+      "bytes": 29197,
+      "sha256": "a54561daaca33281ec103679e8e16ad07aee498edcc82d1c5696bd9089983bcd"
+    },
+    "frame-07.png": {
+      "bytes": 28114,
+      "sha256": "453c79336f5312c959120b0bef9857b196423c04707068ebb40c41fbf0ca87a8"
+    },
+    "frame-08.png": {
+      "bytes": 28161,
+      "sha256": "7fdfd58119ec669c73feed86d4009eba93ea8289fef933170b8b4223a32af30e"
+    },
+    "frame-09.png": {
+      "bytes": 28153,
+      "sha256": "a1ca5b38e8e6153194f13a9204fb2a3057cf14e36c51cbfc8c323439dbaea37d"
+    },
+    "frame-10.png": {
+      "bytes": 28155,
+      "sha256": "700ebcbe6f3f0c00c105ecfc3a8e9af188cd237201291f1a70b2248b62aef560"
+    },
+    "frame-11.png": {
+      "bytes": 28144,
+      "sha256": "b9d3afc2b7f7d88b94f7babd52faf32946514bdec245fdeef1315fec2880dd58"
+    },
+    "frame-12.png": {
+      "bytes": 33806,
+      "sha256": "c159ad89d90c4838d33b3815b13ecd6453ce79982ad44960821431ffc9c858b5"
+    }
+  },
+  "limitations": [
+    "CPU decode and image-pixel integrity only; no subjective visual-quality verdict.",
+    "No compositor-smoothness, exact GPU receipt, exact cause alignment, or audio-listening claim."
+  ]
+}
