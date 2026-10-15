@@ -1,0 +1,127 @@
+{
+  "status": "PASS_LIMITED_PRIVATE_ACTUAL_PARENT_R2_ATTACHED_RETIREMENT",
+  "at": "2026-10-14T23:53:07.733Z",
+  "parent": {
+    "M": "d84fc5092d4cbf3a55455d743e50b2f7141dc7b5d1551b916e484656077f8dc7",
+    "H": "ce9fd5c86465d6c44f9c9001c2891318397b003b5621d202221c5e3960bdcfbe"
+  },
+  "runtime": {
+    "manifest": "fc69a4768f14ece1e3684c027a9c21659e06a0122747c4bf17ec188ecaad86b5",
+    "seal": "71c87ab47604124625d7499accef2c7044c3a8b87f47d4d1d7e7c4de011fe765",
+    "sourceManifest": "223165c1f32faa329806b54d5326fd960918264c1a0a1f03f56743dae3c5bb92"
+  },
+  "natural": {
+    "samples": 368,
+    "durationMs": 6495,
+    "causes": [
+      {
+        "cause": 25,
+        "minAge": 1358.199999988079,
+        "maxAge": 1943.5,
+        "samples": 35,
+        "hasTerminal": true
+      },
+      {
+        "cause": 26,
+        "minAge": 0.10000000894069672,
+        "maxAge": 1939.7999999970198,
+        "samples": 110,
+        "hasTerminal": true
+      },
+      {
+        "cause": 27,
+        "minAge": 0.09999999403953552,
+        "maxAge": 1947.7999999970198,
+        "samples": 111,
+        "hasTerminal": true
+      },
+      {
+        "cause": 28,
+        "minAge": 0.09999999403953552,
+        "maxAge": 1949.2000000029802,
+        "samples": 111,
+        "hasTerminal": true
+      },
+      {
+        "cause": 29,
+        "minAge": 0.09999999403953552,
+        "maxAge": 0.09999999403953552,
+        "samples": 1,
+        "hasTerminal": false
+      }
+    ],
+    "completeMatchedCauses": 3,
+    "allAgeNonnegative": true,
+    "allGpuErrorsNull": true
+  },
+  "normalRetirement": {
+    "sameObservedQueue": true,
+    "queueDrained": true,
+    "destroyCalls": 1,
+    "lostReason": "destroyed",
+    "ackWhileAttached": true,
+    "sourceFinalSubmitted": 3933,
+    "sourceFinalCompleted": 3933,
+    "nativeSubmitsStable": 1340
+  },
+  "returnToR2": {
+    "ready": true,
+    "epoch": 5,
+    "heldAgeMs": 350,
+    "completed": true
+  },
+  "earlyRetirement": {
+    "attempt": 2,
+    "delayFixtureMs": 800,
+    "beforeSubmitted": 0,
+    "beforeReady": false,
+    "samples": 23,
+    "allWaitingAttached": true,
+    "ackAfterRequestMs": 949.8999999910593,
+    "destroyCalls": 1,
+    "ownedLostReason": "destroyed",
+    "sourceSubmittedCompleted": 0,
+    "newCollectorErrors": 0,
+    "limitation": "No submit occurred, so there is no externally observed submit queue to correlate; do not claim sameObservedQueue for early zero-submit case."
+  },
+  "preservedObservationFailures": {
+    "firstEarlyAttempt": "Recorded genuine zero-submit retired ACK, but collector interval dereferenced detached iframe.contentWindow after ACK. Preserve this observation failure; use corrected A2 collector for early acceptance.",
+    "recordedCollectorErrors": 27,
+    "wrongR5WaitPredicate": "First R5 wait used a wrong route substring and ran to its bounded deadline; actual returned startup proof is ready for exact headshot-zero-sol61-r5. Subsequent waits use exact source API versionId and startup status."
+  },
+  "metadataBodies": [
+    {
+      "path": "/public/sol61-headshot/zero-r2-attached-retirement-r2/package/package-manifest.json",
+      "status": 200,
+      "bytes": 3895,
+      "sha256": "fc69a4768f14ece1e3684c027a9c21659e06a0122747c4bf17ec188ecaad86b5"
+    },
+    {
+      "path": "/public/sol61-headshot/zero-r2-attached-retirement-r2/package-seal.json",
+      "status": 200,
+      "bytes": 509,
+      "sha256": "71c87ab47604124625d7499accef2c7044c3a8b87f47d4d1d7e7c4de011fe765"
+    }
+  ],
+  "files": [
+    {
+      "path": "NATIVE.json",
+      "bytes": 554295,
+      "sha256": "44ec6c14d9892bf4ee86fd20ebc83b491088e27026a723ce3a14b50cf54e1a18"
+    },
+    {
+      "path": "RETURNED-R2.png",
+      "bytes": 285450,
+      "sha256": "0a936552b489afc8f4be01ae00747c1d254761618fe19a1427599a1a097f47b2",
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "cleanup": "SERVER-STOP.json",
+  "limitations": [
+    "Private actual candidate parent only; public delivery pending",
+    "UI-only held350ms image; not full-lifetime visual quality or SFX/Safari/game acceptance",
+    "Original nonplay report was not reproduced/fixed by prior baseline; confirmed attached-retirement gap is repaired here",
+    "Original eight creative/runtime files unchanged; no new creative edition"
+  ]
+}
