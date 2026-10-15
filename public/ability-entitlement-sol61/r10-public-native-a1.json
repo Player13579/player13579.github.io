@@ -19,7 +19,7 @@
   "packageSealSha256": "d8a8d8c0eccf35dc02027f0186bf250659d11ac5273660cea6253a8ee4f04544",
   "sourceManifestSha256": "a59f849362ce6ee0fe6a4ec2204a734d5696a9e2985b6f55c3f1ae22f7ae7dae",
   "samples": 31,
-  "distinctLoopCauses": 4,
+  "distinctLoopCauses": 3,
   "versionOptions": 10,
   "muted": true,
   "activeVoices": 0,
@@ -153,5 +153,8 @@
   "ordinarySfxListening": false,
   "safari": false,
   "mainGameIntegration": false,
-  "userAdoption": false
+  "userAdoption": false,
+  "inactiveSamplesExcluded": 3,
+  "loopCountMethod": "Distinct nonempty admitted causeKey values; idle null snapshots excluded",
+  "correction": "Previous value4 counted idle null as a cause. Actual3 active causes; original raw, switching, source, frame and retirement proofs unchanged."
 }
