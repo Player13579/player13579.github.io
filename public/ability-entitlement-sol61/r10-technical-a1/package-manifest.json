@@ -1,0 +1,117 @@
+{
+  "schema": "ability-gallery-retirement/v1",
+  "packageSchema": "ability-entitlement-attached-retirement/v1",
+  "versionId": "ability-entitlement-sol61-r10",
+  "creativeEdition": 10,
+  "creativeEditionIncrement": 1,
+  "creativeCap": 10,
+  "remainingCreativeEditions": 0,
+  "basePublicCommit": "05e6aae12ed1ee9d505eb0aeb6aff286e279334c",
+  "originalPackageManifestSha256": "b596baca4ce6ce1d738f4a171e4d63f530129c8e9e61261dabf53f135025f30d",
+  "parentSourceManifestSha256": "40a7691130724530c389ebe43db723a7f1cd0e65bfaa2af7c4bdc56b67eaf19b",
+  "sourceManifestSha256": "a59f849362ce6ee0fe6a4ec2204a734d5696a9e2985b6f55c3f1ae22f7ae7dae",
+  "runtime": [
+    {
+      "path": "gallery-parent-contract.mjs",
+      "bytes": 6425,
+      "sha256": "8fa6b5b87579e4aa2827c21c399714f71edb3f42346fe2d4043bdf8d174f7939"
+    },
+    {
+      "path": "gallery-startup-adapter.mjs",
+      "bytes": 8028,
+      "sha256": "496aadcb33323bd1775b47833cb2c0fb362eadcde33dd7a9603073204ddc29ea"
+    },
+    {
+      "path": "gallery-startup-bootstrap.js",
+      "bytes": 2322,
+      "sha256": "d142bd683fef712ec0fda644856118c9d7c5bf3402ec90621c3be7a2caf34989"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 25408,
+      "sha256": "b62be214064cc1a36479144bbc7b2ac20a8416a69e85db9f9d712b8d34db72f8"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2176,
+      "sha256": "eba631159405f3edfa32d6220baf564ec1f8259800c6814429c8d6f07485b35e"
+    },
+    {
+      "path": "source/audio-admission.mjs",
+      "bytes": 1971,
+      "sha256": "226d2cfb98e217cf09708808a826868eb272a8df5b4aa52854bce6650f48c26c"
+    },
+    {
+      "path": "source/frame-gate.mjs",
+      "bytes": 483,
+      "sha256": "4916ea402d57350d5d8b1c50acda8877ad1055daee085b79ab53ca9cac84d81c"
+    },
+    {
+      "path": "source/device-loss-proof.mjs",
+      "bytes": 255,
+      "sha256": "4454b965633362c514e1c3d58b459b3a4df49e18d782afb50dd3f015a44c3f46"
+    }
+  ],
+  "creative": [
+    {
+      "path": "source/ability-entitlement.mjs",
+      "bytes": 10858,
+      "sha256": "8581c573a0c07882db7ca818735004737e4c67e13aa83625a5134c213dd6c1b3",
+      "unchanged": false
+    },
+    {
+      "path": "source/permission-source.wgsl",
+      "bytes": 4354,
+      "sha256": "a877fed453a54c5b0238ac13c26f05c240ab85708dcf666bced7a0db79fba37d",
+      "unchanged": false
+    },
+    {
+      "path": "source/display-observer.wgsl",
+      "bytes": 1019,
+      "sha256": "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9",
+      "unchanged": true
+    },
+    {
+      "path": "source/composite.wgsl",
+      "bytes": 812,
+      "sha256": "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5",
+      "unchanged": true
+    },
+    {
+      "path": "source/status-card-baseline.mjs",
+      "bytes": 681,
+      "sha256": "7e4508e569f451f987234c837c8240b891cab4a208aa7150a62c157dcd6d3bab",
+      "unchanged": true
+    },
+    {
+      "path": "source/status-card-baseline.wgsl",
+      "bytes": 1385,
+      "sha256": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f",
+      "unchanged": true
+    }
+  ],
+  "provenance": [
+    {
+      "path": "source-manifest.json",
+      "bytes": 3495,
+      "sha256": "a59f849362ce6ee0fe6a4ec2204a734d5696a9e2985b6f55c3f1ae22f7ae7dae"
+    }
+  ],
+  "documentation": [
+    {
+      "path": "DESIGN.md",
+      "bytes": 3524,
+      "sha256": "d6530efb2337a3e3f450e255e9b578e4d2222d93655e2449f179fc36be7c35d3"
+    }
+  ],
+  "acceptance": {
+    "cpu": "passed",
+    "native": "not-run-root-only",
+    "quality": "pending",
+    "adoption": "unknown",
+    "publication": "not-published"
+  },
+  "cpuTests": [
+    "r10-cpu-tests.mjs (13/13 passed; native/browser not run; report outside runtime closure)"
+  ]
+}

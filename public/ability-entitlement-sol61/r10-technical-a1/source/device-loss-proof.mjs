@@ -1,0 +1,1 @@
+export function ownedDeviceLossProof(ownedLoss,deviceDestroyCalled){if(!ownedLoss)return null;return {reason:ownedLoss.reason,message:ownedLoss.message,expected:deviceDestroyCalled===true,owned:deviceDestroyCalled===true&&ownedLoss.reason==='destroyed'}}
