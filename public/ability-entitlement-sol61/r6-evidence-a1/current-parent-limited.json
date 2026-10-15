@@ -1,0 +1,106 @@
+{
+  "schema": "ability-r6-limited-current-parent-proof/v1",
+  "versionId": "ability-entitlement-sol61-r6",
+  "creativeEdition": 6,
+  "creativeCap": 10,
+  "remaining": 4,
+  "packageSchema": "ability-entitlement-attached-retirement/v1",
+  "route": "/public/ability-entitlement-sol61/r6-technical-a3/index.html",
+  "packageManifestSha256": "e314de2be1667cacab67d0ad482094d3dc6e3a36737c05273fd515a6c9f4745d",
+  "packageSealSha256": "cbdf1c99deaa1c0852b0d788c45876cd0cd311ff5f78775418a0dc561c17973c",
+  "sourceManifestSha256": "8aef454fe7377b03db57cfe3fa2755abe5bcd63d5dd863e81dd867d438460c0a",
+  "sourceHashes": {
+    "source/ability-entitlement.mjs": "cc84bf1ce94d1f1d80352ae139303e45dee2feb38dad47078fdfc3539dcae91b",
+    "source/permission-source.wgsl": "95ba7422ae6e208acf14a3657a4e32b0ced6e6147aeb68218c347c89c9cc9515",
+    "source/display-observer.wgsl": "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9",
+    "source/composite.wgsl": "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5",
+    "source/status-card-baseline.mjs": "7e4508e569f451f987234c837c8240b891cab4a208aa7150a62c157dcd6d3bab",
+    "source/status-card-baseline.wgsl": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f"
+  },
+  "parentCandidateM": "ffb576122ce2f1a3aef2a7e4e2ef4263ccfcfd0558e1b56bb0c73347003d1020",
+  "parentCandidateH": "04bd839e47da646b15c6dff9888621b2cd85fbd9c2eed60a6a2460047a6fbfe1",
+  "native": {
+    "route": "http://127.0.0.1:8941/webgpu-e-gallery.html?verify=ability-r6-parent-native-a2&category=effect&filter=unadopted&asset=ability-entitlement-sol61&version=ability-entitlement-sol61-r6",
+    "loopCauseCount": 4,
+    "telemetrySamples": 95,
+    "startupReady": true,
+    "attachedRetirementReceipt": {
+      "proofSchema": "ability-gallery-retirement/v1",
+      "disposeSettled": true,
+      "closed": true,
+      "initSettled": true,
+      "creationClosed": true,
+      "pendingInit": 0,
+      "pendingRender": 0,
+      "pumpStopped": true,
+      "resourcesCreated": 9,
+      "resourcesDestroyed": 9,
+      "resourcesDisposed": true,
+      "contextState": "unconfigured",
+      "cleanupErrors": [],
+      "audio": {
+        "disposeSettled": true,
+        "contextState": "absent",
+        "voicesRemaining": 0,
+        "gainsRemaining": 0,
+        "cleanupErrors": []
+      },
+      "teardown": "disposed",
+      "deviceLifecycle": "destroyed-loss-settled",
+      "variant": "destroyed",
+      "device": {
+        "status": "destroyed-loss-settled",
+        "drained": true,
+        "destroyCalled": true,
+        "lostReason": "destroyed"
+      },
+      "adapterSessionId": "404e86bb-e4b4-4832-b508-ac162b97338b",
+      "sequence": 7,
+      "attachedAtReceipt": true,
+      "canvasConnectedAtReceipt": true
+    },
+    "oldFrameRemovedAfterReceipt": true,
+    "replacementStartupReady": true,
+    "finalCleanup": {
+      "proofSchema": "ability-gallery-retirement/v1",
+      "disposeSettled": true,
+      "closed": true,
+      "initSettled": true,
+      "creationClosed": true,
+      "pendingInit": 0,
+      "pendingRender": 0,
+      "pumpStopped": true,
+      "resourcesCreated": 9,
+      "resourcesDestroyed": 9,
+      "resourcesDisposed": true,
+      "contextState": "unconfigured",
+      "cleanupErrors": [],
+      "audio": {
+        "disposeSettled": true,
+        "contextState": "absent",
+        "voicesRemaining": 0,
+        "gainsRemaining": 0,
+        "cleanupErrors": []
+      },
+      "teardown": "disposed",
+      "deviceLifecycle": "destroyed-loss-settled",
+      "variant": "destroyed",
+      "device": {
+        "status": "destroyed-loss-settled",
+        "drained": true,
+        "destroyCalled": true,
+        "lostReason": "destroyed"
+      }
+    }
+  },
+  "qualityStatus": "pending",
+  "adoption": "not-adopted",
+  "limitations": [
+    "Limited local parent verification before deploy; exact public bytes/replay checked separately",
+    "No full visual quality acceptance: actual natural video has 424ms PTS gap",
+    "No normal SFX listening, Safari/iPad, or gameplay integration acceptance",
+    "Parent console logged unattributed MutationObserver.observe non-Node TypeError with no URL/stack; no executable MutationObserver found in current source/support files; not console-clean"
+  ],
+  "nativeJsonSha256": "cb1181f7ab7976dbf871d392f8da52033fe61996097c3f200890c55d99477161",
+  "nativePngSha256": "579faca48d0d32e2f06767a12c714f3a9ee03a36a7fc1e095c268e82a54c354d"
+}

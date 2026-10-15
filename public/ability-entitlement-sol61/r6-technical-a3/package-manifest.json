@@ -1,0 +1,117 @@
+{
+  "schema": "ability-gallery-retirement/v1",
+  "packageSchema": "ability-entitlement-attached-retirement/v1",
+  "versionId": "ability-entitlement-sol61-r6",
+  "creativeEdition": 6,
+  "creativeEditionIncrement": 1,
+  "originalPackageManifestSha256": "4f85a157f0f7a69bad6a307c5458a0c709625997bf6609004e8264b7f2ab48ca",
+  "sourceManifestSha256": "8aef454fe7377b03db57cfe3fa2755abe5bcd63d5dd863e81dd867d438460c0a",
+  "runtime": [
+    {
+      "path": "gallery-parent-contract.mjs",
+      "bytes": 6411,
+      "sha256": "1f69e2a8acf7ab7e55f026e92d569c18f69ca50eb49cf32f6b1087303bcc70d1"
+    },
+    {
+      "path": "gallery-startup-adapter.mjs",
+      "bytes": 8019,
+      "sha256": "64470d34672d8ade26ceef8d3cb2f146ac5670bab9dd6f8a861ca72e713ec0d1"
+    },
+    {
+      "path": "gallery-startup-bootstrap.js",
+      "bytes": 2322,
+      "sha256": "d142bd683fef712ec0fda644856118c9d7c5bf3402ec90621c3be7a2caf34989"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 25417,
+      "sha256": "ebe12732b947117bc6ef6fe0497063bd68648c66485a45563a9fe822523e7bad"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2175,
+      "sha256": "92a8635bea6ac145dd8ff28c112881135c725267fcc800311170bd691da3500c"
+    },
+    {
+      "path": "source/audio-admission.mjs",
+      "bytes": 1971,
+      "sha256": "226d2cfb98e217cf09708808a826868eb272a8df5b4aa52854bce6650f48c26c"
+    },
+    {
+      "path": "source/frame-gate.mjs",
+      "bytes": 483,
+      "sha256": "4916ea402d57350d5d8b1c50acda8877ad1055daee085b79ab53ca9cac84d81c"
+    },
+    {
+      "path": "source/device-loss-proof.mjs",
+      "bytes": 255,
+      "sha256": "4454b965633362c514e1c3d58b459b3a4df49e18d782afb50dd3f015a44c3f46"
+    }
+  ],
+  "creative": [
+    {
+      "path": "source/ability-entitlement.mjs",
+      "bytes": 10825,
+      "sha256": "cc84bf1ce94d1f1d80352ae139303e45dee2feb38dad47078fdfc3539dcae91b",
+      "unchanged": false
+    },
+    {
+      "path": "source/permission-source.wgsl",
+      "bytes": 2843,
+      "sha256": "95ba7422ae6e208acf14a3657a4e32b0ced6e6147aeb68218c347c89c9cc9515",
+      "unchanged": false
+    },
+    {
+      "path": "source/display-observer.wgsl",
+      "bytes": 1019,
+      "sha256": "bcd333d4916fb212c36a17b371cac6cc7cdcf5122d4d9bfb903bcb8e08e05bc9",
+      "unchanged": true
+    },
+    {
+      "path": "source/composite.wgsl",
+      "bytes": 812,
+      "sha256": "015eceb83966367a589d58cf51634b951ae0452b64574269b01b98eab811f3a5",
+      "unchanged": true
+    },
+    {
+      "path": "source/status-card-baseline.mjs",
+      "bytes": 681,
+      "sha256": "7e4508e569f451f987234c837c8240b891cab4a208aa7150a62c157dcd6d3bab",
+      "unchanged": true
+    },
+    {
+      "path": "source/status-card-baseline.wgsl",
+      "bytes": 1385,
+      "sha256": "0c3256338a4e88d2dcd660b12ed772d3405305df44d3de9bf314e261cd0a9c3f",
+      "unchanged": true
+    }
+  ],
+  "provenance": [
+    {
+      "path": "source-manifest.json",
+      "bytes": 3184,
+      "sha256": "8aef454fe7377b03db57cfe3fa2755abe5bcd63d5dd863e81dd867d438460c0a"
+    }
+  ],
+  "documentation": [
+    {
+      "path": "DESIGN.md",
+      "bytes": 1488,
+      "sha256": "ebcf87eb10e6a1f73ebbef3cfd2ba0734aa26cf807369ff3270408a955dd1b5c"
+    }
+  ],
+  "acceptance": {
+    "cpu": "passed",
+    "native": "pending-root",
+    "quality": "pending",
+    "adoption": "unknown",
+    "publication": "not-published"
+  },
+  "cpuTests": [
+    "audio-admission.test.mjs",
+    "frame-gate.test.mjs",
+    "gallery-startup-contract.test.mjs",
+    "uniform-pack.test.mjs",
+    "device-loss-proof.test.mjs"
+  ]
+}
