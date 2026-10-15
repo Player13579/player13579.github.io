@@ -1,0 +1,102 @@
+{
+  "schema": "dva-rigid-impact-cleanroom-source/v1",
+  "versionId": "rigid-item-impact-cleanroom-sol61-r1",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2578,
+      "sha256": "99c780992b5b8fe02875ebef10d8b13d8fe8bd49a21c0c7dc38cb8164fa9aaee"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 39123,
+      "sha256": "f6c2f60aa322e1a13766e6f944cab8f34dc6ca9f065dfdc8e2258e6818ca6346"
+    },
+    {
+      "path": "host-core.mjs",
+      "bytes": 11748,
+      "sha256": "b12617cb4a2652e4198617743cefe708a8df7e20073819cbcc3a17aaea8f60ca"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 10779,
+      "sha256": "eb27330c4182ca29df9471e2d87d82272e48b1ade198c6c5eb8d3d49f48e44df"
+    },
+    {
+      "path": "body.png",
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    }
+  ],
+  "sourcePins": {
+    "creativeReadySha256": "17c674b8258a0d17aa632324df3e9db9ca7bf70874e1e6452cea00509e49c7a8",
+    "effectSha256": "eb27330c4182ca29df9471e2d87d82272e48b1ade198c6c5eb8d3d49f48e44df",
+    "wgslSha256": "fa0faac3b9bcd0501e22b0d275b7147fc7dc1385ffe854396868bb4af2efd0b3",
+    "sourceCpuEvidenceSha256": "b2c82419a3d1c27ff285bd53848ac6889881ecec2ffc07f80187cb6c6aa1adc1",
+    "hostReadySha256": "89fd9e05b564b76e39f53bf7950b627cf184b213304c177c15b119473b9da8d2",
+    "hostReportSha256": "90d56e21208b7d07c0938c0bdc6f2462197f5e6893f6a95d9faa03b4b8a7ddc5",
+    "authoritySha256": "ba5b3f23007934746286be1538552ae8998ec1c132a4cb08ce4e5939429b8306",
+    "semanticContractSha256": "6297636470407bac809247a3bf6085168efd9d658864fe069224488c9092acef",
+    "sourceRevision": {
+      "repo": "Player13579/B",
+      "ref": "refs/heads/Codex-honoo",
+      "commit": "21dd48756f3e827bf2b5f4735004d2b95e26e7f8",
+      "rules": [
+        {
+          "path": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/primary/b-current-canonical-intake-efficient-20261015-a1/基底.md",
+          "bytes": 165337,
+          "sha256": "fc8b0e4ff03fcded3c6c3130d2fdb850f3f53423143493fa083b218fcd1c8f23",
+          "gitBlob": "b2583c0aec83a2c55e798bd1d5d3baad13375a35"
+        },
+        {
+          "path": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/primary/b-current-canonical-intake-efficient-20261015-a1/拡張.md",
+          "bytes": 133197,
+          "sha256": "2eb251e27ce84d6b55e29cd9504f458d75d5b768b24175ec307c6203d03b4bc7",
+          "gitBlob": "a98cd526fd882cab79fc864450def8774f699308"
+        }
+      ],
+      "intakeReady": {
+        "path": "C:/Users/user/AppData/Local/Temp/dva-resume-01a12c26-r1420/primary/b-current-canonical-intake-efficient-20261015-a1/READY.json",
+        "bytes": 1500,
+        "sha256": "84dcfdf228d036bf31fd5152757be9d25105786a48acad85d93d521c02581e55"
+      },
+      "readStatus": "この担当の直前Gravity割当で同一hashの適用PH/OBS/VFX/ECode/LDM/OperationContracts/Depiction/ScreenAllocation本文を読取済み。この制作でその意味対応を個別に決定。全仕様完全読了・完全形式B-Expression-3合格は主張しない。"
+    },
+    "edition": {
+      "fresh": 1,
+      "cap": 5,
+      "remaining": 4,
+      "historicalOldCount": "unknown-preserved"
+    },
+    "sfxPolicy": {
+      "offsetMs": 0,
+      "onsetWindowMs": 45,
+      "onsetPolicy": "first-completed-positive-frame-within-window-else-skip-whole-cause"
+    },
+    "scope": {
+      "CPU": "PASS_CPU_ONLY",
+      "checks": [
+        "root-approved rigid-only onset45ms metadata exported",
+        "strict receipt parser rejects unrelated, malformed, impossible contact/damage/luck variants",
+        "all five classes, valid contacts, normal/GBO, luck extremes accepted with graphics/damage multipliers separate",
+        "1ms full-lifetime sweep matches actual WGSL recoil formula and exact endpoint inactivity; no invented direction/normal/victim displacement",
+        "all fixture PCM deterministic, finite, nonclipping, zero endpoints; verify every sample zero",
+        "all seven fixture class/contact PCM differ",
+        "real renderer ABI mock: readiness, finite lifetime/source-off no pass, explicit receipt contact no GBO double scale, independent layer buffers, idempotent destroy",
+        "diagnostic-error promise fails closed (CPU mock only)"
+      ],
+      "native": "NOT_RUN",
+      "visualQuality": "NOT_ACCEPTED",
+      "normalListening": "NOT_RUN",
+      "gameIntegration": false,
+      "published": false
+    },
+    "limits": [
+      "完全なB formal schema適合や全本文読了を主張しない。適用部分の静的対応のみ。",
+      "CPU mock空diagnosticsは実WGSLコンパイルの代わりではない。",
+      "native H64暗明・全寿命/replay/loop・光源/OBS差分・実表示・performance・通常聴感・Safari/iPadは未検証。",
+      "同一cause音声gate45msの実transport/遅延はホスト側検査とnativeで別受入。",
+      "no collision gateはproducer契約。fixture自体は本編実衝突証拠ではない。"
+    ]
+  }
+}

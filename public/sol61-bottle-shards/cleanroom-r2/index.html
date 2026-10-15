@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark">
+  <title>Bottle Shards cleanroom R2 preview</title>
+  <style>
+    :root { color-scheme: dark; font: 14px/1.45 system-ui, sans-serif; background: #101216; color: #e4e8ec; }
+    * { box-sizing: border-box; } body { margin: 0; padding: 18px; } main { max-width: 100%; margin: 0 auto; }
+    h1 { margin: 0 0 8px; font-size: 18px; font-weight: 650; } p { max-width: 64rem; margin: 0 0 14px; color: #aab2bc; }
+    .stage { width: 980px; height: 620px; background: #080b10; overflow: auto; } canvas { display: block; width: 980px; height: 620px; background: #080b10; }
+    .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 12px 0; } button { border: 1px solid #4b5968; border-radius: 5px; background: #202833; color: #eef3f8; padding: 7px 12px; }
+    label { display: inline-flex; align-items: center; gap: 5px; } #error { max-width: 72rem; color: #ffaaa5; white-space: pre-wrap; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .embed body { margin: 0; padding: 0; overflow: hidden; } .embed main { width: 980px; height: 620px; max-width: none; margin: 0; }
+    .embed h1, .embed main > p:not(#error) { display: none; } .embed .stage { position: absolute; inset: 0 auto auto 0; width: 980px; height: 620px; overflow: hidden; }
+    .embed canvas { position: absolute; inset: 0; width: 980px; height: 620px; } .embed #error { position: absolute; z-index: 2; top: 8px; left: 8px; margin: 0; padding: 6px 9px; background: #17191f; }
+  </style>
+</head>
+<body><main>
+  <h1>Bottle Shards cleanroom R2</h1>
+  <p>Attached WebGPU preview for the eight synthetic bottle-impact item variants. The unchanged character image is a neutral scale reference. These are synthetic bottle-impact previews; no target or game state is connected.</p>
+  <div class="stage"><canvas id="surface" width="980" height="620" aria-label="Bottle Shards preview"></canvas></div>
+  <div class="controls" id="verify-controls" hidden><button id="replay" type="button">Replay</button><label><input id="source-on" type="checkbox" checked> source</label><label><input id="main-on" type="checkbox" checked> main</label><label><input id="observer-on" type="checkbox" checked> observer</label><label><input id="show-actor" type="checkbox" checked> actor</label><label><input id="reduced-motion" type="checkbox"> reduced motion</label></div>
+  <p id="error" role="status" hidden></p><output id="state" class="sr-only" aria-live="polite"></output>
+</main><script type="module" src="./gallery-adapter.mjs"></script><script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embed');</script></body>
+</html>
