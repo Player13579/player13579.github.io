@@ -27,7 +27,28 @@
       <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
     </section>
     <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
-      <article class="gallery-item" id="atmospheric-perspective-construction" data-essential="false" data-show-heading="false" hidden>
+      <article class="gallery-item" id="lsystem-branching-construction" data-essential="false" data-show-heading="false" hidden>
+  <h2>同じ分岐規則から、開き方の違う模様を作る</h2>
+  <div data-report-content>
+  <p class="item-summary">共通の分岐規則から線分座標を作る補助ツールを追加しました。意匠帳の文章の具体化に加え、実際の線形状を構成できます。分かれ方の規則を保ち、回転角を変えて横への広がりが違う模様のラフを比較します。</p>
+
+
+  <details class="report-details">
+    <summary>しくみ・具体例・確認範囲を見る</summary>
+    <figure class="item-image"><img src="assets/lsystem-branching-comparison.svg" alt="同じ分岐規則から作った20度・35度・55度の三つの線模様。同じ局所線分長・共通縮尺のベクトル形状で、B画像生成の結果ではありません。" loading="lazy"></figure>
+    <div class="item-details">
+      <section><h3>しくみ</h3><p>形式言語理論・計算論的造形のL-system（Lindenmayer system）のうち、決定的・文脈自由の並列書換えD0Lと、2D turtleの幾何解釈を使います。各世代の記号を同時に置換し、その列を前進・回転・位置と向きの保存／復帰へ写します。新しく挿入した記号を同じ回で再置換したり、分岐から戻るときに線を引いたりしません。文字列を図へ写す手法で、図形内の部分形状を検出する形態文法とは異なります。今回の規則・回数・角度・線幅・配色は造形上の選択です。自然の成長や美しさを保証する科学法則として扱いません。</p></section>
+      <section><h3>具体例</h3><p>初期列F、規則F → F[+F][-F]F、反復3回、線分長1、初期位置(0,0)・上向きから、回転角20°・35°・55°の三案を作りました。三案とも同じ190記号・64線分で、最大の括弧階層は3です。幅は約4.39 / 6.11 / 7.04、高さは8.00局所単位。図は一つの共通縮尺で描き、個別の拡大で外形を揃えていません。交差や重なりは角度で変わるため、括弧の階層と画面上の接続を同一視しません。図は実際に構成したベクトル座標のプレビューで、B画像生成の実行結果ではありません。</p></section>
+      <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査、337件のテストが通過しました。タートルを使わない独立した再帰的な図形合成と42条件・9,555線分を照合し、説明図の192線分を三案の座標へ対応させました。
+
+制約：線の一致・交差・部分形状の検出、対象への自動配置、幅・先細り・素材・陰影、植物の生理や物理的な接続・支持は計算しません。反復回数はアルゴリズムの段階で、世界内の時間ではありません。既存の模様や形に自由度があるときだけ使い、固定された数・角度・材質を保ちます。座標資料は完全なB設計へ統合するための入力で、別の実行promptではありません。実画像での模様の残り方・系列の読取り・美的効果は未確認です。</p></section>
+      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf">https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf</a></li><li><a href="https://algorithmicbotany.org/papers/graphical-applications-of-l-systems.html">https://algorithmicbotany.org/papers/graphical-applications-of-l-systems.html</a></li><li><a href="https://github.com/Player13579/B/blob/efedea29cfa8ec70d28dce0196124ec7b2770d3c/docs/lsystem-branching.md">https://github.com/Player13579/B/blob/efedea29cfa8ec70d28dce0196124ec7b2770d3c/docs/lsystem-branching.md</a></li></ul></section>
+    </div>
+    <p class="item-source"><a href="https://github.com/Player13579/B/commit/efedea29cfa8ec70d28dce0196124ec7b2770d3c">GitHubの変更</a></p>
+  </details>
+  </div>
+</article>
+<article class="gallery-item" id="atmospheric-perspective-construction" data-essential="false" data-show-heading="false" hidden>
   <h2>空気遠近法の減衰と散乱加算を構成する</h2>
   <div data-report-content>
   <p class="item-summary">既存媒体で、表面から届く光の減衰と、媒体中から視線へ加わる散乱光を組み合わせる任意の設計方法を追加しました。遠くの対象を一律に暗くする処理と分け、媒体・照明・実光路に応じた明暗の関係を記述します。</p>
