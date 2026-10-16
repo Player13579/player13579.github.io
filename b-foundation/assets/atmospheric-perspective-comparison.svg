@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="770" viewBox="0 0 1200 770" role="img" aria-labelledby="title desc">
+<title id="title">遠景の明暗を、空気中の光でまとめる</title>
+<desc id="desc">均質な媒体の数値例。光路が長くなると表面寄与は減り、一定の入射場からの散乱寄与が加わる。灰色は計算値のsRGB符号化表示であり、実大気や生成画像ではない。</desc>
+<style>text{font-family:"Yu Gothic",Meiryo,sans-serif;fill:#243149}.title{font-size:28px;font-weight:700}.heading{font-size:24px;font-weight:700}.label{font-size:19px}.number{font-size:19px;font-family:Consolas,monospace}.small{font-size:17px}.muted{fill:#58667c}</style>
+<rect width="1200" height="770" fill="#f4f6fa"/>
+<text class="title" x="40" y="49">遠景の明暗を、空気中の光でまとめる</text>
+<text class="label muted" x="40" y="83">同じ二面・同じ媒体と入射場。変えるのは、媒体内の光路長だけ。</text>
+
+<rect x="40" y="111" width="360" height="514" rx="14" fill="white" stroke="#d5ddeb"/>
+<text class="heading" x="62" y="151">光路 0 m</text>
+<text class="label" x="62" y="191">① 減衰して届く表面寄与</text>
+<rect x="62" y="208" width="158" height="79" fill="#595959" data-linear="0.10000000000000001"/>
+<text class="number" x="141" y="314" text-anchor="middle">0.100</text>
+<rect x="220" y="208" width="158" height="79" fill="#dadada" data-linear="0.69999999999999996"/>
+<text class="number" x="299" y="314" text-anchor="middle">0.700</text>
+<rect x="62" y="426" width="158" height="79" fill="#595959" data-linear="0.10000000000000001"/>
+<text class="number" x="141" y="532" text-anchor="middle">0.100</text>
+<rect x="220" y="426" width="158" height="79" fill="#dadada" data-linear="0.69999999999999996"/>
+<text class="number" x="299" y="532" text-anchor="middle">0.700</text>
+<text class="label" x="62" y="355">② 共通の散乱加算  +0.000</text>
+<text class="label" x="62" y="409">③ 合計して観測される値</text>
+<text class="small muted" x="62" y="571">二値の相対差  0.750</text>
+<text class="small muted" x="62" y="600">放射輝度の差  0.600</text>
+<rect x="420" y="111" width="360" height="514" rx="14" fill="white" stroke="#d5ddeb"/>
+<text class="heading" x="442" y="151">光路 10 m</text>
+<text class="label" x="442" y="191">① 減衰して届く表面寄与</text>
+<rect x="442" y="208" width="158" height="79" fill="#424242" data-linear="0.054881163609402643"/>
+<text class="number" x="521" y="314" text-anchor="middle">0.055</text>
+<rect x="600" y="208" width="158" height="79" fill="#a7a7a7" data-linear="0.38416814526581844"/>
+<text class="number" x="679" y="314" text-anchor="middle">0.384</text>
+<rect x="442" y="426" width="158" height="79" fill="#a1a1a1" data-linear="0.355673406213385"/>
+<text class="number" x="521" y="532" text-anchor="middle">0.356</text>
+<rect x="600" y="426" width="158" height="79" fill="#d8d8d8" data-linear="0.68496038786980074"/>
+<text class="number" x="679" y="532" text-anchor="middle">0.685</text>
+<text class="label" x="442" y="355">② 共通の散乱加算  +0.301</text>
+<text class="label" x="442" y="409">③ 合計して観測される値</text>
+<text class="small muted" x="442" y="571">二値の相対差  0.316</text>
+<text class="small muted" x="442" y="600">放射輝度の差  0.329</text>
+<rect x="800" y="111" width="360" height="514" rx="14" fill="white" stroke="#d5ddeb"/>
+<text class="heading" x="822" y="151">光路 30 m</text>
+<text class="label" x="822" y="191">① 減衰して届く表面寄与</text>
+<rect x="822" y="208" width="158" height="79" fill="#232323" data-linear="0.016529888822158653"/>
+<text class="number" x="901" y="314" text-anchor="middle">0.017</text>
+<rect x="980" y="208" width="158" height="79" fill="#606060" data-linear="0.11570922175511056"/>
+<text class="number" x="1059" y="314" text-anchor="middle">0.116</text>
+<rect x="822" y="426" width="158" height="79" fill="#c7c7c7" data-linear="0.57299729667443422"/>
+<text class="number" x="901" y="532" text-anchor="middle">0.573</text>
+<rect x="980" y="426" width="158" height="79" fill="#d6d6d6" data-linear="0.67217662960738611"/>
+<text class="number" x="1059" y="532" text-anchor="middle">0.672</text>
+<text class="label" x="822" y="355">② 共通の散乱加算  +0.556</text>
+<text class="label" x="822" y="409">③ 合計して観測される値</text>
+<text class="small muted" x="822" y="571">二値の相対差  0.080</text>
+<text class="small muted" x="822" y="600">放射輝度の差  0.099</text>
+<text class="small" x="40" y="663">放射輸送の数値例：σₐ=0.01、σₛ=0.05 m⁻¹、一定の散乱入射場 J=0.8、表面値 0.1 / 0.7</text>
+<text class="small muted" x="40" y="696">灰色は一成分の計算値を線形表示値に対応させ、sRGB符号化した説明用表示。</text>
+<text class="small muted" x="40" y="726">相対差=(高−低)/(高+低)。実大気の色・奥行き知覚・美的効果を示す実画像ではありません。</text>
+</svg>
