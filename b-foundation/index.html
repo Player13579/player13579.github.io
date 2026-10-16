@@ -30,21 +30,21 @@
       <article class="gallery-item" id="visual-family-book" data-essential="false" data-show-heading="false" hidden>
   <h2>意匠帳から対象別の制作資料を作る</h2>
   <div data-report-content>
-  <p class="item-summary">共有する形の関係・配色の役割・描き方を意匠帳に保存し、対象名・領域・向きを指定して素材別の制作資料を出力する補助ツールを追加しました。共通特徴と、金属・布それぞれで残す手掛かりを分けます。</p>
+  <p class="item-summary">意匠帳から対象別の制作資料を作る補助ツールに加え、共有する分岐模様を金属板の象嵌と布の織り模様へ対応させた、完全なB-3参考設計を追加しました。形の関係を共有し、素材ごとの反射条件を分けて記述しています。</p>
 
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
     <div class="item-details">
-      <section><h3>しくみ</h3><p>デザイン学・計算論的設計の形態文法（shape grammars）を参考に、形を構成する関係と、その関係を対象へ展開する方法を制作資料へ転用しています。今回の補助ツールが行うのは文章パラメータの具体化で、幾何形状を検出・照合する形態文法エンジンではありません。付属例の一度の分岐、約3対1の幅、主線長の六割という位置は独自の造形選択であり、学術研究が示す美の法則や最適値ではありません。学問分野・原理名・根拠種別・今回の使い方・出典を意匠帳にも保存します。</p></section>
-      <section><h3>具体例</h3><p>付属例では、既に模様がある青銅の飾り板とマントの縁の布帯へ、一度の分岐・主従の強弱・開いた抜けを共有する資料を作れます。金属の反射を布へ、布のひだを金属へ転写しません。今回の対象や固定条件と両立する内容を選び、完全なB設計の既存欄へ統合します。</p></section>
-      <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査と、追加10件を含む307件のテストが通過しました。金属用・布用の二つの実入力でCLIを実行し、同じ共通特徴と学術的な出自、異なる対象・領域・向き・材質手掛かりが出力されること、入力が変更されないことを独立に確認しました。既存のB-3契約、凍結B-2契約、生成検証器のバイトは変更していません。
+      <section><h3>しくみ</h3><p>デザイン学・計算論的設計の形態文法（shape grammars）を参考に、形と空間的な関係を複数の既存模様へ展開します。解析幾何・CGの剛体変換と正投影で、同じ局所形状を逆向きに配置し画面へ対応させます。金属地には幾何光学・CGのマイクロファセットBRDF（GGX分布、height-correlated Smith、SchlickのFresnel近似）、象嵌と布にはLambertの拡散反射モデル（ρ/π）を選びました。素材の反射を一律に揃えず、同じ模様と異なる素材応答を設計内で両立させます。分岐位置60%、幅3対1、末尾20%のテーパーと材料RGB値は、この例の設計選択です。学術研究が示す美の法則や実測物性値ではありません。</p></section>
+      <section><h3>具体例</h3><p>左の金属板では上向きの模様、右の布片では同じ模様を180度回転した下向きの模様にします。主線と枝は名目12画素・4画素ですが、提案した織りの手掛かりは0.8画素のため、実画像では失われる可能性があります。制作資料から形状・配置・色の役割・素材別の応答を一つの完全な設計へ対応させた参考例です。</p></section>
+      <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査と、統合例の6件を含む313件のテストが通過しました。分岐比・幅比・テーパー、二方向の座標変換と正投影、試料内への模様の収まり、素材パラメータの分離を検査しています。先行する補助ツールでは二つの実入力の文章具体化を確認済みです。
 
-制約：出力は要意味レビューの制作資料で、完全なB生成コードや別の実行promptではありません。自動的な形状一致判定、B設計への自動統合、画像生成、系列の読取りや美的効果は確認していません。今回の原理名だけで普遍的な調和・品質を保証しません。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.mit.edu/~tknight/IJDC/page_introduction.htm">https://www.mit.edu/~tknight/IJDC/page_introduction.htm</a></li><li><a href="https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/">https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/</a></li></ul></section>
+制約：補助ツールは形状認識・幾何文法エンジンやB設計への自動統合ではありません。参考設計は未描画で、レンダラーの実行、系列の読取り、素材感、美的効果は確認していません。布の反射は光沢・繊維透過・多重散乱を省いた近似です。</p></section>
+      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.mit.edu/~tknight/IJDC/page_introduction.htm">https://www.mit.edu/~tknight/IJDC/page_introduction.htm</a></li><li><a href="https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/">https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory">https://www.pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection">https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection</a></li><li><a href="https://google.github.io/filament/main/filament.html">https://google.github.io/filament/main/filament.html</a></li><li><a href="https://github.com/Player13579/B/blob/e024e446fa394c2d51499de43b25554f23e7e486/docs/visual-family-integration.md">https://github.com/Player13579/B/blob/e024e446fa394c2d51499de43b25554f23e7e486/docs/visual-family-integration.md</a></li></ul></section>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/0164df24292f8f46813e215406fe66733a231938">GitHubの変更</a></p>
+    <p class="item-source"><a href="https://github.com/Player13579/B/commit/e024e446fa394c2d51499de43b25554f23e7e486">GitHubの変更</a></p>
   </details>
   </div>
 </article>
