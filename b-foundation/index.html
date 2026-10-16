@@ -27,7 +27,28 @@
       <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
     </section>
     <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
-      <article class="gallery-item" id="lsystem-branching-construction" data-essential="false" data-show-heading="false" hidden>
+      <article class="gallery-item" id="cylindrical-motif-mapping" data-essential="false" data-show-heading="false" hidden>
+  <h2>平面の模様を、円柱面へ沿わせる</h2>
+  <div data-report-content>
+  <p class="item-summary">平面の模様を、弧長座標で既存の円柱面へ対応させる補助機能を追加しました。表面に沿った寸法を保ちながら、面の回り込みによる曲がりや画面上の短縮を構成します。端点だけでなく、その間の曲線も標本化します。</p>
+
+
+  <details class="report-details">
+    <summary>しくみ・具体例・確認範囲を見る</summary>
+    <figure class="item-image"><img src="assets/cylindrical-motif-comparison.svg" alt="同じ分岐模様を展開平面と半径4・2.5の円柱面へ対応させた共通縮尺の正投影。格子は作図用で、B画像生成や材質・照明の描画ではありません。" loading="lazy"></figure>
+    <div class="item-details">
+      <section><h3>しくみ</h3><p>微分幾何学の第一基本形式・局所等長写像を使います。円周方向の弧長u、軸方向の長さv、半径Rでq=(R sin(u/R),v,R cos(u/R))と置くと、接ベクトルの内積はE=G=1,F=0となり、連続した表面上の長さ・接線角・面積を保てます。画面への対応にはCG・射影幾何の正投影を使い、表面上の性質と投影後の寸法を分けます。曲線の折れ線化には、微積分の二階微分による線形補間誤差評価を、この円柱写像へ適用しています。半径・模様・カメラ・表示縮尺は説明用の設計選択で、美の法則や実物の測定値ではありません。</p></section>
+      <section><h3>具体例</h3><p>先に作った35°分岐模様の64本の中心線を、展開平面と半径4・2.5の円柱面へ対応させました。カメラの傾き20°・共通縮尺では、投影された模様の幅は約6.11 / 5.53 / 4.70局所単位になります。表面で寸法を保っても、画面上の幅や角度は変わります。格子は対応を示す作図用表示です。図は実際の座標から作った正投影プレビューで、材質や照明を解いた作品、B画像生成の実行結果ではありません。画面上の線幅は一定で、物理的なインクや溝の幅の計算とは区別します。</p></section>
+      <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査と349件のテストが通過しました。独立した80桁Decimal三角関数・行列投影で432条件を照合し、128本の曲面線と2,926点の曲線サンプルを検査しました。図の設計縮尺で検査した曲線サンプルの補間誤差は、目標0.05画素に対して最大約0.03835画素でした。
+
+制約：補間上界は厳密算術の式の浮動小数点評価で、区間演算による証明値や丸め・ラスタ化・拡大後の全誤差保証ではありません。開いた正面域|u/R|&lt;π/2だけを扱い、裏面・継ぎ目・他物体による遮蔽、球面・しわ面、材質・反射・物理的な線幅は計算しません。既存形状・模様の数や実寸・接触・カメラを保ち、具体的な配置を完全なBコードへ統合します。別の実行promptや必須schemaは増やしていません。実画像での可読性・素材感・美的効果は未確認です。</p></section>
+      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf">https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf</a></li><li><a href="https://pi.math.cornell.edu/~justin/4540/metric.html">https://pi.math.cornell.edu/~justin/4540/metric.html</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://github.com/Player13579/B/blob/f5e14919c696d7ae3b54e1d30b0046c9da2a29de/docs/cylindrical-motif.md">https://github.com/Player13579/B/blob/f5e14919c696d7ae3b54e1d30b0046c9da2a29de/docs/cylindrical-motif.md</a></li></ul></section>
+    </div>
+    <p class="item-source"><a href="https://github.com/Player13579/B/commit/f5e14919c696d7ae3b54e1d30b0046c9da2a29de">GitHubの変更</a></p>
+  </details>
+  </div>
+</article>
+<article class="gallery-item" id="lsystem-branching-construction" data-essential="false" data-show-heading="false" hidden>
   <h2>同じ分岐規則から、開き方の違う模様を作る</h2>
   <div data-report-content>
   <p class="item-summary">共通の分岐規則から線分座標を作る補助ツールを追加しました。意匠帳の文章の具体化に加え、実際の線形状を構成できます。分かれ方の規則を保ち、回転角を変えて横への広がりが違う模様のラフを比較します。</p>
