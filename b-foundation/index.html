@@ -23,12 +23,13 @@
         <button type="button" data-mode-switch="essential" aria-pressed="true" aria-controls="gallery-list" disabled>制作に必要な内容</button>
         <button type="button" data-mode-switch="all" aria-pressed="false" aria-controls="gallery-list" disabled>すべての報告</button>
       </div>
-      <p class="view-count" data-view-count aria-live="polite" aria-atomic="true">制作に必要な内容を表示中。0件。</p>
+      <p class="view-count" data-view-count aria-live="polite" aria-atomic="true">制作に必要な内容を表示中。0件。 見出しのみ1件。</p>
       <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
     </section>
     <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
-      <article class="gallery-item" id="magic-line-mass-rhythm-examples" data-essential="false" hidden>
-  <h2>魔法の印象を、三つの見本から選べる</h2>
+      <article class="gallery-item" id="magic-line-mass-rhythm-examples" data-essential="false" data-show-heading="true">
+  <h2><a href="?view=all#magic-line-mass-rhythm-examples">魔法の印象を、三つの見本から選べる</a></h2>
+  <div data-report-content hidden>
   <p class="item-summary">青系の魔法光帯を、細線・発光の塊・整った反復へ描き分けました。好みに近い見本を選び、次の制作で残したい特徴を具体的に伝えられます。</p>
   <section class="item-examples" aria-label="魔法の印象を、三つの見本から選べるの画像例"><figure class="example-figure">
       <h3>繊細 — 細い線と暗い隙間</h3>
@@ -64,9 +65,11 @@
     </div>
 
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="absorption-path-transmission" data-essential="false" hidden>
+<article class="gallery-item" id="absorption-path-transmission" data-essential="false" data-show-heading="false" hidden>
   <h2>吸収光路の長さと内部透過率</h2>
+  <div data-report-content>
   <p class="item-summary">既存の吸収媒体で、材質の吸収特性を保ちながら、許された光路長や厚みの候補を選べる。内部を進む光を何割残したいかが決まっていれば、その目標から必要な長さを逆算する方法も追加した。</p>
 
 
@@ -83,9 +86,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/e9ed5164497aeb0e64d14d6f0feaf8c316a40f66">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="anisotropic-reflection-direction" data-essential="false" hidden>
+<article class="gallery-item" id="anisotropic-reflection-direction" data-essential="false" data-show-heading="false" hidden>
   <h2>方向別の粗さと反射の構成</h2>
+  <div data-report-content>
   <p class="item-summary">既存の反射モデルで、方向ごとの粗さと表面上の向きを選び、反射がどちらへ広がるかを設計できる。異方性自体は既存知識で、今回は選び方の具体例を増やした。</p>
 
 
@@ -102,9 +107,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/a0d06ab122418d8aeecf95ac618ae0853025148f">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="area-light-shadow-width" data-essential="false" hidden>
+<article class="gallery-item" id="area-light-shadow-width" data-essential="false" data-show-heading="false" hidden>
   <h2>面光源の条件と影境界の構成</h2>
+  <div data-report-content>
   <p class="item-summary">既存の面光源の幅が未指定なら、その幅から影の輪郭、本影の有無、境界がぼける幅を設計できる。影を新設する機能ではなく、既にある光源と遮蔽物を使う具体的な選び方を増やした。</p>
 
 
@@ -121,9 +128,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/b2f66486ae83656f4452552988b4de2c7eb3a300">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="b3-observation-stage-validator" data-essential="false" hidden>
+<article class="gallery-item" id="b3-observation-stage-validator" data-essential="false" data-show-heading="false" hidden>
   <h2>OBSの描画段階の構造検査</h2>
+  <div data-report-content>
   <p class="item-summary">OBS.stageを4正準値に限定し、未知値・空欄・不正型をOBS IDとともに診断する。</p>
 
 
@@ -140,9 +149,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/fa08be9948fea51c8d5af3c16b2b55613162f30b">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="camera-distance-relative-scale" data-essential="false" hidden>
+<article class="gallery-item" id="camera-distance-relative-scale" data-essential="false" data-show-heading="false" hidden>
   <h2>撮影距離と奥行きごとの倍率</h2>
+  <div data-report-content>
   <p class="item-summary">被写体の基準になる平らな面を同じ大きさに写しながら、背景や手前の面との投影サイズの関係を選べる。既存の透視投影を使う具体的な構成例で、立体全体の輪郭や面積を一定にする機能ではない。</p>
 
 
@@ -159,9 +170,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/07546eedaec1e1aa606d825b52dc8e2d0a095afa">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="color-interpolation-paths" data-essential="false" hidden>
+<article class="gallery-item" id="color-interpolation-paths" data-essential="false" data-show-heading="false" hidden>
   <h2>色の補間経路の比較</h2>
+  <div data-report-content>
   <p class="item-summary">既存のグラデーションで両端の色と位置を固定し、中間色が未指定の区間だけ、補間色空間と色相の短経路・長経路を候補化する。</p>
 
 
@@ -178,9 +191,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/f225848f38253e9298f9b0f9dd567354232db46b">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="contour-junctions" data-essential="false" hidden>
+<article class="gallery-item" id="contour-junctions" data-essential="false" data-show-heading="false" hidden>
   <h2>輪郭の離れ・接し・重なりの比較</h2>
+  <div data-report-content>
   <p class="item-summary">既存モチーフの輪郭関係を、離す・接する・重ねる候補として比較する手順を追加した。</p>
 
 
@@ -195,9 +210,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/b9c3559d683af22ed68daae1e2c637d5befdaba7">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="contour-stroke-profiles" data-essential="false" hidden>
+<article class="gallery-item" id="contour-stroke-profiles" data-essential="false" data-show-heading="false" hidden>
   <h2>輪郭線の太さと先細りの構成</h2>
+  <div data-report-content>
   <p class="item-summary">既存の輪郭線を役割ごとに選び、太さ・先細り・遷移を比較する任意の手順を追加した。</p>
 
 
@@ -212,9 +229,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/a3b84ad7724f255af57d0039dff2d7a3bb4c4752">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="curve-join-continuity" data-essential="false" hidden>
+<article class="gallery-item" id="curve-join-continuity" data-essential="false" data-show-heading="false" hidden>
   <h2>輪郭の接続と連続性</h2>
+  <div data-report-content>
   <p class="item-summary">2本の既存ベジェ曲線で、つなぎ目の位置だけでなく、接線や曲率の揃え方を選べる。</p>
 
 
@@ -231,9 +250,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/1bd849e18d9cb1f4e3313a329c685ce9eac27ca2">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="fresnel-interface-reflection" data-essential="false" hidden>
+<article class="gallery-item" id="fresnel-interface-reflection" data-essential="false" data-show-heading="false" hidden>
   <h2>界面角度と反射・透過の構成</h2>
+  <div data-report-content>
   <p class="item-summary">透明な素材の面ごとに、光を通す寄与と反射させる寄与の差を設計する方法を追加した。例えば、正面に近い面には透ける寄与を多く残し、斜めの面では既存の光を返す寄与を強める。指定された材質や形を保ち、光源・面・視点が許す未指定の光路条件だけを選ぶ。</p>
 
 
@@ -250,9 +271,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/422fdaff1ef37d1afff1b7d0886f8172637b4a4b">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="geometric-line-selection" data-essential="false" hidden>
+<article class="gallery-item" id="geometric-line-selection" data-essential="false" data-show-heading="false" hidden>
   <h2>輪郭線と補助線を選ぶ方法</h2>
+  <div data-report-content>
   <p class="item-summary">外形・遮蔽境界、実際の稜線、滑らかな面の回り込みを区別し、必要な描線を選ぶ。</p>
 
 
@@ -269,9 +292,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/9fe8e6b528936b882f5852650eab165158b55090">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="initial-four-generative-principles" data-essential="false" hidden>
+<article class="gallery-item" id="initial-four-generative-principles" data-essential="false" data-show-heading="false" hidden>
   <h2>形・色・輪郭・反復の構成手順</h2>
+  <div data-report-content>
   <p class="item-summary">形状文法・周囲色・輪郭関係・期待変奏を、既存内容への具体的な選択として組み立てる。</p>
 
 
@@ -288,9 +313,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/52935b8d9a3bd57bac52209bc2fbffcb6078be2b">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="integrated-b3-reference" data-essential="false" hidden>
+<article class="gallery-item" id="integrated-b3-reference" data-essential="false" data-show-heading="false" hidden>
   <h2>余白と明暗を組み合わせた参考設計</h2>
+  <div data-report-content>
   <p class="item-summary">空隙形・色群・表示観測を、既存14章のB-3設計JSONで一つの採用案と未実施検証に結ぶ。</p>
 
 
@@ -307,9 +334,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/a949d1b300dc0987d742f4aeeac50272f2730aba">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="material-appearance" data-essential="false" hidden>
+<article class="gallery-item" id="material-appearance" data-essential="false" data-show-heading="false" hidden>
   <h2>素材の見えを構成する方法</h2>
+  <div data-report-content>
   <p class="item-summary">反射ハイライトと陰影の整合、既存素材間の見えの差、薄い透過面越しの模様関係を選ぶ。</p>
 
 
@@ -326,9 +355,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/a37df1c56d4c174bc0a44cd180b66271aa19b39c">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="motion-time-allocation" data-essential="false" hidden>
+<article class="gallery-item" id="motion-time-allocation" data-essential="false" data-show-heading="false" hidden>
   <h2>動作の時間配分を選ぶ方法</h2>
+  <div data-report-content>
   <p class="item-summary">既存時間尺の中で経路r(s)と進行s(t)を分け、移動と保持の配分を選ぶ。</p>
 
 
@@ -345,9 +376,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/e81d015ccbef95cba3cc5cb439d2b2d07487ca5b">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="negative-space-shape" data-essential="false" hidden>
+<article class="gallery-item" id="negative-space-shape" data-essential="false" data-show-heading="false" hidden>
   <h2>余白の形を比較する方法</h2>
+  <div data-report-content>
   <p class="item-summary">既存境界が作る空隙について、幅の変化・開口方向・周囲への連続を許された配置から選ぶ。</p>
 
 
@@ -364,9 +397,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/f73c1c78f07bc0058df34984368dc4d449186118">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="pattern-scale-display-size" data-essential="false" hidden>
+<article class="gallery-item" id="pattern-scale-display-size" data-essential="false" data-show-heading="false" hidden>
   <h2>模様の尺度と表示寸法の比較</h2>
+  <div data-report-content>
   <p class="item-summary">同じ2色と色量比の模様周期を、想定表示寸法別に候補比較する。</p>
 
 
@@ -383,9 +418,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/6908e456cc609156d583161e2ad8fb1ad6cd6564">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="spatial-registration" data-essential="false" hidden>
+<article class="gallery-item" id="spatial-registration" data-essential="false" data-show-heading="false" hidden>
   <h2>反復列の整列と位置ずれ</h2>
+  <div data-report-content>
   <p class="item-summary">既存要素の形・色・個数と行内周期を保ち、行ごとの水平位置を選んで、整列と互い違いの配置候補を作る。</p>
 
 
@@ -406,9 +443,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/1a0774b4095f04803a8e5057987b932c66fcabe8">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="surface-mark-construction" data-essential="false" hidden>
+<article class="gallery-item" id="surface-mark-construction" data-essential="false" data-show-heading="false" hidden>
   <h2>面に沿う筆致・ハッチングの構成</h2>
+  <div data-report-content>
   <p class="item-summary">既存面に描く筆致の方向・長さ・間隔・密度・休止領域を、共同で選ぶ任意の手順を追加した。</p>
 
 
@@ -423,9 +462,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/b8a69cb0f7d76e5bf3aa86c02ad6300898864adc">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="thin-lens-defocus-width" data-essential="false" hidden>
+<article class="gallery-item" id="thin-lens-defocus-width" data-essential="false" data-show-heading="false" hidden>
   <h2>薄いレンズのぼけ径の構成</h2>
+  <div data-report-content>
   <p class="item-summary">既存の有限開口カメラで、ピントを合わせる位置を動かさずに、手前と奥の点がどの程度広がって写るかを選べる。未指定の開口径を選ぶための具体的な構成例を追加した。</p>
 
 
@@ -442,9 +483,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/7150f04662806d2378f2c5539359e716caeb1755">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="tonal-connectivity" data-essential="false" hidden>
+<article class="gallery-item" id="tonal-connectivity" data-essential="false" data-show-heading="false" hidden>
   <h2>明暗のつながりを比較する方法</h2>
+  <div data-report-content>
   <p class="item-summary">既存色面の値・面積だけでなく、明暗群の辺接続と分離関係を選ぶ。</p>
 
 
@@ -461,9 +504,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/5d6ac4db63711fc813c0da7a5d1fe347dfe41c05">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="traveling-light-pattern" data-essential="false" hidden>
+<article class="gallery-item" id="traveling-light-pattern" data-essential="false" data-show-heading="false" hidden>
   <h2>円形領域を巡る光の模様の構成</h2>
+  <div data-report-content>
   <p class="item-summary">既に時間変化が許された円形の発光部で、形を動かさずに、明暗の模様が巡る向きと速さを選べる。未指定の強度変調を具体化する方法で、円や光源を追加するものではない。</p>
 
 
@@ -480,9 +525,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/5c16da43153c2df7a4e0c6563befb0a85a952975">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="vfx-selected-projection" data-essential="false" hidden>
+<article class="gallery-item" id="vfx-selected-projection" data-essential="false" data-show-heading="false" hidden>
   <h2>VFXと選択済み投影集合の条件整理</h2>
+  <div data-report-content>
   <p class="item-summary">VFXの世界内レイヤーに関する記述を、基底の選択済みProjectionSetへ合わせた。</p>
 
 
@@ -497,9 +544,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/9b92ab7dc39c96aa868dfa8bc06599e6bcf2a61a">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="weighted-placement-candidates" data-essential="false" hidden>
+<article class="gallery-item" id="weighted-placement-candidates" data-essential="false" data-show-heading="false" hidden>
   <h2>重み分布に基づく配置候補</h2>
+  <div data-report-content>
   <p class="item-summary">既存balance_symmetry軸で、配置の重み付き中心と符号付き偏りを候補比較に使う。</p>
 
 
@@ -516,9 +565,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/85a4a85afd31cb26814d2d0f3e3c8c935bc0d5f0">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-028eadf665a9" data-essential="false" hidden>
+<article class="gallery-item" id="technical-028eadf665a9" data-essential="false" data-show-heading="false" hidden>
   <h2>仕様テンプレートと重複メタデータの検査</h2>
+  <div data-report-content>
   <p class="item-summary">壊れたテンプレートの章診断と、空値を含む規則メタデータの重複検出を追加した。</p>
 
 
@@ -533,9 +584,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/028eadf665a916ee916e11ad8b1d65a0cdde4d30">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-08d42d591993" data-essential="false" hidden>
+<article class="gallery-item" id="technical-08d42d591993" data-essential="false" data-show-heading="false" hidden>
   <h2>複数キーワード展開の個別検査</h2>
+  <div data-report-content>
   <p class="item-summary">複数の完全一致展開を配列として保持し、各項目の義務を個別に検査するようにした。</p>
 
 
@@ -550,9 +603,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/08d42d591993f81cdc92f40c7bd30d8fb97dc388">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-21dd48756f3e" data-essential="false" hidden>
+<article class="gallery-item" id="technical-21dd48756f3e" data-essential="false" data-show-heading="false" hidden>
   <h2>コンパイル状態と投影の網羅検査</h2>
+  <div data-report-content>
   <p class="item-summary">コンパイルの状態に応じた条件と、投影が必要な対象を覆う条件を整理した。</p>
 
 
@@ -567,9 +622,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/21dd48756f3e827bf2b5f4735004d2b95e26e7f8">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-341ae7047dda" data-essential="false" hidden>
+<article class="gallery-item" id="technical-341ae7047dda" data-essential="false" data-show-heading="false" hidden>
   <h2>OBS依存グラフと意味照合の反例</h2>
+  <div data-report-content>
   <p class="item-summary">OBSの依存グラフを反復処理で検査し、意味照合の反例を文書化した。</p>
 
 
@@ -584,9 +641,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/341ae7047ddad3752163589d3b336fd0d2573c7b">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-3d19e917f5de" data-essential="false" hidden>
+<article class="gallery-item" id="technical-3d19e917f5de" data-essential="false" data-show-heading="false" hidden>
   <h2>描画対象参照とUnicode診断</h2>
+  <div data-report-content>
   <p class="item-summary">画面上の描画対象への型付き参照と、CLIの日本語・Unicode出力を改善した。</p>
 
 
@@ -601,9 +660,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/3d19e917f5de4a661d7e732147e108b14634c43c">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-604e64cef7c6" data-essential="false" hidden>
+<article class="gallery-item" id="technical-604e64cef7c6" data-essential="false" data-show-heading="false" hidden>
   <h2>pointerの配列添字検査</h2>
+  <div data-report-content>
   <p class="item-summary">配列へのpointerで範囲外や不正な添字を通常の未解決診断として扱うようにした。</p>
 
 
@@ -618,9 +679,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/604e64cef7c6da52109b91dca38b570d146b6214">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-67fd129732d5" data-essential="false" hidden>
+<article class="gallery-item" id="technical-67fd129732d5" data-essential="false" data-show-heading="false" hidden>
   <h2>JSON APIの型・深さ・循環検査</h2>
+  <div data-report-content>
   <p class="item-summary">直接APIへ渡す値を正準JSONの型に限定し、深さや循環を検査するようにした。</p>
 
 
@@ -635,9 +698,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/67fd129732d52d705297db26fdb1d1f5c4d5e0c3">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-6ad01acc640f" data-essential="false" hidden>
+<article class="gallery-item" id="technical-6ad01acc640f" data-essential="false" data-show-heading="false" hidden>
   <h2>PostEffectsと単一光条の条件整理</h2>
+  <div data-report-content>
   <p class="item-summary">通常のPostEffects指定と、f1の単一光条に集団用LDMを不要とする条件を整理した。</p>
 
 
@@ -652,9 +717,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/6ad01acc640feee7faf8bc56e351bc5cc3bae231">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-75fb0574fd04" data-essential="false" hidden>
+<article class="gallery-item" id="technical-75fb0574fd04" data-essential="false" data-show-heading="false" hidden>
   <h2>記述型・予約参照・表示上の受入条件</h2>
+  <div data-report-content>
   <p class="item-summary">説明文の型、正準ルートの予約、表示だけに関する受入条件を明確にした。</p>
 
 
@@ -669,9 +736,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/75fb0574fd0496016e06b6583446a69851ece89c">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-888114fbbcd8" data-essential="false" hidden>
+<article class="gallery-item" id="technical-888114fbbcd8" data-essential="false" data-show-heading="false" hidden>
   <h2>共通参照定義と根拠の鮮度</h2>
+  <div data-report-content>
   <p class="item-summary">共通の契約参照を整理し、現行版の準備状態と根拠の鮮度を照合する条件を明確にした。</p>
 
 
@@ -686,9 +755,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/888114fbbcd8df10e94725e47151d282ebbd7d80">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-9a8772278353" data-essential="false" hidden>
+<article class="gallery-item" id="technical-9a8772278353" data-essential="false" data-show-heading="false" hidden>
   <h2>B-Expression-3への統合</h2>
+  <div data-report-content>
   <p class="item-summary">構図・描写・色・魔法の共同設計と、Entity・PH・OBSを分ける表現形式を導入した。</p>
 
 
@@ -703,9 +774,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/9a87722783534d2be3516e079e3608c3e95e3a38">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-a6ee0ff45f1b" data-essential="false" hidden>
+<article class="gallery-item" id="technical-a6ee0ff45f1b" data-essential="false" data-show-heading="false" hidden>
   <h2>UTF-8 BOMと数値範囲の取扱い</h2>
+  <div data-report-content>
   <p class="item-summary">先頭のBOMを一つ許容し、非有限になる数値を明示的に拒否するようにした。</p>
 
 
@@ -720,9 +793,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/a6ee0ff45f1b990ce9bf27332e4ee8c10d940b20">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-b898a267ca36" data-essential="false" hidden>
+<article class="gallery-item" id="technical-b898a267ca36" data-essential="false" data-show-heading="false" hidden>
   <h2>例外規則とYAMLの一貫した解釈</h2>
+  <div data-report-content>
   <p class="item-summary">exception_toの参照先解決、単一値YAMLの共通処理、テンプレートの重複検出を整えた。</p>
 
 
@@ -737,9 +812,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/b898a267ca36a44f51ba5eb8009c53ce6e4299e8">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-c24a9ba3cb20" data-essential="false" hidden>
+<article class="gallery-item" id="technical-c24a9ba3cb20" data-essential="false" data-show-heading="false" hidden>
   <h2>検証中の契約と参照解決の分離</h2>
+  <div data-report-content>
   <p class="item-summary">一回の検証で使う契約のスナップショットと、参照解決の再構築を独立させた。</p>
 
 
@@ -754,9 +831,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/c24a9ba3cb2036cc701dfe55ab120681419aebb4">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-c29bc021ab2e" data-essential="false" hidden>
+<article class="gallery-item" id="technical-c29bc021ab2e" data-essential="false" data-show-heading="false" hidden>
   <h2>拡張選択APIの明示エラー</h2>
+  <div data-report-content>
   <p class="item-summary">未知の拡張名や不正な選択コンテナを、APIの明示エラーとして返すようにした。</p>
 
 
@@ -771,9 +850,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/c29bc021ab2e7b92cf143b9e82f9fd99fdb6c4d0">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-c8e93fcb86b4" data-essential="false" hidden>
+<article class="gallery-item" id="technical-c8e93fcb86b4" data-essential="false" data-show-heading="false" hidden>
   <h2>Python型注釈の非実行構文</h2>
+  <div data-report-content>
   <p class="item-summary">生成コードのprompt注釈として扱う構文を、実行しない形式へ限定した。</p>
 
 
@@ -788,9 +869,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/c8e93fcb86b4c059818c6d3c3401b450abc45d1d">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-d1bc59cbb65b" data-essential="false" hidden>
+<article class="gallery-item" id="technical-d1bc59cbb65b" data-essential="false" data-show-heading="false" hidden>
   <h2>モジュール内パスの依存検査</h2>
+  <div data-report-content>
   <p class="item-summary">モジュールの一部を指す参照も、モジュール間の先行関係へ対応させた。</p>
 
 
@@ -805,9 +888,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/d1bc59cbb65bd29a57f86a8d6a5079a0f1fbd84f">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-d5e061ec4a0c" data-essential="false" hidden>
+<article class="gallery-item" id="technical-d5e061ec4a0c" data-essential="false" data-show-heading="false" hidden>
   <h2>コンパイル前の正本検査</h2>
+  <div data-report-content>
   <p class="item-summary">コンパイル前に正本全体を検査し、activation参照の不正な型を通常の診断へ変えた。</p>
 
 
@@ -822,9 +907,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/d5e061ec4a0c9db046865534c84c2148c9d3406c">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-e90ca0658c13" data-essential="false" hidden>
+<article class="gallery-item" id="technical-e90ca0658c13" data-essential="false" data-show-heading="false" hidden>
   <h2>パスに似た登録IDの保護</h2>
+  <div data-report-content>
   <p class="item-summary">モジュールのパスに似ている登録IDを、先行関係と誤認しないようにした。</p>
 
 
@@ -839,9 +926,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/e90ca0658c1324c96ea6b215b4e43473423efd89">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="technical-eb026b6ca7ae" data-essential="false" hidden>
+<article class="gallery-item" id="technical-eb026b6ca7ae" data-essential="false" data-show-heading="false" hidden>
   <h2>汎用参照と識別子の名前空間</h2>
+  <div data-report-content>
   <p class="item-summary">B3の汎用参照をpointer優先に整理し、識別子専用欄の値をそのまま保つようにした。</p>
 
 
@@ -856,9 +945,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/B/commit/eb026b6ca7aef055f3521f9110f2fdea93ce8374">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="gallery-essential-curation" data-essential="false" hidden>
+<article class="gallery-item" id="gallery-essential-curation" data-essential="false" data-show-heading="false" hidden>
   <h2>制作上の必要性に基づく掲載内容の整理</h2>
+  <div data-report-content>
   <p class="item-summary">通常のギャラリーを、ユーザーが制作でぜひ知るべきこのチャットの改善だけに絞り、日別ページを廃止した。</p>
 
 
@@ -873,9 +964,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/47569c3ecee16d334ee16c45077fcfa0ec647768">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="gallery-publication" data-essential="false" hidden>
+<article class="gallery-item" id="gallery-publication" data-essential="false" data-show-heading="false" hidden>
   <h2>B制作ギャラリーの公開</h2>
+  <div data-report-content>
   <p class="item-summary">このチャットの改善報告を読むためのGitHub Pagesギャラリーを作成した。</p>
 
 
@@ -890,9 +983,11 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/62a7ae553d9215d1989dac2e49296d5c653ec92e">GitHubの変更</a></p>
   </details>
+  </div>
 </article>
-<article class="gallery-item" id="gallery-tab-icons" data-essential="false" hidden>
+<article class="gallery-item" id="gallery-tab-icons" data-essential="false" data-show-heading="false" hidden>
   <h2>ギャラリーのタブ・ブックマーク用アイコン</h2>
+  <div data-report-content>
   <p class="item-summary">B制作ギャラリーのfaviconとApple用アイコンを変更した。</p>
 
 
@@ -907,6 +1002,7 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/1cdf26f714fa54b52499d7388cce1eec0f40b84f">GitHubの変更</a></p>
   </details>
+  </div>
 </article><p class="empty-gallery" data-empty-state>現在、制作でぜひ知っておくべき掲載内容はありません。これまでの改善は「すべての報告」で読めます。</p>
     </section>
   </main>

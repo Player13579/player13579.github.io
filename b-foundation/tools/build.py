@@ -19,7 +19,7 @@ IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".svg"}
 GALLERY_FIELDS = {"title", "intro", "items"}
 ITEM_FIELDS = {"id", "title", "summary", "principle", "evidence", "essential"}
 OPTIONAL_ITEM_FIELDS = {
-    "benefit", "how_to_use", "source_url", "image", "image_alt", "example", "references", "examples"
+    "benefit", "how_to_use", "source_url", "image", "image_alt", "example", "references", "examples", "show_heading"
 }
 EXAMPLE_FIELDS = {"title", "image", "image_alt", "caption"}
 GITHUB_COMMIT_RE = re.compile(
@@ -109,6 +109,8 @@ def read_gallery() -> dict:
             require_text(item[field], f"{label}.{field}")
         if not isinstance(item["essential"], bool):
             raise ValueError(f"{label}.essential: expected a boolean")
+        if "show_heading" in item and not isinstance(item["show_heading"], bool):
+            raise ValueError(f"{label}.show_heading: expected a boolean")
         has_benefit = "benefit" in item
         has_how_to_use = "how_to_use" in item
         if has_benefit != has_how_to_use:
@@ -195,9 +197,15 @@ def render_item(item: dict) -> str:
             f'<li><a href="{esc(url)}">{esc(url)}</a></li>' for url in item["references"]
         )
         references = f'<section class="item-references"><h3>参考資料</h3><ul>{links}</ul></section>'
-    hidden = "" if item["essential"] else " hidden"
-    return f'''<article class="gallery-item" id="{esc(item["id"])}" data-essential="{str(item["essential"]).lower()}"{hidden}>
-  <h2>{esc(item["title"])}</h2>
+    show_heading = item.get("show_heading", False)
+    hidden = "" if item["essential"] or show_heading else " hidden"
+    content_hidden = " hidden" if show_heading and not item["essential"] else ""
+    heading = esc(item["title"])
+    if show_heading:
+        heading = f'<a href="?view=all#{esc(item["id"])}">{heading}</a>'
+    return f'''<article class="gallery-item" id="{esc(item["id"])}" data-essential="{str(item["essential"]).lower()}" data-show-heading="{str(show_heading).lower()}"{hidden}>
+  <h2>{heading}</h2>
+  <div data-report-content{content_hidden}>
   <p class="item-summary">{esc(item["summary"])}</p>
   {examples}
   {essential_details}
@@ -212,12 +220,15 @@ def render_item(item: dict) -> str:
     </div>
     {source}
   </details>
+  </div>
 </article>'''
 
 
 def render_page(data: dict) -> str:
     items = "\n".join(render_item(item) for item in data["items"])
     essential_count = sum(1 for item in data["items"] if item["essential"])
+    heading_count = sum(1 for item in data["items"] if not item["essential"] and item.get("show_heading", False))
+    heading_note = f' 見出しのみ{heading_count}件。' if heading_count else ''
     empty_hidden = " hidden" if essential_count else ""
     items += f'<p class="empty-gallery" data-empty-state{empty_hidden}>現在、制作でぜひ知っておくべき掲載内容はありません。これまでの改善は「すべての報告」で読めます。</p>'
     return f'''<!doctype html>
@@ -245,7 +256,7 @@ def render_page(data: dict) -> str:
         <button type="button" data-mode-switch="essential" aria-pressed="true" aria-controls="gallery-list" disabled>制作に必要な内容</button>
         <button type="button" data-mode-switch="all" aria-pressed="false" aria-controls="gallery-list" disabled>すべての報告</button>
       </div>
-      <p class="view-count" data-view-count aria-live="polite" aria-atomic="true">制作に必要な内容を表示中。{essential_count}件。</p>
+      <p class="view-count" data-view-count aria-live="polite" aria-atomic="true">制作に必要な内容を表示中。{essential_count}件。{heading_note}</p>
       <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
     </section>
     <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">

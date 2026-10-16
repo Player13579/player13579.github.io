@@ -12,12 +12,18 @@
     const focused = document.activeElement;
     let focusWouldBeHidden = false;
     let visibleCount = 0;
+    let headingCount = 0;
 
     for (const card of cards) {
-      const visible = mode === "all" || card.dataset.essential === "true";
+      const fullReport = mode === "all" || card.dataset.essential === "true";
+      const headingOnly = !fullReport && card.dataset.showHeading === "true";
+      const visible = fullReport || headingOnly;
       card.hidden = !visible;
-      if (visible) visibleCount += 1;
-      if (card.contains(focused) && !visible) focusWouldBeHidden = true;
+      const content = card.querySelector("[data-report-content]");
+      if (content) content.hidden = !fullReport;
+      if (fullReport) visibleCount += 1;
+      if (headingOnly) headingCount += 1;
+      if ((card.contains(focused) && !visible) || (content?.contains(focused) && !fullReport)) focusWouldBeHidden = true;
     }
 
     for (const button of buttons) {
@@ -25,6 +31,7 @@
     }
     emptyState.hidden = visibleCount !== 0;
     count.textContent = `${mode === "all" ? "すべての報告" : "制作に必要な内容"}を表示中。${visibleCount}件。`;
+    if (headingCount) count.textContent += ` 見出しのみ${headingCount}件。`;
     const heading = document.getElementById("page-heading");
     if (heading) heading.textContent = mode === "all" ? "このチャットの改善報告。" : "制作に必要な変化だけを。";
     emptyState.textContent = mode === "all"
