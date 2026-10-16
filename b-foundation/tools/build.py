@@ -25,6 +25,14 @@ def esc(value: str) -> str:
     return html.escape(value, quote=True)
 
 
+def icon_links(prefix: str) -> str:
+    return (
+        f'<link rel="icon" href="{prefix}icons/favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon">'
+        f'<link rel="icon" href="{prefix}icons/favicon.svg" type="image/svg+xml" sizes="any">'
+        f'<link rel="apple-touch-icon" href="{prefix}icons/apple-touch-icon.png" sizes="180x180">'
+    )
+
+
 def lines(value: str | list[str], *, css: str = "copy") -> str:
     values = [value] if isinstance(value, str) else value
     return "\n".join(f'<p class="{css}">{esc(item)}</p>' for item in values)
@@ -145,7 +153,7 @@ def write_report(report: dict) -> None:
     toc = "\n".join(f'<li data-toc-entry="{esc(e["id"])}"><a href="#{esc(e["id"])}">{esc(e["title"])}</a></li>' for e in report["entries"])
     html_doc = f'''<!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="B基底・拡張の設計方法と検証器の変更記録。"><title>{esc(report["title"])} · B基底・拡張 改善ギャラリー</title><link rel="stylesheet" href="../styles.css"><script src="../gallery.js" defer></script></head>
+<meta name="description" content="B基底・拡張の設計方法と検証器の変更記録。"><title>{esc(report["title"])} · B基底・拡張 改善ギャラリー</title>{icon_links('../')}<link rel="stylesheet" href="../styles.css"><script src="../gallery.js" defer></script></head>
 <body><a class="skip-link" href="#main">本文へ移動</a><header class="site-header"><a class="brand" href="../index.html">B基底・拡張 <span>改善ギャラリー</span></a><a class="back-link" href="../index.html">日別一覧へ</a></header>
 <main id="main" class="report-main"><div class="eyebrow">DAILY CHANGE REPORT</div><time class="report-date" datetime="{esc(report["date"])}">{esc(report["date"])}</time><h1>{esc(report["title"])}</h1><div class="intro">{lines(report["intro"], css="")}</div><p class="updated">更新 <time>{esc(report["updated_at"])}</time></p>
 <aside class="editorial-note"><strong>このギャラリーについて</strong><p>設計方法・検証器の変更記録です。説明図と生成結果を区別して掲載します。</p></aside>
@@ -171,7 +179,7 @@ def write_index(reports: list[dict]) -> None:
     summary = (f'<p>{esc(latest["date"])}の報告に{len(latest["entries"])}件の変更を掲載しています。</p>' if latest else '<p>最初の日別報告を準備しています。</p>')
     listing = "\n".join(cards) if cards else '<p class="empty-gallery">まだ報告はありません。</p>'
     doc = f'''<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="B基底・拡張の設計方法と検証器の毎日の変更記録。"><title>B基底・拡張 改善ギャラリー</title><link rel="stylesheet" href="styles.css"><script src="gallery.js" defer></script></head>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="B基底・拡張の設計方法と検証器の毎日の変更記録。"><title>B基底・拡張 改善ギャラリー</title>{icon_links('')}<link rel="stylesheet" href="styles.css"><script src="gallery.js" defer></script></head>
 <body><a class="skip-link" href="#main">本文へ移動</a><header class="site-header"><a class="brand" href="index.html">B基底・拡張 <span>改善ギャラリー</span></a><span class="header-note">設計と検証の記録</span></header>
 <main id="main" class="home-main"><section class="hero"><div class="eyebrow">DESIGN NOTES · DAILY</div><h1>美しさを支える<br><em>設計と検証の記録。</em></h1><p class="hero-copy">Bの基底・拡張に加えた設計方法や検証器の変更を、できること・原理・具体例・確認範囲とともに日付ごとにまとめます。</p><div class="today-summary"><span>最新の報告</span>{summary}</div></section><section class="gallery-section" aria-labelledby="archive-heading"><div class="section-heading"><div><div class="eyebrow">ARCHIVE</div><h2 id="archive-heading">日別レポート</h2></div><span class="archive-count">{len(reports)}日分</span></div><div class="day-grid">{listing}</div></section><aside class="editorial-note"><strong>記録の読み方</strong><p>設計方法・検証器の変更記録です。説明図は考え方を示すもので、画像生成の成果物とは区別しています。実行していない項目は「未確認」と記します。</p></aside></main><footer class="site-footer">B基底・拡張 改善ギャラリー <span>· 日々の設計ログ</span></footer></body></html>'''
     INDEX.write_text(doc, encoding="utf-8", newline="\n")
