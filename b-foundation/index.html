@@ -23,13 +23,52 @@
         <button type="button" data-mode-switch="essential" aria-pressed="true" aria-controls="gallery-list" disabled>制作に必要な内容</button>
         <button type="button" data-mode-switch="all" aria-pressed="false" aria-controls="gallery-list" disabled>すべての報告</button>
       </div>
-      <p class="view-count" data-view-count aria-live="polite" aria-atomic="true">制作に必要な内容を表示中。0件。</p>
+      <p class="view-count" data-view-count aria-live="polite" aria-atomic="true">制作に必要な内容を表示中。1件。</p>
       <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
     </section>
     <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
-      <article class="gallery-item" id="absorption-path-transmission" data-essential="false" hidden>
+      <article class="gallery-item" id="magic-line-mass-rhythm-examples" data-essential="true">
+  <h2>魔法の印象を、三つの見本から選べる</h2>
+  <p class="item-summary">青系の魔法光帯を、細線・発光の塊・整った反復へ描き分けました。好みに近い見本を選び、次の制作で残したい特徴を具体的に伝えられます。</p>
+  <section class="item-examples" aria-label="魔法の印象を、三つの見本から選べるの画像例"><figure class="example-figure">
+      <h3>繊細 — 細い線と暗い隙間</h3>
+      <a class="example-image-link" href="assets/magic-delicate-example.png" aria-label="繊細 — 細い線と暗い隙間の画像を原寸で開く">
+        <img src="assets/magic-delicate-example.png" alt="青黒の背景に、細い青白い線と暗い隙間で構成した縦のSカーブの魔法光帯。" loading="lazy">
+      </a>
+      <figcaption>細い線をほどき、暗い隙間を広く残す。軽さや張りつめた印象を狙うときの見本。</figcaption>
+    </figure><figure class="example-figure">
+      <h3>重厚 — つながった発光の塊</h3>
+      <a class="example-image-link" href="assets/magic-weighty-example.png" aria-label="重厚 — つながった発光の塊の画像を原寸で開く">
+        <img src="assets/magic-weighty-example.png" alt="青黒の背景に、幅のある発光面をつなぎ、暗い切れ込みで区切った青系の魔法光帯。" loading="lazy">
+      </a>
+      <figcaption>発光面をつなぎ、大きな明るい塊にする。線より面の力を見せたいときの見本。</figcaption>
+    </figure><figure class="example-figure">
+      <h3>荘厳 — 主線と従線の反復</h3>
+      <a class="example-image-link" href="assets/magic-solemn-example.png" aria-label="荘厳 — 主線と従線の反復の画像を原寸で開く">
+        <img src="assets/magic-solemn-example.png" alt="青黒の背景に、太い主線と細い従線を平行に整えた青白いSカーブの魔法光帯。" loading="lazy">
+      </a>
+      <figcaption>主線と従線を平行に整え、線の反復を揃える。秩序や儀式的な印象を狙うときの見本。</figcaption>
+    </figure></section>
+  <div class="essential-details" data-essential-details>
+    <section><h3>できること</h3><p>「繊細」「重厚」「荘厳」という言葉だけでなく、線の細さ、明るい面のまとまり、線の間隔を見て、魔法の描き方を選べます。</p></section>
+    <section><h3>使い方</h3><p>たとえば「重厚を基準に、荘厳の平行線の整い方を加えて」のように、見本名と使いたい特徴を指定します。画像を押すと元の大きさで確認できます。</p></section>
+  </div>
+  <details class="report-details">
+    <summary>しくみ・具体例・確認範囲を見る</summary>
+
+    <div class="item-details">
+      <section><h3>しくみ</h3><p>三案は青系と縦のSカーブという主題を共有し、帯の内部をどう埋めるかで描き分けています。繊細は細い線と暗い隙間、重厚はつながった発光面、荘厳は主線と従線の整った反復を手がかりにしています。印象名は制作上の狙いです。</p></section>
+
+      <section><h3>確認範囲</h3><p>このチャットで三枚を生成し、線・面・反復の違いを実画像で確認しました。独立した生成なので曲線や明るさ、余白は完全には揃っていません。帯外のにじみも残り、当初の表示条件をすべて再現した成功例ではありません。描き方を選ぶ作例として掲載しています。</p></section>
+
+    </div>
+
+  </details>
+</article>
+<article class="gallery-item" id="absorption-path-transmission" data-essential="false" hidden>
   <h2>吸収光路の長さと内部透過率</h2>
   <p class="item-summary">既存の吸収媒体で、材質の吸収特性を保ちながら、許された光路長や厚みの候補を選べる。内部を進む光を何割残したいかが決まっていれば、その目標から必要な長さを逆算する方法も追加した。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -49,6 +88,7 @@
   <h2>方向別の粗さと反射の構成</h2>
   <p class="item-summary">既存の反射モデルで、方向ごとの粗さと表面上の向きを選び、反射がどちらへ広がるかを設計できる。異方性自体は既存知識で、今回は選び方の具体例を増やした。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
     <figure class="item-image"><img src="assets/anisotropic-reflection-comparison.svg" alt="方向別の粗さと反射の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
@@ -66,6 +106,7 @@
 <article class="gallery-item" id="area-light-shadow-width" data-essential="false" hidden>
   <h2>面光源の条件と影境界の構成</h2>
   <p class="item-summary">既存の面光源の幅が未指定なら、その幅から影の輪郭、本影の有無、境界がぼける幅を設計できる。影を新設する機能ではなく、既にある光源と遮蔽物を使う具体的な選び方を増やした。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -85,6 +126,7 @@
   <h2>OBSの描画段階の構造検査</h2>
   <p class="item-summary">OBS.stageを4正準値に限定し、未知値・空欄・不正型をOBS IDとともに診断する。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -102,6 +144,7 @@
 <article class="gallery-item" id="camera-distance-relative-scale" data-essential="false" hidden>
   <h2>撮影距離と奥行きごとの倍率</h2>
   <p class="item-summary">被写体の基準になる平らな面を同じ大きさに写しながら、背景や手前の面との投影サイズの関係を選べる。既存の透視投影を使う具体的な構成例で、立体全体の輪郭や面積を一定にする機能ではない。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -121,6 +164,7 @@
   <h2>色の補間経路の比較</h2>
   <p class="item-summary">既存のグラデーションで両端の色と位置を固定し、中間色が未指定の区間だけ、補間色空間と色相の短経路・長経路を候補化する。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
     <figure class="item-image"><img src="assets/color-path-comparison.svg" alt="色の補間経路の比較の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
@@ -139,6 +183,7 @@
   <h2>輪郭の離れ・接し・重なりの比較</h2>
   <p class="item-summary">既存モチーフの輪郭関係を、離す・接する・重ねる候補として比較する手順を追加した。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
     <figure class="item-image"><img src="assets/contour-junction-comparison.svg" alt="2円の離れ・接し・重なりの説明図。B作品の生成画像ではありません。" loading="lazy"></figure>
@@ -155,6 +200,7 @@
   <h2>輪郭線の太さと先細りの構成</h2>
   <p class="item-summary">既存の輪郭線を役割ごとに選び、太さ・先細り・遷移を比較する任意の手順を追加した。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -170,6 +216,7 @@
 <article class="gallery-item" id="curve-join-continuity" data-essential="false" hidden>
   <h2>輪郭の接続と連続性</h2>
   <p class="item-summary">2本の既存ベジェ曲線で、つなぎ目の位置だけでなく、接線や曲率の揃え方を選べる。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -189,6 +236,7 @@
   <h2>界面角度と反射・透過の構成</h2>
   <p class="item-summary">透明な素材の面ごとに、光を通す寄与と反射させる寄与の差を設計する方法を追加した。例えば、正面に近い面には透ける寄与を多く残し、斜めの面では既存の光を返す寄与を強める。指定された材質や形を保ち、光源・面・視点が許す未指定の光路条件だけを選ぶ。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
     <figure class="item-image"><img src="assets/fresnel-interface-comparison.svg" alt="界面角度と反射・透過の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
@@ -206,6 +254,7 @@
 <article class="gallery-item" id="geometric-line-selection" data-essential="false" hidden>
   <h2>輪郭線と補助線を選ぶ方法</h2>
   <p class="item-summary">外形・遮蔽境界、実際の稜線、滑らかな面の回り込みを区別し、必要な描線を選ぶ。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -225,6 +274,7 @@
   <h2>形・色・輪郭・反復の構成手順</h2>
   <p class="item-summary">形状文法・周囲色・輪郭関係・期待変奏を、既存内容への具体的な選択として組み立てる。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -242,6 +292,7 @@
 <article class="gallery-item" id="integrated-b3-reference" data-essential="false" hidden>
   <h2>余白と明暗を組み合わせた参考設計</h2>
   <p class="item-summary">空隙形・色群・表示観測を、既存14章のB-3設計JSONで一つの採用案と未実施検証に結ぶ。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -261,6 +312,7 @@
   <h2>素材の見えを構成する方法</h2>
   <p class="item-summary">反射ハイライトと陰影の整合、既存素材間の見えの差、薄い透過面越しの模様関係を選ぶ。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -278,6 +330,7 @@
 <article class="gallery-item" id="motion-time-allocation" data-essential="false" hidden>
   <h2>動作の時間配分を選ぶ方法</h2>
   <p class="item-summary">既存時間尺の中で経路r(s)と進行s(t)を分け、移動と保持の配分を選ぶ。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -297,6 +350,7 @@
   <h2>余白の形を比較する方法</h2>
   <p class="item-summary">既存境界が作る空隙について、幅の変化・開口方向・周囲への連続を許された配置から選ぶ。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
     <figure class="item-image"><img src="assets/negative-space-comparison.svg" alt="余白の形を比較する方法の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
@@ -315,6 +369,7 @@
   <h2>模様の尺度と表示寸法の比較</h2>
   <p class="item-summary">同じ2色と色量比の模様周期を、想定表示寸法別に候補比較する。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
     <figure class="item-image"><img src="assets/pattern-scale-comparison.svg" alt="模様の尺度と表示寸法の比較の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
@@ -332,6 +387,7 @@
 <article class="gallery-item" id="spatial-registration" data-essential="false" hidden>
   <h2>反復列の整列と位置ずれ</h2>
   <p class="item-summary">既存要素の形・色・個数と行内周期を保ち、行ごとの水平位置を選んで、整列と互い違いの配置候補を作る。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -355,6 +411,7 @@
   <h2>面に沿う筆致・ハッチングの構成</h2>
   <p class="item-summary">既存面に描く筆致の方向・長さ・間隔・密度・休止領域を、共同で選ぶ任意の手順を追加した。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -370,6 +427,7 @@
 <article class="gallery-item" id="thin-lens-defocus-width" data-essential="false" hidden>
   <h2>薄いレンズのぼけ径の構成</h2>
   <p class="item-summary">既存の有限開口カメラで、ピントを合わせる位置を動かさずに、手前と奥の点がどの程度広がって写るかを選べる。未指定の開口径を選ぶための具体的な構成例を追加した。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -389,6 +447,7 @@
   <h2>明暗のつながりを比較する方法</h2>
   <p class="item-summary">既存色面の値・面積だけでなく、明暗群の辺接続と分離関係を選ぶ。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
     <figure class="item-image"><img src="assets/tonal-mass-comparison.svg" alt="明暗のつながりを比較する方法の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
@@ -406,6 +465,7 @@
 <article class="gallery-item" id="traveling-light-pattern" data-essential="false" hidden>
   <h2>円形領域を巡る光の模様の構成</h2>
   <p class="item-summary">既に時間変化が許された円形の発光部で、形を動かさずに、明暗の模様が巡る向きと速さを選べる。未指定の強度変調を具体化する方法で、円や光源を追加するものではない。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -425,6 +485,7 @@
   <h2>VFXと選択済み投影集合の条件整理</h2>
   <p class="item-summary">VFXの世界内レイヤーに関する記述を、基底の選択済みProjectionSetへ合わせた。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -440,6 +501,7 @@
 <article class="gallery-item" id="weighted-placement-candidates" data-essential="false" hidden>
   <h2>重み分布に基づく配置候補</h2>
   <p class="item-summary">既存balance_symmetry軸で、配置の重み付き中心と符号付き偏りを候補比較に使う。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -459,6 +521,7 @@
   <h2>仕様テンプレートと重複メタデータの検査</h2>
   <p class="item-summary">壊れたテンプレートの章診断と、空値を含む規則メタデータの重複検出を追加した。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -474,6 +537,7 @@
 <article class="gallery-item" id="technical-08d42d591993" data-essential="false" hidden>
   <h2>複数キーワード展開の個別検査</h2>
   <p class="item-summary">複数の完全一致展開を配列として保持し、各項目の義務を個別に検査するようにした。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -491,6 +555,7 @@
   <h2>コンパイル状態と投影の網羅検査</h2>
   <p class="item-summary">コンパイルの状態に応じた条件と、投影が必要な対象を覆う条件を整理した。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -506,6 +571,7 @@
 <article class="gallery-item" id="technical-341ae7047dda" data-essential="false" hidden>
   <h2>OBS依存グラフと意味照合の反例</h2>
   <p class="item-summary">OBSの依存グラフを反復処理で検査し、意味照合の反例を文書化した。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -523,6 +589,7 @@
   <h2>描画対象参照とUnicode診断</h2>
   <p class="item-summary">画面上の描画対象への型付き参照と、CLIの日本語・Unicode出力を改善した。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -538,6 +605,7 @@
 <article class="gallery-item" id="technical-604e64cef7c6" data-essential="false" hidden>
   <h2>pointerの配列添字検査</h2>
   <p class="item-summary">配列へのpointerで範囲外や不正な添字を通常の未解決診断として扱うようにした。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -555,6 +623,7 @@
   <h2>JSON APIの型・深さ・循環検査</h2>
   <p class="item-summary">直接APIへ渡す値を正準JSONの型に限定し、深さや循環を検査するようにした。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -570,6 +639,7 @@
 <article class="gallery-item" id="technical-6ad01acc640f" data-essential="false" hidden>
   <h2>PostEffectsと単一光条の条件整理</h2>
   <p class="item-summary">通常のPostEffects指定と、f1の単一光条に集団用LDMを不要とする条件を整理した。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -587,6 +657,7 @@
   <h2>記述型・予約参照・表示上の受入条件</h2>
   <p class="item-summary">説明文の型、正準ルートの予約、表示だけに関する受入条件を明確にした。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -602,6 +673,7 @@
 <article class="gallery-item" id="technical-888114fbbcd8" data-essential="false" hidden>
   <h2>共通参照定義と根拠の鮮度</h2>
   <p class="item-summary">共通の契約参照を整理し、現行版の準備状態と根拠の鮮度を照合する条件を明確にした。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -619,6 +691,7 @@
   <h2>B-Expression-3への統合</h2>
   <p class="item-summary">構図・描写・色・魔法の共同設計と、Entity・PH・OBSを分ける表現形式を導入した。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -634,6 +707,7 @@
 <article class="gallery-item" id="technical-a6ee0ff45f1b" data-essential="false" hidden>
   <h2>UTF-8 BOMと数値範囲の取扱い</h2>
   <p class="item-summary">先頭のBOMを一つ許容し、非有限になる数値を明示的に拒否するようにした。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -651,6 +725,7 @@
   <h2>例外規則とYAMLの一貫した解釈</h2>
   <p class="item-summary">exception_toの参照先解決、単一値YAMLの共通処理、テンプレートの重複検出を整えた。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -666,6 +741,7 @@
 <article class="gallery-item" id="technical-c24a9ba3cb20" data-essential="false" hidden>
   <h2>検証中の契約と参照解決の分離</h2>
   <p class="item-summary">一回の検証で使う契約のスナップショットと、参照解決の再構築を独立させた。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -683,6 +759,7 @@
   <h2>拡張選択APIの明示エラー</h2>
   <p class="item-summary">未知の拡張名や不正な選択コンテナを、APIの明示エラーとして返すようにした。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -698,6 +775,7 @@
 <article class="gallery-item" id="technical-c8e93fcb86b4" data-essential="false" hidden>
   <h2>Python型注釈の非実行構文</h2>
   <p class="item-summary">生成コードのprompt注釈として扱う構文を、実行しない形式へ限定した。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -715,6 +793,7 @@
   <h2>モジュール内パスの依存検査</h2>
   <p class="item-summary">モジュールの一部を指す参照も、モジュール間の先行関係へ対応させた。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -730,6 +809,7 @@
 <article class="gallery-item" id="technical-d5e061ec4a0c" data-essential="false" hidden>
   <h2>コンパイル前の正本検査</h2>
   <p class="item-summary">コンパイル前に正本全体を検査し、activation参照の不正な型を通常の診断へ変えた。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -747,6 +827,7 @@
   <h2>パスに似た登録IDの保護</h2>
   <p class="item-summary">モジュールのパスに似ている登録IDを、先行関係と誤認しないようにした。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -762,6 +843,7 @@
 <article class="gallery-item" id="technical-eb026b6ca7ae" data-essential="false" hidden>
   <h2>汎用参照と識別子の名前空間</h2>
   <p class="item-summary">B3の汎用参照をpointer優先に整理し、識別子専用欄の値をそのまま保つようにした。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -779,6 +861,7 @@
   <h2>制作上の必要性に基づく掲載内容の整理</h2>
   <p class="item-summary">通常のギャラリーを、ユーザーが制作でぜひ知るべきこのチャットの改善だけに絞り、日別ページを廃止した。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -794,6 +877,7 @@
 <article class="gallery-item" id="gallery-publication" data-essential="false" hidden>
   <h2>B制作ギャラリーの公開</h2>
   <p class="item-summary">このチャットの改善報告を読むためのGitHub Pagesギャラリーを作成した。</p>
+
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
@@ -811,6 +895,7 @@
   <h2>ギャラリーのタブ・ブックマーク用アイコン</h2>
   <p class="item-summary">B制作ギャラリーのfaviconとApple用アイコンを変更した。</p>
 
+
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
@@ -822,7 +907,7 @@
     </div>
     <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/1cdf26f714fa54b52499d7388cce1eec0f40b84f">GitHubの変更</a></p>
   </details>
-</article><p class="empty-gallery" data-empty-state>現在、制作でぜひ知っておくべき掲載内容はありません。これまでの改善は「すべての報告」で読めます。</p>
+</article><p class="empty-gallery" data-empty-state hidden>現在、制作でぜひ知っておくべき掲載内容はありません。これまでの改善は「すべての報告」で読めます。</p>
     </section>
   </main>
   <script src="gallery-modes.js" defer></script>

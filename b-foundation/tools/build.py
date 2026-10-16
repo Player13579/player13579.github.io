@@ -19,8 +19,9 @@ IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".svg"}
 GALLERY_FIELDS = {"title", "intro", "items"}
 ITEM_FIELDS = {"id", "title", "summary", "principle", "evidence", "essential"}
 OPTIONAL_ITEM_FIELDS = {
-    "benefit", "how_to_use", "source_url", "image", "image_alt", "example", "references"
+    "benefit", "how_to_use", "source_url", "image", "image_alt", "example", "references", "examples"
 }
+EXAMPLE_FIELDS = {"title", "image", "image_alt", "caption"}
 GITHUB_COMMIT_RE = re.compile(
     r"^https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/commit/[0-9a-fA-F]{7,64}/?$"
 )
@@ -138,6 +139,21 @@ def read_gallery() -> dict:
         if has_image:
             item["image"] = validate_image(item["image"], f"{label}.image")
             require_text(item["image_alt"], f"{label}.image_alt")
+        if "examples" in item:
+            examples = item["examples"]
+            if not isinstance(examples, list) or not examples:
+                raise ValueError(f"{label}.examples: expected a non-empty array")
+            validated_examples = []
+            for example_index, example in enumerate(examples, 1):
+                example_label = f"{label}.examples[{example_index}]"
+                if not isinstance(example, dict) or set(example) != EXAMPLE_FIELDS:
+                    raise ValueError(f"{example_label}: expected only title, image, image_alt, and caption")
+                validated = dict(example)
+                for field in ("title", "image_alt", "caption"):
+                    require_text(validated[field], f"{example_label}.{field}")
+                validated["image"] = validate_image(validated["image"], f"{example_label}.image")
+                validated_examples.append(validated)
+            item["examples"] = validated_examples
     return data
 
 
@@ -148,6 +164,19 @@ def render_item(item: dict) -> str:
             f'<figure class="item-image"><img src="{esc(item["image"])}" '
             f'alt="{esc(item["image_alt"])}" loading="lazy"></figure>'
         )
+    examples = ""
+    if "examples" in item:
+        cards = "".join(
+            f'''<figure class="example-figure">
+      <h3>{esc(example["title"])}</h3>
+      <a class="example-image-link" href="{esc(example["image"])}" aria-label="{esc(example["title"])}の画像を原寸で開く">
+        <img src="{esc(example["image"])}" alt="{esc(example["image_alt"])}" loading="lazy">
+      </a>
+      <figcaption>{esc(example["caption"])}</figcaption>
+    </figure>'''
+            for example in item["examples"]
+        )
+        examples = f'<section class="item-examples" aria-label="{esc(item["title"])}の画像例">{cards}</section>'
     essential_details = ""
     if "benefit" in item:
         essential_details = f'''<div class="essential-details" data-essential-details>
@@ -170,6 +199,7 @@ def render_item(item: dict) -> str:
     return f'''<article class="gallery-item" id="{esc(item["id"])}" data-essential="{str(item["essential"]).lower()}"{hidden}>
   <h2>{esc(item["title"])}</h2>
   <p class="item-summary">{esc(item["summary"])}</p>
+  {examples}
   {essential_details}
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
