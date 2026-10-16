@@ -4,7 +4,7 @@
 <body><a class="skip-link" href="#main">本文へ移動</a><header class="site-header"><a class="brand" href="../index.html">B基底・拡張 <span>改善ギャラリー</span></a><a class="back-link" href="../index.html">日別一覧へ</a></header>
 <main id="main" class="report-main"><div class="eyebrow">DAILY CHANGE REPORT</div><time class="report-date" datetime="2026-10-16">2026-10-16</time><h1>形・色・動きの選択肢を増やす</h1><div class="intro"><p class="">2026年10月16日の変更を全22件の記録にまとめます。設計方法・参考設計・検証器とコード点検を、各項目の「できること → 原理 → 具体例 → 確認範囲」で読めます。</p>
 <p class="">設計方法・検証器とコード点検の変更記録です。説明図、構造検査、実画像の観察結果を区別し、実画像の比較と未確認事項は各項目に記載します。</p>
-<p class="">DesignScience、視覚心理、色彩、衣装などの基盤は既にありました。今回の新しさは、それらを使って具体的な候補を作る手順を増やしたことです。</p></div><p class="updated">更新 <time>2026-10-16T23:28:46+09:00</time></p>
+<p class="">DesignScience、視覚心理、色彩、衣装などの基盤は既にありました。今回の新しさは、それらを使って具体的な候補を作る手順を増やしたことです。</p></div><p class="updated">更新 <time>2026-10-16T23:34:26+09:00</time></p>
 <aside class="editorial-note"><strong>このギャラリーについて</strong><p>設計方法・検証器の変更記録です。説明図と生成結果を区別して掲載します。</p></aside>
 <nav class="toc" aria-label="この日の項目"><h2>この日の項目</h2><ol><li data-toc-entry="initial-four-generative-principles"><a href="#initial-four-generative-principles">形・色・輪郭に統一感と変化をつける方法が増えた</a></li>
 <li data-toc-entry="material-appearance"><a href="#material-appearance">素材ごとの反射・陰影・透け方を描き分ける方法が増えた</a></li>
@@ -27,7 +27,7 @@
 <li data-toc-entry="traveling-light-pattern"><a href="#traveling-light-pattern">円形の発光部で、光の波が進む向きと速さを選べる</a></li>
 <li data-toc-entry="python-prompt-source-serialization"><a href="#python-prompt-source-serialization">Pythonコードの文字列表現を固定する受け渡し方針を加えた</a></li>
 <li data-toc-entry="absorption-path-transmission"><a href="#absorption-path-transmission">光が通る長さから、透明素材の透け方を選べる</a></li>
-<li data-toc-entry="o9-expansion-label-synchronization"><a href="#o9-expansion-label-synchronization">新しいo9展開名を詳細規則とテンプレートへ同期した</a></li></ol></nav>
+<li data-toc-entry="o9-expansion-label-synchronization"><a href="#o9-expansion-label-synchronization">羽根の展開名の食い違いを自動で検出できる</a></li></ol></nav>
 <div class="report-tools"><label for="entry-search">項目を検索</label><input id="entry-search" type="search" placeholder="原理・具体例・確認内容を検索" autocomplete="off"><label for="category-filter">種類</label><select id="category-filter"><option value="all">全件</option><option value="method">設計方法</option><option value="validator">検証器</option><option value="reference">参考設計</option></select><p class="result-count" data-result-count aria-live="polite">全22件</p><p class="empty-results" data-empty-results hidden>該当する項目はありません。</p></div>
 <section class="entries" aria-label="変更項目"><article class="entry-card" id="initial-four-generative-principles" data-category="method">
   <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>形・色・輪郭に統一感と変化をつける方法が増えた</h3></header>
@@ -284,15 +284,15 @@
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>e9ed5164497aeb0e64d14d6f0feaf8c316a40f66</code></p><details class="sources"><summary>参考資料</summary><ul><li><a href="https://www.pbr-book.org/4ed/Volume_Scattering/Transmittance" rel="noopener noreferrer">https://www.pbr-book.org/4ed/Volume_Scattering/Transmittance</a></li><li><a href="https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes" rel="noopener noreferrer">https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes</a></li></ul></details>
 </article>
 <article class="entry-card" id="o9-expansion-label-synchronization" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>新しいo9展開名を詳細規則とテンプレートへ同期した</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>羽根の展開名の食い違いを自動で検出できる</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">キーワード展開カタログで更新されたo9の正確な展開名を、適用条件を定める詳細規則と構造テンプレートにも同じ文字列で反映する。</p></section>
     <section><h4>原理</h4><p class="copy">選択を許すカタログ、選択時の挙動を定める規則、検証器が参照するテンプレート定数が同じ展開名を使うと、選択可否と適用内容の食い違いを防げる。契約JSONはテンプレートから再生成する。</p></section>
     <section><h4>具体例</h4><p class="copy">o9の展開名を「発光するシルエットのフェザー」に揃え、詳細規則とテンプレートの選択値を同期した。o10の詳細規則とテンプレートは今回の同期対象に含めていない。</p></section>
 
-    <section><h4>確認できたこと</h4><p class="copy">仕様の静的検査と契約JSONの生成が成功。o9を含むキーワードカタログ7件、契約スナップショット2件、設計検証14件のテストが通過し、生成契約のo9値もカタログと一致した。 新定義を使う改訂Pythonコードも、リムライトとo9の正確な展開文を指定した構造検査に通過した。</p></section>
+    <section><h4>確認できたこと</h4><p class="copy">仕様の静的検査と契約JSONの生成が成功。o9を含むキーワードカタログ7件、契約スナップショット2件、設計検証14件のテストが通過し、生成契約のo9値もカタログと一致した。 新定義を使う改訂Pythonコードも、リムライトとo9の正確な展開文を指定した構造検査に通過した。 新定義から導出した回帰検査を追加し、定義表・詳細規則・テンプレート・生成契約のo9表記を照合するようにした。既存295テストが成功した。配布パッケージも公開Gitのファイルと完全一致する状態へ更新し、実際の配布先の検証器で新しいo9単独・o10単独・両方の選択を確認した。古いo9テンプレート値、世界内PHへの誤指定、要求した展開文との不一致は検出され、配布先CLIの構造検査も通過した。B-2互換契約と検証器の実装は保持した。</p></section>
     <section><h4>未確認・限界</h4><p class="copy">今回は定義文とテンプレートの同期、および構造・回帰検査のみ。新しいo9展開を使った画像生成や見た目の確認は行っていない。</p></section>
   </div>
-  <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>792d196898e1d6ef98ae9d8fdf10f1254aef64e5</code></p>
+  <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>792d196898e1d6ef98ae9d8fdf10f1254aef64e5</code></p><details class="sources"><summary>参考資料</summary><ul><li><a href="https://github.com/Player13579/B/commit/a3f5ba6f25f15d6dea94024c6d55e0621eb5294c" rel="noopener noreferrer">https://github.com/Player13579/B/commit/a3f5ba6f25f15d6dea94024c6d55e0621eb5294c</a></li></ul></details>
 </article></section>
 <footer class="report-footer"><a href="../index.html">← 日別一覧へ戻る</a></footer></main><footer class="site-footer">B基底・拡張 改善ギャラリー</footer></body></html>
