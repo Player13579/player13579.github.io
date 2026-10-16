@@ -2,24 +2,25 @@
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="B基底・拡張の設計方法と検証器の変更記録。"><title>形・色・動きの選択肢を増やす · B基底・拡張 改善ギャラリー</title><link rel="stylesheet" href="../styles.css"><script src="../gallery.js" defer></script></head>
 <body><a class="skip-link" href="#main">本文へ移動</a><header class="site-header"><a class="brand" href="../index.html">B基底・拡張 <span>改善ギャラリー</span></a><a class="back-link" href="../index.html">日別一覧へ</a></header>
-<main id="main" class="report-main"><div class="eyebrow">DAILY CHANGE REPORT</div><time class="report-date" datetime="2026-10-16">2026-10-16</time><h1>形・色・動きの選択肢を増やす</h1><div class="intro"><p class="">2026年10月16日の変更を、設計方法に関する9件・参考設計1件・検証器修正1件の記録にまとめます。最初の記録には四つの方法を含みます。各項目を「できること → 原理 → 具体例 → 確認範囲」で読めます。</p>
+<main id="main" class="report-main"><div class="eyebrow">DAILY CHANGE REPORT</div><time class="report-date" datetime="2026-10-16">2026-10-16</time><h1>形・色・動きの選択肢を増やす</h1><div class="intro"><p class="">2026年10月16日の変更を、設計方法に関する10件・参考設計1件・検証器修正1件の記録にまとめます。最初の記録には四つの方法を含みます。各項目を「できること → 原理 → 具体例 → 確認範囲」で読めます。</p>
 <p class="">設計の方法と検証器の変更記録です。説明図は描画・数値を確認済みですが、Bの実画像・動画は生成しておらず、知覚・美的効果は未確認です。</p>
-<p class="">DesignScience、視覚心理、色彩、衣装などの基盤は既にありました。今回の新しさは、それらを使って具体的な候補を作る手順を増やしたことです。</p></div><p class="updated">更新 <time>2026-10-16T20:15:48+09:00</time></p>
+<p class="">DesignScience、視覚心理、色彩、衣装などの基盤は既にありました。今回の新しさは、それらを使って具体的な候補を作る手順を増やしたことです。</p></div><p class="updated">更新 <time>2026-10-16T20:38:05+09:00</time></p>
 <aside class="editorial-note"><strong>このギャラリーについて</strong><p>設計方法・検証器の変更記録です。説明図と生成結果を区別して掲載します。</p></aside>
-<nav class="toc" aria-label="この日の項目"><h2>この日の項目</h2><ol><li data-toc-entry="initial-four-generative-principles"><a href="#initial-four-generative-principles">形・色・輪郭・変奏を具体化する四つの方法</a></li>
-<li data-toc-entry="material-appearance"><a href="#material-appearance">既存素材の見えを手掛かりの関係で構成</a></li>
-<li data-toc-entry="geometric-line-selection"><a href="#geometric-line-selection">立体形状を伝える描線を選択</a></li>
-<li data-toc-entry="negative-space-shape"><a href="#negative-space-shape">隣接シルエットが作る空隙形を構成</a></li>
-<li data-toc-entry="tonal-connectivity"><a href="#tonal-connectivity">明暗群のつながりと分離を選択</a></li>
-<li data-toc-entry="motion-time-allocation"><a href="#motion-time-allocation">宣言済み動作の時間配分と経路上の進み方</a></li>
-<li data-toc-entry="integrated-b3-reference"><a href="#integrated-b3-reference">空隙形と主暗値の連結を統合したB-3参考設計</a></li>
-<li data-toc-entry="b3-observation-stage-validator"><a href="#b3-observation-stage-validator">B-Expression-3 OBS.stageの列挙検証</a></li>
-<li data-toc-entry="weighted-placement-candidates"><a href="#weighted-placement-candidates">重み分布と配置距離から候補を生成</a></li>
-<li data-toc-entry="pattern-scale-display-size"><a href="#pattern-scale-display-size">同じ配色を模様周期と想定表示寸法で比較</a></li>
-<li data-toc-entry="spatial-registration"><a href="#spatial-registration">反復列の位置ずれで配置候補を作る</a></li></ol></nav>
-<div class="report-tools"><label for="entry-search">項目を検索</label><input id="entry-search" type="search" placeholder="原理・具体例・確認内容を検索" autocomplete="off"><label for="category-filter">種類</label><select id="category-filter"><option value="all">全件</option><option value="method">設計方法</option><option value="validator">検証器</option><option value="reference">参考設計</option></select><p class="result-count" data-result-count aria-live="polite">全11件</p><p class="empty-results" data-empty-results hidden>該当する項目はありません。</p></div>
+<nav class="toc" aria-label="この日の項目"><h2>この日の項目</h2><ol><li data-toc-entry="initial-four-generative-principles"><a href="#initial-four-generative-principles">形・色・輪郭に統一感と変化をつける方法が増えた</a></li>
+<li data-toc-entry="material-appearance"><a href="#material-appearance">素材ごとの反射・陰影・透け方を描き分ける方法が増えた</a></li>
+<li data-toc-entry="geometric-line-selection"><a href="#geometric-line-selection">必要な線を選んで立体を表す手順が増えた</a></li>
+<li data-toc-entry="negative-space-shape"><a href="#negative-space-shape">物を増やさず、隙間の形で構図を作れる</a></li>
+<li data-toc-entry="tonal-connectivity"><a href="#tonal-connectivity">色の量を保ちながら、明暗のまとまりを組み替えられる</a></li>
+<li data-toc-entry="motion-time-allocation"><a href="#motion-time-allocation">同じ動作でも、動く時間と止まる時間を配分できる</a></li>
+<li data-toc-entry="integrated-b3-reference"><a href="#integrated-b3-reference">隙間の形と明暗のつながりを、一つの設計にまとめられた</a></li>
+<li data-toc-entry="b3-observation-stage-validator"><a href="#b3-observation-stage-validator">描画段階の指定ミスを、対象を示して検出できる</a></li>
+<li data-toc-entry="weighted-placement-candidates"><a href="#weighted-placement-candidates">形の大きさと距離から、配置の候補を作れる</a></li>
+<li data-toc-entry="pattern-scale-display-size"><a href="#pattern-scale-display-size">色を変えず、模様の細かさから配色の見せ方を選べる</a></li>
+<li data-toc-entry="spatial-registration"><a href="#spatial-registration">形や数を変えず、整列と互い違いを作り分けられる</a></li>
+<li data-toc-entry="curve-join-continuity"><a href="#curve-join-continuity">輪郭のつながりと角を描き分けられる</a></li></ol></nav>
+<div class="report-tools"><label for="entry-search">項目を検索</label><input id="entry-search" type="search" placeholder="原理・具体例・確認内容を検索" autocomplete="off"><label for="category-filter">種類</label><select id="category-filter"><option value="all">全件</option><option value="method">設計方法</option><option value="validator">検証器</option><option value="reference">参考設計</option></select><p class="result-count" data-result-count aria-live="polite">全12件</p><p class="empty-results" data-empty-results hidden>該当する項目はありません。</p></div>
 <section class="entries" aria-label="変更項目"><article class="entry-card" id="initial-four-generative-principles" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>形・色・輪郭・変奏を具体化する四つの方法</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>形・色・輪郭に統一感と変化をつける方法が増えた</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">形状文法・周囲色・輪郭関係・期待変奏を、既存内容への具体的な選択として組み立てる。</p></section>
     <section><h4>原理</h4><p class="copy">共通する形の特徴と許される変換を決めると、同一形への単純な統一を避けながら関連を作れる。色は隣接色との関係、輪郭は曲率や方向、反復は保つ規則と変える箇所から候補を作る。</p></section>
@@ -31,7 +32,7 @@
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>52935b8d9a3bd57bac52209bc2fbffcb6078be2b</code></p>
 </article>
 <article class="entry-card" id="material-appearance" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>既存素材の見えを手掛かりの関係で構成</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>素材ごとの反射・陰影・透け方を描き分ける方法が増えた</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">反射ハイライトと陰影の整合、既存素材間の見えの差、薄い透過面越しの模様関係を選ぶ。</p></section>
     <section><h4>原理</h4><p class="copy">素材の見えは、反射の形・陰影・表面模様などの組合せに依存する。既存の形と照明に対して、どの手掛かりを揃え、どの差を残すかを選ぶことで、素材ごとの役割を構成する。</p></section>
@@ -43,7 +44,7 @@
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>a37df1c56d4c174bc0a44cd180b66271aa19b39c</code></p>
 </article>
 <article class="entry-card" id="geometric-line-selection" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>立体形状を伝える描線を選択</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>必要な線を選んで立体を表す手順が増えた</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">外形・遮蔽境界、実際の稜線、滑らかな面の回り込みを区別し、必要な描線を選ぶ。</p></section>
     <section><h4>原理</h4><p class="copy">線を増やす量ではなく、その線が何を伝えるかを選ぶ。外形、遮蔽、実際の折れと、滑らかな面の回り込みを分け、視点から見た形の変化を必要な区間だけ描線へ対応させる。</p></section>
@@ -55,55 +56,55 @@
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>9fe8e6b528936b882f5852650eab165158b55090</code></p>
 </article>
 <article class="entry-card" id="negative-space-shape" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>隣接シルエットが作る空隙形を構成</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>物を増やさず、隙間の形で構図を作れる</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">既存境界が作る空隙について、幅の変化・開口方向・周囲への連続を許された配置から選ぶ。</p></section>
     <section><h4>原理</h4><p class="copy">空隙の輪郭は、隣り合う対象の境界が共同で作る。対象の面積を変えずに位置・角度を選ぶと、背景の総面積を保ちながら、抜けの先細りや開口方向を変えられる。</p></section>
     <section><h4>具体例</h4><p class="copy">共通平面上の既存紙片2枚の形・支持・投影を固定し、ほぼ一定幅の抜けと下を狭く上へ開く抜けを比較する。空隙は外部へ開いた背景として保つ。</p></section>
-<figure class="report-figure"><a class="figure-image-link" href="../assets/negative-space-comparison.svg"><img src="../assets/negative-space-comparison.svg" alt="隣接シルエットが作る空隙形を構成の説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/negative-space-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
+<figure class="report-figure"><a class="figure-image-link" href="../assets/negative-space-comparison.svg"><img src="../assets/negative-space-comparison.svg" alt="物を増やさず、隙間の形で構図を作れるの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/negative-space-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
     <section><h4>確認できたこと</h4><p class="copy">教育図の2案で、各紙片の形・面積と総空隙面積を数値確認し、実際に描画した説明図を点検した。</p></section>
     <section><h4>未確認・限界</h4><p class="copy">空隙は物理的な穴や新しい対象ではない。形・個数・接触・意図した平面性を保つ。図は知覚・美的好みの証明ではなく、B画像の効果は未確認。</p></section>
   </div>
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>f73c1c78f07bc0058df34984368dc4d449186118</code></p>
 </article>
 <article class="entry-card" id="tonal-connectivity" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>明暗群のつながりと分離を選択</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>色の量を保ちながら、明暗のまとまりを組み替えられる</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">既存色面の値・面積だけでなく、明暗群の辺接続と分離関係を選ぶ。</p></section>
     <section><h4>原理</h4><p class="copy">同じ色の量でも、どの既存領域へ割り当てるかで群のつながりは変わる。明暗群を辺で接続する関係として扱い、色量の調整と接続関係の選択を分ける。</p></section>
     <section><h4>具体例</h4><p class="copy">形と位置を固定した同面積3領域に同じ3色を割り当て、濃色が分離するD1-L-D2と接続するD1-D2-Lを比べる。</p></section>
-<figure class="report-figure"><a class="figure-image-link" href="../assets/tonal-mass-comparison.svg"><img src="../assets/tonal-mass-comparison.svg" alt="明暗群のつながりと分離を選択の説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/tonal-mass-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
+<figure class="report-figure"><a class="figure-image-link" href="../assets/tonal-mass-comparison.svg"><img src="../assets/tonal-mass-comparison.svg" alt="色の量を保ちながら、明暗のまとまりを組み替えられるの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/tonal-mass-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
     <section><h4>確認できたこと</h4><p class="copy">教育図の領域形状・色・各色面積と、明暗群の辺接続を確認した。知覚的な群化の測定はしていない。</p></section>
     <section><h4>未確認・限界</h4><p class="copy">辺接続数は設計上の定義で、知覚測定ではない。一般画像に二値化や全暗部統合を課さず、美的効果は未確認。</p></section>
   </div>
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>5d6ac4db63711fc813c0da7a5d1fe347dfe41c05</code></p>
 </article>
 <article class="entry-card" id="motion-time-allocation" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>宣言済み動作の時間配分と経路上の進み方</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>同じ動作でも、動く時間と止まる時間を配分できる</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">既存時間尺の中で経路r(s)と進行s(t)を分け、移動と保持の配分を選ぶ。</p></section>
     <section><h4>原理</h4><p class="copy">空間の経路r(s)と時間に対する進行s(t)を分ける。進行に五次曲線Q(u)=10u³−15u⁴+6u⁵を使う例では、移動の始終端の速度と加速度をゼロにでき、停止区間へ滑らかにつなげられる。移動時間を変えても経路と総尺を保てる。</p></section>
     <section><h4>具体例</h4><p class="copy">直線上を0から1へ進んで止まる既存図形を総尺2秒に保ち、移動1.5秒＋保持0.5秒と移動1秒＋保持1秒を比べる。</p></section>
-<figure class="report-figure"><a class="figure-image-link" href="../assets/motion-timing-comparison.svg"><img src="../assets/motion-timing-comparison.svg" alt="宣言済み動作の時間配分と経路上の進み方の説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/motion-timing-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
+<figure class="report-figure"><a class="figure-image-link" href="../assets/motion-timing-comparison.svg"><img src="../assets/motion-timing-comparison.svg" alt="同じ動作でも、動く時間と止まる時間を配分できるの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/motion-timing-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
     <section><h4>確認できたこと</h4><p class="copy">曲線の境界条件と時間配分を数値確認し、進行・速度の説明図を描画して点検した。実動画は未生成。</p></section>
     <section><h4>未確認・限界</h4><p class="copy">未宣言の動作を加えず、物理運動の時間変更時は力学・接触・応答を再評価する。動画と美的効果は未確認。</p></section>
   </div>
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>e81d015ccbef95cba3cc5cb439d2b2d07487ca5b</code></p>
 </article>
 <article class="entry-card" id="integrated-b3-reference" data-category="reference">
-  <header class="entry-heading"><span class="category-tag category-reference">参考設計</span><h3>空隙形と主暗値の連結を統合したB-3参考設計</h3></header>
+  <header class="entry-heading"><span class="category-tag category-reference">参考設計</span><h3>隙間の形と明暗のつながりを、一つの設計にまとめられた</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">空隙形・色群・表示観測を、既存14章のB-3設計JSONで一つの採用案と未実施検証に結ぶ。</p></section>
     <section><h4>原理</h4><p class="copy">形の配置と明暗の割当を二つの操作として分け、2×2の比較で保持条件を確認する。採用案を、形・領域・観測・未実施検証が対応した一つのB-3設計へ統合する。</p></section>
     <section><h4>具体例</h4><p class="copy">三つの等面積領域で、上へ開く背景間隙と左＋下の主暗色接続を選ぶ案をまとめる。各領域の面積0.075と各色の総量を保ち、形の配置と色の割当を別々に比較する。</p></section>
-<figure class="report-figure"><a class="figure-image-link" href="../assets/integrated-composition-comparison.svg"><img src="../assets/integrated-composition-comparison.svg" alt="空隙形と主暗値の連結を統合したB-3参考設計の説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/integrated-composition-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
+<figure class="report-figure"><a class="figure-image-link" href="../assets/integrated-composition-comparison.svg"><img src="../assets/integrated-composition-comparison.svg" alt="隙間の形と明暗のつながりを、一つの設計にまとめられたの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/integrated-composition-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
     <section><h4>確認できたこと</h4><p class="copy">単一の参考JSONが構造検査に通過。領域参照、面積、空隙、明暗接続と4案の説明図を照合した。生成先は未選択。</p></section>
     <section><h4>未確認・限界</h4><p class="copy">設計専用の参考で、B画像生成・表示・視覚評価は未実施。構造検査と教育図は心理学的・美的証明ではない。</p></section>
   </div>
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>a949d1b300dc0987d742f4aeeac50272f2730aba</code></p>
 </article>
 <article class="entry-card" id="b3-observation-stage-validator" data-category="validator">
-  <header class="entry-heading"><span class="category-tag category-validator">検証器</span><h3>B-Expression-3 OBS.stageの列挙検証</h3></header>
+  <header class="entry-heading"><span class="category-tag category-validator">検証器</span><h3>描画段階の指定ミスを、対象を示して検出できる</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">OBS.stageを4正準値に限定し、未知値・空欄・不正型をOBS IDとともに診断する。</p></section>
     <section><h4>原理</h4><p class="copy">B-3を検出したときだけ、OBS.stageの値を正準の4値と照合する。自由な文字列や不正な型を通さず、該当OBSのIDを診断に含めることで、修正する対象を特定できる。</p></section>
@@ -115,41 +116,53 @@
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>fa08be9948fea51c8d5af3c16b2b55613162f30b</code></p>
 </article>
 <article class="entry-card" id="weighted-placement-candidates" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>重み分布と配置距離から候補を生成</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>形の大きさと距離から、配置の候補を作れる</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">既存balance_symmetry軸で、配置の重み付き中心と符号付き偏りを候補比較に使う。</p></section>
     <section><h4>原理</h4><p class="copy">相対重みwと位置pから、分布中心c=Σ(wp)/Σwと基準点からの符号付き偏りを計算する。重い側を近く、軽い側を遠くへ置くなど、位置と距離の候補を作る補助に使う。</p></section>
     <section><h4>具体例</h4><p class="copy">半径0.10/0.05の同色円に面積比の代理重み4:1を置く。大円のx=0.425を保ち小円を0.60→0.80へ動かすと、分布中心xは0.46→0.50になる。元の配置を左右反転すれば0.54になり、偏りを残す案も選べる。</p></section>
-<figure class="report-figure"><a class="figure-image-link" href="../assets/weighted-placement-comparison.svg"><img src="../assets/weighted-placement-comparison.svg" alt="重み分布と配置距離から候補を生成の説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/weighted-placement-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
+<figure class="report-figure"><a class="figure-image-link" href="../assets/weighted-placement-comparison.svg"><img src="../assets/weighted-placement-comparison.svg" alt="形の大きさと距離から、配置の候補を作れるの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/weighted-placement-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
     <section><h4>確認できたこと</h4><p class="copy">図の座標から分布中心0.46 / 0.50 / 0.54を確認。形・色・非重複・余白と、実描画した説明図を点検した。</p></section>
     <section><h4>未確認・限界</h4><p class="copy">proxyは知覚的重さや物理質量ではなく、中心一致も美しさの証明ではない。配置で間隔・余白も変わるため、B画像と美的効果は未確認。</p></section>
   </div>
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>85a4a85afd31cb26814d2d0f3e3c8c935bc0d5f0</code></p>
 </article>
 <article class="entry-card" id="pattern-scale-display-size" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>同じ配色を模様周期と想定表示寸法で比較</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>色を変えず、模様の細かさから配色の見せ方を選べる</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">同じ2色と色量比の模様周期を、想定表示寸法別に候補比較する。</p></section>
     <section><h4>原理</h4><p class="copy">同じ色値・色量比でも、境界の細かさと表示条件によって色の見えは変わりうる。模様の周期と表示寸法を組み合わせて候補を作り、色面の分離とまとまりを実寸で比較する。画素平均や眼・神経の作用を模擬する実装ではない。</p></section>
     <section><h4>具体例</h4><p class="copy">橙と青灰を50:50にした256×256の縦縞で、元の周期64/16/8pxを比較する。128px表示へ同じベクトルを描き直すと周期32/8/4px、各帯幅16/4/2pxになる。表示用途に合う模様の分離・まとまりと可読性を選ぶ。</p></section>
-<figure class="report-figure"><a class="figure-image-link" href="../assets/pattern-scale-comparison.svg"><img src="../assets/pattern-scale-comparison.svg" alt="同じ配色を模様周期と想定表示寸法で比較の説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/pattern-scale-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
+<figure class="report-figure"><a class="figure-image-link" href="../assets/pattern-scale-comparison.svg"><img src="../assets/pattern-scale-comparison.svg" alt="色を変えず、模様の細かさから配色の見せ方を選べるの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/pattern-scale-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
     <section><h4>確認できたこと</h4><p class="copy">6ケースの周期・帯幅・視角換算を独立計算で照合。説明図の全パッチが指定2色のみ・面積比50:50であることを画素検査した。最新の仕様検査と291件の回帰テストも通過。</p></section>
     <section><h4>未確認・限界</h4><p class="copy">実UIの物理寸法・視距離・色校正は未測定。細かいほど必ず同化するとは限らず、特定実験の周波数を万能閾値にしない。B画像、知覚上の色変化、美的好みは未確認。</p></section>
   </div>
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>6908e456cc609156d583161e2ad8fb1ad6cd6564</code></p><details class="sources"><summary>参考資料</summary><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/11301075/" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/11301075/</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/15695188/" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/15695188/</a></li></ul></details>
 </article>
 <article class="entry-card" id="spatial-registration" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>反復列の位置ずれで配置候補を作る</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>形や数を変えず、整列と互い違いを作り分けられる</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">既存要素の形・色・個数と行内周期を保ち、行ごとの水平位置を選んで、整列と互い違いの配置候補を作る。</p></section>
     <section><h4>原理</h4><p class="copy">一つの行をまとまりとして横へ移すと、行内の間隔を保ったまま、上下の行との距離や最も近い点の方向を変えられる。隣接行の相対ずれを周期の半分にした候補では、近接する候補の方向が縦から斜めへ変わる。幾何的な関係を選び、実際にどう群として見えるかを確認する。</p></section>
     <section><h4>具体例</h4><p class="copy">画面上の4行に同色・半径0.035の円を各4個、行内周期0.20で並べる。Aは全行を同じ位置に置き、Bは各行を左へ0.05、右へ0.05と交互にずらす。隣の行の相対ずれは0から0.10（周期の半分）になり、16中心の平均は両案とも(0.5, 0.5)。独立幾何計算では最短中心間距離が0.12から約0.1562へ変わる。</p></section>
-<figure class="report-figure"><a class="figure-image-link" href="../assets/spatial-registration-comparison.svg"><img src="../assets/spatial-registration-comparison.svg" alt="反復列の位置ずれで配置候補を作るの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/spatial-registration-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
+<figure class="report-figure"><a class="figure-image-link" href="../assets/spatial-registration-comparison.svg"><img src="../assets/spatial-registration-comparison.svg" alt="形や数を変えず、整列と互い違いを作り分けられるの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/spatial-registration-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
     <section><h4>確認できたこと</h4><p class="copy">独立した分数計算で16円の形・半径・色・行内周期・総面積・平均中心を照合。両案で全120組が非重複で、画面内に収まることを確認した。</p>
 <p class="copy">説明図を1150×806pxで描画し、各案16個の塗り領域と円中心の指定色を画素検査した。日本語の字形と切れも図として点検した。</p>
 <p class="copy">正本の構造検査と既存291件の回帰テストが通過。図の描画確認とB画像の効果は別に扱っている。</p></section>
     <section><h4>未確認・限界</h4><p class="copy">Bは全体幅（0.67から0.77）・左右余白・鏡映対称性も変えるため、近接だけを分離した因果実験ではない。有限の端や同距離の複数近傍もある。配置が明示固定なら変更せず、群化の知覚・好み・美的効果は未確認。B画像・動画も未生成。</p></section>
   </div>
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>1a0774b4095f04803a8e5057987b932c66fcabe8</code></p><details class="sources"><summary>参考資料</summary><ul><li><a href="https://journals.sagepub.com/doi/10.1111/j.1467-9280.1995.tb00597.x" rel="noopener noreferrer">https://journals.sagepub.com/doi/10.1111/j.1467-9280.1995.tb00597.x</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/9520318/" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/9520318/</a></li></ul></details>
+</article>
+<article class="entry-card" id="curve-join-continuity" data-category="method">
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>輪郭のつながりと角を描き分けられる</h3></header>
+  <div class="entry-facts">
+    <section><h4>できるようになったこと</h4><p class="copy">2本の既存ベジェ曲線で、つなぎ目の位置だけでなく、接線や曲率の揃え方を選べる。</p></section>
+    <section><h4>原理</h4><p class="copy">つなぎ目に近い制御点の位置が端点の接線を決め、次の制御点を含む位置関係が曲がり方を決める。Q1だけを動かせば、位置だけをつなぐ案、接線を揃える案、接線と曲率まで揃える案を比べられる。幾何的な滑らかさと、曲線パラメータに対する微分の一致は分けて扱う。</p></section>
+    <section><h4>具体例</h4><p class="copy">平面上の2本の三次ベジェ曲線で、接合点(0,0)と両端を固定し、右曲線の最初の制御点Q1をA=(0.2,0.15)、B=(0.4,0)、C=(0.2,0)とする。Aは接線が折れ、位置だけがつながるG0。Bは接線方向が揃うG1だが、一階導関数は左(0.6,0)・右(1.2,0)でC1ではなく、曲率も左20/3・右5/3で異なる。Cは接線と曲率が左右20/3で揃うG2かつC1だが、二階導関数は左(-1.8,2.4)・右(1.8,2.4)で異なり、C2ではない。</p></section>
+<figure class="report-figure"><a class="figure-image-link" href="../assets/curve-join-comparison.svg"><img src="../assets/curve-join-comparison.svg" alt="輪郭のつながりと角を描き分けられるの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/curve-join-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
+    <section><h4>確認できたこと</h4><p class="copy">独立した分数計算で3案の接合位置・端点導関数・符号付き曲率・正則性を照合した。説明図の実際の制御点・曲線パス・拡大倍率など28項目の検査と1200×960の描画を確認し、日本語の文字や切れも目視した。仕様の静的検査（基底14章・拡張11章・143規則）と既存291テストが通過し、検証器の配布コードと単一の参考設計コードは変えていない。</p></section>
+    <section><h4>未確認・限界</h4><p class="copy">意図した角や既存形状の固定を優先し、滑らかさを必須にしない。これは平面上の曲線幾何の例であり、空間曲線・曲面・時間上の滑らかさへ一般化しない。Q1の変更で右曲線の他の部分や弧長も変わる。曲率の一致は美的優位を示さず、B画像の生成・形の読み取り・美的効果は未確認。</p></section>
+  </div>
+  <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>1bd849e18d9cb1f4e3313a329c685ce9eac27ca2</code></p><details class="sources"><summary>参考資料</summary><ul><li><a href="https://mcneel.github.io/rhinocommon-api-docs/api/RhinoCommon/html/T_Rhino_Geometry_Continuity.htm" rel="noopener noreferrer">https://mcneel.github.io/rhinocommon-api-docs/api/RhinoCommon/html/T_Rhino_Geometry_Continuity.htm</a></li><li><a href="https://www.occt3d.com/dev/doc/overview/html/occt_user_guides__modeling_data.html" rel="noopener noreferrer">https://www.occt3d.com/dev/doc/overview/html/occt_user_guides__modeling_data.html</a></li></ul></details>
 </article></section>
 <footer class="report-footer"><a href="../index.html">← 日別一覧へ戻る</a></footer></main><footer class="site-footer">B基底・拡張 改善ギャラリー</footer></body></html>

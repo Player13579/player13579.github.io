@@ -20,7 +20,8 @@ Bの実装で「何ができるようになったか・原理・具体例・確�
 トップレベルは `date`、`title`、`intro`、`updated_at`、`entries`。`date` はファイル名と一致させる。`entries` の各項目は次を持つ。
 
 - `id`: その日のページ内で一意の英数字・ハイフン識別子。
-- `title` / `category`: 見出しと `method`（設計方法）・`validator`（検証器）・`reference`（参考設計）。
+- `title`: 「素材ごとの反射・陰影・透け方を描き分ける方法が増えた」のように、できるようになったことを平易に示す見出し。
+- `category`: `method`（設計方法）・`validator`（検証器）・`reference`（参考設計）。
 - `capability` / `principle` / `example` / `verified` / `limitations`: 空でない日本語の本文、または本文の配列。`principle` を原理名の列挙だけで済ませない。
 - `commit`: 確認済みの40桁の変更commit、または `null`。変更元B仕様は非公開のため閲覧権限が必要。
 - `figure`: `assets/name.svg`、または `null`。
