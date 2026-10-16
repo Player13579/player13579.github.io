@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+<title id="title">輪郭の離れ方と重なり方で、形の前後関係を描き分けられる</title>
+<desc id="desc">同じ大きさの不透明な円二つを、すき間、画面上で一点が接する配置、部分的な重なりの三配置で比較する模式図。左の円を手前として後から描き、円の輪郭線は描かない。位置関係の意味は図の幾何を示し、実空間の接触や人の知覚を断定しない。</desc>
+<rect width="1200" height="900" fill="#f7f5ef"/>
+<defs><marker id="dim-arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M7,0 L0,3.5 L7,7" fill="none" stroke="#263b3a" stroke-width="1.2"/></marker></defs>
+<g font-family="Noto Sans CJK JP, Yu Gothic, Meiryo, sans-serif">
+<text x="600.000" y="50.000" font-size="31" text-anchor="middle" font-weight="700" fill="#263b3a">輪郭の離れ方と重なり方で、形の前後関係を描き分けられる</text>
+<text x="600.000" y="85.000" font-size="19" text-anchor="middle" font-weight="400" fill="#263b3a">同じ半径・同じ色・同じ前後順。変えるのは二つの円の中心間隔だけ。</text>
+<text x="600.000" y="116.000" font-size="16" text-anchor="middle" font-weight="400" fill="#5c716e">模式図の座標単位 · 半径35 · 不透明な円を右奥→左手前の順で塗る · 輪郭線なし</text>
+<text x="198.000" y="166.000" font-size="22" text-anchor="middle" font-weight="700" fill="#263b3a">A · すき間</text>
+<text x="198.000" y="194.000" font-size="17" text-anchor="middle" font-weight="400" fill="#5c716e">g = +14 · 中心間 d = 84</text>
+<rect id="frame-A" x="78.000" y="234.000" width="240.000" height="168.000" fill="none" stroke="#98aaa4" stroke-width="1.4"/>
+<circle id="back-A" cx="248.400000" cy="318.000000" r="42.000000" fill="#3f7771"/>
+<circle id="front-A" cx="147.600000" cy="318.000000" r="42.000000" fill="#b76742"/>
+<line x1="147.600" y1="434.0" x2="248.400" y2="434.0" stroke="#263b3a" stroke-width="1.5" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
+<line x1="147.600" y1="402.000" x2="147.600" y2="439.000" stroke="#98aaa4" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="248.400" y1="402.000" x2="248.400" y2="439.000" stroke="#98aaa4" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="198.000" y="474.000" font-size="18" text-anchor="middle" font-weight="600" fill="#263b3a">中心間距離 d = 84</text>
+<text x="198.000" y="504.000" font-size="14" text-anchor="middle" font-weight="400" fill="#5c716e">輪郭のすき間14・境界交点0</text>
+<text x="600.000" y="166.000" font-size="22" text-anchor="middle" font-weight="700" fill="#263b3a">B · 画面上で一点が接する</text>
+<text x="600.000" y="194.000" font-size="17" text-anchor="middle" font-weight="400" fill="#5c716e">g = +0 · 中心間 d = 70</text>
+<rect id="frame-B" x="480.000" y="234.000" width="240.000" height="168.000" fill="none" stroke="#98aaa4" stroke-width="1.4"/>
+<circle id="back-B" cx="642.000000" cy="318.000000" r="42.000000" fill="#3f7771"/>
+<circle id="front-B" cx="558.000000" cy="318.000000" r="42.000000" fill="#b76742"/>
+<line x1="558.000" y1="434.0" x2="642.000" y2="434.0" stroke="#263b3a" stroke-width="1.5" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
+<line x1="558.000" y1="402.000" x2="558.000" y2="439.000" stroke="#98aaa4" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="642.000" y1="402.000" x2="642.000" y2="439.000" stroke="#98aaa4" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="600.000" y="474.000" font-size="18" text-anchor="middle" font-weight="600" fill="#263b3a">中心間距離 d = 70</text>
+<text x="600.000" y="504.000" font-size="14" text-anchor="middle" font-weight="400" fill="#5c716e">画面上で一点が接する・境界交点1</text>
+<text x="1002.000" y="166.000" font-size="22" text-anchor="middle" font-weight="700" fill="#263b3a">C · 部分的に重なる</text>
+<text x="1002.000" y="194.000" font-size="17" text-anchor="middle" font-weight="400" fill="#5c716e">g = -14 · 中心間 d = 56</text>
+<rect id="frame-C" x="882.000" y="234.000" width="240.000" height="168.000" fill="none" stroke="#98aaa4" stroke-width="1.4"/>
+<circle id="back-C" cx="1035.600000" cy="318.000000" r="42.000000" fill="#3f7771"/>
+<circle id="front-C" cx="968.400000" cy="318.000000" r="42.000000" fill="#b76742"/>
+<line x1="968.400" y1="434.0" x2="1035.600" y2="434.0" stroke="#263b3a" stroke-width="1.5" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
+<line x1="968.400" y1="402.000" x2="968.400" y2="439.000" stroke="#98aaa4" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="1035.600" y1="402.000" x2="1035.600" y2="439.000" stroke="#98aaa4" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="1002.000" y="474.000" font-size="18" text-anchor="middle" font-weight="600" fill="#263b3a">中心間距離 d = 56</text>
+<text x="1002.000" y="504.000" font-size="14" text-anchor="middle" font-weight="400" fill="#5c716e">重なり幅14・境界交点2・T字接合2</text>
+<text x="1002.000" y="532.000" font-size="14" text-anchor="middle" font-weight="400" fill="#5c716e">連続図形の重なり面積 ≈ 400.6 単位²</text>
+<circle cx="343" cy="578" r="9" fill="#3f7771"/>
+<text x="360.000" y="584.000" font-size="16" text-anchor="start" font-weight="400" fill="#263b3a">右奥の円（先に描く）</text>
+<circle cx="625" cy="578" r="9" fill="#b76742"/>
+<text x="642.000" y="584.000" font-size="16" text-anchor="start" font-weight="400" fill="#263b3a">左手前の円（後から描く）</text>
+<text x="55.000" y="642.000" font-size="17" text-anchor="start" font-weight="400" fill="#263b3a">円の面積は連続図形としての計算値。表示ピクセル数や、画面でどう知覚されるかを示す値ではない。</text>
+<text x="55.000" y="678.000" font-size="17" text-anchor="start" font-weight="400" fill="#263b3a">画面上の接点やT字の見え方は、意図して選べる配置の一例。良し悪しの順位や、普遍的な回避規則を表さない。</text>
+<text x="55.000" y="714.000" font-size="17" text-anchor="start" font-weight="400" fill="#263b3a">前後関係はこの図の描画順と塗りの説明。物理的な接触、支持、奥行き、実物の遮蔽は推定していない。</text>
+<text x="55.000" y="750.000" font-size="17" text-anchor="start" font-weight="400" fill="#263b3a">三つとも同じ半径・色・縮尺。円の内部形状や色、輪郭の形は配置に合わせて変えていない。</text>
+</g></svg>

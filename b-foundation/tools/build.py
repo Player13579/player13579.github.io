@@ -7,6 +7,7 @@ import html
 import json
 import re
 from pathlib import Path, PurePosixPath
+from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,8 +17,13 @@ ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,79}$")
 IMAGE_PATH_RE = re.compile(r"^assets/[A-Za-z0-9][A-Za-z0-9._/-]*$")
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".svg"}
 GALLERY_FIELDS = {"title", "intro", "items"}
-ITEM_FIELDS = {"id", "title", "benefit", "how_to_use", "principle", "evidence"}
-OPTIONAL_IMAGE_FIELDS = {"image", "image_alt"}
+ITEM_FIELDS = {"id", "title", "summary", "principle", "evidence", "essential"}
+OPTIONAL_ITEM_FIELDS = {
+    "benefit", "how_to_use", "source_url", "image", "image_alt", "example", "references"
+}
+GITHUB_COMMIT_RE = re.compile(
+    r"^https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/commit/[0-9a-fA-F]{7,64}/?$"
+)
 
 
 def esc(value: str) -> str:
@@ -28,6 +34,26 @@ def require_text(value: object, label: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise ValueError(f"{label}: expected a non-empty string")
     return value
+
+
+def validate_https_url(value: object, label: str) -> str:
+    url = require_text(value, label)
+    try:
+        parsed = urlsplit(url)
+        _ = parsed.port
+    except ValueError as exc:
+        raise ValueError(f"{label}: malformed HTTPS URL") from exc
+    if (
+        parsed.scheme != "https"
+        or not parsed.hostname
+        or parsed.username
+        or parsed.password
+        or "\\" in url
+    ):
+        raise ValueError(f"{label}: expected a safe HTTPS URL")
+    if any(char.isspace() for char in url):
+        raise ValueError(f"{label}: URL must not contain whitespace")
+    return url
 
 
 def icon_links() -> str:
@@ -72,14 +98,39 @@ def read_gallery() -> dict:
         if not isinstance(item, dict):
             raise ValueError(f"{label}: expected an object")
         keys = set(item)
-        if not ITEM_FIELDS.issubset(keys) or keys - ITEM_FIELDS - OPTIONAL_IMAGE_FIELDS:
-            raise ValueError(f"{label}: use the required user-facing fields and optional image/image_alt")
+        if not ITEM_FIELDS.issubset(keys) or keys - ITEM_FIELDS - OPTIONAL_ITEM_FIELDS:
+            raise ValueError(f"{label}: contains missing or unknown fields")
         ident = item["id"]
         if not isinstance(ident, str) or not ID_RE.fullmatch(ident) or ident in seen:
             raise ValueError(f"{label}.id: invalid or duplicate id")
         seen.add(ident)
-        for field in ("title", "benefit", "how_to_use", "principle", "evidence"):
+        for field in ("title", "summary", "principle", "evidence"):
             require_text(item[field], f"{label}.{field}")
+        if not isinstance(item["essential"], bool):
+            raise ValueError(f"{label}.essential: expected a boolean")
+        has_benefit = "benefit" in item
+        has_how_to_use = "how_to_use" in item
+        if has_benefit != has_how_to_use:
+            raise ValueError(f"{label}: benefit and how_to_use must be supplied together")
+        if item["essential"] and not has_benefit:
+            raise ValueError(f"{label}: essential items require benefit and how_to_use")
+        if has_benefit:
+            require_text(item["benefit"], f"{label}.benefit")
+            require_text(item["how_to_use"], f"{label}.how_to_use")
+        if "example" in item:
+            require_text(item["example"], f"{label}.example")
+        if "source_url" in item:
+            source_url = validate_https_url(item["source_url"], f"{label}.source_url")
+            if not GITHUB_COMMIT_RE.fullmatch(source_url):
+                raise ValueError(f"{label}.source_url: expected a GitHub commit URL")
+        if "references" in item:
+            references = item["references"]
+            if not isinstance(references, list):
+                raise ValueError(f"{label}.references: expected an array of HTTPS URLs")
+            item["references"] = [
+                validate_https_url(url, f"{label}.references[{i}]")
+                for i, url in enumerate(references)
+            ]
         has_image = "image" in item
         has_alt = "image_alt" in item
         if has_image != has_alt:
@@ -97,22 +148,48 @@ def render_item(item: dict) -> str:
             f'<figure class="item-image"><img src="{esc(item["image"])}" '
             f'alt="{esc(item["image_alt"])}" loading="lazy"></figure>'
         )
-    return f'''<article class="gallery-item" id="{esc(item["id"])}">
-  <h2>{esc(item["title"])}</h2>
-  <p class="item-benefit">{esc(item["benefit"])}</p>
-  {figure}
-  <div class="item-details">
+    essential_details = ""
+    if "benefit" in item:
+        essential_details = f'''<div class="essential-details" data-essential-details>
+    <section><h3>できること</h3><p>{esc(item["benefit"])}</p></section>
     <section><h3>使い方</h3><p>{esc(item["how_to_use"])}</p></section>
-    <section><h3>しくみ</h3><p>{esc(item["principle"])}</p></section>
-    <section><h3>確認できること</h3><p>{esc(item["evidence"])}</p></section>
-  </div>
+  </div>'''
+    example = ""
+    if "example" in item:
+        example = f'<section><h3>具体例</h3><p>{esc(item["example"])}</p></section>'
+    source = ""
+    if "source_url" in item:
+        source = f'<p class="item-source"><a href="{esc(item["source_url"])}">GitHubの変更</a></p>'
+    references = ""
+    if item.get("references"):
+        links = "".join(
+            f'<li><a href="{esc(url)}">{esc(url)}</a></li>' for url in item["references"]
+        )
+        references = f'<section class="item-references"><h3>参考資料</h3><ul>{links}</ul></section>'
+    hidden = "" if item["essential"] else " hidden"
+    return f'''<article class="gallery-item" id="{esc(item["id"])}" data-essential="{str(item["essential"]).lower()}"{hidden}>
+  <h2>{esc(item["title"])}</h2>
+  <p class="item-summary">{esc(item["summary"])}</p>
+  {essential_details}
+  <details class="report-details">
+    <summary>しくみ・具体例・確認範囲を見る</summary>
+    {figure}
+    <div class="item-details">
+      <section><h3>しくみ</h3><p>{esc(item["principle"])}</p></section>
+      {example}
+      <section><h3>確認範囲</h3><p>{esc(item["evidence"])}</p></section>
+      {references}
+    </div>
+    {source}
+  </details>
 </article>'''
 
 
 def render_page(data: dict) -> str:
     items = "\n".join(render_item(item) for item in data["items"])
-    if not items:
-        items = '<p class="empty-gallery">現在、掲載中の内容はありません。</p>'
+    essential_count = sum(1 for item in data["items"] if item["essential"])
+    empty_hidden = " hidden" if essential_count else ""
+    items += f'<p class="empty-gallery" data-empty-state{empty_hidden}>現在、制作でぜひ知っておくべき掲載内容はありません。これまでの改善は「すべての報告」で読めます。</p>'
     return f'''<!doctype html>
 <html lang="ja">
 <head>
@@ -130,17 +207,30 @@ def render_page(data: dict) -> str:
       <h1 id="page-heading">制作に必要な変化だけを。</h1>
       <p class="hero-copy">{esc(data["intro"])}</p>
     </section>
-    <section class="gallery-items" aria-label="制作に役立つ内容">
+    <section class="view-controls" aria-labelledby="view-heading">
+      <div><h2 id="view-heading">表示する内容</h2>
+        <p id="view-description">「制作に必要な内容」は、作品づくりに直接役立つ掲載内容に絞ります。「すべての報告」では、このチャットが実施した改善を、内部仕様や検証も含めて表示します。</p>
+      </div>
+      <div class="mode-buttons" role="group" aria-label="表示モード">
+        <button type="button" data-mode-switch="essential" aria-pressed="true" aria-controls="gallery-list" disabled>制作に必要な内容</button>
+        <button type="button" data-mode-switch="all" aria-pressed="false" aria-controls="gallery-list" disabled>すべての報告</button>
+      </div>
+      <p class="view-count" data-view-count aria-live="polite" aria-atomic="true">制作に必要な内容を表示中。{essential_count}件。</p>
+      <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
+    </section>
+    <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
       {items}
     </section>
   </main>
+  <script src="gallery-modes.js" defer></script>
 </body>
 </html>
 '''
 
 
 def main() -> None:
-    INDEX.write_text(render_page(read_gallery()), encoding="utf-8", newline="\n")
+    page = "\n".join(line.rstrip() for line in render_page(read_gallery()).splitlines()) + "\n"
+    INDEX.write_text(page, encoding="utf-8", newline="\n")
     print("Generated index.html.")
 
 
