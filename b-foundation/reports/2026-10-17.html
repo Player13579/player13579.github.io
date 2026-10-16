@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="B基底・拡張の設計方法と検証器の変更記録。"><title>明示された発光強度を構図や局所化で弱めない · B基底・拡張 改善ギャラリー</title><link rel="stylesheet" href="../styles.css"><script src="../gallery.js" defer></script></head>
+<meta name="description" content="B基底・拡張の設計方法と検証器の変更記録。"><title>B基底・拡張 改善報告 — 2026-10-17 · B基底・拡張 改善ギャラリー</title><link rel="stylesheet" href="../styles.css"><script src="../gallery.js" defer></script></head>
 <body><a class="skip-link" href="#main">本文へ移動</a><header class="site-header"><a class="brand" href="../index.html">B基底・拡張 <span>改善ギャラリー</span></a><a class="back-link" href="../index.html">日別一覧へ</a></header>
-<main id="main" class="report-main"><div class="eyebrow">DAILY CHANGE REPORT</div><time class="report-date" datetime="2026-10-17">2026-10-17</time><h1>明示された発光強度を構図や局所化で弱めない</h1><div class="intro"><p class="">2026年10月17日の変更を1件の記録にまとめます。選択済みキーワードが示す発光強度と、帯幅・作用範囲・表示効果の制御を分けて扱う規則を追加しました。</p>
-<p class="">仕様検査と関連テストの結果を記載します。自由文の意味解釈と生成画像の確認は別の段階です。</p></div><p class="updated">更新 <time>2026-10-17T00:13:59+09:00</time></p>
+<main id="main" class="report-main"><div class="eyebrow">DAILY CHANGE REPORT</div><time class="report-date" datetime="2026-10-17">2026-10-17</time><h1>B基底・拡張 改善報告 — 2026-10-17</h1><div class="intro"><p class="">作品で使える表現を先に示し、仕組み・具体例・確認範囲を結びます。</p>
+<p class="">本日は、指定した光の強さを保つ描写と、透明素材に角度で変わる反射の表情をつける方法を扱います。前日の23項目も、作品や制作で得られることを見出しにしました。</p>
+<p class="">設計方法の追加と、実際の生成画像で確認した結果を区別します。</p></div><p class="updated">更新 <time>2026-10-17T00:20:49+09:00</time></p>
 <aside class="editorial-note"><strong>このギャラリーについて</strong><p>設計方法・検証器の変更記録です。説明図と生成結果を区別して掲載します。</p></aside>
-<nav class="toc" aria-label="この日の項目"><h2>この日の項目</h2><ol><li data-toc-entry="explicit-emission-strength-preservation"><a href="#explicit-emission-strength-preservation">明示された強い発光を弱いアクセントへ落とさない</a></li></ol></nav>
-<div class="report-tools"><label for="entry-search">項目を検索</label><input id="entry-search" type="search" placeholder="原理・具体例・確認内容を検索" autocomplete="off"><label for="category-filter">種類</label><select id="category-filter"><option value="all">全件</option><option value="method">設計方法</option><option value="validator">検証器</option><option value="reference">参考設計</option></select><p class="result-count" data-result-count aria-live="polite">全1件</p><p class="empty-results" data-empty-results hidden>該当する項目はありません。</p></div>
+<nav class="toc" aria-label="この日の項目"><h2>この日の項目</h2><ol><li data-toc-entry="explicit-emission-strength-preservation"><a href="#explicit-emission-strength-preservation">光の強さを保ったまま、細い帯や狭い範囲に発光をまとめられる</a></li>
+<li data-toc-entry="fresnel-interface-reflection"><a href="#fresnel-interface-reflection">透明な素材に、角度で変わる反射の表情をつけられる</a></li></ol></nav>
+<div class="report-tools"><label for="entry-search">項目を検索</label><input id="entry-search" type="search" placeholder="原理・具体例・確認内容を検索" autocomplete="off"><label for="category-filter">種類</label><select id="category-filter"><option value="all">全件</option><option value="method">設計方法</option><option value="validator">検証器</option><option value="reference">参考設計</option></select><p class="result-count" data-result-count aria-live="polite">全2件</p><p class="empty-results" data-empty-results hidden>該当する項目はありません。</p></div>
 <section class="entries" aria-label="変更項目"><article class="entry-card" id="explicit-emission-strength-preservation" data-category="method">
-  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>明示された強い発光を弱いアクセントへ落とさない</h3></header>
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>光の強さを保ったまま、細い帯や狭い範囲に発光をまとめられる</h3></header>
   <div class="entry-facts">
     <section><h4>できるようになったこと</h4><p class="copy">選択したキーワード展開に強度の指定があるとき、その強さを構図順位や局所maskで弱めず、源発光と表示上のglowを別々に設計する。</p></section>
     <section><h4>原理</h4><p class="copy">発光源の強度、帯の幾何幅、周囲への照明応答、OBS glow/bloomの強度と広がりは別の条件である。対象を局所へ限定したり、顔や手を保護したりする処理は、明示された源発光を減光する理由にしない。</p></section>
@@ -18,5 +20,17 @@
     <section><h4>未確認・限界</h4><p class="copy">これは選択展開の強度と作用範囲を分け、矛盾する弱化指示の照合を求める仕様である。自由文の意味矛盾を自動検出・修正するものではなく、構造検査だけで画素の強さや外観を保証しない。v9画像生成は現在進行中のため、出力画像の成功・改善は未確認。</p></section>
   </div>
   <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>6d2f6e92a6405e42f59baeec3537724a2f84bcb4</code></p>
+</article>
+<article class="entry-card" id="fresnel-interface-reflection" data-category="method">
+  <header class="entry-heading"><span class="category-tag category-method">設計方法</span><h3>透明な素材に、角度で変わる反射の表情をつけられる</h3></header>
+  <div class="entry-facts">
+    <section><h4>できるようになったこと</h4><p class="copy">透明な素材の面ごとに、光を通す寄与と反射させる寄与の差を設計する方法を追加した。例えば、正面に近い面には透ける寄与を多く残し、斜めの面では既存の光を返す寄与を強める。指定された材質や形を保ち、光源・面・視点が許す未指定の光路条件だけを選ぶ。</p></section>
+    <section><h4>原理</h4><p class="copy">光は屈折率の異なる面で反射と透過へ分かれ、その割合は角度や偏光で変わる。同じ屈折率を保ち、反射させたい割合を満たす角度を許された範囲で探す。反射光と屈折光の向きも同じ条件から定めるため、割合だけを別に変えない。</p></section>
+    <section><h4>具体例</h4><p class="copy">説明用の仮想条件として550nm、入射側屈折率1、透過側1.5を固定する。入射角約57.93°・72.06°・82.82°で、反射する光のパワーは8%・20%・50%、透過するパワーは92%・80%・50%となる。角度は面の法線から測る。この割合は単一界面のビームについての値で、画像の明るさではない。</p></section>
+<figure class="report-figure"><a class="figure-image-link" href="../assets/fresnel-interface-comparison.svg"><img src="../assets/fresnel-interface-comparison.svg" alt="透明な素材に、角度で変わる反射の表情をつけられるの説明図" loading="lazy"></a><figcaption><a class="figure-link" href="../assets/fresnel-interface-comparison.svg">説明図を拡大して見る</a></figcaption></figure>
+    <section><h4>確認できたこと</h4><p class="copy">80桁の独立計算で3つの逆算候補、357点の角度別応答、360組の逆向き光路、7つの特殊条件を照合した。無次元量の差は最大2.58×10⁻¹³、角度差は最大1.86×10⁻¹²度。12種類の破損データと9種類の不正な定義域入力を拒否し、探索区間とflag型も検査した。図の9光線・6バー・1071曲線点・3目標点を照合し、1200×1120の説明図を画素検査と目視で確認した。統合後の仕様143規則と全297テストが通過した。</p></section>
+    <section><h4>未確認・限界</h4><p class="copy">滑らかで損失のない非磁性の単一界面と、等パワーのs/p偏光を合わせた入射に限る。仮想的な一波長の屈折率を使い、実素材の測定、粗面、薄膜干渉、内部吸収・散乱や多重光路を検証したものではない。ビームのパワー比を放射輝度比、alpha、最終RGB、物体全体の透明感へ代入しない。屈折率一致・全反射では角度が一意に決まらない場合があり、固定済みの幾何・光源・視点を優先する。B画像・動画生成、実画像での反射の見え・素材の読取り・美的効果は未確認。</p></section>
+  </div>
+  <p class="commit-note">仕様の変更記録（閲覧権限が必要） · <code>422fdaff1ef37d1afff1b7d0886f8172637b4a4b</code></p><details class="sources"><summary>参考資料</summary><ul><li><a href="https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission" rel="noopener noreferrer">https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission</a></li><li><a href="https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF" rel="noopener noreferrer">https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF</a></li></ul></details>
 </article></section>
 <footer class="report-footer"><a href="../index.html">← 日別一覧へ戻る</a></footer></main><footer class="site-footer">B基底・拡張 改善ギャラリー</footer></body></html>
