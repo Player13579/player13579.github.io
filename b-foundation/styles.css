@@ -87,6 +87,9 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .copy:last-child { margin-bottom: 0; }
 .report-figure { grid-column: 1 / -1; margin: .2rem 0; padding: clamp(.75rem, 3vw, 1.4rem); border: 1px solid var(--line); background: #f1efe8; }
 .report-figure img { display: block; width: 100%; height: auto; }
+.report-figure figcaption { margin-top: .6rem; text-align: center; }
+.figure-link { color: var(--teal); font-size: .86rem; }
+.day-thumbnail-link { display: block; }
 .commit-note { margin: 1rem 0 0; color: var(--muted); font-size: .78rem; }
 .sources { margin-top: .7rem; font-size: .82rem; }
 .sources ul { overflow-wrap: anywhere; }

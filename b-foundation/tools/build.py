@@ -115,8 +115,10 @@ def render_entry(entry: dict, *, report_page: bool) -> str:
     figure_html = ""
     if figure:
         prefix = "../" if report_page else ""
-        figure_html = (f'<figure class="report-figure"><img src="{prefix}{esc(figure)}" '
-                       f'alt="{esc(entry["title"])}の説明図" loading="lazy"></figure>')
+        figure_url = f"{prefix}{esc(figure)}"
+        figure_html = (f'<figure class="report-figure"><a class="figure-image-link" href="{figure_url}">'
+                       f'<img src="{figure_url}" alt="{esc(entry["title"])}の説明図" loading="lazy"></a>'
+                       f'<figcaption><a class="figure-link" href="{figure_url}">説明図を拡大して見る</a></figcaption></figure>')
     source_html = ""
     if entry.get("sources"):
         links = "".join(f'<li><a href="{esc(url)}" rel="noopener noreferrer">{esc(url)}</a></li>' for url in entry["sources"])
@@ -160,9 +162,11 @@ def write_index(reports: list[dict]) -> None:
     for report in reports:
         count = len(report["entries"])
         figure_entry = next((entry for entry in reversed(report["entries"]) if entry.get("figure")), None)
-        thumbnail = (f'<img class="day-thumbnail" src="{esc(figure_entry["figure"])}" alt="{esc(figure_entry["title"])}の説明図" loading="lazy">'
+        report_url = f'reports/{esc(report["date"])}.html'
+        thumbnail = (f'<a class="day-thumbnail-link" href="{report_url}" aria-label="{esc(report["title"])}の報告を見る">'
+                     f'<img class="day-thumbnail" src="{esc(figure_entry["figure"])}" alt="{esc(figure_entry["title"])}の説明図" loading="lazy"></a>'
                      if figure_entry else "")
-        cards.append(f'''<article class="day-card"><time datetime="{esc(report["date"])}">{esc(report["date"])}</time><h2><a href="reports/{esc(report["date"])}.html">{esc(report["title"])}</a></h2>{thumbnail}<div class="card-intro">{lines(report["intro"], css="")}</div><p class="card-meta">{count}件の記録</p></article>''')
+        cards.append(f'''<article class="day-card"><time datetime="{esc(report["date"])}">{esc(report["date"])}</time><h2><a href="{report_url}">{esc(report["title"])}</a></h2>{thumbnail}<div class="card-intro">{lines(report["intro"], css="")}</div><p class="card-meta">{count}件の記録</p></article>''')
     latest = reports[0] if reports else None
     summary = (f'<p>{esc(latest["date"])}の報告に{len(latest["entries"])}件の変更を掲載しています。</p>' if latest else '<p>最初の日別報告を準備しています。</p>')
     listing = "\n".join(cards) if cards else '<p class="empty-gallery">まだ報告はありません。</p>'
