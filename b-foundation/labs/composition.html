@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>空隙と明暗群を比べる｜B Foundation</title>
+  <style>
+    :root { color-scheme: light; --ink:#17212b; --muted:#526171; --line:#d7dee5; --paper:#f6f8fa; --card:#fff; --accent:#235d82; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.55; }
+    a { color:#145d8b; text-underline-offset:2px; }
+    .page { max-width:1180px; margin:0 auto; padding:24px 20px 48px; }
+    .back { display:inline-block; margin-bottom:12px; font-size:.94rem; }
+    h1 { margin:.2rem 0 .5rem; font-size:clamp(1.65rem,4vw,2.35rem); line-height:1.2; }
+    h2 { margin:0 0 .6rem; font-size:1.18rem; }
+    p { margin:.4rem 0 .8rem; }
+    .intro { max-width:78ch; color:#334250; }
+    .notice { border-left:4px solid #597a91; background:#eaf0f4; padding:12px 15px; border-radius:4px; font-size:.94rem; }
+    .controls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)) auto; gap:14px; align-items:end; margin:22px 0 14px; padding:16px; background:var(--card); border:1px solid var(--line); border-radius:12px; }
+    label { display:block; font-weight:700; margin-bottom:5px; }
+    select, button { font:inherit; min-height:44px; border:1px solid #aebbc7; border-radius:7px; padding:8px 11px; color:var(--ink); background:#fff; }
+    select { width:100%; }
+    button { cursor:pointer; background:#eff4f7; font-weight:650; }
+    select:focus-visible,button:focus-visible,a:focus-visible { outline:3px solid #4c9bc3; outline-offset:2px; }
+    .status { min-height:1.5em; margin:0 0 14px; color:var(--muted); }
+    .status[role="alert"] { color:#8d1e18; font-weight:650; }
+    .compare { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; align-items:start; }
+    .panel { min-width:0; padding:16px; border:1px solid var(--line); background:var(--card); border-radius:12px; box-shadow:0 3px 12px #1a2a3810; }
+    .panel h2 { margin-bottom:2px; }
+    .subhead { color:var(--muted); margin:0 0 12px; font-size:.93rem; }
+    .canvas-label { display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin:10px 0 5px; font-size:.9rem; font-weight:700; }
+    .canvas-frame { display:flex; justify-content:center; padding:8px; border:1px solid #e0e5e9; border-radius:8px; background:#fff; }
+    svg.composition { display:block; width:100%; height:auto; aspect-ratio:1; max-width:500px; background:#f3efe5; }
+    svg.composition.mini { width:128px; height:128px; flex:0 0 128px; }
+    .numbers { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:13px 0 0; }
+    details.numbers-wrap { margin-top:13px; }
+    details.numbers-wrap summary { cursor:pointer; font-weight:700; }
+    .numbers { margin-top:9px; }
+    .number { padding:9px 10px; border-radius:7px; background:#f2f5f7; min-width:0; }
+    .number dt { color:var(--muted); font-size:.82rem; }
+    .number dd { margin:2px 0 0; font-weight:700; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+    .invariants { margin:16px 0 0; border-top:1px solid var(--line); padding-top:12px; }
+    .invariants h3 { margin:0 0 5px; font-size:.98rem; }
+    .invariants ul { margin:5px 0 0; padding-left:1.2rem; color:#334250; font-size:.9rem; }
+    .legend { display:flex; flex-wrap:wrap; gap:12px 18px; margin:15px 0; padding:0; list-style:none; font-size:.9rem; }
+    .swatch { display:inline-block; width:1em; height:1em; vertical-align:-.12em; margin-right:5px; border:1px solid #62717e; }
+    .methods { margin-top:18px; padding:16px; background:var(--card); border:1px solid var(--line); border-radius:12px; }
+    .methods p:last-child { margin-bottom:0; }
+    .source { margin-top:14px; font-size:.9rem; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    @media (min-width:980px) { svg.composition { max-width:320px; } }
+    @media (max-width:720px) { .page { padding:18px 14px 36px; } .controls { grid-template-columns:1fr; } .compare { grid-template-columns:1fr; } .panel { padding:13px; } .panel[aria-labelledby="current-title"] { order:-1; } svg.composition { max-width:320px; } }
+    @media (max-width:380px) { .page { padding-left:10px; padding-right:10px; } .numbers { grid-template-columns:1fr 1fr; } .panel { padding:10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../?view=all#integrated-b3-reference">← B Foundation の統合参考例へ戻る</a>
+    <header>
+      <h1>空隙と明暗群を比べる</h1>
+      <p class="intro">同じ3つの面を使い、右側の下端形状と暗色面の割り当てを別々に切り替えます。固定した比較例と、手元で切り替える例を並べて、形・色面・面積・つながり方を見比べられます。</p>
+      <p class="intro">図形数と各色の面積を保った比較プレビューです。</p>
+    </header>
+
+    <section class="controls" aria-label="現在の比較条件">
+      <div>
+        <label for="geometry-choice">余白の形</label>
+        <select id="geometry-choice" disabled>
+          <option value="G0">一定の幅</option>
+          <option value="G1">下へ狭まる</option>
+        </select>
+      </div>
+      <div>
+        <label for="tone-choice">暗い面のまとまり</label>
+        <select id="tone-choice" disabled>
+          <option value="T0">左右に分かれる</option>
+          <option value="T1">左から下へつながる</option>
+        </select>
+      </div>
+      <button id="reset-choice" type="button" disabled>採用形に戻す</button>
+    </section>
+    <p id="load-status" class="status" role="status" aria-live="polite">比較データを読み込んでいます。</p>
+
+    <ul id="legend" class="legend" aria-label="色の凡例" hidden></ul>
+
+    <section class="compare" aria-label="固定比較と現在の選択">
+      <article class="panel" aria-labelledby="baseline-title">
+        <h2 id="baseline-title">基準の構成</h2>
+        <p class="subhead">余白は一定の幅、暗い面は左右に分かれています。</p>
+        <div class="canvas-label"><span>図のプレビュー</span><span>同じ形を128 CSS pxでも確認</span></div>
+        <div class="canvas-frame"><svg id="baseline-large" class="composition" viewBox="0 0 1000 1000" role="img" aria-label="固定比較の3領域図"></svg></div>
+        <div class="canvas-label"><span>小さい表示</span><span>128 CSS px</span></div>
+        <div class="canvas-frame"><svg id="baseline-mini" class="composition mini" viewBox="0 0 1000 1000" role="img" aria-label="固定比較を128 CSS pxで表示した3領域図"></svg></div>
+        <details class="numbers-wrap"><summary>面積などの確認値</summary><dl id="baseline-numbers" class="numbers"></dl></details>
+        <div class="invariants"><h3>この比較の状態</h3><ul id="baseline-invariants"></ul></div>
+      </article>
+
+      <article class="panel" aria-labelledby="current-title">
+        <h2 id="current-title">選択中の構成</h2>
+        <p class="subhead" id="current-description">余白は下へ狭まり、暗い面は左から下へつながっています。</p>
+        <div class="canvas-label"><span>図のプレビュー</span><span>同じ形を128 CSS pxでも確認</span></div>
+        <div class="canvas-frame"><svg id="current-large" class="composition" viewBox="0 0 1000 1000" role="img" aria-label="現在の選択を示す3領域図"></svg></div>
+        <div class="canvas-label"><span>小さい表示</span><span>128 CSS px</span></div>
+        <div class="canvas-frame"><svg id="current-mini" class="composition mini" viewBox="0 0 1000 1000" role="img" aria-label="現在の選択を128 CSS pxで表示した3領域図"></svg></div>
+        <details class="numbers-wrap"><summary>面積などの確認値</summary><dl id="current-numbers" class="numbers"></dl></details>
+        <div class="invariants"><h3>保たれる条件・変わる条件</h3><ul id="current-invariants"></ul></div>
+      </article>
+    </section>
+
+    <section class="methods" aria-label="表示条件と方法">
+      <h2>表示条件と計算方法</h2>
+      <p class="notice">これはB3参考設計から作ったブラウザー内のネイティブSVG教材プレビューです。ChatGPT生成画像や美的効果の実験ではありません。128 CSS pxは同じベクトルを小さく再描画した表示で、縮小フィルターは実行していません。物理的な鑑賞サイズや画素密度も測定していません。</p>
+      <p>美術教育・構成論のノータン（明暗の面の構成）を比較方法として扱います。平面幾何・線形代数では頂点移動を面積保存せん断として確認し、グラフ理論では長さのある共通辺を使って連結成分を計算します。計算上の連結は、見る人の知覚を直接測ったものではありません。</p>
+      <p>3領域の形と色割り当てを独立に切り替えます。領域面積と全体の外接範囲は保たれます。これらは比較用の設計選択であり、どの形や配色が普遍的に美しいかを示す法則ではありません。図と統計には同じ座標モデルを使います。</p>
+    </section>
+    <section class="methods" aria-labelledby="methods-title">
+      <h2 id="methods-title">参考設計の出典</h2>
+      <p class="source">出典設計: <a id="source-link" href="https://github.com/Player13579/B/blob/e024e446fa394c2d51499de43b25554f23e7e486/docs/examples/tapered-gap-tonal-design.json" target="_blank" rel="noopener noreferrer">元のB3参考設計</a>。構成論の参照: <a href="https://www.gutenberg.org/cache/epub/45410/pg45410-images.html" target="_blank" rel="noopener noreferrer">Arthur Wesley Dow, <i>Composition</i>, IX・X・XII</a>。</p>
+    </section>
+  </main>
+  <script src="composition.js" defer></script>
+</body>
+</html>

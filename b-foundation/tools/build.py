@@ -19,7 +19,7 @@ IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".svg"}
 GALLERY_FIELDS = {"title", "intro", "items"}
 ITEM_FIELDS = {"id", "title", "summary", "principle", "evidence", "essential"}
 OPTIONAL_ITEM_FIELDS = {
-    "benefit", "how_to_use", "source_url", "image", "image_alt", "example", "references", "examples", "show_heading"
+    "benefit", "how_to_use", "source_url", "image", "image_alt", "example", "references", "examples", "show_heading", "tool"
 }
 EXAMPLE_FIELDS = {"title", "image", "image_alt", "caption"}
 GITHUB_COMMIT_RE = re.compile(
@@ -122,6 +122,8 @@ def read_gallery() -> dict:
             require_text(item["how_to_use"], f"{label}.how_to_use")
         if "example" in item:
             require_text(item["example"], f"{label}.example")
+        if "tool" in item:
+            item["tool"] = validate_tool(item["tool"], f"{label}.tool")
         if "source_url" in item:
             source_url = validate_https_url(item["source_url"], f"{label}.source_url")
             if not GITHUB_COMMIT_RE.fullmatch(source_url):
@@ -157,6 +159,23 @@ def read_gallery() -> dict:
                 validated_examples.append(validated)
             item["examples"] = validated_examples
     return data
+
+
+def validate_tool(value: object, label: str) -> dict:
+    if not isinstance(value, dict) or set(value) != {"href", "label"}:
+        raise ValueError(f"{label}: expected only href and label")
+    href = require_text(value["href"], f"{label}.href")
+    title = require_text(value["label"], f"{label}.label")
+    if not re.fullmatch(r"labs/[A-Za-z0-9][A-Za-z0-9-]*\.html", href):
+        raise ValueError(f"{label}.href: expected a local HTML tool under labs/")
+    target = ROOT / href
+    try:
+        target.resolve().relative_to((ROOT / "labs").resolve())
+    except ValueError as exc:
+        raise ValueError(f"{label}.href: tool must remain under labs/") from exc
+    if not target.is_file():
+        raise ValueError(f"{label}.href: tool does not exist")
+    return {"href": href, "label": title}
 
 
 def render_item(item: dict) -> str:
@@ -198,6 +217,9 @@ def render_item(item: dict) -> str:
         )
         references = f'<section class="item-references"><h3>参考資料</h3><ul>{links}</ul></section>'
     show_heading = item.get("show_heading", False)
+    tool = ""
+    if "tool" in item:
+        tool = f'\n  <p class="item-tool"><a href="{esc(item["tool"]["href"])}">{esc(item["tool"]["label"])}</a></p>'
     hidden = "" if item["essential"] or show_heading else " hidden"
     content_hidden = " hidden" if show_heading and not item["essential"] else ""
     heading = esc(item["title"])
@@ -206,7 +228,7 @@ def render_item(item: dict) -> str:
     return f'''<article class="gallery-item" id="{esc(item["id"])}" data-essential="{str(item["essential"]).lower()}" data-show-heading="{str(show_heading).lower()}"{hidden}>
   <h2>{heading}</h2>
   <div data-report-content{content_hidden}>
-  <p class="item-summary">{esc(item["summary"])}</p>
+  <p class="item-summary">{esc(item["summary"])}</p>{tool}
   {examples}
   {essential_details}
   <details class="report-details">
