@@ -27,7 +27,28 @@
       <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
     </section>
     <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
-      <article class="gallery-item" id="magic-line-mass-rhythm-examples" data-essential="false" data-show-heading="true">
+      <article class="gallery-item" id="visual-family-book" data-essential="false" data-show-heading="false" hidden>
+  <h2>意匠帳から対象別の制作資料を作る</h2>
+  <div data-report-content>
+  <p class="item-summary">共有する形の関係・配色の役割・描き方を意匠帳に保存し、対象名・領域・向きを指定して素材別の制作資料を出力する補助ツールを追加しました。共通特徴と、金属・布それぞれで残す手掛かりを分けます。</p>
+
+
+  <details class="report-details">
+    <summary>しくみ・具体例・確認範囲を見る</summary>
+
+    <div class="item-details">
+      <section><h3>しくみ</h3><p>デザイン学・計算論的設計の形態文法（shape grammars）を参考に、形を構成する関係と、その関係を対象へ展開する方法を制作資料へ転用しています。今回の補助ツールが行うのは文章パラメータの具体化で、幾何形状を検出・照合する形態文法エンジンではありません。付属例の一度の分岐、約3対1の幅、主線長の六割という位置は独自の造形選択であり、学術研究が示す美の法則や最適値ではありません。学問分野・原理名・根拠種別・今回の使い方・出典を意匠帳にも保存します。</p></section>
+      <section><h3>具体例</h3><p>付属例では、既に模様がある青銅の飾り板とマントの縁の布帯へ、一度の分岐・主従の強弱・開いた抜けを共有する資料を作れます。金属の反射を布へ、布のひだを金属へ転写しません。今回の対象や固定条件と両立する内容を選び、完全なB設計の既存欄へ統合します。</p></section>
+      <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査と、追加10件を含む307件のテストが通過しました。金属用・布用の二つの実入力でCLIを実行し、同じ共通特徴と学術的な出自、異なる対象・領域・向き・材質手掛かりが出力されること、入力が変更されないことを独立に確認しました。既存のB-3契約、凍結B-2契約、生成検証器のバイトは変更していません。
+
+制約：出力は要意味レビューの制作資料で、完全なB生成コードや別の実行promptではありません。自動的な形状一致判定、B設計への自動統合、画像生成、系列の読取りや美的効果は確認していません。今回の原理名だけで普遍的な調和・品質を保証しません。</p></section>
+      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.mit.edu/~tknight/IJDC/page_introduction.htm">https://www.mit.edu/~tknight/IJDC/page_introduction.htm</a></li><li><a href="https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/">https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/</a></li></ul></section>
+    </div>
+    <p class="item-source"><a href="https://github.com/Player13579/B/commit/0164df24292f8f46813e215406fe66733a231938">GitHubの変更</a></p>
+  </details>
+  </div>
+</article>
+<article class="gallery-item" id="magic-line-mass-rhythm-examples" data-essential="false" data-show-heading="true">
   <h2><a href="?view=all#magic-line-mass-rhythm-examples">魔法の印象を、三つの見本から選べる</a></h2>
   <div data-report-content hidden>
   <p class="item-summary">青系の魔法光帯を、細線・発光の塊・整った反復へ描き分けました。好みに近い見本を選び、次の制作で残したい特徴を具体的に伝えられます。</p>
@@ -58,10 +79,10 @@
     <summary>しくみ・具体例・確認範囲を見る</summary>
 
     <div class="item-details">
-      <section><h3>しくみ</h3><p>三案は青系と縦のSカーブという主題を共有し、帯の内部をどう埋めるかで描き分けています。繊細は細い線と暗い隙間、重厚はつながった発光面、荘厳は主線と従線の整った反復を手がかりにしています。印象名は制作上の狙いです。</p></section>
+      <section><h3>しくみ</h3><p>学問上の参考は、デザイン学・計算論的設計の形態文法です。形と空間的な関係を規則として扱い、異なる構成へ展開する考え方を参照しています。この三作例では青系と縦のSカーブという主題を共有し、内部を細い線と暗い隙間、つながった発光面、主線と従線の反復へ描き分けました。形態文法の幾何エンジンを実行したものではなく、三つの描き分けと印象名は制作上の設計選択です。「繊細」「重厚」「荘厳」になることを保証する科学法則ではありません。</p></section>
 
       <section><h3>確認範囲</h3><p>このチャットで三枚を生成し、線・面・反復の違いを実画像で確認しました。独立した生成なので曲線や明るさ、余白は完全には揃っていません。帯外のにじみも残り、当初の表示条件をすべて再現した成功例ではありません。描き方を選ぶ作例として掲載しています。</p></section>
-
+      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.mit.edu/~tknight/IJDC/page_introduction.htm">https://www.mit.edu/~tknight/IJDC/page_introduction.htm</a></li></ul></section>
     </div>
 
   </details>
