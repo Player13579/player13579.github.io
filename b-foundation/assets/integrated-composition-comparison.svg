@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080" role="img" aria-labelledby="title desc">
+  <title id="title">空隙形と主暗値の連結を、別々に選ぶ</title>
+  <desc id="desc">三つの等面積領域について、左右で右領域の傾き、上下で色の割当だけを変える二要因の説明図。色面積と図形外接矩形は同じ。右下が参考設計の採用構成。上方へ開いた空隙は背景であり、物理的な穴ではない。D1の連結は共有辺による設計上の数で、知覚や美的選好の測定値ではない。</desc>
+  <rect width="1080" height="1080" fill="#ffffff"/>
+  <g font-family="Yu Gothic, Meiryo, sans-serif" fill="#202936">
+    <text x="32" y="40" font-size="27" font-weight="700">空隙形と主暗値の連結を、別々に選ぶ</text>
+    <text x="32" y="75" font-size="16">左右で傾き、上下で色の割当を変える。4案の説明図であり、生成画像ではありません。</text>
+    <text x="170" y="116" font-size="18" font-weight="700">G0　平行な空隙</text>
+    <text x="640" y="116" font-size="18" font-weight="700">G1　下へ狭まる空隙</text>
+    <text x="32" y="181" font-size="20" font-weight="700">T0</text>
+    <text x="32" y="209" font-size="15">主暗値D1を分離</text>
+    <g transform="translate(170 145) scale(0.36)" data-panel="G0T0" data-geometry="G0" data-assignment="T0">
+      <rect width="1000" height="1000" fill="#F3EFE5" data-background="L"/>
+      <polygon points="200,200 350,200 350,700 200,700" fill="#27333F" data-region-id="R_left" data-value-id="D1"/>
+      <polygon points="650,200 800,200 800,700 650,700" fill="#27333F" data-region-id="R_right" data-value-id="D1"/>
+      <polygon points="200,700 800,700 800,825 200,825" fill="#73889A" data-region-id="R_base" data-value-id="M"/>
+    </g>
+    <rect x="170" y="145" width="360" height="360" fill="none" stroke="#cbd2d9" stroke-width="1"/>
+    <text x="170" y="530" font-size="15">空隙幅 0.30→0.30 ／ D1連結数 2</text>
+    <g transform="translate(640 145) scale(0.36)" data-panel="G1T0" data-geometry="G1" data-assignment="T0">
+      <rect width="1000" height="1000" fill="#F3EFE5" data-background="L"/>
+      <polygon points="200,200 350,200 350,700 200,700" fill="#27333F" data-region-id="R_left" data-value-id="D1"/>
+      <polygon points="650,200 800,200 700,700 550,700" fill="#27333F" data-region-id="R_right" data-value-id="D1"/>
+      <polygon points="200,700 800,700 800,825 200,825" fill="#73889A" data-region-id="R_base" data-value-id="M"/>
+    </g>
+    <rect x="640" y="145" width="360" height="360" fill="none" stroke="#cbd2d9" stroke-width="1"/>
+    <text x="640" y="530" font-size="15">空隙幅 0.30→0.20 ／ D1連結数 2</text>
+    <text x="32" y="601" font-size="20" font-weight="700">T1</text>
+    <text x="32" y="629" font-size="15">主暗値D1を接続</text>
+    <g transform="translate(170 565) scale(0.36)" data-panel="G0T1" data-geometry="G0" data-assignment="T1">
+      <rect width="1000" height="1000" fill="#F3EFE5" data-background="L"/>
+      <polygon points="200,200 350,200 350,700 200,700" fill="#27333F" data-region-id="R_left" data-value-id="D1"/>
+      <polygon points="650,200 800,200 800,700 650,700" fill="#73889A" data-region-id="R_right" data-value-id="M"/>
+      <polygon points="200,700 800,700 800,825 200,825" fill="#27333F" data-region-id="R_base" data-value-id="D1"/>
+    </g>
+    <rect x="170" y="565" width="360" height="360" fill="none" stroke="#cbd2d9" stroke-width="1"/>
+    <text x="170" y="950" font-size="15">空隙幅 0.30→0.30 ／ D1連結数 1</text>
+    <g transform="translate(640 565) scale(0.36)" data-panel="G1T1" data-geometry="G1" data-assignment="T1">
+      <rect width="1000" height="1000" fill="#F3EFE5" data-background="L"/>
+      <polygon points="200,200 350,200 350,700 200,700" fill="#27333F" data-region-id="R_left" data-value-id="D1"/>
+      <polygon points="650,200 800,200 700,700 550,700" fill="#73889A" data-region-id="R_right" data-value-id="M"/>
+      <polygon points="200,700 800,700 800,825 200,825" fill="#27333F" data-region-id="R_base" data-value-id="D1"/>
+    </g>
+    <rect x="640" y="565" width="360" height="360" fill="none" stroke="#2c6f78" stroke-width="2"/>
+    <text x="640" y="950" font-size="15">空隙幅 0.30→0.20 ／ D1連結数 1</text>
+    <text x="640" y="974" font-size="15" fill="#2c6f78">参考設計の採用構成 G1T1</text>
+    <rect x="32" y="1002" width="20" height="20" fill="#27333F"/>
+    <text x="62" y="1018" font-size="15">D1 主暗値：面積 0.15</text>
+    <rect x="360" y="1002" width="20" height="20" fill="#73889A"/>
+    <text x="390" y="1018" font-size="15">M 中間値：面積 0.075</text>
+    <rect x="688" y="1002" width="20" height="20" fill="#F3EFE5"/>
+    <text x="718" y="1018" font-size="15">L 背景：面積 0.775</text>
+    <text x="32" y="1045" font-size="14">色と色面積、各領域の面積、外接矩形は4案で同じ。空隙幅・面積は画面を1とした値。</text>
+    <text x="32" y="1068" font-size="14">D1連結数は共有辺による設計上の値。知覚・美的選好の実験結果ではありません。</text>
+  </g>
+  <metadata id="comparison-data">{"coordinate_domain":[0,1000,0,1000],"panels":[{"id":"G0T0","geometry":"G0","assignment":"T0","polygons":{"R_left":[[200,200],[350,200],[350,700],[200,700]],"R_right":[[650,200],[800,200],[800,700],[650,700]],"R_base":[[200,700],[800,700],[800,825],[200,825]]},"value_ids":{"R_left":"D1","R_right":"D1","R_base":"M"}},{"id":"G1T0","geometry":"G1","assignment":"T0","polygons":{"R_left":[[200,200],[350,200],[350,700],[200,700]],"R_right":[[650,200],[800,200],[700,700],[550,700]],"R_base":[[200,700],[800,700],[800,825],[200,825]]},"value_ids":{"R_left":"D1","R_right":"D1","R_base":"M"}},{"id":"G0T1","geometry":"G0","assignment":"T1","polygons":{"R_left":[[200,200],[350,200],[350,700],[200,700]],"R_right":[[650,200],[800,200],[800,700],[650,700]],"R_base":[[200,700],[800,700],[800,825],[200,825]]},"value_ids":{"R_left":"D1","R_right":"M","R_base":"D1"}},{"id":"G1T1","geometry":"G1","assignment":"T1","polygons":{"R_left":[[200,200],[350,200],[350,700],[200,700]],"R_right":[[650,200],[800,200],[700,700],[550,700]],"R_base":[[200,700],[800,700],[800,825],[200,825]]},"value_ids":{"R_left":"D1","R_right":"M","R_base":"D1"}}],"palette":{"D1":"#27333F","M":"#73889A","L":"#F3EFE5"},"fixed_region_area":75000,"fixed_per_value_area":{"D1":150000,"M":75000,"L":775000},"connectivity_definition":"positive shared-edge length between regions assigned D1","scope":"educational geometry; not a B image or evidence of perception/beauty"}</metadata>
+</svg>

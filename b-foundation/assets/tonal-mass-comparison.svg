@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" width="900" height="430" role="img" aria-labelledby="title desc">
+  <title id="title">同じ値と面積で、明暗群のつながりを変える</title>
+  <desc id="desc">既存の横並び3領域に同じ3値を割り当てる幾何関係の説明図。各領域は80×150で固定。D1とD2を設計上の暗群、Lを明群と定義する。AはD1、L、D2、BはD1、D2、Lの順。各値の面積は両案で12000ずつ。辺を共有する暗群の隣接として数える連結数はAが2、Bが1。これは知覚や美的効果の測定値ではない。</desc>
+  <rect width="900" height="430" fill="#ffffff"/>
+  <g font-family="Yu Gothic, Meiryo, sans-serif" fill="#202936">
+    <text x="30" y="33" font-size="22" font-weight="700">同じ値と面積で、明暗群のつながりを変える</text>
+    <text x="30" y="66" font-size="17">A　暗群を明部で分ける</text>
+    <text x="480" y="66" font-size="17">B　暗群を隣接させる</text>
+    <g transform="translate(30 88) scale(1.5)" data-panel="A">
+      <rect x="0" y="0" width="80" height="150" fill="#383838" data-region-id="R1" data-value-id="D1" data-tonal-group="dark"/>
+      <rect x="80" y="0" width="80" height="150" fill="#e4e4e4" data-region-id="R2" data-value-id="L" data-tonal-group="light"/>
+      <rect x="160" y="0" width="80" height="150" fill="#686868" data-region-id="R3" data-value-id="D2" data-tonal-group="dark"/>
+      <rect x="0" y="0" width="240" height="150" fill="none" stroke="#a2a8b0" stroke-width="0.6"/>
+    </g>
+    <g transform="translate(480 88) scale(1.5)" data-panel="B">
+      <rect x="0" y="0" width="80" height="150" fill="#383838" data-region-id="R1" data-value-id="D1" data-tonal-group="dark"/>
+      <rect x="80" y="0" width="80" height="150" fill="#686868" data-region-id="R2" data-value-id="D2" data-tonal-group="dark"/>
+      <rect x="160" y="0" width="80" height="150" fill="#e4e4e4" data-region-id="R3" data-value-id="L" data-tonal-group="light"/>
+      <rect x="0" y="0" width="240" height="150" fill="none" stroke="#a2a8b0" stroke-width="0.6"/>
+    </g>
+    <g text-anchor="middle" font-size="14">
+      <text x="90" y="336">D1</text><text x="210" y="336">L</text><text x="330" y="336">D2</text>
+      <text x="540" y="336">D1</text><text x="660" y="336">D2</text><text x="780" y="336">L</text>
+    </g>
+    <text x="30" y="365" font-size="15">設計上の暗群の連結数：2</text>
+    <text x="480" y="365" font-size="15">設計上の暗群の連結数：1</text>
+    <text x="30" y="394" font-size="14">3領域の形・位置・使う値・各値の面積は両案で同一。D1・D2を暗群と定義。</text>
+    <text x="30" y="418" font-size="12" fill="#53606c">説明図の隣接関係の計算。知覚的群化・美しさ・B生成画像の検証結果ではない。</text>
+  </g>
+</svg>
