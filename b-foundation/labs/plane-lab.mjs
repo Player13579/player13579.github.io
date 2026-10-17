@@ -8,6 +8,7 @@ import {
   parseRosetteSource,
   validatePose,
 } from './planar-projection.mjs';
+import { constructPlanarDesign } from './planar-design.mjs';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const clone = (value) => structuredClone(value);
@@ -143,6 +144,7 @@ function init() {
     byId('pin').disabled = !enabled;
     byId('save-svg').disabled = !enabled;
     byId('save-json').disabled = !enabled;
+    byId('save-design').disabled = !enabled;
   }
 
   function render() {
@@ -243,11 +245,20 @@ function init() {
   byId('save-json').addEventListener('click', () => {
     if (!currentModel) return;
     try {
-      download('planar-motif.json', `${JSON.stringify(modelJson(currentModel, byId('show-plane').checked), null, 2)}
-`, 'application/json;charset=utf-8');
+      download('planar-motif.json', `${JSON.stringify(modelJson(currentModel, byId('show-plane').checked), null, 2)}\n`, 'application/json;charset=utf-8');
       announce('投影データの保存を開始しました。');
     } catch {
       announce('投影データを保存できませんでした。ブラウザーの保存設定を確認してください。', true);
+    }
+  });
+  byId('save-design').addEventListener('click', () => {
+    if (!currentModel) return;
+    try {
+      const design = constructPlanarDesign(currentPose, currentSource);
+      download('planar-motif-b-design.json', `${JSON.stringify(design, null, 2)}\n`, 'application/json;charset=utf-8');
+      announce('B設計ファイルの保存を開始しました。');
+    } catch {
+      announce('B設計を保存できませんでした。紋様と投影の条件を確認してください。', true);
     }
   });
   applyPose(currentPose);

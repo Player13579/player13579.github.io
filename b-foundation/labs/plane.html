@@ -11,7 +11,7 @@
 </head>
 <body>
   <main class="page">
-    <a class="back" href="../?view=all#planar-projection-lab">← B Foundation の一覧へ戻る</a>
+    <a class="back" href="../#planar-projection-lab">← B Foundation の一覧へ戻る</a>
     <header>
       <h1>紋様を斜めの面に載せる</h1>
       <p class="intro">保存した放射状の紋様を読み込み、平面内の形を保ったまま、面の傾きと投影方法を比べます。左は比較用に残した案、右は調整中の案です。左右は同じ縮尺で表示します。</p>
@@ -75,8 +75,10 @@
           <div class="export-actions">
             <button id="save-svg" type="button">透明背景のSVGを保存</button>
             <button id="save-json" type="button" class="secondary">投影データを保存</button>
+            <button id="save-design" type="button" class="secondary">図案のB設計を保存</button>
           </div>
-          <p>SVGは紋様だけを保存します。面の補助線は含みません。JSONには元の設定と各座標を含みます。</p>
+          <p>SVGは透明背景の紋様だけを保存し、面の補助線は含みません。JSONには元の設定と各座標を含みます。B設計は採用した紋様と投影を透明背景の平面図として保存します。材質や光は含まず、画像を生成しません。</p>
+          <p><a href="https://github.com/Player13579/B/blob/1317c1865aa100b8de930aedda80146abd5b8742/docs/planar-motif-b-design.md" target="_blank" rel="noopener noreferrer">保存したB設計の使い方</a></p>
         </section>
       </div>
     </div>
