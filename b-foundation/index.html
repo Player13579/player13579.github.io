@@ -20,24 +20,26 @@
   <details class="article-disclosure" data-report-disclosure>
     <summary><h2>紋様に、面の傾きと遠近感を反映する</h2></summary>
     <div data-report-content>
-      <p class="item-summary">紋様の全要素を同じ斜めの面へ配置し、共通のカメラから投影する機能を追加しました。元の意匠の比率と配置数を面内で保ち、面の傾き・画面内の向き・遠近感を変更できます。正射影と透視投影の違いも比較でき、採用した形状をSVGと三次元・投影座標付きデータへ保存できます。</p>
-  <p class="item-tool"><a href="labs/plane.html">表示例で投影の違いを比べる</a></p>
+      <p class="item-summary">紋様の全要素へ同じ面の傾きと遠近感を反映し、採用した図案を一つの完全なB設計へ保存する機能を追加しました。選んだ形と配置を制作指示へ手で書き直さずに引き継げます。透視・正射影を比較でき、SVG・座標データも保存できます。B設計は透明背景の平面図案で、材質・光・発光を勝手に追加せず、画像生成も始めません。</p>
+  <p class="item-tool"><a href="labs/plane.html">紋様と投影を選び、B設計へ保存する</a></p>
 
 
       <details class="report-details">
         <summary>しくみ・具体例・確認範囲を見る</summary>
 
         <div class="item-details">
-          <section><h3>しくみ</h3><p>射影幾何学・コンピュータービジョンの平面ホモグラフィと同次座標を使い、一枚の面にある全輪郭へ同じ3×3行列と同次除算を適用します。幾何光学の理想ピンホールモデルで奥行きに応じた倍率を求め、正射影では奥行きによる倍率変化を除きます。ユークリッド幾何学・線形代数の正の均一拡縮と直交基底を使い、元の意匠を比率を保つ共通寸法へそろえて、面そのものを三次元へ回転します。平面内の形と、投影後には一般に保たれない長さ・角度・面積・平行性を区別します。正規化寸法、配色、操作範囲と比較表示は今回の設計選択で、美の法則ではありません。</p></section>
+          <section><h3>しくみ</h3><p>射影幾何学・コンピュータービジョンの平面ホモグラフィと同次座標を使い、一枚の面にある全輪郭へ同じ3×3行列と同次除算を適用します。幾何光学の理想ピンホールモデルで奥行きに応じた倍率を求め、正射影では奥行きによる倍率変化を除きます。ユークリッド幾何学・線形代数の正の均一拡縮と直交基底を使い、元の意匠を比率を保つ共通寸法へそろえて、面そのものを三次元へ回転します。平面内の形と、投影後には一般に保たれない長さ・角度・面積・平行性を区別します。正規化寸法、配色、操作範囲と比較表示は今回の設計選択で、美の法則ではありません。 保存では線形代数・解析幾何の共通アフィン変換で投影座標を画面座標へ対応させます。元の投影座標を描画の正本として保持し、正規化座標は領域の説明に使うことで、逆変換の丸めを避けられます。全輪郭を完全なB設計に埋め込む方法はソフトウェア上の設計手法で、美的改善の法則ではありません。</p></section>
 
           <section><h3>確認範囲</h3><p>10件のNode試験で入力、実際の紋様形式、均一正規化、直交基底、既知のカメラ座標、ホモグラフィと三次元投影、正射影の距離非依存、元入力の保持を確認しました。別実装の85桁Decimal計算で、4種類の紋様それぞれ120投影条件、合計480モデルを照合し、5760頂点・60480数値の最大差は1×10⁻¹⁵でした。480条件で直線上の対応を確認し、全頂点が固定の表示範囲に収まりました。
 
 公開済みの紋様生成機能で、回転8方向・半径1.5・元の帯の向き25°・全体30°・先細り0.8→0.2のデータを実際に保存し、その1.2MiB弱のファイルを読み込みました。元の4776頂点と設定はそのまま再構成され、比較案は別の紋様・投影方法へ変えても保持されました。対応外の形式と8MiB超の入力では直前の形を保ちました。傾き75°・回転35°・距離2の保存SVGは8経路で画面と一致し、JSONの43109数値はNode再構成との差1.78×10⁻¹⁵以下でした。SVGを背景透明の1024×1024へ描画できました。390px幅で縦並びと横はみ出しがないこと、操作ボタンが44pxの高さであることも確認しました。
 
-制約：入力は放射状紋様の設定JSONだけで、SVG・画像・投影結果のJSONを読み込む機能ではありません。保存座標を信頼せず元の設定から再構成します。最大辺を2ローカル単位へそろえるため、元の絶対寸法は保持しません。傾き±80°、距離2〜8の範囲を使い、完全な真横、カメラをまたぐ投影や任意の四角形への合わせ込みを扱いません。距離と焦点距離は同率で変え、基準面の中心倍率を保ちます。元の曲線近似誤差、正規化の感度、投影・丸め・画素は別です。材質・照明・発光・厚み・ぼけ・他対象との遮蔽、知覚と美的効果は計算・保証しません。形・数・寸法・接触・カメラの固定条件を優先し、一つの完全なB設計へ採用条件を具体化します。</p></section>
-          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://visionbook.mit.edu/homography.html">https://visionbook.mit.edu/homography.html</a></li><li><a href="https://visionbook.mit.edu/imaging_geometry.html">https://visionbook.mit.edu/imaging_geometry.html</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://github.com/Player13579/B/blob/df855ca7484d3c1de82ee84b7f47a4a51a9285fb/docs/planar-motif-projection.md">https://github.com/Player13579/B/blob/df855ca7484d3c1de82ee84b7f47a4a51a9285fb/docs/planar-motif-projection.md</a></li></ul></section>
+制約：入力は放射状紋様の設定JSONだけで、SVG・画像・投影結果のJSONを読み込む機能ではありません。保存座標を信頼せず元の設定から再構成します。最大辺を2ローカル単位へそろえるため、元の絶対寸法は保持しません。傾き±80°、距離2〜8の範囲を使い、完全な真横、カメラをまたぐ投影や任意の四角形への合わせ込みを扱いません。距離と焦点距離は同率で変え、基準面の中心倍率を保ちます。元の曲線近似誤差、正規化の感度、投影・丸め・画素は別です。材質・照明・発光・厚み・ぼけ・他対象との遮蔽、知覚と美的効果は計算・保証しません。形・数・寸法・接触・カメラの固定条件を優先し、一つの完全なB設計へ採用条件を具体化します。
+
+B設計の保存では追加8件のNode試験で、14章、表示専用OBS1、PH・Entityなし、現在の設定・全輪郭、透明背景、未実施の検査・生成状態、入力の保持と結果の独立性を確認しました。5条件の48配置・27024頂点で元の投影器との対応を照合しました。ブラウザーから実際に保存した透視8配置・正射影12配置のJSONは現行B構造検査を通りました。修正版では元の投影座標を描画の正本にし、Bファイルだけを読む別の描画処理から、4776頂点を含む保存SVGの全bytesと1024×1024のRGBA画素を一致させました。これはネイティブSVG描画の一致で、生成AIによる再現や美的効果の確認ではありません。保存設計そのものは未検査・未生成の状態を保持し、外部で行った検査結果は別記録にあります。</p></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://visionbook.mit.edu/homography.html">https://visionbook.mit.edu/homography.html</a></li><li><a href="https://visionbook.mit.edu/imaging_geometry.html">https://visionbook.mit.edu/imaging_geometry.html</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://github.com/Player13579/B/blob/df855ca7484d3c1de82ee84b7f47a4a51a9285fb/docs/planar-motif-projection.md">https://github.com/Player13579/B/blob/df855ca7484d3c1de82ee84b7f47a4a51a9285fb/docs/planar-motif-projection.md</a></li><li><a href="https://github.com/Player13579/B/blob/1317c1865aa100b8de930aedda80146abd5b8742/docs/planar-motif-b-design.md">https://github.com/Player13579/B/blob/1317c1865aa100b8de930aedda80146abd5b8742/docs/planar-motif-b-design.md</a></li></ul></section>
         </div>
-        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/b5c2e2ee6af078d39052427236518e1173a19e93">GitHubの変更</a></p>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/43f8fe1bbfa5035f3f80c94344f8aa5fc3c76b12">GitHubの変更</a></p>
       </details>
     </div>
   </details>
