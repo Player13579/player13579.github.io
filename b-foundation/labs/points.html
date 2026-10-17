@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>点の数を保って、散らし方を比べる｜B Foundation</title>
+  <link rel="stylesheet" href="band.css">
+  <link rel="stylesheet" href="points.css">
+  <script type="module" src="points-lab.mjs"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../?view=all#point-spacing-lab">← B Foundation の一覧へ戻る</a>
+    <header>
+      <h1>点の数を保って、散らし方を比べる</h1>
+      <p class="intro">ランダムな配置と、近づきすぎる点を避ける配置を見比べられます。</p>
+    </header>
+
+    <div class="workbench points-workbench">
+      <section class="controls points-controls" aria-label="点配置の条件">
+        <div class="field">
+          <label for="method">散らし方</label>
+          <select id="method">
+            <option value="uniform">ランダムに散らす</option>
+            <option value="best-candidate" selected>間隔を整えて散らす</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="count">点の数 <output id="count-value" for="count">64</output></label>
+          <input id="count" type="range" min="8" max="128" step="1" value="64">
+        </div>
+        <div class="field seed-field">
+          <label for="seed">並びの番号</label>
+          <input id="seed" type="number" min="0" max="4294967295" step="1" value="1" inputmode="numeric">
+        </div>
+        <button id="next" type="button" class="secondary">別の並びを試す</button>
+        <label class="check nearest-check" for="show-nearest"><input id="show-nearest" type="checkbox"> 最も近い点を結ぶ</label>
+        <p class="repro-note">同じ並びの番号なら、同じ方法・点数の配置を再現できます。</p>
+        <div class="actions points-actions">
+          <button id="pin" type="button">今の配置を比較用に残す</button>
+          <button id="reset" type="button" class="secondary">初期状態に戻す</button>
+        </div>
+      </section>
+
+      <div class="stage points-stage">
+        <p id="status" class="status" role="status" aria-live="polite">点を配置しています。</p>
+        <section class="compare points-compare" aria-label="比較用に残した配置と調整中の配置">
+          <article class="panel" aria-labelledby="baseline-title">
+            <h2 id="baseline-title">比較用に残した配置</h2>
+            <p class="caption" id="baseline-caption">点を配置しています。</p>
+            <div class="canvas-frame"><svg id="baseline-preview" viewBox="-.05 -.05 1.1 1.1" preserveAspectRatio="xMidYMid meet" role="img" aria-label="比較用に残した点配置"></svg></div>
+          </article>
+          <article class="panel" aria-labelledby="current-title">
+            <h2 id="current-title">調整中の配置</h2>
+            <p class="caption" id="current-caption">点を配置しています。</p>
+            <div class="canvas-frame">
+              <svg id="current-preview" viewBox="-.05 -.05 1.1 1.1" preserveAspectRatio="xMidYMid meet" role="img" aria-label="調整中の点配置"></svg>
+              <p id="empty-message" class="empty-message" hidden></p>
+            </div>
+          </article>
+        </section>
+        <p class="scale-note">枠は点の中心を置く範囲です。左右は同じ縮尺です。</p>
+        <section class="exports points-exports" aria-label="点配置の保存">
+          <div class="export-actions">
+            <button id="save-svg" type="button">点配置のSVGを保存</button>
+            <button id="save-json" type="button" class="secondary">形状データを保存</button>
+          </div>
+          <p>平面の点配置を保存します。粒の材質や発光、世界内の密度は別に指定します。</p>
+        </section>
+      </div>
+    </div>
+
+    <details class="methods points-methods">
+      <summary>原理と使える範囲</summary>
+      <p>コンピューターグラフィックスと数値サンプリングで使われるBest Candidate法を参考に、既存点からの距離で候補を選びます。点を一つ加えるたびに32候補を調べ、その中で既存点に最も近づく距離が最大の候補を選びます。Mitchellの方法では候補数を既存の点数に応じて増やしますが、このラボでは操作中の計算量を抑えるため32候補に固定しています。</p>
+      <p>平面の正方形領域で、上下左右の端をつなげない通常のユークリッド距離を使います。選んだ点数と番号から配置を再現でき、同じ方法・番号では点数を増やしても先に置かれた点は変わらず、後ろに追加されます。これは厳密なPoisson disk過程ではなく、最低間隔、領域を隙間なく覆うこと、青色雑音スペクトル、等方性、アンチエイリアス、タイル性を保証しません。有限の擬似乱数列は、数学的な連続一様乱数ではありません。</p>
+      <p>図は固定数の点中心を比べる教材です。円の大きさは表示記号で、物理的な粒子、発光、材質、シーン内の密度を表しません。特定の点数や散らし方が普遍的に美しいことを示す法則でもありません。</p>
+      <p>明示された点数・位置・接触や意図した密集を優先します。世界内の粒の位置は、画面の散らし方だけを理由に変更しません。</p>
+      <p>参考資料: <a href="https://www.fxguide.com/wp-content/uploads/2017/02/p157-mitchell.pdf" target="_blank" rel="noopener noreferrer">Don P. Mitchell, “Spectrally Optimal Sampling for Distribution Ray Tracing,” §4, p. 159 (1991)</a>。この資料の記述を固定候補数の平面配置に応用しています。<a href="https://github.com/Player13579/B/blob/bc41753043f2a7a8e7b01bb429ae43eb7bd5550a/docs/point-spacing-lab.md" target="_blank" rel="noopener noreferrer">B Foundation の点配置設計ガイド</a>。</p>
+    </details>
+  </main>
+</body>
+</html>

@@ -1,0 +1,54 @@
+.points-workbench { align-items: start; }
+.points-controls { grid-template-columns: minmax(0, 1fr); align-content: start; gap: 9px; }
+.points-controls .field label { margin-bottom: 2px; }
+.points-controls input[type="range"] { min-height: 28px; }
+.seed-field input { width: 100%; min-height: 44px; border: 1px solid #a9b6b1; border-radius: 7px; padding: 8px 10px; color: var(--ink); background: #fff; font: inherit; font-variant-numeric: tabular-nums; }
+.points-controls button { min-height: 42px; }
+.points-controls .check { min-height: 38px; }
+.repro-note { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.45; }
+.points-actions { flex-direction: column; gap: 6px; }
+.points-actions button { flex: 0 0 auto; width: 100%; min-height: 41px; padding: 7px 9px; font-size: .93rem; }
+.points-compare { gap: 12px; }
+.points-compare .panel { padding: 12px; }
+.points-compare .panel h2 { font-size: 1.03rem; }
+.points-compare .caption { min-height: 2.7em; margin-bottom: 6px; font-size: .86rem; font-variant-numeric: tabular-nums; }
+.points-compare .canvas-frame { min-height: 0; padding: 7px; }
+.points-compare svg { width: 100%; max-width: 500px; aspect-ratio: 1; }
+.layout-frame { fill: none; stroke: #c7c7bf; stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.layout-dot { stroke: #fffefa; stroke-width: .8px; vector-effect: non-scaling-stroke; }
+.baseline-dot { fill: #8b9690; }
+.current-dot { fill: #147d78; }
+.nearest-link { fill: none; stroke: #30423e; stroke-width: 1.25px; vector-effect: non-scaling-stroke; stroke-dasharray: 4px 3px; }
+.points-exports { margin-top: 9px; padding: 10px 12px; }
+.points-exports p { margin: 5px 0 0; font-size: .82rem; color: var(--muted); }
+.points-methods { margin-top: 18px; }
+@media (min-width: 1000px) {
+  .points-workbench { grid-template-columns: 264px minmax(0, 1fr); gap: 16px; margin-top: 16px; }
+  .points-controls { margin: 0; padding: 12px; gap: 6px; }
+  .points-controls .field label { font-size: .92rem; }
+  .points-controls select, .seed-field input { min-height: 38px; padding: 5px 9px; }
+  .points-controls input[type="range"] { min-height: 24px; }
+  .points-controls .check { min-height: 34px; font-size: .9rem; }
+  .points-actions button { min-height: 38px; }
+  .points-stage { min-width: 0; }
+  .points-compare { gap: 10px; }
+  .points-compare .panel { padding: 10px; }
+  .points-compare .canvas-frame { padding: 6px; }
+  .points-compare svg { max-width: 460px; }
+  .scale-note { margin-top: 5px; font-size: .8rem; }
+  .points-exports { margin-top: 8px; padding: 9px 11px; }
+  .points-exports p { margin-top: 4px; font-size: .78rem; }
+}
+@media (max-width: 999px) {
+  .points-workbench { display: grid; grid-template-columns: 1fr; }
+  .points-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .points-controls .seed-field, .points-controls #next, .points-controls .nearest-check, .points-controls .repro-note, .points-controls .points-actions { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .points-controls { grid-template-columns: 1fr; }
+  .points-controls .field, .points-controls .seed-field, .points-controls #next, .points-controls .nearest-check, .points-controls .repro-note, .points-controls .points-actions { grid-column: auto; }
+  .points-compare { grid-template-columns: 1fr; }
+  .points-compare .panel[aria-labelledby="baseline-title"] { order: 0; }
+  .points-compare .panel[aria-labelledby="current-title"] { order: 1; }
+  .points-compare svg { max-width: min(100%, 420px); }
+}
