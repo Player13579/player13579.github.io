@@ -27,7 +27,28 @@
       <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
     </section>
     <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
-      <article class="gallery-item" id="cylindrical-motif-mapping" data-essential="false" data-show-heading="false" hidden>
+      <article class="gallery-item" id="arc-length-curvature-profile" data-essential="false" data-show-heading="false" hidden>
+  <h2>曲がりの強さを、線の途中へ配分する</h2>
+  <div data-report-content>
+  <p class="item-summary">既存の平面曲線に形を選べる余地があるとき、均一に曲げる案・終端ほど強く曲げる案・終端ほど緩くする案の座標を構成できるようにしました。接合部の滑らかさだけでなく、線全体のどこへ曲がりを集めるかを選ぶ任意の方法です。同じ長さと始終端の向きでも、終点位置は案ごとに変わります。</p>
+
+
+  <details class="report-details">
+    <summary>しくみ・具体例・確認範囲を見る</summary>
+    <figure class="item-image"><img src="assets/curvature-profile-comparison.svg" alt="同じ長さ6と総回転角90度で、均一・終端ほど強い・終端ほど緩い曲率配分を共通縮尺で比較する平面座標図。終点は異なり、下段のグラフは弧長に対する曲率。生成作品や物体運動の結果ではありません。" loading="lazy"></figure>
+    <div class="item-details">
+      <section><h3>しくみ</h3><p>平面曲線の微分幾何学の、弧長s・接線角θ・符号付き曲率κの関係dθ/ds=κを使います。弧長に対して曲率が一次式になるオイラー螺旋／クロソイドを採用し、始終端の曲率から接線方向を積分し、線の座標を構成します。数値計算は数値解析の合成中点則を使い、標本点の積分誤差と、連続曲線を折れ線で近似する二階微分による位置誤差評価を合わせています。参照論文の端点補間アルゴリズムを実装したものではありません。採用した長さ・角度・配分・色は説明用の設計選択で、特定の曲がりが美しいと保証する法則ではありません。</p></section>
+      <section><h3>具体例</h3><p>同じ始点、右向きの初期接線、長さ6局所単位、総回転角90°を保ち、曲率をπ/12で一定、0からπ/6へ増加、π/6から0へ減少させる三案を構成しました。連続曲線の終点は約(3.81972,3.81972)、(4.67936,2.62955)、(2.62955,4.67936)です。掲載図は共通縮尺で、点の割合は元の曲線に沿う長さ、下段はその長さに対する曲率です。時間・速度・物体運動のグラフではありません。</p></section>
+      <section><h3>確認範囲</h3><p>基底の既存ContourCompositionRuleへ曲率配分の条件を追加し、補助機能・座標資料・原理解説を結びました。静的な仕様検査と366件のテストが通過しました。実装と別方式の90桁Decimalべき級数積分で96曲線・828位置標本を照合し、曲線ごとに設定した位置誤差評価との一致を確認しました。
+
+固定された終点・接触・形状を満たさない候補は採用できません。平面上で選んだ線形曲率の曲線を作る方法で、固定端点への自動適合、G2接合の解法、一般の立体表面や投影後の同じ曲率を保証する機能ではありません。誤差式は厳密算術の局所位置に対するもので、返す値は浮動小数点評価です。丸め・三角関数・大きな平行移動・線幅・画素品質を含む証明値にはしていません。図は座標プレビューで、画像生成・知覚・美的効果は未実施です。別の実行promptや必須schemaは増やしていません。</p></section>
+      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://arxiv.org/pdf/1305.6644">https://arxiv.org/pdf/1305.6644</a></li><li><a href="https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html">https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html</a></li><li><a href="https://github.com/Player13579/B/blob/1d5fc7fd804093c6e1ca46f143ab670bbb5c5cbf/docs/curvature-profile.md">https://github.com/Player13579/B/blob/1d5fc7fd804093c6e1ca46f143ab670bbb5c5cbf/docs/curvature-profile.md</a></li></ul></section>
+    </div>
+    <p class="item-source"><a href="https://github.com/Player13579/B/commit/1d5fc7fd804093c6e1ca46f143ab670bbb5c5cbf">GitHubの変更</a></p>
+  </details>
+  </div>
+</article>
+<article class="gallery-item" id="cylindrical-motif-mapping" data-essential="false" data-show-heading="false" hidden>
   <h2>曲面上の模様を、素材・光まで一つの設計にまとめる</h2>
   <div data-report-content>
   <p class="item-summary">分岐模様の座標と円柱面への対応を、幅・素材・光・カメラ・表示条件を含む一つの完全なB参照設計へ統合しました。表面上の寸法を保つ配置と、曲面の向きによる画面上の短縮や明暗をつなげて指定します。参照設計は未描画です。</p>
