@@ -27,7 +27,29 @@
       <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
     </section>
     <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
-      <article class="gallery-item" id="band-design-lab" data-essential="false" data-show-heading="false" hidden>
+      <article class="gallery-item" id="rosette-design-lab" data-essential="false" data-show-heading="false" hidden>
+  <h2>一つの帯から、回転・鏡映で放射状の紋様をつくる</h2>
+  <div data-report-content>
+  <p class="item-summary">同じ帯の特徴をそろえたまま、回転だけの並びと鏡映を加えた並びを操作して比べる任意の道具を追加しました。分割数・中心からの距離・帯と全体の向きを変え、比較用の案を残し、採用した平面形状をSVGや設定・座標付きデータとして保存できます。</p>
+  <p class="item-tool"><a href="labs/rosette.html">放射状の紋様を操作して比べる</a></p>
+
+
+  <details class="report-details">
+    <summary>しくみ・具体例・確認範囲を見る</summary>
+
+    <div class="item-details">
+      <section><h3>しくみ</h3><p>数学・群論の有限巡回群C_nと二面体群D_nの平面への作用を使います。360°/n刻みの回転で元の帯を配置し、D_nでは鏡映した組も加えます。ユークリッド幾何学・線形代数の直交変換による距離・絶対面積の保存により、厳密な算術では帯を伸縮させずに配置できます。鏡映は左右の向きと符号付き面積を反転します。帯の向き・距離を先に与え、群の操作を適用してから全体を回すため、比較中も選んだ回転・鏡映の関係を保てます。二面体群の位数はここでは2nとします。元の帯の折れ線の位置誤差上限は等長変換で変わりませんが、浮動小数点の追加丸めを含む保証ではありません。分割数・曲線・配色は造形と操作設計の選択で、対称性が美しさを保証する法則ではありません。</p></section>
+
+      <section><h3>確認範囲</h3><p>10件のNode試験で群の閉性・逆元、行列の直交性、全体を回した後の対称操作、距離・符号付き面積、入力条件などを確認しました。独立した90桁計算で60条件・810配置・4860境界位置を照合し、位置誤差が元の帯の設定上限内に収まることを確認しました。実ブラウザーで配置数2〜32、比較案の保持、両端幅0での表示・保存停止と復帰、初期化、SVG・JSONの実保存を確認。保存SVGの12経路が画面の座標と一致し、背景のない1024×1024画像へ描画できました。1280×720と390×844で表示を確認しました。
+
+制約：n/2nは配置数で、見える花弁や異なる形の数ではありません。重複の除去・輪郭結合・大域交差の検出・接触を保つ自動調整は行いません。数・接触・左右の意味が固定された作品では、その条件を優先します。SVGとJSONは平面形状の資料で、完全なB設計コードではありません。素材・光・立体面・B画像生成・知覚と美的効果は未確認です。</p></section>
+      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://ocw.mit.edu/courses/res-18-012-algebra-ii-student-notes-spring-2022/mit18_702s22_full_lec.pdf">https://ocw.mit.edu/courses/res-18-012-algebra-ii-student-notes-spring-2022/mit18_702s22_full_lec.pdf</a></li><li><a href="https://ocw.mit.edu/courses/4-520-computational-design-i-theory-and-applications-fall-2005/6f46db37a1ec0307dcb816f3e66881cc_lect7.pdf">https://ocw.mit.edu/courses/4-520-computational-design-i-theory-and-applications-fall-2005/6f46db37a1ec0307dcb816f3e66881cc_lect7.pdf</a></li><li><a href="https://github.com/Player13579/B/blob/97964c5544e75d90e7e8aebd379a61b4d8e29a31/docs/rosette-design-lab.md">https://github.com/Player13579/B/blob/97964c5544e75d90e7e8aebd379a61b4d8e29a31/docs/rosette-design-lab.md</a></li></ul></section>
+    </div>
+    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/97d1e5823090076816779b954aa8a9ad931c3f30">GitHubの変更</a></p>
+  </details>
+  </div>
+</article>
+<article class="gallery-item" id="band-design-lab" data-essential="false" data-show-heading="false" hidden>
   <h2>帯模様の曲がり方と太さを、操作して選ぶ</h2>
   <div data-report-content>
   <p class="item-summary">曲がり方と両端の太さを画面で調整し、比較用に残した形と同じ縮尺で見比べるツールを追加しました。均一な帯、先細り・先太り、S字や上下反転を試し、気に入った平面形状をSVG・形状データとして保存できます。</p>
