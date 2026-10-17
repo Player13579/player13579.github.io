@@ -1,10 +1,10 @@
 import { DEFAULT_SETTINGS, constructInterlace, interlaceSvg } from './interlace-geometry.mjs';
+import { constructInterlaceRing, interlaceRingSvg } from './interlace-ring.mjs';
 
-const ids = ['pattern', 'periods', 'width', 'clearance', 'invert', 'monochrome', 'reset', 'baseline-preview', 'current-preview', 'baseline-caption', 'current-caption', 'status', 'save-svg', 'save-json'];
+const ids = ['layout', 'pattern', 'periods', 'width', 'clearance', 'invert', 'monochrome', 'reset', 'baseline-preview', 'current-preview', 'baseline-caption', 'current-caption', 'status', 'save-svg', 'save-json'];
 const el = Object.fromEntries(ids.map((id) => [id, document.getElementById(id)]));
-const controlIds = ['pattern', 'periods', 'width', 'clearance', 'invert', 'monochrome'];
-const inputs = controlIds.map((id) => el[id]);
-let currentSettings = { ...DEFAULT_SETTINGS };
+const settingIds = ['pattern', 'periods', 'width', 'clearance', 'invert', 'monochrome'];
+const inputs = [...settingIds.map((id) => el[id]), el.layout];
 let currentModel = null;
 let currentSvg = '';
 
@@ -39,11 +39,22 @@ function replacePreview(svgElement, markup, prefix) {
   svgElement.dataset.idPrefix = prefix;
 }
 
-function caption(settings) {
+function caption(settings, layout) {
   const order = settings.pattern === 'alternating' ? '交差ごとに上下を入れ替える' : '交差を同じ順で重ねる';
   const direction = settings.invert ? '上下を反転' : '標準の上下';
   const color = settings.monochrome ? '単色' : '3色';
-  return `${settings.periods}周期・幅${settings.width.toFixed(3)}・すき間${settings.clearance.toFixed(3)}・${order}・${direction}・${color}`;
+  const shape = layout === 'ring' ? '輪の縁飾り' : 'まっすぐな帯';
+  return `${shape}・${settings.periods}周期・幅${settings.width.toFixed(3)}・すき間${settings.clearance.toFixed(3)}・${order}・${direction}・${color}`;
+}
+
+function buildLayout(settings, layout, prefix) {
+  if (layout === 'ring') {
+    return { model: constructInterlaceRing(settings), svg: interlaceRingSvg(settings, prefix) };
+  }
+  if (layout === 'open') {
+    return { model: constructInterlace(settings), svg: interlaceSvg(settings, prefix) };
+  }
+  throw new TypeError('図案の形を選択してください。');
 }
 
 function setActionsEnabled(enabled) {
@@ -53,20 +64,19 @@ function setActionsEnabled(enabled) {
 
 function render() {
   const settings = settingsFromControls();
+  const layout = el.layout.value;
   updateOutputs(settings);
   try {
-    const model = constructInterlace(settings);
     const referenceSettings = { ...settings, pattern: 'stacked' };
-    const baselineMarkup = interlaceSvg(referenceSettings, 'interlace-baseline');
-    const currentMarkup = interlaceSvg(settings, 'interlace-current');
-    replacePreview(el['baseline-preview'], baselineMarkup, 'interlace-baseline');
-    replacePreview(el['current-preview'], currentMarkup, 'interlace-current');
-    currentSettings = settings;
-    currentModel = model;
-    currentSvg = currentMarkup;
-    el['baseline-caption'].textContent = `重ねるだけの基準図。${caption(referenceSettings)}`;
-    el['current-caption'].textContent = caption(settings);
-    el.status.textContent = `${model.strands.length}本の帯、${model.crossings.length}か所の交差を表示しています。`;
+    const baseline = buildLayout(referenceSettings, layout, 'interlace-baseline');
+    const current = buildLayout(settings, layout, 'interlace-current');
+    replacePreview(el['baseline-preview'], baseline.svg, 'interlace-baseline');
+    replacePreview(el['current-preview'], current.svg, 'interlace-current');
+    currentModel = current.model;
+    currentSvg = current.svg;
+    el['baseline-caption'].textContent = `重ねるだけの基準図。${caption(referenceSettings, layout)}`;
+    el['current-caption'].textContent = caption(settings, layout);
+    el.status.textContent = `${current.model.strands.length}本の帯、${current.model.crossings.length}か所の交差を表示しています。`;
     el.status.setAttribute('role', 'status');
     setActionsEnabled(true);
   } catch {
@@ -101,9 +111,12 @@ function download(filename, content, mime) {
   }
 }
 
-for (const input of inputs) input.addEventListener('input', render);
-for (const input of inputs) input.addEventListener('change', render);
+for (const input of inputs) {
+  input.addEventListener('input', render);
+  input.addEventListener('change', render);
+}
 el.reset.addEventListener('click', () => {
+  el.layout.value = 'open';
   el.pattern.value = DEFAULT_SETTINGS.pattern;
   el.periods.value = String(DEFAULT_SETTINGS.periods);
   el.width.value = String(DEFAULT_SETTINGS.width);
@@ -119,6 +132,7 @@ el['save-json'].addEventListener('click', () => {
   if (currentModel) download('interlaced-bands.json', `${JSON.stringify(currentModel, null, 2)}\n`, 'application/json;charset=utf-8');
 });
 
+el.layout.value = 'open';
 el.pattern.value = DEFAULT_SETTINGS.pattern;
 el.periods.value = String(DEFAULT_SETTINGS.periods);
 el.width.value = String(DEFAULT_SETTINGS.width);

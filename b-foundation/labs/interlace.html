@@ -14,11 +14,18 @@
     <a class="back" href="../#interlaced-bands">← B Foundation の一覧へ戻る</a>
     <header class="interlace-header">
       <h1>帯を交互にくぐらせ、編み模様をつくる</h1>
-      <p class="intro">3本の帯の交差順を選び、平面の編み模様を組み立てます。左は「重ねるだけ」、右は選んだ編み方です。帯の本数・線・幅・色を保ったまま、交差の上下だけを比べます。</p>
+      <p class="intro">3本の帯の交差順を選び、開いた編み図か円形の縁飾りをつくります。輪は額縁や紋章の縁に使える平面図です。周期を増やすと輪の交差密度が上がります。輪へ曲げると元の帯の長さや交差角は保たれません。左は「重ねるだけ」、右は選んだ編み方です。</p>
     </header>
 
     <div class="workbench interlace-workbench">
       <section class="controls interlace-controls" aria-label="編み模様の条件">
+        <div class="field">
+          <label for="layout">図案の形</label>
+          <select id="layout">
+            <option value="open" selected>まっすぐな帯</option>
+            <option value="ring">輪の縁飾り</option>
+          </select>
+        </div>
         <div class="field">
           <label for="pattern">交差の並び方</label>
           <select id="pattern">
@@ -75,10 +82,10 @@
 
     <details class="methods interlace-methods">
       <summary>原理と使える範囲</summary>
-      <p>3本の正弦曲線を中心線として置き、交差点ごとに一方の帯を上、もう一方を下として描きます。交互の並び方では、開いた図の中で上下関係が順に入れ替わります。</p>
+      <p>3本の正弦曲線を中心線として置き、交差点ごとに一方の帯を上、もう一方を下として描きます。交互の並び方では、開いた図の中で上下関係が順に入れ替わります。輪の縁飾りでは、中心線の進行方向を円周上の角度へ、帯の横方向を半径方向へ写して閉じます。</p>
       <p>結び目理論の図式では、交差点の上下を局所的に記録します。ここではその考え方を3本の帯の平面図に使い、選択した交差だけ下側の帯をマスクで途切れさせます。これは布の厚みや織り構造の再現ではなく、模様の上下を示す図上の処理です。</p>
-      <p>この図は開いた編組図であり、端を閉じた結び目ではありません。交差の上下は図の規則で、物理的な接触、応力、素材、光、影、鑑賞者の見え方を計算しません。帯の数や中心線を変えず、模様の美しさを証明するものでもありません。</p>
-      <p>関連資料: <a href="https://www.dm.unibo.it/~francavi/did/21-22/knot.pdf" target="_blank" rel="noopener noreferrer">結び目理論の図式と組紐（§2.3・§7）</a>、<a href="https://www.w3.org/TR/css-masking-1/#MaskElement" target="_blank" rel="noopener noreferrer">SVGの輝度マスク</a>。具体的な使い方・計算・B設計への反映は<a href="https://github.com/Player13579/B/blob/399d55ee804d6ffe5987528ab46e7b80c17cd7cd/docs/interlaced-bands.md">制作ガイド</a>にまとめています。</p>
+      <p>まっすぐな帯は開いた編組図で、輪はその交差順を保って円形に閉じた平面飾りです。輪への写像は形を曲げるため、元の帯の長さ・面積・曲率・角度を保存しません。どちらも結び目の分類や物理的な編み・接触・応力・素材・光を扱わず、美しさを証明するものでもありません。</p>
+      <p>関連資料: <a href="https://www.dm.unibo.it/~francavi/did/21-22/knot.pdf" target="_blank" rel="noopener noreferrer">結び目理論の図式と組紐（§2.3・§7）</a>、<a href="https://www.w3.org/TR/css-masking-1/#MaskElement" target="_blank" rel="noopener noreferrer">SVGの輝度マスク</a>。具体的な使い方・計算・B設計への反映は<a href="https://github.com/Player13579/B/blob/bdeda4a8f6fa70a633e0526f669d178bbe04d9a9/docs/interlaced-bands.md">制作ガイド</a>にまとめています。</p>
     </details>
   </main>
 </body>
