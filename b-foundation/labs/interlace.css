@@ -1,0 +1,38 @@
+.interlace-page { max-width: 1240px; }
+.interlace-header .intro { max-width: 82ch; }
+.interlace-workbench { gap: 16px; }
+.interlace-controls { align-content: start; }
+.interlace-controls .field-help { margin: 4px 0 0; color: var(--muted); font-size: .84rem; }
+.interlace-checks { display: grid; grid-template-columns: 1fr; gap: 2px; }
+.interlace-actions button { width: 100%; flex: 0 0 auto; }
+.interlace-compare { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.interlace-panel { padding: 13px; }
+.interlace-panel h2 { min-height: 1.5em; }
+.interlace-panel .caption { min-height: 2.8em; }
+.interlace-canvas { height: 480px; min-height: 0; padding: 8px; }
+.interlace-canvas svg { width: 100%; height: 100%; max-width: 620px; max-height: 100%; aspect-ratio: auto; overflow: hidden; }
+.interlace-exports .export-actions button { flex: 1 1 180px; }
+.interlace-methods { line-height: 1.65; }
+.interlace-methods p { max-width: 90ch; }
+button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible, summary:focus-visible { outline-offset: 3px; }
+@media (min-width: 1000px) {
+  .interlace-workbench { grid-template-columns: 268px minmax(0, 1fr); }
+  .interlace-controls { gap: 9px; margin: 0; }
+  .interlace-controls .field label { margin-bottom: 2px; }
+  .interlace-controls select { min-height: 42px; }
+  .interlace-controls input[type="range"] { min-height: 30px; }
+  .interlace-checks { gap: 0; }
+  .interlace-checks .check { min-height: 38px; }
+  .interlace-actions button { min-height: 42px; }
+  .interlace-stage { min-width: 0; }
+  .interlace-canvas { min-height: 0; }
+  .interlace-panel .caption { min-height: 2.8em; font-size: .88rem; }
+}
+@media (max-width: 760px) {
+  .interlace-workbench { display: flex; flex-direction: column; }
+  .interlace-controls, .interlace-compare { grid-template-columns: 1fr; }
+  .interlace-canvas { height: 400px; min-height: 0; }
+  .interlace-panel .caption { min-height: 0; }
+  .interlace-exports .export-actions { flex-direction: column; }
+  .interlace-exports .export-actions button { flex: 0 0 auto; width: 100%; min-height: 46px; }
+}

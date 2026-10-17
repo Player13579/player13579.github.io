@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>帯を交互にくぐらせ、編み模様をつくる｜B Foundation</title>
+  <link rel="stylesheet" href="band.css">
+  <link rel="stylesheet" href="interlace.css">
+  <script type="module" src="interlace-lab.mjs"></script>
+</head>
+<body>
+  <main class="page interlace-page">
+    <a class="back" href="../#interlaced-bands">← B Foundation の一覧へ戻る</a>
+    <header class="interlace-header">
+      <h1>帯を交互にくぐらせ、編み模様をつくる</h1>
+      <p class="intro">3本の帯の交差順を選び、平面の編み模様を組み立てます。左は「重ねるだけ」、右は選んだ編み方です。帯の本数・線・幅・色を保ったまま、交差の上下だけを比べます。</p>
+    </header>
+
+    <div class="workbench interlace-workbench">
+      <section class="controls interlace-controls" aria-label="編み模様の条件">
+        <div class="field">
+          <label for="pattern">交差の並び方</label>
+          <select id="pattern">
+            <option value="alternating" selected>交互に入れ替える</option>
+            <option value="stacked">常に同じ順で重ねる</option>
+          </select>
+        </div>
+        <div class="field range-field">
+          <label for="periods">繰り返す範囲 <output id="periods-value" for="periods">2</output></label>
+          <input id="periods" type="range" min="1" max="4" step="1" value="2">
+        </div>
+        <div class="field range-field">
+          <label for="width">帯の幅 <output id="width-value" for="width">0.14</output></label>
+          <input id="width" type="range" min="0.08" max="0.18" step="0.005" value="0.14">
+        </div>
+        <div class="field range-field">
+          <label for="clearance">交差のすき間 <output id="clearance-value" for="clearance">0.025</output></label>
+          <input id="clearance" type="range" min="0" max="0.04" step="0.001" value="0.025">
+          <p class="field-help">すき間は図上の見分けやすさを調整します。</p>
+        </div>
+        <div class="checks interlace-checks">
+          <label class="check" for="invert"><input id="invert" type="checkbox"> 上下を反転</label>
+          <label class="check" for="monochrome"><input id="monochrome" type="checkbox"> 単色で表示</label>
+        </div>
+        <div class="actions interlace-actions">
+          <button id="reset" type="button" class="secondary">初期状態に戻す</button>
+        </div>
+      </section>
+
+      <div class="stage interlace-stage">
+        <p id="status" class="status" role="status" aria-live="polite">模様を計算しています。</p>
+        <section class="compare interlace-compare" aria-label="重ねるだけの図と選んだ編み方の比較">
+          <article class="panel interlace-panel" aria-labelledby="baseline-title">
+            <h2 id="baseline-title">重ねるだけ</h2>
+            <p id="baseline-caption" class="caption">常に同じ順で重ねた基準図です。</p>
+            <div class="canvas-frame interlace-canvas"><svg id="baseline-preview" viewBox="-0.9 -0.3 1.8 6.6" preserveAspectRatio="xMidYMid meet" role="img" aria-label="重ねるだけの3本の帯"></svg></div>
+          </article>
+          <article class="panel interlace-panel" aria-labelledby="current-title">
+            <h2 id="current-title">選んだ編み方</h2>
+            <p id="current-caption" class="caption">選んだ編み方を表示します。</p>
+            <div class="canvas-frame interlace-canvas"><svg id="current-preview" viewBox="-0.9 -0.3 1.8 6.6" preserveAspectRatio="xMidYMid meet" role="img" aria-label="選択中の編み方による3本の帯"></svg></div>
+          </article>
+        </section>
+        <p class="scale-note">左右は同じ縮尺です。平面図の上下は中心線の進行方向です。</p>
+        <section class="exports interlace-exports" aria-label="選んだ形の保存">
+          <div class="export-actions">
+            <button id="save-svg" type="button">編み模様のSVGを保存</button>
+            <button id="save-json" type="button" class="secondary">形状データを保存</button>
+          </div>
+          <p>SVGは透明背景の平面図です。JSONはこの図の形状データで、完全なB設計や画像生成データではありません。</p>
+        </section>
+      </div>
+    </div>
+
+    <details class="methods interlace-methods">
+      <summary>原理と使える範囲</summary>
+      <p>3本の正弦曲線を中心線として置き、交差点ごとに一方の帯を上、もう一方を下として描きます。交互の並び方では、開いた図の中で上下関係が順に入れ替わります。</p>
+      <p>結び目理論の図式では、交差点の上下を局所的に記録します。ここではその考え方を3本の帯の平面図に使い、選択した交差だけ下側の帯をマスクで途切れさせます。これは布の厚みや織り構造の再現ではなく、模様の上下を示す図上の処理です。</p>
+      <p>この図は開いた編組図であり、端を閉じた結び目ではありません。交差の上下は図の規則で、物理的な接触、応力、素材、光、影、鑑賞者の見え方を計算しません。帯の数や中心線を変えず、模様の美しさを証明するものでもありません。</p>
+      <p>関連資料: <a href="https://www.dm.unibo.it/~francavi/did/21-22/knot.pdf" target="_blank" rel="noopener noreferrer">結び目理論の図式と組紐（§2.3・§7）</a>、<a href="https://www.w3.org/TR/css-masking-1/#MaskElement" target="_blank" rel="noopener noreferrer">SVGの輝度マスク</a>。具体的な使い方・計算・B設計への反映は<a href="https://github.com/Player13579/B/blob/399d55ee804d6ffe5987528ab46e7b80c17cd7cd/docs/interlaced-bands.md">制作ガイド</a>にまとめています。</p>
+    </details>
+  </main>
+</body>
+</html>
