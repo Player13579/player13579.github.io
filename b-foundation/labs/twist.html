@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>帯のねじれと、表裏の明暗を比べる｜B Foundation</title>
+  <link rel="stylesheet" href="band.css">
+  <link rel="stylesheet" href="twist.css">
+  <script type="module" src="twist-lab.mjs"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../?view=all#twisted-band-lab">← B Foundation の一覧へ戻る</a>
+    <header>
+      <h1>帯のねじれと、表裏の明暗を比べる</h1>
+      <p class="intro">一定幅の帯をねじり、同じ縮尺で投影の輪郭と、向きに応じた表裏の拡散色を見比べます。</p>
+    </header>
+
+    <div class="workbench">
+      <section class="controls" aria-label="調整中の帯の条件">
+        <div class="field range-field">
+          <label for="twist">ねじれ角 <output id="twist-value" for="twist">180°</output></label>
+          <input id="twist" type="range" min="-360" max="360" step="15" value="180">
+        </div>
+        <div class="field range-field">
+          <label for="phase">始まりの向き <output id="phase-value" for="phase">0°</output></label>
+          <input id="phase" type="range" min="-90" max="90" step="15" value="0">
+        </div>
+        <div class="field range-field">
+          <label for="width">帯の幅 <output id="width-value" for="width">1.2</output></label>
+          <input id="width" type="range" min="0.4" max="2" step="0.1" value="1.2">
+        </div>
+        <div class="field range-field">
+          <label for="light">相対光量 <output id="light-value" for="light">0.80</output></label>
+          <input id="light" type="range" min="0" max="1" step="0.05" value="0.8">
+        </div>
+        <div class="checks">
+          <label class="check" for="show-wireframe"><input id="show-wireframe" type="checkbox"> 断面の補助線を表示</label>
+        </div>
+        <div class="actions">
+          <button id="pin" type="button">今の帯を比較用に残す</button>
+          <button id="reset" type="button" class="secondary">初期状態に戻す</button>
+        </div>
+        <p class="field-help">中心線の両端と長さは固定です。横断面の幅は選んだ値でそろえます。真横を向くと投影が線状に縮みますが、この条件も有効な形として表示します。</p>
+      </section>
+
+      <div class="stage">
+        <p id="status" class="status" role="status" aria-live="polite">帯を計算しています。</p>
+        <section class="face-legend" aria-label="面の色の凡例">
+          <span><i class="swatch front-swatch" aria-hidden="true"></i>表側（青緑）</span>
+          <span><i class="swatch back-swatch" aria-hidden="true"></i>裏側（橙）</span>
+          <span>色は固定した視点光に対する相対的な拡散反射です。</span>
+        </section>
+        <section class="compare" aria-label="比較用に残した帯と調整中の帯">
+          <article class="panel" aria-labelledby="baseline-title">
+            <h2 id="baseline-title">比較用に残した帯</h2>
+            <p class="caption" id="baseline-caption">初期状態の条件です。</p>
+            <div class="canvas-frame">
+              <svg id="baseline-preview" viewBox="-3.5 -1.6 7 3.2" preserveAspectRatio="xMidYMid meet" role="img" aria-label="比較用に残したねじれた帯の投影"></svg>
+            </div>
+            <p class="scale-note">左右は同じ縮尺です。</p>
+          </article>
+          <article class="panel" aria-labelledby="current-title">
+            <h2 id="current-title">調整中の帯</h2>
+            <p class="caption" id="current-caption">初期状態の条件です。</p>
+            <div class="canvas-frame">
+              <svg id="current-preview" viewBox="-3.5 -1.6 7 3.2" preserveAspectRatio="xMidYMid meet" role="img" aria-label="調整中のねじれた帯の投影"></svg>
+              <p id="empty-message" class="empty-message" hidden></p>
+            </div>
+            <p class="scale-note">左右は同じ縮尺です。</p>
+          </article>
+        </section>
+        <section class="exports" aria-label="形状データの保存">
+          <div class="export-actions">
+            <button id="save-svg" type="button">帯のSVGを保存</button>
+            <button id="save-json" type="button" class="secondary">形状データを保存</button>
+          </div>
+          <p>SVGは色を含むポリゴン表示です。格子状の補助線は切り替えられます。数値モデルはJSONにも保存できます。</p>
+        </section>
+      </div>
+    </div>
+
+    <details class="methods">
+      <summary>原理と使える範囲</summary>
+      <p>微分幾何学・ベクトル解析の媒介変数表示と偏微分の外積から、一定幅の帯面と単位法線を計算します。ねじれ角と始まりの向きで断面の回転を定め、中心線の長さと横断面の幅を保った帯状面を作ります。</p>
+      <p>コンピューターグラフィックスのLambert拡散反射では、BRDFは反射率ρ/πで一定です。面への入射照度には法線と光方向の余弦が掛かります。ここでは視点と同じ +z 方向の単一光を使い、相対光量 D=E⊥/π を図の光量単位として選び、表側と裏側に指定した線形RGB反射率を適用します。色彩科学のsRGB伝達関数で表示色へ変換します。反射率は説明用の設計値で、実素材の測定値ではありません。</p>
+      <p>表示は媒介変数上の標本点とパッチ中心の法線・色を使う近似です。パッチ境界の細い重ね描きは表示上の継ぎ目対策で、元の面の形状を変えません。幾何学的な帯面の例であり、伸びない布や紙の平衡、力・ひずみ・支持、間接光、鏡面反射、実物の材質、投影後の知覚や美しさを検証しません。光は視点と同じ +z 方向です。この図では真横を向く断面を除き、画面上の位置から横断面位置を区別できるため、別の面による遮蔽判定は追加していません。任意方向の光による影は実装していません。既存形状の幅・端点・接触・視点条件を保つ必要がある場合は、その条件と両立する範囲で使います。</p>
+      <p>参考資料: <a href="https://github.com/Player13579/B/blob/dc0375de54658c301c44f571790ea650e53dea2d/docs/twisted-band-lab.md" target="_blank" rel="noopener noreferrer">B Foundation のねじれた帯設計ガイド</a>、<a href="https://books.physics.oregonstate.edu/GVC/parametric.html" target="_blank" rel="noopener noreferrer">媒介変数表示と曲面</a>、<a href="https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection" target="_blank" rel="noopener noreferrer">Lambert拡散反射</a>、<a href="https://www.w3.org/TR/css-color-4/#color-conversion-code" target="_blank" rel="noopener noreferrer">sRGB色変換</a>。</p>
+    </details>
+  </main>
+</body>
+</html>
