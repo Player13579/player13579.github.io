@@ -60,7 +60,7 @@ function buildRing(source) {
       + 2 * AMPLITUDE * omega * kappa
   );
   const model = {
-    version: 1,
+    version: source.version,
     kind: 'interlaced_band_ring',
     settings: { ...source.settings },
     constants: {
@@ -89,6 +89,9 @@ function buildRing(source) {
       diagramScope: '開いた三本の帯の局所的な上下関係を円環状の平面図に写す。元の長さ・面積・曲率・角度は保存しない。物理的な編組、布の挙動、結び目分類、知覚や美的効果を表すものではない。',
     },
   };
+  if (source.crossingOverrides) {
+    model.crossingOverrides = [...source.crossingOverrides];
+  }
   if (strands.some((strand) => strand.points.some((point) => !finitePoint(point)))
       || crossings.some((crossing) => !finitePoint(crossing.point)
         || crossing.maskPoints.some((point) => !finitePoint(point)))
@@ -98,15 +101,15 @@ function buildRing(source) {
   return model;
 }
 
-export function constructInterlaceRing(settings = DEFAULT_SETTINGS) {
+export function constructInterlaceRing(settings = DEFAULT_SETTINGS, crossingOverrides = []) {
   // Delegate exact six-key, accessor, type, and range validation to the established source API.
-  const source = constructInterlace(settings);
+  const source = constructInterlace(settings, crossingOverrides);
   return buildRing(source);
 }
 
-export function interlaceRingSvg(settings = DEFAULT_SETTINGS, idPrefix = 'weave-ring') {
+export function interlaceRingSvg(settings = DEFAULT_SETTINGS, idPrefix = 'weave-ring', crossingOverrides = []) {
   // Always reconstruct from validated settings; no precomputed model text enters the serializer.
-  const model = constructInterlaceRing(settings);
+  const model = constructInterlaceRing(settings, crossingOverrides);
   if (typeof idPrefix !== 'string' || !ID_PREFIX_PATTERN.test(idPrefix)) {
     throw new TypeError('idPrefix must match [A-Za-z][A-Za-z0-9_-]{0,31}');
   }

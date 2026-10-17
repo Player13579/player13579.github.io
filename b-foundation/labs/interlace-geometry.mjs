@@ -72,6 +72,66 @@ function validateSettings(input) {
   return values;
 }
 
+function validateCrossingOverrides(input, periods) {
+  if (!Array.isArray(input)) {
+    throw new TypeError('crossingOverrides must be an array');
+  }
+
+  let prototype;
+  let keys;
+  let lengthDescriptor;
+  try {
+    prototype = Object.getPrototypeOf(input);
+    keys = Reflect.ownKeys(input);
+    lengthDescriptor = Object.getOwnPropertyDescriptor(input, 'length');
+  } catch {
+    throw new TypeError('crossingOverrides must be a readable plain array');
+  }
+  if (prototype !== Array.prototype || !lengthDescriptor || !Object.hasOwn(lengthDescriptor, 'value')) {
+    throw new TypeError('crossingOverrides must be a plain array');
+  }
+
+  const length = lengthDescriptor.value;
+  const maximum = 6 * periods;
+  if (!Number.isInteger(length) || length < 0 || length > maximum) {
+    throw new RangeError(`crossingOverrides length must be from 0 through ${maximum}`);
+  }
+  if (keys.length !== length + 1 || !keys.includes('length')) {
+    throw new TypeError('crossingOverrides must be dense and contain no extra properties');
+  }
+
+  const values = [];
+  const seen = new Set();
+  for (let i = 0; i < length; i += 1) {
+    const key = String(i);
+    if (!keys.includes(key)) {
+      throw new TypeError('crossingOverrides must not be sparse');
+    }
+    let descriptor;
+    try {
+      descriptor = Object.getOwnPropertyDescriptor(input, key);
+    } catch {
+      throw new TypeError(`crossingOverrides[${i}] must be a data property`);
+    }
+    if (!descriptor || !Object.hasOwn(descriptor, 'value')) {
+      throw new TypeError(`crossingOverrides[${i}] must be a data property`);
+    }
+    const value = descriptor.value;
+    if (!Number.isInteger(value)) {
+      throw new TypeError(`crossingOverrides[${i}] must be an integer`);
+    }
+    if (value < 0 || value >= maximum) {
+      throw new RangeError(`crossingOverrides[${i}] must identify a crossing in this model`);
+    }
+    if (seen.has(value)) {
+      throw new TypeError('crossingOverrides must not contain duplicate indices');
+    }
+    seen.add(value);
+    values.push(value === 0 ? 0 : value);
+  }
+  return values.sort((a, b) => a - b);
+}
+
 function strandX(index, y) {
   return AMPLITUDE * Math.sin((TAU * y) / PERIOD + (TAU * index) / 3);
 }
@@ -114,11 +174,14 @@ function maskPoints(over, crossingY) {
   return points;
 }
 
-function makeCrossings(periods, settings) {
+function makeCrossings(periods, settings, crossingOverrides) {
+  const overridden = new Set(crossingOverrides);
   const crossings = [];
   for (let q = 0; q < 6 * periods; q += 1) {
     const y = (2 * q + 1) / 4;
-    const { pair, over, under } = crossingRoles(q, settings.pattern, settings.invert);
+    const { pair, over: presetOver, under: presetUnder } = crossingRoles(q, settings.pattern, settings.invert);
+    const over = overridden.has(q) ? presetUnder : presetOver;
+    const under = overridden.has(q) ? presetOver : presetUnder;
     crossings.push({
       index: q,
       pair,
@@ -131,13 +194,13 @@ function makeCrossings(periods, settings) {
   return crossings;
 }
 
-function buildModel(settings) {
+function buildModel(settings, crossingOverrides) {
   const yMax = PERIOD * settings.periods;
   const crossingYs = [];
   for (let q = 0; q < 6 * settings.periods; q += 1) crossingYs.push((2 * q + 1) / 4);
   const ys = sampleYs(settings.periods, crossingYs);
   const colors = settings.monochrome ? [BASE_PALETTE[0], BASE_PALETTE[0], BASE_PALETTE[0]] : [...BASE_PALETTE];
-  const crossings = makeCrossings(settings.periods, settings);
+  const crossings = makeCrossings(settings.periods, settings, crossingOverrides);
   const viewBox = [VIEW_BOX[0], VIEW_BOX[1], VIEW_BOX[2], yMax + 0.6];
   const model = {
     version: 1,
@@ -170,6 +233,11 @@ function buildModel(settings) {
     },
   };
 
+  if (crossingOverrides.length > 0) {
+    model.version = 2;
+    model.crossingOverrides = [...crossingOverrides];
+  }
+
   if (!Number.isFinite(yMax) || model.strands.some((strand) => strand.points.some((point) => !point.every(Number.isFinite)))) {
     throw new RangeError('constructed geometry is not finite');
   }
@@ -180,16 +248,19 @@ function pathData(points, invertY = false) {
   return points.map(([x, y], index) => `${index === 0 ? 'M' : 'L'}${x} ${invertY ? -y : y}`).join(' ');
 }
 
-export function constructInterlace(settings = DEFAULT_SETTINGS) {
-  return buildModel(validateSettings(settings));
+export function constructInterlace(settings = DEFAULT_SETTINGS, crossingOverrides = []) {
+  const value = validateSettings(settings);
+  const overrides = validateCrossingOverrides(crossingOverrides, value.periods);
+  return buildModel(value, overrides);
 }
 
-export function interlaceSvg(settings = DEFAULT_SETTINGS, idPrefix = 'weave') {
+export function interlaceSvg(settings = DEFAULT_SETTINGS, idPrefix = 'weave', crossingOverrides = []) {
   const value = validateSettings(settings);
+  const overrides = validateCrossingOverrides(crossingOverrides, value.periods);
   if (typeof idPrefix !== 'string' || !/^[A-Za-z][A-Za-z0-9_-]{0,31}$/.test(idPrefix)) {
     throw new TypeError('idPrefix must match [A-Za-z][A-Za-z0-9_-]{0,31}');
   }
-  const model = buildModel(value);
+  const model = buildModel(value, overrides);
   const [x, y, width, height] = model.viewBox;
   const masks = model.strands.map((strand) => {
     const underEvents = model.crossings.filter((crossing) => crossing.under === strand.index);

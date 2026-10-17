@@ -3,6 +3,17 @@
 .interlace-workbench { gap: 16px; }
 .interlace-controls { align-content: start; }
 .interlace-controls .field-help { margin: 4px 0 0; color: var(--muted); font-size: .84rem; }
+.crossing-tools { min-width: 0; margin: 0; padding: 10px; border: 1px solid var(--line); border-radius: 10px; display: grid; gap: 7px; }
+.crossing-tools legend { padding: 0 4px; font-weight: 650; }
+.crossing-tools > label { font-size: .9rem; }
+.crossing-tools select { width: 100%; min-height: 42px; }
+.crossing-tools .field-help { margin: 0; }
+.crossing-actions { display: grid; gap: 7px; }
+.crossing-actions button { width: 100%; min-height: 44px; flex: 0 0 auto; }
+.selection-marker { pointer-events: none; }
+.selection-marker circle { fill: none; vector-effect: non-scaling-stroke; }
+.selection-marker .selection-halo { stroke: #fff; stroke-width: 3px; }
+.selection-marker .selection-outline { stroke: #102c35; stroke-width: 1.5px; }
 .interlace-checks { display: grid; grid-template-columns: 1fr; gap: 2px; }
 .interlace-actions button { width: 100%; flex: 0 0 auto; }
 .interlace-compare { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -20,6 +31,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
   .interlace-controls { gap: 9px; margin: 0; }
   .interlace-controls .field label { margin-bottom: 2px; }
   .interlace-controls select { min-height: 42px; }
+  .crossing-tools { gap: 6px; padding: 8px; }
   .interlace-controls input[type="range"] { min-height: 30px; }
   .interlace-checks { gap: 0; }
   .interlace-checks .check { min-height: 38px; }
@@ -31,6 +43,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
 @media (max-width: 760px) {
   .interlace-workbench { display: flex; flex-direction: column; }
   .interlace-controls, .interlace-compare { grid-template-columns: 1fr; }
+  .crossing-actions button { min-height: 46px; }
   .interlace-canvas { height: 400px; min-height: 0; }
   .interlace-panel .caption { min-height: 0; }
   .interlace-exports .export-actions { flex-direction: column; }
