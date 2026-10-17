@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>吊ったコードのたるみを、両端と長さから決める｜B Foundation</title>
+  <link rel="stylesheet" href="band.css">
+  <link rel="stylesheet" href="catenary.css">
+  <script type="module" src="catenary-lab.mjs"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../?view=all#catenary-design-lab">← B Foundation の一覧へ戻る</a>
+    <header>
+      <h1>吊ったコードのたるみを、両端と長さから決める</h1>
+      <p class="intro">両端の位置とコードの長さから、静かに吊り下がる形を比べられます。</p>
+    </header>
+
+    <div class="workbench catenary-workbench">
+      <section class="controls catenary-controls" aria-label="コードの条件">
+        <div class="field">
+          <label for="span">両端の横の距離 <output id="span-value" for="span">6.00 単位</output></label>
+          <input id="span" type="range" min="2" max="10" step="0.25" value="6">
+        </div>
+        <div class="field">
+          <label for="height">右端の高さ <output id="height-value" for="height">0.00 単位</output></label>
+          <input id="height" type="range" min="-3" max="3" step="0.25" value="0">
+        </div>
+        <div class="field">
+          <label for="slack">直線距離より長くする割合 <output id="slack-value" for="slack">20%</output></label>
+          <input id="slack" type="range" min="1" max="50" step="1" value="20">
+        </div>
+        <p class="coordinate-note">左端を基準に、右端の高さを変えます。割合は長さの余裕で、たるみの深さではありません。</p>
+        <label class="check" for="show-guides"><input id="show-guides" type="checkbox" checked> 補助線を表示</label>
+        <div class="actions catenary-actions">
+          <button id="pin" type="button">今の形を比較用に残す</button>
+          <button id="reset" type="button" class="secondary">初期状態に戻す</button>
+        </div>
+      </section>
+
+      <div class="stage catenary-stage">
+        <p id="status" class="status" role="status" aria-live="polite">形を計算しています。</p>
+        <section class="compare catenary-compare" aria-label="比較用に残した形と調整中の形">
+          <article class="panel" aria-labelledby="baseline-title">
+            <h2 id="baseline-title">比較用に残した形</h2>
+            <p class="caption" id="baseline-caption">形を計算しています。</p>
+            <div class="canvas-frame"><svg id="baseline-preview" viewBox="-4 -4 8 8" preserveAspectRatio="xMidYMid meet" role="img" aria-label="比較用に残したコードの形"></svg></div>
+          </article>
+          <article class="panel" aria-labelledby="current-title">
+            <h2 id="current-title">調整中の形</h2>
+            <p class="caption" id="current-caption">形を計算しています。</p>
+            <div class="canvas-frame">
+              <svg id="current-preview" viewBox="-4 -4 8 8" preserveAspectRatio="xMidYMid meet" role="img" aria-label="調整中のコードの形"></svg>
+              <p id="empty-message" class="empty-message" hidden></p>
+            </div>
+          </article>
+        </section>
+        <p class="scale-note">左右は同じ縮尺です。画面下が重力の向きです。</p>
+        <p class="sag-note">最大たるみは、両端を結ぶ直線から下への距離です。</p>
+        <section class="exports catenary-exports" aria-label="形状データの保存">
+          <div class="export-actions">
+            <button id="save-svg" type="button">コードのSVGを保存</button>
+            <button id="save-json" type="button" class="secondary">形状データを保存</button>
+          </div>
+          <p>SVGは中心線のみを描きます。実際のコードの太さや安全性は表しません。</p>
+        </section>
+      </div>
+    </div>
+
+    <details class="methods catenary-methods">
+      <summary>原理と使える範囲</summary>
+      <p>力学・静力学の懸垂線は、一様な重力の下でコードの各部分に働く力がつり合う形です。横向きの張力は一定で、縦向きの力はコードの実際の長さに沿った重さとつり合います。その関係から双曲線余弦（cosh）の曲線になります。数値解析では、両端と目標全長に合う曲線パラメーターを二分法で求めます。</p>
+      <p>このモデルは単位弧長当たりの重さが均一で、伸びない完全に柔軟なコード、曲げ剛性なし、静止、一様に下向きの重力、両端だけで支持、他の荷重や接触なしを仮定します。重さの大きさは固定された両端と長さで定まる形を変えませんが、実際の張力は重さ密度なしでは計算しません。SVGの線幅は表示用で、物理的な太さではありません。</p>
+      <p>このため、布や節のある鎖の立体形状、風や接触、動き、実設備の安全性を示すものではありません。点列は連続曲線の近似です。全長に合わせる数値解の残差と、折れ線の補間誤差・弦長の差を区別します。補間誤差の評価には数値解や丸めの誤差を含めません。結果は美しさの法則を表しません。</p>
+      <p>参考資料: <a href="https://www.astro.uvic.ca/~tatum/classmechs/class18.pdf" target="_blank" rel="noopener noreferrer">Jeremy Tatum, Classical Mechanics, Chapter 18.2–18.3: The Catenary</a>、二分法の説明は<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html" target="_blank" rel="noopener noreferrer">SciPy bisect の資料</a>（手法の参照で、実行時依存ではありません）、<a href="https://github.com/Player13579/B/blob/1407c8869767ac9a5c73fa0d797a93be761c63cd/docs/catenary-design-lab.md" target="_blank" rel="noopener noreferrer">B Foundation の懸垂線設計ガイド</a>。理想的な懸垂線の条件に合う場合の形の検討に使えます。</p>
+    </details>
+  </main>
+</body>
+</html>
