@@ -20,7 +20,7 @@
   <details class="article-disclosure" data-report-disclosure>
     <summary><h2>形のつながりと前後関係を設計する</h2></summary>
     <div data-report-content>
-      <p class="item-summary">形を保ったまま交差の上下を一か所ずつ選び、帯状・円形の図案を透明背景のSVGへ保存する機能を追加しました。</p>
+      <p class="item-summary">形を変えずに交差の上下を選び、帯や輪の模様を作る機能を追加しました。</p>
   <p class="item-tool"><a href="labs/interlace.html">帯と輪の図案をつくる</a></p>
       <section class="item-examples" aria-label="形のつながりと前後関係を設計するの画像例"><figure class="example-figure">
       <h3>円形の縁飾り</h3>
@@ -30,22 +30,16 @@
       <figcaption>交差の上下を入れ替えて閉じた円形の縁飾り。制作ページで保存したSVGを描画した例です。</figcaption>
     </figure></section>
       <div class="essential-details" data-essential-details>
-    <section><h3>できること</h3><p>図案を作り直さず、模様の一部だけくぐり方を変えられます。帯と輪を切り替えても指定を引き継ぎ、縁飾りなどへ利用できます。</p></section>
-    <section><h3>使い方</h3><p>制作ページで交差を押すか一覧から選び、「この交差の上下を入れ替える」を押します。左は同じ形を一律に重ねた基準、右は選んだ構成です。対象は三本の帯の平面図案です。B設計へ採用するときは、固定された形・本数・端点・接続・結び方を優先します。</p></section>
+    <section><h3>できること</h3><p>模様の一部だけ編み方を変え、透明背景のSVGとして作品へ使えます。</p></section>
+    <section><h3>使い方</h3><p>制作ページで交差を選び、「この交差の上下を入れ替える」を押して保存します。</p></section>
   </div>
       <details class="report-details">
         <summary>しくみ・具体例・確認範囲を見る</summary>
 
         <div class="item-details">
-          <section><h3>しくみ</h3><p>位相幾何学の結び目・組紐の図式では、経路と交差ごとの上下を別々に記録します。ここでは各交差の前後だけを選び、帯の経路を切り替えずに編み模様を構成します。
+          <section><h3>しくみ</h3><p>位相幾何学の結び目・組紐の図式にならい、経路と交差の上下を分けて設計します。下側の帯だけをSVGマスクで隠すため、すき間は透明です。輪は解析幾何学の極座標変換で構成し、整数周期の曲線でつなぎ目の位置と接線をそろえます。</p></section>
 
-解析幾何学の極座標変換では、進む位置を角度、横位置を半径へ対応させて輪へ展開します。整数周期の正弦曲線は位置と接線方向が一周後にそろうため、つなぎ目のない閉路を作れます。長さや角度を保つ変形ではありません。
-
-描画にはSVGの輝度マスクを使い、交差で下になる帯の表示だけを局所的に取り除きます。背景色の小片を重ねないため、抜けは透明なまま残ります。配色・半径・太さは設計上の選択で、美的比率の法則ではありません。</p></section>
-
-          <section><h3>確認範囲</h3><p>帯状・円形で、個別指定が保存SVGと形状データへ反映されることを確認しました。従来の図案と保存結果も保持しています。
-
-実物の布・組紐の力学、生成AIでの再現、知覚・美的効果は確認していません。詳しい仕組みと使える範囲は制作ガイドにあります。</p></section>
+          <section><h3>確認範囲</h3><p>帯・輪とも個別指定と透明なすき間を保存SVGで確認済みです。対象は三本の帯の平面図案で、実物の編み物の力学や美的効果を保証するものではありません。</p></section>
           <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.dm.unibo.it/~francavi/did/21-22/knot.pdf">https://www.dm.unibo.it/~francavi/did/21-22/knot.pdf</a></li><li><a href="https://openstax.org/books/calculus-volume-2/pages/7-3-polar-coordinates">https://openstax.org/books/calculus-volume-2/pages/7-3-polar-coordinates</a></li><li><a href="https://www.w3.org/TR/css-masking-1/#MaskElement">https://www.w3.org/TR/css-masking-1/#MaskElement</a></li><li><a href="https://github.com/Player13579/B/blob/bf5b0916e33de42aa4d06d8579b7e730b51dedf4/docs/interlaced-bands.md">https://github.com/Player13579/B/blob/bf5b0916e33de42aa4d06d8579b7e730b51dedf4/docs/interlaced-bands.md</a></li></ul></section>
         </div>
         <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/d9a0502ae42c835e331b7644ede8b0dbbcf6b9da">GitHubの変更</a></p>
