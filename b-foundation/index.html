@@ -28,23 +28,25 @@
     </section>
     <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
       <article class="gallery-item" id="cylindrical-motif-mapping" data-essential="false" data-show-heading="false" hidden>
-  <h2>平面の模様を、円柱面へ沿わせる</h2>
+  <h2>曲面上の模様を、素材・光まで一つの設計にまとめる</h2>
   <div data-report-content>
-  <p class="item-summary">平面の模様を、弧長座標で既存の円柱面へ対応させる補助機能を追加しました。表面に沿った寸法を保ちながら、面の回り込みによる曲がりや画面上の短縮を構成します。端点だけでなく、その間の曲線も標本化します。</p>
+  <p class="item-summary">分岐模様の座標と円柱面への対応を、幅・素材・光・カメラ・表示条件を含む一つの完全なB参照設計へ統合しました。表面上の寸法を保つ配置と、曲面の向きによる画面上の短縮や明暗をつなげて指定します。参照設計は未描画です。</p>
 
 
   <details class="report-details">
     <summary>しくみ・具体例・確認範囲を見る</summary>
     <figure class="item-image"><img src="assets/cylindrical-motif-comparison.svg" alt="同じ分岐模様を展開平面と半径4・2.5の円柱面へ対応させた共通縮尺の正投影。格子は作図用で、B画像生成や材質・照明の描画ではありません。" loading="lazy"></figure>
     <div class="item-details">
-      <section><h3>しくみ</h3><p>微分幾何学の第一基本形式・局所等長写像を使います。円周方向の弧長u、軸方向の長さv、半径Rでq=(R sin(u/R),v,R cos(u/R))と置くと、接ベクトルの内積はE=G=1,F=0となり、連続した表面上の長さ・接線角・面積を保てます。画面への対応にはCG・射影幾何の正投影を使い、表面上の性質と投影後の寸法を分けます。曲線の折れ線化には、微積分の二階微分による線形補間誤差評価を、この円柱写像へ適用しています。半径・模様・カメラ・表示縮尺は説明用の設計選択で、美の法則や実物の測定値ではありません。</p></section>
-      <section><h3>具体例</h3><p>先に作った35°分岐模様の64本の中心線を、展開平面と半径4・2.5の円柱面へ対応させました。カメラの傾き20°・共通縮尺では、投影された模様の幅は約6.11 / 5.53 / 4.70局所単位になります。表面で寸法を保っても、画面上の幅や角度は変わります。格子は対応を示す作図用表示です。図は実際の座標から作った正投影プレビューで、材質や照明を解いた作品、B画像生成の実行結果ではありません。画面上の線幅は一定で、物理的なインクや溝の幅の計算とは区別します。</p></section>
-      <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査と349件のテストが通過しました。独立した80桁Decimal三角関数・行列投影で432条件を照合し、128本の曲面線と2,926点の曲線サンプルを検査しました。図の設計縮尺で検査した曲線サンプルの補間誤差は、目標0.05画素に対して最大約0.03835画素でした。
+      <section><h3>しくみ</h3><p>形式言語理論・計算論的造形のD0L並列書換えと2D turtleで、同じ分岐規則から64本の中心線を構成します。微分幾何学の第一基本形式・局所等長写像を使い、弧長u・軸方向vでq=(40 sin(u/40),v,40 cos(u/40))と置き、表面に沿った幅を対応させます。CG・射影幾何の正投影で、その表面を画面へ写します。放射測定・CGのLambert拡散反射モデルρ/πと入射余弦により、面の向き・反射率・照明を明暗へ結びます。色彩工学の表示規約として線形光の平均とsRGB伝達関数を選び、世界内の反射と表示を区別します。寸法・色・分岐角・光とカメラ・露出・標本化方式は、この例の設計選択で、美しさの法則や実測物性ではありません。根拠と各モデルの適用条件は解説へ記しました。</p></section>
+      <section><h3>具体例</h3><p>半径40 mmの湾曲板の前面に、35°分岐模様を幅0.8 mmで配置する参照例です。模様は凹凸ではなく、地とインクの反射率を排他的に切り替える領域としました。表面で同じ幅でも、1000×750画素・傾き20°の正投影では、局所的な幅の幾何評価は約3.273〜5画素になります。これは画素被覆や実画像の読みやすさの保証ではありません。
 
-制約：補間上界は厳密算術の式の浮動小数点評価で、区間演算による証明値や丸め・ラスタ化・拡大後の全誤差保証ではありません。開いた正面域|u/R|&lt;π/2だけを扱い、裏面・継ぎ目・他物体による遮蔽、球面・しわ面、材質・反射・物理的な線幅は計算しません。既存形状・模様の数や実寸・接触・カメラを保ち、具体的な配置を完全なBコードへ統合します。別の実行promptや必須schemaは増やしていません。実画像での可読性・素材感・美的効果は未確認です。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf">https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf</a></li><li><a href="https://pi.math.cornell.edu/~justin/4540/metric.html">https://pi.math.cornell.edu/~justin/4540/metric.html</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://github.com/Player13579/B/blob/f5e14919c696d7ae3b54e1d30b0046c9da2a29de/docs/cylindrical-motif.md">https://github.com/Player13579/B/blob/f5e14919c696d7ae3b54e1d30b0046c9da2a29de/docs/cylindrical-motif.md</a></li></ul></section>
+下図は従来の平面・半径4・2.5の座標比較で、今回の板の素材・照明を描いた画像ではありません。格子と画面で一定の線幅は作図用です。完全な設計例の物理的な幅とは区別します。</p></section>
+      <section><h3>確認範囲</h3><p>完全なB-Expression-3参照設計の構造検証、基底・拡張の静的検査と357件のテストが通過しました。独立した式による検査で、64本の模様に幅を加えた領域が前面に収まること、板全体が画面に収まること、前面の入射余弦と露出後の値域を確認しました。接平面から画面への計量は1601条件で照合しました。
+
+学問・原理・具体的な使い方・根拠資料・条件と限界を、原理解説と参照設計の出典記録へ対応させています。補助機能の任意利用を、必須schemaや短い別実行promptへ変更していません。画像生成・素材感・可読性・美的効果・比較評価は未実施です。以前の補間誤差検査は座標プレビューに対するもので、この板の描画品質の保証には使いません。</p></section>
+      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/cylindrical-motif-reference.md">https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/cylindrical-motif-reference.md</a></li><li><a href="https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/examples/cylindrical-motif-reference.json">https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/examples/cylindrical-motif-reference.json</a></li><li><a href="https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf">https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf</a></li><li><a href="https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf">https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf</a></li><li><a href="https://pi.math.cornell.edu/~justin/4540/metric.html">https://pi.math.cornell.edu/~justin/4540/metric.html</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection">https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection</a></li><li><a href="https://www.w3.org/TR/css-color-4/#color-conversion-code">https://www.w3.org/TR/css-color-4/#color-conversion-code</a></li></ul></section>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/f5e14919c696d7ae3b54e1d30b0046c9da2a29de">GitHubの変更</a></p>
+    <p class="item-source"><a href="https://github.com/Player13579/B/commit/be08ea20410f4b6a522a6043c8cf0d2441fa686c">GitHubの変更</a></p>
   </details>
   </div>
 </article>
