@@ -1,4 +1,9 @@
-/* Repeat-lab layout overrides: retain band.css's shared visual language. */
+/* Seed import and size control additions; shared visual language comes from band.css. */
+.seed-controls { display: grid; gap: 8px; min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 9px; background: #faf8f1; }
+.seed-controls .field-help { margin: 5px 0 0; color: var(--muted); font-size: .88rem; }
+#band-file { display: block; width: 100%; max-width: 100%; min-height: 40px; color: var(--ink); font: inherit; }
+.seed-status { margin: 0; color: var(--muted); font-size: .9rem; }
+.seed-controls button { min-height: 40px; padding: 7px 10px; font-size: .94rem; }
 .repeat-mark { fill: var(--teal); }
 #baseline-preview .repeat-mark { fill: #a9ada5; }
 .curve-guide { fill: none; stroke: #26383a; stroke-width: 1.2px; stroke-dasharray: 6px 5px; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }

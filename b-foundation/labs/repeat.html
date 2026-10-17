@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <title>曲線に沿って、飾りの間隔と向きを選ぶ｜B Foundation</title>
+  <title>選んだ帯の形を、曲線に沿って並べる｜B Foundation</title>
   <link rel="stylesheet" href="band.css">
   <link rel="stylesheet" href="repeat.css">
   <script type="module" src="repeat-lab.mjs"></script>
 </head>
 <body>
   <main class="page">
-    <a class="back" href="../?view=all#curve-repeat-lab">← B Foundation の一覧へ戻る</a>
+    <a class="back" href="../?view=all#repeat-band-seed">← B Foundation の一覧へ戻る</a>
     <header>
-      <h1>曲線に沿って、飾りの間隔と向きを選ぶ</h1>
-      <p class="intro">同じ曲線と個数のまま、横方向の等間隔と曲線に沿う等間隔、接線に沿う向きと一定の向きを比べられます。</p>
+      <h1>選んだ帯の形を、曲線に沿って並べる</h1>
+      <p class="intro">同じ曲線と個数のまま、間隔の測り方や向きを比べながら、見本の菱形または読み込んだ帯を並べられます。</p>
     </header>
 
     <div class="workbench">
@@ -45,6 +45,21 @@
           <label for="angle">向きのずらし <output id="angle-value" for="angle">0°</output></label>
           <input id="angle" type="range" min="-90" max="90" step="5" value="0">
         </div>
+        <section class="seed-controls" aria-label="反復する飾りの形">
+          <div class="field">
+            <label for="band-file">帯模様の形状データを読み込む</label>
+            <input id="band-file" type="file" accept=".json,application/json">
+            <p class="field-help">帯模様ツールの「形状データを保存」で作ったJSONを選びます。保存設定から形を再構成します。ファイルはこの端末内で読み込みます。表示は単色の輪郭で、素材や元の色は引き継ぎません。</p>
+            <a href="band.html">帯模様を作る</a>
+          </div>
+          <div class="field range-field">
+            <label for="seed-size">飾りの大きさ <output id="seed-size-value" for="seed-size">0.24</output></label>
+            <input id="seed-size" type="range" min="0.1" max="0.8" step="0.02" value="0.24">
+            <p class="field-help">最大外接枠辺の長さです。比率を保って均一に拡縮します。</p>
+          </div>
+          <p id="seed-status" class="seed-status" role="status" aria-live="polite">現在の飾り：見本の菱形。</p>
+          <button id="use-diamond" type="button" class="secondary">見本の菱形に戻す（大きさは維持）</button>
+        </section>
         <div class="checks">
           <label class="check" for="show-curve"><input id="show-curve" type="checkbox" checked> 曲線の補助線を表示</label>
         </div>
@@ -80,16 +95,17 @@
             <button id="save-svg" type="button">飾りのSVGを保存</button>
             <button id="save-json" type="button" class="secondary">形状データを保存</button>
           </div>
-          <p>SVGには飾りの形だけを保存します。素材や厚み、縁の間隔は制作時に指定します。</p>
+          <p>SVGには現在の飾りの輪郭だけを保存します。形状データは配置全体の記録用で、この入力欄では読み込めません。</p>
         </section>
       </div>
     </div>
 
     <details class="methods">
       <summary>原理と使える範囲</summary>
+      <p>線形代数・ユークリッド幾何学の相似変換（平行移動・正の均一拡縮・回転）で、輪郭の縦横比と形を保って複製します。位置は外接枠の中心を基準にし、元のローカル+x方向を曲線の接線に合わせます。読み込んだ帯の外接枠中心は面積重心や知覚上の中心ではありません。</p>
       <p>微分幾何学の弧長と単位接線を使い、二次ベジェ曲線上の位置と向きを決めます。横方向を等分する方法と、曲線の長さを等分する方法を比べます。数値解析の二分法で等弧長位置を求めます。必要な内点は二分法を48回行い、端点・直線・中央の対称位置は直接扱います。</p>
-      <p>飾りの数と両端の位置は保たれます。弧長をそろえても、直線距離（弦長）や飾りの縁どうしの隙間は等しくなりません。中央の高さを変えると曲線の全長も変わります。菱形の形・比率や表示色は見比べるための設計上の選択です。曲線は128区間の折れ線で表示します。補間誤差の評価には、浮動小数点丸め、弧長反転、飾り形状、投影、ラスタ化、知覚の誤差を含みません。接触や重なりの判定、素材・物理的な動き、普遍的な美しさは扱いません。明示された個数・形・位置・向き・端点・接触を優先し、世界内の要素は画面上の等間隔だけを理由に動かしません。向きの違いは同じ菱形を各位置で回転・平行移動して示すため、形と大きさは変わりません。</p>
-      <p>参考資料: <a href="https://books.physics.oregonstate.edu/GVC/arclength.html" target="_blank" rel="noopener noreferrer">曲線の弧長</a>、<a href="https://members.loria.fr/samuel.hornus/quadratic-arc-length.html" target="_blank" rel="noopener noreferrer">二次ベジェ曲線の弧長</a>、<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html" target="_blank" rel="noopener noreferrer">二分法の数値解法</a>、<a href="https://github.com/Player13579/B/blob/5d80b5ba09422c41b2471c6eea64ce78b72b7f9f/docs/curve-repeat-lab.md" target="_blank" rel="noopener noreferrer">B Foundation の曲線反復配置ガイド</a>。</p>
+      <p>飾りの数と両端の位置は保たれます。弧長をそろえても、直線距離（弦長）や飾りの縁どうしの隙間は等しくなりません。中央の高さを変えると曲線の全長も変わります。菱形、表示色、大きさの選択は設計上の選択です。読み込んだ帯の形状近似は元の設定から再構成した近似ポリゴンを使い、数値誤差がゼロになるわけではありません。接触や重なり、投影、物性、運動、知覚、美の保証はありません。明示された個数・形・位置・向き・端点・接触を優先し、世界内の要素は画面上の等間隔だけを理由に動かしません。</p>
+      <p>曲線の弧長、二次ベジェ曲線の弧長、二分法の数値解法の参考資料は、<a href="https://books.physics.oregonstate.edu/GVC/arclength.html" target="_blank" rel="noopener noreferrer">曲線の弧長</a>、<a href="https://members.loria.fr/samuel.hornus/quadratic-arc-length.html" target="_blank" rel="noopener noreferrer">二次ベジェ曲線の弧長</a>、<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html" target="_blank" rel="noopener noreferrer">二分法の数値解法</a>、<a href="https://textbooks.math.gatech.edu/ila/linear-transformations.html" target="_blank" rel="noopener noreferrer">回転と均一拡縮の行列表現</a>、<a href="https://github.com/Player13579/B/blob/f8e7e98d30eed2cefa02e24aa1fcf1bf894279c8/docs/repeat-band-seed.md" target="_blank" rel="noopener noreferrer">保存した帯を反復配置するガイド</a>、<a href="https://github.com/Player13579/B/blob/5d80b5ba09422c41b2471c6eea64ce78b72b7f9f/docs/curve-repeat-lab.md" target="_blank" rel="noopener noreferrer">曲線反復配置の原理と計算範囲</a>です。</p>
     </details>
   </main>
 </body>
