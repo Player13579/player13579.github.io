@@ -1,0 +1,58 @@
+.rosette-workbench { align-items: start; }
+.rosette-controls { grid-template-columns: minmax(0, 1fr); align-content: start; gap: 7px; }
+.rosette-controls .field label { margin-bottom: 1px; }
+.rosette-controls input[type="range"] { min-height: 27px; }
+.rosette-controls select { min-height: 40px; }
+.rosette-controls .check { min-height: 38px; }
+.seed-controls { margin: 0; padding-top: 4px; border-top: 1px solid var(--line); }
+.seed-controls summary { min-height: 40px; display: flex; align-items: center; cursor: pointer; font-weight: 700; }
+.seed-fields { display: grid; gap: 8px; padding: 4px 0 7px; }
+.guides-check { border-top: 1px solid var(--line); padding-top: 6px; }
+.rosette-actions { flex-direction: column; gap: 6px; }
+.rosette-actions button { flex: 0 0 auto; width: 100%; min-height: 41px; padding: 7px 9px; font-size: .93rem; }
+.rosette-compare { gap: 12px; }
+.rosette-compare .panel { padding: 12px; }
+.rosette-compare .panel h2 { font-size: 1.02rem; }
+.rosette-compare .caption { min-height: 3.1em; margin-bottom: 6px; font-size: .86rem; }
+.rosette-compare .canvas-frame { min-height: 0; padding: 7px; }
+.rosette-compare svg { width: 100%; max-width: 500px; aspect-ratio: 1; }
+.rosette-compare .scale-note { display: none; }
+.baseline-instance { fill: #a9ada5; stroke: #68736d; }
+.current-instance { fill: #147d78; stroke: #0e5f5b; }
+.rosette-instance { stroke-width: 1px; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.rosette-guide { fill: none; stroke: #68736d; stroke-width: 1px; vector-effect: non-scaling-stroke; stroke-dasharray: 5px 5px; }
+.rosette-origin { fill: #26383a; stroke: #fffefa; stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.overlap-note { margin: 8px 2px 0; color: var(--muted); font-size: .85rem; }
+.rosette-methods { margin-top: 18px; }
+.rosette-methods var { font-family: inherit; }
+.rosette-exports p { margin-bottom: 0; }
+@media (min-width: 1000px) {
+  .rosette-workbench { grid-template-columns: 288px minmax(0, 1fr); gap: 16px; margin-top: 16px; }
+  .rosette-controls { margin: 0; padding: 12px; gap: 5px; }
+  .rosette-controls .field label { font-size: .92rem; }
+  .rosette-controls select { min-height: 37px; padding: 5px 9px; }
+  .rosette-controls input[type="range"] { min-height: 25px; }
+  .rosette-controls .check { min-height: 34px; font-size: .9rem; }
+  .seed-controls summary { min-height: 35px; }
+  .rosette-actions button { min-height: 38px; }
+  .rosette-stage { min-width: 0; }
+  .rosette-compare { gap: 10px; }
+  .rosette-compare .panel { padding: 10px; }
+  .rosette-compare .canvas-frame { padding: 6px; }
+  .rosette-compare svg { max-width: 460px; }
+  .overlap-note { margin-top: 5px; font-size: .78rem; }
+  .rosette-exports { margin-top: 9px; padding: 10px 12px; }
+  .rosette-exports p { margin-top: 5px; font-size: .82rem; }
+}
+@media (max-width: 999px) {
+  .rosette-workbench { display: grid; grid-template-columns: 1fr; }
+  .rosette-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rosette-controls .seed-controls, .rosette-controls .guides-check, .rosette-controls .rosette-actions { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .rosette-controls { grid-template-columns: 1fr; }
+  .rosette-controls .field, .rosette-controls .seed-controls, .rosette-controls .guides-check, .rosette-controls .rosette-actions { grid-column: auto; }
+  .rosette-compare { grid-template-columns: 1fr; }
+  .rosette-compare .canvas-frame { min-height: 0; }
+  .rosette-compare svg { max-width: min(100%, 420px); }
+}

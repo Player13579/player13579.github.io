@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>一つの帯から放射状の紋様をつくる｜B Foundation</title>
+  <link rel="stylesheet" href="band.css">
+  <link rel="stylesheet" href="rosette.css">
+  <script type="module" src="rosette-lab.mjs"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../?view=all#rosette-design-lab">← B Foundation の一覧へ戻る</a>
+    <header>
+      <h1>一つの帯から放射状の紋様をつくる</h1>
+      <p class="intro">帯を回転・反転して並べ、分割数や中心からの距離を変えながら紋様を見比べます。</p>
+    </header>
+
+    <div class="workbench rosette-workbench">
+      <section class="controls rosette-controls" aria-label="紋様の条件">
+        <div class="field">
+          <label for="group">並べ方</label>
+          <select id="group">
+            <option value="cyclic">回転だけ</option>
+            <option value="dihedral" selected>鏡映も加える</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sectors">分割数 <output id="sectors-value" for="sectors">6</output></label>
+          <input id="sectors" type="range" min="2" max="16" step="1" value="6">
+        </div>
+        <div class="field">
+          <label for="radius">中心から離す <output id="radius-value" for="radius">0.50 単位</output></label>
+          <input id="radius" type="range" min="0" max="6" step="0.25" value="0.5">
+        </div>
+        <div class="field">
+          <label for="tilt">帯の向き <output id="tilt-value" for="tilt">0°</output></label>
+          <input id="tilt" type="range" min="-180" max="180" step="5" value="0">
+        </div>
+        <div class="field">
+          <label for="orientation">全体の向き <output id="orientation-value" for="orientation">0°</output></label>
+          <input id="orientation" type="range" min="0" max="360" step="5" value="0">
+        </div>
+        <details id="seed-controls" class="seed-controls">
+          <summary>元の帯を調整</summary>
+          <div class="seed-fields">
+            <div class="field">
+              <label for="profile">曲がり方</label>
+              <select id="profile">
+                <option value="uniform">均一に曲げる</option>
+                <option value="tighten" selected>終わりほど強く</option>
+                <option value="relax">始まりほど強く</option>
+                <option value="s">S字に曲げる</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="strength">曲がりの強さ <output id="strength-value" for="strength">60</output></label>
+              <input id="strength" type="range" min="0" max="100" step="1" value="60">
+            </div>
+            <div class="field">
+              <label for="width-start">始まりの太さ <output id="width-start-value" for="width-start">1.20</output></label>
+              <input id="width-start" type="range" min="0" max="1.6" step="0.05" value="1.2">
+            </div>
+            <div class="field">
+              <label for="width-end">終わりの太さ <output id="width-end-value" for="width-end">0.00</output></label>
+              <input id="width-end" type="range" min="0" max="1.6" step="0.05" value="0">
+            </div>
+            <label class="check" for="flip"><input id="flip" type="checkbox"> 上下を反転</label>
+          </div>
+        </details>
+        <label class="check guides-check" for="show-guides"><input id="show-guides" type="checkbox"> 補助線を表示</label>
+        <div class="actions rosette-actions">
+          <button id="pin" type="button">今の紋様を比較用に残す</button>
+          <button id="reset" type="button" class="secondary">初期状態に戻す</button>
+        </div>
+      </section>
+
+      <div class="stage rosette-stage">
+        <p id="status" class="status" role="status" aria-live="polite">紋様を計算しています。</p>
+        <section class="compare rosette-compare" aria-label="比較用に残した紋様と調整中の紋様">
+          <article class="panel" aria-labelledby="baseline-title">
+            <h2 id="baseline-title">比較用に残した紋様</h2>
+            <p class="caption" id="baseline-caption">回転だけの配置です。</p>
+            <div class="canvas-frame"><svg id="baseline-preview" viewBox="-4 -4 8 8" preserveAspectRatio="xMidYMid meet" role="img" aria-label="比較用に残した放射状の紋様"></svg></div>
+          </article>
+          <article class="panel" aria-labelledby="current-title">
+            <h2 id="current-title">調整中の紋様</h2>
+            <p class="caption" id="current-caption">紋様を計算しています。</p>
+            <div class="canvas-frame">
+              <svg id="current-preview" viewBox="-4 -4 8 8" preserveAspectRatio="xMidYMid meet" role="img" aria-label="調整中の放射状の紋様"></svg>
+              <p id="empty-message" class="empty-message" hidden></p>
+            </div>
+          </article>
+        </section>
+        <p class="scale-note">左右は同じ縮尺です。表示範囲は一緒に変わります。</p>
+        <p class="overlap-note">重なりを除去していません。表示する模様の数は配置数と一致しない場合があります。</p>
+        <section class="exports" aria-label="形状データの保存">
+          <div class="export-actions">
+            <button id="save-svg" type="button">紋様のSVGを保存</button>
+            <button id="save-json" type="button" class="secondary">形状データを保存</button>
+          </div>
+          <p>補助線を含まない平面の形を保存します。これは完全なB設計コードではありません。</p>
+        </section>
+      </div>
+    </div>
+
+    <details class="methods rosette-methods">
+      <summary>原理と使える範囲</summary>
+      <p>数学・群論の幾何学では、回転だけの巡回群 C<sub>n</sub> と、回転・鏡映を含む二面体群 D<sub>n</sub> を使います。分割数を <var>n</var> とすると、回転間隔は360°/<var>n</var>です。鏡映軸は全体の向きに合わせて回ります。</p>
+      <p>計算設計への応用として、一本の帯を配置規則に沿って回転・反転し、装飾や平面意匠の候補を比較できます。理想的な数学では配置前の帯の長さと幅を保ちますが、鏡映は向き（利き手）を反転します。配置数は <var>n</var> または 2<var>n</var> で、重なりや一致があるため、見える花弁の数とは限りません。重複の除去や、接触を保つための自動調整は行いません。数・接触・左右の意味が固定された作品では、その条件と両立する範囲で使います。</p>
+      <p>帯は連続曲線ではなく有限点列の多角形として描きます。境界を滑らかに見せる処理、物理的な素材や光の再現、知覚上の効果、美しさの普遍法則は扱いません。分割数や色は制作上の選択です。</p>
+      <p>参考資料: <a href="https://ocw.mit.edu/courses/res-18-012-algebra-ii-student-notes-spring-2022/mit18_702s22_full_lec.pdf#page=7" target="_blank" rel="noopener noreferrer">MIT Algebra II (Spring 2022), Examples 1.6–1.8, pp. 7–8</a>、<a href="https://ocw.mit.edu/courses/4-520-computational-design-i-theory-and-applications-fall-2005/6f46db37a1ec0307dcb816f3e66881cc_lect7.pdf#page=16" target="_blank" rel="noopener noreferrer">MIT Computational Design I (2005), Lecture 7, pp. 16–17, 27</a>、<a href="https://github.com/Player13579/B/blob/97964c5544e75d90e7e8aebd379a61b4d8e29a31/docs/rosette-design-lab.md" target="_blank" rel="noopener noreferrer">B Foundation の紋様設計ガイド</a>。帯の形を単独で調整する場合は<a href="../labs/band.html">帯模様ラボ</a>を使えます。</p>
+    </details>
+  </main>
+</body>
+</html>
