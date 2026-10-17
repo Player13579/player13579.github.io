@@ -216,43 +216,37 @@ def render_item(item: dict) -> str:
             f'<li><a href="{esc(url)}">{esc(url)}</a></li>' for url in item["references"]
         )
         references = f'<section class="item-references"><h3>参考資料</h3><ul>{links}</ul></section>'
-    show_heading = item.get("show_heading", False)
     tool = ""
     if "tool" in item:
         tool = f'\n  <p class="item-tool"><a href="{esc(item["tool"]["href"])}">{esc(item["tool"]["label"])}</a></p>'
-    hidden = "" if item["essential"] or show_heading else " hidden"
-    content_hidden = " hidden" if show_heading and not item["essential"] else ""
     heading = esc(item["title"])
-    if show_heading:
-        heading = f'<a href="?view=all#{esc(item["id"])}">{heading}</a>'
-    return f'''<article class="gallery-item" id="{esc(item["id"])}" data-essential="{str(item["essential"]).lower()}" data-show-heading="{str(show_heading).lower()}"{hidden}>
-  <h2>{heading}</h2>
-  <div data-report-content{content_hidden}>
-  <p class="item-summary">{esc(item["summary"])}</p>{tool}
-  {examples}
-  {essential_details}
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    {figure}
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>{esc(item["principle"])}</p></section>
-      {example}
-      <section><h3>確認範囲</h3><p>{esc(item["evidence"])}</p></section>
-      {references}
+    return f'''<article class="gallery-item" id="{esc(item["id"])}">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>{heading}</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">{esc(item["summary"])}</p>{tool}
+      {examples}
+      {essential_details}
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        {figure}
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>{esc(item["principle"])}</p></section>
+          {example}
+          <section><h3>確認範囲</h3><p>{esc(item["evidence"])}</p></section>
+          {references}
+        </div>
+        {source}
+      </details>
     </div>
-    {source}
   </details>
-  </div>
 </article>'''
 
 
 def render_page(data: dict) -> str:
     items = "\n".join(render_item(item) for item in data["items"])
-    essential_count = sum(1 for item in data["items"] if item["essential"])
-    heading_count = sum(1 for item in data["items"] if not item["essential"] and item.get("show_heading", False))
-    heading_note = f' 見出しのみ{heading_count}件。' if heading_count else ''
-    empty_hidden = " hidden" if essential_count else ""
-    items += f'<p class="empty-gallery" data-empty-state{empty_hidden}>現在、制作でぜひ知っておくべき掲載内容はありません。これまでの改善は「すべての報告」で読めます。</p>'
+    empty = "" if data["items"] else '<p class="empty-gallery">報告はまだありません。</p>'
+    items += empty
     return f'''<!doctype html>
 <html lang="ja">
 <head>
@@ -267,28 +261,18 @@ def render_page(data: dict) -> str:
   <header class="site-header"><a class="brand" href="#main">{esc(data["title"])}</a></header>
   <main id="main" class="home-main">
     <section class="hero" aria-labelledby="page-heading">
-      <h1 id="page-heading">制作に必要な変化だけを。</h1>
-      <p class="hero-copy">{esc(data["intro"])}</p>
+      <h1 id="page-heading">制作の改善報告</h1>
+      <p class="hero-copy">見出しを選ぶと報告の本文が開きます。</p>
     </section>
-    <section class="view-controls" aria-labelledby="view-heading">
-      <div><h2 id="view-heading">表示する内容</h2>
-        <p id="view-description">「制作に必要な内容」は、作品づくりに直接役立つ掲載内容に絞ります。「すべての報告」では、このチャットが実施した改善を、内部仕様や検証も含めて表示します。</p>
-      </div>
-      <div class="mode-buttons" role="group" aria-label="表示モード">
-        <button type="button" data-mode-switch="essential" aria-pressed="true" aria-controls="gallery-list" disabled>制作に必要な内容</button>
-        <button type="button" data-mode-switch="all" aria-pressed="false" aria-controls="gallery-list" disabled>すべての報告</button>
-      </div>
-      <p class="view-count" data-view-count aria-live="polite" aria-atomic="true">制作に必要な内容を表示中。{essential_count}件。{heading_note}</p>
-      <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
-    </section>
-    <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
+    <section id="gallery-list" class="gallery-items" aria-label="報告一覧">
       {items}
     </section>
   </main>
-  <script src="gallery-modes.js" defer></script>
+  <script src="gallery-articles.js" defer></script>
 </body>
 </html>
 '''
+
 
 
 def main() -> None:

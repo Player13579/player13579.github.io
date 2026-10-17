@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="制作に必要な内容を通常表示し、このチャットの全報告も切り替えて読めます。">
+  <meta name="description" content="このチャットで行った改善を、見出しから選んで読めます。">
   <title>B 制作ギャラリー</title>
   <link rel="icon" href="icons/favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon"><link rel="icon" href="icons/favicon.svg" type="image/svg+xml" sizes="any"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png" sizes="180x180">
   <link rel="stylesheet" href="styles.css">
@@ -12,332 +12,376 @@
   <header class="site-header"><a class="brand" href="#main">B 制作ギャラリー</a></header>
   <main id="main" class="home-main">
     <section class="hero" aria-labelledby="page-heading">
-      <h1 id="page-heading">制作に必要な変化だけを。</h1>
-      <p class="hero-copy">制作に必要な内容を通常表示し、このチャットの全報告も切り替えて読めます。</p>
+      <h1 id="page-heading">制作の改善報告</h1>
+      <p class="hero-copy">見出しを選ぶと報告の本文が開きます。</p>
     </section>
-    <section class="view-controls" aria-labelledby="view-heading">
-      <div><h2 id="view-heading">表示する内容</h2>
-        <p id="view-description">「制作に必要な内容」は、作品づくりに直接役立つ掲載内容に絞ります。「すべての報告」では、このチャットが実施した改善を、内部仕様や検証も含めて表示します。</p>
-      </div>
-      <div class="mode-buttons" role="group" aria-label="表示モード">
-        <button type="button" data-mode-switch="essential" aria-pressed="true" aria-controls="gallery-list" disabled>制作に必要な内容</button>
-        <button type="button" data-mode-switch="all" aria-pressed="false" aria-controls="gallery-list" disabled>すべての報告</button>
-      </div>
-      <p class="view-count" data-view-count aria-live="polite" aria-atomic="true">制作に必要な内容を表示中。0件。 見出しのみ1件。</p>
-      <noscript><p>表示モードの切替にはJavaScriptが必要です。</p></noscript>
-    </section>
-    <section id="gallery-list" class="gallery-items" aria-label="報告一覧" aria-describedby="view-description">
-      <article class="gallery-item" id="twisted-band-lab" data-essential="false" data-show-heading="false" hidden>
-  <h2>帯のねじれと、表裏の明暗を比べる</h2>
-  <div data-report-content>
-  <p class="item-summary">帯を三次元でねじり、輪郭の絞られる位置、表裏の切替、面の明暗を同じ縮尺で比べる道具を追加しました。ねじれ量、始点の向き、横断面の幅、相対光量を操作し、比較用の案を残せます。選んだ案は色付きSVGと三次元座標・法線を含むJSONへ保存できます。</p>
+    <section id="gallery-list" class="gallery-items" aria-label="報告一覧">
+      <article class="gallery-item" id="planar-projection-lab">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>紋様に、面の傾きと遠近感を反映する</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">紋様の全要素を同じ斜めの面へ配置し、共通のカメラから投影する機能を追加しました。元の意匠の比率と配置数を面内で保ち、面の傾き・画面内の向き・遠近感を変更できます。正射影と透視投影の違いも比較でき、採用した形状をSVGと三次元・投影座標付きデータへ保存できます。</p>
+  <p class="item-tool"><a href="labs/plane.html">表示例で投影の違いを比べる</a></p>
+
+
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>射影幾何学・コンピュータービジョンの平面ホモグラフィと同次座標を使い、一枚の面にある全輪郭へ同じ3×3行列と同次除算を適用します。幾何光学の理想ピンホールモデルで奥行きに応じた倍率を求め、正射影では奥行きによる倍率変化を除きます。ユークリッド幾何学・線形代数の正の均一拡縮と直交基底を使い、元の意匠を比率を保つ共通寸法へそろえて、面そのものを三次元へ回転します。平面内の形と、投影後には一般に保たれない長さ・角度・面積・平行性を区別します。正規化寸法、配色、操作範囲と比較表示は今回の設計選択で、美の法則ではありません。</p></section>
+
+          <section><h3>確認範囲</h3><p>10件のNode試験で入力、実際の紋様形式、均一正規化、直交基底、既知のカメラ座標、ホモグラフィと三次元投影、正射影の距離非依存、元入力の保持を確認しました。別実装の85桁Decimal計算で、4種類の紋様それぞれ120投影条件、合計480モデルを照合し、5760頂点・60480数値の最大差は1×10⁻¹⁵でした。480条件で直線上の対応を確認し、全頂点が固定の表示範囲に収まりました。
+
+公開済みの紋様生成機能で、回転8方向・半径1.5・元の帯の向き25°・全体30°・先細り0.8→0.2のデータを実際に保存し、その1.2MiB弱のファイルを読み込みました。元の4776頂点と設定はそのまま再構成され、比較案は別の紋様・投影方法へ変えても保持されました。対応外の形式と8MiB超の入力では直前の形を保ちました。傾き75°・回転35°・距離2の保存SVGは8経路で画面と一致し、JSONの43109数値はNode再構成との差1.78×10⁻¹⁵以下でした。SVGを背景透明の1024×1024へ描画できました。390px幅で縦並びと横はみ出しがないこと、操作ボタンが44pxの高さであることも確認しました。
+
+制約：入力は放射状紋様の設定JSONだけで、SVG・画像・投影結果のJSONを読み込む機能ではありません。保存座標を信頼せず元の設定から再構成します。最大辺を2ローカル単位へそろえるため、元の絶対寸法は保持しません。傾き±80°、距離2〜8の範囲を使い、完全な真横、カメラをまたぐ投影や任意の四角形への合わせ込みを扱いません。距離と焦点距離は同率で変え、基準面の中心倍率を保ちます。元の曲線近似誤差、正規化の感度、投影・丸め・画素は別です。材質・照明・発光・厚み・ぼけ・他対象との遮蔽、知覚と美的効果は計算・保証しません。形・数・寸法・接触・カメラの固定条件を優先し、一つの完全なB設計へ採用条件を具体化します。</p></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://visionbook.mit.edu/homography.html">https://visionbook.mit.edu/homography.html</a></li><li><a href="https://visionbook.mit.edu/imaging_geometry.html">https://visionbook.mit.edu/imaging_geometry.html</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://github.com/Player13579/B/blob/df855ca7484d3c1de82ee84b7f47a4a51a9285fb/docs/planar-motif-projection.md">https://github.com/Player13579/B/blob/df855ca7484d3c1de82ee84b7f47a4a51a9285fb/docs/planar-motif-projection.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/b5c2e2ee6af078d39052427236518e1173a19e93">GitHubの変更</a></p>
+      </details>
+    </div>
+  </details>
+</article>
+<article class="gallery-item" id="twisted-band-lab">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>帯のねじれと、表裏の明暗を比べる</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">帯を三次元でねじり、輪郭の絞られる位置、表裏の切替、面の明暗を連動させる機能を追加しました。ねじれ量、始点の向き、横断面の幅、相対光量を変え、同じ縮尺で比較できます。選んだ案は色付きSVGと三次元座標・法線を含むJSONへ保存できます。</p>
   <p class="item-tool"><a href="labs/twist.html">帯のねじれと明暗を試す</a></p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>微分幾何学・ベクトル解析のパラメトリック曲面と接ベクトルの外積を使い、断面を回転させた帯の形と法線を同じ式から計算します。放射測定・コンピューターグラフィックスのLambert理想拡散BRDF（ρ/π）と入射照度の余弦項を用い、視点と同じ方向に置く光への向きから、見えている側の直接反射を求めます。色彩工学のsRGB伝達関数で、線形RGBの計算結果を最後に表示色へ符号化します。曲面を小領域へ近似するときは、真横を向く断面を分割位置へ加え、表裏が一つの領域内で反転しないようにします。曲面の選択式、表裏の配色、分割数と比較操作は設計上の選択で、美の法則ではありません。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>微分幾何学・ベクトル解析のパラメトリック曲面と接ベクトルの外積を使い、断面を回転させた帯の形と法線を同じ式から計算します。放射測定・コンピューターグラフィックスのLambert理想拡散BRDF（ρ/π）と入射照度の余弦項を用い、視点と同じ方向に置く光への向きから、見えている側の直接反射を求めます。色彩工学のsRGB伝達関数で、線形RGBの計算結果を最後に表示色へ符号化します。曲面を小領域へ近似するときは、真横を向く断面を分割位置へ加え、表裏が一つの領域内で反転しないようにします。曲面の選択式、表裏の配色、分割数と比較操作は設計上の選択で、美の法則ではありません。</p></section>
 
-      <section><h3>確認範囲</h3><p>9件のNode試験で入力、曲面・法線、表裏と真横断面、臨界位置の分割、線形反射色とsRGBを確認しました。別実装の85桁Decimal計算で49条件・1225面標本・19894数値を照合し、最大差は9.66×10⁻¹⁶でした。75564セルで表裏をまたがない分割を確認し、境界6297区間の中点差を理論補間上限と照合しました。実ブラウザーでは全4条件、比較用の保持、光量0、真横だけを向く有効な条件、補助線、初期化、390px幅の縦並びと横はみ出しがないことを確認しました。保存SVGの1536ポリゴンは画面の座標・色と一致しました。JSONの65206数値はNode再構成との差1.12×10⁻¹⁶未満で、文字列と構造も一致しました。SVGを1000×457へ描画し、平らな帯の内部115080画素では完全な不透明度と、期待色から各色成分1/255以内の丸め差を確認しました。
+          <section><h3>確認範囲</h3><p>9件のNode試験で入力、曲面・法線、表裏と真横断面、臨界位置の分割、線形反射色とsRGBを確認しました。別実装の85桁Decimal計算で49条件・1225面標本・19894数値を照合し、最大差は9.66×10⁻¹⁶でした。75564セルで表裏をまたがない分割を確認し、境界6297区間の中点差を理論補間上限と照合しました。実ブラウザーでは全4条件、比較用の保持、光量0、真横だけを向く有効な条件、補助線、初期化、390px幅の縦並びと横はみ出しがないことを確認しました。保存SVGの1536ポリゴンは画面の座標・色と一致しました。JSONの65206数値はNode再構成との差1.12×10⁻¹⁶未満で、文字列と構造も一致しました。SVGを1000×457へ描画し、平らな帯の内部115080画素では完全な不透明度と、期待色から各色成分1/255以内の丸め差を確認しました。
 
 制約：直線の中心線を持つ厚さのない選択曲面です。中心線の両端は固定ですが、両端断面の向きは変わります。横断面幅が一定でも、長手方向に伸びない布や紙を再現したことにはなりません。固定の正射影・視点方向の光と理想拡散だけを使い、任意の光の影、鏡面・透過・間接光、支持・張力・材料の実測を扱いません。色は元の曲面のセル中心法線による一定色近似で、平面セル法線や滑らかな曲面の画素積分ではありません。補間誤差、浮動小数点、色量子化、表示の継ぎ目対策、知覚と美的効果は別です。保存物は参考形状と表示で、一つの完全なB生成コードやAI生成作品ではありません。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://books.physics.oregonstate.edu/GVC/parametric.html">https://books.physics.oregonstate.edu/GVC/parametric.html</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection">https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection</a></li><li><a href="https://www.w3.org/TR/css-color-4/#color-conversion-code">https://www.w3.org/TR/css-color-4/#color-conversion-code</a></li><li><a href="https://github.com/Player13579/B/blob/dc0375de54658c301c44f571790ea650e53dea2d/docs/twisted-band-lab.md">https://github.com/Player13579/B/blob/dc0375de54658c301c44f571790ea650e53dea2d/docs/twisted-band-lab.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://books.physics.oregonstate.edu/GVC/parametric.html">https://books.physics.oregonstate.edu/GVC/parametric.html</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection">https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection</a></li><li><a href="https://www.w3.org/TR/css-color-4/#color-conversion-code">https://www.w3.org/TR/css-color-4/#color-conversion-code</a></li><li><a href="https://github.com/Player13579/B/blob/dc0375de54658c301c44f571790ea650e53dea2d/docs/twisted-band-lab.md">https://github.com/Player13579/B/blob/dc0375de54658c301c44f571790ea650e53dea2d/docs/twisted-band-lab.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/e70b3ddd9c24d870fb2c425aa1f5653cc41eda42">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/e70b3ddd9c24d870fb2c425aa1f5653cc41eda42">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="repeat-band-seed" data-essential="false" data-show-heading="false" hidden>
-  <h2>選んだ帯の形を、曲線に沿って並べる</h2>
-  <div data-report-content>
-  <p class="item-summary">帯模様ツールで選んだ先細り・曲がり方を保存し、曲線反復配置ツールへ読み込めるようにしました。縦横比を保つ共通の縮尺で同じ形を並べ、間隔と向きを比較できます。比較案は帯の設定・大きさと配置を一緒に保持します。SVGは輪郭だけ、配置データは元の帯設定も含めて保存します。</p>
+<article class="gallery-item" id="repeat-band-seed">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>選んだ帯の形を、曲線に沿って並べる</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">選んだ帯の先細り・曲がり方を保ち、曲線に沿って同じ形を複製配置する機能を追加しました。縦横比を保つ共通の縮尺で並べ、間隔と向きを比較できます。比較案は帯の設定・大きさと配置を一緒に保持します。SVGは輪郭だけ、配置データは元の帯設定も含めて保存します。</p>
   <p class="item-tool"><a href="labs/repeat.html">選んだ帯を曲線に並べる</a></p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>線形代数・ユークリッド幾何学の相似変換を利用します。再構成した近似輪郭の外接枠中心を配置基準とし、最大辺を選んだ大きさへ合わせる正の均一拡縮、各配置点への平行移動、接線角等による回転を組み合わせます。回転行列が長さを保ち、拡縮率が全方向共通なので、各コピーは元の輪郭と同じ角度・長さの比を保ちます。平行移動を含む全体は一般に線形変換そのものではありません。既存の弧長・単位接線と可変幅の帯の構成を再利用し、形を切り替えても中心位置・個数・角度の条件を変えません。外接枠中心は重心ではなく、基準と大きさ・配色は今回の設計選択です。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>線形代数・ユークリッド幾何学の相似変換を利用します。再構成した近似輪郭の外接枠中心を配置基準とし、最大辺を選んだ大きさへ合わせる正の均一拡縮、各配置点への平行移動、接線角等による回転を組み合わせます。回転行列が長さを保ち、拡縮率が全方向共通なので、各コピーは元の輪郭と同じ角度・長さの比を保ちます。平行移動を含む全体は一般に線形変換そのものではありません。既存の弧長・単位接線と可変幅の帯の構成を再利用し、形を切り替えても中心位置・個数・角度の条件を変えません。外接枠中心は重心ではなく、基準と大きさ・配色は今回の設計選択です。</p></section>
 
-      <section><h3>確認範囲</h3><p>7件のNode試験で対応形式・容量・設定検査、元データの設定だけを使う再構成、正規化、配置条件の保持、複製の距離と面積、入力の不変性を確認しました。独立した85桁Decimalの外接枠・均一拡縮とTaylor展開の三角関数で75条件・1164コピー・8040頂点を照合し、頂点差は最大5.26×10⁻¹⁶、距離比の差は7.17×10⁻¹⁶以下でした。実ブラウザーの帯模様ツールでS字・強さ100・上下反転・太さ1.2→0を保存し、その実ファイルを読み込みました。大きさ0.6の帯12個を比較用に残し、調整中を菱形32個へ変えても比較案を保持し、帯12個へ戻すと同じ座標を再現しました。不正JSON・対応外の形式・1MiB超の入力で直前の配置を保ち、正しいデータで復帰しました。初期化、1280×720と390×844の表示も確認しました。保存SVGの12輪郭・各793頂点は画面の文字列表現と完全一致し、背景のない1024×1024画像へ描画できました。配置JSONには元の帯設定を含み、22616数値のNode再計算との差は9×10⁻¹⁶以下でした。
+          <section><h3>確認範囲</h3><p>7件のNode試験で対応形式・容量・設定検査、元データの設定だけを使う再構成、正規化、配置条件の保持、複製の距離と面積、入力の不変性を確認しました。独立した85桁Decimalの外接枠・均一拡縮とTaylor展開の三角関数で75条件・1164コピー・8040頂点を照合し、頂点差は最大5.26×10⁻¹⁶、距離比の差は7.17×10⁻¹⁶以下でした。実ブラウザーの帯模様ツールでS字・強さ100・上下反転・太さ1.2→0を保存し、その実ファイルを読み込みました。大きさ0.6の帯12個を比較用に残し、調整中を菱形32個へ変えても比較案を保持し、帯12個へ戻すと同じ座標を再現しました。不正JSON・対応外の形式・1MiB超の入力で直前の配置を保ち、正しいデータで復帰しました。初期化、1280×720と390×844の表示も確認しました。保存SVGの12輪郭・各793頂点は画面の文字列表現と完全一致し、背景のない1024×1024画像へ描画できました。配置JSONには元の帯設定を含み、22616数値のNode再計算との差は9×10⁻¹⁶以下でした。
 
 制約：入力対象は帯模様ツールの形状JSONだけで、SVG・画像や配置全体のJSONは読込みません。形状の保存座標をそのまま採用せず、設定から固定した帯アルゴリズムで再構成します。元の近似誤差を引き継ぎます。均一拡縮で比率を保っても、元の絶対的な大きさを保つわけではありません。配置曲線に合わせて各輪郭を曲げ直す処理、重なり除去、接触・支持・物性・投影後や知覚上の間隔、美的成功は保証しません。固定された数・形・位置・向き・接触を優先します。元の帯の数値評価と、外接枠の正規化感度・弧長反転・丸め・画素の誤差は別です。保存物は平面の配置資料で、一つの完全なB設計コードや作品画像ではありません。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://textbooks.math.gatech.edu/ila/linear-transformations.html">https://textbooks.math.gatech.edu/ila/linear-transformations.html</a></li><li><a href="https://books.physics.oregonstate.edu/GVC/arclength.html">https://books.physics.oregonstate.edu/GVC/arclength.html</a></li><li><a href="https://github.com/Player13579/B/blob/f8e7e98d30eed2cefa02e24aa1fcf1bf894279c8/docs/repeat-band-seed.md">https://github.com/Player13579/B/blob/f8e7e98d30eed2cefa02e24aa1fcf1bf894279c8/docs/repeat-band-seed.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://textbooks.math.gatech.edu/ila/linear-transformations.html">https://textbooks.math.gatech.edu/ila/linear-transformations.html</a></li><li><a href="https://books.physics.oregonstate.edu/GVC/arclength.html">https://books.physics.oregonstate.edu/GVC/arclength.html</a></li><li><a href="https://github.com/Player13579/B/blob/f8e7e98d30eed2cefa02e24aa1fcf1bf894279c8/docs/repeat-band-seed.md">https://github.com/Player13579/B/blob/f8e7e98d30eed2cefa02e24aa1fcf1bf894279c8/docs/repeat-band-seed.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/284848b09df0e406882807601da152a078b2e4c5">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/284848b09df0e406882807601da152a078b2e4c5">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="curve-repeat-lab" data-essential="false" data-show-heading="false" hidden>
-  <h2>曲線に沿って、飾りの間隔と向きを選ぶ</h2>
-  <div data-report-content>
-  <p class="item-summary">既存の線状装飾の制作資料として、同じ曲線・個数のまま、横方向の間隔をそろえる案と、曲線に沿って測る中心間隔をそろえる案を比較する任意の道具を追加しました。飾りの向きは曲線に沿わせるか、一定に保てます。比較用の配置を残し、採用した平面形状をSVGや座標付きデータへ保存できます。</p>
+<article class="gallery-item" id="curve-repeat-lab">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>曲線に沿って、飾りの間隔と向きを選ぶ</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">同じ曲線・個数のまま、横方向の間隔をそろえる配置と、曲線に沿って測る中心間隔をそろえる配置を構成する機能を追加しました。飾りの向きは曲線に沿わせるか、一定に保てます。比較用の配置を残し、採用した平面形状をSVGや座標付きデータへ保存できます。</p>
   <p class="item-tool"><a href="labs/repeat.html">曲線に沿う飾りの配置を操作して比べる</a></p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>微分幾何学・ベクトル解析の弧長と単位接線を使います。微分ベクトルの長さを積分して曲線に沿う距離を求め、その距離を等分する位置へ中心を置きます。数値解析の二分法で対応する位置を求め、単位接線の角度に応じた回転と平行移動で、同じ見本の形と大きさを保って並べます。横方向の等分も別の配置案として選べます。実装対象は両端の横幅6、中央高さを選べる二次Bezier曲線族です。端点・直線・中央の対称位置は直接扱い、必要な内点を48回の二分法で解きます。弧長の原始関数は、この曲線族へ今回代入・整理しています。見本の菱形・比率・配色と操作範囲は設計選択で、美の法則ではありません。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>微分幾何学・ベクトル解析の弧長と単位接線を使います。微分ベクトルの長さを積分して曲線に沿う距離を求め、その距離を等分する位置へ中心を置きます。数値解析の二分法で対応する位置を求め、単位接線の角度に応じた回転と平行移動で、同じ見本の形と大きさを保って並べます。横方向の等分も別の配置案として選べます。実装対象は両端の横幅6、中央高さを選べる二次Bezier曲線族です。端点・直線・中央の対称位置は直接扱い、必要な内点を48回の二分法で解きます。弧長の原始関数は、この曲線族へ今回代入・整理しています。見本の菱形・比率・配色と操作範囲は設計選択で、美の法則ではありません。</p></section>
 
-      <section><h3>確認範囲</h3><p>11件のNode試験に、5000条件の端点固定の走査を含めました。独立した85桁Decimalの弧長計算とNewton法で540条件・8208個のマークを照合し、位置差は最大1.62×10⁻¹⁴、等弧長の目標との差は最大1.89×10⁻¹⁴局所単位でした。実ブラウザーで個数3〜32、高さ−3〜3、向き−90〜90度、間隔・向きの切替、比較案の保持、補助線、初期化と保存を確認しました。初期状態の12個では、横方向等間隔案の曲線に沿う中心間隔は約0.547〜0.857、等弧長案は約0.679局所単位です。SVGの12ポリゴンは画面と同じ頂点座標を持ち、背景のない1024×1024画像へ描画できました。JSONの491数値はNode側の再計算との差が最大1.12×10⁻¹⁶でした。1280×720と390×844で表示も確認しました。
+          <section><h3>確認範囲</h3><p>11件のNode試験に、5000条件の端点固定の走査を含めました。独立した85桁Decimalの弧長計算とNewton法で540条件・8208個のマークを照合し、位置差は最大1.62×10⁻¹⁴、等弧長の目標との差は最大1.89×10⁻¹⁴局所単位でした。実ブラウザーで個数3〜32、高さ−3〜3、向き−90〜90度、間隔・向きの切替、比較案の保持、補助線、初期化と保存を確認しました。初期状態の12個では、横方向等間隔案の曲線に沿う中心間隔は約0.547〜0.857、等弧長案は約0.679局所単位です。SVGの12ポリゴンは画面と同じ頂点座標を持ち、背景のない1024×1024画像へ描画できました。JSONの491数値はNode側の再計算との差が最大1.12×10⁻¹⁶でした。1280×720と390×844で表示も確認しました。
 
 制約：等しくするのは曲線に沿う中心間隔で、中心を直線で結ぶ弦長、飾りの縁の隙間、投影後の間隔や知覚的な密度まで等しくしません。二分法の残差や区間幅は丸め・関数評価を含む厳密保証ではありません。補助曲線は128区間の折れ線で、補間の評価は根探索・丸め・飾り形状・投影・画素・知覚を含みません。重なりや物理的な接触・支持は判定しません。固定された個数・形・位置・向き・端点・接触を優先します。閉じた輪、任意SVGの読込み、三次元曲面上の距離・運動は実装していません。保存物は平面配置の制作資料で、完全なBコードや作品画像ではありません。B画像生成・知覚・美的効果は未確認です。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://books.physics.oregonstate.edu/GVC/arclength.html">https://books.physics.oregonstate.edu/GVC/arclength.html</a></li><li><a href="https://members.loria.fr/samuel.hornus/quadratic-arc-length.html">https://members.loria.fr/samuel.hornus/quadratic-arc-length.html</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html</a></li><li><a href="https://github.com/Player13579/B/blob/5d80b5ba09422c41b2471c6eea64ce78b72b7f9f/docs/curve-repeat-lab.md">https://github.com/Player13579/B/blob/5d80b5ba09422c41b2471c6eea64ce78b72b7f9f/docs/curve-repeat-lab.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://books.physics.oregonstate.edu/GVC/arclength.html">https://books.physics.oregonstate.edu/GVC/arclength.html</a></li><li><a href="https://members.loria.fr/samuel.hornus/quadratic-arc-length.html">https://members.loria.fr/samuel.hornus/quadratic-arc-length.html</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html</a></li><li><a href="https://github.com/Player13579/B/blob/5d80b5ba09422c41b2471c6eea64ce78b72b7f9f/docs/curve-repeat-lab.md">https://github.com/Player13579/B/blob/5d80b5ba09422c41b2471c6eea64ce78b72b7f9f/docs/curve-repeat-lab.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/2dc0cda42906ebb6fc5d541f5d904bcbccc99da2">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/2dc0cda42906ebb6fc5d541f5d904bcbccc99da2">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="point-spacing-lab" data-essential="false" data-show-heading="false" hidden>
-  <h2>点の数を保って、散らし方を比べる</h2>
-  <div data-report-content>
-  <p class="item-summary">既存の点模様の配置資料として、ランダムに散らす案と、近づきすぎる点を避ける候補選択を比べる任意の道具を追加しました。方法だけを変えたときは点数を保ちます。同じ方法・並びの番号のまま点数を増やす場合は、元の点を動かさず後続を追加できます。比較案を残し、SVGや座標付きデータへ保存できます。</p>
+<article class="gallery-item" id="point-spacing-lab">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>点の数を保って、散らし方を比べる</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">同じ点数のまま、ランダムな点配置と、近づきすぎる点を避けた配置を構成する機能を追加しました。同じ方法・並びの番号のまま点数を増やす場合は、元の点を動かさず後続を追加できます。比較案を残し、SVGや座標付きデータへ保存できます。</p>
   <p class="item-tool"><a href="labs/points.html">点の散らし方を操作して比べる</a></p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>コンピューターグラフィックス・数値サンプリングのbest-candidate型の逐次サンプリングを、点模様の配置へ応用しています。複数候補の各々について既存点への最短のユークリッド距離を計算し、その距離が最大の候補を一つ採用します。Mitchell1991年論文4節では既存点数に比例した候補数を用いますが、この道具は32候補に固定しています。正方形内の通常の距離を用い、反対側の辺はつなぎません。再現可能な擬似乱数列と、点数によらない候補数によって、同じ条件での再現と先に置いた点の位置の保持を実現します。点数・候補数・半径・配色は今回の設計選択で、美の法則ではありません。原論文のレイトレーシングや画質実験を再現したものでもありません。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>コンピューターグラフィックス・数値サンプリングのbest-candidate型の逐次サンプリングを、点模様の配置へ応用しています。複数候補の各々について既存点への最短のユークリッド距離を計算し、その距離が最大の候補を一つ採用します。Mitchell1991年論文4節では既存点数に比例した候補数を用いますが、この道具は32候補に固定しています。正方形内の通常の距離を用い、反対側の辺はつなぎません。再現可能な擬似乱数列と、点数によらない候補数によって、同じ条件での再現と先に置いた点の位置の保持を実現します。点数・候補数・半径・配色は今回の設計選択で、美の法則ではありません。原論文のレイトレーシングや画質実験を再現したものでもありません。</p></section>
 
-      <section><h3>確認範囲</h3><p>10件のNode試験に加え、独立したPythonの32ビット演算と候補選択で70条件・3472点の座標を完全照合しました。56133候補の選択と、70桁計算による151032組の距離を確認し、距離・平均最近点距離の差は最大5.56×10⁻¹⁷でした。初期の64点・番号1の比較では最短中心間距離がランダム案0.00222983、候補選択案0.08065239となりました。この有限例の測定で、全番号・点数の優位性を証明するものではありません。実ブラウザーで点数8〜128、既存点の保持、比較案の固定、最近接対の補助線、番号の無効入力と復帰・最大値から0への切替、初期化、SVG・JSONの実保存を確認しました。保存SVGの64円は画面の座標と一致し、背景のない1024×1024画像へ描画できました。1280×720と390×844の表示も確認しました。
+          <section><h3>確認範囲</h3><p>10件のNode試験に加え、独立したPythonの32ビット演算と候補選択で70条件・3472点の座標を完全照合しました。56133候補の選択と、70桁計算による151032組の距離を確認し、距離・平均最近点距離の差は最大5.56×10⁻¹⁷でした。初期の64点・番号1の比較では最短中心間距離がランダム案0.00222983、候補選択案0.08065239となりました。この有限例の測定で、全番号・点数の優位性を証明するものではありません。実ブラウザーで点数8〜128、既存点の保持、比較案の固定、最近接対の補助線、番号の無効入力と復帰・最大値から0への切替、初期化、SVG・JSONの実保存を確認しました。保存SVGの64円は画面の座標と一致し、背景のない1024×1024画像へ描画できました。1280×720と390×844の表示も確認しました。
 
 制約：最小間隔を必須とするPoisson-disk条件、全領域の最適な被覆、blue noiseのスペクトル、等方性、周期的なタイル、アンチエイリアス、知覚・美的効果は保証しません。有限の擬似乱数列は数学的な独立連続乱数ではなく、点の一致も排除していません。距離は中心間で、実際の粒の大きさや縁間隔ではありません。明示された数・位置・接触・意図した密集・世界内の物理分布を優先します。保存物は平面の配置資料で、完全なB設計コードではありません。B画像生成・実際の作品での見えは未確認です。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.fxguide.com/wp-content/uploads/2017/02/p157-mitchell.pdf">https://www.fxguide.com/wp-content/uploads/2017/02/p157-mitchell.pdf</a></li><li><a href="https://doi.org/10.1145/122718.122736">https://doi.org/10.1145/122718.122736</a></li><li><a href="https://github.com/Player13579/B/blob/bc41753043f2a7a8e7b01bb429ae43eb7bd5550a/docs/point-spacing-lab.md">https://github.com/Player13579/B/blob/bc41753043f2a7a8e7b01bb429ae43eb7bd5550a/docs/point-spacing-lab.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.fxguide.com/wp-content/uploads/2017/02/p157-mitchell.pdf">https://www.fxguide.com/wp-content/uploads/2017/02/p157-mitchell.pdf</a></li><li><a href="https://doi.org/10.1145/122718.122736">https://doi.org/10.1145/122718.122736</a></li><li><a href="https://github.com/Player13579/B/blob/bc41753043f2a7a8e7b01bb429ae43eb7bd5550a/docs/point-spacing-lab.md">https://github.com/Player13579/B/blob/bc41753043f2a7a8e7b01bb429ae43eb7bd5550a/docs/point-spacing-lab.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/2fdc998526cfe3ec19383385da86322bef880034">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/2fdc998526cfe3ec19383385da86322bef880034">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="catenary-design-lab" data-essential="false" data-show-heading="false" hidden>
-  <h2>吊ったコードのたるみを、両端と長さから決める</h2>
-  <div data-report-content>
-  <p class="item-summary">両端の横の距離・高さの違いと全長の余裕から、静かに吊り下がるコードの中心線を構成する任意の道具を追加しました。比較用の案を残し、同じ縮尺で別案と比べ、採用した中心線をSVGや座標付きデータへ保存できます。</p>
+<article class="gallery-item" id="catenary-design-lab">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>吊ったコードのたるみを、両端と長さから決める</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">両端の横の距離・高さの違いと全長の余裕から、静かに吊り下がるコードの中心線を構成する機能を追加しました。比較用の案を残し、同じ縮尺で別案と比べ、採用した中心線をSVGや座標付きデータへ保存できます。</p>
   <p class="item-tool"><a href="labs/catenary.html">吊ったコードの形を操作して比べる</a></p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>力学・静力学の、ニュートン力学の静止時の力のつり合いから導く懸垂線を使います。水平張力が一定で、鉛直張力成分の差が弧長に沿う自重を支えることから、双曲線余弦coshの曲線を得ます。数学・数値解析の二分法で、両端と目標全長に合うパラメーターを求め、二階微分による線形補間の誤差評価で折れ線の区間数を選びます。最低点が表示区間の外に来る場合も扱い、たるみは両端を結ぶ直線からの最大鉛直距離として計算します。対象は単位弧長当たりの重さが均一で、伸びず、曲げ剛性を無視でき、両端だけで支えるコードが一様な下向き重力の下で静止する場合です。色・描線幅・操作範囲は設計上の選択で、美の法則ではありません。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>力学・静力学の、ニュートン力学の静止時の力のつり合いから導く懸垂線を使います。水平張力が一定で、鉛直張力成分の差が弧長に沿う自重を支えることから、双曲線余弦coshの曲線を得ます。数学・数値解析の二分法で、両端と目標全長に合うパラメーターを求め、二階微分による線形補間の誤差評価で折れ線の区間数を選びます。最低点が表示区間の外に来る場合も扱い、たるみは両端を結ぶ直線からの最大鉛直距離として計算します。対象は単位弧長当たりの重さが均一で、伸びず、曲げ剛性を無視でき、両端だけで支えるコードが一様な下向き重力の下で静止する場合です。色・描線幅・操作範囲は設計上の選択で、美の法則ではありません。</p></section>
 
-      <section><h3>確認範囲</h3><p>12件のNode試験で既知の懸垂線、端点・全長・力のつり合い、上下の高さ違い、最低点・たるみ、補間誤差、無効入力や容量不足を確認しました。独立した90桁のNewton法とcosh差の計算で100条件・700位置を照合し、表示区間の外に頂点がある24条件も確認。連続モデルの座標差は最大7.70×10⁻¹⁵局所単位、全長差は3.56×10⁻¹⁵、正規化した力のつり合いの差は4.01×10⁻¹⁵でした。折れ線の位置差は既定の補間誤差目標10⁻⁴以内。実ブラウザーで距離・高さ・長さの余裕、比較案の保持、補助線、初期化、SVG・JSONの保存を確認。保存SVGの開いた1経路は画面の中心線と一致し、背景のない1024×1024画像へ描画できました。1280×720と390×844の表示も確認しました。
+          <section><h3>確認範囲</h3><p>12件のNode試験で既知の懸垂線、端点・全長・力のつり合い、上下の高さ違い、最低点・たるみ、補間誤差、無効入力や容量不足を確認しました。独立した90桁のNewton法とcosh差の計算で100条件・700位置を照合し、表示区間の外に頂点がある24条件も確認。連続モデルの座標差は最大7.70×10⁻¹⁵局所単位、全長差は3.56×10⁻¹⁵、正規化した力のつり合いの差は4.01×10⁻¹⁵でした。折れ線の位置差は既定の補間誤差目標10⁻⁴以内。実ブラウザーで距離・高さ・長さの余裕、比較案の保持、補助線、初期化、SVG・JSONの保存を確認。保存SVGの開いた1経路は画面の中心線と一致し、背景のない1024×1024画像へ描画できました。1280×720と390×844の表示も確認しました。
 
 制約：数値的な全長合わせの残差と、当てはめた連続モデルへの補間誤差は別です。補間評価には数値解・丸め・画素・知覚の誤差を含めません。折れ線の弦長合計も連続モデルの全長とは異なります。風・途中の接触・追加荷重・弾性・曲げ剛性・動き、鎖の個々の輪や布の面、実際の張力・強度は扱いません。両端・長さ・接触等が固定された作品の条件を優先します。保存物は平面の中心線資料で、完全なB設計コードではありません。B画像生成・物理実測・知覚と美的効果は未確認です。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.astro.uvic.ca/~tatum/classmechs/class18.pdf">https://www.astro.uvic.ca/~tatum/classmechs/class18.pdf</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html</a></li><li><a href="https://github.com/Player13579/B/blob/1407c8869767ac9a5c73fa0d797a93be761c63cd/docs/catenary-design-lab.md">https://github.com/Player13579/B/blob/1407c8869767ac9a5c73fa0d797a93be761c63cd/docs/catenary-design-lab.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.astro.uvic.ca/~tatum/classmechs/class18.pdf">https://www.astro.uvic.ca/~tatum/classmechs/class18.pdf</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html</a></li><li><a href="https://github.com/Player13579/B/blob/1407c8869767ac9a5c73fa0d797a93be761c63cd/docs/catenary-design-lab.md">https://github.com/Player13579/B/blob/1407c8869767ac9a5c73fa0d797a93be761c63cd/docs/catenary-design-lab.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/5df64dbe834d311dc5e435f9d375b1821226ab60">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/5df64dbe834d311dc5e435f9d375b1821226ab60">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="rosette-design-lab" data-essential="false" data-show-heading="false" hidden>
-  <h2>一つの帯から、回転・鏡映で放射状の紋様をつくる</h2>
-  <div data-report-content>
-  <p class="item-summary">同じ帯の特徴をそろえたまま、回転だけの並びと鏡映を加えた並びを操作して比べる任意の道具を追加しました。分割数・中心からの距離・帯と全体の向きを変え、比較用の案を残し、採用した平面形状をSVGや設定・座標付きデータとして保存できます。</p>
+<article class="gallery-item" id="rosette-design-lab">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>一つの帯から、回転・鏡映で放射状の紋様をつくる</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">同じ帯の特徴をそろえたまま、回転だけの配置や鏡映を加えた放射状の配置を構成する機能を追加しました。分割数・中心からの距離・帯と全体の向きを変えて比較し、採用した平面形状をSVGや設定・座標付きデータとして保存できます。</p>
   <p class="item-tool"><a href="labs/rosette.html">放射状の紋様を操作して比べる</a></p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>数学・群論の有限巡回群C_nと二面体群D_nの平面への作用を使います。360°/n刻みの回転で元の帯を配置し、D_nでは鏡映した組も加えます。ユークリッド幾何学・線形代数の直交変換による距離・絶対面積の保存により、厳密な算術では帯を伸縮させずに配置できます。鏡映は左右の向きと符号付き面積を反転します。帯の向き・距離を先に与え、群の操作を適用してから全体を回すため、比較中も選んだ回転・鏡映の関係を保てます。二面体群の位数はここでは2nとします。元の帯の折れ線の位置誤差上限は等長変換で変わりませんが、浮動小数点の追加丸めを含む保証ではありません。分割数・曲線・配色は造形と操作設計の選択で、対称性が美しさを保証する法則ではありません。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>数学・群論の有限巡回群C_nと二面体群D_nの平面への作用を使います。360°/n刻みの回転で元の帯を配置し、D_nでは鏡映した組も加えます。ユークリッド幾何学・線形代数の直交変換による距離・絶対面積の保存により、厳密な算術では帯を伸縮させずに配置できます。鏡映は左右の向きと符号付き面積を反転します。帯の向き・距離を先に与え、群の操作を適用してから全体を回すため、比較中も選んだ回転・鏡映の関係を保てます。二面体群の位数はここでは2nとします。元の帯の折れ線の位置誤差上限は等長変換で変わりませんが、浮動小数点の追加丸めを含む保証ではありません。分割数・曲線・配色は造形と操作設計の選択で、対称性が美しさを保証する法則ではありません。</p></section>
 
-      <section><h3>確認範囲</h3><p>10件のNode試験で群の閉性・逆元、行列の直交性、全体を回した後の対称操作、距離・符号付き面積、入力条件などを確認しました。独立した90桁計算で60条件・810配置・4860境界位置を照合し、位置誤差が元の帯の設定上限内に収まることを確認しました。実ブラウザーで配置数2〜32、比較案の保持、両端幅0での表示・保存停止と復帰、初期化、SVG・JSONの実保存を確認。保存SVGの12経路が画面の座標と一致し、背景のない1024×1024画像へ描画できました。1280×720と390×844で表示を確認しました。
+          <section><h3>確認範囲</h3><p>10件のNode試験で群の閉性・逆元、行列の直交性、全体を回した後の対称操作、距離・符号付き面積、入力条件などを確認しました。独立した90桁計算で60条件・810配置・4860境界位置を照合し、位置誤差が元の帯の設定上限内に収まることを確認しました。実ブラウザーで配置数2〜32、比較案の保持、両端幅0での表示・保存停止と復帰、初期化、SVG・JSONの実保存を確認。保存SVGの12経路が画面の座標と一致し、背景のない1024×1024画像へ描画できました。1280×720と390×844で表示を確認しました。
 
 制約：n/2nは配置数で、見える花弁や異なる形の数ではありません。重複の除去・輪郭結合・大域交差の検出・接触を保つ自動調整は行いません。数・接触・左右の意味が固定された作品では、その条件を優先します。SVGとJSONは平面形状の資料で、完全なB設計コードではありません。素材・光・立体面・B画像生成・知覚と美的効果は未確認です。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://ocw.mit.edu/courses/res-18-012-algebra-ii-student-notes-spring-2022/mit18_702s22_full_lec.pdf">https://ocw.mit.edu/courses/res-18-012-algebra-ii-student-notes-spring-2022/mit18_702s22_full_lec.pdf</a></li><li><a href="https://ocw.mit.edu/courses/4-520-computational-design-i-theory-and-applications-fall-2005/6f46db37a1ec0307dcb816f3e66881cc_lect7.pdf">https://ocw.mit.edu/courses/4-520-computational-design-i-theory-and-applications-fall-2005/6f46db37a1ec0307dcb816f3e66881cc_lect7.pdf</a></li><li><a href="https://github.com/Player13579/B/blob/97964c5544e75d90e7e8aebd379a61b4d8e29a31/docs/rosette-design-lab.md">https://github.com/Player13579/B/blob/97964c5544e75d90e7e8aebd379a61b4d8e29a31/docs/rosette-design-lab.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://ocw.mit.edu/courses/res-18-012-algebra-ii-student-notes-spring-2022/mit18_702s22_full_lec.pdf">https://ocw.mit.edu/courses/res-18-012-algebra-ii-student-notes-spring-2022/mit18_702s22_full_lec.pdf</a></li><li><a href="https://ocw.mit.edu/courses/4-520-computational-design-i-theory-and-applications-fall-2005/6f46db37a1ec0307dcb816f3e66881cc_lect7.pdf">https://ocw.mit.edu/courses/4-520-computational-design-i-theory-and-applications-fall-2005/6f46db37a1ec0307dcb816f3e66881cc_lect7.pdf</a></li><li><a href="https://github.com/Player13579/B/blob/97964c5544e75d90e7e8aebd379a61b4d8e29a31/docs/rosette-design-lab.md">https://github.com/Player13579/B/blob/97964c5544e75d90e7e8aebd379a61b4d8e29a31/docs/rosette-design-lab.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/97d1e5823090076816779b954aa8a9ad931c3f30">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/97d1e5823090076816779b954aa8a9ad931c3f30">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="band-design-lab" data-essential="false" data-show-heading="false" hidden>
-  <h2>帯模様の曲がり方と太さを、操作して選ぶ</h2>
-  <div data-report-content>
-  <p class="item-summary">曲がり方と両端の太さを画面で調整し、比較用に残した形と同じ縮尺で見比べるツールを追加しました。均一な帯、先細り・先太り、S字や上下反転を試し、気に入った平面形状をSVG・形状データとして保存できます。</p>
+<article class="gallery-item" id="band-design-lab">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>帯模様の曲がり方と太さを、操作して選ぶ</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">帯模様の曲がり方と両端の太さを調整し、形を比較・保存する機能を追加しました。均一な帯、先細り・先太り、S字や上下反転を構成し、選んだ平面形状をSVG・形状データとして保存できます。</p>
   <p class="item-tool"><a href="labs/band.html">帯模様を操作して比べる</a></p>
 
-  <div class="essential-details" data-essential-details>
+      <div class="essential-details" data-essential-details>
     <section><h3>できること</h3><p>座標や数式を書き換える手間を減らし、自分でラフの候補を比較して、選んだ形を制作へ持ち出せます。</p></section>
     <section><h3>使い方</h3><p>曲がり方・強さ・両端の太さを調整し、残したい形で「今の形を比較用に残す」を押します。その後は調整中の形だけを変えます。「帯のSVGを保存」は補助線や背景を含まない平面形状、「形状データを保存」は設定と座標を保存します。</p></section>
   </div>
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>平面曲線の微分幾何学の、弧長に対する曲率・接線角・位置の関係と、単位法線・フレネの微分関係を使います。数値解析の合成中点則で中心線を近似し、三次エルミート補間で始終端の太さと変化率0を満たす幅分布を作ります。幅が変わる境界の二階微分から位置誤差も評価します。左右はSVGのviewBoxを共有し、形ごとに別の縦横比へ伸ばしません。表示範囲は両形状を含むよう一緒に動く場合があります。長さ6、強さの範囲・初期幅・色は操作設計の選択で、美の法則や素材の物性ではありません。</p></section>
-      <section><h3>具体例</h3><p>一定幅の曲線を比較用に残し、調整中の終端の太さだけを0にして、尖った先細りを比べられます。S字では途中で曲がる向きが変わり、終端の接線方向が元へ戻ります。両端の太さをともに0にすると、直前の有効な形を現在の結果として残さず、幅の修正を求めます。</p></section>
-      <section><h3>確認範囲</h3><p>8件のNodeテストと、独立した90桁Decimalの連続曲線・幅計算による240設定・3840境界位置の照合が通過しました。ブラウザーで曲がり方・強さ・反転、比較用形状の保持、ゼロ幅時の消去と保存停止、復帰、リセットを確認しました。実際にSVG・JSONをダウンロードし、SVGの座標が表示中の帯と一致すること、補助線・背景が含まれないことを確認しています。横長・狭い画面で、同じ縮尺と横はみ出しのない表示を検査しました。
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>平面曲線の微分幾何学の、弧長に対する曲率・接線角・位置の関係と、単位法線・フレネの微分関係を使います。数値解析の合成中点則で中心線を近似し、三次エルミート補間で始終端の太さと変化率0を満たす幅分布を作ります。幅が変わる境界の二階微分から位置誤差も評価します。左右はSVGのviewBoxを共有し、形ごとに別の縦横比へ伸ばしません。表示範囲は両形状を含むよう一緒に動く場合があります。長さ6、強さの範囲・初期幅・色は操作設計の選択で、美の法則や素材の物性ではありません。</p></section>
+          <section><h3>具体例</h3><p>一定幅の曲線を比較用に残し、調整中の終端の太さだけを0にして、尖った先細りを比べられます。S字では途中で曲がる向きが変わり、終端の接線方向が元へ戻ります。両端の太さをともに0にすると、直前の有効な形を現在の結果として残さず、幅の修正を求めます。</p></section>
+          <section><h3>確認範囲</h3><p>8件のNodeテストと、独立した90桁Decimalの連続曲線・幅計算による240設定・3840境界位置の照合が通過しました。ブラウザーで曲がり方・強さ・反転、比較用形状の保持、ゼロ幅時の消去と保存停止、復帰、リセットを確認しました。実際にSVG・JSONをダウンロードし、SVGの座標が表示中の帯と一致すること、補助線・背景が含まれないことを確認しています。横長・狭い画面で、同じ縮尺と横はみ出しのない表示を検査しました。
 
 これは平面のラフを作る任意の道具です。局所の正則性と、帯全体の交差・重なりは別で、交差除去は行いません。数値の位置誤差式は厳密算術の評価で、丸め・三角関数・幅や法線・画素・知覚の保証は含みません。保存形状は素材・光・立体面への配置まで定めた完全なBコードではありません。固定条件を保って既存設計へ統合します。作品画像の生成や美的効果の確認は未実施です。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://github.com/Player13579/B/blob/d4cb2666e1e3837bffd140ca4f36e416f2b4bcbe/docs/band-design-lab.md">https://github.com/Player13579/B/blob/d4cb2666e1e3837bffd140ca4f36e416f2b4bcbe/docs/band-design-lab.md</a></li><li><a href="https://arxiv.org/pdf/1305.6644">https://arxiv.org/pdf/1305.6644</a></li><li><a href="https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html">https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicHermiteSpline.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicHermiteSpline.html</a></li><li><a href="https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html">https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://github.com/Player13579/B/blob/d4cb2666e1e3837bffd140ca4f36e416f2b4bcbe/docs/band-design-lab.md">https://github.com/Player13579/B/blob/d4cb2666e1e3837bffd140ca4f36e416f2b4bcbe/docs/band-design-lab.md</a></li><li><a href="https://arxiv.org/pdf/1305.6644">https://arxiv.org/pdf/1305.6644</a></li><li><a href="https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html">https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicHermiteSpline.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicHermiteSpline.html</a></li><li><a href="https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html">https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/44afa8940b953b934b545c8f13d68de193df84a3">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/44afa8940b953b934b545c8f13d68de193df84a3">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="tapered-band-construction" data-essential="false" data-show-heading="false" hidden>
-  <h2>同じ曲線から、先細り・先太りの帯模様を作る</h2>
-  <div data-report-content>
-  <p class="item-summary">中心線を保ったまま、始まりと終わりの幅を選び、一定幅・先細り・先太りの帯模様を構成できるようにしました。端の幅を0にすれば、左右の輪郭が合う尖った先端になります。対象は幅を選べる既存の平面模様で、固定した形・幅・接触を変える方法ではありません。</p>
+<article class="gallery-item" id="tapered-band-construction">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>同じ曲線から、先細り・先太りの帯模様を作る</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">中心線を保ったまま、始まりと終わりの幅を選び、一定幅・先細り・先太りの帯模様を構成できるようにしました。端の幅を0にすれば、左右の輪郭が合う尖った先端になります。対象は幅を選べる既存の平面模様で、固定した形・幅・接触を変える方法ではありません。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/tapered-band-comparison.svg" alt="同じ中心線に一定幅・先細り・先太りを与えた三つの帯と、空間の割合に対する幅の三次エルミート補間のグラフ。幅0の端は意図した尖った先端。微分幾何学と数値解析に基づく幾何の設計例で、生成作品や物理シミュレーションではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>微分幾何学・CADの単位接線と法線、フレネの微分関係を使い、中心線rの左右へ±h(t)Nという法線方向の変位を与えます。幅の分布には数値解析の三次エルミート補間を選び、始終端の幅と変化率0という四つの条件からg(t)=3t²−2t³を構成します。tは弧長の割合s/Lで、時間や筆圧ではありません。幅が変わると境界の接線には法線方向の成分h′が加わるため、一定幅の式を流用せず、幅の一・二階微分を含めた境界の位置誤差を評価します。参照書の右法線を左法線へ変換し、可変幅への微分と誤差評価は今回導いています。幅・中心線・色は設計上の選択で、美の普遍則ではありません。</p></section>
-      <section><h3>具体例</h3><p>長さ6、始点曲率0、終点曲率π/6、総回転角90°の同じ中心線へ、全幅1.2→1.2、1.2→0、0→1.2を与えました。共通縮尺の図で帯の輪郭と幅のグラフを比べられます。横断線は弧長0・25・50・75・100%の法線断面です。幅0の端は意図した先端、非ゼロ幅の端は直線で閉じます。塗られる面積まで同じに保つ比較ではありません。</p></section>
-      <section><h3>確認範囲</h3><p>既存の帯構成の記述を幅の分布と端の意味へ広げ、補助ツール・座標資料・原理解説を追加しました。仕様検査と387件のテストが通過しました。独立した90桁Decimalべき級数積分と幅・法線の計算で96帯・1536境界位置を照合し、64箇所の意図した先端と、直線でも幅のために標本を増やす動作を確認しました。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/tapered-band-comparison.svg" alt="同じ中心線に一定幅・先細り・先太りを与えた三つの帯と、空間の割合に対する幅の三次エルミート補間のグラフ。幅0の端は意図した尖った先端。微分幾何学と数値解析に基づく幾何の設計例で、生成作品や物理シミュレーションではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>微分幾何学・CADの単位接線と法線、フレネの微分関係を使い、中心線rの左右へ±h(t)Nという法線方向の変位を与えます。幅の分布には数値解析の三次エルミート補間を選び、始終端の幅と変化率0という四つの条件からg(t)=3t²−2t³を構成します。tは弧長の割合s/Lで、時間や筆圧ではありません。幅が変わると境界の接線には法線方向の成分h′が加わるため、一定幅の式を流用せず、幅の一・二階微分を含めた境界の位置誤差を評価します。参照書の右法線を左法線へ変換し、可変幅への微分と誤差評価は今回導いています。幅・中心線・色は設計上の選択で、美の普遍則ではありません。</p></section>
+          <section><h3>具体例</h3><p>長さ6、始点曲率0、終点曲率π/6、総回転角90°の同じ中心線へ、全幅1.2→1.2、1.2→0、0→1.2を与えました。共通縮尺の図で帯の輪郭と幅のグラフを比べられます。横断線は弧長0・25・50・75・100%の法線断面です。幅0の端は意図した先端、非ゼロ幅の端は直線で閉じます。塗られる面積まで同じに保つ比較ではありません。</p></section>
+          <section><h3>確認範囲</h3><p>既存の帯構成の記述を幅の分布と端の意味へ広げ、補助ツール・座標資料・原理解説を追加しました。仕様検査と387件のテストが通過しました。独立した90桁Decimalべき級数積分と幅・法線の計算で96帯・1536境界位置を照合し、64箇所の意図した先端と、直線でも幅のために標本を増やす動作を確認しました。
 
 局所正則性には最大半幅と最大曲率からの保守的な十分条件を使います。条件を満たさないことだけでは、実際に退化するとは断定しません。帯全体の重なり・連続交差判定や除去は未実装です。正の幅の数値的な消失は尖った先端として認めません。三次補間の端で幅の一階微分を0にしますが、閉じた輪郭の滑らかな接合や二階微分の一致は保証しません。位置誤差式は厳密算術での評価で、丸め・幅や法線計算・投影や画素・知覚は含みません。図は幾何の説明用で、任意のブラシや円盤列の包絡線、リボンの力学、実画像・美的効果の確認ではありません。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html">https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicHermiteSpline.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicHermiteSpline.html</a></li><li><a href="https://github.com/Player13579/B/blob/9ba73dd44b2cf6562a0e2e7a5b64033e5bad21b1/docs/tapered-band.md">https://github.com/Player13579/B/blob/9ba73dd44b2cf6562a0e2e7a5b64033e5bad21b1/docs/tapered-band.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html">https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicHermiteSpline.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicHermiteSpline.html</a></li><li><a href="https://github.com/Player13579/B/blob/9ba73dd44b2cf6562a0e2e7a5b64033e5bad21b1/docs/tapered-band.md">https://github.com/Player13579/B/blob/9ba73dd44b2cf6562a0e2e7a5b64033e5bad21b1/docs/tapered-band.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/9ba73dd44b2cf6562a0e2e7a5b64033e5bad21b1">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/9ba73dd44b2cf6562a0e2e7a5b64033e5bad21b1">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="normal-width-band-construction" data-essential="false" data-show-heading="false" hidden>
-  <h2>曲線に沿って、幅のある帯模様を作る</h2>
-  <div data-report-content>
-  <p class="item-summary">中心線の形を選んだあと、その両側の輪郭を構成して帯模様へ展開できるようにしました。幅を各位置で中心線に直角な方向へ測るため、曲がる向きが変わっても同じ定義で指定できます。対象は既に許可された平面の模様で、固定された形や幅を変更するものではありません。</p>
+<article class="gallery-item" id="normal-width-band-construction">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>曲線に沿って、幅のある帯模様を作る</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">中心線の形を選んだあと、その両側の輪郭を構成して帯模様へ展開できるようにしました。幅を各位置で中心線に直角な方向へ測るため、曲がる向きが変わっても同じ定義で指定できます。対象は既に許可された平面の模様で、固定された形や幅を変更するものではありません。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/normal-width-band-comparison.svg" alt="長さ6・全幅1.2の三つの帯を共通縮尺で比較した座標図。破線は中心線、横断線は法線断面。微分幾何学とCADのオフセット曲線を使い、局所条件と大域の重なりを区別する。生成作品や素材シミュレーションではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>微分幾何学・計算機援用設計（CAD）の平行曲線／オフセット曲線を使います。中心線r、左向き単位法線N、全幅w、半幅h=w/2から、左右境界をr±hNとして構成します。正の曲率κを反時計回りとすると、距離zの境界の微分は(1−zκ)Tです。h max|κ|&lt;1という十分条件で全断面の局所の正則性を確認し、満たさない場合は幅を勝手に細くせず拒否します。参照書の右向き法線とは符号規約を変換しています。中心線の数値計算には合成中点則を再利用し、境界の二階微分から線形補間の位置誤差を別に評価して標本数を選びます。幅・色・曲率配分は説明用の設計選択で、美の最適値ではありません。</p></section>
-      <section><h3>具体例</h3><p>長さ6、総回転角90°の三つの中心線へ、同じ全幅1.2局所単位を与えました。均一に曲げる案、終端ほど強く曲げる案、終端ほど緩くする案を同じ縮尺で比べられます。破線が中心線、横断線が弧長0・25・50・75・100%の法線断面です。内側と外側の連続境界の長さは約5.05752と6.94248になります。同じ幅でも、内外の輪郭長は同じではありません。両端は法線断面を直線で閉じています。</p></section>
-      <section><h3>確認範囲</h3><p>既存ContourCompositionRuleへ帯の構成条件を一項追加し、補助機能・座標資料・学問的な原理解説を結びました。仕様検査と376件のテストが通過し、独立した90桁Decimalべき級数積分と法線計算で96帯・1536境界位置を照合しました。図は座標から作った幾何の説明図です。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/normal-width-band-comparison.svg" alt="長さ6・全幅1.2の三つの帯を共通縮尺で比較した座標図。破線は中心線、横断線は法線断面。微分幾何学とCADのオフセット曲線を使い、局所条件と大域の重なりを区別する。生成作品や素材シミュレーションではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>微分幾何学・計算機援用設計（CAD）の平行曲線／オフセット曲線を使います。中心線r、左向き単位法線N、全幅w、半幅h=w/2から、左右境界をr±hNとして構成します。正の曲率κを反時計回りとすると、距離zの境界の微分は(1−zκ)Tです。h max|κ|&lt;1という十分条件で全断面の局所の正則性を確認し、満たさない場合は幅を勝手に細くせず拒否します。参照書の右向き法線とは符号規約を変換しています。中心線の数値計算には合成中点則を再利用し、境界の二階微分から線形補間の位置誤差を別に評価して標本数を選びます。幅・色・曲率配分は説明用の設計選択で、美の最適値ではありません。</p></section>
+          <section><h3>具体例</h3><p>長さ6、総回転角90°の三つの中心線へ、同じ全幅1.2局所単位を与えました。均一に曲げる案、終端ほど強く曲げる案、終端ほど緩くする案を同じ縮尺で比べられます。破線が中心線、横断線が弧長0・25・50・75・100%の法線断面です。内側と外側の連続境界の長さは約5.05752と6.94248になります。同じ幅でも、内外の輪郭長は同じではありません。両端は法線断面を直線で閉じています。</p></section>
+          <section><h3>確認範囲</h3><p>既存ContourCompositionRuleへ帯の構成条件を一項追加し、補助機能・座標資料・学問的な原理解説を結びました。仕様検査と376件のテストが通過し、独立した90桁Decimalべき級数積分と法線計算で96帯・1536境界位置を照合しました。図は座標から作った幾何の説明図です。
 
 局所条件を満たしても、離れた部分の重なりや帯全体の一対一配置は保証しません。連続形状の大域交差判定や交差除去は未実装です。位置誤差式は厳密算術に対するもので、返す値は浮動小数点評価です。丸め・三角関数・法線計算・座標や幅の精度損失・投影や画素の誤差は含みません。法線断面の幅を、最短距離・画面上の幅・素材の厚さ・布の力学と同一視しません。実画像・知覚・美的効果は未確認です。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html">https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html</a></li><li><a href="https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node220.html">https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node220.html</a></li><li><a href="https://github.com/Player13579/B/blob/1910eaf4e02a955288e030f25ee77b10eb2b311c/docs/normal-width-band.md">https://github.com/Player13579/B/blob/1910eaf4e02a955288e030f25ee77b10eb2b311c/docs/normal-width-band.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html">https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html</a></li><li><a href="https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node220.html">https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node220.html</a></li><li><a href="https://github.com/Player13579/B/blob/1910eaf4e02a955288e030f25ee77b10eb2b311c/docs/normal-width-band.md">https://github.com/Player13579/B/blob/1910eaf4e02a955288e030f25ee77b10eb2b311c/docs/normal-width-band.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/1910eaf4e02a955288e030f25ee77b10eb2b311c">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/1910eaf4e02a955288e030f25ee77b10eb2b311c">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="arc-length-curvature-profile" data-essential="false" data-show-heading="false" hidden>
-  <h2>曲がりの強さを、線の途中へ配分する</h2>
-  <div data-report-content>
-  <p class="item-summary">既存の平面曲線に形を選べる余地があるとき、均一に曲げる案・終端ほど強く曲げる案・終端ほど緩くする案の座標を構成できるようにしました。接合部の滑らかさだけでなく、線全体のどこへ曲がりを集めるかを選ぶ任意の方法です。同じ長さと始終端の向きでも、終点位置は案ごとに変わります。</p>
+<article class="gallery-item" id="arc-length-curvature-profile">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>曲がりの強さを、線の途中へ配分する</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存の平面曲線に形を選べる余地があるとき、均一に曲げる案・終端ほど強く曲げる案・終端ほど緩くする案の座標を構成できるようにしました。接合部の滑らかさだけでなく、線全体のどこへ曲がりを集めるかを選ぶ任意の方法です。同じ長さと始終端の向きでも、終点位置は案ごとに変わります。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/curvature-profile-comparison.svg" alt="同じ長さ6と総回転角90度で、均一・終端ほど強い・終端ほど緩い曲率配分を共通縮尺で比較する平面座標図。終点は異なり、下段のグラフは弧長に対する曲率。生成作品や物体運動の結果ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>平面曲線の微分幾何学の、弧長s・接線角θ・符号付き曲率κの関係dθ/ds=κを使います。弧長に対して曲率が一次式になるオイラー螺旋／クロソイドを採用し、始終端の曲率から接線方向を積分し、線の座標を構成します。数値計算は数値解析の合成中点則を使い、標本点の積分誤差と、連続曲線を折れ線で近似する二階微分による位置誤差評価を合わせています。参照論文の端点補間アルゴリズムを実装したものではありません。採用した長さ・角度・配分・色は説明用の設計選択で、特定の曲がりが美しいと保証する法則ではありません。</p></section>
-      <section><h3>具体例</h3><p>同じ始点、右向きの初期接線、長さ6局所単位、総回転角90°を保ち、曲率をπ/12で一定、0からπ/6へ増加、π/6から0へ減少させる三案を構成しました。連続曲線の終点は約(3.81972,3.81972)、(4.67936,2.62955)、(2.62955,4.67936)です。掲載図は共通縮尺で、点の割合は元の曲線に沿う長さ、下段はその長さに対する曲率です。時間・速度・物体運動のグラフではありません。</p></section>
-      <section><h3>確認範囲</h3><p>基底の既存ContourCompositionRuleへ曲率配分の条件を追加し、補助機能・座標資料・原理解説を結びました。静的な仕様検査と366件のテストが通過しました。実装と別方式の90桁Decimalべき級数積分で96曲線・828位置標本を照合し、曲線ごとに設定した位置誤差評価との一致を確認しました。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/curvature-profile-comparison.svg" alt="同じ長さ6と総回転角90度で、均一・終端ほど強い・終端ほど緩い曲率配分を共通縮尺で比較する平面座標図。終点は異なり、下段のグラフは弧長に対する曲率。生成作品や物体運動の結果ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>平面曲線の微分幾何学の、弧長s・接線角θ・符号付き曲率κの関係dθ/ds=κを使います。弧長に対して曲率が一次式になるオイラー螺旋／クロソイドを採用し、始終端の曲率から接線方向を積分し、線の座標を構成します。数値計算は数値解析の合成中点則を使い、標本点の積分誤差と、連続曲線を折れ線で近似する二階微分による位置誤差評価を合わせています。参照論文の端点補間アルゴリズムを実装したものではありません。採用した長さ・角度・配分・色は説明用の設計選択で、特定の曲がりが美しいと保証する法則ではありません。</p></section>
+          <section><h3>具体例</h3><p>同じ始点、右向きの初期接線、長さ6局所単位、総回転角90°を保ち、曲率をπ/12で一定、0からπ/6へ増加、π/6から0へ減少させる三案を構成しました。連続曲線の終点は約(3.81972,3.81972)、(4.67936,2.62955)、(2.62955,4.67936)です。掲載図は共通縮尺で、点の割合は元の曲線に沿う長さ、下段はその長さに対する曲率です。時間・速度・物体運動のグラフではありません。</p></section>
+          <section><h3>確認範囲</h3><p>基底の既存ContourCompositionRuleへ曲率配分の条件を追加し、補助機能・座標資料・原理解説を結びました。静的な仕様検査と366件のテストが通過しました。実装と別方式の90桁Decimalべき級数積分で96曲線・828位置標本を照合し、曲線ごとに設定した位置誤差評価との一致を確認しました。
 
 固定された終点・接触・形状を満たさない候補は採用できません。平面上で選んだ線形曲率の曲線を作る方法で、固定端点への自動適合、G2接合の解法、一般の立体表面や投影後の同じ曲率を保証する機能ではありません。誤差式は厳密算術の局所位置に対するもので、返す値は浮動小数点評価です。丸め・三角関数・大きな平行移動・線幅・画素品質を含む証明値にはしていません。図は座標プレビューで、画像生成・知覚・美的効果は未実施です。別の実行promptや必須schemaは増やしていません。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://arxiv.org/pdf/1305.6644">https://arxiv.org/pdf/1305.6644</a></li><li><a href="https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html">https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html</a></li><li><a href="https://github.com/Player13579/B/blob/1d5fc7fd804093c6e1ca46f143ab670bbb5c5cbf/docs/curvature-profile.md">https://github.com/Player13579/B/blob/1d5fc7fd804093c6e1ca46f143ab670bbb5c5cbf/docs/curvature-profile.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://arxiv.org/pdf/1305.6644">https://arxiv.org/pdf/1305.6644</a></li><li><a href="https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html">https://www.math.ntnu.no/emner/TMA4130/2022h/html_notes/Quadrature.html</a></li><li><a href="https://github.com/Player13579/B/blob/1d5fc7fd804093c6e1ca46f143ab670bbb5c5cbf/docs/curvature-profile.md">https://github.com/Player13579/B/blob/1d5fc7fd804093c6e1ca46f143ab670bbb5c5cbf/docs/curvature-profile.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/1d5fc7fd804093c6e1ca46f143ab670bbb5c5cbf">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/1d5fc7fd804093c6e1ca46f143ab670bbb5c5cbf">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="cylindrical-motif-mapping" data-essential="false" data-show-heading="false" hidden>
-  <h2>曲面上の模様を、素材・光まで一つの設計にまとめる</h2>
-  <div data-report-content>
-  <p class="item-summary">分岐模様の座標と円柱面への対応を、幅・素材・光・カメラ・表示条件を含む一つの完全なB参照設計へ統合しました。表面上の寸法を保つ配置と、曲面の向きによる画面上の短縮や明暗をつなげて指定します。参照設計は未描画です。</p>
+<article class="gallery-item" id="cylindrical-motif-mapping">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>曲面上の模様を、素材・光まで一つの設計にまとめる</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">分岐模様の座標と円柱面への対応を、幅・素材・光・カメラ・表示条件を含む一つの完全なB参照設計へ統合しました。表面上の寸法を保つ配置と、曲面の向きによる画面上の短縮や明暗をつなげて指定します。参照設計は未描画です。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/cylindrical-motif-comparison.svg" alt="同じ分岐模様を展開平面と半径4・2.5の円柱面へ対応させた共通縮尺の正投影。格子は作図用で、B画像生成や材質・照明の描画ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>形式言語理論・計算論的造形のD0L並列書換えと2D turtleで、同じ分岐規則から64本の中心線を構成します。微分幾何学の第一基本形式・局所等長写像を使い、弧長u・軸方向vでq=(40 sin(u/40),v,40 cos(u/40))と置き、表面に沿った幅を対応させます。CG・射影幾何の正投影で、その表面を画面へ写します。放射測定・CGのLambert拡散反射モデルρ/πと入射余弦により、面の向き・反射率・照明を明暗へ結びます。色彩工学の表示規約として線形光の平均とsRGB伝達関数を選び、世界内の反射と表示を区別します。寸法・色・分岐角・光とカメラ・露出・標本化方式は、この例の設計選択で、美しさの法則や実測物性ではありません。根拠と各モデルの適用条件は解説へ記しました。</p></section>
-      <section><h3>具体例</h3><p>半径40 mmの湾曲板の前面に、35°分岐模様を幅0.8 mmで配置する参照例です。模様は凹凸ではなく、地とインクの反射率を排他的に切り替える領域としました。表面で同じ幅でも、1000×750画素・傾き20°の正投影では、局所的な幅の幾何評価は約3.273〜5画素になります。これは画素被覆や実画像の読みやすさの保証ではありません。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/cylindrical-motif-comparison.svg" alt="同じ分岐模様を展開平面と半径4・2.5の円柱面へ対応させた共通縮尺の正投影。格子は作図用で、B画像生成や材質・照明の描画ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>形式言語理論・計算論的造形のD0L並列書換えと2D turtleで、同じ分岐規則から64本の中心線を構成します。微分幾何学の第一基本形式・局所等長写像を使い、弧長u・軸方向vでq=(40 sin(u/40),v,40 cos(u/40))と置き、表面に沿った幅を対応させます。CG・射影幾何の正投影で、その表面を画面へ写します。放射測定・CGのLambert拡散反射モデルρ/πと入射余弦により、面の向き・反射率・照明を明暗へ結びます。色彩工学の表示規約として線形光の平均とsRGB伝達関数を選び、世界内の反射と表示を区別します。寸法・色・分岐角・光とカメラ・露出・標本化方式は、この例の設計選択で、美しさの法則や実測物性ではありません。根拠と各モデルの適用条件は解説へ記しました。</p></section>
+          <section><h3>具体例</h3><p>半径40 mmの湾曲板の前面に、35°分岐模様を幅0.8 mmで配置する参照例です。模様は凹凸ではなく、地とインクの反射率を排他的に切り替える領域としました。表面で同じ幅でも、1000×750画素・傾き20°の正投影では、局所的な幅の幾何評価は約3.273〜5画素になります。これは画素被覆や実画像の読みやすさの保証ではありません。
 
 掲載の図は従来の平面・半径4・2.5の座標比較で、今回の板の素材・照明を描いた画像ではありません。格子と画面で一定の線幅は作図用です。完全な設計例の物理的な幅とは区別します。</p></section>
-      <section><h3>確認範囲</h3><p>完全なB-Expression-3参照設計の構造検証、基底・拡張の静的検査と357件のテストが通過しました。独立した式による検査で、64本の模様に幅を加えた領域が前面に収まること、板全体が画面に収まること、前面の入射余弦と露出後の値域を確認しました。接平面から画面への計量は1601条件で照合しました。
+          <section><h3>確認範囲</h3><p>完全なB-Expression-3参照設計の構造検証、基底・拡張の静的検査と357件のテストが通過しました。独立した式による検査で、64本の模様に幅を加えた領域が前面に収まること、板全体が画面に収まること、前面の入射余弦と露出後の値域を確認しました。接平面から画面への計量は1601条件で照合しました。
 
 学問・原理・具体的な使い方・根拠資料・条件と限界を、原理解説と参照設計の出典記録へ対応させています。補助機能の任意利用を、必須schemaや短い別実行promptへ変更していません。画像生成・素材感・可読性・美的効果・比較評価は未実施です。以前の補間誤差検査は座標プレビューに対するもので、この板の描画品質の保証には使いません。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/cylindrical-motif-reference.md">https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/cylindrical-motif-reference.md</a></li><li><a href="https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/examples/cylindrical-motif-reference.json">https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/examples/cylindrical-motif-reference.json</a></li><li><a href="https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf">https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf</a></li><li><a href="https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf">https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf</a></li><li><a href="https://pi.math.cornell.edu/~justin/4540/metric.html">https://pi.math.cornell.edu/~justin/4540/metric.html</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection">https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection</a></li><li><a href="https://www.w3.org/TR/css-color-4/#color-conversion-code">https://www.w3.org/TR/css-color-4/#color-conversion-code</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/cylindrical-motif-reference.md">https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/cylindrical-motif-reference.md</a></li><li><a href="https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/examples/cylindrical-motif-reference.json">https://github.com/Player13579/B/blob/be08ea20410f4b6a522a6043c8cf0d2441fa686c/docs/examples/cylindrical-motif-reference.json</a></li><li><a href="https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf">https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf</a></li><li><a href="https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf">https://cvg.cit.tum.de/_media/teaching/ss2015/lecture_shape_analysis/06_-_first_fundamental_form.pdf</a></li><li><a href="https://pi.math.cornell.edu/~justin/4540/metric.html">https://pi.math.cornell.edu/~justin/4540/metric.html</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection">https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection</a></li><li><a href="https://www.w3.org/TR/css-color-4/#color-conversion-code">https://www.w3.org/TR/css-color-4/#color-conversion-code</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/be08ea20410f4b6a522a6043c8cf0d2441fa686c">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/be08ea20410f4b6a522a6043c8cf0d2441fa686c">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="lsystem-branching-construction" data-essential="false" data-show-heading="false" hidden>
-  <h2>同じ分岐規則から、開き方の違う模様を作る</h2>
-  <div data-report-content>
-  <p class="item-summary">共通の分岐規則から線分座標を作る補助ツールを追加しました。意匠帳の文章の具体化に加え、実際の線形状を構成できます。分かれ方の規則を保ち、回転角を変えて横への広がりが違う模様のラフを比較します。</p>
+<article class="gallery-item" id="lsystem-branching-construction">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>同じ分岐規則から、開き方の違う模様を作る</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">共通の分岐規則から、実際の線分座標と模様のラフを構成する機能を追加しました。意匠帳の文章の具体化に加え、分かれ方の規則を保ち、回転角を変えて横への広がりが違う模様を比較できます。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/lsystem-branching-comparison.svg" alt="同じ分岐規則から作った20度・35度・55度の三つの線模様。同じ局所線分長・共通縮尺のベクトル形状で、B画像生成の結果ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>形式言語理論・計算論的造形のL-system（Lindenmayer system）のうち、決定的・文脈自由の並列書換えD0Lと、2D turtleの幾何解釈を使います。各世代の記号を同時に置換し、その列を前進・回転・位置と向きの保存／復帰へ写します。新しく挿入した記号を同じ回で再置換したり、分岐から戻るときに線を引いたりしません。文字列を図へ写す手法で、図形内の部分形状を検出する形態文法とは異なります。今回の規則・回数・角度・線幅・配色は造形上の選択です。自然の成長や美しさを保証する科学法則として扱いません。</p></section>
-      <section><h3>具体例</h3><p>初期列F、規則F → F[+F][-F]F、反復3回、線分長1、初期位置(0,0)・上向きから、回転角20°・35°・55°の三案を作りました。三案とも同じ190記号・64線分で、最大の括弧階層は3です。幅は約4.39 / 6.11 / 7.04、高さは8.00局所単位。図は一つの共通縮尺で描き、個別の拡大で外形を揃えていません。交差や重なりは角度で変わるため、括弧の階層と画面上の接続を同一視しません。図は実際に構成したベクトル座標のプレビューで、B画像生成の実行結果ではありません。</p></section>
-      <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査、337件のテストが通過しました。タートルを使わない独立した再帰的な図形合成と42条件・9,555線分を照合し、説明図の192線分を三案の座標へ対応させました。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/lsystem-branching-comparison.svg" alt="同じ分岐規則から作った20度・35度・55度の三つの線模様。同じ局所線分長・共通縮尺のベクトル形状で、B画像生成の結果ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>形式言語理論・計算論的造形のL-system（Lindenmayer system）のうち、決定的・文脈自由の並列書換えD0Lと、2D turtleの幾何解釈を使います。各世代の記号を同時に置換し、その列を前進・回転・位置と向きの保存／復帰へ写します。新しく挿入した記号を同じ回で再置換したり、分岐から戻るときに線を引いたりしません。文字列を図へ写す手法で、図形内の部分形状を検出する形態文法とは異なります。今回の規則・回数・角度・線幅・配色は造形上の選択です。自然の成長や美しさを保証する科学法則として扱いません。</p></section>
+          <section><h3>具体例</h3><p>初期列F、規則F → F[+F][-F]F、反復3回、線分長1、初期位置(0,0)・上向きから、回転角20°・35°・55°の三案を作りました。三案とも同じ190記号・64線分で、最大の括弧階層は3です。幅は約4.39 / 6.11 / 7.04、高さは8.00局所単位。図は一つの共通縮尺で描き、個別の拡大で外形を揃えていません。交差や重なりは角度で変わるため、括弧の階層と画面上の接続を同一視しません。図は実際に構成したベクトル座標のプレビューで、B画像生成の実行結果ではありません。</p></section>
+          <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査、337件のテストが通過しました。タートルを使わない独立した再帰的な図形合成と42条件・9,555線分を照合し、説明図の192線分を三案の座標へ対応させました。
 
 制約：線の一致・交差・部分形状の検出、対象への自動配置、幅・先細り・素材・陰影、植物の生理や物理的な接続・支持は計算しません。反復回数はアルゴリズムの段階で、世界内の時間ではありません。既存の模様や形に自由度があるときだけ使い、固定された数・角度・材質を保ちます。座標資料は完全なB設計へ統合するための入力で、別の実行promptではありません。実画像での模様の残り方・系列の読取り・美的効果は未確認です。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf">https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf</a></li><li><a href="https://algorithmicbotany.org/papers/graphical-applications-of-l-systems.html">https://algorithmicbotany.org/papers/graphical-applications-of-l-systems.html</a></li><li><a href="https://github.com/Player13579/B/blob/efedea29cfa8ec70d28dce0196124ec7b2770d3c/docs/lsystem-branching.md">https://github.com/Player13579/B/blob/efedea29cfa8ec70d28dce0196124ec7b2770d3c/docs/lsystem-branching.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf">https://www.algorithmicbotany.org/papers/abop/abop-ch1.pdf</a></li><li><a href="https://algorithmicbotany.org/papers/graphical-applications-of-l-systems.html">https://algorithmicbotany.org/papers/graphical-applications-of-l-systems.html</a></li><li><a href="https://github.com/Player13579/B/blob/efedea29cfa8ec70d28dce0196124ec7b2770d3c/docs/lsystem-branching.md">https://github.com/Player13579/B/blob/efedea29cfa8ec70d28dce0196124ec7b2770d3c/docs/lsystem-branching.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/efedea29cfa8ec70d28dce0196124ec7b2770d3c">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/efedea29cfa8ec70d28dce0196124ec7b2770d3c">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="atmospheric-perspective-construction" data-essential="false" data-show-heading="false" hidden>
-  <h2>空気遠近法の減衰と散乱加算を構成する</h2>
-  <div data-report-content>
-  <p class="item-summary">既存媒体で、表面から届く光の減衰と、媒体中から視線へ加わる散乱光を組み合わせる任意の設計方法を追加しました。遠くの対象を一律に暗くする処理と分け、媒体・照明・実光路に応じた明暗の関係を記述します。</p>
+<article class="gallery-item" id="atmospheric-perspective-construction">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>空気遠近法の減衰と散乱加算を構成する</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存媒体で、表面から届く光の減衰と、媒体中から視線へ加わる散乱光を組み合わせる任意の設計方法を追加しました。遠くの対象を一律に暗くする処理と分け、媒体・照明・実光路に応じた明暗の関係を記述します。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/atmospheric-perspective-comparison.svg" alt="光路0・10・30 mで、減衰した表面寄与と散乱加算を含む観測値を比較した数値説明図。実大気や生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>放射測定・幾何光学・コンピュータグラフィックスの定常放射輸送方程式を用います。消散によるBeer–Lambert形の減衰と、経路上で視線へ入る散乱光の積分を合わせます。今回の数値例では、非発光・均質媒体と、光路に沿って一定の散乱入射場Jを仮定し、L(d)=exp(−βd)L₀+[1−exp(−βd)](σₛ/β)Jとしました。β=σₐ+σₛ、係数はm⁻¹、dは媒体内の実光路長です。Jは規格化した位相関数で重み付けした入射放射輝度で、表面反射のcos因子を含みません。この仮定で表面値はA=(σₛ/β)Jへ近づくため、Aより暗い面は明るく、明るい面は暗くなります。係数・距離・二面の値は説明用の設計選択で、美の法則や実大気の測定値ではありません。</p></section>
-      <section><h3>具体例</h3><p>表面の二値0.1 / 0.7に対し、σₐ=0.01、σₛ=0.05 m⁻¹、J=0.8を共通にすると、光路10 mで観測値は約0.356 / 0.685、30 mで約0.573 / 0.672になります。図の上段は表面寄与だけ、下段は散乱加算を含む合計です。同じ光路の二面の絶対差は透過率倍になりますが、散乱加算がゼロなら二値の相対差は保たれます。差の低下だけを知覚上のコントラスト低下としません。図の灰色は一成分の値を線形表示値へ対応させ、sRGB符号化した教育用表示です。</p></section>
-      <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査、324件のテストが通過しました。数値補助ツールは独立した80桁Decimal計算864件、6件の数値積分、不正入力30件と照合し、説明図の12色を同じ参照値から構成しました。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/atmospheric-perspective-comparison.svg" alt="光路0・10・30 mで、減衰した表面寄与と散乱加算を含む観測値を比較した数値説明図。実大気や生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>放射測定・幾何光学・コンピュータグラフィックスの定常放射輸送方程式を用います。消散によるBeer–Lambert形の減衰と、経路上で視線へ入る散乱光の積分を合わせます。今回の数値例では、非発光・均質媒体と、光路に沿って一定の散乱入射場Jを仮定し、L(d)=exp(−βd)L₀+[1−exp(−βd)](σₛ/β)Jとしました。β=σₐ+σₛ、係数はm⁻¹、dは媒体内の実光路長です。Jは規格化した位相関数で重み付けした入射放射輝度で、表面反射のcos因子を含みません。この仮定で表面値はA=(σₛ/β)Jへ近づくため、Aより暗い面は明るく、明るい面は暗くなります。係数・距離・二面の値は説明用の設計選択で、美の法則や実大気の測定値ではありません。</p></section>
+          <section><h3>具体例</h3><p>表面の二値0.1 / 0.7に対し、σₐ=0.01、σₛ=0.05 m⁻¹、J=0.8を共通にすると、光路10 mで観測値は約0.356 / 0.685、30 mで約0.573 / 0.672になります。図の上段は表面寄与だけ、下段は散乱加算を含む合計です。同じ光路の二面の絶対差は透過率倍になりますが、散乱加算がゼロなら二値の相対差は保たれます。差の低下だけを知覚上のコントラスト低下としません。図の灰色は一成分の値を線形表示値へ対応させ、sRGB符号化した教育用表示です。</p></section>
+          <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査、324件のテストが通過しました。数値補助ツールは独立した80桁Decimal計算864件、6件の数値積分、不正入力30件と照合し、説明図の12色を同じ参照値から構成しました。
 
 制約：数値参照は一般の照明場・多重散乱・密度変化・体積影を解くレンダラーではありません。実大気の分光色・生成画像・奥行き知覚・美的効果は未確認です。固定された媒体や光源を勝手に追加せず、世界内の輸送と表示DepthAirで同じ霞を重ねません。新しい必須schemaや別の実行promptは増やしていません。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes">https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes</a></li><li><a href="https://www.pbr-book.org/4ed/Light_Transport_II_Volume_Rendering/The_Equation_of_Transfer">https://www.pbr-book.org/4ed/Light_Transport_II_Volume_Rendering/The_Equation_of_Transfer</a></li><li><a href="https://www.w3.org/TR/css-color-4/#color-conversion-code">https://www.w3.org/TR/css-color-4/#color-conversion-code</a></li><li><a href="https://github.com/Player13579/B/blob/50d19890525daef28bda95b9b3499a2826553a26/docs/atmospheric-perspective.md">https://github.com/Player13579/B/blob/50d19890525daef28bda95b9b3499a2826553a26/docs/atmospheric-perspective.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes">https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes</a></li><li><a href="https://www.pbr-book.org/4ed/Light_Transport_II_Volume_Rendering/The_Equation_of_Transfer">https://www.pbr-book.org/4ed/Light_Transport_II_Volume_Rendering/The_Equation_of_Transfer</a></li><li><a href="https://www.w3.org/TR/css-color-4/#color-conversion-code">https://www.w3.org/TR/css-color-4/#color-conversion-code</a></li><li><a href="https://github.com/Player13579/B/blob/50d19890525daef28bda95b9b3499a2826553a26/docs/atmospheric-perspective.md">https://github.com/Player13579/B/blob/50d19890525daef28bda95b9b3499a2826553a26/docs/atmospheric-perspective.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/50d19890525daef28bda95b9b3499a2826553a26">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/50d19890525daef28bda95b9b3499a2826553a26">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="visual-family-book" data-essential="false" data-show-heading="false" hidden>
-  <h2>意匠帳から対象別の制作資料を作る</h2>
-  <div data-report-content>
-  <p class="item-summary">意匠帳から対象別の制作資料を作る補助ツールに加え、共有する分岐模様を金属板の象嵌と布の織り模様へ対応させた、完全なB-3参考設計を追加しました。形の関係を共有し、素材ごとの反射条件を分けて記述しています。</p>
+<article class="gallery-item" id="visual-family-book">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>意匠帳から対象別の制作資料を作る</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">意匠帳の共有条件を、対象別の制作資料へ具体化する機能を追加しました。共有する分岐模様を金属板の象嵌と布の織り模様へ対応させた、完全なB-3参考設計も追加しました。形の関係を共有し、素材ごとの反射条件を分けて記述しています。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>デザイン学・計算論的設計の形態文法（shape grammars）を参考に、形と空間的な関係を複数の既存模様へ展開します。解析幾何・CGの剛体変換と正投影で、同じ局所形状を逆向きに配置し画面へ対応させます。金属地には幾何光学・CGのマイクロファセットBRDF（GGX分布、height-correlated Smith、SchlickのFresnel近似）、象嵌と布にはLambertの拡散反射モデル（ρ/π）を選びました。素材の反射を一律に揃えず、同じ模様と異なる素材応答を設計内で両立させます。分岐位置60%、幅3対1、末尾20%のテーパーと材料RGB値は、この例の設計選択です。学術研究が示す美の法則や実測物性値ではありません。</p></section>
-      <section><h3>具体例</h3><p>左の金属板では上向きの模様、右の布片では同じ模様を180度回転した下向きの模様にします。主線と枝は名目12画素・4画素ですが、提案した織りの手掛かりは0.8画素のため、実画像では失われる可能性があります。制作資料から形状・配置・色の役割・素材別の応答を一つの完全な設計へ対応させた参考例です。</p></section>
-      <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査と、統合例の6件を含む313件のテストが通過しました。分岐比・幅比・テーパー、二方向の座標変換と正投影、試料内への模様の収まり、素材パラメータの分離を検査しています。先行する補助ツールでは二つの実入力の文章具体化を確認済みです。
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>デザイン学・計算論的設計の形態文法（shape grammars）を参考に、形と空間的な関係を複数の既存模様へ展開します。解析幾何・CGの剛体変換と正投影で、同じ局所形状を逆向きに配置し画面へ対応させます。金属地には幾何光学・CGのマイクロファセットBRDF（GGX分布、height-correlated Smith、SchlickのFresnel近似）、象嵌と布にはLambertの拡散反射モデル（ρ/π）を選びました。素材の反射を一律に揃えず、同じ模様と異なる素材応答を設計内で両立させます。分岐位置60%、幅3対1、末尾20%のテーパーと材料RGB値は、この例の設計選択です。学術研究が示す美の法則や実測物性値ではありません。</p></section>
+          <section><h3>具体例</h3><p>左の金属板では上向きの模様、右の布片では同じ模様を180度回転した下向きの模様にします。主線と枝は名目12画素・4画素ですが、提案した織りの手掛かりは0.8画素のため、実画像では失われる可能性があります。制作資料から形状・配置・色の役割・素材別の応答を一つの完全な設計へ対応させた参考例です。</p></section>
+          <section><h3>確認範囲</h3><p>基底14章・拡張11章・143規則の静的検査と、統合例の6件を含む313件のテストが通過しました。分岐比・幅比・テーパー、二方向の座標変換と正投影、試料内への模様の収まり、素材パラメータの分離を検査しています。先行する補助ツールでは二つの実入力の文章具体化を確認済みです。
 
 制約：補助ツールは形状認識・幾何文法エンジンやB設計への自動統合ではありません。参考設計は未描画で、レンダラーの実行、系列の読取り、素材感、美的効果は確認していません。布の反射は光沢・繊維透過・多重散乱を省いた近似です。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.mit.edu/~tknight/IJDC/page_introduction.htm">https://www.mit.edu/~tknight/IJDC/page_introduction.htm</a></li><li><a href="https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/">https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory">https://www.pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection">https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection</a></li><li><a href="https://google.github.io/filament/main/filament.html">https://google.github.io/filament/main/filament.html</a></li><li><a href="https://github.com/Player13579/B/blob/e024e446fa394c2d51499de43b25554f23e7e486/docs/visual-family-integration.md">https://github.com/Player13579/B/blob/e024e446fa394c2d51499de43b25554f23e7e486/docs/visual-family-integration.md</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.mit.edu/~tknight/IJDC/page_introduction.htm">https://www.mit.edu/~tknight/IJDC/page_introduction.htm</a></li><li><a href="https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/">https://ocw.mit.edu/courses/4-540-introduction-to-shape-grammars-i-fall-2018/pages/syllabus/</a></li><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory">https://www.pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory</a></li><li><a href="https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection">https://www.pbr-book.org/4ed/Reflection_Models/Diffuse_Reflection</a></li><li><a href="https://google.github.io/filament/main/filament.html">https://google.github.io/filament/main/filament.html</a></li><li><a href="https://github.com/Player13579/B/blob/e024e446fa394c2d51499de43b25554f23e7e486/docs/visual-family-integration.md">https://github.com/Player13579/B/blob/e024e446fa394c2d51499de43b25554f23e7e486/docs/visual-family-integration.md</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/e024e446fa394c2d51499de43b25554f23e7e486">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/e024e446fa394c2d51499de43b25554f23e7e486">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="magic-line-mass-rhythm-examples" data-essential="false" data-show-heading="true">
-  <h2><a href="?view=all#magic-line-mass-rhythm-examples">魔法の印象を、三つの見本から選べる</a></h2>
-  <div data-report-content hidden>
-  <p class="item-summary">青系の魔法光帯を、細線・発光の塊・整った反復へ描き分けました。好みに近い見本を選び、次の制作で残したい特徴を具体的に伝えられます。</p>
-  <section class="item-examples" aria-label="魔法の印象を、三つの見本から選べるの画像例"><figure class="example-figure">
+<article class="gallery-item" id="magic-line-mass-rhythm-examples">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>魔法の印象を、三つの見本から選べる</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">青系の魔法光帯を、細線・発光の塊・整った反復へ描き分けました。好みに近い見本を選び、次の制作で残したい特徴を具体的に伝えられます。</p>
+      <section class="item-examples" aria-label="魔法の印象を、三つの見本から選べるの画像例"><figure class="example-figure">
       <h3>繊細 — 細い線と暗い隙間</h3>
       <a class="example-image-link" href="assets/magic-delicate-example.png" aria-label="繊細 — 細い線と暗い隙間の画像を原寸で開く">
         <img src="assets/magic-delicate-example.png" alt="青黒の背景に、細い青白い線と暗い隙間で構成した縦のSカーブの魔法光帯。" loading="lazy">
@@ -356,963 +400,1058 @@
       </a>
       <figcaption>主線と従線を平行に整え、線の反復を揃える。秩序や儀式的な印象を狙うときの見本。</figcaption>
     </figure></section>
-  <div class="essential-details" data-essential-details>
+      <div class="essential-details" data-essential-details>
     <section><h3>できること</h3><p>「繊細」「重厚」「荘厳」という言葉だけでなく、線の細さ、明るい面のまとまり、線の間隔を見て、魔法の描き方を選べます。</p></section>
     <section><h3>使い方</h3><p>たとえば「重厚を基準に、荘厳の平行線の整い方を加えて」のように、見本名と使いたい特徴を指定します。画像を押すと元の大きさで確認できます。</p></section>
   </div>
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>学問上の参考は、デザイン学・計算論的設計の形態文法です。形と空間的な関係を規則として扱い、異なる構成へ展開する考え方を参照しています。この三作例では青系と縦のSカーブという主題を共有し、内部を細い線と暗い隙間、つながった発光面、主線と従線の反復へ描き分けました。形態文法の幾何エンジンを実行したものではなく、三つの描き分けと印象名は制作上の設計選択です。「繊細」「重厚」「荘厳」になることを保証する科学法則ではありません。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>学問上の参考は、デザイン学・計算論的設計の形態文法です。形と空間的な関係を規則として扱い、異なる構成へ展開する考え方を参照しています。この三作例では青系と縦のSカーブという主題を共有し、内部を細い線と暗い隙間、つながった発光面、主線と従線の反復へ描き分けました。形態文法の幾何エンジンを実行したものではなく、三つの描き分けと印象名は制作上の設計選択です。「繊細」「重厚」「荘厳」になることを保証する科学法則ではありません。</p></section>
 
-      <section><h3>確認範囲</h3><p>このチャットで三枚を生成し、線・面・反復の違いを実画像で確認しました。独立した生成なので曲線や明るさ、余白は完全には揃っていません。帯外のにじみも残り、当初の表示条件をすべて再現した成功例ではありません。描き方を選ぶ作例として掲載しています。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.mit.edu/~tknight/IJDC/page_introduction.htm">https://www.mit.edu/~tknight/IJDC/page_introduction.htm</a></li></ul></section>
+          <section><h3>確認範囲</h3><p>このチャットで三枚を生成し、線・面・反復の違いを実画像で確認しました。独立した生成なので曲線や明るさ、余白は完全には揃っていません。帯外のにじみも残り、当初の表示条件をすべて再現した成功例ではありません。描き方を選ぶ作例として掲載しています。</p></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.mit.edu/~tknight/IJDC/page_introduction.htm">https://www.mit.edu/~tknight/IJDC/page_introduction.htm</a></li></ul></section>
+        </div>
+
+      </details>
     </div>
-
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="absorption-path-transmission" data-essential="false" data-show-heading="false" hidden>
-  <h2>吸収光路の長さと内部透過率</h2>
-  <div data-report-content>
-  <p class="item-summary">既存の吸収媒体で、材質の吸収特性を保ちながら、許された光路長や厚みの候補を選べる。内部を進む光を何割残したいかが決まっていれば、その目標から必要な長さを逆算する方法も追加した。</p>
+<article class="gallery-item" id="absorption-path-transmission">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>吸収光路の長さと内部透過率</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存の吸収媒体で、材質の吸収特性を保ちながら、許された光路長や厚みの候補を選べる。内部を進む光を何割残したいかが決まっていれば、その目標から必要な長さを逆算する方法も追加した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/transmission-path-comparison.svg" alt="吸収光路の長さと内部透過率の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>均質な吸収媒体では、同じ長さを進むたびに光が一定の割合で減る。残る割合は吸収係数と実際の光路長の積で決まる。係数を固定すると、目標の内部透過率から光路長を求められ、別の波長の透過率も同じ経路から決まる。</p></section>
-      <section><h3>具体例</h3><p>説明用の仮想材で、450・550・650nmの吸収係数を4・2・0.5毎メートルに固定する。550nmの内部透過率を80%・50%・20%にする光路長は約11.16・34.66・80.47cm。50%の案では450nmが25%、650nmが約84.09%残る。垂直な内部光線の例なので光路長と法線方向の厚みは等しい。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：70桁の独立数値計算で9つの標本透過率、3つの逆算長、903曲線点、36組の区間透過率の積、9つの単位換算を照合した。不正な入力の拒否、ゼロ吸収での逆算の非一意・不達、8種類の破損データの拒否も確認した。説明図の3経路・9本のバー・3目標点と曲線を照合し、1200×1120画像を画素検査と目視で確認。仕様143規則と既存295テストが通過した。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/transmission-path-comparison.svg" alt="吸収光路の長さと内部透過率の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>均質な吸収媒体では、同じ長さを進むたびに光が一定の割合で減る。残る割合は吸収係数と実際の光路長の積で決まる。係数を固定すると、目標の内部透過率から光路長を求められ、別の波長の透過率も同じ経路から決まる。</p></section>
+          <section><h3>具体例</h3><p>説明用の仮想材で、450・550・650nmの吸収係数を4・2・0.5毎メートルに固定する。550nmの内部透過率を80%・50%・20%にする光路長は約11.16・34.66・80.47cm。50%の案では450nmが25%、650nmが約84.09%残る。垂直な内部光線の例なので光路長と法線方向の厚みは等しい。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：70桁の独立数値計算で9つの標本透過率、3つの逆算長、903曲線点、36組の区間透過率の積、9つの単位換算を照合した。不正な入力の拒否、ゼロ吸収での逆算の非一意・不達、8種類の破損データの拒否も確認した。説明図の3経路・9本のバー・3目標点と曲線を照合し、1200×1120画像を画素検査と目視で確認。仕様143規則と既存295テストが通過した。
 
 制約：均質・非発光・非散乱の吸収経路の内部透過率に限る。3波長の標本値は表示RGBや素材の見た目ではなく、界面反射・屈折、多重光路、散乱・発光、露出・表示変換を含む全体の透け方とは区別する。斜めの実光路と法線厚みを混同せず、固定された材質・色・形・接触・源を優先する。実材係数の測定、B画像・動画生成、実画像の色・透明感・美的効果は未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.pbr-book.org/4ed/Volume_Scattering/Transmittance">https://www.pbr-book.org/4ed/Volume_Scattering/Transmittance</a></li><li><a href="https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes">https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.pbr-book.org/4ed/Volume_Scattering/Transmittance">https://www.pbr-book.org/4ed/Volume_Scattering/Transmittance</a></li><li><a href="https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes">https://www.pbr-book.org/4ed/Volume_Scattering/Volume_Scattering_Processes</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/e9ed5164497aeb0e64d14d6f0feaf8c316a40f66">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/e9ed5164497aeb0e64d14d6f0feaf8c316a40f66">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="anisotropic-reflection-direction" data-essential="false" data-show-heading="false" hidden>
-  <h2>方向別の粗さと反射の構成</h2>
-  <div data-report-content>
-  <p class="item-summary">既存の反射モデルで、方向ごとの粗さと表面上の向きを選び、反射がどちらへ広がるかを設計できる。異方性自体は既存知識で、今回は選び方の具体例を増やした。</p>
+<article class="gallery-item" id="anisotropic-reflection-direction">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>方向別の粗さと反射の構成</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存の反射モデルで、方向ごとの粗さと表面上の向きを選び、反射がどちらへ広がるかを設計できる。異方性自体は既存知識で、今回は選び方の具体例を増やした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/anisotropic-reflection-comparison.svg" alt="方向別の粗さと反射の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>表面を非常に小さな面の集まりとして扱うと、その面が向く方向の偏りが反射の方向性に関わる。縦横の粗さを表す係数を分け、その軸を回すことで、広がり方の候補を作る。ハイライトを白い帯として足す操作ではなく、選んだ表面モデルと視点から応答を計算する。</p></section>
-      <section><h3>具体例</h3><p>同じ表面・材質モデル・視点で、係数が0.30と0.30のA、0.60と0.15のB、Bの軸を45°回したCを比べる。係数の積は全て0.09だが、分布は円形・横長・斜めへと変わる。今回の法線視点・一様入射で応答を積分した値EはAが約0.810、B/Cが約0.691で、積を保っても反射量まで同じにはならない。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：独立計算で1,359点の角度応答、分布と面の傾きの関係、入射と観測方向を入れ替えた関係、軸の回転を照合した。積分も三段階の求積で安定することを確認。説明図の形状と全曲線の値を照合し、各案の描画を画素検査と目視で確認した。図は1200×1050。仕様は143規則、既存295テストが通過し、配布検証器と単一の参考設計コードは変更していない。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/anisotropic-reflection-comparison.svg" alt="方向別の粗さと反射の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>表面を非常に小さな面の集まりとして扱うと、その面が向く方向の偏りが反射の方向性に関わる。縦横の粗さを表す係数を分け、その軸を回すことで、広がり方の候補を作る。ハイライトを白い帯として足す操作ではなく、選んだ表面モデルと視点から応答を計算する。</p></section>
+          <section><h3>具体例</h3><p>同じ表面・材質モデル・視点で、係数が0.30と0.30のA、0.60と0.15のB、Bの軸を45°回したCを比べる。係数の積は全て0.09だが、分布は円形・横長・斜めへと変わる。今回の法線視点・一様入射で応答を積分した値EはAが約0.810、B/Cが約0.691で、積を保っても反射量まで同じにはならない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：独立計算で1,359点の角度応答、分布と面の傾きの関係、入射と観測方向を入れ替えた関係、軸の回転を照合した。積分も三段階の求積で安定することを確認。説明図の形状と全曲線の値を照合し、各案の描画を画素検査と目視で確認した。図は1200×1050。仕様は143規則、既存295テストが通過し、配布検証器と単一の参考設計コードは変更していない。
 
 制約：上の楕円は微小な面の傾きの統計で、画像上のハイライトや反射エネルギーの割合ではない。計算は人工の単一波長導体と単回反射モデルに限る。法線視点での積分安定は、全方向のエネルギー保存や実物の金属・布の再現を証明しない。固定された材質・方向・形・接触を優先し、全素材へ同じモデルを強制しない。B実画像・素材の読取り・美的効果は未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory">https://pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory</a></li><li><a href="https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission">https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission</a></li><li><a href="https://jcgt.org/published/0003/02/03/">https://jcgt.org/published/0003/02/03/</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory">https://pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory</a></li><li><a href="https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission">https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission</a></li><li><a href="https://jcgt.org/published/0003/02/03/">https://jcgt.org/published/0003/02/03/</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/a0d06ab122418d8aeecf95ac618ae0853025148f">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/a0d06ab122418d8aeecf95ac618ae0853025148f">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="area-light-shadow-width" data-essential="false" data-show-heading="false" hidden>
-  <h2>面光源の条件と影境界の構成</h2>
-  <div data-report-content>
-  <p class="item-summary">既存の面光源の幅が未指定なら、その幅から影の輪郭、本影の有無、境界がぼける幅を設計できる。影を新設する機能ではなく、既にある光源と遮蔽物を使う具体的な選び方を増やした。</p>
+<article class="gallery-item" id="area-light-shadow-width">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>面光源の条件と影境界の構成</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存の面光源の幅が未指定なら、その幅から影の輪郭、本影の有無、境界がぼける幅を設計できる。影を新設する機能ではなく、既にある光源と遮蔽物を使う具体的な選び方を増やした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/area-light-shadow-comparison.svg" alt="面光源の条件と影境界の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>面光源の各点から届く光は、受光面の場所ごとに遮られ方が違う。光源の端と遮蔽物の端を結ぶ光路から、完全に遮られる本影と、一部の光が届く半影の境界を求める。見える光源の面積率と、距離・方向を考えて重み付けした受光量は別々に計算する。</p></section>
-      <section><h3>具体例</h3><p>同じ位置の光源と同じ板で、光源の横幅だけを0.50、1.50、3.00へ変える。長さは全て同じ単位で、光源の高さ4、板の高さ1、板の横幅0.60とする。各縁の遷移幅は約0.167、0.500、1.000となり、最も広い案では半影が重なって本影がなくなる。この案の中心では可視光源面積率が20%、受光量の比が約17.6%になる。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：独立した二次元積分で1,323点の受光量と比を三段階の求積で照合し、影境界、左右対称性、有限な板の奥行き条件も確認した。説明図の全2,646曲線点と境界光路を照合し、1200×1050画像の描画を画素検査と目視で確認した。仕様143規則と既存295テストが通過。配布検証器と単一の参考設計コードは変更していない。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/area-light-shadow-comparison.svg" alt="面光源の条件と影境界の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>面光源の各点から届く光は、受光面の場所ごとに遮られ方が違う。光源の端と遮蔽物の端を結ぶ光路から、完全に遮られる本影と、一部の光が届く半影の境界を求める。見える光源の面積率と、距離・方向を考えて重み付けした受光量は別々に計算する。</p></section>
+          <section><h3>具体例</h3><p>同じ位置の光源と同じ板で、光源の横幅だけを0.50、1.50、3.00へ変える。長さは全て同じ単位で、光源の高さ4、板の高さ1、板の横幅0.60とする。各縁の遷移幅は約0.167、0.500、1.000となり、最も広い案では半影が重なって本影がなくなる。この案の中心では可視光源面積率が20%、受光量の比が約17.6%になる。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：独立した二次元積分で1,323点の受光量と比を三段階の求積で照合し、影境界、左右対称性、有限な板の奥行き条件も確認した。説明図の全2,646曲線点と境界光路を照合し、1200×1050画像の描画を画素検査と目視で確認した。仕様143規則と既存295テストが通過。配布検証器と単一の参考設計コードは変更していない。
 
 制約：平行な面の中央断面と直接光に限る。光源の放射輝度を固定して幅を変えるため、光源の総放射束と絶対受光量も変わる。比のグラフは最終画像の明るさではない。光源を変更したら他の照明・反射にも反映し、固定された光量・形・接触・材質を優先する。回折、間接光、撮影・表示処理、今回のB画像生成、影の読取りと美的効果は未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://pbr-book.org/4ed/Light_Sources/Area_Lights">https://pbr-book.org/4ed/Light_Sources/Area_Lights</a></li><li><a href="https://pbr-book.org/4ed/Light_Transport_I_Surface_Reflection/The_Light_Transport_Equation">https://pbr-book.org/4ed/Light_Transport_I_Surface_Reflection/The_Light_Transport_Equation</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://pbr-book.org/4ed/Light_Sources/Area_Lights">https://pbr-book.org/4ed/Light_Sources/Area_Lights</a></li><li><a href="https://pbr-book.org/4ed/Light_Transport_I_Surface_Reflection/The_Light_Transport_Equation">https://pbr-book.org/4ed/Light_Transport_I_Surface_Reflection/The_Light_Transport_Equation</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/b2f66486ae83656f4452552988b4de2c7eb3a300">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/b2f66486ae83656f4452552988b4de2c7eb3a300">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="b3-observation-stage-validator" data-essential="false" data-show-heading="false" hidden>
-  <h2>OBSの描画段階の構造検査</h2>
-  <div data-report-content>
-  <p class="item-summary">OBS.stageを4正準値に限定し、未知値・空欄・不正型をOBS IDとともに診断する。</p>
+<article class="gallery-item" id="b3-observation-stage-validator">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>OBSの描画段階の構造検査</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">OBS.stageを4正準値に限定し、未知値・空欄・不正型をOBS IDとともに診断する。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>B-3を検出したときだけ、OBS.stageの値を正準の4値と照合する。自由な文字列や不正な型を通さず、該当OBSのIDを診断に含めることで、修正する対象を特定できる。</p></section>
-      <section><h3>具体例</h3><p>pre_composite / world_render_observation / post_composite / displayを受理する。誤ったdirect_displayや空欄・数値などを、対象OBSを示して拒否する。B-2の従来の受入は保つ。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：4正準値の受理、不正値の拒否、複数OBSの診断、CLI、B-2互換を確認。新規6テストを含む291件が通過し、配布検証器にも反映した。
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>B-3を検出したときだけ、OBS.stageの値を正準の4値と照合する。自由な文字列や不正な型を通さず、該当OBSのIDを診断に含めることで、修正する対象を特定できる。</p></section>
+          <section><h3>具体例</h3><p>pre_composite / world_render_observation / post_composite / displayを受理する。誤ったdirect_displayや空欄・数値などを、対象OBSを示して拒否する。B-2の従来の受入は保つ。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：4正準値の受理、不正値の拒否、複数OBSの診断、CLI、B-2互換を確認。新規6テストを含む291件が通過し、配布検証器にも反映した。
 
 制約：語彙・構造検査であり、stageの物理的適合性や実画像品質は保証しない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/fa08be9948fea51c8d5af3c16b2b55613162f30b">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/fa08be9948fea51c8d5af3c16b2b55613162f30b">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="camera-distance-relative-scale" data-essential="false" data-show-heading="false" hidden>
-  <h2>撮影距離と奥行きごとの倍率</h2>
-  <div data-report-content>
-  <p class="item-summary">被写体の基準になる平らな面を同じ大きさに写しながら、背景や手前の面との投影サイズの関係を選べる。既存の透視投影を使う具体的な構成例で、立体全体の輪郭や面積を一定にする機能ではない。</p>
+<article class="gallery-item" id="camera-distance-relative-scale">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>撮影距離と奥行きごとの倍率</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">被写体の基準になる平らな面を同じ大きさに写しながら、背景や手前の面との投影サイズの関係を選べる。既存の透視投影を使う具体的な構成例で、立体全体の輪郭や面積を一定にする機能ではない。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/camera-distance-comparison.svg" alt="撮影距離と奥行きごとの倍率の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>カメラを遠ざける距離と焦点距離パラメータを同じ比率で増やすと、正面の基準面の投影倍率は保たれる。別の奥行きの面まではカメラからの距離が異なるため、基準面との倍率比が変わる。全ての面を一つの共通する投影で計算する。</p></section>
-      <section><h3>具体例</h3><p>理想カメラで、距離2mと24mm、4mと48mm、8mと96mmを比べる。画面範囲36×24mmを共通にすると、高さ1.5mの基準面はどれも18mmに写る。基準面の4m奥にある同じ高さの背景は6mm、9mm、12mmとなり、基準面に対する比は1/3、1/2、2/3へ変わる。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：画角から組み立てた独立の行列投影で1,716格子点と36面頂点を照合し、603点の奥行き別倍率、基準面の一致、画面境界、前方にない点の拒否も確認した。図の全9面と3曲線を数値・画素検査で照合し、1200×1050画像を目視した。仕様143規則と既存295テストが通過し、配布検証器と単一の参考設計コードは変更していない。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/camera-distance-comparison.svg" alt="撮影距離と奥行きごとの倍率の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>カメラを遠ざける距離と焦点距離パラメータを同じ比率で増やすと、正面の基準面の投影倍率は保たれる。別の奥行きの面まではカメラからの距離が異なるため、基準面との倍率比が変わる。全ての面を一つの共通する投影で計算する。</p></section>
+          <section><h3>具体例</h3><p>理想カメラで、距離2mと24mm、4mと48mm、8mと96mmを比べる。画面範囲36×24mmを共通にすると、高さ1.5mの基準面はどれも18mmに写る。基準面の4m奥にある同じ高さの背景は6mm、9mm、12mmとなり、基準面に対する比は1/3、1/2、2/3へ変わる。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：画角から組み立てた独立の行列投影で1,716格子点と36面頂点を照合し、603点の奥行き別倍率、基準面の一致、画面境界、前方にない点の拒否も確認した。図の全9面と3曲線を数値・画素検査で照合し、1200×1050画像を目視した。仕様143規則と既存295テストが通過し、配布検証器と単一の参考設計コードは変更していない。
 
 制約：この例は正面を向いた平行な面と理想ピンホールに限る。基準面以外の投影サイズ、立体全体の輪郭、画面外へのはみ出しや遮蔽は一定にならない。カメラ位置を固定して焦点距離だけを変えても、奥行きどうしの倍率比は変わらない。固定されたカメラ・画角・切出し・形状・接触を優先する。実レンズの合焦、ぼけ、歪曲、露出、B画像生成と動画、実画像の構図・読み取り・美的効果は未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/07546eedaec1e1aa606d825b52dc8e2d0a095afa">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/07546eedaec1e1aa606d825b52dc8e2d0a095afa">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="color-interpolation-paths" data-essential="false" data-show-heading="false" hidden>
-  <h2>色の補間経路の比較</h2>
-  <div data-report-content>
-  <p class="item-summary">既存のグラデーションで両端の色と位置を固定し、中間色が未指定の区間だけ、補間色空間と色相の短経路・長経路を候補化する。</p>
+<article class="gallery-item" id="color-interpolation-paths">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>色の補間経路の比較</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存のグラデーションで両端の色と位置を固定し、中間色が未指定の区間だけ、補間色空間と色相の短経路・長経路を候補化する。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/color-path-comparison.svg" alt="色の補間経路の比較の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>色の座標を直線で結ぶか、色相の輪を近道・回り道で進むかによって、同じ端点でも中間色が変わる。前者はOklab、後者はOkLChで構成した。採用経路を既存のグラデーション・色・描画の指定へ結び、世界内の光や素材を混ぜる処理とは分ける。</p></section>
-      <section><h3>具体例</h3><p>不透明な既存display_artifactの例では、OKLCH(0.72, 0.12, 20°)から(0.72, 0.12, 300°)へ空間方向に進む。t=0.5でOKLab直線は#CC8EB7、OKLCH短経路は#D686BC、長経路は#57BC8Aとなり、全案の両端は#E68485と#B093E5で共通。固定アンカーや帯、材質、因果は変えない。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：独立計算で3経路の色サンプル771点を照合し、8bitの色値は全件一致した。説明図の771色・形・端点・中点と9か所の描画画素を含む29項目の検査を通過し、1200×900の図の文字・切れも目視した。統合後の仕様は143規則、既存295テストが通過。検証器の配布コードと単一の参考設計コードは変更していない。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/color-path-comparison.svg" alt="色の補間経路の比較の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>色の座標を直線で結ぶか、色相の輪を近道・回り道で進むかによって、同じ端点でも中間色が変わる。前者はOklab、後者はOkLChで構成した。採用経路を既存のグラデーション・色・描画の指定へ結び、世界内の光や素材を混ぜる処理とは分ける。</p></section>
+          <section><h3>具体例</h3><p>不透明な既存display_artifactの例では、OKLCH(0.72, 0.12, 20°)から(0.72, 0.12, 300°)へ空間方向に進む。t=0.5でOKLab直線は#CC8EB7、OKLCH短経路は#D686BC、長経路は#57BC8Aとなり、全案の両端は#E68485と#B093E5で共通。固定アンカーや帯、材質、因果は変えない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：独立計算で3経路の色サンプル771点を照合し、8bitの色値は全件一致した。説明図の771色・形・端点・中点と9か所の描画画素を含む29項目の検査を通過し、1200×900の図の文字・切れも目視した。統合後の仕様は143規則、既存295テストが通過。検証器の配布コードと単一の参考設計コードは変更していない。
 
 制約：モデルのL一定は、輝度や見かけの明るさ一定を意味しない。図は各案257色を8bit sRGBへ変換してつないだ近似で、連続する理想経路全体の色域証明ではない。固定された中間色・帯・材質は優先する。特定経路の美的優位・知覚効果、今回のB画像生成は未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#interpolation-space">https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#interpolation-space</a></li><li><a href="https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#hue-interpolation">https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#hue-interpolation</a></li><li><a href="https://bottosson.github.io/posts/oklab/">https://bottosson.github.io/posts/oklab/</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#interpolation-space">https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#interpolation-space</a></li><li><a href="https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#hue-interpolation">https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#hue-interpolation</a></li><li><a href="https://bottosson.github.io/posts/oklab/">https://bottosson.github.io/posts/oklab/</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/f225848f38253e9298f9b0f9dd567354232db46b">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/f225848f38253e9298f9b0f9dd567354232db46b">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="contour-junctions" data-essential="false" data-show-heading="false" hidden>
-  <h2>輪郭の離れ・接し・重なりの比較</h2>
-  <div data-report-content>
-  <p class="item-summary">既存モチーフの輪郭関係を、離す・接する・重ねる候補として比較する手順を追加した。</p>
+<article class="gallery-item" id="contour-junctions">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>輪郭の離れ・接し・重なりの比較</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存モチーフの輪郭関係を、離す・接する・重ねる候補として比較する手順を追加した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/contour-junction-comparison.svg" alt="2円の離れ・接し・重なりの説明図。B作品の生成画像ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>投影上の関係と物理的な接触を分け、形・個数・必要な可視性を守って配置や許された視点を選ぶ。接線回避や隙間のノルマにはしない。</p></section>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/contour-junction-comparison.svg" alt="2円の離れ・接し・重なりの説明図。B作品の生成画像ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>投影上の関係と物理的な接触を分け、形・個数・必要な可視性を守って配置や許された視点を選ぶ。接線回避や隙間のノルマにはしない。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時に2円の位置・交点・描画順を数値と説明図で照合し、297件の回帰テストが通過した。合成図形の確認であり、実生成したB画像の読み取りや美的効果は未確認。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時に2円の位置・交点・描画順を数値と説明図で照合し、297件の回帰テストが通過した。合成図形の確認であり、実生成したB画像の読み取りや美的効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/b9c3559d683af22ed68daae1e2c637d5befdaba7">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/b9c3559d683af22ed68daae1e2c637d5befdaba7">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="contour-stroke-profiles" data-essential="false" data-show-heading="false" hidden>
-  <h2>輪郭線の太さと先細りの構成</h2>
-  <div data-report-content>
-  <p class="item-summary">既存の輪郭線を役割ごとに選び、太さ・先細り・遷移を比較する任意の手順を追加した。</p>
+<article class="gallery-item" id="contour-stroke-profiles">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>輪郭線の太さと先細りの構成</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存の輪郭線を役割ごとに選び、太さ・先細り・遷移を比較する任意の手順を追加した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>形状そのものとインクの占有域を分ける。シルエット・接触・内側線の意味と、明示された画風・内部線禁止を保ち、均一線も選べる。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>形状そのものとインクの占有域を分ける。シルエット・接触・内側線の意味と、明示された画風・内部線禁止を保ち、均一線も選べる。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時に仕様・ガイドを照合し、297件の回帰テストが通過した。実生成画像、形の読み取り、美的効果は未確認。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時に仕様・ガイドを照合し、297件の回帰テストが通過した。実生成画像、形の読み取り、美的効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/a3b84ad7724f255af57d0039dff2d7a3bb4c4752">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/a3b84ad7724f255af57d0039dff2d7a3bb4c4752">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="curve-join-continuity" data-essential="false" data-show-heading="false" hidden>
-  <h2>輪郭の接続と連続性</h2>
-  <div data-report-content>
-  <p class="item-summary">2本の既存ベジェ曲線で、つなぎ目の位置だけでなく、接線や曲率の揃え方を選べる。</p>
+<article class="gallery-item" id="curve-join-continuity">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>輪郭の接続と連続性</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">2本の既存ベジェ曲線で、つなぎ目の位置だけでなく、接線や曲率の揃え方を選べる。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/curve-join-comparison.svg" alt="輪郭の接続と連続性の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>つなぎ目に近い制御点の位置が端点の接線を決め、次の制御点を含む位置関係が曲がり方を決める。Q1だけを動かせば、位置だけをつなぐ案、接線を揃える案、接線と曲率まで揃える案を比べられる。幾何的な滑らかさと、曲線パラメータに対する微分の一致は分けて扱う。</p></section>
-      <section><h3>具体例</h3><p>平面上の2本の三次ベジェ曲線で、接合点(0,0)と両端を固定し、右曲線の最初の制御点Q1をA=(0.2,0.15)、B=(0.4,0)、C=(0.2,0)とする。Aは接線が折れ、位置だけがつながるG0。Bは接線方向が揃うG1だが、一階導関数は左(0.6,0)・右(1.2,0)でC1ではなく、曲率も左20/3・右5/3で異なる。Cは接線と曲率が左右20/3で揃うG2かつC1だが、二階導関数は左(-1.8,2.4)・右(1.8,2.4)で異なり、C2ではない。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：独立した分数計算で3案の接合位置・端点導関数・符号付き曲率・正則性を照合した。説明図の実際の制御点・曲線パス・拡大倍率など28項目の検査と1200×960の描画を確認し、日本語の文字や切れも目視した。仕様の静的検査（基底14章・拡張11章・143規則）と既存291テストが通過し、検証器の配布コードと単一の参考設計コードは変えていない。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/curve-join-comparison.svg" alt="輪郭の接続と連続性の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>つなぎ目に近い制御点の位置が端点の接線を決め、次の制御点を含む位置関係が曲がり方を決める。Q1だけを動かせば、位置だけをつなぐ案、接線を揃える案、接線と曲率まで揃える案を比べられる。幾何的な滑らかさと、曲線パラメータに対する微分の一致は分けて扱う。</p></section>
+          <section><h3>具体例</h3><p>平面上の2本の三次ベジェ曲線で、接合点(0,0)と両端を固定し、右曲線の最初の制御点Q1をA=(0.2,0.15)、B=(0.4,0)、C=(0.2,0)とする。Aは接線が折れ、位置だけがつながるG0。Bは接線方向が揃うG1だが、一階導関数は左(0.6,0)・右(1.2,0)でC1ではなく、曲率も左20/3・右5/3で異なる。Cは接線と曲率が左右20/3で揃うG2かつC1だが、二階導関数は左(-1.8,2.4)・右(1.8,2.4)で異なり、C2ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：独立した分数計算で3案の接合位置・端点導関数・符号付き曲率・正則性を照合した。説明図の実際の制御点・曲線パス・拡大倍率など28項目の検査と1200×960の描画を確認し、日本語の文字や切れも目視した。仕様の静的検査（基底14章・拡張11章・143規則）と既存291テストが通過し、検証器の配布コードと単一の参考設計コードは変えていない。
 
 制約：意図した角や既存形状の固定を優先し、滑らかさを必須にしない。これは平面上の曲線幾何の例であり、空間曲線・曲面・時間上の滑らかさへ一般化しない。Q1の変更で右曲線の他の部分や弧長も変わる。曲率の一致は美的優位を示さず、B画像の生成・形の読み取り・美的効果は未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://mcneel.github.io/rhinocommon-api-docs/api/RhinoCommon/html/T_Rhino_Geometry_Continuity.htm">https://mcneel.github.io/rhinocommon-api-docs/api/RhinoCommon/html/T_Rhino_Geometry_Continuity.htm</a></li><li><a href="https://www.occt3d.com/dev/doc/overview/html/occt_user_guides__modeling_data.html">https://www.occt3d.com/dev/doc/overview/html/occt_user_guides__modeling_data.html</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://mcneel.github.io/rhinocommon-api-docs/api/RhinoCommon/html/T_Rhino_Geometry_Continuity.htm">https://mcneel.github.io/rhinocommon-api-docs/api/RhinoCommon/html/T_Rhino_Geometry_Continuity.htm</a></li><li><a href="https://www.occt3d.com/dev/doc/overview/html/occt_user_guides__modeling_data.html">https://www.occt3d.com/dev/doc/overview/html/occt_user_guides__modeling_data.html</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/1bd849e18d9cb1f4e3313a329c685ce9eac27ca2">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/1bd849e18d9cb1f4e3313a329c685ce9eac27ca2">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="fresnel-interface-reflection" data-essential="false" data-show-heading="false" hidden>
-  <h2>界面角度と反射・透過の構成</h2>
-  <div data-report-content>
-  <p class="item-summary">透明な素材の面ごとに、光を通す寄与と反射させる寄与の差を設計する方法を追加した。例えば、正面に近い面には透ける寄与を多く残し、斜めの面では既存の光を返す寄与を強める。指定された材質や形を保ち、光源・面・視点が許す未指定の光路条件だけを選ぶ。</p>
+<article class="gallery-item" id="fresnel-interface-reflection">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>界面角度と反射・透過の構成</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">透明な素材の面ごとに、光を通す寄与と反射させる寄与の差を設計する方法を追加した。例えば、正面に近い面には透ける寄与を多く残し、斜めの面では既存の光を返す寄与を強める。指定された材質や形を保ち、光源・面・視点が許す未指定の光路条件だけを選ぶ。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/fresnel-interface-comparison.svg" alt="界面角度と反射・透過の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>光は屈折率の異なる面で反射と透過へ分かれ、その割合は角度や偏光で変わる。同じ屈折率を保ち、反射させたい割合を満たす角度を許された範囲で探す。反射光と屈折光の向きも同じ条件から定めるため、割合だけを別に変えない。</p></section>
-      <section><h3>具体例</h3><p>説明用の仮想条件として550nm、入射側屈折率1、透過側1.5を固定する。入射角約57.93°・72.06°・82.82°で、反射する光のパワーは8%・20%・50%、透過するパワーは92%・80%・50%となる。角度は面の法線から測る。この割合は単一界面のビームについての値で、画像の明るさではない。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：80桁の独立計算で3つの逆算候補、357点の角度別応答、360組の逆向き光路、7つの特殊条件を照合した。無次元量の差は最大2.58×10⁻¹³、角度差は最大1.86×10⁻¹²度。12種類の破損データと9種類の不正な定義域入力を拒否し、探索区間とflag型も検査した。図の9光線・6バー・1071曲線点・3目標点を照合し、1200×1120の説明図を画素検査と目視で確認した。統合後の仕様143規則と全297テストが通過した。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/fresnel-interface-comparison.svg" alt="界面角度と反射・透過の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>光は屈折率の異なる面で反射と透過へ分かれ、その割合は角度や偏光で変わる。同じ屈折率を保ち、反射させたい割合を満たす角度を許された範囲で探す。反射光と屈折光の向きも同じ条件から定めるため、割合だけを別に変えない。</p></section>
+          <section><h3>具体例</h3><p>説明用の仮想条件として550nm、入射側屈折率1、透過側1.5を固定する。入射角約57.93°・72.06°・82.82°で、反射する光のパワーは8%・20%・50%、透過するパワーは92%・80%・50%となる。角度は面の法線から測る。この割合は単一界面のビームについての値で、画像の明るさではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：80桁の独立計算で3つの逆算候補、357点の角度別応答、360組の逆向き光路、7つの特殊条件を照合した。無次元量の差は最大2.58×10⁻¹³、角度差は最大1.86×10⁻¹²度。12種類の破損データと9種類の不正な定義域入力を拒否し、探索区間とflag型も検査した。図の9光線・6バー・1071曲線点・3目標点を照合し、1200×1120の説明図を画素検査と目視で確認した。統合後の仕様143規則と全297テストが通過した。
 
 制約：滑らかで損失のない非磁性の単一界面と、等パワーのs/p偏光を合わせた入射に限る。仮想的な一波長の屈折率を使い、実素材の測定、粗面、薄膜干渉、内部吸収・散乱や多重光路を検証したものではない。ビームのパワー比を放射輝度比、alpha、最終RGB、物体全体の透明感へ代入しない。屈折率一致・全反射では角度が一意に決まらない場合があり、固定済みの幾何・光源・視点を優先する。B画像・動画生成、実画像での反射の見え・素材の読取り・美的効果は未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission">https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission</a></li><li><a href="https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF">https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission">https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission</a></li><li><a href="https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF">https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/422fdaff1ef37d1afff1b7d0886f8172637b4a4b">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/422fdaff1ef37d1afff1b7d0886f8172637b4a4b">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="geometric-line-selection" data-essential="false" data-show-heading="false" hidden>
-  <h2>輪郭線と補助線を選ぶ方法</h2>
-  <div data-report-content>
-  <p class="item-summary">外形・遮蔽境界、実際の稜線、滑らかな面の回り込みを区別し、必要な描線を選ぶ。</p>
+<article class="gallery-item" id="geometric-line-selection">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>輪郭線と補助線を選ぶ方法</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">外形・遮蔽境界、実際の稜線、滑らかな面の回り込みを区別し、必要な描線を選ぶ。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>線を増やす量ではなく、その線が何を伝えるかを選ぶ。外形、遮蔽、実際の折れと、滑らかな面の回り込みを分け、視点から見た形の変化を必要な区間だけ描線へ対応させる。</p></section>
-      <section><h3>具体例</h3><p>形状と視点を固定した陶器で、輪郭だけの案と肩の回り込みを示す短い形状線を加える案を比べ、滑面には線を置かない。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：陶器の固定形状・視点と、描線を選ぶ区間の意味をレビュー。仕様検査と当時の285件の回帰テストが通過。
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>線を増やす量ではなく、その線が何を伝えるかを選ぶ。外形、遮蔽、実際の折れと、滑らかな面の回り込みを分け、視点から見た形の変化を必要な区間だけ描線へ対応させる。</p></section>
+          <section><h3>具体例</h3><p>形状と視点を固定した陶器で、輪郭だけの案と肩の回り込みを示す短い形状線を加える案を比べ、滑面には線を置かない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：陶器の固定形状・視点と、描線を選ぶ区間の意味をレビュー。仕様検査と当時の285件の回帰テストが通過。
 
 制約：線は溝・縫い目・模様の追加ではなく、view-dependent線抽出を文章で計算済みとしない。形状読取りと美的効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/9fe8e6b528936b882f5852650eab165158b55090">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/9fe8e6b528936b882f5852650eab165158b55090">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="initial-four-generative-principles" data-essential="false" data-show-heading="false" hidden>
-  <h2>形・色・輪郭・反復の構成手順</h2>
-  <div data-report-content>
-  <p class="item-summary">形状文法・周囲色・輪郭関係・期待変奏を、既存内容への具体的な選択として組み立てる。</p>
+<article class="gallery-item" id="initial-four-generative-principles">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>形・色・輪郭・反復の構成手順</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">形状文法・周囲色・輪郭関係・期待変奏を、既存内容への具体的な選択として組み立てる。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>共通する形の特徴と許される変換を決めると、同一形への単純な統一を避けながら関連を作れる。色は隣接色との関係、輪郭は曲率や方向、反復は保つ規則と変える箇所から候補を作る。</p></section>
-      <section><h3>具体例</h3><p>既存の葉・花弁・ひだに共有される先細りを対象別に変え、指定色のガラス片では背景との関係を選ぶ。袖の接触とシルエットを保って曲率遷移を選び、既存の三窓反復では一つの幅を変える案を比べる。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：4つの規則に具体的な適用例を接続し、仕様の参照と構造検査を確認した。B画像での効果は未確認。
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>共通する形の特徴と許される変換を決めると、同一形への単純な統一を避けながら関連を作れる。色は隣接色との関係、輪郭は曲率や方向、反復は保つ規則と変える箇所から候補を作る。</p></section>
+          <section><h3>具体例</h3><p>既存の葉・花弁・ひだに共有される先細りを対象別に変え、指定色のガラス片では背景との関係を選ぶ。袖の接触とシルエットを保って曲率遷移を選び、既存の三窓反復では一つの幅を変える案を比べる。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：4つの規則に具体的な適用例を接続し、仕様の参照と構造検査を確認した。B画像での効果は未確認。
 
 制約：いずれも既存内容の選択で、新規物体の追加許可ではない。DesignScience・心理学・色・衣装の基盤軸は既存baseline 7544dab由来で、当該改善での新規導入とは扱わない。B画像と美的効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/52935b8d9a3bd57bac52209bc2fbffcb6078be2b">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/52935b8d9a3bd57bac52209bc2fbffcb6078be2b">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="integrated-b3-reference" data-essential="false" data-show-heading="false" hidden>
-  <h2>余白と明暗を、切り替えて比べる</h2>
-  <div data-report-content>
-  <p class="item-summary">同じ三つの図形と各色の面積を保ち、余白が下へ狭まる配置と、暗い面がつながる配色を別々に切り替える比較ツールを追加しました。基準の構成と並べ、大きな表示と小さな表示で見比べられます。</p>
+<article class="gallery-item" id="integrated-b3-reference">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>余白と明暗を、切り替えて比べる</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">同じ三つの図形と各色の面積を保ち、余白が下へ狭まる配置と、暗い面がつながる配色を別々に切り替えて比較する機能を追加しました。基準の構成と並べ、大きな表示と小さな表示で見比べられます。</p>
   <p class="item-tool"><a href="labs/composition.html">余白と明暗を操作して比べる</a></p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/integrated-composition-comparison.svg" alt="余白と明暗を組み合わせた参考設計の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>美術教育・構成論のノータン（明暗の面の構成）を参考に、同じ構図の明暗割当を変えて比べます。Dowの『Composition』IX・X・XII章が扱う比較方法の転用です。余白の形には、平面幾何・線形代数の面積を保つせん断を使い、右領域の下側二頂点を同量だけ動かします。暗い面のつながりは、グラフ理論の連結成分として、同色領域が正の長さの辺を共有する場合に数えます。これらの計算と、人が知覚するまとまり・美的好みは別です。採用した比率や配色はこの例の設計判断です。</p></section>
-      <section><h3>具体例</h3><p>余白を一定幅に保ったまま暗い面をつなぐ比較、配色を保ったまま余白を先細りにする比較を、別々に試せます。各領域7.5%、暗い色15%、中間の色7.5%、背景77.5%は全四案で共通です。</p></section>
-      <section><h3>確認範囲</h3><p>先行する完全なB-3参考設計と四案の説明図を保持しています。新しいツールの採用形の頂点・色は、その設計JSONから抽出しました。全四案について独立した有理数計算で面積・外接範囲・空隙幅・暗色の連結数を照合し、ブラウザーで二つの操作を独立に切り替えた表示を確認しました。360 CSS px幅では横のはみ出しがなく、選択中の図を先に表示します。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/integrated-composition-comparison.svg" alt="余白と明暗を組み合わせた参考設計の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>美術教育・構成論のノータン（明暗の面の構成）を参考に、同じ構図の明暗割当を変えて比べます。Dowの『Composition』IX・X・XII章が扱う比較方法の転用です。余白の形には、平面幾何・線形代数の面積を保つせん断を使い、右領域の下側二頂点を同量だけ動かします。暗い面のつながりは、グラフ理論の連結成分として、同色領域が正の長さの辺を共有する場合に数えます。これらの計算と、人が知覚するまとまり・美的好みは別です。採用した比率や配色はこの例の設計判断です。</p></section>
+          <section><h3>具体例</h3><p>余白を一定幅に保ったまま暗い面をつなぐ比較、配色を保ったまま余白を先細りにする比較を、別々に試せます。各領域7.5%、暗い色15%、中間の色7.5%、背景77.5%は全四案で共通です。</p></section>
+          <section><h3>確認範囲</h3><p>先行する完全なB-3参考設計と四案の説明図を保持しています。新しいツールの採用形の頂点・色は、その設計JSONから抽出しました。全四案について独立した有理数計算で面積・外接範囲・空隙幅・暗色の連結数を照合し、ブラウザーで二つの操作を独立に切り替えた表示を確認しました。360 CSS px幅では横のはみ出しがなく、選択中の図を先に表示します。
 
 確認の範囲：ネイティブSVGによる教育用プレビューです。128 CSS px表示は同じベクトル図形の再描画で、元画像を縮小フィルターへ通した結果ではありません。生成AIによるB画像、鑑賞者の知覚、美的効果は未確認です。操作は比較表示へ反映され、原本の採用案はG1/T1のままです。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.gutenberg.org/cache/epub/45410/pg45410-images.html">https://www.gutenberg.org/cache/epub/45410/pg45410-images.html</a></li><li><a href="https://github.com/Player13579/B/commit/a949d1b300dc0987d742f4aeeac50272f2730aba">https://github.com/Player13579/B/commit/a949d1b300dc0987d742f4aeeac50272f2730aba</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.gutenberg.org/cache/epub/45410/pg45410-images.html">https://www.gutenberg.org/cache/epub/45410/pg45410-images.html</a></li><li><a href="https://github.com/Player13579/B/commit/a949d1b300dc0987d742f4aeeac50272f2730aba">https://github.com/Player13579/B/commit/a949d1b300dc0987d742f4aeeac50272f2730aba</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/a6672a39ee5afef2d07cf0d46f29a50bc45c3e0a">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/a6672a39ee5afef2d07cf0d46f29a50bc45c3e0a">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="material-appearance" data-essential="false" data-show-heading="false" hidden>
-  <h2>素材の見えを構成する方法</h2>
-  <div data-report-content>
-  <p class="item-summary">反射ハイライトと陰影の整合、既存素材間の見えの差、薄い透過面越しの模様関係を選ぶ。</p>
+<article class="gallery-item" id="material-appearance">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>素材の見えを構成する方法</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">反射ハイライトと陰影の整合、既存素材間の見えの差、薄い透過面越しの模様関係を選ぶ。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>素材の見えは、反射の形・陰影・表面模様などの組合せに依存する。既存の形と照明に対して、どの手掛かりを揃え、どの差を残すかを選ぶことで、素材ごとの役割を構成する。</p></section>
-      <section><h3>具体例</h3><p>既存サテンとマット布では折れ・ハイライトを素材役割に合わせ、同一の白縞を両方に足すだけの案を避ける。薄い半透明面が既存模様に重なる場合は、許された配置と模様の連続・ずれを選ぶ。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：素材ごとの手掛かりと保持条件をガイドへ具体化し、仕様検査と当時の285件の回帰テストが通過。
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>素材の見えは、反射の形・陰影・表面模様などの組合せに依存する。既存の形と照明に対して、どの手掛かりを揃え、どの差を残すかを選ぶことで、素材ごとの役割を構成する。</p></section>
+          <section><h3>具体例</h3><p>既存サテンとマット布では折れ・ハイライトを素材役割に合わせ、同一の白縞を両方に足すだけの案を避ける。薄い半透明面が既存模様に重なる場合は、許された配置と模様の連続・ずれを選ぶ。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：素材ごとの手掛かりと保持条件をガイドへ具体化し、仕様検査と当時の285件の回帰テストが通過。
 
 制約：画像から物理素材を推定せず、全素材を光沢・濡れた外観へ揃えない。限定的な知覚研究は普遍的な美的改善やB画像の証明ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/a37df1c56d4c174bc0a44cd180b66271aa19b39c">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/a37df1c56d4c174bc0a44cd180b66271aa19b39c">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="motion-time-allocation" data-essential="false" data-show-heading="false" hidden>
-  <h2>動作の時間配分を選ぶ方法</h2>
-  <div data-report-content>
-  <p class="item-summary">既存時間尺の中で経路r(s)と進行s(t)を分け、移動と保持の配分を選ぶ。</p>
+<article class="gallery-item" id="motion-time-allocation">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>動作の時間配分を選ぶ方法</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存時間尺の中で経路r(s)と進行s(t)を分け、移動と保持の配分を選ぶ。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/motion-timing-comparison.svg" alt="動作の時間配分を選ぶ方法の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>空間の経路r(s)と時間に対する進行s(t)を分ける。進行に五次曲線Q(u)=10u³−15u⁴+6u⁵を使う例では、移動の始終端の速度と加速度をゼロにでき、停止区間へ滑らかにつなげられる。移動時間を変えても経路と総尺を保てる。</p></section>
-      <section><h3>具体例</h3><p>直線上を0から1へ進んで止まる既存図形を総尺2秒に保ち、移動1.5秒＋保持0.5秒と移動1秒＋保持1秒を比べる。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：曲線の境界条件と時間配分を数値確認し、進行・速度の説明図を描画して点検した。実動画は未生成。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/motion-timing-comparison.svg" alt="動作の時間配分を選ぶ方法の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>空間の経路r(s)と時間に対する進行s(t)を分ける。進行に五次曲線Q(u)=10u³−15u⁴+6u⁵を使う例では、移動の始終端の速度と加速度をゼロにでき、停止区間へ滑らかにつなげられる。移動時間を変えても経路と総尺を保てる。</p></section>
+          <section><h3>具体例</h3><p>直線上を0から1へ進んで止まる既存図形を総尺2秒に保ち、移動1.5秒＋保持0.5秒と移動1秒＋保持1秒を比べる。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：曲線の境界条件と時間配分を数値確認し、進行・速度の説明図を描画して点検した。実動画は未生成。
 
 制約：未宣言の動作を加えず、物理運動の時間変更時は力学・接触・応答を再評価する。動画と美的効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/e81d015ccbef95cba3cc5cb439d2b2d07487ca5b">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/e81d015ccbef95cba3cc5cb439d2b2d07487ca5b">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="negative-space-shape" data-essential="false" data-show-heading="false" hidden>
-  <h2>余白の形を比較する方法</h2>
-  <div data-report-content>
-  <p class="item-summary">既存境界が作る空隙について、幅の変化・開口方向・周囲への連続を許された配置から選ぶ。</p>
+<article class="gallery-item" id="negative-space-shape">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>余白の形を比較する方法</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存境界が作る空隙について、幅の変化・開口方向・周囲への連続を許された配置から選ぶ。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/negative-space-comparison.svg" alt="余白の形を比較する方法の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>空隙の輪郭は、隣り合う対象の境界が共同で作る。対象の面積を変えずに位置・角度を選ぶと、背景の総面積を保ちながら、抜けの先細りや開口方向を変えられる。</p></section>
-      <section><h3>具体例</h3><p>共通平面上の既存紙片2枚の形・支持・投影を固定し、ほぼ一定幅の抜けと下を狭く上へ開く抜けを比較する。空隙は外部へ開いた背景として保つ。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：教育図の2案で、各紙片の形・面積と総空隙面積を数値確認し、実際に描画した説明図を点検した。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/negative-space-comparison.svg" alt="余白の形を比較する方法の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>空隙の輪郭は、隣り合う対象の境界が共同で作る。対象の面積を変えずに位置・角度を選ぶと、背景の総面積を保ちながら、抜けの先細りや開口方向を変えられる。</p></section>
+          <section><h3>具体例</h3><p>共通平面上の既存紙片2枚の形・支持・投影を固定し、ほぼ一定幅の抜けと下を狭く上へ開く抜けを比較する。空隙は外部へ開いた背景として保つ。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：教育図の2案で、各紙片の形・面積と総空隙面積を数値確認し、実際に描画した説明図を点検した。
 
 制約：空隙は物理的な穴や新しい対象ではない。形・個数・接触・意図した平面性を保つ。図は知覚・美的好みの証明ではなく、B画像の効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/f73c1c78f07bc0058df34984368dc4d449186118">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/f73c1c78f07bc0058df34984368dc4d449186118">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="pattern-scale-display-size" data-essential="false" data-show-heading="false" hidden>
-  <h2>模様の尺度と表示寸法の比較</h2>
-  <div data-report-content>
-  <p class="item-summary">同じ2色と色量比の模様周期を、想定表示寸法別に候補比較する。</p>
+<article class="gallery-item" id="pattern-scale-display-size">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>模様の尺度と表示寸法の比較</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">同じ2色と色量比の模様周期を、想定表示寸法別に候補比較する。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/pattern-scale-comparison.svg" alt="模様の尺度と表示寸法の比較の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>同じ色値・色量比でも、境界の細かさと表示条件によって色の見えは変わりうる。模様の周期と表示寸法を組み合わせて候補を作り、色面の分離とまとまりを実寸で比較する。画素平均や眼・神経の作用を模擬する実装ではない。</p></section>
-      <section><h3>具体例</h3><p>橙と青灰を50:50にした256×256の縦縞で、元の周期64/16/8pxを比較する。128px表示へ同じベクトルを描き直すと周期32/8/4px、各帯幅16/4/2pxになる。表示用途に合う模様の分離・まとまりと可読性を選ぶ。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：6ケースの周期・帯幅・視角換算を独立計算で照合。説明図の全パッチが指定2色のみ・面積比50:50であることを画素検査した。当該版の仕様検査と291件の回帰テストも通過。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/pattern-scale-comparison.svg" alt="模様の尺度と表示寸法の比較の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>同じ色値・色量比でも、境界の細かさと表示条件によって色の見えは変わりうる。模様の周期と表示寸法を組み合わせて候補を作り、色面の分離とまとまりを実寸で比較する。画素平均や眼・神経の作用を模擬する実装ではない。</p></section>
+          <section><h3>具体例</h3><p>橙と青灰を50:50にした256×256の縦縞で、元の周期64/16/8pxを比較する。128px表示へ同じベクトルを描き直すと周期32/8/4px、各帯幅16/4/2pxになる。表示用途に合う模様の分離・まとまりと可読性を選ぶ。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：6ケースの周期・帯幅・視角換算を独立計算で照合。説明図の全パッチが指定2色のみ・面積比50:50であることを画素検査した。当該版の仕様検査と291件の回帰テストも通過。
 
 制約：実UIの物理寸法・視距離・色校正は未測定。細かいほど必ず同化するとは限らず、特定実験の周波数を万能閾値にしない。B画像、知覚上の色変化、美的好みは未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/11301075/">https://pubmed.ncbi.nlm.nih.gov/11301075/</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/15695188/">https://pubmed.ncbi.nlm.nih.gov/15695188/</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/11301075/">https://pubmed.ncbi.nlm.nih.gov/11301075/</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/15695188/">https://pubmed.ncbi.nlm.nih.gov/15695188/</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/6908e456cc609156d583161e2ad8fb1ad6cd6564">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/6908e456cc609156d583161e2ad8fb1ad6cd6564">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="spatial-registration" data-essential="false" data-show-heading="false" hidden>
-  <h2>反復列の整列と位置ずれ</h2>
-  <div data-report-content>
-  <p class="item-summary">既存要素の形・色・個数と行内周期を保ち、行ごとの水平位置を選んで、整列と互い違いの配置候補を作る。</p>
+<article class="gallery-item" id="spatial-registration">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>反復列の整列と位置ずれ</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存要素の形・色・個数と行内周期を保ち、行ごとの水平位置を選んで、整列と互い違いの配置候補を作る。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/spatial-registration-comparison.svg" alt="反復列の整列と位置ずれの説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>一つの行をまとまりとして横へ移すと、行内の間隔を保ったまま、上下の行との距離や最も近い点の方向を変えられる。隣接行の相対ずれを周期の半分にした候補では、近接する候補の方向が縦から斜めへ変わる。幾何的な関係を選び、実際にどう群として見えるかを確認する。</p></section>
-      <section><h3>具体例</h3><p>画面上の4行に同色・半径0.035の円を各4個、行内周期0.20で並べる。Aは全行を同じ位置に置き、Bは各行を左へ0.05、右へ0.05と交互にずらす。隣の行の相対ずれは0から0.10（周期の半分）になり、16中心の平均は両案とも(0.5, 0.5)。独立幾何計算では最短中心間距離が0.12から約0.1562へ変わる。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：独立した分数計算で16円の形・半径・色・行内周期・総面積・平均中心を照合。両案で全120組が非重複で、画面内に収まることを確認した。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/spatial-registration-comparison.svg" alt="反復列の整列と位置ずれの説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>一つの行をまとまりとして横へ移すと、行内の間隔を保ったまま、上下の行との距離や最も近い点の方向を変えられる。隣接行の相対ずれを周期の半分にした候補では、近接する候補の方向が縦から斜めへ変わる。幾何的な関係を選び、実際にどう群として見えるかを確認する。</p></section>
+          <section><h3>具体例</h3><p>画面上の4行に同色・半径0.035の円を各4個、行内周期0.20で並べる。Aは全行を同じ位置に置き、Bは各行を左へ0.05、右へ0.05と交互にずらす。隣の行の相対ずれは0から0.10（周期の半分）になり、16中心の平均は両案とも(0.5, 0.5)。独立幾何計算では最短中心間距離が0.12から約0.1562へ変わる。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：独立した分数計算で16円の形・半径・色・行内周期・総面積・平均中心を照合。両案で全120組が非重複で、画面内に収まることを確認した。
 
 説明図を1150×806pxで描画し、各案16個の塗り領域と円中心の指定色を画素検査した。日本語の字形と切れも図として点検した。
 
 正本の構造検査と既存291件の回帰テストが通過。図の描画確認とB画像の効果は別に扱っている。
 
 制約：Bは全体幅（0.67から0.77）・左右余白・鏡映対称性も変えるため、近接だけを分離した因果実験ではない。有限の端や同距離の複数近傍もある。配置が明示固定なら変更せず、群化の知覚・好み・美的効果は未確認。B画像・動画も未生成。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://journals.sagepub.com/doi/10.1111/j.1467-9280.1995.tb00597.x">https://journals.sagepub.com/doi/10.1111/j.1467-9280.1995.tb00597.x</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/9520318/">https://pubmed.ncbi.nlm.nih.gov/9520318/</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://journals.sagepub.com/doi/10.1111/j.1467-9280.1995.tb00597.x">https://journals.sagepub.com/doi/10.1111/j.1467-9280.1995.tb00597.x</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/9520318/">https://pubmed.ncbi.nlm.nih.gov/9520318/</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/1a0774b4095f04803a8e5057987b932c66fcabe8">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/1a0774b4095f04803a8e5057987b932c66fcabe8">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="surface-mark-construction" data-essential="false" data-show-heading="false" hidden>
-  <h2>面に沿う筆致・ハッチングの構成</h2>
-  <div data-report-content>
-  <p class="item-summary">既存面に描く筆致の方向・長さ・間隔・密度・休止領域を、共同で選ぶ任意の手順を追加した。</p>
+<article class="gallery-item" id="surface-mark-construction">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>面に沿う筆致・ハッチングの構成</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存面に描く筆致の方向・長さ・間隔・密度・休止領域を、共同で選ぶ任意の手順を追加した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>面を投影した方向と、画面上の陰影・色から選ぶ方向を区別する。描画の線を物理的な溝・繊維とみなさず、形・接触・材質の手掛かりと描写上の禁止を保つ。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>面を投影した方向と、画面上の陰影・色から選ぶ方向を区別する。描画の線を物理的な溝・繊維とみなさず、形・接触・材質の手掛かりと描写上の禁止を保つ。</p></section>
 
-      <section><h3>確認範囲</h3><p>仕様・ガイドの統合レビューと297件の回帰テストが通過し、GitHubへ反映した。方向抽出・平滑化のアルゴリズムを実装したものではない。B画像の生成、形の読取り、美的効果は未確認。</p></section>
+          <section><h3>確認範囲</h3><p>仕様・ガイドの統合レビューと297件の回帰テストが通過し、GitHubへ反映した。方向抽出・平滑化のアルゴリズムを実装したものではない。B画像の生成、形の読取り、美的効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/b8a69cb0f7d76e5bf3aa86c02ad6300898864adc">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/b8a69cb0f7d76e5bf3aa86c02ad6300898864adc">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="thin-lens-defocus-width" data-essential="false" data-show-heading="false" hidden>
-  <h2>薄いレンズのぼけ径の構成</h2>
-  <div data-report-content>
-  <p class="item-summary">既存の有限開口カメラで、ピントを合わせる位置を動かさずに、手前と奥の点がどの程度広がって写るかを選べる。未指定の開口径を選ぶための具体的な構成例を追加した。</p>
+<article class="gallery-item" id="thin-lens-defocus-width">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>薄いレンズのぼけ径の構成</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存の有限開口カメラで、ピントを合わせる位置を動かさずに、手前と奥の点がどの程度広がって写るかを選べる。未指定の開口径を選ぶための具体的な構成例を追加した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/thin-lens-blur-comparison.svg" alt="薄いレンズのぼけ径の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>ピントの位置では、開口の別々の場所を通った光線が同じ点に集まる。その手前や奥の点はセンサー上で広がる。理想的な薄レンズの条件で、開口の直径を半分にすると、この広がりの直径も半分になる。全ての対象へ同じカメラ条件を適用する。</p></section>
-      <section><h3>具体例</h3><p>焦点距離50mm、合焦対象まで2mを固定し、F値2.8、5.6、11.2を比べる。1mにある点のぼけ径は約0.458、0.229、0.114mm、4mにある点は約0.229、0.114、0.057mmとなる。2mの点では、どの案も幾何学的ぼけ径が0になる。これはセンサー上の長さの比較で、説明図の円は拡大表示している。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：独立した光線行列と70桁の数値計算で735光線・15ケース・903深度値を照合した。モデルの定義域外12例と、符号・直径と半径・画素換算などを壊した8例を検査が拒否した。説明図の6つの幾何円、3つの焦点表示、903曲線点を照合し、1200×1050画像を画素検査と目視で確認した。仕様143規則と既存295テストが通過。配布検証器と単一の参考設計コードは変更していない。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/thin-lens-blur-comparison.svg" alt="薄いレンズのぼけ径の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>ピントの位置では、開口の別々の場所を通った光線が同じ点に集まる。その手前や奥の点はセンサー上で広がる。理想的な薄レンズの条件で、開口の直径を半分にすると、この広がりの直径も半分になる。全ての対象へ同じカメラ条件を適用する。</p></section>
+          <section><h3>具体例</h3><p>焦点距離50mm、合焦対象まで2mを固定し、F値2.8、5.6、11.2を比べる。1mにある点のぼけ径は約0.458、0.229、0.114mm、4mにある点は約0.229、0.114、0.057mmとなる。2mの点では、どの案も幾何学的ぼけ径が0になる。これはセンサー上の長さの比較で、説明図の円は拡大表示している。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：独立した光線行列と70桁の数値計算で735光線・15ケース・903深度値を照合した。モデルの定義域外12例と、符号・直径と半径・画素換算などを壊した8例を検査が拒否した。説明図の6つの幾何円、3つの焦点表示、903曲線点を照合し、1200×1050画像を画素検査と目視で確認した。仕様143規則と既存295テストが通過。配布検証器と単一の参考設計コードは変更していない。
 
 制約：円形開口を持つ理想的な薄い近軸レンズの幾何モデルに限る。ピント位置のゼロ径は現実の無限解像を意味せず、ぼけ円は光量分布や実際の鮮鋭度を示さない。開口面積の比は明るさ・露出の厳密比ではなく、露出補償も追加しない。固定されたカメラ・合焦・形状・接触・材質・露出を優先する。回折、収差、遮蔽境界の正しいぼけ合成、B画像生成、実画像の読み取り・美的効果は未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models">https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/7150f04662806d2378f2c5539359e716caeb1755">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/7150f04662806d2378f2c5539359e716caeb1755">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="tonal-connectivity" data-essential="false" data-show-heading="false" hidden>
-  <h2>明暗のつながりを比較する方法</h2>
-  <div data-report-content>
-  <p class="item-summary">既存色面の値・面積だけでなく、明暗群の辺接続と分離関係を選ぶ。</p>
+<article class="gallery-item" id="tonal-connectivity">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>明暗のつながりを比較する方法</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存色面の値・面積だけでなく、明暗群の辺接続と分離関係を選ぶ。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/tonal-mass-comparison.svg" alt="明暗のつながりを比較する方法の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>同じ色の量でも、どの既存領域へ割り当てるかで群のつながりは変わる。明暗群を辺で接続する関係として扱い、色量の調整と接続関係の選択を分ける。</p></section>
-      <section><h3>具体例</h3><p>形と位置を固定した同面積3領域に同じ3色を割り当て、濃色が分離するD1-L-D2と接続するD1-D2-Lを比べる。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：教育図の領域形状・色・各色面積と、明暗群の辺接続を確認した。知覚的な群化の測定はしていない。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/tonal-mass-comparison.svg" alt="明暗のつながりを比較する方法の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>同じ色の量でも、どの既存領域へ割り当てるかで群のつながりは変わる。明暗群を辺で接続する関係として扱い、色量の調整と接続関係の選択を分ける。</p></section>
+          <section><h3>具体例</h3><p>形と位置を固定した同面積3領域に同じ3色を割り当て、濃色が分離するD1-L-D2と接続するD1-D2-Lを比べる。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：教育図の領域形状・色・各色面積と、明暗群の辺接続を確認した。知覚的な群化の測定はしていない。
 
 制約：辺接続数は設計上の定義で、知覚測定ではない。一般画像に二値化や全暗部統合を課さず、美的効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/5d6ac4db63711fc813c0da7a5d1fe347dfe41c05">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/5d6ac4db63711fc813c0da7a5d1fe347dfe41c05">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="traveling-light-pattern" data-essential="false" data-show-heading="false" hidden>
-  <h2>円形領域を巡る光の模様の構成</h2>
-  <div data-report-content>
-  <p class="item-summary">既に時間変化が許された円形の発光部で、形を動かさずに、明暗の模様が巡る向きと速さを選べる。未指定の強度変調を具体化する方法で、円や光源を追加するものではない。</p>
+<article class="gallery-item" id="traveling-light-pattern">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>円形領域を巡る光の模様の構成</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既に時間変化が許された円形の発光部で、形を動かさずに、明暗の模様が巡る向きと速さを選べる。未指定の強度変調を具体化する方法で、円や光源を追加するものではない。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/traveling-wave-comparison.svg" alt="円形領域を巡る光の模様の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>円周上の場所と時刻を一つの周期式で結び、同じ明暗分布が時間とともにずれるようにする。時間側の位相の符号を変えると向きが反転し、変化率を2倍にすると模様の進み方も2倍になる。輪郭や物質の回転と、制御分布の移動を区別する。</p></section>
-      <section><h3>具体例</h3><p>同じ固定円に3つの山を持つ分布を置き、強度に掛ける無次元制御量の範囲を0.4〜1.6に保つ。Aは正方向60°/秒、Bは逆方向60°/秒、Cは正方向120°/秒。開始時点の分布は3案とも同じで、0°から追う位相は0.5秒後に+30°、−30°、+60°へ進む。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：独立した複素位相の計算で2,592点の制御値と変化率、81の位相位置、1,083曲線点を照合した。時間・空間の粗い標本が別の進行模様と一致する900組の診断も確認。不正パラメータ18例と破損8例を検査が拒否した。説明図の9円・864区間・9つの説明用位相記号と3曲線を照合し、1200×1280画像を画素検査と目視で確認した。仕様143規則と既存295テストが通過。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/traveling-wave-comparison.svg" alt="円形領域を巡る光の模様の構成の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>円周上の場所と時刻を一つの周期式で結び、同じ明暗分布が時間とともにずれるようにする。時間側の位相の符号を変えると向きが反転し、変化率を2倍にすると模様の進み方も2倍になる。輪郭や物質の回転と、制御分布の移動を区別する。</p></section>
+          <section><h3>具体例</h3><p>同じ固定円に3つの山を持つ分布を置き、強度に掛ける無次元制御量の範囲を0.4〜1.6に保つ。Aは正方向60°/秒、Bは逆方向60°/秒、Cは正方向120°/秒。開始時点の分布は3案とも同じで、0°から追う位相は0.5秒後に+30°、−30°、+60°へ進む。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：独立した複素位相の計算で2,592点の制御値と変化率、81の位相位置、1,083曲線点を照合した。時間・空間の粗い標本が別の進行模様と一致する900組の診断も確認。不正パラメータ18例と破損8例を検査が拒否した。説明図の9円・864区間・9つの説明用位相記号と3曲線を照合し、1200×1280画像を画素検査と目視で確認した。仕様143規則と既存295テストが通過。
 
 制約：理想的な一つの周期制御場の構成例で、媒体の物理波動や発光効率の証明ではない。角度平均が同じでも総放射束・露出・見た目の明るさは保証しない。固定された発光・形・内部法則・時間区間を優先し、世界内発光なら既存の照明・反射にも反映する。一時点の画像から進行方向や速さは実証できない。投影・遮蔽・露光・表示の標本化、B画像・動画生成、実際の読取りと美的効果は未確認。</p></section>
-      <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves">https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves</a></li><li><a href="https://www.pbr-book.org/4ed/Sampling_and_Reconstruction/Sampling_Theory">https://www.pbr-book.org/4ed/Sampling_and_Reconstruction/Sampling_Theory</a></li></ul></section>
+          <section class="item-references"><h3>参考資料</h3><ul><li><a href="https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves">https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves</a></li><li><a href="https://www.pbr-book.org/4ed/Sampling_and_Reconstruction/Sampling_Theory">https://www.pbr-book.org/4ed/Sampling_and_Reconstruction/Sampling_Theory</a></li></ul></section>
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/5c16da43153c2df7a4e0c6563befb0a85a952975">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/5c16da43153c2df7a4e0c6563befb0a85a952975">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="vfx-selected-projection" data-essential="false" data-show-heading="false" hidden>
-  <h2>VFXと選択済み投影集合の条件整理</h2>
-  <div data-report-content>
-  <p class="item-summary">VFXの世界内レイヤーに関する記述を、基底の選択済みProjectionSetへ合わせた。</p>
+<article class="gallery-item" id="vfx-selected-projection">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>VFXと選択済み投影集合の条件整理</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">VFXの世界内レイヤーに関する記述を、基底の選択済みProjectionSetへ合わせた。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>通常の単一投影を保ちながら、明示的に許された複数投影では同じ世界内の対象・個数・接触を各投影へ対応させる。レイヤーごとに無断で別カメラを使う許可ではない。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>通常の単一投影を保ちながら、明示的に許された複数投影では同じ世界内の対象・個数・接触を各投影へ対応させる。レイヤーごとに無断で別カメラを使う許可ではない。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の4構造例と297件の回帰テストが通過した。構造例は修正前も想定どおり通っており、今回は規範的記述の衝突を整理した。実画像・美的効果は未確認。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の4構造例と297件の回帰テストが通過した。構造例は修正前も想定どおり通っており、今回は規範的記述の衝突を整理した。実画像・美的効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/9b92ab7dc39c96aa868dfa8bc06599e6bcf2a61a">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/9b92ab7dc39c96aa868dfa8bc06599e6bcf2a61a">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="weighted-placement-candidates" data-essential="false" data-show-heading="false" hidden>
-  <h2>重み分布に基づく配置候補</h2>
-  <div data-report-content>
-  <p class="item-summary">既存balance_symmetry軸で、配置の重み付き中心と符号付き偏りを候補比較に使う。</p>
+<article class="gallery-item" id="weighted-placement-candidates">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>重み分布に基づく配置候補</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">既存balance_symmetry軸で、配置の重み付き中心と符号付き偏りを候補比較に使う。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
-    <figure class="item-image"><img src="assets/weighted-placement-comparison.svg" alt="重み分布に基づく配置候補の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>相対重みwと位置pから、分布中心c=Σ(wp)/Σwと基準点からの符号付き偏りを計算する。重い側を近く、軽い側を遠くへ置くなど、位置と距離の候補を作る補助に使う。</p></section>
-      <section><h3>具体例</h3><p>半径0.10/0.05の同色円に面積比の代理重み4:1を置く。大円のx=0.425を保ち小円を0.60→0.80へ動かすと、分布中心xは0.46→0.50になる。元の配置を左右反転すれば0.54になり、偏りを残す案も選べる。</p></section>
-      <section><h3>確認範囲</h3><p>当該改善時の記録：図の座標から分布中心0.46 / 0.50 / 0.54を確認。形・色・非重複・余白と、実描画した説明図を点検した。
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
+        <figure class="item-image"><img src="assets/weighted-placement-comparison.svg" alt="重み分布に基づく配置候補の説明図。実生成したB作品ではありません。" loading="lazy"></figure>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>相対重みwと位置pから、分布中心c=Σ(wp)/Σwと基準点からの符号付き偏りを計算する。重い側を近く、軽い側を遠くへ置くなど、位置と距離の候補を作る補助に使う。</p></section>
+          <section><h3>具体例</h3><p>半径0.10/0.05の同色円に面積比の代理重み4:1を置く。大円のx=0.425を保ち小円を0.60→0.80へ動かすと、分布中心xは0.46→0.50になる。元の配置を左右反転すれば0.54になり、偏りを残す案も選べる。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録：図の座標から分布中心0.46 / 0.50 / 0.54を確認。形・色・非重複・余白と、実描画した説明図を点検した。
 
 制約：proxyは知覚的重さや物理質量ではなく、中心一致も美しさの証明ではない。配置で間隔・余白も変わるため、B画像と美的効果は未確認。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/85a4a85afd31cb26814d2d0f3e3c8c935bc0d5f0">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/85a4a85afd31cb26814d2d0f3e3c8c935bc0d5f0">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-028eadf665a9" data-essential="false" data-show-heading="false" hidden>
-  <h2>仕様テンプレートと重複メタデータの検査</h2>
-  <div data-report-content>
-  <p class="item-summary">壊れたテンプレートの章診断と、空値を含む規則メタデータの重複検出を追加した。</p>
+<article class="gallery-item" id="technical-028eadf665a9">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>仕様テンプレートと重複メタデータの検査</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">壊れたテンプレートの章診断と、空値を含む規則メタデータの重複検出を追加した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>翻訳前の正本の構造を検査し、重複した定義の後勝ちによる見落としを防ぐ。関連する外部担当の単一コード化修正そのものは、この報告の成果へ含めない。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>翻訳前の正本の構造を検査し、重複した定義の後勝ちによる見落としを防ぐ。関連する外部担当の単一コード化修正そのものは、この報告の成果へ含めない。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト251件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト251件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/028eadf665a916ee916e11ad8b1d65a0cdde4d30">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/028eadf665a916ee916e11ad8b1d65a0cdde4d30">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-08d42d591993" data-essential="false" data-show-heading="false" hidden>
-  <h2>複数キーワード展開の個別検査</h2>
-  <div data-report-content>
-  <p class="item-summary">複数の完全一致展開を配列として保持し、各項目の義務を個別に検査するようにした。</p>
+<article class="gallery-item" id="technical-08d42d591993">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>複数キーワード展開の個別検査</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">複数の完全一致展開を配列として保持し、各項目の義務を個別に検査するようにした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>一つの文字列へ連結して個別条件を回避しない。各展開を適用しつつ、共有する対象範囲と単一・集合の違いを保つ。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>一つの文字列へ連結して個別条件を回避しない。各展開を適用しつつ、共有する対象範囲と単一・集合の違いを保つ。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト225件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト225件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/08d42d591993f81cdc92f40c7bd30d8fb97dc388">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/08d42d591993f81cdc92f40c7bd30d8fb97dc388">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-21dd48756f3e" data-essential="false" data-show-heading="false" hidden>
-  <h2>コンパイル状態と投影の網羅検査</h2>
-  <div data-report-content>
-  <p class="item-summary">コンパイルの状態に応じた条件と、投影が必要な対象を覆う条件を整理した。</p>
+<article class="gallery-item" id="technical-21dd48756f3e">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>コンパイル状態と投影の網羅検査</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">コンパイルの状態に応じた条件と、投影が必要な対象を覆う条件を整理した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>処理の準備・完了・根拠を区別し、投影集合の対象範囲を照合する。構造上の網羅は実画像での可視性や品質とは別である。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>処理の準備・完了・根拠を区別し、投影集合の対象範囲を照合する。構造上の網羅は実画像での可視性や品質とは別である。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト151件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト151件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/21dd48756f3e827bf2b5f4735004d2b95e26e7f8">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/21dd48756f3e827bf2b5f4735004d2b95e26e7f8">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-341ae7047dda" data-essential="false" data-show-heading="false" hidden>
-  <h2>OBS依存グラフと意味照合の反例</h2>
-  <div data-report-content>
-  <p class="item-summary">OBSの依存グラフを反復処理で検査し、意味照合の反例を文書化した。</p>
+<article class="gallery-item" id="technical-341ae7047dda">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>OBS依存グラフと意味照合の反例</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">OBSの依存グラフを反復処理で検査し、意味照合の反例を文書化した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>参照の存在と依存の循環を分けて検査する。構造検査を通る入力でも意味の妥当性は別に照合する。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>参照の存在と依存の循環を分けて検査する。構造検査を通る入力でも意味の妥当性は別に照合する。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト191件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト191件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/341ae7047ddad3752163589d3b336fd0d2573c7b">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/341ae7047ddad3752163589d3b336fd0d2573c7b">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-3d19e917f5de" data-essential="false" data-show-heading="false" hidden>
-  <h2>描画対象参照とUnicode診断</h2>
-  <div data-report-content>
-  <p class="item-summary">画面上の描画対象への型付き参照と、CLIの日本語・Unicode出力を改善した。</p>
+<article class="gallery-item" id="technical-3d19e917f5de">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>描画対象参照とUnicode診断</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">画面上の描画対象への型付き参照と、CLIの日本語・Unicode出力を改善した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>対象の種類に合う参照だけを許し、診断の文字を失わず伝える。文書の入口も現行版と履歴へ分けた。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>対象の種類に合う参照だけを許し、診断の文字を失わず伝える。文書の入口も現行版と履歴へ分けた。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト203件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト203件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/3d19e917f5de4a661d7e732147e108b14634c43c">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/3d19e917f5de4a661d7e732147e108b14634c43c">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-604e64cef7c6" data-essential="false" data-show-heading="false" hidden>
-  <h2>pointerの配列添字検査</h2>
-  <div data-report-content>
-  <p class="item-summary">配列へのpointerで範囲外や不正な添字を通常の未解決診断として扱うようにした。</p>
+<article class="gallery-item" id="technical-604e64cef7c6">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>pointerの配列添字検査</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">配列へのpointerで範囲外や不正な添字を通常の未解決診断として扱うようにした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>実装例外を漏らさず境界を検査する。既存の十進トークンの扱いは保ち、別の参照形式へ勝手に変えない。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>実装例外を漏らさず境界を検査する。既存の十進トークンの扱いは保ち、別の参照形式へ勝手に変えない。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト244件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト244件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/604e64cef7c6da52109b91dca38b570d146b6214">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/604e64cef7c6da52109b91dca38b570d146b6214">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-67fd129732d5" data-essential="false" data-show-heading="false" hidden>
-  <h2>JSON APIの型・深さ・循環検査</h2>
-  <div data-report-content>
-  <p class="item-summary">直接APIへ渡す値を正準JSONの型に限定し、深さや循環を検査するようにした。</p>
+<article class="gallery-item" id="technical-67fd129732d5">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>JSON APIの型・深さ・循環検査</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">直接APIへ渡す値を正準JSONの型に限定し、深さや循環を検査するようにした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>暗黙の型変換で不正入力を受理せず、循環参照と共有部分を持つ非循環構造を区別する。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>暗黙の型変換で不正入力を受理せず、循環参照と共有部分を持つ非循環構造を区別する。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト181件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト181件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/67fd129732d52d705297db26fdb1d1f5c4d5e0c3">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/67fd129732d52d705297db26fdb1d1f5c4d5e0c3">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-6ad01acc640f" data-essential="false" data-show-heading="false" hidden>
-  <h2>PostEffectsと単一光条の条件整理</h2>
-  <div data-report-content>
-  <p class="item-summary">通常のPostEffects指定と、f1の単一光条に集団用LDMを不要とする条件を整理した。</p>
+<article class="gallery-item" id="technical-6ad01acc640f">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>PostEffectsと単一光条の条件整理</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">通常のPostEffects指定と、f1の単一光条に集団用LDMを不要とする条件を整理した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>個体に必要な条件と集合に必要な条件を分け、選択していない集合設計を単一効果へ強制しない。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>個体に必要な条件と集合に必要な条件を分け、選択していない集合設計を単一効果へ強制しない。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト186件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト186件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/6ad01acc640feee7faf8bc56e351bc5cc3bae231">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/6ad01acc640feee7faf8bc56e351bc5cc3bae231">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-75fb0574fd04" data-essential="false" data-show-heading="false" hidden>
-  <h2>記述型・予約参照・表示上の受入条件</h2>
-  <div data-report-content>
-  <p class="item-summary">説明文の型、正準ルートの予約、表示だけに関する受入条件を明確にした。</p>
+<article class="gallery-item" id="technical-75fb0574fd04">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>記述型・予約参照・表示上の受入条件</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">説明文の型、正準ルートの予約、表示だけに関する受入条件を明確にした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>文章と識別子の役割を分け、参照ルートと登録対象の衝突を防ぐ。表示上の確認を世界内の物理検証へ置き換えない。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>文章と識別子の役割を分け、参照ルートと登録対象の衝突を防ぐ。表示上の確認を世界内の物理検証へ置き換えない。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト156件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト156件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/75fb0574fd0496016e06b6583446a69851ece89c">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/75fb0574fd0496016e06b6583446a69851ece89c">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-888114fbbcd8" data-essential="false" data-show-heading="false" hidden>
-  <h2>共通参照定義と根拠の鮮度</h2>
-  <div data-report-content>
-  <p class="item-summary">共通の契約参照を整理し、現行版の準備状態と根拠の鮮度を照合する条件を明確にした。</p>
+<article class="gallery-item" id="technical-888114fbbcd8">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>共通参照定義と根拠の鮮度</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">共通の契約参照を整理し、現行版の準備状態と根拠の鮮度を照合する条件を明確にした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>版が変わった後に古い確認済み状態をそのまま使わず、依存した変更と再確認が必要な根拠を結びつける。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>版が変わった後に古い確認済み状態をそのまま使わず、依存した変更と再確認が必要な根拠を結びつける。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト195件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト195件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/888114fbbcd8df10e94725e47151d282ebbd7d80">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/888114fbbcd8df10e94725e47151d282ebbd7d80">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-9a8772278353" data-essential="false" data-show-heading="false" hidden>
-  <h2>B-Expression-3への統合</h2>
-  <div data-report-content>
-  <p class="item-summary">構図・描写・色・魔法の共同設計と、Entity・PH・OBSを分ける表現形式を導入した。</p>
+<article class="gallery-item" id="technical-9a8772278353">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>B-Expression-3への統合</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">構図・描写・色・魔法の共同設計と、Entity・PH・OBSを分ける表現形式を導入した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>対象そのもの、世界内の現象、観測・表示処理を区別し、目的に合うモデルと必要な領域の詳細だけを扱う。凍結したB-Expression-2の互換形式は維持する。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>対象そのもの、世界内の現象、観測・表示処理を区別し、目的に合うモデルと必要な領域の詳細だけを扱う。凍結したB-Expression-2の互換形式は維持する。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト148件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト148件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/9a87722783534d2be3516e079e3608c3e95e3a38">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/9a87722783534d2be3516e079e3608c3e95e3a38">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-a6ee0ff45f1b" data-essential="false" data-show-heading="false" hidden>
-  <h2>UTF-8 BOMと数値範囲の取扱い</h2>
-  <div data-report-content>
-  <p class="item-summary">先頭のBOMを一つ許容し、非有限になる数値を明示的に拒否するようにした。</p>
+<article class="gallery-item" id="technical-a6ee0ff45f1b">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>UTF-8 BOMと数値範囲の取扱い</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">先頭のBOMを一つ許容し、非有限になる数値を明示的に拒否するようにした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>入力の文字コード処理と数値の実装範囲を分ける。本文内の文字は勝手に除去せず、整数の精度も保つ。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>入力の文字コード処理と数値の実装範囲を分ける。本文内の文字は勝手に除去せず、整数の精度も保つ。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト175件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト175件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/a6ee0ff45f1b990ce9bf27332e4ee8c10d940b20">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/a6ee0ff45f1b990ce9bf27332e4ee8c10d940b20">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-b898a267ca36" data-essential="false" data-show-heading="false" hidden>
-  <h2>例外規則とYAMLの一貫した解釈</h2>
-  <div data-report-content>
-  <p class="item-summary">exception_toの参照先解決、単一値YAMLの共通処理、テンプレートの重複検出を整えた。</p>
+<article class="gallery-item" id="technical-b898a267ca36">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>例外規則とYAMLの一貫した解釈</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">exception_toの参照先解決、単一値YAMLの共通処理、テンプレートの重複検出を整えた。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>例外が何を対象にするかを明示し、正本とコンパイラで同じメタデータを保つ。曖昧な重複定義を受理しない。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>例外が何を対象にするかを明示し、正本とコンパイラで同じメタデータを保つ。曖昧な重複定義を受理しない。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト263件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト263件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/b898a267ca36a44f51ba5eb8009c53ce6e4299e8">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/b898a267ca36a44f51ba5eb8009c53ce6e4299e8">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-c24a9ba3cb20" data-essential="false" data-show-heading="false" hidden>
-  <h2>検証中の契約と参照解決の分離</h2>
-  <div data-report-content>
-  <p class="item-summary">一回の検証で使う契約のスナップショットと、参照解決の再構築を独立させた。</p>
+<article class="gallery-item" id="technical-c24a9ba3cb20">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>検証中の契約と参照解決の分離</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">一回の検証で使う契約のスナップショットと、参照解決の再構築を独立させた。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>途中で変化する共有状態を検証の根拠へ混ぜず、呼出しごとの入力と契約から解決する。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>途中で変化する共有状態を検証の根拠へ混ぜず、呼出しごとの入力と契約から解決する。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト163件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト163件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/c24a9ba3cb2036cc701dfe55ab120681419aebb4">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/c24a9ba3cb2036cc701dfe55ab120681419aebb4">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-c29bc021ab2e" data-essential="false" data-show-heading="false" hidden>
-  <h2>拡張選択APIの明示エラー</h2>
-  <div data-report-content>
-  <p class="item-summary">未知の拡張名や不正な選択コンテナを、APIの明示エラーとして返すようにした。</p>
+<article class="gallery-item" id="technical-c29bc021ab2e">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>拡張選択APIの明示エラー</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">未知の拡張名や不正な選択コンテナを、APIの明示エラーとして返すようにした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>対応する拡張名の定義を共有し、選択肢の誤りを黙って無視したり別形式へ変換したりしない。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>対応する拡張名の定義を共有し、選択肢の誤りを黙って無視したり別形式へ変換したりしない。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト209件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト209件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/c29bc021ab2e7b92cf143b9e82f9fd99fdb6c4d0">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/c29bc021ab2e7b92cf143b9e82f9fd99fdb6c4d0">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-c8e93fcb86b4" data-essential="false" data-show-heading="false" hidden>
-  <h2>Python型注釈の非実行構文</h2>
-  <div data-report-content>
-  <p class="item-summary">生成コードのprompt注釈として扱う構文を、実行しない形式へ限定した。</p>
+<article class="gallery-item" id="technical-c8e93fcb86b4">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>Python型注釈の非実行構文</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">生成コードのprompt注釈として扱う構文を、実行しない形式へ限定した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>Pythonコードを実行せず構文木として読む。注釈内の呼出しや属性アクセスを、単なる型名や文字列と同一視しない。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>Pythonコードを実行せず構文木として読む。注釈内の呼出しや属性アクセスを、単なる型名や文字列と同一視しない。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト166件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト166件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/c8e93fcb86b4c059818c6d3c3401b450abc45d1d">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/c8e93fcb86b4c059818c6d3c3401b450abc45d1d">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-d1bc59cbb65b" data-essential="false" data-show-heading="false" hidden>
-  <h2>モジュール内パスの依存検査</h2>
-  <div data-report-content>
-  <p class="item-summary">モジュールの一部を指す参照も、モジュール間の先行関係へ対応させた。</p>
+<article class="gallery-item" id="technical-d1bc59cbb65b">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>モジュール内パスの依存検査</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">モジュールの一部を指す参照も、モジュール間の先行関係へ対応させた。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>参照先が存在するだけで処理順序を満たしたとせず、実際の生成元モジュールへ依存辺を結ぶ。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>参照先が存在するだけで処理順序を満たしたとせず、実際の生成元モジュールへ依存辺を結ぶ。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト231件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト231件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/d1bc59cbb65bd29a57f86a8d6a5079a0f1fbd84f">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/d1bc59cbb65bd29a57f86a8d6a5079a0f1fbd84f">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-d5e061ec4a0c" data-essential="false" data-show-heading="false" hidden>
-  <h2>コンパイル前の正本検査</h2>
-  <div data-report-content>
-  <p class="item-summary">コンパイル前に正本全体を検査し、activation参照の不正な型を通常の診断へ変えた。</p>
+<article class="gallery-item" id="technical-d5e061ec4a0c">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>コンパイル前の正本検査</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">コンパイル前に正本全体を検査し、activation参照の不正な型を通常の診断へ変えた。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>正本が不正な場合は出力前に止まり、失敗途中の契約を保存しない。B2の凍結経路と既存の配布コードは保つ。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>正本が不正な場合は出力前に止まり、失敗途中の契約を保存しない。B2の凍結経路と既存の配布コードは保つ。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト273件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト273件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/d5e061ec4a0c9db046865534c84c2148c9d3406c">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/d5e061ec4a0c9db046865534c84c2148c9d3406c">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-e90ca0658c13" data-essential="false" data-show-heading="false" hidden>
-  <h2>パスに似た登録IDの保護</h2>
-  <div data-report-content>
-  <p class="item-summary">モジュールのパスに似ている登録IDを、先行関係と誤認しないようにした。</p>
+<article class="gallery-item" id="technical-e90ca0658c13">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>パスに似た登録IDの保護</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">モジュールのパスに似ている登録IDを、先行関係と誤認しないようにした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>表記の形だけで参照の意味を決めず、登録済みIDを解決してから依存関係を扱う。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>表記の形だけで参照の意味を決めず、登録済みIDを解決してから依存関係を扱う。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト232件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト232件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/e90ca0658c1324c96ea6b215b4e43473423efd89">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/e90ca0658c1324c96ea6b215b4e43473423efd89">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="technical-eb026b6ca7ae" data-essential="false" data-show-heading="false" hidden>
-  <h2>汎用参照と識別子の名前空間</h2>
-  <div data-report-content>
-  <p class="item-summary">B3の汎用参照をpointer優先に整理し、識別子専用欄の値をそのまま保つようにした。</p>
+<article class="gallery-item" id="technical-eb026b6ca7ae">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>汎用参照と識別子の名前空間</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">B3の汎用参照をpointer優先に整理し、識別子専用欄の値をそのまま保つようにした。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>参照表現と文字列IDを区別する。旧データで名前が衝突する場合は移行監査を行い、自動的な読み替えを避ける。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>参照表現と文字列IDを区別する。旧データで名前が衝突する場合は移行監査を行い、自動的な読み替えを避ける。</p></section>
 
-      <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト238件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
+          <section><h3>確認範囲</h3><p>当該改善時の記録では、回帰テスト238件が通過し、GitHubへの反映を確認した。今回その時点の全試験を再実行したという意味ではない。構造検査・仕様保守の成果で、実生成画像や美的効果の確認ではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/B/commit/eb026b6ca7aef055f3521f9110f2fdea93ce8374">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/B/commit/eb026b6ca7aef055f3521f9110f2fdea93ce8374">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="gallery-essential-curation" data-essential="false" data-show-heading="false" hidden>
-  <h2>制作上の必要性に基づく掲載内容の整理</h2>
-  <div data-report-content>
-  <p class="item-summary">通常のギャラリーを、ユーザーが制作でぜひ知るべきこのチャットの改善だけに絞り、日別ページを廃止した。</p>
+<article class="gallery-item" id="gallery-essential-curation">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>制作上の必要性に基づく掲載内容の整理</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">通常のギャラリーを、ユーザーが制作でぜひ知るべきこのチャットの改善だけに絞り、日別ページを廃止した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>制作上の具体的な必要性と、内部の仕様保守・検査を区別する。必要性がない成果を見出しだけ言い換えて通常表示へ戻さない。後の指示により、内部報告は任意の全報告モードから読める。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>制作上の具体的な必要性と、内部の仕様保守・検査を区別する。必要性がない成果を見出しだけ言い換えて通常表示へ戻さない。後の指示により、内部報告は任意の全報告モードから読める。</p></section>
 
-      <section><h3>確認範囲</h3><p>整理時に通常表示を0件とし、公開7URLの本文と削除22URLを確認した。当時の検査結果であり、今回の全報告モードの媒体復帰は別に検証する。</p></section>
+          <section><h3>確認範囲</h3><p>整理時に通常表示を0件とし、公開7URLの本文と削除22URLを確認した。当時の検査結果であり、今回の全報告モードの媒体復帰は別に検証する。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/47569c3ecee16d334ee16c45077fcfa0ec647768">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/47569c3ecee16d334ee16c45077fcfa0ec647768">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="gallery-publication" data-essential="false" data-show-heading="false" hidden>
-  <h2>B制作ギャラリーの公開</h2>
-  <div data-report-content>
-  <p class="item-summary">このチャットの改善報告を読むためのGitHub Pagesギャラリーを作成した。</p>
+<article class="gallery-item" id="gallery-publication">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>B制作ギャラリーの公開</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">このチャットの改善報告を読むためのGitHub Pagesギャラリーを作成した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>報告の構造化データからページを生成し、作品上の説明と原理・例・確認範囲を結びつけた。初期の日別形式は後のユーザー指示で廃止し、現在は一つのページへまとめている。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>報告の構造化データからページを生成し、作品上の説明と原理・例・確認範囲を結びつけた。初期の日別形式は後のユーザー指示で廃止し、現在は一つのページへまとめている。</p></section>
 
-      <section><h3>確認範囲</h3><p>当時の公開commitと公開本文・媒体を照合した。公開方式の整備であり、B作品自体の表現改善を示すものではない。</p></section>
+          <section><h3>確認範囲</h3><p>当時の公開commitと公開本文・媒体を照合した。公開方式の整備であり、B作品自体の表現改善を示すものではない。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/62a7ae553d9215d1989dac2e49296d5c653ec92e">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/62a7ae553d9215d1989dac2e49296d5c653ec92e">GitHubの変更</a></p>
   </details>
-  </div>
 </article>
-<article class="gallery-item" id="gallery-tab-icons" data-essential="false" data-show-heading="false" hidden>
-  <h2>ギャラリーのタブ・ブックマーク用アイコン</h2>
-  <div data-report-content>
-  <p class="item-summary">B制作ギャラリーのfaviconとApple用アイコンを変更した。</p>
+<article class="gallery-item" id="gallery-tab-icons">
+  <details class="article-disclosure" data-report-disclosure>
+    <summary><h2>ギャラリーのタブ・ブックマーク用アイコン</h2></summary>
+    <div data-report-content>
+      <p class="item-summary">B制作ギャラリーのfaviconとApple用アイコンを変更した。</p>
 
 
-  <details class="report-details">
-    <summary>しくみ・具体例・確認範囲を見る</summary>
+      <details class="report-details">
+        <summary>しくみ・具体例・確認範囲を見る</summary>
 
-    <div class="item-details">
-      <section><h3>しくみ</h3><p>小さいタブ表示、ブックマーク、ホーム画面用にそれぞれ対応する形式と寸法のアイコンを配信する。</p></section>
+        <div class="item-details">
+          <section><h3>しくみ</h3><p>小さいタブ表示、ブックマーク、ホーム画面用にそれぞれ対応する形式と寸法のアイコンを配信する。</p></section>
 
-      <section><h3>確認範囲</h3><p>公開されたSVG・ICO・PNGの実バイトとMIMEを確認した。今回のモード切替でも3アイコンの元バイトを維持する。</p></section>
+          <section><h3>確認範囲</h3><p>公開されたSVG・ICO・PNGの実バイトとMIMEを確認した。今回のモード切替でも3アイコンの元バイトを維持する。</p></section>
 
+        </div>
+        <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/1cdf26f714fa54b52499d7388cce1eec0f40b84f">GitHubの変更</a></p>
+      </details>
     </div>
-    <p class="item-source"><a href="https://github.com/Player13579/player13579.github.io/commit/1cdf26f714fa54b52499d7388cce1eec0f40b84f">GitHubの変更</a></p>
   </details>
-  </div>
-</article><p class="empty-gallery" data-empty-state>現在、制作でぜひ知っておくべき掲載内容はありません。これまでの改善は「すべての報告」で読めます。</p>
+</article>
     </section>
   </main>
-  <script src="gallery-modes.js" defer></script>
+  <script src="gallery-articles.js" defer></script>
 </body>
 </html>
