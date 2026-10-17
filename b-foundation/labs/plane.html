@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>紋様を斜めの面に載せる｜B Foundation</title>
+  <link rel="stylesheet" href="band.css">
+  <link rel="stylesheet" href="plane.css">
+  <script type="module" src="plane-lab.mjs"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../?view=all#planar-projection-lab">← B Foundation の一覧へ戻る</a>
+    <header>
+      <h1>紋様を斜めの面に載せる</h1>
+      <p class="intro">保存した放射状の紋様を読み込み、平面内の形を保ったまま、面の傾きと投影方法を比べます。左は比較用に残した案、右は調整中の案です。左右は同じ縮尺で表示します。</p>
+    </header>
+
+    <div class="workbench plane-workbench">
+      <section class="controls plane-controls" aria-label="投影と元の紋様の条件">
+        <div class="field">
+          <label for="projection">投影方法</label>
+          <select id="projection">
+            <option value="perspective" selected>透視投影（遠近感あり）</option>
+            <option value="orthographic">正射影（遠近感なし）</option>
+          </select>
+        </div>
+        <div class="field range-field">
+          <label for="tilt">面の傾き <output id="tilt-value" for="tilt">60°</output></label>
+          <input id="tilt" type="range" min="-80" max="80" step="5" value="60">
+        </div>
+        <div class="field range-field">
+          <label for="roll">面の回転 <output id="roll-value" for="roll">0°</output></label>
+          <input id="roll" type="range" min="-180" max="180" step="5" value="0">
+        </div>
+        <div class="field range-field">
+          <label for="distance">カメラ距離 <output id="distance-value" for="distance">3.00</output></label>
+          <input id="distance" type="range" min="2" max="8" step="0.25" value="3">
+          <p id="distance-help" class="field-help">距離に応じて遠近感が変わります。</p>
+        </div>
+        <div class="source-import">
+          <label for="source-file">紋様の形状データを読み込む</label>
+          <input id="source-file" type="file" accept="application/json,.json">
+          <p id="source-status" class="field-help">初期の紋様を表示しています。</p>
+          <p class="producer-link"><a href="rosette.html">放射状の紋様を作るページ</a>で形を調整し、JSONを保存できます。</p>
+        </div>
+        <div class="checks">
+          <label class="check" for="show-plane"><input id="show-plane" type="checkbox" checked> 平面の補助線を表示</label>
+        </div>
+        <p class="helper-note">補助線は面の向きを見るための図です。SVG保存には含まれません。</p>
+        <div class="actions">
+          <button id="pin" type="button">今の投影を比較用に残す</button>
+          <button id="reset-source" type="button" class="secondary">元の紋様を初期状態に戻す</button>
+          <button id="reset-all" type="button" class="secondary">すべて初期状態に戻す</button>
+        </div>
+      </section>
+
+      <div class="stage plane-stage">
+        <p id="status" class="status" role="status" aria-live="polite">投影を計算しています。</p>
+        <section class="compare plane-compare" aria-label="比較用に残した投影と調整中の投影">
+          <article class="panel" aria-labelledby="baseline-title">
+            <h2 id="baseline-title">比較用に残した紋様</h2>
+            <p class="caption" id="baseline-caption">基準となる投影です。</p>
+            <div class="canvas-frame"><svg id="baseline-preview" viewBox="-2.3 -2.3 4.6 4.6" preserveAspectRatio="xMidYMid meet" role="img" aria-label="比較用に残した紋様の投影"></svg></div>
+          </article>
+          <article class="panel" aria-labelledby="current-title">
+            <h2 id="current-title">調整中</h2>
+            <p class="caption" id="current-caption">投影を計算しています。</p>
+            <div class="canvas-frame"><svg id="current-preview" viewBox="-2.3 -2.3 4.6 4.6" preserveAspectRatio="xMidYMid meet" role="img" aria-label="調整中の紋様の投影"></svg></div>
+          </article>
+        </section>
+        <p class="scale-note">左右は同じ縮尺です。元の面の範囲を共通の表示枠に収めます。</p>
+        <section class="exports" aria-label="投影データの保存">
+          <div class="export-actions">
+            <button id="save-svg" type="button">透明背景のSVGを保存</button>
+            <button id="save-json" type="button" class="secondary">投影データを保存</button>
+          </div>
+          <p>SVGは紋様だけを保存します。面の補助線は含みません。JSONには元の設定と各座標を含みます。</p>
+        </section>
+      </div>
+    </div>
+
+    <details class="methods plane-methods">
+      <summary>原理と使える範囲</summary>
+      <p>射影幾何学・コンピュータビジョンでは、平面上の点と画像上の点を3×3のホモグラフィで結び、同次座標の第3成分で割って画像座標にします。正射影では奥行きによる除算を行いません。</p>
+      <p>幾何光学の理想ピンホールカメラを用い、正規化した元の紋様を一定の倍率で面に配置します。透視投影ではカメラ距離と焦点距離を同じ値にして基準面の中心倍率を保つため、距離は遠近感の変化を表します。正規化は元の外接矩形の中心を原点に移し、最大辺を2に合わせる一様な縮尺です。元の長さの単位は保持されません。</p>
+      <p>ユークリッド幾何学の直交基底で面の回転を表し、選択範囲では面がカメラの前にあり、投影枠内に収まります。面内の相対的な形は保ちますが、画像上の長さ・角度・面積・平行性は一般に保たれません。元データも有限点列の多角形近似です。素材の厚み、照明、遮蔽、ぼけ、実物の材質、知覚や美しさを計算するものではありません。</p>
+      <p>実際の応用では、建築立面や平面図を写真・画像上へ重ねる際の平面位置合わせ、または平面意匠を視点から確認するプレビューに使われます。ここでは幾何学的な投影だけを示し、実カメラの校正やレンズ歪み補正は行いません。</p>
+      <p>参考資料: <a href="https://github.com/Player13579/B/blob/df855ca7484d3c1de82ee84b7f47a4a51a9285fb/docs/planar-motif-projection.md" target="_blank" rel="noopener noreferrer">B Foundation の平面投影ガイド</a>、<a href="https://visionbook.mit.edu/homography.html" target="_blank" rel="noopener noreferrer">MIT Vision Book: Homography</a>、<a href="https://www.pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models" target="_blank" rel="noopener noreferrer">Physically Based Rendering: Projective Camera Models</a>。元の形状は<a href="rosette.html">放射状の紋様ページ</a>で作成できます。</p>
+    </details>
+  </main>
+</body>
+</html>

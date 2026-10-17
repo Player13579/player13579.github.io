@@ -1,0 +1,44 @@
+/* Planar projection comparison UI; shared controls and palette come from band.css. */
+.plane-workbench { align-items: start; }
+.plane-controls { grid-template-columns: minmax(0, 1fr); align-content: start; gap: 9px; }
+.plane-controls .field label { margin-bottom: 2px; }
+.source-import { padding-top: 8px; border-top: 1px solid var(--line); }
+.source-import > label { display: block; margin-bottom: 5px; font-weight: 700; }
+.source-import input[type="file"] { width: 100%; min-height: 42px; color: var(--ink); font: inherit; }
+.field-help, .producer-link, .helper-note { margin: 4px 0 0; color: var(--muted); font-size: .86rem; }
+.producer-link { margin-top: 6px; }
+.helper-note { margin: -5px 0 0; }
+.projection-explanation { min-height: 1.4em; }
+.plane-compare svg { aspect-ratio: 1; }
+.plane-guide { fill: none; stroke: #81908a; stroke-width: 1px; stroke-dasharray: 5px 5px; vector-effect: non-scaling-stroke; pointer-events: none; }
+.plane-boundary { fill: none; stroke: #586962; stroke-width: 1.35px; vector-effect: non-scaling-stroke; pointer-events: none; }
+.plane-instance { fill: #147d78; fill-rule: nonzero; stroke: none; }
+.plane-controls .actions { flex-direction: column; gap: 7px; }
+.plane-controls .actions button { flex: 0 0 auto; width: 100%; min-height: 44px; padding: 7px 9px; font-size: .94rem; }
+.plane-methods { line-height: 1.65; }
+@media (min-width: 1000px) {
+  .plane-workbench { grid-template-columns: 280px minmax(0, 1fr); gap: 16px; margin-top: 12px; }
+  .plane-controls { padding: 12px; }
+  .plane-controls select { min-height: 40px; }
+  .plane-controls input[type="range"] { min-height: 28px; }
+  .plane-controls .check { min-height: 34px; white-space: normal; }
+  .plane-controls .actions button { min-height: 38px; }
+  .plane-stage .status { margin-bottom: 8px; }
+  .plane-compare { gap: 10px; }
+  .plane-compare .panel { padding: 10px; }
+  .plane-compare .canvas-frame { min-height: 0; padding: 6px; }
+  .plane-compare .caption { min-height: 2.8em; font-size: .86rem; }
+  .plane-stage .scale-note { margin-top: 4px; }
+  .plane-stage .exports { margin-top: 10px; padding: 11px 13px; }
+  .plane-stage .exports p { margin-top: 6px; }
+}
+@media (max-width: 999px) {
+  .plane-workbench { display: block; }
+  .plane-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .source-import, .actions { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .plane-controls, .plane-compare { grid-template-columns: 1fr; }
+  .plane-controls { gap: 10px; }
+  .plane-compare .canvas-frame { min-height: min(88vw, 400px); }
+}
