@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>帯模様のかたちを比べる｜B Foundation</title>
+  <link rel="stylesheet" href="band.css">
+  <script type="module" src="band-lab.mjs"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../?view=all#band-design-lab">← B Foundation の一覧へ戻る</a>
+    <header>
+      <h1>帯模様のかたちを比べる</h1>
+      <p class="intro">曲がり方と両端の太さを変え、残しておいた形と見比べられます。</p>
+    </header>
+
+    <div class="workbench">
+    <section class="controls" aria-label="調整中の形の条件">
+      <div class="field">
+        <label for="profile">曲がり方</label>
+        <select id="profile">
+          <option value="uniform">均一に曲げる</option>
+          <option value="tighten" selected>終わりほど強く</option>
+          <option value="relax">始まりほど強く</option>
+          <option value="s">S字に曲げる</option>
+        </select>
+      </div>
+      <div class="field range-field">
+        <label for="strength">曲がりの強さ <output id="strength-value" for="strength">60</output></label>
+        <input id="strength" type="range" min="0" max="100" step="1" value="60">
+      </div>
+      <div class="field range-field">
+        <label for="width-start">始まりの太さ <output id="width-start-value" for="width-start">1.20</output></label>
+        <input id="width-start" type="range" min="0" max="1.6" step="0.05" value="1.2">
+      </div>
+      <div class="field range-field">
+        <label for="width-end">終わりの太さ <output id="width-end-value" for="width-end">0.00</output></label>
+        <input id="width-end" type="range" min="0" max="1.6" step="0.05" value="0">
+      </div>
+      <div class="checks">
+        <label class="check" for="flip"><input id="flip" type="checkbox"> 上下を反転</label>
+        <label class="check" for="show-centerline"><input id="show-centerline" type="checkbox" checked> 中心線を表示</label>
+      </div>
+      <div class="actions">
+        <button id="pin" type="button">今の形を比較用に残す</button>
+        <button id="reset" type="button" class="secondary">初期状態に戻す</button>
+      </div>
+    </section>
+    <div class="stage">
+    <p id="status" class="status" role="status" aria-live="polite">形を計算しています。</p>
+
+    <section class="compare" aria-label="残した形と調整中の形">
+      <article class="panel" aria-labelledby="baseline-title">
+        <h2 id="baseline-title">比較用に残した形</h2>
+        <p class="caption" id="baseline-caption">初期状態の形です。</p>
+        <div class="canvas-frame">
+          <svg id="baseline-preview" viewBox="-4 -4 8 8" preserveAspectRatio="xMidYMid meet" role="img" aria-label="比較用に残した帯の形"></svg>
+        </div>
+        <p class="scale-note">左右は同じ縮尺です。</p>
+      </article>
+      <article class="panel" aria-labelledby="current-title">
+        <h2 id="current-title">調整中の形</h2>
+        <p class="caption" id="current-caption">形を計算しています。</p>
+        <div class="canvas-frame">
+          <svg id="current-preview" viewBox="-4 -4 8 8" preserveAspectRatio="xMidYMid meet" role="img" aria-label="調整中の帯の形"></svg>
+          <p id="empty-message" class="empty-message" hidden></p>
+        </div>
+        <p class="scale-note">左右は同じ縮尺です。</p>
+      </article>
+    </section>
+
+    <section class="exports" aria-label="形状データの保存">
+      <div class="export-actions">
+        <button id="save-svg" type="button">帯のSVGを保存</button>
+        <button id="save-json" type="button" class="secondary">形状データを保存</button>
+      </div>
+      <p>補助線を含まない平面の形を保存します。素材や光は制作時に指定します。</p>
+    </section>
+    </div>
+    </div>
+
+    <details class="methods">
+      <summary>原理と使える範囲</summary>
+      <p>中心線に沿う単位法線へ太さの半分だけずらして、帯の左右の縁を作ります。曲線は平面上の一定の長さを持つ設計線で、幅は時間ではなく線上の位置に応じて変わります。</p>
+      <p>微分幾何学のフレネの関係から単位法線を定め、その法線方向の変位で帯の境界を作ります。数値解析の合成中点則で中心線を近似し、三次エルミート補間で幅の分布を表します。局所的な十分条件で隣り合う縁の折り返しを避けますが、離れた部分どうしの重なりは判定しません。図は物理的な素材、光、鑑賞環境や知覚上の効果を再現・証明するものではありません。</p>
+      <p>関連資料: <a href="https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node219.html" target="_blank" rel="noopener noreferrer">MIT 曲線の曲率とFrenetの式</a>、<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicHermiteSpline.html" target="_blank" rel="noopener noreferrer">SciPy CubicHermiteSpline</a>、<a href="https://github.com/Player13579/B/blob/d4cb2666e1e3837bffd140ca4f36e416f2b4bcbe/docs/band-design-lab.md" target="_blank" rel="noopener noreferrer">B Foundation の帯模様設計ガイド</a>。</p>
+    </details>
+  </main>
+</body>
+</html>
