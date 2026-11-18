@@ -11695,7 +11695,7 @@ async function request(path, body = {}, options = {}) {
     });
     if (!result?.ok) {
       if (!options.quiet) showToast(result?.error || "オフライン処理に失敗しました。");
-      return null;
+      return options.preserveFailure ? { ok: false, status: Number(result?.status) || 0 } : null;
     }
     return result;
   }
@@ -11740,7 +11740,7 @@ async function request(path, body = {}, options = {}) {
             ? `${options.publicFeature}用の公開サーバーが旧版です。バックエンドを更新してください。`
             : result.error || "通信エラー");
         }
-        return null;
+        return options.preserveFailure ? { ok: false, status: response.status } : null;
       }
       return result;
     } catch (error) {
@@ -11750,7 +11750,7 @@ async function request(path, body = {}, options = {}) {
         continue;
       }
       if (!options.quiet) showToast("サーバーに接続できません。公開サーバーの起動待ち、またはローカルアプリの起動状態を確認してください。");
-      return null;
+      return options.preserveFailure ? { ok: false, status: 0 } : null;
     } finally {
       window.clearTimeout(timeout);
     }
@@ -11877,16 +11877,20 @@ async function resumeRoomAfterBackground() {
       forceOffline: offline,
       forceOnline: !offline,
       timeoutMs: 3_500,
-      attempts: 1
+      attempts: 1,
+      preserveFailure: true
     });
     if (serial !== state.backgroundResume.serial || !isCurrentRoomSession(roomId, playerId, generation)) return false;
-    if (result) {
+    if (result && result.ok !== false) {
       state.lastMovementServerNow = 0;
       state.lastStateServerNow = 0;
       applyState(result, { authoritative: true });
       if (!offline) ensureRealtimeConnection();
       return true;
     }
+    // A temporary transport/server failure is not evidence that the room expired.
+    // Keep the session for the polling watchdog or the next foreground retry.
+    if (result?.status !== 404) return false;
     return offline
       ? rebuildExpiredOfflineRoom(generation, roomId, playerId)
       : returnExpiredOnlineRoomToMatchmaking(generation, roomId, playerId);
