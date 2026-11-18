@@ -1,0 +1,4 @@
+struct P {dir:vec2f, mode:f32, unused:f32};@group(0) @binding(0) var src:texture_2d<f32>;@group(0) @binding(1) var smp:sampler;@group(0) @binding(2) var<uniform> p:P;@group(0) @binding(3) var original:texture_2d<f32>;
+struct Q{@builtin(position) pos:vec4f,@location(0) uv:vec2f};
+@vertex fn vs(@builtin(vertex_index)i:u32)->Q{let v=array<vec2f,3>(vec2f(-1,-1),vec2f(3,-1),vec2f(-1,3));var q:Q;q.pos=vec4f(v[i],0,1);q.uv=v[i]*vec2f(.5,-.5)+.5;return q;}
+@fragment fn fs(q:Q)->@location(0) vec4f{if(p.mode<.5){let c=textureSample(src,smp,q.uv).rgb;let l=dot(c,vec3f(.2126,.7152,.0722));return vec4f(c*smoothstep(.65,1.35,l),1);}if(p.mode<1.5){var c=vec3f(0);var sum=0.0;for(var i=-8;i<=8;i++){let x=f32(i);let w=exp(-x*x/18);c+=textureSample(src,smp,q.uv+p.dir*x).rgb*w;sum+=w;}return vec4f(c/sum,1);}let c=textureSample(original,smp,q.uv).rgb+textureSample(src,smp,q.uv).rgb*.8;let mapped=c/(vec3f(1)+c);return vec4f(pow(mapped,vec3f(1/2.2)),1);}
