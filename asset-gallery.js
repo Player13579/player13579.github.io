@@ -1636,6 +1636,31 @@ if(abilityR8Known(attempt))return abilityR8FirstFrameValid(proof,attempt);if(kno
     if (['pending','root-review','quality-pending','pending-review','in-progress','not-accepted','limited-pass-full-quality-pending'].includes(item.qualityReviewStatus) || item.qualityReviewOutcome === 'fail') return '品質確認中';
     return '品質確認状況不明';
   }
+  function technicalReplayLabel(item) {
+    if (item?.historyOnly) return item.historyLabel || '履歴記録・技術再生未確認';
+    const state = item?.technicalReplayStatus;
+    if (item?.nativeSourceStatus === 'pass' && item?.parentSourceStatus === 'pass') {
+      return '技術再生確認済み（限定範囲・private現行親確認）';
+    }
+    if (item?.nativeSourceStatus === 'pass' && item?.parentSourceStatus === 'pending') {
+      return '技術再生確認済み（限定範囲）・現行親再生未確認';
+    }
+    if (state === 'pass') return '技術再生確認済み';
+    if (typeof state === 'string') {
+      if (/^pass-/i.test(state)) return '技術再生確認済み（限定範囲）';
+      if (/^(fail|failed)(?:-|$)/i.test(state)) return '技術再生不成立';
+      if (/^(pending|not_run|unverified)(?:-|_|$)/i.test(state)) return '技術再生未確認';
+      if (/^limited-native-/i.test(state)) return '技術再生状況（限定記録）';
+      return '技術再生状況不明';
+    }
+    return item?.replayable === true ? '技術再生登録済み' : '技術再生状況不明';
+  }
+  function gameIntegrationLabel(item, group) {
+    const state = item.gameIntegrationStatus || group?.integration;
+    if (['verified', 'integrated'].includes(state)) return '本編接続確認済み';
+    if (['not_connected', 'not-integrated'].includes(state)) return '本編未接続';
+    return '本編接続状況不明';
+  }
   function userReviewLabel(item) {
     const legacyAtLimit = item.userReviewStatus === 'waiting' && item.userReviewReason === 'improvement-version-limit' &&
       item.improvementLoopLimit === 5 && Number.isInteger(item.improvementLoopVersionCount) && item.improvementLoopVersionCount >= 5;
