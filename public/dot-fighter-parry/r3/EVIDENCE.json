@@ -1,0 +1,90 @@
+{
+  "schema": "dva-dot-evidence/v1",
+  "edition": "dot-fighter-parry-r3",
+  "authorDisplayName": "dot",
+  "creativeModelId": "gpt-6.2-sol",
+  "creativeEdition": 3,
+  "editionLimit": 5,
+  "verified": "2026-11-18",
+  "technicalReplay": {
+    "status": "pass-limited-isolated-webgpu-and-test-iframe",
+    "attemptId": "b51b01aa-bfa6-47fc-8465-d6122cd37e41",
+    "browser": "Chrome 157.0.8103.79",
+    "sandboxEnabled": true,
+    "gpu": "Intel Gen12LP (not fallback)",
+    "compiledShaders": [
+      {
+        "name": "geometry",
+        "sha256": "e580921a77da9415afd2df9a7c5d409dc61c18456b9d800d0c9179bde0a1ee7f",
+        "messages": []
+      },
+      {
+        "name": "optics",
+        "sha256": "6dc0ee316fe3b2057b6aa878354caa1a1da4c96e40bde84ef5ca0d0aede3f412",
+        "messages": []
+      }
+    ],
+    "browserFetchAllSourceManifestBytesMatch": true,
+    "completedNaturalPresentations": 26,
+    "causeDurationMs": 420,
+    "exactH64CaptureAgesMs": [
+      0,
+      16,
+      42,
+      86,
+      138,
+      205,
+      275,
+      320,
+      420
+    ],
+    "naturalRecordings": [
+      {
+        "name": "natural-H64.webm",
+        "width": 760,
+        "height": 510,
+        "bodyCssHeight": 64,
+        "decodedFrames": 50,
+        "sha256": "43d7109ee0511583b4c75defa5d46f1d97507871da6299bf9d3fd368c94b6600"
+      },
+      {
+        "name": "natural.webm",
+        "width": 760,
+        "height": 510,
+        "bodyCssHeight": 172.8,
+        "decodedFrames": 51,
+        "sha256": "b655cec393d7f9c4bb4a812d64b7777e6a756d44123cdee323056200c2a872a9"
+      }
+    ],
+    "bearings": [
+      "left",
+      "right",
+      "above"
+    ],
+    "fixture": "procedural defender and blade; not main-game sprite or actual contact geometry",
+    "testIframeStartup": "dva-gallery-startup/v1 same origin source + token + version + epoch + increasing sequence + WebGPU playing ready proof",
+    "receipt": "actual server event schema with procedural gallery inputs; accepts once, rejects wrong event, stale and duplicates",
+    "switches": {
+      "sourceOffVsExpiredFixturePixelDifference": 0,
+      "sourceOffVsAllOffPixelDifference": 0,
+      "observerRgbChangePixels": 238,
+      "nearReceiverRgbChangePixels": 636,
+      "measurementRoi": "H64 for age 42ms excluding UI and ruler"
+    },
+    "verifyAudioStarts": 0,
+    "normalAudioListening": "not-run",
+    "parentGallery": "not-tested-at-this-attempt",
+    "safari": "not-run",
+    "mainGame": "not-connected",
+    "userAdoption": "unknown"
+  },
+  "quality": {
+    "status": "visual-accepted-tested-fixture",
+    "reviewerDisplayName": "dot",
+    "independentReviewModelId": "gpt-6.2-astra",
+    "wholeEffectAccepted": false,
+    "reason": "Natural actual H64 playback and exact-phase frames show a sideways pressure bite at the existing guard edge, a short check of the edge, then light traveling tangentially along the same blade before going out. Left/above retain the guard reference. There is no detached slash, persistent fork, or invented return attack. Normal SFX listening, platform breadth, and main-game integration are unverified."
+  },
+  "releaseScope": "Gallery visual candidate with independent visual acceptance limited to the verified fixture; do not claim full auditory quality, actual main-game connection, physical contact, reflected-hit, platform or adoption.",
+  "creativeStop": "Visual criterion reached at R3; no R4 or R5 produced."
+}
