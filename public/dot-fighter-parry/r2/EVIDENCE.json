@@ -1,0 +1,72 @@
+{
+  "schema": "dva-dot-evidence/v1",
+  "edition": "dot-fighter-parry-r2",
+  "authorDisplayName": "dot",
+  "creativeModelId": "gpt-6.2-sol",
+  "creativeEdition": 2,
+  "editionLimit": 5,
+  "verified": "2026-11-18",
+  "technicalReplay": {
+    "status": "pass-limited-isolated-webgpu-and-test-iframe",
+    "attemptId": "56201f0c-e973-4fdb-8adf-45ad4d8b79b6",
+    "browser": "Chrome 157.0.8103.79",
+    "sandboxEnabled": true,
+    "gpu": "Intel Gen12LP (not fallback)",
+    "compiledShaders": [
+      {
+        "name": "geometry",
+        "sha256": "e580921a77da9415afd2df9a7c5d409dc61c18456b9d800d0c9179bde0a1ee7f",
+        "messages": []
+      },
+      {
+        "name": "optics",
+        "sha256": "6dc0ee316fe3b2057b6aa878354caa1a1da4c96e40bde84ef5ca0d0aede3f412",
+        "messages": []
+      }
+    ],
+    "browserFetchAllSourceManifestBytesMatch": true,
+    "completedNaturalPresentations": 26,
+    "durationMs": 420,
+    "exactH64CaptureAgesMs": [
+      0,
+      16,
+      42,
+      86,
+      138,
+      205,
+      275,
+      320,
+      420
+    ],
+    "decodedNaturalRecordingFrames": 52,
+    "bearings": [
+      "left",
+      "right",
+      "above"
+    ],
+    "fixture": "procedural defender and blade; not main-game sprite or actual contact geometry",
+    "testIframeStartup": "dva-gallery-startup/v1 same origin source + token + version + epoch + increasing sequence + WebGPU playing ready proof",
+    "receipt": "actual server event schema with procedural gallery inputs; accepts once, rejects wrong event, stale and duplicates",
+    "switches": {
+      "sourceOffVsExpiredFixturePixelDifference": 0,
+      "sourceOffVsAllOffPixelDifference": 0,
+      "observerRgbChangePixels": 453,
+      "nearReceiverRgbChangePixels": 560,
+      "measurementRoi": "H64 for age 42ms excluding UI and ruler"
+    },
+    "verifyAudioStarts": 0,
+    "normalAudioListening": "not-run",
+    "parentGallery": "not-tested-at-this-attempt",
+    "safari": "not-run",
+    "mainGame": "not-connected",
+    "userAdoption": "unknown"
+  },
+  "quality": {
+    "status": "not-accepted",
+    "reviewerDisplayName": "dot",
+    "independentReview": "gpt-6.2-astra",
+    "wholeEffectAccepted": false,
+    "reason": "The contact stays attached and both planes now read, but both prongs are already present at exact age 0 and persist together. The natural playback reads like a static scissor-shaped attachment lighting up rather than a timed interruption and local redirection. Focus R3 on a small bite followed by a single short tangent reaction on the existing blade."
+  },
+  "releaseScope": "Technically replayable, unadopted candidate retained pending approval or a later accepted quality version. No actual gameplay integration, physical contact, reflected-hit or auditory quality claim."
+}
