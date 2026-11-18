@@ -294,5 +294,109 @@
     "quality not accepted",
     "human SFX listening not performed",
     "Safari not verified"
-  ]
+  ],
+  "publicParent": {
+    "url": "https://player13579.github.io/webgpu-e-gallery.html?category=effect&filter=unadopted&asset=dot-ice-impact&version=dot-ice-impact-r1&verify=dot-r1",
+    "errors": [],
+    "failed": [],
+    "startup": {
+      "schema": "dva-gallery-startup/v1",
+      "token": "04e0f70c88b71c3ca4a50f74a410c5b8",
+      "versionId": "dot-ice-impact-r1",
+      "attemptEpoch": 1,
+      "sequence": 7,
+      "stage": "playing",
+      "status": "ready",
+      "firstFrame": {
+        "recorded": true,
+        "submitted": true,
+        "completed": true,
+        "canvasConnected": true,
+        "passes": 5,
+        "viewportWidth": 980,
+        "viewportHeight": 620,
+        "submission": 1,
+        "time": 0
+      }
+    },
+    "frames": 293,
+    "firstFrame": {
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "canvasConnected": true,
+      "passes": 5,
+      "viewportWidth": 980,
+      "viewportHeight": 620,
+      "submission": 1,
+      "time": 0
+    },
+    "files": {
+      "runtime.js": {
+        "status": 200,
+        "sha256": "574ecc484629eca1b98ed052fbe2af21a3db4d53ede9ec728231ce5d45609d3a"
+      },
+      "ice.wgsl": {
+        "status": 200,
+        "sha256": "3fbd46935c74dfc8835104a7db2345bdc5b223fd04aa7c8b344cc511705667e4"
+      },
+      "post.wgsl": {
+        "status": 200,
+        "sha256": "0e8ebec53d817632936471789edbdf77c53af7ee88a6c9e0540f89853053ac7a"
+      }
+    },
+    "fixed": {
+      "submission": 295,
+      "time": 0.68,
+      "scale": 1,
+      "passes": 5,
+      "viewportWidth": 980,
+      "viewportHeight": 620,
+      "completed": true
+    }
+  },
+  "audioApiVerification": {
+    "scope": "normal public standalone, dedicated headless Chrome --mute-audio, no human listening claim",
+    "initial": {
+      "verify": false,
+      "on": false,
+      "state": "not-created",
+      "events": []
+    },
+    "unlock": {
+      "state": "active",
+      "reason": ""
+    },
+    "after": {
+      "state": "running",
+      "on": true
+    },
+    "frames": 496,
+    "errors": [],
+    "events": [
+      {
+        "cause": 0,
+        "time": 0.4028,
+        "audioTime": 0
+      },
+      {
+        "cause": 1,
+        "time": 0.3876,
+        "audioTime": 2.1706667
+      },
+      {
+        "cause": 2,
+        "time": 0.3891,
+        "audioTime": 4.5706667
+      },
+      {
+        "cause": 3,
+        "time": 0.3911,
+        "audioTime": 6.9706667
+      }
+    ],
+    "oneEventPerCause": true,
+    "duplicateUnlockDidNotDuplicate": true,
+    "browserClosed": true
+  }
 }
