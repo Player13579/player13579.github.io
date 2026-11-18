@@ -1,0 +1,49 @@
+{
+  "version": "dot-ice-impact-r2",
+  "technicalReplayStatus": "pass-limited-local-webgpu",
+  "qualityReviewStatus": "not-accepted",
+  "reviewer": "GPT-6.2-Astra",
+  "review": "Natural playback and H64/enlarged output remain pointed folded fins rather than thick fractured ice. Continue R3.",
+  "cpuGeometryTests": 9,
+  "gpu": {
+    "browser": "Chrome 157",
+    "securitySandboxEnabled": true,
+    "shaderErrors": [],
+    "runtimeErrors": [],
+    "passes": 5
+  },
+  "video": {
+    "decodedFrames": 226,
+    "width": 1280,
+    "height": 800,
+    "ptsStart": 0,
+    "ptsEnd": 9,
+    "interval": 0.04,
+    "naturalCause": "fixture-2",
+    "firstVisibleAge": 0.015,
+    "lastCompletedAge": 2.05,
+    "containsLaterDiagnosticOperations": true,
+    "first15msNotObservedInNaturalVideo": true
+  },
+  "comparisons": {
+    "sourceOffEqualsExpired": true,
+    "observerOffKeepsSource": true,
+    "observerDifferencePixels": 7951,
+    "nearLightOffKeepsSource": true,
+    "nearLightTailReachesFrameEdges": true,
+    "H64RulerCssHeight": 64,
+    "rulerNotHuman": true,
+    "DPR2AndResizeRendered": true,
+    "reducedMotionRendered": true
+  },
+  "limitations": [
+    "visual quality not accepted",
+    "normal audio not auditioned",
+    "H64 natural full-lifetime video not verified",
+    "PSF point/line response not verified",
+    "Safari/iPad not verified",
+    "not game-connected",
+    "not user-adopted"
+  ],
+  "publishedParent": "pending-verification"
+}
