@@ -19261,11 +19261,18 @@ function startWebGPUMainAppDriverWithDeadline(data, image, timeoutMs = 45000) {
   let timer;
   const deadline = new Promise((_, reject) => {
     timer = window.setTimeout(() => {
+      // Cancellation is not a rendering failure. Keep draining the original
+      // native creation instead of releasing ownership or failing a later screen.
+      if (startupToken.cancelled) return;
       startupToken.cancelled = true;
       reject(new Error(`WebGPU startup timed out at ${document.body?.dataset?.webgpuMainPending || 'unknown'}`));
     }, timeoutMs);
   });
-  return Promise.race([startWebGPUMainAppDriver(data, image, startupToken), deadline])
+  const creation = startWebGPUMainAppDriver(data, image, startupToken).catch(error => {
+    if (startupToken.cancelled) return null;
+    throw error;
+  });
+  return Promise.race([creation, deadline])
     .finally(() => {
       window.clearTimeout(timer);
       if (webgpuMainApp.startToken === startupToken) webgpuMainApp.startToken = null;
