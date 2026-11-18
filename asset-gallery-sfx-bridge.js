@@ -13,7 +13,6 @@
     const unschedule = clearIntervalFn || root.clearInterval.bind(root);
     let current = null;
     let generation = 0;
-    let audioUnlocked = false;
 
     function clearLoop() {
       if (current?.timer != null) unschedule(current.timer);
@@ -49,7 +48,6 @@
       const child = readChild(iframe);
       if (!child) return setState('unavailable', 'preview is inaccessible or not ready');
       if (verify || child.childVerify) return setState('silent', 'verification mode');
-      if (audioUnlocked) return activateFromGesture(iframe, item);
       return setState('ready');
     }
 
@@ -80,7 +78,6 @@
     function settleActivation(token, result) {
       if (!current || current.generation !== token) return { state: 'stale', reason: 'preview changed before audio status completed' };
       const normalized = resultState(result, false);
-      if (normalized.state === 'active') audioUnlocked = true;
       return setState(normalized.state, normalized.reason || '');
     }
 
@@ -198,7 +195,6 @@
         ? { state: 'active', reason: 'using the preview’s authored SFX' }
         : resultState(value, true);
       if (normalized.state !== 'active') return setState(normalized.state, normalized.reason || '');
-      audioUnlocked = true;
       // Lens-ghost has only an authored manual one-shot. Reuse it when the
       // preview's own phase wraps. Two older previews disarm their own sound
       // after each visual cycle; rearm when their exposed counter advances.
