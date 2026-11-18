@@ -1,0 +1,63 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-fighter-parry-r1",
+  "group": "dot-fighter-parry",
+  "title": "闘士の受け流し",
+  "authorDisplayName": "dot",
+  "creativeModelId": "gpt-6.2-sol",
+  "edition": 1,
+  "editionCap": 5,
+  "createdAt": "2026-11-18",
+  "event": "fighter-slash-parry",
+  "releaseStatus": "source-manifest-not-a-quality-or-publication-claim",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "fixture": "procedural geometry; not the game sprite or measured contact",
+  "entry": "index.html",
+  "renderer": "WebGPU-only",
+  "designAuthority": {
+    "repository": "Player13579/B",
+    "ref": "Codex-honoo",
+    "commit": "ac8847c94efd4fff526a2d76bf7535daae5abcf3",
+    "baseBlob": "cdf31124b6be9902829b87294e687166b075b2b4",
+    "extensionBlob": "7a8274f13ef2b5a2cdaa91fc88134c64f76ff8bd"
+  },
+  "eventAuthority": {
+    "repository": "Player13579/windows-dva-migration",
+    "commit": "216d287b10bba041e34284e6436e6d60f9fefb3b",
+    "path": "dva/server.js",
+    "blob": "0543c22a46095a227ea13ab59e6c17e794249d34"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2348,
+      "sha256": "b141a1c5e6f5d84b45ef29664179524806a18f318189976fd94ea7df3b88e121"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16686,
+      "sha256": "fff315ec11f4dc556a1fb8b71a948aacf2f8957d28a03e043fc861c44724583c"
+    },
+    {
+      "path": "parry.mjs",
+      "bytes": 11771,
+      "sha256": "1434e74de51c612fd9dbe2e2c295b37b9dc2f9b8cd19110b2b014e9b6c1b3cda"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 10882,
+      "sha256": "cec43e185c24f2219585b2e9369e2e79d3f08abe0728d29edf97e7b5efa2bcde"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 5690,
+      "sha256": "5a71060e4a7be02f664c97a90155ab20878c8af4472ca99eed339667ed20489c"
+    },
+    {
+      "path": "contract-test.mjs",
+      "bytes": 2339,
+      "sha256": "0b7258f76a4f4fbfd697085d1d8bc6ce95f67a310aa1178759bc8013757b1ea0"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "dva-dot-evidence/v1",
+  "edition": "dot-fighter-parry-r1",
+  "authorDisplayName": "dot",
+  "creativeModelId": "gpt-6.2-sol",
+  "creativeEdition": 1,
+  "editionLimit": 5,
+  "verified": "2026-11-18",
+  "technicalReplay": {
+    "status": "pass-limited-isolated-webgpu-and-test-iframe",
+    "attemptId": "fbc2fbd2-55f6-4ee4-b52c-5006a99242e0",
+    "browser": "Chrome 157.0.8103.79",
+    "sandboxEnabled": true,
+    "gpu": "Intel Gen12LP (not fallback)",
+    "compiledShaders": [
+      {
+        "name": "geometry",
+        "sha256": "e580921a77da9415afd2df9a7c5d409dc61c18456b9d800d0c9179bde0a1ee7f",
+        "messages": []
+      },
+      {
+        "name": "optics",
+        "sha256": "6637eaae08b7f4782c6048d4e47b8c94c5547e242af3b97d38f1839b9e3319ba",
+        "messages": []
+      }
+    ],
+    "browserFetchAllSourceManifestBytesMatch": true,
+    "completedNaturalPresentations": 26,
+    "durationMs": 420,
+    "exactH64CaptureAgesMs": [
+      0,
+      16,
+      42,
+      86,
+      138,
+      205,
+      320,
+      420
+    ],
+    "decodedNaturalRecordingFrames": 54,
+    "fixture": "procedural defender and blade; not main-game sprite or actual contact geometry",
+    "testIframeStartup": "dva-gallery-startup/v1 same origin source + token + version + epoch + increasing sequence + WebGPU playing ready proof",
+    "receipt": "actual server event schema with procedural gallery inputs; accepts once, rejects wrong event, stale and duplicates",
+    "switches": {
+      "sourceOffVsExpiredFixturePixelDifference": 0,
+      "sourceOffVsAllOffPixelDifference": 0,
+      "observerRgbChangePixels": 1345,
+      "nearReceiverRgbChangePixels": 547,
+      "measurementRoi": "H64 for age 42ms excluding UI and ruler"
+    },
+    "verifyAudioStarts": 0,
+    "normalAudioListening": "not-run",
+    "parentGallery": "not-tested-at-this-attempt",
+    "safari": "not-run",
+    "mainGame": "not-connected",
+    "userAdoption": "unknown"
+  },
+  "quality": {
+    "status": "not-accepted",
+    "reviewerDisplayName": "dot",
+    "wholeEffectAccepted": false,
+    "reason": "The broad orange outbound fold is feather-like from 86–205 ms and can read as a one-sided slash. The shorter incoming side is too faint to sustain the change of direction. R2 is a separate creative candidate."
+  },
+  "releaseScope": "Technically replayable, unadopted gallery candidate. No whole-quality, actual gameplay integration, physical contact or reflected-hit claim.",
+  "notes": [
+    "Native source and effect body were rendered in one neutral fixture, with H64 and enlarged evidence kept separate.",
+    "The earlier OS-container Chrome crash was a launch-route issue before WebGPU. It did not consume a creative revision."
+  ]
+}
