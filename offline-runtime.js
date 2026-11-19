@@ -38,6 +38,10 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
       }
       if (this.mainThreadApi) return Promise.resolve(true);
       if (this.worker) return this.readyPromise || Promise.resolve(true);
+      // A failed Worker clears this.worker while its main-thread fallback loads.
+      // Keep all startup callers on the same readiness transaction until it settles;
+      // replacing readyResolve here would strand an earlier Play request forever.
+      if (this.readyResolve && this.readyPromise) return this.readyPromise;
       const generation = ++this.workerGeneration;
       const workerUrl = new URL(`offline-server-worker-${OFFLINE_WORKER_VERSION}.js`, document.baseURI);
       workerUrl.searchParams.set("v", OFFLINE_WORKER_VERSION);
