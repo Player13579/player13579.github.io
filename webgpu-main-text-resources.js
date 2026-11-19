@@ -27,18 +27,26 @@
     const baseUrl = normalizeBaseUrl(atlasBaseUrl);
     if (!baseUrl || typeof fetcher !== 'function')
       throw new TypeError('Text atlas manifest URL and fetcher required');
-    let responsePromise;
-    try {
-      responsePromise = Promise.resolve(fetcher(new URL('atlas.json', baseUrl).href,
-        signal ? { signal } : undefined));
-    } catch (error) {
-      responsePromise = Promise.reject(error);
-    }
-    const promise = responsePromise.then(async response => {
+    const url = new URL('atlas.json', baseUrl).href;
+    const promise = (async () => {
+      // Retry only the request, not JSON parsing/validation or device work.
+      const options = signal ? { signal } : undefined;
+      const retry = () => fetcher(url, { ...options, cache: 'reload' });
+      let response, retried = false;
+      try {
+        response = await fetcher(url, options);
+      } catch (error) {
+        if (signal?.aborted || !(error instanceof TypeError)) throw error;
+        retried = true;
+        response = await retry();
+      }
+      if (!response?.ok && !retried && !signal?.aborted &&
+          (response?.status === 408 || (response?.status >= 500 && response.status <= 599)))
+        response = await retry();
       if (!response?.ok || typeof response.json !== 'function')
         throw new Error('Main WebGPU text atlas manifest unavailable');
       return validateManifest(await response.json());
-    });
+    })();
     // Keep a request started speculatively from becoming an unhandled rejection
     // before the renderer is ready to consume it.
     promise.catch(() => {});
