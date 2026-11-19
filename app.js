@@ -9403,7 +9403,7 @@ function resetTabletStick() {
   }
 }
 
-function setTabletBranchGroup(group, { focus = true } = {}) {
+function setTabletBranchGroup(group, { focus = true, queueKeyboardSync = true } = {}) {
   const validGroup = group === "operator" ? group : "";
   group = validGroup;
   if (state.tabletBranchGroup !== group) state.tabletBranchPath = "";
@@ -9422,7 +9422,7 @@ function setTabletBranchGroup(group, { focus = true } = {}) {
     els.tabletBranchList.replaceChildren();
     els.tabletBranchLines.replaceChildren();
   }
-  requestAnimationFrame(() => syncKeyboardContext(true));
+  if (queueKeyboardSync) requestAnimationFrame(() => syncKeyboardContext(true));
 }
 
 function setTabletBranchPath(path, { focus = true } = {}) {
@@ -10139,8 +10139,10 @@ function setTabletOpen(open, { persist = true, focus = true } = {}) {
   } else if (focus) {
     (els.tabletButton || gameFocusSurface())?.focus?.({ preventScroll: true });
   }
+  const passiveSelectionOwner = !persist && !focus && state.screen === "game" && state.data?.phase === "selecting"
+    ? { roomId: state.roomId, playerId: state.playerId, generation: state.roomSessionGeneration } : null;
   if (!state.tabletOpen) {
-    setTabletBranchGroup("");
+    setTabletBranchGroup("", { queueKeyboardSync: !passiveSelectionOwner });
     resetTabletStick();
     setDashHeld(false);
     setSlowWalkHeld(false);
@@ -10153,8 +10155,6 @@ function setTabletOpen(open, { persist = true, focus = true } = {}) {
     renderTargetOptions(state.data);
     updateActionButtons(state.data);
   }
-  const passiveSelectionOwner = !persist && !focus && state.screen === "game" && state.data?.phase === "selecting"
-    ? { roomId: state.roomId, playerId: state.playerId, generation: state.roomSessionGeneration } : null;
   requestAnimationFrame(() => {
     if (!passiveSelectionOwner) return syncKeyboardContext(true);
     if (state.screen === "game" && state.data?.phase === "selecting" &&
@@ -32512,7 +32512,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
