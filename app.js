@@ -1096,6 +1096,7 @@ const state = {
   screen: "title",
   tacticsReturnScreen: "title",
   tacticsReturnFocus: "",
+  tacticsKeyReturnOwner: null,
   data: null,
   soloMissionStarting: false,
   soloNameGuidanceOpen: false,
@@ -6439,7 +6440,13 @@ function syncKeyboardContext(force = false) {
   document.querySelectorAll(".keyboard-selected").forEach((item) => {
     item.classList.remove("keyboard-selected");
   });
-  const preferred = preferredKeyboardElement(controls);
+  const keyReturnOwner = state.tacticsKeyReturnOwner;
+  const keyReturnSelecting = keyReturnOwner && state.screen === "game" && state.data?.phase === "selecting" &&
+    isCurrentRoomSession(keyReturnOwner.roomId, keyReturnOwner.playerId, keyReturnOwner.generation);
+  const preferred = preferredKeyboardElement(keyReturnSelecting
+    ? controls.filter(control => control !== els.leaveRoomButton && control !== els.titleHomeButton)
+    : controls);
+  if (preferred || !keyReturnSelecting) state.tacticsKeyReturnOwner = null;
   if (preferred) setKeyboardSelection(preferred, false);
   if (preferred === els.titleTacticsButton && state.tacticsReturnScreen === "title" && state.tacticsReturnFocus === "title-tactics") {
     state.tacticsReturnFocus = "";
@@ -7318,7 +7325,19 @@ function triggerScreenHotkey(event) {
   }
   if (state.screen === "tactics" && event.code === "KeyI" && state.tacticsReturnScreen === "game" && state.data) {
     event.preventDefault();
-    if (!event.repeat) switchScreenWithEffect("game");
+    if (!event.repeat) {
+      const selecting = state.data.phase === "selecting";
+      if (selecting)
+        state.tacticsKeyReturnOwner = { roomId: state.roomId, playerId: state.playerId, generation: state.roomSessionGeneration };
+      switchScreenWithEffect("game");
+      const owner = state.tacticsKeyReturnOwner;
+      if (selecting && owner && state.screen === "game" && state.data?.phase === "selecting" &&
+          isCurrentRoomSession(owner.roomId, owner.playerId, owner.generation)) {
+        const active = document.activeElement;
+        if (active === els.leaveRoomButton || active === els.titleHomeButton) active.blur?.();
+        syncKeyboardContext(true);
+      }
+    }
     return true;
   }
   if (state.screen === "tactics" && /^Digit[1-7]$/.test(event.code)) {
@@ -32512,7 +32531,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
