@@ -31492,10 +31492,12 @@ const version = "overheal-body-v913";
 const criticalMapImageLoads = new WeakMap();
 const criticalFacilityImageLoads = new WeakMap();
 
-function loadCriticalFacilityTexture(image, source) {
+function loadCriticalFacilityTexture(image, source, { box = false } = {}) {
   const existing = criticalFacilityImageLoads.get(image);
   if (existing?.source === source && existing.status !== "cancelled") return;
-  image.fetchPriority = "high";
+  if (!box) image.fetchPriority = "high";
+  const ready = () => image.naturalWidth > 0 && (!box ||
+    (image.naturalWidth === 1548 && image.naturalHeight === 516));
   let retries = 0;
   let retryTimer = null;
   let watchdog = null;
@@ -31518,12 +31520,12 @@ function loadCriticalFacilityTexture(image, source) {
     clearTimer(retryTimer);
     retryTimer = null;
     detach();
-    setWebGPUMainFailure(new Error(`Required facility task material could not be loaded: ${source}`));
+    if (!box) setWebGPUMainFailure(new Error(`Required facility task material could not be loaded: ${source}`));
   };
   const retry = () => {
     if (load.status !== "loading") return;
     clearWatchdog();
-    if (image.complete && image.naturalWidth > 0) {
+    if (image.complete && ready()) {
       load.status = "loaded";
       detach();
       return;
@@ -31541,7 +31543,7 @@ function loadCriticalFacilityTexture(image, source) {
   };
   const onLoad = () => {
     if (load.status !== "loading") return;
-    if (image.naturalWidth > 0) {
+    if (ready()) {
       clearWatchdog();
       load.status = "loaded";
       detach();
@@ -31553,7 +31555,7 @@ function loadCriticalFacilityTexture(image, source) {
     const separator = source.includes("?") ? "&" : "?";
     image.src = retries ? `${source}${separator}facilityRetry=${retries}` : source;
     watchdog = window.setTimeout(() => {
-      if (!(image.complete && image.naturalWidth > 0)) retry();
+      if (!(image.complete && ready())) retry();
     }, 15000);
   };
   criticalFacilityImageLoads.set(image, load);
@@ -31662,6 +31664,10 @@ function startGameplayOptionalTexture(textures, image, source) {
   textures.gameplayLoadStarted.add(image);
   if (image.complete && image.naturalWidth > 0) return false;
   if (image.src) return false;
+  if (image === textures.mysteryBoxMaterial) {
+    loadCriticalFacilityTexture(image, source, { box: true });
+    return true;
+  }
   image.src = source;
   return true;
 }
@@ -32555,7 +32561,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
