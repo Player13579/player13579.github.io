@@ -1,0 +1,961 @@
+{
+  "version": "dot-ice-impact-r7-cloud",
+  "status": "pass-offscreen-native-limited",
+  "qualityAccepted": false,
+  "cpu": {
+    "syntax": "pass",
+    "fullLifetimeFinite": true,
+    "minimumSupport": 0,
+    "volume": 0.1339894166666667
+  },
+  "scope": "Independent Deno SwiftShader GPU, not real browser or hardware acceptance. R6/R7 compared at 640x400 DPR1, zoom1/5, ages .16/.4/.75, four conditions each.",
+  "gpu": {
+    "normal": {
+      "scope": "CPU-native offscreen, not browser or hardware acceptance",
+      "adapter": {},
+      "hashes": {
+        "index.html": "d470a3288dab88affd79ff1c0e12f3a7d76e34d571dc844bfc0630489fefa50a",
+        "runtime.js": "94bd75cf11bc3a17d6d33bcbbaa0b6c7e43398c110b73d7906e3a7da972edc1a",
+        "physics.mjs": "3a88405f0f58b028c573fd3a9d905c95ce789f906658ed21ae29169903faba27",
+        "audio.mjs": "4567ca6217cbebb8ab1b6f4141329bd481d380bd3523f7ced18791909f49c93b",
+        "world.wgsl": "450dfe46eb9f74c7ea0028630c1a6445e80f5de75839ddae20f3df183d4d0982",
+        "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f"
+      },
+      "diagnostics": [
+        {
+          "file": "world.wgsl",
+          "messages": []
+        },
+        {
+          "file": "post.wgsl",
+          "messages": []
+        }
+      ],
+      "results": [
+        {
+          "age": 0.16,
+          "zoom": 1,
+          "receipt": {
+            "submission": 1,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.16
+              }
+            ],
+            "age": 0.16,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": true,
+              "nearLight": true
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 296,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-normal/z1-t0.16.rgba"
+        },
+        {
+          "age": 0.4,
+          "zoom": 1,
+          "receipt": {
+            "submission": 2,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.4
+              }
+            ],
+            "age": 0.4,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": true,
+              "nearLight": true
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 384,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-normal/z1-t0.4.rgba"
+        },
+        {
+          "age": 0.75,
+          "zoom": 1,
+          "receipt": {
+            "submission": 3,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.75
+              }
+            ],
+            "age": 0.75,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": true,
+              "nearLight": true
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 367,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-normal/z1-t0.75.rgba"
+        },
+        {
+          "age": 0.16,
+          "zoom": 5,
+          "receipt": {
+            "submission": 4,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.16
+              }
+            ],
+            "age": 0.16,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": true,
+              "nearLight": true
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 6842,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-normal/z5-t0.16.rgba"
+        },
+        {
+          "age": 0.4,
+          "zoom": 5,
+          "receipt": {
+            "submission": 5,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.4
+              }
+            ],
+            "age": 0.4,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": true,
+              "nearLight": true
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 9386,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-normal/z5-t0.4.rgba"
+        },
+        {
+          "age": 0.75,
+          "zoom": 5,
+          "receipt": {
+            "submission": 6,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.75
+              }
+            ],
+            "age": 0.75,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": true,
+              "nearLight": true
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 9313,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-normal/z5-t0.75.rgba"
+        }
+      ],
+      "errors": []
+    },
+    "dark": {
+      "scope": "CPU-native offscreen, not browser or hardware acceptance",
+      "adapter": {},
+      "hashes": {
+        "index.html": "d470a3288dab88affd79ff1c0e12f3a7d76e34d571dc844bfc0630489fefa50a",
+        "runtime.js": "94bd75cf11bc3a17d6d33bcbbaa0b6c7e43398c110b73d7906e3a7da972edc1a",
+        "physics.mjs": "3a88405f0f58b028c573fd3a9d905c95ce789f906658ed21ae29169903faba27",
+        "audio.mjs": "4567ca6217cbebb8ab1b6f4141329bd481d380bd3523f7ced18791909f49c93b",
+        "world.wgsl": "450dfe46eb9f74c7ea0028630c1a6445e80f5de75839ddae20f3df183d4d0982",
+        "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f"
+      },
+      "diagnostics": [
+        {
+          "file": "world.wgsl",
+          "messages": []
+        },
+        {
+          "file": "post.wgsl",
+          "messages": []
+        }
+      ],
+      "results": [
+        {
+          "age": 0.16,
+          "zoom": 1,
+          "receipt": {
+            "submission": 1,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.16
+              }
+            ],
+            "age": 0.16,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 294,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-dark/z1-t0.16.rgba"
+        },
+        {
+          "age": 0.4,
+          "zoom": 1,
+          "receipt": {
+            "submission": 2,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.4
+              }
+            ],
+            "age": 0.4,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 384,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-dark/z1-t0.4.rgba"
+        },
+        {
+          "age": 0.75,
+          "zoom": 1,
+          "receipt": {
+            "submission": 3,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.75
+              }
+            ],
+            "age": 0.75,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 367,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-dark/z1-t0.75.rgba"
+        },
+        {
+          "age": 0.16,
+          "zoom": 5,
+          "receipt": {
+            "submission": 4,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.16
+              }
+            ],
+            "age": 0.16,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 6651,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-dark/z5-t0.16.rgba"
+        },
+        {
+          "age": 0.4,
+          "zoom": 5,
+          "receipt": {
+            "submission": 5,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.4
+              }
+            ],
+            "age": 0.4,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 9386,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-dark/z5-t0.4.rgba"
+        },
+        {
+          "age": 0.75,
+          "zoom": 5,
+          "receipt": {
+            "submission": 6,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.75
+              }
+            ],
+            "age": 0.75,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 9313,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-dark/z5-t0.75.rgba"
+        }
+      ],
+      "errors": []
+    },
+    "stripe": {
+      "scope": "CPU-native offscreen, not browser or hardware acceptance",
+      "adapter": {},
+      "hashes": {
+        "index.html": "d470a3288dab88affd79ff1c0e12f3a7d76e34d571dc844bfc0630489fefa50a",
+        "runtime.js": "94bd75cf11bc3a17d6d33bcbbaa0b6c7e43398c110b73d7906e3a7da972edc1a",
+        "physics.mjs": "3a88405f0f58b028c573fd3a9d905c95ce789f906658ed21ae29169903faba27",
+        "audio.mjs": "4567ca6217cbebb8ab1b6f4141329bd481d380bd3523f7ced18791909f49c93b",
+        "world.wgsl": "450dfe46eb9f74c7ea0028630c1a6445e80f5de75839ddae20f3df183d4d0982",
+        "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f"
+      },
+      "diagnostics": [
+        {
+          "file": "world.wgsl",
+          "messages": []
+        },
+        {
+          "file": "post.wgsl",
+          "messages": []
+        }
+      ],
+      "results": [
+        {
+          "age": 0.16,
+          "zoom": 1,
+          "receipt": {
+            "submission": 1,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.16
+              }
+            ],
+            "age": 0.16,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 41225,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-stripe/z1-t0.16.rgba"
+        },
+        {
+          "age": 0.4,
+          "zoom": 1,
+          "receipt": {
+            "submission": 2,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.4
+              }
+            ],
+            "age": 0.4,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 41373,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-stripe/z1-t0.4.rgba"
+        },
+        {
+          "age": 0.75,
+          "zoom": 1,
+          "receipt": {
+            "submission": 3,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.75
+              }
+            ],
+            "age": 0.75,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 41363,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-stripe/z1-t0.75.rgba"
+        },
+        {
+          "age": 0.16,
+          "zoom": 5,
+          "receipt": {
+            "submission": 4,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.16
+              }
+            ],
+            "age": 0.16,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 46416,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-stripe/z5-t0.16.rgba"
+        },
+        {
+          "age": 0.4,
+          "zoom": 5,
+          "receipt": {
+            "submission": 5,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.4
+              }
+            ],
+            "age": 0.4,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 48930,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-stripe/z5-t0.4.rgba"
+        },
+        {
+          "age": 0.75,
+          "zoom": 5,
+          "receipt": {
+            "submission": 6,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.75
+              }
+            ],
+            "age": 0.75,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": true
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 48871,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-stripe/z5-t0.75.rgba"
+        }
+      ],
+      "errors": []
+    },
+    "no-emission": {
+      "scope": "CPU-native offscreen, not browser or hardware acceptance",
+      "adapter": {},
+      "hashes": {
+        "index.html": "d470a3288dab88affd79ff1c0e12f3a7d76e34d571dc844bfc0630489fefa50a",
+        "runtime.js": "94bd75cf11bc3a17d6d33bcbbaa0b6c7e43398c110b73d7906e3a7da972edc1a",
+        "physics.mjs": "3a88405f0f58b028c573fd3a9d905c95ce789f906658ed21ae29169903faba27",
+        "audio.mjs": "4567ca6217cbebb8ab1b6f4141329bd481d380bd3523f7ced18791909f49c93b",
+        "world.wgsl": "450dfe46eb9f74c7ea0028630c1a6445e80f5de75839ddae20f3df183d4d0982",
+        "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f"
+      },
+      "diagnostics": [
+        {
+          "file": "world.wgsl",
+          "messages": []
+        },
+        {
+          "file": "post.wgsl",
+          "messages": []
+        }
+      ],
+      "results": [
+        {
+          "age": 0.16,
+          "zoom": 1,
+          "receipt": {
+            "submission": 1,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.16
+              }
+            ],
+            "age": 0.16,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": false
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 275,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-no-emission/z1-t0.16.rgba"
+        },
+        {
+          "age": 0.4,
+          "zoom": 1,
+          "receipt": {
+            "submission": 2,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.4
+              }
+            ],
+            "age": 0.4,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": false
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 367,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-no-emission/z1-t0.4.rgba"
+        },
+        {
+          "age": 0.75,
+          "zoom": 1,
+          "receipt": {
+            "submission": 3,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.75
+              }
+            ],
+            "age": 0.75,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": false
+            },
+            "zoom": 1,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 367,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-no-emission/z1-t0.75.rgba"
+        },
+        {
+          "age": 0.16,
+          "zoom": 5,
+          "receipt": {
+            "submission": 4,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.16
+              }
+            ],
+            "age": 0.16,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": false
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 6563,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-no-emission/z5-t0.16.rgba"
+        },
+        {
+          "age": 0.4,
+          "zoom": 5,
+          "receipt": {
+            "submission": 5,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.4
+              }
+            ],
+            "age": 0.4,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": false
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 9309,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-no-emission/z5-t0.4.rgba"
+        },
+        {
+          "age": 0.75,
+          "zoom": 5,
+          "receipt": {
+            "submission": 6,
+            "generation": 1,
+            "causes": [
+              {
+                "causeId": "native-fixture",
+                "age": 0.75
+              }
+            ],
+            "age": 0.75,
+            "mode": "held",
+            "reduced": false,
+            "switches": {
+              "source": true,
+              "observer": false,
+              "nearLight": false
+            },
+            "zoom": 5,
+            "width": 640,
+            "height": 400,
+            "cssWidth": 640,
+            "cssHeight": 400,
+            "passes": 6,
+            "vertices": 264,
+            "completed": true
+          },
+          "opaque": 256000,
+          "bright": 9309,
+          "white": 0,
+          "validation": null,
+          "file": "/tmp/dot-r7-comparison-6d5ede2d-f29f-483e-a2c6-b54e1ca16d6f/r7-no-emission/z5-t0.75.rgba"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "quality": {
+    "accepted": false,
+    "reviewer": "GPT-6.2-Astra high",
+    "finding": "Cold scattering separated from absorption as intended; no implementation defect identified. Grey-to-blue-grey improvement, but uniform facet shading reads as blue resin rather than ice. C failed. Refraction retained. Further within-face scatter variation belongs to next edition."
+  },
+  "browserReplayStatus": "not_verified",
+  "sfxListeningStatus": "not_run"
+}
