@@ -5733,6 +5733,9 @@ function pushMagicEffect(room, type, source, options = {}) {
       empPulseId: String(options.empPulseId || ""),
       resolvedEmpPulseIds: (Array.isArray(options.resolvedEmpPulseIds) ? options.resolvedEmpPulseIds : []).filter((id) => typeof id === "string" && id).slice(0, 2),
       empSourceAxis: Number.isFinite(options.empSourceAxis) ? options.empSourceAxis : 0,
+      ...(Number.isFinite(options.sourceHalfSpan) && options.sourceHalfSpan >= 0
+        ? { sourceHalfSpan: options.sourceHalfSpan }
+        : {}),
       ...(typeof options.empCausalId === "string" && options.empCausalId
         ? { empCausalId: options.empCausalId }
         : {})
@@ -12559,7 +12562,14 @@ function resolveEmpInteraction(room, first, second, timestamp) {
   const samePhase = first.phase === second.phase;
   const pulseIds = [String(first.id), String(second.id)].sort();
   const empCausalId = `interaction:${samePhase ? "resonance" : "cancel"}:${pulseIds[0]}:${pulseIds[1]}`;
-  const visualSettlement = {resolvedEmpPulseIds: [first.id, second.id], empSourceAxis: Math.atan2(second.y - first.y, second.x - first.x)};
+  const dx = second.x - first.x;
+  const dy = second.y - first.y;
+  const sourceHalfSpan = Math.hypot(dx, dy) / 2;
+  const visualSettlement = {
+    resolvedEmpPulseIds: [first.id, second.id],
+    empSourceAxis: Math.atan2(dy, dx),
+    ...(Number.isFinite(sourceHalfSpan) && sourceHalfSpan >= 0 ? { sourceHalfSpan } : {})
+  };
   const soloEmpPractice = room.soloMission?.id === "emp" && [first.playerId, second.playerId].includes(room.soloMission.playerId);
   if (soloEmpPractice) {
     const outcome = samePhase ? "amplify" : "cancel";
