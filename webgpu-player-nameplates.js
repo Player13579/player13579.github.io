@@ -48,7 +48,7 @@
 
     const preparedLabels = new Set();
     function layoutLabel(label, playerId) {
-      const layout = textAtlas.layout(label, { size: LABEL_SIZE, missing: 'error' });
+      const layout = textAtlas.layout(label, { size: LABEL_SIZE, missing: 'replace' });
       if (!layout || !finite(layout.width) || layout.width < 0 ||
           !Array.isArray(layout.quads) || !finite(layout.height) || layout.height < 0)
         throw new Error(`Invalid player name atlas layout: ${playerId}`);
