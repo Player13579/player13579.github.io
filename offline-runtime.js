@@ -29,7 +29,8 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
 
     start() {
       const compatibleGlobalApi = this.compatibleMainThreadApi();
-      if (!this.mainThreadApi && compatibleGlobalApi) {
+      // A late script must not replace a ready Worker that can own a room.
+      if (!this.mainThreadApi && compatibleGlobalApi && (!this.worker || this.readyResolve)) {
         this.mainThreadApi = compatibleGlobalApi;
         this.failPending();
         this.worker?.terminate();
@@ -90,6 +91,7 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
         return Promise.resolve(true);
       }
       if (this.mainThreadPromise) return this.mainThreadPromise;
+      const fallbackGeneration = this.workerGeneration;
       this.mainThreadPromise = new Promise((resolve) => {
         const staleScript = document.querySelector("script[data-dva-offline-main]");
         if (staleScript && staleScript.dataset.dvaOfflineMain !== OFFLINE_WORKER_VERSION) staleScript.remove();
@@ -105,7 +107,9 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
           // when this particular waiter has already settled, so the next
           // request cannot start another discarded Worker generation.
           const loadedApi = this.compatibleMainThreadApi();
-          if (loadedApi) {
+          const canAdoptMain = (!settled && fallbackGeneration === this.workerGeneration) ||
+            !this.worker || this.readyResolve;
+          if (loadedApi && canAdoptMain) {
             this.mainThreadApi = loadedApi;
             this.failPending();
             this.worker?.terminate();
