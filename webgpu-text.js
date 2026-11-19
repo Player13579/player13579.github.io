@@ -133,8 +133,22 @@
       const promise = (async () => {
         const page = manifest.pages[index];
         if (typeof page !== 'string' || !/^atlas-\d+\.png$/.test(page)) throw new Error('Invalid atlas page');
-        const response = await fetcher(new URL(page, baseUrl).href);
-        if (!response.ok) throw new Error(`Atlas page failed: ${page}`);
+        const url = new URL(page, baseUrl).href;
+        let response, retried = false;
+        try {
+          response = await fetcher(url);
+        } catch (error) {
+          // Fetch reports network failures as TypeError. Do not retry an abort.
+          if (destroyed || !(error instanceof TypeError)) throw error;
+          retried = true;
+          response = await fetcher(url, { cache: 'reload' });
+        }
+        if (!response?.ok && !retried && !destroyed &&
+            (response?.status === 408 || (response?.status >= 500 && response.status <= 599))) {
+          // At most one retry per page load, including in the network-error path.
+          response = await fetcher(url, { cache: 'reload' });
+        }
+        if (!response?.ok) throw new Error(`Atlas page failed: ${page}`);
         const bitmap = await decode(await response.blob());
         try {
           if (bitmap.width !== manifest.pageSize || bitmap.height !== manifest.pageSize) throw new Error('Atlas page size mismatch');
