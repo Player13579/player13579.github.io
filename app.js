@@ -28837,6 +28837,33 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   let lifecycleGeneration = 0;
   let lastMedicalSfxFrameAt = null;
   let configuredSunbeamAudioContext = null;
+  let sunbeamAudioSetup = null;
+  const failedSunbeamAudioContexts = new WeakSet();
+  async function prepareOptionalSunbeamAudio(options) {
+    const { context } = options;
+    const ownerGeneration = lifecycleGeneration;
+    const current = () => !destroyed && ownerGeneration === lifecycleGeneration &&
+      state.audio.context === context;
+    while (sunbeamAudioSetup) {
+      await sunbeamAudioSetup;
+      if (!current()) return;
+    }
+    if (!current() || configuredSunbeamAudioContext === context ||
+        failedSunbeamAudioContexts.has(context)) return;
+    const attempt = Promise.resolve().then(async () => {
+      if (!current()) return;
+      try {
+        const ready = await registry.passes.sunbeamE.configureAudio(options);
+        if (ready === true && current()) configuredSunbeamAudioContext = context;
+      } catch (_) {
+        // An unavailable optional sound must not retire valid GPU resources.
+        if (current()) failedSunbeamAudioContexts.add(context);
+      }
+    });
+    sunbeamAudioSetup = attempt;
+    try { await attempt; }
+    finally { if (sunbeamAudioSetup === attempt) sunbeamAudioSetup = null; }
+  }
   let notified = false;
   const notify = error => {
     if (notified) return;
@@ -28943,7 +28970,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     registry.assertFullFrameReady();
     if (state.audio.context && !IS_VERIFICATION_MODE) {
       const context = state.audio.context;
-      await registry.passes.sunbeamE.configureAudio({ context,
+      await prepareOptionalSunbeamAudio({ context,
         destination: state.audio.master,
         consumedIds: SUNBEAM_V2_CONSUMED_CAUSES,
         volume: 0.8,
@@ -28964,7 +28991,6 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
             !isSensoryBlocked(state.data)
         } });
       requireCurrent();
-      configuredSunbeamAudioContext = context;
     }
     onProgress?.('scene');
     scene = sceneApi.create({ renderer: runtime.renderer,
@@ -29017,7 +29043,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
         if (!IS_VERIFICATION_MODE && state.audio.context &&
             state.audio.context !== configuredSunbeamAudioContext) {
           const context = state.audio.context;
-          await registry.passes.sunbeamE.configureAudio({ context,
+          await prepareOptionalSunbeamAudio({ context,
             destination: state.audio.master,
             consumedIds: SUNBEAM_V2_CONSUMED_CAUSES,
             volume: 0.8,
@@ -29036,7 +29062,8 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
                 Number(state.audio.master?.gain?.value) > 0 &&
                 !isSensoryBlocked(state.data)
             } });
-          configuredSunbeamAudioContext = context;
+          if (destroyed || requestGeneration !== lifecycleGeneration || data !== state.data)
+            return Object.freeze({ drawn: false, reason: destroyed ? 'destroyed' : 'superseded' });
         }
         const scheduled = await runtime.requestFrame({ sample, rect, dpr, camera, phase: data.phase,
           ...(diagnosticCorrelation ? { diagnosticCorrelation } : {}),
@@ -29205,7 +29232,8 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       registry.passes.sunbeamE.refreshAudioGates();
     },
     commitSunbeamVisibleFrame(token, gate) {
-      return registry.passes.sunbeamE.commitVisibleFrame(token, gate);
+      return registry.passes.sunbeamE.commitVisibleFrame(token, typeof gate === 'function' ? () =>
+        Boolean(configuredSunbeamAudioContext) && configuredSunbeamAudioContext === state.audio.context && gate() : gate);
     },
     destroy
   });
@@ -32561,7 +32589,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
