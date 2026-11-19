@@ -1324,6 +1324,8 @@ const state = {
   operatorRenderKey: "",
   operatorDetailTimer: 0,
   operatorDetailSource: null,
+  operatorDetailKeyboard: false,
+  operatorDetailReturnFocus: null,
   resultBoardFingerprint: "",
   resultAudioIdentity: "",
   resultRankingTimer: null,
@@ -8606,7 +8608,20 @@ function bindEvents() {
     const persistentInventoryDetailOpen = Boolean(state.inventoryItemDetailSource && !state.inventoryItemDetailTimer && !els.inventoryItemDetail.hidden);
     if (event.key === "Escape" && (persistentOperatorDetailOpen || persistentInventoryDetailOpen)) {
       event.preventDefault();
-      if (persistentOperatorDetailOpen) hideOperatorDetail();
+      if (persistentOperatorDetailOpen) {
+        const source = state.operatorDetailSource;
+        const active = document.activeElement;
+        const owner = state.operatorDetailKeyboard;
+        const returnFocus = owner && state.screen === "game" && state.data?.phase === "selecting" &&
+          isCurrentRoomSession(owner.roomId, owner.playerId, owner.generation) &&
+          source?.isConnected && !source.disabled && !source.hidden && !source.closest("[hidden]") &&
+          els.operatorList.contains(source) && (!active || active === source || active === document.body || els.operatorDetail.contains(active));
+        hideOperatorDetail();
+        if (returnFocus && setKeyboardSelection(source, false)) {
+          state.keyboardContext = keyboardContextKey();
+          state.operatorDetailReturnFocus = { ...owner, source };
+        }
+      }
       if (persistentInventoryDetailOpen) hideInventoryItemDetail();
       return;
     }
@@ -10138,7 +10153,14 @@ function setTabletOpen(open, { persist = true, focus = true } = {}) {
     renderTargetOptions(state.data);
     updateActionButtons(state.data);
   }
-  requestAnimationFrame(() => syncKeyboardContext(true));
+  const passiveSelectionOwner = !persist && !focus && state.screen === "game" && state.data?.phase === "selecting"
+    ? { roomId: state.roomId, playerId: state.playerId, generation: state.roomSessionGeneration } : null;
+  requestAnimationFrame(() => {
+    if (!passiveSelectionOwner) return syncKeyboardContext(true);
+    if (state.screen === "game" && state.data?.phase === "selecting" &&
+        isCurrentRoomSession(passiveSelectionOwner.roomId, passiveSelectionOwner.playerId, passiveSelectionOwner.generation))
+      syncKeyboardContext();
+  });
 }
 
 function tabletModePreferenceEnabled() {
@@ -11959,6 +11981,7 @@ function resetLocalSession() {
   setExpandedMapOpen(false, { focus: false });
   setKillCameraOpen(false, { focus: false });
   hideOperatorDetail();
+  state.operatorDetailReturnFocus = null;
   hideInventoryItemDetail();
   state.data = null;
   state.commonTargetSessionKey = "";
@@ -14718,6 +14741,13 @@ function renderOperatorSelect(data) {
   state.operatorRenderKey = renderKey;
   const openDetailId = !els.operatorDetail.hidden ? state.operatorDetailSource?.dataset.operatorId : null;
   const detailScrollTop = els.operatorDetail.scrollTop;
+  const detailKeyboard = state.operatorDetailKeyboard;
+  const focusOwner = state.operatorDetailReturnFocus;
+  const returnCardId = focusOwner && state.screen === "game" &&
+    isCurrentRoomSession(focusOwner.roomId, focusOwner.playerId, focusOwner.generation) &&
+    document.activeElement === focusOwner.source && els.operatorList.contains(focusOwner.source)
+      ? focusOwner.source.dataset.operatorId : null;
+  state.operatorDetailReturnFocus = null;
   hideOperatorDetail();
   els.operatorList.innerHTML = "";
   els.operatorDetail.hidden = true;
@@ -14747,11 +14777,15 @@ function renderOperatorSelect(data) {
     });
     els.operatorList.appendChild(button);
   });
+  if (returnCardId) {
+    const card = Array.from(els.operatorList.children).find(entry => entry.dataset.operatorId === returnCardId);
+    if (card && setKeyboardSelection(card, false)) state.operatorDetailReturnFocus = { ...focusOwner, source: card };
+  }
   if (openDetailId) {
     const operator = operators.find((entry) => entry.id === openDetailId);
     const button = Array.from(els.operatorList.children).find((entry) => entry.dataset.operatorId === openDetailId);
     if (operator && button) {
-      showOperatorDetail(operator, button);
+      showOperatorDetail(operator, button, { keyboard: detailKeyboard });
       els.operatorDetail.scrollTop = detailScrollTop;
     }
   }
@@ -14775,6 +14809,7 @@ function hideOperatorDetail() {
   state.operatorDetailTimer = 0;
   state.operatorDetailSource?.removeAttribute("aria-describedby");
   state.operatorDetailSource = null;
+  state.operatorDetailKeyboard = false;
   els.operatorList?.querySelectorAll(".operator-card.detail-active").forEach((card) => card.classList.remove("detail-active"));
   els.operatorDetail.hidden = true;
   els.operatorDetail.classList.remove("pointer-detail-active");
@@ -14785,10 +14820,11 @@ function hideOperatorDetail() {
   }
 }
 
-function showOperatorDetail(operator, sourceButton) {
+function showOperatorDetail(operator, sourceButton, { keyboard = false } = {}) {
   if (!operator || !sourceButton?.isConnected || sourceButton.closest("[hidden]")) return;
   hideOperatorDetail();
   state.operatorDetailSource = sourceButton;
+  state.operatorDetailKeyboard = keyboard;
   sourceButton.setAttribute("aria-describedby", "operatorDetail");
   sourceButton.classList.add("detail-active");
   els.operatorDetail.innerHTML = `
@@ -14822,7 +14858,7 @@ function bindOperatorDetailHold(button, operator) {
     if (!isDetailKeyboardShortcut(event)) return;
     event.preventDefault();
     event.stopPropagation();
-    showOperatorDetail(operator, button);
+    showOperatorDetail(operator, button, { keyboard: { roomId: state.roomId, playerId: state.playerId, generation: state.roomSessionGeneration } });
   });
 }
 
@@ -32476,7 +32512,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
