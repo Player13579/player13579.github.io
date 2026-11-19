@@ -1,0 +1,108 @@
+{
+  "schema": "dot-e-evidence/v2",
+  "version": "dot-ice-impact-r16-cloud",
+  "author": "dot",
+  "creativeEdition": 16,
+  "qualityAccepted": false,
+  "userAdopted": false,
+  "qualityReview": {
+    "status": "not-accepted",
+    "improvement": "R15の角張った破片に対し、幅広い上層が浮き、下の塊が滑る輪郭と動きがH64・1×・同じ30fpsの比較で区別できる。",
+    "remaining": "実寸で雲った氷と透明な層の違いが常に氷として読める水準には未達。"
+  },
+  "preservedCreativeSources": {
+    "physics.mjs": "47b036971ff7f3a494f52ee74dcaaf224b7add4bea16381d1b3f2875183d38da",
+    "world.wgsl": "4031e12f56f912d6ec8fe60a7047229ce93fda3b5204f482afc41179b323f01d",
+    "audio.mjs": "81b2e7f6363e9c0456ae8bb567bdf0dabffa96b6e85e7244357d310233277bdf",
+    "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f"
+  },
+  "offscreen": {
+    "scope": "Release shaders, physics, audio and post unchanged from reviewed rendering. Deno/WebGPU software adapter; not a browser replay, performance or audio listening acceptance.",
+    "tests": [
+      {
+        "kind": "normal",
+        "draws": 28,
+        "expiryZero": true
+      },
+      {
+        "kind": "emission-ablation",
+        "draws": 10,
+        "expiryZero": true
+      }
+    ],
+    "movie": {
+      "frames": 61,
+      "first": 0,
+      "last": 2,
+      "fps": 30,
+      "silent": true
+    }
+  },
+  "browser": "not_verified",
+  "audioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "hardwarePerformance": "not_run",
+  "releaseRuntime": {
+    "scope": "release runtime module, real Deno WebGPU/SwiftShader; simulated DOM, canvas presentation, clock, RAF, WebAudio state; not browser/actual listening",
+    "version": "dot-ice-impact-r16-cloud",
+    "midAge": 0.32,
+    "midVsEmptyPixels": 1435,
+    "endAge": 1.55,
+    "endVertices": 0,
+    "completedFrames": 14,
+    "shaderDiagnostics": [
+      {
+        "file": "world.wgsl",
+        "messages": []
+      },
+      {
+        "file": "post.wgsl",
+        "messages": []
+      }
+    ],
+    "errors": [],
+    "loss": "destroyed",
+    "passed": [
+      "source hashes",
+      "first frame",
+      "repeat",
+      "duplicate rejection",
+      "actual displayed pixel delta offscreen",
+      "expiry",
+      "zoom 1/5",
+      "hold/resume",
+      "reduced motion",
+      "mocked audio toggle",
+      "stop/stop",
+      "replay after stop",
+      "hide-show",
+      "dispose idempotence and no queued frames"
+    ]
+  },
+  "releaseSelector": {
+    "scope": "CPU-only production registration, option builder and onchange with simulated DOM, not a browser",
+    "versions": [
+      [
+        0,
+        "dot-ice-impact-r16-cloud"
+      ],
+      [
+        1,
+        "dot-ice-impact-r15-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r16-cloud"
+      ],
+      [
+        2,
+        "dot-ice-impact-r13-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r16-cloud"
+      ]
+    ],
+    "onlyUnadoptedTested": true
+  }
+}
