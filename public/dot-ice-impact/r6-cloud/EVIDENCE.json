@@ -1,0 +1,357 @@
+{
+  "version": "dot-ice-impact-r6-cloud",
+  "status": "pass-offscreen-native-limited",
+  "qualityAccepted": false,
+  "author": "dot",
+  "scope": "Deno + SwiftShader actual runtime scene/ice/post. Not browser replay, hardware acceptance, audio listening or game integration.",
+  "gpu": {
+    "scope": "CPU-native offscreen, not browser or hardware acceptance",
+    "adapter": {},
+    "hashes": {
+      "index.html": "8d795156fcd2de7b42b3dc72483a5cab18c8ce0c17923ce6beff0956e2268e58",
+      "runtime.js": "7244044d2c275f67ffe37c76a5784524df153d66df0de51dc896e18ca1ef6bb5",
+      "physics.mjs": "3a88405f0f58b028c573fd3a9d905c95ce789f906658ed21ae29169903faba27",
+      "audio.mjs": "4567ca6217cbebb8ab1b6f4141329bd481d380bd3523f7ced18791909f49c93b",
+      "world.wgsl": "b1b7e84562e4ab6b09755dce193e56b3ed2d3ff834e73ace8beaad4886fe2613",
+      "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f"
+    },
+    "diagnostics": [
+      {
+        "file": "world.wgsl",
+        "messages": []
+      },
+      {
+        "file": "post.wgsl",
+        "messages": []
+      }
+    ],
+    "results": [
+      {
+        "age": 0.04,
+        "zoom": 1,
+        "receipt": {
+          "submission": 1,
+          "generation": 1,
+          "causes": [
+            {
+              "causeId": "native-fixture",
+              "age": 0.04
+            }
+          ],
+          "age": 0.04,
+          "mode": "held",
+          "reduced": false,
+          "switches": {
+            "source": true,
+            "observer": true,
+            "nearLight": true
+          },
+          "zoom": 1,
+          "width": 640,
+          "height": 400,
+          "cssWidth": 640,
+          "cssHeight": 400,
+          "passes": 6,
+          "vertices": 264,
+          "completed": true
+        },
+        "opaque": 256000,
+        "bright": 234,
+        "white": 0,
+        "validation": null,
+        "file": "/tmp/dot-r6-verify-04f67edc-a8a6-45df-8cc3-9f0e8f0a68be/z1-t0.04.rgba"
+      },
+      {
+        "age": 0.16,
+        "zoom": 1,
+        "receipt": {
+          "submission": 2,
+          "generation": 1,
+          "causes": [
+            {
+              "causeId": "native-fixture",
+              "age": 0.16
+            }
+          ],
+          "age": 0.16,
+          "mode": "held",
+          "reduced": false,
+          "switches": {
+            "source": true,
+            "observer": true,
+            "nearLight": true
+          },
+          "zoom": 1,
+          "width": 640,
+          "height": 400,
+          "cssWidth": 640,
+          "cssHeight": 400,
+          "passes": 6,
+          "vertices": 264,
+          "completed": true
+        },
+        "opaque": 256000,
+        "bright": 212,
+        "white": 0,
+        "validation": null,
+        "file": "/tmp/dot-r6-verify-04f67edc-a8a6-45df-8cc3-9f0e8f0a68be/z1-t0.16.rgba"
+      },
+      {
+        "age": 0.4,
+        "zoom": 1,
+        "receipt": {
+          "submission": 3,
+          "generation": 1,
+          "causes": [
+            {
+              "causeId": "native-fixture",
+              "age": 0.4
+            }
+          ],
+          "age": 0.4,
+          "mode": "held",
+          "reduced": false,
+          "switches": {
+            "source": true,
+            "observer": true,
+            "nearLight": true
+          },
+          "zoom": 1,
+          "width": 640,
+          "height": 400,
+          "cssWidth": 640,
+          "cssHeight": 400,
+          "passes": 6,
+          "vertices": 264,
+          "completed": true
+        },
+        "opaque": 256000,
+        "bright": 271,
+        "white": 0,
+        "validation": null,
+        "file": "/tmp/dot-r6-verify-04f67edc-a8a6-45df-8cc3-9f0e8f0a68be/z1-t0.4.rgba"
+      },
+      {
+        "age": 0.75,
+        "zoom": 1,
+        "receipt": {
+          "submission": 4,
+          "generation": 1,
+          "causes": [
+            {
+              "causeId": "native-fixture",
+              "age": 0.75
+            }
+          ],
+          "age": 0.75,
+          "mode": "held",
+          "reduced": false,
+          "switches": {
+            "source": true,
+            "observer": true,
+            "nearLight": true
+          },
+          "zoom": 1,
+          "width": 640,
+          "height": 400,
+          "cssWidth": 640,
+          "cssHeight": 400,
+          "passes": 6,
+          "vertices": 264,
+          "completed": true
+        },
+        "opaque": 256000,
+        "bright": 63,
+        "white": 0,
+        "validation": null,
+        "file": "/tmp/dot-r6-verify-04f67edc-a8a6-45df-8cc3-9f0e8f0a68be/z1-t0.75.rgba"
+      },
+      {
+        "age": 0.04,
+        "zoom": 5,
+        "receipt": {
+          "submission": 5,
+          "generation": 1,
+          "causes": [
+            {
+              "causeId": "native-fixture",
+              "age": 0.04
+            }
+          ],
+          "age": 0.04,
+          "mode": "held",
+          "reduced": false,
+          "switches": {
+            "source": true,
+            "observer": true,
+            "nearLight": true
+          },
+          "zoom": 5,
+          "width": 640,
+          "height": 400,
+          "cssWidth": 640,
+          "cssHeight": 400,
+          "passes": 6,
+          "vertices": 264,
+          "completed": true
+        },
+        "opaque": 256000,
+        "bright": 4494,
+        "white": 0,
+        "validation": null,
+        "file": "/tmp/dot-r6-verify-04f67edc-a8a6-45df-8cc3-9f0e8f0a68be/z5-t0.04.rgba"
+      },
+      {
+        "age": 0.16,
+        "zoom": 5,
+        "receipt": {
+          "submission": 6,
+          "generation": 1,
+          "causes": [
+            {
+              "causeId": "native-fixture",
+              "age": 0.16
+            }
+          ],
+          "age": 0.16,
+          "mode": "held",
+          "reduced": false,
+          "switches": {
+            "source": true,
+            "observer": true,
+            "nearLight": true
+          },
+          "zoom": 5,
+          "width": 640,
+          "height": 400,
+          "cssWidth": 640,
+          "cssHeight": 400,
+          "passes": 6,
+          "vertices": 264,
+          "completed": true
+        },
+        "opaque": 256000,
+        "bright": 4522,
+        "white": 0,
+        "validation": null,
+        "file": "/tmp/dot-r6-verify-04f67edc-a8a6-45df-8cc3-9f0e8f0a68be/z5-t0.16.rgba"
+      },
+      {
+        "age": 0.4,
+        "zoom": 5,
+        "receipt": {
+          "submission": 7,
+          "generation": 1,
+          "causes": [
+            {
+              "causeId": "native-fixture",
+              "age": 0.4
+            }
+          ],
+          "age": 0.4,
+          "mode": "held",
+          "reduced": false,
+          "switches": {
+            "source": true,
+            "observer": true,
+            "nearLight": true
+          },
+          "zoom": 5,
+          "width": 640,
+          "height": 400,
+          "cssWidth": 640,
+          "cssHeight": 400,
+          "passes": 6,
+          "vertices": 264,
+          "completed": true
+        },
+        "opaque": 256000,
+        "bright": 6825,
+        "white": 0,
+        "validation": null,
+        "file": "/tmp/dot-r6-verify-04f67edc-a8a6-45df-8cc3-9f0e8f0a68be/z5-t0.4.rgba"
+      },
+      {
+        "age": 0.75,
+        "zoom": 5,
+        "receipt": {
+          "submission": 8,
+          "generation": 1,
+          "causes": [
+            {
+              "causeId": "native-fixture",
+              "age": 0.75
+            }
+          ],
+          "age": 0.75,
+          "mode": "held",
+          "reduced": false,
+          "switches": {
+            "source": true,
+            "observer": true,
+            "nearLight": true
+          },
+          "zoom": 5,
+          "width": 640,
+          "height": 400,
+          "cssWidth": 640,
+          "cssHeight": 400,
+          "passes": 6,
+          "vertices": 264,
+          "completed": true
+        },
+        "opaque": 256000,
+        "bright": 1772,
+        "white": 0,
+        "validation": null,
+        "file": "/tmp/dot-r6-verify-04f67edc-a8a6-45df-8cc3-9f0e8f0a68be/z5-t0.75.rgba"
+      }
+    ],
+    "errors": []
+  },
+  "quality": {
+    "accepted": false,
+    "reviewer": "independent ice_r6_review",
+    "finding": "Same 8 PNG bytes and 6 source hashes checked. R5 shape preserved at .16. At 1x dark floor: grey-black pillars with cyan transverse bands. At .4/.75 stone/resin appearance, 5x lacks cold volumetric scatter in main/cut faces. Actual-size material criterion C failed. Background diagnostics pending and not claimed."
+  },
+  "excludedEvidence": "Shared-name /tmp/dot-ice-r6-probe collided between two workers; not used.",
+  "backgroundDiagnostic": {
+    "scope": "Independent copy changing only floor output, bloom off, z5 640x400",
+    "ages": [
+      0.16,
+      0.75
+    ],
+    "pixel": [
+      280,
+      180
+    ],
+    "redThenGreenRGB": [
+      [
+        [
+          145,
+          50,
+          48
+        ],
+        [
+          50,
+          153,
+          48
+        ]
+      ],
+      [
+        [
+          131,
+          75,
+          80
+        ],
+        [
+          64,
+          150,
+          80
+        ]
+      ]
+    ],
+    "errors": 0,
+    "finding": "Actual scene color reaches interior, unlike R5. Constant backgrounds do not prove spatial refraction or aesthetic quality."
+  }
+}
