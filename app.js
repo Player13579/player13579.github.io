@@ -14377,6 +14377,7 @@ function formatAccessibleResource(value) {
 function syncAccessibleGameStatus(data) {
   const current = accessibleGameStatusSnapshot(data);
   if (!current) {
+    if (els.canvasStatusAnnouncement?.textContent) els.canvasStatusAnnouncement.textContent = "";
     if (els.canvasStatusSummary.textContent !== "ゲーム開始前です。") {
       els.canvasStatusSummary.textContent = "ゲーム開始前です。";
     }
@@ -32554,7 +32555,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
