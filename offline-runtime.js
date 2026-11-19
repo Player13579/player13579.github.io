@@ -37,7 +37,7 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
         this.settleReady(true);
       }
       if (this.mainThreadApi) return Promise.resolve(true);
-      if (this.worker) return this.readyPromise || Promise.resolve(true);
+      if (this.worker || this.readyResolve) return this.readyPromise || Promise.resolve(true);
       const generation = ++this.workerGeneration;
       const workerUrl = new URL(`offline-server-worker-${OFFLINE_WORKER_VERSION}.js`, document.baseURI);
       workerUrl.searchParams.set("v", OFFLINE_WORKER_VERSION);
