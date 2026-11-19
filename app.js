@@ -11234,11 +11234,23 @@ async function leaveCurrentRoom(options = {}) {
   const generation = state.roomSessionGeneration;
   const destination = options.destination || (state.data?.soloMission ? "tactics" : "title");
   const leaveOwner = { roomId, playerId, generation };
+  const explicitTitleExit = options.explicitTitleExit === true && destination === "title";
+  const sourceScreen = state.screen;
   state.leaveRoomInFlight = leaveOwner;
   els.leaveRoomButton.disabled = true;
   try {
-    const result = await request("/api/leave", { roomId, playerId }, { quiet: true });
-    if (!result || state.leaveRoomInFlight !== leaveOwner || !isCurrentRoomSession(roomId, playerId, generation)) return false;
+    let result;
+    try {
+      result = await request("/api/leave", { roomId, playerId }, { quiet: true });
+    } catch (error) {
+      if (!explicitTitleExit) throw error;
+    }
+    if (state.leaveRoomInFlight !== leaveOwner || !isCurrentRoomSession(roomId, playerId, generation)) return false;
+    if (!result) {
+      if (explicitTitleExit && state.screen === sourceScreen)
+        showToast("退出を確認できませんでした。もう一度お試しください。");
+      return false;
+    }
     resetLocalSession();
     switchScreenWithEffect(destination);
     if (options.announce !== false) showToast("マッチから退出しました。");
@@ -11339,7 +11351,7 @@ async function returnToTitle() {
     void cancelInstantMatchmaking(ticket);
   }
   if (state.roomId && state.playerId) {
-    return leaveCurrentRoom({ destination: "title" });
+    return leaveCurrentRoom({ destination: "title", explicitTitleExit: true });
   }
   state.tacticsReturnScreen = "title";
   switchScreenWithEffect("title");
@@ -32542,7 +32554,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
