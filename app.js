@@ -1099,6 +1099,7 @@ const state = {
   tacticsKeyReturnOwner: null,
   data: null,
   soloMissionStarting: false,
+  soloMissionStartRouteGeneration: 0,
   soloNameGuidanceOpen: false,
   roomId: clientStorage.getItem(storage.room) || "",
   playerId: clientStorage.getItem(storage.player) || "",
@@ -3998,6 +3999,7 @@ function setScreen(screen) {
   if (screen !== "game") stopAllEnvironmentSounds();
   const next = ["title", "tactics", "game"].includes(screen) ? screen : "title";
   const previous = state.screen;
+  if (previous === "tactics" && next !== "tactics") state.soloMissionStartRouteGeneration += 1;
   cancelWebGPUTitlePrewarmForRoute(next, previous);
   if (previous !== next) clearTitleCommandTransition();
   // PREPARATION_ROSTER_V726: a screen transition never carries an old room's entrance state.
@@ -11082,7 +11084,9 @@ async function startMatchmaking(options = {}) {
 }
 
 async function startSoloMission(missionId) {
-  if (!soloMissionIds.includes(missionId) || state.soloMissionStarting) return;
+  if (state.screen !== "tactics" || !soloMissionIds.includes(missionId) || state.soloMissionStarting) return;
+  const routeGeneration = state.soloMissionStartRouteGeneration;
+  const roomGeneration = state.roomSessionGeneration;
   const name = startPlayerName();
   els.nameInput.value = name;
   clientStorage.setItem(storage.name, name);
@@ -11098,13 +11102,10 @@ async function startSoloMission(missionId) {
   const skinId = normalizeSkinId(clientStorage.getItem(storage.skin) || els.skinSelect.value);
   const previousRoomId = state.roomId;
   const previousPlayerId = state.playerId;
-  if (previousRoomId && previousPlayerId && !state.offlineMode) {
-    void request("/api/leave", { roomId: previousRoomId, playerId: previousPlayerId }, { quiet: true, forceOnline: true });
-  }
-  activateOfflineMode();
+  const wasOnline = !state.offlineMode;
   let result = null;
   try {
-    result = await request("/api/solo/start", { missionId, name, skinId }, { forceOffline: true });
+    result = await request("/api/solo/start", { missionId, name, skinId }, { forceOffline: true, quiet: true });
   } catch {
     result = null;
   } finally {
@@ -11114,10 +11115,19 @@ async function startSoloMission(missionId) {
       button.textContent = "開始";
     });
   }
+  // A late reply must not reopen a route the player has left, even if they
+  // returned to Tactics or entered a new room before this attempt finished.
+  if (state.screen !== "tactics" || routeGeneration !== state.soloMissionStartRouteGeneration ||
+      roomGeneration !== state.roomSessionGeneration ||
+      previousRoomId !== state.roomId || previousPlayerId !== state.playerId) return;
   if (!result) {
     showToast("ソロ訓練を開始できませんでした。もう一度お試しください。");
     return;
   }
+  if (previousRoomId && previousPlayerId && wasOnline) {
+    void request("/api/leave", { roomId: previousRoomId, playerId: previousPlayerId }, { quiet: true, forceOnline: true });
+  }
+  activateOfflineMode();
   lockPlayerName(result.profile?.name || responsePlayerName(result, name));
   resetLocalSession();
   setCurrentRoomSession(result.roomId, result.playerId);
@@ -32532,7 +32542,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
