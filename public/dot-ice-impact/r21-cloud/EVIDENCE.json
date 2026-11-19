@@ -1,0 +1,78 @@
+{
+  "schema": "dot-e-evidence/v2",
+  "author": "dot",
+  "version": "dot-ice-impact-r21-cloud",
+  "qualityAccepted": false,
+  "userAdopted": false,
+  "qualityReview": {
+    "status": "not-accepted",
+    "scope": "同条件H64・通常速度でR20と比較し、左右非対称の折れ、停止、二段階の着地を独立レビューで識別。蝶番付きの板にも見える静止姿勢と平らな断面が残り、氷の最終品質は未達。"
+  },
+  "sourceSha256": {
+    "world.wgsl": "df959ff6e7f538a06a7573887b953b66d5c1a3dc47e561ed816a145f5c18295a",
+    "physics.mjs": "daad4921aee797d4e38904f1a858aa3356752a9f671dbc20172cef8a3200df44",
+    "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f",
+    "audio.mjs": "1e51a9e66ff6d675af38e50815517526de870cf4e2d328b14bb81e00e940b24f"
+  },
+  "technicalParentRuntimeSha256": "23c2cf293c7b35be5c8305eadd6c7106b053996ae9c928b05c5bba7a4655df07",
+  "releaseRuntime": {
+    "scope": "Actual final-ID Deno Vulkan SwiftShader offscreen WebGPU; simulated DOM, RAF, clock and Web Audio sink. Exact 61 H64 frames and 14 enlarged frames; five cause-owned post-fence sound events and PCM, not subjective listening. All eight simultaneous causes submit to the GPU.",
+    "pcmSha256": "6d337763a79e587bb14447a9b840dc2cb9b2723c9554f87dc20161295eb1e93f",
+    "normal": [
+      "PASS all 61 H64 frames and 14 enlarged frames exact.",
+      "PASS runtime toggles {\"full\":{\"vertices\":1080,\"hash\":\"ac214b302ffad677ba9eae9fe60f147809f82544948b7acbe795a01c4179b701\",\"switches\":{\"source\":true,\"observer\":true,\"nearLight\":true}},\"obs\":{\"vertices\":1080,\"hash\":\"b1b24be70276a96d0c1f29b7c93788d1311e82b2011e57c8a2d8a3e8ae0f9c5d\",\"switches\":{\"source\":true,\"observer\":false,\"nearLight\":true}},\"near\":{\"vertices\":1080,\"hash\":\"1ea5a49bc17cc17433fa2ec1a5158f0a2d57fb3f91a01ba737ebdd0e235ca64b\",\"switches\":{\"source\":true,\"observer\":true,\"nearLight\":false}},\"noSource\":{\"vertices\":0,\"hash\":\"8a53b3e33d06b90c9f5bb867daa3fb9871e2d417d525df4144a1a34a2d9bed16\",\"switches\":{\"source\":false,\"observer\":true,\"nearLight\":true}},\"expiry\":{\"vertices\":0,\"hash\":\"8a53b3e33d06b90c9f5bb867daa3fb9871e2d417d525df4144a1a34a2d9bed16\",\"switches\":{\"source\":true,\"observer\":true,\"nearLight\":true}}}",
+      "PASS NATURAL EXPIRY / 5 FENCED AUDIO EVENTS [{\"causeId\":\"fixture-2\",\"kind\":\"strike\",\"age\":0,\"at\":1.04,\"generation\":0,\"submission\":82,\"frameGeneration\":81},{\"causeId\":\"fixture-2\",\"kind\":\"shear\",\"age\":0.0375,\"at\":1.0775000000000001,\"generation\":0,\"submission\":82,\"frameGeneration\":81},{\"causeId\":\"fixture-2\",\"kind\":\"crack\",\"age\":0.37916666666666665,\"at\":1.419166666666667,\"generation\":0,\"submission\":91,\"frameGeneration\":81},{\"causeId\":\"fixture-2\",\"kind\":\"bite\",\"age\":0.6708333333333333,\"at\":1.7108333333333334,\"generation\":0,\"submission\":98,\"frameGeneration\":81},{\"causeId\":\"fixture-2\",\"kind\":\"bite\",\"age\":0.9874999999999999,\"at\":2.0275,\"generation\":0,\"submission\":106,\"frameGeneration\":81}]",
+      "PASS full capacity recyclable; duplicate and cancel",
+      "PASS buttons Replay/Stop/Audio toggle/Zoom; hold stops voices, resume advances same clock",
+      "PASS late completed GPU does not backfill stale audio",
+      "PASS stale stop/cancel/hidden/reduced/retire; no runtime errors [] adapter {}"
+    ],
+    "verify": [
+      "PASS VERIFY HARD MUTE"
+    ],
+    "edgeCases": [
+      "PASS hidden 37.5ms shear dropped; later crack retained visibility at 42 next displayed at 50ms fresh events in that frame []",
+      "PASS post-return 37.5ms shear and later crack retained visibility at 33 next displayed at 50ms fresh events in that frame [[\"shear\",0.0375,12]]",
+      "PASS post-retired hold leaves mode, epoch, frame count, switches, zoom, audio and GPU receipts unchanged 3 3 19"
+    ]
+  },
+  "releaseSelector": {
+    "scope": "Production merge and exact selection loop under a simulated DOM",
+    "versions": [
+      [
+        0,
+        "dot-ice-impact-r21-cloud"
+      ],
+      [
+        1,
+        "dot-ice-impact-r20-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r21-cloud"
+      ],
+      [
+        2,
+        "dot-ice-impact-r19-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r21-cloud"
+      ]
+    ]
+  },
+  "unavailableState": {
+    "scope": "Unchanged production parent startup validator, status panel code and final child module; simulated DOM, timers, adapter errors and message transport. Not real-browser playback.",
+    "parentGitBlob": "3947c30859b3182d407b1b05ba50f6936b983876",
+    "checked": [
+      "null adapter / unsupported",
+      "missing WebGPU / unsupported",
+      "device request error / retry visible",
+      "stale frame, token, epoch and origin do not replace current status"
+    ]
+  },
+  "browser": "not_verified",
+  "audioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "hardwarePerformance": "not_run"
+}
