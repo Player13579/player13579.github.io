@@ -1,0 +1,78 @@
+{
+  "schema": "dot-e-evidence/v2",
+  "author": "dot",
+  "version": "dot-ice-impact-r20-cloud",
+  "qualityAccepted": false,
+  "userAdopted": false,
+  "qualityReview": {
+    "status": "not-accepted",
+    "scope": "同条件H64・通常速度でR19との輪郭・運動の違いを独立比較。分離後にガラスのような断面が残るため、氷の最終品質には未達。"
+  },
+  "sourceSha256": {
+    "world.wgsl": "27fce113dac96edc4b0b393f1a5692b0a01378986b760c6220dd0dcc0ffa68b9",
+    "physics.mjs": "df292690c545810ba9ff3d5820117b83ef6aa78880e8348f5dd5411689bcc3fd",
+    "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f",
+    "audio.mjs": "5fa43aae0e51087e9f4e4c4195962266e4f272c3f7ef247e65586d7fa6479305"
+  },
+  "technicalParentRuntimeSha256": "7716fcb93953fe025364f64b4c38992a92812dbc4d08f3400820dd74a106366a",
+  "releaseRuntime": {
+    "scope": "Actual final-ID native Deno Vulkan SwiftShader offscreen WebGPU; simulated DOM, clock, RAF and Web Audio sink. Exact 61 H64 and 14 enlarged frames. PCM and six cause-owned post-fence sound events, not subjective listening.",
+    "pcmSha256": "a9b0028d5aa6e2202fa21329411ecc5fb6cd1b1f4c9e2fa8ae7202cafeabf576",
+    "normal": [
+      "PASS all 61 H64 frames and 14 enlarged frames exact.",
+      "PASS runtime toggles {\"full\":{\"vertices\":156,\"hash\":\"cfa9075a2e90565243e29af369d942b50430c7ef891e22803be8d0c1b884742e\",\"switches\":{\"source\":true,\"observer\":true,\"nearLight\":true}},\"obs\":{\"vertices\":156,\"hash\":\"db1156291b3906fc2ad824a417750d268123bad7dcbee5de571bf3cd1ec14dde\",\"switches\":{\"source\":true,\"observer\":false,\"nearLight\":true}},\"near\":{\"vertices\":156,\"hash\":\"c7307e55486bcd96c2578e132a2a98858efcc2dfa1809b3f92994546d389c005\",\"switches\":{\"source\":true,\"observer\":true,\"nearLight\":false}},\"noSource\":{\"vertices\":0,\"hash\":\"8a53b3e33d06b90c9f5bb867daa3fb9871e2d417d525df4144a1a34a2d9bed16\",\"switches\":{\"source\":false,\"observer\":true,\"nearLight\":true}},\"expiry\":{\"vertices\":0,\"hash\":\"8a53b3e33d06b90c9f5bb867daa3fb9871e2d417d525df4144a1a34a2d9bed16\",\"switches\":{\"source\":true,\"observer\":true,\"nearLight\":true}}}",
+      "PASS NATURAL EXPIRY / 6 FENCED AUDIO EVENTS [{\"causeId\":\"fixture-2\",\"kind\":\"strike\",\"age\":0,\"at\":1.04,\"generation\":0,\"submission\":82,\"frameGeneration\":81},{\"causeId\":\"fixture-2\",\"kind\":\"crack\",\"age\":0.058333333333333334,\"at\":1.0983333333333334,\"generation\":0,\"submission\":83,\"frameGeneration\":81},{\"causeId\":\"fixture-2\",\"kind\":\"shear\",\"age\":0.10733333333333334,\"at\":1.1473333333333333,\"generation\":0,\"submission\":84,\"frameGeneration\":81},{\"causeId\":\"fixture-2\",\"kind\":\"tick\",\"age\":0.23333333333333334,\"at\":1.2733333333333334,\"generation\":0,\"submission\":87,\"frameGeneration\":81},{\"causeId\":\"fixture-2\",\"kind\":\"bite\",\"age\":0.45,\"at\":1.4900000000000002,\"generation\":0,\"submission\":93,\"frameGeneration\":81},{\"causeId\":\"fixture-2\",\"kind\":\"tick\",\"age\":0.7916666666666666,\"at\":1.8316666666666668,\"generation\":0,\"submission\":101,\"frameGeneration\":81}]",
+      "PASS full capacity recyclable; duplicate and cancel",
+      "PASS buttons Replay/Stop/Audio toggle/Zoom; hold stops voices, resume advances same clock",
+      "PASS late completed GPU does not backfill stale audio",
+      "PASS stale stop/cancel/hidden/reduced/retire; no runtime errors [] adapter {}"
+    ],
+    "verify": [
+      "PASS VERIFY HARD MUTE"
+    ],
+    "edgeCases": [
+      "PASS hidden crack dropped; fresh shear retained visibility at 65 next displayed at 67ms fresh events in that frame []",
+      "PASS fresh 58.333ms crack and 107.333ms shear retained visibility at 55 next displayed at 67ms fresh events in that frame [[\"crack\",0.058333333333333334,6]]",
+      "PASS post-retired hold leaves mode, epoch, frame count, switches, zoom, audio and GPU receipts unchanged 3 3 7"
+    ]
+  },
+  "releaseSelector": {
+    "scope": "Production version merging and option builder/consumer under a simulated DOM",
+    "versions": [
+      [
+        0,
+        "dot-ice-impact-r20-cloud"
+      ],
+      [
+        1,
+        "dot-ice-impact-r19-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r20-cloud"
+      ],
+      [
+        2,
+        "dot-ice-impact-r18-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r20-cloud"
+      ]
+    ]
+  },
+  "unavailableState": {
+    "scope": "Unchanged production parent startup validator, status panel code and final child module; simulated DOM, timers, adapter errors and message transport. Not real-browser playback.",
+    "parentGitBlob": "3947c30859b3182d407b1b05ba50f6936b983876",
+    "checked": [
+      "null adapter / unsupported",
+      "missing WebGPU / unsupported",
+      "device request error / retry visible",
+      "stale frame, token, epoch and origin do not replace current status"
+    ]
+  },
+  "browser": "not_verified",
+  "audioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "hardwarePerformance": "not_run"
+}
