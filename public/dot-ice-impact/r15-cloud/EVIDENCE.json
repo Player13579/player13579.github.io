@@ -1,0 +1,2016 @@
+{
+  "version": "dot-ice-impact-r15-cloud",
+  "cpu": {
+    "volume": 0.1339894166666667,
+    "fourComplementaryPieces": true,
+    "leftPiecesExactR14": true,
+    "minimumSupport": 0,
+    "horizontalMomentumConserved": true,
+    "minimumProjectedXBboxGap58to180": 4.749112438544474,
+    "bboxNotVisualProof": true
+  },
+  "gpu": {
+    "scope": "Deno SwiftShader offscreen fixed frames only; not browser, continuous replay, performance or hardware acceptance",
+    "totalDraws": 62,
+    "sourceHashes": {
+      "index.html": "60457b5358460c92e042fc2474b8f56aab6eb7c5f29e69bf033220856dc72eab",
+      "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f",
+      "physics.mjs": "c43a1e64b9d72084ec08f0706316b4abded5097eac52091707fb2c55c558052c",
+      "audio.mjs": "4567ca6217cbebb8ab1b6f4141329bd481d380bd3523f7ced18791909f49c93b",
+      "runtime.js": "f44ca37665921c14fb55c1814eef45c6c4e0c80b6f2085db44f790b67c3d05bc",
+      "world.wgsl": "9e13c10494e2e8e8b471719a38e54af8872ef32b24ba5f933cf0f44d2a804f69"
+    },
+    "reports": [
+      {
+        "fixture": "no-emission",
+        "reportSha256": "3a6506e162c2ca30c5b056e4489afc41e99131888bb52e17a1bfc434b3840609",
+        "scope": "CPU-native offscreen, not browser or hardware acceptance",
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "errors": [],
+        "sourceHashesMatch": true,
+        "draws": [
+          {
+            "age": 0,
+            "zoom": 1,
+            "receipt": {
+              "submission": 1,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0
+                }
+              ],
+              "age": 0,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.04,
+            "zoom": 1,
+            "receipt": {
+              "submission": 2,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.04
+                }
+              ],
+              "age": 0.04,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.08,
+            "zoom": 1,
+            "receipt": {
+              "submission": 3,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.08
+                }
+              ],
+              "age": 0.08,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.12,
+            "zoom": 1,
+            "receipt": {
+              "submission": 4,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.12
+                }
+              ],
+              "age": 0.12,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.16,
+            "zoom": 1,
+            "receipt": {
+              "submission": 5,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.16
+                }
+              ],
+              "age": 0.16,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.24,
+            "zoom": 1,
+            "receipt": {
+              "submission": 6,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.24
+                }
+              ],
+              "age": 0.24,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.32,
+            "zoom": 1,
+            "receipt": {
+              "submission": 7,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.32
+                }
+              ],
+              "age": 0.32,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.4,
+            "zoom": 1,
+            "receipt": {
+              "submission": 8,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.4
+                }
+              ],
+              "age": 0.4,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.55,
+            "zoom": 1,
+            "receipt": {
+              "submission": 9,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.55
+                }
+              ],
+              "age": 0.55,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.75,
+            "zoom": 1,
+            "receipt": {
+              "submission": 10,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.75
+                }
+              ],
+              "age": 0.75,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1,
+            "zoom": 1,
+            "receipt": {
+              "submission": 11,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1
+                }
+              ],
+              "age": 1,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.3,
+            "zoom": 1,
+            "receipt": {
+              "submission": 12,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.3
+                }
+              ],
+              "age": 1.3,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.55,
+            "zoom": 1,
+            "receipt": {
+              "submission": 13,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.55
+                }
+              ],
+              "age": 1.55,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 0,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.6,
+            "zoom": 1,
+            "receipt": {
+              "submission": 14,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.6
+                }
+              ],
+              "age": 1.6,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 0,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0,
+            "zoom": 5,
+            "receipt": {
+              "submission": 15,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0
+                }
+              ],
+              "age": 0,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.04,
+            "zoom": 5,
+            "receipt": {
+              "submission": 16,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.04
+                }
+              ],
+              "age": 0.04,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.08,
+            "zoom": 5,
+            "receipt": {
+              "submission": 17,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.08
+                }
+              ],
+              "age": 0.08,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.12,
+            "zoom": 5,
+            "receipt": {
+              "submission": 18,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.12
+                }
+              ],
+              "age": 0.12,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.16,
+            "zoom": 5,
+            "receipt": {
+              "submission": 19,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.16
+                }
+              ],
+              "age": 0.16,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.24,
+            "zoom": 5,
+            "receipt": {
+              "submission": 20,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.24
+                }
+              ],
+              "age": 0.24,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.32,
+            "zoom": 5,
+            "receipt": {
+              "submission": 21,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.32
+                }
+              ],
+              "age": 0.32,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.4,
+            "zoom": 5,
+            "receipt": {
+              "submission": 22,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.4
+                }
+              ],
+              "age": 0.4,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.55,
+            "zoom": 5,
+            "receipt": {
+              "submission": 23,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.55
+                }
+              ],
+              "age": 0.55,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.75,
+            "zoom": 5,
+            "receipt": {
+              "submission": 24,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.75
+                }
+              ],
+              "age": 0.75,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1,
+            "zoom": 5,
+            "receipt": {
+              "submission": 25,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1
+                }
+              ],
+              "age": 1,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.3,
+            "zoom": 5,
+            "receipt": {
+              "submission": 26,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.3
+                }
+              ],
+              "age": 1.3,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.55,
+            "zoom": 5,
+            "receipt": {
+              "submission": 27,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.55
+                }
+              ],
+              "age": 1.55,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 0,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.6,
+            "zoom": 5,
+            "receipt": {
+              "submission": 28,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.6
+                }
+              ],
+              "age": 1.6,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": false,
+                "nearLight": false
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 0,
+              "completed": true
+            },
+            "validation": null
+          }
+        ]
+      },
+      {
+        "fixture": "normal",
+        "reportSha256": "5dcbc8849d6d1887e1123a38a8da78fbf1d3d383802521e9968f80356e28d22c",
+        "scope": "CPU-native offscreen, not browser or hardware acceptance",
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "errors": [],
+        "sourceHashesMatch": true,
+        "draws": [
+          {
+            "age": 0,
+            "zoom": 1,
+            "receipt": {
+              "submission": 1,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0
+                }
+              ],
+              "age": 0,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.04,
+            "zoom": 1,
+            "receipt": {
+              "submission": 2,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.04
+                }
+              ],
+              "age": 0.04,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.08,
+            "zoom": 1,
+            "receipt": {
+              "submission": 3,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.08
+                }
+              ],
+              "age": 0.08,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.12,
+            "zoom": 1,
+            "receipt": {
+              "submission": 4,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.12
+                }
+              ],
+              "age": 0.12,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.16,
+            "zoom": 1,
+            "receipt": {
+              "submission": 5,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.16
+                }
+              ],
+              "age": 0.16,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.24,
+            "zoom": 1,
+            "receipt": {
+              "submission": 6,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.24
+                }
+              ],
+              "age": 0.24,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.32,
+            "zoom": 1,
+            "receipt": {
+              "submission": 7,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.32
+                }
+              ],
+              "age": 0.32,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.4,
+            "zoom": 1,
+            "receipt": {
+              "submission": 8,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.4
+                }
+              ],
+              "age": 0.4,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.55,
+            "zoom": 1,
+            "receipt": {
+              "submission": 9,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.55
+                }
+              ],
+              "age": 0.55,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.75,
+            "zoom": 1,
+            "receipt": {
+              "submission": 10,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.75
+                }
+              ],
+              "age": 0.75,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1,
+            "zoom": 1,
+            "receipt": {
+              "submission": 11,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1
+                }
+              ],
+              "age": 1,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.3,
+            "zoom": 1,
+            "receipt": {
+              "submission": 12,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.3
+                }
+              ],
+              "age": 1.3,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.55,
+            "zoom": 1,
+            "receipt": {
+              "submission": 13,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.55
+                }
+              ],
+              "age": 1.55,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 0,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.6,
+            "zoom": 1,
+            "receipt": {
+              "submission": 14,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.6
+                }
+              ],
+              "age": 1.6,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 0,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0,
+            "zoom": 5,
+            "receipt": {
+              "submission": 15,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0
+                }
+              ],
+              "age": 0,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.04,
+            "zoom": 5,
+            "receipt": {
+              "submission": 16,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.04
+                }
+              ],
+              "age": 0.04,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.08,
+            "zoom": 5,
+            "receipt": {
+              "submission": 17,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.08
+                }
+              ],
+              "age": 0.08,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.12,
+            "zoom": 5,
+            "receipt": {
+              "submission": 18,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.12
+                }
+              ],
+              "age": 0.12,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.16,
+            "zoom": 5,
+            "receipt": {
+              "submission": 19,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.16
+                }
+              ],
+              "age": 0.16,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.24,
+            "zoom": 5,
+            "receipt": {
+              "submission": 20,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.24
+                }
+              ],
+              "age": 0.24,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.32,
+            "zoom": 5,
+            "receipt": {
+              "submission": 21,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.32
+                }
+              ],
+              "age": 0.32,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.4,
+            "zoom": 5,
+            "receipt": {
+              "submission": 22,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.4
+                }
+              ],
+              "age": 0.4,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.55,
+            "zoom": 5,
+            "receipt": {
+              "submission": 23,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.55
+                }
+              ],
+              "age": 0.55,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.75,
+            "zoom": 5,
+            "receipt": {
+              "submission": 24,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.75
+                }
+              ],
+              "age": 0.75,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1,
+            "zoom": 5,
+            "receipt": {
+              "submission": 25,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1
+                }
+              ],
+              "age": 1,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.3,
+            "zoom": 5,
+            "receipt": {
+              "submission": 26,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.3
+                }
+              ],
+              "age": 1.3,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 276,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.55,
+            "zoom": 5,
+            "receipt": {
+              "submission": 27,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.55
+                }
+              ],
+              "age": 1.55,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 0,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 1.6,
+            "zoom": 5,
+            "receipt": {
+              "submission": 28,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 1.6
+                }
+              ],
+              "age": 1.6,
+              "mode": "held",
+              "reduced": false,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 0,
+              "completed": true
+            },
+            "validation": null
+          }
+        ]
+      },
+      {
+        "fixture": "reduced",
+        "reportSha256": "da5c55c3f1aea9472509be0ab0def2302f80ea136d588fc85b0b60a39058d4c9",
+        "scope": "CPU-native offscreen, not browser or hardware acceptance",
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "errors": [],
+        "sourceHashesMatch": true,
+        "draws": [
+          {
+            "age": 0,
+            "zoom": 1,
+            "receipt": {
+              "submission": 1,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0
+                }
+              ],
+              "age": 0,
+              "mode": "held",
+              "reduced": true,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.4,
+            "zoom": 1,
+            "receipt": {
+              "submission": 2,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.4
+                }
+              ],
+              "age": 0.4,
+              "mode": "held",
+              "reduced": true,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.75,
+            "zoom": 1,
+            "receipt": {
+              "submission": 3,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.75
+                }
+              ],
+              "age": 0.75,
+              "mode": "held",
+              "reduced": true,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 1,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0,
+            "zoom": 5,
+            "receipt": {
+              "submission": 4,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0
+                }
+              ],
+              "age": 0,
+              "mode": "held",
+              "reduced": true,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.4,
+            "zoom": 5,
+            "receipt": {
+              "submission": 5,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.4
+                }
+              ],
+              "age": 0.4,
+              "mode": "held",
+              "reduced": true,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          },
+          {
+            "age": 0.75,
+            "zoom": 5,
+            "receipt": {
+              "submission": 6,
+              "generation": 1,
+              "causes": [
+                {
+                  "causeId": "native-fixture",
+                  "age": 0.75
+                }
+              ],
+              "age": 0.75,
+              "mode": "held",
+              "reduced": true,
+              "switches": {
+                "source": true,
+                "observer": true,
+                "nearLight": true
+              },
+              "zoom": 5,
+              "width": 640,
+              "height": 400,
+              "cssWidth": 640,
+              "cssHeight": 400,
+              "passes": 6,
+              "vertices": 198,
+              "completed": true
+            },
+            "validation": null
+          }
+        ]
+      }
+    ]
+  },
+  "materialReplay": "pass-offscreen-native-limited: normal 28, no-emission 28, reduced 6; fixed frames only, not browser or continuous replay",
+  "qualityAccepted": false,
+  "browser": "not_run",
+  "audioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "qualityReview": {
+    "reviewer": "GPT-6.2-Astra",
+    "status": "not-accepted",
+    "limitedImprovement": "単色で短塊と長い相補片を識別。通常/消灯でも対比維持、消灯 .24/.32/.4/.75で床色4列。形状と離開改善を確認。",
+    "remaining": "中央片が暗い石、右片が明るい面の結晶とも読め、氷識別の総合品質は未達。"
+  }
+}
