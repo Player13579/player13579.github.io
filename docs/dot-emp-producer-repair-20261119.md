@@ -24,3 +24,11 @@ scripts/backport-offline-emp-contract.py は既知アンカーを厳密検査し
 - 明示zeroのplanner拒否は別問題として残る。欠落をzeroに捏造しない。
 - killAssets供給欠落とdriver通知寿命管理は別不具合。本修正では解決しない。
 - 今回のWindows初期化例外そのものと一致したことは未確認。
+
+## CPU native WebGPU 追加検証
+Deno 2.9.8 + SwiftShaderで現行EMP moduleを無改変実行。
+shader SHA256 e6eb0479556f11c8244814560aab0201c2781958a60414a4859f66225ba2236c。
+WGSL diagnostics0、validation/uncaptured error0、draw1。
+256x256読戻し非黒28484px、破棄後所有buffer0。
+再現: VK_ICD_FILENAMES=/usr/lib/chromium/vk_swiftshader_icd.json deno run --unstable-webgpu --allow-read tests/emp-native-webgpu-probe.mjs
+ICDパスはこのdotクラウド環境のもの。実ブラウザ/DOM/ゲーム全体/実機性能の合格ではない。
