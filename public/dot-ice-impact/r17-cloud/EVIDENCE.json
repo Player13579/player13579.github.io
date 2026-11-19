@@ -1,0 +1,158 @@
+{
+  "schema": "dot-e-evidence/v2",
+  "author": "dot",
+  "version": "dot-ice-impact-r17-cloud",
+  "qualityAccepted": false,
+  "userAdopted": false,
+  "qualityReview": {
+    "status": "not-accepted",
+    "scope": "独立したH64・通常速度のR16との比較。輪郭と運動の違いは確認。氷の材質と通常再生時の聴感は最終品質未達／未受入。"
+  },
+  "renderingSources": {
+    "physics.mjs": "4896a634bbb7a8d7f5f2fb296e5ce463288d1cc59b39133a7a851fcf6bd3cf88",
+    "audio.mjs": "9f6844b4f090fb0fc0c109bbe6044ccf41a2c265c57fa1e34ad718f8002953fb",
+    "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f",
+    "world.wgsl": "49b7b6dccfbbb178db4a7e28cd21508d5f0549d6196091d440b7c2b1263d0ae6"
+  },
+  "originalOffscreenTests": [
+    {
+      "scope": "film-receipts",
+      "frames": 61,
+      "sha256": "49b5b7abc3ea391c1332ce62cb680097830a3837d01955bf9d066337e2000e96"
+    },
+    {
+      "scope": "final-normal",
+      "frames": 28,
+      "sha256": "b6d3886e61d0e05f5c4513d624787ead03db57bcec2b5c5a25c566311a25a200"
+    },
+    {
+      "scope": "final-noemit",
+      "frames": 10,
+      "sha256": "5e26c2024adac10e6457c48aef356b569f78a2f76c051a34c3289deb28482bb4"
+    },
+    {
+      "scope": "ablation-litless",
+      "frames": 22,
+      "sha256": "33f9c4a4c85754a37ec19b0dbdcf9f8e18f1a882609c726557d845d24de97d20"
+    },
+    {
+      "scope": "ablation-noprop",
+      "frames": 22,
+      "sha256": "b4b414ccf973b7a4c131d95099527064e9948cccb53a592a5bbd72ded96d02c7"
+    }
+  ],
+  "releaseRuntime": {
+    "audioProof": {
+      "events": [
+        {
+          "kind": "strike",
+          "plannedAge": 0,
+          "lagMs": 0
+        },
+        {
+          "kind": "crack",
+          "plannedAge": 0.1125,
+          "lagMs": 20.833
+        },
+        {
+          "kind": "crack",
+          "plannedAge": 0.1875,
+          "lagMs": 12.5
+        },
+        {
+          "kind": "bite",
+          "plannedAge": 0.3833333333333333,
+          "lagMs": 16.667
+        },
+        {
+          "kind": "bite",
+          "plannedAge": 0.4875,
+          "lagMs": 12.5
+        },
+        {
+          "kind": "tick",
+          "plannedAge": 0.55,
+          "lagMs": 16.667
+        },
+        {
+          "kind": "bite",
+          "plannedAge": 0.6041666666666666,
+          "lagMs": 29.167
+        },
+        {
+          "kind": "tick",
+          "plannedAge": 0.6958333333333333,
+          "lagMs": 4.167
+        }
+      ],
+      "pcmPeak": 0.29485782980918884,
+      "sampleRate": 48000,
+      "synthComparison": "all eight exact sample arrays match runtime scheduler vs canonical PCM",
+      "audibleQuality": "not_listened"
+    },
+    "scope": "release runtime module, real Deno WebGPU/SwiftShader; simulated DOM, canvas presentation, clock, RAF, WebAudio state; not browser/actual listening",
+    "version": "dot-ice-impact-r17-cloud",
+    "midAge": 0.32,
+    "midVsEmptyPixels": 960,
+    "endAge": 1.55,
+    "endVertices": 0,
+    "completedFrames": 71,
+    "shaderDiagnostics": [
+      {
+        "file": "world.wgsl",
+        "messages": []
+      },
+      {
+        "file": "post.wgsl",
+        "messages": []
+      }
+    ],
+    "errors": [],
+    "loss": "destroyed",
+    "passed": [
+      "source hashes",
+      "first frame",
+      "repeat",
+      "duplicate rejection",
+      "actual displayed pixel delta offscreen",
+      "expiry",
+      "zoom 1/5",
+      "hold/resume",
+      "reduced motion",
+      "mocked audio toggle",
+      "stop/stop",
+      "replay after stop",
+      "hide-show",
+      "dispose idempotence and no queued frames"
+    ]
+  },
+  "releaseSelector": {
+    "scope": "real registered selectors with CPU option DOM fixture",
+    "versions": [
+      [
+        0,
+        "dot-ice-impact-r17-cloud"
+      ],
+      [
+        1,
+        "dot-ice-impact-r16-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r17-cloud"
+      ],
+      [
+        2,
+        "dot-ice-impact-r15-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r17-cloud"
+      ]
+    ]
+  },
+  "browser": "not_verified",
+  "audioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "hardwarePerformance": "not_run"
+}
