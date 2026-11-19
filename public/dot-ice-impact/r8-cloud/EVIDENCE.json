@@ -1,0 +1,236 @@
+{
+  "version": "dot-ice-impact-r8-cloud",
+  "cpu": {
+    "checks": 32,
+    "sampleAges": [
+      0,
+      0.04,
+      0.16,
+      0.4,
+      0.75,
+      1,
+      1.3,
+      1.55
+    ],
+    "reducedAndSource": [
+      true,
+      false
+    ],
+    "R7First10VertexFloatsExact": true,
+    "vertexCountExact": true,
+    "allFinite": true,
+    "scope": "static full lifespan geometry and base attributes only"
+  },
+  "gpu": {
+    "scope": "Deno SwiftShader offscreen; not browser acceptance",
+    "reports": {
+      "normal": {
+        "draws": 16,
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true
+      },
+      "no-emission": {
+        "draws": 16,
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true
+      },
+      "stripe": {
+        "draws": 16,
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true
+      },
+      "red": {
+        "draws": 16,
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true
+      },
+      "green": {
+        "draws": 16,
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true
+      },
+      "cloud-mask": {
+        "draws": 16,
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true
+      },
+      "cut-mask": {
+        "draws": 16,
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true
+      }
+    },
+    "totalDraws": 112,
+    "sourceHashes": {
+      "index.html": "79923971de1337f9a377390bfca7ecbc6d8ffdaaf64e8ecd33d31107b856c66a",
+      "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f",
+      "physics.mjs": "a9e5a4cd04dd0a4cba2c881766463d9c14b64f2f462e79eaee21574eb705bbad",
+      "audio.mjs": "4567ca6217cbebb8ab1b6f4141329bd481d380bd3523f7ced18791909f49c93b",
+      "runtime.js": "8b773b0f19a82fdc2c192f7392c7706a3702a69dc568da896741b500c9292986",
+      "world.wgsl": "82edcb976095c600e30fce843ebbd8731400e9066ac5afbdbe99c623855d3e14"
+    }
+  },
+  "browser": "not_run",
+  "qualityAccepted": false,
+  "audioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "qualityReview": {
+    "reviewer": "GPT-6.2-Astra",
+    "status": "not-accepted",
+    "limitedImprovement": "実寸2〜3px以上の乳白散乱と隣接暗窓を消灯.4/.75で確認",
+    "remaining": "左右に同じ高さの白い頭が揃い、青い角材・淡いキャップの印象。氷としてのCは未達。"
+  },
+  "cutMaskDiagnostics": [
+    {
+      "zoom": 1,
+      "age": 0.16,
+      "cutInterior": 21,
+      "cloud": {
+        "pixels": 14,
+        "maxInscribedDiameterPx": 2.0
+      },
+      "window": {
+        "pixels": 5,
+        "maxInscribedDiameterPx": 2.0
+      }
+    },
+    {
+      "zoom": 1,
+      "age": 0.4,
+      "cutInterior": 110,
+      "cloud": {
+        "pixels": 80,
+        "maxInscribedDiameterPx": 4.0
+      },
+      "window": {
+        "pixels": 20,
+        "maxInscribedDiameterPx": 4.0
+      }
+    },
+    {
+      "zoom": 1,
+      "age": 0.75,
+      "cutInterior": 110,
+      "cloud": {
+        "pixels": 80,
+        "maxInscribedDiameterPx": 4.0
+      },
+      "window": {
+        "pixels": 20,
+        "maxInscribedDiameterPx": 4.0
+      }
+    },
+    {
+      "zoom": 5,
+      "age": 0.16,
+      "cutInterior": 2695,
+      "cloud": {
+        "pixels": 1634,
+        "maxInscribedDiameterPx": 12.649110640673518
+      },
+      "window": {
+        "pixels": 794,
+        "maxInscribedDiameterPx": 11.661903789690601
+      }
+    },
+    {
+      "zoom": 5,
+      "age": 0.4,
+      "cutInterior": 5343,
+      "cloud": {
+        "pixels": 3336,
+        "maxInscribedDiameterPx": 26.68332812825267
+      },
+      "window": {
+        "pixels": 1547,
+        "maxInscribedDiameterPx": 23.40939982143925
+      }
+    },
+    {
+      "zoom": 5,
+      "age": 0.75,
+      "cutInterior": 5343,
+      "cloud": {
+        "pixels": 3336,
+        "maxInscribedDiameterPx": 26.68332812825267
+      },
+      "window": {
+        "pixels": 1547,
+        "maxInscribedDiameterPx": 23.40939982143925
+      }
+    }
+  ],
+  "technicalDerivative": {
+    "id": "r8-label-a1",
+    "scope": "Visible R2 label corrected to R8 only; runtime unchanged",
+    "originalIndexSha256": "79923971de1337f9a377390bfca7ecbc6d8ffdaaf64e8ecd33d31107b856c66a"
+  },
+  "publishedSourceHashes": {
+    "index.html": "1f5212356a7f98f8c21e4a3e36ac9898b383f135503018e87801fb0ee937d497",
+    "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f",
+    "physics.mjs": "a9e5a4cd04dd0a4cba2c881766463d9c14b64f2f462e79eaee21574eb705bbad",
+    "audio.mjs": "4567ca6217cbebb8ab1b6f4141329bd481d380bd3523f7ced18791909f49c93b",
+    "runtime.js": "8b773b0f19a82fdc2c192f7392c7706a3702a69dc568da896741b500c9292986",
+    "world.wgsl": "82edcb976095c600e30fce843ebbd8731400e9066ac5afbdbe99c623855d3e14"
+  }
+}
