@@ -1,0 +1,19 @@
+{
+  "version": "dot-ice-impact-r5-cloud",
+  "author": "dot",
+  "technicalReplayStatus": "pass-limited-deno-swiftshader-offscreen",
+  "browserReplayStatus": "not_verified",
+  "qualityAccepted": false,
+  "qualityReview": "Independent review: opaque grey chunks/stone, weak ice material. Not accepted.",
+  "sourceMatch": "6 source SHA256 match MANIFEST",
+  "wgsl": "world/post compilation messages empty",
+  "rendering": "8 production-path offscreen draws: 640x400 DPR1, zoom1/5 x .04/.16/.4/.75; pixel readback; no validation/uncaptured errors",
+  "limitations": [
+    "Not real browser presentation",
+    "No SFX listening",
+    "Not full-lifetime movie acceptance",
+    "Not user adopted",
+    "Not connected to game"
+  ],
+  "provenance": "New cloud derivative of public R2, not recovered desktop R3/R4"
+}
