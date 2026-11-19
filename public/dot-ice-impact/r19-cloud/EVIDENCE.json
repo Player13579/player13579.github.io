@@ -1,0 +1,67 @@
+{
+  "schema": "dot-e-evidence/v2",
+  "author": "dot",
+  "version": "dot-ice-impact-r19-cloud",
+  "qualityAccepted": false,
+  "userAdopted": false,
+  "qualityReview": {
+    "status": "not-accepted",
+    "scope": "R18との同条件H64・通常速度の独立比較で、横ずれと遅れて沈む運動、段差の輪郭の違いは確認。材質は未達。発端の積み石感、破断後の鉱石・ガラス感が残る。"
+  },
+  "sourceSha256": {
+    "world.wgsl": "5fcc4e107fd682896e5babf011f7d3d4eb6499f0b11142132d1bc8eb8c4707e3",
+    "physics.mjs": "38a7f0937764369522a20de1e9203d1787bfe356c52e440ef8f21e81ad3d043c",
+    "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f",
+    "audio.mjs": "d6a397c314d0c679440394d2fe813cfb37cdd5d28790c059f29a1f4b3091b085"
+  },
+  "technicalParentRuntimeSha256": "8da816dfcb4a71a5b313749a7be378741c8a2ca4ff72588f12b03a1c89199e48",
+  "releaseRuntime": {
+    "scope": "Final release module with actual native Deno/Vulkan SwiftShader (fallback); mocked DOM, RAF, clock, WebAudio destination and inputs; not browser/hardware or listening acceptance. All 61 H64 image frames and six 5x snapshots match the sealed reference.",
+    "normal": [
+      "PASS ALL 61 H64 frames match decoded film without resampling; six 5x frames exact.",
+      "PASS runtime toggles {\"full\":{\"vertices\":504,\"hash\":\"ccb114d313afc26150f61cae51a1f0a36ebd2f6714270cafc28a2ef453873c2d\",\"switches\":{\"source\":true,\"observer\":true,\"nearLight\":true}},\"obs\":{\"vertices\":504,\"hash\":\"d19dbbd43620a6e04dea776178c65fc189ebf41d4ecbec63d874de5ffd8f75a1\",\"switches\":{\"source\":true,\"observer\":false,\"nearLight\":true}},\"near\":{\"vertices\":504,\"hash\":\"c37c76ff3dcbd1a15749d438c45ef21ab984bd978f6f8e728490da1a023c7bb7\",\"switches\":{\"source\":true,\"observer\":true,\"nearLight\":false}},\"noSource\":{\"vertices\":0,\"hash\":\"8a53b3e33d06b90c9f5bb867daa3fb9871e2d417d525df4144a1a34a2d9bed16\",\"switches\":{\"source\":false,\"observer\":true,\"nearLight\":true}},\"expiry\":{\"vertices\":0,\"hash\":\"8a53b3e33d06b90c9f5bb867daa3fb9871e2d417d525df4144a1a34a2d9bed16\",\"switches\":{\"source\":true,\"observer\":true,\"nearLight\":true}}}",
+      "PASS NATURAL EXPIRY / 8 FENCED AUDIO EVENTS [{\"causeId\":\"fixture-2\",\"kind\":\"strike\",\"age\":0,\"at\":1.04,\"generation\":0,\"submission\":74,\"frameGeneration\":73},{\"causeId\":\"fixture-2\",\"kind\":\"crack\",\"age\":0.020833333333333332,\"at\":1.0608333333333333,\"generation\":0,\"submission\":74,\"frameGeneration\":73},{\"causeId\":\"fixture-2\",\"kind\":\"crack\",\"age\":0.058333333333333334,\"at\":1.0983333333333334,\"generation\":0,\"submission\":75,\"frameGeneration\":73},{\"causeId\":\"fixture-2\",\"kind\":\"crack\",\"age\":0.10416666666666667,\"at\":1.1441666666666668,\"generation\":0,\"submission\":76,\"frameGeneration\":73},{\"causeId\":\"fixture-2\",\"kind\":\"bite\",\"age\":0.35,\"at\":1.3900000000000001,\"generation\":0,\"submission\":82,\"frameGeneration\":73},{\"causeId\":\"fixture-2\",\"kind\":\"tick\",\"age\":0.4083333333333333,\"at\":1.4483333333333335,\"generation\":0,\"submission\":84,\"frameGeneration\":73},{\"causeId\":\"fixture-2\",\"kind\":\"tick\",\"age\":0.8916666666666666,\"at\":1.9316666666666666,\"generation\":0,\"submission\":96,\"frameGeneration\":73},{\"causeId\":\"fixture-2\",\"kind\":\"tick\",\"age\":0.9541666666666666,\"at\":1.9941666666666666,\"generation\":0,\"submission\":97,\"frameGeneration\":73}]",
+      "PASS full capacity recyclable; duplicate and cancel",
+      "PASS buttons Replay/Stop/Audio toggle/Zoom; hold stops voices, resume advances same clock",
+      "PASS late completed GPU does not backfill stale audio",
+      "PASS stale stop/cancel/hidden/reduced/retire; no runtime errors [] adapter {}"
+    ],
+    "verify": [
+      "PASS VERIFY HARD MUTE"
+    ],
+    "edgeCases": [
+      "PASS all hidden cracks dropped visibility at 65 next displayed at 67ms fresh events in that frame []",
+      "PASS only pre-return crack dropped; 58.333ms audible visibility at 55 next displayed at 67ms fresh events in that frame [[\"crack\",0.058333333333333334,6]]",
+      "PASS post-retired hold leaves mode, epoch, frame count, switches, zoom, audio and GPU receipts unchanged 3 3 7"
+    ]
+  },
+  "releaseSelector": {
+    "scope": "Production version merge and option builder/consumer under simulated DOM",
+    "versions": [
+      [
+        0,
+        "dot-ice-impact-r19-cloud"
+      ],
+      [
+        1,
+        "dot-ice-impact-r18-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r19-cloud"
+      ],
+      [
+        2,
+        "dot-ice-impact-r17-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r19-cloud"
+      ]
+    ]
+  },
+  "browser": "not_verified",
+  "audioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "hardwarePerformance": "not_run"
+}
