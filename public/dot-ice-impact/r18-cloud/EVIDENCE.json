@@ -1,0 +1,148 @@
+{
+  "schema": "dot-e-evidence/v2",
+  "author": "dot",
+  "version": "dot-ice-impact-r18-cloud",
+  "qualityAccepted": false,
+  "userAdopted": false,
+  "qualityReview": {
+    "status": "not-accepted",
+    "scope": "独立したH64・通常速度のR17との比較。上片が起き上がり薄い片が滑る輪郭と動きが異なる。比較試作としての差は確認。発端は石けんや樹脂に見える場合があり、氷の材質と通常再生時の聴感は最終品質未達／未受入。"
+  },
+  "renderingSources": {
+    "physics.mjs": "e7caac60423c998ded9a749dcd31afa5eb24f36ec745751f9715fb13458798cc",
+    "audio.mjs": "e76962efd5134099f09a04601d1b29717d2454aff04bd868a07525951495e80b",
+    "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f",
+    "world.wgsl": "5dd865fd6e7055da42633bd0157c53794be90c23d0f50ec6a4e18eedf9f342a9"
+  },
+  "originalOffscreenTests": [
+    {
+      "scope": "film",
+      "frames": 61,
+      "sha256": "cc0f535aebec42825b8cb0ade56e257577c5b5996ae33600d056498b9d8c7665"
+    },
+    {
+      "scope": "normal",
+      "frames": 28,
+      "sha256": "60a1b51dc284691cab2f482b1967ced632cce34b0e6648d399555d91e2aa7bd2"
+    },
+    {
+      "scope": "noemit",
+      "frames": 10,
+      "sha256": "fea517f16a6b2f64ff9ce8606bbdd05c31ff0a1b2154ac96ad7aabf8ca0414f9"
+    }
+  ],
+  "releaseRuntime": {
+    "audioProof": {
+      "events": [
+        {
+          "kind": "strike",
+          "plannedAge": 0,
+          "lagMs": 0
+        },
+        {
+          "kind": "crack",
+          "plannedAge": 0.09166666666666666,
+          "lagMs": 8.333
+        },
+        {
+          "kind": "crack",
+          "plannedAge": 0.1875,
+          "lagMs": 12.5
+        },
+        {
+          "kind": "bite",
+          "plannedAge": 0.24166666666666667,
+          "lagMs": 25
+        },
+        {
+          "kind": "crack",
+          "plannedAge": 0.29583333333333334,
+          "lagMs": 4.167
+        },
+        {
+          "kind": "bite",
+          "plannedAge": 0.5083333333333333,
+          "lagMs": 25
+        },
+        {
+          "kind": "tick",
+          "plannedAge": 0.6125,
+          "lagMs": 20.833
+        },
+        {
+          "kind": "tick",
+          "plannedAge": 0.7416666666666667,
+          "lagMs": 25
+        }
+      ],
+      "pcmPeak": 0.23071809113025665,
+      "sampleRate": 48000,
+      "synthComparison": "all eight exact sample arrays match runtime scheduler vs canonical PCM",
+      "audibleQuality": "not_listened"
+    },
+    "scope": "release runtime module, real Deno WebGPU/SwiftShader; simulated DOM, canvas presentation, clock, RAF, WebAudio state; not browser/actual listening",
+    "version": "dot-ice-impact-r18-cloud",
+    "midAge": 0.32,
+    "midVsEmptyPixels": 1852,
+    "endAge": 1.55,
+    "endVertices": 0,
+    "completedFrames": 71,
+    "shaderDiagnostics": [
+      {
+        "file": "world.wgsl",
+        "messages": []
+      },
+      {
+        "file": "post.wgsl",
+        "messages": []
+      }
+    ],
+    "errors": [],
+    "loss": "destroyed",
+    "passed": [
+      "source hashes",
+      "first frame",
+      "repeat",
+      "duplicate rejection",
+      "actual displayed pixel delta offscreen",
+      "expiry",
+      "zoom 1/5",
+      "hold/resume",
+      "reduced motion",
+      "mocked audio toggle",
+      "stop/stop",
+      "replay after stop",
+      "hide-show",
+      "dispose idempotence and no queued frames"
+    ]
+  },
+  "releaseSelector": {
+    "scope": "real registered selectors with CPU option DOM fixture",
+    "versions": [
+      [
+        0,
+        "dot-ice-impact-r18-cloud"
+      ],
+      [
+        1,
+        "dot-ice-impact-r17-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r18-cloud"
+      ],
+      [
+        2,
+        "dot-ice-impact-r16-cloud"
+      ],
+      [
+        0,
+        "dot-ice-impact-r18-cloud"
+      ]
+    ]
+  },
+  "browser": "not_verified",
+  "audioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "hardwarePerformance": "not_run"
+}
