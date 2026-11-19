@@ -219,6 +219,13 @@
         }
         const residualBloom = bloom.prepare({ sourceTexture: residual.texture,
           revision: input.residualRevision ?? 0, encoder: input.bloomEncoder });
+        // Submit before text preparation can yield or reject. Otherwise a later
+        // frame could reuse the bloom cache whose commands were never submitted.
+        if (input.submitBloom !== undefined) {
+          if (typeof input.submitBloom !== 'function')
+            throw new TypeError('Kill bloom submit hook must be a function');
+          input.submitBloom();
+        }
         assets = { ...assets, residualBloom };
       }
       const prepared = plan({ ...input, assets });

@@ -28452,7 +28452,8 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
     };
     for (const [name, asset] of Object.entries(assets)) {
       if (!Object.prototype.hasOwnProperty.call(expected, name) ||
-          !asset?.texture || asset.source !== expected[name] ||
+          !asset?.texture || asset.device !== tailResources.headMarkerDevice ||
+          asset.source !== expected[name] ||
           asset.width !== Number(asset.source?.naturalWidth || asset.source?.width) ||
           asset.height !== Number(asset.source?.naturalHeight || asset.source?.height))
         throw new Error(`WebGPU world candidate kill texture ${name} does not match its live source`);
@@ -28478,6 +28479,7 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
   const killAnimation = { ...killInput,
     preparedPlan: await passes.killAnimation.prepare({ ...killInput, assets,
       bloomEncoder: tailResources.bloomEncoder,
+      submitBloom: tailResources.submitBloom,
       residualRevision: tailResources.residualRevision }) };
   assertPassesCurrent();
   if (!Array.isArray(killAnimation.preparedPlan?.unsupported) ||
@@ -28710,9 +28712,73 @@ function headMarkerMaterialKeysForWebGPUCandidate(candidate, textures) {
   return [...keys];
 }
 
+// One driver owns these uploads on its existing device. No canvas or device is created.
+function killTextureSourcesForWebGPU(textures = {}) {
+  return { filament: textures.worldKillFilamentAtlas, residual: textures.worldKillResidual,
+    material: textures.killCutinPlatinumFrame, whitePose: textures.whiteHoodCutinPoseAtlas,
+    bluePose: textures.blueDressCutinPoseAtlas, whiteCutin: textures.killCutinMaster,
+    blueCutin: textures.blueDressKillCutin, botPose: textures.botCutinPoseAtlas,
+    botIdle: textures.authoredCharacterMotion?.['male-bot']?.front?.walk,
+    legacyHumanAtlas: textures.killCutin60 };
+}
+
+function createWebGPUKillTextureOwner(device) {
+  if (!device?.createTexture || !device.queue?.copyExternalImageToTexture)
+    throw new TypeError('Kill textures need the shared WebGPU device');
+  const entries = new Map();
+  let destroyed = false;
+  const signature = source => [source, source?.currentSrc || source?.src || '',
+    Number(source?.naturalWidth || source?.width), Number(source?.naturalHeight || source?.height),
+    source?.complete];
+  const same = (a, b) => a.length === b.length && a.every((v, i) => Object.is(v, b[i]));
+  const stale = () => Object.assign(new Error('Kill texture source or owner changed'),
+    { code: 'DVA_WEBGPU_STALE_SCENE' });
+  function prepare(textures) {
+    if (destroyed) throw stale();
+    const sources = killTextureSourcesForWebGPU(textures), assets = {}, snapshots = new Map();
+    for (const [key, source] of Object.entries(sources)) {
+      const stamp = signature(source), width = stamp[2], height = stamp[3];
+      snapshots.set(key, stamp);
+      let entry = entries.get(key);
+      if (entry && !same(entry.stamp, stamp)) {
+        entry.asset.texture.destroy(); entries.delete(key); entry = null;
+      }
+      // An unready optional image stays absent; the existing coverage checks
+      // decide whether a required filament/residual/pose is missing.
+      if (!source?.complete || !Number.isInteger(width) || !Number.isInteger(height) ||
+          width <= 0 || height <= 0) continue;
+      if (width > device.limits.maxTextureDimension2D || height > device.limits.maxTextureDimension2D)
+        throw new RangeError('Kill texture exceeds shared device limits');
+      if (!entry) {
+        const texture = device.createTexture({ label: `DVA kill ${key}`,
+          size: [width, height], format: 'rgba8unorm', usage: 0x02 | 0x04 | 0x10 });
+        try {
+          device.queue.copyExternalImageToTexture({ source },
+            { texture, premultipliedAlpha: true }, [width, height]);
+        } catch (error) { texture.destroy(); throw error; }
+        entry = { stamp, asset: Object.freeze({ source, device, texture, width, height }) };
+        entries.set(key, entry);
+      }
+      assets[key] = entry.asset;
+    }
+    return { assets: Object.freeze(assets), assertCurrent(currentTextures) {
+      if (destroyed) throw stale();
+      const current = killTextureSourcesForWebGPU(currentTextures);
+      for (const [key, stamp] of snapshots)
+        if (!same(stamp, signature(current[key]))) throw stale();
+    } };
+  }
+  return { device, prepare, destroy() {
+    if (destroyed) return;
+    destroyed = true;
+    for (const entry of entries.values()) entry.asset.texture.destroy();
+    entries.clear();
+  } };
+}
+
 async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   acquisitionCanvas, map, image, textAtlas, atlasMetrics, gpu,
-  headMarkerMaterials, killAssets = {}, markerDomFallbackReady = false,
+  headMarkerMaterials, killAssets = null, markerDomFallbackReady = false,
   bloomEncoder, residualRevision, modules, rendererApi,
   textResourceOptions = {}, prewarmEntry = null, isCurrent = () => true,
   onFailure, onProgress, onTiming } = {}) {
@@ -28745,7 +28811,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
         !(atlasMetrics?.pixelSize > 0)) ||
       (ownsMarkers ? !markerOwnerApi?.create :
         !headMarkerMaterials || typeof headMarkerMaterials !== 'object') ||
-      !killAssets || typeof killAssets !== 'object' ||
+      (killAssets != null && typeof killAssets !== 'object') ||
       typeof onFailure !== 'function')
     throw new TypeError('Dormant WebGPU main driver needs three owned canvases, map image, atlas, marker resources and failure hook');
   const target = 'main', expandedTarget = 'main-expanded-map';
@@ -28754,6 +28820,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     markerOwner = incomingPrewarm?.markerOwner || null, destroyed = false;
   const rendererLease = incomingPrewarm?.rendererLease || null;
   const expectedDevice = incomingPrewarm?.device || null;
+  let killTextureOwner = null;
   let retirement = null;
   let lifecycleGeneration = 0;
   let lastMedicalSfxFrameAt = null;
@@ -28780,11 +28847,13 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     retirement = (async () => {
       try { scene?.destroy(); } finally {
         try { await registry?.destroy(); } finally {
+          try { killTextureOwner?.destroy(); } finally {
           try { markerOwner?.destroy(); } finally {
           try { textOwner?.destroy(); } finally {
             try { runtime?.destroy(); } finally {
               if (!runtime && rendererLease?.state === 'ready') rendererLease.dispose();
             }
+          }
           }
           }
         }
@@ -29007,17 +29076,38 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
             markWebGPUStartupStage('candidatePrepareBegin');
             const candidatePrepareStartedAt = WEBGPU_MAIN_VERIFY_ROUTE
               ? performance.now() : null;
+            const killInput = captured.stages.killAnimation;
+            const hasLiveKill = killInput.effects.some(effect => killInput.now - effect.startedAt >= 0);
+            if (hasLiveKill && killAssets == null && !killTextureOwner)
+              killTextureOwner = createWebGPUKillTextureOwner(device);
+            const killUpload = hasLiveKill && killAssets == null
+              ? killTextureOwner.prepare(state.textures) : null;
+            const currentKillAssets = killUpload?.assets || killAssets || {};
+            const filamentReady = currentKillAssets.filament?.width === 2048 &&
+              currentKillAssets.filament?.height === 1940;
+            const ownedBloomEncoder = hasLiveKill && !filamentReady && !bloomEncoder
+              ? device.createCommandEncoder({ label: 'DVA kill residual preparation' }) : null;
             const candidate = await prepareWebGPUMainAppWorldCandidate(
               captured, registry.passes, textAtlas, {
                 headMarkerDevice: device,
-                headMarkerMaterials: currentMarkerMaterials, killAssets,
-                markerDomFallbackReady, bloomEncoder, residualRevision,
+                headMarkerMaterials: currentMarkerMaterials, killAssets: currentKillAssets,
+                markerDomFallbackReady, bloomEncoder: ownedBloomEncoder || bloomEncoder,
+                submitBloom: ownedBloomEncoder
+                  ? () => device.queue.submit([ownedBloomEncoder.finish()]) : undefined,
+                residualRevision,
                 expandedCanvas, expandedTarget,
                 acquisitionCanvas, acquisitionTarget });
             markWebGPUStartupStage('candidatePrepareEnd',
               Number.isFinite(candidatePrepareStartedAt)
                 ? Math.max(0, performance.now() - candidatePrepareStartedAt) : null);
             captured.assertCurrent();
+            killUpload?.assertCurrent(state.textures);
+            if (destroyed) throw Object.assign(new Error('Kill preparation owner retired'),
+              { code: 'DVA_WEBGPU_STALE_SCENE' });
+            if (ownedBloomEncoder && candidate.stages.killAnimation.preparedPlan.bloomTexture) {
+              registry.passes.killAnimation.acknowledgeBloomSubmission(
+                candidate.stages.killAnimation.preparedPlan);
+            }
             if (candidate.viewport !== viewport ||
                 candidate.camera.x !== camera.x ||
                 candidate.camera.y !== camera.y ||
@@ -29026,11 +29116,12 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
                   sceneApi.REQUIRED.includes(name)))
               throw new Error('Dormant WebGPU main prepared a different world or incomplete frame');
             const prepared = scene.prepare({ stages: candidate.stages, device });
-            return { candidate, scene: prepared, release: () => prepared.release() };
+            return { candidate, killUpload, scene: prepared, release: () => prepared.release() };
           },
           record: ({ frame, target: frameTarget, viewport, renderer,
             prepared }) => {
             prepared.candidate.assertCurrent();
+            prepared.killUpload?.assertCurrent(state.textures);
             if (frameTarget !== target || renderer !== runtime.renderer ||
                 prepared.candidate.viewport !== viewport)
               throw new Error('Dormant WebGPU main record crossed its prepared frame');
