@@ -1,0 +1,87 @@
+{
+  "version": "dot-ice-impact-r10-cloud",
+  "cpu": {
+    "conditions": 36,
+    "pieces": 4,
+    "volumeDifference": -5.551115123125783e-17,
+    "maxBoundsDelta": 2.7755575615628914e-17,
+    "partitionHalfspaces": true,
+    "minimumSupport": 0,
+    "allFinite": true,
+    "lifetime": 1.55,
+    "cycle": 2.05,
+    "initialTestFailure": "JSON exact numeric bounds equality rejected roundoff; rerun at existing geometric solver tolerance 1e-9 passed"
+  },
+  "gpu": {
+    "scope": "Deno SwiftShader offscreen; not browser acceptance",
+    "totalDraws": 48,
+    "reports": {
+      "normal": {
+        "draws": 16,
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true,
+        "endVerticesZero": true
+      },
+      "no-emission": {
+        "draws": 16,
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true,
+        "endVerticesZero": true
+      },
+      "stripe": {
+        "draws": 16,
+        "shaderDiagnostics": [
+          {
+            "file": "world.wgsl",
+            "messages": []
+          },
+          {
+            "file": "post.wgsl",
+            "messages": []
+          }
+        ],
+        "allValidationNull": true,
+        "allSubmissionsCompleted": true,
+        "endVerticesZero": true
+      }
+    },
+    "sourceHashes": {
+      "index.html": "9b2bc7d3d766c0d46bcbc74e5c143756c16482f0aa29d285bd07986e9fba2360",
+      "post.wgsl": "52fe3ca5ee2b0596c4d7940e9ecfbd4cab15ca5d65339a5db4224937c20be84f",
+      "physics.mjs": "84bf901792a9279d802b6b09e42160141ff330c1a76c5f5bee865e52aaed9961",
+      "audio.mjs": "4567ca6217cbebb8ab1b6f4141329bd481d380bd3523f7ced18791909f49c93b",
+      "runtime.js": "621f2cb550c0c2d476a09f284b455e8bc1967e3d812de77d101c692fe8c857bd",
+      "world.wgsl": "34d4eae9cddb5978b7bc364e999ed11821dad0de716929c613da6ee8828714bb"
+    }
+  },
+  "qualityAccepted": false,
+  "browser": "not_run",
+  "audioListening": "not_run",
+  "gameIntegration": "not_connected",
+  "qualityReview": {
+    "status": "not-accepted",
+    "reviewer": "GPT-6.2-Astra",
+    "improvement": "左奥の白部が横帯から長い楔へ変わり、手前片による遮蔽と奥行きが実寸で改善",
+    "remaining": "右はキャップと胴、第一読は縦長ブロック2本。氷としてのC未達"
+  }
+}
