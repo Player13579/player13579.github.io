@@ -19515,7 +19515,9 @@ function pumpWebGPUMainAppDriver() {
   if (WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current?.firstRetryTiming &&
       webgpuStartupTiming.current.firstRetryTiming.completedAtMs == null)
     webgpuStartupTiming.current.firstRetryTiming.completedAtMs = performance.now();
-  void webgpuMainApp.driver.draw({ data, sample, rect, camera,
+  const drawDriver = webgpuMainApp.driver;
+  const drawPlayerId = state.playerId;
+  void drawDriver.draw({ data, sample, rect, camera,
     ...(startupRequestTrace ? { diagnosticCorrelation: {
       appRequestSerial: requestSerial,
       startupAttemptId: startupRequestTrace.attemptId } } : {}),
@@ -19535,6 +19537,25 @@ function pumpWebGPUMainAppDriver() {
     if (webgpuMainApp.failed || generation !== webgpuMainApp.generation) {
       recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
         'visible-rejected', { reason: webgpuMainApp.failed ? 'app-failed' : 'app-generation' });
+      return;
+    }
+    if (receipt?.reason === 'incomplete-scene' && receipt.facilityMaterialFailure) {
+      // This is a non-submitted frame owned by this pump, not by the
+      // startup attempt that originally created a (possibly retained) driver.
+      if (webgpuMainApp.driver === drawDriver &&
+          state.screen === 'game' && !document.hidden &&
+          roomId === state.roomId && drawPlayerId === state.playerId &&
+          sessionGeneration === state.roomSessionGeneration &&
+          phase === state.data?.phase && snapshotRoomId === state.data?.roomId &&
+          mapId === state.data?.map?.id &&
+          dpr === (window.devicePixelRatio || 1) &&
+          connectionMode === (document.documentElement?.dataset?.connectionMode || '') &&
+          webgpuMainFrameViewportMatches({ sample, rect, dpr },
+            visibleGameplayViewportSample(), mainCanvas.getBoundingClientRect(), window.devicePixelRatio || 1) &&
+          currentWebGPUFacilityMaterialFailure(receipt.facilityMaterialFailure)) {
+        setWebGPUMainPendingDiagnostic('frame:incomplete-scene');
+        setWebGPUMainFailure(new Error(receipt.facilityMaterialFailure.message));
+      }
       return;
     }
     if (!receipt?.drawn) {
@@ -20583,6 +20604,60 @@ function medicalFootBathEnvironmentSoundSource(data, planned) {
     sourceId: `footBath:${bath.id}`, kind: 'bathAmbient', x: bath.x, y: bath.y });
 }
 
+function webGPUFacilityInView(point, camera, zoom, viewport) {
+  return Boolean(point && Number.isFinite(point.x) && Number.isFinite(point.y) &&
+    point.x >= camera.x - 150 && point.x <= camera.x + viewport.width / zoom + 150 &&
+    point.y >= camera.y - 150 && point.y <= camera.y + viewport.height / zoom + 150);
+}
+
+function webGPUFacilityStationNeedsMaterial(stations, kind, camera, zoom, viewport) {
+  return stations.some(station => station?.type === "task" &&
+    station.task === kind && webGPUFacilityInView(station, camera, zoom, viewport));
+}
+
+function webGPUFacilityCompletionPosition(effect) {
+  return { x: Number.isFinite(effect.targetX) ? effect.targetX : effect.x,
+    y: Number.isFinite(effect.targetY) ? effect.targetY : effect.y };
+}
+
+function webGPUFacilityMaterialFailure(kind, material, effectId = null) {
+  const load = criticalFacilityImageLoads.get(material);
+  if (load?.status !== "failed") return null;
+  const message = `Required facility task material could not be loaded: ${load.source}`;
+  return Object.assign(new Error(message), {
+    code: 'DVA_WEBGPU_FACILITY_MATERIAL_EXHAUSTED',
+    facility: Object.freeze({ kind, material, effectId, message })
+  });
+}
+
+// The canvas and room can remain identical while the player has already
+// panned away or a completion effect expired before its receipt arrived.
+// Check only the two facility dependencies, not the entire current scene.
+function currentWebGPUFacilityMaterialFailure(failure) {
+  const data = state.data;
+  if (!data?.map || !["download", "upload"].includes(failure.kind)) return false;
+  const asset = failure.kind === "download" ? state.textures?.taskDownloadDigital
+    : state.textures?.taskUploadDigital;
+  if (asset !== failure.material || criticalFacilityImageLoads.get(asset)?.status !== "failed" ||
+      asset?.complete && asset.naturalWidth === 512 && asset.naturalHeight === 512) return false;
+  const [width, height] = MAIN_CANVAS_LOGICAL_SIZE;
+  const viewport = { width, height };
+  const zoom = worldZoomFor(data);
+  const camera = cameraFor(data, width, height, zoom);
+  if (failure.effectId === null) {
+    const stations = Array.isArray(data.map.stations) ? data.map.stations : [];
+    return webGPUFacilityStationNeedsMaterial(stations, failure.kind, camera, zoom, viewport);
+  }
+  if (!["playing", "meeting"].includes(data.phase) || !Array.isArray(state.magicEffects)) return false;
+  const effect = state.magicEffects.find(effect => effect?.id === failure.effectId &&
+    effect.type === "action-task" && effect.mode === failure.kind);
+  if (!effect || effect.mode === "upload" && effect.targetId === "upload-d" ||
+      !Number.isFinite(effect.startedAt) || !Number.isFinite(effect.duration) || effect.duration <= 0) return false;
+  const now = eEffectNow(effect, data, state.frameNow || performance.now());
+  return now >= effect.startedAt && now - effect.startedAt < effect.duration &&
+    webGPUFacilityInView(webGPUFacilityCompletionPosition(effect), camera, zoom, viewport);
+}
+
 function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
   if (!data?.map || viewport?.kind !== "main" ||
       viewport.width !== MAIN_CANVAS_LOGICAL_SIZE[0] ||
@@ -20674,15 +20749,15 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
   const medicalUploadPlanned = medicalUploadStation ? medicalUploadApi.plan({
     station: medicalUploadStation, task: null, activeUpload: null, completion: null,
     camera, zoom, viewport, now: frameNow, reducedMotion }) : null;
-  const facilityVisible = point => point && Number.isFinite(point.x) && Number.isFinite(point.y) &&
-    point.x >= camera.x - 150 && point.x <= camera.x + viewport.width / zoom + 150 &&
-    point.y >= camera.y - 150 && point.y <= camera.y + viewport.height / zoom + 150;
+  const facilityVisible = point => webGPUFacilityInView(point, camera, zoom, viewport);
   for (const taskKind of ["download", "upload"]) {
-    if (!facilityStations.some(station => station?.type === "task" &&
-        station.task === taskKind && facilityVisible(station))) continue;
+    if (!webGPUFacilityStationNeedsMaterial(facilityStations, taskKind, camera, zoom, viewport)) continue;
     const texture = taskKind === "download" ? "taskDownloadDigital" : "taskUploadDigital";
-    if (!imageReady(textures[texture], 512, 512))
+    if (!imageReady(textures[texture], 512, 512)) {
+      const failure = webGPUFacilityMaterialFailure(taskKind, textures[texture]);
+      if (failure) throw failure;
       textureGaps.push({ stage: "facilityEffects", texture, blocking: true });
+    }
   }
   // Canvas suppresses the station material while its completion is drawn later
   // inside drawMagicEffects. The GPU input does the same; the late adapter owns
@@ -22105,8 +22180,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           reason: "task-completion-timing-invalid" });
         continue;
       }
-      const x = Number.isFinite(effect.targetX) ? effect.targetX : effect.x;
-      const y = Number.isFinite(effect.targetY) ? effect.targetY : effect.y;
+      const { x, y } = webGPUFacilityCompletionPosition(effect);
       if (now < effect.startedAt) {
         omitted.push({ effectId: effect.id, reason: "task-completion-not-started" });
         continue;
@@ -22156,12 +22230,15 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         continue;
       }
       if (!plan.length) {
-        const outside = x < camera.x - 150 || x > camera.x + viewport.width / zoom + 150 ||
-          y < camera.y - 150 || y > camera.y + viewport.height / zoom + 150;
-        if (outside) omitted.push({ effectId: effect.id,
+        if (!webGPUFacilityInView({ x, y }, camera, zoom, viewport)) omitted.push({ effectId: effect.id,
           reason: "task-completion-outside-viewport" });
-        else unsupported.push({ index, type, id: effect.id,
-          reason: "task-completion-material-unavailable" });
+        else {
+          const material = effect.mode === "download" ? textures.taskDownloadDigital : textures.taskUploadDigital;
+          const failure = webGPUFacilityMaterialFailure(effect.mode, material, effect.id);
+          if (failure) throw failure;
+          unsupported.push({ index, type, id: effect.id,
+            reason: "task-completion-material-unavailable" });
+        }
         continue;
       }
       events.push({ type: "taskCompletion", effectId: effect.id,
@@ -29082,6 +29159,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
           if (destroyed || requestGeneration !== lifecycleGeneration || data !== state.data)
             return Object.freeze({ drawn: false, reason: destroyed ? 'destroyed' : 'superseded' });
         }
+        let facilityMaterialFailure = null;
         const scheduled = await runtime.requestFrame({ sample, rect, dpr, camera, phase: data.phase,
           ...(diagnosticCorrelation ? { diagnosticCorrelation } : {}),
           ...(typeof onTiming === 'function' ? { onTiming } : {}),
@@ -29095,8 +29173,16 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
             markWebGPUStartupStage('sceneCaptureBegin');
             const captureStartedAt = WEBGPU_FRAME_PANEL_ENABLED || WEBGPU_MAIN_VERIFY_ROUTE
               ? performance.now() : null;
-            const captured = captureWebGPUMainAppWorldCandidate(data,
-              viewport, providers);
+            let captured;
+            try {
+              captured = captureWebGPUMainAppWorldCandidate(data, viewport, providers);
+            } catch (error) {
+              if (error?.code !== 'DVA_WEBGPU_FACILITY_MATERIAL_EXHAUSTED') throw error;
+              facilityMaterialFailure = error.facility;
+              // Intentionally let the runtime discard this frame, not the
+              // retained driver. The app receipt decides whether to stop.
+              throw Object.assign(error, { code: 'DVA_WEBGPU_INCOMPLETE_SCENE' });
+            }
             if (WEBGPU_FRAME_PANEL_ENABLED && Number.isFinite(captureStartedAt))
               recordWebGPUFramePanelCapture(frameDiagnostic,
                 Math.max(0, performance.now() - captureStartedAt), performance.now());
@@ -29208,8 +29294,13 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
           return Object.freeze({ drawn: false, reason: destroyed ? 'destroyed' : 'superseded',
             ...(diagnosticCorrelation ? { diagnosticRequestId: scheduled.diagnosticRequestId ?? null,
               diagnosticSource: 'driver-lifecycle' } : {}) });
-        if (!outcome.drawn) return diagnosticCorrelation ?
-          Object.freeze({ ...outcome, diagnosticRequestId: scheduled.diagnosticRequestId ?? null }) : outcome;
+        if (!outcome.drawn) {
+          if (outcome.reason === 'incomplete-scene' && facilityMaterialFailure)
+            return Object.freeze({ ...outcome, facilityMaterialFailure,
+              ...(diagnosticCorrelation ? { diagnosticRequestId: scheduled.diagnosticRequestId ?? null } : {}) });
+          return diagnosticCorrelation ?
+            Object.freeze({ ...outcome, diagnosticRequestId: scheduled.diagnosticRequestId ?? null }) : outcome;
+        }
         const submittedHits = outcome.recordResult?.markerHitTargets;
         if (!Array.isArray(submittedHits))
           throw new Error('Dormant WebGPU main submitted without marker hit targets');
@@ -31541,8 +31632,8 @@ function loadCriticalFacilityTexture(image, source, { box = false } = {}) {
   const existing = criticalFacilityImageLoads.get(image);
   if (existing?.source === source && existing.status !== "cancelled") return;
   if (!box) image.fetchPriority = "high";
-  const ready = () => image.naturalWidth > 0 && (!box ||
-    (image.naturalWidth === 1548 && image.naturalHeight === 516));
+  const ready = () => image.naturalWidth === (box ? 1548 : 512) &&
+    image.naturalHeight === (box ? 516 : 512);
   let retries = 0;
   let retryTimer = null;
   let watchdog = null;
@@ -31565,7 +31656,8 @@ function loadCriticalFacilityTexture(image, source, { box = false } = {}) {
     clearTimer(retryTimer);
     retryTimer = null;
     detach();
-    if (!box) setWebGPUMainFailure(new Error(`Required facility task material could not be loaded: ${source}`));
+    // Eager loads outlive views and rooms. The live capture, not this
+    // background callback, owns a terminal failure for a required material.
   };
   const retry = () => {
     if (load.status !== "loading") return;
@@ -32606,7 +32698,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
