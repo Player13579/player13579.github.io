@@ -11750,6 +11750,9 @@ function gunnerDirection() {
 }
 
 async function request(path, body = {}, options = {}) {
+  // Awaited room actions can outlive their owner. This only defers ordinary
+  // toast presentation, not the client-wide release requirement.
+  const showCurrentErrorToast = () => !options.quiet && (!options.isErrorToastCurrent || options.isErrorToastCurrent());
   const useOffline = options.forceOffline || (state.offlineMode && !options.forceOnline);
   if (useOffline) {
     const result = await state.offlineClient?.request(path, { ...body, clientId: clientId() }, {
@@ -11758,7 +11761,7 @@ async function request(path, body = {}, options = {}) {
     });
     if (!result?.ok) {
       if (path === "/api/state") options.onStateFailure?.(result?.status, result);
-      if (!options.quiet) showToast(result?.error || "オフライン処理に失敗しました。");
+      if (showCurrentErrorToast()) showToast(result?.error || "オフライン処理に失敗しました。");
       return null;
     }
     return result;
@@ -11786,7 +11789,7 @@ async function request(path, body = {}, options = {}) {
         result = await response.json();
       } catch {
         if (retryable && response.status >= 500 && attempt + 1 < attempts) {
-          if (!options.quiet) showToast("公開サーバーを起動しています。再接続中です。");
+          if (showCurrentErrorToast()) showToast("公開サーバーを起動しています。再接続中です。");
           await delay(700 * (attempt + 1));
           continue;
         }
@@ -11794,12 +11797,13 @@ async function request(path, body = {}, options = {}) {
       }
       if (!response.ok || !result.ok) {
         if (path === "/api/state") options.onStateFailure?.(response.status, result);
-        if (response.status === 426 || result?.requiredClientRelease) {
+        const requiresClientRelease = response.status === 426 || result?.requiredClientRelease;
+        if (requiresClientRelease) {
           state.onlineAvailable = false;
           applyOnlineAvailabilityUi();
         }
         if (options.resetOnNotFound && response.status === 404) resetLocalSession();
-        if (!options.quiet) {
+        if (requiresClientRelease ? !options.quiet : showCurrentErrorToast()) {
           const outdatedPublicApi = options.publicFeature && response.status === 404 && API_BASE_URL;
           showToast(outdatedPublicApi
             ? `${options.publicFeature}用の公開サーバーが旧版です。バックエンドを更新してください。`
@@ -11810,11 +11814,11 @@ async function request(path, body = {}, options = {}) {
       return result;
     } catch (error) {
       if (attempt + 1 < attempts) {
-        if (!options.quiet) showToast("サーバーへ再接続しています。");
+        if (showCurrentErrorToast()) showToast("サーバーへ再接続しています。");
         await delay(700 * (attempt + 1));
         continue;
       }
-      if (!options.quiet) showToast("サーバーに接続できません。公開サーバーの起動待ち、またはローカルアプリの起動状態を確認してください。");
+      if (showCurrentErrorToast()) showToast("サーバーに接続できません。公開サーバーの起動待ち、またはローカルアプリの起動状態を確認してください。");
       return null;
     } finally {
       window.clearTimeout(timeout);
@@ -14933,29 +14937,42 @@ function bindOperatorDetailHold(button, operator) {
   });
 }
 
+let pendingOperatorSelectionOwner = null;
+
 async function selectOperatorFromCard(operator) {
   if (!operator || !state.roomId || !state.playerId) return false;
-  // A genuine selection owns the next state; do not retain an obsolete detail.
-  hideOperatorDetail();
-  const body = {
-    roomId: state.roomId,
-    playerId: state.playerId,
-    operatorId: operator.id,
-    operatorSpecial: operator.special
-  };
-  let result = await request("/api/operator", body, { quiet: state.offlineMode });
-  if (!result && state.offlineMode && operator.special) {
-    result = await request("/api/operator", {
-      ...body,
-      operatorId: ""
-    }, { quiet: true, forceOffline: true });
+  const owner = { roomId: state.roomId, playerId: state.playerId, generation: state.roomSessionGeneration };
+  const pending = pendingOperatorSelectionOwner;
+  if (pending && isCurrentRoomSession(pending.roomId, pending.playerId, pending.generation)) return false;
+  pendingOperatorSelectionOwner = owner;
+  const isCurrent = () => pendingOperatorSelectionOwner === owner &&
+    isCurrentRoomSession(owner.roomId, owner.playerId, owner.generation);
+  try {
+    hideOperatorDetail();
+    const body = {
+      roomId: owner.roomId,
+      playerId: owner.playerId,
+      operatorId: operator.id,
+      operatorSpecial: operator.special
+    };
+    let result = await request("/api/operator", body, { quiet: state.offlineMode, isErrorToastCurrent: isCurrent });
+    if (!isCurrent()) return false;
+    if (!result && state.offlineMode && operator.special) {
+      result = await request("/api/operator", {
+        ...body,
+        operatorId: ""
+      }, { quiet: true, forceOffline: true });
+      if (!isCurrent()) return false;
+    }
+    if (!result) {
+      showToast("そのオペレーターは選択できません。画面を再読み込みしてください。");
+      return false;
+    }
+    applyState(result);
+    return true;
+  } finally {
+    if (pendingOperatorSelectionOwner === owner) pendingOperatorSelectionOwner = null;
   }
-  if (!result) {
-    showToast("そのオペレーターは選択できません。画面を再読み込みしてください。");
-    return false;
-  }
-  applyState(result);
-  return true;
 }
 
 function rootAbilityModeSelectActive(self = state.data?.self) {
@@ -32727,7 +32744,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
