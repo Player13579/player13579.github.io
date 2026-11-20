@@ -11757,6 +11757,7 @@ async function request(path, body = {}, options = {}) {
       attempts: options.attempts
     });
     if (!result?.ok) {
+      if (path === "/api/state") options.onStateFailure?.(result?.status, result);
       if (!options.quiet) showToast(result?.error || "オフライン処理に失敗しました。");
       return null;
     }
@@ -11792,6 +11793,7 @@ async function request(path, body = {}, options = {}) {
         throw new Error("invalid-json");
       }
       if (!response.ok || !result.ok) {
+        if (path === "/api/state") options.onStateFailure?.(response.status, result);
         if (response.status === 426 || result?.requiredClientRelease) {
           state.onlineAvailable = false;
           applyOnlineAvailabilityUi();
@@ -11892,7 +11894,7 @@ function returnExpiredOnlineRoomToMatchmaking(generation, roomId, playerId) {
   return true;
 }
 
-async function rebuildExpiredOfflineRoom(generation, roomId, playerId) {
+async function rebuildExpiredOfflineRoom(generation, roomId, playerId, authorityLost = false) {
   if (!isCurrentRoomSession(roomId, playerId, generation)) return false;
   const name = startPlayerName();
   const skinId = normalizeSkinId(clientStorage.getItem(storage.skin) || els.skinSelect.value);
@@ -11914,7 +11916,9 @@ async function rebuildExpiredOfflineRoom(generation, roomId, playerId) {
   setCurrentRoomSession(result.roomId, result.playerId);
   applyState(result, { authoritative: true });
   setScreen("game");
-  showToast("オフライン対戦を復帰しました。オペレーターを選択してください。");
+  showToast(authorityLost
+    ? "以前のオフライン対戦を復帰できなかったため、新しい対戦を開始しました。オペレーターを選択してください。"
+    : "オフライン対戦を復帰しました。オペレーターを選択してください。");
   return true;
 }
 
@@ -11930,26 +11934,51 @@ async function resumeRoomAfterBackground() {
   const playerId = state.playerId;
   const generation = state.roomSessionGeneration;
   const offline = state.offlineMode;
+  const client = offline ? state.offlineClient : null;
+  const originalWorker = client?.worker;
+  const originalWorkerGeneration = client?.workerGeneration;
+  const originalMain = client?.mainThreadApi;
   try {
     // A suspended dedicated worker can be discarded by the browser. Starting
     // it is idempotent and preserves a healthy worker; a missing generated
     // room is rebuilt below rather than leaking its raw server error.
-    if (offline) await state.offlineClient?.start?.();
+    if (offline) await client?.start?.();
+    const worker = originalMain ? null : (originalWorker || client?.worker);
+    const workerGeneration = originalWorker ? originalWorkerGeneration : client?.workerGeneration;
+    const main = originalMain || (!worker ? client?.mainThreadApi : null);
+    let roomMissing = false;
     const result = await request("/api/state", { roomId, playerId }, {
       quiet: true,
       forceOffline: offline,
       forceOnline: !offline,
       timeoutMs: 3_500,
-      attempts: 1
+      attempts: 1,
+      onStateFailure(status, payload) {
+        // An HTTP/gateway 404 alone is not an authority's room decision.
+        roomMissing = status === 404 && payload?.ok === false &&
+          (payload.error === "ルームが見つかりません。" ||
+            payload.error === "プレイヤーが見つかりません。再入室してください。");
+      }
     });
-    if (serial !== state.backgroundResume.serial || !isCurrentRoomSession(roomId, playerId, generation)) return false;
-    if (result) {
+    if (serial !== state.backgroundResume.serial || document.hidden ||
+        !isCurrentRoomSession(roomId, playerId, generation) || offline !== state.offlineMode ||
+        (offline && client !== state.offlineClient)) return false;
+    // The current runtime retires its Worker when switching to independent
+    // main authority. An empty fallback cannot confirm expiry on the old
+    // Worker, but loss of the old authority itself requires a fresh room.
+    const authorityLost = !!(client && ((worker && (client.worker !== worker ||
+      client.workerGeneration !== workerGeneration)) ||
+      (main && client.mainThreadApi !== main)));
+    if (authorityLost) return rebuildExpiredOfflineRoom(generation, roomId, playerId, true);
+    if (worker && client.mainThreadApi) return false; // Source changed without proving the old Worker was retired.
+    if (result && result.roomId === roomId && (result.selfId || result.playerId) === playerId) {
       state.lastMovementServerNow = 0;
       state.lastStateServerNow = 0;
       applyState(result, { authoritative: true });
       if (!offline) ensureRealtimeConnection();
       return true;
     }
+    if (!roomMissing) return false;
     return offline
       ? rebuildExpiredOfflineRoom(generation, roomId, playerId)
       : returnExpiredOnlineRoomToMatchmaking(generation, roomId, playerId);
@@ -32698,7 +32727,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
