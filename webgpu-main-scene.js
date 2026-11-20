@@ -162,7 +162,8 @@
           ? Object.keys(receipt).sort() : [];
         if (keys.length !== 2 || keys[0] !== 'effectId' || keys[1] !== 'reason' ||
             !positions.has(id) || owned.has(id) ||
-            !['no-complete-webgpu-effect-port', 'sunbeam-adoption-withdrawn']
+            !['no-complete-webgpu-effect-port', 'sunbeam-adoption-withdrawn',
+              'fighter-ec-image-pending']
               .includes(receipt.reason) ||
             retained.has(id) || visibleEmp.has(id) || visibleSpecialAmmo.has(id))
           throw new Error(`Invalid deferred visible magic ownership: ${id}`);

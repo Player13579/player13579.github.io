@@ -5814,7 +5814,7 @@ function updateEnhanceReadout() {
   if (hold.kind) hold.timer = requestAnimationFrame(updateEnhanceReadout);
 }
 
-function beginEnhanceAction(kind, pointerId = null) {
+function beginEnhanceAction(kind, pointerId = null, inputSource = pointerId === null ? "unknown" : "pointer", inputCode = "") {
   if (!kind || state.enhanceHold.kind) return false;
   const itemId = kind === "shoot"
     ? `weapon:${String(state.data?.self?.gunnerWeapon || "")}`
@@ -5826,7 +5826,7 @@ function beginEnhanceAction(kind, pointerId = null) {
   const chargePromise = state.roomId && state.playerId
     ? api("/api/enhance-charge", { active: true, kind: chargeKind, itemId })
     : Promise.resolve(false);
-  state.enhanceHold = { kind, chargeKind, pointerId, startedAt: performance.now(), timer: 0, itemId, chargeId: "", chargePromise };
+  state.enhanceHold = { kind, chargeKind, pointerId, inputSource, inputCode, startedAt: performance.now(), timer: 0, itemId, chargeId: "", chargePromise };
   if (chargeKind === "shoot") state.gunActivationPending = true;
   state.movementQueue?.clear?.();
   clearMovementInput();
@@ -5842,7 +5842,7 @@ function cancelEnhanceAction(kind = state.enhanceHold.kind, { recoverOnFailure =
   const hold = state.enhanceHold;
   if (!hold.kind || (kind && hold.kind !== kind)) return false;
   if (hold.timer) cancelAnimationFrame(hold.timer);
-  state.enhanceHold = { kind: "", chargeKind: "", pointerId: null, startedAt: 0, timer: 0, itemId: "", chargeId: "" };
+  state.enhanceHold = { kind: "", chargeKind: "", pointerId: null, inputSource: "", inputCode: "", startedAt: 0, timer: 0, itemId: "", chargeId: "" };
   if (hold.chargeKind === "shoot") state.gunActivationPending = false;
   if (hold.pointerId !== null) {
     for (const button of [els.shootButton, els.tabletShootShortcut, els.fireJutsuButton, els.tabletFireShortcut, els.itemUseButton, els.itemThrowButton, els.webgpuMainCanvas]) {
@@ -5881,7 +5881,7 @@ async function finishEnhanceAction(kind = state.enhanceHold.kind, pointerId = nu
   if (!hold.kind || (kind && hold.kind !== kind) || (pointerId !== null && hold.pointerId !== pointerId)) return false;
   const holdMs = Math.max(0, performance.now() - hold.startedAt);
   if (hold.timer) cancelAnimationFrame(hold.timer);
-  state.enhanceHold = { kind: "", chargeKind: "", pointerId: null, startedAt: 0, timer: 0, itemId: "", chargeId: "" };
+  state.enhanceHold = { kind: "", chargeKind: "", pointerId: null, inputSource: "", inputCode: "", startedAt: 0, timer: 0, itemId: "", chargeId: "" };
   updateEnhanceReadout();
   const chargeResult = await Promise.resolve(hold.chargePromise);
   const chargeId = String(chargeResult?.self?.enhanceChargeId || hold.chargeId || "");
@@ -5933,7 +5933,7 @@ async function finishEnhanceAction(kind = state.enhanceHold.kind, pointerId = nu
 }
 
 async function finishEnhanceActionAfterTablet(kind) {
-  if (!beginEnhanceAction(kind)) return false;
+  if (!beginEnhanceAction(kind, null, "tablet")) return false;
   return finishEnhanceAction(kind);
 }
 
@@ -5949,7 +5949,7 @@ function triggerActionHotkey(event) {
   }
   const enhanceKind = enhanceActionForElement(elementKey);
   if (enhanceKind) {
-    if (!event.repeat) beginEnhanceAction(enhanceKind);
+    if (!event.repeat) beginEnhanceAction(enhanceKind, null, "keyboard", event.code);
     return true;
   }
   const button = els[elementKey];
@@ -5984,7 +5984,7 @@ function triggerItemHotkey(event) {
   // Keyboard follows the same disabled gate as the rendered inventory control.
   if ((kind === "use" && els.itemUseButton.disabled) || (kind === "throw" && els.itemThrowButton.disabled)) { event.preventDefault(); return true; }
   event.preventDefault();
-  if (!event.repeat) beginEnhanceAction(kind);
+  if (!event.repeat) beginEnhanceAction(kind, null, "keyboard", event.code);
   return true;
 }
 
@@ -8890,7 +8890,26 @@ function bindEvents() {
   window.addEventListener("keyup", (event) => {
     const eventTarget = event.target instanceof Element ? event.target : document.activeElement;
     if (eventTarget?.matches?.('input, textarea, [contenteditable="true"]') ||
-      document.activeElement?.matches?.('input, textarea, [contenteditable="true"]')) return;
+      document.activeElement?.matches?.('input, textarea, [contenteditable="true"]')) {
+      if (event.code) {
+        stopRootShortcutKeyHold(event.code, { cancelled: true });
+        stopAbilityBatchKeyHold(event.code, { dispatch: false });
+        stopContinuousActionKeyHold(event.code);
+        for (const key of state.continuousActionKeyAt.keys()) {
+          if (key === event.code || key.endsWith(`:${event.code}`)) state.continuousActionKeyAt.delete(key);
+        }
+      }
+      const hadDash = event.key === "Shift" && state.keys.delete("dash");
+      const hadSlow = (event.key === "Control" || event.key === "Alt") && state.keys.delete("slow");
+      const movementKey = keyName(event.key);
+      const hadMovementKey = movementKey ? state.keys.delete(movementKey) : false;
+      if (hadMovementKey || hadDash || hadSlow) syncMovementInputImmediately();
+      const heldEnhance = state.enhanceHold;
+      if (event.code && heldEnhance.inputSource === "keyboard" && heldEnhance.inputCode === event.code) {
+        cancelEnhanceAction(heldEnhance.kind);
+      }
+      return;
+    }
     if (state.keybindOpen || state.fieldFeedOpen || state.expandedMapOpen) return;
     stopRootShortcutKeyHold(event.code);
     stopAbilityBatchKeyHold(event.code, { dispatch: true });
@@ -9637,7 +9656,7 @@ function appendTabletBranchButton(label, action, {
   if (hold === "shoot") {
     bindScrollableHold({
       interval: 0,
-      pointerStart: () => beginEnhanceAction("shoot"),
+      pointerStart: () => beginEnhanceAction("shoot", null, "scrollable"),
       pointerCancel: () => cancelEnhanceAction("shoot"),
       tapInvoke: () => void finishEnhanceAction("shoot"),
       holdInvoke: () => {},
@@ -9649,7 +9668,7 @@ function appendTabletBranchButton(label, action, {
     const enhanceKind = hold === "enhance-throw" ? "throw" : "use";
     bindScrollableHold({
       interval: 0,
-      pointerStart: () => beginEnhanceAction(enhanceKind),
+      pointerStart: () => beginEnhanceAction(enhanceKind, null, "scrollable"),
       pointerCancel: () => cancelEnhanceAction(enhanceKind),
       tapInvoke: () => void finishEnhanceAction(enhanceKind),
       holdInvoke: () => {},
@@ -21862,6 +21881,19 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           reason: 'retained-head-marker-source-or-actor-unavailable' });
         continue;
       }
+      if (type === 'fighter-energy-charge') {
+        const image = textures.fighterEnergyChargeEffect;
+        const source = (textures.pendingSources || []).find(([entry]) => entry === image)?.[1];
+        const started = textures.gameplayLoadStarted?.has(image) === true;
+        const notStarted = image && source && !started && !image.src &&
+          image.naturalWidth === 0 && image.naturalHeight === 0;
+        const loading = image && source && started && !image.complete &&
+          image.getAttribute?.('src') === source;
+        if (notStarted || loading) {
+          deferredVisible.push({ effectId: effect.id, reason: 'fighter-ec-image-pending' });
+          continue;
+        }
+      }
       const routeKey = `${playerId}:${instanceKey}`;
       if (routedMarkerInstances.has(routeKey)) {
         omitted.push({ effectId: effect.id,
@@ -27927,9 +27959,13 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const late = captureWebGPUMainAppLateMagicScene(data, viewport,
     early.camera, early.zoom, shapeProviders, headMarkers, players.stages.players);
   assertCurrent();
-  const retainedSources = late.stage.events.filter(event =>
-    event.type === 'headMarker').map(event => {
-    const effect = event.input.sourceEffect;
+  const retainedSources = [
+    ...late.stage.events.filter(event => event.type === 'headMarker')
+      .map(event => event.input.sourceEffect),
+    ...late.stage.deferredVisible.filter(receipt =>
+      receipt.reason === 'fighter-ec-image-pending').map(receipt =>
+      state.magicEffects.find(effect => String(effect.id) === String(receipt.effectId)))
+  ].map(effect => {
     return { effect, id: effect.id, type: effect.type,
       playerId: effect.playerId,
       variant: effect.variant, active: effect.active,
