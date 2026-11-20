@@ -68,6 +68,7 @@
     cableSpoolE: root.DvaWebGPUCableSpoolE || (typeof require === 'function' ? require('./webgpu-cable-spool-e.js') : null),
     fireActivation: root.DvaWebGPUFireActivation || (typeof require === 'function' ? require('./webgpu-fire-activation.js') : null),
     empEffect: root.DvaWebGPUEmpEffect || (typeof require === 'function' ? require('./webgpu-emp-effect.js') : null),
+    legacyTeleportE: root.DvaWebGPULegacyTeleportE || (typeof require === 'function' ? require('./webgpu-legacy-teleport-e.js') : null),
     specialAmmoEffect: root.DvaWebGPUSpecialAmmoEffect || (typeof require === 'function' ? require('./webgpu-special-ammo-effect.js') : null),
     commonActionBodyE: root.DvaWebGPUCommonActionBodyE || (typeof require === 'function' ? require('./webgpu-common-action-body-e.js') : null),
     attackTargets: root.DvaWebGPUAttackTargets || (typeof require === 'function' ? require('./webgpu-attack-targets.js') : null),
@@ -90,7 +91,7 @@
     'hud', 'minimap', 'modeBanner', 'lighting', 'killAnimation', 'sensory',
     'markerExplanation', 'acquisition']);
   const MAGIC_EVENT_TYPES = Object.freeze(['shapes', 'gunnerAimAcquisition', 'gunnerShotE', 'taserHeadshotE', 'gravityImpact', 'grenadeImpact',
-    'bodyBenefit', 'staminaBenefitE', 'manaBenefitE', 'bodyBenefitExtra', 'statusTempo', 'barrierE', 'bustE', 'dodgeE', 'renkiE', 'ideaE', 'alchemyE', 'hackerRootE', 'hackerStatusRecoveryE', 'floraE', 'healE', 'sunbeamE', 'fighterEnergyE', 'gravityFieldE', 'rigidItemImpactE', 'bottleShardsE', 'archiveCabinetE', 'fireActivation', 'empEffect', 'specialAmmoEffect', 'commonActionBodyE', 'medicalObjectE',
+    'bodyBenefit', 'staminaBenefitE', 'manaBenefitE', 'bodyBenefitExtra', 'statusTempo', 'barrierE', 'bustE', 'dodgeE', 'renkiE', 'ideaE', 'alchemyE', 'hackerRootE', 'hackerStatusRecoveryE', 'floraE', 'healE', 'sunbeamE', 'fighterEnergyE', 'gravityFieldE', 'rigidItemImpactE', 'bottleShardsE', 'archiveCabinetE', 'fireActivation', 'empEffect', 'specialAmmoEffect', 'legacyTeleportE', 'commonActionBodyE', 'medicalObjectE',
     'medicalCabinetE', 'medicalFootbathUseE', 'medicalUploadConsoleE', 'corridorA01E', 'corridorObjectUseE', 'roomObjectUseE', 'reactorRoomObjectsE', 'powerRoomObjectsE',
     'taskCompletion', 'headMarker', 'mysteryBoxRevealE']);
   const own = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
@@ -170,7 +171,7 @@
       playerNameplates: 'create', headMarkers: 'create',
       gunnerAim: 'create', killCamera: 'create', hitEffects: 'record',
       gunnerShotE: 'create', taserHeadshotE: 'create',
-      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusTempo: 'create', barrierE: 'create', ...(modules === defaults || modules.barrierProR07Game ? { barrierProR07Game: 'create' } : {}), bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', healSparkleE: 'create', healSparkleGameAdapter: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create',
+      gravityImpacts: 'create', grenadeImpacts: 'record', bodyBenefits: 'create', staminaBenefitE: 'create', manaBenefitE: 'create', bodyBenefitExtra: 'create', statusTempo: 'create', barrierE: 'create', ...(modules === defaults || modules.barrierProR07Game ? { barrierProR07Game: 'create' } : {}), bustE: 'create', dodgeE: 'create', renkiE: 'create', ideaE: 'create', alchemyE: 'create', hackerRootE: 'create', hackerStatusRecoveryE: 'create', floraE: 'create', healE: 'create', healSparkleE: 'create', healSparkleGameAdapter: 'create', sunbeamE: 'create', fighterEnergyE: 'create', hoverSprintE: 'create', gravityFieldE: 'create', rigidItemImpactE: 'create', bottleShardsE: 'create', archiveCabinetE: 'create', fireActivation: 'create', empEffect: 'create', specialAmmoEffect: 'create', legacyTeleportE: 'create',
       attackTargets: 'record', taskIndicators: 'create', hud: 'create',
       minimap: 'create', modeBanner: 'create', killBloom: 'create',
       killAnimation: 'create', sensory: 'enqueue', markerExplanation: 'create',
@@ -408,6 +409,7 @@
       add('fireActivation', modules.fireActivation.create({ renderer }), 'record');
       add('empEffect', modules.empEffect.create({ frameOwner: renderer }), 'record');
       add('specialAmmoEffect', modules.specialAmmoEffect.create({ frameOwner: renderer }), 'record');
+      add('legacyTeleportE', modules.legacyTeleportE.create({frameOwner:renderer}), 'record');
       add('commonActionBodyE', modules.commonActionBodyE.create(), 'record');
       add('medicalObjectE', modules.medicalObjectE.create({ device: renderer.device,
         format: renderer.format }), 'record');

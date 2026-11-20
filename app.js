@@ -21158,6 +21158,11 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         effect.duration !== 900 || effect.durationMs !== 900) return true;
       return now < effect.startedAt || now - effect.startedAt < 900;
     }
+    if (effect?.type === 'action-teleport') {
+      if (![effect.x, effect.y, effect.startedAt, effect.duration].every(Number.isFinite) ||
+          effect.duration <= 0) return true;
+      return now < effect.startedAt || now - effect.startedAt < effect.duration;
+    }
     if (effect?.type === 'action-mana') {
       // Keep malformed live mana activations in the source ledger so the
       // typed WebGPU admission below can block an incomplete frame.
@@ -21245,6 +21250,26 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
   for (const [index, effect] of active.entries()) {
     const now = eEffectNow(effect, data, wallNow);
     const type = String(effect.type || "");
+    if (type === 'action-teleport') {
+      const api = window.DvaWebGPULegacyTeleportE;
+      let planned;
+      try { planned = api?.plan?.({ effect, now, wallNow, camera, zoom, viewport, reducedMotion }); }
+      catch (_) { unsupported.push({ index, type, id: effect.id, reason: 'legacy-teleport-source-invalid' }); continue; }
+      if (!api || !planned) {
+        if (api && now < effect.startedAt) omitted.push({ effectId: effect.id, reason: 'not-started' });
+        else unsupported.push({ index, type, id: effect.id, reason: 'legacy-teleport-provider-unavailable' });
+        continue;
+      }
+      const sourceImage=state.textures.actionEffectTextures?.[4];
+      if(!sourceImage?.complete || sourceImage.naturalWidth!==api.SOURCE.width ||
+          sourceImage.naturalHeight!==api.SOURCE.height){
+        unsupported.push({index,type,id:effect.id,reason:'legacy-teleport-original-image-pending'});continue;
+      }
+      events.push({ type: 'legacyTeleportE', effectId: String(effect.id), input: {
+        effect, sourceFields: Object.fromEntries(['id','type','variant','x','y','radius','startedAt','duration','playerId']
+          .map(key => [key,effect[key]])) } });
+      continue;
+    }
     if (type === 'hazard-poison') {
       const pass = window.DvaWebGPUHazardFields;
       const scene = hazardFieldsWebGPUScene(data);
@@ -27985,6 +28010,8 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
       resolvedIds: Array.isArray(effect.resolvedEmpPulseIds)
         ? [...effect.resolvedEmpPulseIds] : effect.resolvedEmpPulseIds };
   });
+  const legacyTeleportSources = late.stage.events.filter(event => event.type === 'legacyTeleportE')
+    .map(event => ({ effect: event.input.effect, fields: event.input.sourceFields }));
   const specialAmmoSources = late.stage.events.filter(event =>
     event.type === 'specialAmmoEffect').map(event => {
     const effect = event.input.effect;
@@ -28121,6 +28148,8 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
             rendered?.x !== storageActor.renderedX ||
             rendered?.y !== storageActor.renderedY;
         }) ||
+        legacyTeleportSources.some(({ effect, fields }) =>
+          !state.magicEffects.includes(effect) || Object.keys(fields).some(key => !Object.is(effect[key],fields[key]))) ||
         specialAmmoSources.some(({ effect, fields }) =>
           !state.magicEffects.includes(effect) ||
           Object.keys(fields).some(key => effect[key] !== fields[key])) ||
@@ -28310,6 +28339,7 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
     'archiveCabinetE', 'cableSpoolE',
     ...(empVisible.length ? ['empEffect'] : []),
     ...(specialAmmoVisible.length ? ['specialAmmoEffect'] : []),
+    ...(candidate.stages.magicEffects.events.some(event => event.type === 'legacyTeleportE') ? ['legacyTeleportE'] : []),
     ...(candidate.stages.acquisition ? ['acquisition'] : []),
     ...(candidate.stages.expandedMap ? ['expandedMap'] : [])]
     .map(name => ({ name, pass: passes[name], device: passes[name].device }));
@@ -28508,6 +28538,25 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
           !actor || !actor.alive || actor.ejected || actor.inVent || actor.invisible)
         throw new Error(`WebGPU world candidate action-mana source changed: ${event.effectId}`);
       return event;
+    }
+    if (event.type === 'legacyTeleportE') {
+      assertPassesCurrent();
+      const input = event.input, effect = input?.effect;
+      if (!effect || !state.magicEffects.includes(effect) || String(effect.id) !== event.effectId ||
+          Object.keys(input.sourceFields).some(key => !Object.is(effect[key],input.sourceFields[key])))
+        throw Object.assign(new Error('Legacy teleport source changed before preparation'), {code:'DVA_WEBGPU_STALE_SCENE'});
+      const planned = window.DvaWebGPULegacyTeleportE.plan({ effect,
+        now: eEffectNow(effect,state.data,magicInput.now), wallNow:magicInput.now, camera:candidate.camera,
+        zoom:candidate.zoom, viewport:candidate.viewport, reducedMotion:magicInput.reducedMotion });
+      if (!planned) throw Object.assign(new Error('Legacy teleport source expired during preparation'), {code:'DVA_WEBGPU_STALE_SCENE'});
+      const image=state.textures.actionEffectTextures?.[4];
+      if(!image?.complete || image.naturalWidth!==window.DvaWebGPULegacyTeleportE.SOURCE.width ||
+          image.naturalHeight!==window.DvaWebGPULegacyTeleportE.SOURCE.height)
+        throw Object.assign(new Error('Legacy teleport original image became pending'),{code:'DVA_WEBGPU_INCOMPLETE_SCENE'});
+      const prepared = passes.legacyTeleportE.prepare({ source:image,
+        generation:state.roomSessionGeneration });
+      assertPassesCurrent();
+      return {...event,input:{...input,planned,prepared}};
     }
     if (event.type === 'specialAmmoEffect') {
       assertPassesCurrent();

@@ -267,6 +267,14 @@
               !(planned.values instanceof Float32Array) || planned.values.length !== 16 ||
               !planned.values.every(Number.isFinite))
             throw new TypeError(`Magic EMP ${id} needs one exact source-owned plan`);
+        } else if (event?.type === 'legacyTeleportE') {
+          const input=event.input,effect=input?.effect,planned=input?.planned;
+          if (typeof passes.legacyTeleportE?.record!=='function' || String(effect?.id??'')!==id ||
+              effect.type!=='action-teleport' || planned?.effectId!==id || planned.type!==effect.type ||
+              planned.variant!==String(effect.variant||'') || planned.support?.kind!=='full-main-viewport' ||
+              planned.layers?.length!==2 || input.prepared?.device!==device ||
+              !input.sourceFields || Object.keys(input.sourceFields).some(key=>!Object.is(effect[key],input.sourceFields[key])))
+            throw new TypeError(`Legacy teleport ${id} requires exact source and current provider`);
         } else if (event?.type === 'specialAmmoEffect') {
           const input = event.input, effect = input?.effect, planned = input?.planned;
           const source = visibleSpecialAmmo.get(id);
@@ -961,6 +969,11 @@
                 visibleAtMs: event.input.visibleAtMs
               }));
             }
+          } else if (event.type === 'legacyTeleportE') {
+            const outcome=need('legacyTeleportE','record').record({frame,target,viewport,
+              planned:event.input.planned,prepared:event.input.prepared});
+            if(outcome?.effectId!==event.effectId || outcome.drawn!==true)
+              throw new Error(`Legacy teleport ${event.effectId} not drawn`);
           } else if (event.type === 'specialAmmoEffect') {
             const outcome = need('specialAmmoEffect', 'record').record({ frame, target,
               viewport, planned: event.input.planned });
