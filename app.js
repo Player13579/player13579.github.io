@@ -19336,15 +19336,32 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
 
 function startWebGPUMainAppDriverWithDeadline(data, image, timeoutMs = 45000) {
   const startupToken = { cancelled: false };
+  const { generation } = webgpuMainApp;
+  const { roomId, playerId, roomSessionGeneration, screen } = state;
+  const mapId = data?.map?.id;
   webgpuMainApp.startToken = startupToken;
+  const isOwner = () => !startupToken.cancelled &&
+    webgpuMainApp.startToken === startupToken && webgpuMainApp.generation === generation &&
+    screen === 'game' && state.screen === screen && !document.hidden &&
+    state.roomId === roomId && state.playerId === playerId &&
+    state.roomSessionGeneration === roomSessionGeneration && state.data?.map?.id === mapId;
   let timer;
   const deadline = new Promise((_, reject) => {
     timer = window.setTimeout(() => {
+      // An earlier visibility/route cancellation revoked the error deadline.
+      // Keep startPending until its underlying GPU work drains; do not start
+      // a second device request or spend the next foreground attempt's budget.
+      if (!isOwner()) return;
       startupToken.cancelled = true;
       reject(new Error(`WebGPU startup timed out at ${document.body?.dataset?.webgpuMainPending || 'unknown'}`));
     }, timeoutMs);
   });
-  return Promise.race([startWebGPUMainAppDriver(data, image, startupToken), deadline])
+  const work = startWebGPUMainAppDriver(data, image, startupToken)
+    .catch(error => {
+      if (!isOwner()) return null;
+      throw error;
+    });
+  return Promise.race([work, deadline])
     .finally(() => {
       window.clearTimeout(timer);
       if (webgpuMainApp.startToken === startupToken) webgpuMainApp.startToken = null;
@@ -32589,7 +32606,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
