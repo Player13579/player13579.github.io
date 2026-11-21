@@ -215,10 +215,13 @@
       this.inFlight = true;
       try {
         const result = await this.sender(payload);
-        if (result) this.receiver?.(result);
+        if (generation === this.generation && result) this.receiver?.(result);
       } catch {
         if (generation !== this.generation) {
           this.inFlight = false;
+          // A neutral input from the current lease must not wait for another key press.
+          const next = this.pending[0];
+          if (next?.dx === 0 && next?.dy === 0) void this.flush();
           return;
         }
         // Movement payloads describe the complete current direction. If a
