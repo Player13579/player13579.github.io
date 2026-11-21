@@ -1092,6 +1092,14 @@ const AUTHORED_SOPHIA_ASSAULT_SWITCH=Object.freeze({"front":{"assetPath":"assets
 const AUTHORED_SOPHIA_SMG_SWITCH=Object.freeze({"left":{"assetPath":"assets/generated/sophia-smg-switch-left-v906.png","size":[1536,512],"cell":512,"origin":[283.8618624483286,500.97607655502395],"runtimeScale":0.1988595173985087,"registration":{"ground":[0,31],"p2FireReadyExact":true,"runtimePerPhaseTransforms":false}},"right":{"assetPath":"assets/generated/sophia-smg-switch-right-v906.png","size":[1536,512],"cell":512,"origin":[257.50818604953946,487.5023923444976],"runtimeScale":0.2074532735522904,"registration":{"ground":[0,31],"p2FireReadyExact":true,"runtimePerPhaseTransforms":false}}});
 const AUTHORED_SOPHIA_SNIPER_SWITCH=Object.freeze({"front":{"assetPath":"assets/generated/sophia-sniper-switch-front-v907.png","size":[1536,512],"cell":512,"origin":[221.71428571428572,480],"runtimeScale":0.21875,"registration":{"ground":[0,31],"p2FireReadyExact":true,"runtimePerPhaseTransforms":false}},"back":{"assetPath":"assets/generated/sophia-sniper-switch-back-v907.png","size":[1536,512],"cell":512,"origin":[283.42857142857144,480],"runtimeScale":0.21875,"registration":{"ground":[0,31],"p2FireReadyExact":true,"runtimePerPhaseTransforms":false}},"left":{"assetPath":"assets/generated/sophia-sniper-switch-left-v907.png","size":[1536,512],"cell":512,"origin":[310.85714285714283,480],"runtimeScale":0.21875,"registration":{"ground":[0,31],"p2FireReadyExact":true,"runtimePerPhaseTransforms":false}},"right":{"assetPath":"assets/generated/sophia-sniper-switch-right-v907.png","size":[1536,512],"cell":512,"origin":[169.14285714285714,480],"runtimeScale":0.21875,"registration":{"ground":[0,31],"p2FireReadyExact":true,"runtimePerPhaseTransforms":false}}});
 const AUTHORED_PHILIA_TASER_SWITCH=Object.freeze({"front":{"assetPath":"assets/generated/philia-taser-switch-front-20260922.png","size":[1536,512],"cell":512,"origin":[256,480],"runtimeScale":0.21875,"registration":{"atlasCell":[512,512],"ground":[0,31],"perPhaseTransforms":false}},"back":{"assetPath":"assets/generated/philia-taser-switch-back-20260922.png","size":[1536,512],"cell":512,"origin":[256,480],"runtimeScale":0.21875,"registration":{"atlasCell":[512,512],"ground":[0,31],"perPhaseTransforms":false}},"left":{"assetPath":"assets/generated/philia-taser-switch-left-20260922.png","size":[1536,512],"cell":512,"origin":[256,480],"runtimeScale":0.21875,"registration":{"atlasCell":[512,512],"ground":[0,31],"perPhaseTransforms":false}},"right":{"assetPath":"assets/generated/philia-taser-switch-right-20260922.png","size":[1536,512],"cell":512,"origin":[256,480],"runtimeScale":0.21875,"registration":{"atlasCell":[512,512],"ground":[0,31],"perPhaseTransforms":false}}});
+const WEBGPU_LEGACY_HYDRATION_ORIGIN_SPACE = Object.freeze({});
+const WEBGPU_LEGACY_HYDRATION_ORIGINS = new WeakMap();
+const WEBGPU_LEGACY_HYDRATION_COVERAGES = new WeakMap();
+Object.defineProperty(window, 'DvaWebGPULegacyHydrationOriginEvidence', { value:Object.freeze({
+  owns:coverage=>WEBGPU_LEGACY_HYDRATION_COVERAGES.has(coverage),
+  current:(coverage,row)=>WEBGPU_LEGACY_HYDRATION_COVERAGES.get(coverage)?.validateCurrent(row)===true,
+  omission:(coverage,receipt)=>WEBGPU_LEGACY_HYDRATION_COVERAGES.get(coverage)?.validateOmission(receipt)===true
+}), writable:false, configurable:false });
 const state = {
   screen: "title",
   tacticsReturnScreen: "title",
@@ -13545,6 +13553,8 @@ function detectMagicEffects(previous, next) {
         actorClockRoomId: String(next.roomId || "")
       } : {})
     };
+    if (localEffect.type === 'object-mineralWaterBar' && localEffect.objectId === 'v302-cafeteria-hydration-2' &&
+        localEffect.effectKind === 'stamina') recordWebgpuLegacyHydrationOrigin(localEffect, next);
     admitWebGPUECue(localEffect, next, receivedAt);
     const nonCreditSemantic = nonCreditHeadMarkerSemanticKey(localEffect);
     if (nonCreditSemantic) {
@@ -21090,6 +21100,119 @@ function powerCabinetOutsideViewport(spec, passType, camera, zoom, viewport) {
     spec.y - halfHeight > camera.y + viewport.height / zoom;
 }
 
+// detectMagicEffects writes these clock fields only when the source's actor
+// existed at receipt. Do not silently switch that bound source to wall time if
+// its actor disappears; an originally unbound world effect keeps its fallback.
+function webgpuLegacyHydrationClockOwnerCurrent(effect, data = state.data) {
+  if (!effect || typeof effect !== 'object') return false;
+  const hasStart = 'eClockStartedAt' in effect, hasRoom = 'eClockRoomId' in effect;
+  if (!hasStart && !hasRoom) return true;
+  if (!hasStart || !hasRoom || !Number.isFinite(effect.eClockStartedAt) ||
+      typeof effect.eClockRoomId !== 'string' || !effect.eClockRoomId ||
+      effect.eClockRoomId !== String(data?.roomId || '')) return false;
+  return (data?.players || []).some(player =>
+    String(player?.id ?? '') === String(effect?.playerId ?? ''));
+}
+
+// Origin is observed once at actual localEffect birth, never inferred later.
+// Null also seals an unconfirmed birth against later room/session guessing.
+function recordWebgpuLegacyHydrationOrigin(effect, next) {
+  if (!effect || effect.type !== 'object-mineralWaterBar' ||
+      effect.objectId !== 'v302-cafeteria-hydration-2' || effect.effectKind !== 'stamina') return null;
+  if (WEBGPU_LEGACY_HYDRATION_ORIGINS.has(effect)) return WEBGPU_LEGACY_HYDRATION_ORIGINS.get(effect);
+  WEBGPU_LEGACY_HYDRATION_ORIGINS.set(effect, null);
+  const roomId = next?.roomId, receiverId = String(next?.selfId || next?.self?.id || '');
+  if (typeof roomId !== 'string' || !roomId || roomId !== state.roomId ||
+      !receiverId || receiverId !== state.playerId ||
+      !Number.isSafeInteger(state.roomSessionGeneration) || state.roomSessionGeneration < 1) return null;
+  const origin = Object.freeze({ sourceId: effect.id, roomId, receiverId,
+    generation: state.roomSessionGeneration, counterSpace:WEBGPU_LEGACY_HYDRATION_ORIGIN_SPACE });
+  WEBGPU_LEGACY_HYDRATION_ORIGINS.set(effect, origin);
+  return origin;
+}
+
+function currentWebgpuLegacyHydrationOrigin(effect, data = state.data) {
+  const origin = effect && WEBGPU_LEGACY_HYDRATION_ORIGINS.get(effect);
+  if (!origin || origin.counterSpace !== WEBGPU_LEGACY_HYDRATION_ORIGIN_SPACE ||
+      !Number.isSafeInteger(origin.generation) || origin.generation < 1 || !Object.is(origin.sourceId, effect.id) ||
+      origin.roomId !== data?.roomId || origin.roomId !== state.roomId ||
+      origin.receiverId !== String(data?.selfId || data?.self?.id || '') ||
+      origin.receiverId !== state.playerId || origin.generation !== state.roomSessionGeneration) return null;
+  return origin;
+}
+
+// Inline app fragment: strict nonvisual ownership for proven ended local sessions.
+function legacyHydrationSourceFields(effect) {
+  return Object.freeze(Object.fromEntries(['id','type','objectId','effectKind','variant','x','y','radius',
+    'startedAt','duration','playerId','objectCausalId','eClockStartedAt','eClockRoomId']
+    .map(key => [key,effect[key]])));
+}
+function trustedLegacyHydrationDestination(data = state.data) {
+  const roomId = data?.roomId, receiverId = String(data?.selfId || data?.self?.id || '');
+  if (typeof roomId !== 'string' || !roomId || roomId !== state.roomId ||
+      !receiverId || receiverId !== state.playerId ||
+      !Number.isSafeInteger(state.roomSessionGeneration) || state.roomSessionGeneration < 1) return null;
+  return Object.freeze({ roomId, receiverId, generation:state.roomSessionGeneration,
+    counterSpace:WEBGPU_LEGACY_HYDRATION_ORIGIN_SPACE });
+}
+function legacyHydrationDestinationCurrent(destination, data = state.data) {
+  return !!destination && destination.counterSpace === WEBGPU_LEGACY_HYDRATION_ORIGIN_SPACE &&
+    Number.isSafeInteger(destination.generation) && destination.generation >= 1 &&
+    destination.generation === state.roomSessionGeneration &&
+    destination.roomId === data?.roomId && destination.roomId === state.roomId &&
+    destination.receiverId === String(data?.selfId || data?.self?.id || '') && destination.receiverId === state.playerId;
+}
+function legacyHydrationOriginSourceValid(effect, origin) {
+  const validId=value=>(typeof value==='string'&&value.trim()!=='') || typeof value==='number'&&Number.isFinite(value);
+  if (!effect || !origin || !Object.isFrozen(origin) ||
+      origin.counterSpace !== WEBGPU_LEGACY_HYDRATION_ORIGIN_SPACE ||
+      !Number.isSafeInteger(origin.generation) || origin.generation < 1 ||
+      typeof origin.roomId !== 'string' || !origin.roomId || typeof origin.receiverId !== 'string' || !origin.receiverId ||
+      !Object.is(origin.sourceId,effect.id) || !validId(effect.id) || !validId(effect.playerId) ||
+      effect.type !== 'object-mineralWaterBar' || effect.objectId !== 'v302-cafeteria-hydration-2' || effect.effectKind !== 'stamina' ||
+      effect.x !== 1827 || effect.y !== 2661 || effect.radius !== 100 || String(effect.variant||'') !== '' ||
+      !Number.isFinite(effect.startedAt) || !Number.isFinite(effect.duration) || effect.duration <= 0) return false;
+  const start='eClockStartedAt' in effect,room='eClockRoomId' in effect;
+  return !start&&!room || start&&room&&Number.isFinite(effect.eClockStartedAt)&&effect.eClockRoomId===origin.roomId;
+}
+function legacyHydrationOriginDisposition(effect, destination, data = state.data) {
+  const origin=effect&&WEBGPU_LEGACY_HYDRATION_ORIGINS.get(effect);
+  if (!legacyHydrationDestinationCurrent(destination,data) || !legacyHydrationOriginSourceValid(effect,origin)) return null;
+  if (origin.generation < destination.generation) return Object.freeze({kind:'past',origin});
+  if (origin.generation === destination.generation && origin.roomId === destination.roomId && origin.receiverId === destination.receiverId)
+    return Object.freeze({kind:'current',origin});
+  return null;
+}
+function legacyHydrationSourceStillActive(effect) {
+  if (!state.magicEffects.includes(effect)) return false;
+  const now=eEffectNow(effect,state.data,performance.now());
+  return Number.isFinite(now) && now >= effect.startedAt && now-effect.startedAt < effect.duration;
+}
+function makeLegacyHydrationOriginCoverage(destination, currentSources, omissions) {
+  const current=Object.freeze(currentSources.slice()),past=Object.freeze(omissions.slice());
+  const currentSet=new Set(current),pastSet=new Set(past);
+  const fieldsCurrent=row=>row?.sourceFields&&Object.keys(row.sourceFields).every(key=>Object.is(row.effect?.[key],row.sourceFields[key]));
+  const coverage=Object.freeze({destination,currentSources:current,omissions:past});
+  WEBGPU_LEGACY_HYDRATION_COVERAGES.set(coverage,Object.freeze({
+    validateCurrent(row) {
+      return currentSet.has(row) && legacyHydrationDestinationCurrent(destination) &&
+        row.origin === currentWebgpuLegacyHydrationOrigin(row.effect,state.data) &&
+        legacyHydrationOriginSourceValid(row.effect,row.origin) && fieldsCurrent(row) &&
+        webgpuLegacyHydrationClockOwnerCurrent(row.effect,state.data) && legacyHydrationSourceStillActive(row.effect);
+    },
+    validateOmission(receipt) {
+      return pastSet.has(receipt) && receipt.reason==='legacy-hydration-origin-session-ended' &&
+        receipt.nonvisual===true && receipt.destination===destination &&
+        legacyHydrationDestinationCurrent(destination) && fieldsCurrent(receipt) &&
+        receipt.origin===WEBGPU_LEGACY_HYDRATION_ORIGINS.get(receipt.effect) &&
+        legacyHydrationOriginSourceValid(receipt.effect,receipt.origin) &&
+        receipt.origin.generation < destination.generation &&
+        receipt.effectId===String(receipt.effect.id) && legacyHydrationSourceStillActive(receipt.effect);
+    }
+  }));
+  return coverage;
+}
+
 function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera, zoom,
   shapeProviders = {}, markerSelection = null, playerStage = null) {
   if (!data || viewport?.kind !== "main" || !Array.isArray(viewport.worldToLogical) ||
@@ -21109,6 +21232,8 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
   const now = state.frameNow || performance.now();
   const wallNow = now;
   const events = [], unsupported = [], omitted = [], deferredVisible = [];
+  const hydrationCurrentSources = [], hydrationOriginOmissions = [];
+  const hydrationDestination = trustedLegacyHydrationDestination(data);
   const markerCoverage = { visibleRetained: [] };
   const empCoverage = { visibleEmp: [] };
   const specialAmmoCoverage = { visibleSpecialAmmo: [] };
@@ -22562,6 +22687,45 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         input: { effect, planned } });
       continue;
     }
+    // Limited historical compatibility fallback after existing providers.
+    // Authenticate origin before generic suppression; never infer visibility from a point.
+    if (type === 'object-mineralWaterBar' && effect.objectId === 'v302-cafeteria-hydration-2' &&
+        effect.effectKind === 'stamina') {
+      const api = window.DvaWebGPULegacyHydrationE;
+      const disposition = legacyHydrationOriginDisposition(effect, hydrationDestination, data);
+      if (!disposition) {
+        unsupported.push({ index, type, id: effect.id, reason: 'legacy-hydration-origin-unavailable' }); continue;
+      }
+      const origin = disposition.origin, sourceFields = legacyHydrationSourceFields(effect);
+      if (disposition.kind === 'past') {
+        const receipt = Object.freeze({ effectId:String(effect.id), reason:'legacy-hydration-origin-session-ended',
+          nonvisual:true, effect, sourceFields, origin, destination:hydrationDestination });
+        hydrationOriginOmissions.push(receipt); omitted.push(receipt); continue;
+      }
+      if (!webgpuLegacyHydrationClockOwnerCurrent(effect, data)) {
+        unsupported.push({ index, type, id: effect.id, reason: 'legacy-hydration-clock-owner-unavailable' }); continue;
+      }
+      if (now < effect.startedAt) { omitted.push({effectId:effect.id,reason:'not-started'}); continue; }
+      hydrationCurrentSources.push(Object.freeze({effect,origin,sourceFields}));
+      if (activeGain.some(entry=>entry.playerId===effect.playerId && Math.abs(entry.startedAt-effect.startedAt)<=80)) {
+        omitted.push({effectId:effect.id,reason:'owned-or-suppressed-field-visual'});continue;
+      }
+      let planned;
+      try { planned = api?.plan?.({ effect, now, wallNow, camera, zoom, viewport, reducedMotion }); }
+      catch (_) { unsupported.push({ index, type, id: effect.id, reason: 'legacy-hydration-source-invalid' }); continue; }
+      if (!api || !planned) {
+        if (api && now < effect.startedAt) omitted.push({ effectId: effect.id, reason: 'not-started' });
+        else unsupported.push({ index, type, id: effect.id, reason: 'legacy-hydration-provider-unavailable' });
+        continue;
+      }
+      const status = api.imageStatus(state.textures.mapObjectEffectTextures?.stamina);
+      if (status !== 'ready') {
+        unsupported.push({ index, type, id: effect.id, reason: `legacy-hydration-original-image-${status}` }); continue;
+      }
+      events.push({ type: 'legacyHydrationE', effectId: String(effect.id), input: { effect, origin,
+        sourceFields } });
+      continue;
+    }
     if (MARKER_OWNED_EFFECT_TYPES.has(type) || type === "action-smartphone" ||
         type === "gravity-storm" ||
         (type.startsWith("object-") && activeGain.some(entry =>
@@ -22610,7 +22774,9 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
     viewerId: String(data.selfId || ''),
     reducedMotion, sourceEffectIds, events, omitted, deferredVisible,
     markerCoverage, empCoverage, specialAmmoCoverage,
-    markerGeneration: markerSelection?.generation ?? null }, unsupported,
+    markerGeneration: markerSelection?.generation ?? null,
+    legacyHydrationOriginCoverage: hydrationCurrentSources.length || hydrationOriginOmissions.length
+      ? makeLegacyHydrationOriginCoverage(hydrationDestination,hydrationCurrentSources,hydrationOriginOmissions) : null }, unsupported,
     expiredEffectIds, ready: unsupported.length === 0 };
 }
 // WEBGPU_MAIN_APP_LATE_MAGIC_ADAPTER_V1_END
@@ -28010,6 +28176,8 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
       resolvedIds: Array.isArray(effect.resolvedEmpPulseIds)
         ? [...effect.resolvedEmpPulseIds] : effect.resolvedEmpPulseIds };
   });
+  const legacyHydrationSources = late.stage.events.filter(event => event.type === 'legacyHydrationE')
+    .map(event => ({ effect: event.input.effect, fields: event.input.sourceFields, origin: event.input.origin }));
   const legacyTeleportSources = late.stage.events.filter(event => event.type === 'legacyTeleportE')
     .map(event => ({ effect: event.input.effect, fields: event.input.sourceFields }));
   const specialAmmoSources = late.stage.events.filter(event =>
@@ -28108,6 +28276,10 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const candidate = {};
   const assertTailCurrent = () => {
     assertCurrent();
+    const coverage=late.stage.legacyHydrationOriginCoverage, evidence=window.DvaWebGPULegacyHydrationOriginEvidence;
+    if (coverage && (!evidence.owns(coverage) || coverage.currentSources.some(row=>!evidence.current(coverage,row)) ||
+        coverage.omissions.some(receipt=>!evidence.omission(coverage,receipt))))
+      throw Object.assign(new Error('Legacy hydration source origin ownership changed'),{code:'DVA_WEBGPU_STALE_SCENE'});
     const freshConditional = captureWebGPUMainAppConditionalTail(data,
       early.camera, early.zoom, viewport, shapeProviders);
     assertWebGPUAcquisitionCandidateGeometry(candidate, conditional.acquisition);
@@ -28147,6 +28319,13 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
           return !player || !player.alive || player.ejected ||
             rendered?.x !== storageActor.renderedX ||
             rendered?.y !== storageActor.renderedY;
+        }) ||
+        legacyHydrationSources.some(({ effect, fields, origin }) => {
+          if (!state.magicEffects.includes(effect) || Object.keys(fields).some(key => !Object.is(effect[key],fields[key]))) return true;
+          if (currentWebgpuLegacyHydrationOrigin(effect, state.data) !== origin) return true;
+          if (!webgpuLegacyHydrationClockOwnerCurrent(effect, state.data)) return true;
+          const currentNow = eEffectNow(effect, state.data, performance.now());
+          return !Number.isFinite(currentNow) || currentNow < effect.startedAt || currentNow - effect.startedAt >= effect.duration;
         }) ||
         legacyTeleportSources.some(({ effect, fields }) =>
           !state.magicEffects.includes(effect) || Object.keys(fields).some(key => !Object.is(effect[key],fields[key]))) ||
@@ -28340,6 +28519,7 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
     ...(empVisible.length ? ['empEffect'] : []),
     ...(specialAmmoVisible.length ? ['specialAmmoEffect'] : []),
     ...(candidate.stages.magicEffects.events.some(event => event.type === 'legacyTeleportE') ? ['legacyTeleportE'] : []),
+    ...(candidate.stages.magicEffects.events.some(event => event.type === 'legacyHydrationE') ? ['legacyHydrationE'] : []),
     ...(candidate.stages.acquisition ? ['acquisition'] : []),
     ...(candidate.stages.expandedMap ? ['expandedMap'] : [])]
     .map(name => ({ name, pass: passes[name], device: passes[name].device }));
@@ -28474,6 +28654,48 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
   const routedSpecialAmmo = new Set();
   const magicVisibleActor = playerId => candidate.stages.players.visibleActors?.find(player =>
     String(player?.id ?? '') === String(playerId ?? '')) || null;
+  const assertHydrationCoverageCurrent = () => {
+    const coverage=magicInput.legacyHydrationOriginCoverage, evidence=window.DvaWebGPULegacyHydrationOriginEvidence;
+    if (coverage && (!evidence.owns(coverage) || coverage.currentSources.some(row=>!evidence.current(coverage,row)) ||
+        coverage.omissions.some(receipt=>!evidence.omission(coverage,receipt))))
+      throw Object.assign(new Error('Legacy hydration origin coverage changed during preparation'),{code:'DVA_WEBGPU_STALE_SCENE'});
+  };
+  assertHydrationCoverageCurrent();
+  const preparedHydrationEvents = new Map();
+  for (const event of magicInput.events) {
+    if (event.type === 'legacyHydrationE') {
+      assertPassesCurrent();
+      const input = event.input, effect = input?.effect;
+      if (!effect || !state.magicEffects.includes(effect) || String(effect.id) !== event.effectId ||
+          !input.sourceFields || Object.keys(input.sourceFields).some(key => !Object.is(effect[key],input.sourceFields[key])))
+        throw Object.assign(new Error('Legacy hydration source changed before preparation'), {code:'DVA_WEBGPU_STALE_SCENE'});
+      if (!input.origin || currentWebgpuLegacyHydrationOrigin(effect, state.data) !== input.origin)
+        throw Object.assign(new Error('Legacy hydration source origin changed before preparation'), {code:'DVA_WEBGPU_STALE_SCENE'});
+      if (!webgpuLegacyHydrationClockOwnerCurrent(effect, state.data))
+        throw Object.assign(new Error('Legacy hydration clock owner disappeared before preparation'), {code:'DVA_WEBGPU_STALE_SCENE'});
+      const beforeWallNow = performance.now();
+      let planned = window.DvaWebGPULegacyHydrationE.plan({ effect,
+        now: eEffectNow(effect,state.data,beforeWallNow), wallNow:beforeWallNow, camera:candidate.camera,
+        zoom:candidate.zoom, viewport:candidate.viewport, reducedMotion:magicInput.reducedMotion });
+      if (!planned) throw Object.assign(new Error('Legacy hydration source expired during preparation'), {code:'DVA_WEBGPU_STALE_SCENE'});
+      const generation = state.roomSessionGeneration;
+      const prepared = await passes.legacyHydrationE.prepare({ source:state.textures.mapObjectEffectTextures?.stamina, generation });
+      assertPassesCurrent();
+      if (generation !== state.roomSessionGeneration || !state.magicEffects.includes(effect) ||
+          currentWebgpuLegacyHydrationOrigin(effect, state.data) !== input.origin ||
+          !webgpuLegacyHydrationClockOwnerCurrent(effect, state.data) ||
+          Object.keys(input.sourceFields).some(key => !Object.is(effect[key],input.sourceFields[key])))
+        throw Object.assign(new Error('Legacy hydration source or generation changed during preparation'), {code:'DVA_WEBGPU_STALE_SCENE'});
+      const afterWallNow = performance.now();
+      planned = window.DvaWebGPULegacyHydrationE.plan({ effect, now:eEffectNow(effect,state.data,afterWallNow),
+          wallNow:afterWallNow, camera:candidate.camera, zoom:candidate.zoom, viewport:candidate.viewport,
+          reducedMotion:magicInput.reducedMotion });
+      if (!planned)
+        throw Object.assign(new Error('Legacy hydration source expired after preparation'), {code:'DVA_WEBGPU_STALE_SCENE'});
+      preparedHydrationEvents.set(event, {...event,input:{...input,planned,prepared,materialGeneration:generation}});
+    }
+  }
+  assertHydrationCoverageCurrent();
   const magicEffects = { ...magicInput, events: magicInput.events.map(event => {
     if (event.type === 'gunnerShotE') {
       assertPassesCurrent();
@@ -28538,6 +28760,12 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
           !actor || !actor.alive || actor.ejected || actor.inVent || actor.invisible)
         throw new Error(`WebGPU world candidate action-mana source changed: ${event.effectId}`);
       return event;
+    }
+    if (event.type === 'legacyHydrationE') {
+      assertPassesCurrent();
+      const prepared = preparedHydrationEvents.get(event);
+      if (!prepared) throw new Error('Legacy hydration preparation receipt absent');
+      return prepared;
     }
     if (event.type === 'legacyTeleportE') {
       assertPassesCurrent();

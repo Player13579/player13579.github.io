@@ -55,6 +55,69 @@
     if (typeof result === 'object' && result !== null && typeof result.encode === 'function') return () => result.destroy?.();
     return null;
   }
+  function validateLegacyHydrationOriginCoverage(magic, positions) {
+    const coverage=magic.legacyHydrationOriginCoverage,current=new Map(),past=new Map();
+    const reason='legacy-hydration-origin-session-ended';
+    if (coverage == null) {
+      if (magic.events.some(event=>event.type==='legacyHydrationE') || magic.omitted.some(row=>row.reason===reason))
+        throw new TypeError('Hydration sources require authenticated origin coverage');
+      return {current,past};
+    }
+    const evidence=root.DvaWebGPULegacyHydrationOriginEvidence;
+    const descriptor=Object.getOwnPropertyDescriptor(root,'DvaWebGPULegacyHydrationOriginEvidence');
+    const exact=(value,keys)=>value && typeof value==='object' && !Array.isArray(value) &&
+      Object.keys(value).sort().join('|')===keys.slice().sort().join('|');
+    const fields=['id','type','objectId','effectKind','variant','x','y','radius','startedAt','duration','playerId','objectCausalId','eClockStartedAt','eClockRoomId'];
+    if (!evidence || !Object.isFrozen(evidence) || !descriptor || descriptor.writable!==false || descriptor.configurable!==false ||
+        typeof evidence.owns!=='function' || typeof evidence.current!=='function' || typeof evidence.omission!=='function' || evidence.owns(coverage)!==true ||
+        !exact(coverage,['destination','currentSources','omissions']) || !Object.isFrozen(coverage) ||
+        !Array.isArray(coverage.currentSources) || !Object.isFrozen(coverage.currentSources) ||
+        !Array.isArray(coverage.omissions) || !Object.isFrozen(coverage.omissions))
+      throw new TypeError('Hydration origin coverage is not an authenticated app receipt');
+    const destination=coverage.destination;
+    if (!exact(destination,['roomId','receiverId','generation','counterSpace']) || !Object.isFrozen(destination) ||
+        typeof destination.roomId!=='string' || !destination.roomId || destination.roomId!==magic.roomId ||
+        typeof destination.receiverId!=='string' || !destination.receiverId || destination.receiverId!==magic.viewerId ||
+        !Number.isSafeInteger(destination.generation) || destination.generation<1 || destination.generation!==magic.markerGeneration ||
+        !destination.counterSpace || !Object.isFrozen(destination.counterSpace))
+      throw new TypeError('Hydration origin destination differs from current stage owner');
+    const validRow=(row,omission)=>{
+      const effect=row?.effect,origin=row?.origin,id=String(effect?.id??'');
+      return Object.isFrozen(row) && positions.has(id) && effect?.type==='object-mineralWaterBar' &&
+        effect.objectId==='v302-cafeteria-hydration-2' && effect.effectKind==='stamina' &&
+        exact(row.sourceFields,fields) && Object.isFrozen(row.sourceFields) &&
+        Object.keys(row.sourceFields).every(key=>Object.is(effect[key],row.sourceFields[key])) &&
+        exact(origin,['sourceId','roomId','receiverId','generation','counterSpace']) && Object.isFrozen(origin) &&
+        Object.is(origin.sourceId,effect.id) && origin.counterSpace===destination.counterSpace &&
+        Number.isSafeInteger(origin.generation) && origin.generation>=1 &&
+        typeof origin.roomId==='string' && !!origin.roomId && typeof origin.receiverId==='string' && !!origin.receiverId &&
+        (omission ? origin.generation<destination.generation : origin.generation===destination.generation &&
+          origin.roomId===destination.roomId && origin.receiverId===destination.receiverId);
+    };
+    for (const row of coverage.currentSources) {
+      const id=String(row?.effect?.id??'');
+      if (!exact(row,['effect','origin','sourceFields']) || !validRow(row,false) || current.has(id) || evidence.current(coverage,row)!==true)
+        throw new TypeError(`Invalid current hydration source coverage: ${id}`);
+      current.set(id,row);
+    }
+    for (const receipt of coverage.omissions) {
+      const id=String(receipt?.effectId??'');
+      if (!exact(receipt,['effectId','reason','nonvisual','effect','sourceFields','origin','destination']) ||
+          !validRow(receipt,true) || id!==String(receipt.effect.id) || receipt.reason!==reason || receipt.nonvisual!==true ||
+          receipt.destination!==destination || current.has(id) || past.has(id) || evidence.omission(coverage,receipt)!==true ||
+          magic.omitted.filter(row=>row===receipt).length!==1)
+        throw new TypeError(`Invalid ended-session hydration omission: ${id}`);
+      past.set(id,receipt);
+    }
+    for (const [id,row] of current) {
+      const event=magic.events.find(item=>String(item.effectId)===id),omission=magic.omitted.find(item=>String(item.effectId)===id);
+      if (event ? event.type!=='legacyHydrationE' || event.input?.effect!==row.effect || event.input.origin!==row.origin ||
+          event.input.sourceFields!==row.sourceFields : omission?.reason!=='owned-or-suppressed-field-visual')
+        throw new TypeError(`Current hydration source has no exact event or established marker owner: ${id}`);
+    }
+    return {current,past};
+  }
+
   function create({ renderer, passes = {} } = {}) {
     if (!renderer?.device || typeof renderer.beginFrame !== 'function')
       throw new TypeError('Main scene requires the active shared WebGPU renderer');
@@ -123,6 +186,7 @@
       });
       if (new Set(ids).size !== ids.length) throw new Error('Duplicate magic source effect ID');
       const positions = new Map(ids.map((id, index) => [id, index]));
+      const hydrationOriginOwnership = validateLegacyHydrationOriginCoverage(magic,positions);
       const retained = new Map();
       for (const item of markerCoverage.visibleRetained) {
         const id = String(item?.effectId ?? '');
@@ -172,6 +236,12 @@
       for (const omission of magic.omitted) {
         const id = String(omission?.effectId ?? '');
         if (!positions.has(id) || owned.has(id)) throw new Error(`Duplicate or unknown magic omission: ${id}`);
+        if (omission.reason === 'legacy-hydration-origin-session-ended') {
+          if (hydrationOriginOwnership.past.get(id)!==omission)
+            throw new TypeError(`Hydration omission has no exact authenticated receipt: ${id}`);
+        } else if (String(omission.reason||'').startsWith('legacy-hydration-origin-')) {
+          throw new TypeError(`Unknown hydration origin omission reason: ${id}`);
+        }
         if (typeof omission.reason !== 'string' || !omission.reason.trim() ||
             omission.reason.toLowerCase().includes('unsupported'))
           throw new Error(`Magic omission ${id} needs an intentional nonvisual reason`);
@@ -267,6 +337,21 @@
               !(planned.values instanceof Float32Array) || planned.values.length !== 16 ||
               !planned.values.every(Number.isFinite))
             throw new TypeError(`Magic EMP ${id} needs one exact source-owned plan`);
+        } else if (event?.type === 'legacyHydrationE') {
+          const input=event.input,effect=input?.effect,planned=input?.planned;
+          const claim=hydrationOriginOwnership.current.get(id);
+          if (typeof passes.legacyHydrationE?.record!=='function' || String(effect?.id??'')!==id ||
+              !claim || claim.effect!==effect || claim.origin!==input.origin || claim.sourceFields!==input.sourceFields ||
+              effect.type!=='object-mineralWaterBar' || effect.objectId!=='v302-cafeteria-hydration-2' || effect.effectKind!=='stamina' ||
+              planned?.effectId!==id || planned.type!==effect.type || planned.objectId!==effect.objectId || planned.effectKind!==effect.effectKind ||
+              planned.support?.kind!=='full-main-viewport' || planned.layers?.length!==2 ||
+              !Object.is(input.origin?.sourceId,effect.id) || !Object.isFrozen(input.origin) ||
+              input.origin.roomId!==magic.roomId || input.origin.receiverId!==magic.viewerId ||
+              input.origin.generation!==input.materialGeneration ||
+              input.prepared?.device!==device || input.prepared.generation!==input.materialGeneration ||
+              !Number.isSafeInteger(input.materialGeneration) || !input.sourceFields ||
+              Object.keys(input.sourceFields).some(key=>!Object.is(effect[key],input.sourceFields[key])))
+            throw new TypeError(`Legacy hydration ${id} requires exact source and current shared material`);
         } else if (event?.type === 'legacyTeleportE') {
           const input=event.input,effect=input?.effect,planned=input?.planned;
           if (typeof passes.legacyTeleportE?.record!=='function' || String(effect?.id??'')!==id ||
@@ -646,6 +731,8 @@
       const healSoundVisualReceipts = [];
       const barrierSoundVisualReceipts = [];
       const fireActivationReceipts = [];
+      const nonvisualHydrationOriginReceipts = [];
+      const nonvisualHydrationClipReceipts = [];
       const healEvents = (stages.magicEffects?.events || []).filter(event => event.type === 'healE');
       const healRecorded = new Set();
       passes.healE?.reconcile?.(healEvents.map(event => String(event.effectId)));
@@ -895,6 +982,12 @@
       run('killCamera', input => need('killCamera', 'record').record(common(input)));
       run('hitEffects', input => need('hitEffects', 'record').record({ ...common(input), shapes: need('shapes', 'enqueue') }));
       run('magicEffects', input => {
+        const coverage=input.legacyHydrationOriginCoverage,evidence=root.DvaWebGPULegacyHydrationOriginEvidence;
+        for (const receipt of coverage?.omissions || []) {
+          if (evidence?.owns(coverage)!==true || evidence.omission(coverage,receipt)!==true)
+            throw Object.assign(new Error('Hydration nonvisual source ownership changed before record'),{code:'DVA_WEBGPU_STALE_SCENE'});
+          nonvisualHydrationOriginReceipts.push(receipt);
+        }
         const shapes = need('shapes', 'enqueue');
         const sunbeamEvents = [];
         // drawMagicEffects iterates state.magicEffects in order; a gravity-storm
@@ -969,6 +1062,20 @@
                 visibleAtMs: event.input.visibleAtMs
               }));
             }
+          } else if (event.type === 'legacyHydrationE') {
+            const outcome=need('legacyHydrationE','record').record({frame,target,viewport,
+              planned:event.input.planned,prepared:event.input.prepared});
+            if(outcome?.effectId!==event.effectId || outcome.type!==event.input.effect.type ||
+                outcome.objectId!==event.input.effect.objectId || outcome.effectKind!==event.input.effect.effectKind ||
+                outcome.support?.kind!=='full-main-viewport')
+              throw new Error(`Legacy hydration ${event.effectId} ownership differs`);
+            if(outcome.drawn===true){
+              if(outcome.nonvisual===true)throw new Error('Hydration drawn outcome cannot claim nonvisual ownership');
+            }else if(outcome.drawn===false&&outcome.nonvisual===true&&outcome.reason==='legacy-hydration-outside-current-final-quads'&&
+                need('legacyHydrationE','validOutsideOutcome').validOutsideOutcome(outcome,{frame,target,viewport,
+                  planned:event.input.planned,prepared:event.input.prepared})===true){
+              nonvisualHydrationClipReceipts.push(outcome);
+            }else throw new Error(`Legacy hydration ${event.effectId} lacks exact drawn or outside-quad ownership`);
           } else if (event.type === 'legacyTeleportE') {
             const outcome=need('legacyTeleportE','record').record({frame,target,viewport,
               planned:event.input.planned,prepared:event.input.prepared});
@@ -1289,6 +1396,8 @@
         barrierSoundVisualReceipts: Object.freeze(barrierSoundVisualReceipts.slice()),
         fireActivationReceipts: Object.freeze(fireActivationReceipts.slice()),
         sunbeamHandReceipts: Object.freeze([...sunbeamHands.values()]),
+        nonvisualHydrationOriginReceipts:Object.freeze(nonvisualHydrationOriginReceipts.slice()),
+        nonvisualHydrationClipReceipts:Object.freeze(nonvisualHydrationClipReceipts.slice()),
         sunbeamFrameToken });
     }
     return Object.freeze({ prepare, record, get device() { return device; }, destroy() { destroyed = true; } });
