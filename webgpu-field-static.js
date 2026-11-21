@@ -19,26 +19,28 @@
         edges.push({x:p[0],y:p[1],minimum:Math.min(p[1],q[1]),maximum:Math.max(p[1],q[1]),slope:(q[0]-p[0])/(q[1]-p[1]),winding:q[1]>p[1]?1:-1});
       }
     }
-    const coverage=new Uint16Array(width*height),intersections=[],rowInteriorDiff=new Int32Array(width);
+    const coverage=new Uint16Array(width),alpha=new Uint8Array(width*height),intersections=[],rowInteriorDiff=new Int32Array(width);
     const flushInteriorRow=row=>{
       let interior=0;
       for(let pixel=0;pixel<width;pixel++){
         interior+=rowInteriorDiff[pixel];
-        if(interior)coverage[row+pixel]+=interior;
+        if(interior)coverage[pixel]+=interior;
+        alpha[row+pixel]=Math.round(coverage[pixel]*255/(samples*samples));
+        coverage[pixel]=0;
         rowInteriorDiff[pixel]=0;
       }
     };
-    const addSpan=(row,left,right)=>{
+    const addSpan=(left,right)=>{
       // Pixel centers lie at (i + .5)/8. Clamp before converting to indices.
       let first=Math.max(0,Math.ceil(left*samples-.5));
       const last=Math.min(width*samples,Math.ceil(right*samples-.5));
       if(first>=last)return;
       const firstPixel=Math.floor(first/samples),lastPixel=Math.floor((last-1)/samples);
-      if(firstPixel===lastPixel){coverage[row+firstPixel]+=last-first;return;}
-      coverage[row+firstPixel]+=samples-first%samples;
+      if(firstPixel===lastPixel){coverage[firstPixel]+=last-first;return;}
+      coverage[firstPixel]+=samples-first%samples;
       rowInteriorDiff[firstPixel+1]+=samples;
       rowInteriorDiff[lastPixel]-=samples;
-      coverage[row+lastPixel]+=((last-1)%samples)+1;
+      coverage[lastPixel]+=((last-1)%samples)+1;
     };
     for(let subY=0;subY<height*samples;subY++){
       const y=(subY+.5)/samples,row=Math.floor(subY/samples)*width;
@@ -48,13 +50,11 @@
       intersections.sort((a,b)=>a.x-b.x);
       let winding=0,start=0;
       for(const crossing of intersections){
-        if(winding!==0)addSpan(row,start,crossing.x);
+        if(winding!==0)addSpan(start,crossing.x);
         winding+=crossing.winding;start=crossing.x;
       }
       if((subY+1)%samples===0)flushInteriorRow(row);
     }
-    const alpha=new Uint8Array(width*height);
-    for(let i=0;i<coverage.length;i++)alpha[i]=Math.round(coverage[i]*255/(samples*samples));
     return alpha;
   }
   const shader=/* wgsl */`
