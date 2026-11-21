@@ -55,6 +55,14 @@
     if (typeof result === 'object' && result !== null && typeof result.encode === 'function') return () => result.destroy?.();
     return null;
   }
+  function legacyHydrationSceneTargetMatches(effect) {
+    if (!effect || effect.type!=='object-mineralWaterBar' || effect.effectKind!=='stamina' ||
+        (effect.objectId!=='v302-cafeteria-hydration-2' && effect.objectId!=='v302-atrium-hydration-2')) return false;
+    const cafeteria=effect.objectId==='v302-cafeteria-hydration-2';
+    return effect.x===(cafeteria?1827:2838) && effect.y===(cafeteria?2661:1314) &&
+      effect.radius===100 && Object.prototype.hasOwnProperty.call(effect,'variant') && effect.variant==='';
+  }
+
   function validateLegacyHydrationOriginCoverage(magic, positions) {
     const coverage=magic.legacyHydrationOriginCoverage,current=new Map(),past=new Map();
     const reason='legacy-hydration-origin-session-ended';
@@ -83,8 +91,7 @@
       throw new TypeError('Hydration origin destination differs from current stage owner');
     const validRow=(row,omission)=>{
       const effect=row?.effect,origin=row?.origin,id=String(effect?.id??'');
-      return Object.isFrozen(row) && positions.has(id) && effect?.type==='object-mineralWaterBar' &&
-        effect.objectId==='v302-cafeteria-hydration-2' && effect.effectKind==='stamina' &&
+      return Object.isFrozen(row) && positions.has(id) && legacyHydrationSceneTargetMatches(effect) &&
         exact(row.sourceFields,fields) && Object.isFrozen(row.sourceFields) &&
         Object.keys(row.sourceFields).every(key=>Object.is(effect[key],row.sourceFields[key])) &&
         exact(origin,['sourceId','roomId','receiverId','generation','counterSpace']) && Object.isFrozen(origin) &&
@@ -342,7 +349,7 @@
           const claim=hydrationOriginOwnership.current.get(id);
           if (typeof passes.legacyHydrationE?.record!=='function' || String(effect?.id??'')!==id ||
               !claim || claim.effect!==effect || claim.origin!==input.origin || claim.sourceFields!==input.sourceFields ||
-              effect.type!=='object-mineralWaterBar' || effect.objectId!=='v302-cafeteria-hydration-2' || effect.effectKind!=='stamina' ||
+              !legacyHydrationSceneTargetMatches(effect) ||
               planned?.effectId!==id || planned.type!==effect.type || planned.objectId!==effect.objectId || planned.effectKind!==effect.effectKind ||
               planned.support?.kind!=='full-main-viewport' || planned.layers?.length!==2 ||
               !Object.is(input.origin?.sourceId,effect.id) || !Object.isFrozen(input.origin) ||

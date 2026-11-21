@@ -13553,8 +13553,7 @@ function detectMagicEffects(previous, next) {
         actorClockRoomId: String(next.roomId || "")
       } : {})
     };
-    if (localEffect.type === 'object-mineralWaterBar' && localEffect.objectId === 'v302-cafeteria-hydration-2' &&
-        localEffect.effectKind === 'stamina') recordWebgpuLegacyHydrationOrigin(localEffect, next);
+    if (webgpuLegacyHydrationTargetIdentity(localEffect)) recordWebgpuLegacyHydrationOrigin(localEffect, next);
     admitWebGPUECue(localEffect, next, receivedAt);
     const nonCreditSemantic = nonCreditHeadMarkerSemanticKey(localEffect);
     if (nonCreditSemantic) {
@@ -21103,6 +21102,19 @@ function powerCabinetOutsideViewport(spec, passType, camera, zoom, viewport) {
 // detectMagicEffects writes these clock fields only when the source's actor
 // existed at receipt. Do not silently switch that bound source to wall time if
 // its actor disappears; an originally unbound world effect keeps its fallback.
+// Recognize the two known IDs before interpreting their type or kind. Invalid
+// metadata must reach strict validation before any other provider/suppression.
+function webgpuLegacyHydrationTargetIdentity(effect) {
+  return !!effect &&
+    (effect.objectId === 'v302-cafeteria-hydration-2' || effect.objectId === 'v302-atrium-hydration-2');
+}
+function webgpuLegacyHydrationTargetMatches(effect) {
+  if (!webgpuLegacyHydrationTargetIdentity(effect)) return false;
+  const cafeteria = effect.objectId === 'v302-cafeteria-hydration-2';
+  return effect.type === 'object-mineralWaterBar' && effect.effectKind === 'stamina' && effect.x === (cafeteria ? 1827 : 2838) && effect.y === (cafeteria ? 2661 : 1314) &&
+    effect.radius === 100 && Object.prototype.hasOwnProperty.call(effect, 'variant') && effect.variant === '';
+}
+
 function webgpuLegacyHydrationClockOwnerCurrent(effect, data = state.data) {
   if (!effect || typeof effect !== 'object') return false;
   const hasStart = 'eClockStartedAt' in effect, hasRoom = 'eClockRoomId' in effect;
@@ -21117,10 +21129,10 @@ function webgpuLegacyHydrationClockOwnerCurrent(effect, data = state.data) {
 // Origin is observed once at actual localEffect birth, never inferred later.
 // Null also seals an unconfirmed birth against later room/session guessing.
 function recordWebgpuLegacyHydrationOrigin(effect, next) {
-  if (!effect || effect.type !== 'object-mineralWaterBar' ||
-      effect.objectId !== 'v302-cafeteria-hydration-2' || effect.effectKind !== 'stamina') return null;
+  if (!webgpuLegacyHydrationTargetIdentity(effect)) return null;
   if (WEBGPU_LEGACY_HYDRATION_ORIGINS.has(effect)) return WEBGPU_LEGACY_HYDRATION_ORIGINS.get(effect);
   WEBGPU_LEGACY_HYDRATION_ORIGINS.set(effect, null);
+  if (!webgpuLegacyHydrationTargetMatches(effect)) return null;
   const roomId = next?.roomId, receiverId = String(next?.selfId || next?.self?.id || '');
   if (typeof roomId !== 'string' || !roomId || roomId !== state.roomId ||
       !receiverId || receiverId !== state.playerId ||
@@ -21169,8 +21181,7 @@ function legacyHydrationOriginSourceValid(effect, origin) {
       !Number.isSafeInteger(origin.generation) || origin.generation < 1 ||
       typeof origin.roomId !== 'string' || !origin.roomId || typeof origin.receiverId !== 'string' || !origin.receiverId ||
       !Object.is(origin.sourceId,effect.id) || !validId(effect.id) || !validId(effect.playerId) ||
-      effect.type !== 'object-mineralWaterBar' || effect.objectId !== 'v302-cafeteria-hydration-2' || effect.effectKind !== 'stamina' ||
-      effect.x !== 1827 || effect.y !== 2661 || effect.radius !== 100 || String(effect.variant||'') !== '' ||
+      !webgpuLegacyHydrationTargetMatches(effect) ||
       !Number.isFinite(effect.startedAt) || !Number.isFinite(effect.duration) || effect.duration <= 0) return false;
   const start='eClockStartedAt' in effect,room='eClockRoomId' in effect;
   return !start&&!room || start&&room&&Number.isFinite(effect.eClockStartedAt)&&effect.eClockRoomId===origin.roomId;
@@ -21375,6 +21386,9 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
   for (const [index, effect] of active.entries()) {
     const now = eEffectNow(effect, data, wallNow);
     const type = String(effect.type || "");
+    if (webgpuLegacyHydrationTargetIdentity(effect) && !webgpuLegacyHydrationTargetMatches(effect)) {
+      unsupported.push({ index, type, id: effect.id, reason: 'legacy-hydration-origin-unavailable' }); continue;
+    }
     if (type === 'action-teleport') {
       const api = window.DvaWebGPULegacyTeleportE;
       let planned;
@@ -22689,8 +22703,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
     }
     // Limited historical compatibility fallback after existing providers.
     // Authenticate origin before generic suppression; never infer visibility from a point.
-    if (type === 'object-mineralWaterBar' && effect.objectId === 'v302-cafeteria-hydration-2' &&
-        effect.effectKind === 'stamina') {
+    if (webgpuLegacyHydrationTargetIdentity(effect)) {
       const api = window.DvaWebGPULegacyHydrationE;
       const disposition = legacyHydrationOriginDisposition(effect, hydrationDestination, data);
       if (!disposition) {

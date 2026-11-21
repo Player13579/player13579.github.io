@@ -11,11 +11,13 @@ const SOURCE=Object.freeze({commit:'741b115f673d313f4d554285480b596a3e80d46b',
  path:'assets/generated/object-effect-stamina-v327.png',gitBlob:'780170fe0a936502926f24df997aacc96e400871',
  sha256:'fe1edee70fadc94d16ce67923edcb20542f80507db318b687a54d71b12bd377a',width:1254,height:1254});
 const TARGET=Object.freeze({type:'object-mineralWaterBar',objectId:'v302-cafeteria-hydration-2',effectKind:'stamina',x:1827,y:2661});
+const TARGETS=Object.freeze([TARGET,Object.freeze({type:'object-mineralWaterBar',objectId:'v302-atrium-hydration-2',effectKind:'stamina',x:2838,y:1314})]);
+function targetFor(effect){return effect?TARGETS.find(target=>effect.type===target.type&&effect.objectId===target.objectId&&effect.effectKind===target.effectKind)||null:null;}
 const plans=new WeakSet(),IDs=x=>(typeof x==='string'&&x.trim()!=='')||(typeof x==='number'&&finite(x));
 const ease=x=>1-Math.pow(1-clamp(x),3),noise=x=>{const n=Math.sin(x*12.9898+78.233)*43758.5453;return n-Math.floor(n);};
 const stale=message=>Object.assign(new Error(message),{code:'DVA_WEBGPU_STALE_SCENE'});
 const incomplete=message=>Object.assign(new Error(message),{code:'DVA_WEBGPU_INCOMPLETE_SCENE'});
-function supported(effect){return !!effect&&effect.type===TARGET.type&&effect.objectId===TARGET.objectId&&effect.effectKind===TARGET.effectKind;}
+function supported(effect){return targetFor(effect)!==null;}
 function support(v){if(v?.kind!=='main'||![v.width,v.height].every(x=>finite(x)&&x>0)||![v.pixelWidth,v.pixelHeight].every(x=>Number.isSafeInteger(x)&&x>0))throw new TypeError('Hydration needs the committed MAIN viewport');return Object.freeze({kind:'full-main-viewport',x:0,y:0,width:v.pixelWidth,height:v.pixelHeight});}
 function imageStatus(image){
  if(!image)return 'missing';const src=String(image.currentSrc||image.src||'');
@@ -46,8 +48,8 @@ function scratchSize(view,zoom){
  return Object.freeze({width:axis(dx),height:axis(dy)});
 }
 function plan({effect,now,wallNow=now,camera,zoom,viewport,reducedMotion=false}={}){
- const bounds=support(viewport);
- if(!supported(effect)||!IDs(effect.id)||!IDs(effect.playerId)||String(effect.variant||'')!==''||effect.x!==TARGET.x||effect.y!==TARGET.y||effect.radius!==100||
+ const bounds=support(viewport),target=targetFor(effect);
+ if(!target||!IDs(effect.id)||!IDs(effect.playerId)||!Object.prototype.hasOwnProperty.call(effect,'variant')||effect.variant!==''||effect.x!==target.x||effect.y!==target.y||effect.radius!==100||
   ![effect.startedAt,effect.duration,now,wallNow,camera?.x,camera?.y,zoom].every(finite)||effect.duration<=0||zoom<=0)throw new TypeError('Hydration source invalid');
  const age=now-effect.startedAt;if(age<0||age>=effect.duration)return null;
  const p=age/effect.duration,reveal=ease(p/.28),fade=p<=.7?1:1-(()=>{const t=clamp((p-.7)/.3);return t*t*(3-2*t);})(),
@@ -311,6 +313,6 @@ function create({frameOwner}={}){
  }
  return Object.freeze({device,plan,prepare,record,validOutsideOutcome,outsideStatus,destroy(){if(destroyed)return;destroyed=true;const errors=[];for(const x of [...owned])try{release(x);}catch(e){errors.push(e);}slots.length=0;material=null;scratch=null;pipes=null;if(errors.length)throw new AggregateError(errors,'Hydration cleanup failed');}});
 }
-const api=Object.freeze({SOURCE,TARGET,supported,support,imageStatus,regionFor,scratchSize,plan,finalQuadSupport,create,rawShader,blurShader,composeShader});root.DvaWebGPULegacyHydrationE=api;
+const api=Object.freeze({SOURCE,TARGET,TARGETS,targetFor,supported,support,imageStatus,regionFor,scratchSize,plan,finalQuadSupport,create,rawShader,blurShader,composeShader});root.DvaWebGPULegacyHydrationE=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof globalThis!=='undefined'?globalThis:window);
