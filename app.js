@@ -1131,7 +1131,7 @@ const state = {
   focusResyncing: false,
   focusResyncPromise: null,
   focusResyncSerial: 0,
-  foregroundRecovery: { inFlight: false, queued: false },
+  foregroundRecovery: { inFlight: false, queuedGeneration: null },
   pollInFlight: false,
   pollInFlightGeneration: 0,
   // Every async room response is tied to this client-side ownership generation.
@@ -12027,7 +12027,7 @@ async function resumeRoomAfterBackground() {
 async function recoverRoomInteractionAfterBackground() {
   if (document.hidden || !state.roomId || !state.playerId) return false;
   if (state.foregroundRecovery.inFlight) {
-    state.foregroundRecovery.queued = true;
+    state.foregroundRecovery.queuedGeneration = state.roomSessionGeneration;
     return false;
   }
   state.foregroundRecovery.inFlight = true;
@@ -12046,9 +12046,14 @@ async function recoverRoomInteractionAfterBackground() {
     return Boolean(state.data && !document.hidden);
   } finally {
     state.foregroundRecovery.inFlight = false;
-    if (state.foregroundRecovery.queued && !document.hidden) {
-      state.foregroundRecovery.queued = false;
-      queueMicrotask(() => void recoverRoomInteractionAfterBackground());
+    const queuedGeneration = state.foregroundRecovery.queuedGeneration;
+    state.foregroundRecovery.queuedGeneration = null;
+    if (queuedGeneration === state.roomSessionGeneration && !document.hidden) {
+      queueMicrotask(() => {
+        if (queuedGeneration === state.roomSessionGeneration && !document.hidden) {
+          void recoverRoomInteractionAfterBackground();
+        }
+      });
     }
   }
 }
