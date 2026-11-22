@@ -9167,12 +9167,33 @@ function clearMovementInput({ preserveQueuedStop = false } = {}) {
   state.lastMovementSentSignature = "";
 }
 
+const revokedTabletCategoryClicks = new WeakMap();
+function revokeTabletCategoryGesture() {
+  const gesture = state.tabletGesture;
+  const pointerId = gesture.pointerId;
+  if (pointerId === null) return;
+  const source = gesture.sourceButton;
+  if (source && Number.isInteger(pointerId)) revokedTabletCategoryClicks.set(source, pointerId);
+  window.clearTimeout(gesture.submenuTimer);
+  gesture.submenuTimer = 0;
+  gesture.hoverButton?.classList.remove("gesture-hover");
+  gesture.hoverButton = null;
+  gesture.pointerId = null;
+  gesture.sourceButton = null;
+  source?.classList.remove("gesture-source");
+  els.tabletPanel.classList.remove("gesture-active");
+  try {
+    if (source?.hasPointerCapture?.(pointerId)) source.releasePointerCapture(pointerId);
+  } catch {}
+}
+
 function setKeybindOpen(open, options = {}) {
   const willOpen = Boolean(open);
   state.keybindOpen = willOpen;
   els.keybindOverlay.hidden = !state.keybindOpen;
   els.keybindButton.setAttribute("aria-expanded", String(state.keybindOpen));
   if (state.keybindOpen) {
+    revokeTabletCategoryGesture();
     clearMovementInput();
     cancelActiveRootShortcutHolds();
     cancelActiveAbilityBatchHolds();
@@ -9273,6 +9294,7 @@ function bindTabletControls() {
         return;
       }
       event.preventDefault();
+      if (Number.isInteger(event.pointerId) && revokedTabletCategoryClicks.get(button) === event.pointerId) revokedTabletCategoryClicks.delete(button);
       clearGestureHover();
       state.tabletGesture.pointerId = event.pointerId;
       state.tabletGesture.sourceButton = button;
@@ -9288,7 +9310,11 @@ function bindTabletControls() {
     button.addEventListener("lostpointercapture", (event) => {
       if (state.tabletGesture.pointerId === event.pointerId) finishTabletGesture(event, true);
     });
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      if (event.detail > 0 && Number.isInteger(event.pointerId) && revokedTabletCategoryClicks.get(button) === event.pointerId) {
+        revokedTabletCategoryClicks.delete(button);
+        return;
+      }
       if (state.tabletGesture.suppressClick) {
         state.tabletGesture.suppressClick = false;
         return;
