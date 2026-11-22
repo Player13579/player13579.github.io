@@ -156,6 +156,7 @@ fn field(p:vec2f,b:Beam)->vec4f {
   function synthesize(sampleRate=48000, impactConfirmed=false) {
     if(!Number.isFinite(sampleRate)||sampleRate<8000||sampleRate>192000) throw new RangeError('Unsupported sample rate');
     const pcm=new Float32Array(Math.ceil(DURATION*sampleRate));
+    const starts=[.09,.135,.18,.63,.675,.72];
     let seed=61373,low=0,air=0,phase=0;
     for(let i=0;i<pcm.length;i++){
       const t=i/sampleRate;seed=(Math.imul(seed,1664525)+1013904223)>>>0;const noise=seed/2147483648-1;
@@ -163,7 +164,14 @@ fn field(p:vec2f,b:Beam)->vec4f {
       const gate=Math.min(1,t/.035)**2*Math.max(0,Math.min(1,(DURATION-t)/.16))**2;
       const source=Math.min(1,t/.12)*Math.exp(-Math.max(0,t-1.36)*9);
       let layers=0,contacts=0;
-      for(const start of [.09,.135,.18,.63,.675,.72]){const a=t-start;if(a>=0)layers+=(1-Math.exp(-a*70))*Math.exp(-a*16)*(low*.55+Math.sin(2*Math.PI*92*t)*.11);const h=t-start-.58;if(impactConfirmed&&h>=0)contacts+=(1-Math.exp(-h*90))*Math.exp(-h*12)*(low*.7+Math.sin(2*Math.PI*135*t)*.085);}
+      const layerSignal=t>=starts[0] ? low*.55+Math.sin(2*Math.PI*92*t)*.11 : 0;
+      const contactSignal=impactConfirmed&&t-starts[0]-.58>=0 ? low*.7+Math.sin(2*Math.PI*135*t)*.085 : 0;
+      for(let j=0;j<starts.length;j++){
+        const start=starts[j],a=t-start;
+        if(a>=0)layers+=(1-Math.exp(-a*70))*Math.exp(-a*16)*layerSignal;
+        const h=t-start-.58;
+        if(impactConfirmed&&h>=0)contacts+=(1-Math.exp(-h*90))*Math.exp(-h*12)*contactSignal;
+      }
       const sheen=(Math.sin(phase)*.055+Math.sin(phase*1.505)*.030+Math.sin(phase*2.01)*.022)*source;
       const breath=(air-low)*.21*source;const inhale=(noise-air)*.06*Math.exp(-Math.pow((t-.06)/.06,2));
       pcm[i]=Math.tanh((sheen+breath+inhale+layers+contacts)*gate)*.70;
