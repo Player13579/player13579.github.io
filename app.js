@@ -20628,10 +20628,14 @@ function worldSoundWebGPUScene() {
   return { now, effects: state.worldSoundEffects };
 }
 
-function hitEffectsWebGPUScene() {
-  const now = state.frameNow || performance.now();
-  state.hitEffects = state.hitEffects.filter((effect) => now - effect.startedAt < effect.duration);
-  return { now, effects: state.hitEffects };
+function pruneExpiredWebGPUHitEffects(now) {
+  const effects = state.hitEffects;
+  if (!Array.isArray(effects) || !Number.isFinite(now)) return effects;
+  const expired = effect => effect && Number.isFinite(effect.startedAt) &&
+    Number.isFinite(effect.duration) && now - effect.startedAt >= effect.duration;
+  if (!effects.some(expired)) return effects;
+  state.hitEffects = effects.filter(effect => !expired(effect));
+  return state.hitEffects;
 }
 
 function hazardFieldsWebGPUScene(data) {
@@ -28123,15 +28127,17 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const headEffectSource = state.magicEffects;
   const headEffectOrder = Array.isArray(headEffectSource)
     ? headEffectSource.slice() : null;
-  // These four Canvas world slots surround the ordered late magic event slot.
-  // Hit expiry is snapshotted, never applied to the active Canvas queue here.
-  const hitSource = state.hitEffects;
+  // These four world slots surround the ordered late magic event slot.
+  // Main preparation can run from either RAF or the first-frame retry timer.
+  // Retire only records already invisible at this capture's own frame clock.
+  const hitNow = state.frameNow;
+  const hitSource = pruneExpiredWebGPUHitEffects(hitNow);
   const hitEffectsGaps = !Array.isArray(hitSource)
     ? [{ reason: 'hit-effect-snapshot-unavailable', blocking: true }]
     : hitSource.flatMap((effect, index) => {
       if (effect && Number.isFinite(effect.startedAt) &&
           Number.isFinite(effect.duration) &&
-          state.frameNow - effect.startedAt >= effect.duration) return [];
+          hitNow - effect.startedAt >= effect.duration) return [];
       return effect && [effect.x, effect.y, effect.startedAt,
         effect.duration].every(Number.isFinite) && effect.duration > 0 ? [] :
         [{ index, reason: 'hit-effect-invalid', blocking: true }];
@@ -28139,7 +28145,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const hitEffects = Array.isArray(hitSource) ? hitSource.filter(effect =>
     effect && Number.isFinite(effect.startedAt) &&
     Number.isFinite(effect.duration) &&
-    state.frameNow - effect.startedAt < effect.duration) : [];
+    hitNow - effect.startedAt < effect.duration) : [];
   const common = { camera: early.camera, zoom: early.zoom, viewport };
   const killSource = state.killEffects;
   if (!Array.isArray(killSource))
@@ -28257,7 +28263,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const tail = {
     gunnerAim: { scene: gunnerAimWebGPUScene(data), ...common },
     killCamera: { scene: killCameraWorldWebGPUScene(data), ...common },
-    hitEffects: { scene: { now: state.frameNow, effects: hitEffects }, ...common },
+    hitEffects: { scene: { now: hitNow, effects: hitEffects }, ...common },
     magicEffects: late.stage,
     attackTargets: { scene: { selectedTarget:
       selectedAttackTargetWebGPUScene(data) || null }, ...common },
@@ -28427,8 +28433,6 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   };
   return Object.assign(candidate, { viewport, camera: early.camera, zoom: early.zoom, stages,
     early, players, headMarkers, late, conditional, hitEffectsGaps, magicGaps,
-    expiredHitEffects: Array.isArray(hitSource) ? hitSource.filter(effect =>
-      !hitEffects.includes(effect)) : [],
     markerPointerGap,
     markerPointer: { held: markerPointerHeld, point: markerPoint,
       sample: markerPointerSample, explanation: marker, now: markerNow },
