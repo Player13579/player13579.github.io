@@ -9379,6 +9379,7 @@ function bindTabletControls() {
     if (event.pointerType === "mouse" && event.button !== 0) return;
     event.preventDefault();
     event.stopPropagation();
+    if (state.tabletStick.pointerId !== null && state.tabletStick.pointerId !== event.pointerId) return;
     if (state.enhanceHold.kind && !state.throwTargeting.active) {
       resetTabletStick();
       sendMovement(true);
