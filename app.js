@@ -19540,6 +19540,10 @@ function pumpWebGPUMainAppDriver() {
   const data = state.data;
   const sample = visibleGameplayViewportSample();
   const image = webgpuMainReadyImage(data);
+  if (!image && state.screen === "game" && !document.hidden) {
+    activateRequiredMapTexture(data);
+    if (webgpuMainApp.failed) return;
+  }
   if (state.screen === 'game')
     recordWebGPUPreDriverState(!sample ? 'waiting:viewport-sample'
       : !image ? 'waiting:map-image'
@@ -32235,15 +32239,26 @@ function loadCriticalFacilityTexture(image, source, { box = false } = {}) {
   start();
 }
 
-function loadCriticalMapTexture(image, source) {
+function loadCriticalMapTexture(image, source, activeOwner = null) {
   const existing = criticalMapImageLoads.get(image);
-  if (existing?.source === source && existing.status !== "cancelled") return existing.cancel;
+  const currentGame = owner => owner !== null && requiredMapSnapshotOwned(owner);
+  const reportFailure = () => setWebGPUMainFailure(new Error("Required map image could not be loaded after retries"));
+  const takeover = existing?.source === source && existing.status === "failed" &&
+    existing.activeOwner === null && currentGame(activeOwner);
+  if (existing?.source === source && existing.status !== "cancelled" && !takeover) {
+    if (currentGame(activeOwner)) {
+      if (existing.status === "failed") {
+        if (currentGame(existing.activeOwner)) reportFailure();
+      } else existing.activeOwner = activeOwner;
+    }
+    return existing.cancel;
+  }
   existing?.cancel();
   image.fetchPriority = "high";
   let retries = 0;
   let retryTimer = null;
   let watchdog = null;
-  const load = { source, status: "loading", cancel: null };
+  const load = { source, status: "loading", cancel: null, activeOwner };
   const clearTimer = (timer) => {
     if (timer !== null) window.clearTimeout(timer);
   };
@@ -32283,7 +32298,7 @@ function loadCriticalMapTexture(image, source) {
       load.status = "failed";
       image.removeEventListener("load", onLoad);
       image.removeEventListener("error", onError);
-      setWebGPUMainFailure(new Error("Required map image could not be loaded after retries"));
+      if (currentGame(load.activeOwner)) reportFailure();
       return;
     }
     retries += 1;
@@ -32295,7 +32310,8 @@ function loadCriticalMapTexture(image, source) {
   const start = () => {
     if (load.status !== "loading") return;
     const separator = source.includes("?") ? "&" : "?";
-    image.src = retries ? `${source}${separator}mapRetry=${retries}` : source;
+    image.src = takeover ? `${source}${separator}mapGameRetry=${retries}` :
+      retries ? `${source}${separator}mapRetry=${retries}` : source;
     watchdog = window.setTimeout(() => {
       if (!(image.complete && image.naturalWidth > 0)) retry();
     }, 15000);
@@ -32304,6 +32320,24 @@ function loadCriticalMapTexture(image, source) {
   image.addEventListener("error", onError);
   start();
   return load.cancel;
+}
+
+function requiredMapSnapshotOwned(owner) {
+  return state.screen === "game" && !document.hidden && owner.roomId && owner.playerId &&
+    isCurrentRoomSession(owner.roomId, owner.playerId, owner.generation) &&
+    state.data?.roomId === owner.roomId && state.data?.self?.id === owner.playerId &&
+    state.data?.map?.id === owner.mapId;
+}
+
+function activateRequiredMapTexture(data) {
+  const mapId = data?.map?.id;
+  if (typeof mapId !== "string" || !mapId || data !== state.data) return;
+  const owner = { mapId, roomId: state.roomId, playerId: state.playerId, generation: state.roomSessionGeneration };
+  if (!requiredMapSnapshotOwned(owner)) return;
+  const textures = state.textures;
+  const image = textures?.fullMapComposites?.[mapId];
+  const source = (textures?.pendingSources || []).find(([entry]) => entry === image)?.[1];
+  if (image && source) loadCriticalMapTexture(image, source, owner);
 }
 
 let selectedMapPreload = null;
