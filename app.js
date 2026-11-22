@@ -22518,12 +22518,21 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       if (effect.mode === "upload" && effect.targetId === "upload-d") {
         const medicalStation = (data.map?.stations || []).find(station =>
           station?.id === "upload-d");
+        const medicalUploadApi = window.DvaWebGPUMedicalUploadConsoleE;
         let planned = null;
         try {
-          planned = window.DvaWebGPUMedicalUploadConsoleE?.plan?.({
+          planned = medicalUploadApi?.plan?.({
             station: medicalStation, task: null, activeUpload: null,
             completion: effect, camera, zoom, viewport, now, reducedMotion });
         } catch (_) { /* Invalid canonical source remains a readiness blocker. */ }
+        // The planner validates the source even when its authored completion
+        // has ended. A ready-only plan is not a receipt for the still-live event.
+        if (planned?.phase === "ready" && planned.completionId === null &&
+            Number.isFinite(medicalUploadApi?.COMPLETE_MS) && medicalUploadApi.COMPLETE_MS > 0 &&
+            now - effect.startedAt >= Math.min(effect.duration, medicalUploadApi.COMPLETE_MS)) {
+          omitted.push({ effectId: effect.id, reason: "medical-upload-completion-visual-ended" });
+          continue;
+        }
         if (!planned) {
           const outside = x < camera.x - 150 ||
             x > camera.x + viewport.width / zoom + 150 ||
@@ -22535,7 +22544,13 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
             reason: "medical-upload-completion-pass-or-source-invalid" });
           continue;
         }
-        events.push({ type: "medicalUploadConsoleE", effectId: String(effect.id),
+        const effectId = String(effect.id);
+        if (planned.phase !== "complete" || planned.completionId !== effectId) {
+          unsupported.push({ index, type, id: effect.id,
+            reason: "medical-upload-completion-ownership-invalid" });
+          continue;
+        }
+        events.push({ type: "medicalUploadConsoleE", effectId,
           input: { effect, planned } });
         continue;
       }
