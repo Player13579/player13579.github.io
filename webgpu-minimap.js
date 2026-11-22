@@ -172,6 +172,11 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
     });
     let destroyed = false;
     const live = new Set();
+    let spare = null;
+    function retire(slot) {
+      if (!live.delete(slot)) return;
+      slot.buffer.destroy(); slot.uniform.destroy();
+    }
     // The cache is deliberately renderer-local and CPU-only. A minimap scene
     // adapter may create new wrapper/array objects every frame, so key the
     // reusable geometry by its ordered numeric content rather than identity.
@@ -234,32 +239,58 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
       if (!frame?.add || typeof target !== 'string' || !target) throw new TypeError('Shared frame and registered target required');
       const planned = plan(scene, viewport);
       const geometry = verticesForFrame(planned, scene, viewport);
-      const buffer = device.createBuffer({ label: 'DVA minimap vertices', size: geometry.byteLength, usage: 0x20 | 0x08 });
-      const uniform = device.createBuffer({ label: 'DVA minimap viewport', size: 16, usage: 0x40 | 0x08 });
-      device.queue.writeBuffer(buffer, 0, geometry);
-      device.queue.writeBuffer(uniform, 0, new Float32Array([viewport.pixelWidth, viewport.pixelHeight, 0, 0]));
-      const group = device.createBindGroup({ layout: pipeline.getBindGroupLayout(0),
-        entries: [{ binding: 0, resource: { buffer: uniform } }] });
-      live.add(buffer); live.add(uniform);
-      frame.add({ target, label: 'minimap:vectors', encode(pass) {
-        pass.setPipeline(pipeline);
-        pass.setBindGroup(0, group);
-        pass.setVertexBuffer(0, buffer);
-        pass.draw(geometry.length / 6);
-      } });
+      let slot = spare;
+      spare = null;
+      if (slot && slot.size < geometry.byteLength) {
+        retire(slot);
+        slot = null;
+      }
+      if (!slot) {
+        const buffer = device.createBuffer({ label: 'DVA minimap vertices', size: geometry.byteLength, usage: 0x20 | 0x08 });
+        let uniform;
+        try {
+          uniform = device.createBuffer({ label: 'DVA minimap viewport', size: 16, usage: 0x40 | 0x08 });
+          const group = device.createBindGroup({ layout: pipeline.getBindGroupLayout(0),
+            entries: [{ binding: 0, resource: { buffer: uniform } }] });
+          slot = { buffer, uniform, group, size: geometry.byteLength };
+          live.add(slot);
+        } catch (error) {
+          buffer.destroy();
+          uniform?.destroy();
+          throw error;
+        }
+      }
+      const { buffer, uniform, group } = slot;
+      try {
+        device.queue.writeBuffer(buffer, 0, geometry);
+        device.queue.writeBuffer(uniform, 0, new Float32Array([viewport.pixelWidth, viewport.pixelHeight, 0, 0]));
+        frame.add({ target, label: 'minimap:vectors', encode(pass) {
+          pass.setPipeline(pipeline);
+          pass.setBindGroup(0, group);
+          pass.setVertexBuffer(0, buffer);
+          pass.draw(geometry.length / 6);
+        } });
+      } catch (error) {
+        retire(slot);
+        throw error;
+      }
       let released = false;
       return Object.freeze({ release() {
         if (released) return;
         released = true;
-        buffer.destroy(); uniform.destroy();
-        live.delete(buffer); live.delete(uniform);
+        if (destroyed) return;
+        if (!spare) spare = slot;
+        else if (slot.size > spare.size) {
+          retire(spare);
+          spare = slot;
+        } else retire(slot);
       }, vertices: geometry.length / 6 });
     }
     return Object.freeze({ draw, destroy() {
       if (destroyed) return;
       destroyed = true;
-      for (const buffer of live) buffer.destroy();
-      live.clear();
+      for (const slot of live) retire(slot);
+      spare = null;
       staticGeometryCache.clear();
     } });
   }
