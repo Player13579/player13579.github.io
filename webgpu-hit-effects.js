@@ -25,17 +25,40 @@
     return seed;
   }
 
-  function plan({ scene, camera, zoom, viewport } = {}) {
+  function plan({ scene, camera, zoom, viewport, visibility } = {}) {
     if (!scene || !Array.isArray(scene.effects) || !finite(scene.now) ||
         !camera || ![camera.x, camera.y, zoom].every(finite) || zoom <= 0 ||
         !viewport || ![viewport.width, viewport.height].every(value => finite(value) && value > 0)) {
       throw new TypeError('Hit effects require a scene, camera, zoom and logical viewport');
     }
+    // Live shape registry uses the default 4096-command limit. A hit emits
+    // exactly 77 commands; do not let culling mask an exceptional overflow.
+    const canCull = visibility?.allowCull === true && scene.effects.length <= 53 &&
+      viewport.kind === 'main' && scene.now >= 0 && scene.now <= 86400000 &&
+      zoom >= 0.5 && zoom <= 2 &&
+      [viewport.width, viewport.height, viewport.pixelWidth, viewport.pixelHeight]
+        .every(value => Number.isInteger(value) && value >= 1 && value <= 32768) &&
+      Math.abs(camera.x) <= 32768 && Math.abs(camera.y) <= 32768;
     const commands = [];
     for (const effect of scene.effects) {
       if (!effect || ![effect.x, effect.y, effect.startedAt, effect.duration].every(finite) ||
           effect.duration <= 0 || scene.now - effect.startedAt >= effect.duration) continue;
       const progress = clamp((scene.now - effect.startedAt) / effect.duration);
+      // Conservative support of every authored hit quad: travel <= 104.7,
+      // falling drift <= 34, glow radius <= 21.425 world units; rotated
+      // cores/spokes and the outer flash ring are smaller. The shared shader
+      // adds 2 logical units (up to 2*sqrt(2) rotated); keep extra f32 margin.
+      if (canCull && typeof effect.id === 'string' &&
+          Math.abs(effect.x) <= 32768 && Math.abs(effect.y) <= 32768) {
+        const x = (effect.x - camera.x) * zoom;
+        const y = (effect.y - camera.y) * zoom;
+        const extent = 162 * zoom + 6;
+        if (x + extent < 0 || y + extent < 0 ||
+            x - extent > viewport.width || y - extent > viewport.height) {
+          visibility.culled = true;
+          continue;
+        }
+      }
       const seed = seedFor(effect.id);
       for (let index = 0; index < 22; index += 1) {
         const angle = ((seed % 360) + index * 137.5) * Math.PI / 180;
@@ -83,9 +106,12 @@
         !Number.isInteger(viewport?.pixelHeight) || viewport.pixelHeight < 1) {
       throw new TypeError('Hit effects require a shared GPU frame and committed target');
     }
-    const commands = plan({ scene, camera, zoom, viewport });
-    if (!commands.length) return null;
+    const visibility = { allowCull: target === 'main', culled: false };
+    const commands = plan({ scene, camera, zoom, viewport, visibility });
+    if (!commands.length && !visibility.culled) return null;
+    // Keep the same shared primitive flush boundary even when all hits clip.
     frame.stage('world:hit-effects');
+    if (!commands.length) return null;
     return shapes.enqueue(frame, { target, width: viewport.width,
       height: viewport.height, pixelWidth: viewport.pixelWidth,
       pixelHeight: viewport.pixelHeight, label: 'world:hit-effects', commands });
