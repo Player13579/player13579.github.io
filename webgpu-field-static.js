@@ -20,15 +20,17 @@
       }
     }
     const coverage=new Uint16Array(width),alpha=new Uint8Array(width*height),intersections=[],rowInteriorDiff=new Int32Array(width);
+    let dirtyFirst=width,dirtyLast=-1;
     const flushInteriorRow=row=>{
       let interior=0;
-      for(let pixel=0;pixel<width;pixel++){
+      for(let pixel=dirtyFirst;pixel<=dirtyLast;pixel++){
         interior+=rowInteriorDiff[pixel];
         if(interior)coverage[pixel]+=interior;
         alpha[row+pixel]=Math.round(coverage[pixel]*255/(samples*samples));
         coverage[pixel]=0;
         rowInteriorDiff[pixel]=0;
       }
+      dirtyFirst=width;dirtyLast=-1;
     };
     const addSpan=(left,right)=>{
       // Pixel centers lie at (i + .5)/8. Clamp before converting to indices.
@@ -36,6 +38,9 @@
       const last=Math.min(width*samples,Math.ceil(right*samples-.5));
       if(first>=last)return;
       const firstPixel=Math.floor(first/samples),lastPixel=Math.floor((last-1)/samples);
+      if(Number.isFinite(firstPixel)&&Number.isFinite(lastPixel)){
+        dirtyFirst=Math.min(dirtyFirst,firstPixel);dirtyLast=Math.max(dirtyLast,lastPixel);
+      }else{dirtyFirst=0;dirtyLast=width-1;}
       if(firstPixel===lastPixel){coverage[firstPixel]+=last-first;return;}
       coverage[firstPixel]+=samples-first%samples;
       rowInteriorDiff[firstPixel+1]+=samples;

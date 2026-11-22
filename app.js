@@ -27684,7 +27684,14 @@ function buildWebGPUAuthoredPlayerSpriteCommand(sourcePlayer, data, view) {
     if (!moving && movementMode === 'dash') {
       const idleEntry = authoredModeEntry(baseEntry, 'walk');
       const idleImage = authoredModeImage(state.textures.authoredCharacterMotion?.[identity]?.[direction], 'walk');
-      if (!idleEntry || !authoredEntryReady(idleEntry, idleImage)) return null;
+      if (!idleEntry || !authoredEntryReady(idleEntry, idleImage)) {
+        if (idleEntry?.assetPath && idleImage && idleImage.complete === false &&
+            idleImage.getAttribute?.('src') && !webgpuMainApp.visible) {
+          throw Object.assign(new Error('Idle dash is waiting for the authored walk sprite'),
+            { code: 'DVA_WEBGPU_INCOMPLETE_SCENE' });
+        }
+        return null;
+      }
       entry = idleEntry; image = idleImage;
     }
     frame = authoredFrameFor(entry, gaitFrame, moving, movementMode, entry.phaseMapping);
