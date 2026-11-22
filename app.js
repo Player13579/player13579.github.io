@@ -4690,6 +4690,7 @@ async function purchaseVendingItem(button, { bulk = false, enhanceGesture = null
   }
 }
 
+const mapRevokedVendingClicks = new WeakMap();
 function stopVendingHold({ suppressClick = false } = {}) {
   const button = vendingHold.button;
   const pointerId = vendingHold.pointerId;
@@ -4717,6 +4718,7 @@ function stopVendingKeyHold() {
 function startVendingHold(event, button) {
   if (event.pointerType === "mouse" && event.button !== 0) return;
   if (!button) return;
+  if (Number.isInteger(event.pointerId) && mapRevokedVendingClicks.get(button) === event.pointerId) mapRevokedVendingClicks.delete(button);
   stopVendingHold();
   vendingHold.button = button;
   vendingHold.pointerId = event.pointerId;
@@ -8521,6 +8523,12 @@ function bindEvents() {
   vendingProductButtons().forEach((button) => {
     bindPointerDetailTarget(button, () => vendingProductDetail(button));
     button.addEventListener("click", (event) => {
+      if (event.detail > 0 && Number.isInteger(event.pointerId) && mapRevokedVendingClicks.get(button) === event.pointerId) {
+        mapRevokedVendingClicks.delete(button);
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return;
+      }
       if (vendingCategoryActionGate.consume() || performance.now() < vendingHold.suppressClickUntil) {
         event.preventDefault();
         event.stopImmediatePropagation();
@@ -10286,6 +10294,10 @@ function setExpandedMapOpen(open, { focus = true } = {}) {
   clearMovementInput({ preserveQueuedStop: true });
   if (suspendTabletForMap) setTabletOpen(false, { persist: false, focus: false });
   if (!wasOpen && state.expandedMapOpen) {
+    if (vendingHold.button) {
+      if (Number.isInteger(vendingHold.pointerId)) mapRevokedVendingClicks.set(vendingHold.button, vendingHold.pointerId);
+      stopVendingHold();
+    }
     cancelActiveRootShortcutHolds();
     cancelActiveAbilityBatchHolds();
     stopContinuousActionHold();
