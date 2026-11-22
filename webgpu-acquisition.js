@@ -188,6 +188,7 @@ fn ribbonPoint(e: Effect, t: f32, lane: f32, local: f32, span: f32) -> vec2f {
     let device, context, uniform, storage, renderer, timer;
     const frameOwner = options.frameOwner || null;
     const shared = Boolean(frameOwner);
+    const signal = shared ? options.initializationSignal : null;
     let state = 'initializing', notified = false, cancelled = false;
     let initializationStep = 'device';
     const notify = reason => {
@@ -214,6 +215,7 @@ fn ribbonPoint(e: Effect, t: f32, lane: f32, local: f32, span: f32) -> vec2f {
     };
     const onError = event => { event.preventDefault?.(); fail(event.error?.message || 'WebGPU validation failure'); };
     const initialize = async () => {
+      if (cancelled) return null;
       const gpu = shared ? null : (options.gpu || root.navigator?.gpu);
       if (shared) {
         if (frameOwner.state !== 'ready' || typeof frameOwner.own !== 'function' ||
@@ -233,6 +235,7 @@ fn ribbonPoint(e: Effect, t: f32, lane: f32, local: f32, span: f32) -> vec2f {
       const module = device.createShaderModule({ label: 'DVA acquisition WGSL', code: shader });
       if (typeof module.getCompilationInfo === 'function') {
         const info = await module.getCompilationInfo();
+        if (cancelled) return null;
         if (info.messages.some(message => message.type === 'error')) throw new Error('Acquisition WGSL compilation failed');
       }
       if (cancelled) { cleanup(); return null; }
@@ -338,11 +341,17 @@ fn ribbonPoint(e: Effect, t: f32, lane: f32, local: f32, span: f32) -> vec2f {
     const timeout = new Promise(resolve => {
       timer = setTimeout(() => { fail('WebGPU initialization timed out'); resolve(null); }, options.timeoutMs ?? 5000);
     });
+    let abort;
+    const cancellation = signal ? new Promise(resolve => {
+      abort = () => { state = "destroyed"; cancelled = true; cleanup(); resolve(null); };
+      if (signal.aborted) abort();
+      else signal.addEventListener("abort", abort, { once: true });
+    }) : null;
     try { return await Promise.race([initialize().catch(error => {
       fail(`Acquisition ${initializationStep}: ${error?.message || String(error)}`);
       return null;
-    }), timeout]); }
-    finally { clearTimeout(timer); }
+    }), timeout, ...(cancellation ? [cancellation] : [])]); }
+    finally { clearTimeout(timer); if (abort) signal.removeEventListener("abort", abort); }
   }
 
   const api = Object.freeze({ create, packEffects, sizeForFrame, shader, FLOATS_PER_EFFECT, QUADS_PER_EFFECT });

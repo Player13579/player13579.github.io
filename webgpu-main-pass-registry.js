@@ -507,14 +507,17 @@
       }
       const preparedAcquisition = new WeakSet();
       let acquisitionDestroyed = false, acquisition = null;
+      const acquisitionAbort = typeof root.AbortController === "function" ? new root.AbortController() : null;
       // The overlay has no pixels in an ordinary field frame. Compile its
       // pipeline on the shared device without holding the first map/player
       // submission. An active acquisition is admitted only after it is ready.
       progress('acquisition-background');
       const acquisitionPending = Promise.resolve().then(() =>
         modules.acquisition.create(null, { frameOwner: renderer, timeoutMs: 30000,
+          ...(acquisitionAbort ? { initializationSignal: acquisitionAbort.signal } : {}),
           onFailure(reason) { acquisitionFailure = String(reason || ''); } }))
         .then(value => {
+          if (acquisitionDestroyed && acquisitionAbort) { value?.destroy?.(); return; }
           if (!value || value.state !== 'ready' ||
               typeof value.enqueue !== 'function' ||
               typeof value.destroy !== 'function') {
@@ -524,7 +527,7 @@
           }
           if (acquisitionDestroyed) value.destroy();
           else acquisition = value;
-        }, error => { acquisitionFailure = error?.message || String(error); });
+        }, error => { if (!acquisitionDestroyed || !acquisitionAbort) acquisitionFailure = error?.message || String(error); });
       add('acquisition', Object.freeze({ device: renderer.device,
         target: acquisitionHandle ? acquisitionTarget : null,
         whenReady: acquisitionPending,
@@ -579,6 +582,7 @@
         destroy() {
           if (acquisitionDestroyed) return acquisitionPending;
           acquisitionDestroyed = true;
+          acquisitionAbort?.abort();
           let error;
           try { acquisition?.destroy(); } catch (caught) { error = caught; }
           try { acquisitionHandle?.unregister(); } catch (caught) { error ||= caught; }
