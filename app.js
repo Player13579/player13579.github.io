@@ -17599,16 +17599,24 @@ function syncMovementAccControl(data = state.data) {
   const active = self.movementAccActive === true || (
     self.movementAccActive == null && enabled && acceleration + 1e-6 >= threshold && Number(self.movementAcc) > 1.5
   );
-  els.movementAccToggleButton.textContent = active
+  const button = els.movementAccToggleButton;
+  const label = active
     ? `移動ACC ${fixedAcc.toFixed(2)}　固定中 [Q]`
     : enabled
       ? `移動ACC固定　待機（ACC ${threshold.toFixed(0)}以上） [Q]`
       : "移動ACC固定　OFF [Q]";
-  els.movementAccToggleButton.setAttribute("aria-pressed", String(enabled));
-  els.movementAccToggleButton.dataset.state = active ? "active" : enabled ? "waiting" : "off";
-  els.movementAccToggleButton.classList.toggle("active", active);
-  els.movementAccToggleButton.classList.toggle("waiting", enabled && !active);
-  els.movementAccToggleButton.disabled = !["playing", "meeting"].includes(data.phase) || self.ejected;
+  // Keep the ordinary text child across equal polls and movement ACKs. Still
+  // restore the canonical text-only structure if other markup ever replaces it.
+  if (button.textContent !== label || button.childNodes.length !== 1 ||
+      button.firstChild?.nodeType !== 3) button.textContent = label;
+  const pressed = String(enabled);
+  if (button.getAttribute("aria-pressed") !== pressed) button.setAttribute("aria-pressed", pressed);
+  const visualState = active ? "active" : enabled ? "waiting" : "off";
+  if (button.dataset.state !== visualState) button.dataset.state = visualState;
+  button.classList.toggle("active", active);
+  button.classList.toggle("waiting", enabled && !active);
+  const disabled = Boolean(!["playing", "meeting"].includes(data.phase) || self.ejected);
+  if (button.disabled !== disabled) button.disabled = disabled;
 }
 
 async function toggleMovementAcc() {
