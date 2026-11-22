@@ -3193,7 +3193,7 @@ function startWebGPUTitlePrewarm() {
       : null;
     const renderer = await rendererApi.create({ onFailure(error) {
       if (currentEntry()) disposeWebGPUTitlePrewarm(entry, 'failed');
-      if (entry.transferred) setWebGPUMainFailure(error);
+      if (entry.transferred) entry.onTransferredFailure?.(error);
     }, gpuTiming: WEBGPU_FRAME_PANEL_ENABLED,
     onGpuTiming(sample) { window.__DVA_WEBGPU_FRAME_COST__?.recordGpuTiming?.(sample); } });
     if (!currentEntry()) {
@@ -3207,11 +3207,6 @@ function startWebGPUTitlePrewarm() {
     entry.rendererLease = runtimeApi.createRendererLease(renderer);
     markWebGPUTitlePrewarm('device-ready', { generation: entry.generation,
       deviceCount: 1 });
-    Promise.resolve(renderer.device.lost).then(info => {
-      if (currentEntry()) disposeWebGPUTitlePrewarm(entry, 'failed');
-      if (entry.transferred && info?.reason !== 'destroyed')
-        setWebGPUMainFailure(new Error(`Title prewarm device lost: ${info?.message || info?.reason || 'unknown'}`));
-    }).catch(() => {});
     const textOwner = await textApi.create({ device: entry.device,
       manifestRequest: entry.manifestRequest });
     if (!currentEntry() || textOwner?.device !== entry.device) {
@@ -29492,6 +29487,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     try { onFailure(error); } catch (_) { /* Preserve the original failure. */ }
   };
   const requireCurrent = () => {
+    if (incomingPrewarm && retainedRuntimeFailure) throw retainedRuntimeFailure;
     if (typeof isCurrent !== 'function' || !isCurrent())
       throw Object.assign(new Error('Dormant WebGPU main startup became stale before ownership publication'),
         { code: 'DVA_WEBGPU_STARTUP_CANCELLED' });
@@ -29500,6 +29496,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     if (destroyed) return retirement || Promise.resolve();
     destroyed = true;
     lifecycleGeneration += 1;
+    if (incomingPrewarm) incomingPrewarm.onTransferredFailure = null;
     // Registry retirement can await shader/asset promises. Invalidate the
     // submission lease synchronously, before waiting for any GPU cleanup.
     runtime?.suspend();
@@ -29516,10 +29513,18 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
           }
         }
       }
-    })().catch(notify);
+    })().catch(error => { if (!incomingPrewarm || isCurrent()) notify(error); });
     return retirement;
   };
+  let startupPublished = false;
+  const runtimeFailure = error => {
+    if (destroyed) return;
+    retainedRuntimeFailure = error;
+    if (isCurrent()) notify(error);
+    if (!incomingPrewarm || startupPublished) void destroy();
+  };
   if (incomingPrewarm) {
+    incomingPrewarm.onTransferredFailure = runtimeFailure;
     // The driver now owns every object, including an unconsumed lease if its
     // first await fails. Clearing the title references is one synchronous
     // ownership transfer before runtime construction begins.
@@ -29541,12 +29546,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       retryDiagnostics: WEBGPU_MAIN_VERIFY_ROUTE,
       ...(rendererLease ? { rendererLease, expectedDevice } : {}),
       ...(!rendererLease && rendererApi ? { rendererApi } : {}),
-      onFailure(error) {
-        if (destroyed) return;
-        retainedRuntimeFailure = error;
-        if (isCurrent()) notify(error);
-        void destroy();
-      } });
+      onFailure: runtimeFailure });
     requireCurrent();
     if (runtime.state !== 'ready' || typeof runtime.requestFrame !== 'function' ||
         !runtime.renderer?.device ||
@@ -29635,6 +29635,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     if (cancelled) return null;
     throw error;
   }
+  startupPublished = true;
   return Object.freeze({
     get state() { return destroyed ? 'destroyed' : runtime.state; },
     get retainedRuntimeFailure() { return retainedRuntimeFailure; },
