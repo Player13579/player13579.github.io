@@ -11089,7 +11089,9 @@ async function startMatchmaking(options = {}) {
     // runtime-readiness boundary as every deterministic verification route.
     // Starting the room while a Worker owner is still unresolved can leave a
     // previous poll holding the only state-delivery slot until a later action.
-    if (!(await state.offlineClient.start()) || serial !== state.matchmakingSerial) {
+    const offlineReady = await state.offlineClient.start();
+    if (serial !== state.matchmakingSerial) return;
+    if (!offlineReady) {
       showToast("オフライン対戦を開始できませんでした。もう一度お試しください。");
       return;
     }
