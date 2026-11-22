@@ -240,10 +240,8 @@ fn field(p:vec2f,b:Beam)->vec4f {
     throw new TypeError('Sunbeam v3 audio requires shared context, destination, consumed IDs and four gates');
    const main=context.createBuffer(1,Math.ceil(DURATION*context.sampleRate),context.sampleRate);
    main.copyToChannel(module.synthesize(context.sampleRate,false),0);
-   const impact=context.createBuffer(1,Math.ceil(DURATION*context.sampleRate),context.sampleRate);
-   impact.copyToChannel(module.synthesize(context.sampleRate,true),0);
    stopExternal();sound?.stopAll?.();await sound?.dispose?.();sound=null;
-   currentAudio={context,destination,consumedIds,gates,volume};audioBuffers={main,impact};return true;
+   currentAudio={context,destination,consumedIds,gates,volume};audioBuffers={main};return true;
   }
   function refreshAudioGates(){for(const [id,item] of activeAudio)if(!gatesAllow(item.meta))stopExternal(id);}
   function stopAudio(){sound?.stopAll?.();stopExternal();}
