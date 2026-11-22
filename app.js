@@ -9150,8 +9150,15 @@ function setSlowWalkHeld(active) {
   syncMovementInputImmediately();
 }
 
-function clearMovementInput() {
+function clearMovementInput({ preserveQueuedStop = false } = {}) {
   const shouldSendStop = state.movementActive;
+  const queue = state.movementQueue;
+  const last = preserveQueuedStop && !shouldSendStop ? queue?.pending?.at(-1) : null;
+  const queuedStop = last && last.dx === 0 && last.dy === 0 &&
+    last.roomId === state.roomId && last.playerId === state.playerId &&
+    last.movementSession === state.movementSession &&
+    last.movementSessionStartedAt === state.movementSessionStartedAt && last.movementSeq === state.movementStopPendingSeq
+    ? last : null;
   state.movementQueue?.clear?.();
   state.keys.clear();
   clearPointerInput();
@@ -9161,6 +9168,7 @@ function clearMovementInput() {
   els.slowWalkButton.classList.remove("active");
   if (state.gunTriggerHeld) void endGunFire();
   if (shouldSendStop) sendMovement(true);
+  else if (queuedStop) queue.enqueue(queuedStop);
   state.lastMovementSentSignature = "";
 }
 
@@ -10245,9 +10253,9 @@ function setExpandedMapOpen(open, { focus = true } = {}) {
   if (suspendTabletForMap) state.tabletResumeAfterMap = true;
   state.expandedMapOpen = willOpen;
   if (!willOpen) expandedMapGpuRuntime?.suspend();
+  clearMovementInput({ preserveQueuedStop: true });
   if (suspendTabletForMap) setTabletOpen(false, { persist: false, focus: false });
   if (!wasOpen && state.expandedMapOpen) {
-    clearMovementInput();
     cancelActiveRootShortcutHolds();
     cancelActiveAbilityBatchHolds();
     stopContinuousActionHold();
@@ -10275,7 +10283,6 @@ function setExpandedMapOpen(open, { focus = true } = {}) {
   els.mapActionButton.setAttribute("aria-expanded", String(state.expandedMapOpen));
   els.mapActionButton.textContent = state.expandedMapOpen ? "マップを閉じる" : "マップを開く";
   syncExpandedMapUi();
-  clearMovementInput();
   const restoreKeyboardContext = () => {
     syncKeyboardContext(true);
     if (!state.expandedMapOpen && focus) {
