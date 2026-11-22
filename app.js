@@ -10292,7 +10292,25 @@ function setExpandedMapOpen(open, { focus = true } = {}) {
   els.mapActionButton.setAttribute("aria-expanded", String(state.expandedMapOpen));
   els.mapActionButton.textContent = state.expandedMapOpen ? "マップを閉じる" : "マップを開く";
   syncExpandedMapUi();
+  if (!wasOpen && !willOpen) return;
+  const closeFocusOwner = wasOpen && !willOpen ? {
+    active: document.activeElement, roomId: state.roomId,
+    sessionGeneration: state.roomSessionGeneration, phase: state.data?.phase
+  } : null;
   const restoreKeyboardContext = () => {
+    if (willOpen && !state.expandedMapOpen) return;
+    if (closeFocusOwner) {
+      if (document.hidden || state.screen !== "game" || state.expandedMapOpen ||
+          state.roomId !== closeFocusOwner.roomId ||
+          state.roomSessionGeneration !== closeFocusOwner.sessionGeneration ||
+          state.data?.phase !== closeFocusOwner.phase ||
+          state.keybindOpen || state.fieldFeedOpen || state.operatorBranchesOpen ||
+          els.killCameraOverlay.hidden === false) return;
+      const active = document.activeElement;
+      if (active !== closeFocusOwner.active && active !== document.body &&
+          active !== document.documentElement && !els.expandedMapOverlay.contains(active) &&
+          expandedMapFocusTargetAvailable(active)) return;
+    }
     syncKeyboardContext(true);
     if (!state.expandedMapOpen && focus) {
       const target = expandedMapFocusTargetAvailable(focusReturnTarget)
