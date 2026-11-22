@@ -32304,6 +32304,10 @@ function loadCriticalMapTexture(image, source, activeOwner = null) {
     retries += 1;
     retryTimer = window.setTimeout(() => {
       retryTimer = null;
+      if (load.status === "loading" && image.complete && image.naturalWidth > 0) {
+        onLoad();
+        return;
+      }
       start();
     }, [300, 900, 2000][retries - 1]);
   };
