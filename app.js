@@ -9356,7 +9356,7 @@ function bindTabletControls() {
     if (state.tabletStick.pointerId !== event.pointerId) return;
     event.preventDefault();
     event.stopPropagation();
-    const confirmThrow = state.throwTargeting.active;
+    const confirmThrow = state.throwTargeting.active && event.type === "pointerup";
     resetTabletStick();
     if (confirmThrow) {
       void confirmThrowTargeting();
@@ -9367,7 +9367,7 @@ function bindTabletControls() {
   const releaseActiveStick = (event) => {
     if (state.tabletStick.pointerId === null) return;
     if (Number.isFinite(event?.pointerId) && state.tabletStick.pointerId !== event.pointerId) return;
-    const confirmThrow = state.throwTargeting.active && event?.type !== "blur" && event?.type !== "pointercancel";
+    const confirmThrow = state.throwTargeting.active && event?.type === "pointerup";
     resetTabletStick();
     if (confirmThrow) {
       void confirmThrowTargeting();
