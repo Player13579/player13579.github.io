@@ -19517,6 +19517,15 @@ function pumpWebGPUMainAppDriver() {
     recordWebGPUFirstRetryEvent('pump-exit', 'game-screen');
     return;
   }
+  const retainedDriver = webgpuMainApp.driver;
+  if (!document.hidden && !webgpuMainApp.startPending && data?.roomId === state.roomId &&
+      state.roomId && state.playerId && data?.map?.id === webgpuMainApp.mapId &&
+      retainedDriver?.state === 'destroyed' && retainedDriver.retainedRuntimeFailure) {
+    setWebGPUMainPendingDiagnostic('frame:retained-driver-failed');
+    setWebGPUMainFailure(retainedDriver.retainedRuntimeFailure);
+    recordWebGPUFirstRetryEvent('pump-exit', 'retained-driver-failed');
+    return;
+  }
   if (!checkWebGPUMainPresentationDeadline()) { recordWebGPUFirstRetryEvent('pump-exit', 'presentation-deadline'); return; }
   const submitted = webgpuMainApp.submittedFrame;
   if (webgpuMainApp.visible && !webgpuMainSubmittedFrameOwned(submitted, {
@@ -29381,6 +29390,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   const rendererLease = incomingPrewarm?.rendererLease || null;
   const expectedDevice = incomingPrewarm?.device || null;
   let retirement = null;
+  let retainedRuntimeFailure = null;
   let lifecycleGeneration = 0;
   let lastMedicalSfxFrameAt = null;
   let configuredSunbeamAudioContext = null;
@@ -29467,7 +29477,12 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       retryDiagnostics: WEBGPU_MAIN_VERIFY_ROUTE,
       ...(rendererLease ? { rendererLease, expectedDevice } : {}),
       ...(!rendererLease && rendererApi ? { rendererApi } : {}),
-      onFailure(error) { if (isCurrent()) notify(error); void destroy(); } });
+      onFailure(error) {
+        if (destroyed) return;
+        retainedRuntimeFailure = error;
+        if (isCurrent()) notify(error);
+        void destroy();
+      } });
     requireCurrent();
     if (runtime.state !== 'ready' || typeof runtime.requestFrame !== 'function' ||
         !runtime.renderer?.device ||
@@ -29558,6 +29573,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   }
   return Object.freeze({
     get state() { return destroyed ? 'destroyed' : runtime.state; },
+    get retainedRuntimeFailure() { return retainedRuntimeFailure; },
     get device() { return runtime.device; },
     retryTraceSnapshot() { return runtime.retryTraceSnapshot?.() ?? null; },
     async draw({ data = state.data, sample, rect, dpr = 1, camera,
