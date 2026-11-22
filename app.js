@@ -10239,11 +10239,20 @@ function expandedMapFocusTargetAvailable(element) {
   );
 }
 
+let pendingTabletMapRestore = null;
 function setExpandedMapOpen(open, { focus = true } = {}) {
   const wasOpen = state.expandedMapOpen;
   if (open && state.fieldFeedOpen) setFieldFeedOpen(false);
   const willOpen = Boolean(open && state.data);
+  const pendingRestore = pendingTabletMapRestore;
+  const ownedPendingRestore = pendingRestore && pendingRestore.roomId === state.roomId &&
+    pendingRestore.sessionGeneration === state.roomSessionGeneration &&
+    state.screen === "game" && state.data?.phase === "playing";
   const suspendTabletForMap = !wasOpen && willOpen && state.tabletOpen;
+  if (!wasOpen && willOpen) {
+    pendingTabletMapRestore = null;
+    if (ownedPendingRestore) state.tabletResumeAfterMap = true;
+  }
   if (!wasOpen && willOpen && !state.expandedMapReturnFocus) {
     const activeElement = document.activeElement;
     state.expandedMapReturnFocus = activeElement instanceof Element && !els.expandedMapOverlay.contains(activeElement)
@@ -10297,7 +10306,13 @@ function setExpandedMapOpen(open, { focus = true } = {}) {
   if (wasOpen && !state.expandedMapOpen && state.tabletResumeAfterMap) {
     state.tabletResumeAfterMap = false;
     if (state.data?.phase === "playing") {
+      const restoreOwner = { roomId: state.roomId, sessionGeneration: state.roomSessionGeneration };
+      pendingTabletMapRestore = restoreOwner;
       requestAnimationFrame(() => {
+        if (pendingTabletMapRestore !== restoreOwner) return;
+        pendingTabletMapRestore = null;
+        if (state.expandedMapOpen || document.hidden || state.screen !== "game" || state.data?.phase !== "playing" ||
+            state.roomId !== restoreOwner.roomId || state.roomSessionGeneration !== restoreOwner.sessionGeneration) return;
         setTabletOpen(true, { persist: false, focus: false });
         requestAnimationFrame(restoreKeyboardContext);
       });
@@ -11929,6 +11944,7 @@ function cancelTransientGameInputForBackground() {
   state.clairvoyance.requestPending = false;
   state.clairvoyance.requestSerial = (Number(state.clairvoyance.requestSerial) || 0) + 1;
   state.tabletResumeAfterMap = false;
+  pendingTabletMapRestore = null;
   if (state.expandedMapOpen || state.teleportTargeting || state.instantWarpTargeting) setExpandedMapOpen(false, { focus: false });
   if (state.operatorBranchesOpen) setOperatorBranchesOpen(false);
 }
@@ -12143,6 +12159,7 @@ function resetLocalSession() {
   state.movementStopPendingSeq = 0;
   state.tabletOpen = false;
   state.tabletResumeAfterMap = false;
+  pendingTabletMapRestore = null;
   state.operatorBranchesOpen = false;
   resetRootBorrowedAbilitySelection();
   state.selectedShopAbilityId = "";
