@@ -19631,6 +19631,14 @@ function pumpWebGPUMainAppDriver() {
     webgpuStartupTiming.current.firstRetryTiming.completedAtMs = performance.now();
   const drawDriver = webgpuMainApp.driver;
   const drawPlayerId = state.playerId;
+  const priorVisibleFrame = webgpuMainApp.submittedFrame;
+  const alreadyPresentedPlaying = phase === 'playing' && webgpuMainApp.visible &&
+    priorVisibleFrame?.phase === phase && priorVisibleFrame?.roomId === roomId &&
+    priorVisibleFrame?.sessionGeneration === sessionGeneration &&
+    priorVisibleFrame?.snapshotRoomId === snapshotRoomId && priorVisibleFrame?.mapId === mapId &&
+    priorVisibleFrame?.connectionMode === connectionMode;
+  const drawTitleSpare = alreadyPresentedPlaying ? webgpuTitlePrewarm.current : null;
+  const drawTitlePlayIntent = drawTitleSpare?.expectedPlayIntent;
   void drawDriver.draw({ data, sample, rect, camera,
     ...(startupRequestTrace ? { diagnosticCorrelation: {
       appRequestSerial: requestSerial,
@@ -19861,6 +19869,28 @@ function pumpWebGPUMainAppDriver() {
     }
     if (document.documentElement?.dataset)
       document.documentElement.dataset.fieldRenderer = "webgpu";
+    // A retained same-map driver may present this match without ever taking
+    // the new Play's ready title lease. Retire only that unused spare, after
+    // a later playing frame has passed every presentation/receipt gate.
+    if (drawTitleSpare && drawTitleSpare === webgpuTitlePrewarm.current &&
+        drawTitlePlayIntent > 0 &&
+        drawTitlePlayIntent === webgpuTitlePrewarm.playIntent &&
+        drawTitlePlayIntent === drawTitleSpare.expectedPlayIntent &&
+        drawTitleSpare.selectedMapId === mapId &&
+        !drawTitleSpare.transferred && drawTitleSpare.state === 'ready' &&
+        drawTitleSpare.rendererLease?.state === 'ready' &&
+        drawTitleSpare.device && drawTitleSpare.rendererLease.device === drawTitleSpare.device &&
+        webgpuMainApp.driver === drawDriver && drawDriver.state === 'ready' &&
+        drawDriver.device && drawDriver.device !== drawTitleSpare.device &&
+        !webgpuMainApp.failed && generation === webgpuMainApp.generation &&
+        state.screen === 'game' && !document.hidden &&
+        els.webgpuMainCanvas === mainCanvas && mainCanvas.isConnected &&
+        mainCanvas.style.display !== 'none' && mainCanvas.style.opacity === '1' &&
+        isCurrentRoomSession(roomId, drawPlayerId, sessionGeneration) &&
+        state.data?.roomId === snapshotRoomId && state.data?.phase === phase &&
+        state.data?.map?.id === mapId) {
+      disposeWebGPUTitlePrewarm(drawTitleSpare, 'cancelled');
+    }
   }).catch(error => {
     recordWebGPUStartupIncompleteFrame(error?.code === 'DVA_WEBGPU_INCOMPLETE_SCENE'
       ? 'incomplete-scene' : error?.code === 'DVA_WEBGPU_STALE_SCENE'
