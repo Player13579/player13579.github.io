@@ -22519,7 +22519,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         const medicalStation = (data.map?.stations || []).find(station =>
           station?.id === "upload-d");
         const medicalUploadApi = window.DvaWebGPUMedicalUploadConsoleE;
-        let planned = null;
+        let planned;
         try {
           planned = medicalUploadApi?.plan?.({
             station: medicalStation, task: null, activeUpload: null,
@@ -22534,10 +22534,16 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           continue;
         }
         if (!planned) {
-          const outside = x < camera.x - 150 ||
-            x > camera.x + viewport.width / zoom + 150 ||
-            y < camera.y - 150 ||
-            y > camera.y + viewport.height / zoom + 150;
+          // Only a successful canonical plan can prove a valid source is offscreen.
+          const room = medicalUploadApi?.ROOM, zone = medicalUploadApi?.ZONE;
+          const screenX = (room?.x + zone?.x - camera.x) * zoom;
+          const screenY = (room?.y + zone?.y - camera.y) * zoom;
+          const screenW = zone?.width * zoom, screenH = zone?.height * zoom;
+          const outside = planned === null &&
+            [screenX, screenY, screenW, screenH].every(Number.isFinite) &&
+            screenW > 0 && screenH > 0 &&
+            (screenX >= viewport.width || screenY >= viewport.height ||
+              screenX + screenW <= 0 || screenY + screenH <= 0);
           if (outside) omitted.push({ effectId: effect.id,
             reason: "medical-upload-completion-outside-viewport" });
           else unsupported.push({ index, type, id: effect.id,
