@@ -29382,6 +29382,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     finally { if (sunbeamAudioSetup === attempt) sunbeamAudioSetup = null; }
   }
   let notified = false;
+  let published = false;
   const notify = error => {
     if (notified) return;
     notified = true;
@@ -29437,7 +29438,12 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       retryDiagnostics: WEBGPU_MAIN_VERIFY_ROUTE,
       ...(rendererLease ? { rendererLease, expectedDevice } : {}),
       ...(!rendererLease && rendererApi ? { rendererApi } : {}),
-      onFailure(error) { if (isCurrent()) notify(error); void destroy(); } });
+      onFailure(error) {
+        // Startup ownership can expire after a retained driver is suspended.
+        // Its live runtime must still report failures after it is published.
+        if (!destroyed && (published || isCurrent())) notify(error);
+        void destroy();
+      } });
     requireCurrent();
     if (runtime.state !== 'ready' || typeof runtime.requestFrame !== 'function' ||
         !runtime.renderer?.device ||
@@ -29526,6 +29532,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     if (cancelled) return null;
     throw error;
   }
+  published = true;
   return Object.freeze({
     get state() { return destroyed ? 'destroyed' : runtime.state; },
     get device() { return runtime.device; },
