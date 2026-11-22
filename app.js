@@ -7992,7 +7992,10 @@ function bindEvents() {
     void syncOperatorSelectionSettings("map");
   });
   els.matchmakingButton.addEventListener("click", startMatchmaking);
-  els.operatorRetryButton?.addEventListener("click", () => void startMatchmaking({ allowDefaultName: true, source: "selection-retry" }));
+  els.operatorRetryButton?.addEventListener("click", () => {
+    if (operatorSelectionRetryAvailable())
+      void startMatchmaking({ allowDefaultName: true, source: "selection-retry" });
+  });
   els.preparationSettingSummary?.addEventListener("click", (event) => {
     const button = event.target.closest("[data-preparation-setting]");
     if (!button || button.disabled) return;
@@ -11036,7 +11039,7 @@ async function cancelInstantMatchmaking(ticket) {
 }
 
 async function startMatchmaking(options = {}) {
-  if (state.matchmakingInFlight) return;
+  if (state.matchmakingInFlight || operatorSelectionTitleExitPending()) return;
   loadGameplayTextures();
   const name = startPlayerName();
   els.nameInput.value = name;
@@ -11262,10 +11265,11 @@ async function leaveCurrentRoom(options = {}) {
   const playerId = state.playerId;
   const generation = state.roomSessionGeneration;
   const destination = options.destination || (state.data?.soloMission ? "tactics" : "title");
-  const leaveOwner = { roomId, playerId, generation };
   const explicitTitleExit = options.explicitTitleExit === true && destination === "title";
+  const leaveOwner = { roomId, playerId, generation, explicitTitleExit };
   const sourceScreen = state.screen;
   state.leaveRoomInFlight = leaveOwner;
+  if (explicitTitleExit) syncOperatorSelectionRetry();
   els.leaveRoomButton.disabled = true;
   try {
     let result;
@@ -11285,7 +11289,10 @@ async function leaveCurrentRoom(options = {}) {
     if (options.announce !== false) showToast("マッチから退出しました。");
     return true;
   } finally {
-    if (state.leaveRoomInFlight === leaveOwner) state.leaveRoomInFlight = null;
+    if (state.leaveRoomInFlight === leaveOwner) {
+      state.leaveRoomInFlight = null;
+      if (explicitTitleExit) syncOperatorSelectionRetry();
+    }
     els.leaveRoomButton.disabled = false;
   }
 }
@@ -14742,9 +14749,8 @@ function render() {
   els.pregameCanvasSettings.hidden = !preparationEditorOpen;
   els.operatorSettingStatus.hidden = !settingsOverlayVisible;
   renderPreparationSettingSummary(data);
-  els.operatorRetryButton.hidden = !(operatorSelectionVisible && !selecting && !state.matchmakingInFlight);
+  syncOperatorSelectionRetry(data);
   if (!selecting && operatorSelectionVisible) {
-    els.selectTimer.textContent = "接続中";
     els.selectTeamText.hidden = true;
     els.operatorHoldHint.hidden = true;
     els.offlineTeamChoice.hidden = true;
@@ -14800,6 +14806,25 @@ function formatBattleTime(data) {
   const minutes = Math.floor(elapsedSeconds / 60);
   const seconds = elapsedSeconds % 60;
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function operatorSelectionTitleExitPending() {
+  const owner = state.leaveRoomInFlight;
+  return owner?.explicitTitleExit === true &&
+    isCurrentRoomSession(owner.roomId, owner.playerId, owner.generation);
+}
+function operatorSelectionRetryAvailable(data = state.data) {
+  return state.screen === "game" && state.operatorSelectionRouteOpen &&
+    data?.phase !== "selecting" && !state.matchmakingInFlight &&
+    !operatorSelectionTitleExitPending();
+}
+function syncOperatorSelectionRetry(data = state.data) {
+  const available = operatorSelectionRetryAvailable(data);
+  els.operatorRetryButton.hidden = !available;
+  if (state.screen !== "game" || !state.operatorSelectionRouteOpen || data?.phase === "selecting")
+    return;
+  els.selectTimer.textContent = operatorSelectionTitleExitPending() ? "退出中" :
+    !data && available ? "再試行できます" : "接続中";
 }
 
 function renderOperatorSelect(data) {
