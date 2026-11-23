@@ -6342,7 +6342,7 @@ function keyboardContextKey() {
   if (state.screen === "title") return "title";
   if (state.screen === "tactics") return `tactics:${state.tacticsChapterId}`;
   if (state.fieldFeedOpen && state.data?.phase !== "meeting") return "game:feed:chat";
-  if (state.expandedMapOpen) return "game:map";
+  if (state.expandedMapOpen) return (state.teleportTargeting || state.instantWarpTargeting) ? "game:map-target" : "game:map";
   if (state.operatorBranchesOpen) return "game:operator-branches";
   if (state.tabletOpen) return "game:tablet";
   return `game:${state.data?.phase || "join"}`;
@@ -6400,6 +6400,9 @@ function contextKeyboardElements() {
 }
 
 function preferredKeyboardElement(elements) {
+  if (state.screen === "game" && state.expandedMapOpen && !state.keybindOpen && !state.fieldFeedOpen && (state.teleportTargeting || state.instantWarpTargeting)) {
+    return elements.includes(els.expandedMapCanvas) ? els.expandedMapCanvas : null;
+  }
   const phase = state.data?.phase || (state.operatorSelectionRouteOpen ? "selecting" : "join");
   const preferred = state.fieldFeedOpen && phase !== "meeting"
     ? (!els.chatInput.disabled ? els.chatInput : els.chatTab)
@@ -7573,7 +7576,10 @@ function handleExpandedMapDialogKeydown(event) {
     }
     if (event.key === "Enter" || event.code === "Space") {
       event.preventDefault();
-      if (!event.repeat) void activateExpandedMapPoint(state.mapPointer);
+      if (!event.repeat) {
+        if (activeElement === els.mapCloseButton && contextKeyboardElements().includes(activeElement)) activateKeyboardSelection();
+        else void activateExpandedMapPoint(state.mapPointer);
+      }
       return true;
     }
   }
@@ -10527,7 +10533,17 @@ function syncExpandedMapUi() {
   // The targeting state remains visible through the map cursor and title;
   // the former redundant instruction badge is intentionally not presented.
   els.teleportMapStatus.hidden = true;
-  els.expandedMapCanvas.classList.toggle("teleport-targeting", targeting);
+  const canvas = els.expandedMapCanvas;
+  canvas.classList.toggle("teleport-targeting", targeting);
+  if (targeting) {
+    canvas.setAttribute("tabindex", "0");
+    canvas.setAttribute("role", "group");
+    canvas.setAttribute("aria-label", "転移先の選択。矢印キーで移動、EnterまたはSpaceで確定");
+  } else {
+    canvas.removeAttribute("tabindex");
+    canvas.removeAttribute("role");
+    canvas.setAttribute("aria-label", "拡大マップ");
+  }
 }
 
 function beginInstantWarpTargeting() {
