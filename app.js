@@ -29353,6 +29353,7 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
       head.generation !== state.roomSessionGeneration)
     throw new Error('WebGPU world candidate head marker device or generation unavailable');
   const markerViewport = { ...candidate.viewport, generation: head.generation };
+  tailResources.assertMarkerMaterialsCurrent?.();
   const markerMaterials = tailResources.headMarkerMaterials || {};
   const preparedMarkerScenes = new Map();
   for (const [playerId, scene] of head.scenes) {
@@ -29499,6 +29500,7 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
     }
   }
   assertHydrationCoverageCurrent();
+  tailResources.assertMarkerMaterialsCurrent?.();
   const magicEffects = { ...magicInput, events: magicInput.events.map(event => {
     if (event.type === 'gunnerShotE') {
       assertPassesCurrent();
@@ -30034,6 +30036,27 @@ function headMarkerMaterialKeysForWebGPUCandidate(candidate, textures) {
   return [...keys];
 }
 
+function captureWebgpuHeadMarkerDemand(candidate) {
+  const textures = state.textures;
+  const keys = headMarkerMaterialKeysForWebGPUCandidate(candidate, textures);
+  const signature = (sources, key) => {
+    const image = sources?.[key];
+    return [image, image?.complete, image?.naturalWidth, image?.naturalHeight,
+      image?.currentSrc || image?.src || ''];
+  };
+  const signatures = keys.map(key => signature(textures, key));
+  return { textures, keys, assertCurrent() {
+    const currentTextures = state.textures;
+    const currentKeys = headMarkerMaterialKeysForWebGPUCandidate(candidate, currentTextures);
+    if (currentKeys.length !== keys.length ||
+        keys.some((key, index) => key !== currentKeys[index] ||
+          signature(currentTextures, key).some((part, field) =>
+            !Object.is(part, signatures[index][field]))))
+      throw Object.assign(new Error('Head marker material demand changed while preparing the frame'),
+        { code: 'DVA_WEBGPU_STALE_SCENE' });
+  } };
+}
+
 function webgpuKillTextureSources(textures = {}) {
   return {
       filament: textures.worldKillFilamentAtlas,
@@ -30504,11 +30527,13 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
               throw Object.assign(new Error('Dormant WebGPU main capture has visible or mandatory gaps'),
                 { code: 'DVA_WEBGPU_INCOMPLETE_SCENE' });
             }
+            // The material owner uploads synchronously before nameplate and early
+            // world awaits. A decode/replacement during those waits belongs to
+            // the next frame, not to this frame's captured material set.
+            const markerDemand = markerOwner ? captureWebgpuHeadMarkerDemand(captured) : null;
             const currentMarkerMaterials = markerOwner
-              ? markerOwner.prepare({ textures: state.textures,
-                keys: headMarkerMaterialKeysForWebGPUCandidate(
-                  captured, state.textures),
-                generation: captured.headMarkers.generation })
+              ? markerOwner.prepare({ textures: markerDemand.textures,
+                keys: markerDemand.keys, generation: captured.headMarkers.generation })
               : headMarkerMaterials;
             captured.assertCurrent();
             markWebGPUStartupStage('candidatePrepareBegin');
@@ -30534,7 +30559,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
             const candidate = await prepareWebGPUMainAppWorldCandidate(
               captured, registry.passes, textAtlas, {
                 headMarkerDevice: device,
-                headMarkerMaterials: currentMarkerMaterials, killAssets: killUpload?.assets || killAssets,
+                headMarkerMaterials: currentMarkerMaterials,
+                assertMarkerMaterialsCurrent: markerDemand?.assertCurrent,
+                killAssets: killUpload?.assets || killAssets,
                 markerDomFallbackReady, bloomEncoder, residualRevision,
                 ownedBloomDevice: !bloomEncoder && killUpload?.assets?.residual ? device : null,
                 assertOwnedBloomCurrent: !bloomEncoder && killUpload?.assets?.residual ? () => {
@@ -30551,6 +30578,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
               Number.isFinite(candidatePrepareStartedAt)
                 ? Math.max(0, performance.now() - candidatePrepareStartedAt) : null);
             captured.assertCurrent();
+            markerDemand?.assertCurrent();
             killUpload?.assertCurrent(state.textures);
             if (candidate.viewport !== viewport ||
                 candidate.camera.x !== camera.x ||
@@ -30560,11 +30588,12 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
                   sceneApi.REQUIRED.includes(name)))
               throw new Error('Dormant WebGPU main prepared a different world or incomplete frame');
             const prepared = scene.prepare({ stages: candidate.stages, device });
-            return { candidate, killUpload, scene: prepared, release: () => prepared.release() };
+            return { candidate, killUpload, markerDemand, scene: prepared, release: () => prepared.release() };
           },
           record: ({ frame, target: frameTarget, viewport, renderer,
             prepared }) => {
             prepared.candidate.assertCurrent();
+            prepared.markerDemand?.assertCurrent();
             prepared.killUpload?.assertCurrent(state.textures);
             if (frameTarget !== target || renderer !== runtime.renderer ||
                 prepared.candidate.viewport !== viewport)
