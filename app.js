@@ -1114,6 +1114,7 @@ const state = {
   pendingSkinId: "",
   skinRequestSeq: 0,
   keys: new Set(),
+  movementKeyDirections: new Map(),
   pad: new Set(),
   pointerPads: new Map(),
   lastMoveSent: 0,
@@ -8987,14 +8988,16 @@ function bindEvents() {
     if (triggerAlchemySelectionHotkey(event)) return;
     if (triggerVendingHotkey(event)) return;
     if (triggerActionHotkey(event)) return;
-    const key = keyName(event.key);
-    if (key) {
+    const direction = keyName(event.key);
+    if (direction && !event.isComposing) {
       event.preventDefault();
-      state.keys.add(key);
+      const owner = movementKeyOwner(event);
+      if (!state.movementKeyDirections.has(owner)) state.movementKeyDirections.set(owner, direction);
       if (!event.repeat) syncMovementInputImmediately();
     }
   });
   window.addEventListener("keyup", (event) => {
+    const releasedMovementKey = state.movementKeyDirections.delete(movementKeyOwner(event));
     const releasedDash = event.key === "Shift" && !event.shiftKey;
     const releasedSlow = (event.key === "Control" || event.key === "Alt") && !event.ctrlKey && !event.altKey;
     const eventTarget = event.target instanceof Element ? event.target : document.activeElement;
@@ -9010,16 +9013,17 @@ function bindEvents() {
       }
       const hadDash = releasedDash && state.keys.delete("dash");
       const hadSlow = releasedSlow && state.keys.delete("slow");
-      const movementKey = keyName(event.key);
-      const hadMovementKey = movementKey ? state.keys.delete(movementKey) : false;
-      if (hadMovementKey || hadDash || hadSlow) syncMovementInputImmediately();
+      if (releasedMovementKey || hadDash || hadSlow) syncMovementInputImmediately();
       const heldEnhance = state.enhanceHold;
       if (event.code && heldEnhance.inputSource === "keyboard" && heldEnhance.inputCode === event.code) {
         cancelEnhanceAction(heldEnhance.kind);
       }
       return;
     }
-    if (state.keybindOpen || state.fieldFeedOpen || state.expandedMapOpen) return;
+    if (state.keybindOpen || state.fieldFeedOpen || state.expandedMapOpen) {
+      if (releasedMovementKey) syncMovementInputImmediately();
+      return;
+    }
     stopRootShortcutKeyHold(event.code);
     stopAbilityBatchKeyHold(event.code, { dispatch: true });
     stopContinuousActionKeyHold(event.code);
@@ -9037,8 +9041,6 @@ function bindEvents() {
     if (event.code === "KeyF") void finishEnhanceAction("fire");
     if (releasedDash) state.keys.delete("dash");
     if (releasedSlow) state.keys.delete("slow");
-    const key = keyName(event.key);
-    if (key) state.keys.delete(key);
     syncMovementInputImmediately();
   });
   window.addEventListener("blur", () => {
@@ -9260,6 +9262,7 @@ function clearMovementInput({ preserveQueuedStop = false } = {}) {
     ? last : null;
   state.movementQueue?.clear?.();
   state.keys.clear();
+  state.movementKeyDirections.clear();
   clearPointerInput();
   state.dashHeld = false;
   state.slowWalkHeld = false;
@@ -11103,6 +11106,10 @@ function keyName(key) {
   if (value === "a") return "left";
   if (value === "d") return "right";
   return "";
+}
+
+function movementKeyOwner({ code, key }) {
+  return code && code !== "Unidentified" ? code : keyName(key);
 }
 
 function normalizeSkinId(value) {
@@ -18851,7 +18858,7 @@ function getDirection() {
   if (state.tabletOpen && stickLength > 0.01) {
     return { dx: state.tabletStick.dx, dy: state.tabletStick.dy };
   }
-  const active = new Set([...state.keys, ...state.pad]);
+  const active = new Set([...state.movementKeyDirections.values(), ...state.pad]);
   const directions = [...active];
   const left = directions.some((direction) => direction === "left" || direction.includes("left"));
   const right = directions.some((direction) => direction === "right" || direction.includes("right"));
