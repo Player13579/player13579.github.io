@@ -11320,7 +11320,12 @@ async function syncOperatorSelectionSettings(changedField = "") {
 }
 
 function acceptMatchmakingResult(result, name, offline) {
-  if (!result || result.phase === "lobby") return false;
+  // A transport-level success is not a room admission. Keep the retry route
+  // open until the snapshot can identify the room and the same local player.
+  if (!result || !["selecting", "playing", "meeting", "ended"].includes(result.phase) ||
+      typeof result.roomId !== "string" || !result.roomId.trim() ||
+      typeof result.playerId !== "string" || !result.playerId.trim() ||
+      result.selfId !== result.playerId || result.self?.id !== result.playerId) return false;
   state.operatorSelectionRouteOpen = false;
   if (offline) activateOfflineMode();
   else deactivateOfflineMode();
