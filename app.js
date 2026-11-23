@@ -9217,7 +9217,7 @@ function setKeybindOpen(open, options = {}) {
   els.keybindButton.setAttribute("aria-expanded", String(state.keybindOpen));
   if (state.keybindOpen) {
     revokeTabletCategoryGesture();
-    clearMovementInput();
+    clearMovementInput({ preserveQueuedStop: state.expandedMapOpen });
     cancelActiveRootShortcutHolds();
     cancelActiveAbilityBatchHolds();
     stopContinuousActionHold();
