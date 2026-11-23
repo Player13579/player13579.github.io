@@ -21810,6 +21810,21 @@ function makeLegacyHydrationOriginCoverage(destination, currentSources, omission
   return coverage;
 }
 
+function renkiRemoteLightOutsideViewport(planned, viewport, zoom) {
+  const { kind, center, radius, alpha } = planned || {};
+  if (!['normal', 'tenfold'].includes(kind) ||
+      ![center?.x, center?.y, radius, alpha, zoom, viewport?.width,
+        viewport?.height].every(Number.isFinite) ||
+      radius !== (kind === 'normal' ? 120 : 150) * zoom || alpha <= 0 ||
+      zoom <= 0 || viewport.width <= 0 || viewport.height <= 0) return false;
+  // Normal endpoints <= (.64 + .045)r; tenfold endpoints <= (.56 + .12)r.
+  // Each rectangle extends by at most 2.8 world units from its segment.
+  // Keep four logical pixels for conversion to the GPU's packed f32 quads.
+  const extent = .70 * radius + 3 * zoom + 4;
+  return center.x + extent < 0 || center.x - extent > viewport.width ||
+    center.y + extent < 0 || center.y - extent > viewport.height;
+}
+
 function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera, zoom,
   shapeProviders = {}, markerSelection = null, playerStage = null) {
   if (!data || viewport?.kind !== "main" || !Array.isArray(viewport.worldToLogical) ||
@@ -22592,6 +22607,11 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           String(planned[0].id) !== String(effect.id)) {
         unsupported.push({ index, type, id: effect.id,
           reason: 'combat-e-pass-or-source-invalid' });
+        continue;
+      }
+      if (passName === 'renkiE' && String(owner.id) !== String(data.selfId) &&
+          renkiRemoteLightOutsideViewport(planned[0], viewport, zoom)) {
+        omitted.push({ effectId: effect.id, reason: 'renki-e-light-outside-viewport' });
         continue;
       }
       events.push({ type: passName, effectId: effect.id,
