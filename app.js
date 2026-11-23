@@ -28597,7 +28597,14 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, p
       acquisitionPhotonWindow(effect, now) !== null) : [];
   const sourceIds = effects.map(effect => String(effect?.id ?? ''));
   const overlay = providers.acquisitionCanvas || null;
-  const overlayRect = overlay?.getBoundingClientRect?.();
+  // The shared overlay stays measurable while parked, but idle ownership
+  // checks cannot use its rectangle until an acquisition is live.
+  const isIdleOwnedOverlay = !effects.length && acquisitionGpuOverlay.handedOff &&
+    overlay && overlay === acquisitionGpuOverlay.canvas && overlay.isConnected &&
+    overlay.dataset?.acquisitionGpuOverlay === '1' &&
+    overlay.style?.visibility === 'hidden' && overlay.style.display === 'block' &&
+    overlay.style.pointerEvents === 'none' && Number(overlay.style.zIndex) === 71;
+  const overlayRect = isIdleOwnedOverlay ? null : overlay?.getBoundingClientRect?.();
   const canvasRect = mainViewport?.rect;
   const canvasRectReady = Boolean(canvasRect &&
     [canvasRect.left, canvasRect.top, canvasRect.width, canvasRect.height]
