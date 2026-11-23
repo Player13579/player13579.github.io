@@ -9126,7 +9126,7 @@ function bindEvents() {
   els.expandedMapCanvas.addEventListener("pointermove", moveExpandedMapTap);
   els.expandedMapCanvas.addEventListener("pointerup", (event) => finishExpandedMapTap(event));
   els.expandedMapCanvas.addEventListener("pointercancel", (event) => finishExpandedMapTap(event, true));
-  els.expandedMapCanvas.addEventListener("lostpointercapture", (event) => finishExpandedMapTap(event));
+  els.expandedMapCanvas.addEventListener("lostpointercapture", (event) => finishExpandedMapTap(event, true));
   els.expandedMapCanvas.addEventListener("pointerleave", () => {
     if (!state.expandedMapTap) state.mapPointer = null;
   });
