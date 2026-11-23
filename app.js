@@ -10293,9 +10293,13 @@ function shortcutLabelWithoutMana(label) {
 function setTabletShortcutLabel(button, name, detail = "") {
   if (!button) return;
   const shortcutName = shortcutLabelWithoutMana(name);
-  button.textContent = shortcutName;
-  button.setAttribute("aria-label", shortcutName);
-  button.title = detail || name;
+  const title = String(detail || name);
+  const canonicalText = shortcutName === ""
+    ? button.childNodes.length === 0
+    : button.childNodes.length === 1 && button.firstChild?.nodeType === 3;
+  if (!canonicalText || button.textContent !== shortcutName) button.textContent = shortcutName;
+  if (button.getAttribute("aria-label") !== shortcutName) button.setAttribute("aria-label", shortcutName);
+  if (button.getAttribute("title") !== title) button.title = title;
 }
 
 function renderPurchasedAbilityShortcuts(data) {
