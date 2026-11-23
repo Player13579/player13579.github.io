@@ -21915,12 +21915,13 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
     y: (y - camera.y) * zoom });
   const sourceEffectIds = active.map(effect => effect.id);
   const routedMarkerInstances = new Set();
-  const combatActors = (data.players || []).filter(Boolean).map(source => {
+  let combatActors;
+  const getCombatActors = () => combatActors ??= (data.players || []).filter(Boolean).map(source => {
     const player = renderedPlayer(source);
     return { ...player, bodyWorld: { x: player.x, y: player.y } };
   });
   const combatScene = (effect, effectNow) => ({ players: effect.type === 'action-push'
-      ? combatActors.map(player => ({ ...player, bustUntil: 0 })) : combatActors,
+      ? getCombatActors().map(player => ({ ...player, bustUntil: 0 })) : getCombatActors(),
     effects: [effect], events: [effect], self: null, nowMs: effectNow,
     serverNow: estimatedServerNow(data), reducedMotion });
   if (active.some(effect => effect.type !== "fire" &&
@@ -22137,7 +22138,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       continue;
     }
     if (type === 'gunner-passive-aim') {
-      const actor = combatActors.find(player => String(player.id) === String(effect.playerId || ''));
+      const actor = getCombatActors().find(player => String(player.id) === String(effect.playerId || ''));
       const hidden = !actor || !actor.alive || actor.ejected || actor.inVent ||
         (actor.invisible && actor.id !== data.selfId) ||
         (effect.playerId === data.selfId && !data.self?.gunnerAimOwned);
@@ -22171,7 +22172,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           !Number.isFinite(elapsed) || !Number.isFinite(effect.duration) ||
           effect.duration <= 0 || !String(effect.playerId || '') ||
           ![effect.x, effect.y, effect.targetX, effect.targetY].every(Number.isFinite) ||
-          !combatActors.some(player => String(player.id) === String(effect.playerId))) {
+          !getCombatActors().some(player => String(player.id) === String(effect.playerId))) {
         unsupported.push({ index, type, id: effect.id,
           reason: 'fighter-slash-source-or-pass-invalid' });
         continue;
@@ -22244,7 +22245,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
     if (type === 'action-mana') {
       const duration = effect.duration ?? effect.durationMs;
       const lifetime = duration == null || Number(duration) === 0 ? 1200 : Number(duration);
-      const actor = combatActors.find(player => String(player.id) === String(effect.playerId || ''));
+      const actor = getCombatActors().find(player => String(player.id) === String(effect.playerId || ''));
       const variant = String(effect.variant || '');
       const phaseValid = data.phase === 'playing';
       const viewerValid = typeof data.selfId === 'string' && data.selfId.length > 0;
@@ -22266,7 +22267,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           sourceFields: Object.fromEntries(['id', 'type', 'variant', 'playerId', 'x', 'y',
             'startedAt', 'duration', 'durationMs', 'completionKind']
             .map(key => [key, effect[key]])),
-          scene: { effects: [effect], players: combatActors, nowMs: now, reducedMotion },
+          scene: { effects: [effect], players: getCombatActors(), nowMs: now, reducedMotion },
           camera, zoom } });
       continue;
     }
@@ -22519,7 +22520,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       const scene = combatScene(effect, now);
       const ownerId = barrier ? String(effect[barrier.owner] || '') :
         String(effect.playerId || '');
-      const owner = combatActors.find(player => String(player.id) === ownerId);
+      const owner = getCombatActors().find(player => String(player.id) === ownerId);
       if (!owner || owner.alive === false || owner.ejected || owner.inVent ||
           (owner.invisible && owner.id !== data.selfId)) {
         omitted.push({ effectId: effect.id, reason: 'combat-e-owner-not-visible' });
