@@ -4129,15 +4129,42 @@ function setActiveTacticsChapter(id) {
 
 function initializeTacticsNovel() {
   const video=els.tacticsNovelVideo;if(!video)return;video.autoplay=false;video.loop=false;video.defaultMuted=true;video.muted=true;video.volume=0;
-  els.tacticsNovelPlay?.addEventListener("click",()=>{if(!video.paused&&!video.ended){video.pause();return;}playTacticsNovelVideo();});
+  els.tacticsNovelPlay?.addEventListener("click",()=>{if(!video.paused&&!video.ended){pauseTacticsNovelPlayback(video);return;}playTacticsNovelVideo();});
   els.tacticsNovelReplay?.addEventListener("click",()=>{video.currentTime=0;playTacticsNovelVideo();});
   video.addEventListener("play",()=>{video.dataset.explicitPlay="true";keepTacticsNovelVideoSilent();syncTacticsNovelVideoControl();});video.addEventListener("pause",()=>syncTacticsNovelVideoControl());video.addEventListener("ended",()=>{video.currentTime=0;syncTacticsNovelVideoControl();});video.addEventListener("volumechange",()=>keepTacticsNovelVideoSilent());
   window.matchMedia?.(REDUCED_MOTION_QUERY)?.addEventListener?.("change",event=>{if(event.matches&&!video.paused&&!video.ended)pauseAndResetTacticsNovelVideo("動きを減らす設定に切り替わったため一度停止しました。再生ボタンから開始できます。");else syncTacticsNovelVideo();});syncTacticsNovelVideo();window.addEventListener("resize",()=>syncTacticsNovelScrollRegion({remapActive:true}),{passive:true});
 }
 function syncTacticsNovelVideoControl(message="") { const video=els.tacticsNovelVideo,playing=Boolean(video&&!video.paused&&!video.ended);if(els.tacticsNovelPlay){els.tacticsNovelPlay.textContent=playing?"一時停止":"動画を再生";els.tacticsNovelPlay.setAttribute("aria-pressed",String(playing));}if(els.tacticsNovelVideoStatus)els.tacticsNovelVideoStatus.textContent=message; }
 function keepTacticsNovelVideoSilent() { const video=els.tacticsNovelVideo;if(!video)return;if(!video.muted)video.muted=true;if(video.volume!==0)video.volume=0;if(typeof IS_VERIFICATION_MODE!=="undefined"&&IS_VERIFICATION_MODE)video.dataset.verifyMuted="true"; }
-function playTacticsNovelVideo() { const video=els.tacticsNovelVideo;if(!video)return;keepTacticsNovelVideoSilent();video.dataset.explicitPlay="true";const playback=video.play();if(playback?.catch)playback.catch(()=>syncTacticsNovelVideoControl("動画を読み込めませんでした。再生でもう一度試せます。")); }
-function pauseAndResetTacticsNovelVideo(message="") { const video=els.tacticsNovelVideo;if(!video)return;video.pause();try{video.currentTime=0;}catch{}delete video.dataset.explicitPlay;syncTacticsNovelVideoControl(message); }
+let tacticsNovelPlayback = null;
+
+function playTacticsNovelVideo() {
+  const video = els.tacticsNovelVideo;
+  if (!video) return;
+  keepTacticsNovelVideoSilent();
+  video.dataset.explicitPlay = "true";
+  const playback = video.play();
+  if (!playback?.then) return;
+
+  const attempt = {};
+  tacticsNovelPlayback = attempt;
+  playback.then(
+    () => {
+      if (tacticsNovelPlayback === attempt) tacticsNovelPlayback = null;
+    },
+    () => {
+      if (tacticsNovelPlayback !== attempt) return;
+      tacticsNovelPlayback = null;
+      syncTacticsNovelVideoControl("動画を読み込めませんでした。再生でもう一度試せます。");
+    }
+  );
+}
+
+function pauseTacticsNovelPlayback(video) {
+  tacticsNovelPlayback = null;
+  video.pause();
+}
+function pauseAndResetTacticsNovelVideo(message="") { const video=els.tacticsNovelVideo;if(!video)return;pauseTacticsNovelPlayback(video);try{video.currentTime=0;}catch{}delete video.dataset.explicitPlay;syncTacticsNovelVideoControl(message); }
 function syncTacticsNovelVideo() { const video=els.tacticsNovelVideo;if(!video)return;const active=!document.hidden&&state.screen==="tactics"&&state.tacticsChapterId==="tactics-novel"&&!els.tacticsNovelStage?.hidden;keepTacticsNovelVideoSilent();if(!active)pauseAndResetTacticsNovelVideo();else syncTacticsNovelVideoControl(prefersReducedMotion()?"動きを減らす設定中です。動画は再生ボタンから開始できます。":""); }
 
 function syncTacticsChapterFromScroll() {
