@@ -23,14 +23,14 @@ function appSource(start, end) {
 
 const flush = () => new Promise(setImmediate);
 
-function harness({ delayMainLoad = false, neverReady = false } = {}) {
+function harness({ delayMainLoad = false, neverReady = false, allowGameFixture = false } = {}) {
   const timers = new Map();
   const posts = [];
   const held = [];
   const snapshots = [];
   const loads = [];
   const toast = [];
-  const game = { offlineMode: true, roomSessionGeneration: 1, lastStateReceivedAt: 0 };
+  const game = { offlineMode: true, roomSessionGeneration: 1, lastStateReceivedAt: 0, vendingBulkTransactions: {} };
   let holdPath = "";
   let activeWorker;
   let terminations = 0;
@@ -39,7 +39,7 @@ function harness({ delayMainLoad = false, neverReady = false } = {}) {
   let client;
   let mainRequest;
   const vmGlobals = () => ({
-    URL, URLSearchParams, TextEncoder, TextDecoder, crypto: globalThis.crypto, btoa, atob, queueMicrotask,
+    URL, URLSearchParams, TextEncoder, TextDecoder, crypto: globalThis.crypto, btoa, atob, queueMicrotask, structuredClone,
     setTimeout, clearTimeout, setInterval() { return 1; }, clearInterval() {},
     fetch() { throw Error("The CPU fixture has no network"); },
     console: { log() {}, warn() {}, error() {} },
@@ -92,6 +92,7 @@ function harness({ delayMainLoad = false, neverReady = false } = {}) {
     context.DVAOfflineMainThread = {
       version: main.version,
       async request(route, body) {
+        posts.push({ path: route, body: structuredClone(body) });
         const result = await main.request(route, body);
         if (route !== holdPath) return result;
         holdPath = "";
@@ -121,7 +122,8 @@ function harness({ delayMainLoad = false, neverReady = false } = {}) {
     ...vmGlobals(), document, Event, Worker: WorkerBridge, state: game, performance,
     clientId: () => "offline-room-timeout-test",
     clientStorage: { getItem() { return null; } },
-    storage: { developerIdentity: "developer" }, VERIFY_REAL_SCREEN_FIXTURE_KIND: "", IS_TRUSTED_REAL_SCREEN_FIXTURE_HOST: false,
+    storage: { developerIdentity: "developer" }, VERIFY_REAL_SCREEN_FIXTURE_KIND: allowGameFixture ? "vending-atomic-settlement" : "",
+    IS_TRUSTED_REAL_SCREEN_FIXTURE_HOST: allowGameFixture, DVA_ECONOMY: { abilityProduct: () => null },
     enhanceGestureContext: null, IS_VERIFICATION_MODE: false, CHARACTER_ACTION_BY_API: {},
     applyState(payload) { snapshots.push(payload); game.data = payload; },
     showToast(message) { toast.push(message); },
@@ -141,7 +143,9 @@ function harness({ delayMainLoad = false, neverReady = false } = {}) {
     appSource("async function request(", "function setCurrentRoomSession("),
     appSource("async function pollState(", "\nfunction "),
     appSource("function offlineRuntimeOwner(", "\n\n"),
-    appSource("async function api(", "async function loadDropoffAnalytics(")
+    appSource("async function api(", "async function loadDropoffAnalytics("),
+    appSource("function newVendingBulkTransactionId(", "function shopAbilityOwned("),
+    appSource("async function purchaseVendingItem(", "const mapRevokedVendingClicks")
   ].join("\n"), context, { filename: "app-entrypoints.js" });
   context.initializeOfflineRuntime();
   client = game.offlineClient;
@@ -261,20 +265,51 @@ for (const attempts of [1, 2]) {
   });
 }
 
-test("explicit idempotent replay stays in the room and preserves the transaction ID", async () => {
-  const h = harness();
-  await h.join();
-  h.hold("/api/purchase");
-  const body = { itemId: "fixture-unavailable-item", bulk: true, transactionId: "offline-idempotent-fixture" };
-  const purchase = h.context.api("/api/purchase", body, { attempts: 2, retryOfflineTimeout: true });
-  await flush();
-  h.expire(20_000);
-  assert.equal(await purchase, false);
-  const sent = h.posts.filter((entry) => entry.path === "/api/purchase").map((entry) => entry.body);
-  assert.equal(sent.length, 2);
-  assert.deepEqual(sent[0], sent[1]);
-  assert.equal(h.terminations, 0);
-});
+for (const mode of ["worker", "main"]) {
+  test(mode + " settles a successful bulk purchase only once when its response is withheld", async () => {
+    const h = harness({ allowGameFixture: true });
+    if (mode === "main") {
+      await h.client.start();
+      assert.equal(await h.client.startMainThreadFallback(), true);
+    }
+    const room = await h.join();
+    const playing = await h.context.request("/api/operator", { ...room, operatorId: "operator-fighter" });
+    assert.equal(playing?.phase, "playing");
+    const seeded = await h.context.request("/api/regression-real-screen-fixture", { ...room, kind: "vending-atomic-settlement" });
+    assert.equal(seeded?.self.credits, 8);
+    assert.equal(seeded.self.vendingVerification.bulkTransactionCount, 0);
+
+    h.hold("/api/purchase");
+    const button = { dataset: { drink: "mystery" } };
+    const purchase = h.context.purchaseVendingItem(button, { bulk: true });
+    await flush();
+    const first = h.held[0].result;
+    assert.equal(first.status, 200);
+    assert.equal(first.ok, true);
+    assert(first.self.credits > seeded.self.credits);
+    assert.equal(first.self.vendingVerification.bulkTransactionCount, 1);
+    assert.equal(first.self.vendingVerification.remainingMysteryRolls, 0);
+
+    h.expire(20_000);
+    const replay = await purchase;
+    assert.equal(replay.ok, true);
+    assert.equal(replay.self.credits, first.self.credits);
+    assert.equal(replay.self.vendingVerification.bulkTransactionCount, 1);
+    assert.equal(replay.self.vendingVerification.remainingMysteryRolls, 0);
+    const sent = h.posts.filter((entry) => entry.path === "/api/purchase").map((entry) => entry.body);
+    assert.equal(sent.length, 2);
+    assert(sent[0].transactionId);
+    assert.deepEqual(sent[0], sent[1]);
+
+    h.held[0].deliver();
+    await h.context.pollState();
+    assert.equal(h.snapshots.length, 2);
+    assert.equal(h.snapshots.at(-1).self.credits, first.self.credits);
+    assert.equal(h.snapshots.at(-1).self.vendingVerification.bulkTransactionCount, 1);
+    assert.equal(button.dataset.purchasePending, undefined);
+    assert.equal(h.context.offlineRuntimeOwner(), "generated-" + mode);
+  });
+}
 
 test("a departed room cannot replay or apply its old transaction", async () => {
   const h = harness();
