@@ -1132,7 +1132,7 @@ const state = {
   focusResyncing: false,
   focusResyncPromise: null,
   focusResyncSerial: 0,
-  foregroundRecovery: { inFlight: false, queuedGeneration: null, titleRouteSerial: 0 },
+  foregroundRecovery: { inFlight: false, queuedGeneration: null, titleRouteSerial: 0, visibilityEpoch: 0, completedOffline: null },
   pollInFlight: false,
   pollInFlightGeneration: 0,
   // Every async room response is tied to this client-side ownership generation.
@@ -9197,6 +9197,7 @@ function bindEvents() {
     syncMovementInputImmediately();
   });
   window.addEventListener("blur", () => {
+    state.foregroundRecovery.visibilityEpoch += 1;
     cancelCommonActionGestures();
     cancelActiveRootShortcutHolds();
     stopContinuousActionHold();
@@ -9215,6 +9216,7 @@ function bindEvents() {
     }
   });
   window.addEventListener("pagehide", () => {
+    state.foregroundRecovery.visibilityEpoch += 1;
     cancelTransientGameInputForBackground();
     recordUsageExit();
   });
@@ -9327,6 +9329,7 @@ function bindEvents() {
   }, true);
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
+      state.foregroundRecovery.visibilityEpoch += 1;
       suspendGameplayViewportMeasurements();
       const availabilityOwner = state.onlineAvailabilityCheckOwner;
       if (availabilityOwner) {
@@ -9348,7 +9351,7 @@ function bindEvents() {
       cancelTransientGameInputForBackground();
     }
     if (!document.hidden) {
-      clearMovementInput();
+      if (!sameCompletedOfflineForegroundRecovery()) clearMovementInput();
       void recoverRoomInteractionAfterBackground();
     }
     if (!document.hidden) {
@@ -12529,13 +12532,64 @@ async function resumeRoomAfterBackground() {
   }
 }
 
+const offlineForegroundOwnerIds = new WeakMap();
+let nextOfflineForegroundOwnerId = 0;
+
+function offlineForegroundOwnerId(value) {
+  if (!value) return 0;
+  if (!offlineForegroundOwnerIds.has(value)) offlineForegroundOwnerIds.set(value, ++nextOfflineForegroundOwnerId);
+  return offlineForegroundOwnerIds.get(value);
+}
+
+function captureOfflineForegroundOwner() {
+  const client = state.offlineMode ? state.offlineClient : null;
+  if (!client || (!client.worker && !client.mainThreadApi) || state.data?.phase !== "playing") return null;
+  return {
+    clientId: offlineForegroundOwnerId(client), workerId: offlineForegroundOwnerId(client.worker),
+    workerGeneration: client.workerGeneration, mainId: offlineForegroundOwnerId(client.mainThreadApi),
+    roomId: state.roomId, playerId: state.playerId, generation: state.roomSessionGeneration,
+    epoch: state.foregroundRecovery.visibilityEpoch, titleRoute: state.foregroundRecovery.titleRouteSerial
+  };
+}
+
+function isCurrentOfflineForegroundOwner(owner) {
+  const client = state.offlineMode ? state.offlineClient : null;
+  return !!(owner && client && owner.clientId === offlineForegroundOwnerId(client) &&
+    owner.workerId === offlineForegroundOwnerId(client.worker) && owner.workerGeneration === client.workerGeneration &&
+    owner.mainId === offlineForegroundOwnerId(client.mainThreadApi) &&
+    state.data?.phase === "playing" && isCurrentRoomSession(owner.roomId, owner.playerId, owner.generation) &&
+    owner.epoch === state.foregroundRecovery.visibilityEpoch &&
+    owner.titleRoute === state.foregroundRecovery.titleRouteSerial);
+}
+
+const OFFLINE_FOREGROUND_DUPLICATE_WINDOW_MS = 500;
+
+function sameCompletedOfflineForegroundRecovery() {
+  const completed = state.foregroundRecovery.completedOffline;
+  if (!isCurrentOfflineForegroundOwner(completed) || completed.resyncSerial !== state.focusResyncSerial) return false;
+  // Deduplicate the returning notification burst, not a later unobserved
+  // suspension. Monotonic time may pause while the process sleeps, so
+  // require a short nonnegative interval in both clocks. A wall-clock jump
+  // conservatively allows a recovery instead of masking a real wake.
+  const elapsed = performance.now() - completed.completedAt;
+  const wallElapsed = Date.now() - completed.completedWallAt;
+  return Number.isFinite(elapsed) && elapsed >= 0 && elapsed <= OFFLINE_FOREGROUND_DUPLICATE_WINDOW_MS &&
+    Number.isFinite(wallElapsed) && wallElapsed >= 0 && wallElapsed <= OFFLINE_FOREGROUND_DUPLICATE_WINDOW_MS;
+}
+
 async function recoverRoomInteractionAfterBackground() {
   if (titleWebGPURecoveryBlocked() || document.hidden || !state.roomId || !state.playerId) return false;
+  // Window/visibility/BFCache notifications can arrive in a later task after
+  // room and movement recovery already settled. Do not reset live input twice.
+  if (sameCompletedOfflineForegroundRecovery()) return true;
   if (state.foregroundRecovery.inFlight) {
     state.foregroundRecovery.queuedGeneration = state.roomSessionGeneration;
     return false;
   }
   state.foregroundRecovery.inFlight = true;
+  const visibilityEpoch = state.foregroundRecovery.visibilityEpoch;
+  const generation = state.roomSessionGeneration;
+  let recoveredCurrentEpoch = false;
   try {
     // Room ownership must settle before movement creates a new session.  The
     // former parallel calls could resync an expired room and keep every input
@@ -12544,7 +12598,12 @@ async function recoverRoomInteractionAfterBackground() {
     if (!resumed || document.hidden || !state.roomId || !state.playerId) return false;
     syncClairvoyanceManaUsage();
     if (state.data?.phase !== "playing") return true;
-    await resyncMovementAfterFocus();
+    const owner = captureOfflineForegroundOwner();
+    recoveredCurrentEpoch = await resyncMovementAfterFocus();
+    if (recoveredCurrentEpoch && owner?.epoch === visibilityEpoch && owner.generation === generation &&
+        isCurrentOfflineForegroundOwner(owner) && !document.hidden) {
+      state.foregroundRecovery.completedOffline = { ...owner, resyncSerial: state.focusResyncSerial, completedAt: performance.now(), completedWallAt: Date.now() };
+    }
     // A bounded resync failure must not freeze otherwise legal actions. State
     // polling remains authoritative and the next focus can retry with a new
     // movement-session serial.
@@ -12553,7 +12612,12 @@ async function recoverRoomInteractionAfterBackground() {
     state.foregroundRecovery.inFlight = false;
     const queuedGeneration = state.foregroundRecovery.queuedGeneration;
     state.foregroundRecovery.queuedGeneration = null;
-    if (queuedGeneration === state.roomSessionGeneration && !document.hidden) {
+    // Visibility, focus, and pageshow can describe one successful recovery.
+    // Repeating it in that epoch would clear newly accepted movement input.
+    const redundant = recoveredCurrentEpoch && generation === queuedGeneration &&
+      visibilityEpoch === state.foregroundRecovery.visibilityEpoch &&
+      sameCompletedOfflineForegroundRecovery();
+    if (!redundant && queuedGeneration === state.roomSessionGeneration && !document.hidden) {
       queueMicrotask(() => {
         if (queuedGeneration === state.roomSessionGeneration && !document.hidden) {
           void recoverRoomInteractionAfterBackground();
