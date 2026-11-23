@@ -4131,10 +4131,23 @@ function initializeTacticsNovel() {
   const video=els.tacticsNovelVideo;if(!video)return;video.autoplay=false;video.loop=false;video.defaultMuted=true;video.muted=true;video.volume=0;
   els.tacticsNovelPlay?.addEventListener("click",()=>{if(!video.paused&&!video.ended){pauseTacticsNovelPlayback(video);return;}playTacticsNovelVideo();});
   els.tacticsNovelReplay?.addEventListener("click",()=>{video.currentTime=0;playTacticsNovelVideo();});
-  video.addEventListener("play",()=>{video.dataset.explicitPlay="true";keepTacticsNovelVideoSilent();syncTacticsNovelVideoControl();});video.addEventListener("pause",()=>syncTacticsNovelVideoControl());video.addEventListener("ended",()=>{video.currentTime=0;syncTacticsNovelVideoControl();});video.addEventListener("volumechange",()=>keepTacticsNovelVideoSilent());
+  video.addEventListener("play", () => {
+    if (tacticsNovelPlayback) tacticsNovelPlayback.pauseObserved = false;
+    video.dataset.explicitPlay = "true";
+    keepTacticsNovelVideoSilent();
+    syncTacticsNovelVideoControl(video.paused ? undefined : "");
+  });
+  video.addEventListener("pause", () => {
+    // The media task dispatches pause before rejecting the interrupted play promises.
+    // A later play event clears the observation for any newer playback.
+    if (tacticsNovelPlayback) tacticsNovelPlayback.pauseObserved = true;
+    syncTacticsNovelVideoControl();
+  });
+  video.addEventListener("ended",()=>{video.currentTime=0;syncTacticsNovelVideoControl("");});
+  video.addEventListener("volumechange",()=>keepTacticsNovelVideoSilent());
   window.matchMedia?.(REDUCED_MOTION_QUERY)?.addEventListener?.("change",event=>{if(event.matches&&!video.paused&&!video.ended)pauseAndResetTacticsNovelVideo("動きを減らす設定に切り替わったため一度停止しました。再生ボタンから開始できます。");else syncTacticsNovelVideo();});syncTacticsNovelVideo();window.addEventListener("resize",()=>syncTacticsNovelScrollRegion({remapActive:true}),{passive:true});
 }
-function syncTacticsNovelVideoControl(message="") { const video=els.tacticsNovelVideo,playing=Boolean(video&&!video.paused&&!video.ended);if(els.tacticsNovelPlay){els.tacticsNovelPlay.textContent=playing?"一時停止":"動画を再生";els.tacticsNovelPlay.setAttribute("aria-pressed",String(playing));}if(els.tacticsNovelVideoStatus)els.tacticsNovelVideoStatus.textContent=message; }
+function syncTacticsNovelVideoControl(message) { const video=els.tacticsNovelVideo,playing=Boolean(video&&!video.paused&&!video.ended);if(els.tacticsNovelPlay){els.tacticsNovelPlay.textContent=playing?"一時停止":"動画を再生";els.tacticsNovelPlay.setAttribute("aria-pressed",String(playing));}if(els.tacticsNovelVideoStatus&&message!==undefined)els.tacticsNovelVideoStatus.textContent=message; }
 function keepTacticsNovelVideoSilent() { const video=els.tacticsNovelVideo;if(!video)return;if(!video.muted)video.muted=true;if(video.volume!==0)video.volume=0;if(typeof IS_VERIFICATION_MODE!=="undefined"&&IS_VERIFICATION_MODE)video.dataset.verifyMuted="true"; }
 let tacticsNovelPlayback = null;
 
@@ -4146,15 +4159,16 @@ function playTacticsNovelVideo() {
   const playback = video.play();
   if (!playback?.then) return;
 
-  const attempt = {};
+  const attempt = { pauseObserved: false };
   tacticsNovelPlayback = attempt;
   playback.then(
     () => {
       if (tacticsNovelPlayback === attempt) tacticsNovelPlayback = null;
     },
-    () => {
+    (error) => {
       if (tacticsNovelPlayback !== attempt) return;
       tacticsNovelPlayback = null;
+      if (attempt.pauseObserved && error?.name === "AbortError" && !video.error) return;
       syncTacticsNovelVideoControl("動画を読み込めませんでした。再生でもう一度試せます。");
     }
   );
