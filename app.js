@@ -19401,7 +19401,7 @@ function suspendWebGPUMainAppDriver({ destroy = false } = {}) {
     document.documentElement.dataset.fieldRenderer = "webgpu-pending";
   if (els.webgpuMainCanvas) els.webgpuMainCanvas.style.opacity = "0";
   if (els.webgpuMainCanvas) els.webgpuMainCanvas.style.pointerEvents = "none";
-  if (webgpuMainApp.acquisitionCanvas) webgpuMainApp.acquisitionCanvas.style.display = "none";
+  if (webgpuMainApp.acquisitionCanvas) webgpuMainApp.acquisitionCanvas.style.visibility = "hidden";
   sunbeamLive.pendingSounds.clear();
   FIRE_E_SOUND_RECEIPTS.pending.clear();
   sunbeamLive.submitted.clear();
@@ -20223,7 +20223,7 @@ function pumpWebGPUMainAppDriver() {
       return;
     }
     mainCanvas.style.opacity = "1";
-    webgpuMainApp.acquisitionCanvas.style.display = receipt.acquisitionActive ? "block" : "none";
+    webgpuMainApp.acquisitionCanvas.style.visibility = receipt.acquisitionActive ? "visible" : "hidden";
     // The pointer receipt becomes active only after the submitted pixels are
     // actually selected as the visible game surface.
     webgpuMainApp.submittedHits = receipt.markerHitTargets;
@@ -34214,7 +34214,10 @@ function handoffAcquisitionOverlayToMainRenderer() {
   acquisitionGpuOverlay.handoffPromise = Promise.resolve(pendingCreate).catch(() => {}).then(() => {
     acquisitionGpuOverlay.renderer?.destroy();
     acquisitionGpuOverlay.renderer = null;
-    canvas.style.display = 'none';
+    // Keep the shared target measurable before its first active receipt.
+    // Only an accepted submitted frame may reveal its pixels.
+    canvas.style.visibility = 'hidden';
+    canvas.style.display = 'block';
     return canvas;
   });
   return acquisitionGpuOverlay.handoffPromise;
