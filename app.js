@@ -8917,6 +8917,8 @@ function bindEvents() {
     }
   });
   window.addEventListener("keyup", (event) => {
+    const releasedDash = event.key === "Shift" && !event.shiftKey;
+    const releasedSlow = (event.key === "Control" || event.key === "Alt") && !event.ctrlKey && !event.altKey;
     const eventTarget = event.target instanceof Element ? event.target : document.activeElement;
     if (eventTarget?.matches?.('input, textarea, [contenteditable="true"]') ||
       document.activeElement?.matches?.('input, textarea, [contenteditable="true"]')) {
@@ -8928,8 +8930,8 @@ function bindEvents() {
           if (key === event.code || key.endsWith(`:${event.code}`)) state.continuousActionKeyAt.delete(key);
         }
       }
-      const hadDash = event.key === "Shift" && state.keys.delete("dash");
-      const hadSlow = (event.key === "Control" || event.key === "Alt") && state.keys.delete("slow");
+      const hadDash = releasedDash && state.keys.delete("dash");
+      const hadSlow = releasedSlow && state.keys.delete("slow");
       const movementKey = keyName(event.key);
       const hadMovementKey = movementKey ? state.keys.delete(movementKey) : false;
       if (hadMovementKey || hadDash || hadSlow) syncMovementInputImmediately();
@@ -8955,8 +8957,8 @@ function bindEvents() {
     if (event.code === "KeyV") void finishEnhanceAction("use");
     if (event.code === "KeyG") void finishEnhanceAction("throw");
     if (event.code === "KeyF") void finishEnhanceAction("fire");
-    if (event.key === "Shift") state.keys.delete("dash");
-    if (event.key === "Control" || event.key === "Alt") state.keys.delete("slow");
+    if (releasedDash) state.keys.delete("dash");
+    if (releasedSlow) state.keys.delete("slow");
     const key = keyName(event.key);
     if (key) state.keys.delete(key);
     syncMovementInputImmediately();
