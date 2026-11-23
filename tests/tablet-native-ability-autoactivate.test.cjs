@@ -171,14 +171,38 @@ test("the change listener also applies the preference to direct select changes",
   }
 });
 
-test("the app loader and offline cache identify the same app revision", () => {
-  const digest = createHash("sha256").update(app).digest("hex").slice(0, 16);
-  const release = "tablet-native-ability-autoactivate-r1-" + digest;
-  const scriptUrl = read("index.html").match(/<script src="(app\.js\?[^"]+)"/)[1];
+function assertCurrentAppCacheRevision(appSource, index, worker) {
+  const scriptUrl = index.match(/<script src="(app\.js\?[^"]+)"/)[1];
   const query = new URL(scriptUrl.replaceAll("&amp;", "&"), "https://example.test").searchParams;
-  assert.equal(query.get("tabletability"), release);
-  const worker = read("sw.js");
+  assert.match(query.get("tabletability") || "", /^tablet-native-ability-autoactivate-r1-[0-9a-f]{16}$/);
+  const release = Array.from(query.values()).at(-1);
+  const digest = createHash("sha256").update(appSource).digest("hex").slice(0, 16);
+  assert.ok(release.endsWith("-" + digest), "current app script token must match app.js SHA-256");
   for (const constant of ["RUNTIME_RELEASE", "CACHE_NAME"]) {
-    assert.ok(worker.match(new RegExp('const ' + constant + ' = "([^"]+)"'))[1].endsWith("-" + release));
+    const cacheRelease = worker.match(new RegExp('const ' + constant + ' = "([^"]+)"'))[1];
+    assert.ok(cacheRelease.endsWith("-" + release), constant + " must end with the current app token");
   }
+  return release;
+}
+
+test("the app loader preserves the tablet history and identifies the current cached app", () => {
+  assertCurrentAppCacheRevision(app, read("index.html"), read("sw.js"));
+});
+
+test("the app cache check rejects modified bytes and mismatched script, release, and cache tokens", () => {
+  const release = "test-release-" + createHash("sha256").update(app).digest("hex").slice(0, 16);
+  const history = "tablet-native-ability-autoactivate-r1-0123456789abcdef";
+  const index = `<script src="app.js?tabletability=${history}&amp;current=${release}"></script>`;
+  const worker = `const RUNTIME_RELEASE = "runtime-${release}"; const CACHE_NAME = "cache-${release}";`;
+  assert.equal(assertCurrentAppCacheRevision(app, index, worker), release);
+  assert.throws(() => assertCurrentAppCacheRevision(app + "\n", index, worker), /app script token/);
+  assert.throws(() => assertCurrentAppCacheRevision(app, index.replace(release, release + "-stale"), worker), /app script token/);
+  assert.throws(() => assertCurrentAppCacheRevision(app, index, worker.replace(release, release + "-stale")), /RUNTIME_RELEASE/);
+  const cacheName = worker.match(/const CACHE_NAME = "([^"]+)"/)[1];
+  assert.throws(() => assertCurrentAppCacheRevision(app, index, worker.replace(cacheName, cacheName + "-stale")), /CACHE_NAME/);
+});
+
+test("the app cache check rejects a missing tablet history token", () => {
+  const index = read("index.html").replace(/&amp;tabletability=[^&"]+/, "");
+  assert.throws(() => assertCurrentAppCacheRevision(app, index, read("sw.js")), /tablet-native-ability-autoactivate/);
 });
