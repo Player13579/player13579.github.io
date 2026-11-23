@@ -11138,11 +11138,25 @@ function updateExpandedMapPointer(event) {
   state.mapPointer = expandedMapPoint(event);
 }
 
+function expandedMapTapGeometry(canvas = els.expandedMapCanvas) {
+  const rect = canvas?.getBoundingClientRect();
+  const map = state.data?.map;
+  if (!rect || !map ||
+      ![rect.left, rect.top, rect.width, rect.height, map.width, map.height].every(Number.isFinite) ||
+      rect.width <= 0 || rect.height <= 0 || map.width <= 0 || map.height <= 0) return null;
+  return { canvas, rect: [rect.left, rect.top, rect.width, rect.height],
+    session: state.roomSessionGeneration, mapId: map.id, width: map.width, height: map.height };
+}
+
 function beginExpandedMapTap(event) {
   if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) return;
+  if (![event.clientX, event.clientY].every(Number.isFinite)) return;
+  const geometry = expandedMapTapGeometry();
+  if (!geometry) return;
   state.expandedMapTap = {
     pointerId: event.pointerId,
     pointerType: event.pointerType,
+    geometry,
     startX: event.clientX,
     startY: event.clientY,
     moved: false
@@ -11163,7 +11177,17 @@ function finishExpandedMapTap(event, cancelled = false) {
   const tap = state.expandedMapTap;
   if (!tap || tap.pointerId !== event.pointerId) return;
   state.expandedMapTap = null;
-  if (cancelled || tap.moved) return;
+  if (cancelled || tap.moved ||
+      ![event.clientX, event.clientY].every(Number.isFinite) ||
+      Math.hypot(event.clientX - tap.startX, event.clientY - tap.startY) > 10) return;
+  const geometry = expandedMapTapGeometry();
+  const start = tap.geometry;
+  // A stationary finger must not commit another world target after reflow.
+  // Follow the one-CSS-pixel presentation tolerance for fractional jitter.
+  if (!geometry || geometry.canvas !== start.canvas || geometry.session !== start.session ||
+      geometry.mapId !== start.mapId || geometry.width !== start.width ||
+      geometry.height !== start.height ||
+      geometry.rect.some((value, index) => Math.abs(value - start.rect[index]) > 1)) return;
   event.preventDefault();
   void teleportFromExpandedMap(event);
 }
