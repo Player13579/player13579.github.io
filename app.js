@@ -18230,6 +18230,26 @@ function repairMeetingKeyboardSelection(selectedMeetingKey, meetingOwnedFocus) {
   return true;
 }
 
+let pendingMeetingVote = null;
+
+async function submitMeetingVote(targetId) {
+  const { roomId, playerId, roomSessionGeneration, data } = state;
+  const meetingId = data?.meeting?.id;
+  const isCurrent = () => isCurrentRoomSession(roomId, playerId, roomSessionGeneration) &&
+    state.data?.phase === "meeting" && state.data.meeting?.id === meetingId &&
+    state.data.roomId === roomId && state.data.selfId === playerId;
+  if (!roomId || !playerId || !meetingId || !targetId || !isCurrent() ||
+      data.meeting.discussionSecondsLeft > 0 || !data.self?.alive || data.self.ejected ||
+      data.meeting.votes?.[playerId] || pendingMeetingVote?.()) return false;
+
+  pendingMeetingVote = isCurrent;
+  try {
+    return await api("/api/vote", { targetId }, { isCurrent });
+  } finally {
+    if (pendingMeetingVote === isCurrent) pendingMeetingVote = null;
+  }
+}
+
 function renderMeeting(data) {
   if (data.phase !== "meeting" || !data.meeting) return;
   const selectedMeetingKey = els.meetingPanel.contains(state.keyboardElement)
@@ -18275,7 +18295,7 @@ function renderMeeting(data) {
     button.type = "button";
     button.dataset.keyboardKey = entry.key;
     button.innerHTML = '<span class="player-meta"><span class="name-line"></span><span class="sub-line"></span><strong class="own-vote-status"></strong></span><span class="badge"></span>';
-    button.addEventListener("click", () => api("/api/vote", { targetId: button.dataset.voteTargetId }));
+    button.addEventListener("click", () => submitMeetingVote(button.dataset.voteTargetId));
     return button;
   }, (button, entry) => {
     button.dataset.voteTargetId = entry.targetId;
