@@ -28594,7 +28594,7 @@ function captureWebGPUMainAppHeadMarkerScene(data, markerActors, camera, zoom,
 // WEBGPU_MAIN_APP_COMBINED_WORLD_SNAPSHOT_V1_START
 // A candidate only: later mandatory stages still have to be captured before
 // the shared renderer can accept this frame. Keep every input in source order.
-function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, providers = {}) {
+function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, providers = {}, forValidation = false) {
   const expandedCanvas = els.expandedMapCanvas;
   const expandedRect = state.expandedMapOpen
     ? expandedCanvas?.getBoundingClientRect() : null;
@@ -28606,7 +28606,7 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, p
       els.expandedMapOverlay?.hidden ||
       providers.expandedCanvas !== expandedCanvas));
   const expandedMap = state.expandedMapOpen && !expandedBlocked
-    ? { scene: expandedMapWebGPUScene(data), viewport: expandedViewport,
+    ? { scene: forValidation ? null : expandedMapWebGPUScene(data), viewport: expandedViewport,
       canvas: expandedCanvas, rect: expandedRect,
       pointer: state.mapPointer, targeting: Boolean(state.teleportTargeting ||
         state.instantWarpTargeting) } : null;
@@ -28925,7 +28925,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
         coverage.omissions.some(receipt=>!evidence.omission(coverage,receipt))))
       throw Object.assign(new Error('Legacy hydration source origin ownership changed'),{code:'DVA_WEBGPU_STALE_SCENE'});
     const freshConditional = captureWebGPUMainAppConditionalTail(data,
-      early.camera, early.zoom, viewport, shapeProviders);
+      early.camera, early.zoom, viewport, shapeProviders, true);
     assertWebGPUAcquisitionCandidateGeometry(candidate, conditional.acquisition);
     if (state.killEffects !== killSource || state.magicEffects !== headEffectSource ||
         !Array.isArray(state.magicEffects) ||
