@@ -19637,7 +19637,7 @@ function webgpuMainIncompleteReason(captured, requiredStages) {
   return [...new Set(reasons)].slice(0, 12).join(',').slice(0, 1600) || 'unknown';
 }
 
-function setWebGPUMainFailure(error) {
+function setWebGPUMainFailure(error, recoveryHint = "") {
   if (webgpuMainApp.failed) return;
   const message = error?.message || String(error);
   // Preserve the original gate and source gap before suspension erases them.
@@ -19647,7 +19647,7 @@ function setWebGPUMainFailure(error) {
     const text = JSON.stringify(detail, null, 2);
     document.body.dataset.webgpuMainFailureDetail = JSON.stringify(detail);
     const summary = document.getElementById?.('webgpuMainFailureSummary');
-    if (summary) summary.textContent = `停止箇所: ${detail.pending}${
+    if (summary) summary.textContent = `${recoveryHint ? recoveryHint + '\n' : ''}停止箇所: ${detail.pending}${
       detail.frameStage ? ` / ${detail.frameStage}` : ''}\n${detail.error.slice(0, 240)}`;
     const output = document.getElementById?.('webgpuMainFailureDiagnostic');
     if (output) output.value = text;
@@ -33137,13 +33137,17 @@ function loadCriticalFacilityTexture(image, source, { box = false } = {}) {
 function loadCriticalMapTexture(image, source, activeOwner = null) {
   const existing = criticalMapImageLoads.get(image);
   const currentGame = owner => owner !== null && requiredMapSnapshotOwned(owner);
-  const reportFailure = () => setWebGPUMainFailure(new Error("Required map image could not be loaded after retries"));
+  const reportFailure = owner => setWebGPUMainFailure(
+    new Error("Required map image could not be loaded after retries"),
+    owner?.mapId === "station"
+      ? "ステーションのマップ画像を読み込めませんでした。通信を確認してから「再読み込み」を押してください。"
+      : "");
   const takeover = existing?.source === source && existing.status === "failed" &&
     !currentGame(existing.activeOwner) && currentGame(activeOwner);
   if (existing?.source === source && existing.status !== "cancelled" && !takeover) {
     if (currentGame(activeOwner)) {
       if (existing.status === "failed") {
-        if (currentGame(existing.activeOwner)) reportFailure();
+        if (currentGame(existing.activeOwner)) reportFailure(existing.activeOwner);
       } else existing.activeOwner = activeOwner;
     }
     return existing.cancel;
@@ -33197,7 +33201,7 @@ function loadCriticalMapTexture(image, source, activeOwner = null) {
       load.activeOwner = attemptOwner;
       image.removeEventListener("load", onLoad);
       image.removeEventListener("error", onError);
-      if (currentGame(load.activeOwner)) reportFailure();
+      if (currentGame(load.activeOwner)) reportFailure(load.activeOwner);
       return;
     }
     retries += 1;
