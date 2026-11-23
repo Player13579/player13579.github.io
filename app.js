@@ -11297,11 +11297,15 @@ async function syncOperatorSelectionSettings(changedField = "") {
     setPreparationEditingField("name", { focus: true });
     return false;
   }
+  const roomId = state.roomId;
+  const playerId = state.playerId;
+  const generation = state.roomSessionGeneration;
   const requestSeq = ++state.operatorSelectionSettingsRequestSeq;
   els.operatorSettingStatus.textContent = "設定を反映中…";
   const nameAtRequest = name;
   const result = await api("/api/operator-selection-settings", { name, skinId, mapId });
-  if (requestSeq !== state.operatorSelectionSettingsRequestSeq) return false;
+  if (requestSeq !== state.operatorSelectionSettingsRequestSeq ||
+      !isCurrentRoomSession(roomId, playerId, generation)) return false;
   if (!result) {
     els.operatorSettingStatus.textContent = "設定を反映できませんでした。";
     return false;
