@@ -22521,6 +22521,11 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           reason: `${medicalUseE.reason}-outside-viewport` });
         continue;
       }
+      if (medicalUseE.eventType === 'medicalFootbathUseE' && planned === null) {
+        omitted.push({ effectId: effect.id,
+          reason: `${medicalUseE.reason}-outside-viewport` });
+        continue;
+      }
       if (!planned) {
         const outside = effect.x < camera.x - 150 ||
           effect.x > camera.x + viewport.width / zoom + 150 ||
