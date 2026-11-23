@@ -29551,6 +29551,8 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
   const killAnimation = { ...killInput,
     preparedPlan: await passes.killAnimation.prepare({ ...killInput, assets,
       bloomEncoder: tailResources.bloomEncoder,
+      ownedBloomDevice: tailResources.ownedBloomDevice,
+      assertOwnedBloomCurrent: tailResources.assertOwnedBloomCurrent,
       residualRevision: tailResources.residualRevision }) };
   assertPassesCurrent();
   if (!Array.isArray(killAnimation.preparedPlan?.unsupported) ||
@@ -29812,13 +29814,17 @@ function createWebGPUReadyKillTextureOwner(device) {
       if (destroyed) throw stale();
       const sources = webgpuKillTextureSources(textures);
       const stamps = Object.fromEntries(Object.entries(sources).map(([key, source]) => [key, signature(source)]));
-      if (!ready(stamps.filament, 2048, 1940)) return null;
+      const loadedFilament = ready(stamps.filament, 2048, 1940);
+      const residual = stamps.residual;
+      if (!loadedFilament && !(residual[2] && Number.isInteger(residual[3]) &&
+          Number.isInteger(residual[4]) && residual[3] > 0 && residual[4] > 0)) return null;
       const bot = cutin.killerIsBot || cutin.killerSkinId === 'operator';
       const blue = !bot && normalizeSkinId(cutin.killerSkinId) === 'blue-dress';
       const pose = bot ? 'botPose' : blue ? 'bluePose' : 'whitePose';
       const fallback = bot ? 'botIdle' : blue ? 'blueCutin' : 'whiteCutin';
       const watchedKeys = ['filament', 'material', pose];
-      const assetKeys = ['filament'];
+      const assetKeys = [loadedFilament ? 'filament' : 'residual'];
+      if (!loadedFilament) watchedKeys.push('residual');
       if (ready(stamps.material, 1963, 439)) assetKeys.push('material');
       if (ready(stamps[pose], bot ? 640 : blue ? 900 : 1100, bot ? 200 : blue ? 236 : 240)) {
         assetKeys.push(pose);
@@ -29914,10 +29920,15 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   const expectedDevice = incomingPrewarm?.device || null;
   let retirement = null;
   let killTextureOwner = null, killTextureGeneration = null;
+  const revokePendingKillBloom = () => registry?.passes?.killAnimation?.revokePendingOwnedBloom?.();
   const retireKillTextures = () => {
-    killTextureOwner?.destroy();
+    const owner = killTextureOwner;
     killTextureOwner = null;
     killTextureGeneration = null;
+    if (owner) {
+      try { registry?.passes?.killAnimation?.releaseOwnedBloom?.(); }
+      finally { owner.destroy(); }
+    }
   };
   let retainedRuntimeFailure = null;
   let lifecycleGeneration = 0;
@@ -29966,6 +29977,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     if (destroyed) return retirement || Promise.resolve();
     destroyed = true;
     lifecycleGeneration += 1;
+    revokePendingKillBloom();
     if (incomingPrewarm) incomingPrewarm.onTransferredFailure = null;
     // Registry retirement can await shader/asset promises. Invalidate the
     // submission lease synchronously, before waiting for any GPU cleanup.
@@ -30127,6 +30139,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       // prevents a late frame from publishing marker hit targets.
       if (sample?.hidden) {
         lifecycleGeneration += 1;
+        revokePendingKillBloom();
         const hidden = await runtime.requestFrame({ sample, rect, dpr, camera }, { hidden: true });
         return Object.freeze({ drawn: false, reason: hidden.status || 'hidden' });
       }
@@ -30248,6 +30261,15 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
                 headMarkerDevice: device,
                 headMarkerMaterials: currentMarkerMaterials, killAssets: killUpload?.assets || killAssets,
                 markerDomFallbackReady, bloomEncoder, residualRevision,
+                ownedBloomDevice: !bloomEncoder && killUpload?.assets?.residual ? device : null,
+                assertOwnedBloomCurrent: !bloomEncoder && killUpload?.assets?.residual ? () => {
+                  if (destroyed || requestGeneration !== lifecycleGeneration ||
+                      state.screen !== 'game' || document.hidden)
+                    throw Object.assign(new Error('Kill bloom owner is no longer live'),
+                      { code: 'DVA_WEBGPU_STALE_SCENE' });
+                  captured.assertCurrent();
+                  killUpload.assertCurrent(state.textures);
+                } : undefined,
                 expandedCanvas, expandedTarget,
                 acquisitionCanvas, acquisitionTarget });
             markWebGPUStartupStage('candidatePrepareEnd',
@@ -30360,6 +30382,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     },
     suspend() {
       lifecycleGeneration += 1;
+      revokePendingKillBloom();
       lastMedicalSfxFrameAt = null;
       registry.passes.sunbeamE.stopAudio();
       runtime.suspend();

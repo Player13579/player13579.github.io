@@ -208,17 +208,154 @@
     }
     const preparedPlans = new WeakSet();
     const submittedBloomTextures = new WeakSet();
+    let ownedBloom = null;
+    const deviceWatches = new WeakMap();
+    const staleOwnedBloom = () => Object.assign(new Error('Owned kill bloom became stale'),
+      { code: 'DVA_WEBGPU_STALE_SCENE' });
+    function dropOwnedProof(entry) {
+      const proof = entry.proof;
+      entry.proof = null;
+      if (entry.timer !== null) clearTimeout(entry.timer);
+      entry.timer = null;
+      proof?.destroy();
+    }
+    function releaseOwnedBloom(reason = staleOwnedBloom()) {
+      const previous = ownedBloom;
+      ownedBloom = null;
+      if (!previous) return;
+      previous.revoke?.(reason);
+      try { dropOwnedProof(previous); }
+      finally { bloom.release(); }
+    }
+    function discardOwnedBloom(entry, reason) {
+      if (ownedBloom !== entry) return;
+      try { releaseOwnedBloom(reason); } catch (_) { /* Preserve the frame error. */ }
+    }
+    function revokePendingOwnedBloom() {
+      if (ownedBloom && !ownedBloom.ready) discardOwnedBloom(ownedBloom, staleOwnedBloom());
+    }
+    function checkBloomDevice(device) {
+      let watch = deviceWatches.get(device);
+      if (!watch) {
+        watch = { error: null };
+        deviceWatches.set(device, watch);
+        const fail = (info) => {
+          watch.error = new Error(`Owned kill bloom device lost: ${info?.message || info?.reason || 'unknown'}`);
+          if (ownedBloom?.device === device) discardOwnedBloom(ownedBloom, watch.error);
+        };
+        device.lost.then(fail, fail);
+      }
+      if (watch.error) throw watch.error;
+      return watch;
+    }
+    function prepareOwnedBloom(residual, revision, device, assertCurrent) {
+      if (!residual || residual.device !== device || typeof device.createCommandEncoder !== 'function' ||
+          typeof device.createBuffer !== 'function' || typeof device.lost?.then !== 'function' ||
+          typeof device.queue?.submit !== 'function' || typeof device.pushErrorScope !== 'function' ||
+          typeof device.popErrorScope !== 'function' || typeof assertCurrent !== 'function' ||
+          typeof bloom?.prepare !== 'function' || typeof bloom.release !== 'function')
+        throw new Error('Owned kill residual bloom needs its shared WebGPU device');
+      const watch = checkBloomDevice(device);
+      assertCurrent();
+      let entry = ownedBloom;
+      if (entry?.source !== residual.texture || entry.revision !== revision || entry.device !== device) {
+        // Revoke before freeing any old target, even if the new record fails.
+        releaseOwnedBloom();
+        entry = { source: residual.texture, revision, device, asset: null, proof: null,
+          timer: null, revoke: null, ready: false, checked: null };
+        try {
+          // Externally prepared legacy results must not become owned results.
+          bloom.release();
+          ownedBloom = entry;
+          const scopeKinds = ['internal', 'out-of-memory', 'validation'];
+          const scopes = [];
+          let pushed = 0, recordingFailed = false, recordError;
+          try {
+            for (const kind of scopeKinds) {
+              device.pushErrorScope(kind);
+              pushed += 1;
+            }
+            const encoder = device.createCommandEncoder({ label: 'DVA kill residual bloom' });
+            entry.proof = device.createBuffer({ label: 'DVA kill residual submission proof',
+              size: 4, usage: 0x01 | 0x08, mappedAtCreation: true }); // MAP_READ | COPY_DST
+            // An unused WebGPU buffer is already zero. Mark it nonzero so a
+            // mappable but dropped command cannot pass the readback check.
+            new Uint8Array(entry.proof.getMappedRange(0, 4)).fill(0xa5);
+            entry.proof.unmap();
+            entry.asset = bloom.prepare({ sourceTexture: residual.texture, revision, encoder });
+            encoder.clearBuffer(entry.proof, 0, 4);
+            device.queue.submit([encoder.finish()]);
+          } catch (error) {
+            recordingFailed = true;
+            recordError = error;
+          } finally {
+            // Pop all pushed scopes in reverse order before yielding.
+            while (pushed > 0) {
+              const kind = scopeKinds[--pushed];
+              try {
+                scopes.push(Promise.resolve(device.popErrorScope()).then(error => ({ kind, error })));
+              } catch (error) { scopes.push(Promise.reject(error)); }
+            }
+          }
+          const checked = Promise.all(scopes).then(results => {
+            if (recordingFailed) throw recordError;
+            const failed = results.find(result => result.error);
+            if (failed)
+              throw new Error(`Owned kill bloom submission ${failed.kind} failed: ${failed.error.message || failed.error}`);
+          });
+          const proof = entry.proof;
+          const reachedQueue = recordingFailed ? Promise.resolve() : Promise.resolve().then(async () => {
+            if (ownedBloom !== entry) throw staleOwnedBloom();
+            await proof.mapAsync(0x01); // GPUMapMode.READ
+            if (ownedBloom !== entry) throw staleOwnedBloom();
+            const bytes = new Uint8Array(proof.getMappedRange(0, 4));
+            if (bytes.length !== 4 || bytes.some(value => value !== 0))
+              throw new Error('Owned kill bloom submission did not clear its GPU proof buffer');
+          });
+          const revokedOrTimedOut = new Promise((_, reject) => {
+            entry.revoke = reject;
+            entry.timer = setTimeout(() => reject(new Error('Owned kill bloom GPU validation timed out')), 3000);
+          });
+          entry.checked = Promise.race([Promise.all([checked, reachedQueue]), revokedOrTimedOut]);
+        } catch (error) {
+          discardOwnedBloom(entry, error);
+          throw error;
+        }
+      }
+      if (entry.ready) return entry.asset;
+      return entry.checked.then(() => {
+        if (ownedBloom !== entry) throw staleOwnedBloom();
+        if (watch.error) throw watch.error;
+        assertCurrent();
+        if (!entry.ready) {
+          dropOwnedProof(entry);
+          submittedBloomTextures.add(entry.asset.texture);
+          entry.ready = true;
+        }
+        return entry.asset;
+      }).catch(error => {
+        discardOwnedBloom(entry, error);
+        throw error;
+      });
+    }
     async function prepare(input = {}) {
       let assets = input.assets || {};
       if (needsBloom(input)) {
         const residual = residualAsset(assets);
-        if (!residual || typeof residual.texture.createView !== 'function' ||
-            typeof bloom?.prepare !== 'function' ||
-            typeof input.bloomEncoder?.beginRenderPass !== 'function') {
-          throw new Error('Atlas-missing kill animation needs shared-device bloom and preparation encoder');
+        const revision = input.residualRevision ?? 0;
+        let residualBloom;
+        if (input.ownedBloomDevice) {
+          residualBloom = prepareOwnedBloom(residual, revision, input.ownedBloomDevice, input.assertOwnedBloomCurrent);
+          if (typeof residualBloom.then === 'function') residualBloom = await residualBloom;
+        } else {
+          if (!residual || typeof residual.texture.createView !== 'function' ||
+              typeof bloom?.prepare !== 'function' ||
+              typeof input.bloomEncoder?.beginRenderPass !== 'function') {
+            throw new Error('Atlas-missing kill animation needs shared-device bloom and preparation encoder');
+          }
+          residualBloom = bloom.prepare({ sourceTexture: residual.texture,
+            revision, encoder: input.bloomEncoder });
         }
-        const residualBloom = bloom.prepare({ sourceTexture: residual.texture,
-          revision: input.residualRevision ?? 0, encoder: input.bloomEncoder });
         assets = { ...assets, residualBloom };
       }
       const prepared = plan({ ...input, assets });
@@ -271,7 +408,8 @@
       return { drawn: true, commandCount: preparedPlan.commands.length + layouts.reduce((n, l) => n + l.quads.length, 0),
         unsupported: preparedPlan.unsupported };
     }
-    return Object.freeze({ plan, prepare, acknowledgeBloomSubmission, record });
+    return Object.freeze({ plan, prepare, acknowledgeBloomSubmission,
+      releaseOwnedBloom, revokePendingOwnedBloom, record });
   }
   const api = Object.freeze({ create, plan, filamentCells });
   root.DvaWebGPUKillAnimation = api;
