@@ -27877,8 +27877,26 @@ function buildWebGPUAuthoredNinjutsuFocusActionCommand(player, data, view, actio
   if (!AUTHORED_NINJUTSU_FOCUS_DIRECTIONS.includes(direction)) return null;
   const poseKey = authoredNinjutsuFocusFrame(profile, action.progress);
   const pose = profile.directions[direction]?.[poseKey];
-  const image = state.textures?.authoredNinjutsuFocusMotions?.[identity]?.[direction]?.[poseKey];
-  if (!authoredNinjutsuFocusPoseReady(pose, image)) return null;
+  const textures = state.textures;
+  const image = textures?.authoredNinjutsuFocusMotions?.[identity]?.[direction]?.[poseKey];
+  if (!authoredNinjutsuFocusPoseReady(pose, image)) {
+    // Demand only the owned direction in the accepted camera's visible area;
+    // the pass still requires the exact image before submitting any frame.
+    const viewport = view.viewport;
+    const x = (player.x - view.camera?.x) * view.zoom;
+    const y = (player.y - view.camera?.y) * view.zoom;
+    if (data === state.data && state.screen === 'game' && !document.hidden &&
+        state.roomId && data.roomId === state.roomId && viewport?.kind === 'main' &&
+        Number.isFinite(viewport.width) && Number.isFinite(viewport.height) &&
+        Number.isFinite(view.zoom) && view.zoom > 0 &&
+        x >= 0 && x < viewport.width && y >= 0 && y < viewport.height &&
+        pose?.assetPath && image && textures.gameplayLoaded && !image.src &&
+        !textures.gameplayLoadStarted?.has(image)) {
+      const queued = textures.gameplayLoadQueue?.find(([entry]) => entry === image);
+      if (queued) startGameplayOptionalTexture(textures, image, queued[1]);
+    }
+    return null;
+  }
   const { ascensionRise } = characterAscensionPresentation(player, data);
   const command = window.DvaWebGPUPlayerSprite.createCommand({
     player: { ...player, y: player.y - ascensionRise }, identity, direction,
@@ -28512,7 +28530,7 @@ function captureWebGPUMainAppPlayerScene(data = state.data, viewport, camera, zo
         { camera, zoom, order: 0, arrival: null }, action));
     if (action?.kind === 'focus' && action.motionId === 'action-ninjutsu-focus')
       return Boolean(buildWebGPUAuthoredNinjutsuFocusActionCommand(player, data,
-        { camera, zoom, order: 0, arrival: null }, action));
+        { camera, zoom, viewport, order: 0, arrival: null }, action));
     if (action?.kind === 'focus' && action.motionId === 'action-mana')
       return Boolean(buildWebGPUManaFocusActionCommand(player, data,
         { camera, zoom, order: 0, arrival: null }, action));
