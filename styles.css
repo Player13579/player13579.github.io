@@ -12283,6 +12283,7 @@ body #statusPanel #hackerAbilityDock .hacker-direct-action:is(.hacker-key-select
 
 /* v650: toast-only semantic feedback lifecycle; it does not move the protected control/footer layout. */
 body .toast {
+  pointer-events: none;
   color: #102532;
   background: linear-gradient(135deg, #fafdfe 0%, #edf7f8 100%);
   border-color: #5f9eaa;
