@@ -8706,12 +8706,20 @@ function bindEvents() {
   els.slowWalkButton.addEventListener("pointercancel", () => setSlowWalkHeld(false));
   els.slowWalkButton.addEventListener("pointerleave", () => setSlowWalkHeld(false));
 
+  let chatDraftRevision = 0;
+  els.chatInput.addEventListener("input", () => { chatDraftRevision += 1; });
   els.chatForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const message = els.chatInput.value.trim();
+    const draft = els.chatInput.value;
+    const message = draft.trim();
     if (!message) return;
-    const ok = await api("/api/chat", { message });
-    if (ok) els.chatInput.value = "";
+    const revision = chatDraftRevision;
+    const { roomId, playerId, roomSessionGeneration } = state;
+    const isCurrent = () => isCurrentRoomSession(roomId, playerId, roomSessionGeneration);
+    const result = await api("/api/chat", { message }, { isCurrent });
+    if (result && !result.moderated && isCurrent() && revision === chatDraftRevision && els.chatInput.value === draft) {
+      els.chatInput.value = "";
+    }
   });
 
   els.chatTab.addEventListener("click", () => setFeed());
@@ -11683,8 +11691,10 @@ async function api(path, extra = {}, options = {}) {
     timeoutMs: options.timeoutMs,
     quiet: options.quiet,
     resetOnNotFound: options.resetOnNotFound,
-    publicFeature: options.publicFeature
+    publicFeature: options.publicFeature,
+    isErrorToastCurrent: options.isCurrent
   });
+  if (options.isCurrent && !options.isCurrent()) return false;
   if (!result) {
     recoverAfterRejectedAction();
     return false;
