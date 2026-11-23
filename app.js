@@ -21280,7 +21280,10 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
   if (!imageReady(mapImage, data.map.width, data.map.height))
     textureGaps.push({ stage: "map", texture: `fullMapComposites.${data.map.id}`, blocking: true });
   const boxes = mysteryBoxWebGPUScene(data);
-  if (boxes.scene.length && !imageReady(boxes.image, 1548, 516))
+  if (boxes.scene.length && !imageReady(boxes.image, 1548, 516) &&
+      window.DvaWebGPUMysteryBoxes?.requiresMaterial?.({
+        scene: boxes.scene, camera, zoom, viewport
+      }) !== false)
     textureGaps.push({ stage: "mysteryBoxes", texture: "mysteryBoxMaterial", blocking: true });
   const zones = Array.isArray(data.gravityZones) ? data.gravityZones : [];
   if (zones.length && !imageReady(textures.gravityLocalMaterialV834, 3940, 3589))

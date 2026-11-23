@@ -28,22 +28,37 @@
       pivotX + 3 * opening - cosine * pivotX + sine * pivotY,
       pivotY - 36 * opening - sine * pivotX - cosine * pivotY];
   }
+  const validView = (camera, zoom, viewport) => Boolean(camera && viewport &&
+    [camera.x, camera.y, zoom, viewport.width, viewport.height].every(finite) &&
+    zoom > 0 && viewport.width > 0 && viewport.height > 0);
+  function boxInView(box, camera, zoom, viewport) {
+    if (!box || ![box.x, box.y].every(finite)) return false;
+    const right = camera.x + viewport.width / zoom;
+    const bottom = camera.y + viewport.height / zoom;
+    return !(box.cull !== false && (box.x < camera.x - 140 || box.x > right + 140 ||
+      box.y < camera.y - 140 || box.y > bottom + 140));
+  }
+  function requiresMaterial({ scene, camera, zoom, viewport } = {}) {
+    if (!Array.isArray(scene)) return true;
+    if (!scene.length) return false;
+    if (!validView(camera, zoom, viewport) ||
+        !finite(camera.x + viewport.width / zoom) ||
+        !finite(camera.y + viewport.height / zoom)) return true;
+    // A wholly offscreen set cannot draw. If placement is uncertain,
+    // keep the required material gate until valid data arrives.
+    return scene.some(box => !box || ![box.x, box.y].every(finite) ||
+      boxInView(box, camera, zoom, viewport));
+  }
   function plan({ scene, self = null, camera, zoom, viewport, image } = {}) {
-    if (!Array.isArray(scene) || !camera || !viewport ||
-        ![camera.x, camera.y, zoom, viewport.width, viewport.height].every(finite) ||
-        zoom <= 0 || viewport.width <= 0 || viewport.height <= 0) {
+    if (!Array.isArray(scene) || !validView(camera, zoom, viewport)) {
       throw new TypeError('Mystery boxes require scene, world camera, zoom, and logical viewport');
     }
     if (!scene.length || !ready(image)) return Object.freeze([]);
     const world = [zoom, 0, 0, zoom, -camera.x * zoom, -camera.y * zoom];
-    const right = camera.x + viewport.width / zoom;
-    const bottom = camera.y + viewport.height / zoom;
     const commands = [];
     for (const box of scene) {
-      if (!box || ![box.x, box.y].every(finite)) continue;
+      if (!boxInView(box, camera, zoom, viewport)) continue;
       const { x, y } = box;
-      if (box.cull !== false && (x < camera.x - 140 || x > right + 140 ||
-          y < camera.y - 140 || y > bottom + 140)) continue;
       const near = self && finite(self.x) && finite(self.y) &&
         Math.hypot(self.x - x, self.y - y) <= Number(box.useRange || 82);
       const alpha = box.alpha === undefined ? (near ? 1 : .84) : box.alpha;
@@ -107,7 +122,7 @@
       owned.clear(); images.clear();
     } });
   }
-  const api = Object.freeze({ plan, create, ready });
+  const api = Object.freeze({ plan, create, ready, requiresMaterial });
   root.DvaWebGPUMysteryBoxes = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);
