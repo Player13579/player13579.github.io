@@ -159,7 +159,8 @@
         if (!cleared.has(target)) throw new Error('Target must be cleared before drawing');
         if (!segment || segment.target !== target || segment.label !== stage) {
           flush();
-          const batch = primitives.createBatch({ width: handle.logicalWidth, height: handle.logicalHeight });
+          const batch = primitives.createBatch({ width: handle.logicalWidth, height: handle.logicalHeight,
+            reuseSpriteBindings: stage === 'hud' });
           batches.push(batch);
           segment = { target, label: stage, batch };
         }

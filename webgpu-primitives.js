@@ -127,7 +127,7 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
       }));
       return pipelines.get(key);
     }
-    function createBatch({ width, height } = {}) {
+    function createBatch({ width, height, reuseSpriteBindings = false } = {}) {
       if (destroyed) throw new Error('Renderer destroyed');
       positive(width, 'Width'); positive(height, 'Height');
       const commands = [];
@@ -197,6 +197,9 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
           });
           device.queue.writeBuffer(drawBuffer, 0, values);
           const groups = new Map();
+          const spriteGroups = reuseSpriteBindings ? new Map() : null;
+          const spriteViews = reuseSpriteBindings ? new Map() : null;
+          let lastSpriteGroup = null;
           ordered.forEach((command, index) => {
             const material = pipeline(command.kind, command.mode);
             pass.setPipeline(material);
@@ -209,10 +212,27 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
             }
             pass.setBindGroup(0, group);
             if (command.kind === 'sprite') {
-              const textureView = typeof command.texture.createView === 'function' ? command.texture.createView() : command.texture;
-              pass.setBindGroup(1, device.createBindGroup({ layout: material.getBindGroupLayout(1), entries: [
-                { binding: 0, resource: textureView }, { binding: 1, resource: sampler }
-              ] }));
+              const texture = command.texture;
+              let materialGroups = spriteGroups?.get(material);
+              let spriteGroup = materialGroups?.get(texture);
+              if (!spriteGroup) {
+                let textureView = spriteViews?.get(texture);
+                if (!textureView) {
+                  textureView = typeof texture.createView === 'function' ? texture.createView() : texture;
+                  spriteViews?.set(texture, textureView);
+                }
+                spriteGroup = device.createBindGroup({ layout: material.getBindGroupLayout(1), entries: [
+                  { binding: 0, resource: textureView }, { binding: 1, resource: sampler }
+                ] });
+                if (spriteGroups) {
+                  if (!materialGroups) spriteGroups.set(material, materialGroups = new Map());
+                  materialGroups.set(texture, spriteGroup);
+                }
+              }
+              if (!spriteGroups || spriteGroup !== lastSpriteGroup) pass.setBindGroup(1, spriteGroup);
+              lastSpriteGroup = spriteGroup;
+            } else {
+              lastSpriteGroup = null;
             }
             pass.draw(6, 1, 0, index);
           });
