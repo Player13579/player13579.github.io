@@ -3,7 +3,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
 
-const app = fs.readFileSync(process.argv[2] === "-" ? 0 : process.argv[2] || path.join(__dirname, "../app.js"), "utf8");
+const app = fs.readFileSync(process.argv[2] === "-" ? 0 : process.argv[2] || path.join(__dirname, "../app.js"), "utf8").replaceAll("\r\n", "\n");
 function section(start, end) {
   const from = app.indexOf(start);
   const to = app.indexOf(end, from + start.length);
@@ -15,7 +15,9 @@ const handlersSource = [
   section("function syncMovementInputImmediately()", "const revokedTabletCategoryClicks"),
   section("function keyName(", "function normalizeSkinId("),
   section("function sendMovement(", "function rotateMovementSession("),
-  section("function isDashing()", "function activeStaminaFor(")
+  section("function isDashing()", "function activeStaminaFor("),
+  section("function ownsThrowCharge(", "function releaseThrowChargeOperation("),
+  section("function isCurrentRoomSession(", "function setCurrentRoomSession(")
 ].join("\n");
 
 function makeGame() {
@@ -31,7 +33,7 @@ function makeGame() {
   const document = { activeElement: body };
   const state = {
     screen: "game", data: { phase: "playing" }, keys: new Set(), movementKeyDirections: new Map(), pad: new Set(),
-    enhanceHold: {}, throwTargeting: {}, clairvoyance: {}, tabletStick: { dx: 0, dy: 0 },
+    enhanceHold: {}, throwTargeting: {}, throwChargeOperation: null, clairvoyance: {}, tabletStick: { dx: 0, dy: 0 },
     continuousActionKeyAt: new Map(), movementActive: false, moveRequestSeq: 0,
     movementQueue: { clear: noOp, enqueue: (packet) => packets.push(packet) }
   };

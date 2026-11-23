@@ -37,6 +37,8 @@ const appHandlers = new vm.Script([
   sourceBlock("async function request("),
   sourceBlock("async function returnToTitle("),
   sourceBlock("async function leaveCurrentRoom("),
+  sourceBlock("function emptyThrowTargetingState("),
+  sourceBlock("function resetThrowChargeSession("),
   sourceBlock("function isCurrentRoomSession("),
   sourceBlock("function setCurrentRoomSession("),
   sourceBlock("function resetLocalSession("),
@@ -100,7 +102,7 @@ async function createFixture() {
   const start = await requestServer("/api/solo/start", { clientId, missionId: "emp", name: "Tester " + nextFixture });
   assert.equal(start.ok, true, start.error);
 
-  const trace = { actions: [], toasts: [], releases: 0, resyncs: 0 };
+  const trace = { actions: [], toasts: [], releases: 0, resyncs: 0, cancelledFrames: [] };
   const handlers = new Map();
   const els = new Proxy({}, {
     get(nodes, name) {
@@ -114,6 +116,7 @@ async function createFixture() {
   const state = {
     roomId: start.roomId, playerId: start.playerId, roomSessionGeneration: 1, screen: "game",
     data: start, offlineMode: true, lastStateServerNow: start.serverNow, lastMovementServerNow: 0,
+    enhanceHold: {}, throwChargeOperation: null,
   };
   for (const name of [
     "preparationRosterEntries", "motion", "facing", "walkAnimations", "gravityLevitationEffects",
@@ -139,6 +142,8 @@ async function createFixture() {
     storage: {}, clientStorage: { setItem: noop, removeItem: noop },
     GRENADE_IMPACT_SOUND_RECEIPTS: { ids: new Set() }, WEBGPU_E_CUES: {},
     clientId: () => clientId,
+    updateEnhanceReadout: noop,
+    cancelAnimationFrame: (frame) => trace.cancelledFrames.push(frame),
     showToast: (message) => trace.toasts.push(message),
     switchScreenWithEffect: (next) => { state.screen = next; },
     triggerCharacterAction: (...args) => trace.actions.push(args),
@@ -146,6 +151,7 @@ async function createFixture() {
     resyncAfterRejectedAction: () => trace.resyncs++,
   });
   appHandlers.runInContext(context);
+  state.throwTargeting = vm.runInContext("emptyThrowTargetingState()", context);
   return { clientId, state, context, trace, handlers, empProduced, deliverEmp };
 }
 
@@ -157,6 +163,21 @@ async function exitByClick(fixture) {
   assert.equal(fixture.state.data, null);
   assert.equal(fixture.state.roomSessionGeneration, 2);
 }
+
+test("title exit retires the room throw operation and its targeting frame", async () => {
+  const fixture = await createFixture();
+  const { state, trace } = fixture;
+  state.throwChargeOperation = {
+    roomId: state.roomId, playerId: state.playerId, roomSessionGeneration: state.roomSessionGeneration
+  };
+  Object.assign(state.throwTargeting, { active: true, itemId: "frag-grenade", frame: 21 });
+  await exitByClick(fixture);
+  assert.equal(state.throwChargeOperation, null);
+  assert.equal(state.throwTargeting.active, false);
+  assert.equal(state.throwTargeting.itemId, "");
+  assert.equal(state.throwTargeting.frame, 0);
+  assert.deepEqual(trace.cancelledFrames, [21]);
+});
 
 const cases = [
   { name: "current successful response is applied" },
