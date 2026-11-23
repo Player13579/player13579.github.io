@@ -212,13 +212,43 @@
       throw new TypeError('HUD requires source atlas ascent and pixelSize for exact baselines');
     }
     const ascentRatio = atlasMetrics.ascent / atlasMetrics.pixelSize;
-    const measure = (value, size) => textAtlas.layout(value, { size }).width;
-    function makePlan(input) { return plan({ ...input, measure }); }
+    const preparedLayouts = new WeakMap();
+    const computeLayout = (value, size) => textAtlas.layout(value, { size });
+    function cacheFrameLayouts() {
+      // Atlas, origin and missing-glyph policy are fixed to this HUD. The
+      // fingerprint is the exact text and size; the map never outlives its plan.
+      const bySize = new Map();
+      let count = 0;
+      return (value, size) => {
+        const texts = bySize.get(size);
+        if (texts?.has(value)) return texts.get(value);
+        const layout = computeLayout(value, size);
+        if (count >= 64 || !Array.isArray(layout.quads) ||
+            layout.quads.some(q => !Array.isArray(q?.uv))) return layout;
+        // Don't cache caller-owned arrays. Only width and glyph geometry are
+        // used by HUD; texture liveness is checked separately at draw time.
+        const frozen = Object.freeze({
+          width: layout.width,
+          quads: Object.freeze(layout.quads.map(q => Object.freeze({
+            ...q, uv: Object.freeze(q.uv.slice())
+          })))
+        });
+        if (!texts) bySize.set(size, new Map([[value, frozen]]));
+        else texts.set(value, frozen);
+        count++;
+        return frozen;
+      };
+    }
+    function makePlan(input, layout = computeLayout) {
+      return plan({ ...input, measure: (value, size) => layout(value, size).width });
+    }
     async function prepare(input) {
       if (typeof textAtlas.ensure !== 'function') throw new TypeError('HUD text atlas needs ensure');
-      const result = makePlan(input);
+      const layout = cacheFrameLayouts();
+      const result = makePlan(input, layout);
       if (!result.drawn) return result;
       await textAtlas.ensure(result.texts.map(t => t.text).join('\n'));
+      preparedLayouts.set(result, layout);
       return result;
     }
     function draw({ frame, target, viewport, data, scene, preparedPlan } = {}) {
@@ -233,7 +263,9 @@
       }
       const result = preparedPlan || makePlan({ data, viewport, scene });
       if (!result.drawn) return result;
-      const layouts = result.texts.map(item => textAtlas.layout(item.text, { size: item.size }));
+      const layoutFor = preparedLayouts.get(result) || computeLayout;
+      preparedLayouts.delete(result);
+      const layouts = result.texts.map(item => layoutFor(item.text, item.size));
       for (const layout of layouts) for (const q of layout.quads) {
         if (!textAtlas.textures[q.page]) throw new Error('HUD atlas page is not loaded; call prepare first');
       }
