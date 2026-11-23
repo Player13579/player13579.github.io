@@ -4021,6 +4021,7 @@ function setScreen(screen) {
     if (els.sensoryOverlayText) els.sensoryOverlayText.textContent = "";
   }
   state.screen = next;
+  if (next === "title") showTerminalTitleRendererNotice();
   if (next !== "game") suspendWebGPUMainAppDriver();
   if (previous === "game" && next === "title") {
     const driver = webgpuMainApp.driver;
@@ -7910,8 +7911,8 @@ function titleFrameEngineMissing() {
   return WEBGPU_MAIN_OWNER && typeof globalThis.DVAFrameLoop?.start !== "function";
 }
 
-function titleFrameEngineRecoveryBlocked() {
-  return state.screen === "title" && titleFrameEngineMissing();
+function titleWebGPURecoveryBlocked() {
+  return state.screen === "title" && (titleFrameEngineMissing() || titleTerminalRendererRecoveryBlocked());
 }
 
 function showMissingFrameEngineNotice() {
@@ -7922,11 +7923,28 @@ function showMissingFrameEngineNotice() {
   els.titlePlayButton.hidden = true;
 }
 
+function titleTerminalRendererRecoveryBlocked() {
+  return WEBGPU_MAIN_OWNER && state.screen === "title" && webgpuMainApp.failed &&
+    !titleFrameEngineMissing();
+}
+
+function showTerminalTitleRendererNotice() {
+  if (!titleTerminalRendererRecoveryBlocked()) return false;
+  const text = document.getElementById("titleFrameEngineNoticeText");
+  const message = "描画が停止しました。プレイを再開するにはページを再読み込みしてください。";
+  if (text && text.textContent !== message) text.textContent = message;
+  const notice = document.getElementById("titleFrameEngineNotice");
+  if (notice) notice.hidden = false;
+  els.titlePlayButton.hidden = true;
+  return true;
+}
+
 function bindTitleNavigationEvents() {
   const titleFrameEngineReload = document.getElementById("titleFrameEngineReload");
   titleFrameEngineReload?.addEventListener("click", () => {
-    if (state.screen !== "title" || !titleFrameEngineMissing() ||
-        !webgpuMainApp.failed || titleFrameEngineReloadRequested) return;
+    if (state.screen !== "title" || !webgpuMainApp.failed ||
+        (!titleFrameEngineMissing() && !titleTerminalRendererRecoveryBlocked()) ||
+        titleFrameEngineReloadRequested) return;
     titleFrameEngineReloadRequested = true;
     titleFrameEngineReload.disabled = true;
     window.location.reload();
@@ -7937,7 +7955,8 @@ function bindTitleNavigationEvents() {
   document.getElementById('webgpuMainCopyDiagnosticButton')?.addEventListener('click',
     copyWebGPUMainFailureDiagnostic);
   els.titlePlayButton.addEventListener("click", () => {
-    if (els.titlePlayButton.disabled || titleFrameEngineMissing()) return;
+    if (els.titlePlayButton.disabled || titleFrameEngineMissing() ||
+        showTerminalTitleRendererNotice()) return;
     if (WEBGPU_MAIN_VERIFY_ROUTE) {
       webgpuStartupTiming.playClickedAtMs = performance.now();
       webgpuStartupTiming.firstPumpAfterPlayAtMs = null;
@@ -11411,6 +11430,15 @@ async function startMatchmaking(options = {}) {
 
 async function startSoloMission(missionId) {
   if (state.screen !== "tactics" || !soloMissionIds.includes(missionId) || state.soloMissionStarting) return;
+  const blockUnavailableRenderer = () => {
+    const frameEngineMissing = titleFrameEngineMissing();
+    if (!frameEngineMissing && !(WEBGPU_MAIN_OWNER && webgpuMainApp.failed)) return false;
+    showToast(frameEngineMissing
+      ? "ゲームの描画を開始できませんでした。タイトルへ戻ってページを再読み込みしてください。"
+      : "描画が停止しました。プレイを再開するにはタイトルへ戻ってページを再読み込みしてください。");
+    return true;
+  };
+  if (blockUnavailableRenderer()) return;
   const routeGeneration = state.soloMissionStartRouteGeneration;
   const roomGeneration = state.roomSessionGeneration;
   const name = startPlayerName();
@@ -11446,6 +11474,7 @@ async function startSoloMission(missionId) {
   if (state.screen !== "tactics" || routeGeneration !== state.soloMissionStartRouteGeneration ||
       roomGeneration !== state.roomSessionGeneration ||
       previousRoomId !== state.roomId || previousPlayerId !== state.playerId) return;
+  if (blockUnavailableRenderer()) return;
   if (!result) {
     showToast("ソロ訓練を開始できませんでした。もう一度お試しください。");
     return;
@@ -11509,6 +11538,7 @@ async function runVerificationRealScreenAutoStart() {
     showMissingFrameEngineNotice();
     return;
   }
+  if (showTerminalTitleRendererNotice()) return;
   document.documentElement.setAttribute("data-v533-auto-start-status", "starting");
   try {
     // Pages is the canonical verification origin, so sequential exact-route
@@ -12286,7 +12316,7 @@ async function rebuildExpiredOfflineRoom(generation, roomId, playerId, authority
 }
 
 async function resumeRoomAfterBackground() {
-  if (titleFrameEngineRecoveryBlocked() || document.hidden || !state.roomId || !state.playerId) return false;
+  if (titleWebGPURecoveryBlocked() || document.hidden || !state.roomId || !state.playerId) return false;
   if (state.backgroundResume.inFlight) {
     state.backgroundResume.queued = true;
     return false;
@@ -12306,7 +12336,7 @@ async function resumeRoomAfterBackground() {
     // it is idempotent and preserves a healthy worker; a missing generated
     // room is rebuilt below rather than leaking its raw server error.
     if (offline) await client?.start?.();
-    if (titleFrameEngineRecoveryBlocked()) return false;
+    if (titleWebGPURecoveryBlocked()) return false;
     const worker = originalMain ? null : (originalWorker || client?.worker);
     const workerGeneration = originalWorker ? originalWorkerGeneration : client?.workerGeneration;
     const main = originalMain || (!worker ? client?.mainThreadApi : null);
@@ -12324,7 +12354,7 @@ async function resumeRoomAfterBackground() {
             payload.error === "プレイヤーが見つかりません。再入室してください。");
       }
     });
-    if (titleFrameEngineRecoveryBlocked() || serial !== state.backgroundResume.serial || document.hidden ||
+    if (titleWebGPURecoveryBlocked() || serial !== state.backgroundResume.serial || document.hidden ||
         !isCurrentRoomSession(roomId, playerId, generation) || offline !== state.offlineMode ||
         (offline && client !== state.offlineClient)) return false;
     // The current runtime retires its Worker when switching to independent
@@ -12358,7 +12388,7 @@ async function resumeRoomAfterBackground() {
 }
 
 async function recoverRoomInteractionAfterBackground() {
-  if (titleFrameEngineRecoveryBlocked() || document.hidden || !state.roomId || !state.playerId) return false;
+  if (titleWebGPURecoveryBlocked() || document.hidden || !state.roomId || !state.playerId) return false;
   if (state.foregroundRecovery.inFlight) {
     state.foregroundRecovery.queuedGeneration = state.roomSessionGeneration;
     return false;
@@ -19415,6 +19445,7 @@ function setWebGPUMainFailure(error) {
   document.body.dataset.webgpuMainError = message;
   setWebGPUMainPendingDiagnostic('failed');
   suspendWebGPUMainAppDriver({ destroy: true });
+  showTerminalTitleRendererNotice();
 }
 
 function captureWebGPUMainFailureDiagnostic(message) {
