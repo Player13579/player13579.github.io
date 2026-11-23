@@ -15,6 +15,7 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
       this.worker = null;
       this.pending = new Map();
       this.requestId = 0;
+      this.requestEpoch = 0;
       this.workerGeneration = 0;
       this.readyPromise = null;
       this.readyResolve = null;
@@ -83,7 +84,10 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
       return this.readyPromise;
     }
 
-    startMainThreadFallback() {
+    startMainThreadFallback({ preserveActiveRoom = false } = {}) {
+      const activeRoomHasReadyWorker = () => preserveActiveRoom && this.worker && !this.readyResolve &&
+        this.options.hasActiveRoom?.();
+      if (activeRoomHasReadyWorker()) return Promise.resolve(false);
       if (this.mainThreadApi) return Promise.resolve(true);
       const compatibleGlobalApi = this.compatibleMainThreadApi();
       if (compatibleGlobalApi) {
@@ -92,7 +96,8 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
       }
       if (this.mainThreadPromise) return this.mainThreadPromise;
       const fallbackGeneration = this.workerGeneration;
-      this.mainThreadPromise = new Promise((resolve) => {
+      const fallbackEpoch = this.requestEpoch;
+      const loading = new Promise((resolve) => {
         const staleScript = document.querySelector("script[data-dva-offline-main]");
         if (staleScript && staleScript.dataset.dvaOfflineMain !== OFFLINE_WORKER_VERSION) staleScript.remove();
         // An active load is owned by mainThreadPromise above. With no promise
@@ -109,7 +114,7 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
           const loadedApi = this.compatibleMainThreadApi();
           const canAdoptMain = (!settled && fallbackGeneration === this.workerGeneration) ||
             !this.worker || this.readyResolve;
-          if (loadedApi && canAdoptMain) {
+          if (loadedApi && canAdoptMain && fallbackEpoch === this.requestEpoch && !activeRoomHasReadyWorker()) {
             this.mainThreadApi = loadedApi;
             this.failPending();
             this.worker?.terminate();
@@ -131,9 +136,10 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
         script.dataset.dvaOfflineMain = OFFLINE_WORKER_VERSION;
         document.head.append(script);
       }).finally(() => {
-        if (!this.mainThreadApi) this.mainThreadPromise = null;
+        if (!this.mainThreadApi && this.mainThreadPromise === loading) this.mainThreadPromise = null;
       });
-      return this.mainThreadPromise;
+      this.mainThreadPromise = loading;
+      return loading;
     }
 
     async activateMainThreadFallback(generation) {
@@ -148,24 +154,47 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
 
     async request(path, body = {}, options = {}) {
       const attempts = Number.isFinite(options.attempts) ? Math.max(1, Number(options.attempts)) : 2;
+      const roomBound = Boolean((body.roomId && body.playerId) || this.options.hasActiveRoom?.());
+      const usesRoomAuthority = () => roomBound || this.options.hasActiveRoom?.();
+      let requestEpoch = this.requestEpoch;
       for (let attempt = 0; attempt < attempts; attempt += 1) {
         const ready = await this.start();
+        if (requestEpoch !== this.requestEpoch) return null;
         if (ready) {
+          const worker = this.worker;
+          const main = this.mainThreadApi;
+          const generation = this.workerGeneration;
           const result = await this.requestOnce(path, body, options);
+          if (requestEpoch !== this.requestEpoch) return null;
           if (result) return result;
+          if (usesRoomAuthority()) {
+            // A timeout says nothing about the worker or whether a mutation
+            // ran. Only a caller with an idempotent request may try this
+            // authority again, and never by moving the request to a new room.
+            const sameAuthority = () => this.worker === worker && this.mainThreadApi === main &&
+              this.workerGeneration === generation && requestEpoch === this.requestEpoch;
+            for (let retry = attempt + 1; retry < attempts && sameAuthority() && options.retryAfterTimeout?.(); retry += 1) {
+              const replay = await this.requestOnce(path, body, options);
+              if (!sameAuthority()) return null;
+              if (replay) return replay;
+            }
+            return null;
+          }
         }
-        // A hidden/background browser can discard a ready Worker between its
-        // handshake and the first request. Promote the generated main-thread
-        // server inside this same request instead of starting another Worker
-        // generation and losing the fallback to the generation race.
-        const fallbackReady = await this.startMainThreadFallback();
+        if (usesRoomAuthority()) return null;
+        // Keep same-request recovery for calls made before a room is owned.
+        const fallbackReady = await this.startMainThreadFallback({ preserveActiveRoom: true });
+        if (requestEpoch !== this.requestEpoch || usesRoomAuthority()) return null;
         if (fallbackReady) {
           this.worker?.terminate();
           this.worker = null;
           const fallbackResult = await this.requestOnce(path, body, options);
+          if (requestEpoch !== this.requestEpoch) return null;
           if (fallbackResult) return fallbackResult;
         }
+        if (usesRoomAuthority()) return null;
         this.stop();
+        requestEpoch = this.requestEpoch;
       }
       return null;
     }
@@ -251,6 +280,8 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
     }
 
     stop() {
+      this.requestEpoch += 1;
+      this.mainThreadPromise = null;
       this.settleReady(false);
       this.failPending();
       this.worker?.terminate();

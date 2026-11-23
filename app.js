@@ -3502,6 +3502,7 @@ function initializeOfflineRuntime() {
   if (!globalThis.DVAOffline?.OfflineApiClient) return;
   state.offlineClient = new DVAOffline.OfflineApiClient({
     clientId,
+    hasActiveRoom: () => state.offlineMode && Boolean(state.roomId && state.playerId),
     isDeveloper: () => clientStorage.getItem(storage.developerIdentity) === "1" || Boolean(
       VERIFY_REAL_SCREEN_FIXTURE_KIND && IS_TRUSTED_REAL_SCREEN_FIXTURE_HOST
     )
@@ -4735,7 +4736,7 @@ async function purchaseVendingItem(button, { bulk = false, enhanceGesture = null
       itemId,
       ...(bulk ? { bulk: true, transactionId } : {}),
       ...(enhanceGesture ? { enhanceGesture } : {})
-    }, bulk ? { attempts: 2 } : {});
+    }, bulk ? { attempts: 2, retryOfflineTimeout: Boolean(transactionId) } : {});
     // Keep the same accepted-intent ID after a lost response, so a bounded
     // retry is a server replay rather than a second all-credit settlement.
     if (result && bulk) clearPendingVendingBulkTransaction(itemId);
@@ -11716,6 +11717,7 @@ async function api(path, extra = {}, options = {}) {
     timeoutMs: options.timeoutMs,
     quiet: options.quiet,
     resetOnNotFound: options.resetOnNotFound,
+    retryOfflineTimeout: options.retryOfflineTimeout ? isCurrent : undefined,
     publicFeature: options.publicFeature,
     isErrorToastCurrent: isCurrent
   });
@@ -12019,7 +12021,8 @@ async function request(path, body = {}, options = {}) {
   if (useOffline) {
     const result = await state.offlineClient?.request(path, { ...body, clientId: clientId() }, {
       timeoutMs: options.timeoutMs,
-      attempts: options.attempts
+      attempts: options.attempts,
+      retryAfterTimeout: options.retryOfflineTimeout
     });
     if (!result?.ok) {
       if (path === "/api/state") options.onStateFailure?.(result?.status, result);
