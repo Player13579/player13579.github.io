@@ -9213,6 +9213,11 @@ function bindEvents() {
     }
   });
 
+  window.addEventListener("pointerdown", (event) => {
+    const tap = state.expandedMapTap;
+    if (state.expandedMapOpen && tap?.pointerType === "touch" &&
+        event.pointerType === "touch" && tap.pointerId !== event.pointerId) tap.moved = true;
+  }, true);
   els.expandedMapCanvas.addEventListener("pointerdown", beginExpandedMapTap);
   els.expandedMapCanvas.addEventListener("pointermove", moveExpandedMapTap);
   els.expandedMapCanvas.addEventListener("pointerup", (event) => finishExpandedMapTap(event));
@@ -11016,6 +11021,7 @@ function beginExpandedMapTap(event) {
   if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) return;
   state.expandedMapTap = {
     pointerId: event.pointerId,
+    pointerType: event.pointerType,
     startX: event.clientX,
     startY: event.clientY,
     moved: false
@@ -11025,8 +11031,9 @@ function beginExpandedMapTap(event) {
 }
 
 function moveExpandedMapTap(event) {
-  updateExpandedMapPointer(event);
   const tap = state.expandedMapTap;
+  if (event.pointerType === "touch" && (tap ? tap.pointerId !== event.pointerId : !event.isPrimary)) return;
+  updateExpandedMapPointer(event);
   if (!tap || tap.pointerId !== event.pointerId || tap.moved) return;
   tap.moved = Math.hypot(event.clientX - tap.startX, event.clientY - tap.startY) > 10;
 }
