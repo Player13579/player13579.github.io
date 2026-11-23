@@ -21475,10 +21475,17 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
   const view = { camera, zoom, width: viewport.width, height: viewport.height };
   const commands = buildWebGPUGroundItemCommands(data, view);
   if (!commands) throw new Error("Ground-item WebGPU command builder unavailable");
-  for (const item of groundItems) {
-    if (!commands.some(command => command.itemId === item.id && command.part === "fallback")) continue;
-    textureGaps.push({ stage: "groundItems", texture: String(item.asset || ""),
-      itemId: item.id, blocking: false });
+  if (groundItems.length && commands.length) {
+    const fallbackItemIds = new Set();
+    for (const command of commands) {
+      if (command.part === "fallback" && command.itemId === command.itemId)
+        fallbackItemIds.add(command.itemId);
+    }
+    for (const item of groundItems) {
+      if (!fallbackItemIds.has(item.id)) continue;
+      textureGaps.push({ stage: "groundItems", texture: String(item.asset || ""),
+        itemId: item.id, blocking: false });
+    }
   }
   const now = estimatedServerNow(data);
   const frameNow = state.frameNow || performance.now();
