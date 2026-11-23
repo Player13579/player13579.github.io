@@ -1237,7 +1237,7 @@ const state = {
   tabletOpen: false,
   vendingReturnFocus: null,
   tabletResumeAfterMap: false,
-  tabletStick: { pointerId: null, dx: 0, dy: 0, strength: 0, mode: "idle" },
+  tabletStick: { pointerId: null, dx: 0, dy: 0, strength: 0, mode: "idle", geometry: null },
   tabletBranchGroup: "",
   tabletBranchPath: "",
   tabletBranchRenderKey: "",
@@ -9588,7 +9588,16 @@ function bindTabletControls() {
       sendMovement(true);
       return;
     }
-    const rect = els.tabletJoystick.getBoundingClientRect();
+    const canvas = els.tabletJoystick;
+    const rect = canvas.getBoundingClientRect();
+    const geometry = tabletStickGeometry(canvas, rect);
+    const held = state.tabletStick.geometry;
+    if (!geometry || (held && !tabletStickGeometryMatches(held, geometry)) ||
+        ![event.clientX, event.clientY].every(Number.isFinite)) {
+      cancelTabletStickGeometryLease();
+      return;
+    }
+    if (!held) state.tabletStick.geometry = geometry;
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     const maxDistance = Math.max(1, Math.min(rect.width, rect.height) / 2 - 30);
@@ -9707,9 +9716,38 @@ function setTabletStickMode(mode, strength = 0) {
   if (stick.getAttribute("aria-valuetext") !== valueText) stick.setAttribute("aria-valuetext", valueText);
 }
 
+function tabletStickGeometry(canvas, rect) {
+  if (!canvas?.isConnected || !rect ||
+      ![rect.left, rect.top, rect.width, rect.height].every(Number.isFinite) ||
+      rect.width <= 0 || rect.height <= 0) return null;
+  return { canvas, rect: [rect.left, rect.top, rect.width, rect.height] };
+}
+
+function tabletStickGeometryMatches(held, current) {
+  return Boolean(held && current && held.canvas === current.canvas &&
+    current.rect.every((value, index) => Math.abs(value - held.rect[index]) <= 1));
+}
+
+function cancelTabletStickGeometryLease() {
+  const stick = state.tabletStick;
+  if (stick.pointerId === null) return;
+  resetTabletStick();
+  syncMovementInputImmediately();
+}
+
+function validateTabletStickGeometryAfterReflow() {
+  const stick = state.tabletStick;
+  if (!state.tabletOpen || stick.pointerId === null) return;
+  const canvas = els.tabletJoystick;
+  const current = tabletStickGeometry(canvas, canvas?.getBoundingClientRect());
+  if (!tabletStickGeometryMatches(stick.geometry, current))
+    cancelTabletStickGeometryLease();
+}
+
 function resetTabletStick() {
   const pointerId = state.tabletStick.pointerId;
   state.tabletStick.pointerId = null;
+  state.tabletStick.geometry = null;
   state.tabletStick.dx = 0;
   state.tabletStick.dy = 0;
   setTabletStickMode("idle", 0);
@@ -17556,6 +17594,7 @@ function scheduleGameplayViewportReflow(settle = false) {
     syncPortraitTabletDock();
     if (state.screen === "game") {
       setTabletOpen(state.tabletOpen, { persist: false, focus: false });
+      validateTabletStickGeometryAfterReflow();
       scheduleTabletBranchLayout();
       scheduleActiveEffectsLayout(() => {
         syncSoloMissionHudCssHeight(els.soloMissionHud.getBoundingClientRect());
