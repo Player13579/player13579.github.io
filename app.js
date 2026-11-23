@@ -23438,6 +23438,21 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       events.push({ type: "shapes", effectId: effect.id, commands });
       continue;
     }
+    if (type === "action-item-pickup" &&
+        [effect.x, effect.y, effect.startedAt, effect.at].every(Number.isFinite) &&
+        effect.at > 0 && effect.radius === 84 && effect.duration === 1200 &&
+        effect.durationMs === 0 && effect.markerCount === 1 &&
+        effect.targetX === null && effect.targetY === null &&
+        effect.targetId === "" && effect.objectId === "" && effect.viewerId === "" &&
+        effect.mode === "" && effect.effectKind === "" && effect.completionKind === "" &&
+        typeof effect.id === "string" && /^magic_[0-9a-f]{12}$/.test(effect.id) &&
+        typeof effect.playerId === "string" && /^(?:p|bot)_[0-9a-f]{12}$/.test(effect.playerId) &&
+        typeof effect.variant === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(effect.variant)) {
+      // Pickup updates remain in the actor, ground-item and inventory paths;
+      // there is no separate authored late-magic draw for this source.
+      omitted.push({ effectId: effect.id, reason: "owned-or-suppressed-field-visual" });
+      continue;
+    }
     unsupported.push({ index, type, id: effect.id, reason: "no-complete-webgpu-effect-port" });
   }
   return { stage: { camera, zoom, now, roomId: String(data.roomId || ''), phase: data.phase,
