@@ -11412,7 +11412,7 @@ async function startMatchmaking(options = {}) {
         timeoutMs: 1200,
         attempts: 1
       });
-      state.matchmakingTicket = null;
+      if (state.matchmakingTicket === ticket) state.matchmakingTicket = null;
       if (result?.matchmaking?.status === "online" && serial === state.matchmakingSerial && acceptMatchmakingResult(result, name, false)) return;
     }
     if (serial !== state.matchmakingSerial) return;
