@@ -311,7 +311,14 @@ function create({frameOwner}={}){
   }
   return Object.freeze({effectId:planned.effectId,type:planned.type,objectId:planned.objectId,effectKind:planned.effectKind,drawn:true,support:bounds,operations:planned.operations.length});
  }
- return Object.freeze({device,plan,prepare,record,validOutsideOutcome,outsideStatus,destroy(){if(destroyed)return;destroyed=true;const errors=[];for(const x of [...owned])try{release(x);}catch(e){errors.push(e);}slots.length=0;material=null;scratch=null;pipes=null;if(errors.length)throw new AggregateError(errors,'Hydration cleanup failed');}});
+ function releaseTemporaryTargets(){
+  if(destroyed)return;
+  const textures=scratch?.textures||[];scratch=null;
+  const rows=slots.splice(0);
+  for(const row of rows)if(row)for(const buffer of [row.buffer,...row.blurBuffers])release(buffer);
+  for(const texture of textures)release(texture);
+ }
+ return Object.freeze({device,plan,prepare,record,validOutsideOutcome,outsideStatus,releaseTemporaryTargets,destroy(){if(destroyed)return;destroyed=true;const errors=[];for(const x of [...owned])try{release(x);}catch(e){errors.push(e);}slots.length=0;material=null;scratch=null;pipes=null;if(errors.length)throw new AggregateError(errors,'Hydration cleanup failed');}});
 }
 const api=Object.freeze({SOURCE,TARGET,TARGETS,targetFor,supported,support,imageStatus,regionFor,scratchSize,plan,finalQuadSupport,create,rawShader,blurShader,composeShader});root.DvaWebGPULegacyHydrationE=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;

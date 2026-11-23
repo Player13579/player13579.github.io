@@ -29937,7 +29937,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       runtime.suspend();
     },
     releaseMatchTemporaryTargets() {
-      if (!destroyed) registry.passes.legacyTeleportE.releaseTemporaryTargets?.();
+      if (destroyed) return;
+      registry.passes.legacyTeleportE.releaseTemporaryTargets?.();
+      registry.passes.legacyHydrationE.releaseTemporaryTargets?.();
     },
     resume() { return runtime.resume(); },
     refreshSunbeamAudioGates() {
