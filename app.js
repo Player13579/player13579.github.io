@@ -32624,7 +32624,7 @@ function loadCriticalMapTexture(image, source, activeOwner = null) {
   const currentGame = owner => owner !== null && requiredMapSnapshotOwned(owner);
   const reportFailure = () => setWebGPUMainFailure(new Error("Required map image could not be loaded after retries"));
   const takeover = existing?.source === source && existing.status === "failed" &&
-    existing.activeOwner === null && currentGame(activeOwner);
+    !currentGame(existing.activeOwner) && currentGame(activeOwner);
   if (existing?.source === source && existing.status !== "cancelled" && !takeover) {
     if (currentGame(activeOwner)) {
       if (existing.status === "failed") {
