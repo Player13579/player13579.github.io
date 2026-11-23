@@ -27601,6 +27601,23 @@ function readyAuthoredLocomotionSheet(base, images, mode, allowDashFallback) {
   }
   return null;
 }
+// Retry only the exact already-failed walk sheet demanded by a visible
+// first-frame actor. Pending decodes, other roles/directions and optional
+// motion variants keep their existing ownership and URLs.
+const brokenVisibleWalkRetrySource = new WeakMap();
+function retryBrokenVisibleWalkSheet(entry, image, textures = state.textures) {
+  if (state.screen !== 'game' || document.hidden || webgpuMainApp.visible ||
+      !entry?.assetPath || !image || image.complete !== true ||
+      image.naturalWidth !== 0 || image.naturalHeight !== 0) return false;
+  const source = (textures?.pendingSources || []).find(([candidate]) => candidate === image)?.[1];
+  if (!source || image.getAttribute?.('src') !== source ||
+      brokenVisibleWalkRetrySource.get(image) === source) return false;
+  brokenVisibleWalkRetrySource.set(image, source);
+  image.fetchPriority = 'high';
+  image.src = `${source}${source.includes('?') ? '&' : '?'}actorWalkRetry=1`;
+  return true;
+}
+
 function resetAuthoredWalkLifecycle(player){const animation=state.walkAnimations.get(player.id);if(!animation)return;animation.frame=0;animation.moving=false;animation.x=player.x;animation.y=player.y;animation.lastDisplacedAt=null;animation.stepBucket=-1;animation.frameOwner=Number.isFinite(state.frameNow)&&state.frameNow>0?{frame:state.frameNow,generation:state.roomSessionGeneration,data:state.data}:null;}
 // Dormant until the ordered WebGPU world pass owns the surrounding player TE.
 // Call with a real snapshot player and the same camera/zoom used by drawWorld.
@@ -28246,6 +28263,7 @@ function buildWebGPUAuthoredPlayerSpriteCommand(sourcePlayer, data, view) {
       const idleEntry = authoredModeEntry(baseEntry, 'walk');
       const idleImage = authoredModeImage(state.textures.authoredCharacterMotion?.[identity]?.[direction], 'walk');
       if (!idleEntry || !authoredEntryReady(idleEntry, idleImage)) {
+        retryBrokenVisibleWalkSheet(idleEntry, idleImage);
         if (idleEntry?.assetPath && idleImage && idleImage.complete === false &&
             idleImage.getAttribute?.('src') && !webgpuMainApp.visible) {
           throw Object.assign(new Error('Idle dash is waiting for the authored walk sprite'),
@@ -28405,7 +28423,10 @@ function captureWebGPUMainAppPlayerScene(data = state.data, viewport, camera, zo
     const base = AUTHORED_CHARACTER_MOTION_MANIFEST.identities?.[identity]?.[direction];
     const mode = action?.kind === 'damage' ? 'walk' : walkMotionMode(player);
     const images = state.textures?.authoredCharacterMotion?.[identity]?.[direction];
-    return Boolean(readyAuthoredLocomotionSheet(base, images, mode, !action));
+    const ready = readyAuthoredLocomotionSheet(base, images, mode, !action);
+    if (!ready && visible(player) && (mode === 'walk' || (mode === 'dash' && !action)))
+      retryBrokenVisibleWalkSheet(authoredModeEntry(base, 'walk'), images?.walk);
+    return Boolean(ready);
   };
   const unsupported = candidates.filter(player => !spriteReady(player)).map(player => {
     const action = playerActions.get(player.id);
