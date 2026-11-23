@@ -27408,6 +27408,23 @@ function authoredEntryReady(entry, image) {
   if (!authoredFrameGeometryValid(entry.idle, image) || !Array.isArray(entry.cycle)) return false;
   return entry.cycle.every(frame => authoredFrameGeometryValid(frame, image) && Number.isFinite(frame.duration) && frame.duration > 0);
 }
+// The scene gate and command must use the same identity/direction sheet pair.
+function readyAuthoredLocomotionSheet(base, images, mode, allowDashFallback) {
+  const entry = authoredModeEntry(base, mode);
+  const image = authoredModeImage(images, mode);
+  if (!(images?.walk && !images?.[mode]) && entry && authoredEntryReady(entry, image))
+    return { entry, image };
+  // A speed-mode Image is allocated before it decodes. If dash pixels are
+  // unavailable, preserve the gait but borrow only this actor/direction's
+  // validated walk image and its own atlas metadata, never an action sheet.
+  if (images?.walk && (!images?.[mode] || (allowDashFallback && mode === 'dash'))) {
+    const walkEntry = authoredModeEntry(base, 'walk');
+    const walkImage = images.walk;
+    if (walkEntry && authoredEntryReady(walkEntry, walkImage))
+      return { entry: walkEntry, image: walkImage };
+  }
+  return null;
+}
 function resetAuthoredWalkLifecycle(player){const animation=state.walkAnimations.get(player.id);if(!animation)return;animation.frame=0;animation.moving=false;animation.x=player.x;animation.y=player.y;animation.lastDisplacedAt=null;animation.stepBucket=-1;animation.frameOwner=Number.isFinite(state.frameNow)&&state.frameNow>0?{frame:state.frameNow,generation:state.roomSessionGeneration,data:state.data}:null;}
 // Dormant until the ordered WebGPU world pass owns the surrounding player TE.
 // Call with a real snapshot player and the same camera/zoom used by drawWorld.
@@ -28023,14 +28040,10 @@ function buildWebGPUAuthoredPlayerSpriteCommand(sourcePlayer, data, view) {
   const direction = authoredDirection(player, motion);
   const baseEntry = AUTHORED_CHARACTER_MOTION_MANIFEST.identities?.[identity]?.[direction];
   let movementMode = walkMotionMode(player);
-  let entry = authoredModeEntry(baseEntry, movementMode);
   const images = state.textures.authoredCharacterMotion?.[identity]?.[direction];
-  let image = authoredModeImage(images, movementMode);
-  // A pending mode sheet can temporarily fall back to the loaded walk image.
-  // Pair that image with its own atlas metadata rather than tagging walk pixels
-  // as the requested mode's asset in the GPU cache.
-  if (images?.walk && !images?.[movementMode]) entry = authoredModeEntry(baseEntry, 'walk');
-  if (!entry || !authoredEntryReady(entry, image)) return null;
+  const selected = readyAuthoredLocomotionSheet(baseEntry, images, movementMode, !action);
+  if (!selected) return null;
+  let { entry, image } = selected;
   let frame, body;
   if (action?.kind === 'damage' && !ghost) {
     entry = authoredModeEntry(baseEntry, 'walk');
@@ -28216,10 +28229,7 @@ function captureWebGPUMainAppPlayerScene(data = state.data, viewport, camera, zo
     const base = AUTHORED_CHARACTER_MOTION_MANIFEST.identities?.[identity]?.[direction];
     const mode = action?.kind === 'damage' ? 'walk' : walkMotionMode(player);
     const images = state.textures?.authoredCharacterMotion?.[identity]?.[direction];
-    const fallbackMode = images?.walk && !images?.[mode] ? 'walk' : mode;
-    const entry = authoredModeEntry(base, fallbackMode);
-    const image = authoredModeImage(images, fallbackMode);
-    return Boolean(entry && authoredEntryReady(entry, image));
+    return Boolean(readyAuthoredLocomotionSheet(base, images, mode, !action));
   };
   const unsupported = candidates.filter(player => !spriteReady(player)).map(player => {
     const action = playerActions.get(player.id);
