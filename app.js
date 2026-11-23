@@ -5591,16 +5591,17 @@ async function beginAbilityBatchTransaction(button, hold) {
   const action = abilityBatchAction(button);
   if (!action) return null;
   hold.action = action;
-  hold.holdId = newAbilityBatchHoldId();
+  const requestedHoldId = newAbilityBatchHoldId();
+  hold.holdId = requestedHoldId;
   const started = await api("/api/ability-hold", {
     phase: "start",
-    holdId: hold.holdId,
+    holdId: requestedHoldId,
     actionPath: action.path,
     action: action.action
   });
-  const holdId = started?.abilityHold?.id || hold.holdId;
+  const holdId = started?.abilityHold?.id || requestedHoldId;
   if (!holdId) return null;
-  hold.holdId = holdId;
+  if (hold.holdId === requestedHoldId) hold.holdId = holdId;
   return holdId;
 }
 
