@@ -1207,7 +1207,7 @@ const state = {
   preparationCanvasTap: null,
   operatorSelectionSettingsRequestSeq: 0,
   preparationEditingField: "",
-  offlineTeamChoiceInFlight: false,
+  offlineTeamChoiceInFlight: null,
   textures: createTextures(),
   motion: new Map(),
   facing: new Map(),
@@ -11476,7 +11476,7 @@ async function returnOfflineToOperatorSelect() {
 
 function syncOfflineTeamChoiceVisual(role) {
   const activeRole = state.offlineMode && ["defender", "attacker"].includes(role) ? role : "";
-  const busy = state.offlineTeamChoiceInFlight;
+  const busy = Boolean(currentOfflineTeamChoiceOwner());
   [
     [els.offlineDefenderButton, "defender"],
     [els.offlineAttackerButton, "attacker"]
@@ -11489,18 +11489,34 @@ function syncOfflineTeamChoiceVisual(role) {
   els.offlineTeamChoice.setAttribute("aria-busy", String(busy));
 }
 
+function currentOfflineTeamChoiceOwner() {
+  const owner = state.offlineTeamChoiceInFlight;
+  return owner && state.screen === "game" && state.offlineMode &&
+    state.data?.phase === "selecting" &&
+    isCurrentRoomSession(owner.roomId, owner.playerId, owner.generation)
+    ? owner : null;
+}
+
 async function chooseOfflineTeam(role) {
-  if (state.offlineTeamChoiceInFlight || !state.offlineMode || state.data?.phase !== "selecting" || !["defender", "attacker"].includes(role)) return false;
+  if (currentOfflineTeamChoiceOwner() || state.screen !== "game" || !state.offlineMode ||
+      !state.roomId || !state.playerId || state.data?.phase !== "selecting" ||
+      !["defender", "attacker"].includes(role)) return false;
+  const owner = { roomId: state.roomId, playerId: state.playerId, generation: state.roomSessionGeneration };
   const previousRole = state.data?.self?.role || "defender";
-  state.offlineTeamChoiceInFlight = true;
+  state.offlineTeamChoiceInFlight = owner;
   syncOfflineTeamChoiceVisual(role);
-  const result = await request("/api/offline-team", {
-    roomId: state.roomId,
-    playerId: state.playerId,
-    role,
-    localOffline: true
-  }, { quiet: true, forceOffline: true });
-  state.offlineTeamChoiceInFlight = false;
+  let result;
+  try {
+    result = await request("/api/offline-team", {
+      roomId: owner.roomId,
+      playerId: owner.playerId,
+      role,
+      localOffline: true
+    }, { quiet: true, forceOffline: true });
+    if (currentOfflineTeamChoiceOwner() !== owner) return false;
+  } finally {
+    if (state.offlineTeamChoiceInFlight === owner) state.offlineTeamChoiceInFlight = null;
+  }
   if (!result) {
     syncOfflineTeamChoiceVisual(previousRole);
     showToast("陣営を変更できませんでした。");
@@ -11510,7 +11526,6 @@ async function chooseOfflineTeam(role) {
   syncOfflineTeamChoiceVisual(result.self?.role || previousRole);
   return true;
 }
-
 async function returnToTitle() {
   if (state.matchmakingInFlight) {
     const ticket = state.matchmakingTicket;
