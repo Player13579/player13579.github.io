@@ -10023,8 +10023,7 @@ function renderTabletBranch(data, force = false) {
     branchPath: path
   });
   const addModeAction = (label, mode) => appendTabletBranchButton(label, () => {
-    if (!setSelectValue(els.teleportModeSelect, mode)) return;
-    els.operatorAbilityButton.click();
+    setSelectValue(els.teleportModeSelect, mode);
   }, {
     kind: mode === "heart" || mode === "storm" ? "danger" : "action",
     selected: els.teleportModeSelect.value === mode,
