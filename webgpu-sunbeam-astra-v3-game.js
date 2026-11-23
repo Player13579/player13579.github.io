@@ -196,6 +196,10 @@ fn field(p:vec2f,b:Beam)->vec4f {
      if(destroyed||entry.generation!==generation)return;
      const size=info.size(target);
      if(size.width!==viewport.pixelWidth||size.height!==viewport.pixelHeight)throw new Error('Sunbeam v3 shared target changed before encode');
+     // An empty receipt still advances visible ownership and suppresses late
+     // sound from older frames, but there is no Sunbeam GPU work to prove.
+     // Keep this entry on the frame so discard/failed submit abandons it.
+     if(!beams.length){entry.state='activated';entry.settle();return;}
      const activeCauses=causes.filter(cause=>!cancelled.has(cause.eventId)&&!cancelled.has(cause.effectId));
      const activeBeams=activeCauses.flatMap(cause=>cause.beams);
      if(!activeBeams.length){entry.state='recorded';return;}
@@ -210,10 +214,10 @@ fn field(p:vec2f,b:Beam)->vec4f {
      pass=encoder.beginRenderPass({colorAttachments:[{view:info.view(target),loadOp:'load',storeOp:'store'}]});
      pass.setPipeline(postPipeline);pass.setBindGroup(0,bindPost);pass.draw(3);pass.end();entry.state='recorded';
     },
-    onSubmitted(proof){entry.state='submitted';void Promise.all([proof?.validation,proof?.done]).then(()=>{
+    ...(beams.length ? {onSubmitted(proof){entry.state='submitted';void Promise.all([proof?.validation,proof?.done]).then(()=>{
       entry.buffer?.destroy();entry.buffer=null;entry.state='activated';entry.settle();acceptIfVisible(entry);
      },error=>{entry.buffer?.destroy();entry.buffer=null;entry.state='failed';entries.delete(token);entry.settle();sound?.stopAll?.();errors.push(error);});},
-    onProofError({error}){entry.state='failed';entry.settle();entries.delete(token);entry.buffer?.destroy();entry.buffer=null;sound?.stopAll?.();errors.push(error);},
+    onProofError({error}){entry.state='failed';entry.settle();entries.delete(token);entry.buffer?.destroy();entry.buffer=null;sound?.stopAll?.();errors.push(error);}} : {}),
     onAbandon(){entry.state='abandoned';entry.settle();entries.delete(token);entry.buffer?.destroy();entry.buffer=null;}
    });
    return Object.freeze({token,eventIds:Object.freeze(ids),generation,side});
