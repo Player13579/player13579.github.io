@@ -18779,7 +18779,12 @@ function applyMovementAck(result) {
   const data = state.data;
   if (!data || result.roomId !== data.roomId || result.playerId !== data.selfId) return;
   state.lastMoveAppliedClock = Math.max(state.lastMoveAppliedClock, Number(result.movementClock) || 0);
-  state.lastMovementServerNow = Math.max(state.lastMovementServerNow, Number(result.serverNow) || 0);
+  const serverNow = Number(result.serverNow) || 0;
+  // An older movement reply can still acknowledge input and position. Its
+  // speed, ACC, and actor-time projection cannot replace a newer snapshot.
+  const appliesMovementProjection = !serverNow ||
+    serverNow >= Math.max(state.lastStateServerNow, state.lastMovementServerNow);
+  state.lastMovementServerNow = Math.max(state.lastMovementServerNow, serverNow);
   const player = data.players.find((entry) => entry.id === data.selfId);
   if (!player) return;
   data.self.stamina = result.stamina;
@@ -18794,54 +18799,62 @@ function applyMovementAck(result) {
   data.self.gravityStormSlowMultiplier = result.gravityStormSlowMultiplier;
   data.self.lastGravityStormDamage = result.lastGravityStormDamage;
   data.self.movementMode = result.movementMode;
-  const authoritativeSpeed = Math.max(
-    0.01,
-    Number(result.speedMultiplier) || Number(data.self.speedMultiplier) || Number(player.speedMultiplier) || 1
-  );
-  const authoritativeAcceleration = Math.max(
-    0.01,
-    Number(result.accelerationMultiplier) || Number(data.self.accelerationMultiplier) || 1
-  );
-  const authoritativeMovementAccEnabled = result.movementAccEnabled !== false;
-  const authoritativeMovementAccThreshold = Math.max(1, Number(result.movementAccThreshold) || 2);
-  const authoritativeMovementAccActive = result.movementAccActive === true || (
-    result.movementAccActive == null && authoritativeMovementAccEnabled && authoritativeAcceleration + 1e-6 >= authoritativeMovementAccThreshold && Number(result.movementAcc) > 1.5
-  );
-  const authoritativeMovementAccMax = Math.max(1, Number(result.movementAccMax) || 2);
-  const reportedMovementAcc = Number(result.movementAcc);
-  const hasAuthoritativeMovementAcc = Number.isFinite(result.movementAcc) && result.movementAcc >= 0;
-  // Preserve a finite server value (including TimeKeeper's authoritative 0).
-  // Legacy ACKs retain the previous fallback, except OFF must never overwrite
-  // the released source acceleration with a stale ACC1 placeholder.
-  const authoritativeMovementAcc = hasAuthoritativeMovementAcc
-    ? reportedMovementAcc
-    : !authoritativeMovementAccEnabled
-      ? authoritativeAcceleration
-      : authoritativeMovementAccActive
-        ? authoritativeMovementAccMax
-        : 1;
-  data.self.speedMultiplier = authoritativeSpeed;
-  data.self.accelerationMultiplier = authoritativeAcceleration;
-  // Keep the source actor rate current when ACC Fixed is toggled through a
-  // movement ACK; the E override returns to this value as soon as fixed ends.
-  if (Number.isFinite(result.actorTimeScale) && result.actorTimeScale >= 0) {
-    data.self.actorTimeScale = result.actorTimeScale;
-    player.actorTimeScale = result.actorTimeScale;
+  const rendered = state.renderPlayers.get(player.id);
+  if (appliesMovementProjection) {
+    const authoritativeSpeed = Math.max(
+      0.01,
+      Number(result.speedMultiplier) || Number(data.self.speedMultiplier) || Number(player.speedMultiplier) || 1
+    );
+    const authoritativeAcceleration = Math.max(
+      0.01,
+      Number(result.accelerationMultiplier) || Number(data.self.accelerationMultiplier) || 1
+    );
+    const authoritativeMovementAccEnabled = result.movementAccEnabled !== false;
+    const authoritativeMovementAccThreshold = Math.max(1, Number(result.movementAccThreshold) || 2);
+    const authoritativeMovementAccActive = result.movementAccActive === true || (
+      result.movementAccActive == null && authoritativeMovementAccEnabled && authoritativeAcceleration + 1e-6 >= authoritativeMovementAccThreshold && Number(result.movementAcc) > 1.5
+    );
+    const authoritativeMovementAccMax = Math.max(1, Number(result.movementAccMax) || 2);
+    const reportedMovementAcc = Number(result.movementAcc);
+    const hasAuthoritativeMovementAcc = Number.isFinite(result.movementAcc) && result.movementAcc >= 0;
+    // Preserve a finite server value (including TimeKeeper's authoritative 0).
+    // Legacy ACKs retain the previous fallback, except OFF must never overwrite
+    // the released source acceleration with a stale ACC1 placeholder.
+    const authoritativeMovementAcc = hasAuthoritativeMovementAcc
+      ? reportedMovementAcc
+      : !authoritativeMovementAccEnabled
+        ? authoritativeAcceleration
+        : authoritativeMovementAccActive
+          ? authoritativeMovementAccMax
+          : 1;
+    data.self.speedMultiplier = authoritativeSpeed;
+    data.self.accelerationMultiplier = authoritativeAcceleration;
+    // Keep the source actor rate current when ACC Fixed is toggled through a
+    // movement ACK; the E override returns to this value as soon as fixed ends.
+    if (Number.isFinite(result.actorTimeScale) && result.actorTimeScale >= 0) {
+      data.self.actorTimeScale = result.actorTimeScale;
+      player.actorTimeScale = result.actorTimeScale;
+    }
+    data.self.movementAcc = authoritativeMovementAcc;
+    data.self.movementAccMax = authoritativeMovementAccMax;
+    data.self.movementAccEnabled = authoritativeMovementAccEnabled;
+    data.self.movementAccActive = authoritativeMovementAccActive;
+    data.self.movementAccAvailable = result.movementAccAvailable === true;
+    data.self.movementAccThreshold = authoritativeMovementAccThreshold;
+    player.speedMultiplier = authoritativeSpeed;
+    player.accelerationMultiplier = authoritativeAcceleration;
+    player.movementAcc = authoritativeMovementAcc;
+    player.movementAccMax = authoritativeMovementAccMax;
+    player.movementAccEnabled = authoritativeMovementAccEnabled;
+    player.movementAccActive = authoritativeMovementAccActive;
+    player.movementAccAvailable = result.movementAccAvailable === true;
+    player.movementAccThreshold = authoritativeMovementAccThreshold;
+    if (rendered) {
+      rendered.speedMultiplier = authoritativeSpeed;
+      rendered.predictionLeadMultiplier = authoritativeSpeed;
+      rendered.predictionLeadUntil = 0;
+    }
   }
-  data.self.movementAcc = authoritativeMovementAcc;
-  data.self.movementAccMax = authoritativeMovementAccMax;
-  data.self.movementAccEnabled = authoritativeMovementAccEnabled;
-  data.self.movementAccActive = authoritativeMovementAccActive;
-  data.self.movementAccAvailable = result.movementAccAvailable === true;
-  data.self.movementAccThreshold = authoritativeMovementAccThreshold;
-  player.speedMultiplier = authoritativeSpeed;
-  player.accelerationMultiplier = authoritativeAcceleration;
-  player.movementAcc = authoritativeMovementAcc;
-  player.movementAccMax = authoritativeMovementAccMax;
-  player.movementAccEnabled = authoritativeMovementAccEnabled;
-  player.movementAccActive = authoritativeMovementAccActive;
-  player.movementAccAvailable = result.movementAccAvailable === true;
-  player.movementAccThreshold = authoritativeMovementAccThreshold;
   // Movement ACKs carry the same authoritative rest state as full snapshots.
   // Preserve the last full snapshot for legacy ACKs without this field.
   if (typeof result.resting === "boolean") {
@@ -18866,11 +18879,7 @@ function applyMovementAck(result) {
   player.lastGravityStormDamage = result.lastGravityStormDamage;
   syncMovementAccControl(data);
 
-  const rendered = state.renderPlayers.get(player.id);
   if (!rendered) return;
-  rendered.speedMultiplier = authoritativeSpeed;
-  rendered.predictionLeadMultiplier = authoritativeSpeed;
-  rendered.predictionLeadUntil = 0;
   rendered.targetX = result.x;
   rendered.targetY = result.y;
   rendered.moveX = result.moveX;
