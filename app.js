@@ -29522,19 +29522,7 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
     killInput.now - effect.startedAt >= 0);
   const assets = tailResources.killAssets || {};
   if (liveKills.length) {
-    const textureSources = state.textures || {};
-    const expected = {
-      filament: textureSources.worldKillFilamentAtlas,
-      residual: textureSources.worldKillResidual,
-      material: textureSources.killCutinPlatinumFrame,
-      whitePose: textureSources.whiteHoodCutinPoseAtlas,
-      bluePose: textureSources.blueDressCutinPoseAtlas,
-      whiteCutin: textureSources.killCutinMaster,
-      blueCutin: textureSources.blueDressKillCutin,
-      botPose: textureSources.botCutinPoseAtlas,
-      botIdle: textureSources.authoredCharacterMotion?.['male-bot']?.front?.walk,
-      legacyHumanAtlas: textureSources.killCutin60
-    };
+    const expected = webgpuKillTextureSources(state.textures);
     for (const [name, asset] of Object.entries(assets)) {
       if (!Object.prototype.hasOwnProperty.call(expected, name) ||
           !asset?.texture || asset.source !== expected[name] ||
@@ -29795,9 +29783,94 @@ function headMarkerMaterialKeysForWebGPUCandidate(candidate, textures) {
   return [...keys];
 }
 
+function webgpuKillTextureSources(textures = {}) {
+  return {
+      filament: textures.worldKillFilamentAtlas,
+      residual: textures.worldKillResidual,
+      material: textures.killCutinPlatinumFrame,
+      whitePose: textures.whiteHoodCutinPoseAtlas,
+      bluePose: textures.blueDressCutinPoseAtlas,
+      whiteCutin: textures.killCutinMaster,
+      blueCutin: textures.blueDressKillCutin,
+      botPose: textures.botCutinPoseAtlas,
+      botIdle: textures.authoredCharacterMotion?.['male-bot']?.front?.walk,
+      legacyHumanAtlas: textures.killCutin60
+    };
+}
+
+function createWebGPUReadyKillTextureOwner(device) {
+  const byKey = new Map();
+  let destroyed = false;
+  const stale = () => Object.assign(new Error('Owned kill image changed before recording'),
+    { code: 'DVA_WEBGPU_STALE_SCENE' });
+  const signature = source => [source, source?.currentSrc || source?.src || '',
+    source?.complete, Number(source?.naturalWidth), Number(source?.naturalHeight)];
+  const same = (a, b) => a.every((value, index) => Object.is(value, b[index]));
+  const ready = (stamp, w, h) => stamp[2] && stamp[3] === w && stamp[4] === h;
+  return {
+    prepare(textures, cutin) {
+      if (destroyed) throw stale();
+      const sources = webgpuKillTextureSources(textures);
+      const stamps = Object.fromEntries(Object.entries(sources).map(([key, source]) => [key, signature(source)]));
+      if (!ready(stamps.filament, 2048, 1940)) return null;
+      const bot = cutin.killerIsBot || cutin.killerSkinId === 'operator';
+      const blue = !bot && normalizeSkinId(cutin.killerSkinId) === 'blue-dress';
+      const pose = bot ? 'botPose' : blue ? 'bluePose' : 'whitePose';
+      const fallback = bot ? 'botIdle' : blue ? 'blueCutin' : 'whiteCutin';
+      const watchedKeys = ['filament', 'material', pose];
+      const assetKeys = ['filament'];
+      if (ready(stamps.material, 1963, 439)) assetKeys.push('material');
+      if (ready(stamps[pose], bot ? 640 : blue ? 900 : 1100, bot ? 200 : blue ? 236 : 240)) {
+        assetKeys.push(pose);
+      } else {
+        watchedKeys.push(fallback);
+        const [,, complete, width, height] = stamps[fallback];
+        if (complete && width >= (bot ? 177 : 1) && height >= (bot ? 240 : 1)) assetKeys.push(fallback);
+        else if (!bot) { watchedKeys.push('legacyHumanAtlas'); assetKeys.push('legacyHumanAtlas'); }
+      }
+      const assets = {};
+      for (const key of assetKeys) {
+        const stamp = stamps[key];
+        const [source, , complete, width, height] = stamp;
+        let entry = byKey.get(key);
+        if (entry && !same(entry.stamp, stamp)) {
+          byKey.delete(key);
+          entry.asset.texture.destroy();
+          entry = null;
+        }
+        if (!complete || !Number.isInteger(width) || width <= 0 ||
+            !Number.isInteger(height) || height <= 0 ||
+            Math.max(width, height) > (device.limits?.maxTextureDimension2D ?? Infinity)) continue;
+        if (!entry) {
+          const texture = device.createTexture({ label: `DVA kill ${key}`, size: [width, height],
+            format: 'rgba8unorm', usage: 0x02 | 0x04 | 0x10 });
+          try {
+            device.queue.copyExternalImageToTexture({ source }, { texture, premultipliedAlpha: true },
+              [width, height]);
+          } catch (error) { texture.destroy(); throw error; }
+          entry = { stamp, asset: Object.freeze({ source, device, texture, width, height }) };
+          byKey.set(key, entry);
+        }
+        assets[key] = entry.asset;
+      }
+      return { assets: Object.freeze(assets), assertCurrent(currentTextures) {
+        if (destroyed) throw stale();
+        const current = webgpuKillTextureSources(currentTextures);
+        if (watchedKeys.some(key => !same(stamps[key], signature(current[key])))) throw stale();
+      } };
+    },
+    destroy() {
+      if (destroyed) return;
+      destroyed = true;
+      for (const entry of byKey.values()) entry.asset.texture.destroy();
+      byKey.clear();
+    }
+  };
+}
+
 async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   acquisitionCanvas, map, image, textAtlas, atlasMetrics, gpu,
-  headMarkerMaterials, killAssets = {}, markerDomFallbackReady = false,
+  headMarkerMaterials, killAssets = null, markerDomFallbackReady = false,
   bloomEncoder, residualRevision, modules, rendererApi,
   textResourceOptions = {}, prewarmEntry = null, isCurrent = () => true, isAdopted = () => false,
   onFailure, onProgress, onTiming } = {}) {
@@ -29830,7 +29903,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
         !(atlasMetrics?.pixelSize > 0)) ||
       (ownsMarkers ? !markerOwnerApi?.create :
         !headMarkerMaterials || typeof headMarkerMaterials !== 'object') ||
-      !killAssets || typeof killAssets !== 'object' ||
+      (killAssets != null && typeof killAssets !== 'object') ||
       typeof onFailure !== 'function')
     throw new TypeError('Dormant WebGPU main driver needs three owned canvases, map image, atlas, marker resources and failure hook');
   const target = 'main', expandedTarget = 'main-expanded-map';
@@ -29840,6 +29913,12 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   const rendererLease = incomingPrewarm?.rendererLease || null;
   const expectedDevice = incomingPrewarm?.device || null;
   let retirement = null;
+  let killTextureOwner = null, killTextureGeneration = null;
+  const retireKillTextures = () => {
+    killTextureOwner?.destroy();
+    killTextureOwner = null;
+    killTextureGeneration = null;
+  };
   let retainedRuntimeFailure = null;
   let lifecycleGeneration = 0;
   let lastMedicalSfxFrameAt = null;
@@ -29895,11 +29974,13 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     retirement = (async () => {
       try { scene?.destroy(); } finally {
         try { await registry?.destroy(); } finally {
+          try { retireKillTextures(); } finally {
           try { markerOwner?.destroy(); } finally {
           try { textOwner?.destroy(); } finally {
             try { runtime?.destroy(); } finally {
               if (!runtime && rendererLease?.state === 'ready') rendererLease.dispose();
             }
+          }
           }
           }
         }
@@ -30145,10 +30226,27 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
             markWebGPUStartupStage('candidatePrepareBegin');
             const candidatePrepareStartedAt = WEBGPU_MAIN_VERIFY_ROUTE
               ? performance.now() : null;
+            let killUpload = null;
+            if (killAssets == null) {
+              if (destroyed || requestGeneration !== lifecycleGeneration ||
+                  state.screen !== 'game' || document.hidden)
+                throw Object.assign(new Error('Kill texture owner is no longer live'),
+                  { code: 'DVA_WEBGPU_STALE_SCENE' });
+              if (killTextureGeneration !== state.roomSessionGeneration) {
+                retireKillTextures();
+                killTextureGeneration = state.roomSessionGeneration;
+              }
+              const killInput = captured.stages.killAnimation;
+              const liveCutin = killInput.effects.filter(effect => killInput.now >= effect.startedAt).at(-1);
+              if (liveCutin) {
+                killTextureOwner ||= createWebGPUReadyKillTextureOwner(device);
+                killUpload = killTextureOwner.prepare(state.textures, liveCutin);
+              }
+            }
             const candidate = await prepareWebGPUMainAppWorldCandidate(
               captured, registry.passes, textAtlas, {
                 headMarkerDevice: device,
-                headMarkerMaterials: currentMarkerMaterials, killAssets,
+                headMarkerMaterials: currentMarkerMaterials, killAssets: killUpload?.assets || killAssets,
                 markerDomFallbackReady, bloomEncoder, residualRevision,
                 expandedCanvas, expandedTarget,
                 acquisitionCanvas, acquisitionTarget });
@@ -30156,6 +30254,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
               Number.isFinite(candidatePrepareStartedAt)
                 ? Math.max(0, performance.now() - candidatePrepareStartedAt) : null);
             captured.assertCurrent();
+            killUpload?.assertCurrent(state.textures);
             if (candidate.viewport !== viewport ||
                 candidate.camera.x !== camera.x ||
                 candidate.camera.y !== camera.y ||
@@ -30164,11 +30263,12 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
                   sceneApi.REQUIRED.includes(name)))
               throw new Error('Dormant WebGPU main prepared a different world or incomplete frame');
             const prepared = scene.prepare({ stages: candidate.stages, device });
-            return { candidate, scene: prepared, release: () => prepared.release() };
+            return { candidate, killUpload, scene: prepared, release: () => prepared.release() };
           },
           record: ({ frame, target: frameTarget, viewport, renderer,
             prepared }) => {
             prepared.candidate.assertCurrent();
+            prepared.killUpload?.assertCurrent(state.textures);
             if (frameTarget !== target || renderer !== runtime.renderer ||
                 prepared.candidate.viewport !== viewport)
               throw new Error('Dormant WebGPU main record crossed its prepared frame');
@@ -30266,6 +30366,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     },
     releaseMatchTemporaryTargets() {
       if (destroyed) return;
+      retireKillTextures();
       registry.passes.legacyTeleportE.releaseTemporaryTargets?.();
       registry.passes.legacyHydrationE.releaseTemporaryTargets?.();
     },
