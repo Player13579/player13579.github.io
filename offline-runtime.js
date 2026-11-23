@@ -2,11 +2,11 @@
   "use strict";
 
 const OFFLINE_WORKER_VERSION = "fire-e-causal-v920-box-grenades-r1";
-// Generated-worker startup must never turn an instant matchmaking decision
-// into a 40-second stall. Fall back to the generated main-thread bundle after
-// one bounded perceptual beat; initialization is already prewarmed on title.
-const OFFLINE_WORKER_READY_TIMEOUT_MS = 800;
+// An 800 ms boot delay is evidence to warm Main, not a Worker failure.
+// Bound the initial readiness race independently; only one source may win.
+const OFFLINE_WORKER_SOFT_READY_MS = 800;
 const OFFLINE_MAIN_READY_TIMEOUT_MS = 30_000;
+const OFFLINE_BOOT_DEADLINE_MS = OFFLINE_WORKER_SOFT_READY_MS + OFFLINE_MAIN_READY_TIMEOUT_MS;
 const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
 
   class OfflineApiClient {
@@ -20,6 +20,10 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
       this.readyPromise = null;
       this.readyResolve = null;
       this.readyTimer = null;
+      this.readyDeadlineTimer = null;
+      this.workerRecovery = null;
+      this.workerDispatchedGeneration = null;
+      this.mainElection = null;
       this.mainThreadApi = null;
       this.mainThreadPromise = null;
     }
@@ -29,6 +33,9 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
     }
 
     start() {
+      // An explicit Worker failure can claim an existing Main warmup. Do not
+      // re-enter a new boot while that exact failure owner is still settling.
+      if (this.workerRecovery) return this.workerRecovery.promise;
       const compatibleGlobalApi = this.compatibleMainThreadApi();
       // A late script must not replace a ready Worker that can own a room.
       if (!this.mainThreadApi && compatibleGlobalApi && (!this.worker || this.readyResolve)) {
@@ -46,7 +53,15 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
       workerUrl.searchParams.set("boot", String(generation));
       this.readyPromise = new Promise((resolve) => {
         this.readyResolve = resolve;
-        this.readyTimer = setTimeout(() => this.handleWorkerFailure(generation), OFFLINE_WORKER_READY_TIMEOUT_MS);
+        this.readyTimer = setTimeout(() => this.warmStartupMain(generation), OFFLINE_WORKER_SOFT_READY_MS);
+        this.readyDeadlineTimer = setTimeout(() => {
+          if (generation !== this.workerGeneration || !this.readyResolve) return;
+          this.requestEpoch += 1;
+          this.workerRecovery = null;
+          this.worker?.terminate();
+          this.worker = null;
+          this.settleReady(false);
+        }, OFFLINE_BOOT_DEADLINE_MS);
       });
       let worker;
       try {
@@ -84,14 +99,41 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
       return this.readyPromise;
     }
 
-    startMainThreadFallback({ preserveActiveRoom = false } = {}) {
+    warmStartupMain(generation) {
+      if (generation !== this.workerGeneration || !this.readyResolve) return;
+      // A viable unresolved Worker may win while the optional script loads.
+      // A load failure here must not settle readiness while that Worker lives.
+      void this.startMainThreadFallback({ startupRace: true }).catch(() => {});
+    }
+
+    canElectMainBeforeDispatch(claim) {
+      return !!(claim && claim.epoch === this.requestEpoch && claim.generation === this.workerGeneration &&
+        claim.worker === this.worker && this.workerDispatchedGeneration !== claim.generation &&
+        !this.options.hasActiveRoom?.() && !this.workerRecovery);
+    }
+
+    startMainThreadFallback({ preserveActiveRoom = false, startupRace = false } = {}) {
       const activeRoomHasReadyWorker = () => preserveActiveRoom && this.worker && !this.readyResolve &&
         this.options.hasActiveRoom?.();
       if (activeRoomHasReadyWorker()) return Promise.resolve(false);
       if (this.mainThreadApi) return Promise.resolve(true);
+      // The deterministic verification path explicitly elects Main before its
+      // first packet. Mere warmup and request-timeout fallback cannot elect it.
+      const elective = !startupRace && !preserveActiveRoom && !this.workerRecovery;
+      if (elective) {
+        const claim = { worker: this.worker, generation: this.workerGeneration, epoch: this.requestEpoch };
+        if (!this.canElectMainBeforeDispatch(claim)) return Promise.resolve(false);
+        this.mainElection = claim;
+      }
       const compatibleGlobalApi = this.compatibleMainThreadApi();
       if (compatibleGlobalApi) {
         this.mainThreadApi = compatibleGlobalApi;
+        if (startupRace || elective) {
+          this.mainElection = null;
+          this.worker?.terminate();
+          this.worker = null;
+          this.settleReady(true);
+        }
         return Promise.resolve(true);
       }
       if (this.mainThreadPromise) return this.mainThreadPromise;
@@ -112,8 +154,17 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
           // when this particular waiter has already settled, so the next
           // request cannot start another discarded Worker generation.
           const loadedApi = this.compatibleMainThreadApi();
-          const canAdoptMain = (!settled && fallbackGeneration === this.workerGeneration) ||
-            !this.worker || this.readyResolve;
+          const failedWorkerOwnsWarmup = !this.worker &&
+            this.workerRecovery?.generation === fallbackGeneration && this.workerRecovery.epoch === fallbackEpoch;
+          const explicitlyElected = Boolean(value && !settled &&
+            this.mainElection?.generation === fallbackGeneration && this.mainElection.epoch === fallbackEpoch &&
+            this.canElectMainBeforeDispatch(this.mainElection));
+          const canAdoptMain = startupRace
+            ? Boolean(value && !settled && (this.readyResolve || failedWorkerOwnsWarmup || explicitlyElected) &&
+              fallbackGeneration === this.workerGeneration)
+            : elective ? Boolean(explicitlyElected ||
+              (value && !settled && failedWorkerOwnsWarmup && fallbackGeneration === this.workerGeneration)) :
+              ((!settled && fallbackGeneration === this.workerGeneration) || !this.worker || this.readyResolve);
           if (loadedApi && canAdoptMain && fallbackEpoch === this.requestEpoch && !activeRoomHasReadyWorker()) {
             this.mainThreadApi = loadedApi;
             this.failPending();
@@ -136,7 +187,9 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
         script.dataset.dvaOfflineMain = OFFLINE_WORKER_VERSION;
         document.head.append(script);
       }).finally(() => {
-        if (!this.mainThreadApi && this.mainThreadPromise === loading) this.mainThreadPromise = null;
+        if (this.mainThreadPromise !== loading) return;
+        this.mainElection = null;
+        if (!this.mainThreadApi) this.mainThreadPromise = null;
       });
       this.mainThreadPromise = loading;
       return loading;
@@ -147,8 +200,13 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
       this.failPending();
       this.worker?.terminate();
       this.worker = null;
-      const ready = await this.startMainThreadFallback();
-      if (generation !== this.workerGeneration) return;
+      const epoch = this.requestEpoch;
+      const recovery = { generation, epoch, promise: null };
+      this.workerRecovery = recovery;
+      recovery.promise = this.startMainThreadFallback().catch(() => false);
+      const ready = await recovery.promise;
+      if (this.workerRecovery !== recovery || generation !== this.workerGeneration || epoch !== this.requestEpoch) return;
+      this.workerRecovery = null;
       this.settleReady(ready);
     }
 
@@ -243,6 +301,9 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
             finish(null);
             return;
           }
+          // Count even an ambiguous postMessage failure as a dispatch attempt.
+          this.workerDispatchedGeneration = generation;
+          this.mainElection = null;
           worker.postMessage({
             type: "request",
             id,
@@ -260,7 +321,9 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
 
     settleReady(value) {
       clearTimeout(this.readyTimer);
+      clearTimeout(this.readyDeadlineTimer);
       this.readyTimer = null;
+      this.readyDeadlineTimer = null;
       const resolve = this.readyResolve;
       this.readyResolve = null;
       resolve?.(Boolean(value));
@@ -281,6 +344,8 @@ const OFFLINE_REQUEST_TIMEOUT_MS = 20_000;
 
     stop() {
       this.requestEpoch += 1;
+      this.workerRecovery = null;
+      this.mainElection = null;
       this.mainThreadPromise = null;
       this.settleReady(false);
       this.failPending();
