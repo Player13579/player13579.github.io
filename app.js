@@ -8708,6 +8708,7 @@ function bindEvents() {
   els.slowWalkButton.addEventListener("pointerleave", () => setSlowWalkHeld(false));
 
   let chatDraftRevision = 0;
+  const pendingChatDrafts = new Set();
   els.chatInput.addEventListener("input", () => { chatDraftRevision += 1; });
   els.chatForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -8716,10 +8717,17 @@ function bindEvents() {
     if (!message) return;
     const revision = chatDraftRevision;
     const { roomId, playerId, roomSessionGeneration } = state;
+    const draftKey = JSON.stringify([roomId, playerId, roomSessionGeneration, revision]);
+    if (pendingChatDrafts.has(draftKey)) return;
+    pendingChatDrafts.add(draftKey);
     const isCurrent = () => isCurrentRoomSession(roomId, playerId, roomSessionGeneration);
-    const result = await api("/api/chat", { message }, { isCurrent });
-    if (result && !result.moderated && isCurrent() && revision === chatDraftRevision && els.chatInput.value === draft) {
-      els.chatInput.value = "";
+    try {
+      const result = await api("/api/chat", { message }, { isCurrent });
+      if (result && !result.moderated && isCurrent() && revision === chatDraftRevision && els.chatInput.value === draft) {
+        els.chatInput.value = "";
+      }
+    } finally {
+      pendingChatDrafts.delete(draftKey);
     }
   });
 

@@ -65,8 +65,8 @@ function fixture({ offline = false } = {}) {
       const event = new Event("submit", { cancelable: true });
       assert.equal(chatForm.dispatchEvent(event), false);
     },
-    async reply(result = { ok: true }, status = 200) {
-      const pending = requests.at(-1);
+    async reply(result = { ok: true }, status = 200, requestIndex = -1) {
+      const pending = requests.at(requestIndex);
       pending.resolve(offline ? result : { ok: status < 400, status, json: async () => result });
       await new Promise(setImmediate);
     },
@@ -135,6 +135,8 @@ test("rejected drafts survive a server refusal and can be retried", async () => 
   const chat = fixture();
   chat.edit("retry message");
   chat.submit();
+  chat.submit();
+  assert.equal(chat.requests.length, 1);
   await chat.reply({ ok: false, error: "Meeting unavailable" }, 400);
   assert.equal(chat.chatInput.value, "retry message");
   assert.equal(chat.applied.length, 0);
@@ -171,3 +173,69 @@ test("rejection from a retired room leaves the next room alone", async () => {
   assert.equal(chat.recoveries, 0);
   assert.deepEqual(chat.toasts, []);
 });
+
+test("one pending draft produces only one request and a later identical draft can send", async () => {
+  const chat = fixture({ offline: true });
+  chat.edit("same text");
+  chat.submit();
+  chat.submit();
+  assert.equal(chat.requests.length, 1);
+  await chat.reply();
+  chat.edit("same text");
+  chat.submit();
+  assert.deepEqual(chat.requests.map(({ body }) => body.message), ["same text", "same text"]);
+  await chat.reply();
+});
+
+test("different draft revisions can send before the first reply, including identical text", async () => {
+  const chat = fixture();
+  chat.edit("same text");
+  chat.submit();
+  chat.edit("");
+  chat.edit("same text");
+  chat.submit();
+  chat.submit();
+  assert.equal(chat.requests.length, 2);
+  await chat.reply({ ok: true }, 200, 1);
+  assert.equal(chat.chatInput.value, "");
+  chat.edit("next draft");
+  await chat.reply({ ok: true }, 200, 0);
+  assert.equal(chat.chatInput.value, "next draft");
+});
+
+test("an older revision settling first leaves the newer send pending", async () => {
+  const chat = fixture();
+  chat.edit("first draft");
+  chat.submit();
+  chat.edit("second draft");
+  chat.submit();
+  await chat.reply({ ok: true }, 200, 0);
+  assert.equal(chat.chatInput.value, "second draft");
+  chat.submit();
+  assert.deepEqual(chat.requests.map(({ body }) => body.message), ["first draft", "second draft"]);
+  await chat.reply({ ok: true }, 200, 1);
+  assert.equal(chat.chatInput.value, "");
+});
+
+for (const changeRoom of [true, false]) {
+  test("a retired send cannot release a pending draft in " + (changeRoom ? "another room" : "a replacement session"), async () => {
+    const chat = fixture();
+    chat.edit("shared text");
+    chat.submit();
+    if (changeRoom) {
+      chat.state.roomId = "room-2";
+      chat.state.playerId = "player-2";
+    }
+    chat.state.roomSessionGeneration += 1;
+    chat.submit();
+    assert.equal(chat.requests.length, 2);
+    await chat.reply({ ok: true }, 200, 0);
+    assert.equal(chat.chatInput.value, "shared text");
+    assert.equal(chat.applied.length, 0);
+    chat.submit();
+    assert.equal(chat.requests.length, 2);
+    await chat.reply({ ok: true }, 200, 1);
+    assert.equal(chat.chatInput.value, "");
+    assert.equal(chat.applied.length, 1);
+  });
+}
