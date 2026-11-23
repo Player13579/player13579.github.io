@@ -9064,7 +9064,12 @@ function bindEvents() {
     clearClairvoyanceCameraInput();
   });
   window.addEventListener("focus", () => void recoverRoomInteractionAfterBackground());
-  window.addEventListener("online", () => void flushUsageAnalytics());
+  window.addEventListener("online", () => {
+    void flushUsageAnalytics();
+    if (!state.onlineAvailable && !state.data && operatorSelectionRetryAvailable()) {
+      void checkOnlineAvailability();
+    }
+  });
   window.addEventListener("pagehide", () => {
     cancelTransientGameInputForBackground();
     recordUsageExit();
