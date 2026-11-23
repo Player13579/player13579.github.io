@@ -8612,11 +8612,44 @@ function bindEvents() {
   els.healButton.addEventListener("click", () => api("/api/flora-heal"));
   els.alchemyButton.addEventListener("click", () => executeHackerRecipe(els.alchemySelect.value));
   els.operatorAbilityButton.addEventListener("click", triggerOperatorAbility);
-  els.contextActionButton.addEventListener("click", () => {
+  const pendingGroundItemPickups = new Set();
+  let acceptedGroundItemPickupScope = "";
+  const acceptedGroundItemPickups = new Set();
+  els.contextActionButton.addEventListener("click", async () => {
     if (els.contextActionButton.dataset.context === "ground-item") {
       const groundItemId = String(els.contextActionButton.dataset.groundItemId || "");
       if (groundItemId && !els.contextActionButton.disabled) {
-        void api("/api/item-pickup", { groundItemId });
+        // Colliding clicks on the same rendered item must not become a
+        // second rejection that resets input pressed after the first pickup.
+        const { roomSessionGeneration, roomId, playerId } = state;
+        const pickupScope = JSON.stringify([roomSessionGeneration, roomId, playerId]);
+        const pickupKey = JSON.stringify([pickupScope, groundItemId]);
+        if (acceptedGroundItemPickupScope !== pickupScope) {
+          acceptedGroundItemPickupScope = pickupScope;
+          acceptedGroundItemPickups.clear();
+        }
+        const groundItems = state.data?.groundItems;
+        if (Array.isArray(groundItems)) {
+          for (const id of acceptedGroundItemPickups) {
+            if (!groundItems.some(item => item.id === id)) acceptedGroundItemPickups.delete(id);
+          }
+        }
+        if (pendingGroundItemPickups.has(pickupKey) || acceptedGroundItemPickups.has(groundItemId)) return;
+        pendingGroundItemPickups.add(pickupKey);
+        try {
+          const result = await api("/api/item-pickup", { groundItemId });
+          // A newer movement ACK can leave the accepted pickup's full snapshot
+          // stale. Keep this consumed ID locked while the old item is displayed.
+          if (result?.ok === true && acceptedGroundItemPickupScope === pickupScope &&
+              state.roomSessionGeneration === roomSessionGeneration &&
+              state.roomId === roomId && state.playerId === playerId &&
+              Array.isArray(state.data?.groundItems) &&
+              state.data.groundItems.some(item => item.id === groundItemId)) {
+            acceptedGroundItemPickups.add(groundItemId);
+          }
+        } finally {
+          pendingGroundItemPickups.delete(pickupKey);
+        }
       }
       return;
     }
