@@ -10480,7 +10480,8 @@ function syncPortraitTabletDock() {
   }
 }
 
-function setTabletOpen(open, { persist = true, focus = true } = {}) {
+function setTabletOpen(open, { persist = true, focus = true, preserveRetainedFocus = false } = {}) {
+  const wasOpen = state.tabletOpen;
   const playable = state.screen === "game" && state.data?.phase === "playing";
   const portrait = portraitTabletRequired();
   const expandedMapOwnsSurface = state.expandedMapOpen || state.tabletResumeAfterMap;
@@ -10495,7 +10496,8 @@ function setTabletOpen(open, { persist = true, focus = true } = {}) {
   if (state.tabletOpen) {
     if (state.fieldFeedOpen) setFieldFeedOpen(false);
     document.querySelectorAll(".keyboard-selected").forEach((item) => item.classList.remove("keyboard-selected"));
-    if (els.tabletPanel.contains(document.activeElement)) document.activeElement.blur();
+    if (!(preserveRetainedFocus && wasOpen) &&
+        els.tabletPanel.contains(document.activeElement)) document.activeElement.blur();
   } else if (focus) {
     (els.tabletButton || gameFocusSurface())?.focus?.({ preventScroll: true });
   }
@@ -17591,9 +17593,14 @@ function scheduleGameplayViewportReflow(settle = false) {
     if (!gameplayViewportMeasurementAllowed()) return;
     const before = gameplayViewportGeometryKey();
     updateTitleCommandDepthPaths();
+    const tabletParent = els.tabletPanel?.parentElement;
+    const tabletNext = els.tabletPanel?.nextElementSibling;
     syncPortraitTabletDock();
     if (state.screen === "game") {
-      setTabletOpen(state.tabletOpen, { persist: false, focus: false });
+      const preserveRetainedFocus = Boolean(tabletParent &&
+        els.tabletPanel.parentElement === tabletParent &&
+        els.tabletPanel.nextElementSibling === tabletNext);
+      setTabletOpen(state.tabletOpen, { persist: false, focus: false, preserveRetainedFocus });
       validateTabletStickGeometryAfterReflow();
       scheduleTabletBranchLayout();
       scheduleActiveEffectsLayout(() => {
