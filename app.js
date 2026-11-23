@@ -28587,8 +28587,12 @@ function captureWebGPUMainAppHeadMarkerScene(data, markerActors, camera, zoom,
           (player.y - ascensionRise - camera.y) * zoom] },
       alpha });
   }
+  const aroma = state.textures?.aromaScentTransport;
+  const aromaMarkerSource = aroma?.complete &&
+    Number.isInteger(aroma.naturalWidth) && aroma.naturalWidth > 0 &&
+    Number.isInteger(aroma.naturalHeight) && aroma.naturalHeight > 0 ? aroma : null;
   return { scenes, unsupported, generation: state.roomSessionGeneration,
-    now, reducedMotion: prefersReducedMotion(), viewport };
+    now, reducedMotion: prefersReducedMotion(), viewport, aromaMarkerSource };
 }
 // WEBGPU_MAIN_APP_HEAD_MARKER_SCENE_V1_END
 
@@ -29218,11 +29222,13 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
           typeof material.texture?.createView !== 'function')
         throw new Error(`WebGPU world candidate head marker material unavailable or stale: ${key}`);
     }
+    // A missing aroma accent must not suppress the independently ready
+    // Natural Recovery marker. A late decode joins the next captured frame.
+    if (!head.aromaMarkerSource) activeState.aroma = false;
     for (const [key, needed] of [
       ['fireMaterialTransport', activeState.burning &&
         state.textures?.fireMaterialTransport?.complete],
-      ['aromaScentTransport', activeState.naturalRecovery && activeState.aroma &&
-        state.textures?.aromaScentTransport?.complete]
+      ['aromaScentTransport', activeState.naturalRecovery && activeState.aroma]
     ]) {
       if (!needed) continue;
       const material = markerMaterials[key];
@@ -29854,8 +29860,7 @@ function headMarkerMaterialKeysForWebGPUCandidate(candidate, textures) {
     }
     if (scene.activeState.burning && textures?.fireMaterialTransport?.complete)
       keys.add('fireMaterialTransport');
-    if (scene.activeState.naturalRecovery && scene.activeState.aroma &&
-        textures?.aromaScentTransport?.complete)
+    if (scene.activeState.naturalRecovery && scene.activeState.aroma && head.aromaMarkerSource)
       keys.add('aromaScentTransport');
   }
   for (const event of candidate.stages.magicEffects.events) {
