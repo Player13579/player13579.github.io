@@ -21,6 +21,39 @@
       field.createdAt <= serverNow && serverNow < field.endsAt;
   }
 
+  // The pool quad bounds all of its bubble sprites throughout their animation.
+  // Retain a logical-pixel skirt for viewport edge and GPU transform rounding.
+  function poisonFieldCanAffectViewport(field, camera, zoom, viewport) {
+    const width = Math.max(24, field.radius) * 2.25 * zoom;
+    const height = width * 256 / 384;
+    const x = (field.x - camera.x) * zoom, y = (field.y - camera.y) * zoom;
+    // Large transforms cannot be proven offscreen with a subpixel f32 bound.
+    if (![x, y, width, height, field.x * zoom, field.y * zoom,
+        camera.x * zoom, camera.y * zoom, viewport.width, viewport.height]
+      .every(value => finite(value) && Math.abs(value) <= 0x100000)) return true;
+    return x + width / 2 >= -1 && x - width / 2 <= viewport.width + 1 &&
+      y + height / 2 >= -1 && y - height / 2 <= viewport.height + 1;
+  }
+
+  function requiresPoisonMaterial({ scene, camera, zoom, viewport } = {}) {
+    if (!scene || !Array.isArray(scene.hazardFields) || !camera || !viewport ||
+        ![camera.x, camera.y, zoom, viewport.width, viewport.height,
+          scene.serverNow, scene.now].every(finite) ||
+        zoom <= 0 || viewport.width <= 0 || viewport.height <= 0) return true;
+    const ids = new Set();
+    for (const field of scene.hazardFields) {
+      if (field?.kind !== 'poison') continue;
+      if (!activePoisonField(field, scene.serverNow)) {
+        if (finite(field.endsAt) && field.endsAt <= scene.serverNow) continue;
+        return true;
+      }
+      if (ids.has(field.id)) return true;
+      ids.add(field.id);
+      if (poisonFieldCanAffectViewport(field, camera, zoom, viewport)) return true;
+    }
+    return false;
+  }
+
   // The magic receipt names its authoritative field. A later field from the
   // same source cannot inherit an earlier receipt, even at the same center.
   function claimPoisonEffect({ effect, scene, camera, zoom, viewport } = {}) {
@@ -96,6 +129,7 @@
         }
         if (poisonIds.has(field.id)) throw new TypeError('Duplicate poison field ID');
         poisonIds.add(field.id);
+        if (!poisonFieldCanAffectViewport(field, camera, zoom, viewport)) continue;
       }
       // The old fallback sits behind three unconditional transport branches.
       // It has no authored atlas or defined behavior for other kinds.
@@ -209,7 +243,7 @@
       cache.clear(); owned.clear();
     } });
   }
-  const api = Object.freeze({ plan, create, ready, claimPoisonEffect });
+  const api = Object.freeze({ plan, create, ready, claimPoisonEffect, requiresPoisonMaterial });
   root.DvaWebGPUHazardFields = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);

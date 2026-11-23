@@ -21402,7 +21402,10 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
   const hazardScene = hazardFieldsWebGPUScene(data);
   if (hazardScene.hazardFields.some(field => field?.kind === 'poison' &&
       Number(field.endsAt) > estimatedServerNow(data)) &&
-      !imageReady(textures.poisonMaterialTransport, 2304, 2048))
+      !imageReady(textures.poisonMaterialTransport, 2304, 2048) &&
+      window.DvaWebGPUHazardFields?.requiresPoisonMaterial?.({
+        scene: hazardScene, camera, zoom, viewport
+      }) !== false)
     textureGaps.push({ stage: 'gravityHazards', texture: 'poisonMaterialTransport', blocking: true });
   const groundItems = Array.isArray(data.groundItems) ? data.groundItems : [];
   const view = { camera, zoom, width: viewport.width, height: viewport.height };
