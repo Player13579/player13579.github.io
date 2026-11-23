@@ -19804,10 +19804,12 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
   setWebGPUMainPendingDiagnostic('startup:driver-creation');
   markWebGPUStartupStage('driverCreationBegin');
   const driverCreationStartedAt = WEBGPU_MAIN_VERIFY_ROUTE ? performance.now() : null;
+  let driverAdopted = false;
   const driver = await createDormantWebGPUMainAppDriver({ mainCanvas,
     expandedCanvas, acquisitionCanvas, map, image,
     ...(prewarmEntry ? { prewarmEntry } : {}),
     isCurrent: sameSession,
+    isAdopted: () => driverAdopted,
     onProgress(stage) { setWebGPUMainPendingDiagnostic(`startup:${stage}`); },
     ...(startupTiming ? { onTiming(mark) {
       if (startupTiming.frozen || webgpuStartupTiming.current !== startupTiming ||
@@ -19829,6 +19831,7 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
     return null;
   }
   webgpuMainApp.driver = driver;
+  driverAdopted = true;
   markWebGPUStartupStage('driverPublished');
   webgpuMainApp.mapId = map.id;
   webgpuMainApp.acquisitionCanvas = acquisitionCanvas;
@@ -29787,7 +29790,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   acquisitionCanvas, map, image, textAtlas, atlasMetrics, gpu,
   headMarkerMaterials, killAssets = {}, markerDomFallbackReady = false,
   bloomEncoder, residualRevision, modules, rendererApi,
-  textResourceOptions = {}, prewarmEntry = null, isCurrent = () => true,
+  textResourceOptions = {}, prewarmEntry = null, isCurrent = () => true, isAdopted = () => false,
   onFailure, onProgress, onTiming } = {}) {
   const runtimeApi = window.DvaWebGPUMainRuntime;
   const registryApi = window.DvaWebGPUMainPassRegistry;
@@ -29892,7 +29895,11 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
           }
         }
       }
-    })().catch(error => { if (!incomingPrewarm || isCurrent()) notify(error); });
+    })().catch(error => {
+      // Returning a driver from this factory is not publication. The caller
+      // adopts it only after revalidating the room and startup owner.
+      if (isCurrent() || (!incomingPrewarm && isAdopted())) notify(error);
+    });
     return retirement;
   };
   let startupPublished = false;
