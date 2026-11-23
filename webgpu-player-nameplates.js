@@ -28,6 +28,37 @@
     const right = Math.max(...xs), bottom = Math.max(...ys);
     return { x: left, y: top, width: right - left, height: bottom - top };
   }
+  // Both vertex-triangle quads and linear-filtered glyph fragments are confined
+  // to their authored quad. Bound the union before the affine transform; do not
+  // infer clipping from the actor anchor or from the nameplate width alone.
+  function entirelyOffscreen(entry, viewport, textures, textTop) {
+    if (viewport?.kind !== 'main' ||
+        ![viewport.width, viewport.height].every(v => Number.isInteger(v) && v >= 32 && v <= 8192))
+      return false;
+    const m = entry.transform;
+    if (m.slice(0, 4).some(v => Math.abs(v) > 16) ||
+        m.slice(4).some(v => Math.abs(v) > 8192)) return false;
+    let left = entry.plate.x, right = left + entry.plate.w;
+    let top = entry.plate.y, bottom = top + entry.plate.h;
+    for (const g of entry.layout.quads) {
+      // Keep any existing downstream validation observable for malformed
+      // UVs/texture sources, even if the author placed a glyph outside the view.
+      const [u, v, w, h] = g.uv;
+      const texture = textures[g.page];
+      if (u < 0 || v < 0 || w <= 0 || h <= 0 || u + w > 1 || v + h > 1 ||
+          (typeof texture !== 'object' && typeof texture?.createView !== 'function')) return false;
+      const x = -entry.layout.width / 2 + g.x, y = textTop + g.y;
+      left = Math.min(left, x); right = Math.max(right, x + g.w);
+      top = Math.min(top, y); bottom = Math.max(bottom, y + g.h);
+    }
+    if (![left, right, top, bottom].every(v => finite(v) && Math.abs(v) <= 1024)) return false;
+    const bounds = transformedAabb(m, { x: left, y: top, w: right - left, h: bottom - top });
+    // With guarded affine and local coordinates, shader products/sums and
+    // f32 clip conversion have <1 logical pixel of rounding error. Keep eight
+    // pixels of slack and retain all tangents and uncertain ranges as drawn.
+    return bounds.x + bounds.width < -8 || bounds.y + bounds.height < -8 ||
+      bounds.x > viewport.width + 8 || bounds.y > viewport.height + 8;
+  }
   function readCommand(command) {
     if (!command || command.stage !== 'world:players:sprite' ||
         command.playerId == null || typeof command.playerId === 'object')
@@ -75,7 +106,7 @@
       return Object.freeze({ prepared: clipped.length, labels: Object.freeze(clipped) });
     }
 
-    function record({ frame, target, commands, selfPlayerId, preparation = false } = {}) {
+    function record({ frame, target, commands, selfPlayerId, preparation = false, viewport, phase } = {}) {
       if (!Array.isArray(commands) ||
           typeof frame?.stage !== 'function' || typeof frame?.rect !== 'function' ||
           typeof frame?.sprite !== 'function' || typeof target !== 'string' || !target)
@@ -103,6 +134,9 @@
       frame.stage('player-nameplates');
       for (const entry of entries) {
         if (entry.alpha <= 0 || !entry.label) continue;
+        const textTop = entry.plate.y + Math.max(0, (14 - entry.layout.height) / 2);
+        if (!preparation && phase === 'playing' &&
+            entirelyOffscreen(entry, viewport, textAtlas.textures, textTop)) continue;
         const transform = entry.transform;
         const plateAlpha = entry.alpha * .96;
         const radius = 6;
@@ -114,7 +148,6 @@
             y: entry.plate.y + row, w: entry.width - inset * 2, h: 1,
             transform, color: [226 / 255, 232 / 255, 240 / 255, plateAlpha] });
         }
-        const textTop = entry.plate.y + Math.max(0, (14 - entry.layout.height) / 2);
         for (const glyph of entry.layout.quads) frame.sprite(target, {
           x: -entry.layout.width / 2 + glyph.x,
           y: textTop + glyph.y, w: glyph.w, h: glyph.h, uv: glyph.uv,

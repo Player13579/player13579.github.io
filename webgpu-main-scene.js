@@ -974,7 +974,7 @@
           throw new Error('Hover Sprint submitted effects differ from same-frame live plan');
         const nameplates = need('playerNameplates', 'record').record({
           frame, target, commands, selfPlayerId: input.selfPlayerId,
-          preparation: input.preparation });
+          preparation: input.preparation, viewport, phase: stages.hud.data?.phase });
         if (!nameplates || !Array.isArray(nameplates.hits) ||
             (!input.preparation && nameplates.hits.length) ||
             nameplates.hits.some(hit =>
