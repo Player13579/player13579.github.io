@@ -78,7 +78,7 @@
       }
       return Object.freeze({ drawn: true, message: value, glyphs: layout.quads.length });
     }
-    return Object.freeze({ draw });
+    return Object.freeze({ prepare: scene => prepare(scene, textAtlas), draw });
   }
 
   const api = Object.freeze({ message, prepare, create });
