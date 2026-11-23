@@ -234,7 +234,14 @@ function create({frameOwner}={}){
   }
   return Object.freeze({effectId:planned.effectId,type:planned.type,variant:planned.variant,drawn:true,support:bounds});
  }
- return Object.freeze({device,plan,prepare,record,destroy(){if(destroyed)return;destroyed=true;for(const x of [...owned])release(x);slots.length=0;material=null;scratch=null;}});
+ function releaseTemporaryTargets(){
+  if(destroyed)return;
+  const oldScratch=scratch;scratch=null;
+  const oldSlots=slots.splice(0);
+  for(const row of oldSlots)if(row)for(const resource of row.resources)release(resource);
+  for(const texture of oldScratch?.textures||[])release(texture);
+ }
+ return Object.freeze({device,plan,prepare,record,releaseTemporaryTargets,destroy(){if(destroyed)return;destroyed=true;for(const x of [...owned])release(x);slots.length=0;material=null;scratch=null;}});
 }
 const api=Object.freeze({SOURCE,PAD_LOGICAL,support,plan,create,shader,blurShader,finalShader});root.DvaWebGPULegacyTeleportE=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;

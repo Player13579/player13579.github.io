@@ -4015,6 +4015,15 @@ function setScreen(screen) {
   }
   state.screen = next;
   if (next !== "game") suspendWebGPUMainAppDriver();
+  if (previous === "game" && next === "title") {
+    const driver = webgpuMainApp.driver;
+    const generation = webgpuMainApp.generation;
+    if (driver) queueMicrotask(() => {
+      if (state.screen === "title" && webgpuMainApp.driver === driver &&
+          webgpuMainApp.generation === generation)
+        driver.releaseMatchTemporaryTargets?.();
+    });
+  }
   if (next !== "game") suspendLiveSunbeamOverlay({ destroy: true });
   if (next !== "game") clearMarkerExplanation();
   if (next !== "game") clearAcquisitionOverlay();
@@ -29910,6 +29919,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
       lastMedicalSfxFrameAt = null;
       registry.passes.sunbeamE.stopAudio();
       runtime.suspend();
+    },
+    releaseMatchTemporaryTargets() {
+      if (!destroyed) registry.passes.legacyTeleportE.releaseTemporaryTargets?.();
     },
     resume() { return runtime.resume(); },
     refreshSunbeamAudioGates() {
