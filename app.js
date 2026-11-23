@@ -9697,12 +9697,14 @@ function setTabletStickMode(mode, strength = 0) {
   const validMode = ["idle", "slow", "walk", "dash"].includes(mode) ? mode : "idle";
   state.tabletStick.mode = validMode;
   state.tabletStick.strength = Math.max(0, Math.min(1, Number(strength) || 0));
-  els.tabletJoystick.dataset.mode = validMode;
-  els.tabletJoystick.style.setProperty("--stick-strength", state.tabletStick.strength.toFixed(3));
-  els.tabletJoystick.setAttribute(
-    "aria-valuetext",
-    validMode === "idle" ? "停止" : `移動速度 ${Math.round(state.tabletStick.strength * 100)}%`
-  );
+  const stick = els.tabletJoystick;
+  const cssStrength = state.tabletStick.strength.toFixed(3);
+  const valueText = validMode === "idle" ? "停止" : `移動速度 ${Math.round(state.tabletStick.strength * 100)}%`;
+  if (stick.dataset.mode !== validMode) stick.dataset.mode = validMode;
+  if (stick.style.getPropertyValue("--stick-strength") !== cssStrength) {
+    stick.style.setProperty("--stick-strength", cssStrength);
+  }
+  if (stick.getAttribute("aria-valuetext") !== valueText) stick.setAttribute("aria-valuetext", valueText);
 }
 
 function resetTabletStick() {
