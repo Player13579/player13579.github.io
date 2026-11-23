@@ -1264,6 +1264,7 @@ const state = {
   explicitInventoryItemId: "",
   pendingExplicitWeaponSelectionId: "",
   enhanceHold: { kind: "", chargeKind: "", pointerId: null, startedAt: 0, timer: 0, itemId: "", chargeId: "" },
+  throwChargeOperation: null,
   throwTargeting: {
     active: false,
     itemId: "",
@@ -5296,10 +5297,11 @@ function updateThrowTargetingFrame(timestamp) {
 
 function beginThrowTargeting(itemId, holdMs = 0, chargeId = "") {
   const data = state.data;
-  if (!data || data.phase !== "playing" || !data.self?.alive || !itemId) return false;
-  if (state.throwTargeting.active) cancelThrowTargeting(true);
+  if (!data || data.phase !== "playing" || !data.self?.alive || data.self.ejected || data.self.inVent || !itemId) return false;
   const preview = predictedThrowLanding(data, holdMs);
   if (!preview) return false;
+  // The newly finalized charge already replaced the old charge on the server.
+  cancelThrowTargeting(true, "", { preserveCharge: true });
   clearMovementInput();
   const timestamp = performance.now();
   state.throwTargeting = {
@@ -5320,11 +5322,52 @@ function beginThrowTargeting(itemId, holdMs = 0, chargeId = "") {
   return true;
 }
 
-function cancelThrowTargeting(silent = false, message = "投擲をキャンセルしました。", { preserveCharge = false, recoverOnFailure = true } = {}) {
-  if (!state.throwTargeting.active) return false;
+function startThrowChargeOperation(hold = null) {
+  const { roomId, playerId, roomSessionGeneration } = state;
+  const operation = { roomId, playerId, roomSessionGeneration, hold, cancelled: false };
+  state.throwChargeOperation = operation;
+  return operation;
+}
+
+function ownsThrowCharge(operation = state.throwChargeOperation) {
+  return Boolean(operation && state.throwChargeOperation === operation &&
+    isCurrentRoomSession(operation.roomId, operation.playerId, operation.roomSessionGeneration));
+}
+
+function releaseThrowChargeOperation(operation) {
+  if (state.throwChargeOperation === operation) state.throwChargeOperation = null;
+}
+
+async function clearThrowChargeOperation(operation, recoverOnFailure) {
+  try {
+    if (ownsThrowCharge(operation)) await clearServerEnhanceCharge({ recoverOnFailure });
+  } finally {
+    releaseThrowChargeOperation(operation);
+  }
+}
+
+function resetThrowChargeSession() {
+  state.throwChargeOperation = null;
+  if (state.enhanceHold.kind === "throw") cancelEnhanceAction("throw");
+  if (!state.throwTargeting.active) return;
   if (state.throwTargeting.frame) cancelAnimationFrame(state.throwTargeting.frame);
   state.throwTargeting = emptyThrowTargetingState();
-  if (!preserveCharge) void clearServerEnhanceCharge({ recoverOnFailure });
+  updateEnhanceReadout();
+}
+
+function cancelThrowTargeting(silent = false, message = "投擲をキャンセルしました。", { preserveCharge = false, recoverOnFailure = true } = {}) {
+  const operation = state.throwChargeOperation;
+  const preparing = !preserveCharge && ownsThrowCharge(operation) && operation.hold;
+  if (!state.throwTargeting.active && !preparing) return false;
+  if (state.throwTargeting.frame) cancelAnimationFrame(state.throwTargeting.frame);
+  state.throwTargeting = emptyThrowTargetingState();
+  if (preparing) {
+    operation.cancelled = true;
+    operation.recoverOnFailure = recoverOnFailure;
+    if (state.enhanceHold === operation.hold) cancelEnhanceAction("throw", { recoverOnFailure });
+  } else if (!preserveCharge && !ownsThrowCharge(operation)) {
+    void clearThrowChargeOperation(startThrowChargeOperation(), recoverOnFailure);
+  }
   syncClairvoyanceManaUsage();
   updateEnhanceReadout();
   if (!silent && message) showToast(message);
@@ -5332,7 +5375,7 @@ function cancelThrowTargeting(silent = false, message = "投擲をキャンセ�
 }
 
 async function confirmThrowTargeting() {
-  if (!state.throwTargeting.active) return false;
+  if (!state.throwTargeting.active || ownsThrowCharge()) return false;
   const landing = targetedThrowLanding(state.data);
   if (!landing?.valid) {
     showToast("接地できる場所へマーカーを移動してください。");
@@ -5340,7 +5383,17 @@ async function confirmThrowTargeting() {
   }
   const { itemId, holdMs, chargeId, targetX, targetY } = state.throwTargeting;
   cancelThrowTargeting(true, "", { preserveCharge: true });
-  return api("/api/item-throw", { itemId, holdMs, chargeId, targetX, targetY });
+  const operation = startThrowChargeOperation();
+  let accepted = false;
+  try {
+    accepted = await api("/api/item-throw", { itemId, holdMs, chargeId, targetX, targetY }, {
+      isCurrent: () => ownsThrowCharge(operation)
+    });
+    return accepted;
+  } finally {
+    if (accepted) releaseThrowChargeOperation(operation);
+    else await clearThrowChargeOperation(operation, false);
+  }
 }
 
 function abilityBatchSource(button) {
@@ -5876,7 +5929,7 @@ function updateEnhanceReadout() {
 }
 
 function beginEnhanceAction(kind, pointerId = null, inputSource = pointerId === null ? "unknown" : "pointer", inputCode = "") {
-  if (!kind || state.enhanceHold.kind) return false;
+  if (!kind || state.enhanceHold.kind || ownsThrowCharge()) return false;
   const itemId = kind === "shoot"
     ? `weapon:${String(state.data?.self?.gunnerWeapon || "")}`
     : kind === "fire"
@@ -5888,6 +5941,7 @@ function beginEnhanceAction(kind, pointerId = null, inputSource = pointerId === 
     ? api("/api/enhance-charge", { active: true, kind: chargeKind, itemId })
     : Promise.resolve(false);
   state.enhanceHold = { kind, chargeKind, pointerId, inputSource, inputCode, startedAt: performance.now(), timer: 0, itemId, chargeId: "", chargePromise };
+  if (kind === "throw") startThrowChargeOperation(state.enhanceHold);
   if (chargeKind === "shoot") state.gunActivationPending = true;
   state.movementQueue?.clear?.();
   clearMovementInput();
@@ -5913,6 +5967,16 @@ function cancelEnhanceAction(kind = state.enhanceHold.kind, { recoverOnFailure =
     }
   }
   updateEnhanceReadout();
+  if (hold.kind === "throw") {
+    const operation = state.throwChargeOperation;
+    if (ownsThrowCharge(operation) && operation.hold === hold) {
+      operation.cancelled = true;
+      operation.recoverOnFailure = recoverOnFailure;
+      cancelThrowTargeting(true, "", { preserveCharge: true });
+      void finishThrowChargeOperation(operation, 0);
+    }
+    return true;
+  }
   // Preserve request order: if the start request is still travelling, clear it
   // only after that request settles so a cancelled charge cannot reappear.
   void Promise.resolve(hold.chargePromise).then(() => {
@@ -5937,6 +6001,27 @@ async function clearServerEnhanceCharge({ recoverOnFailure = true } = {}) {
   }, { quiet: true, attempts: 1 });
 }
 
+async function finishThrowChargeOperation(operation, holdMs) {
+  let targeting = false;
+  const isCurrent = () => ownsThrowCharge(operation) && !operation.cancelled;
+  try {
+    const { itemId, chargePromise } = operation.hold;
+    const charged = await chargePromise;
+    const chargeId = charged?.self?.enhanceChargeId;
+    if (!isCurrent() || !chargeId || !itemId) return false;
+    const finalized = await api("/api/enhance-charge", { active: false, finalize: true, holdMs, chargeId }, { isCurrent });
+    if (!isCurrent() || finalized?.self?.enhanceChargeId !== chargeId) return false;
+    targeting = beginThrowTargeting(itemId, holdMs, chargeId);
+    return targeting;
+  } finally {
+    if (targeting) releaseThrowChargeOperation(operation);
+    else {
+      if (ownsThrowCharge(operation)) cancelThrowTargeting(true, "", { preserveCharge: true });
+      await clearThrowChargeOperation(operation, operation.recoverOnFailure ?? false);
+    }
+  }
+}
+
 async function finishEnhanceAction(kind = state.enhanceHold.kind, pointerId = null) {
   const hold = state.enhanceHold;
   if (!hold.kind || (kind && hold.kind !== kind) || (pointerId !== null && hold.pointerId !== pointerId)) return false;
@@ -5944,6 +6029,12 @@ async function finishEnhanceAction(kind = state.enhanceHold.kind, pointerId = nu
   if (hold.timer) cancelAnimationFrame(hold.timer);
   state.enhanceHold = { kind: "", chargeKind: "", pointerId: null, inputSource: "", inputCode: "", startedAt: 0, timer: 0, itemId: "", chargeId: "" };
   updateEnhanceReadout();
+  if (hold.kind === "throw") {
+    const operation = state.throwChargeOperation;
+    return ownsThrowCharge(operation) && operation.hold === hold
+      ? finishThrowChargeOperation(operation, holdMs)
+      : false;
+  }
   const chargeResult = await Promise.resolve(hold.chargePromise);
   const chargeId = String(chargeResult?.self?.enhanceChargeId || hold.chargeId || "");
   if (kind === "shoot") {
@@ -5959,11 +6050,6 @@ async function finishEnhanceAction(kind = state.enhanceHold.kind, pointerId = nu
     return false;
   }
   if (kind === "use" && itemId === "fire-jutsu") return api("/api/fire-jutsu", { holdMs, chargeId });
-  if (kind === "throw") {
-    const finalized = await api("/api/enhance-charge", { active: false, finalize: true, holdMs, chargeId });
-    if (!finalized) return false;
-    return beginThrowTargeting(itemId, holdMs, chargeId);
-  }
   if (kind === "use" && itemId.startsWith("invention:")) {
     return api("/api/alchemist-invention", { invention: itemId.slice(10), holdMs, chargeId });
   }
@@ -8796,7 +8882,8 @@ function bindEvents() {
         return;
       }
     }
-    if (!typingField && state.throwTargeting.active) {
+    if (!typingField && (state.throwTargeting.active ||
+      (ownsThrowCharge() && state.throwChargeOperation.hold && !state.throwChargeOperation.cancelled))) {
       if (event.key === "Escape") {
         event.preventDefault();
         cancelThrowTargeting();
@@ -12119,6 +12206,7 @@ function setCurrentRoomSession(roomId, playerId) {
     else if (expectedPlaySession)
       webgpuTitlePrewarm.expectedSessionChanges -= 1;
     state.roomSessionGeneration += 1;
+    resetThrowChargeSession();
     setPreparationEditingField("");
     state.preparationRosterEntries.clear();
   }
@@ -12324,6 +12412,7 @@ function resetLocalSession() {
   if (els.pregameCanvasSettings) els.pregameCanvasSettings.hidden = true;
   invalidateFocusResync();
   state.roomSessionGeneration += 1;
+  resetThrowChargeSession();
   state.pollInFlight = false;
   state.preparationRosterEntries.clear();
   state.pollInFlightGeneration = 0;
