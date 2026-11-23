@@ -1132,7 +1132,7 @@ const state = {
   focusResyncing: false,
   focusResyncPromise: null,
   focusResyncSerial: 0,
-  foregroundRecovery: { inFlight: false, queuedGeneration: null },
+  foregroundRecovery: { inFlight: false, queuedGeneration: null, titleRouteSerial: 0 },
   pollInFlight: false,
   pollInFlightGeneration: 0,
   // Every async room response is tied to this client-side ownership generation.
@@ -4014,7 +4014,10 @@ function setScreen(screen) {
   if (previous !== next) clearTitleCommandTransition();
   // PREPARATION_ROSTER_V726: a screen transition never carries an old room's entrance state.
   if (previous !== next) state.preparationRosterEntries.clear();
-  if (next === "title") state.operatorSelectionRouteOpen = false;
+  if (next === "title") {
+    state.operatorSelectionRouteOpen = false;
+    if (previous !== "title") state.foregroundRecovery.titleRouteSerial += 1;
+  }
   if (next !== "game") setSoloNameGuidance(false);
   if (next !== "game" && els.sensoryOverlay) {
     els.sensoryOverlay.hidden = true;
@@ -11604,7 +11607,10 @@ async function leaveCurrentRoom(options = {}) {
   const generation = state.roomSessionGeneration;
   const destination = options.destination || (state.data?.soloMission ? "tactics" : "title");
   const explicitTitleExit = options.explicitTitleExit === true && destination === "title";
-  const leaveOwner = { roomId, playerId, generation, explicitTitleExit };
+  let settleTitleExit;
+  const settled = explicitTitleExit && state.offlineMode
+    ? new Promise(resolve => { settleTitleExit = resolve; }) : null;
+  const leaveOwner = { roomId, playerId, generation, explicitTitleExit, settled };
   const sourceScreen = state.screen;
   state.leaveRoomInFlight = leaveOwner;
   if (explicitTitleExit) syncOperatorSelectionRetry();
@@ -11627,6 +11633,7 @@ async function leaveCurrentRoom(options = {}) {
     if (options.announce !== false) showToast("マッチから退出しました。");
     return true;
   } finally {
+    settleTitleExit?.();
     if (state.leaveRoomInFlight === leaveOwner) {
       state.leaveRoomInFlight = null;
       if (explicitTitleExit) syncOperatorSelectionRetry();
@@ -12299,6 +12306,7 @@ function returnExpiredOnlineRoomToMatchmaking(generation, roomId, playerId) {
 
 async function rebuildExpiredOfflineRoom(generation, roomId, playerId, authorityLost = false) {
   if (!isCurrentRoomSession(roomId, playerId, generation)) return false;
+  const titleRouteSerial = state.foregroundRecovery.titleRouteSerial;
   const name = startPlayerName();
   const skinId = normalizeSkinId(clientStorage.getItem(storage.skin) || els.skinSelect.value);
   const mapId = normalizeMatchmakingMapId(clientStorage.getItem(storage.map) || els.mapSelect.value);
@@ -12314,7 +12322,10 @@ async function rebuildExpiredOfflineRoom(generation, roomId, playerId, authority
     quiet: true,
     forceOffline: true
   });
-  if (!result || replacementGeneration !== state.roomSessionGeneration || !state.offlineMode) return false;
+  // An explicit route back to title still owns the screen after this rebuild
+  // has cleared the old room IDs, even if Play is opened again meanwhile.
+  if (!result || replacementGeneration !== state.roomSessionGeneration || !state.offlineMode ||
+      titleRouteSerial !== state.foregroundRecovery.titleRouteSerial) return false;
   lockPlayerName(result.profile?.name || responsePlayerName(result, name));
   setCurrentRoomSession(result.roomId, result.playerId);
   applyState(result, { authoritative: true });
@@ -12333,6 +12344,7 @@ async function resumeRoomAfterBackground() {
   }
   state.backgroundResume.inFlight = true;
   const serial = ++state.backgroundResume.serial;
+  const titleRouteSerial = state.foregroundRecovery.titleRouteSerial;
   const roomId = state.roomId;
   const playerId = state.playerId;
   const generation = state.roomSessionGeneration;
@@ -12341,12 +12353,26 @@ async function resumeRoomAfterBackground() {
   const originalWorker = client?.worker;
   const originalWorkerGeneration = client?.workerGeneration;
   const originalMain = client?.mainThreadApi;
+  const pendingTitleExit = () => {
+    const owner = state.leaveRoomInFlight;
+    return offline && owner?.explicitTitleExit && owner.generation === generation &&
+      owner.roomId === roomId && owner.playerId === playerId ? owner.settled : null;
+  };
+  const ownsOfflineRoute = () => titleRouteSerial === state.foregroundRecovery.titleRouteSerial &&
+    !document.hidden && isCurrentRoomSession(roomId, playerId, generation) &&
+    state.offlineMode && client === state.offlineClient;
   try {
+    // A pending explicit exit owns room retirement. If it fails, the still
+    // current foreground recovery can continue without waiting for new focus.
+    let leaving;
+    while ((leaving = pendingTitleExit())) await leaving;
+    if (offline && !ownsOfflineRoute()) return false;
     // A suspended dedicated worker can be discarded by the browser. Starting
     // it is idempotent and preserves a healthy worker; a missing generated
     // room is rebuilt below rather than leaking its raw server error.
     if (offline) await client?.start?.();
-    if (titleWebGPURecoveryBlocked()) return false;
+    while ((leaving = pendingTitleExit())) await leaving;
+    if (titleWebGPURecoveryBlocked() || (offline && !ownsOfflineRoute())) return false;
     const worker = originalMain ? null : (originalWorker || client?.worker);
     const workerGeneration = originalWorker ? originalWorkerGeneration : client?.workerGeneration;
     const main = originalMain || (!worker ? client?.mainThreadApi : null);
@@ -12364,7 +12390,9 @@ async function resumeRoomAfterBackground() {
             payload.error === "プレイヤーが見つかりません。再入室してください。");
       }
     });
+    while ((leaving = pendingTitleExit())) await leaving;
     if (titleWebGPURecoveryBlocked() || serial !== state.backgroundResume.serial || document.hidden ||
+        (offline && !ownsOfflineRoute()) ||
         !isCurrentRoomSession(roomId, playerId, generation) || offline !== state.offlineMode ||
         (offline && client !== state.offlineClient)) return false;
     // The current runtime retires its Worker when switching to independent
