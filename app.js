@@ -27958,9 +27958,22 @@ function buildWebGPUGunnerAimActionCommand(player, data, view, action) {
       !Number.isFinite(action.progress) || action.progress < 0 || action.progress >= 1) return null;
   const identity = authoredCharacterIdentity(player, data);
   const sheet = WEBGPU_MANA_FOCUS_SHEETS[identity];
-  const image = state.textures?.manaFocusWebGPUMotions?.[identity];
-  if (!sheet || !image?.complete || image.naturalWidth !== sheet.width ||
-      image.naturalHeight !== sheet.height) return null;
+  const textures = state.textures;
+  const image = textures?.manaFocusWebGPUMotions?.[identity];
+  if (!sheet || !image) return null;
+  const assetPath = `assets/generated/physical-motion-${identity}-focus-${sheet.version}-webgpu-alpha-v1.png`;
+  if (!image.complete || image.naturalWidth !== sheet.width ||
+      image.naturalHeight !== sheet.height) {
+    // A visible, owned focus pose can arrive before its optional batch.
+    // Use the same image and start ledger, after required loads have begun.
+    if (data === state.data && state.screen === 'game' && !document.hidden &&
+        textures.gameplayLoaded && !image.src && !textures.gameplayLoadStarted?.has(image)) {
+      const queued = textures.gameplayLoadQueue?.find(([entry]) =>
+        entry === image);
+      if (queued) startGameplayOptionalTexture(textures, image, queued[1]);
+    }
+    return null;
+  }
   const frameIndex = Math.min(2, Math.max(0, Math.round(
     physicalActionFramePosition('focus', action.progress, 'gunner-passive-aim'))));
   const [x, y, width, height] = sheet.frames[frameIndex];
@@ -27971,7 +27984,7 @@ function buildWebGPUGunnerAimActionCommand(player, data, view, action) {
   const command = window.DvaWebGPUPlayerSprite?.createCommand?.({
     player: { ...player, y: player.y - ascensionRise }, identity, direction,
     mode: 'gunner-passive-aim',
-    entry: { assetPath: `assets/generated/physical-motion-${identity}-focus-${sheet.version}-webgpu-alpha-v1.png`,
+    entry: { assetPath,
       layout: { sourceOrigin: { x: width / 2, y: height },
         ground: { x: 0, y: CHARACTER_BODY_FOOT_ANCHOR_Y }, scale } },
     image, frame: { x, y, width, height }, body: { lift: 0, sway: 0, lean: 0 },
