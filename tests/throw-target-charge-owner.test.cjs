@@ -28,7 +28,7 @@ const clientSource = [
   appSection("function beginThrowTargetMovement(", "function clairvoyanceFollowCandidates("),
   appSection("function beginEnhanceAction(", "function triggerVendingHotkey("),
   appSection("function clientEnhanceLevel(", "function throwLandingWebGPUScene("),
-  appSection("async function api(", "async function loadDropoffAnalytics("),
+  appSection("function releaseRejectedActionTransientInput(", "async function loadDropoffAnalytics("),
   appSection("function isCurrentRoomSession(", "function invalidateFocusResync("),
   appSection("function cancelTransientGameInputForBackground(", "function returnExpiredOnlineRoomToMatchmaking("),
   appSection('  window.addEventListener("keyup", (event) => {\n    const releasedMovementKey', '  window.addEventListener("blur", () => {\n    cancelCommonActionGestures'),
@@ -88,7 +88,8 @@ async function createHarness(t, transport) {
   const state = {
     roomId: snapshot.roomId, playerId: snapshot.playerId, roomSessionGeneration: 1,
     screen: "game", data: snapshot, enhanceHold: {}, facing: new Map(), movementKeyDirections: new Map(),
-    throwChargeOperation: null, continuousActionKeyAt: new Map(), preparationRosterEntries: new Map(), clairvoyance: {}
+    throwChargeOperation: null, continuousActionKeyAt: new Map(), preparationRosterEntries: new Map(), clairvoyance: {},
+    rejectedActionRecovery: {}, quantumKineticHold: {}, tabletGesture: {}
   };
   assert.equal(snapshot.self.itemInventory.find((item) => item.id === "frag-grenade").amount, 1);
 
@@ -100,7 +101,7 @@ async function createHarness(t, transport) {
   const els = { itemSelect: { value: "frag-grenade" }, itemControl: { hidden: false }, itemThrowButton: { disabled: false } };
   const client = vm.createContext({
     state, els, Element: class {}, document: { activeElement: null },
-    window: { addEventListener(type, listener) { listeners[type] = listener; } },
+    window: { clearTimeout: noOp, addEventListener(type, listener) { listeners[type] = listener; } },
     performance: { now: () => now - 1_800_000_000_000 + 10 },
     requestAnimationFrame(callback) { frames.set(++frame, callback); return frame; },
     cancelAnimationFrame(id) { frames.delete(id); },
@@ -116,10 +117,7 @@ async function createHarness(t, transport) {
     setPreparationEditingField: noOp, clearClairvoyanceCameraInput: noOp, invalidateFocusResync: noOp,
     cancelCommonActionGestures: noOp, cancelActiveRootShortcutHolds: noOp, cancelActiveAbilityBatchHolds: noOp,
     stopContinuousActionHold: noOp, closeSwitchDragMenu: noOp, clearNativeSelectHold: noOp, clearLocalGunTrigger: noOp,
-    recoverAfterRejectedAction() {
-      // The production recovery releases the active input and asks for /api/state.
-      vm.runInContext("cancelEnhanceAction(); if (state.throwTargeting.active) cancelThrowTargeting(true, '', { recoverOnFailure: false });", client);
-    },
+    stopVendingHold: noOp, closeQuantumKineticHold: noOp,
     applyState(result) { state.data = result; },
     async request(route, body) {
       const delay = oneDelay?.matches(route, body) ? oneDelay : null;
@@ -319,6 +317,22 @@ for (const transport of ["main", "worker"]) {
     h.escape();
     await h.settle();
     assert.equal(await serverCharge(h), "");
+  });
+
+  test(transport + ": another action rejection revokes the first pending aim", async (t) => {
+    const h = await createHarness(t, transport);
+    const delayed = h.defer(finalizing);
+    h.keydownThrow();
+    h.keyupThrow();
+    await delayed.arrived;
+    assert.equal(h.state.throwTargeting.active, false);
+    assert.equal(await h.evaluate('api("/api/item-use", { itemId: "frag-grenade" })'), false);
+    assert.equal(h.calls.find(({ route }) => route === "/api/item-use").result.status, 400);
+    delayed.release();
+    await h.settle();
+    assert.equal(h.state.throwTargeting.active, false);
+    assert.equal(await serverCharge(h), "");
+    assert.equal(itemCount(h), 1);
   });
 
   test(transport + ": item-throw rejection does not consume the new item or leave a charge", async (t) => {

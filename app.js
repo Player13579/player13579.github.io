@@ -11748,7 +11748,7 @@ function releaseRejectedActionTransientInput() {
   state.paneExpansionGesture = null;
   clearLocalGunTrigger();
   if (state.enhanceHold.kind) cancelEnhanceAction(state.enhanceHold.kind, { recoverOnFailure: false });
-  if (state.throwTargeting.active) cancelThrowTargeting(true, "", { recoverOnFailure: false });
+  cancelThrowTargeting(true, "", { recoverOnFailure: false });
   clearMovementInput();
 }
 
