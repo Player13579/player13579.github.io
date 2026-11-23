@@ -8993,6 +8993,7 @@ function bindEvents() {
     syncMovementInputImmediately();
   });
   window.addEventListener("blur", () => {
+    cancelCommonActionGestures();
     cancelActiveRootShortcutHolds();
     stopContinuousActionHold();
     stopContinuousActionKeyHold();
@@ -12038,6 +12039,7 @@ function invalidateFocusResync() {
 
 function cancelTransientGameInputForBackground() {
   invalidateFocusResync();
+  cancelCommonActionGestures();
   clearMovementInput();
   clearClairvoyanceCameraInput();
   cancelActiveRootShortcutHolds();
