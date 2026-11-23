@@ -11681,7 +11681,8 @@ function recoverAfterRejectedAction() {
 
 async function api(path, extra = {}, options = {}) {
   if (enhanceGestureContext) extra = { ...extra, enhanceGesture: { ...enhanceGestureContext } };
-  if (!state.roomId || !state.playerId) {
+  const { roomId, playerId, roomSessionGeneration } = state;
+  if (!roomId || !playerId) {
     showToast("先にマッチングを開始してください。");
     return false;
   }
@@ -11689,9 +11690,11 @@ async function api(path, extra = {}, options = {}) {
     if (state.verificationManualBotContinuity) state.verificationManualBotContinuity.actionSeen = true;
     document.documentElement.setAttribute("data-v572-manual-first-human-action", String(path || ""));
   }
+  const isCurrent = () => isCurrentRoomSession(roomId, playerId, roomSessionGeneration) &&
+    (!options.isCurrent || options.isCurrent());
   const result = await request(path, {
-    roomId: state.roomId,
-    playerId: state.playerId,
+    roomId,
+    playerId,
     ...extra
   }, {
     attempts: options.attempts,
@@ -11699,9 +11702,9 @@ async function api(path, extra = {}, options = {}) {
     quiet: options.quiet,
     resetOnNotFound: options.resetOnNotFound,
     publicFeature: options.publicFeature,
-    isErrorToastCurrent: options.isCurrent
+    isErrorToastCurrent: isCurrent
   });
-  if (options.isCurrent && !options.isCurrent()) return false;
+  if (!isCurrent()) return false;
   if (!result) {
     recoverAfterRejectedAction();
     return false;
