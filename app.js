@@ -22462,11 +22462,17 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         omitted.push({ effectId: effect.id, reason: 'medical-bed-activation-not-started' });
         continue;
       }
-      let planned = null;
+      let planned;
       try {
         planned = window.DvaWebGPUMedicalObjectE?.plan?.({ effect, camera, zoom,
           viewport, now, reducedMotion });
       } catch (_) { /* A malformed visible event remains a readiness blocker. */ }
+      // A validated null means the precise footprint was culled by the provider.
+      if (planned === null) {
+        omitted.push({ effectId: effect.id,
+          reason: 'medical-bed-activation-outside-viewport' });
+        continue;
+      }
       if (!planned) {
         const outside = effect.x < camera.x - 150 ||
           effect.x > camera.x + viewport.width / zoom + 150 ||
