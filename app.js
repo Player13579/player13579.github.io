@@ -22511,11 +22511,16 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           reason: `${medicalUseE.reason}-activation-not-started` });
         continue;
       }
-      let planned = null;
+      let planned;
       try {
         planned = medicalUseE.api?.plan?.({ effect, camera, zoom,
           viewport, now, reducedMotion });
       } catch (_) { /* Malformed visible source remains a readiness blocker. */ }
+      if (medicalUseE.eventType === 'medicalCabinetE' && planned === null) {
+        omitted.push({ effectId: effect.id,
+          reason: `${medicalUseE.reason}-outside-viewport` });
+        continue;
+      }
       if (!planned) {
         const outside = effect.x < camera.x - 150 ||
           effect.x > camera.x + viewport.width / zoom + 150 ||
