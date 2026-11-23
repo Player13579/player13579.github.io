@@ -19452,7 +19452,7 @@ function flushLiveSunbeamSounds(submittedHands = null, frameId = 0) {
 function suspendWebGPUMainAppDriver({ destroy = false } = {}) {
   if (!WEBGPU_MAIN_OWNER) return;
   clearWebGPUMainUnstableLayoutRetry();
-  if (webgpuMainApp.startToken) webgpuMainApp.startToken.cancelled = true;
+  if (webgpuMainApp.startToken) cancelWebGPUMainStartupToken(webgpuMainApp.startToken);
   webgpuMainApp.generation += 1;
   if (WEBGPU_MAIN_VERIFY_ROUTE && state.screen !== 'game' &&
       webgpuStartupTiming.current && !webgpuStartupTiming.current.frozen) {
@@ -19849,6 +19849,11 @@ function webgpuMainReadyImage(data) {
     image.naturalHeight === map.height ? image : null;
 }
 
+function cancelWebGPUMainStartupToken(token) {
+  token.cancelled = true;
+  token.abortColdTextManifest?.();
+}
+
 async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled: false }) {
   webgpuMainApp.lastFrameStage = null;
   const generation = webgpuMainApp.generation;
@@ -19921,7 +19926,7 @@ async function startWebGPUMainAppDriver(data, image, startupToken = { cancelled:
   const driver = await createDormantWebGPUMainAppDriver({ mainCanvas,
     expandedCanvas, acquisitionCanvas, map, image,
     ...(prewarmEntry ? { prewarmEntry } : {}),
-    isCurrent: sameSession,
+    startupToken, isCurrent: sameSession,
     isAdopted: () => driverAdopted,
     onProgress(stage) { setWebGPUMainPendingDiagnostic(`startup:${stage}`); },
     ...(startupTiming ? { onTiming(mark) {
@@ -19969,7 +19974,7 @@ function startWebGPUMainAppDriverWithDeadline(data, image, timeoutMs = 45000) {
       // Keep startPending until its underlying GPU work drains; do not start
       // a second device request or spend the next foreground attempt's budget.
       if (!isOwner()) return;
-      startupToken.cancelled = true;
+      cancelWebGPUMainStartupToken(startupToken);
       reject(new Error(`WebGPU startup timed out at ${document.body?.dataset?.webgpuMainPending || 'unknown'}`));
     }, timeoutMs);
   });
@@ -30070,7 +30075,8 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
   acquisitionCanvas, map, image, textAtlas, atlasMetrics, gpu,
   headMarkerMaterials, killAssets = null, markerDomFallbackReady = false,
   bloomEncoder, residualRevision, modules, rendererApi,
-  textResourceOptions = {}, prewarmEntry = null, isCurrent = () => true, isAdopted = () => false,
+  textResourceOptions = {}, prewarmEntry = null, startupToken = null,
+  isCurrent = () => true, isAdopted = () => false,
   onFailure, onProgress, onTiming } = {}) {
   const runtimeApi = window.DvaWebGPUMainRuntime;
   const registryApi = window.DvaWebGPUMainPassRegistry;
@@ -30106,6 +30112,8 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     throw new TypeError('Dormant WebGPU main driver needs three owned canvases, map image, atlas, marker resources and failure hook');
   const target = 'main', expandedTarget = 'main-expanded-map';
   const acquisitionTarget = 'main-acquisition-overlay';
+  let coldManifest = null;
+  let abortColdManifest = null;
   let runtime, registry, scene, textOwner = incomingPrewarm?.textOwner || null,
     markerOwner = incomingPrewarm?.markerOwner || null, destroyed = false;
   const rendererLease = incomingPrewarm?.rendererLease || null;
@@ -30169,6 +30177,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     if (destroyed) return retirement || Promise.resolve();
     destroyed = true;
     lifecycleGeneration += 1;
+    abortColdManifest?.();
     revokePendingKillBloom();
     if (incomingPrewarm) incomingPrewarm.onTransferredFailure = null;
     // Registry retirement can await shader/asset promises. Invalidate the
@@ -30221,6 +30230,24 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     }
   }
   try {
+    // The manifest does not use the device. Match the title prewarm ordering
+    // on a cold start, while leaving the fetch and its cancellation local.
+    if (ownsText && !textResourceOptions.manifestRequest &&
+        typeof window.AbortController === 'function' &&
+        typeof textOwnerApi.preloadManifest === 'function') {
+      try {
+        const controller = new window.AbortController();
+        coldManifest = textOwnerApi.preloadManifest({
+          atlasBaseUrl: textResourceOptions.atlasBaseUrl,
+          fetcher: textResourceOptions.fetcher,
+          signal: controller.signal
+        });
+        abortColdManifest = () => controller.abort();
+        if (startupToken) startupToken.abortColdTextManifest = abortColdManifest;
+      } catch (_) {
+        // Preserve the original post-device path if speculative setup fails.
+      }
+    }
     onProgress?.('gpu-runtime');
     runtime = await runtimeApi.create({ canvas: mainCanvas, target, gpu,
       retryDiagnostics: WEBGPU_MAIN_VERIFY_ROUTE,
@@ -30238,6 +30265,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     } else if (ownsText) {
       onProgress?.('text-resources');
       textOwner = await textOwnerApi.create({ ...textResourceOptions,
+        ...(coldManifest ? { manifestRequest: coldManifest } : {}),
         device: runtime.device });
       requireCurrent();
       if (textOwner?.device !== runtime.device)
@@ -30314,6 +30342,9 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     await destroy();
     if (cancelled) return null;
     throw error;
+  } finally {
+    if (startupToken?.abortColdTextManifest === abortColdManifest && abortColdManifest)
+      delete startupToken.abortColdTextManifest;
   }
   startupPublished = true;
   return Object.freeze({
