@@ -16,7 +16,7 @@
         const p=points[i],q=points[(i+1)%points.length];
         if(![p[0],p[1],q[0],q[1]].every(finite))throw Error('Invalid map geometry');
         if(p[1]===q[1])continue;
-        edges.push({x:p[0],y:p[1],minimum:Math.min(p[1],q[1]),maximum:Math.max(p[1],q[1]),slope:(q[0]-p[0])/(q[1]-p[1]),winding:q[1]>p[1]?1:-1});
+        edges.push({order:edges.length,x:p[0],y:p[1],minimum:Math.min(p[1],q[1]),maximum:Math.max(p[1],q[1]),slope:(q[0]-p[0])/(q[1]-p[1]),winding:q[1]>p[1]?1:-1});
       }
     }
     const coverage=new Uint16Array(width),alpha=new Uint8Array(width*height),intersections=[],rowInteriorDiff=new Int32Array(width);
@@ -32,7 +32,7 @@
       }
       dirtyFirst=width;dirtyLast=-1;
     };
-    const addSpan=(left,right)=>{
+    const addSpan=(left,right,repeat)=>{
       // Pixel centers lie at (i + .5)/8. Clamp before converting to indices.
       let first=Math.max(0,Math.ceil(left*samples-.5));
       const last=Math.min(width*samples,Math.ceil(right*samples-.5));
@@ -41,23 +41,49 @@
       if(Number.isFinite(firstPixel)&&Number.isFinite(lastPixel)){
         dirtyFirst=Math.min(dirtyFirst,firstPixel);dirtyLast=Math.max(dirtyLast,lastPixel);
       }else{dirtyFirst=0;dirtyLast=width-1;}
-      if(firstPixel===lastPixel){coverage[firstPixel]+=last-first;return;}
-      coverage[firstPixel]+=samples-first%samples;
-      rowInteriorDiff[firstPixel+1]+=samples;
-      rowInteriorDiff[lastPixel]-=samples;
-      coverage[lastPixel]+=((last-1)%samples)+1;
+      if(firstPixel===lastPixel){coverage[firstPixel]+=(last-first)*repeat;return;}
+      coverage[firstPixel]+=(samples-first%samples)*repeat;
+      rowInteriorDiff[firstPixel+1]+=samples*repeat;
+      rowInteriorDiff[lastPixel]-=samples*repeat;
+      coverage[lastPixel]+=(((last-1)%samples)+1)*repeat;
     };
+    const starts=edges.slice().sort((a,b)=>a.minimum-b.minimum);
+    const active=[];
+    let nextEdge=0;
     for(let subY=0;subY<height*samples;subY++){
       const y=(subY+.5)/samples,row=Math.floor(subY/samples)*width;
       intersections.length=0;
-      for(const edge of edges)if(y>=edge.minimum&&y<edge.maximum)
+      let kept=0;
+      for(const edge of active)if(y<edge.maximum)active[kept++]=edge;
+      active.length=kept;
+      while(nextEdge<starts.length&&starts[nextEdge].minimum<=y){
+        const edge=starts[nextEdge++];
+        if(y>=edge.maximum)continue;
+        // Maintain authored traversal order before the stable X sort.
+        let pos=active.length;
+        while(pos>0&&active[pos-1].order>edge.order){
+          active[pos]=active[pos-1];pos--;
+        }
+        active[pos]=edge;
+      }
+      // Every sample through this row's end can share crossings if the
+      // half-open active set stays fixed and all of its edges are vertical.
+      let repeat=1;
+      if(subY%samples===0){
+        const endY=y+(samples-1)/samples;
+        if((nextEdge>=starts.length||starts[nextEdge].minimum>endY)&&
+          active.every(edge=>edge.slope===0&&edge.maximum>endY&&
+            finite(y-edge.y)&&finite(endY-edge.y)))repeat=samples;
+      }
+      for(const edge of active)
         intersections.push({x:edge.x+(y-edge.y)*edge.slope,winding:edge.winding});
       intersections.sort((a,b)=>a.x-b.x);
       let winding=0,start=0;
       for(const crossing of intersections){
-        if(winding!==0)addSpan(start,crossing.x);
+        if(winding!==0)addSpan(start,crossing.x,repeat);
         winding+=crossing.winding;start=crossing.x;
       }
+      subY+=repeat-1;
       if((subY+1)%samples===0)flushInteriorRow(row);
     }
     return alpha;
