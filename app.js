@@ -9151,9 +9151,10 @@ function bindEvents() {
       state.arrowRepeatKey = "";
       state.arrowRepeatAt = 0;
     }
-    if (event.code === "KeyV") void finishEnhanceAction("use");
-    if (event.code === "KeyG") void finishEnhanceAction("throw");
-    if (event.code === "KeyF") void finishEnhanceAction("fire");
+    const heldEnhance = state.enhanceHold;
+    if (event.code && heldEnhance.inputSource === "keyboard" && heldEnhance.inputCode === event.code) {
+      void finishEnhanceAction(heldEnhance.kind);
+    }
     if (releasedDash) state.keys.delete("dash");
     if (releasedSlow) state.keys.delete("slow");
     syncMovementInputImmediately();

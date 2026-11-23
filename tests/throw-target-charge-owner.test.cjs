@@ -32,6 +32,9 @@ const clientSource = [
   appSection("function isCurrentRoomSession(", "function invalidateFocusResync("),
   appSection("function cancelTransientGameInputForBackground(", "function returnExpiredOnlineRoomToMatchmaking("),
   appSection('  window.addEventListener("keyup", (event) => {\n    const releasedMovementKey', '  window.addEventListener("blur", () => {\n    cancelCommonActionGestures'),
+  appSection("  const bindEnhanceButton = (button, kind) => {", '  window.addEventListener("pointerup", (event) => {\n    // The control-local'),
+  appSection('  window.addEventListener("blur", () => {\n    cancelCommonActionGestures', '  window.addEventListener("focus", () => void recoverRoomInteractionAfterBackground()'),
+  appSection("function setExpandedMapOpen(", "function minimapCanvasBounds("),
   "function throwKeydown(event) { const typingField = false;\n" + throwKeydown + "\nreturn triggerItemHotkey(event); }",
   "state.throwTargeting = emptyThrowTargetingState();"
 ].join("\n");
@@ -87,18 +90,29 @@ async function createHarness(t, transport) {
   const snapshot = await newRoom();
   const state = {
     roomId: snapshot.roomId, playerId: snapshot.playerId, roomSessionGeneration: 1,
-    screen: "game", data: snapshot, enhanceHold: {}, facing: new Map(), movementKeyDirections: new Map(),
+    screen: "game", data: snapshot, enhanceHold: {}, facing: new Map(), movementKeyDirections: new Map(), keys: new Set(),
     throwChargeOperation: null, continuousActionKeyAt: new Map(), preparationRosterEntries: new Map(), clairvoyance: {},
     rejectedActionRecovery: {}, quantumKineticHold: {}, tabletGesture: {}
   };
   assert.equal(snapshot.self.itemInventory.find((item) => item.id === "frag-grenade").amount, 1);
 
-  const calls = [], listeners = {}, frames = new Map();
+  const calls = [], listeners = {}, frames = new Map(), controls = new Map();
+  const makeControl = (name) => ({
+    disabled: false,
+    classList: { add: noOp },
+    setPointerCapture: noOp,
+    addEventListener(type, listener) { controls.set(name + ":" + type, listener); }
+  });
   let frame = 0;
   let oneDelay = null;
   let reject = null;
   let checks = true;
-  const els = { itemSelect: { value: "frag-grenade" }, itemControl: { hidden: false }, itemThrowButton: { disabled: false } };
+  const els = {
+    itemSelect: { value: "frag-grenade" }, itemControl: { hidden: false },
+    itemUseButton: makeControl("use"), itemThrowButton: makeControl("throw"),
+    fireJutsuButton: makeControl("fire"), tabletFireShortcut: makeControl("tablet-fire"),
+    expandedMapOverlay: {}, mapActionButton: { setAttribute: noOp }
+  };
   const client = vm.createContext({
     state, els, Element: class {}, document: { activeElement: null },
     window: { clearTimeout: noOp, addEventListener(type, listener) { listeners[type] = listener; } },
@@ -118,6 +132,7 @@ async function createHarness(t, transport) {
     cancelCommonActionGestures: noOp, cancelActiveRootShortcutHolds: noOp, cancelActiveAbilityBatchHolds: noOp,
     stopContinuousActionHold: noOp, closeSwitchDragMenu: noOp, clearNativeSelectHold: noOp, clearLocalGunTrigger: noOp,
     stopVendingHold: noOp, closeQuantumKineticHold: noOp,
+    vendingHold: {}, pendingTabletMapRestore: null, expandedMapGpuRuntime: null, syncExpandedMapUi: noOp,
     applyState(result) { state.data = result; },
     async request(route, body) {
       const delay = oneDelay?.matches(route, body) ? oneDelay : null;
@@ -171,6 +186,14 @@ async function createHarness(t, transport) {
   return {
     state, els, evaluate, frames, calls, newRoom, readState, aim, confirm, flush, settle,
     keydownThrow, keyupThrow, latestThrow, defer,
+    repeatThrowKeydown() { down({ ...g, repeat: true }); },
+    keyup(code, value) { listeners.keyup(key(code, value)); },
+    blur() { listeners.blur(); },
+    pointer(type, pointerId) {
+      controls.get("throw:" + type)({
+        pointerId, pointerType: "mouse", button: 0, cancelable: true, preventDefault: noOp
+      });
+    },
     changeWalkability(value) { checks = value; },
     rejectNext(matches, options) { reject = { matches, ...options }; },
     escape() { down(key("Escape", "Escape")); },
@@ -191,6 +214,81 @@ const itemCount = (harness, itemId = "frag-grenade") =>
   harness.state.data.self.itemInventory.find((item) => item.id === itemId)?.amount ?? 0;
 
 for (const transport of ["main", "worker"]) {
+
+  for (const holdMs of [100, 700]) {
+    test(transport + ": only the owning pointer releases a " + holdMs + "ms throw", async (t) => {
+      const h = await createHarness(t, transport);
+      h.pointer("pointerdown", 17);
+      h.advance(holdMs);
+      h.keydownThrow();
+      h.repeatThrowKeydown();
+      h.keyup("KeyG", "g");
+      h.keyup("KeyV", "v");
+      h.keyup("KeyF", "f");
+      h.pointer("pointerdown", 29);
+      h.pointer("pointerup", 29);
+      await h.flush();
+      assert.equal(h.state.enhanceHold.pointerId, 17);
+      assert.equal(h.state.throwTargeting.active, false);
+      assert.equal(h.calls.filter(({ route, body }) => starting(route, body)).length, 1);
+      assert.equal(h.calls.filter(({ route, body }) => finalizing(route, body)).length, 0);
+      h.pointer("pointerup", 17);
+      h.pointer("click", 17);
+      await h.settle();
+      assert.equal(h.state.throwTargeting.holdMs, holdMs);
+      assert.equal(h.calls.filter(({ route, body }) => finalizing(route, body)).length, 1);
+      await h.confirm();
+      assert.equal(h.latestThrow().result.status, 200);
+      assert.equal(itemCount(h), 0);
+      assert.equal(h.calls.filter(({ route }) => route === throwItem).length, 1);
+    });
+  }
+
+  test(transport + ": exact physical keyboard release survives changed modifiers and repeats", async (t) => {
+    const h = await createHarness(t, transport);
+    h.keydownThrow();
+    h.repeatThrowKeydown();
+    h.pointer("pointerdown", 17);
+    h.pointer("pointerup", 17);
+    h.keyup("KeyF", "f");
+    h.keyup("KeyV", "v");
+    h.keyup("ShiftLeft", "Shift");
+    h.advance(700);
+    await h.flush();
+    assert.equal(h.state.enhanceHold.inputSource, "keyboard");
+    assert.equal(h.state.throwTargeting.active, false);
+    h.keyup("KeyG", "g");
+    h.keyup("KeyG", "g");
+    await h.settle();
+    assert.equal(h.state.throwTargeting.holdMs, 700);
+    assert.equal(h.calls.filter(({ route, body }) => starting(route, body)).length, 1);
+    assert.equal(h.calls.filter(({ route, body }) => finalizing(route, body)).length, 1);
+    assert.equal(await serverCharge(h), h.state.throwTargeting.chargeId);
+  });
+
+  for (const interruption of ["pointer cancellation", "expanded map", "blur", "room replacement"]) {
+    test(transport + ": " + interruption + " discards physical input and permits a new hold", async (t) => {
+      const h = await createHarness(t, transport);
+      h.pointer("pointerdown", 17);
+      await h.flush();
+      h.advance(700);
+      if (interruption === "pointer cancellation") h.pointer("pointercancel", 17);
+      else if (interruption === "expanded map") h.evaluate("setExpandedMapOpen(true, { focus: false })");
+      else if (interruption === "blur") h.blur();
+      else h.setRoom(await h.newRoom());
+      h.keyup("KeyG", "g");
+      h.pointer("pointerup", 17);
+      await h.settle();
+      assert.equal(h.state.throwTargeting.active, false);
+      assert.equal(await serverCharge(h), "");
+      assert.equal(itemCount(h), 1);
+      assert.equal(h.calls.filter(({ route, body }) => finalizing(route, body)).length, 0);
+      if (interruption === "expanded map") h.evaluate("setExpandedMapOpen(false, { focus: false })");
+      await h.aim();
+      assert.equal(await serverCharge(h), h.state.throwTargeting.chargeId);
+    });
+  }
+
   test(transport + ": replacement keeps the new charge and consumes one grenade exactly once", async (t) => {
     const h = await createHarness(t, transport);
     const original = await h.aim();
