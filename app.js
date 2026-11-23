@@ -32636,6 +32636,7 @@ function loadCriticalMapTexture(image, source, activeOwner = null) {
   existing?.cancel();
   image.fetchPriority = "high";
   let retries = 0;
+  let attemptOwner = null;
   let retryTimer = null;
   let watchdog = null;
   const load = { source, status: "loading", cancel: null, activeOwner };
@@ -32676,6 +32677,9 @@ function loadCriticalMapTexture(image, source, activeOwner = null) {
     if (retryTimer !== null) return;
     if (retries >= 3) {
       load.status = "failed";
+      // A shared request can start on title (null) or in another room.
+      // Attribute its terminal failure to who started the actual request.
+      load.activeOwner = attemptOwner;
       image.removeEventListener("load", onLoad);
       image.removeEventListener("error", onError);
       if (currentGame(load.activeOwner)) reportFailure();
@@ -32694,6 +32698,7 @@ function loadCriticalMapTexture(image, source, activeOwner = null) {
   const start = () => {
     if (load.status !== "loading") return;
     const separator = source.includes("?") ? "&" : "?";
+    attemptOwner = load.activeOwner;
     image.src = takeover ? `${source}${separator}mapGameRetry=${retries}` :
       retries ? `${source}${separator}mapRetry=${retries}` : source;
     watchdog = window.setTimeout(() => {
