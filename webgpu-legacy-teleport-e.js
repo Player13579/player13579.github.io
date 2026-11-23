@@ -165,7 +165,7 @@ function expandScissor(rect,x,y,width,height){
 }
 function create({frameOwner}={}){
  if(frameOwner?.state!=='ready'||!frameOwner.device?.createTexture||!frameOwner.own||!frameOwner.release)throw new TypeError('Legacy teleport needs shared frame owner');
- const device=frameOwner.device,format=frameOwner.format,owned=[],slots=[],indices=new WeakMap();let destroyed=false,material=null,scratch=null;
+ const device=frameOwner.device,format=frameOwner.format,owned=[],slots=[],indices=new WeakMap();let destroyed=false,material=null,backing=null,scratch=null;
  const own=x=>{frameOwner.own(x);owned.push(x);return x;};
  const release=x=>{const i=owned.indexOf(x);if(i>=0)owned.splice(i,1);if(frameOwner.release(x))x.destroy();};
  const rawModule=device.createShaderModule({label:'DVA legacy teleport raw v749',code:shader});
@@ -176,14 +176,21 @@ function create({frameOwner}={}){
  const finalPipe=device.createRenderPipeline({layout:'auto',vertex:{module:finalModule,entryPoint:'vs'},fragment:{module:finalModule,entryPoint:'fs',targets:[{format,blend:{color:{srcFactor:'one',dstFactor:'one',operation:'add'},alpha:{srcFactor:'one',dstFactor:'one',operation:'add'}}}]},primitive:{topology:'triangle-list'}});
  const sampler=device.createSampler({magFilter:'linear',minFilter:'linear'});
  function prepare({source,generation}={}){
-  if(destroyed||frameOwner.state!=='ready')throw new Error('Legacy teleport unavailable');
+  if(destroyed||frameOwner.state!=='ready'||frameOwner.device!==device)throw new Error('Legacy teleport unavailable');
   if(!Number.isSafeInteger(generation)||generation<0||!source?.complete||source.naturalWidth!==SOURCE.width||source.naturalHeight!==SOURCE.height)throw new Error('Legacy teleport original image pending or invalid');
-  if(material?.source===source&&material.generation===generation)return material;
-  if(material)release(material.texture);
-  const texture=own(device.createTexture({label:'DVA original teleport v311',size:[SOURCE.width,SOURCE.height],format:'rgba8unorm',usage:0x02|0x04|0x10}));
-  try{device.queue.copyExternalImageToTexture({source},{texture,premultipliedAlpha:true},[SOURCE.width,SOURCE.height]);}
-  catch(e){release(texture);material=null;throw e;}
-  material=Object.freeze({source,generation,texture,device});return material;
+  const src=String(source.currentSrc||source.src||'');
+  const reusable=backing?.source===source&&backing.src===src&&(src||material?.generation===generation);
+  if(reusable&&material?.generation===generation)return material;
+  if(!reusable){
+   if(backing)release(backing.texture);
+   backing=null;material=null;
+   const texture=own(device.createTexture({label:'DVA original teleport v311',size:[SOURCE.width,SOURCE.height],format:'rgba8unorm',usage:0x02|0x04|0x10}));
+   try{device.queue.copyExternalImageToTexture({source},{texture,premultipliedAlpha:true},[SOURCE.width,SOURCE.height]);}
+   catch(e){release(texture);throw e;}
+   backing={source,src,texture};
+  }
+  // Room authority is a fresh proof even when resident immutable pixels match.
+  material=Object.freeze({source,generation,texture:backing.texture,device});return material;
  }
  function allocate(index,viewport){
   const padX=Math.ceil(PAD_LOGICAL*viewport.pixelWidth/viewport.width),padY=Math.ceil(PAD_LOGICAL*viewport.pixelHeight/viewport.height);
@@ -203,9 +210,12 @@ function create({frameOwner}={}){
   row={width:viewport.pixelWidth,height:viewport.pixelHeight,resources,textures,uniform,blurBuffers,finalOffset,padX,padY,backingWidth:width,backingHeight:height};slots[index]=row;return row;
  }
  function record({frame,target,viewport,planned,prepared}={}){
-  if(destroyed||frameOwner.state!=='ready'||!frame?.addEncoder||!frame?.stage||!target)throw new Error('Legacy teleport current shared frame required');
+  if(destroyed||frameOwner.state!=='ready'||frameOwner.device!==device||!frame?.addEncoder||!frame?.stage||!target)throw new Error('Legacy teleport current shared frame required');
   const bounds=support(viewport);
   if(!planned||planned.type!=='action-teleport'||planned.source!==SOURCE||planned.support.width!==bounds.width||planned.support.height!==bounds.height||planned.layers?.length!==2||prepared!==material||prepared?.device!==device)throw new Error('Legacy teleport current exact plan and source required');
+  if(String(prepared.source.currentSrc||prepared.source.src||'')!==backing.src ||
+     !prepared.source.complete || prepared.source.naturalWidth!==SOURCE.width || prepared.source.naturalHeight!==SOURCE.height)
+   throw Object.assign(new Error('Legacy teleport original image changed after prepare'),{code:'DVA_WEBGPU_STALE_SCENE'});
   for(const layer of planned.layers){
    if(!(layer.values instanceof Float32Array)||layer.values.length!==16||!layer.values.every(finite)||layer.values[0]!==bounds.width||layer.values[1]!==bounds.height)throw new Error('Legacy teleport invalid layer');
    const index=indices.get(frame)||0,row=allocate(index,viewport);indices.set(frame,index+1);
@@ -241,7 +251,7 @@ function create({frameOwner}={}){
   for(const row of oldSlots)if(row)for(const resource of row.resources)release(resource);
   for(const texture of oldScratch?.textures||[])release(texture);
  }
- return Object.freeze({device,plan,prepare,record,releaseTemporaryTargets,destroy(){if(destroyed)return;destroyed=true;for(const x of [...owned])release(x);slots.length=0;material=null;scratch=null;}});
+ return Object.freeze({device,plan,prepare,record,releaseTemporaryTargets,destroy(){if(destroyed)return;destroyed=true;for(const x of [...owned])release(x);slots.length=0;material=null;backing=null;scratch=null;}});
 }
 const api=Object.freeze({SOURCE,PAD_LOGICAL,support,plan,create,shader,blurShader,finalShader});root.DvaWebGPULegacyTeleportE=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;

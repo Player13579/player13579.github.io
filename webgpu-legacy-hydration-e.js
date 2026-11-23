@@ -195,10 +195,10 @@ function hydrationUniformValues(viewport,planned,op) {
 function create({frameOwner}={}){
  if(frameOwner?.state!=='ready'||!frameOwner.device?.createTexture||!frameOwner.own||!frameOwner.release)throw new TypeError('Hydration requires shared frame owner');
  const device=frameOwner.device,format=frameOwner.format,owned=new Set(),slots=[],frameRows=new WeakMap(),outsideReceipts=new WeakMap();
- let destroyed=false,material=null,scratch=null,pipelinePromise=null,pipes=null;
+ let destroyed=false,material=null,backing=null,scratch=null,pipelinePromise=null,pipes=null;
  const own=x=>{frameOwner.own(x);owned.add(x);return x;};
  function release(x){if(!owned.delete(x))return;if(frameOwner.release(x))x.destroy();}
- const current=()=>{if(destroyed||frameOwner.state!=='ready')throw new Error('Hydration shared owner unavailable');};
+ const current=()=>{if(destroyed||frameOwner.state!=='ready'||frameOwner.device!==device)throw new Error('Hydration shared owner unavailable');};
  async function initialize(){
   current();if(pipes)return pipes;if(pipelinePromise)return pipelinePromise;
   pipelinePromise=(async()=>{
@@ -218,10 +218,15 @@ function create({frameOwner}={}){
   const ensureImage=()=>{const status=imageStatus(source);if(status==='ready')return;if(['missing','no-src','pending'].includes(status))throw incomplete(`Hydration original image ${status}`);throw new TypeError(`Hydration original image invalid: ${status}`);};
   ensureImage();await initialize();current();ensureImage();
   const src=String(source.currentSrc||source.src);
-  if(material?.source===source&&material.generation===generation&&material.src===src)return material;
-  const texture=own(device.createTexture({label:'DVA original hydration stamina v327',size:[SOURCE.width,SOURCE.height],format:'rgba8unorm',usage:0x02|0x04|0x10}));
-  try{device.queue.copyExternalImageToTexture({source},{texture,premultipliedAlpha:true,colorSpace:'srgb'},[SOURCE.width,SOURCE.height]);}catch(e){release(texture);throw e;}
-  if(material)release(material.texture);material=Object.freeze({device,source,src,generation,texture});return material;
+  const reusable=backing?.source===source&&backing.src===src;
+  if(reusable&&material?.generation===generation)return material;
+  if(!reusable){
+   const texture=own(device.createTexture({label:'DVA original hydration stamina v327',size:[SOURCE.width,SOURCE.height],format:'rgba8unorm',usage:0x02|0x04|0x10}));
+   try{device.queue.copyExternalImageToTexture({source},{texture,premultipliedAlpha:true,colorSpace:'srgb'},[SOURCE.width,SOURCE.height]);}catch(e){release(texture);throw e;}
+   if(backing)release(backing.texture);backing={source,src,texture};
+  }
+  // Room authority is a fresh proof even when resident immutable pixels match.
+  material=Object.freeze({device,source,src,generation,texture:backing.texture});return material;
  }
  function claimFrame(frame,planned){
   const key=[planned.viewport.width,planned.viewport.height,planned.viewport.pixelWidth,planned.viewport.pixelHeight,planned.zoom].join(':');
@@ -318,7 +323,7 @@ function create({frameOwner}={}){
   for(const row of rows)if(row)for(const buffer of [row.buffer,...row.blurBuffers])release(buffer);
   for(const texture of textures)release(texture);
  }
- return Object.freeze({device,plan,prepare,record,validOutsideOutcome,outsideStatus,releaseTemporaryTargets,destroy(){if(destroyed)return;destroyed=true;const errors=[];for(const x of [...owned])try{release(x);}catch(e){errors.push(e);}slots.length=0;material=null;scratch=null;pipes=null;if(errors.length)throw new AggregateError(errors,'Hydration cleanup failed');}});
+ return Object.freeze({device,plan,prepare,record,validOutsideOutcome,outsideStatus,releaseTemporaryTargets,destroy(){if(destroyed)return;destroyed=true;const errors=[];for(const x of [...owned])try{release(x);}catch(e){errors.push(e);}slots.length=0;material=null;backing=null;scratch=null;pipes=null;if(errors.length)throw new AggregateError(errors,'Hydration cleanup failed');}});
 }
 const api=Object.freeze({SOURCE,TARGET,TARGETS,targetFor,supported,support,imageStatus,regionFor,scratchSize,plan,finalQuadSupport,create,rawShader,blurShader,composeShader});root.DvaWebGPULegacyHydrationE=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
