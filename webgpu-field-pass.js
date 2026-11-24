@@ -8,7 +8,6 @@
   const roomOverlay = root.DvaWebGPURoomOverlay || (typeof require === 'function' ? require('./webgpu-room-overlay.js') : null);
   const textureUsage = root.GPUTextureUsage || { COPY_DST: 0x02, TEXTURE_BINDING: 0x04, RENDER_ATTACHMENT: 0x10 };
   const finite = value => typeof value === 'number' && Number.isFinite(value);
-  const align = value => Math.ceil(value / 256) * 256;
 
   function validatePatches(patches, map, device) {
     if (patches === undefined) return [];
@@ -207,14 +206,8 @@ struct VertexOut { @builtin(position) position:vec4f, @location(0) uv:vec2f };
       if (!(alpha instanceof Uint8Array) || alpha.byteLength !== map.width * map.height) {
         throw new Error('Authored field coverage has invalid dimensions');
       }
-      const bytesPerRow = align(map.width);
-      const upload = bytesPerRow === map.width ? alpha : new Uint8Array(bytesPerRow * map.height);
-      if (upload !== alpha) {
-        for (let y = 0; y < map.height; y += 1) {
-          upload.set(alpha.subarray(y * map.width, (y + 1) * map.width), y * bytesPerRow);
-        }
-      }
-      await measure('geometry-upload-enqueue', () => device.queue.writeTexture({ texture: geometry }, upload, { bytesPerRow }, [map.width, map.height]));
+      // queue.writeTexture accepts tight rows; 256-byte pitch applies to buffer copies.
+      await measure('geometry-upload-enqueue', () => device.queue.writeTexture({ texture: geometry }, alpha, { bytesPerRow: map.width }, [map.width, map.height]));
       const { sampler, bind } = await measure('field-bindings', () => {
         const sampler = device.createSampler({ minFilter: 'linear', magFilter: 'linear',
           addressModeU: 'clamp-to-edge', addressModeV: 'clamp-to-edge' });
