@@ -22,7 +22,8 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
   const clamp = value => Math.max(0, Math.min(1, value));
   const finite = value => Number.isFinite(value);
 
-  function plan(scene, viewport) {
+  function plan(scene, viewport) { return planScene(scene, viewport, false); }
+  function planScene(scene, viewport, dynamicOnly) {
     const map = scene?.map, bounds = scene?.bounds;
     if (viewport?.kind !== 'main' || !finite(viewport.width) || !finite(viewport.height) ||
         !finite(viewport.pixelWidth) || !finite(viewport.pixelHeight) ||
@@ -36,13 +37,15 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
     const ox = bounds.x + 9, oy = bounds.y + 9;
     const shapes = [];
     const push = (kind, values, color) => shapes.push({ kind, values, color });
-    // Canvas roundRect fill has a radius of 8 logical pixels.
-    push('roundRect', [bounds.x, bounds.y, bounds.width, bounds.height, 8], [238 / 255, 246 / 255, 250 / 255, .84]);
     const rect = (x, y, w, h, color) => push('rect', [ox + x * scale, oy + y * scale, w * scale, h * scale], color);
     const disc = (x, y, radius, color) => push('disc', [ox + x * scale, oy + y * scale, radius * scale], color);
     const ring = (x, y, radius, width, color) => push('ring', [ox + x * scale, oy + y * scale, radius * scale, width * scale], color);
-    const floor = hex('#6f8798');
-    for (const area of [...(map.rooms || []), ...(map.corridorAreas || [])]) rect(area.x, area.y, area.w, area.h, floor);
+    if (!dynamicOnly) {
+      // Canvas roundRect fill has a radius of 8 logical pixels.
+      push('roundRect', [bounds.x, bounds.y, bounds.width, bounds.height, 8], [238 / 255, 246 / 255, 250 / 255, .84]);
+      const floor = hex('#6f8798');
+      for (const area of [...(map.rooms || []), ...(map.corridorAreas || [])]) rect(area.x, area.y, area.w, area.h, floor);
+    }
     for (const task of scene.tasks || []) {
       if (task.done) continue;
       const station = map.stations?.find(item => item.id === task.stationId);
@@ -236,26 +239,67 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
       }
       return geometry;
     }
-    function verticesForFrame(planResult, scene, viewport) {
+    // Compare actual ordered geometry, never map/snapshot identity. On a hit
+    // only the static prefix is borrowed; all live markers are still planned.
+    let recentGeometry = null;
+    const emptyAreas = [];
+    function reusableAreas(value) {
+      if (value == null) return emptyAreas;
+      if (!Array.isArray(value) || Object.getPrototypeOf(value) !== Array.prototype ||
+          Object.hasOwn(value, Symbol.iterator)) return null;
+      return value;
+    }
+    function keySignatureMatches(scene, viewport, recent) {
+      const m = scene?.map, b = scene?.bounds, transform = viewport?.logicalToPixel;
+      if (!recent || !m || !b || !transform) return false;
+      const r = reusableAreas(m.rooms), c = reusableAreas(m.corridorAreas);
+      if (!r || !c || r.length !== recent.roomCount || c.length !== recent.corridorCount) return false;
+      const k = recent.coordinates;
+      if (!Object.is(m.width,k[0]) || !Object.is(m.height,k[1]) ||
+          !Object.is(b.x,k[2]) || !Object.is(b.y,k[3]) ||
+          !Object.is(b.width,k[4]) || !Object.is(b.height,k[5]) ||
+          !Object.is(transform[0],k[6]) || !Object.is(transform[3],k[7])) return false;
+      let i=8;
+      for (const areas of [r,c]) for(const a of areas) {
+        if (!a || !Object.is(a.x,k[i++]) || !Object.is(a.y,k[i++]) ||
+            !Object.is(a.w,k[i++]) || !Object.is(a.h,k[i++])) return false;
+      }
+      return i===k.length;
+    }
+    function rememberGeometry(scene, viewport, vertices) {
+      const m=scene.map, b=scene.bounds, r=reusableAreas(m.rooms), c=reusableAreas(m.corridorAreas);
+      if (!r || !c) {recentGeometry=null;return;}
+      const coordinates=[m.width,m.height,b.x,b.y,b.width,b.height,
+        viewport.logicalToPixel[0],viewport.logicalToPixel[3]];
+      for(const areas of [r,c])for(const a of areas)coordinates.push(a.x,a.y,a.w,a.h);
+      recentGeometry={coordinates,roomCount:r.length,corridorCount:c.length,vertices};
+    }
+    function combine(staticVertices,dynamicVertices) {
+      const combined = new Float32Array(staticVertices.length + dynamicVertices.length);
+      combined.set(staticVertices, 0);
+      combined.set(dynamicVertices, staticVertices.length);
+      return combined;
+    }
+    function verticesForFrame(scene, viewport) {
+      if (keySignatureMatches(scene, viewport, recentGeometry)) {
+        return combine(recentGeometry.vertices, verticesFor(planScene(scene, viewport, true), viewport));
+      }
+      const planResult = plan(scene, viewport);
       const key = staticGeometryKey(scene, viewport);
-      if (key === null) return verticesFor(planResult, viewport);
+      if (key === null) { recentGeometry=null;return verticesFor(planResult, viewport); }
       const cached = touchStaticGeometry(key);
       const staticShapeCount = 1 + (scene.map.rooms == null ? 0 : scene.map.rooms.length) +
         (scene.map.corridorAreas == null ? 0 : scene.map.corridorAreas.length);
       const staticPlan = { shapes: planResult.shapes.slice(0, staticShapeCount) };
       const dynamicPlan = { shapes: planResult.shapes.slice(staticShapeCount) };
       const staticVertices = cached || cacheStaticGeometry(key, verticesFor(staticPlan, viewport));
-      const dynamicVertices = verticesFor(dynamicPlan, viewport);
-      const combined = new Float32Array(staticVertices.length + dynamicVertices.length);
-      combined.set(staticVertices, 0);
-      combined.set(dynamicVertices, staticVertices.length);
-      return combined;
+      rememberGeometry(scene, viewport, staticVertices);
+      return combine(staticVertices, verticesFor(dynamicPlan, viewport));
     }
     function draw({ frame, target, viewport, scene } = {}) {
       if (destroyed) throw new Error('Minimap renderer destroyed');
       if (!frame?.add || typeof target !== 'string' || !target) throw new TypeError('Shared frame and registered target required');
-      const planned = plan(scene, viewport);
-      const geometry = verticesForFrame(planned, scene, viewport);
+      const geometry = verticesForFrame(scene, viewport);
       let slot = spare;
       spare = null;
       if (slot && slot.size < geometry.byteLength) {
@@ -309,6 +353,7 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
       for (const slot of live) retire(slot);
       spare = null;
       staticGeometryCache.clear();
+      recentGeometry = null;
     } });
   }
   const api = Object.freeze({ create, plan, verticesFor, shader });
