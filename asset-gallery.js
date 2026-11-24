@@ -477,6 +477,7 @@ function isAimR5BoundTarget(attempt){return attempt?.childProtocolVersionId===AI
     const fallbackTime = Date.parse(historic?.date ?? fallback);
     return Math.max(Number.isFinite(fallbackTime) ? fallbackTime : -Infinity, ...dated.values());
   }
+  const effectCatalogOriginalRank = new Map(entries.map((group, index) => [group.id, index]));
   entries.sort((a, b) => {
     const latestA = latestCreativePublicationTime(a), latestB = latestCreativePublicationTime(b);
     return latestA === latestB ? 0 : latestA > latestB ? -1 : 1;
@@ -1693,6 +1694,27 @@ if(abilityR8Known(attempt))return abilityR8FirstFrameValid(proof,attempt);if(kno
     if (/未採用|却下|撤回/.test(item.status || '')) return 'not-adopted';
     return 'unknown';
   }
+  function isCurrentEffectAdoption(item) {
+    return item.adoptionHistory?.at(-1)?.status !== 'withdrawn' && adoptionState(item) === 'adopted';
+  }
+  function hasCurrentEffectAdoption(group) {
+    return group.versions.some(isCurrentEffectAdoption);
+  }
+  function restoreAdoptedEffectFirstPublicationOrder(groups) {
+    const adopted = groups.filter(hasCurrentEffectAdoption).sort((a, b) => {
+      const first = group => {
+        const t = Date.parse(EFFECT_FIRST_PUBLICATION.get(group.id) ?? group.firstPublishedAt);
+        return Number.isFinite(t) ? t : Number.POSITIVE_INFINITY;
+      };
+      const x = first(a), y = first(b);
+      return x === y ? effectCatalogOriginalRank.get(a.id) - effectCatalogOriginalRank.get(b.id) : x > y ? -1 : 1;
+    });
+    let cursor = 0;
+    return groups.map(group => hasCurrentEffectAdoption(group) ? adopted[cursor++] : group);
+  }
+  // Preserve the interleaving of adopted vs other slots, but sort each subset
+  // by its own criterion so the mixed catalog also preserves both orders.
+  entries.splice(0, entries.length, ...restoreAdoptedEffectFirstPublicationOrder(entries));
   function adoptionStatusLabel(item) {
     const state = adoptionState(item);
     if (item.adoptionHistory?.at(-1)?.status === 'withdrawn') return 'ユーザー採用撤回済み';
@@ -1816,10 +1838,10 @@ if(abilityR8Known(attempt))return abilityR8FirstFrameValid(proof,attempt);if(kno
 function visibleVersionIndices(group) {
     if (currentCategory === 'effect' && OBJECT_SPECIFIC_EFFECT_GROUP_IDS.has(group.id)) return [];
     // Classify the group from complete provenance, including hidden historical versions.
-    const hasCurrentAdoption = group.versions.some(item => adoptionState(item) === 'adopted');
+    const hasCurrentAdoption = currentCategory === 'effect' && hasCurrentEffectAdoption(group);
     const eligibleIndices = group.versions.map((item, i) => galleryVersionEligible(item) ? i : -1).filter(i => i >= 0);
     if (currentCategory === 'effect') {
-      if (currentAdoptionFilter === 'adopted') return hasCurrentAdoption ? eligibleIndices.sort((a, b) => Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted')) : [];
+      if (currentAdoptionFilter === 'adopted') return hasCurrentAdoption ? eligibleIndices.sort((a, b) => Number(isCurrentEffectAdoption(group.versions[b])) - Number(isCurrentEffectAdoption(group.versions[a]))) : [];
       return hasCurrentAdoption ? [] : eligibleIndices;
     }
     const mapGroupAdopted = group.versions.some(item => adoptionState(item) === 'adopted');
