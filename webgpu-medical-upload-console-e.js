@@ -135,12 +135,45 @@ fn visual(q:vec2f)->vec4f {
         blend: { color: { srcFactor: 'one', dstFactor: 'one', operation: 'add' },
           alpha: { srcFactor: 'zero', dstFactor: 'one', operation: 'add' } } }] },
       primitive: { topology: 'triangle-list' } });
-    const uniform = device.createBuffer({ label: 'DVA upload console E state', size: 64, usage: 0x40 | 0x08 });
-    const bind = device.createBindGroup({ layout: pipeline.getBindGroupLayout(0),
-      entries: [{ binding: 0, resource: { buffer: uniform } }] });
+    function createUniformSlot() {
+      const uniform = device.createBuffer({ label: 'DVA upload console E state', size: 64, usage: 0x40 | 0x08 });
+      try {
+        const bind = device.createBindGroup({ layout: pipeline.getBindGroupLayout(0),
+          entries: [{ binding: 0, resource: { buffer: uniform } }] });
+        return { uniform, bind };
+      } catch (error) {
+        try { uniform.destroy(); } catch (_) {}
+        throw error;
+      }
+    }
+    // Main rendering opens only one frame at a time. Writes for a later frame
+    // enter the same queue after the previous submission, but writes for two
+    // records in the same frame must address different buffers.
+    const reusable = [createUniformSlot()], nextByFrame = new WeakMap(), transient = new Set();
+    function slotFor(frame, addLease) {
+      const index = nextByFrame.get(frame) ?? 0;
+      let slot;
+      if (index < 2) slot = reusable[index] ??= createUniformSlot();
+      else {
+        if (typeof addLease !== 'function')
+          throw new TypeError('Repeated upload console E recording needs a frame lease');
+        slot = createUniformSlot();
+        transient.add(slot);
+        const destroy = () => {
+          if (transient.delete(slot)) slot.uniform.destroy();
+        };
+        try { addLease({ destroy }); }
+        catch (error) {
+          try { destroy(); } catch (_) {}
+          throw error;
+        }
+      }
+      nextByFrame.set(frame, index + 1);
+      return slot;
+    }
     let destroyed = false;
     return Object.freeze({ device, get ready() { return !destroyed; },
-      record({ frame, target, viewport, planned, ...inputs } = {}) {
+      record({ frame, target, viewport, planned, addLease, ...inputs } = {}) {
         if (destroyed) throw new Error('Upload console E pass destroyed');
         const result = planned === undefined ? plan({ viewport, ...inputs }) : planned;
         if (!result) return Object.freeze({ drawn: false });
@@ -150,6 +183,7 @@ fn visual(q:vec2f)->vec4f {
           result.stationId !== STATION.id || !['ready','active','complete'].includes(result.phase) ||
           !result.camera || ![result.camera.x,result.camera.y,result.zoom,result.now,result.progress,result.age,result.intensity].every(finite))
           throw new TypeError('Invalid shared WebGPU upload console frame');
+        const { uniform, bind } = slotFor(frame, addLease);
         device.queue.writeBuffer(uniform, 0, new Float32Array([
           viewport.width,viewport.height,result.camera.x,result.camera.y,
           ROOM.x,ROOM.y,result.zoom,result.now / 1000,
@@ -164,7 +198,16 @@ fn visual(q:vec2f)->vec4f {
         } });
         return Object.freeze({ drawn: true, phase: result.phase, completionId: result.completionId });
       },
-      destroy() { if (destroyed) return; destroyed = true; uniform.destroy(); }
+      destroy() {
+        if (destroyed) return;
+        destroyed = true;
+        let failure;
+        for (const { uniform } of [...reusable, ...transient]) {
+          try { uniform.destroy(); } catch (error) { failure ||= error; }
+        }
+        transient.clear();
+        if (failure) throw failure;
+      }
     });
   }
   const api = Object.freeze({ ROOM, STATION, ZONE, COMPLETE_MS, shader, plan, planSfx, create });

@@ -797,7 +797,7 @@
         }
         if (input.uploadConsole) {
           const outcome = need('medicalUploadConsoleE', 'record').record({
-            frame, target, viewport, planned: input.uploadConsole });
+            frame, target, viewport, planned: input.uploadConsole, addLease: prepared.addLease });
           if (!outcome?.drawn || outcome.phase !== input.uploadConsole.phase)
             throw new Error('Medical upload console idle E was not drawn');
         }
@@ -1156,7 +1156,7 @@
               throw new Error(`Medical use E ${event.effectId} was not drawn`);
           } else if (event.type === 'medicalUploadConsoleE') {
             const outcome = need('medicalUploadConsoleE', 'record').record({ frame,
-              target, viewport, planned: event.input.planned });
+              target, viewport, planned: event.input.planned, addLease: prepared.addLease });
             if (outcome?.completionId !== event.effectId ||
                 outcome.phase !== 'complete' || outcome.drawn !== true)
               throw new Error(`Medical upload E ${event.effectId} was not drawn`);
