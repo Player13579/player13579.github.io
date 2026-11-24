@@ -9249,7 +9249,8 @@ function bindEvents() {
     recordUsageExit();
   });
   window.addEventListener("pointerout", (event) => {
-    if (event.relatedTarget == null) clearMovementInput();
+    if (event.relatedTarget == null && !tabletWalkingStickOwnsDifferentTouch(event))
+      clearMovementInput();
   });
   window.addEventListener("pointerup", (event) => {
     if (state.enhanceHold.pointerId === event.pointerId) void finishEnhanceAction(state.enhanceHold.kind, event.pointerId);
@@ -9828,6 +9829,20 @@ function cancelTabletStickGeometryLease() {
   if (stick.pointerId === null) return;
   resetTabletStick();
   syncMovementInputImmediately();
+}
+
+function tabletWalkingStickOwnsDifferentTouch(event) {
+  const stick = state.tabletStick;
+  const canvas = els.tabletJoystick;
+  // Lifting a different non-hover touch can bubble a terminal pointerout.
+  // Only preserve a live, captured walking finger, not a stale geometry lease.
+  return event.pointerType === "touch" && Number.isInteger(event.pointerId) &&
+    state.screen === "game" && state.data?.phase === "playing" && !document.hidden &&
+    state.tabletOpen && Number.isInteger(stick.pointerId) &&
+    stick.pointerId !== event.pointerId && stick.geometry?.walking === true &&
+    typeof canvas?.hasPointerCapture === "function" &&
+    tabletStickGeometryMatches(stick.geometry,
+      tabletStickGeometry(canvas, canvas.getBoundingClientRect()));
 }
 
 function validateTabletStickGeometryAfterReflow() {
