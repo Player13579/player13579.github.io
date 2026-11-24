@@ -9733,7 +9733,16 @@ function bindTabletControls() {
     moveStick(event);
     syncMovementInputImmediately();
   });
-  els.tabletJoystick.addEventListener("pointermove", moveStick);
+  els.tabletJoystick.addEventListener("pointermove", (event) => {
+    const stick = state.tabletStick;
+    const hadStickVector = Boolean(stick.dx || stick.dy);
+    moveStick(event);
+    // A centered press has not sent a movement start. Dispatch the first
+    // deflection immediately so releasing before the next RAF cannot erase it.
+    if (!hadStickVector && !state.movementActive && stick.geometry?.walking &&
+        stick.pointerId === event.pointerId && (stick.dx || stick.dy))
+      syncMovementInputImmediately();
+  });
   els.tabletJoystick.addEventListener("pointerup", releaseStick);
   els.tabletJoystick.addEventListener("pointercancel", releaseStick);
   els.tabletJoystick.addEventListener("lostpointercapture", releaseStick);
