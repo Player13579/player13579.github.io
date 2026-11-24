@@ -227,25 +227,49 @@
     const ascentRatio = atlasMetrics.ascent / atlasMetrics.pixelSize;
     const preparedLayouts = new WeakMap();
     const computeLayout = (value, size) => textAtlas.layout(value, { size });
+    // Scoped to this HUD and its one atlas provider. Keep immutable geometry
+    // only; ensure still owns page readiness on every preparation.
+    const ownerLayouts = new Map();
+    let ownerLayoutQuads = 0;
+    const layoutEntryLimit = 128, layoutLengthLimit = 256, layoutQuadLimit = 4096;
+    const literalKey = (value, size) => typeof value === 'string' &&
+      value.length <= layoutLengthLimit && finite(size) && size > 0
+      ? size + '\0' + value : null;
+    function rememberOwnerLayout(key, layout) {
+      const count = layout.quads.length;
+      if (key === null || count > layoutLengthLimit ||
+          !finite(layout.width) || layout.width < 0 ||
+          layout.quads.some(q => !Number.isInteger(q.page) || q.page < 0 ||
+            ![q.x, q.y, q.w, q.h].every(finite) || q.w <= 0 || q.h <= 0 ||
+            q.uv.length !== 4 || !q.uv.every(finite))) return;
+      while (ownerLayouts.size >= layoutEntryLimit ||
+          ownerLayoutQuads + count > layoutQuadLimit) {
+        const oldest = ownerLayouts.keys().next().value;
+        ownerLayoutQuads -= ownerLayouts.get(oldest).quads.length;
+        ownerLayouts.delete(oldest);
+      }
+      ownerLayouts.set(key, layout);
+      ownerLayoutQuads += count;
+    }
     function cacheFrameLayouts() {
-      // Atlas, origin and missing-glyph policy are fixed to this HUD. The
-      // fingerprint is the exact text and size; the map never outlives its plan.
       const bySize = new Map();
       let count = 0;
       return (value, size) => {
         const texts = bySize.get(size);
         if (texts?.has(value)) return texts.get(value);
-        const layout = computeLayout(value, size);
+        const key = count < 64 ? literalKey(value, size) : null;
+        const memo = key === null ? null : ownerLayouts.get(key);
+        const layout = memo || computeLayout(value, size);
         if (count >= 64 || !Array.isArray(layout.quads) ||
-            layout.quads.some(q => !Array.isArray(q?.uv))) return layout;
-        // Don't cache caller-owned arrays. Only width and glyph geometry are
-        // used by HUD; texture liveness is checked separately at draw time.
-        const frozen = Object.freeze({
+            (!memo && layout.quads.some(q => !Array.isArray(q?.uv)))) return layout;
+        const frozen = memo || Object.freeze({
           width: layout.width,
           quads: Object.freeze(layout.quads.map(q => Object.freeze({
-            ...q, uv: Object.freeze(q.uv.slice())
+            page: q.page, x: q.x, y: q.y, w: q.w, h: q.h,
+            uv: Object.freeze(q.uv.slice())
           })))
         });
+        if (!memo) rememberOwnerLayout(key, frozen);
         if (!texts) bySize.set(size, new Map([[value, frozen]]));
         else texts.set(value, frozen);
         count++;
