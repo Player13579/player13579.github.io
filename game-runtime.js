@@ -219,9 +219,9 @@
       } catch {
         if (generation !== this.generation) {
           this.inFlight = false;
-          // A neutral input from the current lease must not wait for another key press.
-          const next = this.pending[0];
-          if (next?.dx === 0 && next?.dy === 0) void this.flush();
+          // clear() dropped the retired generation's pending inputs. Drain only
+          // the current head; the rejected input and its ACK stay retired.
+          if (this.pending.length > 0) void this.flush();
           return;
         }
         // Movement payloads describe the complete current direction. If a
