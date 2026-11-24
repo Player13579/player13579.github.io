@@ -27109,6 +27109,8 @@ function eEffectNow(effect, data = state.data, wallNow = state.frameNow || perfo
   // Overhead marker selection and visible-effect retention both use wall time.
   // Body-benefit E types are excluded by isSharedHeadMarkerEffect and keep the
   // actor E clock below.
+  // Box opening, acquisition photons and opening sound share the fixed receipt clock.
+  if (effect?.type === 'mystery-box') return wallNow;
   if (isSharedHeadMarkerEffect(effect) || isCreditHeadMarkerEffect(effect)) return wallNow;
   if (effect?.type === 'flora' || effect?.type === 'flora-sunbeam' ||
       !Number.isFinite(effect?.eClockStartedAt) ||
