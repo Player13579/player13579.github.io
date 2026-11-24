@@ -21560,7 +21560,19 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
         scene: boxes.scene, camera, zoom, viewport
       }) !== false) {
     retryExhaustedWebGPUMysteryBoxMaterial(data, boxes, camera, zoom, viewport);
-    textureGaps.push({ stage: "mysteryBoxes", texture: "mysteryBoxMaterial", blocking: true });
+    const boxLoad = criticalFacilityImageLoads.get(boxes.image);
+    // The immutable atlas can stay pending even after all loader watchdogs.
+    // Keep placement and all other passes; the closed-box pass draws no sprites until ready.
+    const exhaustedPending = boxes.image?.complete === false &&
+      (boxLoad?.status === 'failed' || (boxLoad?.status === 'loading' && boxLoad.boxRecoveryOwner)) &&
+      boxes.scene.every(box => Number.isFinite(box?.x) && Number.isFinite(box?.y)) &&
+      typeof window.DvaWebGPUMysteryBoxes?.requiresMaterial === 'function' &&
+      [camera?.x, camera?.y, zoom, viewport?.width, viewport?.height].every(Number.isFinite) &&
+      zoom > 0 && viewport.width > 0 && viewport.height > 0 &&
+      Number.isFinite(camera.x + viewport.width / zoom) &&
+      Number.isFinite(camera.y + viewport.height / zoom);
+    textureGaps.push({ stage: "mysteryBoxes", texture: "mysteryBoxMaterial",
+      blocking: !exhaustedPending });
   }
   const zones = Array.isArray(data.gravityZones) ? data.gravityZones : [];
   if (zones.length && !imageReady(textures.gravityLocalMaterialV834, 3940, 3589))
