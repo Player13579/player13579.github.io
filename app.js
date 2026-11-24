@@ -5938,6 +5938,12 @@ function updateEnhanceReadout() {
   if (hold.kind) hold.timer = requestAnimationFrame(updateEnhanceReadout);
 }
 
+function swordEnhanceInputOwnerCurrent(owner) {
+  return Boolean(owner?.roomId && owner.playerId &&
+    isCurrentRoomSession(owner.roomId, owner.playerId, owner.generation) &&
+    state.data?.round === owner.round);
+}
+
 function beginEnhanceAction(kind, pointerId = null, inputSource = pointerId === null ? "unknown" : "pointer", inputCode = "") {
   if (!kind || state.enhanceHold.kind || ownsThrowCharge()) return false;
   const itemId = kind === "shoot"
@@ -5947,10 +5953,14 @@ function beginEnhanceAction(kind, pointerId = null, inputSource = pointerId === 
       : ["use", "throw"].includes(kind) ? String(els.itemSelect?.value || "") : "";
   const chargeKind = kind === "use" && itemId.startsWith("weapon:") ? "shoot" : kind;
   if (chargeKind === "shoot" && state.gunActivationPending) return false;
+  const itemUseOwner = kind === "use"
+    ? { roomId: state.roomId, playerId: state.playerId,
+        generation: state.roomSessionGeneration, round: state.data?.round }
+    : null;
   const chargePromise = state.roomId && state.playerId
     ? api("/api/enhance-charge", { active: true, kind: chargeKind, itemId })
     : Promise.resolve(false);
-  state.enhanceHold = { kind, chargeKind, pointerId, inputSource, inputCode, startedAt: performance.now(), timer: 0, itemId, chargeId: "", chargePromise };
+  state.enhanceHold = { kind, chargeKind, pointerId, inputSource, inputCode, startedAt: performance.now(), timer: 0, itemId, chargeId: "", chargePromise, itemUseOwner };
   if (kind === "throw") startThrowChargeOperation(state.enhanceHold);
   if (chargeKind === "shoot") state.gunActivationPending = true;
   state.movementQueue?.clear?.();
@@ -5991,6 +6001,8 @@ function cancelEnhanceAction(kind = state.enhanceHold.kind, { recoverOnFailure =
   // only after that request settles so a cancelled charge cannot reappear.
   void Promise.resolve(hold.chargePromise).then(() => {
     if (!state.roomId || !state.playerId) return false;
+    if (hold.kind === "use" && hold.itemId === "orichalcum-sword" &&
+        !swordEnhanceInputOwnerCurrent(hold.itemUseOwner)) return false;
     if (recoverOnFailure) return api("/api/enhance-charge", { active: false });
     return request("/api/enhance-charge", {
       roomId: state.roomId,
@@ -6086,6 +6098,10 @@ async function finishEnhanceAction(kind = state.enhanceHold.kind, pointerId = nu
     showToast("このアイテムは条件成立時に自動発動します。");
     return true;
   }
+  // Keep same-session response-loss recovery, but never send a sword release
+  // captured in a different room, player session, or round.
+  if (kind === "use" && itemId === "orichalcum-sword" &&
+      !swordEnhanceInputOwnerCurrent(hold.itemUseOwner)) return false;
   return api("/api/item-use", { itemId, holdMs, chargeId });
 }
 
