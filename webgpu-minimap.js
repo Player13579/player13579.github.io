@@ -71,6 +71,15 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
     return Object.freeze({ bounds, scale, shapes: Object.freeze(shapes) });
   }
 
+  const dynamicFanTrig = Array.from({length: 48}, (_, i) => {
+    const a = 0 + (Math.PI * 2 - 0) * i / 48, b = 0 + (Math.PI * 2 - 0) * (i + 1) / 48;
+    return [Math.cos(a), Math.sin(a), Math.cos(b), Math.sin(b)];
+  });
+  const dynamicRingTrig = Array.from({length: 48}, (_, i) => {
+    const a = i * Math.PI * 2 / 48, b = (i + 1) * Math.PI * 2 / 48;
+    return [Math.cos(a), Math.sin(a), Math.cos(b), Math.sin(b)];
+  });
+
   function verticesFor(planResult, viewport) {
     const sx = viewport.logicalToPixel[0], sy = viewport.logicalToPixel[3];
     const fanTriangleCount = (start, end) => Math.max(12, Math.ceil((end - start) / (Math.PI * 2) * 48));
@@ -117,6 +126,14 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
     };
     const fan = (x, y, radius, color, start = 0, end = Math.PI * 2) => {
       const count = Math.max(12, Math.ceil((end - start) / (Math.PI * 2) * 48));
+      if (start === 0 && end === Math.PI * 2) {
+        for (const trig of dynamicFanTrig) {
+          const ax = x + trig[0] * radius, ay = y + trig[1] * radius;
+          const bx = x + trig[2] * radius, by = y + trig[3] * radius;
+          tri(x, y, ax, ay, bx, by, color);
+        }
+        return;
+      }
       for (let i = 0; i < count; i++) {
         const a = start + (end - start) * i / count, b = start + (end - start) * (i + 1) / count;
         const ax = x + Math.cos(a) * radius, ay = y + Math.sin(a) * radius;
@@ -127,11 +144,11 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
     const ring = (x, y, radius, width, color) => {
       const outer = radius + width / 2, inner = Math.max(0, radius - width / 2);
       for (let i = 0; i < 48; i++) {
-        const a = i * Math.PI * 2 / 48, b = (i + 1) * Math.PI * 2 / 48;
-        const ax = x + Math.cos(a) * inner, ay = y + Math.sin(a) * inner;
-        const bx = x + Math.cos(a) * outer, by = y + Math.sin(a) * outer;
-        const cx = x + Math.cos(b) * outer, cy = y + Math.sin(b) * outer;
-        const dx = x + Math.cos(b) * inner, dy = y + Math.sin(b) * inner;
+        const [ca, sa, cb, sb] = dynamicRingTrig[i];
+        const ax = x + ca * inner, ay = y + sa * inner;
+        const bx = x + ca * outer, by = y + sa * outer;
+        const cx = x + cb * outer, cy = y + sb * outer;
+        const dx = x + cb * inner, dy = y + sb * inner;
         quad(ax, ay, bx, by, cx, cy, dx, dy, color);
       }
     };
