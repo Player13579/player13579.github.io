@@ -14769,7 +14769,10 @@ function advanceRenderPlayers(data) {
     const elapsed = moving ? clamp(timestamp - current.updatedAt, 0, predictionWindow) / 1000 : 0;
     let predictedX = current.targetX + directionX * speed * elapsed;
     let predictedY = current.targetY + directionY * speed * elapsed;
-    if (!isClientMovementAllowed(data, player, predictedX, predictedY, radius)) {
+    // When prediction is still at the authoritative target, both collision
+    // outcomes yield that same point. Only test actual extrapolation here.
+    if ((!Object.is(predictedX, current.targetX) || !Object.is(predictedY, current.targetY)) &&
+        !isClientMovementAllowed(data, player, predictedX, predictedY, radius)) {
       predictedX = current.targetX;
       predictedY = current.targetY;
     }
