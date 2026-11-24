@@ -13378,7 +13378,8 @@ function settleEmpChargeEffects(next, receivedAt) {
     }
   }
   while (cache.ids.size > 256) cache.ids.delete(cache.ids.keys().next().value);
-  state.magicEffects = state.magicEffects.filter((effect) => effect.type !== "emp-charge" || !cache.ids.has(effect.empPulseId));
+  if (!Array.isArray(state.magicEffects) || state.magicEffects.length)
+    state.magicEffects = state.magicEffects.filter((effect) => effect.type !== "emp-charge" || !cache.ids.has(effect.empPulseId));
   return cache.ids;
 }
 
