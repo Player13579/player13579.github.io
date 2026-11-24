@@ -2053,7 +2053,8 @@ select:focus {
 }
 
 html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-owner="1"] .board-wrap::after {
-  content: "描画を準備中…";
+  content: "描画を準備中…（準備段階 0%）";
+  content: "描画を準備中…（準備段階 " attr(data-webgpu-main-progress, "0") "%）";
   position: absolute;
   inset: 0;
   z-index: 5;
