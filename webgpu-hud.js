@@ -187,6 +187,19 @@
       pending = { rect: { ...rect }, bottom: bandBottom };
     };
     for (let i = 0; i < bands; i++) {
+      // In the flat central ring only, each side is a constant-width strip.
+      // Integer logical rows ensure the joined shader edges are exact in f32.
+      // Keep narrow, fractional and tapered rows in their original order.
+      if (stroke && r === 8 && w >= 16 &&
+          Number.isInteger(y) && Number.isInteger(h) && h >= 18 &&
+          Math.abs(x) + w <= 8192 && Math.abs(y) + h <= 8192 && i === 8) {
+        flush();
+        const top = y + 8, bottom = y + h - 8, line = 1.5;
+        frame.rect(target, { x, y: top, w: line, h: bottom - top, color });
+        frame.rect(target, { x: x + w - line, y: top, w: line, h: bottom - top, color });
+        i = h - 9;
+        continue;
+      }
       const top = y + i * h / bands, bottom = y + (i + 1) * h / bands;
       const sample = (i + .5) * h / bands;
       const distance = Math.min(sample, h - sample);
