@@ -134,6 +134,9 @@
       ready();
       if (frameOpen) throw new Error('A WebGPU renderer frame is already open');
       const coreFrame = core.beginFrame(label);
+      // This frame alone owns these immutable uniforms, including on discard
+      // and failure. A transient invalid allocation cannot poison later frames.
+      const primitiveViews = primitives.createFrameViewScope?.() ?? null;
       frameOpen = true;
       const cleared = new Set();
       const batches = [];
@@ -160,7 +163,7 @@
         if (!segment || segment.target !== target || segment.label !== stage) {
           flush();
           const batch = primitives.createBatch({ width: handle.logicalWidth, height: handle.logicalHeight,
-            reuseSpriteBindings: stage === 'hud' || stage === 'world:players:sprite' });
+            reuseSpriteBindings: stage === 'hud' || stage === 'world:players:sprite', viewScope: primitiveViews });
           batches.push(batch);
           segment = { target, label: stage, batch };
         }
@@ -177,6 +180,7 @@
       function cleanup() {
         if (closed) return;
         for (const batch of batches) batch.destroy();
+        primitiveViews?.destroy();
         frameOpen = false;
         closed = true;
         abandonFrame = null;

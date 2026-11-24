@@ -127,7 +127,25 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
       }));
       return pipelines.get(key);
     }
-    function createBatch({ width, height, reuseSpriteBindings = false } = {}) {
+    function newViewBuffer(width, height) {
+      const buffer = device.createBuffer({ label: 'DVA primitive view', size: 16, usage: 0x40 | 0x08 });
+      try { device.queue.writeBuffer(buffer, 0, new Float32Array([width, height, 0, 0])); }
+      catch (error) { buffer.destroy(); throw error; }
+      return buffer;
+    }
+    const viewScopes = new WeakMap();
+    function createFrameViewScope() {
+      if (destroyed) throw new Error('Renderer destroyed');
+      const views = new Map();
+      const scope = Object.freeze({ destroy() {
+        if (!viewScopes.delete(scope)) return;
+        for (const buffer of views.values()) buffer.destroy();
+        views.clear();
+      } });
+      viewScopes.set(scope, views);
+      return scope;
+    }
+    function createBatch({ width, height, reuseSpriteBindings = false, viewScope = null } = {}) {
       if (destroyed) throw new Error('Renderer destroyed');
       positive(width, 'Width'); positive(height, 'Height');
       const commands = [];
@@ -183,10 +201,22 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
           if (!pass || typeof pass.draw !== 'function') throw new TypeError('Render pass required');
           encoded = true;
           if (!commands.length) return 0;
-          const viewBuffer = device.createBuffer({ label: 'DVA primitive view', size: 16, usage: 0x40 | 0x08 });
+          let viewBuffer;
+          if (viewScope === null) {
+            viewBuffer = newViewBuffer(width, height);
+            resources.push(viewBuffer);
+          } else {
+            const views = viewScopes.get(viewScope);
+            if (!views) throw new Error('Primitive view scope is closed');
+            const key = `${width}:${height}`;
+            viewBuffer = views.get(key);
+            if (!viewBuffer) {
+              viewBuffer = newViewBuffer(width, height);
+              views.set(key, viewBuffer);
+            }
+          }
           const drawBuffer = device.createBuffer({ label: 'DVA primitive draws', size: commands.length * 64, usage: 0x80 | 0x08 });
-          resources = [viewBuffer, drawBuffer];
-          device.queue.writeBuffer(viewBuffer, 0, new Float32Array([width, height, 0, 0]));
+          resources.push(drawBuffer);
           const ordered = commands.slice().sort((a, b) => a.order - b.order || a.sequence - b.sequence);
           const values = new Float32Array(ordered.length * 16);
           ordered.forEach((command, index) => {
@@ -261,7 +291,7 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
       });
       return batch;
     }
-    return Object.freeze({ createBatch, get shader() { return shader; }, destroy() { destroyed = true; } });
+    return Object.freeze({ createBatch, createFrameViewScope, get shader() { return shader; }, destroy() { destroyed = true; } });
   }
   const api = Object.freeze({ create, shader });
   root.DvaWebGPUPrimitives = api;
