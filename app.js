@@ -5939,9 +5939,15 @@ function updateEnhanceReadout() {
 }
 
 function swordEnhanceInputOwnerCurrent(owner) {
+  const battleStartedAt = state.data?.battleStartedAt;
+  // Offline operator reselection can reuse the same room, player and round.
+  // Older snapshots may omit this timestamp; their previous checks still apply.
+  const knownBattleStart = (value) => Number.isFinite(value) && value > 0;
   return Boolean(owner?.roomId && owner.playerId &&
     isCurrentRoomSession(owner.roomId, owner.playerId, owner.generation) &&
-    state.data?.round === owner.round);
+    state.data?.round === owner.round &&
+    (!knownBattleStart(owner.battleStartedAt) || !knownBattleStart(battleStartedAt) ||
+      owner.battleStartedAt === battleStartedAt));
 }
 
 function beginEnhanceAction(kind, pointerId = null, inputSource = pointerId === null ? "unknown" : "pointer", inputCode = "") {
@@ -5955,7 +5961,8 @@ function beginEnhanceAction(kind, pointerId = null, inputSource = pointerId === 
   if (chargeKind === "shoot" && state.gunActivationPending) return false;
   const itemUseOwner = kind === "use"
     ? { roomId: state.roomId, playerId: state.playerId,
-        generation: state.roomSessionGeneration, round: state.data?.round }
+        generation: state.roomSessionGeneration, round: state.data?.round,
+        battleStartedAt: state.data?.battleStartedAt }
     : null;
   const chargePromise = state.roomId && state.playerId
     ? api("/api/enhance-charge", { active: true, kind: chargeKind, itemId })
