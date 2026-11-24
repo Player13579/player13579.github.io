@@ -12,6 +12,14 @@
     [TYPES.release]: 700, [TYPES.impact]: 880, [TYPES.destructionSlash]: 680,
     [TYPES.milestone]: 1050, [TYPES.slash]: 440, [TYPES.parry]: 500, [TYPES.shockwave]: 760
   });
+  function canonicalShockwaveDuration(event) {
+    if (event?.type !== TYPES.shockwave || typeof event.variant !== 'string') return 0;
+    if (/^one-body-damage:ec-cost-1:remaining-ec-(?:0|[1-9][0-9]*)$/.test(event.variant) &&
+        event.durationMs === 760) return 760;
+    if (/^giant-one-body-damage:ec-cost-100:remaining-ec-(?:0|[1-9][0-9]*)$/.test(event.variant) &&
+        event.durationMs === 1150) return 1150;
+    return 0;
+  }
   const MAX_EVENTS = 24, MAX_RECTS_PER_EVENT = 18;
   const color = (r, g, b, a) => [r / 255, g / 255, b / 255, clamp(a)];
   function validate({ scene, camera, zoom, viewport } = {}) {
@@ -43,7 +51,7 @@
       if (!id || ids.has(id)) throw new Error('Fighter Energy E requires unique event IDs');
       ids.add(id);
       if (!playerId || !finite(event.startedAt)) throw new Error(`Fighter Energy E ${id} requires playerId and local start time`);
-      const duration = Math.min(DURATIONS[event.type], finite(event.durationMs) && event.durationMs > 0 ? event.durationMs : DURATIONS[event.type]);
+      const duration = canonicalShockwaveDuration(event) || Math.min(DURATIONS[event.type], finite(event.durationMs) && event.durationMs > 0 ? event.durationMs : DURATIONS[event.type]);
       const age = scene.nowMs - event.startedAt;
       if (age < 0 || age >= duration) continue;
       const progress = clamp(age / duration), reducedMotion = Boolean(scene.reducedMotion);
@@ -166,7 +174,7 @@
     }
     return Object.freeze({ record, destroy() { destroyed = true; } });
   }
-  const api = Object.freeze({ TYPES, DURATIONS, MAX_EVENTS, MAX_RECTS_PER_EVENT, plan, create });
+  const api = Object.freeze({ TYPES, DURATIONS, MAX_EVENTS, MAX_RECTS_PER_EVENT, canonicalShockwaveDuration, plan, create });
   root.DvaWebGPUFighterEnergyE = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);

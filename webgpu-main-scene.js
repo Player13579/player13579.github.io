@@ -522,14 +522,16 @@
           const actor = event.input?.scene?.players?.find(player =>
             String(player?.id ?? '') === String(source?.playerId ?? ''));
           const elapsed = Number(event.input?.scene?.nowMs) - Number(source?.startedAt);
+          const duration = source?.type === 'fighter-slash' ? 440 :
+            root.DvaWebGPUFighterEnergyE?.canonicalShockwaveDuration?.(source);
           if (typeof passes.fighterEnergyE?.record !== 'function' ||
-              event.input?.scene?.events?.length !== 1 || source?.type !== 'fighter-slash' ||
+              event.input?.scene?.events?.length !== 1 || !Number.isFinite(duration) || duration <= 0 ||
               String(source.id ?? '') !== id || !String(source.playerId ?? '') || !actor ||
               ![source.x, source.y, source.targetX, source.targetY, source.startedAt,
                 event.input.scene.nowMs, event.input.camera?.x, event.input.camera?.y,
                 event.input.zoom].every(Number.isFinite) ||
-              !(event.input.zoom > 0) || elapsed < 0 || elapsed >= 440)
-            throw new TypeError(`Magic Fighter slash ${id} needs one live source-owned path`);
+              !(event.input.zoom > 0) || elapsed < 0 || elapsed >= duration)
+            throw new TypeError(`Magic Fighter Energy E ${id} needs one live source-owned path`);
         } else if (event?.type === 'healE') {
           const effect = event.input?.effect, planned = event.input?.planned;
           if (typeof passes.healE?.record !== 'function' || effect?.type !== 'flora' ||
@@ -868,7 +870,8 @@
           const source = event?.input?.scene?.events?.[0];
           if (!id || slashOwners.has(id) ||
               !stages.magicEffects.sourceEffectIds.some(sourceId => String(sourceId) === id) ||
-              !(event && String(source?.playerId) === String(command.playerId) || expired))
+              !(event && source?.type === 'fighter-slash' &&
+                String(source.playerId) === String(command.playerId) || expired))
             throw new Error(`Fighter slash pose lacks its same-frame source: ${id}`);
           slashOwners.add(id);
         }
@@ -1294,13 +1297,15 @@
               actorRate: input.actorRate, characterElapsedMs: input.characterElapsedMs,
               reducedMotion: input.reducedMotion, alive: true, visible: true });
           } else if (event.type === 'fighterEnergyE') {
+            const expectedKind = event.input.scene.events[0].type === 'fighter-shockwave' ?
+              'shockwave' : 'slash';
             const outcome = need('fighterEnergyE', 'record').record({ frame, target,
               viewport, ...event.input });
             if (outcome?.drawn !== 1 || outcome.effects?.length !== 1 ||
                 outcome.effects[0]?.id !== String(event.effectId) ||
-                outcome.effects[0]?.kind !== 'slash' ||
+                outcome.effects[0]?.kind !== expectedKind ||
                 !Array.isArray(outcome.commands) || !outcome.commands.length)
-              throw new Error(`Magic Fighter slash ${event.effectId} was not drawn once`);
+              throw new Error(`Magic Fighter Energy E ${event.effectId} was not drawn once`);
           } else if (event.type === 'healE') {
             if (!healRecorded.has(String(event.effectId)))
               throw new Error(`Magic Heal ${event.effectId} lacks its same-frame actor and both sides`);

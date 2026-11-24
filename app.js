@@ -4429,6 +4429,11 @@ function magicCharacterActionKind(type, variant = "") {
   // Tasks and Hacker content application intentionally keep the character
   // physically still; their UI/progress and Vibe Coding ATE own the feedback.
   if (type === "action-task" || type === "action-alchemy" || type === "action-renki") return null;
+  // These exact EC wave receipts are authored children of a physical sword
+  // swing. They retain their field effect, but do not take the body action slot.
+  if (type === "fighter-shockwave" &&
+      /^(?:one-body-damage:ec-cost-1|giant-one-body-damage:ec-cost-100):remaining-ec-(?:0|[1-9][0-9]*)$/.test(variant))
+    return null;
   if (type === "fighter-energy-charge") {
     return /(?:^|:)milestone-motion-(?:500|1000)(?::|$)/.test(String(variant || "")) ? "power" : null;
   }
@@ -22014,7 +22019,7 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       return wallNow < effect.startedAt ||
         wallNow - effect.startedAt < effect.duration;
     }
-    if (effect?.type === 'fighter-slash') {
+    if (effect?.type === 'fighter-slash' || effect?.type === 'fighter-shockwave') {
       if (![effect.x, effect.y, effect.targetX, effect.targetY,
         effect.startedAt, effect.duration].every(Number.isFinite) || effect.duration <= 0)
         return true;
@@ -22362,8 +22367,11 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
         reason: 'hover-sprint-player-stage-owns-live-state' });
       continue;
     }
-    if (type === 'fighter-slash') {
-      const duration = window.DvaWebGPUFighterEnergyE?.DURATIONS?.['fighter-slash'];
+    if (type === 'fighter-slash' || type === 'fighter-shockwave') {
+      const module = window.DvaWebGPUFighterEnergyE;
+      const expectedKind = type === 'fighter-slash' ? 'slash' : 'shockwave';
+      const duration = type === 'fighter-slash' ? module?.DURATIONS?.['fighter-slash'] :
+        module?.canonicalShockwaveDuration?.(effect);
       const elapsed = now - Number(effect.startedAt);
       if (!Number.isFinite(duration) || duration <= 0 ||
           !Number.isFinite(elapsed) || !Number.isFinite(effect.duration) ||
@@ -22371,12 +22379,12 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           ![effect.x, effect.y, effect.targetX, effect.targetY].every(Number.isFinite) ||
           !getCombatActors().some(player => String(player.id) === String(effect.playerId))) {
         unsupported.push({ index, type, id: effect.id,
-          reason: 'fighter-slash-source-or-pass-invalid' });
+          reason: `${type}-source-or-pass-invalid` });
         continue;
       }
       if (elapsed < 0 || elapsed >= duration) {
         omitted.push({ effectId: effect.id, playerId: String(effect.playerId),
-          reason: 'fighter-slash-visual-outside-lifetime' });
+          reason: `${type}-visual-outside-lifetime` });
         continue;
       }
       const scene = combatScene(effect, now);
@@ -22384,9 +22392,9 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
       try { planned = window.DvaWebGPUFighterEnergyE.plan({ scene,
         camera, zoom, viewport }); } catch (_) { /* A malformed visible source blocks the frame. */ }
       if (!Array.isArray(planned) || planned.length !== 1 ||
-          planned[0]?.id !== String(effect.id) || planned[0]?.kind !== 'slash') {
+          planned[0]?.id !== String(effect.id) || planned[0]?.kind !== expectedKind) {
         unsupported.push({ index, type, id: effect.id,
-          reason: 'fighter-slash-visible-plan-invalid' });
+          reason: `${type}-visible-plan-invalid` });
         continue;
       }
       events.push({ type: 'fighterEnergyE', effectId: String(effect.id),
