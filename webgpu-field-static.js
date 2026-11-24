@@ -68,12 +68,27 @@
       }
       // Every sample through this row's end can share crossings if the
       // half-open active set stays fixed and all of its edges are vertical.
-      let repeat=1;
+      let repeat=1, bandRows=1;
       if(subY%samples===0){
         const endY=y+(samples-1)/samples;
-        if((nextEdge>=starts.length||starts[nextEdge].minimum>endY)&&
-          active.every(edge=>edge.slope===0&&edge.maximum>endY&&
-            finite(y-edge.y)&&finite(endY-edge.y)))repeat=samples;
+        // A vertical active set gives the same X crossings not just for the
+        // remaining samples in this pixel row, but until the next Y event.
+        let limit=nextEdge<starts.length?starts[nextEdge].minimum:height;
+        if(limit>endY&&active.every(edge=>edge.slope===0&&edge.maximum>endY&&
+          finite(y-edge.y)&&finite(endY-edge.y))){
+          repeat=samples;
+          for(const edge of active)limit=Math.min(limit,edge.maximum);
+          const pixelRow=subY/samples;
+          bandRows=Math.max(1,Math.min(height-pixelRow,
+            Math.ceil(limit-pixelRow+.5/samples)-1));
+          // Verify the exact stock sample arithmetic at the final Y, including
+          // a fractional edge on the half-open .5/sample boundary.
+          while(bandRows>1){
+            const finalY=(subY+bandRows*samples-.5)/samples;
+            if(finalY<limit&&active.every(edge=>finite(finalY-edge.y)))break;
+            bandRows--;
+          }
+        }
       }
       for(const edge of active)
         intersections.push({x:edge.x+(y-edge.y)*edge.slope,winding:edge.winding});
@@ -84,7 +99,18 @@
         winding+=crossing.winding;start=crossing.x;
       }
       subY+=repeat-1;
-      if((subY+1)%samples===0)flushInteriorRow(row);
+      if((subY+1)%samples===0){
+        flushInteriorRow(row);
+        if(bandRows>1){
+          // Copy a complete equal row band with geometrically growing copies.
+          // Empty active sets can leave the zero-initialized rows untouched.
+          if(active.length)for(let copied=1;copied<bandRows;copied*=2){
+            const chunk=Math.min(copied,bandRows-copied);
+            alpha.copyWithin(row+copied*width,row,row+chunk*width);
+          }
+          subY+=(bandRows-1)*samples;
+        }
+      }
     }
     return alpha;
   }
