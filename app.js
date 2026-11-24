@@ -20634,10 +20634,12 @@ function reconcileMainFrameUiState(data) {
 
 function prepareMagicEffectsForMainFrame(data, now) {
   if (!data || !["playing", "meeting"].includes(data.phase)) {
-    state.magicEffects = [];
+    if (!Array.isArray(state.magicEffects) || state.magicEffects.length) state.magicEffects = [];
     return;
   }
-  state.magicEffects = state.magicEffects.filter((effect) => {
+  // An unchanged empty effect list still owns prepared frames crossing a RAF.
+  // Any first push remains visible to the captured source/order checks.
+  if (!Array.isArray(state.magicEffects) || state.magicEffects.length) state.magicEffects = state.magicEffects.filter((effect) => {
     if (isWallClockEmpLifetime(effect)) {
       if (!Number.isFinite(effect.startedAt) || !Number.isFinite(effect.duration) ||
           effect.duration <= 0) return true;
