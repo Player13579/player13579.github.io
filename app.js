@@ -9635,9 +9635,12 @@ function bindTabletControls() {
       return;
     }
     if (!held) state.tabletStick.geometry = geometry;
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const maxDistance = Math.max(1, Math.min(rect.width, rect.height) / 2 - 30);
+    // Walking is relative to the joystick where this finger took ownership,
+    // not a same-size control translated by a settling HUD.
+    const [left, top, width, height] = (held && held.walking ? held : geometry).rect;
+    const centerX = left + width / 2;
+    const centerY = top + height / 2;
+    const maxDistance = Math.max(1, Math.min(width, height) / 2 - 30);
     const rawX = event.clientX - centerX;
     const rawY = event.clientY - centerY;
     const rawLength = Math.hypot(rawX, rawY);
@@ -9757,12 +9760,30 @@ function tabletStickGeometry(canvas, rect) {
   if (!canvas?.isConnected || !rect ||
       ![rect.left, rect.top, rect.width, rect.height].every(Number.isFinite) ||
       rect.width <= 0 || rect.height <= 0) return null;
-  return { canvas, rect: [rect.left, rect.top, rect.width, rect.height] };
+  const walking = !state.throwTargeting.active && !state.clairvoyance.active;
+  if (walking) {
+    const pointerId = state.tabletStick.pointerId;
+    if (!Number.isInteger(pointerId)) return null;
+    try {
+      if (typeof canvas.hasPointerCapture === "function" && !canvas.hasPointerCapture(pointerId))
+        return null;
+    } catch {
+      return null;
+    }
+  }
+  const vv = window.visualViewport;
+  return { canvas, rect: [rect.left, rect.top, rect.width, rect.height],
+    panelParent: els.tabletPanel.parentElement,
+    viewport: [window.innerWidth, window.innerHeight, vv?.width, vv?.height, vv?.scale],
+    walking };
 }
 
 function tabletStickGeometryMatches(held, current) {
   return Boolean(held && current && held.canvas === current.canvas &&
-    current.rect.every((value, index) => Math.abs(value - held.rect[index]) <= 1));
+    held.walking === current.walking && (!held.walking || (held.panelParent === current.panelParent &&
+    current.viewport.every((value, index) => value === held.viewport[index]))) &&
+    current.rect.every((value, index) => (held.walking && index < 2) ||
+      Math.abs(value - held.rect[index]) <= 1));
 }
 
 function cancelTabletStickGeometryLease() {
