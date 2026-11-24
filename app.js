@@ -19568,11 +19568,55 @@ function flushLiveSunbeamSounds(submittedHands = null, frameId = 0) {
   }
 }
 
+function webgpuMainPreparationStageKey() {
+  return JSON.stringify([webgpuMainApp.generation, state.roomId, state.playerId,
+    state.roomSessionGeneration, state.data?.roomId, state.data?.phase,
+    state.data?.map?.id,
+    document.documentElement?.dataset?.connectionMode || '']);
+}
+
+function writeWebGPUMainPreparationPercent(percent) {
+  const value = String(Number.isFinite(percent)
+    ? Math.max(0, Math.min(100, Math.floor(percent))) : 0);
+  for (const board of document.querySelectorAll('.board-wrap')) {
+    if (board.dataset && board.dataset.webgpuMainProgress !== value)
+      board.dataset.webgpuMainProgress = value;
+  }
+}
+
+function beginWebGPUMainPreparationStages() {
+  if (!WEBGPU_MAIN_OWNER || webgpuMainApp.failed ||
+      state.screen !== 'game' || document.hidden) return null;
+  const key = webgpuMainPreparationStageKey();
+  let progress = webgpuMainApp.preparationStageProgress;
+  if (!progress || progress.key !== key) {
+    progress = { key, completed: 0 };
+    webgpuMainApp.preparationStageProgress = progress;
+    writeWebGPUMainPreparationPercent(0);
+  }
+  return progress;
+}
+
+function advanceWebGPUMainPreparationStages(progress, completed) {
+  if (!progress || completed <= progress.completed ||
+      webgpuMainApp.preparationStageProgress !== progress ||
+      !WEBGPU_MAIN_OWNER || webgpuMainApp.failed ||
+      state.screen !== 'game' || document.hidden ||
+      progress.key !== webgpuMainPreparationStageKey()) return;
+  if (completed === 3 && (!webgpuMainApp.visible ||
+      document.documentElement?.dataset?.fieldRenderer !== 'webgpu')) return;
+  // Three cumulative, coarse readiness milestones; never resource/time weights.
+  progress.completed = completed;
+  writeWebGPUMainPreparationPercent(Math.floor(completed * 100 / 3));
+}
+
 function suspendWebGPUMainAppDriver({ destroy = false } = {}) {
   if (!WEBGPU_MAIN_OWNER) return;
   clearWebGPUMainUnstableLayoutRetry();
   if (webgpuMainApp.startToken) cancelWebGPUMainStartupToken(webgpuMainApp.startToken);
   webgpuMainApp.generation += 1;
+  webgpuMainApp.preparationStageProgress = null;
+  writeWebGPUMainPreparationPercent(0);
   if (WEBGPU_MAIN_VERIFY_ROUTE && state.screen !== 'game' &&
       webgpuStartupTiming.current && !webgpuStartupTiming.current.frozen) {
     webgpuStartupTiming.current.frozen = true;
@@ -20148,6 +20192,7 @@ function pumpWebGPUMainAppDriver() {
     recordWebGPUFirstRetryEvent('pump-exit', 'game-screen');
     return;
   }
+  beginWebGPUMainPreparationStages();
   const retainedDriver = webgpuMainApp.driver;
   if (!document.hidden && !webgpuMainApp.startPending && data?.roomId === state.roomId &&
       state.roomId && state.playerId && data?.map?.id === webgpuMainApp.mapId &&
@@ -20204,6 +20249,8 @@ function pumpWebGPUMainAppDriver() {
   }
   if (webgpuMainApp.driver && webgpuMainApp.mapId !== data.map.id)
     suspendWebGPUMainAppDriver({ destroy: true });
+  const preparationStages = beginWebGPUMainPreparationStages();
+  advanceWebGPUMainPreparationStages(preparationStages, 1);
   if (!webgpuMainApp.driver) {
     if (!webgpuMainApp.startPending) {
       setWebGPUMainPendingDiagnostic('startup:driver');
@@ -20216,6 +20263,8 @@ function pumpWebGPUMainAppDriver() {
     return;
   }
   webgpuMainApp.driver.resume();
+  if (webgpuMainApp.driver.state === 'ready')
+    advanceWebGPUMainPreparationStages(preparationStages, 2);
   if (WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current &&
       !webgpuStartupTiming.current.frozen) {
     const trace = webgpuStartupTiming.current;
@@ -20509,6 +20558,9 @@ function pumpWebGPUMainAppDriver() {
     }
     if (document.documentElement?.dataset)
       document.documentElement.dataset.fieldRenderer = "webgpu";
+    // Admission also proves driver usability if it was busy when pumped.
+    if (webgpuMainApp.driver === drawDriver && state.playerId === drawPlayerId)
+      advanceWebGPUMainPreparationStages(preparationStages, 3);
     // A retained same-map driver may present this match without ever taking
     // the new Play's ready title lease. Retire only that unused spare, after
     // a later playing frame has passed every presentation/receipt gate.
