@@ -21555,6 +21555,7 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
   if (!imageReady(mapImage, data.map.width, data.map.height))
     textureGaps.push({ stage: "map", texture: `fullMapComposites.${data.map.id}`, blocking: true });
   const boxes = mysteryBoxWebGPUScene(data);
+  let atlasPlaceholder = false;
   if (boxes.scene.length && !imageReady(boxes.image, 1548, 516) &&
       window.DvaWebGPUMysteryBoxes?.requiresMaterial?.({
         scene: boxes.scene, camera, zoom, viewport
@@ -21562,7 +21563,7 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
     retryExhaustedWebGPUMysteryBoxMaterial(data, boxes, camera, zoom, viewport);
     const boxLoad = criticalFacilityImageLoads.get(boxes.image);
     // The immutable atlas can stay pending even after all loader watchdogs.
-    // Keep placement and all other passes; the closed-box pass draws no sprites until ready.
+    // Keep placement and all other passes; use a floor marker while the atlas is pending.
     const exhaustedPending = boxes.image?.complete === false &&
       (boxLoad?.status === 'failed' || (boxLoad?.status === 'loading' && boxLoad.boxRecoveryOwner)) &&
       boxes.scene.every(box => Number.isFinite(box?.x) && Number.isFinite(box?.y)) &&
@@ -21571,6 +21572,9 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
       zoom > 0 && viewport.width > 0 && viewport.height > 0 &&
       Number.isFinite(camera.x + viewport.width / zoom) &&
       Number.isFinite(camera.y + viewport.height / zoom);
+    atlasPlaceholder = Boolean(exhaustedPending) && data === state.data && state.roomId === data.roomId &&
+      state.screen === 'game' && !document.hidden && ['playing', 'meeting'].includes(data.phase) &&
+      Number.isSafeInteger(state.roomSessionGeneration);
     textureGaps.push({ stage: "mysteryBoxes", texture: "mysteryBoxMaterial",
       blocking: !exhaustedPending });
   }
@@ -21733,7 +21737,7 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
       fixtures: medicalFixturePlans, uploadConsole: medicalUploadPlanned },
     stations: { ...stationsWebGPUScene(data), ...common },
     mapObjects: { scene: mapObjectWebGPUScene(data, bounds), ...common },
-    mysteryBoxes: { ...boxes, ...common },
+    mysteryBoxes: { ...boxes, ...common, atlasPlaceholder },
     alchemyObjects: { ...alchemyObjectsWebGPUScene(data), ...common },
     gravityHazards: { scene: gravityScene, fieldScene: gravityFieldScene, ...common },
     groundItems: { commands, textAtlas: null },

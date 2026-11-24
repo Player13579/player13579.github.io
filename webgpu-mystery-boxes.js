@@ -101,10 +101,36 @@
       owned.add(texture);
       return texture;
     }
-    function record({ frame, target, scene, self, camera, zoom, viewport, image } = {}) {
+    function record({ frame, target, scene, self, camera, zoom, viewport, image, atlasPlaceholder = false } = {}) {
       if (destroyed) throw new Error('Mystery-box pass destroyed');
       const commands = plan({ scene, self, camera, zoom, viewport, image });
-      if (!commands.length) return 0;
+      if (!commands.length) {
+        if (atlasPlaceholder !== true || image?.complete !== false) return 0;
+        const markers = scene.filter(box => boxInView(box, camera, zoom, viewport) &&
+          box.type === 'mysteryBox' && box.kind === 'mystery-box' &&
+          typeof box.id === 'string' && /^mystery_box_.+/.test(box.id) &&
+          box.interactive === true && box.alpha === undefined &&
+          box.opening === undefined && box.emission === undefined && box.cull === undefined);
+        if (!markers.length) return 0;
+        if (typeof frame?.stage !== 'function' || typeof frame?.rect !== 'function' ||
+            typeof target !== 'string' || !target ||
+            ![viewport.pixelWidth, viewport.pixelHeight].every(value => finite(value) && value > 0)) {
+          throw new TypeError('Shared frame, target, and committed viewport required');
+        }
+        frame.stage('world:mystery-boxes');
+        for (const box of markers) {
+          const x = (box.x - camera.x) * zoom, y = (box.y - camera.y) * zoom;
+          const k = Math.max(0.8, Math.min(1.5, zoom));
+          const rect = (dx, dy, w, h, color) => frame.rect(target, {
+            x: x + dx * k, y: y + dy * k, w: w * k, h: h * k, color
+          });
+          rect(-13, -10, 26, 20, [.1, .05, .18, .94]);
+          rect(-10, -5, 20, 12, [.52, .30, .75, .92]);
+          rect(-11, -7, 22, 4, [.83, .66, .96, 1]);
+          rect(-1.5, -7, 3, 14, [1, .82, .45, 1]);
+        }
+        return markers.length;
+      }
       if (typeof frame?.stage !== 'function' || typeof frame.sprite !== 'function' ||
           typeof target !== 'string' || !target ||
           ![viewport.pixelWidth, viewport.pixelHeight].every(value => finite(value) && value > 0)) {
