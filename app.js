@@ -21120,6 +21120,29 @@ function mysteryBoxWebGPUScene(data) {
   };
 }
 
+// An exhausted eager preload may have happened outside the live view or
+// while offline. Only the frame that currently needs the immutable atlas may
+// retry, once per image. Preserve ordinary incomplete-scene handling.
+function retryExhaustedWebGPUMysteryBoxMaterial(data, boxes, camera, zoom, viewport) {
+  const image = boxes.image;
+  if (state.screen !== 'game' || document.hidden || window.navigator?.onLine !== true ||
+      data !== state.data || !state.roomId || data.roomId !== state.roomId ||
+      !['playing', 'meeting'].includes(data.phase) ||
+      !Number.isSafeInteger(state.roomSessionGeneration) ||
+      !image?.complete || mysteryBoxMaterialReady() ||
+      ![camera?.x, camera?.y, zoom, viewport?.width, viewport?.height].every(Number.isFinite) ||
+      zoom <= 0 || viewport.width <= 0 || viewport.height <= 0 ||
+      !Number.isFinite(camera.x + viewport.width / zoom) ||
+      !Number.isFinite(camera.y + viewport.height / zoom)) return false;
+  const load = criticalFacilityImageLoads.get(image);
+  if (load?.status !== 'failed' || load.boxRecoveryOwner || !load.retryBoxOnce) return false;
+  const placed = boxes.scene.filter(box => Number.isFinite(box?.x) && Number.isFinite(box?.y));
+  if (!placed.length || window.DvaWebGPUMysteryBoxes?.requiresMaterial?.({
+    scene: placed, camera, zoom, viewport }) !== true) return false;
+  return load.retryBoxOnce({ roomId: state.roomId, generation: state.roomSessionGeneration,
+    mapId: data.map?.id });
+}
+
 function alchemyObjectsWebGPUScene(data) {
   return { scene: data.map.alchemyObjects || [],
     textures: { facilityProps: state.textures.facilityProps, roomProps: state.textures.roomProps },
@@ -21488,8 +21511,10 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
   if (boxes.scene.length && !imageReady(boxes.image, 1548, 516) &&
       window.DvaWebGPUMysteryBoxes?.requiresMaterial?.({
         scene: boxes.scene, camera, zoom, viewport
-      }) !== false)
+      }) !== false) {
+    retryExhaustedWebGPUMysteryBoxMaterial(data, boxes, camera, zoom, viewport);
     textureGaps.push({ stage: "mysteryBoxes", texture: "mysteryBoxMaterial", blocking: true });
+  }
   const zones = Array.isArray(data.gravityZones) ? data.gravityZones : [];
   if (zones.length && !imageReady(textures.gravityLocalMaterialV834, 3940, 3589))
     textureGaps.push({ stage: "gravityHazards", texture: "gravityLocalMaterialV834", blocking: true });
@@ -33158,10 +33183,27 @@ function loadCriticalFacilityTexture(image, source, { box = false } = {}) {
   const start = () => {
     if (load.status !== "loading") return;
     const separator = source.includes("?") ? "&" : "?";
-    image.src = retries ? `${source}${separator}facilityRetry=${retries}` : source;
+    image.src = load.boxRecoveryOwner
+      ? `${source}${separator}boxMaterialRecovery=1`
+      : retries ? `${source}${separator}facilityRetry=${retries}` : source;
     watchdog = window.setTimeout(() => {
       if (!(image.complete && ready())) retry();
     }, 15000);
+  };
+  if (box) load.retryBoxOnce = owner => {
+    if (load.status !== "failed" || load.boxRecoveryOwner || !image.complete || ready() ||
+        criticalFacilityImageLoads.get(image) !== load ||
+        state.textures?.mysteryBoxMaterial !== image ||
+        owner.roomId !== state.roomId || owner.generation !== state.roomSessionGeneration ||
+        owner.mapId !== state.data?.map?.id) return false;
+    load.boxRecoveryOwner = Object.freeze(owner);
+    load.status = "loading";
+    image.addEventListener("load", onLoad);
+    image.addEventListener("error", onError);
+    // Immutable atlas: if the room changes after this current, visible frame
+    // calls start(), completion still belongs to this document-wide image.
+    start();
+    return true;
   };
   criticalFacilityImageLoads.set(image, load);
   image.addEventListener("load", onLoad);
