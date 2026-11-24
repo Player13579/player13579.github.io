@@ -200,7 +200,8 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
           const spriteGroups = reuseSpriteBindings ? new Map() : null;
           const spriteViews = reuseSpriteBindings ? new Map() : null;
           let lastSpriteGroup = null;
-          ordered.forEach((command, index) => {
+          for (let index = 0; index < ordered.length;) {
+            const command = ordered[index];
             const material = pipeline(command.kind, command.mode);
             pass.setPipeline(material);
             let group = groups.get(material);
@@ -234,8 +235,21 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
             } else {
               lastSpriteGroup = null;
             }
-            pass.draw(6, 1, 0, index);
-          });
+            // Consecutive identical-alpha/color fills can share a draw.
+            // Keep the original instance indices and never cross a sprite or
+            // a differing blend input. Even overlapping rows then commute.
+            let count = 1;
+            if (command.kind === 'rect' && command.mode === 'source-over') {
+              while (index + count < ordered.length) {
+                const next = ordered[index + count];
+                if (next.kind !== 'rect' || next.mode !== 'source-over' ||
+                    !command.color.every((channel, i) => channel === next.color[i])) break;
+                count++;
+              }
+            }
+            pass.draw(6, count, 0, index);
+            index += count;
+          }
           return commands.length;
         },
         destroy() {
