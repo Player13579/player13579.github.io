@@ -105,11 +105,12 @@ fn main(@builtin(global_invocation_id) gid: vec3u) {
       const { image, sourceSize } = source;
       const existing = images.get(image);
       if (existing && existing.width === sourceSize[0] && existing.height === sourceSize[1]) return existing.texture;
-      const input = device.createTexture({ label: 'DVA station source atlas',
-        size: sourceSize, format: 'rgba8unorm', usage: 0x02 | 0x04 | 0x10 });
-      const texture = device.createTexture({ label: 'DVA station keyed atlas',
-        size: sourceSize, format: 'rgba8unorm', usage: 0x04 | 0x08 });
+      let input, texture;
       try {
+        input = device.createTexture({ label: 'DVA station source atlas',
+          size: sourceSize, format: 'rgba8unorm', usage: 0x02 | 0x04 | 0x10 });
+        texture = device.createTexture({ label: 'DVA station keyed atlas',
+        size: sourceSize, format: 'rgba8unorm', usage: 0x04 | 0x08 });
         device.queue.copyExternalImageToTexture({ source: image },
           { texture: input, premultipliedAlpha: false }, sourceSize);
         const group = device.createBindGroup({ layout: chroma.getBindGroupLayout(0), entries: [
@@ -123,7 +124,11 @@ fn main(@builtin(global_invocation_id) gid: vec3u) {
         pass.dispatchWorkgroups(Math.ceil(sourceSize[0] / 8), Math.ceil(sourceSize[1] / 8));
         pass.end();
         device.queue.submit([encoder.finish()]);
-      } catch (error) { input.destroy(); texture.destroy(); throw error; }
+      } catch (error) {
+        try { input?.destroy(); } catch (_) {}
+        try { texture?.destroy(); } catch (_) {}
+        throw error;
+      }
       images.set(image, { width: sourceSize[0], height: sourceSize[1], texture });
       owned.add(input);
       owned.add(texture); // Earlier frame commands can still refer to an old image texture.
