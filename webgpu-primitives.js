@@ -145,7 +145,7 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
       viewScopes.set(scope, views);
       return scope;
     }
-    function createBatch({ width, height, reuseSpriteBindings = false, viewScope = null } = {}) {
+    function createBatch({ width, height, reuseSpriteBindings = false, viewScope = null, orderedSpriteInstances = false } = {}) {
       if (destroyed) throw new Error('Renderer destroyed');
       positive(width, 'Width'); positive(height, 'Height');
       const commands = [];
@@ -273,6 +273,18 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f,
               while (index + count < ordered.length) {
                 const next = ordered[index + count];
                 if (next.kind !== 'rect' || next.mode !== 'source-over' ||
+                    !command.color.every((channel, i) => channel === next.color[i])) break;
+                count++;
+              }
+            } else if (orderedSpriteInstances && reuseSpriteBindings &&
+                       command.kind === 'sprite' && command.mode === 'source-over') {
+              // HUD atlas quads with one binding, blend and tint may encode as
+              // consecutive instances. Do not reorder the sorted storage rows:
+              // instance_index starts at firstInstance and selects each row.
+              while (index + count < ordered.length) {
+                const next = ordered[index + count];
+                if (next.kind !== 'sprite' || next.mode !== command.mode ||
+                    next.texture !== command.texture || next.order !== command.order ||
                     !command.color.every((channel, i) => channel === next.color[i])) break;
                 count++;
               }

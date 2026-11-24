@@ -163,7 +163,8 @@
         if (!segment || segment.target !== target || segment.label !== stage) {
           flush();
           const batch = primitives.createBatch({ width: handle.logicalWidth, height: handle.logicalHeight,
-            reuseSpriteBindings: stage === 'hud' || stage === 'world:players:sprite', viewScope: primitiveViews });
+            reuseSpriteBindings: stage === 'hud' || stage === 'world:players:sprite',
+            orderedSpriteInstances: stage === 'hud', viewScope: primitiveViews });
           batches.push(batch);
           segment = { target, label: stage, batch };
         }
