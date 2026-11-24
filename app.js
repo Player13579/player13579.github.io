@@ -14869,7 +14869,7 @@ function clientMedicalWallCollision(data) {
   return index;
 }
 
-function isClientWalkable(data, x, y, radius) {
+function isClientWalkable(data, x, y, radius, objectSpaceAlreadyClear = false) {
   if (x < radius || y < radius || x > data.map.width - radius || y > data.map.height - radius) return false;
   const seam = Math.max(radius, 32);
   const corridorAreas = data.map.corridors.flatMap((corridor) => corridorRenderSegments(corridor));
@@ -14879,7 +14879,7 @@ function isClientWalkable(data, x, y, radius) {
   ));
   if (!inArea) return false;
   if (clientMedicalWallCollision(data)?.isBlocked(x, y, radius)) return false;
-  if (!isClientObjectSpaceClear(data, x, y, radius)) return false;
+  if (!objectSpaceAlreadyClear && !isClientObjectSpaceClear(data, x, y, radius)) return false;
   return true;
 }
 
@@ -14899,7 +14899,7 @@ function isClientMovementAllowed(data, player, x, y, radius) {
   const hoverSprinting = hoverSprintUntil > liveNow;
   if (!player?.alive) return true;
   if (!isClientObjectSpaceClear(data, x, y, radius)) return false;
-  return hoverSprinting || levitating || isClientWalkable(data, x, y, radius);
+  return hoverSprinting || levitating || isClientWalkable(data, x, y, radius, true);
 }
 
 function renderedPlayer(player) {
