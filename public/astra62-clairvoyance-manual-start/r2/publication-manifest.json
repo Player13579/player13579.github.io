@@ -1,0 +1,129 @@
+{
+  "schema": "dva-gallery-creative-candidate/v1",
+  "groupId": "clairvoyance-manual-start-astra62",
+  "versionId": "clairvoyance-manual-start-astra62-r2",
+  "title": "千里眼の手動起動 R2・琥珀光",
+  "edition": 2,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "71eb64ef6c9d36d58c3cbf95976599e00142b177"
+  },
+  "parentEdition": {
+    "versionId": "clairvoyance-manual-start-astra62-r1",
+    "privateCandidate": "6a817e88ba6bffd1b27d1f796f962b590eff3896",
+    "publicReference": "3f8522d18992c25eef31aea07285a60750c1f998",
+    "originalShaderBlob": "531459595e9532d211c4a8ebb3e42135949768b5"
+  },
+  "standaloneEntry": "index.html",
+  "expectedGalleryEntry": "gallery.html",
+  "standardFixture": "start",
+  "publicationEligible": false,
+  "galleryAdapterStatus": "separate technical integration pending",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "producer": {
+    "repository": "Player13579/player13579.github.io",
+    "ref": "fb662576aa0a51cbe1acb728b3f81d36ddd31072",
+    "path": "offline-server-main.js",
+    "symbol": "setClairvoyanceActive",
+    "lines": "8809–8826",
+    "semantics": "Activation returns true after active playing, alive, non-ejected, outside vent, conscious, positive mana checks and state commit. A repeated true request can return true. Manual OFF→ON is proven by explicit preview fixture fields, not inferred from an active snapshot."
+  },
+  "scope": "Local manual fixture only. Repeated ON request, snapshot, denied, OFF, foreign and stale acknowledgements yield idle. The host does not receive any target/position, remote view, stored identity or credentials. Main-game activation, persistent marker, throw/teleport, mana drain and depletion are untouched.",
+  "design": {
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    },
+    "subject": "A small six-blade brass viewing aperture opens on a new acknowledged manual activation. As the blades slide tangentially apart, amber glass is uncovered and a stationary catchlight seats at full opening.",
+    "timingMs": {
+      "rimFadeIn": [
+        0,
+        82
+      ],
+      "apertureTravel": [
+        110,
+        515
+      ],
+      "catchlightSeat": [
+        480,
+        530
+      ],
+      "fade": [
+        832,
+        1070
+      ],
+      "end": 1080
+    },
+    "scale": "86 CSS px outer diameter at full logical scale, blade seams terminate at the aperture. Reduced motion removes angular travel of the assembly.",
+    "postEffect": "Two-scale local aperture-driven bloom and a smaller centered optical spread for the seated catchlight. No fullscreen tint. The optical field reaches baseline by 91 reference px from the optical center.",
+    "audio": "A friction sweep tracks blade travel, then a decaying two-part detent at 515 ms. Verification mode forcibly muted.",
+    "title": "Amber viewing aperture: emitted glass, lit metal and surrounding optical spill",
+    "revision": "R1 preserves the six-blade mechanical iris and source event. R2 replaces the R1 color-only shading of the opening with exposed amber emission and a pale centered catchlight. The edges of the blades receive a band of warm reflected light controlled by aperture distance, individual facet orientation and cut seams. The concave part of the brass rim receives a separate material response. An analytical weighted near/far optical spread follows the opening beyond the housing and returns to zero when shut or expired.",
+    "colorPipeline": "Decode reference display colors to linear, add material and optical contributions with a per-channel exponential highlight shoulder anchored at the unlit base, encode to sRGB. Reduced motion changes angle only. All new contributions are driven by exposed aperture and retained event timing. The final fade attenuates the whole local change."
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1967,
+      "sha256": "98128cce57bb40b4269e04f25493d2372e7f8937b0fcbc1a9d8e94eefb41a9f8",
+      "gitBlob": "02153ad6f9f0f6fef4d4e26b7899bff1d94adb50"
+    },
+    "preview.mjs": {
+      "bytes": 7805,
+      "sha256": "81c908a2ed58b91e4f2d809c82a8c42769f3b19fee92b1da6433c8218750592a",
+      "gitBlob": "a3ccabd80ea38a0a5a69829387695653c47bbae6"
+    },
+    "activation.mjs": {
+      "bytes": 1906,
+      "sha256": "5267f1d66aa8db9e56bdc2f16e5dd888d50958160b44e1846c0afff2e37183eb",
+      "gitBlob": "d105ffa8430c6fde0da0f8cf9e1fc91e010cbb49"
+    },
+    "effect.wgsl": {
+      "bytes": 4415,
+      "sha256": "b206d72f13cc5b542a341f222379feadb91349e4fd35d393ade80568e3ebffec",
+      "gitBlob": "444d8a9fa2a9c31a98e2d89fbb81e4783f3ca7ef"
+    }
+  },
+  "validation": {
+    "bounded": "Fixture source identical to R1 after version string substitution; six non-events, unknown, accepted event and duplicate tested. Manual host source identical after revision query substitution, parses as JavaScript. Generated PCM finite at four sample rates; its function source is byte-identical to R1.",
+    "wgsl": "naga-wasi-cli@0.1.0 validation successful",
+    "outsideLightReference": {
+      "detail": "Independent arithmetic evaluation of the R2 shader's exterior field, not native GPU pixels. Positive horizontal ray, held age 600 ms; outer housing radius 43 logical px. Encoded RGB; R1 at all these locations is [0.048,0.072,0.091]. Closed and postfade samples at radius 48 return to that baseline.",
+      "samples": {
+        "48": [
+          0.31,
+          0.2117,
+          0.1253
+        ],
+        "54": [
+          0.2653,
+          0.183,
+          0.1164
+        ],
+        "68": [
+          0.1592,
+          0.1205,
+          0.1001
+        ],
+        "92": [
+          0.048,
+          0.072,
+          0.091
+        ]
+      }
+    },
+    "runtimeReadback": "4/4 exact original bytes and Git blob identity confirmed",
+    "parentInline": "pending integration",
+    "nativeWebGPU": "not evaluated",
+    "actualSizeGlow": "not evaluated",
+    "normalAudioListening": "not evaluated",
+    "userAcceptance": "unknown"
+  }
+}

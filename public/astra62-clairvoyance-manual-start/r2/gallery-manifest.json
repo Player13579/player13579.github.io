@@ -1,0 +1,105 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "versionId": "clairvoyance-manual-start-astra62-r2",
+  "groupId": "clairvoyance-manual-start-astra62",
+  "creativeEdition": 2,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "technicalAuthor": "GPT-6-Luna",
+  "reusedAdapter": {
+    "author": "GPT-6.1-Sol",
+    "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0",
+    "byteUnchanged": true
+  },
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "runtimeCommit": "71eb64ef6c9d36d58c3cbf95976599e00142b177",
+    "creativeManifestCommit": "692dca84f297af9fbdef7378a667ac298d5184e0"
+  },
+  "entry": "gallery.html",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=clairvoyance-manual-start-astra62-r2",
+  "protocol": "dva-gallery-startup/v1",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "cpu": "PASS_LIMITED_MODULE_AND_PARENT_PREDICATE",
+  "adapterInstanceCpu": "not_run; identical shared public R1 adapter bytes",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "normalAudioListening": "not_run",
+  "originalManifest": "publication-manifest.json",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1967,
+      "sha256": "98128cce57bb40b4269e04f25493d2372e7f8937b0fcbc1a9d8e94eefb41a9f8",
+      "gitBlob": "02153ad6f9f0f6fef4d4e26b7899bff1d94adb50",
+      "preserved": true
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 7805,
+      "sha256": "81c908a2ed58b91e4f2d809c82a8c42769f3b19fee92b1da6433c8218750592a",
+      "gitBlob": "a3ccabd80ea38a0a5a69829387695653c47bbae6",
+      "preserved": true
+    },
+    {
+      "path": "activation.mjs",
+      "bytes": 1906,
+      "sha256": "5267f1d66aa8db9e56bdc2f16e5dd888d50958160b44e1846c0afff2e37183eb",
+      "gitBlob": "d105ffa8430c6fde0da0f8cf9e1fc91e010cbb49",
+      "preserved": true
+    },
+    {
+      "path": "effect.wgsl",
+      "bytes": 4415,
+      "sha256": "b206d72f13cc5b542a341f222379feadb91349e4fd35d393ade80568e3ebffec",
+      "gitBlob": "444d8a9fa2a9c31a98e2d89fbb81e4783f3ca7ef",
+      "preserved": true
+    },
+    {
+      "path": "publication-manifest.json",
+      "bytes": 6374,
+      "sha256": "13263444c0fec8e47fe719371bf28e2acd8ec4f82cb8a625f8c927572c97ad12",
+      "gitBlob": "ea3f563596052353c9cbc1504fb6546a7cd4f2b2",
+      "preserved": true
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1392,
+      "sha256": "ffcc0619804e8698a8d3f5b018b0e8f8ab0c114cf819c75cc68105c09d4d649a",
+      "gitBlob": "184f325f8f643f5184aa55ed943efd0625121305"
+    }
+  ],
+  "lifetimeMs": 1080,
+  "interCauseRestMs": 500,
+  "uniform": {
+    "bytes": 32,
+    "values": [
+      "width",
+      "height",
+      "ageMs",
+      "scale",
+      "reduced",
+      "live",
+      0,
+      0
+    ]
+  },
+  "standardFixture": "start",
+  "r1Preserved": true,
+  "notes": [
+    "Original five R2 files, source glow, 1080ms, source gate and original PCM remain unchanged.",
+    "R1 historical item and eight public files are not changed; new R2 is first in existing group selector.",
+    "CPU predicates and module tests are not real rendering, parent switching, visual glow, listening or game integration proof.",
+    "No prior refused host/test/deletion used."
+  ]
+}
