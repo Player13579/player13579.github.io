@@ -1,0 +1,103 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "ペア行動禁止違反の成立通知",
+  "groupId": "pair-route-violation-astra62",
+  "versionId": "pair-route-violation-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified candidate of this independent gallery series. Existing game notifications and history retained.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-pair-route-violation/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "8128f6c5c105102773018ade2aac8fcd501a66a1"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1831,
+      "sha256": "1c3f30d0dbbe0391b68726ada672d7ad92d3ee75b66ccd2f12adc8afa62f1c33",
+      "gitBlob": "19eb7cbd9c31316d367b5bc45f39eefb60801e96"
+    },
+    "preview.mjs": {
+      "bytes": 7935,
+      "sha256": "f9452040692be8432eb0a1d59baca7d08fe95e59cff088f7ea6611b2598b65e5",
+      "gitBlob": "c72def5523a5db2048e60d7bd114acaeda06e1f4"
+    },
+    "violation.mjs": {
+      "bytes": 1934,
+      "sha256": "500b5cbec743a28836c9ecbc091fd3938e3fbb23737bc9b16e9d2979ef6e4c8f",
+      "gitBlob": "482d5749474a5ba8d2baedfdd535d8b0d0d6a69f"
+    },
+    "effect.wgsl": {
+      "bytes": 2528,
+      "sha256": "2ab844e375bcbd460617502a9e5f994b2f97f644c94f4281242087aa216eedf4",
+      "gitBlob": "86b58558981baa9d1dc05ee4486a20f2404b8bf0"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "568770a3a8c14580c1beda5190c8a319fcb97082",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "advancePairRouteRule L9134",
+    "meaning": "A qualifying player receives pair-route-violation at their own position after a sustained shared route, grace and cooldown. Defense or overheal can absorb damage. The authored sign denotes the violation receipt and has no knowledge of a damage result.",
+    "scope": "The local fixture exposes only an explicitly confirmed, displayable and current self receipt. Other-player, unconfirmed, private, stale and repeated receipts cannot start the effect. The two bands are a single sign, not partner positions or a map route. Game-side observation and serialization are separate."
+  },
+  "design": {
+    "primary": "Two short parallel brass strips travel along the same axis above a neutral self marker. Their leading edges meet one rising vermilion slash at 245 ms. The slash outlasts the strips and clears by 920 ms. The quiet owner bust remains.",
+    "spatial": "One self projection in reference CSS pixels. The independent fixture does not query a world, neighbors, motion vector, partner count, role, injury or damage.",
+    "time": "940 ms local one-shot; rise, closure, held stop, lanes fade then slash fade. Reduced motion decreases lane travel from 18 to 3 reference units.",
+    "light": "Short warm localized response at closure, with restrained local spill and final linear-to-display transfer. No full-screen pulse.",
+    "sound": "Soft rising guide tone, then one short damped two-partial contact cue starting at 245 ms. Verify forces mute. No pain sound.",
+    "provenance": "New sign geometry, motion, color and sound. Reused the public missile R1 manual host for technical WebGPU, lifecycle, sizing and audio-gesture handling.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "sourceClosure": "Read back all four runtime files by immutable commit and compared both text and Git blob hashes. HTML loads one module, it imports violation.mjs and fetches effect.wgsl.",
+    "shader": "Standalone Naga validation through naga-wasi-cli@0.1.0 succeeded. No native GPU or browser acceptance implied.",
+    "logic": "Executed receipt acceptance, duplicate and stale/foreign/private/unconfirmed/invalid cause gating. Denied projections use throwing position getters. Missing, sparse, invalid and out-of-range anchor tests passed.",
+    "pcm": "8, 44.1, 48, and 96 kHz finite samples, distinct contact peak above guide, zero suffix after 720 ms.",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.0436,
+        0.1615
+      ],
+      [
+        44100,
+        0.0437,
+        0.1615
+      ],
+      [
+        48000,
+        0.0437,
+        0.1615
+      ],
+      [
+        96000,
+        0.0437,
+        0.1615
+      ]
+    ],
+    "host": "JavaScript body syntax checked; actual browser GPU compilation/playback and natural-size quality pending.",
+    "unreviewed": [
+      "actual display and full-lifetime motion",
+      "ordinary SFX listening and perceived synchronization",
+      "Safari / iPad",
+      "game integration and viewer privacy in game"
+    ]
+  }
+}
