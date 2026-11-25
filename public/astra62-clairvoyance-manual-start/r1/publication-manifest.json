@@ -1,0 +1,101 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "groupId": "clairvoyance-manual-start-astra62",
+  "versionId": "clairvoyance-manual-start-astra62-r1",
+  "title": "千里眼の手動起動 R1",
+  "edition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "manualReview": true,
+  "automaticIframe": false,
+  "entry": "index.html",
+  "playControl": "手動起動を再生",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "10132616f8f80631083371cc4f76ddc5187be6ef"
+  },
+  "producer": {
+    "repository": "Player13579/player13579.github.io",
+    "ref": "fb662576aa0a51cbe1acb728b3f81d36ddd31072",
+    "path": "offline-server-main.js",
+    "symbol": "setClairvoyanceActive",
+    "lines": "8809–8826",
+    "semantics": "Activation returns true after active playing, alive, non-ejected, outside vent, conscious, positive mana checks and state commit. A repeated true request can return true. Manual OFF→ON is proven by explicit preview fixture fields, not inferred from an active snapshot."
+  },
+  "design": {
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    },
+    "subject": "A small six-blade brass viewing aperture opens on a new acknowledged manual activation. As the blades slide tangentially apart, amber glass is uncovered and a stationary catchlight seats at full opening.",
+    "timingMs": {
+      "rimFadeIn": [
+        0,
+        82
+      ],
+      "apertureTravel": [
+        110,
+        515
+      ],
+      "catchlightSeat": [
+        480,
+        530
+      ],
+      "fade": [
+        832,
+        1070
+      ],
+      "end": 1080
+    },
+    "scale": "86 CSS px outer diameter at full logical scale, blade seams terminate at the aperture. Reduced motion removes angular travel of the assembly.",
+    "postEffect": "Local aperture occlusion and a bounded central catchlight; no remote scene or fullscreen flash.",
+    "audio": "A friction sweep tracks blade travel, then a decaying two-part detent at 515 ms. Verification mode forcibly muted."
+  },
+  "scope": "Local manual fixture only. Repeated ON request, snapshot, denied, OFF, foreign and stale acknowledgements yield idle. The host does not receive any target/position, remote view, stored identity or credentials. Main-game activation, persistent marker, throw/teleport, mana drain and depletion are untouched.",
+  "files": {
+    "index.html": {
+      "bytes": 1967,
+      "sha256": "04f2ab45833790a23dac33ca7b2bff27fa3aa988fe89689a50563cfa05793945",
+      "gitBlob": "4ab008b831d8397fd5561f3aee6ba7242e75b965"
+    },
+    "preview.mjs": {
+      "bytes": 7805,
+      "sha256": "2122a2a33d5ae2a36edeb1101803ce8a61f61f878553b93a74626938ba69ed78",
+      "gitBlob": "7b2a48c130f1151d6fc6ddfc1b5fed55a7c9a58e"
+    },
+    "activation.mjs": {
+      "bytes": 1906,
+      "sha256": "eb20cb054e073a33b76b4b05db318ba553fd778c574485bedfad6f905e6034fb",
+      "gitBlob": "36672ae23dcb92acab6e18ab504d435b76e2141c"
+    },
+    "effect.wgsl": {
+      "bytes": 2618,
+      "sha256": "290fefa1b2cdd26cf4efedeaf078ceca229ee8ad3d0949309cf0889a8848bb8c",
+      "gitBlob": "531459595e9532d211c4a8ebb3e42135949768b5"
+    }
+  },
+  "validation": {
+    "bounded": "Gate tests on seven UI cases, unknown fixture, duplicate/out-of-order/invalid ids, foreign getter short circuit and positive allowlisted projection; host syntax and control list checked.",
+    "wgsl": "naga-wasi-cli 0.1.0 validation successful",
+    "audio": "PCM tested at four rates for finite values, two scheduled peaks, silence at ends and maximum level.",
+    "samplePeaks": {
+      "8000": 0.11264161765575409,
+      "44100": 0.11982443183660507,
+      "48000": 0.11962775886058807,
+      "96000": 0.11991824209690094
+    },
+    "runtimeReadback": "4/4 exact source text and Git blob checks at immutable runtime commit",
+    "nativeWebGPU": "not evaluated",
+    "continuousMotion": "not evaluated",
+    "ordinaryAudio": "not listened",
+    "deviceMatrix": "not evaluated",
+    "adoption": "unknown"
+  }
+}
