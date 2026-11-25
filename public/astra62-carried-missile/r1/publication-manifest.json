@@ -1,0 +1,84 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "所持重火器のミサイル発射",
+  "groupId": "carried-missile-astra62",
+  "versionId": "carried-missile-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified edition in this independent gallery series. Legacy in-game effect and authorship preserved; all-time production total unknown.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-carried-missile/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "348d48bc3c438ca807cb706f570fe73c74b44f8c"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1778,
+      "sha256": "4cbc930e872eb821d3a85a0445413e1e4a82ae8bc4d2b5d70f8b74569ae3d0f3",
+      "gitBlob": "63b359a8735298867e4a50c3843d3ae00211f8e9"
+    },
+    "effect.wgsl": {
+      "bytes": 4300,
+      "sha256": "78854a55aee6b2f3ab2fc11d08ac00f8c3d6135adcc8e22176409ee18d4e187b",
+      "gitBlob": "4c78cbf7c156dd10cf913bdfb2d22877733a1662"
+    },
+    "missile.mjs": {
+      "bytes": 2612,
+      "sha256": "7c88df2a148def9f8144a05f0fe2c5b816713c30097aadceedbc3ae7f48edc56",
+      "gitBlob": "6c1465cc9349588a92ceacc83153fe2f57ec106e"
+    },
+    "preview.mjs": {
+      "bytes": 7969,
+      "sha256": "3080d374c5bdb97724d2b9e649e96cd633865c61eb087982bdb161815b1141dc",
+      "gitBlob": "19465f7e3089994a6ac5b5c802bc412510fd7e84"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "05aed7daf5141fa68bae756a31565bd855cd510b",
+    "path": "offline-server-main.js",
+    "function": "useHeavyWeapon, lines 17295–17364",
+    "meaning": "The missile branch emits gunner-missile with a selected target after a carried item is consumed. Human and bot selection differ. It may emit even when the separate hit attempt produces no confirmed result. The RPG branch emits a different event with a different endpoint.",
+    "scope": "Use synthetic screen projections for the visible source and one explicitly permitted target only. No game entity query, role, world position, damage delta or outcome. A sightline on the server is not permission to display an endpoint. Without a valid pair this preview draws no flight and plays no dedicated cue. The ordinary game heavyWeapon-use sound may still occur and is outside this preview."
+  },
+  "design": {
+    "concept": "A small faceted mint carrier draws a tapering split wake from the launch register toward one preselected visible diamond. Broad top and lower faces, swept side fins and a localized amber tail make heading legible. The neutral destination does not take damage or change state.",
+    "dimensions": "DPR-aware adaptive preview coordinates. At CSS scale 1 the carrier is about 22 by 14 px, moving from the left register to one of two synthetic right-hand endpoints at different heights. Each test shows only its permitted endpoint.",
+    "lifetimeMs": 790,
+    "phases": "0–55 ms emergence, 34–706 ms directed transport, 637–712 ms carrier fades and the wake clears by 757 ms. Targets are fixed for each cause. The trail cannot begin behind the registered origin; the displayed nose fades before passing the selected endpoint.",
+    "light": "A finite amber emission at the tail feeds a small near-field bloom; green-blue wake tapers with local distance behind the carrier. The split dark channel is confined to the wake. Neutral fixture marks are independent of emission.",
+    "audio": "One short origin release flows into a descending synthetic tone with band-limited air texture. No impact cue or claimed kill. Only current-cause completed GPU work admits ordinary PCM at its elapsed offset; verify forces audio off.",
+    "reducedMotion": "Removes lateral wake deflection and shortens its support while retaining the same selected endpoint and finite clock.",
+    "statusBoundary": "The stylized graphic is a bounded preview animation, not a gameplay trajectory, travel-time model, terminal detonation, tracking simulation, targeting instruction or damage outcome.",
+    "technicalReuse": "Gallery lifecycle, viewport and audio admission adapted from the published meeting vote R1 host. New subject-specific gate, synthetic projections, shader, geometry, transport and audio. No legacy missile/RPG creative code or graphics used.",
+    "basis": {
+      "repo": "Player13579/B",
+      "commit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "baseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606",
+      "applied": "Causal finite trajectory, material silhouette and facing, local optical response, runtime WebGPU and synchronized procedural SFX."
+    }
+  },
+  "validation": {
+    "sourceReadback": "4/4 exact texts. File SHA-256 and Git blob IDs listed above.",
+    "syntax": "preview module passed Node syntax check, missile module executed.",
+    "projectionChecks": "Upper and lower endpoint orientation, missing/hidden invalid fixture, authorization/visibility/current gates with throwing getters, non-finite or out-of-bounds coordinates, degenerate segment, unvalidated-pair rejection, distinct event type, duplicate/stale serial suppression: passed.",
+    "pcm": "8000, 44100, 48000, 96000 Hz numeric checks: finite amplitude, nonzero onset and transport, fading and zero endpoint. Per-rate peak approximately 0.170, 0.136, 0.123 and 0.112 respectively.",
+    "gpu": "not-run",
+    "pixelQuality": "not-reviewed",
+    "publicManualPlay": "not-run",
+    "normalAudioListening": "not-run",
+    "safariIpad": "not-run",
+    "mainGame": "not-connected",
+    "wakeOrigin": "Trail support is explicitly clipped at dot(pixel-source,axis)>=0; no trail until tail clears the origin plane. Original pre-release R1 gate was up to 6 reference pixels too permissive."
+  }
+}
