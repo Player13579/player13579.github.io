@@ -1,0 +1,105 @@
+{
+  "schema": "quantum-fusion-chain-inline-gallery/v1",
+  "groupId": "quantum-fusion-chain-astra62",
+  "versionId": "quantum-fusion-chain-astra62-r1",
+  "creativeIdentity": "quantum-fusion-chain-astra62-r1",
+  "creativeEdition": 1,
+  "creativeEditionLimit": 5,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "technicalAdapterModelId": "gpt-6-luna",
+  "technicalAdapterDisplayName": "GPT-6-Luna",
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "runtimeCommit": "117b2e5b4af3800dab2366624c6e7c582354b206"
+  },
+  "apiEvidence": {
+    "creative": {
+      "responseId": "resp_0c486e82375f8956006b074676940487d0b13da8bc4866bda7",
+      "model": "gpt-6.2-astra",
+      "effort": "high"
+    },
+    "technical": {
+      "initialResponseId": "resp_0a4837247b10db3e006b07493602dc87d0a9e67dcf33eed95b",
+      "correctionResponseId": "resp_0e9809073aa864b5006b0749b95a4487d0b9c1643104e0cdd4",
+      "model": "gpt-6-luna"
+    }
+  },
+  "page": "/public/astra62-quantum-fusion-chain/r1/gallery.html",
+  "standardFixture": "committed",
+  "lifetimeMs": 4000,
+  "backgroundGapMs": 900,
+  "firstFrameWindow": {
+    "uniformAgeMinInclusiveMs": 120,
+    "uniformAgeMaxInclusiveMs": 300,
+    "submittedMinInclusiveMs": 120,
+    "submittedMaxInclusiveMs": 300,
+    "requiresUniformAgeAndSubmittedAgeInWindow": true,
+    "requiresCompletionAndValidationBeforeLiveExpiry": true,
+    "liveExpiryMs": 4000,
+    "requiresSameCurrentGenerationAndSizes": true,
+    "pixelsProved": false
+  },
+  "uniform": {
+    "bytes": 32,
+    "values": [
+      "width",
+      "height",
+      "ageMs",
+      "scale292x135Dpr",
+      "reduced",
+      "live",
+      0,
+      0
+    ],
+    "entries": [
+      "vs",
+      "fs"
+    ]
+  },
+  "files": [
+    {
+      "path": "fusion.mjs",
+      "bytes": 3570,
+      "sha256": "f715b8385d9e30f6cd3f8162efd323a3bf94002996d2a9a344013d7582bcbb64",
+      "gitBlob": "7036fa5497da8231aae7fdbe2624fca79187a7e6",
+      "preserved": true
+    },
+    {
+      "path": "effect.wgsl",
+      "bytes": 3575,
+      "sha256": "f70249d49f1f80ba8d1635044a1853b2b281a7f221994f89788fc457fb950ad0",
+      "gitBlob": "2d057d4dff7d856eeba45c3a2423b548091280ee",
+      "preserved": true
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 17885,
+      "sha256": "87c81b984d33f22e258616ea4bfe5d58ee3e5f96a18208916a060df3a9126095",
+      "gitBlob": "0f3209399c7a7d13168f413b4097a5dadf2f5750"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1049,
+      "sha256": "9eec8d5acdee4ab475f8313f83027e8029dd2158989438c424630e52f4a29346",
+      "gitBlob": "4c84ee6f4b707a75eeb09171f24f6f716381e3ba"
+    }
+  ],
+  "adoption": "unknown",
+  "userAdopted": false,
+  "publicationEligible": false,
+  "galleryListingEligible": true,
+  "manualReview": false,
+  "validation": {
+    "sourceAbiPcmUniform": "not_run",
+    "adapterCpuMock": "not_run",
+    "parentCpuMock": "not_run",
+    "entryAndAdapterSyntax": "not_run",
+    "nativeWebGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "scope": "独立したFusionソースと新規ギャラリー接続のみ。本編接続なし。"
+}
