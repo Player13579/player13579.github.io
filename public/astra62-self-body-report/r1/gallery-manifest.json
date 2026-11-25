@@ -1,0 +1,95 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "本人の死体通報成立 R1",
+  "groupId": "self-body-report-astra62",
+  "versionId": "self-body-report-astra62-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-self-body-report/r1/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "confirmed",
+    "ownedMeeting": true,
+    "selfReporter": true,
+    "human": true,
+    "current": true,
+    "committed": true,
+    "before": "playing",
+    "after": "meeting",
+    "sameMatchMeetingSequence": true,
+    "newSyntheticMeetingAndSequenceEachLoop": true,
+    "originalFixedSyntheticMatch": "example-match",
+    "uniformBytes": 32,
+    "lifetimeMs": 1120
+  },
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "a73c3b21c9c77c66197a5e3847af0bfb51194660"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1904,
+      "sha256": "f0718191a2e0d796274d7f1ccfa9cc71ecf36683037470ce8a82c15084e97d2a",
+      "gitBlob": "7c32912a712a06d36bb445dfb8f2442bf546aeac"
+    },
+    "preview.mjs": {
+      "bytes": 7796,
+      "sha256": "e8033732f527bedfc46cf24c39485468f68033eacfb0aca2f41190b3dc4f4d8e",
+      "gitBlob": "69dacb776f00a42368adf93e641f1fe697a9b015"
+    },
+    "publication-manifest.json": {
+      "bytes": 5463,
+      "sha256": "27dbf0acb43b4f7f5bd7754f558e99a551746df39454fe5fc10e0a9fe7c8b8a7",
+      "gitBlob": "2215efb45a2e4786a2d6fc91ef5595c61ec2e6e1"
+    },
+    "report.mjs": {
+      "bytes": 1874,
+      "sha256": "bf9141c4f983a3eca5e359330892db7998b423d64c31a6a01f122c471c003360",
+      "gitBlob": "94aae80cd4fe18a8881e734affef0fcd4df54fac"
+    },
+    "effect.wgsl": {
+      "bytes": 2865,
+      "sha256": "841c61b6f0ac13c83722cc5909691bde621a7afc8815ff57c70d84c95a51e7b2",
+      "gitBlob": "b6a54e297c69a8e448d7fec494db6380b65f7883"
+    },
+    "gallery.html": {
+      "bytes": 1354,
+      "sha256": "7c3276b139f5f7b8ac1c73d472fd7effe97649c07e1df879d5f749bb40128a61",
+      "gitBlob": "b422ac98c731516d163cae181a1097db2723663d"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    "gallery-effect.mjs": {
+      "bytes": 368,
+      "sha256": "da3103260a37969cb2957502e3c9a1c9423fcd608c09dcee97d777b8d460c009",
+      "gitBlob": "0504bba0e09f1c2132e3c8d3f6578a2e2f5f0000"
+    }
+  },
+  "bridge": {
+    "fixtureEvent": "original fixturePair unchanged",
+    "makeGate": "original gate(room,receipt), original tuple objectidentity",
+    "audio": "original makeCue reexport"
+  },
+  "validation": {
+    "cpu": "exact originalmodule/bridgefunctions/callback3groups PASS; parentmock7groups PASS",
+    "actualEsmLoader": "not_run",
+    "adapterInstance": "not_run",
+    "nativeGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "originalFiveUnchanged": true,
+    "adapterByteUnchanged": true
+  }
+}
