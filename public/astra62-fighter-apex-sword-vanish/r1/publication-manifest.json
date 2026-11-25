@@ -1,0 +1,102 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "EC1000到達後の剣斬り・対象消滅",
+  "groupId": "fighter-apex-sword-vanish-astra62",
+  "versionId": "fighter-apex-sword-vanish-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified independent gallery series for the confirmed no-body disappearance after the peak-EC sword perk. Existing ordinary swing, Iai result, permanent perk/milestone, shared kill cut-in and original gameplay remain preserved.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-fighter-apex-sword-vanish/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "ec6c0331e8e7e8b347e161ab4ca24696ea811b33"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 2052,
+      "sha256": "b483622e2e5c866f978fe3559a1d5ef73afc70834d74f6833507473cb9703d7d",
+      "gitBlob": "e2b1784df8775950e9200d4ceb4dbf321497433e"
+    },
+    "vanish.mjs": {
+      "bytes": 2005,
+      "sha256": "c54ab0f5e993f8b05edee086a887b66aad97b92644dcb6ced4a7e1d342188fcf",
+      "gitBlob": "8b3887f4a867fddc8a54afa3018ef2e10cec3f63"
+    },
+    "preview.mjs": {
+      "bytes": 8061,
+      "sha256": "3fecf99b69b0e0f2a1861b1d793448573eb74fa58a48ad0d29766d324c6d7a87",
+      "gitBlob": "8d0ab0564ad41a41e1e3493748b75c602832cd3d"
+    },
+    "effect.wgsl": {
+      "bytes": 2971,
+      "sha256": "40b10cca8ad7c544cc41704ef85168e2706dc9e2ae33b93c2570071b9cb24335",
+      "gitBlob": "24010c70899b22a3d8446a657d6dad1dc6f72b16"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "9c34e8277a6a4806a09dbe4091cccb4219f2bf5f",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "fighterSlash L11339–11377; EC1000 peak reward L8113–8120.",
+    "meaning": "When the owned-sword apex perk has been reached, the guard outcome or the separate noBody:true settlement determines the event variant. Only fighter-energy-destruction-slash with destroyed corresponds to this committed target outcome. Iai destruction leaves a body and is a distinct event. Crossing the EC threshold itself and the source's swing are separate.",
+    "scope": "Only a viewer-authorized, current, explicitly same-subject before-projection and confirmed no-body result can animate. Raw server coordinates and identifiers do not imply visibility. Fixture left/right placements are synthetic. A held visible pre-state may remain for denied outcomes; no target is drawn for hidden or empty swing. No cut-in, corpse, fragments, injury, role, amount of damage, reflected attacker outcome, or inference about a hidden subject."
+  },
+  "design": {
+    "primary": "A neutral previously visible figure stands over quiet floor seams. One violet contour lights from top to bottom, the figure contracts to a narrow light trace, and the trace vanishes. The floor remains at the same location with no persistent markers or residue. The actor stays absent after completion or explicit stop upon a committed result.",
+    "timing": "980 ms. Contour crosses from head toward feet to 310 ms; horizontal contraction spans 156–505 ms; figure opacity clears at 579 ms and the optical seam clears by 679 ms. The end of the receipt is observed against the unoccupied floor.",
+    "reducedMotion": "Contracted width remains at 40% instead of 5.5% before the same opacity fall, reducing geometric compression while preserving disappearance.",
+    "sound": "A finite high contour tone gives way to a softer falling spectral component, with silence after 780 ms. Verification mutes audio.",
+    "technicalReuse": "Existing manual WebGPU host for responsive sizing, lifecycle and verify mute. New anonymous fixture, contour/material treatment, projection gate, persistent end state and audio for this outcome.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "closure": "Verified four runtime files by full text and Git blobs at the frozen runtime commit. The entry module loads vanish.mjs and effect.wgsl.",
+    "shader": "Naga via naga-wasi-cli@0.1.0 accepted the WGSL.",
+    "logic": "Node validated two positive locations, duplicate, stale, wrong subject, absent no-body flag, lack of before-visibility, unsafe coordinates, guard, reflection, friendly penalty, empty swing, Iai and unknown. Throwing position getters were not accessed for denied events; unneeded identities and health were never used on success.",
+    "audio": "PCM finite at 8/44.1/48/96 kHz. Both contour and collapse windows contained sound, with silent end samples.",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.0614,
+        0.1
+      ],
+      [
+        44100,
+        0.0615,
+        0.1005
+      ],
+      [
+        48000,
+        0.0615,
+        0.1005
+      ],
+      [
+        96000,
+        0.0615,
+        0.1005
+      ]
+    ],
+    "host": "Host body JavaScript syntax checked; no actual device or ordinary audio acceptance at sealing.",
+    "unreviewed": [
+      "actual-size contour, disappearance, empty end state in a native browser",
+      "ordinary SFX and synchronization",
+      "Safari/iPad",
+      "game integration"
+    ]
+  }
+}
