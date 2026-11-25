@@ -1,0 +1,82 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "versionId": "credit-transfer-out-astra62-r1",
+  "creativeEdition": 1,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "technicalAuthors": [
+    "GPT-6-Luna"
+  ],
+  "testAuthor": "GPT-6.1-Sol",
+  "reusedAdapter": {
+    "author": "GPT-6.1-Sol",
+    "blob": "71e36bd306c11320064c54d112eae4024af6a0e0",
+    "unchanged": true,
+    "priorEvidenceCommit": "34af34f764a41ccb121c0f4ee166c02bac152e4e"
+  },
+  "originalPublicCommit": "7ce4d9fc6cede5809218d4e57ccff69301526eb9",
+  "entry": "gallery.html",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=credit-transfer-out-astra62-r1",
+  "protocol": "dva-gallery-startup/v1",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "cpu": "PASS_LIMITED_MODULE_AND_PARENT_PREDICATE",
+  "newAdapterInstanceCpu": "not_run; shared adapter bytes identical to existing tested module",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "normalAudioListening": "not_run",
+  "originalManifest": "publication-manifest.json",
+  "files": [
+    {
+      "path": "public/astra62-credit-transfer-out/r1/index.html",
+      "bytes": 1974,
+      "sha256": "b71bda19080949caaac7153a0778f526bcd4e4794fe7db2efb461e989f82a92b",
+      "gitBlob": "1166cb684e17e7929400eb2d8adf8616f40b242d"
+    },
+    {
+      "path": "public/astra62-credit-transfer-out/r1/preview.mjs",
+      "bytes": 7798,
+      "sha256": "0f2567037cd7b25733b25a395e2dd3798ef0577d6222ed11b9a5ccf43ca137b0",
+      "gitBlob": "516631b2c312faf894ff45435271ac7d59cb4ad3"
+    },
+    {
+      "path": "public/astra62-credit-transfer-out/r1/publication-manifest.json",
+      "bytes": 5321,
+      "sha256": "42531cd8dfcc541d1a1bf8f0b885695fa828d4851af0890b6ef533fe0e6502f3",
+      "gitBlob": "0a383cbb973aff765a0f0346bf75bd921c43d2cc"
+    },
+    {
+      "path": "public/astra62-credit-transfer-out/r1/credit.mjs",
+      "bytes": 1342,
+      "sha256": "c5c2ab63225ee6d050e4a68b9dd490247dd312aaa244303ae0d3fc312d15c74f",
+      "gitBlob": "98a5027c676af025ee318ec71da65883f8708095"
+    },
+    {
+      "path": "public/astra62-credit-transfer-out/r1/effect.wgsl",
+      "bytes": 3059,
+      "sha256": "573ddfe51cc79699b2ba8b5bb94d3dd5121f38b9a540f375c6c909a958b8cd97",
+      "gitBlob": "98a6c40481e15f47a6376f14be8d64561690593f"
+    },
+    {
+      "path": "public/astra62-credit-transfer-out/r1/gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    {
+      "path": "public/astra62-credit-transfer-out/r1/gallery.html",
+      "bytes": 1354,
+      "sha256": "07982d83c659ee381b86c2bfb69203a4b330b633ea9a2aad1045cf266d09f4a6",
+      "gitBlob": "81f26ecd05e03521e5575cc6dc228198153e6e94"
+    }
+  ],
+  "notes": [
+    "Original five files and 1800ms design/PCM remain byte identical; the gallery repeats distinct sent fixtures with 500ms rest.",
+    "No sender amount, balance, receiver identity or world position is read or invented.",
+    "Parent tests use explicitly synthetic retirement fixtures; they do not prove a Credit child/GPU lifecycle.",
+    "User permits truthfully labeled unreviewed publication; final public integration owned by authority."
+  ]
+}
