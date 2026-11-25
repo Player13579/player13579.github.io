@@ -1,0 +1,83 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "緊急会議の開催",
+  "groupId": "emergency-meeting-convened-astra62",
+  "versionId": "emergency-meeting-convened-astra62-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-emergency-meeting/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "7236f20b4f9a0306d23a6b749dc7fbb89390a51c"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1494,
+      "sha256": "7fb3082cdfabc950b62e33f5831555924e12fbb6e8fb1d3e76d4df571deb540c",
+      "gitBlob": "a37e514bac145e86298dc89edd48a8411f5c5ea9"
+    },
+    "effect.wgsl": {
+      "bytes": 4109,
+      "sha256": "a6685561b5ba8375df5fb4ca60886d56d217a9764cea767dfb5ba2ea67a89871",
+      "gitBlob": "063e409b51c07c9b182cd87a1bb5dc577b6524f3"
+    },
+    "announcement.mjs": {
+      "bytes": 1407,
+      "sha256": "04b909e35af854d2f920e8d160cc786ac50c3e38658bb7de5730157bffde7220",
+      "gitBlob": "73d6abd9f88e706ec8ec88181c2c02968a3d6ca3"
+    },
+    "preview.mjs": {
+      "bytes": 7630,
+      "sha256": "867729200b636e54ee901d14a8a8cf173674a9e55be5384b7d97cae676317d0d",
+      "gitBlob": "1b02ab34af989ea2813f3fd7124066e0b5a53036"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "21fd715bacc6072e4a47b20bebb33f72a876c604",
+    "path": "offline-server-main.js",
+    "request": "callEmergency L17411–17425 starts the smartphone request and consumes a use. That request already has an action-smartphone variant and does not ring this bell.",
+    "start": "resolveSmartphoneAction L17428–17439 checks the deadline and player/room state, then calls startMeeting. L10577–10592 changes the phase and assigns a new meeting.id.",
+    "input": "Only an explicit emergencyMeetingStarted receipt in meeting phase with a fresh meetingId. Repeated IDs are ignored for this preview session. No branch infers emergency origin from reason text, time, a state snapshot alone or private evidence. A real typed producer/consumer remains unconnected.",
+    "scope": "Shared meeting interface, using a synthetic anonymous notification. No vote, body-report, caller identity, suspect, evidence, location, tallies, weapons or gameplay state is depicted."
+  },
+  "design": {
+    "concept": "A hanging brass bell produces one strike when the meeting actually convenes. The clapper approaches the left inner rim, the rim catches a warm highlight, and the body rocks back to its quiet orientation.",
+    "dimensions": "Procedural UI icon. Nominal lip is approximately 68 CSS px wide at scale 1; adapt downward to fit, with DPR handled in backing coordinates. Idle and post-event show the same neutral bell and bearing.",
+    "lifetimeMs": 1170,
+    "phases": "0–195 ms clapper approaches; 195 ms contact initiates ring and local light; a single reflected highlight follows the mouth for 440 ms after contact. Damped displacement and resonance decay to neutral before expiry.",
+    "material": "Warm cast surface with broad curved specular response, dark opening, fixed upper mount and a moving clapper. A short local optical bloom is modulated by the same contact energy. The UI bell is a metaphor; no physical bell at a map position is implied.",
+    "audio": "Four damped, inharmonic modes enter only after 195 ms contact; no repeated alarm. Ordinary audio starts at the current elapsed offset after current GPU completion. Verify always muted; stop, replacement and hide cancel sound.",
+    "reducedMotion": "Damp body tilt to 27 percent, preserve the contact geometry, causal order and finite light.",
+    "technicalReuse": "WebGPU lifecycle, display diagnostics, audio admission and UI wiring adapted from public meeting-vote-receipt R1. New creative shapes, motion, meeting gate and synthesis. No new raster texture.",
+    "basis": {
+      "repository": "Player13579/B",
+      "commit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "baseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606",
+      "applied": "Finite causal time, material shading, registered pivot/contact, local emission and optical response, procedural WebGPU and synchronized SFX."
+    }
+  },
+  "validation": {
+    "sourceReadback": "4 of 4 UTF-8 texts equal at runtime commit. File hashes in files.",
+    "nodeSyntax": "preview module passed node --check. Announcement module executed in Node.",
+    "gate": "Missing/empty/bad IDs, pending smartphone request, body report and wrong phase rejected; distinct meetings admitted once; repeats even after other meetings rejected; reason/suspect getters never accessed.",
+    "audio": "8000,44100,48000,96000 Hz finite PCM, strict pre-contact silence, nonzero attack, decaying tail, peak below 0.5 and zero endpoint. Numeric only.",
+    "contact": "Reference geometry: steady clapper clears the left rim, clapper disk reaches the localized strike position at 195 ms. This is not a pixel observation.",
+    "gpu": "not-run",
+    "publicManualPlay": "not-run",
+    "pixelQuality": "not-reviewed",
+    "normalAudioListening": "not-run",
+    "safariIpad": "not-run",
+    "mainGame": "not-connected"
+  }
+}
