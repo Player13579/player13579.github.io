@@ -1,0 +1,103 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "ファイターの投擲EC衝撃波・着弾解放",
+  "groupId": "fighter-thrown-ec-impact-astra62",
+  "versionId": "fighter-thrown-ec-impact-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified independent gallery series for the fictional Fighter EC enhancement released on a thrown item's landing. Existing ordinary throwing, rigid impacts, Fighter energy charging, sword waves and grenade effects are preserved.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-fighter-thrown-ec-impact/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "418b00451112e0447f5bcc7c1cf7b47b85dad70c"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1999,
+      "sha256": "c4ebbc62c122125d976c70c11744ea7549e17275ffe7a5c67fcc66657c1b468c",
+      "gitBlob": "a244d2ebdcd304de05fea94c446573742018c2e9"
+    },
+    "impact.mjs": {
+      "bytes": 1812,
+      "sha256": "2415bea398431276219128c0c7b123731a52eed2e7a0b797436fd944c93e6faf",
+      "gitBlob": "d3a056321486ff8ecd89d291b23842ee17640747"
+    },
+    "preview.mjs": {
+      "bytes": 7915,
+      "sha256": "7c090bd7bc6d3aa8be83e087963c40b4c85bf33f38b348110ff63792165abe7c",
+      "gitBlob": "1b3d7993159f392f3414989240880f49d6d6e860"
+    },
+    "effect.wgsl": {
+      "bytes": 2491,
+      "sha256": "2b9b799d74324dd5496302bac5630076e5800021f9d8293d8229568a56328525",
+      "gitBlob": "62fc2630ee718bb59de9192d62bf0ce6b262df21"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "7908c423a55c914b8d52a47f55bc45cc4c6bf74d",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "EC attachment L14085; releaseThrownEnergyShockwave L14129–14163; resolved landing dispatch L14490. FIGHTER_THROW_SHOCKWAVE_RADIUS = 180; event duration 880 ms.",
+    "meaning": "Only a throw recorded with a consumed Fighter charge releases fighter-energy-impact at its resolved landing. The event is emitted before target resolution, so it can appear without any confirmed target. The variant names rules for attempted resolution and is not proof of damage.",
+    "scope": "Explicit same-throw attachment plus current, display-permitted, settled landing. Two horizontal region fixtures provide known safe reference positions. Ordinary impact, airborne state, hidden location, unrelated sword wave and mismatched throw cannot start this preview. No opponent, real projectile, ballistic route, contact outcome or actor position is encoded."
+  },
+  "design": {
+    "primary": "A single amber crest grows radially from the registered landing marker, with a quieter blue-green inner slope. The crest briefly distorts visible floor seams only at its own radius. A compact hub loses brightness as the front moves out; no terrain damage or delayed hit event is shown.",
+    "bounds": "World radius 180 is shown at 0.30 reference pixels per world unit. The edge is clipped within 54 reference pixels, independent of canvas DPR. Endpoint and radius are tied to the same projected center.",
+    "time": "880 ms. Short source pulse, outward front to 680 ms, attenuation and restoration of the stationary floor. The wave fades by 849 ms. The inert diamond remains only to locate known landings.",
+    "reducedMotion": "The local optical displacement decreases from 3.8 to 0.45 reference pixels; range, duration and direction of the front are unchanged.",
+    "sound": "One low falling, damped synthetic pulse. No follow-on impact or target cue. Verify always mutes audio.",
+    "technicalReuse": "Published manual WebGPU-host lifecycle, sizing and audio policy; new shader scene, gating, bounds, and synthesized sound.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "closure": "Runtime commit read back and compared by full text and Git blob for four files. HTML loads preview.mjs; preview imports impact.mjs and fetches effect.wgsl.",
+    "shader": "Naga validation via naga-wasi-cli@0.1.0 passed.",
+    "logic": "Node checked left and right anchor projections, sparse/nonfinite/out-of-fixture positions, mismatched radius, old or duplicate event, missing EC, flight, hidden/mismatched throw, and unrelated sword wave. Denied events do not read landing, and valid release does not access target/damage.",
+    "audio": "Checked finite PCM at 8/44.1/48/96 kHz, a strong early pulse and quieter continuation, with silent final samples.",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.14184,
+        0.00802
+      ],
+      [
+        44100,
+        0.14184,
+        0.00802
+      ],
+      [
+        48000,
+        0.14184,
+        0.00802
+      ],
+      [
+        96000,
+        0.14184,
+        0.00802
+      ]
+    ],
+    "host": "JavaScript host body syntax checked. Natural WebGPU motion and sound have not been observed at sealing.",
+    "unreviewed": [
+      "actual-size waves and local floor response through the full lifetime",
+      "ordinary SFX and sync",
+      "Safari and iPad",
+      "main-game integration"
+    ]
+  }
+}
