@@ -1,0 +1,101 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "所持アイテムの譲渡・送り手 R1",
+  "groupId": "inventory-item-transfer-out-astra62",
+  "versionId": "inventory-item-transfer-out-astra62-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-inventory-item-transfer-out/r1/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "partial",
+    "before": 3,
+    "amount": 1,
+    "after": 2,
+    "selfCurrentCommittedItemTransfer": true,
+    "uniformBytes": 48,
+    "lifetimeMs": 1310,
+    "activeBeforeAfter": [
+      3,
+      2
+    ],
+    "inactiveBeforeAfter": [
+      2,
+      2
+    ],
+    "nextLoop": "new independent synthetic inventory example"
+  },
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "643856f7d1fd1d88850c5f905d6ff627177b9f14"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1999,
+      "sha256": "6c4d524d2b606d11d5b8db9654c65827e156664d7842f0f6473d0423bce221fe",
+      "gitBlob": "7a8eecc03a4a61c2d86fd3f150eb7ca6204e0ed1"
+    },
+    "preview.mjs": {
+      "bytes": 8181,
+      "sha256": "98057dd9ebaccf4ab01b2638c2fb11bdfdcd421def1627a39485b932da57e2c1",
+      "gitBlob": "c8363fbd6762d91032dd847fb50d2749ce3d5753"
+    },
+    "publication-manifest.json": {
+      "bytes": 5875,
+      "sha256": "46bedf293aadc30ec5230733b05be6555c31a0f4084c8e7caf56021d73b77805",
+      "gitBlob": "cd70c9f4b0f594854f2e1c7b68996fe112e12547"
+    },
+    "transfer.mjs": {
+      "bytes": 2043,
+      "sha256": "922bcf9583e03473a0072e2802929867e0c89cd087070f99eb99f88d1dae0a74",
+      "gitBlob": "99bb6fa05a15ceed7ad749a95da031ab573d47d5"
+    },
+    "effect.wgsl": {
+      "bytes": 2614,
+      "sha256": "fbe0f08ee41585829460b223f0b746193f8110ddd0fb8d4247ef1b5dd0c70518",
+      "gitBlob": "34ac71c402417b4248dfad8f27d9c5b5d2184348"
+    },
+    "gallery.html": {
+      "bytes": 1404,
+      "sha256": "5985303fc7f4e6ac232ec080de375ca6957dde30893d8eb13e044cc737ce9d71",
+      "gitBlob": "dead58c80e958b37271ab9e019890877100cc399"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19",
+      "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e"
+    },
+    "gallery-effect.mjs": {
+      "bytes": 231,
+      "sha256": "8bd0da96a741db3fa9a7e299557722b835e928ae6ee36f5635ceaeb6f9a45dbf",
+      "gitBlob": "4c9ce7e4cbbc8da1316138c563cd3c416a69e93a"
+    }
+  },
+  "bridge": {
+    "fixtureEventAndGate": "original reexports unchanged",
+    "makeCue": "delegates makeTransferCue(rate,1) exactly"
+  },
+  "adapter": {
+    "copyGitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e",
+    "terminal": "reused inactive-submission-before-finish condition;500ms retainedtwohold"
+  },
+  "validation": {
+    "cpu": "exact originalgate/PCMbridge/callback3groups PASS; terminalsourceconditionmock PASS; parentmock7groups PASS",
+    "inventoryIllustration": "hand-built independentinventoryexample only, not actualadapteracceptance",
+    "actualEsmLoader": "not_run",
+    "adapterInstance": "not_run",
+    "nativeGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "originalFiveUnchanged": true
+  }
+}
