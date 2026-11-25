@@ -1,0 +1,102 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "初回バトルフェーズ開始",
+  "groupId": "match-opening-pennant-astra62",
+  "versionId": "match-opening-pennant-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified edition of this independent gallery series for the initial battle phase of an ordinary match. Existing start sound and round resume assets remain preserved.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-match-opening-pennant/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "8ae26f2ee1577925fd605bb77909682d8692c6c1"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1927,
+      "sha256": "e9f586a49d0e569d3cb9872f46295836317dcf301427428ca8e912ea8f5b37a9",
+      "gitBlob": "096c94160ee8927ad093a7f516df3fe7e92f9afd"
+    },
+    "opening.mjs": {
+      "bytes": 2307,
+      "sha256": "a5e3ef80051faaeb3d71e374cda8e3e028bfc383541554d3c40d2e5071ba4b94",
+      "gitBlob": "f4db18c28629be92dae0f1b163118ae0bcbed4d3"
+    },
+    "preview.mjs": {
+      "bytes": 7791,
+      "sha256": "3cc31efd32e1b08a435628094a0f8ec138301f768e6e9a1bbb42c0d1cf26625d",
+      "gitBlob": "eb122c582df46d9ab7faa6e802c485d5aabd99ec"
+    },
+    "effect.wgsl": {
+      "bytes": 2223,
+      "sha256": "3ca90eacc067c22ea8e5a79c508fa249100691b560465c1c0673628881e5a77f",
+      "gitBlob": "06faf43b24609a120c6cc2da4b9250af04fa1d04"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "28b5b0f5eb55aabaa201eb6e5f69f83a0ed18446",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "startBattle L6925–7079. Requires selecting, sets playing, round=1, battleStartedAt and preparationEndsAt; records a dedicated battle-start announcement.",
+    "scope": "This synthetic receipt is bound to the current viewer-owned ordinary-match generation and may trigger once per generation. Session generations in the manual preview are locally provided. Meeting resumes, delayed notifications, ordinary snapshots, preparation ending and training are negative fixtures. Initial play and the beginning of preparation coincide; this sign conveys neither preparation expiry nor availability of attacks or input.",
+    "existing": "The main-game playing-phase start sound is outside this standalone preview. The pennant is a sign for the viewer, not new world inventory, a flag objective, a map object or a winning team."
+  },
+  "design": {
+    "primary": "The short staff holds the hoist in place. A folded pale sage pennant with one indigo band extends horizontally. Its free tip initially hangs lower, then catches a damped ripple as the cloth becomes taut.",
+    "timing": "1270 ms overall. Reveal to 88 ms; unfurl 130–490 ms, crest arrival delayed along the cloth; settle, then fade 915–1234 ms. The internal band follows normalized fabric coordinates.",
+    "reducedMotion": "Shorter spreading travel, less tip drop and suppressed lateral cloth ripple. This keeps the starting signal readable with less movement.",
+    "sound": "A brief band-limited cloth noise while unfolding and a short two-partial seating tone at 490 ms. Verify is muted.",
+    "technicalReuse": "Existing independent manual host supplies the GPU lifecycle, CSS scaling and cleanup. New geometry, guarded start projection and PCM.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "closure": "Four runtime files verified by exact text and Git blob at the runtime commit. The HTML module and its two runtime dependencies are relative to the edition directory.",
+    "shader": "naga-wasi-cli@0.1.0 accepted the complete WGSL.",
+    "logic": "Node checked ordinary opening once, repeat, new generation, old match, snapshot, meeting resume, preparation expiry and training. Invalid timestamp, phase, round, authorization and unconfirmed cases rejected; a throwing role accessor was never read.",
+    "audio": "Finite PCM at 8/44.1/48/96 kHz; silent lead/tail; nonzero unfolding and seating windows. Values are [rate, cloth peak, seating peak].",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.1191,
+        0.0895
+      ],
+      [
+        44100,
+        0.0871,
+        0.0899
+      ],
+      [
+        48000,
+        0.0845,
+        0.0898
+      ],
+      [
+        96000,
+        0.0701,
+        0.0899
+      ]
+    ],
+    "host": "JavaScript body syntax checked. The production source and manual fixture are distinct.",
+    "unreviewed": [
+      "actual GPU display and full-lifetime material motion",
+      "ordinary audio listening and sync",
+      "Safari / iPad",
+      "main-game integration"
+    ]
+  }
+}
