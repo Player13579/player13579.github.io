@@ -1,0 +1,104 @@
+{
+  "schema": "dva-gallery-creative-candidate/v1",
+  "groupId": "quantum-fission-chain-astra62",
+  "versionId": "quantum-fission-chain-astra62-r1",
+  "title": "クオンタム・核分裂連鎖 R1",
+  "edition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "standaloneEntry": "index.html",
+  "expectedGalleryEntry": "gallery.html",
+  "standardFixture": "committed",
+  "galleryRequirement": "Inline parent selection, first-frame evidence, parent controls, finite replay loop and acknowledged teardown. The standalone file is for fixture inspection only.",
+  "publicationEligible": false,
+  "galleryAdapterStatus": "separate technical integration pending",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "84e1a9e9020ded8ebafb8205af2bb1f25de2cf7f"
+  },
+  "producer": {
+    "repository": "Player13579/player13579.github.io",
+    "ref": "9647adb385f85dac4c2925616a9b06bdae4b338d",
+    "path": "offline-server-main.js",
+    "symbols": [
+      "useQuantumControl",
+      "executeQuantumGlobalNuclearEffect"
+    ],
+    "lines": [
+      "14841–14879",
+      "14740–14764"
+    ],
+    "semantics": "This independent visual depicts a committed quantum-nuclear game event from the authorized local emitter only. Fusion and transmutation are distinct. Source visibility and permissions are explicit fixture facts. No remote positions, actors, health changes or game outcome are inferred. The image depicts an invented cut crystal in a game."
+  },
+  "design": {
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    },
+    "subject": "A single faceted mineral opens along a blue-white fracture, separates into two lit crystals, then divides once per side into four fading fragments. Violet and cyan light catches the facing facets and nearby slate.",
+    "lighting": "Narrow bright fissure and broader colored facet lighting originate in the same per-fragment energy. Two analytic observer-scatter scales extend beyond the silhouette. Local elliptical floor irradiance follows the projected positions and is modulated by tile joint response. All use the actual split chronology; filmic compression and linear-to-sRGB mapping retain chroma.",
+    "timingMs": {
+      "firstStrain": [
+        100,
+        290
+      ],
+      "primarySplit": 290,
+      "secondaryLeft": 590,
+      "secondaryRight": 670,
+      "fade": [
+        1000,
+        1280
+      ],
+      "end": 1470
+    },
+    "bounds": "Central logical frame. Closed parent 30 by 40 logical px; the final four stone centers reach up to 69 px from center horizontally. Reduced motion shortens travel while preserving both divisions, source glow, count and timings.",
+    "audio": "A restrained granular stress noise is followed by a brittle material crack at 290 ms, with two smaller resonant cracks at 590 and 670 ms. Synthetic band-limited noise and unequal damped resonances; verify hard mute.",
+    "terminal": "All crystals, sources, scatter and floor irradiance are zero from 1280 ms before the 1470 ms cause end; only the quiet slate remains."
+  },
+  "files": {
+    "index.html": {
+      "bytes": 2028,
+      "sha256": "b8ed5bff0737c99859296197646d0fa5080a412e2270c75e36c8453471ef227b",
+      "gitBlob": "04dc975a6f8dd6648adc279e4ab4a3a7f93a8a80"
+    },
+    "preview.mjs": {
+      "bytes": 7801,
+      "sha256": "74fc23b972ff6ab8c0ff45d7d78ac161b17b9973f665ff76f5d68a4015d5c2ed",
+      "gitBlob": "4401d23f218b8798ef6d5d15a3bf040845038f8a"
+    },
+    "fission.mjs": {
+      "bytes": 2408,
+      "sha256": "75982713f583ccaae5f10a529612ec5264a20e0b882ea4c6660bffe255152e92",
+      "gitBlob": "ba5613bd5063087ad9404577d5f0f27152895b89"
+    },
+    "effect.wgsl": {
+      "bytes": 3826,
+      "sha256": "0d2e78f92b59ebf6bfaf3c7cb03e556357e871903e55b12c7fa1bee7a6cdd434",
+      "gitBlob": "9bae5bdf637f7debce9e9b98930aba0669938934"
+    }
+  },
+  "validation": {
+    "bounded": "Accepted only current authorized committed fission at endgame, with consumed compatible game item; both accepted variants, six UI negatives, private field short-circuit, unknown, replayed/out-of-order, invalid serial/owner/permission/item tests; controls and JS syntax checked.",
+    "wgsl": "naga-wasi-cli@0.1.0 validation successful",
+    "audio": "Numeric finite audio checks at four sample rates, silence at ends and three scheduled material transients; ordinary listening pending.",
+    "samplePeaks": {
+      "8000": 0.12061300128698349,
+      "44100": 0.20100191235542297,
+      "48000": 0.2220604121685028,
+      "96000": 0.21599817276000977
+    },
+    "runtimeReadback": "4/4 exact UTF-8 source content and git blob checks at runtime pin.",
+    "nativeWebGPU": "not evaluated",
+    "glowAtActualSize": "pending visual review; shader terms alone are insufficient evidence",
+    "ordinaryAudio": "not listened",
+    "parentInline": "pending separate adapter validation and public parent UI",
+    "adoption": "unknown"
+  }
+}

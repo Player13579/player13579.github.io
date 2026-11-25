@@ -1,0 +1,115 @@
+{
+  "schema": "quantum-fission-chain-inline-gallery/v1",
+  "groupId": "quantum-fission-chain-astra62",
+  "versionId": "quantum-fission-chain-astra62-r1",
+  "creativeIdentity": "quantum-fission-chain-astra62-r1",
+  "creativeEdition": 1,
+  "creativeEditionLimit": 5,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "technicalAdapterModelId": "gpt-6-luna",
+  "technicalAdapterDisplayName": "GPT-6-Luna",
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "runtimeCommit": "84e1a9e9020ded8ebafb8205af2bb1f25de2cf7f",
+    "creativeManifestCommit": "38ed9b7edb498ec624c379a9a70762252d09d6fb",
+    "creativeManifestSha256": "66cae4abeaf897384bddbd1e4910204bbe724c7aabd5d6e59ae18e0bc387ad91"
+  },
+  "page": "/public/astra62-quantum-fission-chain/r1/gallery.html",
+  "originalPage": "/public/astra62-quantum-fission-chain/r1/index.html",
+  "standardFixture": "committed",
+  "lifetimeMs": 1470,
+  "backgroundGapMs": 900,
+  "firstFrameWindow": {
+    "submittedMinInclusiveMs": 160,
+    "submittedMaxExclusiveMs": 1150,
+    "completionMinInclusiveMs": 160,
+    "completionMaxExclusiveMs": 1150,
+    "requiresRealQueueCompletionAndValidation": true,
+    "pixelsProved": false
+  },
+  "uniform": {
+    "bytes": 32,
+    "values": [
+      "width",
+      "height",
+      "ageMs",
+      "scale292x135Dpr",
+      "reduced",
+      "live",
+      0,
+      0
+    ],
+    "entries": [
+      "vs",
+      "fs"
+    ]
+  },
+  "originalFilesUnchanged": true,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2028,
+      "sha256": "b8ed5bff0737c99859296197646d0fa5080a412e2270c75e36c8453471ef227b",
+      "gitBlob": "04dc975a6f8dd6648adc279e4ab4a3a7f93a8a80",
+      "preserved": true
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 7801,
+      "sha256": "74fc23b972ff6ab8c0ff45d7d78ac161b17b9973f665ff76f5d68a4015d5c2ed",
+      "gitBlob": "4401d23f218b8798ef6d5d15a3bf040845038f8a",
+      "preserved": true
+    },
+    {
+      "path": "fission.mjs",
+      "bytes": 2408,
+      "sha256": "75982713f583ccaae5f10a529612ec5264a20e0b882ea4c6660bffe255152e92",
+      "gitBlob": "ba5613bd5063087ad9404577d5f0f27152895b89",
+      "preserved": true
+    },
+    {
+      "path": "effect.wgsl",
+      "bytes": 3826,
+      "sha256": "0d2e78f92b59ebf6bfaf3c7cb03e556357e871903e55b12c7fa1bee7a6cdd434",
+      "gitBlob": "9bae5bdf637f7debce9e9b98930aba0669938934",
+      "preserved": true
+    },
+    {
+      "path": "publication-manifest.json",
+      "bytes": 5289,
+      "sha256": "66cae4abeaf897384bddbd1e4910204bbe724c7aabd5d6e59ae18e0bc387ad91",
+      "gitBlob": "152bd652fe1e4a26b5ac14bc01a5b91e68547c09",
+      "preserved": true
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1362,
+      "sha256": "be3cd0f528e66013951c05950b7568097e4f9d6c02718709766a96dce72eb72e",
+      "gitBlob": "38ac1c3eb767e52001c2f844db95df20506e77f0"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 17860,
+      "sha256": "ea93c82190506ec1e8323d62c6a0ba01ea0b73ffeca9bc47bb4190dfbec43858",
+      "gitBlob": "df100864c80902bfe14c14b0962a98d177e9f826"
+    }
+  ],
+  "adoption": "unknown",
+  "userAdopted": false,
+  "publicationEligible": false,
+  "galleryListingEligible": true,
+  "manualReview": false,
+  "validation": {
+    "sourceAbiPcmUniform": "pass-5-groups",
+    "adapterCpuMock": "pass-7-groups",
+    "parentCpuMock": "pass-7-groups",
+    "entryAndAdapterSyntax": "pass",
+    "nativeWebGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "scope": "Independent Fission source and new adapter only. No refused Shockwave/Substitution test, private host or TEMP deletion used."
+}
