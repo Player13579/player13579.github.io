@@ -1,0 +1,95 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "会議集計後のラウンド再開 R1",
+  "groupId": "meeting-round-resume-astra62",
+  "versionId": "meeting-round-resume-astra62-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-meeting-round-resume/r1/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "small",
+    "from": 1,
+    "to": 2,
+    "kind": "meeting-tallied",
+    "authorized": true,
+    "current": true,
+    "settled": true,
+    "before": "meeting",
+    "after": "playing",
+    "newSyntheticIdEachLoop": true,
+    "uniformBytes": 160,
+    "floatCount": 40,
+    "digitPacking": "originaldigitSlots(from1/to2),16slots each, oldoffset8/newoffset24",
+    "lifetimeMs": 1190,
+    "idle": "background, not persistent number2"
+  },
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "e81c194a58f84d4ffdc58b2d0af8110587b3a2bb"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1865,
+      "sha256": "9b3ca57b743d5b78f29f9f387ecfc7e5b99e92341d264a1712c9b44690ca0e90",
+      "gitBlob": "15deccff9f300f86f5c6c66dddc2de39ec7415a5"
+    },
+    "preview.mjs": {
+      "bytes": 7922,
+      "sha256": "90c814f1070d665205798c735f8736ae0ac4d40feaa4ab4c847dc198379a3f7b",
+      "gitBlob": "3ce98235f4f95195c851f6df1861f18ce592833b"
+    },
+    "publication-manifest.json": {
+      "bytes": 5167,
+      "sha256": "47f4b43324bc21b3ef5a68638decda2120a57df754b9a861c2bfa293c2f36406",
+      "gitBlob": "3f5cd09c21a2aff197330e15562d576de5ba2075"
+    },
+    "resume.mjs": {
+      "bytes": 1902,
+      "sha256": "39b01489fc332d54375f829aa075d7c031e3cb5a46f691803cb366095e282e13",
+      "gitBlob": "5764a5b7560e2031ba624d0c423eb86bc1941f84"
+    },
+    "effect.wgsl": {
+      "bytes": 3592,
+      "sha256": "b1d612b5a8ba7cb703af9b33b2d3407a79af32b2a282582ea3ae81bafdf47e7f",
+      "gitBlob": "9b33fe864fe437b2813eadc4bc6af692925d3526"
+    },
+    "gallery.html": {
+      "bytes": 1487,
+      "sha256": "762e41081dce053014b17f16263439d8b403eea29b6f03d64016cde5280ecb14",
+      "gitBlob": "4b630d2a5a3c2f39182c286c88ea94c058e1c125"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19",
+      "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e"
+    }
+  },
+  "module": "originalresume.mjs directly; originalgate/fixture/PCM alreadycompatible; nofacade",
+  "adapter": {
+    "copyGitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e",
+    "referenceScale": [
+      292,
+      135
+    ],
+    "terminal": "inactiveframe-before-finish;500msbackground thennewsmall example"
+  },
+  "validation": {
+    "cpu": "gate/digitSlots/uniform160/PCM3groups PASS; entryscriptparse PASS; terminalmock PASS; parentmock7groups PASS",
+    "actualEsmLoader": "not_run",
+    "adapterInstance": "not_run",
+    "nativeGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "originalFiveUnchanged": true
+  }
+}
