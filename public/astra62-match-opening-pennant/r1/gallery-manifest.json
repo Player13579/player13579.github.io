@@ -1,0 +1,94 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "初回バトルフェーズ開始 R1",
+  "groupId": "match-opening-pennant-astra62",
+  "versionId": "match-opening-pennant-astra62-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-match-opening-pennant/r1/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "opening",
+    "ordinaryMatch": true,
+    "owned": true,
+    "current": true,
+    "sameMatchAndGeneration": true,
+    "before": "selecting",
+    "after": "playing",
+    "round": 1,
+    "committed": true,
+    "freshSyntheticMatchAndGenerationEachLoop": true,
+    "uniformBytes": 32,
+    "lifetimeMs": 1270
+  },
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "8ae26f2ee1577925fd605bb77909682d8692c6c1"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1927,
+      "sha256": "e9f586a49d0e569d3cb9872f46295836317dcf301427428ca8e912ea8f5b37a9",
+      "gitBlob": "096c94160ee8927ad093a7f516df3fe7e92f9afd"
+    },
+    "preview.mjs": {
+      "bytes": 7791,
+      "sha256": "3cc31efd32e1b08a435628094a0f8ec138301f768e6e9a1bbb42c0d1cf26625d",
+      "gitBlob": "eb122c582df46d9ab7faa6e802c485d5aabd99ec"
+    },
+    "publication-manifest.json": {
+      "bytes": 5188,
+      "sha256": "a40d7b146083e84bbae824fd972724994f32a5a3645ec0dbf16714a4ceacb3f2",
+      "gitBlob": "315db341bd79aa68ad9d2f438adab46f3effa54a"
+    },
+    "opening.mjs": {
+      "bytes": 2307,
+      "sha256": "a5e3ef80051faaeb3d71e374cda8e3e028bfc383541554d3c40d2e5071ba4b94",
+      "gitBlob": "f4db18c28629be92dae0f1b163118ae0bcbed4d3"
+    },
+    "effect.wgsl": {
+      "bytes": 2223,
+      "sha256": "3ca90eacc067c22ea8e5a79c508fa249100691b560465c1c0673628881e5a77f",
+      "gitBlob": "06faf43b24609a120c6cc2da4b9250af04fa1d04"
+    },
+    "gallery.html": {
+      "bytes": 1363,
+      "sha256": "06e234486543ad53831e43ee98cdce75912bc5fe4572bbbb94d924cab26f7d22",
+      "gitBlob": "cd27790c0b2d7601f51a54f4673617aa7dbf935b"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    "gallery-effect.mjs": {
+      "bytes": 372,
+      "sha256": "ad0b0b5ebb774a8fc9a8e976458f0974facf6c8feea8dcf1c7258ab25a86a196",
+      "gitBlob": "83295ff36c6fb66fd606375524ca470f0f5739d7"
+    }
+  },
+  "bridge": {
+    "fixtureEvent": "delegates original fixturePair(mode,id) unchanged",
+    "makeGate": "delegates tuple entries by identity to original twoarg gate",
+    "originalAudio": "makeCue reexport byteunchanged"
+  },
+  "validation": {
+    "cpu": "exact original module+bridge function bodies and actualentry callback3groups PASS; parent synthetic7groups PASS",
+    "actualEsmLoader": "not_run",
+    "adapterInstance": "not_run",
+    "nativeGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "originalFiveUnchanged": true,
+    "adapterByteUnchanged": true
+  }
+}
