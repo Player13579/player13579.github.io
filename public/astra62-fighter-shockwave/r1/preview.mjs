@@ -16,12 +16,11 @@ const muted = () => verification || document.hidden || !alive;
 function reset() {
     start = performance.now();
     launchPlayed = false;
-    if (bus && audio) {
-        bus.disconnect();
-        bus = audio.createGain();
-        bus.gain.value = 0.50;
-        bus.connect(audio.destination);
-    }
+    if (muted() || !ready || !audio || audio.state !== 'running') return;
+    bus?.disconnect?.();
+    bus = audio.createGain();
+    bus.gain.value = 0.50;
+    bus.connect(audio.destination);
 }
 function selectMode(value) {
     large = value;
@@ -38,9 +37,11 @@ controls.light.onclick = () => {
 async function enableAudio() {
     if (muted() || !ready) return false;
     audio ??= new AudioContext();
-    await audio.resume();
-    if (muted() || audio.state !== 'running') return false;
+    const current = audio;
+    await current.resume();
+    if (audio !== current || muted() || !ready || current.state !== 'running') return false;
     reset();
+    if (audio !== current || muted() || !ready || current.state !== 'running' || !bus) return false;
     audioButton.textContent = '音声再生中';
     return true;
 }
