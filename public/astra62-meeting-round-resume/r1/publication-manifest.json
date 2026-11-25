@@ -1,0 +1,102 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "会議集計後のラウンド再開",
+  "groupId": "meeting-round-resume-astra62",
+  "versionId": "meeting-round-resume-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified edition of this independent gallery series. Existing meeting, vote and match result assets retained.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-meeting-round-resume/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "e81c194a58f84d4ffdc58b2d0af8110587b3a2bb"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1865,
+      "sha256": "9b3ca57b743d5b78f29f9f387ecfc7e5b99e92341d264a1712c9b44690ca0e90",
+      "gitBlob": "15deccff9f300f86f5c6c66dddc2de39ec7415a5"
+    },
+    "preview.mjs": {
+      "bytes": 7922,
+      "sha256": "90c814f1070d665205798c735f8736ae0ac4d40feaa4ab4c847dc198379a3f7b",
+      "gitBlob": "3ce98235f4f95195c851f6df1861f18ce592833b"
+    },
+    "resume.mjs": {
+      "bytes": 1902,
+      "sha256": "39b01489fc332d54375f829aa075d7c031e3cb5a46f691803cb366095e282e13",
+      "gitBlob": "5764a5b7560e2031ba624d0c423eb86bc1941f84"
+    },
+    "effect.wgsl": {
+      "bytes": 3592,
+      "sha256": "b1d612b5a8ba7cb703af9b33b2d3407a79af32b2a282582ea3ae81bafdf47e7f",
+      "gitBlob": "9b33fe864fe437b2813eadc4bc6af692925d3526"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "19abba908166b85d475d368da84d32a7526ae583",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "tallyMeeting, lines 10656–10668",
+    "meaning": "After tallying, when the room has not ended, the round advances once and battle resumes. The ensuing checkWin can still end the game. This preview requires the final settled phase to be playing.",
+    "scope": "One explicit authorized current meeting-to-playing transition with round increment exactly one. No inferred vote, ejection, role, scores, victory, timer progress or location. The actual game emits a log line and fields. The standalone typed transition is a synthetic fixture, not a newly connected producer."
+  },
+  "design": {
+    "concept": "A compact split-flap result-independent round indicator. The old upper numeral folds about its center hinge to reveal the new top, then its reverse face seats over the old lower half. The new number holds before the entire graphic clears.",
+    "geometry": "Right-aligned decimal slots support 1 to 16 digits. Old and new use common cells through a carry. Half-face height is projected by cosine around a fixed central seam. Hinge pivots stay fixed; the moving face darkens toward edge-on. Ages 0 to 78 ms reveal; 220 to 580 ms flip; 580 to 946 ms hold; 946 to 1160 ms exit; idle by 1190 ms.",
+    "reducedMotion": "Crossfade the old/new complete numeral without foreshortening. The start and stop cues keep the same clock.",
+    "sound": "Dry release at 220 ms followed by a lower stronger seating contact at 580 ms. The finite digital indicator moves; game-world objects do not. Muted in verify.",
+    "technicalReuse": "The verified pair-route R1 technical host supplies WebGPU, resize, disposal, hidden-state cancel and verify mute. Receipt gate, digit selection, flap visual and PCM are new.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "registeredClosure": "At immutable runtime commit, all four files matched the prepared text and Git blob. index.html → preview.mjs → resume.mjs and effect.wgsl.",
+    "shader": "Naga via naga-wasi-cli@0.1.0 validated the WGSL source.",
+    "logic": "Executed valid 1→2, 9→10 and maximum safe round; duplicate, invalid phase/cause, unconfirmed, unauthorized, stale and non-unit increments are rejected, including tests that deny fields before reading round. Decimal slot encoding checked through 16 digits.",
+    "sfx": "8, 44.1, 48 and 96 kHz finite outputs, silent leading/trailing sections, and a louder second contact. Each row is [sample rate, release peak, seating peak].",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.08086,
+        0.16892
+      ],
+      [
+        44100,
+        0.08099,
+        0.16893
+      ],
+      [
+        48000,
+        0.08097,
+        0.16892
+      ],
+      [
+        96000,
+        0.08098,
+        0.16892
+      ]
+    ],
+    "host": "JavaScript host body syntax checked; native shader compile, GPU draw and natural-speed display unobserved at sealing.",
+    "unreviewed": [
+      "full-lifetime actual display and legibility",
+      "normal listening and sync",
+      "Safari / iPad",
+      "game integration"
+    ]
+  }
+}
