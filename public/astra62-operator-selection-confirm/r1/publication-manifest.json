@@ -1,0 +1,102 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "本人のオペレーター手動選択確定",
+  "groupId": "operator-selection-confirm-astra62",
+  "versionId": "operator-selection-confirm-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified edition of this independent manual gallery series, preserving original selection UI and prior assets.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-operator-selection-confirm/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "e0685a1166256a59da3b5d7969b0006cd60083e4"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1921,
+      "sha256": "0b9d0712d12779174f636ffe2f32193ee1b469c9cc04129b74473eed7c16017f",
+      "gitBlob": "fabe935be6f59f7187ec73a68973619dcae54dde"
+    },
+    "preview.mjs": {
+      "bytes": 7817,
+      "sha256": "b98fbc5a1acc9654623fade31796ee95db9606a45e39baa015c3fee652cc7663",
+      "gitBlob": "c801978c40649358731d5789e0a16804dbbd02e3"
+    },
+    "selection.mjs": {
+      "bytes": 1910,
+      "sha256": "ca546957bc27b6e7fc8c1c24951cd97ec795dddbd4c79b73cecb04b6ac7f497d",
+      "gitBlob": "3734cadbdcb43c624f6402ecc7f55b52ae7fbeab"
+    },
+    "effect.wgsl": {
+      "bytes": 3178,
+      "sha256": "b868ee6fc1e032aa395698afc1050cac278a83e57bf947aa41db7b237aecd0fd",
+      "gitBlob": "9b5061e335b076941db4b82338b4d67e6e190966"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "5b5c2214a4a557ae1f25da8c0c19c2cc89ecdefc",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "selectOperator L6859–6875; /api/operator L20008–20012; separate solo mission initialization L7118 and bot autoPickOperator L6878.",
+    "scope": "A current self-owned manual choice that succeeds and matches the returned ready selection. The source can advance into battle for the final player, so a reply still in selecting phase is not required. A synthetic pair explicitly marks the request, reply, session/owner, accepted selection and cause ID. It does not inspect a room, hidden role, peer selection or operator identity.",
+    "fixtures": "Two anonymous inert specimen cards encode different local choices. They are not actual operators, skins, equipment, or the game's selection screen. Automatic or training choice, stale or other-owner replies, failure, pending and mismatch cannot trigger this E."
+  },
+  "design": {
+    "primary": "One of two stationary cards receives two blue metal jaws. A lower locking bar seats against the opposing jaws at 412 ms. An amber check writes itself below the selected card as the lock seats, leaving both emblems readable. The other card stays idle.",
+    "time": "1070 ms envelope. The jaws slide from 55 to 412 ms; the bar seats at 412 ms, the check finishes at 529 ms; confirmation fades from 801 to 1045 ms. Both neutral specimen cards remain after the transient overlay clears.",
+    "reducedMotion": "Jaw travel drops from 12 to 2.5 CSS-reference pixels; locking tab travel from 5.5 to 1.4. Selection and timing remain unchanged.",
+    "sound": "One soft travel tone and a higher-amplitude damped seating click at 412 ms. Verify is always muted.",
+    "technicalReuse": "Previously published manual technical host for WebGPU, responsive sizing, cancellation, disposal and verify mute. New graphic, receipt correlator and PCM.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "closure": "All four runtime files read back by immutable commit. Text and Git blobs matched. HTML imports preview.mjs, which imports selection.mjs and fetches effect.wgsl.",
+    "shader": "Naga validation through naga-wasi-cli@0.1.0 passed.",
+    "logic": "Node checked left/right acceptance, duplicate suppression, input correlation, owned/current session and choice, lack of confirmed response, auto/training, late or wrong recipient and invalid selection. Ineligible replies with a throwing acceptedChoice accessor were rejected before touching it.",
+    "sfx": "Synthesized PCM at 8/44.1/48/96 kHz was finite with silent lead/tail and a distinct stronger seating contact.",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.0359,
+        0.1506
+      ],
+      [
+        44100,
+        0.036,
+        0.1506
+      ],
+      [
+        48000,
+        0.036,
+        0.1506
+      ],
+      [
+        96000,
+        0.036,
+        0.1506
+      ]
+    ],
+    "host": "JavaScript host body syntax passed. Actual browser and device rendering are pending.",
+    "unreviewed": [
+      "actual-size display and full-lifetime movement",
+      "ordinary sound and perceived synchronization",
+      "Safari and iPad",
+      "connection to the real game"
+    ]
+  }
+}
