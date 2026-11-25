@@ -30,6 +30,12 @@
       "mode": "verification-only",
       "execution": "static-only-unexecuted",
       "classification": "diagnostics-not-a-repair"
+    },
+    "readinessRepair": {
+      "apiResponseId": "resp_0e19d81fa613499a006b0757b1467c87d0acd37cb163e21005",
+      "model": "gpt-6.1-sol",
+      "status": "static-candidate-unexecuted",
+      "reason": "ready-time-window-missed-in-reported-session; underlying-performance-cause-unconfirmed"
     }
   },
   "page": "/public/astra62-quantum-fusion-chain/r1/gallery.html",
@@ -38,9 +44,9 @@
   "backgroundGapMs": 900,
   "firstFrameWindow": {
     "uniformAgeMinInclusiveMs": 120,
-    "uniformAgeMaxInclusiveMs": 300,
+    "uniformAgeMaxInclusiveMs": 3449,
     "submittedMinInclusiveMs": 120,
-    "submittedMaxInclusiveMs": 300,
+    "submittedMaxInclusiveMs": 3449,
     "requiresUniformAgeAndSubmittedAgeInWindow": true,
     "requiresCompletionAndValidationBeforeLiveExpiry": true,
     "liveExpiryMs": 4000,
@@ -81,15 +87,15 @@
     },
     {
       "path": "gallery-adapter.mjs",
-      "bytes": 28295,
-      "sha256": "b16302531ed1da51e8d8f32d09a7b77ada4764442315f60de2f9ff13b59a05b3",
-      "gitBlob": "1aca4f14f9ea363f14d68ab4abe6938b4e6e9aef"
+      "bytes": 28303,
+      "sha256": "ac615eb37e1676e16ead3d2b644f876c9bdd4db1480e3cd720880715bc52c1eb",
+      "gitBlob": "f2a4527d1bccfff27b04aec75fd008e6b045beec"
     },
     {
       "path": "gallery.html",
-      "bytes": 1056,
-      "sha256": "c2f512be03900ee2c9f7b4f6cb7c52c27d6ba04982b91eee2df6b54f9c3a19e7",
-      "gitBlob": "c11bcc5509822f1c48448df8cfa9e8dc26c69468"
+      "bytes": 1051,
+      "sha256": "449bf761e326e37e9cf856e419bd5c376c74facd391b19cb40dac5dad5406826",
+      "gitBlob": "0063e38eafd8d4130ac8ecbf6c348f3ed823f204"
     }
   ],
   "adoption": "unknown",

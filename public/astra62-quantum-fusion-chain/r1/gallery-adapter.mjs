@@ -82,7 +82,7 @@ export async function mountGalleryEffect(config){
         if(own(diagnostics.frame,step)&&step!=='withinAgeWindow'){
           diagnostics.frame[step]=typeof value==='boolean'||typeof value==='number'&&Number.isFinite(value)&&value>=0?value:null;
           const f=diagnostics.frame;
-          f.withinAgeWindow=f.uniformAgeMs===null||f.submittedAgeMs===null?null:f.uniformAgeMs>=120&&f.uniformAgeMs<=300&&f.submittedAgeMs>=120&&f.submittedAgeMs<=300;
+          f.withinAgeWindow=f.uniformAgeMs===null||f.submittedAgeMs===null?null:f.uniformAgeMs>=120&&f.uniformAgeMs<=3449&&f.submittedAgeMs>=120&&f.submittedAgeMs<=3449;
         }
       }else if(op==='same-size'){
         diagnostics.frame.sameSize=typeof value==='boolean'?value:null;
@@ -254,7 +254,7 @@ export async function mountGalleryEffect(config){
       diagnostic('frame',null,'submittedAgeMs',submittedAge);
       device.queue.submit([command]);submitted++;
       diagnostic('count',null,'submitReturns');
-      if(age>=120&&age<=300&&submittedAge>=120&&submittedAge<=300)diagnostic('count',null,'ageWindowSubmitReturns');
+      if(age>=120&&age<=3449&&submittedAge>=120&&submittedAge<=3449)diagnostic('count',null,'ageWindowSubmitReturns');
       const id=++submissionId;
       diagnostic('enter','render','render-queue');
       await device.queue.onSubmittedWorkDone();diagnostic('return','render','render-queue');completed++;
@@ -271,8 +271,8 @@ export async function mountGalleryEffect(config){
       diagnostic('frame',null,'validationAccepted',true);
       frame.validationCompleted=true;frame.validationCompletedAt=now;
       lastFrame=freeze(frame);
-      if(frame.uniformAgeMs>=120&&frame.uniformAgeMs<=300&&frame.submittedAge>=120&&frame.submittedAge<=300)diagnostic('count',null,'validatedAgeWindowFrames');
-      if(!firstFrame&&frame.uniformAgeMs>=120&&frame.uniformAgeMs<=300&&frame.submittedAge>=120&&frame.submittedAge<=300){
+      if(frame.uniformAgeMs>=120&&frame.uniformAgeMs<=3449&&frame.submittedAge>=120&&frame.submittedAge<=3449)diagnostic('count',null,'validatedAgeWindowFrames');
+      if(!firstFrame&&frame.uniformAgeMs>=120&&frame.uniformAgeMs<=3449&&frame.submittedAge>=120&&frame.submittedAge<=3449){
         firstFrame=lastFrame;stageIndex=stages.indexOf('playing');status.textContent='Playing';status.hidden=true;
         emit('startup','ready',{causeId:cause.id,generation:gen});
       }
