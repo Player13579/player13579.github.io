@@ -1,0 +1,37 @@
+{
+  "id": "fighter-shockwave-astra62-r2",
+  "group": "fighter-shockwave",
+  "label": "ファイターの剣衝撃波",
+  "version": "R2",
+  "author": "GPT-6.2-Astra",
+  "entry": "index.html",
+  "parent": "fighter-shockwave-astra62-r1",
+  "status": {
+    "adoption": "unadopted",
+    "quality": "manual-review-pending",
+    "gameIntegration": false,
+    "browserReplay": "unverified",
+    "sfxListening": "unverified"
+  },
+  "source": {
+    "candidateR1": "Player13579/windows-dva-migration@0931e9d0fa47becdc31ec71b96a3a513764ae73e",
+    "event": "fighter-shockwave",
+    "variants": [
+      "one-body-damage:ec-cost-1:remaining-ec-N",
+      "giant-one-body-damage:ec-cost-100:remaining-ec-N"
+    ],
+    "geometry": "Gallery example in logical pixels and milliseconds",
+    "foundation": "Player13579/B@3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7"
+  },
+  "revision": {
+    "observation": "At R1 phase zero the two independent eased sword segments both have zero velocity. Their orientation permits launch along the intended tangent, but their actual motion pauses at release.",
+    "change": "Join the windup and follow-through with matching nonzero angular derivatives at phase zero. Wave starts on the tip, moves in its instantaneous direction and outruns it. The wrist brings the blade back to ready after the wave has expired.",
+    "preserved": "R1 pressure front and trailing expansion, normal/giant dimensions, direction, backgrounds, and sound design."
+  },
+  "checks": {
+    "audioRepair": "Applied the accepted reset/enableAudio behavior from R1 repair blob 2c560552a193bc7f5883068533c85d02ca33c9bb. The R2 Node VM plays a single release per normal/giant activation, creates no verification audio context and adds no source after stop. AudioContext and GPU were mocked for this host test; listening is pending.",
+    "nativeGPU": "Intel Iris Xe/Vulkan, 384x176: release angle 1.57079637 rad. Angle samples either side of release (step 0.001) yield -5.804 and -5.785 rad per unit phase. Projected tip speeds at release are 0.740 and 0.683 of the regular and giant wave speeds. End-of-recovery pose matches start-of-swing pose.",
+    "raster": "Dark/light backgrounds, normal/giant, phases .2/.5/.8. Moving front advances at each sampled phase. Midlife visible widths at the 18/255 differential threshold: 44–45 and 91–92 px. Expired field matches the resting scene before blade recovery.",
+    "limits": "Web browser and ordinary-speed visual/sound sync await observation."
+  }
+}
