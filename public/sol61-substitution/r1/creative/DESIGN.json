@@ -1,0 +1,277 @@
+{
+  "version": "substitution-sol61-r1",
+  "group": "substitution-sol61",
+  "title": "変わり身の術 — 付与 / 実回避 R1",
+  "author": {
+    "execution_model": "gpt-6.1-sol",
+    "role": "specialist_worker",
+    "creative_owner": "GPT-6.1-Sol",
+    "display_name_catalog_resolution": "primary_owner"
+  },
+  "status": {
+    "creative_source": "implemented_candidate",
+    "gpu_compile": "not_run",
+    "actual_gpu_pixels": "not_run",
+    "normal_speed_H64_lifetime": "not_run",
+    "normal_SFX_listening": "not_run",
+    "quality_acceptance": "not_run",
+    "main_game_integration": "not_run",
+    "gallery_publication": "not_run",
+    "user_adoption": "unadopted"
+  },
+  "creation_count": {
+    "this_independent_authorized_loop": 1,
+    "loop_limit": 5,
+    "historical_total": "unknown",
+    "note": "過去作成回数を0と断定しない。旧原本は入力に使わず保存する。"
+  },
+  "ownership": {
+    "output": [
+      "DESIGN.json",
+      "effect.wgsl",
+      "sfx.mjs",
+      "contract.mjs"
+    ],
+    "runtime_owner": "parent",
+    "forbidden_actions": "本編接続・公開・採用変更・ブラウザー・サーバー作成は担当外。旧TEMPを使用しない。",
+    "storage": "private GitHubのみ。共有checkout、TEMPへの保存なし。"
+  },
+  "authority": {
+    "canonical_repo": "Player13579/windows-dva-migration",
+    "canonical_ref": "shared-skills-canonical-20261008-r1",
+    "skill_blobs": {
+      "SKILL.md": "30777af04a58f17e589e8ba08dff5679973bfa58",
+      "e-design-quality.md": "04ec1e3c3f9713d0e313fb41bb002da4c4cbe18f",
+      "quality-completion.md": "9202ea678553daf4f288ef1e907ba2223db88461",
+      "asset-generation/references/dva.md": "75106e5308339b82386facc228bca3f79499f962"
+    },
+    "B": {
+      "repo": "Player13579/B",
+      "ref": "Codex-honoo",
+      "commit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base_blob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension_blob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606",
+      "version": "B-Expression-4",
+      "verification": "認証済みGitHubのbranch responseと全文blobを取得。歴史snapshot22d3fcfは現行pinにしない。"
+    },
+    "game": {
+      "commit": "2a585fefc169610abe2307b971a295f35dcb5eb3",
+      "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+      "path": "offline-server-main.js",
+      "provenance": "親が固定sourceから確認したevent仕様。旧Eのcreative code/image/audioは未参照。"
+    }
+  },
+  "settled_facts": {
+    "grant": "activateAssassinSubstitution成功時にrecipient.substitutionCharges=1。820msのeffectはcaster位置。回避・移動・命中・消費ではない。失敗/duplicate/snapshotは描かない。",
+    "trigger": "triggerSubstitution成功時に実kill/EMP回避、1charge消費、originから合法destinationへ瞬時移動。originのworld sound。1200msは確認済みの既存renderer/presentation寿命契約（producer.durationMsは0）として採用。攻撃起点・命中点・移動経路は不明。",
+    "visibility": "rawtargetX/Y、targetId、event存在は位置許可ではない。viewerのauthorized/current/visible/registeredな投影だけ使う。source不可視ならsourceのworld E/audioなし。destination不可視ならorigin以外をbounds/uniform/debug/audio以前に捨てる。"
+  },
+  "expression": {
+    "chosen": "折り替えの空殻",
+    "declared_magic": "予備となる二枚の折り面が備わり、実回避時には身体のいた空間だけに開いた空殻を残す。これはE内の宣言した非現実機構であり、実在する代用品や追加game entityではない。",
+    "must_communicate": [
+      "付与＝予備が一度備わる。実回避を先取りしない。",
+      "実回避＝出発点が空いた事実と、そこに残った代替の折り面が解ける。",
+      "可視destinationがある場合だけ別個の定着を描く。画面を結ぶ移動線はない。"
+    ],
+    "distinguishers": "付与sourceの小さな開くseed→recipientの外側で閉じる大きなfold。実回避は初めから出発点の広い開口が開き、内向きの折り戻しを経て消える。色を除いても開閉と占有域が異なる。",
+    "candidates": [
+      {
+        "name": "単一の発光印",
+        "decision": "不採用",
+        "reason": "所有と回避の現象差が記号と色だけに退化する。"
+      },
+      {
+        "name": "身体を覆う連続膜",
+        "decision": "不採用",
+        "reason": "防御barrierとの誤認、顔と身体の可視域を塞ぐ。"
+      },
+      {
+        "name": "二枚の幅広い折り面と空間の抜け",
+        "decision": "採用",
+        "reason": "面の向き・折れ・中央の抜けと開閉で予備/空殻の差を表せる。"
+      }
+    ],
+    "macro": "左右二枚の広い先細り四辺形。中心と顔の域を開け、actorHeightの0.57～0.69Hを主形の高さとする。",
+    "meso": "各面に共有対角線で向きの異なるreturn面を持つ。広い色面と折り目の輝度差を分離し、重なりと短縮で平面記号を避ける。",
+    "micro": "細かな繊維・亀裂・noiseは採用しない。H64で面と抜けを優先する。",
+    "material": "薄い魔法的lamella。主面は藍青、折り返しは青緑、折り目は白緑に自発光。粒子・煙・実物の紙や木片ではなく有限の宣言場。",
+    "composition": "対称な左右の輪郭と、異なる上下端位置・return面で静的なarmorやwingとの誤認を抑える計画。画素上での成立は未確認。",
+    "depth_limit": "入力が投影foot/Hのみのため、2.5Dの局所投影を採用。世界法線・壁・actor alphaを取得せず、外側のfront foldに限定。正確な3D遮蔽、他物体反射や接触は未実装。"
+  },
+  "roles": [
+    {
+      "id": 0,
+      "name": "grantSource",
+      "anchor": "可視caster",
+      "window_ms": [
+        0,
+        820
+      ],
+      "phases": "0–26ms発生、30–260ms小さなfold seedが局所的に開く、260–680ms形成済みの折り面を保つ、680–820ms解放。target方向は使わない。",
+      "meaning": "付与のsource形成。sourceにchargeを所有させる断定ではない。"
+    },
+    {
+      "id": 1,
+      "name": "grantReceipt",
+      "anchor": "明示可視recipient（selfでも同様）",
+      "window_ms": [
+        140,
+        820
+      ],
+      "phases": "140–180ms出現、160–430ms左右foldが外から定着、430–720ms開口を持つ予備foldを保持、720–820ms有限Eの終了。",
+      "meaning": "成功した受益。E終了はcharge消費を意味しない。",
+      "glints": "285–550msと335–605ms、左右のseamの二点、共通24°cross、源の光量と同じlifeに束縛。"
+    },
+    {
+      "id": 2,
+      "name": "triggerOrigin",
+      "anchor": "明示可視origin",
+      "window_ms": [
+        0,
+        1200
+      ],
+      "phases": "0–12ms発生、0–200ms空殻が左右へ開き中央が空く、280–950ms幅広い面の折り返し、950–1200ms形を保って縮む解放。粒子だけの長い尾は設計しない。",
+      "meaning": "実際に空いたoriginの有限残留。攻撃beamやdamage sparkではない。"
+    },
+    {
+      "id": 3,
+      "name": "triggerDestination",
+      "anchor": "明示current可視destinationのみ",
+      "window_ms": [
+        100,
+        1080
+      ],
+      "phases": "100–145ms出現、100–470ms身体外側で折り面が座る、470–890ms定着、890–1080ms消失。",
+      "meaning": "可視範囲の到着結果のみ。sourceからの経路・方向・音は持たない。"
+    }
+  ],
+  "clocks": {
+    "unit": "source age ms",
+    "grant_duration_ms": 820,
+    "trigger_duration_ms": 1200,
+    "visual_speed": 1,
+    "actor_time_scale": "本候補では未接続。game時計を改変しない。",
+    "rules": "immutable cause originと同じmonotonic clock。GPU完了でageを0へ戻さない。RAF/callback時刻混在をしない。stop/hidden/replacement/disposeは出力を無効化。"
+  },
+  "optics": {
+    "PH": "lamellaのseamが放射、隣接return面へ局所的に光が届く。density/coverage、material opacity、energyを別変数にする。",
+    "gradient": "主面の藍青→return面の青緑→seamの白緑をPHの表面領域/状態へ固定。world位置や背景色の判断で切り替えない。",
+    "OBS_bloom": "採用。lamella内の同じseam像の距離から2scaleのanalytic local PSFを計算。source energyと同じ時間包絡、源OFFで0。観測中心や遠いdestinationを入力にしない。厳密なlens PSFや画面畳み込みではなくsource固有の近似。",
+    "OBS_glints": "受益の定着を補強する2点のcross。全位置・全時刻24°。sparkleOffは主面を維持。v番号は明示されていないのでKeywordExpansionを偽起動しない。",
+    "flare": "不採用。小さな折り目の広がりはlocal bloomで扱い、実lens imaging/光軸は未提供。源から離れたflare/ghostを作る根拠がない。",
+    "shared_budget": "material opacity0.57～0.73、seam energy0.60～1.37の相依存、白い芯+有色面+局所PSF。値はこの設計の初期定数で一律上限や品質合格値ではない。",
+    "color_space": "shader output premultiplied linear RGBA。hostはlinear→display sRGBを一度だけ行うrender target/viewを選ぶ。alphaはradianceと別。sRGBの二重encodeや二重premultiplyをしない。",
+    "source_off": "sourceOn<0.5のearly returnによりPH/OBS/alphaすべて厳密0。MainOFF時hostはsubmitとSFXを止める。",
+    "scene_light_limit": "環境・受光面・actor textureを入力にしないため世界の床/身体/壁への正確な照明は未実装。return面の光とOBSの広がりを世界の照射と偽らない。"
+  },
+  "B_application": {
+    "active": "VFX、WebGPU runtime E、LDM（明示VFXと因果に必要な輝度包絡）、選択したlocal bloom/受益glintsのPostEffects。",
+    "keyword_expansion": "登録されたv/f/o、rim、強発光等の明示選択なし。全カタログを描画へ追加しない。",
+    "magic_preset": "個別能力名だけでpreset/魔法構成を起動しない。E固有の非現実機構は基底の宣言機構として整合させる。",
+    "domains": {
+      "Optics": "modeled: emission/面の局所受光/透過的coverage/OBSを分離。",
+      "Materials": "modeled:共有対角線を持つ広い折り面とreturn面の向き/opacity。",
+      "Thermo": "not_applicable:非熱的な宣言場。温度や燃料を主張しない。",
+      "Fluid": "neglected:運ばれる物質・煙・流体なし。風を可視化しない。",
+      "Electromagnetics": "not_applicable:導電/帯電/実電磁界の能力ではない。",
+      "Rheology": "not_applicable:粘弾性材の実解ではなく時間で規定するmagic hinge。",
+      "WaveOptics": "not_applicable PH、glintは観測表示のcross近似で実回折実証を主張しない。",
+      "SurfaceScience": "not_applicable:濡れ/吸着/接触角は存在しない。"
+    },
+    "conservation": "現実の質量/運動量/電荷の輸送を追加しない。魔法場の供給は成功causeで開始し、有限時刻で0に閉じる。光の放射量はsource相とreturn面/PSFへ一方向に結び、光を再供給する循環はない。",
+    "mapping": [
+      [
+        "DQ-01/02/07",
+        "fsMainのrole分岐",
+        "source形成→receipt/空いたorigin→有限collapseの差"
+      ],
+      [
+        "DQ-03/05",
+        "lamella",
+        "面/return/seam/抜けと近傍受光"
+      ],
+      [
+        "PostEffects/LDM",
+        "lamellaのanalytic PSF+seatingGlint",
+        "源に従う有限OBS"
+      ],
+      [
+        "DQ-06/08",
+        "sanitizeProjection/packUniform64",
+        "許可投影を先に検査してから位置を読む"
+      ],
+      [
+        "DQ-09",
+        "synthesizeSubstitutionSfx",
+        "fold draw/seatとopening/inward foldの専用PCM"
+      ],
+      [
+        "SamplingContract/DQ-11",
+        "aa=0.65/H、H規格",
+        "実H64で面と抜けと光の全寿命確認が必要"
+      ]
+    ]
+  },
+  "audio": {
+    "function": "synthesizeSubstitutionSfx(kind,{sampleRate=48000,seed=0x5eeda11}={})",
+    "output": "mono Float32 PCM, no device/network/DOM",
+    "grant": "20ms cue。480ms PCM。dry fold draw→165ms後の短いseam tone。620/934/1471Hzの異なるmodeをnoiseと分離。",
+    "trigger": "16ms cue。720ms PCM。dry broad transient→95ms後の低い内向きfold。344/517Hzの短いfalling modes。",
+    "position": "grant caster source、trigger originのみ。destinationのsoundなし。",
+    "admission": "source age20～85ms grant、16～75ms triggerのみ。現cause/generation/target GPU完了+MainON+playing+可視source。遅れてもPCM offset(age-cueOffset)から始め、ageを巻き戻さない。",
+    "lifecycle": "unlockは次のfresh causeだけをarm。hold/verify/mute/hidden/expiry/stop/replacement/disposeで鳴らさない。existing ordinary trigger soundとは排他的に選択。",
+    "acceptance": "CPU PCM解析と通常SFX聴感は別。聴感not_run。"
+  },
+  "reduced_motion": "同じ時間・発光・receipt/空殻の結果を維持。大きな左右開閉と上昇を一定の局所形へ寄せ、opacityと小さい折れの遷移へ置換。停止画像だけで合格にしない。",
+  "display_contract": {
+    "minimum_actor_height_px": 48,
+    "normal_actor_height_px": 64,
+    "maximum_review_height_px": 128,
+    "dpr": [
+      1,
+      2
+    ],
+    "normal_speed": 1,
+    "required_samples_ms": {
+      "grant": [
+        0,
+        16,
+        80,
+        160,
+        300,
+        450,
+        650,
+        780,
+        820
+      ],
+      "trigger": [
+        0,
+        16,
+        80,
+        200,
+        400,
+        700,
+        950,
+        1120,
+        1200
+      ]
+    },
+    "H64": "登録原画高→quad変換→viewport→最終描画高が64pxであることをGPU ownerが証明。uniform名だけでは不可。",
+    "judgment": "背景別の設計・弱体化・補正・合否は禁止。主形/alpha/受光/OBSの分離と同じcause時相のON/OFFを見る。"
+  },
+  "acceptance_plan": [
+    "本shaderのcompilationInfo、pipeline、実queue完了、popErrorScope、可視画素を別々に記録。",
+    "H64/1x通常速度、通常/reduced motionの全寿命を実画面で確認。主面と中央の抜けが始め/中盤/終盤で読めるか。",
+    "MainOFF/sourceOFFの透明0、OBSoff/sparkleOff比較、寿命終了・stop/hidden/replace/dispose後に残存しないこと。",
+    "不可視destinationの任意座標やNaN/getterを変えてもvisible origin uniforms/bounds/pixels/audioが不変。",
+    "正常modeのSFXを聴き、fold/seat/openと同期しクリック/割れ/仮beep/長いtailがないか確認。",
+    "独立版のGPU/品質レビュー後にrelease ownerへ逐次掲載。掲載は品質合格/本編接続/採用を意味しない。"
+  ],
+  "unresolved_limits": [
+    "実GPUcompile/pixels、実H64全寿命知覚、通常SFX聴感は未実行。",
+    "投影foot/Hだけの2.5D。キャラalphaに沿う厳密遮蔽やworld receiving surfaceへの照明は未実装。",
+    "空殻がarmor/wing/板に誤読される可能性は実画像で判定が必要。CPU形状数値で解消済みにしない。",
+    "本編のvisibility producerの修理やreceipt adapterは担当外。本候補は安全入力しか受けない。"
+  ]
+}

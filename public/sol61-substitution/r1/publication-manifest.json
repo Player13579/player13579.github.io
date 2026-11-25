@@ -1,0 +1,105 @@
+{
+  "schema": "dva-substitution-manual-review-publication/v1",
+  "publishedAt": "2026-11-25T06:55:18Z",
+  "publicEntry": "/public/sol61-substitution/r1/index.html",
+  "manualReview": {
+    "enabled": true,
+    "scope": "same-origin standalone page; manual Play only; verify query only; no iframe, startup, or retirement behavior"
+  },
+  "sourceRepo": "Player13579/windows-dva-migration",
+  "sourceCommit": "aab1c2d8042af54d7557f1fec22ceea6d7301b98",
+  "sourceRoot": "public/sol61-substitution/r1/",
+  "files": [
+    {
+      "path": "index.html",
+      "sha": "9336e7de2c1d8d366695c3b967e45bbe158e8b78",
+      "chars": 2869
+    },
+    {
+      "path": "runtime.mjs",
+      "sha": "61234805303a3b809a6ef3bf1de7a4533ed56a74",
+      "chars": 17132
+    },
+    {
+      "path": "gallery-protocol.mjs",
+      "sha": "b664e08f6928a4a85be6142e11a0b16cade4b29b",
+      "chars": 9630
+    },
+    {
+      "path": "audio-host.mjs",
+      "sha": "15e6b5f9c862aae5c7396557c643cd368a1dd30a",
+      "chars": 5844
+    },
+    {
+      "path": "gpu-renderer.mjs",
+      "sha": "2a1fd50a480af8ef55121b2cb9746dbac90b7ac8",
+      "chars": 17682
+    },
+    {
+      "path": "viewer-fixture.mjs",
+      "sha": "51d38d1df086a1bf73661900eb670650fc7c94bc",
+      "chars": 3225
+    },
+    {
+      "path": "fixture-baseline.wgsl",
+      "sha": "83ce183fc595e6a03428c45679431b9729186021",
+      "chars": 1142
+    },
+    {
+      "path": "creative/contract.mjs",
+      "sha": "e5f0a2f53f1c8187d3db7565d66792d73e3616cd",
+      "chars": 4663
+    },
+    {
+      "path": "creative/effect.wgsl",
+      "sha": "4ddef4b5351cb1d0dcc12b5a2d65b0ee3a042be7",
+      "chars": 6961
+    },
+    {
+      "path": "creative/sfx.mjs",
+      "sha": "4207f64d0b9f28b46ee642c37664c8cd7d40236b",
+      "chars": 3175
+    },
+    {
+      "path": "creative/DESIGN.json",
+      "sha": "3ca5f1fd796a981fdaf5f7a458263c57c1373b5c",
+      "chars": 10693
+    }
+  ],
+  "producer": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "2a585fefc169610abe2307b971a295f35dcb5eb3",
+    "file": "offline-server-main.js",
+    "activation": "activateAssassinSubstitution",
+    "trigger": "triggerSubstitution",
+    "triggerEvent": {
+      "durationMs": 0
+    },
+    "presentationDurationMs": 1200
+  },
+  "verification": {
+    "sourceClosure": "static-confirmed",
+    "historicalCpuFrame13": {
+      "commit": "cdd5f058393e25754a08306a71f733619f338ba4",
+      "scope": "CPU only"
+    },
+    "audioProtocolRepair": {
+      "commit": "aab1c2d8042af54d7557f1fec22ceea6d7301b98",
+      "scope": "CPU mocks only; not GPU"
+    },
+    "currentParentUiCpuSnippet": {
+      "status": "blocked",
+      "reason": "EvalError: Code generation from strings disallowed for this context",
+      "retried": false
+    },
+    "gpu": "not_run",
+    "actualVisualQuality": "not_run",
+    "sfxListening": "not_run",
+    "deviceAcceptance": "not_run",
+    "nativeIframe": "not_run",
+    "parentAutoplay": "not_run",
+    "retirement": "not_run",
+    "mainGame": "not_connected"
+  },
+  "historicalTechnicalRepairAuthors": "Preserve the technical-repair history; it does not reassign overall VFX creative authorship."
+}
