@@ -1,0 +1,102 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "ハッカーのマナGPU・短縮分の蓄積 R1",
+  "groupId": "hacker-mana-gpu-accrual-astra62",
+  "versionId": "hacker-mana-gpu-accrual-astra62-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-hacker-mana-gpu-accrual/r1/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "single",
+    "cells": 1,
+    "spend": 0.01,
+    "manaBefore": 4,
+    "manaAfter": 3.99,
+    "creditBefore": 0,
+    "creditAfter": 200,
+    "selfCurrentPlayingCommitted": true,
+    "sameDebitDepositCause": true,
+    "newSyntheticIdEachLoop": true,
+    "uniformBytes": 32,
+    "lifetimeMs": 1380,
+    "activeCells": 1,
+    "inactiveCells": 0
+  },
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "b51d8a0a458051afdaa62794f8712619309ae041"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 2129,
+      "sha256": "4c5bcbc269a9b1aff4a3059579fdfa9f43dddf15044ffcbe8dcf1bf5c394219a",
+      "gitBlob": "8dab4e632b5464b77cfd0056c5ddd4752ca7837e"
+    },
+    "preview.mjs": {
+      "bytes": 7847,
+      "sha256": "4ed07a5645271df0d030d681de53e207b0ce7107f2980cf97bdb31a6b34e9c82",
+      "gitBlob": "b113a3f9465cfb967f12316659bd4594078fab4b"
+    },
+    "publication-manifest.json": {
+      "bytes": 4731,
+      "sha256": "686f102fe18839f95911be60ab69bab8f96b3babf54945ad5c903bb1613d8cfb",
+      "gitBlob": "071cf8a1fe1f89ecb21ef15bf3cf1533d6ad78eb"
+    },
+    "accrual.mjs": {
+      "bytes": 2638,
+      "sha256": "73169f60e5dd14c4c19207658f857f9ded9740a261cfae86fcd318d726191a93",
+      "gitBlob": "b1398b313edf6865782a4f0bffbab93808b46f0d"
+    },
+    "effect.wgsl": {
+      "bytes": 3277,
+      "sha256": "c50e7c0f860909bbca17f31f38e77a18384bfb351b91010524b7f999067bc0fc",
+      "gitBlob": "9e3ece9aa7f4dd1ad58cf6a5996cb0ca82d94c6e"
+    },
+    "gallery.html": {
+      "bytes": 1401,
+      "sha256": "f75a593460bccc20e0689eeb45b9d58a959153fa6387ef7aa83390143f8d501f",
+      "gitBlob": "c944729a5bac067608d3cdef8279140d71facc90"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19",
+      "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e"
+    },
+    "gallery-effect.mjs": {
+      "bytes": 225,
+      "sha256": "0bd46c231e1e8e2567464a023168350f7f9715f1dbe9baaf7719e8a7be479133",
+      "gitBlob": "369c4e143439fa18199a0362e9375a5d561132ac"
+    }
+  },
+  "bridge": {
+    "fixtureAndGate": "original reexports unchanged",
+    "makeCue": "makeAccrualCue(rate,1) exactdelegation; no extra ratevalidator"
+  },
+  "adapter": {
+    "copyGitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e",
+    "referenceScale": [
+      292,
+      135
+    ],
+    "terminal": "reusedinactiveframe-before-finish,500msbaseline"
+  },
+  "validation": {
+    "cpu": "originalgate/1cellPCM/dependencyspy/uniform4items PASS; terminalmock PASS; parentmock7groups PASS",
+    "actualEsmLoader": "not_run",
+    "adapterInstance": "not_run",
+    "nativeGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "originalFiveUnchanged": true
+  }
+}
