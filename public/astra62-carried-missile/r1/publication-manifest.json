@@ -22,14 +22,14 @@
   },
   "files": {
     "index.html": {
-      "bytes": 1778,
-      "sha256": "4cbc930e872eb821d3a85a0445413e1e4a82ae8bc4d2b5d70f8b74569ae3d0f3",
-      "gitBlob": "63b359a8735298867e4a50c3843d3ae00211f8e9"
+      "bytes": 1806,
+      "sha256": "284519e89cf2e5fa91211ca843c9c737508b02d54a12ab91806a5bdd6ecfd1db",
+      "gitBlob": "51e115e81126ecb3d1733dd0962ac24b0edeabf6"
     },
     "effect.wgsl": {
-      "bytes": 4300,
-      "sha256": "78854a55aee6b2f3ab2fc11d08ac00f8c3d6135adcc8e22176409ee18d4e187b",
-      "gitBlob": "4c78cbf7c156dd10cf913bdfb2d22877733a1662"
+      "bytes": 4306,
+      "sha256": "22a5079d06bccaa74cc49995acc4fc7779f837c6a7bb65b3400100c6dc351c98",
+      "gitBlob": "b3b22c4a1ef8b55a0cda3cb8953691d9efd95c5e"
     },
     "missile.mjs": {
       "bytes": 2612,
@@ -37,9 +37,9 @@
       "gitBlob": "6c1465cc9349588a92ceacc83153fe2f57ec106e"
     },
     "preview.mjs": {
-      "bytes": 7969,
-      "sha256": "3080d374c5bdb97724d2b9e649e96cd633865c61eb087982bdb161815b1141dc",
-      "gitBlob": "19465f7e3089994a6ac5b5c802bc412510fd7e84"
+      "bytes": 7999,
+      "sha256": "18246e84a4831d8b2a5fbe79f41f17e3c7dafaa845144a3eebcce2e31ed65d64",
+      "gitBlob": "da11a9a066449299d56e7c69ba243ec0995f0e20"
     }
   },
   "productionMeaning": {
@@ -69,6 +69,20 @@
     }
   },
   "validation": {
+    "sourceReadback": "Current4 runtime files hash-bound in files; exact fixed-commit readback is recorded in private delivery.",
+    "syntax": "WGSL original line72 failure reproduced on real GPU, corrected declaration compiles with empty diagnostics and render pipeline succeeds. JS only changes2 cacheURL literals; original JS validation is historical.",
+    "projectionChecks": "Upper and lower endpoint orientation, missing/hidden invalid fixture, authorization/visibility/current gates with throwing getters, non-finite or out-of-bounds coordinates, degenerate segment, unvalidated-pair rejection, distinct event type, duplicate/stale serial suppression: passed.",
+    "pcm": "8000, 44100, 48000, 96000 Hz numeric checks: finite amplitude, nonzero onset and transport, fading and zero endpoint. Per-rate peak approximately 0.170, 0.136, 0.123 and 0.112 respectively.",
+    "gpu": "native wgpu-py0.33 Intel Iris Xe Vulkan: compile/pipeline and24 synchronous readbacks pass; browser host not-run",
+    "pixelQuality": "not-reviewed",
+    "publicManualPlay": "not-run",
+    "normalAudioListening": "not-run",
+    "safariIpad": "not-run",
+    "mainGame": "not-connected",
+    "wakeOrigin": "Trail support is explicitly clipped at dot(pixel-source,axis)>=0; no trail until tail clears the origin plane. Original pre-release R1 gate was up to 6 reference pixels too permissive.",
+    "technicalScope": "upper/lower × reduced0/1 × visible-baseline, age0,age350,expiry790,hidden-baseline,hidden350. Fixed frame samples and comparisons, not normal-speed lifetime or visual-quality acceptance."
+  },
+  "historicalPreRepairValidation": {
     "sourceReadback": "4/4 exact texts. File SHA-256 and Git blob IDs listed above.",
     "syntax": "preview module passed Node syntax check, missile module executed.",
     "projectionChecks": "Upper and lower endpoint orientation, missing/hidden invalid fixture, authorization/visibility/current gates with throwing getters, non-finite or out-of-bounds coordinates, degenerate segment, unvalidated-pair rejection, distinct event type, duplicate/stale serial suppression: passed.",
@@ -80,5 +94,17 @@
     "safariIpad": "not-run",
     "mainGame": "not-connected",
     "wakeOrigin": "Trail support is explicitly clipped at dot(pixel-source,axis)>=0; no trail until tail clears the origin plane. Original pre-release R1 gate was up to 6 reference pixels too permissive."
+  },
+  "technicalRevision": {
+    "id": "missile-r1-wgsl-syntax-r1",
+    "kind": "noncreative-syntax-and-cache-fix",
+    "implementationModel": "GPT-6-Luna",
+    "basePublicCommit": "7ec36b05755f4fb631ad31f7f083e044ba819c25",
+    "sourceProvenanceScope": "source.runtimeCommit retained as historical creative provenance; current technical runtime is bound by files hashes and the fixed private delivery.",
+    "creativeEditionUnchanged": true,
+    "evidenceRepository": "Player13579/windows-dva-migration",
+    "evidenceRoot": "dva/outputs/request-20261125/missile-r1-wgsl-syntax-r1/",
+    "gpuResultGitBlobSha1": "d9b9b65550482c1fc796622277d4a0235a4f0861",
+    "gpuRunGitBlobSha1": "904b2fe581951cff7aa416c9d7ccf8d9671e43f3"
   }
 }

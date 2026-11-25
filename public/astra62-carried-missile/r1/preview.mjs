@@ -146,7 +146,7 @@ async function start() {
   context = canvas.getContext('webgpu');
   if (!context) throw new Error('WebGPU表示面を取得できません。');
   format=navigator.gpu.getPreferredCanvasFormat();
-  const response=await fetch(new URL('./effect.wgsl',import.meta.url));
+  const response=await fetch(new URL('./effect.wgsl?rev=missile-r1-wgsl-syntax-r1',import.meta.url));
   if (!response.ok) throw new Error('シェーダー読み込み失敗');
   const code=await response.text();
   if (disposed || fault) return;

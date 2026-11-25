@@ -69,7 +69,8 @@ fn srgb(c:vec3f)->vec3f {
   let fading=1.0-smoothstep(650.0,757.0,t);
   col+=vec3f(0.11,0.48,0.38)*wake*groove*appear*fading;
   // A broad mint face and a shadowed lower face meet at the same keel.
-  let nose=vec2f(11.5,0), rear=vec2f(-7.5,0);
+  let nose=vec2f(11.5,0);
+  let rear=vec2f(-7.5,0);
   let top=tri(local,nose,rear,vec2f(-6.8,-4.8));
   let bottom=tri(local,nose,rear,vec2f(-7.0,4.25));
   let finA=tri(local,vec2f(-0.5,-2.2),vec2f(-10.7,-7.7),vec2f(-8.0,-1.0));
