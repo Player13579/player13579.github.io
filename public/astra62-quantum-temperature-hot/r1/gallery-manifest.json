@@ -1,0 +1,114 @@
+{
+  "schema": "dva-gallery-manifest/v1",
+  "groupId": "quantum-temperature-hot-astra62",
+  "versionId": "quantum-temperature-hot-astra62-r1",
+  "title": "クオンタム・高温水生成",
+  "target": "/public/astra62-quantum-temperature-hot/r1",
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "commit": "38bee5d347e511482ae55f2edb81cf722b0cc93d",
+    "module": {
+      "path": "hot.mjs",
+      "gitBlob": "1fc092de06b7abb7cc8f69a0c54760ad7e9056c0"
+    },
+    "shader": {
+      "path": "effect.wgsl",
+      "gitBlob": "ffbbef60a001de2deef997684c1509d23b1e07f0"
+    },
+    "permittedReceipt": "committed visible own hot/heated-water receipt only; excludes cold and acquisition"
+  },
+  "provenance": {
+    "creatorModelId": "gpt-6.2-astra",
+    "creatorResponseId": "resp_0076d6b96d6b9662006b0760105cf887d0859af582eef1a989",
+    "creatorEffort": "high",
+    "technicalDerivativeAuthorModelId": "gpt-6-luna",
+    "technicalDerivativeAuthorResponseId": "resp_061c6d77ba1118d0006b076207b2a887d0a88a53bca264c180",
+    "adapterRepository": "Player13579/player13579.github.io",
+    "adapterGitBlob": "0f3209399c7a7d13168f413b4097a5dadf2f5750",
+    "adapterPatch": "Single exact literal replacement to the startup notification age window; all other adapter source is preserved."
+  },
+  "artifacts": [
+    {
+      "path": "hot.mjs",
+      "bytes": 3471,
+      "sha256": "347e0c35e2992e579219a3d657d943159be043cf6d6f9f851b9548928013b5d0",
+      "gitBlob": "1fc092de06b7abb7cc8f69a0c54760ad7e9056c0"
+    },
+    {
+      "path": "effect.wgsl",
+      "bytes": 3854,
+      "sha256": "7bfb111f80320957e315851f23421f029c95434da2ae800edf6e276bc56ee453",
+      "gitBlob": "ffbbef60a001de2deef997684c1509d23b1e07f0"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 17887,
+      "sha256": "8e8bfbc8063aab81fa13aad7a79938d9049de0dd533345ce76ec6de5b91cfa82",
+      "gitBlob": "e38f0cae9d1bc350a7422e6c8fa29c68c524cd36"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1075,
+      "sha256": "2f1daf7c99fb150d28bf314401dea0b1a136a567cc40c585ec20aad2692e800b",
+      "gitBlob": "f7d113414aeeba3911776aeb3153432dd52cc63f"
+    }
+  ],
+  "effect": {
+    "lifetimeMs": 3080,
+    "openingRampMs": {
+      "from": 0,
+      "through": 132
+    },
+    "fadeBeginsMs": 2670,
+    "waterState": "liquid",
+    "firstFrameWindow": {
+      "uniformAgeMs": {
+        "minInclusive": 132,
+        "maxInclusive": 2669
+      },
+      "submittedAge": {
+        "minInclusive": 132,
+        "maxInclusive": 2669
+      }
+    },
+    "replayGapMs": 900,
+    "uniform": {
+      "byteLength": 32,
+      "fields": [
+        "width",
+        "height",
+        "age",
+        "scale",
+        "reduced",
+        "live",
+        0,
+        0
+      ],
+      "encoding": "Float32Array",
+      "rendering": "opaque single transfer on non-sRGB unorm"
+    },
+    "audio": {
+      "syntheticPcm": "makeCue(rate)",
+      "ordinarySoundListening": "not_run",
+      "adapterAudioPolicy": "verify audio suppressed; gesture SFX only"
+    }
+  },
+  "validation": {
+    "cpuMock": "not_run",
+    "syntax": "not_run",
+    "realGpu": "not_run",
+    "iframe": "not_run",
+    "qualityReview": "not_run",
+    "ordinarySoundListening": "not_run",
+    "gameConnection": "not_connected"
+  },
+  "adoption": "unknown",
+  "galleryListingEligible": true,
+  "publicationEligible": false,
+  "publicationEligibilityNote": "Eligible for gallery listing only; separate game publication is not eligible.",
+  "limits": [
+    "No real GPU, iframe, quality, CPU mock, syntax, or ordinary sound-listening validation has been performed.",
+    "No game connection is established; adoption is unknown.",
+    "No claim is made about normal-play behavior."
+  ]
+}
