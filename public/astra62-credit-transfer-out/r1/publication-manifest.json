@@ -1,0 +1,102 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "クレジット譲渡成立・送り手側",
+  "groupId": "credit-transfer-out-astra62",
+  "versionId": "credit-transfer-out-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified independent sender-side gallery edition for player-to-player credits. Item handoff, recipient-side Credit Acquisition, and Donation remain separate.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-credit-transfer-out/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "9854e109f2333207de3be841290ce9b974915b1d"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1974,
+      "sha256": "b71bda19080949caaac7153a0778f526bcd4e4794fe7db2efb461e989f82a92b",
+      "gitBlob": "1166cb684e17e7929400eb2d8adf8616f40b242d"
+    },
+    "credit.mjs": {
+      "bytes": 1342,
+      "sha256": "c5c2ab63225ee6d050e4a68b9dd490247dd312aaa244303ae0d3fc312d15c74f",
+      "gitBlob": "98a5027c676af025ee318ec71da65883f8708095"
+    },
+    "preview.mjs": {
+      "bytes": 7798,
+      "sha256": "0f2567037cd7b25733b25a395e2dd3798ef0577d6222ed11b9a5ccf43ca137b0",
+      "gitBlob": "516631b2c312faf894ff45435271ac7d59cb4ad3"
+    },
+    "effect.wgsl": {
+      "bytes": 3059,
+      "sha256": "573ddfe51cc79699b2ba8b5bb94d3dd5121f38b9a540f375c6c909a958b8cd97",
+      "gitBlob": "98a6c40481e15f47a6376f14be8d64561690593f"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "3282f678c978d4142ed4e7c065fb41e2149ead92",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "transferOwnedResource L12190–12240 (credit branch L12200 and outgoing event L12215); separate donateCredits L8503.",
+    "meaning": "Sender debit and grantCredits to the recipient precede the transfer-out event with variant credits. Its raw event does not carry the amount or before/after balance. No amount, balance, counterparty, world position or receiver action is needed to depict the receipt.",
+    "scope": "One synthetic current, successful owner-correlated sender receipt, kind transfer-out and variant credits. Item sends, credits received, donation, unsuccessful, foreign, stale or duplicate notifications are excluded. The projection is only a gallery fixture. This does not wire producer, serializer, or shared receiving effects."
+  },
+  "design": {
+    "primary": "A small ledger appears, a copper-faced die descends, and after contact the die lifts to expose a debossed C and an outward arrow with a raised copper edge. The single impression indicates the transaction category; it does not denote one credit, an amount, a balance, or a receipt on the other player's screen.",
+    "timing": "1800 ms. Ledger appears, die travels from 105 to 465 ms, impression forms beneath the die from 464 to 483 ms, then the die rises from 670 to 1005 ms. The isolated stamp mark remains readable before the ledger fades from 1410 to 1750 ms.",
+    "reducedMotion": "Die travel is reduced to 43% while timing, contact and imprint are retained.",
+    "sound": "One dry double-partial press at 465 ms, with a quieter short release beginning at 670 ms. No repeated credits or coin count. Verify is always muted.",
+    "technicalReuse": "Existing independent manual WebGPU host for sizing, lifecycle, cleanup and verify mute. New transaction gate, ledger, die geometry, light and audio.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "closure": "All four runtime files match the prepared text and Git blobs at the fixed runtime commit. The HTML loads preview.mjs, which imports credit.mjs and fetches effect.wgsl.",
+    "shader": "Naga via naga-wasi-cli@0.1.0 accepted the complete WGSL source.",
+    "logic": "Node checked positive one-shot acceptance and six explicit negative fixtures, repeated cause, foreign owner, bad kind/variant, stale and invalid id. A valid sender receipt had throwing amount, balance, before, after, target identity and coordinate getters; none were accessed.",
+    "sfx": "Finite mono PCM at 8/44.1/48/96 kHz. Measured silence before contact and after end, with a stronger press than release.",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.1517,
+        0.0419
+      ],
+      [
+        44100,
+        0.1522,
+        0.042
+      ],
+      [
+        48000,
+        0.1522,
+        0.042
+      ],
+      [
+        96000,
+        0.1522,
+        0.042
+      ]
+    ],
+    "host": "JavaScript host body syntax checked. Actual browser GPU and natural-size visual presentation have not been observed at candidate sealing.",
+    "unreviewed": [
+      "actual-size mark and full-lifetime motion",
+      "normal sound and synchronization",
+      "Safari / iPad",
+      "main-game integration"
+    ]
+  }
+}
