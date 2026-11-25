@@ -1,0 +1,104 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "緊急会議の開催 R1",
+  "groupId": "emergency-meeting-convened-astra62",
+  "versionId": "emergency-meeting-convened-astra62-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-emergency-meeting/r1/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "emergencyMeetingStarted",
+    "kind": "emergencyMeetingStarted",
+    "phase": "meeting",
+    "meetingId": "preview-<local-id>",
+    "newSyntheticMeetingEachLoop": true,
+    "sourceSeenMeetingSetPreserved": true,
+    "localId": "adapterdiagnostic, not a real producer claim",
+    "uniformBytes": 32,
+    "lifetimeMs": 1170,
+    "referenceScale": [
+      238,
+      158
+    ]
+  },
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "7236f20b4f9a0306d23a6b749dc7fbb89390a51c"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1494,
+      "sha256": "7fb3082cdfabc950b62e33f5831555924e12fbb6e8fb1d3e76d4df571deb540c",
+      "gitBlob": "a37e514bac145e86298dc89edd48a8411f5c5ea9"
+    },
+    "preview.mjs": {
+      "bytes": 7630,
+      "sha256": "867729200b636e54ee901d14a8a8cf173674a9e55be5384b7d97cae676317d0d",
+      "gitBlob": "1b02ab34af989ea2813f3fd7124066e0b5a53036"
+    },
+    "publication-manifest.json": {
+      "bytes": 5522,
+      "sha256": "71cc0f52085d8a704aab6fa9642e1d606462e752a4c7a9dea54cc029b9c8bd22",
+      "gitBlob": "745c93b682c275901528e38c28758aa06fc22377"
+    },
+    "announcement.mjs": {
+      "bytes": 1407,
+      "sha256": "04b909e35af854d2f920e8d160cc786ac50c3e38658bb7de5730157bffde7220",
+      "gitBlob": "73d6abd9f88e706ec8ec88181c2c02968a3d6ca3"
+    },
+    "effect.wgsl": {
+      "bytes": 4109,
+      "sha256": "a6685561b5ba8375df5fb4ca60886d56d217a9764cea767dfb5ba2ea67a89871",
+      "gitBlob": "063e409b51c07c9b182cd87a1bb5dc577b6524f3"
+    },
+    "gallery.html": {
+      "bytes": 1368,
+      "sha256": "06efaa58de4ba39d7fcf1b1a55ae3bf87854c7a625a585758d5ed245b3cc8767",
+      "gitBlob": "ed2cbb95d7d0275505bbeb9d6a86ab9462224ae3"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "806af533bd0467b591749260ecb920c73b8c858d396fece0024079732d3edc77",
+      "gitBlob": "cd7f1942e24d75aee0fdf67f568f2f20082cec08"
+    },
+    "gallery-effect.mjs": {
+      "bytes": 637,
+      "sha256": "2cee6961f727ed3aeeb5a25d769589a788212bf947964799c9c1d39d7c17152d",
+      "gitBlob": "4061d3b878649919ac8cce97954c8c133ef23251"
+    }
+  },
+  "facade": {
+    "makeGate": "delegates original createMeetingGate truth; maps accepted localid to frozen cause; invalidlocalid checkedbefore sourcegate",
+    "makeCue": "makeBellPcm exact reexport"
+  },
+  "adapterDerivative": {
+    "baseGitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e",
+    "edits": [
+      {
+        "find": "Math.max(.1,Math.min(width/292,height/135,dpr))",
+        "replace": "Math.max(.1,Math.min(width/238,height/158,dpr))"
+      }
+    ],
+    "reverseExact": true,
+    "endpoint": "reusedinactive-finalframe guard;500ms neutralbellhold"
+  },
+  "validation": {
+    "cpu": "facade/sourcegate/PCM/uniform PASS; scaleexpressionpuremath PASS; terminalsourceconditionmock PASS; parentmock7groups PASS",
+    "actualEsmLoader": "not_run",
+    "adapterInstance": "not_run",
+    "nativeGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "originalFiveUnchanged": true
+  }
+}
