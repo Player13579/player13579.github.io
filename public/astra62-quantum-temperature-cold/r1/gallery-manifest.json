@@ -1,0 +1,169 @@
+{
+  "schema": "quantum-temperature-cold-inline-gallery/v1",
+  "groupId": "quantum-temperature-cold-astra62",
+  "versionId": "quantum-temperature-cold-astra62-r1",
+  "creativeIdentity": "quantum-temperature-cold-astra62-r1",
+  "title": "クオンタム・氷結水生成 R1",
+  "creator": {
+    "modelId": "gpt-6.2-astra",
+    "displayName": "GPT-6.2-Astra"
+  },
+  "technicalDerivativeAuthor": {
+    "modelId": "gpt-6-luna",
+    "displayName": "GPT-6-Luna"
+  },
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "runtimeCommit": "fe596bbb32f7e3392d8266caf09b88959d9e680b",
+    "creativeCommit": "fe596bbb32f7e3392d8266caf09b88959d9e680b"
+  },
+  "technicalHost": {
+    "responseId": "resp_0d51ced77dfdabf2006b0761097b4087d0ab6d20eb223a98d7",
+    "modelId": "gpt-6-luna"
+  },
+  "creative": {
+    "responseId": "resp_07022675d4727e28006b075c2290bc87d0969a854c81408407",
+    "modelId": "gpt-6.2-astra",
+    "reasoningEffort": "high",
+    "edition": 1,
+    "editionLimit": 5,
+    "completedAt": "2026-11-25T22:23:09.000Z"
+  },
+  "runtime": {
+    "lifetimeMs": 3370,
+    "backgroundGapMs": 900,
+    "firstFrameAgeMsInclusive": [
+      0,
+      3010
+    ],
+    "uniformAgeMsInclusive": [
+      0,
+      3010
+    ],
+    "submittedAgeMsInclusive": [
+      0,
+      3010
+    ],
+    "requiredBeforeLifetime": {
+      "queue": true,
+      "validation": true,
+      "currentSubmission": true,
+      "sizeValidation": true,
+      "liveDevice": true
+    },
+    "pixelsProved": false
+  },
+  "shader": {
+    "file": "cooling.wgsl",
+    "entryPoints": {
+      "vertex": "vs",
+      "fragment": "fs"
+    },
+    "uniformBytes": 32,
+    "uniformLayout": [
+      "width",
+      "height",
+      "ageMs",
+      "scale292x135EffectiveDpr",
+      "reduced",
+      "live",
+      0,
+      0
+    ],
+    "devicePixelRatio": {
+      "raw": "preserved truthfully",
+      "effectiveBoundsInclusive": [
+        1,
+        2
+      ],
+      "rejectWhenTextureLimitRequiresEffectiveDprBelow": 1
+    }
+  },
+  "material": {
+    "waveMs": [
+      0,
+      1180
+    ],
+    "waveEasing": "decelerating",
+    "interfaceMs": [
+      700,
+      2240
+    ],
+    "solidHoldMs": [
+      2240,
+      3010
+    ],
+    "contrastFadeMs": [
+      3010,
+      3370
+    ],
+    "idleAfterMs": 3370,
+    "emission": false,
+    "reflection": "source-driven",
+    "refraction": "source-driven",
+    "scatter": "source-driven"
+  },
+  "audio": {
+    "onVerify": false,
+    "normalListening": "not_run"
+  },
+  "receivingInventory": {
+    "sharedExcluded": true,
+    "worldPositions": false,
+    "actors": false,
+    "finalCreatedItemRemainsInInventory": true,
+    "sampleViewEndsWithNotice": "Presentation contrast fades to idle; the created ice remains in inventory. No melting or deletion is depicted."
+  },
+  "sourceKind": "quantum-temperature-cold/ice",
+  "sourceAuthorization": "self-authorized synthetic fixture committed in the identified source workspace; no main-game connection",
+  "files": [
+    {
+      "path": "cooling.mjs",
+      "bytes": 3375,
+      "sha256": "76fd3f63dbf81cf5385f9b4c9889fee3a570547ec84f697ea1feb4ff0d1d54bd",
+      "gitBlob": "659918b469c467a8eb1a7d538633399497b97d26"
+    },
+    {
+      "path": "cooling.wgsl",
+      "bytes": 5239,
+      "sha256": "5025f0bda82ff4cdff3146dad5dd25ebb4c5295131704cd34b942447193410ba",
+      "gitBlob": "c4b4711b02a259db9e4f40ad6e1e44f76ff8ce2e"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 18147,
+      "sha256": "c663c2d9a735b00716449dc3bf3d122266eb95d23e88407989851bf51d2213ec",
+      "gitBlob": "0354e228b84502dd3ee1248abc894f2d6c4122e9"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1297,
+      "sha256": "4de739bce0eac812aef1935c8f8c0ee2509a2931329c872259952f83942b3ad7",
+      "gitBlob": "412056e85cdc877f29c59a9d032a780f64190ba4"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4336,
+      "sha256": "50e4fde28b554c9f65fc6fc6c36ee7f9f87b0f6bcd66217eff80471c6be9c46e",
+      "gitBlob": "9c107cf1acacb8a91f6686d71a31a86a9f817813"
+    }
+  ],
+  "validation": {
+    "status": "not_run",
+    "cpu": "not_run",
+    "native": "not_run",
+    "parentIframe": "not_run",
+    "visual": "not_run",
+    "syntax": "not_run",
+    "review": "not-reviewed",
+    "readinessBasis": "Runtime readiness requires real queue completion and validation plus current cause/generation, visibility, size and lifetime checks. Candidate has not been executed; pixels and quality are not proved."
+  },
+  "adoption": "unknown",
+  "userAdopted": false,
+  "creativeEdition": 1,
+  "creativeEditionLimit": 5,
+  "manualReview": false,
+  "publicationEligible": false,
+  "galleryListingEligible": true,
+  "gameIntegration": "not_connected"
+}
