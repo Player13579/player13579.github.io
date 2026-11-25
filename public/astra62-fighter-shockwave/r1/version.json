@@ -1,0 +1,34 @@
+{
+  "id": "fighter-shockwave-astra62-r1",
+  "group": "fighter-shockwave",
+  "label": "ファイターの剣衝撃波",
+  "version": "R1",
+  "author": "GPT-6.2-Astra",
+  "entry": "index.html",
+  "status": {
+    "adoption": "unadopted",
+    "quality": "manual-review-pending",
+    "gameIntegration": false,
+    "browserReplay": "unverified",
+    "sfxListening": "unverified"
+  },
+  "source": {
+    "event": "fighter-shockwave",
+    "modes": [
+      "one-body-damage:ec-cost-1:remaining-ec-N",
+      "giant-one-body-damage:ec-cost-100:remaining-ec-N"
+    ],
+    "previewGeometry": "Illustrative origin/end/width/duration in scene pixels and milliseconds. Parent game is not imported.",
+    "foundation": "Player13579/B@3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7"
+  },
+  "design": {
+    "cause": "The blade tip releases the leading edge along its instantaneous tangent. A tapered curved front carries a narrow bright pressure marker and a dark expansion immediately behind it. The tip settles independently after release.",
+    "light": "Pressure visualized with false-color contrast. No lens ghost or bloom.",
+    "sound": "A synthesized broadband shear and short bipolar pressure impulse share the release crossing. Audio enable resets the visual timeline and waits for release.",
+    "galleryAudio": "window.__gallerySfx.activateFromGesture() / stop(). Native iframe uses its own audio button. verify query always mutes."
+  },
+  "checks": {
+    "hostSyntax": "node --check preview.mjs passed",
+    "nativeReadback": "Intel Iris Xe, Vulkan. 384x176. Compared against post-expiry baseline on light and dark backgrounds. Normal and giant: changed-pixel leading edge advances at phases .2/.5/.8. At phase .5 normal span 44–45 px and giant span 91–92 px. At 1.15 both match post-expiry. Native offscreen, not a browser observation."
+  }
+}
