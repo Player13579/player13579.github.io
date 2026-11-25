@@ -1,0 +1,142 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "所持アイテムの譲渡・送り手",
+  "groupId": "inventory-item-transfer-out-astra62",
+  "versionId": "inventory-item-transfer-out-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified independent gallery edition of the sender-side item handoff. Preserve existing transfer consumer, Donation versions and the adopted receiving-side item acquisition.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-inventory-item-transfer-out/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "643856f7d1fd1d88850c5f905d6ff627177b9f14"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1999,
+      "sha256": "6c4d524d2b606d11d5b8db9654c65827e156664d7842f0f6473d0423bce221fe",
+      "gitBlob": "7a8eecc03a4a61c2d86fd3f150eb7ca6204e0ed1"
+    },
+    "preview.mjs": {
+      "bytes": 8181,
+      "sha256": "98057dd9ebaccf4ab01b2638c2fb11bdfdcd421def1627a39485b932da57e2c1",
+      "gitBlob": "c8363fbd6762d91032dd847fb50d2749ce3d5753"
+    },
+    "transfer.mjs": {
+      "bytes": 2043,
+      "sha256": "922bcf9583e03473a0072e2802929867e0c89cd087070f99eb99f88d1dae0a74",
+      "gitBlob": "99bb6fa05a15ceed7ad749a95da031ab573d47d5"
+    },
+    "effect.wgsl": {
+      "bytes": 2614,
+      "sha256": "fbe0f08ee41585829460b223f0b746193f8110ddd0fb8d4247ef1b5dd0c70518",
+      "gitBlob": "34ac71c402417b4248dfad8f27d9c5b5d2184348"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "a2732961904fc357a68f8486234a7e17f66f338a",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "transferOwnedResource L12190–12240",
+    "meaning": "The item branch removes an actual transferable item from the sender, receives it for the target, then emits transfer-out variant=item. Both the independent credit-transfer branch and the receiver's transfer-in have separate meaning. Transfer is allowed through smartphone storage regardless of distance.",
+    "scope": "An explicitly confirmed current self-owned transfer-out item receipt with matching positive quantity and exact before-minus-amount remainder. This three-slot private illustrative inventory covers 3→2, 1→0 and 3→0 only; it is not a complete adapter for every inventory type or size. No recipient identity/position/trajectory, received inventory, currency, destruction, donation or world item is shown. Fixture fields supplement the real producer and are not claimed to be on its raw event."
+  },
+  "design": {
+    "primary": "One to three lavender parcels with vertical bindings and warm paper tags sit inside the sender's storage well. Each outgoing parcel slides from its own slot and is occluded by a local egress slot with a rightward chevron. Only the actual retained parcels remain, including after natural completion or stop.",
+    "timing": "1310 ms; each parcel starts travel at 115 ms, reaches the exit by 450 ms, and following parcels are staggered 260 ms. The output gate briefly responds for each parcel. The comparison selector restores the appropriate sample inventory.",
+    "sound": "One soft rising slide, followed by one dry contact per outgoing parcel at the same 260 ms spacing. Samples are synthesized for the current transfer count, with verify mute.",
+    "reducedMotion": "Each parcel keeps its horizontal route for legibility. Vertical lift decreases from 4.5 to 0.4 reference pixels.",
+    "technicalReuse": "Previous gallery host supplies GPU init, scaling, disposal and mute behavior. Sender-side settled balance, quantity-sensitive audio, transfer gate and inventory graphic are new.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "closure": "All four runtime files matched immutable GitHub source text and Git blobs. HTML loads preview.mjs; preview imports transfer.mjs and fetches effect.wgsl.",
+    "shader": "naga-wasi-cli@0.1.0 validated the WGSL source.",
+    "logic": "Node checked all three quantity cases, duplicate/stale/ineligible/invalid quantity cases, credits/receipt/failure/other owner, and that receiver coordinates are not read.",
+    "audio": "1–3 parcels at 8/44.1/48/96 kHz yielded finite samples, correct lead and silent tail, and nonzero per-item contacts.",
+    "pcmMeasurements": [
+      [
+        8000,
+        1,
+        0.1135
+      ],
+      [
+        8000,
+        2,
+        0.1364
+      ],
+      [
+        8000,
+        3,
+        0.1364
+      ],
+      [
+        44100,
+        1,
+        0.115
+      ],
+      [
+        44100,
+        2,
+        0.139
+      ],
+      [
+        44100,
+        3,
+        0.139
+      ],
+      [
+        48000,
+        1,
+        0.1151
+      ],
+      [
+        48000,
+        2,
+        0.1389
+      ],
+      [
+        48000,
+        3,
+        0.1389
+      ],
+      [
+        96000,
+        1,
+        0.1151
+      ],
+      [
+        96000,
+        2,
+        0.139
+      ],
+      [
+        96000,
+        3,
+        0.139
+      ]
+    ],
+    "host": "JavaScript host body syntax checked. Actual browser GPU and final inventory pixels are unobserved at sealing.",
+    "unreviewed": [
+      "actual size and natural-speed visible endpoint and residual count",
+      "ordinary SFX listening and synchronization",
+      "Safari and iPad",
+      "game integration"
+    ]
+  }
+}
