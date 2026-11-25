@@ -1,0 +1,102 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "千里眼のMP枯渇終了",
+  "groupId": "clairvoyance-depletion-astra62",
+  "versionId": "clairvoyance-depletion-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified independent gallery edition for the depletion end reason. Existing clairvoyance, observation, warp and camera behavior preserved.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-clairvoyance-depletion/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "71c30142040d91f094c096f8288163d59e19c6eb"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1854,
+      "sha256": "a054bec6e03bf6444687fbf56ee5d156dd8367f4c420ba9d2e80a3a676b82963",
+      "gitBlob": "4a2bd91bebf02bd6f2c434e594dac92392dfe6ce"
+    },
+    "depletion.mjs": {
+      "bytes": 1630,
+      "sha256": "204142831ddb4d24a3fa379e09ca26504bf500732e69e31ea6d9ad6459a735fd",
+      "gitBlob": "b406e346a5c634119b7b2faa248db5d3c55f1d3d"
+    },
+    "preview.mjs": {
+      "bytes": 7806,
+      "sha256": "7409abd8c1e266c7dc0b5be3d9080ceddc3430ebcd82fd30b355fce7d535d253",
+      "gitBlob": "d4dc1c50928a5199e2e906a4e5afa9ade0b227d5"
+    },
+    "effect.wgsl": {
+      "bytes": 2638,
+      "sha256": "7ee2409268290ad35c5910cabb72b9f6640341eb945fe81ea5cd5852cbf71a82",
+      "gitBlob": "d39a0a06940695ec6bcac13aee3fb28e1542de9d"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "b43407b05b25d3bc8118a7b8b7efb6a6d94a021e",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "advanceClairvoyanceMana L8829–8848; distinguish setClairvoyanceActive manual-off L8809–8815.",
+    "meaning": "During active play a scheduled drain that actually empties the observer's mana stops clairvoyance and emits the specific MP depletion event. A meeting pauses this drain; other invalid-state cleanup and manual deactivation are separate.",
+    "scope": "Only a synthetic explicit current, confirmed, self-owned depletion receipt showing active→inactive and zero remaining mana can start the sign. Zero mana and an inactive snapshot alone cannot identify the cause. No remote player, position, observed image, camera data, actual mana gauge, teleport or world effect is requested or drawn. This preview does not parse prose or assert that an equivalent typed receipt already exists in the client."
+  },
+  "design": {
+    "visual": "A small turquoise optical status sign briefly shows its aperture, pupil and one off-axis highlight. Illumination drains first. The curved upper and lower rims then close onto a single bowed seam; a short local afterglow and the seam recede.",
+    "time": "1070 ms. The powered highlight extinguishes from 112–310 ms, the aperture closes from 238–610 ms, the finite seam contracts from 725–1002 ms and all light clears by 1028 ms.",
+    "reducedMotion": "Initial opening decreases from 13.8 to 8 reference units on each side of the seam; positions and timing are otherwise preserved.",
+    "sound": "A decaying downward tone stops by 380 ms. A quieter damped contact cue accompanies rim closure at 610 ms. Verification is silent.",
+    "provenance": "Original depletion geometry, lighting, envelope, reason projection and PCM. Technical manual WebGPU lifecycle, verify mute and cleanup derive from the existing gallery host.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "closure": "All four runtime files compared by text and Git blob against their sealed commit. index → preview.mjs → depletion.mjs + effect.wgsl.",
+    "shader": "Naga via naga-wasi-cli@0.1.0 validated the WGSL.",
+    "logic": "Checked positive, repeat, stale, foreign, non-committed, manual, teleport, snapshot, incorrect active state and non-zero/invalid mana. A valid throwing target getter was not accessed; denied causes do not read the resource projection.",
+    "audio": "8/44.1/48/96 kHz finite PCM: first and closure peaks are separate, middle gap and ending are zero.",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.0894,
+        0.0708
+      ],
+      [
+        44100,
+        0.09,
+        0.0708
+      ],
+      [
+        48000,
+        0.09,
+        0.0708
+      ],
+      [
+        96000,
+        0.09,
+        0.0708
+      ]
+    ],
+    "host": "JavaScript host body syntax checked. Browser execution and GPU visual quality were not observed at sealing.",
+    "unreviewed": [
+      "natural-size motion through the full lifetime",
+      "normal audio listening and sync",
+      "Safari and iPad",
+      "game integration"
+    ]
+  }
+}
