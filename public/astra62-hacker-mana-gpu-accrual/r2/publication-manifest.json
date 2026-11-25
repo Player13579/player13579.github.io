@@ -1,0 +1,126 @@
+{
+  "schema": "dva-gallery-creative-candidate/v1",
+  "groupId": "hacker-mana-gpu-accrual-astra62",
+  "versionId": "hacker-mana-gpu-accrual-astra62-r2",
+  "title": "ハッカーのマナGPU・短縮分の蓄積 R2",
+  "edition": 2,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "c6b0ab272b6ed14142e5807752d0c5347a6b6bae"
+  },
+  "parentEdition": {
+    "versionId": "hacker-mana-gpu-accrual-astra62-r1",
+    "privateCandidate": "b2e245db906310c8e4a2b029f7fac68ef714c2b5",
+    "publicReference": "c7f51806d515bf72d28b7b2a86ab769575b2cf14",
+    "originalShaderBlob": "9e3ece9aa7f4dd1ad58cf6a5996cb0ca82d94c6e"
+  },
+  "standaloneEntry": "index.html",
+  "expectedGalleryEntry": "gallery.html",
+  "standardFixture": "single",
+  "publicationEligible": false,
+  "galleryAdapterStatus": "separate technical integration pending",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "producer": {
+    "repository": "Player13579/player13579.github.io",
+    "ref": "cc3927a4c56d66ae616037a01399fa4b02e3f0f0",
+    "path": "offline-server-main.js",
+    "symbol": "advanceHackerManaGpu",
+    "lines": "15483–15506",
+    "semantics": "Eligible playing passive accrues fractional carry, spends when at least 0.01 MP is available and converts the computed spend at 20000 ms/MP into stored cooldown credit. useAlchemy consumes that credit separately at lines 15532–15537. This example represents a single ordinary confirmed accrual without modifying the active cooldown."
+  },
+  "scope": "Two explicit single-step own fixtures with initial zero stored credit and regular mana cost, 0.01→200 ms or 0.02→400 ms. No automatic tick subscription, previous balance reconstruction or conversion-result/cooldown change. Carry only, meeting, later credit usage, snapshot, mismatched causes and foreign records are rejected. No other actor or map data.",
+  "design": {
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    },
+    "subject": "Mana charge travels from a short cyan feed to the central compute die. Its warm output follows a common conductor into one or two register windows, each storing 200 ms for a future generation.",
+    "timingMs": {
+      "frameIn": [
+        0,
+        82
+      ],
+      "input": [
+        145,
+        430
+      ],
+      "computation": [
+        339,
+        720
+      ],
+      "firstDeposit": 619,
+      "optionalSecondDeposit": 814,
+      "holdUntil": 1150,
+      "end": 1380
+    },
+    "display": "202 by 64 logical px assembly, inset as a single viewer-owned instrument. Reduced motion keeps the incoming charge at the feed and suppresses traveling register pulses while preserving die and register states.",
+    "postEffect": "A tight and a broader analytic optical response follow each live source. Material reflections are separately masked to the channel, central package, conductor or local cell bezel. Colored HDR contributions compress in linear light before conversion to sRGB. Finite board and light fade over the original event's last 220 ms.",
+    "audio": "Input tone sweep followed by a detent for each actual deposit. Verify mode forced silent.",
+    "revision": "The cyan packet emits from its own moving location and lights the inner feed lip. The central die shifts through cyan and warm amber as it accepts the packet and lights its raised package edge. A traveling output lights the local bus until it reaches one or two individually gated storage cells. Activated recessed glass windows have a bright internal filament, a lit bezel and localized optical spill onto the surrounding board. The physical divider and dark glass reduce light entering the unused cell while its bezel and surrounding board can receive light.",
+    "layoutAndAccessibility": "Same 202×64 logical panel and anchor positions, legible register count, original reduced-motion behavior, unchanged mechanical timings and quantity-sensitive audio."
+  },
+  "files": {
+    "index.html": {
+      "bytes": 2129,
+      "sha256": "9c89f0a4a375288baad8e75c84d440c1f05d046cef722e1bcbc847a74bc566e8",
+      "gitBlob": "530e4783f2084ba34b8014381a89c8afbf08c883"
+    },
+    "preview.mjs": {
+      "bytes": 7847,
+      "sha256": "ceb0cb1044f44befb33a67228074552f2640722f49930bff47fb0d36e3e8a3f1",
+      "gitBlob": "f8d1cce946e32bedd1079477ed837901a01eaede"
+    },
+    "accrual.mjs": {
+      "bytes": 2638,
+      "sha256": "027ee5930369d06040caa9352f0f349676c9c32757c3e61e0e7796ee628de3c1",
+      "gitBlob": "1a54f8473de9fed800a15b500751c8704c0eb5b9"
+    },
+    "effect.wgsl": {
+      "bytes": 6003,
+      "sha256": "e7454fbc735fbde0ef8b27c807eff3ec864629c4da7fc0076b8e7e6ba59a314d",
+      "gitBlob": "d652d95ddd7d3a3820d966a4b468d39335c5f318"
+    }
+  },
+  "validation": {
+    "bounded": "Positive and duplicate/out-of-order gates, six negative fixtures and unknown; source comparisons verify that only the version string and cache reference changed in the flow and audio modules; samples at four rates for one/two cells, finite samples and second-tap discrimination; standalone host parses.",
+    "wgsl": "naga-wasi-cli@0.1.0 validation successful",
+    "registerLightReference": {
+      "basis": "Independent arithmetic check of the visible register field along y=-5, held age 900 ms, same scale, encoded RGB. Single cell at x54, board between cells at x65, second at x78. These numbers are not browser capture or native rendered pixels.",
+      "samples": {
+        "singleFirst": [
+          0.9952,
+          0.8742,
+          0.4285
+        ],
+        "singleBoardInGap": [
+          0.541,
+          0.3623,
+          0.183
+        ],
+        "singleSecond": [
+          0.1819,
+          0.1682,
+          0.1413
+        ],
+        "doubleSecond": [
+          0.9955,
+          0.8775,
+          0.4319
+        ]
+      }
+    },
+    "runtimeReadback": "4/4 exact source text and git blob identities at immutable runtime",
+    "nativeWebGPU": "not evaluated",
+    "actualSizeGlow": "not evaluated",
+    "ordinaryAudioListening": "not evaluated",
+    "parentInline": "pending separate integration"
+  }
+}

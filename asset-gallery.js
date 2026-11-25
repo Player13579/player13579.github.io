@@ -423,12 +423,45 @@ function isAimR5BoundTarget(attempt){return attempt?.childProtocolVersionId===AI
   "id": "hacker-mana-gpu-accrual-astra62",
   "title": "ハッカーのマナGPU・短縮分の蓄積",
   "category": "effect",
-  "defaultVersionId": "hacker-mana-gpu-accrual-astra62-r1",
-  "latestVersionId": "hacker-mana-gpu-accrual-astra62-r1",
+  "defaultVersionId": "hacker-mana-gpu-accrual-astra62-r2",
+  "latestVersionId": "hacker-mana-gpu-accrual-astra62-r2",
   "firstPublishedAt": "2026-11-25T13:44:52.756Z",
   "adoption": "unknown",
   "integration": "not-integrated",
   "versions": [
+    {
+      "id": "hacker-mana-gpu-accrual-astra62-r2",
+      "title": "ハッカーのマナGPU・短縮分の蓄積 R2・発光改善",
+      "creatorModelId": "gpt-6.2-astra",
+      "creatorDisplayName": "GPT-6.2-Astra",
+      "page": "/public/astra62-hacker-mana-gpu-accrual/r2/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=hacker-mana-gpu-accrual-astra62-r2",
+      "sourceUrl": "/public/astra62-hacker-mana-gpu-accrual/r2/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=hacker-mana-gpu-accrual-astra62-r2",
+      "source": "/public/astra62-hacker-mana-gpu-accrual/r2/gallery-manifest.json",
+      "manualReview": false,
+      "automaticIframe": true,
+      "status": "発光改善R2・1セル蓄積（実画面・品質・聴感未確認）",
+      "detail": "R1の.01MP→200msの合成確定・1窓619ms点灯・1380ms・元PCMと造形を維持し、入力/中央ダイ/点灯窓の発光を改稿した独立R2。本編未接続・採用未確認。",
+      "publicationEligible": false,
+      "galleryListingEligible": true,
+      "qualityReviewStatus": "not-reviewed",
+      "qualityAccepted": false,
+      "technicalReplayStatus": "cpu-gate-single-pcm-uniform32-parent-pass-browser-native-not-run",
+      "normalAudioListening": "not_run",
+      "nativeSourceStatus": "not_run",
+      "parentGalleryReplayStatus": "not_run",
+      "adoption": "unknown",
+      "userAdopted": false,
+      "gameIntegrationStatus": "not_connected",
+      "publicationKind": "creative",
+      "creativeIdentity": "hacker-mana-gpu-accrual-astra62-r2",
+      "creativeFirstPublishedAt": "2026-11-25T19:49:40.605Z",
+      "creativeEdition": 2,
+      "sourceSha256": "73986cac738b93b56e2693edfecd764dd396765204db96c52e3351cffc77d807",
+      "firstPublishedAt": "2026-11-25T19:49:40.605Z",
+      "creativeEditionLimit": 5,
+      "technicalDerivativeAuthorModelId": "gpt-6-luna",
+      "technicalDerivativeAuthorDisplayName": "GPT-6-Luna"
+    },
     {
       "id": "hacker-mana-gpu-accrual-astra62-r1",
       "title": "ハッカーのマナGPU・短縮分の蓄積 R1",
@@ -1085,6 +1118,7 @@ function newCleanroomNoDeviceRetirementReceiptValid(event, attempt, pin, origin)
 return newCleanroomNoDeviceRetirementReceiptValid;})();
 const OVERHEAL_NO_DEVICE_PIN=Object.freeze({"versionId":"overheal-benefit-cleanroom-sol61-r1","route":"/public/sol61-overheal-benefit/cleanroom-r1/index.html","packageSchema":"dva-overheal-cleanroom-gallery/v1","packageManifestSha256":"eebe254c6dceda2d21c649c5c4492312792f14443c722dbe12fb96cb40c2b82b","packageSealSha256":"eb1ee1576a4916e740187d15831bc2d0b5558bac0a7f96ca7abaa6a4b30f7d5a","sourceManifestSha256":"b61db6977a09b9e10f7370fed8a26a0b10bb1da335c3c08eaeec30937ea6b0c7"});
 function galleryChildRetirementReceiptIsValid(event, attempt) {
+  if (galleryChildManaGpuAccrualR2KnownVersion(attempt)) return galleryChildManaGpuAccrualR2ReceiptIsValid(event, attempt);
   if (galleryChildClairvoyanceStartR2KnownVersion(attempt)) return galleryChildClairvoyanceStartR2ReceiptIsValid(event, attempt);
   if (galleryChildQuantumFissionChainR1KnownVersion(attempt)) return galleryChildQuantumFissionChainR1ReceiptIsValid(event, attempt);
   if (galleryChildLuminousPublicR3KnownVersion(attempt)) return galleryChildLuminousPublicR3ReceiptIsValid(event, attempt);
@@ -3646,7 +3680,122 @@ function galleryChildClairvoyanceStartR2Retire(attempt) {
   });
   return attempt.retirementPromise;
 }
+function galleryChildManaGpuAccrualR2KnownVersion(attempt) {
+  return !!attempt && (attempt.versionId === "hacker-mana-gpu-accrual-astra62-r2" || attempt.childProtocolVersionId === "hacker-mana-gpu-accrual-astra62-r2");
+}
+
+function galleryChildManaGpuAccrualR2StrictTarget(attempt) {
+  try {
+    var id = "hacker-mana-gpu-accrual-astra62-r2";
+    if (!attempt || attempt.versionId !== id || attempt.childProtocolVersionId !== id || attempt.origin !== location.origin) return false;
+    var iframe = attempt.iframe;
+    if (!(iframe instanceof HTMLIFrameElement) || iframe.isConnected !== true || !iframe.contentWindow || !attempt.url || !iframe.src || typeof attempt.token !== "string" || !/^[a-f0-9]{32}$/.test(attempt.token) || !Number.isSafeInteger(attempt.issuedEpoch) || attempt.issuedEpoch <= 0) return false;
+    function routeURL(value) {
+      var url = new URL(value, location.href), params = url.searchParams;
+      if (url.origin !== attempt.origin || url.pathname !== "/public/astra62-hacker-mana-gpu-accrual/r2/gallery.html" || url.username !== "" || url.password !== "" || url.hash !== "") return null;
+      var allowed = {embed:1, galleryAutoLoop:1, galleryVersionId:1, galleryStartupToken:1, galleryAttemptEpoch:1, verify:1, galleryRelease:1, height:1};
+      for (var pair of params) if (!Object.prototype.hasOwnProperty.call(allowed, pair[0])) return null;
+      function exactlyOne(key, value) {
+        var values = params.getAll(key);
+        return values.length === 1 && values[0] === value;
+      }
+      function optionalFixed(key, value) {
+        var values = params.getAll(key);
+        return values.length === 0 || (values.length === 1 && values[0] === value);
+      }
+      var verify = params.getAll("verify");
+      if (!exactlyOne("embed", "1") || !exactlyOne("galleryAutoLoop", "1") || !exactlyOne("galleryVersionId", id) || !exactlyOne("galleryStartupToken", attempt.token) || !exactlyOne("galleryAttemptEpoch", String(attempt.issuedEpoch)) || !optionalFixed("galleryRelease", "vibe-record-diagnostic-20261001-r49") || !optionalFixed("height", "64") || verify.length > 1) return null;
+      return url;
+    }
+    var declared = routeURL(attempt.url), actual = routeURL(iframe.src);
+    return !!declared && !!actual && declared.searchParams.has("verify") === actual.searchParams.has("verify");
+  } catch (_) { return false; }
+}
+
+function galleryChildManaGpuAccrualR2ReceiptIsValid(event, attempt) {
+  try {
+    if (!galleryChildManaGpuAccrualR2StrictTarget(attempt)) return false;
+    var data = event && event.data;
+    if (!event || event.source !== attempt.iframe.contentWindow || event.origin !== attempt.origin || !data || data.schema !== "dva-gallery-startup/v1" || data.action !== "retired" || data.status !== "cancelled" || data.stage !== "playing" || data.versionId !== attempt.childProtocolVersionId || data.token !== attempt.token || data.attemptEpoch !== attempt.issuedEpoch || !Number.isSafeInteger(data.sequence) || !(data.sequence > attempt.sequence)) return false;
+    var life = data.lifecycle, device = life && life.device, audio = life && life.audio;
+    if (!life || life.bootSettled !== true || life.disposeSettled !== true || life.teardown !== "disposed" || life.pendingWork !== 0 || !Number.isSafeInteger(life.submitted) || !Number.isSafeInteger(life.completed) || life.submitted < 0 || life.completed !== life.submitted || life.contextUnconfigured !== true || life.rafPending !== false || life.loopTimerPending !== false || life.observerDisconnected !== true || !Array.isArray(life.cleanupErrors) || life.cleanupErrors.length !== 0 || !audio || audio.disposeSettled !== true || !["absent", "closed"].includes(audio.contextState) || audio.activeVoices !== 0 || !device) return false;
+    if (life.deviceLifecycle === "destroyed-loss-settled" && device.status === "destroyed-loss-settled") return device.drained === true && device.destroyCalled === true && device.lostReason === "destroyed";
+    return life.deviceLifecycle === "not-created" && device.status === "not-created" && device.drained === true && device.destroyCalled === false && device.lostReason === null && life.submitted === 0 && life.completed === 0;
+  } catch (_) { return false; }
+}
+
+function galleryChildManaGpuAccrualR2Retire(attempt) {
+  if (!attempt) return Promise.resolve(false);
+  if (attempt.retirementPromise) return attempt.retirementPromise;
+  if (!galleryChildManaGpuAccrualR2StrictTarget(attempt)) return Promise.resolve(false);
+  attempt.retired = true;
+  attempt.epoch = ++galleryChildAttemptSerial;
+  attempt.retiredReason = "retire";
+  galleryChildClearTimers(attempt);
+  window.removeEventListener("message", attempt.onMessage);
+  attempt.retirementPromise = new Promise(function (resolve) {
+    var settled = false, timer;
+    function finish(value, receipt, detail) {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      window.removeEventListener("message", onMessage);
+      attempt.retirementStatus = value ? "retired" : "failed";
+      if (value) {
+        attempt.sequence = receipt.sequence;
+        attempt.retirementReceipt = receipt;
+        sfxBridge?.detachFrame(attempt.iframe);
+        attempt.iframe?.remove();
+      }
+      var ownsStatus = activeGalleryChildStartup === attempt && (!activeAudioFrame || activeAudioFrame === attempt.iframe);
+      if (value) {
+        if (activeGalleryChildStartup === attempt) activeGalleryChildStartup = null;
+        if (activeAudioFrame === attempt.iframe) {
+          activeAudioFrame = null;
+          activeAudioItem = null;
+        }
+        if (ownsStatus) galleryChildClearStatus();
+      } else if (ownsStatus) {
+        var node = galleryChildStatusNode();
+        if (node) {
+          node.hidden = false;
+          node.textContent = detail || "Gallery retirement failed";
+        }
+      }
+      resolve(value);
+    }
+    function onMessage(event) {
+      if (galleryChildManaGpuAccrualR2ReceiptIsValid(event, attempt)) {
+        finish(true, event.data);
+        return;
+      }
+      var data = event && event.data;
+      if (galleryChildManaGpuAccrualR2StrictTarget(attempt) && event && event.source === attempt.iframe.contentWindow && event.origin === attempt.origin && data && typeof data === "object" && data.schema === "dva-gallery-startup/v1" && !("action" in data) && data.versionId === attempt.childProtocolVersionId && data.token === attempt.token && data.attemptEpoch === attempt.issuedEpoch && Number.isSafeInteger(data.sequence) && data.sequence > attempt.sequence && data.status === "pending" && ["child-document", "adapter", "device", "assets", "pipelines", "first-frame", "playing"].includes(data.stage)) {
+        attempt.sequence = data.sequence;
+        try {
+          attempt.iframe.contentWindow.postMessage({schema:"dva-gallery-startup/v1", action:"retire", versionId:attempt.childProtocolVersionId, token:attempt.token, attemptEpoch:attempt.issuedEpoch}, attempt.origin);
+        } catch (_) {
+          finish(false, null, "Gallery retirement failed");
+        }
+        return;
+      }
+      if (!galleryChildManaGpuAccrualR2StrictTarget(attempt) || !event || event.source !== attempt.iframe.contentWindow || event.origin !== attempt.origin || !data || data.schema !== "dva-gallery-startup/v1" || data.action !== "retire-error" || data.versionId !== attempt.childProtocolVersionId || data.token !== attempt.token || data.attemptEpoch !== attempt.issuedEpoch || !Number.isSafeInteger(data.sequence) || !(data.sequence > attempt.sequence) || !data.lifecycle || data.lifecycle.teardown !== "unknown") return;
+      finish(false, null, "Gallery retirement failed");
+    }
+    window.addEventListener("message", onMessage);
+    timer = setTimeout(function () {
+      finish(false, null, "Gallery retirement timed out");
+    }, 10000);
+    try {
+      attempt.iframe.contentWindow.postMessage({schema:"dva-gallery-startup/v1", action:"retire", versionId:attempt.childProtocolVersionId, token:attempt.token, attemptEpoch:attempt.issuedEpoch}, attempt.origin);
+    } catch (_) {
+      finish(false, null, "Gallery retirement failed");
+    }
+  });
+  return attempt.retirementPromise;
+}
 function isValidatedRetirementTarget(attempt) {
+  if (galleryChildManaGpuAccrualR2KnownVersion(attempt)) return galleryChildManaGpuAccrualR2StrictTarget(attempt);
   if (galleryChildClairvoyanceStartR2KnownVersion(attempt)) return galleryChildClairvoyanceStartR2StrictTarget(attempt);
   if (galleryChildQuantumFissionChainR1KnownVersion(attempt)) return galleryChildQuantumFissionChainR1StrictTarget(attempt);
   if (galleryChildLuminousPublicR3KnownVersion(attempt)) return galleryChildLuminousPublicR3StrictTarget(attempt);
@@ -3690,6 +3839,7 @@ function retireGalleryChildStartup(reason = 'selection-changed') {
   previewStatusPoll = null;
   if (!attempt) { galleryChildClearStatus(); return Promise.resolve(true); }
   if (attempt.retirementPromise) return attempt.retirementPromise;
+  if (galleryChildManaGpuAccrualR2KnownVersion(attempt)) return galleryChildManaGpuAccrualR2Retire(attempt);
   if (galleryChildClairvoyanceStartR2KnownVersion(attempt)) return galleryChildClairvoyanceStartR2Retire(attempt);
   if (galleryChildQuantumFissionChainR1KnownVersion(attempt)) return galleryChildQuantumFissionChainR1Retire(attempt);
   if (galleryChildLuminousPublicR3KnownVersion(attempt)) return galleryChildLuminousPublicR3Retire(attempt);

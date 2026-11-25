@@ -1,0 +1,118 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "groupId": "hacker-mana-gpu-accrual-astra62",
+  "versionId": "hacker-mana-gpu-accrual-astra62-r2",
+  "creativeEdition": 2,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "technicalAuthor": "GPT-6-Luna",
+  "reusedAdapter": {
+    "author": "GPT-6.1-Sol",
+    "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e",
+    "byteUnchanged": true
+  },
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "runtimeCommit": "c6b0ab272b6ed14142e5807752d0c5347a6b6bae",
+    "creativeManifestCommit": "2f43d8e04da28591fdcaf76b98432e38648b82c6"
+  },
+  "entry": "gallery.html",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=hacker-mana-gpu-accrual-astra62-r2",
+  "protocol": "dva-gallery-startup/v1",
+  "standardFixture": "single",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "cpu": "PASS_LIMITED_SINGLE_MODULE_PCM_UNIFORM_AND_PARENT_PREDICATE",
+  "adapterInstanceCpu": "not_run; identical shared R1 public adapter bytes",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "normalAudioListening": "not_run",
+  "originalManifest": "publication-manifest.json",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2129,
+      "sha256": "9c89f0a4a375288baad8e75c84d440c1f05d046cef722e1bcbc847a74bc566e8",
+      "gitBlob": "530e4783f2084ba34b8014381a89c8afbf08c883",
+      "preserved": true
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 7847,
+      "sha256": "ceb0cb1044f44befb33a67228074552f2640722f49930bff47fb0d36e3e8a3f1",
+      "gitBlob": "f8d1cce946e32bedd1079477ed837901a01eaede",
+      "preserved": true
+    },
+    {
+      "path": "accrual.mjs",
+      "bytes": 2638,
+      "sha256": "027ee5930369d06040caa9352f0f349676c9c32757c3e61e0e7796ee628de3c1",
+      "gitBlob": "1a54f8473de9fed800a15b500751c8704c0eb5b9",
+      "preserved": true
+    },
+    {
+      "path": "effect.wgsl",
+      "bytes": 6003,
+      "sha256": "e7454fbc735fbde0ef8b27c807eff3ec864629c4da7fc0076b8e7e6ba59a314d",
+      "gitBlob": "d652d95ddd7d3a3820d966a4b468d39335c5f318",
+      "preserved": true
+    },
+    {
+      "path": "publication-manifest.json",
+      "bytes": 6434,
+      "sha256": "2599beae3e6a7cfa71ea9340c5eb70735627afb71eb1300a1c4691b4a6681c78",
+      "gitBlob": "876742c6104c12754f8338c0fdbacda6dbe04a02",
+      "preserved": true
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19",
+      "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1438,
+      "sha256": "a46bbf4e0bf241fb97164ad7ffa13ee8d989e05d7d3d00ff1cc35715c8e59aab",
+      "gitBlob": "8188fa2d7cbc689675a3797d32818f4c33cd7910"
+    },
+    {
+      "path": "gallery-effect.mjs",
+      "bytes": 300,
+      "sha256": "6c6aeee2e10f4708660b266cac00ce8332319c3d0a901bcd060f98023447219b",
+      "gitBlob": "8dbd61d92998845a72a2f01211034ebb23fb6698"
+    }
+  ],
+  "lifetimeMs": 1380,
+  "interCauseRestMs": 500,
+  "uniform": {
+    "bytes": 32,
+    "values": [
+      "width",
+      "height",
+      "ageMs",
+      "scale",
+      "reduced",
+      "live",
+      "live ? 1 : 0",
+      0
+    ]
+  },
+  "audio": {
+    "originalFunctionUnchanged": true,
+    "delegation": "makeCue(rate,1)",
+    "singleSecondTap": "silent"
+  },
+  "r1Preserved": true,
+  "notes": [
+    "Original R2 five files, source emission/glow,1/2cell standalone fixtures,1380ms and PCM remain unchanged.",
+    "Gallery only uses source single fixture (one deposited cell), fixed one-cell uniform and original makeCue(rate,1).",
+    "Both facade imports resolve the same R2 module query; no module identity split.",
+    "R1 item, original first date, unknown adoption,9publicfiles and historical audio remain unchanged.",
+    "CPU scope only; no actual instance/GPU/pixels/selector UI/listening verification.",
+    "No denied host/test/delete operation touched."
+  ]
+}
