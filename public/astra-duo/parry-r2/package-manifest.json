@@ -17,8 +17,7 @@
   "qualityReviewEffort": "high",
   "qualityReviewEvidence": "/public/astra-duo/parry-r2/quality-review.json",
   "visualReviewStatus": "conditional",
-  "technicalReplayStatus": "pass-limited-current-public-parent",
-  "nativeEvidenceRunId": "2026-11-18T21-49-42-803Z-12fe6c93-2d61-4dcc-988e-08501419cf42",
+  "technicalReplayStatus": "pending-native-startup-contract-r1",
   "normalAudioListening": "not_run",
   "sfxListeningStatus": "not_run",
   "safariReplayStatus": "unverified",
@@ -28,13 +27,13 @@
   "files": [
     {
       "route": "/public/astra-duo/parry-r2/index.html",
-      "sha256": "3547b436c505fefe56e5dbe8d7a1ba4ae3d8ea36047f3a1250fb4b0d2609d2ca",
-      "bytes": 603
+      "sha256": "54c36119cb64bded7e5f240ab0db2d39c4c0c2c7a1839f23a1e2115b0e4f0767",
+      "bytes": 634
     },
     {
       "route": "/public/astra-duo/parry-r2/gallery-adapter.mjs",
-      "sha256": "54111e420fa33584941d30b3904378591d0050d13f7557c97a91be98a3bf9481",
-      "bytes": 7708
+      "sha256": "85a5ed1d61b763fd9a8ab483a43aeb9313fe360f7ba510799d41ccfabca6052e",
+      "bytes": 9631
     },
     {
       "route": "/public/astra-duo/parry-r2/effect.mjs",
@@ -50,5 +49,30 @@
   "preservesPriorVersions": [
     "fighter-slash-parry-astra62-r4",
     "fighter-slash-parry-astra62-r3"
-  ]
+  ],
+  "technicalRevisionId": "fighter-slash-parry-astra62-r2-startup-contract-r1",
+  "visualReviewScope": "Historical creative review preserved; current technical adapter has no native review.",
+  "technicalVerification": {
+    "cpu": "pass",
+    "nativeGpu": "not_run",
+    "currentPublicParentReplay": "not_run",
+    "pixels": "not_run",
+    "audioListening": "not_run",
+    "retirement": "original-unmodified-not-tested"
+  },
+  "historicalNativeEvidenceRunId": "2026-11-18T21-49-42-803Z-12fe6c93-2d61-4dcc-988e-08501419cf42",
+  "cpuEvidence": {
+    "repository": "Player13579/windows-dva-migration",
+    "path": "dva/outputs/request-20261125/parry-r1-r2-r3-startup-contract-r1/parry-r2/CPU-EVIDENCE.json",
+    "testGitBlobSha1": "cb3c8ceac3e726f695efc3683099422750811652",
+    "receiptGitBlobSha1": "b6aca0e3515c5f369520f50a598425bddce53111",
+    "groups": 5,
+    "result": "pass",
+    "scope": "Controlled fake GPU queue/scopes and literal current parent admission predicates; unrelated specialized branches stubbed as nonmatching. No complete initialization, dynamic effect import, shader compile, real parent iframe, GPU or pixel run."
+  },
+  "technicalImplementationModels": [
+    "GPT-6-Luna"
+  ],
+  "harnessImplementationModel": "GPT-6.1-Sol",
+  "technicalChangeBoundary": "Startup proof/error stages and index cache query only; creative edition, shader/effect/SFX module, original dispose/onMessage/audio gesture functions preserved."
 }
