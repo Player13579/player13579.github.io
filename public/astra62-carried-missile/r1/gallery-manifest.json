@@ -1,0 +1,122 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "所持重火器のミサイル発射 R1",
+  "groupId": "carried-missile-astra62",
+  "versionId": "carried-missile-astra62-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-carried-missile/r1/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "upper",
+    "source": [
+      -105,
+      12
+    ],
+    "target": [
+      102,
+      -32
+    ],
+    "sameModuleWeakSetPair": true,
+    "noPairClone": true,
+    "kind": "gunner-missile",
+    "freshSyntheticSerialEachLoop": true,
+    "uniformBytes": 48,
+    "lifetimeMs": 790,
+    "targetShownWhileIdle": true
+  },
+  "source": {
+    "historicalCreativeRepo": "Player13579/windows-dva-migration",
+    "historicalCreativeRuntimeCommit": "348d48bc3c438ca807cb706f570fe73c74b44f8c",
+    "currentOriginalRepo": "Player13579/player13579.github.io",
+    "currentOriginalPublicCommit": "bd3a54899424c4a17ff968a4d13c2c517947911a",
+    "currentFiveBoundByFiles": true,
+    "preservedTechnicalRevision": {
+      "id": "missile-r1-wgsl-syntax-r1",
+      "kind": "noncreative-syntax-and-cache-fix",
+      "implementationModel": "GPT-6-Luna",
+      "basePublicCommit": "7ec36b05755f4fb631ad31f7f083e044ba819c25",
+      "sourceProvenanceScope": "source.runtimeCommit retained as historical creative provenance; current technical runtime is bound by files hashes and the fixed private delivery.",
+      "creativeEditionUnchanged": true,
+      "evidenceRepository": "Player13579/windows-dva-migration",
+      "evidenceRoot": "dva/outputs/request-20261125/missile-r1-wgsl-syntax-r1/",
+      "gpuResultGitBlobSha1": "d9b9b65550482c1fc796622277d4a0235a4f0861",
+      "gpuRunGitBlobSha1": "904b2fe581951cff7aa416c9d7ccf8d9671e43f3"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1806,
+      "sha256": "284519e89cf2e5fa91211ca843c9c737508b02d54a12ab91806a5bdd6ecfd1db",
+      "gitBlob": "51e115e81126ecb3d1733dd0962ac24b0edeabf6"
+    },
+    "preview.mjs": {
+      "bytes": 7999,
+      "sha256": "18246e84a4831d8b2a5fbe79f41f17e3c7dafaa845144a3eebcce2e31ed65d64",
+      "gitBlob": "da11a9a066449299d56e7c69ba243ec0995f0e20"
+    },
+    "publication-manifest.json": {
+      "bytes": 8461,
+      "sha256": "3df07b1c9bdeba6d28d358ed80564e355d2e45bba2c365977788cefbd2903fb4",
+      "gitBlob": "5a4b31141ab953199fd21426b03def68e199edae"
+    },
+    "missile.mjs": {
+      "bytes": 2612,
+      "sha256": "7c88df2a148def9f8144a05f0fe2c5b816713c30097aadceedbc3ae7f48edc56",
+      "gitBlob": "6c1465cc9349588a92ceacc83153fe2f57ec106e"
+    },
+    "effect.wgsl": {
+      "bytes": 4306,
+      "sha256": "22a5079d06bccaa74cc49995acc4fc7779f837c6a7bb65b3400100c6dc351c98",
+      "gitBlob": "b3b22c4a1ef8b55a0cda3cb8953691d9efd95c5e"
+    },
+    "gallery.html": {
+      "bytes": 1381,
+      "sha256": "1c414a315f39d3114b9ad4121361fd98b91e9ffef820a6eef0dd45f8b59e0b16",
+      "gitBlob": "36049d264da17c6d1fe3994a449a97d0b04455d5"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19",
+      "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e"
+    },
+    "gallery-effect.mjs": {
+      "bytes": 581,
+      "sha256": "dc9268ed6ab5901c34840f99b7de7a96f1275732d9f454d33863e58b2ed12572",
+      "gitBlob": "1e9f1c92c1a1f882e6b681b12256ca5e9301be4b"
+    }
+  },
+  "facade": {
+    "sourceModulePath": "./missile.mjs",
+    "projectionAndGate": "samecanonicalmoduleimports, originalverifiedpair reference passedunchanged",
+    "makeCue": "makeFlightPcm exact reexport",
+    "callback": "fixedapproveduppercoords aftergate, no damage/impact"
+  },
+  "adapter": {
+    "copyGitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e",
+    "referenceScale": [
+      292,
+      135
+    ],
+    "terminal": "inactiveframe-before-finish;500ms neutralglyphhold"
+  },
+  "validation": {
+    "cpu": "sourceWeakSet/facade/projection/privacy/uniform/PCM PASS; facadeonlysyntax PASS; terminalmock PASS; parentmock7groups PASS",
+    "actualEsmLoader": "not_run",
+    "adapterInstance": "not_run",
+    "newNativeGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "currentFiveUnchanged": true,
+    "historicalSourceGpuRecord": "preserved in originalpublicationmanifest; no new inlineGPUclaim"
+  }
+}
