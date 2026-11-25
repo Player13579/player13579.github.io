@@ -17,8 +17,8 @@
   "qualityReviewEffort": "high",
   "qualityReviewEvidence": "/public/astra-duo/parry-r4/quality-review.json",
   "visualReviewStatus": "pass",
-  "technicalReplayStatus": "pass-limited-current-public-parent",
-  "nativeEvidenceRunId": "2026-11-18T21-49-42-803Z-12fe6c93-2d61-4dcc-988e-08501419cf42",
+  "technicalReplayStatus": "pending-native-startup-contract-r1",
+  "historicalNativeEvidenceRunId": "2026-11-18T21-49-42-803Z-12fe6c93-2d61-4dcc-988e-08501419cf42",
   "normalAudioListening": "not_run",
   "sfxListeningStatus": "not_run",
   "safariReplayStatus": "unverified",
@@ -28,13 +28,13 @@
   "files": [
     {
       "route": "/public/astra-duo/parry-r4/index.html",
-      "sha256": "3547b436c505fefe56e5dbe8d7a1ba4ae3d8ea36047f3a1250fb4b0d2609d2ca",
-      "bytes": 603
+      "sha256": "0cd60036ccf9c7fac36edbb9e971ccf0c6f6157e815efb7da2e88df4b0b17546",
+      "bytes": 634
     },
     {
       "route": "/public/astra-duo/parry-r4/gallery-adapter.mjs",
-      "sha256": "54111e420fa33584941d30b3904378591d0050d13f7557c97a91be98a3bf9481",
-      "bytes": 7708
+      "sha256": "85a5ed1d61b763fd9a8ab483a43aeb9313fe360f7ba510799d41ccfabca6052e",
+      "bytes": 9631
     },
     {
       "route": "/public/astra-duo/parry-r4/effect.mjs",
@@ -47,5 +47,29 @@
       "bytes": 1608
     }
   ],
-  "preservesPriorVersions": []
+  "preservesPriorVersions": [],
+  "technicalRevisionId": "parry-r4-startup-contract-r1",
+  "visualReviewScope": "historical preserved source review; not current adapter native acceptance",
+  "technicalVerification": {
+    "cpu": "pass",
+    "nativeGpu": "not_run",
+    "currentPublicParentReplay": "not_run",
+    "pixels": "not_run",
+    "audioListening": "not_run",
+    "retirement": "original-unmodified-not-tested"
+  },
+  "cpuEvidence": {
+    "repository": "Player13579/windows-dva-migration",
+    "path": "dva/outputs/request-20261125/ice-r1-parry-r4-startup-contract-r1/parry-r4/CPU-EVIDENCE.json",
+    "testGitBlobSha1": "7bc4d570fb4e2b1b8d3ecdc87a5ebbc410fee17d",
+    "receiptGitBlobSha1": "b6aca0e3515c5f369520f50a598425bddce53111",
+    "groups": 5,
+    "result": "pass",
+    "scope": "CPU actual frame/emit/fail/stop/size literals with controlled fake GPU queue/scopes and literal current parent predicates; unrelated special routes stubbed as nonmatching. No full init, shader compile, actual iframe, native GPU or pixels."
+  },
+  "technicalImplementationModels": [
+    "GPT-6-Luna"
+  ],
+  "harnessImplementationModel": "GPT-6.1-Sol",
+  "technicalChangeBoundary": "Startup proof/error stages and index cache query only. Historical creative edition, shader, effect/SFX module and original dispose/onMessage/audio gesture code preserved."
 }
