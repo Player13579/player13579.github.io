@@ -1,0 +1,106 @@
+{
+  "schema": "dva-gallery-creative-candidate/v1",
+  "groupId": "self-body-report-astra62",
+  "versionId": "self-body-report-astra62-r2",
+  "title": "本人の死体通報成立 R2",
+  "edition": 2,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "58511298c4954257acc8d6499198d5a90336d9ce"
+  },
+  "parentEdition": {
+    "versionId": "self-body-report-astra62-r1",
+    "privateCandidate": "5a819e8d9cbcfec1c0b82a7b8768387defefe3ed",
+    "publicReference": "597c7cb2882c4d9007183dcf15b6a4e6be578464",
+    "originalShaderBlob": "b6a54e297c69a8e448d7fec494db6380b65f7883"
+  },
+  "standaloneEntry": "index.html",
+  "expectedGalleryEntry": "gallery.html",
+  "standardFixture": "confirmed",
+  "publicationEligible": false,
+  "galleryAdapterStatus": "separate technical integration pending",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "producer": {
+    "publicReference": "597c7cb2882c4d9007183dcf15b6a4e6be578464",
+    "symbol": "reportBody",
+    "scope": "Current self report committed from playing to meeting. Explicit same match and meeting, self human sender, accepted sequence."
+  },
+  "design": {
+    "primary": "A small brick-red reporting device carries a fixed, abstract reclining-person pictogram. Its display lights, a short trace leads toward the antenna, and one amber sector wave propagates from the tip. The drawing is a sign attached to the report, not a game-world phone item, action animation or corpse projection.",
+    "timing": "1120 ms; panel illumination 78–238 ms; transmitter feed 170–350 ms, antenna reaches peak at 370 ms; one front expands and fades by 780 ms. Device and sign clear by 1090 ms.",
+    "reducedMotion": "Propagation distance drops from 27 to 10 reference units while the source, phase and single signal front stay fixed.",
+    "sfx": "Quiet rising carrier from 160–350 ms, then one short stronger signal at 370 ms. Verify forces mute.",
+    "technicalReuse": "Existing manual WebGPU lifecycle, CSS sizing, audio gesture behavior and disposal. Original receipt correlator, reporting icon, signal geometry and audio for this edition.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    },
+    "revision": "Graphic, contact times, one wavefront, reduced motion, receiver exclusions and PCM follow R1. The reclining amber mark emits into the dark glass and catches one inner lip. Its short feed lights the case locally. The emitting bead lights the metal mast and near corner of the brick housing at the same age and position. Beyond the silhouette, two-scale optical scatter follows the tip and then the same finite outgoing arc, including its rounded ends. The terminal fade clears the housing and all light.",
+    "colorPipeline": "Original linear material colors. Direct light, distinct receiver material responses and optical scatter accumulate separately. Exponential per-channel highlight shoulder preserves the unlit image; sRGB encoding occurs after scene fade.",
+    "meaning": "UI symbol of accepted self report. No corpse or world coordinates, hidden player data, additional alert, second signal or gameplay action."
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1904,
+      "sha256": "30633185664bc51a612c7d9e626f31622683854de63374ad30e5359b4e0c2c9b",
+      "gitBlob": "f34ec3742f6ad2814c0ca9ad1749be7a736a1035"
+    },
+    "preview.mjs": {
+      "bytes": 7796,
+      "sha256": "013f8e8d325b0ada47170997e6959b07ef6944aec292d5267081dd7d4cc81a84",
+      "gitBlob": "5949dfced5a3c75b2831b23a6931368abc80b372"
+    },
+    "report.mjs": {
+      "bytes": 1874,
+      "sha256": "9cb58634ad80e909fb1745a74b47f657e3856954d6422580beb544ca9bf04ba5",
+      "gitBlob": "fa20c9fecda0f55e507b7e71cd630025938f887b"
+    },
+    "effect.wgsl": {
+      "bytes": 4700,
+      "sha256": "692f4c6dd12b98d93c21637d2f02c974b1c258a77633a0cefa87ff8aa6964ef6",
+      "gitBlob": "9b8050c78855ebb4ee2e7ed2e04a360bf84424ea"
+    }
+  },
+  "validation": {
+    "bounded": "One accepted case and four negative choices plus unknown, duplicate and mismatched meeting; source comparison confirms original event and audio module differ only by version ID, host only by cache revision. Two unchanged cue envelopes and quiet endpoints sampled at four rates; host syntax verified.",
+    "wgsl": "naga-wasi-cli@0.1.0 validation successful",
+    "antennaReference": {
+      "basis": "Analytic contribution of the antenna tip alone on dark background, expressed in sRGB at full-strength pilot. 10, 20, 40 logical px from tip; unlit baseline for comparison. No browser pixels inferred.",
+      "samples": {
+        "unlit": [
+          0.1559,
+          0.1473,
+          0.1964
+        ],
+        "ten": [
+          0.4946,
+          0.3216,
+          0.2293
+        ],
+        "twenty": [
+          0.3435,
+          0.2326,
+          0.2095
+        ],
+        "forty": [
+          0.1702,
+          0.1524,
+          0.197
+        ]
+      }
+    },
+    "runtimeReadback": "4/4 exact contents and Git blob IDs.",
+    "actualSizeVisual": "not evaluated",
+    "nativeWebGPU": "not evaluated",
+    "ordinaryAudioListening": "not evaluated",
+    "parentInline": "pending separate technical integration"
+  }
+}
