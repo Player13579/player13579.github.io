@@ -1,0 +1,102 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "本人の死体通報成立",
+  "groupId": "self-body-report-astra62",
+  "versionId": "self-body-report-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified independent gallery entry for the human reporter's accepted body report. Preserve the separate emergency call, meeting start, voting and round resume assets.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-self-body-report/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "a73c3b21c9c77c66197a5e3847af0bfb51194660"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1904,
+      "sha256": "f0718191a2e0d796274d7f1ccfa9cc71ecf36683037470ce8a82c15084e97d2a",
+      "gitBlob": "7c32912a712a06d36bb445dfb8f2442bf546aeac"
+    },
+    "report.mjs": {
+      "bytes": 1874,
+      "sha256": "bf9141c4f983a3eca5e359330892db7998b423d64c31a6a01f122c471c003360",
+      "gitBlob": "94aae80cd4fe18a8881e734affef0fcd4df54fac"
+    },
+    "preview.mjs": {
+      "bytes": 7796,
+      "sha256": "e8033732f527bedfc46cf24c39485468f68033eacfb0aca2f41190b3dc4f4d8e",
+      "gitBlob": "69dacb776f00a42368adf93e641f1fe697a9b015"
+    },
+    "effect.wgsl": {
+      "bytes": 2865,
+      "sha256": "841c61b6f0ac13c83722cc5909691bde621a7afc8815ff57c70d84c95a51e7b2",
+      "gitBlob": "b6a54e297c69a8e448d7fec494db6380b65f7883"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "57c4bd90ad043610e532d379b76e568591b3d5b5",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "reportBody L17368–17386; runAutomaticHumanBodyReports L17389–17408; startMeeting L10577–10591.",
+    "meaning": "Only a qualifying report of a body in report range calls startMeeting with reporterId. Ordinary automatic human reports can enter the same function. A committed playing-to-meeting transition and a current self-reporter are required; this is not an assertion that a new manual action was performed.",
+    "scope": "A synthetic typed body-report receipt is correlated to the active match and new meeting. Never infer its cause by parsing meeting.reason or observing a nearby body. The fixture provides a monotonic local sequence and does not claim an equivalent typed receipt already exists in the game. Emergency meetings, other reporters, stale notifications and proximity are excluded. No victim, killer, suspect, role, position, witness evidence, votes or identity is needed."
+  },
+  "design": {
+    "primary": "A small brick-red reporting device carries a fixed, abstract reclining-person pictogram. Its display lights, a short trace leads toward the antenna, and one amber sector wave propagates from the tip. The drawing is a sign attached to the report, not a game-world phone item, action animation or corpse projection.",
+    "timing": "1120 ms; panel illumination 78–238 ms; transmitter feed 170–350 ms, antenna reaches peak at 370 ms; one front expands and fades by 780 ms. Device and sign clear by 1090 ms.",
+    "reducedMotion": "Propagation distance drops from 27 to 10 reference units while the source, phase and single signal front stay fixed.",
+    "sfx": "Quiet rising carrier from 160–350 ms, then one short stronger signal at 370 ms. Verify forces mute.",
+    "technicalReuse": "Existing manual WebGPU lifecycle, CSS sizing, audio gesture behavior and disposal. Original receipt correlator, reporting icon, signal geometry and audio for this edition.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "closure": "All four runtime files verified at the immutable runtime commit by Git blob and complete source text. index.html → preview.mjs → report.mjs + effect.wgsl.",
+    "shader": "WGSL passed Naga validation through naga-wasi-cli@0.1.0.",
+    "logic": "Node checked one-shot acceptance, same-meeting duplicate plus new-sequence duplicate, wrong match/meeting/phase, non-human/foreign reporter, stale/unsuccessful, emergency and proximity. Valid fixture with throwing victim, killer, location, evidence, suspect and reason accessors was accepted without accessing those fields.",
+    "audio": "Finite PCM generated at 8/44.1/48/96 kHz with silent lead/tail and a stronger outgoing cue after the display-charge cue.",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.0508,
+        0.1203
+      ],
+      [
+        44100,
+        0.051,
+        0.1247
+      ],
+      [
+        48000,
+        0.051,
+        0.1247
+      ],
+      [
+        96000,
+        0.051,
+        0.1247
+      ]
+    ],
+    "host": "Host JavaScript body syntax checked. Actual browser output and GPU device behavior were not observed at candidate sealing.",
+    "unreviewed": [
+      "actual-size pictogram, natural-speed timing and full-lifetime output",
+      "ordinary audio listening and sync",
+      "Safari / iPad",
+      "main-game integration"
+    ]
+  }
+}
