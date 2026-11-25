@@ -1,0 +1,103 @@
+{
+  "versionId": "quantum-temperature-hot-astra62-r2",
+  "creativeIdentity": "quantum-temperature-hot-astra62-r2",
+  "creativeEdition": 2,
+  "creativeEditionLimit": 5,
+  "revisionOf": "quantum-temperature-hot-astra62-r1",
+  "title": "クオンタム・高温水生成 R2",
+  "creator": {
+    "modelId": "gpt-6.2-astra",
+    "displayName": "GPT-6.2-Astra",
+    "creativeResponseId": "resp_00eff2da0f5ebaeb006b076e60212487d0962a0eb243aa3b2c",
+    "previousCreativeResponseId": "resp_0768735be9eba485006b076a75f1d887d09c3a8f63ef86146c"
+  },
+  "technicalDerivativeAuthor": {
+    "modelId": "gpt-6-luna",
+    "displayName": "GPT-6-Luna",
+    "technicalResponseId": "resp_036b9f31490a0b45006b076abe559087d0bfc45d671fb64108"
+  },
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "creativeCommit": "543afd90c468ffd4a3bd8b0675384f3743853be3",
+    "previousUnpublishedPackage": "0d06a3cbf10138c9b6beedfff740e60359a30ac5"
+  },
+  "previewOnly": true,
+  "gameIntegrationStatus": "not_connected",
+  "facts": {
+    "timeAbiMs": 3080,
+    "openingCompleteMs": 132,
+    "fadeStartsMs": 2670,
+    "sound": "same mono SFX, receipt, and gate as R1; ordinary audio listening not_run",
+    "shader": "Ability-driven emissive contact face; local incident light on copper landing and refracted ceramic lower bevel",
+    "moduleVersion": "quantum-temperature-hot-astra62-r2",
+    "adapterBlob": "e38f0cae9d1bc350a7422e6c8fa29c68c524cd36",
+    "textureFormat": "ordinary non-sRGB unorm",
+    "fit": "292x135",
+    "uniformBytes": 32,
+    "uniformValues": [
+      "width",
+      "height",
+      "age",
+      "scale",
+      "reduced",
+      "live",
+      0,
+      0
+    ],
+    "shaderEntryPoints": [
+      "vs",
+      "fs"
+    ],
+    "runtimeChecks": "not_run",
+    "emissionValidation": {
+      "sourceReview": "emission and receiver paths present",
+      "actualSize": "not_run",
+      "naturalSpeed": "not_run",
+      "ordinaryAudio": "not_run"
+    }
+  },
+  "files": [
+    {
+      "path": "hot.mjs",
+      "bytes": 3471,
+      "sha256": "2a182f9124df82d47f68941291ca866b6f2d5cc8b5505e1569357618131fdfba",
+      "gitBlob": "9fc0953e23ee660de04cab9e7edd9e3d9d9148ab"
+    },
+    {
+      "path": "effect.wgsl",
+      "bytes": 6996,
+      "sha256": "98950bc891bb9616078e3fa414f0c976248d52f8dd69ccdb2077aaa315ed620d",
+      "gitBlob": "2a8536a1292bf13c6dcc03f1220742406fde1038"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 17887,
+      "sha256": "8e8bfbc8063aab81fa13aad7a79938d9049de0dd533345ce76ec6de5b91cfa82",
+      "gitBlob": "e38f0cae9d1bc350a7422e6c8fa29c68c524cd36"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1133,
+      "sha256": "1a9ab8fbc2291106659f8236273c6e1dfbbba262bd205ab107507cfc77bd0222",
+      "gitBlob": "8b3e7524fd9939c16b39a0ee6f4dec8dce5113d5"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4327,
+      "sha256": "63971a38bc2e4e1c44a2ff330f0f8a34cb2c2e5e9ae30495f7b292067b7175a6",
+      "gitBlob": "eca9345bc79b1c47acb39ae29ada933aec2e3b61"
+    }
+  ],
+  "publicationState": {
+    "qualityReviewStatus": "not-reviewed",
+    "qualityAccepted": false,
+    "technicalReplayStatus": "not_run",
+    "nativeStatus": "not_run",
+    "visualStatus": "not_run",
+    "iframeStatus": "not_run",
+    "normalAudioListening": "not_run",
+    "adoption": "unknown",
+    "userAdopted": false,
+    "gameIntegrationStatus": "not_connected"
+  }
+}
