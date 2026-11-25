@@ -1,0 +1,96 @@
+{
+  "schema": "luminous-unverified-gallery-publication/v1",
+  "publicationKind": "creative",
+  "creativeIdentity": "luminous-sol61-r1",
+  "firstPublishedAt": "2026-11-25T06:46:40.611Z",
+  "creativeFirstPublishedAt": "2026-11-25T06:46:40.611Z",
+  "page": "/public/sol61-luminous/r1/technical-r3/index.html",
+  "sourceUrl": "/public/sol61-luminous/r1/technical-r3/index.html",
+  "sourceVersion": "luminous-sol61-r1",
+  "technicalRevision": "luminous-sol61-r1-technical-r3",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "ref": "luminous-sol61-r1-20261125",
+    "commit": "dc21f7f8446d37a6478884ff9400ec800c53e95b"
+  },
+  "sourceCandidateTechnicalEligibility": {
+    "publicationEligible": false,
+    "scope": "Existing source-candidate technical manifest; distinct from this user-authorized gallery listing."
+  },
+  "galleryListingEligible": true,
+  "publicationEligible": false,
+  "manualReview": true,
+  "automaticIframe": false,
+  "labels": {
+    "public": "公開プロトタイプ・手動プレイ",
+    "quality": "未レビュー",
+    "adoption": "不明"
+  },
+  "technicalStatus": "unverified",
+  "gpuStatus": "unverified",
+  "visualStatus": "unverified",
+  "audioStatus": "unverified",
+  "qualityStatus": "not_reviewed",
+  "adoptionStatus": "unknown",
+  "gameIntegrationStatus": "not_connected",
+  "gameIntegrationVerification": "unverified",
+  "provenance": {
+    "reasons": [
+      "Source repository, ref, commit, source version, and technical revision are recorded from the supplied candidate metadata.",
+      "All six byte counts, SHA-256 values and Git blob IDs were independently recalculated and matched the fixed source candidate during publication preparation. This is not GPU or visible-playback evidence.",
+      "Gallery listing eligibility is based on the user's explicit authorization and does not change the source candidate technical manifest's false publication eligibility.",
+      "Technical, GPU, visual, audio, quality, adoption, and game-integration verification remain unestablished."
+    ]
+  },
+  "closure": {
+    "index.html": {
+      "bytes": 3664,
+      "sha256": "d62bec659a72bd0232473661d5b02e9c93a7e607199179b052eed266d000c975",
+      "gitBlob": "93ad2c96ab26e647c0c5f8ce61c77a46d90690f2"
+    },
+    "runtime.mjs": {
+      "bytes": 18132,
+      "sha256": "9d9f8ae169b596a7dc4843e131681451c60e83774192c5ade6840c60d5035b84",
+      "gitBlob": "021dfb71c7d57707a39fa751c991e90514f3206d"
+    },
+    "gallery-protocol.mjs": {
+      "bytes": 2556,
+      "sha256": "4385b0eb776797965a54070b1ba5f1cb9735674f1ee7cdaf435e7a4bec2f2c55",
+      "gitBlob": "6647523e3a3112f50b02e504c602f4cdb4265cb9"
+    },
+    "contract.mjs": {
+      "bytes": 1882,
+      "sha256": "188817356cfdd7d7043c948c644e792c7f37e72d0ec845d29d26512c9526eaaa",
+      "gitBlob": "2f570f7a375e7b8651db19542182b9670a46e519"
+    },
+    "effect.wgsl": {
+      "bytes": 5334,
+      "sha256": "8d0b56d02c4f955bdfb2d42214141bc4129df3f9dc31aac56c9305d18c15c861",
+      "gitBlob": "6ba97a04828785e38b12ce18c69bb5326cfb7947"
+    },
+    "sfx.mjs": {
+      "bytes": 4794,
+      "sha256": "d806d3f2122dab71b914c47f7d16a0260d50544c0f0c5b3804a36ba4a2541245",
+      "gitBlob": "183a5ba73aa93b9f98f9e3fcf0266698d2740730"
+    }
+  },
+  "creatorModelId": "gpt-6.1-sol",
+  "creatorDisplayName": "GPT-6.1-Sol",
+  "catalogImplementationModel": "gpt-6-luna",
+  "integrationReviewModel": "gpt-6.1-sol",
+  "parentUiPatch": {
+    "repository": "Player13579/windows-dva-migration",
+    "commit": "7f145f2d8f7c87686d724db8f610f3b879868741",
+    "blob": "a4976f6ce39bba6ce98dd1fbd4b9f778e2e6ee7d",
+    "validation": "static-only; CPU UI mock not_run: Code generation from strings disallowed for this context"
+  },
+  "validation": {
+    "closurePins": "pass-6-of-6",
+    "nativeGpu": "not_run",
+    "pixelVisibility": "not_observed",
+    "visualQuality": "not_evaluated",
+    "normalAudioListening": "not_run",
+    "parentAutomaticReplay": "not_run",
+    "dynamicSortTest": "not_run: code generation from strings disallowed"
+  }
+}

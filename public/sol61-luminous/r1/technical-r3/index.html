@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ルミナス判定 · GPT-6.1-Sol R1</title>
+<style>
+:root{color-scheme:dark;font:15px/1.65 system-ui,sans-serif;background:#0d1420;color:#e9f2f7}
+body{margin:0;padding:20px}main{max-width:900px;margin:auto}h1{font-size:22px;margin:0 0 4px}p{margin:4px 0 15px;color:#b6c8d5}
+.stage{position:relative;width:min(100%,800px);margin:12px auto;background:#121b29;border:1px solid #2e4155;border-radius:12px;overflow:hidden}
+canvas{display:block;width:100%;aspect-ratio:800/440} .participants{position:absolute;left:0;right:0;top:66%;display:flex;pointer-events:none;font-size:13px;color:#b6c8d5}.participants span{position:absolute;transform:translateX(-50%)}.participants span:first-child{left:32.5%}.participants span:last-child{left:67.5%}
+.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:12px 0}button,select{font:inherit;padding:5px 12px;border:1px solid #4c6478;border-radius:6px;background:#1a2b3e;color:inherit;cursor:pointer}button:disabled{opacity:.55;cursor:default}label{white-space:nowrap}input[type=range]{width:220px;max-width:55vw}#status{min-height:48px;overflow-wrap:anywhere}details{font-size:13px;color:#9fb5c4} .notice{font-size:13px;color:#9fb5c4}
+</style>
+<main>
+<h1>ルミナス判定 <small>R1</small></h1>
+<p>会議での指名と裁定を表す独立したWebGPU試作。ゲーム判定を変更しません。</p>
+<div class="controls"><label>判定 <select id="outcome"><option value="success">成功・対象消滅＋発動者加速</option><option value="failure">失敗・発動者死亡</option><option value="body">バリアでボディダメージ化</option><option value="blocked">防御</option></select></label></div>
+<div class="stage"><canvas width="800" height="440" aria-label="ルミナスの発動者と指名対象を明示した判定表示"></canvas><div class="participants"><span>発動者</span><span>指名対象</span></div></div>
+<div class="controls"><button id="play">一回再生</button><button id="hold">保持</button><button id="resume">再開</button><button id="stop">停止・発動前へ</button><button id="audio">音声を開始</button><span id="audio-status" role="status">音声は未開始です</span></div>
+<div class="controls"><label>時相 <input id="time" type="range" min="0" max="1550" value="0" step="1"></label><label><input id="main" type="checkbox" checked> E表示</label><label><input id="reduced" type="checkbox"> Reduced motion</label><label>表示 <select id="zoom"><option value="1">H64（幅800px時）</option><option value="2">2倍確認</option></select></label></div>
+<p id="status" role="status">WebGPUを初期化中…</p>
+<p class="notice">明示fixture：左＝発動者、右＝指名対象。ユーザー未採用／本編未接続。通常SFXの聴感は未確認です。verifyでは音声を固定0にします。</p>
+<details><summary>表示の意味</summary><p>この試作は会議UIの裁定表示です。人物は同一条件の手続き的なH64確認シルエットで、採用キャラクター原画ではありません。成功は対象が空白へ変わり、発動者側へ加速を示す光が移ります。失敗では対象を保持し発動者の表示を失活させます。bodyではバリアへの接触と身体側の有限のダメージ表示を分けます。blockedでは境界で止まり身体側にダメージを描きません。場面内の新しい物理兵器や飛翔体を意味しません。</p></details>
+</main><script type="module" src="./runtime.mjs"></script></html>
