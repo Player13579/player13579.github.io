@@ -17,8 +17,7 @@
   "qualityReviewEffort": "high",
   "qualityReviewEvidence": "/public/astra-duo/ice-r2/quality-review.json",
   "visualReviewStatus": "pass",
-  "technicalReplayStatus": "pass-limited-current-public-parent",
-  "nativeEvidenceRunId": "2026-11-18T21-49-42-803Z-12fe6c93-2d61-4dcc-988e-08501419cf42",
+  "technicalReplayStatus": "pending-native-startup-contract-r1",
   "normalAudioListening": "not_run",
   "sfxListeningStatus": "not_run",
   "safariReplayStatus": "unverified",
@@ -28,13 +27,13 @@
   "files": [
     {
       "route": "/public/astra-duo/ice-r2/index.html",
-      "sha256": "3547b436c505fefe56e5dbe8d7a1ba4ae3d8ea36047f3a1250fb4b0d2609d2ca",
-      "bytes": 603
+      "sha256": "f17d0068ecf2aac05292c88ae4dcb4a745fa812fb912e2ca315774257ff92d35",
+      "bytes": 632
     },
     {
       "route": "/public/astra-duo/ice-r2/gallery-adapter.mjs",
-      "sha256": "54111e420fa33584941d30b3904378591d0050d13f7557c97a91be98a3bf9481",
-      "bytes": 7708
+      "sha256": "85a5ed1d61b763fd9a8ab483a43aeb9313fe360f7ba510799d41ccfabca6052e",
+      "bytes": 9631
     },
     {
       "route": "/public/astra-duo/ice-r2/effect.mjs",
@@ -47,5 +46,32 @@
       "bytes": 1584
     }
   ],
-  "preservesPriorVersions": []
+  "preservesPriorVersions": [],
+  "technicalRevisionId": "ice-r2-startup-contract-r1",
+  "historicalPublicationStatus": "published",
+  "historicalNativeEvidenceRunId": "2026-11-18T21-49-42-803Z-12fe6c93-2d61-4dcc-988e-08501419cf42",
+  "originalPublicAdapterGitBlob": "fb851131debe39dd8eb6700e3d53940fa342b04c",
+  "originalPublicPackageManifestGitBlob": "83eaa35339a2602fef39760745edbd8bd2183d7b",
+  "visualReviewScope": "Preserved historical creative R2 review for unchanged effect.mjs; this technical adapter revision has not received real-screen review.",
+  "cpuEvidence": {
+    "repository": "Player13579/windows-dva-migration",
+    "path": "dva/outputs/request-20261125/ice-r2-startup-contract-r1/CPU-EVIDENCE.json",
+    "gitBlobSha1": "81a3173d42f6d408bfc12821f3fd257198e67bb3",
+    "testGitBlobSha1": "bbf2cc542cf9a71b8db30e63742de53ac0c4c951",
+    "result": "pass",
+    "groups": 5,
+    "scope": "CPU literal production frame functions and actual parent admission predicates with controlled fake queue/scopes; full init, GPU, iframe and pixels not run"
+  },
+  "technicalVerification": {
+    "cpuStartupAdmission": "pass",
+    "nativeGpu": "not_run",
+    "currentPublicParentReplay": "not_run",
+    "normalAudioListening": "not_run",
+    "retirement": "original source preserved; not accepted by this startup-only test"
+  },
+  "technicalImplementationModels": [
+    "GPT-6-Luna",
+    "GPT-6.1-Sol"
+  ],
+  "technicalChangeBoundary": "Only Ice R2 adapter startup/error/proof and index cache query; shader template, original dispose/onMessage, effect.mjs, quality-review.json and unrelated public versions preserved."
 }
