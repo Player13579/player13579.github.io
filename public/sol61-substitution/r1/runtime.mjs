@@ -15,6 +15,25 @@ const ownText = async (fetcher,url) => {
 };
 const sha256 = async bytes => [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(x=>x.toString(16).padStart(2,"0")).join("");
 
+export function selectFixtureBaselineActors(target, project) {
+  if(!target || !Array.isArray(target.roles) || typeof project!=="function")return [];
+  let roles;
+  if(target.kind==="grant")roles=[target.roles[0],target.roles[1]];
+  else if(target.kind==="trigger")roles=[target.roles[3]];
+  else return [];
+  const seen=new Set(), out=[];
+  for(const role of roles){
+    if(!role)continue;
+    const p=project(role);
+    if(!p)continue;
+    const k=p.footX+":"+p.footY+":"+p.actorHeightPx;
+    if(seen.has(k))continue;
+    seen.add(k);
+    out.push(p);
+  }
+  return out;
+}
+
 export function createPreviewRuntime({ windowRef=globalThis.window, documentRef=globalThis.document,
   rendererFactory=createGpuRenderer, audioFactory=createAudioHost, now=()=>performance.now(),
   raf=cb=>requestAnimationFrame(cb), cancelRaf=id=>cancelAnimationFrame(id),
@@ -61,12 +80,7 @@ export function createPreviewRuntime({ windowRef=globalThis.window, documentRef=
     const v=renderer?.snapshot?.().viewport;
     return v ? [v.backingWidth,v.backingHeight] : [0,0];
   };
-  const baselineActors = () => {
-    const target=active?.fixture ?? diagnosticFixture;
-    if(!target)return [];
-    const safe=target.roles.filter(Boolean).map(cssProjection).filter(Boolean), seen=new Set();
-    return safe.filter(p=>{const k=p.footX+":"+p.footY+":"+p.actorHeightPx;if(seen.has(k))return false;seen.add(k);return true;});
-  };
+  const baselineActors = () => selectFixtureBaselineActors(active?.fixture ?? diagnosticFixture, cssProjection);
   const reportStage = (stage,detail) => emit(stage,detail);
   const start = async () => {
     if (auth.mode==="rejected") throw new Error("ギャラリー認証が不正です");

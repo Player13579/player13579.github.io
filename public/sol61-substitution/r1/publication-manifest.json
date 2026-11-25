@@ -7,7 +7,10 @@
     "scope": "same-origin standalone page; manual Play only; verify query only; no iframe, startup, or retirement behavior"
   },
   "sourceRepo": "Player13579/windows-dva-migration",
-  "sourceCommit": "aab1c2d8042af54d7557f1fec22ceea6d7301b98",
+  "sourceCommit": "d71f57ad1adb259bac528e82c76c1eb551863d53",
+  "baseSourceCommit": "aab1c2d8042af54d7557f1fec22ceea6d7301b98",
+  "originalPublicCommit": "32237e363f3a6d150e30a81aa8c79ca9e2e7ec22",
+  "technicalRevisionId": "substitution-sol61-r1-fixture-actors-r1",
   "sourceRoot": "public/sol61-substitution/r1/",
   "files": [
     {
@@ -17,8 +20,8 @@
     },
     {
       "path": "runtime.mjs",
-      "sha": "61234805303a3b809a6ef3bf1de7a4533ed56a74",
-      "chars": 17132
+      "sha": "bf8574b2302bec5af820c9c969ec36c807fead6a",
+      "chars": 17474
     },
     {
       "path": "gallery-protocol.mjs",
@@ -100,6 +103,40 @@
     "parentAutoplay": "not_run",
     "retirement": "not_run",
     "mainGame": "not_connected"
+  },
+  "technicalRepair": {
+    "technicalRevisionId": "substitution-sol61-r1-fixture-actors-r1",
+    "scope": "Bounded fixture-actor selector repair only; no runtime or creative changes beyond the described fixture selection",
+    "author": "GPT-6-Luna",
+    "changedFile": "runtime.mjs",
+    "gitBlobSha1": "bf8574b2302bec5af820c9c969ec36c807fead6a",
+    "jsChars": 17474,
+    "changeSummary": "Added pure selectFixtureBaselineActors using grant roles 0/1 and trigger destination role 3 only, with the existing CSS privacy projection and deduplication. The actual producer moves before the trigger event, so the origin person is absent at event age 0 and only the authorized, visible destination person is selected. Existing E roles, origin E, shader, PCM, duration, source clock, startup, and retirement behavior remain unchanged.",
+    "verification": {
+      "method": "Formal Node REPL literal helper/CSS code; no eval, new Function, data URI, or full-runtime import",
+      "scope": "Selector-only CPU checks; not whole-runtime timing verification",
+      "result": "PASS",
+      "checks": [
+        "CPU 30 groups passed",
+        "Old algorithm selected two people at the actual trigger; repaired selector selected one destination person",
+        "Grant roles 0/1 preserved: self fixture selects 1 person, target fixture selects 2, hidden recipient fixture selects 1 without hidden coordinate reads",
+        "Trigger origin only selected zero; destination only selected one; all-hidden selected zero",
+        "Poisoned hidden coordinates and unreferenced origin checked",
+        "Four-flag privacy checks passed",
+        "CSS viewport and zoom checks passed at DPR 1 and 2",
+        "Selector-only ages 0, 100, 1080, and 1200 and Main OFF/diagnostic checked"
+      ]
+    },
+    "not_assessed": [
+      "GPU",
+      "actual iframe",
+      "new real-screen quality",
+      "normal SFX listening",
+      "device acceptance",
+      "parent autoplay",
+      "retirement",
+      "main-game connection"
+    ]
   },
   "historicalTechnicalRepairAuthors": "Preserve the technical-repair history; it does not reassign overall VFX creative authorship."
 }
