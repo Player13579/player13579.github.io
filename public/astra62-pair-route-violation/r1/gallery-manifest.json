@@ -1,0 +1,82 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "ペア行動禁止違反の成立通知 R1",
+  "groupId": "pair-route-violation-astra62",
+  "versionId": "pair-route-violation-astra62-r1",
+  "creativeEdition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-pair-route-violation/r1/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "confirmed",
+    "position": [
+      0,
+      14
+    ],
+    "subject": "self",
+    "confirmed": true,
+    "visible": true,
+    "current": true,
+    "uniformBytes": 48,
+    "lifetimeMs": 940
+  },
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "8128f6c5c105102773018ade2aac8fcd501a66a1"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1831,
+      "sha256": "1c3f30d0dbbe0391b68726ada672d7ad92d3ee75b66ccd2f12adc8afa62f1c33",
+      "gitBlob": "19eb7cbd9c31316d367b5bc45f39eefb60801e96"
+    },
+    "preview.mjs": {
+      "bytes": 7935,
+      "sha256": "f9452040692be8432eb0a1d59baca7d08fe95e59cff088f7ea6611b2598b65e5",
+      "gitBlob": "c72def5523a5db2048e60d7bd114acaeda06e1f4"
+    },
+    "publication-manifest.json": {
+      "bytes": 5154,
+      "sha256": "8151e3b7dd61878eb947ec436fab3d3de47cef9406ba2642bbd71eeba7b0c36d",
+      "gitBlob": "c48a76f03d03e76132b5542ab70ab3a22bf834e4"
+    },
+    "violation.mjs": {
+      "bytes": 1934,
+      "sha256": "500b5cbec743a28836c9ecbc091fd3938e3fbb23737bc9b16e9d2979ef6e4c8f",
+      "gitBlob": "482d5749474a5ba8d2baedfdd535d8b0d0d6a69f"
+    },
+    "effect.wgsl": {
+      "bytes": 2528,
+      "sha256": "2ab844e375bcbd460617502a9e5f994b2f97f644c94f4281242087aa216eedf4",
+      "gitBlob": "86b58558981baa9d1dc05ee4486a20f2404b8bf0"
+    },
+    "gallery.html": {
+      "bytes": 1364,
+      "sha256": "1ea4d46be8efcf092d7c783bd48cc43838911d0c41b90e51f2e0c1fdd057f792",
+      "gitBlob": "0bceb37c04fe6a674a66c6ad9002ce86a60f8c6b"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    }
+  },
+  "validation": {
+    "cpu": "original gate/privacy/projection/PCM and exact entry uniform4groups PASS; parent synthetic7groups PASS",
+    "adapterInstance": "not_run",
+    "nativeGpu": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "originalFiveUnchanged": true,
+    "adapterByteUnchanged": true
+  }
+}
