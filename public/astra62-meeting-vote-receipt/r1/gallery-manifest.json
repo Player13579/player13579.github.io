@@ -1,0 +1,96 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "versionId": "meeting-vote-receipt-astra62-r1",
+  "creativeEdition": 1,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "technicalAuthor": "GPT-6-Luna",
+  "adapterDerivation": {
+    "originalAuthor": "GPT-6.1-Sol",
+    "baseBlob": "71e36bd306c11320064c54d112eae4024af6a0e0",
+    "change": "Only scale reference292x135 ->170x145; inverse byte exact"
+  },
+  "originalRuntime": "d9f47fded720d2802e540af9f3b10861ea8baa5b",
+  "parentPublicBase": "fce863cbcfc65a45ae8deffa1ea1d634faeaef0f",
+  "entry": "gallery.html",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=meeting-vote-receipt-astra62-r1",
+  "protocol": "dva-gallery-startup/v1",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "cpu": "PASS_LIMITED_ACK_BRIDGE_SCALE_AND_PARENT_PREDICATE",
+  "browserEsmLoader": "not_run; dependency closure checked statically",
+  "adapterInstanceCpu": "not_run",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "normalAudioListening": "not_run",
+  "originalManifest": "publication-manifest.json",
+  "files": [
+    {
+      "path": "public/astra62-meeting-vote-receipt/r1/index.html",
+      "bytes": 1472,
+      "sha256": "dc6783000a8800df2f6326c1050eab118cab833b593c1492098cbe7f6565a437",
+      "gitBlob": "5e581d0529dc75d360ba0e399b4fbbe55bfd8426"
+    },
+    {
+      "path": "public/astra62-meeting-vote-receipt/r1/preview.mjs",
+      "bytes": 7588,
+      "sha256": "99278ddd93c1eb1d8343488d265945c3b9342063bf86ca77ff52160256f190b9",
+      "gitBlob": "2ff15c23ca6e4620636b82da250948e8514d8ac3"
+    },
+    {
+      "path": "public/astra62-meeting-vote-receipt/r1/publication-manifest.json",
+      "bytes": 4730,
+      "sha256": "ceb481385b435521b5a3c31cff4dc9cfbcab1b86069361f56df1406f00988495",
+      "gitBlob": "5ee99ae30dd7627548e8d42e663ff79464197b7d"
+    },
+    {
+      "path": "public/astra62-meeting-vote-receipt/r1/receipt.mjs",
+      "bytes": 1585,
+      "sha256": "bbe8be05c7445a1d11fc328229b16f163f9cef88bfba9992c2f2daef7f29e992",
+      "gitBlob": "6d5e597b6ea33efb01a6b190b6ba685da1373720"
+    },
+    {
+      "path": "public/astra62-meeting-vote-receipt/r1/effect.wgsl",
+      "bytes": 3533,
+      "sha256": "fa6bee9cfd0da555a2b11cbfb47bc363a7f8cfbb99e1d7623a4057d255d62761",
+      "gitBlob": "89c6dd32a54179e5b0137e75224cdfcfc5771b0b"
+    },
+    {
+      "path": "public/astra62-meeting-vote-receipt/r1/gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "47f49e5a1ac733f517048e5c37cc440f8ec202f447f2ca7218c64e976f51f985",
+      "gitBlob": "4eef4a2633b8794ad72be3b277030b3741213d96"
+    },
+    {
+      "path": "public/astra62-meeting-vote-receipt/r1/gallery.html",
+      "bytes": 1371,
+      "sha256": "95c70d6111d17749a00bd78bfb071f3ce389859a9fde470ccf0d11cf528fe44c",
+      "gitBlob": "a46cf208eb83d85c0bd86ba17b090db56eb901e8"
+    },
+    {
+      "path": "public/astra62-meeting-vote-receipt/r1/gallery-effect.mjs",
+      "bytes": 723,
+      "sha256": "303bcf44a381bf45566c1baabb0c85c3a163450f269b1cfc9a3fb5328f931a10",
+      "gitBlob": "869019e04aa90fc67027abfb8cc0b3360ca0dd19"
+    }
+  ],
+  "meaning": "Original createAcknowledgements accepted=true/own=true/fresh positive safe serial only. New serial re-vote allowed even if final vote ends meeting. No target/skip/role/result/totals/position or meeting-state inference.",
+  "bridge": "gallery-effect.mjs delegates original factory; reads accepted/own/serial once, returns frozen id projection; makeCue is exact original makeReceiptPcm alias.",
+  "referencePixels": {
+    "width": 170,
+    "height": 145,
+    "nominalSlotWidth": 94,
+    "nominalSheetWidth": 37
+  },
+  "lifetimeMs": 830,
+  "interCauseRestMs": 500,
+  "notes": [
+    "Original five files, paper/clip/lip illumination phases and535ms catch PCM remain byte-identical.",
+    "New entry repeats explicit synthetic accepted own acknowledgments only; not game/API vote submission.",
+    "CPU bridge body test excludes exactly two import/re-export lines; it is not an actual ESM loader test.",
+    "No native/pixel/quality/listening or adoption acceptance is implied."
+  ]
+}
