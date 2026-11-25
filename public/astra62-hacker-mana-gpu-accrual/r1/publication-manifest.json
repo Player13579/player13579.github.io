@@ -1,0 +1,104 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "groupId": "hacker-mana-gpu-accrual-astra62",
+  "versionId": "hacker-mana-gpu-accrual-astra62-r1",
+  "title": "ハッカーのマナGPU・短縮分の蓄積 R1",
+  "edition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "manualReview": true,
+  "automaticIframe": false,
+  "entry": "index.html",
+  "playControl": "蓄積を再生",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "b51d8a0a458051afdaa62794f8712619309ae041"
+  },
+  "producer": {
+    "repository": "Player13579/player13579.github.io",
+    "ref": "cc3927a4c56d66ae616037a01399fa4b02e3f0f0",
+    "path": "offline-server-main.js",
+    "symbol": "advanceHackerManaGpu",
+    "lines": "15483–15506",
+    "semantics": "Eligible playing passive accrues fractional carry, spends when at least 0.01 MP is available and converts the computed spend at 20000 ms/MP into stored cooldown credit. useAlchemy consumes that credit separately at lines 15532–15537. This example represents a single ordinary confirmed accrual without modifying the active cooldown."
+  },
+  "design": {
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    },
+    "subject": "Mana charge travels from a short cyan feed to the central compute die. Its warm output follows a common conductor into one or two register windows, each storing 200 ms for a future generation.",
+    "timingMs": {
+      "frameIn": [
+        0,
+        82
+      ],
+      "input": [
+        145,
+        430
+      ],
+      "computation": [
+        339,
+        720
+      ],
+      "firstDeposit": 619,
+      "optionalSecondDeposit": 814,
+      "holdUntil": 1150,
+      "end": 1380
+    },
+    "display": "202 by 64 logical px assembly, inset as a single viewer-owned instrument. Reduced motion keeps the incoming charge at the feed and suppresses traveling register pulses while preserving die and register states.",
+    "postEffect": "Local compute-die color response and window latching, confined to the board.",
+    "audio": "Input tone sweep followed by a detent for each actual deposit. Verify mode forced silent."
+  },
+  "scope": "Two explicit single-step own fixtures with initial zero stored credit and regular mana cost, 0.01→200 ms or 0.02→400 ms. No automatic tick subscription, previous balance reconstruction or conversion-result/cooldown change. Carry only, meeting, later credit usage, snapshot, mismatched causes and foreign records are rejected. No other actor or map data.",
+  "files": {
+    "index.html": {
+      "bytes": 2129,
+      "sha256": "4c5bcbc269a9b1aff4a3059579fdfa9f43dddf15044ffcbe8dcf1bf5c394219a",
+      "gitBlob": "8dab4e632b5464b77cfd0056c5ddd4752ca7837e"
+    },
+    "preview.mjs": {
+      "bytes": 7847,
+      "sha256": "4ed07a5645271df0d030d681de53e207b0ce7107f2980cf97bdb31a6b34e9c82",
+      "gitBlob": "b113a3f9465cfb967f12316659bd4594078fab4b"
+    },
+    "accrual.mjs": {
+      "bytes": 2638,
+      "sha256": "73169f60e5dd14c4c19207658f857f9ded9740a261cfae86fcd318d726191a93",
+      "gitBlob": "b1398b313edf6865782a4f0bffbab93808b46f0d"
+    },
+    "effect.wgsl": {
+      "bytes": 3277,
+      "sha256": "c50e7c0f860909bbca17f31f38e77a18384bfb351b91010524b7f999067bc0fc",
+      "gitBlob": "9e3ece9aa7f4dd1ad58cf6a5996cb0ca82d94c6e"
+    }
+  },
+  "validation": {
+    "bounded": "Eight UI conditions, unknown choice, strict financial values/same-cause/owner/id dedup/old snapshot tests, host syntax and fixture/control mapping.",
+    "wgsl": "naga-wasi-cli 0.1.0 validation successful",
+    "audio": "Generated PCM for both deposit counts at 8, 44.1, 48 and 96 kHz. Both variants have expected input/first tap, only two-cell variant has second tap; finite bounded samples and silence at both ends.",
+    "samplePeaks": {
+      "8000-1": 0.09583663195371628,
+      "8000-2": 0.0967349261045456,
+      "44100-1": 0.0981437936425209,
+      "44100-2": 0.0981437936425209,
+      "48000-1": 0.09807939827442169,
+      "48000-2": 0.09807939827442169,
+      "96000-1": 0.09817688167095184,
+      "96000-2": 0.09817688167095184
+    },
+    "runtimeReadback": "4/4 exact source text and Git blob checks at immutable runtime commit",
+    "nativeWebGPU": "not evaluated",
+    "continuousMotion": "not evaluated",
+    "ordinaryAudio": "not listened",
+    "deviceMatrix": "not evaluated",
+    "adoption": "unknown"
+  }
+}

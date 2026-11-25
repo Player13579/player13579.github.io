@@ -378,6 +378,47 @@ function isAimR5BoundTarget(attempt){return attempt?.childProtocolVersionId===AI
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const baseEntries = Object.freeze([
 {
+  "id": "hacker-mana-gpu-accrual-astra62",
+  "title": "ハッカーのマナGPU・短縮分の蓄積",
+  "category": "effect",
+  "defaultVersionId": "hacker-mana-gpu-accrual-astra62-r1",
+  "latestVersionId": "hacker-mana-gpu-accrual-astra62-r1",
+  "firstPublishedAt": "2026-11-25T13:44:52.756Z",
+  "adoption": "unknown",
+  "integration": "not-integrated",
+  "versions": [
+    {
+      "id": "hacker-mana-gpu-accrual-astra62-r1",
+      "title": "ハッカーのマナGPU・短縮分の蓄積 R1",
+      "creatorModelId": "gpt-6.2-astra",
+      "creatorDisplayName": "GPT-6.2-Astra",
+      "page": "/public/astra62-hacker-mana-gpu-accrual/r1/index.html",
+      "sourceUrl": "/public/astra62-hacker-mana-gpu-accrual/r1/index.html",
+      "source": "/public/astra62-hacker-mana-gpu-accrual/r1/publication-manifest.json",
+      "manualReview": true,
+      "automaticIframe": false,
+      "manualReviewNotice": "単体ページの合成表示で成立条件を選び、「蓄積を再生」を押してください。本編とは未接続です。",
+      "status": "公開試作・手動再生（実GPU・品質・聴感未評価）",
+      "detail": "本人のマナGPUが通常のマナ消費を次回生成用の短縮分へ変換して蓄積する独立R1試作。小数繰越だけ・会議中・短縮分の使用・状態表示・他人の記録とは区別し、現在のクールダウンや本編を変更していません。",
+      "publicationEligible": false,
+      "galleryListingEligible": true,
+      "qualityReviewStatus": "not-reviewed",
+      "qualityAccepted": false,
+      "technicalReplayStatus": "pending-unverified-publication",
+      "normalAudioListening": "not_run",
+      "nativeSourceStatus": "not_run",
+      "parentGalleryReplayStatus": "not_run",
+      "adoption": "unknown",
+      "userAdopted": false,
+      "gameIntegrationStatus": "not_connected",
+      "publicationKind": "creative",
+      "creativeIdentity": "hacker-mana-gpu-accrual-astra62-r1",
+      "creativeFirstPublishedAt": "2026-11-25T13:44:52.756Z",
+      "creativeEdition": 1
+    }
+  ]
+},
+{
   "id": "clairvoyance-manual-start-astra62",
   "title": "千里眼の手動起動",
   "category": "effect",
@@ -1848,7 +1889,8 @@ if(abilityR8Known(attempt))return abilityR8FirstFrameValid(proof,attempt);if(kno
     'orichalcum-normal-slash-astra62-r1': '/public/astra62-orichalcum-normal-slash/r1/index.html',
     'fighter-thrown-ec-impact-astra62-r1': '/public/astra62-fighter-thrown-ec-impact/r1/index.html',
     'fighter-apex-sword-vanish-astra62-r1': '/public/astra62-fighter-apex-sword-vanish/r1/index.html',
-    'clairvoyance-manual-start-astra62-r1': '/public/astra62-clairvoyance-manual-start/r1/index.html'
+    'clairvoyance-manual-start-astra62-r1': '/public/astra62-clairvoyance-manual-start/r1/index.html',
+    'hacker-mana-gpu-accrual-astra62-r1': '/public/astra62-hacker-mana-gpu-accrual/r1/index.html'
   });
   function isManualReviewItem(item) {
     return item?.manualReview === true && Object.prototype.hasOwnProperty.call(GALLERY_MANUAL_REVIEW_ROUTES, item?.id);
