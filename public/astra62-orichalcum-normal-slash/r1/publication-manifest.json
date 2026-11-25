@@ -1,0 +1,98 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "オリハルコン・ソードの通常斬撃",
+  "groupId": "orichalcum-normal-slash-astra62",
+  "versionId": "orichalcum-normal-slash-astra62-r1",
+  "creativeEdition": 1,
+  "editionScope": "First identified independent gallery edition for the ordinary sword swing. Preserve existing game swing, parry, charge, GBO and flying shockwave presentations.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "entry": "index.html",
+  "path": "/public/astra62-orichalcum-normal-slash/r1/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "10fcd97a8ae38ee68055ffacae4342053ab2f297"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1960,
+      "sha256": "70b92c225d9b6072390f37b174136dadb932f5bd31769505002a880431fb427c",
+      "gitBlob": "8faad65e44e6103a51f47a55641fc6369350e76d"
+    },
+    "slash.mjs": {
+      "bytes": 1519,
+      "sha256": "5fb69b42faf0387cd83cd161163b27faeb7d5c4cb58088461bbb268878d3af3a",
+      "gitBlob": "aa36e24192295b2f8226a9686ffc2506e9019fa0"
+    },
+    "preview.mjs": {
+      "bytes": 7857,
+      "sha256": "7ee1b441a85a463dd13cd240c66de736df917f091b9a663dd883c9923124daa2",
+      "gitBlob": "2e8e26b06375c8e1c03ee6ec3f8c99586b011281"
+    },
+    "effect.wgsl": {
+      "bytes": 3726,
+      "sha256": "482a8f5be57a2cfd4328a06f58818c1ab553e4dee568231b6760ae18f31aa8c3",
+      "gitBlob": "0808a1cfc400641e4fa672d6a4ec64f999c3276d"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "069404f06155d4d8f9e6ef324f697598b376f915",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "fighterSlash L11297–11335",
+    "meaning": "An ordinary owned Orichalcum Sword swing emits fighter-slash variant enhance-0, with a direction-derived point before target resolution. An empty swing is valid. The owner need not have the Fighter operator solely to carry the sword. The source also manages guard behavior, which this separate release does not visualize.",
+    "scope": "Two illustrative horizontal empty-field directions are explicitly projected for a current permitted self-owned normal swing. No opponent, hit, gore, damage, parry, detached shockwave, range visualization, weapon break, or inferred endpoint. Enhanced/GBO/denied/nonvisible and flying-shockwave fixtures cannot start this normal edition. The neutral actor and held resting blade remain visible in authorized idle fixtures."
+  },
+  "design": {
+    "primary": "An anonymous compact cool-toned figure, a bronze-gold faceted blade, and one short warm sweep. The glove, hilt, blade and swept edge use one local pivot. Only recent blade angles produce a ribbon, so the trail stays on the moving blade and does not travel into space. Left and right mirror the whole figure and blade.",
+    "time": "980 ms. The silhouette shifts to its anticipatory pose through 165 ms, swings through 443 ms, holds briefly and returns to rest by 900 ms. The trail appears only through the fast action and clears before recovery.",
+    "reducedMotion": "Recent-angle memory is reduced from 75 to 32 ms. The readable main motion and direction remain.",
+    "sfx": "A single band-limited air swish whose strength follows the moving part of the swing. No contact or hit cue. Verify always mutes audio.",
+    "technicalReuse": "Existing manual WebGPU lifecycle and verify-mute host. New anonymous vector fixture, sword geometry, pose, swept ribbon, receipt gate and sound.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "closure": "All four runtime sources were read back at their immutable commit and compared by full source text and Git blob. index.html → preview.mjs → slash.mjs and effect.wgsl.",
+    "shader": "Final WGSL passed Naga validation through naga-wasi-cli@0.1.0 after a reserved identifier in the draft was replaced.",
+    "logic": "Node exercised left/right normal swings, duplicate cause, enhanced/GBO/shockwave/nonvisible/denied, stale/foreign owners, invalid directions, and guarded fields. The valid fixture did not access target, health or outcome.",
+    "audio": "Finite PCM at 8/44.1/48/96 kHz; silent lead, moving-window swish and silent tail.",
+    "pcmMeasurements": [
+      [
+        8000,
+        0.2448
+      ],
+      [
+        44100,
+        0.2297
+      ],
+      [
+        48000,
+        0.199
+      ],
+      [
+        96000,
+        0.1637
+      ]
+    ],
+    "host": "Host JavaScript body syntax checked. No native device or browser visual claim at sealing.",
+    "unreviewed": [
+      "real-size and natural-speed blade/hand continuity and swept arc",
+      "ordinary audio listening and sync",
+      "Safari/iPad",
+      "main-game integration"
+    ]
+  }
+}
