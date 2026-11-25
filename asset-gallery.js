@@ -378,6 +378,47 @@ function isAimR5BoundTarget(attempt){return attempt?.childProtocolVersionId===AI
   // List technically replayable Astra versions, including trials that did not pass quality review.
   const baseEntries = Object.freeze([
 {
+  "id": "limit-break-passive-onset-astra62",
+  "title": "リミットブレイク・パッシブ初回成立",
+  "category": "effect",
+  "defaultVersionId": "limit-break-passive-onset-astra62-r1",
+  "latestVersionId": "limit-break-passive-onset-astra62-r1",
+  "firstPublishedAt": "2026-11-25T14:32:50.131Z",
+  "adoption": "unknown",
+  "integration": "not-integrated",
+  "versions": [
+    {
+      "id": "limit-break-passive-onset-astra62-r1",
+      "title": "リミットブレイク・パッシブ初回成立 R1",
+      "creatorModelId": "gpt-6.2-astra",
+      "creatorDisplayName": "GPT-6.2-Astra",
+      "runtimeAuthorDisplayName": "GPT-6.1-Sol / GPT-6-Luna",
+      "page": "/public/astra62-limit-break-passive-onset/r1/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=limit-break-passive-onset-astra62-r1",
+      "sourceUrl": "/public/astra62-limit-break-passive-onset/r1/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=limit-break-passive-onset-astra62-r1",
+      "source": "/public/astra62-limit-break-passive-onset/r1/gallery-manifest.json",
+      "manualReview": false,
+      "automaticIframe": true,
+      "status": "ギャラリー内自動再生試作（実ブラウザ・品質・聴感未評価）",
+      "detail": "本人のリミットブレイク初回成立を示す合成fixture。本編・既存ATEとは未接続。元の演出・音・受理条件を保持し、追加adapterで自動開始・ループ・認証付き初回描画通知・終了証明に対応。子CPU8群/実子receipt使用の親CPU4群pass。実iframe・全寿命品質・通常聴感は未評価。親全体構文検査は実行制限により未実施。",
+      "publicationEligible": false,
+      "galleryListingEligible": true,
+      "qualityReviewStatus": "not-reviewed",
+      "qualityAccepted": false,
+      "technicalReplayStatus": "pending-unverified-publication",
+      "normalAudioListening": "not_run",
+      "nativeSourceStatus": "not_run",
+      "parentGalleryReplayStatus": "not_run",
+      "adoption": "unknown",
+      "userAdopted": false,
+      "gameIntegrationStatus": "not_connected",
+      "publicationKind": "creative",
+      "creativeIdentity": "limit-break-passive-onset-astra62-r1",
+      "creativeFirstPublishedAt": "2026-11-25T14:32:50.131Z",
+      "creativeEdition": 1
+    }
+  ]
+},
+{
   "id": "hacker-mana-gpu-accrual-astra62",
   "title": "ハッカーのマナGPU・短縮分の蓄積",
   "category": "effect",
@@ -1012,6 +1053,7 @@ function newCleanroomNoDeviceRetirementReceiptValid(event, attempt, pin, origin)
 return newCleanroomNoDeviceRetirementReceiptValid;})();
 const OVERHEAL_NO_DEVICE_PIN=Object.freeze({"versionId":"overheal-benefit-cleanroom-sol61-r1","route":"/public/sol61-overheal-benefit/cleanroom-r1/index.html","packageSchema":"dva-overheal-cleanroom-gallery/v1","packageManifestSha256":"eebe254c6dceda2d21c649c5c4492312792f14443c722dbe12fb96cb40c2b82b","packageSealSha256":"eb1ee1576a4916e740187d15831bc2d0b5558bac0a7f96ca7abaa6a4b30f7d5a","sourceManifestSha256":"b61db6977a09b9e10f7370fed8a26a0b10bb1da335c3c08eaeec30937ea6b0c7"});
 function galleryChildRetirementReceiptIsValid(event, attempt) {
+  if (galleryChildLimitR1KnownVersion(attempt)) return galleryChildLimitR1ReceiptIsValid(event, attempt);
   if (attempt?.versionId==='gravity-storm-dot-r6' || attempt?.childProtocolVersionId==='gravity-storm-dot-r6') {
     const l=event?.data?.lifecycle;
     if (l?.retirementSettled!==true || l.postRetireSubmissionStopConfirmed!==true ||
@@ -1257,7 +1299,119 @@ const LEVITATION_PARENT_PINS=Object.freeze([Object.freeze({versionId:'levitation
 function isLevitationRetirementTarget(attempt){try{const p=levitationParentPin(attempt?.versionId);if(!p)return false;const u=new URL(attempt?.url,location.href);return attempt?.versionId===p.versionId&&attempt?.childProtocolVersionId===p.versionId&&attempt?.origin===location.origin&&u.origin===location.origin&&u.pathname===p.route&&u.searchParams.get('galleryVersionId')===p.versionId&&u.searchParams.get('galleryPackageManifestSha256')===p.packageManifestSha256&&u.searchParams.get('galleryPackageSealSha256')===p.packageSealSha256&&u.searchParams.get('gallerySourceManifestSha256')===p.sourceManifestSha256&&u.searchParams.get('galleryStartupToken')===attempt?.token&&u.searchParams.get('galleryAttemptEpoch')===String(attempt?.issuedEpoch)&&attempt?.packageManifestSha256===p.packageManifestSha256&&attempt?.packageSealSha256===p.packageSealSha256&&attempt?.sourceManifestSha256===p.sourceManifestSha256}catch{return false}}
 function levitationRetirementReceiptIsValid(event,attempt){const p=levitationParentPin(attempt?.versionId),d=event?.data,l=d?.lifecycle,r=attempt?.levitationRetirementIdentity,child=attempt?.iframe?.contentWindow;if(!p)return false;let live;try{live=child?.__levitation?.snapshot?.()}catch{return false}const f=live?.lastReceipt;return !!r&&attempt?.iframe?.isConnected===true&&event?.source===child&&event?.origin===attempt.origin&&d?.schema==='dva-gallery-startup/v1'&&d?.action==='retired'&&d?.stage==='playing'&&d?.status==='retired'&&d?.token===attempt.token&&d?.versionId===p.versionId&&d?.attemptEpoch===attempt.issuedEpoch&&Number.isSafeInteger(d?.sequence)&&d.sequence>attempt.sequence&&l?.disposeSettled===true&&l?.teardown==='disposed'&&l?.deviceLifecycle==='destroyed-loss-settled'&&typeof l?.sourceId==='string'&&l.sourceId.length>0&&l?.causeId===r.causeId&&l?.generation===r.generation&&Number.isSafeInteger(l?.finalSubmission)&&l.finalSubmission>0&&l?.queueCompleted===true&&l?.device?.status==='destroyed-loss-settled'&&l.device.drained===true&&l.device.destroyCalled===true&&l.device.lostReason==='destroyed'&&live?.versionId===p.versionId&&live?.disposeCompleted===true&&live?.deviceLifecycle==='destroyed-loss-settled'&&f?.versionId===p.versionId&&f?.sourceId===l.sourceId&&f?.causeId===l.causeId&&f?.generation===l.generation&&f?.submission===l.finalSubmission&&f?.completed===true&&f?.queueCompleted===true}
 function isHeadshotR2RetirementTarget(attempt){return isHeadshotR2ParentTarget(attempt,HEADSHOT_R2_PARENT_PIN,location.href)}
+function galleryChildLimitR1KnownVersion(attempt) {
+  return !!attempt && (attempt.versionId === "limit-break-passive-onset-astra62-r1" || attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r1");
+}
+
+function galleryChildLimitR1StrictTarget(attempt) {
+  try {
+    var id = "limit-break-passive-onset-astra62-r1";
+    if (!attempt || attempt.versionId !== id || attempt.childProtocolVersionId !== id || attempt.origin !== location.origin) return false;
+    var iframe = attempt.iframe;
+    if (!(iframe instanceof HTMLIFrameElement) || iframe.isConnected !== true || !iframe.contentWindow || !attempt.url || !iframe.src || typeof attempt.token !== "string" || !/^[a-f0-9]{32}$/.test(attempt.token) || !Number.isSafeInteger(attempt.issuedEpoch) || attempt.issuedEpoch <= 0) return false;
+    function routeURL(value) {
+      var url = new URL(value, location.href), params = url.searchParams;
+      if (url.origin !== attempt.origin || url.pathname !== "/public/astra62-limit-break-passive-onset/r1/gallery.html" || url.username !== "" || url.password !== "" || url.hash !== "") return null;
+      var allowed = {embed:1, galleryAutoLoop:1, galleryVersionId:1, galleryStartupToken:1, galleryAttemptEpoch:1, verify:1};
+      for (var pair of params) if (!Object.prototype.hasOwnProperty.call(allowed, pair[0])) return null;
+      function exactlyOne(key, value) {
+        var values = params.getAll(key);
+        return values.length === 1 && values[0] === value;
+      }
+      var verify = params.getAll("verify");
+      if (!exactlyOne("embed", "1") || !exactlyOne("galleryAutoLoop", "1") || !exactlyOne("galleryVersionId", id) || !exactlyOne("galleryStartupToken", attempt.token) || !exactlyOne("galleryAttemptEpoch", String(attempt.issuedEpoch)) || verify.length > 1) return null;
+      return url;
+    }
+    var declared = routeURL(attempt.url), actual = routeURL(iframe.src);
+    return !!declared && !!actual && declared.searchParams.has("verify") === actual.searchParams.has("verify");
+  } catch (_) { return false; }
+}
+
+function galleryChildLimitR1ReceiptIsValid(event, attempt) {
+  try {
+    if (!galleryChildLimitR1StrictTarget(attempt)) return false;
+    var data = event && event.data;
+    if (!event || event.source !== attempt.iframe.contentWindow || event.origin !== attempt.origin || !data || data.schema !== "dva-gallery-startup/v1" || data.action !== "retired" || data.status !== "cancelled" || data.stage !== "playing" || data.versionId !== attempt.childProtocolVersionId || data.token !== attempt.token || data.attemptEpoch !== attempt.issuedEpoch || !Number.isSafeInteger(data.sequence) || !(data.sequence > attempt.sequence)) return false;
+    var life = data.lifecycle, device = life && life.device, audio = life && life.audio;
+    if (!life || life.bootSettled !== true || life.disposeSettled !== true || life.teardown !== "disposed" || life.pendingWork !== 0 || !Number.isSafeInteger(life.submitted) || !Number.isSafeInteger(life.completed) || life.submitted < 0 || life.completed !== life.submitted || life.contextUnconfigured !== true || life.rafPending !== false || life.loopTimerPending !== false || life.observerDisconnected !== true || !Array.isArray(life.cleanupErrors) || life.cleanupErrors.length !== 0 || !audio || audio.disposeSettled !== true || !["absent", "closed"].includes(audio.contextState) || audio.activeVoices !== 0 || !device) return false;
+    if (life.deviceLifecycle === "destroyed-loss-settled" && device.status === "destroyed-loss-settled") return device.drained === true && device.destroyCalled === true && device.lostReason === "destroyed";
+    return life.deviceLifecycle === "not-created" && device.status === "not-created" && device.drained === true && device.destroyCalled === false && device.lostReason === null && life.submitted === 0 && life.completed === 0;
+  } catch (_) { return false; }
+}
+
+function galleryChildLimitR1Retire(attempt) {
+  if (!attempt) return Promise.resolve(false);
+  if (attempt.retirementPromise) return attempt.retirementPromise;
+  if (!galleryChildLimitR1StrictTarget(attempt)) return Promise.resolve(false);
+  attempt.retired = true;
+  attempt.epoch = ++galleryChildAttemptSerial;
+  attempt.retiredReason = "retire";
+  galleryChildClearTimers(attempt);
+  window.removeEventListener("message", attempt.onMessage);
+  attempt.retirementPromise = new Promise(function (resolve) {
+    var settled = false, timer;
+    function finish(value, receipt, detail) {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      window.removeEventListener("message", onMessage);
+      attempt.retirementStatus = value ? "retired" : "failed";
+      if (value) {
+        attempt.sequence = receipt.sequence;
+        attempt.retirementReceipt = receipt;
+        sfxBridge?.detachFrame(attempt.iframe);
+        attempt.iframe?.remove();
+      }
+      var ownsStatus = activeGalleryChildStartup === attempt && (!activeAudioFrame || activeAudioFrame === attempt.iframe);
+      if (value) {
+        if (activeGalleryChildStartup === attempt) activeGalleryChildStartup = null;
+        if (activeAudioFrame === attempt.iframe) {
+          activeAudioFrame = null;
+          activeAudioItem = null;
+        }
+        if (ownsStatus) galleryChildClearStatus();
+      } else if (ownsStatus) {
+        var node = galleryChildStatusNode();
+        if (node) {
+          node.hidden = false;
+          node.textContent = detail || "Gallery retirement failed";
+        }
+      }
+      resolve(value);
+    }
+    function onMessage(event) {
+      if (galleryChildLimitR1ReceiptIsValid(event, attempt)) {
+        finish(true, event.data);
+        return;
+      }
+      var data = event && event.data;
+      if (galleryChildLimitR1StrictTarget(attempt) && event && event.source === attempt.iframe.contentWindow && event.origin === attempt.origin && data && typeof data === "object" && data.schema === "dva-gallery-startup/v1" && !("action" in data) && data.versionId === attempt.childProtocolVersionId && data.token === attempt.token && data.attemptEpoch === attempt.issuedEpoch && Number.isSafeInteger(data.sequence) && data.sequence > attempt.sequence && data.status === "pending" && ["child-document", "adapter", "device", "assets", "pipelines", "first-frame"].includes(data.stage)) {
+        attempt.sequence = data.sequence;
+        try {
+          attempt.iframe.contentWindow.postMessage({schema:"dva-gallery-startup/v1", action:"retire", versionId:attempt.childProtocolVersionId, token:attempt.token, attemptEpoch:attempt.issuedEpoch}, attempt.origin);
+        } catch (_) {
+          finish(false, null, "Gallery retirement failed");
+        }
+        return;
+      }
+      if (!galleryChildLimitR1StrictTarget(attempt) || !event || event.source !== attempt.iframe.contentWindow || event.origin !== attempt.origin || !data || data.schema !== "dva-gallery-startup/v1" || data.action !== "retire-error" || data.versionId !== attempt.childProtocolVersionId || data.token !== attempt.token || data.attemptEpoch !== attempt.issuedEpoch || !Number.isSafeInteger(data.sequence) || !(data.sequence > attempt.sequence) || !data.lifecycle || data.lifecycle.teardown !== "unknown") return;
+      finish(false, null, "Gallery retirement failed");
+    }
+    window.addEventListener("message", onMessage);
+    timer = setTimeout(function () {
+      finish(false, null, "Gallery retirement timed out");
+    }, 10000);
+    try {
+      attempt.iframe.contentWindow.postMessage({schema:"dva-gallery-startup/v1", action:"retire", versionId:attempt.childProtocolVersionId, token:attempt.token, attemptEpoch:attempt.issuedEpoch}, attempt.origin);
+    } catch (_) {
+      finish(false, null, "Gallery retirement failed");
+    }
+  });
+  return attempt.retirementPromise;
+}
+
 function isValidatedRetirementTarget(attempt) {
+  if (galleryChildLimitR1KnownVersion(attempt)) return galleryChildLimitR1StrictTarget(attempt);
   if(cleanroomR1NoDeviceKnown(attempt)) return cleanroomR1NoDeviceBoundTarget(attempt);
 if(abilityR10Known(attempt))return isAbilityR10ParentTarget(attempt); if(abilityR9Known(attempt))return isAbilityR9ParentTarget(attempt);
 if(abilityR8Known(attempt))return isAbilityR8ParentTarget(attempt);
@@ -1281,6 +1435,7 @@ function retireGalleryChildStartup(reason = 'selection-changed') {
   previewStatusPoll = null;
   if (!attempt) { galleryChildClearStatus(); return Promise.resolve(true); }
   if (attempt.retirementPromise) return attempt.retirementPromise;
+  if (galleryChildLimitR1KnownVersion(attempt)) return galleryChildLimitR1Retire(attempt);
   if(cleanroomR1NoDeviceKnown(attempt)) {
     if(!isValidatedRetirementTarget(attempt)) return Promise.resolve(false);
     return retireNewCleanroomAttached(attempt,reason);

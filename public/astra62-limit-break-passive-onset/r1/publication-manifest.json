@@ -1,0 +1,98 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "groupId": "limit-break-passive-onset-astra62",
+  "versionId": "limit-break-passive-onset-astra62-r1",
+  "title": "リミットブレイク・パッシブ初回成立 R1",
+  "edition": 1,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Parent task assignment (high).",
+  "manualReview": true,
+  "automaticIframe": false,
+  "entry": "index.html",
+  "playControl": "初回成立を再生",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/windows-dva-migration",
+    "runtimeCommit": "2746211e553a32060ab5b4c6099568a61220c7e8"
+  },
+  "producer": {
+    "repository": "Player13579/player13579.github.io",
+    "ref": "19a5b664db15dc7df63d5ad27624eb925f95aeb1",
+    "path": "offline-server-main.js",
+    "symbol": "advanceLimitBreak",
+    "lines": "8050–8075",
+    "semantics": "First eligible passive step in playing phase with rational, alive, non-ejected Fighter or shop authority sets active, constrains maximum health to one, and starts the ACC bonus at 0.1 per world second. Meeting pauses. Manual toggle rejects. Only an ordinary non-apex first positive-duration committed transition is illustrated."
+  },
+  "design": {
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    },
+    "subject": "A cutaway limit gauge with two heart-shaped capacity windows and one acceleration dial. A steel slide physically masks only the second capacity window, then the needle lifts off its stop to register bonus onset. The dial carries no numeric speed scale.",
+    "timingMs": {
+      "frameIn": [
+        0,
+        70
+      ],
+      "coverSlide": [
+        138,
+        425
+      ],
+      "needleTravel": [
+        425,
+        850
+      ],
+      "holdUntil": 1090,
+      "end": 1320
+    },
+    "display": "A single owner-only illustrative panel, approximately 153×68 logical px. Reduced motion shortens cover travel and needle motion, retaining endpoints and relative order.",
+    "postEffect": "Localized occlusion at the sliding metal cover and needle face. No full-screen overlay or world-space status.",
+    "audio": "Brief friction upon cover travel, low mechanical latch at 425 ms, then a soft rising pitch as the needle leaves zero. Verify always muted."
+  },
+  "scope": "Manual illustrative fixtures. Native Fighter and legitimate shop authority produce the same passive in the example. Continuation, meeting pause, manual request, missing entitlement, disabled passive, other owner and snapshot do not produce onset. No input hook, current HP, injury, lethal action, game coordinates, actual movement speed, persisted marker, existing dedicated ATE or EC milestone presentation is modified.",
+  "files": {
+    "index.html": {
+      "bytes": 2194,
+      "sha256": "2dbdb5552c57cd4eea83b117b4ae1f1cfdda9ff701bd9acd82a8563e100aa510",
+      "gitBlob": "d8b91779517d78a99a5d60d5009650044023eb30"
+    },
+    "preview.mjs": {
+      "bytes": 7833,
+      "sha256": "dde3b4882ec3b86f4c5e3eef75105b48258eb336826d8e27b6ceb5fcee2d862e",
+      "gitBlob": "86472e8aa995e7c975c9d542e3c28006abc3cb62"
+    },
+    "onset.mjs": {
+      "bytes": 2555,
+      "sha256": "3c3b59d39a50b34333d7620a0059f815b34fa9de0102e7f2c8352a158a2c6ab2",
+      "gitBlob": "4c122cd46b1f603e2ad997386676dccb8d517990"
+    },
+    "effect.wgsl": {
+      "bytes": 2705,
+      "sha256": "b8e61632664556ed57133d7bba3ca1219d1ef463fa5ed9be88ddaa0cbe5841ed",
+      "gitBlob": "1a6b69c7fc3d99ac0151b548625954a39f033b7f"
+    }
+  },
+  "validation": {
+    "bounded": "Both positive fixtures, seven negative cases, malformed/zero/wrong-rate bonuses, ineligible or apex, matching capacity change, duplicate and stale IDs and private field access; host syntax and control list.",
+    "wgsl": "naga-wasi-cli 0.1.0 validation successful",
+    "audio": "Finite normalized PCM at four rates; input slide, latch and rising needle sound windows verified numerically, silence at ends.",
+    "samplePeaks": {
+      "8000": 0.09467507898807526,
+      "44100": 0.09578986465930939,
+      "48000": 0.0958104208111763,
+      "96000": 0.0958104208111763
+    },
+    "runtimeReadback": "4/4 exact content and Git blob identity confirmed.",
+    "nativeWebGPU": "not evaluated",
+    "continuousMotion": "not evaluated",
+    "ordinaryAudio": "not listened",
+    "deviceMatrix": "not evaluated",
+    "adoption": "unknown"
+  }
+}
