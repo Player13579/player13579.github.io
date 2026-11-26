@@ -30729,8 +30729,6 @@ function tickMedicalRoomWebGPUSfx(data, previousNow, now) {
     catch (_) { /* The visual readiness gate owns malformed task events. */ }
     for (const cue of cues) playMedicalRoomWebGPUCue(cue, data);
   }
-  for (const id of state.eVisualClocks.keys())
-    if (!present.has(id)) state.eVisualClocks.delete(id);
 }
 
 // Dormant bridge: the active Canvas draw loop never calls this factory. A
