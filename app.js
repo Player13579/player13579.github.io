@@ -181,6 +181,7 @@ const els = {
   tabletAbilityShortcut: $("#tabletAbilityShortcut"),
   purchasedAbilityShortcuts: $("#purchasedAbilityShortcuts"),
   tabletShootShortcut: $("#tabletShootShortcut"),
+  tabletWeaponUseShortcut: $("#tabletWeaponUseShortcut"),
   tabletFireShortcut: $("#tabletFireShortcut"),
   tabletEmpShortcut: $("#tabletEmpShortcut"),
   tabletClairvoyanceShortcut: $("#tabletClairvoyanceShortcut"),
@@ -5974,13 +5975,13 @@ function swordEnhanceInputOwnerCurrent(owner) {
       owner.battleStartedAt === battleStartedAt));
 }
 
-function beginEnhanceAction(kind, pointerId = null, inputSource = pointerId === null ? "unknown" : "pointer", inputCode = "") {
+function beginEnhanceAction(kind, pointerId = null, inputSource = pointerId === null ? "unknown" : "pointer", inputCode = "", selectedWeaponItemId = "") {
   if (!kind || state.enhanceHold.kind || ownsThrowCharge()) return false;
   const itemId = kind === "shoot"
     ? `weapon:${String(state.data?.self?.gunnerWeapon || "")}`
     : kind === "fire"
       ? "fire-jutsu"
-      : ["use", "throw"].includes(kind) ? String(els.itemSelect?.value || "") : "";
+      : ["use", "throw"].includes(kind) ? String((kind === "use" && selectedWeaponItemId) || els.itemSelect?.value || "") : "";
   const chargeKind = kind === "use" && itemId.startsWith("weapon:") ? "shoot" : kind;
   if (chargeKind === "shoot" && state.gunActivationPending) return false;
   const itemUseOwner = kind === "use"
@@ -6011,7 +6012,7 @@ function cancelEnhanceAction(kind = state.enhanceHold.kind, { recoverOnFailure =
   state.enhanceHold = { kind: "", chargeKind: "", pointerId: null, inputSource: "", inputCode: "", startedAt: 0, timer: 0, itemId: "", chargeId: "" };
   if (hold.chargeKind === "shoot") state.gunActivationPending = false;
   if (hold.pointerId !== null) {
-    for (const button of [els.shootButton, els.tabletShootShortcut, els.fireJutsuButton, els.tabletFireShortcut, els.itemUseButton, els.itemThrowButton, els.webgpuMainCanvas]) {
+    for (const button of [els.shootButton, els.tabletShootShortcut, els.fireJutsuButton, els.tabletFireShortcut, els.itemUseButton, els.tabletWeaponUseShortcut, els.itemThrowButton, els.webgpuMainCanvas]) {
       try {
         if (button?.hasPointerCapture?.(hold.pointerId)) button.releasePointerCapture(hold.pointerId);
       } catch {}
@@ -8781,7 +8782,20 @@ function bindEvents() {
     });
   });
   els.renkiButton.addEventListener("click", () => api("/api/renki"));
-  const bindEnhanceButton = (button, kind) => {
+  const bindEnhanceButton = (button, kind, weaponShortcut = false) => {
+    let shortcutSettling = false;
+    const finishShortcutUse = (pointerId = null) => {
+      shortcutSettling = true;
+      void finishEnhanceAction(kind, pointerId).finally(() => { shortcutSettling = false; });
+    };
+    const shortcutWeapon = () => {
+      if (!state.tabletOpen || state.expandedMapOpen || state.keybindOpen || state.fieldFeedOpen ||
+          state.operatorBranchesOpen || state.switchDrag.opened || !els.killCameraOverlay.hidden) return null;
+      const shortcut = tabletWeaponUseState(state.data);
+      return shortcut.available ? shortcut.weapon : null;
+    };
+    const ownsShortcutPointer = (event) => state.enhanceHold.pointerId === event.pointerId &&
+      (!weaponShortcut || state.enhanceHold.inputSource === "weapon-shortcut");
     let suppressClickUntil = 0;
     button.classList.add("enhance-hold-control");
     const suppressNativeHoldUi = (event) => {
@@ -8793,15 +8807,25 @@ function bindEvents() {
     button.addEventListener("selectstart", suppressNativeHoldUi);
     button.addEventListener("dragstart", suppressNativeHoldUi);
     const finishPointerAction = (event) => {
-      if (state.enhanceHold.pointerId !== event.pointerId) return false;
+      if (!ownsShortcutPointer(event)) return false;
       event.preventDefault();
       suppressClickUntil = performance.now() + 700;
-      void finishEnhanceAction(kind, event.pointerId);
+      if (weaponShortcut) {
+        if (shortcutWeapon()?.id !== state.enhanceHold.itemId) cancelEnhanceAction(kind);
+        else finishShortcutUse(event.pointerId);
+      } else void finishEnhanceAction(kind, event.pointerId);
       return true;
     };
     button.addEventListener("pointerdown", (event) => {
       if (event.pointerType === "mouse" && event.button !== 0) return;
       if (button.disabled) return;
+      if (weaponShortcut) {
+        const weapon = shortcutWeapon();
+        if (shortcutSettling || !weapon || !beginEnhanceAction(kind, event.pointerId, "weapon-shortcut", "", weapon.id)) return;
+        event.preventDefault();
+        try { button.setPointerCapture?.(event.pointerId); } catch {}
+        return;
+      }
       event.preventDefault();
       button.setPointerCapture?.(event.pointerId);
       beginEnhanceAction(kind, event.pointerId);
@@ -8810,26 +8834,31 @@ function bindEvents() {
       finishPointerAction(event);
     });
     button.addEventListener("pointercancel", (event) => {
-      if (state.enhanceHold.pointerId !== event.pointerId) return;
+      if (!ownsShortcutPointer(event)) return;
       event.preventDefault();
       suppressClickUntil = performance.now() + 700;
       cancelEnhanceAction(kind);
     });
     button.addEventListener("lostpointercapture", (event) => {
-      if (state.enhanceHold.pointerId !== event.pointerId) return;
+      if (!ownsShortcutPointer(event)) return;
       event.preventDefault();
       suppressClickUntil = performance.now() + 700;
       cancelEnhanceAction(kind);
     });
     button.addEventListener("click", (event) => {
       if (performance.now() < suppressClickUntil) return;
-      if (!beginEnhanceAction(kind)) return;
-      void finishEnhanceAction(kind);
+      if (weaponShortcut) {
+        if (event.detail !== 0 || button.disabled) return;
+        const weapon = shortcutWeapon();
+        if (shortcutSettling || !weapon || !beginEnhanceAction(kind, null, "weapon-shortcut", "", weapon.id)) return;
+        finishShortcutUse();
+      } else if (beginEnhanceAction(kind)) void finishEnhanceAction(kind);
     });
   };
   bindEnhanceButton(els.fireJutsuButton, "fire");
   bindEnhanceButton(els.tabletFireShortcut, "fire");
   bindEnhanceButton(els.itemUseButton, "use");
+  if (els.tabletWeaponUseShortcut) bindEnhanceButton(els.tabletWeaponUseShortcut, "use", true);
   bindEnhanceButton(els.itemThrowButton, "throw");
   window.addEventListener("pointerup", (event) => {
     // The control-local pointerup must own releases that began on an Enhance
@@ -8838,6 +8867,10 @@ function bindEvents() {
     // and makes the first ordinary use fail the server transaction check.
     if (event.target instanceof Element && event.target.closest(".enhance-hold-control")) return;
     if (state.enhanceHold.pointerId !== event.pointerId) return;
+    if (state.enhanceHold.inputSource === "weapon-shortcut") {
+      cancelEnhanceAction(state.enhanceHold.kind);
+      return;
+    }
     void finishEnhanceAction(state.enhanceHold.kind, event.pointerId);
   }, true);
   els.transferItemButton.addEventListener("click", () => api("/api/transfer", {
@@ -9031,7 +9064,8 @@ function bindEvents() {
       if (!event.repeat) matchUiToggle.click();
       return;
     }
-    if ((eventTarget?.id === "matchUiToggle" || eventTarget?.id === "matchUiMapButton") && !eventTarget.hidden &&
+    if ((eventTarget?.id === "matchUiToggle" || eventTarget?.id === "matchUiMapButton" ||
+        eventTarget === els.tabletWeaponUseShortcut) && !eventTarget.hidden &&
         (event.key === "Enter" || event.code === "Space")) {
       if (event.repeat) event.preventDefault();
       return;
@@ -17107,6 +17141,7 @@ function renderItemControl(data) {
   const visible = data.phase === "playing" && self.alive && !self.ejected && (items.length > 0 || Number(self.credits) > 0);
   els.itemControl.hidden = !visible;
   if (!visible) {
+    syncTabletWeaponUseShortcut(data, items);
     state.itemRenderKey = "";
     state.pendingExplicitWeaponSelectionId = "";
     if (state.inventoryItemDetailSource && els.itemControl.contains(state.inventoryItemDetailSource)) hideInventoryItemDetail();
@@ -17196,6 +17231,7 @@ function renderItemControl(data) {
   const selected = items.find((item) => item.id === els.itemSelect.value) || items.find((item) => item.id === fallbackItemId) || items[0];
   if (selected && els.itemSelect.value !== selected.id) els.itemSelect.value = selected.id;
   if (selected && displayedWeaponKind(selected)) state.selectedWeaponItemId = selected.id;
+  syncTabletWeaponUseShortcut(data, items);
   els.itemInventoryGrid.querySelectorAll("[data-item-choice]").forEach((button) => {
     const active = button.dataset.itemChoice === selected?.id;
     button.classList.toggle("selected", active);
@@ -17211,8 +17247,8 @@ function renderItemControl(data) {
   const transferCredits = transferCreditAmount();
   els.transferCreditsAmount.max = String(Math.max(1, Math.floor(Number(self.credits) || 0)));
   els.itemUseButton.disabled = !canUse || selectedWeaponReloading;
-  // The selected item owns the visible use command; keyboard follows the same action.
-  els.itemUseButton.hidden = false;
+  // Weapons use the field shortcut; Shift+V keeps the inventory action gate.
+  els.itemUseButton.hidden = Boolean(els.tabletWeaponUseShortcut && displayedWeaponKind(selected));
   els.itemThrowButton.hidden = selectedInstant;
   els.itemThrowButton.disabled = selectedInstant || !canActOnItem || selected?.throwable === false;
   els.transferItemButton.hidden = selectedInstant;
@@ -17311,9 +17347,9 @@ function displayedWeaponKind(item) {
   return "";
 }
 
-function displayedWeaponAction(self) {
+function displayedWeaponAction(self, items = null) {
   if (!self) return null;
-  const items = collectInventoryDisplayItems(self);
+  items ||= collectInventoryDisplayItems(self);
   const findWeapon = (id) => {
     const item = items.find((candidate) => candidate.id === id);
     const kind = displayedWeaponKind(item);
@@ -17329,6 +17365,27 @@ function displayedWeaponAction(self) {
   if (sword) return sword;
   const fallback = items.find((item) => displayedWeaponKind(item));
   return fallback ? { ...fallback, kind: displayedWeaponKind(fallback) } : null;
+}
+
+function tabletWeaponUseState(data, items = null) {
+  const self = data?.self;
+  const weapon = state.screen === "game" && data?.phase === "playing" && self?.alive && !self.ejected && !self.inVent
+    ? displayedWeaponAction(self, items)
+    : null;
+  if (!weapon) return { weapon: null, available: false };
+  const liveNow = estimatedServerNow(data);
+  const available = (Number(self.itemDisabledUntil) || 0) <= liveNow && weapon.usable !== false &&
+    (weapon.kind !== "firearm" || (Number(self.gunnerReloadUntil) || 0) <= liveNow);
+  return { weapon, available };
+}
+
+function syncTabletWeaponUseShortcut(data, items) {
+  const button = els.tabletWeaponUseShortcut;
+  if (!button) return;
+  const { weapon, available } = tabletWeaponUseState(data, items);
+  button.hidden = !weapon;
+  button.disabled = !available;
+  setTabletShortcutLabel(button, "武器使用", weapon ? `武器使用: ${weapon.label || weapon.id}` : "武器使用");
 }
 
 function isRepeatableDisplayedWeaponAction(weaponAction) {
@@ -34530,7 +34587,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
