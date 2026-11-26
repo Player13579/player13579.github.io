@@ -1,0 +1,113 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "本人のオペレーター手動選択確定 R2",
+  "groupId": "operator-selection-confirm-astra62",
+  "versionId": "operator-selection-confirm-astra62-r2",
+  "creativeEdition": 2,
+  "editionScope": "Visual revision for the same self-owned manual operator choice confirmation. Gallery preview fixture only.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "OpenAI Responses API metadata in source.creativeSource.",
+  "entry": "index.html",
+  "path": "/public/astra62-operator-selection-confirm/r2/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baselineCommit": "22e1bb807d47a39cf4bb9b861a615f2623fde720",
+    "baselineDirectory": "public/astra62-operator-selection-confirm/r1",
+    "creativeSource": {
+      "scope": "R2 visual design and WGSL",
+      "responseId": "resp_0c82a3740839a8f8006b07cf99ad8487d0ade2f32f63d3f157",
+      "model": "gpt-6.2-astra",
+      "reasoningEffort": "high"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1921,
+      "sha256": "7920d89e7eb13dc885de28c61a6b3834e5e83c58044a3bd47e69665a45ff0b11",
+      "gitBlob": "87a9c7b9ee614088976815ff45a7f835583dc998"
+    },
+    "preview.mjs": {
+      "bytes": 7817,
+      "sha256": "a99e4d55db5cf78b0f510fc3ac4dce613f8bb47f145748d6cc4bfb551fce7c26",
+      "gitBlob": "ae2c8ab6f2f30223b3d2794f999a72bf820ab72f"
+    },
+    "selection.mjs": {
+      "bytes": 1910,
+      "sha256": "d100491a690d20a679cbaff21a48ed5e2633a04796de4459717265db4b983408",
+      "gitBlob": "b0fc982299aff34f0ba0afd6bc3d60fd50ac1369"
+    },
+    "effect.wgsl": {
+      "bytes": 3849,
+      "sha256": "812eac6c1d4f61fc4bf26ae2d6d0b1e43f68db3bd656550a67c9b9ec74ee55bf",
+      "gitBlob": "a03866e835c1f6eee9e6d18f5f8911c5262df8a9"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "5b5c2214a4a557ae1f25da8c0c19c2cc89ecdefc",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "selectOperator L6859–6875; /api/operator L20008–20012; separate solo mission initialization L7118 and bot autoPickOperator L6878.",
+    "scope": "A current self-owned manual choice that succeeds and matches the returned ready selection. The source can advance into battle for the final player, so a reply still in selecting phase is not required. A synthetic pair explicitly marks the request, reply, session/owner, accepted selection and cause ID. It does not inspect a room, hidden role, peer selection or operator identity.",
+    "fixtures": "Two anonymous inert specimen cards encode different local choices. They are not actual operators, skins, equipment, or the game's selection screen. Automatic or training choice, stale or other-owner replies, failure, pending and mismatch cannot trigger this E.",
+    "checkedAt": "22e1bb807d47a39cf4bb9b861a615f2623fde720"
+  },
+  "design": {
+    "primary": "変更は選択側の着座光だけ。バー中央を青緑の導光芯とし、両爪の内側の面取りと、接点に近いカード面に同じ光を通す。青い金属の反射色は残し、発光分だけを線形RGBで加算する。外側の光漏れは輪郭から3基準pxまで。389–412 msで点灯し、チェック完成の529 msまで保ち、749 msで消す。新たな合図は足さない。手動選択と現行の所有済み成功応答が同じ選択を指す、というR1のゲートおよびPCMは変更せず、既存のactiveFlagとslotを使う。",
+    "evaluation": "同じ実寸・同じ時刻でR1と並べ、左右のslotを入れ替えて比較する。① 待機時と1070 ms以降はR1と同じ二枚。非選択カードは着座中も待機時と同じ色で、両紋章に発光の縁取りがないこと。② 412 msのクリックで両爪とバーが隙間なく座り、R1のバー単体のハイライトに対して、R2ではバーから両爪・選択面まで一続きに明るく読めること。529 msで琥珀のチェックが完成しても再点灯せず、749 msには青緑の光だけが消え、機構とチェックは801–1045 msに退くこと。③ reducedでは移動量だけが爪12→2.5、バー5.5→1.4基準pxに減り、着座・音・完了時刻は不変。一致しない応答や画面遷移だけでは再生せず、verifyは無音であること。",
+    "sound": "One soft travel tone and a higher-amplitude damped seating click at 412 ms. Verify is always muted.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "cpu": {
+      "gateAndBridge": "pass",
+      "negatives": 17,
+      "selectedLeft": 0,
+      "selectedRight": 1,
+      "committedReplyAlreadyPlayingAccepted": true,
+      "duplicatesBlocked": true,
+      "R1PCMEqual": [
+        [
+          8000,
+          0.150575
+        ],
+        [
+          44100,
+          0.150595
+        ],
+        [
+          48000,
+          0.150575
+        ],
+        [
+          96000,
+          0.150583
+        ],
+        [
+          192000,
+          0.150619
+        ]
+      ],
+      "htmlConfig": "pass"
+    },
+    "shader": "pass-naga-wasi-cli-0.1.0",
+    "nativeGpu": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "normalAudioListening": "not_run",
+    "quality": "not-reviewed",
+    "gameIntegration": "not-connected"
+  }
+}

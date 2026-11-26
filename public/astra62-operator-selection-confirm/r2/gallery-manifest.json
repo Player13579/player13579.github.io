@@ -1,0 +1,103 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "本人のオペレーター手動選択確定 R2",
+  "groupId": "operator-selection-confirm-astra62",
+  "versionId": "operator-selection-confirm-astra62-r2",
+  "creativeEdition": 2,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-operator-selection-confirm/r2/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "left",
+    "slot": 0,
+    "manualPick": true,
+    "selfCurrentRequestAndReply": true,
+    "ok": true,
+    "ready": true,
+    "sameRequestIdSessionAcceptedChoice": true,
+    "newSyntheticRequestIdEachLoop": true,
+    "uniformBytes": 32,
+    "lifetimeMs": 1070
+  },
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baselineCommit": "22e1bb807d47a39cf4bb9b861a615f2623fde720",
+    "baselineDirectory": "public/astra62-operator-selection-confirm/r1",
+    "creativeSource": {
+      "scope": "R2 visual design and WGSL",
+      "responseId": "resp_0c82a3740839a8f8006b07cf99ad8487d0ade2f32f63d3f157",
+      "model": "gpt-6.2-astra",
+      "reasoningEffort": "high"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1921,
+      "sha256": "7920d89e7eb13dc885de28c61a6b3834e5e83c58044a3bd47e69665a45ff0b11",
+      "gitBlob": "87a9c7b9ee614088976815ff45a7f835583dc998"
+    },
+    "preview.mjs": {
+      "bytes": 7817,
+      "sha256": "a99e4d55db5cf78b0f510fc3ac4dce613f8bb47f145748d6cc4bfb551fce7c26",
+      "gitBlob": "ae2c8ab6f2f30223b3d2794f999a72bf820ab72f"
+    },
+    "selection.mjs": {
+      "bytes": 1910,
+      "sha256": "d100491a690d20a679cbaff21a48ed5e2633a04796de4459717265db4b983408",
+      "gitBlob": "b0fc982299aff34f0ba0afd6bc3d60fd50ac1369"
+    },
+    "gallery.html": {
+      "bytes": 1399,
+      "sha256": "c5adb45a43af0c4a8fa505be8b38711eee36acf9d550f301facdfae0f1c42af3",
+      "gitBlob": "5e00a8191d0103acdeda914bf51a1c354463c179"
+    },
+    "gallery-effect.mjs": {
+      "bytes": 380,
+      "sha256": "6d9e28479335c06a3827a8d89a31e0a5b99af9801e848fae73897dd279423da7",
+      "gitBlob": "087c3fcbf5ee0f2a97be56d00a45af771d79756b"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    "effect.wgsl": {
+      "bytes": 3849,
+      "sha256": "812eac6c1d4f61fc4bf26ae2d6d0b1e43f68db3bd656550a67c9b9ec74ee55bf",
+      "gitBlob": "a03866e835c1f6eee9e6d18f5f8911c5262df8a9"
+    },
+    "publication-manifest.json": {
+      "bytes": 5779,
+      "sha256": "93b1eefbbf1b3b2246de7662ddbeea18bf94c9d607533ab130c051fa4d2d29f9",
+      "gitBlob": "e8645c45b3006c4155278b0897da862a1fb5488d"
+    }
+  },
+  "bridge": {
+    "fixtureEvent": "original fixturePair unchanged",
+    "makeGate": "original gate(request,reply), objects unchanged",
+    "audio": "original makeCue reexport",
+    "inlineSlot": "intentional fixed0 corresponding to approvedleftfixture; right stays originalmanualpage"
+  },
+  "validation": {
+    "cpuModuleAndBridge": "pass",
+    "actualEsmLoader": "pass-node-data-uri",
+    "galleryHtmlConfig": "pass-executed-callback-left-fixture",
+    "shader": "pass-naga-wasi-cli-0.1.0",
+    "adapterInstance": "not_run",
+    "nativeGpu": "not_run",
+    "parentIframe": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "visualQuality": "not-reviewed",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not-connected"
+  }
+}
