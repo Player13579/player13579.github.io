@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EC1000到達後の剣斬り・対象消滅 R3</title><style>
+:root{color-scheme:dark;font:16px/1.55 system-ui,sans-serif;background:#14242e;color:#ecf2ef}
+body{max-width:760px;margin:auto;padding:24px}h1{font-size:1.5rem}p{max-width:44rem}
+canvas{display:block;width:100%;height:clamp(180px,35vh,285px);box-sizing:border-box;background:#162a35;border:1px solid #42595d;border-radius:8px}
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}button,select{font:inherit;padding:.35rem .65rem}
+label{display:inline-flex;align-items:center;gap:.3rem}output{display:block;margin-top:.65rem}pre{font:13px monospace;white-space:pre-wrap}
+</style><main><h1>EC1000到達後の剣斬り・対象消滅 <small>R3</small></h1>
+<p>消滅が確定した対象の輪郭に光が走り、人物が消えます。左右の見本で、消滅後の空所まで確認できます。</p>
+<canvas aria-label="消滅が確定した人物の輪郭が細くなって消える"></canvas>
+<div class="controls"><label>通知条件<select id="fixture"><option value="left">左の対象・消滅確定</option><option value="right">右の対象・消滅確定</option><option value="guard">ガード成立</option><option value="reflect">反射成立</option><option value="friendly">友軍ペナルティ</option><option value="iai">居合による破壊</option><option value="hidden">対象位置が非表示</option><option value="miss">空振り</option></select></label>
+<button id="play" disabled>消滅を再生</button><button id="stop" disabled>停止</button><label><input id="reduced" type="checkbox">動きを抑える</label><label><input id="sound" type="checkbox">音声</label></div>
+<output id="state" role="status">WebGPUを準備中…</output><details><summary>描画情報</summary><pre id="receipt"></pre></details></main>
+<script type="module" src="./preview.mjs?v=apex-vanish-r3"></script></html>

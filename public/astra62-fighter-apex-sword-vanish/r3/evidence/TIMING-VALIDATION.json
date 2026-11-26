@@ -1,0 +1,143 @@
+{
+  "schema": "dva-source-timing-comparison/v1",
+  "hypothesisOnly": true,
+  "observedDefect": false,
+  "visualAcceptance": false,
+  "scalarSamples": 9801,
+  "checks": [
+    "R3 monotone bounded and no narrower than R2",
+    "same156ms onset and505ms final width",
+    "normal body wider by >20 percentage points at310/335",
+    "all other normalized shader statements identical",
+    "all behavior after505 mathematically unchanged"
+  ],
+  "checkpoints": [
+    {
+      "ageMs": 0,
+      "r2Collapse": 0,
+      "r3Collapse": 0,
+      "normalR2": 1.0,
+      "normalR3": 1.0,
+      "reducedR2": 1.0,
+      "reducedR3": 1.0
+    },
+    {
+      "ageMs": 48,
+      "r2Collapse": 0,
+      "r3Collapse": 0,
+      "normalR2": 1.0,
+      "normalR3": 1.0,
+      "reducedR2": 1.0,
+      "reducedR3": 1.0
+    },
+    {
+      "ageMs": 156,
+      "r2Collapse": 0,
+      "r3Collapse": 0,
+      "normalR2": 1.0,
+      "normalR3": 1.0,
+      "reducedR2": 1.0,
+      "reducedR3": 1.0
+    },
+    {
+      "ageMs": 250,
+      "r2Collapse": 0.17855523603028656,
+      "r3Collapse": 0.031881972313831344,
+      "normalR2": 0.8312653019513792,
+      "normalR3": 0.9698715361634294,
+      "reducedR2": 0.8928668583818281,
+      "reducedR3": 0.9808708166117012
+    },
+    {
+      "ageMs": 310,
+      "r2Collapse": 0.41229645359101763,
+      "r3Collapse": 0.16998836564373015,
+      "normalR2": 0.6103798513564884,
+      "normalR3": 0.839360994466675,
+      "reducedR2": 0.7526221278453894,
+      "reducedR3": 0.8980069806137619
+    },
+    {
+      "ageMs": 335,
+      "r2Collapse": 0.5193366868391579,
+      "r3Collapse": 0.26971059429707356,
+      "normalR2": 0.5092268309369958,
+      "normalR3": 0.7451234883892655,
+      "reducedR2": 0.6883979878965052,
+      "reducedR3": 0.8381736434217559
+    },
+    {
+      "ageMs": 433,
+      "r2Collapse": 0.8898773985439963,
+      "r3Collapse": 0.7918817844394304,
+      "normalR2": 0.15906585837592357,
+      "normalR3": 0.2516717137047384,
+      "reducedR2": 0.4660735608736023,
+      "reducedR3": 0.5248709293363418
+    },
+    {
+      "ageMs": 485,
+      "r2Collapse": 0.9905242590143456,
+      "r3Collapse": 0.9811383076959184,
+      "normalR2": 0.06395457523144343,
+      "normalR3": 0.07282429922735723,
+      "reducedR2": 0.40568544459139266,
+      "reducedR3": 0.411317015382449
+    },
+    {
+      "ageMs": 500,
+      "r2Collapse": 0.9993901226786169,
+      "r3Collapse": 0.998780617307581,
+      "normalR2": 0.0555763340687071,
+      "normalR3": 0.05615231664433595,
+      "reducedR2": 0.40036592639282986,
+      "reducedR3": 0.4007316296154514
+    },
+    {
+      "ageMs": 505,
+      "r2Collapse": 1,
+      "r3Collapse": 1,
+      "normalR2": 0.05500000000000005,
+      "normalR3": 0.05500000000000005,
+      "reducedR2": 0.4,
+      "reducedR3": 0.4
+    },
+    {
+      "ageMs": 579,
+      "r2Collapse": 1,
+      "r3Collapse": 1,
+      "normalR2": 0.05500000000000005,
+      "normalR3": 0.05500000000000005,
+      "reducedR2": 0.4,
+      "reducedR3": 0.4
+    },
+    {
+      "ageMs": 677,
+      "r2Collapse": 1,
+      "r3Collapse": 1,
+      "normalR2": 0.05500000000000005,
+      "normalR3": 0.05500000000000005,
+      "reducedR2": 0.4,
+      "reducedR3": 0.4
+    },
+    {
+      "ageMs": 679,
+      "r2Collapse": 1,
+      "r3Collapse": 1,
+      "normalR2": 0.05500000000000005,
+      "normalR3": 0.05500000000000005,
+      "reducedR2": 0.4,
+      "reducedR3": 0.4
+    },
+    {
+      "ageMs": 980,
+      "r2Collapse": 1,
+      "r3Collapse": 1,
+      "normalR2": 0.05500000000000005,
+      "normalR3": 0.05500000000000005,
+      "reducedR2": 0.4,
+      "reducedR3": 0.4
+    }
+  ],
+  "limits": "Scalar formulas and source invariance only; not actual output width, luminance or motion quality."
+}

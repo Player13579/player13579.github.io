@@ -1,0 +1,110 @@
+{
+  "parent": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+  "r2Candidate": "1189982bf15bc48f1224ccc10368ff9ea2499c0b",
+  "scope": "single changed contraction expression; line endings normalized only for comparison",
+  "oldCollapse": " let collapse=smoothstep(156.0,505.0,t);",
+  "newCollapse": " let collapse=pow(smoothstep(156.0,505.0,t),2.0);",
+  "nonContractionShaderNormalizedExact": true,
+  "shaderMatchesAPI": true,
+  "runtimeFiles": {
+    "effect.wgsl": {
+      "bytes": 5781,
+      "sha256": "878c3d63b23b068dca79c6e80afc9ae79b286fffbd38989a3a3d4c3d96066c89"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19"
+    },
+    "gallery.html": {
+      "bytes": 1379,
+      "sha256": "3a5c9d23878b36fd2c7783e4a44834c4d89694a228ad91e8ee5318dc69575e9a"
+    },
+    "index.html": {
+      "bytes": 2052,
+      "sha256": "d020836fe9f4e1c699e34353e7bdd4b3ff39c120d13b71095424cf220bb907de"
+    },
+    "preview.mjs": {
+      "bytes": 8061,
+      "sha256": "49cfbe7c5cf6b3e59fc9d1eaa5100b09370f810656297ad344df5c2a04fbadb1"
+    },
+    "vanish.mjs": {
+      "bytes": 2005,
+      "sha256": "24d70b707f4aafd69b6db4c2626d5477e2929b078fb28d6812a8ddb7969e612e"
+    }
+  },
+  "defaultChanged": false,
+  "catalogChanged": false,
+  "prCreated": false,
+  "published": false,
+  "gameIntegrated": false,
+  "historicalFiles": {
+    "r1": {
+      "effect.wgsl": {
+        "bytes": 2971,
+        "sha256": "40b10cca8ad7c544cc41704ef85168e2706dc9e2ae33b93c2570071b9cb24335"
+      },
+      "gallery-adapter.mjs": {
+        "bytes": 17797,
+        "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19"
+      },
+      "gallery-manifest.json": {
+        "bytes": 3136,
+        "sha256": "cbc2855d77b6422998563683ea94642bd05428b14771cce0ed505fc4a3148fa8"
+      },
+      "gallery.html": {
+        "bytes": 1379,
+        "sha256": "c598bf782ed4e0a200c88e9c69e601063079f06f7f985dec5c9254be6d934a88"
+      },
+      "index.html": {
+        "bytes": 2052,
+        "sha256": "b483622e2e5c866f978fe3559a1d5ef73afc70834d74f6833507473cb9703d7d"
+      },
+      "preview.mjs": {
+        "bytes": 8061,
+        "sha256": "3fecf99b69b0e0f2a1861b1d793448573eb74fa58a48ad0d29766d324c6d7a87"
+      },
+      "publication-manifest.json": {
+        "bytes": 5675,
+        "sha256": "e2088b78f9c07af78f8c38eda63a3946b75931202744c9e60e8222614d51c5b4"
+      },
+      "vanish.mjs": {
+        "bytes": 2005,
+        "sha256": "c54ab0f5e993f8b05edee086a887b66aad97b92644dcb6ced4a7e1d342188fcf"
+      }
+    },
+    "r2": {
+      "effect.wgsl": {
+        "bytes": 5909,
+        "sha256": "ef955374443453767aaf08c9f65eb4098499fbff9423e671b3428fc8cb63012b"
+      },
+      "gallery-adapter.mjs": {
+        "bytes": 17797,
+        "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19"
+      },
+      "gallery-manifest.json": {
+        "bytes": 3450,
+        "sha256": "6ec0f3d84b693d1e5a890884715c6d1e8c91de6cbe58222fd88db4fc1249c0f8"
+      },
+      "gallery.html": {
+        "bytes": 1379,
+        "sha256": "52866706a3a422ac7d8297eb3e9e8995e6a1d012036c8907725d3e16c70e2b75"
+      },
+      "index.html": {
+        "bytes": 2052,
+        "sha256": "8f75851f35502922fc0b3179813243d3d8606628634fff97eba7ed6408771241"
+      },
+      "preview.mjs": {
+        "bytes": 8061,
+        "sha256": "d2a302ba725a2ff0c2a8898d2f6e5f60508df00e330fd27a81aaafffb5352f9a"
+      },
+      "publication-manifest.json": {
+        "bytes": 11441,
+        "sha256": "6f16e9551177598b4711d7eee21dc4376820f2545b7dec87ed4e26c97a47a74d"
+      },
+      "vanish.mjs": {
+        "bytes": 2005,
+        "sha256": "3e6f9e732fff5943153a96bc5ab16e99276e35443aa9ade4bd5f0cf22af1e4dd"
+      }
+    }
+  }
+}

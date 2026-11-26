@@ -1,0 +1,87 @@
+{
+  "title": "R3｜全走査時の身幅を残す",
+  "groupId": "fighter-apex-sword-vanish-astra62",
+  "versionId": "fighter-apex-sword-vanish-astra62-r3",
+  "creativeEdition": 3,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Responses API returned shader and design; delegated GPT-6.2-Astra high package work",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "qualityAccepted": false,
+  "gameIntegration": "not-connected",
+  "files": {
+    "effect.wgsl": {
+      "bytes": 5781,
+      "sha256": "878c3d63b23b068dca79c6e80afc9ae79b286fffbd38989a3a3d4c3d96066c89"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19"
+    },
+    "gallery.html": {
+      "bytes": 1379,
+      "sha256": "3a5c9d23878b36fd2c7783e4a44834c4d89694a228ad91e8ee5318dc69575e9a"
+    },
+    "index.html": {
+      "bytes": 2052,
+      "sha256": "d020836fe9f4e1c699e34353e7bdd4b3ff39c120d13b71095424cf220bb907de"
+    },
+    "preview.mjs": {
+      "bytes": 8061,
+      "sha256": "49cfbe7c5cf6b3e59fc9d1eaa5100b09370f810656297ad344df5c2a04fbadb1"
+    },
+    "vanish.mjs": {
+      "bytes": 2005,
+      "sha256": "24d70b707f4aafd69b6db4c2626d5477e2929b078fb28d6812a8ddb7969e612e"
+    }
+  },
+  "source": {
+    "repository": "Player13579/player13579.github.io",
+    "parentCommit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+    "parentVersionId": "fighter-apex-sword-vanish-astra62-r2",
+    "parentManifestPath": "public/astra62-fighter-apex-sword-vanish/r2/gallery-manifest.json",
+    "parentShaderSha256": "ef955374443453767aaf08c9f65eb4098499fbff9423e671b3428fc8cb63012b",
+    "responseId": "resp_052e93f6d44ee69e006b07cf93eafc87d0a9129cb09bb1617e",
+    "responseModel": "gpt-6.2-astra",
+    "reasoningEffort": "high",
+    "requestSha256": "e844f81126ec0a46a2941bfbdfd79a0bcbb98fdbf8afaa1f46f3171c9f69bb58",
+    "balanceAndCost": "not_checked",
+    "R1History": "R1 and R2 byte-preserved; only R3 candidate additions; no default/catalog registration",
+    "B": {
+      "commit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "baseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    },
+    "parentCandidateCommit": "1189982bf15bc48f1224ccc10368ff9ea2499c0b",
+    "originalR1History": "R1 fixed trigger/geometry/host/PCM preserved; R1 files unchanged in base; R2 preserved at1189982bf15bc48f1224ccc10368ff9ea2499c0b"
+  },
+  "validation": {
+    "actualGpu": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "normalAudioListening": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "cpu": "28 focused gate/privacy/PCM/host/closure/hash checks and9801 scalar timing samples passed",
+    "offlineShader": "Naga WGSL-to-SPIRV pass; driver pipeline not_run"
+  },
+  "schema": "dva-gallery-inline-candidate/v1",
+  "entry": "gallery.html",
+  "path": "/public/astra62-fighter-apex-sword-vanish/r3/gallery.html",
+  "manualReview": false,
+  "automaticIframe": true,
+  "originalManifest": "publication-manifest.json",
+  "fixture": {
+    "name": "left",
+    "position": [
+      -43,
+      0
+    ],
+    "uniformBytes": 48,
+    "lifetimeMs": 980
+  },
+  "listingReadiness": "candidate only: requires Dot parent strict protocol version/path registration, focused review and publication",
+  "parentProtocol": "Original R1 adapter byte-preserved; R3 registration and parent playback are separate and not performed."
+}

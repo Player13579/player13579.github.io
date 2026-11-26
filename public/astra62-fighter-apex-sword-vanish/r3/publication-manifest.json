@@ -1,0 +1,112 @@
+{
+  "title": "R3｜全走査時の身幅を残す",
+  "groupId": "fighter-apex-sword-vanish-astra62",
+  "versionId": "fighter-apex-sword-vanish-astra62-r3",
+  "creativeEdition": 3,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "Responses API returned shader and design; delegated GPT-6.2-Astra high package work",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "qualityAccepted": false,
+  "gameIntegration": "not-connected",
+  "files": {
+    "effect.wgsl": {
+      "bytes": 5781,
+      "sha256": "878c3d63b23b068dca79c6e80afc9ae79b286fffbd38989a3a3d4c3d96066c89"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19"
+    },
+    "gallery.html": {
+      "bytes": 1379,
+      "sha256": "3a5c9d23878b36fd2c7783e4a44834c4d89694a228ad91e8ee5318dc69575e9a"
+    },
+    "index.html": {
+      "bytes": 2052,
+      "sha256": "d020836fe9f4e1c699e34353e7bdd4b3ff39c120d13b71095424cf220bb907de"
+    },
+    "preview.mjs": {
+      "bytes": 8061,
+      "sha256": "49cfbe7c5cf6b3e59fc9d1eaa5100b09370f810656297ad344df5c2a04fbadb1"
+    },
+    "vanish.mjs": {
+      "bytes": 2005,
+      "sha256": "24d70b707f4aafd69b6db4c2626d5477e2929b078fb28d6812a8ddb7969e612e"
+    }
+  },
+  "source": {
+    "repository": "Player13579/player13579.github.io",
+    "parentCommit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+    "parentVersionId": "fighter-apex-sword-vanish-astra62-r2",
+    "parentManifestPath": "public/astra62-fighter-apex-sword-vanish/r2/gallery-manifest.json",
+    "parentShaderSha256": "ef955374443453767aaf08c9f65eb4098499fbff9423e671b3428fc8cb63012b",
+    "responseId": "resp_052e93f6d44ee69e006b07cf93eafc87d0a9129cb09bb1617e",
+    "responseModel": "gpt-6.2-astra",
+    "reasoningEffort": "high",
+    "requestSha256": "e844f81126ec0a46a2941bfbdfd79a0bcbb98fdbf8afaa1f46f3171c9f69bb58",
+    "balanceAndCost": "not_checked",
+    "R1History": "R1 and R2 byte-preserved; only R3 candidate additions; no default/catalog registration",
+    "B": {
+      "commit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "baseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    },
+    "parentCandidateCommit": "1189982bf15bc48f1224ccc10368ff9ea2499c0b",
+    "originalR1History": "R1 fixed trigger/geometry/host/PCM preserved; R1 files unchanged in base; R2 preserved at1189982bf15bc48f1224ccc10368ff9ea2499c0b"
+  },
+  "validation": {
+    "actualGpu": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "normalAudioListening": "not_run",
+    "parentIframe": "not_run",
+    "visualQuality": "not_run",
+    "cpu": "28 focused gate/privacy/PCM/host/closure/hash checks and9801 scalar timing samples passed",
+    "offlineShader": "Naga WGSL-to-SPIRV pass; driver pipeline not_run"
+  },
+  "schema": "dva-gallery-manual-candidate/v1",
+  "entry": "index.html",
+  "path": "/public/astra62-fighter-apex-sword-vanish/r3/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "productionMeaning": {
+    "commit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+    "path": "offline-server-main.js",
+    "function": "fighterSlash: target/guard/settlement and fighter-energy-destruction-slash emission",
+    "trigger": "fighter-energy-destruction-slash with variant destroyed after apex perk and no-body settlement; projection gate also requires committed/current/viewerAllowed/visibleBefore/sameSubject/noBody",
+    "excluded": [
+      "EC threshold onset",
+      "ordinary sword swing",
+      "Iai",
+      "guard",
+      "reflection",
+      "friendly penalty",
+      "empty swing",
+      "hidden subject"
+    ],
+    "scope": "Same authorized pre-visible target only; synthetic left/right fixtures. No hidden inference, wound, body, fragments or new gameplay outcome."
+  },
+  "design": {
+    "title_ja": "R3｜全走査時の身幅を残す",
+    "design_ja": "変更は collapse の1行だけ。R2の収縮進行度を s とし、R3では s² を使う。0と1は動かず、0<s<1では s²<s なので、156ms直後から単調に狭まりながら、同じ途中時刻にはR2より広い。代わりに、505msの同じ終幅に至るまでの収縮が後半に寄る。発光面を別に描き足すのではなく、広い間は身体光源のサンプル位置と面積もその身幅に従う。床・布の受光式を調整して帳尻を合わせる必要はない。接地陰影と画素内サンプリングにも既存式を介して新しい進行度が伝わる。",
+    "hypothesis_ja": "全走査が終わる310msと、レールへの引き渡しが始まる335msに身幅を残せば、H64実寸・等速でも、線に先立って対象の身体そのものを発光主形として読めるかもしれない。R2にも身体内部の面発光と同じ光源による床・布の応答はある。比較するのはそれらの有無ではなく、引き渡し前に発光面をどれだけの幅で、どれだけの時間見せるかである。",
+    "timing_contract_ja": "以下はソースからの概算で、幅は初期身幅に対する倍率。各組は（通常, 軽減）、矢印はR2→R3。時刻は両モード共通。\n156ms：両版とも（1, 1）。0msからここまでは全幅で、直後から収縮する。R3に新しい待機区間はない。\n250ms：（0.831, 0.893）→（0.970, 0.981）。走査中。収縮は既に進んでいるが、まだレールはない。\n310ms：（0.61038, 0.753）→（0.839, 0.898）。走査前線が終点に達し、身体ゲインは1。レールなしで全走査時の面幅を比較できる。\n335ms：（0.50923, 0.688）→（0.745, 0.838）。引き渡しの始点ちょうどではレールゲインは0。その直後から同じ335–500ms則で立ち上がる。\n433ms：（0.15907, 0.466）→（0.252, 0.525）。引き渡し中。布の不透明度はここで1、ここから579msまで低下する。\n485ms：（0.064, 0.406）→（0.073, 0.411）。身幅差は小さくなる。レールはここから677msまで長手方向に縮む。横の有限支持幅4.9は不変。\n505ms：引き渡しは500msで完了。両版とも終幅（0.055, 0.400）に到達し、以降の収縮進行度は同一。通常時の身体外形の全幅は約1.38単位で、レールの支持幅4.9より細い。レールのフェード因子は510msから低下する。\n579ms：両版とも幅係数は（0.055, 0.400）だが、布の不透明度と身体ゲインは0。以降、消灯までは縮退・減衰中のレールだけが受光に寄与する。\n679ms：両モードとも幅を評価する前に元の床色を返す。光源、受光、接地陰影は残らない。\n980ms：両モードとも決着済みの同じ元床。別の表示や再点灯はない。",
+    "observation_plan_ja": "未実施の比較手順：同じ許可済みイベント、位置、床、ホスト、PCMで版だけを切り替え、通常と軽減を別々に比較する。まずH64実寸・等速で開始から980msまでを見て、最初に何が光源として読めたか、身体からレールへの移行が一続きに読めたかを記録する。その後に上記時刻を照合する。特に310msでは線のない身体内部、335ms前後ではレールが立ち上がる直前と直後、433–505msでは後半の収縮速度と床・布の追従を区別して見る。579ms以降に身体由来の光がなく、679msと980msの床が元床と一致することも確認対象とする。静止比較でだけ幅差が分かる、等速では依然として線しか読めない、または後半の収縮が急で引き渡しが不連続に見える場合は、R3の仮説を支持しない。レールや受光側を再調整して採用理由を作らない。",
+    "preserved": [
+      "R1のトリガー、ゲート、プライバシー境界を維持する。fighter-energy-destruction-slash variant の destroyed、apex perk、確定済み noBody settlement を前提に、それまで表示が許可され実際に可視だった同じ中立対象の消失だけを表す。",
+      "匿名形状のまま、隠れた対象・位置・結果を推論しない。剣の消失、通常の振り、居合、防御、反射、味方ペナルティ、空振り、EC閾値、キルバナーのどれも表さない。",
+      "ホスト、PCM、48バイトのView ABI、基礎形状、R1/R2の履歴は変更しない。R3はR2の欠陥修正ではなく、比較用の単一仮説。",
+      "不透明度と放射を分離したまま、身体・レールのゲイン、有限光源、身幅と光源面積の結合、床・布への受光式を維持する。非作動時に光源は点かず、不在時と決着後は元床を返す。",
+      "世界内の対象、その消失を表す架空の発光現象、観察者の画面上での読みを区別する。質量が光へ変換されたという主張はしない。PostEffects、テクスチャ、粒子、装飾は追加しない。"
+    ],
+    "limits": [
+      "数値は幅則の静的比較であり、画素上の見かけの幅、輝度、主形の読みやすさを測った値ではない。",
+      "実画面、GPU、H64実寸、等速、全寿命、音声のレビューはいずれも未実施。実画面作業・公開は行っておらず、視認性の改善も採用も主張しない。"
+    ]
+  },
+  "audio": "R1 makeCue preserved byte-for-byte except module edition identifier. Synthetic contour/collapse cue; ordinary listening not_run.",
+  "creativeEditionLimit": 5
+}

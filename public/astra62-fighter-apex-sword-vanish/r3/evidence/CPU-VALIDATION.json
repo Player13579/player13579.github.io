@@ -1,0 +1,68 @@
+{
+  "schema": "dva-candidate-cpu-checks/v1",
+  "version": "fighter-apex-sword-vanish-astra62-r3",
+  "passed": true,
+  "checks": [
+    "R1 gate/PCM unchanged except version id",
+    "authorized left",
+    "authorized right",
+    "denied guard",
+    "denied reflect",
+    "denied friendly",
+    "denied iai",
+    "denied hidden",
+    "denied miss",
+    "denied flag committed",
+    "denied flag current",
+    "denied flag viewerAllowed",
+    "denied flag visibleBefore",
+    "denied flag sameSubject",
+    "denied flag noBody",
+    "new cause monotonic; duplicates/stale denied",
+    "id and coordinate boundaries; failed projection does not consume id",
+    "unknown kind/variant rejected before private point reads",
+    "unchanged finite PCM 8000",
+    "unchanged finite PCM 44100",
+    "unchanged finite PCM 48000",
+    "unchanged finite PCM 96000",
+    "unchanged finite PCM 192000",
+    "invalid sample rates throw",
+    "immutable adapter; standalone host changes are version labels only",
+    "runtime dependency closure",
+    "48-byte gallery ABI and manual host ABI preserved",
+    "runtime manifest bytes/hashes exact"
+  ],
+  "audio": [
+    {
+      "rate": 8000,
+      "samples": 6640,
+      "peak": 0.09996016323566437
+    },
+    {
+      "rate": 44100,
+      "samples": 36603,
+      "peak": 0.1004907563328743
+    },
+    {
+      "rate": 48000,
+      "samples": 39840,
+      "peak": 0.10051832348108292
+    },
+    {
+      "rate": 96000,
+      "samples": 79680,
+      "peak": 0.10051832348108292
+    },
+    {
+      "rate": 192000,
+      "samples": 159360,
+      "peak": 0.07988900691270828
+    }
+  ],
+  "actualGpu": "not_run",
+  "actualSize": "not_run",
+  "fullLifetime": "not_run",
+  "normalAudioListening": "not_run",
+  "parentIframe": "not_run",
+  "gameIntegration": "not_connected"
+}
