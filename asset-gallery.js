@@ -5925,6 +5925,93 @@ if(abilityR8Known(attempt))return abilityR8FirstFrameValid(proof,attempt);if(kno
     // Technical gallery listing is independent of production eligibility; this flag does not change quality, adoption, audio, device, or game-integration states.
     return item.replayable !== false && (item.publicationEligible !== false || item.galleryListingEligible === true);
   }
+const publicationOrder = new Map([
+['fighter-apex-sword-vanish-astra62-r1',{groupId:'fighter-apex-sword-vanish-astra62',publishedAt:'2026-11-25T13:23:16Z',commit:'fb662576',tieSeries:'apex-astra62',edition:1}],
+['fighter-apex-sword-vanish-astra62-r2',{groupId:'fighter-apex-sword-vanish-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'apex-astra62',edition:2}],
+['fighter-apex-sword-vanish-astra62-r3',{groupId:'fighter-apex-sword-vanish-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'apex-astra62',edition:3}],
+['fighter-thrown-ec-impact-astra62-r1',{groupId:'fighter-thrown-ec-impact-astra62',publishedAt:'2026-11-25T13:10:18Z',commit:'9c34e827',tieSeries:'thrown-astra62',edition:1}],
+['fighter-thrown-ec-impact-astra62-r2',{groupId:'fighter-thrown-ec-impact-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'thrown-astra62',edition:2}],
+['fighter-thrown-ec-impact-astra62-r3',{groupId:'fighter-thrown-ec-impact-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'thrown-astra62',edition:3}],
+['self-body-report-astra62-r1',{groupId:'self-body-report-astra62',publishedAt:'2026-11-25T12:39:42Z',commit:'3282f678',tieSeries:'self-body-astra62',edition:1}],
+['self-body-report-astra62-r2',{groupId:'self-body-report-astra62',publishedAt:'2026-11-25T20:08:36Z',commit:'f97df817',tieSeries:'self-body-astra62',edition:2}],
+['self-body-report-astra62-r3',{groupId:'self-body-report-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'self-body-astra62',edition:3}],
+['self-body-report-astra62-r4',{groupId:'self-body-report-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'self-body-astra62',edition:4}],
+['self-body-report-astra62-r5',{groupId:'self-body-report-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'self-body-astra62',edition:5}],
+['inventory-item-transfer-out-astra62-r1',{groupId:'inventory-item-transfer-out-astra62',publishedAt:'2026-11-25T12:26:58Z',commit:'57c4bd90',tieSeries:'transfer-astra62',edition:1}],
+['inventory-item-transfer-out-astra62-r2',{groupId:'inventory-item-transfer-out-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'transfer-astra62',edition:2}],
+['match-opening-pennant-astra62-r1',{groupId:'match-opening-pennant-astra62',publishedAt:'2026-11-25T12:15:26Z',commit:'a2732961',tieSeries:'pennant-astra62',edition:1}],
+['match-opening-pennant-astra62-r2',{groupId:'match-opening-pennant-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'pennant-astra62',edition:2}],
+['match-opening-pennant-astra62-r3',{groupId:'match-opening-pennant-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'pennant-astra62',edition:3}],
+['clairvoyance-depletion-astra62-r1',{groupId:'clairvoyance-depletion-astra62',publishedAt:'2026-11-25T12:06:22Z',commit:'0ac6dc0f',tieSeries:'depletion-astra62',edition:1}],
+['clairvoyance-depletion-astra62-r2',{groupId:'clairvoyance-depletion-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'depletion-astra62',edition:2}],
+['clairvoyance-depletion-astra62-r3',{groupId:'clairvoyance-depletion-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'depletion-astra62',edition:3}],
+['clairvoyance-depletion-astra62-r4',{groupId:'clairvoyance-depletion-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'depletion-astra62',edition:4}],
+['clairvoyance-depletion-astra62-r5',{groupId:'clairvoyance-depletion-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'depletion-astra62',edition:5}],
+['operator-selection-confirm-astra62-r1',{groupId:'operator-selection-confirm-astra62',publishedAt:'2026-11-25T11:55:03Z',commit:'b43407b0',tieSeries:'operator-astra62',edition:1}],
+['operator-selection-confirm-astra62-r2',{groupId:'operator-selection-confirm-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'operator-astra62',edition:2}],
+['meeting-round-resume-astra62-r1',{groupId:'meeting-round-resume-astra62',publishedAt:'2026-11-25T11:42:51Z',commit:'90dc2e86',tieSeries:'resume-astra62',edition:1}],
+['meeting-round-resume-astra62-r2',{groupId:'meeting-round-resume-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'resume-astra62',edition:2}],
+['pair-route-violation-astra62-r1',{groupId:'pair-route-violation-astra62',publishedAt:'2026-11-25T11:30:11Z',commit:'19abba90',tieSeries:'pair-astra62',edition:1}],
+['pair-route-violation-astra62-r2',{groupId:'pair-route-violation-astra62',publishedAt:'2026-11-26T03:06:52Z',commit:'8a94c003',tieSeries:'pair-astra62',edition:2}],
+['pair-route-violation-astra62-r3',{groupId:'pair-route-violation-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'pair-astra62',edition:3}],
+['emergency-meeting-convened-astra62-r1',{groupId:'emergency-meeting-convened-astra62',publishedAt:'2026-11-25T10:49:03Z',commit:'05aed7da',tieSeries:'emergency-astra62',edition:1}],
+['emergency-meeting-convened-astra62-r2',{groupId:'emergency-meeting-convened-astra62',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'emergency-astra62',edition:2}],
+['fighter-shockwave-astra62-r1',{groupId:'fighter-shockwave',publishedAt:'2026-11-25T10:22:10Z',commit:'08a2cc6f',tieSeries:'shockwave-astra62',edition:1}],
+['fighter-shockwave-astra62-r2',{groupId:'fighter-shockwave',publishedAt:'2026-11-25T10:35:07Z',commit:'b92f4c42',tieSeries:'shockwave-astra62',edition:2}],
+['fighter-shockwave-astra62-r3',{groupId:'fighter-shockwave',publishedAt:'2026-11-26T12:36:15Z',commit:'c0e8982e',tieSeries:'shockwave-astra62',edition:3}],
+['fighter-shockwave-sol61-r4',{groupId:'fighter-shockwave',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'shockwave-sol61',edition:4}],
+['fighter-shockwave-sol61-r5',{groupId:'fighter-shockwave',publishedAt:'2026-11-26T13:08:43Z',commit:'d26fdfe4dacdc4995fbcb976ec125243921711d7',tieSeries:'shockwave-sol61',edition:5}],
+['meeting-vote-receipt-astra62-r1',{groupId:'meeting-vote-receipt-astra62',publishedAt:'2026-11-25T10:06:32Z',commit:'9b7e56c2',tieSeries:'receipt-astra62',edition:1}],
+['meeting-vote-receipt-astra62-r2',{groupId:'meeting-vote-receipt-astra62',publishedAt:'2026-11-26T13:12:51Z',commit:'16702a7df6f38a53a8f66bababd209213cec7912',tieSeries:'receipt-astra62',edition:2}]
+]);
+const publicationOrderGroupMembers = new Map();
+for (const [versionId, record] of publicationOrder) {
+  if (!publicationOrderGroupMembers.has(record.groupId)) publicationOrderGroupMembers.set(record.groupId, new Set());
+  publicationOrderGroupMembers.get(record.groupId).add(versionId);
+}
+function sortPublicationIndices(group, eligibleIndices) {
+  const original = eligibleIndices.slice();
+  const expected = publicationOrderGroupMembers.get(group.id);
+  if (!expected || group.versions.length !== expected.size ||
+      group.versions.some(version => !version || !expected.has(version.id) ||
+        publicationOrder.get(version.id)?.groupId !== group.id)) return original;
+  const rows = original.map((index, position) => {
+    const version = group.versions[index];
+    const record = version && publicationOrder.get(version.id);
+    const time = record ? Date.parse(record.publishedAt) : NaN;
+    return { index, position, version, record, time };
+  });
+  if (rows.some(row => !row.record || !Number.isFinite(row.time))) return original;
+  const latest = publicationOrder.get(group.latestVersionId);
+  const latestSeries = latest?.groupId === group.id ? latest.tieSeries : null;
+  return rows.sort((a, b) => {
+    if (a.time !== b.time) return b.time - a.time;
+    if (a.record.commit === b.record.commit && a.record.tieSeries &&
+        a.record.tieSeries === b.record.tieSeries) {
+      const edition = b.record.edition - a.record.edition;
+      if (edition) return edition;
+    }
+    if (a.record.commit === b.record.commit && latestSeries) {
+      const aLatestLine = a.record.tieSeries === latestSeries;
+      const bLatestLine = b.record.tieSeries === latestSeries;
+      if (aLatestLine !== bLatestLine) return aLatestLine ? -1 : 1;
+    }
+    return a.position - b.position;
+  }).map(row => row.index);
+}
+
+function preferredVisibleIndex(group, visibleIndices, rememberedVersionId, {isEffect, legacyDefaultVersionId} = {}) {
+  const find = id => id == null ? undefined : visibleIndices.find(index => group.versions[index].id === id);
+  const remembered = find(rememberedVersionId);
+  if (remembered !== undefined) return remembered;
+  const legacyDefault = find(legacyDefaultVersionId);
+  if (legacyDefault !== undefined) return legacyDefault;
+  if (!isEffect) {
+    const preferred = find(group.defaultVersionId);
+    if (preferred !== undefined) return preferred;
+  }
+  return visibleIndices[0];
+}
   // Count only version IDs first seen since the previous gallery visit; persist after rendering.
   const galleryUpdateVisit = window.DvaGalleryUpdates?.createVisit(
     visibleEffectGroups(entries).map(group => ({ id: group.id,
@@ -5955,7 +6042,7 @@ function visibleVersionIndices(group) {
     const eligibleIndices = group.versions.map((item, i) => galleryVersionEligible(item) ? i : -1).filter(i => i >= 0);
     if (currentCategory === 'effect') {
       if (currentAdoptionFilter === 'adopted') return hasCurrentAdoption ? eligibleIndices.sort((a, b) => Number(isCurrentEffectAdoption(group.versions[b])) - Number(isCurrentEffectAdoption(group.versions[a]))) : [];
-      return hasCurrentAdoption ? [] : eligibleIndices;
+      return hasCurrentAdoption ? [] : sortPublicationIndices(group, eligibleIndices);
     }
     const mapGroupAdopted = group.versions.some(item => adoptionState(item) === 'adopted');
     if (currentAdoptionFilter === 'adopted') return mapGroupAdopted ? group.versions.map((_, i) => i).sort((a, b) => Number(adoptionState(group.versions[b]) === 'adopted') - Number(adoptionState(group.versions[a]) === 'adopted')) : [];
@@ -6087,13 +6174,13 @@ function visibleVersionIndices(group) {
       selectedIndex = entries.indexOf(group);
       const fallbackVersion = visibleVersionIndices(group);
       const defaultVersion = group.versions.findIndex(item => item.id === group.defaultVersionId);
-      versionIndex = fallbackVersion.includes(defaultVersion) ? defaultVersion : fallbackVersion[0];
+      versionIndex = preferredVisibleIndex(group, fallbackVersion, null, { isEffect: currentCategory === 'effect' });
     } else {
       selectedIndex = requestedIndex;
       const selectableVersions = visibleVersionIndices(group);
       if (!selectableVersions.includes(versionIndex)) {
         const defaultVersion = group.versions.findIndex(item => item.id === group.defaultVersionId);
-        versionIndex = selectableVersions.includes(defaultVersion) ? defaultVersion : selectableVersions[0];
+        versionIndex = preferredVisibleIndex(group, selectableVersions, null, { isEffect: currentCategory === 'effect' });
       }
     }
     selectedVersionIndex = Math.min(versionIndex, group.versions.length - 1);
@@ -6482,8 +6569,7 @@ function visibleVersionIndices(group) {
       versionIndex=group.versions.findIndex(item=>item.id===canonicalVersionId);
       if(versionIndex<0||!indices.includes(versionIndex))return fallback();
     }else{
-      const defaultVersionId=alias?.defaultVersionId||group.defaultVersionId;
-      versionIndex=indices.find(index=>group.versions[index].id===defaultVersionId)??indices[0];
+      versionIndex=preferredVisibleIndex(group,indices,null,{isEffect:category==='effect',legacyDefaultVersionId:alias?.defaultVersionId});
     }
     selections.set(`${category}:${filter}`,{groupId:group.id,versionId:group.versions[versionIndex].id});
     return Object.freeze({status:'selected',category,filter,asset:group.id,version:group.versions[versionIndex].id,...(group.id==='gunner-shooting-sol61'?{weapon:selectedShootingWeapon}:{})});
@@ -6670,7 +6756,7 @@ function visibleVersionIndices(group) {
       const b=document.createElement('button');b.type='button';b.className='item';b.dataset.id=group.id;
       const remembered=selections.get(`${currentCategory}:${currentAdoptionFilter}`);
       const preferred=remembered?.groupId===group.id?indices.find(i=>group.versions[i].id===remembered.versionId):undefined;
-      const first=preferred??indices.find(i=>group.versions[i].id===group.defaultVersionId)??indices[0];
+      const first=preferred??preferredVisibleIndex(group,indices,null,{isEffect:currentCategory==='effect'});
       const item=group.versions[first];const title=document.createElement('strong');title.textContent=group.title+' · '+item.title;
       const status=document.createElement('span');status.textContent=currentCategory==='effect'?versionStatusSummary(item,group):`${adoptionStatusLabel(item)} · ${item.qualityStatus||group.quality}`;
       if (currentCategory === 'effect' && galleryUpdateVisit?.updatedGroupIds.has(group.id)) status.textContent += ' · 追加版あり';
@@ -6680,7 +6766,7 @@ function visibleVersionIndices(group) {
     const preferred=matching.findIndex(row=>row.group.id===remembered?.groupId);
     const selectedRow=matching[preferred>=0?preferred:0];
     const savedVersion=remembered?.groupId===selectedRow.group.id?selectedRow.indices.find(i=>selectedRow.group.versions[i].id===remembered.versionId):undefined;
-    const selectedVersion=savedVersion??selectedRow.indices.find(i=>selectedRow.group.versions[i].id===selectedRow.group.defaultVersionId)??selectedRow.indices[0];
+    const selectedVersion=savedVersion??preferredVisibleIndex(selectedRow.group,selectedRow.indices,null,{isEffect:currentCategory==='effect'});
     if(currentCategory==='effect')select(entries.indexOf(selectedRow.group),selectedVersion);else selectImage(selectedRow.group,selectedVersion);
     const versionsCount=matching.reduce((n,row)=>n+row.indices.length,0);
     document.getElementById('entry-counter').textContent=`${matching.length} 群 · ${versionsCount} 版`;
