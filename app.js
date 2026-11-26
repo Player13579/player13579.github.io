@@ -13932,11 +13932,19 @@ function webgpuECueVolume(effect, data) {
   const distance = Math.hypot(effect.x - listener.x, effect.y - listener.y);
   return distance < 900 ? 0.55 * (1 - distance / 900) ** 2 : 0;
 }
-function trackActorOwnedECue(cue, effect, actor, data, played) {
+// E cue playback accepts rates through 12. Bound only the box's audio
+// transport; its authoritative/presentation clock remains untouched.
+function boxECueTransportRate(actor, data) {
+  const rate = displayETimeScale(actor, data);
+  return Number.isFinite(rate) && rate > 12 ? 12 : rate;
+}
+
+function trackActorOwnedECue(cue, effect, actor, data, played, boxAudio = false) {
   if (played?.status === 'scheduled' && actor)
     WEBGPU_E_CUES.actorOwners.set(String(cue.eventId), {
       effectId: String(effect.id), playerId: String(actor.id),
-      roomId: String(data.roomId), generation: state.roomSessionGeneration });
+      roomId: String(data.roomId), generation: state.roomSessionGeneration,
+      ...(boxAudio ? { boxAudio: true } : {}) });
   return played;
 }
 
@@ -13998,7 +14006,7 @@ function advanceActorOwnedECues(data) {
       continue;
     }
     if (!WEBGPU_E_CUES.player?.setEventRate?.(eventId,
-        displayETimeScale(actor, data))) WEBGPU_E_CUES.actorOwners.delete(eventId);
+        entry.boxAudio ? boxECueTransportRate(actor, data) : displayETimeScale(actor, data))) WEBGPU_E_CUES.actorOwners.delete(eventId);
   }
 }
 
@@ -14043,11 +14051,12 @@ function admitSubmittedAcquisitionCue(data, receipt) {
     layers: cue.layers.map(layer => ({ ...layer,
       startAtMs: layer.startAtMs + shift,
       endAtMs: layer.endAtMs + shift })) } : cue;
+  const boxAudio = source.type === 'mystery-box';
   const played = WEBGPU_E_CUES.player.play(audibleCue, { nowMs,
-    actorRate: actor ? displayETimeScale(actor, data) : null,
+    actorRate: actor ? (boxAudio ? boxECueTransportRate(actor, data) : displayETimeScale(actor, data)) : null,
     muted: !audible, verify: false,
     volume: clamp(webgpuECueVolume(source, data), 0, .75) });
-  return trackActorOwnedECue(cue, source, actor, data, played);
+  return trackActorOwnedECue(cue, source, actor, data, played, boxAudio);
 }
 
 function admitSubmittedMysteryOpeningCue(data, receipt) {
@@ -14085,10 +14094,10 @@ function admitSubmittedMysteryOpeningCue(data, receipt) {
       startAtMs: layer.startAtMs + shift,
       endAtMs: layer.endAtMs + shift })) } : cue;
   const played = WEBGPU_E_CUES.player.play(audibleCue, { nowMs,
-    actorRate: actor ? displayETimeScale(actor, data) : null,
+    actorRate: actor ? boxECueTransportRate(actor, data) : null,
     muted: !audible, verify: false,
     volume: clamp(webgpuECueVolume(source, data), 0, .75) });
-  return trackActorOwnedECue(cue, source, actor, data, played);
+  return trackActorOwnedECue(cue, source, actor, data, played, true);
 }
 function admitSubmittedGunnerAimCue(data, receipt) {
   const source = (state.magicEffects || []).find(effect =>
@@ -34439,7 +34448,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
