@@ -13168,6 +13168,7 @@ function applyState(data, options = {}) {
     state.lastStateReceivedAt = performance.now();
   }
   state.data = data;
+  if (webgpuMainApp.failed) syncWebGPUSoloReloadNotice(data);
   reconcilePhenomenonSounds(data);
   reconcileEnvironmentSounds(data);
   syncHoverSprintLiveCountdownTicker(data);
@@ -20167,6 +20168,19 @@ function webgpuMainIncompleteReason(captured, requiredStages) {
   return [...new Set(reasons)].slice(0, 12).join(',').slice(0, 1600) || 'unknown';
 }
 
+function syncWebGPUSoloReloadNotice(data = state.data) {
+  const notice = document.querySelector?.('#webgpuMainFailure > p:first-child');
+  if (!notice) return;
+  const ownedSolo = state.screen === 'game' && state.offlineMode &&
+    state.roomId && state.playerId && data?.roomId === state.roomId &&
+    (data.selfId || data.self?.id) === state.playerId && Boolean(data.soloMission?.id) &&
+    ['playing', 'meeting'].includes(data.phase);
+  const text = ownedSolo
+    ? '描画できませんでした。再読み込みすると現在のソロ訓練は終了し、続きからはプレイできません。'
+    : '描画を開始できませんでした。再読み込みして、もう一度プレイしてください。';
+  if (notice.textContent !== text) notice.textContent = text;
+}
+
 function setWebGPUMainFailure(error, recoveryHint = "") {
   if (webgpuMainApp.failed) return;
   const message = error?.message || String(error);
@@ -20184,6 +20198,7 @@ function setWebGPUMainFailure(error, recoveryHint = "") {
   } catch (_) { /* Rendering failure handling must remain available. */ }
   stopWebGPUMainPresentationWatchdog();
   webgpuMainApp.failed = true;
+  try { syncWebGPUSoloReloadNotice(); } catch (_) { /* Preserve failure recovery. */ }
   document.body.dataset.webgpuMainError = message;
   setWebGPUMainPendingDiagnostic('failed');
   suspendWebGPUMainAppDriver({ destroy: true });
@@ -34792,7 +34807,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449&ownedMysteryBoxDedup=owned-mystery-box-dedup-forward-20261126-1510&widePanelControlTarget=wide-panel-control-target-forward-20261126-1517&selfHealAudioRate=self-heal-audio-rate-forward-20261126-1522&backgroundOwnedStop=background-owned-stop-forward-20261126-1538&renderRecoveryLayer=render-recovery-layer-forward-20261126-1550", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449&ownedMysteryBoxDedup=owned-mystery-box-dedup-forward-20261126-1510&widePanelControlTarget=wide-panel-control-target-forward-20261126-1517&selfHealAudioRate=self-heal-audio-rate-forward-20261126-1522&backgroundOwnedStop=background-owned-stop-forward-20261126-1538&renderRecoveryLayer=render-recovery-layer-forward-20261126-1550&offlineSoloReloadNotice=offline-solo-reload-notice-forward-20261126-1551", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
