@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>クオンタム・核分裂連鎖 R5</title><style>
+:root{color-scheme:dark;font:16px/1.55 system-ui,sans-serif;background:#14242e;color:#ecf2ef}
+body{max-width:760px;margin:auto;padding:24px}h1{font-size:1.5rem}p{max-width:44rem}
+canvas{display:block;width:100%;height:clamp(180px,35vh,285px);box-sizing:border-box;background:#162a35;border:1px solid #42595d;border-radius:8px}
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}button,select{font:inherit;padding:.35rem .65rem}
+label{display:inline-flex;align-items:center;gap:.3rem}output{display:block;margin-top:.65rem}pre{font:13px monospace;white-space:pre-wrap}
+</style><main><h1>クオンタム・核分裂連鎖 <small>R5</small></h1>
+<p>核分裂連鎖の発動を、割れ目から光が漏れる結晶で表します。光を受けた床に、二つ、四つと色が広がります。</p>
+<canvas aria-label="ひとつの発光結晶が二つ、四つに分かれ、床に青緑と薄紫の反射が移る"></canvas>
+<div class="controls"><label>通知条件<select id="fixture"><option value="committed">本人・核分裂連鎖が成立</option><option value="waiting">終盤前</option><option value="missing">対応アイテムなし</option><option value="fusion">核融合</option><option value="transmute">核変換</option><option value="hidden">発動元が非表示</option><option value="stale">古い通知</option></select></label>
+<button id="play" disabled>核分裂連鎖を再生</button><button id="stop" disabled>停止</button><label><input id="reduced" type="checkbox">動きを抑える</label><label><input id="sound" type="checkbox">音声</label></div>
+<output id="state" role="status">WebGPUを準備中…</output><details><summary>描画情報</summary><pre id="receipt"></pre></details></main>
+<script type="module" src="./preview.mjs?rev=5bc70d3c3bc64e267f263bfd7ca27bd7853385d0"></script></html>
