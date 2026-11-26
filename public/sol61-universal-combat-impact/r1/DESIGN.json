@@ -1,0 +1,14 @@
+{
+  "id": "universal-combat-impact-sol61-r1",
+  "title": "面で発光する一体型イベント表現",
+  "group": "universal-combat-impact",
+  "version": "R1",
+  "author": "GPT-6.1-Sol",
+  "model": "gpt-6.1-sol",
+  "design": "固定された戦闘通知地点に、ワールド寸法で広がる青緑の発光体を置き、全体を内側から発光させる。中心の発光核と、時相に沿って外へ走り減衰する一続きの曲面クレスト、主形の外側へ広がる加算スピルで構成する。銃器・ヘッドショット・ダメージ結果を示さない抽象的な表示空間の反応。",
+  "timeContract": "scene.nowの単調時計で850/1100msを正規化する。立ち上がりは早く、中盤まで主形とクレストを保ち、最後に共通包絡で消える。camera/zoomから毎フレーム固定ワールド座標を投影する。",
+  "emissionContract": "主形全体を加算合成で発光させ、別の広いlocal screen spillで周囲表示へ光を分布させる。`lethal`と`hitZone`で強度・色・スケール・発生源を変えない。現行rendererに受光面・depth/normal入力がないため、物理的な世界照明を主張しない。",
+  "risks": "実寸で発光感、対象との大きさ、曲面クレストの読め方は未確認。表示座標のスピルであり、世界面の材質反応ではない。既存音の重複・聴感はDot統合後に確認する。",
+  "sourcePublicCommit": "24cbfed80781e116c5507af250eff3357003884c",
+  "contract": "world-anchored abstract display-space effect using existing WebGPU shape primitives; no physical receiver/lighting claim"
+}

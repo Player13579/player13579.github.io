@@ -1,0 +1,41 @@
+{
+  "api": "OpenAI Responses API",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "responseId": "resp_07550be269679156006b07ed13487c87d0a6bb4754217ea5cb",
+  "status": "completed",
+  "usage": {
+    "input_tokens": 1040,
+    "input_tokens_details": {
+      "cache_write_tokens": 1037,
+      "cached_tokens": 0,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 1037
+      }
+    },
+    "output_tokens": 1115,
+    "output_tokens_details": {
+      "reasoning_tokens": 54
+    },
+    "total_tokens": 2155
+  },
+  "requestSha256": "6a3e3efe2ef19f5f49c2c64275d3038c951ce56b7cab7f2902f6df17b2ddf85a",
+  "revisions": [
+    {
+      "status": "completed",
+      "responseId": "resp_025d056c08aeedbc006b07ec30ce3487d0ae0126c58ddc06c1",
+      "role": "initial plan function"
+    },
+    {
+      "status": "completed",
+      "responseId": "resp_0adf0e28938c744d006b07ebc5fc4887d09600ec6cd06345c5",
+      "role": "clock and visible crest correction"
+    },
+    {
+      "status": "completed",
+      "responseId": "resp_07550be269679156006b07ed13487c87d0a6bb4754217ea5cb",
+      "role": "bounded input and shape-command cap review"
+    }
+  ]
+}
