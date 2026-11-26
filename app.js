@@ -9608,7 +9608,7 @@ function setSlowWalkHeld(active) {
   syncMovementInputImmediately();
 }
 
-function clearMovementInput({ preserveQueuedStop = false } = {}) {
+function clearMovementInput({ preserveQueuedStop = false, preserveGunTrigger = false } = {}) {
   const shouldSendStop = state.movementActive;
   const queue = state.movementQueue;
   const last = preserveQueuedStop && !shouldSendStop ? queue?.pending?.at(-1) : null;
@@ -9625,7 +9625,7 @@ function clearMovementInput({ preserveQueuedStop = false } = {}) {
   state.slowWalkHeld = false;
   els.dashButton.classList.remove("active");
   els.slowWalkButton.classList.remove("active");
-  if (state.gunTriggerHeld) void endGunFire();
+  if (state.gunTriggerHeld && !preserveGunTrigger) void endGunFire();
   if (shouldSendStop) sendMovement(true);
   else if (queuedStop) queue.enqueue(queuedStop);
   state.lastMovementSentSignature = "";
@@ -20211,8 +20211,30 @@ function syncWebGPUSoloReloadNotice(data = state.data) {
   if (notice.textContent !== text) notice.textContent = text;
 }
 
+function visibleRendererMovementStopOwner() {
+  const frame = webgpuMainApp.submittedFrame, driver = webgpuMainApp.driver;
+  const data = state.data, canvas = els.webgpuMainCanvas;
+  if (!driver || !currentGameplayOwnsQueuedStop() || !webgpuMainSubmittedFrameOwned(frame, {
+    visible: webgpuMainApp.visible, connected: Boolean(canvas?.isConnected),
+    display: canvas?.style.display, screen: state.screen, hidden: document.hidden,
+    roomId: state.roomId, sessionGeneration: state.roomSessionGeneration,
+    phase: data?.phase, snapshotRoomId: data?.roomId, mapId: data?.map?.id,
+    connectionMode: document.documentElement?.dataset?.connectionMode || ''
+  })) return null;
+  return { frame, driver, generation: webgpuMainApp.generation };
+}
+function stopMovementForVisibleRendererFailure(owner) {
+  if (!owner) return false;
+  const current = visibleRendererMovementStopOwner();
+  if (!current || current.frame !== owner.frame || current.driver !== owner.driver ||
+      current.generation !== owner.generation) return false;
+  clearMovementInput({ preserveQueuedStop: true, preserveGunTrigger: true });
+  return true;
+}
+
 function setWebGPUMainFailure(error, recoveryHint = "") {
   if (webgpuMainApp.failed) return;
+  const movementStopOwner = visibleRendererMovementStopOwner();
   const message = error?.message || String(error);
   // Preserve the original gate and source gap before suspension erases them.
   // Diagnostic UI failure must never interrupt renderer cancellation.
@@ -20231,6 +20253,7 @@ function setWebGPUMainFailure(error, recoveryHint = "") {
   try { syncWebGPUSoloReloadNotice(); } catch (_) { /* Preserve failure recovery. */ }
   document.body.dataset.webgpuMainError = message;
   setWebGPUMainPendingDiagnostic('failed');
+  try { stopMovementForVisibleRendererFailure(movementStopOwner); } catch (_) { /* Still destroy the failed renderer. */ }
   suspendWebGPUMainAppDriver({ destroy: true });
   showTerminalTitleRendererNotice();
 }
