@@ -1,0 +1,60 @@
+{
+  "versionId": "fighter-shockwave-sol61-r5",
+  "candidateBase": "3238aecab569884cd9b328cf71af4256e72e10cb",
+  "sourceR4": "7f14569e45b820de0b085111e60fcc5e5fe50696",
+  "ownedPaths": [
+    "public/sol61-fighter-shockwave/r5/"
+  ],
+  "revisionAuthor": "GPT-6.1-Sol",
+  "historicalR3Author": "GPT-6.2-Astra",
+  "change": "Only incidentAt:16x8 positive Gauss-Legendre instead of10x4 midpoint; no source/material/timing change",
+  "numericalEvidence": "See QUADRATURE-VALIDATION.json; numerical improvement is not visual acceptance",
+  "costBoundary": {
+    "sourceCandidateCount": 128,
+    "priorCount": 40,
+    "ratio": 3.2,
+    "sliceCount": 16,
+    "priorSliceCount": 10,
+    "actualGPUCost": "not_run"
+  },
+  "remaining": [
+    "actual GPU compilation/driver/performance",
+    "H64 actual-size ordinary-speed full-lifetime appearance",
+    "normal listening and synchronization",
+    "material hue and clipping acceptance",
+    "manual catalog registration, live projection and producer-clock integration"
+  ],
+  "noPR": true,
+  "defaultUnchanged": true,
+  "catalogUnchanged": true,
+  "PagesUnchanged": true,
+  "gameIntegrated": false,
+  "manualRoute": "Not registered; Dot owns release",
+  "integrationBoundary": "R5-only additions commit; no stale parent-tree replacement",
+  "stopAfterEdition": 5,
+  "noFurtherCreativeIteration": true,
+  "modelShare": {
+    "catalog": "C:/Users/user/.codex/models_cache.json",
+    "fetchedAt": "2026-11-26T07:08:43.706289100Z",
+    "contributions": [
+      {
+        "modelId": "gpt-6.1-sol",
+        "displayName": "GPT-6.1-Sol",
+        "share": 60,
+        "acceptedWork": "API R5 positive-quadrature numerical design and implementation only; histories preserved"
+      },
+      {
+        "modelId": "gpt-6.2-astra",
+        "displayName": "GPT-6.2-Astra",
+        "share": 25,
+        "acceptedWork": "Technical source preservation, Naga/host/packaging and candidate integration; no R5 creative API work"
+      },
+      {
+        "modelId": "gpt-6-luna",
+        "displayName": "GPT-6-Luna",
+        "share": 15,
+        "acceptedWork": "Exact returned quadrature coefficients, dense-reference and error-reduction CPU checks"
+      }
+    ]
+  }
+}

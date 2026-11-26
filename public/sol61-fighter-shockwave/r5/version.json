@@ -1,0 +1,212 @@
+{
+  "id": "fighter-shockwave-sol61-r5",
+  "group": "fighter-shockwave",
+  "label": "ファイターの剣衝撃波",
+  "version": "R5",
+  "author": "GPT-6.1-Sol",
+  "entry": "index.html",
+  "parent": "fighter-shockwave-sol61-r4",
+  "status": {
+    "adoption": "unknown",
+    "userAdopted": false,
+    "quality": "not-reviewed",
+    "qualityAccepted": false,
+    "gameIntegration": false,
+    "browserReplay": "unverified",
+    "actualGPU": "not_run",
+    "actualSize": "not_run",
+    "normalSpeed": "not_run",
+    "fullLifetime": "not_run",
+    "sfxListening": "unverified"
+  },
+  "source": {
+    "candidateR1": "Player13579/windows-dva-migration@0931e9d0fa47becdc31ec71b96a3a513764ae73e",
+    "event": "fighter-shockwave",
+    "variants": [
+      "one-body-damage:ec-cost-1:remaining-ec-N",
+      "giant-one-body-damage:ec-cost-100:remaining-ec-N"
+    ],
+    "geometry": "Gallery example in logical pixels and milliseconds",
+    "foundation": "Player13579/B@3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+    "candidateBase": "3238aecab569884cd9b328cf71af4256e72e10cb",
+    "publicR2": "9e5a1c9789472dc8c5c25b073813d75f220e6f30",
+    "r2ShaderSha256": "cc8afdaa13215838a479e272ff1618e15affcc786fca2ec7cbaa2932628c523e",
+    "r2VersionSha256": "9580a21c461b920339d9224fac7c811987c693961de7a5b50d47377f8dce6c37",
+    "producerBlob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "sourceR3": {
+      "commit": "a6220d731946027c5c10bfdfe9e6e5868832b2ac",
+      "path": "public/astra62-fighter-shockwave/r3/",
+      "author": "GPT-6.2-Astra",
+      "shaderSha256": "bb47f7d6f7560a14f273fd73f13e5f3bb18013999384eedd5cbce086767183cb"
+    },
+    "sourceR4": {
+      "commit": "7f14569e45b820de0b085111e60fcc5e5fe50696",
+      "path": "public/sol61-fighter-shockwave/r4/",
+      "author": "GPT-6.1-Sol",
+      "shaderSha256": "14be375e99d1ccaf5cb736a558aff637b74cfb9e73cf08b5e9fd1605abb16901"
+    }
+  },
+  "revision": {
+    "hypothesisOnly": true,
+    "observedVisualDefect": false,
+    "change": "R5は割当上のcreative E／GPT-6.1-Solによる受光積分改訂案。R3の歴史的帰属はGPT-6.2-Astra、R4の受光改訂はGPT-6.1-Solのまま保持する。変更はincidentAt本体の10×4中点則から16×8 Gauss–Legendre積則への置換だけであり、その関数外のWGSLは提示文をそのまま保持した。新しい光、材質、演出、補正ゲインを設計する版ではない。R5は最終許可版であり、R6や追加の創作反復は提案しない。",
+    "hypothesis": "根拠は提示された既存の工学的CPU評価であり、今回実行した測定ではない。R3/R4の10×4中点則は、通常／巨大の選択済み48位相・受光点で80×32および160×64の密な中点参照と比較されている。referenceY>0.005の36点では、意味のあるY相対誤差の最悪値が巨大・位相0.2・床隣接点の12.9062%。RGBチャンネル絶対誤差の最悪値は巨大・位相0.8・先端付近の0.02629765で、この点のreferenceYは0.198683、Y誤差は0.01875585（9.4401%）。この後者の点だけで確認された80×32→160×64の差はY=0.000114107、RGB=0.000134409である。これらは積分解像度の実験を正当化するが、可視バンディングや全域誤差上限の証拠ではない。正の高次積則が滑らかな部分をより適切に積分する可能性を検証する。ただしabs、min、区分的smoothstep、距離窓を含むため、次数だけから誤差低減は保証できない。R5の収束改善・視覚改善は未検証であり、見た目の差が無視できる可能性もある。",
+    "quadratureContract": "横方向y∈[-1,1]に16点、正規化軸方向u∈[0,1]に8点の固定Gauss–Legendre則を使用する。全ノードと全重みを関数内の定数配列として明示した。各1次元則の重みはすべて正で、数学上の和はそれぞれ領域測度2と1。記載した十進定数のf32変換・加算には通常の丸めが伴うが、実行時の重み再正規化は行わない。source=(s.x-u*s.y, y*halfSpan)、面積ヤコビアン=halfSpan*s.yを維持し、面積重みはwy*wu*halfSpan*s.yのみとする。選択点に合わせた光源値・カーネル・面積の再正規化は一切しない。早期returnを通過した受光点では16×8=128候補を評価し、距離判定内のcolumnLight呼出しは最大128回。従来の最大40回に対する呼出し上限・候補数の比は正確に3.2倍、sliceAtは10回から16回で1.6倍。距離外ではcolumnLightを呼ばず、受光点の早期除外時は0回。これはGPU時間の倍率を意味しない。h=8/12、reach=4h、h²/[π(r²+h²)²]、6.25h²から16h²の窓、距離打切り、受光点の早期境界は変更しない。",
+    "emissionContract": "sliceAt、columnLight、rayAt、4サブピクセル光線、発光色・放射輝度・不透明度・形状プロファイルは変更しない。R4のreflectedRadiance=rho*incidentと利得1、全rho、線形化・符号化・合成も維持する。既存の有効で有限なシーン入力の範囲で、正の有限重みと既存の非負光源・非負結合を使用し、負の寄与や新たな特異分母を導入しない。NaN/infや負光を許容する設計ではないが、任意の不正uniform入力まで保証するものではない。phase<=0またはphase>=1.08では従来の早期returnにより光源・受光の追加はなく、source-off材質シーンは同一。原点、経路、形状、幅は不変。誤差を隠すための材質則・光源則変更、ノイズ、テクスチャ、診断binding、ブルーム、フレア、露出変更、背景依存ゲイン、新規ヘルパー、求積以外の追加ループはない。",
+    "timingContract": "通常／巨大の手動プレビュー550/650msと、ゲームプレイ760/1150msの区別を保持し、どちらも書き換えない。位相の攻撃・減衰・終了、剣の姿勢・解放点・追従運動、ホスト、PCMは変更対象外。現在のsource/ECが対象探索より前に置かれるという意味を保持する。1体へのダメージ規則は規則として扱い、実際の命中・ダメージ発生・射程・対象選定の結果を推定しない。既存の手動プレビューには型付きruntime receipt gateもreduced-motion制御もなく、本版でも追加済みとは主張しない。",
+    "preserved": [
+      "Scene48 ABI、binding、頂点処理、segment、coverage、bladeAngle、およびincidentAt外の全WGSL。",
+      "光源の同一パラメータ化、放射輝度・不透明度、正規化結合、窓、打切り、受光早期境界。",
+      "R4のrho*incident、全材質、シーン、姿勢、タイミング、ホストおよびPCMの変更禁止。",
+      "R3=GPT-6.2-Astra、R4受光改訂=GPT-6.1-Solという履歴帰属。既存の出典リンクは変更対象外であり、この入力にURL本文がないため新たなリンクや出典を創作しない。",
+      "source/EC-before-target-searchの意味、1体ダメージという規則と実行結果の区別、プレビューとゲームプレイの時間区分。"
+    ],
+    "limits": [
+      "ツール実行、R5のCPU数値評価、WGSLコンパイル、GPU測定は行っていない。",
+      "実GPU・画面・実際のH64サイズ・通常速度・全寿命・聴取の観測は存在しない。観測済みの視覚欠陥や採用済みの改善は主張しない。",
+      "128候補は160回上限内だが、3.2倍の最大columnLight呼出しが実機性能へ与える影響は未検証。",
+      "積分誤差は光源と受光の数値的一貫性の問題であり、その可視影響はごく小さい可能性がある。全点・全位相の誤差保証はない。",
+      "既存48点の完全な座標表、ホスト、PCM、歴史的リンク本文は提示されていないため、再現済み・検査済みとはしない。",
+      "本出力はR5の最終実験案であり、検証合格・実機採用の宣言ではない。"
+    ]
+  },
+  "checks": {
+    "Naga": "WGSL-to-SPIRV pass; actual GPU/driver not_run",
+    "quadratureCPU": "Exact returned nodes/weights and dense48-point reference comparison; see evidence/QUADRATURE-VALIDATION.json",
+    "nonQuadratureSource": "exact R4 excluding incidentAt",
+    "hostCPU": "9 mocked GPU/audio cases, unchanged PCM and same-cycle audio dedupe, verify mute",
+    "nativeGPU": "not_run",
+    "actualSize": "not_run",
+    "normalSpeed": "not_run",
+    "fullLifetime": "not_run",
+    "normalAudio": "not_run",
+    "producerCPU": "Existing R3 source-bound producer evidence; no live game acceptance"
+  },
+  "title": "Fighter Sword Shockwave R5 — 受光積分だけを変更する最終数値実験",
+  "historicalR2Revision": {
+    "observation": "At R1 phase zero the two independent eased sword segments both have zero velocity. Their orientation permits launch along the intended tangent, but their actual motion pauses at release.",
+    "change": "Join the windup and follow-through with matching nonzero angular derivatives at phase zero. Wave starts on the tip, moves in its instantaneous direction and outruns it. The wrist brings the blade back to ready after the wave has expired.",
+    "preserved": "R1 pressure front and trailing expansion, normal/giant dimensions, direction, backgrounds, and sound design."
+  },
+  "observationPlan": "以下はすべて今後の検証計画であり未実行。まず関数外の文字列一致、WGSLの実機コンパイル、定数のf32化後の有限性・正値性・重み和の丸めを確認する。次に既存の同じ48点と同じY定義で10×4と16×8を80×32／160×64中点参照へ比較し、referenceY>0.005の意味のあるY相対誤差、Y絶対誤差、最大RGBチャンネル絶対誤差を点ごとに記録する。参照側の収束も各点で確認し、必要なら320×128などのさらに密な参照を用いる。既報の1点の収束を他点へ外挿しない。通常／巨大、位相0.065・0.2・0.5・0.8で先端・後端・側端・床隣接・発進位置付近を含め、局所悪化と位相間の数値変動も調べる。数値検証後にのみ、実際のH64表示を通常速度・全寿命で観察し、照明、色相、クリッピング、受光側のちらつき／段差の不在、source-offと終了状態を確認する。実際の音声再生・聴取、通常／巨大双方の実機GPU時間とフレーム時間、追加フラグメント処理による負荷もその後に測定する。意味のある積分誤差を減らせない場合、または実機コストが許容できない場合はこの実験を不採用とする。不採用時に光や材質を調整して救済せず、R6も作成しない。",
+  "files": {
+    "field.wgsl": {
+      "bytes": 9875,
+      "sha256": "c69768433597d97ecccfac4a8c04917294a9c41459e49cd500d7c911ee93ad4d"
+    },
+    "index.html": {
+      "bytes": 1127,
+      "sha256": "c2c0330e948219dc3f91744c06746e2db8e0b72d4be93a0348ab475d16e253c0"
+    },
+    "preview.mjs": {
+      "bytes": 6872,
+      "sha256": "3cd30f35977007cae6d00e0cf4af16fa5d796bb7b45f7deb35cbe3fce1e07003"
+    }
+  },
+  "candidateOnly": true,
+  "publicationState": "candidate-branch-only",
+  "manualReview": true,
+  "automaticIframe": false,
+  "gameIntegration": false,
+  "creativeAPI": {
+    "id": "resp_040e3532817b4bcf006b07d936a3a487d0b0ff2adc82ca0524",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "high",
+    "status": "completed",
+    "requestSha256": "674065b6732b3b711069f58cbcc0669d6a5b181642135da29e9cc5b58cdc3214",
+    "shaderSha256": "c69768433597d97ecccfac4a8c04917294a9c41459e49cd500d7c911ee93ad4d"
+  },
+  "clockBoundary": {
+    "previewNormalMs": 550,
+    "previewGiantMs": 650,
+    "gameplayNormalMs": 760,
+    "gameplayGiantMs": 1150,
+    "scope": "R2 synthetic preview clocks preserved; not a production duration adapter or live binding"
+  },
+  "integrationLimits": [
+    "No typed runtime event gate introduced; source producer VM checks are not a live projection contract",
+    "Duplicate test means one sound release per preview loop, not server receipt deduplication",
+    "Optical spill outside body of wave is not a hit or damage-area indicator",
+    "2.5D40-cell sheet integration lacks true3D self-occlusion; GPU performance unverified",
+    "Existing R2 preview has no reduced-motion field/control"
+  ],
+  "creatorModelId": "gpt-6.1-sol",
+  "creatorDisplayName": "GPT-6.1-Sol",
+  "historicalR3": {
+    "id": "fighter-shockwave-astra62-r3",
+    "author": "GPT-6.2-Astra",
+    "commit": "a6220d731946027c5c10bfdfe9e6e5868832b2ac",
+    "revision": {
+      "hypothesisOnly": true,
+      "observedR2Defect": false,
+      "change": "光の単位を「曲線」ではなく、湾曲した波頭から後方へ厚みを持つ一枚の断面とする。正面中央では十分な奥行きを取り、翼端では薄く絞る。発射直後の奥行きは各翼位置で波頭が実際に進んだ距離の82%以下なので、剣の後ろから完成形が湧くことはない。先端の淡い薄荷色、その後ろの密な青緑、圧が抜けながら透ける緑青の後縁を、一続きの発光材として設計した。狙いは、先端を指で隠しても内側に光の厚みが読め、逆に後縁の外では地の色へ戻ること。これはソースに基づく視覚仮説で、見え方は未検証。",
+      "emissionContract": [
+        "発生の意味：実ゲームの fighterSlash はプレイ中、所有するオリハルコンの剣、生存・非排出・非ベント、能力・収納・意識などの条件とスタミナを要する。Fighter が通常1 EC、巨大版は使用可能なら100 ECを実際に消費した後、波の対象探索より先に fighter-shockwave を発する。one-body-damage:ec-cost-1:remaining-ec-N と giant-one-body-damage:ec-cost-100:remaining-ec-N はダメージ規則と消費・残量の記述で、命中や被害者の通知ではない。",
+        "光源：照準に沿った剣由来の射出位置と、衝突解決された経路終点の間を扱う。プレビューではその代わりに合成の手・剣と自由経路を使う。各断面の光学厚 τ は位相、横幅の包絡、波頭からの深さで決まる。視線への直接光は色付きの源関数 S に (1−exp(−τ)) を掛けたもの。残りの透過分だけ背後を見せる。圧縮部だけでなく膨張側にも S を持たせ、有限の後縁で τ をゼロにする。ECの比を輝度の倍率にはしない。",
+        "受光材：同じ断面を幅10区画×奥行き4区画に分け、区画の放射色と面積から近傍材への入射を近似する。実効層間隔 h を通常8・巨大12論理pxとし、面内距離 r に対して平行な小面間の結合 h²/[π(r²+h²)²] を使い、2.5hから4hで滑らかに切る。空には受光面を置かない。床、袖、手、金属は既存の被覆順で受光係数を置き換える。床や手に別の発光時計はなく、波が遠ざかればその場所への寄与はなくなる。",
+        "観測側：R2の表示コード値で背景・材質・輪郭被覆まで組んだ下地を、一度線形光へ戻す。受光分にはチャンネルごとの表示余裕に収める肩を設け、その材質像の手前に直接光と透過を一度だけ合成する。直接光の4点サンプルは画素面積の近似であり、ブルームではない。unormへの書き出しで一度だけ表示コードへ戻し、光の寄与がゼロなら元の下地をそのまま返す。背景選択で光源強度を変えず、フレア、ゴースト、自動露出を足さない。"
+      ],
+      "timingContract": [
+        "位相0で切先は原点にあり、bladeAngle の左右の角速度はともに −5.8。切先の射出方向速度は31×5.8＝179.8論理px/位相。波頭中央は同じ接線上を front＝clamp(t,0,1)×travel で進む。既存経路で波が切先を追い越すこの速度関係を変える追従補間は入れない。",
+        "t≤0 は直接光も受光もゼロ。0から.065で立ち上げ、幅は既存の −.012～.15 の成長式に従う。.79から1.08で同じ断面全体を減衰させる。1で進行を止めた後に残るのはその減衰だけで、終点用の発光要素はない。t≥1.08 は無照射、1.16～1.92は元の剣の戻し。再発光も第2波もない。",
+        "プレビューの通常550ms・巨大650msのホスト時計、自動ループ、元のPCM・音声には手を加えない。ゲーム側イベントの通常760ms・巨大1150msは別契約で、シェーダーへの接続や尺合わせはしていない。"
+      ],
+      "preserved": [
+        "Sceneの48-byte ABI、group 0 / binding 0、vertex・fragmentエントリーポイント、全画面三角形。追加テクスチャ・画像・外部依存なし。",
+        "segment、coverage、bladeAngle は提示された関数テキストのまま。論理座標、経路軸、手・柄・鍔・刃の位置と被覆、振り抜きと復帰を維持。",
+        "travel、progress、front、halfSpan、湾曲量、crestX、visibleSpan、通常／巨大の幅と先端厚みの尺度を維持。新規の奥行きと光輸送だけをその経路座標から構成。",
+        "通常／巨大と既存の背景操作は不変。scene.light は元の背景色選択にのみ使用し、scene.spare は未使用。軽減モーション用フィールド、型付き発動ゲート、ゲームプレイのバインディングを追加しない。"
+      ],
+      "limits": [
+        "架空の発光性剣圧に対する2.5Dの近似。実在の衝撃波の可視発光、正確なエネルギー保存、実測の材質反射、三次元の遮蔽を主張しない。有限区画の受光積分と画素内4点近似の粗さは実寸で要確認。",
+        "対象・接触結果・傷・破損・ヒットマーカー・被害者の身体・未知の遮蔽物・テレポートを描かない。標的、残体力、残EC、戦果を光の入力にしない。",
+        "R3は新しいソース設計仮説。実GPU・画面・H64実寸・通常速度・全寿命・試聴の観察は一切未実施。R2に観察済みの欠陥があったとも、R3で改善が確認・受理されたとも言えない。"
+      ]
+    }
+  },
+  "historicalR4": {
+    "id": "fighter-shockwave-sol61-r4",
+    "author": "GPT-6.1-Sol",
+    "commit": "7f14569e45b820de0b085111e60fcc5e5fe50696",
+    "revisionSource": "public/sol61-fighter-shockwave/r4/version.json",
+    "versionSha256": "f90a90c8f785bccff746080914d1e8e9cd2ef844e2a9dbcaa6e1919a56b0dde0"
+  },
+  "stopAfterEdition": 5,
+  "modelShare": {
+    "catalog": "C:/Users/user/.codex/models_cache.json",
+    "fetchedAt": "2026-11-26T07:08:43.706289100Z",
+    "contributions": [
+      {
+        "modelId": "gpt-6.1-sol",
+        "displayName": "GPT-6.1-Sol",
+        "share": 60,
+        "acceptedWork": "API R5 positive-quadrature numerical design and implementation only; histories preserved"
+      },
+      {
+        "modelId": "gpt-6.2-astra",
+        "displayName": "GPT-6.2-Astra",
+        "share": 25,
+        "acceptedWork": "Technical source preservation, Naga/host/packaging and candidate integration; no R5 creative API work"
+      },
+      {
+        "modelId": "gpt-6-luna",
+        "displayName": "GPT-6-Luna",
+        "share": 15,
+        "acceptedWork": "Exact returned quadrature coefficients, dense-reference and error-reduction CPU checks"
+      }
+    ]
+  },
+  "technicalContributors": [
+    "GPT-6.1-Sol",
+    "GPT-6.2-Astra",
+    "GPT-6-Luna"
+  ],
+  "quadratureCost": {
+    "sourceCandidateCount": 128,
+    "priorCount": 40,
+    "ratio": 3.2,
+    "sliceCount": 16,
+    "priorSliceCount": 10,
+    "actualGPUCost": "not_run"
+  }
+}

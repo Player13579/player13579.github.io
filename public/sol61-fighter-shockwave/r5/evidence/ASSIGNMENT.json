@@ -1,0 +1,31 @@
+{
+  "ownedOutput": "public/sol61-fighter-shockwave/r5/ only, candidate branch",
+  "preparationBase": "3238aecab569884cd9b328cf71af4256e72e10cb",
+  "sourceR4": "7f14569e45b820de0b085111e60fcc5e5fe50696",
+  "stopAfterEdition": 5,
+  "reason": "R4 inherited10x4 midpoint source-area quadrature has measured selected-point error vs converged160x64 CPU reference; this is not observed visual banding/defect.",
+  "requirements": [
+    "Only incidentAt numerical integration rule may change",
+    "Same source column, area Jacobian, normalized coupling/window/cutoff, material linear reflection, scene/pose/clock/host/audio",
+    "Positive integration weights, bounded<=160 source evaluations per receiver",
+    "No PR/default/catalog/Pages/game edits, noR6"
+  ],
+  "acceptance": [
+    "Exact GPT-6.1-Sol API",
+    "Naga",
+    "unchanged non-quadrature shader",
+    "converged reference comparison and finite/source-off cases",
+    "host/PCM/dependency/hash checks"
+  ],
+  "remaining": [
+    "Sol chooses integration rule",
+    "Native performance, actual GPU/size/normal-speed/full-lifetime/listening acceptance all unverified"
+  ],
+  "key": "authorized memory-only, no key copy/log/write",
+  "runtime": {
+    "sandbox_mode": "danger-full-access",
+    "approval_policy": "never",
+    "DVA_FORBID_NATIVE": "1"
+  },
+  "candidateBase": "3238aecab569884cd9b328cf71af4256e72e10cb"
+}

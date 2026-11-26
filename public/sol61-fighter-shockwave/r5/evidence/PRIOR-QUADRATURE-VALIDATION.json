@@ -1,0 +1,82 @@
+{
+  "validator": "verify-quadrature.mjs",
+  "result": "pass",
+  "scope": "CPU double-precision numerical integration comparison only; not a rendered image or visual acceptance.",
+  "source": {
+    "file": "../fighter-shockwave-api-r3/generated-field.wgsl",
+    "sha256": "bb47f7d6f7560a14f273fd73f13e5f3bb18013999384eedd5cbce086767183cb",
+    "equations": "sliceAt, columnLight, incidentAt; WGSL lines 51-101, including h/reach, area-cell weight, soft coupling kernel, and the 10x4 midpoint loops.",
+    "geometry": "The exact R3 preview origin/end/width values were used to define normal and giant travel, half-span and front; source phase, width and drive equations are transcribed from fragment lines 123-129."
+  },
+  "method": {
+    "shaderGrid": "10x4 midpoint cells (40 total)",
+    "references": [
+      "80x32 midpoint",
+      "160x64 midpoint"
+    ],
+    "phaseSamples": [
+      0.065,
+      0.2,
+      0.5,
+      0.8
+    ],
+    "receiverSamplesPerModePhase": [
+      "source center (mid-depth, centerline)",
+      "near leading edge",
+      "near trailing edge",
+      "near lateral edge",
+      "launch-adjacent point",
+      "floor-adjacent point"
+    ],
+    "sampleCounts": {
+      "total": 48,
+      "referenceYAbove0_005": 36,
+      "referenceYAtOrBelow0_005": 12,
+      "exactZeroReference": 9
+    },
+    "relativeErrorRule": "Reported only where dense-reference luminance Y > 0.005; lower-emission points were excluded from relative ranking."
+  },
+  "findings": {
+    "maxAbsoluteRgbChannelError": {
+      "mode": "giant",
+      "phase": 0.8,
+      "receiver": "near leading edge, centerline",
+      "coarseRgb": [
+        0.0529925944,
+        0.2639146023,
+        0.2412913304
+      ],
+      "referenceRgb": [
+        0.0618472949,
+        0.2376169567,
+        0.2159412042
+      ],
+      "maxChannelAbsoluteError": 0.0262976456,
+      "referenceY": 0.1986833373,
+      "absoluteYError": 0.0187558459,
+      "relativeYError": 0.0944006992
+    },
+    "maxRelativeYError": {
+      "mode": "giant",
+      "phase": 0.2,
+      "receiver": "floor-adjacent",
+      "referenceY": 0.0956414723,
+      "absoluteYError": 0.0123436824,
+      "relativeYError": 0.1290620282
+    },
+    "80x32To160x64ConvergenceAtMaxErrorPoint": {
+      "maxRgbChannelDifference": 0.0001344086,
+      "yDifference": 0.0001141068
+    },
+    "interpretation": "The 160x64 reference is numerically converged relative to 80x32 at the reported maximum-error point, while the 10x4 shader quadrature differs by about 9.4% Y there. Across sampled meaningful points, the largest relative Y discrepancy is about 12.9%. This is a specific source-area quadrature-resolution discrepancy and can justify an isolated R5 numerical-resolution experiment with the source shape, incident radiance, material law, timing, and host held fixed. It does not establish visible banding, a visual defect, or a quality improvement."
+  },
+  "limits": [
+    "CPU integration of the exact source equations; no full WGSL execution, GPU output, raster pixels, actual screen size, ordinary-speed viewing, or audio acceptance.",
+    "Finite point selection and preview geometry; this does not characterize every receiver coordinate or all screen sizes.",
+    "No R5 code or integration-resolution alternative was implemented or evaluated here."
+  ],
+  "modelAttribution": {
+    "displayName": "GPT-6-Luna",
+    "acceptedContribution": "Implemented and ran the bounded CPU quadrature comparison and recorded numerical convergence and error evidence."
+  }
+}

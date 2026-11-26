@@ -1,0 +1,97 @@
+{
+  "validator": "verify-quadrature.mjs",
+  "result": "pass",
+  "scope": "Numerical CPU comparison of actual returned R5 incidentAt nodes/weights against the frozen R4 10x4 method and converged midpoint reference; no visual or GPU claim.",
+  "source": {
+    "file": "candidate/public/sol61-fighter-shockwave/r5/field.wgsl",
+    "sha256": "c69768433597d97ecccfac4a8c04917294a9c41459e49cd500d7c911ee93ad4d",
+    "unchangedOutsideIncidentAt": true,
+    "preservedSourceEquations": ["sliceAt", "columnLight", "rayAt", "kernel", "cutoff", "material and phase code"]
+  },
+  "rule": {
+    "type": "tensor-product Gauss-Legendre",
+    "dimensions": "16 y nodes x 8 axial nodes",
+    "candidateEvaluationsPerReceiver": 128,
+    "oldR4MaximumCandidates": 40,
+    "maximumCandidateCostFactor": 3.2,
+    "actualColumnLightCallsAcross48Points": { "mean": 82.5625, "maximum": 128 },
+    "domainChecks": {
+      "allWeightsPositive": true,
+      "yNodesInsideOpenMinus1To1": true,
+      "axialNodesInsideOpen0To1": true,
+      "yWeightSum": 2.0000000000000004,
+      "axialWeightSum": 1
+    }
+  },
+  "comparison": {
+    "sameReceiverSamples": 48,
+    "phases": [0.065, 0.2, 0.5, 0.8],
+    "modes": ["normal", "giant"],
+    "receiverKinds": ["source center", "near leading edge", "near trailing edge", "near lateral edge", "launch-adjacent", "floor-adjacent"],
+    "denseReferences": ["80x32 midpoint", "160x64 midpoint"],
+    "relativeErrorThreshold": "Only report relative Y error when reference Y > 0.005.",
+    "sampleCounts": { "meaningful": 36, "atOrBelowThreshold": 12, "exactZeroReference": 9 },
+    "allMeaningfulPointsImproved": 36,
+    "meaningfulPointRegressions": 0,
+    "minimumPointwiseYErrorReductionFraction": 0.18936629298327054,
+    "meanAbsoluteYErrorReduction": 0.008546557650284992,
+    "worstR5AbsoluteRgbChannelError": {
+      "mode": "giant",
+      "phase": 0.2,
+      "receiver": "near leading edge, centerline",
+      "maxChannelError": 0.004669768475032365,
+      "r5AbsoluteYError": 0.00422086854464282,
+      "referenceY": 0.19894131958226483,
+      "r5RelativeYError": 0.021216650987867985,
+      "oldR4AbsoluteYErrorAtSamePoint": 0.018743554858894812
+    },
+    "worstR5AbsoluteYError": {
+      "mode": "giant",
+      "phase": 0.2,
+      "receiver": "near leading edge, centerline",
+      "absoluteYError": 0.00422086854464282,
+      "relativeYError": 0.021216650987867985
+    },
+    "worstR5RelativeYError": {
+      "mode": "giant",
+      "phase": 0.2,
+      "receiver": "near leading edge, centerline",
+      "referenceY": 0.19894131958226483,
+      "absoluteYError": 0.00422086854464282,
+      "relativeYError": 0.021216650987867985
+    },
+    "priorWorstRelativeYError": {
+      "mode": "giant",
+      "phase": 0.2,
+      "receiver": "floor-adjacent",
+      "r4RelativeYError": 0.12906202817479537,
+      "r5AbsoluteYErrorAtSamePoint": 0.00006719723914987152,
+      "r5RelativeYErrorAtSamePoint": 0.0007025951980818328
+    },
+    "worst80x32To160x64Convergence": {
+      "mode": "giant",
+      "phase": 0.5,
+      "receiver": "near leading edge, centerline",
+      "maxChannelDifference": 0.00013486614506376393,
+      "yDifference": 0.00011466197154483271
+    }
+  },
+  "behaviorChecks": {
+    "all48R5OutputsFiniteAndNonnegative": true,
+    "zeroDriveProducesZeroRgb": true,
+    "fragmentPhaseOffGuardRetained": "t <= 0.0 or t >= 1.08 returns before the lighting path; exact guard remains outside the edited function.",
+    "frontBoundsCutoffProducesZeroWithoutSourceCalls": true,
+    "lateralBoundsCutoffProducesZeroWithoutSourceCalls": true,
+    "underlyingKernelCutoffRetained": true
+  },
+  "interpretation": "On these 48 CPU samples, R5 materially reduces the measured source-integration error versus R4's 10x4 midpoint rule, with no meaningful-sample regressions. This is numerical consistency evidence only; the 3.2x candidate-work bound and fragment-time GPU cost remain unmeasured.",
+  "limits": [
+    "No full WGSL execution, GPU pixels, screen-size, ordinary-speed, full-lifetime or audio acceptance.",
+    "The selected 48 receivers and preview geometry do not bound errors at all possible receiver positions.",
+    "No visible improvement, reduced banding, or device performance is inferred."
+  ],
+  "modelAttribution": {
+    "displayName": "GPT-6-Luna",
+    "acceptedContribution": "Parsed and evaluated the actual R5 source quadrature against the fixed source-bound CPU reference matrix and recorded numerical/cost evidence."
+  }
+}
