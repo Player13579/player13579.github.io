@@ -1,15 +1,12 @@
 {
-  "method": "Node function harness using current helper semantics and public plan input contract",
+  "method": "Node loaded exact public webgpu-effect-shapes.js and executed createBatch.add validation with current public helper semantics",
+  "rendererBlob": "e25bcb4790b8ba6d36bf971334c22fbfa8e6e3c3",
   "result": "passed",
   "checks": [
-    "12 commands for one receipt; all finite and additive",
-    "lethal true/false produce identical command arrays",
-    "camera transform shifts fixed event anchor",
-    "zoom scales world geometry",
-    "pre-start and expired events produce no commands",
-    "offscreen culling marks visibility only under existing safe gate",
-    "4096 command ceiling (4092 at 341 receipts)",
-    "unbounded camera input rejected"
+    "normalized candidate emits 12 commands and all are accepted by actual shared renderer command validator",
+    "previous percent-range color candidate is rejected by actual renderer with RangeError",
+    "all colors are RGBA 0..1; alpha and shape parameters accepted",
+    "camera projection, zoom scale, event expiry, safe culling, lethal-invariant and 4096-command cap pass pure function harness"
   ],
-  "scope": "Function-only synthetic checks; not game source tests, not renderer, not GPU, not visual quality"
+  "scope": "No createRenderPipeline/encode/submit, no WebGPU device, no browser or screen; visual/audio quality and game integration remain unverified"
 }

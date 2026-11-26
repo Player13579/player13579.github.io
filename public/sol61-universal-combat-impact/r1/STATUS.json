@@ -6,7 +6,7 @@
   "publicPagesChanged": false,
   "visualQuality": "unverified",
   "webGpuRuntime": "notRun",
-  "naga": "notApplicable: existing WebGPU primitive path, no new WGSL",
+  "naga": "notApplicable: plan emits WebGPU primitives through shared WGSL shape renderer; no new WGSL",
   "sfx": "existing app-owned generic impact sound is preserved; new SFX candidate is not included or accepted",
   "acceptance": [
     "Dot replaces existing per-receipt plan; does not overlay existing 22-fragment/ring pass",
@@ -16,5 +16,6 @@
     "Gallery adapter and parent protocol integration by Dot",
     "Actual browser/WebGPU replay, gallery order, deployment and Pages bytes verified separately"
   ],
-  "limitation": "No receiver/depth/normal inputs exist in current hit renderer. Candidate is a world-anchored abstract display-space visual only; it does not establish physical surface lighting."
+  "limitation": "No receiver/depth/normal inputs exist in current hit renderer. Candidate is a world-anchored abstract display-space visual only; it does not establish physical surface lighting.",
+  "staticShapeValidation": "passed against exact public webgpu-effect-shapes.js blob e25bcb4790b8ba6d36bf971334c22fbfa8e6e3c3; real createBatch.add accepted all 12 commands"
 }
