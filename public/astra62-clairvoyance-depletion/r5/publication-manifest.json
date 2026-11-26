@@ -1,0 +1,90 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "千里眼のMP枯渇終了",
+  "groupId": "clairvoyance-depletion-astra62",
+  "versionId": "clairvoyance-depletion-astra62-r5",
+  "creativeEdition": 5,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creativeAPI": {
+    "responseId": "resp_02332f6113ca3096006b07d02a8d1487d0b295ef1aa7fefb65",
+    "reasoningEffort": "high",
+    "status": "completed"
+  },
+  "entry": "index.html",
+  "path": "/public/astra62-clairvoyance-depletion/r5/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baseCommit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+    "basedOnVersion": "clairvoyance-depletion-astra62-r4",
+    "basedOnCandidateCommit": "008c8bc56dace6c575a4b7f5983c2bddaaec8612",
+    "apiMaterialBlockSha256": "c2b8d5b239f0ba11ff40c67912fe206c25d929174b3b4e5d60834c00cf270c7d",
+    "assembledShaderSha256": "d7795e1e4e0062c9587e8166ff97ebcbc5f120e279c7dc07bcd64dda49979928",
+    "creativeScope": "API-authored ambient material block inserted verbatim into the unchanged R4 shader; inherited clock, emission, coverage and PCM."
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "b43407b05b25d3bc8118a7b8b7efb6a6d94a021e",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "advanceClairvoyanceMana L8829–8848; distinguish setClairvoyanceActive manual-off L8809–8815.",
+    "meaning": "During active play a scheduled drain that actually empties the observer's mana stops clairvoyance and emits the specific MP depletion event. A meeting pauses this drain; other invalid-state cleanup and manual deactivation are separate.",
+    "scope": "Only a synthetic explicit current, confirmed, self-owned depletion receipt showing active→inactive and zero remaining mana can start the sign. Zero mana and an inactive snapshot alone cannot identify the cause. No remote player, position, observed image, camera data, actual mana gauge, teleport or world effect is requested or drawn. This preview does not parse prose or assert that an equivalent typed receipt already exists in the client."
+  },
+  "design": {
+    "revision": "R5で変えるのは、下板の座が上板の青灰色の地肌から隠す環境光だけ。R4では研ぎ面が退くと、局所隙間に応じた陰も一緒に退いていた。そこで、固定光の来る側（+Y）にある下板の座肩を遮蔽物とみなす。上板の各点から座肩までの水平距離は、その点から内縁までの幅、実際の局所隙間、下板内縁から座肩までの引っ込みを足したもの。閉じるにつれて露出する座肩の高さとこの距離を比べ、斜めから届く光のうち遮られる分だけを地肌から引く。隙間の狭い弓の両端から先に、内腹から外肩に向けて柔らかい陰が広がる設計で、中央に別の明滅は置かない。上板の拡散地色と、光源側にある下板の向きによる明暗は残す。研ぎ面には従来の受光を残し、全幅一斉の溝陰は重ねない。610 msでは同じ幾何計算がそのまま静止する。これはコード上の改善仮説であり、幅70 CSS px・通常速度の376–610 msで地肌に接近が読めるか、また着座が音と合うかを含め、実表示・聴感の品質は未確認。",
+    "timing": "Unchanged R2 event-age clock, onset and audio. 0–20 ms reveals the already-powered eye; 20–180 holds it fully lit and open. Charge falls from 180–360; closure starts at 238. Direct iris and guide light are zero at 360, and the bonded cut is dark by 376 after its 16 ms delayed component. Through 376 the modeled stop is below the lowest sampled light angle, so early material and luminous delivery are unchanged. The descending sound ends by 380. During unpowered closure the substrate responds to local clearance, not a 579 ms groove trigger. At exactly 610 the gap and pane coverage reach zero at the unchanged seating cue. The seated material holds; span contracts from 725–1002, composite fade runs from 846–1028, and only background remains until expiry at 1070.",
+    "reducedMotion": "At reduced=1 the initial half-gap is 8 rather than 13.8 reference units. The guide retains path loss and dims in place. The stop uses the resulting local gap without a separate shadow animation; the zero-gap seated material is identical. Onset, extinction, closure, seam contraction and audio retain the same clock.",
+    "sound": "A decaying downward tone stops by 380 ms. A quieter damped contact cue accompanies rim closure at 610 ms. Verification is silent.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1854,
+      "sha256": "b9966ca733703bce9a7ce59653ec6a98e62ce083e4d30426190a45fc0ed4bebc",
+      "gitBlob": "9cf3136b2de2aa680cee72c8cc6a6bfead05fa6b"
+    },
+    "preview.mjs": {
+      "bytes": 7806,
+      "sha256": "c7d7640916aaff6481f78acdd1810c7e44e514f868e9d2d41c695e6443885a62",
+      "gitBlob": "81c86e9a4e6f6d5526640a86311f7fafdc8e87ec"
+    },
+    "depletion.mjs": {
+      "bytes": 1630,
+      "sha256": "03d559446b42c006031870429e14a3c0ab5c2de99ecadfc2edd52a3dbff5f9be",
+      "gitBlob": "18feaa5f6ef60557d22a5edb4307a7b401211821"
+    },
+    "effect.wgsl": {
+      "bytes": 7185,
+      "sha256": "d7795e1e4e0062c9587e8166ff97ebcbc5f120e279c7dc07bcd64dda49979928",
+      "gitBlob": "400af16280044958f411421efedba8c12be739a4"
+    }
+  },
+  "validation": {
+    "gate": "passed: current committed self active to inactive at numeric zero; stale, duplicate, unrelated or unconfirmed receipt rejected",
+    "logicAndPCM": "Gate assertions passed; decoded Float32 audio samples identical to R4 at 8/44.1/48/96/192 kHz",
+    "moduleSyntax": "Node module syntax pass",
+    "wgsl": "Naga WASI validated; SPIR-V 11584 bytes",
+    "dependencies": "gallery and standalone entries and local references inspected",
+    "parentGalleryReplay": "not_run",
+    "nativeGPU": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "quality": "not-reviewed",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not-connected"
+  },
+  "creativeEditionLimit": 5,
+  "remainingCreativeEditions": 0
+}
