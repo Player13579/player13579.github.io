@@ -13974,3 +13974,13 @@ body.game-open:has(#vendingFullMount:not([hidden])) #gameApp #sidePanel {
     min-height: 52px;
   }
 }
+/* Terminal rendering recovery owns the unobstructed board instead of
+   leaving live HUD hit targets above it. Existing opened dialogs keep their
+   established priority and can be dismissed through their own controls. */
+html:not([data-field-renderer="webgpu"])
+  body.game-open.dva-full-canvas[data-webgpu-main-error]:not(.result-presentation):not(:has(:is(
+    #expandedMapOverlay, #keybindOverlay, #vendingFullMount, #meetingPanel, #endOverlay, #killCameraOverlay, #fieldFeedPanel
+  ):not([hidden])))
+  #webgpuMainFailure {
+  z-index: 48;
+}
