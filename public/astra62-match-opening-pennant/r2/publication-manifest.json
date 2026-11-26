@@ -1,0 +1,113 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "初回バトルフェーズ開始 R2",
+  "groupId": "match-opening-pennant-astra62",
+  "versionId": "match-opening-pennant-astra62-r2",
+  "creativeEdition": 2,
+  "editionScope": "Initial match opening, second gallery candidate. A visual revision for same-size comparison with R1.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "OpenAI Responses API metadata in creativeSource.",
+  "entry": "index.html",
+  "path": "/public/astra62-match-opening-pennant/r2/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baselineCommit": "6376669c7d991f6791dd0b8506830e05b3407dc7",
+    "baselineDirectory": "public/astra62-match-opening-pennant/r1",
+    "creativeSource": {
+      "responseId": "resp_0b16fb8ab41fe90b006b07c7ca69e887d08d0dec34386da130",
+      "model": "gpt-6.2-astra",
+      "reasoningEffort": "high",
+      "bCommit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "originalEdition": 1,
+      "scope": "R2 shader and light design"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1927,
+      "sha256": "4ea516ae1ac2cc4bf03f81b9327e72011e1dbf97993a19d893eef6c15e16fd94",
+      "gitBlob": "5acf6d362100f6deaf58fb3915211a09e78b40b9"
+    },
+    "preview.mjs": {
+      "bytes": 7791,
+      "sha256": "700e875a42b97fae6e124f161764ef152f879dd8f945ca5a8055e921b5d85924",
+      "gitBlob": "a01b72fcf8e205b7a2079ac6af274e746b1bfab9"
+    },
+    "opening.mjs": {
+      "bytes": 2307,
+      "sha256": "58ab37c36896bef35d68be8fb0d2c4d66037b23e65409dd2d094b91347a828eb",
+      "gitBlob": "ebbeda3c0877872c268fac29f6586b1a1ed6c4bd"
+    },
+    "effect.wgsl": {
+      "bytes": 5296,
+      "sha256": "ea146d0b64ca0eb6039d14d97cf4b1175f54eae09daa849b4e929985d4caccf6",
+      "gitBlob": "30b99795a51f0a5b4254a7590af5aca1ecba4b77"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "28b5b0f5eb55aabaa201eb6e5f69f83a0ed18446",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "startBattle L6925–7079. Requires selecting, sets playing, round=1, battleStartedAt and preparationEndsAt; records a dedicated battle-start announcement.",
+    "scope": "This synthetic receipt is bound to the current viewer-owned ordinary-match generation and may trigger once per generation. Session generations in the manual preview are locally provided. Meeting resumes, delayed notifications, ordinary snapshots, preparation ending and training are negative fixtures. Initial play and the beginning of preparation coincide; this sign conveys neither preparation expiry nor availability of attacks or input.",
+    "existing": "The main-game playing-phase start sound is outside this standalone preview. The pennant is a sign for the viewer, not new world inventory, a flag objective, a map object or a winning team."
+  },
+  "design": {
+    "primary": "閲覧者用の旗印に、布を裏から透かす架空の面光源を置いた。折りが開くと淡いセージの広い面に光が通り、二重の裾と藍染めには陰が残る。表示座標で透過面積に応じて光を広げるので、細い先端のにじみは短く、布元では留め具と竿の布側に光が返る。世界の照明は変えない。1270 msの包絡は維持し、130–490 msの展開では遅れて届く張りで透過が一度強まり、張り切った面の明るさに落ち着く。縮減時は垂れと移動を減らし、波に伴う増光も除く。比較の仮説は、開始を告げる拍を変えずに布面の広がりを光でも読めること。ゲートとPCMは変更せず、展開の布音と490 msの二部分音を保つ（Verifyは無音）。",
+    "evaluation": "発光品質は実表示未確認。提示のR1を比較基準に、同じ実寸・既定強度・露出・通常速度で切り替える。R2では、展開中から静止後までセージの布面とそのすぐ外に柔らかい光が読めるか、藍帯が折れに沿う一本のままか、留め具と竿の布側を見分けられるかを見る。点や細い縁しか光って見えない、または面が白く一様で折り目が消えるなら不合格。縮減版では短い展開で同じ記号が読め、光だけが波として走らないことを比べる。発動は既存ゲートのまま、ローカル所有の通常戦の各世代で最初の selecting→playing（round 1）に一度だけ。再開・遅延通知・準備終了・訓練で再生されず、命中・勝利・攻撃解禁の合図にならないこと、消退時刻と音がR1からずれないことを別に確認する。",
+    "sound": "A brief band-limited cloth noise while unfolding and a short two-partial seating tone at 490 ms. Verify is muted.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "cpu": {
+      "result": "pass",
+      "ordinaryOnce": true,
+      "watermark": true,
+      "negativeFixtures": 13,
+      "pcmEqual": true,
+      "pcm": [
+        [
+          8000,
+          0.119086
+        ],
+        [
+          44100,
+          0.089874
+        ],
+        [
+          48000,
+          0.089841
+        ],
+        [
+          96000,
+          0.089877
+        ],
+        [
+          192000,
+          0.089877
+        ]
+      ],
+      "bridgeESM": true
+    },
+    "shader": "pass-naga-wasi-cli-0.1.0",
+    "nativeGpu": "not_run",
+    "fullLifetime": "not_run",
+    "actualSize": "not_run",
+    "normalAudioListening": "not_run",
+    "quality": "not-reviewed",
+    "gameIntegration": "not-connected"
+  }
+}
