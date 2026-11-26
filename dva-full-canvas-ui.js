@@ -23,6 +23,36 @@
   const modalIds = ['expandedMapOverlay', 'keybindOverlay', 'killCameraOverlay', 'fieldFeedPanel', 'switchDragMenu'];
   let inputGeneration = 0;
   let modalObserver = null;
+  // A trusted touch release can move the launcher before the browser delivers
+  // its compatibility click. Keep evidence for this single input, not a
+  // general click cooldown.
+  let displacedLauncherClick = null;
+  const compatClickWindowMs = 350;
+  function hasCompatClickPoint(event, tap) {
+    return Number.isFinite(event.clientX) && Number.isFinite(event.clientY) &&
+      Math.abs(event.clientX - tap.x) <= 2 && Math.abs(event.clientY - tap.y) <= 2;
+  }
+  function pendingDisplacedLauncherClick() {
+    const tap = displacedLauncherClick;
+    if (!tap) return null;
+    const age = root.performance.now() - tap.at;
+    if (tap.generation === inputGeneration && active && lastPhase === 'playing' &&
+        !document.hidden && age >= 0 && age <= compatClickWindowMs) return tap;
+    displacedLauncherClick = null;
+    return null;
+  }
+  function suppressDisplacedLauncherClick(event) {
+    if (!event.isTrusted || event.detail <= 0) return;
+    flushModalChanges();
+    const tap = pendingDisplacedLauncherClick();
+    if (!tap || event.pointerType !== 'touch' || !Number.isInteger(event.pointerId) ||
+        event.pointerId <= 0 || event.pointerId !== tap.pointerId || !hasCompatClickPoint(event, tap)) return;
+    displacedLauncherClick = null;
+    if (button.contains(event.target)) return; // the launcher's existing listener owns this target
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
+
   function noteModalChanges(records) {
     // Polls may reassign the same hidden value. Only actual visibility
     // transitions revoke a touch, including an open-and-close within one task.
@@ -173,6 +203,15 @@
     if (!button) return;
     closeInput = closeMatchUi;
     openInput = openMatchUi;
+    document.addEventListener?.('pointerdown', event => {
+      if (event.isTrusted) displacedLauncherClick = null;
+    }, true);
+    document.addEventListener?.('visibilitychange', () => {
+      if (document.hidden) displacedLauncherClick = null;
+    });
+    root.addEventListener?.('pagehide', () => { displacedLauncherClick = null; });
+    document.addEventListener?.('click', suppressDisplacedLauncherClick, true);
+
     // A browser may rotate without sending a pointercancel to the old button.
     // Revoke only launchers; the movement stick still owns its own geometry.
     root.addEventListener?.('orientationchange', () => { inputGeneration += 1; });
@@ -232,6 +271,12 @@
           event.clientY < rect.top || event.clientY > rect.bottom) return;
       event.preventDefault();
       lastTouchActivation = root.performance.now();
+      if (node === button && lastPhase === 'playing' && event.isTrusted && event.pointerType === 'touch' &&
+          Number.isInteger(event.pointerId) && event.pointerId > 0 &&
+          Number.isFinite(event.clientX) && Number.isFinite(event.clientY)) {
+        displacedLauncherClick = { x: event.clientX, y: event.clientY, at: lastTouchActivation,
+          generation: inputGeneration, pointerId: event.pointerId };
+      }
       activate();
     });
     node.addEventListener('click', event => {
