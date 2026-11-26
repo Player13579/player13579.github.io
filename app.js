@@ -10034,10 +10034,23 @@ function tabletStickGeometry(canvas, rect) {
     walking };
 }
 
+function tabletWalkingViewportMatches(held, current) {
+  if (current.every((value, index) => value === held[index])) return true;
+  // Keep the press-time anchor. Small VisualViewport quantization cannot
+  // accumulate into a larger accepted resize or defer the layout settler.
+  if (held[0] !== current[0] || held[1] !== current[1] || held[4] !== current[4] ||
+      document.hidden || state.screen !== "game" || state.data?.phase !== "playing" ||
+      document.activeElement?.matches?.('input, textarea, select, [contenteditable="true"]')) return false;
+  const agrees = (before, after) => Number.isFinite(before) && Number.isFinite(after) &&
+    before >= GAMEPLAY_VIEWPORT_MIN_DIMENSION && after >= GAMEPLAY_VIEWPORT_MIN_DIMENSION &&
+    Math.abs(after - before) <= 0.25;
+  return agrees(held[2], current[2]) && agrees(held[3], current[3]);
+}
+
 function tabletStickGeometryMatches(held, current) {
   return Boolean(held && current && held.canvas === current.canvas &&
     held.walking === current.walking && (!held.walking || (held.panelParent === current.panelParent &&
-    current.viewport.every((value, index) => value === held.viewport[index]))) &&
+    tabletWalkingViewportMatches(held.viewport, current.viewport))) &&
     current.rect.every((value, index) => (held.walking && index < 2) ||
       Math.abs(value - held.rect[index]) <= 1));
 }
@@ -34866,7 +34879,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449&ownedMysteryBoxDedup=owned-mystery-box-dedup-forward-20261126-1510&widePanelControlTarget=wide-panel-control-target-forward-20261126-1517&selfHealAudioRate=self-heal-audio-rate-forward-20261126-1522&backgroundOwnedStop=background-owned-stop-forward-20261126-1538&renderRecoveryLayer=render-recovery-layer-forward-20261126-1550&offlineSoloReloadNotice=offline-solo-reload-notice-forward-20261126-1551&fighterEcTerminal=fighter-ec-terminal-forward-20261126-1650&fighterEcFullCanvas=fighter-ec-fullcanvas-forward-20261126-1716&ipadAutoFullscreen=ipad-auto-fullscreen-optout-forward-20261126-1937&launcherStrictTouchC195=launcher-strict-touch-c195-forward-20261126-1942", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449&ownedMysteryBoxDedup=owned-mystery-box-dedup-forward-20261126-1510&widePanelControlTarget=wide-panel-control-target-forward-20261126-1517&selfHealAudioRate=self-heal-audio-rate-forward-20261126-1522&backgroundOwnedStop=background-owned-stop-forward-20261126-1538&renderRecoveryLayer=render-recovery-layer-forward-20261126-1550&offlineSoloReloadNotice=offline-solo-reload-notice-forward-20261126-1551&fighterEcTerminal=fighter-ec-terminal-forward-20261126-1650&fighterEcFullCanvas=fighter-ec-fullcanvas-forward-20261126-1716&ipadAutoFullscreen=ipad-auto-fullscreen-optout-forward-20261126-1937&launcherStrictTouchC195=launcher-strict-touch-c195-forward-20261126-1942&tabletWalkingQuarterJitterB3=tablet-walking-quarter-jitter-b3-forward-20261126-1955", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
