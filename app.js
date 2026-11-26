@@ -2421,6 +2421,33 @@ const acquisitionGpuOverlay = { canvas: null, renderer: null, pending: false,
 // as a diagnostic selector only; it no longer gates renderer ownership.
 const WEBGPU_MAIN_OWNER = true;
 const WEBGPU_MAIN_VERIFY_ROUTE = IS_VERIFICATION_MODE && URL_PARAMETERS.get("webgpuMain") === "1";
+const DVA_MAIN_GRAPHICS_STORAGE_KEY = "dva_main_graphics_v1";
+const DVA_MAIN_GRAPHICS_LIGHT_AT_LOAD = !IS_VERIFICATION_MODE && (() => {
+  try { return globalThis.localStorage.getItem(DVA_MAIN_GRAPHICS_STORAGE_KEY) === "light"; }
+  catch { return false; }
+})();
+function bindTitleMainGraphicsChoice() {
+  const group = document.getElementById("titleMainGraphicsChoice");
+  const input = document.getElementById("titleMainGraphicsLight");
+  const status = document.getElementById("titleMainGraphicsStatus");
+  if (!group || !input || !status || IS_VERIFICATION_MODE) return;
+  let saved = DVA_MAIN_GRAPHICS_LIGHT_AT_LOAD;
+  input.checked = saved;
+  group.hidden = false;
+  input.addEventListener("change", () => {
+    const light = input.checked;
+    try {
+      globalThis.localStorage.setItem(DVA_MAIN_GRAPHICS_STORAGE_KEY, light ? "light" : "standard");
+      saved = light;
+      status.textContent = light === DVA_MAIN_GRAPHICS_LIGHT_AT_LOAD
+        ? "現在の画質と同じ"
+        : "次の再読み込みで反映";
+    } catch {
+      input.checked = saved;
+      status.textContent = "保存できません";
+    }
+  });
+}
 // WEBGPU_FRAME_COST_PANEL_V1_START
 const WEBGPU_FRAME_PANEL_ENABLED = IS_VERIFICATION_MODE && URL_PARAMETERS.get("webgpuFrameCost") === "1";
 // Verification-only retention: 30 seconds through 160 RAF callbacks per second.
@@ -8090,6 +8117,7 @@ function bindTitleNavigationEvents() {
     els.titleExitStatus.hidden = true;
     els.titleExitButton.disabled = false;
   }
+  bindTitleMainGraphicsChoice();
   els.titlePlayButton.addEventListener("click", () => {
     if (els.titlePlayButton.disabled || titleFrameEngineMissing() ||
         showTerminalTitleRendererNotice()) return;
@@ -20916,7 +20944,8 @@ function pumpWebGPUMainAppDriver() {
     ...(startupRequestTrace ? { diagnosticCorrelation: {
       appRequestSerial: requestSerial,
       startupAttemptId: startupRequestTrace.attemptId } } : {}),
-    dpr, ...(frameDiagnostic ? { frameDiagnostic } : {}),
+    dpr: DVA_MAIN_GRAPHICS_LIGHT_AT_LOAD ? Math.min(dpr, 2) : dpr,
+    ...(frameDiagnostic ? { frameDiagnostic } : {}),
     ...(WEBGPU_FRAME_PANEL_ENABLED || WEBGPU_MAIN_VERIFY_ROUTE || !webgpuMainApp.visible ? { onTiming: (name, durationMs) => {
       markWebGPUStartupStage(name, durationMs);
       if (WEBGPU_FRAME_PANEL_ENABLED)
