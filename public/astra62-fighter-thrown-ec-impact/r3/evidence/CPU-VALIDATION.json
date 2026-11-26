@@ -1,0 +1,64 @@
+{
+  "schema": "dva-candidate-cpu-checks/v1",
+  "version": "fighter-thrown-ec-impact-astra62-r3",
+  "checks": [
+    "R1 gate/PCM source exact except version",
+    "authorized west",
+    "authorized east",
+    "denied flight before point read",
+    "denied hidden before point read",
+    "denied ordinary before point read",
+    "denied mismatch before point read",
+    "denied blade before point read",
+    "denied current",
+    "denied permitted",
+    "denied settled",
+    "denied hasAttachment",
+    "denied sameThrow",
+    "no victim/damage/outcome read",
+    "id, coordinate, radius, unrelated event boundaries",
+    "exact finite PCM 8000",
+    "exact finite PCM 44100",
+    "exact finite PCM 48000",
+    "exact finite PCM 96000",
+    "exact finite PCM 192000",
+    "invalid sample rates rejected",
+    "host and adapter exact except edition",
+    "runtime dependency closure",
+    "exact gallery 48-byte producer",
+    "manifest bytes and hashes exact"
+  ],
+  "audio": [
+    {
+      "rate": 8000,
+      "samples": 6880,
+      "sha256": "a136d07a360cb08130bca5c7b5b047d61423988c7eb902004cf87dbf92777293"
+    },
+    {
+      "rate": 44100,
+      "samples": 37926,
+      "sha256": "184521d0a45d9e02061e76fb97b0899e0d604453c20f0a1adfacfe41aea60fbb"
+    },
+    {
+      "rate": 48000,
+      "samples": 41280,
+      "sha256": "a20cc5229f9f0e8387b7a4464bde13ce188f89b6bf91eef91123255359a37042"
+    },
+    {
+      "rate": 96000,
+      "samples": 82560,
+      "sha256": "ce9a91ab814bac401ca3b08f15aa962bbe61414a1610084a880310437b788f0f"
+    },
+    {
+      "rate": 192000,
+      "samples": 165120,
+      "sha256": "a82e108e3252d95d7facc8f283c00df671d965312dd81d2a2d607c203a2c79f1"
+    }
+  ],
+  "passed": true,
+  "actualGPU": "not_run",
+  "actualSize": "not_run",
+  "normalSpeed": "not_run",
+  "fullLifetime": "not_run",
+  "normalAudio": "not_run"
+}

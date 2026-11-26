@@ -1,0 +1,102 @@
+{
+  "schema": "dva-source-timing-comparison/v1",
+  "hypothesisOnly": true,
+  "observedDefect": false,
+  "visualAcceptance": false,
+  "endpointR2": 2.3,
+  "endpointR3": 1.9,
+  "scalarPoints": 194508,
+  "radii": 108,
+  "stepMs": 0.5,
+  "checks": [
+    "No early or post880 emission",
+    "No secondary envelope rise",
+    "R3 memory never above R2 or below pressure",
+    "Pressure and material share initial peak",
+    "Normal/reduced only optical displacement ratio1/8; response endpoint shared",
+    "Only memory endpoint changed; source/arrival/pressure/gain/life/sample/marker code exact"
+  ],
+  "checkpoints": [
+    {
+      "radius": 0,
+      "arrivalMs": 0.0,
+      "sharedLocalPeakMs": 14.0,
+      "pressureEndMs": 79.52,
+      "r2MaterialEndMs": 128.79999999999998,
+      "r3MaterialEndMs": 106.39999999999999,
+      "phaseAt236_5": 4.223214285714286,
+      "r2StoredAt236_5": 0,
+      "r3StoredAt236_5": 0
+    },
+    {
+      "radius": 13.5,
+      "arrivalMs": 65.0,
+      "sharedLocalPeakMs": 90.25,
+      "pressureEndMs": 208.42,
+      "r2MaterialEndMs": 297.29999999999995,
+      "r3MaterialEndMs": 256.9,
+      "phaseAt236_5": 1.698019801980198,
+      "r2StoredAt236_5": 0.20804650160660787,
+      "r3StoredAt236_5": 0.04128563507599492
+    },
+    {
+      "radius": 27,
+      "arrivalMs": 200.0,
+      "sharedLocalPeakMs": 236.5,
+      "pressureEndMs": 407.32,
+      "r2MaterialEndMs": 535.8,
+      "r3MaterialEndMs": 477.4,
+      "phaseAt236_5": 0.25,
+      "r2StoredAt236_5": 1,
+      "r3StoredAt236_5": 1
+    },
+    {
+      "radius": 40.5,
+      "arrivalMs": 405.0,
+      "sharedLocalPeakMs": 452.75,
+      "pressureEndMs": 676.22,
+      "r2MaterialEndMs": 844.3,
+      "r3MaterialEndMs": 767.9,
+      "phaseAt236_5": -0.8821989528795812,
+      "r2StoredAt236_5": 0,
+      "r3StoredAt236_5": 0
+    }
+  ],
+  "sampledPeaks": [
+    {
+      "radius": 0.0,
+      "pressurePeakMs": 14.0,
+      "materialPeakMs": 14.0
+    },
+    {
+      "radius": 13.5,
+      "pressurePeakMs": 90.5,
+      "materialPeakMs": 90.5
+    },
+    {
+      "radius": 27.0,
+      "pressurePeakMs": 236.5,
+      "materialPeakMs": 236.5
+    },
+    {
+      "radius": 40.5,
+      "pressurePeakMs": 453.0,
+      "materialPeakMs": 453.0
+    },
+    {
+      "radius": 52.0,
+      "pressurePeakMs": 689.5,
+      "materialPeakMs": 689.5
+    },
+    {
+      "radius": 53.0,
+      "pressurePeakMs": 711.5,
+      "materialPeakMs": 711.5
+    }
+  ],
+  "storedAtPressureEnd": {
+    "r2": 0.394610176869169,
+    "r3": 0.20464613072877524
+  },
+  "limits": "Double precision scalar formulas and exact source invariance only; no GPU pixels/visual/normal-speed/audio acceptance."
+}
