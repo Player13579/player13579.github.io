@@ -1,0 +1,110 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "versionId": "orichalcum-normal-slash-astra62-r2",
+  "creativeEdition": 2,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "technicalAuthors": [
+    "GPT-6-Luna"
+  ],
+  "reusedAdapter": {
+    "author": "GPT-6.1-Sol",
+    "blob": "71e36bd306c11320064c54d112eae4024af6a0e0",
+    "byteUnchanged": true
+  },
+  "sourceR1": {
+    "versionId": "orichalcum-normal-slash-astra62-r1",
+    "publicCommit": "fce863cbcfc65a45ae8deffa1ea1d634faeaef0f",
+    "originalRuntime": "10fcd97a8ae38ee68055ffacae4342053ab2f297",
+    "originalManifest": "../r1/publication-manifest.json",
+    "creativeAuthor": "GPT-6.2-Astra",
+    "technicalAuthors": [
+      "GPT-6-Luna",
+      "GPT-6.1-Sol"
+    ]
+  },
+  "entry": "gallery.html",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=orichalcum-normal-slash-astra62-r2",
+  "standalone": "index.html",
+  "protocol": "dva-gallery-startup/v1",
+  "automaticIframe": true,
+  "manualReview": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "cpu": "pass: original gates and PCM equivalence at 8000/44100/48000/96000/192000 Hz",
+  "wgslValidation": "Naga WASI pass, no device run",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "normalAudioListening": "not_run",
+  "actualSize": "not_run",
+  "fullLifetime": "not_run",
+  "observedLightingCausality": "not_run",
+  "inlineFixture": {
+    "mode": "right",
+    "facing": 1,
+    "visible": true,
+    "meaning": "current committed self-owned normal enhance-0 empty swing; fixed throughout each cause, no automatic alternation"
+  },
+  "preservedTimingMs": {
+    "anticipation": [
+      12,
+      165
+    ],
+    "swing": [
+      165,
+      443
+    ],
+    "trail": [
+      172,
+      468
+    ],
+    "recovery": [
+      552,
+      900
+    ],
+    "end": 980
+  },
+  "interCauseRestMs": 500,
+  "designTitle": "orichalcum-normal-slash-astra62 R2「鍔の灯継ぎ」",
+  "design": "光の見せ場を切先ではなく、鍔と手袋の数ピクセルの間に置く。青灰色の頭巾と二脚の踏ん張りは静かな基準形。手に続く刃は明暗二面の青銅金で読み取らせる。架空のオリハルコンは順振りの荷重で鍔の積層部だけが発光する材質とし、暗い継ぎ目の片端から琥珀色の短冊が伸びる。手袋では短冊そのものの形を反復せず、鍔を向いた丸みに柔らかい照りを受ける。刃の直後には直近の角度だけを結んだ薄い残像を置き、光源には使わない。",
+  "emissionContract": "発光窓は刃と共に回る局所座標の x=19.95、仮想高さ z=4 に固定する。165–443 ms の姿勢補間の正規化角速度 rate で窓の中心と長さを変え、発光密度 watt=rate² を直視光と受光計算で共有する。窓を長さ方向に三等分し、各区間の中心から各受光点までの距離、柄側に傾いた射出面の余弦、受光面の余弦、区間長で寄与を積算する。袖・巻き柄・革手袋にはそれぞれの丸み、高さ、反射色を使う。結果は各素材の線形色に加えてから被覆率で合成する。左右反転はこの座標系に入る前に行うため、画面上の一定方向を照らすものではない。同時刻で watt のみをゼロにすれば、窓の直視光と近傍の照りだけが消え、継ぎ目の地色、刃の二面、姿勢、残像は残る設計。待機・戻しでは励起せず、背景への加算、ブルーム、追加バインディングは用いない。",
+  "files": [
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r2/effect.wgsl",
+      "bytes": 5741,
+      "sha256": "66ddfe35389a437341831e2a5bcc5167f36ac0d6f372f3d7400d269eec24bc2d",
+      "gitBlob": "5541e4715d78e035d39d2818d6106673dfb0e3a2"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r2/gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r2/gallery.html",
+      "bytes": 1398,
+      "sha256": "a451f2d257ea2eef774a308e09ffd93f0f5b5bda96bd45806b981b0ae1dd1e84",
+      "gitBlob": "6f4ed50d23c80807321e6906f7adb2d1df20d77c"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r2/index.html",
+      "bytes": 1960,
+      "sha256": "b001beb02acae007bf266601f515dcaa431958e6a520b3d3e16a16b5af4c9a9b",
+      "gitBlob": "a0641535c821f1a65b16bb5836477c35e5a01ff6"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r2/preview.mjs",
+      "bytes": 7857,
+      "sha256": "d54e8c506d33800ce43960577a664bdccc6099424e7c1fb78d629211b26aa141",
+      "gitBlob": "8d9fc20c4bc138be349bba364e698bc37f5e9734"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r2/slash.mjs",
+      "bytes": 1519,
+      "sha256": "dd3bb51ee38b93f2f8b40ea6972ae4489c1e4cffba3acdce9e3fe569a8a070fb",
+      "gitBlob": "d2a78d321deb6b0aae1db9b102a13ea30365c9cd"
+    }
+  ]
+}
