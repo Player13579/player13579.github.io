@@ -1,0 +1,143 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "versionId": "orichalcum-normal-slash-astra62-r5",
+  "creativeEdition": 5,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "technicalAuthors": [
+    "GPT-6.2-Astra"
+  ],
+  "reusedAdapter": {
+    "author": "GPT-6.1-Sol",
+    "blob": "71e36bd306c11320064c54d112eae4024af6a0e0",
+    "byteUnchanged": true
+  },
+  "sourceR1": {
+    "versionId": "orichalcum-normal-slash-astra62-r1",
+    "publicCommit": "fce863cbcfc65a45ae8deffa1ea1d634faeaef0f",
+    "originalRuntime": "10fcd97a8ae38ee68055ffacae4342053ab2f297",
+    "originalManifest": "../r1/publication-manifest.json",
+    "creativeAuthor": "GPT-6.2-Astra",
+    "technicalAuthors": [
+      "GPT-6-Luna",
+      "GPT-6.1-Sol"
+    ]
+  },
+  "entry": "gallery.html",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=orichalcum-normal-slash-astra62-r5",
+  "standalone": "index.html",
+  "protocol": "dva-gallery-startup/v1",
+  "automaticIframe": true,
+  "manualReview": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "cpu": "PASS: gate rejects ineligible and duplicate receipts, accepts right/left committed normal swing, 980 ms lifetime; exact PCM agreement with R4 at 8000, 44100, 48000, 192000 Hz.",
+  "wgslValidation": "Naga WASI 0.1.0 accepted the exact WGSL as loaded from the creative API output (offline parse and validation).",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "normalAudioListening": "not_run",
+  "actualSize": "not_run",
+  "fullLifetime": "not_run",
+  "observedLightingCausality": "not_run",
+  "inlineFixture": {
+    "mode": "right",
+    "facing": 1,
+    "visible": true,
+    "meaning": "current committed self-owned normal enhance-0 empty swing; fixed throughout each cause, no automatic alternation"
+  },
+  "preservedTimingMs": {
+    "anticipation": [
+      12,
+      165
+    ],
+    "swing": [
+      165,
+      443
+    ],
+    "trail": [
+      172,
+      468
+    ],
+    "recovery": [
+      552,
+      900
+    ],
+    "end": 980
+  },
+  "interCauseRestMs": 500,
+  "designTitle": "渡り火の鍔 ― オリハルコン通常斬り R5",
+  "design": "鍔を横切る一本の黒い溝に、屋根の形をした銅の駒を載せる。振り出すと屋根の両斜面が麦粒色に焼け、細い暗い棟を挟んだ太い金具として読める。振りの途中で駒そのものが溝の反対端へ渡る。柄側の斜面の向こうには、縫い目を斜めに一本渡した灰革の手甲を大きく取る。こちらの金色には硬い窓枠がなく、革の地色と縫い目が透けて残る。もう一方の斜面は青銅の刃元を照らす。鍔から離れた刃先まで一様に白くせず、一枚の刃が振り抜かれる姿を残す。変更は描画に閉じ、既存の起動条件・尺・PCM・フィクスチャには手を加えない。",
+  "emissionContract": "自発光は移動駒の二斜面のみ。投影幅は各3.27、長さは7.0作図単位で、共通の放射輝度に165–221 msの立上りと387–443 msの消灯包絡を掛ける。235–373 msは駒の中心が刃幅方向へ5.8単位動く。光源を描く座標と光路の始点は同じ駒に固定する。手甲側と刃側でそれぞれ見通せる斜面を取り、駒の両端の頬金を横切らずに出られる区間に面積分を絞る。斜面の実面積、距離の逆二乗、送受両面の余弦、受光材の反射色で返りを決める。強い放射を小さな点に集めず、幅のある斜面を革のすぐそばに置く設計である。receiveGainはこの反射項だけの倍率。背景測光、ブルーム、受光模様の貼り付け、追加パスは使わない。",
+  "files": [
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r5/effect.wgsl",
+      "bytes": 8241,
+      "sha256": "70819548c0a6422db7c4759f4cb354473ba833da55155f0141753d1f910b0302",
+      "gitBlob": "5e0444ca66e183c32694c6bff31d3afa203b5e31"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r5/gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r5/gallery.html",
+      "bytes": 1398,
+      "sha256": "c3ce94178da8d355bed6a1394938628951b1d03426f3892c625d9760eb732432",
+      "gitBlob": "7bf932f128fe1c7eaace946e490f64b912dd9a4b"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r5/index.html",
+      "bytes": 1960,
+      "sha256": "e46296894d58ef847a12db5edfd86bee46685f9ce7827a5c116f828bb70eeede",
+      "gitBlob": "305dcf961e684a2c30aa968b928f0fb5b73380e4"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r5/preview.mjs",
+      "bytes": 7857,
+      "sha256": "75a817c135dbdff14c83110fe5a35700ff269045c79720969b7d1e00b4c15cfd",
+      "gitBlob": "6231a74c0a9da23533eb641e656899d1cbde8e21"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r5/slash.mjs",
+      "bytes": 1519,
+      "sha256": "9c65c07db4ff4ddfa13cbf0d50bf751dbbf46bfc692caf8217eef72299cd2cfe",
+      "gitBlob": "724fea371d94a8b918022816de415053d2ad228e"
+    }
+  ],
+  "sourceR2": {
+    "versionId": "orichalcum-normal-slash-astra62-r2",
+    "publicCommit": "fddf9e44b0408b79003cfbbdad6439893834dd71",
+    "manifest": "../r2/gallery-manifest.json",
+    "creativeAuthor": "GPT-6.2-Astra",
+    "technicalAuthors": [
+      "GPT-6-Luna"
+    ]
+  },
+  "observationPlan": [
+    "まずギャラリー既定寸法・等倍・通常速度で、待機から一振り、980 ms以後の待機までを切らずに見る。左右それぞれで同じ確認を行い、CSS寸法、バッファ寸法、DPR、実際のscaleを記録する。音やコマ送りを手掛かりにせず、「鍔の金色の駒」と「その隣で照らされる手の甲」を別々に指せるかを見る。",
+    "同じ寸法の連続フレームに実際の経過時刻を対応させる。0–165 msの巻き込みでは銅の駒は暗いまま、165–221 msで二つの斜面と隣の革が立ち上がるか。221–387 msでは、235 ms付近と373 ms付近で駒を見比べる。窓の大小ではなく、鍔の溝のどちらの端が露出しているか、革の縫い目のどちら側に広い暖色が来るかを読む。",
+    "387–443 msで窓と反射がともに引き、468 ms以後は短い刃跡も残らないこと、552–900 msの戻しでは駒が消灯したまま元の端へ戻ることを確認する。全区間で肩・肘・柄を握った手・刃先一つを追え、もう一振りや衝突に見える瞬間がないかを見る。反対向きでは画面の左右ではなく、縫い目・峰・鍔を基準に対応を取る。",
+    "診断用にはreceiveGainだけを0にして、同一寸法・同一uniform・同一時刻の対を両向きで作る。点灯中、駒の斜面内部、位置、面積、輪郭、刃跡は変わらず、革と刃元の面からだけ返り光が抜けるか。差分の拡大図だけでなく、元の等倍再生でも革の広さと色の差を判別できることを判定条件にする。消灯時の対には差がないはずである。",
+    "reducedでも両方向を寿命いっぱい再生し、短くなるのは刃の運動記憶で、点灯時刻や握りの位置はずれないかを確認する。非active・負のage・visible無効も既存の入力で確認し、待機姿勢と背景のみの表示を取り違えない。以上は観察手順であり、R4・R5の実寸での合否を述べるものではない。"
+  ],
+  "minimumEmissionAcceptance": "既定の実寸表示で明瞭な光源と近傍光を確認する。弱く判別できない光は発光品質不適合。コード上の光量や拡大像で合格にしない。",
+  "creativeApi": {
+    "id": "resp_07b005b776d7a4ac006b07a40df8a087d09d3a1ac55aad1888",
+    "model": "gpt-6.2-astra",
+    "reasoning": "high"
+  },
+  "sourceR3": {
+    "versionId": "orichalcum-normal-slash-astra62-r3",
+    "publicCommit": "9528afb3725a28679c0e5cda5ad27383858079c1",
+    "manifest": "../r3/gallery-manifest.json"
+  },
+  "sourceR4": {
+    "versionId": "orichalcum-normal-slash-astra62-r4",
+    "publicCommit": "7a8911a2000be0fffe8cb1da52ca9a9caecda408",
+    "manifest": "../r4/gallery-manifest.json",
+    "privateCreativeCommit": "7de7ef4ecbfe383b3940236efa19792367411f88"
+  }
+}
