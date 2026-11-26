@@ -3290,14 +3290,13 @@ function init() {
       typeof window.DvaWebGPUViewport?.mainLogicalSize === "function" &&
       getComputedStyle(document.documentElement).getPropertyValue("--dva-full-canvas-ui-ready").trim() === "1") {
     window.DvaFullCanvasUi?.init({ openMap: openExpandedMapFromMinimap, closeMatchUi: () => {
-      // The drawer does not own the stick, its capture, or held movement.
-      cancelCommonActionGestures();
-      cancelActiveRootShortcutHolds();
-      cancelActiveAbilityBatchHolds();
-      stopContinuousActionHold();
-      stopContinuousActionKeyHold();
-      closeSwitchDragMenu();
-      setTabletBranchGroup("", { focus: false, queueKeyboardSync: false });
+      // Only release gestures started in the optional panels. Gameplay HUD
+      // controls, branch tray and movement still own their original input.
+      const drawerOwns = button => Boolean(button?.closest("#sidePanel, #fieldLowerRow"));
+      for (const binding of commonActionGestureBindings) {
+        if (drawerOwns(binding.button) && binding.isActive()) binding.cancel({ pointerId: undefined });
+      }
+      if (drawerOwns(state.continuousActionHold.button)) stopContinuousActionHold();
     } });
   }
   // Title navigation must be usable even if later game-only control setup fails.
@@ -10891,7 +10890,6 @@ async function finishClairvoyanceTeleportTap(event, cancelled = false) {
 }
 
 function pointerHitsMinimap(event) {
-  if (window.DvaFullCanvasUi?.expanded === false) return false;
   const point = canvasPointerPosition(event);
   if (!point) return false;
   if (WEBGPU_MAIN_OWNER && !webgpuMainSubmittedFrameCurrent()) return false;
@@ -29083,18 +29081,17 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, p
     const destinations = [];
     let hudKeys = [];
     if (effect.playerId === data.selfId) {
-      const drawerDestination = collapsedMatchAcquisitionDestination(origin, overlayViewport);
-      if (drawerDestination) {
-        destinations.push(drawerDestination);
-      } else {
-        const acquisitionId = String(effect.acquisitionId || effect.variant || '');
-        const instantHudProduct = effect.acquisitionKind === 'product' &&
-          Boolean(INSTANT_ACQUISITION_HUD_KEYS[acquisitionId]);
-        const normalDestination = effect.acquisitionKind !== 'credits' && !instantHudProduct;
-        hudKeys = acquisitionCanvasHudKeys(effect);
-        if (normalDestination) {
-          const rect = acquisitionVisibleRect(acquisitionDestinationElement(effect, data));
-          if (rect) destinations.push(acquisitionOverlayLocalRect(rect, overlayViewport));
+      const acquisitionId = String(effect.acquisitionId || effect.variant || '');
+      const instantHudProduct = effect.acquisitionKind === 'product' &&
+        Boolean(INSTANT_ACQUISITION_HUD_KEYS[acquisitionId]);
+      const normalDestination = effect.acquisitionKind !== 'credits' && !instantHudProduct;
+      hudKeys = acquisitionCanvasHudKeys(effect);
+      if (normalDestination) {
+        const rect = acquisitionVisibleRect(acquisitionDestinationElement(effect, data));
+        if (rect) destinations.push(acquisitionOverlayLocalRect(rect, overlayViewport));
+        else {
+          const drawerDestination = collapsedMatchAcquisitionDestination(origin, overlayViewport);
+          if (drawerDestination) destinations.push(drawerDestination);
         }
       }
     } else {
@@ -29312,10 +29309,8 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
     attackTargets: { scene: { selectedTarget:
       selectedAttackTargetWebGPUScene(data) || null }, ...common },
     taskIndicators: { data, ...common },
-    hud: { data, scene: hudWebGPUScene(data, viewport.width, viewport.height, viewport),
-      presentationHidden: window.DvaFullCanvasUi?.expanded === false, ...common },
-    minimap: { scene: minimapWebGPUScene(data, viewport.width),
-      presentationHidden: window.DvaFullCanvasUi?.expanded === false, ...common },
+    hud: { data, scene: hudWebGPUScene(data, viewport.width, viewport.height, viewport), ...common },
+    minimap: { scene: minimapWebGPUScene(data, viewport.width), ...common },
     modeBanner: { scene: modeBannerWebGPUScene(data), ...common },
     ...(conditional.expandedMap ? { expandedMap: {
       scene: conditional.expandedMap.scene,
@@ -34394,7 +34389,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.

@@ -4,7 +4,7 @@
   'use strict';
   const document = root.document;
   const overlayIds = [
-    'tabletQuickActions', 'tabletBranchLines', 'tabletBranchTray', 'soloMissionHud', 'fieldLowerRow', 'sidePanel',
+    'fieldLowerRow', 'sidePanel',
     'fullscreenButton', 'titleHomeButton', 'leaveRoomButton', 'gameMuteButton',
     'gameTacticsButton', 'tabletButton', 'keybindButton', 'analyticsToggleButton'
   ];
@@ -48,9 +48,9 @@
     body.classList.toggle('dva-full-canvas', active);
     body.classList.toggle('dva-match-ui-open', active && expanded);
     button.hidden = !active || lastPhase === 'meeting';
-    if (mapButton) mapButton.hidden = !active || !expanded || lastPhase !== 'playing';
+    if (mapButton) mapButton.hidden = !active || lastPhase !== 'playing';
     button.setAttribute('aria-expanded', String(active && expanded));
-    button.textContent = expanded ? 'UIを閉じる' : 'UIを開く';
+    button.textContent = expanded ? 'パネルを閉じる' : 'パネルを開く';
     for (const node of ownedInert) node.inert = false;
     ownedInert.clear();
     if (active && !expanded) {
