@@ -1240,7 +1240,7 @@ const state = {
   tabletOpen: false,
   vendingReturnFocus: null,
   tabletResumeAfterMap: false,
-  tabletStick: { pointerId: null, dx: 0, dy: 0, strength: 0, mode: "idle", geometry: null },
+  tabletStick: { pointerId: null, dx: 0, dy: 0, strength: 0, mode: "idle", geometry: null, terminalStop: null },
   tabletBranchGroup: "",
   tabletBranchPath: "",
   tabletBranchRenderKey: "",
@@ -9410,7 +9410,7 @@ function bindEvents() {
   });
   window.addEventListener("pointerout", (event) => {
     if (event.relatedTarget == null && !tabletWalkingStickOwnsDifferentTouch(event))
-      clearMovementInput();
+      clearMovementInput({ preserveQueuedStop: tabletTerminalTouchOwnsQueuedStop(event) });
   });
   window.addEventListener("pointerup", (event) => {
     if (state.enhanceHold.pointerId === event.pointerId) void finishEnhanceAction(state.enhanceHold.kind, event.pointerId);
@@ -9541,7 +9541,7 @@ function bindEvents() {
     }
     if (!document.hidden) {
       if (!sameCompletedOfflineForegroundRecovery()) {
-        clearMovementInput({ preserveQueuedStop: currentGameplayOwnsQueuedStop() });
+        clearMovementInput({ preserveQueuedStop: currentGameplayOwnsQueuedStop(), preserveTerminalTouch: true });
       }
       void recoverRoomInteractionAfterBackground();
     }
@@ -9608,7 +9608,7 @@ function setSlowWalkHeld(active) {
   syncMovementInputImmediately();
 }
 
-function clearMovementInput({ preserveQueuedStop = false, preserveGunTrigger = false } = {}) {
+function clearMovementInput({ preserveQueuedStop = false, preserveGunTrigger = false, preserveTerminalTouch = false } = {}) {
   const shouldSendStop = state.movementActive;
   const queue = state.movementQueue;
   const last = preserveQueuedStop && !shouldSendStop ? queue?.pending?.at(-1) : null;
@@ -9617,6 +9617,9 @@ function clearMovementInput({ preserveQueuedStop = false, preserveGunTrigger = f
     last.movementSession === state.movementSession &&
     last.movementSessionStartedAt === state.movementSessionStartedAt && last.movementSeq === state.movementStopPendingSeq
     ? last : null;
+  const priorTerminal = preserveTerminalTouch ? state.tabletStick.terminalStop : null;
+  const retainedTerminal = queuedStop && priorTerminal?.payload === queuedStop &&
+    tabletQueuedStopTokenIsCurrent(priorTerminal) ? priorTerminal : null;
   state.movementQueue?.clear?.();
   state.keys.clear();
   state.movementKeyDirections.clear();
@@ -9627,7 +9630,10 @@ function clearMovementInput({ preserveQueuedStop = false, preserveGunTrigger = f
   els.slowWalkButton.classList.remove("active");
   if (state.gunTriggerHeld && !preserveGunTrigger) void endGunFire();
   if (shouldSendStop) sendMovement(true);
-  else if (queuedStop) queue.enqueue(queuedStop);
+  else if (queuedStop) {
+    queue.enqueue(queuedStop);
+    if (retainedTerminal && queue.pending.at(-1) === queuedStop) state.tabletStick.terminalStop = retainedTerminal;
+  }
   state.lastMovementSentSignature = "";
 }
 
@@ -9873,12 +9879,23 @@ function bindTabletControls() {
     if (state.tabletStick.pointerId === null) return;
     if (Number.isFinite(event?.pointerId) && state.tabletStick.pointerId !== event.pointerId) return;
     const confirmThrow = state.throwTargeting.active && event?.type === "pointerup";
+    const mayLeaveQueuedStop = event?.type === "pointerup" && event.isTrusted === true &&
+      event.pointerType === "touch" && event.pointerId === state.tabletStick.pointerId &&
+      state.tabletStick.geometry?.walking === true && state.movementActive &&
+      tabletTouchReleaseHasExclusiveMovement();
+    const previousSeq = state.moveRequestSeq;
     resetTabletStick();
     if (confirmThrow) {
       void confirmThrowTargeting();
       return;
     }
     syncMovementInputImmediately();
+    if (mayLeaveQueuedStop && state.moveRequestSeq === previousSeq + 1 && !state.movementActive) {
+      const payload = state.movementQueue?.pending?.at(-1);
+      if (payload?.movementSeq === state.moveRequestSeq && payload.dx === 0 && payload.dy === 0)
+        state.tabletStick.terminalStop = { pointerId: event.pointerId, payload,
+          generation: state.roomSessionGeneration, battleStartedAt: state.data.battleStartedAt };
+    }
   };
   els.tabletJoystick.addEventListener("pointerdown", (event) => {
     if (event.pointerType === "mouse" && event.button !== 0) return;
@@ -9890,6 +9907,7 @@ function bindTabletControls() {
       sendMovement(true);
       return;
     }
+    state.tabletStick.terminalStop = null;
     state.tabletStick.pointerId = event.pointerId;
     els.tabletJoystick.classList.add("active");
     try { els.tabletJoystick.setPointerCapture(event.pointerId); } catch {}
@@ -10085,9 +10103,36 @@ function validateTabletStickGeometryAfterReflow() {
     cancelTabletStickGeometryLease();
 }
 
+function tabletTouchReleaseHasExclusiveMovement() {
+  return !document.hidden && state.tabletOpen && currentGameplayOwnsQueuedStop() &&
+    Number.isFinite(state.data.battleStartedAt) && state.data.battleStartedAt > 0 &&
+    !state.keys.size && !state.movementKeyDirections.size && !state.pointerPads.size &&
+    !state.pad.size && !state.dashHeld && !state.slowWalkHeld && !state.gunTriggerHeld &&
+    !state.enhanceHold.kind && !state.throwTargeting.active && !state.clairvoyance.active &&
+    !state.focusResyncing;
+}
+
+function tabletTerminalTouchOwnsQueuedStop(event) {
+  const stick = state.tabletStick, terminal = stick.terminalStop;
+  if (!terminal || event.pointerType !== "touch" || event.isTrusted !== true ||
+      event.pointerId !== terminal.pointerId) return false;
+  return tabletQueuedStopTokenIsCurrent(terminal);
+}
+
+function tabletQueuedStopTokenIsCurrent(terminal) {
+  if (state.tabletStick.pointerId !== null || state.movementActive ||
+      !tabletTouchReleaseHasExclusiveMovement()) return false;
+  // Preserve only the exact neutral packet enqueued by this finger's lift.
+  // clearMovementInput still validates room, player, movement session and seq.
+  return terminal.generation === state.roomSessionGeneration &&
+    terminal.battleStartedAt === state.data.battleStartedAt &&
+    terminal.payload === state.movementQueue?.pending?.at(-1);
+}
+
 function resetTabletStick() {
   const pointerId = state.tabletStick.pointerId;
   state.tabletStick.pointerId = null;
+  state.tabletStick.terminalStop = null;
   state.tabletStick.geometry = null;
   state.tabletStick.dx = 0;
   state.tabletStick.dy = 0;
