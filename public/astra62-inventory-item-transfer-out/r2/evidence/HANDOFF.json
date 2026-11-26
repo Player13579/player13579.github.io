@@ -39,8 +39,32 @@
     }
   },
   "contributionAttribution": {
-    "apiCreative": "GPT-6.2-Astra high: design and complete shader",
-    "codexWorker": "gpt-6.1-sol: requirement interpretation, API orchestration, faithful packaging, focused validation and remote candidate; parent resolves exact catalog display mapping and final shares"
+    "apiCreative": {
+      "modelId": "gpt-6.2-astra",
+      "displayName": "GPT-6.2-Astra",
+      "reasoningEffort": "high",
+      "work": "Design and complete shader",
+      "identitySource": "Actual Responses API response"
+    },
+    "codexWorker": {
+      "modelId": "gpt-6.2-astra",
+      "displayName": "GPT-6.2-Astra",
+      "reasoningEffort": "high",
+      "work": "Requirement interpretation, API orchestration, faithful packaging, focused validation and remote candidate",
+      "identitySource": "Primary confirmed explicit spawn configuration gpt-6.2-astra high; role preset does not override that actual identity"
+    },
+    "acceptedModelWorkShares": [
+      {
+        "displayName": "GPT-6.2-Astra",
+        "sharePercent": 100,
+        "contribution": "Astra API creative design/shader plus Astra worker packaging/validation."
+      }
+    ],
+    "catalogSource": {
+      "path": "C:/Users/user/.codex/models_cache.json",
+      "fetchedAt": "2026-11-26T06:37:05.469052400Z",
+      "clientVersion": "0.171.0"
+    }
   },
   "executionNotes": [
     "First combined in-memory shell payload exceeded Windows command-line limit without execution; split into file-wise in-memory checks. No temporary game files created.",
