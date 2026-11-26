@@ -1,0 +1,34 @@
+{
+  "ownedOutput": "Emergency Meeting R2 candidate additions only",
+  "base": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+  "branch": "codex/emergency-meeting-api-r2-20261126",
+  "decidedRequirements": [
+    "emergencyMeetingStarted, meeting phase and fresh meetingId only",
+    "preserve gate/privacy, 1170ms lifetime, 195ms contact, R1 PCM and WebGPU host",
+    "main bell form as a whole must read luminous; not only a contact point",
+    "no map bell, caller identity, vote, result, evidence or gameplay outcome implied",
+    "candidate branch only; Dot owns release"
+  ],
+  "checks": [
+    "package closure and hashes",
+    "offline WGSL Naga",
+    "gate/privacy/PCM checks",
+    "no GPU/size/normal-speed/audio acceptance claim"
+  ],
+  "independentDecisions": [
+    "Astra chooses subject-specific emission intensity/extent/time and contextual optics",
+    "visual and audio quality remain unverified"
+  ],
+  "runtime": {
+    "sandbox_mode": "danger-full-access",
+    "approval_policy": "never",
+    "DVA_FORBID_NATIVE": "1"
+  },
+  "credential": "Explicitly authorized existing key reuse; memory-only, no copy/write/log",
+  "duplicateCheck": "public catalog R1 only; family r1 only; emergency branch none; meeting branches paginated exhausted, unrelated chat/vote only; all-state emergency and meeting PR searches empty",
+  "basis": {
+    "commit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+    "baseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "extensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+  }
+}

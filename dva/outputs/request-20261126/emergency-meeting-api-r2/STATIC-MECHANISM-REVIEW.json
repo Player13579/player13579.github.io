@@ -1,0 +1,110 @@
+{
+  "scope": "source and analytic envelope only; no raster/GPU/visual acceptance",
+  "runtimeShaderMatchesApi": true,
+  "mechanisms": [
+    "r2Source: geometry-derived delay followed by broad curve-dependent fill plus retained single contact/rim highlight",
+    "face = shell coverage minus cavity, rod and bob; no cavity fill",
+    "r2Tap evaluates same visible source and current swing/clapper geometry; two inward samples feed small same-source display bloom",
+    "clearBg excludes shell/cavity/rod/bob/lug/fixed mount; finite shell-distance taper",
+    "sRGB applied once at existing final output; no new texture/Canvas/particle",
+    "existing live boundary and 1170ms finite lifetime retained"
+  ],
+  "phObs": "Mechanical UI bell metaphor, authored display emission and bounded observer bloom distinguished; no world heat or lighting/gameplay state inferred",
+  "timeline": [
+    {
+      "ageMs": -1,
+      "live": false,
+      "bodyEnvelopeAtDelay0": 0,
+      "bodyEnvelopeAtDelay62ms": 0
+    },
+    {
+      "ageMs": 0,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 0,
+      "bodyEnvelopeAtDelay62ms": 0
+    },
+    {
+      "ageMs": 194,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 0,
+      "bodyEnvelopeAtDelay62ms": 0
+    },
+    {
+      "ageMs": 195,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 0.0,
+      "bodyEnvelopeAtDelay62ms": 0.0
+    },
+    {
+      "ageMs": 210,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 0.07725922708489859,
+      "bodyEnvelopeAtDelay62ms": 0.0
+    },
+    {
+      "ageMs": 260,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 0.8307751455672429,
+      "bodyEnvelopeAtDelay62ms": 0.0034073300150263023
+    },
+    {
+      "ageMs": 350,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 1.0,
+      "bodyEnvelopeAtDelay62ms": 1.0
+    },
+    {
+      "ageMs": 550,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 0.39851904108451425,
+      "bodyEnvelopeAtDelay62ms": 0.39851904108451425
+    },
+    {
+      "ageMs": 810,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 0.12051271656014943,
+      "bodyEnvelopeAtDelay62ms": 0.12051271656014943
+    },
+    {
+      "ageMs": 1000,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 0.02305056416689678,
+      "bodyEnvelopeAtDelay62ms": 0.02305056416689678
+    },
+    {
+      "ageMs": 1169,
+      "live": true,
+      "bodyEnvelopeAtDelay0": 5.340110299386117e-07,
+      "bodyEnvelopeAtDelay62ms": 5.340110299386117e-07
+    },
+    {
+      "ageMs": 1170,
+      "live": false,
+      "bodyEnvelopeAtDelay0": 0,
+      "bodyEnvelopeAtDelay62ms": 0
+    },
+    {
+      "ageMs": 1400,
+      "live": false,
+      "bodyEnvelopeAtDelay0": 0,
+      "bodyEnvelopeAtDelay62ms": 0
+    }
+  ],
+  "reducedMotion": "original body swing .27, emission times unchanged; unchanged source verified",
+  "approximation": "two inward source samples with silhouette taper are a display bloom approximation, not exact PSF/convolution or world illumination",
+  "limits": [
+    "whole-body luminosity, material/opening readability and optical spread at actual default-size normal-speed are not_run",
+    "performance and driver shader/pipeline/GPU submission are not_run",
+    "ordinary audio listening, full-lifetime natural playback, Safari/iPad and game integration are not_run"
+  ],
+  "validatorHistory": [
+    {
+      "failure": "first PCM pre-contact assertion included ceil(.195*44100) sample, already after physical contact",
+      "resolution": "assert silence only for sample index/sampleRate <= .195; source PCM unchanged"
+    },
+    {
+      "failure": "second PCM endpoint strict Object.is comparison rejected -0",
+      "resolution": "numeric ===0 accepts signed zero; source PCM unchanged"
+    }
+  ]
+}

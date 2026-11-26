@@ -1,0 +1,62 @@
+{
+  "schema": "dva-cpu-candidate-check/v1",
+  "passed": 19,
+  "checks": [
+    "edition/lifetime/32-byte uniform",
+    "announcement source immutable except edition",
+    "preview.mjs exact host reuse",
+    "gallery-adapter.mjs exact host reuse",
+    "gallery-effect.mjs exact host reuse",
+    "correct gate positive/repeated/interleaved meetings",
+    "invalid ID/kind/phase rejected without consuming ID",
+    "private/free-text fields never accessed",
+    "gallery facade uses source gate, replay suppression, frozen cause",
+    "PCM 8000 causal finite identical",
+    "PCM 44100 causal finite identical",
+    "PCM 48000 causal finite identical",
+    "PCM 96000 causal finite identical",
+    "PCM 192000 causal finite identical",
+    "invalid sample rates rejected",
+    "verify hard mute and current elapsed sound reused",
+    "neutral, mechanics, material, contact prefix unchanged",
+    "closed local runtime dependencies and no external assets",
+    "all package manifest pins match actual bytes"
+  ],
+  "pcm": [
+    {
+      "rate": 8000,
+      "length": 9280,
+      "peak": 0.3570592999458313,
+      "rms": 0.06252882246038717
+    },
+    {
+      "rate": 44100,
+      "length": 51156,
+      "peak": 0.3848312199115753,
+      "rms": 0.06252889287972198
+    },
+    {
+      "rate": 48000,
+      "length": 55680,
+      "peak": 0.38478681445121765,
+      "rms": 0.06252889417827327
+    },
+    {
+      "rate": 96000,
+      "length": 111360,
+      "peak": 0.384906530380249,
+      "rms": 0.06252890136112695
+    },
+    {
+      "rate": 192000,
+      "length": 222720,
+      "peak": 0.38509881496429443,
+      "rms": 0.06252890495294013
+    }
+  ],
+  "actualGpu": "not_run",
+  "actualSize": "not_run",
+  "normalSpeed": "not_run",
+  "fullLifetime": "not_run",
+  "normalAudioListening": "not_run"
+}
