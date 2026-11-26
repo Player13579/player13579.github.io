@@ -18480,11 +18480,14 @@ function renderVending(data) {
     stopVendingKeyHold();
   }
   const visible = Boolean(available && state.vendingOpen);
-  els.vendingButton.disabled = !available;
+  if (els.vendingButton.disabled !== !available) els.vendingButton.disabled = !available;
+  const expandedValue = String(visible);
   els.vendingButton.classList.toggle("active", visible);
-  els.vendingButton.setAttribute("aria-expanded", String(visible));
+  if (els.vendingButton.getAttribute("aria-expanded") !== expandedValue)
+    els.vendingButton.setAttribute("aria-expanded", expandedValue);
   els.tabletVendingShortcut?.classList.toggle("active", visible);
-  els.tabletVendingShortcut?.setAttribute("aria-expanded", String(visible));
+  if (els.tabletVendingShortcut && els.tabletVendingShortcut.getAttribute("aria-expanded") !== expandedValue)
+    els.tabletVendingShortcut.setAttribute("aria-expanded", expandedValue);
   if (els.vendingPanel.hidden === visible) els.vendingPanel.hidden = !visible;
   syncFullShopPresentation(visible);
   if (!visible) {
