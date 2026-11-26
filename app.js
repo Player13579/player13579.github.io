@@ -133,6 +133,8 @@ const els = {
   sensoryOverlayText: $("#sensoryOverlayText"),
   titleMenu: $("#titleMenu"),
   titlePlayButton: $("#titlePlayButton"),
+  titleExitButton: $("#titleExitButton"),
+  titleExitStatus: $("#titleExitStatus"),
   titlePlayProgress: $("#titlePlayProgress"),
   titleTacticsButton: $("#titleTacticsButton"),
   fullscreenButton: $("#fullscreenButton"),
@@ -8008,6 +8010,23 @@ function bindTitleNavigationEvents() {
   });
   document.getElementById('webgpuMainCopyDiagnosticButton')?.addEventListener('click',
     copyWebGPUMainFailureDiagnostic);
+  els.titleExitButton?.addEventListener("click", () => {
+    if (state.screen !== "title") return;
+    try {
+      window.close();
+    } catch {
+      // Some hosts do not allow script to close this tab.
+    }
+    window.setTimeout(() => {
+      if (window.closed || state.screen !== "title" || !els.titleExitStatus) return;
+      els.titleExitStatus.hidden = false;
+      els.titleExitStatus.textContent = "自動で閉じられない場合は、ブラウザーのタブを手動で閉じてください。";
+    }, 120);
+  });
+  if (els.titleExitButton && els.titleExitStatus) {
+    els.titleExitStatus.hidden = true;
+    els.titleExitButton.disabled = false;
+  }
   els.titlePlayButton.addEventListener("click", () => {
     if (els.titlePlayButton.disabled || titleFrameEngineMissing() ||
         showTerminalTitleRendererNotice()) return;
@@ -34398,7 +34417,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
