@@ -14015,3 +14015,48 @@ html.dva-ipad-ui-comfort body.game-open.dva-full-canvas.dva-match-ui-open.dva-un
   #matchPanelContentSlot:not([hidden]) {
   margin-block-start: max(var(--dva-ipad-ui-drop), calc(env(safe-area-inset-top, 0px) + 8px));
 }
+
+/* UI finish: visual hierarchy without the old solid toolbar or duplicated exit. */
+body.game-open.dva-unified-panel-active #matchPanelToolbar:has(> #leaveRoomButton:not([hidden])) > #titleHomeButton {
+  display: none !important;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchUiToggle:not([hidden]) {
+  font-size: 14px !important;
+  line-height: 1.2;
+  padding-inline: 8px;
+  white-space: nowrap;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #activeEffectsPanel .active-effects-list li {
+  background: rgb(247 252 252 / .91);
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px rgb(27 80 95 / .18);
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #activeEffectsPanel .effect-name {
+  color: #123745;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #activeEffectsPanel .effect-detail {
+  color: #334e59;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #activeEffectsPanel .effect-value {
+  font-variant-numeric: tabular-nums;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent :is(#activeEffectsPanel h3, .item-control-head) {
+  background: rgb(16 43 55 / .91);
+  color: #f3fbfd;
+}
+body.game-open.dva-full-canvas:not(.dva-match-ui-open) #gameApp #tabletQuickActions .tablet-quick-action {
+  font-weight: 700;
+}
+body.game-open.dva-full-canvas:not(.dva-match-ui-open) #gameApp #tabletQuickActions .tablet-quick-action:is(:disabled, .action-disabled) {
+  opacity: 1;
+  color: #465c65;
+  border-color: #b3c4ca;
+  background: #e2eaed;
+  box-shadow: none;
+  text-shadow: none;
+}
+body.game-open.dva-full-canvas :is(#matchUiToggle, #matchPanelToolbar > button, #tabletQuickActions > button):focus-visible {
+  outline: 2px solid #fff5cd;
+  outline-offset: -3px;
+  box-shadow: inset 0 0 0 4px #174455;
+}
