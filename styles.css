@@ -14060,3 +14060,26 @@ body.game-open.dva-full-canvas :is(#matchUiToggle, #matchPanelToolbar > button, 
   outline-offset: -3px;
   box-shadow: inset 0 0 0 4px #174455;
 }
+
+/* Describe the renderer's known stages, without presenting them as a timer. */
+html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-owner="1"]:where(:not([data-webgpu-main-error], .result-presentation)):where(
+  [data-webgpu-main-pending="waiting:map-data"],
+  [data-webgpu-main-pending="waiting:map-image"],
+  [data-webgpu-main-pending="waiting:map-image-load"],
+  [data-webgpu-main-pending="waiting:map-image-dimensions"],
+  [data-webgpu-main-pending="waiting:viewport-sample"],
+  [data-webgpu-main-pending="waiting:stable-viewport"],
+  [data-webgpu-main-pending="waiting:target-geometry"]
+) .board-wrap::after { content: "マップと表示領域を準備中…"; }
+html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-owner="1"]:where(:not([data-webgpu-main-error], .result-presentation)):where(
+  [data-webgpu-main-pending="startup:driver"],
+  [data-webgpu-main-pending="startup:driver-creation"],
+  [data-webgpu-main-pending="startup:title-prewarm-wait"],
+  [data-webgpu-main-pending="startup:frame-engine"]
+) .board-wrap::after { content: "描画機能を準備中…"; }
+html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-owner="1"]:where(:not([data-webgpu-main-error], .result-presentation)):where(
+  [data-webgpu-main-pending="frame:submission-stale"],
+  [data-webgpu-main-pending="frame:visible-geometry-stale"],
+  [data-webgpu-main-pending="startup:expanded-map-handoff"],
+  [data-webgpu-main-pending="startup:acquisition-handoff"]
+) .board-wrap::after { content: "画面の表示を準備中…"; }
