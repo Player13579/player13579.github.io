@@ -1,0 +1,84 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "千里眼のMP枯渇終了",
+  "groupId": "clairvoyance-depletion-astra62",
+  "versionId": "clairvoyance-depletion-astra62-r2",
+  "creativeEdition": 2,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creativeAPI": {
+    "responseId": "resp_03f11b7f3cb84240006b07c729f74887d0ab6a89f1370ee122",
+    "reasoningEffort": "high",
+    "status": "completed"
+  },
+  "entry": "index.html",
+  "path": "/public/astra62-clairvoyance-depletion/r2/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baseCommit": "6376669c7d991f6791dd0b8506830e05b3407dc7",
+    "basedOnVersion": "clairvoyance-depletion-astra62-r1"
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "b43407b05b25d3bc8118a7b8b7efb6a6d94a021e",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "advanceClairvoyanceMana L8829–8848; distinguish setClairvoyanceActive manual-off L8809–8815.",
+    "meaning": "During active play a scheduled drain that actually empties the observer's mana stops clairvoyance and emits the specific MP depletion event. A meeting pauses this drain; other invalid-state cleanup and manual deactivation are separate.",
+    "scope": "Only a synthetic explicit current, confirmed, self-owned depletion receipt showing active→inactive and zero remaining mana can start the sign. Zero mana and an inactive snapshot alone cannot identify the cause. No remote player, position, observed image, camera data, actual mana gauge, teleport or world effect is requested or drawn. This preview does not parse prose or assert that an equivalent typed receipt already exists in the client."
+  },
+  "design": {
+    "revision": "自分が維持していた千里眼が最後のMP消費で終了した時だけ、画面中央の光学記号を閉じる。R1のfixture・ゲート・PCMは不変。65 msで現れる淡い翡翠色の虹彩から、青緑の光がガラスを両端へ伝い、上下の切断面に幅のある反射を作る。112–310 msで内光とその映り込みが消え、縁材だけに短い残光が残る。238–610 msの閉鎖は減光で代用せず、暗い窓を上下の青灰色の面が挟む。面の傾きで明度差を保ち、接触音とともに一本の弓形の継ぎ目へ。725–1002 msで継ぎ目を両端から縮め、846–1028 msで背景へ戻す。寿命1070 ms、軽減時は初期半開高のみ13.8から8へ。比較仮説は、点の艶よりも幅70の透過面と動く面取りを手掛かりにすると、消灯後も開口全体の閉じ際を追いやすいこと。R1・R2を同じ実寸・通常速度で、内光の消失から接触、完全消灯まで比較する。",
+    "timing": "1070 ms. The powered highlight extinguishes from 112–310 ms, the aperture closes from 238–610 ms, the finite seam contracts from 725–1002 ms and all light clears by 1028 ms.",
+    "reducedMotion": "Initial opening decreases from 13.8 to 8 reference units on each side of the seam; positions and timing are otherwise preserved.",
+    "sound": "A decaying downward tone stops by 380 ms. A quieter damped contact cue accompanies rim closure at 610 ms. Verification is silent.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1854,
+      "sha256": "477dd2a3ec80bb238145957cdb0930499a23a1d6724b70fbb6b67c6b2a7b11b1",
+      "gitBlob": "f8671c48c907345f9a1cc036e972c5804a968d07"
+    },
+    "preview.mjs": {
+      "bytes": 7806,
+      "sha256": "2abe83c05576a5c0adb81a56067bc444e8ab27171098ee470d7ff5772ee48435",
+      "gitBlob": "a0e73487399e1e6fb6b1653affa8dca95af15710"
+    },
+    "depletion.mjs": {
+      "bytes": 1630,
+      "sha256": "8a6169f993749a522b7138e99f907f3d58f0e09884256a04298f98352a57c5df",
+      "gitBlob": "726c1a937439e482e9ce117b4ab5bcc2a9d0fa27"
+    },
+    "effect.wgsl": {
+      "bytes": 5733,
+      "sha256": "8c455c988c79f8126d3904f78025e627c3b6e2be4ad591007d40fa830f8a3898",
+      "gitBlob": "d9a7025771a3e046eb59c9597e2a060e570fb326"
+    }
+  },
+  "validation": {
+    "gate": "passed: current committed self active to inactive at numeric zero; stale, duplicate, unrelated or unconfirmed receipt rejected",
+    "logicAndPCM": "module byte-equivalent to R1 except edition ID; sample-identical at 8/44.1/48/96/192 kHz",
+    "moduleSyntax": "Node module syntax pass",
+    "wgsl": "Naga WASI validated and emitted 9628 bytes SPIR-V",
+    "dependencies": "gallery and standalone entries and local references inspected",
+    "parentGalleryReplay": "not_run",
+    "nativeGPU": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "quality": "not-reviewed",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not-connected"
+  }
+}
