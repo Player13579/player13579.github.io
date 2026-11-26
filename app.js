@@ -10780,7 +10780,9 @@ function renderTabletControls(data) {
   setTabletShortcutLabel(els.tabletVendingShortcut, "ショップ", state.vendingOpen ? "ショップを閉じる" : "ショップを開く");
   els.tabletVendingShortcut.disabled = data.phase !== "playing" || !data.self.alive || data.self.ejected || data.self.inVent;
   els.tabletVendingShortcut.classList.toggle("active", state.vendingOpen);
-  els.tabletVendingShortcut.setAttribute("aria-expanded", String(state.vendingOpen));
+  const shopExpandedValue = String(state.vendingOpen);
+  if (els.tabletVendingShortcut.getAttribute("aria-expanded") !== shopExpandedValue)
+    els.tabletVendingShortcut.setAttribute("aria-expanded", shopExpandedValue);
   const dodgeShortcutDetail = els.dodgeButton.hidden
     ? "ディフェンダーまたはファイターが使用できます"
     : (els.dodgeButton.title || els.dodgeButton.textContent || "回避");
