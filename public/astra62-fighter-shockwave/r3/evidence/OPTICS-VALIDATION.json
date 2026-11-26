@@ -1,0 +1,171 @@
+{
+  "schema": "dva-optics-scalar-checks/v1",
+  "passed": true,
+  "method": "CPU double-precision selected shader equations, not GPU raster or screen substitute",
+  "shaderSha256": "bb47f7d6f7560a14f273fd73f13e5f3bb18013999384eedd5cbce086767183cb",
+  "samples": 792,
+  "checks": [
+    "finite bounded premultiplied column radiance and opacity",
+    "broad interior emission at20/50/75 percent depth",
+    "finite rear/lateral support and no source behind launch",
+    "zero direct/received illumination before release and after1.08",
+    "launch neighbourhood unlit after wave departure",
+    "release derivative/tangent and recovery preserved via byte-identical helper"
+  ],
+  "leftAngularDerivative": -5.8000041192052265,
+  "rightAngularDerivative": -5.7999846667655675,
+  "tipPhaseSpeed": 179.8,
+  "wavePhaseSpeeds": [
+    243.10080213771406,
+    263.2736219221364
+  ],
+  "sections": [
+    {
+      "giant": false,
+      "phase": 0.2,
+      "axialDepth": 18.96,
+      "bodyQuarter": [
+        0.10007856849756375,
+        0.8335503204661028,
+        0.7719485342652755,
+        0.855472212439132
+      ],
+      "bodyMid": [
+        0.06106849401240682,
+        0.7159072075726269,
+        0.6371924167919826,
+        0.7961808008149923
+      ],
+      "rear": [
+        0.020259120319031685,
+        0.3781702459552581,
+        0.32414592510450696,
+        0.45020267375625966
+      ]
+    },
+    {
+      "giant": false,
+      "phase": 0.5,
+      "axialDepth": 18.96,
+      "bodyQuarter": [
+        0.10007856849756375,
+        0.8335503204661028,
+        0.7719485342652755,
+        0.855472212439132
+      ],
+      "bodyMid": [
+        0.06106849401240682,
+        0.7159072075726269,
+        0.6371924167919826,
+        0.7961808008149923
+      ],
+      "rear": [
+        0.020259120319031685,
+        0.3781702459552581,
+        0.32414592510450696,
+        0.45020267375625966
+      ]
+    },
+    {
+      "giant": false,
+      "phase": 0.8,
+      "axialDepth": 18.96,
+      "bodyQuarter": [
+        0.09996420267174826,
+        0.8325977721614056,
+        0.7710663820429398,
+        0.8544946126642092
+      ],
+      "bodyMid": [
+        0.06098159407593913,
+        0.7148884778354537,
+        0.636285697518282,
+        0.795047842451985
+      ],
+      "rear": [
+        0.020207485421699742,
+        0.37720639453839516,
+        0.32331976674719587,
+        0.4490552315933276
+      ]
+    },
+    {
+      "giant": true,
+      "phase": 0.2,
+      "axialDepth": 37.21,
+      "bodyQuarter": [
+        0.10007856849756375,
+        0.8335503204661028,
+        0.7719485342652755,
+        0.855472212439132
+      ],
+      "bodyMid": [
+        0.06106849401240682,
+        0.7159072075726269,
+        0.6371924167919826,
+        0.7961808008149923
+      ],
+      "rear": [
+        0.020259120319031685,
+        0.3781702459552581,
+        0.32414592510450696,
+        0.45020267375625966
+      ]
+    },
+    {
+      "giant": true,
+      "phase": 0.5,
+      "axialDepth": 37.21,
+      "bodyQuarter": [
+        0.10007856849756375,
+        0.8335503204661028,
+        0.7719485342652755,
+        0.855472212439132
+      ],
+      "bodyMid": [
+        0.06106849401240682,
+        0.7159072075726269,
+        0.6371924167919826,
+        0.7961808008149923
+      ],
+      "rear": [
+        0.020259120319031685,
+        0.3781702459552581,
+        0.32414592510450696,
+        0.45020267375625966
+      ]
+    },
+    {
+      "giant": true,
+      "phase": 0.8,
+      "axialDepth": 37.21,
+      "bodyQuarter": [
+        0.09996420267174826,
+        0.8325977721614056,
+        0.7710663820429398,
+        0.8544946126642092
+      ],
+      "bodyMid": [
+        0.06098159407593913,
+        0.7148884778354537,
+        0.636285697518282,
+        0.795047842451985
+      ],
+      "rear": [
+        0.020207485421699742,
+        0.37720639453839516,
+        0.32331976674719587,
+        0.4490552315933276
+      ]
+    }
+  ],
+  "limits": [
+    "No full shader interpreter, actual pixels, luminance acceptance, performance or sound observation",
+    "40-cell parallel-sheet illumination approximation; optical spill is not a damage/range indicator",
+    "No reduced-motion control exists in preserved R2 host"
+  ],
+  "actualGPU": "not_run",
+  "actualSize": "not_run",
+  "normalSpeed": "not_run",
+  "normalAudio": "not_run"
+}

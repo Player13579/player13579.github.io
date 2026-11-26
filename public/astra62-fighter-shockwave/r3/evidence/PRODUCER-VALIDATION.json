@@ -1,0 +1,55 @@
+{
+  "validator": "verify-producer.mjs",
+  "result": "pass",
+  "input": {
+    "file": "pinned-offline-server-main.js",
+    "sha256": "5f28850f9c066f79399b5c9f91d94dac5b52409ecadc8ed1f7cccd2a3a14fbbd",
+    "extractedVerbatimFunctions": [
+      "fighterSlashShockwaveCost",
+      "consumeFighterEnergyCharge",
+      "fighterSlash"
+    ],
+    "constantsExtractedFromSource": {
+      "FIGHTER_SLASH_STAMINA_COST": 75,
+      "FIGHTER_GIANT_SHOCKWAVE_EC_COST": 100,
+      "FIGHTER_SHOCKWAVE_RANGE": 950,
+      "FIGHTER_SHOCKWAVE_WIDTH": 70,
+      "FIGHTER_SHOCKWAVE_ORIGIN_OFFSET": 20,
+      "FIGHTER_GIANT_SHOCKWAVE_RANGE": 1900,
+      "FIGHTER_GIANT_SHOCKWAVE_WIDTH": 240,
+      "FIGHTER_GIANT_SHOCKWAVE_DURATION_MS": 1150,
+      "FIGHTER_ENHANCE_SLASH_RANGE_PER_LEVEL": 40,
+      "FIGHTER_ENHANCE_SLASH_GUARD_MS_PER_LEVEL": 90,
+      "GBO_PERFORMANCE_MULTIPLIER": 10
+    }
+  },
+  "executedChecks": [
+    "Source numeric constants match pinned values.",
+    "Normal case: Fighter with 1 EC spends 1 EC and 75 stamina; emits fighter-shockwave with the normal variant, width, 760 ms producer duration, offset origin, and collision-resolved endpoint.",
+    "Giant case: Fighter with 100 EC spends exactly 100 EC and emits the giant variant, width, range, and 1150 ms producer duration.",
+    "Zero EC and non-Fighter cases emit no fighter-shockwave and do not consume EC.",
+    "Effect emission occurs before wave-target search; the empty-target case needs no victim and invokes no kill processing.",
+    "Captured payload has no targetId or outcome; one-body-damage is only the variant's rule label.",
+    "Two executions of the same slash request with 2 EC create two wave emissions and consume twice; the producer has no receipt duplicate gate.",
+    "Negative cases: non-playing phase, missing sword, dead, ejected, vented, insufficient stamina, and ability, storage, or consciousness rejection emit no wave."
+  ],
+  "vmBoundaryStubs": [
+    "Fighter authorization and sword ownership predicates",
+    "Ability, storage, and consciousness ensure functions",
+    "Stamina spending, guard opening, bot attack-start recording, and feedback",
+    "Slash-target lookup and wave-target lookup",
+    "Collision/path resolver, configured to return a known endpoint",
+    "pushMagicEffect capture, pushSound, event/touch, and win check",
+    "victim processing throws if unexpectedly invoked"
+  ],
+  "scopeLimits": [
+    "This executes the extracted producer functions in Node VM; it does not establish live gameplay authorization, collision, target selection, or victim/damage outcomes.",
+    "The emitted effect call is captured at pushMagicEffect; no registered shader, GPU, browser, screen-size, playback-speed, or visual acceptance is tested.",
+    "No producer receipt-level duplicate prevention exists in this tested branch; separate host/audio duplicate launch checks are owned by the parent task.",
+    "This is static/source-bound CPU evidence only, not game integration or release acceptance."
+  ],
+  "modelAttribution": {
+    "displayName": "GPT-6-Luna",
+    "acceptedContribution": "Wrote and ran the bounded producer VM validator and recorded its source-bound limits."
+  }
+}
