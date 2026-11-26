@@ -2422,28 +2422,36 @@ const acquisitionGpuOverlay = { canvas: null, renderer: null, pending: false,
 const WEBGPU_MAIN_OWNER = true;
 const WEBGPU_MAIN_VERIFY_ROUTE = IS_VERIFICATION_MODE && URL_PARAMETERS.get("webgpuMain") === "1";
 const DVA_MAIN_GRAPHICS_STORAGE_KEY = "dva_main_graphics_v1";
-const DVA_MAIN_GRAPHICS_LIGHT_AT_LOAD = !IS_VERIFICATION_MODE && (() => {
-  try { return globalThis.localStorage.getItem(DVA_MAIN_GRAPHICS_STORAGE_KEY) === "light"; }
-  catch { return false; }
+const DVA_MAIN_GRAPHICS_CAPS = Object.freeze({ standard: null, light: 2, lighter: 1.5 });
+const DVA_MAIN_GRAPHICS_AT_LOAD = IS_VERIFICATION_MODE ? "standard" : (() => {
+  try {
+    const choice = globalThis.localStorage.getItem(DVA_MAIN_GRAPHICS_STORAGE_KEY);
+    return Object.hasOwn(DVA_MAIN_GRAPHICS_CAPS, choice) ? choice : "standard";
+  } catch { return "standard"; }
 })();
+const DVA_MAIN_GRAPHICS_CAP = DVA_MAIN_GRAPHICS_CAPS[DVA_MAIN_GRAPHICS_AT_LOAD];
 function bindTitleMainGraphicsChoice() {
   const group = document.getElementById("titleMainGraphicsChoice");
-  const input = document.getElementById("titleMainGraphicsLight");
+  const input = document.getElementById("titleMainGraphicsSelect");
   const status = document.getElementById("titleMainGraphicsStatus");
   if (!group || !input || !status || IS_VERIFICATION_MODE) return;
-  let saved = DVA_MAIN_GRAPHICS_LIGHT_AT_LOAD;
-  input.checked = saved;
+  let saved = DVA_MAIN_GRAPHICS_AT_LOAD;
+  input.value = saved;
   group.hidden = false;
   input.addEventListener("change", () => {
-    const light = input.checked;
+    const choice = input.value;
+    if (!Object.hasOwn(DVA_MAIN_GRAPHICS_CAPS, choice)) {
+      input.value = saved;
+      return;
+    }
     try {
-      globalThis.localStorage.setItem(DVA_MAIN_GRAPHICS_STORAGE_KEY, light ? "light" : "standard");
-      saved = light;
-      status.textContent = light === DVA_MAIN_GRAPHICS_LIGHT_AT_LOAD
-        ? "現在の画質と同じ"
+      globalThis.localStorage.setItem(DVA_MAIN_GRAPHICS_STORAGE_KEY, choice);
+      saved = choice;
+      status.textContent = choice === DVA_MAIN_GRAPHICS_AT_LOAD
+        ? "現在の描画品質と同じ"
         : "次の再読み込みで反映";
     } catch {
-      input.checked = saved;
+      input.value = saved;
       status.textContent = "保存できません";
     }
   });
@@ -9131,6 +9139,8 @@ function bindEvents() {
       if (event.repeat) event.preventDefault();
       return;
     }
+    if (state.screen === "title" && eventTarget?.id === "titleMainGraphicsSelect" &&
+        eventTarget.closest?.("#titleMainGraphicsChoice:not([hidden])")) return;
     const editableTarget = eventTarget?.matches?.('input, textarea, [contenteditable="true"]')
       ? eventTarget
       : document.activeElement?.matches?.('input, textarea, [contenteditable="true"]')
@@ -20944,7 +20954,7 @@ function pumpWebGPUMainAppDriver() {
     ...(startupRequestTrace ? { diagnosticCorrelation: {
       appRequestSerial: requestSerial,
       startupAttemptId: startupRequestTrace.attemptId } } : {}),
-    dpr: DVA_MAIN_GRAPHICS_LIGHT_AT_LOAD ? Math.min(dpr, 2) : dpr,
+    dpr: DVA_MAIN_GRAPHICS_CAP === null ? dpr : Math.min(dpr, DVA_MAIN_GRAPHICS_CAP),
     ...(frameDiagnostic ? { frameDiagnostic } : {}),
     ...(WEBGPU_FRAME_PANEL_ENABLED || WEBGPU_MAIN_VERIFY_ROUTE || !webgpuMainApp.visible ? { onTiming: (name, durationMs) => {
       markWebGPUStartupStage(name, durationMs);
