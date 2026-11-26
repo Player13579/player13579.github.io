@@ -13544,3 +13544,122 @@ body.game-open.dva-full-canvas #gameApp #fieldLowerRow:not([hidden]) {
     touch-action: manipulation;
   }
 }
+
+/* One translucent, scrolling match panel. Original field/HUD geometry and
+ * meeting presentation are independent of this optional layer. */
+:root { --dva-one-match-panel-ready: 1; }
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active:not(:has(#meetingPanel:not([hidden]))) #gameApp #sidePanel {
+  z-index: 40;
+  display: block !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 var(--dva-ui-r) var(--dva-ui-b) var(--dva-ui-l) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: auto !important;
+  scrollbar-gutter: auto;
+  background: rgba(234, 244, 247, .79) !important;
+  box-shadow: none !important;
+  color: #173441;
+  pointer-events: auto;
+}
+body.dva-unified-panel-active #matchPanelHeader {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  min-height: 56px;
+  margin: 0;
+  padding: var(--dva-ui-t) 0 8px;
+  border-bottom: 1px solid rgba(52, 94, 111, .35);
+  background: rgba(234, 244, 247, .87);
+}
+body.dva-unified-panel-active #matchPanelHeader h2 {
+  margin: 0 132px 8px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: clamp(14px, 3.2vw, 22px);
+  color: #173441;
+}
+body.dva-unified-panel-active #matchPanelToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelToolbar > button:not([hidden]) {
+  position: static !important;
+  inset: auto !important;
+  transform: none;
+  margin: 0 !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  width: 44px !important;
+  height: 44px !important;
+  flex: 0 0 auto;
+  padding: 0 !important;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelToolbar > #analyticsToggleButton:not([hidden]) {
+  width: auto !important;
+  padding-inline: 9px !important;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchUiToggle:not([hidden]),
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchUiMapButton:not([hidden]) {
+  top: var(--dva-ui-t) !important;
+  min-height: 44px;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchUiToggle:not([hidden]) {
+  width: 122px;
+  right: var(--dva-ui-r);
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchUiMapButton:not([hidden]) {
+  right: calc(var(--dva-ui-r) + 128px);
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel :is(#fieldLowerRow, #statusPanel):not([hidden]) {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 10px 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel :is(#itemControl, #activeEffectsPanel, #operatorDetail):not([hidden]) {
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin-inline: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.dva-unified-panel-active #sidePanel #activeEffectsList {
+  max-height: none !important;
+}
+/* Keep the existing keyboard weapon switch without a floating icon. */
+body.game-open #weaponButton { display: none !important; }
+/* Existing dialogs are foreground owners, even if authored inside the board. */
+body.game-open.dva-full-canvas.dva-unified-panel-active:has(:is(
+  #expandedMapOverlay, #keybindOverlay, #killCameraOverlay, #fieldFeedPanel
+):not([hidden])) #gameApp #sidePanel:not(:has(#meetingPanel:not([hidden]))),
+body.game-open.dva-full-canvas.dva-unified-panel-active:has(:is(
+  #expandedMapOverlay, #keybindOverlay, #killCameraOverlay, #fieldFeedPanel
+):not([hidden])) #gameApp #sidePanel:not(:has(#meetingPanel:not([hidden]))) * {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

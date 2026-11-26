@@ -42,11 +42,48 @@
   function modalOwnsInput() {
     return modalIds.some(id => document.getElementById(id)?.hidden === false);
   }
+  const panelToolIds = ['fullscreenButton', 'titleHomeButton', 'debugForceEndButton',
+    'leaveRoomButton', 'operatorReselectButton', 'gameMuteButton', 'gameTacticsButton',
+    'tabletButton', 'analyticsToggleButton', 'keybindButton'];
+  const panelHomes = new Map();
+  let unified = false;
+  const unifiedCssReady = () => root.getComputedStyle(document.documentElement)
+    .getPropertyValue('--dva-one-match-panel-ready').trim() === '1';
+  function setUnifiedPanel(next) {
+    if (next === unified || (next && !unifiedCssReady())) return;
+    const side = document.getElementById('sidePanel');
+    const head = document.getElementById('matchPanelHeader');
+    const tools = document.getElementById('matchPanelToolbar');
+    const field = document.getElementById('fieldLowerRow');
+    if (!side || !head || !tools || !field) return;
+    const move = (node, into, before = null) => {
+      if (!node?.parentNode) return;
+      const home = document.createComment('match-panel-home');
+      node.parentNode.insertBefore(home, node);
+      panelHomes.set(node, home);
+      into.insertBefore(node, before);
+    };
+    if (next) {
+      for (const id of panelToolIds) move(document.getElementById(id), tools);
+      move(field, side, document.getElementById('statusPanel'));
+      head.hidden = false;
+    } else {
+      head.hidden = true;
+      for (const [node, home] of panelHomes) {
+        if (home.parentNode) home.parentNode.replaceChild(node, home);
+      }
+      panelHomes.clear();
+    }
+    unified = next;
+    document.body.classList.toggle('dva-unified-panel-active', unified);
+  }
+
   function apply() {
     const body = document.body;
     if (!body || !button) return;
     body.classList.toggle('dva-full-canvas', active);
     body.classList.toggle('dva-match-ui-open', active && expanded);
+    setUnifiedPanel(active && expanded && lastPhase === 'playing');
     button.hidden = !active || lastPhase === 'meeting';
     if (mapButton) mapButton.hidden = !active || lastPhase !== 'playing';
     button.setAttribute('aria-expanded', String(active && expanded));

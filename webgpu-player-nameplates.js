@@ -138,7 +138,7 @@
         if (!preparation && phase === 'playing' &&
             entirelyOffscreen(entry, viewport, textAtlas.textures, textTop)) continue;
         const transform = entry.transform;
-        const plateAlpha = entry.alpha * .96;
+        const plateAlpha = entry.alpha * .64;
         const radius = 6;
         for (let row = 0; row < 14; row++) {
           const distance = Math.min(row + .5, 13.5 - row);
