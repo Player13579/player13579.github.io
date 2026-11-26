@@ -1,0 +1,93 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "ペア行動禁止違反の成立通知 R3",
+  "groupId": "pair-route-violation-astra62",
+  "versionId": "pair-route-violation-astra62-r3",
+  "creativeEdition": 3,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creativeReceipt": {
+    "id": "resp_0c97657ef159cbf2006b07d21cc74c87d08e6fa1b641ca05a2",
+    "model": "gpt-6.2-astra",
+    "effort": "high",
+    "status": "completed"
+  },
+  "entry": "gallery.html",
+  "path": "/public/astra62-pair-route-violation/r3/gallery.html",
+  "standalone": "index.html",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "confirmed",
+    "position": [
+      0,
+      14
+    ],
+    "subject": "self",
+    "confirmed": true,
+    "visible": true,
+    "current": true,
+    "uniformBytes": 48,
+    "lifetimeMs": 940
+  },
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baseCommit": "9e5a1c9789472dc8c5c25b073813d75f220e6f30",
+    "basedOnVersion": "pair-route-violation-astra62-r2",
+    "sourceManifest": "../r2/gallery-manifest.json"
+  },
+  "design": {
+    "revision": "R3は、本人の中立なシルエットの上に、確定済みの違反1件だけを示す自己表示用の標識。真鍮二条は遠端まで暖色に発光し、斜めの朱線に接する側を最も明るくする。朱線の光源は真鍮側に寄せた有限の発光面とし、その裏側には弱い散乱光を残す。",
+    "comparison": "R2では朱線からの受光が近端に限られ、真鍮の遠端は地色と縁の反射色だけだった。R3では細い縁の強調を幅広い曲面の明暗に替え、朱線が現れる前から各条の遠端まで発光させる。218–245 msの着座時には、近端で受けた光を各条に沿って22設計単位ごとに半減させ、近端にだけ直接光の明部を重ねる。光は既存の材質マスク内に限り、条間・背景・本人像には加えない。形状、表示条件、通常／軽減時の運動、不透明度包絡、940 ms周期、48バイトのView契約、元のPCMは変更しない。実表示寸法は不明で、実寸での判読性は未確認。"
+  },
+  "files": {
+    "gallery-adapter.mjs": {
+      "bytes": 18211,
+      "sha256": "d4adcdcf63b4978592889dd564f41d145d5f0cc39caf7051f7d2546b8533eb07",
+      "gitBlob": "8cbc7faa43279e6efedc00c529be0dee88188aa7"
+    },
+    "violation.mjs": {
+      "bytes": 1934,
+      "sha256": "ec217b42a0e1bdb7e48d98a7667a0275c9237ee8cf9ef8f94975e0a9e40d1c14",
+      "gitBlob": "178c928524050cb2c3351f86cef3f6fca214579c"
+    },
+    "effect.wgsl": {
+      "bytes": 3614,
+      "sha256": "a4c8845316185dcc8b3b0bd247df439c096665cc9a11d7479faae9cc66716e47",
+      "gitBlob": "4abfb13bd94d7c6f14d878a187784ac634d7f0e3"
+    },
+    "preview.mjs": {
+      "bytes": 8015,
+      "sha256": "f993e687b12ff2076868d573a9d9a3f49e4954220b26ef279fba6955d51f708f",
+      "gitBlob": "fce708d34dcb6f1ee640fa1877dc158e3e5d70cc"
+    },
+    "gallery.html": {
+      "bytes": 1271,
+      "sha256": "c049f6d373d426762ea324aeae1523ef31fe924923def15d41cf1e04e7f600be",
+      "gitBlob": "69cf65e0e6054a736f4846ddd6da6921c1f4ed20"
+    },
+    "index.html": {
+      "bytes": 1864,
+      "sha256": "25791f596795a72a76f5207a73bc62f2d084b027ee0e295bb80f9ae4e40ebe94",
+      "gitBlob": "16490e391d55b354a46efd5ff6da84ccd126caed"
+    }
+  },
+  "validation": {
+    "shader": "Naga WASI 0.1.0 validation passed",
+    "gate": "Confirmed self accepts; unset, foreign, hidden, stale and malformed requests do not advance the serial; duplicate/stale valid serials rejected",
+    "audioPCM": "Bit-identical to R2 at 8, 44.1, 48, 96 and 192 kHz",
+    "moduleSyntax": "passed",
+    "dependencies": "six local references match their blob hashes",
+    "galleryContract": "Own canvas, accepted fixture and all four reduced/live combinations produce 48 finite uniform bytes in adapter layout; CPU only",
+    "nativeGPU": "not_run",
+    "parentIframe": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "normalAudioListening": "not_run",
+    "quality": "not-reviewed"
+  }
+}
