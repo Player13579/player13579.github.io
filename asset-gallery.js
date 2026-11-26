@@ -4706,7 +4706,7 @@ function galleryChildPairRouteViolationR2StrictTarget(attempt) {
     function routeURL(value) {
       var url = new URL(value, location.href), params = url.searchParams;
       if (url.origin !== attempt.origin || url.pathname !== "/public/astra62-pair-route-violation/r2/gallery.html" || url.username !== "" || url.password !== "" || url.hash !== "") return null;
-      var allowed = {embed:1, galleryAutoLoop:1, galleryVersionId:1, galleryStartupToken:1, galleryAttemptEpoch:1, verify:1, galleryRelease:1, height:1};
+      var allowed = {embed:1, galleryAutoLoop:1, galleryVersionId:1, galleryStartupToken:1, galleryAttemptEpoch:1, verify:1, galleryRelease:1, height:1, gitBlob:1};
       for (var pair of params) if (!Object.prototype.hasOwnProperty.call(allowed, pair[0])) return null;
       function exactlyOne(key, value) {
         var values = params.getAll(key);
@@ -4717,7 +4717,7 @@ function galleryChildPairRouteViolationR2StrictTarget(attempt) {
         return values.length === 0 || (values.length === 1 && values[0] === value);
       }
       var verify = params.getAll("verify");
-      if (!exactlyOne("embed", "1") || !exactlyOne("galleryAutoLoop", "1") || !exactlyOne("galleryVersionId", id) || !exactlyOne("galleryStartupToken", attempt.token) || !exactlyOne("galleryAttemptEpoch", String(attempt.issuedEpoch)) || !optionalFixed("galleryRelease", "vibe-record-diagnostic-20261001-r49") || !optionalFixed("height", "64") || verify.length > 1) return null;
+      if (!exactlyOne("gitBlob", "916b0d34a5f67c85acd2df4c20c0456d1d63cb47") || !exactlyOne("embed", "1") || !exactlyOne("galleryAutoLoop", "1") || !exactlyOne("galleryVersionId", id) || !exactlyOne("galleryStartupToken", attempt.token) || !exactlyOne("galleryAttemptEpoch", String(attempt.issuedEpoch)) || !optionalFixed("galleryRelease", "vibe-record-diagnostic-20261001-r49") || !optionalFixed("height", "64") || verify.length > 1) return null;
       return url;
     }
     var declared = routeURL(attempt.url), actual = routeURL(iframe.src);
