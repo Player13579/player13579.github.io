@@ -8638,7 +8638,9 @@ function bindEvents() {
     button.addEventListener("click", () => void chooseOfflineTeam(button.dataset.offlineTeam));
   });
   els.mapActionButton.addEventListener("click", () => toggleExpandedMapFromAction());
-  els.mapCloseButton.addEventListener("click", () => setExpandedMapOpen(false));
+  els.mapCloseButton.addEventListener("click", () => {
+    if (state.expandedMapOpen) setExpandedMapOpen(false);
+  });
   const bindGunTriggerButton = (button) => {
     let suppressClickUntil = 0;
     button.addEventListener("pointerdown", (event) => {
@@ -9906,7 +9908,58 @@ function bindTabletControls() {
     Array.from(event.changedTouches || []).forEach((touch) => joystickTouchIds.add(touch.identifier));
     suppressTrackedJoystickGesture(event);
   };
+  // The old joystick touch can outlive map opening. Its capture listener
+  // cancels secondary touchend, and some browsers do not synthesize a click
+  // for a non-primary touch even if that default is left alone.
+  let mapCloseTouch = null;
+  const mapCloseTouchInBounds = (touch) => {
+    const rect = els.mapCloseButton.getBoundingClientRect();
+    return Number.isFinite(touch?.clientX) && Number.isFinite(touch?.clientY) &&
+      touch.clientX >= rect.left && touch.clientX < rect.right &&
+      touch.clientY >= rect.top && touch.clientY < rect.bottom &&
+      els.mapCloseButton.contains(document.elementFromPoint(touch.clientX, touch.clientY));
+  };
+  const startMapCloseTouch = (event) => {
+    mapCloseTouch = null;
+    if (!event.isTrusted || !state.expandedMapOpen || els.expandedMapOverlay.hidden ||
+        !document.body.classList.contains("dva-full-canvas") ||
+        !touchListContainsTrackedJoystickTouch(event.touches)) return;
+    const changed = Array.from(event.changedTouches || []);
+    if (changed.length !== 1 || touchListContainsTrackedJoystickTouch(changed) ||
+        !mapCloseTouchInBounds(changed[0])) return;
+    const touch = changed[0];
+    mapCloseTouch = { id: touch.identifier, x: touch.clientX, y: touch.clientY,
+      instance: expandedMapOpenInstance, room: state.roomId, player: state.playerId,
+      session: state.roomSessionGeneration, phase: state.data?.phase };
+  };
+  const mapCloseTouchStillTap = (touch, tap) =>
+    Math.hypot(touch.clientX - tap.x, touch.clientY - tap.y) <= 12 && mapCloseTouchInBounds(touch);
+  const moveJoystickTouch = (event) => {
+    const tap = mapCloseTouch;
+    const touch = tap && Array.from(event.changedTouches || []).find(item => item.identifier === tap.id);
+    if (touch && !mapCloseTouchStillTap(touch, tap)) mapCloseTouch = null;
+    suppressTrackedJoystickGesture(event);
+  };
   const finishJoystickTouch = (event) => {
+    const tap = mapCloseTouch;
+    const changed = Array.from(event.changedTouches || []);
+    const touch = tap && changed.find(item => item.identifier === tap.id);
+    if (touch) {
+      mapCloseTouch = null;
+      if (event.isTrusted && event.type === "touchend" && event.cancelable &&
+          state.expandedMapOpen && !els.expandedMapOverlay.hidden &&
+          tap.instance === expandedMapOpenInstance && tap.room === state.roomId &&
+          tap.player === state.playerId && tap.session === state.roomSessionGeneration &&
+          tap.phase === state.data?.phase && !els.mapCloseButton.disabled &&
+          !touchListContainsTrackedJoystickTouch(changed) &&
+          mapCloseTouchStillTap(touch, tap)) {
+        // Suppress the native compatibility click; run the same button route.
+        event.preventDefault();
+        event.stopPropagation();
+        els.mapCloseButton.click();
+        return;
+      }
+    }
     if (document.body.classList.contains("dva-full-canvas") &&
         (event.target === document.getElementById("matchUiToggle") ||
           event.target === document.getElementById("matchUiMapButton")) &&
@@ -9916,7 +9969,8 @@ function bindTabletControls() {
     Array.from(event.changedTouches || []).forEach((touch) => joystickTouchIds.delete(touch.identifier));
   };
   els.tabletJoystickZone.addEventListener("touchstart", beginJoystickTouch, { capture: true, passive: false });
-  document.addEventListener("touchmove", suppressTrackedJoystickGesture, { capture: true, passive: false });
+  els.mapCloseButton.addEventListener("touchstart", startMapCloseTouch, { passive: true });
+  document.addEventListener("touchmove", moveJoystickTouch, { capture: true, passive: false });
   document.addEventListener("touchend", finishJoystickTouch, { capture: true, passive: false });
   document.addEventListener("touchcancel", finishJoystickTouch, { capture: true, passive: false });
   window.addEventListener("pointerup", releaseActiveStick, true);
@@ -34684,7 +34738,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
