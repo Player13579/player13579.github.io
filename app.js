@@ -21169,6 +21169,10 @@ function pumpWebGPUMainAppDriver() {
       disposeWebGPUTitlePrewarm(drawTitleSpare, 'cancelled');
     }
   }).catch(error => {
+    // A rejected draw may settle just as its presentation owner retires.
+    // The existing retained-runtime failure gate still owns live GPU loss.
+    if (webgpuMainApp.driver !== drawDriver ||
+        webgpuMainApp.generation !== generation) return;
     recordWebGPUStartupIncompleteFrame(error?.code === 'DVA_WEBGPU_INCOMPLETE_SCENE'
       ? 'incomplete-scene' : error?.code === 'DVA_WEBGPU_STALE_SCENE'
         ? 'stale-scene' : 'frame-error');
