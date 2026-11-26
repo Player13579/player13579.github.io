@@ -234,7 +234,7 @@
         if (keys.length !== 2 || keys[0] !== 'effectId' || keys[1] !== 'reason' ||
             !positions.has(id) || owned.has(id) ||
             !['no-complete-webgpu-effect-port', 'sunbeam-adoption-withdrawn',
-              'fighter-ec-image-pending']
+              'fighter-ec-image-pending', 'fighter-ec-image-terminal']
               .includes(receipt.reason) ||
             retained.has(id) || visibleEmp.has(id) || visibleSpecialAmmo.has(id))
           throw new Error(`Invalid deferred visible magic ownership: ${id}`);
@@ -1369,8 +1369,8 @@
       });
       run('attackTargets', input => need('attackTargets', 'record').record({ ...common(input), shapes: need('shapes', 'enqueue') }));
       run('taskIndicators', input => need('taskIndicators', 'draw').draw(common(input)));
-      run('hud', input => input.presentationHidden ? false : need('hud', 'draw').draw(common(input)));
-      run('minimap', input => input.presentationHidden ? false : need('minimap', 'draw').draw(common(input)));
+      run('hud', input => need('hud', 'draw').draw(common(input)));
+      run('minimap', input => need('minimap', 'draw').draw(common(input)));
       if (stages.players.preparation) {
         const bounds = stages.minimap?.scene?.bounds;
         if (!results.minimap || !bounds ||
@@ -1414,7 +1414,7 @@
     }
     return Object.freeze({ prepare, record, get device() { return device; }, destroy() { destroyed = true; } });
   }
-  const api = Object.freeze({ create, ORDER, REQUIRED, supportsMatchUiVisibility: true });
+  const api = Object.freeze({ create, ORDER, REQUIRED, FIGHTER_EC_IMAGE_TERMINAL_R1: true });
   root.DvaWebGPUMainScene = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);

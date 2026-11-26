@@ -20897,6 +20897,7 @@ function pumpWebGPUMainAppDriver() {
       ? receipt.deferredAcquisitionIds : [];
     const deferredVisibleIds = Array.isArray(receipt.deferredVisibleIds)
       ? receipt.deferredVisibleIds : [];
+    const terminalFighterEcIds = receipt.terminalFighterEcIds;
     if (document.body?.dataset) {
       const incomplete = deferredAcquisitionIds.length > 0 || deferredVisibleIds.length > 0;
       document.body.dataset.webgpuMainCompleteness = incomplete ? 'base' : 'complete';
@@ -20904,7 +20905,8 @@ function pumpWebGPUMainAppDriver() {
         ...deferredAcquisitionIds.map(id =>
           `acquisition:pipeline-not-ready:event=${String(id).slice(0, 48)}`),
         ...deferredVisibleIds.map(id =>
-          `magicEffects:visible-e-pending:event=${String(id).slice(0, 48)}`)
+          `magicEffects:${terminalFighterEcIds?.includes(id)
+            ? 'fighter-ec-image-terminal' : 'visible-e-pending'}:event=${String(id).slice(0, 48)}`)
       ].join(',').slice(0, 1600);
       else delete document.body.dataset.webgpuMainIncomplete;
     }
@@ -23383,6 +23385,10 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
           image.getAttribute?.('src') === source;
         if (notStarted || loading) {
           deferredVisible.push({ effectId: effect.id, reason: 'fighter-ec-image-pending' });
+          continue;
+        }
+        if (fighterEcOptionalImageTerminal(textures, image, source)) {
+          deferredVisible.push({ effectId: effect.id, reason: 'fighter-ec-image-terminal' });
           continue;
         }
       }
@@ -29640,11 +29646,16 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const late = captureWebGPUMainAppLateMagicScene(data, viewport,
     early.camera, early.zoom, shapeProviders, headMarkers, players.stages.players);
   assertCurrent();
+  const fighterEcTerminalInFrame = late.stage.deferredVisible.some(receipt =>
+    receipt.reason === 'fighter-ec-image-terminal');
+  const fighterEcTerminalImage = fighterEcTerminalInFrame ? state.textures?.fighterEnergyChargeEffect : null;
+  const fighterEcTerminalSource = fighterEcTerminalInFrame ? fighterEcImageFailures.get(fighterEcTerminalImage) : null;
   const retainedSources = [
     ...late.stage.events.filter(event => event.type === 'headMarker')
       .map(event => event.input.sourceEffect),
     ...late.stage.deferredVisible.filter(receipt =>
-      receipt.reason === 'fighter-ec-image-pending').map(receipt =>
+      receipt.reason === 'fighter-ec-image-pending' ||
+      receipt.reason === 'fighter-ec-image-terminal').map(receipt =>
       state.magicEffects.find(effect => String(effect.id) === String(receipt.effectId)))
   ].map(effect => {
     return { effect, id: effect.id, type: effect.type,
@@ -29845,6 +29856,8 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
           };
           return !inVisibleRoster(currentActor) || target && !inVisibleRoster(currentTarget);
         }) ||
+        (fighterEcTerminalInFrame && !fighterEcOptionalImageTerminal(
+          state.textures, fighterEcTerminalImage, fighterEcTerminalSource)) ||
         retainedSources.some(({ effect, id, type, playerId, variant, active,
           markerCount, instanceKey,
           startedAt, duration, expiresAt, aggregateCount }) =>
@@ -29890,7 +29903,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
         { code: 'DVA_WEBGPU_STALE_SCENE' });
   };
   return Object.assign(candidate, { viewport, camera: early.camera, zoom: early.zoom, stages,
-    early, players, headMarkers, late, conditional, hitEffectsGaps, magicGaps,
+    early, players, headMarkers, late, conditional, hitEffectsGaps, magicGaps, fighterEcTerminalInFrame,
     markerPointerGap,
     markerPointer: { held: markerPointerHeld, point: markerPoint,
       sample: markerPointerSample, explanation: marker, now: markerNow },
@@ -31317,6 +31330,10 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
         deferredVisibleIds: Object.freeze(
           prepared.candidate.stages.magicEffects.deferredVisible.map(receipt =>
             String(receipt.effectId))),
+              terminalFighterEcIds: prepared.candidate.fighterEcTerminalInFrame
+                ? Object.freeze(prepared.candidate.stages.magicEffects.deferredVisible
+                  .filter(receipt => receipt.reason === 'fighter-ec-image-terminal')
+                  .map(receipt => String(receipt.effectId))) : undefined,
               acquisitionActive: Boolean(prepared.candidate.stages.acquisition) };
           } });
         if (scheduled.status === 'error') throw scheduled.error;
@@ -31363,6 +31380,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
         preparationHitTargets, minimapBounds,
           deferredAcquisitionIds: outcome.recordResult.deferredAcquisitionIds,
         deferredVisibleIds: outcome.recordResult.deferredVisibleIds,
+          terminalFighterEcIds: outcome.recordResult.terminalFighterEcIds,
           acquisitionActive: Boolean(outcome.recordResult.acquisitionActive) });
       } catch (error) {
         notify(error);
@@ -33902,6 +33920,23 @@ function preloadSelectedRequiredMap(value = els.mapSelect?.value) {
 // Keep the title's first character sheets ahead of the large optional texture
 // set. Image identity is shared with the normal renderer and URL lookup uses
 // pendingSources so this never creates duplicate requests.
+const fighterEcImageFailures = new WeakMap();
+
+function fighterEcOptionalImageFailedAtSource(image, source) {
+  return Boolean(image && source && image.complete === true &&
+    image.naturalWidth === 0 && image.naturalHeight === 0 &&
+    image.getAttribute?.('src') === source &&
+    (!image.currentSrc || image.currentSrc === source));
+}
+
+function fighterEcOptionalImageTerminal(textures, image, source) {
+  return window.DvaWebGPUMainScene?.FIGHTER_EC_IMAGE_TERMINAL_R1 === true &&
+    image === textures?.fighterEnergyChargeEffect &&
+    textures?.gameplayLoadStarted?.has(image) === true &&
+    fighterEcOptionalImageFailedAtSource(image, source) &&
+    fighterEcImageFailures.get(image) === source;
+}
+
 function startGameplayOptionalTexture(textures, image, source) {
   if (!image || !source) return false;
   textures.gameplayLoadStarted ||= new Set();
@@ -33912,6 +33947,20 @@ function startGameplayOptionalTexture(textures, image, source) {
   if (image === textures.mysteryBoxMaterial) {
     loadCriticalFacilityTexture(image, source, { box: true });
     return true;
+  }
+  if (image === textures.fighterEnergyChargeEffect &&
+      window.DvaWebGPUMainScene?.FIGHTER_EC_IMAGE_TERMINAL_R1 === true) {
+    image.addEventListener('error', event => {
+      if (event.isTrusted === true && event.currentTarget === image &&
+          textures.fighterEnergyChargeEffect === image &&
+          fighterEcOptionalImageFailedAtSource(image, source))
+        fighterEcImageFailures.set(image, source);
+    });
+    image.addEventListener('load', event => {
+      if (event.isTrusted === true && event.currentTarget === image &&
+          image.getAttribute?.('src') === source)
+        fighterEcImageFailures.delete(image);
+    });
   }
   image.src = source;
   return true;
@@ -34807,7 +34856,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449&ownedMysteryBoxDedup=owned-mystery-box-dedup-forward-20261126-1510&widePanelControlTarget=wide-panel-control-target-forward-20261126-1517&selfHealAudioRate=self-heal-audio-rate-forward-20261126-1522&backgroundOwnedStop=background-owned-stop-forward-20261126-1538&renderRecoveryLayer=render-recovery-layer-forward-20261126-1550&offlineSoloReloadNotice=offline-solo-reload-notice-forward-20261126-1551", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449&ownedMysteryBoxDedup=owned-mystery-box-dedup-forward-20261126-1510&widePanelControlTarget=wide-panel-control-target-forward-20261126-1517&selfHealAudioRate=self-heal-audio-rate-forward-20261126-1522&backgroundOwnedStop=background-owned-stop-forward-20261126-1538&renderRecoveryLayer=render-recovery-layer-forward-20261126-1550&offlineSoloReloadNotice=offline-solo-reload-notice-forward-20261126-1551&fighterEcTerminal=fighter-ec-terminal-forward-20261126-1650", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
