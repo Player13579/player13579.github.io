@@ -1,0 +1,193 @@
+{
+  "schema": "quantum-temperature-cold-inline-gallery/v1",
+  "groupId": "quantum-temperature-cold-astra62",
+  "versionId": "quantum-temperature-cold-astra62-r2",
+  "creativeIdentity": "quantum-temperature-cold-astra62-r2",
+  "title": "クオンタム・氷結水生成 R2",
+  "creator": {
+    "modelId": "gpt-6.2-astra",
+    "displayName": "GPT-6.2-Astra"
+  },
+  "technicalDerivativeAuthor": {
+    "modelId": "gpt-6-luna",
+    "displayName": "GPT-6-Luna"
+  },
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "creativeCommit": "3baf9c6f50b241df966d6d725fc9d06cc8b7afad",
+    "baseRepository": "Player13579/player13579.github.io",
+    "baseCommit": "6ecd8db9a40704b0f115b12047a6b5c66ef9e18e"
+  },
+  "technicalHost": {
+    "responseId": "resp_0c740597e22a686d006b076ba45b2c87d0b425c911f9acc168",
+    "modelId": "gpt-6-luna"
+  },
+  "creative": {
+    "responseId": "resp_00213cb1d9b8674a006b076e8cfc1087d0b4d535143758ba74",
+    "modelId": "gpt-6.2-astra",
+    "reasoningEffort": "high",
+    "edition": 2,
+    "editionLimit": 5,
+    "completedAt": "2026-11-25T23:36:43.000Z",
+    "priorResponses": [
+      {
+        "responseId": "resp_0daf5b0e24612a1d006b0768d2e4b887d09fa6b8d717dae4f8",
+        "modelId": "gpt-6.2-astra",
+        "reasoningEffort": "high",
+        "completedAt": "2026-11-25T23:15:39.000Z"
+      }
+    ],
+    "apiCompletedAt": "2026-11-25T23:36:43.000Z"
+  },
+  "producerProvenance": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+  "runtime": {
+    "lifetimeMs": 3370,
+    "backgroundGapMs": 900,
+    "firstFrameAgeMsInclusive": [
+      0,
+      3010
+    ],
+    "uniformAgeMsInclusive": [
+      0,
+      3010
+    ],
+    "submittedAgeMsInclusive": [
+      0,
+      3010
+    ],
+    "requiredBeforeLifetime": {
+      "queue": true,
+      "validation": true,
+      "currentSubmission": true,
+      "sizeValidation": true,
+      "liveDevice": true,
+      "visibility": true,
+      "canvasConnected": true
+    },
+    "pixelsProved": false
+  },
+  "shader": {
+    "file": "cooling.wgsl",
+    "entryPoints": {
+      "vertex": "vs",
+      "fragment": "fs"
+    },
+    "uniformBytes": 32,
+    "uniformLayout": [
+      "width",
+      "height",
+      "ageMs",
+      "scale292x135EffectiveDpr",
+      "reduced",
+      "live",
+      0,
+      0
+    ],
+    "devicePixelRatio": {
+      "raw": "preserved truthfully",
+      "effectiveBoundsInclusive": [
+        1,
+        2
+      ],
+      "rejectWhenTextureLimitRequiresEffectiveDprBelow": 1
+    },
+    "output": "sRGB output to non-sRGB unorm target"
+  },
+  "material": {
+    "waveMs": [
+      0,
+      1180
+    ],
+    "waveEasing": "decelerating",
+    "interfaceMs": [
+      700,
+      2240
+    ],
+    "solidHoldMs": [
+      2240,
+      3010
+    ],
+    "contrastFadeMs": [
+      3010,
+      3370
+    ],
+    "idleAfterMs": 3370,
+    "emission": true,
+    "reflection": "source-driven",
+    "refraction": "source-driven",
+    "scatter": "source-driven",
+    "initialPresentation": "positive liquid sample at age 0; no blank entrance",
+    "emissionContract": {
+      "source": "sourceDensity is an authored optical signature of the already represented Quantum deceleration and phase control, within the single sample. Its prompt component tracks the active section; its release component represents a short optical memory of that same action. This is fictional emitted radiance, not latent heat rendered as visible light, ordinary ice fluorescence, an extra reagent or a second ability. Color, path lengths, delays and intensities are design values, not received telemetry or physical measurements.",
+      "supportAndStrength": "Per design path unit the peak prompt RGB density is (0.009,0.074,0.069), times a drive starting at 0.68 and rising to 1. Its smooth compact lobe initially centers 31 section units ahead of front=-98, with half-width 23. As the front advances the lead falls to zero and the half-width to 9. Each covered ray integrates that lobe only through its finite sample thickness. A thick lit section can therefore be a conspicuous area of color while a thin edge remains translucent. This is not a uniform gain on the object mask.",
+      "releaseAndStop": "The bluer density (0.006,0.030,0.063) is weighted by how much local solid occupancy has increased over the past 280, 470 and 620 process ms, with weights 0.35, 0.43 and 0.22. Unconverted material has no release. A section unchanged for 620 process ms has no appreciable release. At the last exposure the active core is outside and only recently converted material toward the right retains color. Holding this exposure keeps even a late eligible first view luminous without restarting the sweep or implying the inventory ice is a permanent lamp. During closure the entire exposure, not the material, loses contrast; idle has neither source image nor spread.",
+      "transport": "sectionColor bends the entering sight line at the progressive surface normal and neglects the small internal index step. Six front-to-back segments use the integral of the inclined phase profile for mean occupancy, exponential extinction, and attenuated effective length for local radiance. The rear return is transmitted once. The incident-light scattering term depends on the solid path and stationary light field; the emission term does not sample that field. The Fresnel exit weight then competes with reflection. This local-column approximation omits multiple scattering of emitted light and external world spill; there is no authorized surrounding receiver to illuminate.",
+      "observer": "After coverage and surface optics, spreadPart redistributes up to 14% of the bright image, with a smooth linear-luminance knee from 0.34 to 0.78. Six symmetric taps at 2.4 design units approximate a short image-space spread across a bright boundary. The redistributed fraction is subtracted at its origin; an ordinary strong reflection can also contribute. This is not a second emitting surface. A peak-channel shoulder above 0.64 preserves RGB ratios and leaves headroom. Contrast closure follows in linear color, then one sRGB encode to opaque non-sRGB unorm. No lens flare, rays or full-field veil.",
+      "actualSizeAcceptance": "At normal viewing size, without a difference image, identify a lit volume in the initial liquid, a green-blue section with a bluer recently locked side in the middle, and a localized blue remnant on an otherwise quieter held solid. In the middle, look for light under a curved return before the return assumes the shoulder slope. Require an area cue several displayed pixels across at the nominal 292 × 135 CSS fit, not a one-pixel colored outline. The observer spread may be subtle; disabling it for comparison must not remove the main luminous reading. Reject if the whole solid reads as a flat white lamp, if the reflection alone accounts for the apparent emission, or if distant slate lifts.",
+      "assessment": "authored implementation contract; not an observed quality pass"
+    }
+  },
+  "audio": {
+    "onVerify": false,
+    "normalListening": "not_run"
+  },
+  "receivingInventory": {
+    "sharedExcluded": true,
+    "worldPositions": false,
+    "actors": false,
+    "finalCreatedItemRemainsInInventory": true,
+    "sampleViewEndsWithNotice": "Presentation contrast fades to idle; the created ice remains in inventory. No melting or deletion is depicted."
+  },
+  "sourceKind": "quantum-temperature-cold/ice",
+  "sourceAuthorization": "self-authorized synthetic fixture committed in the identified source workspace; no main-game connection",
+  "files": [
+    {
+      "path": "cooling.mjs",
+      "bytes": 3375,
+      "sha256": "ead38174481bb39b2c726c52e80b12913182ea5ead08fc07b12c80c5f4917a75",
+      "gitBlob": "53249dbd80a2f483e2fe05c63fe2fab8bc70c13b"
+    },
+    {
+      "path": "cooling.wgsl",
+      "bytes": 8056,
+      "sha256": "b747c04decf089245577088655a558a2909f6be25087bf305731b4eb6045ce4b",
+      "gitBlob": "677a200405dfa491c92d3d84e8b5569fc31dfedf"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 18147,
+      "sha256": "c663c2d9a735b00716449dc3bf3d122266eb95d23e88407989851bf51d2213ec",
+      "gitBlob": "0354e228b84502dd3ee1248abc894f2d6c4122e9"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1385,
+      "sha256": "71513b0cfdd23e27f39f6ecfda92b1ebc80a27e1cd6b76b5d0ea89e4940d20ff",
+      "gitBlob": "7814ee42dae84826e1bcc668c0f0ed6e3105e1f7"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4336,
+      "sha256": "81846fe06fcf92aff644c34f9acc147e222228aa9240a08bca6ccf45615f33ff",
+      "gitBlob": "71cb8ee64d865782fad2dd099e329db7fbf7a79e"
+    }
+  ],
+  "validation": {
+    "status": "not_run",
+    "cpu": "not_run",
+    "native": "not_run",
+    "parentIframe": "not_run",
+    "visual": "not_run",
+    "syntax": "not_run",
+    "review": "not-reviewed",
+    "readinessBasis": "Runtime readiness requires real queue completion and validation plus current cause/generation, visibility, size, connected canvas, live device and lifetime checks. Candidate has not been executed; pixels and quality are not proved."
+  },
+  "adoption": "unknown",
+  "userAdopted": false,
+  "creativeEdition": 2,
+  "creativeEditionLimit": 5,
+  "manualReview": false,
+  "publicationEligible": false,
+  "galleryListingEligible": true,
+  "gameIntegration": "not_connected"
+}

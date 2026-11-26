@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quantum Temperature Cold — Astra62 R2</title>
+<style>
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#000}
+canvas{display:block;width:100%;height:100%;}
+output[data-gallery-status]{position:fixed;z-index:2;left:1rem;top:1rem;max-width:calc(100% - 2rem);padding:.5rem .75rem;background:#181818;color:#fff;font:14px/1.4 system-ui,sans-serif;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<canvas aria-label="Quantum Temperature Cold effect"></canvas>
+<output data-gallery-status hidden></output>
+<script type="module">
+import {mountGalleryEffect} from './gallery-adapter.mjs?rev=0354e228b84502dd3ee1248abc894f2d6c4122e9';
+const config={versionId:'quantum-temperature-cold-astra62-r2',fixture:'committed',moduleUrl:'./cooling.mjs?rev=53249dbd80a2f483e2fe05c63fe2fab8bc70c13b',shaderUrl:'./cooling.wgsl?rev=677a200405dfa491c92d3d84e8b5569fc31dfedf',uniformBytes:32,uniformValues:({width,height,age,scale,reduced,live})=>new Float32Array([width,height,age,scale,reduced?1:0,live?1:0,0,0])};
+try{await mountGalleryEffect(config)}catch(error){const status=document.querySelector('[data-gallery-status]');status.hidden=false;status.textContent=String(error?.message??error).slice(0,500)}
+</script>
+</body>
+</html>
