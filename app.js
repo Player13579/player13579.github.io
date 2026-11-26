@@ -10710,6 +10710,8 @@ function expandedMapFocusTargetAvailable(element) {
 }
 
 let pendingTabletMapRestore = null;
+let expandedMapOpenInstance = 0;
+let nativeGravityMapIntent = 0;
 function setExpandedMapOpen(open, { focus = true } = {}) {
   const wasOpen = state.expandedMapOpen;
   if (open && state.fieldFeedOpen) setFieldFeedOpen(false);
@@ -10730,6 +10732,7 @@ function setExpandedMapOpen(open, { focus = true } = {}) {
       : els.mapActionButton;
   }
   if (suspendTabletForMap) state.tabletResumeAfterMap = true;
+  if (willOpen && !wasOpen) expandedMapOpenInstance += 1;
   state.expandedMapOpen = willOpen;
   if (!willOpen) expandedMapGpuRuntime?.suspend();
   clearMovementInput({ preserveQueuedStop: true });
@@ -10951,6 +10954,7 @@ function selfLocationTeleportContext(data = state.data) {
 function beginSelfLocationTeleportFromMap() {
   const context = selfLocationTeleportContext();
   if (!context) return false;
+  if (!context.borrowed) nativeGravityMapIntent += 1;
   state.teleportTargetId = context.self.id;
   state.teleportTargetMode = "body";
   state.teleportTargeting = true;
@@ -11042,6 +11046,7 @@ function beginTeleportTargeting(mode = "body") {
   if (!data || data.phase !== "playing" || data.self.special !== "teleport" || !["body", "target"].includes(mode)) return;
   const liveNow = estimatedServerNow(data);
   if (!data.self.alive || data.self.ejected || data.self.inVent || data.self.teleportReadyAt > liveNow) return;
+  nativeGravityMapIntent += 1;
   state.teleportTargetId = mode === "target" ? (els.teleportTargetSelect.value || data.self.id) : data.self.id;
   state.teleportTargetMode = mode;
   state.teleportTargeting = true;
@@ -11464,6 +11469,12 @@ async function activateExpandedMapPoint(point) {
     rotateMovementSession();
     sendMovement(true);
   }
+  // Preserve the submitted Gravity result, but do not close a newer map/input.
+  const closeOwner = endpoint === "/api/teleport" ? {
+    instance: expandedMapOpenInstance, intent: nativeGravityMapIntent,
+    roomId: state.roomId, playerId: state.playerId,
+    session: state.roomSessionGeneration, phase: state.data?.phase, battle: state.data?.battleStartedAt
+  } : null;
   const ok = await api(endpoint, {
     x: point.x,
     y: point.y,
@@ -11473,6 +11484,17 @@ async function activateExpandedMapPoint(point) {
     abilityId: state.teleportShopAbilityId || undefined
   });
   if (!ok) return;
+  if (closeOwner) {
+    const battle = state.data?.battleStartedAt;
+    const knownBattle = (value) => Number.isFinite(value) && value > 0;
+    if (!state.expandedMapOpen || !state.teleportTargeting || state.screen !== "game" ||
+        state.instantWarpTargeting || state.teleportBorrowed || state.teleportShopAbilityId ||
+        expandedMapOpenInstance !== closeOwner.instance || nativeGravityMapIntent !== closeOwner.intent ||
+        state.roomId !== closeOwner.roomId ||
+        state.playerId !== closeOwner.playerId || state.roomSessionGeneration !== closeOwner.session ||
+        state.data?.phase !== closeOwner.phase ||
+        (knownBattle(battle) && knownBattle(closeOwner.battle) && battle !== closeOwner.battle)) return;
+  }
   if (
     endpoint === "/api/instant-warp" &&
     Math.hypot(Number(ok.self?.x) - point.x, Number(ok.self?.y) - point.y) > 2
@@ -34417,7 +34439,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
