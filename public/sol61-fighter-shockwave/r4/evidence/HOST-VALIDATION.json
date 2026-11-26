@@ -1,0 +1,37 @@
+{
+  "schema": "dva-host-cpu-checks/v1",
+  "passed": true,
+  "checks": [
+    "actual initialization and gesture activation through mocked boundaries",
+    "one normal release per cycle; repeated frame/phase does not duplicate",
+    "one giant release after explicit reset",
+    "normal/giant PCM exactly equal to R2 under same sample rate",
+    "no new source after stopAudio",
+    "actual draw producer remains finite48-byte ABI",
+    "verify creates no AudioContext or sound source",
+    "pagehide teardown follows actual host code under mocked resources",
+    "host source byte-identical to R2"
+  ],
+  "pcm": [
+    {
+      "samples": 8161,
+      "sha256": "a99568e74e973eae870fda3e25da020a54a240d7d665276c691bb6ee0a13b0fa",
+      "finite": true
+    },
+    {
+      "samples": 12960,
+      "sha256": "084c023d5c27b9985d727b795ff3b7aa1874435ad8cd8683d5848dad46ceee59",
+      "finite": true
+    }
+  ],
+  "hostSha256": "3cd30f35977007cae6d00e0cf4af16fa5d796bb7b45f7deb35cbe3fce1e07003",
+  "limits": [
+    "CPU VM with mocked GPU/AudioContext; one import.meta.url replaced with fixed module URL transport boundary; no compilation, real pixels, timing performance or listening",
+    "Tests same preview cycle release deduplication; no real event receipt or producer duplicate gate exists in this R2 host",
+    "Preview550/650ms clocks preserved; gameplay760/1150ms clocks remain separate"
+  ],
+  "actualGPU": "not_run",
+  "actualSize": "not_run",
+  "normalSpeed": "not_run",
+  "normalAudio": "not_run"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "dva-linear-receiver-checks/v1",
+  "passed": true,
+  "model": "CPU algebraic contract checks of exact returned expressions; no raster substitute",
+  "cases": 462,
+  "checks": [
+    "Fixed R3 prefix exact",
+    "Reflected term doubles with incident",
+    "Reflected term independent of base",
+    "Zero incident preserves base and encoded-zero early return",
+    "Beam/transmittance/output encoder unchanged"
+  ],
+  "example": {
+    "rho": 0.5,
+    "incident": 0.4,
+    "r3IncrementDarkBase0_1": 0.16314232222981637,
+    "r3IncrementLightBase0_7": 0.054380774076605465,
+    "r4IncrementBoth": 0.2
+  },
+  "shaderSha256": "14be375e99d1ccaf5cb736a558aff637b74cfb9e73cf08b5e9fd1605abb16901",
+  "limits": [
+    "Diagnostic incidents up to2 are algebra samples, not measured shader irradiance",
+    "Finalunorm clipping may break display-code linearity; no actual pixels or clipping acceptance",
+    "All R3 approximations and preview/game clock distinction remain"
+  ],
+  "actualGPU": "not_run",
+  "actualSize": "not_run",
+  "normalSpeed": "not_run",
+  "fullLifetime": "not_run",
+  "normalAudio": "not_run"
+}
