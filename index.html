@@ -820,7 +820,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
   const out = document.createElement('div');
   out.id = 'dvaViewportCheck';
   out.style.cssText =
-    'position:fixed;top:max(40px,calc(env(safe-area-inset-top) + 12px));left:50%;transform:translateX(-50%);padding:6px 9px;z-index:2147483647;background:#101620;color:#fff;border:1px solid #00e5ff;border-radius:6px;pointer-events:none;white-space:pre;font:11px/1.35 monospace';
+    'position:fixed;top:max(40px,calc(env(safe-area-inset-top) + 12px));left:50%;transform:translateX(-50%);padding:6px 9px;z-index:2147483647;background:#101620;color:#fff;border:1px solid #00e5ff;border-radius:6px;pointer-events:none;box-sizing:border-box;width:max-content;max-width:calc(100vw - 16px);white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.35 monospace';
   function safeInsets() {
     const style = getComputedStyle(probe);
     return [parseFloat(style.paddingTop), parseFloat(style.paddingBottom)];
@@ -849,8 +849,10 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
     const visualBottom = Number.isFinite(vv?.offsetTop) && Number.isFinite(vv?.height) &&
       vv.height > 0 ? vv.offsetTop + vv.height : null;
     const stage = body.classList.contains('game-open') ? 'PLAY' : 'TITLE';
-    const mode = (navigator.standalone === true || matchMedia('(display-mode: standalone)').matches)
-      ? 'standalone' : document.fullscreenElement ? 'full' : 'browser';
+    const displayModes = ['fullscreen', 'standalone', 'minimal-ui', 'browser']
+      .filter(value => matchMedia('(display-mode: ' + value + ')').matches);
+    const legacyStandalone = typeof navigator.standalone === 'boolean' ? String(navigator.standalone) : '–';
+    const fullscreenApi = Boolean(document.fullscreenElement);
     if (stage === 'TITLE') title = 'title V ' + vp.join('/') + ' root ' + bounds(rr).join('..');
     const canvasReady = Boolean(stage === 'PLAY' && rc && root.dataset.fieldRenderer === 'webgpu' &&
       canvas.style.opacity === '1');
@@ -863,12 +865,14 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
       canvasProbe.style.bottom = rp.bottom - rc.bottom + 'px';
     }
     out.textContent = [
-      'DVA viewport 1 · ' + stage + ' · ' + mode,
+      'DVA viewport 2 · ' + (stage === 'PLAY' && !canvasReady ? 'PLAY・描画前' : stage),
+      'mode ' + (displayModes.join('/') || '–') + ' / iOS standalone ' + legacyStandalone +
+        ' / API fullscreen ' + fullscreenApi,
       'V top/h/zoom ' + vp.join('/') + ' inner ' + n(innerHeight) + ' scroll ' + n(scrollY),
       'root ' + bounds(rr).join('..') + ' body ' + bounds(rb).join('..') + ' safe ' + safeInsets().map(n).join('/'),
       'app ' + bounds(ra).join('..') + ' canvas ' + bounds(rc).join('..') + ' fixed ' + bounds(rp).join('..'),
       '下端 V ' + n(visualBottom) + ' / root ' + n(rr?.bottom) + ' / canvas ' + n(rc?.bottom) + ' / fixed ' + n(rp?.bottom),
-      '差 V−canvas ' + signed(diff(visualBottom, rc?.bottom)) +
+      '差 V−app ' + signed(diff(visualBottom, ra?.bottom)) + ' / V−canvas ' + signed(diff(visualBottom, rc?.bottom)) +
         ' / root−canvas ' + signed(diff(rr?.bottom, rc?.bottom)),
       'シアン: 固定枠の下端 / ピンク: ' + (markCanvas ? '描画面の下端' : canvasReady ? '固定枠外' : '描画前'),
       stage === 'PLAY' ? title : ''
