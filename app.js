@@ -9382,7 +9382,8 @@ function bindEvents() {
     cancelThrowTargeting(true);
     cancelEnhanceAction();
     state.continuousActionKeyAt.clear();
-    clearMovementInput();
+    // The stick blur listener runs first and may have queued this room's STOP.
+    clearMovementInput({ preserveQueuedStop: currentGameplayOwnsQueuedStop() });
     clearClairvoyanceCameraInput();
   });
   window.addEventListener("focus", () => void recoverRoomInteractionAfterBackground());
@@ -9394,7 +9395,7 @@ function bindEvents() {
   });
   window.addEventListener("pagehide", () => {
     state.foregroundRecovery.visibilityEpoch += 1;
-    cancelTransientGameInputForBackground();
+    cancelTransientGameInputForBackground({ preserveQueuedStop: true });
     recordUsageExit();
   });
   window.addEventListener("pointerout", (event) => {
@@ -9526,10 +9527,12 @@ function bindEvents() {
       stopContinuousActionHold();
       stopContinuousActionKeyHold();
       state.continuousActionKeyAt.clear();
-      cancelTransientGameInputForBackground();
+      cancelTransientGameInputForBackground({ preserveQueuedStop: true });
     }
     if (!document.hidden) {
-      if (!sameCompletedOfflineForegroundRecovery()) clearMovementInput();
+      if (!sameCompletedOfflineForegroundRecovery()) {
+        clearMovementInput({ preserveQueuedStop: currentGameplayOwnsQueuedStop() });
+      }
       void recoverRoomInteractionAfterBackground();
     }
     if (!document.hidden) {
@@ -12693,10 +12696,16 @@ function invalidateFocusResync() {
   state.focusResyncPromise = null;
 }
 
-function cancelTransientGameInputForBackground() {
+function currentGameplayOwnsQueuedStop() {
+  const data = state.data;
+  return state.screen === "game" && data?.phase === "playing" &&
+    Boolean(state.roomId && state.playerId && data.roomId === state.roomId && data.selfId === state.playerId);
+}
+
+function cancelTransientGameInputForBackground({ preserveQueuedStop = false } = {}) {
   invalidateFocusResync();
   cancelCommonActionGestures();
-  clearMovementInput();
+  clearMovementInput({ preserveQueuedStop: preserveQueuedStop && currentGameplayOwnsQueuedStop() });
   clearClairvoyanceCameraInput();
   cancelActiveRootShortcutHolds();
   cancelActiveAbilityBatchHolds();
@@ -34783,7 +34792,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449&ownedMysteryBoxDedup=owned-mystery-box-dedup-forward-20261126-1510&widePanelControlTarget=wide-panel-control-target-forward-20261126-1517&selfHealAudioRate=self-heal-audio-rate-forward-20261126-1522", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449&ownedMysteryBoxDedup=owned-mystery-box-dedup-forward-20261126-1510&widePanelControlTarget=wide-panel-control-target-forward-20261126-1517&selfHealAudioRate=self-heal-audio-rate-forward-20261126-1522&backgroundOwnedStop=background-owned-stop-forward-20261126-1538", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
