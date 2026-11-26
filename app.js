@@ -7884,15 +7884,54 @@ async function invokeCommonDodge() {
   return api("/api/dodge");
 }
 
-function bindCommonActionGesture(button, { tapInvoke, holdInvoke, detail, showPointerDetail = true }) {
+function observeTabletDodgeModalHistory() {
+  if (!("MutationObserver" in window)) return null;
+  let changed = false;
+  const compare = (records) => {
+    const subsequentState = new Map();
+    for (let i = records.length - 1; !changed && i >= 0; --i) {
+      const { target, oldValue } = records[i];
+      const currentValue = subsequentState.has(target) ? subsequentState.get(target) : target.getAttribute("hidden");
+      changed = (oldValue === null) !== (currentValue === null);
+      subsequentState.set(target, oldValue);
+    }
+  };
+  const observer = new window.MutationObserver(compare);
+  for (const node of [els.keybindOverlay, els.expandedMapOverlay, els.fieldFeedPanel,
+    els.operatorBranchPanel, els.switchDragMenu, els.killCameraOverlay]) {
+    if (node) observer.observe(node, { attributes: true, attributeFilter: ["hidden"], attributeOldValue: true });
+  }
+  return () => {
+    compare(observer.takeRecords());
+    observer.disconnect();
+    return changed;
+  };
+}
+
+function tabletDodgeSecondaryTapEligible(event) {
+  return !state.keybindOpen && !state.expandedMapOpen && !state.fieldFeedOpen &&
+    !state.operatorBranchesOpen && !state.switchDrag.opened &&
+    els.killCameraOverlay.hidden && tabletWalkingStickOwnsDifferentTouch(event)
+    ? state.tabletStick.geometry : null;
+}
+
+function bindCommonActionGesture(button, { tapInvoke, holdInvoke, detail, showPointerDetail = true, secondaryTapEligible = null }) {
   if (!button) return;
-  const gesture = { pointerId: null, startX: 0, startY: 0, moved: false, held: false, timer: 0, suppressClick: false };
+  const gesture = { pointerId: null, startX: 0, startY: 0, moved: false, held: false, timer: 0, suppressClick: false, secondary: null, modalHistory: null };
   const clearTimer = () => { if (gesture.timer) window.clearTimeout(gesture.timer); gesture.timer = 0; };
   const hideDetail = () => { if (state.inventoryItemDetailSource === button) hideInventoryItemDetail(); };
   const showDetail = () => { if (showPointerDetail) showInventoryItemDetail(detail, button, { autoClose: false }); };
   const finish = (event, { cancelled = false } = {}) => {
     if (gesture.pointerId === null || (event?.pointerId !== undefined && event.pointerId !== gesture.pointerId)) return false;
-    const shouldTap = !cancelled && !gesture.moved && !gesture.held && !button.disabled;
+    const modalChanged = gesture.modalHistory?.();
+    gesture.modalHistory = null;
+    let shouldTap = !cancelled && !gesture.moved && !gesture.held && !button.disabled && !modalChanged;
+    if (shouldTap && gesture.secondary) {
+      const rect = button.getBoundingClientRect();
+      shouldTap = secondaryTapEligible(event) === gesture.secondary && [event.clientX, event.clientY].every(Number.isFinite) &&
+        event.clientX >= rect.left && event.clientX <= rect.right &&
+        event.clientY >= rect.top && event.clientY <= rect.bottom;
+    }
     clearTimer();
     gesture.pointerId = null;
     gesture.suppressClick = !cancelled;
@@ -7902,10 +7941,19 @@ function bindCommonActionGesture(button, { tapInvoke, holdInvoke, detail, showPo
   };
   const cancel = (event) => finish(event, { cancelled: true });
   button.addEventListener("pointerdown", (event) => {
-    if (!event.isPrimary || button.disabled || (event.pointerType === "mouse" && event.button !== 0)) return;
-    if (gesture.pointerId !== null) cancel({ pointerId: gesture.pointerId });
+    if (button.disabled || (event.pointerType === "mouse" && event.button !== 0)) return;
+    const secondary = !event.isPrimary && event.pointerType === "touch" ? secondaryTapEligible?.(event) : null;
+    if (!event.isPrimary && !secondary) return;
+    if (gesture.pointerId !== null) {
+      if (secondaryTapEligible && gesture.pointerId !== event.pointerId) return;
+      cancel({ pointerId: gesture.pointerId });
+    }
+    const modalHistory = secondary ? observeTabletDodgeModalHistory() : null;
+    if (secondary && !modalHistory) return;
     event.preventDefault();
     gesture.pointerId = event.pointerId;
+    gesture.secondary = secondary;
+    gesture.modalHistory = modalHistory;
     gesture.startX = event.clientX;
     gesture.startY = event.clientY;
     gesture.moved = false;
@@ -7918,7 +7966,7 @@ function bindCommonActionGesture(button, { tapInvoke, holdInvoke, detail, showPo
       gesture.timer = 0;
       gesture.held = true;
       gesture.suppressClick = true;
-      void holdInvoke();
+      if (!gesture.secondary) void holdInvoke();
     }, COMMON_ACTION_HOLD_DELAY_MS);
   });
   const move = (event) => {
@@ -8154,7 +8202,8 @@ function bindEvents() {
     opener: els.tabletVendingShortcut
   }));
   bindCommonActionGesture(els.dodgeButton, { tapInvoke: invokeCommonDodge, holdInvoke: invokeCommonBarrier, detail: dodgeDetail, showPointerDetail: false });
-  bindCommonActionGesture(els.tabletDodgeShortcut, { tapInvoke: invokeCommonDodge, holdInvoke: invokeCommonBarrier, detail: dodgeDetail, showPointerDetail: false });
+  bindCommonActionGesture(els.tabletDodgeShortcut, { tapInvoke: invokeCommonDodge, holdInvoke: invokeCommonBarrier,
+    detail: dodgeDetail, showPointerDetail: false, secondaryTapEligible: tabletDodgeSecondaryTapEligible });
   els.tabletRenkiShortcut.addEventListener("click", () => els.renkiButton.click());
   els.tabletDonateShortcut.addEventListener("click", () => void api("/api/donate"));
   els.vendingButton.addEventListener("click", () => setVendingOpen(!state.vendingOpen, {
@@ -34481,7 +34530,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
