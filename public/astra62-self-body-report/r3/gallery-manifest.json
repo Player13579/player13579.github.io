@@ -1,0 +1,143 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "groupId": "self-body-report-astra62",
+  "versionId": "self-body-report-astra62-r3",
+  "creativeEdition": 3,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=self-body-report-astra62-r3",
+  "standalone": "index.html",
+  "protocol": "dva-gallery-startup/v1",
+  "standardFixture": "confirmed",
+  "automaticIframe": true,
+  "manualReview": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "publicationState": "candidate-branch-only",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "actualSize": "not_run",
+  "fullLifetime": "not_run",
+  "normalAudioListening": "not_run",
+  "lifetimeMs": 1120,
+  "interCauseRestMs": 500,
+  "uniform": {
+    "bytes": 32,
+    "values": [
+      "width",
+      "height",
+      "ageMs",
+      "scale",
+      "reduced",
+      "live",
+      0,
+      0
+    ]
+  },
+  "sourceR2": {
+    "repository": "Player13579/player13579.github.io",
+    "commit": "0842aa2126ed10c69db640bd7de0c32c03cde7d4",
+    "path": "public/astra62-self-body-report/r2/",
+    "versionId": "self-body-report-astra62-r2",
+    "gateBlob": "fa20c9fecda0f55e507b7e71cd630025938f887b",
+    "shaderBlob": "9b8050c78855ebb4ee2e7ed2e04a360bf84424ea"
+  },
+  "reusedAdapter": {
+    "author": "GPT-6.1-Sol",
+    "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0",
+    "byteUnchanged": true
+  },
+  "previousTechnicalAuthor": "GPT-6-Luna",
+  "creativeApi": {
+    "provider": "OpenAI Responses API",
+    "model": "gpt-6.2-astra",
+    "reasoningEffort": "high",
+    "id": "resp_097261eab4458115006b07c40f9b9c87d0bc4388e25c9f31ba",
+    "inputSha256": "64230a810b05488cb6db11f66f8e05aa916fc9505b53a4b39cf1a9014b59742c",
+    "outputStatus": "completed",
+    "generatedShaderSha256": "a23482c8d70f9105c17a0132af5feaa303c3aa437bb33f1e0c344c519d36d113"
+  },
+  "bAuthority": {
+    "repository": "Player13579/B",
+    "commit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+    "foundationBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "extensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+  },
+  "input": {
+    "producer": "reportBody",
+    "committed": "Successful current human self-report; playing to meeting; same owned match, meeting and accepted sequence.",
+    "preview": "Synthetic fixture only. No game connection. No victim identity or location.",
+    "producerSource": "offline-server-main.js#L17368-L17386"
+  },
+  "referenceDisplay": {
+    "adapterScale": "max(0.1,min(width/292,height/135,dpr))",
+    "observed": false
+  },
+  "designTitle": "R3｜折返し導光板",
+  "design": "R3では、横臥標識を「光る人」から「光を遮る印刷」に反転する。固定された赤い通報器の切り欠き窓に、斜めに面取りした蜜色の導光板を置く。充填されると厚い側は杏色に明るくなり、その面積を使って離れた丸い頭、横たわる胴、折れた脚を暗く読み抜かせる。これは成立済みの自己通報を描く表示座標上の材質表現で、被通報者の姿でも世界内の照明でもない。\n板の左下だけは黒い目地が開いている。そこから光が底の幅広い樹脂帯に入り、右頬で折り返して肩のマストへ上がる。曲がるたびに帯の明るい面の向きも変わる。赤い琺瑯は透過させず、帯のすぐ脇と先端に向いた肩だけに色を受ける。マストは金属の片側を暗く残し、内部の導光部を先端へつなぐ。370 msで先端が最も明るくなり、その接点から暖色の弧が一枚だけ離れる。弧の厚みの中で進行側を淡くし、柔らかい広がりも同じ有限弧の丸い端で閉じる。\n到着、板の充填、給電、パイロット、送出は既存の時相を使う。送出後は帯が先に暗くなり、板に残る光で標識を保持してから器体ごと消す。描画は線形色で材質ごとに合成し、最後に既存背景へのフェードとsRGB符号化を行う。イベントゲート、PCM、会議開始処理には手を加えない。",
+  "observationPlan": "未実行の受入手順：\n1. 差し替えるのは版名とシェーダだけとし、既存アダプタでWGSLコンパイル、vs/fsのパイプライン生成、実GPU提出を順に確認する。元の32バイトのView、binding 0、既定unorm出力で試す。activeFlagが無効、負のage、0 ms、1090〜1120 ms、寿命後の各画面を元のクリア背景と比較する。\n2. ギャラリーとゲームの実表示寸法、既定強度、通常速度で同じfixtureをR2と見比べる。R3の第一の判別点は、光る線画ではなく、蜜色と杏色の面を抜く暗い横臥標識。頭と胴の間に光る隙間が残り、折れた脚が板の斜面に紛れず、筐体との間には暗い目地が残るかを見る。背景を変えたり露出を上げたりして合格にしない。\n3. 供給の順序を見る。78〜238 msで板の左から右へ色が入り、170〜350 msには既に明るい左下の継ぎ目から底帯、右頬、肩へ向かう。筐体全周が同時に縁取られないこと。肩でマストの根元が隠れ、先端の受光色が空中の別の斑点にならないこと。410〜595 msで帯の光が引いた後にも、標識面は読めるかを確かめる。\n4. 発音を許可した通常再生で、160〜350 msの既存の立上りから370 msのPCMの打点へ続けて見る。先端が頂点を迎えるところから一枚の厚い弧が離れ、前縁と後縁が二本の信号に見えず、端まで一続きで780 msまでに消えるか。低減設定でも同じ先端・位相・一発で、半径の増分だけが27から10基準単位になるかを比較する。verifyでは従来どおり無音を確認する。\n5. 同じfixtureでの表示確認とは別に、実イベントで未コミット・他者報告・重複通知が追加発火せず、成立したOWN HUMANの会議開始報告に一度だけ対応することを確認する。人物投影、被通報者の情報、行先、確認表示を探しても現れないこと。コンパイル、実提出、発光の実寸判読、聴感、実接続は別々に結果を記録する。",
+  "cpu": "pass: syntax, fixture gate, two unique receipts, iframe module/asset wiring, original 5-rate PCM equivalence",
+  "wgslValidation": "Naga WASI 0.1.0: validated and emitted SPIR-V; no device",
+  "validation": {
+    "node": "v24.19.0",
+    "naga": "naga-wasi-cli@0.1.0",
+    "spirvBytes": 15764,
+    "spirvSha256": "7f640ff313291f2166759e60228b12e58e78cf02c85a6d10753d53da54df76e2",
+    "version": "self-body-report-astra62-r3",
+    "lifetimeMs": 1120,
+    "acceptedUnique": 2,
+    "pcm": {
+      "8000": "657da265af602eb6e7bf45e8139f5aa2582306ebfedeaba781fca16a13012ed7",
+      "44100": "732a29640f27384034a7e79233b45127c2e7f5de0ccd1aa22e2e9af486edfd92",
+      "48000": "c65ebdc4322a10ff390b48e28c3a99cc5811946ad2003e679e88af166d2ff612",
+      "96000": "7013819b84654e74f93fadf5d81b5d80b03e6d944f66d0c532f1a9633452f94a",
+      "192000": "accd46c529729f2361523c9cdd4b60f794767fbf484bd4161796e36b2802e251"
+    },
+    "shaderSha256": "a23482c8d70f9105c17a0132af5feaa303c3aa437bb33f1e0c344c519d36d113",
+    "note": "CPU checks only. Fixture data are synthetic."
+  },
+  "files": [
+    {
+      "path": "report.mjs",
+      "bytes": 1874,
+      "sha256": "6789f2cdf4b5d2a5efe0217c87816cd70d95158397c9deb19f064d0f8649038b"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 7796,
+      "sha256": "ff7703e5ee0b6a4204dc26841044501b98b229d513cbf3ae5c8e7b4fabb72176"
+    },
+    {
+      "path": "gallery-effect.mjs",
+      "bytes": 444,
+      "sha256": "342f572d87618fbfb59f0b8dcc7f15a43017139bd1af4a4fcf5b611692c1c0ac"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1423,
+      "sha256": "b2513a7057f3085dea208dbde47da9b4e582ce6189f56865a6700fc2a170cd3e"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1904,
+      "sha256": "2644904cb5d31b1ae9ab776aa329b5341b251ec9ed47a98902704e2e1ed09a4b"
+    },
+    {
+      "path": "effect.wgsl",
+      "bytes": 9153,
+      "sha256": "a23482c8d70f9105c17a0132af5feaa303c3aa437bb33f1e0c344c519d36d113"
+    },
+    {
+      "path": "validation.mjs",
+      "bytes": 3518,
+      "sha256": "d52b3820a30ae45a24f9d5a6b2ba3fa69c104bf189f8a184f19be8ca237d7d8d"
+    }
+  ]
+}
