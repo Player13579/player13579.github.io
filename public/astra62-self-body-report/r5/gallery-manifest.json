@@ -1,0 +1,277 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "groupId": "self-body-report-astra62",
+  "versionId": "self-body-report-astra62-r5",
+  "creativeEdition": 5,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=self-body-report-astra62-r5",
+  "standalone": "index.html",
+  "protocol": "dva-gallery-startup/v1",
+  "standardFixture": "confirmed",
+  "automaticIframe": true,
+  "manualReview": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "publicationState": "candidate-branch-only",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "actualSize": "not_run",
+  "fullLifetime": "not_run",
+  "normalAudioListening": "not_run",
+  "lifetimeMs": 1120,
+  "interCauseRestMs": 500,
+  "uniform": {
+    "bytes": 32,
+    "values": [
+      "width",
+      "height",
+      "ageMs",
+      "scale",
+      "reduced",
+      "live",
+      0,
+      0
+    ]
+  },
+  "sourceR2": {
+    "repository": "Player13579/player13579.github.io",
+    "commit": "0842aa2126ed10c69db640bd7de0c32c03cde7d4",
+    "path": "public/astra62-self-body-report/r2/",
+    "versionId": "self-body-report-astra62-r2",
+    "gateBlob": "fa20c9fecda0f55e507b7e71cd630025938f887b",
+    "shaderBlob": "9b8050c78855ebb4ee2e7ed2e04a360bf84424ea"
+  },
+  "reusedAdapter": {
+    "author": "GPT-6.1-Sol",
+    "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0",
+    "byteUnchanged": true
+  },
+  "previousTechnicalAuthor": "GPT-6-Luna",
+  "creativeApi": {
+    "provider": "OpenAI Responses API",
+    "model": "gpt-6.2-astra",
+    "reasoningEffort": "high",
+    "id": "resp_0ff0f99d2d4c04c6006b07ccc5f2f487d0abd2732182599610",
+    "inputSha256": "130b1fabef74c70de7c6bd6df5b391c08bc50a919acb0db866658249d06db944",
+    "inputHashBasis": "Exact UTF-8 JSON request body",
+    "outputStatus": "completed",
+    "generatedShaderSha256": "2f85a3aa45a3d77b1a4d5128d8f20d7a0233d9a3b23998c7884c823254404530"
+  },
+  "bAuthority": {
+    "repository": "Player13579/B",
+    "commit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+    "foundationBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "extensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+  },
+  "input": {
+    "producer": "reportBody",
+    "committed": "Successful current human self-report; playing to meeting; same owned match, meeting and accepted sequence.",
+    "preview": "Synthetic fixture only. No game connection. No victim identity or location.",
+    "producerSource": "offline-server-main.js#L17368-L17386"
+  },
+  "referenceDisplay": {
+    "adapterScale": "max(0.1,min(width/292,height/135,dpr))",
+    "observed": false
+  },
+  "designTitle": "self-body-report-astra62-r5：送出端から離れる一枚の弧",
+  "design": "Eは、人による自己通報が成立したことを一度だけ示す。固定した器体で最も長く読ませるのは、広い蜜色の導光板に暗色で刷った匿名の横臥標識である。頭と胴の公称5.45単位の空きには同じ板が見える。左下の開いた給光口、底から右頬へ折れる樹脂帯、煉瓦色の琺瑯、肩から出る金属マストとその発光内層はR4のままとする。板・帯・内層は別々の速さで放電し、弧が消えた後にも光が残る。端面の頂点はPCM onsetの370 msに一度だけ置き、直後から減衰させる。\n\nR5で変えるのは、端面のすぐ外で光を渡す形である。R4では端面から6.2単位の裾と、弧の芯の後方にまで回る4.0単位の裾が、小さい移動量の中で重なった。R5では端面の自由空間側の裾を縁から1.20単位に収める。金属面が受ける暖色は削らない。弧には半径方向の断面を与え、淡い進行面と丸い両端を残し、後面だけを短い滑らかな減衰にする。この減衰は現在の弧の芯と裾の両方に掛かり、背景や端面から色を引かない。発射時から同じ断面を運ぶので、途中で弧を切り替えたり、離れたことを黒線で示したりしない。通常の中心線移動量は27、軽減時は10単位。軽減時だけ序盤に移動を少し多く配分し、終盤に減速する。弧を大きくして距離を稼ぐのではない。\n\n支持域の判定：先端中心から送出軸上の距離をs、弧の中心線半径をRとする。設計座標でのAA半幅aは0.67 / max(scale, 0.001)。端面とマストの外縁AAはmin(a, 1.20)なので、端面の裾を含む外端はS = 2.72 + 1.20 = 3.92。軸上ではマストの最近点は先端で、その外端は1.88 + min(a, 1.20)以下。筐体の上端は先端より13単位下にあるため、a ≤ 13なら筐体もこの先へ出ない。弧の後面の半遷移幅b = clamp(a, 0.70, 0.85)、後方限界H = 1.15 + b。s ≤ R − Hでは裾もAA付きの芯も厳密にゼロとなる。したがってG = R − H − S > 0なら幅Gの区間は元の背景そのものであり、明るい芯同士の空きだけを測った値ではない。区間は弧の移動で連続的に開く。立ち上がり直後は逆に端面と芯が接する。例えば380 ms、s = 2.7では両モードとも後面の重みと芯の被覆が正である。\n\nこの判定は連続座標でのもの。Hを最大の2.00としても595 msのGは通常12.76、軽減5.39単位ある。scale = 0.5なら軽減側でも約2.70描画画素幅だが、画素中心の位相や後段の縮小表示まで保証する値ではない。極小倍率では端面と後面のAAを有界にした代わりに輪郭が十分に標本化されない。さらにa > 13では従来どおりの筐体AAも別途算入する必要がある。実寸・等速で分離が知覚できるか、音と一致するかは未確認である。",
+  "observationPlan": "1. 静的検査と配線：shader文字列をそのままNagaと実行先WebGPUのcreateShaderModule / render pipelineに渡し、診断を保存する。group 0 / binding 0、Viewのsize・ageMs・scale・reduced・activeFlagとpadの配置、vs/fs、追加リソースなしをR4と照合する。時刻は既存のイベント時計、PCMは既存のまま。非アクティブ、t ≤ 0、1090、1120 ms以後と描画域外を基準背景として読み戻し、alpha = 1と表示符号化が一度だけであることを確かめる。\n\n2. JSで支持域を検算する。u = clamp((t−370)/390, 0, 1)、m = clamp(reduced, 0, 1)、R = 3.1 + mix(27, 10, m) * mix(u, u*(2−u), m)。shaderのreleaseBlendと同じbでGを計算する。a ≤ 13でH = 2.00を使った下限の目安（ms : 通常G / 軽減G、設計単位）は370 : −2.82 / −2.82、440 : 2.03 / 0.45、595 : 12.76 / 5.39、680 : 18.64 / 6.76、735 : 22.45 / 7.14。370では弧の重み自体がゼロなので、負の値は発射位置の幾何だけを示す。380で端面上の芯、次にGの零交差を検査する。最も広い後面AAでも通常は約411 ms、軽減は約430 msで開く。a = 0.67では表よりGが0.15広い。中間のmでも同じ式を使い、時間掃引で開いた区間が閉じないこと、780以後は弧の重みがゼロであることを検査する。極小scaleの境界試験では、軸の単位ベクトルをeとしてSの代わりに保守上限max(3.92, (a−13)/(−e.y))を使う。背景画素を保証できない寸法は合格寸法に数えない。\n\n3. ピクセル検査：実アダプタの標準・最狭ギャラリー、DPR違い、奇数/偶数寸法、軽減on/offで行う。595/680/735 msには、実際の画素中心をqに戻し、送出軸近傍でSより外かつR−Hより内、マスト・筐体の被覆もゼロの標本を抽出する。同じ描画先の非アクティブ背景と一致するか、その前方には現在の弧があるかを対で調べる。暗く見えるだけの裾を分離と誤認しないよう、符号化後の比較と浮動小数の支持域検算を併用する。幅は設計単位、描画画素、最終表示画素を分けて記録する。該当標本がない場合は未解像とする。\n\n4. 実寸・等速・音ありでの観察はこれから行う。370前後を複数のフレーム位相で再生し、PCMのアタックに端面が一度だけ応え、そこに触れていた弧が右上に離れる順で見えるかを確認する。静止画での初出位置だけでは判定しない。特に狭幅の軽減表示で、595–735 msの暗い空き、前面の曲率、丸い端、残像や第二波・受信先の不在を見る。780直後と865 msでも板・折れ帯・マスト内層を個別に比較し、残光が標識を縁取らず、頭と胴の間が蜜色のままかを確認する。GPU読み戻し、実寸視認、実音同期の結果はいずれも設計上の計算値と分けて記録する。",
+  "cpu": "pass: module syntax, synthetic event gate, two unique receipts, iframe entry and asset references, R4 report module identical after version change, original five-rate PCM equivalence",
+  "wgslValidation": "Naga WASI 0.1.0: validated and emitted SPIR-V; no device",
+  "validation": {
+    "node": "v24.19.0",
+    "naga": "naga-wasi-cli@0.1.0",
+    "spirvBytes": 17544,
+    "spirvSha256": "9744fdcb5e078adc4953e6144845254ad510018a4b7ff73a67592323f9e79716",
+    "resolvedModuleAndShaderPaths": [
+      "public/astra62-self-body-report/r2/report.mjs",
+      "public/astra62-self-body-report/r5/effect.wgsl",
+      "public/astra62-self-body-report/r5/gallery-adapter.mjs",
+      "public/astra62-self-body-report/r5/gallery-effect.mjs",
+      "public/astra62-self-body-report/r5/preview.mjs",
+      "public/astra62-self-body-report/r5/report.mjs"
+    ],
+    "version": "self-body-report-astra62-r5",
+    "lifetimeMs": 1120,
+    "axisGapLowerBounds": {
+      "normal": {
+        "595": 12.757,
+        "680": 18.642,
+        "735": 22.449
+      },
+      "reduced": {
+        "595": 5.39,
+        "680": 6.759,
+        "735": 7.139
+      }
+    },
+    "acceptedUnique": 2,
+    "pcm": {
+      "8000": "657da265af602eb6e7bf45e8139f5aa2582306ebfedeaba781fca16a13012ed7",
+      "44100": "732a29640f27384034a7e79233b45127c2e7f5de0ccd1aa22e2e9af486edfd92",
+      "48000": "c65ebdc4322a10ff390b48e28c3a99cc5811946ad2003e679e88af166d2ff612",
+      "96000": "7013819b84654e74f93fadf5d81b5d80b03e6d944f66d0c532f1a9633452f94a",
+      "192000": "accd46c529729f2361523c9cdd4b60f794767fbf484bd4161796e36b2802e251"
+    },
+    "shaderSha256": "2f85a3aa45a3d77b1a4d5128d8f20d7a0233d9a3b23998c7884c823254404530",
+    "note": "CPU checks only. Fixture data are synthetic.",
+    "staticAxisComparison": {
+      "method": "CPU evaluation of R4 and R5 fragment equations (double precision, no GPU). Along the outgoing axis at 0.1 design-unit increments; contiguous background-equivalent samples between positive source and carrier groups, RGB tolerance 1e-14. Keys are scale/reduced/ageMs. Intervals report first and last sample in design units; null means no qualifying interval.",
+      "samples": {
+        "r4": {
+          "0.5/0/390": null,
+          "0.5/0/595": [
+            9.0,
+            12.1
+          ],
+          "0.5/0/680": [
+            9.0,
+            18.0
+          ],
+          "0.5/0/735": [
+            9.0,
+            21.8
+          ],
+          "0.5/1/390": null,
+          "0.5/1/595": null,
+          "0.5/1/680": null,
+          "0.5/1/735": null,
+          "1.0/0/390": null,
+          "1.0/0/595": [
+            9.0,
+            12.1
+          ],
+          "1.0/0/680": [
+            9.0,
+            18.0
+          ],
+          "1.0/0/735": [
+            9.0,
+            21.8
+          ],
+          "1.0/1/390": null,
+          "1.0/1/595": null,
+          "1.0/1/680": null,
+          "1.0/1/735": null
+        },
+        "r5": {
+          "0.5/0/390": null,
+          "0.5/0/595": [
+            4.0,
+            16.6
+          ],
+          "0.5/0/680": [
+            4.0,
+            22.5
+          ],
+          "0.5/0/735": [
+            4.0,
+            26.3
+          ],
+          "0.5/1/390": null,
+          "0.5/1/595": [
+            4.0,
+            9.3
+          ],
+          "0.5/1/680": [
+            4.0,
+            10.6
+          ],
+          "0.5/1/735": [
+            4.0,
+            11.0
+          ],
+          "1.0/0/390": null,
+          "1.0/0/595": [
+            4.0,
+            16.8
+          ],
+          "1.0/0/680": [
+            4.0,
+            22.7
+          ],
+          "1.0/0/735": [
+            4.0,
+            26.5
+          ],
+          "1.0/1/390": null,
+          "1.0/1/595": [
+            4.0,
+            9.4
+          ],
+          "1.0/1/680": [
+            4.0,
+            10.8
+          ],
+          "1.0/1/735": [
+            4.0,
+            11.2
+          ]
+        }
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "effect.wgsl",
+      "bytes": 10050,
+      "sha256": "2f85a3aa45a3d77b1a4d5128d8f20d7a0233d9a3b23998c7884c823254404530"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625"
+    },
+    {
+      "path": "gallery-effect.mjs",
+      "bytes": 444,
+      "sha256": "3b23f19083e3e699ed39dcdb38a443c1bb9b2175cb3102179636e6bdd932e039"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1423,
+      "sha256": "09a00bc60ee5ffac6847b6dc990c2130df3630ccb9417f26a4c926bce0c90eb9"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1904,
+      "sha256": "a48d32f01b32066749af54390d8f6ca9862e8d16c863550178f5257e80fa030b"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 7796,
+      "sha256": "f3af4c57872ca47ccd5688638e0b2e11014a0b75c5607bca51bd8414a2e8314b"
+    },
+    {
+      "path": "report.mjs",
+      "bytes": 1874,
+      "sha256": "5fe69035b0b84f9a6634a49e427dc0cc904e3a8f844e9c11c80d6883518e28a3"
+    },
+    {
+      "path": "validation.mjs",
+      "bytes": 5430,
+      "sha256": "59a0cd5d5be722845887ba8021954bb6cdef13fbd57254e95fe9967445feb44b"
+    }
+  ],
+  "sourceR3": {
+    "repository": "Player13579/player13579.github.io",
+    "commit": "3295ed7ce7674c4a46134279b97f919b98b04bca",
+    "path": "public/astra62-self-body-report/r3/",
+    "versionId": "self-body-report-astra62-r3",
+    "gateBlob": "da2b5ceb82517c2bd54b248c60d27ae53d255d3a",
+    "shaderBlob": "230204946214f465312aa189178c977e51f9e85e",
+    "shaderSha256": "a23482c8d70f9105c17a0132af5feaa303c3aa437bb33f1e0c344c519d36d113"
+  },
+  "sourceR4": {
+    "repository": "Player13579/player13579.github.io",
+    "commit": "6ee88bbf323ffcf497cd16b252d8ea371a1f67b5",
+    "path": "public/astra62-self-body-report/r4/",
+    "versionId": "self-body-report-astra62-r4",
+    "gateBlob": "f929a4edc49b20306482daf3f3e76f928016c9d3",
+    "shaderBlob": "ed677aacd1abb9f3a61e16d9d964f6cd7da5cb9a",
+    "shaderSha256": "c34bc0a256a0ec54d1e1b975ce80319de52966d40edbeb787f9e597c4c8c269f"
+  }
+}
