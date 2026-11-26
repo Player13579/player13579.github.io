@@ -1,0 +1,79 @@
+{
+  "status": "PASS_CPU_STATIC_CANDIDATE_CHECKS",
+  "candidate": "Fire R6 only; not native/quality accepted",
+  "baseR5Immutable": true,
+  "r5HashesVerifiedBeforeBuild": true,
+  "runtimeHashClosure": true,
+  "packageAndSourceManifestClosure": true,
+  "r5RuntimeAndObserverByteExact": true,
+  "audioEnvelopeAndPCMByteExact": true,
+  "audioVersionMetadataOnlyChanged": true,
+  "changedShaderScope": "floor receiving-light helper and one receiving-light expression; volume/observer loop byte-identical",
+  "newFloorMath": {
+    "finiteNonnegative": true,
+    "sourceOffAndEndpointsZero": true,
+    "spatialGridSamples": 1127,
+    "ages": [
+      {
+        "age": 0.03,
+        "peak": 0.014667189541487732,
+        "max_step_0_02": 0.0008801144700024757
+      },
+      {
+        "age": 0.1,
+        "peak": 0.19991157364845594,
+        "max_step_0_02": 0.0065095792943828945
+      },
+      {
+        "age": 0.4,
+        "peak": 0.2489382922189374,
+        "max_step_0_02": 0.006746876303125676
+      },
+      {
+        "age": 0.77,
+        "peak": 0.2635293767858272,
+        "max_step_0_02": 0.006959735131656319
+      },
+      {
+        "age": 0.84,
+        "peak": 0.14070115088882032,
+        "max_step_0_02": 0.00218935623465355
+      },
+      {
+        "age": 0.92,
+        "peak": 0.009045005935231812,
+        "max_step_0_02": 0.00010742323293910956
+      },
+      {
+        "age": 0.98,
+        "peak": 0.0,
+        "max_step_0_02": 0.0
+      }
+    ],
+    "smoothNoRectangleGate": "static source inspection + CPU mirror; not rendered proof"
+  },
+  "nodeSyntax": "4 modules pass",
+  "planSmoke": "{\"id\":\"fire-zero-sol61-r6\",\"plan\":\"pass\",\"depthSamples\":[32,64]}",
+  "wgslCompiler": "actual Chrome WebGPU pipeline compilation/startup passed after renaming reserved identifier",
+  "GPU": "not run",
+  "browser": "owned Chrome actual WebGPU; candidate route intercepted; no gallery selector",
+  "native": "actual browser WebGPU pass-limited; no Safari/iPad",
+  "qualityAcceptance": "fail",
+  "webgpuActualChrome": {
+    "result": "pass-limited-owned-Chrome-standalone-route-intercept",
+    "readySamples": 48,
+    "gpuCompletedSamples": 48,
+    "twoPassSamples": 48,
+    "shaderCompileError": false,
+    "verifyMuted": true,
+    "parentGallery": "not_run",
+    "evidence": "evidence/current-chrome-20261126/native.json"
+  },
+  "qualityReview": {
+    "result": "fail",
+    "qualityAccepted": false,
+    "finding": "straight vertical boundaries remain on the rectangular floor receiving-light patch",
+    "screenshot": "evidence/current-chrome-20261126/r6-07.png",
+    "exactScreenshotAgeEms": "not_correlated"
+  }
+}

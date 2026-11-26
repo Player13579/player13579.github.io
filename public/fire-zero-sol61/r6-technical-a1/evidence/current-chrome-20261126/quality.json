@@ -1,0 +1,30 @@
+{
+  "schema": "fire-zero-r6-quality-result/v1",
+  "versionId": "fire-zero-sol61-r6",
+  "reviewOutcome": "fail",
+  "qualityAccepted": false,
+  "reviewerModel": "not independently resolved; reviewer agent /root/clair_loop_visual",
+  "condition": {
+    "route": "https://player13579.github.io/public/fire-zero-sol61/r6-technical-a1/index.html?verify=1",
+    "viewportCss": [
+      980,
+      620
+    ],
+    "dpr": 1,
+    "actorHeightCss": 64,
+    "synthetic": true,
+    "verificationMuted": true
+  },
+  "finding": "In the sustained/main-flame frame, red-orange floor receiving light beneath the flames still forms a clipped rectangular patch with visible straight vertical left/right boundaries. The R6 receiving-light rewrite did not remove the hard boundary; visual quality remains not accepted.",
+  "ageCorrelation": {
+    "exactScreenshotAgeEms": null,
+    "nearbySnapshotAgeEms": 822,
+    "sameInstantGuaranteed": false
+  },
+  "screenshot": {
+    "path": "evidence/current-chrome-20261126/r6-07.png",
+    "bytes": 66546,
+    "sha256": "1f0a2ad40a20a3c8b648da912591f28e11768064980f7299ab9af351e6b131a6"
+  },
+  "followup": "Publish R6 accurately as technically replayable and quality-failed. Any next creative correction is a later edition after R6 publication."
+}

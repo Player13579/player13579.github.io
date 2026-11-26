@@ -1,0 +1,73 @@
+{
+  "schema": "fire-zero-creative-revision/v1",
+  "id": "fire-zero-sol61-r6",
+  "creativeRevision": 6,
+  "priorEditionCap": 5,
+  "additionalUnadoptedAllowance": {
+    "authorized": 5,
+    "used": 1,
+    "remaining": 4,
+    "scope": "current unadopted effect editions"
+  },
+  "authorization": {
+    "userDirectionUtc": "2026-11-26T13:24:50.516Z",
+    "text": "現在採用されていないすべてのものは追加で5回の改善許可を許す"
+  },
+  "creativeAuthor": "GPT-6.1-Sol",
+  "apiResponse": {
+    "model": "gpt-6.1-sol",
+    "id": "resp_08be749ee0eaa58d016b08a9abd08887d08410920787988aa8",
+    "store": false
+  },
+  "predecessor": {
+    "id": "fire-zero-sol61-r5",
+    "publicHead": "a033eca204b11de03e065c24df3fee4cbe4dfc60",
+    "packageSha256": "c56af325f9dbec092b820d4a5f1322f07716ee7af140e3b360ae15716bcdfd8d",
+    "sealSha256": "79e6fef56d6debf2998a53c81eb1c957e6acc44ebbb03e4b30f222751e705b02",
+    "sourceManifestSha256": "a91f15684937a8dcb89f993ea914f8634f2531a28c706a14bea42c52e5ab0e4f"
+  },
+  "creativeChange": "Replace the floor receiving-light estimate with continuous source-aware ground-plane falloff from existing feed/supply samples.",
+  "preserved": {
+    "R1toR5": true,
+    "flameVolumeAndClock": true,
+    "80ByteUniform": true,
+    "twoPasses": true,
+    "defaultDepthSamples": 32,
+    "diagnosticDepthSamples": [
+      32,
+      64
+    ],
+    "audioPcmAndEnvelope": true
+  },
+  "quality": {
+    "reviewOutcome": "fail",
+    "qualityAccepted": false,
+    "reason": "R6 screenshot still shows hard vertical rectangular edges in the floor receiving-light patch beneath the sustained flame.",
+    "qualityEvidence": "evidence/current-chrome-20261126/quality.json",
+    "normalAudioListening": "not_run",
+    "nativeReplay": "pass-limited-owned-Chrome-standalone-route-intercept",
+    "parentGalleryReplay": "not_run",
+    "gameIntegration": "not_connected",
+    "publication": "eligible-after-parent-release"
+  },
+  "limits": [
+    "Sol notes source does not prove the observed hard rectangle originates in the floor receiver; no repair claim until actual comparison.",
+    "Nine source samples add shader work; performance unmeasured."
+  ],
+  "nativeEvidence": "evidence/current-chrome-20261126/native.json",
+  "visualEvidence": "evidence/current-chrome-20261126/quality.json",
+  "actualReplayResult": {
+    "samples": 48,
+    "allReady": true,
+    "allGpuCompleted": true,
+    "twoPassSamples": 48,
+    "viewportCss": [
+      980,
+      620
+    ],
+    "dpr": 1,
+    "actorHeightCss": 64,
+    "depthSamples": 32,
+    "verificationMuted": true
+  }
+}

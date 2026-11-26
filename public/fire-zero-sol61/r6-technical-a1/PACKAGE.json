@@ -1,0 +1,69 @@
+{
+  "schema": "fire-zero-gallery/v1",
+  "id": "fire-zero-sol61-r6",
+  "author": "GPT-6.1-Sol",
+  "entry": "index.html",
+  "api": "__fireZeroR6",
+  "syntheticFixture": true,
+  "qualityAccepted": false,
+  "nativeReplay": "pass-limited-owned-Chrome-standalone-route-intercept",
+  "normalAudio": "not_run",
+  "gameIntegration": "not_run",
+  "runtimeFiles": [
+    {
+      "path": "index.html",
+      "bytes": 1347,
+      "sha256": "62c873dbaa1c7295a238cac437021f4fa48822a58f976a46197ffe3b54fa0930"
+    },
+    {
+      "path": "preview.mjs",
+      "bytes": 12515,
+      "sha256": "b0b7d15bcf482c7201f0ed3fcd91adfd6215d4b0b1213f5f40bac43021e5c58c"
+    },
+    {
+      "path": "fire-runtime.mjs",
+      "bytes": 8881,
+      "sha256": "3e0ae2fe69f9f277c085a12e9342f946e02a37ac8f4c0cf3ecdb76bd1fa946bf"
+    },
+    {
+      "path": "fire-plan.mjs",
+      "bytes": 3699,
+      "sha256": "884767a9a96ad1e9b49ac0aa35b0e53f312696546e8b4e125f235060fa6d7435"
+    },
+    {
+      "path": "fire-volume.wgsl",
+      "bytes": 11186,
+      "sha256": "73d23915f97cea3741b45471c87bc6d92d893028a12cc7ab1ca27c2821c8365d"
+    },
+    {
+      "path": "fire-observer.wgsl",
+      "bytes": 1812,
+      "sha256": "556fdffc9000bbcdfc4acbf05296297122c49aa01ee3aa89680eb1bb97be4b88"
+    },
+    {
+      "path": "fire-sfx.mjs",
+      "bytes": 8227,
+      "sha256": "b99f54fe29751583b7f9c8adb5aef9e8bbe1ead302fe15f7bc57fcccd5da2088"
+    }
+  ],
+  "sourceManifest": {
+    "path": "SOURCE-MANIFEST.json",
+    "bytes": 1304,
+    "sha256": "09341c60422135a356b3a925755afe6e165631ffe59f943b5a146f9d8077acf1"
+  },
+  "publicationEligible": true,
+  "parentGalleryReplay": "not_run",
+  "nativeEvidence": {
+    "path": "evidence/current-chrome-20261126/native.json",
+    "bytes": 1967,
+    "sha256": "30fbc0030997cb4086c2649715cad4dfa88f1c42fada316c414341e75f8f716c"
+  },
+  "qualityReviewOutcome": "fail",
+  "qualityReviewStatus": "not-accepted",
+  "qualityEvidence": {
+    "path": "evidence/current-chrome-20261126/quality.json",
+    "bytes": 1295,
+    "sha256": "a71027f7bf90f16a5c9fa254ca40e65d84a8b30dc44c02bd0e5ffe9bb35ef027"
+  },
+  "qualityEvidenceReason": "R6 floor light retains straight vertical rectangular side boundaries in the sustained flame screenshot."
+}
