@@ -1,0 +1,78 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "クレジット譲渡成立・送り手側 R2",
+  "groupId": "credit-transfer-out-astra62",
+  "versionId": "credit-transfer-out-astra62-r2",
+  "creativeEdition": 2,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "actual-size-full-lifetime-not-reviewed",
+  "gameIntegration": "not-connected",
+  "normalAudioListening": "not_run",
+  "nativeScreen": "not_run",
+  "entry": "index.html",
+  "path": "/public/astra62-credit-transfer-out/r2/index.html",
+  "source": {
+    "priorPublishedVersion": "credit-transfer-out-astra62-r1",
+    "priorGalleryRepo": "Player13579/Player13579.github.io",
+    "priorPublicRef": "9179a9352f89c97b9831e2f32889202a32346f1d",
+    "priorCreativeSource": {
+      "repo": "Player13579/windows-dva-migration",
+      "runtimeCommit": "9854e109f2333207de3be841290ce9b974915b1d"
+    },
+    "technicalChange": "Naga rejects the API-original local identifier cast. Rename only this binding and its use to projectedShadow.",
+    "apiOriginalShaderSha256": "f01dd17cdc0bad60b88afd337b9cfe85b3fb04dfe63e489d4b8e5cb53edcb381",
+    "apiResponseId": "resp_0816fee2bf2180eb016b07a8607bf487d09f0f50c234ebdc78",
+    "apiModel": "gpt-6.2-astra",
+    "reasoningEffort": "high"
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "3282f678c978d4142ed4e7c065fb41e2149ead92",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "transferOwnedResource L12190–12240 (credit branch L12200 and outgoing event L12215); separate donateCredits L8503.",
+    "meaning": "Sender debit and grantCredits to the recipient precede the transfer-out event with variant credits. Its raw event does not carry the amount or before/after balance. No amount, balance, counterparty, world position or receiver action is needed to depict the receipt.",
+    "scope": "One synthetic current, successful owner-correlated sender receipt, kind transfer-out and variant credits. Item sends, credits received, donation, unsuccessful, foreign, stale or duplicate notifications are excluded. The projection is only a gallery fixture. This does not wire producer, serializer, or shared receiving effects."
+  },
+  "design": {
+    "visual": "約80 CSS px幅の送信元台帳に、窓付き鋼型で C と外向き矢印を打刻する。接触点から琥珀色のガラス条が両端へ点灯し、淡黄白の芯が残る。直下の折り返し真鍮面では、発光区間の長さと距離に応じて照り返しが広がり、面取りだけが鋭く光る。画面ブルームは使わず、刻印の溝と背景は暗く保つ。軽減時の型移動量は0.43倍。",
+    "phases": [
+      "0–465 ms：台帳と鋼型が現れ、型が加速して降りる。",
+      "465–670 ms：接触で刻印が入り、535 msまでに光がガラス条の両端へ届く。押圧中も型の窓から印面が見える。",
+      "670–1260 ms：型が離れ、打刻爪の反射が消える。台帳には刻印と発光条、真鍮面の照り返しが残る。",
+      "1260–1800 ms：発光条と反射光が減衰。1420 msから台帳も退色し、1800 msで背景だけに戻る。"
+    ],
+    "sound": "One dry double-partial press at 465 ms, with a quieter short release beginning at 670 ms. No repeated credits or coin count. Verify is always muted.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1974,
+      "sha256": "cc2d004d03608a5b350ca39351c95386d0a7854b0534ab5fadfb9d44c601a1e9",
+      "gitBlob": "3e4024b350a1a4b17428a189add42cc419033d01"
+    },
+    "preview.mjs": {
+      "bytes": 7798,
+      "sha256": "a8c20a7bd234248639c1a52d1f06cd8f616a36f711ac8ffd77f112b40b9fa1e2",
+      "gitBlob": "a1956c844aa1ecfaa2ee4b747c6bf8c85c8341e1"
+    },
+    "credit.mjs": {
+      "bytes": 1342,
+      "sha256": "370cc3c40443de15551f6390fb88d1c45f6ea829884fc987353dba84f3b8afdb",
+      "gitBlob": "1a8176b5ca82bee689f770e8341c1aa4d79697aa"
+    },
+    "effect.wgsl": {
+      "bytes": 5080,
+      "sha256": "93549884178f9af88cb9d42757b2ffdff3e85c30df3968ed6af04b406b7f1df2",
+      "gitBlob": "aafbe3425c410a806833ca2af1f36128ecc40ed2"
+    }
+  }
+}
