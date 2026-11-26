@@ -16773,15 +16773,17 @@ function renderStatus(data) {
   }
   const self = data.self;
   const role = playerFacingRoleLabel(self.role);
-  els.roleName.textContent = role;
+  if (els.roleName.textContent !== role) els.roleName.textContent = role;
   els.roleName.style.color = self.role === "attacker" ? "#9f2534" : self.role === "defender" ? "#08627d" : "#4b5563";
-  els.specialName.textContent = self.special ? specialLabels[self.special] || self.special : "通常";
+  const specialName = self.special ? specialLabels[self.special] || self.special : "通常";
+  if (els.specialName.textContent !== specialName) els.specialName.textContent = specialName;
   els.specialName.hidden = !self.special;
 
   renderActiveEffects(data);
-  els.objectiveText.textContent = objectiveText(data);
+  const objective = objectiveText(data);
+  if (els.objectiveText.textContent !== objective) els.objectiveText.textContent = objective;
 
-  els.alchemyControl.hidden = true;
+  if (!els.alchemyControl.hidden) els.alchemyControl.hidden = true;
   syncAlchemyInventoryChoices(self);
   renderTargetOptions(data);
   renderUtility(data);
