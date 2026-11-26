@@ -38,6 +38,12 @@
     return !(box.cull !== false && (box.x < camera.x - 140 || box.x > right + 140 ||
       box.y < camera.y - 140 || box.y > bottom + 140));
   }
+  function canMarkPlacedBox(box) {
+    return box.type === 'mysteryBox' && box.kind === 'mystery-box' &&
+      typeof box.id === 'string' && /^mystery_box_.+/.test(box.id) &&
+      box.interactive === true && box.alpha === undefined &&
+      box.opening === undefined && box.emission === undefined && box.cull === undefined;
+  }
   function requiresMaterial({ scene, camera, zoom, viewport } = {}) {
     if (!Array.isArray(scene)) return true;
     if (!scene.length) return false;
@@ -101,16 +107,27 @@
       owned.add(texture);
       return texture;
     }
+    function canRecordTerminalAtlasPlaceholder({ scene, camera, zoom, viewport } = {}) {
+      if (destroyed || !Array.isArray(scene) || !validView(camera, zoom, viewport) ||
+          !finite(camera.x + viewport.width / zoom) || !finite(camera.y + viewport.height / zoom))
+        return false;
+      let visible = false;
+      for (const box of scene) {
+        if (!box || !finite(box.x) || !finite(box.y)) return false;
+        if (!boxInView(box, camera, zoom, viewport)) continue;
+        if (!canMarkPlacedBox(box)) return false;
+        visible = true;
+      }
+      return visible;
+    }
     function record({ frame, target, scene, self, camera, zoom, viewport, image, atlasPlaceholder = false } = {}) {
       if (destroyed) throw new Error('Mystery-box pass destroyed');
       const commands = plan({ scene, self, camera, zoom, viewport, image });
       if (!commands.length) {
-        if (atlasPlaceholder !== true || image?.complete !== false) return 0;
-        const markers = scene.filter(box => boxInView(box, camera, zoom, viewport) &&
-          box.type === 'mysteryBox' && box.kind === 'mystery-box' &&
-          typeof box.id === 'string' && /^mystery_box_.+/.test(box.id) &&
-          box.interactive === true && box.alpha === undefined &&
-          box.opening === undefined && box.emission === undefined && box.cull === undefined);
+        const noDecodedImage = image?.complete === false || (image?.complete === true &&
+          image.naturalWidth === 0 && image.naturalHeight === 0);
+        if (atlasPlaceholder !== true || !noDecodedImage) return 0;
+        const markers = scene.filter(box => boxInView(box, camera, zoom, viewport) && canMarkPlacedBox(box));
         if (!markers.length) return 0;
         if (typeof frame?.stage !== 'function' || typeof frame?.rect !== 'function' ||
             typeof target !== 'string' || !target ||
@@ -141,7 +158,7 @@
       for (const command of commands) frame.sprite(target, { ...command.sprite, texture });
       return commands.length;
     }
-    return Object.freeze({ plan, record, destroy() {
+    return Object.freeze({ plan, record, canRecordTerminalAtlasPlaceholder, destroy() {
       if (destroyed) return;
       destroyed = true;
       for (const texture of owned) texture.destroy();
