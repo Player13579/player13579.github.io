@@ -1,0 +1,105 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "会議集計後のラウンド再開 R2",
+  "groupId": "meeting-round-resume-astra62",
+  "versionId": "meeting-round-resume-astra62-r2",
+  "creativeEdition": 2,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "candidateOnly": true,
+  "publicationEligible": false,
+  "source": {
+    "repository": "Player13579/player13579.github.io",
+    "baseCommit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+    "parentPath": "public/astra62-meeting-round-resume/r1",
+    "parentModuleGitBlob": "5764a5b7560e2031ba624d0c423eb86bc1941f84"
+  },
+  "validation": {
+    "cpuEvidence": "technical-evidence.json",
+    "verifier": "verify-candidate.cjs",
+    "actualGpu": "not-run",
+    "visualQuality": "not-run",
+    "actualDisplaySize": "not-run",
+    "normalSpeed": "not-run",
+    "normalAudioListening": "not-run",
+    "gameIntegration": "not-connected",
+    "publication": "not-performed"
+  },
+  "entry": "gallery.html",
+  "path": "/public/astra62-meeting-round-resume/r2/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "fixture": {
+    "name": "small",
+    "from": 1,
+    "to": 2,
+    "kind": "meeting-tallied",
+    "authorized": true,
+    "current": true,
+    "settled": true,
+    "before": "meeting",
+    "after": "playing",
+    "newSyntheticIdEachLoop": true,
+    "uniformBytes": 160,
+    "lifetimeMs": 1190,
+    "idle": "background; each loop is a new synthetic fixture"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1865,
+      "sha256": "b4f80edef3f5a9369207cb664c2d2bd72e7fc7bc2be651686d989ad452d27fed",
+      "gitBlob": "a7e4bfda70e314c4d6ab76c3ff67d38b191e67e9"
+    },
+    "preview.mjs": {
+      "bytes": 7922,
+      "sha256": "f5959cd740378694adf6b2942c308d90fe75686acd8b5734943c22a42982e68f",
+      "gitBlob": "b3af05a9e8eccad14f5804df10c199ff86afcde9"
+    },
+    "gallery.html": {
+      "bytes": 1487,
+      "sha256": "1446debd729f94d709e005ef960925974dd20a4fc9502a4500350d11795f9d4e",
+      "gitBlob": "76eb10dd608ab9d69be220c9e34e15566d143e67"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19",
+      "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e"
+    },
+    "resume.mjs": {
+      "bytes": 1902,
+      "sha256": "6156c229255d6c9a46f77a9296d43042b55aaef69be93224367f821f9818fff3",
+      "gitBlob": "d1aa083f83a72ee5a035ec676ae475ce6e023e6f"
+    },
+    "effect.wgsl": {
+      "bytes": 5544,
+      "sha256": "d4bbfd2d062e87bca94a6ad65d226e7e1285cfa25d7a3d3fb4440650c66e605c",
+      "gitBlob": "45aaf2b7ac35d6ebf708a61702c30bec15b30bde"
+    },
+    "creative-design.json": {
+      "bytes": 7326,
+      "sha256": "84f17f97464afddd648c09caf332c5428b417d779e64be0b11fac13fae07adbd",
+      "gitBlob": "e76a67b5a5d45ca8cdff0efb4549086c806602e3"
+    },
+    "technical-evidence.json": {
+      "bytes": 4811,
+      "sha256": "e10ff69c255bd5cd3d72fc76227042a72ed006c6621e5a0dfdaab740c2637d88",
+      "gitBlob": "22d1219f51aa187ba42f3828e036eb43c7ed9469"
+    },
+    "verify-candidate.cjs": {
+      "bytes": 7427,
+      "sha256": "e0f102b5bd7b6146985b2b15a425f2dbad897db75824f5f24522f6cb4824dde4",
+      "gitBlob": "5171dd9079f7b531917373c11583050613d71514"
+    },
+    "api-provenance.json": {
+      "bytes": 2064,
+      "sha256": "b9a1ae9e28c5e492f811c5461f967832a833a6ee39366a9794674a7e59114df8",
+      "gitBlob": "5ff6fc17f8912d986f2e024d0f34c909364018e2"
+    }
+  },
+  "releaseOwner": "Dot; candidate has not been registered, accepted or published."
+}

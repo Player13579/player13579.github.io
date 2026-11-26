@@ -1,0 +1,41 @@
+{
+  "name": "Meeting Round Resume R2 — opal split-flap",
+  "provenance": {
+    "scope": "public/astra62-meeting-round-resume/r2/ only. Candidate source, not game integration, catalog registration, publication or a PR.",
+    "parent": "Supplied meeting-round-resume-astra62-r1. Retains its single centered indicator, hinge, right-aligned old/new slots, timeline anchors, background and dry cue. R1 is not replaced.",
+    "interface": "Same module exports and call signatures, vs/fs, group 0 binding 0. View is 32 bytes of header followed by two 64-byte digit banks. No texture, secondary target, dependency or host/adapter behavior change.",
+    "rules": "Player13579/B at 3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7; supplied base 4660b1b37013b4cd1c1fc24201a1696a0eee6dbb and extension e0fe7a0ea4191d0b24b1ab468e00ae0a73280606."
+  },
+  "intent": "Read the lighted plate first, then the dark round number punched out of it. The face that carried the old number folds away; its reverse seats to complete the new number. Neither a pin flash nor an independent burst has to carry the event.",
+  "receipt": "The unchanged gate commits highestId only after the authorized, current, settled meeting-tallied receipt passes meeting → playing, increasing positive safe id, safe previousRound ≥ 1 and safe unit-successor tests. An invalid receipt does not consume its id. The fixture is synthetic, not a game producer. The display communicates only the round transition.",
+  "mainForm": {
+    "source": "The entire two-part aperture is the luminous UI source. Peak upper color is pearl mint (0.66, 0.98, 0.84 linear RGB); the lower face is a denser sea-green (0.40, 0.85, 0.78). Both old and new use the same palette. Broad shoulders are lighter than the fold. Numerals interrupt the field rather than competing with it in white.",
+    "extent": "A short face occupies 62 × 38 logical display units inside the dark mount. Longer values widen the same aperture before cell pitch is compressed to fit. No vertical shrinkage of the type to accommodate a carry. All lengths are in the centered display mapping, not world units.",
+    "hierarchy": "A large continuous field establishes presence; 24-unit cap-center span and 3.7-unit stroke width establish the numeral. The joint is a partial attenuation, not a black bar that would insert a middle segment in every digit. Pins remain subordinate and do not flash."
+  },
+  "durationAndPhase": [
+    "0–78 ms: the complete old plate and its spread rise together from the R1 background. Hold the old state through the 220 ms release.",
+    "220–580 ms: the signed projected reach is cos(π × eased phase). The shortening old upper occludes the new upper; after edge-on, the extending reverse occludes the old lower. Only the projected strip gets the angle-dependent gain. At edge-on its area vanishes; the rest of the aperture stays lit.",
+    "580–946 ms: the contact sound marks full seating. The new numeral holds at full display drive without an extra result pulse.",
+    "946–1160 ms: direct image and spread clear together. The final 30 ms of the 1190 ms lifetime and all later samples are opaque background."
+  ],
+  "OBSApproximation": {
+    "core": "The direct image resolves the rounded face, stamped marks, occlusion, joint and mount. Turning uses a foreshortened display-coordinate lookup, widened vertical sampling footprint and fractional coverage at the free edge. This is a graphic of a hinge, not a dynamics simulation.",
+    "spread": "In the same fragment pass, integrate a separable, unit-area tent PSF over rectangular upper and lower source bands using differences of its CDF. Support radii are 24 units horizontally and 22 vertically. Within the projected moving strip the attenuated band replaces the flat one. The spread can therefore dim locally during the turn but cannot detach, drift or outlive the plate.",
+    "composition": "Reserve 0.135 of the face signal for spread. Its source proxy uses 0.84 times each band's peak color in place of detailed ink, joint, gradients and round corners. Add the filtered proxy over the direct image in linear RGB, apply the common event envelope against the background, explicitly encode sRGB and write alpha 1. This is a bounded low-frequency approximation, not exact radiometry or multi-pass threshold bloom. There is no halo feedback, lens ghost or scene lighting."
+  },
+  "reducedMotion": "Keep the aperture, joint and spatial light profile fixed. Crossfade old and new markings over the same 220–580 ms interval with no projected motion, angle dip or replacement flash. Hold and clear on the common timeline.",
+  "SFX": "R1 PCM is unchanged. Two damped, inharmonic mechanical hits distinguish release at 220 ms from firmer contact at 580 ms; no melodic or result cue. The accepted sample rate is finite in [8000,192000] Hz. By construction the peak magnitude is bounded by 1.32 × (0.076 + 0.15) before float rounding, with silence before release and from 780 ms to buffer end.",
+  "BMapping": {
+    "entityAndPH": "Identity stays with the R1 display. No world PH is needed: the receipt supplies data, not force, heat, charge, luminous matter or a new receiver. The joint and contact cue are UI depictions, with no world mass, momentum or energy-transfer prediction.",
+    "coreStructureSurface": "The broad aperture is the light core; the registered halves and shared hinge constrain which strokes are visible; the hard cut marks, softer joint and finite exterior skirt give three distinct boundary responses. No particles or microtexture are needed.",
+    "links": "Data flow is receipt → digit pair and display age → visible half arrangement → direct image and coarse spread source → encoded pixel. The audio shares the two phase anchors, not a feedback path. Attention moving from silhouette to digit to joint is a perceptual expectation, not evidence of physical coupling.",
+    "limits": "The reference scale is logical units times host display scale, and the time base is milliseconds of receipt age. The colors, angular gain and PSF radii are authored signal choices, not measured luminance, material coefficients or camera optics."
+  },
+  "displayHypotheses": {
+    "status": "Source design only. No observed GPU output, playback comparison or Naga execution is claimed.",
+    "actualSizeAndSpeed": "At gallery size and 1× playback, the old hold, turn and new hold should each read as a lit panel rather than a bright point on a dark card. In small and carry fixtures, the settled numeral should remain separable from the seam; 9 → 10 should land without a horizontal recentering step.",
+    "sensitivity": "With geometry and direct-face gain held fixed, suppressing the skirt should remove the exterior shoulder of light without erasing the luminous face. Holding the moving gain at one instead should remove tilt darkening while preserving the occlusion sequence. These are distinct, untested predictions.",
+    "failureConditions": "Display scaling, double sRGB conversion, very narrow cells or sparse frame cadence could hide a stroke, flatten the light hierarchy or skip the edge-on interval. Reduced motion needs a temporal read, not a midpoint still where both numeral masks are intentionally present. Actual output is needed to judge readability and any improvement over R1."
+  }
+}

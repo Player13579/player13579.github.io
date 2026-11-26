@@ -1,0 +1,148 @@
+{
+  "schema": "dva-candidate-cpu-evidence/v1",
+  "testsPassed": 13,
+  "tests": [
+    "exact R1 gate fixture digit bodies retained",
+    "authorized settled positive transition and frozen projection",
+    "all denied authority cause phases and flags",
+    "bad receipt does not consume ID; stale duplicate reject",
+    "reject disallowed cause before reading round getter",
+    "carry, 16-digit and max-safe transitions",
+    "fixtures pending ended same unknown reject; carry valid",
+    "PCM rates finite bounded leading trailing silence and mechanical contacts",
+    "1190ms lifetime and 160-byte uniform ABI",
+    "ESM and inline module syntax",
+    "relative runtime dependency closure",
+    "R2 identifiers with no R1 runtime paths; verify hard-mute retained",
+    "Naga WASI WGSL parse + validate stdin"
+  ],
+  "pcm": [
+    {
+      "rate": 8000,
+      "samples": 6480,
+      "peak": 0.1689222753047943,
+      "rms": 0.015880844561285332,
+      "releasePeak": 0.08085766434669495,
+      "seatingPeak": 0.1689222753047943
+    },
+    {
+      "rate": 44100,
+      "samples": 35721,
+      "peak": 0.1689308136701584,
+      "rms": 0.015880464752211533,
+      "releasePeak": 0.08098854124546051,
+      "seatingPeak": 0.1689308136701584
+    },
+    {
+      "rate": 48000,
+      "samples": 38880,
+      "peak": 0.1689222753047943,
+      "rms": 0.01588047841902518,
+      "releasePeak": 0.0809747502207756,
+      "seatingPeak": 0.1689222753047943
+    },
+    {
+      "rate": 96000,
+      "samples": 77760,
+      "peak": 0.16892407834529877,
+      "rms": 0.015880470577548586,
+      "releasePeak": 0.08098281919956207,
+      "seatingPeak": 0.16892407834529877
+    },
+    {
+      "rate": 192000,
+      "samples": 155520,
+      "peak": 0.16894078254699707,
+      "rms": 0.01588046862501677,
+      "releasePeak": 0.08099553734064102,
+      "seatingPeak": 0.16894078254699707
+    }
+  ],
+  "dependencyRefs": [
+    {
+      "from": "index.html",
+      "to": "preview.mjs"
+    },
+    {
+      "from": "preview.mjs",
+      "to": "resume.mjs"
+    },
+    {
+      "from": "preview.mjs",
+      "to": "effect.wgsl"
+    },
+    {
+      "from": "gallery.html",
+      "to": "resume.mjs"
+    },
+    {
+      "from": "gallery.html",
+      "to": "gallery-adapter.mjs"
+    },
+    {
+      "from": "gallery.html",
+      "to": "resume.mjs"
+    },
+    {
+      "from": "gallery.html",
+      "to": "effect.wgsl"
+    }
+  ],
+  "shader": {
+    "validator": "naga-wasi-cli@0.1.0",
+    "status": 0,
+    "stdout": "Validation successful\n",
+    "stderr": "(node:7828) ExperimentalWarning: WASI is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1865,
+      "sha256": "b4f80edef3f5a9369207cb664c2d2bd72e7fc7bc2be651686d989ad452d27fed",
+      "gitBlob": "a7e4bfda70e314c4d6ab76c3ff67d38b191e67e9"
+    },
+    "preview.mjs": {
+      "bytes": 7922,
+      "sha256": "f5959cd740378694adf6b2942c308d90fe75686acd8b5734943c22a42982e68f",
+      "gitBlob": "b3af05a9e8eccad14f5804df10c199ff86afcde9"
+    },
+    "gallery.html": {
+      "bytes": 1487,
+      "sha256": "1446debd729f94d709e005ef960925974dd20a4fc9502a4500350d11795f9d4e",
+      "gitBlob": "76eb10dd608ab9d69be220c9e34e15566d143e67"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19",
+      "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e"
+    },
+    "resume.mjs": {
+      "bytes": 1902,
+      "sha256": "6156c229255d6c9a46f77a9296d43042b55aaef69be93224367f821f9818fff3",
+      "gitBlob": "d1aa083f83a72ee5a035ec676ae475ce6e023e6f"
+    },
+    "effect.wgsl": {
+      "bytes": 5544,
+      "sha256": "d4bbfd2d062e87bca94a6ad65d226e7e1285cfa25d7a3d3fb4440650c66e605c",
+      "gitBlob": "45aaf2b7ac35d6ebf708a61702c30bec15b30bde"
+    }
+  },
+  "limits": {
+    "actualGpu": "not-run",
+    "visualQuality": "not-run",
+    "actualDisplaySize": "not-run",
+    "normalSpeed": "not-run",
+    "normalAudioListening": "not-run",
+    "gameIntegration": "not-connected",
+    "publication": "not-performed"
+  },
+  "execution": {
+    "platform": "Windows",
+    "nativeGuard": "DVA_FORBID_NATIVE=1",
+    "sourceTransport": "In-memory JSON through owned Node stdin; no persistent local game files.",
+    "harnessCorrections": [
+      "Initial PCM silence assertion treated signed zero as unequal to zero. Assertion corrected to numeric zero; PCM source unchanged.",
+      "Shader clears from 1160 ms through remaining 1190 ms lifetime; harness corrected to that authored source contract.",
+      "PTY wrapped a JSON output line; accepted evidence was rerun with short base64 lines and decoded without terminal wrapping. Earlier malformed transport was not accepted as hash evidence."
+    ]
+  }
+}

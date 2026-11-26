@@ -1,0 +1,56 @@
+{
+  "schema": "dva-api-creative-provenance/v1",
+  "requestedModel": "gpt-6.2-astra",
+  "actualResponseModel": "gpt-6.2-astra",
+  "reasoningEffort": "high",
+  "responseId": "resp_0f78fe819e9e8e02006b07d0d7f98087d0be5b4e593fa272fa",
+  "responseStatus": "completed",
+  "usage": {
+    "input_tokens": 12362,
+    "input_tokens_details": {
+      "cache_write_tokens": 12359,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 12359
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 9708,
+    "output_tokens_details": {
+      "reasoning_tokens": 4846
+    },
+    "total_tokens": 22070
+  },
+  "route": "OpenAI Responses API",
+  "credentialHandling": "User-authorized existing credential read into memory; no new key, secret copy, plaintext output or auto-charge action.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creativeFiles": [
+    "effect.wgsl",
+    "resume.mjs",
+    "creative-design.json"
+  ],
+  "authorshipNotes": "Astra returned complete shader/module/design. Module preserves original R1 gate, fixture, digit slots and PCM; shader is R2. Technical host and adapter derive from pinned R1; identity-only host edits, CPU tests, metadata and packaging performed by Codex candidate worker.",
+  "source": {
+    "repository": "Player13579/player13579.github.io",
+    "baseCommit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+    "r1Path": "public/astra62-meeting-round-resume/r1",
+    "r1ModuleGitBlob": "5764a5b7560e2031ba624d0c423eb86bc1941f84"
+  },
+  "bAuthority": {
+    "repository": "Player13579/B",
+    "commit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+    "baseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "extensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+  },
+  "hashes": {
+    "prompt": {
+      "bytes": 41183,
+      "sha256": "6ffb48e777c9e2af0f5c5225d4aa636d03dcef5800948fd44a9eb035e21170d4"
+    },
+    "creativeResponse": {
+      "bytes": 15092,
+      "sha256": "1eafa36d29a949efd8faa7288bdfea7a4b0adfee6320852373815a1ba6cbded6"
+    }
+  }
+}

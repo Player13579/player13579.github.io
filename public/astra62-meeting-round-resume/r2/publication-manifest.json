@@ -1,0 +1,378 @@
+{
+  "schema": "dva-candidate-package/v1",
+  "title": "会議集計後のラウンド再開 R2",
+  "groupId": "meeting-round-resume-astra62",
+  "versionId": "meeting-round-resume-astra62-r2",
+  "creativeEdition": 2,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "candidateOnly": true,
+  "publicationEligible": false,
+  "source": {
+    "repository": "Player13579/player13579.github.io",
+    "baseCommit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+    "parentPath": "public/astra62-meeting-round-resume/r1",
+    "parentModuleGitBlob": "5764a5b7560e2031ba624d0c423eb86bc1941f84"
+  },
+  "validation": {
+    "cpuEvidence": "technical-evidence.json",
+    "verifier": "verify-candidate.cjs",
+    "actualGpu": "not-run",
+    "visualQuality": "not-run",
+    "actualDisplaySize": "not-run",
+    "normalSpeed": "not-run",
+    "normalAudioListening": "not-run",
+    "gameIntegration": "not-connected",
+    "publication": "not-performed"
+  },
+  "entry": "index.html",
+  "galleryEntry": "gallery.html",
+  "path": "/public/astra62-meeting-round-resume/r2/index.html",
+  "scope": "Only new R2 candidate files. R1 and history preserved. No catalog, parent gallery, game code, default branch, PR or Pages changes.",
+  "branch": "candidate/meeting-round-resume-astra62-r2-20261126",
+  "runtimeDependencyClosure": {
+    "files": [
+      "index.html",
+      "preview.mjs",
+      "gallery.html",
+      "gallery-adapter.mjs",
+      "resume.mjs",
+      "effect.wgsl"
+    ],
+    "externalAssets": [],
+    "source": "technical-evidence.json dependencyRefs; gallery adapter dynamically imports the supplied local moduleUrl."
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1865,
+      "sha256": "b4f80edef3f5a9369207cb664c2d2bd72e7fc7bc2be651686d989ad452d27fed",
+      "gitBlob": "a7e4bfda70e314c4d6ab76c3ff67d38b191e67e9"
+    },
+    "preview.mjs": {
+      "bytes": 7922,
+      "sha256": "f5959cd740378694adf6b2942c308d90fe75686acd8b5734943c22a42982e68f",
+      "gitBlob": "b3af05a9e8eccad14f5804df10c199ff86afcde9"
+    },
+    "gallery.html": {
+      "bytes": 1487,
+      "sha256": "1446debd729f94d709e005ef960925974dd20a4fc9502a4500350d11795f9d4e",
+      "gitBlob": "76eb10dd608ab9d69be220c9e34e15566d143e67"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19",
+      "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e"
+    },
+    "resume.mjs": {
+      "bytes": 1902,
+      "sha256": "6156c229255d6c9a46f77a9296d43042b55aaef69be93224367f821f9818fff3",
+      "gitBlob": "d1aa083f83a72ee5a035ec676ae475ce6e023e6f"
+    },
+    "effect.wgsl": {
+      "bytes": 5544,
+      "sha256": "d4bbfd2d062e87bca94a6ad65d226e7e1285cfa25d7a3d3fb4440650c66e605c",
+      "gitBlob": "45aaf2b7ac35d6ebf708a61702c30bec15b30bde"
+    },
+    "creative-design.json": {
+      "bytes": 7326,
+      "sha256": "84f17f97464afddd648c09caf332c5428b417d779e64be0b11fac13fae07adbd",
+      "gitBlob": "e76a67b5a5d45ca8cdff0efb4549086c806602e3"
+    },
+    "technical-evidence.json": {
+      "bytes": 4811,
+      "sha256": "e10ff69c255bd5cd3d72fc76227042a72ed006c6621e5a0dfdaab740c2637d88",
+      "gitBlob": "22d1219f51aa187ba42f3828e036eb43c7ed9469"
+    },
+    "verify-candidate.cjs": {
+      "bytes": 7427,
+      "sha256": "e0f102b5bd7b6146985b2b15a425f2dbad897db75824f5f24522f6cb4824dde4",
+      "gitBlob": "5171dd9079f7b531917373c11583050613d71514"
+    },
+    "api-provenance.json": {
+      "bytes": 2064,
+      "sha256": "b9a1ae9e28c5e492f811c5461f967832a833a6ee39366a9794674a7e59114df8",
+      "gitBlob": "5ff6fc17f8912d986f2e024d0f34c909364018e2"
+    },
+    "gallery-manifest.json": {
+      "bytes": 3731,
+      "sha256": "f27c65b42051fabf0ed87ecc70d25376dcdfc16accab2a65c83472da8ec868e1",
+      "gitBlob": "97c514c7fa68fb20c14e79031465e54d4dc7d046"
+    }
+  },
+  "manifestRule": "This manifest and package-seal.json exclude themselves to avoid circular hashes. Seal hashes this manifest. Gallery manifest hashes runtime/evidence/source files and references this manifest.",
+  "preflight": {
+    "catalogBlob": "14f8c67073b3125b001c0ac9fd0bc6451dc37a5e",
+    "catalogGroup": {
+      "id": "meeting-round-resume-astra62",
+      "latestVersionId": "meeting-round-resume-astra62-r1",
+      "versions": [
+        "meeting-round-resume-astra62-r1"
+      ]
+    },
+    "branchChecks": [
+      {
+        "ref": "refs/heads/Codex-honoo",
+        "sha": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/candidate-self-body-report-astra62-r3-20261126",
+        "sha": "3295ed7ce7674c4a46134279b97f919b98b04bca",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/candidate-self-body-report-astra62-r4-20261126",
+        "sha": "6ee88bbf323ffcf497cd16b252d8ea371a1f67b5",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/candidate-self-body-report-astra62-r5-20261126",
+        "sha": "1422675d7d30ad2dccd45843a93b2c73ab644c87",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/candidate/clairvoyance-depletion-astra62-r2-20261126",
+        "sha": "fbc0b0cffa6b1b18bcfb91185d227b9dc7ff3b77",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/candidate/clairvoyance-depletion-astra62-r3-20261126",
+        "sha": "d0d21ff54fb642b0b2c92030cfda27beac9ce8f6",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/candidate/clairvoyance-depletion-astra62-r4-20261126",
+        "sha": "008c8bc56dace6c575a4b7f5983c2bddaaec8612",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/candidate/match-opening-pennant-astra62-r2-20261126",
+        "sha": "38a053c19f3c2b0847eb68487f4332f31c302a2a",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/candidate/match-opening-pennant-astra62-r3-20261126",
+        "sha": "cc7e500b1ba2eebf332167c0d0ed75d9015a5b8d",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/codex/api-render-preparation-percent-20261125",
+        "sha": "d96870460fe776e5a9b959724ebdc5fa50636d64",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/fighter-apex-sword-vanish-api-r2-20261126",
+        "sha": "1189982bf15bc48f1224ccc10368ff9ea2499c0b",
+        "versions": [
+          "r1"
+        ]
+      },
+      {
+        "ref": "refs/heads/codex/fix-movement-modifier-release-20261123",
+        "sha": "023d8e68018be2aa5f2d663e92a17b1783854af0",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/meeting-chat-draft-20261123",
+        "sha": "7993d4b4d6f574a24213cbef9dad63c3d99a7d40",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/meeting-chat-pending-draft-20261123",
+        "sha": "fdf1986e053d4439bf7210c4564bbe1342f2c7aa",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/meeting-vote-pending-20261123",
+        "sha": "90bb27668b8955f608de3d50459e2ae44dbafa9b",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/movement-acc-stale-ack-r1",
+        "sha": "d3331fc2e0b2b3064b3588db9ba1ac4c1c2de9d1",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/movement-key-release-owner-r1",
+        "sha": "4690721f2eda0700b611804d2cdec840bab5820d",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/preserve-offline-room-timeout-20261123",
+        "sha": "9dc66ea6e4a2c3199e2d8a82aae204571a844ed7",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/room-action-response-owner-r1",
+        "sha": "99fb5aca198092ccb7e7b3389504d0297cda48d8",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/tablet-native-ability-autoactivate",
+        "sha": "9040072dc32d0f443528d9d1ee7a975d5955c046",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/tablet-native-ability-autoactivate-mode-banner",
+        "sha": "e094232060487992f0c61f6a0fd6328491c07a3d",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/tactics-video-cancel",
+        "sha": "dfabee2bbebafefc97e54d482002d981a4c819e2",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/webgpu-mode-banner-prepare-20261123",
+        "sha": "60c505304c1f94a4850787ed76c1a1005a3aee89",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/codex/webgpu-mode-banner-prepare-regression-20261123",
+        "sha": "9cb75ddf25f73ba8115bbea20c4b382f35051d33",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/dot/fix-background-resume-session-20261119",
+        "sha": "85bffe407af53ecf09e9f25b6d1fa3dfcdd2e059",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/dot/fix-cancelled-startup-deadline-20261119",
+        "sha": "a89a82ab52e96a80b0605b1266fc1c9e9813a6a2",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/dot/fix-emp-producer-contract-20261119",
+        "sha": "f00b4e5a420a88f7ff610562698f33c24aecaf8c",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/dot/fix-kill-texture-owner-20261119",
+        "sha": "a0098dfdd6323aeed8bb8ae5c441cf7bf9df22d5",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/dot/fix-offline-start-readiness-20261119",
+        "sha": "727297958d6642ce324ba095527f9224f37f0124",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/dot/fix-runtime-failure-ownership-20261119",
+        "sha": "dbda6b244c39ef34ba3f5f0f3cd9488ae0637826",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/fix/enhance-key-release-ownership-20261123",
+        "sha": "c5af573867c524a1a1558adc57aa8ce9cf9b7d27",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/fix/enhance-key-release-ownership-20261123-r2",
+        "sha": "3af76b87baa811f2ed785890db8bb0c4c92f8df0",
+        "versions": []
+      },
+      {
+        "ref": "refs/heads/fix/throw-target-charge-owner-20261123",
+        "sha": "c9d5fe0dcc4b1c14ed085daed5a4a73cfd0ca9f2",
+        "versions": []
+      }
+    ],
+    "pullRequests": [
+      {
+        "number": 6,
+        "head": "dot/fix-kill-texture-owner-20261119",
+        "sha": "a0098dfdd6323aeed8bb8ae5c441cf7bf9df22d5",
+        "mergeCommitSha": null
+      },
+      {
+        "number": 5,
+        "head": "dot/fix-emp-producer-contract-20261119",
+        "sha": "f00b4e5a420a88f7ff610562698f33c24aecaf8c",
+        "mergeCommitSha": "947728352e8fc187d5eb2d06cef5bfcf6760ad90"
+      },
+      {
+        "number": 4,
+        "head": "dot/fix-runtime-failure-ownership-20261119",
+        "sha": "dbda6b244c39ef34ba3f5f0f3cd9488ae0637826",
+        "mergeCommitSha": null
+      },
+      {
+        "number": 3,
+        "head": "dot/fix-cancelled-startup-deadline-20261119",
+        "sha": "a89a82ab52e96a80b0605b1266fc1c9e9813a6a2",
+        "mergeCommitSha": null
+      },
+      {
+        "number": 2,
+        "head": "dot/fix-background-resume-session-20261119",
+        "sha": "85bffe407af53ecf09e9f25b6d1fa3dfcdd2e059",
+        "mergeCommitSha": null
+      },
+      {
+        "number": 1,
+        "head": "dot/fix-offline-start-readiness-20261119",
+        "sha": "727297958d6642ce324ba095527f9224f37f0124",
+        "mergeCommitSha": null
+      }
+    ],
+    "supplementalMergeChecks": [
+      {
+        "ref": "refs/pull/1/merge",
+        "sha": "84cfd000f720db373e1ce20f121e2783cb554f4f",
+        "versions": []
+      },
+      {
+        "ref": "refs/pull/2/merge",
+        "sha": "8927f9fa60b6374a153fac0625d7a5ae688a46fd",
+        "versions": []
+      },
+      {
+        "ref": "refs/pull/3/merge",
+        "sha": "d22632012a569374d67e6c533218ddbdc8064dd9",
+        "versions": []
+      },
+      {
+        "ref": "refs/pull/4/merge",
+        "sha": "2889a2f37d9cd00e492edf51b70d6ccb0fd896d6",
+        "versions": []
+      },
+      {
+        "ref": "refs/pull/5/merge",
+        "sha": "947728352e8fc187d5eb2d06cef5bfcf6760ad90",
+        "versions": []
+      },
+      {
+        "ref": "refs/pull/6/merge",
+        "sha": "5c1c74810b104ac6a833d1fa544bc84d1e65ef3a",
+        "versions": []
+      }
+    ],
+    "reservedAtBaseCommit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a"
+  },
+  "design": "creative-design.json",
+  "apiProvenance": "api-provenance.json",
+  "releaseHandoff": "Dot must own final parent-gallery contract, real GPU/replay/display-size/full-lifetime/normal-speed/audio verification, catalog registration, publication and any game integration; none is implied by this package."
+}
