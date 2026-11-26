@@ -14083,3 +14083,62 @@ html:not([data-field-renderer="webgpu"]) body.game-open[data-webgpu-main-owner="
   [data-webgpu-main-pending="startup:expanded-map-handoff"],
   [data-webgpu-main-pending="startup:acquisition-handoff"]
 ) .board-wrap::after { content: "画面の表示を準備中…"; }
+
+/* Panel surfaces use alpha; keep text, icons and focus indicators at full opacity. */
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  :is(#matchPanelToolbar, #matchPanelContent, #inventoryItemDetail),
+body.game-open #vendingFullMount:not([hidden]) {
+  --dva-glass-light: rgb(239 248 250 / .69);
+  --dva-glass-dark: rgb(16 43 55 / .78);
+  --dva-glass-selected: rgb(171 222 230 / .80);
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  :is(#matchPanelContent, #matchPanelContentSlot, #matchPanelToolbar, #matchPanelHeader,
+      #statusPanel, #fieldLowerRow, #itemControl, #activeEffectsPanel, #itemInventoryGrid) {
+  background: transparent !important;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  :is(#matchPanelContent .item-control-head, #matchPanelContent #activeEffectsPanel h3) {
+  background: var(--dva-glass-dark) !important;
+  color: #f3fbfd;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  :is(#matchPanelToolbar, #matchPanelContent) :is(button, input, select, textarea),
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  :is(#inventoryItemDetail, #matchPanelContent .active-effects-list li, #matchPanelContent .enhance-readout,
+      #matchPanelContent .item-transfer-actions, #matchPanelContent .transfer-controls,
+      #matchPanelContent .operator-branch-panel, #matchPanelContent .hacker-ability-dock,
+      #matchPanelContent .hacker-console-state, #matchPanelContent .utility-panel),
+body.game-open #vendingFullMount:not([hidden])
+  :is(#vendingFullClose, #vendingPanel button, #vendingPanel input, #vendingPanel select, #vendingPanel .vending-title-row) {
+  background: var(--dva-glass-light) !important;
+  color: #153441;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  :is(#matchPanelToolbar, #matchPanelContent) :is(button, input, select):is(.selected, .active, [aria-selected="true"], [aria-pressed="true"]),
+body.game-open #vendingFullMount:not([hidden]) #vendingPanel button:is(.active, .selected, [aria-pressed="true"]) {
+  background: var(--dva-glass-selected) !important;
+  color: #153441;
+}
+/* Inventory selection had a bright label for its former dark tile. */
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  #matchPanelContent #itemInventoryGrid .item-inventory-choice:is(.selected, [aria-selected="true"]),
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  #matchPanelContent #itemInventoryGrid .item-inventory-choice:is(.selected, [aria-selected="true"]) :is(strong, small, span) {
+  color: #153441 !important;
+  text-shadow: none;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  #matchPanelContent #itemInventoryGrid .item-inventory-choice:not(:disabled) .item-choice-copy small {
+  color: #294854 !important;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  #matchPanelContent #itemInventoryGrid .item-inventory-choice:is(.selected, [aria-selected="true"]):not(:focus-visible) {
+  outline: 1px solid #235a68;
+  outline-offset: -2px;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  #matchPanelContent #itemInventoryGrid .item-inventory-choice.selected[data-inventory-kind="weapon"][aria-selected="true"]::after {
+  color: #153441 !important;
+  text-shadow: none;
+}
