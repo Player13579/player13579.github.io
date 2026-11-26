@@ -1,0 +1,236 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "所持アイテムの譲渡・送り手 R2",
+  "groupId": "inventory-item-transfer-out-astra62",
+  "versionId": "inventory-item-transfer-out-astra62-r2",
+  "creativeEdition": 2,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-inventory-item-transfer-out/r2/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "partial",
+    "before": 3,
+    "amount": 1,
+    "after": 2,
+    "selfCurrentCommittedItemTransfer": true,
+    "uniformBytes": 48,
+    "lifetimeMs": 1310,
+    "activeBeforeAfter": [
+      3,
+      2
+    ],
+    "inactiveBeforeAfter": [
+      2,
+      2
+    ],
+    "nextLoop": "new independent synthetic inventory example"
+  },
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "9e5a1c9789472dc8c5c25b073813d75f220e6f30",
+    "path": "public/astra62-inventory-item-transfer-out/r1/"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1999,
+      "sha256": "6ecae8a857c68c4b51b63caf27cf86e3a7084b665aad07eeda08dbfb444f7162",
+      "gitBlob": "49b17561a84c3830868119e14cf222569f74157c"
+    },
+    "preview.mjs": {
+      "bytes": 8181,
+      "sha256": "b74852423f3503a3dd82174503035846bc03b2d7669a74ece993bcd3d7734a59",
+      "gitBlob": "ec63a0f2cbdb144c84389133b0a939b3ef81fcb2"
+    },
+    "transfer.mjs": {
+      "bytes": 2043,
+      "sha256": "6f0c5401347a86eccfc709e9c4e7e990b8c429b9e27bb0b03c2071e806c2bf02",
+      "gitBlob": "192e5bac85def124bb775c1b37afd1290a462eb9"
+    },
+    "gallery.html": {
+      "bytes": 1404,
+      "sha256": "f420bbcc7d7e43b470623cb5d120a05e579a174fb513e251bbb301802eedcd62",
+      "gitBlob": "8b16c3ed10f81d3d4616cc06a63b08a1347b5957"
+    },
+    "gallery-effect.mjs": {
+      "bytes": 231,
+      "sha256": "8bd0da96a741db3fa9a7e299557722b835e928ae6ee36f5635ceaeb6f9a45dbf",
+      "gitBlob": "4c9ce7e4cbbc8da1316138c563cd3c416a69e93a"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17797,
+      "sha256": "6227453cd354adfbed5b04326d597433eba511ecd67c542702185a0e1949ec19",
+      "gitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e"
+    },
+    "effect.wgsl": {
+      "bytes": 4290,
+      "sha256": "1b2fd702178ca531c981986dc1a1814125001cdd97b9396ccaadaebb68c4536e",
+      "gitBlob": "5db685e69f168fef27c1c0d8bd2cc66430285883"
+    },
+    "publication-manifest.json": {
+      "bytes": 14315,
+      "sha256": "88ee437757f81d53e6af2eca6d4fa18cadcdaad3d1c42f0d7de9f51a9d5d4b56",
+      "gitBlob": "0eca0fa9c7aba1bc98b8eca7fe3d34270370ca6d"
+    }
+  },
+  "bridge": {
+    "fixtureEventAndGate": "original reexports unchanged",
+    "makeCue": "delegates makeTransferCue(rate,1) exactly"
+  },
+  "adapter": {
+    "copyGitBlob": "f2c6eea9096d43cdb7d9efd27bf0f9b8f4f0399e",
+    "terminal": "reused inactive-submission-before-finish condition;500ms retainedtwohold"
+  },
+  "validation": {
+    "cpu": {
+      "checks": 165,
+      "pcm": [
+        {
+          "rate": 8000,
+          "amount": 1,
+          "length": 5920,
+          "peak": 0.11347204446792603
+        },
+        {
+          "rate": 8000,
+          "amount": 2,
+          "length": 8000,
+          "peak": 0.1363701969385147
+        },
+        {
+          "rate": 8000,
+          "amount": 3,
+          "length": 10080,
+          "peak": 0.1363701969385147
+        },
+        {
+          "rate": 44100,
+          "amount": 1,
+          "length": 32634,
+          "peak": 0.11504211276769638
+        },
+        {
+          "rate": 44100,
+          "amount": 2,
+          "length": 44100,
+          "peak": 0.13896436989307404
+        },
+        {
+          "rate": 44100,
+          "amount": 3,
+          "length": 55566,
+          "peak": 0.13896436989307404
+        },
+        {
+          "rate": 48000,
+          "amount": 1,
+          "length": 35520,
+          "peak": 0.11511075496673584
+        },
+        {
+          "rate": 48000,
+          "amount": 2,
+          "length": 48000,
+          "peak": 0.13886448740959167
+        },
+        {
+          "rate": 48000,
+          "amount": 3,
+          "length": 60480,
+          "peak": 0.13886448740959167
+        },
+        {
+          "rate": 96000,
+          "amount": 1,
+          "length": 71040,
+          "peak": 0.11511075496673584
+        },
+        {
+          "rate": 96000,
+          "amount": 2,
+          "length": 96000,
+          "peak": 0.1389651894569397
+        },
+        {
+          "rate": 96000,
+          "amount": 3,
+          "length": 120960,
+          "peak": 0.1389651894569397
+        },
+        {
+          "rate": 192000,
+          "amount": 1,
+          "length": 142080,
+          "peak": 0.11511075496673584
+        },
+        {
+          "rate": 192000,
+          "amount": 2,
+          "length": 192000,
+          "peak": 0.1389651894569397
+        },
+        {
+          "rate": 192000,
+          "amount": 3,
+          "length": 241920,
+          "peak": 0.1389651894569397
+        }
+      ],
+      "privacy": "No reads of recipient/position/target/balance/ability/inventory",
+      "gate": "R1 unchanged",
+      "normalListening": "not_run",
+      "hostAndBridge": {
+        "originalTransferInvariance": true,
+        "pcmBridgeEquality": 5,
+        "gateBridgeIdentity": true,
+        "lifetimeMs": 1310,
+        "uniformBytes": 48,
+        "actualGpu": "not_run",
+        "normalListening": "not_run"
+      },
+      "moduleSyntax": [
+        "preview.mjs",
+        "gallery-adapter.mjs"
+      ]
+    },
+    "geometry": {
+      "checks": 1859,
+      "exposedRoundedSourceDistanceMaxError": 0.000005819000714168965,
+      "independentReference": "clipped rounded polygon, 1024 segments per corner; numerical only, no GPU pixels",
+      "supportExtent": 5,
+      "shaderExpiryMs": 1310,
+      "actualDisplay": "not_run"
+    },
+    "shader": {
+      "compilerPackage": "naga-wasi-cli@0.1.0",
+      "command": "node naga.mjs --stdin-file-path memory-input.wgsl --input-kind wgsl (source via stdin)",
+      "exitCode": 0,
+      "output": "(node:16304) ExperimentalWarning: WASI is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nValidation successful\n",
+      "shaderSha256": "1b2fd702178ca531c981986dc1a1814125001cdd97b9396ccaadaebb68c4536e",
+      "negativeControl": {
+        "source": "struct broken { let: f32 }",
+        "exitCode": 1,
+        "output": "(node:7552) ExperimentalWarning: WASI is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nCould not parse WGSL:\nerror: name `let` is a reserved keyword\n  ┌─ negative-control.wgsl:1:17\n  │\n1 │ struct broken { let: f32 }\n  │                 ^^^ definition of `let`\n\n\n"
+      }
+    },
+    "runtime": {
+      "actualGpu": "not_run",
+      "actualSize": "not_run",
+      "normalSpeed": "not_run",
+      "fullLifetime": "not_run",
+      "normalAudioListening": "not_run",
+      "SafariAndIpad": "not_run",
+      "parentIframe": "not_run",
+      "gameIntegration": "not_connected",
+      "publication": "candidate_branch_only"
+    },
+    "parentStrictVersionContract": "Existing parent's R1-specific inventory transfer handling remains unchanged; Dot must inspect R2 integration before any listing or release."
+  }
+}

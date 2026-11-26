@@ -1,0 +1,49 @@
+{
+  "schema": "dva-candidate-handoff/v1",
+  "title": "Inventory Item Transfer Out R2",
+  "branch": "codex/inventory-item-transfer-out-api-r2-20261126",
+  "base": "9e5a1c9789472dc8c5c25b073813d75f220e6f30",
+  "ownedOutput": "Only public/astra62-inventory-item-transfer-out/r2/** additions",
+  "changedCreativeFile": "effect.wgsl",
+  "preserved": "R1 transfer module exact except version string; PCM exact; gallery adapter and gallery-effect bridge exact; preview only cache edition identifiers; HTML only edition identifiers.",
+  "hypothesis": "提示されたB基準とR1ソースに基づく仮説：H64・scale=1で高さ約17pxの包みなら、移動開始に合わせて紙・帯・札の面積にわたる輝度差を立ち上げ、遮蔽まで保つ方が、短い出口応答だけに依存するより「光って送り出されるのはこの個数」と対応づけやすい。包みと共に移る狭い井底の照りは位置の手掛かり、後から暖まるスロット表示は境界通過の句点という役割分担を予想する。観測された欠陥の修正でも、可読性の達成報告でもない。",
+  "tests": {
+    "gatePcmChecks": 165,
+    "numericSourceDistanceChecks": 1859,
+    "naga": "PASS; invalid reserved-keyword control rejected",
+    "sourceBridge": "PASS",
+    "closure": "index→preview→transfer+WGSL; gallery→adapter+gallery-effect→transfer+WGSL; relative references stay within candidate"
+  },
+  "unverified": {
+    "actualGpu": "not_run",
+    "actualSize": "not_run",
+    "normalSpeed": "not_run",
+    "fullLifetime": "not_run",
+    "normalAudioListening": "not_run",
+    "SafariAndIpad": "not_run",
+    "parentIframe": "not_run",
+    "gameIntegration": "not_connected",
+    "publication": "candidate_branch_only"
+  },
+  "releaseOwner": "Dot",
+  "reviewLimit": "No PR, merge/default update, Pages, parent catalogue or in-game edits; no user adoption or any GPU/display/listening acceptance claimed.",
+  "resources": {
+    "persistentLocalGameFiles": 0,
+    "browserTabs": 0,
+    "servers": 0,
+    "backgroundProcesses": 0,
+    "apiRequest": {
+      "id": "resp_0b45608330429684006b07d20d863c87d09b7bb752e54ef1b3",
+      "status": "completed",
+      "model": "gpt-6.2-astra"
+    }
+  },
+  "contributionAttribution": {
+    "apiCreative": "GPT-6.2-Astra high: design and complete shader",
+    "codexWorker": "gpt-6.1-sol: requirement interpretation, API orchestration, faithful packaging, focused validation and remote candidate; parent resolves exact catalog display mapping and final shares"
+  },
+  "executionNotes": [
+    "First combined in-memory shell payload exceeded Windows command-line limit without execution; split into file-wise in-memory checks. No temporary game files created.",
+    "Independent rounded-polygon numerical reference first used 256 segments/corner and missed unchanged tolerance near tangent; refined to1024 with tolerance unchanged; final max error5.819e-6. Not a GPU test."
+  ]
+}

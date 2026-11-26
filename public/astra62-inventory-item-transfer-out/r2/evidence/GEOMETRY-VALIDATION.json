@@ -1,0 +1,22 @@
+{
+  "final": {
+    "checks": 1859,
+    "exposedRoundedSourceDistanceMaxError": 0.000005819000714168965,
+    "independentReference": "clipped rounded polygon, 1024 segments per corner; numerical only, no GPU pixels",
+    "supportExtent": 5,
+    "shaderExpiryMs": 1310,
+    "actualDisplay": "not_run"
+  },
+  "firstReferenceFailure": {
+    "maxErrorSeen": 0.000025782294428,
+    "threshold": 0.000025,
+    "case": {
+      "q": [
+        -17.77,
+        -17.83
+      ],
+      "cut": -8.29
+    },
+    "status": "reference polygon too coarse near clipped rounded tangent; refine independent reference from 256 to 1024 segments/corner; preserve tolerance"
+  }
+}

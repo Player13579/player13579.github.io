@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import * as direct from '../transfer.mjs';
+import * as bridge from '../gallery-effect.mjs';
+const r1=await readFile(new URL('../../r1/transfer.mjs',import.meta.url),'utf8');
+const r2=await readFile(new URL('../transfer.mjs',import.meta.url),'utf8');
+assert.equal(r2.replace('inventory-item-transfer-out-astra62-r2','inventory-item-transfer-out-astra62-r1'),r1);
+for(const rate of [8000,44100,48000,96000,192000])assert.deepEqual(bridge.makeCue(rate),direct.makeCue(rate,1));
+assert.equal(bridge.makeGate,direct.makeGate);assert.equal(bridge.fixtureEvent,direct.fixtureEvent);assert.equal(bridge.lifetimeMs,1310);
+console.log('R1 gate and PCM exact; bridge delegates; lifetime 1310ms PASS');

@@ -1,0 +1,12 @@
+{
+  "compilerPackage": "naga-wasi-cli@0.1.0",
+  "command": "node naga.mjs --stdin-file-path memory-input.wgsl --input-kind wgsl (source via stdin)",
+  "exitCode": 0,
+  "output": "(node:16304) ExperimentalWarning: WASI is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nValidation successful\n",
+  "shaderSha256": "1b2fd702178ca531c981986dc1a1814125001cdd97b9396ccaadaebb68c4536e",
+  "negativeControl": {
+    "source": "struct broken { let: f32 }",
+    "exitCode": 1,
+    "output": "(node:7552) ExperimentalWarning: WASI is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nCould not parse WGSL:\nerror: name `let` is a reserved keyword\n  ┌─ negative-control.wgsl:1:17\n  │\n1 │ struct broken { let: f32 }\n  │                 ^^^ definition of `let`\n\n\n"
+  }
+}
