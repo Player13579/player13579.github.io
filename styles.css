@@ -13987,7 +13987,7 @@ html:not([data-field-renderer="webgpu"])
 
 /* Keep a complete third combat-shortcut row reachable in tall portrait play.
  * The open drawer and short/landscape layouts keep their own scroll budgets. */
-@media (orientation: portrait) and (max-width: 700px) and (min-height: 480px) {
+@media (orientation: portrait) and (min-height: 480px) {
   body.game-open.dva-full-canvas:not(.dva-match-ui-open) #gameApp #tabletQuickActions {
     max-height: min(174px, 36dvh);
   }
