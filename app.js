@@ -12854,6 +12854,7 @@ function resetLocalSession() {
   state.actorVisualClocks.clear();
   state.eVisualClocks.clear();
   state.characterActions.clear();
+  state.fighterSlashVisualReceipts = null;
   state.renderPlayers.clear();
   state.camera = { x: 0, y: 0, initialized: false, mode: "", frame: -1 };
   state.killEffects = [];
@@ -14238,6 +14239,32 @@ window.addEventListener('pagehide', () => {
   stopHealESfx();
 });
 
+// Render-admission receipts only. They don't own action lifetime or wire state.
+function admitFighterSlashVisualOnce(effect, next) {
+  if (effect?.type !== "fighter-slash" || typeof effect.id !== "string" || !effect.id ||
+      typeof effect.playerId !== "string" || !effect.playerId ||
+      !state.roomId || next.roomId !== state.roomId || next.selfId !== state.playerId ||
+      !Number.isSafeInteger(next.round) || next.round <= 0 ||
+      !Number.isFinite(next.battleStartedAt) || next.battleStartedAt <= 0) return true;
+  const engine = state.offlineMode
+    ? state.offlineClient?.mainThreadApi || state.offlineClient?.worker
+    : "online";
+  if (!engine) return true;
+  let owner = state.fighterSlashVisualReceipts;
+  if (!owner || owner.engine !== engine || owner.roomId !== next.roomId ||
+      owner.session !== state.roomSessionGeneration || owner.selfId !== next.selfId ||
+      owner.round !== next.round || owner.battleStartedAt !== next.battleStartedAt) {
+    state.fighterSlashVisualReceipts = owner = { engine, roomId: next.roomId,
+      session: state.roomSessionGeneration, selfId: next.selfId, round: next.round,
+      battleStartedAt: next.battleStartedAt, ids: new Set() };
+  }
+  const key = JSON.stringify([effect.playerId, effect.id]);
+  if (owner.ids.has(key)) return false;
+  owner.ids.add(key);
+  if (owner.ids.size > 128) owner.ids.delete(owner.ids.values().next().value);
+  return true;
+}
+
 function detectMagicEffects(previous, next) {
   if (HEAL_E_SFX_ACTIVE && (HEAL_E_SFX_ACTIVE.roomId !== String(next.roomId) ||
       HEAL_E_SFX_ACTIVE.generation !== state.roomSessionGeneration ||
@@ -14258,6 +14285,7 @@ function detectMagicEffects(previous, next) {
     state.headMarkerSlots.clear();
     state.headMarkerPresentationCache.clear();
     state.headMarkerPresentationFrame = -1;
+    state.fighterSlashVisualReceipts = null;
     state.itemUseActionEventRoomId = "";
     state.itemUseActionEventIds = new Set();
     return;
@@ -14341,6 +14369,7 @@ function detectMagicEffects(previous, next) {
       localEffect._headMarkerExpiresAt = receivedAt + duration;
       localEffect.duration = localEffect._headMarkerExpiresAt - receivedAt;
     }
+    if (!admitFighterSlashVisualOnce(effect, next)) continue;
     state.magicEffects.push(localEffect);
     if (isGrenadeImpactSoundEffect(localEffect)) admitGrenadeImpactSound(localEffect, next);
     if (soundKind) admitPhenomenonSound(effect, next);
@@ -34450,7 +34479,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
