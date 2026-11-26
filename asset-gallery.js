@@ -6072,6 +6072,10 @@ function visibleVersionIndices(group) {
         const original=new URL('/public/astra62-match-opening-pennant/r'+item.id.slice(-1)+'/index.html',location.href);
         if(params.has('verify'))original.searchParams.set('verify',params.get('verify')||'1');
         sourceLink.href=original.href;
+      } else if (item.id === 'carried-missile-astra62-r1') {
+        const original = new URL('/public/astra62-carried-missile/r1/index.html', location.href);
+        if (params.has('verify')) original.searchParams.set('verify', params.get('verify') || '1');
+        sourceLink.href = original.href;
       }else sourceLink.href = preview.href;
       sourceLink.textContent = item.recordKind === 'reference-only' ? '版の存在を示す公開記録を見る ↗' : item.historyOnly ? 'この版の保存元を見る ↗' : '元のWebGPUプレビューを見る ↗';
     }
