@@ -14003,3 +14003,15 @@ body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active
   background: transparent !important;
   box-shadow: none !important;
 }
+
+/* iPad comfort offset. Move upper HTML controls, not the game/input surface. */
+html.dva-ipad-ui-comfort body.game-open.dva-full-canvas {
+  --dva-ipad-ui-drop: clamp(16px, 5dvh, 22px);
+  --dva-ui-t: calc(max(12px, env(safe-area-inset-top, 0px)) + var(--dva-ipad-ui-drop));
+  --dva-panel-launch-top: max(var(--dva-ui-t),
+    calc(var(--dva-field-map-bottom) + 8px + var(--dva-ipad-ui-drop)));
+}
+html.dva-ipad-ui-comfort body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden]))
+  #matchPanelContentSlot:not([hidden]) {
+  margin-block-start: max(var(--dva-ipad-ui-drop), calc(env(safe-area-inset-top, 0px) + 8px));
+}
