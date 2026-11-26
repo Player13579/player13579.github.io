@@ -13992,3 +13992,14 @@ html:not([data-field-renderer="webgpu"])
     max-height: min(174px, 36dvh);
   }
 }
+
+/* Unified match panel: let the field show in the spaces between readable controls. */
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])):not(:has(#meetingPanel:not([hidden]))) #gameApp #sidePanel {
+  background: rgba(234, 244, 247, .38) !important;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active
+  #gameApp #sidePanel :is(#matchPanelHeader, #matchPanelToolbar, #matchPanelContent #itemInventoryGrid,
+    #matchPanelContent #teleportControl, #matchPanelContent #empPhaseControl):not([hidden]) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
