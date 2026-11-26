@@ -29018,6 +29018,14 @@ function captureWebGPUMainAppHeadMarkerScene(data, markerActors, camera, zoom,
 // WEBGPU_MAIN_APP_COMBINED_WORLD_SNAPSHOT_V1_START
 // A candidate only: later mandatory stages still have to be captured before
 // the shared renderer can accept this frame. Keep every input in source order.
+function snapshotWebGPUAcquisitionRect(rect) {
+  // DOMRect exposes these properties through prototype getters. Spreading an
+  // instance into the prepared receipt would otherwise omit its geometry.
+  return rect ? Object.freeze({
+    left: rect.left, top: rect.top, width: rect.width, height: rect.height
+  }) : null;
+}
+
 function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, providers = {}, forValidation = false) {
   const expandedCanvas = els.expandedMapCanvas;
   const expandedRect = state.expandedMapOpen
@@ -29052,8 +29060,9 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, p
     overlay.dataset?.acquisitionGpuOverlay === '1' &&
     overlay.style?.visibility === 'hidden' && overlay.style.display === 'block' &&
     overlay.style.pointerEvents === 'none' && Number(overlay.style.zIndex) === 71;
-  const overlayRect = isIdleOwnedOverlay ? null : overlay?.getBoundingClientRect?.();
-  const canvasRect = mainViewport?.rect;
+  const overlayRect = isIdleOwnedOverlay ? null
+    : snapshotWebGPUAcquisitionRect(overlay?.getBoundingClientRect?.());
+  const canvasRect = snapshotWebGPUAcquisitionRect(mainViewport?.rect);
   const canvasRectReady = Boolean(canvasRect &&
     [canvasRect.left, canvasRect.top, canvasRect.width, canvasRect.height]
       .every(Number.isFinite) && canvasRect.width > 0 && canvasRect.height > 0);
@@ -34389,7 +34398,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
