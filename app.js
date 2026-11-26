@@ -8210,6 +8210,7 @@ function bindEvents() {
   els.vendingButton.addEventListener("click", () => setVendingOpen(!state.vendingOpen, {
     opener: els.vendingButton
   }));
+  bindFullShopPresentation();
   els.vendingBulkPurchase.addEventListener("change", () => {
     state.vendingBulkPurchase = Boolean(els.vendingBulkPurchase.checked);
     if (!state.vendingBulkPurchase) stopVendingHold({ suppressClick: true });
@@ -9035,6 +9036,7 @@ function bindEvents() {
     if (handleKeybindModalKeydown(event)) return;
     if (handleFieldFeedDialogKeydown(event)) return;
     if (handleExpandedMapDialogKeydown(event)) return;
+    if (handleFullShopKeydown(event, eventTarget)) return;
     const persistentOperatorDetailOpen = Boolean(state.operatorDetailSource && !state.operatorDetailTimer && !els.operatorDetail.hidden);
     const persistentInventoryDetailOpen = Boolean(state.inventoryItemDetailSource && !state.inventoryItemDetailTimer && !els.inventoryItemDetail.hidden);
     if (event.key === "Escape" && (persistentOperatorDetailOpen || persistentInventoryDetailOpen)) {
@@ -18144,6 +18146,80 @@ function triggerShopActivationPresentation(data) {
   return true;
 }
 
+// This presentation relocates the same catalogue nodes, never duplicates an
+// action or changes the stock purchase, ownership, or selection routes.
+let fullShopPresentation = null;
+function bindFullShopPresentation() {
+  const mount = document.getElementById('vendingFullMount');
+  const close = document.getElementById('vendingFullClose');
+  const panel = els.vendingPanel;
+  if (!mount || !close || !panel ||
+      getComputedStyle(document.documentElement).getPropertyValue('--dva-full-shop-ready').trim() !== '1') return;
+  fullShopPresentation = { mount, close, panel, home: null, madeInert: [] };
+  close.addEventListener('click', () => setVendingOpen(false));
+  if (typeof MutationObserver === 'function') {
+    const observer = new MutationObserver(() => syncFullShopPresentation(!panel.hidden));
+    observer.observe(panel, { attributes: true, attributeFilter: ['hidden'] });
+  }
+}
+function syncFullShopPresentation(visible) {
+  const layout = fullShopPresentation;
+  if (!layout) return;
+  const { mount, close, panel } = layout;
+  if (!visible) {
+    if (!layout.home) return;
+    mount.hidden = true;
+    close.hidden = true;
+    layout.home.parentNode?.replaceChild(panel, layout.home);
+    layout.home = null;
+    for (const node of layout.madeInert) node.inert = false;
+    layout.madeInert.length = 0;
+    return;
+  }
+  if (layout.home || !panel.parentNode || state.screen !== 'game') return;
+  layout.home = document.createComment('shop-panel-home');
+  panel.parentNode.insertBefore(layout.home, panel);
+  mount.appendChild(panel);
+  mount.hidden = false;
+  close.hidden = false;
+  for (const node of [els.gameApp, document.getElementById('matchUiToggle')]) {
+    if (node && !node.inert) { node.inert = true; layout.madeInert.push(node); }
+  }
+  if (state.enhanceHold.inputSource === 'weapon-shortcut') cancelEnhanceAction('use');
+}
+function handleFullShopKeydown(event, target) {
+  const layout = fullShopPresentation;
+  if (!layout || layout.mount.hidden || !state.vendingOpen) return false;
+  if (event.key === 'Escape' ||
+      (event.code === 'KeyV' && !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey &&
+       !target?.closest?.('input, textarea, select, [contenteditable="true"]'))) {
+    event.preventDefault();
+    if (!event.repeat) setVendingOpen(false);
+    return true;
+  }
+  if (event.key === 'Tab') {
+    const controls = [...layout.mount.querySelectorAll('button, input, select, [href]')]
+      .filter(node => !node.disabled && !node.closest('[hidden]') && node.getClientRects().length);
+    event.preventDefault();
+    if (!controls.length) return true;
+    const pos = controls.indexOf(document.activeElement);
+    const next = pos < 0 ? (event.shiftKey ? controls.length - 1 : 0)
+      : (pos + (event.shiftKey ? -1 : 1) + controls.length) % controls.length;
+    controls[next].focus({ preventScroll: false });
+    return true;
+  }
+  if (target === layout.close && (event.key === 'Enter' || event.code === 'Space')) {
+    if (event.repeat) event.preventDefault();
+    return true;
+  }
+  // Preserve the shop catalogue's arrows, numbers and purchase-key routing.
+  // Ordinary movement and the other drawer launcher do not own a modal key.
+  if ((Boolean(keyName(event.key)) && !event.altKey && !event.ctrlKey && !event.metaKey) || event.code === 'F2') {
+    if (!target?.closest?.('input, textarea, select, [contenteditable="true"]')) event.preventDefault();
+    return true;
+  }
+  return false;
+}
 function setVendingOpen(open, { focus = true, opener = null } = {}) {
   const data = state.data;
   const wasOpen = state.vendingOpen;
@@ -18164,7 +18240,7 @@ function setVendingOpen(open, { focus = true, opener = null } = {}) {
     if (selectedScrollRegion() === els.vendingPanel) setSelectedScrollRegion(null, { focus: false });
   }
   if (data) renderVending(data);
-  else els.vendingPanel.hidden = true;
+  else { els.vendingPanel.hidden = true; syncFullShopPresentation(false); }
   els.vendingButton.classList.toggle("active", state.vendingOpen);
   els.vendingButton.setAttribute("aria-expanded", String(state.vendingOpen));
   setTabletShortcutLabel(els.tabletVendingShortcut, "ショップ", state.vendingOpen ? "ショップを閉じる" : "ショップを開く");
@@ -18172,7 +18248,9 @@ function setVendingOpen(open, { focus = true, opener = null } = {}) {
   els.tabletVendingShortcut.setAttribute("aria-expanded", String(state.vendingOpen));
   if (state.vendingOpen) {
     if (!wasOpen) triggerShopActivationPresentation(data);
-    requestAnimationFrame(() => setSelectedScrollRegion(els.vendingPanel, { focus }));
+    requestAnimationFrame(() => {
+      if (state.vendingOpen && !els.vendingPanel.hidden) setSelectedScrollRegion(els.vendingPanel, { focus });
+    });
   } else if (wasOpen) {
     restoreVendingFocus({ focus, opener });
   }
@@ -18258,6 +18336,7 @@ function renderVending(data) {
   els.tabletVendingShortcut?.classList.toggle("active", visible);
   els.tabletVendingShortcut?.setAttribute("aria-expanded", String(visible));
   if (els.vendingPanel.hidden === visible) els.vendingPanel.hidden = !visible;
+  syncFullShopPresentation(visible);
   if (!visible) {
     state.vendingRenderKey = "";
     scheduleActiveEffectsLayout();
@@ -34587,7 +34666,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.

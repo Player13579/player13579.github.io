@@ -13844,3 +13844,125 @@ body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPa
   body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelContent #teleportControl { grid-column: 4; grid-row: 2; }
   body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelContent #empPhaseControl { grid-column: 4; grid-row: 3; }
 }
+
+/* A closed optional panel must have no box, even if a legacy inner widget
+ * independently sets visibility. This excludes preparation and meetings. */
+body.game-open.dva-full-canvas:not(.dva-match-ui-open) #gameApp :is(#sidePanel, #fieldLowerRow, .topbar) {
+  display: none !important;
+}
+/* The interactive catalogue uses its existing DOM under a dedicated owner. */
+:root { --dva-full-shop-ready: 1; }
+body.game-open #vendingFullMount:not([hidden]) {
+  position: fixed;
+  inset: 0;
+  z-index: 59;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  isolation: isolate;
+  background: rgba(228, 241, 246, .80);
+  overscroll-behavior: none;
+}
+body.game-open #vendingFullMount > #vendingPanel:not([hidden]) {
+  position: absolute;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: max(14px, env(safe-area-inset-top)) max(12px,env(safe-area-inset-right))
+    calc(26px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)) !important;
+  overflow: auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #15313f;
+  overscroll-behavior: contain;
+}
+body.game-open #vendingFullMount .vending-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 0 0 10px;
+}
+body.game-open #vendingFullMount > #vendingPanel div.vending-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 155px), 1fr));
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+body.game-open #vendingFullMount #vendingFullClose:not([hidden]) {
+  position: fixed;
+  z-index: 3;
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 18px);
+  right: max(14px, env(safe-area-inset-right));
+  min-width: 96px;
+  min-height: 46px;
+  border: 1px solid #668390;
+  border-radius: 8px;
+  color: #eef8fb;
+  background: #183745;
+}
+body.game-open #vendingFullMount > #vendingPanel:not([hidden]) {
+  padding-bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+}
+body.game-open:has(#vendingFullMount:not([hidden])) #gameApp #sidePanel {
+  visibility: hidden !important;
+}
+
+/* Mobile-only: keep all panel controls in a fixed, reachable lower lane.
+ * The content slot owns the remaining space, so its existing ResizeObserver
+ * refits the single page when the tool row wraps. No nodes move here. */
+@media (pointer: coarse), (max-width: 600px), (max-height: 500px) and (orientation: landscape) {
+  body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelContentSlot:not([hidden]) {
+    order: 1;
+    margin-block-start: 0;
+    margin-block-end: 6px;
+  }
+  body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader {
+    order: 2;
+    flex: 0 0 auto;
+    position: relative;
+    inset: auto;
+    min-height: 0;
+    padding: 4px 0 50px;
+    margin-block-end: 14px;
+    border-top: 1px solid rgba(52, 94, 111, .35);
+    border-bottom: 0;
+  }
+  body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader h2 {
+    float: none;
+    min-height: 20px;
+    margin: 0 0 4px;
+  }
+  body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelToolbar {
+    padding-inline-end: 0;
+    align-items: center;
+  }
+  body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchUiToggle:not([hidden]) {
+    top: auto !important;
+    bottom: calc(var(--dva-ui-b) + 14px) !important;
+    right: var(--dva-ui-r);
+  }
+}
+/* Wider mobile layouts can place Close to the right of the tool row. */
+@media (min-width: 550px) and (pointer: coarse), (min-width: 550px) and (max-width: 600px),
+  (min-width: 550px) and (max-height: 500px) and (orientation: landscape) {
+  body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader {
+    padding-block-end: 2px;
+    padding-inline-end: 130px;
+    min-height: 46px;
+  }
+  body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader h2 {
+    float: left;
+    margin: 0 8px 0 0;
+  }
+}
