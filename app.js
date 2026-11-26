@@ -3292,7 +3292,9 @@ function init() {
       window.DvaWebGPUMarkerExplanation?.supportsResponsiveMain &&
       typeof window.DvaWebGPUViewport?.mainLogicalSize === "function" &&
       getComputedStyle(document.documentElement).getPropertyValue("--dva-full-canvas-ui-ready").trim() === "1") {
-    window.DvaFullCanvasUi?.init({ openMap: openExpandedMapFromMinimap, closeMatchUi: () => {
+    window.DvaFullCanvasUi?.init({ openMap: openExpandedMapFromMinimap, openMatchUi: () => {
+      if (state.enhanceHold.inputSource === "weapon-shortcut") cancelEnhanceAction("use");
+    }, closeMatchUi: () => {
       // Only release gestures started in the optional panels. Gameplay HUD
       // controls, branch tray and movement still own their original input.
       const drawerOwns = button => Boolean(button?.closest("#sidePanel, #fieldLowerRow"));
@@ -8791,7 +8793,8 @@ function bindEvents() {
     };
     const shortcutWeapon = () => {
       if (!state.tabletOpen || state.expandedMapOpen || state.keybindOpen || state.fieldFeedOpen ||
-          state.operatorBranchesOpen || state.switchDrag.opened || !els.killCameraOverlay.hidden) return null;
+          state.operatorBranchesOpen || state.switchDrag.opened || !els.killCameraOverlay.hidden ||
+          document.body.classList.contains("dva-unified-panel-active")) return null;
       const shortcut = tabletWeaponUseState(state.data);
       return shortcut.available ? shortcut.weapon : null;
     };
@@ -34678,7 +34681,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.

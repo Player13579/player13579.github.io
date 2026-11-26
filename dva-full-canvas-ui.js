@@ -16,6 +16,7 @@
   let lastPhase = null;
   let beforeMeeting = false;
   let closeInput = null;
+  let openInput = null;
   let button = null;
   let mapButton = null;
   const ownedInert = new Set();
@@ -141,7 +142,9 @@
     if (!body || !button) return;
     body.classList.toggle('dva-full-canvas', active);
     body.classList.toggle('dva-match-ui-open', active && expanded);
+    const wasUnified = unified;
     setUnifiedPanel(active && expanded && lastPhase === 'playing');
+    if (!wasUnified && unified) openInput?.();
     button.hidden = !active || lastPhase === 'meeting';
     if (mapButton) mapButton.hidden = !active || lastPhase !== 'playing';
     button.setAttribute('aria-expanded', String(active && expanded));
@@ -164,11 +167,12 @@
     expanded = !expanded;
     apply();
   }
-  function init({ closeMatchUi, openMap } = {}) {
+  function init({ closeMatchUi, openMap, openMatchUi } = {}) {
     if (button) return;
     button = document.getElementById('matchUiToggle');
     if (!button) return;
     closeInput = closeMatchUi;
+    openInput = openMatchUi;
     // A browser may rotate without sending a pointercancel to the old button.
     // Revoke only launchers; the movement stick still owns its own geometry.
     root.addEventListener?.('orientationchange', () => { inputGeneration += 1; });
