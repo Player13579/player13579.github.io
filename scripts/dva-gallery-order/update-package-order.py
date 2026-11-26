@@ -106,6 +106,9 @@ def main():
     if pattern.search(block):
         block = pattern.sub(replacement, block, count=1)
     else:
+        block = block.rstrip()
+        if block.endswith("]"):
+            block += ","
         block += "\n    " + replacement + ","
     js = js[:start] + block + js[end:]
 
