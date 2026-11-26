@@ -26,7 +26,7 @@
       for(let pixel=dirtyFirst;pixel<=dirtyLast;pixel++){
         interior+=rowInteriorDiff[pixel];
         if(interior)coverage[pixel]+=interior;
-        alpha[row+pixel]=Math.round(coverage[pixel]*255/(samples*samples));
+        alpha[row+pixel]=(coverage[pixel]*255+128)>>>8;
         coverage[pixel]=0;
         rowInteriorDiff[pixel]=0;
       }
