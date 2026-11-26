@@ -1,0 +1,194 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "reusedAdapter": {
+    "author": "GPT-6.1-Sol",
+    "blob": "71e36bd306c11320064c54d112eae4024af6a0e0",
+    "byteUnchanged": true
+  },
+  "entry": "gallery.html",
+  "protocol": "dva-gallery-startup/v1",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "normalAudioListening": "not_run",
+  "inlineFixture": {
+    "mode": "west",
+    "point": [
+      -51,
+      4
+    ],
+    "showSite": 1,
+    "uniformBytes": 48,
+    "meaning": "same throw/EC attachment/current/permitted/settled original positive fixture only"
+  },
+  "worldRadius": 180,
+  "referenceRadius": 54,
+  "lifetimeMs": 880,
+  "interCauseRestMs": 500,
+  "groupId": "fighter-thrown-ec-impact-astra62",
+  "versionId": "fighter-thrown-ec-impact-astra62-r2",
+  "creativeEdition": 2,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "technicalAuthor": "GPT-6.2-Astra",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=fighter-thrown-ec-impact-astra62-r2",
+  "standalone": "index.html",
+  "publicationState": "candidate-branch-only",
+  "actualSize": "not_run",
+  "normalSpeed": "not_run",
+  "parentSourceBase": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+  "sourceR1": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+    "path": "public/astra62-fighter-thrown-ec-impact/r1",
+    "shaderBlob": "62fc2630ee718bb59de9192d62bf0ce6b262df21",
+    "impactModuleBlob": "d3a056321486ff8ecd89d291b23842ee17640747",
+    "priorTechnicalAuthor": "GPT-6-Luna"
+  },
+  "producer": {
+    "file": "offline-server-main.js",
+    "commit": "51d7193eeadcd9a4b79b36f3399bd2a58786834a",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "chargeAttachment": "L14085–14101: Fighter operator consumes 1 EC; record retains ownerId, resolved throw endpoint and energyShockwave.",
+    "resolution": "L14451–14490: throw owner or owner fallback supplies the source; any rigid collision can relocate the resolved landing; dispatch only for the flagged throw.",
+    "effect": "L14129–14139: source.id required, fighter-energy-impact at landing, playerId is the source, radius 180, duration 880ms, one-body-damage variant. Target search follows effect creation; visual requires no victim, damage, outcome, or local-player claim.",
+    "scope": "Synthetic standalone/embedded fixtures only, no live connection."
+  },
+  "bAuthority": {
+    "repository": "Player13579/B",
+    "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+    "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+  },
+  "creativeApi": {
+    "provider": "OpenAI Responses API",
+    "model": "gpt-6.2-astra",
+    "reasoningEffort": "high",
+    "id": "resp_05f6c3e3a717ae98006b07cfff4ed087d0ae5a836a7aa20633",
+    "requestSha256": "234e9f67f7cedeaa5c487d24fd1a9bef8a143b3ecad31b37024e2d7060ed79bd",
+    "outputStatus": "completed",
+    "generatedShaderSha256": "4bf53e51dc2c56febf458b8d7c57b998ceab61d5d46378cd3ac9a95898db9d57"
+  },
+  "designTitle": "ファイター投擲EC・着地解放 R2「琥珀の圧面」",
+  "design": "着地点の小さな光が床を照らし続けるのではなく、光を持つ面そのものが着地点を離れる。下降する既存PCMの立ち上がりに合わせ、中心の圧縮は14 msで最大になる。この圧縮を半径ごとに一度だけ遅らせて渡す。進行側は短い立ち上がり、後ろ側は厚い琥珀色の斜面とし、輪郭線は描かない。中心は先に冷たいタイルへ戻り、明るさの重心は外へ移る。\n\n床にも光を受け持たせる。圧面の下では目地の見かけの位置が半径方向にずれ、平らな釉面には幅のある暖色の反射が乗る。反射の山は圧縮の強い所に限り、目地へ向かって落とす。通過直後の床には同じ入射に対する青緑寄りの面応答を長めに残す。これはもう一度光る帯ではない。各地点で圧面と床応答は一緒に立ち上がり、同じ位相で最大になり、床だけがゆっくり戻る。変位は床座標の光学的な読み替えに限る。未到達の床を照らす光源、画面全体の露出変更、画面空間ブルームは設けない。\n\n世界半径180を基準半径54に写し、最外部への到達時刻を680 ms、終了を880 msとする。縮小時も細線の本数ではなく圧面の幅と床面の明暗差で形を伝える。軽減設定では光の到達・幅・寿命を変えず、目地の光学変位だけを通常の1/8にする。待機床と、表示が許可された場合の静止菱形はR1のまま。\n\n成立条件はR1のイベントと音を変更しない。本編でFighterがその投擲に1 ECを消費して付けたenergyShockwave記録があり、着地が解決した場合だけ、発生元のactor IDを伴うfighter-energy-impactが対象選択より前に出る。playerIdは発生元、one-body-damageは解決規則であって結果ではない。西・東は表示許可済みの合成座標例にすぎず、シェーダーは渡された着地点だけを使う。投擲物、人物、命中・損傷・状態の表示、飛散物、地形変化は作らない。",
+  "observationPlan": "未観察。まず既存ホストのままWGSLをNagaで検証し、Viewの各オフセット（0, 8, 12, 16, 20, 24, 28, 32, 40）、全長48 byte、binding 0、vs/fs、不透明なsRGB出力を照合する。\n\n数値照合：CPUでarrivalMs、packetPhase、pressureAt、memoryAt、rangeClip、lifeGain、opticalShiftを同式で評価する。半径0 / 13.5 / 27 / 40.5 / 54の到達境界は0 / 65 / 200 / 405 / 680 ms。最初の4地点の圧縮頂点は14 / 90.25 / 236.5 / 452.75 ms。各時刻で半径方向の線形RGBと待機時との差を取り、発光域が外へ移り、中心が先に消えるか調べる。例えば236.5 msでは中心は復元済み、半径13.5は圧面が消えて床応答のみ、27は圧縮頂点、40.5は未到達のはず。半径52–54の内向きフェザーと54ちょうど・直外を細かく標本化する。全方位で未到達域と半径54以上が同じ座標の待機出力に一致すること、線形RGBの山がsRGB変換前に1で切れていないことを調べる。同一点・同位相の通常／軽減で、非ゼロの変位比1:0.125と共通の場の包絡を比較する。\n\n表示照合：inactive、負齢、0、879、880 ms、終了後をshowSite両値で比較する。hiddenでは着地点を変えても全画素が静止床のみ、終了後は菱形の有無を含めR1待機画像と一致するか差分を取る。西・東の両例で着地点と目地の位置関係を変え、実寸再生と時刻固定を併用する。アダプターのmax(0.1,min(width/292,height/135,dpr))を保った小窓・標準寸法・高DPR、Safari/iPad、通常／軽減で、点の瞬きではなく厚い前面を追えるか、後方の床の明るさと暗い目地を区別できるか、最外周に静止線や残像が残らないかを確認する。通常再生でPCMの立ち上がりと中心圧縮、以後の一方向の解放を聴き合わせる。verifyはミュートのままとし、対象の有無に応じた二音目や二度目の発光を検査項目にしないのではなく、それらが一切ないことを確認する。",
+  "validation": {
+    "version": "fighter-thrown-ec-impact-astra62-r2",
+    "lifetimeMs": 880,
+    "boundWorld": 180,
+    "acceptedUnique": 3,
+    "uniformBytes": 48,
+    "pcm": {
+      "8000": "a136d07a360cb08130bca5c7b5b047d61423988c7eb902004cf87dbf92777293",
+      "44100": "184521d0a45d9e02061e76fb97b0899e0d604453c20f0a1adfacfe41aea60fbb",
+      "48000": "a20cc5229f9f0e8387b7a4464bde13ce188f89b6bf91eef91123255359a37042",
+      "96000": "ce9a91ab814bac401ca3b08f15aa962bbe61414a1610084a880310437b788f0f",
+      "192000": "a82e108e3252d95d7facc8f283c00df671d965312dd81d2a2d607c203a2c79f1"
+    },
+    "shaderSha256": "4bf53e51dc2c56febf458b8d7c57b998ceab61d5d46378cd3ac9a95898db9d57",
+    "method": "CPU-only fixture, PCM equivalence, and entry dependency checks",
+    "node": "v24.19.0",
+    "naga": "naga-wasi-cli@0.1.0",
+    "spirvBytes": 7388,
+    "spirvSha256": "4baf75b577f87a42d265976ced155484dc7b02570e38c542919918e36eeeae5a",
+    "numericShaderChecks": {
+      "method": "Double-precision CPU evaluation of pinned shader equations. West/east, scales 0.5 and 1, reduced/full. Sampled coordinate values only; no native GPU pixels, actual dimensions, or visual acceptance.",
+      "idleHiddenAndOutsideChecks": 2400,
+      "radialSampleDefinition": "At west anchor, x-positive radial cut sampled at 0.5 reference-unit steps. Bright width sums intervals where encoded RGB weighted change vs same inactive position exceeds 0.10; diagnostic only.",
+      "radialCut": {
+        "r1": {
+          "60": {
+            "brightestRadius": 9.5,
+            "radialWidthAtDelta0.10": 13.5,
+            "peakDisplayCodeDelta": 0.691
+          },
+          "210": {
+            "brightestRadius": 25.5,
+            "radialWidthAtDelta0.10": 9.0,
+            "peakDisplayCodeDelta": 0.662
+          },
+          "390": {
+            "brightestRadius": 40.5,
+            "radialWidthAtDelta0.10": 8.0,
+            "peakDisplayCodeDelta": 0.653
+          },
+          "550": {
+            "brightestRadius": 49.0,
+            "radialWidthAtDelta0.10": 7.5,
+            "peakDisplayCodeDelta": 0.643
+          }
+        },
+        "r2": {
+          "60": {
+            "brightestRadius": 5.5,
+            "radialWidthAtDelta0.10": 11.0,
+            "peakDisplayCodeDelta": 0.496
+          },
+          "210": {
+            "brightestRadius": 24.5,
+            "radialWidthAtDelta0.10": 16.0,
+            "peakDisplayCodeDelta": 0.543
+          },
+          "390": {
+            "brightestRadius": 37.0,
+            "radialWidthAtDelta0.10": 15.5,
+            "peakDisplayCodeDelta": 0.517
+          },
+          "550": {
+            "brightestRadius": 45.5,
+            "radialWidthAtDelta0.10": 14.5,
+            "peakDisplayCodeDelta": 0.5
+          }
+        }
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "public/astra62-fighter-thrown-ec-impact/r2/effect.wgsl",
+      "bytes": 3333,
+      "sha256": "4bf53e51dc2c56febf458b8d7c57b998ceab61d5d46378cd3ac9a95898db9d57",
+      "gitBlob": "2a0d50f569e0b0415ca1c3a4d8eae99e91ec4086"
+    },
+    {
+      "path": "public/astra62-fighter-thrown-ec-impact/r2/gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    {
+      "path": "public/astra62-fighter-thrown-ec-impact/r2/gallery.html",
+      "bytes": 1405,
+      "sha256": "2265cd3d707520f262933616d07e736d899e132e4a4171d883bdbd4fd98a04cc",
+      "gitBlob": "f8a3f09123780532566607680a8c3c9bae3a0e6b"
+    },
+    {
+      "path": "public/astra62-fighter-thrown-ec-impact/r2/impact.mjs",
+      "bytes": 1812,
+      "sha256": "6c63ec985619e12ea4d3ca537172a33c2013985855db49681fcf220c2a69d10b",
+      "gitBlob": "c69359c5c2a14968dc3b7b8de580fada3b1c34f7"
+    },
+    {
+      "path": "public/astra62-fighter-thrown-ec-impact/r2/index.html",
+      "bytes": 1999,
+      "sha256": "30497668a6b709596b3979ef8a0a9cd2a1adaf1368d32c3bbb39f4c7b4cc2d2d",
+      "gitBlob": "1d27aa97454921b3ad6fc3f66e914b02b28f918e"
+    },
+    {
+      "path": "public/astra62-fighter-thrown-ec-impact/r2/preview.mjs",
+      "bytes": 7915,
+      "sha256": "b17371bd7a846c802b31655204d4bafbf09033e44509236efeca83a560e405b2",
+      "gitBlob": "0e944fbf9245c7e53e52a4d6d12c40383ad34a0f"
+    },
+    {
+      "path": "public/astra62-fighter-thrown-ec-impact/r2/validation.mjs",
+      "bytes": 3642,
+      "sha256": "f7ada6e6bfbe700383396d494c745d1089bf6d2702af5fd8fee17bc88a8216f6",
+      "gitBlob": "a1727b54313f302f855a0ecf7499d3d9da6a618c"
+    }
+  ]
+}
