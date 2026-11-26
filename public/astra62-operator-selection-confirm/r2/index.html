@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本人のオペレーター手動選択確定 R2</title><style>
+:root{color-scheme:dark;font:16px/1.55 system-ui,sans-serif;background:#14242e;color:#ecf2ef}
+body{max-width:760px;margin:auto;padding:24px}h1{font-size:1.5rem}p{max-width:44rem}
+canvas{display:block;width:100%;height:clamp(180px,35vh,285px);box-sizing:border-box;background:#162a35;border:1px solid #42595d;border-radius:8px}
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}button,select{font:inherit;padding:.35rem .65rem}
+label{display:inline-flex;align-items:center;gap:.3rem}output{display:block;margin-top:.65rem}pre{font:13px monospace;white-space:pre-wrap}
+</style><main><h1>本人のオペレーター手動選択確定 <small>R2</small></h1>
+<p>山形と輪はオペレーター候補の見本札です。本人が選んだ札に確定の留め具が掛かります。</p>
+<canvas aria-label="二枚の候補札と、選んだ札を固定する留め具"></canvas>
+<div class="controls"><label>通知条件<select id="fixture"><option value="left">左の山形を選択</option><option value="right">右の輪を選択</option><option value="pending">返答待ち</option><option value="auto">自動選択</option><option value="stale">古い応答</option><option value="mismatch">選択が不一致</option></select></label>
+<button id="play" disabled>選択確定を再生</button><button id="stop" disabled>停止</button><label><input id="reduced" type="checkbox">動きを抑える</label><label><input id="sound" type="checkbox">音声</label></div>
+<output id="state" role="status">WebGPUを準備中…</output><details><summary>描画情報</summary><pre id="receipt"></pre></details></main>
+<script type="module" src="./preview.mjs?v=operator-confirm-r2"></script></html>
