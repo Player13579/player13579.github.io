@@ -10052,7 +10052,7 @@ function tabletStickGeometry(canvas, rect) {
     walking };
 }
 
-function tabletWalkingViewportMatches(held, current) {
+function tabletWalkingViewportMatches(held, current, heldRect, currentRect) {
   if (current.every((value, index) => value === held[index])) return true;
   // Keep the press-time anchor. Small VisualViewport quantization cannot
   // accumulate into a larger accepted resize or defer the layout settler.
@@ -10062,13 +10062,21 @@ function tabletWalkingViewportMatches(held, current) {
   const agrees = (before, after) => Number.isFinite(before) && Number.isFinite(after) &&
     before >= GAMEPLAY_VIEWPORT_MIN_DIMENSION && after >= GAMEPLAY_VIEWPORT_MIN_DIMENSION &&
     Math.abs(after - before) <= 0.25;
-  return agrees(held[2], current[2]) && agrees(held[3], current[3]);
+  if (agrees(held[2], current[2]) && agrees(held[3], current[3])) return true;
+  // Only the visual height can vary here. A fixed stick rectangle and the
+  // original press sample prevent the extra allowance from drifting.
+  return held[2] === current[2] &&
+    Number.isFinite(held[2]) && held[2] >= GAMEPLAY_VIEWPORT_MIN_DIMENSION &&
+    Number.isFinite(held[3]) && Number.isFinite(current[3]) &&
+    held[3] >= GAMEPLAY_VIEWPORT_MIN_DIMENSION && current[3] >= GAMEPLAY_VIEWPORT_MIN_DIMENSION &&
+    Math.abs(current[3] - held[3]) < 1 &&
+    currentRect.every((value, index) => value === heldRect[index]);
 }
 
 function tabletStickGeometryMatches(held, current) {
   return Boolean(held && current && held.canvas === current.canvas &&
     held.walking === current.walking && (!held.walking || (held.panelParent === current.panelParent &&
-    tabletWalkingViewportMatches(held.viewport, current.viewport))) &&
+    tabletWalkingViewportMatches(held.viewport, current.viewport, held.rect, current.rect))) &&
     current.rect.every((value, index) => (held.walking && index < 2) ||
       Math.abs(value - held.rect[index]) <= 1));
 }
