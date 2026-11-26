@@ -9,6 +9,18 @@
   const inverse = value => matrix(1 / value[0], 1 / value[3], -value[4] / value[0], -value[5] / value[3]);
   const transform = (value, x, y) => Object.freeze({ x: value[0] * x + value[4], y: value[3] * y + value[5] });
 
+  function mainLogicalSize(rect, responsiveMain = false) {
+    if (!responsiveMain || !positive(rect?.width) || !positive(rect?.height)) return SIZES.main;
+    const [baseWidth, baseHeight] = SIZES.main;
+    const scale = Math.min(rect.width / baseWidth, rect.height / baseHeight);
+    // Presentation passes are authored for integer logical dimensions.
+    // Round the fitted axis (at most half a logical unit) before committing
+    // projection, hit testing, and the physical drawing surface.
+    const width = Math.min(8192, Math.max(baseWidth, Math.round(rect.width / scale)));
+    const height = Math.min(8192, Math.max(baseHeight, Math.round(rect.height / scale)));
+    return positive(width) && positive(height) ? Object.freeze([width, height]) : SIZES.main;
+  }
+
   function createSnapshot(options) {
     const kind = options?.kind || 'main';
     const size = SIZES[kind];
@@ -17,7 +29,8 @@
     if (!rect || !finite(rect.left) || !finite(rect.top) || !positive(rect.width) || !positive(rect.height)) {
       throw new RangeError('Viewport CSS rectangle must be visible and finite');
     }
-    const [width, height] = size;
+    const responsiveMain = kind === 'main' && options?.responsiveMain === true;
+    const [width, height] = responsiveMain ? mainLogicalSize(rect, true) : size;
     // Existing pointer input maps each CSS axis independently. The expanded
     // map may have a noncanonical CSS aspect ratio in the responsive dialog;
     // preserve that mapping instead of rejecting otherwise valid taps.
@@ -30,7 +43,7 @@
     const cssToLogical = matrix(width / rect.width, height / rect.height,
       -rect.left * width / rect.width, -rect.top * height / rect.height);
     const logicalToPixel = matrix(pixelWidth / width, pixelHeight / height);
-    let worldToLogical;
+    let worldToLogical, committedMainCamera;
     if (kind === 'expanded') {
       const map = options.map;
       if (!positive(map?.width) || !positive(map?.height)) throw new RangeError('Expanded viewport requires map dimensions');
@@ -42,12 +55,14 @@
       const camera = options.camera || { x: 0, y: 0, zoom: 1 };
       if (!finite(camera.x) || !finite(camera.y) || !positive(camera.zoom)) throw new RangeError('Invalid world camera');
       worldToLogical = matrix(camera.zoom, camera.zoom, -camera.x * camera.zoom, -camera.y * camera.zoom);
+      if (responsiveMain) committedMainCamera = Object.freeze({ x: camera.x, y: camera.y, zoom: camera.zoom });
     }
     const worldToPixel = matrix(worldToLogical[0] * logicalToPixel[0],
       worldToLogical[3] * logicalToPixel[3],
       worldToLogical[4] * logicalToPixel[0], worldToLogical[5] * logicalToPixel[3]);
     const snapshot = {
       kind, width, height, pixelWidth, pixelHeight, dpr: backingScale,
+      ...(responsiveMain ? { responsiveMain: true, committedMainCamera } : {}),
       rect: Object.freeze({ left: rect.left, top: rect.top, width: rect.width, height: rect.height }),
       cssToLogical, logicalToCss: inverse(cssToLogical),
       logicalToPixel, pixelToLogical: inverse(logicalToPixel),
@@ -102,7 +117,8 @@
         let next;
         try { next = createSnapshot(options); } catch (_) { key = ''; frames = 0; return null; }
         const nextKey = sampleKey(sample) + ':' + [next.kind, next.rect.left, next.rect.top,
-          next.rect.width, next.rect.height, next.pixelWidth, next.pixelHeight].join(':');
+          next.rect.width, next.rect.height, next.pixelWidth, next.pixelHeight,
+          next.width, next.height, Boolean(next.responsiveMain)].join(':');
         frames = nextKey === key ? frames + 1 : 1;
         key = nextKey;
         if (frames < 2) return null;
@@ -113,7 +129,7 @@
     });
   }
 
-  const api = Object.freeze({ SIZES, createSnapshot, createStableGate, validSample, transform });
+  const api = Object.freeze({ SIZES, mainLogicalSize, createSnapshot, createStableGate, validSample, transform });
   root.DvaWebGPUViewport = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);

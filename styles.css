@@ -13081,3 +13081,349 @@ body.game-open:has(#selectPanel:not([hidden])) #operatorDetail.operator-detail:n
     grid-template-areas: "effect-name" "effect-detail";
   }
 }
+
+/* Match view: reserve no layout space for controls. The GPU target and its
+ * coordinate receipt are independent from whether this layer is visible. */
+:root { --dva-full-canvas-ui-ready: 1; }
+
+body.game-open.dva-full-canvas {
+  --dva-ui-l: max(12px, env(safe-area-inset-left, 0px));
+  --dva-ui-r: max(12px, env(safe-area-inset-right, 0px));
+  --dva-ui-t: max(12px, env(safe-area-inset-top, 0px));
+  --dva-ui-b: max(12px, env(safe-area-inset-bottom, 0px));
+  --dva-ui-rail: clamp(230px, 31vw, 380px);
+  --dva-ui-toolbar: 48px;
+  --dva-stick: clamp(76px, 23dvh, 140px);
+  --dva-ui-stick-clearance: calc(var(--dva-stick) + 16px);
+  min-height: 0;
+  height: 100dvh;
+}
+
+body.game-open.dva-full-canvas #gameApp.app-shell {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100% !important;
+  height: 100dvh !important;
+  max-width: none;
+  min-height: 0;
+  padding: 0 !important;
+  margin: 0;
+  overflow: hidden !important;
+}
+body.game-open.dva-full-canvas #gameApp > .game-area,
+body.game-open.dva-full-canvas #gameApp .field-stage-slot,
+body.game-open.dva-full-canvas #gameApp .field-stage-slot > .board-wrap {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  max-height: none;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+body.game-open.dva-full-canvas #gameApp .field-stage-slot > .board-wrap {
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#matchUiToggle:not([hidden]), #matchUiMapButton:not([hidden]) {
+  position: fixed;
+  z-index: 46;
+  left: var(--dva-ui-l);
+  top: var(--dva-ui-t);
+  min-height: 44px;
+  padding: 0 13px;
+  color: white;
+  background: #102532;
+  border: 1px solid #76a7b9;
+  border-radius: 9px;
+  font-weight: 700;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#matchUiMapButton:not([hidden]) {
+  top: calc(var(--dva-ui-t) + 48px);
+  min-width: 68px;
+}
+body.game-open.dva-full-canvas:not(.dva-match-ui-open) :is(
+  #tabletQuickActions, #tabletBranchLines, #tabletBranchTray,
+  .topbar, #soloMissionHud, #fieldLowerRow, #sidePanel, #leaveRoomButton,
+  #gameMuteButton, #gameTacticsButton, #tabletButton,
+  #keybindButton, #analyticsToggleButton
+) {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+body.game-open.dva-full-canvas:not(.dva-match-ui-open)
+  :is(#tabletQuickActions, #tabletBranchTray) * {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body.game-open.dva-full-canvas:not(.dva-match-ui-open):not(:has(#killCameraOverlay:not([hidden]))) #operatorReselectButton {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body.game-open.dva-full-canvas #gameApp #sidePanel {
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 30;
+  top: calc(var(--dva-ui-t) + var(--dva-ui-toolbar) + 8px);
+  right: var(--dva-ui-r);
+  bottom: var(--dva-ui-b);
+  left: auto;
+  width: var(--dva-ui-rail);
+  min-width: 0;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none;
+  margin: 0;
+  padding: 10px;
+  overflow: auto !important;
+  overscroll-behavior: contain;
+  border-radius: 10px;
+}
+body.game-open.dva-full-canvas #gameApp #fieldLowerRow:not([hidden]) {
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 15;
+  left: var(--dva-ui-l);
+  bottom: calc(var(--dva-ui-b) + var(--dva-ui-stick-clearance));
+  width: min(400px, calc(100% - var(--dva-ui-rail) - var(--dva-ui-r) - var(--dva-ui-l) - 14px));
+  min-height: 0;
+  height: auto;
+  max-height: min(30dvh, 250px);
+  margin: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-radius: 10px;
+}
+body.game-open.dva-full-canvas #gameApp #activeEffectsPanel:not([hidden]) {
+  min-height: 0;
+  max-height: min(30dvh, 250px) !important;
+  overflow: auto !important;
+}
+body.game-open.dva-full-canvas #gameApp #soloMissionHud:not([hidden]) {
+  position: absolute;
+  top: calc(var(--dva-ui-t) + var(--dva-ui-toolbar) + 8px);
+  left: var(--dva-ui-l);
+  right: auto;
+  max-width: min(42vw, 360px);
+}
+body.game-open.dva-full-canvas #gameApp #tabletPanel:not([hidden]) {
+  position: absolute;
+  display: block;
+  inset: 0 calc(var(--dva-ui-rail) + var(--dva-ui-r) + 10px) 0 0;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+body.game-open.dva-full-canvas #gameApp #tabletJoystickZone {
+  position: absolute;
+  grid-template-columns: var(--dva-stick, 140px);
+  bottom: var(--dva-ui-b);
+  left: var(--dva-ui-l);
+}
+body.game-open.dva-full-canvas #gameApp #tabletJoystick {
+  width: var(--dva-stick, 140px);
+  height: var(--dva-stick, 140px);
+}
+body.game-open.dva-full-canvas #gameApp #tabletQuickActions {
+  position: absolute;
+  width: auto;
+  max-width: none;
+  left: calc(var(--dva-ui-l) + var(--dva-stick, 140px) + 8px);
+  right: 4px;
+  bottom: var(--dva-ui-b);
+  gap: 6px;
+  margin: 0;
+  padding: 0 4px 0 0;
+  scrollbar-gutter: auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-height: min(174px, 38dvh);
+  transform: none;
+}
+
+body.game-open.dva-full-canvas.dva-match-ui-open :is(
+  #leaveRoomButton, #operatorReselectButton, #gameMuteButton,
+  #gameTacticsButton, #tabletButton, #keybindButton
+) {
+  top: var(--dva-ui-t) !important;
+  bottom: auto !important;
+  right: calc(var(--dva-ui-r) + (var(--dva-ui-slot) * 48px)) !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  z-index: 41;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#leaveRoomButton { --dva-ui-slot: 0; }
+#gameTacticsButton { --dva-ui-slot: 1; }
+#tabletButton { --dva-ui-slot: 2; }
+#gameMuteButton { --dva-ui-slot: 3; }
+#operatorReselectButton { --dva-ui-slot: 4; }
+#keybindButton { --dva-ui-slot: 5; }
+
+@media (max-width: 700px), (orientation: portrait) {
+  body.game-open.dva-full-canvas {
+    --dva-ui-rail: min(54vw, 340px);
+    --dva-stick: clamp(76px, 20vw, 120px);
+    --dva-ui-toolbar: 88px;
+  }
+  body.game-open.dva-full-canvas.dva-match-ui-open :is(
+    #leaveRoomButton, #operatorReselectButton, #gameMuteButton,
+    #gameTacticsButton, #tabletButton, #keybindButton
+  ) {
+    top: calc(var(--dva-ui-t) + (var(--dva-ui-row, 0) * 44px)) !important;
+    right: calc(var(--dva-ui-r) + (var(--dva-ui-col, 0) * 46px)) !important;
+  }
+  #leaveRoomButton, #gameMuteButton { --dva-ui-col: 0; }
+  #gameTacticsButton, #operatorReselectButton { --dva-ui-col: 1; }
+  #tabletButton, #keybindButton { --dva-ui-col: 2; }
+  #gameMuteButton, #operatorReselectButton, #keybindButton { --dva-ui-row: 1; }
+  body.game-open.dva-full-canvas #gameApp #sidePanel {
+    bottom: var(--dva-ui-b);
+  }
+  body.game-open.dva-full-canvas #gameApp #tabletPanel:not([hidden]) {
+    inset: 0;
+  }
+  body.game-open.dva-full-canvas #gameApp #tabletQuickActions {
+    right: var(--dva-ui-r);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-height: min(124px, 36dvh);
+  }
+  body.game-open.dva-full-canvas #gameApp #fieldLowerRow:not([hidden]) {
+    bottom: calc(var(--dva-ui-b) + var(--dva-ui-stick-clearance));
+    max-height: min(28dvh, 210px);
+  }
+}
+
+/* Keep the existing movement input's hit area above overlays at either
+ * orientation; the surrounding tablet still passes taps to the canvas. */
+body.game-open.dva-full-canvas #gameApp #tabletJoystickZone {
+  z-index: 20;
+  width: max-content;
+  min-width: 0;
+}
+body.game-open.dva-full-canvas #gameApp #tabletJoystick {
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+body.game-open.dva-full-canvas #gameApp #tabletPanel > header { display: none; }
+body.game-open.dva-full-canvas.dva-match-ui-open #gameApp #sidePanel {
+  top: calc(var(--dva-ui-t) + var(--dva-ui-toolbar) + min(27dvh, 154px) + 12px);
+}
+@media (max-height: 420px) {
+  body.game-open.dva-full-canvas.dva-match-ui-open #gameApp #sidePanel {
+    top: calc(var(--dva-ui-t) + var(--dva-ui-toolbar) + 4px);
+  }
+}
+/* Append after the fullscreen UI CSS. Keep the canvas as a full-window
+ * underlay; only the two visible meeting surfaces receive lanes. */
+body.game-open.dva-full-canvas.dva-match-ui-open:has(#meetingPanel:not([hidden]))
+  #gameApp #fieldFeedPanel:not([hidden]) {
+  box-sizing: border-box;
+  top: calc(var(--dva-ui-t) + var(--dva-ui-toolbar) + 8px);
+  left: var(--dva-ui-l);
+  right: calc(var(--dva-ui-r) + var(--dva-ui-rail) + 12px);
+  bottom: var(--dva-ui-b);
+  translate: none;
+  width: auto;
+  height: auto;
+  max-width: none;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open:has(#meetingPanel:not([hidden]))
+  #gameApp #sidePanel {
+  top: calc(var(--dva-ui-t) + var(--dva-ui-toolbar) + 8px);
+}
+@media (max-width: 700px) {
+  body.game-open.dva-full-canvas.dva-match-ui-open:has(#meetingPanel:not([hidden])) {
+    --dva-meeting-lane-start: calc(var(--dva-ui-t) + var(--dva-ui-toolbar) + 8px);
+    --dva-meeting-division: calc((100% + var(--dva-meeting-lane-start) - var(--dva-ui-b)) / 2);
+  }
+  body.game-open.dva-full-canvas.dva-match-ui-open:has(#meetingPanel:not([hidden]))
+    #gameApp #fieldFeedPanel:not([hidden]) {
+    top: var(--dva-meeting-lane-start);
+    right: var(--dva-ui-r);
+    bottom: calc(100% - var(--dva-meeting-division) + 5px);
+  }
+  body.game-open.dva-full-canvas.dva-match-ui-open:has(#meetingPanel:not([hidden]))
+    #gameApp #sidePanel {
+    top: calc(var(--dva-meeting-division) + 5px);
+    left: var(--dva-ui-l);
+    width: auto;
+  }
+}
+/* A short phone in landscape lacks space for two readable vertical lanes.
+ * Use side-by-side lanes even if its CSS width is below the portrait cap. */
+@media (max-width: 700px) and (orientation: landscape) {
+  body.game-open.dva-full-canvas.dva-match-ui-open:has(#meetingPanel:not([hidden]))
+    #gameApp #fieldFeedPanel:not([hidden]) {
+    right: calc(var(--dva-ui-r) + var(--dva-ui-rail) + 12px);
+    bottom: var(--dva-ui-b);
+  }
+  body.game-open.dva-full-canvas.dva-match-ui-open:has(#meetingPanel:not([hidden]))
+    #gameApp #sidePanel {
+    top: var(--dva-meeting-lane-start);
+    left: auto;
+    width: var(--dva-ui-rail);
+  }
+}
+/* Append after fullscreen UI CSS. On narrow/full-height tablet layouts the
+ * quick-action strip spans the same lower-right area as the optional rail.
+ * Reserve only that strip, only while both are visible in active play. */
+@media (max-width: 700px), (orientation: portrait) {
+  body.game-open.dva-full-canvas.dva-match-ui-open
+    #gameApp:has(#tabletPanel:not([hidden]) #tabletQuickActions:not([hidden])):not(:has(#meetingPanel:not([hidden]))) {
+    --dva-open-rail-top: calc(var(--dva-ui-t) + var(--dva-ui-toolbar) + min(27dvh, 154px) + 12px);
+    --dva-quick-strip-max: max(44px, min(124px, 36dvh, calc(100dvh - var(--dva-open-rail-top) - var(--dva-ui-b) - 80px)));
+  }
+  body.game-open.dva-full-canvas.dva-match-ui-open
+    #gameApp:has(#tabletPanel:not([hidden]) #tabletQuickActions:not([hidden])):not(:has(#meetingPanel:not([hidden]))) #tabletQuickActions {
+    box-sizing: border-box;
+    max-height: var(--dva-quick-strip-max);
+    overflow-y: auto;
+  }
+  body.game-open.dva-full-canvas.dva-match-ui-open
+    #gameApp:has(#tabletPanel:not([hidden]) #tabletQuickActions:not([hidden])):not(:has(#meetingPanel:not([hidden]))) #sidePanel {
+    bottom: calc(var(--dva-ui-b) + var(--dva-quick-strip-max) + 8px);
+  }
+}
+@media (max-height: 420px) and (max-width: 700px), (max-height: 420px) and (orientation: portrait) {
+  body.game-open.dva-full-canvas.dva-match-ui-open
+    #gameApp:has(#tabletPanel:not([hidden]) #tabletQuickActions:not([hidden])):not(:has(#meetingPanel:not([hidden]))) {
+    --dva-open-rail-top: calc(var(--dva-ui-t) + var(--dva-ui-toolbar) + 4px);
+  }
+}
+
+body.game-open.dva-full-canvas:has(:is(
+  #expandedMapOverlay, #keybindOverlay, #killCameraOverlay, #fieldFeedPanel, #switchDragMenu
+):not([hidden])) :is(#matchUiToggle, #matchUiMapButton) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (width > 700px) and (orientation: landscape) {
+  body.game-open.dva-full-canvas #matchUiToggle:not([hidden]) { width: 108px; }
+  body.game-open.dva-full-canvas #matchUiMapButton:not([hidden]) {
+    top: var(--dva-ui-t);
+    left: calc(var(--dva-ui-l) + 116px);
+  }
+}

@@ -14,12 +14,15 @@
     : Array.from(value);
 
   function requireViewport(viewport) {
-    if (viewport?.kind !== 'main' || viewport.width !== 980 || viewport.height !== 620 ||
+    const logicalSizeReady = viewport?.responsiveMain === true
+      ? finite(viewport.width) && viewport.width >= 980 && finite(viewport.height) && viewport.height >= 620
+      : viewport?.width === 980 && viewport?.height === 620;
+    if (viewport?.kind !== 'main' || !logicalSizeReady ||
         ![viewport.pixelWidth, viewport.pixelHeight].every(v => finite(v) && v > 0) ||
         !Array.isArray(viewport.logicalToPixel) || viewport.logicalToPixel.length !== 6 ||
         !viewport.logicalToPixel.every(finite) || viewport.logicalToPixel[0] <= 0 ||
         viewport.logicalToPixel[3] <= 0) {
-      throw new TypeError('Committed 980x620 main viewport required');
+      throw new TypeError('Committed main viewport required for marker explanation');
     }
   }
 
@@ -175,7 +178,7 @@
     }
     return Object.freeze({ plan, prepare, draw });
   }
-  const api = Object.freeze({ create });
+  const api = Object.freeze({ create, supportsResponsiveMain: true });
   root.DvaWebGPUMarkerExplanation = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);

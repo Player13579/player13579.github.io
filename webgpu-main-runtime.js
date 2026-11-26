@@ -217,7 +217,7 @@
       throw error;
     }
 
-    async function draw({ sample, rect, dpr = 1, camera, phase = null, prepare, record,
+    async function draw({ sample, rect, dpr = 1, camera, responsiveMain = false, phase = null, prepare, record,
       clearColor = DEFAULT_CLEAR, recordClears = false, isCurrent = () => true,
       onTiming, diagnosticRequestId = null } = {}) {
       const collectFrameCost = Boolean(frameCostBuffer && phase === 'playing');
@@ -249,7 +249,7 @@
       // A newer observation supersedes pending async preparation, including an
       // invalid/hidden observation. It cannot submit an old scene on return.
       const drawGeneration = ++generation;
-      const viewport = gate.observe(sample, { kind: 'main', rect, dpr, camera,
+      const viewport = gate.observe(sample, { kind: 'main', rect, dpr, camera, responsiveMain,
         maxTextureDimension2D: renderer.device.limits.maxTextureDimension2D });
       if (!viewport) return Object.freeze({ drawn: false, reason: 'unstable-layout' });
       let prepared;
@@ -381,7 +381,7 @@
       destroy: cleanup
     });
   }
-  const api = Object.freeze({ create, createRendererLease, createFrameCostBuffer });
+  const api = Object.freeze({ create, createRendererLease, createFrameCostBuffer, supportsResponsiveMain: true });
   root.DvaWebGPUMainRuntime = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);

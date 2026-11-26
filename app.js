@@ -3277,7 +3277,29 @@ function invalidateWebGPUTitlePrewarm(reason = 'cancelled') {
   if (entry) disposeWebGPUTitlePrewarm(entry, reason);
 }
 
+function syncFullCanvasMatchUi(screen, data, blocked) {
+  if (window.DvaFullCanvasUi?.sync(screen, data, blocked, state.roomSessionGeneration)) {
+    scheduleGameplayViewportReflow(true);
+  }
+}
+
 function init() {
+  if (window.DvaWebGPUMainRuntime?.supportsResponsiveMain &&
+      window.DvaWebGPUMainScene?.supportsMatchUiVisibility &&
+      window.DvaWebGPUMarkerExplanation?.supportsResponsiveMain &&
+      typeof window.DvaWebGPUViewport?.mainLogicalSize === "function" &&
+      getComputedStyle(document.documentElement).getPropertyValue("--dva-full-canvas-ui-ready").trim() === "1") {
+    window.DvaFullCanvasUi?.init({ openMap: openExpandedMapFromMinimap, closeMatchUi: () => {
+      // The drawer does not own the stick, its capture, or held movement.
+      cancelCommonActionGestures();
+      cancelActiveRootShortcutHolds();
+      cancelActiveAbilityBatchHolds();
+      stopContinuousActionHold();
+      stopContinuousActionKeyHold();
+      closeSwitchDragMenu();
+      setTabletBranchGroup("", { focus: false, queueKeyboardSync: false });
+    } });
+  }
   // Title navigation must be usable even if later game-only control setup fails.
   bindTitleNavigationEvents();
   applyStartupCommand();
@@ -4024,6 +4046,7 @@ function setScreen(screen) {
     if (els.sensoryOverlayText) els.sensoryOverlayText.textContent = "";
   }
   state.screen = next;
+  if (next !== "game") syncFullCanvasMatchUi(next, null);
   if (next === "title") showTerminalTitleRendererNotice();
   if (next !== "game") suspendWebGPUMainAppDriver();
   if (previous === "game" && next === "title") {
@@ -8933,6 +8956,19 @@ function bindEvents() {
       if (persistentInventoryDetailOpen) hideInventoryItemDetail();
       return;
     }
+    const matchUiToggle = document.getElementById("matchUiToggle");
+    if (event.code === "F2" && matchUiToggle && !matchUiToggle.hidden &&
+        !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey &&
+        !eventTarget?.closest?.('input, textarea, select, [contenteditable="true"]')) {
+      event.preventDefault();
+      if (!event.repeat) matchUiToggle.click();
+      return;
+    }
+    if ((eventTarget?.id === "matchUiToggle" || eventTarget?.id === "matchUiMapButton") && !eventTarget.hidden &&
+        (event.key === "Enter" || event.code === "Space")) {
+      if (event.repeat) event.preventDefault();
+      return;
+    }
     const closedKeybindLauncherActivation =
       !state.keybindOpen &&
       eventTarget === els.keybindButton &&
@@ -9762,6 +9798,10 @@ function bindTabletControls() {
     suppressTrackedJoystickGesture(event);
   };
   const finishJoystickTouch = (event) => {
+    if (document.body.classList.contains("dva-full-canvas") &&
+        (event.target === document.getElementById("matchUiToggle") ||
+          event.target === document.getElementById("matchUiMapButton")) &&
+        !touchListContainsTrackedJoystickTouch(event.changedTouches)) return;
     const tracked = suppressTrackedJoystickGesture(event);
     if (!tracked) return;
     Array.from(event.changedTouches || []).forEach((touch) => joystickTouchIds.delete(touch.identifier));
@@ -10581,7 +10621,7 @@ function syncPortraitTabletDock() {
   const board = fieldSlot?.querySelector(".board-wrap");
   const lower = els.fieldLowerRow;
   if (!panel || !fieldSlot || !board || !lower) return;
-  const portrait = portraitTabletRequired();
+  const portrait = portraitTabletRequired() && !document.body.classList.contains("dva-full-canvas");
   document.body.classList.toggle("portrait-tablet-dock", portrait);
   if (portrait) {
     if (panel.parentElement !== fieldSlot || panel.nextElementSibling !== lower) fieldSlot.insertBefore(panel, lower);
@@ -10756,6 +10796,17 @@ function setExpandedMapOpen(open, { focus = true } = {}) {
   requestAnimationFrame(restoreKeyboardContext);
 }
 
+function responsiveMainCanvasEnabled() {
+  return Boolean(document.body?.classList.contains("dva-full-canvas") &&
+    window.DvaWebGPUViewport?.mainLogicalSize);
+}
+
+function mainCanvasLogicalSize(rect, responsiveMain = responsiveMainCanvasEnabled()) {
+  if (!responsiveMain) return MAIN_CANVAS_LOGICAL_SIZE;
+  return window.DvaWebGPUViewport.mainLogicalSize(
+    rect || els.webgpuMainCanvas?.getBoundingClientRect(), true);
+}
+
 function minimapCanvasBounds(canvasWidth = MAIN_CANVAS_LOGICAL_SIZE[0]) {
   return { x: canvasWidth - 234, y: 70, width: 220, height: 150 };
 }
@@ -10763,6 +10814,9 @@ function minimapCanvasBounds(canvasWidth = MAIN_CANVAS_LOGICAL_SIZE[0]) {
 function canvasPointerPosition(event) {
   const surface = activeGameInputSurface();
   if (!surface) return null;
+  const submittedViewport = webgpuMainApp.submittedFrame?.viewport;
+  if (submittedViewport?.responsiveMain && surface === els.webgpuMainCanvas)
+    return submittedViewport.pointer(event.clientX, event.clientY);
   const rect = surface.getBoundingClientRect();
   if (!rect.width || !rect.height) return null;
   return {
@@ -10786,8 +10840,10 @@ function clairvoyanceCanvasWorldPoint(event) {
   const viewport = state.drawViewport;
   if (!data || !point || !viewport) return null;
   const zoom = worldZoomFor(data);
-  const x = viewport.left + point.x / zoom;
-  const y = viewport.top + point.y / zoom;
+  const submittedViewport = webgpuMainApp.submittedFrame?.viewport;
+  const world = submittedViewport?.responsiveMain ? submittedViewport.unproject(point.x, point.y) : null;
+  const x = world?.x ?? viewport.left + point.x / zoom;
+  const y = world?.y ?? viewport.top + point.y / zoom;
   return { x, y, valid: isClientWalkable(data, x, y, data.map.playerRadius) };
 }
 
@@ -10835,6 +10891,7 @@ async function finishClairvoyanceTeleportTap(event, cancelled = false) {
 }
 
 function pointerHitsMinimap(event) {
+  if (window.DvaFullCanvasUi?.expanded === false) return false;
   const point = canvasPointerPosition(event);
   if (!point) return false;
   if (WEBGPU_MAIN_OWNER && !webgpuMainSubmittedFrameCurrent()) return false;
@@ -15249,7 +15306,10 @@ function positionPreparationNameInput() {
   const box = surface?.getBoundingClientRect?.();
   const panel = document.querySelector('[data-preparation-editor="name"]');
   if (!target || !box || !panel) return false;
-  const sx = box.width / MAIN_CANVAS_LOGICAL_SIZE[0], sy = box.height / MAIN_CANVAS_LOGICAL_SIZE[1];
+  const submittedViewport = webgpuMainApp.submittedFrame?.viewport;
+  const [w, h] = submittedViewport?.responsiveMain
+    ? [submittedViewport.width, submittedViewport.height] : MAIN_CANVAS_LOGICAL_SIZE;
+  const sx = box.width / w, sy = box.height / h;
   panel.style.left = (box.left + target.x * sx) + "px"; panel.style.top = (box.top + target.y * sy) + "px";
   panel.style.width = Math.max(96, target.width * sx) + "px"; panel.style.height = Math.max(32, target.height * sy) + "px";
   return true;
@@ -15358,6 +15418,7 @@ function render() {
     (state.operatorSelectionRouteOpen || data?.phase === "selecting")
   );
   const settingsOverlayVisible = preparationOverlayVisible(data);
+  syncFullCanvasMatchUi(state.screen, data, operatorSelectionVisible || settingsOverlayVisible);
   const resetSidebarForPhaseContext = state.phaseUiKey !== phaseUiKey && (
     data?.phase === "selecting" ||
     (data?.phase === "playing" && String(state.phaseUiKey || "").endsWith(":selecting"))
@@ -19920,7 +19981,8 @@ function webgpuMainSubmittedFrameCurrent() {
       phase: state.data?.phase, snapshotRoomId: state.data?.roomId,
       mapId: state.data?.map?.id,
       connectionMode: document.documentElement?.dataset?.connectionMode || '' }) ||
-      canvas.style.opacity !== '1') return false;
+      canvas.style.opacity !== '1' ||
+      Boolean(submitted.viewport?.responsiveMain) !== responsiveMainCanvasEnabled()) return false;
   const rect = canvas.getBoundingClientRect();
   const sample = visibleGameplayViewportSample();
   return webgpuMainFrameViewportMatches(submitted, sample, rect,
@@ -20317,8 +20379,10 @@ function pumpWebGPUMainAppDriver() {
   const phase = data.phase;
   const snapshotRoomId = data.roomId;
   const mapId = data.map.id;
-  const camera = { ...cameraFor(data, 980, 620, worldZoomFor(data)),
-    zoom: worldZoomFor(data) };
+  const responsiveMain = responsiveMainCanvasEnabled();
+  const [logicalWidth, logicalHeight] = mainCanvasLogicalSize(rect, responsiveMain);
+  const zoom = worldZoomFor(data);
+  const camera = { ...cameraFor(data, logicalWidth, logicalHeight, zoom), zoom };
   markWebGPUStartupStage('driverDrawEntry');
   clearWebGPUMainUnstableLayoutRetry();
   recordWebGPUFirstRetryEvent('draw-request');
@@ -20335,7 +20399,7 @@ function pumpWebGPUMainAppDriver() {
     priorVisibleFrame?.connectionMode === connectionMode;
   const drawTitleSpare = alreadyPresentedPlaying ? webgpuTitlePrewarm.current : null;
   const drawTitlePlayIntent = drawTitleSpare?.expectedPlayIntent;
-  void drawDriver.draw({ data, sample, rect, camera,
+  void drawDriver.draw({ data, sample, rect, camera, responsiveMain,
     ...(startupRequestTrace ? { diagnosticCorrelation: {
       appRequestSerial: requestSerial,
       startupAttemptId: startupRequestTrace.attemptId } } : {}),
@@ -20411,7 +20475,8 @@ function pumpWebGPUMainAppDriver() {
     const visibleRect = mainCanvas.getBoundingClientRect();
     const visibleSample = visibleGameplayViewportSample();
     const preparedFrameGeometry = { sample, rect, dpr };
-    if (!webgpuMainFrameViewportMatches(preparedFrameGeometry, visibleSample,
+    if (responsiveMain !== responsiveMainCanvasEnabled() ||
+        !webgpuMainFrameViewportMatches(preparedFrameGeometry, visibleSample,
         visibleRect, window.devicePixelRatio || 1)) {
       setWebGPUMainPendingDiagnostic('frame:visible-geometry-stale');
       if (webgpuMainApp.visible) invalidateWebGPUMainSubmittedHits();
@@ -20482,6 +20547,7 @@ function pumpWebGPUMainAppDriver() {
     webgpuMainApp.submittedFrame = Object.freeze({
       roomId, sessionGeneration, snapshotRoomId, phase, mapId,
       connectionMode, dpr,
+      ...(responsiveMain ? { viewport: receipt.viewport } : {}),
       sample: Object.freeze(Object.fromEntries(['width', 'height',
         'visualWidth', 'visualHeight', 'rootWidth', 'rootHeight']
         .map(key => [key, sample[key]]))),
@@ -20643,8 +20709,8 @@ function drawLoop(timestamp = 0, engineDelta = 0) {
 
 function prepareMainFrameBookkeeping() {
   const data = state.data;
-  const [w, h] = MAIN_CANVAS_LOGICAL_SIZE;
   reconcileMainFrameUiState(data);
+  const [w, h] = mainCanvasLogicalSize();
   prepareMarkerExplanationFrame(performance.now());
   state.markerHitTargets.length = 0;
   state.acquisitionCreditRect = null;
@@ -21509,7 +21575,7 @@ function currentWebGPUFacilityMaterialFailure(failure) {
     : state.textures?.taskUploadDigital;
   if (asset !== failure.material || criticalFacilityImageLoads.get(asset)?.status !== "failed" ||
       asset?.complete && asset.naturalWidth === 512 && asset.naturalHeight === 512) return false;
-  const [width, height] = MAIN_CANVAS_LOGICAL_SIZE;
+  const [width, height] = mainCanvasLogicalSize();
   const viewport = { width, height };
   const zoom = worldZoomFor(data);
   const camera = cameraFor(data, width, height, zoom);
@@ -21528,17 +21594,22 @@ function currentWebGPUFacilityMaterialFailure(failure) {
 }
 
 function captureWebGPUMainAppEarlyScene(data = state.data, viewport) {
+  const [width, height] = mainCanvasLogicalSize(viewport?.rect, viewport?.responsiveMain === true);
   if (!data?.map || viewport?.kind !== "main" ||
-      viewport.width !== MAIN_CANVAS_LOGICAL_SIZE[0] ||
-      viewport.height !== MAIN_CANVAS_LOGICAL_SIZE[1] ||
+      viewport.width !== width || viewport.height !== height ||
       !Number.isInteger(viewport.pixelWidth) || viewport.pixelWidth < 1 ||
       !Number.isInteger(viewport.pixelHeight) || viewport.pixelHeight < 1) {
     throw new TypeError("Early main WebGPU scene needs live map data and a committed logical main viewport");
   }
   const zoom = worldZoomFor(data);
-  const camera = cameraFor(data, viewport.width, viewport.height, zoom);
   const matrix = viewport.worldToLogical;
-  if (!Array.isArray(matrix) || matrix.length !== 6 ||
+  // Use the exact camera committed with the projection. Dividing the GPU
+  // translation by zoom can round to different coordinates (even at rest).
+  const camera = viewport.responsiveMain ? viewport.committedMainCamera
+    : cameraFor(data, viewport.width, viewport.height, zoom);
+  if (!Number.isFinite(camera?.x) || !Number.isFinite(camera?.y) ||
+      (viewport.responsiveMain && camera.zoom !== zoom) ||
+      !Array.isArray(matrix) || matrix.length !== 6 ||
       Math.abs(matrix[0] - zoom) > 1e-6 || Math.abs(matrix[3] - zoom) > 1e-6 ||
       Math.abs(matrix[4] + camera.x * zoom) > 1e-4 ||
       Math.abs(matrix[5] + camera.y * zoom) > 1e-4) {
@@ -29008,18 +29079,23 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, p
     const ox = Number.isFinite(effect.acquisitionOriginX) ? effect.acquisitionOriginX : Number(effect.x);
     const oy = Number.isFinite(effect.acquisitionOriginY) ? effect.acquisitionOriginY : Number(effect.y) - 30.3;
     const origin = acquisitionOverlayLocalPoint(
-      acquisitionWorldPoint(ox, oy, camera, zoom, canvasRect), overlayViewport);
+      acquisitionWorldPoint(ox, oy, camera, zoom, canvasRect, mainViewport), overlayViewport);
     const destinations = [];
     let hudKeys = [];
     if (effect.playerId === data.selfId) {
-      const acquisitionId = String(effect.acquisitionId || effect.variant || '');
-      const instantHudProduct = effect.acquisitionKind === 'product' &&
-        Boolean(INSTANT_ACQUISITION_HUD_KEYS[acquisitionId]);
-      const normalDestination = effect.acquisitionKind !== 'credits' && !instantHudProduct;
-      hudKeys = acquisitionCanvasHudKeys(effect);
-      if (normalDestination) {
-        const rect = acquisitionVisibleRect(acquisitionDestinationElement(effect, data));
-        if (rect) destinations.push(acquisitionOverlayLocalRect(rect, overlayViewport));
+      const drawerDestination = collapsedMatchAcquisitionDestination(origin, overlayViewport);
+      if (drawerDestination) {
+        destinations.push(drawerDestination);
+      } else {
+        const acquisitionId = String(effect.acquisitionId || effect.variant || '');
+        const instantHudProduct = effect.acquisitionKind === 'product' &&
+          Boolean(INSTANT_ACQUISITION_HUD_KEYS[acquisitionId]);
+        const normalDestination = effect.acquisitionKind !== 'credits' && !instantHudProduct;
+        hudKeys = acquisitionCanvasHudKeys(effect);
+        if (normalDestination) {
+          const rect = acquisitionVisibleRect(acquisitionDestinationElement(effect, data));
+          if (rect) destinations.push(acquisitionOverlayLocalRect(rect, overlayViewport));
+        }
       }
     } else {
       const recipient = data.players?.find(player => player.id === effect.playerId &&
@@ -29027,7 +29103,7 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, p
       if (recipient && Number.isFinite(recipient.x) && Number.isFinite(recipient.y)) {
         const position = renderedPlayer(recipient);
         const point = acquisitionOverlayLocalPoint(acquisitionWorldPoint(
-          position.x, position.y - 22, camera, zoom, canvasRect), overlayViewport);
+          position.x, position.y - 22, camera, zoom, canvasRect, mainViewport), overlayViewport);
         destinations.push({ left: point.x - 7, top: point.y - 7,
           width: 14, height: 14, radius: 7, actor: true });
       }
@@ -29044,7 +29120,7 @@ function captureWebGPUMainAppConditionalTail(data, camera, zoom, mainViewport, p
     effects: drawn.map(({ effectId, source, ...geometry }) => geometry) } : null;
   return { expandedMap, expandedBlocked, acquisition: {
     viewport: overlayViewport, canvas: overlay, drawFrame, source, effects, sourceIds, drawn,
-    requests, unsupported, canvasRect, overlayRect, now } };
+    requests, unsupported, canvasRect, mainViewport, overlayRect, now } };
 }
 function webgpuMainViewportSignature(viewport) {
   const rect = viewport?.rect;
@@ -29237,8 +29313,9 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
       selectedAttackTargetWebGPUScene(data) || null }, ...common },
     taskIndicators: { data, ...common },
     hud: { data, scene: hudWebGPUScene(data, viewport.width, viewport.height, viewport),
-      ...common },
-    minimap: { scene: minimapWebGPUScene(data, viewport.width), ...common },
+      presentationHidden: window.DvaFullCanvasUi?.expanded === false, ...common },
+    minimap: { scene: minimapWebGPUScene(data, viewport.width),
+      presentationHidden: window.DvaFullCanvasUi?.expanded === false, ...common },
     modeBanner: { scene: modeBannerWebGPUScene(data), ...common },
     ...(conditional.expandedMap ? { expandedMap: {
       scene: conditional.expandedMap.scene,
@@ -29429,7 +29506,7 @@ function resolveWebGPUMainAcquisitionHud(candidate, acquisitionInput, hudPlan) {
           rect.width <= 0 || rect.height <= 0)
         throw new Error(`WebGPU acquisition HUD destination unavailable: ${key}`);
       destinations.push(acquisitionOverlayLocalRect(
-        acquisitionCanvasHudViewportRect(rect, snapshot.canvasRect), snapshot.viewport));
+        acquisitionCanvasHudViewportRect(rect, snapshot.canvasRect, snapshot.mainViewport), snapshot.viewport));
     }
     if (!destinations.length)
       throw new Error(`WebGPU acquisition visible destination unavailable: ${request.effectId}`);
@@ -30623,7 +30700,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
     get retainedRuntimeFailure() { return retainedRuntimeFailure; },
     get device() { return runtime.device; },
     retryTraceSnapshot() { return runtime.retryTraceSnapshot?.() ?? null; },
-    async draw({ data = state.data, sample, rect, dpr = 1, camera,
+    async draw({ data = state.data, sample, rect, dpr = 1, camera, responsiveMain = false,
       shapeProviders = {}, onTiming, frameDiagnostic = null,
       diagnosticCorrelation = null } = {}) {
       const requestGeneration = lifecycleGeneration;
@@ -30677,7 +30754,7 @@ async function createDormantWebGPUMainAppDriver({ mainCanvas, expandedCanvas,
             return Object.freeze({ drawn: false, reason: destroyed ? 'destroyed' : 'superseded' });
         }
         let facilityMaterialFailure = null;
-        const scheduled = await runtime.requestFrame({ sample, rect, dpr, camera, phase: data.phase,
+        const scheduled = await runtime.requestFrame({ sample, rect, dpr, camera, responsiveMain, phase: data.phase,
           ...(diagnosticCorrelation ? { diagnosticCorrelation } : {}),
           ...(typeof onTiming === 'function' ? { onTiming } : {}),
           recordClears: true,
@@ -34317,7 +34394,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
@@ -34438,11 +34515,13 @@ function acquisitionCanvasHudKeys(effect) {
   return [...new Set(keys)];
 }
 
-function acquisitionCanvasHudViewportRect(rect, canvasRect) {
+function acquisitionCanvasHudViewportRect(rect, canvasRect, mainViewport) {
   // HUD hit regions stay in logical game coordinates when WebGPU increases
   // the presentation canvas backing for DPR.
-  const scaleX = canvasRect.width / MAIN_CANVAS_LOGICAL_SIZE[0];
-  const scaleY = canvasRect.height / MAIN_CANVAS_LOGICAL_SIZE[1];
+  const [w, h] = mainViewport?.responsiveMain
+    ? [mainViewport.width, mainViewport.height] : MAIN_CANVAS_LOGICAL_SIZE;
+  const scaleX = canvasRect.width / w;
+  const scaleY = canvasRect.height / h;
   return { left: canvasRect.left + rect.left * scaleX,
     top: canvasRect.top + rect.top * scaleY,
     width: rect.width * scaleX,
@@ -34628,6 +34707,16 @@ function acquisitionPhotonTravelState(origin, target, elapsed, reduced) {
   return { origin, target, control, point, heading, width, alpha: appear * fade, tailScale, reduced, progress, elapsed };
 }
 
+function collapsedMatchAcquisitionDestination(origin, viewport) {
+  if (window.DvaFullCanvasUi?.expanded !== false) return null;
+  const toggleRect = acquisitionVisibleRect(document.getElementById('matchUiToggle'));
+  if (toggleRect) return acquisitionOverlayLocalRect(toggleRect, viewport);
+  // A mandatory modal can temporarily hide the launcher as well. Keep the
+  // pickup feedback at its source instead of targeting an invisible control.
+  if (!Number.isFinite(origin?.x) || !Number.isFinite(origin?.y)) return null;
+  return { left: origin.x - 7, top: origin.y - 7, width: 14, height: 14, radius: 7, actor: true };
+}
+
 function acquisitionVisibleRect(element) {
   if (!element?.isConnected || element.hidden || element.closest?.('[hidden]')) return null;
   const style = getComputedStyle(element);
@@ -34647,9 +34736,11 @@ function acquisitionPhotonWindow(effect, now) {
     ? elapsed - startAt : null;
 }
 
-function acquisitionWorldPoint(x, y, camera, zoom, rect) {
-  return { x: rect.left + (x - camera.x) * zoom * rect.width / MAIN_CANVAS_LOGICAL_SIZE[0],
-    y: rect.top + (y - camera.y) * zoom * rect.height / MAIN_CANVAS_LOGICAL_SIZE[1] };
+function acquisitionWorldPoint(x, y, camera, zoom, rect, mainViewport) {
+  const [w, h] = mainViewport?.responsiveMain
+    ? [mainViewport.width, mainViewport.height] : MAIN_CANVAS_LOGICAL_SIZE;
+  return { x: rect.left + (x - camera.x) * zoom * rect.width / w,
+    y: rect.top + (y - camera.y) * zoom * rect.height / h };
 }
 
 function createAcquisitionOverlayCanvas() {
