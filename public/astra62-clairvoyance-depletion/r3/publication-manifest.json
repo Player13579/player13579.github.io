@@ -1,0 +1,86 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "千里眼のMP枯渇終了",
+  "groupId": "clairvoyance-depletion-astra62",
+  "versionId": "clairvoyance-depletion-astra62-r3",
+  "creativeEdition": 3,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creativeAPI": {
+    "responseId": "resp_01dbfc1df367c7a3006b07ca8b612087d0a2a8803ff8f3f03d",
+    "reasoningEffort": "high",
+    "status": "completed"
+  },
+  "entry": "index.html",
+  "path": "/public/astra62-clairvoyance-depletion/r3/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baseCommit": "3916618eb8b02ae213b950352c5cca908391c794",
+    "basedOnVersion": "clairvoyance-depletion-astra62-r2",
+    "basedOnCandidateCommit": "fbc0b0cffa6b1b18bcfb91185d227b9dc7ff3b77",
+    "apiOriginalShaderSha256": "faecc1520ee565c2c53b313faa69e032c962c67fbf5cc8a1740d3c850984a558"
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "b43407b05b25d3bc8118a7b8b7efb6a6d94a021e",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "advanceClairvoyanceMana L8829–8848; distinguish setClairvoyanceActive manual-off L8809–8815.",
+    "meaning": "During active play a scheduled drain that actually empties the observer's mana stops clairvoyance and emits the specific MP depletion event. A meeting pauses this drain; other invalid-state cleanup and manual deactivation are separate.",
+    "scope": "Only a synthetic explicit current, confirmed, self-owned depletion receipt showing active→inactive and zero remaining mana can start the sign. Zero mana and an inactive snapshot alone cannot identify the cause. No remote player, position, observed image, camera data, actual mana gauge, teleport or world effect is requested or drawn. This preview does not parse prose or assert that an equivalent typed receipt already exists in the client."
+  },
+  "design": {
+    "revision": "自分が維持していた千里眼が最後のMP消費で終了した時だけ、中央に既に点灯した眼を提示する。光源は黒い瞳孔を囲む翡翠色の虹彩。幅70の透過板はその光を両端へ導き、上下の切断面は広い帯として受ける。失電時は光を走らせず、板が光を保てる距離を縮める。先端から色が引き、切断面の薄膜がわずかに遅れて暗くなる。残った暗い窓は遮光面の実移動で閉じ、接触は再発光でなく継ぎ目の陰で示す。R2のゲート・手動／ギャラリー入力・PCMは変更しない。実寸での読みやすさは静的設計上の仮説で、実表示・聴感は未確認。",
+    "timing": "R2 event age in ms. (1) 0–20: reveal the whole, already-powered sign; 20–180: fully exposed, fully lit, open plateau (160 ms). (2) 180–360: charge falls linearly; iris emission falls with a cubic smoothstep of charge. At normal motion the side guide's half-coupling position retreats linearly from |x|=40 to 4 reference units: 35 at 205 ms, 22 at 270 ms, 12 at 320 ms. The bonded cut averages present and 16 ms earlier guide response; its release runs from 196 ms for the delayed component to final extinction at 376 ms. R2's descending sound decays by 380 ms. (3) 238–610: the two physical cuts close. From 376 until seating the remaining window is unpowered (central gap about 19 reference units at 376 ms in normal motion). 579–610: contact shading settles; at 610 the gap and glass coverage are exactly zero, at the unchanged R2 seating cue. (4) 610–725: seated at full width. 725–1002: seam half-width contracts from 35 to 2. 846–1028: composite fades to background; 1028–1070: background only. Lifetime ends at 1070.",
+    "reducedMotion": "At reduced=1 the initial half-gap is 8 instead of 13.8 reference units. The pane keeps its finite path loss but dims in place instead of sweeping its coupling boundary inward. Iris, pupil, cut response, contact, seam contraction, audio and all timing stay on the same clock.",
+    "sound": "A decaying downward tone stops by 380 ms. A quieter damped contact cue accompanies rim closure at 610 ms. Verification is silent.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1854,
+      "sha256": "81ef2ffbeee9c167a2ab12174180130affb4ed9293ca93adf1685855180be120",
+      "gitBlob": "df65ca666728b6e235c76130828e1365a7721383"
+    },
+    "preview.mjs": {
+      "bytes": 7806,
+      "sha256": "b13f1a465d34bcdf32ad6a7a58677a252276cce26ea90a215e80e7e5cec4e7f4",
+      "gitBlob": "d4b868d22ba972002b12d983ac76ebbdbe1e3266"
+    },
+    "depletion.mjs": {
+      "bytes": 1630,
+      "sha256": "7c3c807e3abe9814c861d6f87f848b96d725f239fd310ba55c4aa025b04662d5",
+      "gitBlob": "111206d280b4e945492670ffcf29f3e94c1c8fe4"
+    },
+    "effect.wgsl": {
+      "bytes": 6023,
+      "sha256": "faecc1520ee565c2c53b313faa69e032c962c67fbf5cc8a1740d3c850984a558",
+      "gitBlob": "c2a079f7170f938b567c9a14ef59f85f20936c1a"
+    }
+  },
+  "validation": {
+    "gate": "passed: current committed self active to inactive at numeric zero; stale, duplicate, unrelated or unconfirmed receipt rejected",
+    "logicAndPCM": "Gate assertions passed; decoded Float32 audio samples identical to R2 at 8/44.1/48/96/192 kHz",
+    "moduleSyntax": "Node module syntax pass",
+    "wgsl": "Naga WASI validated; SPIR-V 10268 bytes",
+    "dependencies": "gallery and standalone entries and local references inspected",
+    "parentGalleryReplay": "not_run",
+    "nativeGPU": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "quality": "not-reviewed",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not-connected"
+  }
+}
