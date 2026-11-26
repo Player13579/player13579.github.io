@@ -1,0 +1,199 @@
+{
+  "schema": "quantum-temperature-cold-inline-gallery/v1",
+  "groupId": "quantum-temperature-cold-astra62",
+  "versionId": "quantum-temperature-cold-astra62-r3",
+  "creativeIdentity": "quantum-temperature-cold-astra62-r3",
+  "title": "クオンタム・氷結水生成 R3",
+  "creator": {
+    "modelId": "gpt-6.2-astra",
+    "displayName": "GPT-6.2-Astra"
+  },
+  "technicalDerivativeAuthor": {
+    "modelId": "gpt-6-luna",
+    "displayName": "GPT-6-Luna"
+  },
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "creativeCommit": "92857e296221396c3eb87f87becbb7c8b9e0a539",
+    "baseRepository": "Player13579/player13579.github.io",
+    "baseCommit": "b38c448d2f0f567f8b79caa880164af9ae1f5de8"
+  },
+  "technicalHost": {
+    "responseId": "resp_06ccbdfc294cdd8e006b077dece56c87d0b9464e0e813076aa",
+    "modelId": "gpt-6-luna"
+  },
+  "creative": {
+    "responseId": "resp_0d923a3f6a65e15b006b077c96bf1887d08aca8ab4b8147cae",
+    "modelId": "gpt-6.2-astra",
+    "reasoningEffort": "high",
+    "edition": 3,
+    "editionLimit": 5,
+    "completedAt": "2026-11-26T00:35:20.000Z",
+    "priorResponses": [
+      {
+        "responseId": "resp_0daf5b0e24612a1d006b0768d2e4b887d09fa6b8d717dae4f8",
+        "modelId": "gpt-6.2-astra",
+        "reasoningEffort": "high",
+        "completedAt": "2026-11-25T23:15:39.000Z"
+      },
+      {
+        "responseId": "resp_00213cb1d9b8674a006b076e8cfc1087d0b4d535143758ba74",
+        "modelId": "gpt-6.2-astra",
+        "reasoningEffort": "high",
+        "completedAt": "2026-11-25T23:36:43.000Z"
+      }
+    ],
+    "apiCompletedAt": "2026-11-26T00:35:20.000Z"
+  },
+  "producerProvenance": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+  "runtime": {
+    "lifetimeMs": 3370,
+    "backgroundGapMs": 900,
+    "firstFrameAgeMsInclusive": [
+      0,
+      3010
+    ],
+    "uniformAgeMsInclusive": [
+      0,
+      3010
+    ],
+    "submittedAgeMsInclusive": [
+      0,
+      3010
+    ],
+    "requiredBeforeLifetime": {
+      "queue": true,
+      "validation": true,
+      "currentSubmission": true,
+      "sizeValidation": true,
+      "liveDevice": true,
+      "visibility": true,
+      "canvasConnected": true
+    },
+    "pixelsProved": false
+  },
+  "shader": {
+    "file": "cooling.wgsl",
+    "entryPoints": {
+      "vertex": "vs",
+      "fragment": "fs"
+    },
+    "uniformBytes": 32,
+    "uniformLayout": [
+      "width",
+      "height",
+      "ageMs",
+      "scale292x135EffectiveDpr",
+      "reduced",
+      "live",
+      0,
+      0
+    ],
+    "devicePixelRatio": {
+      "raw": "preserved truthfully",
+      "effectiveBoundsInclusive": [
+        1,
+        2
+      ],
+      "rejectWhenTextureLimitRequiresEffectiveDprBelow": 1
+    },
+    "output": "sRGB output to non-sRGB unorm target"
+  },
+  "material": {
+    "waveMs": [
+      0,
+      1180
+    ],
+    "waveEasing": "decelerating",
+    "interfaceMs": [
+      700,
+      2240
+    ],
+    "solidHoldMs": [
+      2240,
+      3010
+    ],
+    "contrastFadeMs": [
+      3010,
+      3370
+    ],
+    "idleAfterMs": 3370,
+    "emission": true,
+    "reflection": "source-driven",
+    "refraction": "source-driven",
+    "scatter": "source-driven",
+    "initialPresentation": "positive liquid sample at age 0; no blank entrance",
+    "emissionContract": {
+      "source": "exposureAt and aperture define one two-sided emitting area in material coordinates, a fictional optical signature of Quantum control. Its peak radiance drives both directImage and relayMean. It adds no opacity. The half-axes are 14 and 8 design units; the central region is bright, tapering to zero by the elliptical perimeter. Its center stays at reference depth 9.5. Early excitation is ahead of the entering front; after the lead vanishes the aperture lies on the locking plane. Address 62 ends the driven interior span, not the sample. After that crossing a finite blue release decays on the process clock. Ordinary water, freezing and ice are not themselves asserted to be luminous.",
+      "direct": "directImage intersects the refracted reference sight segment with the emitting plane. Only an intersection inside the aperture contributes. Front-to-intersection extinction uses the integrated liquid/solid occupancy on that portion of the path. There is no added emissive value on the sample outline or on a ray that misses the aperture.",
+      "nearby": "relayMean estimates the angular mean of that same radiance arriving at an interior receiving point. A four-corner solid-angle integral uses a rectangular aperture surrogate with the same radiance-weighted area as the tapered ellipse. Close to the plane it transitions to the local two-sided sheet limit, one emitting hemisphere at most. A representative in-aperture path supplies phase-dependent Beer extinction. sectionColor multiplies this incoming light by local scattering and attenuated view length. Thus a ray missing the core can see light redirected by nearby water or ice; stronger solid scattering competes with stronger extinction rather than multiplying the finished solid color.",
+      "finiteBoundary": "relaySupport confines this estimate to the common bulk under the reference crown and inside a conservative wet footprint that allows the maximum wave excursion. Transfer tapers off at that approximation's boundary; light outside the modeled bulk is not reassigned to the background. The emitting patch is internal. There is no stage, floor receiver, world-coordinate probe or implied environment affected by the ability.",
+      "materialAndObserver": "Rear transmission, incident-light scattering and Fresnel reflection are passive material evidence, evaluated separately from the direct and received Quantum terms. Apply coverage in linear light, a hue-ratio-preserving peak shoulder, then the presentation contrast envelope and one sRGB encode to opaque non-sRGB unorm. Omit image-space spread in R3 so an apparent pool beyond the core has to come from material transport rather than neighboring image taps. No flare, ghost, background grading or full-field light gain.",
+      "costAndLimits": "One covered sight line, one analytic plane intersection and six bulk segments; no off-pixel scene gathers, nested transport march or extra resources. The solid-angle corners and bulk support tests have a cost; timings are unknown. The approximation preserves the inclined material address but treats linking paths as straight in the reference chart, approximates angular attenuation with one length, neglects the small internal index step and omits multiple scattering, fine rim transport and external spill. These are model choices, not measured optics.",
+      "acceptanceQuestion": "At normal speed and real size, can a viewer point to the emitting section and separately to a several-pixel area of neighboring, differently phased material catching its light, while still finding the curved return in water and the planar slope on ice? A detectable difference in readback, or a brighter core alone, is insufficient."
+    }
+  },
+  "audio": {
+    "onVerify": false,
+    "normalListening": "not_run"
+  },
+  "receivingInventory": {
+    "sharedExcluded": true,
+    "worldPositions": false,
+    "actors": false,
+    "finalCreatedItemRemainsInInventory": true,
+    "sampleViewEndsWithNotice": "Presentation contrast fades to idle; the created ice remains in inventory. No melting or deletion is depicted."
+  },
+  "sourceKind": "quantum-temperature-cold/ice",
+  "sourceAuthorization": "self-authorized synthetic fixture committed in the identified source workspace; no main-game connection",
+  "files": [
+    {
+      "path": "cooling.mjs",
+      "bytes": 3375,
+      "sha256": "c9a2e002fe44524ee48618e5ce09f70bd467f2d6b451e01c7e4901f77d06e328",
+      "gitBlob": "d290f5f4b9f65c9c174efa044a567b928d45c7b7"
+    },
+    {
+      "path": "cooling.wgsl",
+      "bytes": 9603,
+      "sha256": "ba6429bcae8f3f1cef18bd9ea546f82ed7b49f66ed265cd07b00a14bf04dc58f",
+      "gitBlob": "2c307e9485b5eb4669614c98bcaa7278f18de9f1"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 18147,
+      "sha256": "c663c2d9a735b00716449dc3bf3d122266eb95d23e88407989851bf51d2213ec",
+      "gitBlob": "0354e228b84502dd3ee1248abc894f2d6c4122e9"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 1385,
+      "sha256": "e15e5e13fa4ddea4a49eacabb3a87e3bc3a3af726bea24065f72604e9fc022f5",
+      "gitBlob": "4cf2bcb95d344465536d5fafb53072fddd0ab19a"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4336,
+      "sha256": "1ce7005215a72dfdc44135d174925b61324311789d7b3539923b1968bc8a724f",
+      "gitBlob": "e68441c1acb53346ff7df33009244b766845fe5e"
+    }
+  ],
+  "validation": {
+    "status": "not_run",
+    "cpu": "not_run",
+    "native": "not_run",
+    "parentIframe": "not_run",
+    "visual": "not_run",
+    "syntax": "not_run",
+    "review": "not-reviewed",
+    "readinessBasis": "Runtime readiness requires real queue completion and validation plus current cause/generation, visibility, size, connected canvas, live device and lifetime checks. Candidate has not been executed; pixels and quality are not proved."
+  },
+  "adoption": "unknown",
+  "userAdopted": false,
+  "creativeEdition": 3,
+  "creativeEditionLimit": 5,
+  "manualReview": false,
+  "publicationEligible": false,
+  "galleryListingEligible": true,
+  "gameIntegration": "not_connected"
+}
