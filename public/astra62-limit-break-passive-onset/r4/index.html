@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>リミットブレイク・パッシブ初回成立 R4</title><style>
+:root{color-scheme:dark;font:16px/1.55 system-ui,sans-serif;background:#14242e;color:#ecf2ef}
+body{max-width:760px;margin:auto;padding:24px}h1{font-size:1.5rem}p{max-width:44rem}
+canvas{display:block;width:100%;height:clamp(180px,35vh,285px);box-sizing:border-box;background:#162a35;border:1px solid #42595d;border-radius:8px}
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}button,select{font:inherit;padding:.35rem .65rem}
+label{display:inline-flex;align-items:center;gap:.3rem}output{display:block;margin-top:.65rem}pre{font:13px monospace;white-space:pre-wrap}
+</style><main><h1>リミットブレイク・パッシブ初回成立 <small>R4</small></h1>
+<p>本人のリミットブレイクが初めて働くと、左のHP上限は2枠から1枠へ変わり、右の針はACCボーナスの蓄積開始を示します。</p>
+<canvas aria-label="HP上限の片方の窓を覆うカバーと、ACCボーナスを示す針"></canvas>
+<div class="controls"><label>通知条件<select id="fixture"><option value="fighter">ファイター・初回成立</option><option value="shop">購入権限・初回成立</option><option value="already">成立済みの更新</option><option value="meeting">会議中の休止</option><option value="manual">手動要求</option><option value="ineligible">有効な権限なし</option><option value="not-rational">パッシブ無効</option><option value="other">他人の状態</option><option value="snapshot">状態の再表示</option></select></label>
+<button id="play" disabled>初回成立を再生</button><button id="stop" disabled>停止</button><label><input id="reduced" type="checkbox">動きを抑える</label><label><input id="sound" type="checkbox">音声</label></div>
+<output id="state" role="status">WebGPUを準備中…</output><details><summary>描画情報</summary><pre id="receipt"></pre></details></main>
+<script type="module" src="./preview.mjs?rev=e11acdc6b9f1f2c91593c421152537e28667bff1"></script></html>
