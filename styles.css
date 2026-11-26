@@ -13966,3 +13966,11 @@ body.game-open:has(#vendingFullMount:not([hidden])) #gameApp #sidePanel {
     margin: 0 8px 0 0;
   }
 }
+/* Use spare row height for coarse-touch controls in the wide landscape panel. */
+@media (min-width: 700px) and (orientation: landscape) and (pointer: coarse) {
+  body.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelContent :is(
+    #movementAccToggleButton, #teleportTargetSelect, #empPhaseSelect
+  ):not([hidden]) {
+    min-height: 52px;
+  }
+}
