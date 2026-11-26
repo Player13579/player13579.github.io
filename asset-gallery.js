@@ -385,12 +385,47 @@ function isAimR5BoundTarget(attempt){return attempt?.childProtocolVersionId===AI
   "id": "limit-break-passive-onset-astra62",
   "title": "リミットブレイク・パッシブ初回成立",
   "category": "effect",
-  "defaultVersionId": "limit-break-passive-onset-astra62-r1",
-  "latestVersionId": "limit-break-passive-onset-astra62-r1",
+  "defaultVersionId": "limit-break-passive-onset-astra62-r2",
+  "latestVersionId": "limit-break-passive-onset-astra62-r2",
   "firstPublishedAt": "2026-11-25T14:32:50.131Z",
   "adoption": "unknown",
   "integration": "not-integrated",
   "versions": [
+    {
+      "id": "limit-break-passive-onset-astra62-r2",
+      "title": "リミットブレイク・パッシブ初回成立 R2",
+      "creatorModelId": "gpt-6.2-astra",
+      "creatorDisplayName": "GPT-6.2-Astra",
+      "runtimeAuthorDisplayName": "GPT-6-Luna（R2接続）／GPT-6.1-Sol・GPT-6-Luna（既存adapter）",
+      "page": "/public/astra62-limit-break-passive-onset/r2/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=limit-break-passive-onset-astra62-r2",
+      "sourceUrl": "/public/astra62-limit-break-passive-onset/r2/index.html",
+      "source": "/public/astra62-limit-break-passive-onset/r2/gallery-manifest.json",
+      "manualReview": false,
+      "automaticIframe": true,
+      "status": "ギャラリー内自動再生候補・品質と通常音は未評価",
+      "detail": "二つの容量窓を持つ小さな計器。右窓の金属戸が下り、その張り出しが受け座に着く。座に埋めた琥珀色の灯が点き、すぐ隣の文字なし盤の金属縁に暖色が映る。そこで初めて針が目盛りの起点を離れ、少し進んで止まる。左窓のハートは最後まで隠れない。",
+      "publicationEligible": false,
+      "galleryListingEligible": true,
+      "qualityReviewStatus": "not-reviewed",
+      "qualityAccepted": false,
+      "technicalReplayStatus": "not_run",
+      "normalAudioListening": "not_run",
+      "nativeSourceStatus": "not_run",
+      "parentGalleryReplayStatus": "not_run",
+      "adoption": "unknown",
+      "userAdopted": false,
+      "gameIntegrationStatus": "not_connected",
+      "publicationKind": "creative",
+      "creativeIdentity": "limit-break-passive-onset-astra62-r2",
+      "creativeFirstPublishedAt": "2026-11-26T02:08:02.199Z",
+      "creativeEdition": 2,
+      "creatorResponseId": "resp_0b1d081caada8cd3006b07932c9eb887d0a7986cd0762b600f",
+      "technicalResponseId": "resp_052d4fe1a44741cf006b07935a5c2887d090e312f3c96ca620",
+      "sourceSha256": "565c00326386e07f9e5ccff56b604b1be0e7b3805057ed0f1d1b068fd2e6926d",
+      "firstPublishedAt": "2026-11-26T02:08:02.199Z",
+      "creativeEditionLimit": 5,
+      "remainingCreativeEditions": 3
+    },
     {
       "id": "limit-break-passive-onset-astra62-r1",
       "title": "リミットブレイク・パッシブ初回成立 R1",
@@ -1393,18 +1428,18 @@ function isLevitationRetirementTarget(attempt){try{const p=levitationParentPin(a
 function levitationRetirementReceiptIsValid(event,attempt){const p=levitationParentPin(attempt?.versionId),d=event?.data,l=d?.lifecycle,r=attempt?.levitationRetirementIdentity,child=attempt?.iframe?.contentWindow;if(!p)return false;let live;try{live=child?.__levitation?.snapshot?.()}catch{return false}const f=live?.lastReceipt;return !!r&&attempt?.iframe?.isConnected===true&&event?.source===child&&event?.origin===attempt.origin&&d?.schema==='dva-gallery-startup/v1'&&d?.action==='retired'&&d?.stage==='playing'&&d?.status==='retired'&&d?.token===attempt.token&&d?.versionId===p.versionId&&d?.attemptEpoch===attempt.issuedEpoch&&Number.isSafeInteger(d?.sequence)&&d.sequence>attempt.sequence&&l?.disposeSettled===true&&l?.teardown==='disposed'&&l?.deviceLifecycle==='destroyed-loss-settled'&&typeof l?.sourceId==='string'&&l.sourceId.length>0&&l?.causeId===r.causeId&&l?.generation===r.generation&&Number.isSafeInteger(l?.finalSubmission)&&l.finalSubmission>0&&l?.queueCompleted===true&&l?.device?.status==='destroyed-loss-settled'&&l.device.drained===true&&l.device.destroyCalled===true&&l.device.lostReason==='destroyed'&&live?.versionId===p.versionId&&live?.disposeCompleted===true&&live?.deviceLifecycle==='destroyed-loss-settled'&&f?.versionId===p.versionId&&f?.sourceId===l.sourceId&&f?.causeId===l.causeId&&f?.generation===l.generation&&f?.submission===l.finalSubmission&&f?.completed===true&&f?.queueCompleted===true}
 function isHeadshotR2RetirementTarget(attempt){return isHeadshotR2ParentTarget(attempt,HEADSHOT_R2_PARENT_PIN,location.href)}
 function galleryChildLimitR1KnownVersion(attempt) {
-  return !!attempt && (attempt.versionId === "limit-break-passive-onset-astra62-r1" || attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r1");
+  return !!attempt && (attempt.versionId === "limit-break-passive-onset-astra62-r1" || attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r1" || attempt.versionId === "limit-break-passive-onset-astra62-r2" || attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r2");
 }
 
 function galleryChildLimitR1StrictTarget(attempt) {
   try {
-    var id = "limit-break-passive-onset-astra62-r1";
+    var id = attempt && attempt.versionId === "limit-break-passive-onset-astra62-r2" && attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r2" ? "limit-break-passive-onset-astra62-r2" : attempt && attempt.versionId === "limit-break-passive-onset-astra62-r1" && attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r1" ? "limit-break-passive-onset-astra62-r1" : null;
     if (!attempt || attempt.versionId !== id || attempt.childProtocolVersionId !== id || attempt.origin !== location.origin) return false;
     var iframe = attempt.iframe;
     if (!(iframe instanceof HTMLIFrameElement) || iframe.isConnected !== true || !iframe.contentWindow || !attempt.url || !iframe.src || typeof attempt.token !== "string" || !/^[a-f0-9]{32}$/.test(attempt.token) || !Number.isSafeInteger(attempt.issuedEpoch) || attempt.issuedEpoch <= 0) return false;
     function routeURL(value) {
       var url = new URL(value, location.href), params = url.searchParams;
-      if (url.origin !== attempt.origin || url.pathname !== "/public/astra62-limit-break-passive-onset/r1/gallery.html" || url.username !== "" || url.password !== "" || url.hash !== "") return null;
+      if (url.origin !== attempt.origin || !(id === "limit-break-passive-onset-astra62-r1" && url.pathname === "/public/astra62-limit-break-passive-onset/r1/gallery.html" || id === "limit-break-passive-onset-astra62-r2" && url.pathname === "/public/astra62-limit-break-passive-onset/r2/gallery.html") || url.username !== "" || url.password !== "" || url.hash !== "") return null;
       var allowed = {embed:1, galleryAutoLoop:1, galleryVersionId:1, galleryStartupToken:1, galleryAttemptEpoch:1, verify:1, galleryRelease:1, height:1};
       for (var pair of params) if (!Object.prototype.hasOwnProperty.call(allowed, pair[0])) return null;
       function exactlyOne(key, value) {
