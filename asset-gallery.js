@@ -6154,6 +6154,18 @@ function visibleVersionIndices(group) {
         sourceLink.href=original.href;
       } else if (item.id === UNIVERSAL_R1_ID) {
         sourceLink.href=new URL('/public/sol61-universal-combat-impact/r1/index.html',location.href).href;
+      } else if (item.id === 'orichalcum-normal-slash-astra62-r5') {
+        const original = new URL('/public/astra62-orichalcum-normal-slash/r5/index.html', location.href);
+        if (params.has('verify')) original.searchParams.set('verify', params.get('verify') || '1');
+        sourceLink.href = original.href;
+      } else if (item.id === 'limit-break-passive-onset-astra62-r5') {
+        const original = new URL('/public/astra62-limit-break-passive-onset/r5/index.html', location.href);
+        if (params.has('verify')) original.searchParams.set('verify', params.get('verify') || '1');
+        sourceLink.href = original.href;
+      } else if (item.id === 'hacker-mana-gpu-accrual-astra62-r2') {
+        const original = new URL('/public/astra62-hacker-mana-gpu-accrual/r2/index.html', location.href);
+        if (params.has('verify')) original.searchParams.set('verify', params.get('verify') || '1');
+        sourceLink.href = original.href;
       } else if (item.id === 'carried-missile-astra62-r1') {
         const original = new URL('/public/astra62-carried-missile/r1/index.html', location.href);
         if (params.has('verify')) original.searchParams.set('verify', params.get('verify') || '1');
