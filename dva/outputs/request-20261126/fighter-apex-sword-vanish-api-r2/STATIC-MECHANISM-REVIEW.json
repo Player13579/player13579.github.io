@@ -1,0 +1,27 @@
+{
+  "schema": "dva-static-mechanism-review/v1",
+  "versionId": "fighter-apex-sword-vanish-astra62-r2",
+  "reviewScope": "source mechanism only; no raster, actual GPU or appearance acceptance",
+  "sourcePath": [
+    "excitation: top-to-bottom activation",
+    "sectionValue: original body projected-depth interior and boundary emission",
+    "bodyGain/stripGain: original cloth to finite central seam handoff",
+    "received/receivePair: area samples with matching source geometry, current width, distance, incidence, finite footprint",
+    "fs: cloth response, floorResponse and direct sources reach final sRGB output"
+  ],
+  "boundaries": [
+    "present<.5 returns original floor",
+    "activeFlag false selects t=0 and on=0, therefore zero source and received light",
+    "t>=679 returns original floor through 980ms/end",
+    "reduced motion retains original .40 minimum width",
+    "R1 geometry/48-byte ABI/lifetime/PCM/gate/adapter preserved"
+  ],
+  "limits": [
+    "fictional disappearance; no mass-to-light claim",
+    "2D area-sample local approximation without exact self-occlusion/multiple scattering",
+    "up to 112 body and 12 seam source samples per fragment; actual GPU performance not_run",
+    "H64 illumination clarity and normal-speed full-lifetime appearance not_run",
+    "inherited synthetic R1 cue retained; ordinary listening not_run",
+    "R2 parent version/path routing not yet registered; parent iframe not_run"
+  ]
+}
