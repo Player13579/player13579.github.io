@@ -13663,3 +13663,184 @@ body.game-open.dva-full-canvas.dva-unified-panel-active:has(:is(
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+:root { --dva-single-page-panel-ready: 1; }
+/* The single match sheet is fitted, not scrolled. Keep the original
+ * status/field contents, but flow their visible blocks into the same grid. */
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active:not(:has(#meetingPanel:not([hidden]))) #gameApp #sidePanel {
+  display: flex !important;
+  flex-direction: column;
+  overflow: hidden !important;
+}
+body.dva-unified-panel-active #matchPanelHeader {
+  position: relative;
+  top: auto;
+  flex: none;
+  min-height: 48px;
+  padding-bottom: 6px;
+}
+body.dva-unified-panel-active #matchPanelHeader h2 {
+  width: max-content;
+  min-height: 36px;
+  margin: 0 8px 4px 0;
+}
+body.dva-unified-panel-active #matchPanelToolbar { gap: 4px; }
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelToolbar > button:not([hidden]) {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+}
+body.dva-unified-panel-active #matchPanelContentSlot:not([hidden]) {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  margin-block-start: 6px;
+}
+body.dva-unified-panel-active #matchPanelContent {
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: grid;
+  grid-template-columns: repeat(var(--dva-fit-columns, 2), minmax(0, 1fr));
+  align-items: start;
+  grid-auto-flow: row dense;
+  gap: 6px 10px;
+  min-width: 0;
+  width: 100%;
+  transform: scale(var(--dva-panel-fit-scale, 1));
+  transform-origin: left top;
+  color: #173441;
+  font-size: 13px;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #matchPanelContent > :is(#fieldLowerRow, #statusPanel):not([hidden]) {
+  display: contents !important;
+}
+body.dva-unified-panel-active #matchPanelContent :is(#statusPanel, #fieldLowerRow) > :not([hidden]):not([aria-hidden="true"]) {
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  align-self: start;
+  margin: 0 !important;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #matchPanelContent :is(#itemControl,#activeEffectsPanel,#operatorDetail):not([hidden]) {
+  width: auto !important;
+  padding: 5px 6px !important;
+}
+body.dva-unified-panel-active #matchPanelContent :is(#itemControl, #vendingPanel, #hackerAbilityDock, #operatorBranchPanel, #alchemyControl, #utilityPanel):not([hidden]) {
+  grid-column: span 2;
+}
+body.dva-unified-panel-active #matchPanelContent :is(#operatorDetail, #objectiveText):not([hidden]) {
+  grid-column: 1 / -1;
+}
+body.dva-unified-panel-active #matchPanelContent :is(
+  #activeEffectsList, #itemInventoryGrid, #vendingList,
+  .vending-list, .operator-branch-list, #hackerAbilityGrid, #alchemyChoiceGrid, #utilityPanel
+):not([hidden]) {
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+body.dva-unified-panel-active #matchPanelContent :is(
+  .active-effects-list li, .item-control-head, .active-effects-panel h3, .item-actions,
+  .transfer-controls, .movement-acc-control, .role-block, .inline-control
+) { padding-block: 3px; margin-block: 0; gap: 4px; }
+body.dva-unified-panel-active #matchPanelContent :is(
+  .active-effects-list li, .active-effects-panel h3, .item-control-head, label, .objective,
+  .enhance-readout
+) { font-size: 12px; line-height: 1.28; }
+body.dva-unified-panel-active #matchPanelContent :is(button, input, select):not([hidden]) {
+  min-height: 31px;
+  min-width: 0;
+  max-width: 100%;
+}
+body.dva-unified-panel-active #matchPanelContent :is(p, label, small, strong, button) {
+  overflow-wrap: anywhere;
+}
+@media (min-width: 550px) {
+  body.dva-unified-panel-active #matchPanelHeader { min-height: 52px; }
+  body.dva-unified-panel-active #matchPanelHeader h2 { float: left; margin-right: 12px; }
+  body.dva-unified-panel-active #matchPanelToolbar { padding-right: 128px; }
+}
+/* Remove blank tracks first; scale is only needed when actual content is dense. */
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #matchPanelContent #itemControl:not([hidden]) {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 7px;
+  row-gap: 4px;
+}
+body.dva-unified-panel-active #matchPanelContent #itemControl > :is(
+  .item-control-head, #itemInventoryGrid, .item-control-actions, .enhance-readout, .item-transfer-actions
+) {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+body.dva-unified-panel-active #matchPanelContent #itemControl > label {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+body.dva-unified-panel-active #matchPanelContent #itemControl > label > :is(input,select) {
+  min-width: 0;
+  flex: 1 1 0;
+}
+body.dva-unified-panel-active #matchPanelContent #itemControl > .visually-hidden-select {
+  min-height: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #itemControl #itemInventoryGrid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 105px), 1fr)) !important;
+  gap: 4px;
+}
+body.dva-unified-panel-active #matchPanelContent #itemControl #itemInventoryGrid .item-inventory-choice {
+  grid-template-columns: 23px minmax(0, 1fr);
+  min-height: 35px;
+  padding: 3px 4px;
+  gap: 4px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+body.dva-unified-panel-active #matchPanelContent #itemControl #itemInventoryGrid .item-inventory-choice img {
+  max-width: 23px;
+  height: auto;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #activeEffectsPanel {
+  grid-column: span 1 !important;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #activeEffectsPanel .active-effects-list {
+  gap: 3px;
+  padding: 0 !important;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #activeEffectsPanel .active-effects-list li {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "effect-name effect-value" "effect-detail effect-detail";
+  align-items: baseline;
+  padding: 3px 4px;
+  gap: 2px 4px;
+}
+body.dva-unified-panel-active #matchPanelContent #activeEffectsPanel .effect-detail {
+  font-size: 11px;
+  line-height: 1.22;
+}
+@media (min-width: 700px) and (orientation: landscape) {
+  body.dva-unified-panel-active #matchPanelContent {
+    grid-template-columns: minmax(0, 1.12fr) repeat(2, minmax(0, 1fr)) minmax(0, 1fr);
+    grid-template-rows: repeat(3, auto);
+  }
+  body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #activeEffectsPanel {
+    grid-column: 1 !important;
+    grid-row: 1 / span 3;
+  }
+  body.game-open.dva-full-canvas.dva-unified-panel-active #matchPanelContent #itemControl {
+    grid-column: 2 / span 2 !important;
+    grid-row: 1 / span 3;
+  }
+  body.dva-unified-panel-active #matchPanelContent #movementAccControl { grid-column: 4; grid-row: 1; }
+  body.dva-unified-panel-active #matchPanelContent #teleportControl { grid-column: 4; grid-row: 2; }
+  body.dva-unified-panel-active #matchPanelContent #empPhaseControl { grid-column: 4; grid-row: 3; }
+}

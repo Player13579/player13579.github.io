@@ -48,14 +48,55 @@
   const panelHomes = new Map();
   let unified = false;
   const unifiedCssReady = () => root.getComputedStyle(document.documentElement)
-    .getPropertyValue('--dva-one-match-panel-ready').trim() === '1';
+    .getPropertyValue('--dva-single-page-panel-ready').trim() === '1';
+  let fitFrame = 0;
+  let fitObserver = null;
+  let lastFitKey = '';
+  function scheduleMatchPanelFit() {
+    if (!unified || fitFrame) return;
+    fitFrame = root.requestAnimationFrame(() => {
+      fitFrame = 0;
+      if (!unified) return;
+      const slot = document.getElementById('matchPanelContentSlot');
+      const content = document.getElementById('matchPanelContent');
+      const fitKey = () => [slot.clientWidth, slot.clientHeight, content.scrollWidth, content.scrollHeight].join(':');
+      if (fitKey() === lastFitKey) return;
+      const width = slot.clientWidth, height = slot.clientHeight;
+      if (width < 100 || height < 55) return;
+      const apply = scale => {
+        const idealWidth = Math.max(width, Math.floor(width / scale));
+        const columns = idealWidth >= 1020 ? 4 : idealWidth >= 625 ? 3 : 2;
+        content.style.width = idealWidth + 'px';
+        content.style.setProperty('--dva-fit-columns', columns);
+        const rectHeight = content.offsetHeight;
+        return Math.max(rectHeight, content.scrollHeight) * scale <= height - 2 &&
+          content.scrollWidth * scale <= width + 1;
+      };
+      let scale = 1;
+      if (!apply(1)) {
+        let low = 0.04, high = 1;
+        for (let i = 0; i < 9; i++) {
+          const m = (low + high) / 2;
+          if (apply(m)) low = m; else high = m;
+        }
+        scale = low;
+        apply(scale);
+      }
+      content.style.setProperty('--dva-panel-fit-scale', scale);
+      lastFitKey = fitKey();
+    });
+  }
+
   function setUnifiedPanel(next) {
     if (next === unified || (next && !unifiedCssReady())) return;
     const side = document.getElementById('sidePanel');
     const head = document.getElementById('matchPanelHeader');
     const tools = document.getElementById('matchPanelToolbar');
     const field = document.getElementById('fieldLowerRow');
-    if (!side || !head || !tools || !field) return;
+    const slot = document.getElementById('matchPanelContentSlot');
+    const content = document.getElementById('matchPanelContent');
+    const status = document.getElementById('statusPanel');
+    if (!side || !head || !tools || !field || !slot || !content || !status) return;
     const move = (node, into, before = null) => {
       if (!node?.parentNode) return;
       const home = document.createComment('match-panel-home');
@@ -65,10 +106,19 @@
     };
     if (next) {
       for (const id of panelToolIds) move(document.getElementById(id), tools);
-      move(field, side, document.getElementById('statusPanel'));
+      move(field, content);
+      move(status, content);
+      move(document.getElementById('inventoryItemDetail'), side);
+      slot.hidden = false;
       head.hidden = false;
     } else {
       head.hidden = true;
+      slot.hidden = true;
+      fitObserver?.disconnect();
+      fitObserver = null;
+      if (fitFrame) root.cancelAnimationFrame(fitFrame);
+      fitFrame = 0;
+      lastFitKey = '';
       for (const [node, home] of panelHomes) {
         if (home.parentNode) home.parentNode.replaceChild(node, home);
       }
@@ -76,6 +126,14 @@
     }
     unified = next;
     document.body.classList.toggle('dva-unified-panel-active', unified);
+    if (unified) {
+      if (typeof root.ResizeObserver === 'function') {
+        fitObserver = new root.ResizeObserver(scheduleMatchPanelFit);
+        fitObserver.observe(slot);
+        fitObserver.observe(content);
+      }
+      scheduleMatchPanelFit();
+    }
   }
 
   function apply() {
