@@ -1,0 +1,88 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "千里眼のMP枯渇終了",
+  "groupId": "clairvoyance-depletion-astra62",
+  "versionId": "clairvoyance-depletion-astra62-r4",
+  "creativeEdition": 4,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creativeAPI": {
+    "responseId": "resp_0d398b34aaa58cb1006b07ce7320bc87d0b71186b5e5072785",
+    "reasoningEffort": "high",
+    "status": "completed"
+  },
+  "entry": "index.html",
+  "path": "/public/astra62-clairvoyance-depletion/r4/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baseCommit": "22e1bb807d47a39cf4bb9b861a615f2623fde720",
+    "basedOnVersion": "clairvoyance-depletion-astra62-r3",
+    "basedOnCandidateCommit": "d0d21ff54fb642b0b2c92030cfda27beac9ce8f6",
+    "apiMaterialBlockSha256": "49dd5fe14f6881649942f85cd58fed60f67fdd28b1d44cb2858a356dd06f9855",
+    "assembledShaderSha256": "b3a170bfc80523502056c990fed47512fd0878ce6564ff0b8f8ce1a5188432e0",
+    "creativeScope": "API-authored ambient material block inserted verbatim into the unchanged R3 shader; inherited clock, emission, coverage and PCM."
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "b43407b05b25d3bc8118a7b8b7efb6a6d94a021e",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "advanceClairvoyanceMana L8829–8848; distinguish setClairvoyanceActive manual-off L8809–8815.",
+    "meaning": "During active play a scheduled drain that actually empties the observer's mana stops clairvoyance and emits the specific MP depletion event. A meeting pauses this drain; other invalid-state cleanup and manual deactivation are separate.",
+    "scope": "Only a synthetic explicit current, confirmed, self-owned depletion receipt showing active→inactive and zero remaining mana can start the sign. Zero mana and an inactive snapshot alone cannot identify the cause. No remote player, position, observed image, camera data, actual mana gauge, teleport or world effect is requested or drawn. This preview does not parse prose or assert that an equivalent typed receipt already exists in the client."
+  },
+  "design": {
+    "revision": "上下の遮光板は、外肩に青灰の地肌を残し、丸く削った腹だけを鈍い錫色の研ぎ面とする。研ぎ面の見える幅は、各板が閉じる途中で増す厚みと、その時点の地肌の厚みとの比で決める。固定環境光に向く上側では腹が広く明るくなり、背を向ける下側には弱い拡散反射が残る。どちらも先端を明線にはしない。局所的な隙間が狭いほど、相手の板に面した内縁では環境光の見える範囲が減る。この陰は腹の奥まで一様には掛けず、最後は既存の継ぎ目の陰に引き渡す。全開時と着座時は増厚がゼロなので研ぎ面の寄与もゼロ。虹彩・導光板・薄膜の光、発動条件、PCMには触れない。幅70 CSS pxで失電後の窓を挟む二枚の厚みを追いやすくする狙いであり、R3の読みにくさもR4の改善も静的な仮説にとどまる。比較すべきなのは同条件・通常速度の376–610 msで、実表示・聴感は未確認。",
+    "timing": "R2 event age in ms. (1) 0–20: reveal the whole, already-powered sign; 20–180: fully exposed, fully lit, open plateau (160 ms). (2) 180–360: charge falls linearly; iris emission falls with a cubic smoothstep of charge. At normal motion the side guide's half-coupling position retreats linearly from |x|=40 to 4 reference units: 35 at 205 ms, 22 at 270 ms, 12 at 320 ms. Direct iris and guide power are zero at 360 ms. The bonded cut averages present and 16 ms earlier guide response; its release runs from 196 ms for the delayed component to final extinction at 376 ms. R2's descending sound decays by 380 ms. (3) 238–610: the two physical cuts close. From 376 until seating the remaining window is unpowered (central gap about 19 reference units at 376 ms in normal motion). 579–610: contact shading settles; at 610 the gap and glass coverage are exactly zero, at the unchanged R2 seating cue. (4) 610–725: seated at full width. 725–1002: seam half-width contracts from 35 to 2. 846–1028: composite fades to background; 1028–1070: background only. Lifetime ends at 1070.",
+    "reducedMotion": "At reduced=1 the initial half-gap is 8 instead of 13.8 reference units. The pane keeps its finite path loss but dims in place instead of sweeping its coupling boundary inward. The material uses the actual local gap and rolled face geometry. Iris, pupil, cut release, contact, seam contraction, audio and all timing stay on the same clock.",
+    "sound": "A decaying downward tone stops by 380 ms. A quieter damped contact cue accompanies rim closure at 610 ms. Verification is silent.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1854,
+      "sha256": "0d4f5386c002cd9f7b6fd10e4c18dc95a884898ad1fe9d2121b0d743ec9baab4",
+      "gitBlob": "c8630dca2818195594f3a84b00623ba2941706cd"
+    },
+    "preview.mjs": {
+      "bytes": 7806,
+      "sha256": "61217438298597dc446d112211b9a75ad4742d47f794d35a7f45779d87224ad6",
+      "gitBlob": "03cac477d99b226dc822d4b49b87c5dbf10b3329"
+    },
+    "depletion.mjs": {
+      "bytes": 1630,
+      "sha256": "8dc0515e9ce1476a7bb6bef9802d28dcaf771ee6a3074e0b074e6cd9e042e385",
+      "gitBlob": "e885b351ae3f7e8518e6bfacff0330e13258924a"
+    },
+    "effect.wgsl": {
+      "bytes": 6702,
+      "sha256": "b3a170bfc80523502056c990fed47512fd0878ce6564ff0b8f8ce1a5188432e0",
+      "gitBlob": "2646ede5c311f0b15b7b88a862bd971ec4ddba0b"
+    }
+  },
+  "validation": {
+    "gate": "passed: current committed self active to inactive at numeric zero; stale, duplicate, unrelated or unconfirmed receipt rejected",
+    "logicAndPCM": "Gate assertions passed; decoded Float32 audio samples identical to R3 at 8/44.1/48/96/192 kHz",
+    "moduleSyntax": "Node module syntax pass",
+    "wgsl": "Naga WASI validated; SPIR-V 11256 bytes",
+    "dependencies": "gallery and standalone entries and local references inspected",
+    "parentGalleryReplay": "not_run",
+    "nativeGPU": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "quality": "not-reviewed",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not-connected"
+  }
+}
