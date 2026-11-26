@@ -1,0 +1,148 @@
+{
+  "schema": "dva-gallery-manual-candidate/v1",
+  "title": "初回バトルフェーズ開始 R3",
+  "groupId": "match-opening-pennant-astra62",
+  "versionId": "match-opening-pennant-astra62-r3",
+  "creativeEdition": 3,
+  "editionScope": "Third initial battle opening gallery candidate. Compare how transmission and fold relief respond during the R2 settling wave.",
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "creatorAttributionSource": "OpenAI Responses API metadata in creativeSource.",
+  "entry": "index.html",
+  "path": "/public/astra62-match-opening-pennant/r3/index.html",
+  "manualReview": true,
+  "automaticIframe": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baselineCommit": "38a053c19f3c2b0847eb68487f4332f31c302a2a",
+    "baselineDirectory": "public/astra62-match-opening-pennant/r2",
+    "creativeSource": {
+      "responseId": "resp_0e90ed01969ade6d006b07cad77a3087d0ae784c1969d10fbf",
+      "model": "gpt-6.2-astra",
+      "reasoningEffort": "high",
+      "bCommit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "originalEdition": 2,
+      "scope": "R3 shader for cloth-motion lighting following the existing R2 design"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1927,
+      "sha256": "69879f9e5f546725877bc110d4125e881a16297727cd9c501a1875601c00b6bd",
+      "gitBlob": "17fd46c83a0420b3e823003bdd402cbc339c9a6d"
+    },
+    "preview.mjs": {
+      "bytes": 7791,
+      "sha256": "8ea10aa37d48f4ccb7be45fb298f4005b6563f3dada490431cb7baf54a23b7a4",
+      "gitBlob": "2734587775e6f7ff394334fc027cd0c5851367c0"
+    },
+    "opening.mjs": {
+      "bytes": 2307,
+      "sha256": "fa8629d2414de6f2168a758917bfb5d433ccb05ac9f58d79afdc478538b94c68",
+      "gitBlob": "7be1e7b847ad57f351e4fe652d69f7665b08665c"
+    },
+    "effect.wgsl": {
+      "bytes": 5480,
+      "sha256": "2a73d5acffa97d767c0b600b60d2ee96bdb6684ee6a7a5cc2206a201ec901027",
+      "gitBlob": "de4b5be1cca41b081f35750deefa0e6da622e50f"
+    }
+  },
+  "productionMeaning": {
+    "repo": "Player13579/player13579.github.io",
+    "commit": "28b5b0f5eb55aabaa201eb6e5f69f83a0ed18446",
+    "path": "offline-server-main.js",
+    "blob": "7d2fe14c98638049bf3d5b79dcaba137394d7d00",
+    "function": "startBattle L6925–7079. Requires selecting, sets playing, round=1, battleStartedAt and preparationEndsAt; records a dedicated battle-start announcement.",
+    "scope": "This synthetic receipt is bound to the current viewer-owned ordinary-match generation and may trigger once per generation. Session generations in the manual preview are locally provided. Meeting resumes, delayed notifications, ordinary snapshots, preparation ending and training are negative fixtures. Initial play and the beginning of preparation coincide; this sign conveys neither preparation expiry nor availability of attacks or input.",
+    "existing": "The main-game playing-phase start sound is outside this standalone preview. The pennant is a sign for the viewer, not new world inventory, a flag objective, a map object or a winning team."
+  },
+  "design": {
+    "primary": "R3の仮説は、布先が上下した量ではなく、その場所で布がどちらへ傾いたかを透け方に反映すると、展開後の揺れも同じ一枚の布の動きとして読める、というもの。R2の見え方に欠陥を観測したという主張ではない。\n\n輪郭を作る変位 wave は変えず、同じ時刻での空間勾配 ∂wave/∂x（x = spread·u）を解析的に求めた。光に使う勾配だけを波の到着から55 msかけて滑らかに受け入れ、布元では回転をゼロにする。回転の感度を5としたのは、展開後の勾配約0.2でも折り面を約0.6 rad傾けるため。一方、畳まれて幅が狭い時は勾配が大きくなるので、回転量を滑らかに±0.85 rad未満に抑えた。単位法線の向きを変えるだけで、新しい光量の山は足さない。波が減衰すると元の濃淡のある折り面に戻る。縮減時はこの回転も変位もゼロ。\n\n布の反射色と透過率には同じ向きを使い、周囲への返り光には、既存の12区間それぞれの布面の向きを使う。細い先端は発光面積が小さく、二重の裾と藍帯は光を通しにくいまま。留め具と竿の布側はその局所光を受けるだけで、自ら点灯しない。勾配のための隣接点サンプルや追加の積分ループはない。変更はシェーダ内に限り、32バイトuniform、片側だけに開く一本帯の旗、表示位置・倍率・背景・1270 msの寿命、ホストの発動条件とPCMは据え置く。",
+    "evaluation": "未観測の比較手順：同じ表示枠・view.scale・既定強度・露出で、拡大もスロー再生もせずR2とR3を交互に一回ずつ見る。張り切った布幅はどちらも描画バッファ上で58×view.scale px。まず130–490 msは布元と藍帯を見る。布元は竿から動かず、一本の帯が布と一緒に開き、布音と490 msの着座音の拍が変わらないことを確認する。\n\n次の組では輪郭だけでなく、藍帯より先、幅の約8割のセージ面を目で追う。490 msを過ぎたR2にも輪郭の揺れと透過量の変化はある。比べたいのは520–700 msごろ、その揺れで面が向きを変えるのに伴って、面内の明暗まで変わって読めるかどうか。実寸では差が読めない場合もそのまま記録する。細い光線だけが横切る、留め具や布全体がもう一度点灯する、あるいは裾・帯の陰が消えるなら不採用。揺れが弱まってから消退するまでは、折りの濃淡と布側への柔らかな返り光を比べる。\n\n縮減でも同じ比較を行い、短い移動に独立したハイライトが走らないことを確認する。Verifyは無音。音と発動は通常プレビューで別に確認し、閲覧者所有の通常戦で各世代最初の selecting→playing（round 1、準備開始）に一度だけとする。再開、遅延通知、通常スナップショット、準備終了、訓練では再生せず、攻撃解禁の合図にしない。",
+    "proposedProbes": "式からの検算目安（描画実測ではない）。t は ms、長さは view.scale を掛ける前の q 座標、turn は rad。布の同一点を追うには固定画素ではなく q = (spread*u, s.mid + y*s.halfH) を使う。\n\n1. u=0.8, y=−0.1, reduced=0。t=(520,610,700) の順に s=sectionAt(u,58,1,t,0) を評価。s.mid−5.4 ≈ (+0.902,−1.374,+0.106) はR2と同じ。s.turn ≈ (+0.612,−0.150,−0.313)、foldFace(u,y,1,s.turn) ≈ (0.413,0.097,0.055)（丸め許容±0.003）。対照の foldFace(u,y,1,0) は全て約0.146。この点は帯・裾の外なので、fs の litFace 単独でも約 (0.753,0.621,0.603) となる。s.feed や表示ガンマによる差と混同しない。\n\n2. 同じ3時刻の nearbyLight 内で j=9（u=9.5/12）、受光点を q=(58*u,s.mid) とする。その区間の加算項を wx*s.feed*(whole−0.84*dyed) で割ると、区間自身の face ≈ (0.803,0.704,0.695) が残る（±0.003）。turn を0にした対照なら全て約0.721。これは周辺光の総和ではなく一つの発光区間の検算。有限範囲の対照として nearbyLight(vec2f(−15,9),58,1,520,0) は0（rx=13.8）。\n\n3. 到着境界：u=0.8, reduced=0、各時刻の pull と spread は fs と同じ式。t=388,389 で s.turn=0、390（lag=1）で −0.002<s.turn<0。布元 u=0 では全時刻 s.mid=9, s.turn=0。縮減対照 sectionAt(0.8,58,1,t,1) は上の3時刻とも mid=5.4, turn=0, feed=0.94。折りが消えていないことは foldFace(0.8,−0.1,1,0)≈0.146 と foldFace(0.16,0,1,0)=1 の差で確認できる。",
+    "sound": "A brief band-limited cloth noise while unfolding and a short two-partial seating tone at 490 ms. Verify is muted.",
+    "b": {
+      "repository": "Player13579/B",
+      "ref": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "base": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+      "extension": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+    }
+  },
+  "validation": {
+    "cpu": {
+      "result": "pass",
+      "ordinaryOnce": true,
+      "watermark": true,
+      "negativeFixtures": 13,
+      "pcmEqualToR1": true,
+      "pcm": [
+        [
+          8000,
+          0.119086
+        ],
+        [
+          44100,
+          0.089874
+        ],
+        [
+          48000,
+          0.089841
+        ],
+        [
+          96000,
+          0.089877
+        ],
+        [
+          192000,
+          0.089877
+        ]
+      ],
+      "bridgeESM": true,
+      "galleryConfig": true,
+      "uniform": true
+    },
+    "shader": "pass-naga-wasi-cli-0.1.0",
+    "materialProbes": {
+      "mode": "CPU reconstruction through a central difference of the R2 displacement with du=1e-6; not rendered pixels",
+      "u": 0.8,
+      "y": -0.1,
+      "timeMs": [
+        520,
+        610,
+        700
+      ],
+      "R3FoldFactor": [
+        0.41334,
+        0.09735,
+        0.05464
+      ],
+      "R3TurnRadians": [
+        0.61195,
+        -0.15002,
+        -0.31278
+      ],
+      "R2FoldFactor": 0.14618,
+      "reducedTurnRadians": [
+        0,
+        0,
+        0
+      ],
+      "rootTurnRadians": 0,
+      "emitterStrip9Face": [
+        0.80317,
+        0.70452,
+        0.69472
+      ]
+    },
+    "nativeGpu": "not_run",
+    "fullLifetime": "not_run",
+    "actualSize": "not_run",
+    "normalAudioListening": "not_run",
+    "quality": "not-reviewed",
+    "gameIntegration": "not-connected"
+  }
+}

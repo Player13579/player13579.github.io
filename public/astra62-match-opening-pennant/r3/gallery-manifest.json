@@ -1,0 +1,106 @@
+{
+  "schema": "dva-gallery-inline-candidate/v1",
+  "title": "初回バトルフェーズ開始 R3",
+  "groupId": "match-opening-pennant-astra62",
+  "versionId": "match-opening-pennant-astra62-r3",
+  "creativeEdition": 3,
+  "creatorModelId": "gpt-6.2-astra",
+  "creatorDisplayName": "GPT-6.2-Astra",
+  "entry": "gallery.html",
+  "path": "/public/astra62-match-opening-pennant/r3/gallery.html",
+  "originalManifest": "publication-manifest.json",
+  "manualReview": false,
+  "automaticIframe": true,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "qualityStatus": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "fixture": {
+    "name": "opening",
+    "ordinaryMatch": true,
+    "owned": true,
+    "current": true,
+    "sameMatchAndGeneration": true,
+    "before": "selecting",
+    "after": "playing",
+    "round": 1,
+    "committed": true,
+    "freshSyntheticMatchAndGenerationEachLoop": true,
+    "uniformBytes": 32,
+    "lifetimeMs": 1270
+  },
+  "source": {
+    "repo": "Player13579/player13579.github.io",
+    "baselineCommit": "38a053c19f3c2b0847eb68487f4332f31c302a2a",
+    "baselineDirectory": "public/astra62-match-opening-pennant/r2",
+    "creativeSource": {
+      "responseId": "resp_0e90ed01969ade6d006b07cad77a3087d0ae784c1969d10fbf",
+      "model": "gpt-6.2-astra",
+      "reasoningEffort": "high",
+      "bCommit": "3fdbaa6e53fe82273ed75ae1a525f1b2579c49c7",
+      "originalEdition": 2,
+      "scope": "R3 shader for cloth-motion lighting following the existing R2 design"
+    }
+  },
+  "files": {
+    "index.html": {
+      "bytes": 1927,
+      "sha256": "69879f9e5f546725877bc110d4125e881a16297727cd9c501a1875601c00b6bd",
+      "gitBlob": "17fd46c83a0420b3e823003bdd402cbc339c9a6d"
+    },
+    "preview.mjs": {
+      "bytes": 7791,
+      "sha256": "8ea10aa37d48f4ccb7be45fb298f4005b6563f3dada490431cb7baf54a23b7a4",
+      "gitBlob": "2734587775e6f7ff394334fc027cd0c5851367c0"
+    },
+    "opening.mjs": {
+      "bytes": 2307,
+      "sha256": "fa8629d2414de6f2168a758917bfb5d433ccb05ac9f58d79afdc478538b94c68",
+      "gitBlob": "7be1e7b847ad57f351e4fe652d69f7665b08665c"
+    },
+    "gallery.html": {
+      "bytes": 1363,
+      "sha256": "dab04bb9f7e887c727eb04fcf8a586ac8116f7aeda1ed4c25d8f15e6e3b7e156",
+      "gitBlob": "502368fcd9c499f17370e1a5c1d129bece7e5978"
+    },
+    "gallery-effect.mjs": {
+      "bytes": 372,
+      "sha256": "ad0b0b5ebb774a8fc9a8e976458f0974facf6c8feea8dcf1c7258ab25a86a196",
+      "gitBlob": "83295ff36c6fb66fd606375524ca470f0f5739d7"
+    },
+    "gallery-adapter.mjs": {
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlob": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    "effect.wgsl": {
+      "bytes": 5480,
+      "sha256": "2a73d5acffa97d767c0b600b60d2ee96bdb6684ee6a7a5cc2206a201ec901027",
+      "gitBlob": "de4b5be1cca41b081f35750deefa0e6da622e50f"
+    },
+    "publication-manifest.json": {
+      "bytes": 9796,
+      "sha256": "880bdd69eeb2d590aea4e331c5744c43867ab77b9fa2b0988ba39139a95272fe",
+      "gitBlob": "441ef0fd1d8aacc66ab8991a9ddd6294b4ad2509"
+    }
+  },
+  "bridge": {
+    "fixtureEvent": "delegates original fixturePair(mode,id) unchanged",
+    "makeGate": "delegates tuple entries by identity to original twoarg gate",
+    "originalAudio": "makeCue reexport byteunchanged"
+  },
+  "validation": {
+    "cpuModuleAndBridge": "pass",
+    "actualEsmLoader": "pass-node-data-uri",
+    "galleryHtmlConfig": "pass-executed-callback",
+    "shader": "pass-naga-wasi-cli-0.1.0",
+    "adapterInstance": "not_run",
+    "parentIframe": "not_run",
+    "nativeGpu": "not_run",
+    "actualSize": "not_run",
+    "fullLifetime": "not_run",
+    "visualQuality": "not-reviewed",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not-connected"
+  }
+}
