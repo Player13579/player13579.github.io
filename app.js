@@ -13000,6 +13000,7 @@ function resetLocalSession() {
   state.eVisualClocks.clear();
   state.characterActions.clear();
   state.fighterSlashVisualReceipts = null;
+  state.mysteryBoxVisualReceipts = null;
   state.renderPlayers.clear();
   state.camera = { x: 0, y: 0, initialized: false, mode: "", frame: -1 };
   state.killEffects = [];
@@ -14413,6 +14414,47 @@ function admitFighterSlashVisualOnce(effect, next) {
   return true;
 }
 
+// A submitted frame still owns its existing visual and timing. Remember only
+// exact authority-owned opening admissions, not box coordinates or room state.
+function admitOwnedMysteryBoxVisualOnce(effect, next) {
+  if (effect?.type !== 'mystery-box' || !state.roomId || !state.playerId ||
+      next.roomId !== state.roomId || next.selfId !== state.playerId ||
+      effect.playerId !== state.playerId || effect.viewerId !== state.playerId ||
+      typeof effect.id !== 'string' || !/^magic_[0-9a-f]{12}$/.test(effect.id) ||
+      ![effect.x, effect.y, effect.radius, effect.at].every(Number.isFinite) ||
+      effect.radius <= 0 || effect.at <= 0 || effect.durationMs !== 2600 ||
+      !['product', 'ability'].includes(effect.acquisitionKind) ||
+      typeof effect.variant !== 'string' || !effect.variant ||
+      effect.variant !== effect.acquisitionId || effect.markerCount !== 1 ||
+      effect.acquisitionCredits !== 0 ||
+      ![effect.objectId, effect.targetId, effect.mode, effect.effectKind,
+        effect.completionKind].every(value => value === '') ||
+      ![effect.targetX, effect.targetY, effect.acquisitionOriginX,
+        effect.acquisitionOriginY].every(value => value === null)) return true;
+  const engine = state.offlineMode
+    ? state.offlineClient?.mainThreadApi || state.offlineClient?.worker
+    : 'online';
+  if (!engine) return true;
+  let owner = state.mysteryBoxVisualReceipts;
+  if (!owner || owner.roomId !== next.roomId || owner.session !== state.roomSessionGeneration ||
+      owner.selfId !== next.selfId) {
+    state.mysteryBoxVisualReceipts = owner = { roomId: next.roomId,
+      session: state.roomSessionGeneration, selfId: next.selfId, engines: new Map() };
+  }
+  let ids = owner.engines.get(engine);
+  if (!ids) {
+    ids = new Map();
+    owner.engines.set(engine, ids);
+    if (owner.engines.size > 3) owner.engines.delete(owner.engines.keys().next().value);
+  }
+  const wire = JSON.stringify([effect.x, effect.y, effect.radius, effect.at,
+    effect.acquisitionKind, effect.acquisitionId]);
+  if (ids.has(effect.id)) return ids.get(effect.id) !== wire;
+  ids.set(effect.id, wire);
+  if (ids.size > 128) ids.delete(ids.keys().next().value);
+  return true;
+}
+
 function detectMagicEffects(previous, next) {
   if (HEAL_E_SFX_ACTIVE && (HEAL_E_SFX_ACTIVE.roomId !== String(next.roomId) ||
       HEAL_E_SFX_ACTIVE.generation !== state.roomSessionGeneration ||
@@ -14465,6 +14507,7 @@ function detectMagicEffects(previous, next) {
     if (["instant-stand-firm-acquired", "instant-push-acquired", "fighter-stand-firm-acquired", "fighter-push-acquired"].includes(effect.type)) continue;
     if (effect.type === "action-item-use" && seenItemUseActionIds.has(effect.id)) continue;
     if (effect.type === "emp-charge" && settledEmpIds.has(effect.empPulseId)) continue;
+    if (effect.type === 'mystery-box' && !admitOwnedMysteryBoxVisualOnce(effect, next)) continue;
     const receivedAt = state.frameNow || performance.now();
     const durableCombatEvent = /^(durability-|timed-bust-)/.test(String(effect.variant || "")) && ["action-stand", "action-push", "preparation-barrier-hit"].includes(effect.type);
     const duration = durableCombatEvent && Number(effect.durationMs) > 0 ? Number(effect.durationMs) : Math.max(magicEffectDuration(effect.type), Number(effect.durationMs) || 0);
@@ -34738,7 +34781,7 @@ function showToast(message) {
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || location.protocol === "file:" || /(^|\.)plicy\.net$/i.test(location.hostname)) return;
-  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449", document.baseURI)).then(async (registration) => {
+  navigator.serviceWorker.register(new URL("sw.js?v=mystery-box-start-clock-r1-grenades-dom-r1&cleanup=canvas2d-invention-leaf-r1&opfocus=escape-r2&keyreturn=focus-r1&endedmove=guard-r1&soloroute=owner-r1&exitfeedback=notice-r1&axstatus=retired-match-r1&boximage=retry-r1&drawaudio=sunbeam-r1&startowner=deadline-r3&facility=required-current-r3&foreground=typed-state-r1&operator=selection-owner-r2&fullcanvas=match-ui-r1&fieldUi=field-ui-persistent-forward-20261126&boxAcquisitionRect=box-acquisition-rect-forward-20261126-1312-r1&titleCloseTab=title-close-tab-forward-20261126-1312-r1&keybindQueuedStop=keybind-queued-stop-forward-20261126-1322-r1&gravityMapOwner=gravity-map-owner-forward-20261126-1322-r1&boxCueTransport=box-cue-transport-forward-20261126-1322-r1&lootCueTransport=loot-cue-transport-forward-20261126-1332-r1&slashEventDedup=slash-event-dedup-forward-20261126-1332-r1&itemCueTransport=item-cue-transport-forward-20261126-1342-r1&secondTouchDodge=second-touch-dodge-forward-20261126-1342-r1&unifiedPanel=one-match-panel-forward-20261126-1349&selectedWeaponShortcut=selected-weapon-shortcut-forward-20261126-1357-r1&onePagePanel=single-page-panel-forward-20261126-1407&onePageReady=one-page-ready-forward-20261126-1412&dedicatedShopMobile=dedicated-shop-mobile-forward-20261126-1423&isolatedShopKeyboard=isolated-shop-keyboard-forward-20261126-1432&creditCueAfterDock=credit-cue-after-dock-forward-20261126-1432&weaponPanelOwner=weapon-panel-owner-forward-20261126-1432&freshWasdKeydown=fresh-wasd-keydown-forward-20261126-1442&secondaryMapClose=secondary-map-close-forward-20261126-1449&ownedMysteryBoxDedup=owned-mystery-box-dedup-forward-20261126-1510", document.baseURI)).then(async (registration) => {
     // Ask for the current release immediately. The release-scoped worker
     // cache keeps a previous controller from supplying a mixed runtime while
     // the update is being installed.
