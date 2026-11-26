@@ -828,34 +828,45 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
   let timer = 0;
   let title = '';
   const n = x => Number.isFinite(x) ? Math.round(x * 10) / 10 : '–';
-  const bounds = element => {
+  const rect = element => {
     const r = element?.getBoundingClientRect();
-    return r?.height ? [n(r.top), n(r.bottom)] : ['–', '–'];
+    return r?.height > 0 && Number.isFinite(r.top) && Number.isFinite(r.bottom) ? r : null;
   };
+  const bounds = r => [n(r?.top), n(r?.bottom)];
+  const diff = (a, b) => Number.isFinite(a) && Number.isFinite(b) ? a - b : null;
+  const signed = x => Number.isFinite(x) ? (x > 0 ? '+' : '') + n(x) : '–';
   function sample() {
     timer = 0;
     const vv = window.visualViewport;
     const canvas = document.getElementById('webgpuMainCanvas');
-    const rr = bounds(root), rb = bounds(body);
-    const rc = bounds(canvas), ra = bounds(document.getElementById('gameApp'));
+    const rr = rect(root), rb = rect(body), rp = rect(pageProbe);
+    const rc = rect(canvas), ra = rect(document.getElementById('gameApp'));
     const vp = [n(vv?.offsetTop), n(vv?.height), n(vv?.scale)];
+    const visualBottom = Number.isFinite(vv?.offsetTop) && Number.isFinite(vv?.height) &&
+      vv.height > 0 ? vv.offsetTop + vv.height : null;
     const stage = body.classList.contains('game-open') ? 'PLAY' : 'TITLE';
     const mode = (navigator.standalone === true || matchMedia('(display-mode: standalone)').matches)
       ? 'standalone' : document.fullscreenElement ? 'full' : 'browser';
-    if (stage === 'TITLE') title = 'title V ' + vp.join('/') + ' root ' + rr.join('..');
-    const showCanvas = stage === 'PLAY' && canvas?.dataset?.visible !== 'false' && typeof rc[1] === 'number';
-    canvasProbe.hidden = !showCanvas;
-    if (showCanvas) {
+    if (stage === 'TITLE') title = 'title V ' + vp.join('/') + ' root ' + bounds(rr).join('..');
+    const canvasReady = Boolean(stage === 'PLAY' && rc && root.dataset.fieldRenderer === 'webgpu' &&
+      canvas.style.opacity === '1');
+    const markCanvas = Boolean(canvasReady && rp &&
+      rc.bottom >= rp.top + 4 && rc.bottom <= rp.bottom);
+    canvasProbe.hidden = !markCanvas;
+    if (markCanvas) {
       canvasProbe.style.left = '32.5%';
       canvasProbe.style.top = 'auto';
-      const p = pageProbe.getBoundingClientRect();
-      canvasProbe.style.bottom = Math.max(0, p.bottom - rc[1]) + 'px';
+      canvasProbe.style.bottom = rp.bottom - rc.bottom + 'px';
     }
     out.textContent = [
       'DVA viewport 1 · ' + stage + ' · ' + mode,
       'V top/h/zoom ' + vp.join('/') + ' inner ' + n(innerHeight) + ' scroll ' + n(scrollY),
-      'root ' + rr.join('..') + ' body ' + rb.join('..') + ' safe ' + safeInsets().map(n).join('/'),
-      'app ' + ra.join('..') + ' canvas ' + rc.join('..') + ' fixed ' + bounds(pageProbe).join('..'),
+      'root ' + bounds(rr).join('..') + ' body ' + bounds(rb).join('..') + ' safe ' + safeInsets().map(n).join('/'),
+      'app ' + bounds(ra).join('..') + ' canvas ' + bounds(rc).join('..') + ' fixed ' + bounds(rp).join('..'),
+      '下端 V ' + n(visualBottom) + ' / root ' + n(rr?.bottom) + ' / canvas ' + n(rc?.bottom) + ' / fixed ' + n(rp?.bottom),
+      '差 V−canvas ' + signed(diff(visualBottom, rc?.bottom)) +
+        ' / root−canvas ' + signed(diff(rr?.bottom, rc?.bottom)),
+      'シアン: 固定枠の下端 / ピンク: ' + (markCanvas ? '描画面の下端' : canvasReady ? '固定枠外' : '描画前'),
       stage === 'PLAY' ? title : ''
     ].filter(Boolean).join('\n');
   }
@@ -863,8 +874,11 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
     if (timer) clearTimeout(timer);
     timer = setTimeout(sample, 160);
   };
-  new MutationObserver(settle).observe(body, { attributes:true, attributeFilter:['class'] });
+  const changes = new MutationObserver(settle);
+  changes.observe(body, { attributes:true, attributeFilter:['class'] });
+  changes.observe(root, { attributes:true, attributeFilter:['data-field-renderer'] });
   const canvas = document.getElementById('webgpuMainCanvas');
+  if (canvas) changes.observe(canvas, { attributes:true, attributeFilter:['style'] });
   if (typeof ResizeObserver !== 'undefined') {
     const ro = new ResizeObserver(settle);
     ro.observe(root);
