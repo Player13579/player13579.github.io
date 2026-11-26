@@ -1,0 +1,104 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "groupId": "limit-break-passive-onset-astra62",
+  "versionId": "limit-break-passive-onset-astra62-r5",
+  "creativeEdition": 5,
+  "creativeEditionLimit": 5,
+  "remainingCreativeEditions": 0,
+  "creativeAuthor": "GPT-6.2-Astra",
+  "creatorModelId": "gpt-6.2-astra",
+  "technicalAuthors": [
+    "GPT-6-Luna"
+  ],
+  "inheritedAdapterAuthors": [
+    "GPT-6.1-Sol",
+    "GPT-6-Luna"
+  ],
+  "sourcePin": "e289b48b09629702cf89c0352dbb25749aed6699",
+  "source": {
+    "repository": "Player13579/windows-dva-migration",
+    "creativeCommit": "e289b48b09629702cf89c0352dbb25749aed6699",
+    "creativeResponseId": "resp_08a145e7a6b25cac006b07a158e1cc87d096857e25783afc63",
+    "inheritedTechnicalResponseId": "resp_001c7bd4c0628b84006b079923387c87d091d5c64194dc90f6"
+  },
+  "entry": "gallery.html",
+  "page": "/public/astra62-limit-break-passive-onset/r5/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=limit-break-passive-onset-astra62-r5",
+  "originalPage": "/public/astra62-limit-break-passive-onset/r5/index.html",
+  "protocol": "dva-gallery-startup/v1",
+  "manualReview": false,
+  "standardFixture": "fighter",
+  "designSummary": "右窓のシャッターの足が受けに着座する425msを、針の動き出しと点灯の共通の起点にしました。光源は受けの下から折れ曲がり、二つの窓の下を横に走る太い導光バーです。消灯時は煙色のガラスですが、接触後は白く輝く芯と鮮やかな青緑の発光面が立ち上がり、下側のカット面には青が残ります。バーに沿うアルミの傾斜面が幅広く光を受け、近い縁ほど明るく、二つの押さえ金の裏には影が落ちます。光は左のハートや文字盤にはかかりません。通常時も動きを抑えた設定でも、明るさをしばらく保ってから、点滅させずに消灯します。",
+  "lifetimeMs": 1320,
+  "backgroundGapMs": 500,
+  "firstFrameWindow": {
+    "submittedMinInclusiveMs": 100,
+    "submittedMaxExclusiveMs": 1320,
+    "requiresQueueCompletionWhileCauseLive": true,
+    "pixelsProved": false
+  },
+  "uniform": {
+    "bytes": 32,
+    "values": [
+      "width",
+      "height",
+      "ageMs",
+      "scale292x135Dpr",
+      "reduced",
+      "live",
+      0,
+      0
+    ],
+    "entries": [
+      "vs",
+      "fs"
+    ]
+  },
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "nativeShader": "not_run",
+  "cpuAdapter": "not_run",
+  "cpuParent": "not_run",
+  "browserIframe": "not_run",
+  "normalAudioListening": "not_run",
+  "visualQuality": "not_run",
+  "gameIntegration": "not_connected",
+  "files": [
+    {
+      "path": "public/astra62-limit-break-passive-onset/r5/gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlobSha1": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r5/onset.mjs",
+      "bytes": 2555,
+      "sha256": "e9b2e0261ef4e3aa527f27c8177a71f68eb1f944e3a39086a535ed7a08f1ede3",
+      "gitBlobSha1": "94077df904e7850d1d40e20cdc61db6a7b393e7b"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r5/effect.wgsl",
+      "bytes": 9698,
+      "sha256": "a64aadfa292ee180a407d4bc73f98588f304580915b9e6adab77c50527b45d0f",
+      "gitBlobSha1": "f142a9d6d2827a1045ba05ad512b5db31bfae97f"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r5/preview.mjs",
+      "bytes": 7845,
+      "sha256": "63056e42d69c8fc425789d1f052acb5f91388ba5c068f9d83ac79a1acf9a2a03",
+      "gitBlobSha1": "402c0dd1de6dc3ae230005e337ce40dea640b634"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r5/index.html",
+      "bytes": 2208,
+      "sha256": "2f792bfce8aeda81681982f01f8008f58cd09a4ff26d9f53d5784d6ce6b7e343",
+      "gitBlobSha1": "372f81d40b1fb343b69305ab5ff77bce02b54c61"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r5/gallery.html",
+      "bytes": 1347,
+      "sha256": "380b18faacb23d3eac64ccace195cb3044ed8d71d853a01ebdfc7ba55d9923e1",
+      "gitBlobSha1": "7670ace086b2fb2dbe97d90c7022395747e24422"
+    }
+  ]
+}
