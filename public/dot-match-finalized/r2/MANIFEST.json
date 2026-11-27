@@ -1,0 +1,76 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-match-finalized-r2",
+  "group": "dot-match-finalized",
+  "title": "通常対戦の決着",
+  "authorDisplayName": "dot",
+  "edition": 2,
+  "editionCap": 5,
+  "parentEdition": "dot-match-finalized-r1",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "same-room-snapshot-transition",
+    "before": [
+      "playing",
+      "meeting"
+    ],
+    "after": "ended",
+    "excludeWinner": "none",
+    "visualDurationMs": 1020,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2294,
+      "sha256": "1cf881c8ce41c21dcf581f59c12ea1159556bf117f1973f324a2973dcc48db9d"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16792,
+      "sha256": "ee83264b5be25597e7387f04e474a65e37b7b07fa591c37e94869fcfc765c014"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1205,
+      "sha256": "a25304729cd21cf5bcd5a11a5c1ff9f2ff5f76a6fc8eedf059e0ab7d976aadeb"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6930,
+      "sha256": "e8c533adbc8b3f4dde227b287fe86c41c183642acedd58fa826ccb92033d7992"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1930,
+      "sha256": "03a811f235a00a83663f9524999edfc98cc52db9348e775493f402afe7137d91"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 540,
+      "sha256": "37ef7959c00edbbf1c3fab6e29d3d107ebd1a92e8a02f8a2ed099d40225248e4"
+    }
+  ]
+}
