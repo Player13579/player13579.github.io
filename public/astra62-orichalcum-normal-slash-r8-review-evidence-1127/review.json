@@ -1,0 +1,73 @@
+{
+  "schema": "dva-e-quality-review/v1",
+  "groupId": "orichalcum-normal-slash-astra62",
+  "versionId": "orichalcum-normal-slash-sol61-r8",
+  "reviewStatus": "pending-review",
+  "qualityStatus": "unverified",
+  "qualityAccepted": false,
+  "qualityReviewOutcome": "scoped-sampled-emission-visible-material-lighting-unverified",
+  "qualityReviewScope": "Inspected H64 verify captures only. An orange-gold arc, bright blade face and yellow hand light are visible at actual size. Metal material recognition and nearby-light causality remain unverified; no visual deficiency or physical break has been established. Captures span 265–1046 ms without per-image GPU receipt binding, so brief flashes may be missed. R7 comparison was asynchronous; no quantitative improvement/regression or full-lifetime acceptance claim. Ordinary audio, formal production parent lifecycle and game integration remain unverified.",
+  "technicalScope": {
+    "route": [
+      "https://player13579.github.io/dva-owned-slash-test.html?verify=1",
+      "https://player13579.github.io/public/astra62-orichalcum-normal-slash/r8/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=orichalcum-normal-slash-sol61-r8&galleryStartupToken=0123456789abcdef0123456789abcdef&galleryAttemptEpoch=1&verify=1&height=64"
+    ],
+    "canvasCss": "980x620",
+    "dpr": 1,
+    "firstFrame": {
+      "completed": true,
+      "validationCompleted": true,
+      "submittedAgeMs": 133.4,
+      "uniformAgeMs": 133.1,
+      "passes": 1
+    },
+    "sampleTimestamps": 60,
+    "sampleSpacingMs": [
+      265,
+      1046
+    ],
+    "errors": [],
+    "shaderResponseSha256": "6b71ed6d57bb370a2296d014541c38e777b75cb87d8db89f04011e6fdb69230e",
+    "shaderMatchesFrozenPackage": true,
+    "perScreenshotGpuReceiptBinding": false
+  },
+  "observations": [
+    "Orange-gold arc visible at actual size.",
+    "Bright blade face and yellow hand light visible.",
+    "Metal material and nearby-light causal reflection remain unverified.",
+    "Normal swing with no target visible."
+  ],
+  "limitations": [
+    "Do not infer full-lifetime acceptance or failure from sampled screenshots.",
+    "R7 comparison is asynchronous and does not establish quantitative change.",
+    "Do not claim GGX visual success from source implementation.",
+    "Ordinary audio, production parent lifecycle and game integration were not tested."
+  ],
+  "evidence": [
+    {
+      "path": "events.json",
+      "bytes": 8517,
+      "sha256": "1de48f6cb7931833c16f413dc42251157ffa640dd8dd28cca94c5c2ea31cf05d"
+    },
+    {
+      "path": "frame-54.png",
+      "bytes": 6874,
+      "sha256": "ebc083b6aa0317e43d6413eee4fc0b21deb6fcb0219596667a214990b74e5a38"
+    },
+    {
+      "path": "frame-12.png",
+      "bytes": 6786,
+      "sha256": "f1564d53570dceb99cc616cdca9b89a477a5af52b8d788956c6f52defb43e138"
+    },
+    {
+      "path": "frame-19.png",
+      "bytes": 6740,
+      "sha256": "242c6b91ba11a3cdfe4c74d2177650504b922814a2d4379cf8488fa5d43bab8f"
+    },
+    {
+      "path": "frame-35.png",
+      "bytes": 6478,
+      "sha256": "4633f13ccd6a382f6827a8cfceba7853babb0b3d217b4e2bd72320703e238dcb"
+    }
+  ]
+}
