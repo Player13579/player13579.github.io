@@ -1,0 +1,73 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-fire-charge-receipt-r3",
+  "group": "dot-fire-charge-receipt",
+  "title": "ファイアのチャージ獲得",
+  "authorDisplayName": "dot",
+  "edition": 3,
+  "editionCap": 5,
+  "parentEdition": "dot-fire-charge-receipt-r2",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "instant-fire-acquired",
+    "sources": [
+      "vending",
+      "mystery-box"
+    ],
+    "visibility": "recipient-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2345,
+      "sha256": "96e5de075b7b40fedc308a97551ecc0ce9b2cc67f1f1f81c0cf405c89ad08726"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16777,
+      "sha256": "512c6f175487b4e1c822bfcd5538ca54e98b9f627a99dd92bedf2665e23232bf"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1687,
+      "sha256": "2e4fed8254947ddca1f1df708b941b6f20b7b771bd0dcb19852b84e100101ccb"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 7298,
+      "sha256": "0c7a8d85990a0b21913561fc49e445cf13e287f3a53326e9d125720c355dccf2"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1247,
+      "sha256": "d0203b737cce9dff69135e3dc0dfe9f9e17e37937bc29895a389e05e592f6e8e"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 934,
+      "sha256": "6668d4d247cfb04fd413c55e0962cda8f89d4ae79df28aba1703e0cfe7688ed2"
+    }
+  ]
+}
