@@ -1,0 +1,71 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-decelerate-application-r1",
+  "group": "dot-decelerate-application",
+  "title": "ディーセラレート付与",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "gravity-decelerate",
+    "variant": "",
+    "eventDurationMs": 8000,
+    "visualDurationMs": 1140,
+    "previewDisplayPolicy": "target-viewer-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2238,
+      "sha256": "031f024e73e9b45978383a5e8a7f518ee124e255d2005349830c29b83f90bdc8"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16794,
+      "sha256": "656dfc895c4b499038173167c3cc42ca3f3704dbff6f8885e999800eb4ae2904"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1301,
+      "sha256": "aa629416e6d9abc395c0178d939e21f5bacdf64f0cbc74468ad186b34d2fa873"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 7135,
+      "sha256": "72a936a0d9dd611c8a3280d19310bd0192c3b7e8eff147e0397e2eaef6e28b5d"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2106,
+      "sha256": "63ade68b85ff58680c91090955194440ff1c856a6d1955be7c550ae67bad4db8"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1051,
+      "sha256": "084f2fcfc4c2957d691a54d28f722028390de1e1835a5a142b057d2e19b2f012"
+    }
+  ]
+}
