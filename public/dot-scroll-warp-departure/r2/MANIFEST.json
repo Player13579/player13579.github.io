@@ -1,0 +1,73 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-scroll-warp-departure-r2",
+  "group": "dot-scroll-warp-departure",
+  "title": "テレポートマップスクロール出発",
+  "authorDisplayName": "dot",
+  "edition": 2,
+  "editionCap": 5,
+  "parentEdition": "dot-scroll-warp-departure-r1",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "action-warp",
+    "variant": "",
+    "phase": "departure",
+    "eventDurationMs": 0,
+    "visualDurationMs": 920,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2375,
+      "sha256": "c0230bd29e41ffda50b604f4b0adcbd084dc2bc6a95947ffc22e0053d5673d1a"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16802,
+      "sha256": "961ae3b5d8347c92cc8f8a1b3994f7e554e748ac25b4f26d03cb3bbda2907104"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 971,
+      "sha256": "56cf5900deeaafa8a9406eb933d7a1edfc91720bd4dc8ef8b2f9f610a38ace19"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 5040,
+      "sha256": "8e58130b108d6d11695127f8ce5a78843c4a972b692c8e43e6b609399fd1cdb9"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1822,
+      "sha256": "8669c975e31191c0ba3f8f8fc8265597c4d0d9f2a93cd81c97fccaa11efaf49b"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 561,
+      "sha256": "84b2f7525f4c23774f70a775e698f8c0b6b65c9d4acd501d5d4209a400d70ac2"
+    }
+  ]
+}
