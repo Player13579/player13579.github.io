@@ -14295,3 +14295,48 @@ body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #mat
     --dva-live-panel-bottom-clearance: max(var(--dva-stick, 140px), calc(var(--dva-live-panel-quick-height) + 64px));
   }
 }
+
+/* Compact icon-only buttons are ambiguous in the match panel, particularly
+   when a platform cannot render a symbol. Keep their field markup and input
+   handlers, and paint short Japanese labels only in the unified toolbar. */
+body.game-open.dva-full-canvas.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden]))
+  #matchPanelToolbar > button[data-match-panel-label]:not([hidden]) {
+  box-sizing: border-box;
+  width: auto !important;
+  min-width: 52px !important;
+  max-width: 100%;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 8px !important;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+  color: #153441 !important;
+  font-size: 0 !important;
+  line-height: 1;
+  text-indent: 0;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden]))
+  #matchPanelToolbar > button[data-match-panel-label]:not([hidden]) > :is(.control-icon, .tablet-launch-glyph, .tablet-launch-label) {
+  display: none;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden]))
+  #matchPanelToolbar > button[data-match-panel-label]:not([hidden])::after {
+  content: attr(data-match-panel-label);
+  display: inline-block;
+  position: static;
+  inset: auto;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1.25;
+  opacity: 1;
+  transform: none;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active
+  #matchPanelToolbar > button[data-match-panel-label]:is(:disabled,[aria-disabled="true"]):not([hidden]) {
+  color: #415a63 !important;
+  border-style: dashed;
+}
