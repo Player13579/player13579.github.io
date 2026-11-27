@@ -50,7 +50,7 @@ function stop(reason,{clear=false}={}){
 function fail(reason){
   if(state==='disposed'||state==='error')return;
   failure=String(reason);state='error';stop('error',{clear:true});device?.destroy();device=null;
-  clearTimeout(timer);canvas.dataset.state='error';phase(startupStage,{error:{code:'DOT_EC100_RESOURCE_RECEIPT_WEBGPU_FAILURE',message:failure}},'error');publishStatus(failure,true);
+  clearTimeout(timer);canvas.dataset.state='error';phase(startupStage,{error:{code:'DOT_DECELERATE_WEBGPU_FAILURE',message:failure}},'error');publishStatus(failure,true);
 }
 function begunSound(ev){
   const ctx=audio.ctx;if(test||!audio.enabled||!healthy()||ctx?.state!=='running'||sourcePool.has(ev.id))return false;
