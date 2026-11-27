@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>投げた解毒剤の着地 / dot R3</title>
+<style>
+:root{color-scheme:dark;font:14px system-ui,sans-serif;background:#0d141b;color:#edf2f7}
+*{box-sizing:border-box}html,body,main{width:100%;height:100%;margin:0;overflow:hidden}
+main{position:relative;isolation:isolate}
+canvas{width:100%;height:100%;display:block}
+.deck{position:absolute;inset:18px 20px auto;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;pointer-events:none}
+.eyebrow{display:block;color:#b1c3ce;font-size:10px;letter-spacing:.18em;margin:0 0 4px;font-weight:700}
+h1{font-size:clamp(16px,3vw,22px);line-height:1.1;margin:0;letter-spacing:.02em;text-shadow:0 1px 6px #000}
+.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:end;pointer-events:auto}
+button{border:1px solid #95a8b23d;color:inherit;background:#101922eb;border-radius:6px;padding:8px 10px;font:inherit;min-height:38px}
+#status{position:absolute;right:18px;bottom:14px;margin:0;color:#afc2d1;font-size:11px;pointer-events:none;background:#101922dd;padding:4px 8px;border-radius:5px}
+#ruler{position:absolute;bottom:5px;left:5px;white-space:pre;color:#fff;background:#111b;padding:3px 5px;font:12px ui-monospace,monospace;pointer-events:none}
+#status[data-error="true"]{z-index:3;right:auto;left:50%;top:50%;bottom:auto;translate:-50% -50%;font-size:14px;padding:12px 16px;color:#ffd8be;max-width:80%}
+.embedded .deck,.embedded #status:not([data-error="true"]){display:none}
+@media(max-width:520px){.deck{inset:9px 8px auto}.actions{width:52%}button{padding:7px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<main id="stage">
+<canvas id="effect" aria-label="投げた解毒剤の着地。着地点から縁と厚みの異なる液膜が地面に短く広がり、反射が途切れて消える着地演出。"></canvas>
+<header class="deck"><div><span class="eyebrow">WEBGPU E　/　dot R3</span><h1>投げた解毒剤の着地</h1></div><div class="actions"><button type="button" id="replay">再生</button><button type="button" id="audio">音声を有効にする</button></div></header>
+<p id="status" role="status">WebGPU 起動中</p>
+<output id="ruler" hidden></output>
+</main>
+<script type="module" src="./host.mjs"></script>
+</html>
+
