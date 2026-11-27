@@ -1,0 +1,68 @@
+{
+  "schema": "dva-e-quality-review/v1",
+  "groupId": "orichalcum-normal-slash-astra62",
+  "versionId": "orichalcum-normal-slash-sol61-r7",
+  "reviewStatus": "unverified",
+  "qualityStatus": "unverified",
+  "qualityAccepted": false,
+  "qualityReviewOutcome": "scoped-sampled-emission-visible-material-lighting-unverified",
+  "qualityReviewScope": "Inspected H64 verify captures only. A sharp orange arc, bright blade faces and yellow hand light are visible at actual size. Metal material and nearby-light causality remain unverified. Captures were sampled 267–748 ms apart and are not bound to exact GPU receipts; brief flashes may be missed. R6 comparison was asynchronous and does not establish quantitative improvement or regression. Whole lifetime, flicker, ordinary audio, formal production parent replay and game integration remain unverified.",
+  "technicalScope": {
+    "route": "https://player13579.github.io/dva-owned-slash-test.html?verify=1 with child https://player13579.github.io/public/astra62-orichalcum-normal-slash/r7/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=orichalcum-normal-slash-sol61-r7&galleryStartupToken=0123456789abcdef0123456789abcdef&galleryAttemptEpoch=1&verify=1&height=64",
+    "canvasCss": "980x620",
+    "dpr": 1,
+    "firstFrame": {
+      "completed": true,
+      "validationCompleted": true,
+      "uniformAgeMs": 115.89999997615814,
+      "passes": 1
+    },
+    "sampleTimestamps": 60,
+    "sampleSpacingMs": [
+      267,
+      748
+    ],
+    "errors": [],
+    "shaderResponseSha256": "3dc11e95b47f0a1465da7924e24874976ab30bb7170b9a133efdcfe077480852",
+    "shaderMatchesFrozenPackage": true,
+    "perScreenshotGpuReceiptBinding": false
+  },
+  "observations": [
+    "Sharp orange arc visible.",
+    "Bright blade face and yellow hand light visible.",
+    "Metal material and nearby-light causality are not established by inspected images.",
+    "Normal swing with no target is visible."
+  ],
+  "limitations": [
+    "Do not infer full-lifetime acceptance or failure from sampled screenshots.",
+    "R6 comparison is asynchronous; no quantitative delta claim.",
+    "Ordinary audio, formal production parent replay, and game integration were not tested."
+  ],
+  "evidence": [
+    {
+      "path": "events.json",
+      "bytes": 8517,
+      "sha256": "e60561a801838e5df9b561f050c5c8184c0a2a701c433382dc51d75a03348243"
+    },
+    {
+      "path": "frame-20.png",
+      "bytes": 6883,
+      "sha256": "27ea996f9ab21bbd3f58e1164790b5383191e905f0d29b34c31cd45cd003cc0a"
+    },
+    {
+      "path": "frame-41.png",
+      "bytes": 6627,
+      "sha256": "eca3030ebe7b1c523f2f15a4162fbb9159a695d4e60f21da5780d2ae42937410"
+    },
+    {
+      "path": "frame-53.png",
+      "bytes": 6517,
+      "sha256": "738808eeef97ecffa881607f2ced9d06c6b7d50e94f812d80f5ce7398a1baa52"
+    },
+    {
+      "path": "frame-29.png",
+      "bytes": 6505,
+      "sha256": "197154acdf003a2639c024f82edb1420be85f3e787c2de344e3e7797204a3c3c"
+    }
+  ]
+}

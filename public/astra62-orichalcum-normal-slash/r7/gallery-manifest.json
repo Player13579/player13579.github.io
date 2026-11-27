@@ -1,0 +1,180 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "versionId": "orichalcum-normal-slash-sol61-r7",
+  "creativeEdition": 7,
+  "creativeAuthor": "GPT-6.1-Sol",
+  "technicalAuthors": [
+    "GPT-6.1-Sol"
+  ],
+  "reusedAdapter": {
+    "author": "GPT-6.1-Sol",
+    "blob": "71e36bd306c11320064c54d112eae4024af6a0e0",
+    "byteUnchanged": true
+  },
+  "sourceR1": {
+    "versionId": "orichalcum-normal-slash-astra62-r1",
+    "publicCommit": "fce863cbcfc65a45ae8deffa1ea1d634faeaef0f",
+    "originalRuntime": "10fcd97a8ae38ee68055ffacae4342053ab2f297",
+    "originalManifest": "../r1/publication-manifest.json",
+    "creativeAuthor": "GPT-6.2-Astra",
+    "technicalAuthors": [
+      "GPT-6-Luna",
+      "GPT-6.1-Sol"
+    ]
+  },
+  "entry": "gallery.html",
+  "page": "gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=orichalcum-normal-slash-sol61-r7",
+  "standalone": "index.html",
+  "protocol": "dva-gallery-startup/v1",
+  "automaticIframe": true,
+  "manualReview": false,
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "gameIntegration": "not-connected",
+  "cpu": "PASS: gate accepts only current committed self-owned normal enhance-0 events, rejects duplicate/invalid/session/contact causes; deterministic finite PCM and sample-rate boundaries pass; all JavaScript module syntax checks pass; package closure/seal pins pass; WGSL compilation, browser/native GPU, actual-size quality, audio listening, full lifetime and game integration remain not_run.",
+  "wgslValidation": "not_run",
+  "browserIframe": "not_run",
+  "nativeGPU": "not_run",
+  "normalAudioListening": "not_run",
+  "actualSize": "not_run",
+  "fullLifetime": "not_run",
+  "observedLightingCausality": "not_run",
+  "inlineFixture": {
+    "mode": "right",
+    "facing": 1,
+    "visible": true,
+    "meaning": "current committed self-owned normal enhance-0 empty swing; fixed throughout each cause, no automatic alternation"
+  },
+  "preservedTimingMs": {
+    "anticipation": [
+      12,
+      165
+    ],
+    "swing": [
+      165,
+      443
+    ],
+    "trail": [
+      172,
+      468
+    ],
+    "recovery": [
+      552,
+      900
+    ],
+    "end": 980
+  },
+  "interCauseRestMs": 500,
+  "designTitle": "刃走りの金属光 ― オリハルコン通常斬り R7",
+  "design": "R7 keeps one physical empty swing and replaces the broad orange fan read with a brighter, narrow tapered blade-tip trace, clearer pale/dark metal faces, and a bounded traveling reflection driven by the existing sword-mounted light. It preserves geometry, pose, timing, the two source facets, roof-source integration, hand illumination, controls, SFX and event semantics; no contact, target, guard, enhancement, GBO or EC wave is depicted.",
+  "emissionContract": "Blade-tip trace and metallic blade-face emission remain tied to the two existing sword-mounted facets and existing swing envelope. Reflected response is bounded to the blade, sword hand, and immediately adjacent material; no extra emitter, pass, bloom, texture, or whole-person glow.",
+  "files": [
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r7/effect.wgsl",
+      "bytes": 10325,
+      "sha256": "3dc11e95b47f0a1465da7924e24874976ab30bb7170b9a133efdcfe077480852"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r7/gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r7/gallery.html",
+      "bytes": 1420,
+      "sha256": "c7ac8222270eeaabcced70a9f3325e1d4cbbf69a7bc30c14c7312772dfda8fdd"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r7/index.html",
+      "bytes": 1960,
+      "sha256": "bc697ad215e3d6987544969a2910b5acf0903606b76247f83ffcb596e8060681"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r7/preview.mjs",
+      "bytes": 7857,
+      "sha256": "a882f7a951e8e2acbff3eeb9c1ed507162de53ec4086df5389f35e80ab66c28c"
+    },
+    {
+      "path": "public/astra62-orichalcum-normal-slash/r7/slash.mjs",
+      "bytes": 1517,
+      "sha256": "ea54c8281ce3410c7c4008f5650b7c628bac0f04533ee6c452c0e40579dd2730"
+    }
+  ],
+  "sourceR2": {
+    "versionId": "orichalcum-normal-slash-astra62-r2",
+    "publicCommit": "fddf9e44b0408b79003cfbbdad6439893834dd71",
+    "manifest": "../r2/gallery-manifest.json",
+    "creativeAuthor": "GPT-6.2-Astra",
+    "technicalAuthors": [
+      "GPT-6-Luna"
+    ]
+  },
+  "observationPlan": [
+    "Use the public R7 parent in verify mode at default H64 size. Record CSS/buffer dimensions and device scale. Observe an ordinary enhance-0 empty swing at normal speed; do not infer absent short flashes from 0.5-second snapshots.",
+    "At same display size, inspect the physical blade outline, blade-tip trace, metal face contrast and near hand response separately. Confirm the trail follows the blade tip and does not read as a broad fan or detached projectile.",
+    "Compare the established source-off / reduced controls at matching event age and facing. Check that source emission and nearby reflection turn off together while figure, blade geometry, trigger, timing and SFX remain unchanged.",
+    "Verify idle, visible-off, both facings, normal empty swing, recovery and end-of-lifetime; preserve R6 fixture rest and ensure no residual glow after 980 ms. This is a test plan, not a quality acceptance claim."
+  ],
+  "minimumEmissionAcceptance": "At actual H64 display size, the blade and its short trace must read as luminous metal, with a visible but local reflection on adjacent sword/hand material. A code-level intensity increase or enlarged crop alone is not acceptance.",
+  "creativeApi": {
+    "id": "resp_05da5b42e1fe7175016b099185389087d0abcd091dd4c3015c",
+    "model": "gpt-6.1-sol",
+    "reasoning": "high"
+  },
+  "sourceR3": {
+    "versionId": "orichalcum-normal-slash-astra62-r3",
+    "publicCommit": "9528afb3725a28679c0e5cda5ad27383858079c1",
+    "manifest": "../r3/gallery-manifest.json"
+  },
+  "sourceR4": {
+    "versionId": "orichalcum-normal-slash-astra62-r4",
+    "publicCommit": "7a8911a2000be0fffe8cb1da52ca9a9caecda408",
+    "manifest": "../r4/gallery-manifest.json",
+    "privateCreativeCommit": "7de7ef4ecbfe383b3940236efa19792367411f88"
+  },
+  "title": "オリハルコン・ソードの通常斬撃 R7",
+  "creativeEditionLimit": 10,
+  "historicalCreativeEditionLimit": 5,
+  "additionalCreativeEditionLimit": 5,
+  "sourceR5": {
+    "versionId": "orichalcum-normal-slash-astra62-r5",
+    "publicCommit": "07fb0c65182cdcce63849aed1d647c9edf6a2284",
+    "publicManifestSha256": "57eeeb33ca915c4234e2d0ddc64a0bbd3b75c46baecff520ea5093aae284d925",
+    "publicEffectSha256": "70819548c0a6422db7c4759f4cb354473ba833da55155f0141753d1f910b0302",
+    "creativeAuthor": "GPT-6.2-Astra",
+    "technicalAuthors": [
+      "GPT-6.2-Astra"
+    ]
+  },
+  "creativeGrant": {
+    "limit": 5,
+    "editionNumber": 2,
+    "consumedAfterR7": 2,
+    "remainingAfterR7": 3,
+    "supersedesHistoricalZeroRemainingForAdditionalGrant": true
+  },
+  "remainingCreativeEditions": 3,
+  "sourceUrl": "public/astra62-orichalcum-normal-slash/r7/index.html",
+  "source": {
+    "provider": "OpenAI Responses API",
+    "responseId": "resp_05da5b42e1fe7175016b099185389087d0abcd091dd4c3015c",
+    "requestSha256": "31dac5a64be59876793bb72bbcf77abcba0b4b1afec4090bdad1c1ab8334f13a",
+    "outputSha256": "71a54d1f5054c15af542d45bca40274115e1dec47b7d2cb6d1ec86e9339a2e25",
+    "parentVersionId": "orichalcum-normal-slash-sol61-r6",
+    "parentManifestSha256": "730c5326c866eb7d0616cc8c009a6b5ebc3bd91a85d3e829e05728e3c142a609",
+    "parentShaderSha256": "7f6153af74401bcd725f44cf1894dc2cb6aa7470f167baf2940173fb921c45ee",
+    "apiRequestBasePublicHead": "670321d42cfabda1585d1a3ca3267c7d52ce25ca",
+    "packageBasePublicHead": "670321d42cfabda1585d1a3ca3267c7d52ce25ca"
+  },
+  "sourceR6": {
+    "versionId": "orichalcum-normal-slash-sol61-r6",
+    "publicCommit": "2320d4a52e7c20e316745b90e177d8598fce47b0",
+    "publicManifestSha256": "730c5326c866eb7d0616cc8c009a6b5ebc3bd91a85d3e829e05728e3c142a609",
+    "publicEffectSha256": "7f6153af74401bcd725f44cf1894dc2cb6aa7470f167baf2940173fb921c45ee",
+    "creativeAuthor": "GPT-6.1-Sol",
+    "technicalAuthors": [
+      "GPT-6.1-Sol"
+    ]
+  }
+}
