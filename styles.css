@@ -14296,51 +14296,6 @@ body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #mat
   }
 }
 
-/* Compact icon-only buttons are ambiguous in the match panel, particularly
-   when a platform cannot render a symbol. Keep their field markup and input
-   handlers, and paint short Japanese labels only in the unified toolbar. */
-body.game-open.dva-full-canvas.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden]))
-  #matchPanelToolbar > button[data-match-panel-label]:not([hidden]) {
-  box-sizing: border-box;
-  width: auto !important;
-  min-width: 52px !important;
-  max-width: 100%;
-  height: 38px !important;
-  min-height: 38px !important;
-  padding: 0 8px !important;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  white-space: nowrap;
-  color: #153441 !important;
-  font-size: 0 !important;
-  line-height: 1;
-  text-indent: 0;
-}
-body.game-open.dva-full-canvas.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden]))
-  #matchPanelToolbar > button[data-match-panel-label]:not([hidden]) > :is(.control-icon, .tablet-launch-glyph, .tablet-launch-label) {
-  display: none;
-}
-body.game-open.dva-full-canvas.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden]))
-  #matchPanelToolbar > button[data-match-panel-label]:not([hidden])::after {
-  content: attr(data-match-panel-label);
-  display: inline-block;
-  position: static;
-  inset: auto;
-  color: inherit;
-  font-size: 12px;
-  font-weight: 750;
-  letter-spacing: 0;
-  line-height: 1.25;
-  opacity: 1;
-  transform: none;
-}
-body.game-open.dva-full-canvas.dva-unified-panel-active
-  #matchPanelToolbar > button[data-match-panel-label]:is(:disabled,[aria-disabled="true"]):not([hidden]) {
-  color: #415a63 !important;
-  border-style: dashed;
-}
-
 /* Canvas status strip, not a launcher. The mark reserves only these two
    small regions for following while the rest of the field can still target. */
 #clairvoyanceFieldFollow:not([hidden]) {
@@ -14374,4 +14329,89 @@ body.game-open.dva-full-canvas.dva-unified-panel-active
 }
 body:has(:is(#expandedMapOverlay,#keybindOverlay,#fieldFeedPanel,#killCameraOverlay,#vendingFullMount):not([hidden])) #clairvoyanceFieldFollow {
   visibility: hidden;
+}
+
+/* Reuse the existing toolbar buttons and their accessible names. Preserve
+   native marks; draw the three platform-dependent symbols as vector masks. */
+body.game-open.dva-full-canvas.dva-unified-panel-active
+  #matchPanelToolbar > :is(#fullscreenButton, #gameMuteButton, #keybindButton):not([hidden]) {
+  position: relative !important;
+  font-size: 0 !important;
+  color: #153441 !important;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active
+  #matchPanelToolbar > :is(#fullscreenButton, #gameMuteButton, #keybindButton):not([hidden])::after {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  background-color: currentColor;
+  -webkit-mask: var(--dva-panel-symbol) center / contain no-repeat;
+  mask: var(--dva-panel-symbol) center / contain no-repeat;
+  pointer-events: none;
+}
+#matchPanelToolbar > #fullscreenButton {
+  --dva-panel-symbol: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 4H4v5m11-5h5v5m0 6v5h-5m-6 0H4v-5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+#matchPanelToolbar > #keybindButton {
+  --dva-panel-symbol: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 6h18v12H3zM6 9h1m3 0h1m3 0h1m3 0h1M6 12h1m3 0h1m3 0h1m3 0h1M8 15h8' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+#matchPanelToolbar > #gameMuteButton {
+  --dva-panel-symbol: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 18V5l11-2v12M9 15l11-2' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3Cellipse cx='6.5' cy='18.2' rx='3.2' ry='2.5'/%3E%3Cellipse cx='17.5' cy='15.2' rx='3.2' ry='2.5'/%3E%3C/svg%3E");
+}
+#matchPanelToolbar > #gameMuteButton.is-muted {
+  --dva-panel-symbol: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 18V5l11-2v12M9 15l11-2M3 3l18 18' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3Cellipse cx='6.5' cy='18.2' rx='3.2' ry='2.5'/%3E%3Cellipse cx='17.5' cy='15.2' rx='3.2' ry='2.5'/%3E%3C/svg%3E");
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active
+  #matchPanelToolbar > button:not([hidden]) > .control-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: auto;
+  flex: none;
+  stroke: #153441;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active
+  #matchPanelToolbar > #tabletButton:not([hidden]) > .tablet-launch-glyph {
+  display: block;
+  box-sizing: border-box;
+  width: 17px;
+  height: 22px;
+  color: #153441;
+  box-shadow: none;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active
+  #matchPanelToolbar > #tabletButton:not([hidden]) > .tablet-launch-glyph::before {
+  inset: 3px 2px 5px;
+  border-color: currentColor;
+}
+
+/* In touch layouts the tools sit below the sheet, not under the browser
+   chrome, with the same reserved space below them for gameplay controls. */
+@media (pointer: coarse), (any-pointer: coarse), (max-width: 600px), (max-height: 500px) and (orientation: landscape) {
+  body.game-open.dva-full-canvas #matchUiToggle:not([hidden]),
+  body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchUiToggle:not([hidden]) {
+    inset: auto var(--dva-ui-r) calc(var(--dva-ui-b) + 14px) auto !important;
+  }
+  body.game-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader {
+    order: 2;
+    min-height: 0;
+    padding: 5px 0 0;
+    margin-block: 4px calc(var(--dva-live-panel-bottom-clearance, 62px) + 8px);
+    border-block-start: 1px solid rgb(52 94 111 / .35);
+    border-block-end: 0;
+  }
+  body.game-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader #matchPanelToolbar {
+    padding-inline-end: 0;
+  }
+  body.game-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelContentSlot:not([hidden]) {
+    order: 1;
+    margin-block-start: max(38px, calc(env(safe-area-inset-top, 0px) + 20px));
+    margin-block-end: 0;
+  }
+  #clairvoyanceFieldFollow:not([hidden]) {
+    inset-block-start: max(98px, min(27dvh, 185px), calc(env(safe-area-inset-top, 0px) + 60px));
+  }
 }

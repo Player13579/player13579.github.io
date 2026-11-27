@@ -20,7 +20,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
   document.documentElement.classList.add("dva-ipad-ui-comfort");
 }
     </script>
-  <link rel="stylesheet" href="styles.css?v=19809644856a6663e7d95ee2cf5f6b5ce4cd3205">
+  <link rel="stylesheet" href="styles.css?v=97841a29924c89bb1441b36e23971bfebdfa1100">
   </head>
   <body>
     <section id="startScreen" class="start-screen" data-ui-region="home-screen" aria-label="ホーム画面">
@@ -242,8 +242,8 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
       <section class="game-area" data-ui-region="field-stage" aria-label="フィールドステージ">
         <header class="topbar">
           <div class="topbar-actions">
-            <button id="fullscreenButton" data-match-panel-label="全画面" class="title-home-button fullscreen-button" data-hotkey="Y" type="button" title="全画面表示を切り替える" aria-label="全画面表示を切り替える">⛶</button>
-            <button id="titleHomeButton" data-match-panel-label="タイトルへ" class="title-home-button semantic-mark-button" type="button" title="タイトルへ戻る" aria-label="タイトルへ戻る"><svg class="control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3.5h10v17H5zM15 12h6M18.5 8.5 22 12l-3.5 3.5M9 12h.01"/></svg></button>
+            <button id="fullscreenButton" class="title-home-button fullscreen-button" data-hotkey="Y" type="button" title="全画面表示を切り替える" aria-label="全画面表示を切り替える">⛶</button>
+            <button id="titleHomeButton" class="title-home-button semantic-mark-button" type="button" title="タイトルへ戻る" aria-label="タイトルへ戻る"><svg class="control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3.5h10v17H5zM15 12h6M18.5 8.5 22 12l-3.5 3.5M9 12h.01"/></svg></button>
             <button id="debugForceEndButton" class="debug-force-end" type="button" title="デバッグ用の強制終了" hidden>強制終了</button>
           </div>
         </header>
@@ -647,19 +647,19 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
 
     <button id="matchUiToggle" type="button" aria-keyshortcuts="F2" title="UIを開閉（F2）" aria-expanded="false" aria-controls="sidePanel" hidden>UIを開く</button>
 
-    <button id="leaveRoomButton" data-match-panel-label="タイトルへ" class="leave-room-button leave-room-launch-button" data-hotkey="Backspace" type="button"
+    <button id="leaveRoomButton" class="leave-room-button leave-room-launch-button" data-hotkey="Backspace" type="button"
       title="タイトルへ戻る" aria-label="タイトルへ戻る" hidden><svg class="control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3.5h10v17H5zM15 12h6M18.5 8.5 22 12l-3.5 3.5M9 12h.01"/></svg></button>
 
-    <button id="operatorReselectButton" data-match-panel-label="職業選択" class="operator-reselect-button semantic-mark-button" type="button"
+    <button id="operatorReselectButton" class="operator-reselect-button semantic-mark-button" type="button"
       title="オペレーター選択へ戻る" aria-label="オペレーター選択へ戻る" hidden><svg class="control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM5 21c.7-4 3-6 7-6 2 0 3.7.5 4.9 1.5M19 14v6M16.5 17.5 19 20l2.5-2.5"/></svg></button>
 
-    <button id="gameMuteButton" data-match-panel-label="音声" class="tablet-launch-button audio-launch-button" type="button" data-hotkey="\\"
+    <button id="gameMuteButton" class="tablet-launch-button audio-launch-button" type="button" data-hotkey="\\"
       title="ゲーム音をオフ" aria-label="ゲーム音をオフ">♪</button>
 
-    <button id="gameTacticsButton" data-match-panel-label="戦術" class="game-tactics-button" type="button" data-hotkey="I"
+    <button id="gameTacticsButton" class="game-tactics-button" type="button" data-hotkey="I"
       title="戦術いろはを開く" aria-label="戦術いろはを開く"><svg class="control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 5.5c3.2-1.1 5.9-.7 8.5 1.1v12c-2.6-1.8-5.3-2.2-8.5-1.1zM20.5 5.5c-3.2-1.1-5.9-.7-8.5 1.1v12c2.6-1.8 5.3-2.2 8.5-1.1z"/></svg></button>
 
-    <button id="tabletButton" data-match-panel-label="タブレット" class="tablet-launch-button" type="button" data-hotkey="Tab"
+    <button id="tabletButton" class="tablet-launch-button" type="button" data-hotkey="Tab"
       title="タブレットモード" aria-label="タブレットモードを切り替える"
       aria-controls="tabletPanel" aria-expanded="false" disabled>
       <span class="tablet-launch-glyph" aria-hidden="true"></span>
@@ -671,7 +671,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
     <div id="sensoryOverlay" class="sensory-overlay" hidden aria-live="polite">
       <strong id="sensoryOverlayText"></strong>
     </div>
-    <button id="keybindButton" data-match-panel-label="キー設定" class="keybind-button" type="button" data-hotkey="@" title="キー割り当て表を開く (@)" aria-label="キー割り当て表を開く。アットマークキー" aria-controls="keybindOverlay" aria-expanded="false">⌨</button>
+    <button id="keybindButton" class="keybind-button" type="button" data-hotkey="@" title="キー割り当て表を開く (@)" aria-label="キー割り当て表を開く。アットマークキー" aria-controls="keybindOverlay" aria-expanded="false">⌨</button>
     <section id="keybindOverlay" class="keybind-overlay" role="dialog" aria-modal="true" aria-labelledby="keybindTitle" hidden>
       <div class="keybind-dialog">
         <header><h2 id="keybindTitle">キー割り当て</h2><button id="keybindCloseButton" type="button" title="閉じる" aria-label="キー割り当て表を閉じる">×</button></header>
