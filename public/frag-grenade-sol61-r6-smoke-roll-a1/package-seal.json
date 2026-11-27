@@ -1,0 +1,70 @@
+{
+  "schema": "dva-frag-r6-seal/v1",
+  "versionId": "frag-grenade-sol61-r6",
+  "manifestSha256": "48d9ee914560a13a864fe5b1e963a911be601d9f622225e3e51a7bd0c6e79a3b",
+  "sourceLineage": {
+    "versionId": "frag-grenade-sol61-r6",
+    "parentVersionId": "frag-grenade-sol61-r5",
+    "parentPublicEntry": "public/frag-grenade-sol61-r5-smoke-volume-a1/index.html",
+    "parentManifestSha256": "164c7784feba06fdcfbfdaabdd53a9f53ca347e4268fb29fd127897805fd93af",
+    "parentSealSha256": "c7fe332ad0458715f3d184fe9df729780ec88ad2e8674dc88c73d8a6a0ada7f7"
+  },
+  "creativeAuthor": "GPT-6.1-Sol",
+  "creativeIncrement": 1,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1253,
+      "sha256": "98730447a18bfc9c666963c60c859aa4a7df42c0e10b5ad7206d4949250134dd"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9682,
+      "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 9850,
+      "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 4530,
+      "sha256": "6e2f379178eb72c0b7da959153f6790ac0ebb532b2c5b649e661a1455e250484"
+    },
+    {
+      "path": "source/shaders.mjs",
+      "bytes": 14914,
+      "sha256": "074c25838452c37dd58d5ad82a13c3049c91a882044b31232c9d6ca7e7f61f3b"
+    },
+    {
+      "path": "source/sound.mjs",
+      "bytes": 4071,
+      "sha256": "9add2914db7d6cf0a2ce2b22800f772446bfcde9fda012d1264d22ff25b46413"
+    }
+  ],
+  "technicalScope": {
+    "sourceSyntax": "pass-node-check-all-runtime-modules",
+    "cpuContract": "pass-node-r6-package-invariants",
+    "actualWGSLCompilation": "not_run",
+    "nativeReplay": "not_run",
+    "parentGalleryReplay": "not_run",
+    "quality": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "authorization": {
+    "edition": "R6",
+    "allowance": "third of up to five additional improvement editions authorized for each unadopted E group",
+    "additionalAllowed": 5,
+    "additionalConsumed": 3,
+    "additionalRemaining": 2,
+    "historicalPreR1Count": "unknown",
+    "historyReset": false,
+    "adoptionAtBase": "unknown/unadopted"
+  },
+  "apiDesign": {
+    "model": "gpt-6.1-sol",
+    "responseId": "resp_0936a3fe23b3a89d016b08fac2f21c87d0a98cf1ffbfab53ca",
+    "outputSha256": "c7b59a714555afec380ce3bdc1971171e3d84c597b7a5ac9d56b2c8ba27b08be"
+  }
+}

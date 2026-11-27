@@ -1,0 +1,58 @@
+{
+  "schema": "dva-frag-r6-limited-gpu-review/v1",
+  "versionId": "frag-grenade-sol61-r6",
+  "groupId": "gunner-frag-grenade-sol61",
+  "packageManifestSha256": "48d9ee914560a13a864fe5b1e963a911be601d9f622225e3e51a7bd0c6e79a3b",
+  "packageSealSha256": "deccde13a0fd56308a4cd3e2edb7eb633c59086d2cb23f733565bf29b5e6af19",
+  "shaderSha256": "074c25838452c37dd58d5ad82a13c3049c91a882044b31232c9d6ca7e7f61f3b",
+  "eventsSha256": "4e4eaa5a2589afcf4be712ad027286b0563b8dcee330120c8ad94742824b5501",
+  "scope": {
+    "mode": "private standalone WebGPU verify mode (audio muted)",
+    "actorHeight": 64,
+    "scale": 1,
+    "fixedAgesMs": [
+      0,
+      55,
+      150,
+      300,
+      500,
+      800,
+      950
+    ],
+    "naturalSamples": 32,
+    "passesPerFrame": 3,
+    "rendererErrors": 0,
+    "pendingAtCapture": 0,
+    "normalAudioListening": "not_run",
+    "publicParentGalleryReplay": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "observations": {
+    "vsR5": "Internal smoke layers are more visible.",
+    "quality": "not-accepted",
+    "finding": "Regular bands/folds remain prominent; natural volumetric irregularity and turbulence are not achieved.",
+    "limitation": "Private standalone comparison only; does not establish public parent-gallery replay, normal audio listening, Safari/iPad, or game integration."
+  },
+  "evidenceFiles": [
+    {
+      "path": "age-300.png",
+      "sha256": "c35df1c5c40e34a3ec81e104180a759ba3e8def7803532fb09d103eea2df60a2",
+      "bytes": 18743
+    },
+    {
+      "path": "age-500.png",
+      "sha256": "ac76fa1b38a9b061e4e2fe72b528595fa517091e9efa0f4e13a42ca060931ac1",
+      "bytes": 19267
+    },
+    {
+      "path": "age-800.png",
+      "sha256": "b66eace178fddef7a484c347ff6b7c2f0ad3f3c9217b298ebdbc6c9a05cbc2d4",
+      "bytes": 20281
+    },
+    {
+      "path": "play-02.png",
+      "sha256": "2eec689db8a31196d20c631e0b5af6a27e2d8fc56070361d9c80707784a601f2",
+      "bytes": 19558
+    }
+  ]
+}
