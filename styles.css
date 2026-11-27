@@ -14539,3 +14539,10 @@ body.game-open #markerExplanationDetail.pointer-detail-active :is(strong,p) {
     text-shadow: none;
   }
 }
+
+/* The unified battle panel does not expose a tablet-mode switch.
+   Preserve the existing control outside this panel and its Tab/auto paths. */
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active
+  #matchPanelToolbar > #tabletButton {
+  display: none !important;
+}
