@@ -1,0 +1,67 @@
+{
+  "effectSha256": "f98fdb0d4902e55d111ed1912e5ff5b9ec32985d3bd2cb113d702e96162e091f",
+  "observation": "In the inspected R8 captures, the figure remains near baseline color; faint side paths and a narrow chest-local response do not make broad subject emission readable at normal display size.",
+  "qualityAccepted": false,
+  "comparison": "R7 frame 19 shows whole-body yellow-white light. Phase, variant, and capture times are not synchronized; no quantitative regression, exact-age pixel attribution, or causal claim is made.",
+  "packageSealSha256": "b1b69a876cfcfacb8ebaf983e66292b4b112a1551c36d25f0debabdb14bf63f0",
+  "versionId": "fighter-energy-charge-cleanroom-sol61-r8",
+  "outcome": "scoped-sampled-emission-insufficient",
+  "qualityReviewStatus": "needs-improvement",
+  "evidenceFiles": [
+    {
+      "path": "r7-events.json",
+      "bytes": 47652,
+      "sha256": "6c9b7aa169f155c80d9065744753a12ded01af3126bfd69bf778b5cf82985489"
+    },
+    {
+      "path": "r7-frame-19.png",
+      "bytes": 8885,
+      "sha256": "a3e730d7d8f3e3004fc594d5b97b80716c1823688516ef79a719d3b6e4c0a3bf"
+    },
+    {
+      "path": "r8-events.json",
+      "bytes": 50671,
+      "sha256": "e0ad57a963bad7e584e471372f6dd166a739cac0ff795b455da7ce47c3ebee78"
+    },
+    {
+      "path": "r8-frame-10.png",
+      "bytes": 10584,
+      "sha256": "4ab99fb2b03f40f5dcf3c995467b1ff2426b06a6bd20d2f6ea44580a9d2eb71c"
+    },
+    {
+      "path": "r8-frame-13.png",
+      "bytes": 10710,
+      "sha256": "459eb9c63c708875220e51181c48960eff592c246a314a3a6b9f5f1388c8a862"
+    },
+    {
+      "path": "r8-frame-16.png",
+      "bytes": 10511,
+      "sha256": "85d35f9fca0c55f27da2ae88d8e672660ec357bbf6d1b68703011fd265134ba9"
+    },
+    {
+      "path": "r8-frame-19.png",
+      "bytes": 9704,
+      "sha256": "f8d3722941c2983fe27914352a09820cbb8f0547cf33c8b1d08e9fd6ee4a153c"
+    },
+    {
+      "path": "r8-frame-22.png",
+      "bytes": 9101,
+      "sha256": "a27ed1703cbcfdfbebabb74808732939434cf9b32862bad78c30d913e3b429d6"
+    }
+  ],
+  "scope": "Standalone verify, H64, 980x620, DPR1; 24 PNGs and 24 snapshots; lastReceipt.completed=true; zero failures/errors. The exact image phases are not bound to receipts.",
+  "qualityStatus": "not-accepted",
+  "packageManifestSha256": "5a8877199c79778dfa0928e5b8fbe00c16870dc38f9b5e7dc195742c720854e7",
+  "schema": "dva-fighter-energy-charge-r8-quality-review/v1",
+  "unverified": [
+    "all four variants across full lifetime",
+    "flicker",
+    "flow/accumulation causality",
+    "parent gallery replay",
+    "normal audio",
+    "main-game integration",
+    "video review"
+  ],
+  "qualityReviewerDisplayName": "GPT-6.1-Sol",
+  "sourceManifestSha256": "34fb3b5f243cce4355949c5706df31e108831a8728f34df240635bba7c4ca666"
+}
