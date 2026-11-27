@@ -17324,25 +17324,28 @@ function positionInventoryItemDetail(sourceButton = state.inventoryItemDetailSou
   const rightEdge = leftEdge + (Number(viewport?.width) || window.innerWidth);
   const bottomEdge = topEdge + (Number(viewport?.height) || window.innerHeight);
   const margin = 10;
+  const markerOnTouch = panel.id === "markerExplanationDetail" &&
+    window.matchMedia?.("(pointer: coarse), (any-pointer: coarse), (max-width: 600px)").matches;
+  const topMargin = markerOnTouch ? Math.max(margin, Math.min(78, (bottomEdge - topEdge) * 0.22)) : margin;
   const gap = 10;
   panel.style.left = `${leftEdge + margin}px`;
-  panel.style.top = `${topEdge + margin}px`;
+  panel.style.top = `${topEdge + topMargin}px`;
   panel.style.right = "auto";
   panel.style.bottom = "auto";
   // Constrain the border box to the visible viewport, including pinch zoom.
   panel.style.maxWidth = `${Math.max(1, rightEdge - leftEdge - margin * 2)}px`;
-  panel.style.maxHeight = `${Math.max(1, bottomEdge - topEdge - margin * 2)}px`;
+  panel.style.maxHeight = `${Math.max(1, bottomEdge - topEdge - topMargin - margin)}px`;
   const sourceRect = sourceButton.getBoundingClientRect();
   const panelRect = panel.getBoundingClientRect();
   const maxLeft = Math.max(leftEdge + margin, rightEdge - panelRect.width - margin);
-  const maxTop = Math.max(topEdge + margin, bottomEdge - panelRect.height - margin);
+  const maxTop = Math.max(topEdge + topMargin, bottomEdge - panelRect.height - margin);
   const spaceRight = rightEdge - sourceRect.right - margin;
   const spaceLeft = sourceRect.left - leftEdge - margin;
   let left = Math.min(maxLeft, Math.max(leftEdge + margin, sourceRect.left));
   if (spaceRight >= panelRect.width + gap) left = sourceRect.right + gap;
   else if (spaceLeft >= panelRect.width + gap) left = sourceRect.left - panelRect.width - gap;
   const centeredTop = sourceRect.top + sourceRect.height / 2 - panelRect.height / 2;
-  const top = Math.min(maxTop, Math.max(topEdge + margin, centeredTop));
+  const top = Math.min(maxTop, Math.max(topEdge + topMargin, centeredTop));
   panel.style.left = `${Math.round(left)}px`;
   panel.style.top = `${Math.round(top)}px`;
 }
