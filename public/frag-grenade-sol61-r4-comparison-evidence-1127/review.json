@@ -1,0 +1,73 @@
+{
+  "schema": "dva-frag-r3-r4-comparison-review/v1",
+  "reviewedAtUtc": "2026-11-26T23:40:19.494Z",
+  "source": "private verify-mode side-by-side native GPU comparison; see captured events and selected fixed-age frames",
+  "versions": [
+    {
+      "version": "r3",
+      "capturedAtUtc": "2026-11-26T23:40:03.609Z",
+      "verifyMode": true,
+      "pageErrors": 1,
+      "firstFrameFixedAgesMs": [
+        0,
+        55,
+        150,
+        300,
+        500,
+        800,
+        950
+      ],
+      "captureSamples": 28,
+      "pageUrl": "https://player13579.github.io/public/frag-grenade-sol61-r3-cause-offset-technical-a1/index.html?verify=1"
+    },
+    {
+      "version": "r4",
+      "capturedAtUtc": "2026-11-26T23:40:19.494Z",
+      "verifyMode": true,
+      "pageErrors": 0,
+      "firstFrameFixedAgesMs": [
+        0,
+        55,
+        150,
+        300,
+        500,
+        800,
+        950
+      ],
+      "captureSamples": 28,
+      "pageUrl": "https://player13579.github.io/public/frag-grenade-sol61-r4-fragment-clarity-a1/index.html?verify=1"
+    }
+  ],
+  "assessment": {
+    "age300ms": "R4 fragments appear somewhat clearer than R3.",
+    "age500ms": "Smoke remains a low diffuse cloud; masses/material separation remain indistinct.",
+    "quality": "not-accepted",
+    "limits": [
+      "This is limited comparative evidence, not full effect acceptance.",
+      "Normal SFX listening was not performed.",
+      "This does not establish public parent-gallery replay or game integration."
+    ]
+  },
+  "frames": [
+    {
+      "path": "r3-age-300.png",
+      "bytes": 16940,
+      "sha256": "d60ee18054b31737105a43a997b1559a72c52874d1b585640cc1829e40335613"
+    },
+    {
+      "path": "r3-age-500.png",
+      "bytes": 16156,
+      "sha256": "0d4fc00f57b5f09a9bb942a47d6d666f4b35db5c83096269e78aac9b14ae2932"
+    },
+    {
+      "path": "r4-age-300.png",
+      "bytes": 17327,
+      "sha256": "f8a2a0d207259b7d7db3a61274c49387f221ce193897ed3aac44e3ab63422be3"
+    },
+    {
+      "path": "r4-age-500.png",
+      "bytes": 16643,
+      "sha256": "f58c2b445803f71add5512c8d48b1d83bfc1fc96319bf5febad7f869c03ba9eb"
+    }
+  ]
+}

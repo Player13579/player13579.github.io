@@ -1,0 +1,88 @@
+{
+  "schema": "dva-effect-package-manifest/v1",
+  "versionId": "frag-grenade-sol61-r4",
+  "group": "gunner-frag-grenade-sol61",
+  "eventType": "grenade-frag-impact",
+  "durationMs": 900,
+  "gameRadius": 132,
+  "entry": "index.html",
+  "publicEntry": "public/frag-grenade-sol61-r4-fragment-clarity-a1/index.html",
+  "runtimeClosure": [
+    "index.html",
+    "app.mjs",
+    "runtime.mjs",
+    "source/plan.mjs",
+    "source/shaders.mjs",
+    "source/sound.mjs"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1253,
+      "sha256": "54563a701c000e1937bb9aadfd20a38312d470618258263c64d1dbf49a4b7140"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9682,
+      "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 9850,
+      "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 4530,
+      "sha256": "a5d39ff7cc93459a1aeed7ced1a9aa2e4c50f781988e715fb4f49210dc59dba2"
+    },
+    {
+      "path": "source/shaders.mjs",
+      "bytes": 12956,
+      "sha256": "583450cca8f72a4a53d46248bf4f0ed5ff0abe3808ec1bb4542ec89023d5a2d0"
+    },
+    {
+      "path": "source/sound.mjs",
+      "bytes": 4071,
+      "sha256": "9add2914db7d6cf0a2ce2b22800f772446bfcde9fda012d1264d22ff25b46413"
+    }
+  ],
+  "author": "GPT-6.1-Sol",
+  "userAdopted": false,
+  "adoptionLabel": "unknown/unadopted candidate",
+  "qualityStatus": "not-reviewed",
+  "qualityAccepted": false,
+  "technicalStatus": "candidate-static-checks-pending-native",
+  "parent": {
+    "versionId": "frag-grenade-sol61-r3",
+    "publicEntry": "public/frag-grenade-sol61-r3-cause-offset-technical-a1/index.html",
+    "manifestSha256": "cab915066fa3931a8aca4dba4631ff52b1183edcb3bc36e848caf6cd0cf3e954",
+    "sealSha256": "2358162beee3a7a5f20782c5b777a1169504743715b5f8842e947ee923a2f61d"
+  },
+  "creativeEditionLineage": {
+    "edition": "R4",
+    "allowance": "one of up to five additional improvements authorized for unadopted E groups",
+    "additionalAllowed": 5,
+    "additionalConsumed": 1,
+    "additionalRemaining": 4,
+    "historicalPreR1Count": "unknown",
+    "historyReset": false
+  },
+  "scope": "Improve actual-size H64 separation of smoke/dust and discrete fragments via three modestly enlarged, angular faceted fragments; preserve smoke, ignition, count, trajectories, contacts, sound and rendering/runtime contracts.",
+  "validation": {
+    "sourceSyntax": "pass-node-check-all-runtime-modules",
+    "cpuContract": "pass-node-contract-11-checks",
+    "wgslCompilation": "not_run",
+    "nativeReplay": "not_run",
+    "parentGalleryReplay": "not_run",
+    "fullQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "evidence": {
+    "apiModel": "gpt-6.1-sol",
+    "apiResponseId": "resp_04f3677e8280bab0016b08c1a87c2887d0b21dc69e5f71a28c",
+    "apiOutputSha256": "b408fac07918d1be775f8b54973d0341b180fc261804ed593bca0a5edf4ae691",
+    "basePublicHead": "85775e5769721638efaa158fd758241fd6a75f7f"
+  }
+}
