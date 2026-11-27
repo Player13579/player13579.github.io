@@ -1,0 +1,76 @@
+{
+  "schema": "dva-dot-e-technical-replay/v1",
+  "versionId": "dot-task-presence-start-r1",
+  "galleryOnly": true,
+  "qualityReviewStatus": "pending-review",
+  "userAdopted": false,
+  "tests": {
+    "rejectedFixtures": 15,
+    "timelineSamples": 2406,
+    "boundedMeshSamples": 478,
+    "taskTypeAndOutcomesInvariant": true,
+    "audioSampleRates": [
+      8000,
+      22050,
+      24000,
+      44100,
+      48000,
+      96000
+    ]
+  },
+  "display": {
+    "renderer": "Chromium software WebGPU (SwiftShader Vulkan)",
+    "viewportsCssPixels": [
+      [
+        844,
+        390
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "DPR": 2,
+    "actorHeightReferenceCssPixels": 64,
+    "backgrounds": [
+      "dark",
+      "bright"
+    ],
+    "motionModes": [
+      "normal",
+      "reduced"
+    ],
+    "timesMs": [
+      0,
+      160,
+      330,
+      500,
+      680,
+      1200
+    ],
+    "sampleCount": 48,
+    "sameEmptyEndpoints": true,
+    "activeFramesVisiblyDistinct": true,
+    "sameConditionComparison": "At H64 on light/dark backgrounds, one sheet unfolds beside the actor, rather than the closing gesture around the hands used for task completion."
+  },
+  "gallerySwitch": {
+    "sequence": [
+      "dot-task-presence-start-r1",
+      "dot-emp-cancellation-r2",
+      "dot-task-presence-start-r1"
+    ],
+    "readyOnEachSwitch": true,
+    "missingResources": 0
+  },
+  "audio": {
+    "actualBrowserStarts": 2,
+    "remainingVoices": 0,
+    "humanListening": "not_run"
+  },
+  "notVerified": [
+    "Safari",
+    "physical device",
+    "main game integration",
+    "user adoption"
+  ]
+}

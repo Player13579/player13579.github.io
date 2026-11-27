@@ -1,0 +1,81 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-task-presence-start-r1",
+  "group": "dot-task-presence-start",
+  "title": "タスク端末の待機入り",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "self-task-presence-snapshot",
+    "requires": "playing / eligible self defender / matching incomplete taskPresenceTaskId / taskPresenceSince",
+    "sourceKind": "self-task-presence-snapshot",
+    "previewDurationMs": 1200,
+    "previewDisplayPolicy": "presence-onset-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2318,
+      "sha256": "24e4491a1602f720149b0d285c0624f6f89c71103af5b560f42f8e7d6daa4ee8"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16474,
+      "sha256": "e70fb0b1f4ab410eaa474af6777bbf0ae1fc16ec201e02b4b95f81ac06a0d8e5"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1302,
+      "sha256": "2051f7faef8ea1a58d2dcd072e850d5a1aada8422df345ace340ecc3b095b46b"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 1838,
+      "sha256": "b0cab0cadeb9e89b5d77d7459eb9d49cc16ce8510268bed927152b6ef7313062"
+    },
+    {
+      "path": "mesh.mjs",
+      "bytes": 1106,
+      "sha256": "0158becc6be337a40768ab95c45f555229732cb269dc8fe2ce0d08581cfe4461"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 707,
+      "sha256": "884ae7e407dd106cad643fb06fd89ae3ec7e942ffa2048c1fe1e12d291fcfa19"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11115,
+      "sha256": "102ada9a69708f385a882536e164432c35c2b945e1ce124003aead5d259f9f2d"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1824,
+      "sha256": "c10892ff073f0a412d813bf8093a95ec37036e256991c8917d09580d3031d714"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 934,
+      "sha256": "08036db007006429004e30e0f6ad8a70a20644e03b87e8dafe94882d22e15afb"
+    }
+  ]
+}
