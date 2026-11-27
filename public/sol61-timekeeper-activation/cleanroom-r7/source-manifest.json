@@ -1,0 +1,53 @@
+{
+  "versionId": "timekeeper-activation-cleanroom-sol61-r7",
+  "schema": "dva-timekeeper-cleanroom-source/v7",
+  "provenance": {
+    "apiResponseId": "resp_0373f5467e811b93006b09dea9ff2c87d0b13e2de89b9c659b",
+    "apiModel": "gpt-6.1-sol",
+    "apiRequestTextSha256": "a29e5a12bcf90a0517ad52de17d07f5f98d7b345e35cd792661253d212f2ece5",
+    "apiRequestPayloadSha256": "f0dc626e9299bd8b4141425eb2000c058cb1b9cea44999d5dc2a67636385fb33",
+    "apiResponseJsonSha256": "9e12ec2540a2cd99432797b186912ef585a7f860fbf4ee8d35d4c2bf495365e9",
+    "apiDesignUtf8Sha256": "e53cb297649bcc54524bd274f7dd522d6b35edef92223942cc6d63c030b2983b",
+    "apiWgslUtf8Sha256": "1dc7edec5c4912c6f2b941acaf4a4e9f73937bb2e91be09523835f5684df061a",
+    "parentVersionId": "timekeeper-activation-cleanroom-sol61-r6",
+    "parentPackageManifestSha256": "6f09a59bd9921f35561db5756663ec6dc35490f3676440e4db261015a25a854c",
+    "parentPackageSealSha256": "5640b85c783b4aa9fd8fc32f023dbeab55795564f976663a2b4de7384ce40316",
+    "parentSourceManifestSha256": "caddc128712f1f93cb07cac0cef607fb1cbc09d49b5432002021bbfe08f3bf14",
+    "basePublicHead": "407965cba7cafabcae7e3784bb4a3bf8ac655db8",
+    "creativeEdition": 7,
+    "historicalCreativeEditionLimit": 5,
+    "additionalGrant": {
+      "total": 5,
+      "consumed": 2,
+      "remaining": 3
+    }
+  },
+  "designSummary": "R7: Opal Escapement. A broadly emissive turquoise-and-honey clock sphere carries twelve indices, a broad amber hour hand, and a physically longer, dark-edged ivory minute hand. The short hand's transverse gold terminal remains visible beside the narrow minute blade at overlap; the minute extends substantially beyond it. Their angles are hostAngle and 12×hostAngle, clockwise in downward-y screen coordinates. One warm pearl at their shared pivot is the explicit source. A finite display-space light veil and alpha-masked avatar illumination use that pearl's position, color, falloff, energy, and phase modulation; this is UI illumination, not world lighting. Eight filled four-point sparkles share a 45-degree arm orientation, graded center-to-tip brightness, and bounded bloom. Broad opal emission remains the main effect. All effect emission follows host energy and the source gate; the observer gate additionally controls receiver illumination. There are no autonomous timers, extra phases, or invented hand motion during hold. The supplied avatar is composited with its real alpha, and output encoding occurs on straight RGB before re-premultiplication. Unverified visual risks remain: star recognition at actual H64, continuity of the source-to-avatar reading, and hand separation at exact crossings. These are R7 design hypotheses, not established R6 defects or verified improvements.",
+  "files": [
+    {
+      "sha256": "c25af18f209b6a1db769979f2a34d7ad409fbf90e11ac13d5f1e2f51fb952f4e",
+      "path": "index.html",
+      "bytes": 2990
+    },
+    {
+      "sha256": "9bb807886e4e06175e1d08625063f8b09c12b182734dda1cf4feaee492674edf",
+      "path": "gallery-adapter.mjs",
+      "bytes": 32491
+    },
+    {
+      "sha256": "92ff0aff5bcdc02ea5e70af8859e0e3cf920290f0aaae0abaf093f9acef18f18",
+      "path": "effect.mjs",
+      "bytes": 20422
+    },
+    {
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "path": "body.png",
+      "bytes": 243081
+    },
+    {
+      "sha256": "cb7ca598a480a395d97373d5785f6a07f74c9e3c70424a2167c86e6414398fbd",
+      "path": "host-core.mjs",
+      "bytes": 17274
+    }
+  ]
+}

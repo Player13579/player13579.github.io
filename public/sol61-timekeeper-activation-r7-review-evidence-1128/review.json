@@ -1,0 +1,71 @@
+{
+  "schema": "dva-gallery-quality-review/v1",
+  "versionId": "timekeeper-activation-cleanroom-sol61-r7",
+  "reviewStatus": "needs-improvement",
+  "qualityStatus": "not-accepted",
+  "qualityAccepted": false,
+  "wholeEffectQualityAccepted": false,
+  "outcome": "scoped-canvas-top-clipping",
+  "scope": {
+    "route": "https://player13579.github.io/public/sol61-timekeeper-activation/cleanroom-r7/index.html?embed=1&galleryAutoLoop=1&galleryVersionId=timekeeper-activation-cleanroom-sol61-r7&packageSchema=dva-timekeeper-cleanroom-gallery%2Fv7&packageManifestSha256=fa84a33b25e0f6dcca15eb71e6e6ba91a863146d4473309b65eb982c091f32eb&packageSealSha256=e5ae754e631452b70effa133b8772d75422bfa4f8d3e47a0660faa43e7eef7b1&sourceManifestSha256=7943146f2d4dfd67705127414c59b9dd1536240d1cde74f2a39e954f3c4b2616&verify=1&height=64&galleryStartupToken=0123456789abcdef0123456789abcdef&galleryAttemptEpoch=1",
+    "canvas": {
+      "width": 980,
+      "height": 620,
+      "dpr": 1
+    },
+    "scopeLimit": "One inspected held-phase capture in the H64/980x620/DPR1 viewport. This does not establish full-lifetime behavior or results at other viewports.",
+    "finding": "The top of the clock sphere and the upper star are clipped beyond the canvas in the inspected image. The visible placement is consistent with the shader geometry; R6 at the same viewport retained top margin. This scoped view is not accepted for visual quality. The clock shell, dial/hands, sparkles and pale character light band are also visible.",
+    "notAssessed": [
+      "full effect lifetime",
+      "other viewport sizes",
+      "pixel-level hand speed",
+      "exact image-to-GPU-receipt frame binding",
+      "ordinary audio listening",
+      "production parent-gallery replay",
+      "Safari/iPad",
+      "main-game integration"
+    ],
+    "capture": {
+      "sampleCount": 130,
+      "loopIndices": [
+        0,
+        1,
+        2
+      ],
+      "phases": [
+        "propagate",
+        "arrest",
+        "held",
+        "release"
+      ],
+      "elapsedWallMs": 12901,
+      "firstFrame": {
+        "completed": true,
+        "ageMs": 0
+      },
+      "errors": []
+    },
+    "evidence": [
+      {
+        "path": "events.json",
+        "bytes": 197524,
+        "sha256": "f482ccf23923f77af82bd1af18eb1ed40bd52e710e68250f6069927605e986bb"
+      },
+      {
+        "path": "final.png",
+        "bytes": 80029,
+        "sha256": "a553738b0a17940834e96648cdddfcbfd566d475e6dcf750a8b87fe29ff773ba"
+      }
+    ],
+    "shader": {
+      "sha256": "92ff0aff5bcdc02ea5e70af8859e0e3cf920290f0aaae0abaf093f9acef18f18",
+      "servedBytes": 20422,
+      "manifestMatch": true
+    },
+    "evidenceLimits": "The capture contains 130 sample records across about 12.9 seconds, while the effect lifetime is 5000 ms. Samples include loop indices 0–2 and all four phases. Per-sample records are not independent GPU-completion receipts, and the image is not bound to an exact receipt frame. Do not infer complete lifetime acceptance.",
+    "comparedAgainst": {
+      "versionId": "timekeeper-activation-cleanroom-sol61-r6",
+      "result": "same-viewport R6 showed top margin; no quantitative quality comparison claimed."
+    }
+  }
+}
