@@ -1,0 +1,67 @@
+{
+  "schema": "dva-limit-break-sol-r8-limited-visual-review/v1",
+  "groupId": "limit-break-passive-onset-astra62",
+  "versionId": "limit-break-passive-onset-sol61-r8",
+  "galleryManifestSha256": "bedca6cfbe5c5af70a909459348f0d71f5baed653756e570eadd87dea4129f6b",
+  "sealSha256": "2e7086bd8410f70b5bc98dc8b990b09300a087eeb90153862cd6e409856285a4",
+  "wgslSha256": "46605ee23ed2016be183b84973c68a51100571e5b7b18fe449ab19b43c89e489",
+  "eventsSha256": "206f56da7b045b27718dbf7dd9f8d6eed4524e84805d969fb8811dd519022fbb",
+  "scope": {
+    "route": "/public/astra62-limit-break-passive-onset/r8/index.html?verify=1",
+    "mode": "private standalone WebGPU verify; verify audio muted",
+    "fixture": "fighter",
+    "actorHeight": 64,
+    "scale": 1,
+    "backing": [
+      758,
+      283
+    ],
+    "plays": 3,
+    "records": 36,
+    "playingCompletedReceipts": 19,
+    "completedReceipts": 36,
+    "receiptErrors": 0,
+    "receiptToScreenshotExactAgeBinding": false,
+    "fullLifetimeAcceptance": "not_established",
+    "flickerAcceptance": "not_established",
+    "normalAudioListening": "not_run",
+    "parentGalleryReplay": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "comparison": {
+    "baselineVersion": "limit-break-passive-onset-sol61-r7",
+    "baselineEvidence": "../limit-break-passive-onset-r7-review-evidence-1127/pass-0-04.png",
+    "baselineSha256": "d6c298da74fa90930aca31b716316ec92fe867ab8aecf760e001dce4e18374b6",
+    "exactAgeMatched": false
+  },
+  "observations": {
+    "quality": "unverified",
+    "qualityReviewStatus": "limited-visual-improvement-full-quality-unverified",
+    "qualityAccepted": false,
+    "visualStatus": "partial-improvement-tray-and-upper-casting-return",
+    "finding": "In the limited R7/R8 comparison, blue-green return is visibly broader on the tray and extends to the upper casting/window frame. The four reviewed images do not establish a new concrete defect, but do not establish whole-effect acceptance.",
+    "limitations": "Images are not bound to exact GPU receipt ages. Full lifetime/flicker, parent-gallery replay, normal audio, and game integration remain unverified."
+  },
+  "evidenceFiles": [
+    {
+      "path": "events.json",
+      "bytes": 11451,
+      "sha256": "206f56da7b045b27718dbf7dd9f8d6eed4524e84805d969fb8811dd519022fbb"
+    },
+    {
+      "path": "pass-0-03.png",
+      "bytes": 13781,
+      "sha256": "64d65ea8c8cab17315d4f93efe058f0718fe1198274940bf475b9c1488ad9272"
+    },
+    {
+      "path": "pass-0-04.png",
+      "bytes": 13919,
+      "sha256": "a13eaafa183156fb214d08d0d4c78ca4f78d60776d76059b1c117cc81fe8a43b"
+    },
+    {
+      "path": "pass-1-04.png",
+      "bytes": 13911,
+      "sha256": "ee633afd20491b3bc658910af1a4b52a41ee3eac0bca5cc66ec92dd62f628382"
+    }
+  ]
+}
