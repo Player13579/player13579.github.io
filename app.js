@@ -569,8 +569,10 @@ function normalizeMatchmakingMapId(value) {
   const mapId = String(value || "").trim();
   return MATCHMAKING_MAP_IDS.includes(mapId) ? mapId : "station";
 }
+// Only manual abilities belong in selectors and action buttons. Fighter
+// passives remain in the server lifecycle, shop and active-effect cards.
+const DIRECT_MANUAL_OPERATOR_TYPES = Object.freeze(["teleport", "flora", "quantum", "assassin", "alchemist"]);
 const OPERATOR_ABILITY_MODE_OPTIONS = Object.freeze({
-  fighter: Object.freeze([["limit-break", "リミットブレイク"]]),
   teleport: Object.freeze([["target", "対象転移"], ["heart", "心臓転移"], ["accelerate", "アクセラレート"], ["decelerate", "ディーセラレート"], ["time-keeper", "時の番人"], ["storm", "グラビティストーム"]]),
   gravity: Object.freeze([["target", "対象転移"], ["heart", "心臓転移"], ["accelerate", "アクセラレート"], ["decelerate", "ディーセラレート"], ["time-keeper", "時の番人"], ["storm", "グラビティストーム"]]),
   flora: Object.freeze([["heal", "ヒール"], ["sunbeam", "サンビーム"], ["invisible", "インビジブル"]]),
@@ -4708,7 +4710,9 @@ function syncPurchasedAbilityModeChoices(data, rootAbilitySwitchVisible, nativeO
       select.replaceChildren();
       const prompt = document.createElement("option");
       prompt.value = "";
-      prompt.textContent = "元の固有能力";
+      prompt.textContent = DIRECT_MANUAL_OPERATOR_TYPES.includes(self?.special) || self?.hackerRootActive
+        ? "元の固有能力"
+        : "能力を選択";
       prompt.disabled = false;
       prompt.dataset.shopNativeOption = "1";
       select.append(prompt);
@@ -10707,9 +10711,6 @@ function conciseTabletAbilityName(data) {
   const owner = els.operatorAbilityButton.dataset.operator || data?.self?.special || "none";
   const mode = els.teleportModeSelect.value;
   const modeNames = {
-    fighter: {
-      "limit-break": "リミットブレイク"
-    },
     teleport: {
       target: "対象転移",
       heart: "心臓転移",
@@ -10733,7 +10734,6 @@ function conciseTabletAbilityName(data) {
       "nuclear-fusion": "核融合"
     }
   };
-  if (owner === "fighter") return tabletAbilityNameWithMana("リミットブレイク", "fighter", "limit-break", data?.self);
   if (owner === "alchemist") {
     if (!data?.self?.hackerRootActive) return "Root化";
     const borrowed = selectedBorrowedOperator();
@@ -16692,6 +16692,7 @@ function renderTargetOptions(data) {
   els.teleportControl.hidden = !controlVisible;
   els.teleportModeSelect.closest("label").hidden = !rootAbilitySwitchVisible && !options.length && !purchasedChoicesVisible;
   els.abilityAutoActivateControl.hidden = !rootAbilitySwitchVisible && !options.length && !purchasedChoicesVisible;
+  els.teleportModeDescription.hidden = modeOwner === "fighter" && !rootAbilitySwitchVisible && !purchasedChoicesVisible;
   els.empPhaseControl.hidden = data.phase !== "playing" || !self.alive || self.ejected;
   if (!controlVisible && self.special !== "alchemist") {
     // Remove a stale selected purchase and its old selector options when the
@@ -16860,9 +16861,6 @@ function abilityModeDescription(owner, mode, self) {
   const costs = self?.abilityCosts || {};
   const nuclearReserve = Number(costs.quantumNuclear ?? 2);
   const descriptions = {
-    fighter: {
-      "limit-break": "パッシブ。HPは1を超えず、会議外の世界経過に応じてACCが増加する。手動発動、MP消費、SP倍率はない。"
-    },
     teleport: {
       target: `局所重力場で時空曲率を変え、マップ指定地点へ選択対象を転移する。味方への誤射は発動者が即死する。`,
       heart: `遠隔の時空作用で対象の心臓へ干渉し、キルを試みる。位置は公開しない。`,
@@ -18986,9 +18984,6 @@ function updateActionButtons(data) {
     els.renkiButton.hidden = false;
     els.healButton.hidden = true;
     els.alchemyButton.hidden = true;
-    els.operatorAbilityButton.hidden = activeBorrowedOperator
-      ? false
-      : !["fighter", "teleport", "flora", "quantum", "assassin", "alchemist"].includes(self.special);
     els.gunnerReloadButton.hidden = true;
     els.empButton.hidden = false;
     els.fireJutsuButton.hidden = !(self.fireJutsuCharges > 0);
@@ -19128,7 +19123,6 @@ function updateActionButtons(data) {
       ? "floraInvisible"
       : "flora";
   const operatorLabels = {
-    fighter: "リミットブレイク（パッシブ）",
     teleport: operatorMode === "target" ? abilityNameWithMana("対象転移", "gravity", "target", self)
         : operatorMode === "heart" ? abilityNameWithMana("心臓転移", "gravity", "heart", self)
           : operatorMode === "accelerate" ? `${abilityNameWithMana("アクセラレート", "gravity", "accelerate", self)} 8秒`
@@ -19191,9 +19185,7 @@ function updateActionButtons(data) {
       displayedOperator === "fighter" ||
       nativeQuantumEndgameLocked ||
       (displayedOperator === "quantum" && hasCompatibleQuantumItem(self, selectedQuantumExecutableMode(false)) && Number(self.stamina) < Number(self.quantumActionStaminaCost || 16));
-  els.operatorAbilityButton.title = displayedOperator === "fighter"
-    ? "リミットブレイクはパッシブです。HPは1を超えず、会議外の世界経過でACCが増加します。"
-    : displayedOperator === "assassin"
+  els.operatorAbilityButton.title = displayedOperator === "assassin"
     ? self.hasAssassinSubstitution
       ? "変わり身の術は次のキル被弾に備えています。ボディダメージでは発動しません。"
       : Number(self.substitutionReadyAt || 0) > liveNow
@@ -19211,8 +19203,9 @@ function updateActionButtons(data) {
     ? "タップは通常1回。長押しはサーバーが現在MPから2を残す量を一括消費し、通常MPコストで成立する回数を同じ対象・方式へ並列発動"
     : "タップで現在の固有能力を1回発動";
   const selectedShopAbility = selectedPurchasedShopAbility(self);
+  els.operatorAbilityButton.hidden = !(selectedShopAbility || rootToggle ||
+    DIRECT_MANUAL_OPERATOR_TYPES.includes(displayedOperator));
   if (selectedShopAbility) {
-    els.operatorAbilityButton.hidden = false;
     els.operatorAbilityButton.textContent = abilityNameWithMana(selectedShopAbility.label, selectedShopAbility.operator, selectedShopAbility.mode, self);
     els.operatorAbilityButton.dataset.operator = "shop:" + selectedShopAbility.id;
     els.operatorAbilityButton.dataset.repeatableAbility = "0";
