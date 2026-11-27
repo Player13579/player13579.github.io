@@ -14600,3 +14600,43 @@ body:has(:is(#expandedMapOverlay,#keybindOverlay,#killCameraOverlay,#vendingFull
   border-radius: 4px;
   font-size: .83em;
 }
+
+/* Separate shop surfaces. The modal still owns input; only its fill is glass. */
+body.game-open #vendingFullMount:not([hidden]) {
+  background: rgb(234 244 247 / .38);
+}
+body.game-open #vendingFullMount:not([hidden]) #vendingPanel .vending-title-row {
+  justify-content: flex-start;
+  gap: 7px 9px;
+  border-bottom: 0;
+  background: transparent !important;
+  box-shadow: none;
+}
+body.game-open #vendingFullMount:not([hidden]) #vendingPanel #vendingFullTitle {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 7px 9px;
+  border-radius: 7px;
+  background: rgb(16 43 55 / .78);
+  color: #f3fbfd;
+}
+body.game-open #vendingFullMount:not([hidden]) #vendingPanel .vending-title-row label.vending-continuous-toggle {
+  margin: 0;
+  flex: 0 0 auto;
+  border-color: rgb(48 107 89 / .54);
+  background: rgb(225 248 234 / .73);
+  color: #154538 !important;
+}
+body.game-open #vendingFullMount:not([hidden]) #vendingPanel .vending-category-control {
+  flex: 0 0 100%;
+  margin: 0;
+  background: rgb(233 247 249 / .55);
+  box-shadow: inset 0 1px rgb(255 255 255 / .28);
+}
+body.game-open #vendingFullMount:not([hidden]) #vendingPanel .shop-jump-controls {
+  background: rgb(233 247 249 / .48);
+  box-shadow: inset 0 1px rgb(255 255 255 / .24);
+}
+body.game-open #vendingFullMount:not([hidden]) #vendingPanel .shop-jump-controls label {
+  color: #25434b;
+}
