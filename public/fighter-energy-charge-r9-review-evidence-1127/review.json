@@ -1,0 +1,78 @@
+{
+  "packageManifestSha256": "02b340a527dcd960cb9149b6578eed1584630b1f4cb35ba177ce1ff7efc55a58",
+  "qualityAccepted": false,
+  "evidenceFiles": [
+    {
+      "path": "r8-events.json",
+      "bytes": 47751,
+      "sha256": "f7c42e9803873a0c658f0c2e8cbc3f2613e8a0efcc691a15bb25b4b9a04214e2"
+    },
+    {
+      "path": "r8-frame-19.png",
+      "bytes": 9219,
+      "sha256": "3d0fe4f1dd1c0f5538ac2216477c0efd44c5891d1430b536d5b3ecc7b7bd4d38"
+    },
+    {
+      "path": "r9-events.json",
+      "bytes": 50721,
+      "sha256": "2084209ee0289165eea90b29a3067d3bbdeb304b13bb455e322e24ff6074cc8a"
+    },
+    {
+      "path": "r9-frame-04.png",
+      "bytes": 10284,
+      "sha256": "9e0a125ee83c6fb220943d33de5010cc8326fd0f1c07594fda96d6d375f221a5"
+    },
+    {
+      "path": "r9-frame-07.png",
+      "bytes": 9941,
+      "sha256": "3b7620a336e9467f0141369b0e34a7c9f955efe9b7d8b22a5d2341575fcf7150"
+    },
+    {
+      "path": "r9-frame-10.png",
+      "bytes": 9173,
+      "sha256": "d54b33b3837537afa878e05d23d975610788d23fe7c5e23014e70fd8da09afea"
+    },
+    {
+      "path": "r9-frame-21.png",
+      "bytes": 10059,
+      "sha256": "d99107bb2ff0c48c3dd8921e89ef0e65a04c696eee4872ee76d4e489fad915f7"
+    }
+  ],
+  "outcome": "scoped-sampled-emission-insufficient",
+  "qualityReviewerDisplayName": "GPT-6.1-Sol",
+  "observation": "In inspected R9 captures, warm/white response is visible around the head, chest, and shoulders, but the full subject shape including lower costume and the affected area do not read as broadly emissive at normal display size.",
+  "qualityReviewStatus": "needs-improvement",
+  "versionId": "fighter-energy-charge-cleanroom-sol61-r9",
+  "qualityStatus": "not-accepted",
+  "effectSha256": "9e2bedb75d1d7d28a94321a1829bb7a571c050b832eaf70a4214025cc2ef7dbb",
+  "packageSealSha256": "bdc5edfbf3fe0de13334016d086e695854196a56c50c7f1f6dccd556ed65bd9a",
+  "sourceManifestSha256": "6ea143647cda7235ca38b4c020d5401216622f14e4e475a5826ae56dd84fee19",
+  "unverified": [
+    "flow/accumulation causality",
+    "all four variants across full lifetime",
+    "flicker",
+    "normal audio",
+    "main-game integration",
+    "video review",
+    "current public Pages deployment",
+    "normal audio",
+    "main-game integration"
+  ],
+  "comparison": "A local improvement over R8 is observed. Phases, variants, and capture times are asynchronous; no quantitative improvement, exact-age pixel causality, or all-variant/full-lifetime failure is claimed.",
+  "scope": "Standalone verify H64, 980x620, DPR1; 24 PNGs and 24 snapshots; lastReceipt.completed=true; failure=0/errors=0. Image times are not bound to receipts.",
+  "schema": "dva-fighter-energy-charge-r9-quality-review/v1",
+  "parentReplay": {
+    "status": "pass-limited-owned-candidate-route",
+    "result": "R9 ready/retired ACK -> R8 ready/retired ACK -> R9 ready; errors=[]",
+    "route": "/public/sol61-fighter-energy-charge/cleanroom-r9/index.html",
+    "verify": true,
+    "servedResourcesMatchedCandidatePins": false,
+    "notes": "Task-owned candidate route lifecycle test; not a public Pages deployment check. Gameplay and ordinary audio remain unverified.",
+    "evidencePath": "parent-events.json",
+    "evidenceBytes": 40401,
+    "evidenceSha256": "5da0641a201bc2ed3996b9f504096dc6182a43101f5e5ad5cac6137f8639417d",
+    "servedJsSha256AtTest": "3b3644cf26c8b97d09c129a4409a731e5da8d093081469b1cedbb526a8d291c4",
+    "candidateJsSha256AfterEvidenceMetadata": "c68acde99c3b82869ed5f46d48f9331a11c2b80ef97acfbd83e9e306c156ff45",
+    "noteAfterTest": "Test used the immediately prior candidate, before adding parent replay evidence/status fields and explanatory labels. Strict route functions and package pins were unchanged; this evidence does not certify the final JS byte hash or a public Pages deployment."
+  }
+}
