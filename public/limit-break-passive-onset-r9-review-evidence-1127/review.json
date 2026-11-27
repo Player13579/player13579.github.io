@@ -1,0 +1,93 @@
+{
+  "schema": "dva-limit-break-sol-r9-limited-visual-review/v1",
+  "groupId": "limit-break-passive-onset-astra62",
+  "versionId": "limit-break-passive-onset-sol61-r9",
+  "galleryManifestSha256": "c7bae5ddd82c45b69a791372845b9fab3121fdec705c9f7ddb3383fd2a351407",
+  "sealSha256": "c1cea4aed459195a606cdd607f149d9787cf78ca6ea9df0b9ee41a4add7a0d29",
+  "wgslSha256": "2dc9b48d0fb560b49b69e706d050189ab6af9dde822b2a292a7a319d0affa3e2",
+  "eventsSha256": "8f2e08e59ca890ce8a8294420e7a05377dc7b1db462d7b786a16817b1f53bb46",
+  "scope": {
+    "route": "/public/astra62-limit-break-passive-onset/r9/index.html?verify=1",
+    "mode": "private standalone WebGPU verify; verify audio muted",
+    "fixture": "fighter",
+    "actorHeight": 64,
+    "scale": 1,
+    "backing": [
+      758,
+      283
+    ],
+    "plays": 3,
+    "records": 45,
+    "preReceipts": 45,
+    "postReceipts": 45,
+    "preCompleted": 45,
+    "postCompleted": 45,
+    "prePlayingCompleted": 20,
+    "postPlayingCompleted": 21,
+    "receiptErrors": 0,
+    "receiptToScreenshotExactAgeBinding": false,
+    "fullLifetimeAcceptance": "not_established",
+    "flickerAcceptance": "not_established",
+    "normalAudioListening": "not_run",
+    "parentGalleryReplay": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "comparison": {
+    "baselineVersion": "limit-break-passive-onset-sol61-r8",
+    "reviewerObservedBaselineCapture": "r8-pass-1-03.png",
+    "baselineCaptureIncludedInThisEvidenceBundle": true,
+    "baselineEventsFile": "r8-events.json",
+    "baselineEventsSha256": "3aa8259010d8005898b095217305ef13aaa94ee966bb0c12ae0c852b303e86fb",
+    "baselineReceiptAgeIntervalMs": [
+      476,
+      601
+    ],
+    "exactAgeMatched": false,
+    "source": "Independent reviewer confirmed this exact R8 baseline capture and its associated event log; both are included in this evidence bundle."
+  },
+  "observations": {
+    "quality": "unverified",
+    "qualityReviewStatus": "limited-visual-readability-maintained-timing-unverified",
+    "qualityAccepted": false,
+    "visualStatus": "limited-visual-readability-maintained-timing-unverified",
+    "finding": "Independent review reports that the blue-green guide, tray/upper-casting response, and HP/ACC readability remain visible. The intended near-to-far light-return timing difference is not clearly distinguishable at normal size. The non-synchronized captures do not establish absence or failure, and no new concrete defect was confirmed in the reviewed images.",
+    "limitations": "R8 and R9 screenshots are not bound to exact receipt ages. Full lifetime/flicker, ordinary audio, parent-gallery replay, and game integration remain unverified. Video was not reviewed."
+  },
+  "evidenceFiles": [
+    {
+      "path": "r9-events.json",
+      "bytes": 25713,
+      "sha256": "8f2e08e59ca890ce8a8294420e7a05377dc7b1db462d7b786a16817b1f53bb46"
+    },
+    {
+      "path": "r9-pass-1-03.png",
+      "bytes": 13877,
+      "sha256": "4554255c7241f1335677fa963e4eb6d61200d19adf983d981eec848c7641bf71"
+    },
+    {
+      "path": "r9-pass-1-04.png",
+      "bytes": 13977,
+      "sha256": "a21911fcdc87274e5302957a343ad1defbde8e962fb3a0d55aaa00e7e7b2554b"
+    },
+    {
+      "path": "r9-pass-1-06.png",
+      "bytes": 13692,
+      "sha256": "57a351524c845a1e3ce3e5107747ba7eaf0eb5ab6fb8f4f69ae94c2712179c44"
+    },
+    {
+      "path": "r9-pass-1-07.png",
+      "bytes": 9849,
+      "sha256": "7674db8aaf830ab265a828f7c0a4b230a9ae0c0fc8eeff30fb4a610ec44d0ad9"
+    },
+    {
+      "path": "r8-events.json",
+      "bytes": 25996,
+      "sha256": "3aa8259010d8005898b095217305ef13aaa94ee966bb0c12ae0c852b303e86fb"
+    },
+    {
+      "path": "r8-pass-1-03.png",
+      "bytes": 13775,
+      "sha256": "f80eec17475dd6ed0b819c8394e4fd3d235c139f91c1fb6722da6c02d2e07bee"
+    }
+  ]
+}

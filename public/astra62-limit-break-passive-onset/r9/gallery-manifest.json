@@ -1,0 +1,121 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "groupId": "limit-break-passive-onset-astra62",
+  "versionId": "limit-break-passive-onset-sol61-r9",
+  "creativeEdition": 9,
+  "creativeAuthor": "GPT-6.1-Sol",
+  "creatorModelId": "gpt-6.1-sol",
+  "source": {
+    "provider": "OpenAI Responses API",
+    "model": "gpt-6.1-sol",
+    "responseId": "resp_0382e3751d98ca22006b09295cd7d887d09d2025490469b3f2",
+    "requestSha256": "0b77e6f29b278009f4a39b506e1a7f0bdcc5c1286b4549e48501f3b96397a857",
+    "outputSha256": "eb5bd1b849b4084512d0a7ef3fe6b087e9db117799e8d66ddd688d9577de8640",
+    "baseRepository": "Player13579/player13579.github.io",
+    "baseHead": "112affa03a0c164d9b30f328b5b49632b594ee2d",
+    "baseVersionId": "limit-break-passive-onset-sol61-r8",
+    "baseGalleryManifestSha256": "bedca6cfbe5c5af70a909459348f0d71f5baed653756e570eadd87dea4129f6b",
+    "baseSealSha256": "2e7086bd8410f70b5bc98dc8b990b09300a087eeb90153862cd6e409856285a4",
+    "baseShaderGitBlobSha1": "5cd73b68d617763e01aff65a095419ef0a0854b8",
+    "baseShaderSha256": "46605ee23ed2016be183b84973c68a51100571e5b7b18fe449ab19b43c89e489",
+    "inheritedR5SourcePin": "e289b48b09629702cf89c0352dbb25749aed6699"
+  },
+  "lineage": {
+    "historicalAstraR1R5": {
+      "creator": "GPT-6.2-Astra",
+      "historicalCap": 5,
+      "historicalCapConsumed": 5,
+      "preserved": true
+    },
+    "additionalImprovementGrant": {
+      "limit": 5,
+      "editionNumber": 4,
+      "consumedAfterR9": 4,
+      "remainingAfterR9": 1
+    }
+  },
+  "entry": "gallery.html",
+  "page": "/public/astra62-limit-break-passive-onset/r9/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=limit-break-passive-onset-sol61-r9",
+  "originalPage": "/public/astra62-limit-break-passive-onset/r9/index.html",
+  "protocol": "dva-gallery-startup/v1",
+  "manualReview": false,
+  "standardFixture": "fighter",
+  "designSummary": "R9 refines source-to-response timing in the UI-local Limit Break fixture: nearby contact light leads the broader casing response; the cyan-green sustained state remains source-linked; receiver light recedes before source extinction. ACC-rim and needle-area response remain restrained and markings stay readable. No world-space illumination is represented.",
+  "lifetimeMs": 1320,
+  "backgroundGapMs": 500,
+  "firstFrameWindow": {
+    "submittedMinInclusiveMs": 100,
+    "submittedMaxExclusiveMs": 1320,
+    "requiresQueueCompletionWhileCauseLive": true,
+    "pixelsProved": false
+  },
+  "uniform": {
+    "bytes": 32,
+    "values": [
+      "width",
+      "height",
+      "ageMs",
+      "scale292x135Dpr",
+      "reduced",
+      "live",
+      0,
+      0
+    ],
+    "entries": [
+      "vs",
+      "fs"
+    ]
+  },
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "nativeShader": "not_run",
+  "cpuAdapter": "not_run",
+  "cpuParent": "not_run",
+  "browserIframe": "not_run",
+  "normalAudioListening": "not_run",
+  "visualQuality": "not_run",
+  "gameIntegration": "not_connected",
+  "evidence": {
+    "baseline": "Public R8 H64 normal playback was described in broad intervals: after upper-frame descent the band and frame glowed in observed spans 152–278ms, 476–601ms, and 797–923ms, followed by apparent end near 1320ms. These observations are not exact GPU-age-bound frames and do not establish a defect.",
+    "scope": "R8 lifecycle capture and broad interval observations; no R9 GPU compilation or visual acceptance claimed yet."
+  },
+  "files": [
+    {
+      "path": "public/astra62-limit-break-passive-onset/r9/gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlobSha1": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r9/onset.mjs",
+      "bytes": 2553,
+      "sha256": "eb060a8ddbbeb4ee138f00bc3d04193467b4917fc2b461c71662efa00e41920c",
+      "gitBlobSha1": "2768257ce044149efe3e02072940401cbf9412c5"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r9/effect.wgsl",
+      "bytes": 18596,
+      "sha256": "2dc9b48d0fb560b49b69e706d050189ab6af9dde822b2a292a7a319d0affa3e2",
+      "gitBlobSha1": "9df2df2418f3b81b926d35d77f498e6ffe2c3d33"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r9/preview.mjs",
+      "bytes": 7845,
+      "sha256": "a708d18980d282a5611e4a936f46a3203f28259bbd83f8a1ca3edde640ca2b1e",
+      "gitBlobSha1": "6cca667004a236623ce105e493f13c36220c73e6"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r9/index.html",
+      "bytes": 2208,
+      "sha256": "4c20c92d0834fd4f0b0108b70ce912766a713daeb25453460e52e2142f62bf2f",
+      "gitBlobSha1": "9aa5a03f3ef4512404f420cabffe116510483faa"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r9/gallery.html",
+      "bytes": 1359,
+      "sha256": "cb2879e4a1b2db1b906cd2f97d2b6aea8652302d0d062735b998929f2e1c01c0",
+      "gitBlobSha1": "b37143c21a2eee7de459d8747a19c7e001a777cc"
+    }
+  ]
+}
