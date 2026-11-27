@@ -1,0 +1,87 @@
+{
+  "schema": "dva-timekeeper-limited-observation/v1",
+  "versionId": "timekeeper-activation-cleanroom-sol61-r6",
+  "packageManifestSha256": "6f09a59bd9921f35561db5756663ec6dc35490f3676440e4db261015a25a854c",
+  "packageSealSha256": "5640b85c783b4aa9fd8fc32f023dbeab55795564f976663a2b4de7384ce40316",
+  "sourceManifestSha256": "caddc128712f1f93cb07cac0cef607fb1cbc09d49b5432002021bbfe08f3bf14",
+  "qualityStatus": "unverified",
+  "qualityReviewStatus": "pending-review",
+  "qualityAccepted": false,
+  "scope": {
+    "route": "https://player13579.github.io/owned-timekeeper-r6?verify=1",
+    "childRoute": "/public/sol61-timekeeper-activation/cleanroom-r6/index.html",
+    "viewportCss": [
+      980,
+      620
+    ],
+    "dpr": 1,
+    "firstFrame": {
+      "completed": true,
+      "ageMs": 0,
+      "phase": "propagate",
+      "passes": 2,
+      "errors": []
+    },
+    "sampledObservationMs": [
+      46.20000001788139,
+      5000
+    ],
+    "sampleCount": 130,
+    "loopIndices": [
+      0,
+      1,
+      2
+    ],
+    "sampledPhases": [
+      "arrest",
+      "held",
+      "propagate",
+      "release"
+    ],
+    "gpuReceiptLimit": "The first frame has an explicit completed GPU receipt. Per-sample snapshots are not treated as independent GPU-completion receipts."
+  },
+  "visualObservation": {
+    "observed": [
+      "blue-green spherical shell",
+      "dial markings",
+      "short and long hands",
+      "pale-blue illumination on the character"
+    ],
+    "notEstablished": [
+      "full lifetime",
+      "pixel-measured hand speed",
+      "exact receiver-light boundaries",
+      "normal audio",
+      "production gallery-parent replay",
+      "game integration"
+    ],
+    "comparison": "R5 route and capture timing differ; no quantitative improvement claim."
+  },
+  "evidenceFiles": [
+    {
+      "path": "events.json",
+      "bytes": 197371,
+      "sha256": "a7e4e5f8b76d94a8b646312808ef3e44aa32ce265a8c128436d1b06005f71af2"
+    },
+    {
+      "path": "final.png",
+      "bytes": 67524,
+      "sha256": "69b73a387e4b2e71562aa34301e79428ace89f457d6f8fac53d84f659e5c1906"
+    },
+    {
+      "path": "video-3s.png",
+      "bytes": 3453,
+      "sha256": "37b8d7e3ff2954414bd9e6e685226d8dad87731a3053a27a41451cc2dcdc8e2e"
+    },
+    {
+      "path": "video-7s.png",
+      "bytes": 49132,
+      "sha256": "e68fea21b7189a2b5349d01149366c2851b2380bc3d1c304f07278a2be062ec9"
+    },
+    {
+      "path": "video-11s.png",
+      "bytes": 48179,
+      "sha256": "27d100b1ab26eb777a4528f412914a1b285634c3856872c62f75c03e1e3a66c5"
+    }
+  ]
+}
