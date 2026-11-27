@@ -1,0 +1,73 @@
+{
+  "schema": "dva-orichalcum-normal-slash-r10-review/v1",
+  "versionId": "orichalcum-normal-slash-sol61-r10",
+  "packagePins": {
+    "galleryManifestSha256": "b5b8452db60f84d9bc1a3f5afd2d2abff91d528bf384f71bc0789058adb35af5",
+    "sourceManifestSha256": "94976dc58b4111c4d5860ba11bf2c14d8295933c2686a66c5e07e7f2db497794",
+    "packageSealSha256": "4423ff11bb7b1f98b63be3b3fdf10ecd0410801a4e60d284746f72e66214689f",
+    "shaderSha256": "c0cfd20718772952b7f04a35114b10de638c3747808212d88d994432e85b4d26"
+  },
+  "technical": {
+    "status": "pass-limited-first-frame-only",
+    "scope": "Owned verify harness served the exact child route https://player13579.github.io/public/astra62-orichalcum-normal-slash/r10/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=orichalcum-normal-slash-sol61-r10&verify=1&height=64. Raw WGSL response matched the package. H64 canvas 980x620, DPR1. One firstFrame GPU receipt completed with validation, no errors, uniform age 106.0ms and submitted age 106.4ms. Forty timestamped captures span 256–837ms; images are not bound to individual GPU receipts.",
+    "notEstablished": [
+      "40 GPU-completed frames",
+      "short flash capture",
+      "full effect lifetime",
+      "normal audio",
+      "production parent replay",
+      "main game integration"
+    ]
+  },
+  "quality": {
+    "status": "unverified",
+    "reviewStatus": "pending-review",
+    "accepted": false,
+    "outcome": "scoped-sampled-emission-visible-material-lighting-unverified",
+    "observed": "Inspected active captures 00, 33, 04 and 14 show sharp white-gold/gold arcs, bright blade face and warm hand light at actual size. No concrete emission defect or physical break is established from these inspected samples. Metal material recognition and nearby-light causality remain unverified.",
+    "limitations": "Forty captures are spaced 256–837ms apart and are not bound to individual GPU receipts, so short flashes may be missed and the captures do not establish full-lifetime quality. R9 comparison uses a full-gallery-page screenshot with different placement and time; do not claim quantitative improvement or regression. Flicker, normal audio, formal production parent, and game integration remain unverified."
+  },
+  "comparison": {
+    "versionId": "orichalcum-normal-slash-sol61-r9",
+    "events": "r9-baseline-events.json",
+    "image": "r9-fullpage-frame-09.png",
+    "interpretation": "Full-page context only with placement and timing mismatch; not a controlled same-phase or same-size comparison."
+  },
+  "evidenceFiles": [
+    {
+      "path": "events.json",
+      "bytes": 9481,
+      "sha256": "5fd0b5b523d7c831ac91795f63e21060ea621345586fb5d957f69cef97c4310a"
+    },
+    {
+      "path": "frame-00.png",
+      "bytes": 9852,
+      "sha256": "6cb79e2e28243246a9d6ed76a1d21aa8390d3d4afa4278139babf7eccc3e6257"
+    },
+    {
+      "path": "frame-33.png",
+      "bytes": 9689,
+      "sha256": "dc7b2b2f78470023ddecc593999b6ccb22792c2845634e1f1127acedad8d8d6c"
+    },
+    {
+      "path": "frame-04.png",
+      "bytes": 9677,
+      "sha256": "d9f745e0fe8da449f590595a344f3df8a4197c967de6390597b98762b30c0e23"
+    },
+    {
+      "path": "frame-14.png",
+      "bytes": 9621,
+      "sha256": "7a3911fe0a7c10e6121855dc5d63ad3f77b96f1b5ca67a224beeb27dfc5e1dd0"
+    },
+    {
+      "path": "r9-baseline-events.json",
+      "bytes": 7921,
+      "sha256": "887b6acf55fa1abca2e3836c0a25934d8ce407fc4b134d56a4b48511b52c1a53"
+    },
+    {
+      "path": "r9-fullpage-frame-09.png",
+      "bytes": 157198,
+      "sha256": "0c278a93d1fdde7871abfc8da5480d2acb41e9736db6a2a502d8ab8d5cb049e2"
+    }
+  ]
+}
