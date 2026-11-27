@@ -1,0 +1,49 @@
+{
+  "schema": "dva-e-quality-review-evidence/v1",
+  "effectGroupId": "quantum-temperature-hot-astra62",
+  "versionId": "quantum-temperature-hot-sol61-r8",
+  "reviewStatus": "needs-improvement",
+  "qualityAccepted": false,
+  "qualityStatus": "not-accepted",
+  "qualityReviewOutcome": "scoped-sampled-water-material-readability-insufficient",
+  "scope": {
+    "route": "owned verify parent harness -> R8 gallery.html child iframe; embed=1, galleryAutoLoop=1, galleryVersionId=quantum-temperature-hot-sol61-r8, verify=1, height=64",
+    "canvas": "980x620 CSS px; DPR 1",
+    "gpu": "R8 exact frozen effect.wgsl response SHA matched; one firstFrame completion confirmed at 148.6 ms; 24 image/sample timestamps are not 24 GPU completion receipts; errors 0",
+    "observedImages": [
+      "frame-01.png",
+      "frame-03.png",
+      "frame-09.png",
+      "frame-16.png"
+    ],
+    "duplicateImageFact": "frame-03.png and frame-09.png are byte-identical SHA-256 5eebb0d0dd1053918eda1d6ce8c7ad9b4311c4585affba40205b08560efdb93a and count as one distinct image",
+    "findings": [
+      "Pale blue surface lines and a broad warm-orange response are visible in the inspected captures.",
+      "Water thickness/material and progression of heating remain insufficiently legible at actual size.",
+      "R7 capture is asynchronous; no quantitative difference, regression, or improvement is claimed.",
+      "The inspected captures do not establish full-lifetime behavior, heat/emission causality, flicker, audio, formal public-parent replay, or main-game integration."
+    ]
+  },
+  "evidence": [
+    {
+      "path": "/public/astra62-quantum-temperature-hot-r8-review-evidence-1127/r8-events.json",
+      "bytes": 6569,
+      "sha256": "450309951369014bae2b5d9e3042012d573696977e4f5b900394e5af4782476d"
+    },
+    {
+      "path": "/public/astra62-quantum-temperature-hot-r8-review-evidence-1127/r8-frame-01.png",
+      "bytes": 16993,
+      "sha256": "fafddcfba21c323ec1a80cd3e56ec4887f4f16691ef913783c49de812fb4cbe5"
+    },
+    {
+      "path": "/public/astra62-quantum-temperature-hot-r8-review-evidence-1127/r8-frame-03.png",
+      "bytes": 17594,
+      "sha256": "5eebb0d0dd1053918eda1d6ce8c7ad9b4311c4585affba40205b08560efdb93a"
+    },
+    {
+      "path": "/public/astra62-quantum-temperature-hot-r8-review-evidence-1127/r8-frame-16.png",
+      "bytes": 17487,
+      "sha256": "af63ebf604f07e58abb784f32751f9cf9816e028b6506034e9bd23d8b87bf861"
+    }
+  ]
+}

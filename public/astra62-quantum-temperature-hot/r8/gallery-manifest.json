@@ -1,0 +1,118 @@
+{
+  "versionId": "quantum-temperature-hot-sol61-r8",
+  "group": "quantum-temperature-hot-astra62",
+  "title": "高温水生成 R8",
+  "creatorModelId": "gpt-6.1-sol",
+  "creatorDisplayName": "GPT-6.1-Sol",
+  "creatorResponseId": "resp_07d076278725cf84016b0972a4147487d0ba45bcfda152b130",
+  "creativeEdition": 8,
+  "creativeEditionLimit": 10,
+  "manualReview": false,
+  "previewKind": "webgpu",
+  "anchor": "effect-H64",
+  "zoom": 1,
+  "previewOnly": true,
+  "galleryListingEligible": true,
+  "publicationEligible": false,
+  "qualityReviewStatus": "not-reviewed",
+  "qualityAccepted": false,
+  "technicalReplayStatus": "not_run",
+  "nativeStatus": "not_run",
+  "visualStatus": "not_run",
+  "iframeStatus": "not_run",
+  "parentGalleryReplayStatus": "not_run",
+  "normalAudioListening": "not_run",
+  "soundStatus": "not_run",
+  "adoption": "unknown",
+  "userAdopted": false,
+  "gameIntegrationStatus": "not_connected",
+  "publicationKind": "creative",
+  "creativeIdentity": "quantum-temperature-hot-sol61-r8",
+  "status": "R8 standalone package candidate; CPU syntax and contract checks passed; standalone GPU and quality review pending",
+  "reason": "R8 explores depth-separated convection, curved liquid-surface cues and shaded water volume while preserving the existing warm source response. GPU replay, water-material readability, audio listening, parent-gallery replay and gameplay integration remain separate and unverified.",
+  "automaticIframe": true,
+  "sourceUrl": "/public/astra62-quantum-temperature-hot/r8/index.html",
+  "source": {
+    "provider": "OpenAI Responses API",
+    "responseId": "resp_07d076278725cf84016b0972a4147487d0ba45bcfda152b130",
+    "requestSha256": "9700079c2b97a78798f8e0dab225c8474efd317508f1500673ec5add66dd8cff",
+    "outputSha256": "c32306d6497faaf0d7edc9365fa02bbc573c76774eed7273abfe5cff698f366f",
+    "parentVersionId": "quantum-temperature-hot-sol61-r7",
+    "parentGalleryManifestSha256": "2917d74d9212ac9bdaafdc4fb42a8cf482992b44f8671b83d2806b51e5a30e50",
+    "parentEffectSha256": "71d4ff163fcfe0caa89722a5d350c0e41fa3f368d221c4993a4d01eb5c1b95ca",
+    "basePublicHead": "c343ad0ec9b79a5d571d30408c85ad9d549d0f45"
+  },
+  "page": "/public/astra62-quantum-temperature-hot/r8/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=quantum-temperature-hot-sol61-r8",
+  "durationMs": 3080,
+  "restMs": 900,
+  "startupAgeMs": {
+    "min": 132,
+    "max": 2669
+  },
+  "evidence": {
+    "readiness": "candidate-only; CPU syntax, fixture and dependency checks passed; standalone GPU pending",
+    "currentOwnership": "temporary R8 candidate derived from exact public R7 package; public ownership not asserted",
+    "verifyMute": "not_run",
+    "nativeRuntimeFullLifeActualSizeEmissionOrdinaryListeningQualityAndAdoption": "not_verified",
+    "mainGame": "not_connected",
+    "creativeChangeScope": [
+      "effect.wgsl",
+      "hot.mjs version"
+    ]
+  },
+  "abi": {
+    "fixture": "committed",
+    "adapterPath": "public/astra62-quantum-temperature-hot/r6/gallery-adapter.mjs",
+    "adapterGitBlob": "e38f0cae9d1bc350a7422e6c8fa29c68c524cd36",
+    "uniformBytes": 32,
+    "uniformValues": [
+      "width",
+      "height",
+      "age",
+      "scale",
+      "reduced",
+      "live",
+      "padding",
+      "padding"
+    ],
+    "gatePcmAndFixture": "unchanged"
+  },
+  "files": [
+    {
+      "path": "public/astra62-quantum-temperature-hot/r8/hot.mjs",
+      "bytes": 3469,
+      "sha256": "9d3c8193c48d8d5b8156e43891a531b29c37d2f38d1ca25c4f6af85b04a86175"
+    },
+    {
+      "path": "public/astra62-quantum-temperature-hot/r8/effect.wgsl",
+      "bytes": 18057,
+      "sha256": "78b8f485e83d5045b83a8f4b9da40d9b5d5d8351bb560441d8815562180bc1c2"
+    },
+    {
+      "path": "public/astra62-quantum-temperature-hot/r8/gallery-adapter.mjs",
+      "bytes": 17887,
+      "sha256": "8e8bfbc8063aab81fa13aad7a79938d9049de0dd533345ce76ec6de5b91cfa82"
+    },
+    {
+      "path": "public/astra62-quantum-temperature-hot/r8/gallery.html",
+      "bytes": 1075,
+      "sha256": "8d453018dd87200ba5633d5d3365f64f133bdebb9b643416f56c6b53d5bf591a"
+    },
+    {
+      "path": "public/astra62-quantum-temperature-hot/r8/index.html",
+      "bytes": 4325,
+      "sha256": "9d328b3b6f21e2368cfd5ad31a2cc3cfa093e808c39a15764b6da38ff23bf432"
+    }
+  ],
+  "designSummary": "左岸の斜めの切り口が光る。その光を浅い石棚が途中まで受け止め、棚の先を通った分だけが一段低い砂岩に届く。棚の先端と底の明部の間に残る暗がりも、光の道筋の一部である。水面がひと押しされると、動かない先端を境に二つの面への光の配分が変わる。水が静まっても、底の明部を横切る石目と、その水面上の端で、温水越しの見え方を比べられる。",
+  "remainingCreativeEditions": 2,
+  "creativeGrant": {
+    "limit": 5,
+    "editionNumber": 3,
+    "consumedAfterR8": 3,
+    "remainingAfterR8": 2,
+    "supersedesHistoricalZeroRemainingForAdditionalGrant": true
+  },
+  "historicalCreativeEditionLimit": 5,
+  "additionalCreativeGrantLimit": 5
+}
