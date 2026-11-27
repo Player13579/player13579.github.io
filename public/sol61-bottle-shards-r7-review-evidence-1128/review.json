@@ -1,0 +1,71 @@
+{
+  "schema": "dva-bottle-shards-quality-review/v1",
+  "versionId": "bottle-shards-cleanroom-sol61-r7",
+  "manifestSha256": "bc2cdcf88c9132f498bd4713a57d4f8be76ffa545fb71eae9823d4f4332c493e",
+  "sealSha256": "52f24bd799b614ff6d2ac7c61147adbaf68547f8eebbac7b2a3ea3b55d1449d0",
+  "sourceManifestSha256": "fe4ace14c0b3d547da101d5130d9584fbb95243f6446fbaabf3a5be7d0250f46",
+  "effectSha256": "d3dfc17c3c01c70f8c873e4277fbd1e11ebd1e420c315c12c549290d85dfe2d8",
+  "creatorResponseId": "resp_06fdb1e219b86600006b0a10dc6a3087d0b600f7e27b406345",
+  "creatorModelId": "gpt-6.1-sol",
+  "qualityStatus": "not-accepted",
+  "qualityReviewStatus": "needs-improvement",
+  "qualityAccepted": false,
+  "wholeEffectQualityAccepted": false,
+  "outcome": "scoped-held-orientation-change-observed-glass-material-readability-insufficient",
+  "scope": {
+    "visual": [
+      "held-0 shows a fracture flash and clustered shards",
+      "held-200 shows a small angled fragment shape where R6 showed a more upright strip",
+      "held-500 shows separated shard tilts",
+      "held-1000 shows five fragments lying along the floor with a small reflection",
+      "At H64 the shards remain thin and dark; broad transparent glass surfaces and thickness are difficult to read",
+      "held-1600 is in the fade region; its darkness alone is not treated as a defect"
+    ],
+    "technical": [
+      "firstFrame completed",
+      "24-second run with 240 sampled records across eight variants and five phase receipt types",
+      "errors array empty"
+    ],
+    "viewport": "H64, 980x620, DPR1",
+    "run": "Exact-pin candidate verify harness",
+    "route": "/public/sol61-bottle-shards/cleanroom-r7/index.html?verify=1&height=64"
+  },
+  "limitations": [
+    "The held screenshots are not bound to exact GPU receipt frames; visual observations do not establish every-frame GPU completion.",
+    "R6 comparison used the prior public version under a different route; frames are not proven same-GPU-frame matched, so no quantified improvement or regression is claimed.",
+    "The support-envelope animation changes shard orientation and support through contacts; it is not a rigid-body solver and does not establish angular-momentum conservation.",
+    "Only the sampled mineral-water holds were visually reviewed; other variants, complete visual lifetime, normal audio listening, formal public-parent replay and game integration remain unverified."
+  ],
+  "evidence": [
+    {
+      "path": "events.json",
+      "bytes": 410082,
+      "sha256": "377a54c74a546832cbdc7a77407390d973dc0dac60707e831f356f76344e1c96"
+    },
+    {
+      "path": "hold-0.png",
+      "bytes": 12851,
+      "sha256": "03d994279435e4aa52205b0e2094fd3f2866d0895d8c4de8c7ff8ec64ed2b9bd"
+    },
+    {
+      "path": "hold-200.png",
+      "bytes": 12355,
+      "sha256": "c152e0c3f392fa495fad99f2a04757237558c76a454996cc3bac36aa1292a891"
+    },
+    {
+      "path": "hold-500.png",
+      "bytes": 12703,
+      "sha256": "c7eb250983bc61015a5f9d4986ad198a9b5c7101e2d904ba6e22932a4e1bc1f4"
+    },
+    {
+      "path": "hold-1000.png",
+      "bytes": 12791,
+      "sha256": "d232970b23e5431ac49478c35f8274b1f3d20838a23fc161336e6910fed7e6d5"
+    },
+    {
+      "path": "hold-1600.png",
+      "bytes": 12163,
+      "sha256": "096871f0b461cac93bbfeade18a7495d9f5ee88ec05e48bcb5cc0632012ae625"
+    }
+  ]
+}
