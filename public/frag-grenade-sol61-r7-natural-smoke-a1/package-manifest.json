@@ -1,0 +1,95 @@
+{
+  "schema": "dva-effect-package-manifest/v1",
+  "versionId": "frag-grenade-sol61-r7",
+  "group": "gunner-frag-grenade-sol61",
+  "eventType": "grenade-frag-impact",
+  "durationMs": 900,
+  "gameRadius": 132,
+  "entry": "index.html",
+  "publicEntry": "public/frag-grenade-sol61-r7-natural-smoke-a1/index.html",
+  "runtimeClosure": [
+    "index.html",
+    "app.mjs",
+    "runtime.mjs",
+    "source/plan.mjs",
+    "source/shaders.mjs",
+    "source/sound.mjs"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1253,
+      "sha256": "56f8094f14534c57f95350416754b250ce0d2ef23b5f629083e562b7a25b6daa"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9682,
+      "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 9850,
+      "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 4530,
+      "sha256": "e6a97c5267c2c5be1e5a2e379a7a30d11e23a4eae412c15a0cc9e7b7f06ad54b"
+    },
+    {
+      "path": "source/shaders.mjs",
+      "bytes": 13944,
+      "sha256": "f0ae6f0449c824d066f185ef9b7ad4f9ab93b4a2f821a127d4a7df58664fb11f"
+    },
+    {
+      "path": "source/sound.mjs",
+      "bytes": 4071,
+      "sha256": "9add2914db7d6cf0a2ce2b22800f772446bfcde9fda012d1264d22ff25b46413"
+    }
+  ],
+  "author": "GPT-6.1-Sol",
+  "userAdopted": false,
+  "adoptionLabel": "unknown/unadopted candidate",
+  "qualityStatus": "not-reviewed",
+  "qualityAccepted": false,
+  "technicalStatus": "candidate-static-checked-awaiting-native",
+  "parent": {
+    "versionId": "frag-grenade-sol61-r6",
+    "publicEntry": "public/frag-grenade-sol61-r6-smoke-roll-a1/index.html",
+    "manifestSha256": "48d9ee914560a13a864fe5b1e963a911be601d9f622225e3e51a7bd0c6e79a3b",
+    "sealSha256": "deccde13a0fd56308a4cd3e2edb7eb633c59086d2cb23f733565bf29b5e6af19"
+  },
+  "creativeEditionLineage": {
+    "edition": "R7",
+    "allowance": "fourth of up to five additional improvement editions authorized for each unadopted E group",
+    "additionalAllowed": 5,
+    "additionalConsumed": 4,
+    "additionalRemaining": 1,
+    "historicalPreR1Count": "unknown",
+    "historyReset": false,
+    "adoptionAtBase": "unknown/unadopted"
+  },
+  "scope": "Improve natural smoke material by replacing R6 periodic folds with irregular broad density variation and unequal domain warping; preserve R6 support envelope/ignition/source, R4 fragments/material/trajectory, event/cause/clocks, duration/radius, ABI, controls, optical integration, floor/scene paths, SFX and runtime unchanged.",
+  "validation": {
+    "sourceSyntax": "pass-node-check-all-runtime-modules",
+    "cpuContract": "pass-r7-package-and-scope-invariants",
+    "wgslCompilation": "not_run",
+    "nativeReplay": "not_run",
+    "parentGalleryReplay": "not_run",
+    "fullQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "evidence": {
+    "basePublicHead": "605f78c88508630ae4bfb3ca4f4042443c6e84f8",
+    "parentR6PublicEntry": "public/frag-grenade-sol61-r6-smoke-roll-a1/index.html",
+    "parentManifestSha256": "48d9ee914560a13a864fe5b1e963a911be601d9f622225e3e51a7bd0c6e79a3b",
+    "parentSealSha256": "deccde13a0fd56308a4cd3e2edb7eb633c59086d2cb23f733565bf29b5e6af19",
+    "r6VisualEvidence": "private:TEMP/dva-frag-r6-final-gpu-1127",
+    "apiDesign": {
+      "model": "gpt-6.1-sol",
+      "responseId": "resp_0760421367025037016b090444ab7887d09ba82f02451eac8e",
+      "outputSha256": "d1796d4af59c0830f779231d8687bf8ca678f424844ae379b191a317651ac4bf"
+    }
+  }
+}

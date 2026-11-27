@@ -1,0 +1,76 @@
+{
+  "schema": "dva-frag-r7-limited-gpu-review/v1",
+  "versionId": "frag-grenade-sol61-r7",
+  "groupId": "gunner-frag-grenade-sol61",
+  "packageManifestSha256": "f8085130f259b2bb6522cbf1ce61edf9839a461162eb5c18d1417a4f0ec8d53f",
+  "packageSealSha256": "2a536f213ef74bd8bafe7d82803b633c097743bb9c357db540c5035637b2e657",
+  "shaderSha256": "f0ae6f0449c824d066f185ef9b7ad4f9ab93b4a2f821a127d4a7df58664fb11f",
+  "eventsSha256": "5653975a1e7e704291a80377344f4b652fc7d2cb2e376b69d22e6c6c92b06ed9",
+  "comparisonReference": {
+    "versionId": "frag-grenade-sol61-r6",
+    "path": "public/frag-grenade-sol61-r6-comparison-evidence-1127/age-500.png",
+    "sha256": "ac76fa1b38a9b061e4e2fe72b528595fa517091e9efa0f4e13a42ca060931ac1"
+  },
+  "scope": {
+    "mode": "private standalone WebGPU verify mode (audio muted)",
+    "actorHeight": 64,
+    "scale": 1,
+    "fixedAgesMs": [
+      0,
+      55,
+      150,
+      300,
+      400,
+      500,
+      650,
+      800,
+      950
+    ],
+    "naturalSamples": 32,
+    "passesPerFrame": 3,
+    "rendererErrors": 0,
+    "pendingAtCapture": 0,
+    "normalAudioListening": "not_run",
+    "publicParentGalleryReplay": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "observations": {
+    "vsR6": "Regular concentric stripes are reduced; broad internal variation is visible at 500 ms. At 800 ms the smoke remains a smooth blurred single-mass-like form.",
+    "quality": "not-accepted",
+    "qualityReviewStatus": "needs-improvement",
+    "finding": "Natural smoke volume is not achieved at 800 ms.",
+    "limitations": "Private standalone comparison only; public parent-gallery replay, normal audio listening, Safari/iPad, game integration and flicker are unverified/not assessed."
+  },
+  "evidenceFiles": [
+    {
+      "path": "age-300.png",
+      "sha256": "91519135d7b7300bc1ab6ceaaa8c0a64e08be5db7d1f75ef6ec0e8c3f5c93d16",
+      "bytes": 18190
+    },
+    {
+      "path": "age-400.png",
+      "sha256": "29b18168677945b7a771366063b075b61dc2e8f0cce9f9183e895f7389dc35b0",
+      "bytes": 17233
+    },
+    {
+      "path": "age-500.png",
+      "sha256": "2e07a46676f0cf0d08a9cd88a54b6c82ece196d6035114126c9f7d446a5f7f0f",
+      "bytes": 18092
+    },
+    {
+      "path": "age-650.png",
+      "sha256": "cb8a81e632a9812b3715c2238b0f36e8af47ce460d836a04fc3693654d5dab83",
+      "bytes": 19098
+    },
+    {
+      "path": "age-800.png",
+      "sha256": "bf03f824f81720d548581dc382b45596d036a9587c17f8b5324f8eb421d4a8f8",
+      "bytes": 18619
+    },
+    {
+      "path": "play-02.png",
+      "sha256": "0cbd049bf7b4bdbfbdd3c478119fb0f4b16d360296d1e3d1bc63fa909ad91e92",
+      "bytes": 18695
+    }
+  ]
+}

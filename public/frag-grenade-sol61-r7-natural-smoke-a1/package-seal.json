@@ -1,0 +1,70 @@
+{
+  "schema": "dva-frag-r7-seal/v1",
+  "versionId": "frag-grenade-sol61-r7",
+  "manifestSha256": "f8085130f259b2bb6522cbf1ce61edf9839a461162eb5c18d1417a4f0ec8d53f",
+  "sourceLineage": {
+    "versionId": "frag-grenade-sol61-r7",
+    "parentVersionId": "frag-grenade-sol61-r6",
+    "parentPublicEntry": "public/frag-grenade-sol61-r6-smoke-roll-a1/index.html",
+    "parentManifestSha256": "48d9ee914560a13a864fe5b1e963a911be601d9f622225e3e51a7bd0c6e79a3b",
+    "parentSealSha256": "deccde13a0fd56308a4cd3e2edb7eb633c59086d2cb23f733565bf29b5e6af19"
+  },
+  "creativeAuthor": "GPT-6.1-Sol",
+  "creativeIncrement": 1,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1253,
+      "sha256": "56f8094f14534c57f95350416754b250ce0d2ef23b5f629083e562b7a25b6daa"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9682,
+      "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 9850,
+      "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 4530,
+      "sha256": "e6a97c5267c2c5be1e5a2e379a7a30d11e23a4eae412c15a0cc9e7b7f06ad54b"
+    },
+    {
+      "path": "source/shaders.mjs",
+      "bytes": 13944,
+      "sha256": "f0ae6f0449c824d066f185ef9b7ad4f9ab93b4a2f821a127d4a7df58664fb11f"
+    },
+    {
+      "path": "source/sound.mjs",
+      "bytes": 4071,
+      "sha256": "9add2914db7d6cf0a2ce2b22800f772446bfcde9fda012d1264d22ff25b46413"
+    }
+  ],
+  "technicalScope": {
+    "sourceSyntax": "pass-node-check-all-runtime-modules",
+    "cpuContract": "pass-r7-package-and-scope-invariants",
+    "actualWGSLCompilation": "not_run",
+    "nativeReplay": "not_run",
+    "parentGalleryReplay": "not_run",
+    "quality": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "authorization": {
+    "edition": "R7",
+    "allowance": "fourth of up to five additional improvement editions authorized for each unadopted E group",
+    "additionalAllowed": 5,
+    "additionalConsumed": 4,
+    "additionalRemaining": 1,
+    "historicalPreR1Count": "unknown",
+    "historyReset": false,
+    "adoptionAtBase": "unknown/unadopted"
+  },
+  "apiDesign": {
+    "model": "gpt-6.1-sol",
+    "responseId": "resp_0760421367025037016b090444ab7887d09ba82f02451eac8e",
+    "outputSha256": "d1796d4af59c0830f779231d8687bf8ca678f424844ae379b191a317651ac4bf"
+  }
+}
