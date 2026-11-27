@@ -1,0 +1,40 @@
+{
+  "schema": "dva-dot-item-transfer-recipient-source/v2",
+  "versionId": "dot-item-transfer-recipient-r2",
+  "creator": "dot",
+  "creativeRevision": 2,
+  "trigger": {
+    "type": "transfer-in",
+    "variant": "item",
+    "radius": 150,
+    "durationMs": 1800,
+    "visibility": "viewer-is-recipient"
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1898,
+      "sha256": "a34d43251601ff92f883639246340435543e08e2d2d8cf9d5157b95a700a8958"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 23415,
+      "sha256": "b568239bf642c969d838472f03526586f42db4fa35586ee370a0d522926b8900"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 9386,
+      "sha256": "606c72905ff5432eb4a8ece3bf728f412d7b8c78c708079829abec89ce9d6fd2"
+    },
+    {
+      "path": "body.png",
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    },
+    {
+      "path": "host-core.mjs",
+      "bytes": 4933,
+      "sha256": "9660d4b99b4ee742974ac49bb6a5373cfd431ef70f165f152d175c9dbf817d81"
+    }
+  ]
+}
