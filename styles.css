@@ -14554,3 +14554,40 @@ body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active
     padding-inline: 2px;
   }
 }
+
+/* Match clock: display-only. Keep clear of the top system UI and touch HUD. */
+#ideaVictoryHud:not([hidden]) {
+  position: absolute;
+  z-index: 23;
+  inset-block-start: max(58px, calc(env(safe-area-inset-top, 0px) + 36px));
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  color: #f4fbff;
+  background: rgb(13 34 47 / .84);
+  border: 1px solid rgb(164 220 233 / .64);
+  border-radius: 9px;
+  padding: 4px 9px;
+  line-height: 1.2;
+  white-space: nowrap;
+  font: 700 clamp(11px, 1.65vw, 14px)/1.2 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  user-select: none;
+}
+#ideaVictoryHud:not([hidden])[data-mode="pending"] {
+  color: #ffefbb;
+  border-color: rgb(255 231 158 / .85);
+}
+#ideaVictoryHud:not([hidden])[data-mode="waiting"] {
+  color: #d9eff4;
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 701px) {
+  .board-wrap:has(#clairvoyanceFieldFollow:not([hidden])) #ideaVictoryHud:not([hidden]) {
+    inset-block-start: max(94px, calc(env(safe-area-inset-top, 0px) + 76px));
+  }
+}
+body:not(.game-open) #ideaVictoryHud,
+body.result-presentation #ideaVictoryHud,
+body:has(:is(#expandedMapOverlay,#keybindOverlay,#killCameraOverlay,#vendingFullMount,#fieldFeedPanel):not([hidden])) #ideaVictoryHud {
+  display: none !important;
+}

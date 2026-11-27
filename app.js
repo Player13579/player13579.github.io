@@ -16913,7 +16913,42 @@ function ensureTeleportTargetForMode(data) {
   if (otherTarget) els.teleportTargetSelect.value = otherTarget.value;
 }
 
+// The match has no fixed Idea deadline before an eligible arrival.
+// Never guess somebody else's private progress from the round start.
+function ideaVictoryClockState(data, liveNow) {
+  const phase = data?.phase;
+  if (phase !== "playing" && phase !== "meeting") return null;
+  const sample = Number(data.serverNow);
+  const deadline = Number(data.pendingIdeaVictoryAt);
+  const paused = phase === "meeting";
+  if (!Number.isFinite(deadline) || deadline <= 0) {
+    return { mode: "waiting", text: "イデア終了 未確定", title: "誰かが善のイデアへ到達すると、勝利までの残り時間を表示します。" };
+  }
+  if (!Number.isFinite(sample) || sample <= 0) return null;
+  const now = paused || !Number.isFinite(liveNow) ? sample : Math.max(sample, liveNow);
+  const seconds = Math.max(0, Math.ceil((deadline - now) / 1000));
+  if (!seconds && !paused) {
+    return { mode: "pending", text: "イデア決着 確認中", title: "到達者の勝利判定を対戦側で確認中です。" };
+  }
+  const clock = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+  return paused
+    ? { mode: "paused", text: `イデア終了 ${clock} 停止中`, title: "会議中はイデア決着までの残り時間が止まります。" }
+    : { mode: "pending", text: `イデア終了まで ${clock}`, title: "成立したイデア勝利によって対戦が終わるまでの残り時間です。" };
+}
+
+function renderIdeaVictoryClock(data) {
+  const node = document.getElementById("ideaVictoryHud");
+  if (!node) return;
+  const display = ideaVictoryClockState(data, estimatedServerNow(data));
+  if (node.hidden === Boolean(display)) node.hidden = !display;
+  if (!display) return;
+  if (node.dataset.mode !== display.mode) node.dataset.mode = display.mode;
+  if (node.textContent !== display.text) node.textContent = display.text;
+  if (node.title !== display.title) node.title = display.title;
+}
+
 function renderStatus(data) {
+  renderIdeaVictoryClock(data);
   if (data.phase === "lobby" || data.phase === "selecting") {
     els.activeEffectsPanel.hidden = true;
     els.itemControl.hidden = true;

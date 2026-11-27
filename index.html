@@ -20,7 +20,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
   document.documentElement.classList.add("dva-ipad-ui-comfort");
 }
     </script>
-  <link rel="stylesheet" href="styles.css?v=8ef3929496731a5e00cb824d63bd6e828a7c0ac0">
+  <link rel="stylesheet" href="styles.css?v=79c9b0d94f6f83bdcc8e3e6e4a3ba970a5df6666">
   </head>
   <body>
     <section id="startScreen" class="start-screen" data-ui-region="home-screen" aria-label="ホーム画面">
@@ -313,6 +313,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
               <button id="mapActionButton" data-hotkey="M" type="button" aria-controls="expandedMapOverlay" aria-expanded="false">マップを開く</button>
             </div>
           </section>
+          <span id="ideaVictoryHud" role="timer" aria-live="off" hidden></span>
           <canvas id="webgpuMainCanvas" class="webgpu-main-canvas" width="980" height="620" tabindex="-1" role="img" aria-label="ゲームマップ" aria-describedby="gameCanvasStatusSummary"></canvas>
           <span id="clairvoyanceFieldFollow" aria-label="千里眼の追尾先切り替え" hidden><span>‹ 前の追尾先</span><span>次の追尾先 ›</span></span>
           <aside id="webgpuFrameCostPanel" class="webgpu-frame-cost-panel" aria-label="WebGPUフレーム診断" hidden>
@@ -808,7 +809,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
     <script src="object-space-collision.js?v=webgpu-main-bootstrap-v5"></script>
     <script src="webgpu-game-input-surface.js?v=webgpu-only-input-v2"></script>
     <script src="dva-full-canvas-ui.js?v=full-canvas-ui-r1&amp;fieldUi=field-ui-persistent-forward-20261126&amp;unifiedPanel=one-match-panel-forward-20261126-1349-8f4f39c9b518&amp;onePagePanel=single-page-panel-forward-20261126-1407-27b1d0304f9b&amp;weaponPanelOwner=weapon-panel-owner-forward-20261126-1432-457efa34746a&amp;launcherStrictTouchC195=launcher-strict-touch-c195-forward-20261126-1942-796d6d154b1a&amp;closeForAction=6b841668367d"></script>
-    <script src="app.js?v=afee826cd165b2a44577f36a7b0960ea56d8c10b"></script>
+    <script src="app.js?v=0e9a6c1a46eb29842ee89ea4f4bcb8779f0419a6"></script>
     <script>
 (() => {
   if (new URLSearchParams(location.search).get('viewportCheck') !== '1') return;
