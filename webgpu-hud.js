@@ -53,7 +53,7 @@
     const infinite = Boolean(self.fighterInfiniteResources);
     const bars = [
       { label: 'SP', value: infinite ? maxStamina : Math.max(0, stamina), max: maxStamina,
-        color: stamina <= 0 ? '#fb7185' : '#22c55e', text: infinite ? '∞' : `${compact(stamina, true)}/${compact(maxStamina, true)}` },
+        color: stamina <= 0 ? '#fb7185' : '#22c55e', text: infinite ? '∞' : `${stamina > 0 && stamina < .5 ? '0+' : compact(stamina, true)}/${compact(maxStamina, true)}` },
       { label: 'MP', value: infinite ? manaMax : Math.max(0, mana), max: manaMax,
         color: self.mentalState === '理知' ? '#a78bfa' : self.mentalState === '気概' ? '#fbbf24' : '#fb7185',
         text: infinite ? '∞' : `${compact(mana)}/${compact(manaMax)}` },

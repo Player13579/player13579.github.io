@@ -15153,6 +15153,13 @@ function syncRenderPlayers(nextData) {
   }
 }
 
+// Match the server's voluntary-movement gate without suppressing held input.
+// Recovery, relocation and forced-position reconciliation remain authoritative.
+function selfStaminaStopsPrediction(player, data) {
+  return player?.id === data?.selfId && player?.alive === true &&
+    Number.isFinite(data.self?.stamina) && data.self.stamina <= 0;
+}
+
 function advanceRenderPlayers(data) {
   const dt = state.frameDelta || 16.67;
   const timestamp = performance.now();
@@ -15160,7 +15167,8 @@ function advanceRenderPlayers(data) {
     const player = data.players.find((entry) => entry.id === playerId);
     if (!player) continue;
     const isSelf = playerId === data.selfId;
-    const localDirection = isSelf ? getDirection() : null;
+    const exhausted = selfStaminaStopsPrediction(player, data);
+    const localDirection = isSelf ? (exhausted ? { dx: 0, dy: 0 } : getDirection()) : null;
     const moving = isSelf
       ? Boolean(localDirection.dx || localDirection.dy)
       : current.moving;
@@ -15226,7 +15234,8 @@ function advanceRenderPlayers(data) {
     // Releasing input is locally authoritative until the server acknowledges
     // the stop timestamp. Holding the predicted point prevents a stale room
     // snapshot from pulling the character back during that round trip.
-    if (isSelf && localMovementPredictionPending()) {
+    if (exhausted) current.velocityX = current.velocityY = 0;
+    if (isSelf && !exhausted && localMovementPredictionPending()) {
       current.velocityX = 0;
       current.velocityY = 0;
       continue;
@@ -15526,7 +15535,7 @@ function syncAccessibleGameStatus(data) {
     ? `${activeStatusLabels.join("、")}。` : "状態異常なし。";
   const summary = `${phaseLabel}。${current.name}、${current.role}、${current.operator}、${current.alive ? "生存" : "戦闘不能"}。` +
     `HP ${formatAccessibleResource(current.health)}/${formatAccessibleResource(current.maxHealth)}、` +
-    `SP ${Math.round(current.stamina)}、MP ${formatAccessibleResource(current.mana)}、` +
+    `SP ${current.stamina > 0 && current.stamina < 0.5 ? "1未満" : Math.round(current.stamina)}、MP ${formatAccessibleResource(current.mana)}、` +
     `ACC ${current.acceleration.toFixed(2)}${current.movementAccActive ? " 移動固定有効" : ""}、` +
     `${current.credits}クレジット、心状態 ${current.mentalState}。${statusSummary}`;
   if (els.canvasStatusSummary.textContent !== summary) els.canvasStatusSummary.textContent = summary;
@@ -18810,7 +18819,7 @@ function objectiveText(data) {
   }
   if (!self.alive) return "死亡中です。残ったタスクは完了扱いです。";
   if (self.chatMuted) return "復活後のため、この試合ではチャットできません。";
-  return `タスクはSPを消費せず、端末の近くで停止し続けると自動実行。回避は${Number(self.dodgeStaminaCost) || 60}SPを消費します。現在 ${Math.floor(self.stamina || 0)}SP / ${dodgeText}`;
+  return `タスクはSPを消費せず、端末の近くで停止し続けると自動実行。回避は${Number(self.dodgeStaminaCost) || 60}SPを消費します。現在 ${self.stamina > 0 && self.stamina < 1 ? "1未満の" : Math.floor(self.stamina || 0)}SP / ${dodgeText}`;
 }
 
 function renderUtility(data) {
@@ -19892,7 +19901,11 @@ function applyMovementAck(result) {
   state.lastMovementServerNow = Math.max(state.lastMovementServerNow, serverNow);
   const player = data.players.find((entry) => entry.id === data.selfId);
   if (!player) return;
-  data.self.stamina = result.stamina;
+  // A late movement ACK must not resurrect movement after a fresh zero-SP
+  // snapshot (or re-freeze after a newer recovery snapshot).
+  if (appliesMovementProjection && Number.isFinite(result.stamina)) {
+    data.self.stamina = result.stamina;
+  }
   if (Number.isFinite(Number(result.maxStoredStamina))) {
     data.self.maxStoredStamina = Math.max(Number(result.maxStoredStamina), Number(result.stamina) || 0);
   }
@@ -32982,6 +32995,7 @@ function drawNameplate(player, ghost, y) {
 function motionFor(player, data) {
   const current = state.motion.get(player.id) || { dx: 0, dy: 1, moving: false };
   if (player.id !== data.selfId) return current;
+  if (selfStaminaStopsPrediction(player, data)) return { ...current, moving: false };
   const direction = getDirection();
   if (direction.dx || direction.dy) {
     return { dx: direction.dx, dy: direction.dy, moving: true };
