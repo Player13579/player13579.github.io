@@ -1,0 +1,72 @@
+{
+  "schema": "dva-orichalcum-normal-slash-r9-review/v1",
+  "versionId": "orichalcum-normal-slash-sol61-r9",
+  "packagePins": {
+    "galleryManifestSha256": "14f7c8f97d5e7ded4e1aa29aec17b8db7b2d067c520040cdb01f074c56005b16",
+    "sourceManifestSha256": "5a5dc78707e7f6cf474490dc9fb5667218b8799fe12ee769a3804c4dfe215c45",
+    "packageSealSha256": "12da13c8deb659e3a807ff9a1e8e40d353920060f194244bdb168b636452213a",
+    "shaderSha256": "a0b6df5ef49e32ce1d9731563b312ed385bb963296623ad797518cc51fad29cf"
+  },
+  "technical": {
+    "status": "pass-limited-first-frame-only",
+    "scope": "Owned verify harness https://player13579.github.io/owned-r9-harness?verify=1 loaded the exact R9 gallery child route /public/astra62-orichalcum-normal-slash/r9/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=orichalcum-normal-slash-sol61-r9&verify=1&height=64. Served raw WGSL SHA matched the R9 package. H64, canvas 980x620, DPR1. One ready firstFrame receipt completed with validation and no errors; uniform age 117.0ms, submitted age 117.8ms. Forty image timestamps span 236–818ms; images are not bound to per-image GPU receipts.",
+    "notEstablished": [
+      "40 GPU-completed frames",
+      "production parent gallery lifecycle",
+      "full effect lifetime",
+      "normal audio listening",
+      "main-game integration"
+    ]
+  },
+  "quality": {
+    "status": "unverified",
+    "reviewStatus": "pending-review",
+    "accepted": false,
+    "outcome": "scoped-sampled-emission-visible-material-lighting-unverified",
+    "observed": "Inspected active captures 10, 39, 00 and 32 show a sharp yellow-gold arc, bright blade face and warm hand light at actual size. No concrete emission defect or physical break is established from these images. Metal material recognition and nearby-light causality remain unverified.",
+    "limitations": "Samples are 236–818ms apart and are not receipt-bound, so a short flash may be missed and these captures cannot establish full-lifetime quality. R8 comparison uses a full-page image with different layout/time; do not infer quantitative improvement or regression. Ordinary audio, production parent, and main-game integration were not evaluated."
+  },
+  "comparison": {
+    "versionId": "orichalcum-normal-slash-sol61-r8",
+    "events": "r8-baseline-events.json",
+    "image": "r8-fullpage-frame-09.png",
+    "interpretation": "Non-synchronous full-page context only; not a controlled actual-size or same-phase comparison."
+  },
+  "evidenceFiles": [
+    {
+      "path": "events.json",
+      "bytes": 9441,
+      "sha256": "b8876c5a6dfda49872b7fc523c3cbfd8f73c0eaafabd55fe3bf1ad080a862a5a"
+    },
+    {
+      "path": "frame-10.png",
+      "bytes": 9850,
+      "sha256": "541e5b8de09803296987a4ec87cc9923fc34c59d213e8a822b97db68297a27cc"
+    },
+    {
+      "path": "frame-39.png",
+      "bytes": 9737,
+      "sha256": "9b24ca0744822bfaf727a2e11b2bb51b6546f3411682a5262e53e2769c7a1520"
+    },
+    {
+      "path": "frame-00.png",
+      "bytes": 9666,
+      "sha256": "7c3a54413adda6e52889cea989759fede3e4b8cecca558ae6d3ea5bedea88359"
+    },
+    {
+      "path": "frame-32.png",
+      "bytes": 9643,
+      "sha256": "4cfd8911229131539637e49742e99eafc80cad29f94e03dbcb31d3089747c6f2"
+    },
+    {
+      "path": "r8-baseline-events.json",
+      "bytes": 7965,
+      "sha256": "d6989570d71b6dd42a434a7f2cdc0cb6a0ac18d28fe072794a93f23743c880d5"
+    },
+    {
+      "path": "r8-fullpage-frame-09.png",
+      "bytes": 158366,
+      "sha256": "31866ee56c847daf33f3eda1f86e53e3e65bdfcf4a3b2a8c66e3f615fa282764"
+    }
+  ]
+}
