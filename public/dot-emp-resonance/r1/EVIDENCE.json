@@ -1,0 +1,76 @@
+{
+  "schema": "dva-dot-e-technical-replay/v1",
+  "versionId": "dot-emp-resonance-r1",
+  "galleryOnly": true,
+  "qualityReviewStatus": "pending-review",
+  "userAdopted": false,
+  "tests": {
+    "rejectedFixtures": 8,
+    "timelineSamples": 2006,
+    "boundedMeshSamples": 1430,
+    "pulseOrderAndUnrelatedFieldsInvariant": true,
+    "audioSampleRates": [
+      8000,
+      22050,
+      24000,
+      44100,
+      48000,
+      96000
+    ]
+  },
+  "display": {
+    "renderer": "Chromium software WebGPU (SwiftShader Vulkan)",
+    "viewportsCssPixels": [
+      [
+        844,
+        390
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "DPR": 2,
+    "actorHeightReferenceCssPixels": 64,
+    "backgrounds": [
+      "dark",
+      "bright"
+    ],
+    "motionModes": [
+      "normal",
+      "reduced"
+    ],
+    "timesMs": [
+      0,
+      160,
+      330,
+      500,
+      680,
+      1000
+    ],
+    "sampleCount": 48,
+    "sameEmptyEndpoints": true,
+    "activeFramesVisiblyDistinct": true,
+    "sameConditionComparison": "Compared with opposite-phase cancellation at 160 / 330 / 500 / 680ms on dark and bright backgrounds; narrow paired lobes become a single expanding continuous ribbon, rather than erasing two sheets."
+  },
+  "gallerySwitch": {
+    "sequence": [
+      "dot-emp-resonance-r1",
+      "dot-emp-cancellation-r1",
+      "dot-emp-resonance-r1"
+    ],
+    "readyOnEachSwitch": true,
+    "missingResources": 0
+  },
+  "audio": {
+    "actualBrowserStarts": 2,
+    "remainingVoices": 0,
+    "humanListening": "not_run"
+  },
+  "notVerified": [
+    "Safari",
+    "physical device",
+    "main game integration",
+    "user adoption"
+  ]
+}
