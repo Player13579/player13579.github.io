@@ -4075,6 +4075,7 @@ function setScreen(screen) {
     if (els.sensoryOverlayText) els.sensoryOverlayText.textContent = "";
   }
   state.screen = next;
+  if (next !== "game") document.body.classList.remove("dva-operator-draw-ahead");
   if (next !== "game") syncFullCanvasMatchUi(next, null);
   if (next === "title") showTerminalTitleRendererNotice();
   if (next !== "game") suspendWebGPUMainAppDriver();
@@ -15888,6 +15889,7 @@ function render() {
   els.joinPanel.hidden = true;
   els.selectPanel.hidden = !operatorSelectionVisible;
   const selecting = data?.phase === "selecting";
+  document.body.classList.toggle("dva-operator-draw-ahead", webgpuMainOperatorDrawAhead(data));
   const preparationEditorOpen = settingsOverlayVisible && Boolean(state.preparationEditingField);
   els.pregameCanvasSettings.hidden = !preparationEditorOpen;
   els.operatorSettingStatus.hidden = !settingsOverlayVisible;
@@ -20646,8 +20648,16 @@ function webgpuMainPortraitPreparationLayout() {
     media?.matches === true && visiblePreparationPanel;
 }
 
+function webgpuMainOperatorDrawAhead(data) {
+  return Boolean(WEBGPU_MAIN_OWNER && state.screen === 'game' &&
+    data?.phase === 'selecting' && data.roomId === state.roomId &&
+    data.self?.id === state.playerId && state.roomId && state.playerId && data.map?.id);
+}
+
 function holdWebGPUMainForPortraitPreparationLayout() {
-  if (!webgpuMainPortraitPreparationLayout()) {
+  if (!webgpuMainPortraitPreparationLayout() ||
+      (webgpuMainOperatorDrawAhead(state.data) &&
+       document.body.classList.contains('dva-operator-draw-ahead'))) {
     webgpuMainApp.preparationLayoutSuspended = false;
     return false;
   }
@@ -21002,6 +21012,13 @@ function pumpWebGPUMainAppDriver() {
   }
   const data = state.data;
   const sample = visibleGameplayViewportSample();
+  // On compact portrait the operator panel covers the backing surface. Once
+  // an owned frame is submitted, keep its driver warm without drawing it on
+  // every RAF. A geometry change, a new room or the playing phase resumes
+  // the normal pump immediately.
+  if (webgpuMainPortraitPreparationLayout() && webgpuMainOperatorDrawAhead(data) &&
+      webgpuMainApp.visible && sample && document.body.dataset.webgpuMainCompleteness === 'complete' &&
+      webgpuMainSubmittedFrameCurrent()) return;
   const image = webgpuMainReadyImage(data);
   if (!image && state.screen === "game" && !document.hidden) {
     activateRequiredMapTexture(data);
@@ -21317,7 +21334,10 @@ function pumpWebGPUMainAppDriver() {
     recordWebGPUStartupRequest(startupRequestTrace, requestSerial,
       'visible-admitted', { requestId: receipt.diagnosticRequestId ?? null });
     stopWebGPUMainPresentationWatchdog();
-    if (WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current &&
+    const portraitSelectionDrawn = webgpuMainPortraitPreparationLayout() &&
+      webgpuMainOperatorDrawAhead(data);
+    if (portraitSelectionDrawn) markWebGPUStartupStage('operatorCanvasDrawn');
+    if (!portraitSelectionDrawn && WEBGPU_MAIN_VERIFY_ROUTE && webgpuStartupTiming.current &&
         !webgpuStartupTiming.current.frozen) {
       const trace = webgpuStartupTiming.current;
       const completedAttempt = completeWebGPUStartupAttempt(trace,
