@@ -1,0 +1,129 @@
+{
+  "schema": "timekeeper-r9-limited-technical-review/v1",
+  "versionId": "timekeeper-activation-cleanroom-sol61-r9",
+  "creatorResponseId": "resp_0dc15dd54a84d5d2006b09f286040887d0b466099a881d2a98",
+  "packagePins": {
+    "packageManifestSha256": "5c2ba8f5650e333c2b612fb81c5a3bc4f0c3cba68f48de97e09c3a62893afb92",
+    "sourceManifestSha256": "8abb808a49a70ec6bebcfd988fd3a05d849ed5ec56959d1ac7be569a0e921b04",
+    "packageSealSha256": "2f0ec552daf83c67084c270d80b0ffaa9282653a5a8d61e3667e84dd79aa6d72",
+    "effectModuleSha256": "2876f6d58c2e7e429231d3a4ea660591666be95606b71cfa26dfd7e4e26a2733"
+  },
+  "gpuEvidence": {
+    "route": "/public/sol61-timekeeper-activation/cleanroom-r9/index.html?verify=1",
+    "harness": "owned route-substitution candidate harness",
+    "verify": true,
+    "canvas": {
+      "width": 980,
+      "height": 620,
+      "dpr": 1,
+      "heightMode": 64
+    },
+    "firstFrameCompleted": true,
+    "errors": [],
+    "sampledRecordCount": 120,
+    "observedLoopRange": [
+      0,
+      2
+    ],
+    "observedPhases": [
+      "propagate",
+      "arrest",
+      "held",
+      "release"
+    ],
+    "heldReceipt": {
+      "recorded": true,
+      "submitted": true,
+      "completed": true,
+      "submissionId": 722,
+      "causeId": "timekeeper-activation-cleanroom-sol61-r9:positive-preview-2",
+      "ageMs": 2000,
+      "phase": "held",
+      "active": true,
+      "activePhase": "held",
+      "rendererReceipt": {
+        "versionId": "timekeeper-activation-cleanroom-sol61-r9",
+        "renderPasses": 1,
+        "uniformBytes": 64,
+        "framesRecorded": 722,
+        "submitted": false,
+        "gpuCompletion": "HOST_OWNED_NOT_OBSERVED",
+        "actorVisible": true,
+        "observerActive": true
+      },
+      "sourceOn": true,
+      "mainOn": true,
+      "observerOn": true,
+      "showActor": true,
+      "reducedMotion": false,
+      "direction": 1,
+      "clearPasses": 1,
+      "effectPasses": 1,
+      "passes": 2,
+      "viewportWidth": 980,
+      "viewportHeight": 620,
+      "dpr": 1,
+      "cssWidth": 980,
+      "cssHeight": 620,
+      "canvasConnected": true,
+      "generation": 1,
+      "sourcePositive": true,
+      "fixtureKind": "positive-timekeeper-gallery-preview",
+      "completedAt": 13147.599999964237,
+      "ageMsAtCompletion": 2000,
+      "lifecycleEpoch": 1,
+      "sourceClock": {
+        "elapsedMs": 2000,
+        "loop": 2,
+        "inGap": false,
+        "gapElapsedMs": 0,
+        "held": true
+      },
+      "queueCompletionObserved": true,
+      "hardMuted": true,
+      "submittedAt": 13137.899999976158,
+      "targetPreservedOnResize": true
+    },
+    "heldImagePath": "/public/sol61-timekeeper-activation-r9-review-evidence-1128/held-2000.png",
+    "heldImageSha256": "3f5e1da16e9e6a7d4523dfb75d919a37a53677d959aec66572faf13595c48385",
+    "eventsPath": "/public/sol61-timekeeper-activation-r9-review-evidence-1128/events.json",
+    "eventsSha256": "73472810dc29e81255704f28414bc146d80b182fabf40b0c300b7b7331315328",
+    "limitations": [
+      "Sampled records do not prove GPU completion for every frame.",
+      "The held image is not bound to the exact GPU receipt frame.",
+      "The held capture shows the sphere/star envelope inside the tested 980x620 H64 canvas; this is a bounded observation, not full quality acceptance."
+    ]
+  },
+  "quality": {
+    "status": "unverified",
+    "reviewStatus": "pending-review",
+    "accepted": false,
+    "wholeEffectQualityAccepted": false,
+    "outcome": "scoped-star-keyline-visual-impact-unverified",
+    "scope": "The new R9 keyline is technically replayable under the exact package pins. Independent visual quality acceptance of its star-readability impact is pending; the screenshot only supports the tested held H64 bounds observation.",
+    "unverified": [
+      "full-lifetime appearance",
+      "other viewport sizes",
+      "pixel-to-GPU-receipt matching",
+      "normal audio listening",
+      "Safari/iPad",
+      "main-game integration"
+    ]
+  },
+  "staticValidation": {
+    "status": "pass",
+    "summary": "Independent static review reports exact API WGSL/runtime pins, package closure, R8 timing/phase/SFX/clock/adapter/body preservation, and bounded finite star-keyline support."
+  },
+  "adoption": {
+    "status": "unknown",
+    "userAdopted": false
+  },
+  "creativeEdition": {
+    "historicalLimit": 5,
+    "additionalGrantLimit": 5,
+    "additionalConsumed": 4,
+    "edition": 9,
+    "totalLimit": 10,
+    "remaining": 1
+  }
+}

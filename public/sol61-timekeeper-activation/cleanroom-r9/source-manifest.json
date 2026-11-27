@@ -1,0 +1,121 @@
+{
+  "versionId": "timekeeper-activation-cleanroom-sol61-r9",
+  "schema": "dva-timekeeper-cleanroom-source/v9",
+  "provenance": {
+    "responseId": "resp_0dc15dd54a84d5d2006b09f286040887d0b466099a881d2a98",
+    "model": "gpt-6.1-sol",
+    "requestTextSha256": "1a6cb2474f8f8113194d194a9f601891335cd5b824dd56eaf08a0fbc4291fb23",
+    "requestPayloadSha256": "e531a76d97b11057bcb99f2688e2dc6b043b1ce2bdab98789a483712de0b52a9",
+    "responseJsonSha256": "98d5636c65fb7eaf3d5ccc35097b3202cfe3075650f09f1ed456f0906c594052",
+    "outputTextSha256": "f816dda52851c22cfa594c565230cef62842d4f4bddee21d7848356db98c39b2",
+    "wgslUtf8Sha256": "eadedcc40b65fbd60d82e94d5b0b940f0f023a78dddfdec5c8f35a8418a1f8c9",
+    "contactSheetSha256": "33c7f7f56c84116eefc4a299e9206dce22673d37f269646cefef9351b8155a60",
+    "heldImageSha256": "8098e3f366dd997fdf9acd615423e6c2c931529c47350bd8e14e6a41d1bb3501",
+    "r8ReviewSha256": "987e473a66f86fa2392754858f1f86187f464f1faad5c61e7b3b90649b51c1b5",
+    "r8TechnicalEvidenceSha256": "f286d434f559ca23275bc1b5bfd3be5cbfc6c35bb03ca7cc0b9a1dc2d078e318",
+    "parentVersionId": "timekeeper-activation-cleanroom-sol61-r8",
+    "parentPackageManifestSha256": "29327205f636587e98bf8985ac4f85a7b6cbb557644e50da869cf1846fda1357",
+    "parentPackageSealSha256": "9025ab72601d571b38d68d9604a3192cfa48586c46c9b8c083acc9a7d265546b",
+    "parentSourceManifestSha256": "76b6f18cf703e653fd36e398080b9c5caa0160ed8767daf4c3dc41252eb5e7e7",
+    "basePublicHead": "4ce5c2e41fe77fa93330baa1ab9b042736680321",
+    "currentAssetGalleryBlob": "2cb647ea57a9e6466c28020c8695139ef746b1be",
+    "creativeEdition": 9,
+    "historicalCreativeEditionLimit": 5,
+    "additionalGrant": {
+      "total": 5,
+      "consumed": 4,
+      "remaining": 1
+    }
+  },
+  "qualityReview": {
+    "decision": "The evidence supports one bounded R9 contrast improvement to star integration, not a redesign or a full-quality acceptance claim. Preserve the R8 clipping correction and all timing, source/receiver and host behavior.",
+    "directObservations": [
+      "Appearance: the held image shows a coherent translucent turquoise clock sphere, concentric rings, twelve indices, contrasting gold/ivory hands and a small pale avatar near its lower edge. The sphere, bloom and visible star envelope clear the canvas top in this supplied fixture.",
+      "Source-to-avatar readability: a warm pivot and faint widening bridge toward the avatar are visible in the held image. The relationship is readable on inspection, but subtle; the pale avatar alone does not establish how much illumination it receives.",
+      "Stars: small pale-gold four-point sparks complement the clock without dominating it. Some meet the bright sphere perimeter, where their silhouette has less contrast. Their detailed shape is harder to assess in the reduced contact-sheet tiles.",
+      "Hands: the longer, thinner ivory hand and shorter, broader gold hand are distinguishable in the held image. Sampled hand angles differ, but the images cannot establish exact angular velocity or the 12:1 motion ratio.",
+      "Phase behavior: the 0.50s recording tile is black/startup. Other sampled tiles retain the clock and avatar, and the 7.25s tile shows a smaller clock. These are recording positions, not effect ages; neither the smaller clock nor differences between tiles establish a phase defect."
+    ],
+    "reportedEvidence": [
+      "The official R8 outcome is scoped-clipping-correction-observed-full-quality-unverified, with qualityAccepted=false. It reports correction of the specific R7 held-2000ms H64 top clipping at 980x620 CSS/DPR1.",
+      "The supplied technical evidence reports 120 sampled records across loop indices 0, 1 and 2, receipt counts propagate=14, arrest=6, held=80 and release=20, observed receipt ages 30.3–4991.6ms, and errors=[].",
+      "The held receipt reports age=2000ms, completed=true and two passes, but GPU completion is HOST_OWNED_NOT_OBSERVED. Neither that receipt nor the sampled video is exact-frame-bound to the held screenshot."
+    ],
+    "codeDerivedFacts": [
+      "R8 draws eight filled stars using identical diagonal axes. Their placement, body/glow support and viewport fitting share geometry helpers.",
+      "The minute hand is physically longer: 0.73 times radius versus 0.43 for the short hand. Their angles are 12 times hostAngle and hostAngle respectively; positive angles are clockwise in display coordinates.",
+      "Shader modulation depends only on supplied energy, gates and host angle. A fixed host angle freezes its modulation; the module has no autonomous timer or independent phase.",
+      "The bridge and alpha-confined avatar brightening share the sphere-pivot source, source falloff and receiver gates. They are finite display-space effects, not world lighting.",
+      "The viewport solution includes sphere bloom and conservative star support, then translates the composition without changing the host radius."
+    ],
+    "hypotheses": [
+      "A thin dark-teal backing beneath only the dial-overlapping portions of the existing gold stars should help those sparks remain distinct against the luminous rim. This is a contrast hypothesis supported by the held image and existing star layering, not a demonstrated R8 defect or a visually validated R9 result.",
+      "The faint bridge could potentially be emphasized, but these inputs do not establish that it needs more brightness. R9 therefore leaves source/receiver lighting unchanged."
+    ],
+    "unverifiedScope": [
+      "Full-lifetime visual acceptance is not established. Sampled video frames are not exact-frame-bound to GPU receipts.",
+      "Exact hand-motion pixels, continuous hold stability, phase-boundary appearance, loop transitions and release behavior remain visually unverified.",
+      "Other viewports/DPRs, Safari/iPad, audio and main-game integration remain unverified.",
+      "The replacement module has not been compiled or rendered in this response; its visual gain remains a candidate for comparison."
+    ]
+  },
+  "designSummary": {
+    "name": "Dial-side star separation",
+    "singleImprovement": "Add a narrow existing-palette teal keyline beneath each unchanged gold star only where the star overlaps the clock face, suppressing that backing over opaque avatar pixels.",
+    "rationale": "The held image shows delicate gold sparks meeting a bright turquoise rim. Local contrast separation preserves their small ornamental scale without enlarging stars, brightening the composition or competing with the hands.",
+    "implementation": [
+      "Reuse the star signed-distance shape and the existing minute-hand separation color.",
+      "Composite the backing before the original star glow and body; retain original star colors, geometry, placement, gains and shared 45-degree orientation.",
+      "Multiply the backing by the existing finiteGlow, sphereMask and one minus actorAlpha. Its support cannot exceed the already-fitted star glow.",
+      "Leave the complete R8 viewport-fit block and starHalfExtent helper unchanged."
+    ],
+    "scope": "Complete replacement WGSL only, based on timekeeper-activation-cleanroom-sol61-r8 and supplied embedded-WGSL SHA256 0ab063c56dc08fdc1599bde879f70e825abc71bb9b52aad22ca24a8ea9f40c9a. This is the R9 improvement 4/5 candidate; no publication, adoption, host or asset-gallery mutation is performed."
+  },
+  "checks": {
+    "validationLevel": "Source inspection and analytic fixture-bound check only; no WGSL compiler, GPU render or new capture was executed.",
+    "interface": "Preserved four vec4f uniform members: 16 floats/64 bytes. Group 0 bindings 0–2, actor texture/sampler, vs/fs entry points, unconditional derivative/texture sampling and premultiplied output remain unchanged.",
+    "r8ViewportFit": "The complete R8 fitting block, starOffset, starArmLength and starHalfExtent are unchanged. The new keyline is multiplied by the original finiteGlow, so it introduces no support beyond the envelope already reserved for each star. No R7 layout replacement is introduced.",
+    "fixtureAnalyticTest": {
+      "inputs": "980x620 CSS, H64, DPR1; host radius range 38–155.",
+      "calculation": "aa=0.60 CSS px. Star armLength is at most 4.8px; the original conservative star half-extent is at most 8.4px. At radius=155, star offset plus extent is at most 1.11*155+8.4=180.45px, below sphereExtent=1.18*155=182.9px. Thus the parent envelope is exactly ±182.9px on both axes.",
+      "result": "The 365.8x365.8px envelope fits the 960x600px margin interior. Feasible center ranges are x=192.9–787.1 and y=192.9–427.1 CSS px, preserving at least 10px top clearance. Smaller radii in the supplied range have no larger support. This establishes non-expansion and fit analytically, not rendered-pixel acceptance."
+    },
+    "actorAndReceiver": "Actor coordinates, dimensions, UV sampling, texture alpha formula, actor gate and original image compositing are unchanged. The added star backing is zero over opaque avatar pixels. SOURCE_RGB, bridge, pivot source, finite falloff, observer gate and receiver illumination equations are unchanged; no world light, external emitter or game-state meaning is added.",
+    "subjectAndMotion": "Sphere materials, clock rings, indices, original star colors and all hand drawing are unchanged. Eight stars retain one shared 45-degree orientation. Hands retain clockwise hostAngle and 12*hostAngle directions, with the minute hand longer. No timer, oscillator or phase is added.",
+    "hostContract": "No external code is edited. The supplied host contract remains 5000ms, propagate 0–460ms, arrest 460–650ms, held 650–4560ms, release 4560–5000ms and LOOP_GAP=600ms, with host-owned radius 38→155 and angle -2.30→0.45. These values are not reimplemented inside WGSL. Renderer, host, adapter, body, PCM/SFX, fixture, author and lifecycle remain outside this replacement.",
+    "authority": "Uses the supplied authority at HEAD 4ce5c2e41fe77fa93330baa1ab9b042736680321 and consumer blob 2cb647ea57a9e6466c28020c8695139ef746b1be. No independent repository search or artifact creation is claimed. R8 remains latest/default, userAdopted=false, with its existing publication status; this response does not alter those records.",
+    "remainingValidation": [
+      "Compile and render with the unchanged R8 host; compare R8/R9 held-2000ms H64 captures at 980x620/DPR1, including the full top envelope and stars crossing the rim.",
+      "Confirm the keyline improves star separation without visibly muddying small sparks or changing avatar edges.",
+      "Inspect exact effect-age captures around every phase boundary, continuous hand motion, held stability, release and loop restart.",
+      "Leave full-lifetime quality, cross-viewport fit, exact-frame GPU completion, Safari/iPad, audio and game integration unverified until separately tested."
+    ]
+  },
+  "files": [
+    {
+      "sha256": "2b1e6a7bef738a83ef9c44fd62b21694f3cd68ba7a6f48c7a863d4f14141d7b0",
+      "path": "index.html",
+      "bytes": 2990
+    },
+    {
+      "sha256": "9bb807886e4e06175e1d08625063f8b09c12b182734dda1cf4feaee492674edf",
+      "path": "gallery-adapter.mjs",
+      "bytes": 32491
+    },
+    {
+      "sha256": "2876f6d58c2e7e429231d3a4ea660591666be95606b71cfa26dfd7e4e26a2733",
+      "path": "effect.mjs",
+      "bytes": 23237
+    },
+    {
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "path": "body.png",
+      "bytes": 243081
+    },
+    {
+      "sha256": "39db0aa755bfe10c02d507100928d76f56e281f1431cd9a1ee1c8e2e0d76f8af",
+      "path": "host-core.mjs",
+      "bytes": 17274
+    }
+  ]
+}
