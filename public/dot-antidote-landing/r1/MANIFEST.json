@@ -1,0 +1,75 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-antidote-landing-r1",
+  "group": "dot-antidote-landing",
+  "title": "投げた解毒剤の着地",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "hazard-antidote",
+    "sources": [
+      "throw-landing"
+    ],
+    "sizes": [
+      120,
+      150
+    ],
+    "previewDisplayPolicy": "public-landing-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2336,
+      "sha256": "a6fe8705b050f646893b02841c235712a0fa459af5a0d80461fc981b75bde8ae"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16745,
+      "sha256": "537ede6c50b2c97179384cc6bd6ff927f81f7c095a37bdbf8c67d5e690007e6c"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1310,
+      "sha256": "742d0fe8a050bd4d6a326f8ea762d1409d56df1c21477e1c2a632a8770d0e95c"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 3965,
+      "sha256": "c653f1d6326ae12958aafb900532cf7beb916a930e837817367a725e21387d50"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11190,
+      "sha256": "b2159222c6b23f412654420976f327e6b4b79ad764140365203185b5c29f8864"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1970,
+      "sha256": "431ddb5a1f5e4fb2352d1ed8f5dd2a1589ef7d3096b603be32ba99ac9421b730"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1432,
+      "sha256": "f8781d5959eeb7e9359989da580c2f40e2c380d5cdeccca6b37f7d92a0fc59b9"
+    }
+  ]
+}
