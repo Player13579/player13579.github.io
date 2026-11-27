@@ -1,0 +1,65 @@
+{
+  "schema": "dva-gallery-quality-review/v1",
+  "versionId": "timekeeper-activation-cleanroom-sol61-r8",
+  "reviewStatus": "pending-review",
+  "qualityStatus": "unverified",
+  "qualityAccepted": false,
+  "wholeEffectQualityAccepted": false,
+  "outcome": "scoped-clipping-correction-observed-full-quality-unverified",
+  "scope": {
+    "route": "https://player13579.github.io/public/sol61-timekeeper-activation/cleanroom-r8/index.html?embed=1&galleryAutoLoop=1&galleryVersionId=timekeeper-activation-cleanroom-sol61-r8&packageSchema=dva-timekeeper-cleanroom-gallery%2Fv8&packageManifestSha256=29327205f636587e98bf8985ac4f85a7b6cbb557644e50da869cf1846fda1357&packageSealSha256=9025ab72601d571b38d68d9604a3192cfa48586c46c9b8c083acc9a7d265546b&sourceManifestSha256=76b6f18cf703e653fd36e398080b9c5caa0160ed8767daf4c3dc41252eb5e7e7&verify=1&height=64&galleryStartupToken=0123456789abcdef0123456789abcdef&galleryAttemptEpoch=1",
+    "canvas": {
+      "width": 980,
+      "height": 620,
+      "dpr": 1
+    },
+    "view": "H64 held-at-2000ms candidate capture"
+  },
+  "finding": "The held image shows the clock sphere and star envelope within the canvas top edge, addressing the specific R7 top-clipping observation in this H64 fixture. The R7 and R8 runs used the same harness setting, but the screenshot is not strictly bound to an exact GPU receipt frame; this is a scoped visual observation, not full quality acceptance.",
+  "technical": {
+    "firstFrameCompleted": true,
+    "firstFrameAgeMs": 0,
+    "phaseSampleCount": 120,
+    "loopIndices": [
+      0,
+      1,
+      2
+    ],
+    "phases": [
+      "propagate",
+      "arrest",
+      "held",
+      "release"
+    ],
+    "heldReceipt": {
+      "completed": true,
+      "ageMs": 2000
+    },
+    "errors": [],
+    "servedEffectSha256": "95a44ec3a8cb1b7ec1c3bf5c7bb47d95247e7e6d1d379064ecf25a170110a0a5",
+    "manifestMatch": true,
+    "shaderSha256": "0ab063c56dc08fdc1599bde879f70e825abc71bb9b52aad22ca24a8ea9f40c9a"
+  },
+  "limitations": [
+    "The held screenshot is not strictly tied to the exact completed GPU receipt frame.",
+    "This evidence concerns the H64/980x620/DPR1 fixture only.",
+    "Full-lifetime and other-viewport quality remain unverified.",
+    "Pixel-level hand movement, audio listening, production parent-gallery replay and game integration remain unverified."
+  ],
+  "evidence": [
+    {
+      "path": "events.json",
+      "bytes": 184345,
+      "sha256": "f286d434f559ca23275bc1b5bfd3be5cbfc6c35bb03ca7cc0b9a1dc2d078e318"
+    },
+    {
+      "path": "held-2000.png",
+      "bytes": 82344,
+      "sha256": "8098e3f366dd997fdf9acd615423e6c2c931529c47350bd8e14e6a41d1bb3501"
+    }
+  ],
+  "comparedWith": {
+    "versionId": "timekeeper-activation-cleanroom-sol61-r7",
+    "finding": "The tested R7 held capture showed the sphere top clipped; the R8 held image shows the envelope inside the top edge. No full-quality or exact-frame comparison is claimed."
+  }
+}

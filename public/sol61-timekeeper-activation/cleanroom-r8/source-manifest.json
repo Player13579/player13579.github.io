@@ -1,0 +1,77 @@
+{
+  "versionId": "timekeeper-activation-cleanroom-sol61-r8",
+  "schema": "dva-timekeeper-cleanroom-source/v8",
+  "provenance": {
+    "responseId": "resp_05741ccb86c5c75b006b09e99d994c87d09becbff262916c0a",
+    "model": "gpt-6.1-sol",
+    "requestTextSha256": "9b826f1df37052ab622b3270f97e3dba871251f64ecc9ccc681f3033b601047a",
+    "requestPayloadSha256": "7dcf9b9f4660a21d1704b14ebe4fe18d15f2f02965fb42b761fdf9df5504c4a9",
+    "responseJsonSha256": "0edf9c323894a2eee6111fb4323c001ddab2790e215d81c0e589804406106525",
+    "outputTextSha256": "75170abe823c404edc07bf8ce272df72569278d53b0ab40f77a7cb25e35432c4",
+    "wgslUtf8Sha256": "0ab063c56dc08fdc1599bde879f70e825abc71bb9b52aad22ca24a8ea9f40c9a",
+    "designCanonicalJsonSha256": "f3a1db7494c48ac45ca3bb4d902929cfb2866bc9a7251ef00d4c7b1a0b8f1049",
+    "parentVersionId": "timekeeper-activation-cleanroom-sol61-r7",
+    "parentPackageManifestSha256": "fa84a33b25e0f6dcca15eb71e6e6ba91a863146d4473309b65eb982c091f32eb",
+    "parentPackageSealSha256": "e5ae754e631452b70effa133b8772d75422bfa4f8d3e47a0660faa43e7eef7b1",
+    "parentSourceManifestSha256": "7943146f2d4dfd67705127414c59b9dd1536240d1cde74f2a39e954f3c4b2616",
+    "basePublicHead": "c41047d0bc1c5b638f7ffc984da8665574085661",
+    "creativeEdition": 8,
+    "historicalCreativeEditionLimit": 5,
+    "additionalGrant": {
+      "total": 5,
+      "consumed": 3,
+      "remaining": 2
+    }
+  },
+  "designSummary": {
+    "rationale": "Translation-only composition repair of the supplied R7 shader. Preserve its clock, opal material, colors, stars, host-driven motion, emission and alpha-masked reception. Fit the complete finite sphere/star envelope, including bloom and antialiasing support, rather than fitting only star centers or the sphere silhouette.",
+    "changes": [
+      "Add shared starOffset, starArmLength and starHalfExtent helpers so layout and rendering use identical star geometry.",
+      "Initialize actor-relative envelope bounds to ±max(1.18*radius, radius+aa). Union all eight star offsets expanded by max(L*(1+0.75*aa*sqrt(1/L²+1/(0.255*L)²)), L+3*max(0.25*L,aa)), where L is the existing star arm length.",
+      "Use viewportCss=u.viewport.xy/dpr and a 10 CSS px margin. Clamp the original preferred sphere center into [10-envelopeMin, viewportCss-10-envelopeMax], then convert back to actor-relative coordinates. Radius, hand geometry, actor coordinates and actor sampling are not scaled or moved."
+    ],
+    "fixtureGeometry": "Analytically, at 980x620, DPR 1, actor [490,310], H=64 and radius=155, the envelope is ±182.9 CSS px. Sphere center changes from [468.3,145.78] to [468.3,192.9], a [0,+47.12] translation. Sphere silhouette top becomes 37.9; the complete sphere/star support envelope is [285.4,10]–[651.2,375.8], leaving left/right/bottom clearances 285.4/328.8/244.2 CSS px. Star 6 center moves from approximately -20.98 to 26.14 CSS px.",
+    "tradeoff": "The downward correction increases sphere overlap behind the unchanged actor; the actor's existing foreground composition and actual-alpha receiver remain intact. The fit is continuous and introduces no timer. If an untested viewport is physically smaller than the envelope plus 20 px on an axis, that axis balances overflow rather than silently changing the mandated radius or actor geometry; no universal small-viewport fit is claimed. This fallback is not used by the tested fixture.",
+    "checks": {
+      "validation_status": "Source-level and analytic checks only; no WebGPU compilation, render capture or runtime test is claimed.",
+      "invariants": [
+        "ABI remains four vec4f fields at offsets 0/16/32/48 bytes: 64 bytes, 16 floats. Bindings remain uniform 0, actor texture 1, sampler 2; entry points remain vs and fs.",
+        "For each feasible axis, centerCss+envelopeMin >= 10 and centerCss+envelopeMax <= viewportCss-10, within floating-point tolerance. Bounds include all eight star bodies, their finite glow, the sphere silhouette AA and its finite bloom.",
+        "At the supplied held fixture, expect center [468.3,192.9], sphere silhouette top 37.9 and envelope top 10 CSS px. Verify all four edges in the replacement capture, including star 6's complete glow.",
+        "At fixed host uniforms, output is deterministic and held geometry is stationary. No elapsed-time reads, private oscillators, timers or gameplay state were added.",
+        "Host duration 5000 ms, phase boundaries 460/650/4560/5000 ms, loop gap 600 ms, radius 38→155 and angle -2.30→0.45 remain untouched. The shader uses the supplied radius without scale modification.",
+        "Hands retain clockwise directions from hostAngle and 12*hostAngle, with lengths 0.43*radius and 0.73*radius. All eight stars retain the same 45-degree axes, placement formulas, sizes and gains.",
+        "Source-off removes effect emission and reception; observer-off removes receiver brightening and veil but not source emission. Actual actor alpha, UV containment, actor gate and foreground compositing remain unchanged.",
+        "Derivative evaluation and textureSampleGrad remain unconditional. Output remains premultiplied with the existing conditional sRGB encoding.",
+        "No host, renderer, adapter, audio, body, fixture or actor-transform changes are included. Conclusions are limited to the supplied clipping evidence and stated envelope mathematics."
+      ]
+    }
+  },
+  "files": [
+    {
+      "sha256": "b380fbf96769526a13d171e6a1de7c94d41e81406d696e0fe41e6daa920f15ce",
+      "path": "index.html",
+      "bytes": 2990
+    },
+    {
+      "sha256": "9bb807886e4e06175e1d08625063f8b09c12b182734dda1cf4feaee492674edf",
+      "path": "gallery-adapter.mjs",
+      "bytes": 32491
+    },
+    {
+      "sha256": "95a44ec3a8cb1b7ec1c3bf5c7bb47d95247e7e6d1d379064ecf25a170110a0a5",
+      "path": "effect.mjs",
+      "bytes": 22580
+    },
+    {
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "path": "body.png",
+      "bytes": 243081
+    },
+    {
+      "sha256": "533d9e26daaed8e2f140929de1bc88e3f435138ed94f6f16c5fea14d76fe2e3c",
+      "path": "host-core.mjs",
+      "bytes": 17274
+    }
+  ]
+}
