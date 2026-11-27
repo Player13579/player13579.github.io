@@ -14546,3 +14546,11 @@ body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active
   #matchPanelToolbar > #tabletButton {
   display: none !important;
 }
+
+/* Keep the next cooldown on the same line as Renki on narrow touch layouts. */
+@media (max-width: 370px) {
+  body.game-open #gameApp #tabletQuickActions > #tabletRenkiShortcut {
+    font-size: 10px;
+    padding-inline: 2px;
+  }
+}

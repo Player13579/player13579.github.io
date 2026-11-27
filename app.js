@@ -10872,7 +10872,7 @@ function renderTabletControls(data) {
   // native action button の役割別非表示を tablet の枠へ伝播させない。
   els.tabletDodgeShortcut.disabled = els.dodgeButton.disabled || els.dodgeButton.hidden;
   els.tabletDodgeShortcut.hidden = false;
-  setTabletShortcutLabel(els.tabletRenkiShortcut, "練気", els.renkiButton.title || els.renkiButton.textContent || "練気");
+  setTabletShortcutLabel(els.tabletRenkiShortcut, els.renkiButton.textContent || "練気", els.renkiButton.title || "練気");
   els.tabletRenkiShortcut.disabled = els.renkiButton.disabled;
   const donationCost = DVA_ECONOMY.creditIncome.donationCost;
   setTabletShortcutLabel(els.tabletDonateShortcut, "募金", `${donationCost}Cを募金`);
@@ -18915,6 +18915,111 @@ async function toggleMovementAcc() {
   return api("/api/movement-acc", { enabled: !enabled });
 }
 
+// Presentation forecast for v920's actor clock. The server still owns all
+// eligibility, rewards and deadlines. No future cast or input is assumed.
+const renkiForecastCache = { key: "", permanent: 0 };
+function renkiForecastClock(self, sampleAt, currentAt, permanent = 0, desire = false) {
+  const n = (value, fallback = 0) => Number.isFinite(Number(value)) ? Number(value) : fallback;
+  const stop = Math.max(sampleAt, n(self.timeStoppedUntil));
+  const freeze = stop - sampleAt;
+  const slowUntil = Math.max(n(self.receivedDecelerateEndsAt),
+    self.gravityTimeMode === "decelerate" && self.gravityTimeTargetIsSelf
+      ? n(self.gravityTimeEffectiveEndsAt) : 0);
+  const limit = self.limitBreakActive ? Math.max(1, n(self.limitBreakMultiplier, 1)) : 0;
+  const fixed = (self.luminousActive ? 1.65 : 0) +
+    (self.goodActive && self.passivesEnabled ? 1.4 : 0) +
+    (self.mapObjectEffects?.speedBoost ? 1.35 : 0);
+  // Current v920 payload reports the summed multiplier and latest expiry per
+  // source. For stacked entries this is an approximation until the next poll.
+  const timed = Object.values(self.timedAccelerationStacks || {})
+    .map(s => ({ rate: n(s?.multiplier), end: n(s?.endsAt) }))
+    .filter(s => s.rate > 1 && s.end > sampleAt);
+  const clair = Boolean(self.clairvoyanceActive);
+  const masked = freeze > 0 || clair || slowUntil > sampleAt;
+  const atSample = n(self.accelerationMultiplier, NaN);
+  if (!masked && atSample >= 1) {
+    const known = fixed + (limit > 1 ? limit : 0) + timed.reduce((sum, s) => sum + s.rate, 0);
+    const candidate = atSample - known;
+    permanent = candidate > 1 + 1e-6 ? candidate : 0;
+  }
+  const desireBias = self.desireBias === "cognitive-dissonance" ? .72 : 1;
+  const timeRate = desire ? 1 : desireBias;
+  const futureStops = [stop, slowUntil, ...timed.map(s => s.end + freeze)]
+    .filter(t => t > sampleAt).sort((a, b) => a - b);
+  const profile = at => {
+    if (at < stop) return [0, 0];
+    if (clair) return [2 * timeRate, 0];
+    if (at < slowUntil) return [.38 * timeRate, 0];
+    const growing = limit > 0;
+    const total = permanent + fixed +
+      timed.reduce((sum, s) => sum + (s.end + freeze > at ? s.rate : 0), 0) +
+      (growing ? limit + (at - sampleAt) * .0001 : 0);
+    return [(total || 1) * timeRate, growing ? .0001 * timeRate : 0];
+  };
+  function traverse(from, to, targetActorMs = Infinity) {
+    let at = from, spent = 0;
+    for (const end of [...futureStops.filter(t => t > from && t < to), to]) {
+      const dt = end - at;
+      if (dt <= 0) continue;
+      const [rate, slope] = profile(at);
+      if (rate > 0) {
+        const available = dt === Infinity ? Infinity : dt * (rate + .5 * slope * dt);
+        const needed = targetActorMs - spent;
+        if (needed <= available) {
+          const real = slope ? 2 * needed / (rate + Math.sqrt(rate * rate + 2 * slope * needed)) : needed / rate;
+          return { end: at + real, spent: targetActorMs };
+        }
+        spent += available;
+      }
+      at = end;
+    }
+    return { end: at, spent };
+  }
+  const now = Math.max(sampleAt, currentAt);
+  const advanced = traverse(sampleAt, now).spent;
+  return { permanent, advanced, duration(actorMs) {
+    if (!(actorMs > 0)) return 0;
+    return Math.max(0, traverse(now, Infinity, actorMs).end - now);
+  } };
+}
+
+function renkiForecastPresentation(data, liveNow) {
+  const self = data?.self;
+  if (!self || data.phase !== "playing" || !self.alive || self.ejected || self.inVent) return null;
+  const sample = Number(data.serverNow);
+  const now = Number.isFinite(liveNow) ? liveNow : sample;
+  if (!Number.isFinite(sample) || sample <= 0 || !Number.isFinite(now)) return null;
+  const key = [state.roomSessionGeneration, data.roomId, data.battleStartedAt, self.id].join(":");
+  if (renkiForecastCache.key !== key) {
+    renkiForecastCache.key = key;
+    renkiForecastCache.permanent = 0;
+  }
+  const desire = Boolean(self.desireDebtActive || Number(self.mana) <= -100);
+  // Desire's recovery disables the cognitive-dissonance time penalty.
+  const forecast = renkiForecastClock(self, sample, now, renkiForecastCache.permanent, desire);
+  renkiForecastCache.permanent = forecast.permanent;
+  const remainingActorMs = Math.max(0, (Number(self.meditatingUntil) || 0) - sample - forecast.advanced);
+  const rawDesireMs = Number(self.desireRenkiRecoveryMs);
+  const desireMs = Number.isFinite(rawDesireMs) && rawDesireMs > 0 ? rawDesireMs : 3000;
+  return {
+    tap: forecast.duration(desire ? desireMs : 35000),
+    hold: forecast.duration(desire ? desireMs : 350000),
+    remaining: forecast.duration(remainingActorMs),
+    desire
+  };
+}
+
+function renkiForecastSeconds(ms) {
+  return (Math.max(.1, ms / 1000)).toFixed(1).replace(/\.0$/, "");
+}
+
+function renkiForecastLabel(prediction) {
+  if (!prediction) return "練気";
+  return prediction.remaining > 0
+    ? `練気 残約${renkiForecastSeconds(prediction.remaining)}秒`
+    : `練気 約${renkiForecastSeconds(prediction.tap)}秒`;
+}
+
 function updateActionButtons(data) {
   syncClairvoyanceFieldFollow(data);
   const self = data.self;
@@ -19225,18 +19330,15 @@ function updateActionButtons(data) {
   // reads the same constant, so later UI sync cannot replace this detail.
   els.tabletEmpShortcut.setAttribute("aria-description", EMP_CONTROL_DETAIL);
   els.empButton.disabled = !(canUseAbility && empSeconds === 0);
-  const renkiSeconds = Math.max(0, ((self.meditatingUntil || 0) - liveNow) / 1000);
-  const desireRenkiAvailable = self.desireDebtActive || Number(self.mana) <= -100;
-  els.renkiButton.textContent = desireRenkiAvailable
-    ? renkiSeconds > 0
-      ? `欲望回復 ${renkiSeconds.toFixed(1)}秒`
-      : `練気 MP${Number(self.restCompletionManaFloor) || 2} / ${Number(self.desireRenkiRecoveryMs || 3000) / 1000}秒`
-    : renkiSeconds > 0
-      ? `精神統一 ${renkiSeconds.toFixed(1)}秒`
-      : "練気 +10MP / 35秒";
-  els.renkiButton.title = desireRenkiAvailable
-    ? `欲望のMP−100時は${Number(self.desireRenkiRecoveryMs || 3000) / 1000}秒の練気完了でMP${Number(self.restCompletionManaFloor) || 2}へ回復します。完了前にMPは増えません。`
-    : "タップは+10MP・35秒。420ms以上の長押しは+100MP・350秒。どちらも一回だけ自動確定し、反復しません。";
+  const renkiPrediction = renkiForecastPresentation(data, liveNow);
+  const renkiLabel = renkiForecastLabel(renkiPrediction);
+  if (els.renkiButton.textContent !== renkiLabel) els.renkiButton.textContent = renkiLabel;
+  const nextRenkiTitle = renkiPrediction?.desire
+    ? `欲望回復：実時間で約${renkiForecastSeconds(renkiPrediction.tap)}秒（見込み）。完了時にMP${Number(self.restCompletionManaFloor) || 2}へ回復。`
+    : renkiPrediction
+      ? `今の状態での見込み：タップは+10MP・約${renkiForecastSeconds(renkiPrediction.tap)}秒。420ms以上の長押しは+100MP・約${renkiForecastSeconds(renkiPrediction.hold)}秒。新たな加速・減速や中断で変わります。`
+      : "練気";
+  if (els.renkiButton.title !== nextRenkiTitle) els.renkiButton.title = nextRenkiTitle;
   els.renkiButton.disabled = !canUseAbility;
   els.dashButton.disabled = !(isPlaying && !self.ejected && !self.inVent && !actionBlocked && activeStaminaFor(data) > 0);
   els.slowWalkButton.disabled = !(isPlaying && !self.ejected && !self.inVent && !actionBlocked);
