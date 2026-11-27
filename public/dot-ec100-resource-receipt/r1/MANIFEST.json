@@ -1,0 +1,73 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-ec100-resource-receipt-r1",
+  "group": "dot-ec100-resource-receipt",
+  "title": "EC100到達によるMP・SP補充",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "fighter-energy-destruction-milestone",
+    "sources": [
+      "100"
+    ],
+    "eventDurationMs": 0,
+    "visualDurationMs": 720,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2348,
+      "sha256": "b21c28db88cdddd2beaab0a0b8cb09be6018b4e3538617851158b77ea0604f3d"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16771,
+      "sha256": "7204233de2d6b5981e9d4a8e832f7f37988740f2f5c17dcab58fdfd09d8bbb16"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1046,
+      "sha256": "5d270b3f60acf23d96fd93d0d36c2dc8404097d42cdb82c578fc7f6533fe0561"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 7100,
+      "sha256": "c5b881f741f90167415cec843c8d39436b1ee4f0c2176f74000153b88dc3b439"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1482,
+      "sha256": "5bd8ff85c4410fc45a3e01bed000451e33d8f2f0068a634e85115fb0d90b32aa"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 961,
+      "sha256": "99e704d6b5d4b5e2e1dd36bc3ab0092b6ac06eaf4be3f351337b740785b94491"
+    }
+  ]
+}
