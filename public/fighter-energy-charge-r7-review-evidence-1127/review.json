@@ -1,0 +1,81 @@
+{
+  "schema": "dva-fighter-energy-charge-r7-limited-visual-review/v1",
+  "groupId": "fighter-energy-charge-cleanroom-sol61",
+  "versionId": "fighter-energy-charge-cleanroom-sol61-r7",
+  "packageManifestSha256": "b880dae87a6c5ddfe415a9009259de8902676b8ed2b0a6381cb7812d68478a05",
+  "sourceManifestSha256": "e9b676d10e2ef992b5182035708e2cea796c3a15596e55954b55f9ae5e83a8f7",
+  "packageSealSha256": "83f6e8ba8d1ad82a70331d07c90ff15962f13e9cda52cd91c4aacc4c94f6a7a0",
+  "effectModuleSha256": "592579141ff9d0a26213c2959233efea61a6bc640d85c3ba7e40fe4f2f62cabb",
+  "scope": {
+    "route": "/public/sol61-fighter-energy-charge/cleanroom-r7/index.html?verify=1",
+    "mode": "standalone WebGPU verify",
+    "verifyAudio": "muted by verify mode",
+    "fixture": "synthetic-successful-player-receipt",
+    "capture": "24 event samples; H64, 980x620 backing, DPR1; events.errors is empty",
+    "responseManifestAndEffectHashMatchFrozen": true,
+    "screenshotToReceiptExactAgeBinding": false,
+    "allFourVariantsFullLifetime": "not established",
+    "normalAudioListening": "not_run",
+    "parentGalleryReplay": "not_run",
+    "safariReplay": "unverified",
+    "gameIntegration": "not_connected"
+  },
+  "comparison": {
+    "baselineVersion": "fighter-energy-charge-cleanroom-sol61-r6",
+    "baselineImages": [
+      "r6-frame-00.png",
+      "r6-frame-20.png"
+    ],
+    "candidateImages": [
+      "r7-frame-00.png",
+      "r7-frame-09.png",
+      "r7-frame-20.png"
+    ],
+    "variantAndPhaseSynchronized": false,
+    "source": "Independent reviewer inspected these exact original R6/R7 captures. Phase and variant do not match, so no quantitative change or causal sequence is inferred."
+  },
+  "observations": {
+    "quality": "unverified",
+    "qualityReviewStatus": "pending-review",
+    "qualityAccepted": false,
+    "finding": "Some inspected R7 moments show more prominent full-body yellow-white emission than the selected R6 captures. Because phase and variant are not synchronized, the size of the difference and a causal inflow-to-accumulation sequence cannot be established. No new concrete defect was confirmed; whole-effect quality remains unverified.",
+    "limitations": "The 24 event samples are not all valid same-frame completion evidence: at least one sample reports a previous-loop receipt for another current variant. The selected images are not exactly bound to matching frame/variant receipts. All four variants across full lifetime/flicker, normal audio, public parent replay, Safari, and game integration remain unverified. Video was not reviewed."
+  },
+  "evidenceFiles": [
+    {
+      "path": "r6-frame-00.png",
+      "bytes": 10915,
+      "sha256": "8a55f7865be9676c9af2462272bf0b80ef70a6e1ad08c94b05e7341a86b72851"
+    },
+    {
+      "path": "r6-frame-20.png",
+      "bytes": 11157,
+      "sha256": "0adee7614cd829b642af58eaf514d7f440ec1bb8bf363182e0de6db05fccd488"
+    },
+    {
+      "path": "r6-public-events.json",
+      "bytes": 47628,
+      "sha256": "9fcd67552cdeeb117633d387c3c68c7c77d857e5f71a6ae5cfa5d3df5e9edd5c"
+    },
+    {
+      "path": "r7-events.json",
+      "bytes": 50909,
+      "sha256": "dd2f21fc29adb51647e5f8e92375d8d16e70099d61af63ff5519f9cf6b4687b4"
+    },
+    {
+      "path": "r7-frame-00.png",
+      "bytes": 10284,
+      "sha256": "2d78aae75ba1636e7ba0b44c6f7301519ed967d663729223f1e39464d973da60"
+    },
+    {
+      "path": "r7-frame-09.png",
+      "bytes": 8998,
+      "sha256": "80371d292a0e71f85b16873badb80d85e83bc12f64e6c06d213ed570fa154bf6"
+    },
+    {
+      "path": "r7-frame-20.png",
+      "bytes": 10355,
+      "sha256": "1f543118fd6c9ddd06dfa55df578d2432cfe8f618d5798eb06c6a344b75da439"
+    }
+  ]
+}
