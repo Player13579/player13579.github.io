@@ -1,0 +1,97 @@
+{
+  "schema": "dva-effect-package-manifest/v1",
+  "versionId": "frag-grenade-sol61-r5",
+  "group": "gunner-frag-grenade-sol61",
+  "eventType": "grenade-frag-impact",
+  "durationMs": 900,
+  "gameRadius": 132,
+  "entry": "index.html",
+  "publicEntry": "public/frag-grenade-sol61-r5-smoke-volume-a1/index.html",
+  "runtimeClosure": [
+    "index.html",
+    "app.mjs",
+    "runtime.mjs",
+    "source/plan.mjs",
+    "source/shaders.mjs",
+    "source/sound.mjs"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1253,
+      "sha256": "6ed652431dc1705e971acd97c39174a4e9cb66a9a36cbb17359cf45bcdd4a2fb"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9682,
+      "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 9850,
+      "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 4530,
+      "sha256": "04208989984efadf87066ba007e44bcf311564e53f456cb64f3bbe99637c4140"
+    },
+    {
+      "path": "source/shaders.mjs",
+      "bytes": 13134,
+      "sha256": "a9c32c4d0eeacec1d75f477f9ce0807793d1d5f58e5b5c1a92d3950d5d56a7f0"
+    },
+    {
+      "path": "source/sound.mjs",
+      "bytes": 4071,
+      "sha256": "9add2914db7d6cf0a2ce2b22800f772446bfcde9fda012d1264d22ff25b46413"
+    }
+  ],
+  "author": "GPT-6.1-Sol",
+  "userAdopted": false,
+  "adoptionLabel": "unknown/unadopted candidate",
+  "qualityStatus": "not-reviewed",
+  "qualityAccepted": false,
+  "technicalStatus": "candidate-static-checked-awaiting-native",
+  "parent": {
+    "versionId": "frag-grenade-sol61-r4",
+    "publicEntry": "public/frag-grenade-sol61-r4-fragment-clarity-a1/index.html",
+    "manifestSha256": "2143b35c3652464072fc5eebf0d56ff0356db5221081aa123313d8381569982a",
+    "sealSha256": "d76d5417f1acd85ce06adea812dd08e2f2b580b7ca5e110549b54c9ac01c7447"
+  },
+  "creativeEditionLineage": {
+    "edition": "R5",
+    "allowance": "second of up to five additional improvement editions authorized for each unadopted E group",
+    "additionalAllowed": 5,
+    "additionalConsumed": 2,
+    "additionalRemaining": 3,
+    "historicalPreR1Count": "unknown",
+    "historyReset": false,
+    "adoptionAtBase": "unknown/unadopted"
+  },
+  "scope": "Improve the coherent smoke plume rise, roll, connected body contour and gray-brown volume scattering at H64; retain R4 fragments/material/trajectory, ignition/source reaction, event, clocks, duration/radius, ABI, controls, optics, SFX and runtime unchanged.",
+  "validation": {
+    "sourceSyntax": "pass-node-check-all-runtime-modules",
+    "cpuContract": "pass-node-contract-13-checks",
+    "wgslCompilation": "not_run",
+    "nativeReplay": "not_run",
+    "parentGalleryReplay": "not_run",
+    "fullQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "evidence": {
+    "basePublicHead": "4d0a1ccab2e257869bfb3af96f855c399a167512",
+    "parentR4QualityEvidence": "public/frag-grenade-sol61-r4-comparison-evidence-1127/review.json",
+    "apiDesign": {
+      "model": "gpt-6.1-sol",
+      "responseId": "resp_04ad085c8c3f3037016b08d028921087d09e6f32a6027fd853",
+      "outputSha256": "d5e45db9ed2b7205436ff823f6ee12adaf5a21a758f0f0d1fb36fa267b4f3183"
+    },
+    "apiSmokeMaterialRefinement": {
+      "model": "gpt-6.1-sol",
+      "responseId": "resp_035606044f2688f5016b08cf72e95487d0994f48736e748bac",
+      "outputSha256": "291b3aa08d71c1a6a011eac67d5cfb681bf5805037bd04c54448cde154fc61fd"
+    }
+  }
+}

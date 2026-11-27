@@ -1,0 +1,86 @@
+{
+  "schema": "dva-frag-r4-r5-comparison-review/v1",
+  "reviewedAtUtc": "2026-11-27T00:47:21.669Z",
+  "method": "independent private owned-Chrome standalone-route comparison; H64 scale 1; verify=1 muted mode",
+  "versions": [
+    {
+      "version": "r4",
+      "capturedAtUtc": "2026-11-27T00:47:06.496Z",
+      "pageUrl": "https://player13579.github.io/public/frag-grenade-sol61-r4-fragment-clarity-a1/index.html?verify=1",
+      "verifyMode": true,
+      "pageErrors": 1,
+      "fixedAgesMs": [
+        0,
+        55,
+        150,
+        300,
+        500,
+        800,
+        950
+      ],
+      "naturalSampleCount": 28,
+      "completedGpuPassesPerFixedFrame": 3
+    },
+    {
+      "version": "r5",
+      "capturedAtUtc": "2026-11-27T00:47:21.669Z",
+      "pageUrl": "https://player13579.github.io/public/frag-grenade-sol61-r5-smoke-volume-a1/index.html?verify=1",
+      "verifyMode": true,
+      "pageErrors": 0,
+      "fixedAgesMs": [
+        0,
+        55,
+        150,
+        300,
+        500,
+        800,
+        950
+      ],
+      "naturalSampleCount": 28,
+      "completedGpuPassesPerFixedFrame": 3
+    }
+  ],
+  "assessment": {
+    "qualityStatus": "not-accepted",
+    "age300ms": "R5 smoke has greater visibility and height than R4; the main mass is brighter/larger.",
+    "age500to800ms": "The smoke remains higher/visible, but forms one smooth gray mass; internal volume and roll are not distinct enough.",
+    "overall": "Partial improvement; quality remains below acceptance.",
+    "limits": [
+      "Native GPU observations are limited comparative evidence, not full quality acceptance.",
+      "Normal audio listening was not performed.",
+      "Public parent-gallery replay and game integration were not verified."
+    ]
+  },
+  "frames": [
+    {
+      "path": "r4-age-300.png",
+      "bytes": 17327,
+      "sha256": "f8a2a0d207259b7d7db3a61274c49387f221ce193897ed3aac44e3ab63422be3"
+    },
+    {
+      "path": "r4-age-500.png",
+      "bytes": 16643,
+      "sha256": "f58c2b445803f71add5512c8d48b1d83bfc1fc96319bf5febad7f869c03ba9eb"
+    },
+    {
+      "path": "r4-age-800.png",
+      "bytes": 15570,
+      "sha256": "ee7c76d36a4347427a9469d717e420bf469bd41787e0cf3b2cd128b2e4e34e7d"
+    },
+    {
+      "path": "r5-age-300.png",
+      "bytes": 17656,
+      "sha256": "7acf9708a441fc5abe8fb1c3f1d38ef0c3e1b0cc0f6e3eb21c2bf7eeb5108950"
+    },
+    {
+      "path": "r5-age-500.png",
+      "bytes": 17160,
+      "sha256": "a08254b67267d2217b9204f249d5e2ffbb34b5bd42001ae2ad1cedb3a56d590a"
+    },
+    {
+      "path": "r5-age-800.png",
+      "bytes": 18032,
+      "sha256": "83bee652188494d2c7a843b30c5d594f1c204fa1180656439d647aceb74bacbe"
+    }
+  ]
+}
