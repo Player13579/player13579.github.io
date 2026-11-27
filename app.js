@@ -32678,6 +32678,21 @@ function isHoverSprintWalkingSuppressed(player, data = state.data) {
   return Number(actor?.hoverSprintUntil) > estimatedServerNow(data);
 }
 
+// The fixed movement setting can move the body at ACC 2. For leg
+// playback only, convert that travelled distance back to ACC 1. The
+// free-running setting, actor clock, and actual position are untouched.
+function fixedGaitDistanceDivisor(player, data = state.data) {
+  const self = player?.id === data?.selfId ? data?.self : null;
+  const enabled = self?.movementAccEnabled ?? player?.movementAccEnabled;
+  if (enabled === false) return 1;
+  const active = self?.movementAccActive ?? player?.movementAccActive;
+  const selected = Number(self?.movementAcc ?? player?.movementAcc);
+  if (active !== true && !(active == null && enabled === true && selected >= 2)) return 1;
+  if (Number.isFinite(selected) && selected >= 1) return selected;
+  const max = Number(self?.movementAccMax ?? player?.movementAccMax);
+  return Number.isFinite(max) && max >= 1 ? max : 2;
+}
+
 function walkAnimationFrame(player, motion, requestedMode = walkMotionMode(player), requestedStrideDistance = null, requestedHorizontalFacing = null) {
   const moving = motion.moving && !isHoverSprintWalkingSuppressed(player);
   const now = state.frameNow || performance.now();
@@ -32712,15 +32727,15 @@ function walkAnimationFrame(player, motion, requestedMode = walkMotionMode(playe
     const profile = walkMotionProfile(movementMode);
     const strideDistance = Number.isFinite(Number(requestedStrideDistance)) && Number(requestedStrideDistance) > 0 ? Number(requestedStrideDistance) : profile.strideDistance;
     const travelled = Math.hypot(player.x - animation.x, player.y - animation.y);
-    // Drive the gait from actual rendered displacement. Input against a wall
-    // no longer runs the legs in place, and acceleration raises cadence only
-    // because the character really covers more ground.
+    // Detect real displacement (and room jumps) before normalizing playback.
+    // An input against a wall still cannot make the legs cycle in place.
     const discontinuityDistance = Math.max(360, strideDistance * 4);
     if (travelled <= discontinuityDistance) {
-      // Render prediction and remote interpolation can legitimately cover more
-      // than 42% of a stride between samples, especially under acceleration.
-      // Preserve all ordinary displacement and reject only an actual teleport.
-      animation.frame = requestedHorizontalFacing === null ? (animation.frame + travelled / strideDistance * 60) % 60 : ((animation.frame + travelled / strideDistance * 60 * Math.sign((player.x-animation.x)*requestedHorizontalFacing)) % 60 + 60) % 60;
+      const travelledForGait = travelled / fixedGaitDistanceDivisor(player);
+      const increment = travelledForGait / strideDistance * 60;
+      animation.frame = requestedHorizontalFacing === null
+        ? (animation.frame + increment) % 60
+        : ((animation.frame + increment * Math.sign((player.x - animation.x) * requestedHorizontalFacing)) % 60 + 60) % 60;
       if (travelled > 0) animation.lastDisplacedAt = now;
     } else {
       animation.frame = 0;
