@@ -1,0 +1,40 @@
+{
+  "schema": "dva-dot-e-technical-replay/v1",
+  "versionId": "dot-water-field-r1",
+  "galleryOnly": true,
+  "qualityReviewStatus": "pending-review",
+  "userAdopted": false,
+  "source": {
+    "kind": "water",
+    "requires": "visible active hazard field with matching field ID, world center, radius, creation and retirement time"
+  },
+  "numeric": {
+    "rejectedFixtures": 84,
+    "timelineSamples": 8088,
+    "invarianceComparisons": 8088,
+    "validShapeSamplesBeforeOpticalRefinement": 888,
+    "audioSampleRates": [8000, 22050, 24000, 44100, 48000, 96000]
+  },
+  "display": {
+    "renderer": "Chromium software WebGPU (SwiftShader Vulkan)",
+    "samples": 48,
+    "viewportsCssPixels": [[844,390],[390,844]],
+    "devicePixelRatio": 2,
+    "background": ["dark", "bright"],
+    "motion": ["normal", "reduced"],
+    "timeMs": [0,170,430,800,1900,4500],
+    "sameEndpointFrames": true,
+    "sameSettledFrames": true
+  },
+  "gallerySwitch": {
+    "sequence": ["dot-water-field-r1", "dot-decelerate-application-r2", "dot-water-field-r1"],
+    "missingResources": 0,
+    "readyOnEachSwitch": true
+  },
+  "audio": {
+    "actualPlaybackStartsInBrowser": 2,
+    "activeAfterDecay": 0,
+    "humanListening": "not_run"
+  },
+  "notVerified": ["physical iPad", "Safari", "online game integration", "user acceptance"]
+}

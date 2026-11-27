@@ -1,0 +1,81 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-water-field-r1",
+  "group": "dot-water-field",
+  "title": "投擲で生じる水域",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "water-field-snapshot",
+    "requires": "visible matching kind water field with world bounds and its lifecycle",
+    "eventType": "hazard-water",
+    "previewDurationMs": 4500,
+    "previewDisplayPolicy": "field-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2285,
+      "sha256": "6c7b2b3a1128c8e76a576ff6abae0da1e0d8608abe6739470de4dbcd88b0314f"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16601,
+      "sha256": "f974548007291399c022f0a5f56fff88ac545d9ecd10833524fb31e7fb76a354"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1422,
+      "sha256": "c53b46c1b1d5ab24922ee1cb757aa767cefec7336ccbc50681ae4098a880305e"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 1466,
+      "sha256": "a52e12c30e15eb31f6c51c54ec8975e8d1147c5db6a6cf3b5bdd70d07742c034"
+    },
+    {
+      "path": "mesh.mjs",
+      "bytes": 2526,
+      "sha256": "e2f34589e738547fb01f43e5eae6bebc136b61e29f9de46912dd780a3b11b3e6"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 1114,
+      "sha256": "0f2a6990d3ea4b1673c7dea7e05f5082d715d991a2698be8944a6771ec8f8aa4"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11101,
+      "sha256": "a065eabef3d8ef72169f6c9fa4f0475c5184b2c724108f7417ad4633b28fe0c7"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1722,
+      "sha256": "05e5656757d261217b1838610bf8d76228ff46229760a952eb24c7a2b57c33e9"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1936,
+      "sha256": "7e5af89bda7acc4430f53df25996ca3932b9a52ce7edea149795d8168c448ae3"
+    }
+  ]
+}
