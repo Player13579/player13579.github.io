@@ -14142,3 +14142,156 @@ body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameA
   color: #153441 !important;
   text-shadow: none;
 }
+
+/* Match panel: one fixed launcher in both states. Nothing here changes the
+   launcher owner, joystick capture, layout fit logic or modal boundaries. */
+body.game-open.dva-full-canvas #matchUiToggle:not([hidden]) {
+  inset: var(--dva-ui-t) var(--dva-ui-r) auto auto !important;
+  box-sizing: border-box;
+  width: 134px !important;
+  height: 44px;
+  padding-inline: 8px;
+  font-size: 14px !important;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: rgb(16 37 50 / .90);
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+  opacity: 1;
+}
+@media (pointer: fine) and (min-width: 601px) and (min-height: 501px) and (orientation: landscape) {
+  body.game-open.dva-full-canvas #matchUiMapButton:not([hidden]) {
+    top: var(--dva-ui-t) !important;
+    right: calc(var(--dva-ui-r) + 142px) !important;
+    left: auto;
+  }
+  body.game-open.dva-unified-panel-active #matchPanelHeader #matchPanelToolbar {
+    padding-inline-end: 142px;
+  }
+}
+@media (pointer: coarse), (max-width: 600px), (max-height: 500px) and (orientation: landscape) {
+  body.game-open.dva-full-canvas #matchUiToggle:not([hidden]),
+  body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchUiToggle:not([hidden]) {
+    inset: auto var(--dva-ui-r) calc(var(--dva-ui-b) + 14px) auto !important;
+  }
+}
+@media (max-width: 700px), (orientation: portrait) {
+  /* The bottom-right touch launcher and the combat shortcuts each get a
+     distinct lane, whether or not the optional panel is open. */
+  body.game-open.dva-full-canvas #gameApp #tabletPanel:not([hidden]) #tabletQuickActions:not([hidden]) {
+    bottom: calc(var(--dva-ui-b) + 64px) !important;
+  }
+}
+
+/* The transparent canvas-sized shell is not an input target. Explicit panel
+   controls take precedence at their own bounds; empty panel space is not a
+   sheet of glass that swallows movement or shortcut input. */
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active:not(:has(#meetingPanel:not([hidden]))) #gameApp #sidePanel {
+  pointer-events: none !important;
+  animation: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active:not(:has(:is(
+  #expandedMapOverlay, #keybindOverlay, #killCameraOverlay, #fieldFeedPanel, #switchDragMenu,
+  #meetingPanel, #vendingFullMount, #endOverlay
+):not([hidden]))) #gameApp #sidePanel
+  :is(button, input, select, textarea, a[href], summary, label, [role="button"], [role="option"], [contenteditable="true"], #inventoryItemDetail) {
+  pointer-events: auto;
+}
+
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  :is(#matchPanelHeader, #matchPanelToolbar, #matchPanelContentSlot, #matchPanelContent,
+      #statusPanel, #fieldLowerRow, #itemControl, #activeEffectsPanel, #itemInventoryGrid, #inventoryItemDetail),
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  :is(button:disabled, button[aria-disabled="true"], input:disabled, select:disabled, textarea:disabled),
+body.game-open #vendingFullMount:not([hidden])
+  :is(button:disabled, button[aria-disabled="true"], input:disabled, select:disabled) {
+  opacity: 1 !important;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  :is(button:disabled, button[aria-disabled="true"], input:disabled, select:disabled),
+body.game-open #vendingFullMount:not([hidden])
+  :is(button:disabled, button[aria-disabled="true"], input:disabled, select:disabled) {
+  color: #415a63 !important;
+  border-style: dashed;
+  filter: none;
+}
+body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp #sidePanel
+  #matchPanelContent #itemInventoryGrid .item-inventory-choice {
+  background-image: none !important;
+  text-shadow: none;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #matchPanelContent #itemInventoryGrid .item-inventory-choice {
+  grid-template-columns: 24px minmax(0, 1fr);
+  grid-auto-rows: auto;
+  column-gap: 6px;
+  row-gap: 2px;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #matchPanelContent #itemInventoryGrid .item-inventory-choice > :is(.alchemy-choice-icon, img) {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  inset: auto;
+  box-sizing: border-box;
+  width: 24px;
+  min-width: 0;
+  max-width: 100%;
+  height: 24px;
+  margin: 0;
+  align-self: center;
+  object-fit: contain;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #matchPanelContent #itemInventoryGrid .item-inventory-choice > .item-choice-copy {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  padding: 0;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #matchPanelContent #itemInventoryGrid .item-choice-copy :is(strong, small) {
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  transform: none;
+  opacity: 1;
+}
+body.game-open.dva-full-canvas.dva-unified-panel-active #gameApp #sidePanel #matchPanelContent #itemInventoryGrid
+  .item-inventory-choice.selected[data-inventory-kind="weapon"][aria-selected="true"]::after {
+  position: static;
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: start;
+  margin-top: 1px;
+  line-height: 1.2;
+  box-shadow: none;
+}
+@media (pointer: coarse), (max-width: 600px), (max-height: 500px) and (orientation: landscape) {
+  body.game-open.dva-full-canvas {
+    --dva-live-panel-quick-height: min(174px, 30dvh);
+    --dva-live-panel-bottom-clearance: 62px;
+  }
+  body.game-open.dva-full-canvas:has(#tabletPanel:not([hidden]) #tabletQuickActions:not([hidden])) {
+    --dva-live-panel-bottom-clearance: max(var(--dva-stick, 140px), var(--dva-live-panel-quick-height));
+  }
+  body.game-open.dva-full-canvas #gameApp #tabletPanel:not([hidden]) #tabletQuickActions:not([hidden]) {
+    max-height: var(--dva-live-panel-quick-height) !important;
+  }
+  body.game-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader {
+    order: 0;
+    min-height: 0;
+    margin-block-end: 6px;
+    border-block-start: 0;
+    padding: max(28px, calc(env(safe-area-inset-top, 0px) + 10px)) 0 4px;
+  }
+  body.game-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader #matchPanelToolbar {
+    padding-inline-end: 0;
+  }
+  body.game-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelContentSlot:not([hidden]) {
+    margin-block-end: calc(var(--dva-live-panel-bottom-clearance) + 8px);
+  }
+}
+@media (max-width: 700px), (orientation: portrait) {
+  body.game-open.dva-full-canvas:has(#tabletPanel:not([hidden]) #tabletQuickActions:not([hidden])) {
+    --dva-live-panel-bottom-clearance: max(var(--dva-stick, 140px), calc(var(--dva-live-panel-quick-height) + 64px));
+  }
+}
