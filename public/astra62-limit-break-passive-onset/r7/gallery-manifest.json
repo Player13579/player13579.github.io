@@ -1,0 +1,119 @@
+{
+  "schema": "dva-gallery-embedded-package/v1",
+  "groupId": "limit-break-passive-onset-astra62",
+  "versionId": "limit-break-passive-onset-sol61-r7",
+  "creativeEdition": 7,
+  "creativeAuthor": "GPT-6.1-Sol",
+  "creatorModelId": "gpt-6.1-sol",
+  "source": {
+    "provider": "OpenAI Responses API",
+    "model": "gpt-6.1-sol",
+    "responseId": "resp_0a2b81ea5af95fb7016b091a8df13887d09c02a8d36714a907",
+    "baseRepository": "Player13579/player13579.github.io",
+    "baseHead": "5f106feaaeaa0ab121df683ba373d87ef866328a",
+    "baseVersionId": "limit-break-passive-onset-sol61-r6",
+    "baseGalleryManifestSha256": "10a5cde595c2ec549cba1442cd9c74cb9c7c4ea9c612f0b01e2e69e492d1ea82",
+    "baseSealSha256": "bd64e68a00cfb4de353170fc1478a680995837ece1f5d9bb2aee58de8354f0d7",
+    "baseShaderGitBlobSha1": "e997f385e41150d663e5e122643982afeabb40dc",
+    "baseShaderSha256": "c868c893e139666c4677eab6e62c0e92da2ccf6f539a91b123c110ab093faf35",
+    "inheritedR5SourcePin": "e289b48b09629702cf89c0352dbb25749aed6699"
+  },
+  "lineage": {
+    "historicalAstraR1R5": {
+      "creator": "GPT-6.2-Astra",
+      "historicalCap": 5,
+      "historicalCapConsumed": 5,
+      "preserved": true
+    },
+    "additionalImprovementGrant": {
+      "limit": 5,
+      "editionNumber": 2,
+      "consumedAfterR7": 2,
+      "remainingAfterR7": 3
+    }
+  },
+  "entry": "gallery.html",
+  "page": "/public/astra62-limit-break-passive-onset/r7/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=limit-break-passive-onset-sol61-r7",
+  "originalPage": "/public/astra62-limit-break-passive-onset/r7/index.html",
+  "protocol": "dva-gallery-startup/v1",
+  "manualReview": false,
+  "standardFixture": "fighter",
+  "designSummary": "Limit Break onset light should read as a source-linked UI-material response across the relevant nearby fixture, rather than a narrow cyan-green strip. The display remains localized to the UI apparatus; no inferred world light, broad screen wash, or added unrelated indicator.",
+  "lifetimeMs": 1320,
+  "backgroundGapMs": 500,
+  "firstFrameWindow": {
+    "submittedMinInclusiveMs": 100,
+    "submittedMaxExclusiveMs": 1320,
+    "requiresQueueCompletionWhileCauseLive": true,
+    "pixelsProved": false
+  },
+  "uniform": {
+    "bytes": 32,
+    "values": [
+      "width",
+      "height",
+      "ageMs",
+      "scale292x135Dpr",
+      "reduced",
+      "live",
+      0,
+      0
+    ],
+    "entries": [
+      "vs",
+      "fs"
+    ]
+  },
+  "adoption": "unknown",
+  "userAdopted": false,
+  "quality": "not-reviewed",
+  "nativeShader": "not_run",
+  "cpuAdapter": "not_run",
+  "cpuParent": "not_run",
+  "browserIframe": "not_run",
+  "normalAudioListening": "not_run",
+  "visualQuality": "not_run",
+  "gameIntegration": "not_connected",
+  "evidence": {
+    "baseline": "R6 public standalone verify/H64, three plays; 758x283 backing at scale 1; completed receipts and no errors. Nearby light remained faint and broader UI response was not clearly distinguishable; screenshot age was not bound to exact receipt age.",
+    "scope": "standalone visual/GPU evidence only; not parent gallery, ordinary audio, full lifetime, or game integration"
+  },
+  "files": [
+    {
+      "path": "public/astra62-limit-break-passive-onset/r7/gallery-adapter.mjs",
+      "bytes": 17790,
+      "sha256": "e864ee08b67e4f114b33ad42b1a0d744ea45cd6d0710b33a8386eeee10c9d625",
+      "gitBlobSha1": "71e36bd306c11320064c54d112eae4024af6a0e0"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r7/onset.mjs",
+      "bytes": 2553,
+      "sha256": "f97c339d1dcaeaf1d01c93018ebd0bdaaac45833078c59078858c586da2094b8",
+      "gitBlobSha1": "7cc78f46bab80575ae4793a12cbe60a31bda1c6b"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r7/effect.wgsl",
+      "bytes": 15168,
+      "sha256": "d0b47f652e873b8e16dee42a4ad2abe2f846d62e6e425dc3fad6e83dcc8e2256",
+      "gitBlobSha1": "90de4cc066aa01e4b2f9602c9c42b9635708820a"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r7/preview.mjs",
+      "bytes": 7845,
+      "sha256": "1a0c241160e486db0e18c83c3835c40f4b0916f490e6681a31f544b28310dac1",
+      "gitBlobSha1": "edb1b4e851741d4ade8473c087db041cb48f478e"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r7/index.html",
+      "bytes": 2208,
+      "sha256": "602ba3cca9eb61258813282b0dbd1ec970a4efeb40e1c18ecacec466a4bafc8f",
+      "gitBlobSha1": "cb4831fc14d50a610a408ceceb37ece68f9d12a3"
+    },
+    {
+      "path": "public/astra62-limit-break-passive-onset/r7/gallery.html",
+      "bytes": 1359,
+      "sha256": "7433179f6867d75c1c1565d0f9d1ae4d0f560e5eb9a4721e26ff84e56a434d18",
+      "gitBlobSha1": "58bb45bac8f31d27310e4aa554e5effafd97da11"
+    }
+  ]
+}

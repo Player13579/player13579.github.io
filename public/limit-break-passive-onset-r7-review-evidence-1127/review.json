@@ -1,0 +1,66 @@
+{
+  "schema": "dva-limit-break-sol-r7-limited-visual-review/v1",
+  "groupId": "limit-break-passive-onset-astra62",
+  "versionId": "limit-break-passive-onset-sol61-r7",
+  "galleryManifestSha256": "c6e3c43c83d3f46be3d4a1bac6354e3966cc2426ee3d5bc7a72ae43c919bf32d",
+  "sealSha256": "dce18b496ab11000cde32d6c1ee1f2b5ee7f983c97cb193fa6d42fa57650f953",
+  "wgslSha256": "d0b47f652e873b8e16dee42a4ad2abe2f846d62e6e425dc3fad6e83dcc8e2256",
+  "eventsSha256": "b480ba1c5b726fe6c297a4bdafbfdbcb2112dd699fdd49395a432f5bef2b1485",
+  "reviewSource": "Independent reviewer report recorded during this DVA task; reviewer model identity was not included in the source report.",
+  "scope": {
+    "route": "/public/astra62-limit-break-passive-onset/r7/index.html?verify=1",
+    "mode": "private standalone WebGPU verify (audio muted)",
+    "fixture": "fighter",
+    "actorHeight": 64,
+    "scale": 1,
+    "backing": [
+      758,
+      283
+    ],
+    "plays": 3,
+    "records": 36,
+    "playingCompletedReceipts": 21,
+    "receiptErrors": 0,
+    "receiptToScreenshotExactAgeBinding": false,
+    "fullLifetimeAcceptance": "not_established",
+    "flickerAcceptance": "not_established",
+    "normalAudioListening": "not_run",
+    "parentGalleryReplay": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "comparison": {
+    "baselineVersion": "limit-break-passive-onset-sol61-r6",
+    "baselineEvidence": "../limit-break-passive-onset-r6-review-evidence-1127/r6-pass-0-04.png",
+    "baselineSha256": "e753a82f8992210351671ba2554cfe764d6bb8fc2b931f8bf94293eb27fb5fa6",
+    "exactAgeMatched": false
+  },
+  "observations": {
+    "quality": "not-accepted",
+    "qualityReviewStatus": "needs-improvement",
+    "visualStatus": "partial-improvement-local-tray-return-only",
+    "finding": "Compared with R6, the lower tray shows a broader, clearer blue-green light return. The response across the full apparatus is still not sufficiently legible at normal display size; this does not establish that light is absent or that R7 is worse.",
+    "limitations": "Screenshots are not bound to exact receipt ages; no video review is claimed. Full-lifetime/flicker, parent-gallery, normal audio, and game integration remain unverified."
+  },
+  "evidenceFiles": [
+    {
+      "path": "events.json",
+      "bytes": 11457,
+      "sha256": "b480ba1c5b726fe6c297a4bdafbfdbcb2112dd699fdd49395a432f5bef2b1485"
+    },
+    {
+      "path": "pass-0-03.png",
+      "bytes": 13010,
+      "sha256": "e2fe6031008b55413fb748e416af501d0861281303d7b063673cdbd6e74410a0"
+    },
+    {
+      "path": "pass-0-04.png",
+      "bytes": 13170,
+      "sha256": "d6c298da74fa90930aca31b716316ec92fe867ab8aecf760e001dce4e18374b6"
+    },
+    {
+      "path": "pass-1-04.png",
+      "bytes": 13187,
+      "sha256": "5640a31eb7722378787686e46e19de1b4540f877bbf9657bd50814493812d7f7"
+    }
+  ]
+}
