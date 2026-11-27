@@ -1,0 +1,43 @@
+{
+  "effectSha256": "7ac2af843fa86c850d009247360f7f771703ce334f1c7f2dcf5dad2ef3b4eea4",
+  "outcome": "scoped-keyline-visual-impact-unverified",
+  "manifestSha256": "080da80fac4c57d206b7baa2780a5ffbd5a5a00eca4b30bfd17b454c5b018130",
+  "sealSha256": "f0af6f210f6cf89c34d456ce5a643d7d9e6cf5ce9d4201eab1be819d3fe3a0c7",
+  "evidence": [
+    {
+      "bytes": 184474,
+      "sha256": "f558eccc4d82e766e392638352b624ebbbc22e660981f5e6edee071bd839fa39",
+      "path": "events.json"
+    },
+    {
+      "bytes": 82312,
+      "sha256": "cd1548b4595b56780155fa1fe543b5bac126dcce90af0fb224754ff51a285aa6",
+      "path": "held-2000.png"
+    }
+  ],
+  "versionId": "timekeeper-activation-cleanroom-sol61-r10",
+  "qualityAccepted": false,
+  "qualityReviewStatus": "pending-review",
+  "limitations": [
+    "Captures are not guaranteed to represent the same GPU frame; visual differences are not a controlled pixel comparison.",
+    "Sampled receipts do not establish GPU completion for every frame or full-lifetime visual quality.",
+    "Formal public-parent replay, alternate viewports, normal audio, and main-game integration were not checked."
+  ],
+  "wholeEffectQualityAccepted": false,
+  "sourceManifestSha256": "b19cb6f91242e3356528fa6a603b1355784afcadc04a48b7e215191e84cae741",
+  "scope": {
+    "viewport": "H64, 980x620 CSS pixels, DPR 1",
+    "route": "/public/sol61-timekeeper-activation/cleanroom-r10/index.html?verify=1&height=64",
+    "run": "Exact-pin owned verify candidate harness",
+    "observations": [
+      "firstFrame completed receipt observed",
+      "sampled loop indices 0 through 2 and four phase receipts observed",
+      "held 2000ms receipt completed",
+      "errors array empty",
+      "held screenshot shows the sphere and stars within the top canvas boundary",
+      "R10 keyline difference from R9 is not clearly distinguishable at display size"
+    ]
+  },
+  "qualityStatus": "unverified",
+  "schema": "dva-timekeeper-quality-review/v1"
+}

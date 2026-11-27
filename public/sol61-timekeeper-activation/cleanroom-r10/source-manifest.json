@@ -1,0 +1,258 @@
+{
+  "versionId": "timekeeper-activation-cleanroom-sol61-r10",
+  "schema": "dva-timekeeper-cleanroom-source/v10",
+  "provenance": {
+    "responseId": "resp_0abab4f55d3cc40c006b09fc14f2dc87d0b3fd2f2307d83c36",
+    "model": "gpt-6.1-sol",
+    "requestTextSha256": "0934f8c64649fe7923004e3b24a8c2a59c629c99a2aacd4c7ec0107a29fb0eb4",
+    "requestPayloadSha256": "55d0f818f16b0bbdc89322bd958d5f7b16261aca67780b9bf7ebb4dcb383844a",
+    "responseHttpBodySha256": "1df310b694013170412f0b4229ae94d3ae5f6ee880f141eef765bdcaf398e633",
+    "responseJsonFileSha256": "6500bbe3e3402b97b25d0b30b7d0cccbfb5cb30863f963cd552c2c9dc5949207",
+    "outputTextSha256": "770134d64cfe99bc132da24fd8d8cd7644c839d5000ed19b9494d6ffba96e2f4",
+    "wgslUtf8Sha256": "f06c8464ceb82766c1718c85af7bb7dde3dc885a6ea02f01a96613afaabfeb7f",
+    "reviewImageSha256": "3f5e1da16e9e6a7d4523dfb75d919a37a53677d959aec66572faf13595c48385",
+    "r9ReviewSha256": "c7a9d813f94382510fdeefaaa9795457d6225ff518eea058e338817b5bdcb26a",
+    "r9PublicEventsSha256": "73472810dc29e81255704f28414bc146d80b182fabf40b0c300b7b7331315328",
+    "parentVersionId": "timekeeper-activation-cleanroom-sol61-r9",
+    "parentPackageManifestSha256": "5c2ba8f5650e333c2b612fb81c5a3bc4f0c3cba68f48de97e09c3a62893afb92",
+    "parentPackageSealSha256": "2f0ec552daf83c67084c270d80b0ffaa9282653a5a8d61e3667e84dd79aa6d72",
+    "parentSourceManifestSha256": "8abb808a49a70ec6bebcfd988fd3a05d849ed5ec56959d1ac7be569a0e921b04",
+    "parentEffectSha256": "2876f6d58c2e7e429231d3a4ea660591666be95606b71cfa26dfd7e4e26a2733",
+    "basePublicHead": "1045e4324356dbd30563eaa3f3209cc69d88a52c",
+    "currentAssetGalleryBlob": "d60e9a2af4e50ac61ed7d22a419656ea91aaba53",
+    "currentDefaultVersionId": "timekeeper-activation-cleanroom-sol61-r9",
+    "adoption": "unknown",
+    "creativeEdition": 10,
+    "historicalCreativeEditionLimit": 5,
+    "totalLimit": 10,
+    "additionalGrant": {
+      "total": 5,
+      "consumed": 5,
+      "remaining": 0
+    }
+  },
+  "qualityReview": {
+    "status": "unverified",
+    "reviewStatus": "pending-review",
+    "qualityAccepted": false,
+    "wholeEffectQualityAccepted": false,
+    "apiReview": {
+      "provenance": {
+        "publicHead": "1045e4324356dbd30563eaa3f3209cc69d88a52c",
+        "group": "timekeeper-activation-cleanroom-sol61",
+        "baseline": "R9, latest/default",
+        "packageManifestSha256": "5c2ba8f5650e333c2b612fb81c5a3bc4f0c3cba68f48de97e09c3a62893afb92",
+        "packageSealSha256": "2f0ec552daf83c67084c270d80b0ffaa9282653a5a8d61e3667e84dd79aa6d72",
+        "sourceManifestSha256": "8abb808a49a70ec6bebcfd988fd3a05d849ed5ec56959d1ac7be569a0e921b04",
+        "effectModuleSha256": "2876f6d58c2e7e429231d3a4ea660591666be95606b71cfa26dfd7e4e26a2733",
+        "method": "Review of the supplied module, official limited-review JSON, event summary and held PNG. No independent package retrieval, compilation or rendering was performed."
+      },
+      "directObservations": [
+        "The supplied held image presents a turquoise clock sphere with concentric rings, twelve indices, distinguishable gold and ivory hands, small pale-gold four-point stars and a small pale avatar near the lower sphere edge.",
+        "The sphere/star envelope appears inside the tested held capture. Some stars meet the bright sphere perimeter and have less local contrast there than against the dark background. This is a bounded contrast observation, not a demonstrated readability failure or proof that R9's keyline is ineffective.",
+        "A warm pivot and faint widening connection toward the avatar are visible. The avatar is visible, but its pale appearance does not isolate or quantify the shader's received-light contribution.",
+        "The held still supports the appearance of two distinguishable hands at that moment. It cannot establish angular velocity, temporal stability or appearance throughout the effect."
+      ],
+      "suppliedTechnicalEvidence": {
+        "execution": "The official H64 route-substitution verification used 980x620 CSS at DPR1, reports first-frame completion and errors [], and contains 120 sampled records over loops 0–2 with all four phase receipt types. The event summary separately reports errors []. These are limited technical observations, not whole-effect visual acceptance.",
+        "heldReceipt": "The age-2000ms held receipt reports recorded/submitted/completed, queue completion observed, one clear pass and one effect pass. Its nested renderer receipt nevertheless reports submitted=false and gpuCompletion=HOST_OWNED_NOT_OBSERVED. These fields do not establish that the supplied image pixels are from the exact receipt frame.",
+        "otherSamples": "The supplied evidence description identifies a black startup tile, clock/avatar samples and one later smaller clock. Those observations do not demonstrate a phase defect.",
+        "priorStaticReview": "The official R9 static review reports preserved interfaces, timing and finite keyline support. That report is not a compilation or render test of this R10 candidate."
+      },
+      "codeDerivedFacts": [
+        "R9 already has a dark teal star keyline. Its mask is finiteGlow-clipped, multiplied by sphereMask through dialBacking, and suppressed in proportion to actual actor alpha. The glow and star body are composited over that keyline.",
+        "All eight stars use the same diagonal coordinate transform, giving a common 45-degree orientation. Their centers, sizes, body colors and finite support are independent of the proposed opacity adjustment.",
+        "The receiver uses the pivot/sphere center as the same display-space source, a finite sourceFalloff, observer and actor gates, and the sampled actor texture's actual alpha. The connecting veil uses that same source and receiver drive; it is not an independent emitter.",
+        "Receiver illumination mixes the sampled actor RGB toward a warm source color. Already pale texture pixels have less available brightening headroom. This explains a possible subtle contribution but does not measure its visible magnitude in the supplied image.",
+        "The hand angles are hostAngle and 12.0 * hostAngle, with positive angular change clockwise in downward-positive screen coordinates. Their phase derivatives have an exact 12:1 relation wherever the host angle changes; both stop if it freezes. The minute centerline extends to 0.73 * radius versus 0.43 * radius for the hour hand.",
+        "The shader has no private lifetime or oscillator. Radius, angle and energy are host inputs. The phaseGain expression depends only on the host angle and therefore does not autonomously animate during a frozen hold.",
+        "The R8 viewport-fit calculation and R9 composition/actor coordinates can remain byte-for-byte unchanged for this opacity-only candidate."
+      ],
+      "hypotheses": [
+        "A modest increase in the existing dial-local keyline opacity may improve separation where a small star meets the bright perimeter without changing its silhouette, size, orientation or support.",
+        "The change may be subtle or visually neutral because host drive, sphere backing, antialiasing, glow and the star body attenuate or cover the separator. A heavier-looking edge is also possible. The supplied evidence cannot determine the net result."
+      ],
+      "unverifiedScope": [
+        "Full-lifetime GPU-completed visual appearance, including propagate, arrest, held, release, phase boundaries and loop transitions.",
+        "Exact correspondence between held PNG pixels and the age-2000ms GPU receipt.",
+        "R9 keyline benefit relative to earlier editions, and R10 keyline benefit relative to R9.",
+        "Quantitative source-to-avatar received-light strength and dynamic readability.",
+        "Exact rendered hand pixels, measured angular velocity and temporal hand separation.",
+        "R10 compilation, rendering, gate tests and viewport regression tests.",
+        "Other viewports and DPRs, normal audio listening, Safari/iPad and main-game integration."
+      ],
+      "decision": {
+        "r9Failed": false,
+        "finding": "The supplied evidence does not demonstrate an R9 failure. It supports a narrowly scoped star-separation candidate, not a receiver, timing, phase or composition repair.",
+        "action": "Provide R10 as a candidate-only replacement WGSL module with one opacity adjustment. Leave receiver lighting, hands, phase behavior and composition unchanged.",
+        "edition": "R10, additional edition 5/5; remaining 0.",
+        "publicationChanged": false,
+        "adoptionChanged": false,
+        "userAdopted": false,
+        "adoptionStatus": "unknown"
+      },
+      "quality": {
+        "r9OfficialOutcome": "scoped-star-keyline-visual-impact-unverified",
+        "r9ReviewStatus": "pending-review",
+        "fullLifetimeQuality": "unverified",
+        "r10Status": "unverified candidate",
+        "qualityAccepted": false,
+        "wholeEffectQualityAccepted": false
+      }
+    },
+    "design": {
+      "name": "Dial-local star keyline opacity lift",
+      "singleChange": "Change only the existing star keyline opacity coefficient from 0.82 to 0.94. An explanatory R10 comment accompanies that scalar change.",
+      "rationale": "The held image shows locally reduced contrast where some stars touch the bright perimeter. Increasing the already-present dark separator's opacity is a bounded hypothesis for stronger separation without enlarging stars or introducing another visual motif.",
+      "bounds": "The increase is at most 0.12 in the keyline layer's opacity before subsequent compositing, further scaled by its existing mask, source drive and dial backing. Geometry, palette, glow, body shading, actor suppression and finite support are unchanged.",
+      "notChanged": "No receiver amplification, bridge alteration, hand change, timing change, phase change, position change or viewport-fit change.",
+      "validationNeeded": "Compare R9 and R10 under matched captures, especially rim-touching stars, small-radius phases and actor overlaps. Inspect full-lifetime GPU-completed output before any quality judgment. No improvement is claimed as observed."
+    },
+    "fullLifetimeAndOtherUnverifiedScope": [
+      "Full-lifetime GPU-completed visual appearance, including propagate, arrest, held, release, phase boundaries and loop transitions.",
+      "Exact correspondence between held PNG pixels and the age-2000ms GPU receipt.",
+      "R9 keyline benefit relative to earlier editions, and R10 keyline benefit relative to R9.",
+      "Quantitative source-to-avatar received-light strength and dynamic readability.",
+      "Exact rendered hand pixels, measured angular velocity and temporal hand separation.",
+      "R10 compilation, rendering, gate tests and viewport regression tests.",
+      "Other viewports and DPRs, normal audio listening, Safari/iPad and main-game integration."
+    ]
+  },
+  "preservationChecks": {
+    "checkInterpretation": {
+      "status": "pass",
+      "explanation": "Pass denotes preservation by inspection of the proposed text or compliance of this response, not a successful R10 compilation, GPU run or visual acceptance."
+    },
+    "singleBoundedImprovement": {
+      "status": "pass",
+      "explanation": "The only executable change from the supplied R9 module is the star keyline opacity coefficient 0.82 to 0.94. One explanatory comment is added."
+    },
+    "durationAndPhaseRanges": {
+      "status": "pass",
+      "explanation": "No host code or phase logic is changed. The prescribed 5000ms duration and propagate 0–460ms, arrest 460–650ms, held 650–4560ms and release 4560–5000ms remain host-owned; the WGSL adds no competing schedule."
+    },
+    "hostLoopGap": {
+      "status": "pass",
+      "explanation": "Host LOOP_GAP=600ms is outside this replacement and is not modified."
+    },
+    "uniformAbi": {
+      "status": "pass",
+      "explanation": "Uniforms remains four vec4f members in the same order: 16 floats, 64 bytes."
+    },
+    "bindingsAndEntryPoints": {
+      "status": "pass",
+      "explanation": "Group 0 bindings 0/1/2 remain uniform buffer, actor texture and sampler. The vs and fs entry points and their signatures are unchanged."
+    },
+    "hostTimePhaseRadiusAndAngle": {
+      "status": "pass",
+      "explanation": "Radius and angle remain u.field.x and u.field.y. The host's 38→155 radius and -2.30→0.45 angle progression are not remapped or overridden. No private timer, phase or autonomous oscillator is introduced."
+    },
+    "handClockwiseRatioAndLength": {
+      "status": "pass",
+      "explanation": "Unchanged clockwiseDirection is applied to hostAngle and exactly 12.0 * hostAngle. Positive host-angle progression is clockwise; minute and hour centerline lengths remain 0.73 and 0.43 times radius. Rendered velocities remain unmeasured."
+    },
+    "commonStarOrientation": {
+      "status": "pass",
+      "explanation": "All eight stars retain the identical 45-degree diagonal transform. Placement, sizes and shapes are unchanged."
+    },
+    "sourceObserverActorGates": {
+      "status": "pass",
+      "explanation": "Source drive, observer-gated receiver drive, actor-gated receiver drive and actor alpha are unchanged. The keyline retains its existing source drive and actor-alpha suppression."
+    },
+    "finiteSameSourceReceiverAndActualAlpha": {
+      "status": "pass",
+      "explanation": "The finite CSS/display-space sourceFalloff, common sourcePos, bridge, receiver lighting, insideUv mask and sampled actor alpha are unchanged."
+    },
+    "noWorldLightingExternalEmitterOrGameLogic": {
+      "status": "pass",
+      "explanation": "No world-space lighting, independent emitter, additional receiver endpoint or game logic is added."
+    },
+    "r8FitAndR9Coordinates": {
+      "status": "pass",
+      "explanation": "The entire viewport-fit calculation, preferred/fitted center, sphere placement, receiver anchor and actor coordinates are unchanged."
+    },
+    "noSupportExtensionOrR7TopClippingReintroduction": {
+      "status": "pass",
+      "explanation": "The opacity adjustment cannot make a previously zero keyline mask nonzero. finiteGlow, dialBacking, starHalfExtent and every fit input are unchanged, so no support is added beyond the existing envelope. This preserves the static basis of the H64 980x620 CSS DPR1 fit without claiming a new rendered test."
+    },
+    "renderedViewportRegression": {
+      "status": "unknown",
+      "explanation": "The R9 held image supports only its tested held bounds. R10 has not been rendered, and full-lifetime or other-viewport regression testing has not occurred."
+    },
+    "r1ThroughR9ArtifactsAuthorsAndHistory": {
+      "status": "pass",
+      "explanation": "This is a standalone proposed R10 replacement string. No prior edition, author attribution, artifact, pin or history is modified."
+    },
+    "nonWgslPreservation": {
+      "status": "pass",
+      "explanation": "No adapter, body, host, renderer, SFX, PCM or lifecycle code is supplied for replacement or alteration."
+    },
+    "candidateOnlyNoPublicationOrAdoptionChange": {
+      "status": "pass",
+      "explanation": "R10 is only a candidate. No publication or adoption operation is performed; R9 remains latest/default and userAdopted remains false."
+    },
+    "adoptionKnowledge": {
+      "status": "unknown",
+      "explanation": "Overall adoption status remains unknown, as supplied. This response does not infer adoption from preview evidence."
+    },
+    "editionBudget": {
+      "status": "pass",
+      "explanation": "This response treats R10 as the fifth and final additional edition, 5/5, with remaining 0. It does not propose another edition."
+    },
+    "qualityAcceptancePreservation": {
+      "status": "pass",
+      "explanation": "qualityAccepted and wholeEffectQualityAccepted remain false. R9 is not labeled failed, and its official limited outcome is retained."
+    },
+    "fullLifetimeQuality": {
+      "status": "unknown",
+      "explanation": "Full-lifetime GPU-completed visual quality remains unverified. Sample records and an unbound held PNG do not establish it."
+    },
+    "r10CompilationRenderingAndVisualBenefit": {
+      "status": "unknown",
+      "explanation": "No compilation or rendering of this proposed module was performed. Improved separation is a hypothesis, not a measured or accepted result."
+    },
+    "remainingPlatformAudioAndIntegrationScope": {
+      "status": "unknown",
+      "explanation": "Other viewport sizes, exact-frame pixel matching, audio listening, Safari/iPad and game integration remain unverified."
+    }
+  },
+  "staticValidation": {
+    "status": "pass",
+    "completedAtUtc": "2026-11-27T22:04:16.462Z",
+    "checks": [
+      "Node --check passed for effect.mjs, gallery-adapter.mjs, host-core.mjs",
+      "Independent CPU contract validator verify-r10.mjs passed: API WGSL exactness and single-line diff, nine phase boundaries, 64-byte uniforms, radius/host-angle range, SFX PCM exact match, adapter/body byte identity, host/renderer lifecycle suffix exact, host/index identity-only, R8 viewport-fit exact, source/observer/actor gates and package closure"
+    ],
+    "remaining": [
+      "WGSL GPU compile and real GPU playback not run; handed to independent GPU verification",
+      "Whole-lifetime visual acceptance, exact screenshot-to-GPU receipt binding, other viewport/DPR, normal audio listening, Safari/iPad and main-game integration remain unverified"
+    ]
+  },
+  "files": [
+    {
+      "sha256": "bcc96558bef6e26d5f9ecc9288488bd156cc0facccab2e5a13c64cab8b3b69df",
+      "path": "index.html",
+      "bytes": 2992
+    },
+    {
+      "sha256": "9bb807886e4e06175e1d08625063f8b09c12b182734dda1cf4feaee492674edf",
+      "path": "gallery-adapter.mjs",
+      "bytes": 32491
+    },
+    {
+      "sha256": "7ac2af843fa86c850d009247360f7f771703ce334f1c7f2dcf5dad2ef3b4eea4",
+      "path": "effect.mjs",
+      "bytes": 23323
+    },
+    {
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f",
+      "path": "body.png",
+      "bytes": 243081
+    },
+    {
+      "sha256": "f8977d8497fca0d218410a1c53fee0f7f931efdaef951bcf578b044a58f61676",
+      "path": "host-core.mjs",
+      "bytes": 17279
+    }
+  ]
+}
