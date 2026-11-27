@@ -11142,7 +11142,17 @@ async function finishClairvoyanceTeleportTap(event, cancelled = false) {
   return true;
 }
 
+// Both HUD passes share the world canvas, so suppress just their draw
+// commands while the battle panel or the full-screen shop is actually open.
+function matchOverlayHidesFieldHud(data = state.data) {
+  return state.screen === 'game' && data?.phase === 'playing' && (
+    document.body?.classList.contains('dva-unified-panel-active') === true ||
+    (state.vendingOpen && fullShopPresentation?.mount.hidden === false)
+  );
+}
+
 function pointerHitsMinimap(event) {
+  if (matchOverlayHidesFieldHud()) return false;
   const point = canvasPointerPosition(event);
   if (!point) return false;
   if (WEBGPU_MAIN_OWNER && !webgpuMainSubmittedFrameCurrent()) return false;
@@ -30066,6 +30076,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
     if (!late.stage.events.some(event => String(event.effectId) === id))
       magicGaps.push({ effectId: id, reason: 'deferred-task-completion-unowned', blocking: true });
   }
+  const fieldHudHidden = matchOverlayHidesFieldHud(data);
   const tail = {
     gunnerAim: { scene: gunnerAimWebGPUScene(data), ...common },
     killCamera: { scene: killCameraWorldWebGPUScene(data), ...common },
@@ -30074,8 +30085,10 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
     attackTargets: { scene: { selectedTarget:
       selectedAttackTargetWebGPUScene(data) || null }, ...common },
     taskIndicators: { data, ...common },
-    hud: { data, scene: hudWebGPUScene(data, viewport.width, viewport.height, viewport), ...common },
-    minimap: { scene: minimapWebGPUScene(data, viewport.width), ...common },
+    hud: { data, scene: hudWebGPUScene(data, viewport.width, viewport.height, viewport),
+      presentationHidden: fieldHudHidden, ...common },
+    minimap: { scene: minimapWebGPUScene(data, viewport.width),
+      presentationHidden: fieldHudHidden, ...common },
     modeBanner: { scene: modeBannerWebGPUScene(data), ...common },
     ...(conditional.expandedMap ? { expandedMap: {
       scene: conditional.expandedMap.scene,
@@ -30119,7 +30132,8 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
     const freshConditional = captureWebGPUMainAppConditionalTail(data,
       early.camera, early.zoom, viewport, shapeProviders, true);
     assertWebGPUAcquisitionCandidateGeometry(candidate, conditional.acquisition);
-    if (state.killEffects !== killSource || state.magicEffects !== headEffectSource ||
+    if (fieldHudHidden !== matchOverlayHidesFieldHud(data) ||
+        state.killEffects !== killSource || state.magicEffects !== headEffectSource ||
         !Array.isArray(state.magicEffects) ||
         state.magicEffects.length !== headEffectOrder?.length ||
         headEffectOrder.some((effect, index) => state.magicEffects[index] !== effect) ||
