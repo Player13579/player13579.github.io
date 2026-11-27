@@ -1,0 +1,71 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-shop-mystery-reveal-r1",
+  "group": "dot-shop-mystery-reveal",
+  "title": "ショップ・ミステリー結果通知",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "mystery-reveal",
+    "variant": "",
+    "eventDurationMs": 0,
+    "visualDurationMs": 1040,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2339,
+      "sha256": "7aaa074ffc419e8c9f5d82f6389a992f035d0d4888321818497b640ac265d21f"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16793,
+      "sha256": "486f13ebbe9e2544acefea54b734d8d5d1b7bab8bb159dbc7ee28c1576e8354c"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 995,
+      "sha256": "74d78a0943bc2871359517e4716b1f6f0f27fb0222658bd65b8340d74bcf17a0"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6653,
+      "sha256": "90afed68abdccc7aa4870b67db65757d44e50718804385ac598d61e5ec308676"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1487,
+      "sha256": "26642ef1d5210b746f7667ca6a7751cf29f4e9d32d2c04c8491f180cd5d2742d"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 897,
+      "sha256": "18eae8cea6e0e2c9af323677d8a87e9700196ede8b24bbc89f764ff980963ec1"
+    }
+  ]
+}
