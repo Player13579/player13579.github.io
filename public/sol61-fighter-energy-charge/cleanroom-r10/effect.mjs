@@ -1,0 +1,106 @@
+export const WGSL="// Fighter Energy Charge — R10 creative edition, final additional edition 5/5.\n// Public parent HEAD: 59b0bfa3461a5a12617d6fa1749ac8c938f91414.\n// Parent: fighter-energy-charge-cleanroom-sol61-r9.\n// R1–R9 authorship, editions, and historical status remain unchanged.\n// R9 consumed 4/5; R10 consumes 5/5; remaining allowance: zero.\n// Local artistic screen/UI emission only; never world illumination.\n// No host, gameplay, event, image, audio, or lifecycle changes.\n\nstruct U {\n    view:vec4f,\n    actor:vec4f,\n    gates:vec4f,\n    state:vec4f\n};\n\n@group(0) @binding(0) var<uniform> u:U;\n@group(0) @binding(1) var img:texture_2d<f32>;\n@group(0) @binding(2) var samp:sampler;\n\nstruct Out {\n    @builtin(position) p:vec4f\n};\n\n@vertex fn vs(@builtin(vertex_index) i:u32)->Out {\n    let positions=array<vec2f,3>(\n        vec2f(-1.,-1.),\n        vec2f(3.,-1.),\n        vec2f(-1.,3.)\n    );\n    var o:Out;\n    o.p=vec4f(positions[i],0.,1.);\n    return o;\n}\n\nfn decode(c:vec3f)->vec3f {\n    return select(\n        c/12.92,\n        pow((c+vec3f(.055))/1.055,vec3f(2.4)),\n        c>vec3f(.04045)\n    );\n}\n\nfn encode(c:vec3f)->vec3f {\n    let x=max(c,vec3f(0.));\n    return select(\n        x*12.92,\n        1.055*pow(x,vec3f(1./2.4))-vec3f(.055),\n        x>vec3f(.0031308)\n    );\n}\n\nfn outputColor(c:vec4f)->vec4f {\n    if(c.a<=.000001) {\n        return vec4f(0.);\n    }\n    if(u.state.y>.5) {\n        return vec4f(encode(c.rgb/c.a)*c.a,c.a);\n    }\n    return c;\n}\n\nfn over(a:vec4f,b:vec4f)->vec4f {\n    return a+b*(1.-a.a);\n}\n\nfn emitter(coverage:f32,color:vec3f,radiance:f32)->vec4f {\n    let a=clamp(coverage,0.,1.);\n    return vec4f((vec3f(1.)-exp(-color*radiance))*a,a);\n}\n\nfn pulse(t:f32,a:f32,b:f32)->f32 {\n    return sin(clamp((t-a)/(b-a),0.,1.)*3.14159265359);\n}\n\nfn capsule(p:vec2f,a:vec2f,b:vec2f)->f32 {\n    let v=b-a;\n    let h=clamp(dot(p-a,v)/max(dot(v,v),.0001),0.,1.);\n    return length(p-a-v*h);\n}\n\nfn localKernel(d:f32,r:f32)->f32 {\n    let x=clamp(d/r,0.,1.);\n    let s=1.-x*x;\n    return s*s;\n}\n\nfn circularChord(distance:f32,radius:f32)->f32 {\n    return 2.*sqrt(max(radius*radius-distance*distance,0.));\n}\n\nfn gradedChannelColumn(distance:f32,radius:f32)->f32 {\n    let rr=radius*radius;\n    let h=max(rr-distance*distance,0.);\n    return 3.2*h*h*sqrt(h)/(rr*rr);\n}\n\n// The original two finite paths, including their endpoints and corner.\nfn conduitPoint(side:f32,progress:f32)->vec2f {\n    let a=vec2f(side*28.,17.);\n    let b=vec2f(side*23.,-5.);\n    let c=vec2f(side*6.,-9.);\n    let ab=length(b-a);\n    let bc=length(c-b);\n    let travel=clamp(progress,0.,1.)*(ab+bc);\n    if(travel<=ab) {\n        return mix(a,b,travel/ab);\n    }\n    return mix(b,c,(travel-ab)/bc);\n}\n\n// Distance, nearest arc coordinate, and finite total length.\nfn conduitCoordinates(q:vec2f,side:f32)->vec3f {\n    let a=vec2f(side*28.,17.);\n    let b=vec2f(side*23.,-5.);\n    let c=vec2f(side*6.,-9.);\n    let ab=b-a;\n    let bc=c-b;\n    let lenAB=length(ab);\n    let lenBC=length(bc);\n    let hAB=clamp(dot(q-a,ab)/dot(ab,ab),0.,1.);\n    let hBC=clamp(dot(q-b,bc)/dot(bc,bc),0.,1.);\n    let dAB=length(q-a-ab*hAB);\n    let dBC=length(q-b-bc*hBC);\n    return vec3f(\n        min(dAB,dBC),\n        select(lenAB+hBC*lenBC,hAB*lenAB,dAB<=dBC),\n        lenAB+lenBC\n    );\n}\n\nfn channelSupport(t:f32)->f32 {\n    if(t<=0. || t>=.63) {\n        return 0.;\n    }\n    return pulse(t,0.,.63);\n}\n\nfn packetLife(t:f32)->f32 {\n    return 1.-smoothstep(.44,.56,t);\n}\n\nfn packetOnPath(c:vec3f,t:f32,transfer:f32)->f32 {\n    let behind=transfer*c.z-c.y;\n    let width=select(2.25,8.,behind>=0.);\n    return exp(-behind*behind/(width*width))*packetLife(t);\n}\n\nfn receivedLayer(t:f32,j:u32,variant:f32)->f32 {\n    let enabled=select(0.,1.,f32(j)<=variant);\n    return enabled*clamp((t-.30-f32(j)*.045)/.14,0.,1.);\n}\n\n// The original four receiver segments; no additional receiving geometry.\nfn receiverDistance(q:vec2f,j:u32)->f32 {\n    let y=-8.+f32(j)*6.;\n    let width=10.+f32(j)*1.6;\n    return min(\n        capsule(q,vec2f(-width,y-2.),vec2f(0.,y+2.)),\n        capsule(q,vec2f(0.,y+2.),vec2f(width,y-2.))\n    );\n}\n\n// R10 material coupling:\n// Moving supply stays near the finite paths. Accumulation uses the same\n// receiver distances and clocks, with a broad, bounded material response.\n// The broad term is not drawn as another source or a standalone field.\nfn receivingField(\n    q:vec2f,t:f32,variant:f32,transfer:f32,lock:f32\n)->vec2f {\n    var moving=0.;\n    var stored=0.;\n    let support=channelSupport(t);\n\n    for(var k=0u;k<2u;k++) {\n        let side=select(-1.,1.,k==1u);\n        let c=conduitCoordinates(q,side);\n        let packet=packetOnPath(c,t,transfer);\n        let tipDistance=length(q-conduitPoint(side,transfer));\n\n        moving+=.055*support*localKernel(c.x,7.);\n        moving+=1.15*packet*localKernel(c.x,12.);\n        moving+=.42*packetLife(t)*localKernel(tipDistance,15.);\n    }\n\n    for(var j=0u;j<4u;j++) {\n        let layer=receivedLayer(t,j,variant);\n        let d=receiverDistance(q,j);\n        let weight=1./(1.+f32(j)*.8);\n\n        // Receipt drives coverage directly: no second delayed rise caused\n        // by multiplying receiver spread by the lock clock.\n        let materialReach=48.+24.*layer;\n        let bodyCoupling=(1.65+.50*lock)\n            *localKernel(d,materialReach);\n        let arrivalDetail=.32*localKernel(d,8.);\n        stored+=weight*layer*(bodyCoupling+arrivalDetail);\n    }\n\n    return vec2f(1.-exp(-moving),1.-exp(-stored));\n}\n\n// Original finite-column source profiles and timing.\nfn cameraSourceTau(\n    q:vec2f,t:f32,variant:f32,env:f32,transfer:f32\n)->vec3f {\n    var guideTau=0.;\n    var packetTau=0.;\n    var receiverTau=0.;\n    let support=channelSupport(t);\n\n    for(var k=0u;k<2u;k++) {\n        let side=select(-1.,1.,k==1u);\n        let c=conduitCoordinates(q,side);\n        guideTau+=.48*env*.18*support\n            *gradedChannelColumn(c.x,1.7);\n        packetTau+=.48*env*2.15*packetOnPath(c,t,transfer)\n            *gradedChannelColumn(c.x,1.7);\n    }\n\n    for(var j=0u;j<4u;j++) {\n        receiverTau+=.48*env*.20*receivedLayer(t,j,variant)\n            *circularChord(receiverDistance(q,j),1.9);\n    }\n\n    return vec3f(guideTau,packetTau,receiverTau);\n}\n\nfn imageCoverage(uv:vec2f)->f32 {\n    let inside=select(\n        0.,1.,all(uv>=vec2f(0.)) && all(uv<=vec2f(1.))\n    );\n    return textureSampleLevel(\n        img,samp,clamp(uv,vec2f(0.),vec2f(1.)),0.\n    ).a*inside;\n}\n\n// The inherited alpha neighborhood, directions, and radii.\n// No anatomy detection, replacement silhouette, or detached emitter.\nfn silhouetteSpill(uv:vec2f)->f32 {\n    let directions=array<vec2f,8>(\n        vec2f(1.,0.),vec2f(.70710678,.70710678),\n        vec2f(0.,1.),vec2f(-.70710678,.70710678),\n        vec2f(-1.,0.),vec2f(-.70710678,-.70710678),\n        vec2f(0.,-1.),vec2f(.70710678,-.70710678)\n    );\n    let bodySize=vec2f(64.*u.actor.w,64.);\n    var inner=0.;\n    var outer=0.;\n    for(var i=0u;i<8u;i++) {\n        inner+=imageCoverage(uv+directions[i]*1.4/bodySize);\n        outer+=imageCoverage(uv+directions[i]*3.4/bodySize);\n    }\n    return inner*(.70/8.)+outer*(.30/8.);\n}\n\n@fragment fn fs(o:Out)->@location(0) vec4f {\n    let css=o.p.xy/u.view.z;\n    let p=css-u.actor.xy;\n    let scale=u.actor.z/64.;\n    let q=p/scale;\n    let t=clamp(u.view.w/max(u.state.w,.001),0.,1.);\n\n    // x: source/main/active gate; y: observer spill only.\n    // z: supplied actor visibility; w: reduced-motion transfer.\n    let env=u.state.x*u.gates.x;\n    let variant=u.state.z;\n    let aa=max(.6,.8/(u.view.z*scale));\n    let transfer=select(\n        1.-pow(1.-clamp((t-.08)/.22,0.,1.),3.),\n        1.,u.gates.w>.5\n    );\n    let lock=smoothstep(.34,.52,t);\n\n    let orange=vec3f(1.,.26,.045);\n    let gold=vec3f(1.,.66,.13);\n    let hot=vec3f(1.,.93,.65);\n    let responseColor=mix(orange,gold,lock);\n\n    // Exact inherited image placement, sampling, aspect, and true alpha.\n    let uv=p/vec2f(u.actor.z*u.actor.w,u.actor.z)+vec2f(.5);\n    let tex=textureSampleLevel(\n        img,samp,clamp(uv,vec2f(0.),vec2f(1.)),0.\n    );\n    let inActor=select(\n        0.,1.,all(uv>=vec2f(0.)) && all(uv<=vec2f(1.))\n    );\n    let actorA=tex.a*inActor*u.gates.z;\n    let albedo=decode(tex.rgb);\n    let baseline=vec4f(albedo*actorA,actorA);\n\n    if(env<=0.) {\n        return outputColor(baseline);\n    }\n\n    // Conservative bound for every inherited source and material support.\n    if(any(abs(q)>vec2f(100.))) {\n        return outputColor(baseline);\n    }\n\n    let field=receivingField(q,t,variant,transfer,lock);\n    let flowing=field.x*env;\n    let received=field.y*env;\n    let charge=clamp(.78*flowing+1.18*received,0.,1.);\n\n    // Preserve material variation instead of painting a white overlay.\n    // Highlights gain a warm chromatic shoulder; darker materials gain\n    // bounded emission. The original albedo remains a direct component.\n    let materialRoot=sqrt(max(albedo,vec3f(0.)));\n    let warmShoulder=mix(\n        vec3f(1.),\n        vec3f(1.,.84,.58),\n        .65*charge\n    );\n    let materialBaseColor=albedo*warmShoulder;\n    let materialEmission=(\n        vec3f(.10,.045,.008)\n        +materialRoot*vec3f(.26,.15,.040)\n    )*charge;\n\n    let transitEmission=responseColor\n        *(.065*flowing)*(vec3f(.25)+materialRoot*.75);\n    let headroom=max(vec3f(1.)-materialBaseColor,vec3f(0.));\n    let surface=materialBaseColor+headroom*(\n        vec3f(1.)-exp(-(materialEmission*2.4+transitEmission))\n    );\n    let actor=vec4f(surface*actorA,actorA);\n\n    // Close silhouette emission carries the broad body response outward.\n    // It is behind the image, observer-gated, and alpha-derived only.\n    var aura=vec4f(0.);\n    let nearImage=all(uv>=vec2f(-.10))\n        && all(uv<=vec2f(1.10));\n    if(u.gates.y>0. && u.gates.z>0. && nearImage) {\n        let spill=silhouetteSpill(uv);\n        let sourceWeight=clamp(\n            field.x*.72+field.y*1.24,0.,1.\n        );\n        let coverage=spill*sourceWeight*env\n            *u.gates.y*u.gates.z*.68;\n        aura=emitter(coverage,responseColor,2.65);\n    }\n    let materialBase=over(actor,aura);\n\n    // Inherited finite-column pixel-aperture integration.\n    let apertureNodes=array<f32,4>(\n        .069431844203,.330009478208,.669990521792,.930568155797\n    );\n    let apertureWeights=array<f32,4>(\n        .173927422569,.326072577431,.326072577431,.173927422569\n    );\n    let pixelWidth=1./(u.view.z*scale);\n    let apertureLo=vec2f(-29.701,-11.901)-vec2f(pixelWidth*.5);\n    let apertureHi=vec2f(29.701,18.701)+vec2f(pixelWidth*.5);\n    var result=materialBase;\n\n    if(all(q>=apertureLo) && all(q<=apertureHi)) {\n        result=vec4f(0.);\n        for(var iy=0u;iy<4u;iy++) {\n            for(var ix=0u;ix<4u;ix++) {\n                let sampleQ=q+(\n                    vec2f(apertureNodes[ix],apertureNodes[iy])-vec2f(.5)\n                )*pixelWidth;\n                let tau=cameraSourceTau(\n                    sampleQ,t,variant,env,transfer\n                );\n\n                let guideA=1.-exp(-tau.x);\n                let packetA=1.-exp(-tau.y);\n                let guide=vec4f(orange*1.04*guideA,guideA);\n                let packet=vec4f(\n                    mix(gold,hot,.20)*1.18*packetA,packetA\n                );\n\n                // Receiver visibility does not depend on showing the actor.\n                // On material, keep the fine arrival detail subordinate.\n                let receiverA=(1.-exp(-tau.z))\n                    *mix(.54,.16,actorA);\n                let receiverColor=mix(\n                    gold*.96,\n                    gold*(.26+materialRoot*.62),\n                    actorA\n                );\n                let receiver=vec4f(\n                    receiverColor*receiverA,receiverA\n                );\n\n                let paths=over(packet,guide);\n                let composite=over(\n                    receiver,over(materialBase,paths)\n                );\n                result+=composite\n                    *(apertureWeights[ix]*apertureWeights[iy]);\n            }\n        }\n    }\n\n    // Inherited fixed contact accents: same topology, position, angle,\n    // and life windows. Alpha and received/supply support are required.\n    var spark=0.;\n    let ca=.906307787;\n    let sa=.422618262;\n    for(var j=0u;j<3u;j++) {\n        let pos=vec2f(\n            (f32(j)-1.)*19.,\n            -18.+f32(j%2u)*31.\n        );\n        let z=q-pos;\n        let v=vec2f(ca*z.x+sa*z.y,-sa*z.x+ca*z.y);\n        let a=.34+f32(j)*.07;\n        let life=pulse(t,a,a+.22);\n        let crossDistance=min(\n            capsule(v,vec2f(-4.8,0.),vec2f(4.8,0.)),\n            capsule(v,vec2f(0.,-2.7),vec2f(0.,2.7))\n        );\n        spark=max(\n            spark,\n            (1.-smoothstep(.72,.72+aa,crossDistance))*life\n        );\n    }\n    let accentSupport=clamp(field.x+field.y,0.,1.)*actorA;\n    result=over(\n        emitter(spark*env*accentSupport*.22,hot,2.4),\n        result\n    );\n\n    // Observer-only optical spill remains in compact neighborhoods of\n    // the same paths and receiver segments, behind all material.\n    if(u.gates.y>0.) {\n        var broad=0.;\n        for(var k=0u;k<2u;k++) {\n            let side=select(-1.,1.,k==1u);\n            let c=conduitCoordinates(q,side);\n            broad=max(\n                broad,\n                localKernel(c.x,6.5)*(\n                    .035*channelSupport(t)\n                    +.25*packetOnPath(c,t,transfer)\n                )\n            );\n        }\n\n        var receiverGlow=0.;\n        for(var j=0u;j<4u;j++) {\n            receiverGlow=max(\n                receiverGlow,\n                localKernel(receiverDistance(q,j),6.)\n                    *receivedLayer(t,j,variant)*.14\n            );\n        }\n\n        let observer=emitter(\n            (broad+receiverGlow)*env*u.gates.y,\n            responseColor,\n            2.1\n        );\n        result=over(result,observer);\n    }\n\n    return outputColor(result);\n}\n";
+export const VERSION_ID='fighter-energy-charge-cleanroom-sol61-r10';
+export const DURATION_MS=1200;
+export const SFX_OFFSET_MS=96;
+export const SFX_DURATION_MS=660;
+export const UNIFORM_FLOATS=16;
+export const VARIANT_NAMES=Object.freeze(['ordinary-charge','cross100-resource-entitlement','cross500-iai-charge','cross1000-apex-perks']);
+const clamp=x=>Math.max(0,Math.min(1,x));
+const fin=(n,k)=>{if(!Number.isFinite(n))throw new TypeError(k+' finite required');return n;};
+function variant(v){if(!Number.isInteger(v)||v<0||v>3)throw new RangeError('variantIndex 0..3 required');return v;}
+export function durationForVariant(v=0){variant(v);return DURATION_MS;}
+export function phaseAt(ageMs,v=0){
+ fin(ageMs,'ageMs');const d=durationForVariant(v),t=ageMs/d;
+ if(ageMs<0)return 'before';if(ageMs>=d)return 'expired';
+ if(t<.08)return 'seed';if(t<.34)return 'transfer';if(t<.66)return 'lock';
+ if(t<.80)return 'settled';return 'release';
+}
+export function motionState(ageMs,v=0,reducedMotion=false){
+ fin(ageMs,'ageMs');const d=durationForVariant(v),t=clamp(ageMs/d);
+ return {normalizedAge:t,transfer:reducedMotion?1:1-Math.pow(1-clamp((t-.08)/.22),3),
+ lock:clamp((t-.34)/.18),energy:ageMs<0||ageMs>=d?0:Math.min(clamp(t/.08),1-clamp((t-.80)/.20)),
+ lockCount:v+1,glintAngleRadians:25*Math.PI/180};
+}
+export function frameState(input={},actorAspect=134/222,targetLinear=false){
+ const {width,height,dpr=1,actorCenterCss=[490,310],actorHeightCss=64,ageMs=0,variantIndex=0,
+ sourceOn=true,mainOn=true,observerOn=true,showActor=true,reducedMotion=false}=input;
+ variant(variantIndex);
+ for(const [n,v]of Object.entries({width,height,dpr,actorHeightCss,ageMs,actorAspect}))fin(v,n);
+ if(width<=0||height<=0||!Number.isInteger(width)||!Number.isInteger(height)||dpr<=0||actorHeightCss<=0||actorAspect<=0)
+  throw new RangeError('positive backing dimensions/scales required');
+ if(!Array.isArray(actorCenterCss)||actorCenterCss.length!==2)throw new TypeError('CSS center pair required');
+ actorCenterCss.forEach(x=>fin(x,'actor center'));
+ for(const [n,v]of Object.entries({sourceOn,mainOn,observerOn,showActor,reducedMotion}))
+  if(typeof v!=='boolean')throw new TypeError(n+' boolean required');
+ const d=durationForVariant(variantIndex),active=sourceOn&&mainOn&&ageMs>=0&&ageMs<d;
+ const m=motionState(ageMs,variantIndex,reducedMotion),phase=phaseAt(ageMs,variantIndex);
+ const uniforms=new Float32Array([width,height,dpr,ageMs/1000,...actorCenterCss,actorHeightCss,actorAspect,
+  +active,+(active&&observerOn),+showActor,+reducedMotion,active?m.energy:0,+!targetLinear,variantIndex,d/1000]);
+ if(!uniforms.every(Number.isFinite))throw new RangeError('float32 uniform overflow');
+ return {active,phase,variantIndex,variantName:VARIANT_NAMES[variantIndex],durationMs:d,motion:m,uniforms};
+}
+export function createRenderer({device,format,actorTexture,actorAspect=134/222}){
+ if(!device||!actorTexture)throw new TypeError('host device/actorTexture required');
+ if(!['rgba8unorm','bgra8unorm','rgba8unorm-srgb','bgra8unorm-srgb','rgba16float'].includes(format))throw new TypeError('target format');
+ fin(actorAspect,'actorAspect');if(actorAspect<=0)throw new RangeError('actorAspect');
+ const targetLinear=format.endsWith('-srgb')||format==='rgba16float';
+ const shader=device.createShaderModule({label:VERSION_ID,code:WGSL});
+ const buffer=device.createBuffer({label:VERSION_ID+' uniform64',size:64,usage:0x40|0x08});
+ const diagnostics={status:'PENDING',messages:[],error:null};
+ const diagnosticsReady=shader.getCompilationInfo().then(info=>{
+  diagnostics.messages=Array.from(info.messages,m=>({message:m.message,type:m.type,lineNum:m.lineNum,linePos:m.linePos,offset:m.offset,length:m.length}));
+  diagnostics.status=diagnostics.messages.some(m=>m.type==='error')?'FAILED':'COMPILATION_INFO_RECEIVED';return diagnostics;
+ }).catch(error=>{diagnostics.status='FAILED';diagnostics.error=String(error);return diagnostics;});
+ let pipeline,bind;
+ try{
+  pipeline=device.createRenderPipeline({label:VERSION_ID,layout:'auto',vertex:{module:shader,entryPoint:'vs'},
+   fragment:{module:shader,entryPoint:'fs',targets:[{format,blend:{
+    color:{srcFactor:'one',dstFactor:'one-minus-src-alpha',operation:'add'},
+    alpha:{srcFactor:'one',dstFactor:'one-minus-src-alpha',operation:'add'}}}]},primitive:{topology:'triangle-list'}});
+  bind=device.createBindGroup({layout:pipeline.getBindGroupLayout(0),entries:[
+   {binding:0,resource:{buffer}},{binding:1,resource:actorTexture.createView()},
+   {binding:2,resource:device.createSampler({magFilter:'linear',minFilter:'linear'})}]});
+ }catch(error){buffer.destroy();throw error;}
+ let disposing=false,disposePromise=null,frames=0;
+ return {diagnostics,diagnosticsReady,
+  render(input){
+   if(disposing)throw new Error('disposed renderer');
+   if(!input?.encoder||!input?.view)throw new TypeError('host encoder/view required');
+   const s=frameState(input,actorAspect,targetLinear);
+   device.queue.writeBuffer(buffer,0,s.uniforms);
+   const pass=input.encoder.beginRenderPass({label:VERSION_ID,colorAttachments:[{view:input.view,loadOp:'load',storeOp:'store'}]});
+   pass.setPipeline(pipeline);pass.setBindGroup(0,bind);pass.draw(3);pass.end();frames++;
+   return{versionId:VERSION_ID,passes:1,active:s.active,phase:s.phase,variantIndex:s.variantIndex,
+    durationMs:s.durationMs,framesRecorded:frames,submitted:false,gpuCompletion:'HOST_OWNED_NOT_OBSERVED'};
+  },
+  dispose(){
+   if(disposePromise)return disposePromise;disposing=true;
+   disposePromise=(async()=>{try{await device.queue.onSubmittedWorkDone();}catch(error){if(!device.lost)throw error;await device.lost;}
+    buffer.destroy();return{disposed:true,ownedBuffersDestroyed:1,hostTextureDestroyed:false};})();
+   return disposePromise;
+  }
+ };
+}
+// Deterministic synthesis, no playback. First pressure contact is SFX_OFFSET_MS after cause origin.
+export function synthesizeSfx(sampleRate=48000,v=0){
+ if(!Number.isInteger(sampleRate)||sampleRate<8000||sampleRate>192000)throw new RangeError('sampleRate');
+ const duration=durationForVariant(v),n=Math.round(sampleRate*SFX_DURATION_MS/1000),pcm=new Float32Array(n);
+ const lockAt=duration*.44/1000-SFX_OFFSET_MS/1000;
+ let seed=(0x4ecba921+v*9817)>>>0,low=0,previous=0;
+ for(let i=0;i<n;i++){
+  const t=i/sampleRate;seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;
+  const noise=(seed>>>0)/2147483648-1;low+=.12*(noise-low);
+  const edge=low-previous;previous=low;
+  const intake=(1-Math.exp(-t/.005))*Math.exp(-t/.11);
+  const gather=(.29*low+.44*edge)*intake;
+  let contact=0;
+  for(let j=0;j<=v;j++){
+   const dt=t-lockAt-j*.045*duration/1000;
+   if(dt>=0)contact+=(.13*Math.sin(2*Math.PI*(139+j*17)*dt)*Math.exp(-dt/.052)+
+    .07*Math.sin(2*Math.PI*367*dt)*Math.exp(-dt/.024)+.12*noise*Math.exp(-dt/.007))/(1+v*.22);
+  }
+  const taper=clamp((n-1-i)/(sampleRate*.055));
+  pcm[i]=(gather+contact)*taper;
+ }
+ return pcm;
+}

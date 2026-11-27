@@ -1,0 +1,75 @@
+{
+  "comparisonBaselineCaveat": "R9 baseline has 24 completions; its event log includes one unrelated 404 message. This is not attributed to the R10 run.",
+  "observation": "In the inspected normal-size H64 R10 frames, warm/white response appears at the head, chest, and shoulders, while the full subject including the lower costume does not read as strongly emissive across the whole affected area.",
+  "schema": "dva-fighter-energy-charge-r10-quality-review/v1",
+  "scope": "Standalone verify H64, 980x620 DPR1; R10 24 snapshots/receipts completed, failure=0/errors=0; manifest and effect response SHA matched. Images are not bound to the receipts.",
+  "qualityAccepted": false,
+  "evidenceFiles": [
+    {
+      "bytes": 50884,
+      "path": "r10-events.json",
+      "sha256": "2b9e27c492990b3bda2db2f6b38286c48446e3a8596bc8308a16db1f69ff0d81"
+    },
+    {
+      "bytes": 10496,
+      "path": "r10-frame-04.png",
+      "sha256": "75c711767884bc1a9d2fcca6cc576ef3e63e8bfcd393e7ea94814e0854e685c0"
+    },
+    {
+      "bytes": 9964,
+      "path": "r10-frame-07.png",
+      "sha256": "c2e89549dab8e4e603c47a77f0ce43297562fee8c8ee0e14e178a3ff2ae767f6"
+    },
+    {
+      "bytes": 9465,
+      "path": "r10-frame-10.png",
+      "sha256": "c21d6037153684ba209cfd5cda0bd0e56bc99b11537c53efbf1dfb781001f462"
+    },
+    {
+      "bytes": 9491,
+      "path": "r10-frame-13.png",
+      "sha256": "5f3352e6d505f4e06cb301a23c9cdda4789e045554ed0b9e61bb895e409f5d93"
+    },
+    {
+      "bytes": 10771,
+      "path": "r10-frame-21.png",
+      "sha256": "2429166af94c7b2bf56796175feb9bf9120ab2e2c8bc08c0c3fe8efed2f4c22a"
+    },
+    {
+      "bytes": 47634,
+      "path": "r9-events.json",
+      "sha256": "21adc679c9502e0df065eb5a3adc48c349fdb5b19c700f376c3dd730a1a28d66"
+    },
+    {
+      "bytes": 8438,
+      "path": "r9-frame-07.png",
+      "sha256": "974141e65172375464d86ed1c4f28d7f89b3980a6f44695a05d6972fdb71be5a"
+    },
+    {
+      "bytes": 9901,
+      "path": "r9-frame-19.png",
+      "sha256": "110a174b0dfb9cda301ca12bd719682ca3514debc9b2331227da0a1bce450513"
+    }
+  ],
+  "versionId": "fighter-energy-charge-cleanroom-sol61-r10",
+  "qualityReviewStatus": "needs-improvement",
+  "comparison": "R9 and R10 captures are asynchronous in phase, variant, and capture time. No quantitative improvement or decline, exact-age pixel causality, or all-variant/full-lifetime failure is asserted.",
+  "qualityReviewerDisplayName": "GPT-6.1-Sol",
+  "packageManifestSha256": "ab6ed5a6d3f45d54e73fb134c1045066049ca9d1bf45664ebe923c42e1999ff6",
+  "packageSealSha256": "29918c6ec74b68cb005b4cc4226035f439bbaccc1ea4edfafc6d060c33eb45f9",
+  "effectSha256": "00cc3d8bb07ab4b49d1e3aa8bdb64a75e923f9182d4e900b1fa76dcb735e951f",
+  "qualityStatus": "not-accepted",
+  "unverified": [
+    "all four variants across full lifetime",
+    "flicker",
+    "flow/accumulation causality",
+    "exact image/receipt phase binding",
+    "parent gallery replay",
+    "normal audio",
+    "Safari",
+    "main-game integration",
+    "video review"
+  ],
+  "outcome": "scoped-sampled-emission-insufficient",
+  "sourceManifestSha256": "ea810ed3cbd3f8bfa6d1f67d810a4b5ba42bd960ff54b58645707ac9979de4b2"
+}
