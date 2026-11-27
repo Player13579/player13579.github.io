@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {TYPE,receipt,envelope,VISUAL_MS} from './plan.mjs';
+const at=1780000000000, clock={selfId:'p1',serverNow:at+136};
+const base={type:TYPE,variant:'vending',id:'magic_fixture',playerId:'p1',x:7,y:11,at,radius:124};
+for(const variant of ['vending','mystery-box'])assert.equal(receipt({...base,variant},clock).causeId,base.id);
+for(const variant of ['hacker','acquired','hacker:fire',''])assert.equal(receipt({...base,variant},clock),null);
+for(const type of ['action-vending','action-dodge','instant-substitution-acquired','ability-entitlement','instant-fire-acquired'])assert.equal(receipt({...base,type},clock),null);
+for(const o of [{playerId:'p2'},{radius:90},{id:'naked'},{at:at-1000},{at:at+270},{x:Infinity}])assert.equal(receipt({...base,...o},clock),null);
+assert.equal(receipt(base,{...clock,serverNow:at-5}).active,false);
+assert.equal(envelope(-1).phase,'off');
+assert.equal(envelope(VISUAL_MS).phase,'off');
+assert(envelope(95).lineProgress<envelope(210).lineProgress);
+assert(envelope(162,{reduced:true}).lineProgress===1);
+assert(envelope(248).soundBand);
+assert(envelope(575).heat<envelope(240).heat);
+console.log('receipt, four source negatives, five other event negatives, owner, age and envelope passed');
