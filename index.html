@@ -20,7 +20,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
   document.documentElement.classList.add("dva-ipad-ui-comfort");
 }
     </script>
-  <link rel="stylesheet" href="styles.css?v=43acc73be3bbd916504ed60422599d102f0424e3">
+  <link rel="stylesheet" href="styles.css?v=19809644856a6663e7d95ee2cf5f6b5ce4cd3205">
   </head>
   <body>
     <section id="startScreen" class="start-screen" data-ui-region="home-screen" aria-label="ホーム画面">
@@ -197,7 +197,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
               <header><span>五</span><div><p>INFORMATION WARFARE</p><h3>索敵・EMP</h3></div></header>
               <p class="tactics-lead">通常は地図で他プレイヤーを追えません。音と千里眼から居場所を推定します。</p>
               <div class="tactics-rule-grid">
-                <section><h4>千里眼（0.25MP/秒）</h4><p>選んだ生存プレイヤーを追尾して、遠隔地の攻撃・キルを含む現場を観測する。←→↑↓で追尾先を切替。発動者は動かず、自由視点はない。追尾中もグラビティの画面タップ転移を使える。秘密の陣営情報は開示しない。観測中は継続消費し、画面外へ投げる時も自動発動。</p></section>
+                <section><h4>千里眼（0.25MP/秒）</h4><p>選んだ生存プレイヤーを追尾して、遠隔地の攻撃・キルを含む現場を観測する。発動中に画面の追尾表示の左・右をタップして追尾先を切替。発動者は動かず、自由視点はない。追尾中もグラビティの画面タップ転移を使える。秘密の陣営情報は開示しない。観測中は継続消費し、画面外へ投げる時も自動発動。</p></section>
                 <section><h4>Botの視認証拠</h4><p>Botは通常プレイヤーと同じ視界・表示・音だけを使う。投擲者の動作、毒物の軌道と着地点、毒表示中の対象、死亡瞬間を連続して見た時だけ、投擲者を容疑者として追跡・攻撃・会議・ルミナスに使う。内部死因、非表示の所有者・犯人ID、状態異常の付与元、秘密陣営は証拠にしない。Botにキルされた時、キルカメラの「Botの判断」に実際の観測証拠・判断・手段を表示する。</p></section>
                 <section><h4>EMP基本</h4><p>開始15秒後から使用でき、再使用まで18秒。自分からキャラ横幅約4〜7体分に届く。味方へ当てると自分に反射する。被弾者は7秒間ストレージ遮断となり、全アイテム、バリア、バスト、変わり身、武器、取得済みハック効果が止まる。自然回復では防止・解除できない。所持品とハック効果は失わず、解除後に復旧。人間のオペ能力は封印しない。</p></section>
                 <section><h4>位相干渉</h4><p>1.2秒以内に重ねると、同じ位相は共振、逆の位相は相殺。共振は発動位置同士がキャラ横幅約2〜3体分以内なら近距離の対象をキルし、離れるとボディダメージになる。周囲のキャラ約4〜7体分の範囲も巻き込む。距離の目安はキャラの横幅で、マップにより変わる。</p></section>
@@ -271,9 +271,8 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
               <button id="tabletWeaponUseShortcut" class="tablet-quick-action danger" type="button" hidden disabled>武器使用</button>
               <button id="tabletFireShortcut" class="tablet-quick-action danger" type="button" hidden>ファイア</button>
               <button id="tabletEmpShortcut" class="tablet-quick-action tactical" type="button">EMP</button>
+              <button id="tabletClairvoyanceShortcut" class="tablet-quick-action tactical" type="button">千里眼</button>
               <button id="tabletClairvoyanceModeShortcut" class="tablet-quick-action tactical" type="button" hidden aria-label="千里眼の視点モードを切替">自由視点</button>
-              <button id="tabletClairvoyancePreviousShortcut" class="tablet-quick-action tactical" type="button" hidden aria-label="千里眼の前の追尾先">追尾 ‹</button>
-              <button id="tabletClairvoyanceNextShortcut" class="tablet-quick-action tactical" type="button" hidden aria-label="千里眼の次の追尾先">追尾 ›</button>
               <button id="tabletVendingShortcut" class="tablet-quick-action resource" type="button" aria-controls="vendingPanel" aria-expanded="false">ショップ</button>
               <button id="tabletDodgeShortcut" class="tablet-quick-action" type="button">回避</button>
               <button id="tabletRenkiShortcut" class="tablet-quick-action resource" type="button">練気</button>
@@ -315,7 +314,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
             </div>
           </section>
           <canvas id="webgpuMainCanvas" class="webgpu-main-canvas" width="980" height="620" tabindex="-1" role="img" aria-label="ゲームマップ" aria-describedby="gameCanvasStatusSummary"></canvas>
-          <span id="clairvoyanceFieldHint" role="status" hidden>千里眼中 · タップで解除</span>
+          <span id="clairvoyanceFieldFollow" aria-label="千里眼の追尾先切り替え" hidden><span>‹ 前の追尾先</span><span>次の追尾先 ›</span></span>
           <aside id="webgpuFrameCostPanel" class="webgpu-frame-cost-panel" aria-label="WebGPUフレーム診断" hidden>
             <strong>15秒フレーム診断</strong>
             <pre id="webgpuFrameCostSummary">計測中…</pre>
@@ -679,7 +678,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
         <div id="keybindList" class="keybind-list" data-scroll-region="キー割り当て表" tabindex="0" role="region" aria-label="キー操作一覧（スクロール可能）">
           <section><h3>移動</h3><dl><dt>W A S D</dt><dd>移動する。</dd><dt>Shift</dt><dd>ダッシュする。</dd><dt>Ctrl / Alt</dt><dd>無音歩行する。</dd></dl></section>
           <section><h3>基本操作</h3><dl><dt>L / Enter</dt><dd>マッチングを始める。</dd><dt>\\</dt><dd>ゲーム音をオン／オフ。</dd><dt>@</dt><dd>キー操作一覧を開く。</dd><dt>I</dt><dd>戦術いろはを開く／ゲームへ戻る。</dd><dt>Tab</dt><dd>タブレットを開く。</dd><dt>3</dt><dd>緊急会議。</dd><dt>6</dt><dd>忍殺する。</dd><dt>8</dt><dd>回避する。</dd><dt>C</dt><dd>錬気。タップでMP+10・35秒。長押しでMP+100・350秒。MP−100では3秒後にMP2。</dd><dt>停止中</dt><dd>自動休息：毎秒7.6SP。MP−100では5秒連続停止でMP2。移動で経過を取り消す。</dd><dt>G / ' 長押し</dt><dd>スマホ募金。</dd><dt>M</dt><dd>マップを開く。</dd><dt>Backspace</dt><dd>タイトルへ戻る。</dd></dl></section>
-          <section><h3>装備・索敵</h3><dl><dt>フィールドをタップ</dt><dd>空いている場所で千里眼を開始。「千里眼中」の表示をタップして解除。</dd><dt>X</dt><dd>EMP。</dd><dt>千里眼中の←→↑↓</dt><dd>生存プレイヤーの追尾先を切替。自分は動かない。</dd><dt>投擲中の移動キー</dt><dd>着地点を動かす。画面外では千里眼を自動発動。</dd><dt>近接</dt><dd>フィールドオブジェクトを自動起動。</dd></dl></section>
+          <section><h3>装備・索敵</h3><dl><dt>Z / X</dt><dd>千里眼／EMP。</dd><dt>千里眼中の画面タップ</dt><dd>「前の追尾先」「次の追尾先」をタップして切り替えます。転移のタップは従来どおりです。</dd><dt>投擲中の移動キー</dt><dd>着地点を動かす。画面外では千里眼を自動発動。</dd><dt>近接</dt><dd>フィールドオブジェクトを自動起動。</dd></dl></section>
           <section><h3>オペ固有能力</h3><dl><dt>H</dt><dd>固有能力。対応MP能力は長押しでMPを2残し、一括並列発動。</dd><dt>能力・対象の切替</dt><dd>能力・対象の欄をタップして選ぶ。続く選択肢は順に選び、最後に確定。</dd><dt>O / P</dt><dd>O：能力方式を切替。P：対象欄がある時に対象を切替。</dd><dt>7</dt><dd>ガンナー射撃。</dd><dt>T / Shift+T</dt><dd>武器を次／前へ切替。</dd><dt>R</dt><dd>リロードする。</dd><dt>所持品欄</dt><dd>武器・発明品・重火器を選んで使用。見切れた欄は、その欄だけをフリックでスクロール。</dd><dt>PageUp / PageDown</dt><dd>操作するUI欄を前／次へ切替。</dd><dt>Shift + ← / →</dt><dd>ハッカー／ショップの分類を切替。</dd><dt>↑ ↓ ← →（長押し）</dt><dd>選択中のUI内を移動。↑↓は同時にスクロール。</dd><dt>P</dt><dd>ハッカーの対象を切替。</dd><dt>Enter / Space</dt><dd>選択中の内容を実行。</dd></dl></section>
           <section><h3>ショップ・所持品</h3><dl><dt>V</dt><dd>どこでもショップを開く／閉じる。</dd><dt>1〜0 / P</dt><dd>ショップを開いている間、商品を選ぶ。</dd><dt>ジャンル / ページ</dt><dd>上部の選択欄で分類とページを選ぶ。</dd><dt>PageUp / PageDown</dt><dd>ショップ・所持品欄を前後に移動。</dd><dt>↑ ↓ ← →</dt><dd>商品・所持品を選んで移動。</dd><dt>Shift+V / Shift+G</dt><dd>使用／投擲。600msからエンハンス、武具は3000msからGBO。</dd><dt>Alt+V / Alt+C</dt><dd>所持品／設定したCを譲渡。</dd><dt>Alt+1 / 2 / 3 / 5</dt><dd>ショップ表示中はレールガン／荷電粒子砲／エクスカリバー／亡命。</dd><dt>Alt+4</dt><dd>ショップ表示中はハック。</dd><dt>Alt+6 / 7 / 8 / 9 / 0</dt><dd>ショップ表示中はHG／SMG／AR／SR／テーザー。</dd></dl></section>
           <section><h3>選択</h3><dl><dt>↑ ↓ ← →</dt><dd>表示方向の候補を選ぶ。</dd><dt>Shift + ← / →</dt><dd>分類を切替。</dd><dt>Enter / Space</dt><dd>選択を実行。</dd><dt>Shift+F10 / メニューキー</dt><dd>選んだ所持品・ハッカー内容の説明を開く。</dd><dt>オペレーターの説明</dt><dd>名前に触れると表示。</dd><dt>Escape</dt><dd>閉じる／戻る。</dd></dl></section>
@@ -809,7 +808,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
     <script src="object-space-collision.js?v=webgpu-main-bootstrap-v5"></script>
     <script src="webgpu-game-input-surface.js?v=webgpu-only-input-v2"></script>
     <script src="dva-full-canvas-ui.js?v=full-canvas-ui-r1&amp;fieldUi=field-ui-persistent-forward-20261126&amp;unifiedPanel=one-match-panel-forward-20261126-1349-8f4f39c9b518&amp;onePagePanel=single-page-panel-forward-20261126-1407-27b1d0304f9b&amp;weaponPanelOwner=weapon-panel-owner-forward-20261126-1432-457efa34746a&amp;launcherStrictTouchC195=launcher-strict-touch-c195-forward-20261126-1942-796d6d154b1a"></script>
-    <script src="app.js?v=be8b814930396ef6d27574c290e4d0d23abd021f"></script>
+    <script src="app.js?v=dcb9f53cf25937c14b9bfe9c15b733780e2f5765"></script>
     <script>
 (() => {
   if (new URLSearchParams(location.search).get('viewportCheck') !== '1') return;

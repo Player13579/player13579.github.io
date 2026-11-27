@@ -184,9 +184,8 @@ const els = {
   tabletWeaponUseShortcut: $("#tabletWeaponUseShortcut"),
   tabletFireShortcut: $("#tabletFireShortcut"),
   tabletEmpShortcut: $("#tabletEmpShortcut"),
+  tabletClairvoyanceShortcut: $("#tabletClairvoyanceShortcut"),
   tabletClairvoyanceModeShortcut: $("#tabletClairvoyanceModeShortcut"),
-  tabletClairvoyancePreviousShortcut: $("#tabletClairvoyancePreviousShortcut"),
-  tabletClairvoyanceNextShortcut: $("#tabletClairvoyanceNextShortcut"),
   tabletVendingShortcut: $("#tabletVendingShortcut"),
   tabletDodgeShortcut: $("#tabletDodgeShortcut"),
   tabletRenkiShortcut: $("#tabletRenkiShortcut"),
@@ -4277,6 +4276,7 @@ const actionHotkeys = {
   Digit6: "ninjutsuButton",
   Digit7: "shootButton",
   Digit8: "dodgeButton",
+  KeyZ: "clairvoyance",
   KeyX: "empButton",
   KeyV: "vendingButton",
   KeyH: "operatorAbilityButton",
@@ -5875,7 +5875,7 @@ function beginClairvoyanceMovement(event) {
   const direction = throwTargetKey(event);
   if (!direction) return false;
   event.preventDefault();
-  if (!event.repeat) cycleClairvoyanceFollowTarget(["up", "left"].includes(direction) ? -1 : 1);
+  // Keep player movement suppressed while the camera is following.
   return true;
 }
 
@@ -6195,6 +6195,10 @@ function triggerActionHotkey(event) {
   if (!elementKey) return false;
   if (!["mapActionButton", "gameMuteButton"].includes(elementKey) && state.data?.phase !== "playing") return false;
   event.preventDefault();
+  if (elementKey === "clairvoyance") {
+    if (!event.repeat) toggleClairvoyance();
+    return true;
+  }
   const enhanceKind = enhanceActionForElement(elementKey);
   if (enhanceKind) {
     if (!event.repeat) beginEnhanceAction(enhanceKind, null, "keyboard", event.code);
@@ -8240,8 +8244,7 @@ function bindEvents() {
   bindCommonActionGesture(els.tabletNinjutsuShortcut, { tapInvoke: performNinjutsu, holdInvoke: invokeCommonBust, detail: ninjutsuDetail });
   els.tabletContextShortcut.addEventListener("click", () => els.contextActionButton.click());
   els.tabletEmpShortcut.addEventListener("click", () => els.empButton.click());
-  els.tabletClairvoyancePreviousShortcut.addEventListener("click", () => cycleClairvoyanceFollowTarget(-1));
-  els.tabletClairvoyanceNextShortcut.addEventListener("click", () => cycleClairvoyanceFollowTarget(1));
+  els.tabletClairvoyanceShortcut.addEventListener("click", () => toggleClairvoyance());
   els.tabletVendingShortcut.addEventListener("click", () => setVendingOpen(!state.vendingOpen, {
     opener: els.tabletVendingShortcut
   }));
@@ -10843,18 +10846,15 @@ function renderTabletControls(data) {
   els.tabletEmpShortcut.dataset.actionDisabled = els.empButton.disabled ? "1" : "0";
   els.tabletEmpShortcut.classList.toggle("action-disabled", els.empButton.disabled);
   const clairvoyanceTarget = state.clairvoyance.active ? ensureClairvoyanceFollowTarget(data) : null;
+  setTabletShortcutLabel(els.tabletClairvoyanceShortcut, "千里眼", state.clairvoyance.active
+    ? `千里眼を解除。追尾先: ${clairvoyanceTarget?.name || "なし"}`
+    : `千里眼を発動（${Number(data?.self?.clairvoyanceManaPerSecond ?? 0.25).toFixed(2)}MP/秒）`);
   // Compatibility DOM stays out of layout; Clairvoyance only follows players.
   els.tabletClairvoyanceModeShortcut.hidden = true;
   els.tabletClairvoyanceModeShortcut.disabled = true;
-  const clairvoyanceCandidates = clairvoyanceFollowCandidates(data);
-  const clairvoyanceTargetName = clairvoyanceTarget?.name || "追尾先なし";
-  const clairvoyanceTargetsVisible = state.clairvoyance.active;
-  els.tabletClairvoyancePreviousShortcut.hidden = !clairvoyanceTargetsVisible;
-  els.tabletClairvoyanceNextShortcut.hidden = !clairvoyanceTargetsVisible;
-  els.tabletClairvoyancePreviousShortcut.disabled = clairvoyanceCandidates.length < 2;
-  els.tabletClairvoyanceNextShortcut.disabled = clairvoyanceCandidates.length < 2;
-  setTabletShortcutLabel(els.tabletClairvoyancePreviousShortcut, "追尾 ‹", `前の追尾先: ${clairvoyanceTargetName}`);
-  setTabletShortcutLabel(els.tabletClairvoyanceNextShortcut, "追尾 ›", `次の追尾先: ${clairvoyanceTargetName}`);
+  els.tabletClairvoyanceShortcut.disabled = data.phase !== "playing" || !data.self.alive || data.self.ejected;
+  els.tabletClairvoyanceShortcut.classList.toggle("active", state.clairvoyance.active);
+  els.tabletClairvoyanceShortcut.setAttribute("aria-pressed", String(state.clairvoyance.active));
   setTabletShortcutLabel(els.tabletVendingShortcut, "ショップ", state.vendingOpen ? "ショップを閉じる" : "ショップを開く");
   els.tabletVendingShortcut.disabled = data.phase !== "playing" || !data.self.alive || data.self.ejected || data.self.inVent;
   els.tabletVendingShortcut.classList.toggle("active", state.vendingOpen);
@@ -12564,70 +12564,69 @@ async function performNinjutsu() {
   return ok;
 }
 
-let fieldClairvoyanceTap = null;
+let fieldFollowTap = null;
 
-function fieldClairvoyanceContext() {
+function fieldFollowTapContext() {
   const data = state.data;
   const self = data?.self;
-  if (document.hidden || state.screen !== "game" || data?.phase !== "playing" ||
-      !self?.alive || self.ejected || self.inVent || !state.roomId || !state.playerId ||
-      state.expandedMapOpen || state.keybindOpen || state.fieldFeedOpen || state.vendingOpen ||
-      state.throwTargeting?.active || state.teleportTargeting || state.instantWarpTargeting ||
-      state.enhanceHold?.kind || state.gunTriggerHeld ||
-      (!state.clairvoyance.active && (Number(self.mana) <= 0 || isActionBlocked(data)))) return null;
-  return {
-    room: state.roomId, player: state.playerId, generation: state.roomSessionGeneration,
-    started: data.battleStartedAt, round: data.round, active: Boolean(state.clairvoyance.active)
-  };
+  if (!state.clairvoyance.active || document.hidden || state.screen !== "game" ||
+      data?.phase !== "playing" || !self?.alive || self.ejected || self.inVent ||
+      !state.roomId || !state.playerId || state.expandedMapOpen || state.keybindOpen ||
+      state.fieldFeedOpen || state.vendingOpen || state.throwTargeting?.active ||
+      state.teleportTargeting || state.instantWarpTargeting || state.enhanceHold?.kind ||
+      state.gunTriggerHeld || clairvoyanceFollowCandidates(data).length < 2) return null;
+  return { room: state.roomId, player: state.playerId, generation: state.roomSessionGeneration,
+    battle: data.battleStartedAt, round: data.round };
 }
 
-function syncClairvoyanceFieldHint(data = state.data) {
-  const hint = document.getElementById("clairvoyanceFieldHint");
+function syncClairvoyanceFieldFollow(data = state.data) {
+  const hint = document.getElementById("clairvoyanceFieldFollow");
   if (!hint) return;
-  const show = state.screen === "game" && data?.phase === "playing" && Boolean(state.clairvoyance.active);
+  const show = state.screen === "game" && data?.phase === "playing" &&
+    state.clairvoyance.active && clairvoyanceFollowCandidates(data).length >= 2;
   if (hint.hidden === show) hint.hidden = !show;
 }
 
-function fieldClairvoyanceExitHit(event) {
-  const hint = document.getElementById("clairvoyanceFieldHint");
-  if (!hint || hint.hidden || hint.getClientRects().length === 0) return false;
-  const r = hint.getBoundingClientRect();
-  return r.width > 0 && r.height > 0 && event.clientX >= r.left && event.clientX <= r.right &&
-    event.clientY >= r.top && event.clientY <= r.bottom;
+function fieldFollowStep(event, markedOnly) {
+  const hint = document.getElementById("clairvoyanceFieldFollow");
+  if (hint && !hint.hidden && hint.getClientRects().length) {
+    const r = hint.getBoundingClientRect();
+    if (event.clientX >= r.left && event.clientX <= r.right &&
+        event.clientY >= r.top && event.clientY <= r.bottom)
+      return event.clientX < r.left + r.width / 2 ? -1 : 1;
+  }
+  if (markedOnly || clairvoyanceTeleportContext()) return 0;
+  const r = activeGameInputSurface()?.getBoundingClientRect();
+  return r?.width > 0 ? (event.clientX < r.left + r.width / 2 ? -1 : 1) : 0;
 }
 
-function beginFieldClairvoyanceTap(event, exit = false) {
-  fieldClairvoyanceTap = null;
-  const owner = fieldClairvoyanceContext();
-  if (!owner || !event.isPrimary || event.button !== 0 || owner.active !== exit ||
-      (exit && !fieldClairvoyanceExitHit(event)) || pointerHitsMinimap(event)) return false;
-  fieldClairvoyanceTap = {
-    owner, exit, pointerId: event.pointerId, at: performance.now(),
-    x: event.clientX, y: event.clientY
-  };
+function beginFieldFollowTap(event, markedOnly) {
+  fieldFollowTap = null;
+  const owner = fieldFollowTapContext();
+  if (!owner || !event.isPrimary || event.button !== 0 || pointerHitsMinimap(event)) return false;
+  const step = fieldFollowStep(event, markedOnly);
+  if (!step) return false;
+  fieldFollowTap = { owner, step, markedOnly, pointerId: event.pointerId,
+    at: performance.now(), x: event.clientX, y: event.clientY };
   return true;
 }
-
-function moveFieldClairvoyanceTap(event) {
-  const tap = fieldClairvoyanceTap;
+function moveFieldFollowTap(event) {
+  const tap = fieldFollowTap;
   if (tap?.pointerId === event.pointerId && Math.hypot(event.clientX - tap.x, event.clientY - tap.y) > 10)
-    fieldClairvoyanceTap = null;
+    fieldFollowTap = null;
 }
-
-function finishFieldClairvoyanceTap(event, cancelled = false) {
-  const tap = fieldClairvoyanceTap;
+function finishFieldFollowTap(event, cancelled = false) {
+  const tap = fieldFollowTap;
   if (!tap || tap.pointerId !== event.pointerId) return false;
-  fieldClairvoyanceTap = null;
-  const owner = fieldClairvoyanceContext();
+  fieldFollowTap = null;
+  const owner = fieldFollowTapContext();
   if (cancelled || !owner || !Object.keys(owner).every(k => owner[k] === tap.owner[k]) ||
       performance.now() - tap.at > 450 || Math.hypot(event.clientX - tap.x, event.clientY - tap.y) > 10 ||
-      pointerHitsMinimap(event) || (tap.exit && !fieldClairvoyanceExitHit(event)) ||
-      (!tap.exit && markerTargetAt(canvasPointerPosition(event)))) return false;
+      pointerHitsMinimap(event) || fieldFollowStep(event, tap.markedOnly) !== tap.step ||
+      (!tap.markedOnly && markerTargetAt(canvasPointerPosition(event)))) return false;
   const surface = activeGameInputSurface();
   if (!surface || document.elementFromPoint(event.clientX, event.clientY) !== surface) return false;
-  const changed = toggleClairvoyance(!tap.exit);
-  if (changed) syncClairvoyanceFieldHint();
-  return changed;
+  return Boolean(cycleClairvoyanceFollowTarget(tap.step));
 }
 
 async function attackFromCanvas(event) {
@@ -12637,7 +12636,7 @@ async function attackFromCanvas(event) {
     event.preventDefault();
     return;
   }
-  if (beginFieldClairvoyanceTap(event, true)) {
+  if (beginFieldFollowTap(event, true)) {
     event.preventDefault();
     return;
   }
@@ -12654,7 +12653,7 @@ async function attackFromCanvas(event) {
     openExpandedMapFromMinimap();
     return;
   }
-  if (beginFieldClairvoyanceTap(event)) event.preventDefault();
+  if (beginFieldFollowTap(event, false)) event.preventDefault();
 }
 
 function clearLocalGunTrigger() {
@@ -17813,7 +17812,7 @@ function renderActiveEffects(data) {
       `千里眼（${Number(self.clairvoyanceManaPerSecond ?? 0.25).toFixed(2)}MP/秒）`,
       "遠隔観測中 / Zで解除",
       "truth",
-      "遠隔地点を観測します。画面の「千里眼中」をタップして解除",
+      "遠隔地点を観測します。Zキーまたは千里眼ボタンで解除",
       "clairvoyance:active"
     );
   }
@@ -18905,7 +18904,7 @@ async function toggleMovementAcc() {
 }
 
 function updateActionButtons(data) {
-  syncClairvoyanceFieldHint(data);
+  syncClairvoyanceFieldFollow(data);
   const self = data.self;
   const fighterAccess = hasDisplayedOperatorAccess(self, "fighter");
   const borrowedGunnerAccess = self.special === "alchemist" && hasDisplayedOperatorAccess(self, "gunner");
@@ -20653,7 +20652,7 @@ function suppressGameSurfaceTouch(event) {
 }
 
 function bindGameInputSurfaceEvents() {
-  document.addEventListener("visibilitychange", () => { if (document.hidden) fieldClairvoyanceTap = null; });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) fieldFollowTap = null; });
   const bind = window.DvaWebGPUGameInputSurface?.bindSurfaceEvents;
   if (!bind) throw new Error("WebGPU game input surface helper is unavailable");
   return bind({ surfaces: [els.webgpuMainCanvas],
@@ -20667,27 +20666,27 @@ function bindGameInputSurfaceEvents() {
         updateMarkerExplanationFromPointer(event);
         movePreparationCanvasTap(event);
         moveClairvoyanceTeleportTap(event);
-        moveFieldClairvoyanceTap(event);
+        moveFieldFollowTap(event);
       },
       pointerup(event) {
         clearMarkerExplanationPointer(event.pointerId);
         finishPreparationCanvasTap(event);
-        if (!finishFieldClairvoyanceTap(event)) void finishClairvoyanceTeleportTap(event);
+        if (!finishFieldFollowTap(event)) void finishClairvoyanceTeleportTap(event);
       },
       pointercancel(event) {
         clearMarkerExplanationPointer(event.pointerId);
         finishPreparationCanvasTap(event, true);
-        finishFieldClairvoyanceTap(event, true);
+        finishFieldFollowTap(event, true);
         void finishClairvoyanceTeleportTap(event, true);
       },
       lostpointercapture(event) {
         clearMarkerExplanationPointer(event.pointerId);
         finishPreparationCanvasTap(event, true);
-        finishFieldClairvoyanceTap(event, true);
+        finishFieldFollowTap(event, true);
         void finishClairvoyanceTeleportTap(event, true);
       },
       pointerleave(event) {
-        finishFieldClairvoyanceTap(event, true);
+        finishFieldFollowTap(event, true);
         clearMarkerExplanationDisplay(event.pointerId);
       },
       touchstart: { handler: suppressGameSurfaceTouch, options: { capture: true, passive: false } },

@@ -14341,19 +14341,20 @@ body.game-open.dva-full-canvas.dva-unified-panel-active
   border-style: dashed;
 }
 
-/* Non-button field status. Its marked region belongs to the same canvas tap
-   handler, so the remaining field still supports destination targeting. */
-#clairvoyanceFieldHint:not([hidden]) {
+/* Canvas status strip, not a launcher. The mark reserves only these two
+   small regions for following while the rest of the field can still target. */
+#clairvoyanceFieldFollow:not([hidden]) {
   position: absolute;
   z-index: 21;
   inset-block-start: max(42px, calc(env(safe-area-inset-top, 0px) + 24px));
   inset-inline-start: 50%;
   transform: translateX(-50%);
   box-sizing: border-box;
-  min-height: 42px;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
+  min-height: 44px;
+  max-width: calc(100% - 24px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
   border: 1px solid rgb(145 214 231 / .76);
   border-radius: 6px;
   font: 700 12px/1.2 system-ui, sans-serif;
@@ -14362,6 +14363,15 @@ body.game-open.dva-full-canvas.dva-unified-panel-active
   background: rgb(16 43 55 / .83);
   pointer-events: none;
 }
-body:has(:is(#expandedMapOverlay,#keybindOverlay,#fieldFeedPanel,#killCameraOverlay,#vendingFullMount):not([hidden])) #clairvoyanceFieldHint {
+#clairvoyanceFieldFollow > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 9px;
+}
+#clairvoyanceFieldFollow > span + span {
+  border-inline-start: 1px solid rgb(145 214 231 / .55);
+}
+body:has(:is(#expandedMapOverlay,#keybindOverlay,#fieldFeedPanel,#killCameraOverlay,#vendingFullMount):not([hidden])) #clairvoyanceFieldFollow {
   visibility: hidden;
 }
