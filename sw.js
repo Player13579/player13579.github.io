@@ -5,8 +5,8 @@
 // v520 adds independent Natural Recovery resources and its persistent marker,
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
-const RUNTIME_RELEASE = "dva-panel-item-legibility-7aa6edab897f";
-const CACHE_NAME = "dva-static-panel-item-legibility-7aa6edab897f";
+const RUNTIME_RELEASE = "dva-unique-combat-shortcuts-75741508425b";
+const CACHE_NAME = "dva-static-unique-combat-shortcuts-75741508425b";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 // These constructors are required even before the corresponding effect is used.
 const REQUIRED_RENDER_BOOT_ADDITIONS = Object.freeze([
