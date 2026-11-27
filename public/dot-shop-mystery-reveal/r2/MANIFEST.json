@@ -1,0 +1,72 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-shop-mystery-reveal-r2",
+  "group": "dot-shop-mystery-reveal",
+  "title": "ショップ・ミステリー結果通知",
+  "authorDisplayName": "dot",
+  "edition": 2,
+  "editionCap": 5,
+  "parentEdition": "dot-shop-mystery-reveal-r1",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "mystery-reveal",
+    "variant": "",
+    "eventDurationMs": 0,
+    "visualDurationMs": 1040,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2366,
+      "sha256": "567ef7a76a75c9f5f5e73337d801fee7c864ac50d65c041672ccbbe8b289ae2d"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16796,
+      "sha256": "2e694dfae350400e92ed8686d6d0a3598e3b582d3b6fa7303c7eec78be1ef3f5"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 995,
+      "sha256": "049512ebbbf956b6518fbb4962a6c851b9d9d05d1b07cc1f338bc648495bead7"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6837,
+      "sha256": "eab60730a0f3770d4fbeb494b0e38a62b6ff26b150e91120e7dc65e3ecbacb3c"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1487,
+      "sha256": "26642ef1d5210b746f7667ca6a7751cf29f4e9d32d2c04c8491f180cd5d2742d"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 810,
+      "sha256": "fe1624f1cfb63f1b42d120b5ef41b21548067143b514a12d6821be77be148a09"
+    }
+  ]
+}
