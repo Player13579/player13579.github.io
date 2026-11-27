@@ -1,0 +1,89 @@
+{
+  "schema": "dva-frag-r8-limited-gpu-review/v1",
+  "versionId": "frag-grenade-sol61-r8",
+  "groupId": "gunner-frag-grenade-sol61",
+  "packageManifestSha256": "6847501aa639f63131a4bce24cdefca7db43e39d0df5c2085537abb019765796",
+  "packageSealSha256": "d06e0a319ba9e33c55e3d37530e3dc5d0339d299dff64a8298a405134633effb",
+  "shaderSha256": "d2da1038edcf3bd1c39ab624a31334187e0a9f80365d8da397ef83124b2be531",
+  "eventsSha256": "1a8c53d25b056d5bcb1f6165affe986df2d0f6dee768f3fb267bc30492b3b858",
+  "comparisonReferences": [
+    {
+      "versionId": "frag-grenade-sol61-r7",
+      "ageMs": 500,
+      "path": "public/frag-grenade-sol61-r7-comparison-evidence-1127/age-500.png",
+      "sha256": "2e07a46676f0cf0d08a9cd88a54b6c82ece196d6035114126c9f7d446a5f7f0f"
+    },
+    {
+      "versionId": "frag-grenade-sol61-r7",
+      "ageMs": 800,
+      "path": "public/frag-grenade-sol61-r7-comparison-evidence-1127/age-800.png",
+      "sha256": "bf03f824f81720d548581dc382b45596d036a9587c17f8b5324f8eb421d4a8f8"
+    }
+  ],
+  "scope": {
+    "mode": "private standalone WebGPU verify mode (audio muted)",
+    "actorHeight": 64,
+    "scale": 1,
+    "fixedAgesMs": [
+      0,
+      55,
+      150,
+      300,
+      400,
+      500,
+      650,
+      800,
+      900,
+      950
+    ],
+    "naturalSamples": 32,
+    "naturalSampleAgeMs": [
+      0,
+      710.7,
+      900
+    ],
+    "passesPerFixedFrame": 3,
+    "rendererErrors": 0,
+    "pendingAtFixedCapture": 0,
+    "normalAudioListening": "not_run",
+    "publicParentGalleryReplay": "not_run",
+    "gameIntegration": "not_connected",
+    "fullLifetimeNaturalCoverage": "not_established",
+    "flickerAcceptance": "not_established"
+  },
+  "observations": {
+    "vsR7": "Warmer/brighter scattering is visible within the smoke around 300–500 ms; increased illumination of nearby receivers is not established.",
+    "quality": "not-accepted",
+    "qualityReviewStatus": "needs-improvement",
+    "finding": "Internal variation at 500–650 ms remains weak; at 800 ms the smoke is a blurred single mass, without sufficient natural smoke volume/wrapping. Warmth is visible within the smoke; nearby receiver illumination is unconfirmed.",
+    "naturalPlaybackLimitation": "Captured natural sample ages are 0, about 710.7, then 900 ms for the remainder; this does not establish the full lifetime or flicker acceptance.",
+    "limitation": "Private standalone comparison only; parent gallery, normal audio, and game integration are untested."
+  },
+  "evidenceFiles": [
+    {
+      "path": "age-300.png",
+      "sha256": "ee1c10383209d1e9add6c1ce7b214e3ea4c86dae039a1b41c578d59cb80079f2",
+      "bytes": 18375
+    },
+    {
+      "path": "age-500.png",
+      "sha256": "ec817ce10ec78e5f2120c407b595e2da8d5c7aa61180aa64b1ff2bc89cd079a4",
+      "bytes": 18291
+    },
+    {
+      "path": "age-650.png",
+      "sha256": "4d36aeed63b99d8623e6295c45f3b55c5c6d3f11fb3d8f695c462f2e66fc61c7",
+      "bytes": 19441
+    },
+    {
+      "path": "age-800.png",
+      "sha256": "956502d82409db9d520e5c77bf058423332bedab35f0c6ab3a99489006e42025",
+      "bytes": 19225
+    },
+    {
+      "path": "play-01.png",
+      "sha256": "cb669952ad1191044113ada8f410b317253c225b1c725de0e982057d431b80bb",
+      "bytes": 19196
+    }
+  ]
+}

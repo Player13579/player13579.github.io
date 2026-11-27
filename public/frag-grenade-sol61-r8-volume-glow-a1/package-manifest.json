@@ -1,0 +1,102 @@
+{
+  "schema": "dva-effect-package-manifest/v1",
+  "versionId": "frag-grenade-sol61-r8",
+  "group": "gunner-frag-grenade-sol61",
+  "eventType": "grenade-frag-impact",
+  "durationMs": 900,
+  "gameRadius": 132,
+  "entry": "index.html",
+  "publicEntry": "public/frag-grenade-sol61-r8-volume-glow-a1/index.html",
+  "runtimeClosure": [
+    "index.html",
+    "app.mjs",
+    "runtime.mjs",
+    "source/plan.mjs",
+    "source/shaders.mjs",
+    "source/sound.mjs"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1253,
+      "sha256": "b492c40417d271d46834846c99931c0f20da56bdb86c10ee66c7820de8ed9ccf"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 9682,
+      "sha256": "de015f9489785ebdbb7fb79962a63574876d10b4aed99e735e045cac0a4ced5b"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 9850,
+      "sha256": "a8a99f3d3b85723d786ae3f0e9987659988f5cd4b8e8617a1b3a6f83ebabc659"
+    },
+    {
+      "path": "source/plan.mjs",
+      "bytes": 4530,
+      "sha256": "1145691bd47c467f6514d556b5ebd163f9726d4b8a1fd1f92eaca4ca76c9a707"
+    },
+    {
+      "path": "source/shaders.mjs",
+      "bytes": 15032,
+      "sha256": "d2da1038edcf3bd1c39ab624a31334187e0a9f80365d8da397ef83124b2be531"
+    },
+    {
+      "path": "source/sound.mjs",
+      "bytes": 4071,
+      "sha256": "9add2914db7d6cf0a2ce2b22800f772446bfcde9fda012d1264d22ff25b46413"
+    }
+  ],
+  "author": "GPT-6.1-Sol",
+  "userAdopted": false,
+  "adoptionLabel": "unknown/unadopted candidate",
+  "qualityStatus": "not-reviewed",
+  "qualityAccepted": false,
+  "technicalStatus": "candidate-static-checked-awaiting-native",
+  "parent": {
+    "versionId": "frag-grenade-sol61-r7",
+    "publicEntry": "public/frag-grenade-sol61-r7-natural-smoke-a1/index.html",
+    "manifestSha256": "f8085130f259b2bb6522cbf1ce61edf9839a461162eb5c18d1417a4f0ec8d53f",
+    "sealSha256": "2a536f213ef74bd8bafe7d82803b633c097743bb9c357db540c5035637b2e657"
+  },
+  "creativeEditionLineage": {
+    "edition": "R8",
+    "allowance": "fifth and final of up to five additional improvement editions authorized for each unadopted E group",
+    "additionalAllowed": 5,
+    "additionalConsumed": 5,
+    "additionalRemaining": 0,
+    "historicalPreR1Count": "unknown",
+    "historyReset": false,
+    "adoptionAtBase": "unknown/unadopted"
+  },
+  "scope": "Improve late smoke volume and temporal irregularity, plus broad bounded warm residual volume scattering that fades with the existing cooling event; preserve R7 early density/ignition, flash, R4 fragment geometry/material/trajectory, event/cause/clocks, duration/radius, ABI, controls, receiver/floor and optical transmission paths, SFX and runtime.",
+  "validation": {
+    "sourceSyntax": "pass-node-check-all-runtime-modules",
+    "cpuContract": "pass-r8-package-scope-invariants",
+    "wgslCompilation": "not_run",
+    "nativeReplay": "not_run",
+    "parentGalleryReplay": "not_run",
+    "fullQuality": "not_run",
+    "normalAudioListening": "not_run",
+    "gameIntegration": "not_connected"
+  },
+  "evidence": {
+    "basePublicHead": "357da7a3d92a7ce3bed1f102089f5f40e77398cc",
+    "parentR7PublicEntry": "public/frag-grenade-sol61-r7-natural-smoke-a1/index.html",
+    "parentManifestSha256": "f8085130f259b2bb6522cbf1ce61edf9839a461162eb5c18d1417a4f0ec8d53f",
+    "parentSealSha256": "2a536f213ef74bd8bafe7d82803b633c097743bb9c357db540c5035637b2e657",
+    "parentR7ComparisonEvidence": "public/frag-grenade-sol61-r7-comparison-evidence-1127/review.json",
+    "apiDensityDesign": {
+      "model": "gpt-6.1-sol",
+      "responseId": "resp_001cf266bbde2b0a016b090a1e069087d0b515fc8caabbdf70",
+      "outputSha256": "0767e4265125e6f8b33ff15eb0a559694aa7d0fe21841531769e3415d99a5a44",
+      "status": "incomplete max_output_tokens; complete density block extracted"
+    },
+    "apiGlowAddendum": {
+      "model": "gpt-6.1-sol",
+      "responseId": "resp_099ba07e047634a6016b090b0d8e2087d0aef567ea7bf29f3a",
+      "outputSha256": "1e8163c20b2adb253b13c5678f71150c4b4d00d0b0b222a4305544051d6185e4",
+      "status": "completed"
+    }
+  }
+}
