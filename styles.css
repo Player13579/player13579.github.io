@@ -14398,9 +14398,9 @@ body.game-open.dva-full-canvas.dva-unified-panel-active
   body.game-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader {
     order: 2;
     min-height: 0;
-    padding: 5px 0 0;
-    margin-block: 4px calc(var(--dva-live-panel-bottom-clearance, 62px) + 8px);
-    border-block-start: 1px solid rgb(52 94 111 / .35);
+    padding: 0;
+    margin-block: 0 calc(var(--dva-live-panel-bottom-clearance, 62px) + 8px);
+    border-block-start: 0;
     border-block-end: 0;
   }
   body.game-open.dva-unified-panel-active:has(#matchPanelContentSlot:not([hidden])) #matchPanelHeader #matchPanelToolbar {
@@ -14414,6 +14414,16 @@ body.game-open.dva-full-canvas.dva-unified-panel-active
   #clairvoyanceFieldFollow:not([hidden]) {
     inset-block-start: max(98px, min(27dvh, 185px), calc(env(safe-area-inset-top, 0px) + 60px));
   }
+}
+
+/* Keep the two navigation tools adjacent rather than separating them by audio.
+   Restrict the visual order to the unified panel, not the fixed fight HUD. */
+body.game-open.dva-unified-panel-active #matchPanelToolbar:has(
+  > #operatorReselectButton:not([hidden])
+):has(> #gameTacticsButton:not([hidden])) > :is(
+  #gameMuteButton, #tabletButton, #analyticsToggleButton, #keybindButton
+) {
+  order: 1;
 }
 
 /* Keep the existing inventory actions legible on glass in both states. */
