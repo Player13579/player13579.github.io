@@ -1,0 +1,81 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-emp-resonance-r2",
+  "group": "dot-emp-resonance",
+  "title": "同位相EMP共振",
+  "authorDisplayName": "dot",
+  "edition": 2,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "visible-same-phase-settlement",
+    "requires": "emp-resonance / positive or negative with two distinct pulse receipts and a shared axis",
+    "eventType": "emp-resonance",
+    "previewDurationMs": 1000,
+    "previewDisplayPolicy": "settlement-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2303,
+      "sha256": "de805aa6032b2e12d05fbdfd9d0acbe2fd507a445a6539014c3b1077e25d46e2"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16474,
+      "sha256": "d86692fcb811796cc61cbe213fb24343bf4e15311553944dfff397e8fd690611"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1386,
+      "sha256": "f8cfeba04c89714057b47ba5019886b75748de9904e461c7154f6b99df343020"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 1475,
+      "sha256": "ad86e492b200d7c2cc9466eb2bc1c01dd4e7119c09067568ad5342ca9d4433ec"
+    },
+    {
+      "path": "mesh.mjs",
+      "bytes": 2168,
+      "sha256": "1b3cc672abc48c0617200ec796bb6caa97ea7d68090dcfcaffc46d0befcc97bf"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 730,
+      "sha256": "69fc6227fb12dc7e0470f231913f639304a3fcce82fe586b66ea235318308396"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11115,
+      "sha256": "102ada9a69708f385a882536e164432c35c2b945e1ce124003aead5d259f9f2d"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1659,
+      "sha256": "289686fa75e7ae070a0a6d8c4b6bee8f7031c8bd42d6206a8b8505ebc63e4323"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 923,
+      "sha256": "6b5068e898966723589b49a628002f745d1c6181f48a29d0c56b9665f9b211ac"
+    }
+  ]
+}
