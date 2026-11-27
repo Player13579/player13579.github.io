@@ -14433,7 +14433,7 @@ body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameA
   min-height: 34px;
   padding: 5px 8px;
   border-color: #668c97;
-  background: rgb(232 247 249 / .80) !important;
+  background: rgb(232 247 249 / .70) !important;
   color: #153441 !important;
   opacity: 1 !important;
   filter: none;
@@ -14446,15 +14446,15 @@ body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameA
 body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp
   #sidePanel #matchPanelContent #itemControl > :is(.item-control-actions,.item-transfer-actions) > button:disabled:not([hidden]) {
   border-style: dashed;
-  background: rgb(224 238 242 / .76) !important;
-  color: #415962 !important;
+  background: rgb(224 238 242 / .70) !important;
+  color: #334c56 !important;
 }
 
 /* The explanation's backing surface alone transmits the field. Its copy
    keeps solid foreground colour instead of sharing a group opacity. */
 body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp
   #sidePanel #matchPanelContent #activeEffectsList > li[data-effect-key="limit-break"] {
-  background: rgb(235 247 249 / .72) !important;
+  background: rgb(235 247 249 / .52) !important;
   opacity: 1 !important;
 }
 body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameApp
@@ -14464,7 +14464,7 @@ body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active #gameA
   text-shadow: none;
 }
 body.game-open #markerExplanationDetail.pointer-detail-active {
-  background: rgb(8 26 40 / .74) !important;
+  background: rgb(8 26 40 / .62) !important;
   opacity: 1 !important;
   filter: none !important;
 }
