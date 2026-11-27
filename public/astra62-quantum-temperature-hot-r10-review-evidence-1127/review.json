@@ -1,0 +1,53 @@
+{
+  "schema": "dva-e-quality-review-evidence/v1",
+  "effectGroupId": "quantum-temperature-hot-astra62",
+  "versionId": "quantum-temperature-hot-sol61-r10",
+  "reviewStatus": "needs-improvement",
+  "qualityAccepted": false,
+  "qualityStatus": "not-accepted",
+  "qualityReviewOutcome": "scoped-sampled-water-material-readability-insufficient",
+  "scope": {
+    "route": "owned verify parent harness -> R10 gallery.html child iframe; embed=1, galleryAutoLoop=1, galleryVersionId=quantum-temperature-hot-sol61-r10, verify=1, height=64",
+    "canvas": "980x620 CSS px; DPR 1",
+    "gpu": "Frozen raw effect.wgsl response SHA matched; one firstFrame completion at 154.1 ms is confirmed; 24 sample timestamps do not constitute 24 per-image GPU receipts; errors 0.",
+    "observedImages": [
+      "frame-01.png",
+      "frame-03.png",
+      "frame-09.png",
+      "frame-16.png"
+    ],
+    "findings": [
+      "Pale-blue wave lines and curved blue-green/warm-orange internal color distribution are visible in the inspected captures.",
+      "Water thickness/material and progression of heating remain insufficiently legible at actual size.",
+      "The R9 comparison capture is asynchronous; no quantitative difference, improvement, regression, or no-difference claim is made.",
+      "The captures do not establish water-area self-emission or receiver-light causality. Full lifetime, flicker, audio, formal public-parent replay and main-game integration remain unverified."
+    ]
+  },
+  "evidence": [
+    {
+      "path": "/public/astra62-quantum-temperature-hot-r10-review-evidence-1127/r10-events.json",
+      "bytes": 6584,
+      "sha256": "8d9029e081e32cadde86ad397f57be00ae0e07ffe4bb04b44932f66f9609cf50"
+    },
+    {
+      "path": "/public/astra62-quantum-temperature-hot-r10-review-evidence-1127/r10-frame-01.png",
+      "bytes": 19439,
+      "sha256": "f368fc296b6e3e4af9db80f3daa5906a9bd2f49354784859b77366796da1b3ee"
+    },
+    {
+      "path": "/public/astra62-quantum-temperature-hot-r10-review-evidence-1127/r10-frame-03.png",
+      "bytes": 18442,
+      "sha256": "7a2fd00efa7ff6ca8227fa1993136298bafb728d61b517821b52b0aabcf79d5d"
+    },
+    {
+      "path": "/public/astra62-quantum-temperature-hot-r10-review-evidence-1127/r10-frame-09.png",
+      "bytes": 15012,
+      "sha256": "88268837bb08df90f1328e3bcf930d3d107902cded1d7e0b1642e96820bff012"
+    },
+    {
+      "path": "/public/astra62-quantum-temperature-hot-r10-review-evidence-1127/r10-frame-16.png",
+      "bytes": 3130,
+      "sha256": "7cf55d84ed2fbd582291b12b1ce6a6efd65840618c2da411d1a0be0c0bccc2f8"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quantum Heated Water — isolated R10</title>
+<style>
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#000;color:#fff;font:14px/1.4 system-ui,sans-serif}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#000}
+header{position:fixed;z-index:2;top:.5rem;left:.5rem;display:flex;align-items:center;gap:.5rem;max-width:calc(100% - 1rem);padding:.45rem .6rem;background:#181818eF}
+#status{max-width:min(55vw,32rem)}
+button{font:inherit}
+</style>
+</head>
+<body>
+<iframe title="Quantum Heated Water — isolated R10" allow="autoplay"></iframe>
+<header><span id="status" role="status">Booting isolated R10 — quality unreviewed.</span><button id="audio" type="button" disabled>音を許可</button></header>
+<script>
+(()=>{
+  const VERSION='quantum-temperature-hot-sol61-r10',SCHEMA='dva-gallery-startup/v1';
+  const frame=document.querySelector('iframe'),status=document.querySelector('#status'),audioButton=document.querySelector('#audio');
+  const verify=new URL(location.href).searchParams.has('verify');
+  let token='',ready=false,lastSequence=0;
+  function text(value){status.textContent=value;}
+  try{
+    const bytes=new Uint8Array(16);crypto.getRandomValues(bytes);
+    token=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+    const child=new URL('gallery.html',location.href);child.search='';child.hash='';
+    child.searchParams.append('embed','1');
+    child.searchParams.append('galleryAutoLoop','1');
+    child.searchParams.append('galleryVersionId',VERSION);
+    child.searchParams.append('galleryAttemptEpoch','1');
+    child.searchParams.append('galleryStartupToken',token);
+    if(verify)child.searchParams.append('verify','1');
+    window.addEventListener('message',event=>{
+      const data=event.data;
+      if(event.source!==frame.contentWindow||event.origin!==location.origin||!data||typeof data!=='object'||Array.isArray(data)||data.schema!==SCHEMA||data.versionId!==VERSION||data.token!==token||data.attemptEpoch!==1||!Number.isSafeInteger(data.sequence)||data.sequence<=lastSequence)return;
+      lastSequence=data.sequence;
+      if(data.action==='retired'||data.action==='retire-error')return;
+      if(data.status==='error'){ready=false;audioButton.disabled=true;text('Gallery error: '+String(data.error??'startup failed'));return;}
+      if(data.status==='ready'){if(data.stage!=='playing')return;
+        const first=data.firstFrame;
+        const valid=first&&first.recorded===true&&first.submitted===true&&first.completed===true&&first.canvasConnected===true&&Number.isSafeInteger(first.passes)&&first.passes>=1&&Number.isFinite(first.viewportWidth)&&first.viewportWidth>0&&Number.isFinite(first.viewportHeight)&&first.viewportHeight>0;
+        if(!valid){ready=false;audioButton.disabled=true;text('Gallery readiness could not be verified.');return;}
+        ready=true;audioButton.disabled=verify;
+        text('Isolated R10 — quality unreviewed. '+(verify?'Verify mode: audio disabled.':'Ready. Audio permission is optional.'));
+        return;
+      }
+      if(data.status==='pending')text('Booting isolated R10 — '+String(data.stage??'startup')+'. Quality unreviewed.');
+    });
+    frame.src=child.href;
+  }catch(error){audioButton.disabled=true;text('Gallery startup unavailable: '+String(error?.message??error));}
+  audioButton.addEventListener('click',async()=>{
+    if(!ready||verify)return;
+    try{
+      const api=frame.contentWindow.__gallerySfx;
+      if(!api||typeof api.activateFromGesture!=='function'){text('Audio permission unavailable.');return;}
+      const result=await api.activateFromGesture();
+      if(result?.enabled===true&&result?.state==='active')text('Audio permission granted. Playback or listening is not verified.');
+      else text('Audio permission was not granted. Playback or listening is not verified.');
+    }catch{ text('Audio permission was not granted. Playback or listening is not verified.'); }
+  });
+  window.addEventListener('pagehide',()=>{
+    if(!token)return;
+    try{frame.contentWindow.postMessage({schema:SCHEMA,action:'retire',versionId:VERSION,token,attemptEpoch:1},location.origin)}catch{}
+  });
+})();
+</script>
+</body>
+</html>
