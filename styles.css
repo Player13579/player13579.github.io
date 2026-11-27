@@ -14588,6 +14588,6 @@ body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active
 }
 body:not(.game-open) #ideaVictoryHud,
 body.result-presentation #ideaVictoryHud,
-body:has(:is(#expandedMapOverlay,#keybindOverlay,#killCameraOverlay,#vendingFullMount,#fieldFeedPanel):not([hidden])) #ideaVictoryHud {
+body:has(:is(#expandedMapOverlay,#keybindOverlay,#killCameraOverlay,#vendingFullMount,#fieldFeedPanel[aria-modal="true"]):not([hidden])) #ideaVictoryHud {
   display: none !important;
 }

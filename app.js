@@ -15863,6 +15863,7 @@ function render() {
   const offlineContext = state.offlineMode || (!data && !state.onlineAvailable);
   updateSensoryOverlay(data);
   syncAccessibleGameStatus(data);
+  renderIdeaVictoryClock(data);
   els.soloMissionHud.hidden = !data?.soloMission;
   if (data?.soloMission) {
     els.soloMissionHudName.textContent = data.soloMission.name;
@@ -16948,7 +16949,6 @@ function renderIdeaVictoryClock(data) {
 }
 
 function renderStatus(data) {
-  renderIdeaVictoryClock(data);
   if (data.phase === "lobby" || data.phase === "selecting") {
     els.activeEffectsPanel.hidden = true;
     els.itemControl.hidden = true;
