@@ -1,0 +1,72 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-fire-charge-receipt-r1",
+  "group": "dot-fire-charge-receipt",
+  "title": "ファイアのチャージ獲得",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "instant-fire-acquired",
+    "sources": [
+      "vending",
+      "mystery-box"
+    ],
+    "previewDisplayPolicy": "recipient-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2357,
+      "sha256": "5e91a29fd61e685e44539cb713da8579b1b4047aaf8a4fd97e2f3f79f1092ea2"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16777,
+      "sha256": "512c6f175487b4e1c822bfcd5538ca54e98b9f627a99dd92bedf2665e23232bf"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1687,
+      "sha256": "da29211dcb45a66f7d0abe5bf2dfbdc5c67d26304cddfab9c19825e2c495bb9f"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 7193,
+      "sha256": "6492f521149a3133ecbb8d59e22fec54d9ef0a4876a2e6df2e0c1cb12839ad2d"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1247,
+      "sha256": "d0203b737cce9dff69135e3dc0dfe9f9e17e37937bc29895a389e05e592f6e8e"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1473,
+      "sha256": "ca45af286997012505ba9c740d9c894424acc46522f24578e81fc495fe6ad7e7"
+    }
+  ]
+}
