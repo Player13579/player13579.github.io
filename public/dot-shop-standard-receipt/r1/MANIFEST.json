@@ -1,0 +1,72 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-shop-standard-receipt-r1",
+  "group": "dot-shop-standard-receipt",
+  "title": "ショップの通常購入成立",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "action-vending",
+    "variant": "",
+    "radius": 90,
+    "eventDurationMs": 0,
+    "visualDurationMs": 780,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2306,
+      "sha256": "0689e2ac41916e08c51ad7633a6b2f56b2e180ba98c7de2e3aab132541d08220"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16796,
+      "sha256": "0ff065dc27b0a42179162cf883e0aaeddd5c55743e51d3a0d2788a445fcc11e2"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 983,
+      "sha256": "f7554f02247d8ea08ab342b443f3876976cfa4bae60f0115e6db78941b36d04c"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6529,
+      "sha256": "f2e88d4a77b63c9c9c07cea744ddab79d1be57393850025d9917ba21c0ce451d"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1737,
+      "sha256": "dffd7796037b89b7beb96ca4b334911b18400f418cb297bf495152b67456fb72"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 828,
+      "sha256": "1ad99e58a6889bc4525c16b61552a96546884445ff0fce850e58f0bfc972d427"
+    }
+  ]
+}
