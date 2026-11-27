@@ -20,7 +20,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
   document.documentElement.classList.add("dva-ipad-ui-comfort");
 }
     </script>
-  <link rel="stylesheet" href="styles.css?v=6097790341e791b81dca10ce6c477308816628f5">
+  <link rel="stylesheet" href="styles.css?v=eb5832d5ede6fe82e666b08a8fbdfbc79ec1e435">
   </head>
   <body>
     <section id="startScreen" class="start-screen" data-ui-region="home-screen" aria-label="ホーム画面">
@@ -183,7 +183,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
                 <section><h4>哲学進行</h4><p>心ポイント合計3以上の理知を連続維持し、天上時間で50秒に真または美、2分に残り、3分40秒に善、6分に善のイデアへ到達。天上時間は加速・減速の影響を受けない。幸運／直観の短縮は最大1秒。総合理知を外れるか欲望になると、次段階の連続維持時間をリセット。</p></section>
                 <section><h4>パッシブ条件</h4><p>理知中はファイターのキルカウンター・EC、グラビティのリビテーション、フローラのアロマ、ガンナーのエイム・特殊弾装填が作動。気概・欲望中は進捗とバッファを保って休止。ホバースプリントは全員共通の自動アクションで、支持床から床外へ進む時だけ起動。アサシンの無音・忍殺変換、ハッカーのハック・マナGPUは固有条件で作動。GBOは全員共通の能動アクション。クオンタムにパッシブはない。</p></section>
                 <section><h4>真・美・善</h4><p>真でバスト+1、美でバリア+1。善は両方にHP／状態回復・加速・タスクSP軽減を追加。善のイデア到達者は昇天し、同時到達者が複数なら全員が特殊勝利。</p></section>
-                <section><h4>ショップ</h4><p>Vかタブレットから全域で開く。通常商品に加え、7オペレーター各ジャンルの能力を購入できる。能力は購入した対戦中だけ解放し、購入時には発動しない。ジャンルとページは選択欄から直接選べる。</p></section>
+                <section><h4>ショップ</h4><p>Vかタブレットから全域で開く。通常商品に加え、7オペレーター各ジャンルの能力を購入できる。能力は購入した対戦中だけ解放し、購入時には発動しない。ジャンルは選択欄から直接選べる。同じジャンルの商品はスクロールしてまとめて見られる。</p></section>
                 <section><h4>投擲物の回収</h4><p>水銀瓶・鉛瓶・ミネラルウォーター・海水・解毒剤・火炎瓶・氷結水・高温水は接地時に壊れ、回収不可。ウラン・プルトニウム容器は空中で開き、投擲後に容器も回収物も残らない。ほかの物理アイテムは被弾地点か接地点に残り、投擲者以外が1度だけ拾える。GBOで使った武具は性能10倍の直後に壊れる。</p></section>
                 <section><h4>即席アイテム</h4><p>スタミナ、回復、ファイア、変わり身、テレポートマップスクロール、回避拡張、加速、ミステリー、マナ、居合は、獲得時に資源・効果・回数へ即時変換する即席。ファイアは周囲に継続燃焼領域を展開。変わり身など手動で使う回数は操作用の仮想表示に出る。居合は次の成功攻撃で自動消費。変換後は投擲・手動譲渡できない。</p></section>
                 <section><h4>余剰MPの自動変換（1MP=バスト/バリア1回）</h4><p>MP獲得で獲得前の個人上限を超えた整数分を自動変換。バスト→バリアの順で交互に配分し、片方が上限3なら空き側へ回す。両方が上限3ならMPを失わず、現在値と上限に保持。切替や実行ボタンはない。</p></section>
@@ -488,9 +488,8 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
                 <button id="vendingCategoryNextButton" class="hacker-category-step" type="button" aria-label="次の分類">›</button>
               </div>
             </div>
-            <div class="shop-jump-controls" role="group" aria-label="ショップのジャンルとページへ直接ジャンプ">
+            <div class="shop-jump-controls" role="group" aria-label="ショップのジャンルを選択">
               <label>ジャンル<select id="vendingCategoryJumpSelect" aria-label="ショップのジャンルへ直接ジャンプ"></select></label>
-              <label>ページ<select id="vendingPageJumpSelect" aria-label="ショップの特定ページへ直接ジャンプ"></select></label>
             </div>
             <div class="vending-grid">
               <button class="vending-item-with-icon" data-drink="mineral-water" data-vending-hotkey="1" data-vending-asset="mineral-water"><span class="vending-item-icon" aria-hidden="true"></span><span>ミネラルウォーター</span></button>
@@ -524,7 +523,6 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
               <button class="vending-item-with-icon" data-drink="rpg" data-vending-asset="rpg"><span class="vending-item-icon" aria-hidden="true"></span><span>RPG</span></button>
               <button class="vending-item-with-icon" data-drink="missile" data-vending-asset="missile"><span class="vending-item-icon" aria-hidden="true"></span><span>ミサイル</span></button>
             </div>
-            <p class="mystery-effects"><strong>ミステリー効果</strong><br>6C賞金 18% / スタミナ+250 18% / 完全活性 16% / 理知へ移行 12% / 12秒減速 14% / 15秒能力封印 12% / 8秒意識消失 10%</p>
             <div id="magicInventory" class="magic-inventory" hidden></div>
           </div>
           <div id="alchemyControl" class="alchemy-control" hidden>
@@ -682,7 +680,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
           <section><h3>基本操作</h3><dl><dt>L / Enter</dt><dd>マッチングを始める。</dd><dt>\\</dt><dd>ゲーム音をオン／オフ。</dd><dt>@</dt><dd>キー操作一覧を開く。</dd><dt>I</dt><dd>戦術いろはを開く／ゲームへ戻る。</dd><dt>Tab</dt><dd>タブレットを開く。</dd><dt>3</dt><dd>緊急会議。</dd><dt>6</dt><dd>忍殺する。</dd><dt>8</dt><dd>回避する。</dd><dt>C</dt><dd>錬気。タップでMP+10・35秒。長押しでMP+100・350秒。MP−100では3秒後にMP2。</dd><dt>停止中</dt><dd>自動休息：毎秒7.6SP。MP−100では5秒連続停止でMP2。移動で経過を取り消す。</dd><dt>G / ' 長押し</dt><dd>スマホ募金。</dd><dt>M</dt><dd>マップを開く。</dd><dt>Backspace</dt><dd>タイトルへ戻る。</dd></dl></section>
           <section><h3>装備・索敵</h3><dl><dt>Z / X</dt><dd>千里眼／EMP。</dd><dt>千里眼中の画面タップ</dt><dd>「前の追尾先」「次の追尾先」をタップして切り替えます。転移のタップは従来どおりです。</dd><dt>投擲中の移動キー</dt><dd>着地点を動かす。画面外では千里眼を自動発動。</dd><dt>近接</dt><dd>フィールドオブジェクトを自動起動。</dd></dl></section>
           <section><h3>オペ固有能力</h3><dl><dt>H</dt><dd>固有能力。対応MP能力は長押しでMPを2残し、一括並列発動。</dd><dt>能力・対象の切替</dt><dd>能力・対象の欄をタップして選ぶ。続く選択肢は順に選び、最後に確定。</dd><dt>O / P</dt><dd>O：能力方式を切替。P：対象欄がある時に対象を切替。</dd><dt>7</dt><dd>ガンナー射撃。</dd><dt>T / Shift+T</dt><dd>武器を次／前へ切替。</dd><dt>R</dt><dd>リロードする。</dd><dt>所持品欄</dt><dd>武器・発明品・重火器を選んで使用。見切れた欄は、その欄だけをフリックでスクロール。</dd><dt>PageUp / PageDown</dt><dd>操作するUI欄を前／次へ切替。</dd><dt>Shift + ← / →</dt><dd>ハッカー／ショップの分類を切替。</dd><dt>↑ ↓ ← →（長押し）</dt><dd>選択中のUI内を移動。↑↓は同時にスクロール。</dd><dt>P</dt><dd>ハッカーの対象を切替。</dd><dt>Enter / Space</dt><dd>選択中の内容を実行。</dd></dl></section>
-          <section><h3>ショップ・所持品</h3><dl><dt>V</dt><dd>どこでもショップを開く／閉じる。</dd><dt>1〜0 / P</dt><dd>ショップを開いている間、商品を選ぶ。</dd><dt>ジャンル / ページ</dt><dd>上部の選択欄で分類とページを選ぶ。</dd><dt>PageUp / PageDown</dt><dd>ショップ・所持品欄を前後に移動。</dd><dt>↑ ↓ ← →</dt><dd>商品・所持品を選んで移動。</dd><dt>Shift+V / Shift+G</dt><dd>使用／投擲。600msからエンハンス、武具は3000msからGBO。</dd><dt>Alt+V / Alt+C</dt><dd>所持品／設定したCを譲渡。</dd><dt>Alt+1 / 2 / 3 / 5</dt><dd>ショップ表示中はレールガン／荷電粒子砲／エクスカリバー／亡命。</dd><dt>Alt+4</dt><dd>ショップ表示中はハック。</dd><dt>Alt+6 / 7 / 8 / 9 / 0</dt><dd>ショップ表示中はHG／SMG／AR／SR／テーザー。</dd></dl></section>
+          <section><h3>ショップ・所持品</h3><dl><dt>V</dt><dd>どこでもショップを開く／閉じる。</dd><dt>1〜0 / P</dt><dd>ショップを開いている間、商品を選ぶ。</dd><dt>ジャンル</dt><dd>上部の選択欄で分類を選ぶ。</dd><dt>PageUp / PageDown</dt><dd>ショップ・所持品欄を前後に移動。</dd><dt>↑ ↓ ← →</dt><dd>商品・所持品を選んで移動。</dd><dt>Shift+V / Shift+G</dt><dd>使用／投擲。600msからエンハンス、武具は3000msからGBO。</dd><dt>Alt+V / Alt+C</dt><dd>所持品／設定したCを譲渡。</dd><dt>Alt+1 / 2 / 3 / 5</dt><dd>ショップ表示中はレールガン／荷電粒子砲／エクスカリバー／亡命。</dd><dt>Alt+4</dt><dd>ショップ表示中はハック。</dd><dt>Alt+6 / 7 / 8 / 9 / 0</dt><dd>ショップ表示中はHG／SMG／AR／SR／テーザー。</dd></dl></section>
           <section><h3>選択</h3><dl><dt>↑ ↓ ← →</dt><dd>表示方向の候補を選ぶ。</dd><dt>Shift + ← / →</dt><dd>分類を切替。</dd><dt>Enter / Space</dt><dd>選択を実行。</dd><dt>Shift+F10 / メニューキー</dt><dd>選んだ所持品・ハッカー内容の説明を開く。</dd><dt>オペレーターの説明</dt><dd>名前に触れると表示。</dd><dt>Escape</dt><dd>閉じる／戻る。</dd></dl></section>
         </div>
       </div>
@@ -810,7 +808,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
     <script src="object-space-collision.js?v=webgpu-main-bootstrap-v5"></script>
     <script src="webgpu-game-input-surface.js?v=webgpu-only-input-v2"></script>
     <script src="dva-full-canvas-ui.js?v=full-canvas-ui-r1&amp;fieldUi=field-ui-persistent-forward-20261126&amp;unifiedPanel=one-match-panel-forward-20261126-1349-8f4f39c9b518&amp;onePagePanel=single-page-panel-forward-20261126-1407-27b1d0304f9b&amp;weaponPanelOwner=weapon-panel-owner-forward-20261126-1432-457efa34746a&amp;launcherStrictTouchC195=launcher-strict-touch-c195-forward-20261126-1942-796d6d154b1a&amp;closeForAction=6b841668367d"></script>
-    <script src="app.js?v=78c7f18b2892c8a3ccea98c6eec7c4149c307808"></script>
+    <script src="app.js?v=5455e300f089d3da722b417f32387a6e852114a4"></script>
     <script>
 (() => {
   if (new URLSearchParams(location.search).get('viewportCheck') !== '1') return;

@@ -325,7 +325,6 @@ const els = {
   vendingCategoryNextButton: $("#vendingCategoryNextButton"),
   vendingCategoryLabel: $("#vendingCategoryLabel"),
   vendingCategoryJumpSelect: $("#vendingCategoryJumpSelect"),
-  vendingPageJumpSelect: $("#vendingPageJumpSelect"),
   magicInventory: $("#magicInventory"),
   utilityControl: $("#utilityControl"),
   utilitySelect: $("#utilitySelect"),
@@ -1384,7 +1383,6 @@ const state = {
   vendingRenderKey: "",
   vendingCategoryId: "generate-supply",
   vendingSelectedByCategory: Object.create(null),
-  vendingPageByCategory: Object.create(null),
   itemRenderKey: "",
   hoverSprintLiveTicker: 0,
   utilityRenderKey: "",
@@ -1569,7 +1567,7 @@ const VENDING_PRODUCT_DESCRIPTIONS = Object.freeze({
   evade: "回避受付+0.25秒。累積上限は+1.50秒。回避には60SPを使う。",
   speed: "加速+0.15。累積する。移動・物理モーション・クールタイム・行動不能・タスク速度に適用。",
   warp: "獲得時、即席をテレポート権利1回へ変換。最大3回。好きな時に拡大マップで地点を選ぶと1回使う。",
-  mystery: "幸運／直観で補正する抽選：6C、SP+250、完全活性、理知化、12秒減速、15秒能力封印、8秒意識消失。",
+  mystery: "獲得時に抽選。基準確率：6C 18%、SP+250 18%、完全活性 16%、理知化 12%、12秒減速 14%、15秒能力封印 12%、8秒意識消失 10%。幸運／直観で補正されます。",
   fire: "燃焼反応で周囲に継続燃焼領域を展開する1回分。最大2回。エンハンスは強度と範囲だけを強化。",
   "fighter-limit-break": "パッシブ：HPは1を超えず、会議外の世界経過でACCが増加する。手動発動やMP消費はない。",
   "gravity-target": "選んだ対象を、マップで指定した地点へ転移する。",
@@ -1802,7 +1800,6 @@ const shopCategories = [
   ...DVA_ECONOMY.categories.map(({ id, label }) => ({ id, label })),
   ...DVA_ECONOMY.abilityGenres.map(({ id, label, operator }) => ({ id, label, operator }))
 ];
-const SHOP_PAGE_SIZE = 8;
 
 function hackerRecipeCategory(recipe) {
   if (recipe?.kind === "invention") return "weapon";
@@ -1891,24 +1888,6 @@ function availableVendingCategories() {
   );
 }
 
-function selectVendingPage(rawPage, { focus = true } = {}) {
-  const categoryButtons = vendingProductButtons().filter((button) => {
-    const entry = shopButtonCatalogEntry(button);
-    return entry && (entry.kind === "ability" || entry.vendingAvailable) && shopButtonCategory(button) === state.vendingCategoryId;
-  });
-  const pageCount = Math.max(1, Math.ceil(categoryButtons.length / SHOP_PAGE_SIZE));
-  const page = Math.max(0, Math.min(pageCount - 1, Math.floor(Number(rawPage) || 0)));
-  state.vendingPageByCategory[state.vendingCategoryId] = page;
-  state.vendingRenderKey = "";
-  renderVending(state.data);
-  if (focus) {
-    const first = vendingProductButtons().find((button) => !button.hidden);
-    first?.focus({ preventScroll: true });
-    first?.scrollIntoView({ block: "nearest", inline: "nearest", behavior: motionSafeScrollBehavior() });
-  }
-  return true;
-}
-
 function selectVendingCategory(categoryId, direction = 0, { wrap = true } = {}) {
   const categories = availableVendingCategories();
   if (!categories.length) return false;
@@ -1925,7 +1904,6 @@ function selectVendingCategory(categoryId, direction = 0, { wrap = true } = {}) 
     state.vendingSelectedByCategory[state.vendingCategoryId] = shopButtonId(focused);
   }
   state.vendingCategoryId = category.id;
-  state.vendingPageByCategory[category.id] ??= 0;
   state.vendingRenderKey = "";
   renderVending(state.data);
   const preferredId = state.vendingSelectedByCategory[category.id];
@@ -8444,9 +8422,6 @@ function bindEvents() {
   els.vendingCategoryJumpSelect.addEventListener("change", () => {
     selectVendingCategory(els.vendingCategoryJumpSelect.value, 0, { wrap: false });
   });
-  els.vendingPageJumpSelect.addEventListener("change", () => {
-    selectVendingPage(Number(els.vendingPageJumpSelect.value) || 0);
-  });
   // Keep action suppression outside the current card subtree. Category
   // changes may rebuild that subtree before a browser emits its synthetic
   // click, so an ancestor-only click listener cannot own the whole gesture.
@@ -13232,7 +13207,6 @@ function resetLocalSession() {
   state.vendingRenderKey = "";
   state.vendingCategoryId = "generate-supply";
   state.vendingSelectedByCategory = Object.create(null);
-  state.vendingPageByCategory = Object.create(null);
   state.utilityRenderKey = "";
   state.keyboardContext = "";
   state.keyboardElement = null;
@@ -13478,7 +13452,7 @@ function applyState(data, options = {}) {
     root.setAttribute("data-v555-shop-last-purchase", String(self.lastShopPurchaseAbilityId || ""));
     root.setAttribute("data-v555-shop-last-spent", String(self.lastShopPurchaseSpent ?? ""));
     root.setAttribute("data-v555-shop-category", String(state.vendingCategoryId || ""));
-    root.setAttribute("data-v555-shop-page", String(state.vendingPageByCategory[state.vendingCategoryId] || 0));
+    root.setAttribute("data-v555-shop-page", "0");
     const visibleSunbeamCount = (data.magicEffects || []).filter((effect) => effect.type === "flora-sunbeam").length;
     if (visibleSunbeamCount > Number(root.getAttribute("data-v550-sunbeam-count") || 0)) {
       root.setAttribute("data-v550-sunbeam-count", String(visibleSunbeamCount));
@@ -18706,12 +18680,10 @@ function renderVending(data) {
     const entry = shopButtonCatalogEntry(button);
     return entry && (entry.kind === "ability" || entry.vendingAvailable) && shopButtonCategory(button) === category.id;
   });
-  const pageCount = Math.max(1, Math.ceil(categoryButtons.length / SHOP_PAGE_SIZE));
-  const page = Math.max(0, Math.min(pageCount - 1, Number(state.vendingPageByCategory[category.id]) || 0));
-  state.vendingPageByCategory[category.id] = page;
-  const pageStart = page * SHOP_PAGE_SIZE;
-  const pageButtons = new Set(categoryButtons.slice(pageStart, pageStart + SHOP_PAGE_SIZE));
-  els.vendingCategoryLabel.textContent = `${category.label} ${page + 1}/${pageCount}`;
+  // Keep the selected genre together and use the existing vertical scroll
+  // surface for any cards below the fold. Do not hide cards on other pages.
+  const visibleButtons = new Set(categoryButtons);
+  if (els.vendingCategoryLabel.textContent !== category.label) els.vendingCategoryLabel.textContent = category.label;
 
   const categoryOptionsKey = categories.map(({ id, label }) => `${id}:${label}`).join("|");
   if (els.vendingCategoryJumpSelect.dataset.optionsKey !== categoryOptionsKey) {
@@ -18724,20 +18696,10 @@ function renderVending(data) {
     els.vendingCategoryJumpSelect.dataset.optionsKey = categoryOptionsKey;
   }
   els.vendingCategoryJumpSelect.value = category.id;
-  if (els.vendingPageJumpSelect.options.length !== pageCount) {
-    els.vendingPageJumpSelect.replaceChildren(...Array.from({ length: pageCount }, (_, index) => {
-      const option = document.createElement("option");
-      option.value = String(index);
-      option.textContent = `${index + 1} / ${pageCount}`;
-      return option;
-    }));
-  }
-  els.vendingPageJumpSelect.value = String(page);
-  els.vendingPageJumpSelect.disabled = pageCount <= 1;
   if (IS_VERIFICATION_MODE) {
     document.documentElement.setAttribute("data-v555-shop-category", category.id);
-    document.documentElement.setAttribute("data-v555-shop-page", String(page));
-    document.documentElement.setAttribute("data-v555-shop-visible-cards", String(pageButtons.size));
+    document.documentElement.setAttribute("data-v555-shop-page", "0");
+    document.documentElement.setAttribute("data-v555-shop-visible-cards", String(visibleButtons.size));
   }
 
   buttons.forEach((button) => {
@@ -18745,7 +18707,7 @@ function renderVending(data) {
     const availabilityState = vendingCardAvailability(button, data);
     const ability = entry?.kind === "ability" ? entry : availabilityState.ability;
     const product = entry?.kind === "item" ? entry : null;
-    button.hidden = !pageButtons.has(button);
+    button.hidden = !visibleButtons.has(button);
     const copy = button.querySelector("span:last-child");
     const id = shopButtonId(button);
     const label = ability?.label || product?.label || VENDING_PRODUCT_LABELS[id] || id;
@@ -18786,7 +18748,6 @@ function renderVending(data) {
     button.classList.toggle("shop-ability-owned", owned);
     button.removeAttribute("title");
   });
-  const mysteryVisible = data.self.lastMysteryResult && estimatedServerNow(data) - (data.self.lastMysteryResultAt || 0) < 20_000;
   const renderKey = JSON.stringify([
     Math.floor(Number(data.self.stamina) || 0),
     Number(data.self.maxStoredStamina) || 500,
@@ -18798,13 +18759,11 @@ function renderVending(data) {
     data.self.barrierDurability || 0,
     data.self.bustUntil || 0,
     Math.max(0, Math.ceil(((Number(data.self.itemDisabledUntil) || 0) - estimatedServerNow(data)) / 1000)),
-    mysteryVisible ? data.self.lastMysteryResult : "",
     Boolean(data.self.hackActive),
     Object.entries(data.self.vendingPurchaseCapacities || {}).sort(([left], [right]) => left.localeCompare(right)),
     Boolean(state.vendingBulkPurchase),
     [...(data.self.shopAbilityEntitlements || [])].sort(),
-    category.id,
-    page
+    category.id
   ]);
   if (state.vendingRenderKey === renderKey) {
     scheduleActiveEffectsLayout();
@@ -18825,7 +18784,7 @@ function renderVending(data) {
   });
   if (els.magicInventory.hidden) els.magicInventory.hidden = false;
   const carriedItems = (data.self.itemInventory || []).map((item) => `${item.label} ${item.amount}`).join(" / ");
-  const inventoryText = `所持: ${carriedItems ? `${carriedItems} / ` : ""}ファイア ${data.self.fireJutsuCharges || 0} / プロテクト ${data.self.protectCharges || 0} / 銃器 ${(data.self.durableWeapons || data.self.purchasedWeapons || []).length} / 購入能力 ${(data.self.shopAbilityEntitlements || []).length}${data.self.exiled ? " / 亡命済み" : ""}${mysteryVisible ? ` / ミステリー結果: ${data.self.lastMysteryResult}` : ""}`;
+  const inventoryText = `所持: ${carriedItems ? `${carriedItems} / ` : ""}ファイア ${data.self.fireJutsuCharges || 0} / プロテクト ${data.self.protectCharges || 0} / 銃器 ${(data.self.durableWeapons || data.self.purchasedWeapons || []).length} / 購入能力 ${(data.self.shopAbilityEntitlements || []).length}${data.self.exiled ? " / 亡命済み" : ""}`;
   if (els.magicInventory.textContent !== inventoryText) els.magicInventory.textContent = inventoryText;
   scheduleActiveEffectsLayout();
 }

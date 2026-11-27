@@ -14640,3 +14640,8 @@ body.game-open #vendingFullMount:not([hidden]) #vendingPanel .shop-jump-controls
 body.game-open #vendingFullMount:not([hidden]) #vendingPanel .shop-jump-controls label {
   color: #25434b;
 }
+
+body.game-open #vendingFullMount:not([hidden]) #vendingPanel .shop-jump-controls {
+  width: min(100%, 320px);
+  grid-template-columns: minmax(0, 1fr);
+}
