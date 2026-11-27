@@ -1,0 +1,74 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-ec100-resource-receipt-r2",
+  "group": "dot-ec100-resource-receipt",
+  "title": "EC100到達によるMP・SP補充",
+  "authorDisplayName": "dot",
+  "edition": 2,
+  "editionCap": 5,
+  "parentEdition": "dot-ec100-resource-receipt-r1",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "fighter-energy-destruction-milestone",
+    "sources": [
+      "100"
+    ],
+    "eventDurationMs": 0,
+    "visualDurationMs": 720,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2372,
+      "sha256": "3d174020281ab4df709fa8659d7c1102c672c4b0a3d26999da2a631dcf12a282"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16797,
+      "sha256": "984a6f3f5970d3b10fde716d7300bd9cb7b91d01655fa3330655a40098f2418d"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1046,
+      "sha256": "10f24b6e997871bdabc91cc5fe8b67dd108ac8d501bfeaa921d0e83ed012b9a0"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 7495,
+      "sha256": "f178cdb87aa516e5ac685db321105fe14ac36ee7f8789ac31016be168a40442d"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1482,
+      "sha256": "5bd8ff85c4410fc45a3e01bed000451e33d8f2f0068a634e85115fb0d90b32aa"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 679,
+      "sha256": "0345b0a0aa02556839505d3a5a8bf786243af2009623e49a7f65fb57f3f355f7"
+    }
+  ]
+}
