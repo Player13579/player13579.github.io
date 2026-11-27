@@ -14340,3 +14340,28 @@ body.game-open.dva-full-canvas.dva-unified-panel-active
   color: #415a63 !important;
   border-style: dashed;
 }
+
+/* Non-button field status. Its marked region belongs to the same canvas tap
+   handler, so the remaining field still supports destination targeting. */
+#clairvoyanceFieldHint:not([hidden]) {
+  position: absolute;
+  z-index: 21;
+  inset-block-start: max(42px, calc(env(safe-area-inset-top, 0px) + 24px));
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  min-height: 42px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(145 214 231 / .76);
+  border-radius: 6px;
+  font: 700 12px/1.2 system-ui, sans-serif;
+  white-space: nowrap;
+  color: #f3fbfd;
+  background: rgb(16 43 55 / .83);
+  pointer-events: none;
+}
+body:has(:is(#expandedMapOverlay,#keybindOverlay,#fieldFeedPanel,#killCameraOverlay,#vendingFullMount):not([hidden])) #clairvoyanceFieldHint {
+  visibility: hidden;
+}
