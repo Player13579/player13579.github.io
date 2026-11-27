@@ -1,0 +1,72 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-rational-mp-waiver-r3",
+  "group": "dot-rational-mp-waiver",
+  "title": "理知による発動消費の免除",
+  "authorDisplayName": "dot",
+  "edition": 3,
+  "editionCap": 5,
+  "parentEdition": "dot-rational-mp-waiver-r2",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "mana-waiver-receipt",
+    "requires": "actor-only exact event, no other cost exception",
+    "eventType": "action-rational-free",
+    "visualDurationMs": 840,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2360,
+      "sha256": "7702324a92444ddedce7fe8571420db4b7985b2b4bcdcc7a885f242182c7558a"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16463,
+      "sha256": "9ef1f73ef21ceacc9e508c61ff49429f76e9086c852329404d30bf6a22453dec"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 958,
+      "sha256": "587267963aea32860174ad87342b2877e76196973f74754165e5ec0f8e706cd2"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6930,
+      "sha256": "b893b98b2c55bbd1753356f2c8974cda8314d9592bb5306024c2d3a0bfc3e3c3"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 972,
+      "sha256": "93ec72eb79418893738e75f78ebcaf8520176411db522745a2dcc730431c5cb1"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 864,
+      "sha256": "337352aa4dd1a23ce6314695b039bb4807e5163474b73d748c383d3415ef095d"
+    }
+  ]
+}
