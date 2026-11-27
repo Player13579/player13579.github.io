@@ -1,0 +1,72 @@
+{
+  "schema": "dva-effect-quality-review/v1",
+  "reviewerModelId": "gpt-6.1-sol",
+  "reviewerDisplayName": "GPT-6.1-Sol",
+  "effectGroup": "quantum-temperature-hot-astra62",
+  "versionId": "quantum-temperature-hot-sol61-r7",
+  "packageManifestSha256": "2917d74d9212ac9bdaafdc4fb42a8cf482992b44f8671b83d2806b51e5a30e50",
+  "packageSealSha256": "f52f556b2c0b4005ea461355787ed74822557695cd3dd70dd1bf8455aa577e4f",
+  "shaderSha256": "71d4ff163fcfe0caa89722a5d350c0e41fa3f368d221c4993a4d01eb5c1b95ca",
+  "scope": {
+    "route": "/dva-owned-hot-test.html?verify=1 → /public/astra62-quantum-temperature-hot/r7/gallery.html?embed=1&galleryAutoLoop=1&galleryVersionId=quantum-temperature-hot-sol61-r7&galleryStartupToken=<redacted>&galleryAttemptEpoch=<n>&verify=1&height=64",
+    "mode": "owned verify parent harness with R7 gallery child iframe",
+    "anchor": "H64",
+    "actualSizeInspection": true,
+    "shaderResponseSha256": "71d4ff163fcfe0caa89722a5d350c0e41fa3f368d221c4993a4d01eb5c1b95ca",
+    "firstFrameGpuCompletionCount": 1,
+    "firstFrameGpuCompletionAgeMs": 136.7,
+    "sampleImageRecordCount": 24,
+    "allSamplesGpuCompleted": false,
+    "errors": 0
+  },
+  "quality": {
+    "accepted": false,
+    "status": "not-accepted",
+    "reviewStatus": "needs-improvement",
+    "outcome": "scoped-sampled-water-material-readability-insufficient",
+    "finding": "In the inspected actual-size images, a broader warm-orange response is visible within the water area. The water still reads as a flat rectangular cross-section with two receiving surfaces, and liquid material/heating change is not sufficiently legible.",
+    "scopeLimit": "This finding applies to the inspected captures only. Water-wide self-emission, heating/source causality and full-lifetime behavior remain unverified; no absence claim is made.",
+    "comparison": "R6 comparison captures are asynchronous; no quantitative improvement or decline is claimed.",
+    "duplicateFrames": {
+      "frame03": "r7-frame-03.png",
+      "frame09": "same bytes as frame-03; not counted as an independent phase",
+      "frame21": "same bytes as frame-03; not counted as an independent phase"
+    },
+    "notEvaluated": [
+      "full lifetime",
+      "flicker",
+      "normal audio",
+      "parent gallery integration",
+      "main game integration",
+      "video"
+    ],
+    "videoReviewed": false
+  },
+  "evidenceFiles": [
+    {
+      "path": "r7-events.json",
+      "bytes": 6575,
+      "sha256": "d7160bd0365376085f5aae655e382a7a7a8f16fe34797cdcae8d8bd1a69a52b7"
+    },
+    {
+      "path": "r7-frame-01.png",
+      "bytes": 16809,
+      "sha256": "79626eaaea4ae5cdc2b78f06305bba8dbc2f3277a9a640a1eb6c1651a063cca1"
+    },
+    {
+      "path": "r7-frame-02.png",
+      "bytes": 18039,
+      "sha256": "94fb86f63b4141b359c6684a7dae67febdf7316db70fadadee48a92a8c19a374"
+    },
+    {
+      "path": "r7-frame-03.png",
+      "bytes": 17791,
+      "sha256": "20ce8f3154c4a4fe25f03822d07beb31c640503ddb0e367be5e6e2d49402f73d"
+    },
+    {
+      "path": "r7-frame-04.png",
+      "bytes": 17270,
+      "sha256": "afdce34c9d18c8bce3a391cb41cd5492fa7d7b9ee4987791c7a257609b300012"
+    }
+  ]
+}
