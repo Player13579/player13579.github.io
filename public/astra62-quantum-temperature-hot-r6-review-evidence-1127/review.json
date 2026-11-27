@@ -1,0 +1,58 @@
+{
+  "schema": "dva-quantum-temperature-hot-r6-quality-review/v1",
+  "versionId": "quantum-temperature-hot-sol61-r6",
+  "packageGalleryManifestSha256": "693fb94f82043e1aec84a3fb56f5f5d976b3f7b805eabbd9f5f3cb783a420a91",
+  "sourceManifestSha256": "0d9229bf83b4beba453ce339b636146a179e31acf4763ff69d3e7b35466d36d7",
+  "packageSealSha256": "584d034295a42964587cbd2a171e14635fe5acdf16be4931be792fc12291fbf9",
+  "effectShaderSha256": "05ca701c488160a3eca68ca7d960c71f54fceb4952f0be7b942f9b132061bc30",
+  "qualityStatus": "not-accepted",
+  "qualityReviewStatus": "needs-improvement",
+  "qualityReviewOutcome": "scoped-sampled-emission-and-water-readability-insufficient",
+  "qualityAccepted": false,
+  "observation": "In inspected actual-size R6 frames 04/10/16, the bright left cut and warm response on two receiving surfaces are visible. Emission across the full water area and a clear heated-water material change are not readily distinguishable. The source-to-water-to-shelf/sandstone causal progression remains unverified; this does not assert that it is absent.",
+  "comparison": "R5 baseline captures are asynchronous in phase/time. No quantitative improvement or decline is claimed.",
+  "scope": "Owned standalone verify route, H64 actual-size inspection. The R6 event log has 24 sample timestamps, but only one firstFrame GPU completion is confirmed (133.1 ms); do not report all 24 samples as GPU-completed or bind screenshot pixels to receipts. The shader response SHA matched the frozen effect.wgsl.",
+  "unverified": [
+    "full lifetime across variants",
+    "flicker",
+    "image/receipt time binding",
+    "water heating/material causality",
+    "R6 parent gallery replay",
+    "normal audio",
+    "Safari",
+    "main-game integration",
+    "video review"
+  ],
+  "evidenceFiles": [
+    {
+      "path": "r6-events.json",
+      "bytes": 6565,
+      "sha256": "9c168a459ad17d4445b6c14b00dc756a7943cdcb442a4f7335bb58e5266041bb"
+    },
+    {
+      "path": "r6-frame-04.png",
+      "bytes": 15371,
+      "sha256": "3fd603cc157cf32dbf644d20bc63944aec2c1571b3bcc1ab244368604b0c8aa6"
+    },
+    {
+      "path": "r6-frame-10.png",
+      "bytes": 14260,
+      "sha256": "1e34d9378047b77d61342384e930aecaec205c815a8fb1cb5f8a7f230d6c08fd"
+    },
+    {
+      "path": "r6-frame-16.png",
+      "bytes": 12445,
+      "sha256": "aa5016b4bc32fd497ba5483427a73024c0a60c436ebb4d324ba4c9ba91ae3c3e"
+    },
+    {
+      "path": "r5-events.json",
+      "bytes": 7547,
+      "sha256": "c0c761d35c2cee477c9f7116f2ed77d7cfa76eee37efd72c8e7b3cdff5a20198"
+    },
+    {
+      "path": "r5-frame-10.png",
+      "bytes": 13850,
+      "sha256": "4caddff409872a64ea8c2f008344e31b5399d5afc261aa4c4f810b31b9f9cd32"
+    }
+  ]
+}
