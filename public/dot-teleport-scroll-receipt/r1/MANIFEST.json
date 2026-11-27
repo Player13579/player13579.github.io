@@ -1,0 +1,72 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-teleport-scroll-receipt-r1",
+  "group": "dot-teleport-scroll-receipt",
+  "title": "テレポートマップスクロール獲得",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "teleport-map-scroll-acquired",
+    "sources": [
+      "vending",
+      "mystery-box"
+    ],
+    "previewDisplayPolicy": "recipient-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2387,
+      "sha256": "26d8318d02fa8c71e3e6c42d6bc20b739e0d8040702350b410b7a04b09c75e1d"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16783,
+      "sha256": "f18e2781a52c363e86b2b2af168d840028c535ce36ba0a79c2a073c44edae7f8"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1701,
+      "sha256": "d23867d906c3b56d04f188bfad45c78ea5890e08c3b0a21d7df5436386a4867b"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 8144,
+      "sha256": "8c1b9ead0127fe2fa5bc467e5055b6d92ac4eb0930ac57dda91529e692bdfd51"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1260,
+      "sha256": "ed6e0c7862e90d36a8b05db516085582db81e3687caa6037f679147e5f5b32bb"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1284,
+      "sha256": "34f8ef8f03c0a408d4a48f78c7ea75b276f59c0b18e75ef16af0c237e088ec6e"
+    }
+  ]
+}
