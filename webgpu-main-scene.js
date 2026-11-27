@@ -940,11 +940,13 @@
               !Array.isArray(tail.planned.unsupported) || tail.planned.unsupported.length ||
               !Array.isArray(tail.planned.commands) || !Array.isArray(tail.planned.hitTargets))
             throw new Error(`Player ${String(command.playerId)} head-marker tail incomplete or unsupported`);
-          const hits = markers.record({ frame, target, viewport: markerViewport, planned: tail.planned });
-          if (!Array.isArray(hits) || hits.length !== tail.planned.hitTargets.length ||
-              hits.some((hit, hitIndex) => hit !== tail.planned.hitTargets[hitIndex]))
-            throw new Error(`Player ${String(command.playerId)} head-marker targets differ from recorded plan`);
-          markerHitTargets.push(...hits);
+          if (!input.headMarkerPresentationHidden) {
+            const hits = markers.record({ frame, target, viewport: markerViewport, planned: tail.planned });
+            if (!Array.isArray(hits) || hits.length !== tail.planned.hitTargets.length ||
+                hits.some((hit, hitIndex) => hit !== tail.planned.hitTargets[hitIndex]))
+              throw new Error(`Player ${String(command.playerId)} head-marker targets differ from recorded plan`);
+            markerHitTargets.push(...hits);
+          }
         });
         if (input.bustScene) {
           const outcome = need('bustE', 'record').record({ frame, target, viewport,
@@ -1043,6 +1045,8 @@
                 outcome.effects[0]?.id !== event.effectId || !outcome.commands?.length)
               throw new Error(`Magic taser/headshot ${event.effectId} was not recorded once`);
           } else if (event.type === 'headMarker') {
+            // Marker-only event; the source-owned plan was checked during scene preparation.
+            if (event.input.headMarkerPresentationHidden) return;
             const planned=event.input.planned;
             const markerViewport=Object.freeze({ ...viewport,
               generation: input.markerGeneration });

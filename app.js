@@ -2398,6 +2398,9 @@ const acquisitionGpuOverlay = { canvas: null, renderer: null, pending: false,
 // The shared main driver owns ordinary game frames. Keep the diagnostic URL
 // as a diagnostic selector only; it no longer gates renderer ownership.
 const WEBGPU_MAIN_OWNER = true;
+// Above-character marker presentation is disabled; event ownership and the
+// game-state values behind each marker remain unchanged.
+const SHOW_CHARACTER_HEAD_MARKERS = false;
 const WEBGPU_MAIN_VERIFY_ROUTE = IS_VERIFICATION_MODE && URL_PARAMETERS.get("webgpuMain") === "1";
 const DVA_MAIN_GRAPHICS_STORAGE_KEY = "dva_main_graphics_v1";
 const DVA_MAIN_GRAPHICS_CAPS = Object.freeze({ standard: null, light: 2, lighter: 1.5 });
@@ -26546,7 +26549,7 @@ const STATUS_MARKER_EXPLANATIONS = Object.freeze({
 });
 
 function registerMarkerHitTarget(key, localX, localY, radius, title, detail) {
-  if (!key || !title || !detail) return;
+  if (!SHOW_CHARACTER_HEAD_MARKERS || !key || !title || !detail) return;
   const matrix = ctx.getTransform();
   const x = matrix.a * localX + matrix.c * localY + matrix.e;
   const y = matrix.b * localX + matrix.d * localY + matrix.f;
@@ -26562,7 +26565,7 @@ function registerMarkerHitTarget(key, localX, localY, radius, title, detail) {
 }
 
 function markerTargetAt(point) {
-  if (!point) return null;
+  if (!SHOW_CHARACTER_HEAD_MARKERS || !point) return null;
   if (WEBGPU_MAIN_OWNER && !webgpuMainSubmittedFrameCurrent()) return null;
   // A visible GPU surface owns marker input even while its submitted receipt
   // is stale. Never let the hidden Canvas hit cache bridge that gap.
@@ -27514,6 +27517,7 @@ function drawBenefitPhenomenon(sprite, kind, phase, size, color, reduced) {
 }
 
 function drawBenefitGainEffect(effect, progress, now) {
+  if (!SHOW_CHARACTER_HEAD_MARKERS) return;
   if (isCreditHeadMarkerEffect(effect)) return;
   if (isDesireRenkiMarker(effect) || !["playing", "meeting"].includes(state.data?.phase) || ctx.globalAlpha <= 0) return;
   const kind = effect.effectKind, material = BENEFIT_TE_MATERIALS[kind];
@@ -27555,6 +27559,7 @@ function drawBenefitGainEffect(effect, progress, now) {
 }
 
 function drawGainAcquisitionEffect(effect, progress, now, index = 0, total = 1) {
+  if (!SHOW_CHARACTER_HEAD_MARKERS) return;
   if (isCreditHeadMarkerEffect(effect)) return;
   if (isBodyOverhealGainEffect(effect)) return;
   if (BENEFIT_TE_MATERIALS[effect.effectKind]) return drawBenefitGainEffect(effect, progress, now);
@@ -27640,6 +27645,7 @@ function drawEnhanceSourcePropagation(effect, now, width, height, reduced) {
 }
 
 function drawEnhanceHeadMarker(effect, progress, now) {
+  if (!SHOW_CHARACTER_HEAD_MARKERS) return;
   if (!["playing", "meeting"].includes(state.data?.phase) || ctx.globalAlpha <= 0) return;
   const player = gainEffectPlayer(effect);
   if (!player || !player.alive || player.ejected || player.inVent || player.invisible) return;
@@ -27674,6 +27680,7 @@ function drawEnhanceHeadMarker(effect, progress, now) {
 }
 
 function drawFighterEnergyChargeMarker(effect, progress, now) {
+  if (!SHOW_CHARACTER_HEAD_MARKERS) return;
   const prepared = transparentSpriteSource(state.textures.fighterEnergyChargeEffect, "fighter-energy-charge-marker", 18);
   const sprite = prepared ? normalizedSpriteFrame(prepared, "fighter-energy-charge-marker", 1, 1, 0, 0) : null;
   const player = gainEffectPlayer(effect);
@@ -30016,7 +30023,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
   const markerNow = performance.now();
   const markerPoint = state.markerExplanationPointerPoint;
   const markerPointerSample = state.markerExplanationPointerSample;
-  const markerPointerHeld = Boolean(marker && marker.pointerId != null &&
+  const markerPointerHeld = Boolean(SHOW_CHARACTER_HEAD_MARKERS && marker && marker.pointerId != null &&
     (!marker.expiresAt || markerNow < marker.expiresAt));
   // The pointer's coordinates must belong to this committed presentation.
   // Its target is resolved later from the current prepared WebGPU hit list.
@@ -30024,7 +30031,7 @@ function captureWebGPUMainAppWorldCandidate(data = state.data, viewport,
     (state.markerExplanationPointerId !== marker.pointerId ||
       !markerPointerOwnedByWebGPU(markerPointerSample, markerPoint,
         marker, viewport));
-  const markerVisible = marker && !markerPointerHeld &&
+  const markerVisible = SHOW_CHARACTER_HEAD_MARKERS && marker && !markerPointerHeld &&
     (!marker.expiresAt || markerNow < marker.expiresAt);
   const markerScene = markerVisible
     ? markerExplanationWebGPUScene(marker, null, markerNow) : null;
@@ -30516,6 +30523,7 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
   if (Array.isArray(spriteCommands)) spriteCommands.forEach((command, index) =>
     planForCommand(command, index));
   const playerMarkers = { ...candidate.stages.players,
+    headMarkerPresentationHidden: !SHOW_CHARACTER_HEAD_MARKERS,
     markerGeneration: head.generation,
     headMarkersForCommand({ command, index, viewport }) {
       if (viewport?.generation !== head.generation ||
@@ -30528,7 +30536,7 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
         throw new Error('WebGPU world candidate head marker viewport changed');
       return planForCommand(command, index);
     } };
-  const markerHitTargets = Array.isArray(spriteCommands)
+  const markerHitTargets = SHOW_CHARACTER_HEAD_MARKERS && Array.isArray(spriteCommands)
     ? spriteCommands.flatMap(command => plans.get(String(command.playerId))?.hitTargets || [])
     : [];
   const magicInput = candidate.stages.magicEffects;
@@ -30800,8 +30808,9 @@ async function prepareWebGPUMainAppWorldCandidate(candidate, passes, textAtlas,
         planned.hitTargets[0].key !== expectedKey)
       throw new Error(`WebGPU world candidate retained marker did not plan one exact hit: ${sourceId}`);
     routedRetained.add(sourceId);
-    markerHitTargets.push(...planned.hitTargets);
-    return { ...event, input: { ...input, planned } };
+    if (SHOW_CHARACTER_HEAD_MARKERS) markerHitTargets.push(...planned.hitTargets);
+    return { ...event, input: { ...input, planned,
+      headMarkerPresentationHidden: !SHOW_CHARACTER_HEAD_MARKERS } };
   }) };
   if (routedRetained.size !== visibleRetained.size)
     throw new Error('WebGPU world candidate visible retained marker was not source-routed');
