@@ -1,0 +1,79 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-fighter-ec-throw-bind-r1",
+  "group": "dot-fighter-ec-throw-bind",
+  "title": "ファイター・投擲EC付与",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "fighter-energy-release",
+    "variantFamily": "throw:remaining-ec-*",
+    "eventDurationMs": [
+      240,
+      920
+    ],
+    "visualDurationMsMax": 540,
+    "previewDisplayPolicy": "actor-only",
+    "hiddenInputsNotUsed": [
+      "targetX",
+      "targetY",
+      "remainingEC"
+    ],
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2309,
+      "sha256": "7b67a03667352fc96d9c11867e746d4f342f9f3c7d4b4096d89f2d645e5bf205"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16718,
+      "sha256": "fd378dff71df3141269d2e7774d2bb556734d4710b0c4efeaf42c62d08c67296"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1217,
+      "sha256": "bb6024cd692878e69d86a9e3f22120f0695054c89d7e8c06c1e195f0ba42fa67"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6739,
+      "sha256": "8d54c33ddb848f4586f431734f7e0103b6acfd35b0c7ea749a22e294d620b5cb"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1944,
+      "sha256": "38990c889c4a50d504a6a1d4c6f1f008196b06404ab3b97214be06635034245b"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 909,
+      "sha256": "9017e1851430d05ae67e9bb0b9f4cddd7213ef29fd0643ee3a810739c6045b6c"
+    }
+  ]
+}
