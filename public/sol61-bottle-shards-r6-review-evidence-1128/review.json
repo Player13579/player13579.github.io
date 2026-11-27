@@ -1,0 +1,88 @@
+{
+  "schema": "dva-bottle-shards-quality-review/v1",
+  "versionId": "bottle-shards-cleanroom-sol61-r6",
+  "manifestSha256": "24cd174236d5371b22f389b918d222c8f62cb103d775611c53dfacb5d6a55278",
+  "sealSha256": "404ed04a36c01fda4a64eaff9e031c59d64446b3f1591ee3f9e566c4f83795c3",
+  "sourceManifestSha256": "600bc287002b4e35dd8b8ffa501d2aa9cc9650ce36340066a19af76d128d47ce",
+  "effectSha256": "883fc57b8e8e3d53e3c9ac950fa003c80d3ee46e13da5c9d8f5d7aa228820e0f",
+  "creatorResponseId": "resp_05f54ec2c3b6138f006b0a086a610087d0a1cdbbf474327dd0",
+  "creatorModelId": "gpt-6.1-sol",
+  "qualityStatus": "not-accepted",
+  "qualityReviewStatus": "needs-improvement",
+  "qualityAccepted": false,
+  "wholeEffectQualityAccepted": false,
+  "outcome": "scoped-held-glass-surface-readability-insufficient",
+  "scope": {
+    "visual": [
+      "held-0 shows a small bright fracture and clustered shards",
+      "held-200/500/1000 show five separated but narrow, dark fragments; glass surface, thickness and reflections remain hard to read at display size",
+      "held-1600 is dim in the fade region; darkness alone is not treated as a defect",
+      "R5 held-0/200/500 comparison does not show a clear material-readability improvement"
+    ],
+    "technical": [
+      "firstFrame completed",
+      "24-second run with 240 sampled records across eight variants and five phase receipt types",
+      "errors array empty"
+    ],
+    "viewport": "H64, 980x620, DPR1",
+    "run": "Exact-pin candidate verify harness",
+    "route": "/public/sol61-bottle-shards/cleanroom-r6/index.html?verify=1&height=64"
+  },
+  "limitations": [
+    "Capture path differs between candidate and R5 public baseline; images are not proven to represent the same GPU frame, so no quantified regression or improvement is claimed.",
+    "No conclusion about full lifetime or other variants beyond the sampled run and holds.",
+    "Normal audio, formal public-parent replay, alternate viewports and main-game integration remain unverified."
+  ],
+  "evidence": [
+    {
+      "bytes": 406169,
+      "sha256": "619ffcd7d1d3938e65146973cc4eb08b56bfafa827245d0efed5a5baf2a4a50b",
+      "path": "r5-comparison-events.json"
+    },
+    {
+      "bytes": 155617,
+      "sha256": "cefa2698a9f412b9914ba7cc7d58b01ad3d5499988864f20d67556d237de8fc0",
+      "path": "r5-hold-0.png"
+    },
+    {
+      "bytes": 154924,
+      "sha256": "6b823af0a321b64ccfccf18c855eea75743bcbc8d4ddbb110b3301382d6986d0",
+      "path": "r5-hold-200.png"
+    },
+    {
+      "bytes": 155108,
+      "sha256": "542ba6450e86a77ce9a5abd81dca443704098722bb9ee6a5b095b7d2cfec732c",
+      "path": "r5-hold-500.png"
+    },
+    {
+      "bytes": 409297,
+      "sha256": "c04e36b7657f43806a2abbc28b66a392bb6e6cddfc72bd5863e3468802c9eeaa",
+      "path": "r6-events.json"
+    },
+    {
+      "bytes": 12947,
+      "sha256": "8d8b71fa581ee6ede734053cdf56fd217717aaf63e4dfc0ce74564595c319169",
+      "path": "r6-hold-0.png"
+    },
+    {
+      "bytes": 12381,
+      "sha256": "63adca22a9682112b3dc0d11a6f46157ffac69da867da6e048913d6fb95a1322",
+      "path": "r6-hold-1000.png"
+    },
+    {
+      "bytes": 11942,
+      "sha256": "6f345b99f02c89778204a967bb30b12bbcde829004697402ce52ce56a6cf1719",
+      "path": "r6-hold-1600.png"
+    },
+    {
+      "bytes": 12072,
+      "sha256": "cb312d33a2ba58bf63c021ab8af8ce961b0db7082aac89e452bd2570ead12d12",
+      "path": "r6-hold-200.png"
+    },
+    {
+      "bytes": 12356,
+      "sha256": "7a80bc50bc3c683af241e42d3db7c8ddf30f34d22312ec1090288dd7306be65e",
+      "path": "r6-hold-500.png"
+    }
+  ]
+}
