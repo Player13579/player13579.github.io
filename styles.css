@@ -14477,51 +14477,65 @@ body.game-open #markerExplanationDetail.pointer-detail-active :is(strong,p) {
 /* Colour identifies the individual combat shortcut, not its broad category.
    State still has its existing label and a separate border/saturation cue. */
 @media (forced-colors: none) {
-  #tabletQuickActions > #tabletNinjutsuShortcut { --dva-shortcut-color: #802450; }
-  #tabletQuickActions > #tabletContextShortcut { --dva-shortcut-color: #466021; }
-  #tabletQuickActions > #tabletAbilityShortcut { --dva-shortcut-color: #492b87; }
-  #tabletQuickActions > #tabletShootShortcut { --dva-shortcut-color: #153f74; }
-  #tabletQuickActions > #tabletWeaponUseShortcut { --dva-shortcut-color: #005761; }
-  #tabletQuickActions > #tabletFireShortcut { --dva-shortcut-color: #983514; }
-  #tabletQuickActions > #tabletEmpShortcut { --dva-shortcut-color: #6e4b00; }
-  #tabletQuickActions > #tabletClairvoyanceShortcut { --dva-shortcut-color: #6e4e74; }
-  #tabletQuickActions > #tabletClairvoyanceModeShortcut { --dva-shortcut-color: #505964; }
-  #tabletQuickActions > #tabletVendingShortcut { --dva-shortcut-color: #5d412b; }
-  #tabletQuickActions > #tabletDodgeShortcut { --dva-shortcut-color: #285b92; }
-  #tabletQuickActions > #tabletRenkiShortcut { --dva-shortcut-color: #135638; }
-  #tabletQuickActions > #tabletDonateShortcut { --dva-shortcut-color: #98385c; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-target"] { --dva-shortcut-color: #bc1dcd; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-heart"] { --dva-shortcut-color: #0a0a47; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-accelerate"] { --dva-shortcut-color: #470a23; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-decelerate"] { --dva-shortcut-color: #751dcd; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-time-keeper"] { --dva-shortcut-color: #1d1dcd; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-storm"] { --dva-shortcut-color: #cd1d87; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="flora-heal"] { --dva-shortcut-color: #1b2c37; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="flora-sunbeam"] { --dva-shortcut-color: #cd1d2f; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="flora-invisible"] { --dva-shortcut-color: #911d91; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-kinetic-accelerate"] { --dva-shortcut-color: #92663a; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-kinetic-decelerate"] { --dva-shortcut-color: #127d68; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-electric"] { --dva-shortcut-color: #12127d; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-transmutation"] { --dva-shortcut-color: #380c55; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-fission"] { --dva-shortcut-color: #127d12; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-fusion"] { --dva-shortcut-color: #701010; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="assassin-substitution"] { --dva-shortcut-color: #1d52cd; }
-  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="hacker-root"] { --dva-shortcut-color: #620e62; }
+  #tabletQuickActions > #tabletNinjutsuShortcut { --dva-shortcut-color: #ebc7d8; }
+  #tabletQuickActions > #tabletContextShortcut { --dva-shortcut-color: #76ef76; }
+  #tabletQuickActions > #tabletAbilityShortcut { --dva-shortcut-color: #76c7ef; }
+  #tabletQuickActions > #tabletShootShortcut { --dva-shortcut-color: #9ff4f4; }
+  #tabletQuickActions > #tabletWeaponUseShortcut { --dva-shortcut-color: #8fd6ab; }
+  #tabletQuickActions > #tabletFireShortcut { --dva-shortcut-color: #f1e984; }
+  #tabletQuickActions > #tabletEmpShortcut { --dva-shortcut-color: #efb776; }
+  #tabletQuickActions > #tabletClairvoyanceShortcut { --dva-shortcut-color: #ee9ff4; }
+  #tabletQuickActions > #tabletClairvoyanceModeShortcut { --dva-shortcut-color: #bbd7f7; }
+  #tabletQuickActions > #tabletVendingShortcut { --dva-shortcut-color: #fae7d6; }
+  #tabletQuickActions > #tabletDodgeShortcut { --dva-shortcut-color: #b8b4ee; }
+  #tabletQuickActions > #tabletRenkiShortcut { --dva-shortcut-color: #9ff4b6; }
+  #tabletQuickActions > #tabletDonateShortcut { --dva-shortcut-color: #eba8c3; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-target"] { --dva-shortcut-color: #f3bbf7; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-heart"] { --dva-shortcut-color: #ddddf3; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-accelerate"] { --dva-shortcut-color: #fad6e4; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-decelerate"] { --dva-shortcut-color: #d5bce7; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-time-keeper"] { --dva-shortcut-color: #c8c8f9; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="gravity-storm"] { --dva-shortcut-color: #f5addd; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="flora-heal"] { --dva-shortcut-color: #76dfef; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="flora-sunbeam"] { --dva-shortcut-color: #f5b7ad; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="flora-invisible"] { --dva-shortcut-color: #f6cbf6; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-kinetic-accelerate"] { --dva-shortcut-color: #f4d29f; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-kinetic-decelerate"] { --dva-shortcut-color: #76efd7; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-electric"] { --dva-shortcut-color: #d2d2ef; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-transmutation"] { --dva-shortcut-color: #d8adf5; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-fission"] { --dva-shortcut-color: #cdf4cd; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="quantum-fusion"] { --dva-shortcut-color: #e7acac; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="assassin-substitution"] { --dva-shortcut-color: #b0c4e3; }
+  #tabletQuickActions > #purchasedAbilityShortcuts > [data-shop-ability-shortcut="hacker-root"] { --dva-shortcut-color: #f5adf5; }
 
   body.game-open #gameApp #tabletQuickActions .tablet-quick-action:not([hidden]) {
-    background-color: var(--dva-shortcut-color, #394156) !important;
+    background-color: var(--dva-shortcut-color, #d6e7f1) !important;
     background-image: none !important;
-    color: #fff !important;
-    border-color: rgb(235 252 255 / .53);
+    color: #182d3b !important;
+    border-color: rgb(24 45 59 / .43);
     text-shadow: none !important;
   }
   body.game-open #gameApp #tabletQuickActions .tablet-quick-action:is(:disabled,.action-disabled):not([hidden]) {
     opacity: 1;
-    filter: saturate(.68) brightness(.88);
+    filter: saturate(.73);
     border-style: dashed;
   }
   body.game-open #gameApp #tabletQuickActions .tablet-quick-action.active:not(:disabled) {
-    border-color: #ffe69a;
-    box-shadow: inset 0 0 0 2px rgb(255 245 201 / .72);
+    border-color: #245163;
+    box-shadow: inset 0 0 0 2px rgb(36 81 99 / .65);
+  }
+}
+
+/* Only the ability explanation in the open match panel gets glass.
+   Alpha lives in the fill; description text remains fully opaque. */
+@media (forced-colors: none) {
+  body.game-open.dva-full-canvas.dva-match-ui-open.dva-unified-panel-active
+    #gameApp #sidePanel #matchPanelContent #teleportModeDescription:not([hidden]) {
+    background: rgb(229 244 248 / .52) !important;
+    color: #153644;
+    opacity: 1;
+    border-left-color: rgb(28 113 132 / .61);
+    box-shadow: inset 0 1px rgb(255 255 255 / .29);
+    text-shadow: none;
   }
 }
