@@ -1,0 +1,75 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-match-finalized-r1",
+  "group": "dot-match-finalized",
+  "title": "通常対戦の決着",
+  "authorDisplayName": "dot",
+  "edition": 1,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "same-room-snapshot-transition",
+    "before": [
+      "playing",
+      "meeting"
+    ],
+    "after": "ended",
+    "excludeWinner": "none",
+    "visualDurationMs": 1020,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2273,
+      "sha256": "7f42c04b7599eca1d0b14ab65a27d1dd803b1a9100b7d57f0b706a2f500e44f1"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16792,
+      "sha256": "ee83264b5be25597e7387f04e474a65e37b7b07fa591c37e94869fcfc765c014"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1205,
+      "sha256": "7d6aed80188bb25d8b9623a6130e2d02f3aa68e2dc17a19830580aced4fc7cd4"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6909,
+      "sha256": "578abee2a69da607e0fc6b42fa52753d6791f8e612f92c854d10ac5a176e80fa"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1930,
+      "sha256": "03a811f235a00a83663f9524999edfc98cc52db9348e775493f402afe7137d91"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 902,
+      "sha256": "8328aef6bb8b9dceba9a6003c19e45d2ffc4d64882e4f9f66aff04cbf3c5971a"
+    }
+  ]
+}
