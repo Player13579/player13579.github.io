@@ -5399,6 +5399,9 @@ function beginThrowTargeting(itemId, holdMs = 0, chargeId = "") {
   };
   state.throwTargeting.frame = requestAnimationFrame(updateThrowTargetingFrame);
   updateEnhanceReadout();
+  // Close only once the throw is armed. A hold/cancel or failed preview
+  // must not displace the inventory, and the pending throw keeps ownership.
+  window.DvaFullCanvasUi?.closeForAction?.();
   showToast("着地点を移動キーで選択。キーを離すか確定で投擲。Escで取消。時間制限なし。");
   return true;
 }
@@ -18536,7 +18539,15 @@ function setVendingOpen(open, { focus = true, opener = null } = {}) {
     !data.self.inVent
   );
   const nextOpen = Boolean(open && available);
-  if (nextOpen && !wasOpen) state.vendingReturnFocus = opener || document.activeElement || null;
+  if (nextOpen && !wasOpen) {
+    const priorFocus = opener || document.activeElement || null;
+    const closedMatchUi = window.DvaFullCanvasUi?.closeForAction?.();
+    // The drawer opener becomes inert when collapsed; use the visible
+    // drawer launcher on shop exit rather than focusing a hidden control.
+    state.vendingReturnFocus = closedMatchUi && (!priorFocus || priorFocus === document.body || priorFocus.closest?.("#sidePanel, #fieldLowerRow, [hidden], [inert]"))
+      ? document.getElementById("matchUiToggle")
+      : priorFocus;
+  }
   state.vendingOpen = nextOpen;
   state.vendingRenderKey = "";
   if (!state.vendingOpen) {

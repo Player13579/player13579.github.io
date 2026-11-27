@@ -188,6 +188,15 @@
       }
     }
   }
+  // Reuse the drawer's input cleanup, without toggling or moving focus
+  // away from a new action. Opening a dialog/aim happens at its own entry.
+  function closeForAction() {
+    if (!active || !expanded || lastPhase !== 'playing' || modalOwnsInput()) return false;
+    closeInput?.();
+    expanded = false;
+    apply();
+    return true;
+  }
   function toggle() {
     if (!active || lastPhase === 'meeting' || modalOwnsInput()) return;
     if (expanded) {
@@ -318,6 +327,6 @@
     apply();
     return geometryChanged;
   }
-  root.DvaFullCanvasUi = Object.freeze({ init, sync,
+  root.DvaFullCanvasUi = Object.freeze({ init, sync, closeForAction,
     get expanded() { return !active || expanded; } });
 })(window);
