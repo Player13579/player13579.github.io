@@ -14591,3 +14591,12 @@ body.result-presentation #ideaVictoryHud,
 body:has(:is(#expandedMapOverlay,#keybindOverlay,#killCameraOverlay,#vendingFullMount,#fieldFeedPanel[aria-modal="true"]):not([hidden])) #ideaVictoryHud {
   display: none !important;
 }
+
+#itemInventoryEmpty:not([hidden]) {
+  margin: 0;
+  padding: 4px 6px;
+  color: #183b47;
+  background: rgb(219 237 242 / .56);
+  border-radius: 4px;
+  font-size: .83em;
+}

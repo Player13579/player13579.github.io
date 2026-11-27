@@ -17470,7 +17470,11 @@ function renderItemControl(data) {
   const self = data.self;
   const items = collectInventoryDisplayItems(self, estimatedServerNow(data));
   const targets = (data.players || []).filter((player) => player.id !== self.id && player.alive && !player.ejected);
-  const visible = data.phase === "playing" && self.alive && !self.ejected && (items.length > 0 || Number(self.credits) > 0);
+  // Transferring the last resource must not unmount the inventory pane.
+  // Empty/insufficient resources disable actions rather than hide the UI.
+  const visible = data.phase === "playing" && self.alive && !self.ejected;
+  const emptyState = document.getElementById("itemInventoryEmpty");
+  if (emptyState && emptyState.hidden !== Boolean(items.length)) emptyState.hidden = Boolean(items.length);
   els.itemControl.hidden = !visible;
   if (!visible) {
     syncTabletWeaponUseShortcut(data, items);
@@ -17583,7 +17587,7 @@ function renderItemControl(data) {
   els.itemUseButton.hidden = Boolean(els.tabletWeaponUseShortcut && displayedWeaponKind(selected));
   els.itemThrowButton.hidden = selectedInstant;
   els.itemThrowButton.disabled = selectedInstant || !canActOnItem || selected?.throwable === false;
-  els.transferItemButton.hidden = selectedInstant;
+  els.transferItemButton.hidden = false;
   els.transferItemButton.disabled = selectedInstant || !selected || !targets.length || blocked || selected?.transferable === false;
   els.transferCreditsButton.disabled = Number(self.credits) < transferCredits || !targets.length;
   const selectedUseLabel = selected?.inventoryKind === "weapon"

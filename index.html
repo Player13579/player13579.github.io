@@ -20,7 +20,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
   document.documentElement.classList.add("dva-ipad-ui-comfort");
 }
     </script>
-  <link rel="stylesheet" href="styles.css?v=7a4f6395c205f5fb006aa26630b76435284983eb">
+  <link rel="stylesheet" href="styles.css?v=2d034c3c8374e866e365deb04ec73a21d8bf9d0b">
   </head>
   <body>
     <section id="startScreen" class="start-screen" data-ui-region="home-screen" aria-label="ホーム画面">
@@ -454,6 +454,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
             </div>
             <select id="itemSelect" class="visually-hidden-select" aria-label="所持品"></select>
             <div id="itemInventoryGrid" class="item-inventory-grid" role="listbox" aria-label="所持品一覧"></div>
+            <p id="itemInventoryEmpty" class="item-inventory-empty" hidden>所持品なし</p>
             <div class="item-control-actions">
               <button id="itemUseButton" type="button" data-hotkey="Shift+V">使用 [Shift+V]</button>
               <button id="itemThrowButton" type="button" data-hotkey="Shift+G">投擲 [Shift+G]</button>
@@ -809,7 +810,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
     <script src="object-space-collision.js?v=webgpu-main-bootstrap-v5"></script>
     <script src="webgpu-game-input-surface.js?v=webgpu-only-input-v2"></script>
     <script src="dva-full-canvas-ui.js?v=full-canvas-ui-r1&amp;fieldUi=field-ui-persistent-forward-20261126&amp;unifiedPanel=one-match-panel-forward-20261126-1349-8f4f39c9b518&amp;onePagePanel=single-page-panel-forward-20261126-1407-27b1d0304f9b&amp;weaponPanelOwner=weapon-panel-owner-forward-20261126-1432-457efa34746a&amp;launcherStrictTouchC195=launcher-strict-touch-c195-forward-20261126-1942-796d6d154b1a&amp;closeForAction=6b841668367d"></script>
-    <script src="app.js?v=7681bb2663507311c73c0471be3ee5b433b9d6ca"></script>
+    <script src="app.js?v=78c7f18b2892c8a3ccea98c6eec7c4149c307808"></script>
     <script>
 (() => {
   if (new URLSearchParams(location.search).get('viewportCheck') !== '1') return;
