@@ -1,0 +1,119 @@
+{
+  "schema": "dva-fighter-energy-charge-r6-limited-visual-review/v1",
+  "groupId": "fighter-energy-charge-cleanroom-sol61",
+  "versionId": "fighter-energy-charge-cleanroom-sol61-r6",
+  "packageManifestSha256": "7e71a48c87821465b33bdff94f016f60d9fd425df7cea592e9800adc599f8c61",
+  "sourceManifestSha256": "9c53e9a9009312e661927c84815f888a41ea9b817b06eee300b5d41730d1acb0",
+  "packageSealSha256": "324bdd9e31974a04ad84391c4f7742e6bb0ad5f3d5a9092826b8f846401c58ef",
+  "effectModuleSha256": "88a7271c04d0548060bd263ae0ce103b965c058e540c3de72958c285bf8eab5c",
+  "scope": {
+    "route": "/public/sol61-fighter-energy-charge/cleanroom-r6/index.html?verify=1&packageSchema=dva-fighter-charge-cleanroom-gallery%2Fv5&packageManifestSha256=7e71a48c87821465b33bdff94f016f60d9fd425df7cea592e9800adc599f8c61&packageSealSha256=324bdd9e31974a04ad84391c4f7742e6bb0ad5f3d5a9092826b8f846401c58ef&sourceManifestSha256=9c53e9a9009312e661927c84815f888a41ea9b817b06eee300b5d41730d1acb0",
+    "mode": "standalone WebGPU verify; verify audio hard-muted",
+    "fixture": "synthetic-successful-player-receipt",
+    "variants": [
+      "ordinary charge +1 EC",
+      "crossing 100 EC resource entitlement",
+      "crossing 500 EC Iai charge",
+      "crossing 1000 EC apex perks"
+    ],
+    "capture": {
+      "pngFrames": 24,
+      "errors": [],
+      "viewport": [
+        980,
+        620
+      ],
+      "dpr": 1
+    },
+    "lastSnapshot": {
+      "variant": "cross500-iai-charge",
+      "lastReceiptSubmissionId": 1022,
+      "lastReceiptCompleted": true,
+      "lastReceiptAgeMs": 450.7,
+      "lastFrameSubmissionId": 1023,
+      "completedSubmissions": 1022,
+      "lastFrameAgeMs": 468.8,
+      "lastFrameCompleted": false
+    },
+    "packageClosure": "PACKAGE_CLOSURE_VERIFIED",
+    "responseEffectModuleShaMatchesFrozen": true,
+    "screenshotToReceiptExactAgeBinding": false,
+    "allVariantFullLifetimeAcceptance": "not_established",
+    "normalAudioListening": "not_run",
+    "parentGalleryReplay": "not_run",
+    "safariReplay": "unverified",
+    "gameIntegration": "not_connected"
+  },
+  "comparison": {
+    "baselineVersion": "fighter-energy-charge-cleanroom-sol61-r5",
+    "baselineImages": [
+      "r5-frame-03.png",
+      "r5-frame-04.png"
+    ],
+    "candidateImages": [
+      "r6-frame-01.png",
+      "r6-frame-04.png",
+      "r6-frame-06.png",
+      "r6-frame-09.png"
+    ],
+    "variantAndPhaseSynchronized": false,
+    "source": "Independent reviewer inspected the exact R5/R6 originals listed in this bundle. These captures were not synchronized to a common phase/variant; no exact-age or causal comparison is claimed."
+  },
+  "observations": {
+    "quality": "unverified",
+    "qualityReviewStatus": "limited-warm-surface-response-observed-inflow-and-accumulation-unverified",
+    "qualityAccepted": false,
+    "finding": "R6 shows warm body-surface response and angular light paths on both sides. R5 also shows some body glow in frame 03. The captures are not synchronized by phase/variant, so improvement amount and source-to-body inflow or accumulation cannot be established. No new concrete defect was confirmed; overall effect/motion quality remains unreviewed.",
+    "limitations": "The available last snapshot is the cross500 variant at approximately 450.7ms, with receipt submission 1022 completed in 2 passes; the last submitted frame 1023 at approximately 468.8ms is not completed. Selected images are not exactly bound to frame/variant receipts. All four variants across full lifetime, flicker, normal audio, parent-gallery replay, Safari, and game integration remain unverified. Video was not reviewed."
+  },
+  "evidenceFiles": [
+    {
+      "path": "r6-events.json",
+      "bytes": 9370,
+      "sha256": "4c0f1a7d799f9ff69b0faa65acfe8482c7953dba9cd34a21dd7f1aba1a6eb3a2"
+    },
+    {
+      "path": "r6-frame-01.png",
+      "bytes": 11108,
+      "sha256": "ee43bcc89b63f619b54f2fb2c3cfb36014c03e27111e051bb36e69c1ff608dd3"
+    },
+    {
+      "path": "r6-frame-04.png",
+      "bytes": 10945,
+      "sha256": "ce7d5aefd24128cef7659023ccf30c24f2f775dafe13013fd96b579ea9b408b9"
+    },
+    {
+      "path": "r6-frame-06.png",
+      "bytes": 10638,
+      "sha256": "7890154fff7537de3f4282f248affeb64a564ccdd992778baf466ad11e4a54d1"
+    },
+    {
+      "path": "r6-frame-09.png",
+      "bytes": 10856,
+      "sha256": "809ffb037a89091ec706766566e7ed37a8031b8c93f14ed1084b662e731a65f9"
+    },
+    {
+      "path": "r5-events.json",
+      "bytes": 18839,
+      "sha256": "eb45ce5b753f95c2a0be5ef177f97a38869397b9211d170a3ecc33e8cc545650"
+    },
+    {
+      "path": "r5-frame-03.png",
+      "bytes": 9323,
+      "sha256": "d1562a3fbd5f022cfc026371ac0c6f4175bb2805f68f5e68458b90fe28e5efc2"
+    },
+    {
+      "path": "r5-frame-04.png",
+      "bytes": 8714,
+      "sha256": "9e4005b3e09228e44faff831d7637c8f036a69387424af5ffaf0c2fc6e700751"
+    }
+  ],
+  "creativeAllowance": {
+    "historicalLimit": 5,
+    "additionalGrant": 5,
+    "additionalEditionsConsumed": 1,
+    "additionalEditionsRemaining": 4,
+    "currentEffectiveLimit": 10,
+    "note": "R6 uses the first of five later authorized editions; four additional editions remain."
+  }
+}
