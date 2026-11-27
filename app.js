@@ -7886,12 +7886,22 @@ function commonActionAvailability(data = state.data) {
   const canActAlive = Boolean(data?.phase === "playing" && self?.alive && !self?.ejected && !self?.inVent && !isActionBlocked(data));
   const fighterAccess = hasDisplayedOperatorAccess(self, "fighter");
   const dodgeCost = Number(self?.dodgeStaminaCost) || 60;
-  const dodge = Boolean(canActAlive && (self?.role === "defender" || fighterAccess) && Number(self?.stamina) >= dodgeCost && Number(self?.dodgeActiveUntil || 0) <= now);
+  const dodgeAccess = self?.role === "defender" || fighterAccess;
+  const abilitySealed = Number(self?.abilityDisabledUntil || 0) > now;
+  const dodgeActive = Number(self?.dodgeActiveUntil || 0) > now;
+  // The authoritative Dodge action accepts stamina down to cost minus 0.01.
+  const enoughDodgeStamina = Number(self?.stamina) >= dodgeCost - 0.01;
+  const dodgeReason = !dodgeAccess ? "回避はディフェンダーかファイターが使えます。"
+    : !canActAlive ? "現在は回避できません。"
+    : abilitySealed ? "能力封印中は回避できません。"
+    : dodgeActive ? "回避はすでに発動中です。"
+    : !enoughDodgeStamina ? `回避には${dodgeCost}SPが必要です。` : "";
+  const dodge = !dodgeReason;
   const canUseKill = self?.role === "attacker" || isDefenderHunter(self);
   const ninjutsu = Boolean(canActAlive && canUseKill && !aimedTarget(data) && (Number(self?.killReadyAt || 0) <= now || self?.ninjutsuOpeningReady));
-  const barrier = Boolean(canActAlive && Number(self?.barrierReadyAt || 0) <= now);
+  const barrier = Boolean(canActAlive && !abilitySealed && Number(self?.barrierReadyAt || 0) <= now);
   const bust = Boolean(canActAlive && self?.bustUnlocked && Number(self?.bustReadyAt || 0) <= now);
-  return { dodge, ninjutsu, barrier, bust, dodgeCost };
+  return { dodge, ninjutsu, barrier, bust, dodgeCost, dodgeAccess, dodgeReason };
 }
 
 async function invokeCommonBarrier() {
@@ -7913,7 +7923,7 @@ async function invokeCommonBust() {
 async function invokeCommonDodge() {
   const available = commonActionAvailability();
   if (!available.dodge) {
-    showToast(`回避には${available.dodgeCost}SPと使用可能状態が必要です。`);
+    showToast(available.dodgeReason);
     return false;
   }
   return api("/api/dodge");
@@ -10841,10 +10851,8 @@ function renderTabletControls(data) {
   const shopExpandedValue = String(state.vendingOpen);
   if (els.tabletVendingShortcut.getAttribute("aria-expanded") !== shopExpandedValue)
     els.tabletVendingShortcut.setAttribute("aria-expanded", shopExpandedValue);
-  const dodgeShortcutDetail = els.dodgeButton.hidden
-    ? "ディフェンダーまたはファイターが使用できます"
-    : (els.dodgeButton.title || els.dodgeButton.textContent || "回避");
-  setTabletShortcutLabel(els.tabletDodgeShortcut, "回避", dodgeShortcutDetail);
+  const dodgeShortcutLabel = els.dodgeButton.textContent === "長押しバリア" ? "長押しバリア" : "回避";
+  setTabletShortcutLabel(els.tabletDodgeShortcut, dodgeShortcutLabel, els.dodgeButton.title || dodgeShortcutLabel);
   // 回避は共通ショートカットの固定枠。権限外は実行不可として残し、
   // native action button の役割別非表示を tablet の枠へ伝播させない。
   els.tabletDodgeShortcut.disabled = els.dodgeButton.disabled || els.dodgeButton.hidden;
@@ -18998,9 +19006,7 @@ function updateActionButtons(data) {
   const groundItem = nearestGroundItem(data);
   const liveNow = estimatedServerNow(data);
   const itemBlocked = (Number(self.itemDisabledUntil) || 0) > liveNow;
-  const dodgeStaminaCost = Number(self.dodgeStaminaCost) || 60;
   const aiming = Boolean(aimed && self.aimTargetId);
-  const dodgeAccess = self.role === "defender" || fighterAccess;
   const commonAvailability = commonActionAvailability(data);
 
   const contextSource = !groundItem
@@ -19026,7 +19032,6 @@ function updateActionButtons(data) {
     state.actionLayoutKey = actionLayoutKey;
     els.emergencyButton.hidden = false;
     els.ninjutsuButton.hidden = !(canUseKill || commonAvailability.bust);
-    els.dodgeButton.hidden = !(dodgeAccess || commonAvailability.barrier);
     els.teleportButton.hidden = true;
     els.shootButton.hidden = true;
     els.weaponButton.hidden = true;
@@ -19139,14 +19144,16 @@ function updateActionButtons(data) {
     !(canUseAbility && !itemBlocked && gunnerAccess && gunAmmoReady && Number(self.stamina) >= gunnerBurstStaminaCost && gunSeconds <= 0 && reloadSeconds <= 0);
   els.gunnerReloadButton.textContent = reloadSeconds > 0 ? `リロード ${reloadSeconds.toFixed(1)}秒` : "リロード";
   els.gunnerReloadButton.disabled = !(canActAlive && !itemBlocked && gunnerAccess && Number(gunnerWeapon.ammo) < Number(gunnerWeapon.maxAmmo) && reloadSeconds <= 0);
-  els.dodgeButton.textContent = `回避 -${dodgeStaminaCost}SP`;
-  const dodgeTapAvailable = canUseAbility && dodgeAccess && self.stamina >= dodgeStaminaCost && self.dodgeActiveUntil <= liveNow;
-  // Barrier costs no SP/MP, so a low-SP player can still hold this same common
-  // action while the ordinary Dodge tap remains unavailable.
-  els.dodgeButton.disabled = !(dodgeTapAvailable || commonAvailability.barrier);
-  els.dodgeButton.title = commonAvailability.barrier
-    ? `タップで回避（${dodgeStaminaCost}SP）。長押しで耐久${Math.max(0, Number(self.barrierMaxDurability) || 2)}のバリアを展開。`
-    : `タップで回避（${dodgeStaminaCost}SP）。バリアはクールタイム中または使用できません。`;
+  const { dodge, barrier, dodgeCost, dodgeAccess, dodgeReason } = commonAvailability;
+  // This is dynamic (the barrier cooldown can expire without a layout change).
+  els.dodgeButton.hidden = !dodgeAccess && !barrier;
+  els.dodgeButton.disabled = !dodge && !barrier;
+  const dodgeLabel = !dodgeAccess && barrier ? "長押しバリア" : `回避 -${dodgeCost}SP`;
+  if (els.dodgeButton.textContent !== dodgeLabel) els.dodgeButton.textContent = dodgeLabel;
+  const dodgeDetail = dodge ? `タップで回避（${dodgeCost}SP）。` : dodgeReason;
+  els.dodgeButton.title = dodgeDetail + (barrier
+    ? `長押しで耐久${Math.max(0, Number(self.barrierMaxDurability) || 2)}のバリアを展開。`
+    : "バリアはクールタイム中または使用できません。");
   const teleportMode = els.teleportModeSelect.value === "heart" ? "heart" : "body";
   const teleportTargetIsSelf = (els.teleportTargetSelect.value || self.id) === self.id;
   els.teleportButton.textContent = teleportMode === "heart"
