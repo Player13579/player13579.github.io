@@ -10882,10 +10882,10 @@ function renderPurchasedAbilityShortcuts(data) {
   });
 }
 
-function renderTabletControls(data) {
+function renderTabletControls(data, renkiPrediction) {
   renderPurchasedAbilityShortcuts(data);
   if (!data?.self) return;
-  setTabletShortcutLabel(els.tabletNinjutsuShortcut, "忍殺", els.ninjutsuButton.textContent || "忍殺");
+  setTabletShortcutLabel(els.tabletNinjutsuShortcut, "忍殺 / バスト", els.ninjutsuButton.title || els.ninjutsuButton.textContent || "忍殺");
   els.tabletNinjutsuShortcut.disabled = els.ninjutsuButton.disabled || els.ninjutsuButton.hidden;
   els.tabletNinjutsuShortcut.hidden = els.ninjutsuButton.hidden;
   setTabletShortcutLabel(els.tabletContextShortcut, els.contextActionButton.textContent || "周辺アクション", els.contextActionButton.title || "周辺アクション");
@@ -10945,13 +10945,13 @@ function renderTabletControls(data) {
   const shopExpandedValue = String(state.vendingOpen);
   if (els.tabletVendingShortcut.getAttribute("aria-expanded") !== shopExpandedValue)
     els.tabletVendingShortcut.setAttribute("aria-expanded", shopExpandedValue);
-  const dodgeShortcutLabel = els.dodgeButton.textContent === "長押しバリア" ? "長押しバリア" : "回避";
-  setTabletShortcutLabel(els.tabletDodgeShortcut, dodgeShortcutLabel, els.dodgeButton.title || dodgeShortcutLabel);
+  setTabletShortcutLabel(els.tabletDodgeShortcut, "回避 / バリア", els.dodgeButton.title || "回避 / バリア");
   // 回避は共通ショートカットの固定枠。権限外は実行不可として残し、
   // native action button の役割別非表示を tablet の枠へ伝播させない。
   els.tabletDodgeShortcut.disabled = els.dodgeButton.disabled || els.dodgeButton.hidden;
   els.tabletDodgeShortcut.hidden = false;
-  setTabletShortcutLabel(els.tabletRenkiShortcut, els.renkiButton.textContent || "練気", els.renkiButton.title || "練気");
+  const renkiShortcutLabel = tabletRenkiBehaviorLabel(renkiPrediction === undefined ? renkiForecastPresentation(data, estimatedServerNow(data)) : renkiPrediction);
+  setTabletShortcutLabel(els.tabletRenkiShortcut, renkiShortcutLabel, els.renkiButton.title || renkiShortcutLabel);
   els.tabletRenkiShortcut.disabled = els.renkiButton.disabled;
   const donationCost = DVA_ECONOMY.creditIncome.donationCost;
   setTabletShortcutLabel(els.tabletDonateShortcut, "募金", `${donationCost}Cを募金`);
@@ -19069,6 +19069,14 @@ function renkiForecastSeconds(ms) {
   return (Math.max(.1, ms / 1000)).toFixed(1).replace(/\.0$/, "");
 }
 
+function tabletRenkiBehaviorLabel(prediction) {
+  const seconds = ms => Number.isFinite(ms) && ms > 0 ? ` 約${Math.ceil(ms / 1000)}秒` : "";
+  if (prediction?.desire) return `欲望回復${seconds(prediction.remaining || prediction.tap)}`;
+  const tap = `練気${seconds(prediction?.tap)}`;
+  const hold = `精神統一${seconds(prediction?.hold)}`;
+  return `${tap} / ${hold}`;
+}
+
 function renkiForecastLabel(prediction) {
   if (!prediction) return "練気";
   return prediction.remaining > 0
@@ -19410,7 +19418,7 @@ function updateActionButtons(data) {
   }
   els.chatInput.disabled = !(data.phase === "meeting" && self.alive && !self.ejected && !self.chatMuted);
   syncMovementAccControl(data);
-  renderTabletControls(data);
+  renderTabletControls(data, renkiPrediction);
   cancelCommonActionGestures({ onlyUnavailable: true });
 }
 
