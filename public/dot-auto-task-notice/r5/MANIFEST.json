@@ -1,0 +1,71 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-auto-task-notice-r5",
+  "group": "dot-auto-task-notice",
+  "title": "ゲーム内の自動タスク完了",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-auto-task-notice-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "action-task",
+    "variant": "hacker-auto",
+    "modes": [
+      "download",
+      "upload"
+    ],
+    "radius": 105,
+    "eventDurationMs": 0,
+    "visualDurationMs": 1040,
+    "previewDisplayPolicy": "gallery actor match only; live raw-event delivery not asserted",
+    "mainBlob": "9238ff809f7b9e6870f6a23a464f943c7b48e04b",
+    "workerBlob": "0ac42b1de55481819dccf0cf9deaf9763fef796c"
+  },
+  "designSource": {
+    "windowsMaintainerSha256": "7dab1fd8ae1030b7fe36e94efb28f75b61340dae856de58673f39f4aa689275d",
+    "eDesignQualitySha256": "394986c4445e8cec273c20372f6460585eaf6b3d286d8f1da5683a569e6189a7",
+    "bBaseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "bExtensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2351,
+      "sha256": "162a01a674ba0a6942f0c321215e01842df62b645d04bfbe74e8c4bff271cdc2"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16790,
+      "sha256": "ca27233fb8c5e5f29cd554f9467d3b74f5b6de5b726fbeecc4c7db524c2a2e7c"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1022,
+      "sha256": "354eedbb5f49c0ee9b5b9b420be32b7cf9549ae9bba3bfb48539ebf79873e6b1"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6349,
+      "sha256": "a3db96a67119cad3a7455801f5cce6cdccf3afb30ab51db7bdbf81e99e386a19"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2673,
+      "sha256": "94723f976191b7cd0c44ac554afa4bdf832fc994aa059d7c908ae8c6353a7de0"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1598,
+      "sha256": "c92bc6129f9ba68786e9d80c916ff3be68b296af8598cd5985d8631829c62043"
+    }
+  ]
+}

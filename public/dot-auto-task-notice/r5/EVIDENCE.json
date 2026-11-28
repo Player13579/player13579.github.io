@@ -1,0 +1,252 @@
+{
+  "schema": "dva-dot-e-evidence/v1",
+  "versionId": "dot-auto-task-notice-r5",
+  "sourceManifestSha256": "b4286a853cb087bbc1ac35c03e3af6aff35adc33aef4b4d9708ddfe1028df00d",
+  "status": "pass-limited-local-webgpu",
+  "cpu": {
+    "negativeCases": 13,
+    "finiteMeshes": 2082,
+    "boundedPhases": 2084,
+    "audioRates": 6,
+    "projectionInvarianceCases": 8
+  },
+  "softwareWebGpu": {
+    "r5Captures": 72,
+    "matchedOldVersionDifferent": 24,
+    "conditions": [
+      {
+        "name": "r5",
+        "width": 844,
+        "height": 390,
+        "bg": "dark",
+        "motion": "no-preference",
+        "frames": 9
+      },
+      {
+        "name": "r5",
+        "width": 844,
+        "height": 390,
+        "bg": "bright",
+        "motion": "no-preference",
+        "frames": 9
+      },
+      {
+        "name": "r5",
+        "width": 844,
+        "height": 390,
+        "bg": "dark",
+        "motion": "reduce",
+        "frames": 9
+      },
+      {
+        "name": "r5",
+        "width": 844,
+        "height": 390,
+        "bg": "bright",
+        "motion": "reduce",
+        "frames": 9
+      },
+      {
+        "name": "r5",
+        "width": 390,
+        "height": 844,
+        "bg": "dark",
+        "motion": "no-preference",
+        "frames": 9
+      },
+      {
+        "name": "r5",
+        "width": 390,
+        "height": 844,
+        "bg": "bright",
+        "motion": "no-preference",
+        "frames": 9
+      },
+      {
+        "name": "r5",
+        "width": 390,
+        "height": 844,
+        "bg": "dark",
+        "motion": "reduce",
+        "frames": 9
+      },
+      {
+        "name": "r5",
+        "width": 390,
+        "height": 844,
+        "bg": "bright",
+        "motion": "reduce",
+        "frames": 9
+      }
+    ],
+    "hCss": 64,
+    "dpr": 2,
+    "naturalExpiration": true,
+    "allEightTerminalPngsMatchInitial": true,
+    "verifiedMute": true
+  },
+  "audioMechanical": {
+    "normal": {
+      "enabled": true,
+      "starts": 2,
+      "live": 0,
+      "state": "running",
+      "verifiedMute": false,
+      "error": null,
+      "lastCause": "magic_dot_auto_task_4"
+    },
+    "muted": {
+      "enabled": false,
+      "starts": 2,
+      "live": 0,
+      "state": "running",
+      "verifiedMute": false,
+      "error": null,
+      "lastCause": "magic_dot_auto_task_4"
+    },
+    "verify": {
+      "attempt": {
+        "ok": false,
+        "enabled": false,
+        "status": "verify-muted",
+        "reason": "verify-muted",
+        "audioEnabled": false
+      },
+      "audio": {
+        "enabled": false,
+        "starts": 0,
+        "live": 0,
+        "state": "closed",
+        "verifiedMute": true,
+        "error": null,
+        "lastCause": null
+      }
+    }
+  },
+  "normalAudioListening": "not_run",
+  "nativeStatus": "not_run",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "qualityAccepted": false,
+  "hostGates": {
+    "negative": 4,
+    "first": true,
+    "duplicate": true
+  },
+  "parentGalleryReplay": {
+    "runtime": "Chromium / SwiftShader",
+    "candidateOnly": true,
+    "fixedInput": {
+      "input": "59a041309596bcc32c59f527af922cd231b46839",
+      "output": "3f5fe3b519f4202a7739cad1127339fc69dafab3",
+      "htmlIn": "d93b20384603e071cf04cc670e6f69907c5d08ed",
+      "htmlOut": "daed3089bb26906c3166e5af7c2aefad131b6bdb",
+      "inverseByteExact": true
+    },
+    "replay": {
+      "readings": [
+        {
+          "version": "dot-auto-task-notice-r5",
+          "frames": 4
+        },
+        {
+          "version": "dot-auto-task-notice-r1",
+          "frames": 4
+        },
+        {
+          "version": "dot-auto-task-notice-r2",
+          "frames": 4
+        },
+        {
+          "version": "dot-auto-task-notice-r3",
+          "frames": 4
+        },
+        {
+          "version": "dot-auto-task-notice-r4",
+          "frames": 4
+        },
+        {
+          "version": "dot-auto-task-notice-r5",
+          "frames": 3
+        }
+      ],
+      "endpoints": [
+        {
+          "n": 1,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 1,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 2,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 2,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 3,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 3,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 4,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 4,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 5,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 5,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        }
+      ],
+      "naturalEnd": true,
+      "errors": [],
+      "misses": [],
+      "pinnedDependencies": 20
+    },
+    "sorting": {
+      "fixedSlots": 91,
+      "movableRelativePreserved": 31,
+      "oldSlot": 7,
+      "newSlot": 0,
+      "firstMove": 0,
+      "adoptedIds": 40,
+      "maps": 2,
+      "unchangedOtherGroups": true,
+      "misses": []
+    }
+  }
+}
