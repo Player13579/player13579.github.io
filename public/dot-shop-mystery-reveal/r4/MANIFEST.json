@@ -1,0 +1,72 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-shop-mystery-reveal-r4",
+  "group": "dot-shop-mystery-reveal",
+  "title": "ショップ・ミステリー結果通知",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "parentEdition": "dot-shop-mystery-reveal-r3",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "mystery-reveal",
+    "variant": "",
+    "eventDurationMs": 0,
+    "visualDurationMs": 1040,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2339,
+      "sha256": "c38512d67d1ecd9f27afa38117ddba5fa07657c04430f7fecc1e1625070e88c7"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16796,
+      "sha256": "2e694dfae350400e92ed8686d6d0a3598e3b582d3b6fa7303c7eec78be1ef3f5"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 992,
+      "sha256": "a4f1c444eb1ed24d35f2c392cef0549317c9482e18faab98e42f4811a8273dd7"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6542,
+      "sha256": "18e4ebc051a6f8097f820658347fcded39251bc8ccfabbf33ad51ec72f8c55fc"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2496,
+      "sha256": "08e8e93761ad3794a0584426b1a0bbb58645b0be2f2ea8f32a2046c489043b6c"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1157,
+      "sha256": "d7797cedaa81ab2f4661664f1f356103b4308b0322f8566f0a1a949a459d3acc"
+    }
+  ]
+}
