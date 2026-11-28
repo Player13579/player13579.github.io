@@ -1,0 +1,76 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-gbo-magazine-commit-r3",
+  "group": "dot-gbo-magazine-commit",
+  "title": "GBO・1弾倉射撃開始",
+  "authorDisplayName": "dot",
+  "edition": 3,
+  "editionCap": 5,
+  "parentEdition": "dot-gbo-magazine-commit-r2",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "gbo-overdrive",
+    "sources": [
+      "magazine-commit:weapon:handgun",
+      "magazine-commit:weapon:smg",
+      "magazine-commit:weapon:assault",
+      "magazine-commit:weapon:sniper"
+    ],
+    "durationMs": 1450,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2327,
+      "sha256": "9915e75469c2c6e330bb1d8f1feb5f200462892751ec53775aa5fad4ad6a5dc2"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16773,
+      "sha256": "a120a75fa19e0f90acf5ec4b1e54e88bc4d10d4b5d52bbf3aee1e2f90e099ac8"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1090,
+      "sha256": "a06b9b6a1e60baeea57da9ba3d3a75d1387b693bcc1206e64adfec3ac3be3485"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 7063,
+      "sha256": "ff18c2da18b8c79765f4fc86e2fb31853d2726aa24020f10deb7d23e105066d8"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2002,
+      "sha256": "da91722b2ed1296dfce96b5343d5c5ca4e2bcf8ebc692fc91249d2378ba737f1"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1149,
+      "sha256": "efad72080097e85ba430f1b97f0b8143bb9ffed5de494a7732e8807ba35d479d"
+    }
+  ]
+}
