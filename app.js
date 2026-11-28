@@ -16923,14 +16923,14 @@ function ensureTeleportTargetForMode(data) {
   if (otherTarget) els.teleportTargetSelect.value = otherTarget.value;
 }
 
-// The match end only becomes scheduled at the first eligible arrival.
-// Before that, show the viewer's personal progress as an estimate, not a
-// deadline for another player or a promise about the outcome of the match.
+// Use only match-wide data for this HUD timer, never personal progress.
 function ideaVictoryClockState(data, liveNow) {
   const phase = data?.phase;
   if (phase !== "playing" && phase !== "meeting") return null;
   const sample = Number(data.serverNow);
-  if (!Number.isFinite(sample) || sample <= 0) return null;
+  const unverified = { mode: "waiting", text: "イデア残り時間 未確認",
+    title: "対戦全体の残り時間をまだ確認できません。" };
+  if (!Number.isFinite(sample) || sample <= 0) return unverified;
   const deadline = Number(data.pendingIdeaVictoryAt);
   const paused = phase === "meeting";
   const now = paused || !Number.isFinite(liveNow) ? sample : Math.max(sample, liveNow);
@@ -16940,33 +16940,19 @@ function ideaVictoryClockState(data, liveNow) {
   }
   if (Number.isFinite(deadline) && deadline > 0) {
     if (now >= deadline && !paused) {
-      return { mode: "pending", text: "イデア決着 確認中", title: "到達者の勝利判定を対戦側で確認中です。" };
+      return { mode: "pending", text: "イデア決着 確認中", title: "イデアによる終了を対戦側で確認中です。" };
     }
     return paused
       ? { mode: "paused", text: `イデア終了 ${clock(deadline - now)} 停止中`, title: "会議中はイデア決着までの残り時間が止まります。" }
       : { mode: "pending", text: `イデア終了まで ${clock(deadline - now)}`, title: "成立したイデア勝利によって対戦が終わるまでの残り時間です。" };
   }
-  const self = data.self;
-  if (!self || self.alive !== true || self.ejected || self.desireIdeaForfeited || self.ideaBlockedByDesire) return null;
-  const threshold = Number(self.ideaThresholdsMs?.ascension);
-  const progress = Number(self.ideaProgressMs);
-  const rate = Number(self.ideaProgressRate);
-  if (!(threshold > 0) || !Number.isFinite(threshold) ||
-      !(rate > 0) || !Number.isFinite(rate) || !Number.isFinite(progress) || progress < 0) return null;
-  const rational = self.mentalState === "理知";
-  if (!rational) {
-    return { mode: "waiting", text: `理知を維持すると 約${clock(threshold / rate)}`,
-      title: "今から理知を維持した場合の善のイデア到達までの目安です。現在は進行していません。" };
-  }
-  const updatedAt = Number(self.ideaProgressUpdatedAt);
-  // The canonical progress remains frozen during meetings. Only interpolate
-  // from a valid timestamp since the last authoritative update in play.
-  const sinceUpdate = !paused && updatedAt > 0 && updatedAt <= sample ? now - updatedAt : 0;
-  const remaining = Math.max(0, (threshold - progress) / rate - sinceUpdate);
+  const estimate = data.ideaEarliestFinishAt;
+  if (!Number.isFinite(estimate) || estimate <= now) return unverified;
   return paused
-    ? { mode: "paused", text: `自分のイデアまで 約${clock(remaining)} 停止中`, title: "会議中は進行が止まります。" }
-    : { mode: "waiting", text: `自分のイデアまで 約${clock(remaining)}`,
-      title: "今の進行率で理知を維持した場合の目安です。試合全体の終了時刻ではありません。" };
+    ? { mode: "paused", text: `イデア残り時間 約${clock(estimate - now)} 停止中`,
+      title: "対戦全体の見込みです。会議中は進行が止まります。" }
+    : { mode: "waiting", text: `イデア残り時間 約${clock(estimate - now)}`,
+      title: "現在の進行状況から対戦側が計算した、最短の終了見込みです。" };
 }
 
 function renderIdeaVictoryClock(data) {
