@@ -1,0 +1,71 @@
+{
+  "schema": "dva-bottle-shards-quality-review/v1",
+  "versionId": "bottle-shards-cleanroom-sol61-r8",
+  "manifestSha256": "8711f4cc1e60de77129ccad27fd77a3057a2d9e4c8a9fd7e1e58e679aa8516e7",
+  "sealSha256": "6f51a2ee3c1cbf98d0883c5de0659630fba420858c29a9da1ccafc4911f4f486",
+  "sourceManifestSha256": "e74d5c354415e8dc0de1d2a3c03355d63a4672b42a8ebad69fa4cbd8fbb938a2",
+  "effectSha256": "132ff08703b8c5b7d7a065371e486bd93916e72d2c4a08c4e019aafa84677cf6",
+  "creatorResponseId": "resp_000472c3f542473e006b0a19c637dc87d0ac6478137d5e2184",
+  "creatorModelId": "gpt-6.1-sol",
+  "qualityStatus": "not-accepted",
+  "qualityReviewStatus": "needs-improvement",
+  "qualityAccepted": false,
+  "wholeEffectQualityAccepted": false,
+  "outcome": "scoped-held-face-coverage-change-observed-glass-material-readability-insufficient",
+  "scope": {
+    "visual": [
+      "held-0 retains the fracture flash",
+      "held-200/500 show five dark shard faces and angled shapes",
+      "held-1000 shows a small grey face along the floor",
+      "Some sampled holds appear more continuous than R7 dotted outlines, but glass thickness, transparency, refraction and contact timing remain difficult to read at actual size",
+      "held-1600 is in the fade region; its dimness alone is not a defect"
+    ],
+    "technical": [
+      "firstFrame completed",
+      "24-second run with 240 sampled records across eight variants and five phase receipt types",
+      "five held captures completed/queue observed",
+      "errors array empty"
+    ],
+    "viewport": "H64, 980x620, DPR1",
+    "run": "Exact-pin candidate verify harness",
+    "route": "/public/sol61-bottle-shards/cleanroom-r8/index.html?verify=1&height=64"
+  },
+  "limitations": [
+    "R7 comparison uses nominal hold ages but captures are not proven to correspond to the same GPU receipt frame; no quantified material improvement is claimed.",
+    "Only mineral-water holds were visually reviewed; other variants and complete visual lifetime remain unverified.",
+    "A separate-run completion-count observation is not a same-run GPU load benchmark.",
+    "Normal audio listening, formal public-parent replay and main-game integration remain unverified."
+  ],
+  "evidence": [
+    {
+      "path": "events.json",
+      "bytes": 409979,
+      "sha256": "4db642bd73cea8ef65b22843bf1d38fae11949641ca30579f139d488b0e5e97f"
+    },
+    {
+      "path": "hold-0.png",
+      "bytes": 12966,
+      "sha256": "ba7a0e9f5abc3d07deca1cef502f19b73825ec97700dbaf395680ad129d40a66"
+    },
+    {
+      "path": "hold-200.png",
+      "bytes": 12474,
+      "sha256": "03b9c3d71fee2a10a5048200f31fcafb4f909b01e682fddf3727dc91cd23c44f"
+    },
+    {
+      "path": "hold-500.png",
+      "bytes": 12890,
+      "sha256": "e30dcc07d55dbf0e7ed1458046b2c4d48a82bc6e826c5d371661ea544ba72139"
+    },
+    {
+      "path": "hold-1000.png",
+      "bytes": 12856,
+      "sha256": "3d102e085b375b0f4ae9187b9d847e692771bb04a30ec1c7924750d2ab41a463"
+    },
+    {
+      "path": "hold-1600.png",
+      "bytes": 12175,
+      "sha256": "0ae67e2b9073a199f6b19440c7911e514bd836c53da9cea01b56439d376f4b75"
+    }
+  ]
+}
