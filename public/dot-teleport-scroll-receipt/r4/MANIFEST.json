@@ -1,0 +1,74 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-teleport-scroll-receipt-r4",
+  "group": "dot-teleport-scroll-receipt",
+  "title": "テレポートマップスクロール獲得",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "parentEdition": "dot-teleport-scroll-receipt-r3",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "teleport-map-scroll-acquired",
+    "sources": [
+      "vending",
+      "mystery-box"
+    ],
+    "previewDisplayPolicy": "recipient-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639",
+    "wireVisibility": "shared room; identifies playerId (not recipient-only)"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2390,
+      "sha256": "9590670dec1af19d0ecb0c914aed2919ee99dca834d30e21c3053e88e07b1a61"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16783,
+      "sha256": "f18e2781a52c363e86b2b2af168d840028c535ce36ba0a79c2a073c44edae7f8"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1701,
+      "sha256": "749801546494fcf551501ebc94bdf78d3ce0f0a72b5b05345141cd75fa6c5e7c"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 7068,
+      "sha256": "4c1d28da1e7469a7dfb1018ed2c203911a078a5c63e366d11d6eb29ee319b05c"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2080,
+      "sha256": "8925b76fc67a8a01a468c97add0aea15103f3230a50c85a8e762bf826840a6a9"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1006,
+      "sha256": "95aef487a38cdd9ec74a476b93036822411c779a814d9de1f23c89e3ed5b9d04"
+    }
+  ]
+}
