@@ -17,7 +17,7 @@
   "qualityReviewEffort": "high",
   "qualityReviewEvidence": "/public/astra-duo/ice-r2/quality-review.json",
   "visualReviewStatus": "pass",
-  "technicalReplayStatus": "pending-native-startup-contract-r1",
+  "technicalReplayStatus": "pending-native-startup-contract-r2",
   "normalAudioListening": "not_run",
   "sfxListeningStatus": "not_run",
   "safariReplayStatus": "unverified",
@@ -27,13 +27,13 @@
   "files": [
     {
       "route": "/public/astra-duo/ice-r2/index.html",
-      "sha256": "f17d0068ecf2aac05292c88ae4dcb4a745fa812fb912e2ca315774257ff92d35",
+      "sha256": "b78cf14bcb3d063c4160995076a6c2c8efa794afe4274d8271fd16a86b0b1743",
       "bytes": 632
     },
     {
       "route": "/public/astra-duo/ice-r2/gallery-adapter.mjs",
-      "sha256": "85a5ed1d61b763fd9a8ab483a43aeb9313fe360f7ba510799d41ccfabca6052e",
-      "bytes": 9631
+      "sha256": "7973e7fc42e4d93c9e33806146d27ce3aee59122fb7eef127c4c0bcf1db489eb",
+      "bytes": 10895
     },
     {
       "route": "/public/astra-duo/ice-r2/effect.mjs",
@@ -47,7 +47,7 @@
     }
   ],
   "preservesPriorVersions": [],
-  "technicalRevisionId": "ice-r2-startup-contract-r1",
+  "technicalRevisionId": "ice-r2-startup-contract-r2",
   "historicalPublicationStatus": "published",
   "historicalNativeEvidenceRunId": "2026-11-18T21-49-42-803Z-12fe6c93-2d61-4dcc-988e-08501419cf42",
   "originalPublicAdapterGitBlob": "fb851131debe39dd8eb6700e3d53940fa342b04c",
@@ -67,11 +67,25 @@
     "nativeGpu": "not_run",
     "currentPublicParentReplay": "not_run",
     "normalAudioListening": "not_run",
-    "retirement": "original source preserved; not accepted by this startup-only test"
+    "retirement": "CPU child boot cancellation and parent receipt contract pass; native GPU retirement not_run",
+    "childStartupCancellationCpu": "pass"
   },
   "technicalImplementationModels": [
     "GPT-6-Luna",
     "GPT-6.1-Sol"
   ],
-  "technicalChangeBoundary": "Only Ice R2 adapter startup/error/proof and index cache query; shader template, original dispose/onMessage, effect.mjs, quality-review.json and unrelated public versions preserved."
+  "technicalChangeBoundary": "Only Ice R2 child startup cancellation/retirement lifecycle, truthful lifecycle receipt, R2 parent receipt pin/validator, and index cache query; creative effect.mjs and quality-review.json remain byte-exact; unrelated versions untouched.",
+  "technicalRevisionCandidateStatus": "candidate-not-published",
+  "technicalApiAttribution": {
+    "responseId": "resp_02eb1b349d4556a3006b0a7598f32487d0b90861d951f61b77",
+    "model": "gpt-6.1-sol",
+    "responseOutputSha256": "9b33678755f941dc4bc1c8dde597cb9adbca060056ce44ec205061fa7317d9d1",
+    "scope": "R2 child boot cancellation/retirement technical design; implementation and tests are candidate work, not publication evidence"
+  },
+  "technicalApiFollowup": {
+    "responseId": "resp_0e592fc9700f4eea006b0a7aa5b40087d0bcd13863a59c03b1",
+    "model": "gpt-6.1-sol",
+    "responseOutputSha256": "80aa08a3b49af7be2f2bdaeb7264d693a7719cc6fc5ba2908e5798c5b592f00b",
+    "scope": "R2-only parent recovery: during the active retirement call, retry the same authenticated retire command at most once after pinned startup progress; terminal receipt validator and deadline unchanged"
+  }
 }
