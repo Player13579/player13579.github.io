@@ -21137,8 +21137,8 @@ function pumpWebGPUMainAppDriver() {
   const mapId = data.map.id;
   const responsiveMain = responsiveMainCanvasEnabled();
   const [logicalWidth, logicalHeight] = mainCanvasLogicalSize(rect, responsiveMain);
-  const zoom = worldZoomFor(data);
-  const camera = { ...cameraFor(data, logicalWidth, logicalHeight, zoom), zoom };
+  const zoom = worldZoomFor(data, rect, responsiveMain);
+  const camera = { ...cameraFor(data, logicalWidth, logicalHeight, zoom, responsiveMain), zoom };
   markWebGPUStartupStage('driverDrawEntry');
   clearWebGPUMainUnstableLayoutRetry();
   recordWebGPUFirstRetryEvent('draw-request');
@@ -21476,7 +21476,9 @@ function drawLoop(timestamp = 0, engineDelta = 0) {
 function prepareMainFrameBookkeeping() {
   const data = state.data;
   reconcileMainFrameUiState(data);
-  const [w, h] = mainCanvasLogicalSize();
+  const responsiveMain = responsiveMainCanvasEnabled();
+  const rect = responsiveMain ? els.webgpuMainCanvas?.getBoundingClientRect() : null;
+  const [w, h] = mainCanvasLogicalSize(rect, responsiveMain);
   prepareMarkerExplanationFrame(performance.now());
   state.markerHitTargets.length = 0;
   state.acquisitionCreditRect = null;
@@ -21489,8 +21491,8 @@ function prepareMainFrameBookkeeping() {
   }
   ensureRenderPlayersAdvanced(data);
   prepareMagicEffectsForMainFrame(data, state.frameNow || performance.now());
-  const worldZoom = worldZoomFor(data);
-  const camera = cameraFor(data, w, h, worldZoom);
+  const worldZoom = worldZoomFor(data, rect, responsiveMain);
+  const camera = cameraFor(data, w, h, worldZoom, responsiveMain);
   const viewW = w / worldZoom;
   const viewH = h / worldZoom;
   state.drawViewport = {
@@ -21569,10 +21571,21 @@ function clearPreparationRosterEntries() {
 
 // PREPARATION_ROSTER_V726_END
 
-function worldZoomFor(data = state.data) {
+function useResponsivePlayerFraming(data, responsiveMain) {
+  return responsiveMain && data?.phase === "playing" && Boolean(data.selfId) &&
+    !state.throwTargeting.active && !state.clairvoyance.active && !activeKillCameraRecord(data);
+}
+
+function worldZoomFor(data = state.data, rect, responsiveMain = false) {
   if (!data) return CAMERA_ZOOM;
   if (throwTargetClairvoyanceActive(data) || state.clairvoyance.active) return CLAIRVOYANCE_ZOOM;
-  return CAMERA_ZOOM;
+  if (!useResponsivePlayerFraming(data, responsiveMain)) return CAMERA_ZOOM;
+  const shortSide = Math.min(rect?.width, rect?.height);
+  if (!Number.isFinite(shortSide) || shortSide <= 400) return CAMERA_ZOOM;
+  // Keep the sprite legible on short/mobile screens. Reveal additional field
+  // gradually on larger canvases, with at most 10% more span on either axis.
+  const room = clamp((shortSide - 400) / 550, 0, 1);
+  return CAMERA_ZOOM - 0.15 * room;
 }
 
 function throwTargetClairvoyanceActive(data = state.data) {
@@ -21612,7 +21625,7 @@ function modeBannerWebGPUScene(data) {
   };
 }
 
-function cameraFor(data, w, h, zoom = 1) {
+function cameraFor(data, w, h, zoom = 1, responsiveMain = false) {
   const self = selfPlayer();
   const killCamera = activeKillCameraRecord(data);
   const killCameraTarget = killCamera
@@ -21633,17 +21646,25 @@ function cameraFor(data, w, h, zoom = 1) {
   const target = killCameraTarget || throwTarget || clairvoyanceTarget || (self ? renderedPlayer(self) : { x: data.map.width / 2, y: data.map.height / 2 });
   const viewW = w / zoom;
   const viewH = h / zoom;
+  const responsiveFraming = self && useResponsivePlayerFraming(data, responsiveMain);
   const desiredX = clamp(target.x - viewW / 2, 0, Math.max(0, data.map.width - viewW));
-  const desiredY = clamp(target.y - viewH / 2, 0, Math.max(0, data.map.height - viewH));
+  const desiredY = clamp(target.y - viewH * (responsiveFraming ? 0.52 : 0.5),
+    0, Math.max(0, data.map.height - viewH));
   const mode = killCameraTarget
     ? `kill-camera:${killCamera.id}:${zoom}`
     : throwTarget
     ? `throw-target:${throwTargetClairvoyanceActive(data) ? "clairvoyance" : "follow"}:${zoom}`
     : clairvoyanceTarget
       ? `clairvoyance-${clairvoyanceFollowPlayer ? `follow:${clairvoyanceFollowPlayer.id}` : "self"}:${zoom}`
-      : `player:${data.selfId}:${zoom}`;
+      : `player:${data.selfId}:${responsiveFraming ? "responsive" : zoom}`;
   const camera = state.camera;
-  if (!camera.initialized || camera.mode !== mode) {
+  const framingSizeChanged = responsiveFraming && (camera.framingWidth !== w || camera.framingHeight !== h || camera.framingZoom !== zoom);
+  if (responsiveFraming) {
+    camera.framingWidth = w;
+    camera.framingHeight = h;
+    camera.framingZoom = zoom;
+  }
+  if (!camera.initialized || camera.mode !== mode || framingSizeChanged) {
     camera.x = desiredX;
     camera.y = desiredY;
     camera.vx = 0;
@@ -22341,10 +22362,12 @@ function currentWebGPUFacilityMaterialFailure(failure) {
     : state.textures?.taskUploadDigital;
   if (asset !== failure.material || criticalFacilityImageLoads.get(asset)?.status !== "failed" ||
       asset?.complete && asset.naturalWidth === 512 && asset.naturalHeight === 512) return false;
-  const [width, height] = mainCanvasLogicalSize();
+  const responsiveMain = responsiveMainCanvasEnabled();
+  const rect = responsiveMain ? els.webgpuMainCanvas?.getBoundingClientRect() : null;
+  const [width, height] = mainCanvasLogicalSize(rect, responsiveMain);
   const viewport = { width, height };
-  const zoom = worldZoomFor(data);
-  const camera = cameraFor(data, width, height, zoom);
+  const zoom = worldZoomFor(data, rect, responsiveMain);
+  const camera = cameraFor(data, width, height, zoom, responsiveMain);
   if (failure.effectId === null) {
     const stations = Array.isArray(data.map.stations) ? data.map.stations : [];
     return webGPUFacilityStationNeedsMaterial(stations, failure.kind, camera, zoom, viewport);
@@ -22367,7 +22390,7 @@ function captureWebGPUMainAppEarlyScene(data = state.data, viewport, ownedMyster
       !Number.isInteger(viewport.pixelHeight) || viewport.pixelHeight < 1) {
     throw new TypeError("Early main WebGPU scene needs live map data and a committed logical main viewport");
   }
-  const zoom = worldZoomFor(data);
+  const zoom = worldZoomFor(data, viewport.rect, viewport.responsiveMain === true);
   const matrix = viewport.worldToLogical;
   // Use the exact camera committed with the projection. Dividing the GPU
   // translation by zoom can round to different coordinates (even at rest).
