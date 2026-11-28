@@ -1,0 +1,75 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-antidote-landing-r5",
+  "group": "dot-antidote-landing",
+  "title": "投げた解毒剤の着地",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-antidote-landing-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "hazard-antidote",
+    "sources": [
+      "throw-landing"
+    ],
+    "sizes": [
+      120,
+      150
+    ],
+    "previewDisplayPolicy": "public-landing-only",
+    "mainBlob": "9238ff809f7b9e6870f6a23a464f943c7b48e04b",
+    "workerBlob": "0ac42b1de55481819dccf0cf9deaf9763fef796c",
+    "fixtureLifetimeMs": 610,
+    "sfxMs": 395
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2351,
+      "sha256": "3b6e99cfecae02f81a410fab4b403cdd5cdd1eb0c341e6fc9eb036759e7402d5",
+      "gitBlob": "30f090b6ce1403389c2b822b2c8d84c9774a64f4"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16878,
+      "sha256": "836e8d4a94be3be6adfd91e37146786f18e035bd7f9d6a70f31e7ea76f4d08f2",
+      "gitBlob": "9fec5c029167ae34fb7bc594fc8dbede270e7297"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1408,
+      "sha256": "5ab97f049c136e4ac03efad89ae2857e5cca465e933a8f0b2db7abdc6993d360",
+      "gitBlob": "c9b1d4eb91f133381be7ae452bf728190ea86e24"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 4840,
+      "sha256": "3125c17fc58a872936322081972bcdfefa8db3f0526613cf3466627d42889591",
+      "gitBlob": "3dbdf22dfd0176d56b8e45eb4a6383a4926fde3f"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11212,
+      "sha256": "4f078f39a9a4a313589ab99d287c717bd9c2b3a728999fe546a0363de9732fb8",
+      "gitBlob": "9b522cf27cab79ad1b5c9c5af3f7348bacb640ba"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 4007,
+      "sha256": "9f394a53a2deadf34a0160f408f3c904c2df8dfef19834cb7791a7cd869a7a63",
+      "gitBlob": "3965f56285788243847832c2bdef900c2e174051"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1941,
+      "sha256": "149906606f6d0651f2c96c98c4d7491eef035321348d6ccaaf7bade95fc6f2e4",
+      "gitBlob": "9103564990c2fb8d4be2a98746df437a9dcee614"
+    }
+  ],
+  "design": "一点へ戻る接地光",
+  "designAuthorityNote": "DVA and DQ/LDM verified; fixed references recorded in EVIDENCE and START."
+}
