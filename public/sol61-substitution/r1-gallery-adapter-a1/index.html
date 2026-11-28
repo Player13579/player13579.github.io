@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja" data-autoboot="false">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Substitution</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101827;color:#eef5ff}
+*{box-sizing:border-box}body{margin:0;padding:16px;max-width:920px;margin-inline:auto}
+header,section,.panel{background:#18253a;border:1px solid #30415c;border-radius:12px;padding:12px;margin-bottom:12px}
+canvas{display:block;width:100%;height:auto;aspect-ratio:800/440;background:#0c1422;border-radius:8px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-block:8px}
+button,select,label{font:inherit}button,select{color:inherit;background:#263a56;border:1px solid #49617f;border-radius:7px;padding:7px 11px}
+label{display:inline-flex;gap:6px;align-items:center}#status{min-height:1.5em}#diagnostics{white-space:pre-wrap;overflow-wrap:anywhere;font:12px ui-monospace,monospace}
+</style></head>
+<body>
+<header><strong>Substitution</strong><div id="status" role="status">初期化中</div><div id="audio-status" role="status"></div></header>
+<canvas width="800" height="440" aria-label="substitution preview"></canvas>
+<section aria-label="再生操作">
+<div class="row"><button id="play">Play</button><button id="hold">Hold</button><button id="resume">Resume</button><button id="stop">Stop</button>
+<button id="diagnostic">診断年齢を表示</button><label>診断年齢 <input id="diagnostic-age" type="range" min="0" max="1200" step="1" value="0"><output for="diagnostic-age">0 ms</output></label></div>
+<div class="row"><label>種類<select id="kind"><option value="grant">付与</option><option value="trigger">発動</option></select></label>
+<label>表示条件<select id="fixture"><option>grant-self</option><option>grant-target</option><option>grant-hidden-recipient</option><option>trigger-both</option><option>trigger-origin-only</option><option>trigger-destination-only</option><option>all-hidden</option></select></label>
+<label>拡大<select id="zoom"><option value="1" selected>1×</option><option value="0.75">0.75×</option><option value="1.25">1.25×</option></select></label><label><input id="main-on" type="checkbox" checked>Main</label><label><input id="observer" type="checkbox" checked>OBS</label><label><input id="sparkle" type="checkbox" checked>粒子</label>
+<label><input id="reduced-motion" type="checkbox">動きを抑える</label><label><input id="audio" type="checkbox">音声</label><button id="unlock-audio">音声を有効化</button></div>
+<p>基準: 800 × 440 px、CSS高さ64 px、倍率1。表示する座標は許可済みfixtureのみ。</p>
+</section>
+<details class="panel"><summary>診断情報</summary><pre id="diagnostics"></pre></details>
+<script>document.querySelector("#diagnostic-age").addEventListener("input",e=>document.querySelector("output[for=diagnostic-age]").value=e.target.value+" ms")</script>
+<script type="module" src="./gallery-adapter.mjs"></script>
+</body></html>

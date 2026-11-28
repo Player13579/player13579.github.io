@@ -1,0 +1,50 @@
+{
+  "schema": "dva-gallery-package/v1",
+  "groupId": "assassin-substitution-sol61",
+  "versionId": "substitution-sol61-r1",
+  "entry": "index.html",
+  "route": "/public/sol61-substitution/r1-gallery-adapter-a1/index.html",
+  "creativeAuthor": "GPT-6.1-Sol",
+  "technicalAuthor": "GPT-6-Luna",
+  "adoption": "unknown",
+  "qualityStatus": "not-reviewed",
+  "technicalReplayStatus": "pending-parent-integration-review",
+  "files": {
+    "audio-host.mjs": "9cd7bdc99baa7dd67d2789847adebf92b321b59ae08f2672829a669a903b71e8",
+    "creative/DESIGN.json": "9d532eeb088a0b8e160e231b2d61540919156858f583ad0f762d7ac98215fdc9",
+    "creative/contract.mjs": "a65fedfef63e646d95dba28c24413a0ce327a764712b4ad39d371686c64da298",
+    "creative/effect.wgsl": "6883a31987d95093b9ea48378c8cf67733abdb091b1e1022bf7acebd93b1be67",
+    "creative/sfx.mjs": "c946bd55cb8f7a6c8c873b3cc5c348f6463358fa7fc701b5cfaa57aa57695c34",
+    "fixture-baseline.wgsl": "85de53a3fd85963fb158ec0b73a1ddf2bfa96cb51c05415643323948eb48affe",
+    "gallery-adapter.cpu.test.mjs": "f6f4a3c83e9b476e176374efe0ff492102b86377082dea539f40fa23934f58e9",
+    "gallery-adapter.mjs": "b368bee04346e6370f6926c1613cc61e5e46ec8e5e4e93780c457a22af1759a1",
+    "gallery-protocol-technical.mjs": "883fec8b77775527aa4b8b7e76ced9650c2425f561c746afd70e6d2c59b45cdd",
+    "gallery-protocol.mjs": "883fec8b77775527aa4b8b7e76ced9650c2425f561c746afd70e6d2c59b45cdd",
+    "gpu-renderer.mjs": "1bf0d755958787f582c0f6bd18c66a38cad8f01a5b390a8bbbd60587ea87fc54",
+    "index.html": "308a2e240cd939043f7065a1afa507589f686918b87a984bde4d5e0827b84c32",
+    "parent-child-integration.cpu.test.mjs": "f8342ebf32c02692595af2deed9314b34cb16aaee2d008ae93bd7c21997e84be",
+    "runtime-lifecycle.cpu.test.mjs": "705689aa0db85d930286224b9a63beefb914e59df7c26816119f689b996530b2",
+    "runtime-technical.mjs": "f20e9dbf349f9a4d816c7d665e06099ccc8553c36886c79e093352a357d22f2c",
+    "runtime.mjs": "22cb4d977a15a8d525cb7d4ae092a36e988da1c51cbcf1f704a3e8fcca40974e",
+    "source-manifest.json": "ad191851cbc46f2b07cdf1cf2234da5c99951f4d6a5dcd649eaf66f8d48c3fc0",
+    "substitution-parent-adapter.mjs": "26aedf1aacb277f62d7e87cb0fcf5ff6bd556b0912449e4aa4f0affca67a4d6c",
+    "viewer-fixture.mjs": "0067a9d7384aeaa9051c4d5510105418292007b3d4cb91eeb3191efa1f3e6592"
+  },
+  "sourceManifest": {
+    "path": "source-manifest.json",
+    "sha256": "ad191851cbc46f2b07cdf1cf2234da5c99951f4d6a5dcd649eaf66f8d48c3fc0"
+  },
+  "protocol": {
+    "schema": "dva-gallery-startup/v1",
+    "versionId": "substitution-sol61-r1",
+    "parentAdapter": "substitution-parent-adapter.mjs",
+    "parentAdapterSha256": "26aedf1aacb277f62d7e87cb0fcf5ff6bd556b0912449e4aa4f0affca67a4d6c"
+  },
+  "verification": {
+    "cpu": "candidate-owned checks previously reported; not rerun in this parent-registration task",
+    "parentGallery": "not-run",
+    "nativeGpu": "not-run",
+    "normalAudioListening": "not-run",
+    "gameIntegration": "not-connected"
+  }
+}

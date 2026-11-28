@@ -1321,6 +1321,9 @@ function shockR3Retired(e,a){const d=e?.data,l=d?.lifecycle;
  ((l.bufferCreated===false&&l.bufferState==='not-created')||(l.bufferCreated===true&&l.bufferState==='destroyed'))&&
  Array.isArray(l.errors)&&l.errors.length===0;}
 function galleryChildRetirementReceiptIsValid(event, attempt) {
+  // This target's receipts are consumed only by its frozen adapter.
+  // A raw receipt must never be accepted by the common retirement path.
+  if (substitutionR1TempKnown(attempt)) return false;
   if(shockR3Known(attempt))return shockR3Retired(event,attempt);
   if (galleryChildPairRouteViolationR2KnownVersion(attempt)) return galleryChildPairRouteViolationR2ReceiptIsValid(event, attempt);
   if (galleryChildPairRouteViolationR3KnownVersion(attempt)) return galleryChildPairRouteViolationR3ReceiptIsValid(event, attempt);
@@ -1620,6 +1623,254 @@ const LEVITATION_PARENT_PINS=Object.freeze([Object.freeze({versionId:'levitation
 function isLevitationRetirementTarget(attempt){try{const p=levitationParentPin(attempt?.versionId);if(!p)return false;const u=new URL(attempt?.url,location.href);return attempt?.versionId===p.versionId&&attempt?.childProtocolVersionId===p.versionId&&attempt?.origin===location.origin&&u.origin===location.origin&&u.pathname===p.route&&u.searchParams.get('galleryVersionId')===p.versionId&&u.searchParams.get('galleryPackageManifestSha256')===p.packageManifestSha256&&u.searchParams.get('galleryPackageSealSha256')===p.packageSealSha256&&u.searchParams.get('gallerySourceManifestSha256')===p.sourceManifestSha256&&u.searchParams.get('galleryStartupToken')===attempt?.token&&u.searchParams.get('galleryAttemptEpoch')===String(attempt?.issuedEpoch)&&attempt?.packageManifestSha256===p.packageManifestSha256&&attempt?.packageSealSha256===p.packageSealSha256&&attempt?.sourceManifestSha256===p.sourceManifestSha256}catch{return false}}
 function levitationRetirementReceiptIsValid(event,attempt){const p=levitationParentPin(attempt?.versionId),d=event?.data,l=d?.lifecycle,r=attempt?.levitationRetirementIdentity,child=attempt?.iframe?.contentWindow;if(!p)return false;let live;try{live=child?.__levitation?.snapshot?.()}catch{return false}const f=live?.lastReceipt;return !!r&&attempt?.iframe?.isConnected===true&&event?.source===child&&event?.origin===attempt.origin&&d?.schema==='dva-gallery-startup/v1'&&d?.action==='retired'&&d?.stage==='playing'&&d?.status==='retired'&&d?.token===attempt.token&&d?.versionId===p.versionId&&d?.attemptEpoch===attempt.issuedEpoch&&Number.isSafeInteger(d?.sequence)&&d.sequence>attempt.sequence&&l?.disposeSettled===true&&l?.teardown==='disposed'&&l?.deviceLifecycle==='destroyed-loss-settled'&&typeof l?.sourceId==='string'&&l.sourceId.length>0&&l?.causeId===r.causeId&&l?.generation===r.generation&&Number.isSafeInteger(l?.finalSubmission)&&l.finalSubmission>0&&l?.queueCompleted===true&&l?.device?.status==='destroyed-loss-settled'&&l.device.drained===true&&l.device.destroyCalled===true&&l.device.lostReason==='destroyed'&&live?.versionId===p.versionId&&live?.disposeCompleted===true&&live?.deviceLifecycle==='destroyed-loss-settled'&&f?.versionId===p.versionId&&f?.sourceId===l.sourceId&&f?.causeId===l.causeId&&f?.generation===l.generation&&f?.submission===l.finalSubmission&&f?.completed===true&&f?.queueCompleted===true}
 function isHeadshotR2RetirementTarget(attempt){return isHeadshotR2ParentTarget(attempt,HEADSHOT_R2_PARENT_PIN,location.href)}
+// TEMP package pins only; not published/main-gallery acceptance pins.
+const SUBSTITUTION_R1_TEMP_PIN = Object.freeze({
+  versionId: 'substitution-sol61-r1',
+  groupId: 'assassin-substitution-sol61',
+  route: '/public/sol61-substitution/r1-gallery-adapter-a1/index.html',
+  sourceUrl: '/public/sol61-substitution/r1/index.html',
+  protocol: 'dva-gallery-startup/v1',
+  packageSchema: 'dva-gallery-package/v1',
+  packageManifestSha256: 'a887b642d2d465129b92d80f40d06bbd47e8c9bcf6bda9d7b3fc48b62c95c385',
+  packageSealSha256: 'b18aaf7717231c4c99d9005397f98ba525ca1b36cda8dd140840a3e461530894',
+  sourceManifestSha256: 'ad191851cbc46f2b07cdf1cf2234da5c99951f4d6a5dcd649eaf66f8d48c3fc0',
+  parentAdapterSha256: '26aedf1aacb277f62d7e87cb0fcf5ff6bd556b0912449e4aa4f0affca67a4d6c'
+});
+function substitutionR1TempKnown(attempt) {
+  const id = SUBSTITUTION_R1_TEMP_PIN.versionId;
+  return !!attempt && (attempt.versionId === id || attempt.childProtocolVersionId === id);
+}
+function substitutionR1TempBaseUrl(verificationMode = false) {
+  if (typeof verificationMode !== 'boolean') throw new TypeError('verificationMode must be a boolean');
+  const p = SUBSTITUTION_R1_TEMP_PIN;
+  const url = new URL(p.route, location.origin);
+  url.searchParams.set('embed', '1');
+  url.searchParams.set('galleryAutoLoop', '1');
+  url.searchParams.set('galleryVersionId', p.versionId);
+  for (const key of ['packageSchema', 'packageManifestSha256', 'packageSealSha256', 'sourceManifestSha256']) url.searchParams.set(key, p[key]);
+  if (verificationMode) url.searchParams.set('verify', '1');
+  return url.href;
+}
+function substitutionR1TempUrlIsValid(value, identity = null) {
+  try {
+    const p = SUBSTITUTION_R1_TEMP_PIN, url = new URL(value, location.href), params = url.searchParams;
+    if (url.origin !== location.origin || url.pathname !== p.route || url.username || url.password || url.hash) return false;
+    const fixed = { embed:'1', galleryAutoLoop:'1', galleryVersionId:p.versionId, packageSchema:p.packageSchema,
+      packageManifestSha256:p.packageManifestSha256, packageSealSha256:p.packageSealSha256, sourceManifestSha256:p.sourceManifestSha256 };
+    const allowed = new Set([...Object.keys(fixed), 'verify']);
+    if (identity !== null) {
+      if (identity.schema !== p.protocol || identity.versionId !== p.versionId || identity.origin !== location.origin ||
+          typeof identity.token !== 'string' || !/^[a-f0-9]{32}$/.test(identity.token) || !Number.isSafeInteger(identity.attemptEpoch) || identity.attemptEpoch <= 0) return false;
+      fixed.galleryStartupToken = identity.token; fixed.galleryAttemptEpoch = String(identity.attemptEpoch);
+      allowed.add('galleryStartupToken'); allowed.add('galleryAttemptEpoch');
+    }
+    for (const [key] of params) if (!allowed.has(key)) return false;
+    for (const [key, expected] of Object.entries(fixed)) { const values=params.getAll(key); if(values.length!==1||values[0]!==expected)return false; }
+    const verify = params.getAll('verify'); return verify.length===0 || (verify.length===1&&verify[0]==='1');
+  } catch (_) { return false; }
+}
+function substitutionR1TempStrictTarget(attempt, identity) {
+  try {
+    const p=SUBSTITUTION_R1_TEMP_PIN;
+    if (!identity || attempt?.versionId!==p.versionId || attempt.childProtocolVersionId!==p.versionId || attempt.origin!==location.origin || attempt.token!==identity.token || attempt.issuedEpoch!==identity.attemptEpoch) return false;
+    const iframe=attempt.iframe;
+    if (!(iframe instanceof HTMLIFrameElement) || iframe.isConnected!==true || !iframe.contentWindow) return false;
+    if (!['packageSchema','packageManifestSha256','packageSealSha256','sourceManifestSha256'].every(key=>attempt[key]===p[key])) return false;
+    if (!substitutionR1TempUrlIsValid(identity.url,identity) || !substitutionR1TempUrlIsValid(attempt.url,identity) || !substitutionR1TempUrlIsValid(iframe.src,identity)) return false;
+    return new URL(attempt.url,location.href).href===identity.url && new URL(iframe.src,location.href).href===identity.url;
+  } catch (_) { return false; }
+}
+
+function substitutionR1TempCallbacksAreCurrent(attempt) {
+  return galleryChildIsCurrent(attempt) && !attempt.failed &&
+    attempt.substitutionSelectionRequest === gallerySelectionRequestSerial &&
+    currentCategory === 'effect';
+}
+
+function substitutionR1TempFail(attempt, code, message, status = 'error') {
+  if (!galleryChildIsCurrent(attempt) || attempt.failed) return;
+  attempt.failed = true;
+  attempt.ready = false;
+  attempt.status = status;
+  galleryChildClearTimers(attempt);
+  galleryChildShow(attempt,
+    'Substitution TEMP preview failed [' + galleryChildText(code, 64) + '] ' +
+    galleryChildText(message || 'No validated ready proof was received.'), true);
+  // Do not issue the common, unsequenced retirement command.
+  // This operation retains the frame unless adapter retirement succeeds.
+  void substitutionR1TempRetire(attempt, 'startup-failed');
+}
+
+function substitutionR1TempBegin(item, preview, iframe, index, versionIndex) {
+  const p = SUBSTITUTION_R1_TEMP_PIN;
+  if (galleryChildProtocolVersionId(item, preview) !== p.versionId) {
+    throw new Error('Substitution TEMP route/package identity mismatch');
+  }
+  const verificationMode = new URL(preview.href, location.href).searchParams.has('verify');
+  const epoch = ++galleryChildAttemptSerial;
+  const attempt = {
+    versionId: p.versionId, childProtocolVersionId: p.versionId,
+    token: null, epoch, issuedEpoch: epoch, index, versionIndex, iframe,
+    origin: location.origin, url: preview.href,
+    packageSchema: p.packageSchema,
+    packageManifestSha256: p.packageManifestSha256,
+    packageSealSha256: p.packageSealSha256,
+    sourceManifestSha256: p.sourceManifestSha256,
+    createdAt: performance.now(), phaseReceivedAt: performance.now(),
+    phase: '', phaseRank: -1, sequence: 0,
+    ready: false, failed: false, retired: false,
+    phaseTimer: null, softTimer: null, overallTimer: null, onMessage: null,
+    substitutionSelectionRequest: gallerySelectionRequestSerial,
+    substitutionAdapter: null, substitutionStarted: false,
+    substitutionLoading: null
+  };
+  activeGalleryChildStartup = attempt;
+  attempt.overallTimer = setTimeout(() => {
+    galleryChildFail(attempt, attempt.phase, 'STARTUP_TIMEOUT_OVERALL',
+      'No validated Substitution ready proof within 90 seconds.');
+  }, 90000);
+  // Called only after the caller has appended the still-blank iframe.
+  attempt.substitutionLaunch = () => {
+    if (attempt.substitutionLoading) return attempt.substitutionLoading;
+    attempt.substitutionLoading = (async () => {
+      try {
+        const module = await import(
+          '/public/sol61-substitution/r1-gallery-adapter-a1/substitution-parent-adapter.mjs'
+        );
+        // Import completion is not permission to start an obsolete selection.
+        if (!substitutionR1TempCallbacksAreCurrent(attempt)) return;
+        if (module.VERSION !== p.versionId || module.PROTOCOL !== p.protocol ||
+            typeof module.createSubstitutionAttempt !== 'function') {
+          throw new Error('Substitution parent-adapter export mismatch');
+        }
+        const adapter = module.createSubstitutionAttempt({
+          iframe, baseUrl: substitutionR1TempBaseUrl(verificationMode),
+          origin: location.origin, epoch: attempt.issuedEpoch,
+          verificationMode, retireTimeoutMs: 5000,
+          onStage(data, identity) {
+            if (!substitutionR1TempCallbacksAreCurrent(attempt) || attempt.ready) return;
+            if (!substitutionR1TempStrictTarget(attempt, identity)) {
+              substitutionR1TempFail(attempt, 'TARGET_MISMATCH', 'Substitution target changed.');
+              return;
+            }
+            attempt.sequence = data.sequence;
+            galleryChildArmStage(attempt, data.stage);
+          },
+          onReady(frame, identity) {
+            if (!substitutionR1TempCallbacksAreCurrent(attempt)) return;
+            const snapshot = attempt.substitutionAdapter?.snapshot();
+            if (!substitutionR1TempStrictTarget(attempt, identity) ||
+                snapshot?.ready !== true || snapshot.firstFrame !== frame) {
+              substitutionR1TempFail(attempt, 'READY_PROOF_INVALID',
+                'Missing adapter-validated Substitution first-frame proof.');
+              return;
+            }
+            attempt.initialAcceptedReceipt = frame;
+            attempt.initialAcceptedSequence = snapshot.incomingSequence;
+            attempt.sequence = snapshot.incomingSequence;
+            attempt.ready = true;
+            attempt.status = 'ready';
+            attempt.legacy = false;
+            galleryChildClearTimers(attempt);
+            const node = galleryChildStatusNode();
+            if (node) node.hidden = true;
+          },
+          onError(error) {
+            substitutionR1TempFail(attempt, error?.code || 'ADAPTER_ERROR',
+              error?.message || 'Substitution adapter failed.');
+          }
+        });
+        attempt.substitutionAdapter = adapter;
+        const identity = adapter.identity;
+        if (!substitutionR1TempUrlIsValid(identity.url, identity) ||
+            identity.attemptEpoch !== attempt.issuedEpoch) {
+          throw new Error('Substitution adapter identity mismatch');
+        }
+        attempt.token = identity.token;
+        attempt.epoch = identity.attemptEpoch;
+        attempt.url = identity.url;
+        // No asynchronous gap between the final current check and start().
+        if (!substitutionR1TempCallbacksAreCurrent(attempt)) return;
+        attempt.substitutionStarted = true;
+        const ready = adapter.start();
+        // start() owns the only navigation to the technical child.
+        if (!substitutionR1TempStrictTarget(attempt, identity)) {
+          throw new Error('Substitution attached target mismatch');
+        }
+        ready.catch(error => substitutionR1TempFail(attempt,
+          error?.code || 'READY_REJECTED', error?.message));
+      } catch (error) {
+        substitutionR1TempFail(attempt, error?.code || 'ADAPTER_START_FAILED',
+          error?.message || String(error));
+      }
+    })();
+    return attempt.substitutionLoading;
+  };
+  return attempt;
+}
+
+function substitutionR1TempRetire(attempt, reason) {
+  if (attempt.retirementPromise) return attempt.retirementPromise;
+  attempt.retired = true;
+  attempt.retiredReason = reason;
+  attempt.epoch = ++galleryChildAttemptSerial;
+  galleryChildClearTimers(attempt);
+  // Defer execution so the promise is installed before any continuation runs.
+  attempt.retirementPromise = Promise.resolve().then(async () => {
+    try {
+      // This is the import/start task, NOT the ready promise.
+      // retired=true prevents a pending import from starting the child.
+      await attempt.substitutionLoading;
+      const adapter = attempt.substitutionAdapter;
+      if (attempt.substitutionStarted) {
+        if (!adapter || !substitutionR1TempStrictTarget(attempt, adapter.identity)) {
+          throw new Error('Substitution retirement target mismatch');
+        }
+        let lifecycle;
+        try {
+          lifecycle = await adapter.retire();
+          const snapshot = adapter.snapshot();
+          if (!substitutionR1TempStrictTarget(attempt, adapter.identity) ||
+              snapshot.retirementSettled !== true || snapshot.retired !== true ||
+              snapshot.lifecycle !== lifecycle || !lifecycle) {
+            throw new Error('Missing validated Substitution retirement lifecycle');
+          }
+          attempt.retirementReceipt = lifecycle;
+          attempt.sequence = snapshot.incomingSequence;
+        } finally {
+          // retire() has fulfilled or rejected before close() is called.
+          adapter.close();
+        }
+      } else if (attempt.iframe.getAttribute('src')) {
+        throw new Error('Unexpected navigation of unstarted Substitution iframe');
+      }
+      // An unstarted blank frame has no child lifecycle to acknowledge.
+      sfxBridge?.detachFrame(attempt.iframe);
+      attempt.iframe.remove();
+      attempt.retirementStatus = 'disposed';
+      if (activeGalleryChildStartup === attempt) activeGalleryChildStartup = null;
+      if (activeAudioFrame === attempt.iframe) {
+        activeAudioFrame = null;
+        activeAudioItem = null;
+      }
+      galleryChildClearStatus();
+      return true;
+    } catch (error) {
+      attempt.retirementStatus = 'unknown';
+      attempt.retirementFailure = String(error?.message || error);
+      const node = galleryChildStatusNode();
+      if (node) {
+        node.hidden = false;
+        node.textContent = 'Substitution TEMP retirement is unconfirmed. ' +
+          'The iframe is retained and replacement is blocked: ' +
+          galleryChildText(attempt.retirementFailure);
+      }
+      return false;
+    }
+  });
+  return attempt.retirementPromise;
+}
+
 function galleryChildLimitR1KnownVersion(attempt) {
   return !!attempt && (attempt.versionId === "limit-break-passive-onset-sol61-r10" || attempt.childProtocolVersionId === "limit-break-passive-onset-sol61-r10" || attempt.versionId === "limit-break-passive-onset-sol61-r9" || attempt.childProtocolVersionId === "limit-break-passive-onset-sol61-r9" || attempt.versionId === "limit-break-passive-onset-sol61-r8" || attempt.childProtocolVersionId === "limit-break-passive-onset-sol61-r8" || attempt.versionId === "limit-break-passive-onset-sol61-r7" || attempt.childProtocolVersionId === "limit-break-passive-onset-sol61-r7" || attempt.versionId === "limit-break-passive-onset-sol61-r6" || attempt.childProtocolVersionId === "limit-break-passive-onset-sol61-r6" || attempt.versionId === "limit-break-passive-onset-astra62-r5" || attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r5" || attempt.versionId === "limit-break-passive-onset-astra62-r4" || attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r4" || attempt.versionId === "limit-break-passive-onset-astra62-r1" || attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r1" || attempt.versionId === "limit-break-passive-onset-astra62-r2" || attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r2" || attempt.versionId === "limit-break-passive-onset-astra62-r3" || attempt.childProtocolVersionId === "limit-break-passive-onset-astra62-r3");
 }
@@ -5047,6 +5298,9 @@ function isValidatedRetirementTarget(attempt) {
   if (galleryChildEmergencyMeetingR1KnownVersion(attempt)) return galleryChildEmergencyMeetingR1StrictTarget(attempt);
   if (galleryChildInventoryItemTransferR1KnownVersion(attempt)) return galleryChildInventoryItemTransferR1StrictTarget(attempt);
   if (galleryChildOperatorSelectionR1KnownVersion(attempt)) return galleryChildOperatorSelectionR1StrictTarget(attempt);
+  if (substitutionR1TempKnown(attempt)) {
+    return substitutionR1TempStrictTarget(attempt, attempt.substitutionAdapter?.identity);
+  }
   if (galleryChildSelfBodyReportR1KnownVersion(attempt)) return galleryChildSelfBodyReportR1StrictTarget(attempt);
   if (galleryChildMatchOpeningR1KnownVersion(attempt)) return galleryChildMatchOpeningR1StrictTarget(attempt);
   if (galleryChildApexSwordVanishR1KnownVersion(attempt)) return galleryChildApexSwordVanishR1StrictTarget(attempt);
@@ -5083,6 +5337,9 @@ function retireGalleryChildStartup(reason = 'selection-changed') {
   previewStatusPoll = null;
   if (!attempt) { galleryChildClearStatus(); return Promise.resolve(true); }
   if (attempt.retirementPromise) return attempt.retirementPromise;
+  if (substitutionR1TempKnown(attempt)) {
+    return substitutionR1TempRetire(attempt, reason);
+  }
   if(universalKnown(attempt))return universalRetire(attempt);
   if (galleryChildPairRouteViolationR2KnownVersion(attempt)) return galleryChildPairRouteViolationR2Retire(attempt);
   if (galleryChildPairRouteViolationR3KnownVersion(attempt)) return galleryChildPairRouteViolationR3Retire(attempt);
@@ -5220,6 +5477,7 @@ function galleryChildRpgSnapshotDecision(snapshot, expectedVersion, canvas) {
     canvas: { width: canvas.width, height: canvas.height } };
 }
 function galleryChildWatchLegacyFailure(attempt, iframe) {
+  if (substitutionR1TempKnown(attempt)) return;
   // A validated strict receipt remains authoritative after iframe load.
   if (!galleryChildIsCurrent(attempt) || attempt.ready) return;
   if (attempt.phaseTimer !== null) clearTimeout(attempt.phaseTimer);
@@ -5284,6 +5542,9 @@ function galleryChildWatchLegacyFailure(attempt, iframe) {
   previewStatusPoll = timer;
 }
 function galleryChildFail(attempt, stageName, code, message, status = 'error') {
+  if (substitutionR1TempKnown(attempt)) {
+    return substitutionR1TempFail(attempt, code, message, status);
+  }
   if (!galleryChildIsCurrent(attempt) || attempt.failed) return;
   attempt.failed = true;
   attempt.status = status;
@@ -5302,6 +5563,8 @@ function galleryChildFail(attempt, stageName, code, message, status = 'error') {
   galleryChildShow(attempt, `${label} [${galleryChildText(code, 64)}] ${safeMessage}`, true);
 }
 function galleryChildArmStage(attempt, phase) {
+  if (substitutionR1TempKnown(attempt) &&
+      (attempt.ready || attempt.failed || attempt.retired)) return;
   const row = GALLERY_CHILD_PHASES[phase];
   if (!row || !galleryChildIsCurrent(attempt)) return;
   const rank = GALLERY_CHILD_PHASE_ORDER.indexOf(phase);
@@ -5400,6 +5663,21 @@ function universalRetire(a){
 
 function isDotStrictOwnedPreviewVersion(id){return id==='dot-barrier-durability-break-r5'||id==='dot-barrier-durability-break-r4'||id==='dot-barrier-durability-break-r3'||id==='dot-barrier-durability-break-r2'||id==='dot-barrier-durability-break-r1'||id==='gravity-storm-dot-r6'||id==='gravity-storm-dot-r7'||id==='gravity-storm-dot-r8'||id==='gravity-storm-dot-r9'||id==='gravity-storm-dot-r10'||id==='dot-credit-recipient-r1'||id==='dot-credit-recipient-r2'||id==='dot-credit-recipient-r3'||id==='dot-credit-recipient-r4'||id==='dot-credit-recipient-r5'||id==='dot-emergency-request-r1'||id==='dot-emergency-request-r2'||id==='dot-emergency-request-r3'||id==='dot-emergency-request-r4'||id==='dot-task-local-completion-r1'||id==='dot-task-local-completion-r2'||id==='dot-task-local-completion-r3'||id==='dot-task-local-completion-r4'||id==='dot-task-local-completion-r5'||id==='dot-item-transfer-recipient-r1'||id==='dot-item-transfer-recipient-r2'||id==='dot-item-transfer-recipient-r3'||id==='dot-item-transfer-recipient-r4'||id==='dot-item-transfer-recipient-r5';}
 function galleryChildProtocolVersionId(item, preview) {
+  try {
+    const p = SUBSTITUTION_R1_TEMP_PIN;
+    const original = new URL(item?.page, location.href);
+    const derived = new URL(preview?.href, location.href);
+    if (item?.id === p.versionId ||
+        original.pathname === p.route || derived.pathname === p.route) {
+      return item?.id === p.versionId &&
+        substitutionR1TempUrlIsValid(original.href) &&
+        substitutionR1TempUrlIsValid(derived.href) &&
+        original.searchParams.has('verify') === derived.searchParams.has('verify')
+        ? p.versionId : null;
+    }
+  } catch (_) {
+    if (item?.id === SUBSTITUTION_R1_TEMP_PIN.versionId) return null;
+  }
   const universal=universalRoute(item,preview);if(universal!==undefined)return universal;
   if(shockR3Pin(item?.id)){try{const u=new URL(item.page,location.href),v=new URL(preview.href,location.href);return [u,v].every(x=>shockR3Url(x)&&x.searchParams.get("galleryVersionId")===item.id)?item.id:null;}catch{return null;}}
   try{if([SHOCK_R3_INLINE,...Object.values(SHOCK_SOL_INLINE)].some(x=>x.route===new URL(preview?.href,location.href).pathname))return null;}catch{}
@@ -5575,6 +5853,9 @@ const knownQuantum=!!QUANTUM_A4_PARENT_PINS[attempt?.versionId]||!!QUANTUM_A4_PA
     ['pending','delayed','ready','error','cancelled','unsupported'].includes(data.status);
 }
 function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
+  if (item?.id === SUBSTITUTION_R1_TEMP_PIN.versionId) {
+    return substitutionR1TempBegin(item, preview, iframe, index, versionIndex);
+  }
   const tokenBytes = new Uint8Array(16);
   crypto.getRandomValues(tokenBytes);
   const token = [...tokenBytes].map(value => value.toString(16).padStart(2, '0')).join('');
@@ -5652,6 +5933,8 @@ function beginGalleryChildStartup(item, preview, iframe, index, versionIndex) {
     return raw.every((value,index)=>value===bytes[index]);
   }
   function galleryChildFirstFrameProofIsValid(proof) {
+    // Acceptance for this target exists only in the adapter onReady callback.
+    if (substitutionR1TempKnown(attempt)) return false;
     if(thrownNew(attempt)) return proof?.recorded===true&&proof.submitted===true&&proof.completed===true&&proof.passes===1&&
       proof.canvasConnected===true&&Number.isSafeInteger(proof.causeId)&&proof.causeId>0&&Number.isSafeInteger(proof.generation)&&proof.generation>0&&
       [proof.viewportWidth,proof.viewportHeight,proof.cssWidth,proof.cssHeight].every(x=>Number.isFinite(x)&&x>0)&&
@@ -5721,6 +6004,7 @@ if(abilityR8Known(attempt))return abilityR8FirstFrameValid(proof,attempt);if(kno
       Number.isFinite(proof.elapsedMs) && proof.elapsedMs >= 0 && proof.elapsedMs < proof.durationMs && proof.uniformBytes === 160 && (attempt.versionId !== 'flora-invisible-codex-sol61-zero-r3' || floraZeroR3FirstFrameIsValid(proof));
   }
   attempt.onMessage = event => {
+    if (substitutionR1TempKnown(attempt)) return;
     if (!galleryChildIsCurrent(attempt) || !galleryChildStartupMessageIsValidForAttempt(event, attempt)) return;
     const data = event.data;
     if (attempt.failed || (attempt.ready && data.status !== 'error')) return;
@@ -5883,6 +6167,10 @@ if(abilityR8Known(attempt))return abilityR8FirstFrameValid(proof,attempt);if(kno
     return item?.manualReview === true && Object.prototype.hasOwnProperty.call(GALLERY_MANUAL_REVIEW_ROUTES, item?.id);
   }
   function galleryManualReviewInfo(item, href, verifyPresent, verifyValue) {
+    if (item?.id === SUBSTITUTION_R1_TEMP_PIN.versionId &&
+        substitutionR1TempUrlIsValid(item.page)) {
+      return { requested: false, valid: false, href: null, notice: '' };
+    }
     const requested = isManualReviewItem(item);
     if (!requested) return { requested: false, valid: false, href: null, notice: '' };
     const unavailable = '手動レビュー登録を利用できません。リンクを無効にし、自動起動しません。';
@@ -6230,7 +6518,12 @@ function visibleVersionIndices(group) {
       }
     }
     selectedVersionIndex = Math.min(versionIndex, group.versions.length - 1);
-    const item = group.versions[selectedVersionIndex];
+    const catalogItem = group.versions[selectedVersionIndex];
+    // Effective selection only: preserve the stored catalog/provenance record.
+    const item = group.id === SUBSTITUTION_R1_TEMP_PIN.groupId &&
+      catalogItem.id === SUBSTITUTION_R1_TEMP_PIN.versionId
+      ? { ...catalogItem, page: substitutionR1TempBaseUrl(params.has('verify')) }
+      : catalogItem;
     renderNativeEvidenceLink(item);
     updateGalleryAudioControl('effect', item);
     document.getElementById('selected-title').textContent = `${group.title} · ${effectVersionDisplayTitle(item)}`;
@@ -6261,7 +6554,10 @@ function visibleVersionIndices(group) {
     versionSelect.onchange = () => select(selectedIndex, shownVersions[Number(versionSelect.value)]);
     const sourceLink = document.getElementById('selected-link');
     const manualReview = galleryManualReviewInfo(item, location.href, params.has('verify'), params.get('verify'));
-    const preview = manualReview.requested ? null : item.historyOnly ? new URL(item.sourceUrl || item.page || item.source, location.href) : makePreview(item);
+    const preview = item.id === SUBSTITUTION_R1_TEMP_PIN.versionId &&
+      substitutionR1TempUrlIsValid(item.page)
+      ? new URL(item.page, location.href)
+      : manualReview.requested ? null : item.historyOnly ? new URL(item.sourceUrl || item.page || item.source, location.href) : makePreview(item);
     if (!manualReview.requested && item.historyOnly && preview.origin === location.origin && params.has('verify')) preview.searchParams.set('verify', params.get('verify') || '1');
     if (manualReview.requested) {
       sourceLink.textContent = '手動でレビューを開く ↗';
@@ -6277,7 +6573,11 @@ function visibleVersionIndices(group) {
     } else {
       sourceLink.hidden = false;
       sourceLink.removeAttribute('aria-disabled');
-      if (shockR3Pin(item.id)) {
+      if (item.id === SUBSTITUTION_R1_TEMP_PIN.versionId) {
+        const original = new URL(item.sourceUrl, location.href);
+        if (params.has('verify')) original.searchParams.set('verify', params.get('verify') || '1');
+        sourceLink.href = original.href;
+      } else if (shockR3Pin(item.id)) {
         const original = new URL(shockR3Pin(item.id).original??'/public/astra62-fighter-shockwave/r3/index.html',location.href);
         if(params.has('verify'))original.searchParams.set('verify',params.get('verify')||'1');
         sourceLink.href=original.href;
@@ -6410,8 +6710,12 @@ function visibleVersionIndices(group) {
     const attempt = beginGalleryChildStartup(item, preview, iframe, selectedIndex, selectedVersionIndex);
     iframe.addEventListener('load', () => {
       if (!galleryChildIsCurrent(attempt)) return;
+      if (substitutionR1TempKnown(attempt) &&
+          (!attempt.substitutionStarted || attempt.failed ||
+           !substitutionR1TempStrictTarget(attempt, attempt.substitutionAdapter?.identity))) return;
       activeAudioFrame = iframe; activeAudioItem = item;
       observeAudioActivation(sfxBridge?.attachFrame(iframe, item), iframe, item);
+      if (substitutionR1TempKnown(attempt)) return;
       let childSnapshot = null;
       try { childSnapshot = iframe.contentWindow?.__dvaGalleryStartupSnapshot?.(); } catch (_) {}
       if (childSnapshot?.schema !== 'dva-gallery-startup/v1' || childSnapshot?.token !== attempt.token ||
@@ -6423,9 +6727,10 @@ function visibleVersionIndices(group) {
     });
     iframe.addEventListener('error', () => galleryChildFail(attempt, 'child-document',
       'CHILD_DOCUMENT_ERROR', '選択したプレビューを読み込めませんでした。再読み込みできます。'));
-    iframe.src = attempt.url;
+    if (!substitutionR1TempKnown(attempt)) iframe.src = attempt.url;
     fitPreview(iframe, item, group);
     stage.append(iframe);
+    if (substitutionR1TempKnown(attempt)) attempt.substitutionLaunch();
     // The live startup status is above the stage; hide its obsolete in-stage loading notice under the opaque iframe.
     notice.hidden = true;
     galleryChildArmStage(attempt, 'child-document');
@@ -6799,7 +7104,8 @@ function visibleVersionIndices(group) {
     return galleryChildEnqueueTransition(() => renderSelectionNow());
   }
   async function renderSelectionNow() {
-    if (currentCategory !== 'effect' || isValidatedRetirementTarget(activeGalleryChildStartup)) {
+    if (currentCategory !== 'effect' || substitutionR1TempKnown(activeGalleryChildStartup) ||
+        isValidatedRetirementTarget(activeGalleryChildStartup)) {
       const reason = currentCategory !== 'effect' ? 'category-changed' : 'category-or-filter-changed';
       const retired = await retireGalleryChildStartup(reason);
       if (!retired) return false;
