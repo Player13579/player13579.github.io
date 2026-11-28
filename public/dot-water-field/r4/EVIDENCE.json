@@ -1,0 +1,70 @@
+{
+  "schema": "dva-dot-e-technical-replay/v1",
+  "versionId": "dot-water-field-r4",
+  "galleryOnly": true,
+  "qualityReviewStatus": "technical-and-visual-self-review",
+  "userAdopted": false,
+  "eventContract": "Visible authoritative water field snapshot only; unchanged R3 eligibility and time/space. No target, amount, result, or damage input.",
+  "numeric": {
+    "rejectedFixtures": 84,
+    "timelineSamples": 8088,
+    "invarianceComparisons": 8088,
+    "meshFixtures": 132,
+    "fixedFootprintDuringOpticalTransition": true
+  },
+  "display": {
+    "renderer": "Isolated Chromium software WebGPU/SwiftShader",
+    "comparisonFrames": 96,
+    "viewportsCssPixels": [
+      [
+        844,
+        390
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "devicePixelRatio": 2,
+    "background": [
+      "dark",
+      "bright"
+    ],
+    "normalReducedMotionAndObs": true,
+    "sameEndpointFrames": true,
+    "sameSettledFrames": true,
+    "alternateEndpointMs": [
+      5500,
+      12000
+    ],
+    "comparison": "R1 grows radially, R2 advances as two surfaces, R3 shows one wide band, R4 has multiple broken shallow reflections within the unchanged R3 footprint."
+  },
+  "audio": {
+    "muteOnStart": true,
+    "actualPlaybackStartsInBrowser": 1,
+    "duplicateAndLateSuppressed": true,
+    "rateChecks": 6,
+    "durationMs": 610,
+    "humanListening": "not_run"
+  },
+  "localProofNotForShipment": [
+    {
+      "path": "H64-COMPARISON.png",
+      "bytes": 126845,
+      "sha256": "c53d103a96d607238ce51414438adbfb569eeddcd8f8f05bc12db4e86f90050b"
+    },
+    {
+      "path": "GPU-PROOF.json",
+      "bytes": 88717,
+      "sha256": "7b52361d3a389c45d6b909730e8510fcf0516769eab085e8f876d34aa5e5cbcd"
+    }
+  ],
+  "notVerified": [
+    "physical iPad",
+    "Safari",
+    "online game integration",
+    "parent gallery registration and version switch",
+    "user acceptance",
+    "Pages delivery"
+  ]
+}
