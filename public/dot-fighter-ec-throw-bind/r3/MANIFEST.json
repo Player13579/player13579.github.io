@@ -1,0 +1,64 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-fighter-ec-throw-bind-r3",
+  "group": "dot-fighter-ec-throw-bind",
+  "title": "ファイター・投擲EC付与",
+  "authorDisplayName": "dot",
+  "edition": 3,
+  "editionCap": 5,
+  "parentEdition": "dot-fighter-ec-throw-bind-r2",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "fighter-energy-release",
+    "variantPattern": "throw:remaining-ec-<nonnegative integer>",
+    "radius": 92,
+    "eventDurationRangeMs": [
+      240,
+      920
+    ],
+    "visualDurationMaxMs": 540,
+    "previewDisplayPolicy": "gallery replay matches actor; live raw-event delivery not asserted",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2336,
+      "sha256": "3eb99ffdd721808b811e53b03961b97e3cb3982262dc26a07b1340fa268d6a60"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16721,
+      "sha256": "5efac30eaf2dd731d188a11ab7026673f4566a52dfac597dbb433721aa9b512e"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1217,
+      "sha256": "100448e574f0255cf69167338ad933afc7835a1f51ee4d8740c4f9739517b536"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6692,
+      "sha256": "53a0eef221fffc09ff297b444107bd3fcc730b9ccfcd2eb4f4cb761f4bcdc6ef"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2572,
+      "sha256": "7ef9b1e9422f6d91764f631221e39ea5369e5767fb75e49e31e8f8b875ee6401"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1279,
+      "sha256": "51c6ea0f1e142d2f965d136161666a5c45946b40e474a900d3efe04d264b0288"
+    }
+  ]
+}
