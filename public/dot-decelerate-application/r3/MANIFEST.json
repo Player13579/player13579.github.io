@@ -1,0 +1,73 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-decelerate-application-r3",
+  "group": "dot-decelerate-application",
+  "title": "ディーセラレート付与",
+  "authorDisplayName": "dot",
+  "edition": 3,
+  "editionCap": 5,
+  "parentEdition": "dot-decelerate-application-r2",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "gravity-decelerate",
+    "variant": "",
+    "radius": 150,
+    "eventDurationMs": 8000,
+    "visualDurationMs": 1140,
+    "previewDisplayPolicy": "gallery replay filters to the matching target; live raw-event delivery is not asserted",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2330,
+      "sha256": "63e4f5006cfd010b9236610073f60d52557e06c5c68113202e77dfb27f095493"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16785,
+      "sha256": "77080d72419a856c0d40ec42354ab8e3708883cf06cd69c123812b0940cefd00"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1301,
+      "sha256": "9b08ec8822ff756676ec476e62dad6e82169022323883174ad4fb31a8e8d8c37"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6706,
+      "sha256": "eec7af4ced70f0c64dab8c2ac4d4ae062d5fded2efc8cb847ec752ecc8dab097"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2789,
+      "sha256": "76fa8effe02ee7805a336538dc27cb3ecd9738a22bc8e2b9bd6a29332e82b365"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1379,
+      "sha256": "b76071ddb96d8dec8094b1c2f9fff34e5f144055503e10e369c702fccc013bf4"
+    }
+  ]
+}
