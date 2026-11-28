@@ -1,0 +1,76 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-match-finalized-r5",
+  "group": "dot-match-finalized",
+  "title": "通常対戦の決着",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-match-finalized-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "same-room-snapshot-transition",
+    "before": [
+      "playing",
+      "meeting"
+    ],
+    "after": "ended",
+    "excludeWinner": "none",
+    "visualDurationMs": 1020,
+    "previewDisplayPolicy": "left-rail-result-ui-fixture-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2887,
+      "sha256": "a3223e2ff8b87c1d4473ac37377d7cf9904c90f058eab53f07f17c0225506531"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 17050,
+      "sha256": "50d267b97ea9e4b0b064d50470c2221a348816817918a12e0751e5b0f20e1464"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1220,
+      "sha256": "a409e83da74dc5ec241bf59cf076365ad77303bce93b84c18f423f2a9975ae5a"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 3395,
+      "sha256": "7c91f6904586a3a8a1b69b1b40cef180b289c3224fe4b15281d759ae50732a7f"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2307,
+      "sha256": "1adf96c5e92b46785c7cc4803ff5a2b6278c23d06e1bd1f0b1eed64c8977d6a0"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 860,
+      "sha256": "a4f0cd705000d629362efb282217902e5907fcc8a80fd5b7592c8070715b8dd5"
+    }
+  ]
+}
