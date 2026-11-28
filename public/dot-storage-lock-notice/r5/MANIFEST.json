@@ -1,0 +1,73 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-storage-lock-notice-r5",
+  "group": "dot-storage-lock-notice",
+  "title": "収納の一時停止・対象者側",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-storage-lock-notice-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "emp-storage-lock",
+    "variant": "storage",
+    "radius": 105,
+    "eventDurationMs": 7000,
+    "visualDurationMs": 920,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2318,
+      "sha256": "6ac5e4d4ee85af43e6e5ec47a2076a68b5373b6549545b5f8fd159ae038bfff5"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16789,
+      "sha256": "652f8ccada79c99c9f74d1aac2884102cd89831b082e619d1dc9afc77a8d28d3"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 830,
+      "sha256": "bec08ee00306e18938ec134bc508f7ca58a5207d81a220a09e156ba81d5d753d"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6353,
+      "sha256": "5b8749db471f680fc07210cdec0461e256276d66f150cbda089409de1da58e19"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2960,
+      "sha256": "91d16d79e758717a0b16f6f3dce518e1d0588219e0c78edf92e74faddf7ac620"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 871,
+      "sha256": "1c85c632cdbc62b44e15e2fc272ef845aff07a76e3765f24fe883a273991c021"
+    }
+  ]
+}
