@@ -1,0 +1,76 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-hack-passive-receipt-r5",
+  "group": "dot-hack-passive-receipt",
+  "title": "ハック適用通知",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-hack-passive-receipt-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "instant-hack-acquired",
+    "sources": [
+      "vending"
+    ],
+    "radius": 124,
+    "eventDurationMs": 0,
+    "visualDurationMs": 720,
+    "previewDisplayPolicy": "recipient-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639",
+    "wireVisibility": "shared room event"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2321,
+      "sha256": "098a9e3c40c0c0f99edc45486fdaa89cc43ef9d73f596aa268e96431bbcfa248"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16768,
+      "sha256": "e04fdfcd6d0f2bcf9a90e7f0ae2e9824090148fe950e2041dced81471b1d3785"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1043,
+      "sha256": "939a6934ed67cfc28cc92bfe3182757a6cfdfef3fc08dbb8fbe80fbb494994c2"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6849,
+      "sha256": "72d15eb4034deb18a2309801f948336943199d0b7bca9b0c6139a435626da9c6"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1736,
+      "sha256": "c2733282d13a82b3ed362ffa8da9853f1192ead09f9d1edb66e96a5a69c1db25"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 933,
+      "sha256": "55764443a92fcba343420175f421c486a8857405e285543af7ab4c67b5ff4146"
+    }
+  ]
+}
