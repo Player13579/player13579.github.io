@@ -1,0 +1,75 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-reading-lamp-use-r5",
+  "group": "dot-reading-lamp-use",
+  "title": "閲覧灯の利用成立",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-reading-lamp-use-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "object-readingLamp",
+    "objectId": "v302-archive-readingLamp-3",
+    "effectKind": "mana",
+    "variant": "",
+    "radius": 100,
+    "eventDurationMs": 0,
+    "visualDurationMs": 760,
+    "previewDisplayPolicy": "owner-and-object-cause-once",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2327,
+      "sha256": "49f4cb5875a6233ee4d84a5865f93d783f406c3d67730e4910c453d9bc559387"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16490,
+      "sha256": "9d72d59984974a2b9577ba32c2080cc450b67b20d082ea4028d8ebbcb4552071"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1237,
+      "sha256": "57858b801ce81c5434aeaa089e8f984cd92a77a2a66000af1bea7796d09afa45"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 4970,
+      "sha256": "9187b4b8d21ce039e73ac43a63cbf8731a250712ccc0ca770b50ad2c4c9a1ad2"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2377,
+      "sha256": "a044d1fbaf0a8f8f4bdb728d83d44a31604ad2435cbe5980d8c5f82a257d78a4"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1342,
+      "sha256": "1ebf959d8ffe84bb68e8e3c7424544ebd036eecbcf488661cc69894a4590cada"
+    }
+  ]
+}
