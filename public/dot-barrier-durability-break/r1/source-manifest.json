@@ -1,0 +1,63 @@
+{
+  "schema": "dva-dot-barrier-durability-break-source/v1",
+  "versionId": "dot-barrier-durability-break-r1",
+  "creator": "dot",
+  "creativeRevision": 1,
+  "editionLimit": 5,
+  "entry": "index.html",
+  "adoption": "unknown",
+  "mainGameIntegration": "not-connected",
+  "design": "支持節の消尽",
+  "comparedAuthoritativeCreativeSHA256": "cbccfc797c44f7fb9512099909be39723329e7596ab2f4bde618c6e5c0f9acac",
+  "previewProofs": {
+    "comparisonManifest": "2170cad4179a6b632ac273f6468461a9abf9d11f4f9596938c5d809bc029d48e",
+    "comparisonProof": "7b7aaac10530f065f098e0ee56bc7b673d93c60d363761181dfb8099f92a1e1e"
+  },
+  "trigger": {
+    "type": "preparation-barrier-hit",
+    "variant": "durability-broken",
+    "radius": 110,
+    "durationMs": 480,
+    "actor": "playerId",
+    "attackDirection": "not consumed"
+  },
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2172,
+      "sha256": "c0101f34d7115d630e0d0088be609eaa0ca935be8dfbfe916fd3454eb89ce814"
+    },
+    {
+      "path": "gallery-adapter.mjs",
+      "bytes": 23952,
+      "sha256": "2a43c65e47934e4e43ed6a8c82f13ab8c6059c6fe7a807dee3aeac9c0614d3fa"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 10891,
+      "sha256": "e534cbce2f4fe58bd5a08a3c52c51bfebbf0794a1b9e45829f7f6fb9d7c6091c"
+    },
+    {
+      "path": "body.png",
+      "bytes": 243081,
+      "sha256": "cf3df51d88129ad51e175dd894ef2c269626a2d60fec912289789e099d8fcb8f"
+    },
+    {
+      "path": "host-core.mjs",
+      "bytes": 4689,
+      "sha256": "8323c9046f9fdd09f2a08581aab034341bf70a0b27af79f98aaa34792bfeeffc"
+    }
+  ]
+}
