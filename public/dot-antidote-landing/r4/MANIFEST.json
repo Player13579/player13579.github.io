@@ -1,0 +1,66 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-antidote-landing-r4",
+  "group": "dot-antidote-landing",
+  "title": "投げた解毒剤の着地",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "parentEdition": "dot-antidote-landing-r3",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "hazard-antidote",
+    "sources": [
+      "throw-landing"
+    ],
+    "sizes": [
+      120,
+      150
+    ],
+    "previewDisplayPolicy": "public-landing-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2378,
+      "sha256": "65651f2459185949fa329677b5c51e88fb95820c235caa85881dc31feb1fb74e"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16745,
+      "sha256": "537ede6c50b2c97179384cc6bd6ff927f81f7c095a37bdbf8c67d5e690007e6c"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1310,
+      "sha256": "4bb55906d4321e96468273d455204422febc58c92fe40668a91f772e79c7ea09"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 5751,
+      "sha256": "e0008e1e01de36a69148be186087853850335ac9698348e3b720ee4d51c65e4b"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11212,
+      "sha256": "4f078f39a9a4a313589ab99d287c717bd9c2b3a728999fe546a0363de9732fb8"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 3238,
+      "sha256": "f70d483afc36b57946d809708b007435771b6f9d432671486c7e6c200ea278fc"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1666,
+      "sha256": "8294f72ab999c1a70393bb70ecda14cd273fe00c3dbf78cb58cd7e04a8033a03"
+    }
+  ],
+  "design": "割れて退く薄瀬",
+  "designAuthorityNote": "Current Windows DVA and B/LDM checked; current hash prefixes recorded in DESIGN.md."
+}
