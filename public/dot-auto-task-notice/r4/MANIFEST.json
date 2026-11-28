@@ -1,0 +1,65 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-auto-task-notice-r4",
+  "group": "dot-auto-task-notice",
+  "title": "ゲーム内の自動タスク完了",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "parentEdition": "dot-auto-task-notice-r3",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "action-task",
+    "variant": "hacker-auto",
+    "modes": [
+      "download",
+      "upload"
+    ],
+    "radius": 105,
+    "eventDurationMs": 0,
+    "visualDurationMs": 1040,
+    "previewDisplayPolicy": "gallery replay matches actor; live raw-event delivery not asserted",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2354,
+      "sha256": "6c3f52510ff996f97a813fe94cd5590fe96f8c2dd5f51cc346e5ad8477f1ac98"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16790,
+      "sha256": "ca27233fb8c5e5f29cd554f9467d3b74f5b6de5b726fbeecc4c7db524c2a2e7c"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1002,
+      "sha256": "f90e94b3d73d93a440dd6e571af8e19758d2915c51408a515a53370861bfdfc0"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6435,
+      "sha256": "c7eec5451a4de46746c64c8415eee5d086aa744b84a6d1b1c846bc1857ec0257"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2647,
+      "sha256": "fc2f34ad84dcc3c0492483102bf6ea4538106963e2de80a91667d8dc251ce38f"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1544,
+      "sha256": "f2b419db3b1baeb8826eb208525b6744a8001b5726fb275d2e41ce368eaaa6ab"
+    }
+  ]
+}
