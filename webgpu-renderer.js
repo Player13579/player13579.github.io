@@ -163,8 +163,13 @@
         if (!segment || segment.target !== target || segment.label !== stage) {
           flush();
           const batch = primitives.createBatch({ width: handle.logicalWidth, height: handle.logicalHeight,
-            reuseSpriteBindings: stage === 'hud' || stage === 'world:players:sprite',
-            orderedSpriteInstances: stage === 'hud', viewScope: primitiveViews });
+            // A nameplate's consecutive glyphs sample the same atlas page.
+            // Use the HUD's ordered instance path without crossing its background
+            // or changing actor/nameplate compositing order.
+            reuseSpriteBindings: stage === 'hud' || stage === 'world:players:sprite' ||
+              stage === 'player-nameplates',
+            orderedSpriteInstances: stage === 'hud' || stage === 'player-nameplates',
+            viewScope: primitiveViews });
           batches.push(batch);
           segment = { target, label: stage, batch };
         }
