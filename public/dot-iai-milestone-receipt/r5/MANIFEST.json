@@ -1,0 +1,66 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-iai-milestone-receipt-r5",
+  "group": "dot-iai-milestone-receipt",
+  "title": "EC到達による居合チャージ獲得",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-iai-milestone-receipt-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "instant-iai-acquired",
+    "variant": "ec-500",
+    "radius": 122,
+    "visualDurationMs": 820,
+    "previewDisplayPolicy": "gallery actor match only; live raw-event delivery not asserted",
+    "mainBlob": "9238ff809f7b9e6870f6a23a464f943c7b48e04b",
+    "workerBlob": "0ac42b1de55481819dccf0cf9deaf9763fef796c"
+  },
+  "designSource": {
+    "windowsMaintainerSha256": "7dab1fd8ae1030b7fe36e94efb28f75b61340dae856de58673f39f4aa689275d",
+    "eDesignQualitySha256": "394986c4445e8cec273c20372f6460585eaf6b3d286d8f1da5683a569e6189a7",
+    "bBaseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "bExtensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2360,
+      "sha256": "a3e66d8401133ba2debd6c947af57a29cf8429ef2f2d0ff6be540c5f937cfd74"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16995,
+      "sha256": "c746032611cd2426167d9f14f4fb086d4ca418fd0eb402bd8d49a67a53d86399"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1454,
+      "sha256": "c501d45e2d5d1988bbd4ed217350732dbcc1ab37202652a80bde0e72a70512fa"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 7116,
+      "sha256": "47e1cc93fc5ff4af7d8b86b69f44d62c993e8de0e0bf4578362bf5065dab42cc"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11278,
+      "sha256": "5f16cb31e51fc2952676ba4ab4d99feb5dab08e3c55c741bca384c8a0b5fadc2"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 4310,
+      "sha256": "a28c87a76951d4d09d36b3456c3f0bb12c3105480f219103591a710e9d8de331"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1853,
+      "sha256": "0832f89c8d9bf53029feddb3227bbcb568e181793bd2349a7fa15a1e467a2011"
+    }
+  ]
+}
