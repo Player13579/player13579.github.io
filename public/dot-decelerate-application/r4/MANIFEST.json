@@ -1,0 +1,61 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-decelerate-application-r4",
+  "group": "dot-decelerate-application",
+  "title": "ディーセラレート付与",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "parentEdition": "dot-decelerate-application-r3",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "gravity-decelerate",
+    "variant": "",
+    "radius": 150,
+    "eventDurationMs": 8000,
+    "visualDurationMs": 1140,
+    "previewDisplayPolicy": "gallery replay matches target; live raw-event delivery not asserted",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2336,
+      "sha256": "cd6fc8dedb1891c950cd7b3e80d018266695bf71bd12aa1e6a2e82152bc58b9d"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16785,
+      "sha256": "77080d72419a856c0d40ec42354ab8e3708883cf06cd69c123812b0940cefd00"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1301,
+      "sha256": "019eedd9bbac54003923edee4b661e09043be6c3957943b7abc3cbe0da41c3c1"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6731,
+      "sha256": "5da6e3168efdeaf040cae583a92a33a05247a46d655ad69798123be4f0ca0c85"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2723,
+      "sha256": "2c0877b77cffd0da6c73eaa1ebe1c59fdaa5b4707d3ad657ddadb3aae18b9b84"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1298,
+      "sha256": "ec598d29857b3980765c33066f69f672c202fcdd4e82c154fa6547d66301ec8e"
+    }
+  ]
+}
