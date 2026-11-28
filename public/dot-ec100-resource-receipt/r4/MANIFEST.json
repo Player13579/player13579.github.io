@@ -1,0 +1,61 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-ec100-resource-receipt-r4",
+  "group": "dot-ec100-resource-receipt",
+  "title": "EC100到達によるMP・SP補充",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "parentEdition": "dot-ec100-resource-receipt-r3",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "fighter-energy-destruction-milestone",
+    "variant": "100",
+    "radius": 138,
+    "eventDurationMs": 0,
+    "visualDurationMs": 720,
+    "previewDisplayPolicy": "gallery replay matches actor; live raw-event delivery not asserted",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2354,
+      "sha256": "840880b7cc54c4b14e3ae538fbb4c42ecd713114310b3a2e3b14da50f83ef1a9"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16797,
+      "sha256": "984a6f3f5970d3b10fde716d7300bd9cb7b91d01655fa3330655a40098f2418d"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1046,
+      "sha256": "ba04e040d230025e938d7d5971a19382fed9aa45323f675a736158ee4885a9ad"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6673,
+      "sha256": "3ab0ea9d21de9f77d7360f5e4e1a63ba54f18895284af7ea3fe48c2890dd1dd6"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2374,
+      "sha256": "49b334ad47a240d65f222320ae8fca5688a1d2f925d51374ffc96fc3cd669946"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1167,
+      "sha256": "edb4cbd6dfe27bac2af3a68dec0a6c44b4e96534f8c59bf025f3f064eef6132d"
+    }
+  ]
+}
