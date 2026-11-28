@@ -1,0 +1,75 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-task-presence-start-r5",
+  "group": "dot-task-presence-start",
+  "title": "タスク端末の待機入り",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-task-presence-start-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": {
+    "bBaseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "bLdmBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606",
+    "skillSha256": "7dab1fd8ae1030b7fe36e94efb28f75b61340dae856de58673f39f4aa689275d",
+    "effectQualitySha256": "394986c4445e8cec273c20372f6460585eaf6b3d286d8f1da5683a569e6189a7"
+  },
+  "eventAuthority": {
+    "type": "self-task-presence-snapshot",
+    "requires": "playing / ordinary living self defender / matching unfinished task ID and fresh presence timestamp / no hacker or alchemist / no vent",
+    "previewDurationMs": 1200,
+    "previewDisplayPolicy": "presence onset only; gallery fixture is not game transport",
+    "mainBlob": "9238ff809f7b9e6870f6a23a464f943c7b48e04b",
+    "workerBlob": "0ac42b1de55481819dccf0cf9deaf9763fef796c"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2369,
+      "sha256": "fe753044c6e4e50d70a3b3e4587cc6275f9a7519865510346908437e61e21813"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16474,
+      "sha256": "e70fb0b1f4ab410eaa474af6777bbf0ae1fc16ec201e02b4b95f81ac06a0d8e5"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1301,
+      "sha256": "568b28c2f31a731a3567324ee8eecd983284606c21751406a2536541255d6c73"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 1846,
+      "sha256": "e53ca8d4d07dd4f6c4ef78b259985a87dd9441acc38accb5f276149ed30f604b"
+    },
+    {
+      "path": "mesh.mjs",
+      "bytes": 1306,
+      "sha256": "2a0a96d67597f62d73634ea4b820dbf309d4f503274067ceb9c3a493cb7a4b9c"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11115,
+      "sha256": "102ada9a69708f385a882536e164432c35c2b945e1ce124003aead5d259f9f2d"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 706,
+      "sha256": "ff69529b2fb9d75dbb4833695b3976517547804f9f6d43f76c660e4042d91ac0"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2315,
+      "sha256": "3fe1d66919943aba93a6563af6617f013497902fe4cf63d3a056422c06f5e5bb"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1360,
+      "sha256": "bb415b8d6bbf8e696348bb5de41741b7ca7f090b64b5db1b3d50a1b80023f834"
+    }
+  ]
+}

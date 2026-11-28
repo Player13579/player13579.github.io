@@ -1,0 +1,195 @@
+{
+  "schema": "dva-dot-e-evidence/v1",
+  "versionId": "dot-task-presence-start-r5",
+  "status": "pass-limited-local-webgpu",
+  "sourceManifestSha256": "3377703012bf2060bde8911bd14986f88c6de7aef2a2619c3f9b49d8f48e5488",
+  "cpu": {
+    "finiteMeshes": 478,
+    "boundedStates": 2406,
+    "rejects": 15,
+    "audioRates": 6,
+    "geometry": "connected arc grows once, holds, then fades; fixed geometry under reduced motion"
+  },
+  "softwareWebGpu": {
+    "runtime": "Chromium SwiftShader",
+    "scale": "H64 CSS, DPR2",
+    "landscape": {
+      "frames": 72,
+      "candidateFrames": 24,
+      "naturalEndAndDefaultMute": 4
+    },
+    "portrait": [
+      {
+        "bright": false,
+        "reduced": false,
+        "H64": true,
+        "negative": 4,
+        "duplicateRejected": true
+      },
+      {
+        "bright": false,
+        "reduced": true,
+        "H64": true,
+        "negative": 4,
+        "duplicateRejected": true
+      },
+      {
+        "bright": true,
+        "reduced": false,
+        "H64": true,
+        "negative": 4,
+        "duplicateRejected": true
+      },
+      {
+        "bright": true,
+        "reduced": true,
+        "H64": true,
+        "negative": 4,
+        "duplicateRejected": true
+      }
+    ],
+    "comparedDifferentAgainstOld": 48,
+    "pixelExactStartAndEnd": 4
+  },
+  "sourceAuthority": {
+    "fixedGitHubHead": "8114d8a7371fa8258cbe741d7367d609d6394f51",
+    "galleryHtml": "a62e187e8950538b3b4c10b72a13db2c3c781e0b",
+    "galleryJs": "9cc3bea07e1f8d6cd3a0d423e3f16181ff1d2439",
+    "r5SourceAtFixedGitHubHead": "404",
+    "oldMeshGitBlobs": [
+      "473824efde5dccbab6b24d4e8dc5750d28ca7342",
+      "19ebb25daabc47d4283dac9a39c44358d5e2d20f",
+      "ddaa01dda5dea4bcbe8c237dbbac854c67a53e4f",
+      "9fd8cc0894361d4e02cc9c97fb0efa9858969f0f"
+    ],
+    "bBaseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "bLdmBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606",
+    "skillSha256": "7dab1fd8ae1030b7fe36e94efb28f75b61340dae856de58673f39f4aa689275d",
+    "effectQualitySha256": "394986c4445e8cec273c20372f6460585eaf6b3d286d8f1da5683a569e6189a7",
+    "v922MainBlob": "9238ff809f7b9e6870f6a23a464f943c7b48e04b",
+    "v922WorkerBlob": "0ac42b1de55481819dccf0cf9deaf9763fef796c",
+    "onset": "autoCompleteNearbyTask new task id stores current server timestamp and returns false before completion"
+  },
+  "matchesActualGameplay": false,
+  "gameIntegrationStatus": "not_connected",
+  "parentGalleryReplay": {
+    "runtime": "Chromium / SwiftShader",
+    "candidateOnly": true,
+    "fixedInput": {
+      "input": "6fe30286f3e75a0415ac3ff7210a641a0631155a",
+      "output": "56057a1003f980f56cc2925ff982b6846c968095",
+      "htmlIn": "a443142bf6266a67408af91153a2b50664ef1432",
+      "htmlOut": "8ae6027bc67708ec5e41deb654b9dac0739bc8b6",
+      "inverseByteExact": true
+    },
+    "replay": {
+      "readings": [
+        {
+          "version": "dot-task-presence-start-r5",
+          "frames": 4
+        },
+        {
+          "version": "dot-task-presence-start-r1",
+          "frames": 4
+        },
+        {
+          "version": "dot-task-presence-start-r2",
+          "frames": 3
+        },
+        {
+          "version": "dot-task-presence-start-r3",
+          "frames": 4
+        },
+        {
+          "version": "dot-task-presence-start-r4",
+          "frames": 3
+        },
+        {
+          "version": "dot-task-presence-start-r5",
+          "frames": 4
+        }
+      ],
+      "endpoints": [
+        {
+          "n": 1,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 1,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 2,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 2,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 3,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 3,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 4,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 4,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 5,
+          "bright": false,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        },
+        {
+          "n": 5,
+          "bright": true,
+          "initialEqualsEnd": true,
+          "midVisible": true
+        }
+      ],
+      "naturalEnd": true,
+      "errors": [],
+      "misses": [],
+      "pinnedDependencies": 20
+    },
+    "sorting": {
+      "fixedSlots": 91,
+      "movableRelativePreserved": 31,
+      "oldSlot": 21,
+      "newSlot": 0,
+      "firstMove": 0,
+      "adoptedIds": 40,
+      "maps": 2,
+      "unchangedOtherGroups": true,
+      "misses": []
+    }
+  },
+  "userAdopted": false,
+  "safariReplay": "not_run",
+  "listening": "not_run",
+  "publication": "not_run"
+}
