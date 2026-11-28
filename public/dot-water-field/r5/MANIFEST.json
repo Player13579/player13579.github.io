@@ -1,0 +1,71 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-water-field-r5",
+  "group": "dot-water-field",
+  "title": "投擲で生じる水域",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "water-field-snapshot",
+    "requires": "visible matching kind water field with world bounds and its lifecycle",
+    "eventType": "hazard-water",
+    "previewDurationMs": 4500,
+    "previewDisplayPolicy": "field-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2315,
+      "sha256": "c7ddbd5be51ebe61fe0185792d721856f834cdcbb7507ac18422e6d75fbdf9c1"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16601,
+      "sha256": "f974548007291399c022f0a5f56fff88ac545d9ecd10833524fb31e7fb76a354"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1429,
+      "sha256": "eb771a3ea688da3cb4c86663462bc43620531b30be8f7eda0f034cb0f12f63ef"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 1480,
+      "sha256": "eb52d3142e9879fd2a313aaf818b04be8c4647566164db2a1c741a77ee40eb49"
+    },
+    {
+      "path": "mesh.mjs",
+      "bytes": 2833,
+      "sha256": "78fbb0bdd3ab4b2cb4a372d90a896d72b8e8cf2d21817d815023b655a506ad2b"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 1151,
+      "sha256": "cef3945c107d7a9187f812c0bc7d57f3f914581045f903de527177a92976eb47"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11911,
+      "sha256": "0024c8f9bfe235a9d1ff82d7d5a627b3469f43dca410d51463baff05f2135157"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 3482,
+      "sha256": "aa71de98a51e7851a33f8089bccfffa7ca9345c733f9a5487e03b556166ef4e7"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1598,
+      "sha256": "9c3987eea492df39f2b654c9bd15235b04eb8bd58fe664a42ddcac91e7fc4d50"
+    }
+  ],
+  "design": "揺れて戻る水鏡",
+  "designAuthorityNote": "Current Windows DVA and B/LDM hash prefixes recorded in DESIGN.md; no older R3 reference hash copied over."
+}
