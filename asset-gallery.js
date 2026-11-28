@@ -5559,6 +5559,90 @@ function iceR2Retire(attempt, reason) {
 }
 
 
+const PARRY_R4_RETIREMENT_PIN=Object.freeze({versionId:'fighter-slash-parry-astra62-r4',route:'/public/astra-duo/parry-r4/index.html',adapterRevision:'parry-r4-startup-contract-r2'});
+function parryR4RetirementKnown(attempt){
+ const p=PARRY_R4_RETIREMENT_PIN;
+ if(attempt?.versionId===p.versionId||attempt?.childProtocolVersionId===p.versionId)return true;
+ for(const value of [attempt?.url,attempt?.iframe?.src]){if(!value)continue;try{if(new URL(value,location.href).pathname===p.route)return true}catch{}}
+ return false;
+}
+function parryR4RetirementTarget(attempt){
+ const p=PARRY_R4_RETIREMENT_PIN;
+ try{
+  const frame=attempt?.iframe,declared=new URL(attempt?.url,location.href),actual=new URL(frame?.src,location.href);
+  const exact=(u,k,v)=>u.searchParams.getAll(k).length===1&&u.searchParams.get(k)===String(v);
+  const route=u=>u.origin===location.origin&&u.pathname===p.route&&!u.username&&!u.password&&!u.hash&&exact(u,'embed','1')&&exact(u,'galleryAutoLoop','1')&&exact(u,'galleryVersionId',p.versionId)&&exact(u,'galleryStartupToken',attempt?.token)&&exact(u,'galleryAttemptEpoch',attempt?.issuedEpoch);
+  return attempt?.versionId===p.versionId&&attempt?.childProtocolVersionId===p.versionId&&attempt?.origin===location.origin&&frame?.isConnected===true&&!!frame.contentWindow&&/^[0-9a-f]{32}$/.test(attempt?.token||'')&&Number.isSafeInteger(attempt?.issuedEpoch)&&attempt.issuedEpoch>0&&Number.isSafeInteger(attempt?.sequence)&&attempt.sequence>=0&&route(declared)&&route(actual)&&declared.href===actual.href;
+ }catch{return false}
+}
+function parryR4RetirementIdentityValid(event,attempt){
+ const d=event?.data;
+ return parryR4RetirementTarget(attempt)&&event?.source===attempt.iframe.contentWindow&&event?.origin===location.origin&&d?.schema==='dva-gallery-startup/v1'&&d?.token===attempt.token&&d?.versionId===PARRY_R4_RETIREMENT_PIN.versionId&&d?.attemptEpoch===attempt.issuedEpoch&&Number.isSafeInteger(d?.sequence)&&d.sequence>attempt.sequence;
+}
+function parryR4RetirementReceiptValid(event,attempt){
+ const d=event?.data,l=d?.lifecycle;
+ const terminalDevice=(l?.deviceLifecycle==='destroyed'&&l.deviceDestroyed===true&&l.queueDrained===true)||(l?.deviceLifecycle==='not-acquired'&&l.deviceDestroyed===false&&l.queueDrained===false);
+ return parryR4RetirementIdentityValid(event,attempt)&&!Object.prototype.hasOwnProperty.call(d,'action')&&d.stage==='retired'&&d.status==='ready'&&!Object.prototype.hasOwnProperty.call(d,'error')&&d.adapterRevision===PARRY_R4_RETIREMENT_PIN.adapterRevision&&l?.disposed===true&&l.bootSettled===true&&terminalDevice&&typeof l.deviceLostObserved==='boolean'&&l.audioClosed===true&&l.pendingWork===0&&Array.isArray(l.cleanupErrors)&&l.cleanupErrors.length===0;
+}
+function parryR4Retire(attempt,reason){
+ const fail=detail=>{
+  attempt.retirementStatus='unknown';attempt.retirementFailure={message:detail};
+  const node=galleryChildStatusNode();if(node){node.hidden=false;node.textContent='Parry R4 retirement unconfirmed; iframe retained and switching blocked: '+galleryChildText(detail)}
+ };
+ let watch=attempt.parryR4RetirementWatch;
+ if(watch?.current)return watch.current.promise;
+ if(!parryR4RetirementTarget(attempt)){fail('target identity mismatch');return Promise.resolve(false)}
+ if(watch&&!watch.matches()){fail('parent attempt changed');return Promise.resolve(false)}
+ if(!watch){
+  const frame=attempt.iframe,source=frame.contentWindow,token=attempt.token,issuedEpoch=attempt.issuedEpoch;
+  attempt.retired=true;attempt.epoch=++galleryChildAttemptSerial;galleryChildClearTimers(attempt);window.removeEventListener('message',attempt.onMessage);
+  watch={frame,current:null,sent:false,progressRetrySent:false,retireAccepted:false,terminalSeen:false,matches:()=>activeGalleryChildStartup===attempt&&attempt.iframe===frame&&frame.contentWindow===source&&attempt.token===token&&attempt.issuedEpoch===issuedEpoch};
+  watch.finish=(call,ok,detail)=>{
+   if(!call||watch.current!==call)return;
+   watch.current=null;clearTimeout(call.timer);
+   if(attempt.retirementTimer===call.timer)attempt.retirementTimer=null;
+   if(attempt.retirementPromise===call.promise)attempt.retirementPromise=null;
+   if(!ok)fail(detail);call.resolve(ok);
+  };
+  watch.failCurrent=detail=>{if(watch.current)watch.finish(watch.current,false,detail);else fail(detail)};
+  watch.detach=()=>{window.removeEventListener('message',watch.onMessage);if(attempt.parryR4RetirementWatch===watch)attempt.parryR4RetirementWatch=null};
+  watch.sendRetire=()=>{
+   try{source.postMessage({schema:'dva-gallery-startup/v1',action:'retire',token,versionId:PARRY_R4_RETIREMENT_PIN.versionId,attemptEpoch:issuedEpoch},attempt.origin)}catch(e){watch.failCurrent(String(e?.message||e))}
+  };
+  watch.onMessage=event=>{
+   if(!watch.matches()){watch.failCurrent('parent attempt changed');watch.detach();return}
+   if(!parryR4RetirementIdentityValid(event,attempt))return;
+   const d=event.data;
+   if(d.stage==='retired'){
+    watch.terminalSeen=true;
+    if(!parryR4RetirementReceiptValid(event,attempt)){attempt.sequence=d.sequence;watch.failCurrent('child cleanup failed or retirement receipt malformed');return}
+    attempt.retirementReceipt=structuredClone(d);attempt.sequence=d.sequence;attempt.retirementStatus='disposed';delete attempt.retirementFailure;
+    watch.detach();
+    try{sfxBridge?.detachFrame(frame)}catch(e){console.error('Parry R4 disposed frame bridge detach failed',e)}
+    frame.remove();
+    if(activeGalleryChildStartup===attempt)activeGalleryChildStartup=null;
+    if(activeAudioFrame===frame){activeAudioFrame=null;activeAudioItem=null}
+    galleryChildClearStatus();watch.finish(watch.current,true);return;
+   }
+   attempt.sequence=d.sequence;
+   const pinned=d.adapterRevision===PARRY_R4_RETIREMENT_PIN.adapterRevision&&!Object.prototype.hasOwnProperty.call(d,'action');
+   if(!pinned)return;
+   if(d.status==='error'||Object.prototype.hasOwnProperty.call(d,'error')){watch.terminalSeen=true;watch.failCurrent(d.error?.message||'child startup failed');return}
+   if(d.stage==='ready'&&d.status==='cancelled'){watch.retireAccepted=true;return}
+   const progress=(d.status==='pending'&&['child-document','adapter','device','pipelines','first-frame'].includes(d.stage))||(d.stage==='playing'&&d.status==='ready');
+   if(watch.current&&progress&&!watch.retireAccepted&&!watch.terminalSeen&&!watch.current.progressRetrySent){watch.current.progressRetrySent=true;watch.sendRetire()}
+  };
+  attempt.parryR4RetirementWatch=watch;window.addEventListener('message',watch.onMessage);
+ }
+ attempt.retiredReason=reason;attempt.retirementStatus='pending';delete attempt.retirementFailure;
+ const call={progressRetrySent:false};call.promise=new Promise(resolve=>{call.resolve=resolve});watch.current=call;attempt.retirementPromise=call.promise;
+ call.timer=setTimeout(()=>watch.finish(call,false,'ACK timeout'),10000);attempt.retirementTimer=call.timer;
+ // The child emits its terminal envelope once. Recover an ACK that predates this listener
+ // only from the exact same-origin R4 frame, using the normal receipt validator.
+ try{const source=attempt.iframe.contentWindow;if(source&&source.location.href===attempt.iframe.src&&source.location.origin===attempt.origin){const data=source.__dvaGalleryStartupSnapshot?.();if(source===attempt.iframe.contentWindow&&source.location.href===attempt.iframe.src&&data?.stage==='retired')watch.onMessage({source,origin:source.location.origin,data})}}catch{}
+ if(watch.current===call)watch.sendRetire()
+ return call.promise;
+}
 function retireGalleryChildStartup(reason = 'selection-changed') {
   const attempt = activeGalleryChildStartup;
   invalidateGalleryAudioActivation();
@@ -5566,6 +5650,7 @@ function retireGalleryChildStartup(reason = 'selection-changed') {
   previewStatusPoll = null;
   if (!attempt) { galleryChildClearStatus(); return Promise.resolve(true); }
   if (attempt.retirementPromise) return attempt.retirementPromise;
+  if (parryR4RetirementKnown(attempt)) return parryR4Retire(attempt, reason);
   if (iceR2RetirementKnown(attempt)) return iceR2Retire(attempt, reason);
   if (substitutionR1TempKnown(attempt)) {
     return substitutionR1TempRetire(attempt, reason);

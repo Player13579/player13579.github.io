@@ -17,7 +17,7 @@
   "qualityReviewEffort": "high",
   "qualityReviewEvidence": "/public/astra-duo/parry-r4/quality-review.json",
   "visualReviewStatus": "pass",
-  "technicalReplayStatus": "pending-native-startup-contract-r1",
+  "technicalReplayStatus": "pass-limited-owned-candidate-parent-harness",
   "historicalNativeEvidenceRunId": "2026-11-18T21-49-42-803Z-12fe6c93-2d61-4dcc-988e-08501419cf42",
   "normalAudioListening": "not_run",
   "sfxListeningStatus": "not_run",
@@ -28,13 +28,13 @@
   "files": [
     {
       "route": "/public/astra-duo/parry-r4/index.html",
-      "sha256": "0cd60036ccf9c7fac36edbb9e971ccf0c6f6157e815efb7da2e88df4b0b17546",
+      "sha256": "4db3eec6febd1800ecc264241ddafe9424a558b236f43377f422edd139306f68",
       "bytes": 634
     },
     {
       "route": "/public/astra-duo/parry-r4/gallery-adapter.mjs",
-      "sha256": "85a5ed1d61b763fd9a8ab483a43aeb9313fe360f7ba510799d41ccfabca6052e",
-      "bytes": 9631
+      "sha256": "22e1933e37dc5d0d800f445b5d4028286e590351131fd2911b96a2817592dc57",
+      "bytes": 11931
     },
     {
       "route": "/public/astra-duo/parry-r4/effect.mjs",
@@ -48,15 +48,16 @@
     }
   ],
   "preservesPriorVersions": [],
-  "technicalRevisionId": "parry-r4-startup-contract-r1",
+  "technicalRevisionId": "parry-r4-startup-contract-r2",
   "visualReviewScope": "historical preserved source review; not current adapter native acceptance",
   "technicalVerification": {
-    "cpu": "pass",
-    "nativeGpu": "not_run",
+    "cpu": "pass-limited-r4-parent-retirement-harness",
+    "nativeGpu": "pass-limited-owned-candidate-parent-harness-h64",
     "currentPublicParentReplay": "not_run",
-    "pixels": "not_run",
+    "pixels": "not_reviewed",
     "audioListening": "not_run",
-    "retirement": "original-unmodified-not-tested"
+    "retirement": "pass-limited-normal-and-ultra-early",
+    "deviceLostObserved": false
   },
   "cpuEvidence": {
     "repository": "Player13579/windows-dva-migration",
@@ -68,8 +69,71 @@
     "scope": "CPU actual frame/emit/fail/stop/size literals with controlled fake GPU queue/scopes and literal current parent predicates; unrelated special routes stubbed as nonmatching. No full init, shader compile, actual iframe, native GPU or pixels."
   },
   "technicalImplementationModels": [
-    "GPT-6-Luna"
+    "GPT-6.1-Sol"
   ],
   "harnessImplementationModel": "GPT-6.1-Sol",
-  "technicalChangeBoundary": "Startup proof/error stages and index cache query only. Historical creative edition, shader, effect/SFX module and original dispose/onMessage/audio gesture code preserved."
+  "technicalChangeBoundary": "R4-only lifecycle technical derivative: authenticated parent retirement dispatch/watch, cancellation-safe adapter boot/disposal, owned GPU/audio cleanup, and R4 index cache query. Preserve effect.mjs, SFX, creative authorship, edition, quality history, visual history, and all unrelated versions.",
+  "technicalRevisionCandidateStatus": "candidate-not-published",
+  "historicalTechnicalReplayStatus": "pending-native-startup-contract-r1",
+  "historicalTechnicalVerification": {
+    "cpu": "pass",
+    "nativeGpu": "not_run",
+    "currentPublicParentReplay": "not_run",
+    "pixels": "not_run",
+    "audioListening": "not_run",
+    "retirement": "original-unmodified-not-tested"
+  },
+  "technicalApiAttribution": {
+    "responseId": "resp_0827304dd1d1670a006b0a932e483887d0af902667de69cc70",
+    "model": "gpt-6.1-sol",
+    "responseOutputSha256": "7f412e42006d42cebdbce79263f321049ca29e6198dc1d24e2096b2a403dbc73",
+    "scope": "R4-only parent/child retirement lifecycle; candidate normal and ultra-early replay evidence is limited to the pinned isolated H64 parent harness; no device.lost completion, published-parent, normal-audio, or quality acceptance claim."
+  },
+  "technicalDerivative": {
+    "status": "candidate",
+    "accepted": false,
+    "published": false,
+    "nativeTested": false,
+    "deploymentBlocked": true,
+    "historicalCpuEvidenceAppliesTo": "parry-r4-startup-contract-r1",
+    "parentBaseGitBlob": "8ed7499071454d9f0c24d50767c41af13c904cff",
+    "parentBaseSha256": "d33e34cf7baf2a70b839d173457f074809a3985938d2574e21ee2a884b97ce7b"
+  },
+  "candidateVerificationEvidence": {
+    "scope": "Owned isolated parent harness against the candidate route; not published Pages parent replay, normal audio listening, or quality acceptance.",
+    "viewport": "H64 / verify=1",
+    "parentSha256": "31dfbcc422e0bed87ec5cf769eab86619397a462e6b722e41dcab01f3b7a32aa",
+    "parentGitBlobSha1": "6d15a7d89be054a12a733176e28fa28f16475338",
+    "indexSha256": "4db3eec6febd1800ecc264241ddafe9424a558b236f43377f422edd139306f68",
+    "adapterSha256": "22e1933e37dc5d0d800f445b5d4028286e590351131fd2911b96a2817592dc57",
+    "effectSha256": "11162ad98b4eb7e1212491b10b09a287d14242e26d4ca64ed1d09efb14e008a1",
+    "runs": {
+      "normal": {
+        "eventsSha256": "2a0e4c7dbc690b5b1183aaff29bb4437a08b5bf5d576c72e50f45cf385f4dcd8",
+        "errors": 0,
+        "firstFrame": "GPU completed",
+        "retirement": "ready",
+        "deviceLifecycle": "destroyed",
+        "deviceDestroyed": true,
+        "queueDrained": true,
+        "deviceLostObserved": false
+      },
+      "ultraEarlySwitch": {
+        "eventsSha256": "81b55fdce23c019e91a59f1fe8e1ff2e65856a1d3841db1b6604a14233ef17db",
+        "errors": 0,
+        "retirement": "ready",
+        "bootSettled": true,
+        "deviceLifecycle": "not-acquired",
+        "deviceDestroyed": false,
+        "queueDrained": false,
+        "audioClosed": true,
+        "pendingWork": 0,
+        "deviceLostObserved": false
+      }
+    },
+    "limits": [
+      "No device.lost completion is claimed.",
+      "No formal published-parent replay or normal audio assessment is claimed."
+    ]
+  }
 }
