@@ -3733,6 +3733,31 @@ function skipAutomaticFullscreenOnIPad() {
     (navigator.platform === "MacIntel" && Number(navigator.maxTouchPoints) > 1);
 }
 
+function isInstalledIPadGame() {
+  return skipAutomaticFullscreenOnIPad() && (navigator.standalone === true ||
+    window.matchMedia?.("(display-mode: standalone)")?.matches === true ||
+    (window.matchMedia?.("(display-mode: fullscreen)")?.matches === true &&
+      !document.fullscreenElement && !document.webkitFullscreenElement));
+}
+
+let installedIPadRootResetFrame = 0;
+function clearInstalledIPadRootScroll() {
+  if (document.hidden || !document.documentElement.classList.contains("dva-ipad-installed-game")) return;
+  if (document.activeElement?.matches?.('input, textarea, select, [contenteditable="true"]')) return;
+  const root = document.scrollingElement;
+  if (root?.scrollLeft || root?.scrollTop || window.scrollX || window.scrollY)
+    window.scrollTo(0, 0);
+}
+
+function scheduleInstalledIPadRootReset() {
+  if (installedIPadRootResetFrame || document.hidden ||
+      !document.documentElement.classList.contains("dva-ipad-installed-game")) return;
+  installedIPadRootResetFrame = requestAnimationFrame(() => {
+    installedIPadRootResetFrame = 0;
+    clearInstalledIPadRootScroll();
+  });
+}
+
 function enterAutomaticFullscreen() {
   return manualFullscreenChosen || skipAutomaticFullscreenOnIPad()
     ? Promise.resolve(false) : enterFullscreen();
@@ -4164,6 +4189,11 @@ function setScreen(screen) {
   document.body.classList.toggle("tactics-open", next === "tactics");
   document.body.classList.toggle("game-open", next === "game");
   document.documentElement.classList.toggle("game-open", next === "game");
+  document.documentElement.classList.toggle("dva-ipad-installed-game", next === "game" && isInstalledIPadGame());
+  if (next !== "game" && installedIPadRootResetFrame) {
+    cancelAnimationFrame(installedIPadRootResetFrame);
+    installedIPadRootResetFrame = 0;
+  }
   if (next === "game") scheduleStableGameplayViewportReflow(previous !== "game" ? 0 : 80);
   els.startScreen.hidden = next === "game";
   els.startScreen.classList.remove("title-arriving");
@@ -4184,6 +4214,7 @@ function setScreen(screen) {
   else syncTacticsNovelVideo();
   if (next !== "game") clearMovementInput();
   window.scrollTo(0, 0);
+  scheduleInstalledIPadRootReset();
   requestAnimationFrame(() => syncKeyboardContext(true));
 }
 
@@ -9585,6 +9616,14 @@ function bindEvents() {
     cancelActiveRootShortcutHolds();
     cancelActiveAbilityBatchHolds();
   });
+  if (isInstalledIPadGame()) {
+    window.addEventListener("scroll", scheduleInstalledIPadRootReset, { passive: true });
+    window.visualViewport?.addEventListener("resize", scheduleInstalledIPadRootReset, { passive: true });
+    window.visualViewport?.addEventListener("scroll", scheduleInstalledIPadRootReset, { passive: true });
+    window.addEventListener("pageshow", scheduleInstalledIPadRootReset, { passive: true });
+    document.addEventListener("visibilitychange", scheduleInstalledIPadRootReset);
+    document.addEventListener("focusout", scheduleInstalledIPadRootReset);
+  }
   window.addEventListener("orientationchange", () => {
     scheduleViewportScaleRestore(true);
     scheduleStableGameplayViewportReflow(160);
