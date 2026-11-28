@@ -1,0 +1,73 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-shop-standard-receipt-r5",
+  "group": "dot-shop-standard-receipt",
+  "title": "ショップの通常購入成立",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-shop-standard-receipt-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "action-vending",
+    "variant": "",
+    "radius": 90,
+    "eventDurationMs": 0,
+    "visualDurationMs": 780,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2306,
+      "sha256": "d3536438b367088e4ff6411600ffcc2c9255b44f1bd598026ae96ceae72ab192"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16799,
+      "sha256": "38fc9754736402a30beb23a8fed8c12b679e6522808415bb8700f51a984cf198"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 982,
+      "sha256": "ebf43b1384fbca372f763294a6eef2696865ef61c6075a989531ca6dc93d399f"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6470,
+      "sha256": "570ab0f695c741508606ea72b0d83ad79e6de150d4275b8638cbcbc956269d38"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2632,
+      "sha256": "6e57359cbf3d5899e52a0c7622068c872a2aa7ba9ac4c58eb02a2694d2d7fcd9"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1332,
+      "sha256": "be8b067d56374fdc54fab02c698464a13ec48789b3cc80ce4b1c4d15fd20c97d"
+    }
+  ]
+}
