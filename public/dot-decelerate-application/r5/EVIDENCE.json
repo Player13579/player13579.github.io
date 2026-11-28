@@ -1,0 +1,183 @@
+{
+  "scope": "isolated Chromium 158 SwiftShader",
+  "fixedHead": "c7b4562608e79fd6d629926955f0053d7aea3ad9",
+  "releasedCatalog": "5060e5f5f8c7290be0f7c75bc0fc9af10c843dec",
+  "currentPublicEdition": 4,
+  "previousExactManifests": [
+    "5dbcdc59995a2e1157c60cc31e573a36e4c358aa",
+    "9c56721f3053df07d3a02a0193be75adf8b9da23",
+    "af96cf1ed4a8a2afb82e0ea44fd098b637c28ff6",
+    "7d7244882abdf65e5b012b46b42b7f48a0132b98"
+  ],
+  "oldFrames": 96,
+  "currentFrames": 80,
+  "metrics": [
+    {
+      "width": 844,
+      "background": "dark",
+      "actorCss": 64,
+      "dpr": 2,
+      "intervalMs": [
+        392,
+        550
+      ],
+      "forwardCssPx": {
+        "far": 7.5,
+        "center": 3.0,
+        "near": 7.5
+      },
+      "correlations": [
+        0.9811,
+        0.985,
+        0.9913
+      ],
+      "sheetSha256": "865a995bd83a424d9ac4b19a5e966eba829d2342fad1d1ee60aed568b9797f25"
+    },
+    {
+      "width": 844,
+      "background": "bright",
+      "actorCss": 64,
+      "dpr": 2,
+      "intervalMs": [
+        392,
+        550
+      ],
+      "forwardCssPx": {
+        "far": 7.5,
+        "center": 3.0,
+        "near": 7.5
+      },
+      "correlations": [
+        0.9774,
+        0.9832,
+        0.9897
+      ],
+      "sheetSha256": "9e5eaa54528dbb2d600fd49c644b718264ca8b74761c7f6bb9f6097f41631763"
+    },
+    {
+      "width": 390,
+      "background": "dark",
+      "actorCss": 64,
+      "dpr": 2,
+      "intervalMs": [
+        392,
+        550
+      ],
+      "forwardCssPx": {
+        "far": 7.0,
+        "center": 3.0,
+        "near": 7.5
+      },
+      "correlations": [
+        0.9775,
+        0.9902,
+        0.9829
+      ],
+      "sheetSha256": "6812affbb8d1d1ea1bb5be61252a081408b9c9f0654c86f30ced4ad818eb361e"
+    },
+    {
+      "width": 390,
+      "background": "bright",
+      "actorCss": 64,
+      "dpr": 2,
+      "intervalMs": [
+        392,
+        550
+      ],
+      "forwardCssPx": {
+        "far": 7.0,
+        "center": 3.0,
+        "near": 7.5
+      },
+      "correlations": [
+        0.9737,
+        0.9888,
+        0.98
+      ],
+      "sheetSha256": "b030aa3251218bae46fb38529bfbdc68f629b0b70c98e1f169258f8729620f63"
+    }
+  ],
+  "naturalExactTerminalCount": 8,
+  "raisedFaceAndBodyUnchanged": true,
+  "reducedGeometryIdentical": true,
+  "cpu": {
+    "rejected": 19,
+    "mesh": 2284,
+    "invariantComparisons": 20,
+    "audioRates": 6,
+    "referencePositive": true,
+    "localPositive": true,
+    "localRateRatio": 0.38,
+    "stableReduced": true
+  },
+  "volume": {
+    "normal": {
+      "enabled": true,
+      "starts": 2,
+      "live": 0,
+      "state": "running",
+      "verifiedMute": false,
+      "error": null,
+      "lastCause": "magic_dot_decelerate_4"
+    },
+    "muted": {
+      "enabled": false,
+      "starts": 2,
+      "live": 0,
+      "state": "running",
+      "verifiedMute": false,
+      "error": null,
+      "lastCause": "magic_dot_decelerate_4"
+    },
+    "onsets": [
+      [
+        0,
+        0.116
+      ],
+      [
+        0,
+        0.14419999999925495
+      ]
+    ],
+    "lateAndDuplicate": [
+      {
+        "ok": true,
+        "causeId": "magic_decelerate_r5_late",
+        "age": 500
+      },
+      {
+        "ok": false,
+        "reason": "duplicate",
+        "causeId": "magic_decelerate_r5_late"
+      }
+    ],
+    "verify": {
+      "attempt": {
+        "ok": false,
+        "enabled": false,
+        "status": "verify-muted",
+        "reason": "verify-muted",
+        "audioEnabled": false
+      },
+      "audio": {
+        "enabled": false,
+        "starts": 0,
+        "live": 0,
+        "state": "closed",
+        "verifiedMute": true,
+        "error": null,
+        "lastCause": null
+      }
+    },
+    "closedOnDispose": true
+  },
+  "physicalDevice": "not-run",
+  "listening": "not-run",
+  "mainGame": "not-connected",
+  "sourceEvidenceSha256": {
+    "gpu-proof.json": "d5a03614a9112f97496095a634d0fd69f3468df9158e1057379818787204f9e9",
+    "audio-proof.json": "92e3ce103859739f0f644d27b60dd2ceccb3606e74e6b091d453cf109df13894",
+    "cpu.log": "7987e60604b6a3b344099f5e65bb0b11d65a580ffd1eb92b59487c6976af75c6",
+    "public-old-manifests.json": "a198fc2bc420100d0af393b51c0def4093d5655f0b033960dc31cba592c722a8"
+  }
+}
