@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-const OFFLINE_WORKER_VERSION = "fire-e-causal-v920-box-grenades-r1";
+const OFFLINE_WORKER_VERSION = "limit-break-auto-ec-r922";
 // An 800 ms boot delay is evidence to warm Main, not a Worker failure.
 // Bound the initial readiness race independently; only one source may win.
 const OFFLINE_WORKER_SOFT_READY_MS = 800;
