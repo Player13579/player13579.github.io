@@ -242,7 +242,8 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
       <section class="game-area" data-ui-region="field-stage" aria-label="フィールドステージ">
         <header class="topbar">
           <div class="topbar-actions">
-            <button id="fullscreenButton" class="title-home-button fullscreen-button" data-hotkey="Y" type="button" title="全画面表示を切り替える" aria-label="全画面表示を切り替える">⛶</button>
+            <button id="fullscreenButton" aria-pressed="false" class="title-home-button fullscreen-button" data-hotkey="Y" type="button" title="全画面表示を切り替える" aria-label="全画面表示を切り替える">⛶</button>
+            <a id="fullscreenBrowserLink" class="title-home-button" hidden target="_blank" rel="noopener noreferrer" style="width:auto;padding-inline:10px;white-space:nowrap">ブラウザで開く</a>
             <button id="titleHomeButton" class="title-home-button semantic-mark-button" type="button" title="タイトルへ戻る" aria-label="タイトルへ戻る"><svg class="control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3.5h10v17H5zM15 12h6M18.5 8.5 22 12l-3.5 3.5M9 12h.01"/></svg></button>
             <button id="debugForceEndButton" class="debug-force-end" type="button" title="デバッグ用の強制終了" hidden>強制終了</button>
           </div>
@@ -807,7 +808,7 @@ if (/\biPad\b/i.test(navigator.userAgent || "") ||
     <script src="object-space-collision.js?v=webgpu-main-bootstrap-v5"></script>
     <script src="webgpu-game-input-surface.js?v=webgpu-only-input-v2"></script>
     <script src="dva-full-canvas-ui.js?v=full-canvas-ui-r1&amp;fieldUi=field-ui-persistent-forward-20261126&amp;unifiedPanel=one-match-panel-forward-20261126-1349-8f4f39c9b518&amp;onePagePanel=single-page-panel-forward-20261126-1407-27b1d0304f9b&amp;weaponPanelOwner=weapon-panel-owner-forward-20261126-1432-457efa34746a&amp;launcherStrictTouchC195=launcher-strict-touch-c195-forward-20261126-1942-796d6d154b1a&amp;closeForAction=6b841668367d"></script>
-    <script src="app.js?v=5b04e4d86e1c5f06a4143665ada6818e9564ac14"></script>
+    <script src="app.js?v=bf9c8037f97e8f41f86864ca2d35b5ff66c2c9ae"></script>
     <script>
 (() => {
   if (new URLSearchParams(location.search).get('viewportCheck') !== '1') return;

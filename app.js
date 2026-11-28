@@ -3693,12 +3693,35 @@ function applyStartupCommand() {
   els.debugForceEndButton.hidden = !state.debugForceEndEnabled;
 }
 
-async function enterFullscreen() {
-  if (IS_VERIFICATION_MODE) return false;
-  if (document.fullscreenElement || typeof document.documentElement.requestFullscreen !== "function") return false;
+function fullscreenElement() {
+  return document.fullscreenElement || document.webkitFullscreenElement || null;
+}
+
+async function enterFullscreen({ manual = false } = {}) {
+  if ((!manual && IS_VERIFICATION_MODE) || fullscreenElement()) return false;
+  const root = document.documentElement;
+  const standard = typeof root.requestFullscreen === "function";
+  const request = standard ? root.requestFullscreen : root.webkitRequestFullscreen;
+  if (typeof request !== "function" || (standard ? document.fullscreenEnabled : document.webkitFullscreenEnabled) === false) return false;
   try {
-    await document.documentElement.requestFullscreen({ navigationUI: "hide" });
-    return true;
+    const result = standard ? request.call(root, { navigationUI: "hide" }) : request.call(root);
+    if (result && typeof result.then === "function") {
+      await result;
+      return Boolean(fullscreenElement());
+    }
+    if (fullscreenElement()) return true;
+    // Older Safari methods return void and report the result in prefixed events.
+    return await new Promise((resolve) => {
+      const finish = () => {
+        clearTimeout(timer);
+        document.removeEventListener("webkitfullscreenchange", finish);
+        document.removeEventListener("webkitfullscreenerror", finish);
+        resolve(Boolean(fullscreenElement()));
+      };
+      const timer = setTimeout(finish, 950);
+      document.addEventListener("webkitfullscreenchange", finish, { once: true });
+      document.addEventListener("webkitfullscreenerror", finish, { once: true });
+    });
   } catch {
     return false;
   }
@@ -3711,7 +3734,8 @@ function skipAutomaticFullscreenOnIPad() {
 }
 
 function enterAutomaticFullscreen() {
-  return skipAutomaticFullscreenOnIPad() ? Promise.resolve(false) : enterFullscreen();
+  return manualFullscreenChosen || skipAutomaticFullscreenOnIPad()
+    ? Promise.resolve(false) : enterFullscreen();
 }
 
 const LOCKED_VIEWPORT_CONTENT = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover";
@@ -3926,43 +3950,73 @@ function createFullscreenSwipeGuard({ isActive, resolveScrollable }) {
   };
 }
 
+let cancelStartupFullscreenRetry = null;
+let fullscreenRequestPending = false;
+let manualFullscreenChosen = false;
+
 function requestStartupFullscreen() {
-  if (IS_VERIFICATION_MODE || skipAutomaticFullscreenOnIPad()) {
-    state.startupFullscreenPending = false;
-    return;
-  }
-  if (document.fullscreenElement) return;
+  if (IS_VERIFICATION_MODE || skipAutomaticFullscreenOnIPad() || fullscreenElement()) return;
+  if (cancelStartupFullscreenRetry || manualFullscreenChosen) return;
   state.startupFullscreenPending = true;
-  const retry = () => {
-    if (!state.startupFullscreenPending || document.fullscreenElement) return;
-    void enterAutomaticFullscreen().then((entered) => {
-      if (!entered) return;
-      state.startupFullscreenPending = false;
-      document.removeEventListener("pointerdown", retry, true);
-      document.removeEventListener("keydown", retry, true);
-    });
+  const stop = () => {
+    state.startupFullscreenPending = false;
+    document.removeEventListener("pointerdown", retry, true);
+    document.removeEventListener("keydown", retry, true);
+    cancelStartupFullscreenRetry = null;
   };
+  const retry = (event) => {
+    if (!state.startupFullscreenPending || fullscreenElement() || fullscreenRequestPending) return;
+    if (event?.code === "KeyY" || event?.target?.closest?.("#fullscreenButton")) return;
+    if (navigator.userActivation?.isActive === false) return;
+    fullscreenRequestPending = true;
+    void enterAutomaticFullscreen().then((entered) => {
+      if (entered) stop();
+    }).finally(() => { fullscreenRequestPending = false; });
+  };
+  cancelStartupFullscreenRetry = stop;
   document.addEventListener("pointerdown", retry, true);
   document.addEventListener("keydown", retry, true);
   retry();
 }
 
 async function toggleFullscreen() {
-  if (document.fullscreenElement) {
-    try {
-      await document.exitFullscreen();
-    } catch {}
-    return;
+  if (fullscreenRequestPending) return;
+  manualFullscreenChosen = true;
+  cancelStartupFullscreenRetry?.();
+  const escapeLink = document.getElementById("fullscreenBrowserLink");
+  if (escapeLink) escapeLink.hidden = true;
+  fullscreenRequestPending = true;
+  try {
+    if (fullscreenElement()) {
+      const exit = document.fullscreenElement ? document.exitFullscreen : document.webkitExitFullscreen;
+      if (typeof exit !== "function") throw new Error("Fullscreen exit unavailable");
+      await exit.call(document);
+      return;
+    }
+    if (await enterFullscreen({ manual: true })) return;
+    if (window.top !== window.self && escapeLink) {
+      escapeLink.href = location.href;
+      escapeLink.hidden = false;
+      showToast("埋め込み表示では全画面にできません。「ブラウザで開く」から開き直してください。");
+    } else {
+      showToast("ブラウザが全画面化を許可しませんでした。ブラウザのメニューに全画面表示があれば、そちらを使ってください。");
+    }
+  } catch {
+    showToast("全画面を終了できませんでした。ブラウザの全画面解除操作を使ってください。");
+  } finally {
+    fullscreenRequestPending = false;
+    syncFullscreenButton();
   }
-  const entered = await enterFullscreen();
-  if (!entered) showToast("この表示環境では全画面化が許可されていません。");
 }
 
 function syncFullscreenButton() {
-  const active = Boolean(document.fullscreenElement);
+  const active = Boolean(fullscreenElement());
   els.fullscreenButton.classList.toggle("active", active);
   els.fullscreenButton.title = active ? "全画面表示を終了する" : "全画面表示にする";
   els.fullscreenButton.setAttribute("aria-label", els.fullscreenButton.title);
+  els.fullscreenButton.setAttribute("aria-pressed", String(active));
+  const escapeLink = document.getElementById("fullscreenBrowserLink");
+  if (active && escapeLink) escapeLink.hidden = true;
 }
 
 function restoreVendingFocus({ focus = false, opener = null } = {}) {
@@ -8320,6 +8374,7 @@ function bindEvents() {
   });
   els.movementAccToggleButton.addEventListener("click", () => void toggleMovementAcc());
   document.addEventListener("fullscreenchange", syncFullscreenButton);
+  document.addEventListener("webkitfullscreenchange", syncFullscreenButton);
   els.titleHomeButton.addEventListener("click", () => void returnToTitle());
   els.tacticsBackButton.addEventListener("click", () => {
     const destination = state.tacticsReturnScreen === "game" && state.data ? "game" : "title";
