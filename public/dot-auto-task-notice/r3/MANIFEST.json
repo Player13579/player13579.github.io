@@ -1,0 +1,76 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-auto-task-notice-r3",
+  "group": "dot-auto-task-notice",
+  "title": "ゲーム内の自動タスク完了",
+  "authorDisplayName": "dot",
+  "edition": 3,
+  "editionCap": 5,
+  "parentEdition": "dot-auto-task-notice-r2",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "action-task",
+    "variant": "hacker-auto",
+    "modes": [
+      "download",
+      "upload"
+    ],
+    "eventDurationMs": 0,
+    "visualDurationMs": 1040,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2366,
+      "sha256": "ad5f4a5ac4c1aa368e48b9cb251abf5644e2d944c3f88486ecdad38fba11bb2f"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16790,
+      "sha256": "ca27233fb8c5e5f29cd554f9467d3b74f5b6de5b726fbeecc4c7db524c2a2e7c"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 999,
+      "sha256": "db31621507502af00a032d1af1127ecb04546794f1555280453948a377b87022"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6432,
+      "sha256": "9c5e70f276f4836200acedfaaf9df48dd91334825940d740b8621e874080dd34"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2663,
+      "sha256": "896fb9a07686e01a62c06d73b3cd06d98a794874c0da6be291c0c2d5634b60ed"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1083,
+      "sha256": "a50cca1aa1bdd83931357fb781c1f756ec65d688e494e26e1315fa5f60ffd660"
+    }
+  ]
+}
