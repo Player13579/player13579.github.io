@@ -1,0 +1,73 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-scroll-warp-arrival-r4",
+  "group": "dot-scroll-warp-arrival",
+  "title": "テレポートマップスクロール到着",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "parentEdition": "dot-scroll-warp-arrival-r3",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "action-warp",
+    "variant": "arrival",
+    "radius": 125,
+    "eventDurationMs": 0,
+    "visualDurationMs": 760,
+    "visibility": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2390,
+      "sha256": "102cca9df5100be7a4cf5ae3f1f3df33587cb3dd8409915a7f9033bc0936c1c4"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16798,
+      "sha256": "920a56e9b0691d19df832d9afb0cdd73b67d544e472fac90601f4c9ccb179c11"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1027,
+      "sha256": "71b3a5f894014f83a4fb72f3fbfd7fc8e2dd57434fe087d70d0f00113e7758d2"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6970,
+      "sha256": "50f5911067a98912a4f1d4729d27bf3bbaa87d8b8df92afe716c43e9738c0031"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1966,
+      "sha256": "0f7c07fb274cb265ee844f747aaa3191ea7fa4ff7278e17808f88733b32919f4"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 665,
+      "sha256": "de82c68d8a6b3bfbfb4a2e85684f435dc0818229cee5a29fdcfb5ae255500a4e"
+    }
+  ]
+}
