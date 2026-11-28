@@ -5,8 +5,8 @@
 // v520 adds independent Natural Recovery resources and its persistent marker,
 // fixed Renki rewards, background resume repair, wall-default vector attacks,
 // and evidence-bound enemy Bot corpse investigation.
-const RUNTIME_RELEASE = "dva-zero-stamina-feedback-5b04e4d86e1c-ipad-pwa-root-forward-81e0c5b430d2-4eef26a6-4c548bef-hud-translucency-r1-5afd549c-c16de371";
-const CACHE_NAME = "dva-static-zero-stamina-feedback-5b04e4d86e1c-ipad-pwa-root-forward-81e0c5b430d2-4eef26a6-4c548bef-hud-translucency-r1-5afd549c-c16de371";
+const RUNTIME_RELEASE = "dva-zero-stamina-feedback-5b04e4d86e1c-ipad-pwa-root-forward-81e0c5b430d2-4eef26a6-4c548bef-hud-translucency-r1-5afd549c-c16de371-flora-heal-refresh-5f4cd35acfec-2c567af0";
+const CACHE_NAME = "dva-static-zero-stamina-feedback-5b04e4d86e1c-ipad-pwa-root-forward-81e0c5b430d2-4eef26a6-4c548bef-hud-translucency-r1-5afd549c-c16de371-flora-heal-refresh-5f4cd35acfec-2c567af0";
 const RUNTIME_RECOVERY_REVISION = "v591-movement-transport-resilience-1";
 // These constructors are required even before the corresponding effect is used.
 const REQUIRED_RENDER_BOOT_ADDITIONS = Object.freeze([

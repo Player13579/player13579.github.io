@@ -24603,6 +24603,26 @@ function captureWebGPUMainAppLateMagicScene(data = state.data, viewport, camera,
     }
     unsupported.push({ index, type, id: effect.id, reason: "no-complete-webgpu-effect-port" });
   }
+  // Heal is one continuing visual composition per actor. A newer valid
+  // Flora cast replaces that actor's old visual, not its live rule effects.
+  const latestHealByOwner = new Map();
+  for (const event of events) {
+    if (event.type !== 'healE') continue;
+    const ownerId = event.input.planned.ownerId;
+    const at = event.input.effect.at;
+    if (!Number.isFinite(at)) continue;
+    const previous = latestHealByOwner.get(ownerId);
+    if (!previous || at >= previous.input.effect.at)
+      latestHealByOwner.set(ownerId, event);
+  }
+  for (let i = events.length - 1; i >= 0; i--) {
+    const event = events[i];
+    if (event.type !== 'healE' || !Number.isFinite(event.input.effect.at)) continue;
+    const newest = latestHealByOwner.get(event.input.planned.ownerId);
+    if (!newest || newest === event) continue;
+    omitted.push({ effectId: event.effectId, reason: 'heal-visual-superseded' });
+    events.splice(i, 1);
+  }
   return { stage: { camera, zoom, now, roomId: String(data.roomId || ''), phase: data.phase,
     viewerId: String(data.selfId || ''),
     reducedMotion, sourceEffectIds, events, omitted, deferredVisible,
