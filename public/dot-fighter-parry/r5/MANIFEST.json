@@ -1,0 +1,53 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-fighter-parry-r5",
+  "group": "dot-fighter-parry",
+  "title": "闘士の受け流し",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "date": "2026-11-28",
+  "event": "fighter-slash-parry",
+  "releaseStatus": "source-manifest-not-a-quality-or-publication-claim",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "entry": "index.html",
+  "parentEdition": "dot-fighter-parry-r4",
+  "designReferenceSha256": {
+    "基底.md": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7",
+    "拡張.md": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2321,
+      "sha256": "6bd8d8389d184f5655b841dacff9276d1e1c6d72559af2bfe69cc37d9946546a"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16905,
+      "sha256": "d72ff3b2f93e60f20b830c4a8722525026f5a536560632366908caa17f07322d"
+    },
+    {
+      "path": "parry.mjs",
+      "bytes": 9662,
+      "sha256": "8603c9beb93917cb632abd0acccb4b5138aebd3fab18904dc005823868c56fc9"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 762,
+      "sha256": "682ef2897eb89513b4f1ccab164ae7d4767f3c6bfa0299b932a233b2969333c1"
+    },
+    {
+      "path": "contract-test.mjs",
+      "bytes": 3448,
+      "sha256": "792bbbe1b61845080fb3c109203044d6796f396643116cf003b95beb7f5fd256"
+    }
+  ]
+}
