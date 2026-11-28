@@ -1,0 +1,72 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-thrown-mineral-water-receipt-r3",
+  "group": "dot-thrown-mineral-water-receipt",
+  "title": "投げたミネラルウォーターの適用・対象者側",
+  "authorDisplayName": "dot",
+  "edition": 3,
+  "editionCap": 5,
+  "parentEdition": "dot-thrown-mineral-water-receipt-r2",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "thrown-water-application-receipt",
+    "requires": "recipient only, exact thrown-water variant, not a resource amount",
+    "eventType": "gain-stamina",
+    "visualDurationMs": 1060,
+    "previewDisplayPolicy": "actor-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2387,
+      "sha256": "8394d877a22b877d925465b2a7cb5302d52ad9e6a2161a39601da52c10919212"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16370,
+      "sha256": "746bf027ecabe61c3f42474b3cd3fec5bd5c7b4db8e6fb48cb28eb47590598ce"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1002,
+      "sha256": "0dbf5a43faf31ef979722a3b4c71a530bb2e02ed4f6658174f5d9f7c3455919a"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 7365,
+      "sha256": "468e1ccdd346956ee5543885ac26cd4ccfe0ffa7bcf33031f1ac1e06095396f4"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1430,
+      "sha256": "f0ba3c758e30030ef767746fe9ae947840738e69fa25af0f8f28a1ba09c8ab3f"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1071,
+      "sha256": "72eb1b5e66873805c4d68d9340ed5dcb5e428c21d40ca89b07c1f7d043b49398"
+    }
+  ]
+}
