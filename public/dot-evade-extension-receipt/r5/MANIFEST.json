@@ -1,0 +1,73 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-evade-extension-receipt-r5",
+  "group": "dot-evade-extension-receipt",
+  "title": "回避拡張の獲得",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-evade-extension-receipt-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "instant-evade-acquired",
+    "sources": [
+      "vending",
+      "mystery-box"
+    ],
+    "previewDisplayPolicy": "recipient-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2327,
+      "sha256": "44a674e8afd96368660c5a0bc1eb4f5fc61f47008bbe1b088f6e3826e0121965"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16798,
+      "sha256": "86b9c89ef7764c2477f331abc0f4f505419b6cb5086b559c6f11b51abe1ee2dc"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1684,
+      "sha256": "6388874d2329af819bb704758844555036aeec2bfa217f46534ff8bec35a589a"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6980,
+      "sha256": "222572c8848ad3713301a133aef5895e61015b38f5e5c2b784c53847f5b363be"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 3068,
+      "sha256": "ed3c5a36cf6ff0f7697452555bf7ac513037c15417912759f4a4d18976301c7f"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1025,
+      "sha256": "68bdd472874fd27bf3cf57d5ca468962d097e56cd4d9caaefb66ae11d253860f"
+    }
+  ]
+}
