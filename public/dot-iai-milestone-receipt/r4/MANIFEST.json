@@ -1,0 +1,68 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-iai-milestone-receipt-r4",
+  "group": "dot-iai-milestone-receipt",
+  "title": "EC到達による居合チャージ獲得",
+  "editionTitle": "掌へしまう光",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "parentEdition": "dot-iai-milestone-receipt-r3",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "instant-iai-acquired",
+    "variant": "ec-500",
+    "radius": 122,
+    "visualDurationMs": 820,
+    "previewDisplayPolicy": "gallery actor match only; live raw-event delivery not asserted",
+    "mainBlob": "9238ff809f7b9e6870f6a23a464f943c7b48e04b",
+    "workerBlob": "0ac42b1de55481819dccf0cf9deaf9763fef796c"
+  },
+  "designSource": {
+    "windowsMaintainerSha256": "7dab1fd8ae1030b7fe36e94efb28f75b61340dae856de58673f39f4aa689275d",
+    "eDesignQualitySha256": "394986c4445e8cec273c20372f6460585eaf6b3d286d8f1da5683a569e6189a7",
+    "bBaseBlob": "4660b1b37013b4cd1c1fc24201a1696a0eee6dbb",
+    "bExtensionBlob": "e0fe7a0ea4191d0b24b1ab468e00ae0a73280606"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2387,
+      "sha256": "654487e154f4a3c1c3639459cc509ee5d8a40a3556439114ad2df1337e47ae25"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16995,
+      "sha256": "c746032611cd2426167d9f14f4fb086d4ca418fd0eb402bd8d49a67a53d86399"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1699,
+      "sha256": "90c5db80df58ba2a32b7d470e3a93dddda0111c77eb027c0859a7e2b5ea76550"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 8344,
+      "sha256": "5ea07e80585a487e82f6e04cfd458bea8eff51141880544a9d79fc1fb61fc2ed"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11278,
+      "sha256": "5f16cb31e51fc2952676ba4ab4d99feb5dab08e3c55c741bca384c8a0b5fadc2"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 4178,
+      "sha256": "53c6564383df8b855956bd6f6d5d2af0d29126526846d20b2b4a5aae25fba3b3"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1750,
+      "sha256": "da1990013d353bd4785a68eefa58ac8f64907ccc6908c620ef4a20a119b826a5"
+    }
+  ],
+  "evidenceSha256": "eec76a2596d1102b3f577061cc33896e329249daa8a18fa9d71e9fa54356d8c6"
+}
