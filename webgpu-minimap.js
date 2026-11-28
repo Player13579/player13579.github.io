@@ -22,6 +22,38 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
   const clamp = value => Math.max(0, Math.min(1, value));
   const finite = value => Number.isFinite(value);
 
+  // Resolve the room/corridor union into nonoverlapping bands before blending.
+  // Otherwise an intersection receives the same fill twice and loses transparency.
+  function floorUnion(areas) {
+    const valid = areas.filter(({ x, y, w, h }) =>
+      [x, y, w, h, x + w, y + h].every(finite) && w > 0 && h > 0);
+    const xs = [...new Set(valid.flatMap(area => [area.x, area.x + area.w]))].sort((a, b) => a - b);
+    const result = [];
+    let last = new Map();
+    for (let i = 1; i < xs.length; i++) {
+      const x = xs[i - 1], right = xs[i], spans = [];
+      const ys = valid.filter(area => area.x <= x && area.x + area.w >= right)
+        .map(area => [area.y, area.y + area.h]).sort((a, b) => a[0] - b[0]);
+      for (const [y, bottom] of ys) {
+        const tail = spans[spans.length - 1];
+        if (tail && y <= tail[1]) tail[1] = Math.max(tail[1], bottom);
+        else spans.push([y, bottom]);
+      }
+      const next = new Map();
+      for (const [y, bottom] of spans) {
+        const key = y + ':' + bottom;
+        const area = last.get(key);
+        if (area) { area.w = right - area.x; next.set(key, area); }
+        else {
+          const fresh = { x, y, w: right - x, h: bottom - y };
+          result.push(fresh); next.set(key, fresh);
+        }
+      }
+      last = next;
+    }
+    return result;
+  }
+
   function plan(scene, viewport) { return planScene(scene, viewport, false); }
   function planScene(scene, viewport, dynamicOnly) {
     const map = scene?.map, bounds = scene?.bounds;
@@ -42,10 +74,11 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
     const ring = (x, y, radius, width, color) => push('ring', [ox + x * scale, oy + y * scale, radius * scale, width * scale], color);
     if (!dynamicOnly) {
       // Canvas roundRect fill has a radius of 8 logical pixels.
-      push('roundRect', [bounds.x, bounds.y, bounds.width, bounds.height, 8], [238 / 255, 246 / 255, 250 / 255, .84]);
-      const floor = hex('#6f8798');
-      for (const area of [...(map.rooms || []), ...(map.corridorAreas || [])]) rect(area.x, area.y, area.w, area.h, floor);
+      push('roundRect', [bounds.x, bounds.y, bounds.width, bounds.height, 8], [238 / 255, 246 / 255, 250 / 255, .36]);
+      const floor = [111 / 255, 135 / 255, 152 / 255, .54];
+      for (const area of floorUnion([...(map.rooms || []), ...(map.corridorAreas || [])])) rect(area.x, area.y, area.w, area.h, floor);
     }
+    const staticShapeCount = shapes.length;
     for (const task of scene.tasks || []) {
       if (task.done) continue;
       const station = map.stations?.find(item => item.id === task.stationId);
@@ -71,7 +104,7 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
       disc(player.x, player.y, 34, hex('#fef08a'));
       ring(player.x, player.y, 34, 14, hex('#0e7490'));
     }
-    return Object.freeze({ bounds, scale, shapes: Object.freeze(shapes) });
+    return Object.freeze({ bounds, scale, staticShapeCount, shapes: Object.freeze(shapes) });
   }
 
   const dynamicFanTrig = Array.from({length: 48}, (_, i) => {
@@ -288,8 +321,7 @@ struct Fragment { @builtin(position) position: vec4f, @location(0) color: vec4f 
       const key = staticGeometryKey(scene, viewport);
       if (key === null) { recentGeometry=null;return verticesFor(planResult, viewport); }
       const cached = touchStaticGeometry(key);
-      const staticShapeCount = 1 + (scene.map.rooms == null ? 0 : scene.map.rooms.length) +
-        (scene.map.corridorAreas == null ? 0 : scene.map.corridorAreas.length);
+      const { staticShapeCount } = planResult;
       const staticPlan = { shapes: planResult.shapes.slice(0, staticShapeCount) };
       const dynamicPlan = { shapes: planResult.shapes.slice(staticShapeCount) };
       const staticVertices = cached || cacheStaticGeometry(key, verticesFor(staticPlan, viewport));
