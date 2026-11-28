@@ -1,0 +1,75 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-writing-desk-use-r2",
+  "group": "dot-writing-desk-use",
+  "title": "書簡机の利用成立",
+  "authorDisplayName": "dot",
+  "edition": 2,
+  "editionCap": 5,
+  "parentEdition": "dot-writing-desk-use-r1",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "object-radioConsole",
+    "objectId": "v302-comms-radioConsole-1",
+    "effectKind": "luckBoost",
+    "variant": "",
+    "radius": 100,
+    "eventDurationMs": 0,
+    "visualDurationMs": 610,
+    "previewDisplayPolicy": "owner-and-object-cause-once",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2333,
+      "sha256": "35a8c6a01acb23fd16b3511130fc1a6b01ee08e56bd044f1b5211df7ce0a37ec"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16499,
+      "sha256": "177c0020bd820fb2f91c431b8484068568f8f49c6d20dfa7d560196e364d076e"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1242,
+      "sha256": "829852d70a8e5a87db7e651eafcc975ca45c1dee7db26c773dda2c6885bc0d0a"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 5214,
+      "sha256": "1ffe76774ffd1f04f7f67e170356f153997c892c65d4c0ff8c30b3f58ede2b34"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2091,
+      "sha256": "24ddfc9549dc9e3aa8cea7cf673d1288624841e7b64148ccaa37dd453ca0ee6f"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1078,
+      "sha256": "c6c14733e001c71d7b33b327d8a1001413d92dcc2027f95ffe73809bba032898"
+    }
+  ]
+}
