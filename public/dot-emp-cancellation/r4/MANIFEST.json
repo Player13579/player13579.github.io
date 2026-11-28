@@ -1,0 +1,82 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-emp-cancellation-r4",
+  "group": "dot-emp-cancellation",
+  "title": "逆位相EMP相殺",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "visible-opposite-phase-settlement",
+    "requires": "emp-cancel / opposite, two distinct pulse receipts, shared axis, exact matching interaction:cancel causal identity",
+    "eventType": "emp-cancel",
+    "previewDurationMs": 1000,
+    "previewDisplayPolicy": "settlement-only",
+    "mainBlob": "9238ff809f7b9e6870f6a23a464f943c7b48e04b",
+    "workerBlob": "0ac42b1de55481819dccf0cf9deaf9763fef796c"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2339,
+      "sha256": "c5830a7c463193b22575838bac8abe44d421bc29dc79b78f0aadd232156042ca"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16477,
+      "sha256": "5c744efb619820f40c8ae5828b843865520ae2ccec429085bbfcb68d14d4d87f"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1372,
+      "sha256": "249577afa2bc53c4ac3951f58c41e5fff55d7818fe9c3e567142dca45e199ea9"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 1514,
+      "sha256": "2635d400af81525319a6fb448fae089c064154fe1a4869d8ca7b7344a00b2872"
+    },
+    {
+      "path": "mesh.mjs",
+      "bytes": 1116,
+      "sha256": "40f219761760fb285ed4aebbcd54e5cccd0d5fe1ba465866103a8c81dca78261"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 716,
+      "sha256": "6dbfabc9131e329eb782fd80e464d8fc9e34b5580d5cc8cc8bc6fcd4986cea24"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11115,
+      "sha256": "102ada9a69708f385a882536e164432c35c2b945e1ce124003aead5d259f9f2d"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2606,
+      "sha256": "f1b6561175a18ed0ec0caba4824f968c39450c7cec2ae0147555dadaf6b0d09c"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1125,
+      "sha256": "a129dbb676231d1841c11df62e66cdd31798503b104dce3bcd412f2dc1dfa218"
+    }
+  ],
+  "parentEdition": "dot-emp-cancellation-r3"
+}
