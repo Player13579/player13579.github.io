@@ -1,0 +1,81 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-fighter-ec-throw-bind-r5",
+  "group": "dot-fighter-ec-throw-bind",
+  "title": "ファイター・投擲EC付与",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-fighter-ec-throw-bind-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "eventAuthority": {
+    "type": "fighter-energy-release",
+    "variantPattern": "throw:remaining-ec-<nonnegative integer>",
+    "radius": 92,
+    "eventDurationRangeMs": [
+      240,
+      920
+    ],
+    "visualDurationMaxMs": 540,
+    "previewDisplayPolicy": "gallery replay matches actor; live raw-event delivery not asserted",
+    "mainBlob": "9238ff809f7b9e6870f6a23a464f943c7b48e04b",
+    "workerBlob": "0ac42b1de55481819dccf0cf9deaf9763fef796c",
+    "revision": "v922",
+    "conditions": [
+      "has fighter operator access",
+      "successfully consumes fighter energy charge 1"
+    ]
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2342,
+      "sha256": "ba589da74754d4bb8ca6a30b87c661d5f988f22d1ec31a5264327880e1f509e6"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16721,
+      "sha256": "5efac30eaf2dd731d188a11ab7026673f4566a52dfac597dbb433721aa9b512e"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1215,
+      "sha256": "40a21c08322b225cd99e4f1b9adfb4bf7ff3a76c32dfa434b0b384361522aa44"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6861,
+      "sha256": "3545a80542578d090554f7f057a5118e022578457dab9b0b23575c3bd8ec9afb"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2722,
+      "sha256": "9163a9358dff29da5094d76b15eaf4bb07c1c12d6998abcfe77abdd420ad0d5d"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1083,
+      "sha256": "d2f0453f19335b98f119629061cbba25140d7f507c43531b65c09d594b7826d5"
+    }
+  ],
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ]
+}
