@@ -1,0 +1,74 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-scroll-warp-arrival-r5",
+  "group": "dot-scroll-warp-arrival",
+  "title": "テレポートマップスクロール到着",
+  "authorDisplayName": "dot",
+  "edition": 5,
+  "editionCap": 5,
+  "parentEdition": "dot-scroll-warp-arrival-r4",
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "action-warp",
+    "variant": "arrival",
+    "radius": 125,
+    "eventDurationMs": 0,
+    "visualDurationMs": 700,
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639",
+    "previewVisibility": "actor-only",
+    "wireVisibility": "ordinary-visibility-filter-not-actor-only"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2399,
+      "sha256": "c27fb135d1ea6d96d6530f358871fdfb3d4d618a44675afb8e7701daab640ad5"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16798,
+      "sha256": "920a56e9b0691d19df832d9afb0cdd73b67d544e472fac90601f4c9ccb179c11"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1028,
+      "sha256": "bad962ec297407e3563b5b7e75dc76589ec9a30a7b3e302f77fe7a2152e8ade0"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 6865,
+      "sha256": "fbf52f5610197a1ce55456d782c14f3d899d2dc373386d24e97a238c77824076"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11254,
+      "sha256": "bb488eab92e1fb7ec058eb7a017a8b16a1ec5f1c10938d3a8050e045dd3cf80f"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 1947,
+      "sha256": "533a56aafecff14c08812951d62ccecb6c2fd0d4f958f601fa87fcc083416048"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1025,
+      "sha256": "d5e7558d302b134cfa4e6c04273e92b05175d910ebc6180014bcdc01fb7ffe94"
+    }
+  ]
+}
