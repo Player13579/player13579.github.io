@@ -1,0 +1,81 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-enhance-activation-r3",
+  "group": "dot-enhance-activation",
+  "title": "エンハンス成立",
+  "authorDisplayName": "dot",
+  "edition": 3,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "visible-enhance-head-marker",
+    "requires": "enhance-activation / radius 0 / markerCount 1 / 1200ms and visible valid actor",
+    "eventType": "enhance-activation",
+    "previewDurationMs": 1200,
+    "previewDisplayPolicy": "one-overhead-marker",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2303,
+      "sha256": "77304dfe72f98bfc1c2c700798a946de81de71804b04d8bb5bfaddbadbae5de5"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16479,
+      "sha256": "475f3f17d685e46667343f480882a2cfc877d38d8d84f890311800c64b625fc1"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1084,
+      "sha256": "61ce3ec882288d7f79099369106358b7537ad4f039f416a9e4b91c90a9895f47"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 1825,
+      "sha256": "4765e8a01e0ee52a13ec0f73734670ca5308b8cb6a03f4e15ecd550a0fc8c093"
+    },
+    {
+      "path": "mesh.mjs",
+      "bytes": 1363,
+      "sha256": "fc0c368bc169c25cff68646a6c0ca160a3b9a17de316bd78b19b4754448a2473"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 540,
+      "sha256": "265b3778b48e6d91501c14511e72313e1ae4d03aa757d6fe0f26b6cdacdcabd8"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11115,
+      "sha256": "102ada9a69708f385a882536e164432c35c2b945e1ce124003aead5d259f9f2d"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2420,
+      "sha256": "9e8bded4035ba784200b2a49bda7631ea5b99eb9ef05c0f4301837718a5fd17d"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 1079,
+      "sha256": "39b0221be768248b2ada1a1e136fac7fe98e524ce2b6cd77762972b52677a591"
+    }
+  ]
+}

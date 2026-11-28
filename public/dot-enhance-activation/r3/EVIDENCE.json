@@ -1,0 +1,78 @@
+{
+  "schema": "dva-dot-e-technical-replay/v1",
+  "versionId": "dot-enhance-activation-r3",
+  "galleryOnly": true,
+  "qualityReviewStatus": "pending-review",
+  "userAdopted": false,
+  "tests": {
+    "rejectedFixtures": 16,
+    "timelineSamples": 2406,
+    "boundedMeshSamples": 478,
+    "transactionIdAndOutcomeFieldsInvariant": true,
+    "audioSampleRates": [
+      8000,
+      22050,
+      24000,
+      44100,
+      48000,
+      96000
+    ]
+  },
+  "display": {
+    "renderer": "Chromium software WebGPU (SwiftShader Vulkan)",
+    "viewportsCssPixels": [
+      [
+        844,
+        390
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "DPR": 2,
+    "actorHeightReferenceCssPixels": 64,
+    "backgrounds": [
+      "dark",
+      "bright"
+    ],
+    "motionModes": [
+      "normal",
+      "reduced"
+    ],
+    "timesMs": [
+      0,
+      160,
+      330,
+      500,
+      680,
+      1200
+    ],
+    "sampleCount": 48,
+    "sameEmptyEndpoints": true,
+    "activeFramesVisiblyDistinct": true,
+    "sameConditionComparison": "Compared at 160, 330, 500 and 680 ms on both backdrops. R3 opens a central aperture in a stationary single plane; R2 moves split faces inward and R1 raises internal light."
+  },
+  "gallerySwitch": {
+    "sequence": [
+      "dot-enhance-activation-r3",
+      "dot-enhance-activation-r1",
+      "dot-enhance-activation-r2",
+      "dot-enhance-activation-r3"
+    ],
+    "readyOnEachSwitch": true,
+    "missingResources": 0,
+    "actualVersionSelect": true
+  },
+  "audio": {
+    "actualBrowserStarts": 2,
+    "remainingVoices": 0,
+    "humanListening": "not_run"
+  },
+  "notVerified": [
+    "Safari",
+    "physical device",
+    "main game integration",
+    "user adoption"
+  ]
+}
