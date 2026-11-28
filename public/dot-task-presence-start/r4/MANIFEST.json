@@ -1,0 +1,82 @@
+{
+  "schema": "dva-dot-e-source/v1",
+  "id": "dot-task-presence-start-r4",
+  "group": "dot-task-presence-start",
+  "title": "タスク端末の待機入り",
+  "authorDisplayName": "dot",
+  "edition": 4,
+  "editionCap": 5,
+  "entry": "index.html",
+  "mainGameIntegration": "not-connected",
+  "adoption": "unknown",
+  "renderer": "WebGPU-only",
+  "designReferences": [
+    {
+      "path": "基底.md",
+      "bytes": 160990,
+      "sha256": "8ad9fdf72b5a92421a58338f387650b769aabdfc834a0514a6e18e5be09ce6a7"
+    },
+    {
+      "path": "拡張.md",
+      "bytes": 74558,
+      "sha256": "bda3db11e4d516daa1fed7d4b21bd19fa6e220ff546745e50e6d95e983f5355f"
+    }
+  ],
+  "eventAuthority": {
+    "type": "self-task-presence-snapshot",
+    "requires": "playing / self defender / matching taskPresenceTaskId and taskPresenceSince",
+    "sourceKind": "self-task-presence-snapshot",
+    "previewDurationMs": 1200,
+    "previewDisplayPolicy": "presence-onset-only",
+    "mainBlob": "8e156eb0107265628491d621ae25d03de415e7fb",
+    "workerBlob": "ada6d9021d9814e01bfb4b5fdb548b70f82d5639"
+  },
+  "sources": [
+    {
+      "path": "index.html",
+      "bytes": 2369,
+      "sha256": "c0586ca6248741bc781fc9e033d1371410fdda6a2f5e716b1edd0356cef62365"
+    },
+    {
+      "path": "host.mjs",
+      "bytes": 16474,
+      "sha256": "e70fb0b1f4ab410eaa474af6777bbf0ae1fc16ec201e02b4b95f81ac06a0d8e5"
+    },
+    {
+      "path": "plan.mjs",
+      "bytes": 1303,
+      "sha256": "ce07ce64161dd3137afda3475e9ac0057701a68c5c7cdf17cf448d25d47acaf3"
+    },
+    {
+      "path": "effect.mjs",
+      "bytes": 1837,
+      "sha256": "e53d841244fcac0fe72761ebe10b7d842b7591d75c31a987daf96243875960b0"
+    },
+    {
+      "path": "mesh.mjs",
+      "bytes": 1034,
+      "sha256": "d3af81308216ea0895c7d85d395300d5fa07bbe1c5d0f603416e3081c7fc7b44"
+    },
+    {
+      "path": "sfx.mjs",
+      "bytes": 706,
+      "sha256": "ff69529b2fb9d75dbb4833695b3976517547804f9f6d43f76c660e4042d91ac0"
+    },
+    {
+      "path": "gpu.mjs",
+      "bytes": 11115,
+      "sha256": "102ada9a69708f385a882536e164432c35c2b945e1ce124003aead5d259f9f2d"
+    },
+    {
+      "path": "plan.test.mjs",
+      "bytes": 2597,
+      "sha256": "0dc53681ad9d7a669a74072cf4277bb81cedfa6e8d9c33522384a18c28afe44b"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 773,
+      "sha256": "4a8028d664b67394f08981029b1cabd659e0d2531e59e2c326851493855735fe"
+    }
+  ],
+  "parentEdition": "dot-task-presence-start-r3"
+}
